@@ -1,0 +1,336 @@
+#+STARTUP: showall
+#+TODO: TODO(t) STARTED(s) WAITING(w) BUG(b) | DONE(d) DELEGATED(e) FIXED(f)
+#+begin_src C :tangle odot_version.h
+#define ODOT_VERSION "1.0.12a" 
+#define ODOT_RELEASE_DATE "[2012-02-24 Fri]"
+#define ODOT_COPYRIGHT_YEARS "2008-12"
+#define ODOT_AUTHORS "John MacCallum, Adrian Freed"
+#define ODOT_COPYRIGHT_STRING "Regents of the University of California. All rights reserved."
+#define ODOT_PRINT_VERSION if(!(gensym("odot_version_has_been_posted")->s_thing)){\
+					post("odot version %s %s, %s\n", ODOT_VERSION, ODOT_RELEASE_DATE, ODOT_AUTHORS); \
+					post("Copyright (c) %s %s", ODOT_COPYRIGHT_YEARS, ODOT_COPYRIGHT_STRING);\
+					gensym("odot_version_has_been_posted")->s_thing = (void *)1;}
+#+end_src
+
+* Open Issues
+** Bugs
+*** o.expr
+**** BUG parsing fails due to space after opening paren: o.if product(#1/temp) > 1 
+** Feature Requests
+*** General
+**** DELEGATED Overview / tutorial patches
+Jeff and/or Yotam are working on this
+**** TODO Boolean values become signed 1-bit values: 00=0, 01=1, 11=-1
+**** TODO Support for blobs
+**** TODO Support for 16-bit floats (half float)
+**** TODO Postfix type specifiers
+**** TODO libo and libomax versions need to be reported.
+**** TODO Explicit way to convert bundle to naked OSC message
+**** STARTED objects that allow the creation of bundles should restrict them from having duplicate addresses [6/7]
+- [X] o.collect
+- [X] o.difference
+- [X] o.intersection
+- [ ] o.message
+- [X] o.pack
+- [X] o.pak
+- [X] o.union
+**** STARTED Implement error handler
+this may be a lifelong project...
+**** TODO Constants need to be checked for accuracy at all precisions
+**** TODO All formatting code needs to be refactored
+**** TODO udpsend encodes lists, floats and ints with addresses with no slashes
+*** o.expr
+**** TODO if() should be a special case of cond and we should have when and unless
+**** WAITING Codebox
+**** TODO settypetags() should work like the cast functions
+**** STARTED add malformed rules to report errors for obvious malformed constructions
+**** TODO implement compile-time argument type-checking.  this is most relevant with strings and a few functions
+like bound() that need OSC addresses
+**** TODO all functions that can't handle strings need to check for them and complain when they find them
+**** TODO get_index and assign_to_index should operate on strings as arrays
+**** TODO sprintf()
+**** TODO reduce()
+**** TODO a single osc address should be a valid expression
+*** new objects
+**** TODO o.typetages: outputs the typetags.
+**** TODO o.append
+** Design questions
+*** The fact that o.route can output both bundles and Max data is a source of bugs.  Rewrite o.route?  
+New objects with more explicit behavior.
+
+* VERSION
+** General
+*** DONE Verify that objects work with data sent from touchosc.
+** Bugs Fixed
+*** o.message
+**** FIXED a bug that would cause a crash when using $n substitutions with a bundle that 
+was not typed into the mssage box (ie, one generated elsewhere and passed in via the right inlet).
+*** o.cond
+**** FIXED a bug that was freeing memory twice when the object was deleted from a patch
+** Change Log
+*** o.expr
+**** DONE Change t_osc_expr_rec to support better documentation of function parameters
+**** DONE o.expr documentation strings need to be available in max so you can build menus, etc.
+**** DONE all operators should have functional equivalents
+**** DONE map()
+**** DONE value() (returns value associated with address)
+**** DONE getaddresses() (returns a list of all addresses in the bundle)
+**** DONE getmsgcount()
+**** DONE the range() function that used to construct an arithmetic sequence is now called aseq().  
+range() now computes the range of a list
+*** o.message
+**** DONE drawing has been made much more efficient--now comparable to the normal message box
+*** patches
+**** moved o.adsr~.maxpat into testing.  it needs more work to capture all the functionality of adsr~.
+**** fixed a bug in the o.bcf2000 patch where an o.message with arguments $1 $2 was failing to parse its bundle
+since $1 is not a valid osc address.  Replaced $1 with /$1 and then put a subpatch above it to remove 
+the leading slash from the incoming address
+**** moved o.countmessages to deprecated--use o.expr /count = msgcount() instead
+**** added help file for o.countup.
+**** added help file for o.delay.
+**** added help file for o.insert.
+**** added help file for o.date.
+**** added help file for o.maxplatform.
+**** fixed a bug in o.rename that would cause partial matches to become nested bundles.
+**** moved o.template.factorial to testing.  there are a few bugs that need to be sorted out before this is released.
+**** 
+
+* VERSION 1.0.12a
+Released: [2012-02-24 Fri]
+** Bugs Fixed
+** Change Log
+*** General
+**** DONE Build documentation system that produces OSC bundles containing all info about objects
+**** DONE Help files improved
+*** o.if/cond/when/unless
+**** DONE ojects instantiate properly when #n arguments are used (0 is substituted for them).
+*** o.expr
+**** DONE add exists() to o.expr
+
+* VERSION 1.0.11a
+Released: [2012-02-23 Thu]
+** Bugs Fixed
+*** o.expr
+**** FIXED Syntax error when compiling expressions and the last one ends with a semicolon.
+*** o.print
+**** FIXED memory leak
+*** o.route/select/atomize
+**** FIXED crash when sending a bundle to an object with no arguments
+*** o.prepend
+**** FIXED crash when sending a bundle to an object with no arguments
+*** o.message
+**** FIXED o.message no longer inserts extra newline characters after typing
+** Changelog
+*** o.printbytes
+**** DONE Add explicit NULL bytes (instead of printing nothing)
+**** DONE Better formatting in general
+*** General
+**** DONE Clean up assist strings and make sure all objects have them
+**** STARTED objects that allow the creation of bundles should restrict them from having duplicate addresses [6/7]
+- [X] o.collect
+- [X] o.difference
+- [X] o.intersection
+- [ ] o.message
+- [X] o.pack
+- [X] o.pak
+- [X] o.union
+*** o.let
+**** DONE assignment syntax should be the same as o.expr/if
+*** o.pak
+**** FIXED o.pak now outputs when it receives a bundle in an inlet
+	
+* VERSION 1.0.10a
+Released: [2012-02-21 Tue]
+** Bugs Fixed
+*** o.prepend
+**** FIXED o.prepend should complain when a float, int, or list is sent to it
+*** General
+**** FIXED All objects need to handle naked (valid) OSC messages and convert them to bundles. [21/21]
+- [X] o.atomize
+see o.expr
+- [X] o.change
+no change necessary
+- [X] o.collect
+- [X] o.cond
+will pass the original unbundled message out
+- [X] o.difference
+- [X] o.expr
+can't be done on the stack (with alloca) as the bundle may need to be resized while evaluating expression(s)
+- [X] o.if
+will pass the original unbundled message out
+- [X] o.intersection
+- [X] o.mappatch
+- [X] o.message
+- [X] o.pack
+- [X] o.pak
+- [X] o.prepend
+- [X] o.print
+- [X] o.printbytes
+- [X] o.route
+- [X] o.select
+- [X] o.union
+- [X] o.unless
+will pass the original unbundled message out
+- [X] o.var
+- [X] o.when
+will pass the original unbundled message out
+*** o.route
+**** FIXED a bug where o.route would not send out a bang for a complete match of an address with no data.
+**** FIXED o.route strips off the leading slash and first letter when matching a star
+**** FIXED o.route set message not working
+**** FIXED memory leak
+*** o.expr
+**** FIXED o.expr crashes if instantiated with a function with arity > 0 with no args
+**** FIXED o.expr != was wrong if one arg was a string and the other wasn't
+**** FIXED bound() now returns false when an address exists but has no data
+**** FIXED if() now returns all results of the true or false calculation, not just the first one
+*** o.if/cond/when/unless
+**** FIXED memory leak
+*** o.var/union/intersection/difference
+**** FIXED duplicate addresses in the same input bundle are not removed.
+**** FIXED crash when sending a bundle in the right inlet after sending the clear message
+** Changelog
+*** o.message
+**** DONE Post an error when a non-OSC message gets sent into the right inlet
+**** DONE complain when parsing fails
+*** o.print
+**** DONE o.print should print any max messages
+*** o.message
+**** DONE floating point tokens are now converted to doubles when the text is parsed
+*** o.expr
+**** DONE add tokenize() function to o.expr
+**** DONE true and false (also True/TRUE and False/FALSE) are now tokenized as booleans rather than strings
+*** o.collect
+**** DONE now outputs an empty bundle if the internal buffer is empty (instead of not doing anything)
+**** DONE o.collect now overwrites duplicate messages with the newest ones.  it assumes this is the
+intended behavior and so doesn't post an error
+* VERSION 1.0.9a
+Released: [2012-01-18 Wed]
+** Bugs Fixed
+*** o.message
+**** FIXED $n subs crashing 
+$n subs weren't recognized if they had quotes around them.
+*** o.expr
+**** FIXED you get odd results with the ? : business if you don't add whitespace in the right place.
+o.expr /foo = /bar < 10 ?/bar : 10 generates a syntax error after the question mark
+** Changelog
+*** o.expr
+**** DONE use bison locations to get better error reporting happening
+**** DONE Check to make sure eval() is reentrant
+**** DONE check function arity when parsing expressions
+**** DONE need a quote() function to prevent evaluation of things like OSC addresses
+
+* VERSION 1.0.8a
+Released: [2012-01-16 Mon]
+** Bugs Fixed
+*** o.message
+**** BUG new o.message formatting code seems to be causing some of the help files (o.message, pak, pack) to crash on opening.
+Wasn't formatting code after all--osc_bundle_s_doFormat was declared with the wrong signature in osc_atom_u.c
+** Changelog
+*** o.expr
+**** DONE ignore #n in expressions
+**** DONE constant_array() => nfill()
+**** DONE typetags(): return a list of typetags
+**** DONE eval() should return an error code, not the results of the evaluation
+Currently this is likely to be a 0 for success and a 1 in the event of an error
+**** DONE Check for negative index values in index lookup.
+**** DONE /foo[[1:4] ] = ... (set a range of values using matlab syntax)
+
+* VERSION 1.0.7.1a
+Released: [2012-01-15 Sun]
+** Bugs Fixed
+*** FIXED Changing the osc_atom* formatting code so that strings have quotes around them broke o.expr's parser.  
+
+* VERSION 1.0.7a
+Released: [2012-01-15 Sun]
+** Bugs Fixed
+*** o.message
+**** DONE After typing, o.message should read the contents of the text field, parse them, format them, and then place them back in the text field so that things like trailing decimals and quotes are displayed correctly.
+**** FIXED o.message should display strings with quotes around them
+**** FIXED [o.message 1 2 3.0 thing "hello" "thang thong"] not outputting the right thing
+This was due to the null byte at the end of quoted strings not being set.
+** Changelog
+
+* VERSION 1.0.6a
+Released: [2012-01-14 Sat]
+** Bugs Fixed
+** Changelog
+*** DONE float(), double(), char() as aliases for float32(), float64(), and int8()
+*** DONE Support for int8, uint8, int16, uint16.
+*** o.expr
+**** DONE Assignment to elements of an array: /foo[ [ 2 ]] = 20.
+
+* VERSION 1.0.5a
+Released: [2012-01-13 Fri]
+** Name changes
+*** DONE o.call => o.callpatch
+*** DONE o.accumulate => o.collect
+*** DONE o.spew => o.atomize
+** Bugs Fixed
+*** o.message
+**** FIXED o.message doesn't display floats like x.0 correctly--the trailing decimal doesn't show up.
+**** FIXED bug that causes o.message to no longer do $-substitution if the input is a symbol.
+**** FIXED set with nothing after it should clear the o.message
+*** o.expr
+**** FIXED range() will crash when creating an infinite range (range(1, 10, -1))
+**** FIXED scale documentation string is wrong.
+**** FIXED C's mod op is wrong and should be replaced with this:  mod(x, m) = x - m * sign(m) * floor(x / abs(m))
+** Changelog
+*** Patches updated to reflect object name changes.
+*** o.expr
+**** DONE Explicit cast functions (int32(), int64(), uint32(), uint64(), float32(), float64(), string())
+**** DONE make mod() as well as %
+**** DONE list() and [] list construction
+**** DONE emptybundle()
+**** DONE change defined() to bound()
+**** DONE make-list becomes constant-array(<constant>, <n>)
+
+* VERSION 1.0.4a
+Released: [2012-01-09 Mon]
+** Bugs Fixed
+*** FIXED o.expr only evaluating the first function if there is more than one.
+*** FIXED o.route outlets in wrong order when input is Max message
+*** FIXED Crash when sending clear (or any other non-OSC message)
+** Changelog
+*** DONE Constants should be implemented as functions.
+
+* VERSION 1.0.3a
+Released: [2012-01-08 Sun]
+** Bugs Fixed
+*** o.expr
+**** FIXED [o.expr /count++ %= 8] crashes.  It doesn't compile and doesn't generate an error, but
+/count++ is not a valid lvalue
+*** o.route
+**** FIXED Crash when sending an OSC-style Max message that doesn't get matched.
+** Changelog
+*** DONE New object: o.cond (generalization of o.if)
+*** DONE New objects: o.when and o.unless
+*** DONE Include Rama's improved help files
+
+* VERSION 1.0.2a
+Released: [2012-01-06 Fri 13:10]
+** Bugs Fixed
+** Changelog
+*** DONE Version and copyright string should be reported once when the first odot obj is instantiated.
+*** DONE Individual objects should not have their own version numbers---there should a single version for the entire odot lib.
+*** DONE OSC boolean types should be converted to ints when sent out into Max
+
+* VERSION 1.0.1a
+Released: [2012-01-05 Thu]
+** Changelog
+** Bugs Fixed
+*** FIXED Crash with this business:
+1   edu.cnmat.berkeley.o.prepend        0x0c2b8eb6 osc_message_s_renameCopy + 198
+2   edu.cnmat.berkeley.o.prepend        0x0c2b3fba oppnd_doFullPacket + 362
+3   edu.cnmat.berkeley.o.prepend        0x0c2b39bd oppnd_fullPacket + 45
+
+* VERSION 1.0a
+Released: [2012-01-05 Thu]
+** Changelog
+*** DONE Check on o.mappatch's handling of nested bundles
+*** o.var no longer accepts @op union/intersection/difference attributes,
+use o.union, o.intersecsion, o.difference
+*** o.b(u)ild is now o.pa(c)k
+*** Most (all?) objects now support nested bundles
+*** Numerous bug fixes and improvements
+** Bug Fixes

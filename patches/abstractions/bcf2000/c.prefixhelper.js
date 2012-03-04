@@ -1,0 +1,1 @@
+outlets = outlets =1;setoutletassist(0, "message to have its name prefixed");setinletassist(0, "prefixed messages");function anything(){			// String concatenation 		if((jsarguments.length>1) && (jsarguments[1]!=0))			outlet(0, arrayfromargs(jsarguments[1] + messagename,arguments));		else			outlet(0, arrayfromargs(messagename,arguments));			}		

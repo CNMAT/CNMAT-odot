@@ -1,0 +1,231 @@
+#this is a comment
+#test expressions must be in the form:
+#expr
+#;bundle
+#;answer
+#;
+#@ <-this signifies the end of a test expression
+#place a 
+#osc messages must be delimited with a newline or newline character ( \n )
+/one = /three - 2
+;/three 3
+;/three 3
+/one 1
+;
+@
+/one = /two * 45
+;/two 3
+;/two 3
+/one 135
+;
+@
+/one = /two / 45
+;/two 655.2
+;/two 655.2
+/one 14.56
+;
+@
+/one = (/two * 45) + /three
+;/two 35
+/three 124
+;/two 35
+/three 124
+/one 1699
+;
+@
+/one = (/two * 45) + (/three - 581)
+;/two 35
+/three 124
+;/two 35
+/three 124
+/one 1118
+;
+@
+/one = (++/two * 45) + (/three - 581)
+;/two 34
+/three 124
+;/two 35
+/three 124
+/one 1118
+;
+@
+/one ++
+;/one 34
+;/one 35
+;
+@
+++/one
+;/one 34
+;/one 35
+;
+@
+/one = (/two * 38) + (/three / 5)
+;/two -14
+/three 125
+;/two -14
+/three 125
+/one -507
+;
+@
+/one = (/two * 38) + (/three / 5)
+;/two -14
+/three 125
+;/two -14
+/three 125
+/one -507
+;
+@
+if(2 < 3, /one = 1, /one = 0)
+;/one 3
+;/one 1
+;
+@
+if(/two < /three, /one = 1, /one = 0)
+;/two 2
+/three 3
+;/one 1
+/two 2
+/three 3
+;
+@
+if( /two * 43 != /three * 9 , /one = /four * 3, /one = 1)
+;/two 2
+/three 3
+/four 123
+;/one 369
+/two 2
+/three 3
+/four 123
+;
+@
+/one = /two[[0]] * 3
+;/two 2 2
+;/one 6
+/two 2 2
+;
+@
+/one = /two * 3
+;/two 2 2
+;/one 6 6
+/two 2 2
+;
+@
+/one = /two[[0, 3, 5]] * 3
+;/two 1 2 3 4 5 6 7 
+;/one 3 12 18
+/two 1 2 3 4 5 6 7 
+;
+@
+/one = /two[[0, 1, 2]] * /three
+;/two 1 2 3 4 5 6 7 
+/three 1 2 3
+;/one 1 4 9
+/three 1 2 3
+/two 1 2 3 4 5 6 7 
+;
+@
+/one = /two[[0, 1, 2]] * /three
+;/two 1 2 3 4 5 6 7 
+/three 1 2
+;/one 1 4
+/three 1 2
+/two 1 2 3 4 5 6 7 
+;
+@
+if((/two * -2) <= (/three / 3.5), (if(3.1111 < 3.11112, /one = 15.15, /one = 14 )), /one = 0)
+;/two 9
+/three 12.2
+;/one 15.15
+/two 9
+/three 12.2
+;
+@
+#tests the smallest 32-bit floating point value
+if(0.00000000000000000000001 > 0.000000000000000000000001, /one = 1, /one = 0)
+;/one 0
+;/one 1
+;
+@
+# test floating point comparison
+if((/float > /double) && ((/float * -1 ) < /double)  , /one = 1, /one = 0)
+;/one 0
+/float 0.000000000000000000000001
+/double 0.00000000000000000000000001
+;/one 1
+/float 0.000000000000000000000001
+/double 0.00000000000000000000000001
+;
+@
+/one = (1 >= 1.00000000000000000000000000000000000000000000000000000000000000000000000000001)
+;/test 1
+;/test 1
+/one true
+;
+@
+#test of non-strict vs strict evaluation
+if(2 > 1, /one = 1, /one = /doesntexist)
+;/one 0
+;/one 1
+;
+@
+#test of non-strict vs strict evaluation
+if((10 > 9)&&(2 < 1)&&(1 > /doesntexist), /one = /doesntexist, /one = 1)
+;/one 0
+;/one 1
+;
+@
+/one = (/two = (/one = (/three = /four)))
+;/two 2
+/three 3
+/four 4
+;/one 4
+/two 4
+/three 4
+/four 4
+;
+@
+/one = (123 != ( (4 > 3) || (4 < 3) ) ) && !(124 <= 14) && (132 >= 24.3) || (5.00 == 5)
+;/two false
+;/two false
+/one true
+;
+@
+/one += 1
+;/one 1
+;/one 2
+;
+@
+/one *= (/two -= 432)
+;/one 4
+/two 434
+;/one 8
+/two 2
+;
+@
+/one %= (/two /= 9)
+;/one 44
+/two 27
+;/one 2
+/two 3
+;
+@
+/one *= (/two -= (/three %= (/four += (/five /= 23))))
+;/one 434
+/two 272
+/three 5431
+/four 2524
+/five 20355
+;/one -759500
+/two -1750
+/three 2022
+/four 3409
+/five 885
+;
+@
+/one = /two + /two
+;/two cat
+;/two cat
+/one catcat
+;
+@
+
