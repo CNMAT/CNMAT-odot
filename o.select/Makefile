@@ -3,4 +3,4 @@ win: INCLUDES += -I../libo -I../libomax
 win: LIBDIRS += -L../libo -L../libomax
 win: LIBS += -lomax -lo
 
-include ../../../makefile.per-object
+include ../makefile.per-object
