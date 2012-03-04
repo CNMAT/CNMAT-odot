@@ -1,0 +1,458 @@
+# makefile.per-object
+# This is included in the makefile for every Max external
+# Matt Wright, 2005-2006
+
+# default platform is "UNKNOWN"
+PLATFORM = UNKNOWN
+
+ifeq ($(strip $(CNMAT_MAX_DIR)),)
+CNMAT_MAX_DIR = ../../../
+endif
+
+ifeq ($(strip $(CNMAT_MAX_INSTALL_DIR)),)
+CNMAT_MAX_INSTALL_DIR = ../../../build
+endif
+
+	
+# Now figure out the platform based on what the build target is
+# Note that these definitions of PLATFORM will be valid only within
+# those particular build targets and their prerequisites!!!
+
+.PHONY: cfm cfm-release macho macho-release cfm cfm-release win win-release win-vcc win-vcc-release
+cfm: export PLATFORM := OSX-CFM
+cfm-release: export PLATFORM := OSX-CFM
+macho: export PLATFORM := OSX-MachO
+macho-release: export PLATFORM := OSX-MachO
+cfm: export PLATFORM := OSX-CFM
+cfm-release: export PLATFORM := OSX-CFM
+win: export PLATFORM := WIN
+win-release: export PLATFORM := WIN
+win-vcc: export PLATFORM := WIN
+win-vcc-release: export PLATFORM := WIN
+
+
+# The use of the inline $(if ...) construction is so the conditional will be evaluated later,
+# when we try to use the value of BUILD_DIR somewhere, at which point the PLATFORM will 
+# hopefully be defined...
+BUILD_DIR = $(if $(findstring OSX-CFM,$(PLATFORM)), \
+	         $(CODEWARRIOR_BUILD_DIR), \
+                 $(if $(findstring OSX-MachO,$(PLATFORM)), \
+	              $(XCODE_BUILD_DIR), \
+                      $(if $(findstring UNKNOWN,$(PLATFORM)), \
+			   $(DEFAULT_BUILD_DIR), \
+			                    $(if $(findstring WIN,$(PLATFORM)), \
+			                 $(VCC_BUILD_DIR), \
+                           $(error Unrecognized platform "$(PLATFORM)") ))))
+export BUILD_DIR
+
+# Another way to do it, so the conditional happens immediately.
+# This doesn't work at all, because PLATFORM is UNKNOWN except inside
+# platform-specific build targets and their prerequisites.
+#ifeq ($(PLATFORM),OSX-CFM)
+#BUILD_DIR = $(CODEWARRIOR_BUILD_DIR)
+#else ifeq ($(PLATFORM),OSX-MachO)
+#BUILD_DIR = $(XCODE_BUILD_DIR)
+#else ifeq ($(PLATFORM),UNKNOWN)
+#BUILD_DIR = $(DEFAULT_BUILD_DIR)
+#else
+#BUILD_DIR = $(error Unrecognized platform "$(PLATFORM)")
+#endif
+
+
+# Make all recursive calls to make know the platform and all variables
+# derived fro the platform:
+
+.EXPORT_ALL_VARIABLES: 
+
+
+# Name of the object is the name of this directory.
+# Nothing in CNMAT's repository should have any whitespace in file or
+# directory names, so we'll just blithely use $(lastword ...) to
+# remove everything before the final space in the current directory
+# before we pass it to $(notdir ...).  Otherwise $(notdir ...) will
+# think that each space-delimited segment of the current directory is
+# a separate input, and return an answer with spaces, which will blow
+# up the rest of the Makefile.  in case the full path to the working
+# directory has white space.
+export OBJ = $(notdir $(lastword $(strip $(CURDIR))))
+
+# Filenames derived from the name of the object
+#SOURCE = $(OBJ).c
+POSSIBLE_SOURCE_FILES = $(OBJ).c $(OBJ).cpp $(OBJ).cc
+SOURCE = $(filter $(wildcard $(OBJ).*), $(POSSIBLE_SOURCE_FILES))
+
+REZ_FILE = $(OBJ).r
+HELPFILE = $(OBJ).maxhelp
+CFM_BINARY = $(CODEWARRIOR_BUILD_DIR)/$(OBJ)
+MACHO_BINARY = $(XCODE_BUILD_DIR)/$(OBJ).mxo
+# MAC_BINARY = $(if $(findstring OSX-CFM,$(PLATFORM)), $(CFM_BINARY), $(MACHO_BINARY))
+WIN_VCC_BINARY = $(VCC_BUILD_DIR)/$(OBJ).mxe
+WIN_BINARY = $(GCC_BUILD_DIR)/$(OBJ).mxe
+
+
+CODEWARRIOR_DEBUGGER_SYM = $(CODEWARRIOR_BUILD_DIR)/$(OBJ).xSYM
+CODEWARRIOR_HELPFILE_COPY = $(CODEWARRIOR_BUILD_DIR)/$(OBJ).help.pat
+XCODE_HELPFILE_COPY = $(XCODE_BUILD_DIR)/$(OBJ).help.pat
+VCC_HELPFILE_COPY = $(VCC_BUILD_DIR)/$(OBJ).help.pat
+GCC_HELPFILE_COPY = $(GCC_BUILD_DIR)/$(OBJ).help.pat
+
+CODEWARRIOR_BUILD_DIR = ../build-mac
+XCODE_BUILD_DIR = build/Deployment
+VCC_BUILD_DIR = ../../sysbuild/win_release/externals
+GCC_BUILD_DIR = build-gcc
+DEFAULT_BUILD_DIR = /tmp
+ALL_BUILD_DIRS = $(CODEWARRIOR_BUILD_DIR) $(XCODE_BUILD_DIR) $(VCC_BUILD_DIR) $(GCC_BUILD_DIR) $(DEFAULT_BUILD_DIR)
+
+CODEWARRIOR_BUILD_DIR_EXISTS = $(CODEWARRIOR_BUILD_DIR)/exists
+XCODE_BUILD_DIR_EXISTS = $(XCODE_BUILD_DIR)/exists
+GCC_BUILD_DIR_EXISTS = $(GCC_BUILD_DIR)/exists
+
+CNMAT_MAX_INSTALL_DIR_EXISTS = $(CNMAT_MAX_INSTALL_DIR)/exists
+
+
+CFM_INDIVIDUAL_DOWNLOAD_NO_DIR = $(OBJ)$(VERSION_TAG).sit
+MACHO_INDIVIDUAL_DOWNLOAD_NO_DIR = $(OBJ)$(VERSION_TAG).tar.gz
+WIN_INDIVIDUAL_DOWNLOAD_NO_DIR = $(OBJ)$(VERSION_TAG).zip
+CFM_INDIVIDUAL_DOWNLOAD = $(CODEWARRIOR_BUILD_DIR)/$(CFM_INDIVIDUAL_DOWNLOAD_NO_DIR)
+MACHO_INDIVIDUAL_DOWNLOAD = $(XCODE_BUILD_DIR)/$(MACHO_INDIVIDUAL_DOWNLOAD_NO_DIR)
+WIN_VCC_INDIVIDUAL_DOWNLOAD = $(VCC_BUILD_DIR)/$(WIN_INDIVIDUAL_DOWNLOAD_NO_DIR)
+WIN_INDIVIDUAL_DOWNLOAD = $(GCC_BUILD_DIR)/$(WIN_INDIVIDUAL_DOWNLOAD_NO_DIR)
+
+
+# OBJ_INFO is info about the object, not platform-specific
+OBJ_INFO_NO_DIR = $(OBJ)-objinfo.txt
+OBJ_INFO = $(OBJ_INFO_NO_DIR)
+# WEB_INFO is exactly the same, but also with the md5 checksum and build info
+CFM_WEB_INFO_NO_DIR = $(OBJ)-OSX-CFM-info.txt
+MACHO_WEB_INFO_NO_DIR = $(OBJ)-OSX-MachO-info.txt
+WIN_WEB_INFO_NO_DIR = $(OBJ)-WIN-info.txt
+#WEB_INFO = $(BUILD_DIR)/$(WEB_INFO_NO_DIR)
+CFM_WEB_INFO = $(CODEWARRIOR_BUILD_DIR)/$(CFM_WEB_INFO_NO_DIR)
+MACHO_WEB_INFO = $(XCODE_BUILD_DIR)/$(MACHO_WEB_INFO_NO_DIR)
+WIN_VCC_WEB_INFO = $(VCC_BUILD_DIR)/$(WIN_WEB_INFO_NO_DIR)
+WIN_WEB_INFO = $(GCC_BUILD_DIR)/$(WIN_WEB_INFO_NO_DIR)
+
+#old attempt to be general:
+#WEB_INCOMING = $(BUILD_DIR)/$(OBJ)-$(PLATFORM).tar.gz
+#export WEB_INCOMING
+CFM_WEB_INCOMING = $(CODEWARRIOR_BUILD_DIR)/$(OBJ)-OSX-CFM.tar.gz
+MACHO_WEB_INCOMING = $(XCODE_BUILD_DIR)/$(OBJ)-OSX-MachO.tar.gz
+WIN_VCC_WEB_INCOMING = $(VCC_BUILD_DIR)/$(OBJ)-WIN.tar.gz
+WIN_WEB_INCOMING = $(GCC_BUILD_DIR)/$(OBJ)-WIN.tar.gz
+
+
+# Where files live on our web server
+WEBSERVER_INCOMING_DIR = /Volumes/maxdl/incoming
+# WEBSERVER_INCOMING_DIR = /tmp/incoming
+
+
+# Making the version number accessible from this Makefile:
+#
+# Each version.h file has a line that looks like this:  
+#     #define VERSION "1.2.3.4"
+# so get a Makefile variable that's just something like "1.2.3.4"
+DOUBLEQUOTED_VERSION := $(word 3,$(shell grep -s '\#define VERSION ' version.h))
+# now a cheesy way to get rid of the double quotes:
+VERSION := $(shell echo $(DOUBLEQUOTED_VERSION))
+VERSION_TAG := _$(VERSION)
+
+# Ditto for status
+DOUBLEQUOTED_STATUS := $(word 3,$(shell grep -s STATUS version.h))
+STATUS = $(shell echo $(DOUBLEQUOTED_STATUS))
+
+
+# Top-level build targets
+
+default: macho
+
+macho: $(MACHO_BINARY) $(MACHO_INDIVIDUAL_DOWNLOAD) 
+
+xcode:
+	open ./$(OBJ).xcodeproj
+
+cfm: $(CFM_BINARY) $(CFM_INDIVIDUAL_DOWNLOAD) 
+
+win: $(WIN_BINARY) $(WIN_INDIVIDUAL_DOWNLOAD)
+
+win-vcc: $(WIN_VCC_BINARY) $(WIN_VCC_INDIVIDUAL_DOWNLOAD)
+
+# The version info is extracted from the .c file by Andy's perl script.
+# Because some makefile variables (e.g., VERSION_TAG) come from version.h,
+# start over with a recursive call to $(MAKE), but then bomb out of the outer
+# invocation of Make (which presumably has the wrong VERSION_TAG, etc., and
+# will therefore be doing bad things).
+version.h: $(OBJ_INFO) version.c
+	#perl ../../../info2header.pl < $(OBJ_INFO) > $@
+	perl $(CNMAT_MAX_DIR)/info2header.pl < $(OBJ_INFO) > $@
+	$(MAKE) $(MAKECMDGOALS)
+	@echo -n 'Ignore the following error message: '
+	@cmp -s version.h /dev/null
+
+
+#ORIGINAL_VERSION_C = ../../../utility-library/version/version.c
+ORIGINAL_VERSION_C = $(CNMAT_MAX_DIR)/utility-library/version/version.c
+version.c: $(ORIGINAL_VERSION_C)
+	cp $< $@
+
+
+$(OBJ_INFO): $(SOURCE)
+	#perl ../../../commentkeys.pl < $(SOURCE) > $@
+	perl $(CNMAT_MAX_DIR)/commentkeys.pl < $(SOURCE) > $@
+
+MD5 = $(if $(findstring WIN, $(PLATFORM)), md5sum, md5 -q)
+
+# a "canned command sequence" because it's the same for all platforms:
+# Note the use of "$<" in the MD5 computation; this means that the per-platform individual download
+# must be the first prerequisite for any XXX_WEB_INFO rule.
+define make-web-info
+	cp $(OBJ_INFO) $@ 
+	echo MD5: `$(MD5) $< | awk '{print $$1}'` >> $@
+	echo 'PLATFORM: "$(PLATFORM)"' >> $@
+	echo 'BUILDER: "'`whoami`'"' >> $@
+	echo 'BUILD_DATE: "'`date`'"' >> $@
+	echo 'BUILD_DIR: "'`pwd`'"' >> $@
+#	echo 'SVN_REVISION: "'`svn info *.c | grep "^Revision: " | awk '{print $$2}'`'"' >> $@
+# SVN_REVISION keyword is now handled by SVN "keywords"
+endef
+
+$(CFM_WEB_INFO): $(CFM_INDIVIDUAL_DOWNLOAD) $(OBJ_INFO)
+	$(make-web-info)
+
+$(MACHO_WEB_INFO): $(MACHO_INDIVIDUAL_DOWNLOAD) $(OBJ_INFO)
+	$(make-web-info)
+
+$(WIN_WEB_INFO): $(WIN_INDIVIDUAL_DOWNLOAD) $(OBJ_INFO)
+	$(make-web-info)
+
+$(WIN_VCC_WEB_INFO): $(WIN_VCC_INDIVIDUAL_DOWNLOAD) $(OBJ_INFO)
+	$(make-web-info)
+
+
+# Make sure the build directory is really there
+$(CODEWARRIOR_BUILD_DIR_EXISTS):
+	mkdir -p "$(CODEWARRIOR_BUILD_DIR)"
+	touch "$(CODEWARRIOR_BUILD_DIR_EXISTS)"
+
+$(XCODE_BUILD_DIR_EXISTS):
+	mkdir -p "$(XCODE_BUILD_DIR)"
+	touch "$(XCODE_BUILD_DIR_EXISTS)"
+
+$(GCC_BUILD_DIR_EXISTS):
+	mkdir -p "$(GCC_BUILD_DIR)"
+	touch "$(GCC_BUILD_DIR_EXISTS)"
+
+
+
+$(MACHO_BINARY): $(SOURCE) version.h $(XCODE_HELPFILE_COPY)
+	xcodebuild -configuration Deployment
+
+# to make the CFM binary, have to open the Codewarrior project.
+# The call to cmp is to force this call to Make to stop, so the 
+# programmer has to say "make" again.
+# We first rename the MAC binary because CodeWarrior will sometimes "build" a "new"
+# binary (even making the slamming sound) by doing nothing, resulting in the binary
+# file still having an older date than the source file.
+$(CFM_BINARY): $(SOURCE) $(REZ_FILE) version.h $(CODEWARRIOR_BUILD_DIR_EXISTS) $(CODEWARRIOR_HELPFILE_COPY)
+	@echo getting ready to make $(CFM_BINARY)
+	@touch $(CFM_BINARY)  # so there will be something to move
+	@mv -f $(CFM_BINARY) $(CFM_BINARY).backup
+	@echo 'Please build the CFM version of' $(OBJ) 'in Codewarrior'
+	open $(OBJ).mcp 
+	@echo 'Ignore the following error message; just run make again after'
+	@echo 'CodeWarrior builds the object.'
+	@cmp -s version.h /dev/null
+
+$(WIN_VCC_BINARY): $(SOURCE) version.h $(VCC_HELPFILE_COPY) 
+	echo "Start VCC!!"
+
+$(WIN_BINARY): $(SOURCE) version.h $(GCC_HELPFILE_COPY) 
+	#$(MAKE) -f ../../../makefile.windows-gcc $@
+	$(MAKE) -f $(CNMAT_MAX_DIR)/makefile.windows-gcc $@
+
+$(OBJ).def: 
+	#$(MAKE) -f ../../../makefile.windows-gcc $@
+	$(MAKE) -f $(CNMAT_MAX_DIR)makefile.windows-gcc $@
+
+
+#START_OVER_ERROR = $(error Please run make again.)
+#.PHONY: start-over
+#start-over: ; $(START_OVER_ERROR)
+
+
+#.PHONY: mac-individual-download
+#mac-individual-download: $(MAC_INDIVIDUAL_DOWNLOAD)
+
+$(CFM_INDIVIDUAL_DOWNLOAD): $(HELPFILE) $(CFM_BINARY) cfm-help-diff-warning
+	@echo Building CFM download of version $(VERSION) for platform $(PLATFORM) in build-dir $(BUILD_DIR) 
+	stuff -o -n $@ $(MORE_RELEASE_FILES) $(CFM_BINARY) $(HELPFILE)
+#	tar --unlink -czf $@ $(HELPFILE) -C $(CODEWARRIOR_BUILD_DIR) $(OBJ)
+
+
+$(MACHO_INDIVIDUAL_DOWNLOAD): $(HELPFILE) $(MACHO_BINARY) macho-help-diff-warning
+	@echo Building MachO download of version $(VERSION) for platform $(PLATFORM) in build-dir $(BUILD_DIR) 
+#	stuff -o -n $@ $(MACHO_BINARY) $(HELPFILE)
+	#tar --unlink -czf $@ $(MORE_RELEASE_FILES) $(HELPFILE) -C $(XCODE_BUILD_DIR) $(OBJ).mxo
+	tar -czf $@ $(MORE_RELEASE_FILES) $(HELPFILE) -C $(XCODE_BUILD_DIR) $(OBJ).mxo
+
+$(WIN_INDIVIDUAL_DOWNLOAD): $(HELPFILE) $(WIN_BINARY) win-help-diff-warning
+	@echo Building Windoze download of version $(VERSION) for platform $(PLATFORM) in build-dir $(BUILD_DIR)
+	zip -j $@ $(MORE_RELEASE_FILES) $(WIN_BINARY) $(HELPFILE)
+
+$(WIN_VCC_INDIVIDUAL_DOWNLOAD): $(HELPFILE) $(WIN_VCC_BINARY) win-vcc-help-diff-warning
+	@echo Building Windoze (VCC) download of version $(VERSION) for platform $(PLATFORM) in build-dir $(BUILD_DIR)
+	zip -j $@ $(MORE_RELEASE_FILES) $(WIN_VCC_BINARY) $(HELPFILE)
+
+
+# Put a copy of the help file next to the built binary for ease of testing
+$(CODEWARRIOR_HELPFILE_COPY): $(CODEWARRIOR_BUILD_DIR_EXISTS)
+$(XCODE_HELPFILE_COPY): $(XCODE_BUILD_DIR_EXISTS)
+$(GCC_HELPFILE_COPY): $(GCC_BUILD_DIR_EXISTS)
+
+$(CODEWARRIOR_HELPFILE_COPY) $(XCODE_HELPFILE_COPY) $(VCC_HELPFILE_COPY) $(GCC_HELPFILE_COPY): $(HELPFILE)
+	cp $(HELPFILE) $@
+
+
+# make sure help patch in correct source directory is the most recent
+# (even though it's the one in $(BUILD_DIR) that's usually edited.)
+
+define do-help-diff
+	@ cmp -s $(HELPFILE) $< || \
+	echo WARNING\! '$< is different from $(HELPFILE)'
+endef
+
+.PHONY: cfm-help-diff-warning macho-help-diff-warning
+cfm-help-diff-warning: $(CODEWARRIOR_HELPFILE_COPY)
+	$(do-help-diff)
+
+macho-help-diff-warning: $(XCODE_HELPFILE_COPY)
+	$(do-help-diff)
+
+win-help-diff-warning: $(GCC_HELPFILE_COPY)
+	$(do-help-diff)
+
+win-vcc-help-diff-warning: $(VCC_HELPFILE_COPY)
+	$(do-help-diff)
+
+
+
+
+# For any release, make sure the code is checked in before allowing the release
+cfm-release macho-release win-release win-vcc-release: code-checked-in
+
+# Ensuring that the current code has been properly checked into Subversion
+.PHONY: code-checked-in
+code-checked-in: no-cr-characters
+	@ !((svn status | grep "^M") && \
+	(echo You have modified files that have not been checked back into SVN\!))
+# Explanation of above: Grep returns status 0 if the text was found
+# (i.e., if there are un-checked-in files.  
+# So (svn status | grep "^M") && (echo ...)  prints the error only if
+# the text was found.  Echo always returns 0, so the return value of
+# the && operator is 0 if an error was printed, 1 otherwise, so I put a
+# logical negation (exclamation point) before the whole thing, so that
+# Make will bomb out if the error is printed.
+
+
+# Ensuring that any text files in this directory don't have evil CR line
+# terminators (e.g., that Max's built-in javascript text editor might have
+# added):
+.PHONY: no-cr-characters
+no-cr-characters:
+	@ !((file * | grep -v macyucky | grep -v "\.pat" | grep -v "\.mxt" |  grep "with CR line terminators") && \
+	(echo You have files with yucky line break character.  Please fix with demac, BBedit, etc.  ))
+
+
+
+# Actually copying the files to directories where the web server can find them
+
+release:
+	@echo You must specify which platform you want to release, e.g.,
+	@echo     make macho-release
+	@echo     make cfm-release
+	@echo     make win-release
+	
+
+cfm-release: $(CFM_WEB_INCOMING)
+	mkdir /Volumes/maxdl
+	mount_webdav https://cnmat.berkeley.edu/dav/www/maxdl /Volumes/maxdl
+	cp $< $(WEBSERVER_INCOMING_DIR)
+	umount /Volumes/maxdl
+	rmdir /Volumes/maxdl
+
+macho-release: $(MACHO_WEB_INCOMING)
+	mkdir /Volumes/maxdl
+	mount_webdav https://cnmat.berkeley.edu/dav/www/maxdl /Volumes/maxdl
+	cp $< $(WEBSERVER_INCOMING_DIR)
+	umount /Volumes/maxdl
+	rmdir /Volumes/maxdl
+
+win-release: $(WIN_WEB_INCOMING) 
+	echo "Automatic release not supported for windows"
+
+win-vcc-release: $(WIN_VCC_WEB_INCOMING) 
+	echo "Automatic release not supported for windows"
+
+$(CFM_WEB_INCOMING): code-checked-in $(CFM_INDIVIDUAL_DOWNLOAD) $(CFM_WEB_INFO) 
+	tar cvfz $@ -C $(CODEWARRIOR_BUILD_DIR) $(CFM_INDIVIDUAL_DOWNLOAD_NO_DIR) $(CFM_WEB_INFO_NO_DIR)
+
+$(MACHO_WEB_INCOMING): code-checked-in $(MACHO_INDIVIDUAL_DOWNLOAD) $(MACHO_WEB_INFO) 
+	tar cvfz $@ -C $(XCODE_BUILD_DIR) $(MACHO_INDIVIDUAL_DOWNLOAD_NO_DIR) $(MACHO_WEB_INFO_NO_DIR)
+
+$(WIN_WEB_INCOMING): code-checked-in $(WIN_INDIVIDUAL_DOWNLOAD) $(WIN_WEB_INFO) 
+	tar cvfz $@ -C $(GCC_BUILD_DIR) $(WIN_INDIVIDUAL_DOWNLOAD_NO_DIR) $(WIN_WEB_INFO_NO_DIR)
+
+$(WIN_VCC_WEB_INCOMING): code-checked-in $(WIN_VCC_INDIVIDUAL_DOWNLOAD) $(WIN_VCC_WEB_INFO) 
+	tar cvfz $@ -C $(VCC_BUILD_DIR) $(WIN_VCC_INDIVIDUAL_DOWNLOAD_NO_DIR) $(WIN_VCC_WEB_INFO_NO_DIR)
+
+
+
+.PHONY: clean
+# Note that this cleans all the possible build directories for all platforms... 
+clean:
+	rm -f $(OBJ_INFO) version.[ch] $(WEB_INCOMING) $(CODEWARRIOR_DEBUGGER_SYM) 
+	rm -f $(CFM_WEB_INFO) $(MACHO_WEB_INFO)
+	rm -rf $(CFM_BINARY) $(MACHO_BINARY)
+	rm -rf $(foreach dir, $(ALL_BUILD_DIRS), \
+                 $(dir)/$(HELPFILE) \
+		 $(dir)/$(WIN_INDIVIDUAL_DOWNLOAD_NO_DIR) \
+		 $(dir)/$(CFM_INDIVIDUAL_DOWNLOAD_NO_DIR) \
+		 $(dir)/$(MACHO_INDIVIDUAL_DOWNLOAD_NO_DIR) )
+	rm -f *~ 
+	rm -rf $(OBJ)\ Data
+	rm -rf build
+	rm -rf $(ALL_BUILD_DIRS)
+
+
+# Diagnostic stuff for debugging
+
+printenv:
+	printenv
+
+tellversiontag:
+	echo $(VERSION_TAG)
+
+webtest: $(WEBSERVER_BASE_DIR)
+	open $(WEBSERVER_BASE_DIR)
+
+statustest: version.h
+	echo $(STATUS)
+
+ostest:
+	echo $(OS)
+
+
+test: 
+	echo CURDIR $(CURDIR)
+	echo OBJ $(OBJ)
+	echo PLATFORM $(PLATFORM)
+	echo OBJ_INFO  $(OBJ_INFO)
+	echo build $(BUILD_DIR)
+
+install: $(CNMAT_MAX_INSTALL_DIR_EXISTS)
+	rm -rf $(CNMAT_MAX_INSTALL_DIR)/$(OBJ).mxo
+	cp -r $(MACHO_BINARY) $(CNMAT_MAX_INSTALL_DIR)/
+	cp $(HELPFILE) $(CNMAT_MAX_INSTALL_DIR)/
+	
+$(CNMAT_MAX_INSTALL_DIR_EXISTS):
+	mkdir -p "$(CNMAT_MAX_INSTALL_DIR)"
+	touch "$(CNMAT_MAX_INSTALL_DIR_EXISTS)"
