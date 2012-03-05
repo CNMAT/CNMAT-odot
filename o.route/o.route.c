@@ -451,7 +451,7 @@ int main(void)
 {
 #ifdef SELECT
 	char *name = "o.select";
-#elif ATOMIZE
+#elif defined ATOMIZE
 	char *name = "o.atomize";
 #else
 	char *name = "o.route";

@@ -1,4 +1,4 @@
-VERSION = 0.1
+XCODEBUILDDIR = $(CURDIR)/DerivedData/odot/Build/Products/Release
 BUILDDIR = $(CURDIR)/build
 OBJDIR = $(BUILDDIR)/objects
 HELPDIR = $(BUILDDIR)/helpfiles
@@ -9,7 +9,7 @@ o.pack o.pak o.prepend\
 o.print o.printbytes o.route o.select o.atomize o.var o.union o.intersection o.difference
 ODOT_CFILES = $(foreach OBJ, $(OBJECT_LIST), $(OBJDIR)/$(OBJ).c)
 ODOT_HFILES = $(foreach OBJ, $(OBJECT_LIST), $(OBJDIR)/$(OBJ).h)
-ODOT_MXO = $(foreach OBJ, $(OBJECT_LIST), $(OBJDIR)/$(OBJ).mxo)
+ODOT_MXO = $(foreach OBJ, $(OBJECT_LIST), $(XCODEBUILDDIR)/$(OBJ).mxo)
 ODOT_MXE = $(foreach OBJ, $(OBJECT_LIST), $(OBJDIR)/$(OBJ).mxe)
 
 PATCHES = $(BUILDDIR)/abstractions $(BUILDDIR)/demos $(BUILDDIR)/overview
@@ -25,14 +25,17 @@ SERVER_PATH = /home/www-data/berkeley.edu-cnmat.www/maxdl/files/odot/
 
 ARCH = -arch i386 -arch ppc
 
-all: $(OBJDIR) $(HELPDIR) $(ODOT_MXO) $(PATCHES) DOCUMENTS
+#all: $(OBJDIR) $(HELPDIR) $(ODOT_MXO) $(PATCHES) DOCUMENTS
+all:
+	xcodebuild -scheme "Build all" -configuration Release -project odot.xcodeproj build
 win: $(OBJDIR) $(HELPDIR) $(ODOT_MXE) $(PATCHES) DOCUMENTS
 
-$(ODOT_MXO):
-	+cd $(notdir $(basename $@)) && $(MAKE) -f Makefile -k
-	+cd $(notdir $(basename $@)) && $(MAKE) -f Makefile -k install
-	+cd $(notdir $(basename $@))/build/Deployment && cp -r $(notdir $(basename $@)).mxo $(OBJDIR)
-	+cd $(notdir $(basename $@)) && cp -r $(notdir $(basename $@)).maxhelp $(HELPDIR)
+$(XCODEBUILDDIR)/%:
+#	+cd $(notdir $(basename $@)) && $(MAKE) -f Makefile -k
+#	+cd $(notdir $(basename $@)) && $(MAKE) -f Makefile -k install
+#	+cd $(notdir $(basename $@))/build/Deployment && cp -r $(notdir $(basename $@)).mxo $(OBJDIR)
+#	+cd $(notdir $(basename $@)) && cp -r $(notdir $(basename $@)).maxhelp $(HELPDIR)
+	xcodebuild -scheme "Build all" -configuration Release -project odot.xcodeproj build
 
 $(OBJDIR)/%.mxe:
 	+cd $(notdir $(basename $@)) && $(MAKE) win -f Makefile -k
@@ -56,8 +59,8 @@ DOCUMENTS:
 
 .PHONY: clean
 clean: 
-	rm -rf $(OBJDIR)
-	for d in $(OBJECT_LIST); do (cd $$d; $(MAKE) clean); done
+#	for d in $(OBJECT_LIST); do (cd $$d; $(MAKE) clean); done
+	xcodebuild -project odot.xcodeproj clean
 
 .PHONY: install
 install: all
