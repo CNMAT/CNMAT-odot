@@ -1085,6 +1085,7 @@ t_osc_err osc_atom_u_doSerialize(t_osc_atom_u *a, long *buflen, long *bufpos, ch
 				if(!(*buf)){
 					return OSC_ERR_OUTOFMEM;
 				}
+				memset((*buf) + (*buflen), '\0', l);
 				(*buflen) += l;
 			}
 			*((uint32_t *)((*buf) + (*bufpos))) = hton32(l);

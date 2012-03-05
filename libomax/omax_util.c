@@ -102,7 +102,8 @@ int omax_util_getNumAtomsInOSCMsg(t_osc_msg_s *m)
 	return n;
 }
 
-void omax_util_oscMsg2MaxAtoms(t_osc_msg_s *m, t_atom *av){
+void omax_util_oscMsg2MaxAtoms(t_osc_msg_s *m, t_atom *av)
+{
 	t_atom *ptr = av;
 	if(osc_message_s_getAddress(m)){
 		atom_setsym(ptr, gensym(osc_message_s_getAddress(m)));

@@ -40,3 +40,4 @@ foreach my $p (@patches){
 }
 
 system("cp", "README_ODOT.txt", "$dirname/");
+#system("tar", "zcvf", "$dirname.tgz", $dirname);

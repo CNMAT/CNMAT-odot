@@ -106,6 +106,7 @@ t_max_err omap_notify(t_omap *x, t_symbol *s, t_symbol *msg, void *sender, void 
 t_symbol *ps_FullPacket;
 
 void omap_fullPacket(t_omap *x, long len, long ptr){
+	printf("%s\n", __func__);
 	osc_bundle_s_wrap_naked_message(len, ptr);
 	if(proxy_getinlet((t_object *)x) == 1){
 		if(!(x->msg) && !(x->bndl)){
@@ -140,6 +141,7 @@ void omap_fullPacket(t_omap *x, long len, long ptr){
 		t_osc_msg_s *msg = osc_bndl_it_s_next(it);
 		x->msg = msg;
 		long len = omax_util_getNumAtomsInOSCMsg(msg);
+		printf("%d\n", len);
 		t_atom atoms[len];
 		omax_util_oscMsg2MaxAtoms(msg, atoms);
 		outlet_anything(x->outlets[1], atom_getsym(atoms), len - 1, atoms + 1);

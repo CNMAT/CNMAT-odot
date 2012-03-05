@@ -2,7 +2,7 @@
 #+TODO: TODO(t) STARTED(s) WAITING(w) BUG(b) | DONE(d) DELEGATED(e) FIXED(f)
 #+begin_src C :tangle odot_version.h
 #define ODOT_VERSION "1.0" 
-#define ODOT_RELEASE_DATE "[2012-03-04 Sun]"
+#define ODOT_RELEASE_DATE "[2012-03-05 Mon]"
 #define ODOT_COPYRIGHT_YEARS "2008-12"
 #define ODOT_AUTHORS "John MacCallum, Adrian Freed"
 #define ODOT_COPYRIGHT_STRING "Regents of the University of California. All rights reserved."
@@ -59,9 +59,10 @@ like bound() that need OSC addresses
 New objects with more explicit behavior.
 
 * VERSION 1.0
-Released: [2012-03-04 Sun]
+Released: [2012-03-05 Mon]
 ** General
 *** DONE Verify that objects work with data sent from touchosc.
+*** DONE reorganize directory structure for release.
 ** Bugs Fixed
 *** o.message
 **** FIXED a bug that would cause a crash when using $n substitutions with a bundle that 
@@ -94,7 +95,7 @@ the leading slash from the incoming address
 **** added help file for o.maxplatform.
 **** fixed a bug in o.rename that would cause partial matches to become nested bundles.
 **** moved o.template.factorial to testing.  there are a few bugs that need to be sorted out before this is released.
-**** 
+**** pulled old overview patches.
 
 * VERSION 1.0.12a
 Released: [2012-02-24 Fri]
