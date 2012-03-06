@@ -3,14 +3,11 @@ use strict;
 use warnings;
 use File::Copy;
 
+#my $platform = shift or die "you must specify an argument (mac or win)";
+my $platform = $^O;
+
 my $objpath = "./build/objects";
 my @patches = ("help", "abstractions", "demos", "overview");
-
-my $platform = shift or die "you must specify a platform (mac or win)";
-if(!($platform eq "mac") && ($platform eq "win")){
-    print "platform must be \"mac\" or \"win\"\n";
-    exit;
-}
 
 my $version = 0.0;
 
@@ -24,15 +21,19 @@ while(<odot_version>){
 }
 
 my $dirname = "odot-$platform-$version";
+
+if((@ARGV) > 0){
+    if($ARGV[0] eq "clean"){
+	system("rm", "-rf", $dirname);
+	system("rm", "-rf", $dirname . ".tgz");
+	exit;
+    }
+}
+
 if(-d $dirname){
     system("rm", "-rf", $dirname);
 }
-=pod
-if(-d $dirname){
-    print "$dirname exists\n";
-    exit;
-}
-=cut
+
 mkdir($dirname);
 system("cp", "-r", "$objpath", "$dirname/");
 foreach my $p (@patches){
@@ -40,4 +41,9 @@ foreach my $p (@patches){
 }
 
 system("cp", "README_ODOT.txt", "$dirname/");
-#system("tar", "zcvf", "$dirname.tgz", $dirname);
+
+if((@ARGV) > 0){
+    if($ARGV[0] eq "archive"){
+	system("tar", "zcvf", "$dirname.tgz", $dirname);
+    }
+}

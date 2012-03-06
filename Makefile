@@ -54,6 +54,12 @@ $(HELPDIR): $(BUILDDIR)
 $(BUILDDIR)/%:
 	+cd $(PATCHDIR) && cp -r $(notdir $@) $(BUILDDIR)
 
+package: 
+	./package.sh 
+
+archive:
+	./package.sh archive
+
 DOCUMENTS:
 	$(foreach t, $(TEXTFILES), cp $(t) $(BUILDDIR))
 
@@ -61,6 +67,7 @@ DOCUMENTS:
 clean: 
 #	for d in $(OBJECT_LIST); do (cd $$d; $(MAKE) clean); done
 	xcodebuild -project odot.xcodeproj clean
+	./package.sh clean
 
 .PHONY: install
 install: all
