@@ -1,7 +1,0 @@
-NAME: "o.printbytes"
-DESCRIPTION: "Post each byte of an OSC bundle to the Max window"
-AUTHORS: "John MacCallum"
-COPYRIGHT_YEARS: "2010"
-SVN_REVISION: "$LastChangedRevision: 587 $"
-VERSION 0.0: "First try"
-VERSION: "0.0"
