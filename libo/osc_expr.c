@@ -1392,7 +1392,7 @@ int osc_expr_sum(t_osc_expr *f, int argc, t_osc_atom_ar_u **argv, t_osc_atom_ar_
 	*out = osc_atom_array_u_alloc(1);
 		
 	osc_atom_u_setDouble(osc_atom_array_u_get(*out, 0), 0.);
-	double val = 1;
+	double val = 0;
 	int j;
 	for(j = 0; j < argc; j++){
 		long len = osc_atom_array_u_getLen(argv[j]);

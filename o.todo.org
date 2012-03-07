@@ -47,6 +47,9 @@ like bound() that need OSC addresses
 **** TODO sprintf()
 **** TODO reduce()
 **** TODO a single osc address should be a valid expression
+**** TODO sort
+*** o.difference/intersection/union
+**** TODO o.difference/intersection/union should take arguments that define a message
 *** new objects
 **** TODO o.typetages: outputs the typetags.
 **** TODO o.append
@@ -60,6 +63,7 @@ New objects with more explicit behavior.
 *** o.expr
 **** FIXED parsing fails due to space after opening paren: o.if product(#1/temp) > 1 
 #n arguments are now handled properly.
+**** FIXED the sum() function was returning 1 greater than the sum of the args
 
 * VERSION 1.0b
 Released: [2012-03-06 Tue]

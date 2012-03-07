@@ -63,6 +63,10 @@ archive:
 DOCUMENTS:
 	$(foreach t, $(TEXTFILES), cp $(t) $(BUILDDIR))
 
+.PHONY: install
+install:
+	./package.pl install $(CNMAT_MAX_INSTALL_DIR)
+
 .PHONY: clean
 clean: 
 #	for d in $(OBJECT_LIST); do (cd $$d; $(MAKE) clean); done

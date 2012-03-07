@@ -45,5 +45,8 @@ system("cp", "README_ODOT.txt", "$dirname/");
 if((@ARGV) > 0){
     if($ARGV[0] eq "archive"){
 	system("tar", "zcvf", "$dirname.tgz", $dirname);
+    }elsif($ARGV[0] eq "install"){
+	#system("mkdir", "$ARGV[1]/$dirname");
+	system("tar --exclude='.svn' -c -f - $dirname | (cd $ARGV[1]; tar xfp -)");
     }
 }
