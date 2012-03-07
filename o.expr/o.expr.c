@@ -626,7 +626,6 @@ void *oexpr_new(t_symbol *msg, short argc, t_atom *argv){
 						int len = strlen(s); // null byte
 						int j;
 						for(j = 0; j < len; j++){
-							printf("j = %d %c\n", j, s[j]);
 							if(s[j] == '#'){
 								if((j + 1) < len){
 									if((s[j + 1] <= 47 || s[j + 1] >= 58)){
@@ -643,14 +642,11 @@ void *oexpr_new(t_symbol *msg, short argc, t_atom *argv){
 								*ptr++ = s[j];
 							}
 						}
-						printf("%s\n", buf);
 						*ptr++ = ' ';
-						printf("%s\n", buf);
 					}
 					break;
 				}
 			}
-			printf("%s\n", buf);
 			if(1){//if(!haspound){
 				TIMER_START(foo, rdtsc_cps);
 				int ret = osc_expr_parser_parseString(buf, &f);
