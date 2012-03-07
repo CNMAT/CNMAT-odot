@@ -71,14 +71,6 @@ void osc_expr_funcobj_dtor(char *key, void *val);
 extern t_osc_err osc_expr_parser_parseString(char *ptr, t_osc_expr **f);
 t_osc_err osc_expr_lex(char *str, t_osc_atom_array_u **ar);
 
-/*
-0   edu.cnmat.berkeley.o.expr     	0x0f338fb5 osc_atom_u_copy + 53
-1   edu.cnmat.berkeley.o.expr     	0x0f33510b osc_message_u_deepCopy + 219
-2   edu.cnmat.berkeley.o.expr     	0x0f333599 osc_bundle_u_addMsgArrayCopy + 153
-3   edu.cnmat.berkeley.o.expr     	0x0f342a79 osc_expr_getFunctionsForCategory + 233
-4   edu.cnmat.berkeley.o.expr     	0x0f331519 oexpr_doc_cat + 121
- */
-
 int osc_expr_eval(t_osc_expr *f, long *len, char **oscbndl, t_osc_atom_ar_u **out)
 {
 	int f_argc = f->argc;

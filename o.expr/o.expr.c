@@ -1,34 +1,34 @@
 /*
-Written by John MacCallum, The Center for New Music and Audio Technologies,
-University of California, Berkeley.  Copyright (c) 2011, The Regents of
-the University of California (Regents). 
-Permission to use, copy, modify, distribute, and distribute modified versions
-of this software and its documentation without fee and without a signed
-licensing agreement, is hereby granted, provided that the above copyright
-notice, this paragraph and the following two paragraphs appear in all copies,
-modifications, and distributions.
+  Written by John MacCallum, The Center for New Music and Audio Technologies,
+  University of California, Berkeley.  Copyright (c) 2011, The Regents of
+  the University of California (Regents). 
+  Permission to use, copy, modify, distribute, and distribute modified versions
+  of this software and its documentation without fee and without a signed
+  licensing agreement, is hereby granted, provided that the above copyright
+  notice, this paragraph and the following two paragraphs appear in all copies,
+  modifications, and distributions.
 
-IN NO EVENT SHALL REGENTS BE LIABLE TO ANY PARTY FOR DIRECT, INDIRECT,
-SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES, INCLUDING LOST PROFITS, ARISING
-OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN IF REGENTS HAS
-BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  IN NO EVENT SHALL REGENTS BE LIABLE TO ANY PARTY FOR DIRECT, INDIRECT,
+  SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES, INCLUDING LOST PROFITS, ARISING
+  OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN IF REGENTS HAS
+  BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-REGENTS SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
-THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
-PURPOSE. THE SOFTWARE AND ACCOMPANYING DOCUMENTATION, IF ANY, PROVIDED
-HEREUNDER IS PROVIDED "AS IS". REGENTS HAS NO OBLIGATION TO PROVIDE
-MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
+  REGENTS SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+  THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+  PURPOSE. THE SOFTWARE AND ACCOMPANYING DOCUMENTATION, IF ANY, PROVIDED
+  HEREUNDER IS PROVIDED "AS IS". REGENTS HAS NO OBLIGATION TO PROVIDE
+  MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-NAME: o.expr
-DESCRIPTION: C-like expressions that operate on OSC bundles
-AUTHORS: John MacCallum
-COPYRIGHT_YEARS: 2011
-SVN_REVISION: $LastChangedRevision: 587 $
-VERSION 0.0: First try
-VERSION 1.0: Uses flex and bison to do the lexing/parsing
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+  @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+  NAME: o.expr
+  DESCRIPTION: C-like expressions that operate on OSC bundles
+  AUTHORS: John MacCallum
+  COPYRIGHT_YEARS: 2011
+  SVN_REVISION: $LastChangedRevision: 587 $
+  VERSION 0.0: First try
+  VERSION 1.0: Uses flex and bison to do the lexing/parsing
+  @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 */
 
 #include "../odot_version.h"
@@ -136,13 +136,13 @@ void *oexpr_class;
 
 void oexpr_fullPacket(t_oexpr *x, long len, long ptr);
 /*
-void oexpr_set(t_oexpr *x, t_symbol *s, long ac, t_atom *av);
-void oexpr_select(t_oexpr *x);
-void oexpr_doselect(t_oexpr *x);
-long oexpr_key(t_oexpr *x, t_object *patcherview, long keycode, long modifiers, long textcharacter);
-long oexpr_keyfilter(t_oexpr *x, t_object *patcherview, long *keycode, long *modifiers, long *textcharacter);
-void oexpr_enter(t_oexpr *x);
-void oexpr_gettext(t_oexpr *x);
+  void oexpr_set(t_oexpr *x, t_symbol *s, long ac, t_atom *av);
+  void oexpr_select(t_oexpr *x);
+  void oexpr_doselect(t_oexpr *x);
+  long oexpr_key(t_oexpr *x, t_object *patcherview, long keycode, long modifiers, long textcharacter);
+  long oexpr_keyfilter(t_oexpr *x, t_object *patcherview, long *keycode, long *modifiers, long *textcharacter);
+  void oexpr_enter(t_oexpr *x);
+  void oexpr_gettext(t_oexpr *x);
 */
 void oexpr_output_bundle(t_oexpr *x);
 //void oexpr_mousedown(t_oexpr *x, t_object *patcherview, t_pt pt, long modifiers);
@@ -313,102 +313,102 @@ void oexpr_fullPacket(t_oexpr *x, long len, long ptr){
 #endif
 }
 /*
-void oexpr_paint(t_oexpr *x, t_object *patcherview){
-	t_rect rect;
-	t_jgraphics *g = (t_jgraphics *)patcherview_get_jgraphics(patcherview);
-	jbox_get_rect_for_view((t_object *)x, patcherview, &rect);
+  void oexpr_paint(t_oexpr *x, t_object *patcherview){
+  t_rect rect;
+  t_jgraphics *g = (t_jgraphics *)patcherview_get_jgraphics(patcherview);
+  jbox_get_rect_for_view((t_object *)x, patcherview, &rect);
 
-	jgraphics_set_source_jrgba(g, &(x->background_color));
-	jgraphics_rectangle(g, 0., 0., rect.width, rect.height);
-	jgraphics_fill(g);
+  jgraphics_set_source_jrgba(g, &(x->background_color));
+  jgraphics_rectangle(g, 0., 0., rect.width, rect.height);
+  jgraphics_fill(g);
 
-	jgraphics_set_source_jrgba(g, &(x->frame_color));
-	jgraphics_set_line_width(g, 2.);
-	jgraphics_rectangle(g, 0., 0., rect.width, rect.height);
-	jgraphics_stroke(g);
+  jgraphics_set_source_jrgba(g, &(x->frame_color));
+  jgraphics_set_line_width(g, 2.);
+  jgraphics_rectangle(g, 0., 0., rect.width, rect.height);
+  jgraphics_stroke(g);
 
-	jgraphics_move_to(g, 3, 0);
-	jgraphics_line_to(g, 3, rect.height);
-	jgraphics_stroke(g);
-}
+  jgraphics_move_to(g, 3, 0);
+  jgraphics_line_to(g, 3, rect.height);
+  jgraphics_stroke(g);
+  }
 
-void oexpr_select(t_oexpr *x){
-	defer(x, (method)oexpr_doselect, 0, 0, 0);
-}
+  void oexpr_select(t_oexpr *x){
+  defer(x, (method)oexpr_doselect, 0, 0, 0);
+  }
 
-void oexpr_doselect(t_oexpr *x){
-	t_object *p = NULL; 
-	object_obex_lookup(x,gensym("#P"), &p);
-	if (p) {
-		t_atom rv; 
-		long ac = 1; 
-		t_atom av[1]; 
-		atom_setobj(av, x); 
-		object_method_typed(p, gensym("selectbox"), ac, av, &rv); 
-	}
-}
+  void oexpr_doselect(t_oexpr *x){
+  t_object *p = NULL; 
+  object_obex_lookup(x,gensym("#P"), &p);
+  if (p) {
+  t_atom rv; 
+  long ac = 1; 
+  t_atom av[1]; 
+  atom_setobj(av, x); 
+  object_method_typed(p, gensym("selectbox"), ac, av, &rv); 
+  }
+  }
 
 
-long oexpr_key(t_oexpr *x, t_object *patcherview, long keycode, long modifiers, long textcharacter){
-	char buff[256];
-	buff[0] = textcharacter;  // we know this is just a simple char
-	buff[1] = 0; 
-	object_method(patcherview, gensym("insertboxtext"), x, buff);
-	jbox_redraw((t_jbox *)x);
+  long oexpr_key(t_oexpr *x, t_object *patcherview, long keycode, long modifiers, long textcharacter){
+  char buff[256];
+  buff[0] = textcharacter;  // we know this is just a simple char
+  buff[1] = 0; 
+  object_method(patcherview, gensym("insertboxtext"), x, buff);
+  jbox_redraw((t_jbox *)x);
 
-	return 1; 
-}
+  return 1; 
+  }
 
-long oexpr_keyfilter(t_oexpr *x, t_object *patcherview, long *keycode, long *modifiers, long *textcharacter){
-	t_atom arv;
-	long rv = 1;
-	long k = *keycode;
+  long oexpr_keyfilter(t_oexpr *x, t_object *patcherview, long *keycode, long *modifiers, long *textcharacter){
+  t_atom arv;
+  long rv = 1;
+  long k = *keycode;
 	
-	if (k == JKEY_TAB || k == JKEY_ESC) {
-		object_method_typed(patcherview, gensym("endeditbox"), 0, NULL, &arv); 
-		rv = 0;		// don't pass those keys to oexpr
-	}
-	return rv;
-}
+  if (k == JKEY_TAB || k == JKEY_ESC) {
+  object_method_typed(patcherview, gensym("endeditbox"), 0, NULL, &arv); 
+  rv = 0;		// don't pass those keys to oexpr
+  }
+  return rv;
+  }
 
-// enter is triggerd at "endeditbox time"
-void oexpr_enter(t_oexpr *x){
-	oexpr_gettext(x);
-}
+  // enter is triggerd at "endeditbox time"
+  void oexpr_enter(t_oexpr *x){
+  oexpr_gettext(x);
+  }
 
-void oexpr_gettext(t_oexpr *x){
-	long size	= 0;
-	char *text	= NULL;
-	t_object *textfield = jbox_get_textfield((t_object *)x);
-	object_method(textfield, gensym("gettextptr"), &text, &size);
-	{
-		size = strlen(text); // the value returned in text doesn't make sense
-		if(size == 0){
-			return;
-		}
-		t_osc_expr *f = NULL;
-		osc_expr_parser_parseString(text, &f);
-		if(!f){
-			object_error((t_object *)x, "error parsing %s\n", text);
-			return;
-		}
-		if(x->expr){
-			osc_expr_free(x->expr);
-		}
-		x->expr = f;
-	}
-}
+  void oexpr_gettext(t_oexpr *x){
+  long size	= 0;
+  char *text	= NULL;
+  t_object *textfield = jbox_get_textfield((t_object *)x);
+  object_method(textfield, gensym("gettextptr"), &text, &size);
+  {
+  size = strlen(text); // the value returned in text doesn't make sense
+  if(size == 0){
+  return;
+  }
+  t_osc_expr *f = NULL;
+  osc_expr_parser_parseString(text, &f);
+  if(!f){
+  object_error((t_object *)x, "error parsing %s\n", text);
+  return;
+  }
+  if(x->expr){
+  osc_expr_free(x->expr);
+  }
+  x->expr = f;
+  }
+  }
 
-void oexpr_mousedown(t_oexpr *x, t_object *patcherview, t_pt pt, long modifiers){
-        //textfield_set_textmargins(jbox_get_textfield((t_object *)x), 4, 4, 2, 2);
-	//jbox_redraw((t_jbox *)x);
-}
+  void oexpr_mousedown(t_oexpr *x, t_object *patcherview, t_pt pt, long modifiers){
+  //textfield_set_textmargins(jbox_get_textfield((t_object *)x), 4, 4, 2, 2);
+  //jbox_redraw((t_jbox *)x);
+  }
 
-void oexpr_mouseup(t_oexpr *x, t_object *patcherview, t_pt pt, long modifiers){
-        //textfield_set_textmargins(jbox_get_textfield((t_object *)x), 3, 3, 3, 3);
-	//jbox_redraw((t_jbox *)x);
-	//oexpr_output_bundle(x);
-}
+  void oexpr_mouseup(t_oexpr *x, t_object *patcherview, t_pt pt, long modifiers){
+  //textfield_set_textmargins(jbox_get_textfield((t_object *)x), 3, 3, 3, 3);
+  //jbox_redraw((t_jbox *)x);
+  //oexpr_output_bundle(x);
+  }
 */
 void oexpr_postExprIR(t_oexpr *fg){
 	char *buf = NULL;
@@ -473,19 +473,19 @@ void oexpr_doc_cat(t_oexpr *x, t_symbol *cat)
 		long len = 0;
 		char *ptr = NULL;
 		osc_expr_getFunctionsForCategory(cat->s_name, &len, &ptr);
-/*
-		t_osc_bndl_it_s *it = osc_bndl_it_s_get(len, ptr);
-		while(osc_bndl_it_s_hasNext(it)){
-			t_osc_msg_s *m = osc_bndl_it_s_next(it);
-			t_osc_msg_it_s *it = osc_msg_it_s_get(m);
-			while(osc_msg_it_s_hasNext(it)){
-				t_osc_atom_s *a = osc_msg_it_s_next(it);
-				char *buf = NULL;
-				osc_atom_s_getString(a, &buf);
-				printf("%s %s\n", __func__, buf);
-			}
-		}
-*/
+		/*
+		  t_osc_bndl_it_s *it = osc_bndl_it_s_get(len, ptr);
+		  while(osc_bndl_it_s_hasNext(it)){
+		  t_osc_msg_s *m = osc_bndl_it_s_next(it);
+		  t_osc_msg_it_s *it = osc_msg_it_s_get(m);
+		  while(osc_msg_it_s_hasNext(it)){
+		  t_osc_atom_s *a = osc_msg_it_s_next(it);
+		  char *buf = NULL;
+		  osc_atom_s_getString(a, &buf);
+		  printf("%s %s\n", __func__, buf);
+		  }
+		  }
+		*/
 		if(ptr){
 			omax_util_outletOSC(LEFTOUTLET, len, ptr);
 			osc_mem_free(ptr);
@@ -577,29 +577,29 @@ t_max_err oexpr_notify(t_oexpr *x, t_symbol *s, t_symbol *msg, void *sender, voi
 void *oexpr_new(t_symbol *msg, short argc, t_atom *argv){
 	t_oexpr *x;
 	/*
-	t_dictionary *d = NULL; 
- 	long boxflags; 
+	  t_dictionary *d = NULL; 
+	  long boxflags; 
     
-	// box setup 
-	if(!(d = object_dictionaryarg(argc, argv))){ 
-		return NULL; 
-	} 
+	  // box setup 
+	  if(!(d = object_dictionaryarg(argc, argv))){ 
+	  return NULL; 
+	  } 
 
-	boxflags = 0 
-		| JBOX_DRAWFIRSTIN 
-		| JBOX_NODRAWBOX
-		| JBOX_DRAWINLAST
-		| JBOX_TRANSPARENT  
-		//      | JBOX_NOGROW
-		//| JBOX_GROWY
-		//| JBOX_GROWBOTH
-		//      | JBOX_HILITE
-		//| JBOX_BACKGROUND
-		//| JBOX_DRAWBACKGROUND
-		//      | JBOX_NOFLOATINSPECTOR
-		//      | JBOX_MOUSEDRAGDELTA
-		| JBOX_TEXTFIELD
-		;
+	  boxflags = 0 
+	  | JBOX_DRAWFIRSTIN 
+	  | JBOX_NODRAWBOX
+	  | JBOX_DRAWINLAST
+	  | JBOX_TRANSPARENT  
+	  //      | JBOX_NOGROW
+	  //| JBOX_GROWY
+	  //| JBOX_GROWBOTH
+	  //      | JBOX_HILITE
+	  //| JBOX_BACKGROUND
+	  //| JBOX_DRAWBACKGROUND
+	  //      | JBOX_NOFLOATINSPECTOR
+	  //      | JBOX_MOUSEDRAGDELTA
+	  | JBOX_TEXTFIELD
+	  ;
 	*/
 	if(x = (t_oexpr *)object_alloc(oexpr_class)){
 		//jbox_new((t_jbox *)x, boxflags, argc, argv); 
@@ -609,6 +609,7 @@ void *oexpr_new(t_symbol *msg, short argc, t_atom *argv){
 		int haspound = 0;
 		if(argc){
 			char buf[65536];
+			memset(buf, '\0', sizeof(buf));
 			char *ptr = buf;
 			int i;
 			for(i = 0; i < argc; i++){
@@ -622,22 +623,34 @@ void *oexpr_new(t_symbol *msg, short argc, t_atom *argv){
 				case A_SYM:
 					{
 						char *s = atom_getsym(argv + i)->s_name;
-						int len = strlen(s);
-						
-						if(*s == '#'){
-							if(len > 1){
-								if(s[1] > 47 && s[1] < 58){
-									haspound++;
-									ptr += sprintf(ptr, "/___ ");
-									break;
+						int len = strlen(s); // null byte
+						int j;
+						for(j = 0; j < len; j++){
+							printf("j = %d %c\n", j, s[j]);
+							if(s[j] == '#'){
+								if((j + 1) < len){
+									if((s[j + 1] <= 47 || s[j + 1] >= 58)){
+										object_error((t_object *)x, "address can't contain a #");
+										return NULL;
+									}
+									ptr += sprintf(ptr, "/_%d_", s[j + 1] - 48);
+									j++;
+								}else{
+									object_error((t_object *)x, "address can't contain a #");
+									return NULL;
 								}
+							}else{
+								*ptr++ = s[j];
 							}
 						}
-						ptr += sprintf(ptr, "%s ", s);
+						printf("%s\n", buf);
+						*ptr++ = ' ';
+						printf("%s\n", buf);
 					}
 					break;
 				}
 			}
+			printf("%s\n", buf);
 			if(1){//if(!haspound){
 				TIMER_START(foo, rdtsc_cps);
 				int ret = osc_expr_parser_parseString(buf, &f);
