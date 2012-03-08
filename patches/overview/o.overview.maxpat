@@ -36,7 +36,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 594.0, 203.315796, 118.0, 18.0 ],
-					"presentation_rect" : [ 595.0, 211.315796, 0.0, 0.0 ],
 					"text" : "o.gather"
 				}
 
@@ -51,7 +50,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 712.0, 203.315796, 313.0, 20.0 ],
-					"presentation_rect" : [ 713.0, 203.315796, 0.0, 0.0 ],
 					"text" : "Group messages that match a list of arguments."
 				}
 
@@ -1215,6 +1213,15 @@
  ],
 		"lines" : [ 			{
 				"patchline" : 				{
+					"destination" : [ "obj-28", 0 ],
+					"disabled" : 0,
+					"hidden" : 1,
+					"source" : [ "obj-1", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-98", 1 ],
 					"disabled" : 0,
 					"hidden" : 1,
@@ -1701,6 +1708,15 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-28", 0 ],
+					"disabled" : 0,
+					"hidden" : 1,
+					"source" : [ "obj-77", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-77", 1 ],
 					"disabled" : 0,
 					"hidden" : 1,
@@ -1855,29 +1871,29 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "o.autodoc_overview.maxpat",
-				"bootpath" : "/Users/john/Development/cnmat/trunk/max/externals/odot/patches/overview",
+				"bootpath" : "/Users/john/Development/cnmat/trunk/max/externals/odot/trunk/patches/overview",
 				"patcherrelativepath" : "",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.callpatch.maxpat",
-				"bootpath" : "/Users/john/MMJ5-dev/odot/abstractions",
-				"patcherrelativepath" : "../../../../../../../../MMJ5-dev/odot/abstractions",
+				"bootpath" : "/Users/john/MMJ5-dev/odot-darwin-1.0.1b/abstractions",
+				"patcherrelativepath" : "../../../../../../../../../MMJ5-dev/odot-darwin-1.0.1b/abstractions",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.let.maxpat",
-				"bootpath" : "/Users/john/MMJ5-dev/odot/abstractions",
-				"patcherrelativepath" : "../../../../../../../../MMJ5-dev/odot/abstractions",
+				"bootpath" : "/Users/john/MMJ5-dev/odot-darwin-1.0.1b/abstractions",
+				"patcherrelativepath" : "../../../../../../../../../MMJ5-dev/odot-darwin-1.0.1b/abstractions",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.gather.maxpat",
-				"bootpath" : "/Users/john/MMJ5-dev/odot/abstractions",
-				"patcherrelativepath" : "../../../../../../../../MMJ5-dev/odot/abstractions",
+				"bootpath" : "/Users/john/MMJ5-dev/odot-darwin-1.0.1b/abstractions",
+				"patcherrelativepath" : "../../../../../../../../../MMJ5-dev/odot-darwin-1.0.1b/abstractions",
 				"type" : "JSON",
 				"implicit" : 1
 			}
