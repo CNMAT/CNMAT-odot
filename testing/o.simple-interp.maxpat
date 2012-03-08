@@ -7,7 +7,7 @@
 			"revision" : 4
 		}
 ,
-		"rect" : [ 411.0, 44.0, 1269.0, 887.0 ],
+		"rect" : [ 411.0, 44.0, 1056.0, 663.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -49,7 +49,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
-					"patching_rect" : [ 424.0, 355.0, 32.5, 20.0 ],
+					"patching_rect" : [ 424.0, 331.0, 32.5, 20.0 ],
 					"text" : "t l b"
 				}
 
@@ -63,7 +63,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 455.0, 462.0, 60.0, 20.0 ],
+					"patching_rect" : [ 455.0, 438.0, 60.0, 20.0 ],
 					"text" : "o.var /y 0"
 				}
 
@@ -77,7 +77,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 410.5, 269.0, 194.0, 20.0 ],
+					"patching_rect" : [ 410.5, 245.0, 194.0, 20.0 ],
 					"text" : "o.if /x >= min(/xx) && /x < max(/xx)"
 				}
 
@@ -91,7 +91,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 565.0, 526.0, 208.0, 20.0 ],
+					"patching_rect" : [ 565.0, 502.0, 208.0, 20.0 ],
 					"text" : "o.expr /y = /numerator / /denominator"
 				}
 
@@ -105,7 +105,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 565.0, 494.0, 293.0, 20.0 ],
+					"patching_rect" : [ 565.0, 470.0, 293.0, 20.0 ],
 					"text" : "o.expr /denominator = sum(/w / pow(abs(/x - /xx)\\, /a))"
 				}
 
@@ -130,7 +130,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 565.0, 462.0, 316.0, 20.0 ],
+					"patching_rect" : [ 565.0, 438.0, 316.0, 20.0 ],
 					"text" : "o.expr /numerator = sum((/yy * /w) / pow(abs(/x - /xx)\\, /a))"
 				}
 
@@ -167,7 +167,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 565.0, 427.0, 355.0, 20.0 ],
+					"patching_rect" : [ 565.0, 403.0, 355.0, 20.0 ],
 					"text" : "o.expr /w = [sum(/xx) / /w0\\, nfill(length(/xx) - 2\\, 1)\\, sum(/xx) / /w0]"
 				}
 
@@ -237,7 +237,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 424.0, 510.0, 50.0, 20.0 ],
+					"patching_rect" : [ 424.0, 486.0, 50.0, 20.0 ],
 					"text" : "o.union"
 				}
 
@@ -307,7 +307,7 @@
 					"destination" : [ "obj-2", 1 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"midpoints" : [ 574.5, 557.0, 944.0, 557.0, 944.0, 171.0, 420.0, 171.0 ],
+					"midpoints" : [ 574.5, 543.0, 944.0, 543.0, 944.0, 171.0, 420.0, 171.0 ],
 					"source" : [ "obj-21", 0 ]
 				}
 
@@ -371,7 +371,7 @@
 					"destination" : [ "obj-2", 1 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"midpoints" : [ 433.5, 568.0, 958.0, 568.0, 958.0, 153.0, 420.0, 153.0 ],
+					"midpoints" : [ 433.5, 556.0, 958.0, 556.0, 958.0, 153.0, 420.0, 153.0 ],
 					"source" : [ "obj-45", 0 ]
 				}
 
@@ -433,8 +433,8 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "o.let.maxpat",
-				"bootpath" : "/Users/john/MMJ5-dev/odot-darwin-1.0b/abstractions",
-				"patcherrelativepath" : "../../../../../../../../MMJ5-dev/odot-darwin-1.0b/abstractions",
+				"bootpath" : "/Users/john/MMJ5-dev/odot-darwin-1.0.1b/abstractions",
+				"patcherrelativepath" : "../../../../../../../../MMJ5-dev/odot-darwin-1.0.1b/abstractions",
 				"type" : "JSON",
 				"implicit" : 1
 			}

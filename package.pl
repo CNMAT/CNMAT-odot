@@ -22,6 +22,12 @@ while(<odot_version>){
 
 my $dirname = "odot-$platform-$version";
 
+my $version_file;
+open($version_file, ">latest-$platform-version") or die("can't open file: $version_file");
+print $version_file "VERSION: $version\n";
+print $version_file "PLATFORM: $platform\n";
+close($version_file);
+
 if((@ARGV) > 0){
     if($ARGV[0] eq "clean"){
 	system("rm", "-rf", $dirname);
