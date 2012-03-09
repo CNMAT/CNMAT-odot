@@ -53,7 +53,9 @@ if((@ARGV) > 0){
     if($ARGV[0] eq "archive"){
 	system("tar", "--exclude=.svn", "-z", "-c", "-v", "-f", "$dirname.tgz", $dirname);
     }elsif($ARGV[0] eq "install"){
-	#system("mkdir", "$ARGV[1]/$dirname");
-	system("tar --exclude='.svn' -c -f - $dirname | (cd $ARGV[1]; tar xfp -)");
+	unless(-d "$ARGV[1]/odot"){
+	    system("mkdir", "$ARGV[1]/odot");
+	}
+	system("(cd $dirname; tar --exclude='.svn' -c -f - *) | (cd $ARGV[1]/odot; tar xfp -)");
     }
 }
