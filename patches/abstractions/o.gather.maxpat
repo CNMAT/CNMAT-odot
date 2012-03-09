@@ -51,7 +51,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 15.0, 178.0, 452.0, 173.0 ],
-					"text" : "/doc/name \"o.gather\" \n/doc/desc/short \"Group messages that match a list of arguments.\" \n/doc/desc/long \"o.gather divides OSC message into two bundles gathering the named items into the one coming out of the left outlet and the remaining out the right outlet.\" \n/doc/ninlets 1 \n/doc/noutlets 2 \n/doc/desc/inlet/1 \"OSC FullPacket.\" \n/doc/desc/outlet/1 \"Messages with addresses that matched one of the arguments.\" \n/doc/desc/outlet/2 \"Messages with addresses that did not match any of the arguments.\" \n/doc/seealso \"o.route\" \"o.select\" \"o.atomize\" ",
+					"text" : "/doc/name o.gather \n/doc/desc/short Group messages that match a list of arguments. \n/doc/desc/long o.gather divides OSC message into two bundles gathering the named items into the one coming out of the left outlet and the remaining out the right outlet. \n/doc/ninlets 1 \n/doc/noutlets 2 \n/doc/desc/inlet/1 OSC FullPacket. \n/doc/desc/outlet/1 Messages with addresses that matched one of the arguments. \n/doc/desc/outlet/2 Messages with addresses that did not match any of the arguments. \n/doc/seealso o.route o.select o.atomize ",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 

@@ -1143,7 +1143,11 @@ t_osc_err osc_atom_u_doFormat(t_osc_atom_u *a, long *buflen, long *bufpos, char 
 		*bufpos += sprintf(*buf + *bufpos, "]");
 	}else if(osc_atom_u_getTypetag(a) == 's'){
 		char *b = *buf + *bufpos;
+#ifdef OSC_QUOTE_STRINGS
 		(*bufpos) += osc_atom_u_getQuotedString(a, &b);
+#else
+		(*bufpos) += osc_atom_u_getString(a, &b);
+#endif
 		(*buf)[(*bufpos)++] = ' ';
 		(*buf)[(*bufpos)] = '\0';
 	}else{

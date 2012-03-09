@@ -958,8 +958,11 @@ t_osc_err osc_atom_s_doFormat(t_osc_atom_s *a, long *buflen, long *bufpos, char 
 		*bufpos += sprintf(*buf + *bufpos, "]");
 	}else if(osc_atom_s_getTypetag(a) == 's'){
 		char *bufptr = (*buf) + *bufpos;
-		int n = osc_atom_s_getQuotedString(a, &bufptr);
-		(*bufpos) += n;
+#ifdef OSC_QUOTE_STRINGS
+		(*bufpos) += osc_atom_s_getQuotedString(a, &bufptr);
+#else
+		(*bufpos) += osc_atom_s_getString(a, &bufptr);
+#endif
 		(*buf)[(*bufpos)++] = ' ';
 		(*buf)[(*bufpos)] = '\0';
 	}else{

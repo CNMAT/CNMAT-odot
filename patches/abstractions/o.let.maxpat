@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 6,
 			"minor" : 0,
-			"revision" : 3
+			"revision" : 4
 		}
 ,
 		"rect" : [ 307.0, 44.0, 1198.0, 920.0 ],
@@ -67,7 +67,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 68.5, 201.5, 353.0, 159.0 ],
-					"text" : "/doc/name \"o.let\" \n/doc/desc/short \"Declare local variables.\" \n/doc/desc/long \"o.let creates a local lexical environment in which data bound to OSC addresses can be manipulated without affecting the original data sent to o.let.\" \n/doc/ninlets 2 \n/doc/noutlets 2 \n/doc/desc/inlet/1 \"OSC packet.\" \n/doc/desc/inlet/2 \"OSC packet.\" \n/doc/desc/outlet/1 \"OSC Packet.\" \n/doc/seealso \"o.callpatch\" \"o.mappatch\" \"o.expr\" ",
+					"text" : "/doc/name o.let \n/doc/desc/short Declare local variables. \n/doc/desc/long o.let creates a local lexical environment in which data bound to OSC addresses can be manipulated without affecting the original data sent to o.let. \n/doc/ninlets 2 \n/doc/noutlets 2 \n/doc/desc/inlet/1 OSC packet. \n/doc/desc/inlet/2 OSC packet. \n/doc/desc/outlet/1 OSC Packet. \n/doc/seealso o.callpatch o.mappatch o.expr ",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 

@@ -51,8 +51,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 635.0, 76.0, 719.0, 159.0 ],
-					"text" : "/doc/name \"o.callpatch\" \n/doc/desc/short \"Execute a Max patch or object with OSC arguments.\" \n/doc/desc/long \"o.callpatch instantiates a Max patch or object and binds OSC addresses to its inlets and outlets. It takes three groups of arguments: a list of addresses that will be bound in order from left to right to the inlets of the Max object, a max object with arguments, and an optional attribute to specify what should be done with the output. If the final attribute is omitted, the data from the left outlet of the Max object will replace the data bound to the first address.\" \n/doc/ninlets 1 \n/doc/noutlets 1 \n/doc/desc/inlet/1 \"OSC packet containing addresses that will be passed to the Max object.\" \n/doc/desc/outlet/1 \"The OSC packet containing the results of the operation.\" \n/doc/seealso \"o.expr\" \"o.if\" \"o.cond\" \"o.when\" \"o.unless\" \"expr\" \"jit.expr\" ",
+					"patching_rect" : [ 234.0, 650.0, 719.0, 159.0 ],
+					"text" : "/doc/name o.callpatch \n/doc/desc/short Execute a Max patch or object with OSC arguments. \n/doc/desc/long o.callpatch instantiates a Max patch or object and binds OSC addresses to its inlets and outlets. It takes three groups of arguments: a list of addresses that will be bound in order from left to right to the inlets of the Max object, a max object with arguments, and an optional attribute to specify what should be done with the output. If the final attribute is omitted, the data from the left outlet of the Max object will replace the data bound to the first address. \n/doc/ninlets 1 \n/doc/noutlets 1 \n/doc/desc/inlet/1 OSC packet containing addresses that will be passed to the Max object. \n/doc/desc/outlet/1 The OSC packet containing the results of the operation. \n/doc/seealso o.expr o.if o.cond o.when o.unless expr jit.expr ",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -907,16 +907,16 @@
 ,
 					"patching_rect" : [ 190.0, 256.0, 120.0, 20.0 ],
 					"saved_object_attributes" : 					{
+						"description" : "",
+						"tags" : "",
+						"fontface" : 0,
+						"fontsize" : 12.0,
+						"default_fontface" : 0,
 						"digest" : "",
 						"default_fontname" : "Arial",
-						"default_fontsize" : 12.0,
-						"description" : "",
-						"fontname" : "Arial",
-						"tags" : "",
 						"globalpatchername" : "",
-						"default_fontface" : 0,
-						"fontface" : 0,
-						"fontsize" : 12.0
+						"fontname" : "Arial",
+						"default_fontsize" : 12.0
 					}
 ,
 					"text" : "p defunctionalization"
@@ -1262,16 +1262,16 @@
 ,
 									"patching_rect" : [ 240.0, 400.0, 65.0, 20.0 ],
 									"saved_object_attributes" : 									{
+										"description" : "",
+										"tags" : "",
+										"fontface" : 0,
+										"fontsize" : 12.0,
+										"default_fontface" : 0,
 										"digest" : "",
 										"default_fontname" : "Arial",
-										"default_fontsize" : 12.0,
-										"description" : "",
-										"fontname" : "Arial",
-										"tags" : "",
 										"globalpatchername" : "",
-										"default_fontface" : 0,
-										"fontface" : 0,
-										"fontsize" : 12.0
+										"fontname" : "Arial",
+										"default_fontsize" : 12.0
 									}
 ,
 									"text" : "p prepend"
@@ -2242,16 +2242,16 @@
 ,
 					"patching_rect" : [ 96.0, 536.0, 284.0, 20.0 ],
 					"saved_object_attributes" : 					{
+						"description" : "",
+						"tags" : "",
+						"fontface" : 0,
+						"fontsize" : 12.0,
+						"default_fontface" : 0,
 						"digest" : "",
 						"default_fontname" : "Arial",
-						"default_fontsize" : 12.0,
-						"description" : "",
-						"fontname" : "Arial",
-						"tags" : "",
 						"globalpatchername" : "",
-						"default_fontface" : 0,
-						"fontface" : 0,
-						"fontsize" : 12.0
+						"fontname" : "Arial",
+						"default_fontsize" : 12.0
 					}
 ,
 					"text" : "p gather_output",
@@ -3072,16 +3072,16 @@
 ,
 					"patching_rect" : [ 190.0, 224.0, 78.0, 20.0 ],
 					"saved_object_attributes" : 					{
+						"description" : "",
+						"tags" : "",
+						"fontface" : 0,
+						"fontsize" : 12.0,
+						"default_fontface" : 0,
 						"digest" : "",
 						"default_fontname" : "Arial",
-						"default_fontsize" : 12.0,
-						"description" : "",
-						"fontname" : "Arial",
-						"tags" : "",
 						"globalpatchername" : "",
-						"default_fontface" : 0,
-						"fontface" : 0,
-						"fontsize" : 12.0
+						"fontname" : "Arial",
+						"default_fontsize" : 12.0
 					}
 ,
 					"text" : "p parse-args"

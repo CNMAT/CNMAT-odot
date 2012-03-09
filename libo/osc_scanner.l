@@ -86,9 +86,11 @@ $[1-9]+	{
 \"(\\.|[^$\"\n])*\" 	{
 				//printf("quoted string: %s\n", yytext);
 				int len = strlen(yytext) + 1; // includes quotes and null byte
-				char *copy = osc_mem_alloc(len - 2); // don't need quotes
-				memcpy(copy, yytext + 1, len - 3);
-				copy[len - 3] = '\0';
+				//char *copy = osc_mem_alloc(len - 2); // don't need quotes
+				//memcpy(copy, yytext + 1, len - 3);
+				//copy[len - 3] = '\0';
+				char *copy = osc_mem_alloc(len);
+				memcpy(copy, yytext, len);
 				yylval->string = copy;
 				return STRING;
 			}
