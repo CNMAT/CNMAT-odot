@@ -153,6 +153,9 @@ void *oexpr_new(t_symbol *msg, short argc, t_atom *argv);
 
 
 void oexpr_fullPacket(t_oexpr *x, long len, long ptr){
+	if(len <= 0){
+		return;
+	}
 #if defined (OIF) || defined (OCOND) || defined (OWHEN) || defined (OUNLESS)
 	t_osc_atom_ar_u *argv = NULL;
 	// we don't actually want to do this copy here.  we need to 

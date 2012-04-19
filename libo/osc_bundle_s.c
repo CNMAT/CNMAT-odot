@@ -180,7 +180,7 @@ t_osc_err osc_bundle_s_addressExists(long len, char *buf, char *address, int ful
 	return OSC_ERR_NONE;
 }
 
-t_osc_err osc_bundle_s_lookupAddress(int len, char *buf, char *address, t_osc_ar **osc_msg_s_array, int fullmatch)
+t_osc_err osc_bundle_s_lookupAddress(int len, char *buf, const char *address, t_osc_ar **osc_msg_s_array, int fullmatch)
 {
 	int matchbuflen = 0, n = 0;
 	t_osc_msg_ar_s *ar = NULL;

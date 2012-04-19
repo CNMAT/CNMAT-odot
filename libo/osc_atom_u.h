@@ -306,6 +306,8 @@ char *osc_atom_u_getStringPtr(t_osc_atom_u *a);
 
 int osc_atom_u_getQuotedString(t_osc_atom_u *a, char **out);
 
+int osc_atom_u_getStringLen(t_osc_atom_u *a);
+
 /** \brief Return a copy of the string stored in the #t_osc_atom_u
 
 This function will make a copy of its string which must be freed by the caller
@@ -313,12 +315,13 @@ using #osc_mem_free().  Numeric values will be converted using sprintf(), and
 boolean values will be either "true" or "false", while NULL will be a single '\0' char.
 
 \param a A #t_osc_atom_u
+\param n Size of the char buffer in bytes
 \param out A pointer to a buffer where the formatted string will be stored.
 Pass NULL to have an appropriately sized buffer allocated with #osc_mem_alloc().
 
 \return The length of the string
  */
-int osc_atom_u_getString(t_osc_atom_u *a, char **out);
+int osc_atom_u_getString(t_osc_atom_u *a, size_t n, char **out);
 
 /** \brief Return a 0 or 1
 

@@ -172,13 +172,7 @@ void omessage_doFullPacket(t_omessage *x, long len, long ptr){
 			osc_bundle_u_free(x->bndl);
 			break;
 		case OMESSAGE_S:
-			{
-				char *p = osc_bundle_s_getPtr(x->bndl);
-				if(p){
-					osc_mem_free(p);
-				}
-				osc_bundle_s_free(x->bndl);
-			}
+			osc_bundle_s_deepFree(x->bndl);
 			break;
 		}
 		x->bndl = NULL;
@@ -218,7 +212,7 @@ void omessage_doFullPacket(t_omessage *x, long len, long ptr){
 				t_osc_atom_s *a = osc_msg_it_s_next(mit);
 				if(osc_atom_s_getTypetag(a) == 's'){
 					char *s = NULL;
-					osc_atom_s_getString(a, &s);
+					osc_atom_s_getString(a, 0, &s);
 					if(s[0] == '$'){
 						if(s){
 							osc_mem_free(s);
@@ -879,7 +873,7 @@ void omessage_free(t_omessage *x){
 	if(x->bndl){
 		switch(x->bndltype){
 		case OMESSAGE_S:
-			osc_bundle_s_free((t_osc_bndl_s *)x->bndl);
+			osc_bundle_s_deepFree((t_osc_bndl_s *)x->bndl);
 			break;
 		case OMESSAGE_U:
 			osc_bundle_u_free((t_osc_bndl_u *)x->bndl);

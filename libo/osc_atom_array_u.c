@@ -145,29 +145,39 @@ t_osc_err osc_atom_array_u_getBoolArray(t_osc_atom_ar_u *array, char **out)
 	return OSC_ERR_NONE;
 }
 
-t_osc_err osc_atom_array_u_getStringArray(t_osc_atom_ar_u *array, long *len, char **out)
+t_osc_err osc_atom_array_u_getStringArray(t_osc_atom_ar_u *array, long *len, char **out, const char *sep)
 {
 	long arlen = osc_atom_array_u_getLen(array);
-	long buflen = 256;
+	long buflen = *len;
 	if(!(*out)){
+		buflen = 256;
 		*out = osc_mem_alloc(buflen); // guess that each element will be around 8 chars
 	}
 	char *ptr = *out;
+	int seplen = 0;
+	if(sep){
+		seplen = strlen(sep);
+	}
 	int i;
 	for(i = 0; i < arlen; i++){
-		if((buflen - (ptr - *out)) < 64){
+		int n = osc_atom_u_getStringLen(osc_atom_array_u_get(array, i));
+		if((buflen - (ptr - *out)) < n){
 			long offset = ptr - *out;
-			char *tmp = osc_mem_resize(*out, buflen + 256);
+			int nbytes = n * (arlen - i) + 1; // assume the rest of the atoms are the same size
+			char *tmp = osc_mem_resize(*out, buflen + nbytes);
 			if(tmp){
 				*out = tmp;
 				ptr = (*out) + offset;
-				buflen += 256;
+				buflen += nbytes;
 			}else{
 				return OSC_ERR_OUTOFMEM;
 			}
 		}
-		ptr += osc_atom_u_getString(osc_atom_array_u_get(array, i), &ptr);
-		*ptr++ = ' ';
+		ptr += osc_atom_u_getString(osc_atom_array_u_get(array, i), (buflen - (ptr - *out)), &ptr);
+		//*ptr++ = ' ';
+		if(sep){
+			ptr += sprintf(ptr, "%s", sep);
+		}
 	}
 	*ptr++ = '\0';
 	*len = ptr - *out;

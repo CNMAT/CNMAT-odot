@@ -1,3 +1,29 @@
+/*
+  Written by John MacCallum, The Center for New Music and Audio Technologies,
+  University of California, Berkeley.  Copyright (c) 2011-12, The Regents of
+  the University of California (Regents). 
+  Permission to use, copy, modify, distribute, and distribute modified versions
+  of this software and its documentation without fee and without a signed
+  licensing agreement, is hereby granted, provided that the above copyright
+  notice, this paragraph and the following two paragraphs appear in all copies,
+  modifications, and distributions.
+
+  IN NO EVENT SHALL REGENTS BE LIABLE TO ANY PARTY FOR DIRECT, INDIRECT,
+  SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES, INCLUDING LOST PROFITS, ARISING
+  OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN IF REGENTS HAS
+  BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+  REGENTS SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+  THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+  PURPOSE. THE SOFTWARE AND ACCOMPANYING DOCUMENTATION, IF ANY, PROVIDED
+  HEREUNDER IS PROVIDED "AS IS". REGENTS HAS NO OBLIGATION TO PROVIDE
+  MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
+*/
+
+/** 	\file osc_parser.y
+	\author John MacCallum
+
+*/
 %{
 #include <math.h>
 #include <ctype.h>
@@ -28,9 +54,13 @@
 %}
 
 %code requires{
+#include "osc.h"
+#include "osc_error.h"
+
+#define YY_DECL int osc_scanner_lex(YYSTYPE *yylval_param, YYLTYPE *yylloc_param, yyscan_t yyscanner, long *buflen, char **buf)
+
 #ifndef __HAVE_OSC_PARSER_SUBST__
 #define __HAVE_OSC_PARSER_SUBST__
-#include "osc.h"
 typedef struct _osc_parser_subst{
 	struct _osc_message_u *msg;
 	int listitem;
@@ -50,18 +80,17 @@ typedef struct _osc_parser_bndl_list{
 
 #ifndef __HAVE_OSC_PARSER_PARSESTRING__
 #define __HAVE_OSC_PARSER_PARSESTRING__
-#include "osc_error.h"
 t_osc_err osc_parser_parseString(long len, char *ptr, struct _osc_bundle_u **bndl, long *nsubs, t_osc_parser_subst **subs);
 #endif
 }
 
 %{
 
-int osc_parser_lex(YYSTYPE * yylval_param,YYLTYPE * yylloc_param ,yyscan_t yyscanner){
-	return osc_scanner_lex(yylval_param, yylloc_param, yyscanner);
+int osc_parser_lex(YYSTYPE * yylval_param,YYLTYPE * yylloc_param ,yyscan_t yyscanner, long *buflen, char **buf){
+	return osc_scanner_lex(yylval_param, yylloc_param, yyscanner, buflen, buf);
 }
 
-int yyparse (t_osc_parser_bndl_list **bndl, t_osc_msg_u **msg, long *nsubs, t_osc_parser_subst **subs, void *scanner);
+//int yyparse (t_osc_parser_bndl_list **bndl, t_osc_msg_u **msg, long *nsubs, t_osc_parser_subst **subs, void *scanner);
 
 
 t_osc_err osc_parser_parseString(long len, char *ptr, t_osc_bndl_u **bndl, long *nsubs, t_osc_parser_subst **subs){
@@ -71,7 +100,9 @@ t_osc_err osc_parser_parseString(long len, char *ptr, t_osc_bndl_u **bndl, long 
 	osc_scanner_set_out(NULL, scanner);
 	t_osc_msg_u *msg = NULL;
 	t_osc_parser_bndl_list *bl = NULL;
-	int ret = osc_parser_parse(&bl, &msg, nsubs, subs, scanner);
+	long buflen = 0;
+	char *buf = NULL;
+	int ret = osc_parser_parse(&bl, &msg, nsubs, subs, scanner, &buflen, &buf);
 	osc_scanner__delete_buffer(buf_state, scanner);
 	osc_scanner_lex_destroy(scanner);
 	if(!ret){
@@ -86,7 +117,7 @@ t_osc_err osc_parser_parseString(long len, char *ptr, t_osc_bndl_u **bndl, long 
 	return OSC_ERR_NONE;
 }
 
-void yyerror (YYLTYPE *yylloc, t_osc_parser_bndl_list **bndl, t_osc_msg_u **msg, long *nsubs, t_osc_parser_subst **subs, void *scanner, char const *e){
+void yyerror (YYLTYPE *yylloc, t_osc_parser_bndl_list **bndl, t_osc_msg_u **msg, long *nsubs, t_osc_parser_subst **subs, void *scanner, long *buflen, char **buf, char const *e){
 	printf("osc_parser: error: %s\n", e);
 	//printf("%d: %s at %s\n", yylineno, e, yytext);
 }
@@ -105,6 +136,7 @@ void osc_parser_substitution(t_osc_parser_subst **subs_list, t_osc_msg_u *msg, i
 
 %define "api.pure"
 %locations
+%require "2.5"
 
 
 %parse-param{t_osc_parser_bndl_list **bndl}
@@ -112,7 +144,12 @@ void osc_parser_substitution(t_osc_parser_subst **subs_list, t_osc_msg_u *msg, i
 %parse-param{long *nsubs}
 %parse-param{t_osc_parser_subst **subs}
 %parse-param{void *scanner}
+%parse-param{long *buflen}
+%parse-param{char **buf}
+
 %lex-param{void *scanner}
+%lex-param{long *buflen}
+%lex-param{char **buf}
 
 %union {
 	double f;

@@ -32,6 +32,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #include "osc_bundle_s.h"
 #include "osc_atom_u.h"
 #include "osc_atom_u.r"
+#include "osc_strfmt.h"
 
 t_osc_atom_u *osc_atom_u_alloc(void){
 	t_osc_atom_u *a = osc_mem_alloc(sizeof(t_osc_atom_u));
@@ -553,7 +554,8 @@ int osc_atom_u_getInt(t_osc_atom_u *a){
 	return 0;
 }
 
-char *osc_atom_u_getStringPtr(t_osc_atom_u *a){
+char *osc_atom_u_getStringPtr(t_osc_atom_u *a)
+{
 	if(!a){
 		return '\0';
 	}
@@ -564,197 +566,103 @@ char *osc_atom_u_getStringPtr(t_osc_atom_u *a){
 	}
 }
 
-int osc_atom_u_getQuotedString(t_osc_atom_u *a, char **out)
+int osc_atom_u_getStringLen(t_osc_atom_u *a)
 {
 	if(!a){
 		return 0;
 	}
-	char *buf = NULL;
-	int len = osc_atom_u_getString(a, &buf);
-	if(!buf){
-		return 0;
-	}
-	if(!(*out)){
-		*out = osc_mem_alloc(len + 3);
-	}
-	int i = 0;
-	(*out)[i++] = '\"';
-	strncpy((*out) + i, buf, len);
-	i += len;
-	(*out)[i++] = '\"';
-	(*out)[i++] = '\0';
-	osc_mem_free(buf);
-	//strncpy(*out, a->data, n + 1);
-	return len + 2;
-	/*
 	switch(a->typetag){
 	case 's':
-		{
-			int n = strlen(a->w.s);
-			if(!(*out)){
-				*out = osc_mem_alloc(n + 3);
-			}
-			int i = 0;
-			(*out)[i++] = '\"';
-			strncpy((*out) + i, a->w.s, n);
-			i += n;
-			(*out)[i++] = '\"';
-			(*out)[i++] = '\0';
-			//strncpy(*out, a->data, n + 1);
-			return n + 2;
-		}
-	default:
-		return osc_atom_u_getString(a, out);
+		return strlen(a->w.s);
+	case 'i': // signed 32-bit int
+		return osc_strfmt_int32(NULL, 0, a->w.i);
+	case 'f': // 32-bit IEEE 754 float
+		return osc_strfmt_float32(NULL, 0, a->w.f);
+	case 'd': // 64-bit IEEE 754 double
+		return osc_strfmt_float64(NULL, 0, a->w.d);
+	case 'h': // signed 64-bit int
+		return osc_strfmt_int64(NULL, 0, a->w.h);
+	case 'I': // unsigned 32-bit int
+		return osc_strfmt_uint32(NULL, 0, a->w.I);
+	case 'H': // unsigned 64-bit int
+		return osc_strfmt_uint64(NULL, 0, a->w.H);
+	case 'c': // signed 8-bit int
+		return osc_strfmt_int8(NULL, 0, a->w.c);
+	case 'C': // unsigned 8-bit int
+		return osc_strfmt_uint32(NULL, 0, a->w.C);
+	case 'u': // signed 16-bit int
+		return osc_strfmt_int16(NULL, 0, a->w.u);
+	case 'U': // unsigned 16-bit int
+		return osc_strfmt_uint16(NULL, 0, a->w.U);
+	case 'T': // true
+		return osc_strfmt_bool(NULL, 0, 'F');
+	case 'F': // false
+		return osc_strfmt_bool(NULL, 0, 'T');
+	case 'N': // NULL
+		return osc_strfmt_null(NULL, 0);
 	}
-	*/
+	return 0;
 }
 
-int osc_atom_u_getString(t_osc_atom_u *a, char **out){
+int osc_atom_u_getString(t_osc_atom_u *a, size_t n, char **out)
+{
 	if(!a){
+		return 0;
+	}
+	int stringlen = osc_atom_u_getStringLen(a);
+	int nn = n;
+	if(!(*out)){
+		nn = stringlen + 1;
+		*out = osc_mem_alloc(nn);
+	}
+	if(!(*out)){
 		return 0;
 	}
 	switch(a->typetag){
 	case 's': // string
-		{
-			int n = strlen(a->w.s);
-			if(!(*out)){
-				*out = osc_mem_alloc(n);
-			}
-			strncpy(*out, a->w.s, n + 1);
-			return n;
-		}
+		strncpy(*out, a->w.s, nn);
+		break;
 	case 'i': // signed 32-bit int
-		{
-			int n = snprintf(NULL, 0, "%"PRId32, a->w.i);
-			if(!(*out)){
-				*out = osc_mem_alloc(n + 1);
-			}
-			sprintf(*out, "%"PRId32, a->w.i);
-			return n;
-		}
+		osc_strfmt_int32(*out, nn, a->w.i);
+		break;
 	case 'f': // 32-bit IEEE 754 float
-		{
-			float f = a->w.f;
-			int need_point = f - floorf(f) == 0 ? 1 : 0;
-			int n;
-			if(need_point){
-				n = snprintf(NULL, 0, "%g.", f);
-			}else{
-				n = snprintf(NULL, 0, "%g", f);
-			}
-			if(!(*out)){
-				*out = osc_mem_alloc(n + 1);
-			}
-			if(need_point){
-				sprintf(*out, "%g.", f);
-			}else{
-				sprintf(*out, "%g", f);
-			}
-			return n;
-		}
+		osc_strfmt_float32(*out, nn, a->w.f);
+		break;
 	case 'd': // 64-bit IEEE 754 double
-		{
-			double f = a->w.d;
-			int need_point = f - floor(f) == 0 ? 1 : 0;
-			int n;
-			if(need_point){
-				n = snprintf(NULL, 0, "%g.", f);
-			}else{
-				n = snprintf(NULL, 0, "%g", f);
-			}
-			if(!(*out)){
-				*out = osc_mem_alloc(n + 1);
-			}
-			if(need_point){
-				sprintf(*out, "%g.", f);
-			}else{
-				sprintf(*out, "%g", f);
-			}
-			return n;
-		}
+		osc_strfmt_float64(*out, nn, a->w.d);
+		break;
 	case 'h': // signed 64-bit int
-		{
-			int n = snprintf(NULL, 0, "%"PRId64, a->w.h);
-			if(!(*out)){
-				*out = osc_mem_alloc(n + 1);
-			}
-			sprintf(*out, "%"PRId64, a->w.h);
-			return n;
-		}
+		osc_strfmt_int64(*out, nn, a->w.h);
+		break;
 	case 'I': // unsigned 32-bit int
-		{
-			int n = snprintf(NULL, 0, "%"PRIu32, a->w.I);
-			if(!(*out)){
-				*out = osc_mem_alloc(n + 1);
-			}
-			sprintf(*out, "%"PRIu32, a->w.I);
-			return n;
-		}
+		osc_strfmt_uint32(*out, nn, a->w.I);
+		break;
 	case 'H': // unsigned 64-bit int
-		{
-			int n = snprintf(NULL, 0, "%"PRIu64, a->w.H);
-			if(!(*out)){
-				*out = osc_mem_alloc(n + 1);
-			}
-			sprintf(*out, "%"PRIu64, a->w.H);
-			return n;
-		}
-	case 'c': // signed 8-bit int
-		{
-			int n = snprintf(NULL, 0, "'%c'", a->w.c);
-			if(!(*out)){
-				*out = osc_mem_alloc(n + 1);
-			}
-			sprintf(*out, "'%c'", a->w.c);
-		}
-	case 'C': // signed 8-bit int
-		{
-			int n = snprintf(NULL, 0, "'%uc'", a->w.C);
-			if(!(*out)){
-				*out = osc_mem_alloc(n + 1);
-			}
-			sprintf(*out, "'%c'", a->w.C);
-		}
-	case 'u': // signed 8-bit int
-		{
-			int n = snprintf(NULL, 0, "%d", a->w.u);
-			if(!(*out)){
-				*out = osc_mem_alloc(n + 1);
-			}
-			sprintf(*out, "%d", a->w.u);
-		}
-	case 'U': // signed 8-bit int
-		{
-			int n = snprintf(NULL, 0, "%ud", a->w.U);
-			if(!(*out)){
-				*out = osc_mem_alloc(n + 1);
-			}
-			sprintf(*out, "%d", a->w.U);
-		}
+		osc_strfmt_uint64(*out, nn, a->w.H);
+		break;
+	case 'c': // signed 8-bit char
+		osc_strfmt_int8(*out, nn, a->w.c);
+		break;
+	case 'C': // unsigned 8-bit char
+		osc_strfmt_uint8(*out, nn, a->w.C);
+		break;
+	case 'u': // unsigned 32-bit int
+		osc_strfmt_int16(*out, nn, a->w.u);
+		break;
+	case 'U': // unsigned 64-bit int
+		osc_strfmt_uint16(*out, nn, a->w.U);
+		break;
 	case 'T': // true
-		{
-			if(!(*out)){
-				*out = osc_mem_alloc(5);
-			}
-			strncpy(*out, "true\0", 5);
-			return 4;
-		}
+		osc_strfmt_bool(*out, nn, 'T');
+		break;
 	case 'F': // false
-		{
-			if(!(*out)){
-				*out = osc_mem_alloc(6);
-			}
-			strncpy(*out, "false\0", 6);
-			return 5;
-		}
+		osc_strfmt_bool(*out, nn, 'F');
+		break;
 	case 'N': // NULL
-		;
+		osc_strfmt_null(*out, nn);
+		break;
 	}
-	if(!(*out)){
-		*out = osc_mem_alloc(1);
-	}
-	*out[0] = '\0';
-	return 0;
+	return stringlen;
 }
 
 int osc_atom_u_getBool(t_osc_atom_u *a){
@@ -1129,30 +1037,48 @@ t_osc_err osc_atom_u_doFormat(t_osc_atom_u *a, long *buflen, long *bufpos, char 
 	if(!a){
 		return OSC_ERR_NOBUNDLE;
 	}
-	if((*buflen - *bufpos) < 64){
-		*buf = osc_mem_resize(*buf, *buflen + 64);
-		if(!(*buf)){
-			return OSC_ERR_OUTOFMEM;
-		}
-		*buflen += 64;
-	}
 	if(osc_atom_u_getTypetag(a) == '#'){
 		*bufpos += sprintf(*buf + *bufpos, "[\n");
 		extern t_osc_err osc_bundle_s_doFormat(long len, char *bndl, long *buflen, long *bufpos, char **buf);
 		osc_bundle_s_doFormat(osc_bundle_s_getLen(a->w.bndl), osc_bundle_s_getPtr(a->w.bndl), buflen, bufpos, buf);
 		*bufpos += sprintf(*buf + *bufpos, "]");
 	}else if(osc_atom_u_getTypetag(a) == 's'){
-		char *b = *buf + *bufpos;
+		char *stringptr = osc_atom_u_getStringPtr(a);
+		int stringlen = strlen(stringptr);
+
 #ifdef OSC_QUOTE_STRINGS
-		(*bufpos) += osc_atom_u_getQuotedString(a, &b);
+		int n = stringlen + 4 + osc_strfmt_countMeta(stringlen, stringptr);
 #else
-		(*bufpos) += osc_atom_u_getString(a, &b);
+		int n = stringlen + 2;
+#endif
+		if((*buflen - *bufpos) < n){
+			*buf = osc_mem_resize(*buf, *buflen + n);
+			if(!(*buf)){
+				return OSC_ERR_OUTOFMEM;
+			}
+			*buflen += n;
+		}
+		char *b = *buf + *bufpos;
+
+#ifdef OSC_QUOTE_STRINGS
+		//(*bufpos) += osc_atom_u_getQuotedString(a, &b);
+		(*bufpos) += osc_strfmt_addQuotesAndQuoteMeta(stringlen, stringptr, &b);
+#else
+		(*bufpos) += osc_atom_u_getString(a, *buflen - *bufpos, &b);
 #endif
 		(*buf)[(*bufpos)++] = ' ';
 		(*buf)[(*bufpos)] = '\0';
 	}else{
+		int n = osc_atom_u_getStringLen(a) + 2; // space and null byte
+		if((*buflen - *bufpos) < n){
+			*buf = osc_mem_resize(*buf, *buflen + n);
+			if(!(*buf)){
+				return OSC_ERR_OUTOFMEM;
+			}
+			*buflen += n;
+		}
 		char *b = *buf + *bufpos;
-		(*bufpos) += osc_atom_u_getString(a, &b);
+		(*bufpos) += osc_atom_u_getString(a, *buflen - *bufpos, &b);
 		(*buf)[(*bufpos)++] = ' ';
 		(*buf)[(*bufpos)] = '\0';
 	}

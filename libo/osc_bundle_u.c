@@ -79,7 +79,7 @@ t_osc_err osc_bundle_u_getMessagesWithCallback(t_osc_bndl_u *bndl, void (*f)(t_o
 	return OSC_ERR_NONE;
 }
 
-t_osc_err osc_bundle_u_lookupAddress(t_osc_bndl_u *bndl, char *address, t_osc_array **osc_msg_u_array, int fullmatch)
+t_osc_err osc_bundle_u_lookupAddress(t_osc_bndl_u *bndl, const char *address, t_osc_array **osc_msg_u_array, int fullmatch)
 {
 	int matchbuflen = 16, n = 0;
 	//t_osc_msg_u **matches = osc_mem_alloc(matchbuflen * sizeof(t_osc_msg_u *));

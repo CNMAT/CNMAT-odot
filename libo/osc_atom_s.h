@@ -88,8 +88,7 @@ uint32_t osc_atom_s_getUInt32(t_osc_atom_s *a);
 uint64_t osc_atom_s_getUInt64(t_osc_atom_s *a);
 int osc_atom_s_getInt(t_osc_atom_s *a);
 int osc_atom_s_getStringLen(t_osc_atom_s *a);
-int osc_atom_s_getQuotedString(t_osc_atom_s *a, char **out);
-int osc_atom_s_getString(t_osc_atom_s *a, char **out);
+int osc_atom_s_getString(t_osc_atom_s *a, size_t n, char **out);
 int osc_atom_s_getBool(t_osc_atom_s *a);
 
 void osc_atom_s_setFloat(t_osc_atom_s *a, float v);

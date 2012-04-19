@@ -71,7 +71,7 @@ t_osc_err osc_bundle_s_getMessagesWithCallback(int len, char *buf, void (*f)(t_o
 
 t_osc_err osc_bundle_s_addressIsBound(long len, char *buf, char *address, int fullmatch, int *res);
 t_osc_err osc_bundle_s_addressExists(long len, char *buf, char *address, int fullmatch, int *res);
-t_osc_err osc_bundle_s_lookupAddress(int len, char *buf, char *address, t_osc_array **osc_msg_s_array, int fullmatch);
+t_osc_err osc_bundle_s_lookupAddress(int len, char *buf, const char *address, t_osc_array **osc_msg_s_array, int fullmatch);
 
 t_osc_err osc_bundle_s_wrapMessage(long len, char *msg, long *bndllen, char **bndl, char *alloc);
 t_osc_err osc_bundle_s_replaceMessage(long *len, char **bndl, t_osc_msg_s *oldmsg, t_osc_msg_s *newmsg);

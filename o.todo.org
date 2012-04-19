@@ -13,7 +13,15 @@
 #+end_src
 
 * Open Issues
+** General
+*** Get libo and libomax out of the odot folders.  some other objects depend on those libs, so we need
+to be able to fork releases of them that are stable.
+*** Not urgent, but the eval code in osc_expr.c needs to be separated from the function code.
 ** Bugs
+*** o.pack
+**** BUG The set message should produce an error when the new address is a duplicate of an existing one
+**** BUG The address '/' is invalid and should produce an error.  use the sanity check methods in osc_error
+**** BUG Trailing slashes should be removed (eg, /foo/)
 ** Feature Requests
 *** General
 **** TODO Boolean values become signed 1-bit values: 00=0, 01=1, 11=-1
@@ -48,6 +56,7 @@ like bound() that need OSC addresses
 **** TODO reduce()
 **** TODO a single osc address should be a valid expression
 **** TODO sort
+**** TODO dolist and dotimes
 *** o.difference/intersection/union
 **** TODO o.difference/intersection/union should take arguments that define a message
 *** new objects
@@ -57,13 +66,14 @@ like bound() that need OSC addresses
 *** The fact that o.route can output both bundles and Max data is a source of bugs.  Rewrite o.route?  
 New objects with more explicit behavior.
 
-* VERSION
+** Bugs Fixed
+
+*** o.expr
+
+
+* VERSION 1.1
 ** General
 ** Bugs Fixed
-*** o.expr
-**** FIXED parsing fails due to space after opening paren: o.if product(#1/temp) > 1 
-#n arguments are now handled properly.
-**** FIXED the sum() function was returning 1 greater than the sum of the args
 
 * VERSION 1.0b
 Released: [2012-03-06 Tue]

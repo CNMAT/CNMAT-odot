@@ -108,18 +108,20 @@ t_max_err ovar_notify(t_ovar *x, t_symbol *s, t_symbol *msg, void *sender, void 
 void ovar_doFullPacket(t_ovar *x, long len, long ptr, long inlet){
 	osc_bundle_s_wrap_naked_message(len, ptr);
 	if(inlet == 1){
-		critical_enter(x->lock);
-		if(len > x->buflen){
-			x->bndl = osc_mem_resize(x->bndl, len);
-			if(!(x->bndl)){
-				object_error((t_object *)x, "ran out of memory!\n");
-				return;
+		if(len > 0){
+			critical_enter(x->lock);
+			if(len > x->buflen){
+				x->bndl = osc_mem_resize(x->bndl, len);
+				if(!(x->bndl)){
+					object_error((t_object *)x, "ran out of memory!\n");
+					return;
+				}
+				x->buflen = len;
 			}
-			x->buflen = len;
+			memcpy(x->bndl, (char *)ptr, len);
+			x->len = len;
+			critical_exit(x->lock);
 		}
-		memcpy(x->bndl, (char *)ptr, len);
-		x->len = len;
-		critical_exit(x->lock);
 	}else{
 #if (defined UNION || defined INTERSECTION || defined DIFFERENCE)
 		critical_enter(x->lock);
@@ -141,6 +143,20 @@ void ovar_doFullPacket(t_ovar *x, long len, long ptr, long inlet){
 			osc_mem_free(bndl);
 		}
 #else // o.var
+		if(len > 0){
+			critical_enter(x->lock);
+			if(len > x->buflen){
+				x->bndl = osc_mem_resize(x->bndl, len);
+				if(!(x->bndl)){
+					object_error((t_object *)x, "ran out of memory!\n");
+					return;
+				}
+				x->buflen = len;
+			}
+			memcpy(x->bndl, (char *)ptr, len);
+			x->len = len;
+			critical_exit(x->lock);
+		}
 		omax_util_outletOSC(x->outlet, len, (char *)ptr);
 #endif
 	}

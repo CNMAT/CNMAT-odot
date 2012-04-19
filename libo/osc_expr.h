@@ -38,15 +38,21 @@ extern "C" {
 
 
 typedef struct _osc_expr t_osc_expr;
+typedef struct _osc_expr_func t_osc_expr_func;
 typedef struct _osc_expr_arg t_osc_expr_arg;
 
 typedef int (*t_osc_funcptr)(t_osc_expr *f, int argc, t_osc_atom_ar_u **argv, t_osc_atom_ar_u **out);
 
 typedef struct _osc_expr_rec t_osc_expr_rec;
 
+int osc_expr_evalInLexEnv(t_osc_expr *f,
+			  long nvars,
+			  t_osc_atom_ar_u **vars,
+			  long *len,
+			  char **oscbndl,
+			  t_osc_atom_ar_u **out);
 int osc_expr_eval(t_osc_expr *function, long *len, char **oscbndl, t_osc_atom_ar_u **out);
 int osc_expr_evalLexExprsInBndl(long *len, char **oscbndl, t_osc_atom_ar_u **out);
-int osc_expr_getArg(t_osc_expr_arg *arg, long *len, char **oscbndl, t_osc_atom_ar_u **out);
 t_osc_expr *osc_expr_makeFuncObjFromOSCMsg_s(t_osc_msg_s *msg, int argoffset);
 t_osc_expr_rec *osc_expr_lookupFunction(char *name);
 t_osc_bndl_s *osc_expr_getCategories(void);
@@ -75,8 +81,13 @@ t_osc_expr_arg *osc_expr_getArgs(t_osc_expr *e);
 long osc_expr_getArgCount(t_osc_expr *e);
 
 void osc_expr_arg_setOSCAtom(t_osc_expr_arg *a, t_osc_atom_u *atom);
+void osc_expr_arg_setParameter(t_osc_expr_arg *a, t_osc_atom_u *atom);
+void osc_expr_arg_setVariable(t_osc_expr_arg *a, t_osc_atom_u *atom);
 void osc_expr_arg_setExpr(t_osc_expr_arg *a, t_osc_expr *e);
 void osc_expr_arg_setOSCAddress(t_osc_expr_arg *a, char *osc_address);
+void osc_expr_arg_setParameterSlot(t_osc_expr_arg *a, int slot);
+int osc_expr_arg_getParameterSlot(t_osc_expr_arg *a);
+void osc_expr_arg_setType(t_osc_expr_arg *a, long type);
 int osc_expr_arg_getType(t_osc_expr_arg *a);
 t_osc_atom_u *osc_expr_arg_getOSCAtom(t_osc_expr_arg *a);
 t_osc_expr *osc_expr_arg_getExpr(t_osc_expr_arg *a);

@@ -43,6 +43,8 @@ extern "C" {
 #define OSC_EXPR_ARG_TYPE_EXPR 0x10
 #define OSC_EXPR_ARG_TYPE_OSCADDRESS 0x20
 #define OSC_EXPR_ARG_TYPE_BOOLEAN 0x40
+#define OSC_EXPR_ARG_TYPE_PARAMETER 0x80
+#define OSC_EXPR_ARG_TYPE_VARIABLE 0x100
 
 #define OSC_EXPR_ARG_TYPE_NUM_LIST_ADDR OSC_EXPR_ARG_TYPE_NUMBER | OSC_EXPR_ARG_TYPE_LIST | OSC_EXPR_ARG_TYPE_OSCADDRESS
 
@@ -111,8 +113,10 @@ int osc_expr_prog1(t_osc_expr *f, int argc, t_osc_atom_ar_u **argv, t_osc_atom_a
 int osc_expr_prog2(t_osc_expr *f, int argc, t_osc_atom_ar_u **argv, t_osc_atom_ar_u **out);
 int osc_expr_progn(t_osc_expr *f, int argc, t_osc_atom_ar_u **argv, t_osc_atom_ar_u **out);
 int osc_expr_map(t_osc_expr *f, int argc, t_osc_atom_ar_u **argv, t_osc_atom_ar_u **out);
+int osc_expr_apply(t_osc_expr *f, int argc, t_osc_atom_ar_u **argv, t_osc_atom_ar_u **out);
 int osc_expr_quote(t_osc_expr *f, int argc, t_osc_atom_ar_u **argv, t_osc_atom_ar_u **out);
 int osc_expr_value(t_osc_expr *f, int argc, t_osc_atom_ar_u **argv, t_osc_atom_ar_u **out);
+int osc_expr_lambda(t_osc_expr *f, int argc, t_osc_atom_ar_u **argv, t_osc_atom_ar_u **out);
 
 // constants
 int osc_expr_pi(t_osc_expr *f, int argc, t_osc_atom_ar_u **argv, t_osc_atom_ar_u **out);
@@ -1740,6 +1744,19 @@ static t_osc_expr_rec osc_expr_funcsym[] = {
 	 osc_expr_map,
 	 NULL},
 	//////////////////////////////////////////////////
+	{"apply",
+	 "/result = apply($1, $2)",
+	 2,
+	 -1,
+	 (const char *[]){"Function name", "Argument"},
+	 (int []){OSC_EXPR_ARG_TYPE_STRING | OSC_EXPR_ARG_TYPE_OSCADDRESS, OSC_EXPR_ARG_TYPE_ANYTHING},
+	 (const char *[]){"Additional argument(s)"},
+	 (int []){OSC_EXPR_ARG_TYPE_ANYTHING},
+	 (const char *[]){"/core", NULL},
+	 "Apply a function to a list of arguments.",
+	 osc_expr_apply,
+	 NULL},
+	//////////////////////////////////////////////////
 	{"quote",
 	 "/result = quote($1)",
 	 1,
@@ -1764,6 +1781,32 @@ static t_osc_expr_rec osc_expr_funcsym[] = {
 	 (const char *[]){"/core", NULL},
 	 "Return the value associated with the argument.",
 	 osc_expr_value,
+	 NULL},
+	//////////////////////////////////////////////////
+	{"value",
+	 "/result = value($1)",
+	 1,
+	 0,
+	 (const char *[]){"argument"},
+	 (int []){OSC_EXPR_ARG_TYPE_OSCADDRESS},
+	 (const char *[]){NULL},
+	 (int []){},
+	 (const char *[]){"/core", NULL},
+	 "Return the value associated with the argument.",
+	 osc_expr_value,
+	 NULL},
+	//////////////////////////////////////////////////
+	{"lambda",
+	 "",
+	 0,
+	 0,
+	 (const char *[]){NULL},
+	 (int []){},
+	 (const char *[]){NULL},
+	 (int []){},
+	 (const char *[]){"/core", NULL},
+	 "Anonymous function",
+	 osc_expr_lambda,
 	 NULL},
 	//////////////////////////////////////////////////
 	{"pi",

@@ -24,11 +24,60 @@ dfc       (({frac}{exp_opt}{fsuff_opt})|({dseq}{exp}{fsuff_opt}))
 hfc       (({hpref}{hfrac}{bexp}{fsuff_opt})|({hpref}{hdseq}{bexp}{fsuff_opt}))
 c99_floating_point_constant  ({dfc}|{hfc})
 
+string [^ $\t\"\n\\]*
+quoted_string [^\"\\]
+
+%x quote escape
+
 %option reentrant
 %option bison-bridge
 %option bison-locations
 
 %%
+
+\" {
+	BEGIN(quote);
+}
+
+<quote>{quoted_string}+ {
+	if(*buf){
+		*buf = osc_mem_resize(*buf, *buflen + yyleng + 1);
+		*buflen += yyleng + 1;
+		strcat(*buf, yytext);
+	}else{
+		char *copy = osc_mem_alloc(yyleng + 1);
+		strncpy(copy, yytext, yyleng + 1);
+		yylval->string = copy;
+		return STRING;
+	}
+	//return STRING;
+}
+
+<quote>\" {
+	BEGIN(0);
+	if(*buf){
+		yylval->string = *buf;
+		*buf = NULL;
+		*buflen = 0;
+		return STRING;
+	}
+}
+
+<quote>{quoted_string}*\\. {
+	if(*buf){
+		*buflen += yyleng;
+		*buf = osc_mem_resize(*buf, *buflen);
+		strcat(*buf, yytext);
+		(*buf)[*buflen - 3] = (*buf)[*buflen - 2];
+		(*buf)[*buflen - 2] = '\0';
+	}else{
+		*buf = osc_mem_alloc(yyleng);
+		memcpy(*buf, yytext, yyleng);
+		*buflen = yyleng;
+		(*buf)[*buflen - 2] = (*buf)[*buflen - 1];
+		(*buf)[*buflen - 1] = '\0';
+	}
+}
 
 $[1-9]+	{
 		//printf("sub\n");
@@ -83,8 +132,11 @@ $[1-9]+	{
 			return OSCADDRESS;
 		}
 
-\"(\\.|[^$\"\n])*\" 	{
-				//printf("quoted string: %s\n", yytext);
+			/*
+			\"(\\.|[^$\"\n])*\" 	{
+			*/
+			/*
+			(\"{quoted_string}\"|\"{quoted_string}|{quoted_string}\") {
 				int len = strlen(yytext) + 1; // includes quotes and null byte
 				//char *copy = osc_mem_alloc(len - 2); // don't need quotes
 				//memcpy(copy, yytext + 1, len - 3);
@@ -94,16 +146,45 @@ $[1-9]+	{
 				yylval->string = copy;
 				return STRING;
 			}
+			*/
 
 			/* [a-zA-Z0-9][^ \t\n]* */
-[^ $\t\"\n]*	{
-				//printf("string: %s\n", yytext);
+{string}	{
 				int len = strlen(yytext) + 1;
 				char *copy = osc_mem_alloc(len);
 				memcpy(copy, yytext, len);
 				yylval->string = copy;
 				return STRING;
 			}
+
+{string}*\\	{
+			if(*buf){
+				*buflen += yyleng + 1; // make room for the escaped char
+				*buf = osc_mem_resize(*buf, *buflen);
+				strcat(*buf, yytext);
+				(*buf)[*buflen - 1] = '\0';
+			}else{
+				*buf = osc_mem_alloc(yyleng + 1);
+				memcpy(*buf, yytext, yyleng);
+				*buflen = yyleng;
+				//(*buf)[*buflen - 2] = (*buf)[*buflen - 1];
+				(*buf)[*buflen - 1] = '\0';
+			}
+			BEGIN(escape);
+		}
+
+<escape>.	{
+			if(*buf){
+				(*buf)[*buflen - 1] = *yytext;
+			}else{
+				//this is bad news
+			}
+			BEGIN(0);
+			yylval->string = *buf;
+			*buf = NULL;
+			*buflen = 0;
+			return STRING;
+		}
 
 
 [ \t]+
@@ -133,3 +214,5 @@ int main(int argc, char **argv){
 	yylex_destroy(scanner);
 }
 */
+
+

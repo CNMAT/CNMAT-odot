@@ -141,7 +141,7 @@ char *osc_message_u_getAddress(t_osc_msg_u *m)
 	return m->address;
 }
 
-t_osc_err osc_message_u_setAddress(t_osc_msg_u *m, char *address)
+t_osc_err osc_message_u_setAddress(t_osc_msg_u *m, const char *address)
 {
 	if(!m){
 		return OSC_ERR_INVAL;

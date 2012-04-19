@@ -47,7 +47,7 @@
 #define __ODOT_PROFILE__
 #include "profile.h"
 
-t_symbol *ps_FullPacket = NULL;
+t_symbol *omax_ps_FullPacket = NULL;
 
 int omax_util_liboErrorHandler(const char * const errorstr)
 {
@@ -74,13 +74,13 @@ int omax_util_liboErrorHandler(const char * const errorstr)
 
 void omax_util_outletOSC(void *outlet, long len, char *ptr)
 {
-	if(!ps_FullPacket){
-		ps_FullPacket = gensym("FullPacket");
+	if(!omax_ps_FullPacket){
+		omax_ps_FullPacket = gensym("FullPacket");
 	}
 	t_atom out[2];
 	atom_setlong(out, len);
 	atom_setlong(out + 1, (long)ptr);
-	outlet_anything(outlet, ps_FullPacket, 2, out);
+	outlet_anything(outlet, omax_ps_FullPacket, 2, out);
 }
 
 int omax_util_getNumAtomsInOSCMsg(t_osc_msg_s *m)
@@ -131,9 +131,10 @@ void omax_util_oscMsg2MaxAtoms(t_osc_msg_s *m, t_atom *av)
 			break;
 		case 's':		
 			{
-				char buf[osc_atom_s_getStringLen(a)];
+				int len = osc_atom_s_getStringLen(a);
+				char buf[len];
 				char *bufptr = buf;
-				osc_atom_s_getString(a, &bufptr);
+				osc_atom_s_getString(a, len, &bufptr);
 				atom_setsym(ptr++, gensym(buf));
 			}
 			break;

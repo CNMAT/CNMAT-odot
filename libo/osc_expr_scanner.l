@@ -155,12 +155,15 @@ quote[[:space:]]*\( {
 						osc_atom_u_setFalse(yylval->atom);
 						return OSC_EXPR_NUM;
 					}
+(lambda|fn)				{
+						return OSC_EXPR_LAMBDA;
+					}
 
 ;+|(;[[:space:]]*)+			{
 						// attempt to get rid of repeated semicolons
 						return ';';
 					}
-,|;|\(|\)				{
+,|;|\(|\)|\{|\}				{
 						return *yytext;
 					}
 \[\[					{
@@ -206,8 +209,20 @@ quote[[:space:]]*\( {
 						//}
 					}
 
+\"[[:space:]]+\"			{
+						if(alloc_atom){
+							yylval->atom = osc_atom_u_alloc();
+						}
+						yytext[yyleng - 1] = '\0';
+						osc_atom_u_setString(yylval->atom, yytext + 1);
+						yytext[yyleng - 1] = '\"';
+						return OSC_EXPR_STRING;
+					}
+
+
+
 [ \t\n]+	/* eat up whitespace */
-\"		//printf("quotes\n");/* eat up quotes */
+\"
 
 
 

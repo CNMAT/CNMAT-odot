@@ -52,7 +52,7 @@ t_osc_err osc_atom_array_u_getInt64Array(t_osc_atom_ar_u *array, int64_t **out);
 t_osc_err osc_atom_array_u_getUInt32Array(t_osc_atom_ar_u *array, uint32_t **out);
 t_osc_err osc_atom_array_u_getUInt64Array(t_osc_atom_ar_u *array, uint64_t **out);
 t_osc_err osc_atom_array_u_getBoolArray(t_osc_atom_ar_u *array, char **out);
-t_osc_err osc_atom_array_u_getStringArray(t_osc_atom_ar_u *array, long *len, char **out);
+t_osc_err osc_atom_array_u_getStringArray(t_osc_atom_ar_u *array, long *len, char **out, const char *sep);
 t_osc_array *osc_atom_array_u_copy(t_osc_array *array);
 t_osc_err osc_atom_array_u_copyInto(t_osc_array **dest, t_osc_array *src, long offset);
 void osc_atom_array_u_set(t_osc_atom_ar_u *ar, void *ptr, long len);
