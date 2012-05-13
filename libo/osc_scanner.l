@@ -157,7 +157,7 @@ $[1-9]+	{
 				return STRING;
 			}
 
-{string}*\\	{
+{string}*\\.	{
 			if(*buf){
 				*buflen += yyleng + 1; // make room for the escaped char
 				*buf = osc_mem_resize(*buf, *buflen);
@@ -171,6 +171,7 @@ $[1-9]+	{
 				(*buf)[*buflen - 1] = '\0';
 			}
 			BEGIN(escape);
+			yyless(1);
 		}
 
 <escape>.	{

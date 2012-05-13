@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 6,
 			"minor" : 0,
-			"revision" : 4
+			"revision" : 5
 		}
 ,
 		"rect" : [ 140.0, 85.0, 681.0, 494.0 ],
@@ -41,7 +41,7 @@
 						"appversion" : 						{
 							"major" : 6,
 							"minor" : 0,
-							"revision" : 4
+							"revision" : 5
 						}
 ,
 						"rect" : [ 140.0, 111.0, 681.0, 468.0 ],
@@ -88,8 +88,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 66.0, 372.0, 88.0, 20.0 ],
-									"presentation_rect" : [ 67.0, 372.0, 0.0, 0.0 ],
-									"text" : "/foo 1 2. \"bar\" ",
 									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 
@@ -375,16 +373,16 @@
 ,
 					"patching_rect" : [ 50.0, 120.0, 71.0, 20.0 ],
 					"saved_object_attributes" : 					{
-						"fontsize" : 12.0,
-						"tags" : "",
-						"default_fontface" : 0,
 						"digest" : "",
 						"default_fontname" : "Arial",
 						"fontname" : "Arial",
+						"tags" : "",
 						"default_fontsize" : 12.0,
 						"description" : "",
 						"globalpatchername" : "",
-						"fontface" : 0
+						"fontface" : 0,
+						"fontsize" : 12.0,
+						"default_fontface" : 0
 					}
 ,
 					"text" : "p basic"
@@ -396,7 +394,7 @@
 		"dependency_cache" : [ 			{
 				"name" : "o.helpfilehelper.maxpat",
 				"bootpath" : "/Users/john/MMJ5-dev/odot/overview",
-				"patcherrelativepath" : "../../../../../../../MMJ5-dev/odot/overview",
+				"patcherrelativepath" : "../../../../../../../../../MMJ5-dev/odot/overview",
 				"type" : "JSON",
 				"implicit" : 1
 			}

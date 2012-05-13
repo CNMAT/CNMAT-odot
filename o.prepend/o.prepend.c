@@ -68,20 +68,20 @@ struct context{
 
 void *oppnd_class;
 
-void oppnd_fullPacket(t_oppnd *x, long len, long ptr);
 void oppnd_doFullPacket(t_oppnd *x, long len, long ptr, t_symbol *sym_to_prepend, int sym_to_prepend_len);
-void oppnd_cbk(t_osc_msg msg, void *v);
-void oppnd_set(t_oppnd *x, t_symbol *sym_to_prepend);
-void oppnd_anything(t_oppnd *x, t_symbol *msg, short argc, t_atom *argv);
-void oppnd_list(t_oppnd *x, t_symbol *msg, int argc, t_atom *argv);
-void oppnd_float(t_oppnd *x, double f);
-void oppnd_long(t_oppnd *x, long l);
-void oppnd_free(t_oppnd *x);
-void *oppnd_new(t_symbol *msg, short argc, t_atom *argv);
 
 t_symbol *ps_FullPacket;
 
-void oppnd_fullPacket(t_oppnd *x, long len, long ptr){
+//void oppnd_fullPacket(t_oppnd *x, long len, long ptr)
+void oppnd_fullPacket(t_oppnd *x, t_symbol *msg, int argc, t_atom *argv)
+{
+	// killme ////////////////////////
+	if(argc != 2){
+		return;
+	}
+	long len = atom_getlong(argv);
+	long ptr = atom_getlong(argv + 1);
+	//////////////////////////////////
 	osc_bundle_s_wrap_naked_message(len, ptr);
 	if(len == OSC_HEADER_SIZE){
 		return;
@@ -118,12 +118,24 @@ void oppnd_doFullPacket(t_oppnd *x, long len, long ptr, t_symbol *sym_to_prepend
 	omax_util_outletOSC(x->outlet, bufptr - buf, buf);
 }
 
-void oppnd_set(t_oppnd *x, t_symbol *sym_to_prepend){
+//void oppnd_set(t_oppnd *x, t_symbol *sym_to_prepend)
+void oppnd_set(t_oppnd *x, t_symbol *msg, int argc, t_atom *argv)
+{
+	if(argc != 1){
+		object_error((t_object *)x, "bad arg count (%d)", argc);
+		return;
+	}
+	if(atom_gettype(argv) != A_SYM){
+		object_error((t_object *)x, "argument to set must be an OSC address");
+		return;
+	}
+	t_symbol *sym_to_prepend = atom_getsym(argv);
 	x->sym_to_prepend = sym_to_prepend;
 	x->sym_to_prepend_len = strlen(sym_to_prepend->s_name);
 }
 
-void oppnd_anything(t_oppnd *x, t_symbol *msg, short argc, t_atom *argv){
+void oppnd_anything(t_oppnd *x, t_symbol *msg, short argc, t_atom *argv)
+{
 	if(!msg){
 		object_error((t_object *)x, "message must be an OSC address");
 		return;
@@ -179,23 +191,7 @@ void oppnd_anything(t_oppnd *x, t_symbol *msg, short argc, t_atom *argv){
 	if(bndl_u){
 		osc_bundle_u_free(bndl_u);
 	}
-	/*
-	int len = omax_util_get_bundle_size_for_atoms(newaddress, argc, argv);
-	char oscbuf[len];
-	memset(oscbuf, '\0', len);
-	strncpy(oscbuf, "#bundle\0", 8);
-	omax_util_encode_atoms(oscbuf + 16, newaddress, argc, argv);
-	*/
 	omax_util_outletOSC(x->outlet, len, oscbuf);
-}
-
-void oppnd_list(t_oppnd *x, t_symbol *msg, int argc, t_atom *argv){
-}
-
-void oppnd_float(t_oppnd *x, double f){
-}
-
-void oppnd_long(t_oppnd *x, long l){
 }
 
 void oppnd_doc(t_oppnd *x)
@@ -213,7 +209,7 @@ void oppnd_free(t_oppnd *x){
 
 void *oppnd_new(t_symbol *msg, short argc, t_atom *argv){
 	t_oppnd *x;
-	if(x = (t_oppnd *)object_alloc(oppnd_class)){
+	if((x = (t_oppnd *)object_alloc(oppnd_class))){
 		x->outlet = outlet_new(x, "FullPacket");
 		x->sym_to_prepend = NULL;
 		if(argc){
@@ -228,16 +224,14 @@ void *oppnd_new(t_symbol *msg, short argc, t_atom *argv){
 int main(void){
 	t_class *c = class_new("o.prepend", (method)oppnd_new, (method)oppnd_free, sizeof(t_oppnd), 0L, A_GIMME, 0);
     
-	class_addmethod(c, (method)oppnd_fullPacket, "FullPacket", A_LONG, A_LONG, 0);
-	//class_addmethod(c, (method)oppnd_notify, "notify", A_CANT, 0);
+	//class_addmethod(c, (method)oppnd_fullPacket, "FullPacket", A_LONG, A_LONG, 0);
+	class_addmethod(c, (method)oppnd_fullPacket, "FullPacket", A_GIMME, 0);
 	class_addmethod(c, (method)oppnd_assist, "assist", A_CANT, 0);
 	class_addmethod(c, (method)oppnd_doc, "doc", 0);
 	class_addmethod(c, (method)oppnd_anything, "anything", A_GIMME, 0);
-	//class_addmethod(c, (method)oppnd_list, "list", A_GIMME, 0);
-	//class_addmethod(c, (method)oppnd_float, "float", A_FLOAT, 0);
-	//class_addmethod(c, (method)oppnd_long, "int", A_LONG, 0);
 
-	class_addmethod(c, (method)oppnd_set, "set", A_SYM, 0);
+	//class_addmethod(c, (method)oppnd_set, "set", A_SYM, 0);
+	class_addmethod(c, (method)oppnd_set, "set", A_GIMME, 0);
     
 	class_register(CLASS_BOX, c);
 	oppnd_class = c;

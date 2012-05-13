@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 6,
 			"minor" : 0,
-			"revision" : 4
+			"revision" : 5
 		}
 ,
 		"rect" : [ 25.0, 69.0, 922.0, 735.0 ],
@@ -310,8 +310,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 365.0, 373.0, 506.0, 20.0 ],
-					"text" : "o.expr /stream = concat(/stream\\, /val)\\; if(length(/stream) > /n\\, /stream = /stream[[aseq(1\\, /n)]])"
+					"patching_rect" : [ 365.0, 373.0, 485.0, 20.0 ],
+					"text" : "o.expr /stream = list(/stream\\, /val)\\; if(length(/stream) > /n\\, /stream = /stream[[aseq(1\\, /n)]])"
 				}
 
 			}
@@ -565,6 +565,10 @@
 			}
 , 			{
 				"name" : "o.message.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.print.mxo",
 				"type" : "iLaX"
 			}
 , 			{

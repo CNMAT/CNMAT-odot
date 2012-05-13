@@ -23,6 +23,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #include <stdio.h>
 #include <string.h>
 #include <inttypes.h>
+#include "osc.h"
 #include "osc_mem.h"
 #include "osc_byteorder.h"
 
@@ -32,19 +33,19 @@ static void *(*osc_mem_resize_fp)(void *ptr, size_t size) = realloc;
 
 void *osc_mem_alloc(size_t size){
 	void *p = osc_mem_alloc_fp(size);
-	//printf("alloc %p\n", p);
 	return p;
 }
 
 void *osc_mem_resize(void *ptr, size_t size){
 	if(!ptr){
-		return osc_mem_alloc_fp(size);
+		void *p = osc_mem_alloc_fp(size);
+		return p;
 	}
-	return osc_mem_resize_fp(ptr, size);
+	void *p = osc_mem_resize_fp(ptr, size);
+	return p;
 }
 
 void osc_mem_free(void *ptr){
-	//printf("free %p\n", ptr);
 	osc_mem_free_fp(ptr);
 }
 
@@ -209,7 +210,7 @@ size_t osc_sizeof(unsigned char typetag, char *data){
 			}
 			return size;
 		}
-	case '#':
+	case OSC_BUNDLE_TYPETAG:
 		return ntoh32(*((uint32_t *)data)) + 4;
 	default:
 		return osc_data_lengths[typetag];

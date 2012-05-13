@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 6,
 			"minor" : 0,
-			"revision" : 4
+			"revision" : 5
 		}
 ,
 		"rect" : [ 307.0, 44.0, 1198.0, 920.0 ],
@@ -27,6 +27,20 @@
 		"digest" : "",
 		"tags" : "",
 		"boxes" : [ 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-20",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 572.5, 418.0, 44.0, 20.0 ],
+					"text" : "o.print"
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
@@ -61,13 +75,13 @@
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"id" : "obj-29",
-					"linecount" : 11,
+					"linecount" : 12,
 					"maxclass" : "o.message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 68.5, 201.5, 353.0, 159.0 ],
-					"text" : "/doc/name o.let \n/doc/desc/short Declare local variables. \n/doc/desc/long o.let creates a local lexical environment in which data bound to OSC addresses can be manipulated without affecting the original data sent to o.let. \n/doc/ninlets 2 \n/doc/noutlets 2 \n/doc/desc/inlet/1 OSC packet. \n/doc/desc/inlet/2 OSC packet. \n/doc/desc/outlet/1 OSC Packet. \n/doc/seealso o.callpatch o.mappatch o.expr ",
+					"patching_rect" : [ 68.5, 201.5, 353.0, 173.0 ],
+					"text" : "/doc/name \"o.let\" \n/doc/desc/short \"Declare\" \"local\" \"variables.\" \n/doc/desc/long \"o.let\" \"creates\" \"a\" \"local\" \"lexical\" \"environment\" \"in\" \"which\" \"data\" \"bound\" \"to\" \"OSC\" \"addresses\" \"can\" \"be\" \"manipulated\" \"without\" \"affecting\" \"the\" \"original\" \"data\" \"sent\" \"to\" \"o.let.\" \n/doc/ninlets 2 \n/doc/noutlets 2 \n/doc/desc/inlet/1 \"OSC\" \"packet.\" \n/doc/desc/inlet/2 \"OSC\" \"packet.\" \n/doc/desc/outlet/1 \"OSC\" \"Packet.\" \n/doc/seealso \"o.callpatch\" \"o.mappatch\" \"o.expr\" ",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -280,8 +294,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 464.5, 472.0, 44.0, 20.0 ],
-					"text" : "o.expr"
+					"patching_rect" : [ 464.5, 472.0, 138.0, 20.0 ],
+					"text" : "o.expr eval(/olet/assign)"
 				}
 
 			}
@@ -380,8 +394,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 703.0, 281.5, 44.0, 20.0 ],
-					"text" : "o.expr"
+					"patching_rect" : [ 703.0, 281.5, 138.0, 20.0 ],
+					"text" : "o.expr eval(/olet/assign)"
 				}
 
 			}
@@ -394,8 +408,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 689.5, 159.5, 144.0, 20.0 ],
-					"text" : "prepend /olet/assign eval"
+					"patching_rect" : [ 689.5, 159.5, 119.0, 20.0 ],
+					"text" : "prepend /olet/assign"
 				}
 
 			}
@@ -679,6 +693,15 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-20", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-23", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-21", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
@@ -889,6 +912,10 @@
 			}
 , 			{
 				"name" : "o.message.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.print.mxo",
 				"type" : "iLaX"
 			}
  ]

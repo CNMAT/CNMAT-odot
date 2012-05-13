@@ -20,33 +20,35 @@
   MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 */
 
-/** 	\file osc_expr_func.r
+/** 	\file osc_expr_rec.r
 	\author John MacCallum
 
 */
-#ifndef __OSC_EXPR_FUNC_R__
-#define __OSC_EXPR_FUNC_R__
+#ifndef __OSC_EXPR_REC_R__
+#define __OSC_EXPR_REC_R__
 
 #ifdef __cplusplus
 extern "C" {
 #endif
+
+#include "osc_expr.h"
 
 
 /** \struct t_osc_expr_rec
     A record that associates a function name (string) with a function pointer.
 */
 struct _osc_expr_rec{
-	const char *name; /**< Name of the function as a C string. */
-	const char *signature;
+	char *name; /**< Name of the function as a C string. */
+	char *signature;
 	int num_required_args;
 	int num_optional_args; /**< -1 for any number. */
-	const char **required_args_names;
+	char **required_args_names;
 	int *required_args_types;
-	const char **optional_args_names;
+	char **optional_args_names;
 	int *optional_args_types;
-	const char **categories;
-	const char *docstring;
-	int (*func)(t_osc_expr*, int, t_osc_atom_ar_u**, t_osc_atom_ar_u**); /**< Function pointer */
+	char **categories;
+	char *docstring;
+	t_osc_expr_funcptr func;//int (*func)(t_osc_expr*, int, t_osc_atom_ar_u**, t_osc_atom_ar_u**); /**< Function pointer */
 	void *extra; /**< Extra field that can contain anything. */
 };
 
@@ -54,4 +56,4 @@ struct _osc_expr_rec{
 }
 #endif
 
-#endif // __OSC_EXPR_FUNC_R__
+#endif // __OSC_EXPR_REC_R__

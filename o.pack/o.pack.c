@@ -54,6 +54,7 @@ VERSION 1.1: renamed o.pack (from o.build)
 #include "ext.h"
 #include "ext_obex.h"
 #include "ext_obex_util.h"
+#include "ext_critical.h"
 #include "omax_util.h"
 #include "osc.h"
 #include "osc_mem.h"
@@ -71,6 +72,7 @@ typedef struct _opack{
 	t_osc_msg_u **messages;
 	t_osc_bndl_u *bndl;
 	int num_messages;
+	t_critical lock;
 	long inlet;
 	void **proxy;
 	char **inlet_assist_strings;
@@ -81,18 +83,24 @@ void *opack_class;
 void opack_outputBundle(t_opack *x);
 int opack_checkPosAndResize(char *buf, int len, char *pos);
 void opack_anything(t_opack *x, t_symbol *msg, short argc, t_atom *argv);
-void opack_int(t_opack *x, long l);
-void opack_float(t_opack *x, double f);
-void opack_free(t_opack *x);
-void *opack_new(t_symbol *msg, short argc, t_atom *argv);
 
-
-void opack_fullPacket(t_opack *x, long len, long ptr){
+//void opack_fullPacket(t_opack *x, long len, long ptr)
+void opack_fullPacket(t_opack *x, t_symbol *msg, int argc, t_atom *argv)
+{
+	// killme ////////////////////////
+	if(argc != 2){
+		return;
+	}
+	long len = atom_getlong(argv);
+	long ptr = atom_getlong(argv + 1);
+	//////////////////////////////////
+	critical_enter(x->lock);
 	osc_bundle_s_wrap_naked_message(len, ptr);
 	int inlet = proxy_getinlet((t_object *)x);
 	osc_message_u_clearArgs(x->messages[inlet]);
 	osc_message_u_appendBndl(x->messages[inlet], len, (char *)ptr);
-	int shouldoutput = inlet == 0;
+	critical_exit(x->lock);
+	int shouldoutput = (inlet == 0);
 #ifdef PAK
 	shouldoutput = 1;
 #endif
@@ -101,22 +109,27 @@ void opack_fullPacket(t_opack *x, long len, long ptr){
 	}
 }
 
-void opack_outputBundle(t_opack *x){
+void opack_outputBundle(t_opack *x)
+{
 	char *bndl = NULL;
 	long len = 0;
-
+	critical_enter(x->lock);
 	osc_bundle_u_serialize(x->bndl, &len, &bndl);
+	critical_exit(x->lock);
 	omax_util_outletOSC(x->outlet, len, bndl);
 	if(bndl){
 		osc_mem_free(bndl);
 	}
 }
 
-void opack_list(t_opack *x, t_symbol *msg, short argc, t_atom *argv){
+void opack_list(t_opack *x, t_symbol *msg, short argc, t_atom *argv)
+{
 	opack_anything(x, NULL, argc, argv);
 }
 
-void opack_doAnything(t_opack *x, t_symbol *msg, short argc, t_atom *argv, int shouldOutput, int messagenum){
+void opack_doAnything(t_opack *x, t_symbol *msg, short argc, t_atom *argv, int shouldOutput, int messagenum)
+{
+	critical_enter(x->lock);
 	osc_message_u_clearArgs(x->messages[messagenum]);
 	if(msg){
 		osc_message_u_appendString(x->messages[messagenum], msg->s_name);
@@ -135,13 +148,17 @@ void opack_doAnything(t_opack *x, t_symbol *msg, short argc, t_atom *argv, int s
 			break;
 		}
 	}
+	critical_exit(x->lock);
 	if(shouldOutput){
 		opack_outputBundle(x);
 	}
 }
 
-void opack_anything(t_opack *x, t_symbol *msg, short argc, t_atom *argv){
-	int inlet = proxy_getinlet((t_object *)x);
+void opack_anything(t_opack *x, t_symbol *msg, short argc, t_atom *argv)
+{
+	critical_enter(x->lock);
+	int inlet  = proxy_getinlet((t_object *)x);
+	critical_exit(x->lock);
 	int shouldoutput = inlet == 0;
 #ifdef PAK
 	shouldoutput = 1;
@@ -149,29 +166,49 @@ void opack_anything(t_opack *x, t_symbol *msg, short argc, t_atom *argv){
 	opack_doAnything(x, msg, argc, argv, shouldoutput, inlet);
 }
 
-void opack_int(t_opack *x, long l){
+void opack_int(t_opack *x, long l)
+{
 	t_atom a;
 	atom_setlong(&a, l);
 	opack_anything(x, NULL, 1, &a);
 }
 
-void opack_float(t_opack *x, double f){
+void opack_float(t_opack *x, double f)
+{
 	t_atom a;
 	atom_setfloat(&a, (float)f);
 	opack_anything(x, NULL, 1, &a);
 }
 
-void opack_bang(t_opack *x){
+void opack_bang(t_opack *x)
+{
 	opack_outputBundle(x);
 }
 
-void opack_set(t_opack *x, t_symbol *address){
+//void opack_set(t_opack *x, t_symbol *address)
+void opack_set(t_opack *x, t_symbol *msg, int argc, t_atom *argv)
+{
+	if(argc != 1){
+		object_error((t_object *)x, "bad arg count (%d)", argc);
+		return;
+	}
+	if(atom_gettype(argv) != A_SYM){
+		object_error((t_object *)x, "address must be a symbol");
+		return;
+	}
+	t_symbol *address = atom_getsym(argv);
+	if(!address){
+		object_error((t_object *)x, "you must provide an OSC address");
+		return;
+	}
+	critical_enter(x->lock);
 	int inlet = proxy_getinlet((t_object *)x);
 	t_osc_msg_u *m = x->messages[inlet];
 	t_osc_err ret;
-	if(ret = osc_message_u_setAddress(m, address->s_name)){
+	if((ret = osc_message_u_setAddress(m, address->s_name))){
 		object_error((t_object *)x, "%s", osc_error_string(ret));
 	}
+	critical_exit(x->lock);
 }
 
 void opack_doc(t_opack *x)
@@ -199,7 +236,8 @@ void opack_assist(t_opack *x, void *b, long io, long num, char *buf)
 			 OMAX_DOC_OUTLETS_DESC);
 }
 
-void opack_free(t_opack *x){
+void opack_free(t_opack *x)
+{
 	// this will free all the message pointers
 	if(x->bndl){
 		osc_bundle_u_free(x->bndl);
@@ -223,11 +261,13 @@ void opack_free(t_opack *x){
 		}
 	}
 	osc_mem_free(x->inlet_assist_strings);
+	critical_free(x->lock);
 }
 
-void *opack_new(t_symbol *msg, short argc, t_atom *argv){
+void *opack_new(t_symbol *msg, short argc, t_atom *argv)
+{
 	t_opack *x;
-	if(x = (t_opack *)object_alloc(opack_class)){
+	if((x = (t_opack *)object_alloc(opack_class))){
 		if(argc == 0){
 			object_error((t_object *)x, "you must supply at least 1 argument");
 			return NULL;
@@ -297,12 +337,14 @@ void *opack_new(t_symbol *msg, short argc, t_atom *argv){
 			x->proxy[i] = proxy_new((t_object *)x, count - i, &(x->inlet));
 		}
 		x->outlet = outlet_new(x, "FullPacket");
+		critical_new(&(x->lock));
 	}
 		   	
 	return(x);
 }
 
-int main(void){
+int main(void)
+{
 	char *name;
 #ifdef PAK
 	name = "o.pak";
@@ -310,9 +352,8 @@ int main(void){
 	name = "o.pack";
 #endif
 	t_class *c = class_new(name, (method)opack_new, (method)opack_free, sizeof(t_opack), 0L, A_GIMME, 0);
-    	//osc_set_mem((void *)sysmem_newptr, sysmem_freeptr, (void *)sysmem_resizeptr);
-	//class_addmethod(c, (method)opack_notify, "notify", A_CANT, 0);
-	class_addmethod(c, (method)opack_fullPacket, "FullPacket", A_LONG, A_LONG, 0);
+	//class_addmethod(c, (method)opack_fullPacket, "FullPacket", A_LONG, A_LONG, 0);
+	class_addmethod(c, (method)opack_fullPacket, "FullPacket", A_GIMME, 0);
 	class_addmethod(c, (method)opack_assist, "assist", A_CANT, 0);
 	class_addmethod(c, (method)opack_doc, "doc", 0);
 	class_addmethod(c, (method)opack_anything, "anything", A_GIMME, 0);
@@ -320,7 +361,8 @@ int main(void){
 	class_addmethod(c, (method)opack_float, "float", A_FLOAT, 0);
 	class_addmethod(c, (method)opack_int, "int", A_LONG, 0);
 	class_addmethod(c, (method)opack_bang, "bang", 0);
-	class_addmethod(c, (method)opack_set, "set", A_SYM, 0);
+	//class_addmethod(c, (method)opack_set, "set", A_SYM, 0);
+	class_addmethod(c, (method)opack_set, "set", A_GIMME, 0);
 
 	class_register(CLASS_BOX, c);
 	opack_class = c;

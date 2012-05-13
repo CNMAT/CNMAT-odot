@@ -60,15 +60,17 @@ typedef struct _ocoll{
 
 void *ocoll_class;
 
-void ocoll_fullPacket(t_ocoll *x, long len, long ptr);
-void ocoll_anything(t_ocoll *x, t_symbol *msg, int argc, t_atom *argv);
-void ocoll_bang(t_ocoll *x);
-void ocoll_free(t_ocoll *x);
-void *ocoll_new(t_symbol *msg, short argc, t_atom *argv);
-t_max_err ocoll_notify(t_ocoll *x, t_symbol *s, t_symbol *msg, void *sender, void *data);
 
-
-void ocoll_fullPacket(t_ocoll *x, long len, long ptr){
+//void ocoll_fullPacket(t_ocoll *x, long len, long ptr)
+void ocoll_fullPacket(t_ocoll *x, t_symbol *msg, int argc, t_atom *argv)
+{
+	// killme ////////////////////////
+	if(argc != 2){
+		return;
+	}
+	long len = atom_getlong(argv);
+	long ptr = atom_getlong(argv + 1);
+	//////////////////////////////////
 	osc_bundle_s_wrap_naked_message(len, ptr);
 	if(len == OSC_HEADER_SIZE){
 		// empty bundle
@@ -76,7 +78,7 @@ void ocoll_fullPacket(t_ocoll *x, long len, long ptr){
 	}
 	critical_enter(x->lock);
 	if(x->buffer_pos + len > x->buffer_len){
-		char *tmp = (char *)realloc(x->buffer, x->buffer_pos + len);
+		char *tmp = (char *)osc_mem_resize(x->buffer, x->buffer_pos + len);
 		if(!tmp){
 			object_error((t_object *)x, "Out of memory...sayonara max...");
 			critical_exit(x->lock);
@@ -98,10 +100,15 @@ void ocoll_fullPacket(t_ocoll *x, long len, long ptr){
 		}else{
 			// this function can resize its buffer, but we don't have to worry about that 
 			// since we already resized it above to accommidate the entire bundle
-			osc_bundle_s_replaceMessage(&(x->buffer_len),
-						    &(x->buffer),
-						    osc_message_array_s_get(match, 0),
-						    m);
+			int i;
+			for(i = 0; i < osc_message_array_s_getLen(match); i++){
+				t_osc_msg_s *mm = osc_message_array_s_get(match, i);
+				osc_bundle_s_replaceMessage(&(x->buffer_len),
+							    &(x->buffer_pos),
+							    &(x->buffer),
+							    mm,
+							    m);
+			}
 			osc_message_array_s_free(match);
 		}
 	}
@@ -128,7 +135,11 @@ void ocoll_anything(t_ocoll *x, t_symbol *msg, int argc, t_atom *argv){
 		osc_bundle_u_free(bndl_u);
 	}
 
-	ocoll_fullPacket(x, len, (long)buf);
+	//ocoll_fullPacket(x, len, (long)buf);
+	t_atom a[2];
+	atom_setlong(a, len);
+	atom_setlong(a + 1, (long)buf);
+	ocoll_fullPacket(x, NULL, 2, a);
 	if(buf){
 		osc_mem_free(buf);
 	}
@@ -173,7 +184,7 @@ void ocoll_free(t_ocoll *x){
 
 void *ocoll_new(t_symbol *msg, short argc, t_atom *argv){
 	t_ocoll *x;
-	if(x = (t_ocoll *)object_alloc(ocoll_class)){
+	if((x = (t_ocoll *)object_alloc(ocoll_class))){
 		x->outlet = outlet_new((t_object *)x, NULL);
 		x->buffer_len = 1024;
 		if(argc){
@@ -195,10 +206,10 @@ void *ocoll_new(t_symbol *msg, short argc, t_atom *argv){
 
 int main(void){
 	t_class *c = class_new("o.collect", (method)ocoll_new, (method)ocoll_free, sizeof(t_ocoll), 0L, A_GIMME, 0);
-	class_addmethod(c, (method)ocoll_fullPacket, "FullPacket", A_LONG, A_LONG, 0);
+	//class_addmethod(c, (method)ocoll_fullPacket, "FullPacket", A_LONG, A_LONG, 0);
+	class_addmethod(c, (method)ocoll_fullPacket, "FullPacket", A_GIMME, 0);
 	class_addmethod(c, (method)ocoll_doc, "doc", 0);
 	class_addmethod(c, (method)ocoll_assist, "assist", A_CANT, 0);
-	class_addmethod(c, (method)ocoll_notify, "notify", A_CANT, 0);
 	class_addmethod(c, (method)ocoll_anything, "anything", A_GIMME, 0);
 	class_addmethod(c, (method)ocoll_bang, "bang", 0);
 
@@ -211,11 +222,3 @@ int main(void){
 	return 0;
 }
 
-t_max_err ocoll_notify(t_ocoll *x, t_symbol *s, t_symbol *msg, void *sender, void *data){
-	t_symbol *attrname;
-
-        if(msg == gensym("attr_modified")){
-		attrname = (t_symbol *)object_method((t_object *)data, gensym("getname"));
-	}
-	return MAX_ERR_NONE;
-}

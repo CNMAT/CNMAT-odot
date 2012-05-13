@@ -81,7 +81,7 @@ int osc_dispatch_msg(t_osc_msg_s *msg,
 			t_osc_msg_it_s *msg_it = osc_msg_it_s_get(msg);
 			while(osc_msg_it_s_hasNext(msg_it)){
 				t_osc_atom_s *a = osc_msg_it_s_next(msg_it);
-				if(osc_atom_s_getTypetag(a) == '#'){
+				if(osc_atom_s_getTypetag(a) == OSC_BUNDLE_TYPETAG){
 					char *nested_bndl = osc_atom_s_getData(a);
 					char *sel_offset = selector + ao + 1;
 					osc_dispatch_impl_nest(sel_offset,

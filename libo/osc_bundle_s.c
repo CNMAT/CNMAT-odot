@@ -41,31 +41,53 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 #include "osc_array.h"
 
-t_osc_bndl_s *osc_bundle_s_alloc(long len, char *ptr){
+#define myprintf(st, args...)
+//#define myprintf(st, args...)printf(st, ##args)
+
+t_osc_bndl_s *osc_bundle_s_alloc(long len, char *ptr)
+{
 	t_osc_bndl_s *b = osc_mem_alloc(sizeof(t_osc_bndl_s));
 	b->len = len;
 	b->ptr = ptr;
 	return b;
 }
 
-t_osc_bndl_s *osc_bundle_s_allocEmptyBundle(void){
+t_osc_bndl_s *osc_bundle_s_allocEmptyBundle(void)
+{
 	t_osc_bndl_s *b = osc_mem_alloc(sizeof(t_osc_bndl_s));
 	osc_bundle_s_setBundleID_b(b);
 	return b;
 }
 
-size_t osc_bundle_s_getStructSize(void){
+t_osc_err osc_bundle_s_deepCopy(t_osc_bndl_s **dest, t_osc_bndl_s *src)
+{
+	if(!src){
+		return OSC_ERR_NOBUNDLE;
+	}
+	if(!(*dest)){
+		*dest = osc_mem_alloc(sizeof(t_osc_bndl_s));
+	}
+	(*dest)->ptr = osc_mem_alloc(src->len);
+	memcpy((*dest)->ptr, src->ptr, src->len);
+	(*dest)->len = src->len;
+	return OSC_ERR_NONE;
+}
+
+size_t osc_bundle_s_getStructSize(void)
+{
 	return sizeof(t_osc_bndl_s);
 }
 
-void osc_bundle_s_free(t_osc_bndl_s *bndl){
+void osc_bundle_s_free(t_osc_bndl_s *bndl)
+{
 	if(!bndl){
 		return;
 	}
 	osc_mem_free(bndl);
 }
 
-void osc_bundle_s_deepFree(t_osc_bndl_s *bndl){
+void osc_bundle_s_deepFree(t_osc_bndl_s *bndl)
+{
 	if(bndl){
 		if(bndl->ptr){
 			osc_mem_free(bndl->ptr);
@@ -74,33 +96,38 @@ void osc_bundle_s_deepFree(t_osc_bndl_s *bndl){
 	}
 }
 
-char *osc_bundle_s_getPtr(t_osc_bndl_s *bndl){
+char *osc_bundle_s_getPtr(t_osc_bndl_s *bndl)
+{
 	if(!bndl){
 		return NULL;
 	}
 	return bndl->ptr;
 }
 
-long osc_bundle_s_getLen(t_osc_bndl_s *bndl){
+long osc_bundle_s_getLen(t_osc_bndl_s *bndl)
+{
 	if(!bndl){
 		return 0;
 	}
 	return bndl->len;
 }
 
-void osc_bundle_s_setLen(t_osc_bndl_s *bndl, long len){
+void osc_bundle_s_setLen(t_osc_bndl_s *bndl, long len)
+{
 	if(bndl){
 		bndl->len = len;
 	}
 }
 
-void osc_bundle_s_setPtr(t_osc_bndl_s *bndl, char *ptr){
+void osc_bundle_s_setPtr(t_osc_bndl_s *bndl, char *ptr)
+{
 	if(bndl){
 		bndl->ptr = ptr;
 	}
 }
 
-t_osc_err osc_bundle_s_getMsgCount(int len, char *buf, int *count){
+t_osc_err osc_bundle_s_getMsgCount(int len, char *buf, int *count)
+{
 	*count = 0;
 	t_osc_err ret;
 	if((ret = osc_error_bundleSanityCheck(len, buf))){
@@ -113,6 +140,20 @@ t_osc_err osc_bundle_s_getMsgCount(int len, char *buf, int *count){
 		ptr += size + 4;
 	}
 	return OSC_ERR_NONE;
+}
+
+t_osc_msg_s *osc_bundle_s_getFirstMsg(t_osc_bndl_s *bndl)
+{
+	if(bndl){
+		char *ptr = osc_bundle_s_getPtr(bndl);
+		long len = osc_bundle_s_getLen(bndl);
+		if(ptr && len > OSC_HEADER_SIZE){
+			t_osc_msg_s *m = osc_message_s_alloc();
+			osc_message_s_wrap(m, ptr + OSC_HEADER_SIZE);
+			return m;
+		}
+	}
+	return NULL;
 }
 
 t_osc_err osc_bundle_s_getMessagesWithCallback(int len, char *buf, void (*f)(t_osc_msg_s*, void *), void *context)
@@ -244,13 +285,18 @@ t_osc_err osc_bundle_s_wrapMessage(long len, char *msg, long *bndllen, char **bn
 	return OSC_ERR_NONE;
 }
 
-t_osc_err osc_bundle_s_replaceMessage(long *len, char **bndl, t_osc_msg_s *oldmsg, t_osc_msg_s *newmsg)
+t_osc_err osc_bundle_s_replaceMessage(long *buflen,
+				      long *bufpos,
+				      char **bndl,
+				      t_osc_msg_s *oldmsg,
+				      t_osc_msg_s *newmsg)
 {
 	char *om = osc_message_s_getPtr(oldmsg);
 	char *nm = osc_message_s_getPtr(newmsg);
 	uint32_t old_size = ntoh32(*((uint32_t *)om));
 	uint32_t new_size = ntoh32(*((uint32_t *)nm));
-	char copy[*len - (old_size + 4) + (new_size + 4)];
+	long newbuflen = *bufpos - (old_size + 4) + (new_size + 4);
+	char copy[newbuflen];// = (char *)osc_mem_alloc(buflen * 2);
 	char *oldptr = *bndl, *newptr = copy;
 
 	memcpy(newptr, oldptr, om - *bndl);
@@ -261,19 +307,20 @@ t_osc_err osc_bundle_s_replaceMessage(long *len, char **bndl, t_osc_msg_s *oldms
 	newptr += new_size + 4;
 	oldptr += old_size + 4;
 
-	long r = *len - (oldptr - *bndl);
+	long r = *bufpos - (oldptr - *bndl);
 	if(r){
 		memcpy(newptr, oldptr, r);
 	}
-	if(sizeof(copy) > *len){
-		char *tmp = osc_mem_resize(*bndl, sizeof(copy));
+	if(newbuflen > *buflen){
+		char *tmp = osc_mem_resize(*bndl, newbuflen);
 		if(!tmp){
 			return OSC_ERR_OUTOFMEM;
 		}
 		*bndl = tmp;
+		*buflen = newbuflen;
 	}
-	memcpy(*bndl, copy, sizeof(copy));
-	*len = sizeof(copy);
+	*bufpos = newbuflen;
+	memcpy(*bndl, copy, newbuflen);
 	return OSC_ERR_NONE;
 }
 
@@ -289,17 +336,12 @@ t_osc_err osc_bundle_s_appendMessage(long *len, char **bndl, t_osc_msg_s *msg){
 	if(*bndl){
 		tmp = (char *)osc_mem_resize(*bndl, *len + msglen + 4);
 	}else{
-		int size;
-		if(msg){
-			size = msglen + 4;
-		}else{
-			size = 0;
-		}
+		int size = msglen + 4;
 		tmp = (char *)osc_mem_alloc(size + OSC_HEADER_SIZE);
 		if(!tmp){
 			return OSC_ERR_OUTOFMEM;
 		}
-		memset(tmp + OSC_IDENTIFIER_SIZE, '\0', OSC_IDENTIFIER_SIZE);
+		memset(tmp + OSC_IDENTIFIER_SIZE, '\0', 8); // clear timetag
 		osc_bundle_s_setBundleID(tmp);
 		*len = OSC_HEADER_SIZE;
 		*bndl = tmp;
@@ -321,7 +363,8 @@ t_osc_err osc_bundle_s_appendMessage_b(t_osc_bndl_s **bndl, t_osc_msg_s *msg){
 	return ret;
 }
 
-t_osc_err osc_bundle_s_setBundleID(char *buf){
+t_osc_err osc_bundle_s_setBundleID(char *buf)
+{
 	if(!buf){
 		return OSC_ERR_NOBUNDLE;
 	}
@@ -329,7 +372,8 @@ t_osc_err osc_bundle_s_setBundleID(char *buf){
 	return OSC_ERR_NONE;
 }
 
-t_osc_err osc_bundle_s_setBundleID_b(t_osc_bndl_s *bndl){
+t_osc_err osc_bundle_s_setBundleID_b(t_osc_bndl_s *bndl)
+{
 	if(!bndl){
 		return OSC_ERR_NOBUNDLE;
 	}
@@ -352,20 +396,46 @@ t_osc_err osc_bundle_s_setBundleID_b(t_osc_bndl_s *bndl){
 	return OSC_ERR_NONE;
 }
 
-int osc_bundle_s_strcmpID(char *buf){
+int osc_bundle_s_strcmpID(char *buf)
+{
 	return strncmp(buf, OSC_ID, OSC_ID_SIZE);
 }
 
 #ifdef OSC_2_0
-t_osc_timetag osc_bundle_s_getTimetag(int len, char *buf){
+t_osc_timetag osc_bundle_s_getTimetag(int len, char *buf)
+{
 }
 #else
-t_osc_timetag osc_bundle_s_getTimetag(int len, char *buf){
+t_osc_timetag osc_bundle_s_getTimetag(int len, char *buf)
+{
 	return 0;
 }
 #endif
 
-t_osc_err osc_bundle_s_deserialize(long len, char *ptr, t_osc_bndl_u **bndl){
+t_osc_bundle_s *osc_bundle_s_flatten(t_osc_bndl_s *src, int maxlevel, char *sep, int remove_enclosing_address_if_empty)
+{
+	if(!(src)){
+		return NULL;
+	}
+	t_osc_bndl_u *bu = NULL;
+	t_osc_bndl_u *flattened = NULL;
+	long len = 0;
+	char *ptr = NULL;
+	osc_bundle_s_deserialize(osc_bundle_s_getLen(src), osc_bundle_s_getPtr(src), &bu);
+	osc_bundle_u_flatten(&flattened, bu, maxlevel, sep, remove_enclosing_address_if_empty);
+	osc_bundle_u_serialize(flattened, &len, &ptr);
+	t_osc_bndl_s *b = osc_bundle_s_alloc(len, ptr);
+	if(bu){
+		osc_bundle_u_free(bu);
+	}
+	if(flattened){
+		osc_bundle_u_free(flattened);
+	}
+	return b;
+}
+
+t_osc_err osc_bundle_s_deserialize(long len, char *ptr, t_osc_bndl_u **bndl)
+{
 	t_osc_bndl_u *b = osc_bundle_u_alloc();
 	t_osc_bndl_it_s *it = osc_bndl_it_s_get(len, ptr);
 	while(osc_bndl_it_s_hasNext(it)){
@@ -381,7 +451,8 @@ t_osc_err osc_bundle_s_deserialize(long len, char *ptr, t_osc_bndl_u **bndl){
 
 extern t_osc_err osc_message_s_doFormat(t_osc_msg_s *m, long *buflen, long *bufpos, char **buf);
 
-t_osc_err osc_bundle_s_doFormat(long len, char *bndl, long *buflen, long *bufpos, char **buf){
+t_osc_err osc_bundle_s_doFormat(long len, char *bndl, long *buflen, long *bufpos, char **buf)
+{
 	if(len == OSC_HEADER_SIZE){
 		// empty bundle
 		return OSC_ERR_NONE;
@@ -396,7 +467,11 @@ t_osc_err osc_bundle_s_doFormat(long len, char *bndl, long *buflen, long *bufpos
 	return OSC_ERR_NONE;
 }
 
-t_osc_err osc_bundle_s_format(long len, char *bndl, long *buflen, char **buf){
+t_osc_err osc_bundle_s_format(long len, char *bndl, long *buflen, char **buf)
+{
+	if(!bndl){
+		return OSC_ERR_NOBUNDLE;
+	}
 	long mybuflen = 0, mybufpos = 0;
 	if(*buflen > 0){
 		if(*buf){
@@ -409,11 +484,14 @@ t_osc_err osc_bundle_s_format(long len, char *bndl, long *buflen, char **buf){
 	return e;
 }
 
-t_osc_array *osc_bundle_array_s_alloc(long len){
+t_osc_array *osc_bundle_array_s_alloc(long len)
+{
 	return osc_array_allocWithSize(len, sizeof(t_osc_bndl_s));
 }
 
-t_osc_err osc_bundle_s_union(long len1, char *bndl1, long len2, char *bndl2, long *len_out, char **bndl_out){
+
+t_osc_err osc_bundle_s_union(long len1, char *bndl1, long len2, char *bndl2, long *len_out, char **bndl_out)
+{
 	if((len1 == 0 && len2 == 0) || (len1 == OSC_HEADER_SIZE && len2 == OSC_HEADER_SIZE)){
 		if(!(*bndl_out)){
 			*bndl_out = osc_mem_alloc(OSC_HEADER_SIZE);
@@ -458,7 +536,8 @@ t_osc_err osc_bundle_s_union(long len1, char *bndl1, long len2, char *bndl2, lon
 	return OSC_ERR_NONE;
 }
 
-t_osc_err osc_bundle_s_intersection(long len1, char *bndl1, long len2, char *bndl2, long *len_out, char **bndl_out){
+t_osc_err osc_bundle_s_intersection(long len1, char *bndl1, long len2, char *bndl2, long *len_out, char **bndl_out)
+{
 	if(len1 == 0 || len2 == 0 || len1 == OSC_HEADER_SIZE || len2 == OSC_HEADER_SIZE){
 		if(!(*bndl_out)){
 			*bndl_out = osc_mem_alloc(OSC_HEADER_SIZE);
@@ -502,7 +581,8 @@ t_osc_err osc_bundle_s_intersection(long len1, char *bndl1, long len2, char *bnd
 	return OSC_ERR_NONE;
 }
 
-t_osc_err osc_bundle_s_difference(long len1, char *bndl1, long len2, char *bndl2, long *len_out, char **bndl_out){
+t_osc_err osc_bundle_s_difference(long len1, char *bndl1, long len2, char *bndl2, long *len_out, char **bndl_out)
+{
 	if((len1 == 0 && len2 == 0) || (len1 == OSC_HEADER_SIZE && len2 == OSC_HEADER_SIZE)){
 		if(!(*bndl_out)){
 			*bndl_out = osc_mem_alloc(OSC_HEADER_SIZE);

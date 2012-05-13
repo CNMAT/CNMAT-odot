@@ -90,7 +90,7 @@ int omax_util_getNumAtomsInOSCMsg(t_osc_msg_s *m)
 	while(osc_msg_it_s_hasNext(it)){
 		t_osc_atom_s *a = osc_msg_it_s_next(it);
 		switch(osc_atom_s_getTypetag(a)){
-		case '#':
+		case OSC_BUNDLE_TYPETAG:
 			n += 3; // FullPacket <len> <address>
 			break;
 		default:
@@ -147,7 +147,7 @@ void omax_util_oscMsg2MaxAtoms(t_osc_msg_s *m, t_atom *av)
 					atom_setlong(ptr++, (long)data[j]);
 				}
 			}
-		case '#':
+		case OSC_BUNDLE_TYPETAG:
 			{
 				char *data = osc_atom_s_getData(a);
 				atom_setsym(ptr++, gensym("FullPacket"));

@@ -85,10 +85,10 @@ typedef struct _oroute{
 	int num_selectors;
 	char **unique_selectors;
 	int num_unique_selectors;
+	int nbytes_selector; // length in bytes of the longest selector
 	int max_message; // set this to note that the event originated as a max message and not a FullPacket
 	char *schema;
 	long schemalen;
-	struct _oroute_context *context_array;
 	void **proxy;
 	long inlet;
 	char **inlet_assist_strings;
@@ -97,11 +97,9 @@ typedef struct _oroute{
 
 void *oroute_class;
 
-void oroute_fullPacket(t_oroute *x, long len, long ptr);
-void oroute_dispatch_rset(t_oroute *x, t_osc_rset *rset);
+void oroute_dispatch_rset(t_oroute *x, t_osc_rset *rset, int num_selectors, char **selectors);
 void oroute_anything(t_oroute *x, t_symbol *msg, short argc, t_atom *argv);
 void oroute_free(t_oroute *x);
-void oroute_set(t_oroute *x, long index, t_symbol *sym);
 void oroute_doSet(t_oroute *x, long index, t_symbol *sym);
 void oroute_makeSchema(t_oroute *x);
 void oroute_atomizeBundle(void *outlet, long len, char *bndl);
@@ -113,8 +111,16 @@ void *oroute_new(t_symbol *msg, short argc, t_atom *argv);
 
 t_symbol *ps_oscschemalist, *ps_FullPacket;
 
-void oroute_fullPacket(t_oroute *x, long len, long ptr)
+//void oroute_fullPacket(t_oroute *x, long len, long ptr)
+void oroute_fullPacket(t_oroute *x, t_symbol *msg, int argc, t_atom *argv)
 {
+	// killme ////////////////////////
+	if(argc != 2){
+		return;
+	}
+	long len = atom_getlong(argv);
+	long ptr = atom_getlong(argv + 1);
+	//////////////////////////////////
 	osc_bundle_s_wrap_naked_message(len, ptr);
 	if(x->num_selectors > 0){
 		t_osc_rset *rset = NULL;
@@ -122,14 +128,30 @@ void oroute_fullPacket(t_oroute *x, long len, long ptr)
 #if (defined SELECT) || (defined ATOMIZE)
 		strip_matched_portion_of_address = 0;
 #endif
-		osc_query_select(x->num_unique_selectors,
-				 x->unique_selectors,
+		critical_enter(x->lock);
+		int num_unique_selectors = x->num_unique_selectors;
+		char unique_selectors[num_unique_selectors][x->nbytes_selector + 1];
+		char *unique_selectors_ptrs[num_unique_selectors];
+		int num_selectors = x->num_selectors;
+		char selectors[num_selectors][x->nbytes_selector + 1];
+		char *selectors_ptrs[num_selectors];
+		for(int i = 0; i < num_unique_selectors; i++){
+			strcpy(unique_selectors[i], x->unique_selectors[i]);
+			unique_selectors_ptrs[i] = unique_selectors[i];
+		}
+		for(int i = 0; i < num_selectors; i++){
+			strcpy(selectors[i], x->selectors[i]);
+			selectors_ptrs[i] = selectors[i];
+		}
+		critical_exit(x->lock);
+		osc_query_select(num_unique_selectors,
+				 unique_selectors_ptrs,
 				 len,
 				 (char *)ptr,
 				 strip_matched_portion_of_address,
 				 &rset);
 		if(rset){
-			oroute_dispatch_rset(x, rset);
+			oroute_dispatch_rset(x, rset, num_selectors, selectors_ptrs);
 			osc_rset_free(rset);
 		}
 	}else{
@@ -141,7 +163,7 @@ void oroute_fullPacket(t_oroute *x, long len, long ptr)
 	}
 }
 
-void oroute_dispatch_rset(t_oroute *x, t_osc_rset *rset)
+void oroute_dispatch_rset(t_oroute *x, t_osc_rset *rset, int num_selectors, char **selectors)
 {
 	t_osc_bndl_s *unmatched = osc_rset_getUnmatched(rset);
 	if(unmatched){
@@ -156,8 +178,8 @@ void oroute_dispatch_rset(t_oroute *x, t_osc_rset *rset)
 #endif
 	}
 	int i;
-	for(i = 0; i < x->num_selectors; i++){
-		char *selector = x->selectors[i];
+	for(i = 0; i < num_selectors; i++){
+		char *selector = selectors[i];
 		t_osc_rset_result *res = osc_rset_select(rset, selector);
 		if(res){
 			t_osc_bndl_s *partial_matches = osc_rset_result_getPartialMatches(res);
@@ -236,7 +258,11 @@ void oroute_anything(t_oroute *x, t_symbol *msg, short argc, t_atom *argv){
 	for(i = 0; i < x->num_selectors; i++){
 		//int outletnum = x->num_selectors - i - 1;
 		int outletnum = i;
-		char *s = x->selectors[i];
+		critical_enter(x->lock);
+		int selectorlen = strlen(x->selectors[i]);
+		char s[selectorlen + 1];
+		strncpy(s, x->selectors[i], selectorlen + 1);
+		critical_exit(x->lock);
 		int ret, ao, po;
 		ret = osc_match(msg->s_name, s, &po, &ao);
 		// if the match failed because a trailing star at the end of the pattern didn't match,
@@ -246,7 +272,7 @@ void oroute_anything(t_oroute *x, t_symbol *msg, short argc, t_atom *argv){
 			star_at_end = 1;
 		}
 #if defined SELECT || defined ATOMIZE
-		if((ret & OSC_MATCH_ADDRESS_COMPLETE) && ((ret & OSC_MATCH_PATTERN_COMPLETE)) ||
+		if(((ret & OSC_MATCH_ADDRESS_COMPLETE) && (ret & OSC_MATCH_PATTERN_COMPLETE)) ||
 		   (po > 0 && ((msg->s_name[po] == '/') || star_at_end == 1))){
 			outlet_anything(x->outlets[outletnum], msg, argc, argv);
 			match++;
@@ -275,7 +301,16 @@ void oroute_anything(t_oroute *x, t_symbol *msg, short argc, t_atom *argv){
 	}
 }
 
-void oroute_set(t_oroute *x, long index, t_symbol *sym){
+//void oroute_set(t_oroute *x, long index, t_symbol *sym)
+void oroute_set(t_oroute *x, t_symbol *msg, int argc, t_atom *argv)
+{
+	// killme ////////////////////////
+	if(argc != 2){
+		return;
+	}
+	long index = atom_getlong(argv);
+	t_symbol *sym = atom_getsym(argv + 1);
+	//////////////////////////////////
 	oroute_doSet(x, index, sym);
 }
 
@@ -284,19 +319,25 @@ void oroute_doSet(t_oroute *x, long index, t_symbol *sym){
 		object_error((t_object *)x, "index (%d) out of bounds", index);
 		return;
 	}
+	critical_enter(x->lock);
+	int len = strlen(sym->s_name);
+	if(len > x->nbytes_selector){
+		x->nbytes_selector = len;
+	}
 	x->selectors[x->num_selectors - index] = sym->s_name;
 	oroute_makeUniqueSelectors(x->num_selectors,
 				   x->selectors,
 				   &(x->num_unique_selectors),
 				   &(x->unique_selectors));
 	oroute_makeSchema(x);
+	critical_exit(x->lock);
 }
 
 void oroute_doc(t_oroute *x)
 {
 	void *outlet = x->delegation_outlet;
 	if(x->num_selectors > 0){
-		x->outlets[x->num_selectors - 1];
+		outlet = x->outlets[x->num_selectors - 1];
 	}
 	_omax_doc_outletDoc(outlet,
 			    OMAX_DOC_NAME,		
@@ -332,6 +373,20 @@ void oroute_free(t_oroute *x)
 	}
 	if(x->schema){
 		osc_mem_free(x->schema);
+	}
+	for(int i = 0; i < x->num_selectors + 1; i++){
+		if(x->inlet_assist_strings[i]){
+			osc_mem_free(x->inlet_assist_strings[i]);
+		}
+		if(x->outlet_assist_strings[i]){
+			osc_mem_free(x->outlet_assist_strings[i]);
+		}
+	}
+	if(x->inlet_assist_strings){
+		osc_mem_free(x->inlet_assist_strings);
+	}
+	if(x->outlet_assist_strings){
+		osc_mem_free(x->outlet_assist_strings);
 	}
 }
 
@@ -398,7 +453,7 @@ void oroute_makeUniqueSelectors(int nselectors,
 void *oroute_new(t_symbol *msg, short argc, t_atom *argv)
 {
 	t_oroute *x;
-	if(x = (t_oroute *)object_alloc(oroute_class)){
+	if((x = (t_oroute *)object_alloc(oroute_class))){
 		critical_new(&(x->lock));
 		x->delegation_outlet = outlet_new(x, "FullPacket"); // unmatched outlet
 		x->outlets = (void **)malloc(argc * sizeof(void *));
@@ -412,6 +467,7 @@ void *oroute_new(t_symbol *msg, short argc, t_atom *argv)
 
 		x->inlet_assist_strings[0] = osc_mem_alloc(128);
 		sprintf(x->inlet_assist_strings[0], "OSC bundle or Max message");
+		x->nbytes_selector = 0;
 		int i;
 		for(i = 0; i < argc; i++){
 			x->outlets[i] = outlet_new(x, NULL);
@@ -422,6 +478,10 @@ void *oroute_new(t_symbol *msg, short argc, t_atom *argv)
 			}
 
 			char *selector = atom_getsym(argv + i)->s_name;
+			int len = strlen(selector);
+			if(len > x->nbytes_selector){
+				x->nbytes_selector = len;
+			}
 			x->selectors[x->num_selectors - i - 1] = selector;
 
 			x->inlet_assist_strings[i + 1] = osc_mem_alloc(128);
@@ -457,11 +517,13 @@ int main(void)
 	char *name = "o.route";
 #endif
 	t_class *c = class_new(name, (method)oroute_new, (method)oroute_free, sizeof(t_oroute), 0L, A_GIMME, 0);
-	class_addmethod(c, (method)oroute_fullPacket, "FullPacket", A_LONG, A_LONG, 0);
+	//class_addmethod(c, (method)oroute_fullPacket, "FullPacket", A_LONG, A_LONG, 0);
+	class_addmethod(c, (method)oroute_fullPacket, "FullPacket", A_GIMME, 0);
 	class_addmethod(c, (method)oroute_assist, "assist", A_CANT, 0);
 	class_addmethod(c, (method)oroute_doc, "doc", 0);
 	class_addmethod(c, (method)oroute_anything, "anything", A_GIMME, 0);
-	class_addmethod(c, (method)oroute_set, "set", A_LONG, A_SYM, 0);
+	//class_addmethod(c, (method)oroute_set, "set", A_LONG, A_SYM, 0);
+	class_addmethod(c, (method)oroute_set, "set", A_GIMME, 0);
 
 	class_register(CLASS_BOX, c);
 	oroute_class = c;

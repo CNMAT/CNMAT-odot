@@ -59,6 +59,7 @@ typedef t_osc_array t_osc_bundle_array_s, t_osc_bndl_ar_s;
 
 t_osc_bndl_s *osc_bundle_s_alloc(long len, char *ptr);
 t_osc_bndl_s *osc_bundle_s_allocEmptyBundle(void);
+t_osc_err osc_bundle_s_deepCopy(t_osc_bndl_s **dest, t_osc_bndl_s *src);
 size_t osc_bundle_s_getStructSize(void);
 void osc_bundle_s_free(t_osc_bndl_s *bndl);
 void osc_bundle_s_deepFree(t_osc_bndl_s *bndl);
@@ -67,6 +68,7 @@ long osc_bundle_s_getLen(t_osc_bndl_s *bndl);
 void osc_bundle_s_setLen(t_osc_bndl_s *bndl, long len);
 void osc_bundle_s_setPtr(t_osc_bndl_s *bndl, char *ptr);
 t_osc_err osc_bundle_s_getMsgCount(int len, char *buf, int *count);
+t_osc_msg_s *osc_bundle_s_getFirstMsg(t_osc_bndl_s *bndl);
 t_osc_err osc_bundle_s_getMessagesWithCallback(int len, char *buf, void (*f)(t_osc_msg_s*, void *), void *context);
 
 t_osc_err osc_bundle_s_addressIsBound(long len, char *buf, char *address, int fullmatch, int *res);
@@ -74,12 +76,17 @@ t_osc_err osc_bundle_s_addressExists(long len, char *buf, char *address, int ful
 t_osc_err osc_bundle_s_lookupAddress(int len, char *buf, const char *address, t_osc_array **osc_msg_s_array, int fullmatch);
 
 t_osc_err osc_bundle_s_wrapMessage(long len, char *msg, long *bndllen, char **bndl, char *alloc);
-t_osc_err osc_bundle_s_replaceMessage(long *len, char **bndl, t_osc_msg_s *oldmsg, t_osc_msg_s *newmsg);
+t_osc_err osc_bundle_s_replaceMessage(long *buflen,
+				      long *bufpos,
+				      char **bndl,
+				      t_osc_msg_s *oldmsg,
+				      t_osc_msg_s *newmsg);
 t_osc_err osc_bundle_s_appendMessage(long *len, char **bndl, t_osc_msg_s *msg);
 t_osc_err osc_bundle_s_appendMessage_b(t_osc_bndl_s **bndl, t_osc_msg_s *msg);
 t_osc_err osc_bundle_s_setBundleID(char *buf);
 t_osc_err osc_bundle_s_setBundleID_b(t_osc_bndl_s *bndl);
 int osc_bundle_s_strcmpID(char *buf);
+t_osc_bundle_s *osc_bundle_s_flatten(t_osc_bndl_s *src, int maxlevel, char *sep, int remove_enclosing_address_if_empty);
 t_osc_err osc_bundle_s_deserialize(long len, char *ptr, t_osc_bndl_u **bndl);
 t_osc_err osc_bundle_s_format(long len, char *bndl, long *buflen, char **buf);
 t_osc_err osc_bundle_s_union(long len1, char *bndl1, long len2, char *bndl2, long *len_out, char **bndl_out);

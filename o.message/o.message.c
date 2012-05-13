@@ -42,6 +42,9 @@
 #define OMAX_DOC_SEEALSO (char *[]){"message"}
 
 
+#define gensym_tr gensym
+#define str_tr(foo) foo
+
 #include <string.h>
 #include "../odot_version.h"
 
@@ -132,7 +135,6 @@ t_symbol *ps_newline, *ps_FullPacket;
 
 static t_class *omessage_class;
 
-void omessage_fullPacket(t_omessage *x, long len, long ptr);
 void omessage_doFullPacket(t_omessage *x, long len, long ptr);
 void omessage_paint(t_omessage *x, t_object *patcherview);
 void omessage_set(t_omessage *x, t_symbol *s, long ac, t_atom *av);
@@ -157,7 +159,17 @@ void omessage_inletinfo(t_omessage *x, void *b, long index, char *t);
 void *omessage_new(t_symbol *msg, short argc, t_atom *argv);
 
 
-void omessage_fullPacket(t_omessage *x, long len, long ptr){
+
+//void omessage_fullPacket(t_omessage *x, long len, long ptr)
+void omessage_fullPacket(t_omessage *x, t_symbol *msg, int argc, t_atom *argv)
+{
+	// killme ////////////////////////
+	if(argc != 2){
+		return;
+	}
+	long len = atom_getlong(argv);
+	long ptr = atom_getlong(argv + 1);
+	//////////////////////////////////
 	if(proxy_getinlet((t_object *)x) == 0){
 		return;
 	}
@@ -934,7 +946,7 @@ void *omessage_new(t_symbol *msg, short argc, t_atom *argv){
 		| JBOX_TEXTFIELD
 		;
 
-	if(x = (t_omessage *)object_alloc(omessage_class)){
+	if((x = (t_omessage *)object_alloc(omessage_class))){
 		jbox_new((t_jbox *)x, boxflags, argc, argv); 
  		x->ob.b_firstin = (void *)x; 
 		x->outlet = outlet_new(x, NULL);
@@ -963,9 +975,7 @@ void *omessage_new(t_symbol *msg, short argc, t_atom *argv){
 
 int main(void){
 	common_symbols_init();
-	//jpatcher_syms_init();
 	t_class *c = class_new("o.message", (method)omessage_new, (method)omessage_free, sizeof(t_omessage), 0L, A_GIMME, 0);
-	//osc_set_mem((void *)sysmem_newptr, sysmem_freeptr, (void *)sysmem_resizeptr);
 	alias("o.m");
 
 	c->c_flags |= CLASS_FLAG_NEWDICTIONARY; 
@@ -982,7 +992,8 @@ int main(void){
 	class_addmethod(c, (method)omessage_assist, "assist", A_CANT, 0);
 	class_addmethod(c, (method)omessage_doc, "doc", 0);
 	class_addmethod(c, (method)stdinletinfo, "inletinfo", A_CANT, 0);
-	class_addmethod(c, (method)omessage_fullPacket, "FullPacket", A_LONG, A_LONG, 0);
+	//class_addmethod(c, (method)omessage_fullPacket, "FullPacket", A_LONG, A_LONG, 0);
+	class_addmethod(c, (method)omessage_fullPacket, "FullPacket", A_GIMME, 0);
 	class_addmethod(c, (method)omessage_clear, "clear", 0);	
 
 	class_addmethod(c, (method)omessage_key, "key", A_CANT, 0);

@@ -40,20 +40,14 @@ struct _osc_expr{
 	struct _osc_expr *next; 
 };
 
-struct _osc_expr_func{
-	char *name;
-	t_osc_atom_u *paramnames; //linked list
-	struct _osc_expr *exprs;
-};
-
 struct _osc_expr_arg{
 	union arg{
 		t_osc_atom_u *atom;
 		struct _osc_expr *expr;
 		char *osc_address;
+		struct _osc_expr_rec *func;
 	} arg;
 	int type;
-	int slot_num; // if this arg is a variable, this will be its corresponding parameter slot.
 	struct _osc_expr_arg *next;
 };
 

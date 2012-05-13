@@ -1,8 +1,8 @@
 #+STARTUP: showall
 #+TODO: TODO(t) STARTED(s) WAITING(w) BUG(b) | DONE(d) DELEGATED(e) FIXED(f)
 #+begin_src C :tangle odot_version.h
-#define ODOT_VERSION "1.0b" 
-#define ODOT_RELEASE_DATE "[2012-03-06 Tue]"
+#define ODOT_VERSION "1.1.1b" 
+#define ODOT_RELEASE_DATE "[2012-05-10 Thu]"
 #define ODOT_COPYRIGHT_YEARS "2008-12"
 #define ODOT_AUTHORS "John MacCallum, Adrian Freed"
 #define ODOT_COPYRIGHT_STRING "Regents of the University of California. All rights reserved."
@@ -18,6 +18,7 @@
 to be able to fork releases of them that are stable.
 *** Not urgent, but the eval code in osc_expr.c needs to be separated from the function code.
 ** Bugs
+*** o.expr
 *** o.pack
 **** BUG The set message should produce an error when the new address is a duplicate of an existing one
 **** BUG The address '/' is invalid and should produce an error.  use the sanity check methods in osc_error
@@ -51,12 +52,15 @@ this may be a lifelong project...
 **** TODO implement compile-time argument type-checking.  this is most relevant with strings and a few functions
 like bound() that need OSC addresses
 **** TODO all functions that can't handle strings need to check for them and complain when they find them
-**** TODO get_index and assign_to_index should operate on strings as arrays
+**** TODO nth and assign_to_index should operate on strings as arrays
 **** TODO sprintf()
-**** TODO reduce()
-**** TODO a single osc address should be a valid expression
-**** TODO sort
 **** TODO dolist and dotimes
+**** TODO when a lexical environment is finished, any changes to variables in then enclosing environment
+should persist
+**** BUG value() needs to post an error if its argument (after evaluation if the arg is an expr) is not an address.
+**** TODO support the '.' operator on the left side of an assignment
+**** TODO let() (this is just syntatic sugar for (lambda...)
+**** TODO arg check apply lambda
 *** o.difference/intersection/union
 **** TODO o.difference/intersection/union should take arguments that define a message
 *** new objects
@@ -66,14 +70,50 @@ like bound() that need OSC addresses
 *** The fact that o.route can output both bundles and Max data is a source of bugs.  Rewrite o.route?  
 New objects with more explicit behavior.
 
-** Bugs Fixed
-
-*** o.expr
-
-
-* VERSION 1.1
+* VERSION 1.1.1b
+Released [2012-05-10 Thu]
 ** General
 ** Bugs Fixed
+*** o.expr
+**** FIXED anonymous functions now evaluate multiple expressions properly
+
+
+* VERSION 1.1b
+Released [2012-05-09 Wed]
+** General
+*** Much better support for strings, double-quotes, and meta characters in general.  Double and single quotes,
+dollar signs, and backslashes are all meta characters that are interpreted by the parser.  Escaping
+them now works properly.  These characters are escaped when displayed.
+*** o.expr
+**** DONE sort
+**** DONE first() last() rest() butlast()
+**** DONE join() 
+**** Basic support for higher order apply() map() and reduce() functions that support anonymous (lambda) functions.
+**** o.expr now supports the '.' operator for getting messages out of nested bundles (see below), but not
+on the left side of an assignment operator.
+**** DONE split()
+*** o.flatten
+**** New object flattens bundles with nested bundles.
+*** o.route/select/atomize
+**** added the '.' operator to selectors to represent nested bundles.  [o.route /foo./bar] means "get the
+message with address /bar that's in a bundle in the data section of the message with address /foo"
+** Bugs Fixed
+*** o.message
+**** FIXED typing a \ and clicking out of the box causes a crash
+*** General
+**** All objects have been rewritten to avoid the use of static types in the class_addmethod() functions 
+due to a long standing bug with static types in Max.
+*** o.collect
+**** FIXED bug in the FullPacket routine when an incoming packet has an address that already exists
+*** o.route
+**** FIXED o.route (and friends) now protects against reentrancy properly.
+*** o.expr
+**** FIXED tokenize() is crashy
+**** FIXED value() now works as expected.  it simply returns the data, if any, bound to an address if it exists.
+If the argument to value() is an expression, that expression is evaluated and is expected to return 
+an address which is then substituted for its data.  In previous versions, if the data associated
+with an address was an address, the second address would be substituted for its data which was a bug.
+**** FIXED scale() no longer returns NaN if min_out == max_out
 
 * VERSION 1.0b
 Released: [2012-03-06 Tue]

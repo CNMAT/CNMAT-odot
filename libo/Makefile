@@ -1,4 +1,4 @@
-LIBO_BASENAMES = osc_match osc_timetag osc_bundle_s osc_bundle_u osc_bundle_iterator_s osc_bundle_iterator_u osc_error osc_mem osc_message_s osc_message_u osc_message_iterator_s osc_message_iterator_u osc_atom_s osc_atom_u osc_array osc_atom_array_s osc_atom_array_u osc_expr osc_dispatch osc_hashtab osc_util osc_rset osc_query osc_strfmt contrib/strptime
+LIBO_BASENAMES = osc_match osc_timetag osc_bundle_s osc_bundle_u osc_bundle_iterator_s osc_bundle_iterator_u osc_error osc_mem osc_message_s osc_message_u osc_message_iterator_s osc_message_iterator_u osc_atom_s osc_atom_u osc_array osc_atom_array_s osc_atom_array_u osc_expr osc_vtable osc_dispatch osc_hashtab osc_util osc_rset osc_query osc_strfmt osc_expr_rec contrib/strptime
 
 # to be removed
 #LIBO_BASENAMES += osc_bundle osc_message
@@ -21,7 +21,8 @@ LIBO_PARSER_OBJECTS = $(foreach OBJ, $(LIBO_PARSER_BASENAMES), $(OBJ).o)
 
 LIBO_OBJECTS = $(LIBO_OFILES) $(LIBO_SCANNER_OBJECTS) $(LIBO_PARSER_OBJECTS)
 
-CFLAGS += -Wall -Wno-trigraphs -fno-strict-aliasing -O3 -funroll-loops
+RELEASE-CFLAGS += -Wall -Wno-trigraphs -fno-strict-aliasing -O3 -funroll-loops
+DEBUG-CFLAGS += -Wall -Wno-trigraphs -fno-strict-aliasing -O0 -g -funroll-loops
 
 MAC_SYSROOT = MacOSX10.7.sdk 
 MAC-CFLAGS = -arch i386 -mmacosx-version-min=10.5 -isysroot /Developer/SDKs/$(MAC_SYSROOT)
@@ -29,11 +30,20 @@ WIN-CFLAGS = -mno-cygwin -DWIN_VERSION
 
 MAC-INCLUDES = -I/System/Library/Frameworks/Carbon.framework/Headers -I/System/Library/Frameworks/CoreServices.framework/Headers
 
+all: CFLAGS += $(RELEASE-CFLAGS)
 all: CFLAGS += $(MAC-CFLAGS)
 all: CC = clang
 all: I = $(MAC-INCLUDES)
-all: $(LIBO_CFILES) $(LIBO_HFILES) $(LIBO_SCANNER_CFILES) $(LIBO_PARSER_CFILES) libo.a
-all: LIBTOOL = libtool -static -o libo.a $(LIBO_OBJECTS) /usr/lib/libfl.a
+all: $(LIBO_CFILES) $(LIBO_HFILES) $(LIBO_SCANNER_CFILES) $(LIBO_PARSER_CFILES) libo.a libo.dylib
+all: STATIC-LINK = libtool -static -o libo.a $(LIBO_OBJECTS) /usr/lib/libfl.a
+all: DYNAMIC-LINK = clang -dynamiclib $(MAC-CFLAGS) -single_module -compatibility_version 1 -current_version 1 -o libo.dylib $(LIBO_OBJECTS)
+
+debug: CFLAGS += $(DEBUG-CFLAGS)
+debug: CFLAGS += $(MAC-CFLAGS)
+debug: CC = clang
+debug: I = $(MAC-INCLUDES)
+debug: $(LIBO_CFILES) $(LIBO_HFILES) $(LIBO_SCANNER_CFILES) $(LIBO_PARSER_CFILES) libo.a
+debug: LIBTOOL = libtool -static -o libo.a $(LIBO_OBJECTS) /usr/lib/libfl.a
 
 win: CFLAGS += $(WIN-CFLAGS)
 win: CC = gcc-3
@@ -44,9 +54,13 @@ linux: CC = gcc
 linux: $(LIBO_CFILES) $(LIBO_HFILES) $(LIBO_SCANNER_CFILES) $(LIBO_PARSER_CFILES) libo.a
 linux: LIBTOOL = libtool -static -o libo.a $(LIBO_OBJECTS) /usr/lib/libfl.a
 
-libo.a: $(LIBO_OBJECTS) #$(LIBO_CFILES) $(LIBO_HFILES) $(LIBO_SCANNER_CFILES) $(LIBO_PARSER_CFILES)
+libo.a: $(LIBO_OBJECTS)
 	rm -f libo.a
-	$(LIBTOOL)
+	$(STATIC-LINK)
+
+libo.dylib: $(LIBO_OBJECTS) 
+	rm -f libo.dylib
+	$(DYNAMIC-LINK)
 
 %.o: %.c 
 	$(CC) $(CFLAGS) $(I) -c -o $(basename $@).o $(basename $@).c

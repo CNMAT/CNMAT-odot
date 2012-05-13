@@ -88,7 +88,8 @@ static uint32_t osc_hashtab_getPrime(uint32_t n){
 	return primes[i];
 }
 
-static void osc_hashtab_rehash(t_osc_hashtab *ht){
+static void osc_hashtab_rehash(t_osc_hashtab *ht)
+{
 	if(!ht){
 		return;
 	}

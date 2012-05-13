@@ -94,18 +94,11 @@ typedef struct _ovar{
 
 void *ovar_class;
 
-void ovar_fullPacket(t_ovar *x, long len, long ptr);
 void ovar_clear(t_ovar *x);
 void ovar_anything(t_ovar *x, t_symbol *msg, int argc, t_atom *argv);
 
-void ovar_bang(t_ovar *x);
-
-void ovar_free(t_ovar *x);
-void *ovar_new(t_symbol *msg, short argc, t_atom *argv);
-t_max_err ovar_notify(t_ovar *x, t_symbol *s, t_symbol *msg, void *sender, void *data);
-
-
-void ovar_doFullPacket(t_ovar *x, long len, long ptr, long inlet){
+void ovar_doFullPacket(t_ovar *x, long len, long ptr, long inlet)
+{
 	osc_bundle_s_wrap_naked_message(len, ptr);
 	if(inlet == 1){
 		if(len > 0){
@@ -114,6 +107,7 @@ void ovar_doFullPacket(t_ovar *x, long len, long ptr, long inlet){
 				x->bndl = osc_mem_resize(x->bndl, len);
 				if(!(x->bndl)){
 					object_error((t_object *)x, "ran out of memory!\n");
+					critical_exit(x->lock);
 					return;
 				}
 				x->buflen = len;
@@ -149,6 +143,7 @@ void ovar_doFullPacket(t_ovar *x, long len, long ptr, long inlet){
 				x->bndl = osc_mem_resize(x->bndl, len);
 				if(!(x->bndl)){
 					object_error((t_object *)x, "ran out of memory!\n");
+					critical_exit(x->lock);
 					return;
 				}
 				x->buflen = len;
@@ -162,17 +157,29 @@ void ovar_doFullPacket(t_ovar *x, long len, long ptr, long inlet){
 	}
 }
 
-void ovar_fullPacket(t_ovar *x, long len, long ptr){
-	ovar_doFullPacket(x, len, ptr, proxy_getinlet((t_object *)x));
+//void ovar_fullPacket(t_ovar *x, long len, long ptr)
+void ovar_fullPacket(t_ovar *x, t_symbol *msg, int argc, t_atom *argv)
+{
+	// killme ////////////////////////
+	if(argc != 2){
+		return;
+	}
+	long len = atom_getlong(argv);
+	long ptr = atom_getlong(argv + 1);
+	//////////////////////////////////
+	int inlet = proxy_getinlet((t_object *)x);
+	ovar_doFullPacket(x, len, ptr, inlet);
 }
 
-void ovar_clear(t_ovar *x){
+void ovar_clear(t_ovar *x)
+{
 	critical_enter(x->lock);
 	x->len = 0;
 	critical_exit(x->lock);
 }
 
-void ovar_anything(t_ovar *x, t_symbol *msg, int argc, t_atom *argv){
+void ovar_anything(t_ovar *x, t_symbol *msg, int argc, t_atom *argv)
+{
 	t_symbol *address = NULL;
 	if(msg){
 		if(*(msg->s_name) != '/'){
@@ -211,25 +218,17 @@ void ovar_anything(t_ovar *x, t_symbol *msg, int argc, t_atom *argv){
 	if(bndl_u){
 		osc_bundle_u_free(bndl_u);
 	}
-
-	/*
-	int len = omax_util_get_bundle_size_for_atoms(address, argc, argv);
-	char buf[len];
-	memset(buf, '\0', len);
-	omax_util_encode_atoms(buf + 16, address, argc, argv);
-	strncpy(buf, "#bundle\0", 8);
-	*/
 	ovar_doFullPacket(x, len, (long)buf, proxy_getinlet((t_object *)x));
 }
 
-void ovar_bang(t_ovar *x){
-	if(proxy_getinlet((t_object *)x) == 1){
+void ovar_bang(t_ovar *x)
+{
+	int inlet = proxy_getinlet((t_object *)x);
+	if(inlet == 1){
 		return;
 	}
 #if (defined UNION || defined INTERSECTION || defined DIFFERENCE)
-	//char emptybndl[] = {'#', 'b', 'u', 'n', 'd', 'l', 'e', '\0', '\0', '\0', '\0', '\0', '\0', '\0', '\0', '\0'};
-	//ovar_fullPacket(x, sizeof(emptybndl), (long)emptybndl);
-	ovar_fullPacket(x, OSC_HEADER_SIZE, (long)x->emptybndl);
+	ovar_doFullPacket(x, OSC_HEADER_SIZE, (long)x->emptybndl, inlet);
 #else
 	if(x->len){
 		critical_enter(x->lock);
@@ -254,7 +253,8 @@ void ovar_assist(t_ovar *x, void *b, long io, long num, char *buf)
 	omax_doc_assist(io, num, buf);
 }
 
-void ovar_free(t_ovar *x){	
+void ovar_free(t_ovar *x)
+{	
 	object_free(x->proxy);
 	if(x->bndl){
 		osc_mem_free(x->bndl);
@@ -262,9 +262,10 @@ void ovar_free(t_ovar *x){
 	critical_free(x->lock);
 }
 
-void *ovar_new(t_symbol *msg, short argc, t_atom *argv){
+void *ovar_new(t_symbol *msg, short argc, t_atom *argv)
+{
 	t_ovar *x;
-	if(x = (t_ovar *)object_alloc(ovar_class)){
+	if((x = (t_ovar *)object_alloc(ovar_class))){
 		x->outlet = outlet_new((t_object *)x, "FullPacket");
 		x->proxy = proxy_new((t_object *)x, 1, &(x->inlet));
 		critical_new(&(x->lock));
@@ -273,8 +274,6 @@ void *ovar_new(t_symbol *msg, short argc, t_atom *argv){
 		x->bndl = NULL;
 		memset(x->emptybndl, '\0', OSC_HEADER_SIZE);
 		osc_bundle_s_setBundleID(x->emptybndl);
-
-		//attr_args_process(x, argc, argv);
 
 #if !defined UNION && !defined INTERSECTION && !defined DIFFERENCE
 		int nargs = attr_args_offset(argc, argv);
@@ -302,13 +301,6 @@ void *ovar_new(t_symbol *msg, short argc, t_atom *argv){
 				if(bndl_u){
 					osc_bundle_u_free(bndl_u);
 				}
-				/*
-				x->len = x->buflen = omax_util_get_bundle_size_for_atoms(address, argc - 1, argv + 1);
-				x->bndl = (char *)osc_mem_alloc(x->buflen);
-				memset(x->bndl, '\0', x->len);
-				osc_bundle_s_setBundleID(x->bndl);
-				omax_util_encode_atoms(x->bndl + OSC_HEADER_SIZE, address, argc - 1, argv + 1);
-				*/
 			}else{
 				object_error((t_object *)x, "arguments must begin with a valid OSC address");
 				return NULL;
@@ -330,10 +322,10 @@ int main(void){
 #else
 	t_class *c = class_new("o.var", (method)ovar_new, (method)ovar_free, sizeof(t_ovar), 0L, A_GIMME, 0);
 #endif
-	class_addmethod(c, (method)ovar_fullPacket, "FullPacket", A_LONG, A_LONG, 0);
+	//class_addmethod(c, (method)ovar_fullPacket, "FullPacket", A_LONG, A_LONG, 0);
+	class_addmethod(c, (method)ovar_fullPacket, "FullPacket", A_GIMME, 0);
 	class_addmethod(c, (method)ovar_assist, "assist", A_CANT, 0);
 	class_addmethod(c, (method)ovar_doc, "doc", 0);
-	//class_addmethod(c, (method)ovar_notify, "notify", A_CANT, 0);
 	class_addmethod(c, (method)ovar_bang, "bang", 0);
 	class_addmethod(c, (method)ovar_anything, "anything", A_GIMME, 0);
 
@@ -348,11 +340,3 @@ int main(void){
 	return 0;
 }
 
-t_max_err ovar_notify(t_ovar *x, t_symbol *s, t_symbol *msg, void *sender, void *data){
-	t_symbol *attrname;
-
-        if(msg == gensym("attr_modified")){
-		attrname = (t_symbol *)object_method((t_object *)data, gensym("getname"));
-	}
-	return MAX_ERR_NONE;
-}

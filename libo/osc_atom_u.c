@@ -52,7 +52,7 @@ void osc_atom_u_free(t_osc_atom_u *a){
 		if(a->w.s){
 			osc_mem_free(a->w.s);
 		}
-	}else if(a->typetag == '#'){
+	}else if(a->typetag == OSC_BUNDLE_TYPETAG){
 		if(a->alloc){ // should always be true
 			osc_mem_free(osc_bundle_s_getPtr(a->w.bndl));
 			osc_bundle_s_free(a->w.bndl);
@@ -77,6 +77,12 @@ void osc_atom_u_copy(t_osc_atom_u **dest, t_osc_atom_u *src){
 		{
 			aa->w.s = osc_mem_alloc(strlen(src->w.s) + 1);
 			strcpy(aa->w.s, src->w.s);
+		}
+		break;
+	case OSC_BUNDLE_TYPETAG:
+		{
+			aa->w.bndl = NULL;
+			osc_bundle_s_deepCopy(&(aa->w.bndl), src->w.bndl);
 		}
 		break;
 	default:
@@ -595,9 +601,9 @@ int osc_atom_u_getStringLen(t_osc_atom_u *a)
 	case 'U': // unsigned 16-bit int
 		return osc_strfmt_uint16(NULL, 0, a->w.U);
 	case 'T': // true
-		return osc_strfmt_bool(NULL, 0, 'F');
-	case 'F': // false
 		return osc_strfmt_bool(NULL, 0, 'T');
+	case 'F': // false
+		return osc_strfmt_bool(NULL, 0, 'F');
 	case 'N': // NULL
 		return osc_strfmt_null(NULL, 0);
 	}
@@ -710,25 +716,27 @@ int osc_atom_u_getBool(t_osc_atom_u *a){
 		return !(a->w.u == 0);
 	case 'U':
 		return !(a->w.U == 0);
-	case '#':
+	case OSC_BUNDLE_TYPETAG:
 		// uh...
 		return 0;
 	}
 	return 0;
 }
 
-t_osc_bndl_s *osc_atom_u_getBndl(t_osc_atom_u *a){
+t_osc_bndl_s *osc_atom_u_getBndl(t_osc_atom_u *a)
+{
 	if(!a){
 		return NULL;
 	}
-	if(a->typetag == '#'){
+	if(a->typetag == OSC_BUNDLE_TYPETAG){
 		return a->w.bndl;
 	}else{
 		return NULL;
 	}
 }
 
-long osc_atom_u_getBndlLen(t_osc_atom_u *a){
+long osc_atom_u_getBndlLen(t_osc_atom_u *a)
+{
 	t_osc_bndl_s *b = osc_atom_u_getBndl(a);
 	if(b){
 		return osc_bundle_s_getLen(a->w.bndl);
@@ -861,7 +869,8 @@ void osc_atom_u_setStringPtr(t_osc_atom_u *a, char *v){
 	a->typetag = 's';
 }
 
-void osc_atom_u_setBool(t_osc_atom_u *a, int v){
+void osc_atom_u_setBool(t_osc_atom_u *a, int v)
+{
 	if(!a){
 		return;
 	}
@@ -873,7 +882,8 @@ void osc_atom_u_setBool(t_osc_atom_u *a, int v){
 	}
 }
 
-void osc_atom_u_setTrue(t_osc_atom_u *a){
+void osc_atom_u_setTrue(t_osc_atom_u *a)
+{
 	if(!a){
 		return;
 	}
@@ -881,7 +891,8 @@ void osc_atom_u_setTrue(t_osc_atom_u *a){
 	a->typetag = 'T';
 }
 
-void osc_atom_u_setFalse(t_osc_atom_u *a){
+void osc_atom_u_setFalse(t_osc_atom_u *a)
+{
 	if(!a){
 		return;
 	}
@@ -889,7 +900,8 @@ void osc_atom_u_setFalse(t_osc_atom_u *a){
 	a->typetag = 'F';
 }
 
-void osc_atom_u_setNull(t_osc_atom_u *a){
+void osc_atom_u_setNull(t_osc_atom_u *a)
+{
 	if(!a){
 		return;
 	}
@@ -897,7 +909,8 @@ void osc_atom_u_setNull(t_osc_atom_u *a){
 	a->typetag = 'N';
 }
 
-void osc_atom_u_setBndl(t_osc_atom_u *a, long len, char *ptr){
+void osc_atom_u_setBndl(t_osc_atom_u *a, long len, char *ptr)
+{
 	if(!a){
 		return;
 	}
@@ -906,11 +919,12 @@ void osc_atom_u_setBndl(t_osc_atom_u *a, long len, char *ptr){
 	memcpy(copy, ptr, len);
 	t_osc_bndl_s *bndl = osc_bundle_s_alloc(len, copy);
 	a->w.bndl = bndl;
-	a->typetag = '#';
+	a->typetag = OSC_BUNDLE_TYPETAG;
 	a->alloc = 1;
 }
 
-size_t osc_atom_u_sizeof(t_osc_atom_u *a){
+size_t osc_atom_u_sizeof(t_osc_atom_u *a)
+{
 	if(!a){
 		return 0;
 	}
@@ -933,13 +947,14 @@ size_t osc_atom_u_sizeof(t_osc_atom_u *a){
 	case 'F':
 	case 'N':
 		return 0;
-	case '#':
+	case OSC_BUNDLE_TYPETAG:
 		return ntoh32(*((uint32_t *)(a->w.bndl)));
 	}
 	return 0;
 }
 
-t_osc_err osc_atom_u_doSerialize(t_osc_atom_u *a, long *buflen, long *bufpos, char **buf){
+t_osc_err osc_atom_u_doSerialize(t_osc_atom_u *a, long *buflen, long *bufpos, char **buf)
+{
 	if(!a){
 		return OSC_ERR_NOBUNDLE;
 	}
@@ -984,17 +999,17 @@ t_osc_err osc_atom_u_doSerialize(t_osc_atom_u *a, long *buflen, long *bufpos, ch
 			(*bufpos)++;
 		}
 		break;
-	case '#':
+	case OSC_BUNDLE_TYPETAG:
 		{
 			long l = osc_bundle_s_getLen(a->w.bndl);
 			char *p = osc_bundle_s_getPtr(a->w.bndl);
-			if((*bufpos) - (*buflen) < l + 4){
-				(*buf) = osc_mem_resize((*buf), (*buflen) + l);
+			if((*buflen) - (*bufpos) < l + 4){
+				(*buf) = osc_mem_resize((*buf), (*buflen) + l + 4);
 				if(!(*buf)){
 					return OSC_ERR_OUTOFMEM;
 				}
-				memset((*buf) + (*buflen), '\0', l);
-				(*buflen) += l;
+				memset((*buf) + (*buflen), '\0', l + 4);
+				(*buflen) += l + 4;
 			}
 			*((uint32_t *)((*buf) + (*bufpos))) = hton32(l);
 			(*bufpos) += 4;
@@ -1037,7 +1052,7 @@ t_osc_err osc_atom_u_doFormat(t_osc_atom_u *a, long *buflen, long *bufpos, char 
 	if(!a){
 		return OSC_ERR_NOBUNDLE;
 	}
-	if(osc_atom_u_getTypetag(a) == '#'){
+	if(osc_atom_u_getTypetag(a) == OSC_BUNDLE_TYPETAG){
 		*bufpos += sprintf(*buf + *bufpos, "[\n");
 		extern t_osc_err osc_bundle_s_doFormat(long len, char *bndl, long *buflen, long *bufpos, char **buf);
 		osc_bundle_s_doFormat(osc_bundle_s_getLen(a->w.bndl), osc_bundle_s_getPtr(a->w.bndl), buflen, bufpos, buf);
@@ -1061,7 +1076,6 @@ t_osc_err osc_atom_u_doFormat(t_osc_atom_u *a, long *buflen, long *bufpos, char 
 		char *b = *buf + *bufpos;
 
 #ifdef OSC_QUOTE_STRINGS
-		//(*bufpos) += osc_atom_u_getQuotedString(a, &b);
 		(*bufpos) += osc_strfmt_addQuotesAndQuoteMeta(stringlen, stringptr, &b);
 #else
 		(*bufpos) += osc_atom_u_getString(a, *buflen - *bufpos, &b);

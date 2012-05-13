@@ -50,8 +50,15 @@ int osc_bundle_u_getMsgCount(t_osc_bndl_u *bndl);
 t_osc_err osc_bundle_u_getMessagesWithCallback(t_osc_bndl_u *bndl, void (*f)(t_osc_msg_u*, void *), void *context);
 t_osc_err osc_bundle_u_lookupAddress(t_osc_bndl_u *bndl, const char *address, t_osc_bndl_ar_u **osc_msg_u_array, int fullmatch);
 t_osc_err osc_bundle_u_addMsg(t_osc_bndl_u *bndl, t_osc_msg_u *msg);
+t_osc_err osc_bundle_u_addMsgWithoutDups(t_osc_bndl_u *bndl, t_osc_msg_u *msg);
 t_osc_err osc_bundle_u_addMsgCopy(t_osc_bndl_u *bndl, t_osc_msg_u *msg);
 t_osc_err osc_bundle_u_addMsgArrayCopy(t_osc_bndl_u *bndl, t_osc_array *ar);
+t_osc_err osc_bundle_u_removeMsg(t_osc_bndl_u *bndl, t_osc_msg_u *m);
+t_osc_err osc_bundle_u_flatten(t_osc_bndl_u **dest,
+			       t_osc_bndl_u *src,
+			       int maxlevel,
+			       char *sep,
+			       int remove_enclosing_address_if_empty);
 t_osc_err osc_bundle_u_serialize(t_osc_bndl_u *bndl, long *buflen, char **buf);
 t_osc_err osc_bundle_u_format(t_osc_bndl_u *bndl, long *buflen, char **buf);
 

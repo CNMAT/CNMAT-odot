@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 6,
 			"minor" : 0,
-			"revision" : 4
+			"revision" : 5
 		}
 ,
 		"rect" : [ 333.0, 87.0, 874.0, 512.0 ],
@@ -31,13 +31,11 @@
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"id" : "obj-24",
-					"linecount" : 5,
 					"maxclass" : "o.message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 32.0, 299.0, 176.0, 76.0 ],
-					"text" : "/stream/foo 2 9 5 9 4 4 8 3 3 7 \n/foo 7 \n/n 10 \n/stream a s d \n/avg 5.4 \n",
+					"patching_rect" : [ 32.0, 299.0, 176.0, 20.0 ],
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -76,13 +74,11 @@
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"id" : "obj-20",
-					"linecount" : 2,
 					"maxclass" : "o.message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 404.0, 277.0, 236.0, 35.0 ],
-					"text" : "/stream/foo 4 2 7 1 2 6 2 9 5 9 4 4 8 3 3 7 \n/foo 7 \n",
+					"patching_rect" : [ 404.0, 277.0, 236.0, 20.0 ],
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -345,6 +341,10 @@
 			}
 , 			{
 				"name" : "o.message.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.print.mxo",
 				"type" : "iLaX"
 			}
 , 			{

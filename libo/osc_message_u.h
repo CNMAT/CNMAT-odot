@@ -61,6 +61,7 @@ void osc_message_u_getArg(t_osc_msg_u *m, int n, t_osc_atom_u **atom);
 t_osc_err osc_message_u_appendAtom(t_osc_msg_u *m, t_osc_atom_u *a);
 t_osc_err osc_message_u_prependAtom(t_osc_msg_u *m, t_osc_atom_u *a);
 t_osc_err osc_message_u_insertAtom(t_osc_msg_u *m, t_osc_atom_u *a, int pos);
+void osc_message_u_removeAtom(t_osc_msg_u *m, t_osc_atom_u *a);
 
 t_osc_atom_u *osc_message_u_appendInt8(t_osc_msg_u *m, int8_t v);
 t_osc_atom_u *osc_message_u_appendInt16(t_osc_msg_u *m, int16_t v);

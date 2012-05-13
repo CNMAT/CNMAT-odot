@@ -30,6 +30,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #include "osc_match.h"
 #include "osc_message_u.h"
 #include "osc_message_u.r"
+#include "osc_message_iterator_u.h"
 #include "osc_atom_u.h"
 #include "osc_atom_u.r"
 #include "osc_bundle_u.h"
@@ -60,8 +61,8 @@ void osc_bundle_u_free(t_osc_bndl_u *bndl){
 	osc_mem_free(bndl);
 }
 
-t_osc_err osc_bundle_u_deepCopy(t_osc_bndl_u **dest, t_osc_bndl_u *src){
-
+t_osc_err osc_bundle_u_deepCopy(t_osc_bndl_u **dest, t_osc_bndl_u *src)
+{
 	return OSC_ERR_NONE;
 }
 
@@ -118,10 +119,25 @@ t_osc_err osc_bundle_u_lookupAddress(t_osc_bndl_u *bndl, const char *address, t_
 	return OSC_ERR_NONE;
 }
 
-t_osc_err osc_bundle_u_addMsg(t_osc_bndl_u *bndl, t_osc_msg_u *msg)
+static t_osc_err osc_bundle_u_addMsg_impl(t_osc_bndl_u *bndl, t_osc_msg_u *msg, int remove_dups)
 {
 	if(!bndl || !msg){
 		return OSC_ERR_NONE;
+	}
+	if(remove_dups){
+		char *address = osc_message_u_getAddress(msg);
+		if(address){
+			t_osc_msg_u *m = bndl->msghead;
+			while(m){
+				t_osc_msg_u *next = m->next;
+				if(!strcmp(address, osc_message_u_getAddress(m))){
+					osc_bundle_u_removeMsg(bndl, m);
+					osc_message_u_free(m);
+					bndl->msgcount--;
+				}
+				m = next;
+			}
+		}
 	}
 	bndl->msgcount++;
 	if(!(bndl->msghead)){
@@ -142,6 +158,16 @@ t_osc_err osc_bundle_u_addMsg(t_osc_bndl_u *bndl, t_osc_msg_u *msg)
 	bndl->msgtail->next = msg;
 	bndl->msgtail = msg;
 	return OSC_ERR_NONE;
+}
+
+t_osc_err osc_bundle_u_addMsg(t_osc_bndl_u *bndl, t_osc_msg_u *msg)
+{
+	return osc_bundle_u_addMsg_impl(bndl, msg, 0);
+}
+
+t_osc_err osc_bundle_u_addMsgWithoutDups(t_osc_bndl_u *bndl, t_osc_msg_u *msg)
+{
+	return osc_bundle_u_addMsg_impl(bndl, msg, 1);
 }
 
 t_osc_err osc_bundle_u_addMsgCopy(t_osc_bndl_u *bndl, t_osc_msg_u *msg)
@@ -174,6 +200,108 @@ t_osc_err osc_bundle_u_addMsgArrayCopy(t_osc_bndl_u *bndl, t_osc_msg_ar_u *ar)
 	return OSC_ERR_NONE;
 }
 
+t_osc_err osc_bundle_u_removeMsg(t_osc_bndl_u *bndl, t_osc_msg_u *m)
+{
+	if(!bndl || !m){
+		return OSC_ERR_NONE;
+	}
+	if(m->next){
+		m->next->prev = m->prev;
+	}
+	if(m->prev){
+		m->prev->next = m->next;
+	}
+	if(m == bndl->msghead){
+		bndl->msghead = m->next;
+	}
+	if(m == bndl->msgtail){
+		bndl->msgtail = m->prev;
+	}
+	return OSC_ERR_NONE;
+}
+
+static t_osc_err osc_bundle_u_flatten_impl(t_osc_bndl_u **dest,
+					   t_osc_bndl_u *src,
+					   int maxlevel,
+					   int level,
+					   char *prefix,
+					   char *sep,
+					   int remove_enclosing_address_if_empty)
+{
+	if(!sep){
+		sep = "";
+	}
+	if(!(*dest)){
+		*dest = osc_bundle_u_alloc();
+	}
+	t_osc_bndl_it_u *bit = osc_bndl_it_u_get(src);
+	while(osc_bndl_it_u_hasNext(bit)){
+		t_osc_msg_u *m = osc_bndl_it_u_next(bit);
+		t_osc_msg_u *mcopy = NULL;
+		osc_message_u_deepCopy(&mcopy, m);
+		if((level < maxlevel) || (maxlevel <= 0)){
+			t_osc_msg_it_u *mit = osc_msg_it_u_get(mcopy);
+			while(osc_msg_it_u_hasNext(mit)){
+				t_osc_atom_u *a = osc_msg_it_u_next(mit);
+				if(osc_atom_u_getTypetag(a) == OSC_BUNDLE_TYPETAG){
+					osc_message_u_removeAtom(mcopy, a);
+					t_osc_bndl_s *b = osc_atom_u_getBndl(a);
+					t_osc_bndl_u *bu = NULL;
+					osc_bundle_s_deserialize(osc_bundle_s_getLen(b),
+								 osc_bundle_s_getPtr(b),
+								 &bu);
+					t_osc_err e;
+					if(prefix){
+						int prefixlen = strlen(prefix) + strlen(osc_message_u_getAddress(mcopy)) + strlen(sep);
+						char pfx[prefixlen + 1];
+						sprintf(pfx, "%s%s%s", prefix, sep, osc_message_u_getAddress(mcopy));
+						e = osc_bundle_u_flatten_impl(dest,
+									      bu,
+									      maxlevel,
+									      level + 1,
+									      pfx,
+									      sep,
+									      remove_enclosing_address_if_empty);
+					}else{
+						e = osc_bundle_u_flatten_impl(dest,
+									      bu,
+									      maxlevel,
+									      level + 1,
+									      osc_message_u_getAddress(mcopy),
+									      sep,
+									      remove_enclosing_address_if_empty);
+					}
+					if(e){
+						return e;
+					}
+					osc_atom_u_free(a);
+				}
+			}
+			osc_msg_it_u_destroy(mit);
+		}
+		if(!remove_enclosing_address_if_empty || osc_message_u_getArgCount(mcopy) > 0){
+			if(prefix){
+				int newaddresslen = strlen(prefix) + strlen(osc_message_u_getAddress(mcopy)) + strlen(sep);
+				char newaddress[newaddresslen + 1];
+				sprintf(newaddress, "%s%s%s", prefix, sep, osc_message_u_getAddress(mcopy));
+				osc_message_u_setAddress(mcopy, newaddress);
+			}
+			osc_bundle_u_addMsgWithoutDups(*dest, mcopy);
+		}
+	}
+	osc_bndl_it_u_destroy(bit);
+	return OSC_ERR_NONE;
+}
+
+t_osc_err osc_bundle_u_flatten(t_osc_bndl_u **dest,
+			       t_osc_bndl_u *src,
+			       int maxlevel,
+			       char *sep,
+			       int remove_enclosing_address_if_empty)
+{
+	return osc_bundle_u_flatten_impl(dest, src, maxlevel, 0, NULL, sep ? sep : "", remove_enclosing_address_if_empty);
+}
+
 extern t_osc_err osc_message_u_doSerialize(t_osc_msg_u *msg, long *buflen, long *bufpos, char **buf);
 t_osc_err osc_bundle_u_doSerialize(t_osc_bndl_u *bndl, long *buflen, long *bufpos, char **buf)
 {
@@ -195,7 +323,8 @@ t_osc_err osc_bundle_u_doSerialize(t_osc_bndl_u *bndl, long *buflen, long *bufpo
 	return OSC_ERR_NONE;
 }
 
-t_osc_err osc_bundle_u_serialize(t_osc_bundle_u *bndl, long *buflen, char **buf){
+t_osc_err osc_bundle_u_serialize(t_osc_bundle_u *bndl, long *buflen, char **buf)
+{
 	long bufpos = 0;
 	if(!(*buf)){
 		*buflen = 1024;
@@ -209,7 +338,11 @@ t_osc_err osc_bundle_u_serialize(t_osc_bundle_u *bndl, long *buflen, char **buf)
 
 extern t_osc_err osc_message_u_doFormat(t_osc_msg_u *m, long *buflen, long *bufpos, char **buf);
 
-t_osc_err osc_bundle_u_doFormat(t_osc_bndl_u *bndl, long *buflen, long *bufpos, char **buf){
+t_osc_err osc_bundle_u_doFormat(t_osc_bndl_u *bndl, long *buflen, long *bufpos, char **buf)
+{
+	if(osc_bundle_u_getMsgCount(bndl) == 0){
+		return OSC_ERR_NONE;
+	}
 	t_osc_bndl_it_u *it = osc_bndl_it_u_get(bndl);
 	while(osc_bndl_it_u_hasNext(it)){
 		t_osc_msg_u *m = osc_bndl_it_u_next(it);
@@ -220,7 +353,11 @@ t_osc_err osc_bundle_u_doFormat(t_osc_bndl_u *bndl, long *buflen, long *bufpos, 
 	return OSC_ERR_NONE;
 }
 
-t_osc_err osc_bundle_u_format(t_osc_bndl_u *bndl, long *buflen, char **buf){
+t_osc_err osc_bundle_u_format(t_osc_bndl_u *bndl, long *buflen, char **buf)
+{
+	if(!bndl){
+		return OSC_ERR_NOBUNDLE;
+	}
 	long mybuflen = 0, mybufpos = 0;
 	if(*buflen > 0){
 		if(*buf){
@@ -233,6 +370,7 @@ t_osc_err osc_bundle_u_format(t_osc_bndl_u *bndl, long *buflen, char **buf){
 	return e;
 }
 
-t_osc_array *osc_bundle_array_u_alloc(long len){
+t_osc_array *osc_bundle_array_u_alloc(long len)
+{
 	return osc_array_allocWithSize(len, sizeof(t_osc_bndl_u));
 }

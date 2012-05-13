@@ -57,7 +57,6 @@ typedef struct _oprint{
 
 void *oprint_class;
 
-void oprint_fullPacket(t_oprint *x, long len, long ptr);
 void oprint_cbk(t_osc_msg msg, void *v);
 void oprint_int(t_oprint *x, long l);
 void oprint_float(t_oprint *x, double f);
@@ -69,7 +68,16 @@ t_max_err oprint_notify(t_oprint *x, t_symbol *s, t_symbol *msg, void *sender, v
 
 t_symbol *ps_FullPacket;
 
-void oprint_fullPacket(t_oprint *x, long len, long ptr){
+//void oprint_fullPacket(t_oprint *x, long len, long ptr)
+void oprint_fullPacket(t_oprint *x, t_symbol *msg, int argc, t_atom *argv)
+{
+	// killme ////////////////////////
+	if(argc != 2){
+		return;
+	}
+	long len = atom_getlong(argv);
+	long ptr = atom_getlong(argv + 1);
+	//////////////////////////////////
 	osc_bundle_s_wrap_naked_message(len, ptr);
 	long buflen = 0;
 	char *buf = NULL;
@@ -151,7 +159,7 @@ void oprint_free(t_oprint *x){
 
 void *oprint_new(t_symbol *msg, short argc, t_atom *argv){
 	t_oprint *x;
-	if(x = (t_oprint *)object_alloc(oprint_class)){
+	if((x = (t_oprint *)object_alloc(oprint_class))){
 		x->myname = gensym("o.print");
 		x->outlet = outlet_new(x, NULL);
 		if(attr_args_offset(argc, argv) > 0 && argc > 0){
@@ -178,11 +186,10 @@ void *oprint_new(t_symbol *msg, short argc, t_atom *argv){
 
 int main(void){
 	t_class *c = class_new("o.print", (method)oprint_new, (method)oprint_free, sizeof(t_oprint), 0L, A_GIMME, 0);
-	class_addmethod(c, (method)oprint_fullPacket, "FullPacket", A_LONG, A_LONG, 0);
-	//class_addmethod(c, (method)oprint_notify, "notify", A_CANT, 0);
+	//class_addmethod(c, (method)oprint_fullPacket, "FullPacket", A_LONG, A_LONG, 0);
+	class_addmethod(c, (method)oprint_fullPacket, "FullPacket", A_GIMME, 0);
 	class_addmethod(c, (method)oprint_assist, "assist", A_CANT, 0);
 	class_addmethod(c, (method)oprint_doc, "doc", 0);
-	class_addmethod(c, (method)oprint_notify, "notify", A_CANT, 0);
 	class_addmethod(c, (method)oprint_anything, "anything", A_GIMME, 0);
 	class_addmethod(c, (method)oprint_list, "list", A_GIMME, 0);
 	class_addmethod(c, (method)oprint_int, "int", A_LONG, 0);
@@ -199,15 +206,4 @@ int main(void){
 	common_symbols_init();
 	ODOT_PRINT_VERSION;
 	return 0;
-}
-
-t_max_err oprint_notify(t_oprint *x, t_symbol *s, t_symbol *msg, void *sender, void *data){
-	/*
-	t_symbol *attrname;
-        if(msg == gensym("attr_modified")){
-		attrname = (t_symbol *)object_method((t_object *)data, gensym("getname"));
-		}
-	}
-	*/
-	return MAX_ERR_NONE;
 }

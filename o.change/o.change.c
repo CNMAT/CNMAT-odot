@@ -58,25 +58,28 @@ typedef struct _ochange{
 
 void *ochange_class;
 
-void ochange_fullPacket(t_ochange *x, long len, long ptr);
-void ochange_cbk(t_osc_msg msg, void *v);
 int ochange_copybundle(t_ochange *x, long len, char *ptr);
-void ochange_clear(t_ochange *x);
-void ochange_anything(t_ochange *x, t_symbol *msg, int argc, t_atom *argv);
-void ochange_bang(t_ochange *x);
-void ochange_free(t_ochange *x);
-void *ochange_new(t_symbol *msg, short argc, t_atom *argv);
 
-void ochange_fullPacket(t_ochange *x, long len, long ptr){
-	if(!x->buf || x->buflen == 0){
+//void ochange_fullPacket(t_ochange *x, long len, long ptr)
+void ochange_fullPacket(t_ochange *x, t_symbol *msg, int argc, t_atom *argv)
+{
+	// killme ////////////////////////
+	if(argc != 2){
+		return;
+	}
+	long len = atom_getlong(argv);
+	long ptr = atom_getlong(argv + 1);
+	//////////////////////////////////
+	critical_enter(x->lock);
+	long buflen = x->buflen;
+	if(!x->buf || buflen == 0){
+		critical_exit(x->lock);
 		ochange_copybundle(x, len, (char *)ptr);
 		omax_util_outletOSC(x->outlet, len, (char *)ptr);
 		return;
 	}
-	long buflen = x->buflen;
 	char buf[buflen];
-	critical_enter(x->lock);
-	memcpy(buf, x->buf, buflen);
+	memcpy(buf, x->buf, x->buflen);
 	critical_exit(x->lock);
 	if(buflen == len){
 		if(!memcmp(buf, (char *)ptr, buflen)){
@@ -94,9 +97,12 @@ int ochange_copybundle(t_ochange *x, long len, char *ptr){
 		critical_enter(x->lock);
 		char *oldbuf = x->buf;
 		x->buf = buf;
-		x->bufsize = x->buflen = len;
-		osc_mem_free(oldbuf);
+		x->bufsize = len;
+		x->buflen = len;
 		critical_exit(x->lock);
+		if(oldbuf){
+			osc_mem_free(oldbuf);
+		}
 	}else{
 		object_error((t_object *)x, "out of memory!");
 		return 1;
@@ -106,7 +112,9 @@ int ochange_copybundle(t_ochange *x, long len, char *ptr){
 
 void ochange_clear(t_ochange *x)
 {
+	critical_enter(x->lock);
 	x->buflen = 0;
+	critical_exit(x->lock);
 }
 
 void ochange_anything(t_ochange *x, t_symbol *msg, int argc, t_atom *argv)
@@ -115,9 +123,9 @@ void ochange_anything(t_ochange *x, t_symbol *msg, int argc, t_atom *argv)
 
 void ochange_bang(t_ochange *x)
 {
+	critical_enter(x->lock);
 	long len = x->buflen;
 	char buf[len];
-	critical_enter(x->lock);
 	memcpy(buf, x->buf, len);
 	critical_exit(x->lock);
 	omax_util_outletOSC(x->outlet, len, buf);
@@ -144,7 +152,7 @@ void ochange_free(t_ochange *x)
 void *ochange_new(t_symbol *msg, short argc, t_atom *argv)
 {
 	t_ochange *x;
-	if(x = (t_ochange *)object_alloc(ochange_class)){
+	if((x = (t_ochange *)object_alloc(ochange_class))){
 		x->outlet = outlet_new((t_object *)x, "FullPacket");
 		critical_new(&(x->lock));
 		x->buf = NULL;
@@ -157,7 +165,8 @@ void *ochange_new(t_symbol *msg, short argc, t_atom *argv)
 int main(void)
 {
 	t_class *c = class_new("o.change", (method)ochange_new, (method)ochange_free, sizeof(t_ochange), 0L, A_GIMME, 0);
-	class_addmethod(c, (method)ochange_fullPacket, "FullPacket", A_LONG, A_LONG, 0);
+	//class_addmethod(c, (method)ochange_fullPacket, "FullPacket", A_LONG, A_LONG, 0);
+	class_addmethod(c, (method)ochange_fullPacket, "FullPacket", A_GIMME, 0);
 	class_addmethod(c, (method)ochange_assist, "assist", A_CANT, 0);
 	class_addmethod(c, (method)ochange_doc, "doc", 0);
 	//class_addmethod(c, (method)ochange_notify, "notify", A_CANT, 0);

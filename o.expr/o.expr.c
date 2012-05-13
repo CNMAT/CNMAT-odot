@@ -129,30 +129,22 @@ typedef struct _oexpr{
 	char **outlets_desc;
 #endif
 	t_osc_expr *expr;
-	//t_jrgba background_color, frame_color, text_color;
 } t_oexpr;
 
 void *oexpr_class;
 
-void oexpr_fullPacket(t_oexpr *x, long len, long ptr);
-/*
-  void oexpr_set(t_oexpr *x, t_symbol *s, long ac, t_atom *av);
-  void oexpr_select(t_oexpr *x);
-  void oexpr_doselect(t_oexpr *x);
-  long oexpr_key(t_oexpr *x, t_object *patcherview, long keycode, long modifiers, long textcharacter);
-  long oexpr_keyfilter(t_oexpr *x, t_object *patcherview, long *keycode, long *modifiers, long *textcharacter);
-  void oexpr_enter(t_oexpr *x);
-  void oexpr_gettext(t_oexpr *x);
-*/
 void oexpr_output_bundle(t_oexpr *x);
-//void oexpr_mousedown(t_oexpr *x, t_object *patcherview, t_pt pt, long modifiers);
-//void oexpr_mouseup(t_oexpr *x, t_object *patcherview, t_pt pt, long modifiers);
 
-void oexpr_free(t_oexpr *x);
-void *oexpr_new(t_symbol *msg, short argc, t_atom *argv);
-
-
-void oexpr_fullPacket(t_oexpr *x, long len, long ptr){
+//void oexpr_fullPacket(t_oexpr *x, long len, long ptr)
+void oexpr_fullPacket(t_oexpr *x, t_symbol *msg, int ac, t_atom *av)
+{
+	// killme ////////////////////////
+	if(ac != 2){
+		return;
+	}
+	long len = atom_getlong(av);
+	long ptr = atom_getlong(av + 1);
+	//////////////////////////////////
 	if(len <= 0){
 		return;
 	}
@@ -174,7 +166,7 @@ void oexpr_fullPacket(t_oexpr *x, long len, long ptr){
 
 #if defined (OIF)
 	int ret = osc_expr_eval(x->expr, &len, &copy, &argv);
-	if(ret){
+	if(ret || !argv || osc_atom_array_u_getLen(argv) == 0){
 		omax_util_outletOSC(x->outlets[1], len, (char *)ptr);
 	}else{
 		int i;
@@ -195,7 +187,7 @@ void oexpr_fullPacket(t_oexpr *x, long len, long ptr){
 	}
 #elif defined (OUNLESS)
 	int ret = osc_expr_eval(x->expr, &len, &copy, &argv);
-	if(ret){
+	if(ret || !argv || osc_atom_array_u_getLen(argv) == 0){
 		omax_util_outletOSC(x->outlet, len, (char *)ptr);
 	}else{
 		int i;
@@ -215,7 +207,7 @@ void oexpr_fullPacket(t_oexpr *x, long len, long ptr){
 	}
 #elif defined (OWHEN)
 	int ret = osc_expr_eval(x->expr, &len, &copy, &argv);
-	if(ret){
+	if(ret || !argv || osc_atom_array_u_getLen(argv) == 0){
 	}else{
 		int i;
 		for(i = 0; i < osc_atom_array_u_getLen(argv); i++){
@@ -289,8 +281,8 @@ void oexpr_fullPacket(t_oexpr *x, long len, long ptr){
 	int ret = 0;
 	t_osc_expr *f = x->expr;
 	if(!f){
-		t_osc_atom_ar_u *argv = NULL;
-		osc_expr_evalLexExprsInBndl(&copylen, &copy, &argv);
+		//t_osc_atom_ar_u *argv = NULL;
+		//osc_expr_evalLexExprsInBndl(&copylen, &copy, &argv);
 	}else{
 		while(f){
 			//int argc = 0;
@@ -315,105 +307,9 @@ void oexpr_fullPacket(t_oexpr *x, long len, long ptr){
 	}
 #endif
 }
-/*
-  void oexpr_paint(t_oexpr *x, t_object *patcherview){
-  t_rect rect;
-  t_jgraphics *g = (t_jgraphics *)patcherview_get_jgraphics(patcherview);
-  jbox_get_rect_for_view((t_object *)x, patcherview, &rect);
 
-  jgraphics_set_source_jrgba(g, &(x->background_color));
-  jgraphics_rectangle(g, 0., 0., rect.width, rect.height);
-  jgraphics_fill(g);
-
-  jgraphics_set_source_jrgba(g, &(x->frame_color));
-  jgraphics_set_line_width(g, 2.);
-  jgraphics_rectangle(g, 0., 0., rect.width, rect.height);
-  jgraphics_stroke(g);
-
-  jgraphics_move_to(g, 3, 0);
-  jgraphics_line_to(g, 3, rect.height);
-  jgraphics_stroke(g);
-  }
-
-  void oexpr_select(t_oexpr *x){
-  defer(x, (method)oexpr_doselect, 0, 0, 0);
-  }
-
-  void oexpr_doselect(t_oexpr *x){
-  t_object *p = NULL; 
-  object_obex_lookup(x,gensym("#P"), &p);
-  if (p) {
-  t_atom rv; 
-  long ac = 1; 
-  t_atom av[1]; 
-  atom_setobj(av, x); 
-  object_method_typed(p, gensym("selectbox"), ac, av, &rv); 
-  }
-  }
-
-
-  long oexpr_key(t_oexpr *x, t_object *patcherview, long keycode, long modifiers, long textcharacter){
-  char buff[256];
-  buff[0] = textcharacter;  // we know this is just a simple char
-  buff[1] = 0; 
-  object_method(patcherview, gensym("insertboxtext"), x, buff);
-  jbox_redraw((t_jbox *)x);
-
-  return 1; 
-  }
-
-  long oexpr_keyfilter(t_oexpr *x, t_object *patcherview, long *keycode, long *modifiers, long *textcharacter){
-  t_atom arv;
-  long rv = 1;
-  long k = *keycode;
-	
-  if (k == JKEY_TAB || k == JKEY_ESC) {
-  object_method_typed(patcherview, gensym("endeditbox"), 0, NULL, &arv); 
-  rv = 0;		// don't pass those keys to oexpr
-  }
-  return rv;
-  }
-
-  // enter is triggerd at "endeditbox time"
-  void oexpr_enter(t_oexpr *x){
-  oexpr_gettext(x);
-  }
-
-  void oexpr_gettext(t_oexpr *x){
-  long size	= 0;
-  char *text	= NULL;
-  t_object *textfield = jbox_get_textfield((t_object *)x);
-  object_method(textfield, gensym("gettextptr"), &text, &size);
-  {
-  size = strlen(text); // the value returned in text doesn't make sense
-  if(size == 0){
-  return;
-  }
-  t_osc_expr *f = NULL;
-  osc_expr_parser_parseString(text, &f);
-  if(!f){
-  object_error((t_object *)x, "error parsing %s\n", text);
-  return;
-  }
-  if(x->expr){
-  osc_expr_free(x->expr);
-  }
-  x->expr = f;
-  }
-  }
-
-  void oexpr_mousedown(t_oexpr *x, t_object *patcherview, t_pt pt, long modifiers){
-  //textfield_set_textmargins(jbox_get_textfield((t_object *)x), 4, 4, 2, 2);
-  //jbox_redraw((t_jbox *)x);
-  }
-
-  void oexpr_mouseup(t_oexpr *x, t_object *patcherview, t_pt pt, long modifiers){
-  //textfield_set_textmargins(jbox_get_textfield((t_object *)x), 3, 3, 3, 3);
-  //jbox_redraw((t_jbox *)x);
-  //oexpr_output_bundle(x);
-  }
-*/
-void oexpr_postExprIR(t_oexpr *fg){
+void oexpr_postExprIR(t_oexpr *fg)
+{
 	char *buf = NULL;
 	long len = 0;
 	t_osc_expr *f = fg->expr;
@@ -464,11 +360,27 @@ void oexpr_bang(t_oexpr *x)
 	char buf[16];
 	memset(buf, '\0', 16);
 	strncpy(buf, "#bundle\0", 8);
-	oexpr_fullPacket(x, 16, (long)buf);
+	//oexpr_fullPacket(x, 16, (long)buf);
+	t_atom a[2];
+	atom_setlong(a, 16);
+	atom_setlong(a + 1, (long)buf);
+	oexpr_fullPacket(x, NULL, 2, a);
 }
 
-void oexpr_doc_cat(t_oexpr *x, t_symbol *cat)
+//void oexpr_doc_cat(t_oexpr *x, t_symbol *cat)
+void oexpr_doc_cat(t_oexpr *x, t_symbol *msg, int argc, t_atom *argv)
 {
+	// killme ////////////////////////
+	t_symbol *cat = NULL;
+	if(argc == 0){
+		cat = _sym_nothing;
+	}else if(atom_gettype(argv) == A_SYM){
+		cat = atom_getsym(argv);
+	}else{
+		object_error((t_object *)x, "argument is not a valid category name");
+		return;
+	}
+	//////////////////////////////////
 	if(cat == _sym_nothing){
 		t_osc_bndl_s *b = osc_expr_getCategories();
 		omax_util_outletOSC(LEFTOUTLET, osc_bundle_s_getLen(b), osc_bundle_s_getPtr(b));
@@ -476,19 +388,6 @@ void oexpr_doc_cat(t_oexpr *x, t_symbol *cat)
 		long len = 0;
 		char *ptr = NULL;
 		osc_expr_getFunctionsForCategory(cat->s_name, &len, &ptr);
-		/*
-		  t_osc_bndl_it_s *it = osc_bndl_it_s_get(len, ptr);
-		  while(osc_bndl_it_s_hasNext(it)){
-		  t_osc_msg_s *m = osc_bndl_it_s_next(it);
-		  t_osc_msg_it_s *it = osc_msg_it_s_get(m);
-		  while(osc_msg_it_s_hasNext(it)){
-		  t_osc_atom_s *a = osc_msg_it_s_next(it);
-		  char *buf = NULL;
-		  osc_atom_s_getString(a, &buf);
-		  printf("%s %s\n", __func__, buf);
-		  }
-		  }
-		*/
 		if(ptr){
 			omax_util_outletOSC(LEFTOUTLET, len, ptr);
 			osc_mem_free(ptr);
@@ -496,8 +395,20 @@ void oexpr_doc_cat(t_oexpr *x, t_symbol *cat)
 	}
 }
 
-void oexpr_doc_func(t_oexpr *x, t_symbol *func)
+//void oexpr_doc_func(t_oexpr *x, t_symbol *func)
+void oexpr_doc_func(t_oexpr *x, t_symbol *msg, int argc, t_atom *argv)
 {
+	// killme ////////////////////////
+	if(argc == 0){
+		object_error((t_object *)x, "you must provide a function name");
+		return;
+	}
+	if(atom_gettype(argv) != A_SYM){
+		object_error((t_object *)x, "argument must be a function (symbol)");
+		return;
+	}
+	t_symbol *func = atom_getsym(argv);
+	//////////////////////////////////
 	t_osc_bndl_u *bndl = NULL;
 	t_osc_err e = osc_expr_getDocForFunction(func->s_name, &bndl);
 	if(e){
@@ -547,7 +458,6 @@ void oexpr_assist(t_oexpr *x, void *b, long io, long num, char *buf){
 }
 
 void oexpr_free(t_oexpr *x){
-	//jbox_free((t_jbox *)x);
 	if(x->expr){
 		osc_expr_free(x->expr);
 	}
@@ -579,34 +489,7 @@ t_max_err oexpr_notify(t_oexpr *x, t_symbol *s, t_symbol *msg, void *sender, voi
 
 void *oexpr_new(t_symbol *msg, short argc, t_atom *argv){
 	t_oexpr *x;
-	/*
-	  t_dictionary *d = NULL; 
-	  long boxflags; 
-    
-	  // box setup 
-	  if(!(d = object_dictionaryarg(argc, argv))){ 
-	  return NULL; 
-	  } 
-
-	  boxflags = 0 
-	  | JBOX_DRAWFIRSTIN 
-	  | JBOX_NODRAWBOX
-	  | JBOX_DRAWINLAST
-	  | JBOX_TRANSPARENT  
-	  //      | JBOX_NOGROW
-	  //| JBOX_GROWY
-	  //| JBOX_GROWBOTH
-	  //      | JBOX_HILITE
-	  //| JBOX_BACKGROUND
-	  //| JBOX_DRAWBACKGROUND
-	  //      | JBOX_NOFLOATINSPECTOR
-	  //      | JBOX_MOUSEDRAGDELTA
-	  | JBOX_TEXTFIELD
-	  ;
-	*/
-	if(x = (t_oexpr *)object_alloc(oexpr_class)){
-		//jbox_new((t_jbox *)x, boxflags, argc, argv); 
- 		//x->ob.b_firstin = (void *)x; 
+	if((x = (t_oexpr *)object_alloc(oexpr_class))){
 		osc_error_setHandler(omax_util_liboErrorHandler);
 		t_osc_expr *f = NULL;
 		int haspound = 0;
@@ -708,20 +591,6 @@ void *oexpr_new(t_symbol *msg, short argc, t_atom *argv){
 #else
 		x->outlet = outlet_new((t_object *)x, "FullPacket");
 #endif
-
-		//attr_dictionary_process(x, d); 
-		/*
-		t_object *textfield = jbox_get_textfield((t_object *)x);
-		if(textfield){
-			object_attr_setchar(textfield, gensym("editwhenunlocked"), 1);
-			textfield_set_editonclick(textfield, 0);
-			textfield_set_textmargins(textfield, 7, 3, 3, 3);
-			textfield_set_textcolor(textfield, &(x->text_color));
-		}
-
- 		jbox_ready((t_jbox *)x);
-		oexpr_gettext(x);
-		*/
 	}
 		   	
 	return x;
@@ -730,51 +599,22 @@ void *oexpr_new(t_symbol *msg, short argc, t_atom *argv){
 int main(void){
 	t_class *c = class_new(NAME, (method)oexpr_new, (method)oexpr_free, sizeof(t_oexpr), 0L, A_GIMME, 0);
 
-	//c->c_flags |= CLASS_FLAG_NEWDICTIONARY; 
- 	//jbox_initclass(c, JBOX_TEXTFIELD | JBOX_FIXWIDTH | JBOX_FONTATTR); 
-    
-	//class_addmethod(c, (method)oexpr_paint, "paint", A_CANT, 0); 
-
-	//osc_set_mem((void *)sysmem_newptr, sysmem_freeptr, (void *)sysmem_resizeptr);
-	class_addmethod(c, (method)oexpr_fullPacket, "FullPacket", A_LONG, A_LONG, 0);
+	//class_addmethod(c, (method)oexpr_fullPacket, "FullPacket", A_LONG, A_LONG, 0);
+	class_addmethod(c, (method)oexpr_fullPacket, "FullPacket", A_GIMME, 0);
 	class_addmethod(c, (method)oexpr_assist, "assist", A_CANT, 0);
-	//class_addmethod(c, (method)oexpr_notify, "notify", A_CANT, 0);
 	class_addmethod(c, (method)oexpr_bang, "bang", 0);
 
 	class_addmethod(c, (method)oexpr_postExprIR, "post-expr-ir", 0);
 
 	class_addmethod(c, (method)oexpr_doc, "doc", 0);
-	class_addmethod(c, (method)oexpr_doc_func, "doc-func", A_SYM, 0);
-	class_addmethod(c, (method)oexpr_doc_func, "doc-function", A_SYM, 0);
-	class_addmethod(c, (method)oexpr_doc_cat, "doc-cat", A_DEFSYM, 0);
-	class_addmethod(c, (method)oexpr_doc_cat, "doc-category", A_DEFSYM, 0);
-	/*
-	class_addmethod(c, (method)oexpr_key, "key", A_CANT, 0);
-	class_addmethod(c, (method)oexpr_keyfilter, "keyfilter", A_CANT, 0);
-	class_addmethod(c, (method)oexpr_enter, "enter", A_CANT, 0);
-	class_addmethod(c, (method)oexpr_select, "select", 0);
-
-	class_addmethod(c, (method)oexpr_mousedown, "mousedown", A_CANT, 0);
-	class_addmethod(c, (method)oexpr_mouseup, "mouseup", A_CANT, 0);
-
-
- 	CLASS_ATTR_RGBA(c, "background_color", 0, t_oexpr, background_color); 
- 	CLASS_ATTR_DEFAULT_SAVE_PAINT(c, "background_color", 0, ".87 .87 .87 1."); 
- 	CLASS_ATTR_STYLE_LABEL(c, "background_color", 0, "rgba", "Background Color"); 
-	CLASS_ATTR_CATEGORY(c, "background_color", 0, "Color");
-
- 	CLASS_ATTR_RGBA(c, "frame_color", 0, t_oexpr, frame_color); 
- 	CLASS_ATTR_DEFAULT_SAVE_PAINT(c, "frame_color", 0, "0. 0. 0. 1."); 
- 	CLASS_ATTR_STYLE_LABEL(c, "frame_color", 0, "rgba", "Frame Color"); 
-	CLASS_ATTR_CATEGORY(c, "frame_color", 0, "Color");
-
- 	CLASS_ATTR_RGBA(c, "text_color", 0, t_oexpr, text_color); 
- 	CLASS_ATTR_DEFAULT_SAVE_PAINT(c, "text_color", 0, "0. 0. 0. 1."); 
- 	CLASS_ATTR_STYLE_LABEL(c, "text_color", 0, "rgba", "Text Color"); 
-	CLASS_ATTR_CATEGORY(c, "text_color", 0, "Color");
-
-	CLASS_ATTR_DEFAULT(c, "rect", 0, "0. 0. 150., 18.");
-	*/
+	//class_addmethod(c, (method)oexpr_doc_func, "doc-func", A_SYM, 0);
+	//class_addmethod(c, (method)oexpr_doc_func, "doc-function", A_SYM, 0);
+	//class_addmethod(c, (method)oexpr_doc_cat, "doc-cat", A_DEFSYM, 0);
+	//class_addmethod(c, (method)oexpr_doc_cat, "doc-category", A_DEFSYM, 0);
+	class_addmethod(c, (method)oexpr_doc_func, "doc-func", A_GIMME, 0);
+	class_addmethod(c, (method)oexpr_doc_func, "doc-function", A_GIMME, 0);
+	class_addmethod(c, (method)oexpr_doc_cat, "doc-cat", A_GIMME, 0);
+	class_addmethod(c, (method)oexpr_doc_cat, "doc-category", A_GIMME, 0);
 	class_register(CLASS_BOX, c);
 	oexpr_class = c;
 

@@ -63,6 +63,7 @@ typedef struct _osc_atom_s t_osc_atom_s;
 #include "osc_error.h"
 #include "osc_byteorder.h"
 #include "osc_atom_u.h"
+#include "osc_bundle_s.h"
 
 /** \brief Allocate a #t_osc_atom_s and set it to refer to ptr
 
@@ -90,6 +91,8 @@ int osc_atom_s_getInt(t_osc_atom_s *a);
 int osc_atom_s_getStringLen(t_osc_atom_s *a);
 int osc_atom_s_getString(t_osc_atom_s *a, size_t n, char **out);
 int osc_atom_s_getBool(t_osc_atom_s *a);
+t_osc_err osc_atom_s_getBndl(t_osc_bndl_s **b, t_osc_atom_s *a);
+t_osc_err osc_atom_s_getBndlCopy(t_osc_bndl_s **b, t_osc_atom_s *a);
 
 void osc_atom_s_setFloat(t_osc_atom_s *a, float v);
 void osc_atom_s_setDouble(t_osc_atom_s *a, double v);

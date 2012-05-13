@@ -82,9 +82,6 @@ typedef struct _omap{
 	long inlet;
 	t_critical lock;
 	t_omap_qitem *fifo;
-	//char *buffer;
-	//int buffer_len;
-	//int buffer_pos;
 	t_osc_bndl_u *bndl;
 	t_osc_msg_s *msg;
 	int busy;
@@ -92,21 +89,21 @@ typedef struct _omap{
 
 void *omap_class;
 
-void omap_fullPacket(t_omap *x, long len, long ptr);
-void omap_cbk(t_osc_msg msg, void *v);
-void omap_int(t_omap *x, long l);
-void omap_float(t_omap *x, double f);
-void omap_anything(t_omap *x, t_symbol *msg, short argc, t_atom *argv);
-void omap_list(t_omap *x, t_symbol *msg, short argc, t_atom *argv);
-void omap_free(t_omap *x);
+void omap_list(t_omap *x, t_symbol *sym, short argc, t_atom *argv);
 void omap_addQitem(t_omap *x, t_omap_qitem *qi);
-void *omap_new(t_symbol *msg, short argc, t_atom *argv);
-t_max_err omap_notify(t_omap *x, t_symbol *s, t_symbol *msg, void *sender, void *data);
 
 t_symbol *ps_FullPacket;
 
-void omap_fullPacket(t_omap *x, long len, long ptr){
-	printf("%s\n", __func__);
+//void omap_fullPacket(t_omap *x, long len, long ptr)
+void omap_fullPacket(t_omap *x, t_symbol *msg, int argc, t_atom *argv)
+{
+	// killme ////////////////////////
+	if(argc != 2){
+		return;
+	}
+	long len = atom_getlong(argv);
+	long ptr = atom_getlong(argv + 1);
+	//////////////////////////////////
 	osc_bundle_s_wrap_naked_message(len, ptr);
 	if(proxy_getinlet((t_object *)x) == 1){
 		if(!(x->msg) && !(x->bndl)){
@@ -141,7 +138,6 @@ void omap_fullPacket(t_omap *x, long len, long ptr){
 		t_osc_msg_s *msg = osc_bndl_it_s_next(it);
 		x->msg = msg;
 		long len = omax_util_getNumAtomsInOSCMsg(msg);
-		printf("%d\n", len);
 		t_atom atoms[len];
 		omax_util_oscMsg2MaxAtoms(msg, atoms);
 		outlet_anything(x->outlets[1], atom_getsym(atoms), len - 1, atoms + 1);
@@ -150,17 +146,19 @@ void omap_fullPacket(t_omap *x, long len, long ptr){
 	// I don't think we need a lock here since we're still busy
 	char *buffer = NULL;
 	long buflen = 0;
+	critical_enter(x->lock);
 	osc_bundle_u_serialize(x->bndl, &buflen, &buffer);
+	critical_exit(x->lock);
 	omax_util_outletOSC(x->outlets[0], buflen, buffer);
 	if(buffer){
 		osc_mem_free(buffer);
 	}
+	critical_enter(x->lock);
 	if(x->bndl){
 		osc_bundle_u_free(x->bndl);
 		x->bndl = NULL;
 	}
 	x->msg = NULL;
-	critical_enter(x->lock);
 	x->busy = 0;
 	if(x->fifo){
 		t_omap_qitem *qi = x->fifo;
@@ -169,24 +167,18 @@ void omap_fullPacket(t_omap *x, long len, long ptr){
 		// recursion so that we don't get interrupted by a new FullPacket message while
 		// we're waiting for the scheduler to execute.
 		critical_exit(x->lock);
-		omap_fullPacket(x, qi->len, (long)(qi->bndl));
+		//omap_fullPacket(x, qi->len, (long)(qi->bndl));
+		t_atom a[2];
+		atom_setlong(a, qi->len);
+		atom_setlong(a, (long)(qi->bndl));
+		omap_fullPacket(x, NULL, 2, a);
 		osc_mem_free(qi);
 	}
 	critical_exit(x->lock);
 }
-/*
-void omap_cbk(t_osc_msg msg, void *v){
-	t_omap *x = (t_omap *)v;
-	x->msg = msg;
-	long len = msg.argc;
-	t_atom atoms[len + 1];
-	//cmmjl_osc_get_data_atoms(&msg, atoms);
-	omax_util_oscMsg2MaxAtoms(&msg, &len, atoms);
-	outlet_anything(x->outlets[1], atom_getsym(atoms), msg.argc, atoms + 1);
-}
-*/
 
-void omap_int(t_omap *x, long l){
+void omap_int(t_omap *x, long l)
+{
 	if(proxy_getinlet((t_object *)x) == 0){
 		return;
 	}
@@ -198,7 +190,8 @@ void omap_int(t_omap *x, long l){
 	omap_list(x, NULL, 1, &a);
 }
 
-void omap_float(t_omap *x, double f){
+void omap_float(t_omap *x, double f)
+{
 	if(proxy_getinlet((t_object *)x) == 0){
 		return;
 	}
@@ -210,7 +203,8 @@ void omap_float(t_omap *x, double f){
 	omap_list(x, NULL, 1, &a);
 }
 
-void omap_anything(t_omap *x, t_symbol *msg, short argc, t_atom *argv){
+void omap_anything(t_omap *x, t_symbol *msg, short argc, t_atom *argv)
+{
 	if(proxy_getinlet((t_object *)x) == 0){
 		return;
 	}
@@ -227,7 +221,8 @@ void omap_anything(t_omap *x, t_symbol *msg, short argc, t_atom *argv){
 	}
 }
 
-void omap_list(t_omap *x, t_symbol *sym, short argc, t_atom *argv){
+void omap_list(t_omap *x, t_symbol *sym, short argc, t_atom *argv)
+{
 	// sym is always NULL
 	if(proxy_getinlet((t_object *)x) != 1){
 		// not sure what to do with this...
@@ -241,13 +236,17 @@ void omap_list(t_omap *x, t_symbol *sym, short argc, t_atom *argv){
 		t_symbol *address = atom_getsym(argv);
 		if(*(address->s_name) == '/'){
 			omax_util_maxAtomsToOSCMsg_u(&msg, address, argc - 1, argv + 1);
+			critical_enter(x->lock);
 			osc_bundle_u_addMsg(x->bndl, msg);
+			critical_exit(x->lock);
 			return;
 		}
 	}
+	critical_enter(x->lock);
 	t_symbol *address = gensym(osc_message_s_getAddress(x->msg));
 	omax_util_maxAtomsToOSCMsg_u(&msg, address, argc, argv);
 	osc_bundle_u_addMsg(x->bndl, msg);
+	critical_exit(x->lock);
 	//t_atom av[argc + 1];
 	//atom_setsym(av, address);
 	//memcpy(av + 1, argv, argc * sizeof(t_atom));
@@ -286,20 +285,15 @@ void omap_free(t_omap *x)
 
 void *omap_new(t_symbol *msg, short argc, t_atom *argv){
 	t_omap *x;
-	if(x = (t_omap *)object_alloc(omap_class)){
+	if((x = (t_omap *)object_alloc(omap_class))){
 		x->outlets[1] = outlet_new((t_object *)x, NULL);
 		x->outlets[0] = outlet_new((t_object *)x, "FullPacket");
 		x->proxy = proxy_new((t_object *)x, 1, &(x->inlet));
-		//x->buffer = (char *)calloc(4096, sizeof(char));
-		//x->buffer_len = 4096;
-		//x->buffer_pos = 0;
 		x->bndl = NULL;
 		x->msg = NULL;
 		x->fifo = NULL;
 		x->busy = 0;
 		critical_new(&(x->lock));
-		//object_attach_byptr_register(x, x, CLASS_BOX);
-		//attr_args_process(x, argc, argv);
 	}
 		   	
 	return(x);
@@ -307,15 +301,13 @@ void *omap_new(t_symbol *msg, short argc, t_atom *argv){
 
 int main(void){
 	t_class *c = class_new("o.mappatch", (method)omap_new, (method)omap_free, sizeof(t_omap), 0L, A_GIMME, 0);
-	class_addmethod(c, (method)omap_fullPacket, "FullPacket", A_LONG, A_LONG, 0);
-	//class_addmethod(c, (method)omap_notify, "notify", A_CANT, 0);
+	class_addmethod(c, (method)omap_fullPacket, "FullPacket", A_GIMME, 0);
 	class_addmethod(c, (method)omap_doc, "doc", 0);
 	class_addmethod(c, (method)omap_assist, "assist", A_CANT, 0);
 	class_addmethod(c, (method)omap_int, "int", A_LONG, 0);
 	class_addmethod(c, (method)omap_float, "float", A_FLOAT, 0);
 	class_addmethod(c, (method)omap_anything, "anything", A_GIMME, 0);
 	class_addmethod(c, (method)omap_list, "list", A_GIMME, 0);
-	class_addmethod(c, (method)omap_notify, "notify", A_CANT, 0);
 
 	class_register(CLASS_BOX, c);
 	omap_class = c;
@@ -327,13 +319,3 @@ int main(void){
 	return 0;
 }
 
-t_max_err omap_notify(t_omap *x, t_symbol *s, t_symbol *msg, void *sender, void *data){
-	/*
-	t_symbol *attrname;
-        if(msg == gensym("attr_modified")){
-		attrname = (t_symbol *)object_method((t_object *)data, gensym("getname"));
-		}
-	}
-	*/
-	return MAX_ERR_NONE;
-}

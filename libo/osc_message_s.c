@@ -87,7 +87,7 @@ void osc_message_s_copy(t_osc_msg_s **dest, t_osc_msg_s *src)
 
 t_osc_err osc_message_s_wrap(t_osc_msg_s *m, char *bytes)
 {
-	if(!m){
+	if(!m || !bytes){
 		return OSC_ERR_NULLPTR;
 	}
 	int len = ntoh32(*((uint32_t *)bytes));
@@ -257,21 +257,24 @@ extern t_osc_err osc_atom_s_doFormat(t_osc_atom_s *a, long *buflen, long *bufpos
 t_osc_err osc_message_s_doFormat(t_osc_msg_s *m, long *buflen, long *bufpos, char **buf);
 t_osc_err osc_message_s_doFormatArgs(t_osc_msg_s *m, long *buflen, long *bufpos, char **buf, int offset);
 
-t_osc_err osc_message_s_format(t_osc_msg_s *m, long *buflen, char **buf){
+t_osc_err osc_message_s_format(t_osc_msg_s *m, long *buflen, char **buf)
+{
 	long bufpos = 0, bl = 0;
 	t_osc_err e = osc_message_s_doFormat(m, &bl, &bufpos, buf);
 	*buflen = bufpos;
 	return e;
 }
 
-t_osc_err osc_message_s_formatArgs(t_osc_msg_s *m, long *buflen, char **buf, int offset){
+t_osc_err osc_message_s_formatArgs(t_osc_msg_s *m, long *buflen, char **buf, int offset)
+{
 	long bufpos = 0, bl = 0;
 	t_osc_err e = osc_message_s_doFormatArgs(m, &bl, &bufpos, buf, offset);
 	*buflen = bufpos;
 	return e;
 }
 
-t_osc_err osc_message_s_doFormatArgs(t_osc_msg_s *m, long *buflen, long *bufpos, char **buf, int offset){
+t_osc_err osc_message_s_doFormatArgs(t_osc_msg_s *m, long *buflen, long *bufpos, char **buf, int offset)
+{
 	t_osc_msg_it_s *it = osc_msg_it_s_get(m);
 	int i = 0;
 	while(osc_msg_it_s_hasNext(it)){
@@ -296,7 +299,8 @@ t_osc_err osc_message_s_doFormatArgs(t_osc_msg_s *m, long *buflen, long *bufpos,
 	return OSC_ERR_NONE;
 }
 
-t_osc_err osc_message_s_doFormat(t_osc_msg_s *m, long *buflen, long *bufpos, char **buf){
+t_osc_err osc_message_s_doFormat(t_osc_msg_s *m, long *buflen, long *bufpos, char **buf)
+{
 	if((*buflen - *bufpos) < 256){
 		*buf = osc_mem_resize(*buf, *buflen + 1024);
 		if(!(*buf)){

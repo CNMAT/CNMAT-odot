@@ -44,9 +44,16 @@ extern "C" {
 #define OSC_ID OSC_IDENTIFIER
 #define OSC_ID_SIZE OSC_IDENTIFIER_SIZE
 
+#define OSC_BUNDLE_TYPETAG '.'
+
 #define OSC_ARRAY_CLEAR_ON_ALLOC 1
 
 #define OSC_QUOTE_STRINGS 1
+
+#include <pthread.h>
+
+#define oprintf(str, args...)
+//#define oprintf(str, args...) printf("%p: %s:%d: "str, pthread_self(), __func__, __LINE__, ##args)
 
 
 #ifdef __cplusplus

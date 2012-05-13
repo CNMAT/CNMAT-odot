@@ -55,39 +55,17 @@ dfc       (({frac}{exp_opt}{fsuff_opt})|({dseq}{exp}{fsuff_opt}))
 hfc       (({hpref}{hfrac}{bexp}{fsuff_opt})|({hpref}{hdseq}{bexp}{fsuff_opt}))
 c99_floating_point_constant  ({dfc}|{hfc})
 
+quoted_string [^\"\\]
+oscaddress \/[^\+\-\*%\^!=\[\]:;,\?<>\&\|\\\{\}\(\)\"\' \n\t]+
+reserved_chars \+|-|\*|\/|%|^|!|=|\[|\]|:|;|\?|<|>|\&|\||\\|\{|\}|\(|\)
+
 %option reentrant
 %option bison-bridge
 %option bison-locations
 
-%x quote
+%x quote quote_function escape
 
 %%
-quote[[:space:]]*\( {
-	BEGIN(quote);
-}
-
-<quote>.* {
-	char *start = yytext;
-	char *end = start;
-	int np = 1;
-	while(np){
-		if(*end == ')'){
-			np--;
-		}else if(*end == '('){
-			np++;
-		}
-		end++;
-	}
-	yyless(end - start);
-	if(alloc_atom){
-		yylval->atom = osc_atom_u_alloc();
-	}
-	*(end - 1) = '\0';
-	osc_atom_u_setString(yylval->atom, yytext);
-	*(end - 1) = ')';
-	BEGIN(0);
-	return OSC_EXPR_QUOTED_EXPR;
-}
 
 \+|-|\*|\/|%|^|!|=|\[|\]|:|\?|<|> {
 	return *yytext;
@@ -141,6 +119,108 @@ quote[[:space:]]*\( {
 	return OSC_EXPR_DBLQMARKEQ;
 }
 
+,|;|\(|\)|\{|\}				{
+						return *yytext;
+					}
+\[\[					{
+						//printf("open double brackets\n");
+						return OPEN_DBL_BRKTS;
+					}
+\]\]					{
+						//printf("close double brackets\n");
+						return CLOSE_DBL_BRKTS;
+					}
+
+quote[[:space:]]*\( {
+	BEGIN(quote_function);
+	}
+
+<quote_function>.* {
+	char *start = yytext;
+	char *end = start;
+	int np = 1;
+	while(np){
+		if(*end == ')'){
+			np--;
+		}else if(*end == '('){
+			np++;
+		}
+		end++;
+	}
+	yyless(end - start);
+	if(alloc_atom){
+		yylval->atom = osc_atom_u_alloc();
+	}
+	*(end - 1) = '\0';
+	osc_atom_u_setString(yylval->atom, yytext);
+	*(end - 1) = ')';
+	BEGIN(0);
+	return OSC_EXPR_QUOTED_EXPR;
+	}
+
+\" {
+	BEGIN(quote);
+}
+	/*
+	<quote>\/[^\+\-\*%\^!=\[\]:;,\?<>\&\|\\\{\}\(\) \n\t\"\']+  {
+	if(*buf){
+		*buf = osc_mem_resize(*buf, *buflen + yyleng + 1);
+		*buflen += yyleng + 1;
+		strcat(*buf, yytext);
+	}else{
+		//char *copy = osc_mem_alloc(yyleng + 1);
+		//strncpy(copy, yytext, yyleng + 1);
+		t_osc_atom_u *a = osc_atom_u_alloc();
+		osc_atom_u_setString(a, yytext);
+		yylval->atom = a;
+		return OSC_EXPR_OSCADDRESS;
+	}
+	}
+	*/
+<quote>[^\"]+ { 
+	if(*buf){
+		*buf = osc_mem_resize(*buf, *buflen + yyleng + 1);
+		*buflen += yyleng + 1;
+		strcat(*buf, yytext);
+	}else{
+		//char *copy = osc_mem_alloc(yyleng + 1);
+		//strncpy(copy, yytext, yyleng + 1);
+		t_osc_atom_u *a = osc_atom_u_alloc();
+		osc_atom_u_setString(a, yytext);
+		yylval->atom = a;
+		return OSC_EXPR_STRING;
+	}
+}
+
+<quote>\" {
+	BEGIN(0);
+	if(*buf){
+		t_osc_atom_u *a = osc_atom_u_alloc();
+		osc_atom_u_setStringPtr(a, *buf);
+		osc_atom_u_setShouldFreePtr(a, 1);
+		//yylval->string = *buf;
+		*buf = NULL;
+		*buflen = 0;
+		return OSC_EXPR_STRING;
+	}
+}
+
+<quote>{quoted_string}*\\. {
+	if(*buf){
+		*buflen += yyleng;
+		*buf = osc_mem_resize(*buf, *buflen);
+		strcat(*buf, yytext);
+		(*buf)[*buflen - 3] = (*buf)[*buflen - 2];
+		(*buf)[*buflen - 2] = '\0';
+	}else{
+		*buf = osc_mem_alloc(yyleng);
+		memcpy(*buf, yytext, yyleng);
+		*buflen = yyleng;
+		(*buf)[*buflen - 2] = (*buf)[*buflen - 1];
+		(*buf)[*buflen - 1] = '\0';
+	}
+}
+
 (true|True|TRUE)			{
 						if(alloc_atom){
 							yylval->atom = osc_atom_u_alloc();
@@ -159,20 +239,26 @@ quote[[:space:]]*\( {
 						return OSC_EXPR_LAMBDA;
 					}
 
+\/[^\+\-\*%\^!=\[\]:;,\?<>\&\|\\\{\}\(\) \n\t]+  {
+						if(alloc_atom){
+							yylval->atom = osc_atom_u_alloc();
+						}
+						osc_atom_u_setString(yylval->atom, yytext);
+						return OSC_EXPR_OSCADDRESS;
+				 	}
+
+[^0-9\+\-\*\/%\^!=\[\]:;,\?<>\&\|\\\{\}\(\) \n\t][^\+\-\*\/%\^!=\[\]:;,\?<>\&\|\\\{\}\(\) \n\t]* {
+						if(alloc_atom){
+							yylval->atom = osc_atom_u_alloc();
+						}
+						osc_atom_u_setString(yylval->atom, yytext);
+						return OSC_EXPR_STRING;
+					}
+
+
 ;+|(;[[:space:]]*)+			{
 						// attempt to get rid of repeated semicolons
 						return ';';
-					}
-,|;|\(|\)|\{|\}				{
-						return *yytext;
-					}
-\[\[					{
-						//printf("open double brackets\n");
-						return OPEN_DBL_BRKTS;
-					}
-\]\]					{
-						//printf("close double brackets\n");
-						return CLOSE_DBL_BRKTS;
 					}
 (-?([[:digit:]]{-}[0])[[:digit:]]*|0) 	{
 						// int 
@@ -194,22 +280,9 @@ quote[[:space:]]*\( {
 						osc_atom_u_setDouble(yylval->atom, f);
 						return OSC_EXPR_NUM;
 					}
-<INITIAL>[^0-9\(\)\[\] \t\n\+\-\*<>=!?,;:\"][^\(\)\[\] \t\n\+\-<>=!?,;:\"]*		{
-						// put in atom
-						if(alloc_atom){
-							yylval->atom = osc_atom_u_alloc();
-						}
-						//t_osc_expr_const_rec *cs = osc_expr_lookupConstant(yytext);
-						//if(cs){
-							//osc_atom_u_setDouble(yylval->atom, cs->val);
-							//return OSC_EXPR_NUM;
-						//}else{
-							osc_atom_u_setString(yylval->atom, yytext);
-							return OSC_EXPR_STRING;
-						//}
-					}
 
-\"[[:space:]]+\"			{
+	/*
+	\"[[:space:]]+\"			{
 						if(alloc_atom){
 							yylval->atom = osc_atom_u_alloc();
 						}
@@ -219,10 +292,9 @@ quote[[:space:]]*\( {
 						return OSC_EXPR_STRING;
 					}
 
-
+	*/
 
 [ \t\n]+	/* eat up whitespace */
-\"
 
 
 

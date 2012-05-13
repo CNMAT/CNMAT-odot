@@ -36,12 +36,14 @@
 #include <CoreServices.h>
 #endif
 #include "osc_expr.h"
-#include "osc_expr_func.r"
+#include "osc_expr_rec.h"
+#include "osc_expr_rec.r"
 #include "osc_expr_func.h"
 #include "osc_error.h"
 #include "osc_expr_parser.h"
 #include "osc_expr_scanner.h"
 #include "osc_util.h"
+#include "osc_atom_u.r"
 
 	//#define OSC_EXPR_PARSER_DEBUG
 #ifdef OSC_EXPR_PARSER_DEBUG
@@ -60,7 +62,7 @@
 
 
 #define YY_DECL int osc_expr_scanner_lex \
-		(YYSTYPE * yylval_param, YYLTYPE * yylloc_param , yyscan_t yyscanner, int alloc_atom)
+		(YYSTYPE * yylval_param, YYLTYPE * yylloc_param , yyscan_t yyscanner, int alloc_atom, long *buflen, char **buf)
 t_osc_err osc_expr_parser_parseString(char *ptr, t_osc_expr **f);
 
 }
@@ -72,8 +74,8 @@ t_osc_err osc_expr_parser_parseString(char *ptr, t_osc_expr **f);
 int alloc_atom = 1;
 
 
-int osc_expr_parser_lex(YYSTYPE *yylval_param, YYLTYPE *llocp, yyscan_t yyscanner, int alloc_atom){
-	return osc_expr_scanner_lex(yylval_param, llocp, yyscanner, 1);
+int osc_expr_parser_lex(YYSTYPE *yylval_param, YYLTYPE *llocp, yyscan_t yyscanner, int alloc_atom, long *buflen, char **buf){
+	return osc_expr_scanner_lex(yylval_param, llocp, yyscanner, 1, buflen, buf);
 }
 
 t_osc_err osc_expr_parser_parseString(char *ptr, t_osc_expr **f){
@@ -98,11 +100,20 @@ t_osc_err osc_expr_parser_parseString(char *ptr, t_osc_expr **f){
 	YY_BUFFER_STATE buf_state = osc_expr_scanner__scan_string(ptr, scanner);
 	osc_expr_scanner_set_out(NULL, scanner);
 	t_osc_expr *exprstack = NULL;
+	t_osc_expr *tmp_exprstack = NULL;
 	int colnum = 0;
-	t_osc_err ret = osc_expr_parser_parse(&exprstack, scanner, ptr, &colnum);
+	long buflen = 0;
+	char *buf = NULL;
+	t_osc_err ret = osc_expr_parser_parse(&exprstack, &tmp_exprstack, scanner, ptr, &colnum, &buflen, &buf);
 	osc_expr_scanner__delete_buffer(buf_state, scanner);
 	osc_expr_scanner_lex_destroy(scanner);
-
+	if(tmp_exprstack){
+		if(exprstack){
+			osc_expr_appendExpr(exprstack, tmp_exprstack);
+		}else{
+			exprstack = tmp_exprstack;
+		}
+	}
 	*f = exprstack;
 	if(alloc){
 		osc_mem_free(ptr);
@@ -113,6 +124,11 @@ t_osc_err osc_expr_parser_parseString(char *ptr, t_osc_expr **f){
 void osc_expr_error_formatLocation(YYLTYPE *llocp, char *input_string, char **buf)
 {
 	int len = strlen(input_string);
+	if(llocp->first_column >= len || llocp->last_column >= len){
+		*buf = osc_mem_alloc(len + 1);
+		strncpy(*buf, input_string, len + 1);
+		return;
+	}
 	char s1[len * 2];
 	char s2[len * 2];
 	char s3[len * 2];
@@ -223,7 +239,7 @@ int osc_expr_parser_checkArity(YYLTYPE *llocp, char *input_string, t_osc_expr_re
 	return 0;
 }
 
-void yyerror(YYLTYPE *llocp, t_osc_expr **exprstack, void *scanner, char *input_string, char const *e)
+void yyerror(YYLTYPE *llocp, t_osc_expr **exprstack, t_osc_expr **tmp_exprstack, void *scanner, char *input_string, long *buflen, char **buf, char const *e)
 {
 	osc_expr_error(llocp, input_string, OSC_ERR_EXPPARSE, e);
 }
@@ -393,90 +409,6 @@ t_osc_expr *osc_expr_parser_reduce_NullCoalescingOperator(YYLTYPE *llocp,
 	return osc_expr_parser_reduce_PrefixFunction(llocp, input_string, "if", arg1);
 }
 
-t_osc_err osc_expr_parser_bindParameters_r(t_osc_expr *expr,
-					   t_osc_expr_arg *parameters,
-					   t_osc_expr *expns)/*,
-					   int *nslots,
-					   int *nslots_filled,
-					   int **slots,
-					   t_osc_expr_arg ***args)*/
-{
-	t_osc_expr *e = expns;
-	while(e){
-		printf("while e\n");
-		t_osc_expr_arg *a = osc_expr_getArgs(e);
-		while(a){
-			printf("while a\n");
-			switch(osc_expr_arg_getType(a)){
-			case OSC_EXPR_ARG_TYPE_ATOM:
-				{
-				char *arg_pname = osc_atom_u_getStringPtr(osc_expr_arg_getOSCAtom(a));
-				t_osc_expr_arg *p = parameters;
-				int i = 0;
-				while(p){
-					printf("p = %p\n", p);
-					if(osc_expr_arg_getType(p) != OSC_EXPR_ARG_TYPE_PARAMETER){
-						goto cont;
-					}
-					char *pname = osc_atom_u_getStringPtr(osc_expr_arg_getOSCAtom(p));
-					printf("comparing %s to %s\n", arg_pname, pname);
-					if(!strcmp(arg_pname, pname)){
-						osc_expr_arg_setType(a, OSC_EXPR_ARG_TYPE_VARIABLE);
-						osc_expr_arg_setParameterSlot(a, i);
-						/*
-						if(*nslots_filled + 1 == *nslots){
-							*slots = osc_mem_resize(*slots, (*nslots + 12) * sizeof(int));
-							*args = osc_mem_resize(*args, (*nslots + 12) * sizeof(t_osc_expr_arg *));
-							if(!(*slots) || !(*args)){
-								return OSC_ERR_OUTOFMEM;
-							}
-							*nslots += 12;
-						}
-						(*slots)[*nslots_filled] = i;
-						(*args)[*nslots_filled] = a;
-						(*nslots_filled)++;
-						*/
-					}
-				cont:
-					p = osc_expr_arg_next(p);
-					i++;
-				}
-				}
-				break;
-			case OSC_EXPR_ARG_TYPE_EXPR:
-				osc_expr_parser_bindParameters_r(e,
-							 	parameters,
-								 osc_expr_arg_getExpr(a));/*,
-							 	nslots,
-							 	nslots_filled,
-							 	slots,
-							 	args);*/
-				break;
-			}
-			a = osc_expr_arg_next(a);
-		}
-		e = osc_expr_next(e);
-	}
-	return 0;
-}
-
-t_osc_err osc_expr_parser_bindParameters(YYLTYPE *llocp,
- 					  char *input_string,
-					  t_osc_expr *e,
-					  t_osc_expr_arg *parameters,
-					  t_osc_expr *expns)
-{
-	/*
-	int nslots = 12;
-	int nslots_filled = 0;
-	int *slots = (int *)osc_mem_alloc(12 * sizeof(int));
-	t_osc_expr_arg **args = (t_osc_expr_arg **)osc_mem_alloc(12 * sizeof(t_osc_expr_arg *));
-	*/
-	osc_expr_parser_bindParameters_r(e, parameters, expns);//, &nslots, &nslots_filled, &slots, &args);
-
-	return 0;
-}
-
 %}
 
 %define "api.pure"
@@ -484,23 +416,29 @@ t_osc_err osc_expr_parser_bindParameters(YYLTYPE *llocp,
 %require "2.5"
 
 %parse-param{t_osc_expr **exprstack}
+%parse-param{t_osc_expr **tmp_exprstack}
 %parse-param{void *scanner}
 %parse-param{char *input_string}
+%parse-param{long *buflen}
+%parse-param{char **buf}
+
 %lex-param{void *scanner}
 %lex-param{int alloc_atom}
+%lex-param{long *buflen}
+%lex-param{char **buf}
 
 %union {
 	t_osc_atom_u *atom;
 	t_osc_expr *expr;
-	t_osc_expr_func *func;
+	t_osc_expr_rec *func;
 	t_osc_expr_arg *arg;
 }
 
-%type <expr>expr
+%type <expr>expr 
 %type <func>function
 %type <arg>arg args 
 %type <atom> OSC_EXPR_QUOTED_EXPR parameters parameter
-%nonassoc <atom>OSC_EXPR_NUM OSC_EXPR_STRING OSC_EXPR_LAMBDA
+%nonassoc <atom>OSC_EXPR_NUM OSC_EXPR_STRING OSC_EXPR_OSCADDRESS OSC_EXPR_LAMBDA
 
 // low to high precedence
 // adapted from http://en.wikipedia.org/wiki/Operators_in_C_and_C%2B%2B
@@ -539,13 +477,22 @@ t_osc_err osc_expr_parser_bindParameters(YYLTYPE *llocp,
 
 %%
 
-expns: //expr ';' //{printf("1\n");$$ = $1;}
-	| expns ';' {;}//{printf("2\n");$$ = $1;}
+expns:  {
+		if(*tmp_exprstack){
+			if(*exprstack){
+				osc_expr_appendExpr(*exprstack, *tmp_exprstack);
+			}else{
+				*exprstack = *tmp_exprstack;
+			}
+			*tmp_exprstack = NULL;
+		}
+ 	}
+	| expns ';' {;}// can this really ever happen?
 	| expns expr ';' {
-		if(*exprstack){
-			osc_expr_appendExpr(*exprstack, $2);
+		if(*tmp_exprstack){
+			osc_expr_appendExpr(*tmp_exprstack, $2);
 		}else{
-			*exprstack = $2;
+			*tmp_exprstack = $2;
 		}
  	}
 ;
@@ -562,6 +509,7 @@ arg:    OSC_EXPR_NUM {
  	}
 	| OSC_EXPR_STRING {
 		$$ = osc_expr_arg_alloc();
+		/*
 		int oscaddress = 0;
 		if(osc_atom_u_getTypetag($1) == 's'){
 
@@ -581,20 +529,64 @@ arg:    OSC_EXPR_NUM {
 			osc_expr_arg_setOSCAddress($$, buf);
 			osc_atom_u_free($1);
 		}else{
+		*/
 			osc_expr_arg_setOSCAtom($$, $1);
-		}
+			//}
  	}
+	| OSC_EXPR_OSCADDRESS {
+		$$ = osc_expr_arg_alloc();
+		char *st = osc_atom_u_getStringPtr($1);
+		int len = strlen(st) + 1;
+		char *buf = osc_mem_alloc(len);
+		memcpy(buf, st, len);
+		osc_expr_arg_setOSCAddress($$, buf);
+		osc_atom_u_free($1);
+	}
 	| expr {
 		$$ = osc_expr_arg_alloc();
 		osc_expr_arg_setExpr($$, $1);
   	}
 	| function {
-
+		$$ = osc_expr_arg_alloc();
+		osc_expr_arg_setFunction($$, $1);
 	}
 ;
 
 function: 
 	OSC_EXPR_LAMBDA '(' parameters ')' '{' expns '}' {
+		int n = 0;
+		t_osc_atom_u *a = $3;
+		while(a){
+			n++;
+			a = a->next;
+		}
+		char *params[n];
+		a = $3;
+		for(int i = n - 1; i >= 0; i--){
+			char *st = osc_atom_u_getStringPtr(a);
+			int len = strlen(st) + 1;
+			params[i] = (char *)osc_mem_alloc(len);
+			strncpy(params[i], st, len);
+			t_osc_atom_u *killme = a;
+			a = a->next;
+			osc_atom_u_free(killme);
+		}
+		t_osc_expr_rec *func = osc_expr_rec_alloc();
+		osc_expr_rec_setName(func, "lambda");
+		osc_expr_rec_setRequiredArgs(func, n, params, NULL);
+		for(int i = 0; i < n; i++){
+			if(params[i]){
+				osc_mem_free(params[i]);
+			}
+		}
+		t_osc_expr *e = *tmp_exprstack;
+		while(e){
+			e = osc_expr_next(e);
+		}
+		osc_expr_rec_setFunction(func, osc_expr_lambda);
+		osc_expr_rec_setExtra(func, *tmp_exprstack);
+		*tmp_exprstack = NULL;
+		$$ = func;
 // go through and make sure the parameters are unique
 /*
 		t_osc_expr_rec *r = osc_expr_lookupFunction("lambda");
@@ -623,22 +615,27 @@ function:
 
 parameters: parameter
 	| parameters ',' parameter {
-		osc_expr_arg_append($$, $3);
+		$3->next = $1;
+		$$ = $3;
  	}
 ;
 
 parameter: OSC_EXPR_STRING {
-		$$ = osc_expr_arg_alloc();
 		if(osc_atom_u_getTypetag($1) == 's'){
 			char *st = osc_atom_u_getStringPtr($1);
 			if(st){
 				if(*st == '/' && st[1] != '\0'){
 					// this is an OSC address
 					//error
+				}else{
+					$$ = $1;
 				}
+			}else{
+				//error
 			}
+		}else{
+			//error
 		}
-		osc_expr_arg_setParameter($$, $1);
 	}
 ;
 
@@ -742,7 +739,7 @@ expr:
 		osc_expr_setArg($$, $2);
 	}
 // prefix inc/dec
-	| OSC_EXPR_INC OSC_EXPR_STRING %prec OSC_EXPR_PREFIX_INC {
+	| OSC_EXPR_INC OSC_EXPR_OSCADDRESS %prec OSC_EXPR_PREFIX_INC {
 		char *copy = NULL;
 		osc_atom_u_getString($2, 0, &copy);
 		t_osc_expr *e = osc_expr_parser_reduce_PrefixUnaryOperator(&yylloc, input_string, copy, "plus1");
@@ -754,7 +751,7 @@ expr:
 		osc_atom_u_free($2);
 		$$ = e;
 	}
-	| OSC_EXPR_DEC OSC_EXPR_STRING %prec OSC_EXPR_PREFIX_DEC {
+	| OSC_EXPR_DEC OSC_EXPR_OSCADDRESS %prec OSC_EXPR_PREFIX_DEC {
 		char *copy = NULL;
 		osc_atom_u_getString($2, 0, &copy);
 		t_osc_expr *e = osc_expr_parser_reduce_PrefixUnaryOperator(&yylloc, input_string, copy, "minus1");
@@ -767,7 +764,7 @@ expr:
 		$$ = e;
 	}
 // postfix inc/dec
-	| OSC_EXPR_STRING OSC_EXPR_INC {
+	| OSC_EXPR_OSCADDRESS OSC_EXPR_INC {
 		char *copy = NULL;
 		osc_atom_u_getString($1, 0, &copy);
 		t_osc_expr *e = osc_expr_parser_reduce_PostfixUnaryOperator(&yylloc, input_string, copy, "plus1");
@@ -779,7 +776,7 @@ expr:
 		osc_atom_u_free($1);
 		$$ = e;
 	}
-	| OSC_EXPR_STRING OSC_EXPR_DEC {
+	| OSC_EXPR_OSCADDRESS OSC_EXPR_DEC {
 		char *copy = NULL;
 		osc_atom_u_getString($1, 0, &copy);
 		t_osc_expr *e = osc_expr_parser_reduce_PostfixUnaryOperator(&yylloc, input_string, copy, "minus1");
@@ -792,7 +789,7 @@ expr:
 		$$ = e;
 	}
 // assignment
-	| OSC_EXPR_STRING '=' arg {
+	| OSC_EXPR_OSCADDRESS '=' arg {
 		// basic assignment 
 		char *ptr = NULL;
 		osc_atom_u_getString($1, 0, &ptr);
@@ -805,7 +802,7 @@ expr:
 		$$ = osc_expr_parser_reduce_InfixOperator(&yylloc, input_string, "assign", arg, $3);
 		osc_atom_u_free($1);
  	}
-	| OSC_EXPR_STRING OPEN_DBL_BRKTS args CLOSE_DBL_BRKTS '=' arg{
+	| OSC_EXPR_OSCADDRESS OPEN_DBL_BRKTS args CLOSE_DBL_BRKTS '=' arg{
 		char *ptr = NULL;
 		osc_atom_u_getString($1, 0, &ptr);
 		if(*ptr != '/'){
@@ -828,7 +825,7 @@ expr:
 		$$ = osc_expr_parser_reduce_PrefixFunction(&yylloc, input_string, "assign_to_index", arg);
 		osc_atom_u_free($1);
 	}
-	| OSC_EXPR_STRING OPEN_DBL_BRKTS arg ':' arg CLOSE_DBL_BRKTS '=' arg{
+	| OSC_EXPR_OSCADDRESS OPEN_DBL_BRKTS arg ':' arg CLOSE_DBL_BRKTS '=' arg{
 		char *ptr = NULL;
 		osc_atom_u_getString($1, 0, &ptr);
 		if(*ptr != '/'){
@@ -849,7 +846,7 @@ expr:
 		$$ = osc_expr_parser_reduce_PrefixFunction(&yylloc, input_string, "assign_to_index", arg);
 		osc_atom_u_free($1);
 	}
-	| OSC_EXPR_STRING OPEN_DBL_BRKTS arg ':' arg ':' arg CLOSE_DBL_BRKTS '=' arg{
+	| OSC_EXPR_OSCADDRESS OPEN_DBL_BRKTS arg ':' arg ':' arg CLOSE_DBL_BRKTS '=' arg{
 		char *ptr = NULL;
 		osc_atom_u_getString($1, 0, &ptr);
 		if(*ptr != '/'){
@@ -903,13 +900,13 @@ expr:
 		osc_expr_arg_append($1, $5);
 		$$ = osc_expr_parser_reduce_PrefixFunction(&yylloc, input_string, "if", $1);
   	}
-	| OSC_EXPR_STRING OSC_EXPR_DBLQMARK arg {
+	| OSC_EXPR_OSCADDRESS OSC_EXPR_DBLQMARK arg {
 		// null coalescing operator from C#.  
 		// /foo ?? 10 means /foo if /foo is in the bundle, otherwise 10
 		$$ = osc_expr_parser_reduce_NullCoalescingOperator(&yylloc, input_string, $1, $3);
 		osc_atom_u_free($1); // the above function will copy that
 	}
-	| OSC_EXPR_STRING OSC_EXPR_DBLQMARKEQ arg {
+	| OSC_EXPR_OSCADDRESS OSC_EXPR_DBLQMARKEQ arg {
 		// null coalescing operator from C#.  
 		// /foo ?? 10 means /foo if /foo is in the bundle, otherwise 10
 		t_osc_expr *if_expr = osc_expr_parser_reduce_NullCoalescingOperator(&yylloc, input_string, $1, $3);
@@ -931,18 +928,24 @@ expr:
 // array lookup
 	| arg OPEN_DBL_BRKTS args CLOSE_DBL_BRKTS {
 		osc_expr_arg_setNext($1, $3);
-		$$ = osc_expr_parser_reduce_PrefixFunction(&yylloc, input_string, "get_index", $1);
+		$$ = osc_expr_parser_reduce_PrefixFunction(&yylloc, input_string, "nth", $1);
 	}
-	| OSC_EXPR_STRING OPEN_DBL_BRKTS args CLOSE_DBL_BRKTS {
+	| OSC_EXPR_OSCADDRESS OPEN_DBL_BRKTS args CLOSE_DBL_BRKTS {
 		char *ptr = NULL;
 		osc_atom_u_getString($1, 0, &ptr);
 		t_osc_expr_arg *arg = osc_expr_arg_alloc();
 		osc_expr_arg_setOSCAddress(arg, ptr);
 		osc_expr_arg_setNext(arg, $3);
-		$$ = osc_expr_parser_reduce_PrefixFunction(&yylloc, input_string, "get_index", arg);
+		$$ = osc_expr_parser_reduce_PrefixFunction(&yylloc, input_string, "nth", arg);
 		osc_atom_u_free($1);
 	}
-
+// shorthand apply
+	| '(' function ',' args ')' {
+		t_osc_expr_arg *arg = osc_expr_arg_alloc();
+		osc_expr_arg_setFunction(arg, $2);
+		osc_expr_arg_append(arg, $4);
+		$$ = osc_expr_parser_reduce_PrefixFunction(&yylloc, input_string, "apply", arg);
+	}
 // invalid constructs that result in errors
 	| OSC_EXPR_STRING OSC_EXPR_INC '=' arg {
 		char buf[strlen(osc_atom_u_getStringPtr($1)) + 3];

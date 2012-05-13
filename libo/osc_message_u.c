@@ -34,7 +34,8 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #include "osc_byteorder.h"
 #include "osc_util.h"
 
-t_osc_msg_u *osc_message_u_alloc(){
+t_osc_msg_u *osc_message_u_alloc()
+{
 	t_osc_msg_u *m = (t_osc_msg_u *)osc_mem_alloc(sizeof(t_osc_msg_u));
 	if(!m){
 		return NULL;
@@ -43,11 +44,13 @@ t_osc_msg_u *osc_message_u_alloc(){
 	return m;
 }
 
-size_t osc_message_u_getStructSize(void){
+size_t osc_message_u_getStructSize(void)
+{
 	return sizeof(t_osc_msg_u);
 }
 
-void osc_message_u_free(t_osc_msg_u *m){
+void osc_message_u_free(t_osc_msg_u *m)
+{
 	if(!m){
 		return;
 	}
@@ -63,14 +66,16 @@ void osc_message_u_free(t_osc_msg_u *m){
 	osc_mem_free(m);
 }
 
-void osc_message_u_initMsg(t_osc_msg_u *m){
+void osc_message_u_initMsg(t_osc_msg_u *m)
+{
 	if(!m){
 		return;
 	}
 	memset(m, '\0', sizeof(t_osc_msg_u));
 }
 
-void osc_message_u_clearArgs(t_osc_msg_u *m){
+void osc_message_u_clearArgs(t_osc_msg_u *m)
+{
 	if(!m){
 		return;
 	}
@@ -155,10 +160,11 @@ t_osc_err osc_message_u_setAddress(t_osc_msg_u *m, const char *address)
 	}
 	if(m->address){
 		int len = strlen(m->address);
-		if(len < strlen(address)){
-			m->address = osc_mem_resize(m->address, len + 1);
+		int newlen = strlen(address);
+		if(len < newlen){
+			m->address = osc_mem_resize(m->address, newlen + 1);
 		}
-		strcpy(m->address, address);
+		strncpy(m->address, address, newlen + 1);
 	}else{
 		char *buf = osc_mem_alloc(strlen(address) + 1);
 		strcpy(buf, address);
@@ -181,7 +187,8 @@ int osc_message_u_getArgCount(t_osc_msg_u *m)
 	return m->argc;
 }
 
-void osc_message_u_getArg(t_osc_msg_u *m, int n, t_osc_atom_u **atom){
+void osc_message_u_getArg(t_osc_msg_u *m, int n, t_osc_atom_u **atom)
+{
 	int nn = osc_message_u_getArgCount(m);
 	if(nn <= n){
 		return;
@@ -202,7 +209,8 @@ void osc_message_u_getArg(t_osc_msg_u *m, int n, t_osc_atom_u **atom){
 	*atom = a;
 }
 
-t_osc_err osc_message_u_appendAtom(t_osc_msg_u *m, t_osc_atom_u *a){
+t_osc_err osc_message_u_appendAtom(t_osc_msg_u *m, t_osc_atom_u *a)
+{
 	m->argc++;
 	if(!(m->arghead)){
 		a->prev = a->next = NULL;
@@ -216,7 +224,8 @@ t_osc_err osc_message_u_appendAtom(t_osc_msg_u *m, t_osc_atom_u *a){
 	return OSC_ERR_NONE;
 }
 
-t_osc_err osc_message_u_prependAtom(t_osc_msg_u *m, t_osc_atom_u *a){
+t_osc_err osc_message_u_prependAtom(t_osc_msg_u *m, t_osc_atom_u *a)
+{
 	m->argc++;
 	if(!(m->arghead)){
 		a->prev = a->next = NULL;
@@ -230,7 +239,8 @@ t_osc_err osc_message_u_prependAtom(t_osc_msg_u *m, t_osc_atom_u *a){
 	return OSC_ERR_NONE;
 }
 
-t_osc_err osc_message_u_insertAtom(t_osc_msg_u *m, t_osc_atom_u *a, int pos){
+t_osc_err osc_message_u_insertAtom(t_osc_msg_u *m, t_osc_atom_u *a, int pos)
+{
 	if(m->arghead == NULL){
 		m->arghead = m->argtail = a;
 		a->next = a->prev = NULL;
@@ -277,84 +287,116 @@ t_osc_err osc_message_u_insertAtom(t_osc_msg_u *m, t_osc_atom_u *a, int pos){
 	return OSC_ERR_NONE;
 }
 
-t_osc_atom_u *osc_message_u_appendInt8(t_osc_msg_u *m, int8_t v){
+void osc_message_u_removeAtom(t_osc_msg_u *m, t_osc_atom_u *a)
+{
+	if(!m || !a){
+		return;
+	}
+	if(a->next){
+		a->next->prev = a->prev;
+	}
+	if(a->prev){
+		a->prev->next = a->next;
+	}
+	if(a == m->arghead){
+		m->arghead = a->next;
+	}
+	if(a == m->argtail){
+		m->argtail = a->prev;
+	}
+	m->argc--;
+}
+
+t_osc_atom_u *osc_message_u_appendInt8(t_osc_msg_u *m, int8_t v)
+{
 	t_osc_atom_u *a = osc_atom_u_alloc();
 	osc_atom_u_setInt8(a, v);
 	osc_message_u_appendAtom(m, a);
 	return a;
 }
 
-t_osc_atom_u *osc_message_u_appendInt16(t_osc_msg_u *m, int16_t v){
+t_osc_atom_u *osc_message_u_appendInt16(t_osc_msg_u *m, int16_t v)
+{
 	t_osc_atom_u *a = osc_atom_u_alloc();
 	osc_atom_u_setInt16(a, v);
 	osc_message_u_appendAtom(m, a);
 	return a;
 }
 
-t_osc_atom_u *osc_message_u_appendInt32(t_osc_msg_u *m, int32_t v){
+t_osc_atom_u *osc_message_u_appendInt32(t_osc_msg_u *m, int32_t v)
+{
 	t_osc_atom_u *a = osc_atom_u_alloc();
 	osc_atom_u_setInt32(a, v);
 	osc_message_u_appendAtom(m, a);
 	return a;
 }
 
-t_osc_atom_u *osc_message_u_appendInt64(t_osc_msg_u *m, int64_t v){
+t_osc_atom_u *osc_message_u_appendInt64(t_osc_msg_u *m, int64_t v)
+{
 	t_osc_atom_u *a = osc_atom_u_alloc();
 	osc_atom_u_setInt64(a, v);
 	osc_message_u_appendAtom(m, a);
 	return a;
 }
 
-t_osc_atom_u *osc_message_u_appendUInt8(t_osc_msg_u *m, uint8_t v){
+t_osc_atom_u *osc_message_u_appendUInt8(t_osc_msg_u *m, uint8_t v)
+{
 	t_osc_atom_u *a = osc_atom_u_alloc();
 	osc_atom_u_setUInt8(a, v);
 	osc_message_u_appendAtom(m, a);
 	return a;
 }
 
-t_osc_atom_u *osc_message_u_appendUInt16(t_osc_msg_u *m, uint16_t v){
+t_osc_atom_u *osc_message_u_appendUInt16(t_osc_msg_u *m, uint16_t v)
+{
 	t_osc_atom_u *a = osc_atom_u_alloc();
 	osc_atom_u_setUInt16(a, v);
 	osc_message_u_appendAtom(m, a);
 	return a;
 }
 
-t_osc_atom_u *osc_message_u_appendUInt32(t_osc_msg_u *m, uint32_t v){
+t_osc_atom_u *osc_message_u_appendUInt32(t_osc_msg_u *m, uint32_t v)
+{
 	t_osc_atom_u *a = osc_atom_u_alloc();
 	osc_atom_u_setUInt32(a, v);
 	osc_message_u_appendAtom(m, a);
 	return a;
 }
 
-t_osc_atom_u *osc_message_u_appendUInt64(t_osc_msg_u *m, uint64_t v){
+t_osc_atom_u *osc_message_u_appendUInt64(t_osc_msg_u *m, uint64_t v)
+{
 	t_osc_atom_u *a = osc_atom_u_alloc();
 	osc_atom_u_setUInt64(a, v);
 	osc_message_u_appendAtom(m, a);
 	return a;
 }
 
-t_osc_atom_u *osc_message_u_appendFloat(t_osc_msg_u *m, float v){
+t_osc_atom_u *osc_message_u_appendFloat(t_osc_msg_u *m, float v)
+{
 	t_osc_atom_u *a = osc_atom_u_alloc();
 	osc_atom_u_setFloat(a, v);
 	osc_message_u_appendAtom(m, a);
 	return a;
 }
 
-t_osc_atom_u *osc_message_u_appendDouble(t_osc_msg_u *m, double v){
+t_osc_atom_u *osc_message_u_appendDouble(t_osc_msg_u *m, double v)
+{
 	t_osc_atom_u *a = osc_atom_u_alloc();
 	osc_atom_u_setDouble(a, v);
 	osc_message_u_appendAtom(m, a);
 	return a;
 }
 
-t_osc_atom_u *osc_message_u_appendStringPtr(t_osc_msg_u *m, char *v){
+t_osc_atom_u *osc_message_u_appendStringPtr(t_osc_msg_u *m, char *v)
+{
 	t_osc_atom_u *a = osc_atom_u_alloc();
 	osc_atom_u_setStringPtr(a, v);
 	osc_message_u_appendAtom(m, a);
 	return a;
 }
 
-t_osc_atom_u *osc_message_u_appendString(t_osc_msg_u *m, const char *v){
+t_osc_atom_u *osc_message_u_appendString(t_osc_msg_u *m, const char *v)
+{
 	t_osc_atom_u *a = osc_atom_u_alloc();
 	//int len = strlen(v);
 	//char *buf = osc_mem_alloc(len + 1);
@@ -364,7 +406,8 @@ t_osc_atom_u *osc_message_u_appendString(t_osc_msg_u *m, const char *v){
 	return a;
 }
 
-t_osc_atom_u *osc_message_u_appendBool(t_osc_msg_u *m, int v){
+t_osc_atom_u *osc_message_u_appendBool(t_osc_msg_u *m, int v)
+{
 	if(v == 0){
 		return osc_message_u_appendFalse(m);
 	}else{
@@ -372,112 +415,128 @@ t_osc_atom_u *osc_message_u_appendBool(t_osc_msg_u *m, int v){
 	}
 }
 
-t_osc_atom_u *osc_message_u_appendTrue(t_osc_msg_u *m){
+t_osc_atom_u *osc_message_u_appendTrue(t_osc_msg_u *m)
+{
 	t_osc_atom_u *a = osc_atom_u_alloc();
 	osc_atom_u_setTrue(a);
 	osc_message_u_appendAtom(m, a);
 	return a;
 }
 
-t_osc_atom_u *osc_message_u_appendFalse(t_osc_msg_u *m){
+t_osc_atom_u *osc_message_u_appendFalse(t_osc_msg_u *m)
+{
 	t_osc_atom_u *a = osc_atom_u_alloc();
 	osc_atom_u_setFalse(a);
 	osc_message_u_appendAtom(m, a);
 	return a;
 }
 
-t_osc_atom_u *osc_message_u_appendNull(t_osc_msg_u *m){
+t_osc_atom_u *osc_message_u_appendNull(t_osc_msg_u *m)
+{
 	t_osc_atom_u *a = osc_atom_u_alloc();
 	osc_atom_u_setNull(a);
 	osc_message_u_appendAtom(m, a);
 	return a;
 }
 
-t_osc_atom_u *osc_message_u_appendBndl(t_osc_msg_u *m, long len, char *bndl){
+t_osc_atom_u *osc_message_u_appendBndl(t_osc_msg_u *m, long len, char *bndl)
+{
 	t_osc_atom_u *a = osc_atom_u_alloc();
 	osc_atom_u_setBndl(a, len, bndl);
 	osc_message_u_appendAtom(m, a);
 	return a;
 }
 
-t_osc_atom_u *osc_message_u_prependInt8(t_osc_msg_u *m, int8_t v){
+t_osc_atom_u *osc_message_u_prependInt8(t_osc_msg_u *m, int8_t v)
+{
 	t_osc_atom_u *a = osc_atom_u_alloc();
 	osc_atom_u_setInt8(a, v);
 	osc_message_u_prependAtom(m, a);
 	return a;
 }
 
-t_osc_atom_u *osc_message_u_prependInt16(t_osc_msg_u *m, int16_t v){
+t_osc_atom_u *osc_message_u_prependInt16(t_osc_msg_u *m, int16_t v)
+{
 	t_osc_atom_u *a = osc_atom_u_alloc();
 	osc_atom_u_setInt16(a, v);
 	osc_message_u_prependAtom(m, a);
 	return a;
 }
 
-t_osc_atom_u *osc_message_u_prependInt32(t_osc_msg_u *m, int32_t v){
+t_osc_atom_u *osc_message_u_prependInt32(t_osc_msg_u *m, int32_t v)
+{
 	t_osc_atom_u *a = osc_atom_u_alloc();
 	osc_atom_u_setInt32(a, v);
 	osc_message_u_prependAtom(m, a);
 	return a;
 }
 
-t_osc_atom_u *osc_message_u_prependInt64(t_osc_msg_u *m, int64_t v){
+t_osc_atom_u *osc_message_u_prependInt64(t_osc_msg_u *m, int64_t v)
+{
 	t_osc_atom_u *a = osc_atom_u_alloc();
 	osc_atom_u_setInt64(a, v);
 	osc_message_u_prependAtom(m, a);
 	return a;
 }
 
-t_osc_atom_u *osc_message_u_prependUInt8(t_osc_msg_u *m, uint8_t v){
+t_osc_atom_u *osc_message_u_prependUInt8(t_osc_msg_u *m, uint8_t v)
+{
 	t_osc_atom_u *a = osc_atom_u_alloc();
 	osc_atom_u_setUInt8(a, v);
 	osc_message_u_prependAtom(m, a);
 	return a;
 }
 
-t_osc_atom_u *osc_message_u_prependUInt16(t_osc_msg_u *m, uint16_t v){
+t_osc_atom_u *osc_message_u_prependUInt16(t_osc_msg_u *m, uint16_t v)
+{
 	t_osc_atom_u *a = osc_atom_u_alloc();
 	osc_atom_u_setUInt16(a, v);
 	osc_message_u_prependAtom(m, a);
 	return a;
 }
 
-t_osc_atom_u *osc_message_u_prependUInt32(t_osc_msg_u *m, uint32_t v){
+t_osc_atom_u *osc_message_u_prependUInt32(t_osc_msg_u *m, uint32_t v)
+{
 	t_osc_atom_u *a = osc_atom_u_alloc();
 	osc_atom_u_setUInt32(a, v);
 	osc_message_u_prependAtom(m, a);
 	return a;
 }
 
-t_osc_atom_u *osc_message_u_prependUInt64(t_osc_msg_u *m, uint64_t v){
+t_osc_atom_u *osc_message_u_prependUInt64(t_osc_msg_u *m, uint64_t v)
+{
 	t_osc_atom_u *a = osc_atom_u_alloc();
 	osc_atom_u_setUInt64(a, v);
 	osc_message_u_prependAtom(m, a);
 	return a;
 }
 
-t_osc_atom_u *osc_message_u_prependFloat(t_osc_msg_u *m, float v){
+t_osc_atom_u *osc_message_u_prependFloat(t_osc_msg_u *m, float v)
+{
 	t_osc_atom_u *a = osc_atom_u_alloc();
 	osc_atom_u_setFloat(a, v);
 	osc_message_u_prependAtom(m, a);
 	return a;
 }
 
-t_osc_atom_u *osc_message_u_prependDouble(t_osc_msg_u *m, double v){
+t_osc_atom_u *osc_message_u_prependDouble(t_osc_msg_u *m, double v)
+{
 	t_osc_atom_u *a = osc_atom_u_alloc();
 	osc_atom_u_setDouble(a, v);
 	osc_message_u_prependAtom(m, a);
 	return a;
 }
 
-t_osc_atom_u *osc_message_u_prependStringPtr(t_osc_msg_u *m, char *v){
+t_osc_atom_u *osc_message_u_prependStringPtr(t_osc_msg_u *m, char *v)
+{
 	t_osc_atom_u *a = osc_atom_u_alloc();
 	osc_atom_u_setStringPtr(a, v);
 	osc_message_u_prependAtom(m, a);
 	return a;
 }
 
-t_osc_atom_u *osc_message_u_prependString(t_osc_msg_u *m, char *v){
+t_osc_atom_u *osc_message_u_prependString(t_osc_msg_u *m, char *v)
+{
 	t_osc_atom_u *a = osc_atom_u_alloc();
 	int len = strlen(v);
 	char *buf = osc_mem_alloc(len + 1);
@@ -487,7 +546,8 @@ t_osc_atom_u *osc_message_u_prependString(t_osc_msg_u *m, char *v){
 	return a;
 }
 
-t_osc_atom_u *osc_message_u_prependBool(t_osc_msg_u *m, int v){
+t_osc_atom_u *osc_message_u_prependBool(t_osc_msg_u *m, int v)
+{
 	if(v == 0){
 		return osc_message_u_prependFalse(m);
 	}else{
@@ -495,112 +555,128 @@ t_osc_atom_u *osc_message_u_prependBool(t_osc_msg_u *m, int v){
 	}
 }
 
-t_osc_atom_u *osc_message_u_prependTrue(t_osc_msg_u *m){
+t_osc_atom_u *osc_message_u_prependTrue(t_osc_msg_u *m)
+{
 	t_osc_atom_u *a = osc_atom_u_alloc();
 	osc_atom_u_setTrue(a);
 	osc_message_u_prependAtom(m, a);
 	return a;
 }
 
-t_osc_atom_u *osc_message_u_prependFalse(t_osc_msg_u *m){
+t_osc_atom_u *osc_message_u_prependFalse(t_osc_msg_u *m)
+{
 	t_osc_atom_u *a = osc_atom_u_alloc();
 	osc_atom_u_setFalse(a);
 	osc_message_u_prependAtom(m, a);
 	return a;
 }
 
-t_osc_atom_u *osc_message_u_prependNull(t_osc_msg_u *m){
+t_osc_atom_u *osc_message_u_prependNull(t_osc_msg_u *m)
+{
 	t_osc_atom_u *a = osc_atom_u_alloc();
 	osc_atom_u_setNull(a);
 	osc_message_u_prependAtom(m, a);
 	return a;
 }
 
-t_osc_atom_u *osc_message_u_prependBndl(t_osc_msg_u *m, long len, char *bndl){
+t_osc_atom_u *osc_message_u_prependBndl(t_osc_msg_u *m, long len, char *bndl)
+{
 	t_osc_atom_u *a = osc_atom_u_alloc();
 	osc_atom_u_setBndl(a, len, bndl);
 	osc_message_u_prependAtom(m, a);
 	return a;
 }
 
-t_osc_atom_u *osc_message_u_insertInt8(t_osc_msg_u *m, int8_t v, int pos){
+t_osc_atom_u *osc_message_u_insertInt8(t_osc_msg_u *m, int8_t v, int pos)
+{
 	t_osc_atom_u *a = osc_atom_u_alloc();
 	osc_atom_u_setInt8(a, v);
 	osc_message_u_insertAtom(m, a, pos);
 	return a;
 }
 
-t_osc_atom_u *osc_message_u_insertInt16(t_osc_msg_u *m, int16_t v, int pos){
+t_osc_atom_u *osc_message_u_insertInt16(t_osc_msg_u *m, int16_t v, int pos)
+{
 	t_osc_atom_u *a = osc_atom_u_alloc();
 	osc_atom_u_setInt16(a, v);
 	osc_message_u_insertAtom(m, a, pos);
 	return a;
 }
 
-t_osc_atom_u *osc_message_u_insertInt32(t_osc_msg_u *m, int32_t v, int pos){
+t_osc_atom_u *osc_message_u_insertInt32(t_osc_msg_u *m, int32_t v, int pos)
+{
 	t_osc_atom_u *a = osc_atom_u_alloc();
 	osc_atom_u_setInt32(a, v);
 	osc_message_u_insertAtom(m, a, pos);
 	return a;
 }
 
-t_osc_atom_u *osc_message_u_insertInt64(t_osc_msg_u *m, int64_t v, int pos){
+t_osc_atom_u *osc_message_u_insertInt64(t_osc_msg_u *m, int64_t v, int pos)
+{
 	t_osc_atom_u *a = osc_atom_u_alloc();
 	osc_atom_u_setInt64(a, v);
 	osc_message_u_insertAtom(m, a, pos);
 	return a;
 }
 
-t_osc_atom_u *osc_message_u_insertUInt8(t_osc_msg_u *m, uint8_t v, int pos){
+t_osc_atom_u *osc_message_u_insertUInt8(t_osc_msg_u *m, uint8_t v, int pos)
+{
 	t_osc_atom_u *a = osc_atom_u_alloc();
 	osc_atom_u_setUInt8(a, v);
 	osc_message_u_insertAtom(m, a, pos);
 	return a;
 }
 
-t_osc_atom_u *osc_message_u_insertUInt16(t_osc_msg_u *m, uint16_t v, int pos){
+t_osc_atom_u *osc_message_u_insertUInt16(t_osc_msg_u *m, uint16_t v, int pos)
+{
 	t_osc_atom_u *a = osc_atom_u_alloc();
 	osc_atom_u_setUInt16(a, v);
 	osc_message_u_insertAtom(m, a, pos);
 	return a;
 }
 
-t_osc_atom_u *osc_message_u_insertUInt32(t_osc_msg_u *m, uint32_t v, int pos){
+t_osc_atom_u *osc_message_u_insertUInt32(t_osc_msg_u *m, uint32_t v, int pos)
+{
 	t_osc_atom_u *a = osc_atom_u_alloc();
 	osc_atom_u_setUInt32(a, v);
 	osc_message_u_insertAtom(m, a, pos);
 	return a;
 }
 
-t_osc_atom_u *osc_message_u_insertUInt64(t_osc_msg_u *m, uint64_t v, int pos){
+t_osc_atom_u *osc_message_u_insertUInt64(t_osc_msg_u *m, uint64_t v, int pos)
+{
 	t_osc_atom_u *a = osc_atom_u_alloc();
 	osc_atom_u_setUInt64(a, v);
 	osc_message_u_insertAtom(m, a, pos);
 	return a;
 }
 
-t_osc_atom_u *osc_message_u_insertFloat(t_osc_msg_u *m, float v, int pos){
+t_osc_atom_u *osc_message_u_insertFloat(t_osc_msg_u *m, float v, int pos)
+{
 	t_osc_atom_u *a = osc_atom_u_alloc();
 	osc_atom_u_setFloat(a, v);
 	osc_message_u_insertAtom(m, a, pos);
 	return a;
 }
 
-t_osc_atom_u *osc_message_u_insertDouble(t_osc_msg_u *m, double v, int pos){
+t_osc_atom_u *osc_message_u_insertDouble(t_osc_msg_u *m, double v, int pos)
+{
 	t_osc_atom_u *a = osc_atom_u_alloc();
 	osc_atom_u_setDouble(a, v);
 	osc_message_u_insertAtom(m, a, pos);
 	return a;
 }
 
-t_osc_atom_u *osc_message_u_insertStringPtr(t_osc_msg_u *m, char *v, int pos){
+t_osc_atom_u *osc_message_u_insertStringPtr(t_osc_msg_u *m, char *v, int pos)
+{
 	t_osc_atom_u *a = osc_atom_u_alloc();
 	osc_atom_u_setString(a, v);
 	osc_message_u_insertAtom(m, a, pos);
 	return a;
 }
 
-t_osc_atom_u *osc_message_u_insertString(t_osc_msg_u *m, char *v, int pos){
+t_osc_atom_u *osc_message_u_insertString(t_osc_msg_u *m, char *v, int pos)
+{
 	t_osc_atom_u *a = osc_atom_u_alloc();
 	int len = strlen(v);
 	char *buf = osc_mem_alloc(len + 1);
@@ -610,7 +686,8 @@ t_osc_atom_u *osc_message_u_insertString(t_osc_msg_u *m, char *v, int pos){
 	return a;
 }
 
-t_osc_atom_u *osc_message_u_insertBool(t_osc_msg_u *m, int v, int pos){
+t_osc_atom_u *osc_message_u_insertBool(t_osc_msg_u *m, int v, int pos)
+{
 	if(v == 0){
 		return osc_message_u_insertFalse(m, pos);
 	}else{
@@ -618,28 +695,32 @@ t_osc_atom_u *osc_message_u_insertBool(t_osc_msg_u *m, int v, int pos){
 	}
 }
 
-t_osc_atom_u *osc_message_u_insertTrue(t_osc_msg_u *m, int pos){
+t_osc_atom_u *osc_message_u_insertTrue(t_osc_msg_u *m, int pos)
+{
 	t_osc_atom_u *a = osc_atom_u_alloc();
 	osc_atom_u_setTrue(a);
 	osc_message_u_insertAtom(m, a, pos);
 	return a;
 }
 
-t_osc_atom_u *osc_message_u_insertFalse(t_osc_msg_u *m, int pos){
+t_osc_atom_u *osc_message_u_insertFalse(t_osc_msg_u *m, int pos)
+{
 	t_osc_atom_u *a = osc_atom_u_alloc();
 	osc_atom_u_setFalse(a);
 	osc_message_u_insertAtom(m, a, pos);
 	return a;
 }
 
-t_osc_atom_u *osc_message_u_insertNull(t_osc_msg_u *m, int pos){
+t_osc_atom_u *osc_message_u_insertNull(t_osc_msg_u *m, int pos)
+{
 	t_osc_atom_u *a = osc_atom_u_alloc();
 	osc_atom_u_setNull(a);
 	osc_message_u_insertAtom(m, a, pos);
 	return a;
 }
 
-t_osc_atom_u *osc_message_u_insertBndl(t_osc_msg_u *m, long len, char *bndl, int pos){
+t_osc_atom_u *osc_message_u_insertBndl(t_osc_msg_u *m, long len, char *bndl, int pos)
+{
 	t_osc_atom_u *a = osc_atom_u_alloc();
 	osc_atom_u_setBndl(a, len, bndl);
 	osc_message_u_insertAtom(m, a, pos);
@@ -647,7 +728,14 @@ t_osc_atom_u *osc_message_u_insertBndl(t_osc_msg_u *m, long len, char *bndl, int
 }
 
 extern t_osc_err osc_atom_u_doSerialize(t_osc_atom_u *a, long *buflen, long *bufpos, char **buf);
-t_osc_err osc_message_u_doSerialize(t_osc_msg_u *m, long *buflen, long *bufpos, char **buf){
+t_osc_err osc_message_u_doSerialize(t_osc_msg_u *m, long *buflen, long *bufpos, char **buf)
+{
+	if(!m){
+		return OSC_ERR_NONE;
+	}
+	if(!(m->address)){
+		return OSC_ERR_MALFORMEDMSG;
+	}
 	if((*buflen - *bufpos) < 256){
 		*buf = osc_mem_resize(*buf, *buflen + 1024);
 		if(!(*buf)){
@@ -691,7 +779,8 @@ t_osc_err osc_message_u_doSerialize(t_osc_msg_u *m, long *buflen, long *bufpos, 
 	return OSC_ERR_NONE;
 }
 
-t_osc_err osc_message_u_serialize(t_osc_msg_u *m, long *buflen, char **buf){
+t_osc_err osc_message_u_serialize(t_osc_msg_u *m, long *buflen, char **buf)
+{
 	long mybuflen = *buflen, mybufpos = 0;
 	t_osc_err e = osc_message_u_doSerialize(m, &mybuflen, &mybufpos, buf);
 	*buflen = mybufpos;
@@ -700,7 +789,8 @@ t_osc_err osc_message_u_serialize(t_osc_msg_u *m, long *buflen, char **buf){
 
 extern t_osc_err osc_atom_u_doFormat(t_osc_atom_u *a, long *buflen, long *bufpos, char **buf);
 
-t_osc_err osc_message_u_doFormatArgs(t_osc_msg_u *m, long *buflen, long *bufpos, char **buf){
+t_osc_err osc_message_u_doFormatArgs(t_osc_msg_u *m, long *buflen, long *bufpos, char **buf)
+{
 	if((*buflen - *bufpos) < 256){
 		*buf = osc_mem_resize(*buf, *buflen + 1024);
 		if(!(*buf)){
@@ -717,14 +807,16 @@ t_osc_err osc_message_u_doFormatArgs(t_osc_msg_u *m, long *buflen, long *bufpos,
 	return OSC_ERR_NONE;
 }
 
-t_osc_err osc_message_u_formatArgs(t_osc_msg_u *m, long *buflen, char **buf){
+t_osc_err osc_message_u_formatArgs(t_osc_msg_u *m, long *buflen, char **buf)
+{
 	long mybuflen = 0, mybufpos = 0;
 	t_osc_err e = osc_message_u_doFormatArgs(m, &mybuflen, &mybufpos, buf);
 	*buflen = mybufpos;
 	return e;
 }
 
-t_osc_err osc_message_u_doFormat(t_osc_msg_u *m, long *buflen, long *bufpos, char **buf){
+t_osc_err osc_message_u_doFormat(t_osc_msg_u *m, long *buflen, long *bufpos, char **buf)
+{
 	if((*buflen - *bufpos) < 256){
 		*buf = osc_mem_resize(*buf, *buflen + 1024);
 		if(!(*buf)){
@@ -737,14 +829,16 @@ t_osc_err osc_message_u_doFormat(t_osc_msg_u *m, long *buflen, long *bufpos, cha
 	return OSC_ERR_NONE;
 }
 
-t_osc_err osc_message_u_format(t_osc_msg_u *m, long *buflen, char **buf){
+t_osc_err osc_message_u_format(t_osc_msg_u *m, long *buflen, char **buf)
+{
 	long mybuflen = 0, mybufpos = 0;
 	t_osc_err e = osc_message_u_doFormat(m, &mybuflen, &mybufpos, buf);
 	*buflen = mybufpos;
 	return e;
 }
 
-t_osc_array *osc_message_array_u_alloc(long len){
+t_osc_array *osc_message_array_u_alloc(long len)
+{
 	t_osc_array *ar = osc_array_allocWithSize(len, sizeof(t_osc_msg_u));
 #ifdef OSC_ARRAY_CLEAR_ON_ALLOC
 	osc_array_clear(ar);
@@ -770,7 +864,8 @@ void osc_message_array_u_free(t_osc_msg_ar_u *ar)
 	}
 }
 
-t_osc_array *osc_message_u_getArgArrayCopy(t_osc_msg_u *msg){
+t_osc_array *osc_message_u_getArgArrayCopy(t_osc_msg_u *msg)
+{
 	t_osc_atom_ar_u *atom_array = osc_atom_array_u_alloc(osc_message_u_getArgCount(msg));
 	t_osc_msg_it_u *it = osc_msg_it_u_get(msg);
 	int i = 0;

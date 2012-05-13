@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 6,
 			"minor" : 0,
-			"revision" : 4
+			"revision" : 5
 		}
 ,
 		"rect" : [ 19.0, 59.0, 1181.0, 873.0 ],
@@ -27,6 +27,51 @@
 		"digest" : "",
 		"tags" : "",
 		"boxes" : [ 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"hidden" : 1,
+					"id" : "obj-31",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "" ],
+					"patching_rect" : [ -175.0, 295.571289, 195.0, 20.0 ],
+					"text" : "o.autodoc_overview @obj o.flatten"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-5",
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 64.0, 528.368408, 118.0, 18.0 ],
+					"presentation_rect" : [ 64.0, 528.368408, 0.0, 0.0 ],
+					"text" : "o.flatten"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"frgb" : [ 0.0, 0.0, 0.0, 1.0 ],
+					"id" : "obj-29",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 182.0, 528.368408, 335.0, 20.0 ],
+					"presentation_rect" : [ 182.0, 528.368408, 0.0, 0.0 ],
+					"text" : "Flatten nested bundles."
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
@@ -78,7 +123,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 64.0, 712.868408, 118.0, 18.0 ],
+					"patching_rect" : [ 64.0, 724.315796, 118.0, 18.0 ],
 					"text" : "o.difference"
 				}
 
@@ -93,7 +138,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 182.0, 704.868408, 266.0, 34.0 ],
+					"patching_rect" : [ 182.0, 716.315796, 266.0, 34.0 ],
 					"text" : "Output a bundle containing the difference between two bundles."
 				}
 
@@ -108,7 +153,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ -175.0, 359.160522, 215.0, 20.0 ],
+					"patching_rect" : [ -175.0, 399.160522, 215.0, 20.0 ],
 					"text" : "o.autodoc_overview @obj o.difference"
 				}
 
@@ -122,7 +167,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 64.0, 663.921021, 118.0, 18.0 ],
+					"patching_rect" : [ 64.0, 675.368408, 118.0, 18.0 ],
 					"text" : "o.intersection"
 				}
 
@@ -137,7 +182,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 182.0, 655.921021, 266.0, 34.0 ],
+					"patching_rect" : [ 182.0, 667.368408, 266.0, 34.0 ],
 					"text" : "Output a bundle containing the intersection of messages between two bundles."
 				}
 
@@ -152,7 +197,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ -175.0, 325.964111, 224.0, 20.0 ],
+					"patching_rect" : [ -175.0, 365.964111, 224.0, 20.0 ],
 					"text" : "o.autodoc_overview @obj o.intersection"
 				}
 
@@ -166,7 +211,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 64.0, 616.552612, 118.0, 18.0 ],
+					"patching_rect" : [ 64.0, 628.0, 118.0, 18.0 ],
 					"text" : "o.union"
 				}
 
@@ -181,7 +226,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 182.0, 608.552612, 283.0, 34.0 ],
+					"patching_rect" : [ 182.0, 620.0, 283.0, 34.0 ],
 					"text" : "Output a bundle containing the union of all messages between two bundles."
 				}
 
@@ -196,7 +241,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ -175.0, 292.7677, 192.0, 20.0 ],
+					"patching_rect" : [ -175.0, 332.7677, 192.0, 20.0 ],
 					"text" : "o.autodoc_overview @obj o.union"
 				}
 
@@ -210,7 +255,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 64.0, 574.552612, 227.0, 27.0 ],
+					"patching_rect" : [ 64.0, 586.0, 227.0, 27.0 ],
 					"text" : "Set Operations on Bundles"
 				}
 
@@ -267,8 +312,8 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 64.0, 454.368408, 227.0, 27.0 ],
-					"text" : "Operations on Addresses"
+					"patching_rect" : [ 64.0, 454.368408, 387.0, 27.0 ],
+					"text" : "Operations on Addresses and Bundle Structure"
 				}
 
 			}
@@ -1447,6 +1492,24 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-29", 0 ],
+					"disabled" : 0,
+					"hidden" : 1,
+					"source" : [ "obj-31", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-5", 1 ],
+					"disabled" : 0,
+					"hidden" : 1,
+					"source" : [ "obj-31", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-19", 1 ],
 					"disabled" : 0,
 					"hidden" : 1,
@@ -1514,6 +1577,15 @@
 					"disabled" : 0,
 					"hidden" : 1,
 					"source" : [ "obj-48", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-28", 0 ],
+					"disabled" : 0,
+					"hidden" : 1,
+					"source" : [ "obj-5", 0 ]
 				}
 
 			}
@@ -1878,22 +1950,22 @@
 			}
 , 			{
 				"name" : "o.callpatch.maxpat",
-				"bootpath" : "/Users/john/MMJ5-dev/odot-darwin-1.0.1b/abstractions",
-				"patcherrelativepath" : "../../../../../../../../../MMJ5-dev/odot-darwin-1.0.1b/abstractions",
+				"bootpath" : "/Users/john/MMJ5-dev/odot/abstractions",
+				"patcherrelativepath" : "../../../../../../../../../MMJ5-dev/odot/abstractions",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.let.maxpat",
-				"bootpath" : "/Users/john/MMJ5-dev/odot-darwin-1.0.1b/abstractions",
-				"patcherrelativepath" : "../../../../../../../../../MMJ5-dev/odot-darwin-1.0.1b/abstractions",
+				"bootpath" : "/Users/john/MMJ5-dev/odot/abstractions",
+				"patcherrelativepath" : "../../../../../../../../../MMJ5-dev/odot/abstractions",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.gather.maxpat",
-				"bootpath" : "/Users/john/MMJ5-dev/odot-darwin-1.0.1b/abstractions",
-				"patcherrelativepath" : "../../../../../../../../../MMJ5-dev/odot-darwin-1.0.1b/abstractions",
+				"bootpath" : "/Users/john/MMJ5-dev/odot/abstractions",
+				"patcherrelativepath" : "../../../../../../../../../MMJ5-dev/odot/abstractions",
 				"type" : "JSON",
 				"implicit" : 1
 			}
@@ -1942,6 +2014,10 @@
 				"type" : "iLaX"
 			}
 , 			{
+				"name" : "o.print.mxo",
+				"type" : "iLaX"
+			}
+, 			{
 				"name" : "o.if.mxo",
 				"type" : "iLaX"
 			}
@@ -1962,10 +2038,6 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "o.print.mxo",
-				"type" : "iLaX"
-			}
-, 			{
 				"name" : "o.printbytes.mxo",
 				"type" : "iLaX"
 			}
@@ -1979,6 +2051,10 @@
 			}
 , 			{
 				"name" : "o.difference.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.flatten.mxo",
 				"type" : "iLaX"
 			}
  ]
