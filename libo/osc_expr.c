@@ -120,6 +120,7 @@ int osc_expr_evalInLexEnv(t_osc_expr *f,
 						  "Error parsing the first argument to apply()");
 				return 1;
 			}
+			// arity check
 			t_osc_expr_lexenv *lexenv_copy = NULL;
 			if(lexenv){
 				osc_expr_copyLexenv(&lexenv_copy, lexenv);
@@ -129,7 +130,7 @@ int osc_expr_evalInLexEnv(t_osc_expr *f,
 			int nparams = osc_expr_rec_getNumRequiredArgs(r);
 			char **params = osc_expr_rec_getRequiredArgsNames(r);
 			t_osc_expr_arg *arg = f_argv->next;
-			for(int i = 0; i < nparams && arg; i++){
+			for(int i = 0; (i < nparams) && arg; i++){
 				t_osc_atom_ar_u *atoms = NULL;
 				osc_expr_evalArgInLexEnv(arg, lexenv, len, oscbndl, &atoms);
 				osc_expr_bindVarInLexenv(lexenv_copy, params[i], atoms);
@@ -203,7 +204,19 @@ int osc_expr_evalInLexEnv(t_osc_expr *f,
 		int i = 0;
 		t_osc_expr_arg *a = f_argv->next;
 		while(a){
-			osc_expr_evalArgInLexEnv(a, lexenv, len, oscbndl, args + i);
+			int ret = osc_expr_evalArgInLexEnv(a, lexenv, len, oscbndl, args + i);
+			if(ret){
+				// assume whoever generated this will post an error
+				for(int j = 0; j < i; j++){
+					if(args[j]){
+						osc_atom_array_u_free(args[j]);
+					}
+				}
+				e->argv = NULL;
+				e->argc = 0;
+				osc_expr_free(e);
+				return ret;
+			}
 			int count = osc_atom_array_u_getLen(args[i]);
 			if(count < min){
 				min = count;
@@ -211,6 +224,7 @@ int osc_expr_evalInLexEnv(t_osc_expr *f,
 			i++;
 			a = a->next;
 		}
+		// arity check needs to go here
 		t_osc_expr_arg *func_args[ac + 1]; 
 		func_args[0] = NULL;
 		osc_expr_arg_copy(func_args, f_argv);
@@ -274,7 +288,22 @@ int osc_expr_evalInLexEnv(t_osc_expr *f,
 
 		t_osc_atom_ar_u *args = NULL;
 		t_osc_expr_arg *a = f_argv->next;
-		osc_expr_evalArgInLexEnv(a, lexenv, len, oscbndl, &args);
+		int ret = osc_expr_evalArgInLexEnv(a, lexenv, len, oscbndl, &args);
+		if(ret){
+			// assume whoever generated the error will report it
+			if(args){
+				osc_atom_array_u_free(args);
+			}
+			for(int i = 0; i < ac; i++){
+				if(func_args[i]){
+					osc_expr_arg_free(func_args[i]);
+				}
+			}
+			e->argv = NULL;
+			e->argc = 0;
+			osc_expr_free(e);
+			return ret;
+		}
 		int count = osc_atom_array_u_getLen(args);
 
 		int arg0 = 1;
@@ -618,9 +647,10 @@ int osc_expr_evalInLexEnv(t_osc_expr *f,
 				*out = osc_atom_array_u_alloc(1);
 					
 				osc_atom_u_setInt32(osc_atom_array_u_get(*out, 0), 0);
-				while(f){
+				t_osc_expr *ff = f;
+				while(ff){
 					t_osc_atom_ar_u *ar = NULL;
-					ret = osc_expr_eval(f, len, oscbndl, &ar);
+					ret = osc_expr_eval(ff, len, oscbndl, &ar);
 					if(ar){
 						osc_atom_array_u_free(ar);
 					}
@@ -628,7 +658,7 @@ int osc_expr_evalInLexEnv(t_osc_expr *f,
 						osc_atom_u_setInt32(osc_atom_array_u_get(*out, 0), ret);
 						break;
 					}
-					f = osc_expr_next(f);
+					ff = osc_expr_next(ff);
 				}
 				osc_expr_free(f);
 			}else{
@@ -641,9 +671,10 @@ int osc_expr_evalInLexEnv(t_osc_expr *f,
 				*out = osc_atom_array_u_alloc(1);
 					
 				osc_atom_u_setInt32(osc_atom_array_u_get(*out, 0), 0);
-				while(f){
+				t_osc_expr *ff = f;
+				while(ff){
 					t_osc_atom_ar_u *ar = NULL;
-					ret = osc_expr_eval(f, len, oscbndl, &ar);
+					ret = osc_expr_eval(ff, len, oscbndl, &ar);
 					if(ar){
 						osc_atom_array_u_free(ar);
 					}
@@ -651,7 +682,7 @@ int osc_expr_evalInLexEnv(t_osc_expr *f,
 						osc_atom_u_setInt32(osc_atom_array_u_get(*out, 0), ret);
 						break;
 					}
-					f = osc_expr_next(f);
+					ff = osc_expr_next(ff);
 				}
 				osc_expr_free(f);
 				if(buf){
@@ -893,9 +924,14 @@ int osc_expr_evalArgInLexEnv(t_osc_expr_arg *arg,
 					}
 					osc_rset_free(rset);
 				}
-			}else{
-				return 1;
 			}
+			osc_error_handler(__FILE__,
+					  __func__,
+					  __LINE__,
+					  OSC_ERR_EXPR_ADDRESSUNBOUND,
+					  "address %s is unbound\n",
+					  arg->arg.osc_address);
+			return 1;
 		}
 	}
 	return 1; // this really shouldn't happen unless there's a bug somewhere
@@ -2175,8 +2211,22 @@ int osc_expr_clip(t_osc_expr *f, int argc, t_osc_atom_ar_u **argv, t_osc_atom_ar
 	if(argc != 3){
 		return 1;
 	}
-	double min = osc_atom_u_getDouble(osc_atom_array_u_get(argv[1], 0));
-	double max = osc_atom_u_getDouble(osc_atom_array_u_get(argv[2], 0));
+
+	t_osc_atom_u *min_atom = osc_atom_array_u_get(argv[1], 0);
+	t_osc_atom_u *max_atom = osc_atom_array_u_get(argv[2], 0);
+
+	double min = osc_atom_u_getDouble(min_atom);
+	double max = osc_atom_u_getDouble(max_atom);
+
+	char min_tt = osc_atom_u_getTypetag(min_atom);
+	char max_tt = osc_atom_u_getTypetag(max_atom);
+
+	int fl = 0;
+	if(min_tt == 'd' || min_tt == 'f' ||
+	   max_tt == 'd' || max_tt == 'f'){
+		fl = 1;
+	}
+
 	long len = osc_atom_array_u_getLen(*argv);
 	*out = osc_atom_array_u_alloc(len);
 		
@@ -2196,7 +2246,7 @@ int osc_expr_clip(t_osc_expr *f, int argc, t_osc_atom_ar_u **argv, t_osc_atom_ar
 		if(val > max){
 			val = max;
 		}
-		if(type == 'f' || type == 'd'){
+		if(type == 'f' || type == 'd' || fl){
 			osc_atom_u_setDouble(osc_atom_array_u_get(result, i), val);
 		}else{
 			osc_atom_u_setInt32(osc_atom_array_u_get(result, i), (int32_t)val);
@@ -2209,11 +2259,31 @@ int osc_expr_scale(t_osc_expr *f, int argc, t_osc_atom_ar_u **argv, t_osc_atom_a
 	if(argc != 5){
 		return 1;
 	}
-	double min_in = osc_atom_u_getDouble(osc_atom_array_u_get(argv[1], 0));
-	double max_in = osc_atom_u_getDouble(osc_atom_array_u_get(argv[2], 0));
-	double min_out = osc_atom_u_getDouble(osc_atom_array_u_get(argv[3], 0));
-	double max_out = osc_atom_u_getDouble(osc_atom_array_u_get(argv[4], 0));
+	t_osc_atom_u *min_in_atom = osc_atom_array_u_get(argv[1], 0);
+	t_osc_atom_u *max_in_atom = osc_atom_array_u_get(argv[2], 0);
+	t_osc_atom_u *min_out_atom = osc_atom_array_u_get(argv[3], 0);
+	t_osc_atom_u *max_out_atom = osc_atom_array_u_get(argv[4], 0);
+
+	char min_in_tt = osc_atom_u_getTypetag(min_in_atom);
+	char max_in_tt = osc_atom_u_getTypetag(max_in_atom);
+	char min_out_tt = osc_atom_u_getTypetag(min_out_atom);
+	char max_out_tt = osc_atom_u_getTypetag(max_out_atom);
+
+	double min_in = osc_atom_u_getDouble(min_in_atom);
+	double max_in = osc_atom_u_getDouble(max_in_atom);
+	double min_out = osc_atom_u_getDouble(min_out_atom);
+	double max_out = osc_atom_u_getDouble(max_out_atom);
+
+	int fl = 0;
+	if(min_in_tt == 'd' || min_in_tt == 'f' ||
+	   max_in_tt == 'd' || max_in_tt == 'f' ||
+	   min_out_tt == 'd' || min_out_tt == 'f' ||
+	   max_out_tt == 'd' || max_out_tt == 'f'){
+		fl = 1;
+	}
+
 	long len = osc_atom_array_u_getLen(*argv);
+	*out = osc_atom_array_u_alloc(len);
 	t_osc_atom_ar_u *result = *out;
 	if(max_out == min_out){
 		int i;
@@ -2224,7 +2294,7 @@ int osc_expr_scale(t_osc_expr *f, int argc, t_osc_atom_ar_u **argv, t_osc_atom_a
 				osc_atom_u_copy(&a, osc_atom_array_u_get(*argv, i));
 				continue;
 			}
-			if(type == 'f' || type == 'd'){
+			if(fl || type == 'd' || type == 'f'){
 				osc_atom_u_setDouble(osc_atom_array_u_get(result, i), min_out);
 			}else{
 				osc_atom_u_setInt32(osc_atom_array_u_get(result, i), min_out);
@@ -2234,7 +2304,6 @@ int osc_expr_scale(t_osc_expr *f, int argc, t_osc_atom_ar_u **argv, t_osc_atom_a
 	}
 	double m = (max_out - min_out) / (max_in - min_in);
 	float b = (min_out - (m * min_in));
-	*out = osc_atom_array_u_alloc(len);
 		
 	int i;
 	for(i = 0; i < len; i++){
@@ -2246,7 +2315,7 @@ int osc_expr_scale(t_osc_expr *f, int argc, t_osc_atom_ar_u **argv, t_osc_atom_a
 		}
 		double val = osc_atom_u_getDouble(osc_atom_array_u_get(*argv, i));
 		val = m * val + b;
-		if(type == 'f' || type == 'd'){
+		if(fl || type == 'd' || type == 'f'){
 			osc_atom_u_setDouble(osc_atom_array_u_get(result, i), val);
 		}else{
 			osc_atom_u_setInt32(osc_atom_array_u_get(result, i), (int32_t)val);

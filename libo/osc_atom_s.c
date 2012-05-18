@@ -481,7 +481,7 @@ int osc_atom_s_getString(t_osc_atom_s *a, size_t n, char **out)
 	}
 	switch(a->typetag){
 	case 's': // string
-		strncpy(*out, a->data, nn + 1);
+		strncpy(*out, a->data, nn);
 		break;
 	case 'i': // signed 32-bit int
 		{

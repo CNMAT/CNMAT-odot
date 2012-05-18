@@ -105,6 +105,8 @@ char *osc_error_string(t_osc_err err){
 	case OSC_ERR_EXPR_FUNCTIONNOTFOUND:
 	case OSC_ERR_PARSER_FUNCTIONNOTFOUND:
 		return "function not found";
+	case OSC_ERR_EXPR_ADDRESSUNBOUND:
+		return "address is unbound";
 	case OSC_ERR_EXPPARSE:
 		return "error parsing expression";
 	case OSC_ERR_PARSER:

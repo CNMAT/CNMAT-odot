@@ -31,12 +31,14 @@ static void *(*osc_mem_alloc_fp)(size_t size) = malloc;
 static void (*osc_mem_free_fp)(void *ptr) = free;
 static void *(*osc_mem_resize_fp)(void *ptr, size_t size) = realloc;
 
-void *osc_mem_alloc(size_t size){
+void *osc_mem_alloc(size_t size)
+{
 	void *p = osc_mem_alloc_fp(size);
 	return p;
 }
 
-void *osc_mem_resize(void *ptr, size_t size){
+void *osc_mem_resize(void *ptr, size_t size)
+{
 	if(!ptr){
 		void *p = osc_mem_alloc_fp(size);
 		return p;
@@ -45,13 +47,15 @@ void *osc_mem_resize(void *ptr, size_t size){
 	return p;
 }
 
-void osc_mem_free(void *ptr){
+void osc_mem_free(void *ptr)
+{
 	osc_mem_free_fp(ptr);
 }
 
 void osc_set_mem(void *(*malloc_func)(size_t),
 		 void (*free_func)(void*),
-		 void *(*resize_func)(void*, size_t)){
+		 void *(*resize_func)(void*, size_t))
+{
 	if(malloc_func){
 		osc_mem_alloc_fp = malloc_func;
 	}

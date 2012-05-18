@@ -34,7 +34,7 @@ all: CFLAGS += $(RELEASE-CFLAGS)
 all: CFLAGS += $(MAC-CFLAGS)
 all: CC = clang
 all: I = $(MAC-INCLUDES)
-all: $(LIBO_CFILES) $(LIBO_HFILES) $(LIBO_SCANNER_CFILES) $(LIBO_PARSER_CFILES) libo.a libo.dylib
+all: $(LIBO_CFILES) $(LIBO_HFILES) $(LIBO_SCANNER_CFILES) $(LIBO_PARSER_CFILES) libo.a #libo.dylib
 all: STATIC-LINK = libtool -static -o libo.a $(LIBO_OBJECTS) /usr/lib/libfl.a
 all: DYNAMIC-LINK = clang -dynamiclib $(MAC-CFLAGS) -single_module -compatibility_version 1 -current_version 1 -o libo.dylib $(LIBO_OBJECTS)
 
@@ -43,7 +43,7 @@ debug: CFLAGS += $(MAC-CFLAGS)
 debug: CC = clang
 debug: I = $(MAC-INCLUDES)
 debug: $(LIBO_CFILES) $(LIBO_HFILES) $(LIBO_SCANNER_CFILES) $(LIBO_PARSER_CFILES) libo.a
-debug: LIBTOOL = libtool -static -o libo.a $(LIBO_OBJECTS) /usr/lib/libfl.a
+debug: STATIC-LINK = libtool -static -o libo.a $(LIBO_OBJECTS) /usr/lib/libfl.a
 
 win: CFLAGS += $(WIN-CFLAGS)
 win: CC = gcc-3
@@ -90,7 +90,7 @@ test-clean:
 
 .PHONY: clean
 clean:
-	rm -f *.o libo.a test/osc_test *~ $(LIBO_PARSER_CFILES) $(LIBO_PARSER_HFILES) $(LIBO_SCANNER_CFILES) $(LIBO_SCANNER_HFILES)
+	rm -f *.o libo.a libo.dylib test/osc_test *~ $(LIBO_PARSER_CFILES) $(LIBO_PARSER_HFILES) $(LIBO_SCANNER_CFILES) $(LIBO_SCANNER_HFILES)
 	cd doc && rm -rf html latex man
 	cd test && $(MAKE) clean
 	cd contrib && rm -rf *.o

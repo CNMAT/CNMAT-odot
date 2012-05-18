@@ -1,8 +1,8 @@
 #+STARTUP: showall
 #+TODO: TODO(t) STARTED(s) WAITING(w) BUG(b) | DONE(d) DELEGATED(e) FIXED(f)
 #+begin_src C :tangle odot_version.h
-#define ODOT_VERSION "1.1.1b" 
-#define ODOT_RELEASE_DATE "[2012-05-10 Thu]"
+#define ODOT_VERSION "1.1.4b" 
+#define ODOT_RELEASE_DATE "[2012-05-17 Thu]"
 #define ODOT_COPYRIGHT_YEARS "2008-12"
 #define ODOT_AUTHORS "John MacCallum, Adrian Freed"
 #define ODOT_COPYRIGHT_STRING "Regents of the University of California. All rights reserved."
@@ -69,6 +69,28 @@ should persist
 ** Design questions
 *** The fact that o.route can output both bundles and Max data is a source of bugs.  Rewrite o.route?  
 New objects with more explicit behavior.
+
+* VERSION 1.1.4b
+Released [2012-05-17 Thu]
+** General
+*** FIXED buffer overrun in osc_atom_s_getString()
+** Bugs Fixed
+*** o.expr
+**** FIXED memory leak in eval()
+
+* VERSION 1.1.3b
+Released [2012-05-17 Thu]
+** General
+** Bugs Fixed
+*** o.expr
+**** FIXED scale() and clip() don't output floats when the input is an int but the rest of the args are floats
+**** FIXED crash when an argument to a high order function fails to return a value
+* VERSION 1.1.2b
+Released [2012-05-16 Wed]
+** General
+** Bugs Fixed
+*** o.expr
+**** FIXED scale() is broken
 
 * VERSION 1.1.1b
 Released [2012-05-10 Thu]

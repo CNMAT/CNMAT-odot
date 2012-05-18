@@ -206,9 +206,9 @@ void omessage_doFullPacket(t_omessage *x, long len, long ptr){
 		jbox_redraw((t_jbox *)x);
 		return;
 	}
+
 	long bufpos = 0;
 	char *buf = NULL;
-
 	int have_subs = 0;
 	{
 		t_osc_bndl_it_s *bit = osc_bndl_it_s_get(len, (char *)ptr);
@@ -225,15 +225,14 @@ void omessage_doFullPacket(t_omessage *x, long len, long ptr){
 				if(osc_atom_s_getTypetag(a) == 's'){
 					char *s = NULL;
 					osc_atom_s_getString(a, 0, &s);
-					if(s[0] == '$'){
-						if(s){
+					if(s){
+						if(s[0] == '$'){
+							osc_mem_free(s);
+							have_subs = 1;
+							break;
+						}else{
 							osc_mem_free(s);
 						}
-						have_subs = 1;
-						break;
-					}
-					if(s){
-						osc_mem_free(s);
 					}
 				}
 			}
@@ -241,6 +240,7 @@ void omessage_doFullPacket(t_omessage *x, long len, long ptr){
 		}
 		osc_bndl_it_s_destroy(bit);
 	}
+
 	if(have_subs){
 		t_osc_bndl_u *ubndl = NULL;
 		osc_bundle_s_deserialize(len, (char *)ptr, &ubndl);

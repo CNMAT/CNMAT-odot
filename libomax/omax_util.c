@@ -132,9 +132,9 @@ void omax_util_oscMsg2MaxAtoms(t_osc_msg_s *m, t_atom *av)
 		case 's':		
 			{
 				int len = osc_atom_s_getStringLen(a);
-				char buf[len];
+				char buf[len + 1];
 				char *bufptr = buf;
-				osc_atom_s_getString(a, len, &bufptr);
+				osc_atom_s_getString(a, len + 1, &bufptr);
 				atom_setsym(ptr++, gensym(buf));
 			}
 			break;
