@@ -35,19 +35,126 @@
 #include "osc.h"
 #include "osc_mem.h"
 #include "osc_byteorder.h"
-#include "osc_bundle.h"
-#include "osc_message.h"
 #include "osc_match.h"
+#include "osc_bundle_s.h"
+#include "osc_bundle_iterator_s.h"
 #include "osc_message_u.h"
 #include "osc_message_iterator_u.h"
 #include "osc_message_s.h"
 #include "osc_message_iterator_s.h"
 #include "osc_atom_s.h"
 
+#include "ext_dictionary.h"
+#include "ext_dictobj.h"
+
 #define __ODOT_PROFILE__
 #include "profile.h"
 
 t_symbol *omax_ps_FullPacket = NULL;
+
+void omax_util_dictionaryToOSC(t_dictionary *dict, t_osc_bndl_u *bndl_u)
+{
+	if(!dict || !bndl_u){
+		return;
+	}
+	long nkeys = 0;
+	t_symbol **keys = NULL;
+	dictionary_getkeys(dict, &nkeys, &keys);
+	if(nkeys && keys){
+		for(int i = 0; i < nkeys; i++){
+			char *key = keys[i]->s_name;
+			int keylen = strlen(key);
+			char addy[keylen + 2];
+			if(*key != '/'){
+				*addy = '/';
+				strncpy(addy + 1, key, keylen + 1);
+			}else{
+				strncpy(addy, key, keylen + 1);
+			}
+			long argc = 0;
+			t_atom *argv = NULL;
+			dictionary_getatoms(dict, keys[i], &argc, &argv);
+			if(argc == 1){
+				if(atom_gettype(argv) == A_OBJ){
+					t_dictionary *dict2 = object_dictionaryarg(1, argv);
+					dictionary_dump(dict2, 0, 0);
+					if(dict2){
+						t_osc_bndl_u *bndl2_u = osc_bundle_u_alloc();
+						omax_util_dictionaryToOSC(dict2, bndl2_u);
+						long len = 0; 
+						char *bndl2 = NULL;
+						osc_bundle_u_serialize(bndl2_u, &len, &bndl2);
+						t_osc_msg_u *msg = osc_message_u_alloc();
+						osc_message_u_setAddress(msg, addy);
+						osc_message_u_appendBndl(msg, len, bndl2);
+						osc_bundle_u_addMsg(bndl_u, msg);
+						osc_bundle_u_free(bndl2_u);
+						osc_mem_free(bndl2);
+						continue;
+					}
+				}
+			}
+			t_osc_msg_u *msg = NULL;
+			omax_util_maxAtomsToOSCMsg_u(&msg, gensym(addy), argc, argv);
+			osc_bundle_u_addMsg(bndl_u, msg);
+			if(argv){
+				sysmem_freeptr(argv);
+			}
+		}
+	}
+	dictionary_freekeys(dict, nkeys, keys);
+}
+
+void omax_util_processDictionary(void *x, t_symbol *name, void (*fp)(void *x, long len, long ptr))
+{
+	t_dictionary *dict = dictobj_findregistered_retain(name);
+	t_osc_bndl_u *bndl_u = osc_bundle_u_alloc();
+	omax_util_dictionaryToOSC(dict, bndl_u);
+	long len = 0;
+	char *bndl = NULL;
+	osc_bundle_u_serialize(bndl_u, &len, &bndl);
+	fp(x, len, (long)bndl);
+	osc_bundle_u_free(bndl_u);
+	osc_mem_free(bndl);
+	dictobj_release(dict);
+}
+
+void omax_util_bundleToDictionary(t_osc_bndl_s *bndl, t_dictionary *dict)
+{
+	if(!bndl || !dict){
+		return;
+	}
+	t_osc_bndl_it_s *it = osc_bndl_it_s_get(osc_bundle_s_getLen(bndl), osc_bundle_s_getPtr(bndl));
+	while(osc_bndl_it_s_hasNext(it)){
+		t_osc_msg_s *m = osc_bndl_it_s_next(it);
+		int n = omax_util_getNumAtomsInOSCMsg(m);
+		t_atom a[n];
+		t_atom aa[n];
+		int nn = 0;
+		omax_util_oscMsg2MaxAtoms(m, a);
+		t_symbol *k = atom_getsym(a);
+		for(int i = 1; i < n; i++){
+			if(atom_gettype(a + i) == A_SYM){
+				if(!omax_ps_FullPacket){
+					omax_ps_FullPacket = gensym("FullPacket");
+				}
+				if(atom_getsym(a + i) == omax_ps_FullPacket){
+					t_osc_bndl_s *bndl2 = osc_bundle_s_alloc(atom_getlong(a + i + 1),
+										 (char *)atom_getlong(a + i + 2));
+					t_dictionary *dict2 = dictionary_new();
+					omax_util_bundleToDictionary(bndl2, dict2);
+					atom_setobj(aa + nn++, (t_object *)dict2);
+					i += 2;
+					osc_bundle_s_free(bndl2);
+					continue;
+				}
+			}
+			aa[nn++] = a[i];
+		}
+		dictionary_appendatoms(dict, k, nn, aa);
+	}
+	osc_bndl_it_s_destroy(it);
+}
 
 int omax_util_liboErrorHandler(const char * const errorstr)
 {

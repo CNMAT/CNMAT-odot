@@ -31,13 +31,20 @@
 #include "osc.h"
 #include "ext.h"
 #include "ext_obex.h"
-#include "osc_message.h"
 #include "osc_message_s.h"
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
+#define OMAX_UTIL_DICTIONARY(obj_type, obj, fp)				\
+	void omax_util_dictionary(obj_type *obj, t_symbol *name){	\
+		omax_util_processDictionary((void *)obj, name, (void (*)(void *, long, long))fp); \
+	}								\
+
+void omax_util_dictionaryToOSC(t_dictionary *dict, t_osc_bndl_u *bndl_u);
+void omax_util_processDictionary(void *x, t_symbol *name, void (*fp)(void *x, long len, long ptr));
+void omax_util_bundleToDictionary(t_osc_bndl_s *bndl, t_dictionary *dict);
 void omax_util_outletOSC(void *outlet, long len, char *ptr);
 void omax_util_maxFullPacketToOSCAtom_u(t_osc_atom_u **osc_atom, t_atom *len, t_atom *ptr);
 void omax_util_maxAtomToOSCAtom_u(t_osc_atom_u **osc_atom, t_atom *max_atom);
