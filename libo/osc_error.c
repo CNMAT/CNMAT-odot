@@ -1,6 +1,6 @@
 /*
 Written by John MacCallum, The Center for New Music and Audio Technologies,
-University of California, Berkeley.  Copyright (c) 2009-ll, The Regents of
+University of California, Berkeley.  Copyright (c) 2009-12, The Regents of
 the University of California (Regents). 
 Permission to use, copy, modify, distribute, and distribute modified versions
 of this software and its documentation without fee and without a signed
@@ -48,23 +48,28 @@ int osc_error_handler(const char * const filename,
 		char buf[buflen];
 		char *pos = buf;
 		if(filename){
-			pos += snprintf(pos, buflen, "%s:", filename);
+			pos += snprintf(pos, buflen, "%s: ", filename);
 		}
 		if(functionname){
-			pos += snprintf(pos, (buflen - (pos - buf)), "%s():", functionname);
+			pos += snprintf(pos, (buflen - (pos - buf)), "%s(): ", functionname);
 		}
 		if(linenum > 0){
 			pos += snprintf(pos, (buflen - (pos - buf)), "%d: ", linenum);
 		}
 		if(errorcode){
-			pos += snprintf(pos, (buflen - (pos - buf)), "%s (%llu)\n", osc_error_string(errorcode), (unsigned long long)errorcode);
+			pos += snprintf(pos, (buflen - (pos - buf)), "%s: ", osc_error_string(errorcode));
+		}
+		if(moreinfo_fmt){
+			pos += snprintf(pos, (buflen - (pos - buf)), "%s", moreinfo_fmt);
 		}
 		va_list ap;
 		va_start(ap, moreinfo_fmt);
-		pos += vsnprintf(pos, (buflen - (pos - buf)), moreinfo_fmt, ap);
+		char newbuf[buflen];
+		pos = newbuf;
+		pos += vsnprintf(newbuf, (buflen - (pos - newbuf)), buf, ap);
 		va_end(ap);
 
-		return _osc_error_handler(buf);
+		return _osc_error_handler(newbuf);
 	}
 	return 0;
 }
@@ -111,6 +116,8 @@ char *osc_error_string(t_osc_err err){
 		return "error parsing expression";
 	case OSC_ERR_PARSER:
 		return "error parsing OSC bundle";
+	case OSC_ERR_EXPR_ARGCHK:
+		return "invalid arguments for function";
 	default:
 		return "unrecognized error code";
 	}
