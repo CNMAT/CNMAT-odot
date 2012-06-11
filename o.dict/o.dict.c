@@ -53,21 +53,21 @@
 typedef struct _odict{
 	t_object ob;
 	void *outlet;
+	t_dictionary *dict;
+	t_symbol *name;
 } t_odict;
 
 void *odict_class;
 
 void odict_fullPacket(t_odict *x, long len, long ptr)
 {
+	dictionary_clear(x->dict);
 	t_osc_bndl_s *bndl = osc_bundle_s_alloc(len, (char *)ptr);
-	t_dictionary *dict = dictionary_new();
-	t_symbol *name = NULL;
-	dictobj_register(dict, &name);
-	omax_util_bundleToDictionary(bndl, dict);
+	omax_util_bundleToDictionary(bndl, x->dict);
 	t_atom a;
-	atom_setsym(&a, name);
+	atom_setsym(&a, x->name);
 	outlet_anything(x->outlet, _sym_dictionary, 1, &a);
-	dictobj_release(dict);
+	osc_bundle_s_free(bndl);
 }
 
 void odict_doc(t_odict *x)
@@ -80,11 +80,19 @@ void odict_assist(t_odict *x, void *b, long io, long num, char *buf)
 	omax_doc_assist(io, num, buf);
 }
 
+void odict_free(t_odict *x)
+{
+	object_free(x->dict);
+}
+
 void *odict_new(t_symbol *msg, short argc, t_atom *argv)
 {
 	t_odict *x;
 	if((x = (t_odict *)object_alloc(odict_class))){
 		x->outlet = outlet_new((t_object *)x, NULL);
+		x->dict = dictionary_new();
+		x->name = NULL;
+		dictobj_register(x->dict, &(x->name));
 	}
 		   	
 	return x;
