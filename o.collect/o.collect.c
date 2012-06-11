@@ -61,16 +61,8 @@ typedef struct _ocoll{
 void *ocoll_class;
 
 
-//void ocoll_fullPacket(t_ocoll *x, long len, long ptr)
-void ocoll_fullPacket(t_ocoll *x, t_symbol *msg, int argc, t_atom *argv)
+void ocoll_fullPacket(t_ocoll *x, long len, long ptr)
 {
-	// killme ////////////////////////
-	if(argc != 2){
-		return;
-	}
-	long len = atom_getlong(argv);
-	long ptr = atom_getlong(argv + 1);
-	//////////////////////////////////
 	osc_bundle_s_wrap_naked_message(len, ptr);
 	if(len == OSC_HEADER_SIZE){
 		// empty bundle
@@ -135,18 +127,13 @@ void ocoll_anything(t_ocoll *x, t_symbol *msg, int argc, t_atom *argv){
 		osc_bundle_u_free(bndl_u);
 	}
 
-	//ocoll_fullPacket(x, len, (long)buf);
-	t_atom a[2];
-	atom_setlong(a, len);
-	atom_setlong(a + 1, (long)buf);
-	ocoll_fullPacket(x, NULL, 2, a);
+	ocoll_fullPacket(x, len, (long)buf);
 	if(buf){
 		osc_mem_free(buf);
 	}
 }
 
 void ocoll_bang(t_ocoll *x){
-//if(x->buffer_pos > 16){
 		critical_enter(x->lock);
 		int len = x->buffer_pos;
 		char outbuf[len];
@@ -155,8 +142,9 @@ void ocoll_bang(t_ocoll *x){
 		x->buffer_pos = OSC_HEADER_SIZE;
 		critical_exit(x->lock);
 		omax_util_outletOSC(x->outlet, len, outbuf);
-//}
 }
+
+OMAX_UTIL_DICTIONARY(t_ocoll, x, ocoll_fullPacket);
 
 void ocoll_clear(t_ocoll *x)
 {
@@ -206,12 +194,12 @@ void *ocoll_new(t_symbol *msg, short argc, t_atom *argv){
 
 int main(void){
 	t_class *c = class_new("o.collect", (method)ocoll_new, (method)ocoll_free, sizeof(t_ocoll), 0L, A_GIMME, 0);
-	//class_addmethod(c, (method)ocoll_fullPacket, "FullPacket", A_LONG, A_LONG, 0);
-	class_addmethod(c, (method)ocoll_fullPacket, "FullPacket", A_GIMME, 0);
+	class_addmethod(c, (method)ocoll_fullPacket, "FullPacket", A_LONG, A_LONG, 0);
 	class_addmethod(c, (method)ocoll_doc, "doc", 0);
 	class_addmethod(c, (method)ocoll_assist, "assist", A_CANT, 0);
 	class_addmethod(c, (method)ocoll_anything, "anything", A_GIMME, 0);
 	class_addmethod(c, (method)ocoll_bang, "bang", 0);
+	class_addmethod(c, (method)omax_util_dictionary, "dictionary", A_SYM, 0);
 
 	class_register(CLASS_BOX, c);
 	ocoll_class = c;

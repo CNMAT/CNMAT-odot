@@ -111,16 +111,8 @@ void *oroute_new(t_symbol *msg, short argc, t_atom *argv);
 
 t_symbol *ps_oscschemalist, *ps_FullPacket;
 
-//void oroute_fullPacket(t_oroute *x, long len, long ptr)
-void oroute_fullPacket(t_oroute *x, t_symbol *msg, int argc, t_atom *argv)
+void oroute_fullPacket(t_oroute *x, long len, long ptr)
 {
-	// killme ////////////////////////
-	if(argc != 2){
-		return;
-	}
-	long len = atom_getlong(argv);
-	long ptr = atom_getlong(argv + 1);
-	//////////////////////////////////
 	osc_bundle_s_wrap_naked_message(len, ptr);
 	if(x->num_selectors > 0){
 		t_osc_rset *rset = NULL;
@@ -301,16 +293,8 @@ void oroute_anything(t_oroute *x, t_symbol *msg, short argc, t_atom *argv){
 	}
 }
 
-//void oroute_set(t_oroute *x, long index, t_symbol *sym)
-void oroute_set(t_oroute *x, t_symbol *msg, int argc, t_atom *argv)
+void oroute_set(t_oroute *x, long index, t_symbol *sym)
 {
-	// killme ////////////////////////
-	if(argc != 2){
-		return;
-	}
-	long index = atom_getlong(argv);
-	t_symbol *sym = atom_getsym(argv + 1);
-	//////////////////////////////////
 	oroute_doSet(x, index, sym);
 }
 
@@ -332,6 +316,8 @@ void oroute_doSet(t_oroute *x, long index, t_symbol *sym){
 	oroute_makeSchema(x);
 	critical_exit(x->lock);
 }
+
+OMAX_UTIL_DICTIONARY(t_oroute, x, oroute_fullPacket);
 
 void oroute_doc(t_oroute *x)
 {
@@ -517,13 +503,12 @@ int main(void)
 	char *name = "o.route";
 #endif
 	t_class *c = class_new(name, (method)oroute_new, (method)oroute_free, sizeof(t_oroute), 0L, A_GIMME, 0);
-	//class_addmethod(c, (method)oroute_fullPacket, "FullPacket", A_LONG, A_LONG, 0);
-	class_addmethod(c, (method)oroute_fullPacket, "FullPacket", A_GIMME, 0);
+	class_addmethod(c, (method)oroute_fullPacket, "FullPacket", A_LONG, A_LONG, 0);
+	class_addmethod(c, (method)omax_util_dictionary, "dictionary", A_SYM, 0);
 	class_addmethod(c, (method)oroute_assist, "assist", A_CANT, 0);
 	class_addmethod(c, (method)oroute_doc, "doc", 0);
 	class_addmethod(c, (method)oroute_anything, "anything", A_GIMME, 0);
-	//class_addmethod(c, (method)oroute_set, "set", A_LONG, A_SYM, 0);
-	class_addmethod(c, (method)oroute_set, "set", A_GIMME, 0);
+	class_addmethod(c, (method)oroute_set, "set", A_LONG, A_SYM, 0);
 
 	class_register(CLASS_BOX, c);
 	oroute_class = c;

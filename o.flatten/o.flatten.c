@@ -60,16 +60,8 @@ void *oflatten_class;
 
 int oflatten_copybundle(t_oflatten *x, long len, char *ptr);
 
-//void oflatten_fullPacket(t_oflatten *x, long len, long ptr)
-void oflatten_fullPacket(t_oflatten *x, t_symbol *msg, int argc, t_atom *argv)
+void oflatten_fullPacket(t_oflatten *x, long len, long ptr)
 {
-	// killme ////////////////////////
-	if(argc != 2){
-		return;
-	}
-	long len = atom_getlong(argv);
-	long ptr = atom_getlong(argv + 1);
-	//////////////////////////////////
 	char srcc[osc_bundle_s_getStructSize()];
 	t_osc_bndl_s *src = (t_osc_bndl_s *)srcc;
 	osc_bundle_s_setLen(src, len);
@@ -78,6 +70,8 @@ void oflatten_fullPacket(t_oflatten *x, t_symbol *msg, int argc, t_atom *argv)
 	omax_util_outletOSC(x->outlet, osc_bundle_s_getLen(dest), osc_bundle_s_getPtr(dest));
 	osc_bundle_s_deepFree(dest);
 }
+
+OMAX_UTIL_DICTIONARY(t_oflatten, x, oflatten_fullPacket);
 
 void oflatten_doc(t_oflatten *x)
 {
@@ -106,10 +100,10 @@ void *oflatten_new(t_symbol *msg, short argc, t_atom *argv)
 int main(void)
 {
 	t_class *c = class_new("o.flatten", (method)oflatten_new, NULL, sizeof(t_oflatten), 0L, A_GIMME, 0);
-	//class_addmethod(c, (method)oflatten_fullPacket, "FullPacket", A_LONG, A_LONG, 0);
-	class_addmethod(c, (method)oflatten_fullPacket, "FullPacket", A_GIMME, 0);
+	class_addmethod(c, (method)oflatten_fullPacket, "FullPacket", A_LONG, A_LONG, 0);
 	class_addmethod(c, (method)oflatten_assist, "assist", A_CANT, 0);
 	class_addmethod(c, (method)oflatten_doc, "doc", 0);
+	class_addmethod(c, (method)omax_util_dictionary, "dictionary", A_SYM, 0);
 
 	CLASS_ATTR_LONG(c, "level", 0, t_oflatten, level);
 	CLASS_ATTR_SYM(c, "sep", 0, t_oflatten, sep);

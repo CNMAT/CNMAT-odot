@@ -1,8 +1,8 @@
 #+STARTUP: showall
 #+TODO: TODO(t) STARTED(s) WAITING(w) BUG(b) | DONE(d) DELEGATED(e) FIXED(f)
 #+begin_src C :tangle odot_version.h
-#define ODOT_VERSION "1.1.4b" 
-#define ODOT_RELEASE_DATE "[2012-05-17 Thu]"
+#define ODOT_VERSION "1.1.6b" 
+#define ODOT_RELEASE_DATE "[2012-05-22 Tue]"
 #define ODOT_COPYRIGHT_YEARS "2008-12"
 #define ODOT_AUTHORS "John MacCallum, Adrian Freed"
 #define ODOT_COPYRIGHT_STRING "Regents of the University of California. All rights reserved."
@@ -19,6 +19,7 @@ to be able to fork releases of them that are stable.
 *** Not urgent, but the eval code in osc_expr.c needs to be separated from the function code.
 ** Bugs
 *** o.expr
+**** BUG this is a mess:  o.expr /foo = /bar./bloo++
 *** o.pack
 **** BUG The set message should produce an error when the new address is a duplicate of an existing one
 **** BUG The address '/' is invalid and should produce an error.  use the sanity check methods in osc_error
@@ -45,6 +46,7 @@ this may be a lifelong project...
 **** TODO All formatting code needs to be refactored
 **** TODO udpsend encodes lists, floats and ints with addresses with no slashes
 *** o.expr
+**** TODO o.expr should evaluate any expressions that don't require an OSC bundle for evaluation at compile time
 **** TODO if() should be a special case of cond and we should have when and unless
 **** WAITING Codebox
 **** TODO settypetags() should work like the cast functions
@@ -61,6 +63,7 @@ should persist
 **** TODO support the '.' operator on the left side of an assignment
 **** TODO let() (this is just syntatic sugar for (lambda...)
 **** TODO arg check apply lambda
+**** TODO o.expr /gain = value( quote(/source/) + string(/id) + quote(/gain) ) ?? 0.
 *** o.difference/intersection/union
 **** TODO o.difference/intersection/union should take arguments that define a message
 *** new objects
@@ -69,6 +72,26 @@ should persist
 ** Design questions
 *** The fact that o.route can output both bundles and Max data is a source of bugs.  Rewrite o.route?  
 New objects with more explicit behavior.
+
+* VERSION
+** General
+*** All objects now support dictionaries
+** Bugs Fixed
+*** FIXED a bug in the osc_atom_x_format() routines
+
+* VERSION 1.1.6b
+Released [2012-05-22 Tue]
+** General
+** Bugs Fixed
+*** o.expr
+**** FIXED aseq doesn't return anything if min == max
+
+* VERSION 1.1.5b
+Released [2012-05-20 Sun]
+** General
+** Bugs Fixed
+*** o.cond
+**** FIXED hang when expressions contain addresses that are unbound
 
 * VERSION 1.1.4b
 Released [2012-05-17 Thu]

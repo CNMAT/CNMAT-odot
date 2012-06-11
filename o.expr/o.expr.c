@@ -135,16 +135,8 @@ void *oexpr_class;
 
 void oexpr_output_bundle(t_oexpr *x);
 
-//void oexpr_fullPacket(t_oexpr *x, long len, long ptr)
-void oexpr_fullPacket(t_oexpr *x, t_symbol *msg, int ac, t_atom *av)
+void oexpr_fullPacket(t_oexpr *x, long len, long ptr)
 {
-	// killme ////////////////////////
-	if(ac != 2){
-		return;
-	}
-	long len = atom_getlong(av);
-	long ptr = atom_getlong(av + 1);
-	//////////////////////////////////
 	if(len <= 0){
 		return;
 	}
@@ -229,9 +221,7 @@ void oexpr_fullPacket(t_oexpr *x, t_symbol *msg, int ac, t_atom *av)
 	int j = 0;
 	while(f){
 		int ret = osc_expr_eval(f, &len, &copy, &argv);
-		if(ret){
-			continue;
-		}else{
+		if(!ret){
 			int i;
 			int fail = 0;
 			for(i = 0; i < osc_atom_array_u_getLen(argv); i++){
@@ -360,27 +350,13 @@ void oexpr_bang(t_oexpr *x)
 	char buf[16];
 	memset(buf, '\0', 16);
 	strncpy(buf, "#bundle\0", 8);
-	//oexpr_fullPacket(x, 16, (long)buf);
-	t_atom a[2];
-	atom_setlong(a, 16);
-	atom_setlong(a + 1, (long)buf);
-	oexpr_fullPacket(x, NULL, 2, a);
+	oexpr_fullPacket(x, 16, (long)buf);
 }
 
-//void oexpr_doc_cat(t_oexpr *x, t_symbol *cat)
-void oexpr_doc_cat(t_oexpr *x, t_symbol *msg, int argc, t_atom *argv)
+OMAX_UTIL_DICTIONARY(t_oexpr, x, oexpr_fullPacket);
+
+void oexpr_doc_cat(t_oexpr *x, t_symbol *cat)
 {
-	// killme ////////////////////////
-	t_symbol *cat = NULL;
-	if(argc == 0){
-		cat = _sym_nothing;
-	}else if(atom_gettype(argv) == A_SYM){
-		cat = atom_getsym(argv);
-	}else{
-		object_error((t_object *)x, "argument is not a valid category name");
-		return;
-	}
-	//////////////////////////////////
 	if(cat == _sym_nothing){
 		t_osc_bndl_s *b = osc_expr_getCategories();
 		omax_util_outletOSC(LEFTOUTLET, osc_bundle_s_getLen(b), osc_bundle_s_getPtr(b));
@@ -395,20 +371,8 @@ void oexpr_doc_cat(t_oexpr *x, t_symbol *msg, int argc, t_atom *argv)
 	}
 }
 
-//void oexpr_doc_func(t_oexpr *x, t_symbol *func)
-void oexpr_doc_func(t_oexpr *x, t_symbol *msg, int argc, t_atom *argv)
+void oexpr_doc_func(t_oexpr *x, t_symbol *func)
 {
-	// killme ////////////////////////
-	if(argc == 0){
-		object_error((t_object *)x, "you must provide a function name");
-		return;
-	}
-	if(atom_gettype(argv) != A_SYM){
-		object_error((t_object *)x, "argument must be a function (symbol)");
-		return;
-	}
-	t_symbol *func = atom_getsym(argv);
-	//////////////////////////////////
 	t_osc_bndl_u *bndl = NULL;
 	t_osc_err e = osc_expr_getDocForFunction(func->s_name, &bndl);
 	if(e){
@@ -490,7 +454,6 @@ t_max_err oexpr_notify(t_oexpr *x, t_symbol *s, t_symbol *msg, void *sender, voi
 void *oexpr_new(t_symbol *msg, short argc, t_atom *argv){
 	t_oexpr *x;
 	if((x = (t_oexpr *)object_alloc(oexpr_class))){
-		osc_error_setHandler(omax_util_liboErrorHandler);
 		t_osc_expr *f = NULL;
 		int haspound = 0;
 		if(argc){
@@ -596,31 +559,32 @@ void *oexpr_new(t_symbol *msg, short argc, t_atom *argv){
 	return x;
 }
 
-int main(void){
+int main(void)
+{
 	t_class *c = class_new(NAME, (method)oexpr_new, (method)oexpr_free, sizeof(t_oexpr), 0L, A_GIMME, 0);
 
-	//class_addmethod(c, (method)oexpr_fullPacket, "FullPacket", A_LONG, A_LONG, 0);
-	class_addmethod(c, (method)oexpr_fullPacket, "FullPacket", A_GIMME, 0);
+	class_addmethod(c, (method)oexpr_fullPacket, "FullPacket", A_LONG, A_LONG, 0);
 	class_addmethod(c, (method)oexpr_assist, "assist", A_CANT, 0);
 	class_addmethod(c, (method)oexpr_bang, "bang", 0);
 
 	class_addmethod(c, (method)oexpr_postExprIR, "post-expr-ir", 0);
 
 	class_addmethod(c, (method)oexpr_doc, "doc", 0);
-	//class_addmethod(c, (method)oexpr_doc_func, "doc-func", A_SYM, 0);
-	//class_addmethod(c, (method)oexpr_doc_func, "doc-function", A_SYM, 0);
-	//class_addmethod(c, (method)oexpr_doc_cat, "doc-cat", A_DEFSYM, 0);
-	//class_addmethod(c, (method)oexpr_doc_cat, "doc-category", A_DEFSYM, 0);
-	class_addmethod(c, (method)oexpr_doc_func, "doc-func", A_GIMME, 0);
-	class_addmethod(c, (method)oexpr_doc_func, "doc-function", A_GIMME, 0);
-	class_addmethod(c, (method)oexpr_doc_cat, "doc-cat", A_GIMME, 0);
-	class_addmethod(c, (method)oexpr_doc_cat, "doc-category", A_GIMME, 0);
+	class_addmethod(c, (method)oexpr_doc_func, "doc-func", A_SYM, 0);
+	class_addmethod(c, (method)oexpr_doc_func, "doc-function", A_SYM, 0);
+	class_addmethod(c, (method)oexpr_doc_cat, "doc-cat", A_DEFSYM, 0);
+	class_addmethod(c, (method)oexpr_doc_cat, "doc-category", A_DEFSYM, 0);
+
+	class_addmethod(c, (method)omax_util_dictionary, "dictionary", A_SYM, 0);
+
 	class_register(CLASS_BOX, c);
 	oexpr_class = c;
 
 	common_symbols_init();
 
 	rdtsc_cps = RDTSC_CYCLES_PER_SECOND;
+
+	osc_error_setHandler(omax_util_liboErrorHandler);
 
 	ODOT_PRINT_VERSION;
 

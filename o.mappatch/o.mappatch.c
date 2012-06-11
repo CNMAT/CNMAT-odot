@@ -94,16 +94,8 @@ void omap_addQitem(t_omap *x, t_omap_qitem *qi);
 
 t_symbol *ps_FullPacket;
 
-//void omap_fullPacket(t_omap *x, long len, long ptr)
-void omap_fullPacket(t_omap *x, t_symbol *msg, int argc, t_atom *argv)
+void omap_fullPacket(t_omap *x, long len, long ptr)
 {
-	// killme ////////////////////////
-	if(argc != 2){
-		return;
-	}
-	long len = atom_getlong(argv);
-	long ptr = atom_getlong(argv + 1);
-	//////////////////////////////////
 	osc_bundle_s_wrap_naked_message(len, ptr);
 	if(proxy_getinlet((t_object *)x) == 1){
 		if(!(x->msg) && !(x->bndl)){
@@ -167,11 +159,7 @@ void omap_fullPacket(t_omap *x, t_symbol *msg, int argc, t_atom *argv)
 		// recursion so that we don't get interrupted by a new FullPacket message while
 		// we're waiting for the scheduler to execute.
 		critical_exit(x->lock);
-		//omap_fullPacket(x, qi->len, (long)(qi->bndl));
-		t_atom a[2];
-		atom_setlong(a, qi->len);
-		atom_setlong(a, (long)(qi->bndl));
-		omap_fullPacket(x, NULL, 2, a);
+		omap_fullPacket(x, qi->len, (long)(qi->bndl));
 		osc_mem_free(qi);
 	}
 	critical_exit(x->lock);
@@ -268,6 +256,8 @@ void omap_addQitem(t_omap *x, t_omap_qitem *qi)
 	critical_exit(x->lock);
 }
 
+OMAX_UTIL_DICTIONARY(t_omap, x, omap_fullPacket);
+
 void omap_doc(t_omap *x)
 {
 	omax_doc_outletDoc(x->outlets[0]);
@@ -301,13 +291,15 @@ void *omap_new(t_symbol *msg, short argc, t_atom *argv){
 
 int main(void){
 	t_class *c = class_new("o.mappatch", (method)omap_new, (method)omap_free, sizeof(t_omap), 0L, A_GIMME, 0);
-	class_addmethod(c, (method)omap_fullPacket, "FullPacket", A_GIMME, 0);
+	class_addmethod(c, (method)omap_fullPacket, "FullPacket", A_LONG, A_LONG, 0);
 	class_addmethod(c, (method)omap_doc, "doc", 0);
 	class_addmethod(c, (method)omap_assist, "assist", A_CANT, 0);
 	class_addmethod(c, (method)omap_int, "int", A_LONG, 0);
 	class_addmethod(c, (method)omap_float, "float", A_FLOAT, 0);
 	class_addmethod(c, (method)omap_anything, "anything", A_GIMME, 0);
 	class_addmethod(c, (method)omap_list, "list", A_GIMME, 0);
+
+	class_addmethod(c, (method)omax_util_dictionary, "dictionary", A_SYM, 0);
 
 	class_register(CLASS_BOX, c);
 	omap_class = c;

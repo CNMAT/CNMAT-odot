@@ -68,16 +68,8 @@ t_max_err oprint_notify(t_oprint *x, t_symbol *s, t_symbol *msg, void *sender, v
 
 t_symbol *ps_FullPacket;
 
-//void oprint_fullPacket(t_oprint *x, long len, long ptr)
-void oprint_fullPacket(t_oprint *x, t_symbol *msg, int argc, t_atom *argv)
+void oprint_fullPacket(t_oprint *x, long len, long ptr)
 {
-	// killme ////////////////////////
-	if(argc != 2){
-		return;
-	}
-	long len = atom_getlong(argv);
-	long ptr = atom_getlong(argv + 1);
-	//////////////////////////////////
 	osc_bundle_s_wrap_naked_message(len, ptr);
 	long buflen = 0;
 	char *buf = NULL;
@@ -144,6 +136,8 @@ void oprint_float(t_oprint *x, double f)
 	outlet_float(x->outlet, f);
 }
 
+OMAX_UTIL_DICTIONARY(t_oprint, x, oprint_fullPacket);
+
 void oprint_doc(t_oprint *x)
 {
 	omax_doc_outletDoc(x->outlet);
@@ -186,8 +180,8 @@ void *oprint_new(t_symbol *msg, short argc, t_atom *argv){
 
 int main(void){
 	t_class *c = class_new("o.print", (method)oprint_new, (method)oprint_free, sizeof(t_oprint), 0L, A_GIMME, 0);
-	//class_addmethod(c, (method)oprint_fullPacket, "FullPacket", A_LONG, A_LONG, 0);
-	class_addmethod(c, (method)oprint_fullPacket, "FullPacket", A_GIMME, 0);
+	class_addmethod(c, (method)oprint_fullPacket, "FullPacket", A_LONG, A_LONG, 0);
+	class_addmethod(c, (method)omax_util_dictionary, "dictionary", A_SYM, 0);
 	class_addmethod(c, (method)oprint_assist, "assist", A_CANT, 0);
 	class_addmethod(c, (method)oprint_doc, "doc", 0);
 	class_addmethod(c, (method)oprint_anything, "anything", A_GIMME, 0);

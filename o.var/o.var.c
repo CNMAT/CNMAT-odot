@@ -157,16 +157,8 @@ void ovar_doFullPacket(t_ovar *x, long len, long ptr, long inlet)
 	}
 }
 
-//void ovar_fullPacket(t_ovar *x, long len, long ptr)
-void ovar_fullPacket(t_ovar *x, t_symbol *msg, int argc, t_atom *argv)
+void ovar_fullPacket(t_ovar *x, long len, long ptr)
 {
-	// killme ////////////////////////
-	if(argc != 2){
-		return;
-	}
-	long len = atom_getlong(argv);
-	long ptr = atom_getlong(argv + 1);
-	//////////////////////////////////
 	int inlet = proxy_getinlet((t_object *)x);
 	ovar_doFullPacket(x, len, ptr, inlet);
 }
@@ -242,6 +234,8 @@ void ovar_bang(t_ovar *x)
 	}
 #endif
 }
+
+OMAX_UTIL_DICTIONARY(t_ovar, x, ovar_fullPacket);
 
 void ovar_doc(t_ovar *x)
 {
@@ -322,12 +316,12 @@ int main(void){
 #else
 	t_class *c = class_new("o.var", (method)ovar_new, (method)ovar_free, sizeof(t_ovar), 0L, A_GIMME, 0);
 #endif
-	//class_addmethod(c, (method)ovar_fullPacket, "FullPacket", A_LONG, A_LONG, 0);
-	class_addmethod(c, (method)ovar_fullPacket, "FullPacket", A_GIMME, 0);
+	class_addmethod(c, (method)ovar_fullPacket, "FullPacket", A_LONG, A_LONG, 0);
 	class_addmethod(c, (method)ovar_assist, "assist", A_CANT, 0);
 	class_addmethod(c, (method)ovar_doc, "doc", 0);
 	class_addmethod(c, (method)ovar_bang, "bang", 0);
 	class_addmethod(c, (method)ovar_anything, "anything", A_GIMME, 0);
+	class_addmethod(c, (method)omax_util_dictionary, "dictionary", A_SYM, 0);
 
 	class_addmethod(c, (method)ovar_clear, "clear", 0);
 

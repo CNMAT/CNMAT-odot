@@ -54,16 +54,8 @@ void *opbytes_class;
 void opbytes_free(t_opbytes *x);
 void *opbytes_new(t_symbol *msg, short argc, t_atom *argv);
 
-//void opbytes_fullPacket(t_opbytes *x, long len, long ptr)
-void opbytes_fullPacket(t_opbytes *x, t_symbol *msg, int argc, t_atom *argv)
+void opbytes_fullPacket(t_opbytes *x, long len, long ptr)
 {
-	// killme ////////////////////////
-	if(argc != 2){
-		return;
-	}
-	long len = atom_getlong(argv);
-	long ptr = atom_getlong(argv + 1);
-	//////////////////////////////////
 	unsigned char *buf = (unsigned char *)ptr;
 	int i;
 	post("%-12s%-12s%s", "Byte #", "ASCII", "Decimal");
@@ -78,6 +70,8 @@ void opbytes_fullPacket(t_opbytes *x, t_symbol *msg, int argc, t_atom *argv)
 	}
 	omax_util_outletOSC(x->outlet, len, (char *)ptr);
 }
+
+OMAX_UTIL_DICTIONARY(t_opbytes, x, opbytes_fullPacket);
 
 void opbytes_doc(t_opbytes *x)
 {
@@ -104,8 +98,8 @@ void *opbytes_new(t_symbol *msg, short argc, t_atom *argv){
 int main(void){
 	t_class *c = class_new("o.printbytes", (method)opbytes_new, (method)opbytes_free, sizeof(t_opbytes), 0L, A_GIMME, 0);
 
-	//class_addmethod(c, (method)opbytes_fullPacket, "FullPacket", A_LONG, A_LONG, 0);
-	class_addmethod(c, (method)opbytes_fullPacket, "FullPacket", A_GIMME, 0);
+	class_addmethod(c, (method)opbytes_fullPacket, "FullPacket", A_LONG, A_LONG, 0);
+	class_addmethod(c, (method)omax_util_dictionary, "dictionary", A_SYM, 0);
 	class_addmethod(c, (method)opbytes_doc, "doc", 0);
 	class_addmethod(c, (method)opbytes_assist, "assist", A_CANT, 0);
 

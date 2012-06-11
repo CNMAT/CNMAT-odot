@@ -5,7 +5,7 @@ HELPDIR = $(BUILDDIR)/helpfiles
 PATCHDIR = patches
 # o.build has to come before o.bild so that the version.[ch] will be there
 OBJECT_LIST = o.collect o.change o.cond o.unless o.when o.expr o.if o.mappatch o.message \
-o.pack o.pak o.prepend\
+o.pack o.pak o.prepend o.dict\
 o.print o.printbytes o.route o.select o.atomize o.var o.union o.intersection o.difference
 ODOT_CFILES = $(foreach OBJ, $(OBJECT_LIST), $(OBJDIR)/$(OBJ).c)
 ODOT_HFILES = $(foreach OBJ, $(OBJECT_LIST), $(OBJDIR)/$(OBJ).h)

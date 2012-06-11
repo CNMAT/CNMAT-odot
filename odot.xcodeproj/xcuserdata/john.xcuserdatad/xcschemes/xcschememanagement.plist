@@ -44,6 +44,11 @@
 			<key>orderHint</key>
 			<integer>6</integer>
 		</dict>
+		<key>o.flatten copy.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>23</integer>
+		</dict>
 		<key>o.if.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -122,6 +127,11 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>520C0E19158468F7005F2955</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>525523C91504CB9E00A10E5D</key>
 		<dict>
 			<key>primary</key>

@@ -160,16 +160,8 @@ void *omessage_new(t_symbol *msg, short argc, t_atom *argv);
 
 
 
-//void omessage_fullPacket(t_omessage *x, long len, long ptr)
-void omessage_fullPacket(t_omessage *x, t_symbol *msg, int argc, t_atom *argv)
+void omessage_fullPacket(t_omessage *x, long len, long ptr)
 {
-	// killme ////////////////////////
-	if(argc != 2){
-		return;
-	}
-	long len = atom_getlong(argv);
-	long ptr = atom_getlong(argv + 1);
-	//////////////////////////////////
 	if(proxy_getinlet((t_object *)x) == 0){
 		return;
 	}
@@ -904,6 +896,8 @@ void omessage_free(t_omessage *x){
 	}
 }
 
+OMAX_UTIL_DICTIONARY(t_omessage, x, omessage_fullPacket);
+
 void omessage_doc(t_omessage *x)
 {
 	omax_doc_outletDoc(x->outlet);
@@ -992,8 +986,8 @@ int main(void){
 	class_addmethod(c, (method)omessage_assist, "assist", A_CANT, 0);
 	class_addmethod(c, (method)omessage_doc, "doc", 0);
 	class_addmethod(c, (method)stdinletinfo, "inletinfo", A_CANT, 0);
-	//class_addmethod(c, (method)omessage_fullPacket, "FullPacket", A_LONG, A_LONG, 0);
-	class_addmethod(c, (method)omessage_fullPacket, "FullPacket", A_GIMME, 0);
+	class_addmethod(c, (method)omessage_fullPacket, "FullPacket", A_LONG, A_LONG, 0);
+	class_addmethod(c, (method)omax_util_dictionary, "dictionary", A_SYM, 0);
 	class_addmethod(c, (method)omessage_clear, "clear", 0);	
 
 	class_addmethod(c, (method)omessage_key, "key", A_CANT, 0);
