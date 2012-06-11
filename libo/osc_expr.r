@@ -43,6 +43,7 @@ struct _osc_expr{
 struct _osc_expr_arg{
 	union arg{
 		t_osc_atom_u *atom;
+		t_osc_atom_ar_u *list;
 		struct _osc_expr *expr;
 		char *osc_address;
 		struct _osc_expr_rec *func;

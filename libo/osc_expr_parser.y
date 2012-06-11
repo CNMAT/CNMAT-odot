@@ -509,29 +509,7 @@ arg:    OSC_EXPR_NUM {
  	}
 	| OSC_EXPR_STRING {
 		$$ = osc_expr_arg_alloc();
-		/*
-		int oscaddress = 0;
-		if(osc_atom_u_getTypetag($1) == 's'){
-
-			char *st = osc_atom_u_getStringPtr($1);
-			if(st){
-				if(*st == '/' && st[1] != '\0'){
-					// this is an OSC address
-					oscaddress = 1;
-				}
-			}
-		}
-		if(oscaddress){
-			char *st = osc_atom_u_getStringPtr($1);
-			int len = strlen(st) + 1;
-			char *buf = osc_mem_alloc(len);
-			memcpy(buf, st, len);
-			osc_expr_arg_setOSCAddress($$, buf);
-			osc_atom_u_free($1);
-		}else{
-		*/
-			osc_expr_arg_setOSCAtom($$, $1);
-			//}
+		osc_expr_arg_setOSCAtom($$, $1);
  	}
 	| OSC_EXPR_OSCADDRESS {
 		$$ = osc_expr_arg_alloc();
@@ -543,8 +521,35 @@ arg:    OSC_EXPR_NUM {
 		osc_atom_u_free($1);
 	}
 	| expr {
+		t_osc_expr *e = $1;
+		t_osc_expr_arg *a = osc_expr_getArgs(e);
 		$$ = osc_expr_arg_alloc();
-		osc_expr_arg_setExpr($$, $1);
+		/*
+		int eval = 1;
+		while(a){
+			int type = osc_expr_arg_getType(a);
+			if(type == OSC_EXPR_ARG_TYPE_OSCADDRESS ||
+			   type == OSC_EXPR_ARG_TYPE_EXPR ||
+			   type == OSC_EXPR_ARG_TYPE_FUNCTION){
+				eval = 0;
+				break;
+			}
+			a = osc_expr_arg_next(a);
+		}
+		if(eval){
+			t_osc_atom_ar_u *res = NULL;
+			int ret = osc_expr_eval(e, NULL, NULL, &res);
+			if(ret){
+				osc_expr_arg_setExpr($$, e);
+			}else{
+				// assume that this is a special function like value() or bound() that
+				// needs an OSC bundle to return a value
+				osc_expr_arg_setList($$, res);
+			}
+		}else{
+		*/
+			osc_expr_arg_setExpr($$, e);
+			//}
   	}
 	| function {
 		$$ = osc_expr_arg_alloc();
