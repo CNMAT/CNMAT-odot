@@ -230,7 +230,8 @@ void *osc_hashtab_lookup(t_osc_hashtab *ht, int keylen, char *key){
 	return NULL;
 }
 
-void osc_hashtab_remove(t_osc_hashtab *ht, int keylen, char *key, t_osc_hashtab_dtor dtor){
+void osc_hashtab_remove(t_osc_hashtab *ht, int keylen, char *key, t_osc_hashtab_dtor dtor)
+{
 	if(!ht){
 		return;
 	}
@@ -257,7 +258,8 @@ void osc_hashtab_remove(t_osc_hashtab *ht, int keylen, char *key, t_osc_hashtab_
 	}
 }
 
-void osc_hashtab_foreach(t_osc_hashtab *ht, void (*cb)(char *key, void *val, void *context), void *context){
+void osc_hashtab_foreach(t_osc_hashtab *ht, void (*cb)(char *key, void *val, void *context), void *context)
+{
 	if(!ht){
 		return;
 	}
@@ -271,7 +273,8 @@ void osc_hashtab_foreach(t_osc_hashtab *ht, void (*cb)(char *key, void *val, voi
 	}
 }
 
-void osc_hashtab_clear(t_osc_hashtab *ht){
+void osc_hashtab_clear(t_osc_hashtab *ht)
+{
 	if(!ht){
 		return;
 	}
@@ -291,7 +294,8 @@ void osc_hashtab_clear(t_osc_hashtab *ht){
 	ht->nentries = 0;
 }
 
-void osc_hashtab_destroy(t_osc_hashtab *ht){
+void osc_hashtab_destroy(t_osc_hashtab *ht)
+{
 	if(!ht){
 		return;
 	}
