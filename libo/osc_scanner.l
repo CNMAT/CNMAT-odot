@@ -101,6 +101,15 @@ $[1-9]+	{
 					return OSCFLOAT;
 				}
 
+(true|True|TRUE)			{
+						yylval->b = 1;
+						return OSCBOOL;
+					}
+(false|False|FALSE)			{
+						yylval->b = 0;
+						return OSCBOOL;
+					}
+
 \[|\]	{
 		return *yytext;
 	}
