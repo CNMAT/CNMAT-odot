@@ -1,6 +1,6 @@
 /*
 Written by John MacCallum, The Center for New Music and Audio Technologies,
-University of California, Berkeley.  Copyright (c) 2009-ll, The Regents of
+University of California, Berkeley.  Copyright (c) 2009-12, The Regents of
 the University of California (Regents). 
 Permission to use, copy, modify, distribute, and distribute modified versions
 of this software and its documentation without fee and without a signed
@@ -1048,11 +1048,20 @@ t_osc_err osc_atom_u_serialize(t_osc_atom_u *a, long *buflen, char **buf){
 	return e;
 }
 
-t_osc_err osc_atom_u_doFormat(t_osc_atom_u *a, long *buflen, long *bufpos, char **buf){
+t_osc_err osc_atom_u_doFormat(t_osc_atom_u *a, long *buflen, long *bufpos, char **buf)
+{
 	if(!a){
 		return OSC_ERR_NOBUNDLE;
 	}
 	if(osc_atom_u_getTypetag(a) == OSC_BUNDLE_TYPETAG){
+		int n = osc_bundle_s_getLen(a->w.bndl) + 32;
+		if((*buflen - *bufpos) < n){
+			*buf = osc_mem_resize(*buf, *buflen + n);
+			if(!(*buf)){
+				return OSC_ERR_OUTOFMEM;
+			}
+			*buflen += n;
+		}
 		*bufpos += sprintf(*buf + *bufpos, "[\n");
 		extern t_osc_err osc_bundle_s_doFormat(long len, char *bndl, long *buflen, long *bufpos, char **buf);
 		osc_bundle_s_doFormat(osc_bundle_s_getLen(a->w.bndl), osc_bundle_s_getPtr(a->w.bndl), buflen, bufpos, buf);
@@ -1099,7 +1108,8 @@ t_osc_err osc_atom_u_doFormat(t_osc_atom_u *a, long *buflen, long *bufpos, char 
 	return OSC_ERR_NONE;
 }
 
-t_osc_err osc_atom_u_format(t_osc_atom_u *a, long *buflen, char **buf){
+t_osc_err osc_atom_u_format(t_osc_atom_u *a, long *buflen, char **buf)
+{
 	if(!a){
 		return OSC_ERR_NOBUNDLE;
 	}

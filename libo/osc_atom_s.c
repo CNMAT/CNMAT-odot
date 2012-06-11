@@ -897,6 +897,14 @@ t_osc_err osc_atom_s_doFormat(t_osc_atom_s *a, long *buflen, long *bufpos, char 
 	}
 	if(osc_atom_s_getTypetag(a) == OSC_BUNDLE_TYPETAG){
 		char *data = osc_atom_s_getData(a);
+		int n = ntoh32(*((uint32_t *)data)) + 32;
+		if((*buflen - *bufpos) < n){
+			*buf = osc_mem_resize(*buf, *buflen + n);
+			if(!(*buf)){
+				return OSC_ERR_OUTOFMEM;
+			}
+			*buflen += n;
+		}
 		*bufpos += sprintf(*buf + *bufpos, "[\n");
 		extern t_osc_err osc_bundle_s_doFormat(long len, char *bndl, long *buflen, long *bufpos, char **buf);
 		osc_bundle_s_doFormat(ntoh32(*((uint32_t *)data)), data + 4, buflen, bufpos, buf);
