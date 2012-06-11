@@ -52,10 +52,6 @@ extern "C" {
 
 #include <pthread.h>
 
-#define oprintf(str, args...)
-//#define oprintf(str, args...) printf("%p: %s:%d: "str, pthread_self(), __func__, __LINE__, ##args)
-
-
 #ifdef __cplusplus
 }
 #endif
