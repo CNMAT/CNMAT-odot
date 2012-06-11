@@ -97,9 +97,6 @@ void omax_util_dictionaryToOSC(t_dictionary *dict, t_osc_bndl_u *bndl_u)
 			t_osc_msg_u *msg = NULL;
 			omax_util_maxAtomsToOSCMsg_u(&msg, gensym(addy), argc, argv);
 			osc_bundle_u_addMsg(bndl_u, msg);
-			if(argv){
-				sysmem_freeptr(argv);
-			}
 		}
 	}
 	dictionary_freekeys(dict, nkeys, keys);
@@ -151,7 +148,16 @@ void omax_util_bundleToDictionary(t_osc_bndl_s *bndl, t_dictionary *dict)
 			}
 			aa[nn++] = a[i];
 		}
-		dictionary_appendatoms(dict, k, nn, aa);
+		switch(nn){
+		case 0:
+			break;
+		case 1:
+			dictionary_appendatom(dict, k, aa);
+			break;
+		default:
+			dictionary_appendatoms(dict, k, nn, aa);
+			break;
+		}
 	}
 	osc_bndl_it_s_destroy(it);
 }
