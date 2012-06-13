@@ -65,17 +65,20 @@ quoted_string [^\"\\]
 
 <quote>{quoted_string}*\\. {
 	if(*buf){
-		*buflen += yyleng;
-		*buf = osc_mem_resize(*buf, *buflen);
-		strcat(*buf, yytext);
-		(*buf)[*buflen - 3] = (*buf)[*buflen - 2];
-		(*buf)[*buflen - 2] = '\0';
+		*buf = osc_mem_resize(*buf, *buflen + (yyleng - 1));
+		//strcat(*buf, yytext);
+		memcpy(*buf + *buflen, yytext, yyleng - 1);
+		*buflen += yyleng - 1;
+		(*buf)[*buflen - 1] = yytext[yyleng - 1];
+		//(*buf)[*buflen - 3] = (*buf)[*buflen - 2];
+		//(*buf)[*buflen - 2] = '\0';
 	}else{
-		*buf = osc_mem_alloc(yyleng);
-		memcpy(*buf, yytext, yyleng);
-		*buflen = yyleng;
-		(*buf)[*buflen - 2] = (*buf)[*buflen - 1];
-		(*buf)[*buflen - 1] = '\0';
+		*buf = osc_mem_alloc(yyleng - 1);
+		memcpy(*buf, yytext, yyleng - 1);
+		*buflen = yyleng - 1;
+		//(*buf)[*buflen - 2] = (*buf)[*buflen - 1];
+		//(*buf)[*buflen - 1] = '\0';
+		(*buf)[*buflen - 1] = yytext[yyleng - 1];
 	}
 }
 
