@@ -66,6 +66,12 @@ reserved_chars \+|-|\*|\/|%|^|!|=|\[|\]|:|;|\?|<|>|\&|\||\\|\{|\}|\(|\)
 %x quote quote_function escape
 
 %%
+%{
+	if(!(*started)){
+		*started = 1;
+		return startcond;
+	}
+%}
 
 \+|-|\*|\/|%|^|!|=|\[|\]|:|\?|<|> {
 	return *yytext;

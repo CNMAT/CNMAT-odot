@@ -74,7 +74,7 @@ int _osc_expr_sign(double f);
 t_osc_hashtab *osc_expr_funcobj_ht;
 void osc_expr_funcobj_dtor(char *key, void *val);
 
-extern t_osc_err osc_expr_parser_parseString(char *ptr, t_osc_expr **f);
+extern t_osc_err osc_expr_parser_parseExpr(char *ptr, t_osc_expr **f);
 t_osc_err osc_expr_lex(char *str, t_osc_atom_array_u **ar);
 
 static void osc_expr_err_badInfixArg(char *func, char typetag, int argnum, t_osc_atom_u *left, t_osc_atom_u *right);
@@ -106,6 +106,7 @@ int osc_expr_evalInLexEnv(t_osc_expr *f,
 	if(f->rec->func == osc_expr_apply){
 		if((osc_expr_arg_getType(f_argv) != OSC_EXPR_ARG_TYPE_ATOM) &&
 		   (osc_expr_arg_getType(f_argv) != OSC_EXPR_ARG_TYPE_FUNCTION) &&
+		   (osc_expr_arg_getType(f_argv) != OSC_EXPR_ARG_TYPE_EXPR) &&
 		   (osc_expr_arg_getType(f_argv) != OSC_EXPR_ARG_TYPE_OSCADDRESS)){
 			osc_error_handler(basename(__FILE__),
 					  __func__,
@@ -149,7 +150,9 @@ int osc_expr_evalInLexEnv(t_osc_expr *f,
 				}
 				e = osc_expr_next(e);
 			}
+			osc_expr_destroyLexenv(lexenv_copy);
 		}else if(osc_expr_arg_getType(f_argv) == OSC_EXPR_ARG_TYPE_ATOM ||
+			 osc_expr_arg_getType(f_argv) == OSC_EXPR_ARG_TYPE_EXPR ||
 			 osc_expr_arg_getType(f_argv) == OSC_EXPR_ARG_TYPE_OSCADDRESS){
 			t_osc_expr_rec *r = NULL;
 			if(osc_expr_arg_getType(f_argv) == OSC_EXPR_ARG_TYPE_ATOM){
@@ -173,7 +176,40 @@ int osc_expr_evalInLexEnv(t_osc_expr *f,
 					//error
 					return 1;
 				}
-				r = osc_expr_lookupFunction(osc_atom_u_getStringPtr(osc_atom_array_u_get(ar, 0)));
+				char *stp = osc_atom_u_getStringPtr(osc_atom_array_u_get(ar, 0));
+				r = osc_expr_lookupFunction(stp);
+				if(!r){
+					// lookup didn't return a valid function, so let's see
+					// if we can parse this string.
+					t_osc_err err = osc_expr_parser_parseFunction(stp, &r);
+					if(!err && r){
+						t_osc_expr *e = NULL;
+						osc_expr_copy(&e, f);
+						t_osc_expr_arg *arg1 = osc_expr_getArgs(e);
+						t_osc_expr_arg *arg2 = osc_expr_arg_next(arg1);
+						switch(osc_expr_arg_getType(arg1)){
+						case OSC_EXPR_ARG_TYPE_ATOM:
+							osc_atom_u_free(osc_expr_arg_getOSCAtom(arg1));
+							break;
+						case OSC_EXPR_ARG_TYPE_EXPR:
+							osc_expr_free(osc_expr_arg_getExpr(arg1));
+							break;
+						case OSC_EXPR_ARG_TYPE_OSCADDRESS:
+							osc_mem_free(osc_expr_arg_getOSCAddress(arg1));
+							break;
+						}
+						osc_expr_arg_setFunction(arg1, r);
+						osc_expr_arg_setNext(arg1, arg2);
+						e->argv = arg1;
+						osc_expr_arg_setFunction(osc_expr_getArgs(e), r);
+
+						int ret = osc_expr_evalInLexEnv(e, lexenv, len, oscbndl, out);
+						osc_expr_free(e);
+						osc_atom_array_u_free(ar);
+						return ret;
+					}
+				}
+				osc_atom_array_u_free(ar);
 			}
 			if(!r){
 				osc_error_handler(basename(__FILE__),
@@ -187,8 +223,7 @@ int osc_expr_evalInLexEnv(t_osc_expr *f,
 			t_osc_expr *e = osc_expr_alloc();
 			osc_expr_setRec(e, r);
 			osc_expr_setArg(e, f_argv->next);
-			osc_expr_evalInLexEnv(e, lexenv, len, oscbndl, out);
-			return 0;
+			return osc_expr_evalInLexEnv(e, lexenv, len, oscbndl, out);
 		}else{
 			//error
 			return 1;
@@ -675,7 +710,7 @@ int osc_expr_evalInLexEnv(t_osc_expr *f,
 				char *expr = osc_atom_u_getStringPtr(osc_atom_array_u_get(arg, 0));
 				t_osc_expr *f = NULL;
 				TIMER_START(foo, rdtsc_cps);
-				osc_expr_parser_parseString(expr, &f);
+				osc_expr_parser_parseExpr(expr, &f);
 				TIMER_STOP(foo, rdtsc_cps);
 				TIMER_PRINTF(foo);
 				TIMER_SNPRINTF(foo, buff);
@@ -705,7 +740,7 @@ int osc_expr_evalInLexEnv(t_osc_expr *f,
 				char *buf = NULL;
 				osc_atom_array_u_getStringArray(arg, &buflen, &buf, " ");
 				t_osc_expr *f = NULL;
-				osc_expr_parser_parseString(buf, &f);
+				osc_expr_parser_parseExpr(buf, &f);
 				int ret = 0;
 				*out = osc_atom_array_u_alloc(1);
 					
@@ -782,11 +817,11 @@ int osc_expr_evalInLexEnv(t_osc_expr *f,
 			if(osc_atom_u_getTypetag(osc_atom_array_u_get(arg, 0)) == 's' &&
 			   osc_atom_array_u_getLen(arg) == 1){
 				osc_atom_u_getString(osc_atom_array_u_get(arg, 0), 0, &expression);
-				osc_expr_parser_parseString(expression, &f);
+				osc_expr_parser_parseExpr(expression, &f);
 			}else{
 				long buflen = 0;
 				osc_atom_array_u_getStringArray(arg, &buflen, &expression, " ");
-				osc_expr_parser_parseString(expression, &f);
+				osc_expr_parser_parseExpr(expression, &f);
 			}
 			osc_atom_array_u_free(arg);
 		}else if(arg2type == OSC_EXPR_ARG_TYPE_EXPR){
@@ -855,7 +890,7 @@ int osc_expr_evalLexExprsInBndl(long *len, char **oscbndl, t_osc_atom_ar_u **out
 					printf("%s: %s\n", __func__, expr);
 					if(expr){
 						t_osc_expr *f = NULL;
-						osc_expr_parser_parseString(expr, &f);
+						osc_expr_parser_parseExpr(expr, &f);
 						while(f){
 							int ret = osc_expr_eval(f, len, oscbndl, out);
 							if(ret){
@@ -1147,7 +1182,7 @@ t_osc_expr *osc_expr_makeFuncObjFromOSCMsg_s(t_osc_msg_s *msg, int argoffset)
 	long len = 0;
 	osc_message_s_formatArgs(msg, &len, &buf, argoffset);
 	t_osc_expr *f = NULL;
-	osc_expr_parser_parseString(buf, &f);
+	osc_expr_parser_parseExpr(buf, &f);
 	return f;
 }
 

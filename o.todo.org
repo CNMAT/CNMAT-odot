@@ -66,6 +66,8 @@ should persist
 **** TODO o.expr /gain = value( quote(/source/) + string(/id) + quote(/gain) ) ?? 0.
 *** o.difference/intersection/union
 **** TODO o.difference/intersection/union should take arguments that define a message
+*** o.pack/pak
+**** TODO add @triggers attribute to o.pack and maybe get rid of o.pak?
 *** new objects
 **** TODO o.typetages: outputs the typetags.
 **** TODO o.append
@@ -75,9 +77,14 @@ New objects with more explicit behavior.
 
 * VERSION
 ** General
-*** All objects now support dictionaries
+*** DONE All objects now support dictionaries
+*** DONE New object: o.dict, converts OSC bundles to dictionaries
+*** o.expr
+**** DONE anonymous functions can now be specified properly as OSC addresses or expresions (like value(/foo)).
+For example:  [o.expr apply(/foo, /bar)] or [o.expr map(fn(f, arg1){apply(value(f), arg1);}, /fns, /args)]
 ** Bugs Fixed
 *** FIXED a bug in the osc_atom_x_format() routines
+*** FIXED a bug in the parser that would incorrectly parse quoted strings that had multiple escaped characters
 
 * VERSION 1.1.6b
 Released [2012-05-22 Tue]

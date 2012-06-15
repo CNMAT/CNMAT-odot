@@ -62,8 +62,10 @@
 
 
 #define YY_DECL int osc_expr_scanner_lex \
-		(YYSTYPE * yylval_param, YYLTYPE * yylloc_param , yyscan_t yyscanner, int alloc_atom, long *buflen, char **buf)
-t_osc_err osc_expr_parser_parseString(char *ptr, t_osc_expr **f);
+		(YYSTYPE * yylval_param, YYLTYPE * yylloc_param , yyscan_t yyscanner, int alloc_atom, long *buflen, char **buf, int startcond, int *started)
+	//t_osc_err osc_expr_parser_parseString(char *ptr, t_osc_expr **f);
+t_osc_err osc_expr_parser_parseExpr(char *ptr, t_osc_expr **f);
+t_osc_err osc_expr_parser_parseFunction(char *ptr, t_osc_expr_rec **f);
 
 }
 
@@ -74,11 +76,12 @@ t_osc_err osc_expr_parser_parseString(char *ptr, t_osc_expr **f);
 int alloc_atom = 1;
 
 
-int osc_expr_parser_lex(YYSTYPE *yylval_param, YYLTYPE *llocp, yyscan_t yyscanner, int alloc_atom, long *buflen, char **buf){
-	return osc_expr_scanner_lex(yylval_param, llocp, yyscanner, 1, buflen, buf);
+int osc_expr_parser_lex(YYSTYPE *yylval_param, YYLTYPE *llocp, yyscan_t yyscanner, int alloc_atom, long *buflen, char **buf, int startcond, int *started){
+	return osc_expr_scanner_lex(yylval_param, llocp, yyscanner, 1, buflen, buf, startcond, started);
 }
 
-t_osc_err osc_expr_parser_parseString(char *ptr, t_osc_expr **f){
+t_osc_err osc_expr_parser_parseExpr(char *ptr, t_osc_expr **f)
+{
 	//printf("parsing %s\n", ptr);
 	int len = strlen(ptr);
 	int alloc = 0;
@@ -101,10 +104,11 @@ t_osc_err osc_expr_parser_parseString(char *ptr, t_osc_expr **f){
 	osc_expr_scanner_set_out(NULL, scanner);
 	t_osc_expr *exprstack = NULL;
 	t_osc_expr *tmp_exprstack = NULL;
-	int colnum = 0;
 	long buflen = 0;
 	char *buf = NULL;
-	t_osc_err ret = osc_expr_parser_parse(&exprstack, &tmp_exprstack, scanner, ptr, &colnum, &buflen, &buf);
+	int startcond = START_EXPNS;
+	int started = 0;
+	t_osc_err ret = osc_expr_parser_parse(&exprstack, &tmp_exprstack, NULL, scanner, ptr, &buflen, &buf, startcond, &started);
 	osc_expr_scanner__delete_buffer(buf_state, scanner);
 	osc_expr_scanner_lex_destroy(scanner);
 	if(tmp_exprstack){
@@ -120,6 +124,32 @@ t_osc_err osc_expr_parser_parseString(char *ptr, t_osc_expr **f){
 	}
 	return ret;
 }
+
+t_osc_err osc_expr_parser_parseFunction(char *ptr, t_osc_expr_rec **f)
+{
+	yyscan_t scanner;
+	osc_expr_scanner_lex_init(&scanner);
+	YY_BUFFER_STATE buf_state = osc_expr_scanner__scan_string(ptr, scanner);
+	osc_expr_scanner_set_out(NULL, scanner);
+	t_osc_expr *exprstack = NULL;
+	t_osc_expr *tmp_exprstack = NULL;
+	long buflen = 0;
+	char *buf = NULL;
+	int startcond = START_FUNCTION;
+	int started = 0;
+	t_osc_err ret = osc_expr_parser_parse(&exprstack, &tmp_exprstack, f, scanner, ptr, &buflen, &buf, startcond, &started);
+
+	osc_expr_scanner__delete_buffer(buf_state, scanner);
+	osc_expr_scanner_lex_destroy(scanner);
+	return ret;
+}
+
+/*
+t_osc_err osc_expr_parser_parseString(char *ptr, t_osc_expr **f)
+{
+	return osc_expr_parser_parseExpr(ptr, f);
+}
+*/
 
 void osc_expr_error_formatLocation(YYLTYPE *llocp, char *input_string, char **buf)
 {
@@ -173,13 +203,13 @@ void osc_expr_error(YYLTYPE *llocp,
 			ptr += sprintf(ptr, "%s\n", more);
 		}
 		osc_error_handler(basename(__FILE__),
-				  "osc_expr_parser_parseString",
+				  NULL,
 				  -1,
 				  errorcode,
 				  buf);
 	}else{
 		osc_error_handler(basename(__FILE__),
-				  "osc_expr_parser_parseString",
+				  NULL,
 				  -1,
 				  errorcode,
 				  "");
@@ -239,7 +269,7 @@ int osc_expr_parser_checkArity(YYLTYPE *llocp, char *input_string, t_osc_expr_re
 	return 0;
 }
 
-void yyerror(YYLTYPE *llocp, t_osc_expr **exprstack, t_osc_expr **tmp_exprstack, void *scanner, char *input_string, long *buflen, char **buf, char const *e)
+ void yyerror(YYLTYPE *llocp, t_osc_expr **exprstack, t_osc_expr **tmp_exprstack, t_osc_expr_rec **rec, void *scanner, char *input_string, long *buflen, char **buf, int startcond, int *started, char const *e)
 {
 	osc_expr_error(llocp, input_string, OSC_ERR_EXPPARSE, e);
 }
@@ -415,17 +445,23 @@ t_osc_expr *osc_expr_parser_reduce_NullCoalescingOperator(YYLTYPE *llocp,
 %locations
 %require "2.5"
 
+// replace this bullshit with a struct...
 %parse-param{t_osc_expr **exprstack}
 %parse-param{t_osc_expr **tmp_exprstack}
+%parse-param{t_osc_expr_rec **rec}
 %parse-param{void *scanner}
 %parse-param{char *input_string}
 %parse-param{long *buflen}
 %parse-param{char **buf}
+%parse-param{int startcond}
+%parse-param{int *started}
 
 %lex-param{void *scanner}
 %lex-param{int alloc_atom}
 %lex-param{long *buflen}
 %lex-param{char **buf}
+%lex-param{int startcond}
+%lex-param{int *started}
 
 %union {
 	t_osc_atom_u *atom;
@@ -475,7 +511,13 @@ t_osc_expr *osc_expr_parser_reduce_NullCoalescingOperator(YYLTYPE *llocp,
 // level 2
 %left OSC_EXPR_INC OSC_EXPR_DEC OSC_EXPR_FUNC_CALL OSC_EXPR_QUOTED_EXPR OPEN_DBL_BRKTS CLOSE_DBL_BRKTS
 
+%token START_EXPNS START_FUNCTION
+%start start
+
 %%
+
+start: START_EXPNS expns
+       | START_FUNCTION function;
 
 expns:  {
 		if(*tmp_exprstack){
@@ -584,14 +626,20 @@ function:
 				osc_mem_free(params[i]);
 			}
 		}
+		/*
 		t_osc_expr *e = *tmp_exprstack;
 		while(e){
 			e = osc_expr_next(e);
 		}
+		*/
 		osc_expr_rec_setFunction(func, osc_expr_lambda);
 		osc_expr_rec_setExtra(func, *tmp_exprstack);
-		*tmp_exprstack = NULL;
 		$$ = func;
+		if(startcond == START_EXPNS){
+			*tmp_exprstack = NULL;
+		}else if(startcond == START_FUNCTION){
+			*rec = func;
+		}
 // go through and make sure the parameters are unique
 /*
 		t_osc_expr_rec *r = osc_expr_lookupFunction("lambda");
