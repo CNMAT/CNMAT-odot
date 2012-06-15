@@ -31,6 +31,66 @@
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"hidden" : 1,
+					"id" : "obj-40",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "" ],
+					"patching_rect" : [ -175.0, 432.0, 181.0, 20.0 ],
+					"text" : "o.autodoc_overview @obj o.dict"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-32",
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 64.0, 818.0, 118.0, 18.0 ],
+					"presentation_rect" : [ 67.0, 817.0, 0.0, 0.0 ],
+					"text" : "o.dict"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"frgb" : [ 0.0, 0.0, 0.0, 1.0 ],
+					"id" : "obj-33",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 182.0, 818.0, 283.0, 20.0 ],
+					"presentation_rect" : [ 185.0, 809.0, 0.0, 0.0 ],
+					"text" : "Convert an OSC bundle to a dictionary."
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 18.0,
+					"frgb" : [ 0.0, 0.0, 0.0, 1.0 ],
+					"id" : "obj-34",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 64.0, 776.0, 227.0, 27.0 ],
+					"presentation_rect" : [ 67.0, 775.0, 0.0, 0.0 ],
+					"text" : "Dictionary Support"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"hidden" : 1,
 					"id" : "obj-31",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
@@ -51,7 +111,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 64.0, 528.368408, 118.0, 18.0 ],
-					"presentation_rect" : [ 64.0, 528.368408, 0.0, 0.0 ],
 					"text" : "o.flatten"
 				}
 
@@ -66,7 +125,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 182.0, 528.368408, 335.0, 20.0 ],
-					"presentation_rect" : [ 182.0, 528.368408, 0.0, 0.0 ],
 					"text" : "Flatten nested bundles."
 				}
 
@@ -1555,6 +1613,24 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-32", 1 ],
+					"disabled" : 0,
+					"hidden" : 1,
+					"source" : [ "obj-40", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-33", 0 ],
+					"disabled" : 0,
+					"hidden" : 1,
+					"source" : [ "obj-40", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-24", 1 ],
 					"disabled" : 0,
 					"hidden" : 1,
@@ -2055,6 +2131,10 @@
 			}
 , 			{
 				"name" : "o.flatten.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.dict.mxo",
 				"type" : "iLaX"
 			}
  ]
