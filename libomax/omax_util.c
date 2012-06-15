@@ -129,7 +129,7 @@ void omax_util_bundleToDictionary(t_osc_bndl_s *bndl, t_dictionary *dict)
 		t_atom aa[n];
 		int nn = 0;
 		omax_util_oscMsg2MaxAtoms(m, a);
-		t_symbol *k = atom_getsym(a);
+		t_symbol *k = gensym(atom_getsym(a)->s_name + 1);
 		for(int i = 1; i < n; i++){
 			if(atom_gettype(a + i) == A_SYM){
 				if(!omax_ps_FullPacket){

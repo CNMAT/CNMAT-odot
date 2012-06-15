@@ -61,7 +61,6 @@ void *odict_class;
 
 void odict_fullPacket(t_odict *x, long len, long ptr)
 {
-	dictionary_clear(x->dict);
 	t_osc_bndl_s *bndl = osc_bundle_s_alloc(len, (char *)ptr);
 	omax_util_bundleToDictionary(bndl, x->dict);
 	t_atom a;
