@@ -227,6 +227,27 @@ quote[[:space:]]*\( {
 	}
 }
 
+(-?([[:digit:]]{-}[0])[[:digit:]]*|0) 	{
+						// int 
+						char *endptr = NULL;
+						int32_t i = strtol(yytext, &endptr, 0);
+						if(alloc_atom){
+							yylval->atom = osc_atom_u_alloc();
+						}
+						osc_atom_u_setInt32(yylval->atom, i);
+						return OSC_EXPR_NUM;
+					}
+-?{c99_floating_point_constant}		{
+						// floating point number
+						char *endptr = NULL;
+						double f = strtod(yytext, &endptr);
+						if(alloc_atom){
+							yylval->atom = osc_atom_u_alloc();
+						}
+						osc_atom_u_setDouble(yylval->atom, f);
+						return OSC_EXPR_NUM;
+					}
+
 (true|True|TRUE)			{
 						if(alloc_atom){
 							yylval->atom = osc_atom_u_alloc();
@@ -265,26 +286,6 @@ quote[[:space:]]*\( {
 ;+|(;[[:space:]]*)+			{
 						// attempt to get rid of repeated semicolons
 						return ';';
-					}
-(-?([[:digit:]]{-}[0])[[:digit:]]*|0) 	{
-						// int 
-						char *endptr = NULL;
-						int32_t i = strtol(yytext, &endptr, 0);
-						if(alloc_atom){
-							yylval->atom = osc_atom_u_alloc();
-						}
-						osc_atom_u_setInt32(yylval->atom, i);
-						return OSC_EXPR_NUM;
-					}
--?{c99_floating_point_constant}		{
-						// floating point number
-						char *endptr = NULL;
-						double f = strtod(yytext, &endptr);
-						if(alloc_atom){
-							yylval->atom = osc_atom_u_alloc();
-						}
-						osc_atom_u_setDouble(yylval->atom, f);
-						return OSC_EXPR_NUM;
 					}
 
 	/*

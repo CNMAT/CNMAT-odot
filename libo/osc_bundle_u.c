@@ -38,17 +38,20 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #include "osc_bundle_iterator_u.h"
 #include "osc_array.h"
 
-t_osc_bndl_u *osc_bundle_u_alloc(void){
+t_osc_bndl_u *osc_bundle_u_alloc(void)
+{
 	t_osc_bndl_u *b = osc_mem_alloc(sizeof(t_osc_bndl_u));
 	memset(b, '\0', sizeof(t_osc_bndl_u));
 	return b;
 }
 
-size_t osc_bundle_u_getStructSize(void){
+size_t osc_bundle_u_getStructSize(void)
+{
 	return sizeof(t_osc_bndl_u);
 }
 
-void osc_bundle_u_free(t_osc_bndl_u *bndl){
+void osc_bundle_u_free(t_osc_bndl_u *bndl)
+{
 	if(!bndl){
 		return;
 	}
@@ -61,8 +64,42 @@ void osc_bundle_u_free(t_osc_bndl_u *bndl){
 	osc_mem_free(bndl);
 }
 
-t_osc_err osc_bundle_u_deepCopy(t_osc_bndl_u **dest, t_osc_bndl_u *src)
+void osc_bundle_u_clear(t_osc_bndl_u *bndl)
 {
+	if(!bndl){
+		return;
+	}
+	bndl->msgcount = 0;
+	t_osc_msg_u *m = bndl->msghead;
+	while(m){
+		t_osc_msg_u *next = m->next;
+		osc_message_u_free(m);
+		m = next;
+	}
+	bndl->msghead = NULL;
+	bndl->msgtail = NULL;
+}
+
+long osc_bundle_u_getSerializedSize(t_osc_bndl_u *b)
+{
+	// this seems bad, but it probably isn't much less efficient than going through everything
+	// recursively and computing the size.  We could also keep track of it as things
+	// are added to and taken from the bundle, but that seems prone to error.
+	long len = 0;
+	char *bndl = NULL;
+	osc_bundle_u_serialize(b, &len, &bndl);
+	osc_mem_free(bndl);
+	return len;
+}
+
+t_osc_err osc_bundle_u_copy(t_osc_bndl_u **dest, t_osc_bndl_u *src)
+{
+	// this is lazy, but it's also possible that this is faster than a crazy recursive copy
+	long len = 0;
+	char *buf = NULL;
+	osc_bundle_u_serialize(src, &len, &buf);
+	osc_bundle_s_deserialize(len, buf, dest);
+	osc_mem_free(buf);
 	return OSC_ERR_NONE;
 }
 
@@ -75,6 +112,30 @@ t_osc_err osc_bundle_u_getMessagesWithCallback(t_osc_bndl_u *bndl, void (*f)(t_o
 	while(osc_bndl_it_u_hasNext(it)){
 		t_osc_msg_u *m = osc_bndl_it_u_next(it);
 		f(m, context);
+	}
+	osc_bndl_it_u_destroy(it);
+	return OSC_ERR_NONE;
+}
+
+t_osc_err osc_bundle_u_addressExists(t_osc_bndl_u *bndl, char *address, int fullmatch, int *res)
+{
+	*res = 0;
+	t_osc_bndl_it_u *it = osc_bndl_it_u_get(bndl);
+	while(osc_bndl_it_u_hasNext(it)){
+		t_osc_msg_u *m = osc_bndl_it_u_next(it);
+		int po, ao;
+		int r = osc_match(address, osc_message_u_getAddress(m), &po, &ao);
+		if(fullmatch){
+			if(r != (OSC_MATCH_ADDRESS_COMPLETE | OSC_MATCH_PATTERN_COMPLETE)){
+				continue;
+			}
+		}else{
+			if(r == 0 || (((r & OSC_MATCH_PATTERN_COMPLETE) == 0) && address[po] != '/')){
+				continue;
+			}
+		}
+		*res = 1;
+		break;
 	}
 	osc_bndl_it_u_destroy(it);
 	return OSC_ERR_NONE;
@@ -245,11 +306,13 @@ static t_osc_err osc_bundle_u_flatten_impl(t_osc_bndl_u **dest,
 				t_osc_atom_u *a = osc_msg_it_u_next(mit);
 				if(osc_atom_u_getTypetag(a) == OSC_BUNDLE_TYPETAG){
 					osc_message_u_removeAtom(mcopy, a);
-					t_osc_bndl_s *b = osc_atom_u_getBndl(a);
+					t_osc_bndl_u *bu = osc_atom_u_getBndl(a);
+					/*
 					t_osc_bndl_u *bu = NULL;
 					osc_bundle_s_deserialize(osc_bundle_s_getLen(b),
 								 osc_bundle_s_getPtr(b),
 								 &bu);
+					*/
 					t_osc_err e;
 					if(prefix){
 						int prefixlen = strlen(prefix) + strlen(osc_message_u_getAddress(mcopy)) + strlen(sep);
@@ -287,6 +350,8 @@ static t_osc_err osc_bundle_u_flatten_impl(t_osc_bndl_u **dest,
 				osc_message_u_setAddress(mcopy, newaddress);
 			}
 			osc_bundle_u_addMsgWithoutDups(*dest, mcopy);
+		}else{
+			osc_message_u_free(mcopy);
 		}
 	}
 	osc_bndl_it_u_destroy(bit);
@@ -300,6 +365,58 @@ t_osc_err osc_bundle_u_flatten(t_osc_bndl_u **dest,
 			       int remove_enclosing_address_if_empty)
 {
 	return osc_bundle_u_flatten_impl(dest, src, maxlevel, 0, NULL, sep ? sep : "", remove_enclosing_address_if_empty);
+}
+
+t_osc_err osc_bundle_u_explode(t_osc_bndl_u **dest,
+			       t_osc_bndl_u *src,
+			       int maxlevel,
+			       char *sep)
+{
+	if(!src){
+		return OSC_ERR_NOBUNDLE;
+	}
+	if(!(*dest)){
+		*dest = osc_bundle_u_alloc();
+	}
+	t_osc_bndl_it_u *it = osc_bndl_it_u_get(src);
+	while(osc_bndl_it_u_hasNext(it)){
+		t_osc_msg_u *m = osc_bndl_it_u_next(it);
+		t_osc_err ret = osc_message_u_explode(*dest, m, maxlevel, sep);
+		if(ret){
+			return ret;
+		}
+	}
+	osc_bndl_it_u_destroy(it);
+	return OSC_ERR_NONE;
+}
+
+t_osc_err osc_bundle_u_union(t_osc_bndl_u *bndl1, t_osc_bndl_u *bndl2, t_osc_bndl_u **bndl_out)
+{
+	if(!(*bndl_out)){
+		*bndl_out = osc_bundle_u_alloc();
+	}
+	int argc1 = osc_bundle_u_getMsgCount(bndl1);
+	int argc2 = osc_bundle_u_getMsgCount(bndl2);
+	if(argc1 == 0 && argc2 == 0){
+		return OSC_ERR_NONE;
+	}
+	t_osc_bndl_u *bndls[2] = {bndl1, bndl2};
+	for(int i = 0; i < 2; i++){
+		t_osc_bndl_it_u *it = osc_bndl_it_u_get(bndls[i]);
+		while(osc_bndl_it_u_hasNext(it)){
+			t_osc_msg_u *m = osc_bndl_it_u_next(it);
+			char *address = osc_message_u_getAddress(m);
+			int res = 0;
+			osc_bundle_u_addressExists(bndls[i], address, 1, &res);
+			if(res == 0){
+				t_osc_msg_u *mcopy = NULL;
+				osc_message_u_copy(&mcopy, m);
+				osc_bundle_u_addMsg(*bndl_out, mcopy);
+			}
+		}
+		osc_bndl_it_u_destroy(it);
+	}
+	return OSC_ERR_NONE;
 }
 
 extern t_osc_err osc_message_u_doSerialize(t_osc_msg_u *msg, long *buflen, long *bufpos, char **buf);

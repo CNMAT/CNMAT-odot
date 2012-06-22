@@ -80,6 +80,64 @@ int osc_expr_parser_lex(YYSTYPE *yylval_param, YYLTYPE *llocp, yyscan_t yyscanne
 	return osc_expr_scanner_lex(yylval_param, llocp, yyscanner, 1, buflen, buf, startcond, started);
 }
 
+static t_osc_atom_ar_u *osc_expr_parser_foldConstants_impl(t_osc_expr *expr, t_osc_expr_lexenv *lexenv)
+{
+	printf("%s: %s\n", __func__, osc_expr_rec_getName(osc_expr_getRec(expr)));
+	t_osc_expr *e = expr;
+	while(e){
+		t_osc_expr_arg *a = osc_expr_getArgs(e);
+		int eval = 1;
+		while(a){
+			int type = osc_expr_arg_getType(a);
+			switch(type){
+			case OSC_EXPR_ARG_TYPE_OSCADDRESS:
+				// we can't eval this expression, but we want to continue to see if we can 
+				// reduce any of the other args
+				printf("address\n");
+				eval = 0;
+				break;
+			case OSC_EXPR_ARG_TYPE_EXPR:
+				printf("expr\n");
+				{
+					t_osc_expr *ee = osc_expr_arg_getExpr(a);
+					t_osc_atom_ar_u *ar = osc_expr_parser_foldConstants_impl(ee,
+												 lexenv);
+					if(ar){
+						osc_expr_free(ee);
+						printf("reduced\n");
+						if(osc_atom_array_u_getLen(ar) == 1){
+							osc_expr_arg_setOSCAtom(a, osc_atom_array_u_get(ar, 0));
+						}else{
+							osc_expr_arg_setList(a, ar);
+						}
+					}
+				}
+			default:
+				printf("default\n");
+			}
+			a = osc_expr_arg_next(a);
+		}
+		if(eval > 0){
+			printf("eval = %d\n", eval);
+			t_osc_atom_ar_u *res = NULL;
+			int ret = osc_expr_eval(e, NULL, NULL, &res);
+			if(ret){
+				return NULL;
+			}else{
+				return res;
+			}
+		}else{
+			return NULL;
+		}
+		e = osc_expr_next(e);
+	}
+}
+
+static void osc_expr_parser_foldConstants(t_osc_expr *expr)
+{
+	osc_expr_parser_foldConstants_impl(expr, NULL);
+}
+
 t_osc_err osc_expr_parser_parseExpr(char *ptr, t_osc_expr **f)
 {
 	//printf("parsing %s\n", ptr);
@@ -118,6 +176,7 @@ t_osc_err osc_expr_parser_parseExpr(char *ptr, t_osc_expr **f)
 			exprstack = tmp_exprstack;
 		}
 	}
+	//osc_expr_parser_foldConstants(exprstack);
 	*f = exprstack;
 	if(alloc){
 		osc_mem_free(ptr);

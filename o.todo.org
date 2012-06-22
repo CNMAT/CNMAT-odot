@@ -75,10 +75,11 @@ should persist
 *** The fact that o.route can output both bundles and Max data is a source of bugs.  Rewrite o.route?  
 New objects with more explicit behavior.
 
-* VERSION
+* VERSION 1.2b
 ** General
 *** DONE All objects now support dictionaries
 *** DONE New object: o.dict, converts OSC bundles to dictionaries
+*** DONE New object: o.explode, opposite of o.flatten
 *** o.expr
 **** DONE anonymous functions can now be specified properly as OSC addresses or expresions (like value(/foo)).
 For example:  [o.expr apply(/foo, /bar)] or [o.expr map(fn(f, arg1){apply(value(f), arg1);}, /fns, /args)]

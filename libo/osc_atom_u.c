@@ -53,10 +53,10 @@ void osc_atom_u_free(t_osc_atom_u *a){
 			osc_mem_free(a->w.s);
 		}
 	}else if(a->typetag == OSC_BUNDLE_TYPETAG){
-		if(a->alloc){ // should always be true
-			osc_mem_free(osc_bundle_s_getPtr(a->w.bndl));
-			osc_bundle_s_free(a->w.bndl);
-		}
+		//if(a->alloc){ // should always be true
+		//osc_mem_free(osc_bundle_s_getPtr(a->w.bndl));
+			osc_bundle_u_free(a->w.bndl);
+			//}
 	}
 	osc_mem_free(a);
 }
@@ -82,7 +82,7 @@ void osc_atom_u_copy(t_osc_atom_u **dest, t_osc_atom_u *src){
 	case OSC_BUNDLE_TYPETAG:
 		{
 			aa->w.bndl = NULL;
-			osc_bundle_s_deepCopy(&(aa->w.bndl), src->w.bndl);
+			osc_bundle_u_copy(&(aa->w.bndl), src->w.bndl);
 		}
 		break;
 	default:
@@ -723,7 +723,7 @@ int osc_atom_u_getBool(t_osc_atom_u *a){
 	return 0;
 }
 
-t_osc_bndl_s *osc_atom_u_getBndl(t_osc_atom_u *a)
+t_osc_bndl_u *osc_atom_u_getBndl(t_osc_atom_u *a)
 {
 	if(!a){
 		return NULL;
@@ -734,7 +734,7 @@ t_osc_bndl_s *osc_atom_u_getBndl(t_osc_atom_u *a)
 		return NULL;
 	}
 }
-
+/*
 long osc_atom_u_getBndlLen(t_osc_atom_u *a)
 {
 	t_osc_bndl_s *b = osc_atom_u_getBndl(a);
@@ -753,6 +753,7 @@ char *osc_atom_u_getBndlPtr(t_osc_atom_u *a){
 		return NULL;
 	}
 }
+*/
 
 void osc_atom_u_setFloat(t_osc_atom_u *a, float v){
 	if(!a){
@@ -911,16 +912,32 @@ void osc_atom_u_setNull(t_osc_atom_u *a)
 
 void osc_atom_u_setBndl(t_osc_atom_u *a, long len, char *ptr)
 {
+	osc_atom_u_setBndl_s(a, len, ptr);
+}
+
+void osc_atom_u_setBndl_s(t_osc_atom_u *a, long len, char *ptr)
+{
 	if(!a){
 		return;
 	}
 	osc_atom_u_clear(a);
+	t_osc_bndl_u *b = NULL;
+	osc_bundle_s_deserialize(len, ptr, &b);
+	osc_atom_u_setBndl_u(a, b);
+/*
 	char *copy = osc_mem_alloc(len);
 	memcpy(copy, ptr, len);
 	t_osc_bndl_s *bndl = osc_bundle_s_alloc(len, copy);
 	a->w.bndl = bndl;
 	a->typetag = OSC_BUNDLE_TYPETAG;
 	a->alloc = 1;
+*/
+}
+
+void osc_atom_u_setBndl_u(t_osc_atom_u *a, t_osc_bndl_u *b)
+{
+	a->w.bndl = b;
+	a->typetag = OSC_BUNDLE_TYPETAG;
 }
 
 size_t osc_atom_u_sizeof(t_osc_atom_u *a)
@@ -948,7 +965,7 @@ size_t osc_atom_u_sizeof(t_osc_atom_u *a)
 	case 'N':
 		return 0;
 	case OSC_BUNDLE_TYPETAG:
-		return ntoh32(*((uint32_t *)(a->w.bndl)));
+		return osc_bundle_u_getSerializedSize(a->w.bndl);
 	}
 	return 0;
 }
@@ -1001,6 +1018,7 @@ t_osc_err osc_atom_u_doSerialize(t_osc_atom_u *a, long *buflen, long *bufpos, ch
 		break;
 	case OSC_BUNDLE_TYPETAG:
 		{
+			/*
 			long l = osc_bundle_s_getLen(a->w.bndl);
 			char *p = osc_bundle_s_getPtr(a->w.bndl);
 			if((*buflen) - (*bufpos) < l + 4){
@@ -1015,6 +1033,23 @@ t_osc_err osc_atom_u_doSerialize(t_osc_atom_u *a, long *buflen, long *bufpos, ch
 			(*bufpos) += 4;
 			memcpy((*buf) + (*bufpos), p, l);
 			(*bufpos) += l;
+			*/
+			long l = 0;
+			char *p = NULL;
+			osc_bundle_u_serialize(a->w.bndl, &l, &p);
+			if((*buflen) - (*bufpos) < l + 4){
+				(*buf) = osc_mem_resize((*buf), (*buflen) + l + 4);
+				if(!(*buf)){
+					return OSC_ERR_OUTOFMEM;
+				}
+				memset((*buf) + (*buflen), '\0', l + 4);
+				(*buflen) += l + 4;
+			}
+			*((uint32_t *)((*buf) + (*bufpos))) = hton32(l);
+			(*bufpos) += 4;
+			memcpy((*buf) + (*bufpos), p, l);
+			(*bufpos) += l;
+			osc_mem_free(p);
 		}
 		break;
 	case 'h':
@@ -1054,6 +1089,11 @@ t_osc_err osc_atom_u_doFormat(t_osc_atom_u *a, long *buflen, long *bufpos, char 
 		return OSC_ERR_NOBUNDLE;
 	}
 	if(osc_atom_u_getTypetag(a) == OSC_BUNDLE_TYPETAG){
+		*bufpos += sprintf(*buf + *bufpos, "[\n");
+		extern t_osc_err osc_bundle_u_doFormat(t_osc_bndl_u *b, long *buflen, long *bufpos, char **buf);
+		osc_bundle_u_doFormat(a->w.bndl, buflen, bufpos, buf);
+		*bufpos += sprintf(*buf + *bufpos, "]");
+		/*
 		int n = osc_bundle_s_getLen(a->w.bndl) + 32;
 		if((*buflen - *bufpos) < n){
 			*buf = osc_mem_resize(*buf, *buflen + n);
@@ -1066,6 +1106,7 @@ t_osc_err osc_atom_u_doFormat(t_osc_atom_u *a, long *buflen, long *bufpos, char 
 		extern t_osc_err osc_bundle_s_doFormat(long len, char *bndl, long *buflen, long *bufpos, char **buf);
 		osc_bundle_s_doFormat(osc_bundle_s_getLen(a->w.bndl), osc_bundle_s_getPtr(a->w.bndl), buflen, bufpos, buf);
 		*bufpos += sprintf(*buf + *bufpos, "]");
+		*/
 	}else if(osc_atom_u_getTypetag(a) == 's'){
 		char *stringptr = osc_atom_u_getStringPtr(a);
 		int stringlen = strlen(stringptr);

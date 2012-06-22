@@ -184,13 +184,23 @@ t_osc_err osc_message_u_setAddressPtr(t_osc_msg_u *m, char *newAddress, char **o
 
 int osc_message_u_getArgCount(t_osc_msg_u *m)
 {
+	if(!m){
+		return 0;
+	}
 	return m->argc;
 }
 
 void osc_message_u_getArg(t_osc_msg_u *m, int n, t_osc_atom_u **atom)
 {
+	if(!m){
+		return;
+	}
 	int nn = osc_message_u_getArgCount(m);
 	if(nn <= n){
+		return;
+	}
+	if(n == 0){
+		*atom = m->arghead;
 		return;
 	}
 	t_osc_atom_u *a = NULL;
@@ -441,8 +451,21 @@ t_osc_atom_u *osc_message_u_appendNull(t_osc_msg_u *m)
 
 t_osc_atom_u *osc_message_u_appendBndl(t_osc_msg_u *m, long len, char *bndl)
 {
+	return osc_message_u_appendBndl_s(m, len, bndl);
+}
+
+t_osc_atom_u *osc_message_u_appendBndl_s(t_osc_msg_u *m, long len, char *bndl)
+{
 	t_osc_atom_u *a = osc_atom_u_alloc();
-	osc_atom_u_setBndl(a, len, bndl);
+	osc_atom_u_setBndl_s(a, len, bndl);
+	osc_message_u_appendAtom(m, a);
+	return a;
+}
+
+t_osc_atom_u *osc_message_u_appendBndl_u(t_osc_msg_u *m, t_osc_bndl_u *b)
+{
+	t_osc_atom_u *a = osc_atom_u_alloc();
+	osc_atom_u_setBndl_u(a, b);
 	osc_message_u_appendAtom(m, a);
 	return a;
 }
@@ -581,8 +604,21 @@ t_osc_atom_u *osc_message_u_prependNull(t_osc_msg_u *m)
 
 t_osc_atom_u *osc_message_u_prependBndl(t_osc_msg_u *m, long len, char *bndl)
 {
+	return osc_message_u_prependBndl_s(m, len, bndl);
+}
+
+t_osc_atom_u *osc_message_u_prependBndl_s(t_osc_msg_u *m, long len, char *bndl)
+{
 	t_osc_atom_u *a = osc_atom_u_alloc();
-	osc_atom_u_setBndl(a, len, bndl);
+	osc_atom_u_setBndl_s(a, len, bndl);
+	osc_message_u_prependAtom(m, a);
+	return a;
+}
+
+t_osc_atom_u *osc_message_u_prependBndl_u(t_osc_msg_u *m, t_osc_bndl_u *b)
+{
+	t_osc_atom_u *a = osc_atom_u_alloc();
+	osc_atom_u_setBndl_u(a, b);
 	osc_message_u_prependAtom(m, a);
 	return a;
 }
@@ -721,10 +757,159 @@ t_osc_atom_u *osc_message_u_insertNull(t_osc_msg_u *m, int pos)
 
 t_osc_atom_u *osc_message_u_insertBndl(t_osc_msg_u *m, long len, char *bndl, int pos)
 {
+	return osc_message_u_insertBndl_s(m, len, bndl, pos);
+}
+
+t_osc_atom_u *osc_message_u_insertBndl_s(t_osc_msg_u *m, long len, char *bndl, int pos)
+{
 	t_osc_atom_u *a = osc_atom_u_alloc();
-	osc_atom_u_setBndl(a, len, bndl);
+	osc_atom_u_setBndl_s(a, len, bndl);
 	osc_message_u_insertAtom(m, a, pos);
 	return a;
+}
+
+t_osc_atom_u *osc_message_u_insertBndl_u(t_osc_msg_u *m, t_osc_bndl_u *b, int pos)
+{
+	t_osc_atom_u *a = osc_atom_u_alloc();
+	osc_atom_u_setBndl_u(a, b);
+	osc_message_u_insertAtom(m, a, pos);
+	return a;
+}
+
+static t_osc_err osc_message_u_explode_impl(t_osc_bndl_u *dest, t_osc_msg_u *msg, int level, int maxlevel, char *sep)
+{
+	if(level >= maxlevel && maxlevel >= 0){
+		osc_bundle_u_addMsg(dest, msg);
+		return OSC_ERR_NONE;
+	}
+	char *s = sep && strlen(sep) > 0 ? sep : "/";
+	char *a = osc_message_u_getAddress(msg);
+	int alen = strlen(a);
+	int i = 0;
+	if(a[i] == *s){
+		i = 1;
+	}
+	while(i < alen){
+		i++;
+		if(a[i] == *s){
+			break;
+		}
+	}
+	char a1[alen + 1];
+	strncpy(a1, a, i);
+	a1[i] = '\0';
+
+	int exists = 0;
+	osc_bundle_u_addressExists(dest, a1, 1, &exists);
+	if(exists){
+		if(a[i] == '\0'){
+			osc_bundle_u_addMsgWithoutDups(dest, msg);
+			return OSC_ERR_NONE;
+		}else{
+			t_osc_msg_ar_u *ar = NULL;
+			osc_bundle_u_lookupAddress(dest, a1, &ar, 1);
+			t_osc_msg_u *m = NULL;
+			t_osc_bndl_u *b = NULL;
+			osc_message_u_deepCopy(&m, osc_message_array_u_get(ar, 0));
+			osc_message_array_u_free(ar);
+			int argc = osc_message_u_getArgCount(m);
+			if(argc > 1 || argc == 0){
+				osc_message_u_clearArgs(m);
+				b = osc_bundle_u_alloc();
+			}else if(argc == 1){
+				t_osc_atom_u *a = NULL;
+				osc_message_u_getArg(m, 0, &a);
+				if(osc_atom_u_getTypetag(a) != OSC_BUNDLE_TYPETAG){
+					osc_message_u_clearArgs(m);
+					b = osc_bundle_u_alloc();
+				}else{
+					t_osc_atom_u *a = NULL;
+					osc_message_u_getArg(m, 0, &a);
+					b = osc_atom_u_getBndl(a);
+					t_osc_bndl_u *bb = NULL;
+					osc_bundle_u_copy(&bb, b);
+					b = bb;
+					/*
+					osc_bundle_s_deserialize(osc_bundle_s_getLen(b_s), 
+								 osc_bundle_s_getPtr(b_s),
+								 &b);
+					*/
+					osc_message_u_clearArgs(m);
+				}
+			}
+			char a2[alen + 1];
+			if(a[i] == '/'){
+				strncpy(a2, a + i, (alen - i) + 1);
+			}else{
+				if(a[i + 1] == '/'){
+					strncpy(a2, a + i + 1, (alen - i));
+				}else{
+					a2[0] = '/';
+					strncpy(a2 + 1, a + i, (alen - i) + 1);
+				}
+			}
+			osc_message_u_setAddress(msg, a2);
+			t_osc_err ret = osc_message_u_explode_impl(b, msg, level + 1, maxlevel, s);
+			if(ret){
+				return ret;
+			}
+/*
+			long len = 0;
+			char *b_s = NULL;
+			osc_bundle_u_serialize(b, &len, &b_s);
+			if(b_s){
+*/
+				osc_message_u_appendBndl_u(m, b);
+				osc_bundle_u_addMsgWithoutDups(dest, m);
+//osc_mem_free(b_s);
+//}
+			//osc_bundle_u_free(b);
+		}
+	}else{
+		if(a[i] == '\0'){
+			osc_bundle_u_addMsg(dest, msg);
+		}else{
+			t_osc_bndl_u *b = osc_bundle_u_alloc();
+			t_osc_msg_u *m = osc_message_u_alloc();
+			osc_message_u_setAddress(m, a1);
+			char a2[alen + 1];
+			if(a[i] == '/'){
+				strncpy(a2, a + i, (alen - i) + 1);
+			}else{
+				if(a[i + 1] == '/'){
+					strncpy(a2, a + i + 1, (alen - i));
+				}else{
+					a2[0] = '/';
+					strncpy(a2 + 1, a + i, (alen - i) + 1);
+				}
+			}
+			osc_message_u_setAddress(msg, a2);
+			t_osc_err ret = osc_message_u_explode_impl(b, msg, level + 1, maxlevel, s);
+			if(ret){
+				return ret;
+			}
+			/*
+			long len = 0;
+			char *b_s = NULL;
+			osc_bundle_u_serialize(b, &len, &b_s);
+			if(b_s){
+			*/
+				osc_message_u_appendBndl_u(m, b);
+				osc_bundle_u_addMsgWithoutDups(dest, m);
+				//osc_mem_free(b_s);
+				//}
+				//osc_bundle_u_free(b);
+		}
+	}
+	return OSC_ERR_NONE;
+}
+
+t_osc_err osc_message_u_explode(t_osc_bndl_u *dest, t_osc_msg_u *msg, int maxlevel, char *sep)
+{
+	t_osc_msg_u *mcopy = NULL;
+	osc_message_u_deepCopy(&mcopy, msg);
+	t_osc_err ret = osc_message_u_explode_impl(dest, mcopy, 0, maxlevel, sep);
+	return ret;
 }
 
 extern t_osc_err osc_atom_u_doSerialize(t_osc_atom_u *a, long *buflen, long *bufpos, char **buf);

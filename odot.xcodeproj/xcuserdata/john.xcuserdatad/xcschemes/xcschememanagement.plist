@@ -9,6 +9,11 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>o 2.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>24</integer>
+		</dict>
 		<key>o.atomize copy.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -128,6 +133,11 @@
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>520C0E19158468F7005F2955</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>5217D8FB158EEBC4005B5238</key>
 		<dict>
 			<key>primary</key>
 			<true/>

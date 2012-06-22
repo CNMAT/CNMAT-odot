@@ -36,7 +36,7 @@
 #define OMAX_DOC_LONG_DESC "o.explode breaks address hierarchies into nested bundles, e.g., /foo/bar 10 becomes /foo [ /bar 10 ].  It is the opposite of o.flatten."
 #define OMAX_DOC_INLETS_DESC (char *[]){"OSC packet."}
 #define OMAX_DOC_OUTLETS_DESC (char *[]){"The exploded OSC packet."}
-#define OMAX_DOC_SEEALSO (char *[]){""}
+#define OMAX_DOC_SEEALSO (char *[]){"o.flatten"}
 
 #include "../odot_version.h"
 #include "ext.h"
@@ -63,9 +63,10 @@ void oexplode_fullPacket(t_oexplode *x, long len, long ptr)
 	t_osc_bndl_s *src = (t_osc_bndl_s *)srcc;
 	osc_bundle_s_setLen(src, len);
 	osc_bundle_s_setPtr(src, (char *)ptr);
-	t_osc_bndl_s *dest = osc_bundle_s_explode(src, x->level, x->sep->s_name);
-	omax_util_outletOSC(x->outlet, osc_bundle_s_getLen(dest), osc_bundle_s_getPtr(dest));
-	osc_bundle_s_deepFree(dest);
+	t_osc_bndl_s *dest2 = NULL;
+	osc_bundle_s_explode(&dest2, src, x->level, x->sep->s_name);
+	omax_util_outletOSC(x->outlet, osc_bundle_s_getLen(dest2), osc_bundle_s_getPtr(dest2));
+	osc_bundle_s_deepFree(dest2);
 }
 
 OMAX_UTIL_DICTIONARY(t_oexplode, x, oexplode_fullPacket);
@@ -85,7 +86,7 @@ void *oexplode_new(t_symbol *msg, short argc, t_atom *argv)
 	t_oexplode *x;
 	if((x = (t_oexplode *)object_alloc(oexplode_class))){
 		x->outlet = outlet_new((t_object *)x, "FullPacket");
-		x->level = 0;
+		x->level = -1;
 		x->sep = gensym("");
 		attr_args_process(x, argc, argv);
 	}

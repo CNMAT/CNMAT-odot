@@ -31,12 +31,55 @@
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"hidden" : 1,
+					"id" : "obj-41",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "" ],
+					"patching_rect" : [ -175.0, 326.0, 204.0, 20.0 ],
+					"text" : "o.autodoc_overview @obj o.explode"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-42",
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 64.0, 534.797119, 118.0, 18.0 ],
+					"text" : "o.explode"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"frgb" : [ 0.0, 0.0, 0.0, 1.0 ],
+					"id" : "obj-43",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 182.0, 534.797119, 392.0, 20.0 ],
+					"text" : "Explode address hierarchies into nested bundles (opposite of o.flatten)."
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"hidden" : 1,
 					"id" : "obj-40",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ -175.0, 432.0, 181.0, 20.0 ],
+					"patching_rect" : [ -175.0, 464.0, 181.0, 20.0 ],
 					"text" : "o.autodoc_overview @obj o.dict"
 				}
 
@@ -51,7 +94,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 64.0, 818.0, 118.0, 18.0 ],
-					"presentation_rect" : [ 67.0, 817.0, 0.0, 0.0 ],
 					"text" : "o.dict"
 				}
 
@@ -66,7 +108,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 182.0, 818.0, 283.0, 20.0 ],
-					"presentation_rect" : [ 185.0, 809.0, 0.0, 0.0 ],
 					"text" : "Convert an OSC bundle to a dictionary."
 				}
 
@@ -81,7 +122,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 64.0, 776.0, 227.0, 27.0 ],
-					"presentation_rect" : [ 67.0, 775.0, 0.0, 0.0 ],
 					"text" : "Dictionary Support"
 				}
 
@@ -110,7 +150,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 64.0, 528.368408, 118.0, 18.0 ],
+					"patching_rect" : [ 64.0, 504.368408, 118.0, 18.0 ],
 					"text" : "o.flatten"
 				}
 
@@ -124,7 +164,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 182.0, 528.368408, 335.0, 20.0 ],
+					"patching_rect" : [ 182.0, 504.368408, 335.0, 20.0 ],
 					"text" : "Flatten nested bundles."
 				}
 
@@ -211,7 +251,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ -175.0, 399.160522, 215.0, 20.0 ],
+					"patching_rect" : [ -175.0, 431.160522, 215.0, 20.0 ],
 					"text" : "o.autodoc_overview @obj o.difference"
 				}
 
@@ -255,7 +295,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ -175.0, 365.964111, 224.0, 20.0 ],
+					"patching_rect" : [ -175.0, 397.964111, 224.0, 20.0 ],
 					"text" : "o.autodoc_overview @obj o.intersection"
 				}
 
@@ -299,7 +339,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ -175.0, 332.7677, 192.0, 20.0 ],
+					"patching_rect" : [ -175.0, 364.7677, 192.0, 20.0 ],
 					"text" : "o.autodoc_overview @obj o.union"
 				}
 
@@ -327,7 +367,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 64.0, 496.368408, 118.0, 18.0 ],
+					"patching_rect" : [ 64.0, 472.368408, 118.0, 18.0 ],
 					"text" : "o.prepend"
 				}
 
@@ -341,7 +381,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 182.0, 496.368408, 335.0, 20.0 ],
+					"patching_rect" : [ 182.0, 472.368408, 335.0, 20.0 ],
 					"text" : "Prepend an OSC address to every OSC address in a bundle."
 				}
 
@@ -370,7 +410,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 64.0, 454.368408, 387.0, 27.0 ],
+					"patching_rect" : [ 64.0, 430.368408, 387.0, 27.0 ],
 					"text" : "Operations on Addresses and Bundle Structure"
 				}
 
@@ -817,7 +857,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 64.0, 383.193634, 118.0, 18.0 ],
+					"patching_rect" : [ 64.0, 359.193634, 118.0, 18.0 ],
 					"text" : "o.mappatch"
 				}
 
@@ -831,7 +871,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 182.0, 383.193634, 313.0, 20.0 ],
+					"patching_rect" : [ 182.0, 359.193634, 313.0, 20.0 ],
 					"text" : "Map the contents of an OSC bundle onto a Max patch."
 				}
 
@@ -860,7 +900,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 64.0, 351.078827, 118.0, 18.0 ],
+					"patching_rect" : [ 64.0, 327.078827, 118.0, 18.0 ],
 					"text" : "o.callpatch"
 				}
 
@@ -874,7 +914,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 182.0, 351.078827, 313.0, 20.0 ],
+					"patching_rect" : [ 182.0, 327.078827, 313.0, 20.0 ],
 					"text" : "Execute a Max patch or object with OSC arguments."
 				}
 
@@ -903,7 +943,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 64.0, 320.0, 118.0, 18.0 ],
+					"patching_rect" : [ 64.0, 296.0, 118.0, 18.0 ],
 					"text" : "o.expr"
 				}
 
@@ -917,7 +957,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 182.0, 320.0, 330.0, 20.0 ],
+					"patching_rect" : [ 182.0, 296.0, 330.0, 20.0 ],
 					"text" : "Evaluate a C-like expression containing OSC addresses."
 				}
 
@@ -946,7 +986,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 64.0, 278.0, 227.0, 27.0 ],
+					"patching_rect" : [ 64.0, 254.0, 227.0, 27.0 ],
 					"text" : "Expressions and Mapping"
 				}
 
@@ -1568,6 +1608,15 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-28", 0 ],
+					"disabled" : 0,
+					"hidden" : 1,
+					"source" : [ "obj-32", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-19", 1 ],
 					"disabled" : 0,
 					"hidden" : 1,
@@ -1626,6 +1675,33 @@
 					"disabled" : 0,
 					"hidden" : 1,
 					"source" : [ "obj-40", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-42", 1 ],
+					"disabled" : 0,
+					"hidden" : 1,
+					"source" : [ "obj-41", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-43", 0 ],
+					"disabled" : 0,
+					"hidden" : 1,
+					"source" : [ "obj-41", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-28", 0 ],
+					"disabled" : 0,
+					"hidden" : 1,
+					"source" : [ "obj-42", 0 ]
 				}
 
 			}
@@ -2135,6 +2211,10 @@
 			}
 , 			{
 				"name" : "o.dict.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.explode.mxo",
 				"type" : "iLaX"
 			}
  ]

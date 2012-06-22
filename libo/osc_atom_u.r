@@ -47,7 +47,7 @@ struct _osc_atom_u{
 		float f;
 		double d;
 		char *s;
-		t_osc_bndl_s *bndl;
+		t_osc_bndl_u *bndl;
 	} w;
 	int typetag;
 	int alloc;

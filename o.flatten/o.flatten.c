@@ -36,7 +36,7 @@
 #define OMAX_DOC_LONG_DESC "o.flatten takes messages out of nested bundles and inserts them into the top level bundle."
 #define OMAX_DOC_INLETS_DESC (char *[]){"OSC packet."}
 #define OMAX_DOC_OUTLETS_DESC (char *[]){"The flattened OSC packet."}
-#define OMAX_DOC_SEEALSO (char *[]){""}
+#define OMAX_DOC_SEEALSO (char *[]){"o.explode"}
 
 #include "../odot_version.h"
 #include "ext.h"
@@ -66,7 +66,8 @@ void oflatten_fullPacket(t_oflatten *x, long len, long ptr)
 	t_osc_bndl_s *src = (t_osc_bndl_s *)srcc;
 	osc_bundle_s_setLen(src, len);
 	osc_bundle_s_setPtr(src, (char *)ptr);
-	t_osc_bndl_s *dest = osc_bundle_s_flatten(src, x->level, x->sep->s_name, x->remove_enclosing_address_if_empty);
+	t_osc_bndl_s *dest = NULL;
+	osc_bundle_s_flatten(&dest, src, x->level, x->sep->s_name, x->remove_enclosing_address_if_empty);
 	omax_util_outletOSC(x->outlet, osc_bundle_s_getLen(dest), osc_bundle_s_getPtr(dest));
 	osc_bundle_s_deepFree(dest);
 }

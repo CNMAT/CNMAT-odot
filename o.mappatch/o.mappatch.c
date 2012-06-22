@@ -134,6 +134,7 @@ void omap_fullPacket(t_omap *x, long len, long ptr)
 		omax_util_oscMsg2MaxAtoms(msg, atoms);
 		outlet_anything(x->outlets[1], atom_getsym(atoms), len - 1, atoms + 1);
 	}
+	osc_bndl_it_s_destroy(it);
 
 	// I don't think we need a lock here since we're still busy
 	char *buffer = NULL;

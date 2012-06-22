@@ -75,7 +75,9 @@ void osc_expr_free(t_osc_expr *e);
 void osc_expr_copy(t_osc_expr **dest, t_osc_expr *src);
 void osc_expr_copyAllLinked(t_osc_expr **dest, t_osc_expr *src);
 t_osc_err osc_expr_arg_copy(t_osc_expr_arg **dest, t_osc_expr_arg *src);
+void osc_expr_arg_clear(t_osc_expr_arg *a);
 void osc_expr_arg_free(t_osc_expr_arg *a);
+void osc_expr_arg_freeList(t_osc_expr_arg *a);
 
 void osc_expr_appendExpr(t_osc_expr *e, t_osc_expr *expr_to_append);
 void osc_expr_setRec(t_osc_expr *e, t_osc_expr_rec *rec);
