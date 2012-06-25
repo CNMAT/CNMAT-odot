@@ -50,7 +50,7 @@ __inline int gettimeofday(struct timeval *tv, struct timezone *tz)
     {
         if (!tzflag)
         {
-            tzset();
+            _tzset();
             tzflag++;
         }
         tz->tz_minuteswest = _timezone / 60;
