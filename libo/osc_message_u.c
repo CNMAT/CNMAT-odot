@@ -205,14 +205,14 @@ void osc_message_u_getArg(t_osc_msg_u *m, int n, t_osc_atom_u **atom)
 	}
 	t_osc_atom_u *a = NULL;
 	int i;
-	if(nn / n < .5){
+	if((double)nn / (double)n < .5){
 		a = m->arghead;
 		for(i = 0; i < n; i++){
 			a = a->next;
 		}
 	}else{
 		a = m->argtail;
-		for(i = m->argc; i >= n; i--){
+		for(i = m->argc - 1; i > n; i--){
 			a = a->prev;
 		}
 	}

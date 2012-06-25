@@ -558,7 +558,7 @@ t_osc_err osc_bundle_s_union(long len1, char *bndl1, long len2, char *bndl2, lon
 			t_osc_msg_s *m = osc_bndl_it_s_next(it);
 			char *address = osc_message_s_getAddress(m);
 			int res = 0;
-			res = osc_bundle_s_addressExists(len, bndl, address, 1, &res);
+			osc_bundle_s_addressExists(len, bndl, address, 1, &res);
 			if(res == 0){
 				long l = osc_message_s_getSize(m) + 4;
 				memcpy(bndl + len, osc_message_s_getPtr(m), l);

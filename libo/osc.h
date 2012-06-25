@@ -50,8 +50,6 @@ extern "C" {
 
 #define OSC_QUOTE_STRINGS 1
 
-#include <pthread.h>
-
 #ifdef __cplusplus
 }
 #endif
