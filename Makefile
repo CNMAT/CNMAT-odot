@@ -3,6 +3,7 @@ BUILDDIR = $(CURDIR)/build
 OBJDIR = $(BUILDDIR)/objects
 HELPDIR = $(BUILDDIR)/helpfiles
 PATCHDIR = patches
+C74SUPPORT = ../../../../c74support # relative to object dir
 # o.build has to come before o.bild so that the version.[ch] will be there
 OBJECT_LIST = o.collect o.change o.cond o.unless o.when o.expr o.if o.mappatch o.message \
 o.pack o.pak o.prepend o.dict\
@@ -25,10 +26,28 @@ SERVER_PATH = /home/www-data/berkeley.edu-cnmat.www/maxdl/files/odot/
 
 ARCH = -arch i386 -arch ppc
 
+win: CC := gcc-3
+win: CFLAGS += -mno-cygwin -DWIN_VERSION -DWIN_EXT_VERSION
+win: MAX_INCLUDES = $(C74SUPPORT)/max_includes
+win: MSP_INCLUDES = $(C74SUPPORT)/msp_includes
+win: INCLUDES += -I$(MAX_INCLUDES) -I$(MSP_INCLUDES) -I../libo -I../libomax
+win: LIBS += -L$(MAX_INCLUDES) -L$(MSP_INCLUDES) -L../libo -L../libomax
+win: LDFLAGS += -shared -mno-cygwin
+
 #all: $(OBJDIR) $(HELPDIR) $(ODOT_MXO) $(PATCHES) DOCUMENTS
 all:
 	xcodebuild -scheme "Build all" -configuration Release -project odot.xcodeproj build
-win: $(OBJDIR) $(HELPDIR) $(ODOT_MXE) $(PATCHES) DOCUMENTS
+
+$(WIN_BUILD_DIR)/commonsyms.o: $(MAX_INCLUDES)/common/commonsyms.c
+	$(CC) -c $(CFLAGS) $(INCLUDES) $< -o $@
+
+$(GCC_BUILD_DIR)/%.o: $(GCC_BUILD_DIR)/commonsyms.o %.c
+	$(CC) -c $(CFLAGS) $(INCLUDES) $< -o $@
+
+$(GCC_BUILD_DIR)/$(OBJ).mxe: $(GCC_BUILD_DIR)/$(OBJ).o $(GCC_BUILD_DIR)/commonsyms.o
+	$(CC) -o $@ $^ $(LIBS) -lMaxAPI -lMaxAudio -lo -lomax 
+
+win: $(OBJDIR) $(HELPDIR) $(WIN_BUILD_DIR)/commonsyms.o $(ODOT_MXE)
 
 $(XCODEBUILDDIR)/%:
 #	+cd $(notdir $(basename $@)) && $(MAKE) -f Makefile -k
