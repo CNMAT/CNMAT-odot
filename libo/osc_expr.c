@@ -31,7 +31,7 @@
 #include <float.h>
 #include <inttypes.h>
 
-#if defined(WIN_VERSION) && defined(__STRICT_ANSI__)
+#if defined(_WIN32) && defined(__STRICT_ANSI__)
 #undef __STRICT_ANSI__
 #endif
 
