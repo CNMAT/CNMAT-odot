@@ -162,7 +162,7 @@ int osc_expr_explicitCast_string(t_osc_atom_u *dest, t_osc_atom_u *src);
 
 int osc_expr_typetags(t_osc_expr *f, int argc, t_osc_atom_ar_u **argv, t_osc_atom_ar_u **out);
 
-static t_osc_expr_rec osc_expr_funcsym[] = {
+static struct _osc_expr_rec osc_expr_funcsym[] = {
 	// infix
 	{"+",
 	 "/result = $1 + $2",
