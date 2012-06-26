@@ -31,6 +31,7 @@
 extern "C" {
 #endif
 
+#include <inttypes.h>
 #include "osc_expr_rec.h"
 #include "osc_expr_rec.r"
 #include "osc_atom_u.h"
