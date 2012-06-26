@@ -20,6 +20,11 @@ HEREUNDER IS PROVIDED "AS IS". REGENTS HAS NO OBLIGATION TO PROVIDE
 MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 */
 
+// this is so that cygwin's stdlib.h will include the strtoll and friends
+#if defined(_WIN32) && defined(__STRICT_ANSI__)
+#undef __STRICT_ANSI__
+#endif
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
