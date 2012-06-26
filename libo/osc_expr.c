@@ -31,9 +31,10 @@
 #include <float.h>
 #include <inttypes.h>
 
-#ifdef __STRICT_ANSI__
-#error "foo"
+#if defined(WIN_VERSION) && defined(__STRICT_ANSI__)
+#undef __STRICT_ANSI__
 #endif
+
 #include <math.h>
 #include "osc.h"
 #include "osc_mem.h"
