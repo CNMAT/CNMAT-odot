@@ -30,6 +30,10 @@
 #include <string.h>
 #include <float.h>
 #include <inttypes.h>
+
+#ifdef __STRICT_ANSI__
+#error "foo"
+#endif
 #include <math.h>
 #include "osc.h"
 #include "osc_mem.h"
