@@ -18,7 +18,7 @@
 #include <time.h>
 
 // crossplatform gettimeofday
-#include "contrib/timeval.h"
+//#include "contrib/timeval.h"
 
 // this is for windows which doesn't have
 // strptime
