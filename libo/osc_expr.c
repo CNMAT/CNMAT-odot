@@ -30,6 +30,7 @@
 #include <string.h>
 #include <float.h>
 #include <inttypes.h>
+#include <math.h>
 #include "osc.h"
 #include "osc_mem.h"
 #include "osc_bundle_s.h"
