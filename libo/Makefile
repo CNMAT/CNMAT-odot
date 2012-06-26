@@ -29,6 +29,7 @@ MAC-CFLAGS = -arch i386 -mmacosx-version-min=10.5 -isysroot /Developer/SDKs/$(MA
 WIN-CFLAGS = -mno-cygwin -DWIN_VERSION -std=c99 -D_WIN32
 
 MAC-INCLUDES = -I/System/Library/Frameworks/Carbon.framework/Headers -I/System/Library/Frameworks/CoreServices.framework/Headers
+WIN-INCLUDES = -I/usr/include
 
 all: CFLAGS += $(RELEASE-CFLAGS)
 all: CFLAGS += $(MAC-CFLAGS)
@@ -47,6 +48,7 @@ debug: STATIC-LINK = libtool -static -o libo.a $(LIBO_OBJECTS) /usr/lib/libfl.a
 
 win: CFLAGS += $(WIN-CFLAGS)
 win: CC = gcc-3
+win: I = $(WIN-INCLUDES)
 win: $(LIBO_PARSER_CFILES) $(LIBO_SCANNER_CFILES) libo.a 
 win: LIBTOOL = ar cru libo.a $(LIBO_OBJECTS) /usr/lib/libfl.a
 
