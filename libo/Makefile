@@ -1,4 +1,4 @@
-LIBO_BASENAMES = osc_match osc_timetag osc_bundle_s osc_bundle_u osc_bundle_iterator_s osc_bundle_iterator_u osc_error osc_mem osc_message_s osc_message_u osc_message_iterator_s osc_message_iterator_u osc_atom_s osc_atom_u osc_array osc_atom_array_s osc_atom_array_u osc_expr osc_vtable osc_dispatch osc_hashtab osc_util osc_rset osc_query osc_strfmt osc_expr_rec osc_typetag contrib/strptime
+LIBO_BASENAMES = osc_match  osc_bundle_s osc_bundle_u osc_bundle_iterator_s osc_bundle_iterator_u osc_error osc_mem osc_message_s osc_message_u osc_message_iterator_s osc_message_iterator_u osc_atom_s osc_atom_u osc_array osc_atom_array_s osc_atom_array_u osc_expr osc_vtable osc_dispatch osc_hashtab osc_util osc_rset osc_query osc_strfmt osc_expr_rec osc_typetag contrib/strptime
 
 # to be removed
 #LIBO_BASENAMES += osc_bundle osc_message
