@@ -21,7 +21,13 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 */
 
 #include <stdio.h>
+
+// this is so that cygwin's stdlib.h will include the strtoll and friends
+#if defined(_WIN32) && defined(__STRICT_ANSI__)
+#undef __STRICT_ANSI__
 #include <stdlib.h>
+#define __STRICT_ANSI__
+#endif
 #include <string.h>
 #include <stdint.h>
 #include <inttypes.h>
