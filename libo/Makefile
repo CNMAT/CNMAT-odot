@@ -47,7 +47,7 @@ debug: STATIC-LINK = libtool -static -o libo.a $(LIBO_OBJECTS) /usr/lib/libfl.a
 
 win: CFLAGS += $(WIN-CFLAGS)
 win: CC = gcc-3
-win: $(LIBO_PARSER_CFILES) $(LIBO_SCANNER_CFILES) libo.a #$(LIBO_OBJECTS) #$(LIBO_CFILES) $(LIBO_HFILES) $(LIBO_PARSER_CFILES) $(LIBO_SCANNER_CFILES) libo.a 
+win: $(LIBO_CFILES) $(LIBO_HFILES) $(LIBO_PARSER_CFILES) $(LIBO_SCANNER_CFILES) libo.a 
 win: LIBTOOL = ar cru libo.a $(LIBO_OBJECTS) /usr/lib/libfl.a
 
 linux: CC = gcc

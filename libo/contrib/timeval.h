@@ -53,7 +53,7 @@ __inline int gettimeofday(struct timeval *tv, struct timezone *tz)
             _tzset();
             tzflag++;
         }
-        tz->tz_minuteswest = timezone / 60;
+        tz->tz_minuteswest = _timezone / 60;
         tz->tz_dsttime = _daylight;
     }
 
