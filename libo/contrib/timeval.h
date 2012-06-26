@@ -7,6 +7,9 @@
  *
  */
 
+#ifdef _TIMEVAL_H
+#error "have timeval.h!"
+#endif
 #ifndef _TIMEVAL_H
 #define _TIMEVAL_H
 
