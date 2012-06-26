@@ -150,13 +150,13 @@ time_t osc_timetag_timegm (struct tm *tm) {
 #else
 	osc_timetag_setenv("TZ", "");
 #endif
-	tzset();
+	_tzset();
 	ret = mktime(tm);
 	if (tz)
 		osc_timetag_setenv("TZ", tz);
 	else
 		osc_timetag_unsetenv("TZ");
-	tzset();
+	_tzset();
 	return ret;
 }
 
