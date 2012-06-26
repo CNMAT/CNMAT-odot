@@ -15,6 +15,7 @@
 #include <arpa/inet.h>
 #endif
 
+#include <sys/time.h>
 #include <time.h>
 
 // crossplatform gettimeofday
