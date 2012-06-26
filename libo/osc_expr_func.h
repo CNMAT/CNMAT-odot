@@ -32,6 +32,7 @@ extern "C" {
 #endif
 
 #include <inttypes.h>
+#include <math.h>
 #include "osc_expr_rec.h"
 #include "osc_expr_rec.r"
 #include "osc_atom_u.h"
@@ -1010,7 +1011,7 @@ static t_osc_expr_rec osc_expr_funcsym[] = {
 	 (char *[]){"/math/specialfunction", NULL},
 	 "Log gamma function (same as \"gamma\")",
 	 osc_expr_1arg_dbl,
-	 (void *)gamma},
+	 (void *)lgamma},
 	//////////////////////////////////////////////////
 	{"y0",
 	 "/result = y0($1)",
