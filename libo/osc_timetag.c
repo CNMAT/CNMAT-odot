@@ -22,7 +22,9 @@
 
 // this is for windows which doesn't have
 // strptime
+#ifdef WIN_VERSION
 #include "contrib/strptime.h"
+#endif
 
 #include "osc.h"
 #include "osc_byteorder.h"
