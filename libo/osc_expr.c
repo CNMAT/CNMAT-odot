@@ -36,6 +36,7 @@
 #undef __STRICT_ANSI__
 #endif
 
+#include <string.h>
 #include <math.h>
 #include "osc.h"
 #include "osc_mem.h"
