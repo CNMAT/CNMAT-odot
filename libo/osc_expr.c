@@ -31,6 +31,7 @@
 #include <float.h>
 #include <inttypes.h>
 
+// this is so that cygwin's math.h will include the bessel functions
 #if defined(_WIN32) && defined(__STRICT_ANSI__)
 #undef __STRICT_ANSI__
 #endif
