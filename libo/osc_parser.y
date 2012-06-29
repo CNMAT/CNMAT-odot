@@ -136,7 +136,7 @@ void osc_parser_substitution(t_osc_parser_subst **subs_list, t_osc_msg_u *msg, i
 
 %define "api.pure"
 %locations
-%require "2.5"
+%require "2.4.2"
 
 
 %parse-param{t_osc_parser_bndl_list **bndl}

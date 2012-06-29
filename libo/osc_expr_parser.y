@@ -508,7 +508,7 @@ t_osc_expr *osc_expr_parser_reduce_NullCoalescingOperator(YYLTYPE *llocp,
 
 %define "api.pure"
 %locations
-%require "2.5"
+%require "2.4.2"
 
 // replace this bullshit with a struct...
 %parse-param{t_osc_expr **exprstack}
