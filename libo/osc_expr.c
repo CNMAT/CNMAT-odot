@@ -38,7 +38,7 @@
 #include <string.h>
 #include <math.h>
 #define __STRICT_ANSI__
-#endif
+#elif
 
 #include "osc.h"
 #include "osc_mem.h"
