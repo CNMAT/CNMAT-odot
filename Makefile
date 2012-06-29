@@ -3,7 +3,7 @@ BUILDDIR = $(CURDIR)/build
 OBJDIR = $(BUILDDIR)/objects
 HELPDIR = $(BUILDDIR)/helpfiles
 PATCHDIR = patches
-C74SUPPORT = ../../../../c74support
+C74SUPPORT = ../../../c74support
 MAX_INCLUDES = $(C74SUPPORT)/max-includes
 OBJECT_LIST = o.collect o.change o.cond o.unless o.when o.expr o.if o.mappatch o.message \
 o.pack o.pak o.prepend o.dict\
