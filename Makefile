@@ -37,7 +37,7 @@ all:
 	xcodebuild -scheme "Build all" -configuration Release -project odot.xcodeproj build
 
 $(BUILDDIR)/commonsyms.o: $(BUILDDIR)
-	$(CC) -c $(CFLAGS) $(INCLUDES) $< -o $@
+	$(CC) $(CFLAGS) $(INCLUDES) $< -o -c $@
 
 $(BUILDDIR)/%.o: $(BUILDDIR) $(BUILDDIR)/commonsyms.o %.c
 	$(CC) -c $(CFLAGS) $(INCLUDES) $< -o $@
