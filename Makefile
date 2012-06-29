@@ -26,28 +26,28 @@ SERVER_PATH = /home/www-data/berkeley.edu-cnmat.www/maxdl/files/odot/
 
 ARCH = -arch i386 -arch ppc
 
-win: CC := gcc-3
-win: CFLAGS += -mno-cygwin -DWIN_VERSION -DWIN_EXT_VERSION
+win: CC := clang
+win: CFLAGS += -DWIN_VERSION -DWIN_EXT_VERSION
 win: MAX_INCLUDES = $(C74SUPPORT)/max_includes
 win: MSP_INCLUDES = $(C74SUPPORT)/msp_includes
 win: INCLUDES += -I$(MAX_INCLUDES) -I$(MSP_INCLUDES) -I../libo -I../libomax
 win: LIBS += -L$(MAX_INCLUDES) -L$(MSP_INCLUDES) -L../libo -L../libomax
-win: LDFLAGS += -shared -mno-cygwin
+win: LDFLAGS += -shared
 
 #all: $(OBJDIR) $(HELPDIR) $(ODOT_MXO) $(PATCHES) DOCUMENTS
 all:
 	xcodebuild -scheme "Build all" -configuration Release -project odot.xcodeproj build
 
-$(WIN_BUILD_DIR)/commonsyms.o: $(MAX_INCLUDES)/common/commonsyms.c
+$(BUILDDIR)/commonsyms.o: $(MAX_INCLUDES)/common/commonsyms.c
 	$(CC) -c $(CFLAGS) $(INCLUDES) $< -o $@
 
-$(GCC_BUILD_DIR)/%.o: $(GCC_BUILD_DIR)/commonsyms.o %.c
+$(BUILDDIR)/%.o: $(BUILDDIR)/commonsyms.o %.c
 	$(CC) -c $(CFLAGS) $(INCLUDES) $< -o $@
 
-$(GCC_BUILD_DIR)/$(OBJ).mxe: $(GCC_BUILD_DIR)/$(OBJ).o $(GCC_BUILD_DIR)/commonsyms.o
+$(BUILDDIR)/$(OBJ).mxe: $(BUILDDIR)/$(OBJ).o $(BUILDDIR)/commonsyms.o
 	$(CC) -o $@ $^ $(LIBS) -lMaxAPI -lMaxAudio -lo -lomax 
 
-win: $(OBJDIR) $(HELPDIR) $(WIN_BUILD_DIR)/commonsyms.o $(ODOT_MXE)
+win: $(OBJDIR) $(HELPDIR) $(BUILDDIR)/commonsyms.o $(ODOT_MXE)
 
 $(XCODEBUILDDIR)/%:
 #	+cd $(notdir $(basename $@)) && $(MAKE) -f Makefile -k
