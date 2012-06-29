@@ -42,7 +42,7 @@ $(BUILDDIR)/commonsyms.o: $(MAX_INCLUDES)/common/commonsyms.c
 $(BUILDDIR)/%.o: $(BUILDDIR) $(BUILDDIR)/commonsyms.o %.c
 	$(CC) -c $(CFLAGS) $(INCLUDES) $< -o $@
 
-$(BUILDDIR)/$(OBJ).mxe: $(BUILDDIR) $(BUILDDIR)/$(OBJ).o $(BUILDDIR)/commonsyms.o
+$(OBJDIR)/$(OBJ).mxe: $(BUILDDIR) $(BUILDDIR)/$(OBJ).o $(BUILDDIR)/commonsyms.o
 	$(CC) -o $@ $^ $(LIBS) -lMaxAPI -lMaxAudio -lo -lomax 
 
 win: $(OBJDIR) $(HELPDIR) $(BUILDDIR) $(BUILDDIR)/commonsyms.o $(ODOT_MXE)
@@ -54,10 +54,10 @@ $(XCODEBUILDDIR)/%:
 #	+cd $(notdir $(basename $@)) && cp -r $(notdir $(basename $@)).maxhelp $(HELPDIR)
 	xcodebuild -scheme "Build all" -configuration Release -project odot.xcodeproj build
 
-$(OBJDIR)/%.mxe:
-	+cd $(notdir $(basename $@)) && $(MAKE) win -f Makefile -k
-	+cd $(notdir $(basename $@))/build-gcc && cp -r $(notdir $(basename $@)).mxe $(OBJDIR)
-	+cd $(notdir $(basename $@)) && cp -r $(notdir $(basename $@)).maxhelp $(HELPDIR)
+#$(OBJDIR)/%.mxe:
+#+cd $(notdir $(basename $@)) && $(MAKE) win -f Makefile -k
+#+cd $(notdir $(basename $@))/build-gcc && cp -r $(notdir $(basename $@)).mxe $(OBJDIR)
+#+cd $(notdir $(basename $@)) && cp -r $(notdir $(basename $@)).maxhelp $(HELPDIR)
 
 $(BUILDDIR):
 	@[ -d $(BUILDDIR) ] || mkdir -p $(BUILDDIR)
