@@ -4,7 +4,7 @@ OBJDIR = $(BUILDDIR)/objects
 HELPDIR = $(BUILDDIR)/helpfiles
 PATCHDIR = patches
 C74SUPPORT = ../../../../c74support # relative to object dir
-# o.build has to come before o.bild so that the version.[ch] will be there
+MAX_INCLUDES = $(C74SUPPORT)/max-includes
 OBJECT_LIST = o.collect o.change o.cond o.unless o.when o.expr o.if o.mappatch o.message \
 o.pack o.pak o.prepend o.dict\
 o.print o.printbytes o.route o.select o.atomize o.var o.union o.intersection o.difference
