@@ -8,7 +8,7 @@ OMAX_HFILES = $(foreach F, $(OMAX_BASENAMES), $(F).h)
 
 MAC_SYSROOT = MacOSX10.7.sdk 
 MAC-CFLAGS = -arch i386 -O0 -g -funroll-loops -isysroot /Developer/SDKs/$(MAC_SYSROOT) -mmacosx-version-min=10.5
-WIN-CFLAGS = -mno-cygwin -O3 -funroll-loops -DWIN_VERSION
+WIN-CFLAGS = -O3 -funroll-loops -DWIN_VERSION
 
 MAC-INCLUDES = -I../../../../c74support/max-includes -I../libo -I/System/Library/Frameworks/Carbon.framework/Headers -I/System/Library/Frameworks/CoreServices.framework/Headers
 WIN-INCLUDES = -I../../../../c74support/max-includes -I../libo
