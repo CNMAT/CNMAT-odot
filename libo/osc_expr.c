@@ -33,12 +33,8 @@
 
 // this is so that cygwin's math.h will include the bessel functions
 // and we'll get strtok_r from string.h
-#if defined(_WIN32) && defined(__STRICT_ANSI__)
-#undef __STRICT_ANSI__
 #include <string.h>
 #include <math.h>
-#define __STRICT_ANSI__
-#elif
 
 #include "osc.h"
 #include "osc_mem.h"

@@ -48,7 +48,7 @@ debug: STATIC-LINK = libtool -static -o libo.a $(LIBO_OBJECTS) /usr/lib/libfl.a
 
 win: CFLAGS += $(RELEASE-CFLAGS)
 win: CFLAGS += $(WIN-CFLAGS)
-win: CC = clang
+win: CC = gcc
 win: I = $(WIN-INCLUDES)
 win: $(LIBO_PARSER_CFILES) $(LIBO_SCANNER_CFILES) libo.a 
 win: STATIC-LINK = ar cru libo.a $(LIBO_OBJECTS) /usr/lib/libfl.a
