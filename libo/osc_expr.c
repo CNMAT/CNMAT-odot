@@ -3062,7 +3062,7 @@ int osc_expr_split(t_osc_expr *f, int argc, t_osc_atom_ar_u **argv, t_osc_atom_a
 	int i = 0;
 	char *c = NULL;
 	char *tok = NULL;
-#ifdef __MINGW__
+#ifdef __WIN32
 	tok = strtok_s(str, sep, &c);
 #else
 	tok = strtok_r(str, sep, &c);
