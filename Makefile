@@ -28,8 +28,6 @@ ARCH = -arch i386 -arch ppc
 
 win: CC := clang
 win: CFLAGS += -DWIN_VERSION -DWIN_EXT_VERSION
-win: MAX_INCLUDES = $(C74SUPPORT)/max_includes
-win: MSP_INCLUDES = $(C74SUPPORT)/msp_includes
 win: INCLUDES += -I$(MAX_INCLUDES) -I$(MSP_INCLUDES) -I../libo -I../libomax
 win: LIBS += -L$(MAX_INCLUDES) -L$(MSP_INCLUDES) -L../libo -L../libomax
 win: LDFLAGS += -shared
