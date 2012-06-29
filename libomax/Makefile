@@ -20,7 +20,7 @@ all: $(LIBO_CFILES) $(LIBO_HFILES) libomax.a
 all: LIBTOOL = libtool -static -o libomax.a $(OMAX_OBJECTS) /usr/lib/libfl.a
 
 win: CFLAGS += $(WIN-CFLAGS)
-win: CC = gcc-3
+win: CC = clang
 win: I = $(WIN-INCLUDES)
 win: $(LIBO_CFILES) $(LIBO_HFILES) libomax.a
 win: LIBTOOL = ar cru libomax.a $(OMAX_OBJECTS) /usr/lib/libfl.a
