@@ -26,7 +26,7 @@ DEBUG-CFLAGS += -Wall -Wno-trigraphs -fno-strict-aliasing -O0 -g -funroll-loops 
 
 MAC_SYSROOT = MacOSX10.7.sdk 
 MAC-CFLAGS = -arch i386 -mmacosx-version-min=10.5 -isysroot /Developer/SDKs/$(MAC_SYSROOT)
-WIN-CFLAGS = -DWIN_VERSION -std=c99 -D_WIN32
+WIN-CFLAGS = -DWIN_VERSION -DWIN_EXT_VERSION -U__STRICT_ANSI__ -U__ANSI_SOURCE -std=c99
 
 MAC-INCLUDES = -I/System/Library/Frameworks/Carbon.framework/Headers -I/System/Library/Frameworks/CoreServices.framework/Headers
 WIN-INCLUDES = -I/usr/include

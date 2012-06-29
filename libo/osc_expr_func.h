@@ -32,12 +32,6 @@ extern "C" {
 #endif
 
 #include <inttypes.h>
-
-// this is so that cygwin's math.h will include the bessel functions
-#if defined(_WIN32) && defined(__STRICT_ANSI__)
-#undef __STRICT_ANSI__
-#endif
-
 #include <math.h>
 #include "osc_expr_rec.h"
 #include "osc_expr_rec.r"
