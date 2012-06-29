@@ -46,8 +46,8 @@
 #include "osc_message_iterator_s.h"
 #include "osc_atom_s.h"
 
-#define __ODOT_PROFILE__
-#include "profile.h"
+//#define __ODOT_PROFILE__
+//#include "osc_profile.h"
 
 
 typedef struct _context{
