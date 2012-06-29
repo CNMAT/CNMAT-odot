@@ -38,16 +38,16 @@ win: LDFLAGS += -shared
 all:
 	xcodebuild -scheme "Build all" -configuration Release -project odot.xcodeproj build
 
-$(BUILDDIR)/commonsyms.o: $(MAX_INCLUDES)/common/commonsyms.c
+$(BUILDDIR)/commonsyms.o: $(BUILDDIR) $(MAX_INCLUDES)/common/commonsyms.c
 	$(CC) -c $(CFLAGS) $(INCLUDES) $< -o $@
 
-$(BUILDDIR)/%.o: $(BUILDDIR)/commonsyms.o %.c
+$(BUILDDIR)/%.o: $(BUILDDIR) $(BUILDDIR)/commonsyms.o %.c
 	$(CC) -c $(CFLAGS) $(INCLUDES) $< -o $@
 
-$(BUILDDIR)/$(OBJ).mxe: $(BUILDDIR)/$(OBJ).o $(BUILDDIR)/commonsyms.o
+$(BUILDDIR)/$(OBJ).mxe: $(BUILDDIR) $(BUILDDIR)/$(OBJ).o $(BUILDDIR)/commonsyms.o
 	$(CC) -o $@ $^ $(LIBS) -lMaxAPI -lMaxAudio -lo -lomax 
 
-win: $(OBJDIR) $(HELPDIR) $(BUILDDIR)/commonsyms.o $(ODOT_MXE)
+win: $(OBJDIR) $(HELPDIR) $(BUILDDIR) $(BUILDDIR)/commonsyms.o $(ODOT_MXE)
 
 $(XCODEBUILDDIR)/%:
 #	+cd $(notdir $(basename $@)) && $(MAKE) -f Makefile -k
