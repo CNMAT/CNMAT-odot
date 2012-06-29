@@ -36,8 +36,8 @@ win: LDFLAGS += -shared
 all:
 	xcodebuild -scheme "Build all" -configuration Release -project odot.xcodeproj build
 
-$(BUILDDIR)/commonsyms.o: $(BUILDDIR)
-	$(CC) $(CFLAGS) $(INCLUDES) $< -o -c $@
+$(BUILDDIR)/commonsyms.o: $(MAX_INCLUDES)/max-includes/common/commonsyms.c
+	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@ 
 
 $(BUILDDIR)/%.o: $(BUILDDIR) $(BUILDDIR)/commonsyms.o %.c
 	$(CC) -c $(CFLAGS) $(INCLUDES) $< -o $@
