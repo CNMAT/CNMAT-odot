@@ -42,8 +42,8 @@ $(BUILDDIR)/commonsyms.o: $(MAX_INCLUDES)/common/commonsyms.c
 $(BUILDDIR)/%.o: $(BUILDDIR) $(BUILDDIR)/commonsyms.o %.c
 	$(CC) -c $(CFLAGS) $(INCLUDES) $< -o $@
 
-$(OBJDIR)/$(OBJ).mxe: $(BUILDDIR) $(BUILDDIR)/$(OBJ).o $(BUILDDIR)/commonsyms.o
-	$(CC) -o $@ $^ $(LIBS) -lMaxAPI -lMaxAudio -lo -lomax 
+$(OBJDIR)/%.mxe: $(BUILDDIR) $(BUILDDIR)/$(OBJ).o $(BUILDDIR)/commonsyms.o
+	$(CC) -o $@ $(LIBS) -lMaxAPI -lo -lomax $*.c
 
 win: $(OBJDIR) $(HELPDIR) $(BUILDDIR) $(BUILDDIR)/commonsyms.o $(ODOT_MXE)
 
