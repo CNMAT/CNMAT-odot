@@ -74,6 +74,28 @@ t_osc_bndl_s *osc_expr_categoryBundle = NULL;
 
 static double rdtsc_cps = 0;
 
+#ifdef __WIN32
+char *strtok_r(char *str, const char *delim, char **save)
+{
+	char *res, *last;
+
+	if( !save )
+		return strtok(str, delim);
+	if( !str && !(str = *save) )
+		return NULL;
+	last = str + strlen(str);
+	if( (*save = res = strtok(str, delim)) )
+		{
+			*save += strlen(res);
+			if( *save < last )
+				(*save)++;
+			else
+				*save = NULL;
+		}
+	return res;
+}
+#endif
+
 int _osc_expr_sign(double f);
 
 t_osc_hashtab *osc_expr_funcobj_ht;
@@ -3062,11 +3084,7 @@ int osc_expr_split(t_osc_expr *f, int argc, t_osc_atom_ar_u **argv, t_osc_atom_a
 	int i = 0;
 	char *c = NULL;
 	char *tok = NULL;
-#ifdef __WIN32
-	tok = strtok_s(str, sep, &c);
-#else
 	tok = strtok_r(str, sep, &c);
-#endif
 	while(tok){
 		if(i >= n){
 			n += 16;
