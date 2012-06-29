@@ -31,8 +31,6 @@
 #include <float.h>
 #include <inttypes.h>
 
-// this is so that cygwin's math.h will include the bessel functions
-// and we'll get strtok_r from string.h
 #include <string.h>
 #include <math.h>
 
@@ -3064,7 +3062,11 @@ int osc_expr_split(t_osc_expr *f, int argc, t_osc_atom_ar_u **argv, t_osc_atom_a
 	int i = 0;
 	char *c = NULL;
 	char *tok = NULL;
+#ifdef __MINGW__
+	tok = strtok_s(str, sep, &c);
+#else
 	tok = strtok_r(str, sep, &c);
+#endif
 	while(tok){
 		if(i >= n){
 			n += 16;
