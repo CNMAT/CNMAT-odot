@@ -47,8 +47,8 @@
 #include "ext_dictionary.h"
 #include "ext_dictobj.h"
 
-#define __ODOT_PROFILE__
-#include "profile.h"
+//#define __ODOT_PROFILE__
+//#include "osc_profile.h"
 
 t_symbol *omax_ps_FullPacket = NULL;
 
