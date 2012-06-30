@@ -68,8 +68,8 @@ $(OBJDIR): $(BUILDDIR)
 $(HELPDIR): $(BUILDDIR)
 	@[ -d $(HELPDIR) ] || mkdir -p $(HELPDIR)
 
-$(BUILDDIR)/%:
-	+cd $(PATCHDIR) && cp -r $(notdir $@) $(BUILDDIR)
+#$(BUILDDIR)/%:
+#+cd $(PATCHDIR) && cp -r $(notdir $@) $(BUILDDIR)
 
 package: 
 	./package.pl
