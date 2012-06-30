@@ -47,7 +47,7 @@ $(OBJDIR)/commonsyms.o:
 
 $(OBJDIR)/o.collect.mxe: o.collect/o.collect.c $(OBJDIR)/commonsyms.o
 	$(CC) $(CFLAGS) $(INCLUDES) -c -o $(OBJDIR)/o.collect.o o.collect/o.collect.c
-	$(CC) $(LDFLAGS) -o $(OBJDIR)/o.collect.mxe $(LIBS) $(OBJDIR)/o.collect.o $(OBJDIR)/commonsyms.o
+	$(CC) $(LDFLAGS) -o $(OBJDIR)/o.collect.mxe $(OBJDIR)/o.collect.o $(OBJDIR)/commonsyms.o $(LIBS) 
 
 
 $(XCODEBUILDDIR)/%:
