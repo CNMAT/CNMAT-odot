@@ -31,6 +31,7 @@ win: CFLAGS += -DWIN_VERSION -DWIN_EXT_VERSION -U__STRICT_ANSI__ -U__ANSI_SOURCE
 win: INCLUDES += -I$(MAX_INCLUDES) -I../libo -I../libomax
 win: LIBS += -L$(MAX_INCLUDES) -L../libo -L../libomax
 win: LDFLAGS += -shared
+win: $(OBJDIR) $(HELPDIR) $(BUILDDIR) $(BUILDDIR)/commonsyms.o $(ODOT_MXE)
 
 #all: $(OBJDIR) $(HELPDIR) $(ODOT_MXO) $(PATCHES) DOCUMENTS
 all:
@@ -44,8 +45,6 @@ $(BUILDDIR)/%.o: $(BUILDDIR) $(BUILDDIR)/commonsyms.o %.c
 
 $(OBJDIR)/%.mxe: $(BUILDDIR)/%.o $(BUILDDIR)/commonsyms.o
 	$(CC) -o $@ $(LIBS) -lMaxAPI -lo -lomax $<
-
-win: $(OBJDIR) $(HELPDIR) $(BUILDDIR) $(BUILDDIR)/commonsyms.o $(ODOT_MXE)
 
 $(XCODEBUILDDIR)/%:
 #	+cd $(notdir $(basename $@)) && $(MAKE) -f Makefile -k
