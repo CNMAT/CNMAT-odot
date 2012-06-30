@@ -38,6 +38,7 @@ VERSION 0.0: First try
 #define OMAX_DOC_SEEALSO (char *[]){"zl group"}
 
 #include <stdlib.h>
+#include <malloc.h>
 #include "../odot_version.h"
 #include "ext.h"
 #include "ext_obex.h"
