@@ -31,7 +31,7 @@ SERVER_PATH = /home/www-data/berkeley.edu-cnmat.www/maxdl/files/odot/
 
 ARCH = -arch i386 -arch ppc
 
-win: CC := gcc
+win: CC := g++
 win: CFLAGS += -DWIN_VERSION -DWIN_EXT_VERSION -U__STRICT_ANSI__ -U__ANSI_SOURCE -std=c99
 win: INCLUDES += -I$(MAX_INCLUDES) -Ilibo -Ilibomax
 win: LIBS += -L$(MAX_INCLUDES) -Llibo -Llibomax -lMaxAPI -lo -lomax
