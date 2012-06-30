@@ -3,6 +3,9 @@ OMAX_OBJECTS = $(foreach OBJ, $(OMAX_BASENAMES), $(OBJ).o)
 OMAX_CFILES = $(foreach F, $(OMAX_BASENAMES), $(F).c)
 OMAX_HFILES = $(foreach F, $(OMAX_BASENAMES), $(F).h)
 
+C74SUPPORT = ../../../../c74support
+MAX_INCLUDES = $(C74SUPPORT)/max-includes
+
 #CC = gcc
 #ARCH = -arch i386
 
@@ -10,20 +13,20 @@ MAC_SYSROOT = MacOSX10.7.sdk
 MAC-CFLAGS = -arch i386 -O3 -funroll-loops -isysroot /Developer/SDKs/$(MAC_SYSROOT) -mmacosx-version-min=10.5
 WIN-CFLAGS = -O3 -funroll-loops -DWIN_VERSION -DWIN_EXT_VERSION -U__STRICT_ANSI__ -U__ANSI_SOURCE -std=c99
 
-MAC-INCLUDES = -I../../../../c74support/max-includes -I../libo -I/System/Library/Frameworks/Carbon.framework/Headers -I/System/Library/Frameworks/CoreServices.framework/Headers
+MAC-INCLUDES = -I$(MAX_INCLUDES) -I../libo -I/System/Library/Frameworks/Carbon.framework/Headers -I/System/Library/Frameworks/CoreServices.framework/Headers
 WIN-INCLUDES = -I../../../../c74support/max-includes -I../libo
 
 all: CFLAGS += $(MAC-CFLAGS)
 all: CC = clang
 all: I = $(MAC-INCLUDES)
 all: $(LIBO_CFILES) $(LIBO_HFILES) libomax.a
-all: LIBTOOL = libtool -static -o libomax.a $(OMAX_OBJECTS) /usr/lib/libfl.a
+all: LIBTOOL = libtool -static -o libomax.a $(OMAX_OBJECTS) /usr/lib/libfl.a 
 
 win: CFLAGS += $(WIN-CFLAGS)
 win: CC = gcc
 win: I = $(WIN-INCLUDES)
 win: $(LIBO_CFILES) $(LIBO_HFILES) libomax.a
-win: LIBTOOL = ar cru libomax.a $(OMAX_OBJECTS) /usr/lib/libfl.a
+win: LIBTOOL = ar cru libomax.a $(OMAX_OBJECTS) /usr/lib/libfl.a 
 
 #ar cru libomax.a  omax_expr.o  omax_util.o omax_parser.o omax_scanner.o /usr/lib/libfl.a 
 
