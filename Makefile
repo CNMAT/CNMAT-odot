@@ -43,7 +43,7 @@ win: debug $(OBJDIR) $(HELPDIR) $(BUILDDIR) $(BUILDDIR)/commonsyms.o $(OBJDIR)/o
 #xcodebuild -scheme "Build all" -configuration Release -project odot.xcodeproj build
 
 $(OBJDIR)/commonsyms.o: 
-	$(CC) $(CFLAGS) -c -o $(OBJDIR)/commonsyms.o $(MAX_INCLUDES)/common/commonsyms.c
+	$(CC) $(CFLAGS) $(INCLUDES) -c -o $(OBJDIR)/commonsyms.o $(MAX_INCLUDES)/common/commonsyms.c
 
 $(OBJDIR)/o.collect.mxe: o.collect/o.collect.c $(OBJDIR)/commonsyms.o
 	$(CC) $(CFLAGS) $(INCLUDES) -c -o o.collect.o o.collect.c
