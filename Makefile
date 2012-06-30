@@ -45,9 +45,10 @@ all:
 $(OBJDIR)/commonsyms.o: 
 	$(CC) $(CFLAGS) $(INCLUDES) -c -o $(OBJDIR)/commonsyms.o $(MAX_INCLUDES)/common/commonsyms.c
 
-$(OBJDIR)/%.mxe: %.c
+$(OBJDIR)/%.mxe: %.c $(OBJDIR)/commonsyms.o
 	@echo $* foo $<
 	$(CC) $(CFLAGS) $(INCLUDES) -c -o $(OBJDIR)/$*.o $<
+	$(CC) $(LDFLAGS) -o $(OBJDIR)/$* $(OBJDIR)/$*.o $(OBJDIR)/commonsyms.o $(LIBS) 
 #$(OBJDIR)/o.collect.mxe: o.collect/o.collect.c $(OBJDIR)/commonsyms.o
 #	$(CC) $(CFLAGS) $(INCLUDES) -c -o $(OBJDIR)/o.collect.o o.collect/o.collect.c
 #	$(CC) $(LDFLAGS) -o $(OBJDIR)/o.collect.mxe $(OBJDIR)/o.collect.o $(OBJDIR)/commonsyms.o $(LIBS) 
