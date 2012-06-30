@@ -1,6 +1,5 @@
 XCODEBUILDDIR = $(CURDIR)/DerivedData/odot/Build/Products/Release
 BUILDDIR = $(CURDIR)/build
-OBJDIR = $(BUILDDIR)/objects
 HELPDIR = $(BUILDDIR)/helpfiles
 PATCHDIR = patches
 C74SUPPORT = ../../../c74support
@@ -11,17 +10,10 @@ o.unless o.var o.when
 VPATH = $(OBJECT_LIST)
 ODOT_CFILES = $(foreach OBJ, $(OBJECT_LIST), $(OBJ)/$(OBJ).c)
 ODOT_MXO = $(foreach OBJ, $(OBJECT_LIST), $(XCODEBUILDDIR)/$(OBJ).mxo)
-ODOT_MXE = $(foreach OBJ, $(OBJECT_LIST), $(OBJDIR)/$(OBJ).mxe)
-
-.PHONY: debug
-debug:
-	@echo $(OBJDIR)
-	@echo $(ODOT_MXE)
+ODOT_MXE = $(foreach OBJ, $(OBJECT_LIST), $(BUILDDIR)/$(OBJ).mxe)
 
 PATCHES = $(BUILDDIR)/abstractions $(BUILDDIR)/demos $(BUILDDIR)/overview
 TEXTFILES = README_ODOT.txt
-
-#ODOT_BUFFER_LEN = 4096
 
 ARCHIVE = o.tar.gz
 UNSTABLE = o.unstable.tar.gz
@@ -36,41 +28,40 @@ win: CFLAGS = -DWIN_VERSION -DWIN_EXT_VERSION -U__STRICT_ANSI__ -U__ANSI_SOURCE 
 win: INCLUDES = -I$(MAX_INCLUDES) -Ilibo -Ilibomax
 win: LIBS = -Llibomax -lomax -L$(MAX_INCLUDES) -lMaxAPI -Llibo -lo
 win: LDFLAGS = -shared -static-libgcc
-win: $(OBJDIR) $(HELPDIR) $(BUILDDIR) $(ODOT_MXE)#$(OBJDIR)/o.collect.mxe
+win: $(BUILDDIR) $(HELPDIR) $(BUILDDIR) $(ODOT_MXE)#$(BUILDDIR)/o.collect.mxe
 
-#all: $(OBJDIR) $(HELPDIR) $(ODOT_MXO) $(PATCHES) DOCUMENTS
+#all: $(BUILDDIR) $(HELPDIR) $(ODOT_MXO) $(PATCHES) DOCUMENTS
 all:
 	xcodebuild -scheme "Build all" -configuration Release -project odot.xcodeproj build
 
-$(OBJDIR)/commonsyms.o: 
-	$(CC) $(CFLAGS) $(INCLUDES) -c -o $(OBJDIR)/commonsyms.o $(MAX_INCLUDES)/common/commonsyms.c
+$(BUILDDIR)/commonsyms.o: 
+	$(CC) $(CFLAGS) $(INCLUDES) -c -o $(BUILDDIR)/commonsyms.o $(MAX_INCLUDES)/common/commonsyms.c
 
-$(OBJDIR)/%.mxe: %.c $(OBJDIR)/commonsyms.o
-	@echo $* foo $<
-	$(CC) $(CFLAGS) $(INCLUDES) -c -o $(OBJDIR)/$*.o $<
-	$(CC) $(LDFLAGS) -o $(OBJDIR)/$*.mxe $(OBJDIR)/$*.o $(OBJDIR)/commonsyms.o $(LIBS) 
-#$(OBJDIR)/o.collect.mxe: o.collect/o.collect.c $(OBJDIR)/commonsyms.o
-#	$(CC) $(CFLAGS) $(INCLUDES) -c -o $(OBJDIR)/o.collect.o o.collect/o.collect.c
-#	$(CC) $(LDFLAGS) -o $(OBJDIR)/o.collect.mxe $(OBJDIR)/o.collect.o $(OBJDIR)/commonsyms.o $(LIBS) 
+$(BUILDDIR)/%.mxe: %.c $(BUILDDIR)/commonsyms.o
+	$(CC) $(CFLAGS) $(INCLUDES) -c -o $(BUILDDIR)/$*.o $<
+	$(CC) $(LDFLAGS) -o $(BUILDDIR)/$*.mxe $(BUILDDIR)/$*.o $(BUILDDIR)/commonsyms.o $(LIBS) 
+#$(BUILDDIR)/o.collect.mxe: o.collect/o.collect.c $(BUILDDIR)/commonsyms.o
+#	$(CC) $(CFLAGS) $(INCLUDES) -c -o $(BUILDDIR)/o.collect.o o.collect/o.collect.c
+#	$(CC) $(LDFLAGS) -o $(BUILDDIR)/o.collect.mxe $(BUILDDIR)/o.collect.o $(BUILDDIR)/commonsyms.o $(LIBS) 
 
 
 $(XCODEBUILDDIR)/%:
 #	+cd $(notdir $(basename $@)) && $(MAKE) -f Makefile -k
 #	+cd $(notdir $(basename $@)) && $(MAKE) -f Makefile -k install
-#	+cd $(notdir $(basename $@))/build/Deployment && cp -r $(notdir $(basename $@)).mxo $(OBJDIR)
+#	+cd $(notdir $(basename $@))/build/Deployment && cp -r $(notdir $(basename $@)).mxo $(BUILDDIR)
 #	+cd $(notdir $(basename $@)) && cp -r $(notdir $(basename $@)).maxhelp $(HELPDIR)
 	xcodebuild -scheme "Build all" -configuration Release -project odot.xcodeproj build
 
-#$(OBJDIR)/%.mxe:
+#$(BUILDDIR)/%.mxe:
 #+cd $(notdir $(basename $@)) && $(MAKE) win -f Makefile -k
-#+cd $(notdir $(basename $@))/build-gcc && cp -r $(notdir $(basename $@)).mxe $(OBJDIR)
+#+cd $(notdir $(basename $@))/build-gcc && cp -r $(notdir $(basename $@)).mxe $(BUILDDIR)
 #+cd $(notdir $(basename $@)) && cp -r $(notdir $(basename $@)).maxhelp $(HELPDIR)
 
 $(BUILDDIR):
 	@[ -d $(BUILDDIR) ] || mkdir -p $(BUILDDIR)
 
-$(OBJDIR): $(BUILDDIR)
-	@[ -d $(OBJDIR) ] || mkdir -p $(OBJDIR)
+$(BUILDDIR): $(BUILDDIR)
+	@[ -d $(BUILDDIR) ] || mkdir -p $(BUILDDIR)
 
 $(HELPDIR): $(BUILDDIR)
 	@[ -d $(HELPDIR) ] || mkdir -p $(HELPDIR)
