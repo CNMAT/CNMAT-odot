@@ -36,14 +36,18 @@ win: CFLAGS += -DWIN_VERSION -DWIN_EXT_VERSION -U__STRICT_ANSI__ -U__ANSI_SOURCE
 win: INCLUDES += -I$(MAX_INCLUDES) -I../libo -I../libomax
 win: LIBS += -L$(MAX_INCLUDES) -L../libo -L../libomax
 win: LDFLAGS += -shared
-win: debug $(OBJDIR) $(HELPDIR) $(BUILDDIR) $(BUILDDIR)/commonsyms.o $(ODOT_MXE)
+win: debug $(OBJDIR) $(HELPDIR) $(BUILDDIR) $(BUILDDIR)/commonsyms.o $(OBJDIR)/o.collect.mxe
 
 #all: $(OBJDIR) $(HELPDIR) $(ODOT_MXO) $(PATCHES) DOCUMENTS
 #all:
 #xcodebuild -scheme "Build all" -configuration Release -project odot.xcodeproj build
 
-$(ODOT_MXE)/%.mxe: $*/$*.c
-	@echo yep
+$(OBJDIR)/commonsyms.o: 
+	$(CC) $(CFLAGS) -c -o $(OBJDIR)/commonsyms.o $(MAX_INCLUDES)/common/commonsyms.c
+
+$(OBJDIR)/o.collect.mxe: o.collect/o.collect.c $(OBJDIR)/commonsyms.o
+	$(CC) $(CFLAGS) $(INCLUDES) -c -o o.collect.o o.collect.c
+	$(CC) $(LDFLAGS) $(LIBS) -o $(OBJDIR)/o.collect.mxe $(OBJDIR)/o.collect.o $(OBJDIR)/commonsyms.o
 
 
 $(XCODEBUILDDIR)/%:
