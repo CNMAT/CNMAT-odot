@@ -34,8 +34,8 @@ win: LDFLAGS += -shared
 win: $(OBJDIR) $(HELPDIR) $(BUILDDIR) $(BUILDDIR)/commonsyms.o $(ODOT_MXE)
 
 #all: $(OBJDIR) $(HELPDIR) $(ODOT_MXO) $(PATCHES) DOCUMENTS
-all:
-	xcodebuild -scheme "Build all" -configuration Release -project odot.xcodeproj build
+#all:
+#xcodebuild -scheme "Build all" -configuration Release -project odot.xcodeproj build
 
 $(BUILDDIR)/commonsyms.o: $(MAX_INCLUDES)/common/commonsyms.c
 	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@ 
