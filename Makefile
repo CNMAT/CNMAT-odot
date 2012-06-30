@@ -8,6 +8,7 @@ MAX_INCLUDES = $(C74SUPPORT)/max-includes
 OBJECT_LIST = o.collect o.change o.cond o.unless o.when o.expr o.if o.mappatch o.message \
 o.pack o.pak o.prepend o.dict\
 o.print o.printbytes o.route o.select o.atomize o.var o.union o.intersection o.difference
+VPATH = $(OBJECT_LIST)
 ODOT_CFILES = $(foreach OBJ, $(OBJECT_LIST), $(OBJ)/$(OBJ).c)
 ODOT_MXO = $(foreach OBJ, $(OBJECT_LIST), $(XCODEBUILDDIR)/$(OBJ).mxo)
 ODOT_MXE = $(foreach OBJ, $(OBJECT_LIST), $(OBJDIR)/$(OBJ).mxe)
@@ -44,7 +45,7 @@ all:
 $(OBJDIR)/commonsyms.o: 
 	$(CC) $(CFLAGS) $(INCLUDES) -c -o $(OBJDIR)/commonsyms.o $(MAX_INCLUDES)/common/commonsyms.c
 
-$(OBJDIR)/%.mxe: %/%
+$(OBJDIR)/%.mxe: %.c
 	@echo $* foo $<
 #$(OBJDIR)/o.collect.mxe: o.collect/o.collect.c $(OBJDIR)/commonsyms.o
 #	$(CC) $(CFLAGS) $(INCLUDES) -c -o $(OBJDIR)/o.collect.o o.collect/o.collect.c
