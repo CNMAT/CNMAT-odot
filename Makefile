@@ -42,7 +42,7 @@ win: debug $(OBJDIR) $(HELPDIR) $(BUILDDIR) $(BUILDDIR)/commonsyms.o $(ODOT_MXE)
 #all:
 #xcodebuild -scheme "Build all" -configuration Release -project odot.xcodeproj build
 
-$(ODOT_MXE)/%.mxe: %/%.c
+$(ODOT_MXE)/%.mxe: $*/$*.c
 	@echo yep
 
 
