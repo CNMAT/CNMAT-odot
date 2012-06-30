@@ -35,7 +35,7 @@ win: CC := gcc
 win: CFLAGS += -DWIN_VERSION -DWIN_EXT_VERSION -U__STRICT_ANSI__ -U__ANSI_SOURCE -std=c99
 win: INCLUDES += -I$(MAX_INCLUDES) -Ilibo -Ilibomax
 win: LIBS += -L$(MAX_INCLUDES) -Llibo -Llibomax -lMaxAPI -lo -lomax
-win: LDFLAGS += -shared
+win: LDFLAGS += -shared -static-libgcc
 win: debug $(OBJDIR) $(HELPDIR) $(BUILDDIR) $(BUILDDIR)/commonsyms.o $(OBJDIR)/o.collect.mxe
 
 #all: $(OBJDIR) $(HELPDIR) $(ODOT_MXO) $(PATCHES) DOCUMENTS
