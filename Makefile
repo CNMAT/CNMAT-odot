@@ -8,8 +8,7 @@ MAX_INCLUDES = $(C74SUPPORT)/max-includes
 OBJECT_LIST = o.collect o.change o.cond o.unless o.when o.expr o.if o.mappatch o.message \
 o.pack o.pak o.prepend o.dict\
 o.print o.printbytes o.route o.select o.atomize o.var o.union o.intersection o.difference
-ODOT_CFILES = $(foreach OBJ, $(OBJECT_LIST), $(OBJDIR)/$(OBJ).c)
-ODOT_HFILES = $(foreach OBJ, $(OBJECT_LIST), $(OBJDIR)/$(OBJ).h)
+ODOT_CFILES = $(foreach OBJ, $(OBJECT_LIST), $(OBJ)/$(OBJ).c)
 ODOT_MXO = $(foreach OBJ, $(OBJECT_LIST), $(XCODEBUILDDIR)/$(OBJ).mxo)
 ODOT_MXE = $(foreach OBJ, $(OBJECT_LIST), $(OBJDIR)/$(OBJ).mxe)
 
@@ -36,7 +35,7 @@ win: CFLAGS = -DWIN_VERSION -DWIN_EXT_VERSION -U__STRICT_ANSI__ -U__ANSI_SOURCE 
 win: INCLUDES = -I$(MAX_INCLUDES) -Ilibo -Ilibomax
 win: LIBS = -Llibomax -lomax -L$(MAX_INCLUDES) -lMaxAPI -Llibo -lo
 win: LDFLAGS = -shared -static-libgcc
-win: $(OBJDIR) $(HELPDIR) $(BUILDDIR) $(ODOT_MXE)#$(OBJDIR)/o.collect.mxe
+win: $(OBJDIR) $(HELPDIR) $(BUILDDIR) $(ODOT_CFILES) $(ODOT_MXE)#$(OBJDIR)/o.collect.mxe
 
 #all: $(OBJDIR) $(HELPDIR) $(ODOT_MXO) $(PATCHES) DOCUMENTS
 all:
