@@ -5,9 +5,9 @@ HELPDIR = $(BUILDDIR)/helpfiles
 PATCHDIR = patches
 C74SUPPORT = ../../../c74support
 MAX_INCLUDES = $(C74SUPPORT)/max-includes
-OBJECT_LIST = o.collect o.change o.cond o.unless o.when o.expr o.if o.mappatch o.message \
-o.pack o.pak o.prepend o.dict\
-o.print o.printbytes o.route o.select o.atomize o.var o.union o.intersection o.difference
+OBJECT_LIST = o.atomize o.change o.collect o.cond o.dict o.difference o.explode o.expr o.flatten o.if \
+o.intersection o.mappatch o.message o.pack o.pak o.prepend o.print o.printbytes o.route o.select o.union \
+o.unless o.var o.when
 VPATH = $(OBJECT_LIST)
 ODOT_CFILES = $(foreach OBJ, $(OBJECT_LIST), $(OBJ)/$(OBJ).c)
 ODOT_MXO = $(foreach OBJ, $(OBJECT_LIST), $(XCODEBUILDDIR)/$(OBJ).mxo)
@@ -47,6 +47,7 @@ $(OBJDIR)/commonsyms.o:
 
 $(OBJDIR)/%.mxe: %.c
 	@echo $* foo $<
+	$(CC) $(CFLAGS) $(INCLUDES) -c -o $(OBJDIR)/$*.o $<
 #$(OBJDIR)/o.collect.mxe: o.collect/o.collect.c $(OBJDIR)/commonsyms.o
 #	$(CC) $(CFLAGS) $(INCLUDES) -c -o $(OBJDIR)/o.collect.o o.collect/o.collect.c
 #	$(CC) $(LDFLAGS) -o $(OBJDIR)/o.collect.mxe $(OBJDIR)/o.collect.o $(OBJDIR)/commonsyms.o $(LIBS) 
