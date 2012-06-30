@@ -39,8 +39,8 @@ win: LDFLAGS += -shared -static-libgcc
 win: debug $(OBJDIR) $(HELPDIR) $(BUILDDIR) $(BUILDDIR)/commonsyms.o $(OBJDIR)/o.collect.mxe
 
 #all: $(OBJDIR) $(HELPDIR) $(ODOT_MXO) $(PATCHES) DOCUMENTS
-#all:
-#xcodebuild -scheme "Build all" -configuration Release -project odot.xcodeproj build
+all:
+	xcodebuild -scheme "Build all" -configuration Release -project odot.xcodeproj build
 
 $(OBJDIR)/commonsyms.o: 
 	$(CC) $(CFLAGS) $(INCLUDES) -c -o $(OBJDIR)/commonsyms.o $(MAX_INCLUDES)/common/commonsyms.c
