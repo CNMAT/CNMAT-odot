@@ -13,6 +13,10 @@ ODOT_HFILES = $(foreach OBJ, $(OBJECT_LIST), $(OBJDIR)/$(OBJ).h)
 ODOT_MXO = $(foreach OBJ, $(OBJECT_LIST), $(XCODEBUILDDIR)/$(OBJ).mxo)
 ODOT_MXE = $(foreach OBJ, $(OBJECT_LIST), $(OBJDIR)/$(OBJ).mxe)
 
+.PHONY: debug
+debug:
+	echo $(ODOT_MXE)
+
 PATCHES = $(BUILDDIR)/abstractions $(BUILDDIR)/demos $(BUILDDIR)/overview
 TEXTFILES = README_ODOT.txt
 
