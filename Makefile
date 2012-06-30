@@ -86,7 +86,7 @@ install:
 .PHONY: clean
 clean: 
 #	for d in $(OBJECT_LIST); do (cd $$d; $(MAKE) clean); done
-	xcodebuild -project odot.xcodeproj clean
+#xcodebuild -project odot.xcodeproj clean
 	./package.pl clean
 
 
