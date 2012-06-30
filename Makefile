@@ -34,7 +34,7 @@ ARCH = -arch i386 -arch ppc
 win: CC = gcc
 win: CFLAGS = -DWIN_VERSION -DWIN_EXT_VERSION -U__STRICT_ANSI__ -U__ANSI_SOURCE -std=c99
 win: INCLUDES = -I$(MAX_INCLUDES) -Ilibo -Ilibomax
-win: LIBS = -L$(MAX_INCLUDES) -lMaxAPI -Llibo -lo -Llibomax -lomax
+win: LIBS = -Llibomax -lomax -L$(MAX_INCLUDES) -lMaxAPI -Llibo -lo
 win: LDFLAGS = -shared -static-libgcc
 win: $(OBJDIR) $(HELPDIR) $(BUILDDIR) $(OBJDIR)/o.collect.mxe
 
