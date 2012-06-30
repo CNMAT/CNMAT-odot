@@ -15,6 +15,7 @@ ODOT_MXE = $(foreach OBJ, $(OBJECT_LIST), $(OBJDIR)/$(OBJ).mxe)
 
 .PHONY: debug
 debug:
+	echo $(OBJDIR)
 	echo $(ODOT_MXE)
 
 PATCHES = $(BUILDDIR)/abstractions $(BUILDDIR)/demos $(BUILDDIR)/overview
