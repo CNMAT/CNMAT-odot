@@ -27,11 +27,8 @@ SERVER_PATH = /home/www-data/berkeley.edu-cnmat.www/maxdl/files/odot/
 
 ARCH = -arch i386 -arch ppc
 
-all: 
-	xcodebuild -scheme "Build all" -configuration Release -project odot.xcodeproj build
 
-win:
-	@echo win
+
 win: OBJECTS = $(ODOT_MXE)
 win: EXT = MXE
 win: CC = gcc
