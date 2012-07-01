@@ -21,7 +21,8 @@ VPATH = $(OBJECT_LIST)
 VERSION = $(shell perl -p -e 'if(/\#define\s+ODOT_VERSION\s+\"(.*)\"/){print $$1; last;}' odot_version.h)
 OS = $(shell perl -e 'print $$^O')
 RELEASEDIR = odot-$(strip $(OS))-$(strip $(VERSION))
-ARCHIVE = odot.tgz
+ARCHIVE = odot-$(strip $(OS)).tgz
+VERSION_FILE = current-$(strip $(OS))-version
 
 RELEASE_OBJECTS_DIR = $(RELEASEDIR)/objects
 
@@ -79,18 +80,20 @@ $(ARCHIVE): $(OBJECTS) $(RELEASEDIR) $(RELEASE_PATCHES_DIR) $(RELEASE_OBJECTS_DI
 	@echo copying objects
 	@cp -r $(OBJECTS) $(RELEASE_OBJECTS_DIR)
 	@echo copying patches
-#	cp -r $(PATCHES_FOR_RELEASE) $(RELEASEDIR)
 	@rsync -avq --exclude=*/.* $(PATCHES_FOR_RELEASE) $(RELEASEDIR)
 	@echo copying extra files
 	@cp $(TEXTFILES_FOR_RELEASE) $(RELEASEDIR)
 	@echo compressing
-	@tar zcf $(ARCHIVE) $(RELEASEDIR)
-	@echo $(VERSION) > current-$(strip $(OS))-version
+	@tar zcf $(RELEASEDIR).tgz $(RELEASEDIR)
+	@cp $(RELEASEDIR).tgz $(ARCHIVE)
+	@echo $(VERSION) > $(VERSION_FILE)
 	@echo done
 
-.PHONY: install
 install: $(ARCHIVE) $(INSTALLDIR)
 	cp -r $(RELEASEDIR)/* $(INSTALLDIR)
+
+upload: $(ARCHIVE)
+	scp $(RELEASEDIR).tgz $(ARCHIVE) $(VERSION_FILE) cnmat.berkeley.edu:/$(SERVER_PATH)
 
 .PHONY: clean
 clean: 
