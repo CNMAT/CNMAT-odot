@@ -7,6 +7,11 @@ o.unless o.var o.when
 MAC_OBJECTS = $(foreach OBJ, $(OBJECT_LIST), $(BUILDDIR)/$(OBJ).mxo)
 WIN_OBJECTS = $(foreach OBJ, $(OBJECT_LIST), $(BUILDDIR)/$(OBJ).mxe)
 ifeq (win, $(findstring win, $(MAKECMDGOALS)))
+	CC = $(WIN_CC)
+	CFLAGS = $(WIN_CFLAGS)
+	INCLUDES = $(WIN_INCLUDES)
+	LIBS = $(WIN_LIBS)
+	LDFLAGS = $(WIN_LDFLAGS)
 	OBJECTS = $(WIN_OBJECTS)
 else 
 	OBJECTS = $(MAC_OBJECTS)
@@ -42,25 +47,10 @@ all: debug
 
 release: $(ARCHIVE)
 
-win: CC = $(WIN_CC)
-win: CFLAGS = $(WIN_CFLAGS)
-win: INCLUDES = $(WIN_INCLUDES)
-win: LIBS = $(WIN_LIBS)
-win: LDFLAGS = $(WIN_LDFLAGS)
 win: $(OBJECTS)
 
-win-release: CC = $(WIN_CC)
-win-release: CFLAGS = $(WIN_CFLAGS)
-win-release: INCLUDES = $(WIN_INCLUDES)
-win-release: LIBS = $(WIN_LIBS)
-win-release: LDFLAGS = $(WIN_LDFLAGS)
 win-release: $(ARCHIVE)
 
-win-install: CC = $(WIN_CC)
-win-install: CFLAGS = $(WIN_CFLAGS)
-win-install: INCLUDES = $(WIN_INCLUDES)
-win-install: LIBS = $(WIN_LIBS)
-win-install: LDFLAGS = $(WIN_LDFLAGS)
 win-install: install
 
 $(BUILDDIR)/commonsyms.o: 
