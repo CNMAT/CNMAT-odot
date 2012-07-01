@@ -25,9 +25,9 @@ SERVER_PATH = /home/www-data/berkeley.edu-cnmat.www/maxdl/files/odot/
 
 ARCH = -arch i386 -arch ppc
 
-all: OBJECTS = $(ODOT_MXO)
-all: EXT = MXO
-all: 
+mac: OBJECTS = $(ODOT_MXO)
+mac: EXT = MXO
+mac: 
 	xcodebuild -scheme "Build all" -configuration Release -project odot.xcodeproj build
 
 win: OBJECTS = $(ODOT_MXE)
@@ -38,7 +38,6 @@ win: INCLUDES = -I$(MAX_INCLUDES) -Ilibo -Ilibomax
 win: LIBS = -Llibomax -lomax -L$(MAX_INCLUDES) -lMaxAPI -Llibo -lo
 win: LDFLAGS = -shared -static-libgcc
 win: $(BUILDDIR) $(OBJECTS)
-	@echo $(OBJECTS)
 
 win-release: OBJECTS = $(ODOT_MXE)
 win-release: EXT = MXE
