@@ -6,11 +6,11 @@ OBJECT_LIST = o.atomize o.change o.collect o.cond o.dict o.difference o.explode 
 o.intersection o.mappatch o.message o.pack o.pak o.prepend o.print o.printbytes o.route o.select o.union \
 o.unless o.var o.when
 ODOT_MXO = $(foreach OBJ, $(OBJECT_LIST), $(XCODEBUILDDIR)/$(OBJ).mxo)
-ODOT_MXE = $(foreach OBJ, $(OBJECT_LIST), $(BUILDDIR)/$(OBJ).mxe)
+WIN_OBJECTS = $(foreach OBJ, $(OBJECT_LIST), $(BUILDDIR)/$(OBJ).mxe)
 ifeq ($(MAKECMDGOALS), win)
 	OBJECTS = $(ODOT_MXO)
 else 
-	OBJECTS = $(ODOT_MXE)
+	OBJECTS = $(WIN_OBJECTS)
 endif
 VPATH = $(OBJECT_LIST)
 
@@ -26,17 +26,22 @@ TEXTFILES_FOR_RELEASE = README_ODOT.txt
 
 SERVER_PATH = /home/www-data/berkeley.edu-cnmat.www/maxdl/files/odot/
 
-ARCH = -arch i386 -arch ppc
+WIN_CC = gcc
+WIN_CFLAGS = -DWIN_VERSION -DWIN_EXT_VERSION -U__STRICT_ANSI__ -U__ANSI_SOURCE -std=c99
+WIN_INCLUDES = -I$(MAX_INCLUDES) -Ilibo -Ilibomax
+WIN_LIBS = -Llibomax -lomax -L$(MAX_INCLUDES) -lMaxAPI -Llibo -lo
+WIN_LDFLAGS = -shared -static-libgcc
 
 all: 
 	xcodebuild -scheme "Build all" -configuration Release -project odot.xcodeproj build
 
-win: CC = gcc
-win: CFLAGS = -DWIN_VERSION -DWIN_EXT_VERSION -U__STRICT_ANSI__ -U__ANSI_SOURCE -std=c99
-win: INCLUDES = -I$(MAX_INCLUDES) -Ilibo -Ilibomax
-win: LIBS = -Llibomax -lomax -L$(MAX_INCLUDES) -lMaxAPI -Llibo -lo
-win: LDFLAGS = -shared -static-libgcc
-win: $(ODOT_MXE)
+win: win-release: CC = $(WIN_GCC)
+win: win-release: CFLAGS = $(WIN_CFLAGS)
+win: win-release: INCLUDES = $(WIN_INCLUDES)
+win: win-release: LIBS = $(WIN_LIBS)
+win: win-release: LDFLAGS = $(WIN_LDFLAGS)
+win: win-release: OBJECTS = WIN_OBJECTS
+win: $(WIN_OBJECTS)
 
 win-release: $(ARCHIVE)
 
