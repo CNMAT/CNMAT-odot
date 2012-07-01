@@ -14,7 +14,6 @@ OS = $(shell perl -e 'print $$^O')
 RELEASEDIR = odot-$(strip $(OS))-$(strip $(VERSION))
 ARCHIVE = $(RELEASEDIR).tgz
 
-RELEASE_PATCHES_DIR = $(RELEASEDIR)/patches
 RELEASE_OBJECTS_DIR = $(RELEASEDIR)/objects
 
 PATCHES_FOR_RELEASE = $(addprefix patches/, help demos abstractions)
@@ -57,9 +56,6 @@ $(RELEASEDIR): $(BUILDDIR)
 
 $(RELEASE_OBJECTS_DIR): $(RELEASEDIR)
 	@[ -d $(RELEASE_OBJECTS_DIR) ] || mkdir -p $(RELEASE_OBJECTS_DIR)
-
-$(RELEASE_PATCHES_DIR): $(RELEASEDIR)
-	@[ -d $(RELEASE_PATCHES_DIR) ] || mkdir -p $(RELEASE_PATCHES_DIR)
 
 $(ARCHIVE): $(OBJECTS) $(RELEASEDIR) $(RELEASE_PATCHES_DIR) $(RELEASE_OBJECTS_DIR)
 	@cp -r $(OBJECTS) $(RELEASE_OBJECTS_DIR)
