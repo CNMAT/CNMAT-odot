@@ -49,7 +49,7 @@ win-release: INCLUDES = $(WIN_INCLUDES)
 win-release: LIBS = $(WIN_LIBS)
 win-release: LDFLAGS = $(WIN_LDFLAGS)
 win-release: OBJECTS = WIN_OBJECTS
-win-release: $(ARCHIVE)
+win-release: $(OBJECTS) $(ARCHIVE)
 
 $(BUILDDIR)/commonsyms.o: 
 	$(CC) $(CFLAGS) $(INCLUDES) -c -o $(BUILDDIR)/commonsyms.o $(MAX_INCLUDES)/common/commonsyms.c
