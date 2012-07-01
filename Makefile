@@ -25,7 +25,7 @@ ARCHIVE = odot.tgz
 
 RELEASE_OBJECTS_DIR = $(RELEASEDIR)/objects
 
-PATCHES_FOR_RELEASE = $(addprefix patches/, help demos abstractions)
+PATCHES_FOR_RELEASE = $(addprefix patches/, help demos abstractions deprecated overview)
 TEXTFILES_FOR_RELEASE = README_ODOT.txt
 
 SERVER_PATH = /home/www-data/berkeley.edu-cnmat.www/maxdl/files/odot/
