@@ -6,7 +6,7 @@ o.intersection o.mappatch o.message o.pack o.pak o.prepend o.print o.printbytes 
 o.unless o.var o.when
 MAC_OBJECTS = $(foreach OBJ, $(OBJECT_LIST), $(BUILDDIR)/$(OBJ).mxo)
 WIN_OBJECTS = $(foreach OBJ, $(OBJECT_LIST), $(BUILDDIR)/$(OBJ).mxe)
-ifeq ($(MAKECMDGOALS), win)
+ifeq ($(MAKECMDGOALS), win*)
 	OBJECTS = $(WIN_OBJECTS)
 else 
 	OBJECTS = $(MAC_OBJECTS)
