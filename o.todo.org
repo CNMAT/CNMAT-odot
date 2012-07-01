@@ -1,8 +1,8 @@
 #+STARTUP: showall
 #+TODO: TODO(t) STARTED(s) WAITING(w) BUG(b) | DONE(d) DELEGATED(e) FIXED(f)
 #+begin_src C :tangle odot_version.h
-#define ODOT_VERSION "1.1.6b" 
-#define ODOT_RELEASE_DATE "[2012-05-22 Tue]"
+#define ODOT_VERSION "1.2b" 
+#define ODOT_RELEASE_DATE "[2012-07-01 Sun]"
 #define ODOT_COPYRIGHT_YEARS "2008-12"
 #define ODOT_AUTHORS "John MacCallum, Adrian Freed"
 #define ODOT_COPYRIGHT_STRING "Regents of the University of California. All rights reserved."
@@ -76,10 +76,12 @@ should persist
 New objects with more explicit behavior.
 
 * VERSION 1.2b
+Released [2012-07-01 Sun]
 ** General
 *** DONE All objects now support dictionaries
 *** DONE New object: o.dict, converts OSC bundles to dictionaries
 *** DONE New object: o.explode, opposite of o.flatten
+*** DONE Changes to the build system to support Windows
 *** o.expr
 **** DONE anonymous functions can now be specified properly as OSC addresses or expresions (like value(/foo)).
 For example:  [o.expr apply(/foo, /bar)] or [o.expr map(fn(f, arg1){apply(value(f), arg1);}, /fns, /args)]
