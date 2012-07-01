@@ -50,9 +50,6 @@ $(XCODEBUILDDIR)/%:
 #+cd $(notdir $(basename $@))/build-gcc && cp -r $(notdir $(basename $@)).mxe $(BUILDDIR)
 #+cd $(notdir $(basename $@)) && cp -r $(notdir $(basename $@)).maxhelp $(HELPDIR)
 
-$(BUILDDIR):
-	@[ -d $(BUILDDIR) ] || mkdir -p $(BUILDDIR)
-
 $(BUILDDIR): $(BUILDDIR)
 	@[ -d $(BUILDDIR) ] || mkdir -p $(BUILDDIR)
 
