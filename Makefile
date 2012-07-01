@@ -34,7 +34,7 @@ win: LIBS = -Llibomax -lomax -L$(MAX_INCLUDES) -lMaxAPI -Llibo -lo
 win: LDFLAGS = -shared -static-libgcc
 win: $(ODOT_MXE)
 
-win-release: OBJECTS = $(ODOT_MXE)
+win-release: OBJECTS := $(ODOT_MXE)
 win-release: EXT = MXE
 win-release: $(ARCHIVE)
 
