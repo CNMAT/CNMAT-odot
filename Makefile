@@ -35,14 +35,20 @@ WIN_LDFLAGS = -shared -static-libgcc
 all: 
 	xcodebuild -scheme "Build all" -configuration Release -project odot.xcodeproj build
 
-win: win-release: CC = $(WIN_GCC)
-win: win-release: CFLAGS = $(WIN_CFLAGS)
-win: win-release: INCLUDES = $(WIN_INCLUDES)
-win: win-release: LIBS = $(WIN_LIBS)
-win: win-release: LDFLAGS = $(WIN_LDFLAGS)
-win: win-release: OBJECTS = WIN_OBJECTS
+win: CC = $(WIN_GCC)
+win: CFLAGS = $(WIN_CFLAGS)
+win: INCLUDES = $(WIN_INCLUDES)
+win: LIBS = $(WIN_LIBS)
+win: LDFLAGS = $(WIN_LDFLAGS)
+win: OBJECTS = WIN_OBJECTS
 win: $(WIN_OBJECTS)
 
+win: CC = $(WIN_GCC)
+win: CFLAGS = $(WIN_CFLAGS)
+win: INCLUDES = $(WIN_INCLUDES)
+win: LIBS = $(WIN_LIBS)
+win: LDFLAGS = $(WIN_LDFLAGS)
+win: OBJECTS = WIN_OBJECTS
 win-release: $(ARCHIVE)
 
 $(BUILDDIR)/commonsyms.o: 
