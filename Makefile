@@ -36,7 +36,7 @@ win: $(ODOT_MXE)
 
 win-release: OBJECTS = $(ODOT_MXE)
 win-release: EXT = MXE
-win-release: $(ODOT_MXE) $(ARCHIVE)
+win-release: $(ARCHIVE)
 
 $(BUILDDIR)/commonsyms.o: 
 	$(CC) $(CFLAGS) $(INCLUDES) -c -o $(BUILDDIR)/commonsyms.o $(MAX_INCLUDES)/common/commonsyms.c
