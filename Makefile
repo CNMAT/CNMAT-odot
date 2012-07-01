@@ -8,7 +8,7 @@ o.unless o.var o.when
 VPATH = $(OBJECT_LIST)
 ODOT_MXO = $(foreach OBJ, $(OBJECT_LIST), $(XCODEBUILDDIR)/$(OBJ).mxo)
 ODOT_MXE = $(foreach OBJ, $(OBJECT_LIST), $(BUILDDIR)/$(OBJ).mxe)
-OBJECTS = ODOT_MXO
+OBJECTS = $(ODOT_MXO)
 EXT = MXO
 
 VERSION = $(shell perl -p -e 'if(/\#define\s+ODOT_VERSION\s+\"(.*)\"/){print $$1; last;}' odot_version.h)
@@ -30,7 +30,7 @@ ARCH = -arch i386 -arch ppc
 all: 
 	xcodebuild -scheme "Build all" -configuration Release -project odot.xcodeproj build
 
-win: OBJECTS = ODOT_MXE
+win: OBJECTS = $(ODOT_MXE)
 win: EXT = MXE
 win: CC = gcc
 win: CFLAGS = -DWIN_VERSION -DWIN_EXT_VERSION -U__STRICT_ANSI__ -U__ANSI_SOURCE -std=c99
@@ -39,7 +39,7 @@ win: LIBS = -Llibomax -lomax -L$(MAX_INCLUDES) -lMaxAPI -Llibo -lo
 win: LDFLAGS = -shared -static-libgcc
 win: $(BUILDDIR) $(OBJECTS)
 
-win-release: OBJECTS = ODOT_MXE
+win-release: OBJECTS = $(ODOT_MXE)
 win-release: EXT = MXE
 win-release: $(ARCHIVE)
 
