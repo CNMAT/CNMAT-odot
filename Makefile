@@ -1,19 +1,13 @@
 XCODEBUILDDIR = $(CURDIR)/DerivedData/odot/Build/Products/Release
 BUILDDIR = $(CURDIR)/build
-HELPDIR = $(BUILDDIR)/helpfiles
-PATCHDIR = patches
 C74SUPPORT = ../../../c74support
 MAX_INCLUDES = $(C74SUPPORT)/max-includes
 OBJECT_LIST = o.atomize o.change o.collect o.cond o.dict o.difference o.explode o.expr o.flatten o.if \
 o.intersection o.mappatch o.message o.pack o.pak o.prepend o.print o.printbytes o.route o.select o.union \
 o.unless o.var o.when
 VPATH = $(OBJECT_LIST)
-ODOT_CFILES = $(foreach OBJ, $(OBJECT_LIST), $(OBJ)/$(OBJ).c)
 ODOT_MXO = $(foreach OBJ, $(OBJECT_LIST), $(XCODEBUILDDIR)/$(OBJ).mxo)
 ODOT_MXE = $(foreach OBJ, $(OBJECT_LIST), $(BUILDDIR)/$(OBJ).mxe)
-
-PATCHES = $(BUILDDIR)/abstractions $(BUILDDIR)/demos $(BUILDDIR)/overview
-TEXTFILES = README_ODOT.txt
 
 ARCHIVE = o.tar.gz
 UNSTABLE = o.unstable.tar.gz
@@ -28,9 +22,8 @@ win: CFLAGS = -DWIN_VERSION -DWIN_EXT_VERSION -U__STRICT_ANSI__ -U__ANSI_SOURCE 
 win: INCLUDES = -I$(MAX_INCLUDES) -Ilibo -Ilibomax
 win: LIBS = -Llibomax -lomax -L$(MAX_INCLUDES) -lMaxAPI -Llibo -lo
 win: LDFLAGS = -shared -static-libgcc
-win: $(BUILDDIR) $(HELPDIR) $(BUILDDIR) $(ODOT_MXE)#$(BUILDDIR)/o.collect.mxe
+win: $(BUILDDIR) $(ODOT_MXE)#$(BUILDDIR)/o.collect.mxe
 
-#all: $(BUILDDIR) $(HELPDIR) $(ODOT_MXO) $(PATCHES) DOCUMENTS
 all:
 	xcodebuild -scheme "Build all" -configuration Release -project odot.xcodeproj build
 
@@ -84,9 +77,10 @@ install:
 
 .PHONY: clean
 clean: 
+	rm -rf $(BUILDDIR)
+	./package.pl clean
 #	for d in $(OBJECT_LIST); do (cd $$d; $(MAKE) clean); done
 #xcodebuild -project odot.xcodeproj clean
-	./package.pl clean
 
 
 release:
