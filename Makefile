@@ -6,15 +6,15 @@ o.intersection o.mappatch o.message o.pack o.pak o.prepend o.print o.printbytes 
 o.unless o.var o.when
 MAC_OBJECTS = $(foreach OBJ, $(OBJECT_LIST), $(BUILDDIR)/$(OBJ).mxo)
 WIN_OBJECTS = $(foreach OBJ, $(OBJECT_LIST), $(BUILDDIR)/$(OBJ).mxe)
-# ifeq ($(MAKECMDGOALS), win)
-# 	OBJECTS = $(WIN_OBJECTS)
-# else 
-# 	ifeq ($(MAKECMDGOALS), win-release)
-# 		OBJECTS = $(WIN_OBJECTS)
-# 	else
-# 		OBJECTS = $(MAC_OBJECTS)
-# 	endif
-# endif
+ifeq ($(MAKECMDGOALS), win)
+	OBJECTS = $(WIN_OBJECTS)
+else 
+	ifeq ($(MAKECMDGOALS), win-release)
+		OBJECTS = $(WIN_OBJECTS)
+	else
+		OBJECTS = $(MAC_OBJECTS)
+	endif
+endif
 OBJECTS = $(MAC_OBJECTS)
 VPATH = $(OBJECT_LIST)
 
@@ -52,7 +52,6 @@ win: CFLAGS = $(WIN_CFLAGS)
 win: INCLUDES = $(WIN_INCLUDES)
 win: LIBS = $(WIN_LIBS)
 win: LDFLAGS = $(WIN_LDFLAGS)
-win: OBJECTS = $(WIN_OBJECTS)
 win: $(OBJECTS)
 
 win-release: CC = $(WIN_CC)
@@ -60,7 +59,6 @@ win-release: CFLAGS = $(WIN_CFLAGS)
 win-release: INCLUDES = $(WIN_INCLUDES)
 win-release: LIBS = $(WIN_LIBS)
 win-release: LDFLAGS = $(WIN_LDFLAGS)
-win-release: OBJECTS = $(WIN_OBJECTS)
 win-release: $(ARCHIVE)
 
 $(BUILDDIR)/commonsyms.o: 
