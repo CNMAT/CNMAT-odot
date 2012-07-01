@@ -367,7 +367,7 @@
 		520C0E27158468F7005F2955 /* o.dict.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.dict.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
 		520C0E29158468F8005F2955 /* o.flatten copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "o.flatten copy-Info.plist"; path = "/Users/john/Development/cnmat/trunk/max/externals/odot/trunk/o.flatten copy-Info.plist"; sourceTree = "<absolute>"; };
 		520C0E2A158469F4005F2955 /* o.dict.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.dict.c; path = o.dict/o.dict.c; sourceTree = "<group>"; };
-		5217D909158EEBC4005B5238 /* o.flatten copy.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "o.flatten copy.mxo"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5217D909158EEBC4005B5238 /* o.explode.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.explode.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
 		5217D90B158EEBC5005B5238 /* o.flatten copy2-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "o.flatten copy2-Info.plist"; path = "/Users/john/Development/cnmat/trunk/max/externals/odot/trunk/o.flatten copy2-Info.plist"; sourceTree = "<absolute>"; };
 		5217D90C158EEBEB005B5238 /* o.explode.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.explode.c; path = o.explode/o.explode.c; sourceTree = "<group>"; };
 		525523A61504BE9C00A10E5D /* MaxAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MaxAPI.framework; path = "../../../c74support/max-includes/MaxAPI.framework"; sourceTree = "<group>"; };
@@ -760,7 +760,7 @@
 				525524FC1504D16600A10E5D /* o.when.mxo */,
 				529781601555B6FD0018A44D /* o.flatten.mxo */,
 				520C0E27158468F7005F2955 /* o.dict.mxo */,
-				5217D909158EEBC4005B5238 /* o.flatten copy.mxo */,
+				5217D909158EEBC4005B5238 /* o.explode.mxo */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -972,7 +972,7 @@
 			);
 			name = o.explode;
 			productName = cv.jit.dilate;
-			productReference = 5217D909158EEBC4005B5238 /* o.flatten copy.mxo */;
+			productReference = 5217D909158EEBC4005B5238 /* o.explode.mxo */;
 			productType = "com.apple.product-type.bundle";
 		};
 		525523C91504CB9E00A10E5D /* o.change */ = {
@@ -1977,7 +1977,7 @@
 				HEADER_SEARCH_PATHS_QUOTED_FOR_PROJECT_3 = "\"$(SRCROOT)/../../../c74support/max-includes\"";
 				INFOPLIST_FILE = "$(TARGET_NAME)/Info.plist";
 				INSTALL_OWNER = "$(USER)";
-				INSTALL_PATH = /build/objects;
+				INSTALL_PATH = build;
 				LIBRARY_SEARCH_PATHS = (
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_PROJECT_1)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_PROJECT_2)",
@@ -2011,7 +2011,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = i386;
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)";
 				DEPLOYMENT_LOCATION = YES;
 				DSTROOT = "$(PROJECT_DIR)";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2050,7 +2050,7 @@
 				HEADER_SEARCH_PATHS_QUOTED_FOR_PROJECT_3 = "\"$(SRCROOT)/../../../c74support/max-includes\"";
 				INFOPLIST_FILE = "$(TARGET_NAME)/Info.plist";
 				INSTALL_OWNER = "$(USER)";
-				INSTALL_PATH = /build/objects;
+				INSTALL_PATH = build;
 				LIBRARY_SEARCH_PATHS = (
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_PROJECT_1)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_PROJECT_2)",

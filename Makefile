@@ -1,16 +1,19 @@
-XCODEBUILDDIR = $(CURDIR)/DerivedData/odot/Build/Products/Release
 BUILDDIR = $(CURDIR)/build
 C74SUPPORT = ../../../c74support
 MAX_INCLUDES = $(C74SUPPORT)/max-includes
 OBJECT_LIST = o.atomize o.change o.collect o.cond o.dict o.difference o.explode o.expr o.flatten o.if \
 o.intersection o.mappatch o.message o.pack o.pak o.prepend o.print o.printbytes o.route o.select o.union \
 o.unless o.var o.when
-ODOT_MXO = $(foreach OBJ, $(OBJECT_LIST), $(XCODEBUILDDIR)/$(OBJ).mxo)
+MAC_OBJECTS = $(foreach OBJ, $(OBJECT_LIST), $(BUILDDIR)/$(OBJ).mxo)
 WIN_OBJECTS = $(foreach OBJ, $(OBJECT_LIST), $(BUILDDIR)/$(OBJ).mxe)
 ifeq ($(MAKECMDGOALS), win)
-	OBJECTS = $(ODOT_MXO)
-else 
 	OBJECTS = $(WIN_OBJECTS)
+else 
+	ifeq ($(MAKECMDGOALS), win-release)
+		OBJECTS = $(WIN_OBJECTS)
+	else
+		OBJECTS = $(MAC_OBJECTS)
+	endif
 endif
 VPATH = $(OBJECT_LIST)
 
@@ -58,8 +61,8 @@ $(BUILDDIR)/%.mxe: %.c $(BUILDDIR) $(BUILDDIR)/commonsyms.o
 	$(CC) $(CFLAGS) $(INCLUDES) -c -o $(BUILDDIR)/$*.o $<
 	$(CC) $(LDFLAGS) -o $(BUILDDIR)/$*.mxe $(BUILDDIR)/$*.o $(BUILDDIR)/commonsyms.o $(LIBS) 
 
-$(XCODEBUILDDIR)/%:
-	xcodebuild -scheme "Build all" -configuration Release -project odot.xcodeproj build
+$(BUILDDIR)/%.mxo:
+	xcodebuild -target $* -configuration Release -project odot.xcodeproj build
 
 $(BUILDDIR):
 	@[ -d $(BUILDDIR) ] || mkdir -p $(BUILDDIR)
