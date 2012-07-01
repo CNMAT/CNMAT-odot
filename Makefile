@@ -9,11 +9,7 @@ WIN_OBJECTS = $(foreach OBJ, $(OBJECT_LIST), $(BUILDDIR)/$(OBJ).mxe)
 ifeq ($(MAKECMDGOALS), win)
 	OBJECTS = $(WIN_OBJECTS)
 else 
-	ifeq ($(MAKECMDGOALS), win-release)
-		OBJECTS = $(WIN_OBJECTS)
-	else
-		OBJECTS = $(MAC_OBJECTS)
-	endif
+	OBJECTS = $(MAC_OBJECTS)
 endif
 VPATH = $(OBJECT_LIST)
 
@@ -58,7 +54,15 @@ win-release: CFLAGS = $(WIN_CFLAGS)
 win-release: INCLUDES = $(WIN_INCLUDES)
 win-release: LIBS = $(WIN_LIBS)
 win-release: LDFLAGS = $(WIN_LDFLAGS)
+win-release: OBJECTS = $(WIN_OBJECTS)
 win-release: $(ARCHIVE)
+
+win-install: CC = $(WIN_CC)
+win-install: CFLAGS = $(WIN_CFLAGS)
+win-install: INCLUDES = $(WIN_INCLUDES)
+win-install: LIBS = $(WIN_LIBS)
+win-install: LDFLAGS = $(WIN_LDFLAGS)
+win-install: install
 
 $(BUILDDIR)/commonsyms.o: 
 	$(CC) $(CFLAGS) $(INCLUDES) -c -o $(BUILDDIR)/commonsyms.o $(MAX_INCLUDES)/common/commonsyms.c
