@@ -54,6 +54,8 @@ win-release: $(ARCHIVE)
 
 win-install: install
 
+win-upload: upload
+
 $(BUILDDIR)/commonsyms.o: 
 	$(CC) $(CFLAGS) $(INCLUDES) -c -o $(BUILDDIR)/commonsyms.o $(MAX_INCLUDES)/common/commonsyms.c
 
