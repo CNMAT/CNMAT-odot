@@ -15,7 +15,6 @@ else
 		OBJECTS = $(MAC_OBJECTS)
 	endif
 endif
-OBJECTS = $(MAC_OBJECTS)
 VPATH = $(OBJECT_LIST)
 
 VERSION = $(shell perl -p -e 'if(/\#define\s+ODOT_VERSION\s+\"(.*)\"/){print $$1; last;}' odot_version.h)
