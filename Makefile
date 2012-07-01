@@ -38,6 +38,7 @@ win: INCLUDES = -I$(MAX_INCLUDES) -Ilibo -Ilibomax
 win: LIBS = -Llibomax -lomax -L$(MAX_INCLUDES) -lMaxAPI -Llibo -lo
 win: LDFLAGS = -shared -static-libgcc
 win: $(BUILDDIR) $(OBJECTS)
+	@echo $(OBJECTS)
 
 win-release: OBJECTS = $(ODOT_MXE)
 win-release: EXT = MXE
