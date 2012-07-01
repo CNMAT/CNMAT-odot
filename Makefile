@@ -20,7 +20,7 @@ VPATH = $(OBJECT_LIST)
 VERSION = $(shell perl -p -e 'if(/\#define\s+ODOT_VERSION\s+\"(.*)\"/){print $$1; last;}' odot_version.h)
 OS = $(shell perl -e 'print $$^O')
 RELEASEDIR = odot-$(strip $(OS))-$(strip $(VERSION))
-ARCHIVE = $(RELEASEDIR).tgz
+ARCHIVE = odot.tgz
 
 RELEASE_OBJECTS_DIR = $(RELEASEDIR)/objects
 
@@ -34,6 +34,12 @@ WIN_CFLAGS = -DWIN_VERSION -DWIN_EXT_VERSION -U__STRICT_ANSI__ -U__ANSI_SOURCE -
 WIN_INCLUDES = -I$(MAX_INCLUDES) -Ilibo -Ilibomax
 WIN_LIBS = -Llibomax -lomax -L$(MAX_INCLUDES) -lMaxAPI -Llibo -lo
 WIN_LDFLAGS = -shared -static-libgcc
+
+ifeq ($strip $(CNMAT_MAX_INSTALL_DIR)),)
+	INSTALLDIR = ~/odot
+else
+	INSTALLDIR = $(CNMAT_MAX_INSTALL_DIR)/odot
+endif
 
 all: 
 	xcodebuild -scheme "Build all" -configuration Release -project odot.xcodeproj build
@@ -70,14 +76,28 @@ $(BUILDDIR):
 $(RELEASEDIR): $(BUILDDIR)
 	@[ -d $(RELEASEDIR) ] || mkdir -p $(RELEASEDIR)
 
+$(INSTALLDIR):
+	@[ -d $(INSTALLDIR) ] || mkdir -p $(INSTALLDIR)
+
 $(RELEASE_OBJECTS_DIR): $(RELEASEDIR)
 	@[ -d $(RELEASE_OBJECTS_DIR) ] || mkdir -p $(RELEASE_OBJECTS_DIR)
 
 $(ARCHIVE): $(OBJECTS) $(RELEASEDIR) $(RELEASE_PATCHES_DIR) $(RELEASE_OBJECTS_DIR)
+	@echo copying objects
 	@cp -r $(OBJECTS) $(RELEASE_OBJECTS_DIR)
-	@cp -r $(PATCHES_FOR_RELEASE) $(RELEASEDIR)
+	@echo copying patches
+#	cp -r $(PATCHES_FOR_RELEASE) $(RELEASEDIR)
+	@rsync -avq --exclude=*/.* $(PATCHES_FOR_RELEASE) $(RELEASEDIR)
+	@echo copying extra files
 	@cp $(TEXTFILES_FOR_RELEASE) $(RELEASEDIR)
+	@echo compressing
 	@tar zcf $(ARCHIVE) $(RELEASEDIR)
+	@echo $(VERSION) > current-$(strip $(OS))-version
+	@echo done
+
+.PHONY: install
+install: $(ARCHIVE) $(INSTALLDIR)
+	cp -r $(RELEASEDIR)/* $(INSTALLDIR)
 
 .PHONY: clean
 clean: 
