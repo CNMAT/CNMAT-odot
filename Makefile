@@ -7,6 +7,11 @@ o.intersection o.mappatch o.message o.pack o.pak o.prepend o.print o.printbytes 
 o.unless o.var o.when
 ODOT_MXO = $(foreach OBJ, $(OBJECT_LIST), $(XCODEBUILDDIR)/$(OBJ).mxo)
 ODOT_MXE = $(foreach OBJ, $(OBJECT_LIST), $(BUILDDIR)/$(OBJ).mxe)
+ifeq ($(MAKECMDGOALS), win)
+	OBJECTS = $(ODOT_MXO)
+else 
+	OBJECTS = $(ODOT_MXE)
+endif
 VPATH = $(OBJECT_LIST)
 
 VERSION = $(shell perl -p -e 'if(/\#define\s+ODOT_VERSION\s+\"(.*)\"/){print $$1; last;}' odot_version.h)
@@ -18,7 +23,6 @@ RELEASE_OBJECTS_DIR = $(RELEASEDIR)/objects
 
 PATCHES_FOR_RELEASE = $(addprefix patches/, help demos abstractions)
 TEXTFILES_FOR_RELEASE = README_ODOT.txt
-
 
 SERVER_PATH = /home/www-data/berkeley.edu-cnmat.www/maxdl/files/odot/
 
@@ -34,8 +38,6 @@ win: LIBS = -Llibomax -lomax -L$(MAX_INCLUDES) -lMaxAPI -Llibo -lo
 win: LDFLAGS = -shared -static-libgcc
 win: $(ODOT_MXE)
 
-win-release: OBJECTS := $(ODOT_MXE)
-win-release: EXT = MXE
 win-release: $(ARCHIVE)
 
 $(BUILDDIR)/commonsyms.o: 
