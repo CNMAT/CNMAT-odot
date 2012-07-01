@@ -6,8 +6,6 @@ OBJECT_LIST = o.atomize o.change o.collect o.cond o.dict o.difference o.explode 
 o.intersection o.mappatch o.message o.pack o.pak o.prepend o.print o.printbytes o.route o.select o.union \
 o.unless o.var o.when
 VPATH = $(OBJECT_LIST)
-ODOT_MXO = $(foreach OBJ, $(OBJECT_LIST), $(XCODEBUILDDIR)/$(OBJ).mxo)
-ODOT_MXE = $(foreach OBJ, $(OBJECT_LIST), $(BUILDDIR)/$(OBJ).mxe)
 
 VERSION = $(shell perl -p -e 'if(/\#define\s+ODOT_VERSION\s+\"(.*)\"/){print $$1; last;}' odot_version.h)
 OS = $(shell perl -e 'print $$^O')
@@ -25,19 +23,17 @@ SERVER_PATH = /home/www-data/berkeley.edu-cnmat.www/maxdl/files/odot/
 
 ARCH = -arch i386 -arch ppc
 
-mac: OBJECTS = $(ODOT_MXO)
-mac: EXT = MXO
-mac: 
+all: ODOT_MXO = $(foreach OBJ, $(OBJECT_LIST), $(XCODEBUILDDIR)/$(OBJ).mxo)
+all: 
 	xcodebuild -scheme "Build all" -configuration Release -project odot.xcodeproj build
 
-win: OBJECTS = $(ODOT_MXE)
-win: EXT = MXE
+win: ODOT_MXE = $(foreach OBJ, $(OBJECT_LIST), $(BUILDDIR)/$(OBJ).mxe)
 win: CC = gcc
 win: CFLAGS = -DWIN_VERSION -DWIN_EXT_VERSION -U__STRICT_ANSI__ -U__ANSI_SOURCE -std=c99
 win: INCLUDES = -I$(MAX_INCLUDES) -Ilibo -Ilibomax
 win: LIBS = -Llibomax -lomax -L$(MAX_INCLUDES) -lMaxAPI -Llibo -lo
 win: LDFLAGS = -shared -static-libgcc
-win: $(BUILDDIR) $(OBJECTS)
+win: $(BUILDDIR) $(ODOT_MXE)
 
 win-release: OBJECTS = $(ODOT_MXE)
 win-release: EXT = MXE
