@@ -9,7 +9,7 @@
             ActionType = "Xcode.IDEStandardExecutionActionsCore.ExecutionActionType.ShellScriptAction">
             <ActionContent
                title = "Run Script"
-               scriptText = "cd $SRCROOT&#10;./package.pl">
+               scriptText = "">
                <EnvironmentBuildable>
                   <BuildableReference
                      BuildableIdentifier = "primary"
