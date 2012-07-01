@@ -32,16 +32,16 @@ win: CFLAGS = -DWIN_VERSION -DWIN_EXT_VERSION -U__STRICT_ANSI__ -U__ANSI_SOURCE 
 win: INCLUDES = -I$(MAX_INCLUDES) -Ilibo -Ilibomax
 win: LIBS = -Llibomax -lomax -L$(MAX_INCLUDES) -lMaxAPI -Llibo -lo
 win: LDFLAGS = -shared -static-libgcc
-win: $(BUILDDIR) $(ODOT_MXE)
+win: $(ODOT_MXE)
 
 win-release: OBJECTS = $(ODOT_MXE)
 win-release: EXT = MXE
-win-release: $(ARCHIVE)
+win-release: $(ODOT_MXE) $(ARCHIVE)
 
 $(BUILDDIR)/commonsyms.o: 
 	$(CC) $(CFLAGS) $(INCLUDES) -c -o $(BUILDDIR)/commonsyms.o $(MAX_INCLUDES)/common/commonsyms.c
 
-$(BUILDDIR)/%.mxe: %.c $(BUILDDIR)/commonsyms.o
+$(BUILDDIR)/%.mxe: %.c $(BUILDDIR) $(BUILDDIR)/commonsyms.o
 	$(CC) $(CFLAGS) $(INCLUDES) -c -o $(BUILDDIR)/$*.o $<
 	$(CC) $(LDFLAGS) -o $(BUILDDIR)/$*.mxe $(BUILDDIR)/$*.o $(BUILDDIR)/commonsyms.o $(LIBS) 
 
