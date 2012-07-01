@@ -61,11 +61,13 @@ $(ARCHIVE): $(OBJECTS) $(RELEASEDIR) $(RELEASE_PATCHES_DIR) $(RELEASE_OBJECTS_DI
 	@cp -r $(OBJECTS) $(RELEASE_OBJECTS_DIR)
 	@cp -r $(PATCHES_FOR_RELEASE) $(RELEASEDIR)
 	@cp $(TEXTFILES_FOR_RELEASE) $(RELEASEDIR)
+	@tar zcf $(ARCHIVE) $(RELEASEDIR)
 
 .PHONY: clean
 clean: 
 	rm -rf $(BUILDDIR)
-	./package.pl clean
+	rm -rf $(RELEASEDIR)
+#./package.pl clean
 #	for d in $(OBJECT_LIST); do (cd $$d; $(MAKE) clean); done
 #xcodebuild -project odot.xcodeproj clean
 
