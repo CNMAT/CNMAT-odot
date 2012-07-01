@@ -5,6 +5,8 @@ MAX_INCLUDES = $(C74SUPPORT)/max-includes
 OBJECT_LIST = o.atomize o.change o.collect o.cond o.dict o.difference o.explode o.expr o.flatten o.if \
 o.intersection o.mappatch o.message o.pack o.pak o.prepend o.print o.printbytes o.route o.select o.union \
 o.unless o.var o.when
+ODOT_MXO = $(foreach OBJ, $(OBJECT_LIST), $(XCODEBUILDDIR)/$(OBJ).mxo)
+ODOT_MXE = $(foreach OBJ, $(OBJECT_LIST), $(BUILDDIR)/$(OBJ).mxe)
 VPATH = $(OBJECT_LIST)
 
 VERSION = $(shell perl -p -e 'if(/\#define\s+ODOT_VERSION\s+\"(.*)\"/){print $$1; last;}' odot_version.h)
@@ -23,11 +25,9 @@ SERVER_PATH = /home/www-data/berkeley.edu-cnmat.www/maxdl/files/odot/
 
 ARCH = -arch i386 -arch ppc
 
-all: ODOT_MXO = $(foreach OBJ, $(OBJECT_LIST), $(XCODEBUILDDIR)/$(OBJ).mxo)
 all: 
 	xcodebuild -scheme "Build all" -configuration Release -project odot.xcodeproj build
 
-win: ODOT_MXE = $(foreach OBJ, $(OBJECT_LIST), $(BUILDDIR)/$(OBJ).mxe)
 win: CC = gcc
 win: CFLAGS = -DWIN_VERSION -DWIN_EXT_VERSION -U__STRICT_ANSI__ -U__ANSI_SOURCE -std=c99
 win: INCLUDES = -I$(MAX_INCLUDES) -Ilibo -Ilibomax
