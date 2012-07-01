@@ -53,10 +53,10 @@ $(BUILDDIR)/%.mxe: %.c $(BUILDDIR)/commonsyms.o
 $(XCODEBUILDDIR)/%:
 	xcodebuild -scheme "Build all" -configuration Release -project odot.xcodeproj build
 
-$(BUILDDIR): $(BUILDDIR)
+$(BUILDDIR):
 	@[ -d $(BUILDDIR) ] || mkdir -p $(BUILDDIR)
 
-$(RELEASEDIR): $(RELEASEDIR)
+$(RELEASEDIR): $(BUILDDIR)
 	@[ -d $(RELEASEDIR) ] || mkdir -p $(RELEASEDIR)
 
 $(ARCHIVE): $(OBJECTS) $(RELEASEDIR)
