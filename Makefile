@@ -43,12 +43,12 @@ win: LDFLAGS = $(WIN_LDFLAGS)
 win: OBJECTS = WIN_OBJECTS
 win: $(WIN_OBJECTS)
 
-win: CC = $(WIN_GCC)
-win: CFLAGS = $(WIN_CFLAGS)
-win: INCLUDES = $(WIN_INCLUDES)
-win: LIBS = $(WIN_LIBS)
-win: LDFLAGS = $(WIN_LDFLAGS)
-win: OBJECTS = WIN_OBJECTS
+win-release: CC = $(WIN_GCC)
+win-release: CFLAGS = $(WIN_CFLAGS)
+win-release: INCLUDES = $(WIN_INCLUDES)
+win-release: LIBS = $(WIN_LIBS)
+win-release: LDFLAGS = $(WIN_LDFLAGS)
+win-release: OBJECTS = WIN_OBJECTS
 win-release: $(ARCHIVE)
 
 $(BUILDDIR)/commonsyms.o: 
