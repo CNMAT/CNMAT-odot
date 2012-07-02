@@ -70,27 +70,27 @@ stage_distribution: $(OBJECTS) $(STAGED_PRODUCTS)
 
 # executed to statisfy the $(STAGED_OBJECTS) dependancy
 $(STAGINGDIR)/objects/%.$(EXT): $(OBJECTS) $(STAGINGDIR) $(STAGINGDIR)/objects
-	@cp -r $(BUILDDIR)/$*.$(EXT) $(STAGINGDIR)/objects
+	cp -r $(BUILDDIR)/$*.$(EXT) $(STAGINGDIR)/objects
 
 # executed to statisfy the $(STAGED_PATCHES) and $(STAGED_TEXTFILES) dependancies
 $(STAGINGDIR)/%: $(STAGINGDIR)
-	@rsync -avq --exclude=*/.* $* $(STAGINGDIR)
+	rsync -avq --exclude=*/.* $* $(STAGINGDIR)
 
 .PHONY: install
 install: $(DIRS) $(OBJECTS) $(STAGED_PRODUCTS) $(INSTALLED_PRODUCTS)
 
 # executed to satisfy the $(INSTALLED_PRODUCTS) dependancy
 $(LOCAL_INSTALL_PATH)/%: $(LOCAL_INSTALL_DIR)
-	@rsync -avq --exclude=*/.* $(STAGINGDIR)/$* $(LOCAL_INSTALL_PATH)
+	cp -r $(STAGINGDIR)/$* $(LOCAL_INSTALL_PATH)
+#	rsync -avq --exclude=*/.* $(STAGINGDIR)/$* $(LOCAL_INSTALL_PATH)
 
 .PHONY: release
-release: $(ARCHIVE)
+release: $(DIRS) $(OBJECTS) $(ARCHIVE)
 	scp $(ARCHIVE) $(VERSION_FILE) cnmat.berkeley.edu:/$(SERVER_PATH)
 	scp $(ARCHIVE) cnmat.berkeley.edu:/$(SERVER_PATH)/$(CURRENT_ARCHIVE)
 
 $(ARCHIVE): $(STAGED_PRODUCTS)
-	tar zcf $(ARCHIVE) $(STAGINGDIR)
-
+	tar zvcf $(ARCHIVE) $(STAGINGDIR)
 
 .PHONY: clean
 clean: 
@@ -123,16 +123,16 @@ $(BUILDDIR)/%.mxe: %.c $(BUILDDIR) $(BUILDDIR)/commonsyms.o
 ## create directories
 ##################################################
 $(BUILDDIR):
-	@[ -d $(BUILDDIR) ] || mkdir -p $(BUILDDIR)
+	[ -d $(BUILDDIR) ] || mkdir -p $(BUILDDIR)
 
 $(STAGINGDIR):
-	@[ -d $(STAGINGDIR) ] || mkdir -p $(STAGINGDIR)
+	[ -d $(STAGINGDIR) ] || mkdir -p $(STAGINGDIR)
 
 $(STAGINGDIR)/objects: $(STAGINGDIR)
-	@[ -d $(STAGINGDIR)/objects ] || mkdir -p $(STAGINGDIR)/objects
+	[ -d $(STAGINGDIR)/objects ] || mkdir -p $(STAGINGDIR)/objects
 
 $(LOCAL_INSTALL_PATH):
-	@[ -d $(LOCAL_INSTALL_PATH) ] || mkdir -p $(LOCAL_INSTALL_PATH)
+	[ -d $(LOCAL_INSTALL_PATH) ] || mkdir -p $(LOCAL_INSTALL_PATH)
 
 $(INSTALLDIR)/objects: $(INSTALLDIR) $(RELEASEDIR)
 	cp -r $(RELEASEDIR)/* $(INSTALLDIR)
