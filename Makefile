@@ -70,7 +70,6 @@ stage_distribution: $(OBJECTS) $(STAGED_PRODUCTS)
 
 # executed to statisfy the $(STAGED_OBJECTS) dependancy
 $(STAGINGDIR)/objects/%.$(EXT): $(OBJECTS) $(STAGINGDIR) $(STAGINGDIR)/objects
-	@echo here
 	@cp -r $(BUILDDIR)/$*.$(EXT) $(STAGINGDIR)/objects
 
 # executed to statisfy the $(STAGED_PATCHES) and $(STAGED_TEXTFILES) dependancies
@@ -78,10 +77,11 @@ $(STAGINGDIR)/%: $(STAGINGDIR)
 	@rsync -avq --exclude=*/.* $* $(STAGINGDIR)
 
 debug:
-	@echo platform = $(PLATFORM)
-	@echo dirs = $(DIRS)
-	@echo sp = $(STAGED_PRODUCTS)
-	@echo ip = $(INSTALLED_PRODUCTS)
+	@echo $(OBJECTS)
+# @echo platform = $(PLATFORM)
+# @echo dirs = $(DIRS)
+# @echo sp = $(STAGED_PRODUCTS)
+# @echo ip = $(INSTALLED_PRODUCTS)
 
 .PHONY: install
 install: $(DIRS) $(STAGED_PRODUCTS) $(INSTALLED_PRODUCTS)
