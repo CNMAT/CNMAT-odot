@@ -124,12 +124,6 @@ $(BUILDDIR)/%.mxo:
 ##################################################
 ## Windows specific
 ##################################################
-win: $(DIRS) $(OBJECTS)
-	make stage_distribution PLATFORM=$(PLATFORM)
-#win-release: $(ARCHIVE)
-#win-install: install
-#win-upload: upload
-
 $(BUILDDIR)/commonsyms.o: 
 	$(CC) $(CFLAGS) $(INCLUDES) -c -o $(BUILDDIR)/commonsyms.o $(MAX_INCLUDES)/common/commonsyms.c
 
