@@ -1,5 +1,5 @@
 
-#define ODOT_VERSION "1.2.0" 
+#define ODOT_VERSION "1.2.1" 
 #define ODOT_RELEASE_DATE "[2012-07-01 Sun]"
 #define ODOT_COPYRIGHT_YEARS "2008-12"
 #define ODOT_AUTHORS "John MacCallum, Adrian Freed"
