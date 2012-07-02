@@ -15,7 +15,7 @@ C74SUPPORT = ../../../c74support
 MAX_INCLUDES = $(C74SUPPORT)/max-includes
 
 BUILDDIR = $(CURDIR)/build
-STAGINGDIR = odot-$(strip $(PLATFORM))-$(strip $(VERSION))
+STAGINGDIR = odot-$(PLATFORM)-$(strip $(VERSION))
 
 MAC_OBJECTS = $(addsuffix .mxo, $(addprefix $(BUILDDIR)/, $(OBJECT_LIST)))
 WIN_OBJECTS = $(addsuffix .mxe, $(addprefix $(BUILDDIR)/, $(OBJECT_LIST)))
@@ -83,6 +83,7 @@ $(STAGINGDIR)/%: $(STAGINGDIR)
 
 .PHONY: install
 install: $(DIRS) $(STAGED_PRODUCTS) $(INSTALLED_PRODUCTS)
+	@echo $(PLATFORM)
 
 # executed to satisfy the $(INSTALLED_PRODUCTS) dependancy
 $(LOCAL_INSTALL_PATH)/%: $(LOCAL_INSTALL_DIR)
