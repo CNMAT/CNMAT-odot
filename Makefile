@@ -93,7 +93,7 @@ $(ARCHIVE): $(STAGED_PRODUCTS)
 	tar zvcf $(ARCHIVE) $(STAGINGDIR)
 
 $(VERSION_FILE):
-	$(shell echo $$(VERSION) > $(VERSION_FILE))
+	$(shell echo $(VERSION) > $(VERSION_FILE))
 
 .PHONY: clean
 clean: 
