@@ -81,8 +81,13 @@ $(STAGINGDIR)/objects/%.$(EXT): $(OBJECTS) $(STAGINGDIR) $(STAGINGDIR)/objects
 $(STAGINGDIR)/%: $(STAGINGDIR)
 	@rsync -avq --exclude=*/.* $* $(STAGINGDIR)
 
+debug:
+	@echo dirs = $(DIRS)
+	@echo sp = $(STAGED_PRODUCTS)
+	@echo ip = $(INSTALLED_PRODUCTS)
+
 .PHONY: install
-install: $(DIRS) $(STAGED_PRODUCTS) $(INSTALLED_PRODUCTS)
+install: debug $(DIRS) $(STAGED_PRODUCTS) $(INSTALLED_PRODUCTS)
 	@echo $(PLATFORM)
 
 # executed to satisfy the $(INSTALLED_PRODUCTS) dependancy
