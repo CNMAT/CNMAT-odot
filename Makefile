@@ -82,6 +82,7 @@ $(STAGINGDIR)/%: $(STAGINGDIR)
 	@rsync -avq --exclude=*/.* $* $(STAGINGDIR)
 
 debug:
+	@echo platform = $(PLATFORM)
 	@echo dirs = $(DIRS)
 	@echo sp = $(STAGED_PRODUCTS)
 	@echo ip = $(INSTALLED_PRODUCTS)
