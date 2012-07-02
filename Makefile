@@ -77,7 +77,7 @@ $(STAGINGDIR)/%: $(STAGINGDIR)
 	@rsync -avq --exclude=*/.* $* $(STAGINGDIR)
 
 .PHONY: install
-install: $(DIRS) $(STAGED_PRODUCTS) $(INSTALLED_PRODUCTS)
+install: debug $(DIRS) $(STAGED_PRODUCTS) $(INSTALLED_PRODUCTS)
 
 # executed to satisfy the $(INSTALLED_PRODUCTS) dependancy
 $(LOCAL_INSTALL_PATH)/%: $(LOCAL_INSTALL_DIR)
