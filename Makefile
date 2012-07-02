@@ -117,7 +117,7 @@ $(BUILDDIR)/%.mxo:
 ##################################################
 ## Windows specific
 ##################################################
-win: $(OBJECTS)
+win: $(DIRS) $(OBJECTS)
 	make stage_distribution PLATFORM=$(PLATFORM)
 #win-release: $(ARCHIVE)
 #win-install: install
