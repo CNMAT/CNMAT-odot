@@ -74,7 +74,7 @@ SERVER_PATH = /home/www-data/berkeley.edu-cnmat.www/maxdl/files/odot/
 stage_distribution: $(OBJECTS) $(STAGED_PRODUCTS)
 
 # executed to statisfy the $(STAGED_OBJECTS) dependancy
-$(STAGINGDIR)/objects/%.$(EXT): $(STAGINGDIR) $(STAGINGDIR)/objects
+$(STAGINGDIR)/objects/%.$(EXT): $(OBJECTS) $(STAGINGDIR) $(STAGINGDIR)/objects
 	@cp -r $(BUILDDIR)/$*.$(EXT) $(STAGINGDIR)/objects
 
 # executed to statisfy the $(STAGED_PATCHES) and $(STAGED_TEXTFILES) dependancies
@@ -82,7 +82,7 @@ $(STAGINGDIR)/%: $(STAGINGDIR)
 	@rsync -avq --exclude=*/.* $* $(STAGINGDIR)
 
 .PHONY: install
-install: $(DIRS) $(STAGED_OBJECTS) $(STAGED_PATCHES) $(STAGED_TEXTFILES)  $(INSTALLED_PRODUCTS)
+install: $(DIRS) $(STAGED_PRODUCTS) $(INSTALLED_PRODUCTS)
 
 # executed to satisfy the $(INSTALLED_PRODUCTS) dependancy
 $(LOCAL_INSTALL_PATH)/%: $(LOCAL_INSTALL_DIR)
