@@ -76,15 +76,8 @@ $(STAGINGDIR)/objects/%.$(EXT): $(OBJECTS) $(STAGINGDIR) $(STAGINGDIR)/objects
 $(STAGINGDIR)/%: $(STAGINGDIR)
 	@rsync -avq --exclude=*/.* $* $(STAGINGDIR)
 
-debug:
-	@echo $(OBJECTS)
-# @echo platform = $(PLATFORM)
-# @echo dirs = $(DIRS)
-# @echo sp = $(STAGED_PRODUCTS)
-# @echo ip = $(INSTALLED_PRODUCTS)
-
 .PHONY: install
-install: debug $(DIRS) $(STAGED_PRODUCTS) $(INSTALLED_PRODUCTS)
+install: $(DIRS) $(STAGED_PRODUCTS) $(INSTALLED_PRODUCTS)
 
 # executed to satisfy the $(INSTALLED_PRODUCTS) dependancy
 $(LOCAL_INSTALL_PATH)/%: $(LOCAL_INSTALL_DIR)
@@ -143,3 +136,10 @@ $(LOCAL_INSTALL_PATH):
 
 $(INSTALLDIR)/objects: $(INSTALLDIR) $(RELEASEDIR)
 	cp -r $(RELEASEDIR)/* $(INSTALLDIR)
+
+debug:
+	@echo $(OBJECTS)
+# @echo platform = $(PLATFORM)
+# @echo dirs = $(DIRS)
+# @echo sp = $(STAGED_PRODUCTS)
+# @echo ip = $(INSTALLED_PRODUCTS)
