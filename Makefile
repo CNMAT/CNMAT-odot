@@ -84,8 +84,7 @@ debug:
 # @echo ip = $(INSTALLED_PRODUCTS)
 
 .PHONY: install
-install: $(DIRS) $(STAGED_PRODUCTS) $(INSTALLED_PRODUCTS)
-	@echo $(PLATFORM)
+install: debug $(DIRS) $(STAGED_PRODUCTS) $(INSTALLED_PRODUCTS)
 
 # executed to satisfy the $(INSTALLED_PRODUCTS) dependancy
 $(LOCAL_INSTALL_PATH)/%: $(LOCAL_INSTALL_DIR)
