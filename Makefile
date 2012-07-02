@@ -85,12 +85,15 @@ $(LOCAL_INSTALL_PATH)/%: $(LOCAL_INSTALL_DIR)
 #	rsync -avq --exclude=*/.* $(STAGINGDIR)/$* $(LOCAL_INSTALL_PATH)
 
 .PHONY: release
-release: $(DIRS) $(OBJECTS) $(ARCHIVE)
+release: $(DIRS) $(OBJECTS) $(ARCHIVE) $(VERSION_FILE)
 	scp $(ARCHIVE) $(VERSION_FILE) cnmat.berkeley.edu:/$(SERVER_PATH)
 	scp $(ARCHIVE) cnmat.berkeley.edu:/$(SERVER_PATH)/$(CURRENT_ARCHIVE)
 
 $(ARCHIVE): $(STAGED_PRODUCTS)
 	tar zvcf $(ARCHIVE) $(STAGINGDIR)
+
+$(VERSION_FILE):
+	$(shell echo $$(VERSION) > $(VERSION_FILE))
 
 .PHONY: clean
 clean: 
