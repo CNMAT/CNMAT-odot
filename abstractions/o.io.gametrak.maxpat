@@ -240,7 +240,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "FullPacket" ],
-									"patching_rect" : [ 29.0, 206.0, 421.0, 34.0 ],
+									"patching_rect" : [ 29.0, 206.0, 496.0, 34.0 ],
 									"text" : "o.expr /right/x = scale(/right/x\\, 0\\, 65000\\, -1.\\, 1.)\\; /right/y = scale(/right/y\\, 0\\, 65000\\, -1.\\, 1.)\\; /right/z = scale(/right/z\\, 0\\, 65000\\, 0.\\, 1.)"
 								}
 
