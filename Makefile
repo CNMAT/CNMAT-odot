@@ -92,7 +92,7 @@ release: $(DIRS) $(OBJECTS) $(ARCHIVE) $(VERSION_FILE)
 $(ARCHIVE): $(STAGED_PRODUCTS)
 	tar zvcf $(ARCHIVE) $(STAGINGDIR)
 
-$(VERSION_FILE):
+$(VERSION_FILE): odot_version.h
 	$(shell echo $(VERSION) > $(VERSION_FILE))
 
 .PHONY: clean
