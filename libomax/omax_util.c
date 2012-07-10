@@ -60,7 +60,7 @@ static t_max_err (*omax_util_dictobj_release)(t_dictionary *d);
 t_symbol *omax_ps_FullPacket = NULL;
 
 #ifdef WIN_VERSION
-static int omax_util_resolveDictStubs(void)
+int omax_util_resolveDictStubs(void)
 {
 	return 1;
 }
