@@ -1,7 +1,7 @@
 #+STARTUP: showall
 #+TODO: TODO(t) STARTED(s) WAITING(w) BUG(b) | DONE(d) DELEGATED(e) FIXED(f)
 #+begin_src C :tangle odot_version.h
-#define ODOT_VERSION "1.2.2" 
+#define ODOT_VERSION "1.2.3" 
 #define ODOT_RELEASE_DATE "[2012-07-04 Wed]"
 #define ODOT_COPYRIGHT_YEARS "2008-12"
 #define ODOT_AUTHORS "John MacCallum, Adrian Freed"
@@ -76,6 +76,9 @@ should persist
 New objects with more explicit behavior.
 
 * VERSION 1.2.3 
+Released [2012-07-10 Tue]
+** General
+*** Added stubs for the dictionary code so that they'll load in Max 5
 
 * VERSION 1.2.2
 Released [2012-07-04 Wed]
