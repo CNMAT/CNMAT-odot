@@ -40,8 +40,9 @@ extern "C" {
 #define OMAX_UTIL_DICTIONARY(obj_type, obj, fp)				\
 	void omax_util_dictionary(obj_type *obj, t_symbol *name){	\
 		omax_util_processDictionary((void *)obj, name, (void (*)(void *, long, long))fp); \
-	}								\
+	}
 
+int omax_util_resolveDictStubs(void);
 void omax_util_dictionaryToOSC(t_dictionary *dict, t_osc_bndl_u *bndl_u);
 void omax_util_processDictionary(void *x, t_symbol *name, void (*fp)(void *x, long len, long ptr));
 void omax_util_bundleToDictionary(t_osc_bndl_s *bndl, t_dictionary *dict);

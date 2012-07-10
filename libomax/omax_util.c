@@ -50,7 +50,87 @@
 //#define __ODOT_PROFILE__
 //#include "osc_profile.h"
 
+#ifndef WIN_VERSION
+static int omax_util_haveDict;
+static int omax_util_dictStubsResolved;
+static t_dictionary *(*omax_util_dictobj_findregistered_retain)(t_symbol *name);
+static t_max_err (*omax_util_dictobj_release)(t_dictionary *d);
+#endif
+
 t_symbol *omax_ps_FullPacket = NULL;
+
+#ifdef WIN_VERSION
+static int omax_util_resolveDictStubs(void)
+{
+	return 1;
+}
+#else
+int omax_util_resolveDictStubs(void)
+{
+	if(omax_util_dictStubsResolved){
+		return omax_util_haveDict;
+	}
+	omax_util_dictStubsResolved = 1;
+	char *app_path = getenv("_");
+	int app_path_len = strlen(app_path);
+	char outname[app_path_len + 32];
+	char *ptr = app_path + app_path_len - 1;
+	while((*ptr) != '/'){
+		ptr--;
+	}
+	while(*(ptr - 1) != '/'){
+		ptr--;
+	}
+	app_path[(ptr - app_path)] = '\0';
+	sprintf(outname, "%sFrameworks/MaxAPI.framework", app_path);
+	OSStatus err;
+	short path;
+	char name[MAX_PATH_CHARS];
+	long type = 0;
+
+	omax_util_haveDict = 0;
+	//char outname[MAX_PATH_CHARS];
+	//sprintf(outname,"/Applications/Max6/Max.app/Contents/Frameworks/MaxAPI.framework");
+	//if (!locatefile_extended(name, &path, &type, 0L, 0)){
+	char natname[MAX_PATH_CHARS];
+
+	//if(!path_topathname(path, name, outname)){
+	CFStringRef str;
+	CFURLRef url;
+	CFBundleRef maxapi_bundle_ref;
+
+	path_nameconform(outname, natname, PATH_STYLE_NATIVE, PATH_TYPE_PATH);
+	str = CFStringCreateWithCString(kCFAllocatorDefault, natname, kCFStringEncodingUTF8);
+	if((url = CFURLCreateWithFileSystemPath(kCFAllocatorDefault, str, kCFURLPOSIXPathStyle, true))){
+		// we need to get rid of this in a quitmethodthingy
+		if((maxapi_bundle_ref = CFBundleCreate(kCFAllocatorDefault, url))){
+			omax_util_dictobj_findregistered_retain = CFBundleGetFunctionPointerForName(maxapi_bundle_ref, CFSTR("dictobj_findregistered_retain"));
+			if(!omax_util_dictobj_findregistered_retain){
+				return 0;
+			}
+
+			omax_util_dictobj_release = CFBundleGetFunctionPointerForName(maxapi_bundle_ref, CFSTR("dictobj_release"));
+			if(!omax_util_dictobj_release){
+				return 0;
+			}
+			/*
+			  The above file explicitly loads each function to a typed function pointer like the following:
+			  pf_cgCreateContext = CFBundleGetFunctionPointerForName(g_cg_bundle_ref, CFSTR("cgCreateContext"));
+			  if(!pf_cgCreateContext) {
+			  error("jit.gl.shader: unable to load CG framework function 'cgCreateContext'");
+			  }
+			*/
+			omax_util_haveDict = 1;
+		}
+	broken:
+		CFRelease(url);
+	}
+	CFRelease(str);
+	//}
+	//}
+	return omax_util_haveDict;
+}
+#endif
 
 void omax_util_dictionaryToOSC(t_dictionary *dict, t_osc_bndl_u *bndl_u)
 {
@@ -104,7 +184,11 @@ void omax_util_dictionaryToOSC(t_dictionary *dict, t_osc_bndl_u *bndl_u)
 
 void omax_util_processDictionary(void *x, t_symbol *name, void (*fp)(void *x, long len, long ptr))
 {
+#ifdef WIN_VERSION
 	t_dictionary *dict = dictobj_findregistered_retain(name);
+#else
+	t_dictionary *dict = omax_util_dictobj_findregistered_retain(name);
+#endif
 	t_osc_bndl_u *bndl_u = osc_bundle_u_alloc();
 	omax_util_dictionaryToOSC(dict, bndl_u);
 	long len = 0;
@@ -113,7 +197,11 @@ void omax_util_processDictionary(void *x, t_symbol *name, void (*fp)(void *x, lo
 	fp(x, len, (long)bndl);
 	osc_bundle_u_free(bndl_u);
 	osc_mem_free(bndl);
+#ifdef WIN_VERSION
 	dictobj_release(dict);
+#else
+	omax_util_dictobj_release(dict);
+#endif
 }
 
 void omax_util_bundleToDictionary(t_osc_bndl_s *bndl, t_dictionary *dict)
