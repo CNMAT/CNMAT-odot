@@ -300,7 +300,11 @@ int main(void){
 	class_addmethod(c, (method)omap_anything, "anything", A_GIMME, 0);
 	class_addmethod(c, (method)omap_list, "list", A_GIMME, 0);
 
-	class_addmethod(c, (method)omax_util_dictionary, "dictionary", A_SYM, 0);
+	// remove this if statement when we stop supporting Max 5
+	if(omax_util_resolveDictStubs()){
+		class_addmethod(c, (method)omax_util_dictionary, "dictionary", A_SYM, 0);
+	}
+
 
 	class_register(CLASS_BOX, c);
 	omap_class = c;

@@ -100,7 +100,11 @@ int main(void)
 	class_addmethod(c, (method)oexplode_fullPacket, "FullPacket", A_LONG, A_LONG, 0);
 	class_addmethod(c, (method)oexplode_assist, "assist", A_CANT, 0);
 	class_addmethod(c, (method)oexplode_doc, "doc", 0);
-	class_addmethod(c, (method)omax_util_dictionary, "dictionary", A_SYM, 0);
+	// remove this if statement when we stop supporting Max 5
+	if(omax_util_resolveDictStubs()){
+		class_addmethod(c, (method)omax_util_dictionary, "dictionary", A_SYM, 0);
+	}
+
 
 	CLASS_ATTR_LONG(c, "level", 0, t_oexplode, level);
 	CLASS_ATTR_SYM(c, "sep", 0, t_oexplode, sep);

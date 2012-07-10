@@ -99,7 +99,11 @@ int main(void){
 	t_class *c = class_new("o.printbytes", (method)opbytes_new, (method)opbytes_free, sizeof(t_opbytes), 0L, A_GIMME, 0);
 
 	class_addmethod(c, (method)opbytes_fullPacket, "FullPacket", A_LONG, A_LONG, 0);
-	class_addmethod(c, (method)omax_util_dictionary, "dictionary", A_SYM, 0);
+	// remove this if statement when we stop supporting Max 5
+	if(omax_util_resolveDictStubs()){
+		class_addmethod(c, (method)omax_util_dictionary, "dictionary", A_SYM, 0);
+	}
+
 	class_addmethod(c, (method)opbytes_doc, "doc", 0);
 	class_addmethod(c, (method)opbytes_assist, "assist", A_CANT, 0);
 

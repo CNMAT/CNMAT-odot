@@ -181,7 +181,11 @@ void *oprint_new(t_symbol *msg, short argc, t_atom *argv){
 int main(void){
 	t_class *c = class_new("o.print", (method)oprint_new, (method)oprint_free, sizeof(t_oprint), 0L, A_GIMME, 0);
 	class_addmethod(c, (method)oprint_fullPacket, "FullPacket", A_LONG, A_LONG, 0);
-	class_addmethod(c, (method)omax_util_dictionary, "dictionary", A_SYM, 0);
+	// remove this if statement when we stop supporting Max 5
+	if(omax_util_resolveDictStubs()){
+		class_addmethod(c, (method)omax_util_dictionary, "dictionary", A_SYM, 0);
+	}
+
 	class_addmethod(c, (method)oprint_assist, "assist", A_CANT, 0);
 	class_addmethod(c, (method)oprint_doc, "doc", 0);
 	class_addmethod(c, (method)oprint_anything, "anything", A_GIMME, 0);
