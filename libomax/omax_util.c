@@ -128,10 +128,6 @@ int omax_util_resolveDictStubs(void)
 	case 0x500:
 		frameworkpath = "/Applications/Max5/MaxMSP.app/Contents/Frameworks/MaxAPI.framework";
 		break;
-
-	case 0x400:
-		//
-		break;
 	default:
 		return 0;
 	}
