@@ -1,6 +1,6 @@
 
-#define ODOT_VERSION "1.2.3" 
-#define ODOT_RELEASE_DATE "[2012-07-04 Wed]"
+#define ODOT_VERSION "1.2.4" 
+#define ODOT_RELEASE_DATE "[2012-07-11 Wed]"
 #define ODOT_COPYRIGHT_YEARS "2008-12"
 #define ODOT_AUTHORS "John MacCallum, Adrian Freed"
 #define ODOT_COPYRIGHT_STRING "Regents of the University of California. All rights reserved."

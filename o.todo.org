@@ -1,8 +1,8 @@
 #+STARTUP: showall
 #+TODO: TODO(t) STARTED(s) WAITING(w) BUG(b) | DONE(d) DELEGATED(e) FIXED(f)
 #+begin_src C :tangle odot_version.h
-#define ODOT_VERSION "1.2.3" 
-#define ODOT_RELEASE_DATE "[2012-07-04 Wed]"
+#define ODOT_VERSION "1.2.4" 
+#define ODOT_RELEASE_DATE "[2012-07-11 Wed]"
 #define ODOT_COPYRIGHT_YEARS "2008-12"
 #define ODOT_AUTHORS "John MacCallum, Adrian Freed"
 #define ODOT_COPYRIGHT_STRING "Regents of the University of California. All rights reserved."
@@ -74,6 +74,11 @@ should persist
 ** Design questions
 *** The fact that o.route can output both bundles and Max data is a source of bugs.  Rewrite o.route?  
 New objects with more explicit behavior.
+
+* VERSION 1.2.4
+Released [2012-07-11 Wed]
+** Bugs Fixed
+*** Crash on loading objects related to the dict stubs
 
 * VERSION 1.2.3 
 Released [2012-07-10 Tue]

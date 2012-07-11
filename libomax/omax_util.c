@@ -62,6 +62,54 @@ t_symbol *omax_ps_FullPacket = NULL;
 #ifdef WIN_VERSION
 int omax_util_resolveDictStubs(void)
 {
+/*
+
+something like this, i assume
+
+// A simple program that uses LoadLibrary and 
+// GetProcAddress to access myPuts from Myputs.dll. 
+ 
+#include <windows.h> 
+#include <stdio.h> 
+ 
+typedef int (__cdecl *MYPROC)(LPWSTR); 
+ 
+int main( void ) 
+{ 
+    HINSTANCE hinstLib; 
+    MYPROC ProcAdd; 
+    BOOL fFreeResult, fRunTimeLinkSuccess = FALSE; 
+ 
+    // Get a handle to the DLL module.
+ 
+    hinstLib = LoadLibrary(TEXT("MyPuts.dll")); 
+ 
+    // If the handle is valid, try to get the function address.
+ 
+    if (hinstLib != NULL) 
+    { 
+        ProcAdd = (MYPROC) GetProcAddress(hinstLib, "myPuts"); 
+ 
+        // If the function address is valid, call the function.
+ 
+        if (NULL != ProcAdd) 
+        {
+            fRunTimeLinkSuccess = TRUE;
+            (ProcAdd) (L"Message sent to the DLL function\n"); 
+        }
+        // Free the DLL module.
+ 
+        fFreeResult = FreeLibrary(hinstLib); 
+    } 
+
+    // If unable to call the DLL function, use an alternative.
+    if (! fRunTimeLinkSuccess) 
+        printf("Message printed from executable\n"); 
+
+    return 0;
+
+}
+*/
 	return 1;
 }
 #else
@@ -71,35 +119,40 @@ int omax_util_resolveDictStubs(void)
 		return omax_util_haveDict;
 	}
 	omax_util_dictStubsResolved = 1;
-	char *app_path = getenv("_");
-	int app_path_len = strlen(app_path);
-	char outname[app_path_len + 32];
-	char *ptr = app_path + app_path_len - 1;
-	while((*ptr) != '/'){
-		ptr--;
+	char *frameworkpath = NULL;
+	short majorversion = maxversion() & 0xF00;
+	switch(majorversion){
+	case 0x600:
+		frameworkpath = "/Applications/Max6/Max.app/Contents/Frameworks/MaxAPI.framework";
+		break;
+	case 0x500:
+		frameworkpath = "/Applications/Max5/MaxMSP.app/Contents/Frameworks/MaxAPI.framework";
+		break;
+
+	case 0x400:
+		//
+		break;
+	default:
+		return 0;
 	}
-	while(*(ptr - 1) != '/'){
-		ptr--;
-	}
-	app_path[(ptr - app_path)] = '\0';
-	sprintf(outname, "%sFrameworks/MaxAPI.framework", app_path);
+	int frameworkpath_len = strlen(frameworkpath);
 	OSStatus err;
 	short path;
 	char name[MAX_PATH_CHARS];
 	long type = 0;
 
 	omax_util_haveDict = 0;
-	//char outname[MAX_PATH_CHARS];
-	//sprintf(outname,"/Applications/Max6/Max.app/Contents/Frameworks/MaxAPI.framework");
+	//char frameworkpath[MAX_PATH_CHARS];
+	//sprintf(frameworkpath,"/Applications/Max6/Max.app/Contents/Frameworks/MaxAPI.framework");
 	//if (!locatefile_extended(name, &path, &type, 0L, 0)){
 	char natname[MAX_PATH_CHARS];
 
-	//if(!path_topathname(path, name, outname)){
+	//if(!path_topathname(path, name, frameworkpath)){
 	CFStringRef str;
 	CFURLRef url;
 	CFBundleRef maxapi_bundle_ref;
 
-	path_nameconform(outname, natname, PATH_STYLE_NATIVE, PATH_TYPE_PATH);
+	path_nameconform(frameworkpath, natname, PATH_STYLE_NATIVE, PATH_TYPE_PATH);
 	str = CFStringCreateWithCString(kCFAllocatorDefault, natname, kCFStringEncodingUTF8);
 	if((url = CFURLCreateWithFileSystemPath(kCFAllocatorDefault, str, kCFURLPOSIXPathStyle, true))){
 		// we need to get rid of this in a quitmethodthingy
