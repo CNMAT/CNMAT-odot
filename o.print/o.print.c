@@ -74,22 +74,25 @@ void oprint_fullPacket(t_oprint *x, long len, long ptr)
 	long buflen = 0;
 	char *buf = NULL;
 	osc_bundle_s_format(len, (char *)ptr, &buflen, &buf);
+	post("[");
 	if(buflen == 0){
 		post("<empty bundle>");
-	}
-	// the Max window doesn't respect newlines, so we have to do them manually
-	char *start = buf;
-	int i;
-	for(i = 0; i < buflen; i++){
-		if(buf[i] == '\n'){
-			long n = ((buf + i) - start);
-			char line[n + 1];
-			memcpy(line, start, n);
-			line[n] = '\0';
-			post("%s: %s\n", x->myname->s_name, line);
-			start = buf + i + 1;
+	}else{
+		// the Max window doesn't respect newlines, so we have to do them manually
+		char *start = buf;
+		int i;
+		for(i = 0; i < buflen; i++){
+			if(buf[i] == '\n'){
+				long n = ((buf + i) - start);
+				char line[n + 1];
+				memcpy(line, start, n);
+				line[n] = '\0';
+				post("%s: %s\n", x->myname->s_name, line);
+				start = buf + i + 1;
+			}
 		}
 	}
+	post("]");
 	if(buf){
 		osc_mem_free(buf);
 	}

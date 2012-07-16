@@ -2138,8 +2138,8 @@ int osc_expr_product(t_osc_expr *f, int argc, t_osc_atom_ar_u **argv, t_osc_atom
 {
 	*out = osc_atom_array_u_alloc(1);
 		
-	osc_atom_u_setDouble(osc_atom_array_u_get(*out, 0), 0.);
 	double val = 1;
+	int doubleup = 0;
 	int j;
 	for(j = 0; j < argc; j++){
 		long len = osc_atom_array_u_getLen(argv[j]);
@@ -2153,7 +2153,21 @@ int osc_expr_product(t_osc_expr *f, int argc, t_osc_atom_ar_u **argv, t_osc_atom
 			val *= osc_atom_u_getDouble(osc_atom_array_u_get(argv[j], i));
 		}
 	}
-	osc_atom_u_setDouble(osc_atom_array_u_get(*out, 0), val);
+	if(doubleup){
+		osc_atom_u_setDouble(osc_atom_array_u_get(*out, 0), val);
+	}else{
+		if(val <= 0x7fffffff){
+			osc_atom_u_setInt32(osc_atom_array_u_get(*out, 0), val);
+		}else if(val <= ((uint32_t)0xffffffff)){
+			osc_atom_u_setUInt32(osc_atom_array_u_get(*out, 0), val);
+		}else if(val <= 0x7fffffffffffffff){
+			osc_atom_u_setInt64(osc_atom_array_u_get(*out, 0), val);
+		}else if(val <= 0xffffffffffffffff){
+			osc_atom_u_setUInt64(osc_atom_array_u_get(*out, 0), val);
+		}else{
+			osc_atom_u_setDouble(osc_atom_array_u_get(*out, 0), val);
+		}
+	}
 	return 0;
 }
 
@@ -2161,8 +2175,8 @@ int osc_expr_sum(t_osc_expr *f, int argc, t_osc_atom_ar_u **argv, t_osc_atom_ar_
 {
 	*out = osc_atom_array_u_alloc(1);
 		
-	osc_atom_u_setDouble(osc_atom_array_u_get(*out, 0), 0.);
 	double val = 0;
+	int doubleup = 0;
 	int j;
 	for(j = 0; j < argc; j++){
 		long len = osc_atom_array_u_getLen(argv[j]);
@@ -2173,10 +2187,28 @@ int osc_expr_sum(t_osc_expr *f, int argc, t_osc_atom_ar_u **argv, t_osc_atom_ar_
 		}
 		int i;
 		for(i = 0; i < len; i++){
+			char tt = osc_atom_u_getTypetag(osc_atom_array_u_get(argv[j], i));
+			if(OSC_TYPETAG_ISFLOAT(tt)){
+				doubleup = 1;
+			}
 			val += osc_atom_u_getDouble(osc_atom_array_u_get(argv[j], i));
 		}
 	}
-	osc_atom_u_setDouble(osc_atom_array_u_get(*out, 0), val);
+	if(doubleup){
+		osc_atom_u_setDouble(osc_atom_array_u_get(*out, 0), val);
+	}else{
+		if(val <= 0x7fffffff){
+			osc_atom_u_setInt32(osc_atom_array_u_get(*out, 0), val);
+		}else if(val <= ((uint32_t)0xffffffff)){
+			osc_atom_u_setUInt32(osc_atom_array_u_get(*out, 0), val);
+		}else if(val <= 0x7fffffffffffffff){
+			osc_atom_u_setInt64(osc_atom_array_u_get(*out, 0), val);
+		}else if(val <= 0xffffffffffffffff){
+			osc_atom_u_setUInt64(osc_atom_array_u_get(*out, 0), val);
+		}else{
+			osc_atom_u_setDouble(osc_atom_array_u_get(*out, 0), val);
+		}
+	}
 	return 0;
 }
 
@@ -2186,16 +2218,46 @@ int osc_expr_cumsum(t_osc_expr *f, int argc, t_osc_atom_ar_u **argv, t_osc_atom_
 	int n = 0;
 	int k = 0;
 	double val = 0;
+	int doubleup = 0;
 	for(i = 0; i < argc; i++){
 		n += osc_atom_array_u_getLen(argv[i]);
 	}
 	*out = osc_atom_array_u_alloc(n);
+	double lst[n];
 		
 	for(i = 0; i < argc; i++){
 		int j;
 		for(j = 0; j < osc_atom_array_u_getLen(argv[i]); j++){
 			val += osc_atom_u_getDouble(osc_atom_array_u_get(argv[i], j));
-			osc_atom_u_setDouble(osc_atom_array_u_get(*out, k++), val);
+			lst[k++] = val;
+			//osc_atom_u_setDouble(osc_atom_array_u_get(*out, k++), val);
+		}
+	}
+	if(doubleup){
+		for(i = 0; i < n; i++){
+			osc_atom_u_setDouble(osc_atom_array_u_get(*out, i), lst[i]);
+		}
+	}else{
+		if(val <= 0x7fffffff){
+			for(i = 0; i < n; i++){
+				osc_atom_u_setInt32(osc_atom_array_u_get(*out, i), lst[i]);
+			}
+		}else if(val <= ((uint32_t)0xffffffff)){
+			for(i = 0; i < n; i++){
+				osc_atom_u_setUInt32(osc_atom_array_u_get(*out, i), lst[i]);
+			}
+		}else if(val <= 0x7fffffffffffffff){
+			for(i = 0; i < n; i++){
+				osc_atom_u_setInt64(osc_atom_array_u_get(*out, i), lst[i]);
+			}
+		}else if(val <= 0xffffffffffffffff){
+			for(i = 0; i < n; i++){
+				osc_atom_u_setUInt64(osc_atom_array_u_get(*out, i), lst[i]);
+			}
+		}else{
+			for(i = 0; i < n; i++){
+				osc_atom_u_setDouble(osc_atom_array_u_get(*out, i), lst[i]);
+			}
 		}
 	}
 	return 0;

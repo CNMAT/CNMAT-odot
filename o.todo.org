@@ -1,8 +1,8 @@
 #+STARTUP: showall
 #+TODO: TODO(t) STARTED(s) WAITING(w) BUG(b) | DONE(d) DELEGATED(e) FIXED(f)
 #+begin_src C :tangle odot_version.h
-#define ODOT_VERSION "1.2.4" 
-#define ODOT_RELEASE_DATE "[2012-07-11 Wed]"
+#define ODOT_VERSION "1.2.5" 
+#define ODOT_RELEASE_DATE "unreleased"
 #define ODOT_COPYRIGHT_YEARS "2008-12"
 #define ODOT_AUTHORS "John MacCallum, Adrian Freed"
 #define ODOT_COPYRIGHT_STRING "Regents of the University of California. All rights reserved."
@@ -45,6 +45,9 @@ this may be a lifelong project...
 **** TODO Constants need to be checked for accuracy at all precisions
 **** TODO All formatting code needs to be refactored
 **** TODO udpsend encodes lists, floats and ints with addresses with no slashes
+*** o.message
+**** TODO postfix type specifiers
+**** TODO support for hex and octal
 *** o.expr
 **** TODO o.expr should evaluate any expressions that don't require an OSC bundle for evaluation at compile time
 **** TODO if() should be a special case of cond and we should have when and unless
@@ -64,6 +67,8 @@ should persist
 **** TODO let() (this is just syntatic sugar for (lambda...)
 **** TODO arg check apply lambda
 **** TODO o.expr /gain = value( quote(/source/) + string(/id) + quote(/gain) ) ?? 0.
+**** TODO add lcm() and gcd()
+**** TODO figure out a way to make it easier to find a function...
 *** o.difference/intersection/union
 **** TODO o.difference/intersection/union should take arguments that define a message
 *** o.pack/pak
@@ -74,6 +79,8 @@ should persist
 ** Design questions
 *** The fact that o.route can output both bundles and Max data is a source of bugs.  Rewrite o.route?  
 New objects with more explicit behavior.
+
+* VERSION 1.2.5
 
 * VERSION 1.2.4
 Released [2012-07-11 Wed]

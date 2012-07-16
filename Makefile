@@ -19,6 +19,8 @@ STAGINGDIR = odot-$(PLATFORM)-$(strip $(VERSION))
 MAC_OBJECTS = $(addsuffix .mxo, $(addprefix $(BUILDDIR)/, $(OBJECT_LIST)))
 WIN_OBJECTS = $(addsuffix .mxe, $(addprefix $(BUILDDIR)/, $(OBJECT_LIST)))
 
+CFILES = $(foreach f, $(OBJECT_LIST), $(f)/$(f).c)
+
 STAGED_MAC_OBJECTS = $(addprefix $(STAGINGDIR)/objects/, $(notdir $(MAC_OBJECTS)))
 STAGED_WIN_OBJECTS = $(addprefix $(STAGINGDIR)/objects/, $(notdir $(WIN_OBJECTS)))
 
@@ -109,7 +111,7 @@ all: $(DIRS) $(OBJECTS)
 #	xcodebuild -scheme "Build all" -configuration Release -project odot.xcodeproj build
 	make stage_distribution PLATFORM=$(PLATFORM)
 
-$(BUILDDIR)/%.mxo:
+$(BUILDDIR)/%.mxo: %.c
 	xcodebuild -target $* -configuration Release -project odot.xcodeproj build
 
 ##################################################

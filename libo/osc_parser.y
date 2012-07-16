@@ -154,6 +154,9 @@ void osc_parser_substitution(t_osc_parser_subst **subs_list, t_osc_msg_u *msg, i
 %union {
 	double f;
 	int32_t i;
+	uint32_t I;
+	int64_t h;
+	uint64_t H;
 	char c;
 	char *string;
 	char b;
@@ -161,7 +164,10 @@ void osc_parser_substitution(t_osc_parser_subst **subs_list, t_osc_msg_u *msg, i
 }
 
 %token <f>OSCFLOAT 
-%token <i>OSCINT DOLLARSUB OSCADDRESS_DOLLARSUB
+%token <i>OSCINT32 DOLLARSUB OSCADDRESS_DOLLARSUB
+%token <I>OSCUINT32
+%token <h>OSCINT64
+%token <H>OSCUINT64
 %token <c>OSCCHAR
 %token <string>STRING OSCADDRESS 
 %token <b>OSCBOOL
@@ -216,13 +222,40 @@ arglist:
 		*msg = m;
 		osc_message_u_appendDouble(*msg, $1);
 	}
-	| OSCINT {
+	| OSCINT32 {
 		t_osc_msg_u *m = osc_message_u_alloc();
 		PP("push MSG %p->%p\n", m, *msg);
-		PP("add OSCINT to MSG %p := %d\n", m, $1);
+		PP("add OSCINT32 to MSG %p := %d\n", m, $1);
 		m->next = *msg;
 		*msg = m;
 		osc_message_u_appendInt32(*msg, $1);
+
+	  }
+	| OSCUINT32 {
+		t_osc_msg_u *m = osc_message_u_alloc();
+		PP("push MSG %p->%p\n", m, *msg);
+		PP("add OSCUINT32 to MSG %p := %d\n", m, $1);
+		m->next = *msg;
+		*msg = m;
+		osc_message_u_appendUInt32(*msg, $1);
+
+	  }
+	| OSCINT64 {
+		t_osc_msg_u *m = osc_message_u_alloc();
+		PP("push MSG %p->%p\n", m, *msg);
+		PP("add OSCINT64 to MSG %p := %d\n", m, $1);
+		m->next = *msg;
+		*msg = m;
+		osc_message_u_appendInt64(*msg, $1);
+
+	  }
+	| OSCUINT64 {
+		t_osc_msg_u *m = osc_message_u_alloc();
+		PP("push MSG %p->%p\n", m, *msg);
+		PP("add OSCUINT64 to MSG %p := %d\n", m, $1);
+		m->next = *msg;
+		*msg = m;
+		osc_message_u_appendUInt64(*msg, $1);
 
 	  }
 	| OSCCHAR {
@@ -266,9 +299,21 @@ arglist:
 		PP("add OSCFLOAT to MSG %p := %f\n", *msg, $2);
 		osc_message_u_appendDouble(*msg, $2);
  	}
-	| arglist OSCINT {
-		PP("add OSCINT to MSG %p := %d\n", *msg, $2);
+	| arglist OSCINT32 {
+		PP("add OSCINT32 to MSG %p := %d\n", *msg, $2);
 		osc_message_u_appendInt32(*msg, $2);
+ 	}
+	| arglist OSCUINT32 {
+		PP("add OSCUINT32 to MSG %p := %d\n", *msg, $2);
+		osc_message_u_appendUInt32(*msg, $2);
+ 	}
+	| arglist OSCINT64 {
+		PP("add OSCINT64 to MSG %p := %d\n", *msg, $2);
+		osc_message_u_appendInt64(*msg, $2);
+ 	}
+	| arglist OSCUINT64 {
+		PP("add OSCUINT64 to MSG %p := %d\n", *msg, $2);
+		osc_message_u_appendUInt64(*msg, $2);
  	}
 	| arglist OSCCHAR {
 		PP("add OSCCHAR to MSG %p := %c\n", *msg, $2);
