@@ -75,7 +75,7 @@ int osc_strfmt_float32(char *buf, size_t n, float f)
 
 int osc_strfmt_float64(char *buf, size_t n, double f)
 {
-	int need_point = f - floorf(f) == 0 ? 1 : 0;
+	int need_point = f - floor(f) == 0 ? 1 : 0;
 	if(need_point){
 		return snprintf(buf, n, "%g.", f);
 	}else{
