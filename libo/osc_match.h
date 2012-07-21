@@ -70,31 +70,6 @@ typedef struct _osc_callback {
  */
 int osc_match(const char *pattern, const char *address, int *pattern_offset, int *address_offset);
 
-/**
- * Not to be called directly.  Called by osc_match().
- */
-int osc_match_star(const char *pattern, const char *address);
-	
-/**
- * Not to be called directly.  Called by osc_match().
- */
-int osc_match_star_r(const char *pattern, const char *address);
-	
-/**
- * Not to be called directly.  Called by osc_match().
- */
-int osc_match_single_char(const char *pattern, const char *address);
-	
-/**
- * Not to be called directly.  Called by osc_match().
- */
-int osc_match_bracket(const char *pattern, const char *address);
-	
-/**
- * Not to be called directly.  Called by osc_match().
- */
-int osc_match_curly_brace(const char *pattern, const char *address);
-
 #ifdef __cplusplus
 }
 #endif

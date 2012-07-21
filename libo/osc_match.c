@@ -20,8 +20,17 @@ HEREUNDER IS PROVIDED "AS IS". REGENTS HAS NO OBLIGATION TO PROVIDE
 MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 */
 #include "osc_match.h"
+#include <string.h>
+#include <stdio.h>
 
-int osc_match(const char *pattern, const char *address, int *pattern_offset, int* address_offset) {
+static inline int osc_match_star(const char *pattern, const char *address);
+static inline int osc_match_star_r(const char *pattern, const char *address);
+static inline int osc_match_single_char(const char *pattern, const char *address);
+static inline int osc_match_bracket(const char *pattern, const char *address);
+static inline int osc_match_curly_brace(const char *pattern, const char *address);
+
+int osc_match(const char *pattern, const char *address, int *pattern_offset, int *address_offset)
+{
 
 	int r;
 
@@ -92,7 +101,8 @@ int osc_match(const char *pattern, const char *address, int *pattern_offset, int
 	return r;
 }
 
-int osc_match_star(const char *pattern, const char *address){
+static inline int osc_match_star(const char *pattern, const char *address)
+{
 	const char *address_start = address;
 	const char *pattern_start = pattern;
 	int num_stars = 0;
@@ -186,7 +196,8 @@ int osc_match_star(const char *pattern, const char *address){
 }
 
 #if (OSC_MATCH_ENABLE_NSTARS == 1)
-int osc_match_star_r(const char *pattern, const char *address){
+static inline int osc_match_star_r(const char *pattern, const char *address)
+{
 	if(*address == '/' || *address == '\0'){
 		if(*pattern == '/' || *pattern == '\0' || (*pattern == '*' && ((*(pattern + 1) == '/') || *(pattern + 1) == '\0'))){
 			return 1;
@@ -216,7 +227,8 @@ int osc_match_star_r(const char *pattern, const char *address){
 }
 #endif
 
-int osc_match_single_char(const char *pattern, const char *address){
+static inline int osc_match_single_char(const char *pattern, const char *address)
+{
 	switch(*pattern){
 	case '[':
 		return osc_match_bracket(pattern, address);
@@ -244,14 +256,19 @@ int osc_match_single_char(const char *pattern, const char *address){
 	return 0;
 }
 
-int osc_match_bracket(const char *pattern, const char *address){
-	int matched = 0;
+static inline int osc_match_bracket(const char *pattern, const char *address)
+{
 	pattern++;
+	int val = 1;
+	int matched = !val;
+	if(*pattern == '!'){
+		val = 0;
+	}
 	while(*pattern != ']' && *pattern != '\0'){
 		// the character we're on now is the beginning of a range
 		if(*(pattern + 1) == '-'){
 			if(*address >= *pattern && *address <= *(pattern + 2)){
-				matched = 1;
+				matched = val;
 				break;
 			}else{
 				pattern += 3;
@@ -259,28 +276,17 @@ int osc_match_bracket(const char *pattern, const char *address){
 		}else{
 			// just test the character
 			if(*pattern == *address){
-				matched = 1;
+				matched = val;
 				break;
 			}
 			pattern++;
 		}
 	}
 	return matched;
-	/*
-	if(matched){
-		while(*pattern != ']' && *pattern != '\0'){
-			pattern++;
-		}
-		pattern++;
-		address++;
-	}else{
-		return 0;
-	}
-	return 1;
-	*/
 }
 
-int osc_match_curly_brace(const char *pattern, const char *address){
+static inline int osc_match_curly_brace(const char *pattern, const char *address)
+{
 	int matched = 0;
 	pattern++;
 	while(*pattern != '}' && *pattern != '\0' && *pattern != '/'){

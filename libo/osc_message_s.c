@@ -120,6 +120,9 @@ int osc_message_s_renameCopy(char *dest, t_osc_msg_s *src, int new_address_len, 
 	if(!dest){
 		return 0;
 	}
+	if(osc_error_validateAddress(new_address)){
+		return 0;
+	}
 	int oldlen = osc_message_s_getSize(src);
 	int old_address_len = strlen(osc_message_s_getAddress(src));
 	int newlen = oldlen - (old_address_len - new_address_len);
