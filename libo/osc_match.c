@@ -44,16 +44,6 @@ int osc_match(const char *pattern, const char *address, int *pattern_offset, int
 	*address_offset = 0;
 
 	while(*address != '\0' && *pattern != '\0'){
-		/*
-		if(*pattern == '/'){
-			printf("double-slash: %s %s\n", address, pattern);
-			while(*pattern != '/' && *pattern != '\0'){
-				pattern++;
-			}
-			while(*address != '/' && *address != '\0'){
-				address++;
-			}
-			}else */
 		if(*pattern == '*'){
 			if(!osc_match_star(pattern, address)){
 				return 0;
@@ -123,7 +113,6 @@ static inline int osc_match_star(const char *pattern, const char *address)
 		{
 			const char *pp = pattern, *aa = address;
 			while(*pp != '*'){
-				//printf("%c %c\n", *pp, *aa);
 				if(!(osc_match_single_char(pp, aa))){
 					return 0;
 				}
@@ -220,8 +209,6 @@ static inline int osc_match_star_r(const char *pattern, const char *address)
 				pattern++;
 			}
 		}
-		//pattern++;
-		//address++;
 		return osc_match_star_r(pattern + 1, address + 1);
 	}
 }
