@@ -31,8 +31,11 @@ static inline int osc_match_curly_brace(const char *pattern, const char *address
 
 int osc_match(const char *pattern, const char *address, int *pattern_offset, int *address_offset)
 {
-
-	int r;
+	if(!strcmp(pattern, address)){
+		*pattern_offset = strlen(pattern);
+		*address_offset = strlen(address);
+		return OSC_MATCH_ADDRESS_COMPLETE | OSC_MATCH_PATTERN_COMPLETE;
+	}
 
 	const char *pattern_start;
 	const char *address_start;
@@ -62,23 +65,33 @@ int osc_match(const char *pattern, const char *address, int *pattern_offset, int
 				address++;
 			}
 		}else{
-			if(!osc_match_single_char(pattern, address)){
+			int n = 0;
+			if(!(n = osc_match_single_char(pattern, address))){
 				return 0;
 			}
-			if(*pattern == '[' || *pattern == '{'){
-				while(*pattern != ']' && *pattern != '}'){
+			if(*pattern == '['){
+				while(*pattern != ']'){
 					pattern++;
 				}
+				pattern++;
+				address++;
+			}else if(*pattern == '{'){
+				while(*pattern != '}'){
+					pattern++;
+				}
+				pattern++;
+				address += n;
+			}else{
+				pattern++;
+				address++;
 			}
-			pattern++;
-			address++;
 		}
 	}
 
 	*pattern_offset = pattern - pattern_start;
 	*address_offset = address - address_start;
 
-	r = 0;
+	int r = 0;
 
 	if(*address == '\0') {
 		r |= OSC_MATCH_ADDRESS_COMPLETE;
@@ -247,10 +260,11 @@ static inline int osc_match_bracket(const char *pattern, const char *address)
 {
 	pattern++;
 	int val = 1;
-	int matched = !val;
 	if(*pattern == '!'){
+		pattern++;
 		val = 0;
 	}
+	int matched = !val;
 	while(*pattern != ']' && *pattern != '\0'){
 		// the character we're on now is the beginning of a range
 		if(*(pattern + 1) == '-'){
@@ -274,29 +288,19 @@ static inline int osc_match_bracket(const char *pattern, const char *address)
 
 static inline int osc_match_curly_brace(const char *pattern, const char *address)
 {
-	int matched = 0;
 	pattern++;
-	while(*pattern != '}' && *pattern != '\0' && *pattern != '/'){
-		if(*pattern == *address){
-			matched = 1;
-			break;
+	const char *ptr = pattern;
+	while(*ptr != '}' && *ptr != '\0' && *ptr != '/'){
+		while(*ptr != '}' && *ptr != '\0' && *ptr != '/' && *ptr != ','){
+			ptr++;
+		}
+		int n = ptr - pattern;
+		if(!strncmp(pattern, address, n)){
+			return n;
 		}else{
-			pattern++;
-			if(*pattern == ','){
-				pattern++;
-			}
+			ptr++;
+			pattern = ptr;
 		}
 	}
-
-	if(matched){
-		while(*pattern != '}' && *pattern != '\0' && *pattern != '/'){
-			pattern++;
-		}
-		pattern++;
-		address++;
-	}else{
-		return 0;
-	}
-
-	return 1;
+	return 0;
 }
