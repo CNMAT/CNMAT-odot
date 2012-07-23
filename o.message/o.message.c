@@ -256,7 +256,8 @@ void omessage_doFullPacket(t_omessage *x, long len, long ptr){
 	qelem_set(x->qelem);
 }
 
-void omessage_output_bundle(t_omessage *x){
+void omessage_output_bundle(t_omessage *x)
+{
 	if(x->bndl){
 		switch(x->bndltype){
 		case OMESSAGE_U:

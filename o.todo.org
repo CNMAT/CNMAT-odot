@@ -2,7 +2,7 @@
 #+TODO: TODO(t) STARTED(s) WAITING(w) BUG(b) | DONE(d) DELEGATED(e) FIXED(f)
 #+begin_src C :tangle odot_version.h
 #define ODOT_VERSION "1.2.5" 
-#define ODOT_RELEASE_DATE "unreleased"
+#define ODOT_RELEASE_DATE "[2012-07-23 Mon]"
 #define ODOT_COPYRIGHT_YEARS "2008-12"
 #define ODOT_AUTHORS "John MacCallum, Adrian Freed"
 #define ODOT_COPYRIGHT_STRING "Regents of the University of California. All rights reserved."
@@ -81,6 +81,14 @@ should persist
 New objects with more explicit behavior.
 
 * VERSION 1.2.5
+Released [2012-07-23 Mon]
+** General Improvements
+*** The OSC parser is smarter about integers--by default it will parse them as signed 32 bit ints, 
+but if that's not big enough, it will go to unsigned and then to 64-bit signed and then unsigned.
+** Bugs Fixed
+*** Objects no longer call dictionary_dump() when they receive a dictionary
+*** ! inside of square brackets now works
+*** Curly braces now match strings longer than a single character properly
 
 * VERSION 1.2.4
 Released [2012-07-11 Wed]

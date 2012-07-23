@@ -197,8 +197,20 @@ void *oppnd_new(t_symbol *msg, short argc, t_atom *argv){
 		x->outlet = outlet_new(x, "FullPacket");
 		x->sym_to_prepend = NULL;
 		if(argc){
-			x->sym_to_prepend = atom_getsym(argv);
-			x->sym_to_prepend_len = strlen(x->sym_to_prepend->s_name);
+			t_symbol *sym = atom_getsym(argv);
+			char *c = sym->s_name;
+			int len = strlen(c);
+			t_osc_err e = osc_error_validateAddress(c);
+			if(e){
+				if(len == 2 && c[0] == '#'){
+					// this is ok
+				}else{
+					object_error((t_object *)x, "%s", osc_error_string(e));
+					return NULL;
+				}
+			}
+			x->sym_to_prepend = sym;
+			x->sym_to_prepend_len = strlen(c);
 		}
 	}
 		   	

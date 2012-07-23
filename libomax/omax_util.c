@@ -206,7 +206,6 @@ void omax_util_dictionaryToOSC(t_dictionary *dict, t_osc_bndl_u *bndl_u)
 			if(argc == 1){
 				if(atom_gettype(argv) == A_OBJ){
 					t_dictionary *dict2 = object_dictionaryarg(1, argv);
-					dictionary_dump(dict2, 0, 0);
 					if(dict2){
 						t_osc_bndl_u *bndl2_u = osc_bundle_u_alloc();
 						omax_util_dictionaryToOSC(dict2, bndl2_u);
