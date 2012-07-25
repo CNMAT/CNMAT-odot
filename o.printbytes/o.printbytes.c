@@ -62,6 +62,8 @@ void opbytes_fullPacket(t_opbytes *x, long len, long ptr)
 	for(i = 0; i < len; i++){
 		if(buf[i] == '\0'){
 			post("%05d       %-14s%d", i, "'\\0'", buf[i]);
+		}else if(buf[i] < 32 || buf[i] > 126){
+			post("%05d       %-14s%d", i, "''", buf[i]);
 		}else{
 			char b[32];
 			sprintf(b, "'%c'", buf[i]);

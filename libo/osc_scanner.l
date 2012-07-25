@@ -127,36 +127,12 @@ $[1-9]+	{
 	return OSCCHAR;
 }
 
-(([[:digit:]]{-}[0])[[:digit:]]*|0) 	{
-						char *endp = NULL;
-						unsigned long long i = strtoull(yytext, &endp, 0);
-						//printf("int: %d\n", i);
-						if(i <= 0x7fffffff){
-							yylval->i = i;
-							return OSCINT32;
-						}else if(i <= 0xffffffff){
-							yylval->I = i;
-							return OSCUINT32;
-						}else if(i <= 0x7fffffffffffffff){
-							yylval->h = i;
-							return OSCINT64;
-						}else{
-							yylval->H = i;
-							return OSCUINT64;
-						}
-					}
-
 (-?([[:digit:]]{-}[0])[[:digit:]]*|0) 	{
 						char *endp = NULL;
-						unsigned long long i = strtoull(yytext, &endp, 0);
-						//printf("int: %d\n", i);
-						if(i <= 0xffffffff){
-							yylval->I = i;
-							return OSCUINT32;
-						}else{
-							yylval->H = i;
-							return OSCUINT64;
-						}
+					        long i = strtol(yytext, &endp, 0);
+						//printf("int: %ld\n", l);
+						yylval->i = i;
+						return OSCINT32;
 					}
 
 \/[^ \t\n#\"]+	{
