@@ -65,6 +65,7 @@ typedef int (*t_osc_error_handler)(const char * const errorstr);
 #define OSC_ERR_EXPR_FUNCTIONNOTFOUND 0x101
 #define OSC_ERR_EXPR_ADDRESSUNBOUND 0x102
 #define OSC_ERR_EXPR_ARGCHK 0x104
+#define OSC_ERR_EXPR_EVAL 0x108
 
 #define OSC_ERR_PARSER 0x1000
 

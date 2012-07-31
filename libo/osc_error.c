@@ -118,6 +118,8 @@ char *osc_error_string(t_osc_err err){
 		return "error parsing OSC bundle";
 	case OSC_ERR_EXPR_ARGCHK:
 		return "invalid arguments for function";
+	case OSC_ERR_EXPR_EVAL:
+		return "error evaluating expression";
 	default:
 		return "unrecognized error code";
 	}

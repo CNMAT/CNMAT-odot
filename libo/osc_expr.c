@@ -709,7 +709,7 @@ static int osc_expr_specFunc_assign(t_osc_expr *f,
 
 	t_osc_err ret = osc_expr_evalArgInLexEnv(f_argv->next, lexenv, len, oscbndl, out);
 	if(ret){
-		osc_expr_err_unbound(osc_expr_arg_getOSCAddress(f_argv), "=");
+		osc_error(OSC_ERR_EXPR_EVAL, NULL);
 		if(address){
 			osc_mem_free(address);
 		}
@@ -2074,6 +2074,7 @@ int osc_expr_nth(t_osc_expr *f, int argc, t_osc_atom_ar_u **argv, t_osc_atom_ar_
 			if(l > argv0len - 1){
 				osc_atom_array_u_free(*out);
 				*out = NULL;
+				osc_error(OSC_ERR_EXPR_EVAL, "index %d exceeds array length %d", l, argv0len);
 				return 1;
 			}
 			t_osc_atom_u *r = osc_atom_array_u_get(*out, k);
