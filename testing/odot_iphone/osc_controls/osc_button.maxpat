@@ -76,8 +76,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 303.0, 60.0, 150.0, 117.0 ],
-					"text" : "/processing/button/1 0 \n/processing/toggle/1 0 \n/processing/multislider/1 124 \n/processing/pictslider/1/x 150 \n/processing/pictslider/1/y 241 \n",
+					"patching_rect" : [ 578.0, 197.0, 150.0, 117.0 ],
+					"text" : "/processing/button/1 0 \n/processing/toggle/1 0 \n/processing/multislider/1 124 \n/processing/pictslider/1/x 150 \n/processing/pictslider/1/y 241 ",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
