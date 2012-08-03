@@ -12,6 +12,7 @@ touchosc (simple)
 		(1, 3) (2, 3) (3, 3) 
 
 oscemote (sliders)
+	opening message:/hello "OSCemote...
 	multislider->/slider/# num (0-1)
 	radiogroup->/segmented/# "letter" (A, B, et cetera)
 	toggle->/switch/# num (0 1)
@@ -35,6 +36,8 @@ iosc (test)
 	button->/osc/button# num (0 1)
 
 mrmr (maxMSP_demo bank4) can set to generic as jedermann
+	opening message: /mrmrPresent:…
+	exit message: /mrmrNotPresent:...
 	multislider->/mrmr/slider/horizontal/#/SamMansfieldPhone4 num (0-1000)
 	toggle/button->/mrmr/pushbutton/#/SamMansfieldPhone4 (0 1000)
 	pictslider->/mrmr/tactilezoneX/#/SamMansfieldPhone4 (0-1000)
