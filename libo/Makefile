@@ -24,11 +24,11 @@ LIBO_OBJECTS = $(LIBO_OFILES) $(LIBO_SCANNER_OBJECTS) $(LIBO_PARSER_OBJECTS)
 RELEASE-CFLAGS += -Wall -Wno-trigraphs -fno-strict-aliasing -O3 -funroll-loops -std=c99
 DEBUG-CFLAGS += -Wall -Wno-trigraphs -fno-strict-aliasing -O0 -g -funroll-loops -std=c99
 
-MAC_SYSROOT = MacOSX10.7.sdk 
+MAC_SYSROOT = MacOSX10.8.sdk 
 MAC-CFLAGS = -arch i386 -mmacosx-version-min=10.5 -isysroot /Developer/SDKs/$(MAC_SYSROOT)
 WIN-CFLAGS = -DWIN_VERSION -DWIN_EXT_VERSION -U__STRICT_ANSI__ -U__ANSI_SOURCE -std=c99
 
-MAC-INCLUDES = -I/System/Library/Frameworks/Carbon.framework/Headers -I/System/Library/Frameworks/CoreServices.framework/Headers
+MAC-INCLUDES = -F/System/Library/Frameworks -I/System/Library/Frameworks/Carbon.framework/Headers -I/System/Library/Frameworks/CoreServices.framework/Headers -I/usr/include
 WIN-INCLUDES = -I/usr/include
 
 all: CFLAGS += $(RELEASE-CFLAGS)
@@ -36,7 +36,7 @@ all: CFLAGS += $(MAC-CFLAGS)
 all: CC = clang
 all: I = $(MAC-INCLUDES)
 all: $(LIBO_CFILES) $(LIBO_HFILES) $(LIBO_SCANNER_CFILES) $(LIBO_PARSER_CFILES) libo.a #libo.dylib
-all: STATIC-LINK = libtool -static -o libo.a $(LIBO_OBJECTS) /usr/lib/libfl.a
+all: STATIC-LINK = libtool -static -o libo.a $(LIBO_OBJECTS) /usr/local/lib/libfl.a
 all: DYNAMIC-LINK = clang -dynamiclib $(MAC-CFLAGS) -single_module -compatibility_version 1 -current_version 1 -o libo.dylib $(LIBO_OBJECTS)
 
 debug: CFLAGS += $(DEBUG-CFLAGS)
