@@ -4,10 +4,10 @@
 		"appversion" : 		{
 			"major" : 6,
 			"minor" : 0,
-			"revision" : 7
+			"revision" : 4
 		}
 ,
-		"rect" : [ -1758.0, 50.0, 1544.0, 924.0 ],
+		"rect" : [ 151.0, 44.0, 1440.0, 777.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -30,13 +30,28 @@
 				"box" : 				{
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
+					"id" : "obj-4",
+					"linecount" : 12,
+					"maxclass" : "o.message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 951.0, 324.0, 150.0, 173.0 ],
+					"text" : "/left/raw/x 1565 \n/left/raw/y 2779 \n/left/raw/z 4072 \n/right/raw/x 2937 \n/right/raw/y 556 \n/right/raw/z 4070 \n/left/x -0.235653 \n/right/x 0.434432 \n/left/y 0.357265 \n/right/y -0.728449 \n/left/z 0.00561661 \n/right/z 0.00610501 \n",
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
 					"id" : "obj-13",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
 					"patching_rect" : [ 1120.0, 240.0, 405.0, 20.0 ],
-					"presentation_rect" : [ 1121.5, 243.0, 0.0, 0.0 ],
 					"text" : "o.multisliders /pluck/upper/threshhold 0. 0.2 /pluck/lower/threshhold 0. -0.2"
 				}
 
@@ -157,7 +172,7 @@
 						"appversion" : 						{
 							"major" : 6,
 							"minor" : 0,
-							"revision" : 7
+							"revision" : 4
 						}
 ,
 						"rect" : [ 0.0, 0.0, 640.0, 480.0 ],
@@ -189,8 +204,8 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 99.5, 135.0, 582.0, 167.0 ],
-									"text" : "/left/raw/x 604 \n/left/raw/y 387 \n/left/raw/z 4060 \n/right/raw/x 4095 \n/right/raw/y 1508 \n/right/raw/z 4056 \n/expr/neutralize/x \"/left/x = scale(/left/raw/x, 0., 4095., -1., 1.); /right/x = scale(/right/raw/x, 0., 4095., -1., 1.)\" \n/expr/neutralize/y \"/left/y = scale(/left/raw/y, 0., 4095., -1., 1.); /right/y = scale(/right/raw/y, 0., 4095., -1., 1.)\" \n/expr/neutralize/z \"/left/z = 1 - /left/raw/z / 4095.; /right/z = 1 - /right/raw/z / 4095.\" \n/expr/calibrate/degrees/x \"/degrees/left/x = 30. * /left/x; /degrees/right/x = 30. * /right/x\" \n/expr/calibrate/degrees/y \"/degrees/left/y = 30. * /left/y; /degrees/right/y = 30. * /right/y\" \n/expr/calibrate/meters/z \"/meters/left/z = 2. * /left/z ; /meters/right/z = 2. * /right/z\" ",
+									"patching_rect" : [ 99.5, 135.0, 582.0, 173.0 ],
+									"text" : "/left/raw/x 1565 \n/left/raw/y 2779 \n/left/raw/z 4072 \n/right/raw/x 2937 \n/right/raw/y 555 \n/right/raw/z 4070 \n/expr/neutralize/x \"/left/x = scale(/left/raw/x, 0., 4095., -1., 1.); /right/x = scale(/right/raw/x, 0., 4095., -1., 1.)\" \n/expr/neutralize/y \"/left/y = scale(/left/raw/y, 0., 4095., -1., 1.); /right/y = scale(/right/raw/y, 0., 4095., -1., 1.)\" \n/expr/neutralize/z \"/left/z = 1 - /left/raw/z / 4095.; /right/z = 1 - /right/raw/z / 4095.\" \n/expr/calibrate/degrees/x \"/degrees/left/x = 30. * /left/x; /degrees/right/x = 30. * /right/x\" \n/expr/calibrate/degrees/y \"/degrees/left/y = 30. * /left/y; /degrees/right/y = 30. * /right/y\" \n/expr/calibrate/meters/z \"/meters/left/z = 2. * /left/z ; /meters/right/z = 2. * /right/z\" \n",
 									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 
@@ -209,7 +224,7 @@
 										"appversion" : 										{
 											"major" : 6,
 											"minor" : 0,
-											"revision" : 7
+											"revision" : 4
 										}
 ,
 										"rect" : [ 25.0, 69.0, 770.0, 521.0 ],
@@ -269,7 +284,7 @@
 													"numinlets" : 2,
 													"numoutlets" : 1,
 													"outlettype" : [ "" ],
-													"patching_rect" : [ 81.0, 140.0, 582.0, 87.0 ],
+													"patching_rect" : [ 81.0, 140.0, 582.0, 90.0 ],
 													"text" : "/expr/neutralize/x \"/left/x = scale(/left/raw/x, 0., 4095., -1., 1.); /right/x = scale(/right/raw/x, 0., 4095., -1., 1.)\" \n/expr/neutralize/y \"/left/y = scale(/left/raw/y, 0., 4095., -1., 1.); /right/y = scale(/right/raw/y, 0., 4095., -1., 1.)\" \n/expr/neutralize/z \"/left/z = 1 - /left/raw/z / 4095.; /right/z = 1 - /right/raw/z / 4095.\" \n/expr/calibrate/degrees/x \"/degrees/left/x = 30. * /left/x; /degrees/right/x = 30. * /right/x\" \n/expr/calibrate/degrees/y \"/degrees/left/y = 30. * /left/y; /degrees/right/y = 30. * /right/y\" \n/expr/calibrate/meters/z \"/meters/left/z = 2. * /left/z ; /meters/right/z = 2. * /right/z\" ",
 													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 												}
@@ -335,21 +350,30 @@
 												}
 
 											}
+ ],
+										"dependency_cache" : [ 											{
+												"name" : "o.message.mxo",
+												"type" : "iLaX"
+											}
+, 											{
+												"name" : "o.union.mxo",
+												"type" : "iLaX"
+											}
  ]
 									}
 ,
 									"patching_rect" : [ 50.0, 100.0, 159.0, 20.0 ],
 									"saved_object_attributes" : 									{
-										"default_fontface" : 0,
 										"default_fontname" : "Arial",
+										"fontname" : "Arial",
 										"default_fontsize" : 12.0,
 										"description" : "",
-										"digest" : "",
-										"fontface" : 0,
-										"fontname" : "Arial",
-										"fontsize" : 12.0,
+										"tags" : "",
 										"globalpatchername" : "",
-										"tags" : ""
+										"fontface" : 0,
+										"fontsize" : 12.0,
+										"default_fontface" : 0,
+										"digest" : ""
 									}
 ,
 									"text" : "p o.io.hid \"Game-Trak V1.3\""
@@ -380,8 +404,8 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 99.5, 385.0, 582.0, 328.0 ],
-									"text" : "/left/raw/x 604 \n/left/raw/y 387 \n/left/raw/z 4060 \n/right/raw/x 4095 \n/right/raw/y 1508 \n/right/raw/z 4056 \n/expr/neutralize/x \"/left/x = scale(/left/raw/x, 0., 4095., -1., 1.); /right/x = scale(/right/raw/x, 0., 4095., -1., 1.)\" \n/expr/neutralize/y \"/left/y = scale(/left/raw/y, 0., 4095., -1., 1.); /right/y = scale(/right/raw/y, 0., 4095., -1., 1.)\" \n/expr/neutralize/z \"/left/z = 1 - /left/raw/z / 4095.; /right/z = 1 - /right/raw/z / 4095.\" \n/expr/calibrate/degrees/x \"/degrees/left/x = 30. * /left/x; /degrees/right/x = 30. * /right/x\" \n/expr/calibrate/degrees/y \"/degrees/left/y = 30. * /left/y; /degrees/right/y = 30. * /right/y\" \n/expr/calibrate/meters/z \"/meters/left/z = 2. * /left/z ; /meters/right/z = 2. * /right/z\" \n/left/x -0.705006 \n/right/x 1. \n/left/y -0.810989 \n/right/y -0.263492 \n/left/z 0.00854701 \n/right/z 0.00952381 \n/degrees/left/x -21.1502 \n/degrees/right/x 30. \n/degrees/left/y -24.3297 \n/degrees/right/y -7.90476 \n/meters/left/z 0.017094 \n/meters/right/z 0.0190476 ",
+									"patching_rect" : [ 99.5, 385.0, 582.0, 338.0 ],
+									"text" : "/left/raw/x 1565 \n/left/raw/y 2779 \n/left/raw/z 4072 \n/right/raw/x 2937 \n/right/raw/y 560 \n/right/raw/z 4070 \n/expr/neutralize/x \"/left/x = scale(/left/raw/x, 0., 4095., -1., 1.); /right/x = scale(/right/raw/x, 0., 4095., -1., 1.)\" \n/expr/neutralize/y \"/left/y = scale(/left/raw/y, 0., 4095., -1., 1.); /right/y = scale(/right/raw/y, 0., 4095., -1., 1.)\" \n/expr/neutralize/z \"/left/z = 1 - /left/raw/z / 4095.; /right/z = 1 - /right/raw/z / 4095.\" \n/expr/calibrate/degrees/x \"/degrees/left/x = 30. * /left/x; /degrees/right/x = 30. * /right/x\" \n/expr/calibrate/degrees/y \"/degrees/left/y = 30. * /left/y; /degrees/right/y = 30. * /right/y\" \n/expr/calibrate/meters/z \"/meters/left/z = 2. * /left/z ; /meters/right/z = 2. * /right/z\" \n/left/x -0.235653 \n/right/x 0.434432 \n/left/y 0.357265 \n/right/y -0.726496 \n/left/z 0.00561661 \n/right/z 0.00610501 \n/degrees/left/x -7.0696 \n/degrees/right/x 13.033 \n/degrees/left/y 10.7179 \n/degrees/right/y -21.7949 \n/meters/left/z 0.0112332 \n/meters/right/z 0.01221 \n",
 									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 
@@ -458,21 +482,34 @@
 								}
 
 							}
+ ],
+						"dependency_cache" : [ 							{
+								"name" : "o.expr.mxo",
+								"type" : "iLaX"
+							}
+, 							{
+								"name" : "o.message.mxo",
+								"type" : "iLaX"
+							}
+, 							{
+								"name" : "o.union.mxo",
+								"type" : "iLaX"
+							}
  ]
 					}
 ,
 					"patching_rect" : [ 1290.0, 180.0, 130.0, 20.0 ],
 					"saved_object_attributes" : 					{
-						"default_fontface" : 0,
 						"default_fontname" : "Arial",
+						"fontname" : "Arial",
 						"default_fontsize" : 12.0,
 						"description" : "",
-						"digest" : "",
-						"fontface" : 0,
-						"fontname" : "Arial",
-						"fontsize" : 12.0,
+						"tags" : "",
 						"globalpatchername" : "",
-						"tags" : ""
+						"fontface" : 0,
+						"fontsize" : 12.0,
+						"default_fontface" : 0,
+						"digest" : ""
 					}
 ,
 					"text" : "p calibration_functions"
@@ -492,7 +529,7 @@
 						"appversion" : 						{
 							"major" : 6,
 							"minor" : 0,
-							"revision" : 7
+							"revision" : 4
 						}
 ,
 						"rect" : [ 0.0, 0.0, 640.0, 480.0 ],
@@ -524,7 +561,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 74.0, 570.0, 589.0, 315.0 ],
+									"patching_rect" : [ 74.0, 570.0, 589.0, 324.0 ],
 									"text" : "/left/raw/x 604 \n/left/raw/y 387 \n/left/raw/z 4060 \n/right/raw/x 4095 \n/right/raw/y 1508 \n/right/raw/z 4056 \n/left/x -0.705006 \n/left/y -0.810989 \n/left/z 0.00854701 \n/right/x 1. \n/right/y -0.263492 \n/right/z 0.00952381 \n/lvals \"/degrees/left/x\" \"/degrees/left/y\" \"/meters/left/z\" \"/degrees/right/x\" \"/degrees/right/y\" \"/meters/right/z\" \n/vals \"/left/x\" \"/left/y\" \"/left/z\" \"/right/x\" \"/right/y\" \"/right/z\" \n/degrees \"fn(lval, val){assign(lval, 30. * val);}\" \n/meters \"fn(lval, val){assign(lval, 2. * val);}\" \n/fns \"/degrees\" \"/degrees\" \"/meters\" \"/degrees\" \"/degrees\" \"/meters\" \n/degrees/left/x -21.1502 \n/degrees/left/y -24.3297 \n/meters/left/z 0.25641 \n/degrees/right/x 30. \n/degrees/right/y -7.90476 \n/meters/right/z 0.285714 ",
 									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"varname" : "display[3]"
@@ -550,13 +587,13 @@
 									"fontname" : "Arial",
 									"fontsize" : 12.0,
 									"id" : "obj-29",
-									"linecount" : 12,
+									"linecount" : 6,
 									"maxclass" : "o.message",
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 74.0, 310.0, 150.0, 167.0 ],
-									"text" : "/left/raw/x 604 \n/left/raw/y 387 \n/left/raw/z 4060 \n/right/raw/x 4095 \n/right/raw/y 1508 \n/right/raw/z 4056 \n/left/x -0.705006 \n/left/y -0.810989 \n/left/z 0.00854701 \n/right/x 1. \n/right/y -0.263492 \n/right/z 0.00952381 ",
+									"patching_rect" : [ 74.0, 310.0, 150.0, 90.0 ],
+									"text" : "/left/raw/x 1565 \n/left/raw/y 2779 \n/left/raw/z 4072 \n/right/raw/x 2937 \n/right/raw/y 559 \n/right/raw/z 4070 \n",
 									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"varname" : "display[5]"
 								}
@@ -572,7 +609,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 81.0, 100.0, 442.0, 60.0 ],
+									"patching_rect" : [ 81.0, 100.0, 442.0, 62.0 ],
 									"text" : "/lvals \"/left/x\" \"/left/y\" \"/left/z\" \"/right/x\" \"/right/y\" \"/right/z\" \n/vals \"/left/raw/x\" \"/left/raw/y\" \"/left/raw/z\" \"/right/raw/x\" \"/right/raw/y\" \"/right/raw/z\" \n/mins -1. -1. 1. -1. -1. 1. \n/maxs 1. 1. 0. 1. 1. 0. ",
 									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"varname" : "display[4]"
@@ -617,7 +654,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 250.0, 407.0, 454.0, 87.0 ],
+									"patching_rect" : [ 250.0, 407.0, 454.0, 89.0 ],
 									"text" : "/lvals \"/degrees/left/x\" \"/degrees/left/y\" \"/meters/left/z\" \"/degrees/right/x\" \"/degrees/right/y\" \"/meters/right/z\" \n/vals \"/left/x\" \"/left/y\" \"/left/z\" \"/right/x\" \"/right/y\" \"/right/z\" \n/degrees \"fn(lval, val){assign(lval, 30. * val);}\" \n/meters \"fn(lval, val){assign(lval, 2. * val);}\" \n/fns \"/degrees\" \"/degrees\" \"/meters\" \"/degrees\" \"/degrees\" \"/meters\" ",
 									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 									"varname" : "display[6]"
@@ -746,21 +783,38 @@
 								}
 
 							}
+ ],
+						"dependency_cache" : [ 							{
+								"name" : "o.expr.mxo",
+								"type" : "iLaX"
+							}
+, 							{
+								"name" : "o.union.mxo",
+								"type" : "iLaX"
+							}
+, 							{
+								"name" : "o.message.mxo",
+								"type" : "iLaX"
+							}
+, 							{
+								"name" : "o.route.mxo",
+								"type" : "iLaX"
+							}
  ]
 					}
 ,
 					"patching_rect" : [ 1290.0, 150.0, 79.0, 20.0 ],
 					"saved_object_attributes" : 					{
-						"default_fontface" : 0,
 						"default_fontname" : "Arial",
+						"fontname" : "Arial",
 						"default_fontsize" : 12.0,
 						"description" : "",
-						"digest" : "",
-						"fontface" : 0,
-						"fontname" : "Arial",
-						"fontsize" : 12.0,
+						"tags" : "",
 						"globalpatchername" : "",
-						"tags" : ""
+						"fontface" : 0,
+						"fontsize" : 12.0,
+						"default_fontface" : 0,
+						"digest" : ""
 					}
 ,
 					"text" : "p abstraction"
@@ -833,7 +887,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 950.0, 40.0, 152.0, 87.0 ],
+					"patching_rect" : [ 956.0, 27.0, 152.0, 90.0 ],
 					"text" : "/left/raw/x 604 \n/left/raw/y 387 \n/left/raw/z 4060 \n/right/raw/x 4095 \n/right/raw/y 1508 \n/right/raw/z 4056 ",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"varname" : "display[7]"
@@ -847,13 +901,12 @@
 					"bubbleside" : 3,
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
-					"frgb" : 0.0,
 					"id" : "obj-28",
 					"linecount" : 3,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 50.0, 80.0, 230.0, 51.0 ],
+					"patching_rect" : [ 50.0, 80.0, 230.0, 52.0 ],
 					"text" : "Situate with respect to the performer \n(note OS/X specific HID numbers, use o.io.gametrak for PC)"
 				}
 
@@ -865,13 +918,12 @@
 					"bubbleside" : 3,
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
-					"frgb" : 0.0,
 					"id" : "obj-5",
 					"linecount" : 3,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 100.0, 164.0, 180.0, 51.0 ],
+					"patching_rect" : [ 100.0, 164.0, 180.0, 52.0 ],
 					"text" : "Neutralize with respect to vendor numerical encoding \n(0-4095, 12-bit)"
 				}
 
@@ -958,8 +1010,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 300.0, 965.0, 251.0, 489.0 ],
-					"text" : "/right/window/radius 1.03413 1.07459 1.03413 1.07459 1.03413 \n/right/was/orientation -2.42599 \n/right/raw/x 4095 \n/right/raw/y 1508 \n/right/raw/z 4056 \n/right/x 1. \n/right/y -0.263492 \n/right/z 0.00952381 \n/right/radius 1.03413 \n/right/orientation 1.82843 \n/right/delta/orientation 4.25442 \n/right/anticlockwise true \n/right/clockwise false \n/right/radius/delta 2.53824e-08 \n/right/pluck/upper/threshhold 0.05 \n/right/pluck/lower/threshhold -0.05 \n/right/pluck false \n/left/window/radius 1.07459 1.03413 1.07459 1.03413 1.07459 \n/left/was/orientation 1.82843 \n/left/raw/x 604 \n/left/raw/y 387 \n/left/raw/z 4060 \n/left/x -0.705006 \n/left/y -0.810989 \n/left/z 0.00854701 \n/left/radius 1.07459 \n/left/orientation -2.42599 \n/left/delta/orientation -4.25442 \n/left/anticlockwise false \n/left/clockwise true \n/left/radius/delta 4.78087e-08 \n/left/pluck/upper/threshhold 0.05 \n/left/pluck/lower/threshhold -0.05 \n/left/pluck false \n",
+					"patching_rect" : [ 300.0, 965.0, 251.0, 503.0 ],
+					"text" : "/right/window/radius 0.846479 0.427984 0.846899 0.427984 0.846479 \n/right/was/orientation -0.583097 \n/right/raw/x 2937 \n/right/raw/y 560 \n/right/raw/z 4070 \n/right/x 0.434432 \n/right/y -0.726496 \n/right/z 0.00610501 \n/right/radius 0.846479 \n/right/orientation 2.60266 \n/right/delta/orientation 3.18575 \n/right/anticlockwise true \n/right/clockwise false \n/right/radius/delta -0.000419196 \n/right/pluck/upper/threshhold 0.05 \n/right/pluck/lower/threshhold -0.05 \n/right/pluck false \n/left/window/radius 0.427984 0.846899 0.427984 0.846479 0.427984 \n/left/was/orientation 2.60266 \n/left/raw/x 1565 \n/left/raw/y 2779 \n/left/raw/z 4072 \n/left/x -0.235653 \n/left/y 0.357265 \n/left/z 0.00561661 \n/left/radius 0.427984 \n/left/orientation -0.583097 \n/left/delta/orientation -3.18575 \n/left/anticlockwise false \n/left/clockwise true \n/left/radius/delta 1.27337e-08 \n/left/pluck/upper/threshhold 0.05 \n/left/pluck/lower/threshhold -0.05 \n/left/pluck false \n",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -997,7 +1049,6 @@
 					"bubble" : 1,
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
-					"frgb" : 0.0,
 					"id" : "obj-32",
 					"maxclass" : "comment",
 					"numinlets" : 1,
@@ -1013,7 +1064,6 @@
 					"bubbleside" : 2,
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
-					"frgb" : 0.0,
 					"id" : "obj-30",
 					"maxclass" : "comment",
 					"numinlets" : 1,
@@ -1164,7 +1214,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 344.5, 737.5, 321.0, 33.0 ],
+					"patching_rect" : [ 344.5, 737.5, 321.0, 35.0 ],
 					"text" : "/pluck/upper/threshhold 0.05 \n/pluck/lower/threshhold -0.05 ",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -1177,7 +1227,6 @@
 					"bubbleside" : 3,
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
-					"frgb" : 0.0,
 					"id" : "obj-75",
 					"maxclass" : "comment",
 					"numinlets" : 1,
@@ -1222,7 +1271,6 @@
 					"bubbleside" : 3,
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
-					"frgb" : 0.0,
 					"id" : "obj-67",
 					"maxclass" : "comment",
 					"numinlets" : 1,
@@ -1236,7 +1284,6 @@
 				"box" : 				{
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
-					"frgb" : 0.0,
 					"id" : "obj-65",
 					"maxclass" : "comment",
 					"numinlets" : 1,
@@ -1253,7 +1300,6 @@
 					"bubbleside" : 3,
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
-					"frgb" : 0.0,
 					"id" : "obj-63",
 					"maxclass" : "comment",
 					"numinlets" : 1,
@@ -1272,8 +1318,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 313.5, 610.0, 437.0, 20.0 ],
-					"text" : "o.expr (/anticlockwise = /orientation > 0.001)\\; (/clockwise = /orientation < -0.001)"
+					"patching_rect" : [ 313.5, 609.0, 495.0, 20.0 ],
+					"text" : "o.expr (/anticlockwise = /delta/orientation > 0.001)\\; (/clockwise = /delta/orientation < -0.001)"
 				}
 
 			}
@@ -1284,7 +1330,6 @@
 					"bubbleside" : 3,
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
-					"frgb" : 0.0,
 					"id" : "obj-59",
 					"maxclass" : "comment",
 					"numinlets" : 1,
@@ -1313,7 +1358,6 @@
 					"bubble" : 1,
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
-					"frgb" : 0.0,
 					"id" : "obj-2",
 					"maxclass" : "comment",
 					"numinlets" : 1,
@@ -1358,13 +1402,12 @@
 					"bubbleside" : 3,
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
-					"frgb" : 0.0,
 					"id" : "obj-54",
 					"linecount" : 2,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 130.0, 471.5, 150.0, 37.0 ],
+					"patching_rect" : [ 130.0, 471.5, 150.0, 38.0 ],
 					"text" : "Fuse by conversion to polar coordinates"
 				}
 
@@ -1446,11 +1489,11 @@
 					"fontsize" : 12.0,
 					"id" : "obj-1",
 					"maxclass" : "newobj",
-					"numinlets" : 1,
+					"numinlets" : 0,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 300.0, 40.0, 192.0, 20.0 ],
-					"text" : "nothing o.io.hid \"Game-Trak V1.3\""
+					"patching_rect" : [ 300.0, 40.0, 149.0, 20.0 ],
+					"text" : "o.io.hid \"Game-Trak V1.3\""
 				}
 
 			}
@@ -1461,13 +1504,12 @@
 					"bubbleside" : 3,
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
-					"frgb" : 0.0,
 					"id" : "obj-38",
 					"linecount" : 3,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 125.0, 264.0, 155.0, 51.0 ],
+					"patching_rect" : [ 125.0, 264.0, 155.0, 52.0 ],
 					"text" : "Calibrate to a \nfamiliar norm: degrees\nand meters"
 				}
 
@@ -1477,11 +1519,11 @@
 					"background" : 1,
 					"border" : 1,
 					"id" : "obj-26",
+					"ignoreclick" : 1,
 					"maxclass" : "panel",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 290.0, 810.0, 550.0, 40.0 ],
-					"presentation_rect" : [ 292.0, 799.0, 0.0, 0.0 ]
+					"patching_rect" : [ 290.0, 810.0, 550.0, 40.0 ]
 				}
 
 			}
@@ -1490,11 +1532,11 @@
 					"background" : 1,
 					"border" : 1,
 					"id" : "obj-21",
+					"ignoreclick" : 1,
 					"maxclass" : "panel",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 290.0, 510.0, 550.5, 190.0 ],
-					"presentation_rect" : [ 293.0, 513.0, 0.0, 0.0 ]
+					"patching_rect" : [ 290.0, 510.0, 550.5, 190.0 ]
 				}
 
 			}
@@ -1503,6 +1545,7 @@
 					"background" : 1,
 					"border" : 1,
 					"id" : "obj-73",
+					"ignoreclick" : 1,
 					"maxclass" : "panel",
 					"numinlets" : 1,
 					"numoutlets" : 0,
@@ -1515,6 +1558,7 @@
 					"background" : 1,
 					"border" : 1,
 					"id" : "obj-69",
+					"ignoreclick" : 1,
 					"maxclass" : "panel",
 					"numinlets" : 1,
 					"numoutlets" : 0,
@@ -1527,6 +1571,7 @@
 					"background" : 1,
 					"border" : 1,
 					"id" : "obj-64",
+					"ignoreclick" : 1,
 					"maxclass" : "panel",
 					"numinlets" : 1,
 					"numoutlets" : 0,
@@ -1539,6 +1584,7 @@
 					"background" : 1,
 					"border" : 1,
 					"id" : "obj-66",
+					"ignoreclick" : 1,
 					"maxclass" : "panel",
 					"numinlets" : 1,
 					"numoutlets" : 0,
@@ -1551,6 +1597,7 @@
 					"background" : 1,
 					"border" : 1,
 					"id" : "obj-71",
+					"ignoreclick" : 1,
 					"maxclass" : "panel",
 					"numinlets" : 1,
 					"numoutlets" : 0,
@@ -1580,6 +1627,15 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-16", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-11", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-4", 1 ],
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-11", 0 ]
@@ -2049,46 +2105,36 @@
 			}
  ],
 		"dependency_cache" : [ 			{
-				"name" : "nothing.maxpat",
-				"bootpath" : "/Users/john/Development/cnmat/trunk/max/patches/MMJ-DEPOT/CNMAT_MMJ-Depot/modules/basic-programming",
-				"patcherrelativepath" : "../../../../patches/MMJ-DEPOT/CNMAT_MMJ-Depot/modules/basic-programming",
+				"name" : "o.io.hid.maxpat",
+				"bootpath" : "/Users/adrian/odot2/abstractions",
+				"patcherrelativepath" : "../../../../../../odot2/abstractions",
 				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "uc_license.maxpat",
-				"bootpath" : "/Users/john/Development/cnmat/trunk/max/patches/MMJ-DEPOT/CNMAT_MMJ-Depot/modules/Depot_Support",
-				"patcherrelativepath" : "../../../../patches/MMJ-DEPOT/CNMAT_MMJ-Depot/modules/Depot_Support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "cnmat_blue.gif",
-				"bootpath" : "/Users/john/Development/cnmat/trunk/max/patches/MMJ-DEPOT/CNMAT_MMJ-Depot/modules/Depot_Support",
-				"patcherrelativepath" : "../../../../patches/MMJ-DEPOT/CNMAT_MMJ-Depot/modules/Depot_Support",
-				"type" : "GIFf",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.remember.maxpat",
-				"bootpath" : "/Users/john/MMJ5-dev/odot/abstractions",
-				"patcherrelativepath" : "../../../../../../../../MMJ5-dev/odot/abstractions",
+				"bootpath" : "/Users/adrian/odot2/abstractions",
+				"patcherrelativepath" : "../../../../../../odot2/abstractions",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.callpatch.maxpat",
-				"bootpath" : "/Users/john/MMJ5-dev/odot/abstractions",
-				"patcherrelativepath" : "../../../../../../../../MMJ5-dev/odot/abstractions",
+				"bootpath" : "/Users/adrian/odot2/abstractions",
+				"patcherrelativepath" : "../../../../../../odot2/abstractions",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.multisliders.maxpat",
-				"bootpath" : "/Users/john/MMJ5-dev/odot/abstractions",
-				"patcherrelativepath" : "../../../../../../../../MMJ5-dev/odot/abstractions",
+				"bootpath" : "/Users/adrian/odot2/abstractions",
+				"patcherrelativepath" : "../../../../../../odot2/abstractions",
 				"type" : "JSON",
 				"implicit" : 1
+			}
+, 			{
+				"name" : "OpenSoundControl.mxo",
+				"type" : "iLaX"
 			}
 , 			{
 				"name" : "o.route.mxo",
