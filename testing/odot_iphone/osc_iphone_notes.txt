@@ -6,10 +6,12 @@ touchosc (simple)
 		(0, 0) (1, 0) (2, 0)
 		(0, 1) (1, 1) (2, 1)
 		(0, 2) (1, 2) (2, 2)
+	accelerometer->/accxyz
 	special->/tab/multitoggle/x/y num (1,1-8,8)
 		(1, 1) (2, 1) (3, 1)
 		(1, 2) (2, 2) (2, 3)
 		(1, 3) (2, 3) (3, 3) 
+	
 
 oscemote (sliders)
 	opening message:/hello "OSCemote...
@@ -24,7 +26,7 @@ oscemote (sliders)
 		(0, 0) (1, 0) (2, 0)
 		(0, 1) (1, 1) (2, 1)
 		(0, 2) (1, 2) (2, 2)
-	special->acceleration/xyz num num num (-3-3)
+	accelerometer->acceleration/xyz num num num (-3-3)
 
 iosc (test)
 	multislider->/osc/slider# num

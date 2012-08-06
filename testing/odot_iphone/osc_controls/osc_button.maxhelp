@@ -44,7 +44,7 @@
 							"revision" : 5
 						}
 ,
-						"rect" : [ 0.0, 26.0, 642.0, 540.0 ],
+						"rect" : [ 100.0, 126.0, 642.0, 540.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -232,7 +232,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "int" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 7.0, 81.0, 20.0, 20.0 ]
+									"patching_rect" : [ 7.0, 123.0, 20.0, 20.0 ]
 								}
 
 							}
@@ -245,8 +245,8 @@
 									"numinlets" : 0,
 									"numoutlets" : 3,
 									"outlettype" : [ "int", "", "" ],
-									"patching_rect" : [ 7.0, 42.0, 69.0, 20.0 ],
-									"text" : "osc_button"
+									"patching_rect" : [ 7.0, 84.0, 89.0, 20.0 ],
+									"text" : "osc_button 1 2"
 								}
 
 							}
@@ -255,11 +255,12 @@
 									"fontname" : "Arial",
 									"fontsize" : 12.0,
 									"id" : "obj-4",
+									"linecount" : 4,
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 7.0, 22.0, 150.0, 20.0 ],
-									"text" : "touchosc:"
+									"patching_rect" : [ 7.0, 22.0, 150.0, 62.0 ],
+									"text" : "touchosc: \nUsing the simple layout and tapping the first button in the second tab."
 								}
 
 							}
@@ -333,16 +334,16 @@
 ,
 					"patching_rect" : [ 77.0, 18.0, 72.0, 20.0 ],
 					"saved_object_attributes" : 					{
-						"default_fontface" : 0,
-						"digest" : "",
-						"fontname" : "Arial",
-						"default_fontname" : "Arial",
-						"tags" : "",
-						"default_fontsize" : 12.0,
 						"globalpatchername" : "",
-						"description" : "",
+						"default_fontface" : 0,
 						"fontface" : 0,
-						"fontsize" : 12.0
+						"fontsize" : 12.0,
+						"digest" : "",
+						"default_fontname" : "Arial",
+						"default_fontsize" : 12.0,
+						"description" : "",
+						"tags" : "",
+						"fontname" : "Arial"
 					}
 ,
 					"text" : "p examples"
@@ -365,7 +366,7 @@
 							"revision" : 5
 						}
 ,
-						"rect" : [ 100.0, 126.0, 642.0, 540.0 ],
+						"rect" : [ 0.0, 26.0, 642.0, 540.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -428,7 +429,8 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 464.0, 445.0, 50.0, 18.0 ]
+									"patching_rect" : [ 464.0, 445.0, 50.0, 18.0 ],
+									"text" : "empty"
 								}
 
 							}
@@ -441,7 +443,8 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 187.0, 419.0, 50.0, 18.0 ]
+									"patching_rect" : [ 187.0, 419.0, 50.0, 18.0 ],
+									"text" : "1 2"
 								}
 
 							}
@@ -485,6 +488,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 288.0, 350.0, 153.0, 20.0 ],
+									"text" : "/2/push1 0. ",
 									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 
@@ -692,16 +696,16 @@
 ,
 					"patching_rect" : [ 16.0, 18.0, 49.0, 20.0 ],
 					"saved_object_attributes" : 					{
-						"default_fontface" : 0,
-						"digest" : "",
-						"fontname" : "Arial",
-						"default_fontname" : "Arial",
-						"tags" : "",
-						"default_fontsize" : 12.0,
 						"globalpatchername" : "",
-						"description" : "",
+						"default_fontface" : 0,
 						"fontface" : 0,
-						"fontsize" : 12.0
+						"fontsize" : 12.0,
+						"digest" : "",
+						"default_fontname" : "Arial",
+						"default_fontsize" : 12.0,
+						"description" : "",
+						"tags" : "",
+						"fontname" : "Arial"
 					}
 ,
 					"text" : "p basic"

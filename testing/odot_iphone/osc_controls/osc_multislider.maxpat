@@ -388,16 +388,16 @@
 ,
 					"patching_rect" : [ 525.0, 172.0, 163.0, 20.0 ],
 					"saved_object_attributes" : 					{
-						"default_fontface" : 0,
-						"digest" : "",
-						"fontname" : "Arial",
-						"default_fontname" : "Arial",
-						"tags" : "",
-						"default_fontsize" : 12.0,
 						"globalpatchername" : "",
-						"description" : "",
+						"default_fontface" : 0,
 						"fontface" : 0,
-						"fontsize" : 12.0
+						"fontsize" : 12.0,
+						"digest" : "",
+						"default_fontname" : "Arial",
+						"default_fontsize" : 12.0,
+						"description" : "",
+						"tags" : "",
+						"fontname" : "Arial"
 					}
 ,
 					"text" : "p parseOmessageMultislider"
@@ -456,8 +456,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 713.75, 232.0, 308.0, 46.0 ],
-					"text" : "If you are using mrmr turn off \"Include Device ID\" under the prefs tab. Otherwise you are using an unsupported osc app or you are not pressing a button."
+					"patching_rect" : [ 713.75, 232.0, 395.0, 46.0 ],
+					"text" : "If you are using mrmr turn off \"Include Device ID\" under the prefs tab. Otherwise you are using an unsupported osc app or you are not using a multislider.."
 				}
 
 			}
@@ -488,7 +488,7 @@
 			}
 , 			{
 				"box" : 				{
-					"comment" : "button# tab#",
+					"comment" : "multislider# tab#",
 					"id" : "obj-68",
 					"maxclass" : "outlet",
 					"numinlets" : 1,
@@ -536,7 +536,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 19.5, 252.0, 150.0, 34.0 ],
-					"text" : "/mrmr/slider/horizontal/24/jedermann 520 \n",
+					"text" : "/mrmr/slider/horizontal/24/jedermann 520 ",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -555,7 +555,8 @@
 			}
 , 			{
 				"box" : 				{
-					"comment" : "",
+					"annotation" : "",
+					"comment" : "output",
 					"id" : "obj-15",
 					"maxclass" : "outlet",
 					"numinlets" : 1,

@@ -7,7 +7,7 @@
 			"revision" : 5
 		}
 ,
-		"rect" : [ 44.0, 227.0, 1315.0, 648.0 ],
+		"rect" : [ 40.0, 155.0, 1315.0, 648.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -390,16 +390,16 @@
 ,
 					"patching_rect" : [ 847.0, 259.0, 143.0, 20.0 ],
 					"saved_object_attributes" : 					{
-						"default_fontsize" : 12.0,
-						"description" : "",
-						"fontname" : "Arial",
+						"globalpatchername" : "",
 						"default_fontface" : 0,
-						"tags" : "",
 						"fontface" : 0,
 						"fontsize" : 12.0,
 						"digest" : "",
-						"globalpatchername" : "",
-						"default_fontname" : "Arial"
+						"default_fontname" : "Arial",
+						"default_fontsize" : 12.0,
+						"description" : "",
+						"tags" : "",
+						"fontname" : "Arial"
 					}
 ,
 					"text" : "p parseOmessageButton"
@@ -459,7 +459,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 993.75, 335.0, 308.0, 46.0 ],
-					"text" : "If you are using mrmr turn off \"Include Device ID\" under the prefs tab. Otherwise you are using an unsupported osc app or you are not pressing a button."
+					"text" : "If you are using mrmr turn off \"Include Device ID\" under the prefs tab. Otherwise you are using an unsupported osc app or you are not using a pictslider."
 				}
 
 			}
@@ -490,7 +490,7 @@
 			}
 , 			{
 				"box" : 				{
-					"comment" : "button# tab#",
+					"comment" : "pictslider# tab#",
 					"id" : "obj-68",
 					"maxclass" : "outlet",
 					"numinlets" : 1,
@@ -571,7 +571,7 @@
 			}
 , 			{
 				"box" : 				{
-					"comment" : "",
+					"comment" : "y output",
 					"id" : "obj-34",
 					"maxclass" : "outlet",
 					"numinlets" : 1,
@@ -582,7 +582,7 @@
 			}
 , 			{
 				"box" : 				{
-					"comment" : "",
+					"comment" : "x output",
 					"id" : "obj-33",
 					"maxclass" : "outlet",
 					"numinlets" : 1,
@@ -628,7 +628,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 15.0, 259.0, 154.0, 20.0 ],
+					"patching_rect" : [ 15.0, 259.0, 154.0, 21.0 ],
+					"text" : "/3/toggle3 0. \n",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 

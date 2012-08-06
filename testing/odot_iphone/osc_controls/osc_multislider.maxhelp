@@ -44,7 +44,7 @@
 							"revision" : 5
 						}
 ,
-						"rect" : [ 0.0, 26.0, 726.0, 512.0 ],
+						"rect" : [ 235.0, 134.0, 726.0, 512.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -234,7 +234,7 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "", "" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 13.0, 96.0, 20.0, 140.0 ]
+									"patching_rect" : [ 13.0, 123.0, 20.0, 140.0 ]
 								}
 
 							}
@@ -247,8 +247,8 @@
 									"numinlets" : 0,
 									"numoutlets" : 3,
 									"outlettype" : [ "", "", "" ],
-									"patching_rect" : [ 13.0, 53.0, 90.0, 20.0 ],
-									"text" : "osc_multislider"
+									"patching_rect" : [ 13.0, 94.0, 110.0, 20.0 ],
+									"text" : "osc_multislider 5 1"
 								}
 
 							}
@@ -257,11 +257,12 @@
 									"fontname" : "Arial",
 									"fontsize" : 12.0,
 									"id" : "obj-5",
+									"linecount" : 4,
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 13.0, 32.0, 150.0, 20.0 ],
-									"text" : "touchosc"
+									"patching_rect" : [ 13.0, 32.0, 150.0, 62.0 ],
+									"text" : "touchosc:\nUsing the simple layout and moving the top multislider in the first tab."
 								}
 
 							}
@@ -335,16 +336,16 @@
 ,
 					"patching_rect" : [ 84.0, 18.0, 72.0, 20.0 ],
 					"saved_object_attributes" : 					{
-						"default_fontsize" : 12.0,
-						"description" : "",
-						"fontname" : "Arial",
+						"globalpatchername" : "",
 						"default_fontface" : 0,
-						"tags" : "",
 						"fontface" : 0,
 						"fontsize" : 12.0,
 						"digest" : "",
-						"globalpatchername" : "",
-						"default_fontname" : "Arial"
+						"default_fontname" : "Arial",
+						"default_fontsize" : 12.0,
+						"description" : "",
+						"tags" : "",
+						"fontname" : "Arial"
 					}
 ,
 					"text" : "p examples"
@@ -367,7 +368,7 @@
 							"revision" : 5
 						}
 ,
-						"rect" : [ 235.0, 134.0, 726.0, 512.0 ],
+						"rect" : [ 0.0, 26.0, 726.0, 512.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -398,7 +399,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 133.5, 418.0, 89.0, 38.0 ],
+									"patching_rect" : [ 133.5, 418.0, 85.0, 38.0 ],
 									"text" : "Error message"
 								}
 
@@ -428,7 +429,8 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 245.0, 428.0, 50.0, 18.0 ]
+									"patching_rect" : [ 245.0, 428.0, 50.0, 18.0 ],
+									"text" : "empty"
 								}
 
 							}
@@ -441,7 +443,8 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 94.0, 345.0, 50.0, 18.0 ]
+									"patching_rect" : [ 94.0, 345.0, 50.0, 18.0 ],
+									"text" : "5 1"
 								}
 
 							}
@@ -485,6 +488,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 327.0, 335.0, 153.0, 20.0 ],
+									"text" : "/1/fader5 0.249071 ",
 									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 
@@ -677,16 +681,16 @@
 ,
 					"patching_rect" : [ 16.0, 18.0, 49.0, 20.0 ],
 					"saved_object_attributes" : 					{
-						"default_fontsize" : 12.0,
-						"description" : "",
-						"fontname" : "Arial",
+						"globalpatchername" : "",
 						"default_fontface" : 0,
-						"tags" : "",
 						"fontface" : 0,
 						"fontsize" : 12.0,
 						"digest" : "",
-						"globalpatchername" : "",
-						"default_fontname" : "Arial"
+						"default_fontname" : "Arial",
+						"default_fontsize" : 12.0,
+						"description" : "",
+						"tags" : "",
+						"fontname" : "Arial"
 					}
 ,
 					"text" : "p basic"

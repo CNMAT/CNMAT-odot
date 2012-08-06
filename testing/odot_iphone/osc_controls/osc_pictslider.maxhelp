@@ -7,7 +7,7 @@
 			"revision" : 5
 		}
 ,
-		"rect" : [ 159.0, 98.0, 717.0, 557.0 ],
+		"rect" : [ 248.0, 107.0, 717.0, 557.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -44,7 +44,7 @@
 							"revision" : 5
 						}
 ,
-						"rect" : [ 0.0, 26.0, 717.0, 531.0 ],
+						"rect" : [ 248.0, 133.0, 717.0, 531.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -177,8 +177,8 @@
 									"numinlets" : 0,
 									"numoutlets" : 4,
 									"outlettype" : [ "int", "int", "", "" ],
-									"patching_rect" : [ 10.0, 55.0, 83.0, 20.0 ],
-									"text" : "osc_pictslider"
+									"patching_rect" : [ 6.0, 87.0, 113.0, 20.0 ],
+									"text" : "osc_pictslider foo 3"
 								}
 
 							}
@@ -190,7 +190,7 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "int", "int" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 10.0, 88.0, 100.0, 100.0 ]
+									"patching_rect" : [ 6.0, 120.0, 100.0, 100.0 ]
 								}
 
 							}
@@ -255,11 +255,12 @@
 									"fontname" : "Arial",
 									"fontsize" : 12.0,
 									"id" : "obj-5",
+									"linecount" : 4,
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 6.0, 36.0, 150.0, 20.0 ],
-									"text" : "touchosc"
+									"patching_rect" : [ 6.0, 25.0, 162.0, 62.0 ],
+									"text" : "touchosc:\nUsing the simple layout and moving the pictslider in tab 3."
 								}
 
 							}
@@ -378,16 +379,16 @@
 ,
 					"patching_rect" : [ 77.0, 18.0, 72.0, 20.0 ],
 					"saved_object_attributes" : 					{
-						"default_fontsize" : 12.0,
-						"description" : "",
-						"fontname" : "Arial",
+						"globalpatchername" : "",
 						"default_fontface" : 0,
-						"tags" : "",
 						"fontface" : 0,
 						"fontsize" : 12.0,
 						"digest" : "",
-						"globalpatchername" : "",
-						"default_fontname" : "Arial"
+						"default_fontname" : "Arial",
+						"default_fontsize" : 12.0,
+						"description" : "",
+						"tags" : "",
+						"fontname" : "Arial"
 					}
 ,
 					"text" : "p examples"
@@ -410,7 +411,7 @@
 							"revision" : 5
 						}
 ,
-						"rect" : [ 159.0, 124.0, 717.0, 531.0 ],
+						"rect" : [ 0.0, 26.0, 717.0, 531.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -457,7 +458,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 154.0, 398.0, 90.0, 38.0 ],
+									"patching_rect" : [ 154.0, 398.0, 84.0, 38.0 ],
 									"text" : "error message"
 								}
 
@@ -471,7 +472,8 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 250.5, 408.0, 50.0, 18.0 ]
+									"patching_rect" : [ 250.5, 408.0, 50.0, 18.0 ],
+									"text" : "empty"
 								}
 
 							}
@@ -484,7 +486,8 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 164.0, 332.0, 50.0, 18.0 ]
+									"patching_rect" : [ 164.0, 332.0, 50.0, 18.0 ],
+									"text" : "none 3"
 								}
 
 							}
@@ -499,7 +502,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 67.0, 296.0, 21.0, 39.0 ],
+									"patching_rect" : [ 57.0, 294.0, 36.0, 39.0 ],
 									"text" : "y"
 								}
 
@@ -631,6 +634,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 327.0, 347.0, 153.0, 20.0 ],
+									"text" : "/3/xy 0.623595 0.765918 ",
 									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 
@@ -763,16 +767,16 @@
 ,
 					"patching_rect" : [ 16.0, 18.0, 49.0, 20.0 ],
 					"saved_object_attributes" : 					{
-						"default_fontsize" : 12.0,
-						"description" : "",
-						"fontname" : "Arial",
+						"globalpatchername" : "",
 						"default_fontface" : 0,
-						"tags" : "",
 						"fontface" : 0,
 						"fontsize" : 12.0,
 						"digest" : "",
-						"globalpatchername" : "",
-						"default_fontname" : "Arial"
+						"default_fontname" : "Arial",
+						"default_fontsize" : 12.0,
+						"description" : "",
+						"tags" : "",
+						"fontname" : "Arial"
 					}
 ,
 					"text" : "p basic"

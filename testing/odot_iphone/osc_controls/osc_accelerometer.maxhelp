@@ -44,7 +44,7 @@
 							"revision" : 5
 						}
 ,
-						"rect" : [ 0.0, 26.0, 803.0, 452.0 ],
+						"rect" : [ 363.0, 195.0, 803.0, 452.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -66,6 +66,34 @@
 						"showontab" : 1,
 						"boxes" : [ 							{
 								"box" : 								{
+									"id" : "obj-4",
+									"maxclass" : "multislider",
+									"numinlets" : 1,
+									"numoutlets" : 2,
+									"outlettype" : [ "", "" ],
+									"parameter_enable" : 0,
+									"patching_rect" : [ 19.0, 162.0, 200.0, 120.0 ],
+									"setstyle" : 2,
+									"size" : 3
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"fontname" : "Arial",
+									"fontsize" : 12.0,
+									"id" : "obj-3",
+									"maxclass" : "newobj",
+									"numinlets" : 0,
+									"numoutlets" : 2,
+									"outlettype" : [ "", "" ],
+									"patching_rect" : [ 19.0, 128.0, 112.0, 20.0 ],
+									"text" : "osc_accelerometer"
+								}
+
+							}
+, 							{
+								"box" : 								{
 									"id" : "obj-26",
 									"maxclass" : "multislider",
 									"numinlets" : 1,
@@ -86,8 +114,8 @@
 									"id" : "obj-1",
 									"maxclass" : "newobj",
 									"numinlets" : 0,
-									"numoutlets" : 1,
-									"outlettype" : [ "" ],
+									"numoutlets" : 2,
+									"outlettype" : [ "", "" ],
 									"patching_rect" : [ 297.0, 128.0, 112.0, 20.0 ],
 									"text" : "osc_accelerometer"
 								}
@@ -103,7 +131,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 291.0, 52.0, 150.0, 76.0 ],
-									"text" : "oscemote:\nTurning on the accelerometer under the accel tab an waving the device around."
+									"text" : "oscemote:\nTurning on the accelerometer under the accel tab and waving the device around."
 								}
 
 							}
@@ -112,11 +140,12 @@
 									"fontname" : "Arial",
 									"fontsize" : 12.0,
 									"id" : "obj-5",
+									"linecount" : 5,
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 17.0, 27.0, 150.0, 20.0 ],
-									"text" : "touchosc"
+									"patching_rect" : [ 19.0, 52.0, 150.0, 76.0 ],
+									"text" : "touchosc:\nTurning on the accelerometer under the info button and wave the device around."
 								}
 
 							}
@@ -130,10 +159,19 @@
 								}
 
 							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-4", 0 ],
+									"disabled" : 0,
+									"hidden" : 0,
+									"source" : [ "obj-3", 0 ]
+								}
+
+							}
  ],
 						"dependency_cache" : [ 							{
 								"name" : "osc_accelerometer.maxpat",
-								"bootpath" : "/Applications/Max6/patches/odot_iphone/osc_controls",
+								"bootpath" : "/Users/samgmansfield/Documents/CNMAT/cnmat/trunk/max/externals/odot/trunk/testing/odot_iphone/osc_controls",
 								"type" : "JSON",
 								"implicit" : 1
 							}
@@ -146,16 +184,16 @@
 ,
 					"patching_rect" : [ 77.0, 18.0, 72.0, 20.0 ],
 					"saved_object_attributes" : 					{
-						"default_fontname" : "Arial",
-						"tags" : "",
-						"fontname" : "Arial",
-						"default_fontsize" : 12.0,
-						"description" : "",
 						"globalpatchername" : "",
+						"default_fontface" : 0,
 						"fontface" : 0,
 						"fontsize" : 12.0,
-						"default_fontface" : 0,
-						"digest" : ""
+						"digest" : "",
+						"default_fontname" : "Arial",
+						"default_fontsize" : 12.0,
+						"description" : "",
+						"tags" : "",
+						"fontname" : "Arial"
 					}
 ,
 					"text" : "p examples"
@@ -178,7 +216,7 @@
 							"revision" : 5
 						}
 ,
-						"rect" : [ 363.0, 195.0, 803.0, 452.0 ],
+						"rect" : [ 0.0, 26.0, 803.0, 452.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -275,8 +313,8 @@
 									"id" : "obj-7",
 									"maxclass" : "newobj",
 									"numinlets" : 0,
-									"numoutlets" : 1,
-									"outlettype" : [ "" ],
+									"numoutlets" : 2,
+									"outlettype" : [ "", "" ],
 									"patching_rect" : [ 19.0, 145.0, 112.0, 20.0 ],
 									"text" : "osc_accelerometer"
 								}
@@ -303,11 +341,13 @@
 									"fontname" : "Arial",
 									"fontsize" : 12.0,
 									"id" : "obj-15",
+									"linecount" : 2,
 									"maxclass" : "o.message",
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 348.0, 254.0, 153.0, 20.0 ],
+									"patching_rect" : [ 348.0, 254.0, 153.0, 34.0 ],
+									"text" : "/accxyz 0.126526 -0.630371 -0.758484 ",
 									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 
@@ -337,7 +377,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 6.0, 88.0, 551.0, 34.0 ],
-									"text" : "osc_accelerometer interprets osc messages from the iphone using  touchosc (not implemented yet) and oscemote,. Make sure to use port 10000 to send osc messages.",
+									"text" : "osc_accelerometer interprets osc messages from the iphone using  touchosc and oscemote,. Make sure to use port 10000 to send osc messages.",
 									"textcolor" : [ 0.485712, 0.485712, 0.485712, 1.0 ]
 								}
 
@@ -390,7 +430,7 @@
  ],
 						"dependency_cache" : [ 							{
 								"name" : "osc_accelerometer.maxpat",
-								"bootpath" : "/Applications/Max6/patches/odot_iphone/osc_controls",
+								"bootpath" : "/Users/samgmansfield/Documents/CNMAT/cnmat/trunk/max/externals/odot/trunk/testing/odot_iphone/osc_controls",
 								"type" : "JSON",
 								"implicit" : 1
 							}
@@ -407,16 +447,16 @@
 ,
 					"patching_rect" : [ 16.0, 18.0, 49.0, 20.0 ],
 					"saved_object_attributes" : 					{
-						"default_fontname" : "Arial",
-						"tags" : "",
-						"fontname" : "Arial",
-						"default_fontsize" : 12.0,
-						"description" : "",
 						"globalpatchername" : "",
+						"default_fontface" : 0,
 						"fontface" : 0,
 						"fontsize" : 12.0,
-						"default_fontface" : 0,
-						"digest" : ""
+						"digest" : "",
+						"default_fontname" : "Arial",
+						"default_fontsize" : 12.0,
+						"description" : "",
+						"tags" : "",
+						"fontname" : "Arial"
 					}
 ,
 					"text" : "p basic"
@@ -427,7 +467,7 @@
 		"lines" : [  ],
 		"dependency_cache" : [ 			{
 				"name" : "osc_accelerometer.maxpat",
-				"bootpath" : "/Applications/Max6/patches/odot_iphone/osc_controls",
+				"bootpath" : "/Users/samgmansfield/Documents/CNMAT/cnmat/trunk/max/externals/odot/trunk/testing/odot_iphone/osc_controls",
 				"patcherrelativepath" : "",
 				"type" : "JSON",
 				"implicit" : 1
