@@ -44,7 +44,7 @@
 							"revision" : 5
 						}
 ,
-						"rect" : [ 363.0, 195.0, 803.0, 452.0 ],
+						"rect" : [ 0.0, 26.0, 803.0, 452.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -84,7 +84,7 @@
 									"fontsize" : 12.0,
 									"id" : "obj-3",
 									"maxclass" : "newobj",
-									"numinlets" : 0,
+									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "" ],
 									"patching_rect" : [ 19.0, 128.0, 112.0, 20.0 ],
@@ -113,7 +113,7 @@
 									"fontsize" : 12.0,
 									"id" : "obj-1",
 									"maxclass" : "newobj",
-									"numinlets" : 0,
+									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "" ],
 									"patching_rect" : [ 297.0, 128.0, 112.0, 20.0 ],
@@ -184,16 +184,16 @@
 ,
 					"patching_rect" : [ 77.0, 18.0, 72.0, 20.0 ],
 					"saved_object_attributes" : 					{
-						"globalpatchername" : "",
 						"default_fontface" : 0,
-						"fontface" : 0,
-						"fontsize" : 12.0,
 						"digest" : "",
 						"default_fontname" : "Arial",
+						"fontname" : "Arial",
+						"tags" : "",
 						"default_fontsize" : 12.0,
 						"description" : "",
-						"tags" : "",
-						"fontname" : "Arial"
+						"globalpatchername" : "",
+						"fontface" : 0,
+						"fontsize" : 12.0
 					}
 ,
 					"text" : "p examples"
@@ -216,7 +216,7 @@
 							"revision" : 5
 						}
 ,
-						"rect" : [ 0.0, 26.0, 803.0, 452.0 ],
+						"rect" : [ 363.0, 195.0, 803.0, 452.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -237,6 +237,22 @@
 						"tags" : "",
 						"showontab" : 1,
 						"boxes" : [ 							{
+								"box" : 								{
+									"bubble" : 1,
+									"bubblepoint" : 0.2,
+									"bubbleside" : 2,
+									"fontname" : "Arial",
+									"fontsize" : 12.0,
+									"id" : "obj-4",
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 19.0, 122.0, 42.0, 39.0 ],
+									"text" : "port#"
+								}
+
+							}
+, 							{
 								"box" : 								{
 									"fontname" : "Arial",
 									"fontsize" : 12.0,
@@ -312,10 +328,10 @@
 									"fontsize" : 12.0,
 									"id" : "obj-7",
 									"maxclass" : "newobj",
-									"numinlets" : 0,
+									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "" ],
-									"patching_rect" : [ 19.0, 145.0, 112.0, 20.0 ],
+									"patching_rect" : [ 19.0, 161.0, 112.0, 20.0 ],
 									"text" : "osc_accelerometer"
 								}
 
@@ -341,13 +357,11 @@
 									"fontname" : "Arial",
 									"fontsize" : 12.0,
 									"id" : "obj-15",
-									"linecount" : 2,
 									"maxclass" : "o.message",
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 348.0, 254.0, 153.0, 34.0 ],
-									"text" : "/accxyz 0.126526 -0.630371 -0.758484 ",
+									"patching_rect" : [ 348.0, 254.0, 153.0, 20.0 ],
 									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 
@@ -377,7 +391,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 6.0, 88.0, 551.0, 34.0 ],
-									"text" : "osc_accelerometer interprets osc messages from the iphone using  touchosc and oscemote,. Make sure to use port 10000 to send osc messages.",
+									"text" : "osc_accelerometer interprets osc messages from the iphone using  touchosc and oscemote,. By default the port number is set to 10000.",
 									"textcolor" : [ 0.485712, 0.485712, 0.485712, 1.0 ]
 								}
 
@@ -447,16 +461,16 @@
 ,
 					"patching_rect" : [ 16.0, 18.0, 49.0, 20.0 ],
 					"saved_object_attributes" : 					{
-						"globalpatchername" : "",
 						"default_fontface" : 0,
-						"fontface" : 0,
-						"fontsize" : 12.0,
 						"digest" : "",
 						"default_fontname" : "Arial",
+						"fontname" : "Arial",
+						"tags" : "",
 						"default_fontsize" : 12.0,
 						"description" : "",
-						"tags" : "",
-						"fontname" : "Arial"
+						"globalpatchername" : "",
+						"fontface" : 0,
+						"fontsize" : 12.0
 					}
 ,
 					"text" : "p basic"

@@ -44,7 +44,7 @@
 							"revision" : 5
 						}
 ,
-						"rect" : [ 235.0, 134.0, 726.0, 512.0 ],
+						"rect" : [ 0.0, 26.0, 726.0, 512.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -82,7 +82,7 @@
 									"fontsize" : 12.0,
 									"id" : "obj-24",
 									"maxclass" : "newobj",
-									"numinlets" : 0,
+									"numinlets" : 1,
 									"numoutlets" : 3,
 									"outlettype" : [ "", "", "" ],
 									"patching_rect" : [ 458.0, 110.0, 100.0, 20.0 ],
@@ -123,7 +123,7 @@
 									"fontsize" : 12.0,
 									"id" : "obj-21",
 									"maxclass" : "newobj",
-									"numinlets" : 0,
+									"numinlets" : 1,
 									"numoutlets" : 3,
 									"outlettype" : [ "", "", "" ],
 									"patching_rect" : [ 214.0, 387.0, 107.0, 20.0 ],
@@ -163,7 +163,7 @@
 									"fontsize" : 12.0,
 									"id" : "obj-15",
 									"maxclass" : "newobj",
-									"numinlets" : 0,
+									"numinlets" : 1,
 									"numoutlets" : 3,
 									"outlettype" : [ "", "", "" ],
 									"patching_rect" : [ 214.0, 90.0, 100.0, 20.0 ],
@@ -204,7 +204,7 @@
 									"fontsize" : 12.0,
 									"id" : "obj-10",
 									"maxclass" : "newobj",
-									"numinlets" : 0,
+									"numinlets" : 1,
 									"numoutlets" : 3,
 									"outlettype" : [ "", "", "" ],
 									"patching_rect" : [ 13.0, 346.0, 100.0, 20.0 ],
@@ -244,7 +244,7 @@
 									"fontsize" : 12.0,
 									"id" : "obj-6",
 									"maxclass" : "newobj",
-									"numinlets" : 0,
+									"numinlets" : 1,
 									"numoutlets" : 3,
 									"outlettype" : [ "", "", "" ],
 									"patching_rect" : [ 13.0, 94.0, 110.0, 20.0 ],
@@ -337,15 +337,15 @@
 					"patching_rect" : [ 84.0, 18.0, 72.0, 20.0 ],
 					"saved_object_attributes" : 					{
 						"globalpatchername" : "",
-						"default_fontface" : 0,
 						"fontface" : 0,
 						"fontsize" : 12.0,
+						"default_fontface" : 0,
 						"digest" : "",
 						"default_fontname" : "Arial",
-						"default_fontsize" : 12.0,
-						"description" : "",
+						"fontname" : "Arial",
 						"tags" : "",
-						"fontname" : "Arial"
+						"default_fontsize" : 12.0,
+						"description" : ""
 					}
 ,
 					"text" : "p examples"
@@ -368,7 +368,7 @@
 							"revision" : 5
 						}
 ,
-						"rect" : [ 0.0, 26.0, 726.0, 512.0 ],
+						"rect" : [ 235.0, 134.0, 726.0, 512.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -389,6 +389,22 @@
 						"tags" : "",
 						"showontab" : 1,
 						"boxes" : [ 							{
+								"box" : 								{
+									"bubble" : 1,
+									"bubblepoint" : 0.2,
+									"bubbleside" : 2,
+									"fontname" : "Arial",
+									"fontsize" : 12.0,
+									"id" : "obj-6",
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 6.0, 245.0, 38.0, 39.0 ],
+									"text" : "port#"
+								}
+
+							}
+, 							{
 								"box" : 								{
 									"bubble" : 1,
 									"bubbleside" : 3,
@@ -525,7 +541,7 @@
 , 							{
 								"box" : 								{
 									"bubble" : 1,
-									"bubblepoint" : 0.9,
+									"bubblepoint" : 0.1,
 									"bubbleside" : 2,
 									"fontname" : "Arial",
 									"fontsize" : 12.0,
@@ -533,7 +549,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 28.0, 244.5, 79.0, 39.0 ],
+									"patching_rect" : [ 85.0, 245.0, 79.0, 39.0 ],
 									"text" : "multislider #"
 								}
 
@@ -556,7 +572,7 @@
 									"fontsize" : 12.0,
 									"id" : "obj-7",
 									"maxclass" : "newobj",
-									"numinlets" : 0,
+									"numinlets" : 1,
 									"numoutlets" : 3,
 									"outlettype" : [ "", "", "" ],
 									"patching_rect" : [ 6.0, 284.0, 110.0, 20.0 ],
@@ -589,7 +605,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 6.0, 88.0, 551.0, 48.0 ],
-									"text" : "osc_multislider interprets osc messages from the iphone using  touchosc, oscemote, iosc, mrmr, as well as a particular processing sketch, provided in the odot_iphone folder. Make sure to use port 10000 to send osc messages.",
+									"text" : "osc_multislider interprets osc messages from the iphone using  touchosc, oscemote, iosc, mrmr, as well as a particular processing sketch, provided in the odot_iphone folder. By default the port is set to 10000.",
 									"textcolor" : [ 0.485712, 0.485712, 0.485712, 1.0 ]
 								}
 
@@ -682,15 +698,15 @@
 					"patching_rect" : [ 16.0, 18.0, 49.0, 20.0 ],
 					"saved_object_attributes" : 					{
 						"globalpatchername" : "",
-						"default_fontface" : 0,
 						"fontface" : 0,
 						"fontsize" : 12.0,
+						"default_fontface" : 0,
 						"digest" : "",
 						"default_fontname" : "Arial",
-						"default_fontsize" : 12.0,
-						"description" : "",
+						"fontname" : "Arial",
 						"tags" : "",
-						"fontname" : "Arial"
+						"default_fontsize" : 12.0,
+						"description" : ""
 					}
 ,
 					"text" : "p basic"

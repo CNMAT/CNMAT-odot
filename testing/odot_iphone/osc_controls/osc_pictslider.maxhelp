@@ -7,7 +7,7 @@
 			"revision" : 5
 		}
 ,
-		"rect" : [ 248.0, 107.0, 717.0, 557.0 ],
+		"rect" : [ 13.0, 56.0, 717.0, 557.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -44,7 +44,7 @@
 							"revision" : 5
 						}
 ,
-						"rect" : [ 248.0, 133.0, 717.0, 531.0 ],
+						"rect" : [ 0.0, 26.0, 717.0, 531.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -70,7 +70,7 @@
 									"fontsize" : 12.0,
 									"id" : "obj-11",
 									"maxclass" : "newobj",
-									"numinlets" : 0,
+									"numinlets" : 1,
 									"numoutlets" : 4,
 									"outlettype" : [ "int", "int", "", "" ],
 									"patching_rect" : [ 434.0, 103.0, 83.0, 20.0 ],
@@ -96,7 +96,7 @@
 									"fontsize" : 12.0,
 									"id" : "obj-8",
 									"maxclass" : "newobj",
-									"numinlets" : 0,
+									"numinlets" : 1,
 									"numoutlets" : 4,
 									"outlettype" : [ "int", "int", "", "" ],
 									"patching_rect" : [ 224.5, 298.0, 100.0, 20.0 ],
@@ -122,7 +122,7 @@
 									"fontsize" : 12.0,
 									"id" : "obj-6",
 									"maxclass" : "newobj",
-									"numinlets" : 0,
+									"numinlets" : 1,
 									"numoutlets" : 4,
 									"outlettype" : [ "int", "int", "", "" ],
 									"patching_rect" : [ 224.5, 87.0, 83.0, 20.0 ],
@@ -148,7 +148,7 @@
 									"fontsize" : 12.0,
 									"id" : "obj-3",
 									"maxclass" : "newobj",
-									"numinlets" : 0,
+									"numinlets" : 1,
 									"numoutlets" : 4,
 									"outlettype" : [ "int", "int", "", "" ],
 									"patching_rect" : [ 19.0, 303.0, 83.0, 20.0 ],
@@ -174,7 +174,7 @@
 									"fontsize" : 12.0,
 									"id" : "obj-2",
 									"maxclass" : "newobj",
-									"numinlets" : 0,
+									"numinlets" : 1,
 									"numoutlets" : 4,
 									"outlettype" : [ "int", "int", "", "" ],
 									"patching_rect" : [ 6.0, 87.0, 113.0, 20.0 ],
@@ -380,15 +380,15 @@
 					"patching_rect" : [ 77.0, 18.0, 72.0, 20.0 ],
 					"saved_object_attributes" : 					{
 						"globalpatchername" : "",
-						"default_fontface" : 0,
 						"fontface" : 0,
 						"fontsize" : 12.0,
+						"default_fontface" : 0,
 						"digest" : "",
 						"default_fontname" : "Arial",
-						"default_fontsize" : 12.0,
-						"description" : "",
+						"fontname" : "Arial",
 						"tags" : "",
-						"fontname" : "Arial"
+						"default_fontsize" : 12.0,
+						"description" : ""
 					}
 ,
 					"text" : "p examples"
@@ -411,7 +411,7 @@
 							"revision" : 5
 						}
 ,
-						"rect" : [ 0.0, 26.0, 717.0, 531.0 ],
+						"rect" : [ 13.0, 82.0, 717.0, 531.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -432,6 +432,22 @@
 						"tags" : "",
 						"showontab" : 1,
 						"boxes" : [ 							{
+								"box" : 								{
+									"bubble" : 1,
+									"bubblepoint" : 0.2,
+									"bubbleside" : 2,
+									"fontname" : "Arial",
+									"fontsize" : 12.0,
+									"id" : "obj-11",
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 45.0, 235.0, 41.0, 39.0 ],
+									"text" : "port#"
+								}
+
+							}
+, 							{
 								"box" : 								{
 									"bubble" : 1,
 									"bubblepoint" : 0.4,
@@ -581,7 +597,7 @@
 , 							{
 								"box" : 								{
 									"bubble" : 1,
-									"bubblepoint" : 0.9,
+									"bubblepoint" : 0.1,
 									"bubbleside" : 2,
 									"fontname" : "Arial",
 									"fontsize" : 12.0,
@@ -589,7 +605,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 57.0, 235.0, 79.0, 39.0 ],
+									"patching_rect" : [ 117.0, 235.0, 79.0, 39.0 ],
 									"text" : "pictslider #"
 								}
 
@@ -600,7 +616,7 @@
 									"fontsize" : 12.0,
 									"id" : "obj-7",
 									"maxclass" : "newobj",
-									"numinlets" : 0,
+									"numinlets" : 1,
 									"numoutlets" : 4,
 									"outlettype" : [ "int", "int", "", "" ],
 									"patching_rect" : [ 45.0, 274.0, 103.0, 20.0 ],
@@ -659,12 +675,12 @@
 									"fontsize" : 12.0,
 									"frgb" : [ 0.485712, 0.485712, 0.485712, 1.0 ],
 									"id" : "obj-5",
-									"linecount" : 3,
+									"linecount" : 2,
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 6.0, 88.0, 575.0, 48.0 ],
-									"text" : "osc_pictslider interprets osc messages from the iphone using  touchosc, oscemote, iosc, mrmr, as well as a particular processing sketch, provided in the odot_iphone folder. Make sure to use port 10000 to send osc messages.",
+									"patching_rect" : [ 6.0, 88.0, 575.0, 34.0 ],
+									"text" : "osc_pictslider interprets osc messages from the iphone using  touchosc, oscemote, iosc, mrmr, as well as a particular processing sketch, provided in the odot_iphone folder. By default the port is set to 10000.",
 									"textcolor" : [ 0.485712, 0.485712, 0.485712, 1.0 ]
 								}
 
@@ -768,15 +784,15 @@
 					"patching_rect" : [ 16.0, 18.0, 49.0, 20.0 ],
 					"saved_object_attributes" : 					{
 						"globalpatchername" : "",
-						"default_fontface" : 0,
 						"fontface" : 0,
 						"fontsize" : 12.0,
+						"default_fontface" : 0,
 						"digest" : "",
 						"default_fontname" : "Arial",
-						"default_fontsize" : 12.0,
-						"description" : "",
+						"fontname" : "Arial",
 						"tags" : "",
-						"fontname" : "Arial"
+						"default_fontsize" : 12.0,
+						"description" : ""
 					}
 ,
 					"text" : "p basic"

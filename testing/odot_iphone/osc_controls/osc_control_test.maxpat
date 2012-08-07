@@ -30,6 +30,19 @@
 				"box" : 				{
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
+					"id" : "obj-7",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 0,
+					"patching_rect" : [ 740.0, 401.0, 57.0, 20.0 ],
+					"text" : "udpsend"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
 					"id" : "obj-24",
 					"maxclass" : "message",
 					"numinlets" : 2,
@@ -166,9 +179,9 @@
 					"fontsize" : 12.0,
 					"id" : "obj-25",
 					"maxclass" : "newobj",
-					"numinlets" : 0,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "" ],
 					"patching_rect" : [ 16.0, 341.0, 112.0, 20.0 ],
 					"text" : "osc_accelerometer"
 				}
@@ -192,7 +205,7 @@
 					"fontsize" : 12.0,
 					"id" : "obj-9",
 					"maxclass" : "newobj",
-					"numinlets" : 0,
+					"numinlets" : 1,
 					"numoutlets" : 3,
 					"outlettype" : [ "int", "", "" ],
 					"patching_rect" : [ 384.5, 350.0, 79.0, 20.0 ],
@@ -246,7 +259,7 @@
 					"fontsize" : 12.0,
 					"id" : "obj-4",
 					"maxclass" : "newobj",
-					"numinlets" : 0,
+					"numinlets" : 1,
 					"numoutlets" : 4,
 					"outlettype" : [ "int", "int", "", "" ],
 					"patching_rect" : [ 766.0, 34.0, 100.0, 20.0 ],
@@ -272,7 +285,7 @@
 					"fontsize" : 12.0,
 					"id" : "obj-3",
 					"maxclass" : "newobj",
-					"numinlets" : 0,
+					"numinlets" : 1,
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "" ],
 					"patching_rect" : [ 414.0, 34.0, 110.0, 20.0 ],
@@ -286,7 +299,7 @@
 					"fontsize" : 12.0,
 					"id" : "obj-1",
 					"maxclass" : "newobj",
-					"numinlets" : 0,
+					"numinlets" : 1,
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "" ],
 					"patching_rect" : [ 414.0, 34.0, 100.0, 20.0 ],
@@ -300,7 +313,7 @@
 					"fontsize" : 12.0,
 					"id" : "obj-10",
 					"maxclass" : "newobj",
-					"numinlets" : 0,
+					"numinlets" : 1,
 					"numoutlets" : 3,
 					"outlettype" : [ "int", "", "" ],
 					"patching_rect" : [ 16.0, 94.0, 79.0, 20.0 ],
