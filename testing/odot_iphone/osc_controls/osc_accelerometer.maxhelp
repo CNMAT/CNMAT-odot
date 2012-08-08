@@ -85,8 +85,8 @@
 									"id" : "obj-3",
 									"maxclass" : "newobj",
 									"numinlets" : 1,
-									"numoutlets" : 2,
-									"outlettype" : [ "", "" ],
+									"numoutlets" : 3,
+									"outlettype" : [ "", "", "" ],
 									"patching_rect" : [ 19.0, 128.0, 112.0, 20.0 ],
 									"text" : "osc_accelerometer"
 								}
@@ -114,8 +114,8 @@
 									"id" : "obj-1",
 									"maxclass" : "newobj",
 									"numinlets" : 1,
-									"numoutlets" : 2,
-									"outlettype" : [ "", "" ],
+									"numoutlets" : 3,
+									"outlettype" : [ "", "", "" ],
 									"patching_rect" : [ 297.0, 128.0, 112.0, 20.0 ],
 									"text" : "osc_accelerometer"
 								}
@@ -184,16 +184,16 @@
 ,
 					"patching_rect" : [ 77.0, 18.0, 72.0, 20.0 ],
 					"saved_object_attributes" : 					{
-						"default_fontface" : 0,
-						"digest" : "",
-						"default_fontname" : "Arial",
+						"description" : "",
 						"fontname" : "Arial",
 						"tags" : "",
-						"default_fontsize" : 12.0,
-						"description" : "",
+						"default_fontface" : 0,
+						"digest" : "",
 						"globalpatchername" : "",
+						"default_fontname" : "Arial",
 						"fontface" : 0,
-						"fontsize" : 12.0
+						"fontsize" : 12.0,
+						"default_fontsize" : 12.0
 					}
 ,
 					"text" : "p examples"
@@ -239,6 +239,36 @@
 						"boxes" : [ 							{
 								"box" : 								{
 									"bubble" : 1,
+									"fontname" : "Arial",
+									"fontsize" : 12.0,
+									"id" : "obj-11",
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 131.0, 161.0, 98.0, 24.0 ],
+									"text" : "error messge"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"bubble" : 1,
+									"bubblepoint" : 0.25,
+									"bubbleside" : 0,
+									"fontname" : "Arial",
+									"fontsize" : 12.0,
+									"id" : "obj-6",
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 56.0, 181.0, 82.0, 39.0 ],
+									"text" : "place holder"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"bubble" : 1,
 									"bubblepoint" : 0.2,
 									"bubbleside" : 2,
 									"fontname" : "Arial",
@@ -260,7 +290,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 19.0, 317.0, 177.0, 20.0 ],
+									"patching_rect" : [ 19.0, 356.0, 177.0, 20.0 ],
 									"text" : "multislider in pointscroll mode"
 								}
 
@@ -274,7 +304,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 214.0, 285.0, 44.0, 24.0 ],
+									"patching_rect" : [ 214.0, 324.0, 44.0, 24.0 ],
 									"text" : "z"
 								}
 
@@ -288,7 +318,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 214.0, 239.0, 44.0, 24.0 ],
+									"patching_rect" : [ 214.0, 278.0, 44.0, 24.0 ],
 									"text" : "y"
 								}
 
@@ -302,7 +332,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 214.0, 193.0, 44.0, 24.0 ],
+									"patching_rect" : [ 214.0, 232.0, 44.0, 24.0 ],
 									"text" : "x"
 								}
 
@@ -315,7 +345,7 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "", "" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 19.0, 189.0, 181.0, 120.0 ],
+									"patching_rect" : [ 19.0, 228.0, 181.0, 120.0 ],
 									"setminmax" : [ -3.0, 3.0 ],
 									"setstyle" : 2,
 									"size" : 3
@@ -329,8 +359,8 @@
 									"id" : "obj-7",
 									"maxclass" : "newobj",
 									"numinlets" : 1,
-									"numoutlets" : 2,
-									"outlettype" : [ "", "" ],
+									"numoutlets" : 3,
+									"outlettype" : [ "", "", "" ],
 									"patching_rect" : [ 19.0, 161.0, 112.0, 20.0 ],
 									"text" : "osc_accelerometer"
 								}
@@ -461,16 +491,16 @@
 ,
 					"patching_rect" : [ 16.0, 18.0, 49.0, 20.0 ],
 					"saved_object_attributes" : 					{
-						"default_fontface" : 0,
-						"digest" : "",
-						"default_fontname" : "Arial",
+						"description" : "",
 						"fontname" : "Arial",
 						"tags" : "",
-						"default_fontsize" : 12.0,
-						"description" : "",
+						"default_fontface" : 0,
+						"digest" : "",
 						"globalpatchername" : "",
+						"default_fontname" : "Arial",
 						"fontface" : 0,
-						"fontsize" : 12.0
+						"fontsize" : 12.0,
+						"default_fontsize" : 12.0
 					}
 ,
 					"text" : "p basic"
