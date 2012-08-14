@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 6,
 			"minor" : 0,
-			"revision" : 5
+			"revision" : 7
 		}
 ,
 		"rect" : [ 100.0, 100.0, 888.0, 614.0 ],
@@ -41,7 +41,7 @@
 						"appversion" : 						{
 							"major" : 6,
 							"minor" : 0,
-							"revision" : 5
+							"revision" : 7
 						}
 ,
 						"rect" : [ 100.0, 126.0, 888.0, 588.0 ],
@@ -78,7 +78,7 @@
 										"appversion" : 										{
 											"major" : 6,
 											"minor" : 0,
-											"revision" : 5
+											"revision" : 7
 										}
 ,
 										"rect" : [ 0.0, 0.0, 640.0, 480.0 ],
@@ -235,30 +235,21 @@
 												}
 
 											}
- ],
-										"dependency_cache" : [ 											{
-												"name" : "o.if.mxo",
-												"type" : "iLaX"
-											}
-, 											{
-												"name" : "o.expr.mxo",
-												"type" : "iLaX"
-											}
  ]
 									}
 ,
 									"patching_rect" : [ 487.5, 334.0, 63.0, 20.0 ],
 									"saved_object_attributes" : 									{
-										"fontname" : "Arial",
 										"default_fontface" : 0,
-										"tags" : "",
-										"digest" : "",
-										"globalpatchername" : "",
 										"default_fontname" : "Arial",
-										"fontface" : 0,
-										"fontsize" : 12.0,
 										"default_fontsize" : 12.0,
-										"description" : ""
+										"description" : "",
+										"digest" : "",
+										"fontface" : 0,
+										"fontname" : "Arial",
+										"fontsize" : 12.0,
+										"globalpatchername" : "",
+										"tags" : ""
 									}
 ,
 									"text" : "p factorial"
@@ -269,7 +260,7 @@
 								"box" : 								{
 									"fontname" : "Arial",
 									"fontsize" : 12.0,
-									"frgb" : [ 0.0, 0.0, 0.0, 1.0 ],
+									"frgb" : 0.0,
 									"id" : "obj-6",
 									"maxclass" : "comment",
 									"numinlets" : 1,
@@ -298,13 +289,13 @@
 								"box" : 								{
 									"fontname" : "Arial",
 									"fontsize" : 12.0,
-									"frgb" : [ 0.0, 0.0, 0.0, 1.0 ],
+									"frgb" : 0.0,
 									"id" : "obj-9",
 									"linecount" : 2,
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 46.0, 161.0, 600.0, 34.0 ],
+									"patching_rect" : [ 46.0, 161.0, 600.0, 33.0 ],
 									"text" : "o.let creates a local lexical environment in which data bound to OSC addresses can be manipulated without affecting the original data sent to o.let."
 								}
 
@@ -313,7 +304,7 @@
 								"box" : 								{
 									"fontname" : "Arial",
 									"fontsize" : 12.0,
-									"frgb" : [ 0.0, 0.0, 0.0, 1.0 ],
+									"frgb" : 0.0,
 									"id" : "obj-8",
 									"maxclass" : "comment",
 									"numinlets" : 1,
@@ -327,12 +318,12 @@
 								"box" : 								{
 									"fontname" : "Arial",
 									"fontsize" : 72.0,
-									"frgb" : [ 0.0, 0.0, 0.0, 1.0 ],
+									"frgb" : 0.0,
 									"id" : "obj-11",
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 46.0, 24.0, 600.0, 89.0 ],
+									"patching_rect" : [ 46.0, 24.0, 600.0, 87.0 ],
 									"text" : "o.let"
 								}
 
@@ -388,13 +379,13 @@
 									"bubbleside" : 3,
 									"fontname" : "Arial",
 									"fontsize" : 12.0,
-									"frgb" : [ 0.0, 0.0, 0.0, 1.0 ],
+									"frgb" : 0.0,
 									"id" : "obj-21",
 									"linecount" : 2,
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 20.0, 440.0, 260.0, 38.0 ],
+									"patching_rect" : [ 20.0, 440.0, 260.0, 37.0 ],
 									"text" : "5.  The bundle comes out with any data computed, but with local bindings removed."
 								}
 
@@ -405,13 +396,13 @@
 									"bubbleside" : 2,
 									"fontname" : "Arial",
 									"fontsize" : 12.0,
-									"frgb" : [ 0.0, 0.0, 0.0, 1.0 ],
+									"frgb" : 0.0,
 									"id" : "obj-20",
 									"linecount" : 2,
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 377.0, 272.0, 171.0, 53.0 ],
+									"patching_rect" : [ 377.0, 272.0, 171.0, 52.0 ],
 									"text" : "4.  Send the bundle back into the right inlet when finished."
 								}
 
@@ -422,13 +413,13 @@
 									"bubbleside" : 0,
 									"fontname" : "Arial",
 									"fontsize" : 12.0,
-									"frgb" : [ 0.0, 0.0, 0.0, 1.0 ],
+									"frgb" : 0.0,
 									"id" : "obj-18",
 									"linecount" : 2,
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 379.0, 363.0, 167.0, 53.0 ],
+									"patching_rect" : [ 379.0, 363.0, 167.0, 52.0 ],
 									"text" : "3.  The bundle comes out the right outlet with the new data."
 								}
 
@@ -439,7 +430,7 @@
 									"bubbleside" : 3,
 									"fontname" : "Arial",
 									"fontsize" : 12.0,
-									"frgb" : [ 0.0, 0.0, 0.0, 1.0 ],
+									"frgb" : 0.0,
 									"id" : "obj-17",
 									"maxclass" : "comment",
 									"numinlets" : 1,
@@ -455,13 +446,13 @@
 									"bubbleside" : 3,
 									"fontname" : "Arial",
 									"fontsize" : 12.0,
-									"frgb" : [ 0.0, 0.0, 0.0, 1.0 ],
+									"frgb" : 0.0,
 									"id" : "obj-16",
 									"linecount" : 2,
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 77.0, 325.0, 330.0, 38.0 ],
+									"patching_rect" : [ 77.0, 325.0, 330.0, 37.0 ],
 									"text" : "1.  Instantiate o.let and define any variables and their values."
 								}
 
@@ -471,11 +462,13 @@
 									"fontname" : "Arial",
 									"fontsize" : 12.0,
 									"id" : "obj-2",
+									"linecount" : 2,
 									"maxclass" : "o.message",
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 280.0, 441.5, 150.0, 20.0 ],
+									"patching_rect" : [ 280.0, 441.5, 150.0, 33.0 ],
+									"text" : "/i 9 \n/factorial 3628800 \n",
 									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 
@@ -600,66 +593,21 @@
 								}
 
 							}
- ],
-						"dependency_cache" : [ 							{
-								"name" : "o.let.maxpat",
-								"bootpath" : "/Users/john/Development/cnmat/trunk/max/externals/odot/trunk/patches/abstractions",
-								"type" : "JSON",
-								"implicit" : 1
-							}
-, 							{
-								"name" : "o.helpfilehelper.maxpat",
-								"bootpath" : "/Users/john/MMJ5-dev/odot/overview",
-								"type" : "JSON",
-								"implicit" : 1
-							}
-, 							{
-								"name" : "o.message.mxo",
-								"type" : "iLaX"
-							}
-, 							{
-								"name" : "o.route.mxo",
-								"type" : "iLaX"
-							}
-, 							{
-								"name" : "o.union.mxo",
-								"type" : "iLaX"
-							}
-, 							{
-								"name" : "o.expr.mxo",
-								"type" : "iLaX"
-							}
-, 							{
-								"name" : "o.var.mxo",
-								"type" : "iLaX"
-							}
-, 							{
-								"name" : "o.atomize.mxo",
-								"type" : "iLaX"
-							}
-, 							{
-								"name" : "o.print.mxo",
-								"type" : "iLaX"
-							}
-, 							{
-								"name" : "o.if.mxo",
-								"type" : "iLaX"
-							}
  ]
 					}
 ,
 					"patching_rect" : [ 20.0, 24.0, 49.0, 20.0 ],
 					"saved_object_attributes" : 					{
-						"fontname" : "Arial",
 						"default_fontface" : 0,
-						"tags" : "",
-						"digest" : "",
-						"globalpatchername" : "",
 						"default_fontname" : "Arial",
-						"fontface" : 0,
-						"fontsize" : 12.0,
 						"default_fontsize" : 12.0,
-						"description" : ""
+						"description" : "",
+						"digest" : "",
+						"fontface" : 0,
+						"fontname" : "Arial",
+						"fontsize" : 12.0,
+						"globalpatchername" : "",
+						"tags" : ""
 					}
 ,
 					"text" : "p basic"
@@ -670,7 +618,7 @@
 		"lines" : [  ],
 		"dependency_cache" : [ 			{
 				"name" : "o.let.maxpat",
-				"bootpath" : "/Users/john/Development/cnmat/trunk/max/externals/odot/trunk/patches/abstractions",
+				"bootpath" : "/Users/john/Development/cnmat/trunk/max/externals/odot/trunk/abstractions",
 				"patcherrelativepath" : "",
 				"type" : "JSON",
 				"implicit" : 1
@@ -678,7 +626,7 @@
 , 			{
 				"name" : "o.helpfilehelper.maxpat",
 				"bootpath" : "/Users/john/MMJ5-dev/odot/overview",
-				"patcherrelativepath" : "../../../../../../../../../MMJ5-dev/odot/overview",
+				"patcherrelativepath" : "../../../../../../../../MMJ5-dev/odot/overview",
 				"type" : "JSON",
 				"implicit" : 1
 			}
@@ -687,15 +635,11 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "o.route.mxo",
-				"type" : "iLaX"
-			}
-, 			{
 				"name" : "o.union.mxo",
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "o.expr.mxo",
+				"name" : "o.route.mxo",
 				"type" : "iLaX"
 			}
 , 			{
@@ -703,11 +647,15 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "o.atomize.mxo",
+				"name" : "o.expr.mxo",
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "o.print.mxo",
+				"name" : "o.pack.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.atomize.mxo",
 				"type" : "iLaX"
 			}
 , 			{
