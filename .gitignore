@@ -6,7 +6,6 @@
 *.tar.gz
 *.zip
 *.def
-*~
 #*#
 xcuserdata
 .DS_Store
