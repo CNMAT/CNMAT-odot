@@ -62,8 +62,10 @@ typedef struct _ocoll{
 void *ocoll_class;
 
 
-void ocoll_fullPacket(t_ocoll *x, long len, long ptr)
+//void ocoll_fullPacket(t_ocoll *x, long len, long ptr)
+void ocoll_fullPacket(t_ocoll *x, t_symbol *msg, int argc, t_atom *argv)
 {
+	OSC_GET_LEN_AND_PTR
 	osc_bundle_s_wrap_naked_message(len, ptr);
 	if(len == OSC_HEADER_SIZE){
 		// empty bundle
@@ -128,7 +130,11 @@ void ocoll_anything(t_ocoll *x, t_symbol *msg, int argc, t_atom *argv){
 		osc_bundle_u_free(bndl_u);
 	}
 
-	ocoll_fullPacket(x, len, (long)buf);
+	//ocoll_fullPacket(x, len, (long)buf);
+	t_atom args[2];
+	atom_setlong(args, len);
+	atom_setlong(args + 1, (long)buf);
+	ocoll_fullPacket(x, NULL, 2, args);
 	if(buf){
 		osc_mem_free(buf);
 	}
@@ -195,14 +201,15 @@ void *ocoll_new(t_symbol *msg, short argc, t_atom *argv){
 
 int main(void){
 	t_class *c = class_new("o.collect", (method)ocoll_new, (method)ocoll_free, sizeof(t_ocoll), 0L, A_GIMME, 0);
-	class_addmethod(c, (method)ocoll_fullPacket, "FullPacket", A_LONG, A_LONG, 0);
+	//class_addmethod(c, (method)ocoll_fullPacket, "FullPacket", A_LONG, A_LONG, 0);
+	class_addmethod(c, (method)ocoll_fullPacket, "FullPacket", A_GIMME, 0);
 	class_addmethod(c, (method)ocoll_doc, "doc", 0);
 	class_addmethod(c, (method)ocoll_assist, "assist", A_CANT, 0);
 	class_addmethod(c, (method)ocoll_anything, "anything", A_GIMME, 0);
 	class_addmethod(c, (method)ocoll_bang, "bang", 0);
 	// remove this if statement when we stop supporting Max 5
 	if(omax_util_resolveDictStubs()){
-		class_addmethod(c, (method)omax_util_dictionary, "dictionary", A_SYM, 0);
+		class_addmethod(c, (method)omax_util_dictionary, "dictionary", A_GIMME, 0);
 	}
 
 

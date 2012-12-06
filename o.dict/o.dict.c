@@ -59,8 +59,10 @@ typedef struct _odict{
 
 void *odict_class;
 
-void odict_fullPacket(t_odict *x, long len, long ptr)
+//void odict_fullPacket(t_odict *x, long len, long ptr)
+void odict_fullPacket(t_odict *x, t_symbol *msg, int argc, t_atom *argv)
 {
+	OSC_GET_LEN_AND_PTR
 	t_osc_bndl_s *bndl = osc_bundle_s_alloc(len, (char *)ptr);
 	dictionary_clear(x->dict);
 	omax_util_bundleToDictionary(bndl, x->dict);
@@ -92,7 +94,9 @@ void *odict_new(t_symbol *msg, short argc, t_atom *argv)
 		x->outlet = outlet_new((t_object *)x, NULL);
 		x->dict = dictionary_new();
 		x->name = NULL;
-		dictobj_register(x->dict, &(x->name));
+		if(omax_util_dictobj_register){
+			omax_util_dictobj_register(x->dict, &(x->name));
+		}
 	}
 		   	
 	return x;
@@ -101,7 +105,8 @@ void *odict_new(t_symbol *msg, short argc, t_atom *argv)
 int main(void)
 {
 	t_class *c = class_new("o.dict", (method)odict_new, NULL, sizeof(t_odict), 0L, A_GIMME, 0);
-	class_addmethod(c, (method)odict_fullPacket, "FullPacket", A_LONG, A_LONG, 0);
+	//class_addmethod(c, (method)odict_fullPacket, "FullPacket", A_LONG, A_LONG, 0);
+	class_addmethod(c, (method)odict_fullPacket, "FullPacket", A_GIMME, 0);
 	class_addmethod(c, (method)odict_assist, "assist", A_CANT, 0);
 	class_addmethod(c, (method)odict_doc, "doc", 0);
 	

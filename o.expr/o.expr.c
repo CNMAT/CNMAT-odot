@@ -135,13 +135,15 @@ void *oexpr_class;
 
 void oexpr_output_bundle(t_oexpr *x);
 
-void oexpr_fullPacket(t_oexpr *x, long len, long ptr)
+//void oexpr_fullPacket(t_oexpr *x, long len, long ptr)
+void oexpr_fullPacket(t_oexpr *x, t_symbol *msg, int argc, t_atom *argv)
 {
+	OSC_GET_LEN_AND_PTR
 	if(len <= 0){
 		return;
 	}
 #if defined (OIF) || defined (OCOND) || defined (OWHEN) || defined (OUNLESS)
-	t_osc_atom_ar_u *argv = NULL;
+	t_osc_atom_ar_u *av = NULL;
 	// we don't actually want to do this copy here.  we need to 
 	// have another version of omax_expr_eval that doesn't do 
 	// assignment
@@ -157,13 +159,13 @@ void oexpr_fullPacket(t_oexpr *x, long len, long ptr)
 	}
 
 #if defined (OIF)
-	int ret = osc_expr_eval(x->expr, &len, &copy, &argv);
-	if(ret || !argv || osc_atom_array_u_getLen(argv) == 0){
+	int ret = osc_expr_eval(x->expr, &len, &copy, &av);
+	if(ret || !av || osc_atom_array_u_getLen(av) == 0){
 		omax_util_outletOSC(x->outlets[1], len, (char *)ptr);
 	}else{
 		int i;
-		for(i = 0; i < osc_atom_array_u_getLen(argv); i++){
-			if(osc_atom_u_getDouble(osc_atom_array_u_get(argv, i)) == 0){
+		for(i = 0; i < osc_atom_array_u_getLen(av); i++){
+			if(osc_atom_u_getDouble(osc_atom_array_u_get(av, i)) == 0){
 				omax_util_outletOSC(x->outlets[1], len, (char *)ptr);
 				goto out;
 			}
@@ -171,47 +173,47 @@ void oexpr_fullPacket(t_oexpr *x, long len, long ptr)
 		omax_util_outletOSC(x->outlets[0], len, (char *)ptr);
 	}
  out:
-	if(argv){
-		osc_atom_array_u_free(argv);
+	if(av){
+		osc_atom_array_u_free(av);
 	}
 	if(copy){
 		osc_mem_free(copy);
 	}
 #elif defined (OUNLESS)
-	int ret = osc_expr_eval(x->expr, &len, &copy, &argv);
-	if(ret || !argv || osc_atom_array_u_getLen(argv) == 0){
+	int ret = osc_expr_eval(x->expr, &len, &copy, &av);
+	if(ret || !av || osc_atom_array_u_getLen(av) == 0){
 		omax_util_outletOSC(x->outlet, len, (char *)ptr);
 	}else{
 		int i;
-		for(i = 0; i < osc_atom_array_u_getLen(argv); i++){
-			if(osc_atom_u_getDouble(osc_atom_array_u_get(argv, i)) == 0){
+		for(i = 0; i < osc_atom_array_u_getLen(av); i++){
+			if(osc_atom_u_getDouble(osc_atom_array_u_get(av, i)) == 0){
 				omax_util_outletOSC(x->outlet, len, (char *)ptr);
 				goto out;
 			}
 		}
 	}
  out:
-	if(argv){
-		osc_atom_array_u_free(argv);
+	if(av){
+		osc_atom_array_u_free(av);
 	}
 	if(copy){
 		osc_mem_free(copy);
 	}
 #elif defined (OWHEN)
-	int ret = osc_expr_eval(x->expr, &len, &copy, &argv);
-	if(ret || !argv || osc_atom_array_u_getLen(argv) == 0){
+	int ret = osc_expr_eval(x->expr, &len, &copy, &av);
+	if(ret || !av || osc_atom_array_u_getLen(av) == 0){
 	}else{
 		int i;
-		for(i = 0; i < osc_atom_array_u_getLen(argv); i++){
-			if(osc_atom_u_getDouble(osc_atom_array_u_get(argv, i)) == 0){
+		for(i = 0; i < osc_atom_array_u_getLen(av); i++){
+			if(osc_atom_u_getDouble(osc_atom_array_u_get(av, i)) == 0){
 				goto out;
 			}
 		}
 		omax_util_outletOSC(x->outlet, len, (char *)ptr);
 	}
  out:
-	if(argv){
-		osc_atom_array_u_free(argv);
+	if(av){
+		osc_atom_array_u_free(av);
 	}
 	if(copy){
 		osc_mem_free(copy);
@@ -220,19 +222,19 @@ void oexpr_fullPacket(t_oexpr *x, long len, long ptr)
 	t_osc_expr *f = x->expr;
 	int j = 0;
 	while(f){
-		int ret = osc_expr_eval(f, &len, &copy, &argv);
+		int ret = osc_expr_eval(f, &len, &copy, &av);
 		if(!ret){
 			int i;
 			int fail = 0;
-			for(i = 0; i < osc_atom_array_u_getLen(argv); i++){
-				if(osc_atom_u_getDouble(osc_atom_array_u_get(argv, i)) == 0){
+			for(i = 0; i < osc_atom_array_u_getLen(av); i++){
+				if(osc_atom_u_getDouble(osc_atom_array_u_get(av, i)) == 0){
 					fail = 1;
 					break;
 				}
 			}
-			if(argv){
-				osc_mem_free(argv);
-				argv = NULL;
+			if(av){
+				osc_mem_free(av);
+				av = NULL;
 			}
 			if(!fail){
 				omax_util_outletOSC(x->outlets[j], len, (char *)ptr);
@@ -244,8 +246,8 @@ void oexpr_fullPacket(t_oexpr *x, long len, long ptr)
 	}
 	omax_util_outletOSC(x->outlets[j], len, (char *)ptr);
  out:
-	if(argv){
-		osc_atom_array_u_free(argv);
+	if(av){
+		osc_atom_array_u_free(av);
 	}
 	if(copy){
 		free(copy);
@@ -271,15 +273,15 @@ void oexpr_fullPacket(t_oexpr *x, long len, long ptr)
 	int ret = 0;
 	t_osc_expr *f = x->expr;
 	if(!f){
-		//t_osc_atom_ar_u *argv = NULL;
-		//osc_expr_evalLexExprsInBndl(&copylen, &copy, &argv);
+		//t_osc_atom_ar_u *av = NULL;
+		//osc_expr_evalLexExprsInBndl(&copylen, &copy, &av);
 	}else{
 		while(f){
 			//int argc = 0;
-			t_osc_atom_ar_u *argv = NULL;
-			ret = osc_expr_eval(f, &copylen, &copy, &argv);
-			if(argv){
-				osc_atom_array_u_free(argv);
+			t_osc_atom_ar_u *av = NULL;
+			ret = osc_expr_eval(f, &copylen, &copy, &av);
+			if(av){
+				osc_atom_array_u_free(av);
 			}
 			if(ret){
 				break;
@@ -350,12 +352,16 @@ void oexpr_bang(t_oexpr *x)
 	char buf[16];
 	memset(buf, '\0', 16);
 	strncpy(buf, "#bundle\0", 8);
-	oexpr_fullPacket(x, 16, (long)buf);
+	//oexpr_fullPacket(x, 16, (long)buf);
+	t_atom a[2];
+	atom_setlong(a, 16);
+	atom_setlong(a + 1, (long)buf);
+	oexpr_fullPacket(x, NULL, 2, a);
 }
 
 OMAX_UTIL_DICTIONARY(t_oexpr, x, oexpr_fullPacket);
 
-void oexpr_doc_cat(t_oexpr *x, t_symbol *cat)
+void oexpr_doc_cat(t_oexpr *x, t_symbol *cat, int argc, t_atom *argv)
 {
 	if(cat == _sym_nothing){
 		t_osc_bndl_s *b = osc_expr_getCategories();
@@ -371,7 +377,7 @@ void oexpr_doc_cat(t_oexpr *x, t_symbol *cat)
 	}
 }
 
-void oexpr_doc_func(t_oexpr *x, t_symbol *func)
+void oexpr_doc_func(t_oexpr *x, t_symbol *func, int argc, t_atom *argv)
 {
 	t_osc_bndl_u *bndl = NULL;
 	t_osc_err e = osc_expr_getDocForFunction(func->s_name, &bndl);
@@ -563,21 +569,22 @@ int main(void)
 {
 	t_class *c = class_new(NAME, (method)oexpr_new, (method)oexpr_free, sizeof(t_oexpr), 0L, A_GIMME, 0);
 
-	class_addmethod(c, (method)oexpr_fullPacket, "FullPacket", A_LONG, A_LONG, 0);
+	//class_addmethod(c, (method)oexpr_fullPacket, "FullPacket", A_LONG, A_LONG, 0);
+	class_addmethod(c, (method)oexpr_fullPacket, "FullPacket", A_GIMME, 0);
 	class_addmethod(c, (method)oexpr_assist, "assist", A_CANT, 0);
 	class_addmethod(c, (method)oexpr_bang, "bang", 0);
 
 	class_addmethod(c, (method)oexpr_postExprIR, "post-expr-ir", 0);
 
 	class_addmethod(c, (method)oexpr_doc, "doc", 0);
-	class_addmethod(c, (method)oexpr_doc_func, "doc-func", A_SYM, 0);
-	class_addmethod(c, (method)oexpr_doc_func, "doc-function", A_SYM, 0);
-	class_addmethod(c, (method)oexpr_doc_cat, "doc-cat", A_DEFSYM, 0);
-	class_addmethod(c, (method)oexpr_doc_cat, "doc-category", A_DEFSYM, 0);
+	class_addmethod(c, (method)oexpr_doc_func, "doc-func", A_GIMME, 0);
+	class_addmethod(c, (method)oexpr_doc_func, "doc-function", A_GIMME, 0);
+	class_addmethod(c, (method)oexpr_doc_cat, "doc-cat", A_GIMME, 0);
+	class_addmethod(c, (method)oexpr_doc_cat, "doc-category", A_GIMME, 0);
 
 	// remove this if statement when we stop supporting Max 5
 	if(omax_util_resolveDictStubs()){
-		class_addmethod(c, (method)omax_util_dictionary, "dictionary", A_SYM, 0);
+		class_addmethod(c, (method)omax_util_dictionary, "dictionary", A_GIMME, 0);
 	}
 
 

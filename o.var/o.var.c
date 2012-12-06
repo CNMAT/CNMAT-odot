@@ -157,8 +157,10 @@ void ovar_doFullPacket(t_ovar *x, long len, long ptr, long inlet)
 	}
 }
 
-void ovar_fullPacket(t_ovar *x, long len, long ptr)
+//void ovar_fullPacket(t_ovar *x, long len, long ptr)
+void ovar_fullPacket(t_ovar *x, t_symbol *msg, int argc, t_atom *argv)
 {
+	OSC_GET_LEN_AND_PTR
 	int inlet = proxy_getinlet((t_object *)x);
 	ovar_doFullPacket(x, len, ptr, inlet);
 }
@@ -316,14 +318,15 @@ int main(void){
 #else
 	t_class *c = class_new("o.var", (method)ovar_new, (method)ovar_free, sizeof(t_ovar), 0L, A_GIMME, 0);
 #endif
-	class_addmethod(c, (method)ovar_fullPacket, "FullPacket", A_LONG, A_LONG, 0);
+	//class_addmethod(c, (method)ovar_fullPacket, "FullPacket", A_LONG, A_LONG, 0);
+	class_addmethod(c, (method)ovar_fullPacket, "FullPacket", A_GIMME, 0);
 	class_addmethod(c, (method)ovar_assist, "assist", A_CANT, 0);
 	class_addmethod(c, (method)ovar_doc, "doc", 0);
 	class_addmethod(c, (method)ovar_bang, "bang", 0);
 	class_addmethod(c, (method)ovar_anything, "anything", A_GIMME, 0);
 	// remove this if statement when we stop supporting Max 5
 	if(omax_util_resolveDictStubs()){
-		class_addmethod(c, (method)omax_util_dictionary, "dictionary", A_SYM, 0);
+		class_addmethod(c, (method)omax_util_dictionary, "dictionary", A_GIMME, 0);
 	}
 
 

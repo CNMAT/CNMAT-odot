@@ -60,8 +60,10 @@ void *ochange_class;
 
 int ochange_copybundle(t_ochange *x, long len, char *ptr);
 
-void ochange_fullPacket(t_ochange *x, long len, long ptr)
+//void ochange_fullPacket(t_ochange *x, long len, long ptr)
+void ochange_fullPacket(t_ochange *x, t_symbol *msg, int argc, t_atom *argv)
 {
+	OSC_GET_LEN_AND_PTR
 	critical_enter(x->lock);
 	long buflen = x->buflen;
 	if(!x->buf || buflen == 0){
@@ -159,16 +161,16 @@ void *ochange_new(t_symbol *msg, short argc, t_atom *argv)
 int main(void)
 {
 	t_class *c = class_new("o.change", (method)ochange_new, (method)ochange_free, sizeof(t_ochange), 0L, A_GIMME, 0);
-	class_addmethod(c, (method)ochange_fullPacket, "FullPacket", A_LONG, A_LONG, 0);
+	//class_addmethod(c, (method)ochange_fullPacket, "FullPacket", A_LONG, A_LONG, 0);
+	class_addmethod(c, (method)ochange_fullPacket, "FullPacket", A_GIMME, 0);
 	class_addmethod(c, (method)ochange_assist, "assist", A_CANT, 0);
 	class_addmethod(c, (method)ochange_doc, "doc", 0);
-	//class_addmethod(c, (method)ochange_notify, "notify", A_CANT, 0);
 	class_addmethod(c, (method)ochange_bang, "bang", 0);
 	class_addmethod(c, (method)ochange_anything, "anything", A_GIMME, 0);
 	class_addmethod(c, (method)ochange_clear, "clear", 0);
 	// remove this if statement when we stop supporting Max 5
 	if(omax_util_resolveDictStubs()){
-		class_addmethod(c, (method)omax_util_dictionary, "dictionary", A_SYM, 0);
+		class_addmethod(c, (method)omax_util_dictionary, "dictionary", A_GIMME, 0);
 	}
 
 	

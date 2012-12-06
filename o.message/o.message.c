@@ -160,8 +160,10 @@ void *omessage_new(t_symbol *msg, short argc, t_atom *argv);
 
 
 
-void omessage_fullPacket(t_omessage *x, long len, long ptr)
+//void omessage_fullPacket(t_omessage *x, long len, long ptr)
+void omessage_fullPacket(t_omessage *x, t_symbol *msg, int argc, t_atom *argv)
 {
+	OSC_GET_LEN_AND_PTR
 	if(proxy_getinlet((t_object *)x) == 0){
 		return;
 	}
@@ -973,6 +975,9 @@ void *omessage_new(t_symbol *msg, short argc, t_atom *argv){
 #define CLASS_ATTR_STYLE_LABEL_KLUDGE(c,attrname,flags,stylestr,labelstr) \
 	{ CLASS_ATTR_ATTR_PARSE(c,attrname,"style",USESYM(symbol),flags,stylestr); CLASS_ATTR_ATTR_FORMAT(c,attrname,"label",USESYM(symbol),flags,"s",gensym(labelstr)); }	
 
+#define CLASS_ATTR_CATEGORY_KLUDGE(c,attrname,flags,parsestr) \
+	CLASS_ATTR_ATTR_PARSE(c,attrname,"category",USESYM(symbol),flags,parsestr)
+
 int main(void){
 	common_symbols_init();
 	t_class *c = class_new("o.message", (method)omessage_new, (method)omessage_free, sizeof(t_omessage), 0L, A_GIMME, 0);
@@ -992,10 +997,11 @@ int main(void){
 	class_addmethod(c, (method)omessage_assist, "assist", A_CANT, 0);
 	class_addmethod(c, (method)omessage_doc, "doc", 0);
 	class_addmethod(c, (method)stdinletinfo, "inletinfo", A_CANT, 0);
-	class_addmethod(c, (method)omessage_fullPacket, "FullPacket", A_LONG, A_LONG, 0);
+	//class_addmethod(c, (method)omessage_fullPacket, "FullPacket", A_LONG, A_LONG, 0);
+	class_addmethod(c, (method)omessage_fullPacket, "FullPacket", A_GIMME, 0);
 	// remove this if statement when we stop supporting Max 5
 	if(omax_util_resolveDictStubs()){
-		class_addmethod(c, (method)omax_util_dictionary, "dictionary", A_SYM, 0);
+		class_addmethod(c, (method)omax_util_dictionary, "dictionary", A_GIMME, 0);
 	}
 
 	class_addmethod(c, (method)omessage_clear, "clear", 0);	
@@ -1012,17 +1018,17 @@ int main(void){
  	CLASS_ATTR_RGBA(c, "background_color", 0, t_omessage, background_color); 
  	CLASS_ATTR_DEFAULT_SAVE_PAINT(c, "background_color", 0, ".87 .87 .87 1."); 
  	CLASS_ATTR_STYLE_LABEL_KLUDGE(c, "background_color", 0, "rgba", "Background Color"); 
-	CLASS_ATTR_CATEGORY(c, "background_color", 0, "Color");
+	CLASS_ATTR_CATEGORY_KLUDGE(c, "background_color", 0, "Color");
 
  	CLASS_ATTR_RGBA(c, "frame_color", 0, t_omessage, frame_color); 
  	CLASS_ATTR_DEFAULT_SAVE_PAINT(c, "frame_color", 0, "0. 0. 0. 1."); 
  	CLASS_ATTR_STYLE_LABEL_KLUDGE(c, "frame_color", 0, "rgba", "Frame Color"); 
-	CLASS_ATTR_CATEGORY(c, "frame_color", 0, "Color");
+	CLASS_ATTR_CATEGORY_KLUDGE(c, "frame_color", 0, "Color");
 
  	CLASS_ATTR_RGBA(c, "text_color", 0, t_omessage, text_color); 
  	CLASS_ATTR_DEFAULT_SAVE_PAINT(c, "text_color", 0, "0. 0. 0. 1."); 
  	CLASS_ATTR_STYLE_LABEL_KLUDGE(c, "text_color", 0, "rgba", "Text Color"); 
-	CLASS_ATTR_CATEGORY(c, "text_color", 0, "Color");
+	CLASS_ATTR_CATEGORY_KLUDGE(c, "text_color", 0, "Color");
 
 	CLASS_ATTR_DEFAULT(c, "rect", 0, "0. 0. 150., 18.");
 

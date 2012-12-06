@@ -111,8 +111,10 @@ void *oroute_new(t_symbol *msg, short argc, t_atom *argv);
 
 t_symbol *ps_oscschemalist, *ps_FullPacket;
 
-void oroute_fullPacket(t_oroute *x, long len, long ptr)
+//void oroute_fullPacket(t_oroute *x, long len, long ptr)
+void oroute_fullPacket(t_oroute *x, t_symbol *msg, int argc, t_atom *argv)
 {
+	OSC_GET_LEN_AND_PTR
 	osc_bundle_s_wrap_naked_message(len, ptr);
 	if(x->num_selectors > 0){
 		t_osc_rset *rset = NULL;
@@ -227,7 +229,8 @@ void oroute_dispatch_rset(t_oroute *x, t_osc_rset *rset, int num_selectors, char
 	}
 }
 
-void oroute_anything(t_oroute *x, t_symbol *msg, short argc, t_atom *argv){
+void oroute_anything(t_oroute *x, t_symbol *msg, short argc, t_atom *argv)
+{
 	if(x->num_selectors == 0){
 		outlet_anything(x->delegation_outlet, msg, argc, argv);
 		return;
@@ -293,8 +296,23 @@ void oroute_anything(t_oroute *x, t_symbol *msg, short argc, t_atom *argv){
 	}
 }
 
-void oroute_set(t_oroute *x, long index, t_symbol *sym)
+//void oroute_set(t_oroute *x, long index, t_symbol *sym)
+void oroute_set(t_oroute *x, t_symbol *msg, int argc, t_atom *argv)
 {
+	if(argc != 2){
+		object_error((t_object *)x, "%s: expected 2 arguments (index and address), but got %d", __func__, argc);
+		return;
+	}
+	if(atom_gettype(argv) != A_LONG){
+		object_error((t_object *)x, "%s: first argument to message set should be the index (int)", __func__);
+		return;
+	}
+	if(atom_gettype(argv) != A_SYM){
+		object_error((t_object *)x, "%s: second argument to message set should be an address (symbol)", __func__);
+		return;
+	}
+	long index = atom_getlong(argv);
+	t_symbol *sym = atom_getsym(argv + 1);
 	oroute_doSet(x, index, sym);
 }
 
@@ -504,17 +522,19 @@ int main(void)
 #endif
 
 	t_class *c = class_new(name, (method)oroute_new, (method)oroute_free, sizeof(t_oroute), 0L, A_GIMME, 0);
-	class_addmethod(c, (method)oroute_fullPacket, "FullPacket", A_LONG, A_LONG, 0);
+	//class_addmethod(c, (method)oroute_fullPacket, "FullPacket", A_LONG, A_LONG, 0);
+	class_addmethod(c, (method)oroute_fullPacket, "FullPacket", A_GIMME, 0);
 
 	// remove this if statement when we stop supporting Max 5
 	if(omax_util_resolveDictStubs()){
-		class_addmethod(c, (method)omax_util_dictionary, "dictionary", A_SYM, 0);
+		class_addmethod(c, (method)omax_util_dictionary, "dictionary", A_GIMME, 0);
 	}
 
 	class_addmethod(c, (method)oroute_assist, "assist", A_CANT, 0);
 	class_addmethod(c, (method)oroute_doc, "doc", 0);
 	class_addmethod(c, (method)oroute_anything, "anything", A_GIMME, 0);
-	class_addmethod(c, (method)oroute_set, "set", A_LONG, A_SYM, 0);
+	//class_addmethod(c, (method)oroute_set, "set", A_LONG, A_SYM, 0);
+	class_addmethod(c, (method)oroute_set, "set", A_GIMME, 0);
 
 	class_register(CLASS_BOX, c);
 	oroute_class = c;

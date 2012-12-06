@@ -60,8 +60,10 @@ void *oflatten_class;
 
 int oflatten_copybundle(t_oflatten *x, long len, char *ptr);
 
-void oflatten_fullPacket(t_oflatten *x, long len, long ptr)
+//void oflatten_fullPacket(t_oflatten *x, long len, long ptr)
+void oflatten_fullPacket(t_oflatten *x, t_symbol *msg, int argc, t_atom *argv)
 {
+	OSC_GET_LEN_AND_PTR
 	char srcc[osc_bundle_s_getStructSize()];
 	t_osc_bndl_s *src = (t_osc_bndl_s *)srcc;
 	osc_bundle_s_setLen(src, len);
@@ -101,12 +103,13 @@ void *oflatten_new(t_symbol *msg, short argc, t_atom *argv)
 int main(void)
 {
 	t_class *c = class_new("o.flatten", (method)oflatten_new, NULL, sizeof(t_oflatten), 0L, A_GIMME, 0);
-	class_addmethod(c, (method)oflatten_fullPacket, "FullPacket", A_LONG, A_LONG, 0);
+	//class_addmethod(c, (method)oflatten_fullPacket, "FullPacket", A_LONG, A_LONG, 0);
+	class_addmethod(c, (method)oflatten_fullPacket, "FullPacket", A_GIMME, 0);
 	class_addmethod(c, (method)oflatten_assist, "assist", A_CANT, 0);
 	class_addmethod(c, (method)oflatten_doc, "doc", 0);
 	// remove this if statement when we stop supporting Max 5
 	if(omax_util_resolveDictStubs()){
-		class_addmethod(c, (method)omax_util_dictionary, "dictionary", A_SYM, 0);
+		class_addmethod(c, (method)omax_util_dictionary, "dictionary", A_GIMME, 0);
 	}
 
 

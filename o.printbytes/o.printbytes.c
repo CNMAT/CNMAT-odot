@@ -54,8 +54,10 @@ void *opbytes_class;
 void opbytes_free(t_opbytes *x);
 void *opbytes_new(t_symbol *msg, short argc, t_atom *argv);
 
-void opbytes_fullPacket(t_opbytes *x, long len, long ptr)
+//void opbytes_fullPacket(t_opbytes *x, long len, long ptr)
+void opbytes_fullPacket(t_opbytes *x, t_symbol *msg, int argc, t_atom *argv)
 {
+	OSC_GET_LEN_AND_PTR
 	unsigned char *buf = (unsigned char *)ptr;
 	int i;
 	post("%-12s%-12s%s", "Byte #", "ASCII", "Decimal");
@@ -100,10 +102,12 @@ void *opbytes_new(t_symbol *msg, short argc, t_atom *argv){
 int main(void){
 	t_class *c = class_new("o.printbytes", (method)opbytes_new, (method)opbytes_free, sizeof(t_opbytes), 0L, A_GIMME, 0);
 
-	class_addmethod(c, (method)opbytes_fullPacket, "FullPacket", A_LONG, A_LONG, 0);
+	//class_addmethod(c, (method)opbytes_fullPacket, "FullPacket", A_LONG, A_LONG, 0);
+	class_addmethod(c, (method)opbytes_fullPacket, "FullPacket", A_GIMME, 0);
 	// remove this if statement when we stop supporting Max 5
 	if(omax_util_resolveDictStubs()){
-		class_addmethod(c, (method)omax_util_dictionary, "dictionary", A_SYM, 0);
+		//class_addmethod(c, (method)omax_util_dictionary, "dictionary", A_SYM, 0);
+		class_addmethod(c, (method)omax_util_dictionary, "dictionary", A_GIMME, 0);
 	}
 
 	class_addmethod(c, (method)opbytes_doc, "doc", 0);

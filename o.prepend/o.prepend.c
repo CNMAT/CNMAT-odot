@@ -72,8 +72,10 @@ void oppnd_doFullPacket(t_oppnd *x, long len, long ptr, t_symbol *sym_to_prepend
 
 t_symbol *ps_FullPacket;
 
-void oppnd_fullPacket(t_oppnd *x, long len, long ptr)
+//void oppnd_fullPacket(t_oppnd *x, long len, long ptr)
+void oppnd_fullPacket(t_oppnd *x, t_symbol *msg, int argc, t_atom *argv)
 {
+	OSC_GET_LEN_AND_PTR
 	osc_bundle_s_wrap_naked_message(len, ptr);
 	if(len == OSC_HEADER_SIZE){
 		return;
@@ -110,7 +112,7 @@ void oppnd_doFullPacket(t_oppnd *x, long len, long ptr, t_symbol *sym_to_prepend
 	omax_util_outletOSC(x->outlet, bufptr - buf, buf);
 }
 
-void oppnd_set(t_oppnd *x, t_symbol *sym_to_prepend)
+void oppnd_set(t_oppnd *x, t_symbol *sym_to_prepend, int argc, t_atom *argv)
 {
 	x->sym_to_prepend = sym_to_prepend;
 	x->sym_to_prepend_len = strlen(sym_to_prepend->s_name);
@@ -220,17 +222,18 @@ void *oppnd_new(t_symbol *msg, short argc, t_atom *argv){
 int main(void){
 	t_class *c = class_new("o.prepend", (method)oppnd_new, (method)oppnd_free, sizeof(t_oppnd), 0L, A_GIMME, 0);
     
-	class_addmethod(c, (method)oppnd_fullPacket, "FullPacket", A_LONG, A_LONG, 0);
+	//class_addmethod(c, (method)oppnd_fullPacket, "FullPacket", A_LONG, A_LONG, 0);
+	class_addmethod(c, (method)oppnd_fullPacket, "FullPacket", A_GIMME, 0);
 	// remove this if statement when we stop supporting Max 5
 	if(omax_util_resolveDictStubs()){
-		class_addmethod(c, (method)omax_util_dictionary, "dictionary", A_SYM, 0);
+		class_addmethod(c, (method)omax_util_dictionary, "dictionary", A_GIMME, 0);
 	}
 
 	class_addmethod(c, (method)oppnd_assist, "assist", A_CANT, 0);
 	class_addmethod(c, (method)oppnd_doc, "doc", 0);
 	class_addmethod(c, (method)oppnd_anything, "anything", A_GIMME, 0);
 
-	class_addmethod(c, (method)oppnd_set, "set", A_SYM, 0);
+	class_addmethod(c, (method)oppnd_set, "set", A_GIMME, 0);
     
 	class_register(CLASS_BOX, c);
 	oppnd_class = c;

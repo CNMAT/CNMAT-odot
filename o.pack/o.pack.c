@@ -84,8 +84,10 @@ void opack_outputBundle(t_opack *x);
 int opack_checkPosAndResize(char *buf, int len, char *pos);
 void opack_anything(t_opack *x, t_symbol *msg, short argc, t_atom *argv);
 
-void opack_fullPacket(t_opack *x, long len, long ptr)
+//void opack_fullPacket(t_opack *x, long len, long ptr)
+void opack_fullPacket(t_opack *x, t_symbol *msg, int argc, t_atom *argv)
 {
+	OSC_GET_LEN_AND_PTR
 	critical_enter(x->lock);
 	osc_bundle_s_wrap_naked_message(len, ptr);
 	int inlet = proxy_getinlet((t_object *)x);
@@ -177,7 +179,7 @@ void opack_bang(t_opack *x)
 	opack_outputBundle(x);
 }
 
-void opack_set(t_opack *x, t_symbol *address)
+void opack_set(t_opack *x, t_symbol *address, int argc, t_atom *argv)
 {
 	critical_enter(x->lock);
 	int inlet = proxy_getinlet((t_object *)x);
@@ -332,10 +334,11 @@ int main(void)
 	name = "o.pack";
 #endif
 	t_class *c = class_new(name, (method)opack_new, (method)opack_free, sizeof(t_opack), 0L, A_GIMME, 0);
-	class_addmethod(c, (method)opack_fullPacket, "FullPacket", A_LONG, A_LONG, 0);
+	//class_addmethod(c, (method)opack_fullPacket, "FullPacket", A_LONG, A_LONG, 0);
+	class_addmethod(c, (method)opack_fullPacket, "FullPacket", A_GIMME, 0);
 	// remove this if statement when we stop supporting Max 5
 	if(omax_util_resolveDictStubs()){
-		class_addmethod(c, (method)omax_util_dictionary, "dictionary", A_SYM, 0);
+		class_addmethod(c, (method)omax_util_dictionary, "dictionary", A_GIMME, 0);
 	}
 
 	class_addmethod(c, (method)opack_assist, "assist", A_CANT, 0);
@@ -345,7 +348,7 @@ int main(void)
 	class_addmethod(c, (method)opack_float, "float", A_FLOAT, 0);
 	class_addmethod(c, (method)opack_int, "int", A_LONG, 0);
 	class_addmethod(c, (method)opack_bang, "bang", 0);
-	class_addmethod(c, (method)opack_set, "set", A_SYM, 0);
+	class_addmethod(c, (method)opack_set, "set", A_GIMME, 0);
 
 	class_register(CLASS_BOX, c);
 	opack_class = c;
