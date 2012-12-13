@@ -31,15 +31,15 @@ VERSION 0.0: First try
 
 */
 
-#include "version.h"
 #include "ext.h"
-#include "version.c"
+#include "../odot_version.h"
 #include "ext_obex.h"
 #include "ext_obex_util.h"
 #include "ext_hashtab.h"
 #include "ext_critical.h"
 #include "omax_util.h"
 #include "osc.h"
+#include "osc_mem.h"
 #include "avl.h"
 #include "maxdb.h"
 #include "otable_util.h"
@@ -65,11 +65,13 @@ t_max_err otable_notify(t_otable *x, t_symbol *s, t_symbol *msg, void *sender, v
 
 t_symbol *ps_FullPacket;
 
-void otable_fullPacket(t_otable *x, long len, long ptr){
+void otable_fullPacket(t_otable *x, long len, long ptr)
+{
 	otable_util_doStore((t_object *)x, x->db, NULL, x->db->monotonic_counter++, len, (char *)ptr);
 }
 
-void otable_lookup(t_otable *x, t_symbol *msg, int argc, t_atom *argv){
+void otable_lookup(t_otable *x, t_symbol *msg, int argc, t_atom *argv)
+{
 	t_otable_oscbndl *bndl = otable_util_lookup((t_object *)x, x->db, argc, argv);
 	if(bndl){
 		t_otable_oscbndl *next = NULL;
@@ -84,15 +86,18 @@ void otable_lookup(t_otable *x, t_symbol *msg, int argc, t_atom *argv){
 	}
 }
 
-void otable_store(t_otable *x, t_symbol *msg, int argc, t_atom *argv){
+void otable_store(t_otable *x, t_symbol *msg, int argc, t_atom *argv)
+{
 	otable_util_store((t_object *)x, x->db, argc, argv);
 }
 
-void otable_remove(t_otable *x, t_symbol *msg, int argc, t_atom *argv){
+void otable_remove(t_otable *x, t_symbol *msg, int argc, t_atom *argv)
+{
 	otable_util_remove((t_object *)x, x->db, argc, argv);
 }
 
-void otable_dump(t_otable *x){
+void otable_dump(t_otable *x)
+{
 	maxdb_lock((t_maxdb *)(x->db));
 	t_otable_oscbndl *e = NULL;
 	e = rumati_avl_get_smallest(x->db->tree);
@@ -123,7 +128,8 @@ void otable_dump(t_otable *x){
 	}
 }
 
-void otable_getkeys(t_otable *x, t_symbol *msg, int argc, t_atom *argv){
+void otable_getkeys(t_otable *x, t_symbol *msg, int argc, t_atom *argv)
+{
 	long long nkeys;
 	t_symbol **keys = NULL;
 	otable_util_getkeys((t_object *)x, x->db, &nkeys, &keys, argc, argv);
@@ -136,7 +142,8 @@ void otable_getkeys(t_otable *x, t_symbol *msg, int argc, t_atom *argv){
 	}
 }
 
-void otable_getindexes(t_otable *x, t_symbol *msg, int argc, t_atom *argv){
+void otable_getindexes(t_otable *x, t_symbol *msg, int argc, t_atom *argv)
+{
 	long long nkeys;
 	long long *indexes = NULL;
 	otable_util_getindexes((t_object *)x, x->db, &nkeys, &indexes, argc, argv);
@@ -149,11 +156,13 @@ void otable_getindexes(t_otable *x, t_symbol *msg, int argc, t_atom *argv){
 	}
 }
 
-void otable_clear(t_otable *x){
+void otable_clear(t_otable *x)
+{
 	otable_util_clear((t_object *)x, x->db);
 }
 
-void otable_refer(t_otable *x, t_symbol *name){
+void otable_refer(t_otable *x, t_symbol *name)
+{
 	x->db = (t_otable_db *)maxdb_refer((t_maxdb *)(x->db), maxdb_mangle_name("otable", name));
 	if(!x->db){
 		x->db = otable_util_make_db((t_object *)x, name);
@@ -161,15 +170,18 @@ void otable_refer(t_otable *x, t_symbol *name){
 	x->name = name;
 }
 
-void otable_renumber(t_otable *x){
+void otable_renumber(t_otable *x)
+{
 	otable_util_renumber((t_object *)x, x->db);
 }
 
-void otable_tag(t_otable *x, t_symbol *msg, int argc, t_atom *argv){
+void otable_tag(t_otable *x, t_symbol *msg, int argc, t_atom *argv)
+{
 	otable_util_tag((t_object *)x, x->db, argc, argv);
 }
 
-void otable_anything(t_otable *x, t_symbol *msg, int argc, t_atom *argv){
+void otable_anything(t_otable *x, t_symbol *msg, int argc, t_atom *argv)
+{
 	switch(argc){
 	case 0:
 		{
@@ -192,7 +204,8 @@ void otable_list(t_otable *x, t_symbol *msg, int argc, t_atom *argv){
 	otable_store(x, msg, argc, argv);
 }
 */
-void otable_int(t_otable *x, long l){
+void otable_int(t_otable *x, long l)
+{
 	RUMATI_AVL_TREE *tree = x->db->tree;
 	t_otable_oscbndl *bndl = NULL;
 	t_otable_oscbndl test = EMPTY_BUNDLE;
@@ -205,15 +218,18 @@ void otable_int(t_otable *x, long l){
 	}
 }
 
-void otable_read(t_otable *x, t_symbol *path){
+void otable_read(t_otable *x, t_symbol *path)
+{
 	otable_util_read((t_object *)x, x->db, path);
 }
 
-void otable_write(t_otable *x, t_symbol *path){
+void otable_write(t_otable *x, t_symbol *path)
+{
 	otable_util_write((t_object *)x, x->db, path);
 }
 
-void otable_tellmeeverything(t_otable *x){
+void otable_tellmeeverything(t_otable *x)
+{
 	post("name = %s", x->name ? x->name->s_name : "<none>");
 	post("refcount = %d", maxdb_get_refcount((t_maxdb *)(x->db)));
 	post("hashtab:");
@@ -230,11 +246,13 @@ void otable_tellmeeverything(t_otable *x){
 	*/
 }
 
-void otable_free(t_otable *x){
+void otable_free(t_otable *x)
+{
 	otable_util_free((t_object *)x, x->db);
 }
 
-void otable_assist(t_otable *x, void *b, long m, long a, char *s){
+void otable_assist(t_otable *x, void *b, long m, long a, char *s)
+{
 	if (m == ASSIST_OUTLET)
 		sprintf(s,"Probability distribution and arguments");
 	else {
@@ -247,9 +265,10 @@ void otable_assist(t_otable *x, void *b, long m, long a, char *s){
 }
 
 
-void *otable_new(t_symbol *msg, short argc, t_atom *argv){
+void *otable_new(t_symbol *msg, short argc, t_atom *argv)
+{
 	t_otable *x;
-	if(x = (t_otable *)object_alloc(otable_class)){
+	if((x = (t_otable *)object_alloc(otable_class))){
 		x->outlets[1] = outlet_new((t_object *)x, NULL);
 		x->outlets[0] = outlet_new((t_object *)x, NULL);
 		x->name = NULL;
@@ -266,7 +285,8 @@ void *otable_new(t_symbol *msg, short argc, t_atom *argv){
 	return(x);
 }
 
-int main(void){
+int main(void)
+{
 	t_class *c = class_new("o.table", (method)otable_new, (method)otable_free, sizeof(t_otable), 0L, A_GIMME, 0);
     
 	class_addmethod(c, (method)otable_fullPacket, "FullPacket", A_LONG, A_LONG, 0);
@@ -299,11 +319,10 @@ int main(void){
 	return 0;
 }
 
-t_max_err otable_notify(t_otable *x, t_symbol *s, t_symbol *msg, void *sender, void *data){
-	t_symbol *attrname;
-
+t_max_err otable_notify(t_otable *x, t_symbol *s, t_symbol *msg, void *sender, void *data)
+{
         if(msg == gensym("attr_modified")){
-		attrname = (t_symbol *)object_method((t_object *)data, gensym("getname"));
+		//t_symbol *attrname = (t_symbol *)object_method((t_object *)data, gensym("getname"));
 	}
 	return MAX_ERR_NONE;
 }

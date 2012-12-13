@@ -39,10 +39,20 @@
 			<key>orderHint</key>
 			<integer>4</integer>
 		</dict>
+		<key>o.dict.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>22</integer>
+		</dict>
 		<key>o.difference.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>5</integer>
+		</dict>
+		<key>o.explode.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>23</integer>
 		</dict>
 		<key>o.expr.xcscheme</key>
 		<dict>
@@ -53,6 +63,11 @@
 		<dict>
 			<key>orderHint</key>
 			<integer>23</integer>
+		</dict>
+		<key>o.flatten.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>24</integer>
 		</dict>
 		<key>o.if.xcscheme</key>
 		<dict>
@@ -108,6 +123,11 @@
 		<dict>
 			<key>orderHint</key>
 			<integer>17</integer>
+		</dict>
+		<key>o.table.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>25</integer>
 		</dict>
 		<key>o.union.xcscheme</key>
 		<dict>
@@ -243,6 +263,11 @@
 			<true/>
 		</dict>
 		<key>529781521555B6FD0018A44D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>52C839D1167A5B24000AA688</key>
 		<dict>
 			<key>primary</key>
 			<true/>

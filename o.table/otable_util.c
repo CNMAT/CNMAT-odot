@@ -1,5 +1,6 @@
 #include "otable_util.h"
-#include "md5.h"
+#include "osc_mem.h"
+#include "osc_bundle_s.h"
 
 typedef struct _otable_range{
 	t_atom min;
@@ -57,39 +58,8 @@ static t_symbol *ps_FullPacket,
 
 // implementation
 
-#define MD 5
-#define MD_CTX MD5_CTX
-#define MDInit MD5Init
-#define MDUpdate MD5Update
-#define MDFinal MD5Final
-
-static void MDPrint (digest)
-     unsigned char digest[16];
+void otable_util_init(void)
 {
-
-	unsigned int i;
-
-	for (i = 0; i < 16; i++)
-		printf ("%02x", digest[i]);
-}
-
-static void MDString (string)
-     char *string;
-{
-	MD_CTX context;
-	unsigned char digest[16];
-	unsigned int len = strlen (string);
-
-	MDInit (&context);
-	MDUpdate (&context, string, len);
-	MDFinal (digest, &context);
-
-	printf ("MD%d (\"%s\") = ", MD, string);
-	MDPrint (digest);
-	printf ("\n");
-}
-
-void otable_util_init(void){
 	ps_FullPacket = gensym("FullPacket");
 	ps_gt = gensym(">");
 	ps_gte = gensym(">=");
@@ -104,7 +74,8 @@ void otable_util_init(void){
 	ps_range = gensym("range");
 }
 
-void otable_util_postArgs(t_otable_args argstruct){
+void otable_util_postArgs(t_otable_args argstruct)
+{
 	if(OTABLE_UTIL_HAVE_ARG(argstruct, key)){
 		post("found key: %s", argstruct.key->s_name);
 	}
@@ -129,7 +100,8 @@ void otable_util_postArgs(t_otable_args argstruct){
 	}
 }
 
-void otable_util_parseArgs(t_object *x, t_otable_args *argstruct, int argc, t_atom *argv){
+void otable_util_parseArgs(t_object *x, t_otable_args *argstruct, int argc, t_atom *argv)
+{
 	if(argc == 0){
 		return;
 	}
@@ -178,7 +150,8 @@ void otable_util_parseArgs(t_object *x, t_otable_args *argstruct, int argc, t_at
 	}
 }
 
-t_otable_oscbndl *otable_util_lookup(t_object *x, t_otable_db *db, int argc, t_atom *argv){
+t_otable_oscbndl *otable_util_lookup(t_object *x, t_otable_db *db, int argc, t_atom *argv)
+{
 	maxdb_lock((t_maxdb *)db);
 	OTABLE_UTIL_ARGSTRUCT(argstruct);
 
@@ -307,7 +280,8 @@ t_otable_oscbndl *otable_util_lookup(t_object *x, t_otable_db *db, int argc, t_a
 	return NULL;
 }
 
-void otable_util_store(t_object *x, t_otable_db *db, int argc, t_atom *argv){
+void otable_util_store(t_object *x, t_otable_db *db, int argc, t_atom *argv)
+{
 	OTABLE_UTIL_ARGSTRUCT(argstruct);
 	otable_util_parseArgs(x, &argstruct, argc, argv);
 
@@ -321,7 +295,8 @@ void otable_util_store(t_object *x, t_otable_db *db, int argc, t_atom *argv){
 	otable_util_doStore(x, db, argstruct.key, argstruct.index, argstruct.len, argstruct.ptr);
 }
 
-t_otable_oscbndl *otable_util_doStore(t_object *x, t_otable_db *db, t_symbol *key, long long id, long len, char *ptr){
+t_otable_oscbndl *otable_util_doStore(t_object *x, t_otable_db *db, t_symbol *key, long long id, long len, char *ptr)
+{
 	t_otable_oscbndl *bndl = otable_util_makebundle(x, key, id, len, ptr);
 	t_otable_oscbndl *old = NULL;
 	maxdb_lock((t_maxdb *)db);
@@ -345,11 +320,13 @@ t_otable_oscbndl *otable_util_doStore(t_object *x, t_otable_db *db, t_symbol *ke
 	return bndl;
 }
 
-void otable_util_store_bundle(t_object *x, t_otable_db *db, t_otable_oscbndl *bndl){
+void otable_util_store_bundle(t_object *x, t_otable_db *db, t_otable_oscbndl *bndl)
+{
 
 }
 
-void otable_util_remove(t_object *x, t_otable_db *db, int argc, t_atom *argv){
+void otable_util_remove(t_object *x, t_otable_db *db, int argc, t_atom *argv)
+{
 	OTABLE_UTIL_ARGSTRUCT(argstruct);
 	otable_util_parseArgs(x, &argstruct, argc, argv);
 	t_otable_oscbndl *bndl = NULL;
@@ -376,7 +353,8 @@ void otable_util_remove(t_object *x, t_otable_db *db, int argc, t_atom *argv){
 	maxdb_unlock((t_maxdb *)db);
 }
 
-void otable_util_doRemove(t_object *x, t_otable_db *db, t_otable_oscbndl *bndl){
+void otable_util_doRemove(t_object *x, t_otable_db *db, t_otable_oscbndl *bndl)
+{
 	if(!bndl){
 		return;
 	}
@@ -391,13 +369,15 @@ void otable_util_doRemove(t_object *x, t_otable_db *db, t_otable_oscbndl *bndl){
 	maxdb_unlock((t_maxdb *)db);
 }
 
-t_otable_oscbndl *otable_util_copybundle(t_object *x, t_otable_oscbndl *bndl){
+t_otable_oscbndl *otable_util_copybundle(t_object *x, t_otable_oscbndl *bndl)
+{
 	t_otable_oscbndl *copy = (t_otable_oscbndl *)osc_mem_alloc(sizeof(t_otable_oscbndl));
 	*copy = *bndl;
 	return copy;
 }
 
-t_otable_oscbndl *otable_util_deep_copybundle(t_object *x, t_otable_oscbndl *bndl){
+t_otable_oscbndl *otable_util_deep_copybundle(t_object *x, t_otable_oscbndl *bndl)
+{
 	t_otable_oscbndl *copy = (t_otable_oscbndl *)osc_mem_alloc(sizeof(t_otable_oscbndl));
 	*copy = *bndl;
 	copy->self = copy;
@@ -408,7 +388,8 @@ t_otable_oscbndl *otable_util_deep_copybundle(t_object *x, t_otable_oscbndl *bnd
 	return copy;
 }
 
-t_otable_oscbndl *otable_util_makebundle(t_object *x, t_symbol *key, long long id, long len, char *ptr){
+t_otable_oscbndl *otable_util_makebundle(t_object *x, t_symbol *key, long long id, long len, char *ptr)
+{
 	t_otable_oscbndl *bndl = (t_otable_oscbndl *)osc_mem_alloc(sizeof(t_otable_oscbndl));
 	bndl->self = bndl;
 	bndl->len = len;
@@ -423,31 +404,35 @@ t_otable_oscbndl *otable_util_makebundle(t_object *x, t_symbol *key, long long i
 	return bndl;
 }
 
-void otable_util_freebundle(t_object *x, t_otable_oscbndl *bndl){
+void otable_util_freebundle(t_object *x, t_otable_oscbndl *bndl)
+{
 	if(bndl->ptr){
 		osc_mem_free(bndl->ptr);
 	}
 	osc_mem_free(bndl);
 }
 
-void otable_util_output(void *outlet, t_otable_oscbndl *bndl){
+void otable_util_output(void *outlet, t_otable_oscbndl *bndl)
+{
 	t_atom out[2];
 	atom_setlong(out, bndl->len);
 	atom_setlong(out + 1, (long)(bndl->ptr));
 	outlet_anything(outlet, ps_FullPacket, 2, out);
 }
 
-void otable_util_output_emptyBundle(void *outlet){
+void otable_util_output_emptyBundle(void *outlet)
+{
 	char bndl[OSC_HEADER_SIZE];
 	memset(bndl, '\0', OSC_HEADER_SIZE);
-	osc_bundle_setBundleID(bndl);
+	osc_bundle_s_setBundleID(bndl);
 	t_atom out[2];
 	atom_setlong(out, OSC_HEADER_SIZE);
 	atom_setlong(out + 1, (long)bndl);
 	outlet_anything(outlet, ps_FullPacket, 2, out);
 }
 
-int otable_util_getDirection(t_object *x, int argc, t_atom *argv){
+int otable_util_getDirection(t_object *x, int argc, t_atom *argv)
+{
 	int dir = 0;
 	if(argc){
 		switch(atom_gettype(argv)){
@@ -480,7 +465,8 @@ int otable_util_getDirection(t_object *x, int argc, t_atom *argv){
 	return dir;
 }
 
-void otable_util_getkeys(t_object *x, t_otable_db *db, long long *nkeys, t_symbol ***keys, int argc, t_atom *argv){
+void otable_util_getkeys(t_object *x, t_otable_db *db, long long *nkeys, t_symbol ***keys, int argc, t_atom *argv)
+{
 	maxdb_lock((t_maxdb *)db);
 	long long n = 0;
 	long count = hashtab_getsize(db->ht);
@@ -522,7 +508,8 @@ void otable_util_getkeys(t_object *x, t_otable_db *db, long long *nkeys, t_symbo
 	maxdb_unlock((t_maxdb *)db);
 }
 
-void otable_util_getindexes(t_object *x, t_otable_db *db, long long *nindexes, long long **indexes, int argc, t_atom *argv){
+void otable_util_getindexes(t_object *x, t_otable_db *db, long long *nindexes, long long **indexes, int argc, t_atom *argv)
+{
 	int dir = otable_util_getDirection(x, argc, argv);
 	maxdb_lock((t_maxdb *)db);
 	long long *idx = (long long *)osc_mem_alloc(db->count * sizeof(long long));
@@ -583,7 +570,8 @@ t_otable_db *otable_util_refer(t_object *x, t_otable_db *old_db, t_symbol *new_n
 	}
 }
 */
-void otable_util_clear(t_object *x, t_otable_db *db){
+void otable_util_clear(t_object *x, t_otable_db *db)
+{
 	maxdb_lock((t_maxdb *)db);
 	hashtab_clear(db->ht);
 	rumati_avl_clear(db->tree, (void *)otable_util_freebundle);
@@ -597,14 +585,17 @@ void otable_util_clear(t_object *x, t_otable_db *db){
 #define ESC_END         220    // ESC ESC_END means END data byte
 #define ESC_ESC         221    // ESC ESC_ESC means ESC data byte
 
-void otable_util_read(t_object *x, t_otable_db *db, t_symbol *sym){
+void otable_util_read(t_object *x, t_otable_db *db, t_symbol *sym)
+{
 	otable_util_clear(x, db);
 	t_atom a;
 	atom_setlong(&a, (long)db);
 	defer(x, (method)otable_util_doread, sym, 1, &a);
 }
 
-void otable_util_doread(t_object *x, t_symbol *sym, int argc, t_atom *argv){
+void otable_util_doread(t_object *x, t_symbol *sym, int argc, t_atom *argv)
+{
+	return;
 	long filetype = 0, outtype;
 	char filename[512];
 	short path;
@@ -659,6 +650,7 @@ void otable_util_doread(t_object *x, t_symbol *sym, int argc, t_atom *argv){
 
 	size = w - buf;
 	t_otable_db *db = (t_otable_db *)atom_getlong(argv);
+	/*
 	char *ptr = buf;
 	int kk = 0;
 	while((ptr - buf) < size && kk++ < 2){
@@ -700,39 +692,40 @@ void otable_util_doread(t_object *x, t_symbol *sym, int argc, t_atom *argv){
 			// throw an error for now, but really, we should look through 
 			// all the bundles for a matching md5 hash
 		}
-		/*
-		long long id = ntoh64(*((uint64_t *)ptr));
-		ptr += 8;
-		t_symbol *key = NULL;
-		int keylen = 0;
-		if(*ptr){
-			key = gensym(ptr);
-			keylen = strlen(ptr);
-			ptr += keylen;
-		}
-		ptr++;
-		while((ptr - buf) % 4){
-			ptr++;
-		}
-		uint32_t len = ntoh32(*((uint32_t *)ptr));
-		ptr += 4;
-		if(id >= db->monotonic_counter){
-			db->monotonic_counter = id + 1;
-		}
-		otable_util_doStore(x, db, key, id, len, ptr);
-		*/
+		//long long id = ntoh64(*((uint64_t *)ptr));
+		//ptr += 8;
+		//t_symbol *key = NULL;
+		//int keylen = 0;
+		//if(*ptr){
+		//key = gensym(ptr);
+		//keylen = strlen(ptr);
+		//ptr += keylen;
+		//}
+		//ptr++;
+		//while((ptr - buf) % 4){
+		//ptr++;
+		//}
+		//uint32_t len = ntoh32(*((uint32_t *)ptr));
+		//ptr += 4;
+		//if(id >= db->monotonic_counter){
+		//db->monotonic_counter = id + 1;
+		//}
+		//otable_util_doStore(x, db, key, id, len, ptr);
 		ptr += len + private_len + 8;
 	}
+	*/
 	osc_mem_free(buf);
 }
 
-void otable_util_write(t_object *x, t_otable_db *db, t_symbol *sym){
+void otable_util_write(t_object *x, t_otable_db *db, t_symbol *sym)
+{
 	t_atom a;
 	atom_setlong(&a, (long)db);
 	defer(x, (method)otable_util_dowrite, sym, 1, &a);
 }
 
-int otable_util_SLIP_encode(char *dest, char *src, int len){
+int otable_util_SLIP_encode(char *dest, char *src, int len)
+{
 	int i;
 	char *p = dest;
 	for(i = 0; i < len; i++){
@@ -752,7 +745,8 @@ int otable_util_SLIP_encode(char *dest, char *src, int len){
 	return p - dest;
 }
 
-int otable_util_get_SLIP_encoded_nbytes(int len, char *buf){
+int otable_util_get_SLIP_encoded_nbytes(int len, char *buf)
+{
 	int nbytes = 0;
 	int i;
 	for(i = 0; i < len; i++){
@@ -767,7 +761,9 @@ int otable_util_get_SLIP_encoded_nbytes(int len, char *buf){
 	return nbytes;
 }
 
-void otable_util_dowrite(t_object *x, t_symbol *sym, int argc, t_atom *argv){
+void otable_util_dowrite(t_object *x, t_symbol *sym, int argc, t_atom *argv)
+{
+	return;
 	long outtype;
 	char filename[512];
 	short path;
@@ -805,6 +801,7 @@ void otable_util_dowrite(t_object *x, t_symbol *sym, int argc, t_atom *argv){
 	maxdb_unlock((t_maxdb *)db);
 	e = head;
 	t_otable_oscbndl *next = NULL;
+	/*
 	while(e){
 		char lenbuf[4];
 		*((uint32_t *)lenbuf) = hton32(e->len);
@@ -875,13 +872,15 @@ void otable_util_dowrite(t_object *x, t_symbol *sym, int argc, t_atom *argv){
 		otable_util_freebundle(x, e);
 		e = next;
 	}
+	*/
 	char end = END;
 	long count = 1;
 	sysfile_write(fh, &count, &end);
 	sysfile_close(fh);
 }
 
-void otable_util_renumber(t_object *x, t_otable_db *db){
+void otable_util_renumber(t_object *x, t_otable_db *db)
+{
 	maxdb_lock((t_maxdb *)db);
 	db->monotonic_counter = 0;
 	t_otable_oscbndl *e = (t_otable_oscbndl *)rumati_avl_get_smallest(db->tree);
@@ -892,7 +891,8 @@ void otable_util_renumber(t_object *x, t_otable_db *db){
 	maxdb_unlock((t_maxdb *)db);
 }
 
-void otable_util_tag(t_object *x, t_otable_db *db, int argc, t_atom *argv){
+void otable_util_tag(t_object *x, t_otable_db *db, int argc, t_atom *argv)
+{
 	if(argc > 4){
 		object_error(x, "bad argument count (%d).", argc);
 		return;
@@ -926,11 +926,13 @@ void otable_util_tag(t_object *x, t_otable_db *db, int argc, t_atom *argv){
 	}
 }
 
-int otable_util_comp_sym(void *udata, void *val1, void *val2){
+int otable_util_comp_sym(void *udata, void *val1, void *val2)
+{
 	return strcmp(((t_symbol *)val1)->s_name, ((t_symbol *)val2)->s_name);
 }
 
-int otable_util_comp(void *udata, void *value1, void *value2){
+int otable_util_comp(void *udata, void *value1, void *value2)
+{
 	long long id1, id2;
 	id1 = ((t_otable_oscbndl *)value1)->id;
 	id2 = ((t_otable_oscbndl *)value2)->id;
@@ -943,13 +945,15 @@ int otable_util_comp(void *udata, void *value1, void *value2){
 	}
 }
 
-void otable_util_destroy_db(t_object *x, t_otable_db *db){
+void otable_util_destroy_db(t_object *x, t_otable_db *db)
+{
 	hashtab_chuck(db->ht);
 	rumati_avl_destroy(db->tree, (void *)otable_util_freebundle);
 	rumati_avl_destroy(db->key_tree, NULL);
 }
 
-t_otable_db *otable_util_make_db(t_object *x, t_symbol *name){
+t_otable_db *otable_util_make_db(t_object *x, t_symbol *name)
+{
 	t_symbol *mangled_name = NULL;
 	if(name){
 		mangled_name = maxdb_mangle_name("otable", name);
@@ -972,7 +976,8 @@ t_otable_db *otable_util_make_db(t_object *x, t_symbol *name){
 	return db;
 }
 
-void otable_util_free(t_object *x, t_otable_db *db){
+void otable_util_free(t_object *x, t_otable_db *db)
+{
 	maxdb_unrefer(x, (t_maxdb *)db);
 }
 
