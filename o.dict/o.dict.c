@@ -94,7 +94,7 @@ void *odict_new(t_symbol *msg, short argc, t_atom *argv)
 		x->outlet = outlet_new((t_object *)x, NULL);
 		x->dict = dictionary_new();
 		x->name = NULL;
-		if(omax_util_dictobj_register){
+		if(omax_util_resolveDictStubs()){
 			omax_util_dictobj_register(x->dict, &(x->name));
 		}
 	}

@@ -377,8 +377,17 @@ void oexpr_doc_cat(t_oexpr *x, t_symbol *cat, int argc, t_atom *argv)
 	}
 }
 
-void oexpr_doc_func(t_oexpr *x, t_symbol *func, int argc, t_atom *argv)
+void oexpr_doc_func(t_oexpr *x, t_symbol *msg, int argc, t_atom *argv)
 {
+	if(argc != 1){
+		object_error((t_object *)x, "doc-func expected an argument--the name of a function");
+		return;
+	}
+	if(atom_gettype(argv) != A_SYM){
+		object_error((t_object *)x, "doc-func expected the argument to be a symbol--the name of a function");
+		return;
+	}
+	t_symbol *func = atom_getsym(argv);
 	t_osc_bndl_u *bndl = NULL;
 	t_osc_err e = osc_expr_getDocForFunction(func->s_name, &bndl);
 	if(e){
