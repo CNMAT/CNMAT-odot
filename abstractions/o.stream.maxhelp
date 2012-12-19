@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 6,
 			"minor" : 0,
-			"revision" : 5
+			"revision" : 7
 		}
 ,
 		"rect" : [ 333.0, 87.0, 874.0, 512.0 ],
@@ -31,11 +31,13 @@
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"id" : "obj-24",
+					"linecount" : 4,
 					"maxclass" : "o.message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 32.0, 299.0, 176.0, 20.0 ],
+					"patching_rect" : [ 32.0, 299.0, 176.0, 60.0 ],
+					"text" : "/stream/foo 6 4 0 5 1 4 5 9 5 9 \n/foo 9 \n/n 10 \n/avg 4.8 \n",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -58,13 +60,13 @@
 				"box" : 				{
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
-					"frgb" : [ 0.0, 0.0, 0.0, 1.0 ],
+					"frgb" : 0.0,
 					"id" : "obj-22",
 					"linecount" : 3,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 359.0, 201.0, 252.0, 48.0 ],
+					"patching_rect" : [ 359.0, 201.0, 252.0, 47.0 ],
 					"text" : "arg 1: name of the address to stream\narg 2: address to assign the stream to\narg 3: history length--can be address or value"
 				}
 
@@ -74,11 +76,13 @@
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"id" : "obj-20",
+					"linecount" : 2,
 					"maxclass" : "o.message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 404.0, 277.0, 236.0, 20.0 ],
+					"patching_rect" : [ 404.0, 277.0, 236.0, 33.0 ],
+					"text" : "/stream/foo 5 6 6 6 0 7 6 4 0 5 1 4 5 9 5 9 \n/foo 9 \n",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -307,14 +311,14 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "o.stream.maxpat",
-				"bootpath" : "/Users/john/Development/cnmat/trunk/max/externals/odot/trunk/patches/abstractions",
+				"bootpath" : "/Users/john/Development/CNMAT/CNMAT/CNMAT-odot/abstractions",
 				"patcherrelativepath" : "",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.let.maxpat",
-				"bootpath" : "/Users/john/Development/cnmat/trunk/max/externals/odot/trunk/patches/abstractions",
+				"bootpath" : "/Users/john/Development/CNMAT/CNMAT/CNMAT-odot/abstractions",
 				"patcherrelativepath" : "",
 				"type" : "JSON",
 				"implicit" : 1
@@ -336,15 +340,7 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "o.atomize.mxo",
-				"type" : "iLaX"
-			}
-, 			{
 				"name" : "o.message.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.print.mxo",
 				"type" : "iLaX"
 			}
 , 			{
