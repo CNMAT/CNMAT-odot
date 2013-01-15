@@ -179,8 +179,20 @@ void opack_bang(t_opack *x)
 	opack_outputBundle(x);
 }
 
-void opack_set(t_opack *x, t_symbol *address, int argc, t_atom *argv)
+void opack_set(t_opack *x, t_symbol *msg, int argc, t_atom *argv)
 {
+	if(argc < 1){
+		object_error((t_object *)x, "expected an argument to message set");
+		return;
+	}
+	if(argc > 1){
+		object_error((t_object *)x, "extra arguments to message set");
+	}
+	if(atom_gettype(argv) != A_SYM){
+		object_error((t_object *)x, "the argument to the message set should be an OSC address");
+		return;
+	}
+	t_symbol *address = atom_getsym(argv);
 	critical_enter(x->lock);
 	int inlet = proxy_getinlet((t_object *)x);
 	t_osc_msg_u *m = x->messages[inlet];

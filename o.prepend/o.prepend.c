@@ -112,8 +112,17 @@ void oppnd_doFullPacket(t_oppnd *x, long len, long ptr, t_symbol *sym_to_prepend
 	omax_util_outletOSC(x->outlet, bufptr - buf, buf);
 }
 
-void oppnd_set(t_oppnd *x, t_symbol *sym_to_prepend, int argc, t_atom *argv)
+void oppnd_set(t_oppnd *x, t_symbol *msg, int argc, t_atom *argv)
 {
+	if(argc != 1){
+		object_error((t_object *)x, "expected 1 argument but got %d", argc);
+		return;
+	}
+	if(atom_gettype(argv) != A_SYM){
+		object_error((t_object *)x, "argument should be a symbol");
+		return;
+	}
+	t_symbol *sym_to_prepend = atom_getsym(argv);
 	x->sym_to_prepend = sym_to_prepend;
 	x->sym_to_prepend_len = strlen(sym_to_prepend->s_name);
 }

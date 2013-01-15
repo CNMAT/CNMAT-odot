@@ -819,7 +819,8 @@ void omessage_list(t_omessage *x, t_symbol *list_sym, short argc, t_atom *argv){
 	}
 }
 
-void omessage_anything(t_omessage *x, t_symbol *msg, short argc, t_atom *argv){
+void omessage_anything(t_omessage *x, t_symbol *msg, short argc, t_atom *argv)
+{
 	t_atom av[argc + 1];
 	int ac = argc;
 
@@ -843,7 +844,8 @@ void omessage_anything(t_omessage *x, t_symbol *msg, short argc, t_atom *argv){
 	jbox_redraw((t_jbox *)x);
 }
 
-void omessage_set(t_omessage *x, t_symbol *s, long ac, t_atom *av){
+void omessage_set(t_omessage *x, t_symbol *s, long ac, t_atom *av)
+{
 	if(proxy_getinlet((t_object *)x)){
 		return;
 	}
@@ -871,7 +873,8 @@ void omessage_clear(t_omessage *x)
 }
 
 
-void omessage_free(t_omessage *x){
+void omessage_free(t_omessage *x)
+{
 	jbox_free((t_jbox *)x);
 	critical_free(x->lock);
 	if(x->proxy){

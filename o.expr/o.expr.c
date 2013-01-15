@@ -361,12 +361,17 @@ void oexpr_bang(t_oexpr *x)
 
 OMAX_UTIL_DICTIONARY(t_oexpr, x, oexpr_fullPacket);
 
-void oexpr_doc_cat(t_oexpr *x, t_symbol *cat, int argc, t_atom *argv)
+void oexpr_doc_cat(t_oexpr *x, t_symbol *msg, int argc, t_atom *argv)
 {
-	if(cat == _sym_nothing){
+	if(argc == 0){
 		t_osc_bndl_s *b = osc_expr_getCategories();
 		omax_util_outletOSC(LEFTOUTLET, osc_bundle_s_getLen(b), osc_bundle_s_getPtr(b));
 	}else{
+		if(atom_gettype(argv) != A_SYM){
+			object_error((t_object *)x, "doc-cat: argument must be a symbol");
+			return;
+		}
+		t_symbol *cat = atom_getsym(argv);
 		long len = 0;
 		char *ptr = NULL;
 		osc_expr_getFunctionsForCategory(cat->s_name, &len, &ptr);
