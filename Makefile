@@ -142,9 +142,14 @@ $(LOCAL_INSTALL_PATH):
 $(INSTALLDIR)/objects: $(INSTALLDIR) $(RELEASEDIR)
 	cp -r $(RELEASEDIR)/* $(INSTALLDIR)
 
-debug:
-	@echo $(OBJECTS)
+# debug:
+# 	@echo $(OBJECTS)
 # @echo platform = $(PLATFORM)
 # @echo dirs = $(DIRS)
 # @echo sp = $(STAGED_PRODUCTS)
 # @echo ip = $(INSTALLED_PRODUCTS)
+
+
+# .PHONY: printvars
+# printvars:
+# 	@$(foreach V,$(sort $(.VARIABLES)), $(if $(filter-out environment% default automatic, $(origin $V)),$(warning $V=$($V) ($(value $V)))))
