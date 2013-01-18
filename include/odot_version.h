@@ -12,7 +12,7 @@
 
 void __odot_version(void)
 {
-	post("odot version %s (released %s), by %s\n", ODOT_VERSION, ODOT_RELEASE_DATE, ODOT_AUTHORS);
+	post("odot version %s (compiled %s), by %s\n", ODOT_VERSION, ODOT_COMPILE_DATE, ODOT_AUTHORS);
 	post("Copyright (c) %s %s", ODOT_COPYRIGHT_YEARS, ODOT_COPYRIGHT_STRING);
 }
 

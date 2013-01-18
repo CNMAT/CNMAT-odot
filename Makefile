@@ -49,6 +49,7 @@ STAGED_PATCHES = $(addprefix $(STAGINGDIR)/, $(PATCHDIRS))
 TEXTFILES = README_ODOT.txt
 STAGED_TEXTFILES = $(addprefix $(STAGINGDIR)/, $(TEXTFILES))
 STAGED_PRODUCTS = $(STAGED_PATCHES) $(STAGED_OBJECTS) $(STAGED_TEXTFILES)
+CURRENT_VERSION_FILE = include/odot_current_version.h
 
 ARCHIVE = odot-$(strip $(PLATFORM)).tgz #-$(strip $(VERSION)).tgz
 #CURRENT_ARCHIVE = odot-$(strip $(PLATFORM)).tgz
@@ -111,7 +112,7 @@ all: $(DIRS) $(OBJECTS)
 #	xcodebuild -scheme "Build all" -configuration Release -project odot.xcodeproj build
 	make stage_distribution PLATFORM=$(PLATFORM)
 
-$(BUILDDIR)/%.mxo: %.c include/odot_current_version.h
+$(BUILDDIR)/%.mxo: %.c $(CURRENT_VERSION_FILE)
 	xcodebuild -target $* -configuration Release -project odot.xcodeproj build
 
 ##################################################
@@ -142,9 +143,11 @@ $(LOCAL_INSTALL_PATH):
 $(INSTALLDIR)/objects: $(INSTALLDIR) $(RELEASEDIR)
 	cp -r $(RELEASEDIR)/* $(INSTALLDIR)
 
-include/odot_current_version.h: 
-	echo "#define ODOT_VERSION \""`git describe --tags --long`"\"" > include/odot_current_version.h
-	echo "#define ODOT_RELEASE_DATE \""`date`"\"" >> include/odot_current_version.h
+$(CURRENT_VERSION_FILE):
+	echo "#define ODOT_VERSION \""`git describe --tags --long`"\"" > $(CURRENT_VERSION_FILE)
+	echo "#define ODOT_COMPILE_DATE \""`date`"\""  >> $(CURRENT_VERSION_FILE)
+#$(shell echo "#define ODOT_VERSION \""`git describe --tags --long`"\"" > $(CURRENT_VERSION_FILE))
+#echo "#define ODOT_COMPILE_DATE \""`date`"\""
 
 # debug:
 # 	@echo $(OBJECTS)
