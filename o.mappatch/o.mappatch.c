@@ -39,7 +39,7 @@ VERSION 1.0: New name
 #define OMAX_DOC_SEEALSO (char *[]){"o.expr", "o.callpatch", "o.atomize"}
 
 
-#include "../odot_version.h"
+#include "odot_version.h"
 #include "ext.h"
 #include "ext_critical.h"
 #include "ext_obex.h"
@@ -306,6 +306,7 @@ int main(void){
 	class_addmethod(c, (method)omap_float, "float", A_FLOAT, 0);
 	class_addmethod(c, (method)omap_anything, "anything", A_GIMME, 0);
 	class_addmethod(c, (method)omap_list, "list", A_GIMME, 0);
+	class_addmethod(c, (method)odot_version, "version", 0);
 
 	// remove this if statement when we stop supporting Max 5
 	if(omax_util_resolveDictStubs()){

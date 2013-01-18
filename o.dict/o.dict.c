@@ -38,7 +38,7 @@
 #define OMAX_DOC_OUTLETS_DESC (char *[]){"Dictionary."}
 #define OMAX_DOC_SEEALSO (char *[]){""}
 
-#include "../odot_version.h"
+#include "odot_version.h"
 #include "ext.h"
 #include "ext_obex.h"
 #include "ext_critical.h"
@@ -109,6 +109,7 @@ int main(void)
 	class_addmethod(c, (method)odict_fullPacket, "FullPacket", A_GIMME, 0);
 	class_addmethod(c, (method)odict_assist, "assist", A_CANT, 0);
 	class_addmethod(c, (method)odict_doc, "doc", 0);
+	class_addmethod(c, (method)odot_version, "version", 0);
 	
 	class_register(CLASS_BOX, c);
 	odict_class = c;

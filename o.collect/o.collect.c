@@ -38,7 +38,7 @@ VERSION 0.0: First try
 #define OMAX_DOC_SEEALSO (char *[]){"zl group"}
 
 #include <stdlib.h>
-#include "../odot_version.h"
+#include "odot_version.h"
 #include "ext.h"
 #include "ext_obex.h"
 #include "ext_obex_util.h"
@@ -212,6 +212,7 @@ int main(void){
 		class_addmethod(c, (method)omax_util_dictionary, "dictionary", A_GIMME, 0);
 	}
 
+	class_addmethod(c, (method)odot_version, "version", 0);
 
 	class_register(CLASS_BOX, c);
 	ocoll_class = c;

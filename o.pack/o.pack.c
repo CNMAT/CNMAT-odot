@@ -50,7 +50,7 @@ VERSION 1.1: renamed o.pack (from o.build)
 
 #endif
 
-#include "../odot_version.h"
+#include "odot_version.h"
 #include "ext.h"
 #include "ext_obex.h"
 #include "ext_obex_util.h"
@@ -361,6 +361,7 @@ int main(void)
 	class_addmethod(c, (method)opack_int, "int", A_LONG, 0);
 	class_addmethod(c, (method)opack_bang, "bang", 0);
 	class_addmethod(c, (method)opack_set, "set", A_GIMME, 0);
+	class_addmethod(c, (method)odot_version, "version", 0);
 
 	class_register(CLASS_BOX, c);
 	opack_class = c;

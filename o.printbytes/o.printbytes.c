@@ -37,7 +37,7 @@ VERSION 0.0: First try
 #define OMAX_DOC_OUTLETS_DESC (char *[]){"OSC packet (same as input)."}
 #define OMAX_DOC_SEEALSO (char *[]){"o.print", "print", "printit"}
 
-#include "../odot_version.h"
+#include "odot_version.h"
 #include "ext.h"
 #include "ext_obex.h"
 #include "ext_obex_util.h"
@@ -112,6 +112,8 @@ int main(void){
 
 	class_addmethod(c, (method)opbytes_doc, "doc", 0);
 	class_addmethod(c, (method)opbytes_assist, "assist", A_CANT, 0);
+
+	class_addmethod(c, (method)odot_version, "version", 0);
 
 	class_register(CLASS_BOX, c);
 	opbytes_class = c;

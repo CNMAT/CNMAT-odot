@@ -32,6 +32,6 @@
   @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 */
 
-#include "../odot_version.h"
+#include "odot_version.h"
 #define UNION
 #include "../o.var/o.var.c"

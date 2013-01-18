@@ -31,7 +31,7 @@
   @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 */
 
-#include "../odot_version.h"
+#include "odot_version.h"
 
 #ifdef NAME
 #undef NAME
@@ -601,6 +601,7 @@ int main(void)
 		class_addmethod(c, (method)omax_util_dictionary, "dictionary", A_GIMME, 0);
 	}
 
+	class_addmethod(c, (method)odot_version, "version", 0);
 
 	class_register(CLASS_BOX, c);
 	oexpr_class = c;

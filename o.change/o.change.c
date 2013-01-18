@@ -38,7 +38,7 @@
 #define OMAX_DOC_OUTLETS_DESC (char *[]){"The OSC packet if it changed."}
 #define OMAX_DOC_SEEALSO (char *[]){"change"}
 
-#include "../odot_version.h"
+#include "odot_version.h"
 #include "ext.h"
 #include "ext_obex.h"
 #include "ext_critical.h"
@@ -172,7 +172,7 @@ int main(void)
 	if(omax_util_resolveDictStubs()){
 		class_addmethod(c, (method)omax_util_dictionary, "dictionary", A_GIMME, 0);
 	}
-
+	class_addmethod(c, (method)odot_version, "version", 0);
 	
 	class_register(CLASS_BOX, c);
 	ochange_class = c;

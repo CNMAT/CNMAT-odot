@@ -38,7 +38,7 @@ version 1.0: Rewritten to only take one argument (the symbol to be prepended) wh
 #define OMAX_DOC_OUTLETS_DESC (char *[]){"OSC packet with argument prepended."}
 #define OMAX_DOC_SEEALSO (char *[]){"prepend"}
 
-#include "../odot_version.h"
+#include "odot_version.h"
 #include "ext.h"
 #include "ext_obex.h"
 #include "ext_obex_util.h"
@@ -243,6 +243,8 @@ int main(void){
 	class_addmethod(c, (method)oppnd_anything, "anything", A_GIMME, 0);
 
 	class_addmethod(c, (method)oppnd_set, "set", A_GIMME, 0);
+
+	class_addmethod(c, (method)odot_version, "version", 0);
     
 	class_register(CLASS_BOX, c);
 	oppnd_class = c;

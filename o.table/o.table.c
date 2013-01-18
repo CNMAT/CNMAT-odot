@@ -32,7 +32,7 @@ VERSION 0.0: First try
 */
 
 #include "ext.h"
-#include "../odot_version.h"
+#include "odot_version.h"
 #include "ext_obex.h"
 #include "ext_obex_util.h"
 #include "ext_hashtab.h"
@@ -308,6 +308,7 @@ int main(void)
 	class_addmethod(c, (method)otable_remove, "remove", A_GIMME, 0);
 	class_addmethod(c, (method)otable_tag, "tag", A_GIMME, 0);
 	//class_addmethod(c, (method)otable_notify, "notify", A_CANT, 0);
+	class_addmethod(c, (method)odot_version, "version", 0);
 
 	class_register(CLASS_BOX, c);
 	otable_class = c;

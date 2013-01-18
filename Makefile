@@ -3,7 +3,7 @@ o.intersection o.mappatch o.message o.pack o.pak o.prepend o.print o.printbytes 
 o.union o.unless o.var o.when
 VPATH = $(OBJECT_LIST)
 
-VERSION = $(shell perl -p -e 'if(/\#define\s+ODOT_VERSION\s+\"(.*)\"/){print $$1; last;}' odot_version.h)
+#VERSION = $(shell perl -p -e 'if(/\#define\s+ODOT_VERSION\s+\"(.*)\"/){print $$1; last;}' odot_current_version.h)
 ifeq ($(CNMAT_OSTYPE),)
 	PLATFORM = MacOSX
 else
@@ -14,7 +14,7 @@ C74SUPPORT = ../../../c74support
 MAX_INCLUDES = $(C74SUPPORT)/max-includes
 
 BUILDDIR = $(CURDIR)/build
-STAGINGDIR = odot-$(PLATFORM)-$(strip $(VERSION))
+STAGINGDIR = odot-$(PLATFORM)#-$(strip $(VERSION))
 
 MAC_OBJECTS = $(addsuffix .mxo, $(addprefix $(BUILDDIR)/, $(OBJECT_LIST)))
 WIN_OBJECTS = $(addsuffix .mxe, $(addprefix $(BUILDDIR)/, $(OBJECT_LIST)))
@@ -50,9 +50,9 @@ TEXTFILES = README_ODOT.txt
 STAGED_TEXTFILES = $(addprefix $(STAGINGDIR)/, $(TEXTFILES))
 STAGED_PRODUCTS = $(STAGED_PATCHES) $(STAGED_OBJECTS) $(STAGED_TEXTFILES)
 
-ARCHIVE = odot-$(strip $(PLATFORM))-$(strip $(VERSION)).tgz
-CURRENT_ARCHIVE = odot-$(strip $(PLATFORM)).tgz
-VERSION_FILE = current-$(strip $(PLATFORM))-version
+ARCHIVE = odot-$(strip $(PLATFORM)).tgz #-$(strip $(VERSION)).tgz
+#CURRENT_ARCHIVE = odot-$(strip $(PLATFORM)).tgz
+#VERSION_FILE = current-$(strip $(PLATFORM))-version
 
 ifeq ($(strip $(CNMAT_MAX_INSTALL_DIR)),)
 	LOCAL_INSTALL_PATH = ~/odot
@@ -87,15 +87,15 @@ $(LOCAL_INSTALL_PATH)/%: $(LOCAL_INSTALL_DIR)
 #	rsync -avq --exclude=*/.* $(STAGINGDIR)/$* $(LOCAL_INSTALL_PATH)
 
 .PHONY: release
-release: $(DIRS) $(OBJECTS) $(ARCHIVE) $(VERSION_FILE)
-	scp $(ARCHIVE) $(VERSION_FILE) cnmat.berkeley.edu:/$(SERVER_PATH)
-	scp $(ARCHIVE) cnmat.berkeley.edu:/$(SERVER_PATH)/$(CURRENT_ARCHIVE)
+release: $(DIRS) $(OBJECTS) $(ARCHIVE) #$(VERSION_FILE)
+#scp $(ARCHIVE) $(VERSION_FILE) cnmat.berkeley.edu:/$(SERVER_PATH)
+	scp $(ARCHIVE) cnmat.berkeley.edu:/$(SERVER_PATH)/$(ARCHIVE)
 
 $(ARCHIVE): $(STAGED_PRODUCTS)
 	tar zvcf $(ARCHIVE) $(STAGINGDIR)
 
-$(VERSION_FILE): odot_version.h
-	$(shell echo $(VERSION) > $(VERSION_FILE))
+# $(VERSION_FILE): odot_version.h
+# 	$(shell echo $(VERSION) > $(VERSION_FILE))
 
 .PHONY: clean
 clean: 
@@ -107,7 +107,7 @@ clean:
 ##################################################
 ## Mac specific
 ##################################################
-all: $(DIRS) $(OBJECTS)
+all: $(DIRS) $(OBJECTS) odot_current_version.h
 #	xcodebuild -scheme "Build all" -configuration Release -project odot.xcodeproj build
 	make stage_distribution PLATFORM=$(PLATFORM)
 
@@ -120,7 +120,7 @@ $(BUILDDIR)/%.mxo: %.c
 $(BUILDDIR)/commonsyms.o: 
 	$(CC) $(CFLAGS) $(INCLUDES) -c -o $(BUILDDIR)/commonsyms.o $(MAX_INCLUDES)/common/commonsyms.c
 
-$(BUILDDIR)/%.mxe: %.c $(BUILDDIR) $(BUILDDIR)/commonsyms.o
+$(BUILDDIR)/%.mxe: %.c $(BUILDDIR) $(BUILDDIR)/commonsyms.o odot_current_version.h
 	$(CC) $(CFLAGS) $(INCLUDES) -c -o $(BUILDDIR)/$*.o $<
 	$(CC) $(LDFLAGS) -o $(BUILDDIR)/$*.mxe $(BUILDDIR)/$*.o $(BUILDDIR)/commonsyms.o $(LIBS) 
 
@@ -141,6 +141,10 @@ $(LOCAL_INSTALL_PATH):
 
 $(INSTALLDIR)/objects: $(INSTALLDIR) $(RELEASEDIR)
 	cp -r $(RELEASEDIR)/* $(INSTALLDIR)
+
+odot_current_version.h: 
+	echo "#define ODOT_VERSION \""`git describe --tags --long`"\"" > odot_current_version.h
+	echo "#define ODOT_RELEASE_DATE \""`date`"\"" >> odot_current_version.h
 
 # debug:
 # 	@echo $(OBJECTS)

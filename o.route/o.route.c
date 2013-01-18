@@ -58,7 +58,7 @@ VERSION 0.1: Addresses to match can now have patterns
 
 
 
-#include "../odot_version.h"
+#include "odot_version.h"
 #include "ext.h"
 #include "ext_obex.h"
 #include "ext_obex_util.h"
@@ -535,6 +535,7 @@ int main(void)
 	class_addmethod(c, (method)oroute_anything, "anything", A_GIMME, 0);
 	//class_addmethod(c, (method)oroute_set, "set", A_LONG, A_SYM, 0);
 	class_addmethod(c, (method)oroute_set, "set", A_GIMME, 0);
+	class_addmethod(c, (method)odot_version, "version", 0);
 
 	class_register(CLASS_BOX, c);
 	oroute_class = c;

@@ -69,7 +69,7 @@
 
 #endif
 
-#include "../odot_version.h"
+#include "odot_version.h"
 #include "ext.h"
 #include "ext_obex.h"
 #include "ext_obex_util.h"
@@ -329,8 +329,9 @@ int main(void){
 		class_addmethod(c, (method)omax_util_dictionary, "dictionary", A_GIMME, 0);
 	}
 
-
 	class_addmethod(c, (method)ovar_clear, "clear", 0);
+
+	class_addmethod(c, (method)odot_version, "version", 0);
 
 	class_register(CLASS_BOX, c);
 	ovar_class = c;

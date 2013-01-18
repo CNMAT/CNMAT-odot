@@ -37,7 +37,7 @@ VERSION 0.0: First try
 #define OMAX_DOC_OUTLETS_DESC (char *[]){"OSC packet or Max message (same as input)."}
 #define OMAX_DOC_SEEALSO (char *[]){"o.printbytes", "print", "printit"}
 
-#include "../odot_version.h"
+#include "odot_version.h"
 #include "ext.h"
 #include "ext_obex.h"
 #include "ext_obex_util.h"
@@ -198,6 +198,7 @@ int main(void){
 	class_addmethod(c, (method)oprint_list, "list", A_GIMME, 0);
 	class_addmethod(c, (method)oprint_int, "int", A_LONG, 0);
 	class_addmethod(c, (method)oprint_float, "float", A_FLOAT, 0);
+	class_addmethod(c, (method)odot_version, "version", 0);
 
 	CLASS_ATTR_LONG(c, "printtypetags", 0, t_oprint, print_typetags);
 	CLASS_ATTR_LONG(c, "printsize", 0, t_oprint, print_msgsize);

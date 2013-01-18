@@ -46,7 +46,7 @@
 //#define str_tr(foo) foo
 
 #include <string.h>
-#include "../odot_version.h"
+#include "odot_version.h"
 
 #include "ext.h"
 #include "ext_obex.h"
@@ -1016,6 +1016,8 @@ int main(void){
 
 	class_addmethod(c, (method)omessage_mousedown, "mousedown", A_CANT, 0);
 	class_addmethod(c, (method)omessage_mouseup, "mouseup", A_CANT, 0);
+
+	class_addmethod(c, (method)odot_version, "version", 0);
 
 
  	CLASS_ATTR_RGBA(c, "background_color", 0, t_omessage, background_color); 

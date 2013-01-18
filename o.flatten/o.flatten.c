@@ -38,7 +38,7 @@
 #define OMAX_DOC_OUTLETS_DESC (char *[]){"The flattened OSC packet."}
 #define OMAX_DOC_SEEALSO (char *[]){"o.explode"}
 
-#include "../odot_version.h"
+#include "odot_version.h"
 #include "ext.h"
 #include "ext_obex.h"
 #include "ext_critical.h"
@@ -112,6 +112,7 @@ int main(void)
 		class_addmethod(c, (method)omax_util_dictionary, "dictionary", A_GIMME, 0);
 	}
 
+	class_addmethod(c, (method)odot_version, "version", 0);
 
 	CLASS_ATTR_LONG(c, "level", 0, t_oflatten, level);
 	CLASS_ATTR_SYM(c, "sep", 0, t_oflatten, sep);
