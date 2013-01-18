@@ -107,11 +107,11 @@ clean:
 ##################################################
 ## Mac specific
 ##################################################
-all: $(DIRS) $(OBJECTS) odot_current_version.h
+all: $(DIRS) $(OBJECTS) 
 #	xcodebuild -scheme "Build all" -configuration Release -project odot.xcodeproj build
 	make stage_distribution PLATFORM=$(PLATFORM)
 
-$(BUILDDIR)/%.mxo: %.c
+$(BUILDDIR)/%.mxo: %.c include/odot_current_version.h
 	xcodebuild -target $* -configuration Release -project odot.xcodeproj build
 
 ##################################################
@@ -142,9 +142,9 @@ $(LOCAL_INSTALL_PATH):
 $(INSTALLDIR)/objects: $(INSTALLDIR) $(RELEASEDIR)
 	cp -r $(RELEASEDIR)/* $(INSTALLDIR)
 
-odot_current_version.h: 
-	echo "#define ODOT_VERSION \""`git describe --tags --long`"\"" > odot_current_version.h
-	echo "#define ODOT_RELEASE_DATE \""`date`"\"" >> odot_current_version.h
+include/odot_current_version.h: 
+	echo "#define ODOT_VERSION \""`git describe --tags --long`"\"" > include/odot_current_version.h
+	echo "#define ODOT_RELEASE_DATE \""`date`"\"" >> include/odot_current_version.h
 
 # debug:
 # 	@echo $(OBJECTS)
