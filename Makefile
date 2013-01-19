@@ -13,7 +13,7 @@ endif
 C74SUPPORT = ../../../c74support
 MAX_INCLUDES = $(C74SUPPORT)/max-includes
 
-BUILDDIR = $(CURDIR)/build
+BUILDDIR = $(CURDIR)/build/Release
 STAGINGDIR = odot-$(PLATFORM)#-$(strip $(VERSION))
 
 MAC_OBJECTS = $(addsuffix .mxo, $(addprefix $(BUILDDIR)/, $(OBJECT_LIST)))
@@ -100,7 +100,7 @@ $(ARCHIVE): $(STAGED_PRODUCTS)
 
 .PHONY: clean
 clean: 
-	rm -rf $(BUILDDIR)
+	rm -rf build
 	rm -rf $(STAGINGDIR)
 	rm -rf $(ARCHIVE)
 	rm -rf $(LOCAL_INSTALL_PATH)
@@ -108,9 +108,8 @@ clean:
 ##################################################
 ## Mac specific
 ##################################################
-all: $(DIRS) $(OBJECTS) 
-#	xcodebuild -scheme "Build all" -configuration Release -project odot.xcodeproj build
-	make stage_distribution PLATFORM=$(PLATFORM)
+#all: $(DIRS) $(OBJECTS) 
+#	make stage_distribution PLATFORM=$(PLATFORM)
 
 $(BUILDDIR)/%.mxo: %.c $(CURRENT_VERSION_FILE)
 	xcodebuild -target $* -configuration Release -project odot.xcodeproj build

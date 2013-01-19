@@ -2088,7 +2088,7 @@
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
-				STRIP_STYLE = "non-global";
+				STRIP_STYLE = all;
 				SYMROOT = build;
 				WARNING_CFLAGS = (
 					"-Wmost",
@@ -2104,7 +2104,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = i386;
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)";
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/Release";
 				DEPLOYMENT_LOCATION = NO;
 				DSTROOT = "$(PROJECT_DIR)/build";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2163,7 +2163,7 @@
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
-				STRIP_STYLE = "non-global";
+				STRIP_STYLE = all;
 				SYMROOT = build;
 				WARNING_CFLAGS = (
 					"-Wmost",
