@@ -127,7 +127,7 @@ void oppnd_set(t_oppnd *x, t_symbol *msg, int argc, t_atom *argv)
 		object_error((t_object *)x, "argument does not appear to be a symbol");
 		return;
 	}
-	if(sym_to_prepend->s_name[0] != "/"){
+	if(sym_to_prepend->s_name[0] != '/'){
 		//object_error((t_object *)x, "address must begin with a slash");
 		//return;
 		char buf[strlen(sym_to_prepend->s_name) + 2];
