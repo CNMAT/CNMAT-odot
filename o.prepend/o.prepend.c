@@ -130,7 +130,7 @@ void oppnd_set(t_oppnd *x, t_symbol *msg, int argc, t_atom *argv)
 	if(sym_to_prepend->s_name[0] != "/"){
 		//object_error((t_object *)x, "address must begin with a slash");
 		//return;
-		char buf[strlen(sym_to_prepend) + 2];
+		char buf[strlen(sym_to_prepend->s_name) + 2];
 		sprintf(buf, "/%s", sym_to_prepend->s_name);
 		sym_to_prepend = gensym(buf);
 	}
