@@ -123,6 +123,17 @@ void oppnd_set(t_oppnd *x, t_symbol *msg, int argc, t_atom *argv)
 		return;
 	}
 	t_symbol *sym_to_prepend = atom_getsym(argv);
+	if(!sym_to_prepend){
+		object_error((t_object *)x, "argument does not appear to be a symbol");
+		return;
+	}
+	if(sym_to_prepend->s_name[0] != "/"){
+		//object_error((t_object *)x, "address must begin with a slash");
+		//return;
+		char buf[strlen(sym_to_prepend) + 2];
+		sprintf(buf, "/%s", sym_to_prepend->s_name);
+		sym_to_prepend = gensym(buf);
+	}
 	x->sym_to_prepend = sym_to_prepend;
 	x->sym_to_prepend_len = strlen(sym_to_prepend->s_name);
 }
@@ -199,10 +210,12 @@ void oppnd_assist(t_oppnd *x, void *b, long io, long num, char *buf)
 	omax_doc_assist(io, num, buf);
 }
 
-void oppnd_free(t_oppnd *x){
+void oppnd_free(t_oppnd *x)
+{
 }
 
-void *oppnd_new(t_symbol *msg, short argc, t_atom *argv){
+void *oppnd_new(t_symbol *msg, short argc, t_atom *argv)
+{
 	t_oppnd *x;
 	if((x = (t_oppnd *)object_alloc(oppnd_class))){
 		x->outlet = outlet_new(x, "FullPacket");
@@ -228,7 +241,8 @@ void *oppnd_new(t_symbol *msg, short argc, t_atom *argv){
 	return(x);
 }
 
-int main(void){
+int main(void)
+{
 	t_class *c = class_new("o.prepend", (method)oppnd_new, (method)oppnd_free, sizeof(t_oppnd), 0L, A_GIMME, 0);
     
 	//class_addmethod(c, (method)oppnd_fullPacket, "FullPacket", A_LONG, A_LONG, 0);
