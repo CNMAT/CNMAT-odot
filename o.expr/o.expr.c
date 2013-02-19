@@ -546,7 +546,7 @@ void *oexpr_new(t_symbol *msg, short argc, t_atom *argv){
 			object_error((t_object *)x, "invalid number of expressions: %d", n);
 			return NULL;
 		}
-		x->outlets = malloc(2 * sizeof(void *));
+		x->outlets = osc_mem_alloc(2 * sizeof(void *));
 		x->outlets[1] = outlet_new((t_object *)x, "FullPacket");
 		x->outlets[0] = outlet_new((t_object *)x, "FullPacket");
 #elif defined (OUNLESS) || defined (OWHEN)
@@ -558,7 +558,7 @@ void *oexpr_new(t_symbol *msg, short argc, t_atom *argv){
 #elif defined (OCOND)
 		x->num_exprs = n;
 		// implicit 't' as the last condition
-		x->outlets = malloc(n + 1 * sizeof(void *));
+		x->outlets = osc_mem_alloc((n + 1) * sizeof(void *));
 		int i;
 		for(i = n; i >= 0; i--){
 			x->outlets[i] = outlet_new((t_object *)x, "FullPacket");
