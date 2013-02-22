@@ -307,7 +307,7 @@ void oroute_set(t_oroute *x, t_symbol *msg, int argc, t_atom *argv)
 		object_error((t_object *)x, "%s: first argument to message set should be the index (int)", __func__);
 		return;
 	}
-	if(atom_gettype(argv) != A_SYM){
+	if(atom_gettype(argv + 1) != A_SYM){
 		object_error((t_object *)x, "%s: second argument to message set should be an address (symbol)", __func__);
 		return;
 	}
