@@ -14,6 +14,11 @@
 			<key>orderHint</key>
 			<integer>24</integer>
 		</dict>
+		<key>o.append.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>22</integer>
+		</dict>
 		<key>o.atomize copy.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -42,7 +47,7 @@
 		<key>o.dict.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>22</integer>
+			<integer>23</integer>
 		</dict>
 		<key>o.difference.xcscheme</key>
 		<dict>
@@ -52,7 +57,7 @@
 		<key>o.explode.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>23</integer>
+			<integer>24</integer>
 		</dict>
 		<key>o.expr.xcscheme</key>
 		<dict>
@@ -67,7 +72,7 @@
 		<key>o.flatten.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>24</integer>
+			<integer>25</integer>
 		</dict>
 		<key>o.if.xcscheme</key>
 		<dict>
@@ -127,7 +132,7 @@
 		<key>o.table.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>25</integer>
+			<integer>26</integer>
 		</dict>
 		<key>o.union.xcscheme</key>
 		<dict>
@@ -263,6 +268,11 @@
 			<true/>
 		</dict>
 		<key>529781521555B6FD0018A44D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>52A8393B16E978D7002E273C</key>
 		<dict>
 			<key>primary</key>
 			<true/>

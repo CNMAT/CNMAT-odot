@@ -31,12 +31,24 @@ version 1.0: Rewritten to only take one argument (the symbol to be prepended) wh
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 */
 
+#ifdef APPEND
+#define OMAX_DOC_NAME "o.append"
+#define OMAX_DOC_SHORT_DESC "Append an OSC address to every OSC address in a bundle."
+#define OMAX_DOC_LONG_DESC "o.append takes an OSC address as an argument and appends it to every address in the bundle."
+#define OMAX_DOC_INLETS_DESC (char *[]){"OSC packet."}
+#define OMAX_DOC_OUTLETS_DESC (char *[]){"OSC packet with argument appended."}
+#define OMAX_DOC_SEEALSO (char *[]){"o.prepend", "prepend", "append"}
+
+#else
+
 #define OMAX_DOC_NAME "o.prepend"
 #define OMAX_DOC_SHORT_DESC "Prepend an OSC address to every OSC address in a bundle."
 #define OMAX_DOC_LONG_DESC "o.prepend takes an OSC address as an argument and prepends it to every address in the bundle."
 #define OMAX_DOC_INLETS_DESC (char *[]){"OSC packet."}
 #define OMAX_DOC_OUTLETS_DESC (char *[]){"OSC packet with argument prepended."}
-#define OMAX_DOC_SEEALSO (char *[]){"prepend"}
+#define OMAX_DOC_SEEALSO (char *[]){"o.append", "prepend", "append"}
+
+#endif
 
 #include "odot_version.h"
 #include "ext.h"
@@ -57,14 +69,6 @@ typedef struct _oppnd{
 	int bufferLen;
 	int bufferPos;
 } t_oppnd;
-
-struct context{
-	char *buffer;
-	int bufferLen;
-	int bufferPos;
-	t_symbol *sym_to_prepend;
-	int sym_to_prepend_len;
-};
 
 void *oppnd_class;
 
@@ -101,8 +105,13 @@ void oppnd_doFullPacket(t_oppnd *x, long len, long ptr, t_symbol *sym_to_prepend
 		int msg_address_len = strlen(osc_message_s_getAddress(msg));
 		char *msg_address = osc_message_s_getAddress(msg);
 		char new_address[sym_to_prepend_len + msg_address_len + 1];
+#ifdef APPEND
+		memcpy(new_address, msg_address, msg_address_len);
+		memcpy(new_address + msg_address_len, sym_to_prepend->s_name, sym_to_prepend_len);
+#else
 		memcpy(new_address, sym_to_prepend->s_name, sym_to_prepend_len);
 		memcpy(new_address + sym_to_prepend_len, msg_address, msg_address_len);
+#endif
 		new_address[sym_to_prepend_len + msg_address_len] = '\0';
 		bufptr += osc_message_s_renameCopy(bufptr, msg, sym_to_prepend_len + msg_address_len, new_address);
 		bufptr += 4;
@@ -170,6 +179,8 @@ void oppnd_anything(t_oppnd *x, t_symbol *msg, short argc, t_atom *argv)
 	char sym_to_prepend_string[sym_to_prepend_len + 1];
 	address_string[0] = '\0';
 	sym_to_prepend_string[0] = '\0';
+
+	// I'm not sure why I felt the need to make a copy of these here, but I'll leave it out of paranoia...
 	if(address){
 		strncpy(address_string, address->s_name, address_len);
 		address_string[address_len] = '\0';
@@ -178,7 +189,12 @@ void oppnd_anything(t_oppnd *x, t_symbol *msg, short argc, t_atom *argv)
 		strncpy(sym_to_prepend_string, sym_to_prepend->s_name, sym_to_prepend_len);
 		sym_to_prepend_string[sym_to_prepend_len] = '\0';
 	}
+
+#ifdef APPEND
+	sprintf(buf, "%s%s", address_string, sym_to_prepend_string);
+#else
 	sprintf(buf, "%s%s", sym_to_prepend_string, address_string);
+#endif
 	t_symbol *newaddress = gensym(buf);
 
 	t_osc_bndl_u *bndl_u = osc_bundle_u_alloc();
@@ -243,7 +259,7 @@ void *oppnd_new(t_symbol *msg, short argc, t_atom *argv)
 
 int main(void)
 {
-	t_class *c = class_new("o.prepend", (method)oppnd_new, (method)oppnd_free, sizeof(t_oppnd), 0L, A_GIMME, 0);
+	t_class *c = class_new(OMAX_DOC_NAME, (method)oppnd_new, (method)oppnd_free, sizeof(t_oppnd), 0L, A_GIMME, 0);
     
 	//class_addmethod(c, (method)oppnd_fullPacket, "FullPacket", A_LONG, A_LONG, 0);
 	class_addmethod(c, (method)oppnd_fullPacket, "FullPacket", A_GIMME, 0);
