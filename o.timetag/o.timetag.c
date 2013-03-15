@@ -54,6 +54,7 @@ typedef struct _otimetag{
 	void *outlet;
 	long msglen;
 	char *msg;
+	t_symbol *address;
 	t_critical lock;
 } t_otimetag;
 
@@ -64,6 +65,9 @@ void otimetag_fullPacket(t_otimetag *x, t_symbol *msg, int argc, t_atom *argv);
 void otimetag_doFullPacket(t_otimetag *x, long len, char *ptr);
 void otimetag_bang(t_otimetag *x);
 void otimetag_anything(t_otimetag *x, t_symbol *msg, short argc, t_atom *argv);
+void otimetag_putCurrentTimeInMessage(t_otimetag *x, long len, char *copy);
+void otimetag_makemsg(t_otimetag *x, char *address);
+void otimetag_set(t_otimetag *x, t_symbol *msg, int argc, t_atom *argv);
 void otimetag_free(t_otimetag *x);
 void otimetag_assist(t_otimetag *x, void *b, long io, long num, char *buf);
 void *otimetag_new(t_symbol *msg, short argc, t_atom *argv);
@@ -81,31 +85,129 @@ void otimetag_doFullPacket(t_otimetag *x,
 			   long len,
 			   char *ptr)
 {
-	t_osc_timetag t = osc_timetag_now();
+	t_symbol *address;
 	critical_enter(x->lock);
+	address = x->address;
 	long msglen;
 	msglen = x->msglen;
 	char msg[msglen];
 	memcpy(msg, x->msg, msglen);
 	critical_exit(x->lock);
-	char *p = msg + (msglen - OSC_TIMETAG_SIZEOF);
-	memcpy(p, (char *)&t, OSC_TIMETAG_SIZEOF);
-	long newlen = len + msglen;
-	char buf[newlen];
-	memcpy(buf, ptr, len);
-	memcpy(buf + len, msg, msglen);
+	otimetag_putCurrentTimeInMessage(x, msglen, msg);
 
-	omax_util_outletOSC(x->outlet, newlen, buf);
+	int res = 0;
+	osc_bundle_s_addressExists(len, ptr, address->s_name, 1, &res);
+	if(res){
+		long copylen = len;
+		char *copy = (char *)osc_mem_alloc(len);
+		memcpy(copy, ptr, len);
+		t_osc_msg_s *newmsg = osc_message_s_alloc(), *oldmsg = NULL;
+		osc_message_s_initMsg(newmsg);
+		osc_message_s_wrap(newmsg, msg);
+		t_osc_array *msg_ar = NULL;
+		osc_bundle_s_lookupAddress(len, copy, address->s_name, &msg_ar, 1);
+		oldmsg = osc_array_get(msg_ar, 0);
+		osc_bundle_s_replaceMessage(&copylen, &copylen, &copy, oldmsg, newmsg);
+		omax_util_outletOSC(x->outlet, copylen, copy);
+		osc_mem_free(copy);
+		osc_message_s_free(newmsg);
+		osc_array_free(msg_ar);
+	}else{
+		long newlen = len + msglen;
+		char buf[newlen];
+		memcpy(buf, ptr, len);
+		memcpy(buf + len, msg, msglen);
+		omax_util_outletOSC(x->outlet, newlen, buf);
+	}
 }
 
 void otimetag_bang(t_otimetag *x)
 {
+	critical_enter(x->lock);
+	long msglen = x->msglen;
+	long bndllen = msglen + OSC_HEADER_SIZE;
+	char buf[bndllen];
+	memcpy(buf + OSC_HEADER_SIZE, x->msg, msglen);
+	critical_exit(x->lock);
+	memcpy(buf, OSC_EMPTY_HEADER, OSC_HEADER_SIZE);
 
+	otimetag_putCurrentTimeInMessage(x, msglen, buf + OSC_HEADER_SIZE);
+	omax_util_outletOSC(x->outlet, bndllen, buf);
 }
 
-void otimetag_anything(t_otimetag *x, t_symbol *msg, short argc, t_atom *argv)
+void otimetag_anything(t_otimetag *x, t_symbol *selector, short argc, t_atom *argv)
 {
+	t_osc_msg_u *msg = NULL;
+	t_symbol *address_sym = NULL;
+	long osc_argc = argc;
+	t_atom *osc_argv = argv;
+	if(selector){
+		if(selector->s_name[0] == '/'){
+			address_sym = selector;
+		}
+	}
+	if(!address_sym){
+		if(argc != 0){
+			if(atom_gettype(argv) != A_SYM){
+				object_error((t_object *)x, "first argument must be an OSC address");
+				return;
+			}
+			address_sym = atom_getsym(argv);
+			if(address_sym->s_name[0] != '/'){
+				object_error((t_object *)x, "first argument must be an OSC address");
+				return;
+			}
+			osc_argc = argc - 1;
+			osc_argv = argv + 1;
+		}else{
+			object_error((t_object *)x, "first argument must be an OSC address");
+			return;
+		}
+	}
+	omax_util_maxAtomsToOSCMsg_u(&msg, address_sym, osc_argc, osc_argv);
+	t_osc_bndl_u *bndl = osc_bundle_u_alloc();
+	osc_bundle_u_addMsg(bndl, msg);
+	long len = 0;
+	char *buf = NULL;
+	osc_bundle_u_serialize(bndl, &len, &buf);
+	otimetag_doFullPacket(x, len, buf);
+	if(buf){
+		osc_mem_free(buf);
+	}
+	osc_bundle_u_free(bndl);
+}
 
+void otimetag_set(t_otimetag *x, t_symbol *msg, int argc, t_atom *argv)
+{
+	if(argc == 0){
+		object_error((t_object *)x, "missing argument (OSC address)");
+		return;
+	}
+	if(atom_gettype(argv) != A_SYM){
+		object_error((t_object *)x, "argument must be a symbol");
+		return;
+	}
+	t_symbol *address = atom_getsym(argv);
+	if(!(address->s_name)){
+		object_error((t_object *)x, "invalid argument");
+		return;
+	}
+	// this should be a call to something like osc_error_validateAddress(address)
+	if(*(address->s_name) != '/'){
+		object_error((t_object *)x, "argument is not a valid OSC address");
+		return;
+	}
+	critical_enter(x->lock);
+	x->address = address;
+	otimetag_makemsg(x, address->s_name);
+	critical_exit(x->lock);
+}
+
+void otimetag_putCurrentTimeInMessage(t_otimetag *x, long len, char *copy)
+{
+	t_osc_timetag t = osc_timetag_now();
+	char *p = copy + (len - OSC_TIMETAG_SIZEOF);
+	memcpy(p, (char *)&t, OSC_TIMETAG_SIZEOF);
 }
 
 void otimetag_makemsg(t_otimetag *x, char *address)
@@ -151,7 +253,7 @@ void otimetag_free(t_otimetag *x)
 void *otimetag_new(t_symbol *msg, short argc, t_atom *argv)
 {
 	t_otimetag *x;
-	if(x = (t_otimetag *)object_alloc(otimetag_class)){
+	if((x = (t_otimetag *)object_alloc(otimetag_class))){
 		x->msg = NULL;
 		x->msglen = 0;
 		if(argc == 0){
@@ -162,7 +264,8 @@ void *otimetag_new(t_symbol *msg, short argc, t_atom *argv)
 			object_error((t_object *)x, "argument must be a symbol");
 			return NULL;
 		}
-		char *address = atom_getsym(argv)->s_name;
+		x->address = atom_getsym(argv);
+		char *address = x->address->s_name;
 		if(!address){
 			object_error((t_object *)x, "invalid argument");
 			return NULL;
@@ -189,6 +292,7 @@ int main(void)
 	class_addmethod(c, (method)otimetag_assist, "assist", A_CANT, 0);
 	class_addmethod(c, (method)otimetag_anything, "anything", A_GIMME, 0);
 	class_addmethod(c, (method)otimetag_bang, "bang", 0);
+	class_addmethod(c, (method)otimetag_set, "set", A_GIMME, 0);
 
 
 	class_register(CLASS_BOX, c);
