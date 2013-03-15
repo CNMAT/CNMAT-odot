@@ -134,6 +134,11 @@
 			<key>orderHint</key>
 			<integer>26</integer>
 		</dict>
+		<key>o.timetag.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>27</integer>
+		</dict>
 		<key>o.union.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -273,6 +278,11 @@
 			<true/>
 		</dict>
 		<key>52A8393B16E978D7002E273C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>52A8395916EFFBC9002E273C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
