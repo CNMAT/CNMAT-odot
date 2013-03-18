@@ -124,6 +124,11 @@
 			<key>orderHint</key>
 			<integer>16</integer>
 		</dict>
+		<key>o.schedule.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>28</integer>
+		</dict>
 		<key>o.select.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -283,6 +288,11 @@
 			<true/>
 		</dict>
 		<key>52A8395916EFFBC9002E273C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>52A8396E16F3F898002E273C</key>
 		<dict>
 			<key>primary</key>
 			<true/>

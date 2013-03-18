@@ -1,5 +1,5 @@
 OBJECT_LIST = o.append o.atomize o.change o.collect o.cond o.dict o.difference o.explode o.expr o.flatten o.if \
-o.intersection o.mappatch o.message o.pack o.pak o.prepend o.print o.printbytes o.route o.select o.table \
+o.intersection o.mappatch o.message o.pack o.pak o.prepend o.print o.printbytes o.route o.schedule o.select o.table \
 o.timetag o.union o.unless o.var o.when
 
 PATCHDIRS = help demos abstractions deprecated overview

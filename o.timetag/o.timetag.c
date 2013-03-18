@@ -56,6 +56,7 @@ typedef struct _otimetag{
 	char *msg;
 	t_symbol *address;
 	t_critical lock;
+
 } t_otimetag;
 
 
