@@ -294,6 +294,7 @@ int main(void)
 	class_addmethod(c, (method)otimetag_anything, "anything", A_GIMME, 0);
 	class_addmethod(c, (method)otimetag_bang, "bang", 0);
 	class_addmethod(c, (method)otimetag_set, "set", A_GIMME, 0);
+	class_addmethod(c, (method)odot_version, "version", 0);
 
 
 	class_register(CLASS_BOX, c);

@@ -35,295 +35,450 @@ VERSION 0.0: First try
 #include "odot_version.h"
 #include "ext_obex.h"
 #include "ext_obex_util.h"
-#include "ext_hashtab.h"
 #include "ext_critical.h"
-#include "omax_util.h"
 #include "osc.h"
 #include "osc_mem.h"
-#include "avl.h"
-#include "maxdb.h"
-#include "otable_util.h"
+#include "osc_hashtab.h"
+#include "osc_bundle_s.h"
+#include "osc_message_s.h"
+#include "osc_atom_s.h"
+#include "osc_linkedlist.h"
+#include "omax_util.h"
+
+typedef struct _otable_db{
+	t_osc_hashtab *ht;
+	t_osc_linkedlist *ll;
+	char *keyaddress;
+	int refcount;
+} t_otable_db;
 
 typedef struct _otable{
 	t_object ob;
-	void *outlets[2];
+	void *outlet;
 	t_otable_db *db;
 	t_symbol *name;
+	t_critical lock;
 } t_otable;
 
 void *otable_class;
 
 
-//void otable_ll_append(t_otable *x, t_otable_oscbndl *e);
-//void otable_ll_remove(t_otable *x, t_otable_oscbndl *e);
-//void otable_ll_replace(t_otable *x, t_otable_oscbndl *old, t_otable_oscbndl *new);
-
+void otable_destroydb(t_otable *x, t_otable_db *db);
+void otable_linkedlist_dtor(void *bndl);
+void otable_hashtab_dtor(char *key, void *data);
 void otable_free(t_otable *x);
 void otable_assist(t_otable *x, void *b, long m, long a, char *s);
 void *otable_new(t_symbol *msg, short argc, t_atom *argv);
-t_max_err otable_notify(t_otable *x, t_symbol *s, t_symbol *msg, void *sender, void *data);
+t_max_err otable_setName(t_otable *x, void *attr, long ac, t_atom *av);
+t_max_err otable_getKey(t_otable *x, void *attr, long *ac, t_atom **av);
+t_max_err otable_setKey(t_otable *x, void *attr, long ac, t_atom *av);
+
 
 t_symbol *ps_FullPacket;
 
-void otable_fullPacket(t_otable *x, long len, long ptr)
+void otable_getKeyOutOfBundle(t_otable *x, t_osc_bndl_s *bndl, int *keylen, char **key)
 {
-	otable_util_doStore((t_object *)x, x->db, NULL, x->db->monotonic_counter++, len, (char *)ptr);
-}
+	char *keyaddress = NULL;
+	int _keylen = 0;
+	char *_key = NULL;
+	critical_enter(x->lock);
+	keyaddress = x->db->keyaddress;
+	critical_exit(x->lock);
 
-void otable_lookup(t_otable *x, t_symbol *msg, int argc, t_atom *argv)
-{
-	t_otable_oscbndl *bndl = otable_util_lookup((t_object *)x, x->db, argc, argv);
-	if(bndl){
-		t_otable_oscbndl *next = NULL;
-		while(bndl){
-			otable_util_output(x->outlets[0], bndl);
-			next = bndl->next;
-			otable_util_freebundle((t_object *)x, bndl);
-			bndl = next;
+	if(keyaddress){
+		t_osc_msg_ar_s *ar = NULL;
+		osc_bundle_s_lookupAddress_b(bndl, keyaddress, &ar, 1);
+		if(ar){
+			t_osc_msg_s *m = osc_message_array_s_get(ar, 0);
+			if(osc_message_s_getArgCount(m) > 0){
+				if(osc_message_s_getTypetag(m, 0) == 's'){
+					t_osc_atom_s *a = NULL;
+					osc_message_s_getArg(osc_message_array_s_get(ar, 0), 0, &a);
+					if(a){
+						_keylen = osc_atom_s_getStringLen(a);
+						osc_atom_s_getString(a, _keylen, &_key);
+						osc_atom_s_free(a);
+					}
+				}
+			}
 		}
-	}else{
-		otable_util_output_emptyBundle(x->outlets[0]);
+		osc_message_array_s_free(ar);
 	}
+	*keylen = _keylen;
+	*key = _key;
 }
 
-void otable_store(t_otable *x, t_symbol *msg, int argc, t_atom *argv)
+void otable_insert(t_otable *x, long len, char *ptr, void (*ll_fptr)(t_osc_linkedlist*, void*))
 {
-	otable_util_store((t_object *)x, x->db, argc, argv);
+	char *copy = (char *)osc_mem_alloc(len);
+	memcpy(copy, ptr, len);
+	t_osc_bndl_s *bndl = osc_bundle_s_alloc(len, copy);
+
+	int keylen = 0;
+	char *key = NULL;
+	otable_getKeyOutOfBundle(x, bndl, &keylen, &key);
+
+	critical_enter(x->lock);
+	if(key){
+		osc_hashtab_store(x->db->ht, keylen, key, bndl);
+	}
+	ll_fptr(x->db->ll, bndl);
+	critical_exit(x->lock);
 }
 
-void otable_remove(t_otable *x, t_symbol *msg, int argc, t_atom *argv)
+void otable_dopend(t_otable *x,
+		   t_symbol *msg,
+		   int argc,
+		   t_atom *argv,
+		   void (*ll_fptr)(t_osc_linkedlist*, void*))
 {
-	otable_util_remove((t_object *)x, x->db, argc, argv);
-}
-
-void otable_dump(t_otable *x)
-{
-	maxdb_lock((t_maxdb *)(x->db));
-	t_otable_oscbndl *e = NULL;
-	e = rumati_avl_get_smallest(x->db->tree);
-	if(!e){
-		maxdb_unlock((t_maxdb *)(x->db));
+	if(argc != 3){
+		object_error((t_object *)x, "bad arguments--expected FullPacket <len> <ptr>");
 		return;
 	}
-	t_otable_oscbndl *head = otable_util_makebundle((t_object *)x, e->key, e->id, e->len, e->ptr);
-	t_otable_oscbndl *tail = head;
-	e = rumati_avl_get_greater_than(x->db->tree, e);
-	while(e){
-		tail->next = otable_util_makebundle((t_object *)x, e->key, e->id, e->len, e->ptr);
-		tail = tail->next;
-		e = rumati_avl_get_greater_than(x->db->tree, e);
+	if(atom_gettype(argv) != A_SYM){
+		object_error((t_object *)x, "bad arguments--expected FullPacket <len> <ptr>");
+		return;
 	}
-	maxdb_unlock((t_maxdb *)(x->db));
-	e = head;
-	t_otable_oscbndl *next = NULL;
-	while(e){
-		next = e->next;
-		t_atom out[2];
-		t_atom *outptr = out;
-		atom_setlong(outptr++, e->len);
-		atom_setlong(outptr++, (long)(e->ptr));
-		outlet_anything(x->outlets[0], ps_FullPacket, outptr - out, out);
-		otable_util_freebundle((t_object *)x, e);
-		e = next;
+	if(atom_getsym(argv) != ps_FullPacket){
+		object_error((t_object *)x, "bad arguments--expected FullPacket <len> <ptr>");
+		return;
 	}
+	argc--;
+	argv++;
+	OMAX_UTIL_GET_LEN_AND_PTR;
+	otable_insert(x, len, ptr, ll_fptr);
+}
+
+
+void otable_prepend(t_otable *x, t_symbol *msg, int argc, t_atom *argv)
+{
+	otable_dopend(x, msg, argc, argv, osc_linkedlist_prepend);
+}
+
+void otable_append(t_otable *x, t_symbol *msg, int argc, t_atom *argv)
+{
+	otable_dopend(x, msg, argc, argv, osc_linkedlist_append);
+}
+
+void otable_fullPacket(t_otable *x, t_symbol *msg, int argc, t_atom *argv)
+{
+	OMAX_UTIL_GET_LEN_AND_PTR;
+	otable_insert(x, len, ptr, osc_linkedlist_append);
+}
+
+void otable_pop(t_otable *x, void *(*ll_pop)(t_osc_linkedlist*))
+{
+	critical_enter(x->lock);
+	t_osc_bndl_s *bndl = (t_osc_bndl_s *)ll_pop(x->db->ll);
+	if(bndl){
+		int len = 0;
+		char *key = NULL;
+		otable_getKeyOutOfBundle(x, bndl, &len, &key);
+		if(key){
+			osc_hashtab_remove(x->db->ht, len, key, otable_hashtab_dtor);
+		}
+	}
+	critical_exit(x->lock);
+	if(bndl){
+		long len = osc_bundle_s_getLen(bndl);
+		char *ptr = osc_bundle_s_getPtr(bndl);
+		omax_util_outletOSC(x->outlet, len, ptr);
+		osc_bundle_s_deepFree(bndl);
+	}else{
+		omax_util_outletOSC(x->outlet, OSC_HEADER_SIZE, OSC_EMPTY_HEADER);
+	}
+}
+
+void otable_popnth(t_otable *x, int n)
+{
+	critical_enter(x->lock);
+	t_osc_bndl_s *bndl = (t_osc_bndl_s *)osc_linkedlist_popNth(x->db->ll, n);
+	critical_exit(x->lock);
+	if(bndl){
+		long len = osc_bundle_s_getLen(bndl);
+		char *ptr = osc_bundle_s_getPtr(bndl);
+		omax_util_outletOSC(x->outlet, len, ptr);
+		osc_bundle_s_deepFree(bndl);
+	}else{
+		omax_util_outletOSC(x->outlet, OSC_HEADER_SIZE, OSC_EMPTY_HEADER);
+	}
+}
+
+void otable_popfirst(t_otable *x)
+{
+	otable_pop(x, osc_linkedlist_popHead);
+}
+
+void otable_poplast(t_otable *x)
+{
+	otable_pop(x, osc_linkedlist_popTail);
+}
+
+void otable_peeknth(t_otable *x, int n)
+{
+	critical_enter(x->lock);
+	t_osc_bndl_s *bndl = (t_osc_bndl_s *)osc_linkedlist_peekNth(x->db->ll, n);
+	critical_exit(x->lock);
+	if(bndl){
+		long len = osc_bundle_s_getLen(bndl);
+		char *ptr = osc_bundle_s_getPtr(bndl);
+		omax_util_outletOSC(x->outlet, len, ptr);
+	}else{
+		omax_util_outletOSC(x->outlet, OSC_HEADER_SIZE, OSC_EMPTY_HEADER);
+	}
+}
+
+void otable_peekfirst(t_otable *x)
+{
+	otable_peeknth(x, 0);
+}
+
+void otable_peeklast(t_otable *x)
+{
+	otable_peeknth(x, -1);
+}
+
+void otable_dumpCallback(void *obj, int index, void *data)
+{
+	t_otable *x = (t_otable *)obj;
+	if(index == -1 && data == NULL){
+		omax_util_outletOSC(x->outlet, OSC_HEADER_SIZE, OSC_EMPTY_HEADER);
+	}else{
+		t_osc_bndl_s *bndl = (t_osc_bndl_s *)data;
+		long len = osc_bundle_s_getLen(bndl);
+		char *ptr = osc_bundle_s_getPtr(bndl);
+		omax_util_outletOSC(x->outlet, len, ptr);
+	}
+}
+
+void otable_cloneCallback(void **dest, void *src)
+{
+	if(src){
+		t_osc_bndl_s *bndl = (t_osc_bndl_s *)src;
+		long len = osc_bundle_s_getLen(bndl);
+		char *ptr = osc_bundle_s_getPtr(bndl);
+		char *ptrcpy = osc_mem_alloc(len);
+		memcpy(ptrcpy, ptr, len);
+		t_osc_bndl_s *copy = osc_bundle_s_alloc(len, ptrcpy);
+		*dest = (void *)copy;
+	}
+}
+
+#define OTABLE_COPY_BEFORE_DUMP
+void otable_dump(t_otable *x)
+{
+	t_osc_linkedlist *ll = x->db->ll;
+#ifdef OTABLE_COPY_BEFORE_DUMP
+	critical_enter(x->lock);
+	ll = osc_linkedlist_clone(x->db->ll, otable_cloneCallback);
+	critical_exit(x->lock);
+#endif
+	osc_linkedlist_iterate(ll, otable_dumpCallback, (void *)x);
+#ifdef OTABLE_COPY_BEFORE_DUMP
+	osc_linkedlist_destroy(ll);
+#endif
 }
 
 void otable_getkeys(t_otable *x, t_symbol *msg, int argc, t_atom *argv)
 {
-	long long nkeys;
-	t_symbol **keys = NULL;
-	otable_util_getkeys((t_object *)x, x->db, &nkeys, &keys, argc, argv);
-	int i;
-	for(i = 0; i < nkeys; i++){
-		outlet_anything(x->outlets[1], keys[i], 0, NULL);
-	}
-	if(keys){
-		osc_mem_free(keys);
-	}
 }
 
 void otable_getindexes(t_otable *x, t_symbol *msg, int argc, t_atom *argv)
 {
-	long long nkeys;
-	long long *indexes = NULL;
-	otable_util_getindexes((t_object *)x, x->db, &nkeys, &indexes, argc, argv);
-	int i;
-	for(i = 0; i < nkeys; i++){
-		outlet_int(x->outlets[1], indexes[i]);
-	}
-	if(indexes){
-		osc_mem_free(indexes);
-	}
 }
 
 void otable_clear(t_otable *x)
 {
-	otable_util_clear((t_object *)x, x->db);
+	// could be cheaper to just replace the ll and ht with new ones and 
+	// free everything in another thread.
+	critical_enter(x->lock);
+	osc_hashtab_clear(x->db->ht);
+	osc_linkedlist_clear(x->db->ll);
+	critical_exit(x->lock);
 }
 
-void otable_refer(t_otable *x, t_symbol *name)
+void otable_refer(t_otable *x, t_symbol *msg, int argc, t_atom *argv)
 {
-	x->db = (t_otable_db *)maxdb_refer((t_maxdb *)(x->db), maxdb_mangle_name("otable", name));
-	if(!x->db){
-		x->db = otable_util_make_db((t_object *)x, name);
-	}
-	x->name = name;
-}
-
-void otable_renumber(t_otable *x)
-{
-	otable_util_renumber((t_object *)x, x->db);
-}
-
-void otable_tag(t_otable *x, t_symbol *msg, int argc, t_atom *argv)
-{
-	otable_util_tag((t_object *)x, x->db, argc, argv);
 }
 
 void otable_anything(t_otable *x, t_symbol *msg, int argc, t_atom *argv)
 {
-	switch(argc){
-	case 0:
-		{
-			t_atom av[argc + 1];
-			atom_setsym(av, msg);
-			memcpy(av + 1, argv, argc * sizeof(t_atom));
-			otable_util_lookup((t_object *)x, x->db, argc + 1, av);
-		}
-		break;
-	default:
-		object_error((t_object *)x, "bad argument count");
-	}
-}
-/*
-void otable_list(t_otable *x, t_symbol *msg, int argc, t_atom *argv){
-	if(argc < 4){
-		object_error((t_object *)x, "bad argument count");
-		return;
-	}
-	otable_store(x, msg, argc, argv);
-}
-*/
-void otable_int(t_otable *x, long l)
-{
-	RUMATI_AVL_TREE *tree = x->db->tree;
-	t_otable_oscbndl *bndl = NULL;
-	t_otable_oscbndl test = EMPTY_BUNDLE;
-	test.id = l;
-	bndl = rumati_avl_get(tree, &test);
+	// assume for now that this is a key to look up in the hashtab
+	critical_enter(x->lock);
+	t_osc_bndl_s *bndl = osc_hashtab_lookup(x->db->ht, strlen(msg->s_name), msg->s_name);
+	critical_exit(x->lock);
 	if(bndl){
-		otable_util_output(x->outlets[0], bndl);
- 	}else{
-		otable_util_output_emptyBundle(x->outlets[0]);
+		long len = osc_bundle_s_getLen(bndl);
+		char *ptr = osc_bundle_s_getPtr(bndl);
+		omax_util_outletOSC(x->outlet, len, ptr);
+	}else{
+		omax_util_outletOSC(x->outlet, OSC_HEADER_SIZE, OSC_EMPTY_HEADER);
 	}
 }
 
-void otable_read(t_otable *x, t_symbol *path)
+void otable_read(t_otable *x, t_symbol *msg, int argc, t_atom *argv)
 {
-	otable_util_read((t_object *)x, x->db, path);
+
 }
 
-void otable_write(t_otable *x, t_symbol *path)
+void otable_write(t_otable *x, t_symbol *msg, int argc, t_atom *argv)
 {
-	otable_util_write((t_object *)x, x->db, path);
-}
 
-void otable_tellmeeverything(t_otable *x)
-{
-	post("name = %s", x->name ? x->name->s_name : "<none>");
-	post("refcount = %d", maxdb_get_refcount((t_maxdb *)(x->db)));
-	post("hashtab:");
-	hashtab_print(x->db->ht);
-	post("tree:");
-	post("%d entries", x->db->count);
-	/*
-	t_otable_oscbndl *bndl = rumati_avl_get_smallest(db->tree);
-	while(bndl){
-		post("KEY = %s, INDEX = %lld", bndl->key ? bndl->key->s_name : "<null>", bndl->id);
-		osc_bundle_printBundle(bndl->len, bndl->ptr, (void *)post);
-		bndl = rumati_avl_get_greater_than(db->tree, bndl);
-	}
-	*/
 }
 
 void otable_free(t_otable *x)
 {
-	otable_util_free((t_object *)x, x->db);
+	otable_destroydb(x, x->db);
+	critical_free(x->lock);
 }
 
 void otable_assist(t_otable *x, void *b, long m, long a, char *s)
 {
-	if (m == ASSIST_OUTLET)
-		sprintf(s,"Probability distribution and arguments");
-	else {
-		switch (a) {	
-		case 0:
-			sprintf(s,"Random variate");
-			break;
-		}
+}
+
+void otable_linkedlist_dtor(void *bndl)
+{
+	if(bndl){
+		osc_bundle_s_deepFree((t_osc_bndl_s *)bndl);
 	}
 }
 
+void otable_hashtab_dtor(char *key, void *data)
+{
+	// don't free the data--otable_linkedlist_dtor will do that
+	if(key){
+		osc_mem_free(key);
+	}
+}
+
+t_otable_db *otable_makedb(void)
+{
+	t_otable_db *db = (t_otable_db *)osc_mem_alloc(sizeof(t_otable_db));
+	if(db){
+		db->ht = osc_hashtab_new(-1, otable_hashtab_dtor);
+		db->ll = osc_linkedlist_new(otable_linkedlist_dtor);
+		db->refcount = 0;
+		db->keyaddress = NULL;
+	}
+	return db;
+}
+
+void otable_destroydb(t_otable *x, t_otable_db *db)
+{
+	critical_enter(x->lock);
+	db->refcount--;
+	if(db->refcount == 0){
+		osc_hashtab_destroy(db->ht);
+		osc_linkedlist_destroy(db->ll);
+	}
+	critical_exit(x->lock);
+}
 
 void *otable_new(t_symbol *msg, short argc, t_atom *argv)
 {
 	t_otable *x;
 	if((x = (t_otable *)object_alloc(otable_class))){
-		x->outlets[1] = outlet_new((t_object *)x, NULL);
-		x->outlets[0] = outlet_new((t_object *)x, NULL);
+		x->outlet = outlet_new((t_object *)x, NULL);
+		critical_new(&x->lock);
 		x->name = NULL;
 		x->db = NULL;
-		if(argc){
-			otable_refer(x, atom_getsym(argv));
-		}else{
-			x->db = otable_util_make_db((t_object *)x, NULL);
-		}
 
-		//attr_args_process(x, argc, argv);
+		attr_args_process(x, argc, argv);
+
+		if(!x->name){
+			x->db = otable_makedb();
+			if(!x->db){
+				return NULL;
+			}
+		}
+		attr_args_process(x, argc, argv);
 	}
 		   	
-	return(x);
+	return x;
 }
 
 int main(void)
 {
 	t_class *c = class_new("o.table", (method)otable_new, (method)otable_free, sizeof(t_otable), 0L, A_GIMME, 0);
     
-	class_addmethod(c, (method)otable_fullPacket, "FullPacket", A_LONG, A_LONG, 0);
+	class_addmethod(c, (method)otable_fullPacket, "FullPacket", A_GIMME, 0);
 	class_addmethod(c, (method)otable_assist, "assist", A_CANT, 0);
 	class_addmethod(c, (method)otable_anything, "anything", A_GIMME, 0);
-	//class_addmethod(c, (method)otable_list, "list", A_GIMME, 0);
-	class_addmethod(c, (method)otable_int, "int", A_LONG, 0);
 	class_addmethod(c, (method)otable_getkeys, "getkeys", A_GIMME, 0);
-	class_addmethod(c, (method)otable_getindexes, "getindexes", A_GIMME, 0);
-	class_addmethod(c, (method)otable_refer, "refer", A_SYM, 0);
+	class_addmethod(c, (method)otable_refer, "refer", A_GIMME, 0);
 	class_addmethod(c, (method)otable_clear, "clear", 0);
 	class_addmethod(c, (method)otable_dump, "dump", 0);
 	class_addmethod(c, (method)otable_read, "read", A_DEFSYM, 0);
 	class_addmethod(c, (method)otable_write, "write", A_DEFSYM, 0);
-	class_addmethod(c, (method)otable_store, "store", A_GIMME, 0);
-	class_addmethod(c, (method)otable_lookup, "lookup", A_GIMME, 0);
-	class_addmethod(c, (method)otable_tellmeeverything, "tellmeeverything", 0);
-	class_addmethod(c, (method)otable_renumber, "renumber", 0);
-	class_addmethod(c, (method)otable_remove, "remove", A_GIMME, 0);
-	class_addmethod(c, (method)otable_tag, "tag", A_GIMME, 0);
-	//class_addmethod(c, (method)otable_notify, "notify", A_CANT, 0);
 	class_addmethod(c, (method)odot_version, "version", 0);
+
+	class_addmethod(c, (method)otable_prepend, "prepend", A_GIMME, 0);
+	class_addmethod(c, (method)otable_append, "append", A_GIMME, 0);
+	class_addmethod(c, (method)otable_popfirst, "popfirst", 0);
+	class_addmethod(c, (method)otable_poplast, "poplast", 0);
+	class_addmethod(c, (method)otable_popnth, "popnth", A_LONG, 0);
+	class_addmethod(c, (method)otable_peekfirst, "peekfirst", 0);
+	class_addmethod(c, (method)otable_peeklast, "peeklast", 0);
+	class_addmethod(c, (method)otable_peeknth, "peeknth", A_LONG, 0);
+
+	CLASS_ATTR_SYM(c, "name", 0, t_otable, name);
+	CLASS_ATTR_ACCESSORS(c, "name", NULL, otable_setName);
+
+	CLASS_ATTR_SYM(c, "key", 0, t_otable, name); // name is a dummy
+	CLASS_ATTR_ACCESSORS(c, "key", otable_getKey, otable_setKey);
 
 	class_register(CLASS_BOX, c);
 	otable_class = c;
 
 	common_symbols_init();
-	otable_util_init();
 
 	ps_FullPacket = gensym("FullPacket");
+	ODOT_PRINT_VERSION
 	return 0;
 }
 
-t_max_err otable_notify(t_otable *x, t_symbol *s, t_symbol *msg, void *sender, void *data)
+t_max_err otable_setName(t_otable *x, void *attr, long ac, t_atom *av)
 {
-        if(msg == gensym("attr_modified")){
-		//t_symbol *attrname = (t_symbol *)object_method((t_object *)data, gensym("getname"));
+	if(x->db){
+		critical_enter(x->lock);
+		otable_refer(x, NULL, ac, av);
+		critical_exit(x->lock);
 	}
 	return MAX_ERR_NONE;
 }
+
+t_max_err otable_getKey(t_otable *x, void *attr, long *ac, t_atom **av)
+{
+	t_symbol *key = NULL;
+	if(x->db){
+		critical_enter(x->lock);
+		key = gensym(x->db->keyaddress);
+		critical_exit(x->lock);
+	}
+	if(ac && av){
+		char alloc;
+		if(atom_alloc(ac, av, &alloc)){
+			return MAX_ERR_GENERIC;
+		}
+		if(key){
+			atom_setsym(*av, key);
+		}else{
+			atom_setsym(*av, _sym_emptytext);
+		}
+	}
+	return MAX_ERR_NONE;
+}
+
+t_max_err otable_setKey(t_otable *x, void *attr, long ac, t_atom *av)
+{
+	if(x->db){
+		critical_enter(x->lock);
+		x->db->keyaddress = atom_getsym(av)->s_name;
+		// wtf are we supposed to do here?  go through every bundle already stored and 
+		// rehash the whole thing using this new key??
+		critical_exit(x->lock);
+	}
+	return MAX_ERR_NONE;
+}
+

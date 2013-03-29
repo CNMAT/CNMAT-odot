@@ -120,8 +120,6 @@
 		52C839DA167A5B24000AA688 /* libomax.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5C6163763CF0016EC39 /* libomax.a */; };
 		52C839DB167A5B24000AA688 /* MaxAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5DF163763DB0016EC39 /* MaxAPI.framework */; };
 		52C839E0167A5B8A000AA688 /* o.table.c in Sources */ = {isa = PBXBuildFile; fileRef = 52C839CF167A5B1A000AA688 /* o.table.c */; };
-		52C839E4167A5BD6000AA688 /* otable_util.c in Sources */ = {isa = PBXBuildFile; fileRef = 52C839E2167A5BD6000AA688 /* otable_util.c */; };
-		52C839E5167A5BD6000AA688 /* otable_util.h in Headers */ = {isa = PBXBuildFile; fileRef = 52C839E3167A5BD6000AA688 /* otable_util.h */; };
 		52C839E8167A5BE2000AA688 /* avl.c in Sources */ = {isa = PBXBuildFile; fileRef = 52C839E6167A5BE2000AA688 /* avl.c */; };
 		52C839E9167A5BE2000AA688 /* avl.h in Headers */ = {isa = PBXBuildFile; fileRef = 52C839E7167A5BE2000AA688 /* avl.h */; };
 		52C839EC167A5BF1000AA688 /* maxdb.c in Sources */ = {isa = PBXBuildFile; fileRef = 52C839EA167A5BF1000AA688 /* maxdb.c */; };
@@ -476,8 +474,6 @@
 		52A8397C16F3F898002E273C /* o.schedule.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.schedule.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
 		52C839CF167A5B1A000AA688 /* o.table.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = o.table.c; path = o.table/o.table.c; sourceTree = "<group>"; };
 		52C839DF167A5B24000AA688 /* o.table.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.table.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
-		52C839E2167A5BD6000AA688 /* otable_util.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = otable_util.c; path = o.table/otable_util.c; sourceTree = "<group>"; };
-		52C839E3167A5BD6000AA688 /* otable_util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = otable_util.h; path = o.table/otable_util.h; sourceTree = "<group>"; };
 		52C839E6167A5BE2000AA688 /* avl.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = avl.c; path = "../CNMAT-Externs/lib/rumati_avl/avl.c"; sourceTree = "<group>"; };
 		52C839E7167A5BE2000AA688 /* avl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = avl.h; path = "../CNMAT-Externs/lib/rumati_avl/avl.h"; sourceTree = "<group>"; };
 		52C839EA167A5BF1000AA688 /* maxdb.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = maxdb.c; path = "../CNMAT-Externs/lib/maxdb.c"; sourceTree = "<group>"; };
@@ -895,8 +891,6 @@
 				52C839EB167A5BF1000AA688 /* maxdb.h */,
 				52C839E6167A5BE2000AA688 /* avl.c */,
 				52C839E7167A5BE2000AA688 /* avl.h */,
-				52C839E2167A5BD6000AA688 /* otable_util.c */,
-				52C839E3167A5BD6000AA688 /* otable_util.h */,
 			);
 			name = "Other Sources";
 			sourceTree = "<group>";
@@ -1091,7 +1085,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52C839E5167A5BD6000AA688 /* otable_util.h in Headers */,
 				52C839E9167A5BE2000AA688 /* avl.h in Headers */,
 				52C839ED167A5BF1000AA688 /* maxdb.h in Headers */,
 			);
@@ -2108,7 +2101,6 @@
 			files = (
 				52C839D6167A5B24000AA688 /* commonsyms.c in Sources */,
 				52C839E0167A5B8A000AA688 /* o.table.c in Sources */,
-				52C839E4167A5BD6000AA688 /* otable_util.c in Sources */,
 				52C839E8167A5BE2000AA688 /* avl.c in Sources */,
 				52C839EC167A5BF1000AA688 /* maxdb.c in Sources */,
 			);
