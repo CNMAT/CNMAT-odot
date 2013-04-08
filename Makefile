@@ -21,8 +21,8 @@ win: CC = i686-w64-mingw32-gcc
 win: CFLAGS += $(RELEASE-CFLAGS)
 win: CFLAGS += -DWIN_VERSION -DWIN_EXT_VERSION -U__STRICT_ANSI__ -U__ANSI_SOURCE -std=c99
 win: I = -I/usr/include -I$(MAX_INCLUDES) -I../libo -I../libomax
-#win: LDFLAGS += 
-win: LIBS = -lo -lomax
+win: LDFLAGS = -shared -static-libgcc
+win: LIBS = -Llibomax -lomax -L$(MAX_INCLUDES) -lMaxAPI -Llibo -lo
 
 BUILDDIR = $(CURDIR)/build/Release
 STAGINGDIR = odot-$(PLATFORM)
