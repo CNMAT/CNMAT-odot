@@ -9,14 +9,20 @@ VPATH = $(OBJECT_LIST)
 
 CFILES = $(foreach f, $(OBJECT_LIST), $(f)/$(f).c)
 
+C74SUPPORT = ../max6-sdk/c74support
+MAX_INCLUDES = $(C74SUPPORT)/max-includes
+
 PLATFORM = MacOSX
 win: PLATFORM = Windows
 
 EXT = .mxo
 win: EXT = .mxe
-
-C74SUPPORT = ../../../c74support
-MAX_INCLUDES = $(C74SUPPORT)/max-includes
+win: CC = i686-w64-mingw32-gcc
+win: CFLAGS += $(RELEASE-CFLAGS)
+win: CFLAGS += -DWIN_VERSION -DWIN_EXT_VERSION -U__STRICT_ANSI__ -U__ANSI_SOURCE -std=c99
+win: I = -I/usr/include -I$(MAX_INCLUDES) -I../libo -I../libomax
+#win: LDFLAGS += 
+win: LIBS = -lo -lomax
 
 BUILDDIR = $(CURDIR)/build/Release
 STAGINGDIR = odot-$(PLATFORM)
@@ -44,6 +50,25 @@ SERVER = cnmat.berkeley.edu
 SERVER_PATH = /home/www-data/berkeley.edu-cnmat.www/maxdl/files/odot
 
 ##################################################
+## Mac specific
+##################################################
+$(BUILDDIR)/%.mxo: $(DIRS) %.c $(CURRENT_VERSION_FILE)
+	xcodebuild -target $* -configuration Release -project odot.xcodeproj build
+
+all: $(CFILES) $(CURRENT_VERSION_FILE)
+	xcodebuild -target "Build all" -project odot.xcodeproj -configuration Release
+
+##################################################
+## Windows specific
+##################################################
+$(BUILDDIR)/commonsyms.o: 
+	$(CC) $(CFLAGS) $(INCLUDES) -c -o $(BUILDDIR)/commonsyms.o $(MAX_INCLUDES)/common/commonsyms.c
+
+$(BUILDDIR)/%.mxe: %.c $(BUILDDIR) $(BUILDDIR)/commonsyms.o odot_current_version.h
+	$(CC) $(CFLAGS) $(I) -c -o $(BUILDDIR)/$*.o $<
+	$(CC) $(LDFLAGS) -o $(BUILDDIR)/$*.mxe $(BUILDDIR)/$*.o $(BUILDDIR)/commonsyms.o $(LIBS) 
+
+##################################################
 ## platform agnostic targets
 ##################################################
 
@@ -55,7 +80,7 @@ $(STAGINGDIR)/objects/%$(EXT): $(OBJECTS) $(STAGINGDIR) $(STAGINGDIR)/objects
 $(STAGINGDIR)/%: $(STAGINGDIR)
 	rsync -avq --exclude=*/.* $* $(STAGINGDIR)
 
-.PHONY: install
+#.PHONY: install
 install: $(DIRS) $(OBJECTS) $(STAGED_PRODUCTS) $(INSTALLED_PRODUCTS)
 
 # executed to satisfy the $(INSTALLED_PRODUCTS) dependancy
@@ -78,22 +103,6 @@ clean:
 	rm $(CURRENT_VERSION_FILE)
 
 ##################################################
-## Mac specific
-##################################################
-$(BUILDDIR)/%.mxo: %.c $(CURRENT_VERSION_FILE)
-	xcodebuild -target $* -configuration Release -project odot.xcodeproj build
-
-##################################################
-## Windows specific
-##################################################
-$(BUILDDIR)/commonsyms.o: 
-	$(CC) $(CFLAGS) $(INCLUDES) -c -o $(BUILDDIR)/commonsyms.o $(MAX_INCLUDES)/common/commonsyms.c
-
-$(BUILDDIR)/%.mxe: %.c $(BUILDDIR) $(BUILDDIR)/commonsyms.o odot_current_version.h
-	$(CC) $(CFLAGS) $(INCLUDES) -c -o $(BUILDDIR)/$*.o $<
-	$(CC) $(LDFLAGS) -o $(BUILDDIR)/$*.mxe $(BUILDDIR)/$*.o $(BUILDDIR)/commonsyms.o $(LIBS) 
-
-##################################################
 ## create directories
 ##################################################
 $(BUILDDIR):
@@ -111,7 +120,6 @@ $(LOCAL_INSTALL_PATH):
 $(INSTALLDIR)/objects: $(INSTALLDIR) $(RELEASEDIR)
 	cp -r $(RELEASEDIR)/* $(INSTALLDIR)
 
-.PHONY: $(CURRENT_VERSION_FILE)
 $(CURRENT_VERSION_FILE):
 	echo "#define ODOT_VERSION \""`git describe --tags --long`"\"" > $(CURRENT_VERSION_FILE)
 	echo "#define ODOT_COMPILE_DATE \""`date`"\""  >> $(CURRENT_VERSION_FILE)
