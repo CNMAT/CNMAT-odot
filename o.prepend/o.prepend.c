@@ -52,7 +52,27 @@ version 1.0: Rewritten to only take one argument (the symbol to be prepended) wh
 
 #include "odot_version.h"
 #include "ext.h"
+#include "osc.h"
+#include "ext.h"
+#ifndef ulong
+#define ulong
+#endif
+#ifndef uint
+#define uint
+#endif
+#ifndef ushort
+#define ushort
+#endif
 #include "ext_obex.h"
+#ifdef ulong
+#undef ulong
+#endif
+#ifdef uint
+#undef uint
+#endif
+#ifdef ushort
+#define ushort
+#endif
 #include "ext_obex_util.h"
 #include "osc.h"
 #include "osc_bundle_s.h"
