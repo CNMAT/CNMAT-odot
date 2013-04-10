@@ -1,5 +1,5 @@
-BUILDTARGETS = mac all win
-CLEANTARGETS = clean
+BUILDTARGETS = mac all win 
+OTHERTARGETS = clean install
 
 UNAME = $(shell uname)
 
@@ -12,7 +12,7 @@ endif
 $(BUILDTARGETS):
 	@$(MAKE) -f $(MAKEFILE)
 
-$(CLEANTARGETS):
+$(OTHERTARGETS):
 	@$(MAKE) -f $(MAKEFILE) $@
 
 .PHONY: $(BUILDTARGETS) $(CLEANTARGETS)
