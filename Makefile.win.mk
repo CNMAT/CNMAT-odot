@@ -21,7 +21,7 @@ CC = i686-w64-mingw32-gcc
 #LD = i686-w64-mingw32-ld
 #LD = gcc
 LD = $(CC)
-CFLAGS += -mno-cygwin -DWIN_VERSION -DWIN_EXT_VERSION -U__STRICT_ANSI__ -U__ANSI_SOURCE -std=c99 -O0 -ggdb
+CFLAGS += -mno-cygwin -DWIN_VERSION -DWIN_EXT_VERSION -U__STRICT_ANSI__ -U__ANSI_SOURCE -std=c99 -O3
 INCLUDES = -I$(MAX_INCLUDES) -I../libo -I../libomax -Iinclude
 LDFLAGS = -mno-cygwin -shared #-static-libgcc
 #LIBS = -L"/cygdrive/c/Program Files (x86)/Microsoft Visual Studio 10.0/VC/lib" -lmsvcrt -L../libomax -lomax -L$(MAX_INCLUDES) -lMaxAPI -L../libo -lo 
