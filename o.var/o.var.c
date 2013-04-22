@@ -32,7 +32,7 @@
 */
 
 
-#ifdef UNION
+#ifdef ODOT_UNION
 
 #define OMAX_DOC_NAME "o.union"
 #define OMAX_DOC_SHORT_DESC "Output a bundle containing the union of all messages between two bundles."
@@ -41,7 +41,7 @@
 #define OMAX_DOC_OUTLETS_DESC (char *[]){"OSC Packet containing the union of the two packets."}
 #define OMAX_DOC_SEEALSO (char *[]){"o.difference", "o.intersection"}
 
-#elif defined INTERSECTION
+#elif defined ODOT_INTERSECTION
 
 #define OMAX_DOC_NAME "o.intersection"
 #define OMAX_DOC_SHORT_DESC "Output a bundle containing the intersection of messages between two bundles."
@@ -50,7 +50,7 @@
 #define OMAX_DOC_OUTLETS_DESC (char *[]){"OSC Packet containing the intersection of the two packets."}
 #define OMAX_DOC_SEEALSO (char *[]){"o.difference", "o.union"}
 
-#elif defined DIFFERENCE
+#elif defined ODOT_DIFFERENCE
 
 #define OMAX_DOC_NAME "o.difference"
 #define OMAX_DOC_SHORT_DESC "Output a bundle containing the difference between two bundles."
@@ -117,7 +117,7 @@ void ovar_doFullPacket(t_ovar *x, long len, long ptr, long inlet)
 			critical_exit(x->lock);
 		}
 	}else{
-#if (defined UNION || defined INTERSECTION || defined DIFFERENCE)
+#if (defined ODOT_UNION || defined ODOT_INTERSECTION || defined ODOT_DIFFERENCE)
 		critical_enter(x->lock);
 		long copylen = x->len;
 		char copy[copylen];
@@ -125,11 +125,11 @@ void ovar_doFullPacket(t_ovar *x, long len, long ptr, long inlet)
 		critical_exit(x->lock);
 		long bndllen = 0;
 		char *bndl = NULL;
-#ifdef UNION
+#ifdef ODOT_UNION
 		osc_bundle_s_union(len, (char *)ptr, copylen, copy, &bndllen, &bndl);
-#elif defined INTERSECTION
+#elif defined ODOT_INTERSECTION
 		osc_bundle_s_intersection(len, (char *)ptr, copylen, copy, &bndllen, &bndl);
-#elif defined DIFFERENCE
+#elif defined ODOT_DIFFERENCE
 		osc_bundle_s_difference(len, (char *)ptr, copylen, copy, &bndllen, &bndl);
 #endif
 		omax_util_outletOSC(x->outlet, bndllen, bndl);
@@ -221,7 +221,7 @@ void ovar_bang(t_ovar *x)
 	if(inlet == 1){
 		return;
 	}
-#if (defined UNION || defined INTERSECTION || defined DIFFERENCE)
+#if (defined ODOT_UNION || defined ODOT_INTERSECTION || defined ODOT_DIFFERENCE)
 	ovar_doFullPacket(x, OSC_HEADER_SIZE, (long)x->emptybndl, inlet);
 #else
 	if(x->len){
@@ -271,7 +271,7 @@ void *ovar_new(t_symbol *msg, short argc, t_atom *argv)
 		memset(x->emptybndl, '\0', OSC_HEADER_SIZE);
 		osc_bundle_s_setBundleID(x->emptybndl);
 
-#if !defined UNION && !defined INTERSECTION && !defined DIFFERENCE
+#if !defined ODOT_UNION && !defined ODOT_INTERSECTION && !defined ODOT_DIFFERENCE
 		int nargs = attr_args_offset(argc, argv);
 		if(nargs){
 			if(atom_gettype(argv) == A_SYM){
@@ -309,11 +309,11 @@ void *ovar_new(t_symbol *msg, short argc, t_atom *argv)
 }
 
 int main(void){
-#ifdef UNION
+#ifdef ODOT_UNION
 	t_class *c = class_new("o.union", (method)ovar_new, (method)ovar_free, sizeof(t_ovar), 0L, A_GIMME, 0);
-#elif defined INTERSECTION
+#elif defined ODOT_INTERSECTION
 	t_class *c = class_new("o.intersection", (method)ovar_new, (method)ovar_free, sizeof(t_ovar), 0L, A_GIMME, 0);
-#elif defined DIFFERENCE
+#elif defined ODOT_DIFFERENCE
 	t_class *c = class_new("o.difference", (method)ovar_new, (method)ovar_free, sizeof(t_ovar), 0L, A_GIMME, 0);
 #else
 	t_class *c = class_new("o.var", (method)ovar_new, (method)ovar_free, sizeof(t_ovar), 0L, A_GIMME, 0);

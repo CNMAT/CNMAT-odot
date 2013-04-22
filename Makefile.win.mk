@@ -87,7 +87,7 @@ $(STAGINGDIR)/objects/%$(EXT): $(OBJECTS) $(STAGINGDIR) $(STAGINGDIR)/objects
 $(STAGINGDIR)/%: $(STAGINGDIR)
 	rsync -avq --exclude=*/.* $* $(STAGINGDIR)
 
-#.PHONY: install
+.PHONY: install
 install: $(DIRS) $(OBJECTS) $(STAGED_PRODUCTS) $(INSTALLED_PRODUCTS)
 
 # executed to satisfy the $(INSTALLED_PRODUCTS) dependancy
