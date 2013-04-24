@@ -33,5 +33,5 @@
 */
 
 #include "odot_version.h"
-#define UNION
+#define ODOT_UNION
 #include "../o.var/o.var.c"

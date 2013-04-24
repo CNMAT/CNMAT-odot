@@ -33,5 +33,5 @@
 */
 
 #include "odot_version.h"
-#define DIFFERENCE
+#define ODOT_DIFFERENCE
 #include "../o.var/o.var.c"

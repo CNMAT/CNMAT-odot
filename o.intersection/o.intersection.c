@@ -33,5 +33,5 @@
 */
 
 #include "odot_version.h"
-#define INTERSECTION
+#define ODOT_INTERSECTION
 #include "../o.var/o.var.c"
