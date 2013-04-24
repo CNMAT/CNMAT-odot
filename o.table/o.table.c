@@ -385,7 +385,6 @@ void *otable_new(t_symbol *msg, short argc, t_atom *argv)
 		x->db = NULL;
 
 		attr_args_process(x, argc, argv);
-
 		if(!x->name){
 			x->db = otable_makedb();
 			if(!x->db){
@@ -453,7 +452,9 @@ t_max_err otable_getKey(t_otable *x, void *attr, long *ac, t_atom **av)
 	t_symbol *key = NULL;
 	if(x->db){
 		critical_enter(x->lock);
-		key = gensym(x->db->keyaddress);
+		if(x->db->keyaddress){
+			key = gensym(x->db->keyaddress);
+		}
 		critical_exit(x->lock);
 	}
 	if(ac && av){
