@@ -46,6 +46,7 @@ VERSION 0.0: First try
 #include "osc_bundle_s.h"
 #include "omax_util.h"
 #include "omax_doc.h"
+#include "omax_dict.h"
 
 typedef struct _oprint{
 	t_object ob;
@@ -141,7 +142,7 @@ void oprint_float(t_oprint *x, double f)
 	outlet_float(x->outlet, f);
 }
 
-OMAX_UTIL_DICTIONARY(t_oprint, x, oprint_fullPacket);
+OMAX_DICT_DICTIONARY(t_oprint, x, oprint_fullPacket);
 
 void oprint_doc(t_oprint *x)
 {
@@ -188,8 +189,8 @@ int main(void){
 	//class_addmethod(c, (method)oprint_fullPacket, "FullPacket", A_LONG, A_LONG, 0);
 	class_addmethod(c, (method)oprint_fullPacket, "FullPacket", A_GIMME, 0);
 	// remove this if statement when we stop supporting Max 5
-	if(omax_util_resolveDictStubs()){
-		class_addmethod(c, (method)omax_util_dictionary, "dictionary", A_GIMME, 0);
+	if(omax_dict_resolveDictStubs()){
+		class_addmethod(c, (method)omax_dict_dictionary, "dictionary", A_GIMME, 0);
 	}
 
 	class_addmethod(c, (method)oprint_assist, "assist", A_CANT, 0);

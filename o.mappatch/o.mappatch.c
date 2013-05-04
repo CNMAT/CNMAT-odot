@@ -51,6 +51,7 @@ VERSION 1.0: New name
 #include "osc_bundle_iterator_s.h"
 #include "osc_message_s.h"
 #include "omax_doc.h"
+#include "omax_dict.h"
 
 /*
 When a new FullPacket message comes in, we make an unserialized bundle and stick it in our object
@@ -263,7 +264,7 @@ void omap_addQitem(t_omap *x, t_omap_qitem *qi)
 	critical_exit(x->lock);
 }
 
-OMAX_UTIL_DICTIONARY(t_omap, x, omap_fullPacket);
+OMAX_DICT_DICTIONARY(t_omap, x, omap_fullPacket);
 
 void omap_doc(t_omap *x)
 {
@@ -309,8 +310,8 @@ int main(void){
 	class_addmethod(c, (method)odot_version, "version", 0);
 
 	// remove this if statement when we stop supporting Max 5
-	if(omax_util_resolveDictStubs()){
-		class_addmethod(c, (method)omax_util_dictionary, "dictionary", A_GIMME, 0);
+	if(omax_dict_resolveDictStubs()){
+		class_addmethod(c, (method)omax_dict_dictionary, "dictionary", A_GIMME, 0);
 	}
 
 

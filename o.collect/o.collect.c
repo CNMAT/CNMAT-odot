@@ -49,6 +49,7 @@ VERSION 0.0: First try
 #include "osc_bundle_iterator_s.h"
 #include "omax_util.h"
 #include "omax_doc.h"
+#include "omax_dict.h"
 
 typedef struct _ocoll{
 	t_object ob;
@@ -151,7 +152,7 @@ void ocoll_bang(t_ocoll *x){
 		omax_util_outletOSC(x->outlet, len, outbuf);
 }
 
-OMAX_UTIL_DICTIONARY(t_ocoll, x, ocoll_fullPacket);
+OMAX_DICT_DICTIONARY(t_ocoll, x, ocoll_fullPacket);
 
 void ocoll_clear(t_ocoll *x)
 {
@@ -208,8 +209,8 @@ int main(void){
 	class_addmethod(c, (method)ocoll_anything, "anything", A_GIMME, 0);
 	class_addmethod(c, (method)ocoll_bang, "bang", 0);
 	// remove this if statement when we stop supporting Max 5
-	if(omax_util_resolveDictStubs()){
-		class_addmethod(c, (method)omax_util_dictionary, "dictionary", A_GIMME, 0);
+	if(omax_dict_resolveDictStubs()){
+		class_addmethod(c, (method)omax_dict_dictionary, "dictionary", A_GIMME, 0);
 	}
 
 	class_addmethod(c, (method)odot_version, "version", 0);

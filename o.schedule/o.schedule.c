@@ -62,6 +62,7 @@
 #include "odot_version.h"
 #include "omax_util.h"
 #include "omax_doc.h"
+#include "omax_dict.h"
 
 
 // default options
@@ -155,7 +156,6 @@ void osched_fullPacket(t_osched *x, t_symbol *s, int argc, t_atom *argv)
         
 	// immediate goes out the third outlet 
 	if(osc_timetag_isImmediate(timetag)){
-		printf("%d: outlet\n");
 		outlet_anything(x->outlets[2], ps_FullPacket, 2, argv);
 		return;
 	}
@@ -405,7 +405,7 @@ void osched_assist(t_osched *x, void *b, long io, long num, char *buf)
 	omax_doc_assist(io, num, buf);
 }
 
-OMAX_UTIL_DICTIONARY(t_osched, x, osched_fullPacket);
+OMAX_DICT_DICTIONARY(t_osched, x, osched_fullPacket);
 
 void osched_doc(t_osched *x)
 {
@@ -475,6 +475,9 @@ int main(void)
 	class_addmethod(c, (method)osched_reset, "reset", 0);
 	class_addmethod(c, (method)osched_assist, "assist", A_CANT, 0);
 	class_addmethod(c, (method)odot_version, "version", 0);
+	if(omax_dict_resolveDictStubs()){
+		class_addmethod(c, (method)omax_dict_dictionary, "dictionary", A_GIMME, 0);
+	}
 
 	CLASS_ATTR_FLOAT(c, "precision", 0, t_osched, precision);
 	CLASS_ATTR_ACCESSORS(c, "precision", osched_getPrecision, osched_setPrecision);

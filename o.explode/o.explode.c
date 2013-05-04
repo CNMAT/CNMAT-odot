@@ -47,6 +47,7 @@
 #include "osc_mem.h"
 #include "omax_util.h"
 #include "omax_doc.h"
+#include "omax_dict.h"
 
 typedef struct _oexplode{
 	t_object ob;
@@ -71,7 +72,7 @@ void oexplode_fullPacket(t_oexplode *x, t_symbol *msg, int argc, t_atom *argv)
 	osc_bundle_s_deepFree(dest2);
 }
 
-OMAX_UTIL_DICTIONARY(t_oexplode, x, oexplode_fullPacket);
+OMAX_DICT_DICTIONARY(t_oexplode, x, oexplode_fullPacket);
 
 void oexplode_doc(t_oexplode *x)
 {
@@ -104,8 +105,8 @@ int main(void)
 	class_addmethod(c, (method)oexplode_assist, "assist", A_CANT, 0);
 	class_addmethod(c, (method)oexplode_doc, "doc", 0);
 	// remove this if statement when we stop supporting Max 5
-	if(omax_util_resolveDictStubs()){
-		class_addmethod(c, (method)omax_util_dictionary, "dictionary", A_GIMME, 0);
+	if(omax_dict_resolveDictStubs()){
+		class_addmethod(c, (method)omax_dict_dictionary, "dictionary", A_GIMME, 0);
 	}
 	class_addmethod(c, (method)odot_version, "version", 0);
 

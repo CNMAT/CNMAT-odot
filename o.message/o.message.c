@@ -69,6 +69,7 @@
 #include "osc_atom_u.h"
 #include "osc_atom_s.h"
 #include "omax_doc.h"
+#include "omax_dict.h"
 //#include <mach/mach_time.h>
 
 #define OMESSAGE_MAX_NUM_MESSAGES 128
@@ -899,7 +900,7 @@ void omessage_free(t_omessage *x)
 	}
 }
 
-OMAX_UTIL_DICTIONARY(t_omessage, x, omessage_fullPacket);
+OMAX_DICT_DICTIONARY(t_omessage, x, omessage_fullPacket);
 
 void omessage_doc(t_omessage *x)
 {
@@ -1002,8 +1003,8 @@ int main(void){
 	//class_addmethod(c, (method)omessage_fullPacket, "FullPacket", A_LONG, A_LONG, 0);
 	class_addmethod(c, (method)omessage_fullPacket, "FullPacket", A_GIMME, 0);
 	// remove this if statement when we stop supporting Max 5
-	if(omax_util_resolveDictStubs()){
-		class_addmethod(c, (method)omax_util_dictionary, "dictionary", A_GIMME, 0);
+	if(omax_dict_resolveDictStubs()){
+		class_addmethod(c, (method)omax_dict_dictionary, "dictionary", A_GIMME, 0);
 	}
 
 	class_addmethod(c, (method)omessage_clear, "clear", 0);	

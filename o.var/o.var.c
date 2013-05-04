@@ -79,6 +79,7 @@
 #include "osc_bundle_s.h"
 #include "omax_util.h"
 #include "omax_doc.h"
+#include "omax_dict.h"
 
 typedef struct _ovar{
 	t_object ob;
@@ -237,7 +238,7 @@ void ovar_bang(t_ovar *x)
 #endif
 }
 
-OMAX_UTIL_DICTIONARY(t_ovar, x, ovar_fullPacket);
+OMAX_DICT_DICTIONARY(t_ovar, x, ovar_fullPacket);
 
 void ovar_doc(t_ovar *x)
 {
@@ -325,8 +326,8 @@ int main(void){
 	class_addmethod(c, (method)ovar_bang, "bang", 0);
 	class_addmethod(c, (method)ovar_anything, "anything", A_GIMME, 0);
 	// remove this if statement when we stop supporting Max 5
-	if(omax_util_resolveDictStubs()){
-		class_addmethod(c, (method)omax_util_dictionary, "dictionary", A_GIMME, 0);
+	if(omax_dict_resolveDictStubs()){
+		class_addmethod(c, (method)omax_dict_dictionary, "dictionary", A_GIMME, 0);
 	}
 
 	class_addmethod(c, (method)ovar_clear, "clear", 0);

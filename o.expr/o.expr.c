@@ -109,6 +109,7 @@
 #include "osc_error.h"
 #include "omax_util.h"
 #include "omax_doc.h"
+#include "omax_dict.h"
 #include "osc_bundle_iterator_s.h"
 #include "osc_message_iterator_s.h"
 
@@ -359,7 +360,7 @@ void oexpr_bang(t_oexpr *x)
 	oexpr_fullPacket(x, NULL, 2, a);
 }
 
-OMAX_UTIL_DICTIONARY(t_oexpr, x, oexpr_fullPacket);
+OMAX_DICT_DICTIONARY(t_oexpr, x, oexpr_fullPacket);
 
 void oexpr_doc_cat(t_oexpr *x, t_symbol *msg, int argc, t_atom *argv)
 {
@@ -597,8 +598,8 @@ int main(void)
 	class_addmethod(c, (method)oexpr_doc_cat, "doc-category", A_GIMME, 0);
 
 	// remove this if statement when we stop supporting Max 5
-	if(omax_util_resolveDictStubs()){
-		class_addmethod(c, (method)omax_util_dictionary, "dictionary", A_GIMME, 0);
+	if(omax_dict_resolveDictStubs()){
+		class_addmethod(c, (method)omax_dict_dictionary, "dictionary", A_GIMME, 0);
 	}
 
 	class_addmethod(c, (method)odot_version, "version", 0);

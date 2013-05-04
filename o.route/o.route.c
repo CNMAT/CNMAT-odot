@@ -73,6 +73,7 @@ VERSION 0.1: Addresses to match can now have patterns
 #include "osc_message_u.h"
 #include "omax_util.h"
 #include "omax_doc.h"
+#include "omax_dict.h"
 #include "osc_rset.h"
 #include "osc_query.h"
 
@@ -335,7 +336,7 @@ void oroute_doSet(t_oroute *x, long index, t_symbol *sym){
 	critical_exit(x->lock);
 }
 
-OMAX_UTIL_DICTIONARY(t_oroute, x, oroute_fullPacket);
+OMAX_DICT_DICTIONARY(t_oroute, x, oroute_fullPacket);
 
 void oroute_doc(t_oroute *x)
 {
@@ -526,8 +527,8 @@ int main(void)
 	class_addmethod(c, (method)oroute_fullPacket, "FullPacket", A_GIMME, 0);
 
 	// remove this if statement when we stop supporting Max 5
-	if(omax_util_resolveDictStubs()){
-		class_addmethod(c, (method)omax_util_dictionary, "dictionary", A_GIMME, 0);
+	if(omax_dict_resolveDictStubs()){
+		class_addmethod(c, (method)omax_dict_dictionary, "dictionary", A_GIMME, 0);
 	}
 
 	class_addmethod(c, (method)oroute_assist, "assist", A_CANT, 0);

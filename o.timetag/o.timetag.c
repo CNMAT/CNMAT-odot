@@ -48,6 +48,7 @@ VERSION 1.0: Completely revised to work with new odot objects and libs
 #include "osc_mem.h"
 #include "omax_util.h"
 #include "omax_doc.h"
+#include "omax_dict.h"
 
 typedef struct _otimetag{
 	t_object ob;
@@ -239,7 +240,7 @@ void otimetag_assist(t_otimetag *x, void *b, long io, long num, char *buf)
 	omax_doc_assist(io, num, buf);
 }
 
-OMAX_UTIL_DICTIONARY(t_otimetag, x, otimetag_fullPacket);
+OMAX_DICT_DICTIONARY(t_otimetag, x, otimetag_fullPacket);
 
 void otimetag_doc(t_otimetag *x)
 {
@@ -296,6 +297,10 @@ int main(void)
 	class_addmethod(c, (method)otimetag_set, "set", A_GIMME, 0);
 	class_addmethod(c, (method)odot_version, "version", 0);
 
+	if(omax_dict_resolveDictStubs()){
+		//class_addmethod(c, (method)omax_util_dictionary, "dictionary", A_SYM, 0);
+		class_addmethod(c, (method)omax_dict_dictionary, "dictionary", A_GIMME, 0);
+	}
 
 	class_register(CLASS_BOX, c);
 	otimetag_class = c;

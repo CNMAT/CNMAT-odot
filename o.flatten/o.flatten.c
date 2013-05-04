@@ -47,6 +47,7 @@
 #include "osc_mem.h"
 #include "omax_util.h"
 #include "omax_doc.h"
+#include "omax_dict.h"
 
 typedef struct _oflatten{
 	t_object ob;
@@ -74,7 +75,7 @@ void oflatten_fullPacket(t_oflatten *x, t_symbol *msg, int argc, t_atom *argv)
 	osc_bundle_s_deepFree(dest);
 }
 
-OMAX_UTIL_DICTIONARY(t_oflatten, x, oflatten_fullPacket);
+OMAX_DICT_DICTIONARY(t_oflatten, x, oflatten_fullPacket);
 
 void oflatten_doc(t_oflatten *x)
 {
@@ -108,8 +109,8 @@ int main(void)
 	class_addmethod(c, (method)oflatten_assist, "assist", A_CANT, 0);
 	class_addmethod(c, (method)oflatten_doc, "doc", 0);
 	// remove this if statement when we stop supporting Max 5
-	if(omax_util_resolveDictStubs()){
-		class_addmethod(c, (method)omax_util_dictionary, "dictionary", A_GIMME, 0);
+	if(omax_dict_resolveDictStubs()){
+		class_addmethod(c, (method)omax_dict_dictionary, "dictionary", A_GIMME, 0);
 	}
 
 	class_addmethod(c, (method)odot_version, "version", 0);

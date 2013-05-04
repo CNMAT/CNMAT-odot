@@ -79,6 +79,7 @@ version 1.0: Rewritten to only take one argument (the symbol to be prepended) wh
 #include "osc_bundle_iterator_s.h"
 #include "omax_util.h"
 #include "omax_doc.h"
+#include "omax_dict.h"
 
 typedef struct _oppnd{
 	t_object ob;
@@ -234,7 +235,7 @@ void oppnd_anything(t_oppnd *x, t_symbol *msg, short argc, t_atom *argv)
 	omax_util_outletOSC(x->outlet, len, oscbuf);
 }
 
-OMAX_UTIL_DICTIONARY(t_oppnd, x, oppnd_fullPacket);
+OMAX_DICT_DICTIONARY(t_oppnd, x, oppnd_fullPacket);
 
 void oppnd_doc(t_oppnd *x)
 {
@@ -284,8 +285,8 @@ int main(void)
 	//class_addmethod(c, (method)oppnd_fullPacket, "FullPacket", A_LONG, A_LONG, 0);
 	class_addmethod(c, (method)oppnd_fullPacket, "FullPacket", A_GIMME, 0);
 	// remove this if statement when we stop supporting Max 5
-	if(omax_util_resolveDictStubs()){
-		class_addmethod(c, (method)omax_util_dictionary, "dictionary", A_GIMME, 0);
+	if(omax_dict_resolveDictStubs()){
+		class_addmethod(c, (method)omax_dict_dictionary, "dictionary", A_GIMME, 0);
 	}
 
 	class_addmethod(c, (method)oppnd_assist, "assist", A_CANT, 0);

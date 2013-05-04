@@ -49,6 +49,7 @@
 #include "osc_mem.h"
 #include "omax_util.h"
 #include "omax_doc.h"
+#include "omax_dict.h"
 
 typedef struct _odict{
 	t_object ob;
@@ -65,7 +66,7 @@ void odict_fullPacket(t_odict *x, t_symbol *msg, int argc, t_atom *argv)
 	OSC_GET_LEN_AND_PTR
 	t_osc_bndl_s *bndl = osc_bundle_s_alloc(len, (char *)ptr);
 	dictionary_clear(x->dict);
-	omax_util_bundleToDictionary(bndl, x->dict);
+	omax_dict_bundleToDictionary(bndl, x->dict);
 	t_atom a;
 	atom_setsym(&a, x->name);
 	outlet_anything(x->outlet, _sym_dictionary, 1, &a);
@@ -94,8 +95,8 @@ void *odict_new(t_symbol *msg, short argc, t_atom *argv)
 		x->outlet = outlet_new((t_object *)x, NULL);
 		x->dict = dictionary_new();
 		x->name = NULL;
-		if(omax_util_resolveDictStubs()){
-			omax_util_dictobj_register(x->dict, &(x->name));
+		if(omax_dict_resolveDictStubs()){
+			omax_dict_dictobj_register(x->dict, &(x->name));
 		}
 	}
 		   	

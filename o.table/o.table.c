@@ -44,6 +44,8 @@ VERSION 0.0: First try
 #include "osc_atom_s.h"
 #include "osc_linkedlist.h"
 #include "omax_util.h"
+#include "omax_doc.h"
+#include "omax_dict.h"
 
 typedef struct _otable_db{
 	t_osc_hashtab *ht;
@@ -397,6 +399,8 @@ void *otable_new(t_symbol *msg, short argc, t_atom *argv)
 	return x;
 }
 
+OMAX_DICT_DICTIONARY(t_otable, x, otable_fullPacket);
+
 int main(void)
 {
 	t_class *c = class_new("o.table", (method)otable_new, (method)otable_free, sizeof(t_otable), 0L, A_GIMME, 0);
@@ -420,6 +424,10 @@ int main(void)
 	class_addmethod(c, (method)otable_peekfirst, "peekfirst", 0);
 	class_addmethod(c, (method)otable_peeklast, "peeklast", 0);
 	class_addmethod(c, (method)otable_peeknth, "peeknth", A_LONG, 0);
+
+	if(omax_dict_resolveDictStubs()){
+		class_addmethod(c, (method)omax_dict_dictionary, "dictionary", A_GIMME, 0);
+	}
 
 	CLASS_ATTR_SYM(c, "name", 0, t_otable, name);
 	CLASS_ATTR_ACCESSORS(c, "name", NULL, otable_setName);

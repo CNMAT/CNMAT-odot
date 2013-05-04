@@ -47,6 +47,7 @@
 #include "osc_mem.h"
 #include "omax_util.h"
 #include "omax_doc.h"
+#include "omax_dict.h"
 
 typedef struct _ochange{
 	t_object ob;
@@ -125,7 +126,7 @@ void ochange_bang(t_ochange *x)
 	omax_util_outletOSC(x->outlet, len, buf);
 }
 
-OMAX_UTIL_DICTIONARY(t_ochange, x, ochange_fullPacket);
+OMAX_DICT_DICTIONARY(t_ochange, x, ochange_fullPacket);
 
 void ochange_doc(t_ochange *x)
 {
@@ -169,8 +170,8 @@ int main(void)
 	class_addmethod(c, (method)ochange_anything, "anything", A_GIMME, 0);
 	class_addmethod(c, (method)ochange_clear, "clear", 0);
 	// remove this if statement when we stop supporting Max 5
-	if(omax_util_resolveDictStubs()){
-		class_addmethod(c, (method)omax_util_dictionary, "dictionary", A_GIMME, 0);
+	if(omax_dict_resolveDictStubs()){
+		class_addmethod(c, (method)omax_dict_dictionary, "dictionary", A_GIMME, 0);
 	}
 	class_addmethod(c, (method)odot_version, "version", 0);
 	
