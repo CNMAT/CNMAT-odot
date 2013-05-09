@@ -116,8 +116,6 @@
 //#define __OSC_PROFILE__
 #include "osc_profile.h"
 
-double rdtsc_cps;
-
 typedef struct _oexpr{
 	t_object ob;
 #if defined (OIF) || defined (OCOND)
@@ -518,11 +516,11 @@ void *oexpr_new(t_symbol *msg, short argc, t_atom *argv){
 				}
 			}
 			if(1){//if(!haspound){
-				TIMER_START(foo, rdtsc_cps);
+				OSC_PROFILE_TIMER_START(foo);
 				int ret = osc_expr_parser_parseExpr(buf, &f);
-				TIMER_STOP(foo, rdtsc_cps);
-				TIMER_PRINTF(foo);
-				TIMER_SNPRINTF(foo, buff);
+				OSC_PROFILE_TIMER_STOP(foo);
+				OSC_PROFILE_TIMER_PRINTF(foo);
+				OSC_PROFILE_TIMER_SNPRINTF(foo, buff);
 #ifdef __OSC_PROFILE__
 				post("%s\n", buff);
 #endif
@@ -608,8 +606,6 @@ int main(void)
 	oexpr_class = c;
 
 	common_symbols_init();
-
-	rdtsc_cps = RDTSC_CYCLES_PER_SECOND;
 
 	osc_error_setHandler(omax_util_liboErrorHandler);
 
