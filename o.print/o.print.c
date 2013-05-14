@@ -58,7 +58,6 @@ typedef struct _oprint{
 
 void *oprint_class;
 
-void oprint_cbk(t_osc_msg msg, void *v);
 void oprint_int(t_oprint *x, long l);
 void oprint_float(t_oprint *x, double f);
 void oprint_anything(t_oprint *x, t_symbol *msg, int argc, t_atom *argv);
