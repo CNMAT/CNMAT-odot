@@ -79,8 +79,8 @@ t_symbol *ps_FullPacket;
 
 void otimetag_fullPacket(t_otimetag *x, t_symbol *msg, int argc, t_atom *argv)
 {
-	OSC_GET_LEN_AND_PTR;
-	otimetag_doFullPacket(x, len, (char *)ptr);
+	OMAX_UTIL_GET_LEN_AND_PTR;
+	otimetag_doFullPacket(x, len, ptr);
 }
 
 void otimetag_doFullPacket(t_otimetag *x,

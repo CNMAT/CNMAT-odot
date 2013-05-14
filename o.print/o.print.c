@@ -71,11 +71,11 @@ t_symbol *ps_FullPacket;
 //void oprint_fullPacket(t_oprint *x, long len, long ptr)
 void oprint_fullPacket(t_oprint *x, t_symbol *msg, int argc, t_atom *argv)
 {
-	OSC_GET_LEN_AND_PTR
+	OMAX_UTIL_GET_LEN_AND_PTR
 	osc_bundle_s_wrap_naked_message(len, ptr);
 	long buflen = 0;
 	char *buf = NULL;
-	osc_bundle_s_format(len, (char *)ptr, &buflen, &buf);
+	osc_bundle_s_format(len, ptr, &buflen, &buf);
 	post("[");
 	if(buflen == 0){
 		post("<empty bundle>");
@@ -98,7 +98,7 @@ void oprint_fullPacket(t_oprint *x, t_symbol *msg, int argc, t_atom *argv)
 	if(buf){
 		osc_mem_free(buf);
 	}
-	omax_util_outletOSC(x->outlet, len, (char *)ptr);
+	omax_util_outletOSC(x->outlet, len, ptr);
 }
 
 void oprint_anything(t_oprint *x, t_symbol *msg, int argc, t_atom *argv)

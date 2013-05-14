@@ -98,7 +98,7 @@ t_symbol *ps_FullPacket;
 //void omap_fullPacket(t_omap *x, long len, long ptr)
 void omap_fullPacket(t_omap *x, t_symbol *msg, int argc, t_atom *argv)
 {
-	OSC_GET_LEN_AND_PTR
+	OMAX_UTIL_GET_LEN_AND_PTR
 	osc_bundle_s_wrap_naked_message(len, ptr);
 	if(proxy_getinlet((t_object *)x) == 1){
 		if(!(x->msg) && !(x->bndl)){
@@ -118,7 +118,7 @@ void omap_fullPacket(t_omap *x, t_symbol *msg, int argc, t_atom *argv)
 		qi->len = len;
 		qi->bndl = (char *)osc_mem_alloc(len);
 		qi->next = NULL;
-		memcpy(qi->bndl, (char *)ptr, len);
+		memcpy(qi->bndl, ptr, len);
 		omap_addQitem(x, qi);
 		return;
 	}else{
@@ -128,7 +128,7 @@ void omap_fullPacket(t_omap *x, t_symbol *msg, int argc, t_atom *argv)
 	}
 	x->bndl = osc_bundle_u_alloc();
 
-	t_osc_bndl_it_s *it = osc_bndl_it_s_get(len, (char *)ptr);
+	t_osc_bndl_it_s *it = osc_bndl_it_s_get(len, ptr);
 	while(osc_bndl_it_s_hasNext(it)){
 		t_osc_msg_s *msg = osc_bndl_it_s_next(it);
 		x->msg = msg;

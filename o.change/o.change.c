@@ -64,25 +64,25 @@ int ochange_copybundle(t_ochange *x, long len, char *ptr);
 //void ochange_fullPacket(t_ochange *x, long len, long ptr)
 void ochange_fullPacket(t_ochange *x, t_symbol *msg, int argc, t_atom *argv)
 {
-	OSC_GET_LEN_AND_PTR
+	OMAX_UTIL_GET_LEN_AND_PTR
 	critical_enter(x->lock);
 	long buflen = x->buflen;
 	if(!x->buf || buflen == 0){
 		critical_exit(x->lock);
-		ochange_copybundle(x, len, (char *)ptr);
-		omax_util_outletOSC(x->outlet, len, (char *)ptr);
+		ochange_copybundle(x, len, ptr);
+		omax_util_outletOSC(x->outlet, len, ptr);
 		return;
 	}
 	char buf[buflen];
 	memcpy(buf, x->buf, x->buflen);
 	critical_exit(x->lock);
 	if(buflen == len){
-		if(!memcmp(buf, (char *)ptr, buflen)){
+		if(!memcmp(buf, ptr, buflen)){
 			return;
 		}
 	}
-	ochange_copybundle(x, len, (char *)ptr);
-	omax_util_outletOSC(x->outlet, len, (char *)ptr);
+	ochange_copybundle(x, len, ptr);
+	omax_util_outletOSC(x->outlet, len, ptr);
 }
 
 int ochange_copybundle(t_ochange *x, long len, char *ptr){
@@ -167,7 +167,7 @@ int main(void)
 	class_addmethod(c, (method)ochange_assist, "assist", A_CANT, 0);
 	class_addmethod(c, (method)ochange_doc, "doc", 0);
 	class_addmethod(c, (method)ochange_bang, "bang", 0);
-	class_addmethod(c, (method)ochange_anything, "anything", A_GIMME, 0);
+	//class_addmethod(c, (method)ochange_anything, "anything", A_GIMME, 0);
 	class_addmethod(c, (method)ochange_clear, "clear", 0);
 	// remove this if statement when we stop supporting Max 5
 	if(omax_dict_resolveDictStubs()){

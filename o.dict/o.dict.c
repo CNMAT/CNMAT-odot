@@ -63,8 +63,8 @@ void *odict_class;
 //void odict_fullPacket(t_odict *x, long len, long ptr)
 void odict_fullPacket(t_odict *x, t_symbol *msg, int argc, t_atom *argv)
 {
-	OSC_GET_LEN_AND_PTR
-	t_osc_bndl_s *bndl = osc_bundle_s_alloc(len, (char *)ptr);
+	OMAX_UTIL_GET_LEN_AND_PTR
+	t_osc_bndl_s *bndl = osc_bundle_s_alloc(len, ptr);	
 	dictionary_clear(x->dict);
 	omax_dict_bundleToDictionary(bndl, x->dict);
 	t_atom a;

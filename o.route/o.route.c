@@ -115,7 +115,7 @@ t_symbol *ps_oscschemalist, *ps_FullPacket;
 //void oroute_fullPacket(t_oroute *x, long len, long ptr)
 void oroute_fullPacket(t_oroute *x, t_symbol *msg, int argc, t_atom *argv)
 {
-	OSC_GET_LEN_AND_PTR
+	OMAX_UTIL_GET_LEN_AND_PTR
 	osc_bundle_s_wrap_naked_message(len, ptr);
 	if(x->num_selectors > 0){
 		t_osc_rset *rset = NULL;
@@ -142,7 +142,7 @@ void oroute_fullPacket(t_oroute *x, t_symbol *msg, int argc, t_atom *argv)
 		osc_query_select(num_unique_selectors,
 				 unique_selectors_ptrs,
 				 len,
-				 (char *)ptr,
+				 ptr,
 				 strip_matched_portion_of_address,
 				 &rset);
 		if(rset){
@@ -151,9 +151,9 @@ void oroute_fullPacket(t_oroute *x, t_symbol *msg, int argc, t_atom *argv)
 		}
 	}else{
 #ifdef ATOMIZE
-		oroute_atomizeBundle(x->delegation_outlet, len, (char *)ptr);
+		oroute_atomizeBundle(x->delegation_outlet, len, ptr);
 #else
-		omax_util_outletOSC(x->delegation_outlet, len, (char *)ptr);
+		omax_util_outletOSC(x->delegation_outlet, len, ptr);
 #endif
 	}
 }

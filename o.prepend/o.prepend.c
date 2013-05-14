@@ -93,14 +93,14 @@ typedef struct _oppnd{
 
 void *oppnd_class;
 
-void oppnd_doFullPacket(t_oppnd *x, long len, long ptr, t_symbol *sym_to_prepend, int sym_to_prepend_len);
+void oppnd_doFullPacket(t_oppnd *x, long len, char *ptr, t_symbol *sym_to_prepend, int sym_to_prepend_len);
 
 t_symbol *ps_FullPacket;
 
 //void oppnd_fullPacket(t_oppnd *x, long len, long ptr)
 void oppnd_fullPacket(t_oppnd *x, t_symbol *msg, int argc, t_atom *argv)
 {
-	OSC_GET_LEN_AND_PTR
+	OMAX_UTIL_GET_LEN_AND_PTR
 	osc_bundle_s_wrap_naked_message(len, ptr);
 	if(len == OSC_HEADER_SIZE){
 		return;
@@ -108,19 +108,19 @@ void oppnd_fullPacket(t_oppnd *x, t_symbol *msg, int argc, t_atom *argv)
 	oppnd_doFullPacket(x, len, ptr, x->sym_to_prepend, x->sym_to_prepend_len);
 }
 
-void oppnd_doFullPacket(t_oppnd *x, long len, long ptr, t_symbol *sym_to_prepend, int sym_to_prepend_len)
+void oppnd_doFullPacket(t_oppnd *x, long len, char *ptr, t_symbol *sym_to_prepend, int sym_to_prepend_len)
 {
 	if(!sym_to_prepend){
-		omax_util_outletOSC(x->outlet, len, (char *)ptr);
+		omax_util_outletOSC(x->outlet, len, ptr);
 		return;
 	}
 	int num_messages = 0;
-	osc_bundle_s_getMsgCount(len, (char *)ptr, &num_messages);
+	osc_bundle_s_getMsgCount(len, ptr, &num_messages);
 	char buf[len + (num_messages * (sym_to_prepend_len + 4))]; // not exact, but more than enough
 	char *bufptr = buf;
-	memcpy(bufptr, (char *)ptr, OSC_HEADER_SIZE);
+	memcpy(bufptr, ptr, OSC_HEADER_SIZE);
 	bufptr += OSC_HEADER_SIZE;
-	t_osc_bndl_it_s *it = osc_bndl_it_s_get(len, (char *)ptr);
+	t_osc_bndl_it_s *it = osc_bndl_it_s_get(len, ptr);
 	while(osc_bndl_it_s_hasNext(it)){
 		t_osc_msg_s *msg = osc_bndl_it_s_next(it);
 		int msg_address_len = strlen(osc_message_s_getAddress(msg));
@@ -177,7 +177,7 @@ void oppnd_anything(t_oppnd *x, t_symbol *msg, short argc, t_atom *argv)
 	t_symbol *address = msg, *sym_to_prepend = x->sym_to_prepend;
 	if(atom_gettype(argv) == A_SYM){
 		if(atom_getsym(argv) == ps_FullPacket){
-			oppnd_doFullPacket(x, atom_getlong(argv + 1), atom_getlong(argv + 2), msg, strlen(msg->s_name));
+			oppnd_doFullPacket(x, atom_getlong(argv + 1), (char *)atom_getlong(argv + 2), msg, strlen(msg->s_name));
 			return;
 		}else if(atom_getsym(argv)->s_name[0] == '/'){
 			// msg and argv are both OSC addresses.  prepend msg to argv

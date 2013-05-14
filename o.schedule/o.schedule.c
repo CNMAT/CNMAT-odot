@@ -119,7 +119,7 @@ void osched_fullPacket(t_osched *x, t_symbol *s, int argc, t_atom *argv)
 	OMAX_UTIL_GET_LEN_AND_PTR
 	node n;
 	n.length = len;
-	char *bndl = (char *)ptr;
+	char *bndl = ptr;
 	float dt;
     
 	node *p_n;

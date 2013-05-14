@@ -133,7 +133,7 @@ t_symbol *ps_newline, *ps_FullPacket;
 
 static t_class *omessage_class;
 
-void omessage_doFullPacket(t_omessage *x, long len, long ptr);
+void omessage_doFullPacket(t_omessage *x, long len, char *ptr);
 void omessage_paint(t_omessage *x, t_object *patcherview);
 void omessage_set(t_omessage *x, t_symbol *s, long ac, t_atom *av);
 void omessage_select(t_omessage *x);
@@ -161,14 +161,14 @@ void *omessage_new(t_symbol *msg, short argc, t_atom *argv);
 //void omessage_fullPacket(t_omessage *x, long len, long ptr)
 void omessage_fullPacket(t_omessage *x, t_symbol *msg, int argc, t_atom *argv)
 {
-	OSC_GET_LEN_AND_PTR
+	OMAX_UTIL_GET_LEN_AND_PTR
 	if(proxy_getinlet((t_object *)x) == 0){
 		return;
 	}
 	omessage_doFullPacket(x, len, ptr);
 }
 
-void omessage_doFullPacket(t_omessage *x, long len, long ptr){
+void omessage_doFullPacket(t_omessage *x, long len, char *ptr){
 	osc_bundle_s_wrap_naked_message(len, ptr);
 	if(x->bndl){
 		switch(x->bndltype){
@@ -701,7 +701,7 @@ void omessage_list(t_omessage *x, t_symbol *list_sym, short argc, t_atom *argv){
 						if(l < argc){
 							switch(atom_gettype(argv + l)){
 							case A_LONG:
-								newaddresslen += snprintf(NULL, 0, "%ld", atom_getlong(argv + l));
+								newaddresslen += snprintf(NULL, 0, "%lld", atom_getlong(argv + l));
 								break;
 							case A_FLOAT:
 								newaddresslen += snprintf(NULL, 0, "%f", atom_getfloat(argv + l));
@@ -851,7 +851,7 @@ void omessage_set(t_omessage *x, t_symbol *s, long ac, t_atom *av)
 		if(atom_gettype(av) == A_SYM){
 			t_symbol *sym = atom_getsym(av);
 			if(sym == ps_FullPacket && ac == 3){
-				omessage_doFullPacket(x, atom_getlong(av + 1), atom_getlong(av + 2));
+				omessage_doFullPacket(x, atom_getlong(av + 1), (char *)atom_getlong(av + 2));
 				return;
 			}
 			omessage_processAtoms(x, ac, av);
@@ -867,7 +867,7 @@ void omessage_clear(t_omessage *x)
 	char buf[OSC_HEADER_SIZE];
 	memset(buf, '\0', OSC_HEADER_SIZE);
 	osc_bundle_s_setBundleID(buf);
-	omessage_doFullPacket(x, OSC_HEADER_SIZE, (long)buf);
+	omessage_doFullPacket(x, OSC_HEADER_SIZE, buf);
 }
 
 

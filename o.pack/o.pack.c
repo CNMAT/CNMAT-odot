@@ -88,12 +88,12 @@ void opack_anything(t_opack *x, t_symbol *msg, short argc, t_atom *argv);
 //void opack_fullPacket(t_opack *x, long len, long ptr)
 void opack_fullPacket(t_opack *x, t_symbol *msg, int argc, t_atom *argv)
 {
-	OSC_GET_LEN_AND_PTR
+	OMAX_UTIL_GET_LEN_AND_PTR
 	critical_enter(x->lock);
 	osc_bundle_s_wrap_naked_message(len, ptr);
 	int inlet = proxy_getinlet((t_object *)x);
 	osc_message_u_clearArgs(x->messages[inlet]);
-	osc_message_u_appendBndl(x->messages[inlet], len, (char *)ptr);
+	osc_message_u_appendBndl(x->messages[inlet], len, ptr);
 	critical_exit(x->lock);
 	int shouldoutput = (inlet == 0);
 #ifdef PAK

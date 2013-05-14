@@ -137,7 +137,7 @@ void oexpr_output_bundle(t_oexpr *x);
 //void oexpr_fullPacket(t_oexpr *x, long len, long ptr)
 void oexpr_fullPacket(t_oexpr *x, t_symbol *msg, int argc, t_atom *argv)
 {
-	OSC_GET_LEN_AND_PTR
+	OMAX_UTIL_GET_LEN_AND_PTR
 	if(len <= 0){
 		return;
 	}
@@ -150,26 +150,26 @@ void oexpr_fullPacket(t_oexpr *x, t_symbol *msg, int argc, t_atom *argv)
 	char *copy = NULL;
 	long copylen = 0;
 	char alloc = 0;
-	if(strncmp((char *)ptr, "#bundle\0", 8)){
-		osc_bundle_s_wrapMessage(len, (char *)ptr, &copylen, &copy, &alloc);
+	if(strncmp(ptr, "#bundle\0", 8)){
+		osc_bundle_s_wrapMessage(len, ptr, &copylen, &copy, &alloc);
 	}else{
 		copy = (char *)osc_mem_alloc(len);
-		memcpy(copy, (char *)ptr, len);
+		memcpy(copy, ptr, len);
 	}
 
 #if defined (OIF)
 	int ret = osc_expr_eval(x->expr, &len, &copy, &av);
 	if(ret || !av || osc_atom_array_u_getLen(av) == 0){
-		omax_util_outletOSC(x->outlets[1], len, (char *)ptr);
+		omax_util_outletOSC(x->outlets[1], len, ptr);
 	}else{
 		int i;
 		for(i = 0; i < osc_atom_array_u_getLen(av); i++){
 			if(osc_atom_u_getDouble(osc_atom_array_u_get(av, i)) == 0){
-				omax_util_outletOSC(x->outlets[1], len, (char *)ptr);
+				omax_util_outletOSC(x->outlets[1], len, ptr);
 				goto out;
 			}
 		}
-		omax_util_outletOSC(x->outlets[0], len, (char *)ptr);
+		omax_util_outletOSC(x->outlets[0], len, ptr);
 	}
  out:
 	if(av){
@@ -181,12 +181,12 @@ void oexpr_fullPacket(t_oexpr *x, t_symbol *msg, int argc, t_atom *argv)
 #elif defined (OUNLESS)
 	int ret = osc_expr_eval(x->expr, &len, &copy, &av);
 	if(ret || !av || osc_atom_array_u_getLen(av) == 0){
-		omax_util_outletOSC(x->outlet, len, (char *)ptr);
+		omax_util_outletOSC(x->outlet, len, ptr);
 	}else{
 		int i;
 		for(i = 0; i < osc_atom_array_u_getLen(av); i++){
 			if(osc_atom_u_getDouble(osc_atom_array_u_get(av, i)) == 0){
-				omax_util_outletOSC(x->outlet, len, (char *)ptr);
+				omax_util_outletOSC(x->outlet, len, ptr);
 				goto out;
 			}
 		}
@@ -208,7 +208,7 @@ void oexpr_fullPacket(t_oexpr *x, t_symbol *msg, int argc, t_atom *argv)
 				goto out;
 			}
 		}
-		omax_util_outletOSC(x->outlet, len, (char *)ptr);
+		omax_util_outletOSC(x->outlet, len, ptr);
 	}
  out:
 	if(av){
@@ -236,14 +236,14 @@ void oexpr_fullPacket(t_oexpr *x, t_symbol *msg, int argc, t_atom *argv)
 				av = NULL;
 			}
 			if(!fail){
-				omax_util_outletOSC(x->outlets[j], len, (char *)ptr);
+				omax_util_outletOSC(x->outlets[j], len, ptr);
 				goto out;
 			}
 		}
 		f = osc_expr_next(f);
 		j++;
 	}
-	omax_util_outletOSC(x->outlets[j], len, (char *)ptr);
+	omax_util_outletOSC(x->outlets[j], len, ptr);
  out:
 	if(av){
 		osc_atom_array_u_free(av);
@@ -262,12 +262,12 @@ void oexpr_fullPacket(t_oexpr *x, t_symbol *msg, int argc, t_atom *argv)
 	// bundle has to be resized during assignment
 	char *copy = NULL;
 	long copylen = len;
-	if(strncmp((char *)ptr, "#bundle\0", 8)){
+	if(strncmp(ptr, "#bundle\0", 8)){
 		char alloc = 0;
-		osc_bundle_s_wrapMessage(len, (char *)ptr, &copylen, &copy, &alloc);
+		osc_bundle_s_wrapMessage(len, ptr, &copylen, &copy, &alloc);
 	}else{
 		copy = (char *)osc_mem_alloc(len);
-		memcpy(copy, (char *)ptr, len);
+		memcpy(copy, ptr, len);
 	}
 	int ret = 0;
 	t_osc_expr *f = x->expr;
@@ -289,7 +289,7 @@ void oexpr_fullPacket(t_oexpr *x, t_symbol *msg, int argc, t_atom *argv)
 		}
 	}
 	if(ret){
-		omax_util_outletOSC(x->outlet, len, (char *)ptr);
+		omax_util_outletOSC(x->outlet, len, ptr);
 	}else{
 		omax_util_outletOSC(x->outlet, copylen, copy);
 	}
@@ -474,7 +474,6 @@ void *oexpr_new(t_symbol *msg, short argc, t_atom *argv){
 	t_oexpr *x;
 	if((x = (t_oexpr *)object_alloc(oexpr_class))){
 		t_osc_expr *f = NULL;
-		int haspound = 0;
 		if(argc){
 			char buf[65536];
 			memset(buf, '\0', sizeof(buf));

@@ -61,11 +61,11 @@ void *oexplode_class;
 //void oexplode_fullPacket(t_oexplode *x, long len, long ptr)
 void oexplode_fullPacket(t_oexplode *x, t_symbol *msg, int argc, t_atom *argv)
 {
-	OSC_GET_LEN_AND_PTR
+	OMAX_UTIL_GET_LEN_AND_PTR
 	char srcc[osc_bundle_s_getStructSize()];
 	t_osc_bndl_s *src = (t_osc_bndl_s *)srcc;
 	osc_bundle_s_setLen(src, len);
-	osc_bundle_s_setPtr(src, (char *)ptr);
+	osc_bundle_s_setPtr(src, ptr);
 	t_osc_bndl_s *dest2 = NULL;
 	osc_bundle_s_explode(&dest2, src, x->level, x->sep->s_name);
 	omax_util_outletOSC(x->outlet, osc_bundle_s_getLen(dest2), osc_bundle_s_getPtr(dest2));

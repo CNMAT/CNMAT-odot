@@ -63,10 +63,8 @@ typedef struct _ocoll{
 void *ocoll_class;
 
 
-//void ocoll_fullPacket(t_ocoll *x, long len, long ptr)
-void ocoll_fullPacket(t_ocoll *x, t_symbol *msg, int argc, t_atom *argv)
+void ocoll_fullPacket_impl(t_ocoll *x, long len, char *ptr)
 {
-	OSC_GET_LEN_AND_PTR
 	osc_bundle_s_wrap_naked_message(len, ptr);
 	if(len == OSC_HEADER_SIZE){
 		// empty bundle
@@ -84,7 +82,7 @@ void ocoll_fullPacket(t_ocoll *x, t_symbol *msg, int argc, t_atom *argv)
 		memset(x->buffer + x->buffer_pos, '\0', len);
 		x->buffer_len = x->buffer_pos + len;
 	}
-	t_osc_bndl_it_s *it = osc_bndl_it_s_get(len, (char *)ptr);
+	t_osc_bndl_it_s *it = osc_bndl_it_s_get(len, ptr);
 	while(osc_bndl_it_s_hasNext(it)){
 		t_osc_msg_s *m = osc_bndl_it_s_next(it);
 		t_osc_msg_ar_s *match = NULL;
@@ -112,7 +110,14 @@ void ocoll_fullPacket(t_ocoll *x, t_symbol *msg, int argc, t_atom *argv)
 	critical_exit(x->lock);
 }
 
-void ocoll_anything(t_ocoll *x, t_symbol *msg, int argc, t_atom *argv){
+void ocoll_fullPacket(t_ocoll *x, t_symbol *msg, int argc, t_atom *argv)
+{
+	OMAX_UTIL_GET_LEN_AND_PTR
+        ocoll_fullPacket_impl(x, len, ptr);
+}
+
+void ocoll_anything(t_ocoll *x, t_symbol *msg, int argc, t_atom *argv)
+{
 	t_osc_bndl_u *bndl_u = osc_bundle_u_alloc();
 	t_osc_msg_u *msg_u = NULL;
 	t_osc_err e = omax_util_maxAtomsToOSCMsg_u(&msg_u, msg, argc, argv);
@@ -131,11 +136,7 @@ void ocoll_anything(t_ocoll *x, t_symbol *msg, int argc, t_atom *argv){
 		osc_bundle_u_free(bndl_u);
 	}
 
-	//ocoll_fullPacket(x, len, (long)buf);
-	t_atom args[2];
-	atom_setlong(args, len);
-	atom_setlong(args + 1, (long)buf);
-	ocoll_fullPacket(x, NULL, 2, args);
+	ocoll_fullPacket_impl(x, len, buf);
 	if(buf){
 		osc_mem_free(buf);
 	}

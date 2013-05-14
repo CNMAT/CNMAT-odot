@@ -58,7 +58,7 @@ void *opbytes_new(t_symbol *msg, short argc, t_atom *argv);
 //void opbytes_fullPacket(t_opbytes *x, long len, long ptr)
 void opbytes_fullPacket(t_opbytes *x, t_symbol *msg, int argc, t_atom *argv)
 {
-	OSC_GET_LEN_AND_PTR
+	OMAX_UTIL_GET_LEN_AND_PTR
 	unsigned char *buf = (unsigned char *)ptr;
 	int i;
 	post("%-12s%-12s%s", "Byte #", "ASCII", "Decimal");
@@ -73,7 +73,7 @@ void opbytes_fullPacket(t_opbytes *x, t_symbol *msg, int argc, t_atom *argv)
 			post("%05d       %-14s%d", i, b, buf[i]);
 		}
 	}
-	omax_util_outletOSC(x->outlet, len, (char *)ptr);
+	omax_util_outletOSC(x->outlet, len, ptr);
 }
 
 OMAX_DICT_DICTIONARY(t_opbytes, x, opbytes_fullPacket);

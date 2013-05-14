@@ -64,11 +64,11 @@ int oflatten_copybundle(t_oflatten *x, long len, char *ptr);
 //void oflatten_fullPacket(t_oflatten *x, long len, long ptr)
 void oflatten_fullPacket(t_oflatten *x, t_symbol *msg, int argc, t_atom *argv)
 {
-	OSC_GET_LEN_AND_PTR
+	OMAX_UTIL_GET_LEN_AND_PTR
 	char srcc[osc_bundle_s_getStructSize()];
 	t_osc_bndl_s *src = (t_osc_bndl_s *)srcc;
 	osc_bundle_s_setLen(src, len);
-	osc_bundle_s_setPtr(src, (char *)ptr);
+	osc_bundle_s_setPtr(src, ptr);
 	t_osc_bndl_s *dest = NULL;
 	osc_bundle_s_flatten(&dest, src, x->level, x->sep->s_name, x->remove_enclosing_address_if_empty);
 	omax_util_outletOSC(x->outlet, osc_bundle_s_getLen(dest), osc_bundle_s_getPtr(dest));

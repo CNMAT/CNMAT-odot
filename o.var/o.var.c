@@ -98,7 +98,7 @@ void *ovar_class;
 void ovar_clear(t_ovar *x);
 void ovar_anything(t_ovar *x, t_symbol *msg, int argc, t_atom *argv);
 
-void ovar_doFullPacket(t_ovar *x, long len, long ptr, long inlet)
+void ovar_doFullPacket(t_ovar *x, long len, char *ptr, long inlet)
 {
 	osc_bundle_s_wrap_naked_message(len, ptr);
 	if(inlet == 1){
@@ -113,7 +113,7 @@ void ovar_doFullPacket(t_ovar *x, long len, long ptr, long inlet)
 				}
 				x->buflen = len;
 			}
-			memcpy(x->bndl, (char *)ptr, len);
+			memcpy(x->bndl, ptr, len);
 			x->len = len;
 			critical_exit(x->lock);
 		}
@@ -127,11 +127,11 @@ void ovar_doFullPacket(t_ovar *x, long len, long ptr, long inlet)
 		long bndllen = 0;
 		char *bndl = NULL;
 #ifdef ODOT_UNION
-		osc_bundle_s_union(len, (char *)ptr, copylen, copy, &bndllen, &bndl);
+		osc_bundle_s_union(len, ptr, copylen, copy, &bndllen, &bndl);
 #elif defined ODOT_INTERSECTION
-		osc_bundle_s_intersection(len, (char *)ptr, copylen, copy, &bndllen, &bndl);
+		osc_bundle_s_intersection(len, ptr, copylen, copy, &bndllen, &bndl);
 #elif defined ODOT_DIFFERENCE
-		osc_bundle_s_difference(len, (char *)ptr, copylen, copy, &bndllen, &bndl);
+		osc_bundle_s_difference(len, ptr, copylen, copy, &bndllen, &bndl);
 #endif
 		omax_util_outletOSC(x->outlet, bndllen, bndl);
 		if(bndl){
@@ -149,11 +149,11 @@ void ovar_doFullPacket(t_ovar *x, long len, long ptr, long inlet)
 				}
 				x->buflen = len;
 			}
-			memcpy(x->bndl, (char *)ptr, len);
+			memcpy(x->bndl, ptr, len);
 			x->len = len;
 			critical_exit(x->lock);
 		}
-		omax_util_outletOSC(x->outlet, len, (char *)ptr);
+		omax_util_outletOSC(x->outlet, len, ptr);
 #endif
 	}
 }
@@ -161,7 +161,7 @@ void ovar_doFullPacket(t_ovar *x, long len, long ptr, long inlet)
 //void ovar_fullPacket(t_ovar *x, long len, long ptr)
 void ovar_fullPacket(t_ovar *x, t_symbol *msg, int argc, t_atom *argv)
 {
-	OSC_GET_LEN_AND_PTR
+	OMAX_UTIL_GET_LEN_AND_PTR
 	int inlet = proxy_getinlet((t_object *)x);
 	ovar_doFullPacket(x, len, ptr, inlet);
 }
@@ -213,7 +213,7 @@ void ovar_anything(t_ovar *x, t_symbol *msg, int argc, t_atom *argv)
 	if(bndl_u){
 		osc_bundle_u_free(bndl_u);
 	}
-	ovar_doFullPacket(x, len, (long)buf, proxy_getinlet((t_object *)x));
+	ovar_doFullPacket(x, len, buf, proxy_getinlet((t_object *)x));
 }
 
 void ovar_bang(t_ovar *x)
