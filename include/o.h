@@ -49,20 +49,17 @@ object_error((t_object *)x, "%s: argument 2 should be an int", __func__);\
 return;\
 }\
 long len = atom_getlong(argv);\
-long ptr = (long)(argv[1].a_w.w_symbol);
+char *ptr = (char *)atom_getlong(argv + 1);
 #else
 #warning wtf
 #endif
-// that stupid macro above used to be defined in osc.h.  I moved it here but
-// was too lazy to change all the files that used it, so we have this #define below.
-// As I visit each of the files, I'll change it and then this can be removed...
-#define OSC_GET_LEN_AND_PTR OMAX_UTIL_GET_LEN_AND_PTR
 
 #ifdef OMAX_PD_VERSION
 #include "m_pd.h"
 #include "string.h"
 #define proxy_getinlet(x) (0)  //<<< TEMPORORY
 
+#define t_max_err void
 #define critical_enter(x)
 #define critical_exit(x)
 #define critical_free(x)
