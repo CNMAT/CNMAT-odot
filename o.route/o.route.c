@@ -59,10 +59,16 @@ VERSION 0.1: Addresses to match can now have patterns
 
 
 #include "odot_version.h"
+
+#ifdef OMAX_PD_VERSION
+#include "m_pd.h"
+#else
 #include "ext.h"
 #include "ext_obex.h"
 #include "ext_obex_util.h"
 #include "ext_critical.h"
+#endif
+
 #include "osc.h"
 #include "osc_mem.h"
 #include "osc_match.h"
@@ -76,6 +82,8 @@ VERSION 0.1: Addresses to match can now have patterns
 #include "omax_dict.h"
 #include "osc_rset.h"
 #include "osc_query.h"
+
+#include "o.h"
 
 typedef struct _oroute{
 	t_object ob;
@@ -319,7 +327,7 @@ void oroute_set(t_oroute *x, t_symbol *msg, int argc, t_atom *argv)
 
 void oroute_doSet(t_oroute *x, long index, t_symbol *sym){
 	if(index < 1 || index > x->num_selectors){
-		object_error((t_object *)x, "index (%d) out of bounds", index);
+		object_error((t_object *)x, "index (%ld) out of bounds", index);
 		return;
 	}
 	critical_enter(x->lock);
@@ -336,7 +344,21 @@ void oroute_doSet(t_oroute *x, long index, t_symbol *sym){
 	critical_exit(x->lock);
 }
 
+#ifndef OMAX_PD_VERSION
+
 OMAX_DICT_DICTIONARY(t_oroute, x, oroute_fullPacket);
+
+void oroute_assist(t_oroute *x, void *b, long io, long num, char *buf)
+{
+	_omax_doc_assist(io,
+                     num,
+                     buf,
+                     x->num_selectors + 1,
+                     x->inlet_assist_strings,
+                     x->num_selectors + 1,
+                     x->outlet_assist_strings);
+}
+#endif
 
 void oroute_doc(t_oroute *x)
 {
@@ -356,16 +378,7 @@ void oroute_doc(t_oroute *x)
 			    OMAX_DOC_SEEALSO);
 }
 
-void oroute_assist(t_oroute *x, void *b, long io, long num, char *buf)
-{
-	_omax_doc_assist(io,			
-			 num,			
-			 buf,			
-			 x->num_selectors + 1,
-			 x->inlet_assist_strings,
-			 x->num_selectors + 1,
-			 x->outlet_assist_strings);
-}
+
 
 void oroute_free(t_oroute *x)
 {
@@ -379,6 +392,7 @@ void oroute_free(t_oroute *x)
 	if(x->schema){
 		osc_mem_free(x->schema);
 	}
+#ifndef OMAX_PD_VERSION
 	for(int i = 0; i < x->num_selectors + 1; i++){
 		if(x->inlet_assist_strings[i]){
 			osc_mem_free(x->inlet_assist_strings[i]);
@@ -393,6 +407,11 @@ void oroute_free(t_oroute *x)
 	if(x->outlet_assist_strings){
 		osc_mem_free(x->outlet_assist_strings);
 	}
+    
+    free(x->proxy);
+    
+#endif
+    free(x->outlets);
 }
 
 void oroute_makeSchema(t_oroute *x)
@@ -455,6 +474,92 @@ void oroute_makeUniqueSelectors(int nselectors,
 	*nunique_selectors = n;
 }
 
+#ifdef OMAX_PD_VERSION
+void *oroute_new(t_symbol *msg, short argc, t_atom *argv)
+{
+	t_oroute *x;
+	if((x = (t_oroute *)object_alloc(oroute_class))){
+		critical_new(&(x->lock));
+		x->delegation_outlet = outlet_new(&x->ob, gensym("FullPacket")); // unmatched outlet
+		x->outlets = (void **)malloc(argc * sizeof(void *));
+
+		x->selectors = (char **)malloc(argc * sizeof(char *));
+		x->num_selectors = argc;
+		x->unique_selectors = (char **)malloc(x->num_selectors * sizeof(char *));
+        
+        
+		x->nbytes_selector = 0;
+		int i, outnum = argc - 1;
+		for(i = 0; i < argc; i++){
+			x->outlets[outnum - i] = outlet_new(&x->ob, NULL);
+
+			if(atom_gettype(argv + i) != A_SYM){
+				object_error((t_object *)x, "argument %d is not an OSC address", i);
+				return NULL;
+			}
+            
+			char *selector = atom_getsym(argv + i)->s_name;
+			int len = strlen(selector);
+			if(len > x->nbytes_selector){
+				x->nbytes_selector = len;
+			}
+			x->selectors[x->num_selectors - i - 1] = selector;
+            
+		}
+        
+		oroute_makeUniqueSelectors(x->num_selectors,
+                                   x->selectors,
+                                   &(x->num_unique_selectors),
+                                   &(x->unique_selectors));
+        
+		x->schema = NULL;
+		x->schemalen = 0;
+		oroute_makeSchema(x);
+		
+	}
+    
+	return(x);
+}
+
+
+#ifdef SELECT
+int o_select_setup(void)
+{
+	t_symbol *name = gensym("o_select");
+#elif defined ATOMIZE
+int o_atomize_setup(void)
+{
+	t_symbol *name = gensym("o_atomize");
+#else
+int o_route_setup(void)
+{
+	t_symbol *name = gensym("o_route");
+#endif
+    
+	t_class *c = class_new(name, (t_newmethod)oroute_new, (t_method)oroute_free, sizeof(t_oroute), 0L, A_GIMME, 0);
+	//class_addmethod(c, (method)oroute_fullPacket, "FullPacket", A_LONG, A_LONG, 0);
+	class_addmethod(c, (t_method)oroute_fullPacket, gensym("FullPacket"), A_GIMME, 0);
+    
+    
+//	class_addmethod(c, (method)oroute_assist, "assist", A_CANT, 0);
+	class_addmethod(c, (t_method)oroute_doc, gensym("doc"), 0);
+	class_addmethod(c, (t_method)oroute_anything, gensym("anything"), A_GIMME, 0);
+
+	class_addmethod(c, (t_method)oroute_set, gensym("set"), A_GIMME, 0);
+	class_addmethod(c, (t_method)odot_version, gensym("version"), 0);
+    
+
+	oroute_class = c;
+    
+	ps_FullPacket = gensym("FullPacket");
+	ps_oscschemalist = gensym("/osc/schema/list");
+    
+//	common_symbols_init();
+	ODOT_PRINT_VERSION;
+	return 0;
+}
+
+#else
 void *oroute_new(t_symbol *msg, short argc, t_atom *argv)
 {
 	t_oroute *x;
@@ -548,3 +653,4 @@ int main(void)
 	ODOT_PRINT_VERSION;
 	return 0;
 }
+#endif

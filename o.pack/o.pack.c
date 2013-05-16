@@ -51,10 +51,15 @@ VERSION 1.1: renamed o.pack (from o.build)
 #endif
 
 #include "odot_version.h"
+#ifdef OMAX_PD_VERSION
+#include "m_pd.h"
+#else
 #include "ext.h"
 #include "ext_obex.h"
 #include "ext_obex_util.h"
 #include "ext_critical.h"
+#endif
+
 #include "omax_util.h"
 #include "osc.h"
 #include "osc_mem.h"
@@ -64,6 +69,8 @@ VERSION 1.1: renamed o.pack (from o.build)
 #include "osc_message_iterator_u.h"
 #include "omax_doc.h"
 #include "omax_dict.h"
+
+#include "o.h"
 
 //#define MAX_NUM_ARGS 64
 
@@ -84,6 +91,12 @@ void *opack_class;
 void opack_outputBundle(t_opack *x);
 int opack_checkPosAndResize(char *buf, int len, char *pos);
 void opack_anything(t_opack *x, t_symbol *msg, short argc, t_atom *argv);
+
+/*
+proxy_new
+proxy_getinlet
+proxy_free
+*/
 
 //void opack_fullPacket(t_opack *x, long len, long ptr)
 void opack_fullPacket(t_opack *x, t_symbol *msg, int argc, t_atom *argv)
@@ -204,21 +217,9 @@ void opack_set(t_opack *x, t_symbol *msg, int argc, t_atom *argv)
 	critical_exit(x->lock);
 }
 
-OMAX_DICT_DICTIONARY(t_opack, x, opack_fullPacket);
+#ifndef OMAX_PD_VERSION
 
-void opack_doc(t_opack *x)
-{
-	_omax_doc_outletDoc(x->outlet,			
-			    OMAX_DOC_NAME,		
-			    OMAX_DOC_SHORT_DESC,	
-			    OMAX_DOC_LONG_DESC,		
-			    x->num_messages,
-			    x->inlet_assist_strings,
-			    OMAX_DOC_NOUTLETS,		
-			    OMAX_DOC_OUTLETS_DESC,	
-			    OMAX_DOC_NUM_SEE_ALSO_REFS,	
-			    OMAX_DOC_SEEALSO);
-}
+OMAX_DICT_DICTIONARY(t_opack, x, opack_fullPacket);
 
 void opack_assist(t_opack *x, void *b, long io, long num, char *buf)
 {
@@ -230,6 +231,21 @@ void opack_assist(t_opack *x, void *b, long io, long num, char *buf)
 			 OMAX_DOC_NOUTLETS,
 			 OMAX_DOC_OUTLETS_DESC);
 }
+#endif
+
+void opack_doc(t_opack *x)
+{
+	_omax_doc_outletDoc(x->outlet,
+                        OMAX_DOC_NAME,
+                        OMAX_DOC_SHORT_DESC,
+                        OMAX_DOC_LONG_DESC,
+                        x->num_messages,
+                        x->inlet_assist_strings,
+                        OMAX_DOC_NOUTLETS,
+                        OMAX_DOC_OUTLETS_DESC,	
+                        OMAX_DOC_NUM_SEE_ALSO_REFS,	
+                        OMAX_DOC_SEEALSO);
+}
 
 void opack_free(t_opack *x)
 {
@@ -240,6 +256,7 @@ void opack_free(t_opack *x)
 	if(x->messages){
 		osc_mem_free(x->messages);
 	}
+#ifndef OMAX_PD_VERSION
 	if(x->proxy){
 		int i;
 		for(i = 1; i < x->num_messages; i++){
@@ -256,8 +273,118 @@ void opack_free(t_opack *x)
 		}
 	}
 	osc_mem_free(x->inlet_assist_strings);
+#endif
 	critical_free(x->lock);
 }
+
+#ifdef OMAX_PD_VERSION
+void *opack_new(t_symbol *msg, short argc, t_atom *argv)
+{
+	t_opack *x;
+	if((x = (t_opack *)object_alloc(opack_class))){
+		if(argc == 0){
+			object_error((t_object *)x, "you must supply at least 1 argument");
+			return NULL;
+		}
+        
+		if(atom_gettype(argv) == A_LONG){
+			object_error((t_object *)x, "o.pack no longer takes an integer argument to specify the list length of each inlet.");
+			object_error((t_object *)x, "The internal buffers will expand as necessary.");
+			argv++;
+			argc--;
+            
+		}
+		if(atom_gettype(argv) != A_SYM){
+			object_error((t_object *)x, "the first argument must be an OSC address");
+			return NULL;
+		}
+		if(atom_getsym(argv)->s_name[0] != '/' && atom_getsym(argv)->s_name[0] != '#'){
+			object_error((t_object *)x, "the first argument must be an OSC string that begins with a slash (/)");
+			return NULL;
+		}
+        
+		t_atom *addresses[argc];
+		int numargs[argc];
+		int count = 0;
+		int i;
+		for(i = 0; i < argc; i++){
+			numargs[i] = 0;
+			if(atom_gettype(argv + i) == A_SYM){
+				if(atom_getsym(argv + i)->s_name[0] == '/' || atom_getsym(argv + i)->s_name[0] == '#'){
+					int j;
+					for(j = 0; j < count; j++){
+						if(atom_getsym(addresses[j]) == atom_getsym(argv + i)){
+							object_error((t_object *)x, "duplicate addresses (%s) are not allowed", atom_getsym(addresses[j])->s_name);
+							return NULL;
+						}
+					}
+					addresses[count++] = argv + i;
+				}else{
+					numargs[count - 1]++;
+				}
+			}else{
+				numargs[count - 1]++;
+			}
+		}
+		x->bndl = osc_bundle_u_alloc();
+		x->num_messages = count;
+		//x->messages = osc_message_array_u_alloc(count);
+		x->messages = (t_osc_msg_u **)osc_mem_alloc(count * sizeof(t_osc_msg_u *));
+		//osc_message_array_u_clear(x->messages);
+
+		int pos = 0;
+		for(i = 0; i < count; i++){
+			x->messages[i] = osc_message_u_alloc();
+			osc_message_u_setAddress(x->messages[i], atom_getsym(addresses[i])->s_name);
+			pos++;
+			if(numargs[i]){
+				opack_doAnything(x, NULL, numargs[i], argv + pos, 0, i);
+			}
+			pos += numargs[i];
+			osc_bundle_u_addMsg(x->bndl, x->messages[i]);
+		}
+        
+        
+        // do inlet thing here
+        for(i = 1; i < count; i++){
+			x->proxy[i] = proxy_new((t_object *)x, count - i, &(x->inlet));
+		}
+
+		x->outlet = outlet_new(&x->ob, gensym("FullPacket"));
+		critical_new(&(x->lock));
+	}
+    
+	return(x);
+}
+#ifdef PAK
+int o_pak_setup(void)
+{
+	t_symbol *name = gensym("o_pak");
+#else
+int o_pack_setup(void)
+{
+    t_symbol *name = gensym("o_pack");
+#endif
+	t_class *c = class_new(name, (t_newmethod)opack_new, (t_method)opack_free, sizeof(t_opack), 0L, A_GIMME, 0);
+	//class_addmethod(c, (method)opack_fullPacket, "FullPacket", A_LONG, A_LONG, 0);
+	class_addmethod(c, (t_method)opack_fullPacket, gensym("FullPacket"), A_GIMME, 0);
+	    
+	class_addmethod(c, (t_method)opack_doc, gensym("doc"), 0);
+	class_addmethod(c, (t_method)opack_anything, gensym("anything"), A_GIMME, 0);
+	class_addmethod(c, (t_method)opack_list, gensym("list"), A_GIMME, 0);
+	class_addmethod(c, (t_method)opack_float, gensym("float"), A_DEFFLOAT, 0);
+	class_addmethod(c, (t_method)opack_bang, gensym("bang"), 0);
+	class_addmethod(c, (t_method)opack_set, gensym("set"), A_GIMME, 0);
+	class_addmethod(c, (t_method)odot_version, gensym("version"), 0);
+    
+	opack_class = c;
+
+	ODOT_PRINT_VERSION;
+	return 0;
+}
+
+
+#else //max version
 
 void *opack_new(t_symbol *msg, short argc, t_atom *argv)
 {
@@ -378,3 +505,4 @@ int main(void)
 	ODOT_PRINT_VERSION;
 	return 0;
 }
+#endif

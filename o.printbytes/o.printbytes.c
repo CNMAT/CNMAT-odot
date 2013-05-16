@@ -38,12 +38,19 @@ VERSION 0.0: First try
 #define OMAX_DOC_SEEALSO (char *[]){"o.print", "print", "printit"}
 
 #include "odot_version.h"
+#ifdef OMAX_PD_VERSION
+#include "m_pd.h"
+#else
 #include "ext.h"
 #include "ext_obex.h"
 #include "ext_obex_util.h"
+#include "ext_critical.h"
+#endif
+
 #include "omax_util.h"
 #include "omax_doc.h"
 #include "omax_dict.h"
+#include "o.h"
 
 typedef struct _opbytes{
 	t_object ob;
@@ -73,9 +80,10 @@ void opbytes_fullPacket(t_opbytes *x, t_symbol *msg, int argc, t_atom *argv)
 			post("%05d       %-14s%d", i, b, buf[i]);
 		}
 	}
-	omax_util_outletOSC(x->outlet, len, ptr);
+	omax_util_outletOSC(x->outlet, len, (char *)ptr);
 }
 
+#ifndef OMAX_PD_VERSION
 OMAX_DICT_DICTIONARY(t_opbytes, x, opbytes_fullPacket);
 
 void opbytes_doc(t_opbytes *x)
@@ -87,10 +95,41 @@ void opbytes_assist(t_opbytes *x, void *b, long io, long num, char *buf)
 {
 	omax_doc_assist(io, num, buf);
 }
+#endif
 
 void opbytes_free(t_opbytes *x){
 }
 
+
+#ifdef OMAX_PD_VERSION
+void *opbytes_new(t_symbol *msg, short argc, t_atom *argv){
+	t_opbytes *x;
+	if((x = (t_opbytes *)object_alloc(opbytes_class))){
+		x->outlet = outlet_new(&x->ob, NULL);
+	}
+    
+	return(x);
+}
+
+int o_printbytes_setup(void){
+	t_class *c = class_new(gensym("o_printbytes"), (t_newmethod)opbytes_new, (t_method)opbytes_free, sizeof(t_opbytes), 0L, A_GIMME, 0);
+    
+	//class_addmethod(c, (method)opbytes_fullPacket, "FullPacket", A_LONG, A_LONG, 0);
+	class_addmethod(c, (t_method)opbytes_fullPacket, gensym("FullPacket"), A_GIMME, 0);
+	
+    
+//	class_addmethod(c, (t_method)opbytes_doc, gensym("doc"), 0);
+//	class_addmethod(c, (t_method)opbytes_assist, gensym("assist"), A_CANT, 0);
+    
+	class_addmethod(c, (t_method)odot_version, gensym("version"), 0);
+    
+	opbytes_class = c;
+    
+//	common_symbols_init();
+	ODOT_PRINT_VERSION;
+	return 0;
+}
+#else
 void *opbytes_new(t_symbol *msg, short argc, t_atom *argv){
 	t_opbytes *x;
 	if((x = (t_opbytes *)object_alloc(opbytes_class))){
@@ -123,3 +162,4 @@ int main(void){
 	ODOT_PRINT_VERSION;
 	return 0;
 }
+#endif
