@@ -250,7 +250,6 @@ void opack_free(t_opack *x)
 	if(x->messages){
 		osc_mem_free(x->messages);
 	}
-#ifndef OMAX_PD_VERSION
 	if(x->proxy){
 		int i;
 		for(i = 1; i < x->num_messages; i++){
@@ -260,6 +259,8 @@ void opack_free(t_opack *x)
 		}
 		free(x->proxy);
 	}
+#ifndef OMAX_PD_VERSION
+
 	int i;
 	for(i = 0; i < x->num_messages; i++){
 		if(x->inlet_assist_strings[i]){
@@ -339,7 +340,7 @@ void *opack_new(t_symbol *msg, short argc, t_atom *argv)
 		}
         
         
-        // do inlet thing here
+		x->proxy = (void **)malloc(count * sizeof(void *));
         for(i = 1; i < count; i++){
 			x->proxy[i] = proxy_new((t_object *)x, count - i, &(x->inlet));
 		}
@@ -361,16 +362,17 @@ int o_pack_setup(void)
 #endif
 	t_class *c = class_new(name, (t_newmethod)opack_new, (t_method)opack_free, sizeof(t_opack), 0L, A_GIMME, 0);
 	//class_addmethod(c, (method)opack_fullPacket, "FullPacket", A_LONG, A_LONG, 0);
-	omax_pd_class_addmethod(c, (t_method)opack_fullPacket, gensym("FullPacket"), A_GIMME, 0);
+	omax_pd_class_addmethod(c, (t_method)opack_fullPacket, gensym("FullPacket"));
 	    
-	omax_pd_class_addmethod(c, (t_method)opack_doc, gensym("doc"), 0);
-	omax_pd_class_addmethod(c, (t_method)opack_anything, gensym("anything"), A_GIMME, 0);
+	omax_pd_class_addmethod(c, (t_method)opack_anything, gensym("anything"));
 	omax_pd_class_addmethod(c, (t_method)opack_list, gensym("list"));
 	omax_pd_class_addfloat(c, (t_method)opack_float);
 	omax_pd_class_addbang(c, (t_method)opack_bang);
-	omax_pd_class_addmethod(c, (t_method)opack_set, gensym("set"), A_GIMME, 0);
-	omax_pd_class_addmethod(c, (t_method)odot_version, gensym("version"), 0);
-    
+	omax_pd_class_addmethod(c, (t_method)opack_set, gensym("set"));
+	
+    class_addmethod(c, (t_method)odot_version, gensym("version"), 0);
+    class_addmethod(c, (t_method)opack_doc, gensym("doc"), 0);
+
 	opack_class = c;
 
 	ODOT_PRINT_VERSION;

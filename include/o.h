@@ -57,8 +57,9 @@ char *ptr = (char *)atom_getlong(argv + 1);
 #ifdef OMAX_PD_VERSION
 #include "m_pd.h"
 #include "string.h"
-#define proxy_getinlet(x) (0)  //<<< TEMPORORY
 
+#define sysmem_freeptr free
+    
 #define t_max_err void
 #define critical_enter(x)
 #define critical_exit(x)
