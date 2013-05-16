@@ -53,6 +53,7 @@ VERSION 1.1: renamed o.pack (from o.build)
 #include "odot_version.h"
 #ifdef OMAX_PD_VERSION
 #include "m_pd.h"
+#include "omax_pd_proxy.h"
 #else
 #include "ext.h"
 #include "ext_obex.h"
@@ -92,13 +93,6 @@ void opack_outputBundle(t_opack *x);
 int opack_checkPosAndResize(char *buf, int len, char *pos);
 void opack_anything(t_opack *x, t_symbol *msg, short argc, t_atom *argv);
 
-/*
-proxy_new
-proxy_getinlet
-proxy_free
-*/
-
-//void opack_fullPacket(t_opack *x, long len, long ptr)
 void opack_fullPacket(t_opack *x, t_symbol *msg, int argc, t_atom *argv)
 {
 	OMAX_UTIL_GET_LEN_AND_PTR
@@ -367,15 +361,15 @@ int o_pack_setup(void)
 #endif
 	t_class *c = class_new(name, (t_newmethod)opack_new, (t_method)opack_free, sizeof(t_opack), 0L, A_GIMME, 0);
 	//class_addmethod(c, (method)opack_fullPacket, "FullPacket", A_LONG, A_LONG, 0);
-	class_addmethod(c, (t_method)opack_fullPacket, gensym("FullPacket"), A_GIMME, 0);
+	omax_pd_class_addmethod(c, (t_method)opack_fullPacket, gensym("FullPacket"), A_GIMME, 0);
 	    
-	class_addmethod(c, (t_method)opack_doc, gensym("doc"), 0);
-	class_addmethod(c, (t_method)opack_anything, gensym("anything"), A_GIMME, 0);
-	class_addmethod(c, (t_method)opack_list, gensym("list"), A_GIMME, 0);
-	class_addmethod(c, (t_method)opack_float, gensym("float"), A_DEFFLOAT, 0);
-	class_addmethod(c, (t_method)opack_bang, gensym("bang"), 0);
-	class_addmethod(c, (t_method)opack_set, gensym("set"), A_GIMME, 0);
-	class_addmethod(c, (t_method)odot_version, gensym("version"), 0);
+	omax_pd_class_addmethod(c, (t_method)opack_doc, gensym("doc"), 0);
+	omax_pd_class_addmethod(c, (t_method)opack_anything, gensym("anything"), A_GIMME, 0);
+	omax_pd_class_addmethod(c, (t_method)opack_list, gensym("list"));
+	omax_pd_class_addfloat(c, (t_method)opack_float);
+	omax_pd_class_addbang(c, (t_method)opack_bang);
+	omax_pd_class_addmethod(c, (t_method)opack_set, gensym("set"), A_GIMME, 0);
+	omax_pd_class_addmethod(c, (t_method)odot_version, gensym("version"), 0);
     
 	opack_class = c;
 
