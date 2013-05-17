@@ -357,16 +357,20 @@ void *opack_new(t_symbol *msg, short argc, t_atom *argv)
 	return(x);
 }
 
+
+#ifdef PAK
 int o_pak_setup(void)
 {
-#ifdef PAK
 	t_symbol *name = gensym("o_pak");
 #else
+int o_pack_setup(void)
+{
 	t_symbol *name = gensym("o_pack");
 #endif
-	opack_class = omax_pd_class_new(name, (t_newmethod)opack_new, (t_method)opack_free, sizeof(t_opack),  CLASS_NOINLET, A_GIMME, 0);
+	omax_pd_class_new(opack_class, name, (t_newmethod)opack_new, (t_method)opack_free, sizeof(t_opack),  CLASS_NOINLET, A_GIMME, 0);
 
-	t_omax_pd_proxy_class *c = omax_pd_class_new(NULL, NULL, NULL, sizeof(t_omax_pd_proxy), CLASS_PD | CLASS_NOINLET, 0);
+    t_omax_pd_proxy_class *c = NULL;
+	omax_pd_class_new(c, NULL, NULL, NULL, sizeof(t_omax_pd_proxy), CLASS_PD | CLASS_NOINLET, 0);
     
 	omax_pd_class_addmethod(c, (t_method)opack_list, gensym("list"));
 	omax_pd_class_addmethod(c, (t_method)opack_set, gensym("set"));
@@ -375,8 +379,8 @@ int o_pak_setup(void)
 	omax_pd_class_addfloat(c, (t_method)opack_float);
 	omax_pd_class_addbang(c, (t_method)opack_bang);
 	
-	class_addmethod(opack_class, (t_method)odot_version, gensym("version"), 0);
-	class_addmethod(opack_class, (t_method)opack_doc, gensym("doc"), 0);
+	class_addmethod(opack_class->class, (t_method)odot_version, gensym("version"), 0);
+	class_addmethod(opack_class->class, (t_method)opack_doc, gensym("doc"), 0);
 
     
 	post("%p", opack_fullPacket);
