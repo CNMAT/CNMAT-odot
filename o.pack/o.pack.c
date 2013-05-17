@@ -54,6 +54,7 @@ VERSION 1.1: renamed o.pack (from o.build)
 #ifdef OMAX_PD_VERSION
 #include "m_pd.h"
 #include "omax_pd_proxy.h"
+#define proxy_getinlet(x) (((t_opack *)(x))->inlet)
 #else
 #include "ext.h"
 #include "ext_obex.h"
@@ -96,12 +97,10 @@ void opack_anything(t_opack *x, t_symbol *msg, short argc, t_atom *argv);
 
 void opack_fullPacket(t_opack *x, t_symbol *msg, int argc, t_atom *argv)
 {
-    post("yes fullpacket");
 	OMAX_UTIL_GET_LEN_AND_PTR
 	critical_enter(x->lock);
 	osc_bundle_s_wrap_naked_message(len, ptr);
 	int inlet = proxy_getinlet((t_object *)x);
-            post("fullpacket inlet %i", inlet);
 	osc_message_u_clearArgs(x->messages[inlet]);
 	osc_message_u_appendBndl(x->messages[inlet], len, ptr);
 	critical_exit(x->lock);
@@ -163,7 +162,6 @@ void opack_anything(t_opack *x, t_symbol *msg, short argc, t_atom *argv)
 {
 	critical_enter(x->lock);
 	int inlet  = proxy_getinlet((t_object *)x);
-    post("anything inlet %i", inlet);
 	critical_exit(x->lock);
 	int shouldoutput = inlet == 0;
 #ifdef PAK
@@ -343,11 +341,9 @@ void *opack_new(t_symbol *msg, short argc, t_atom *argv)
 			osc_bundle_u_addMsg(x->bndl, x->messages[i]);
 		}
         
-        
 		x->proxy = (void **)malloc(count * sizeof(t_omax_pd_proxy *));
         for(i = 0; i < count; i++){
 			x->proxy[i] = proxy_new((t_object *)x, i, &(x->inlet), opack_proxy_class);
-            post("%p", x->proxy[i]);
 		}
 
 		x->outlet = outlet_new(&x->ob, gensym("FullPacket"));
@@ -372,18 +368,15 @@ int o_pack_setup(void)
     t_omax_pd_proxy_class *c = NULL;
 	omax_pd_class_new(c, NULL, NULL, NULL, sizeof(t_omax_pd_proxy), CLASS_PD | CLASS_NOINLET, 0);
     
+    omax_pd_class_addmethod(c, (t_method)odot_version, gensym("version"));
 	omax_pd_class_addmethod(c, (t_method)opack_list, gensym("list"));
 	omax_pd_class_addmethod(c, (t_method)opack_set, gensym("set"));
 	omax_pd_class_addmethod(c, (t_method)opack_fullPacket, gensym("FullPacket"));
 	omax_pd_class_addanything(c, (t_method)opack_anything);
 	omax_pd_class_addfloat(c, (t_method)opack_float);
 	omax_pd_class_addbang(c, (t_method)opack_bang);
-	
-    /*
-	class_addmethod(opack_class->class, (t_method)odot_version, gensym("version"), 0);
-	class_addmethod(opack_class->class, (t_method)opack_doc, gensym("doc"), 0);
-*/
-        
+//	omax_pd_class_addmethod(c, (t_method)opack_doc, gensym("doc")); //<<crashes
+
 	opack_proxy_class = c;
     
 	ODOT_PRINT_VERSION;
