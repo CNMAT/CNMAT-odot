@@ -88,6 +88,7 @@ typedef struct _opack{
 } t_opack;
 
 void *opack_class;
+void *opack_proxy_class;
 
 void opack_outputBundle(t_opack *x);
 int opack_checkPosAndResize(char *buf, int len, char *pos);
@@ -95,10 +96,12 @@ void opack_anything(t_opack *x, t_symbol *msg, short argc, t_atom *argv);
 
 void opack_fullPacket(t_opack *x, t_symbol *msg, int argc, t_atom *argv)
 {
+    post("yes fullpacket");
 	OMAX_UTIL_GET_LEN_AND_PTR
 	critical_enter(x->lock);
 	osc_bundle_s_wrap_naked_message(len, ptr);
 	int inlet = proxy_getinlet((t_object *)x);
+            post("fullpacket inlet %i", inlet);
 	osc_message_u_clearArgs(x->messages[inlet]);
 	osc_message_u_appendBndl(x->messages[inlet], len, ptr);
 	critical_exit(x->lock);
@@ -160,6 +163,7 @@ void opack_anything(t_opack *x, t_symbol *msg, short argc, t_atom *argv)
 {
 	critical_enter(x->lock);
 	int inlet  = proxy_getinlet((t_object *)x);
+    post("anything inlet %i", inlet);
 	critical_exit(x->lock);
 	int shouldoutput = inlet == 0;
 #ifdef PAK
@@ -340,9 +344,10 @@ void *opack_new(t_symbol *msg, short argc, t_atom *argv)
 		}
         
         
-		x->proxy = (void **)malloc(count * sizeof(void *));
-        for(i = 1; i < count; i++){
-			x->proxy[i] = proxy_new((t_object *)x, count - i, &(x->inlet));
+		x->proxy = (void **)malloc(count * sizeof(t_omax_pd_proxy *));
+        for(i = 0; i < count; i++){
+			x->proxy[i] = proxy_new((t_object *)x, i, &(x->inlet), opack_proxy_class);
+            post("%p", x->proxy[i]);
 		}
 
 		x->outlet = outlet_new(&x->ob, gensym("FullPacket"));
@@ -360,21 +365,25 @@ int o_pack_setup(void)
 {
     t_symbol *name = gensym("o_pack");
 #endif
-	t_class *c = class_new(name, (t_newmethod)opack_new, (t_method)opack_free, sizeof(t_opack), 0L, A_GIMME, 0);
-	//class_addmethod(c, (method)opack_fullPacket, "FullPacket", A_LONG, A_LONG, 0);
+	opack_class = class_new(name, (t_newmethod)opack_new, (t_method)opack_free, sizeof(t_opack),  CLASS_NOINLET, A_GIMME, 0);
+
+    t_class *c = class_new(NULL, NULL, NULL, sizeof(t_omax_pd_proxy), CLASS_PD | CLASS_NOINLET, 0);
+    
+    omax_pd_class_addmethod(c, (t_method)opack_list, gensym("list"));
+    omax_pd_class_addmethod(c, (t_method)opack_set, gensym("set"));
 	omax_pd_class_addmethod(c, (t_method)opack_fullPacket, gensym("FullPacket"));
-	    
-	omax_pd_class_addmethod(c, (t_method)opack_anything, gensym("anything"));
-	omax_pd_class_addmethod(c, (t_method)opack_list, gensym("list"));
+	omax_pd_class_addanything(c, (t_method)opack_anything);
 	omax_pd_class_addfloat(c, (t_method)opack_float);
 	omax_pd_class_addbang(c, (t_method)opack_bang);
-	omax_pd_class_addmethod(c, (t_method)opack_set, gensym("set"));
 	
-    class_addmethod(c, (t_method)odot_version, gensym("version"), 0);
-    class_addmethod(c, (t_method)opack_doc, gensym("doc"), 0);
+    class_addmethod(opack_class, (t_method)odot_version, gensym("version"), 0);
+    class_addmethod(opack_class, (t_method)opack_doc, gensym("doc"), 0);
 
-	opack_class = c;
-
+    
+    post("%p", opack_fullPacket);
+    
+	opack_proxy_class = c;
+    
 	ODOT_PRINT_VERSION;
 	return 0;
 }
