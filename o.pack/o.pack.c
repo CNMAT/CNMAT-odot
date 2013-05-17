@@ -280,7 +280,7 @@ void opack_free(t_opack *x)
 void *opack_new(t_symbol *msg, short argc, t_atom *argv)
 {
 	t_opack *x;
-	if((x = (t_opack *)object_alloc(opack_class))){
+	if((x = (t_opack *)object_alloc(opack_class->class))){
 		if(argc == 0){
 			object_error((t_object *)x, "you must supply at least 1 argument");
 			return NULL;
@@ -379,12 +379,11 @@ int o_pack_setup(void)
 	omax_pd_class_addfloat(c, (t_method)opack_float);
 	omax_pd_class_addbang(c, (t_method)opack_bang);
 	
+    /*
 	class_addmethod(opack_class->class, (t_method)odot_version, gensym("version"), 0);
 	class_addmethod(opack_class->class, (t_method)opack_doc, gensym("doc"), 0);
-
-    
-	post("%p", opack_fullPacket);
-    
+*/
+        
 	opack_proxy_class = c;
     
 	ODOT_PRINT_VERSION;
