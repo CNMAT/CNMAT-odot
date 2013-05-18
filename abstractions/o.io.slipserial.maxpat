@@ -3,8 +3,9 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 6,
-			"minor" : 0,
-			"revision" : 8
+			"minor" : 1,
+			"revision" : 2,
+			"architecture" : "x86"
 		}
 ,
 		"rect" : [ 126.0, 131.0, 1256.0, 640.0 ],
@@ -332,7 +333,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 469.0, 360.0, 62.0, 20.0 ],
+					"patching_rect" : [ 476.0, 433.0, 62.0, 20.0 ],
 					"text" : "zl median"
 				}
 
@@ -346,7 +347,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 458.0, 316.0, 76.0, 20.0 ],
+					"patching_rect" : [ 465.0, 389.0, 76.0, 20.0 ],
 					"text" : "zl stream 10"
 				}
 
@@ -360,7 +361,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 477.0, 116.0, 85.0, 20.0 ],
+					"patching_rect" : [ 456.0, 179.0, 85.0, 20.0 ],
 					"text" : "prepend baud"
 				}
 
@@ -400,7 +401,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 863.0, 34.0, 330.0, 101.0 ],
+					"patching_rect" : [ 863.0, 34.0, 330.0, 100.0 ],
 					"text" : "o.io.slipserial\n\nRead and Write  OSC  SLIP wrapped serial USB messages\nfrom serial port devices such as the Arduino or Teensy\n\nCopyright 2009,2011,2012,2013  Adrian Freed.\nAll Rights Reserved"
 				}
 
@@ -484,7 +485,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "bang", "" ],
-					"patching_rect" : [ 318.0, 208.0, 46.0, 17.0 ],
+					"patching_rect" : [ 277.0, 242.0, 46.0, 17.0 ],
 					"text" : "select 0"
 				}
 
@@ -498,7 +499,7 @@
 					"numinlets" : 3,
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "" ],
-					"patching_rect" : [ 328.0, 179.0, 70.0, 17.0 ],
+					"patching_rect" : [ 287.0, 213.0, 70.0, 17.0 ],
 					"text" : "route read port"
 				}
 
@@ -573,6 +574,15 @@
 			}
  ],
 		"lines" : [ 			{
+				"patchline" : 				{
+					"destination" : [ "obj-15", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-1", 3 ]
+				}
+
+			}
+, 			{
 				"patchline" : 				{
 					"destination" : [ "obj-15", 0 ],
 					"disabled" : 0,
