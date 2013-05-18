@@ -88,8 +88,12 @@ typedef struct _opack{
 	char **inlet_assist_strings;
 } t_opack;
 
+#ifdef OMAX_PD_VERSION
 t_omax_pd_proxy_class *opack_class;
 t_omax_pd_proxy_class *opack_proxy_class;
+#else
+void *opack_class;
+#endif
 
 void opack_outputBundle(t_opack *x);
 int opack_checkPosAndResize(char *buf, int len, char *pos);

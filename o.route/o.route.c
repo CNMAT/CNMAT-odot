@@ -106,8 +106,12 @@ typedef struct _oroute{
 	char **outlet_assist_strings;
 } t_oroute;
 
+#ifdef OMAX_PD_VESRION
 t_omax_pd_proxy_class *oroute_class;
 t_omax_pd_proxy_class *oroute_proxy_class;
+#else
+void *oroute_class;
+#endif
 
 void oroute_dispatch_rset(t_oroute *x, t_osc_rset *rset, int num_selectors, char **selectors);
 void oroute_anything(t_oroute *x, t_symbol *msg, short argc, t_atom *argv);
