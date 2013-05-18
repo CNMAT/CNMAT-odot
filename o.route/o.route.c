@@ -495,8 +495,7 @@ void *oroute_new(t_symbol *msg, short argc, t_atom *argv)
         
         
 		x->nbytes_selector = 0;
-		int i, outnum = argc - 1;
-        
+		int i;
         x->proxy = (void **)malloc(argc * sizeof(t_omax_pd_proxy *));
         
 		for(i = 0; i < argc; i++){
