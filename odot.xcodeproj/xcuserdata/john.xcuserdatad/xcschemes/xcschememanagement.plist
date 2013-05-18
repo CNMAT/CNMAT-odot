@@ -14,6 +14,11 @@
 			<key>orderHint</key>
 			<integer>24</integer>
 		</dict>
+		<key>o.O.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>29</integer>
+		</dict>
 		<key>o.append.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -53,6 +58,11 @@
 		<dict>
 			<key>orderHint</key>
 			<integer>5</integer>
+		</dict>
+		<key>o.downcast.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>30</integer>
 		</dict>
 		<key>o.explode.xcscheme</key>
 		<dict>
@@ -293,6 +303,11 @@
 			<true/>
 		</dict>
 		<key>52A8396E16F3F898002E273C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>52B53CDC17480C8100237A19</key>
 		<dict>
 			<key>primary</key>
 			<true/>

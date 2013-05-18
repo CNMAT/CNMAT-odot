@@ -13,6 +13,7 @@
 			buildPhases = (
 			);
 			dependencies = (
+				52B53CEB17480CBE00237A19 /* PBXTargetDependency */,
 				52CB898017077E4100178AAF /* PBXTargetDependency */,
 				52A8397E16F3F8F2002E273C /* PBXTargetDependency */,
 				52A8396916EFFC09002E273C /* PBXTargetDependency */,
@@ -112,6 +113,11 @@
 		52A8397F16F3F900002E273C /* o.schedule.c in Sources */ = {isa = PBXBuildFile; fileRef = 52A8396B16F3F886002E273C /* o.schedule.c */; };
 		52A8398016F3F900002E273C /* pqops.c in Sources */ = {isa = PBXBuildFile; fileRef = 52A8396C16F3F893002E273C /* pqops.c */; };
 		52A8398116F3F900002E273C /* pqops.h in Headers */ = {isa = PBXBuildFile; fileRef = 52A8396D16F3F893002E273C /* pqops.h */; };
+		52B53CE117480C8100237A19 /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52CEF59416375BFB0016EC39 /* commonsyms.c */; };
+		52B53CE317480C8100237A19 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */; };
+		52B53CE417480C8100237A19 /* libo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5AD163763BD0016EC39 /* libo.a */; };
+		52B53CE517480C8100237A19 /* libomax.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5C6163763CF0016EC39 /* libomax.a */; };
+		52B53CED17480CFC00237A19 /* o.downcast.c in Sources */ = {isa = PBXBuildFile; fileRef = 52B53CEC17480CFC00237A19 /* o.downcast.c */; };
 		52C839D6167A5B24000AA688 /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52CEF59416375BFB0016EC39 /* commonsyms.c */; };
 		52C839D8167A5B24000AA688 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */; };
 		52C839D9167A5B24000AA688 /* libo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5AD163763BD0016EC39 /* libo.a */; };
@@ -379,6 +385,13 @@
 			remoteGlobalIDString = 52A8396E16F3F898002E273C;
 			remoteInfo = o.schedule;
 		};
+		52B53CEA17480CBE00237A19 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 52B53CDC17480C8100237A19;
+			remoteInfo = o.downcast;
+		};
 		52CB897F17077E4100178AAF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
@@ -452,6 +465,8 @@
 		52A8396C16F3F893002E273C /* pqops.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = pqops.c; path = o.schedule/pqops.c; sourceTree = "<group>"; };
 		52A8396D16F3F893002E273C /* pqops.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = pqops.h; path = o.schedule/pqops.h; sourceTree = "<group>"; };
 		52A8397C16F3F898002E273C /* o.schedule.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.schedule.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
+		52B53CE917480C8100237A19 /* o.downcast.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.downcast.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
+		52B53CEC17480CFC00237A19 /* o.downcast.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.downcast.c; path = o.downcast/o.downcast.c; sourceTree = "<group>"; };
 		52C839CF167A5B1A000AA688 /* o.table.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = o.table.c; path = o.table/o.table.c; sourceTree = "<group>"; };
 		52C839DF167A5B24000AA688 /* o.table.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.table.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
 		52C839E6167A5BE2000AA688 /* avl.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = avl.c; path = "../CNMAT-Externs/lib/rumati_avl/avl.c"; sourceTree = "<group>"; };
@@ -725,6 +740,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		52B53CE217480C8100237A19 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				52B53CE317480C8100237A19 /* Carbon.framework in Frameworks */,
+				52B53CE417480C8100237A19 /* libo.a in Frameworks */,
+				52B53CE517480C8100237A19 /* libomax.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		52C839D7167A5B24000AA688 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -759,6 +784,7 @@
 				525525291504D22A00A10E5D /* o.cond.c */,
 				520C0E2A158469F4005F2955 /* o.dict.c */,
 				5255252B1504D23400A10E5D /* o.difference.c */,
+				52B53CEC17480CFC00237A19 /* o.downcast.c */,
 				5217D90C158EEBEB005B5238 /* o.explode.c */,
 				5255252D1504D23C00A10E5D /* o.expr.c */,
 				5203467B1555BF16001EA532 /* o.flatten.c */,
@@ -828,6 +854,7 @@
 				52A8394916E978D7002E273C /* o.append.mxo */,
 				52A8396716EFFBC9002E273C /* o.timetag.mxo */,
 				52A8397C16F3F898002E273C /* o.schedule.mxo */,
+				52B53CE917480C8100237A19 /* o.downcast.mxo */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1028,6 +1055,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				52A8398116F3F900002E273C /* pqops.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		52B53CDD17480C8100237A19 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1518,6 +1552,24 @@
 			productReference = 52A8397C16F3F898002E273C /* o.schedule.mxo */;
 			productType = "com.apple.product-type.bundle";
 		};
+		52B53CDC17480C8100237A19 /* o.downcast */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 52B53CE617480C8100237A19 /* Build configuration list for PBXNativeTarget "o.downcast" */;
+			buildPhases = (
+				52B53CDD17480C8100237A19 /* Headers */,
+				52B53CDE17480C8100237A19 /* Resources */,
+				52B53CDF17480C8100237A19 /* Sources */,
+				52B53CE217480C8100237A19 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = o.downcast;
+			productName = cv.jit.dilate;
+			productReference = 52B53CE917480C8100237A19 /* o.downcast.mxo */;
+			productType = "com.apple.product-type.bundle";
+		};
 		52C839D1167A5B24000AA688 /* o.table */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 52C839DC167A5B24000AA688 /* Build configuration list for PBXNativeTarget "o.table" */;
@@ -1585,6 +1637,7 @@
 				525523EF1504D14200A10E5D /* o.cond */,
 				520C0E19158468F7005F2955 /* o.dict */,
 				525523FE1504D14400A10E5D /* o.difference */,
+				52B53CDC17480C8100237A19 /* o.downcast */,
 				5217D8FB158EEBC4005B5238 /* o.explode */,
 				5255240D1504D14600A10E5D /* o.expr */,
 				529781521555B6FD0018A44D /* o.flatten */,
@@ -1787,6 +1840,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		52A8397016F3F898002E273C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		52B53CDE17480C8100237A19 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -2045,6 +2105,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		52B53CDF17480C8100237A19 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				52B53CE117480C8100237A19 /* commonsyms.c in Sources */,
+				52B53CED17480CFC00237A19 /* o.downcast.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		52C839D4167A5B24000AA688 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -2197,6 +2266,11 @@
 			isa = PBXTargetDependency;
 			target = 52A8396E16F3F898002E273C /* o.schedule */;
 			targetProxy = 52A8397D16F3F8F2002E273C /* PBXContainerItemProxy */;
+		};
+		52B53CEB17480CBE00237A19 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 52B53CDC17480C8100237A19 /* o.downcast */;
+			targetProxy = 52B53CEA17480CBE00237A19 /* PBXContainerItemProxy */;
 		};
 		52CB898017077E4100178AAF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -4888,6 +4962,103 @@
 			};
 			name = Release;
 		};
+		52B53CE717480C8100237A19 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(inherited)";
+				CONFIGURATION_BUILD_DIR = "$(inherited)";
+				CONFIGURATION_TEMP_DIR = "$(inherited)";
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+				);
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../max6-sdk/c74support/max-includes\"";
+				GCC_ALTIVEC_EXTENSIONS = YES;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INPUT_FILETYPE = automatic;
+				GCC_MODEL_TUNING = G4;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(inherited)";
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = "$(inherited)";
+				INSTALL_PATH = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
+				);
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../libo\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../libomax\"";
+				MACOSX_DEPLOYMENT_TARGET = 10.5;
+				OBJROOT = "$(inherited)";
+				OTHER_LDFLAGS = "$(inherited)";
+				PREBINDING = YES;
+				PRODUCT_NAME = o.downcast;
+				SDKROOT = macosx;
+				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SYMROOT = "$(inherited)";
+				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
+				WARNING_CFLAGS = "$(inherited)";
+				WRAPPER_EXTENSION = "$(inherited)";
+				ZERO_LINK = YES;
+			};
+			name = Debug;
+		};
+		52B53CE817480C8100237A19 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(inherited)";
+				CONFIGURATION_BUILD_DIR = "$(inherited)";
+				CONFIGURATION_TEMP_DIR = "$(inherited)";
+				COPY_PHASE_STRIP = YES;
+				DSTROOT = "$(PROJECT_DIR)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+				);
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../max6-sdk/c74support/max-includes\"";
+				GCC_ALTIVEC_EXTENSIONS = YES;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INPUT_FILETYPE = automatic;
+				GCC_MODEL_TUNING = G4;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(inherited)";
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = "$(inherited)";
+				INSTALL_PATH = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
+				);
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../libo\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../libomax\"";
+				MACOSX_DEPLOYMENT_TARGET = 10.5;
+				OBJROOT = "$(inherited)";
+				OTHER_LDFLAGS = "$(inherited)";
+				PREBINDING = YES;
+				PRODUCT_NAME = o.downcast;
+				SDKROOT = macosx;
+				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SYMROOT = "$(inherited)";
+				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
+				WARNING_CFLAGS = "$(inherited)";
+				WRAPPER_EXTENSION = "$(inherited)";
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
 		52C839DD167A5B24000AA688 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -5382,6 +5553,15 @@
 			buildConfigurations = (
 				52A8397A16F3F898002E273C /* Debug */,
 				52A8397B16F3F898002E273C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		52B53CE617480C8100237A19 /* Build configuration list for PBXNativeTarget "o.downcast" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				52B53CE717480C8100237A19 /* Debug */,
+				52B53CE817480C8100237A19 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
