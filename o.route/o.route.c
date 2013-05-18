@@ -106,7 +106,7 @@ typedef struct _oroute{
 	char **outlet_assist_strings;
 } t_oroute;
 
-#ifdef OMAX_PD_VESRION
+#ifdef OMAX_PD_VERSION
 t_omax_pd_proxy_class *oroute_class;
 t_omax_pd_proxy_class *oroute_proxy_class;
 #else
