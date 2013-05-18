@@ -164,6 +164,11 @@
 			<key>orderHint</key>
 			<integer>19</integer>
 		</dict>
+		<key>o.validate.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>31</integer>
+		</dict>
 		<key>o.var.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -308,6 +313,11 @@
 			<true/>
 		</dict>
 		<key>52B53CDC17480C8100237A19</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>52B53CEE1748287A00237A19</key>
 		<dict>
 			<key>primary</key>
 			<true/>
