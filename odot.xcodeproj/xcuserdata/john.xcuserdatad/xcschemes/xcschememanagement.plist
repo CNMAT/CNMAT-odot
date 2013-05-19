@@ -94,6 +94,11 @@
 			<key>orderHint</key>
 			<integer>8</integer>
 		</dict>
+		<key>o.iterate.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>32</integer>
+		</dict>
 		<key>o.mappatch.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -318,6 +323,11 @@
 			<true/>
 		</dict>
 		<key>52B53CEE1748287A00237A19</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>52B53D0017484E5500237A19</key>
 		<dict>
 			<key>primary</key>
 			<true/>
