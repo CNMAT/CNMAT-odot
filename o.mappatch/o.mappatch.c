@@ -40,10 +40,16 @@ VERSION 1.0: New name
 
 
 #include "odot_version.h"
+#ifdef OMAX_PD_VERSION
+#include "m_pd.h"
+#include "omax_pd_proxy.h"
+#define proxy_getinlet(x) (((t_omap *)(x))->inlet)
+#else
 #include "ext.h"
-#include "ext_critical.h"
 #include "ext_obex.h"
 #include "ext_obex_util.h"
+#include "ext_critical.h"
+#endif
 #include "omax_util.h"
 #include "osc.h"
 #include "osc_mem.h"
@@ -52,6 +58,8 @@ VERSION 1.0: New name
 #include "osc_message_s.h"
 #include "omax_doc.h"
 #include "omax_dict.h"
+
+#include "o.h"
 
 /*
 When a new FullPacket message comes in, we make an unserialized bundle and stick it in our object
@@ -79,7 +87,11 @@ typedef struct _omap_qitem{
 typedef struct _omap{
 	t_object ob;
 	void *outlets[2];
+#ifdef OMAX_PD_VERSION
+    void **proxy;
+#else
 	void *proxy;
+#endif
 	long inlet;
 	t_critical lock;
 	t_omap_qitem *fifo;
@@ -88,7 +100,12 @@ typedef struct _omap{
 	int busy;
 } t_omap;
 
+#ifdef OMAX_PD_VERSION
+t_omax_pd_proxy_class *omap_class;
+t_omax_pd_proxy_class *omap_proxy_class;
+#else
 void *omap_class;
+#endif
 
 void omap_list(t_omap *x, t_symbol *sym, short argc, t_atom *argv);
 void omap_addQitem(t_omap *x, t_omap_qitem *qi);
@@ -264,22 +281,66 @@ void omap_addQitem(t_omap *x, t_omap_qitem *qi)
 	critical_exit(x->lock);
 }
 
-OMAX_DICT_DICTIONARY(t_omap, x, omap_fullPacket);
 
 void omap_doc(t_omap *x)
 {
 	omax_doc_outletDoc(x->outlets[0]);
 }
 
+void omap_free(t_omap *x)
+{
+	free(x->proxy);
+}
+
+#ifdef OMAX_PD_VERSION
+
+void *omap_new(t_symbol *msg, short argc, t_atom *argv){
+	t_omap *x;
+	if((x = (t_omap *)object_alloc(omap_class->class))){
+		x->outlets[1] = outlet_new((t_object *)x, NULL);
+		x->outlets[0] = outlet_new((t_object *)x, gensym("FullPacket"));
+		x->proxy = (void **)malloc(2 * sizeof(t_omax_pd_proxy *));
+		x->proxy[0] = proxy_new((t_object *)x, 0, &(x->inlet), omap_proxy_class);
+		x->proxy[1] = proxy_new((t_object *)x, 1, &(x->inlet), omap_proxy_class);
+        
+		x->bndl = NULL;
+		x->msg = NULL;
+		x->fifo = NULL;
+		x->busy = 0;
+		critical_new(&(x->lock));
+	}
+    
+	return(x);
+}
+
+int o_mappatch_setup(void){
+    
+    omax_pd_class_new(omap_class, gensym("o_mappatch"), (t_newmethod)omap_new, (t_method)omap_free, sizeof(t_omap),  CLASS_NOINLET, A_GIMME, 0);
+    
+    t_omax_pd_proxy_class *c = NULL;
+	omax_pd_class_new(c, NULL, NULL, NULL, sizeof(t_omax_pd_proxy), CLASS_PD | CLASS_NOINLET, 0);
+    
+    omax_pd_class_addmethod(c, (t_method)odot_version, gensym("version"));
+	omax_pd_class_addmethod(c, (t_method)omap_fullPacket, gensym("FullPacket"));
+    omax_pd_class_addmethod(c, (t_method)omap_list, gensym("list"));
+	omax_pd_class_addanything(c, (t_method)omap_anything);
+	omax_pd_class_addfloat(c, (t_method)omap_float);
+    //	omax_pd_class_addmethod(c, (t_method)opack_doc, gensym("doc")); //<<crashes
+    
+	omap_proxy_class = c;
+    
+	ODOT_PRINT_VERSION;
+	return 0;
+}
+
+#else
+
 void omap_assist(t_omap *x, void *b, long io, long num, char *buf)
 {
 	omax_doc_assist(io, num, buf);
 }
 
-void omap_free(t_omap *x)
-{
-	object_free(x->proxy);
-}
+OMAX_DICT_DICTIONARY(t_omap, x, omap_fullPacket);
 
 void *omap_new(t_symbol *msg, short argc, t_atom *argv){
 	t_omap *x;
@@ -325,3 +386,4 @@ int main(void){
 	return 0;
 }
 
+#endif

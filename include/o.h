@@ -60,12 +60,16 @@ char *ptr = (char *)atom_getlong(argv + 1);
 
 #define sysmem_freeptr free
     
-#define t_max_err void
+#define t_max_err void*
+#define MAX_ERR_NONE 0
+#define MAX_ERR_GENERIC 0
+    
 #define critical_enter(x)
 #define critical_exit(x)
 #define critical_free(x)
 #define critical_new(x)
 #define t_critical void*
+    
 #define object_post(x, st, ...) post(st, ##__VA_ARGS__)
 #define object_error(x, st, ...) error(st, ##__VA_ARGS__)
 

@@ -27,15 +27,21 @@ AUTHORS: John MacCallum
 COPYRIGHT_YEARS: 2011
 SVN_REVISION: $LastChangedRevision: 587 $
 VERSION 0.0: First try
+VERSION 0.1: porting to pd, note: the name and key attributes are only setable on load in pd -- rama
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
 */
 
-#include "ext.h"
 #include "odot_version.h"
+#ifdef OMAX_PD_VERSION
+#include "m_pd.h"
+#else
+#include "ext.h"
 #include "ext_obex.h"
 #include "ext_obex_util.h"
 #include "ext_critical.h"
+#endif
+
 #include "osc.h"
 #include "osc_mem.h"
 #include "osc_hashtab.h"
@@ -46,6 +52,8 @@ VERSION 0.0: First try
 #include "omax_util.h"
 #include "omax_doc.h"
 #include "omax_dict.h"
+
+#include "o.h"
 
 typedef struct _otable_db{
 	t_osc_hashtab *ht;
@@ -192,8 +200,15 @@ void otable_pop(t_otable *x, void *(*ll_pop)(t_osc_linkedlist*))
 	}
 }
 
+
+#ifdef OMAX_PD_VERSION
+void otable_popnth(t_otable *x, float f)
+{
+    int n = (int)f;
+#else
 void otable_popnth(t_otable *x, int n)
 {
+#endif
 	critical_enter(x->lock);
 	t_osc_bndl_s *bndl = (t_osc_bndl_s *)osc_linkedlist_popNth(x->db->ll, n);
 	critical_exit(x->lock);
@@ -217,8 +232,14 @@ void otable_poplast(t_otable *x)
 	otable_pop(x, osc_linkedlist_popTail);
 }
 
+#ifdef OMAX_PD_VERSION
+void otable_peeknth(t_otable *x, float f)
+{
+    int n = (int)f;
+#else
 void otable_peeknth(t_otable *x, int n)
 {
+#endif
 	critical_enter(x->lock);
 	t_osc_bndl_s *bndl = (t_osc_bndl_s *)osc_linkedlist_peekNth(x->db->ll, n);
 	critical_exit(x->lock);
@@ -377,6 +398,151 @@ void otable_destroydb(t_otable *x, t_otable_db *db)
 	critical_exit(x->lock);
 }
 
+t_max_err otable_setName(t_otable *x, void *attr, long ac, t_atom *av)
+{
+	if(x->db){
+		critical_enter(x->lock);
+		otable_refer(x, NULL, ac, av);
+		critical_exit(x->lock);
+	}
+	return MAX_ERR_NONE;
+}
+
+#ifndef OMAX_PD_VERSION
+t_max_err otable_getKey(t_otable *x, void *attr, long *ac, t_atom **av)
+{
+	t_symbol *key = NULL;
+	if(x->db){
+		critical_enter(x->lock);
+		if(x->db->keyaddress){
+			key = gensym(x->db->keyaddress);
+		}
+		critical_exit(x->lock);
+	}
+	if(ac && av){
+		char alloc;
+		if(atom_alloc(ac, av, &alloc)){
+			return MAX_ERR_GENERIC;
+		}
+		if(key){
+			atom_setsym(*av, key);
+		}else{
+			atom_setsym(*av, _sym_emptytext);
+		}
+	}
+	return MAX_ERR_NONE;
+}
+#endif
+
+t_max_err otable_setKey(t_otable *x, void *attr, long ac, t_atom *av)
+{
+	if(x->db){
+		critical_enter(x->lock);
+		x->db->keyaddress = atom_getsym(av)->s_name;
+		// wtf are we supposed to do here?  go through every bundle already stored and
+		// rehash the whole thing using this new key??
+		critical_exit(x->lock);
+	}
+	return MAX_ERR_NONE;
+}
+
+
+#ifdef OMAX_PD_VERSION
+void *otable_new(t_symbol *msg, short argc, t_atom *argv)
+{
+	t_otable *x;
+	if((x = (t_otable *)object_alloc(otable_class))){
+		x->outlet = outlet_new((t_object *)x, NULL);
+		critical_new(&x->lock);
+		x->name = NULL;
+		x->db = NULL;
+        
+        if(!x->name){
+			x->db = otable_makedb();
+			if(!x->db){
+				return NULL;
+			}
+		}
+        
+        int i;
+        for(i = 0; i < argc; i++)
+        {
+            if(atom_gettype(argv + i) == A_SYM)
+            {
+                t_symbol *attribute = atom_gensym(argv+i);
+
+                if( attribute == gensym("@key") ){
+                    if(atom_gettype(argv+(++i)) == A_SYMBOL)
+                    {
+                        t_symbol *key = atom_getsym(argv+i);
+                        if(key->s_name[0] == '/'){
+                            x->name = key;
+                            otable_setKey(x, NULL, 1, argv+i);
+
+                        } else {
+                            post("key must begin with a /");
+                        }
+                        
+                    } else {
+                        post("@key value must be a osc address");
+                        return 0;
+                    }
+                } else if(attribute->s_name[0] == '@') {
+                    post("unknown attribute");
+                }
+                
+            } else {
+                post("o.table @key attribute sets an osc address to be used as the key identifier");
+                return 0;
+            }
+            
+            
+        }
+		
+        
+	}
+    
+	return x;
+}
+
+
+int o_table_setup(void)
+{
+	t_class *c = class_new(gensym("o_table"), (t_newmethod)otable_new, (t_method)otable_free, sizeof(t_otable), 0L, A_GIMME, 0);
+    
+	class_addmethod(c, (t_method)otable_fullPacket, gensym("FullPacket"), A_GIMME, 0);
+	class_addmethod(c, (t_method)otable_anything, gensym("anything"), A_GIMME, 0);
+	class_addmethod(c, (t_method)otable_getkeys, gensym("getkeys"), A_GIMME, 0);
+	class_addmethod(c, (t_method)otable_refer, gensym("refer"), A_GIMME, 0);
+	class_addmethod(c, (t_method)otable_clear, gensym("clear"), 0);
+	class_addmethod(c, (t_method)otable_dump, gensym("dump"), 0);
+	class_addmethod(c, (t_method)otable_read, gensym("read"), A_DEFSYM, 0);
+	class_addmethod(c, (t_method)otable_write, gensym("write"), A_DEFSYM, 0);
+	class_addmethod(c, (t_method)odot_version, gensym("version"), 0);
+    
+	class_addmethod(c, (t_method)otable_prepend, gensym("prepend"), A_GIMME, 0);
+	class_addmethod(c, (t_method)otable_append, gensym("append"), A_GIMME, 0);
+	class_addmethod(c, (t_method)otable_popfirst, gensym("popfirst"), 0);
+	class_addmethod(c, (t_method)otable_poplast, gensym("poplast"), 0);
+	class_addmethod(c, (t_method)otable_popnth, gensym("popnth"), A_DEFFLOAT, 0); //<< long
+	class_addmethod(c, (t_method)otable_peekfirst, gensym("peekfirst"), 0);
+	class_addmethod(c, (t_method)otable_peeklast, gensym("peeklast"), 0);
+	class_addmethod(c, (t_method)otable_peeknth, gensym("peeknth"), A_DEFFLOAT, 0);//<<long
+    
+//	CLASS_ATTR_SYM(c, "name", 0, t_otable, name);
+//	CLASS_ATTR_ACCESSORS(c, "name", NULL, otable_setName);
+    
+//	CLASS_ATTR_SYM(c, "key", 0, t_otable, name); // name is a dummy
+//	CLASS_ATTR_ACCESSORS(c, "key", otable_getKey, otable_setKey);
+    
+	otable_class = c;
+        
+	ps_FullPacket = gensym("FullPacket");
+	ODOT_PRINT_VERSION
+	return 0;
+}
+
+#else
 void *otable_new(t_symbol *msg, short argc, t_atom *argv)
 {
 	t_otable *x;
@@ -444,50 +610,5 @@ int main(void)
 	ODOT_PRINT_VERSION
 	return 0;
 }
-
-t_max_err otable_setName(t_otable *x, void *attr, long ac, t_atom *av)
-{
-	if(x->db){
-		critical_enter(x->lock);
-		otable_refer(x, NULL, ac, av);
-		critical_exit(x->lock);
-	}
-	return MAX_ERR_NONE;
-}
-
-t_max_err otable_getKey(t_otable *x, void *attr, long *ac, t_atom **av)
-{
-	t_symbol *key = NULL;
-	if(x->db){
-		critical_enter(x->lock);
-		if(x->db->keyaddress){
-			key = gensym(x->db->keyaddress);
-		}
-		critical_exit(x->lock);
-	}
-	if(ac && av){
-		char alloc;
-		if(atom_alloc(ac, av, &alloc)){
-			return MAX_ERR_GENERIC;
-		}
-		if(key){
-			atom_setsym(*av, key);
-		}else{
-			atom_setsym(*av, _sym_emptytext);
-		}
-	}
-	return MAX_ERR_NONE;
-}
-
-t_max_err otable_setKey(t_otable *x, void *attr, long ac, t_atom *av)
-{
-	if(x->db){
-		critical_enter(x->lock);
-		x->db->keyaddress = atom_getsym(av)->s_name;
-		// wtf are we supposed to do here?  go through every bundle already stored and 
-		// rehash the whole thing using this new key??
-		critical_exit(x->lock);
-	}
-	return MAX_ERR_NONE;
-}
+#endif
 

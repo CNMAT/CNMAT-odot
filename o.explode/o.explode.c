@@ -39,15 +39,21 @@
 #define OMAX_DOC_SEEALSO (char *[]){"o.flatten"}
 
 #include "odot_version.h"
+#ifdef OMAX_PD_VERSION
+#include "m_pd.h"
+#else
 #include "ext.h"
 #include "ext_obex.h"
-#include "ext_critical.h"
 #include "ext_obex_util.h"
+#include "ext_critical.h"
+#endif
 #include "osc.h"
 #include "osc_mem.h"
 #include "omax_util.h"
 #include "omax_doc.h"
 #include "omax_dict.h"
+
+#include "o.h"
 
 typedef struct _oexplode{
 	t_object ob;
@@ -72,18 +78,84 @@ void oexplode_fullPacket(t_oexplode *x, t_symbol *msg, int argc, t_atom *argv)
 	osc_bundle_s_deepFree(dest2);
 }
 
+#ifndef OMAX_PD_VERSION
 OMAX_DICT_DICTIONARY(t_oexplode, x, oexplode_fullPacket);
+
+void oexplode_assist(t_oexplode *x, void *b, long io, long num, char *buf)
+{
+	omax_doc_assist(io, num, buf);
+}
+#endif
 
 void oexplode_doc(t_oexplode *x)
 {
 	omax_doc_outletDoc(x->outlet);
 }
 
-void oexplode_assist(t_oexplode *x, void *b, long io, long num, char *buf)
+
+#ifdef OMAX_PD_VERSION
+void *oexplode_new(t_symbol *msg, short argc, t_atom *argv)
 {
-	omax_doc_assist(io, num, buf);
+	t_oexplode *x;
+	if((x = (t_oexplode *)object_alloc(oexplode_class))){
+		x->outlet = outlet_new((t_object *)x, gensym("FullPacket"));
+		x->level = -1;
+		x->sep = gensym("");
+        
+        int i;
+        for(i = 0; i < argc; i++)
+        {
+            if(atom_gettype(argv + i) == A_SYM)
+            {
+                t_symbol *attribute = atom_gensym(argv+i);
+                if(attribute == gensym("@level")){
+                    if(atom_gettype(argv+(++i)) == A_FLOAT)
+                    {
+                        x->level = atom_getfloat(argv+i);
+                    } else {
+                        post("@level value must be a number");
+                        return 0;
+                    }
+                } else if(attribute == gensym("@sep")){
+                    if(atom_gettype(argv+(++i)) == A_SYMBOL)
+                    {
+                        x->sep = atom_getsym(argv+i);
+                    } else {
+                        post("@sep value must be a symbol");
+                        return 0;
+                    }
+                } else if(attribute->s_name[0] == '@') {
+                    post("unknown attribute");
+                }  else {
+                    post("o.explode optional attributes are @level <value> and @sep <value>");
+            }
+            
+            } else {
+                post("o.explode optional attributes are @level <value> and @sep <value>");
+                return 0;
+            }
+            
+        
+        }
+    }
+    
+	return x;
 }
 
+int o_explode_setup(void)
+{
+	t_class *c = class_new(gensym("o_explode"), (t_newmethod)oexplode_new, NULL, sizeof(t_oexplode), 0L, A_GIMME, 0);
+
+	class_addmethod(c, (t_method)oexplode_fullPacket, gensym("FullPacket"), A_GIMME, 0);
+	class_addmethod(c, (t_method)oexplode_doc, gensym("doc"), 0);
+	class_addmethod(c, (t_method)odot_version, gensym("version"), 0);
+    
+	oexplode_class = c;
+    
+	ODOT_PRINT_VERSION;
+	return 0;
+}
+#else
 void *oexplode_new(t_symbol *msg, short argc, t_atom *argv)
 {
 	t_oexplode *x;
@@ -121,3 +193,4 @@ int main(void)
 	ODOT_PRINT_VERSION;
 	return 0;
 }
+#endif
