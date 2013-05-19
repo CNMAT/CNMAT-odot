@@ -57,8 +57,8 @@ void oiterate_fullPacket(t_oiterate *x, t_symbol *msg, int argc, t_atom *argv)
 	t_osc_bndl_it_s *it = osc_bndl_it_s_get(len, ptr);
 	while(osc_bndl_it_s_hasNext(it)){
 		t_osc_msg_s *m = osc_bndl_it_s_next(it);
-		long l = osc_message_u_getSize(m);
-		char *p = osc_message_u_getAddress(m);
+		long l = osc_message_s_getSize(m);
+		char *p = osc_message_s_getAddress(m);
 		omax_util_outletOSC(x->outlet, l, p);
 	}
 	osc_bndl_it_s_destroy(it);

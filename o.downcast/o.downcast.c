@@ -50,8 +50,7 @@
 typedef struct _odowncast{
 	t_object ob;
 	void *outlet;
-	t_symbol *timetag;
-	long bundle;
+	t_symbol *timetag_address;
 } t_odowncast;
 
 void *odowncast_class;
@@ -103,9 +102,9 @@ void odowncast_fullPacket(t_odowncast *x, t_symbol *msg, int argc, t_atom *argv)
 			case OSC_TIMETAG_TYPETAG:
 				{
 					t_osc_timetag tt = osc_atom_u_getTimetag(a);
-					if(x->timetag){
+					if(x->timetag_address){
 						char *address = osc_message_u_getAddress(m);
-						if(!strcmp(address, x->timetag->s_name)){
+						if(!strcmp(address, x->timetag_address->s_name)){
 							timetag = tt;
 						}
 					}
@@ -140,8 +139,9 @@ void odowncast_fullPacket(t_odowncast *x, t_symbol *msg, int argc, t_atom *argv)
 				osc_mem_free(pp);
 			}
 		}
-		if(x->bundle){
-			omax_util_outletOSC(x->outlet, l, p);
+		//if(x->bundle){
+		omax_util_outletOSC(x->outlet, l, p);
+			/*
 		}else{
 			t_osc_bndl_it_s *bit = osc_bndl_it_s_get(l, p);
 			while(osc_bndl_it_s_hasNext(bit)){
@@ -152,6 +152,7 @@ void odowncast_fullPacket(t_odowncast *x, t_symbol *msg, int argc, t_atom *argv)
 			}
 			osc_bndl_it_s_destroy(bit);
 		}
+			*/
 		osc_mem_free(p);
 	}
 	osc_bundle_u_free(b);
@@ -178,8 +179,7 @@ void *odowncast_new(t_symbol *msg, short argc, t_atom *argv)
 	t_odowncast *x;
 	if((x = (t_odowncast *)object_alloc(odowncast_class))){
 		x->outlet = outlet_new((t_object *)x, "FullPacket");
-		x->timetag = NULL;
-		x->bundle = 1;
+		x->timetag_address = NULL;
 		attr_args_process(x, argc, argv);
 	}
 	return x;
@@ -200,8 +200,7 @@ int main(void)
 	}
 	class_addmethod(c, (method)odot_version, "version", 0);
 
-	CLASS_ATTR_SYM(c, "timetag", 0, t_odowncast, timetag);
-	CLASS_ATTR_LONG(c, "bundle", 0, t_odowncast, bundle);
+	CLASS_ATTR_SYM(c, "headertimetag", 0, t_odowncast, timetag_address);
 	
 	class_register(CLASS_BOX, c);
 	odowncast_class = c;
