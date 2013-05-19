@@ -51,6 +51,7 @@ typedef struct _odowncast{
 	t_object ob;
 	void *outlet;
 	t_symbol *timetag_address;
+	long doubles, ints, bundles, timetags;
 } t_odowncast;
 
 void *odowncast_class;
@@ -87,20 +88,26 @@ void odowncast_fullPacket(t_odowncast *x, t_symbol *msg, int argc, t_atom *argv)
 			case 'N':
 			case 'T':
 			case 'F':
-				osc_atom_u_setInt32(a, osc_atom_u_getInt32(a));
+				if(x->ints){
+					osc_atom_u_setInt32(a, osc_atom_u_getInt32(a));
+				}
 				break;
 			case 'd':
-				osc_atom_u_setFloat(a, osc_atom_u_getFloat(a));
+				if(x->doubles){
+					osc_atom_u_setFloat(a, osc_atom_u_getFloat(a));
+				}
 				break;
 			case OSC_BUNDLE_TYPETAG:
-				if(!nestedbundles || nnestedbundles == nestedbundles_buflen){
-					nestedbundles = (t_osc_bndl_u **)osc_mem_resize(nestedbundles, (nestedbundles_buflen + 16) * sizeof(char *));
+				if(x->timetags){
+					if(!nestedbundles || nnestedbundles == nestedbundles_buflen){
+						nestedbundles = (t_osc_bndl_u **)osc_mem_resize(nestedbundles, (nestedbundles_buflen + 16) * sizeof(char *));
+					}
+					nestedbundles[nnestedbundles++] = osc_atom_u_getBndl(a);
+					osc_message_u_removeAtom(m, a);
 				}
-				nestedbundles[nnestedbundles++] = osc_atom_u_getBndl(a);
-				osc_message_u_removeAtom(m, a);
 				break;
 			case OSC_TIMETAG_TYPETAG:
-				{
+				if(x->timetags){
 					t_osc_timetag tt = osc_atom_u_getTimetag(a);
 					if(x->timetag_address){
 						char *address = osc_message_u_getAddress(m);
@@ -180,6 +187,7 @@ void *odowncast_new(t_symbol *msg, short argc, t_atom *argv)
 	if((x = (t_odowncast *)object_alloc(odowncast_class))){
 		x->outlet = outlet_new((t_object *)x, "FullPacket");
 		x->timetag_address = NULL;
+		x->doubles = x->ints = x->bundles = x->timetags = 1;
 		attr_args_process(x, argc, argv);
 	}
 	return x;
@@ -188,12 +196,9 @@ void *odowncast_new(t_symbol *msg, short argc, t_atom *argv)
 int main(void)
 {
 	t_class *c = class_new("o.downcast", (method)odowncast_new, (method)odowncast_free, sizeof(t_odowncast), 0L, A_GIMME, 0);
-	//class_addmethod(c, (method)odowncast_fullPacket, "FullPacket", A_LONG, A_LONG, 0);
 	class_addmethod(c, (method)odowncast_fullPacket, "FullPacket", A_GIMME, 0);
 	class_addmethod(c, (method)odowncast_assist, "assist", A_CANT, 0);
 	class_addmethod(c, (method)odowncast_doc, "doc", 0);
-	//class_addmethod(c, (method)odowncast_bang, "bang", 0);
-	//class_addmethod(c, (method)odowncast_anything, "anything", A_GIMME, 0);
 	// remove this if statement when we stop supporting Max 5
 	if(omax_dict_resolveDictStubs()){
 		class_addmethod(c, (method)omax_dict_dictionary, "dictionary", A_GIMME, 0);
@@ -201,6 +206,10 @@ int main(void)
 	class_addmethod(c, (method)odot_version, "version", 0);
 
 	CLASS_ATTR_SYM(c, "headertimetag", 0, t_odowncast, timetag_address);
+	CLASS_ATTR_LONG(c, "doubles", 0, t_odowncast, doubles);
+	CLASS_ATTR_LONG(c, "ints", 0, t_odowncast, ints);
+	CLASS_ATTR_LONG(c, "bundles", 0, t_odowncast, bundles);
+	CLASS_ATTR_LONG(c, "timetags", 0, t_odowncast, timetags);
 	
 	class_register(CLASS_BOX, c);
 	odowncast_class = c;
