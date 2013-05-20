@@ -25,6 +25,7 @@
 		210CBC9F17475485006CAB74 /* o.schedule.c in Sources */ = {isa = PBXBuildFile; fileRef = 210CBC9E17475485006CAB74 /* o.schedule.c */; };
 		210CBCA11747549A006CAB74 /* o.table.c in Sources */ = {isa = PBXBuildFile; fileRef = 210CBCA01747549A006CAB74 /* o.table.c */; };
 		210CBCA3174754AE006CAB74 /* o.timetag.c in Sources */ = {isa = PBXBuildFile; fileRef = 210CBCA2174754AE006CAB74 /* o.timetag.c */; };
+		210CBCAB1748AFE0006CAB74 /* pqops.c in Sources */ = {isa = PBXBuildFile; fileRef = 210CBCAA1748AFE0006CAB74 /* pqops.c */; };
 		21B8486B17444AD100103A7F /* o.cond.c in Sources */ = {isa = PBXBuildFile; fileRef = 21B8486A17444AD100103A7F /* o.cond.c */; };
 		21B8486D17444ADE00103A7F /* o.unless.c in Sources */ = {isa = PBXBuildFile; fileRef = 21B8486C17444ADE00103A7F /* o.unless.c */; };
 		21B8486F17444AEE00103A7F /* o.expr.c in Sources */ = {isa = PBXBuildFile; fileRef = 21B8486E17444AEE00103A7F /* o.expr.c */; };
@@ -73,6 +74,7 @@
 		210CBC9E17475485006CAB74 /* o.schedule.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.schedule.c; path = o.schedule/o.schedule.c; sourceTree = "<group>"; };
 		210CBCA01747549A006CAB74 /* o.table.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.table.c; path = o.table/o.table.c; sourceTree = "<group>"; };
 		210CBCA2174754AE006CAB74 /* o.timetag.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.timetag.c; path = o.timetag/o.timetag.c; sourceTree = "<group>"; };
+		210CBCAA1748AFE0006CAB74 /* pqops.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = pqops.c; path = o.schedule/pqops.c; sourceTree = "<group>"; };
 		21B8484C174447B900103A7F /* o_if.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = o_if.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
 		21B8485617444A4400103A7F /* o_cond.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = o_cond.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
 		21B8485E17444A9200103A7F /* o_when.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = o_when.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -289,6 +291,7 @@
 		21CA080017346FD6003F5B84 = {
 			isa = PBXGroup;
 			children = (
+				210CBCAA1748AFE0006CAB74 /* pqops.c */,
 				210CBCA2174754AE006CAB74 /* o.timetag.c */,
 				210CBCA01747549A006CAB74 /* o.table.c */,
 				210CBC9E17475485006CAB74 /* o.schedule.c */,
@@ -1186,6 +1189,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				210CBC9F17475485006CAB74 /* o.schedule.c in Sources */,
+				210CBCAB1748AFE0006CAB74 /* pqops.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2034,6 +2038,7 @@
 				210CBC1F1745953F006CAB74 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		210CBC2517459549006CAB74 /* Build configuration list for PBXNativeTarget "o_print" */ = {
 			isa = XCConfigurationList;
@@ -2042,6 +2047,7 @@
 				210CBC2717459549006CAB74 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		210CBC2D17459550006CAB74 /* Build configuration list for PBXNativeTarget "o_printbytes" */ = {
 			isa = XCConfigurationList;
@@ -2050,6 +2056,7 @@
 				210CBC2F17459550006CAB74 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		210CBC3B174752DB006CAB74 /* Build configuration list for PBXNativeTarget "o_atomize" */ = {
 			isa = XCConfigurationList;
@@ -2058,6 +2065,7 @@
 				210CBC3D174752DB006CAB74 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		210CBC43174752E3006CAB74 /* Build configuration list for PBXNativeTarget "o_append" */ = {
 			isa = XCConfigurationList;
@@ -2066,6 +2074,7 @@
 				210CBC45174752E3006CAB74 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		210CBC4B174752EA006CAB74 /* Build configuration list for PBXNativeTarget "o_prepend" */ = {
 			isa = XCConfigurationList;
@@ -2074,6 +2083,7 @@
 				210CBC4D174752EA006CAB74 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		210CBC53174752F1006CAB74 /* Build configuration list for PBXNativeTarget "o_change" */ = {
 			isa = XCConfigurationList;
@@ -2082,6 +2092,7 @@
 				210CBC55174752F1006CAB74 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		210CBC5B174752FE006CAB74 /* Build configuration list for PBXNativeTarget "o_delay" */ = {
 			isa = XCConfigurationList;
@@ -2090,6 +2101,7 @@
 				210CBC5D174752FE006CAB74 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		210CBC631747530D006CAB74 /* Build configuration list for PBXNativeTarget "o_explode" */ = {
 			isa = XCConfigurationList;
@@ -2098,6 +2110,7 @@
 				210CBC651747530D006CAB74 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		210CBC6B17475316006CAB74 /* Build configuration list for PBXNativeTarget "o_flatten" */ = {
 			isa = XCConfigurationList;
@@ -2106,6 +2119,7 @@
 				210CBC6D17475316006CAB74 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		210CBC7317475323006CAB74 /* Build configuration list for PBXNativeTarget "o_mappatch" */ = {
 			isa = XCConfigurationList;
@@ -2114,6 +2128,7 @@
 				210CBC7517475323006CAB74 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		210CBC7B17475331006CAB74 /* Build configuration list for PBXNativeTarget "o_schedule" */ = {
 			isa = XCConfigurationList;
@@ -2122,6 +2137,7 @@
 				210CBC7D17475331006CAB74 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		210CBC831747533C006CAB74 /* Build configuration list for PBXNativeTarget "o_table" */ = {
 			isa = XCConfigurationList;
@@ -2130,6 +2146,7 @@
 				210CBC851747533C006CAB74 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		210CBC8B17475344006CAB74 /* Build configuration list for PBXNativeTarget "o_timetag" */ = {
 			isa = XCConfigurationList;
@@ -2138,6 +2155,7 @@
 				210CBC8D17475344006CAB74 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		21B8484D174447B900103A7F /* Build configuration list for PBXNativeTarget "o_if" */ = {
 			isa = XCConfigurationList;

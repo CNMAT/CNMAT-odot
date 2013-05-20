@@ -1,0 +1,8 @@
+#N canvas 618 212 450 300 10;
+#X obj 118 165 o_timetag /timetag;
+#X obj 118 203 o_print;
+#X obj 118 116 o_pack /foo;
+#X floatatom 118 72 5 0 0 0 - - -;
+#X connect 0 0 1 0;
+#X connect 2 0 0 0;
+#X connect 3 0 2 0;

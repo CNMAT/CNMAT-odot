@@ -78,6 +78,8 @@ char *ptr = (char *)atom_getlong(argv + 1);
 #define OMAX_DICT_DICTIONARY(o, x, st)
 
 #define object_alloc(class) pd_new(class)
+    
+#define clock_fdelay clock_delay
 
 void atom_setfloat(t_atom *atom, t_float f)
 {

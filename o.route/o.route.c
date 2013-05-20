@@ -130,7 +130,6 @@ t_symbol *ps_oscschemalist, *ps_FullPacket;
 //void oroute_fullPacket(t_oroute *x, long len, long ptr)
 void oroute_fullPacket(t_oroute *x, t_symbol *msg, int argc, t_atom *argv)
 {
-    post("full packet");
 	OMAX_UTIL_GET_LEN_AND_PTR
 	osc_bundle_s_wrap_naked_message(len, ptr);
 	if(x->num_selectors > 0){

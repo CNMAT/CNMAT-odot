@@ -39,16 +39,22 @@ VERSION 1.0: Completely revised to work with new odot objects and libs
 #define OMAX_DOC_SEEALSO (char *[]){"o.expr"}
 
 #include "odot_version.h"
+#ifdef OMAX_PD_VERSION
+#include "m_pd.h"
+#else
 #include "ext.h"
 #include "ext_obex.h"
 #include "ext_obex_util.h"
 #include "ext_critical.h"
+#endif
 #include "osc.h"
 #include "osc_timetag.h"
 #include "osc_mem.h"
 #include "omax_util.h"
 #include "omax_doc.h"
 #include "omax_dict.h"
+
+#include "o.h"
 
 typedef struct _otimetag{
 	t_object ob;
@@ -235,12 +241,6 @@ void otimetag_makemsg(t_otimetag *x, char *address)
 	}
 }
 
-void otimetag_assist(t_otimetag *x, void *b, long io, long num, char *buf)
-{
-	omax_doc_assist(io, num, buf);
-}
-
-OMAX_DICT_DICTIONARY(t_otimetag, x, otimetag_fullPacket);
 
 void otimetag_doc(t_otimetag *x)
 {
@@ -251,6 +251,7 @@ void otimetag_free(t_otimetag *x)
 {
 	critical_free(x->lock);
 }
+
 
 void *otimetag_new(t_symbol *msg, short argc, t_atom *argv)
 {
@@ -277,13 +278,42 @@ void *otimetag_new(t_symbol *msg, short argc, t_atom *argv)
 			object_error((t_object *)x, "argument is not a valid OSC address");
 			return NULL;
 		}
-		x->outlet = outlet_new(x, NULL);
+        
+		x->outlet = outlet_new((t_object *)x, NULL);
 		critical_new(&(x->lock));
 		otimetag_makemsg(x, address);
 	}
-		   	
+    
 	return(x);
 }
+#ifdef OMAX_PD_VERSION
+
+int o_timetag_setup(void)
+{
+	t_class *c = class_new(gensym("o_timetag"), (t_newmethod)otimetag_new, (t_method)otimetag_free, sizeof(t_otimetag), 0L, A_GIMME, 0);
+    
+	class_addmethod(c, (t_method)otimetag_fullPacket, gensym("FullPacket"), A_GIMME, 0);
+	class_addmethod(c, (t_method)otimetag_anything, gensym("anything"), A_GIMME, 0);
+	class_addmethod(c, (t_method)otimetag_bang, gensym("bang"), 0);
+	class_addmethod(c, (t_method)otimetag_set, gensym("set"), A_GIMME, 0);
+	class_addmethod(c, (t_method)odot_version, gensym("version"), 0);
+    
+	otimetag_class = c;
+    
+	ps_FullPacket = gensym("FullPacket");
+	ODOT_PRINT_VERSION;
+	return 0;
+}
+
+#else
+
+void otimetag_assist(t_otimetag *x, void *b, long io, long num, char *buf)
+{
+	omax_doc_assist(io, num, buf);
+}
+
+OMAX_DICT_DICTIONARY(t_otimetag, x, otimetag_fullPacket);
+
 
 int main(void)
 {
@@ -321,3 +351,4 @@ t_max_err otimetag_notify(t_otimetag *x, t_symbol *s, t_symbol *msg, void *sende
 	return MAX_ERR_NONE;
 }
 */
+#endif

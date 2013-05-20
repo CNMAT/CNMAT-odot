@@ -221,7 +221,7 @@ int o_print_setup(void){
 //	class_addmethod(c, (method)oprint_doc, "doc", 0);
 	class_addmethod(c, (t_method)oprint_anything, gensym("anything"), A_GIMME, 0);
 	class_addmethod(c, (t_method)oprint_list, gensym("list"), A_GIMME, 0);
-	class_addmethod(c, (t_method)oprint_int, gensym("int"), A_LONG, 0);
+	class_addmethod(c, (t_method)oprint_int, gensym("int"), A_DEFFLOAT, 0);
 	class_addmethod(c, (t_method)oprint_float, gensym("float"), A_FLOAT, 0);
 	class_addmethod(c, (t_method)odot_version, gensym("version"), 0);
     
