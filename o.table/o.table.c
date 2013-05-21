@@ -47,6 +47,11 @@ VERSION 0.0: First try
 #include "omax_doc.h"
 #include "omax_dict.h"
 
+#define OMAX_DOC_NAME "o.table"
+#define OMAX_DOC_SHORT_DESC "Store OSC bundles in a table."
+#define OMAX_DOC_LONG_DESC "o.table stores OSC bundles in an associative array."
+#define OMAX_DOC_SEEALSO (char *[]){"o.collect", "o.message", "o.var"}
+
 typedef struct _otable_db{
 	t_osc_hashtab *ht;
 	t_osc_linkedlist *ll;

@@ -39,7 +39,7 @@
   @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
  
 */
-#define OMAX_DOC_NAME "OSC-schedule"
+#define OMAX_DOC_NAME "o.schedule"
 #define OMAX_DOC_SHORT_DESC "Schedules packets using OSC timetags"
 #define OMAX_DOC_LONG_DESC "Takes OSC packets and outputs them at the time indicated by the timestamp."
 #define OMAX_DOC_INLETS_DESC (char *[]){"OSC packet to be scheduled."}
