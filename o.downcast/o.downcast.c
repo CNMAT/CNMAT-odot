@@ -98,7 +98,7 @@ void odowncast_fullPacket(t_odowncast *x, t_symbol *msg, int argc, t_atom *argv)
 				}
 				break;
 			case OSC_BUNDLE_TYPETAG:
-				if(x->timetags){
+				if(x->bundles){
 					if(!nestedbundles || nnestedbundles == nestedbundles_buflen){
 						nestedbundles = (t_osc_bndl_u **)osc_mem_resize(nestedbundles, (nestedbundles_buflen + 16) * sizeof(char *));
 					}
