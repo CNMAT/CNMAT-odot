@@ -31,15 +31,7 @@ version 1.0: Rewritten to only take one argument (the symbol to be prepended) wh
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 */
 
-#ifdef APPEND
-#define OMAX_DOC_NAME "o.append"
-#define OMAX_DOC_SHORT_DESC "Append an OSC address to every OSC address in a bundle."
-#define OMAX_DOC_LONG_DESC "o.append takes an OSC address as an argument and appends it to every address in the bundle."
-#define OMAX_DOC_INLETS_DESC (char *[]){"OSC packet."}
-#define OMAX_DOC_OUTLETS_DESC (char *[]){"OSC packet with argument appended."}
-#define OMAX_DOC_SEEALSO (char *[]){"o.prepend", "prepend", "append"}
-
-#else
+#ifndef APPEND
 
 #define OMAX_DOC_NAME "o.prepend"
 #define OMAX_DOC_SHORT_DESC "Prepend an OSC address to every OSC address in a bundle."

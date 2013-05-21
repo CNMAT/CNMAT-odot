@@ -31,21 +31,7 @@ VERSION 0.1: Addresses to match can now have patterns
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 */
 
-#ifdef SELECT
-
-#define OMAX_DOC_NAME "o.select"
-#define OMAX_DOC_SHORT_DESC "Dispatch OSC messages according to an address hierarchy preserving the address."
-#define OMAX_DOC_LONG_DESC "o.select does pattern matching on addresses contained in OSC packets.  All messages in a bundle with addresses that match an address specified as an argument to o.select are bundled together and sent out the corresponding outlet with their addresses kept in tact."
-#define OMAX_DOC_SEEALSO (char *[]){"o.route", "o.atomize", "OSC-route", "route", "routepass"}
-
-#elif defined ATOMIZE
-
-#define OMAX_DOC_NAME "o.atomize"
-#define OMAX_DOC_SHORT_DESC "Dispatch OSC messages according to an address hierarchy and convert them to Max messages."
-#define OMAX_DOC_SEEALSO (char *[]){"o.route", "o.select", "OSC-route", "OpenSoundControl", "route"}
-#define OMAX_DOC_LONG_DESC "o.atomize does pattern matching on addresses contained in OSC packets.  All messages in a bundle with addresses that match an address specified as an argument to o.atomize are bundled together and sent out the corresponding outlet with their addresses kept in tact and as Max messages.  With no arguments, o.atomize simply iterates over the messages in a bundle sending them out as Max messages."
-
-#else
+#if !defined(SELECT) && !defined(ATOMIZE)
 
 #define OMAX_DOC_NAME "o.route"
 #define OMAX_DOC_SHORT_DESC "Dispatch OSC messages according to an address hierarchy stripping off the portion of the address that matched."

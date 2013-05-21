@@ -67,6 +67,12 @@ void odowncast_fullPacket(t_odowncast *x, t_symbol *msg, int argc, t_atom *argv)
 		object_error((t_object *)x, "%s", osc_error_string(e));
 		return;
 	}
+	/*
+	if(x->flatten_nested_bundles){
+		t_osc_bndl_u *bf = NULL;
+		e = osc_bundle_u_flatten(&bf, b
+	}
+	*/
 	t_osc_bndl_u **nestedbundles = NULL;
 	int nnestedbundles = 0, nestedbundles_buflen = 0;
 	t_osc_bndl_it_u *bit = osc_bndl_it_u_get(b);

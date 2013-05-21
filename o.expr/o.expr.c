@@ -37,51 +37,13 @@
 #undef NAME
 #endif
 
-
-#if defined (OCOND)
-
-#define OMAX_DOC_NAME "o.cond"
-#define OMAX_DOC_SHORT_DESC "Route an OSC packet out an outlet based on the results of an expression."
-#define OMAX_DOC_LONG_DESC "o.cond creates one outlet for each expression separated by a semicolon. The bundle will come out the outlet that corresponds to the first expression that evaluates to true or non-zero."
-#define OMAX_DOC_INLETS_DESC (char *[]){"OSC packet containing addresses that the expression will be applied to."}
-#define OMAX_DOC_SEEALSO (char *[]){"o.expr", "o.if", "o.when", "o.unless", "o.callpatch", "expr", "jit.expr"}
-
-#elif defined (OIF)
-
-#define OMAX_DOC_NAME "o.if"
-#define OMAX_DOC_SHORT_DESC "Route an OSC packet based on the results of an expression."
-#define OMAX_DOC_LONG_DESC "o.if routs the incoming bundle out the left outlet if the result of the expression is true or non-zero, and out the right outlet otherwise."
-#define OMAX_DOC_INLETS_DESC (char *[]){"OSC packet containing addresses that the expression will be applied to."}
-#define OMAX_DOC_OUTLETS_DESC (char *[]){"Input OSC FullPacket if the expression returns true or non-zero", "Input OSC FullPacket if the expression returns false or zero"}
-#define OMAX_DOC_SEEALSO (char *[]){"o.expr", "o.cond", "o.when", "o.unless", "o.callpatch", "expr", "jit.expr"}
-
-#elif defined (OWHEN)
-
-#define OMAX_DOC_NAME "o.when"
-#define OMAX_DOC_SHORT_DESC "Passes the bundle through if the result of the expression is true or non-zero."
-#define OMAX_DOC_LONG_DESC "o.when behaves like o.if with only the left-most outlet (i.e. the \"then\" outlet)"
-#define OMAX_DOC_INLETS_DESC (char *[]){"OSC packet containing addresses that the expression will be applied to."}
-#define OMAX_DOC_OUTLETS_DESC (char *[]){"Input OSC packet if the expression returns true or non-zero."}
-#define OMAX_DOC_SEEALSO (char *[]){"o.if", "o.cond", "o.unless", "o.expr", "expr", "jit.expr"}
-
-#elif defined (OUNLESS)
-
-#define OMAX_DOC_NAME "o.unless"
-#define OMAX_DOC_SHORT_DESC "Passes the bundle through if the result of the expression is false or zero."
-#define OMAX_DOC_LONG_DESC "o.unless behaves like o.if with only the right-most outlet (i.e. the \"else\" outlet)."
-#define OMAX_DOC_INLETS_DESC (char *[]){"OSC packet containing addresses that the expression will be applied to."}
-#define OMAX_DOC_OUTLETS_DESC (char *[]){"Input OSC packet if the expression returns false or zero."}
-#define OMAX_DOC_SEEALSO (char *[]){"o.if", "o.cond", "o.when", "o.expr", "expr", "jit.expr"}
-
-#else
-
+#if !defined(OCOND) && !defined(OWHEN) && !defined(OIF) && !defined(OUNLESS)
 #define OMAX_DOC_NAME "o.expr"
 #define OMAX_DOC_SHORT_DESC "Evaluate a C-like expression containing OSC addresses."
 #define OMAX_DOC_LONG_DESC "When it reveives a packet, o.expr substitutes any OSC addresses contained in the expression for the values to which they are bound in the incoming packet.  The expression is then evaluated and the resulting bundle, containing any side effects of the expression, is output."
 #define OMAX_DOC_INLETS_DESC (char *[]){"OSC packet containing addresses that the expression will be applied to."}
 #define OMAX_DOC_OUTLETS_DESC (char *[]){"The OSC packet containing the results of the expression."}
 #define OMAX_DOC_SEEALSO (char *[]){"o.callpatch", "o.if", "o.cond", "o.when", "o.unless", "expr", "jit.expr"}
-
 #endif
 
 #define NAME OMAX_DOC_NAME

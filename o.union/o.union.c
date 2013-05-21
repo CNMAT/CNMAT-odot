@@ -34,4 +34,13 @@
 
 #include "odot_version.h"
 #define ODOT_UNION
+#ifdef ODOT_UNION
+#define OMAX_DOC_NAME "o.union"
+#define OMAX_DOC_SHORT_DESC "Output a bundle containing the union of all messages between two bundles."
+#define OMAX_DOC_LONG_DESC "o.union takes a bundle in the left and right inlets and takes the union of their addresses and outputs the result.  Messages with duplicate addresses are discarded with the most recent message (the one that came in the left inlet) taking precedence."
+#define OMAX_DOC_INLETS_DESC (char *[]){"OSC packet.", "OSC packet."}
+#define OMAX_DOC_OUTLETS_DESC (char *[]){"OSC Packet containing the union of the two packets."}
+#define OMAX_DOC_SEEALSO (char *[]){"o.difference", "o.intersection"}
+#endif
+
 #include "../o.var/o.var.c"

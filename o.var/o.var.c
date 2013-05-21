@@ -31,42 +31,12 @@
   @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 */
 
-
-#ifdef ODOT_UNION
-
-#define OMAX_DOC_NAME "o.union"
-#define OMAX_DOC_SHORT_DESC "Output a bundle containing the union of all messages between two bundles."
-#define OMAX_DOC_LONG_DESC "o.union takes a bundle in the left and right inlets and takes the union of their addresses and outputs the result.  Messages with duplicate addresses are discarded with the most recent message (the one that came in the left inlet) taking precedence."
-#define OMAX_DOC_INLETS_DESC (char *[]){"OSC packet.", "OSC packet."}
-#define OMAX_DOC_OUTLETS_DESC (char *[]){"OSC Packet containing the union of the two packets."}
-#define OMAX_DOC_SEEALSO (char *[]){"o.difference", "o.intersection"}
-
-#elif defined ODOT_INTERSECTION
-
-#define OMAX_DOC_NAME "o.intersection"
-#define OMAX_DOC_SHORT_DESC "Output a bundle containing the intersection of messages between two bundles."
-#define OMAX_DOC_LONG_DESC "o.intersection takes two bundles and forms a new bundle that contains the OSC messages from the bundle received in the left inlet whose addresses are also present in the bundle received in the right inlet."
-#define OMAX_DOC_INLETS_DESC (char *[]){"OSC packet.", "OSC packet."}
-#define OMAX_DOC_OUTLETS_DESC (char *[]){"OSC Packet containing the intersection of the two packets."}
-#define OMAX_DOC_SEEALSO (char *[]){"o.difference", "o.union"}
-
-#elif defined ODOT_DIFFERENCE
-
-#define OMAX_DOC_NAME "o.difference"
-#define OMAX_DOC_SHORT_DESC "Output a bundle containing the difference between two bundles."
-#define OMAX_DOC_LONG_DESC "o.difference takes two bundles and forms a new bundle that contains the messages with addresses that are not common to both bundles"
-#define OMAX_DOC_INLETS_DESC (char *[]){"OSC packet.", "OSC packet."}
-#define OMAX_DOC_OUTLETS_DESC (char *[]){"OSC Packet containing the difference of the two packets."}
-#define OMAX_DOC_SEEALSO (char *[]){"o.union", "o.intersection"}
-
-#else
-
+#if !defined(ODOT_UNION) && !defined(ODOT_DIFFERENCE) && !defined(ODOT_INTERSECTION)
 #define OMAX_DOC_NAME "o.var"
 #define OMAX_DOC_SHORT_DESC "Store a bundle and bang it out later."
 #define OMAX_DOC_LONG_DESC "o.var copies an OSC packet and stores it for later use.  Since FullPacket messages are references to data stored in memory, objects wishing to store a packet must make a copy of it rather than just save the FullPacket message.  Use o.var or o.message to store a packet, not zl reg or any other normal Max object."
 #define OMAX_DOC_INLETS_DESC (char *[]){"OSC packet will be stored and sent out immediately.  Bang to trigger output.", "OSC packet to be stored (no output)."}
 #define OMAX_DOC_OUTLETS_DESC (char *[]){"Stored OSC packet."}
-
 #endif
 
 #include "odot_version.h"

@@ -34,4 +34,13 @@
 
 #include "odot_version.h"
 #define ODOT_INTERSECTION
+#if defined ODOT_INTERSECTION
+#define OMAX_DOC_NAME "o.intersection"
+#define OMAX_DOC_SHORT_DESC "Output a bundle containing the intersection of messages between two bundles."
+#define OMAX_DOC_LONG_DESC "o.intersection takes two bundles and forms a new bundle that contains the OSC messages from the bundle received in the left inlet whose addresses are also present in the bundle received in the right inlet."
+#define OMAX_DOC_INLETS_DESC (char *[]){"OSC packet.", "OSC packet."}
+#define OMAX_DOC_OUTLETS_DESC (char *[]){"OSC Packet containing the intersection of the two packets."}
+#define OMAX_DOC_SEEALSO (char *[]){"o.difference", "o.union"}
+#endif
+
 #include "../o.var/o.var.c"
