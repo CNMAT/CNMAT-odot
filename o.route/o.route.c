@@ -356,6 +356,17 @@ void oroute_assist(t_oroute *x, void *b, long io, long num, char *buf)
 void oroute_free(t_oroute *x)
 {
 	critical_free(x->lock);
+	if(x->outlets){
+		free(x->outlets);
+	}
+	if(x->proxy){
+		for(int i = 0; i < x->num_selectors; i++){
+			if(x->proxy[i]){
+				object_free(x->proxy[i]);
+			}
+		}
+		free(x->proxy);
+	}
 	if(x->selectors){
 		free(x->selectors);
 	}
