@@ -31,6 +31,13 @@ VERSION 0.0: First try
 
 */
 
+#define OMAX_DOC_NAME "o.table"
+#define OMAX_DOC_SHORT_DESC "Store OSC bundles in a table."
+#define OMAX_DOC_LONG_DESC "o.table appends incoming bundles to the end of an array and optionally associates them with a key."
+#define OMAX_DOC_SEEALSO (char *[]){"o.collect", "o.message", "o.var"}
+#define OMAX_DOC_INLETS_DESC (char *[]){"OSC packet to store."}
+#define OMAX_DOC_OUTLETS_DESC (char *[]){"Recalled OSC packet(s)."}
+
 #include "ext.h"
 #include "odot_version.h"
 #include "ext_obex.h"
@@ -44,13 +51,8 @@ VERSION 0.0: First try
 #include "osc_atom_s.h"
 #include "osc_linkedlist.h"
 #include "omax_util.h"
-#include "omax_doc.h"
 #include "omax_dict.h"
-
-#define OMAX_DOC_NAME "o.table"
-#define OMAX_DOC_SHORT_DESC "Store OSC bundles in a table."
-#define OMAX_DOC_LONG_DESC "o.table stores OSC bundles in an associative array."
-#define OMAX_DOC_SEEALSO (char *[]){"o.collect", "o.message", "o.var"}
+#include "omax_doc.h"
 
 typedef struct _otable_db{
 	t_osc_hashtab *ht;
@@ -340,8 +342,14 @@ void otable_free(t_otable *x)
 	critical_free(x->lock);
 }
 
-void otable_assist(t_otable *x, void *b, long m, long a, char *s)
+void otable_doc(t_otable *x)
 {
+	omax_doc_outletDoc(x->outlet);
+}
+
+void otable_assist(t_otable *x, void *b, long io, long num, char *buf)
+{
+	omax_doc_assist(io, num, buf);
 }
 
 void otable_linkedlist_dtor(void *bndl)
@@ -429,6 +437,8 @@ int main(void)
 	class_addmethod(c, (method)otable_peekfirst, "peekfirst", 0);
 	class_addmethod(c, (method)otable_peeklast, "peeklast", 0);
 	class_addmethod(c, (method)otable_peeknth, "peeknth", A_LONG, 0);
+
+	class_addmethod(c, (method)otable_doc, "doc", 0);
 
 	if(omax_dict_resolveDictStubs()){
 		class_addmethod(c, (method)omax_dict_dictionary, "dictionary", A_GIMME, 0);

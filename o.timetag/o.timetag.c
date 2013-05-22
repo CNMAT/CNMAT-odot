@@ -296,6 +296,7 @@ int main(void)
 	class_addmethod(c, (method)otimetag_bang, "bang", 0);
 	class_addmethod(c, (method)otimetag_set, "set", A_GIMME, 0);
 	class_addmethod(c, (method)odot_version, "version", 0);
+	class_addmethod(c, (method)otimetag_doc, "doc", 0);
 
 	if(omax_dict_resolveDictStubs()){
 		//class_addmethod(c, (method)omax_util_dictionary, "dictionary", A_SYM, 0);
