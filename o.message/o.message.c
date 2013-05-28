@@ -239,6 +239,8 @@ void omessage_doFullPacket(t_omessage *x, long len, char *ptr){
 		x->bndl = (void *)ubndl;
 		x->bndltype = OMESSAGE_U;
 		osc_bundle_u_format(ubndl, &bufpos, &buf);
+		object_method(jbox_get_textfield((t_object *)x), gensym("settext"), buf);
+		omessage_gettext(x);
 	}else{
 		char *copy = osc_mem_alloc(len);
 		memcpy(copy, (char *)ptr, len);
@@ -246,8 +248,8 @@ void omessage_doFullPacket(t_omessage *x, long len, char *ptr){
 		x->bndl = (void *)bndl;
 		x->bndltype = OMESSAGE_S;
 		osc_bundle_s_format(len, (char *)ptr, &bufpos, &buf);
+		object_method(jbox_get_textfield((t_object *)x), gensym("settext"), buf);
 	}
-	object_method(jbox_get_textfield((t_object *)x), gensym("settext"), buf);
 
 	if(buf){
 		osc_mem_free(buf);

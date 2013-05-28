@@ -134,6 +134,11 @@
 			<key>orderHint</key>
 			<integer>15</integer>
 		</dict>
+		<key>o.random.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>33</integer>
+		</dict>
 		<key>o.route.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -328,6 +333,11 @@
 			<true/>
 		</dict>
 		<key>52B53D0017484E5500237A19</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>52B53D12174FD0B300237A19</key>
 		<dict>
 			<key>primary</key>
 			<true/>

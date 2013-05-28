@@ -4,8 +4,8 @@
 		"appversion" : 		{
 			"major" : 6,
 			"minor" : 1,
-			"revision" : 0,
-			"architecture" : "x86"
+			"revision" : 2,
+			"architecture" : "x64"
 		}
 ,
 		"rect" : [ 447.0, 44.0, 925.0, 774.0 ],
@@ -91,7 +91,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 208.0, 344.0, 117.0, 20.0 ],
+					"patching_rect" : [ 208.0, 288.0, 117.0, 20.0 ],
 					"text" : "o.when /record == 1"
 				}
 
@@ -105,7 +105,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 190.5, 496.0, 135.0, 20.0 ],
+					"patching_rect" : [ 190.5, 432.0, 135.0, 20.0 ],
 					"text" : "o.unless emptybundle()"
 				}
 
@@ -161,7 +161,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "bang", "" ],
-					"patching_rect" : [ 208.0, 464.0, 32.5, 20.0 ],
+					"patching_rect" : [ 208.0, 384.0, 32.5, 20.0 ],
 					"text" : "t b l"
 				}
 
@@ -175,7 +175,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 416.0, 268.0, 37.0, 18.0 ],
+					"patching_rect" : [ 416.0, 220.0, 37.0, 18.0 ],
 					"text" : "clear"
 				}
 
@@ -216,7 +216,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 190.5, 560.0, 265.0, 20.0 ],
+					"patching_rect" : [ 190.5, 536.0, 265.0, 20.0 ],
 					"text" : "o.expr /time/actuate = /time/record + /time/delay"
 				}
 
@@ -230,7 +230,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 190.5, 528.0, 50.0, 20.0 ],
+					"patching_rect" : [ 190.5, 464.0, 50.0, 20.0 ],
 					"text" : "o.union"
 				}
 
@@ -244,7 +244,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "FullPacket" ],
-					"patching_rect" : [ 208.0, 432.0, 113.0, 20.0 ],
+					"patching_rect" : [ 208.0, 360.0, 113.0, 20.0 ],
 					"text" : "o.select /time/delay"
 				}
 
@@ -258,7 +258,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 208.0, 368.0, 132.0, 20.0 ],
+					"patching_rect" : [ 208.0, 312.0, 132.0, 20.0 ],
 					"text" : "o.timetag /time/actuate"
 				}
 
@@ -272,7 +272,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 208.0, 312.0, 109.0, 20.0 ],
+					"patching_rect" : [ 208.0, 264.0, 109.0, 20.0 ],
 					"text" : "o.if bound(/record)"
 				}
 
@@ -286,7 +286,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 208.0, 400.0, 262.0, 20.0 ],
+					"patching_rect" : [ 208.0, 336.0, 262.0, 20.0 ],
 					"text" : "o.expr /time/delay = /time/actuate - /time/record"
 				}
 
@@ -314,7 +314,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 416.0, 232.0, 50.0, 18.0 ],
+					"patching_rect" : [ 416.0, 184.0, 50.0, 18.0 ],
 					"text" : "popfirst"
 				}
 
@@ -354,7 +354,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 208.0, 232.0, 127.0, 20.0 ],
+					"patching_rect" : [ 208.0, 184.0, 127.0, 20.0 ],
 					"text" : "o.timetag /time/record"
 				}
 
@@ -409,7 +409,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 208.0, 272.0, 47.0, 20.0 ],
+					"patching_rect" : [ 208.0, 224.0, 47.0, 20.0 ],
 					"text" : "o.table"
 				}
 
@@ -627,7 +627,7 @@
 					"destination" : [ "obj-12", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"midpoints" : [ 217.5, 468.0, 500.0, 468.0, 500.0, 219.0, 425.5, 219.0 ],
+					"midpoints" : [ 217.5, 411.0, 564.0, 411.0, 564.0, 173.0, 425.5, 173.0 ],
 					"source" : [ "obj-30", 0 ]
 				}
 
@@ -682,7 +682,7 @@
 					"destination" : [ "obj-12", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"midpoints" : [ 513.5, 673.0, 582.0, 673.0, 582.0, 204.0, 425.5, 204.0 ],
+					"midpoints" : [ 513.5, 673.0, 582.0, 673.0, 582.0, 166.0, 425.5, 166.0 ],
 					"source" : [ "obj-34", 0 ]
 				}
 
@@ -726,22 +726,22 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "nothing.maxpat",
-				"bootpath" : "/Users/john/MMJ6/CNMAT-Everything-OSX-MachO/CNMAT_MMJ-Depot/modules/basic-programming",
-				"patcherrelativepath" : "../../../../../MMJ6/CNMAT-Everything-OSX-MachO/CNMAT_MMJ-Depot/modules/basic-programming",
+				"bootpath" : "/Users/john/Development/CNMAT/CNMAT/CNMAT-MMJ-Depot/modules/basic_programming",
+				"patcherrelativepath" : "../../CNMAT-MMJ-Depot/modules/basic_programming",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "uc_license.maxpat",
-				"bootpath" : "/Users/john/MMJ6/CNMAT-Everything-OSX-MachO/CNMAT_MMJ-Depot/modules/Depot_Support",
-				"patcherrelativepath" : "../../../../../MMJ6/CNMAT-Everything-OSX-MachO/CNMAT_MMJ-Depot/modules/Depot_Support",
+				"bootpath" : "/Users/john/Development/CNMAT/CNMAT/CNMAT-MMJ-Depot/modules/depot_support",
+				"patcherrelativepath" : "../../CNMAT-MMJ-Depot/modules/depot_support",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "cnmat_blue.gif",
-				"bootpath" : "/Users/john/MMJ6/CNMAT-Everything-OSX-MachO/CNMAT_MMJ-Depot/modules/Depot_Support",
-				"patcherrelativepath" : "../../../../../MMJ6/CNMAT-Everything-OSX-MachO/CNMAT_MMJ-Depot/modules/Depot_Support",
+				"bootpath" : "/Users/john/Development/CNMAT/CNMAT/CNMAT-MMJ-Depot/modules/depot_support",
+				"patcherrelativepath" : "../../CNMAT-MMJ-Depot/modules/depot_support",
 				"type" : "GIFf",
 				"implicit" : 1
 			}
