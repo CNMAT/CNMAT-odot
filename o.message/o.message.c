@@ -1449,10 +1449,9 @@ void omessage_resetText(t_omessage *x, char *s)
 {
     post("%s", __func__);
 
-    if(s)
-        post("%s %s", __func__,s);
+    if(!x->firsttime)
+        canvas_dirty(x->glist, 1);
     
-    //
     omessage_setTextFromString(x, s);
     
     if(x->textediting)
