@@ -248,6 +248,7 @@ void omessage_setTextFromString(t_omessage *x, char *str);
 void omessage_storeTextAndExitEditorTick(t_omessage *x);
 void omessage_getRectAndDraw(t_omessage *x, int forceredraw);
 static void omessage_save(t_gobj *z, t_binbuf *b);
+static void omessage_delete(t_gobj *z, t_glist *glist);
 
 
 typedef t_omessage t_jbox;
@@ -1500,12 +1501,12 @@ void omessage_drawElements(t_omessage *x, t_glist *glist, int width2, int height
     //post("%s %d", __func__, firsttime);
     int x1, y1, x2, y2;
     omessage_getrect((t_gobj *)x, glist, &x1, &y1, &x2, &y2);
-    int cx1 = x1 - 2;
-    int cy1 = y1 - 2;
-    int cx2 = x2 + 2;
-    int cy2 = y2 + 2;
-    int c_width = x->width * 0.1;
-    int c_height = x->height * 0.1;
+    int cx1 = x1;// - 2;
+    int cy1 = y1;// - 2;
+    int cx2 = x2;// + 2;
+    int cy2 = y2;// + 2;
+    int c_width = x->width * 0.75;
+    int c_height = x->height * 0.75;
     int c_linewidth = 0;
     
     t_canvas *canvas = glist_getcanvas(glist);
@@ -1515,11 +1516,11 @@ void omessage_drawElements(t_omessage *x, t_glist *glist, int width2, int height
         if (firsttime)
         {
             //border
-            sys_vgui("%s create rectangle %d %d %d %d -outline $box_outline -fill $msg_box_fill -tags [list %s msg]\n",x->canvas_id, x1, y1, x2, y2, x->border_tag);
+            sys_vgui("%s create rectangle %d %d %d %d -outline $msg_box_fill -fill $msg_box_fill -tags [list %s msg]\n",x->canvas_id, x1, y1, x2, y2, x->border_tag);
             
-            sys_vgui("%s create polygon %d %d %d %d %d %d %d %d %d %d %d %d -outline $box_outline -fill $msg_box_fill -tags %s \n",x->canvas_id,
-                     cx2-c_width, cy2, cx2, cy2, cx2, cy2-c_height, cx2-c_linewidth, cy2-c_height, cx2-c_linewidth, cy2-c_linewidth, cx2-c_width, cy2-c_linewidth, x->corner_tag);
-            sys_vgui("%s create polygon %d %d %d %d %d %d %d %d %d %d %d %d -outline $box_outline -fill $msg_box_fill -tags %sTL \n",x->canvas_id, cx1+IOWIDTH, cy1, cx1, cy1, cx1, cy1+c_height, cx1-c_linewidth, cy1+c_height, cx1-c_linewidth, cy1-c_linewidth, cx1+IOWIDTH, cy1-c_linewidth, x->corner_tag);
+            sys_vgui("%s create polygon %d %d %d %d %d %d %d %d %d %d %d %d -outline \"black\" -fill $msg_box_fill -tags %s \n",x->canvas_id,
+                     cx2-c_width, cy2, cx2, cy2, cx2, cy2-5, cx2-c_linewidth, cy2-5, cx2-c_linewidth, cy2-c_linewidth, cx2-c_width, cy2-c_linewidth, x->corner_tag);
+            sys_vgui("%s create polygon %d %d %d %d %d %d %d %d %d %d %d %d -outline \"black\" -fill $msg_box_fill -tags %sTL \n",x->canvas_id, cx1+c_width, cy1, cx1, cy1, cx1, cy1+5, cx1-c_linewidth, cy1+5, cx1-c_linewidth, cy1-c_linewidth, cx1+c_width, cy1-c_linewidth, x->corner_tag);
             
             //handle
             sys_vgui("canvas %s -width 5 -height 5 \n", x->handle_id);
@@ -1544,8 +1545,8 @@ void omessage_drawElements(t_omessage *x, t_glist *glist, int width2, int height
 
             sys_vgui(".x%lx.c coords %s %d %d %d %d\n", canvas, x->border_tag, x1, y1, x2, y2);
             sys_vgui("%s coords %s %d %d %d %d %d %d %d %d %d %d %d %d \n",x->canvas_id, x->corner_tag,
-                     cx2-c_width, cy2, cx2, cy2, cx2, cy2-c_height, cx2-c_linewidth, cy2-c_height, cx2-c_linewidth, cy2-c_linewidth, cx2-c_width, cy2-c_linewidth);
-            sys_vgui("%s coords %sTL %d %d %d %d %d %d %d %d %d %d %d %d \n",x->canvas_id, x->corner_tag, cx1+IOWIDTH, cy1, cx1, cy1, cx1, cy1+c_height, cx1+c_linewidth, cy1+c_height, cx1+c_linewidth, cy1+c_linewidth, cx1+IOWIDTH, cy1+c_linewidth);
+                     cx2-c_width, cy2, cx2, cy2, cx2, cy2-5, cx2-c_linewidth, cy2-5, cx2-c_linewidth, cy2-c_linewidth, cx2-c_width, cy2-c_linewidth);
+            sys_vgui("%s coords %sTL %d %d %d %d %d %d %d %d %d %d %d %d \n",x->canvas_id, x->corner_tag, cx1+c_width, cy1, cx1, cy1, cx1, cy1+5, cx1-c_linewidth, cy1+5, cx1-c_linewidth, cy1-c_linewidth, cx1+c_width, cy1-c_linewidth);
             
             if (!x->mouseDown)
                 sys_vgui("place %s -x %d -y %d -width %d -height %d\n", x->handle_id, x2-5, y2-5, 5, 5);
@@ -1589,7 +1590,12 @@ static void omessage_vis(t_gobj *z, t_glist *glist, int vis)
 
     if(vis)
     {
-        x->firsttime = 1;
+        if(!x->firsttime == 1)
+        {
+            omessage_delete(z, glist);
+            x->firsttime = 1;
+        }
+        
         omessage_getRectAndDraw(x, 0);
         
         omessage_drawElements(x, glist, x->width, x->height, 1);
@@ -1675,10 +1681,13 @@ static void omessage_select(t_gobj *z, t_glist *glist, int state)
     }
     
     if (glist_isvisible(glist) && gobj_shouldvis(&x->ob.te_g, glist)){
-        sys_vgui(".x%lx.c itemconfigure %s -outline %s\n", glist, x->border_tag, (state? "$select_color" : "$box_outline"));
-        sys_vgui(".x%lx.c itemconfigure %s -outline %s\n", glist, x->corner_tag, (state? "$select_color" : "$box_outline"));
-        if(!x->textediting)
+ //       sys_vgui(".x%lx.c itemconfigure %s -outline %s\n", glist, x->border_tag, (state? "$select_color" : "$msg_box_fill" )); //was "$box_outline"
+        sys_vgui(".x%lx.c itemconfigure %s -outline %s\n", glist, x->corner_tag, (state? "$select_color" : "black"));
+        sys_vgui(".x%lx.c itemconfigure %sTL -outline %s\n", glist, x->corner_tag, (state? "$select_color" : "black"));
+
+        if(!x->textediting){
             sys_vgui(".x%lx.c itemconfigure text%lx -fill %s\n", glist, (long)x, (state? "$select_color" : "black"));
+        }
     }
 }
 
@@ -1700,8 +1709,9 @@ static void omessage_activate(t_gobj *z, t_glist *glist, int state)
 
     }
     
-    sys_vgui(".x%lx.c itemconfigure %s -outline %s\n", glist, x->border_tag, (state? "$select_color" : "$box_outline"));
-    
+//    sys_vgui(".x%lx.c itemconfigure %s -outline %s\n", glist, x->border_tag, (state? "$select_color" : "$msg_box_fill"));//was "$box_outline"
+    sys_vgui(".x%lx.c itemconfigure %s -outline %s\n", glist, x->corner_tag, (state? "$select_color" : "black"));
+    sys_vgui(".x%lx.c itemconfigure %sTL -outline %s\n", glist, x->corner_tag, (state? "$select_color" : "black"));
 }
 
 static void omessage_delete(t_gobj *z, t_glist *glist)
@@ -1709,11 +1719,14 @@ static void omessage_delete(t_gobj *z, t_glist *glist)
     post("%s", __func__);
     t_omessage *x = (t_omessage *)z;
   
-    canvas_deletelinesfor(glist_getcanvas(glist), &x->ob);
+    if(x->firsttime)
+        canvas_deletelinesfor(glist_getcanvas(glist), &x->ob);
     
     glist_eraseiofor(glist, &x->ob, x->iolets_tag);
     sys_vgui("%s delete %s\n", x->canvas_id, x->border_tag);
     sys_vgui("%s delete %s\n", x->canvas_id, x->corner_tag);
+    sys_vgui("%s delete %sTL\n", x->canvas_id, x->corner_tag);
+
     sys_vgui("%s delete text%lx \n", x->canvas_id, (long)x);
 
     
