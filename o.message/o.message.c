@@ -1500,12 +1500,12 @@ void omessage_drawElements(t_omessage *x, t_glist *glist, int width2, int height
     //post("%s %d", __func__, firsttime);
     int x1, y1, x2, y2;
     omessage_getrect((t_gobj *)x, glist, &x1, &y1, &x2, &y2);
-//    int cx1 = x1 - 2;
-//    int cy1 = y1 - 2;
-    int cx2 = x2 - 2;
-    int cy2 = y2 - 2;
-    int c_width = x->width * 0.75;
-    int c_height = x->height * 0.75;
+    int cx1 = x1 - 2;
+    int cy1 = y1 - 2;
+    int cx2 = x2 + 2;
+    int cy2 = y2 + 2;
+    int c_width = x->width * 0.1;
+    int c_height = x->height * 0.1;
     int c_linewidth = 0;
     
     t_canvas *canvas = glist_getcanvas(glist);
@@ -1519,7 +1519,7 @@ void omessage_drawElements(t_omessage *x, t_glist *glist, int width2, int height
             
             sys_vgui("%s create polygon %d %d %d %d %d %d %d %d %d %d %d %d -outline $box_outline -fill $msg_box_fill -tags %s \n",x->canvas_id,
                      cx2-c_width, cy2, cx2, cy2, cx2, cy2-c_height, cx2-c_linewidth, cy2-c_height, cx2-c_linewidth, cy2-c_linewidth, cx2-c_width, cy2-c_linewidth, x->corner_tag);
-            //sys_vgui("%s create polygon %d %d %d %d %d %d %d %d %d %d %d %d -outline $box_outline -fill $msg_box_fill -tags %sTL \n",x->canvas_id, cx1-c_width, cy1, cx1, cy1, cx1, cy1-c_height, cx1-c_linewidth, cy1-c_height, cx1-c_linewidth, cy1-c_linewidth, cx1-c_width, cy1-c_linewidth, x->corner_tag);
+            sys_vgui("%s create polygon %d %d %d %d %d %d %d %d %d %d %d %d -outline $box_outline -fill $msg_box_fill -tags %sTL \n",x->canvas_id, cx1+IOWIDTH, cy1, cx1, cy1, cx1, cy1+c_height, cx1-c_linewidth, cy1+c_height, cx1-c_linewidth, cy1-c_linewidth, cx1+IOWIDTH, cy1-c_linewidth, x->corner_tag);
             
             //handle
             sys_vgui("canvas %s -width 5 -height 5 \n", x->handle_id);
@@ -1545,7 +1545,7 @@ void omessage_drawElements(t_omessage *x, t_glist *glist, int width2, int height
             sys_vgui(".x%lx.c coords %s %d %d %d %d\n", canvas, x->border_tag, x1, y1, x2, y2);
             sys_vgui("%s coords %s %d %d %d %d %d %d %d %d %d %d %d %d \n",x->canvas_id, x->corner_tag,
                      cx2-c_width, cy2, cx2, cy2, cx2, cy2-c_height, cx2-c_linewidth, cy2-c_height, cx2-c_linewidth, cy2-c_linewidth, cx2-c_width, cy2-c_linewidth);
-            //sys_vgui("%s coords %sTL %d %d %d %d %d %d %d %d %d %d %d %d \n",x->canvas_id, x->corner_tag, cx1+c_width, cy1, cx1, cy1, cx1, cy1+c_height, cx1+c_linewidth, cy1+c_height, cx1+c_linewidth, cy1+c_linewidth, cx1+c_width, cy1+c_linewidth);
+            sys_vgui("%s coords %sTL %d %d %d %d %d %d %d %d %d %d %d %d \n",x->canvas_id, x->corner_tag, cx1+IOWIDTH, cy1, cx1, cy1, cx1, cy1+c_height, cx1+c_linewidth, cy1+c_height, cx1+c_linewidth, cy1+c_linewidth, cx1+IOWIDTH, cy1+c_linewidth);
             
             if (!x->mouseDown)
                 sys_vgui("place %s -x %d -y %d -width %d -height %d\n", x->handle_id, x2-5, y2-5, 5, 5);
