@@ -48,6 +48,7 @@
 
 #ifdef OMAX_PD_VERSION
 #include "m_pd.h"
+#include "m_imp.h"
 #include "g_canvas.h"
 #include "g_all_guis.h"
 #include "omax_pd_proxy.h"
@@ -140,6 +141,7 @@ typedef struct _omessage {
     char        *handle_id;
     char        *text_id;
     char        *border_tag;
+    char        *corner_tag;
     char        *iolets_tag;
     char        *tcl_namespace;
     
@@ -244,7 +246,8 @@ char *omessage_textFromTK(t_omessage *x);
 void omessage_textToTK(t_omessage *x);
 void omessage_setTextFromString(t_omessage *x, char *str);
 void omessage_storeTextAndExitEditorTick(t_omessage *x);
-void omessage_getRectAndDraw(t_omessage *x);
+void omessage_getRectAndDraw(t_omessage *x, int forceredraw);
+static void omessage_save(t_gobj *z, t_binbuf *b);
 
 
 typedef t_omessage t_jbox;
@@ -1019,36 +1022,36 @@ void omessage_setHeight(t_omessage *x, float y)
     }
 }
 
-void omessage_getRectAndDraw(t_omessage *x)
+void omessage_getRectAndDraw(t_omessage *x, int forceredraw)
 {
+    x->forceredraw = forceredraw;
     sys_vgui("pdsend \"%s setheight [lindex [%s bbox text%lx] 3]\" \n", x->receive_name->s_name, x->canvas_id, (long)x);
 }
 
 void omessage_resize_mousedown(t_omessage *x)
 {
-    post("%s", __func__);
+  //  post("%s", __func__);
     x->mouseDown = 1;
     x->xref = x->width;
 }
 
 void omessage_resize_mousemove(t_omessage *x, float dx, float dy)
 {
-    post("%s %f %f", __func__, dx, dy);
+ //   post("%s %f %f", __func__, dx, dy);
     if(x->mouseDown && x->editmode)
     {
-        t_canvas *canv = glist_getcanvas(x->glist);
         int width = (dx + x->xref);
         width = (width < 50) ? 50 : width;
         x->width = width;
-        x->forceredraw = 1;
-        omessage_getRectAndDraw(x);
+
+        omessage_getRectAndDraw(x, 1);
         
     }
 }
 
 void omessage_resize_mouseup(t_omessage *x)
 {
-    post("%s",__func__);
+//    post("%s",__func__);
     x->mouseDown = 0;
     sys_vgui("focus %s\n", x->canvas_id);
 }
@@ -1092,14 +1095,13 @@ void omessage_setTextFromHex(t_omessage *x, char *hex)
     }
     x->text[length] = 0; //<< not sure if this is necessary
    // omessage_textToTK(x);
-    post("%s %s", __func__, x->text);
+   // post("%s %s", __func__, x->text);
     
 }
 
 void omessage_setTextFromString(t_omessage *x, char *str)
 {
-    int hexlen = strlen(str);
-    int length = hexlen / 2;
+    int length = strlen(str);
     
     if(length >= OMAX_PD_MAXSTRINGSIZE){
         post("max o_message string size = %d", OMAX_PD_MAXSTRINGSIZE);
@@ -1107,9 +1109,8 @@ void omessage_setTextFromString(t_omessage *x, char *str)
     }
     
     strcpy(x->text, str);
-    
     strcpy(x->hex, "\0");
-    
+
     
     int i, k;
     char h1, h2;
@@ -1126,8 +1127,8 @@ void omessage_setTextFromString(t_omessage *x, char *str)
         x->hex[k+1] = h2;
         
     }
-//    omessage_textToTK(x);
-    post("%s %s", __func__, x->hex);
+    x->hex[k] = '\0';
+//    post("%s %s", __func__, x->hex);
     
 }
 
@@ -1149,7 +1150,10 @@ void omessage_textbuf(t_omessage *x, t_symbol *msg, int argc, t_atom *argv)
                 char *hex = atom_getsymbol(argv+1)->s_name;
                 omessage_setTextFromHex(x, hex);
                 omessage_gettext(x);
-                omessage_storeTextAndExitEditorTick(x);
+                
+                if(x->textediting)
+                    omessage_storeTextAndExitEditorTick(x);
+
             }
             else if (s == gensym("text"))
             {
@@ -1241,7 +1245,7 @@ void omessage_key_callback(t_omessage *x, t_symbol *s, int argc, t_atom *argv)
     {
         if(argv->a_type == A_FLOAT)
         {
-            //post("%s %d", __func__, (int)atom_getfloat(argv));
+           // post("%s %d", __func__, (int)atom_getfloat(argv));
             int k = (int)atom_getfloat(argv);
             switch (k) {
                 case 65307: //esc
@@ -1279,6 +1283,11 @@ void omessage_key_callback(t_omessage *x, t_symbol *s, int argc, t_atom *argv)
                             break;
                     }
                 }
+            } else {
+                
+                sys_vgui("%s itemconfigure text%lx -width %d -text [subst -nobackslash -nocommands -novariables [string trimright [regsub -all -line {^[ \t]+|[ \t]+$} [%s get 0.0 end] \"\" ]]] \n", x->canvas_id, (long)x, x->width-10, x->text_id);
+//                sys_vgui("::pdwindow::post \"testtext [%s itemcget text%lx -text ]\n\"\n", x->canvas_id, (long)x);
+                omessage_getRectAndDraw(x, 0);
             }
             
             
@@ -1372,9 +1381,8 @@ void omessage_storeTextAndExitEditorTick(t_omessage *x)
         sys_vgui("destroy %s\n", x->text_id);
         
         x->textediting = 0;
-        x->forceredraw = 1;
         
-        omessage_getRectAndDraw(x);
+        omessage_getRectAndDraw(x, 1);
     }
 
 }
@@ -1384,7 +1392,7 @@ void omessage_storeTextAndExitEditor(t_omessage *x)
     post("%s", __func__);
     
     if(x->textediting){
-        sys_vgui("pdsend \"%s textbuf hex [string2hex [string trimright [%s get 0.0 end]]] \"\n", x->receive_name->s_name, x->text_id);
+        sys_vgui("pdsend \"%s textbuf hex [string2hex [%s get 0.0 end]] \"\n", x->receive_name->s_name, x->text_id);
         //receive happens on next tick
     }
     
@@ -1414,7 +1422,7 @@ void omessage_getTextAndCreateEditor(t_omessage *x, int firsttime)
     else
     {
         post("%s not first time", __func__);
-        sys_vgui("place %s -x %d -y %d -width %d -height %d\n", x->text_id, x1+5, y1+5, x->width-10, x->height-10);
+        sys_vgui("place %s -x %d -y %d -width %d -height %d\n", x->text_id, x1+4, y1+4, x->width-10, x->height-10);
     }
     
     {
@@ -1455,9 +1463,10 @@ void omessage_resetText(t_omessage *x, char *s)
     }
     else if(glist_isvisible(x->glist))
     {
+        post("%s isvisible", __func__);
         sys_vgui("%s itemconfigure text%lx -width %d -text [subst -nobackslash -nocommands -novariables [string trimright [regsub -all -line {^[ \t]+|[ \t]+$}  {%s} \"\" ]]] \n", x->canvas_id, (long)x, x->width-10, x->text);
-        x->forceredraw = 1;
-        omessage_getRectAndDraw(x);
+
+        omessage_getRectAndDraw(x, 1);
     }
 
 }
@@ -1488,72 +1497,90 @@ static void omessage_getrect(t_gobj *z, t_glist *glist,int *xp1, int *yp1, int *
 
 void omessage_drawElements(t_omessage *x, t_glist *glist, int width2, int height2, int firsttime)
 {
-    post("%s %d", __func__, firsttime);
+    //post("%s %d", __func__, firsttime);
     int x1, y1, x2, y2;
     omessage_getrect((t_gobj *)x, glist, &x1, &y1, &x2, &y2);
+//    int cx1 = x1 - 2;
+//    int cy1 = y1 - 2;
+    int cx2 = x2 - 2;
+    int cy2 = y2 - 2;
+    int c_width = x->width * 0.75;
+    int c_height = x->height * 0.75;
+    int c_linewidth = 0;
     
     t_canvas *canvas = glist_getcanvas(glist);
-    //int msg_draw_const = ((y2-y1)/4);
-    //if (msg_draw_const > 10) msg_draw_const = 10; /* looks bad if too big */
-    if (firsttime && glist_isvisible(glist))
-    {
-        //border
-        sys_vgui("%s create rectangle %d %d %d %d -outline $box_outline -fill $msg_box_fill -tags [list %s msg]\n",x->canvas_id, x1, y1, x2, y2, x->border_tag);
-        //handle
-        sys_vgui("canvas %s -width 5 -height 5  -bg $box_outline \n", x->handle_id);
-        sys_vgui("place %s -x %d -y %d -width %d -height %d\n", x->handle_id, x2-5, y2-5, 5, 5);
-        sys_vgui("bind %s <Button-1> {+pdsend {%s resize_mousedown}} \n", x->handle_id, x->receive_name->s_name );
-        sys_vgui("bind %s <Motion> {+pdsend {%s resize_mousemove %%x %%y }} \n", x->handle_id, x->receive_name->s_name );
-        sys_vgui("bind %s <ButtonRelease-1> {+pdsend {%s resize_mouseup }} \n", x->handle_id, x->receive_name->s_name );
-        
-        omessage_gettext(x);
 
-        if (x->text)
+    if (glist_isvisible(glist))
+    {
+        if (firsttime)
         {
-            sys_vgui("%s create text %d %d -anchor nw -width %d -font {{%s} %d %s} -tags text%lx -text [subst -nobackslash -nocommands -novariables [string trimright [regsub -all -line {^[ \t]+|[ \t]+$}  {%s} \"\" ]]] \n", x->canvas_id, text_xpix(&x->ob, x->glist)+5, text_ypix(&x->ob, x->glist)+5, x->width-10, sys_font, glist_getfont(x->glist), sys_fontweight, (long)x, x->text );
-                sys_vgui("pdsend \"%s setheight [lindex [%s bbox text%lx] 3]\" \n", x->receive_name->s_name, x->canvas_id, (long)x);
-        }
-        x->firsttime = 0;
-    }
-    else
-    {
-        post("%s y2-y1 %d", __func__, y2-y1);
-
-        sys_vgui(".x%lx.c coords %s %d %d %d %d\n", canvas, x->border_tag, x1, y1, x2, y2);
-
-        if (!x->mouseDown)
+            //border
+            sys_vgui("%s create rectangle %d %d %d %d -outline $box_outline -fill $msg_box_fill -tags [list %s msg]\n",x->canvas_id, x1, y1, x2, y2, x->border_tag);
+            
+            sys_vgui("%s create polygon %d %d %d %d %d %d %d %d %d %d %d %d -outline $box_outline -fill $msg_box_fill -tags %s \n",x->canvas_id,
+                     cx2-c_width, cy2, cx2, cy2, cx2, cy2-c_height, cx2-c_linewidth, cy2-c_height, cx2-c_linewidth, cy2-c_linewidth, cx2-c_width, cy2-c_linewidth, x->corner_tag);
+            //sys_vgui("%s create polygon %d %d %d %d %d %d %d %d %d %d %d %d -outline $box_outline -fill $msg_box_fill -tags %sTL \n",x->canvas_id, cx1-c_width, cy1, cx1, cy1, cx1, cy1-c_height, cx1-c_linewidth, cy1-c_height, cx1-c_linewidth, cy1-c_linewidth, cx1-c_width, cy1-c_linewidth, x->corner_tag);
+            
+            //handle
+            sys_vgui("canvas %s -width 5 -height 5 \n", x->handle_id);
+            sys_vgui("%s create rectangle %d %d %d %d -outline $box_outline -fill $msg_box_fill -tags %lxHANDLE \n",x->handle_id, x2-5, y2-5, x2, y2, (long)x);
             sys_vgui("place %s -x %d -y %d -width %d -height %d\n", x->handle_id, x2-5, y2-5, 5, 5);
-        
-        if (x->textediting)
-        {
-            sys_vgui("place %s -x %d -y %d -width %d -height %d\n", x->text_id, x1+5, y1+5, x->width-10, x->height-10);
-        }
-        
-        if (x->text)
-        {
-            sys_vgui("%s itemconfigure text%lx -width %d -text [subst -nobackslash -nocommands -novariables [string trimright [regsub -all -line {^[ \t]+|[ \t]+$}  {%s} \"\" ]]] \n", x->canvas_id, (long)x, x->width-10, x->text);
-        }
-        
-    }
-    
-    /* draw inlets/outlets */
-    t_object *ob = pd_checkobject(&x->ob.te_pd);
-    if (ob){
-        glist_drawiofor(glist, ob, firsttime, x->iolets_tag, x1, y1, x2, y2);
-    }
-    if (firsttime) /* raise cords over everything else */
-        sys_vgui(".x%lx.c raise cord\n", glist_getcanvas(glist));
-    
-    canvas_fixlinesfor(glist, &x->ob);
-    
-    if(!x->editmode)
-        sys_vgui("%s configure -cursor left_ptr \n", x->handle_id);
-    else if(x->editmode && !x->selected)
-        sys_vgui("%s configure -cursor hand2 \n", x->handle_id);
-    else
-        sys_vgui("%s configure -cursor fleur \n", x->handle_id);
+            sys_vgui("bind %s <Button-1> {+pdsend {%s resize_mousedown}} \n", x->handle_id, x->receive_name->s_name );
+            sys_vgui("bind %s <Motion> {+pdsend {%s resize_mousemove %%x %%y }} \n", x->handle_id, x->receive_name->s_name );
+            sys_vgui("bind %s <ButtonRelease-1> {+pdsend {%s resize_mouseup }} \n", x->handle_id, x->receive_name->s_name );
+            
+            omessage_gettext(x);
 
+            if (x->text)
+            {
+                sys_vgui("%s create text %d %d -anchor nw -width %d -font {{%s} %d %s} -tags text%lx -text [subst -nobackslash -nocommands -novariables [string trimright [regsub -all -line {^[ \t]+|[ \t]+$}  {%s} \"\" ]]] \n", x->canvas_id, text_xpix(&x->ob, x->glist)+5, text_ypix(&x->ob, x->glist)+5, x->width-10, sys_font, glist_getfont(x->glist), sys_fontweight, (long)x, x->text );
+                    sys_vgui("pdsend \"%s setheight [lindex [%s bbox text%lx] 3]\" \n", x->receive_name->s_name, x->canvas_id, (long)x);
+            }
+            x->firsttime = 0;
+        }
+        else
+        {
+            post("%s y2-y1 %d", __func__, y2-y1);
+
+            sys_vgui(".x%lx.c coords %s %d %d %d %d\n", canvas, x->border_tag, x1, y1, x2, y2);
+            sys_vgui("%s coords %s %d %d %d %d %d %d %d %d %d %d %d %d \n",x->canvas_id, x->corner_tag,
+                     cx2-c_width, cy2, cx2, cy2, cx2, cy2-c_height, cx2-c_linewidth, cy2-c_height, cx2-c_linewidth, cy2-c_linewidth, cx2-c_width, cy2-c_linewidth);
+            //sys_vgui("%s coords %sTL %d %d %d %d %d %d %d %d %d %d %d %d \n",x->canvas_id, x->corner_tag, cx1+c_width, cy1, cx1, cy1, cx1, cy1+c_height, cx1+c_linewidth, cy1+c_height, cx1+c_linewidth, cy1+c_linewidth, cx1+c_width, cy1+c_linewidth);
+            
+            if (!x->mouseDown)
+                sys_vgui("place %s -x %d -y %d -width %d -height %d\n", x->handle_id, x2-5, y2-5, 5, 5);
+            
+            if (x->textediting)
+            {
+                sys_vgui("place %s -x %d -y %d -width %d -height %d\n", x->text_id, x1+4, y1+4, x->width-10, x->height-10);
+            }
+            
+            if (x->text)
+            {
+                sys_vgui("%s itemconfigure text%lx -width %d -text [subst -nobackslash -nocommands -novariables [string trimright [regsub -all -line {^[ \t]+|[ \t]+$}  {%s} \"\" ]]] \n", x->canvas_id, (long)x, x->width-10, x->text);
+            }
+            
+        }
+        
+        /* draw inlets/outlets */
+        t_object *ob = pd_checkobject(&x->ob.te_pd);
+        if (ob){
+            glist_drawiofor(glist, ob, firsttime, x->iolets_tag, x1, y1, x2, y2);
+        }
+        if (firsttime) /* raise cords over everything else */
+            sys_vgui(".x%lx.c raise cord\n", glist_getcanvas(glist));
+        
+        canvas_fixlinesfor(glist, &x->ob);
+        
+        if(!x->editmode)
+            sys_vgui("%s configure -cursor left_ptr \n", x->handle_id);
+        else if(x->editmode && !x->selected)
+            sys_vgui("%s configure -cursor hand2 \n", x->handle_id);
+        else if(x->textediting || x->selected)
+            sys_vgui("%s configure -cursor fleur \n", x->handle_id);
+    }
 }
+
 
 static void omessage_vis(t_gobj *z, t_glist *glist, int vis)
 {
@@ -1562,7 +1589,11 @@ static void omessage_vis(t_gobj *z, t_glist *glist, int vis)
 
     if(vis)
     {
-        omessage_getRectAndDraw(x);
+        x->firsttime = 1;
+        omessage_getRectAndDraw(x, 0);
+        
+        omessage_drawElements(x, glist, x->width, x->height, 1);
+
         
         if(x->textediting)
         {
@@ -1588,14 +1619,23 @@ static void omessage_displace(t_gobj *z, t_glist *glist,int dx, int dy)
         int x2 = x->ob.te_xpix+x->width;
         int y2 = x->ob.te_ypix+x->height;
         
+        int cx2 = x2 - 2;
+        int cy2 = y2 - 2;
+        int c_width = x->width * 0.75;
+        int c_height = x->height * 0.75;
+        int c_linewidth = 0;
+        
         sys_vgui("%s coords %s %d %d %d %d\n", x->canvas_id, x->border_tag, x->ob.te_xpix, x->ob.te_ypix, x2, y2);
+        sys_vgui("%s coords %s %d %d %d %d %d %d %d %d %d %d %d %d \n",x->canvas_id, x->corner_tag,
+                 cx2-c_width, cy2, cx2, cy2, cx2, cy2-c_height, cx2-c_linewidth, cy2-c_height, cx2-c_linewidth, cy2-c_linewidth, cx2-c_width, cy2-c_linewidth);
+        
         sys_vgui("place %s -x %d -y %d -width %d -height %d\n", x->handle_id, x2-5, y2-5, 5, 5);
         
         omessage_drawElements(x, glist, x->width, x->height, 0);
         
         if(x->textediting)
         {
-            sys_vgui("place %s -x %d -y %d -width %d -height %d\n", x->text_id, x->ob.te_xpix+5, x->ob.te_ypix+5, x->width-10, x->height-10);
+            sys_vgui("place %s -x %d -y %d -width %d -height %d\n", x->text_id, x->ob.te_xpix+4, x->ob.te_ypix+4, x->width-10, x->height-10);
             
         }
         else
@@ -1608,33 +1648,35 @@ static void omessage_displace(t_gobj *z, t_glist *glist,int dx, int dy)
 
 static void omessage_select(t_gobj *z, t_glist *glist, int state)
 {
-    post("%s %d", __func__, state);
     t_omessage *x = (t_omessage *)z;
-    if(state && !x->selected)
-    {
-        sys_vgui("%s configure -cursor fleur \n", x->handle_id);
+    post("%s %d %d", __func__, state, x->selected);
 
-        //        sys_vgui("%s configure -state disabled\n",x->text_id);
+    if(state && glist_isvisible(glist))
+       sys_vgui("%s configure -cursor fleur \n", x->handle_id);
+
+    
+    if(state && x->selected)
+    {
         x->selected = 1;
     }
     else if(state && x->selected)
     {
-        if(!x->textediting)
         {
-            //          omessage_getTextAndCreateEditor(x, 1);
-            //            sys_vgui("%s configure -state normal\n", x->text_id);
+            //omessage_getTextAndCreateEditor(x, 1); //this is actually activate()
         }
     }
     else
     {
-        //        sys_vgui("%s configure -state disabled\n",x->text_id );
-        omessage_storeTextAndExitEditor(x);
+        if(x->textediting)
+            omessage_storeTextAndExitEditor(x);
+        
         x->selected = 0;
         
     }
     
     if (glist_isvisible(glist) && gobj_shouldvis(&x->ob.te_g, glist)){
         sys_vgui(".x%lx.c itemconfigure %s -outline %s\n", glist, x->border_tag, (state? "$select_color" : "$box_outline"));
+        sys_vgui(".x%lx.c itemconfigure %s -outline %s\n", glist, x->corner_tag, (state? "$select_color" : "$box_outline"));
         if(!x->textediting)
             sys_vgui(".x%lx.c itemconfigure text%lx -fill %s\n", glist, (long)x, (state? "$select_color" : "black"));
     }
@@ -1671,6 +1713,7 @@ static void omessage_delete(t_gobj *z, t_glist *glist)
     
     glist_eraseiofor(glist, &x->ob, x->iolets_tag);
     sys_vgui("%s delete %s\n", x->canvas_id, x->border_tag);
+    sys_vgui("%s delete %s\n", x->canvas_id, x->corner_tag);
     sys_vgui("%s delete text%lx \n", x->canvas_id, (long)x);
 
     
@@ -1735,12 +1778,40 @@ static void omessage_tick(t_omessage *x)
 }
 
 
+void printargs(int argc, t_atom *argv)
+{
+    int i;
+    for( i = 0; i < argc; i++)
+    {
+        switch ((argv+i)->a_type) {
+            case A_FLOAT:
+                post("%s argv[%d] %f", __func__, i, atom_getfloat(argv+i));
+                break;
+            case A_SYMBOL:
+                post("%s argv[%d] %s", __func__, i, atom_getsymbol(argv+i)->s_name);
+                break;
+            default:
+                break;
+        }
+    }
+}
+
+
 static void omessage_save(t_gobj *z, t_binbuf *b)
 {
+    int argc = binbuf_getnatom(b);
+    post("%s %p %d", __func__, b, argc );
+    
+    if(argc > 0){
+        t_atom *at = binbuf_getvec(b);
+        printargs(argc, at);
+    }
     
     t_omessage *x = (t_omessage *)z;
     binbuf_addv(b, "ssiisiiss;", gensym("#X"),gensym("obj"),(t_int)x->ob.te_xpix, (t_int)x->ob.te_ypix, gensym("o_message"), x->width, x->height, gensym("hex"), gensym(x->hex));
     
+    //post("%s %s", x->text);
+    //post("%s %s", x->hex);
 }
 
 
@@ -1753,6 +1824,7 @@ void omessage_free(t_omessage *x)
     free(x->canvas_id);
     free(x->tcl_namespace);
     free(x->border_tag);
+    free(x->corner_tag);
     free(x->iolets_tag);
     free(x->handle_id);
     pd_unbind(&x->ob.ob_pd, x->receive_name);
@@ -1791,31 +1863,15 @@ void omessage_free(t_omessage *x)
     
 }
 
-void printargs(int argc, t_atom *argv)
-{
-    int i;
-    for( i = 0; i < argc; i++)
-    {
-        switch ((argv+i)->a_type) {
-            case A_FLOAT:
-                post("%s argv[%d] %f", __func__, i, atom_getfloat(argv+i));
-                break;
-            case A_SYMBOL:
-                post("%s argv[%d] %s", __func__, i, atom_getsymbol(argv+i)->s_name);
-                break;
-            default:
-                break;
-        }
-    }
-}
 
 void *omessage_new(t_symbol *msg, short argc, t_atom *argv)
 {
     t_omessage *x = (t_omessage *)pd_new(omessage_class->class);
     if(x)
     {
+                
         x->glist = (t_glist *)canvas_getcurrent();
-        
+
         x->outlet = outlet_new(&x->ob, gensym("FullPacket"));
                 
 //            x->ob.b_firstin = (void *)x;
@@ -1872,6 +1928,11 @@ void *omessage_new(t_symbol *msg, short argc, t_atom *argv)
         x->border_tag = NULL;
         x->border_tag = (char *)malloc(sizeof(char) * (strlen(buf)+1));
         strcpy(x->border_tag, buf);
+
+        sprintf(buf, "%lxCORNER", (long unsigned int)x);
+        x->corner_tag = NULL;
+        x->corner_tag = (char *)malloc(sizeof(char) * (strlen(buf)+1));
+        strcpy(x->corner_tag, buf);
         
         sprintf(buf, "%lxIOLETS", (long unsigned int)x);
         x->iolets_tag = NULL;
