@@ -1718,9 +1718,7 @@ static void omessage_delete(t_gobj *z, t_glist *glist)
     post("%s", __func__);
     t_omessage *x = (t_omessage *)z;
   
-    if(x->firsttime)
-        canvas_deletelinesfor(glist_getcanvas(glist), &x->ob);
-    
+    canvas_deletelinesfor(glist_getcanvas(glist), &x->ob);    
     glist_eraseiofor(glist, &x->ob, x->iolets_tag);
     sys_vgui("%s delete %s\n", x->canvas_id, x->border_tag);
     sys_vgui("%s delete %s\n", x->canvas_id, x->corner_tag);
