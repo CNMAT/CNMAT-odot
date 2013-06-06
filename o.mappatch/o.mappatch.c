@@ -60,6 +60,7 @@ VERSION 1.0: New name
 #include "omax_dict.h"
 
 #include "o.h"
+#include <assert.h>
 
 /*
 When a new FullPacket message comes in, we make an unserialized bundle and stick it in our object
@@ -112,6 +113,24 @@ void omap_addQitem(t_omap *x, t_omap_qitem *qi);
 
 t_symbol *ps_FullPacket;
 
+void printargs(int argc, t_atom *argv)
+{
+    int i;
+    for( i = 0; i < argc; i++)
+    {
+        switch ((argv+i)->a_type) {
+            case A_FLOAT:
+                post("%s argv[%d] %f", __func__, i, atom_getfloat(argv+i));
+                break;
+            case A_SYMBOL:
+                post("%s argv[%d] %s", __func__, i, atom_getsymbol(argv+i)->s_name);
+                break;
+            default:
+                break;
+        }
+    }
+}
+
 //void omap_fullPacket(t_omap *x, long len, long ptr)
 void omap_fullPacket(t_omap *x, t_symbol *msg, int argc, t_atom *argv)
 {
@@ -129,7 +148,7 @@ void omap_fullPacket(t_omap *x, t_symbol *msg, int argc, t_atom *argv)
 		omap_list(x, NULL, 3, a);
 		return;
 	}
-
+    
 	if(x->busy){
 		t_omap_qitem *qi = (t_omap_qitem *)osc_mem_alloc(sizeof(t_omap_qitem));
 		qi->len = len;
@@ -247,18 +266,26 @@ void omap_list(t_omap *x, t_symbol *sym, short argc, t_atom *argv)
 	t_osc_msg_u *msg = NULL;
 	if(atom_gettype(argv) == A_SYM){
 		t_symbol *address = atom_getsym(argv);
-		if(*(address->s_name) == '/'){
-			omax_util_maxAtomsToOSCMsg_u(&msg, address, argc - 1, argv + 1);
-			critical_enter(x->lock);
-			osc_bundle_u_addMsg(x->bndl, msg);
-			critical_exit(x->lock);
-			return;
-		}
+        
+        if(address)
+        {
+		
+            if(*(address->s_name) == '/'){
+                omax_util_maxAtomsToOSCMsg_u(&msg, address, argc - 1, argv + 1);
+                critical_enter(x->lock);
+                osc_bundle_u_addMsg(x->bndl, msg);
+                critical_exit(x->lock);
+                return;
+            }
+        }
 	}
 	critical_enter(x->lock);
 	t_symbol *address = gensym(osc_message_s_getAddress(x->msg));
-	omax_util_maxAtomsToOSCMsg_u(&msg, address, argc, argv);
-	osc_bundle_u_addMsg(x->bndl, msg);
+    if(address)
+    {
+        omax_util_maxAtomsToOSCMsg_u(&msg, address, argc, argv);
+        osc_bundle_u_addMsg(x->bndl, msg);
+    }
 	critical_exit(x->lock);
 	//t_atom av[argc + 1];
 	//atom_setsym(av, address);
@@ -297,8 +324,8 @@ void omap_free(t_omap *x)
 void *omap_new(t_symbol *msg, short argc, t_atom *argv){
 	t_omap *x;
 	if((x = (t_omap *)object_alloc(omap_class->class))){
-		x->outlets[1] = outlet_new((t_object *)x, NULL);
-		x->outlets[0] = outlet_new((t_object *)x, gensym("FullPacket"));
+		x->outlets[0] = outlet_new((t_object *)x, NULL);
+		x->outlets[1] = outlet_new((t_object *)x, gensym("FullPacket"));
 		x->proxy = (void **)malloc(2 * sizeof(t_omax_pd_proxy *));
 		x->proxy[0] = proxy_new((t_object *)x, 0, &(x->inlet), omap_proxy_class);
 		x->proxy[1] = proxy_new((t_object *)x, 1, &(x->inlet), omap_proxy_class);

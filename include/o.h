@@ -6,24 +6,27 @@ extern "C" {
 #endif
 
 #include <stdint.h>
-    
-#if UINTPTR_MAX == 0xffffffff
+
+#ifdef OMAX_PD_VERSION
+#include "m_pd.h"
+#include "string.h"
+
 #define OMAX_UTIL_GET_LEN_AND_PTR \
 if(argc != 3){\
-    error("%s: expected 2 arguments but got %d", __func__, argc);\
-    return;\
+error("%s: expected 2 arguments but got %d", __func__, argc);\
+return;\
 }\
 if(argv->a_type != A_FLOAT){\
-    error("%s: argument 1 should be a float", __func__);\
-    return;\
+error("%s: argument 1 should be a float", __func__);\
+return;\
 }\
 if(argv[1].a_type != A_FLOAT){\
-    error("%s: argument 2 should be a symbol", __func__);\
-    return;\
+error("%s: argument 2 should be a symbol", __func__);\
+return;\
 }\
 if(argv[2].a_type != A_FLOAT){\
-    error("%s: argument 2 should be a symbol", __func__);\
-    return;\
+error("%s: argument 2 should be a symbol", __func__);\
+return;\
 }\
 float ff = atom_getfloat(&argv[0]);\
 long len = (long)*((uint32_t *)&ff);\
@@ -34,29 +37,7 @@ ff = atom_getfloat(&argv[2]);\
 uint64_t l2 = *((uint64_t *)&ff);\
 char *ptr = (char *)(l1 | l2);
     
-#elif UINTPTR_MAX == 0xffffffffffffffff
-#define OMAX_UTIL_GET_LEN_AND_PTR \
-if(argc != 2){\
-object_error((t_object *)x, "%s: expected 2 arguments but got %d", __func__, argc);\
-return;\
-}\
-if(atom_gettype(argv) != A_LONG){\
-object_error((t_object *)x, "%s: argument 1 should be an int", __func__);\
-return;\
-}\
-if(atom_gettype(argv + 1) != A_LONG){\
-object_error((t_object *)x, "%s: argument 2 should be an int", __func__);\
-return;\
-}\
-long len = atom_getlong(argv);\
-char *ptr = (char *)atom_getlong(argv + 1);
-#else
-#warning wtf
-#endif
 
-#ifdef OMAX_PD_VERSION
-#include "m_pd.h"
-#include "string.h"
 
 #define sysmem_freeptr free
     
@@ -130,5 +111,26 @@ void outlet_int(void *outlet, int i)
 {
     outlet_float((t_outlet *)outlet, (float)i);
 }    
+#else
+    //MAX VERSION
+#define OMAX_UTIL_GET_LEN_AND_PTR \
+if(argc != 2){\
+object_error((t_object *)x, "%s: expected 2 arguments but got %d", __func__, argc);\
+return;\
+}\
+if(atom_gettype(argv) != A_LONG){\
+object_error((t_object *)x, "%s: argument 1 should be an int", __func__);\
+return;\
+}\
+if(atom_gettype(argv + 1) != A_LONG){\
+object_error((t_object *)x, "%s: argument 2 should be an int", __func__);\
+return;\
+}\
+long len = atom_getlong(argv);\
+char *ptr = (char *)atom_getlong(argv + 1);
+
+#endif
+#ifdef __cplusplus 
+}
 #endif
 #endif

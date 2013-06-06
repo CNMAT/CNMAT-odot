@@ -1395,6 +1395,7 @@ void omessage_storeTextAndExitEditor(t_omessage *x)
     if(x->textediting){
         sys_vgui("pdsend \"%s textbuf hex [string2hex [%s get 0.0 end]] \"\n", x->receive_name->s_name, x->text_id);
         //receive happens on next tick
+            post("%s after send", __func__);
     }
     
 }
