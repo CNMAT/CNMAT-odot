@@ -143,6 +143,9 @@ void opack_doAnything(t_opack *x, t_symbol *msg, short argc, t_atom *argv, int s
 		osc_message_u_appendString(x->messages[messagenum], msg->s_name);
 	}
 	int i;
+#ifdef OMAX_PD_VERSION
+    t_symbol *sym;
+#endif
 	for(i = 0; i < argc; i++){
 		switch(atom_gettype(argv + i)){
 		case A_FLOAT:
@@ -152,7 +155,15 @@ void opack_doAnything(t_opack *x, t_symbol *msg, short argc, t_atom *argv, int s
 			osc_message_u_appendInt32(x->messages[messagenum], atom_getlong(argv + i));
 			break;
 		case A_SYM:
-			osc_message_u_appendString(x->messages[messagenum], atom_getsym(argv + i)->s_name);
+#ifdef OMAX_PD_VERSION
+            sym = atom_getsym(argv + i);
+            char buf[ strlen(sym->s_name) ];
+            strcpy(buf, sym->s_name);
+            omax_util_hashBrackets2Curlies(buf);
+            osc_message_u_appendString(x->messages[messagenum], buf);
+#else
+            osc_message_u_appendString(x->messages[messagenum], atom_getsym(argv + i)->s_name);
+#endif
 			break;
 		}
 	}
@@ -279,6 +290,7 @@ void opack_free(t_opack *x)
 }
 
 #ifdef OMAX_PD_VERSION
+
 void *opack_new(t_symbol *msg, short argc, t_atom *argv)
 {
 	t_opack *x;
@@ -303,9 +315,10 @@ void *opack_new(t_symbol *msg, short argc, t_atom *argv)
 			object_error((t_object *)x, "the first argument must be an OSC string that begins with a slash (/)");
 			return NULL;
 		}
-        
+
 		t_atom *addresses[argc];
-		int numargs[argc];
+        t_atom subcurlies;
+        int numargs[argc];
 		int count = 0;
 		int i;
 		for(i = 0; i < argc; i++){
@@ -319,7 +332,12 @@ void *opack_new(t_symbol *msg, short argc, t_atom *argv)
 							return NULL;
 						}
 					}
-					addresses[count++] = argv + i;
+                    t_symbol *sym = atom_getsymbol(argv + i);
+                    char buf[ strlen(sym->s_name) ];
+                    strcpy(buf, sym->s_name);
+                    omax_util_hashBrackets2Curlies(buf);
+                    atom_setsym(&subcurlies, gensym(buf));
+                    addresses[count++] = &subcurlies;
 				}else{
 					numargs[count - 1]++;
 				}

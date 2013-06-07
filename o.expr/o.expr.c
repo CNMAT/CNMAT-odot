@@ -525,11 +525,18 @@ void *oexpr_new(t_symbol *msg, short argc, t_atom *argv){
                         break;
                     case A_SYM:
 					{
-						char *s = atom_getsym(argv + i)->s_name;
+                        t_symbol *sym = atom_getsymbol(argv + i);
+                        char symbuf[ strlen(sym->s_name) ];
+                        memset(symbuf, '\0', strlen(sym->s_name));
+                        strcpy(symbuf, sym->s_name);
+                        omax_util_hashBrackets2Curlies(symbuf);
+                        
+						char *s = symbuf;
 						int len = strlen(s); // null byte
 						int j;
 						for(j = 0; j < len; j++){
-							if(s[j] == '#'){
+                                                                                                            //<< check this for pd version
+							if(s[j] == '$'){
 								if((j + 1) < len){
 									if((s[j + 1] <= 47 || s[j + 1] >= 58)){
 										object_error((t_object *)x, "address can't contain a #");

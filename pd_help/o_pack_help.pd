@@ -1,4 +1,4 @@
-#N canvas 75 555 868 410 10;
+#N canvas 1924 154 868 410 10;
 #X floatatom 120 39 5 0 0 0 - - -;
 #X msg 341 99 /foo \$1;
 #X floatatom 341 63 5 0 0 0 - - -;
@@ -19,6 +19,7 @@
 #X obj 374 227 print 2out;
 #X msg 481 116 /ringo;
 #X obj 450 201 o_print unmatched;
+#X obj 90 173 print;
 #X connect 0 0 10 0;
 #X connect 1 0 12 0;
 #X connect 2 0 1 0;
@@ -29,7 +30,7 @@
 #X connect 8 0 10 0;
 #X connect 9 0 8 0;
 #X connect 10 0 5 0;
-#X connect 10 0 12 0;
+#X connect 10 0 19 0;
 #X connect 11 0 10 0;
 #X connect 12 0 13 0;
 #X connect 12 1 16 0;

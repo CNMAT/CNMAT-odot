@@ -110,7 +110,116 @@ void outlet_atoms(void *out, short argc, t_atom *argv)
 void outlet_int(void *outlet, int i)
 {
     outlet_float((t_outlet *)outlet, (float)i);
-}    
+}
+    
+/*
+t_atom omax_util_hashBrackets2Curlies(t_atom *argv)
+{
+    if(atom_gettype(argv) != A_SYMBOL){
+        return *argv;
+    }
+    
+    t_atom str;
+    char *astr = atom_getsymbol(argv)->s_name;
+    char c;
+    int len = strlen(astr);
+    char s[len];
+    memset(s, '\0', len);
+    
+    int i, j = 0;
+    for( i = 0; i < len; i++ )
+    {
+        c = s[i];
+        if( i < len-1 )
+        {
+            if(s[i] == '#' && s[i+1] == '['){
+                c = '{';
+                i++;
+            } else if(s[i] == ']' && s[i+1] == '#') {
+                c = '}';
+                i++;
+            }
+        }
+        s[j++] = c;
+    }
+    
+    while(j < len)
+        s[j++] = '\0';
+    
+    atom_setsym(&str, gensym(s));
+    
+    post("%s %s", __func__, atom_getsymbol(&str)->s_name);
+    return str;
+    
+}
+*/
+    
+void omax_util_hashBrackets2Curlies(char *s)
+{
+    
+    char c;
+    int len = strlen(s);
+//    char s[len];
+//    memset(s, '\0', len);
+    
+    int i, j = 0;
+    for( i = 0; i < len; i++ )
+    {
+        c = s[i];
+        if( i < len-1 )
+        {
+            if(s[i] == '#' && s[i+1] == '['){
+                c = '{';
+                i++;
+            } else if(s[i] == ']' && s[i+1] == '#') {
+                c = '}';
+                i++;
+            }
+        }
+        s[j++] = c;
+    }
+    
+    while(j < len)
+        s[j++] = '\0';
+    
+ //   strcpy(str, s);
+    
+//    post("%s %s", __func__, s);
+
+    
+}
+
+void omax_util_curlies2hashBrackets(char *str)
+{
+    
+    int i, j = 0;
+    int len = strlen(str);
+    char buf[len * 2]; //<< max possible size with every character being a { or }
+    memset(buf, '\0', len * 2);
+    
+    for( i = 0; i < len; i++ )
+    {
+        if (str[i] == '{')
+        {
+            buf[j++] = '#';
+            buf[j++] = '[';
+        }
+        else if (str[i] == '}')
+        {
+            buf[j++] = ']';
+            buf[j++] = '#';
+        } else {
+            buf[j++] = str[i];
+        }
+    }
+    if(j != i)
+    {
+        osc_mem_resize(str, sizeof(char) * j);
+        strcpy(str, buf);
+    }
+}
+
+    
 #else
     //MAX VERSION
 #define OMAX_UTIL_GET_LEN_AND_PTR \
