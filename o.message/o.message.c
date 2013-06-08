@@ -1331,7 +1331,6 @@ void omessage_bind_text_events(t_omessage *x)
     
 }
 
-//        sys_vgui("namespace eval ::%s [list set textbuf%lx [string trimright [%s get 0.0 end]]] \n", x->tcl_namespace, glist_getcanvas(x->glist), x->text_id, x->text_id);
 
 void omessage_storeTextAndExitEditorTick(t_omessage *x)
 {
@@ -1401,7 +1400,6 @@ void omessage_getTextAndCreateEditor(t_omessage *x, int firsttime)
     
     x->textediting = 1;
     
-    //sys_vgui("pdsend \"%s textbuf $::%s::textbuf%lx \"\n", x->receive_name->s_name, x->tcl_namespace, glist_getcanvas(x->glist));
     
 }
 
@@ -1419,7 +1417,6 @@ void omessage_resetText(t_omessage *x, char *s)
     {
         //do what if reset comes while editing?
         //probably throw out your text, as punishment for editing while sending stuff to your object
-        //omessage_textFromTK(x);
         omessage_storeTextAndExitEditorTick(x);
     }
     else if(glist_isvisible(x->glist))
@@ -1428,7 +1425,6 @@ void omessage_resetText(t_omessage *x, char *s)
 
         omessage_getRectAndDraw(x, 1);
     }
-
 }
 
 
@@ -1537,11 +1533,10 @@ void omessage_drawElements(t_omessage *x, t_glist *glist, int width2, int height
         else if(x->textediting || x->selected)
             sys_vgui("%s configure -cursor fleur \n", x->handle_id);
         
-        if(x->parse_error)
-        {
-            sys_vgui("%s itemconfigure %s -outline %s\n", x->canvas_id, x->corner_tag, "red");
-            sys_vgui("%s itemconfigure %sTL -outline %s\n", x->canvas_id, x->corner_tag, "red");
-        }
+
+        sys_vgui("%s itemconfigure %s -outline %s\n", x->canvas_id, x->corner_tag, (x->parse_error?  "red" : "black" ));
+        sys_vgui("%s itemconfigure %sTL -outline %s\n", x->canvas_id, x->corner_tag, (x->parse_error? "red" : "black" ));
+
 
     }
 }
@@ -1963,7 +1958,7 @@ void omessage_setup(void) {
     
 	omax_pd_class_addfloat(c, (t_method)omessage_float);
 	omax_pd_class_addmethod(c, (t_method)omessage_list, gensym("list"));
-	omax_pd_class_addmethod(c, (t_method)omessage_anything, gensym("anything"));
+	omax_pd_class_addanything(c, (t_method)omessage_anything);
 	omax_pd_class_addmethod(c, (t_method)omessage_set, gensym("set"));
 //	class_addmethod(c, (method)omessage_doc, "doc", 0);
 
