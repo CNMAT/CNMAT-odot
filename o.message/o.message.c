@@ -1222,7 +1222,6 @@ void omessage_outsideclick_callback(t_omessage *x)
 
 }
 
-
 //called when clicking from one object to another without clicking on the empty canvas first
 void omessage_pdnofocus_callback(t_omessage *x)
 {
@@ -1296,7 +1295,7 @@ void omessage_key_callback(t_omessage *x, t_symbol *s, int argc, t_atom *argv)
                 }
             } else {
                 
-                sys_vgui("%s itemconfigure text%lx -width %d -text [subst -nobackslash -nocommands -novariables [string trimright [regsub -all -line {^[ \t]+|[ \t]+$} [%s get 0.0 end] \"\" ]]] \n", x->canvas_id, (long)x, x->width-10, x->text_id);
+                sys_vgui("%s itemconfigure text%lx -width %d -text [subst -nobackslash -nocommands -novariables [regsub -all -line {^[ \t]+|[ \t]+$} [%s get 0.0 end] \"\" ]] \n", x->canvas_id, (long)x, x->width-10, x->text_id);
 //                sys_vgui("::pdwindow::post \"testtext [%s itemcget text%lx -text ]\n\"\n", x->canvas_id, (long)x);
                 omessage_getRectAndDraw(x, 0);
             }
@@ -1340,7 +1339,7 @@ void omessage_storeTextAndExitEditorTick(t_omessage *x)
     //destroy editor and recreate text to canvas if it is visible
     if(glist_isvisible(x->glist))
     {
-        sys_vgui("%s itemconfigure text%lx -width %d -text [subst -nobackslash -nocommands -novariables [string trimright [regsub -all -line {^[ \t]+|[ \t]+$}  {%s} \"\" ]]] \n", x->canvas_id, (long)x, x->width-10, x->tk_text);
+        sys_vgui("%s itemconfigure text%lx -fill black -width %d -text [subst -nobackslash -nocommands -novariables [string trimright [regsub -all -line {^[ \t]+|[ \t]+$}  {%s} \"\" ]]] \n", x->canvas_id, (long)x, x->width-10, x->tk_text);
         sys_vgui("destroy %s\n", x->text_id);
         
         x->textediting = 0;
@@ -1368,8 +1367,9 @@ void omessage_getTextAndCreateEditor(t_omessage *x, int firsttime)
     {
 //        sys_vgui("%s delete text%lx\n", x->canvas_id, (long)x);
         glist_noselect(x->glist);
+        sys_vgui("%s itemconfigure text%lx -fill white \n", x->canvas_id, (long)x);
         sys_vgui("text %s -font {{%s} %d %s} -undo true -fg \"black\" -bg $msg_box_fill -takefocus 1 -state normal -highlightthickness 0 -wrap word\n", x->text_id, sys_font, glist_getfont(x->glist), sys_fontweight );
-        sys_vgui("place %s -x %d -y %d -width %d -height %d\n", x->text_id, x1+4, y1+4, x->width-8, x->height-8);
+        sys_vgui("place %s -x %d -y %d -width %d -height %d\n", x->text_id, x1+4, y1+4, x->width-10, x->height-10);
         
         if(x->tk_text)
             sys_vgui("%s insert 1.0 [subst -nobackslash -nocommands -novariables [regsub -all -line {^[ \t]+|[ \t]+$}  {%s} \"\" ]] \n", x->text_id, x->tk_text);
@@ -1562,7 +1562,8 @@ static void omessage_vis(t_gobj *z, t_glist *glist, int vis)
         omessage_getRectAndDraw(x, 0);
         
         omessage_drawElements(x, glist, x->width, x->height, 1);
-
+        sys_vgui("namespace eval ::%s [list set canvas%lxBUTTONBINDING [bind %s <Button-1>]] \n", x->tcl_namespace, glist_getcanvas(x->glist), x->canvas_id);
+        sys_vgui("namespace eval ::%s [list set canvas%lxKEYBINDING [bind %s <Key>]] \n", x->tcl_namespace, glist_getcanvas(x->glist), x->canvas_id);
         
         if(x->textediting)
         {
@@ -1607,10 +1608,8 @@ static void omessage_displace(t_gobj *z, t_glist *glist,int dx, int dy)
             sys_vgui("place %s -x %d -y %d -width %d -height %d\n", x->text_id, x->ob.te_xpix+4, x->ob.te_ypix+4, x->width-10, x->height-10);
             
         }
-        else
-        {
-            sys_vgui("%s move text%lx %d %d\n", x->canvas_id, (long)x, dx, dy);
-        }
+        
+        sys_vgui("%s move text%lx %d %d\n", x->canvas_id, (long)x, dx, dy);
         
     }
 }
@@ -1678,16 +1677,15 @@ static void omessage_activate(t_gobj *z, t_glist *glist, int state)
 static void omessage_delete(t_gobj *z, t_glist *glist)
 {
     t_omessage *x = (t_omessage *)z;
-  
+    omessage_pdnofocus_callback(x);
+
     canvas_deletelinesfor(glist_getcanvas(glist), &x->ob);    
     glist_eraseiofor(glist, &x->ob, x->iolets_tag);
     sys_vgui("%s delete %s\n", x->canvas_id, x->border_tag);
     sys_vgui("%s delete %s\n", x->canvas_id, x->corner_tag);
     sys_vgui("%s delete %sTL\n", x->canvas_id, x->corner_tag);
-
     sys_vgui("%s delete text%lx \n", x->canvas_id, (long)x);
 
-    
     if(x->textediting)
         sys_vgui("destroy %s\n", x->text_id);
     
@@ -1748,6 +1746,7 @@ static void omessage_save(t_gobj *z, t_binbuf *b)
     
     t_omessage *x = (t_omessage *)z;
     omessage_setHexFromText(x, x->text);
+    omessage_pdnofocus_callback(x);
     
     binbuf_addv(b, "ssiisiiss;", gensym("#X"),gensym("obj"),(t_int)x->ob.te_xpix, (t_int)x->ob.te_ypix, gensym("omessage"), x->width, x->height, gensym("hex"), gensym(x->hex));
     
