@@ -510,6 +510,7 @@ void *oexpr_new(t_symbol *msg, short argc, t_atom *argv){
 	t_oexpr *x;
 	if((x = (t_oexpr *)object_alloc(oexpr_class))){
 		t_osc_expr *f = NULL;
+        char symbuf[argc][65536];
 		if(argc){
 			char buf[65536];
 			memset(buf, '\0', sizeof(buf));
@@ -525,13 +526,11 @@ void *oexpr_new(t_symbol *msg, short argc, t_atom *argv){
                         break;
                     case A_SYM:
 					{
-                        char *sym = atom_getsymbol(argv + i)->s_name;
-                        char symbuf[ strlen(sym) ];
-                        memset(symbuf, '\0', strlen(sym));
-                        strcpy(symbuf, sym);
-                        omax_util_hashBrackets2Curlies(symbuf);
+                        strcpy(symbuf[i], atom_getsymbol(argv + i)->s_name);
+
+                        omax_util_hashBrackets2Curlies(symbuf[i]);
                                                 
-						char *s = symbuf;
+						char *s = symbuf[i];
 						int len = strlen(s); // null byte
 						int j;
 						for(j = 0; j < len; j++){
