@@ -311,20 +311,22 @@ void *opack_new(t_symbol *msg, short argc, t_atom *argv)
 			object_error((t_object *)x, "the first argument must be an OSC address");
 			return NULL;
 		}
-		if(atom_getsym(argv)->s_name[0] != '/' && atom_getsym(argv)->s_name[0] != '#'){
+		if(atom_getsym(argv)->s_name[0] != '/' && atom_getsym(argv)->s_name[0] != '$'){
 			object_error((t_object *)x, "the first argument must be an OSC string that begins with a slash (/)");
 			return NULL;
 		}
 
 		t_atom *addresses[argc];
-        t_atom subcurlies;
+        t_atom subcurlies[argc];
+
+        char buf[4098];
         int numargs[argc];
 		int count = 0;
 		int i;
 		for(i = 0; i < argc; i++){
 			numargs[i] = 0;
 			if(atom_gettype(argv + i) == A_SYM){
-				if(atom_getsym(argv + i)->s_name[0] == '/' || atom_getsym(argv + i)->s_name[0] == '#'){
+				if(atom_getsym(argv + i)->s_name[0] == '/' || atom_getsym(argv + i)->s_name[0] == '$'){
 					int j;
 					for(j = 0; j < count; j++){
 						if(atom_getsym(addresses[j]) == atom_getsym(argv + i)){
@@ -332,12 +334,11 @@ void *opack_new(t_symbol *msg, short argc, t_atom *argv)
 							return NULL;
 						}
 					}
-                    t_symbol *sym = atom_getsymbol(argv + i);
-                    char buf[ strlen(sym->s_name) ];
-                    strcpy(buf, sym->s_name);
+                    memset(buf, '\0', 4098);
+                    strcpy(buf, atom_getsymbol(argv + i)->s_name);
                     omax_util_hashBrackets2Curlies(buf);
-                    atom_setsym(&subcurlies, gensym(buf));
-                    addresses[count++] = &subcurlies;
+                    atom_setsym(&subcurlies[i], gensym(buf));
+                    addresses[count++] = &subcurlies[i];
 				}else{
 					numargs[count - 1]++;
 				}
@@ -377,13 +378,13 @@ void *opack_new(t_symbol *msg, short argc, t_atom *argv)
 
 
 #ifdef PAK
-int o_pak_setup(void)
+int opak_setup(void)
 {
-	t_symbol *name = gensym("o_pak");
+	t_symbol *name = gensym("opak");
 #else
-int o_pack_setup(void)
+int opack_setup(void)
 {
-	t_symbol *name = gensym("o_pack");
+	t_symbol *name = gensym("opack");
 #endif
 	omax_pd_class_new(opack_class, name, (t_newmethod)opack_new, (t_method)opack_free, sizeof(t_opack),  CLASS_NOINLET, A_GIMME, 0);
 

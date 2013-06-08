@@ -288,9 +288,9 @@ void *otimetag_new(t_symbol *msg, short argc, t_atom *argv)
 }
 #ifdef OMAX_PD_VERSION
 
-int o_timetag_setup(void)
+int otimetag_setup(void)
 {
-	t_class *c = class_new(gensym("o_timetag"), (t_newmethod)otimetag_new, (t_method)otimetag_free, sizeof(t_otimetag), 0L, A_GIMME, 0);
+	t_class *c = class_new(gensym("otimetag"), (t_newmethod)otimetag_new, (t_method)otimetag_free, sizeof(t_otimetag), 0L, A_GIMME, 0);
     
 	class_addmethod(c, (t_method)otimetag_fullPacket, gensym("FullPacket"), A_GIMME, 0);
 	class_addmethod(c, (t_method)otimetag_anything, gensym("anything"), A_GIMME, 0);

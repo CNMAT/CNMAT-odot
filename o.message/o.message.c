@@ -243,8 +243,6 @@ static void omessage_displace(t_gobj *z, t_glist *glist,int dx, int dy);
 void omessage_drawElements(t_omessage *x, t_glist *glist, int width2, int height2, int firsttime);
 void omessage_storeTextAndExitEditor(t_omessage *x);
 void omessage_resetText(t_omessage *x, char *s);
-char *omessage_textFromTK(t_omessage *x);
-void omessage_textToTK(t_omessage *x);
 void omessage_setTextFromString(t_omessage *x, char *str);
 void omessage_storeTextAndExitEditorTick(t_omessage *x);
 void omessage_getRectAndDraw(t_omessage *x, int forceredraw);
@@ -632,7 +630,6 @@ void omessage_enter(t_omessage *x){
 }
 
 void omessage_gettext(t_omessage *x){
-    post("%s", __func__);
 	long size	= 0;
 	char *text	= NULL;
 #ifdef OMAX_PD_VERSION
@@ -1007,6 +1004,8 @@ void omessage_clear(t_omessage *x)
     ...........................................................................................
     ................................  PD VERSION  .............................................
     ...........................................................................................
+  TODO fix undo bug by storing current cmd-z binding and replacing with textwidget's key, and the replace on exit
+
  */
 #ifdef OMAX_PD_VERSION
 
@@ -1015,14 +1014,14 @@ void omessage_setHeight(t_omessage *x, float y)
     int h = ((int)y - x->ob.te_ypix) + 5;
     h = (h > 20) ? h : 20;
     
-    post("%s %d", __func__, h);
+//    post("%s %d", __func__, h);
 
     if((h != x->height) || x->forceredraw)
     {
         x->height = h;
         omessage_drawElements(x, x->glist, x->width, x->height, x->firsttime);
         x->forceredraw = 0;
-        post("%s height set to %d", __func__, x->height);
+//        post("%s height set to %d", __func__, x->height);
         
     }
 }
@@ -1042,7 +1041,6 @@ void omessage_resize_mousedown(t_omessage *x)
 
 void omessage_resize_mousemove(t_omessage *x, float dx, float dy)
 {
- //   post("%s %f %f", __func__, dx, dy);
     if(x->mouseDown && x->editmode)
     {
         int width = (dx + x->xref);
@@ -1056,7 +1054,6 @@ void omessage_resize_mousemove(t_omessage *x, float dx, float dy)
 
 void omessage_resize_mouseup(t_omessage *x)
 {
-//    post("%s",__func__);
     x->mouseDown = 0;
     sys_vgui("focus %s\n", x->canvas_id);
 }
@@ -1104,11 +1101,11 @@ void omessage_setTextFromHex(t_omessage *x, char *hex)
     }
     buf[length] = '\0'; //<< not sure if this is necessary
     
-    post("%s %s", __func__, buf);
+
     memset(x->tk_text, '\0', OMAX_PD_MAXSTRINGSIZE);
     strcpy(x->tk_text, buf);
     omax_util_hashBrackets2Curlies(buf);
-    post("%s %s", __func__, buf);
+
     memset(x->text, '\0', OMAX_PD_MAXSTRINGSIZE);
     strcpy(x->text, buf);
 
@@ -1156,8 +1153,6 @@ void omessage_setHexFromText(t_omessage *x, char *str)
 
 void omessage_textbuf(t_omessage *x, t_symbol *msg, int argc, t_atom *argv)
 {
-    post("%s", __func__);
-    
     if(argc == 2)
     {
         if(argv->a_type == A_SYMBOL)
@@ -1177,7 +1172,6 @@ void omessage_textbuf(t_omessage *x, t_symbol *msg, int argc, t_atom *argv)
             else if (s == gensym("text"))
             {
                 char *text = atom_getsymbol(argv+1)->s_name;
-                post("%s %s", __func__, text);
                 omessage_setTextFromString(x, text);
             }
             else
@@ -1190,7 +1184,7 @@ void omessage_textbuf(t_omessage *x, t_symbol *msg, int argc, t_atom *argv)
 
 void omessage_insideclick_callback(t_omessage *x)
 {
-    post("%s", __func__);
+
     t_canvas *canvas = glist_getcanvas(x->glist);
     if(canvas->gl_edit)
     {
@@ -1215,7 +1209,7 @@ void omessage_insideclick_callback(t_omessage *x)
 
 void omessage_outsideclick_callback(t_omessage *x)
 {
-    post("%s", __func__);
+
     sys_vgui("focus %s\n", x->canvas_id);
     gobj_select((t_gobj *)x, x->glist, 0); //    omessage_storeTextAndExitEditor(x); called from select function
     sys_vgui("bind %s <Button-1> $::%s::canvas%lxBUTTONBINDING\n", x->canvas_id, x->tcl_namespace, glist_getcanvas(x->glist));
@@ -1232,7 +1226,6 @@ void omessage_outsideclick_callback(t_omessage *x)
 //called when clicking from one object to another without clicking on the empty canvas first
 void omessage_pdnofocus_callback(t_omessage *x)
 {
-    post("%s", __func__);
     sys_vgui("bind %s <Button-1> $::%s::canvas%lxBUTTONBINDING\n", x->canvas_id, x->tcl_namespace, glist_getcanvas(x->glist));
     x->c_bind = 0;
     gobj_select((t_gobj *)x, x->glist, 0);
@@ -1246,7 +1239,7 @@ void omessage_keyup_callback(t_omessage *x, t_symbol *s, int argc, t_atom *argv)
         if(argv->a_type == A_FLOAT)
         {
             int k = (int)atom_getfloat(argv);
-            post("%s %d", __func__, k);
+
             if(k == 65511)
             {
                 x->cmdDown = 0;
@@ -1257,8 +1250,7 @@ void omessage_keyup_callback(t_omessage *x, t_symbol *s, int argc, t_atom *argv)
 
 void omessage_key_callback(t_omessage *x, t_symbol *s, int argc, t_atom *argv)
 {
-    //if(s)
-    //    post("%s %s argc %d", __func__, s->s_name, argc);
+
     
     if(argc == 1)
     {
@@ -1312,10 +1304,6 @@ void omessage_key_callback(t_omessage *x, t_symbol *s, int argc, t_atom *argv)
             
         }
         
-        if(argv->a_type == A_SYMBOL)
-        {
-            post("%s %c", __func__, (char)atom_getsymbol(argv));
-        }
     }
     
 }
@@ -1323,18 +1311,15 @@ void omessage_key_callback(t_omessage *x, t_symbol *s, int argc, t_atom *argv)
 
 
 void omessage_bind_text_events(t_omessage *x)
-{
-    //could add bindings for cmd-1, 2, etc. to deselect when you make a new
-    
-    post("%s", __func__);
-    
+{        
     sys_vgui("bind %s <Key> {+pdsend {%s key %%N }}\n",    x->text_id, x->receive_name->s_name);
     sys_vgui("bind %s <KeyRelease> {+pdsend {%s keyup %%N }}\n",    x->text_id, x->receive_name->s_name);
     
     sys_vgui("namespace eval ::%s [list set canvas%lxBUTTONBINDING [bind %s <Button-1>]] \n", x->tcl_namespace, glist_getcanvas(x->glist), x->canvas_id);
     sys_vgui("namespace eval ::%s [list set canvas%lxKEYBINDING [bind %s <Key>]] \n", x->tcl_namespace, glist_getcanvas(x->glist), x->canvas_id);
-    
-    sys_vgui("::pdwindow::post \"keybinding <$::modifier-Key-z> \n\"\n", x->tcl_namespace, glist_getcanvas(x->glist));
+ 
+    // TODO fix undo bug by storing current cmd-z binding and replacing with textwidget's key, and the replace on exit
+//    sys_vgui("::pdwindow::post \"keybinding <$::modifier-Key-z> \n\"\n", x->tcl_namespace, glist_getcanvas(x->glist));
     
     //focusout for clicking to other windows other than the main canvas
     sys_vgui("bind %s <FocusOut> {+pdsend {%s pdnofocus }}\n", x->text_id, x->receive_name->s_name);
@@ -1347,53 +1332,10 @@ void omessage_bind_text_events(t_omessage *x)
     
 }
 
-        //        sys_vgui("namespace eval ::%s [list set textbuf%lx [string trimright [%s get 0.0 end]]] \n", x->tcl_namespace, glist_getcanvas(x->glist), x->text_id, x->text_id);
-
-void omessage_textToTK(t_omessage *x)
-{
-    post("%s", __func__);
-    char *str = x->text;
-    char tkStr[OMAX_PD_MAXSTRINGSIZE];
-    char c;
-    int i, count = 0;
-    for (i = 0; i < strlen(str); i++) {
-        c = str[i];
-        switch (c) {
-            case '\n':
-            case '\"':
-                if(i != 0 && tkStr[count-1] != '\\')
-                    tkStr[count++] = '\\';
-                break;
-            default:
-                break;
-        }
-        tkStr[count++] = c;
-    }
-    tkStr[count] = '\0';
-    post("%s %s", __func__, tkStr);
-    
-    strcpy(x->tk_text, tkStr); //<< maybe set tcl variable here
-   // sys_vgui("namespace eval ::%s [list set textbuf%lx \"\"] \n", x->tcl_namespace, glist_getcanvas(x->glist), (long)x);
-
-
-}
-
-char *omessage_textFromTK(t_omessage *x)
-{
-    post("%s %d", __func__, x->textediting );
-    
-    if(x->textediting)
-    {
-        sys_vgui("pdsend \"%s textbuf hex [string2hex [string trimright [%s get 0.0 end]]] \"\n", x->receive_name->s_name, x->text_id);
-    }
-    
-    return x->text;
-}
+//        sys_vgui("namespace eval ::%s [list set textbuf%lx [string trimright [%s get 0.0 end]]] \n", x->tcl_namespace, glist_getcanvas(x->glist), x->text_id, x->text_id);
 
 void omessage_storeTextAndExitEditorTick(t_omessage *x)
 {
-    post("%s hex %s", __func__, x->hex);
-    post("%s text %s", __func__, x->tk_text);
     
     //destroy editor and recreate text to canvas if it is visible
     if(glist_isvisible(x->glist))
@@ -1409,13 +1351,10 @@ void omessage_storeTextAndExitEditorTick(t_omessage *x)
 }
 
 void omessage_storeTextAndExitEditor(t_omessage *x)
-{
-    post("%s", __func__);
-    
+{    
     if(x->textediting){
         sys_vgui("pdsend \"%s textbuf hex [string2hex [%s get 0.0 end]] \"\n", x->receive_name->s_name, x->text_id);
         //receive happens on next tick
-            post("%s after send", __func__);
     }
     
 }
@@ -1442,8 +1381,8 @@ void omessage_getTextAndCreateEditor(t_omessage *x, int firsttime)
         omessage_bind_text_events(x);
     }
     else
-    {
-        post("%s not first time", __func__);
+    { // pretty sure that this never gets called
+//        post("%s not first time", __func__);
         sys_vgui("place %s -x %d -y %d -width %d -height %d\n", x->text_id, x1+4, y1+4, x->width-10, x->height-10);
     }
     
@@ -1469,8 +1408,6 @@ void omessage_getTextAndCreateEditor(t_omessage *x, int firsttime)
 
 void omessage_resetText(t_omessage *x, char *s)
 {
-    post("%s", __func__);
-
     x->parse_error = 0;
     
     if(!x->firsttime)
@@ -1487,7 +1424,6 @@ void omessage_resetText(t_omessage *x, char *s)
     }
     else if(glist_isvisible(x->glist))
     {
-        post("%s isvisible", __func__);
         sys_vgui("%s itemconfigure text%lx -width %d -text [subst -nobackslash -nocommands -novariables [string trimright [regsub -all -line {^[ \t]+|[ \t]+$}  {%s} \"\" ]]] \n", x->canvas_id, (long)x, x->width-10, x->tk_text);
 
         omessage_getRectAndDraw(x, 1);
@@ -1529,7 +1465,7 @@ void omessage_drawElements(t_omessage *x, t_glist *glist, int width2, int height
     int cx2 = x2;// + 2;
     int cy2 = y2;// + 2;
     int c_width = x->width * 0.75;
-    int c_height = x->height * 0.75;
+//    int c_height = x->height * 0.75;
     int c_linewidth = 0;
     
     t_canvas *canvas = glist_getcanvas(glist);
@@ -1564,8 +1500,6 @@ void omessage_drawElements(t_omessage *x, t_glist *glist, int width2, int height
         }
         else
         {
-            post("%s y2-y1 %d", __func__, y2-y1);
-
             sys_vgui(".x%lx.c coords %s %d %d %d %d\n", canvas, x->border_tag, x1, y1, x2, y2);
             sys_vgui("%s coords %s %d %d %d %d %d %d %d %d %d %d %d %d \n",x->canvas_id, x->corner_tag,
                      cx2-c_width, cy2, cx2, cy2, cx2, cy2-5, cx2-c_linewidth, cy2-5, cx2-c_linewidth, cy2-c_linewidth, cx2-c_width, cy2-c_linewidth);
@@ -1616,7 +1550,6 @@ void omessage_drawElements(t_omessage *x, t_glist *glist, int width2, int height
 static void omessage_vis(t_gobj *z, t_glist *glist, int vis)
 {
     t_omessage *x = (t_omessage *)z;
-    post("%s %d", __func__, vis);
 
     if(vis)
     {
@@ -1685,7 +1618,6 @@ static void omessage_displace(t_gobj *z, t_glist *glist,int dx, int dy)
 static void omessage_select(t_gobj *z, t_glist *glist, int state)
 {
     t_omessage *x = (t_omessage *)z;
-    post("%s %d %d", __func__, state, x->selected);
 
     if(state && glist_isvisible(glist))
        sys_vgui("%s configure -cursor fleur \n", x->handle_id);
@@ -1723,7 +1655,6 @@ static void omessage_select(t_gobj *z, t_glist *glist, int state)
 
 static void omessage_activate(t_gobj *z, t_glist *glist, int state)
 {
-    post("%s %d", __func__, state);
     
     t_omessage *x = (t_omessage *)z;
     if(state)
@@ -1746,7 +1677,6 @@ static void omessage_activate(t_gobj *z, t_glist *glist, int state)
 
 static void omessage_delete(t_gobj *z, t_glist *glist)
 {
-    post("%s", __func__);
     t_omessage *x = (t_omessage *)z;
   
     canvas_deletelinesfor(glist_getcanvas(glist), &x->ob);    
@@ -1783,28 +1713,13 @@ static void omessage_doClick(t_omessage *x,
 static int omessage_click(t_gobj *z, struct _glist *glist,
                           int xpix, int ypix, int shift, int alt, int dbl, int doit)
 {
-//    post("%s %d", __func__, doit);
-    
     t_omessage *x = (t_omessage *)z;
     {
         if(doit)
         {
             omessage_doClick(x, (t_floatarg)xpix, (t_floatarg)ypix, (t_floatarg)shift, (t_floatarg)0, (t_floatarg)alt);
-            
-            /*
-            sys_vgui("proc replace s {\n\
-                        set RE {{}}\n\
-                        set sub {[format \\%c %c]} \n\
-                        return regsub -all $RE $s $sub \n\
-                     }\n");
-            char *test = "\" [string map { \{ \\\{ \} \\\} } \" { { bar { \"  \"";
-            
-            sys_vgui("%s itemconfigure text%lx -width %d -text %s \n", x->canvas_id, (long)x, x->width-10, test);
-*/
-            
         }
         return (1);
-        
     }
 }
 
@@ -1819,42 +1734,23 @@ static void omessage_tick(t_omessage *x)
 }
 
 
-void printargs(int argc, t_atom *argv)
-{
-    int i;
-    for( i = 0; i < argc; i++)
-    {
-        switch ((argv+i)->a_type) {
-            case A_FLOAT:
-                post("%s argv[%d] %f", __func__, i, atom_getfloat(argv+i));
-                break;
-            case A_SYMBOL:
-                post("%s argv[%d] %s", __func__, i, atom_getsymbol(argv+i)->s_name);
-                break;
-            default:
-                break;
-        }
-    }
-}
-
-
 static void omessage_save(t_gobj *z, t_binbuf *b)
 {
+
+    /* 
+     //prints current pd file text in binbuf
     int argc = binbuf_getnatom(b);
-    post("%s %p %d", __func__, b, argc );
-    
     if(argc > 0){
         t_atom *at = binbuf_getvec(b);
         printargs(argc, at);
     }
+    */
     
     t_omessage *x = (t_omessage *)z;
     omessage_setHexFromText(x, x->text);
     
-    binbuf_addv(b, "ssiisiiss;", gensym("#X"),gensym("obj"),(t_int)x->ob.te_xpix, (t_int)x->ob.te_ypix, gensym("o_message"), x->width, x->height, gensym("hex"), gensym(x->hex));
+    binbuf_addv(b, "ssiisiiss;", gensym("#X"),gensym("obj"),(t_int)x->ob.te_xpix, (t_int)x->ob.te_ypix, gensym("omessage"), x->width, x->height, gensym("hex"), gensym(x->hex));
     
-    //post("%s %s", x->text);
-    //post("%s %s", x->hex);
 }
 
 
@@ -1993,7 +1889,7 @@ void *omessage_new(t_symbol *msg, short argc, t_atom *argv)
         pd_bind(&x->ob.ob_pd, x->receive_name);
         
         
-        printargs(argc, argv);
+//        printargs(argc, argv);
         
         x->width = 100;
         x->height = 10;
@@ -2045,9 +1941,9 @@ void *omessage_new(t_symbol *msg, short argc, t_atom *argv)
     return (void *)x;
 }
 
-void o_message_setup(void) {
+void omessage_setup(void) {
     
-    omax_pd_class_new(omessage_class, gensym("o_message"), (t_newmethod)omessage_new, (t_method)omessage_free, sizeof(t_omessage),  CLASS_NOINLET, A_GIMME, 0);
+    omax_pd_class_new(omessage_class, gensym("omessage"), (t_newmethod)omessage_new, (t_method)omessage_free, sizeof(t_omessage),  CLASS_NOINLET, A_GIMME, 0);
     
     class_addmethod(omessage_class->class, (t_method)omessage_textbuf,gensym("textbuf"), A_GIMME, 0);
     class_addmethod(omessage_class->class, (t_method)omessage_insideclick_callback, gensym("insideclick"), 0);

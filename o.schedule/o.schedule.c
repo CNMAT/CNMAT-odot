@@ -449,7 +449,7 @@ void *osched_new(t_symbol *s, short argc, t_atom *argv)
 	}
 
     //	attr_args_process(x, argc, argv);
-    for(i = 0; i < argc; i++)
+    for(i = 1; i < argc; i++)
     {
         if(atom_gettype(argv + i) == A_SYM)
         {
@@ -492,11 +492,11 @@ void *osched_new(t_symbol *s, short argc, t_atom *argv)
             } else if(attribute->s_name[0] == '@') {
                 post("unknown attribute");
             }  else {
-                post("o.explode optional attributes are @level <value> and @sep <value>");
+                post("o.schedule optional attributes are @precision, @queuesize, @packetsize, @maxdelay");
             }
             
         } else {
-            post("o.explode optional attributes are @level <value> and @sep <value>");
+            post("o.schedule optional attributes are @precision, @queuesize, @packetsize, @maxdelay");
             return 0;
         }
         
@@ -524,9 +524,9 @@ void *osched_new(t_symbol *s, short argc, t_atom *argv)
     
 }
 
-int o_schedule_setup(void)
+int oschedule_setup(void)
 {
-    t_class *c = class_new(gensym("o_schedule"), (t_newmethod)osched_new, (t_method)osched_free, (short)sizeof(t_osched), 0L, A_GIMME, 0);
+    t_class *c = class_new(gensym("oschedule"), (t_newmethod)osched_new, (t_method)osched_free, (short)sizeof(t_osched), 0L, A_GIMME, 0);
     
 	class_addmethod(c, (t_method)osched_fullPacket, gensym("FullPacket"), A_GIMME, 0);
 	class_addmethod(c, (t_method)osched_reset, gensym("reset"), 0);

@@ -230,8 +230,16 @@ void oroute_dispatch_rset(t_oroute *x, t_osc_rset *rset, int num_selectors, char
 					t_osc_msg_s *msg = osc_bndl_it_s_next(it);
 					int num_atoms = omax_util_getNumAtomsInOSCMsg(msg);
 					t_atom a[num_atoms];
+#ifdef OMAX_PD_VERSION
+                    if(omax_util_oscMsg2MaxAtoms(msg, a))
+                    {
+                        object_error((t_object *)x, "pure data does not like { }, hopefully someone will fix this eventually\n");
+                        return;
+                    }
+#else
 					omax_util_oscMsg2MaxAtoms(msg, a);
-					if(num_atoms - 1 == 0){
+#endif
+                    if(num_atoms - 1 == 0){
 						outlet_bang(x->outlets[i]);
 					}else{
 						outlet_atoms(x->outlets[i], num_atoms - 1, a + 1);
@@ -445,7 +453,15 @@ void oroute_atomizeBundle(void *outlet, long len, char *bndl)
 		t_osc_msg_s *msg = osc_bndl_it_s_next(it);
 		int natoms = omax_util_getNumAtomsInOSCMsg(msg);
 		t_atom atoms[natoms];
-		omax_util_oscMsg2MaxAtoms(msg, atoms);
+#ifdef OMAX_PD_VERSION
+		if(omax_util_oscMsg2MaxAtoms(msg, atoms))
+        {
+            object_error((t_object *)x, "pure data does not like { }, hopefully someone will fix this eventually\n");
+            return;
+        }
+#else
+        omax_util_oscMsg2MaxAtoms(msg, atoms);
+#endif
 		t_symbol *address = atom_getsym(atoms);
 		outlet_anything(outlet, address, natoms - 1, atoms + 1);
 	}
@@ -533,17 +549,17 @@ void *oroute_new(t_symbol *msg, short argc, t_atom *argv)
 
 
 #ifdef SELECT
-int o_select_setup(void)
+int oselect_setup(void)
 {
-	t_symbol *name = gensym("o_select");
+	t_symbol *name = gensym("oselect");
 #elif defined ATOMIZE
-int o_atomize_setup(void)
+int oatomize_setup(void)
 {
-	t_symbol *name = gensym("o_atomize");
+	t_symbol *name = gensym("oatomize");
 #else
-int o_route_setup(void)
+int oroute_setup(void)
 {
-	t_symbol *name = gensym("o_route");
+	t_symbol *name = gensym("oroute");
 #endif
     omax_pd_class_new(oroute_class, name, (t_newmethod)oroute_new, (t_method)oroute_free, sizeof(t_oroute),  CLASS_NOINLET, A_GIMME, 0);
     

@@ -113,24 +113,6 @@ void omap_addQitem(t_omap *x, t_omap_qitem *qi);
 
 t_symbol *ps_FullPacket;
 
-void printargs(int argc, t_atom *argv)
-{
-    int i;
-    for( i = 0; i < argc; i++)
-    {
-        switch ((argv+i)->a_type) {
-            case A_FLOAT:
-                post("%s argv[%d] %f", __func__, i, atom_getfloat(argv+i));
-                break;
-            case A_SYMBOL:
-                post("%s argv[%d] %s", __func__, i, atom_getsymbol(argv+i)->s_name);
-                break;
-            default:
-                break;
-        }
-    }
-}
-
 //void omap_fullPacket(t_omap *x, long len, long ptr)
 void omap_fullPacket(t_omap *x, t_symbol *msg, int argc, t_atom *argv)
 {
@@ -340,9 +322,9 @@ void *omap_new(t_symbol *msg, short argc, t_atom *argv){
 	return(x);
 }
 
-int o_mappatch_setup(void){
+int omappatch_setup(void){
     
-    omax_pd_class_new(omap_class, gensym("o_mappatch"), (t_newmethod)omap_new, (t_method)omap_free, sizeof(t_omap),  CLASS_NOINLET, A_GIMME, 0);
+    omax_pd_class_new(omap_class, gensym("omappatch"), (t_newmethod)omap_new, (t_method)omap_free, sizeof(t_omap),  CLASS_NOINLET, A_GIMME, 0);
     
     t_omax_pd_proxy_class *c = NULL;
 	omax_pd_class_new(c, NULL, NULL, NULL, sizeof(t_omax_pd_proxy), CLASS_PD | CLASS_NOINLET, 0);

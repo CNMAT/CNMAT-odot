@@ -41,7 +41,7 @@
 #if defined (OCOND)
 
 #ifdef OMAX_PD_VERSION
-#define OMAX_DOC_NAME "o_cond"
+#define OMAX_DOC_NAME "ocond"
 #else
 #define OMAX_DOC_NAME "o.cond"
 #endif
@@ -53,7 +53,7 @@
 #elif defined (OIF)
 
 #ifdef OMAX_PD_VERSION
-#define OMAX_DOC_NAME "o_if"
+#define OMAX_DOC_NAME "oif"
 #else
 #define OMAX_DOC_NAME "o.if"
 #endif
@@ -66,7 +66,7 @@
 #elif defined (OWHEN)
 
 #ifdef OMAX_PD_VERSION
-#define OMAX_DOC_NAME "o_when"
+#define OMAX_DOC_NAME "owhen"
 #else
 #define OMAX_DOC_NAME "o.when"
 #endif
@@ -79,7 +79,7 @@
 #elif defined (OUNLESS)
 
 #ifdef OMAX_PD_VERSION
-#define OMAX_DOC_NAME "o_unless"
+#define OMAX_DOC_NAME "ounless"
 #else
 #define OMAX_DOC_NAME "o.unless"
 #endif
@@ -91,7 +91,7 @@
 
 #else
 #ifdef OMAX_PD_VERSION
-#define OMAX_DOC_NAME "o_expr"
+#define OMAX_DOC_NAME "oexpr"
 #else
 #define OMAX_DOC_NAME "o.expr"
 #endif
@@ -525,12 +525,12 @@ void *oexpr_new(t_symbol *msg, short argc, t_atom *argv){
                         break;
                     case A_SYM:
 					{
-                        t_symbol *sym = atom_getsymbol(argv + i);
-                        char symbuf[ strlen(sym->s_name) ];
-                        memset(symbuf, '\0', strlen(sym->s_name));
-                        strcpy(symbuf, sym->s_name);
+                        char *sym = atom_getsymbol(argv + i)->s_name;
+                        char symbuf[ strlen(sym) ];
+                        memset(symbuf, '\0', strlen(sym));
+                        strcpy(symbuf, sym);
                         omax_util_hashBrackets2Curlies(symbuf);
-                        
+                                                
 						char *s = symbuf;
 						int len = strlen(s); // null byte
 						int j;
@@ -539,13 +539,13 @@ void *oexpr_new(t_symbol *msg, short argc, t_atom *argv){
 							if(s[j] == '$'){
 								if((j + 1) < len){
 									if((s[j + 1] <= 47 || s[j + 1] >= 58)){
-										object_error((t_object *)x, "address can't contain a #");
+										object_error((t_object *)x, "address can't contain a $");
 										return NULL;
 									}
 									ptr += sprintf(ptr, "/_%d_", s[j + 1] - 48);
 									j++;
 								}else{
-									object_error((t_object *)x, "address can't contain a #");
+									object_error((t_object *)x, "address can't contain a $");
 									return NULL;
 								}
 							}else{
@@ -558,19 +558,21 @@ void *oexpr_new(t_symbol *msg, short argc, t_atom *argv){
 				}
 			}
 			if(1){//if(!haspound){
-//				OSC_PROFILE_TIMER_START(foo);
+				OSC_PROFILE_TIMER_START(foo);
 				int ret = osc_expr_parser_parseExpr(buf, &f);
-//				OSC_PROFILE_TIMER_STOP(foo);
-//				OSC_PROFILE_TIMER_PRINTF(foo);
-//				OSC_PROFILE_TIMER_SNPRINTF(foo, buff);
+				OSC_PROFILE_TIMER_STOP(foo);
+				OSC_PROFILE_TIMER_PRINTF(foo);
+				OSC_PROFILE_TIMER_SNPRINTF(foo, buff);
 #ifdef __OSC_PROFILE__
 				post("%s\n", buff);
 #endif
 				if(!f || ret){
 					object_error((t_object *)x, "error parsing %s\n", buf);
-					return NULL;
-				}
-				x->expr = f;
+//					return NULL;  //<< avioding bogus object
+                    x->expr = NULL;
+				} else {
+                    x->expr = f;
+                }
 			}else{
 				x->expr = NULL;
 			}
@@ -617,20 +619,19 @@ void *oexpr_new(t_symbol *msg, short argc, t_atom *argv){
 		x->outlet = outlet_new(&x->ob, gensym("FullPacket"));
 #endif
 	}
-    
 	return x;
 }
 
 #if defined (OIF)
-int o_if_setup(void)
+int oif_setup(void)
 #elif defined (OUNLESS)
-int o_unless_setup(void)
+int ounless_setup(void)
 #elif defined (OWHEN)
-int o_when_setup(void)
+int owhen_setup(void)
 #elif defined (OCOND)
-int o_cond_setup(void)
+int ocond_setup(void)
 #else
-int o_expr_setup(void)
+int oexpr_setup(void)
 #endif
 {
 	t_class *c = class_new(gensym(NAME), (t_newmethod)oexpr_new, (t_method)oexpr_free, sizeof(t_oexpr), 0L, A_GIMME, 0);

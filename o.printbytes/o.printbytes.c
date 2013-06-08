@@ -111,8 +111,8 @@ void *opbytes_new(t_symbol *msg, short argc, t_atom *argv){
 	return(x);
 }
 
-int o_printbytes_setup(void){
-	t_class *c = class_new(gensym("o_printbytes"), (t_newmethod)opbytes_new, (t_method)opbytes_free, sizeof(t_opbytes), 0L, A_GIMME, 0);
+int oprintbytes_setup(void){
+	t_class *c = class_new(gensym("oprintbytes"), (t_newmethod)opbytes_new, (t_method)opbytes_free, sizeof(t_opbytes), 0L, A_GIMME, 0);
     
 	//class_addmethod(c, (method)opbytes_fullPacket, "FullPacket", A_LONG, A_LONG, 0);
 	class_addmethod(c, (t_method)opbytes_fullPacket, gensym("FullPacket"), A_GIMME, 0);

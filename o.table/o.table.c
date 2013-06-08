@@ -506,9 +506,9 @@ void *otable_new(t_symbol *msg, short argc, t_atom *argv)
 }
 
 
-int o_table_setup(void)
+int otable_setup(void)
 {
-	t_class *c = class_new(gensym("o_table"), (t_newmethod)otable_new, (t_method)otable_free, sizeof(t_otable), 0L, A_GIMME, 0);
+	t_class *c = class_new(gensym("otable"), (t_newmethod)otable_new, (t_method)otable_free, sizeof(t_otable), 0L, A_GIMME, 0);
     
 	class_addmethod(c, (t_method)otable_fullPacket, gensym("FullPacket"), A_GIMME, 0);
 	class_addmethod(c, (t_method)otable_anything, gensym("anything"), A_GIMME, 0);
