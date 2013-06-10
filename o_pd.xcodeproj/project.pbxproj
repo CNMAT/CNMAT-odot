@@ -27,6 +27,7 @@
 		210CBCA3174754AE006CAB74 /* o.timetag.c in Sources */ = {isa = PBXBuildFile; fileRef = 210CBCA2174754AE006CAB74 /* o.timetag.c */; };
 		210CBCAB1748AFE0006CAB74 /* pqops.c in Sources */ = {isa = PBXBuildFile; fileRef = 210CBCAA1748AFE0006CAB74 /* pqops.c */; };
 		216794B31756C1BD008F0301 /* o.message.c in Sources */ = {isa = PBXBuildFile; fileRef = 216794B21756C1BD008F0301 /* o.message.c */; };
+		216B180217657D5600D6023A /* omenu.c in Sources */ = {isa = PBXBuildFile; fileRef = 216B180117657D5600D6023A /* omenu.c */; };
 		21B8486B17444AD100103A7F /* o.cond.c in Sources */ = {isa = PBXBuildFile; fileRef = 21B8486A17444AD100103A7F /* o.cond.c */; };
 		21B8486D17444ADE00103A7F /* o.unless.c in Sources */ = {isa = PBXBuildFile; fileRef = 21B8486C17444ADE00103A7F /* o.unless.c */; };
 		21B8486F17444AEE00103A7F /* o.expr.c in Sources */ = {isa = PBXBuildFile; fileRef = 21B8486E17444AEE00103A7F /* o.expr.c */; };
@@ -39,31 +40,31 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		210CBBF417453A98006CAB74 /* o_pack.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = o_pack.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
-		210CBBFC17453AB3006CAB74 /* o_pak.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = o_pak.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
-		210CBC0417453ACF006CAB74 /* o_route.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = o_route.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
-		210CBC0C17453AE6006CAB74 /* o_select.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = o_select.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
+		210CBBF417453A98006CAB74 /* o_pack.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; name = o_pack.pd_darwin; path = opack.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
+		210CBBFC17453AB3006CAB74 /* o_pak.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; name = o_pak.pd_darwin; path = opak.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
+		210CBC0417453ACF006CAB74 /* o_route.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; name = o_route.pd_darwin; path = oroute.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
+		210CBC0C17453AE6006CAB74 /* o_select.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; name = o_select.pd_darwin; path = oselect.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
 		210CBC1017453C26006CAB74 /* o.pack.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.pack.c; path = o.pack/o.pack.c; sourceTree = "<group>"; };
 		210CBC1217453C34006CAB74 /* o.pak.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.pak.c; path = o.pak/o.pak.c; sourceTree = "<group>"; };
 		210CBC1417453C40006CAB74 /* o.route.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.route.c; path = o.route/o.route.c; sourceTree = "<group>"; };
 		210CBC1617453C4F006CAB74 /* o.select.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.select.c; path = o.select/o.select.c; sourceTree = "<group>"; };
-		210CBC1C1745953F006CAB74 /* o_collect.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = o_collect.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
-		210CBC2417459549006CAB74 /* o_print.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = o_print.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
-		210CBC2C17459550006CAB74 /* o_printbytes.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = o_printbytes.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
+		210CBC1C1745953F006CAB74 /* o_collect.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; name = o_collect.pd_darwin; path = ocollect.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
+		210CBC2417459549006CAB74 /* o_print.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; name = o_print.pd_darwin; path = oprint.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
+		210CBC2C17459550006CAB74 /* o_printbytes.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; name = o_printbytes.pd_darwin; path = oprintbytes.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
 		210CBC30174595AD006CAB74 /* o.collect.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.collect.c; path = o.collect/o.collect.c; sourceTree = "<group>"; };
 		210CBC32174595C1006CAB74 /* o.print.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.print.c; path = o.print/o.print.c; sourceTree = "<group>"; };
 		210CBC34174595CC006CAB74 /* o.printbytes.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.printbytes.c; path = o.printbytes/o.printbytes.c; sourceTree = "<group>"; };
-		210CBC3A174752DB006CAB74 /* o_atomize.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = o_atomize.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
-		210CBC42174752E3006CAB74 /* o_append.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = o_append.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
-		210CBC4A174752EA006CAB74 /* o_prepend.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = o_prepend.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
-		210CBC52174752F1006CAB74 /* o_change.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = o_change.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
-		210CBC5A174752FE006CAB74 /* o_delay.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = o_delay.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
-		210CBC621747530D006CAB74 /* o_explode.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = o_explode.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
-		210CBC6A17475316006CAB74 /* o_flatten.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = o_flatten.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
-		210CBC7217475323006CAB74 /* o_mappatch.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = o_mappatch.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
-		210CBC7A17475331006CAB74 /* o_schedule.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = o_schedule.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
-		210CBC821747533C006CAB74 /* o_table.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = o_table.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
-		210CBC8A17475344006CAB74 /* o_timetag.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = o_timetag.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
+		210CBC3A174752DB006CAB74 /* o_atomize.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; name = o_atomize.pd_darwin; path = oatomize.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
+		210CBC42174752E3006CAB74 /* o_append.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; name = o_append.pd_darwin; path = oappend.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
+		210CBC4A174752EA006CAB74 /* o_prepend.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; name = o_prepend.pd_darwin; path = oprepend.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
+		210CBC52174752F1006CAB74 /* o_change.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; name = o_change.pd_darwin; path = ochange.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
+		210CBC5A174752FE006CAB74 /* o_delay.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; name = o_delay.pd_darwin; path = odelay.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
+		210CBC621747530D006CAB74 /* o_explode.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; name = o_explode.pd_darwin; path = oexplode.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
+		210CBC6A17475316006CAB74 /* o_flatten.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; name = o_flatten.pd_darwin; path = oflatten.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
+		210CBC7217475323006CAB74 /* o_mappatch.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; name = o_mappatch.pd_darwin; path = omappatch.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
+		210CBC7A17475331006CAB74 /* o_schedule.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; name = o_schedule.pd_darwin; path = oschedule.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
+		210CBC821747533C006CAB74 /* o_table.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; name = o_table.pd_darwin; path = otable.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
+		210CBC8A17475344006CAB74 /* o_timetag.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; name = o_timetag.pd_darwin; path = otimetag.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
 		210CBC8E174753E0006CAB74 /* o.append.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.append.c; path = o.append/o.append.c; sourceTree = "<group>"; };
 		210CBC90174753F4006CAB74 /* o.atomize.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.atomize.c; path = o.atomize/o.atomize.c; sourceTree = "<group>"; };
 		210CBC9217475408006CAB74 /* o.change.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.change.c; path = o.change/o.change.c; sourceTree = "<group>"; };
@@ -76,26 +77,28 @@
 		210CBCA01747549A006CAB74 /* o.table.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.table.c; path = o.table/o.table.c; sourceTree = "<group>"; };
 		210CBCA2174754AE006CAB74 /* o.timetag.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.timetag.c; path = o.timetag/o.timetag.c; sourceTree = "<group>"; };
 		210CBCAA1748AFE0006CAB74 /* pqops.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = pqops.c; path = o.schedule/pqops.c; sourceTree = "<group>"; };
-		216794AE1756C13A008F0301 /* o_message.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = o_message.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
+		216794AE1756C13A008F0301 /* o_message.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; name = o_message.pd_darwin; path = omessage.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
 		216794B21756C1BD008F0301 /* o.message.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.message.c; path = o.message/o.message.c; sourceTree = "<group>"; };
-		21B8484C174447B900103A7F /* o_if.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = o_if.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
-		21B8485617444A4400103A7F /* o_cond.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = o_cond.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
-		21B8485E17444A9200103A7F /* o_when.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = o_when.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
-		21B8486617444AAD00103A7F /* o_unless.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = o_unless.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
+		216B17FD17657C7300D6023A /* omenu.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = omenu.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
+		216B180117657D5600D6023A /* omenu.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = omenu.c; path = omenu/omenu.c; sourceTree = "<group>"; };
+		21B8484C174447B900103A7F /* o_if.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; name = o_if.pd_darwin; path = oif.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
+		21B8485617444A4400103A7F /* o_cond.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; name = o_cond.pd_darwin; path = ocond.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
+		21B8485E17444A9200103A7F /* o_when.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; name = o_when.pd_darwin; path = owhen.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
+		21B8486617444AAD00103A7F /* o_unless.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; name = o_unless.pd_darwin; path = ounless.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
 		21B8486A17444AD100103A7F /* o.cond.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.cond.c; path = o.cond/o.cond.c; sourceTree = "<group>"; };
 		21B8486C17444ADE00103A7F /* o.unless.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.unless.c; path = o.unless/o.unless.c; sourceTree = "<group>"; };
 		21B8486E17444AEE00103A7F /* o.expr.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.expr.c; path = o.expr/o.expr.c; sourceTree = "<group>"; };
 		21B8487017444AF800103A7F /* o.if.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.if.c; path = o.if/o.if.c; sourceTree = "<group>"; };
 		21B84872174451C300103A7F /* o.when.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.when.c; path = o.when/o.when.c; sourceTree = "<group>"; };
-		21B8487817446B4A00103A7F /* o_var.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = o_var.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
-		21B8488017446B6500103A7F /* o_union.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = o_union.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
-		21B8488817446B6F00103A7F /* o_intersection.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = o_intersection.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
-		21B8489017446B7A00103A7F /* o_difference.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = o_difference.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
+		21B8487817446B4A00103A7F /* o_var.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; name = o_var.pd_darwin; path = ovar.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
+		21B8488017446B6500103A7F /* o_union.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; name = o_union.pd_darwin; path = ounion.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
+		21B8488817446B6F00103A7F /* o_intersection.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; name = o_intersection.pd_darwin; path = ointersection.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
+		21B8489017446B7A00103A7F /* o_difference.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; name = o_difference.pd_darwin; path = odifference.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
 		21B8489417446C6200103A7F /* o.difference.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.difference.c; path = o.difference/o.difference.c; sourceTree = "<group>"; };
 		21B8489617446C6D00103A7F /* o.intersection.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.intersection.c; path = o.intersection/o.intersection.c; sourceTree = "<group>"; };
 		21B8489817446C7A00103A7F /* o.union.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.union.c; path = o.union/o.union.c; sourceTree = "<group>"; };
 		21B8489A17446C8700103A7F /* o.var.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.var.c; path = o.var/o.var.c; sourceTree = "<group>"; };
-		21CA080917346FD6003F5B84 /* helloworld.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; name = helloworld.pd_darwin; path = o_expr.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
+		21CA080917346FD6003F5B84 /* helloworld.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; name = helloworld.pd_darwin; path = oexpr.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -232,6 +235,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		216B17FA17657C7300D6023A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		21B84849174447B900103A7F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -301,6 +311,7 @@
 		21CA080017346FD6003F5B84 = {
 			isa = PBXGroup;
 			children = (
+				216B180117657D5600D6023A /* omenu.c */,
 				216794B21756C1BD008F0301 /* o.message.c */,
 				210CBCAA1748AFE0006CAB74 /* pqops.c */,
 				210CBCA2174754AE006CAB74 /* o.timetag.c */,
@@ -365,6 +376,7 @@
 				210CBC821747533C006CAB74 /* o_table.pd_darwin */,
 				210CBC8A17475344006CAB74 /* o_timetag.pd_darwin */,
 				216794AE1756C13A008F0301 /* o_message.pd_darwin */,
+				216B17FD17657C7300D6023A /* omenu.pd_darwin */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -499,6 +511,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		216794AC1756C13A008F0301 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		216B17FB17657C7300D6023A /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -894,6 +913,23 @@
 			productReference = 216794AE1756C13A008F0301 /* o_message.pd_darwin */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
+		216B17FC17657C7300D6023A /* omenu */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 216B180017657C7300D6023A /* Build configuration list for PBXNativeTarget "omenu" */;
+			buildPhases = (
+				216B17F917657C7300D6023A /* Sources */,
+				216B17FA17657C7300D6023A /* Frameworks */,
+				216B17FB17657C7300D6023A /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = omenu;
+			productName = omenu;
+			productReference = 216B17FD17657C7300D6023A /* omenu.pd_darwin */;
+			productType = "com.apple.product-type.library.dynamic";
+		};
 		21B8484B174447B900103A7F /* oif */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 21B8484D174447B900103A7F /* Build configuration list for PBXNativeTarget "oif" */;
@@ -1096,6 +1132,7 @@
 				210CBC811747533C006CAB74 /* otable */,
 				210CBC8917475344006CAB74 /* otimetag */,
 				216794AD1756C13A008F0301 /* omessage */,
+				216B17FC17657C7300D6023A /* omenu */,
 			);
 		};
 /* End PBXProject section */
@@ -1251,6 +1288,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				216794B31756C1BD008F0301 /* o.message.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		216B17F917657C7300D6023A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				216B180217657D5600D6023A /* omenu.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1731,6 +1776,27 @@
 			name = Debug;
 		};
 		216794B01756C13A008F0301 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				EXECUTABLE_PREFIX = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx10.7;
+			};
+			name = Release;
+		};
+		216B17FE17657C7300D6023A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				EXECUTABLE_PREFIX = "";
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx10.7;
+			};
+			name = Debug;
+		};
+		216B17FF17657C7300D6023A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
@@ -2231,6 +2297,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		216B180017657C7300D6023A /* Build configuration list for PBXNativeTarget "omenu" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				216B17FE17657C7300D6023A /* Debug */,
+				216B17FF17657C7300D6023A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 		21B8484D174447B900103A7F /* Build configuration list for PBXNativeTarget "oif" */ = {
 			isa = XCConfigurationList;
