@@ -39,7 +39,6 @@ VERSION 0.1: porting to pd, note: the name and key attributes are only setable o
 #define OMAX_DOC_INLETS_DESC (char *[]){"OSC packet to store."}
 #define OMAX_DOC_OUTLETS_DESC (char *[]){"Recalled OSC packet(s)."}
 
-#include "ext.h"
 #include "odot_version.h"
 #ifdef OMAX_PD_VERSION
 #include "m_pd.h"
