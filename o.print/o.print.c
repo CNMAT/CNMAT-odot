@@ -248,7 +248,7 @@ void *oprint_new(t_symbol *msg, short argc, t_atom *argv){
 				x->myname = gensym(buf);
 				break;
 			case A_LONG:
-				sprintf(buf, "%ld", atom_getlong(argv));
+				sprintf(buf, "%lld", (long long)atom_getlong(argv));
 				x->myname = gensym(buf);
 				break;
 			case A_SYM:

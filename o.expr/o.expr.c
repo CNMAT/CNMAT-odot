@@ -623,7 +623,7 @@ void *oexpr_new(t_symbol *msg, short argc, t_atom *argv){
 			for(i = 0; i < argc; i++){
 				switch(atom_gettype(argv + i)){
 				case A_LONG:
-					ptr += sprintf(ptr, "%ld ", atom_getlong(argv + i));
+					ptr += sprintf(ptr, "%lld ", (long long)atom_getlong(argv + i));
 					break;
 				case A_FLOAT:
 					ptr += sprintf(ptr, "%f ", atom_getfloat(argv + i));

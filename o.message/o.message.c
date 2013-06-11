@@ -837,7 +837,7 @@ void omessage_list(t_omessage *x, t_symbol *list_sym, short argc, t_atom *argv){
 						if(l < argc){
 							switch(atom_gettype(argv + l)){
 							case A_LONG:
-								newaddresslen += snprintf(NULL, 0, "%lld", atom_getlong(argv + l));
+								newaddresslen += snprintf(NULL, 0, "%lld", (long long)atom_getlong(argv + l));
 								break;
 							case A_FLOAT:
 								newaddresslen += snprintf(NULL, 0, "%f", atom_getfloat(argv + l));
@@ -866,7 +866,7 @@ void omessage_list(t_omessage *x, t_symbol *list_sym, short argc, t_atom *argv){
 							if(l < argc){
 								switch(atom_gettype(argv + l)){
 								case A_LONG:
-									ptr += sprintf(ptr, "%ld", atom_getlong(argv + l));
+									ptr += sprintf(ptr, "%lld", (long long)atom_getlong(argv + l));
 									break;
 								case A_FLOAT:
 									ptr += sprintf(ptr, "%f", atom_getfloat(argv + l));
