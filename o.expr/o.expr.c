@@ -457,6 +457,7 @@ void *oexpr_new(t_symbol *msg, short argc, t_atom *argv){
 	t_oexpr *x;
 	if((x = (t_oexpr *)object_alloc(oexpr_class))){
 		t_osc_expr *f = NULL;
+        char symbuf[argc][65536];
 		if(argc){
 			char buf[65536];
 			memset(buf, '\0', sizeof(buf));
@@ -472,20 +473,25 @@ void *oexpr_new(t_symbol *msg, short argc, t_atom *argv){
                         break;
                     case A_SYM:
 					{
-						char *s = atom_getsym(argv + i)->s_name;
+                        strcpy(symbuf[i], atom_getsymbol(argv + i)->s_name);
+
+                        omax_util_hashBrackets2Curlies(symbuf[i]);
+                                                
+						char *s = symbuf[i];
 						int len = strlen(s); // null byte
 						int j;
 						for(j = 0; j < len; j++){
-							if(s[j] == '#'){
+                                                                                                            //<< check this for pd version
+							if(s[j] == '$'){
 								if((j + 1) < len){
 									if((s[j + 1] <= 47 || s[j + 1] >= 58)){
-										object_error((t_object *)x, "address can't contain a #");
+										object_error((t_object *)x, "address can't contain a $");
 										return NULL;
 									}
 									ptr += sprintf(ptr, "/_%d_", s[j + 1] - 48);
 									j++;
 								}else{
-									object_error((t_object *)x, "address can't contain a #");
+									object_error((t_object *)x, "address can't contain a $");
 									return NULL;
 								}
 							}else{
@@ -498,19 +504,21 @@ void *oexpr_new(t_symbol *msg, short argc, t_atom *argv){
 				}
 			}
 			if(1){//if(!haspound){
-//				OSC_PROFILE_TIMER_START(foo);
+				OSC_PROFILE_TIMER_START(foo);
 				int ret = osc_expr_parser_parseExpr(buf, &f);
-//				OSC_PROFILE_TIMER_STOP(foo);
-//				OSC_PROFILE_TIMER_PRINTF(foo);
-//				OSC_PROFILE_TIMER_SNPRINTF(foo, buff);
+				OSC_PROFILE_TIMER_STOP(foo);
+				OSC_PROFILE_TIMER_PRINTF(foo);
+				OSC_PROFILE_TIMER_SNPRINTF(foo, buff);
 #ifdef __OSC_PROFILE__
 				post("%s\n", buff);
 #endif
 				if(!f || ret){
 					object_error((t_object *)x, "error parsing %s\n", buf);
-					return NULL;
-				}
-				x->expr = f;
+//					return NULL;  //<< avioding bogus object
+                    x->expr = NULL;
+				} else {
+                    x->expr = f;
+                }
 			}else{
 				x->expr = NULL;
 			}
@@ -557,20 +565,19 @@ void *oexpr_new(t_symbol *msg, short argc, t_atom *argv){
 		x->outlet = outlet_new(&x->ob, gensym("FullPacket"));
 #endif
 	}
-    
 	return x;
 }
 
 #if defined (OIF)
-int o_if_setup(void)
+int oif_setup(void)
 #elif defined (OUNLESS)
-int o_unless_setup(void)
+int ounless_setup(void)
 #elif defined (OWHEN)
-int o_when_setup(void)
+int owhen_setup(void)
 #elif defined (OCOND)
-int o_cond_setup(void)
+int ocond_setup(void)
 #else
-int o_expr_setup(void)
+int oexpr_setup(void)
 #endif
 {
 	t_class *c = class_new(gensym(NAME), (t_newmethod)oexpr_new, (t_method)oexpr_free, sizeof(t_oexpr), 0L, A_GIMME, 0);

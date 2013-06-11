@@ -6,24 +6,27 @@ extern "C" {
 #endif
 
 #include <stdint.h>
-    
-#if UINTPTR_MAX == 0xffffffff
+
+#ifdef OMAX_PD_VERSION
+#include "m_pd.h"
+#include "string.h"
+
 #define OMAX_UTIL_GET_LEN_AND_PTR \
 if(argc != 3){\
-    error("%s: expected 2 arguments but got %d", __func__, argc);\
-    return;\
+error("%s: expected 2 arguments but got %d", __func__, argc);\
+return;\
 }\
 if(argv->a_type != A_FLOAT){\
-    error("%s: argument 1 should be a float", __func__);\
-    return;\
+error("%s: argument 1 should be a float", __func__);\
+return;\
 }\
 if(argv[1].a_type != A_FLOAT){\
-    error("%s: argument 2 should be a symbol", __func__);\
-    return;\
+error("%s: argument 2 should be a symbol", __func__);\
+return;\
 }\
 if(argv[2].a_type != A_FLOAT){\
-    error("%s: argument 2 should be a symbol", __func__);\
-    return;\
+error("%s: argument 2 should be a symbol", __func__);\
+return;\
 }\
 float ff = atom_getfloat(&argv[0]);\
 long len = (long)*((uint32_t *)&ff);\
@@ -34,38 +37,20 @@ ff = atom_getfloat(&argv[2]);\
 uint64_t l2 = *((uint64_t *)&ff);\
 char *ptr = (char *)(l1 | l2);
     
-#elif UINTPTR_MAX == 0xffffffffffffffff
-#define OMAX_UTIL_GET_LEN_AND_PTR \
-if(argc != 2){\
-object_error((t_object *)x, "%s: expected 2 arguments but got %d", __func__, argc);\
-return;\
-}\
-if(atom_gettype(argv) != A_LONG){\
-object_error((t_object *)x, "%s: argument 1 should be an int", __func__);\
-return;\
-}\
-if(atom_gettype(argv + 1) != A_LONG){\
-object_error((t_object *)x, "%s: argument 2 should be an int", __func__);\
-return;\
-}\
-long len = atom_getlong(argv);\
-char *ptr = (char *)atom_getlong(argv + 1);
-#else
-#warning wtf
-#endif
 
-#ifdef OMAX_PD_VERSION
-#include "m_pd.h"
-#include "string.h"
 
 #define sysmem_freeptr free
     
-#define t_max_err void
+#define t_max_err void*
+#define MAX_ERR_NONE 0
+#define MAX_ERR_GENERIC 0
+    
 #define critical_enter(x)
 #define critical_exit(x)
 #define critical_free(x)
 #define critical_new(x)
 #define t_critical void*
+    
 #define object_post(x, st, ...) post(st, ##__VA_ARGS__)
 #define object_error(x, st, ...) error(st, ##__VA_ARGS__)
 
@@ -74,6 +59,8 @@ char *ptr = (char *)atom_getlong(argv + 1);
 #define OMAX_DICT_DICTIONARY(o, x, st)
 
 #define object_alloc(class) pd_new(class)
+    
+#define clock_fdelay clock_delay
 
 void atom_setfloat(t_atom *atom, t_float f)
 {
@@ -123,6 +110,105 @@ void outlet_atoms(void *out, short argc, t_atom *argv)
 void outlet_int(void *outlet, int i)
 {
     outlet_float((t_outlet *)outlet, (float)i);
-}    
+}
+        
+void omax_util_hashBrackets2Curlies(char *s)
+{
+    
+    char c;
+    int len = strlen(s);
+    
+    int i, j = 0;
+    for( i = 0; i < len; i++ )
+    {
+        c = s[i];
+        if( i < len-1 )
+        {
+            if(s[i] == '#' && s[i+1] == '['){
+                c = '{';
+                i++;
+            } else if(s[i] == ']' && s[i+1] == '#') {
+                c = '}';
+                i++;
+            }
+        }
+        s[j++] = c;
+    }
+    
+    while(j < len)
+        s[j++] = '\0';
+    
+}
+
+void omax_util_curlies2hashBrackets(char *str)
+{
+    
+    int i, j = 0;
+    int len = strlen(str);
+    char buf[len * 2]; //<< max possible size with every character being a { or }
+    memset(buf, '\0', len * 2);
+    
+    for( i = 0; i < len; i++ )
+    {
+        if (str[i] == '{')
+        {
+            buf[j++] = '#';
+            buf[j++] = '[';
+        }
+        else if (str[i] == '}')
+        {
+            buf[j++] = ']';
+            buf[j++] = '#';
+        } else {
+            buf[j++] = str[i];
+        }
+    }
+    if(j != i)
+    {
+        osc_mem_resize(str, sizeof(char) * j);
+        strcpy(str, buf);
+    }
+}
+
+void printargs(int argc, t_atom *argv)
+{
+    int i;
+    for( i = 0; i < argc; i++)
+    {
+        switch ((argv+i)->a_type) {
+            case A_FLOAT:
+                post("%s argv[%d] %f", __func__, i, atom_getfloat(argv+i));
+                break;
+            case A_SYMBOL:
+                post("%s argv[%d] %s", __func__, i, atom_getsymbol(argv+i)->s_name);
+                break;
+            default:
+                break;
+        }
+    }
+}
+
+    
+#else
+    //MAX VERSION
+#define OMAX_UTIL_GET_LEN_AND_PTR \
+if(argc != 2){\
+object_error((t_object *)x, "%s: expected 2 arguments but got %d", __func__, argc);\
+return;\
+}\
+if(atom_gettype(argv) != A_LONG){\
+object_error((t_object *)x, "%s: argument 1 should be an int", __func__);\
+return;\
+}\
+if(atom_gettype(argv + 1) != A_LONG){\
+object_error((t_object *)x, "%s: argument 2 should be an int", __func__);\
+return;\
+}\
+long len = atom_getlong(argv);\
+char *ptr = (char *)atom_getlong(argv + 1);
+
+#endif
+#ifdef __cplusplus 
+}
 #endif
 #endif

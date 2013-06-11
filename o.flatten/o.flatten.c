@@ -39,15 +39,21 @@
 #define OMAX_DOC_SEEALSO (char *[]){"o.explode"}
 
 #include "odot_version.h"
+#ifdef OMAX_PD_VERSION
+#include "m_pd.h"
+#else
 #include "ext.h"
 #include "ext_obex.h"
-#include "ext_critical.h"
 #include "ext_obex_util.h"
+#include "ext_critical.h"
+#endif
 #include "osc.h"
 #include "osc_mem.h"
 #include "omax_util.h"
 #include "omax_doc.h"
 #include "omax_dict.h"
+
+#include "o.h"
 
 typedef struct _oflatten{
 	t_object ob;
@@ -61,7 +67,6 @@ void *oflatten_class;
 
 int oflatten_copybundle(t_oflatten *x, long len, char *ptr);
 
-//void oflatten_fullPacket(t_oflatten *x, long len, long ptr)
 void oflatten_fullPacket(t_oflatten *x, t_symbol *msg, int argc, t_atom *argv)
 {
 	OMAX_UTIL_GET_LEN_AND_PTR
@@ -75,12 +80,88 @@ void oflatten_fullPacket(t_oflatten *x, t_symbol *msg, int argc, t_atom *argv)
 	osc_bundle_s_deepFree(dest);
 }
 
-OMAX_DICT_DICTIONARY(t_oflatten, x, oflatten_fullPacket);
-
 void oflatten_doc(t_oflatten *x)
 {
 	omax_doc_outletDoc(x->outlet);
 }
+
+#ifdef OMAX_PD_VERSION
+void *oflatten_new(t_symbol *msg, short argc, t_atom *argv)
+{
+	t_oflatten *x;
+	if((x = (t_oflatten *)object_alloc(oflatten_class))){
+		x->outlet = outlet_new((t_object *)x, gensym("FullPacket"));
+		x->level = 0;
+		x->sep = gensym("");
+		x->remove_enclosing_address_if_empty = 1;
+
+        int i;
+        for(i = 0; i < argc; i++)
+        {
+            if(atom_gettype(argv + i) == A_SYM)
+            {
+                t_symbol *attribute = atom_gensym(argv+i);
+                if(attribute == gensym("@level")){
+                    if(atom_gettype(argv+(++i)) == A_FLOAT)
+                    {
+                        x->level = atom_getfloat(argv+i);
+                    } else {
+                        post("@level value must be a number");
+                        return 0;
+                    }
+                } else if(attribute == gensym("@sep")){
+                    if(atom_gettype(argv+(++i)) == A_SYMBOL)
+                    {
+                        x->sep = atom_getsym(argv+i);
+                    } else {
+                        post("@sep value must be a symbol");
+                        return 0;
+                    }
+                } else if(attribute == gensym("@remove_enclosing_address_if_empty")){
+                    if(atom_gettype(argv+(++i)) == A_FLOAT)
+                    {
+                        x->remove_enclosing_address_if_empty = atom_getfloat(argv+i);
+                    } else {
+                        post("@remove_enclosing_address_if_empty value must be a number (1 or 0)");
+                        return 0;
+                    }
+                    
+                } else if(attribute->s_name[0] == '@') {
+                    post("unknown attribute");
+                }  else {
+                    post("o.explode optional attributes are @level <value> and @sep <value>");
+                }
+                
+            } else {
+                post("o.explode optional attributes are @level <value> and @sep <value>");
+                return 0;
+            }
+            
+            
+        }
+        
+	}
+    
+	return x;
+}
+
+int oflatten_setup(void)
+{
+	t_class *c = class_new(gensym("oflatten"), (t_newmethod)oflatten_new, NULL, sizeof(t_oflatten), 0L, A_GIMME, 0);
+	class_addmethod(c, (t_method)oflatten_fullPacket, gensym("FullPacket"), A_GIMME, 0);
+	class_addmethod(c, (t_method)oflatten_doc, gensym("doc"), 0);
+
+	class_addmethod(c, (t_method)odot_version, gensym("version"), 0);
+    
+	oflatten_class = c;
+    
+	ODOT_PRINT_VERSION;
+	return 0;
+}
+
+
+#else
+OMAX_DICT_DICTIONARY(t_oflatten, x, oflatten_fullPacket);
 
 void oflatten_assist(t_oflatten *x, void *b, long io, long num, char *buf)
 {
@@ -127,3 +208,4 @@ int main(void)
 	ODOT_PRINT_VERSION;
 	return 0;
 }
+#endif

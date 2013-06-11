@@ -49,9 +49,15 @@
 #ifndef WIN_VERSION
 #include <CoreServices/CoreServices.h>
 #endif
+#ifdef OMAX_PD_VERSION
+#include "m_pd.h"
+#else
 #include "ext.h"
 #include "ext_obex.h"
+#include "ext_obex_util.h"
 #include "ext_critical.h"
+#endif
+
 #include "pqops.h" // heap-based priority queue
 #include "osc.h"
 #include "osc_bundle_s.h"
@@ -64,6 +70,7 @@
 #include "omax_doc.h"
 #include "omax_dict.h"
 
+#include "o.h"
 
 // default options
 #define DEFAULT_PACKET_SIZE 1000
@@ -393,13 +400,157 @@ t_osc_timetag osched_getTimetag(t_osched *x, long len, char *ptr)
 void osched_free(t_osched *x)
 {
 	clock_unset(x->clock);
-	freeobject(x->clock);
+	free(x->clock);
 	critical_free(x->lock);
 	osc_mem_free(x->packet_data);
 	osc_mem_free(x->packet_free);
 	heap_finalize(&(x->q));    
 }
 
+
+void osched_doc(t_osched *x)
+{
+	omax_doc_outletDoc(x->outlets[0]);
+}
+
+#ifdef OMAX_PD_VERSION
+
+void *osched_new(t_symbol *s, short argc, t_atom *argv)
+{
+    t_osched *x;
+	int i;
+    
+	x = (t_osched *)object_alloc(osched_class);
+	if(!x){
+		return NULL;
+	}
+    
+	x->packets_max = DEFAULT_QUEUE_SIZE;
+	x->packet_size = DEFAULT_PACKET_SIZE;
+    
+	//OSCTimeTag_float_to_ntp(0.003, &(x->precision));
+	//OSCTimeTag_float_to_ntp(1000.0, &(x->maxdelay));
+	x->precision = osc_timetag_floatToTimetag(0.003);
+	x->maxdelay = osc_timetag_floatToTimetag(1000.0);
+    
+	x->id = 0;
+    
+	x->clock = clock_new(x, (t_method)osched_tick);
+	critical_new(&x->lock);
+    
+	x->address = 0;
+	if(argc > 0){
+		if(atom_gettype(argv) == A_SYM){
+			t_symbol *s = atom_getsym(argv);
+			if(s->s_name[0] == '/'){
+				x->address = s;
+			}
+		}
+	}
+
+    //	attr_args_process(x, argc, argv);
+    for(i = 1; i < argc; i++)
+    {
+        if(atom_gettype(argv + i) == A_SYM)
+        {
+            t_symbol *attribute = atom_gensym(argv+i);
+            if(attribute == gensym("@precision")){
+                if(atom_gettype(argv+(++i)) == A_FLOAT)
+                {
+     //               x->precision = atom_getfloat(argv+i);
+                    osched_setPrecision(x, NULL, 1, argv+i);
+                } else {
+                    post("@level value must be a number");
+                    return 0;
+                }
+            } else if(attribute == gensym("@queuesize")){
+                if(atom_gettype(argv+(++i)) == A_FLOAT)
+                {
+//                    x->maxdelay = atom_getfloat(argv+i);
+                    osched_setMaxdelay(x, NULL, 1, argv+i);
+                } else {
+                    post("@sep value must be a symbol");
+                    return 0;
+                }
+            } else if(attribute == gensym("@packetsize")){
+                if(atom_gettype(argv+(++i)) == A_FLOAT)
+                {
+                    x->packets_max = atom_getfloat(argv+i);
+                } else {
+                    post("@sep value must be a symbol");
+                    return 0;
+                }
+            } else if(attribute == gensym("@maxdelay")){
+                if(atom_gettype(argv+(++i)) == A_FLOAT)
+                {
+                    x->packet_size = atom_getfloat(argv+i);
+                } else {
+                    post("@sep value must be a symbol");
+                    return 0;
+                }
+                
+            } else if(attribute->s_name[0] == '@') {
+                post("unknown attribute");
+            }  else {
+                post("o.schedule optional attributes are @precision, @queuesize, @packetsize, @maxdelay");
+            }
+            
+        } else {
+            post("o.schedule optional attributes are @precision, @queuesize, @packetsize, @maxdelay");
+            return 0;
+        }
+        
+        
+    }
+
+    
+	x->outlets[0] = outlet_new((t_object *)x, gensym("FullPacket"));
+	x->outlets[1] = outlet_new((t_object *)x, gensym("FullPacket"));
+	x->outlets[2] = outlet_new((t_object *)x, gensym("FullPacket"));
+    
+	// allocate packet data buffer
+	x->packet_data = (char*)osc_mem_alloc(x->packets_max * x->packet_size);
+    
+	// allocate nodes
+	heap_initialize(&(x->q), x->packets_max);
+    
+	// allocate free markers
+	x->packet_free = (int*)osc_mem_alloc(sizeof(int) * x->packets_max);
+	for(i = 0; i < x->packets_max; i++) {
+		x->packet_free[i] = 1;
+	}
+    
+	return x;
+    
+}
+
+int oschedule_setup(void)
+{
+    t_class *c = class_new(gensym("oschedule"), (t_newmethod)osched_new, (t_method)osched_free, (short)sizeof(t_osched), 0L, A_GIMME, 0);
+    
+	class_addmethod(c, (t_method)osched_fullPacket, gensym("FullPacket"), A_GIMME, 0);
+	class_addmethod(c, (t_method)osched_reset, gensym("reset"), 0);
+	class_addmethod(c, (t_method)odot_version, gensym("version"), 0);
+	
+/*
+	CLASS_ATTR_FLOAT(c, "precision", 0, t_osched, precision);
+	CLASS_ATTR_ACCESSORS(c, "precision", osched_getPrecision, osched_setPrecision);
+    
+	CLASS_ATTR_FLOAT(c, "maxdelay", 0, t_osched, maxdelay);
+	CLASS_ATTR_ACCESSORS(c, "maxdelay", osched_getMaxdelay, osched_setMaxdelay);
+    
+	CLASS_ATTR_LONG(c, "queuesize", 0, t_osched, packets_max);
+	CLASS_ATTR_LONG(c, "packetsize", 0, t_osched, packet_size);
+*/  
+	osched_class = c;
+	ps_FullPacket = gensym("FullPacket");
+
+	ODOT_PRINT_VERSION;
+	return 0;
+}
+
+
+#else
 void osched_assist(t_osched *x, void *b, long io, long num, char *buf)
 {
 	omax_doc_assist(io, num, buf);
@@ -407,10 +558,6 @@ void osched_assist(t_osched *x, void *b, long io, long num, char *buf)
 
 OMAX_DICT_DICTIONARY(t_osched, x, osched_fullPacket);
 
-void osched_doc(t_osched *x)
-{
-	omax_doc_outletDoc(x->outlets[0]);
-}
 
 void *osched_new(t_symbol *s, short argc, t_atom *argv)
 {
@@ -496,6 +643,9 @@ int main(void)
 	return 0;
 }
 
+#endif
+
+#ifndef OMAX_PD_VERSION
 t_max_err osched_getPrecision(t_osched *x, void *attr, long *ac, t_atom **av)
 {
 	double f = osc_timetag_timetagToFloat(x->precision);
@@ -508,6 +658,7 @@ t_max_err osched_getPrecision(t_osched *x, void *attr, long *ac, t_atom **av)
 	}
 	return MAX_ERR_NONE;
 }
+#endif
 
 t_max_err osched_setPrecision(t_osched *x, void *attr, long ac, t_atom *av)
 {
@@ -518,6 +669,7 @@ t_max_err osched_setPrecision(t_osched *x, void *attr, long ac, t_atom *av)
 	return MAX_ERR_NONE;
 }
 
+#ifndef OMAX_PD_VERSION
 t_max_err osched_getMaxdelay(t_osched *x, void *attr, long *ac, t_atom **av)
 {
 	double f = osc_timetag_timetagToFloat(x->maxdelay);
@@ -530,6 +682,7 @@ t_max_err osched_getMaxdelay(t_osched *x, void *attr, long *ac, t_atom **av)
 	}
 	return MAX_ERR_NONE;
 }
+#endif
 
 t_max_err osched_setMaxdelay(t_osched *x, void *attr, long ac, t_atom *av)
 {

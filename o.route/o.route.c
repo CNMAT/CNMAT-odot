@@ -48,6 +48,8 @@ VERSION 0.1: Addresses to match can now have patterns
 
 #ifdef OMAX_PD_VERSION
 #include "m_pd.h"
+#include "omax_pd_proxy.h"
+#define proxy_getinlet(x) (((t_oroute *)(x))->inlet)
 #else
 #include "ext.h"
 #include "ext_obex.h"
@@ -90,7 +92,12 @@ typedef struct _oroute{
 	char **outlet_assist_strings;
 } t_oroute;
 
+#ifdef OMAX_PD_VERSION
+t_omax_pd_proxy_class *oroute_class;
+t_omax_pd_proxy_class *oroute_proxy_class;
+#else
 void *oroute_class;
+#endif
 
 void oroute_dispatch_rset(t_oroute *x, t_osc_rset *rset, int num_selectors, char **selectors);
 void oroute_anything(t_oroute *x, t_symbol *msg, short argc, t_atom *argv);
@@ -209,8 +216,16 @@ void oroute_dispatch_rset(t_oroute *x, t_osc_rset *rset, int num_selectors, char
 					t_osc_msg_s *msg = osc_bndl_it_s_next(it);
 					int num_atoms = omax_util_getNumAtomsInOSCMsg(msg);
 					t_atom a[num_atoms];
+#ifdef OMAX_PD_VERSION
+                    if(omax_util_oscMsg2MaxAtoms(msg, a))
+                    {
+                        object_error((t_object *)x, "pure data does not like { }, hopefully someone will fix this eventually\n");
+                        return;
+                    }
+#else
 					omax_util_oscMsg2MaxAtoms(msg, a);
-					if(num_atoms - 1 == 0){
+#endif
+                    if(num_atoms - 1 == 0){
 						outlet_bang(x->outlets[i]);
 					}else{
 						outlet_atoms(x->outlets[i], num_atoms - 1, a + 1);
@@ -404,10 +419,9 @@ void oroute_free(t_oroute *x)
 	if(x->outlet_assist_strings){
 		osc_mem_free(x->outlet_assist_strings);
 	}
-    
-    free(x->proxy);
-    
 #endif
+   
+    free(x->proxy);    
     free(x->outlets);
 }
 
@@ -436,7 +450,15 @@ void oroute_atomizeBundle(void *outlet, long len, char *bndl)
 		t_osc_msg_s *msg = osc_bndl_it_s_next(it);
 		int natoms = omax_util_getNumAtomsInOSCMsg(msg);
 		t_atom atoms[natoms];
-		omax_util_oscMsg2MaxAtoms(msg, atoms);
+#ifdef OMAX_PD_VERSION
+		if(omax_util_oscMsg2MaxAtoms(msg, atoms))
+        {
+            object_error((t_object *)x, "pure data does not like { }, hopefully someone will fix this eventually\n");
+            return;
+        }
+#else
+        omax_util_oscMsg2MaxAtoms(msg, atoms);
+#endif
 		t_symbol *address = atom_getsym(atoms);
 		outlet_anything(outlet, address, natoms - 1, atoms + 1);
 	}
@@ -475,9 +497,8 @@ void oroute_makeUniqueSelectors(int nselectors,
 void *oroute_new(t_symbol *msg, short argc, t_atom *argv)
 {
 	t_oroute *x;
-	if((x = (t_oroute *)object_alloc(oroute_class))){
+	if((x = (t_oroute *)object_alloc(oroute_class->class))){
 		critical_new(&(x->lock));
-		x->delegation_outlet = outlet_new(&x->ob, gensym("FullPacket")); // unmatched outlet
 		x->outlets = (void **)malloc(argc * sizeof(void *));
 
 		x->selectors = (char **)malloc(argc * sizeof(char *));
@@ -486,9 +507,12 @@ void *oroute_new(t_symbol *msg, short argc, t_atom *argv)
         
         
 		x->nbytes_selector = 0;
-		int i, outnum = argc - 1;
+		int i;
+        x->proxy = (void **)malloc(argc * sizeof(t_omax_pd_proxy *));
+        
 		for(i = 0; i < argc; i++){
-			x->outlets[outnum - i] = outlet_new(&x->ob, NULL);
+			x->outlets[i] = outlet_new(&x->ob, NULL);
+			x->proxy[i] = proxy_new((t_object *)x, i, &(x->inlet), oroute_proxy_class);
 
 			if(atom_gettype(argv + i) != A_SYM){
 				object_error((t_object *)x, "argument %d is not an OSC address", i);
@@ -500,10 +524,12 @@ void *oroute_new(t_symbol *msg, short argc, t_atom *argv)
 			if(len > x->nbytes_selector){
 				x->nbytes_selector = len;
 			}
-			x->selectors[x->num_selectors - i - 1] = selector;
+			x->selectors[i] = selector;
             
 		}
         
+        x->delegation_outlet = outlet_new(&x->ob, gensym("FullPacket"));
+
 		oroute_makeUniqueSelectors(x->num_selectors,
                                    x->selectors,
                                    &(x->num_unique_selectors),
@@ -520,38 +546,35 @@ void *oroute_new(t_symbol *msg, short argc, t_atom *argv)
 
 
 #ifdef SELECT
-int o_select_setup(void)
+int oselect_setup(void)
 {
-	t_symbol *name = gensym("o_select");
+	t_symbol *name = gensym("oselect");
 #elif defined ATOMIZE
-int o_atomize_setup(void)
+int oatomize_setup(void)
 {
-	t_symbol *name = gensym("o_atomize");
+	t_symbol *name = gensym("oatomize");
 #else
-int o_route_setup(void)
+int oroute_setup(void)
 {
-	t_symbol *name = gensym("o_route");
+	t_symbol *name = gensym("oroute");
 #endif
+    omax_pd_class_new(oroute_class, name, (t_newmethod)oroute_new, (t_method)oroute_free, sizeof(t_oroute),  CLASS_NOINLET, A_GIMME, 0);
     
-	t_class *c = class_new(name, (t_newmethod)oroute_new, (t_method)oroute_free, sizeof(t_oroute), 0L, A_GIMME, 0);
-	//class_addmethod(c, (method)oroute_fullPacket, "FullPacket", A_LONG, A_LONG, 0);
-	class_addmethod(c, (t_method)oroute_fullPacket, gensym("FullPacket"), A_GIMME, 0);
+    t_omax_pd_proxy_class *c = NULL;
+	omax_pd_class_new(c, NULL, NULL, NULL, sizeof(t_omax_pd_proxy), CLASS_PD | CLASS_NOINLET, 0);
     
-    
-//	class_addmethod(c, (method)oroute_assist, "assist", A_CANT, 0);
-	class_addmethod(c, (t_method)oroute_doc, gensym("doc"), 0);
-	class_addmethod(c, (t_method)oroute_anything, gensym("anything"), A_GIMME, 0);
+    omax_pd_class_addmethod(c, (t_method)odot_version, gensym("version"));
+	omax_pd_class_addmethod(c, (t_method)oroute_set, gensym("set"));
+	omax_pd_class_addmethod(c, (t_method)oroute_fullPacket, gensym("FullPacket"));
+	omax_pd_class_addanything(c, (t_method)oroute_anything);
 
-	class_addmethod(c, (t_method)oroute_set, gensym("set"), A_GIMME, 0);
-	class_addmethod(c, (t_method)odot_version, gensym("version"), 0);
+    //	omax_pd_class_addmethod(c, (t_method)opack_doc, gensym("doc")); //<<crashes
     
-
-	oroute_class = c;
+	oroute_proxy_class = c;
     
 	ps_FullPacket = gensym("FullPacket");
 	ps_oscschemalist = gensym("/osc/schema/list");
     
-//	common_symbols_init();
 	ODOT_PRINT_VERSION;
 	return 0;
 }
@@ -562,7 +585,7 @@ void *oroute_new(t_symbol *msg, short argc, t_atom *argv)
 	t_oroute *x;
 	if((x = (t_oroute *)object_alloc(oroute_class))){
 		critical_new(&(x->lock));
-		x->delegation_outlet = outlet_new(x, "FullPacket"); // unmatched outlet
+		x->delegation_outlet = outlet_new(x, "FullPacket");
 		x->outlets = (void **)malloc(argc * sizeof(void *));
 		x->proxy = (void **)malloc(argc * sizeof(void *));
 		x->selectors = (char **)malloc(argc * sizeof(char *));

@@ -211,8 +211,8 @@ void *oprint_new(t_symbol *msg, short argc, t_atom *argv){
 	return(x);
 }
 
-int o_print_setup(void){
-	t_class *c = class_new(gensym("o_print"), (t_newmethod)oprint_new, (t_method)oprint_free, sizeof(t_oprint), 0L, A_GIMME, 0);
+int oprint_setup(void){
+	t_class *c = class_new(gensym("oprint"), (t_newmethod)oprint_new, (t_method)oprint_free, sizeof(t_oprint), 0L, A_GIMME, 0);
 
 	//class_addmethod(c, (method)oprint_fullPacket, "FullPacket", A_LONG, A_LONG, 0);
 	class_addmethod(c, (t_method)oprint_fullPacket, gensym("FullPacket"), A_GIMME, 0);
@@ -221,7 +221,7 @@ int o_print_setup(void){
 //	class_addmethod(c, (method)oprint_doc, "doc", 0);
 	class_addmethod(c, (t_method)oprint_anything, gensym("anything"), A_GIMME, 0);
 	class_addmethod(c, (t_method)oprint_list, gensym("list"), A_GIMME, 0);
-	class_addmethod(c, (t_method)oprint_int, gensym("int"), A_LONG, 0);
+	class_addmethod(c, (t_method)oprint_int, gensym("int"), A_DEFFLOAT, 0);
 	class_addmethod(c, (t_method)oprint_float, gensym("float"), A_FLOAT, 0);
 	class_addmethod(c, (t_method)odot_version, gensym("version"), 0);
     

@@ -42,6 +42,8 @@
 #include "odot_version.h"
 #ifdef OMAX_PD_VERSION
 #include "m_pd.h"
+#include "omax_pd_proxy.h"
+#define proxy_getinlet(x) (((t_ovar *)(x))->inlet)
 #else
 #include "ext.h"
 #include "ext_obex.h"
@@ -60,7 +62,11 @@
 typedef struct _ovar{
 	t_object ob;
 	void *outlet;
+#ifdef OMAX_PD_VERSION
+	void **proxy;
+#else
 	void *proxy;
+#endif
 	long inlet;
 	long len;
 	char *bndl;
@@ -69,7 +75,13 @@ typedef struct _ovar{
 	char emptybndl[OSC_HEADER_SIZE];
 } t_ovar;
 
+
+#ifdef OMAX_PD_VERSION
+t_omax_pd_proxy_class *ovar_class;
+t_omax_pd_proxy_class *ovar_proxy_class;
+#else
 void *ovar_class;
+#endif
 
 void ovar_clear(t_ovar *x);
 void ovar_anything(t_ovar *x, t_symbol *msg, int argc, t_atom *argv);
@@ -235,9 +247,7 @@ void ovar_doc(t_ovar *x)
 
 void ovar_free(t_ovar *x)
 {
-#ifndef OMAX_PD_VERSION
-	object_free(x->proxy);
-#endif
+	free(x->proxy);
 	if(x->bndl){
 		osc_mem_free(x->bndl);
 	}
@@ -255,11 +265,13 @@ void ovar_fullPacket_in1(t_ovar *x, t_symbol *msg, int argc, t_atom *argv)
 void *ovar_new(t_symbol *msg, short argc, t_atom *argv)
 {
 	t_ovar *x;
-	if((x = (t_ovar *)object_alloc(ovar_class))){
+	if((x = (t_ovar *)object_alloc(ovar_class->class))){
 		x->outlet = outlet_new(&x->ob, gensym("FullPacket"));
-        inlet_new(&x->ob, &x->ob.ob_pd, gensym("FullPacket"), gensym("in1"));
+
+		x->proxy = (void **)malloc(2 * sizeof(t_omax_pd_proxy *));
+		x->proxy[0] = proxy_new((t_object *)x, 0, &(x->inlet), ovar_proxy_class);
+        x->proxy[1] = proxy_new((t_object *)x, 1, &(x->inlet), ovar_proxy_class);
         
-//		x->proxy = proxy_new((t_object *)x, 1, &(x->inlet));
 		critical_new(&(x->lock));
 		x->len = 0;
 		x->buflen = 0;
@@ -306,35 +318,35 @@ void *ovar_new(t_symbol *msg, short argc, t_atom *argv)
 }
 
 #ifdef ODOT_UNION
-int o_union_setup(void){
-    t_class *c = class_new(gensym("o_union"), (t_newmethod)ovar_new, (t_method)ovar_free, sizeof(t_ovar), 0L, A_GIMME, 0);
-
+int ounion_setup(void)
+{
+    t_symbol *name = gensym("ounion");
 #elif defined ODOT_INTERSECTION
-int o_intersection_setup(void){
-    t_class *c = class_new(gensym("o_intersection"), (t_newmethod)ovar_new, (t_method)ovar_free, sizeof(t_ovar), 0L, A_GIMME, 0);
+int ointersection_setup(void)
+{
+    t_symbol *name = gensym("ointersection");
 #elif defined ODOT_DIFFERENCE
-int o_difference_setup(void){
-	t_class *c = class_new(gensym("o_difference"), (t_newmethod)ovar_new, (t_method)ovar_free, sizeof(t_ovar), 0L, A_GIMME, 0);
+int odifference_setup(void)
+{
+    t_symbol *name = gensym("odifference");
 #else
-int o_var_setup(void){
-    t_class *c = class_new(gensym("o_var"), (t_newmethod)ovar_new, (t_method)ovar_free, sizeof(t_ovar), 0L, A_GIMME, 0);
+int ovar_setup(void)
+{
+    t_symbol *name = gensym("ovar");
 #endif
-
-	//class_addmethod(c, (method)ovar_fullPacket, "FullPacket", A_LONG, A_LONG, 0);
-	class_addmethod(c, (t_method)ovar_fullPacket, gensym("FullPacket"), A_GIMME, 0);
-//	class_addmethod(c, (t_method)ovar_assist, "assist", A_CANT, 0);
-	class_addmethod(c, (t_method)ovar_doc, gensym("doc"), 0);
-	class_addmethod(c, (t_method)ovar_bang, gensym("bang"), 0);
-	class_addmethod(c, (t_method)ovar_anything, gensym("anything"), A_GIMME, 0);
-    class_addmethod(c, (t_method)ovar_fullPacket_in1, gensym("in1"), A_GIMME, 0);
+    omax_pd_class_new(ovar_class, name, (t_newmethod)ovar_new, (t_method)ovar_free, sizeof(t_ovar),  CLASS_NOINLET, A_GIMME, 0);
     
-	class_addmethod(c, (t_method)ovar_clear, gensym("clear"), 0);
+    t_omax_pd_proxy_class *c = NULL;
+	omax_pd_class_new(c, NULL, NULL, NULL, sizeof(t_omax_pd_proxy), CLASS_PD | CLASS_NOINLET, 0);
     
-	class_addmethod(c, (t_method)odot_version, gensym("version"), 0);
+    omax_pd_class_addmethod(c, (t_method)odot_version, gensym("version"));
+	omax_pd_class_addmethod(c, (t_method)ovar_fullPacket, gensym("FullPacket"));
+    omax_pd_class_addmethod(c, (t_method)ovar_clear, gensym("clear"));
+	omax_pd_class_addanything(c, (t_method)ovar_anything);
+	omax_pd_class_addbang(c, (t_method)ovar_bang);
+    //	omax_pd_class_addmethod(c, (t_method)opack_doc, gensym("doc")); //<<crashes
     
-	ovar_class = c;
-    
-//	common_symbols_init();
+	ovar_proxy_class = c;
     
 	ODOT_PRINT_VERSION;
 	return 0;

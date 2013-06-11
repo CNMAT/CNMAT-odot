@@ -14,6 +14,20 @@
 		210CBC31174595AD006CAB74 /* o.collect.c in Sources */ = {isa = PBXBuildFile; fileRef = 210CBC30174595AD006CAB74 /* o.collect.c */; };
 		210CBC33174595C1006CAB74 /* o.print.c in Sources */ = {isa = PBXBuildFile; fileRef = 210CBC32174595C1006CAB74 /* o.print.c */; };
 		210CBC35174595CC006CAB74 /* o.printbytes.c in Sources */ = {isa = PBXBuildFile; fileRef = 210CBC34174595CC006CAB74 /* o.printbytes.c */; };
+		210CBC8F174753E0006CAB74 /* o.append.c in Sources */ = {isa = PBXBuildFile; fileRef = 210CBC8E174753E0006CAB74 /* o.append.c */; };
+		210CBC91174753F4006CAB74 /* o.atomize.c in Sources */ = {isa = PBXBuildFile; fileRef = 210CBC90174753F4006CAB74 /* o.atomize.c */; };
+		210CBC9317475408006CAB74 /* o.change.c in Sources */ = {isa = PBXBuildFile; fileRef = 210CBC9217475408006CAB74 /* o.change.c */; };
+		210CBC951747541F006CAB74 /* o.delay.c in Sources */ = {isa = PBXBuildFile; fileRef = 210CBC941747541F006CAB74 /* o.delay.c */; };
+		210CBC9717475430006CAB74 /* o.explode.c in Sources */ = {isa = PBXBuildFile; fileRef = 210CBC9617475430006CAB74 /* o.explode.c */; };
+		210CBC9917475441006CAB74 /* o.flatten.c in Sources */ = {isa = PBXBuildFile; fileRef = 210CBC9817475441006CAB74 /* o.flatten.c */; };
+		210CBC9B17475454006CAB74 /* o.mappatch.c in Sources */ = {isa = PBXBuildFile; fileRef = 210CBC9A17475454006CAB74 /* o.mappatch.c */; };
+		210CBC9D1747546D006CAB74 /* o.prepend.c in Sources */ = {isa = PBXBuildFile; fileRef = 210CBC9C1747546D006CAB74 /* o.prepend.c */; };
+		210CBC9F17475485006CAB74 /* o.schedule.c in Sources */ = {isa = PBXBuildFile; fileRef = 210CBC9E17475485006CAB74 /* o.schedule.c */; };
+		210CBCA11747549A006CAB74 /* o.table.c in Sources */ = {isa = PBXBuildFile; fileRef = 210CBCA01747549A006CAB74 /* o.table.c */; };
+		210CBCA3174754AE006CAB74 /* o.timetag.c in Sources */ = {isa = PBXBuildFile; fileRef = 210CBCA2174754AE006CAB74 /* o.timetag.c */; };
+		210CBCAB1748AFE0006CAB74 /* pqops.c in Sources */ = {isa = PBXBuildFile; fileRef = 210CBCAA1748AFE0006CAB74 /* pqops.c */; };
+		216794B31756C1BD008F0301 /* o.message.c in Sources */ = {isa = PBXBuildFile; fileRef = 216794B21756C1BD008F0301 /* o.message.c */; };
+		216B180217657D5600D6023A /* omenu.c in Sources */ = {isa = PBXBuildFile; fileRef = 216B180117657D5600D6023A /* omenu.c */; };
 		21B8486B17444AD100103A7F /* o.cond.c in Sources */ = {isa = PBXBuildFile; fileRef = 21B8486A17444AD100103A7F /* o.cond.c */; };
 		21B8486D17444ADE00103A7F /* o.unless.c in Sources */ = {isa = PBXBuildFile; fileRef = 21B8486C17444ADE00103A7F /* o.unless.c */; };
 		21B8486F17444AEE00103A7F /* o.expr.c in Sources */ = {isa = PBXBuildFile; fileRef = 21B8486E17444AEE00103A7F /* o.expr.c */; };
@@ -26,38 +40,65 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		210CBBF417453A98006CAB74 /* o_pack.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = o_pack.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
-		210CBBFC17453AB3006CAB74 /* o_pak.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = o_pak.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
-		210CBC0417453ACF006CAB74 /* o_route.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = o_route.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
-		210CBC0C17453AE6006CAB74 /* o_select.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = o_select.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
+		210CBBF417453A98006CAB74 /* o_pack.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; name = o_pack.pd_darwin; path = opack.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
+		210CBBFC17453AB3006CAB74 /* o_pak.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; name = o_pak.pd_darwin; path = opak.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
+		210CBC0417453ACF006CAB74 /* o_route.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; name = o_route.pd_darwin; path = oroute.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
+		210CBC0C17453AE6006CAB74 /* o_select.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; name = o_select.pd_darwin; path = oselect.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
 		210CBC1017453C26006CAB74 /* o.pack.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.pack.c; path = o.pack/o.pack.c; sourceTree = "<group>"; };
 		210CBC1217453C34006CAB74 /* o.pak.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.pak.c; path = o.pak/o.pak.c; sourceTree = "<group>"; };
 		210CBC1417453C40006CAB74 /* o.route.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.route.c; path = o.route/o.route.c; sourceTree = "<group>"; };
 		210CBC1617453C4F006CAB74 /* o.select.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.select.c; path = o.select/o.select.c; sourceTree = "<group>"; };
-		210CBC1C1745953F006CAB74 /* o_collect.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = o_collect.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
-		210CBC2417459549006CAB74 /* o_print.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = o_print.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
-		210CBC2C17459550006CAB74 /* o_printbytes.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = o_printbytes.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
+		210CBC1C1745953F006CAB74 /* o_collect.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; name = o_collect.pd_darwin; path = ocollect.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
+		210CBC2417459549006CAB74 /* o_print.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; name = o_print.pd_darwin; path = oprint.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
+		210CBC2C17459550006CAB74 /* o_printbytes.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; name = o_printbytes.pd_darwin; path = oprintbytes.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
 		210CBC30174595AD006CAB74 /* o.collect.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.collect.c; path = o.collect/o.collect.c; sourceTree = "<group>"; };
 		210CBC32174595C1006CAB74 /* o.print.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.print.c; path = o.print/o.print.c; sourceTree = "<group>"; };
 		210CBC34174595CC006CAB74 /* o.printbytes.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.printbytes.c; path = o.printbytes/o.printbytes.c; sourceTree = "<group>"; };
-		21B8484C174447B900103A7F /* o_if.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = o_if.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
-		21B8485617444A4400103A7F /* o_cond.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = o_cond.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
-		21B8485E17444A9200103A7F /* o_when.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = o_when.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
-		21B8486617444AAD00103A7F /* o_unless.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = o_unless.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
+		210CBC3A174752DB006CAB74 /* o_atomize.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; name = o_atomize.pd_darwin; path = oatomize.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
+		210CBC42174752E3006CAB74 /* o_append.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; name = o_append.pd_darwin; path = oappend.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
+		210CBC4A174752EA006CAB74 /* o_prepend.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; name = o_prepend.pd_darwin; path = oprepend.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
+		210CBC52174752F1006CAB74 /* o_change.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; name = o_change.pd_darwin; path = ochange.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
+		210CBC5A174752FE006CAB74 /* o_delay.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; name = o_delay.pd_darwin; path = odelay.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
+		210CBC621747530D006CAB74 /* o_explode.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; name = o_explode.pd_darwin; path = oexplode.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
+		210CBC6A17475316006CAB74 /* o_flatten.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; name = o_flatten.pd_darwin; path = oflatten.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
+		210CBC7217475323006CAB74 /* o_mappatch.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; name = o_mappatch.pd_darwin; path = omappatch.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
+		210CBC7A17475331006CAB74 /* o_schedule.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; name = o_schedule.pd_darwin; path = oschedule.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
+		210CBC821747533C006CAB74 /* o_table.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; name = o_table.pd_darwin; path = otable.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
+		210CBC8A17475344006CAB74 /* o_timetag.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; name = o_timetag.pd_darwin; path = otimetag.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
+		210CBC8E174753E0006CAB74 /* o.append.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.append.c; path = o.append/o.append.c; sourceTree = "<group>"; };
+		210CBC90174753F4006CAB74 /* o.atomize.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.atomize.c; path = o.atomize/o.atomize.c; sourceTree = "<group>"; };
+		210CBC9217475408006CAB74 /* o.change.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.change.c; path = o.change/o.change.c; sourceTree = "<group>"; };
+		210CBC941747541F006CAB74 /* o.delay.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.delay.c; path = o.delay/o.delay.c; sourceTree = "<group>"; };
+		210CBC9617475430006CAB74 /* o.explode.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.explode.c; path = o.explode/o.explode.c; sourceTree = "<group>"; };
+		210CBC9817475441006CAB74 /* o.flatten.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.flatten.c; path = o.flatten/o.flatten.c; sourceTree = "<group>"; };
+		210CBC9A17475454006CAB74 /* o.mappatch.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.mappatch.c; path = o.mappatch/o.mappatch.c; sourceTree = "<group>"; };
+		210CBC9C1747546D006CAB74 /* o.prepend.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.prepend.c; path = o.prepend/o.prepend.c; sourceTree = "<group>"; };
+		210CBC9E17475485006CAB74 /* o.schedule.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.schedule.c; path = o.schedule/o.schedule.c; sourceTree = "<group>"; };
+		210CBCA01747549A006CAB74 /* o.table.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.table.c; path = o.table/o.table.c; sourceTree = "<group>"; };
+		210CBCA2174754AE006CAB74 /* o.timetag.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.timetag.c; path = o.timetag/o.timetag.c; sourceTree = "<group>"; };
+		210CBCAA1748AFE0006CAB74 /* pqops.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = pqops.c; path = o.schedule/pqops.c; sourceTree = "<group>"; };
+		216794AE1756C13A008F0301 /* o_message.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; name = o_message.pd_darwin; path = omessage.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
+		216794B21756C1BD008F0301 /* o.message.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.message.c; path = o.message/o.message.c; sourceTree = "<group>"; };
+		216B17FD17657C7300D6023A /* omenu.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = omenu.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
+		216B180117657D5600D6023A /* omenu.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = omenu.c; path = omenu/omenu.c; sourceTree = "<group>"; };
+		21B8484C174447B900103A7F /* o_if.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; name = o_if.pd_darwin; path = oif.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
+		21B8485617444A4400103A7F /* o_cond.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; name = o_cond.pd_darwin; path = ocond.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
+		21B8485E17444A9200103A7F /* o_when.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; name = o_when.pd_darwin; path = owhen.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
+		21B8486617444AAD00103A7F /* o_unless.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; name = o_unless.pd_darwin; path = ounless.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
 		21B8486A17444AD100103A7F /* o.cond.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.cond.c; path = o.cond/o.cond.c; sourceTree = "<group>"; };
 		21B8486C17444ADE00103A7F /* o.unless.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.unless.c; path = o.unless/o.unless.c; sourceTree = "<group>"; };
 		21B8486E17444AEE00103A7F /* o.expr.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.expr.c; path = o.expr/o.expr.c; sourceTree = "<group>"; };
 		21B8487017444AF800103A7F /* o.if.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.if.c; path = o.if/o.if.c; sourceTree = "<group>"; };
 		21B84872174451C300103A7F /* o.when.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.when.c; path = o.when/o.when.c; sourceTree = "<group>"; };
-		21B8487817446B4A00103A7F /* o_var.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = o_var.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
-		21B8488017446B6500103A7F /* o_union.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = o_union.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
-		21B8488817446B6F00103A7F /* o_intersection.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = o_intersection.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
-		21B8489017446B7A00103A7F /* o_difference.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = o_difference.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
+		21B8487817446B4A00103A7F /* o_var.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; name = o_var.pd_darwin; path = ovar.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
+		21B8488017446B6500103A7F /* o_union.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; name = o_union.pd_darwin; path = ounion.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
+		21B8488817446B6F00103A7F /* o_intersection.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; name = o_intersection.pd_darwin; path = ointersection.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
+		21B8489017446B7A00103A7F /* o_difference.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; name = o_difference.pd_darwin; path = odifference.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
 		21B8489417446C6200103A7F /* o.difference.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.difference.c; path = o.difference/o.difference.c; sourceTree = "<group>"; };
 		21B8489617446C6D00103A7F /* o.intersection.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.intersection.c; path = o.intersection/o.intersection.c; sourceTree = "<group>"; };
 		21B8489817446C7A00103A7F /* o.union.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.union.c; path = o.union/o.union.c; sourceTree = "<group>"; };
 		21B8489A17446C8700103A7F /* o.var.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.var.c; path = o.var/o.var.c; sourceTree = "<group>"; };
-		21CA080917346FD6003F5B84 /* o_expr.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = o_expr.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
+		21CA080917346FD6003F5B84 /* helloworld.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; name = helloworld.pd_darwin; path = oexpr.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +145,97 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		210CBC2917459550006CAB74 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		210CBC37174752DB006CAB74 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		210CBC3F174752E3006CAB74 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		210CBC47174752EA006CAB74 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		210CBC4F174752F1006CAB74 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		210CBC57174752FE006CAB74 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		210CBC5F1747530D006CAB74 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		210CBC6717475316006CAB74 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		210CBC6F17475323006CAB74 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		210CBC7717475331006CAB74 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		210CBC7F1747533C006CAB74 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		210CBC8717475344006CAB74 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		216794AB1756C13A008F0301 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		216B17FA17657C7300D6023A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -179,6 +311,20 @@
 		21CA080017346FD6003F5B84 = {
 			isa = PBXGroup;
 			children = (
+				216B180117657D5600D6023A /* omenu.c */,
+				216794B21756C1BD008F0301 /* o.message.c */,
+				210CBCAA1748AFE0006CAB74 /* pqops.c */,
+				210CBCA2174754AE006CAB74 /* o.timetag.c */,
+				210CBCA01747549A006CAB74 /* o.table.c */,
+				210CBC9E17475485006CAB74 /* o.schedule.c */,
+				210CBC9C1747546D006CAB74 /* o.prepend.c */,
+				210CBC9A17475454006CAB74 /* o.mappatch.c */,
+				210CBC9817475441006CAB74 /* o.flatten.c */,
+				210CBC9617475430006CAB74 /* o.explode.c */,
+				210CBC941747541F006CAB74 /* o.delay.c */,
+				210CBC9217475408006CAB74 /* o.change.c */,
+				210CBC90174753F4006CAB74 /* o.atomize.c */,
+				210CBC8E174753E0006CAB74 /* o.append.c */,
 				210CBC34174595CC006CAB74 /* o.printbytes.c */,
 				210CBC32174595C1006CAB74 /* o.print.c */,
 				210CBC30174595AD006CAB74 /* o.collect.c */,
@@ -218,6 +364,19 @@
 				210CBC1C1745953F006CAB74 /* o_collect.pd_darwin */,
 				210CBC2417459549006CAB74 /* o_print.pd_darwin */,
 				210CBC2C17459550006CAB74 /* o_printbytes.pd_darwin */,
+				210CBC3A174752DB006CAB74 /* o_atomize.pd_darwin */,
+				210CBC42174752E3006CAB74 /* o_append.pd_darwin */,
+				210CBC4A174752EA006CAB74 /* o_prepend.pd_darwin */,
+				210CBC52174752F1006CAB74 /* o_change.pd_darwin */,
+				210CBC5A174752FE006CAB74 /* o_delay.pd_darwin */,
+				210CBC621747530D006CAB74 /* o_explode.pd_darwin */,
+				210CBC6A17475316006CAB74 /* o_flatten.pd_darwin */,
+				210CBC7217475323006CAB74 /* o_mappatch.pd_darwin */,
+				210CBC7A17475331006CAB74 /* o_schedule.pd_darwin */,
+				210CBC821747533C006CAB74 /* o_table.pd_darwin */,
+				210CBC8A17475344006CAB74 /* o_timetag.pd_darwin */,
+				216794AE1756C13A008F0301 /* o_message.pd_darwin */,
+				216B17FD17657C7300D6023A /* omenu.pd_darwin */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -268,6 +427,97 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		210CBC2A17459550006CAB74 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		210CBC38174752DB006CAB74 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		210CBC40174752E3006CAB74 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		210CBC48174752EA006CAB74 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		210CBC50174752F1006CAB74 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		210CBC58174752FE006CAB74 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		210CBC601747530D006CAB74 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		210CBC6817475316006CAB74 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		210CBC7017475323006CAB74 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		210CBC7817475331006CAB74 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		210CBC801747533C006CAB74 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		210CBC8817475344006CAB74 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		216794AC1756C13A008F0301 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		216B17FB17657C7300D6023A /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -340,9 +590,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		210CBBF317453A98006CAB74 /* o_pack */ = {
+		210CBBF317453A98006CAB74 /* opack */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 210CBBF717453A98006CAB74 /* Build configuration list for PBXNativeTarget "o_pack" */;
+			buildConfigurationList = 210CBBF717453A98006CAB74 /* Build configuration list for PBXNativeTarget "opack" */;
 			buildPhases = (
 				210CBBF017453A98006CAB74 /* Sources */,
 				210CBBF117453A98006CAB74 /* Frameworks */,
@@ -352,14 +602,14 @@
 			);
 			dependencies = (
 			);
-			name = o_pack;
+			name = opack;
 			productName = o_pack;
 			productReference = 210CBBF417453A98006CAB74 /* o_pack.pd_darwin */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
-		210CBBFB17453AB3006CAB74 /* o_pak */ = {
+		210CBBFB17453AB3006CAB74 /* opak */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 210CBBFD17453AB3006CAB74 /* Build configuration list for PBXNativeTarget "o_pak" */;
+			buildConfigurationList = 210CBBFD17453AB3006CAB74 /* Build configuration list for PBXNativeTarget "opak" */;
 			buildPhases = (
 				210CBBF817453AB3006CAB74 /* Sources */,
 				210CBBF917453AB3006CAB74 /* Frameworks */,
@@ -369,14 +619,14 @@
 			);
 			dependencies = (
 			);
-			name = o_pak;
+			name = opak;
 			productName = o_pak;
 			productReference = 210CBBFC17453AB3006CAB74 /* o_pak.pd_darwin */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
-		210CBC0317453ACF006CAB74 /* o_route */ = {
+		210CBC0317453ACF006CAB74 /* oroute */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 210CBC0517453ACF006CAB74 /* Build configuration list for PBXNativeTarget "o_route" */;
+			buildConfigurationList = 210CBC0517453ACF006CAB74 /* Build configuration list for PBXNativeTarget "oroute" */;
 			buildPhases = (
 				210CBC0017453ACF006CAB74 /* Sources */,
 				210CBC0117453ACF006CAB74 /* Frameworks */,
@@ -386,14 +636,14 @@
 			);
 			dependencies = (
 			);
-			name = o_route;
+			name = oroute;
 			productName = o_route;
 			productReference = 210CBC0417453ACF006CAB74 /* o_route.pd_darwin */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
-		210CBC0B17453AE6006CAB74 /* o_select */ = {
+		210CBC0B17453AE6006CAB74 /* oselect */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 210CBC0D17453AE6006CAB74 /* Build configuration list for PBXNativeTarget "o_select" */;
+			buildConfigurationList = 210CBC0D17453AE6006CAB74 /* Build configuration list for PBXNativeTarget "oselect" */;
 			buildPhases = (
 				210CBC0817453AE6006CAB74 /* Sources */,
 				210CBC0917453AE6006CAB74 /* Frameworks */,
@@ -403,14 +653,14 @@
 			);
 			dependencies = (
 			);
-			name = o_select;
+			name = oselect;
 			productName = o_select;
 			productReference = 210CBC0C17453AE6006CAB74 /* o_select.pd_darwin */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
-		210CBC1B1745953F006CAB74 /* o_collect */ = {
+		210CBC1B1745953F006CAB74 /* ocollect */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 210CBC1D1745953F006CAB74 /* Build configuration list for PBXNativeTarget "o_collect" */;
+			buildConfigurationList = 210CBC1D1745953F006CAB74 /* Build configuration list for PBXNativeTarget "ocollect" */;
 			buildPhases = (
 				210CBC181745953F006CAB74 /* Sources */,
 				210CBC191745953F006CAB74 /* Frameworks */,
@@ -420,14 +670,14 @@
 			);
 			dependencies = (
 			);
-			name = o_collect;
+			name = ocollect;
 			productName = o_collect;
 			productReference = 210CBC1C1745953F006CAB74 /* o_collect.pd_darwin */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
-		210CBC2317459549006CAB74 /* o_print */ = {
+		210CBC2317459549006CAB74 /* oprint */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 210CBC2517459549006CAB74 /* Build configuration list for PBXNativeTarget "o_print" */;
+			buildConfigurationList = 210CBC2517459549006CAB74 /* Build configuration list for PBXNativeTarget "oprint" */;
 			buildPhases = (
 				210CBC2017459549006CAB74 /* Sources */,
 				210CBC2117459549006CAB74 /* Frameworks */,
@@ -437,14 +687,14 @@
 			);
 			dependencies = (
 			);
-			name = o_print;
+			name = oprint;
 			productName = o_print;
 			productReference = 210CBC2417459549006CAB74 /* o_print.pd_darwin */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
-		210CBC2B17459550006CAB74 /* o_printbytes */ = {
+		210CBC2B17459550006CAB74 /* oprintbytes */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 210CBC2D17459550006CAB74 /* Build configuration list for PBXNativeTarget "o_printbytes" */;
+			buildConfigurationList = 210CBC2D17459550006CAB74 /* Build configuration list for PBXNativeTarget "oprintbytes" */;
 			buildPhases = (
 				210CBC2817459550006CAB74 /* Sources */,
 				210CBC2917459550006CAB74 /* Frameworks */,
@@ -454,14 +704,235 @@
 			);
 			dependencies = (
 			);
-			name = o_printbytes;
+			name = oprintbytes;
 			productName = o_printbytes;
 			productReference = 210CBC2C17459550006CAB74 /* o_printbytes.pd_darwin */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
-		21B8484B174447B900103A7F /* o_if */ = {
+		210CBC39174752DB006CAB74 /* oatomize */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 21B8484D174447B900103A7F /* Build configuration list for PBXNativeTarget "o_if" */;
+			buildConfigurationList = 210CBC3B174752DB006CAB74 /* Build configuration list for PBXNativeTarget "oatomize" */;
+			buildPhases = (
+				210CBC36174752DB006CAB74 /* Sources */,
+				210CBC37174752DB006CAB74 /* Frameworks */,
+				210CBC38174752DB006CAB74 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = oatomize;
+			productName = o_atomize;
+			productReference = 210CBC3A174752DB006CAB74 /* o_atomize.pd_darwin */;
+			productType = "com.apple.product-type.library.dynamic";
+		};
+		210CBC41174752E3006CAB74 /* oappend */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 210CBC43174752E3006CAB74 /* Build configuration list for PBXNativeTarget "oappend" */;
+			buildPhases = (
+				210CBC3E174752E3006CAB74 /* Sources */,
+				210CBC3F174752E3006CAB74 /* Frameworks */,
+				210CBC40174752E3006CAB74 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = oappend;
+			productName = o_append;
+			productReference = 210CBC42174752E3006CAB74 /* o_append.pd_darwin */;
+			productType = "com.apple.product-type.library.dynamic";
+		};
+		210CBC49174752EA006CAB74 /* oprepend */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 210CBC4B174752EA006CAB74 /* Build configuration list for PBXNativeTarget "oprepend" */;
+			buildPhases = (
+				210CBC46174752EA006CAB74 /* Sources */,
+				210CBC47174752EA006CAB74 /* Frameworks */,
+				210CBC48174752EA006CAB74 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = oprepend;
+			productName = o_prepend;
+			productReference = 210CBC4A174752EA006CAB74 /* o_prepend.pd_darwin */;
+			productType = "com.apple.product-type.library.dynamic";
+		};
+		210CBC51174752F1006CAB74 /* ochange */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 210CBC53174752F1006CAB74 /* Build configuration list for PBXNativeTarget "ochange" */;
+			buildPhases = (
+				210CBC4E174752F1006CAB74 /* Sources */,
+				210CBC4F174752F1006CAB74 /* Frameworks */,
+				210CBC50174752F1006CAB74 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ochange;
+			productName = o_change;
+			productReference = 210CBC52174752F1006CAB74 /* o_change.pd_darwin */;
+			productType = "com.apple.product-type.library.dynamic";
+		};
+		210CBC59174752FE006CAB74 /* odelay */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 210CBC5B174752FE006CAB74 /* Build configuration list for PBXNativeTarget "odelay" */;
+			buildPhases = (
+				210CBC56174752FE006CAB74 /* Sources */,
+				210CBC57174752FE006CAB74 /* Frameworks */,
+				210CBC58174752FE006CAB74 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = odelay;
+			productName = o_delay;
+			productReference = 210CBC5A174752FE006CAB74 /* o_delay.pd_darwin */;
+			productType = "com.apple.product-type.library.dynamic";
+		};
+		210CBC611747530D006CAB74 /* oexplode */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 210CBC631747530D006CAB74 /* Build configuration list for PBXNativeTarget "oexplode" */;
+			buildPhases = (
+				210CBC5E1747530D006CAB74 /* Sources */,
+				210CBC5F1747530D006CAB74 /* Frameworks */,
+				210CBC601747530D006CAB74 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = oexplode;
+			productName = o_explode;
+			productReference = 210CBC621747530D006CAB74 /* o_explode.pd_darwin */;
+			productType = "com.apple.product-type.library.dynamic";
+		};
+		210CBC6917475316006CAB74 /* oflatten */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 210CBC6B17475316006CAB74 /* Build configuration list for PBXNativeTarget "oflatten" */;
+			buildPhases = (
+				210CBC6617475316006CAB74 /* Sources */,
+				210CBC6717475316006CAB74 /* Frameworks */,
+				210CBC6817475316006CAB74 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = oflatten;
+			productName = o_flatten;
+			productReference = 210CBC6A17475316006CAB74 /* o_flatten.pd_darwin */;
+			productType = "com.apple.product-type.library.dynamic";
+		};
+		210CBC7117475323006CAB74 /* omappatch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 210CBC7317475323006CAB74 /* Build configuration list for PBXNativeTarget "omappatch" */;
+			buildPhases = (
+				210CBC6E17475323006CAB74 /* Sources */,
+				210CBC6F17475323006CAB74 /* Frameworks */,
+				210CBC7017475323006CAB74 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = omappatch;
+			productName = o_mappatch;
+			productReference = 210CBC7217475323006CAB74 /* o_mappatch.pd_darwin */;
+			productType = "com.apple.product-type.library.dynamic";
+		};
+		210CBC7917475331006CAB74 /* oschedule */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 210CBC7B17475331006CAB74 /* Build configuration list for PBXNativeTarget "oschedule" */;
+			buildPhases = (
+				210CBC7617475331006CAB74 /* Sources */,
+				210CBC7717475331006CAB74 /* Frameworks */,
+				210CBC7817475331006CAB74 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = oschedule;
+			productName = o_schedule;
+			productReference = 210CBC7A17475331006CAB74 /* o_schedule.pd_darwin */;
+			productType = "com.apple.product-type.library.dynamic";
+		};
+		210CBC811747533C006CAB74 /* otable */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 210CBC831747533C006CAB74 /* Build configuration list for PBXNativeTarget "otable" */;
+			buildPhases = (
+				210CBC7E1747533C006CAB74 /* Sources */,
+				210CBC7F1747533C006CAB74 /* Frameworks */,
+				210CBC801747533C006CAB74 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = otable;
+			productName = o_table;
+			productReference = 210CBC821747533C006CAB74 /* o_table.pd_darwin */;
+			productType = "com.apple.product-type.library.dynamic";
+		};
+		210CBC8917475344006CAB74 /* otimetag */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 210CBC8B17475344006CAB74 /* Build configuration list for PBXNativeTarget "otimetag" */;
+			buildPhases = (
+				210CBC8617475344006CAB74 /* Sources */,
+				210CBC8717475344006CAB74 /* Frameworks */,
+				210CBC8817475344006CAB74 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = otimetag;
+			productName = o_timetag;
+			productReference = 210CBC8A17475344006CAB74 /* o_timetag.pd_darwin */;
+			productType = "com.apple.product-type.library.dynamic";
+		};
+		216794AD1756C13A008F0301 /* omessage */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 216794B11756C13A008F0301 /* Build configuration list for PBXNativeTarget "omessage" */;
+			buildPhases = (
+				216794AA1756C13A008F0301 /* Sources */,
+				216794AB1756C13A008F0301 /* Frameworks */,
+				216794AC1756C13A008F0301 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = omessage;
+			productName = o_message;
+			productReference = 216794AE1756C13A008F0301 /* o_message.pd_darwin */;
+			productType = "com.apple.product-type.library.dynamic";
+		};
+		216B17FC17657C7300D6023A /* omenu */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 216B180017657C7300D6023A /* Build configuration list for PBXNativeTarget "omenu" */;
+			buildPhases = (
+				216B17F917657C7300D6023A /* Sources */,
+				216B17FA17657C7300D6023A /* Frameworks */,
+				216B17FB17657C7300D6023A /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = omenu;
+			productName = omenu;
+			productReference = 216B17FD17657C7300D6023A /* omenu.pd_darwin */;
+			productType = "com.apple.product-type.library.dynamic";
+		};
+		21B8484B174447B900103A7F /* oif */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 21B8484D174447B900103A7F /* Build configuration list for PBXNativeTarget "oif" */;
 			buildPhases = (
 				21B84848174447B900103A7F /* Sources */,
 				21B84849174447B900103A7F /* Frameworks */,
@@ -471,14 +942,14 @@
 			);
 			dependencies = (
 			);
-			name = o_if;
+			name = oif;
 			productName = o_if;
 			productReference = 21B8484C174447B900103A7F /* o_if.pd_darwin */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
-		21B8485517444A4400103A7F /* o_cond */ = {
+		21B8485517444A4400103A7F /* ocond */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 21B8485717444A4400103A7F /* Build configuration list for PBXNativeTarget "o_cond" */;
+			buildConfigurationList = 21B8485717444A4400103A7F /* Build configuration list for PBXNativeTarget "ocond" */;
 			buildPhases = (
 				21B8485217444A4400103A7F /* Sources */,
 				21B8485317444A4400103A7F /* Frameworks */,
@@ -488,14 +959,14 @@
 			);
 			dependencies = (
 			);
-			name = o_cond;
+			name = ocond;
 			productName = o_cond;
 			productReference = 21B8485617444A4400103A7F /* o_cond.pd_darwin */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
-		21B8485D17444A9200103A7F /* o_when */ = {
+		21B8485D17444A9200103A7F /* owhen */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 21B8485F17444A9200103A7F /* Build configuration list for PBXNativeTarget "o_when" */;
+			buildConfigurationList = 21B8485F17444A9200103A7F /* Build configuration list for PBXNativeTarget "owhen" */;
 			buildPhases = (
 				21B8485A17444A9200103A7F /* Sources */,
 				21B8485B17444A9200103A7F /* Frameworks */,
@@ -505,14 +976,14 @@
 			);
 			dependencies = (
 			);
-			name = o_when;
+			name = owhen;
 			productName = o_when;
 			productReference = 21B8485E17444A9200103A7F /* o_when.pd_darwin */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
-		21B8486517444AAD00103A7F /* o_unless */ = {
+		21B8486517444AAD00103A7F /* ounless */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 21B8486717444AAD00103A7F /* Build configuration list for PBXNativeTarget "o_unless" */;
+			buildConfigurationList = 21B8486717444AAD00103A7F /* Build configuration list for PBXNativeTarget "ounless" */;
 			buildPhases = (
 				21B8486217444AAD00103A7F /* Sources */,
 				21B8486317444AAD00103A7F /* Frameworks */,
@@ -522,14 +993,14 @@
 			);
 			dependencies = (
 			);
-			name = o_unless;
+			name = ounless;
 			productName = o_unless;
 			productReference = 21B8486617444AAD00103A7F /* o_unless.pd_darwin */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
-		21B8487717446B4A00103A7F /* o_var */ = {
+		21B8487717446B4A00103A7F /* ovar */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 21B8487917446B4A00103A7F /* Build configuration list for PBXNativeTarget "o_var" */;
+			buildConfigurationList = 21B8487917446B4A00103A7F /* Build configuration list for PBXNativeTarget "ovar" */;
 			buildPhases = (
 				21B8487417446B4A00103A7F /* Sources */,
 				21B8487517446B4A00103A7F /* Frameworks */,
@@ -539,14 +1010,14 @@
 			);
 			dependencies = (
 			);
-			name = o_var;
+			name = ovar;
 			productName = o_var;
 			productReference = 21B8487817446B4A00103A7F /* o_var.pd_darwin */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
-		21B8487F17446B6500103A7F /* o_union */ = {
+		21B8487F17446B6500103A7F /* ounion */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 21B8488117446B6500103A7F /* Build configuration list for PBXNativeTarget "o_union" */;
+			buildConfigurationList = 21B8488117446B6500103A7F /* Build configuration list for PBXNativeTarget "ounion" */;
 			buildPhases = (
 				21B8487C17446B6500103A7F /* Sources */,
 				21B8487D17446B6500103A7F /* Frameworks */,
@@ -556,14 +1027,14 @@
 			);
 			dependencies = (
 			);
-			name = o_union;
+			name = ounion;
 			productName = o_union;
 			productReference = 21B8488017446B6500103A7F /* o_union.pd_darwin */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
-		21B8488717446B6F00103A7F /* o_intersection */ = {
+		21B8488717446B6F00103A7F /* ointersection */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 21B8488917446B6F00103A7F /* Build configuration list for PBXNativeTarget "o_intersection" */;
+			buildConfigurationList = 21B8488917446B6F00103A7F /* Build configuration list for PBXNativeTarget "ointersection" */;
 			buildPhases = (
 				21B8488417446B6F00103A7F /* Sources */,
 				21B8488517446B6F00103A7F /* Frameworks */,
@@ -573,14 +1044,14 @@
 			);
 			dependencies = (
 			);
-			name = o_intersection;
+			name = ointersection;
 			productName = o_intersection;
 			productReference = 21B8488817446B6F00103A7F /* o_intersection.pd_darwin */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
-		21B8488F17446B7A00103A7F /* o_difference */ = {
+		21B8488F17446B7A00103A7F /* odifference */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 21B8489117446B7A00103A7F /* Build configuration list for PBXNativeTarget "o_difference" */;
+			buildConfigurationList = 21B8489117446B7A00103A7F /* Build configuration list for PBXNativeTarget "odifference" */;
 			buildPhases = (
 				21B8488C17446B7A00103A7F /* Sources */,
 				21B8488D17446B7A00103A7F /* Frameworks */,
@@ -590,14 +1061,14 @@
 			);
 			dependencies = (
 			);
-			name = o_difference;
+			name = odifference;
 			productName = o_difference;
 			productReference = 21B8489017446B7A00103A7F /* o_difference.pd_darwin */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
-		21CA080817346FD6003F5B84 /* o_expr */ = {
+		21CA080817346FD6003F5B84 /* oexpr */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 21CA080D17346FD6003F5B84 /* Build configuration list for PBXNativeTarget "o_expr" */;
+			buildConfigurationList = 21CA080D17346FD6003F5B84 /* Build configuration list for PBXNativeTarget "oexpr" */;
 			buildPhases = (
 				21CA080517346FD6003F5B84 /* Sources */,
 				21CA080617346FD6003F5B84 /* Frameworks */,
@@ -607,9 +1078,9 @@
 			);
 			dependencies = (
 			);
-			name = o_expr;
+			name = oexpr;
 			productName = "pd-foo";
-			productReference = 21CA080917346FD6003F5B84 /* o_expr.pd_darwin */;
+			productReference = 21CA080917346FD6003F5B84 /* helloworld.pd_darwin */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
 /* End PBXNativeTarget section */
@@ -633,22 +1104,35 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				21CA080817346FD6003F5B84 /* o_expr */,
-				21B8484B174447B900103A7F /* o_if */,
-				21B8485517444A4400103A7F /* o_cond */,
-				21B8485D17444A9200103A7F /* o_when */,
-				21B8486517444AAD00103A7F /* o_unless */,
-				21B8487717446B4A00103A7F /* o_var */,
-				21B8487F17446B6500103A7F /* o_union */,
-				21B8488717446B6F00103A7F /* o_intersection */,
-				21B8488F17446B7A00103A7F /* o_difference */,
-				210CBBF317453A98006CAB74 /* o_pack */,
-				210CBBFB17453AB3006CAB74 /* o_pak */,
-				210CBC0317453ACF006CAB74 /* o_route */,
-				210CBC0B17453AE6006CAB74 /* o_select */,
-				210CBC1B1745953F006CAB74 /* o_collect */,
-				210CBC2317459549006CAB74 /* o_print */,
-				210CBC2B17459550006CAB74 /* o_printbytes */,
+				21CA080817346FD6003F5B84 /* oexpr */,
+				21B8484B174447B900103A7F /* oif */,
+				21B8485517444A4400103A7F /* ocond */,
+				21B8485D17444A9200103A7F /* owhen */,
+				21B8486517444AAD00103A7F /* ounless */,
+				21B8487717446B4A00103A7F /* ovar */,
+				21B8487F17446B6500103A7F /* ounion */,
+				21B8488717446B6F00103A7F /* ointersection */,
+				21B8488F17446B7A00103A7F /* odifference */,
+				210CBBF317453A98006CAB74 /* opack */,
+				210CBBFB17453AB3006CAB74 /* opak */,
+				210CBC0317453ACF006CAB74 /* oroute */,
+				210CBC0B17453AE6006CAB74 /* oselect */,
+				210CBC1B1745953F006CAB74 /* ocollect */,
+				210CBC2317459549006CAB74 /* oprint */,
+				210CBC2B17459550006CAB74 /* oprintbytes */,
+				210CBC39174752DB006CAB74 /* oatomize */,
+				210CBC41174752E3006CAB74 /* oappend */,
+				210CBC49174752EA006CAB74 /* oprepend */,
+				210CBC51174752F1006CAB74 /* ochange */,
+				210CBC59174752FE006CAB74 /* odelay */,
+				210CBC611747530D006CAB74 /* oexplode */,
+				210CBC6917475316006CAB74 /* oflatten */,
+				210CBC7117475323006CAB74 /* omappatch */,
+				210CBC7917475331006CAB74 /* oschedule */,
+				210CBC811747533C006CAB74 /* otable */,
+				210CBC8917475344006CAB74 /* otimetag */,
+				216794AD1756C13A008F0301 /* omessage */,
+				216B17FC17657C7300D6023A /* omenu */,
 			);
 		};
 /* End PBXProject section */
@@ -707,6 +1191,111 @@
 			buildActionMask = 2147483647;
 			files = (
 				210CBC35174595CC006CAB74 /* o.printbytes.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		210CBC36174752DB006CAB74 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				210CBC91174753F4006CAB74 /* o.atomize.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		210CBC3E174752E3006CAB74 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				210CBC8F174753E0006CAB74 /* o.append.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		210CBC46174752EA006CAB74 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				210CBC9D1747546D006CAB74 /* o.prepend.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		210CBC4E174752F1006CAB74 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				210CBC9317475408006CAB74 /* o.change.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		210CBC56174752FE006CAB74 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				210CBC951747541F006CAB74 /* o.delay.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		210CBC5E1747530D006CAB74 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				210CBC9717475430006CAB74 /* o.explode.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		210CBC6617475316006CAB74 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				210CBC9917475441006CAB74 /* o.flatten.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		210CBC6E17475323006CAB74 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				210CBC9B17475454006CAB74 /* o.mappatch.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		210CBC7617475331006CAB74 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				210CBC9F17475485006CAB74 /* o.schedule.c in Sources */,
+				210CBCAB1748AFE0006CAB74 /* pqops.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		210CBC7E1747533C006CAB74 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				210CBCA11747549A006CAB74 /* o.table.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		210CBC8617475344006CAB74 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				210CBCA3174754AE006CAB74 /* o.timetag.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		216794AA1756C13A008F0301 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				216794B31756C1BD008F0301 /* o.message.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		216B17F917657C7300D6023A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				216B180217657D5600D6023A /* omenu.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -896,9 +1485,9 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				EXECUTABLE_PREFIX = "";
 				HEADER_SEARCH_PATHS = (
-					"/Users/rama/Documents/__CNMAT/cnmat-git/CNMAT-odot/include",
-					"/Users/rama/Documents/__CNMAT/cnmat-git/libomax",
-					"/Users/rama/Documents/__CNMAT/cnmat-git/libo",
+					include,
+					../libomax,
+					../libo,
 					"../pd-src/src",
 				);
 				ONLY_ACTIVE_ARCH = YES;
@@ -913,9 +1502,9 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				EXECUTABLE_PREFIX = "";
 				HEADER_SEARCH_PATHS = (
-					"/Users/rama/Documents/__CNMAT/cnmat-git/CNMAT-odot/include",
-					"/Users/rama/Documents/__CNMAT/cnmat-git/libomax",
-					"/Users/rama/Documents/__CNMAT/cnmat-git/libo",
+					include,
+					../libomax,
+					../libo,
 					"../pd-src/src",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -935,6 +1524,279 @@
 			name = Debug;
 		};
 		210CBC2F17459550006CAB74 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				EXECUTABLE_PREFIX = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx10.7;
+			};
+			name = Release;
+		};
+		210CBC3C174752DB006CAB74 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				EXECUTABLE_PREFIX = "";
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx10.7;
+			};
+			name = Debug;
+		};
+		210CBC3D174752DB006CAB74 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				EXECUTABLE_PREFIX = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx10.7;
+			};
+			name = Release;
+		};
+		210CBC44174752E3006CAB74 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				EXECUTABLE_PREFIX = "";
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx10.7;
+			};
+			name = Debug;
+		};
+		210CBC45174752E3006CAB74 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				EXECUTABLE_PREFIX = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx10.7;
+			};
+			name = Release;
+		};
+		210CBC4C174752EA006CAB74 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				EXECUTABLE_PREFIX = "";
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx10.7;
+			};
+			name = Debug;
+		};
+		210CBC4D174752EA006CAB74 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				EXECUTABLE_PREFIX = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx10.7;
+			};
+			name = Release;
+		};
+		210CBC54174752F1006CAB74 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				EXECUTABLE_PREFIX = "";
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx10.7;
+			};
+			name = Debug;
+		};
+		210CBC55174752F1006CAB74 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				EXECUTABLE_PREFIX = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx10.7;
+			};
+			name = Release;
+		};
+		210CBC5C174752FE006CAB74 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				EXECUTABLE_PREFIX = "";
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx10.7;
+			};
+			name = Debug;
+		};
+		210CBC5D174752FE006CAB74 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				EXECUTABLE_PREFIX = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx10.7;
+			};
+			name = Release;
+		};
+		210CBC641747530D006CAB74 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				EXECUTABLE_PREFIX = "";
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx10.7;
+			};
+			name = Debug;
+		};
+		210CBC651747530D006CAB74 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				EXECUTABLE_PREFIX = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx10.7;
+			};
+			name = Release;
+		};
+		210CBC6C17475316006CAB74 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				EXECUTABLE_PREFIX = "";
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx10.7;
+			};
+			name = Debug;
+		};
+		210CBC6D17475316006CAB74 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				EXECUTABLE_PREFIX = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx10.7;
+			};
+			name = Release;
+		};
+		210CBC7417475323006CAB74 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				EXECUTABLE_PREFIX = "";
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx10.7;
+			};
+			name = Debug;
+		};
+		210CBC7517475323006CAB74 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				EXECUTABLE_PREFIX = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx10.7;
+			};
+			name = Release;
+		};
+		210CBC7C17475331006CAB74 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				EXECUTABLE_PREFIX = "";
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx10.7;
+			};
+			name = Debug;
+		};
+		210CBC7D17475331006CAB74 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				EXECUTABLE_PREFIX = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx10.7;
+			};
+			name = Release;
+		};
+		210CBC841747533C006CAB74 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				EXECUTABLE_PREFIX = "";
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx10.7;
+			};
+			name = Debug;
+		};
+		210CBC851747533C006CAB74 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				EXECUTABLE_PREFIX = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx10.7;
+			};
+			name = Release;
+		};
+		210CBC8C17475344006CAB74 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				EXECUTABLE_PREFIX = "";
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx10.7;
+			};
+			name = Debug;
+		};
+		210CBC8D17475344006CAB74 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				EXECUTABLE_PREFIX = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx10.7;
+			};
+			name = Release;
+		};
+		216794AF1756C13A008F0301 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				EXECUTABLE_PREFIX = "";
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx10.7;
+			};
+			name = Debug;
+		};
+		216794B01756C13A008F0301 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				EXECUTABLE_PREFIX = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx10.7;
+			};
+			name = Release;
+		};
+		216B17FE17657C7300D6023A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				EXECUTABLE_PREFIX = "";
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx10.7;
+			};
+			name = Debug;
+		};
+		216B17FF17657C7300D6023A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
@@ -1213,16 +2075,24 @@
 				EXECUTABLE_EXTENSION = pd_darwin;
 				EXECUTABLE_PREFIX = "";
 				GENERATE_MASTER_OBJECT_FILE = YES;
-				HEADER_SEARCH_PATHS = "$(inherited)";
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				HEADER_SEARCH_PATHS = (
+					include,
+					../libomax,
+					../libo,
+					"../pd-src/src",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"/Users/rama/Documents/__CNMAT/cnmat-git/libo",
+					"/Users/rama/Documents/__CNMAT/cnmat-git/libomax",
+				);
 				OTHER_CFLAGS = "-DOMAX_PD_VERSION";
 				OTHER_LDFLAGS = (
 					"-undefined",
 					dynamic_lookup,
 					"-Wl,-U,_addbang,-U,_addfloat,-U,_addftx,-U,_addint,-U,_addinx,-U,_addmess,-U,_advise,-U,_advise_explain,-U,_alias,-U,_AnyKeyDown,-U,_appbuilder_keyword,-U,_appbuilder_register,-U,_argpad,-U,_assist_string,-U,_asyncfile_callback_free,-U,_asyncfile_callback_new,-U,_asyncfile_close,-U,_asyncfile_create,-U,_asyncfile_geteof,-U,_asyncfile_init,-U,_asyncfile_params_default,-U,_asyncfile_params_free,-U,_asyncfile_params_new,-U,_asyncfile_read,-U,_asyncfile_seteof,-U,_asyncfile_write,-U,_atom_alloc,-U,_atom_alloc_array,-U,_atom_arg_getdouble,-U,_atom_arg_getfloat,-U,_atom_arg_getlong,-U,_atom_arg_getsym,-U,_atom_dynamic_end,-U,_atom_dynamic_start,-U,_atom_getatom_array,-U,_atom_getchar_array,-U,_atom_getcharfix,-U,_atom_getdouble_array,-U,_atom_getfloat,-U,_atom_getfloat_array,-U,_atom_getformat,-U,_atom_getlong,-U,_atom_getlong_array,-U,_atom_getobj,-U,_atom_getobj_array,-U,_atom_getsym,-U,_atom_getsym_array,-U,_atom_gettext,-U,_atom_gettype,-U,_atom_setatom_array,-U,_atom_setattrval,-U,_atom_setbinbuf,-U,_atom_setchar_array,-U,_atom_setdouble_array,-U,_atom_setfloat,-U,_atom_setfloat_array,-U,_atom_setformat,-U,_atom_setlong,-U,_atom_setlong_array,-U,_atom_setobj,-U,_atom_setobj_array,-U,_atom_setobjval,-U,_atom_setparse,-U,_atom_setsym,-U,_atom_setsym_array,-U,_atom_string,-U,_atombuf_append,-U,_atombuf_count,-U,_atombuf_eval,-U,_atombuf_firstatom,-U,_atombuf_free,-U,_atombuf_misc,-U,_atombuf_new,-U,_atombuf_next,-U,_atombuf_prepend,-U,_atombuf_replace,-U,_atombuf_replacepoundargs,-U,_atombuf_save,-U,_atombuf_set,-U,_atombuf_subst,-U,_atombuf_text,-U,_atombuf_totext,-U,_atomisatomarray,-U,_atomisdictionary,-U,_atomisstring,-U,_atoms_totext,-U,_attr_addfilter_clip,-U,_attr_addfilter_clip_scale,-U,_attr_addfilterget_clip,-U,_attr_addfilterget_clip_scale,-U,_attr_addfilterget_proc,-U,_attr_addfilterset_clip,-U,_attr_addfilterset_clip_scale,-U,_attr_addfilterset_proc,-U,_attr_args_dictionary,-U,_attr_args_offset,-U,_attr_args_process,-U,_attr_dictionary_process,-U,_attr_filter_clip_new,-U,_attr_filter_proc_new,-U,_attr_offset_array_new,-U,_attr_offset_new,-U,_attr_typedfun_set,-U,_attribute_new,-U,_attribute_new_atoms,-U,_attribute_new_attrval,-U,_attribute_new_binbuf,-U,_attribute_new_format,-U,_attribute_new_objval,-U,_attribute_new_parse,-U,_auxtable_checksym,-U,_bangout,-U,_bf_singlefast,-U,_binbuf_addtext,-U,_binbuf_append,-U,_binbuf_delete,-U,_binbuf_eval,-U,_binbuf_getatom,-U,_binbuf_gethandle,-U,_binbuf_insert,-U,_binbuf_inshandle,-U,_binbuf_make,-U,_binbuf_new,-U,_binbuf_read,-U,_binbuf_set,-U,_binbuf_text,-U,_binbuf_totext,-U,_binbuf_vinsert,-U,_binbuf_write,-U,_bitwrap_bell_filter,-U,_bitwrap_box_filter,-U,_bitwrap_bspline_filter,-U,_bitwrap_filter_default,-U,_bitwrap_filter_filter,-U,_bitwrap_interp,-U,_bitwrap_lanczos3_filter,-U,_bitwrap_mitchell_filter,-U,_bitwrap_triangle_filter,-U,_bitwrap_wrap_gworld,-U,_box_getcolor,-U,_boxcolor_rgb2index,-U,_call_method_attrval,-U,_call_method_binbuf,-U,_call_method_char,-U,_call_method_char_array,-U,_call_method_double,-U,_call_method_double_array,-U,_call_method_float,-U,_call_method_float_array,-U,_call_method_format,-U,_call_method_long,-U,_call_method_long_array,-U,_call_method_obj,-U,_call_method_obj_array,-U,_call_method_objval,-U,_call_method_parse,-U,_call_method_sym,-U,_call_method_sym_array,-U,_call_method_typed,-U,_charset_convert,-U,_charset_utf8tounicode,-U,_charset_unicodetoutf8,-U,_charset_isvalidutf8,-U,_charset_utf8_count,-U,_charset_utf8_offset,-U,_class_addadornment,-U,_class_addattr,-U,_class_addattr_atoms,-U,_class_addattr_atoms,-U,_class_addattr_format,-U,_class_addattr_format,-U,_class_addattr_parse,-U,_class_addattr_parse,-U,_class_addcommand,-U,_class_addmethod,-U,_class_addtypedwrapper,-U,_class_adornment_get,-U,_class_attr_addattr,-U,_class_attr_addattr_atoms,-U,_class_attr_addattr_atoms,-U,_class_attr_addattr_format,-U,_class_attr_addattr_format,-U,_class_attr_addattr_parse,-U,_class_attr_addattr_parse,-U,_class_attr_attr_get,-U,_class_attr_attr_getvalueof,-U,_class_attr_attr_setvalueof,-U,_class_attr_get,-U,_class_attr_method,-U,_class_buildprototype,-U,_class_clonable,-U,_class_cloneprototype,-U,_class_extra_lookup,-U,_class_extra_store,-U,_class_extra_storeflags,-U,_class_findbyname,-U,_class_free,-U,_class_getmethod_object,-U,_class_getpath,-U,_class_is_ui,-U,_class_is_box,-U,_class_mess,-U,_class_method,-U,_class_nameget,-U,_class_new,-U,_class_noinlet,-U,_class_obexoffset_get,-U,_class_obexoffset_set,-U,_class_register,-U,_class_alias,-U,_class_copy,-U,_class_dumpout_wrap,-U,_class_setname,-U,_class_setpath,-U,_class_sticky,-U,_class_sticky_clear,-U,_class_typedwrapper_get,-U,_classname_openhelp,-U,_classname_openrefpage,-U,_classname_openquery,-U,_clock_delay,-U,_clock_fdelay,-U,_clock_fdelay2,-U,_clock_fset,-U,_clock_fset2,-U,_clock_getextfmt,-U,_clock_getftime,-U,_clock_gettime,-U,_clock_new,-U,_clock_new_withscheduler,-U,_clock_set,-U,_clock_unset,-U,_clock_everytime_set,-U,_clock_xdelay,-U,_clock_xset,-U,_clock_xunset,-U,_CmdKeyDown,-U,_compression_compressjson_headless,-U,_compression_decompressjson_headless,-U,_connection_client,-U,_connection_delete,-U,_connection_send,-U,_connection_server,-U,_CopyFromGWorld,-U,_cpost,-U,_critical_enter,-U,_critical_exit,-U,_critical_free,-U,_critical_new,-U,_critical_tryenter,-U,_crosshatch,-U,_CtrlKeyDown,-U,_CurrentOptionKeysDown,-U,_debug_printf,-U,_defer,-U,_defer_front,-U,_defer_low,-U,_defer_medium,-U,_defer_sys_low,-U,_defvolume,-U,_dialog_setkey,-U,_dictionary_appendatom,-U,_dictionary_appendatomarray,-U,_dictionary_appendatoms,-U,_dictionary_appendatoms_flags,-U,_dictionary_appendattribute,-U,_dictionary_appendbinbuf,-U,_dictionary_appenddictionary,-U,_dictionary_appendfloat,-U,_dictionary_appendlong,-U,_dictionary_appendobject,-U,_dictionary_appendobject_flags,-U,_dictionary_appendstring,-U,_dictionary_appendsym,-U,_dictionary_chuckentry,-U,_dictionary_clear,-U,_dictionary_copyatoms,-U,_dictionary_copydefatoms,-U,_dictionary_copyentries,-U,_dictionary_copyunique,-U,_dictionary_deleteentry,-U,_dictionary_dump,-U,_dictionary_entry_getkey,-U,_dictionary_entry_getvalue,-U,_dictionary_entry_getvalues,-U,_dictionary_entryisatomarray,-U,_dictionary_entryisdictionary,-U,_dictionary_entryisstring,-U,_dictionary_freekeys,-U,_dictionary_funall,-U,_dictionary_getatom,-U,_dictionary_getatomarray,-U,_dictionary_getatoms,-U,_dictionary_getattribute,-U,_dictionary_getdefatom,-U,_dictionary_getdefatoms,-U,_dictionary_getdeffloat,-U,_dictionary_getdeflong,-U,_dictionary_getdefstring,-U,_dictionary_getdefsym,-U,_dictionary_getdictionary,-U,_dictionary_getentrycount,-U,_dictionary_getfloat,-U,_dictionary_getkeys,-U,_dictionary_getkeys_ordered,-U,_dictionary_getlong,-U,_dictionary_getobject,-U,_dictionary_getstring,-U,_dictionary_getsym,-U,_dictionary_hasentry,-U,_dictionary_new,-U,_dictionary_prototypefromclass,-U,_dictionary_read,-U,_dictionary_sprintf,-U,_dictionary_write,-U,_dictobj_register,-U,_dictobj_unregister,-U,_dictobj_findregistered_clone,-U,_dictobj_findregistered_retain,-U,_dictobj_release,-U,_dictobj_namefromptr,-U,_dictobj_outlet_atoms,-U,_dictobj_atom_safety,-U,_dictobj_validate,-U,_dictobj_jsonfromstring,-U,_dictobj_dictionaryfromstring,-U,_dictobj_dictionaryfromatoms,-U,_dictobj_dictionarytoatoms,-U,_disposhandle,-U,_drawstr,-U,_ed_new,-U,_ed_settext,-U,_ed_vis,-U,_egetfn,-U,_error,-U,_error_subscribe,-U,_error_sym,-U,_error_unsubscribe,-U,_errorcount_get,-U,_errorcount_set,-U,_evnum_get,-U,_evnum_incr,-U,_expr_eval,-U,_expr_new,-U,_fileformat_installsniffer,-U,_fileformat_sniff,-U,_fileformat_sniffdata,-U,_fileformat_stripsuffix,-U,_fileformat_suffix,-U,_filekind_getfiletypes,-U,_filekind_getname,-U,_filekind_nametoicon,-U,_fileload,-U,_fileload_extended,-U,_fileload_type,-U,_fileusage_addfile,-U,_fileusage_addfilename,-U,_fileusage_addpathname,-U,_fileusage_copyfolder,-U,_fileusage_makefolder,-U,_filewatcher_new,-U,_filewatcher_start,-U,_filewatcher_stop,-U,_finder_addclass,-U,_floatin,-U,_floatout,-U,_fontinfo_getname,-U,_fontinfo_getnumber,-U,_fontinfo_getsize,-U,_fontmap_getmapping,-U,_force_install,-U,_freebytes,-U,_freeobject,-U,_gensym,-U,_gensym_tr,-U,_getbytes,-U,_getexttime,-U,_getfn,-U,_getfolder,-U,_getschedtime,-U,_gettime,-U,_globalsymbol_reference,-U,_globalsymbol_dereference,-U,_globalsymbol_bind,-U,_globalsymbol_unbind,-U,_globalsymbol_notify,-U,_growhandle,-U,_GWorldFromPict,-U,_handle2tempfile,-U,_hashtab_chuck,-U,_hashtab_chuckkey,-U,_hashtab_clear,-U,_hashtab_delete,-U,_hashtab_findfirst,-U,_hashtab_flags,-U,_hashtab_funall,-U,_hashtab_getflags,-U,_hashtab_getkeyflags,-U,_hashtab_getkeys,-U,_hashtab_getsize,-U,_hashtab_keyflags,-U,_hashtab_lookup,-U,_hashtab_lookupentry,-U,_hashtab_lookupflags,-U,_hashtab_lookuplong,-U,_hashtab_lookupsym,-U,_hashtab_methodall,-U,_hashtab_methodall_imp,-U,_hashtab_new,-U,_hashtab_objfunall,-U,_hashtab_print,-U,_hashtab_readonly,-U,_hashtab_store,-U,_hashtab_store_safe,-U,_hashtab_storeflags,-U,_hashtab_storelong,-U,_hashtab_storesym,-U,_helpstring,-U,_inisr_set,-U,_inlet_append,-U,_inlet_count,-U,_inlet_new,-U,_inlet_nth,-U,_inlet_to,-U,_inlet4,-U,_inspector_open,-U,_intin,-U,_intload,-U,_intout,-U,_IsKeyDown,-U,_isbpatcher,-U,_isnewex,-U,_ispatcher,-U,_isr,-U,_isr_set,-U,_linklist_append,-U,_linklist_chuck,-U,_linklist_chuckindex,-U,_linklist_chuckptr,-U,_linklist_clear,-U,_linklist_deleteindex,-U,_linklist_findall,-U,_linklist_findfirst,-U,_linklist_flags,-U,_linklist_funall,-U,_linklist_funall_break,-U,_linklist_funindex,-U,_linklist_getflags,-U,_linklist_getindex,-U,_linklist_getsize,-U,_linklist_insert_sorted,-U,_linklist_insertafterobjptr,-U,_linklist_insertbeforeobjptr,-U,_linklist_insertindex,-U,_linklist_last,-U,_linklist_makearray,-U,_linklist_methodall,-U,_linklist_methodall_imp,-U,_linklist_methodindex,-U,_linklist_moveafterobjptr,-U,_linklist_movebeforeobjptr,-U,_linklist_new,-U,_linklist_next,-U,_linklist_objptr2index,-U,_linklist_prev,-U,_linklist_readonly,-U,_linklist_reverse,-U,_linklist_rotate,-U,_linklist_shuffle,-U,_linklist_sort,-U,_linklist_substitute,-U,_linklist_swap,-U,_linklist_match,-U,_linklist_chuckobject,-U,_linklist_deleteobject,-U,_linklist_prune,-U,_listout,-U,_loadbang_dequeue,-U,_loadbang_queueobject,-U,_loadbang_resume,-U,_loadbang_suspend,-U,_loader_setpath,-U,_locatefile,-U,_locatefile_extended,-U,_locatefilelist,-U,_locatefiletype,-U,_lockout_set,-U,_lowload_jpatcher_frombuffer,-U,_lowload_jpatcher_frombuffer_withobexprototype,-U,_maxversion,-U,_max_unicodekeydown,-U,_max_unicodekeyup,-U,_mayquote,-U,_method_false,-U,_method_object_free,-U,_method_object_getmesslist,-U,_method_object_getmethod,-U,_method_object_getname,-U,_method_object_new,-U,_method_object_new_messlist,-U,_method_object_setmesslist,-U,_method_object_setmethod,-U,_method_object_setname,-U,_method_true,-U,_milf_idle,-U,_milf_init,-U,_movecursor,-U,_nameinpath,-U,_nameload,-U,_nameload_unique,-U,_nameload_unique_internal,-U,_nametab_filename,-U,_newex_knows,-U,_newhandle,-U,_newinstance,-U,_newobject,-U,_newobject_fromdictionary,-U,_newobject_sprintf,-U,_noloadbangdisable_get,-U,_noloadbangdisable_set,-U,_notify_free,-U,_nullfn,-U,_object_addattr,-U,_object_addattr_atoms,-U,_object_addattr_atoms,-U,_object_addattr_format,-U,_object_addattr_format,-U,_object_addattr_parse,-U,_object_addattr_parse,-U,_object_addmethod,-U,_object_alloc,-U,_object_attach,-U,_object_attach_byptr,-U,_object_attach_byptr_register,-U,_object_attr_addattr,-U,_object_attr_addattr_atoms,-U,_object_attr_addattr_atoms,-U,_object_attr_addattr_format,-U,_object_attr_addattr_format,-U,_object_attr_addattr_parse,-U,_object_attr_addattr_parse,-U,_object_attr_attr_get,-U,_object_attr_attr_getvalueof,-U,_object_attr_attr_setvalueof,-U,_object_attr_enforcelocal,-U,_object_attr_get,-U,_object_attr_getchar,-U,_object_attr_getchar_array,-U,_object_attr_getdouble_array,-U,_object_attr_getdump,-U,_object_attr_getfloat,-U,_object_attr_getfloat_array,-U,_object_attr_getlong,-U,_object_attr_getlong_array,-U,_object_attr_getnames,-U,_object_attr_getobj,-U,_object_attr_getsym,-U,_object_attr_getsym_array,-U,_object_attr_getvalueof,-U,_object_attr_method,-U,_object_attr_setattrval,-U,_object_attr_setbinbuf,-U,_object_attr_setchar,-U,_object_attr_setchar_array,-U,_object_attr_setdisabled,-U,_object_attr_setdouble_array,-U,_object_attr_setfloat,-U,_object_attr_setfloat_array,-U,_object_attr_setformat,-U,_object_attr_setlong,-U,_object_attr_setlong_array,-U,_object_attr_setobj,-U,_object_attr_setobjval,-U,_object_attr_setparse,-U,_object_attr_setsym,-U,_object_attr_setsym_array,-U,_object_attr_setvalueof,-U,_object_attr_usercanget,-U,_object_attr_usercanset,-U,_object_attrhash_apply,-U,_object_bug,-U,_object_chuckattr,-U,_object_chuckmethod,-U,_object_class,-U,_object_classname,-U,_object_namespace,-U,_class_namespace,-U,_object_classname_compare,-U,_object_clonable,-U,_object_clone,-U,_object_clone_generic,-U,_object_commandenabled,-U,_object_deleteattr,-U,_object_deletemethod,-U,_object_detach,-U,_object_detach_byptr,-U,_object_dictionary_fromnewargs,-U,_object_dictionaryarg,-U,_object_error,-U,_object_error_obtrusive,-U,_object_findregistered,-U,_object_findregisteredbyptr,-U,_object_free,-U,_object_getcommand,-U,_object_getenabler,-U,_object_getmethod,-U,_object_getmethod_object,-U,_object_getvalueof,-U,_object_getvalueof_ext,-U,_object_handlecommand,-U,_object_inspect,-U,_object_method,-U,_object_method_imp,-U,_object_method_attrval,-U,_object_method_binbuf,-U,_object_method_char,-U,_object_method_char_array,-U,_object_method_double,-U,_object_method_double_array,-U,_object_method_float,-U,_object_method_float_array,-U,_object_method_format,-U,_object_method_long,-U,_object_method_long_array,-U,_object_method_obj,-U,_object_method_obj_array,-U,_object_method_objval,-U,_object_method_parse,-U,_object_method_sym,-U,_object_method_sym_array,-U,_object_method_typed,-U,_object_method_typedfun,-U,_object_new,-U,_object_new_imp,-U,_object_new_attrval,-U,_object_new_binbuf,-U,_object_new_format,-U,_object_new_objval,-U,_object_new_parse,-U,_object_new_typed,-U,_object_notify,-U,_object_obex_dumpout,-U,_object_obex_free,-U,_object_obex_get,-U,_object_obex_lookup,-U,_object_obex_lookuplong,-U,_object_obex_lookupsym,-U,_object_obex_quickref,-U,_object_obex_set,-U,_object_obex_store,-U,_object_obex_storelong,-U,_object_obex_storesym,-U,_object_post,-U,_object_poststring,-U,_object_refpage_get_class_info,-U,_object_refpage_get_class_info_fromclassname,-U,_object_refpage_method_is_undocumented,-U,_object_refpage_method_is_groupreference,-U,_object_register,-U,_object_replaceargs,-U,_object_reveal,-U,_object_setvalueof,-U,_object_setvalueof_ext,-U,_object_show,-U,_object_sticky,-U,_object_sticky_clear,-U,_object_subpatcher,-U,_object_unregister,-U,_object_warn,-U,_object_zero,-U,_onecopy_fileload,-U,_open_dialog,-U,_open_messageset,-U,_open_promptset,-U,_OptionKeyDown,-U,_ouchstring,-U,_outlet_add,-U,_outlet_addmonitor,-U,_outlet_anything,-U,_outlet_append,-U,_outlet_atoms,-U,_outlet_bang,-U,_outlet_canadd,-U,_outlet_count,-U,_outlet_float,-U,_outlet_int,-U,_outlet_list,-U,_outlet_msg,-U,_outlet_new,-U,_outlet_notify,-U,_outlet_nth,-U,_outlet_removemonitor,-U,_outlet_rm,-U,_palette_getcolor,-U,_patcher_eachdo,-U,_path_addnamed,-U,_path_addpath,-U,_path_build,-U,_path_closefolder,-U,_path_copyfile,-U,_path_copyfolder,-U,_path_copytotempfile,-U,_path_createfolder,-U,_path_createressysfile,-U,_path_createsysfile,-U,_path_deletefile,-U,_path_desktopfolder,-U,_path_extendedfileinfo,-U,_path_fileinfo,-U,_path_fileisresource,-U,_path_foldernextfile,-U,_path_frompathname,-U,_path_fromunicodepathname,-U,_path_toabsolutesystempath,-U,_path_getapppath,-U,_path_getdefault,-U,_path_getfilecreationdate,-U,_path_getfilemoddate,-U,_path_getmoddate,-U,_path_getname,-U,_path_getnext,-U,_path_getpath,-U,_path_getprefstring,-U,_path_getseparator,-U,_path_getstyle,-U,_path_getsupportpath,-U,_path_infoforopensysfile,-U,_path_nameconform,-U,_path_nameinpath,-U,_path_nameisrelative,-U,_path_openfolder,-U,_path_openresfile,-U,_path_openressysfile,-U,_path_opensysfile,-U,_path_removefromlist,-U,_path_removepath,-U,_path_renamefile,-U,_path_resolvefile,-U,_path_setdefault,-U,_path_setfileinfo,-U,_path_setpermanent,-U,_path_setprefstring,-U,_path_sysnameinpath,-U,_path_topathname,-U,_path_topotentialname,-U,_path_topotentialunicodename,-U,_path_frompotentialpathname,-U,_path_splitnames,-U,_plug_free,-U,_plug_init,-U,_plug_setloopfun,-U,_post,-U,_post_displayrecent,-U,_post_getpos,-U,_post_sym,-U,_postatom,-U,_poststring,-U,_preferences_class_define,-U,_preferences_class_defineoption,-U,_preferences_define,-U,_preferences_defineoption,-U,_preferences_getatomforkey,-U,_preferences_getatoms,-U,_preferences_getchar,-U,_preferences_getlong,-U,_preferences_getsym,-U,_preferences_path,-U,_preferences_readdictionary,-U,_preferences_setatoms,-U,_preferences_setchar,-U,_preferences_setlong,-U,_preferences_setsym,-U,_preferences_subpath,-U,_preferences_writedictionary,-U,_preset_int,-U,_preset_set,-U,_preset_store,-U,_proxy_getinlet,-U,_proxy_new,-U,_qelem_free,-U,_qelem_front,-U,_qelem_idlefree,-U,_qelem_idlefront,-U,_qelem_idleset,-U,_qelem_idleunset,-U,_qelem_new,-U,_qelem_set,-U,_qelem_unset,-U,_quotestring,-U,_qti_extra_flags_get,-U,_qti_extra_flags_set,-U,_qti_extra_free,-U,_qti_extra_matrix_get,-U,_qti_extra_matrix_set,-U,_qti_extra_new,-U,_qti_extra_pixelformat_get,-U,_qti_extra_pixelformat_set,-U,_qti_extra_rect_get,-U,_qti_extra_rect_set,-U,_qti_extra_scalemode_get,-U,_qti_extra_scalemode_set,-U,_qti_extra_time_get,-U,_qti_extra_time_set,-U,_qtimage_getrect,-U,_qtimage_open,-U,_quickmap_add,-U,_quickmap_drop,-U,_quickmap_lookup_key1,-U,_quickmap_lookup_key2,-U,_quickmap_readonly,-U,_quickmap_new,-U,_quittask_install,-U,_quittask_remove,-U,_quittask_remove2,-U,_readatom,-U,_readtohandle,-U,_recent_add,-U,_reg_object_namespace_lookup,-U,_rerand,-U,_saveas_autoextension,-U,_saveas_dialog,-U,_saveas_messageset,-U,_saveas_promptset,-U,_saveas_setselectedtype,-U,_saveasdialog_extended,-U,_saveasdialog_pathset,-U,_sched_idledequeue,-U,_sched_isinpoll,-U,_sched_isinqueue,-U,_sched_resume,-U,_sched_set_takeover,-U,_sched_setpollthrottle,-U,_sched_setqueuethrottle,-U,_sched_suspend,-U,_schedule,-U,_schedule_defer,-U,_schedule_delay,-U,_schedule_fdefer,-U,_schedule_fdelay,-U,_schedulef,-U,_scheduler_gettime,-U,_scheduler_new,-U,_scheduler_run,-U,_scheduler_get,-U,_scheduler_set,-U,_scheduler_settime,-U,_scheduler_fromobject,-U,_scheduler_shift,-U,_serialno,-U,_setclock_delay,-U,_setclock_fdelay,-U,_setclock_fgettime,-U,_setclock_getftime,-U,_setclock_gettime,-U,_setclock_unset,-U,_setup,-U,_ShiftKeyDown,-U,_sndfile_info,-U,_sndfile_writeheader,-U,_sprintf,-U,_sscanf,-U,_sprintf_tr,-U,_stdinletinfo,-U,_stdlist,-U,_str_tr,-U,_string_getptr,-U,_string_new,-U,_string_reserve,-U,_string_append,-U,_string_chop,-U,_stringload,-U,_strncpy_zero,-U,_snprintf_zero,-U,_strncat_zero,-U,_symbol_tr,-U,_symbol_unique,-U,_symbolarray_sort,-U,_symobject_new,-U,_symobject_linklist_match,-U,_sysdateformat_strftimetodatetime,-U,_sysdateformat_formatdatetime,-U,_sysfile_close,-U,_sysfile_geteof,-U,_sysfile_getpos,-U,_sysfile_openhandle,-U,_sysfile_openptrsize,-U,_sysfile_read,-U,_sysfile_readtextfile,-U,_sysfile_readtohandle,-U,_sysfile_readtoptr,-U,_sysfile_seteof,-U,_sysfile_setobject,-U,_sysfile_setpos,-U,_sysfile_spoolcopy,-U,_sysfile_write,-U,_sysfile_writetextfile,-U,_sysmem_copyptr,-U,_sysmem_freehandle,-U,_sysmem_freeptr,-U,_sysmem_handlesize,-U,_sysmem_lockhandle,-U,_sysmem_newhandle,-U,_sysmem_newhandleclear,-U,_sysmem_newptr,-U,_sysmem_newptrclear,-U,_sysmem_nullterminatehandle,-U,_sysmem_ptrandhand,-U,_sysmem_ptrbeforehand,-U,_sysmem_ptrsize,-U,_sysmem_resizehandle,-U,_sysmem_resizeptr,-U,_sysmem_resizeptrclear,-U,_sysmenu_appenditem,-U,_sysmenu_appendrawitem,-U,_sysmenu_appendseparator,-U,_sysmenu_assignsubmenu,-U,_sysmenu_checkitem,-U,_sysmenu_cmdid_popup,-U,_sysmenu_cmdid_set,-U,_sysmenu_copyitems,-U,_sysmenu_delete,-U,_sysmenu_deleteallitems,-U,_sysmenu_deleteitem,-U,_sysmenu_deletemh,-U,_sysmenu_dispose,-U,_sysmenu_getcheck,-U,_sysmenu_gethelp,-U,_sysmenu_getid,-U,_sysmenu_gettext,-U,_sysmenu_gettitle,-U,_sysmenu_insert,-U,_sysmenu_insertsubmenu,-U,_sysmenu_itemcount,-U,_sysmenu_menufromid,-U,_sysmenu_new,-U,_sysmenu_popup,-U,_sysmenu_setfont,-U,_sysmenu_setitem,-U,_sysmenu_setreference,-U,_sysmenu_setshortcut,-U,_sysmenu_settext,-U,_sysmidi_createport,-U,_sysmidi_deletemarked,-U,_sysmidi_enqbigpacket,-U,_sysmidi_idtoport,-U,_sysmidi_indextoname,-U,_sysmidi_iterate,-U,_sysmidi_numinports,-U,_sysmidi_numoutports,-U,_sysmidi_uniqueid,-U,_sysparallel_processorcount,-U,_sysparallel_task_benchprint,-U,_sysparallel_task_cancel,-U,_sysparallel_task_data,-U,_sysparallel_task_execute,-U,_sysparallel_task_free,-U,_sysparallel_task_new,-U,_sysparallel_task_workerproc,-U,_sysparallel_worker_execute,-U,_sysparallel_worker_free,-U,_sysparallel_worker_new,-U,_systhread_cond_broadcast,-U,_systhread_cond_free,-U,_systhread_cond_new,-U,_systhread_cond_signal,-U,_systhread_cond_wait,-U,_systhread_create,-U,_systhread_exit,-U,_systhread_getspecific,-U,_systhread_ismainthread,-U,_systhread_istimerthread,-U,_systhread_join,-U,_systhread_mutex_free,-U,_systhread_mutex_lock,-U,_systhread_mutex_new,-U,_systhread_mutex_newlock,-U,_systhread_mutex_trylock,-U,_systhread_mutex_unlock,-U,_systhread_rwlock_new,-U,_systhread_rwlock_free,-U,_systhread_rwlock_rdlock,-U,_systhread_rwlock_tryrdlock,-U,_systhread_rwlock_rdunlock,-U,_systhread_rwlock_wrlock,-U,_systhread_rwlock_trywrlock,-U,_systhread_rwlock_wrunlock,-U,_systhread_rwlock_setspintime,-U,_systhread_rwlock_getspintime,-U,_systhread_key_create,-U,_systhread_key_delete,-U,_systhread_self,-U,_systhread_setpriority,-U,_systhread_getpriority,-U,_systhread_setspecific,-U,_systhread_eliminatedenormals,-U,_systhread_sleep,-U,_systhread_terminate,-U,_systime_datetime,-U,_systime_datetoseconds,-U,_systime_ms,-U,_systime_seconds,-U,_systime_secondstodate,-U,_systime_ticks,-U,_systimer_gettime,-U,_tabfromhandle,-U,_table_dirty,-U,_table_get,-U,_textpreferences_add,-U,_textpreferences_addoption,-U,_textpreferences_addraw,-U,_textpreferences_addrect,-U,_textpreferences_close,-U,_textpreferences_default,-U,_textpreferences_open,-U,_textpreferences_read,-U,_time_stop,-U,_time_tick,-U,_time_getms,-U,_time_getticks,-U,_time_listen,-U,_time_getphase,-U,_time_setvalue,-U,_class_time_addattr,-U,_time_new,-U,_time_getnamed,-U,_time_enable_attributes,-U,_time_isfixedunit,-U,_time_schedule,-U,_time_schedule_limit,-U,_time_now,-U,_time_getitm,-U,_time_calcquantize,-U,_time_setclock,-U,_toolfile_fread,-U,_toolfile_fwrite,-U,_toolfile_getc,-U,_toolfile_new,-U,_translation_getinterfacepath,-U,_typedmess,-U,_typelist_make,-U,_typelist_make,-U,_utils_setcontext,-U,_utils_usecontext,-U,_wind_advise,-U,_wind_advise_explain,-U,_wind_nocancel,-U,_wind_setcursor,-U,_xmltree_attr_symcompare,-U,_xmltree_attribute_free,-U,_xmltree_attribute_new,-U,_xmltree_cdata_free,-U,_xmltree_cdata_new,-U,_xmltree_cdata_splittext,-U,_xmltree_charnode_addinterface,-U,_xmltree_charnode_appenddata,-U,_xmltree_charnode_deletedata,-U,_xmltree_charnode_free,-U,_xmltree_charnode_insertdata,-U,_xmltree_charnode_new,-U,_xmltree_charnode_replacedata,-U,_xmltree_charnode_substringdata,-U,_xmltree_comment_free,-U,_xmltree_comment_new,-U,_xmltree_document_createattribute,-U,_xmltree_document_createcdatasection,-U,_xmltree_document_createcomment,-U,_xmltree_document_createelement,-U,_xmltree_document_createheader,-U,_xmltree_document_createtextnode,-U,_xmltree_document_filename,-U,_xmltree_document_free,-U,_xmltree_document_getelementsbytagname,-U,_xmltree_document_new,-U,_xmltree_document_print,-U,_xmltree_document_read,-U,_xmltree_document_write,-U,_xmltree_document_xmlparse_cdata_end,-U,_xmltree_document_xmlparse_cdata_start,-U,_xmltree_document_xmlparse_characterdata,-U,_xmltree_document_xmlparse_comment,-U,_xmltree_document_xmlparse_default,-U,_xmltree_document_xmlparse_doctype_end,-U,_xmltree_document_xmlparse_doctype_start,-U,_xmltree_document_xmlparse_element_end,-U,_xmltree_document_xmlparse_element_start,-U,_xmltree_element_free,-U,_xmltree_element_getattribute,-U,_xmltree_element_getattribute_float,-U,_xmltree_element_getattribute_float_array,-U,_xmltree_element_getattribute_long,-U,_xmltree_element_getattribute_long_array,-U,_xmltree_element_getattribute_sym,-U,_xmltree_element_getattribute_sym_array,-U,_xmltree_element_getattributenode,-U,_xmltree_element_getelementsbytagname,-U,_xmltree_element_new,-U,_xmltree_element_removeattribute,-U,_xmltree_element_removeattributenode,-U,_xmltree_element_setattribute,-U,_xmltree_element_setattribute_float,-U,_xmltree_element_setattribute_float_array,-U,_xmltree_element_setattribute_long,-U,_xmltree_element_setattribute_long_array,-U,_xmltree_element_setattribute_sym,-U,_xmltree_element_setattribute_sym_array,-U,_xmltree_element_setattributenode,-U,_xmltree_element_symcompare,-U,_xmltree_init,-U,_xmltree_node_addinterface,-U,_xmltree_node_appendchild,-U,_xmltree_node_clonenode,-U,_xmltree_node_free,-U,_xmltree_node_getnodevalasstring,-U,_xmltree_node_getnodevalue,-U,_xmltree_node_getnodevalue_float,-U,_xmltree_node_getnodevalue_float_array,-U,_xmltree_node_getnodevalue_long,-U,_xmltree_node_getnodevalue_long_array,-U,_xmltree_node_getnodevalue_sym,-U,_xmltree_node_getnodevalue_sym_array,-U,_xmltree_node_haschildnodes,-U,_xmltree_node_insertbefore,-U,_xmltree_node_new,-U,_xmltree_node_nodevalue,-U,_xmltree_node_nodevalue_float,-U,_xmltree_node_nodevalue_float_array,-U,_xmltree_node_nodevalue_long,-U,_xmltree_node_nodevalue_long_array,-U,_xmltree_node_nodevalue_sym,-U,_xmltree_node_nodevalue_sym_array,-U,_xmltree_node_removeallchildren,-U,_xmltree_node_removechild,-U,_xmltree_node_replacechild,-U,_xmltree_node_setnodevalasstring,-U,_xmltree_node_write,-U,_xmltree_text_free,-U,_xmltree_text_new,-U,_xmltree_text_splittext,-U,_xpcoll_dereference,-U,_xpcoll_load,-U,_xpcoll_open,-U,_xpcoll_opensysfile,-U,_xpcoll_reference,-U,_xpcoll_setclientcallback,-U,_xpcoll_getvol,-U,_xpcoll_openfile,-U,_xpcoll_fromnameddata,-U,_xsetpost,-U,_zgetfn,-U,_jbox_initclass,-U,_jbox_new,-U,_jbox_free,-U,_jbox_ready,-U,_jbox_redraw,-U,_jbox_redrawcontents,-U,_jbox_getoutlet,-U,_jbox_getinlet,-U,_jbox_updatetextfield,-U,_jbox_updatetextfield_safe,-U,_jbox_updatetextfield_lockmutex,-U,_jbox_grabfocus,-U,_jbox_show_caption,-U,_jbox_hide_caption,-U,_jbox_invalidate_layer,-U,_jbox_remove_layer,-U,_jbox_start_layer,-U,_jbox_end_layer,-U,_jbox_paint_layer,-U,_jbox_get_boxpath,-U,_jbox_validaterects,-U,_jpatcher_deleteobj,-U,_jpatcher_is_patcher,-U,_jpatcher_get_box,-U,_jpatcher_get_count,-U,_jpatcher_get_firstobject,-U,_jpatcher_get_lastobject,-U,_jpatcher_get_firstline,-U,_jpatcher_get_firstview,-U,_jpatcher_set_locked,-U,_jpatcher_get_title,-U,_jpatcher_set_title,-U,_jpatcher_get_name,-U,_jpatcher_get_filename,-U,_jpatcher_get_filepath,-U,_jpatcher_get_dirty,-U,_jpatcher_set_dirty,-U,_jpatcher_get_bgcolor,-U,_jpatcher_set_bgcolor,-U,_jpatcher_get_gridsize,-U,_jpatcher_set_gridsize,-U,_jpatcher_get_parentpatcher,-U,_jpatcher_get_toppatcher,-U,_jpatcher_get_maxclass,-U,_jpatcher_get_parentclass,-U,_jpatcher_get_rect,-U,_jpatcher_set_rect,-U,_jpatcher_get_noedit,-U,_jpatcher_uniqueboxname,-U,_jpatcher_getboxfont,-U,_jpatcher_get_controller,-U,_jpatcher_addboxlistener,-U,_jpatcher_removeboxlistener,-U,_jpatcher_get_fileversion,-U,_jpatcher_get_currentfileversion,-U,_jpatchercontroller_createobject,-U,_jpatchercontroller_setpatcherview,-U,_jpatchercontroller_pastefileintoobject,-U,_jpatchercontroller_pastefileat,-U,_jpatchercontroller_connectobjects,-U,_object_attr_get_rect,-U,_object_attr_set_rect,-U,_object_attr_getcolor,-U,_object_attr_setcolor,-U,_object_attr_getpt,-U,_object_attr_setpt,-U,_object_attr_getsize,-U,_object_attr_setsize,-U,_jbox_get_maxclass,-U,_jbox_get_patcher,-U,_jbox_get_object,-U,_jbox_get_rect_for_view,-U,_jbox_set_rect_for_view,-U,_jbox_get_rect_for_sym,-U,_jbox_set_rect_for_sym,-U,_jbox_set_rect,-U,_jbox_get_patching_rect,-U,_jbox_set_patching_rect,-U,_jbox_get_presentation_rect,-U,_jbox_set_presentation_rect,-U,_jbox_set_position,-U,_jbox_get_patching_position,-U,_jbox_set_patching_position,-U,_jbox_get_presentation_position,-U,_jbox_set_presentation_position,-U,_jbox_set_size,-U,_jbox_get_patching_size,-U,_jbox_set_patching_size,-U,_jbox_get_presentation_size,-U,_jbox_set_presentation_size,-U,_jbox_get_hidden,-U,_jbox_set_hidden,-U,_jbox_get_fontname,-U,_jbox_set_fontname,-U,_jbox_get_fontsize,-U,_jbox_createfont,-U,_jbox_set_fontsize,-U,_jbox_fontface_to_weight_slant,-U,_jbox_get_font_slant,-U,_jbox_get_font_weight,-U,_jbox_get_color,-U,_jbox_set_color,-U,_jbox_get_nextobject,-U,_jbox_get_prevobject,-U,_jbox_get_varname,-U,_jbox_set_varname,-U,_jbox_get_id,-U,_jbox_get_canhilite,-U,_jbox_get_background,-U,_jbox_set_background,-U,_jbox_get_ignoreclick,-U,_jbox_set_ignoreclick,-U,_jbox_get_drawfirstin,-U,_jbox_get_outline,-U,_jbox_set_outline,-U,_jbox_get_growy,-U,_jbox_get_growboth,-U,_jbox_get_nogrow,-U,_jbox_get_drawinlast,-U,_jbox_get_mousedragdelta,-U,_jbox_set_mousedragdelta,-U,_jbox_get_textfield,-U,_jbox_set_hinttrack,-U,_jbox_get_hinttrack,-U,_jbox_set_hintstring,-U,_jpatchline_get_startpoint,-U,_jpatchline_get_endpoint,-U,_jpatchline_get_nummidpoints,-U,_jpatchline_get_pending,-U,_jpatchline_get_box1,-U,_jpatchline_get_outletnum,-U,_jpatchline_get_box2,-U,_jpatchline_get_inletnum,-U,_jpatchline_get_straightthresh,-U,_jpatchline_set_straightthresh,-U,_jpatchline_get_straightstart,-U,_jpatchline_get_straightend,-U,_jpatchline_set_straightstart,-U,_jpatchline_set_straightend,-U,_jpatchline_get_nextline,-U,_jpatchline_get_hidden,-U,_jpatchline_set_hidden,-U,_jpatchline_get_color,-U,_jpatchline_set_color,-U,_jpatchline_addpaintmethod,-U,_patcherview_get_visible,-U,_patcherview_set_visible,-U,_patcherview_get_locked,-U,_patcherview_set_locked,-U,_patcherview_get_zoomfactor,-U,_patcherview_set_zoomfactor,-U,_patcherview_get_nextview,-U,_patcherview_get_topview,-U,_patcherview_get_jgraphics,-U,_patcherview_set_jgraphics,-U,_patcherview_get_patcher,-U,_patcherview_get_rect,-U,_patcherview_set_rect,-U,_patcherview_canvas_to_screen,-U,_patcherview_get_presentation,-U,_textfield_get_owner,-U,_textfield_get_textcolor,-U,_textfield_set_textcolor,-U,_textfield_get_bgcolor,-U,_textfield_set_bgcolor,-U,_textfield_get_textmargins,-U,_textfield_set_textmargins,-U,_textfield_get_editonclick,-U,_textfield_set_editonclick,-U,_textfield_get_selectallonedit,-U,_textfield_set_selectallonedit,-U,_textfield_get_noactivate,-U,_textfield_set_noactivate,-U,_textfield_get_readonly,-U,_textfield_set_readonly,-U,_textfield_get_wordwrap,-U,_textfield_set_wordwrap,-U,_textfield_get_useellipsis,-U,_textfield_set_useellipsis,-U,_textfield_get_autoscroll,-U,_textfield_set_autoscroll,-U,_textfield_get_wantsreturn,-U,_textfield_set_wantsreturn,-U,_textfield_get_wantstab,-U,_textfield_set_wantstab,-U,_textfield_get_autofixwidth,-U,_textfield_set_autofixwidth,-U,_textfield_set_emptytext,-U,_textfield_get_emptytext,-U,_textfield_set_underline,-U,_textfield_get_underline,-U,_textfield_set_justification,-U,_textfield_get_justification,-U,_jdrag_getitemstring,-U,_jdrag_getobject,-U,_jdrag_getlocation,-U,_jdrag_createobject,-U,_jdrag_createnewobj,-U,_jdrag_createmessage,-U,_jdrag_add,-U,_jdrag_matchdragrole,-U,_jdrag_setboxlocation,-U,_jdrag_box_add,-U,_jdrag_object_add,-U,_jgraphics_getfiletypes,-U,_jgraphics_round,-U,_jgraphics_image_surface_clear,-U,_jgraphics_image_surface_create,-U,_jgraphics_image_surface_create_referenced,-U,_jgraphics_image_surface_create_from_file,-U,_jgraphics_image_surface_create_for_data,-U,_jgraphics_image_surface_create_from_filedata,-U,_jgraphics_image_surface_create_from_resource,-U,_jgraphics_image_surface_writepng,-U,_jgraphics_surface_reference,-U,_jgraphics_surface_destroy,-U,_jgraphics_surface_set_device_offset,-U,_jgraphics_surface_get_device_offset,-U,_jgraphics_image_surface_get_width,-U,_j",
 				);
-				PRELINK_LIBS = "$(inherited)";
-				PRODUCT_NAME = o_expr;
+				PRELINK_LIBS = "/Users/rama/Documents/__CNMAT/cnmat-git/libo/libo.a /Users/rama/Documents/__CNMAT/cnmat-git/libomax/libomax.a";
+				PRODUCT_NAME = oexpr;
 				SDKROOT = macosx10.7;
 			};
 			name = Debug;
@@ -1233,16 +2103,24 @@
 				EXECUTABLE_EXTENSION = pd_darwin;
 				EXECUTABLE_PREFIX = "";
 				GENERATE_MASTER_OBJECT_FILE = YES;
-				HEADER_SEARCH_PATHS = "$(inherited)";
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				HEADER_SEARCH_PATHS = (
+					include,
+					../libomax,
+					../libo,
+					"../pd-src/src",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"/Users/rama/Documents/__CNMAT/cnmat-git/libo",
+					"/Users/rama/Documents/__CNMAT/cnmat-git/libomax",
+				);
 				OTHER_CFLAGS = "-DOMAX_PD_VERSION";
 				OTHER_LDFLAGS = (
 					"-undefined",
 					dynamic_lookup,
 					"-Wl,-U,_addbang,-U,_addfloat,-U,_addftx,-U,_addint,-U,_addinx,-U,_addmess,-U,_advise,-U,_advise_explain,-U,_alias,-U,_AnyKeyDown,-U,_appbuilder_keyword,-U,_appbuilder_register,-U,_argpad,-U,_assist_string,-U,_asyncfile_callback_free,-U,_asyncfile_callback_new,-U,_asyncfile_close,-U,_asyncfile_create,-U,_asyncfile_geteof,-U,_asyncfile_init,-U,_asyncfile_params_default,-U,_asyncfile_params_free,-U,_asyncfile_params_new,-U,_asyncfile_read,-U,_asyncfile_seteof,-U,_asyncfile_write,-U,_atom_alloc,-U,_atom_alloc_array,-U,_atom_arg_getdouble,-U,_atom_arg_getfloat,-U,_atom_arg_getlong,-U,_atom_arg_getsym,-U,_atom_dynamic_end,-U,_atom_dynamic_start,-U,_atom_getatom_array,-U,_atom_getchar_array,-U,_atom_getcharfix,-U,_atom_getdouble_array,-U,_atom_getfloat,-U,_atom_getfloat_array,-U,_atom_getformat,-U,_atom_getlong,-U,_atom_getlong_array,-U,_atom_getobj,-U,_atom_getobj_array,-U,_atom_getsym,-U,_atom_getsym_array,-U,_atom_gettext,-U,_atom_gettype,-U,_atom_setatom_array,-U,_atom_setattrval,-U,_atom_setbinbuf,-U,_atom_setchar_array,-U,_atom_setdouble_array,-U,_atom_setfloat,-U,_atom_setfloat_array,-U,_atom_setformat,-U,_atom_setlong,-U,_atom_setlong_array,-U,_atom_setobj,-U,_atom_setobj_array,-U,_atom_setobjval,-U,_atom_setparse,-U,_atom_setsym,-U,_atom_setsym_array,-U,_atom_string,-U,_atombuf_append,-U,_atombuf_count,-U,_atombuf_eval,-U,_atombuf_firstatom,-U,_atombuf_free,-U,_atombuf_misc,-U,_atombuf_new,-U,_atombuf_next,-U,_atombuf_prepend,-U,_atombuf_replace,-U,_atombuf_replacepoundargs,-U,_atombuf_save,-U,_atombuf_set,-U,_atombuf_subst,-U,_atombuf_text,-U,_atombuf_totext,-U,_atomisatomarray,-U,_atomisdictionary,-U,_atomisstring,-U,_atoms_totext,-U,_attr_addfilter_clip,-U,_attr_addfilter_clip_scale,-U,_attr_addfilterget_clip,-U,_attr_addfilterget_clip_scale,-U,_attr_addfilterget_proc,-U,_attr_addfilterset_clip,-U,_attr_addfilterset_clip_scale,-U,_attr_addfilterset_proc,-U,_attr_args_dictionary,-U,_attr_args_offset,-U,_attr_args_process,-U,_attr_dictionary_process,-U,_attr_filter_clip_new,-U,_attr_filter_proc_new,-U,_attr_offset_array_new,-U,_attr_offset_new,-U,_attr_typedfun_set,-U,_attribute_new,-U,_attribute_new_atoms,-U,_attribute_new_attrval,-U,_attribute_new_binbuf,-U,_attribute_new_format,-U,_attribute_new_objval,-U,_attribute_new_parse,-U,_auxtable_checksym,-U,_bangout,-U,_bf_singlefast,-U,_binbuf_addtext,-U,_binbuf_append,-U,_binbuf_delete,-U,_binbuf_eval,-U,_binbuf_getatom,-U,_binbuf_gethandle,-U,_binbuf_insert,-U,_binbuf_inshandle,-U,_binbuf_make,-U,_binbuf_new,-U,_binbuf_read,-U,_binbuf_set,-U,_binbuf_text,-U,_binbuf_totext,-U,_binbuf_vinsert,-U,_binbuf_write,-U,_bitwrap_bell_filter,-U,_bitwrap_box_filter,-U,_bitwrap_bspline_filter,-U,_bitwrap_filter_default,-U,_bitwrap_filter_filter,-U,_bitwrap_interp,-U,_bitwrap_lanczos3_filter,-U,_bitwrap_mitchell_filter,-U,_bitwrap_triangle_filter,-U,_bitwrap_wrap_gworld,-U,_box_getcolor,-U,_boxcolor_rgb2index,-U,_call_method_attrval,-U,_call_method_binbuf,-U,_call_method_char,-U,_call_method_char_array,-U,_call_method_double,-U,_call_method_double_array,-U,_call_method_float,-U,_call_method_float_array,-U,_call_method_format,-U,_call_method_long,-U,_call_method_long_array,-U,_call_method_obj,-U,_call_method_obj_array,-U,_call_method_objval,-U,_call_method_parse,-U,_call_method_sym,-U,_call_method_sym_array,-U,_call_method_typed,-U,_charset_convert,-U,_charset_utf8tounicode,-U,_charset_unicodetoutf8,-U,_charset_isvalidutf8,-U,_charset_utf8_count,-U,_charset_utf8_offset,-U,_class_addadornment,-U,_class_addattr,-U,_class_addattr_atoms,-U,_class_addattr_atoms,-U,_class_addattr_format,-U,_class_addattr_format,-U,_class_addattr_parse,-U,_class_addattr_parse,-U,_class_addcommand,-U,_class_addmethod,-U,_class_addtypedwrapper,-U,_class_adornment_get,-U,_class_attr_addattr,-U,_class_attr_addattr_atoms,-U,_class_attr_addattr_atoms,-U,_class_attr_addattr_format,-U,_class_attr_addattr_format,-U,_class_attr_addattr_parse,-U,_class_attr_addattr_parse,-U,_class_attr_attr_get,-U,_class_attr_attr_getvalueof,-U,_class_attr_attr_setvalueof,-U,_class_attr_get,-U,_class_attr_method,-U,_class_buildprototype,-U,_class_clonable,-U,_class_cloneprototype,-U,_class_extra_lookup,-U,_class_extra_store,-U,_class_extra_storeflags,-U,_class_findbyname,-U,_class_free,-U,_class_getmethod_object,-U,_class_getpath,-U,_class_is_ui,-U,_class_is_box,-U,_class_mess,-U,_class_method,-U,_class_nameget,-U,_class_new,-U,_class_noinlet,-U,_class_obexoffset_get,-U,_class_obexoffset_set,-U,_class_register,-U,_class_alias,-U,_class_copy,-U,_class_dumpout_wrap,-U,_class_setname,-U,_class_setpath,-U,_class_sticky,-U,_class_sticky_clear,-U,_class_typedwrapper_get,-U,_classname_openhelp,-U,_classname_openrefpage,-U,_classname_openquery,-U,_clock_delay,-U,_clock_fdelay,-U,_clock_fdelay2,-U,_clock_fset,-U,_clock_fset2,-U,_clock_getextfmt,-U,_clock_getftime,-U,_clock_gettime,-U,_clock_new,-U,_clock_new_withscheduler,-U,_clock_set,-U,_clock_unset,-U,_clock_everytime_set,-U,_clock_xdelay,-U,_clock_xset,-U,_clock_xunset,-U,_CmdKeyDown,-U,_compression_compressjson_headless,-U,_compression_decompressjson_headless,-U,_connection_client,-U,_connection_delete,-U,_connection_send,-U,_connection_server,-U,_CopyFromGWorld,-U,_cpost,-U,_critical_enter,-U,_critical_exit,-U,_critical_free,-U,_critical_new,-U,_critical_tryenter,-U,_crosshatch,-U,_CtrlKeyDown,-U,_CurrentOptionKeysDown,-U,_debug_printf,-U,_defer,-U,_defer_front,-U,_defer_low,-U,_defer_medium,-U,_defer_sys_low,-U,_defvolume,-U,_dialog_setkey,-U,_dictionary_appendatom,-U,_dictionary_appendatomarray,-U,_dictionary_appendatoms,-U,_dictionary_appendatoms_flags,-U,_dictionary_appendattribute,-U,_dictionary_appendbinbuf,-U,_dictionary_appenddictionary,-U,_dictionary_appendfloat,-U,_dictionary_appendlong,-U,_dictionary_appendobject,-U,_dictionary_appendobject_flags,-U,_dictionary_appendstring,-U,_dictionary_appendsym,-U,_dictionary_chuckentry,-U,_dictionary_clear,-U,_dictionary_copyatoms,-U,_dictionary_copydefatoms,-U,_dictionary_copyentries,-U,_dictionary_copyunique,-U,_dictionary_deleteentry,-U,_dictionary_dump,-U,_dictionary_entry_getkey,-U,_dictionary_entry_getvalue,-U,_dictionary_entry_getvalues,-U,_dictionary_entryisatomarray,-U,_dictionary_entryisdictionary,-U,_dictionary_entryisstring,-U,_dictionary_freekeys,-U,_dictionary_funall,-U,_dictionary_getatom,-U,_dictionary_getatomarray,-U,_dictionary_getatoms,-U,_dictionary_getattribute,-U,_dictionary_getdefatom,-U,_dictionary_getdefatoms,-U,_dictionary_getdeffloat,-U,_dictionary_getdeflong,-U,_dictionary_getdefstring,-U,_dictionary_getdefsym,-U,_dictionary_getdictionary,-U,_dictionary_getentrycount,-U,_dictionary_getfloat,-U,_dictionary_getkeys,-U,_dictionary_getkeys_ordered,-U,_dictionary_getlong,-U,_dictionary_getobject,-U,_dictionary_getstring,-U,_dictionary_getsym,-U,_dictionary_hasentry,-U,_dictionary_new,-U,_dictionary_prototypefromclass,-U,_dictionary_read,-U,_dictionary_sprintf,-U,_dictionary_write,-U,_dictobj_register,-U,_dictobj_unregister,-U,_dictobj_findregistered_clone,-U,_dictobj_findregistered_retain,-U,_dictobj_release,-U,_dictobj_namefromptr,-U,_dictobj_outlet_atoms,-U,_dictobj_atom_safety,-U,_dictobj_validate,-U,_dictobj_jsonfromstring,-U,_dictobj_dictionaryfromstring,-U,_dictobj_dictionaryfromatoms,-U,_dictobj_dictionarytoatoms,-U,_disposhandle,-U,_drawstr,-U,_ed_new,-U,_ed_settext,-U,_ed_vis,-U,_egetfn,-U,_error,-U,_error_subscribe,-U,_error_sym,-U,_error_unsubscribe,-U,_errorcount_get,-U,_errorcount_set,-U,_evnum_get,-U,_evnum_incr,-U,_expr_eval,-U,_expr_new,-U,_fileformat_installsniffer,-U,_fileformat_sniff,-U,_fileformat_sniffdata,-U,_fileformat_stripsuffix,-U,_fileformat_suffix,-U,_filekind_getfiletypes,-U,_filekind_getname,-U,_filekind_nametoicon,-U,_fileload,-U,_fileload_extended,-U,_fileload_type,-U,_fileusage_addfile,-U,_fileusage_addfilename,-U,_fileusage_addpathname,-U,_fileusage_copyfolder,-U,_fileusage_makefolder,-U,_filewatcher_new,-U,_filewatcher_start,-U,_filewatcher_stop,-U,_finder_addclass,-U,_floatin,-U,_floatout,-U,_fontinfo_getname,-U,_fontinfo_getnumber,-U,_fontinfo_getsize,-U,_fontmap_getmapping,-U,_force_install,-U,_freebytes,-U,_freeobject,-U,_gensym,-U,_gensym_tr,-U,_getbytes,-U,_getexttime,-U,_getfn,-U,_getfolder,-U,_getschedtime,-U,_gettime,-U,_globalsymbol_reference,-U,_globalsymbol_dereference,-U,_globalsymbol_bind,-U,_globalsymbol_unbind,-U,_globalsymbol_notify,-U,_growhandle,-U,_GWorldFromPict,-U,_handle2tempfile,-U,_hashtab_chuck,-U,_hashtab_chuckkey,-U,_hashtab_clear,-U,_hashtab_delete,-U,_hashtab_findfirst,-U,_hashtab_flags,-U,_hashtab_funall,-U,_hashtab_getflags,-U,_hashtab_getkeyflags,-U,_hashtab_getkeys,-U,_hashtab_getsize,-U,_hashtab_keyflags,-U,_hashtab_lookup,-U,_hashtab_lookupentry,-U,_hashtab_lookupflags,-U,_hashtab_lookuplong,-U,_hashtab_lookupsym,-U,_hashtab_methodall,-U,_hashtab_methodall_imp,-U,_hashtab_new,-U,_hashtab_objfunall,-U,_hashtab_print,-U,_hashtab_readonly,-U,_hashtab_store,-U,_hashtab_store_safe,-U,_hashtab_storeflags,-U,_hashtab_storelong,-U,_hashtab_storesym,-U,_helpstring,-U,_inisr_set,-U,_inlet_append,-U,_inlet_count,-U,_inlet_new,-U,_inlet_nth,-U,_inlet_to,-U,_inlet4,-U,_inspector_open,-U,_intin,-U,_intload,-U,_intout,-U,_IsKeyDown,-U,_isbpatcher,-U,_isnewex,-U,_ispatcher,-U,_isr,-U,_isr_set,-U,_linklist_append,-U,_linklist_chuck,-U,_linklist_chuckindex,-U,_linklist_chuckptr,-U,_linklist_clear,-U,_linklist_deleteindex,-U,_linklist_findall,-U,_linklist_findfirst,-U,_linklist_flags,-U,_linklist_funall,-U,_linklist_funall_break,-U,_linklist_funindex,-U,_linklist_getflags,-U,_linklist_getindex,-U,_linklist_getsize,-U,_linklist_insert_sorted,-U,_linklist_insertafterobjptr,-U,_linklist_insertbeforeobjptr,-U,_linklist_insertindex,-U,_linklist_last,-U,_linklist_makearray,-U,_linklist_methodall,-U,_linklist_methodall_imp,-U,_linklist_methodindex,-U,_linklist_moveafterobjptr,-U,_linklist_movebeforeobjptr,-U,_linklist_new,-U,_linklist_next,-U,_linklist_objptr2index,-U,_linklist_prev,-U,_linklist_readonly,-U,_linklist_reverse,-U,_linklist_rotate,-U,_linklist_shuffle,-U,_linklist_sort,-U,_linklist_substitute,-U,_linklist_swap,-U,_linklist_match,-U,_linklist_chuckobject,-U,_linklist_deleteobject,-U,_linklist_prune,-U,_listout,-U,_loadbang_dequeue,-U,_loadbang_queueobject,-U,_loadbang_resume,-U,_loadbang_suspend,-U,_loader_setpath,-U,_locatefile,-U,_locatefile_extended,-U,_locatefilelist,-U,_locatefiletype,-U,_lockout_set,-U,_lowload_jpatcher_frombuffer,-U,_lowload_jpatcher_frombuffer_withobexprototype,-U,_maxversion,-U,_max_unicodekeydown,-U,_max_unicodekeyup,-U,_mayquote,-U,_method_false,-U,_method_object_free,-U,_method_object_getmesslist,-U,_method_object_getmethod,-U,_method_object_getname,-U,_method_object_new,-U,_method_object_new_messlist,-U,_method_object_setmesslist,-U,_method_object_setmethod,-U,_method_object_setname,-U,_method_true,-U,_milf_idle,-U,_milf_init,-U,_movecursor,-U,_nameinpath,-U,_nameload,-U,_nameload_unique,-U,_nameload_unique_internal,-U,_nametab_filename,-U,_newex_knows,-U,_newhandle,-U,_newinstance,-U,_newobject,-U,_newobject_fromdictionary,-U,_newobject_sprintf,-U,_noloadbangdisable_get,-U,_noloadbangdisable_set,-U,_notify_free,-U,_nullfn,-U,_object_addattr,-U,_object_addattr_atoms,-U,_object_addattr_atoms,-U,_object_addattr_format,-U,_object_addattr_format,-U,_object_addattr_parse,-U,_object_addattr_parse,-U,_object_addmethod,-U,_object_alloc,-U,_object_attach,-U,_object_attach_byptr,-U,_object_attach_byptr_register,-U,_object_attr_addattr,-U,_object_attr_addattr_atoms,-U,_object_attr_addattr_atoms,-U,_object_attr_addattr_format,-U,_object_attr_addattr_format,-U,_object_attr_addattr_parse,-U,_object_attr_addattr_parse,-U,_object_attr_attr_get,-U,_object_attr_attr_getvalueof,-U,_object_attr_attr_setvalueof,-U,_object_attr_enforcelocal,-U,_object_attr_get,-U,_object_attr_getchar,-U,_object_attr_getchar_array,-U,_object_attr_getdouble_array,-U,_object_attr_getdump,-U,_object_attr_getfloat,-U,_object_attr_getfloat_array,-U,_object_attr_getlong,-U,_object_attr_getlong_array,-U,_object_attr_getnames,-U,_object_attr_getobj,-U,_object_attr_getsym,-U,_object_attr_getsym_array,-U,_object_attr_getvalueof,-U,_object_attr_method,-U,_object_attr_setattrval,-U,_object_attr_setbinbuf,-U,_object_attr_setchar,-U,_object_attr_setchar_array,-U,_object_attr_setdisabled,-U,_object_attr_setdouble_array,-U,_object_attr_setfloat,-U,_object_attr_setfloat_array,-U,_object_attr_setformat,-U,_object_attr_setlong,-U,_object_attr_setlong_array,-U,_object_attr_setobj,-U,_object_attr_setobjval,-U,_object_attr_setparse,-U,_object_attr_setsym,-U,_object_attr_setsym_array,-U,_object_attr_setvalueof,-U,_object_attr_usercanget,-U,_object_attr_usercanset,-U,_object_attrhash_apply,-U,_object_bug,-U,_object_chuckattr,-U,_object_chuckmethod,-U,_object_class,-U,_object_classname,-U,_object_namespace,-U,_class_namespace,-U,_object_classname_compare,-U,_object_clonable,-U,_object_clone,-U,_object_clone_generic,-U,_object_commandenabled,-U,_object_deleteattr,-U,_object_deletemethod,-U,_object_detach,-U,_object_detach_byptr,-U,_object_dictionary_fromnewargs,-U,_object_dictionaryarg,-U,_object_error,-U,_object_error_obtrusive,-U,_object_findregistered,-U,_object_findregisteredbyptr,-U,_object_free,-U,_object_getcommand,-U,_object_getenabler,-U,_object_getmethod,-U,_object_getmethod_object,-U,_object_getvalueof,-U,_object_getvalueof_ext,-U,_object_handlecommand,-U,_object_inspect,-U,_object_method,-U,_object_method_imp,-U,_object_method_attrval,-U,_object_method_binbuf,-U,_object_method_char,-U,_object_method_char_array,-U,_object_method_double,-U,_object_method_double_array,-U,_object_method_float,-U,_object_method_float_array,-U,_object_method_format,-U,_object_method_long,-U,_object_method_long_array,-U,_object_method_obj,-U,_object_method_obj_array,-U,_object_method_objval,-U,_object_method_parse,-U,_object_method_sym,-U,_object_method_sym_array,-U,_object_method_typed,-U,_object_method_typedfun,-U,_object_new,-U,_object_new_imp,-U,_object_new_attrval,-U,_object_new_binbuf,-U,_object_new_format,-U,_object_new_objval,-U,_object_new_parse,-U,_object_new_typed,-U,_object_notify,-U,_object_obex_dumpout,-U,_object_obex_free,-U,_object_obex_get,-U,_object_obex_lookup,-U,_object_obex_lookuplong,-U,_object_obex_lookupsym,-U,_object_obex_quickref,-U,_object_obex_set,-U,_object_obex_store,-U,_object_obex_storelong,-U,_object_obex_storesym,-U,_object_post,-U,_object_poststring,-U,_object_refpage_get_class_info,-U,_object_refpage_get_class_info_fromclassname,-U,_object_refpage_method_is_undocumented,-U,_object_refpage_method_is_groupreference,-U,_object_register,-U,_object_replaceargs,-U,_object_reveal,-U,_object_setvalueof,-U,_object_setvalueof_ext,-U,_object_show,-U,_object_sticky,-U,_object_sticky_clear,-U,_object_subpatcher,-U,_object_unregister,-U,_object_warn,-U,_object_zero,-U,_onecopy_fileload,-U,_open_dialog,-U,_open_messageset,-U,_open_promptset,-U,_OptionKeyDown,-U,_ouchstring,-U,_outlet_add,-U,_outlet_addmonitor,-U,_outlet_anything,-U,_outlet_append,-U,_outlet_atoms,-U,_outlet_bang,-U,_outlet_canadd,-U,_outlet_count,-U,_outlet_float,-U,_outlet_int,-U,_outlet_list,-U,_outlet_msg,-U,_outlet_new,-U,_outlet_notify,-U,_outlet_nth,-U,_outlet_removemonitor,-U,_outlet_rm,-U,_palette_getcolor,-U,_patcher_eachdo,-U,_path_addnamed,-U,_path_addpath,-U,_path_build,-U,_path_closefolder,-U,_path_copyfile,-U,_path_copyfolder,-U,_path_copytotempfile,-U,_path_createfolder,-U,_path_createressysfile,-U,_path_createsysfile,-U,_path_deletefile,-U,_path_desktopfolder,-U,_path_extendedfileinfo,-U,_path_fileinfo,-U,_path_fileisresource,-U,_path_foldernextfile,-U,_path_frompathname,-U,_path_fromunicodepathname,-U,_path_toabsolutesystempath,-U,_path_getapppath,-U,_path_getdefault,-U,_path_getfilecreationdate,-U,_path_getfilemoddate,-U,_path_getmoddate,-U,_path_getname,-U,_path_getnext,-U,_path_getpath,-U,_path_getprefstring,-U,_path_getseparator,-U,_path_getstyle,-U,_path_getsupportpath,-U,_path_infoforopensysfile,-U,_path_nameconform,-U,_path_nameinpath,-U,_path_nameisrelative,-U,_path_openfolder,-U,_path_openresfile,-U,_path_openressysfile,-U,_path_opensysfile,-U,_path_removefromlist,-U,_path_removepath,-U,_path_renamefile,-U,_path_resolvefile,-U,_path_setdefault,-U,_path_setfileinfo,-U,_path_setpermanent,-U,_path_setprefstring,-U,_path_sysnameinpath,-U,_path_topathname,-U,_path_topotentialname,-U,_path_topotentialunicodename,-U,_path_frompotentialpathname,-U,_path_splitnames,-U,_plug_free,-U,_plug_init,-U,_plug_setloopfun,-U,_post,-U,_post_displayrecent,-U,_post_getpos,-U,_post_sym,-U,_postatom,-U,_poststring,-U,_preferences_class_define,-U,_preferences_class_defineoption,-U,_preferences_define,-U,_preferences_defineoption,-U,_preferences_getatomforkey,-U,_preferences_getatoms,-U,_preferences_getchar,-U,_preferences_getlong,-U,_preferences_getsym,-U,_preferences_path,-U,_preferences_readdictionary,-U,_preferences_setatoms,-U,_preferences_setchar,-U,_preferences_setlong,-U,_preferences_setsym,-U,_preferences_subpath,-U,_preferences_writedictionary,-U,_preset_int,-U,_preset_set,-U,_preset_store,-U,_proxy_getinlet,-U,_proxy_new,-U,_qelem_free,-U,_qelem_front,-U,_qelem_idlefree,-U,_qelem_idlefront,-U,_qelem_idleset,-U,_qelem_idleunset,-U,_qelem_new,-U,_qelem_set,-U,_qelem_unset,-U,_quotestring,-U,_qti_extra_flags_get,-U,_qti_extra_flags_set,-U,_qti_extra_free,-U,_qti_extra_matrix_get,-U,_qti_extra_matrix_set,-U,_qti_extra_new,-U,_qti_extra_pixelformat_get,-U,_qti_extra_pixelformat_set,-U,_qti_extra_rect_get,-U,_qti_extra_rect_set,-U,_qti_extra_scalemode_get,-U,_qti_extra_scalemode_set,-U,_qti_extra_time_get,-U,_qti_extra_time_set,-U,_qtimage_getrect,-U,_qtimage_open,-U,_quickmap_add,-U,_quickmap_drop,-U,_quickmap_lookup_key1,-U,_quickmap_lookup_key2,-U,_quickmap_readonly,-U,_quickmap_new,-U,_quittask_install,-U,_quittask_remove,-U,_quittask_remove2,-U,_readatom,-U,_readtohandle,-U,_recent_add,-U,_reg_object_namespace_lookup,-U,_rerand,-U,_saveas_autoextension,-U,_saveas_dialog,-U,_saveas_messageset,-U,_saveas_promptset,-U,_saveas_setselectedtype,-U,_saveasdialog_extended,-U,_saveasdialog_pathset,-U,_sched_idledequeue,-U,_sched_isinpoll,-U,_sched_isinqueue,-U,_sched_resume,-U,_sched_set_takeover,-U,_sched_setpollthrottle,-U,_sched_setqueuethrottle,-U,_sched_suspend,-U,_schedule,-U,_schedule_defer,-U,_schedule_delay,-U,_schedule_fdefer,-U,_schedule_fdelay,-U,_schedulef,-U,_scheduler_gettime,-U,_scheduler_new,-U,_scheduler_run,-U,_scheduler_get,-U,_scheduler_set,-U,_scheduler_settime,-U,_scheduler_fromobject,-U,_scheduler_shift,-U,_serialno,-U,_setclock_delay,-U,_setclock_fdelay,-U,_setclock_fgettime,-U,_setclock_getftime,-U,_setclock_gettime,-U,_setclock_unset,-U,_setup,-U,_ShiftKeyDown,-U,_sndfile_info,-U,_sndfile_writeheader,-U,_sprintf,-U,_sscanf,-U,_sprintf_tr,-U,_stdinletinfo,-U,_stdlist,-U,_str_tr,-U,_string_getptr,-U,_string_new,-U,_string_reserve,-U,_string_append,-U,_string_chop,-U,_stringload,-U,_strncpy_zero,-U,_snprintf_zero,-U,_strncat_zero,-U,_symbol_tr,-U,_symbol_unique,-U,_symbolarray_sort,-U,_symobject_new,-U,_symobject_linklist_match,-U,_sysdateformat_strftimetodatetime,-U,_sysdateformat_formatdatetime,-U,_sysfile_close,-U,_sysfile_geteof,-U,_sysfile_getpos,-U,_sysfile_openhandle,-U,_sysfile_openptrsize,-U,_sysfile_read,-U,_sysfile_readtextfile,-U,_sysfile_readtohandle,-U,_sysfile_readtoptr,-U,_sysfile_seteof,-U,_sysfile_setobject,-U,_sysfile_setpos,-U,_sysfile_spoolcopy,-U,_sysfile_write,-U,_sysfile_writetextfile,-U,_sysmem_copyptr,-U,_sysmem_freehandle,-U,_sysmem_freeptr,-U,_sysmem_handlesize,-U,_sysmem_lockhandle,-U,_sysmem_newhandle,-U,_sysmem_newhandleclear,-U,_sysmem_newptr,-U,_sysmem_newptrclear,-U,_sysmem_nullterminatehandle,-U,_sysmem_ptrandhand,-U,_sysmem_ptrbeforehand,-U,_sysmem_ptrsize,-U,_sysmem_resizehandle,-U,_sysmem_resizeptr,-U,_sysmem_resizeptrclear,-U,_sysmenu_appenditem,-U,_sysmenu_appendrawitem,-U,_sysmenu_appendseparator,-U,_sysmenu_assignsubmenu,-U,_sysmenu_checkitem,-U,_sysmenu_cmdid_popup,-U,_sysmenu_cmdid_set,-U,_sysmenu_copyitems,-U,_sysmenu_delete,-U,_sysmenu_deleteallitems,-U,_sysmenu_deleteitem,-U,_sysmenu_deletemh,-U,_sysmenu_dispose,-U,_sysmenu_getcheck,-U,_sysmenu_gethelp,-U,_sysmenu_getid,-U,_sysmenu_gettext,-U,_sysmenu_gettitle,-U,_sysmenu_insert,-U,_sysmenu_insertsubmenu,-U,_sysmenu_itemcount,-U,_sysmenu_menufromid,-U,_sysmenu_new,-U,_sysmenu_popup,-U,_sysmenu_setfont,-U,_sysmenu_setitem,-U,_sysmenu_setreference,-U,_sysmenu_setshortcut,-U,_sysmenu_settext,-U,_sysmidi_createport,-U,_sysmidi_deletemarked,-U,_sysmidi_enqbigpacket,-U,_sysmidi_idtoport,-U,_sysmidi_indextoname,-U,_sysmidi_iterate,-U,_sysmidi_numinports,-U,_sysmidi_numoutports,-U,_sysmidi_uniqueid,-U,_sysparallel_processorcount,-U,_sysparallel_task_benchprint,-U,_sysparallel_task_cancel,-U,_sysparallel_task_data,-U,_sysparallel_task_execute,-U,_sysparallel_task_free,-U,_sysparallel_task_new,-U,_sysparallel_task_workerproc,-U,_sysparallel_worker_execute,-U,_sysparallel_worker_free,-U,_sysparallel_worker_new,-U,_systhread_cond_broadcast,-U,_systhread_cond_free,-U,_systhread_cond_new,-U,_systhread_cond_signal,-U,_systhread_cond_wait,-U,_systhread_create,-U,_systhread_exit,-U,_systhread_getspecific,-U,_systhread_ismainthread,-U,_systhread_istimerthread,-U,_systhread_join,-U,_systhread_mutex_free,-U,_systhread_mutex_lock,-U,_systhread_mutex_new,-U,_systhread_mutex_newlock,-U,_systhread_mutex_trylock,-U,_systhread_mutex_unlock,-U,_systhread_rwlock_new,-U,_systhread_rwlock_free,-U,_systhread_rwlock_rdlock,-U,_systhread_rwlock_tryrdlock,-U,_systhread_rwlock_rdunlock,-U,_systhread_rwlock_wrlock,-U,_systhread_rwlock_trywrlock,-U,_systhread_rwlock_wrunlock,-U,_systhread_rwlock_setspintime,-U,_systhread_rwlock_getspintime,-U,_systhread_key_create,-U,_systhread_key_delete,-U,_systhread_self,-U,_systhread_setpriority,-U,_systhread_getpriority,-U,_systhread_setspecific,-U,_systhread_eliminatedenormals,-U,_systhread_sleep,-U,_systhread_terminate,-U,_systime_datetime,-U,_systime_datetoseconds,-U,_systime_ms,-U,_systime_seconds,-U,_systime_secondstodate,-U,_systime_ticks,-U,_systimer_gettime,-U,_tabfromhandle,-U,_table_dirty,-U,_table_get,-U,_textpreferences_add,-U,_textpreferences_addoption,-U,_textpreferences_addraw,-U,_textpreferences_addrect,-U,_textpreferences_close,-U,_textpreferences_default,-U,_textpreferences_open,-U,_textpreferences_read,-U,_time_stop,-U,_time_tick,-U,_time_getms,-U,_time_getticks,-U,_time_listen,-U,_time_getphase,-U,_time_setvalue,-U,_class_time_addattr,-U,_time_new,-U,_time_getnamed,-U,_time_enable_attributes,-U,_time_isfixedunit,-U,_time_schedule,-U,_time_schedule_limit,-U,_time_now,-U,_time_getitm,-U,_time_calcquantize,-U,_time_setclock,-U,_toolfile_fread,-U,_toolfile_fwrite,-U,_toolfile_getc,-U,_toolfile_new,-U,_translation_getinterfacepath,-U,_typedmess,-U,_typelist_make,-U,_typelist_make,-U,_utils_setcontext,-U,_utils_usecontext,-U,_wind_advise,-U,_wind_advise_explain,-U,_wind_nocancel,-U,_wind_setcursor,-U,_xmltree_attr_symcompare,-U,_xmltree_attribute_free,-U,_xmltree_attribute_new,-U,_xmltree_cdata_free,-U,_xmltree_cdata_new,-U,_xmltree_cdata_splittext,-U,_xmltree_charnode_addinterface,-U,_xmltree_charnode_appenddata,-U,_xmltree_charnode_deletedata,-U,_xmltree_charnode_free,-U,_xmltree_charnode_insertdata,-U,_xmltree_charnode_new,-U,_xmltree_charnode_replacedata,-U,_xmltree_charnode_substringdata,-U,_xmltree_comment_free,-U,_xmltree_comment_new,-U,_xmltree_document_createattribute,-U,_xmltree_document_createcdatasection,-U,_xmltree_document_createcomment,-U,_xmltree_document_createelement,-U,_xmltree_document_createheader,-U,_xmltree_document_createtextnode,-U,_xmltree_document_filename,-U,_xmltree_document_free,-U,_xmltree_document_getelementsbytagname,-U,_xmltree_document_new,-U,_xmltree_document_print,-U,_xmltree_document_read,-U,_xmltree_document_write,-U,_xmltree_document_xmlparse_cdata_end,-U,_xmltree_document_xmlparse_cdata_start,-U,_xmltree_document_xmlparse_characterdata,-U,_xmltree_document_xmlparse_comment,-U,_xmltree_document_xmlparse_default,-U,_xmltree_document_xmlparse_doctype_end,-U,_xmltree_document_xmlparse_doctype_start,-U,_xmltree_document_xmlparse_element_end,-U,_xmltree_document_xmlparse_element_start,-U,_xmltree_element_free,-U,_xmltree_element_getattribute,-U,_xmltree_element_getattribute_float,-U,_xmltree_element_getattribute_float_array,-U,_xmltree_element_getattribute_long,-U,_xmltree_element_getattribute_long_array,-U,_xmltree_element_getattribute_sym,-U,_xmltree_element_getattribute_sym_array,-U,_xmltree_element_getattributenode,-U,_xmltree_element_getelementsbytagname,-U,_xmltree_element_new,-U,_xmltree_element_removeattribute,-U,_xmltree_element_removeattributenode,-U,_xmltree_element_setattribute,-U,_xmltree_element_setattribute_float,-U,_xmltree_element_setattribute_float_array,-U,_xmltree_element_setattribute_long,-U,_xmltree_element_setattribute_long_array,-U,_xmltree_element_setattribute_sym,-U,_xmltree_element_setattribute_sym_array,-U,_xmltree_element_setattributenode,-U,_xmltree_element_symcompare,-U,_xmltree_init,-U,_xmltree_node_addinterface,-U,_xmltree_node_appendchild,-U,_xmltree_node_clonenode,-U,_xmltree_node_free,-U,_xmltree_node_getnodevalasstring,-U,_xmltree_node_getnodevalue,-U,_xmltree_node_getnodevalue_float,-U,_xmltree_node_getnodevalue_float_array,-U,_xmltree_node_getnodevalue_long,-U,_xmltree_node_getnodevalue_long_array,-U,_xmltree_node_getnodevalue_sym,-U,_xmltree_node_getnodevalue_sym_array,-U,_xmltree_node_haschildnodes,-U,_xmltree_node_insertbefore,-U,_xmltree_node_new,-U,_xmltree_node_nodevalue,-U,_xmltree_node_nodevalue_float,-U,_xmltree_node_nodevalue_float_array,-U,_xmltree_node_nodevalue_long,-U,_xmltree_node_nodevalue_long_array,-U,_xmltree_node_nodevalue_sym,-U,_xmltree_node_nodevalue_sym_array,-U,_xmltree_node_removeallchildren,-U,_xmltree_node_removechild,-U,_xmltree_node_replacechild,-U,_xmltree_node_setnodevalasstring,-U,_xmltree_node_write,-U,_xmltree_text_free,-U,_xmltree_text_new,-U,_xmltree_text_splittext,-U,_xpcoll_dereference,-U,_xpcoll_load,-U,_xpcoll_open,-U,_xpcoll_opensysfile,-U,_xpcoll_reference,-U,_xpcoll_setclientcallback,-U,_xpcoll_getvol,-U,_xpcoll_openfile,-U,_xpcoll_fromnameddata,-U,_xsetpost,-U,_zgetfn,-U,_jbox_initclass,-U,_jbox_new,-U,_jbox_free,-U,_jbox_ready,-U,_jbox_redraw,-U,_jbox_redrawcontents,-U,_jbox_getoutlet,-U,_jbox_getinlet,-U,_jbox_updatetextfield,-U,_jbox_updatetextfield_safe,-U,_jbox_updatetextfield_lockmutex,-U,_jbox_grabfocus,-U,_jbox_show_caption,-U,_jbox_hide_caption,-U,_jbox_invalidate_layer,-U,_jbox_remove_layer,-U,_jbox_start_layer,-U,_jbox_end_layer,-U,_jbox_paint_layer,-U,_jbox_get_boxpath,-U,_jbox_validaterects,-U,_jpatcher_deleteobj,-U,_jpatcher_is_patcher,-U,_jpatcher_get_box,-U,_jpatcher_get_count,-U,_jpatcher_get_firstobject,-U,_jpatcher_get_lastobject,-U,_jpatcher_get_firstline,-U,_jpatcher_get_firstview,-U,_jpatcher_set_locked,-U,_jpatcher_get_title,-U,_jpatcher_set_title,-U,_jpatcher_get_name,-U,_jpatcher_get_filename,-U,_jpatcher_get_filepath,-U,_jpatcher_get_dirty,-U,_jpatcher_set_dirty,-U,_jpatcher_get_bgcolor,-U,_jpatcher_set_bgcolor,-U,_jpatcher_get_gridsize,-U,_jpatcher_set_gridsize,-U,_jpatcher_get_parentpatcher,-U,_jpatcher_get_toppatcher,-U,_jpatcher_get_maxclass,-U,_jpatcher_get_parentclass,-U,_jpatcher_get_rect,-U,_jpatcher_set_rect,-U,_jpatcher_get_noedit,-U,_jpatcher_uniqueboxname,-U,_jpatcher_getboxfont,-U,_jpatcher_get_controller,-U,_jpatcher_addboxlistener,-U,_jpatcher_removeboxlistener,-U,_jpatcher_get_fileversion,-U,_jpatcher_get_currentfileversion,-U,_jpatchercontroller_createobject,-U,_jpatchercontroller_setpatcherview,-U,_jpatchercontroller_pastefileintoobject,-U,_jpatchercontroller_pastefileat,-U,_jpatchercontroller_connectobjects,-U,_object_attr_get_rect,-U,_object_attr_set_rect,-U,_object_attr_getcolor,-U,_object_attr_setcolor,-U,_object_attr_getpt,-U,_object_attr_setpt,-U,_object_attr_getsize,-U,_object_attr_setsize,-U,_jbox_get_maxclass,-U,_jbox_get_patcher,-U,_jbox_get_object,-U,_jbox_get_rect_for_view,-U,_jbox_set_rect_for_view,-U,_jbox_get_rect_for_sym,-U,_jbox_set_rect_for_sym,-U,_jbox_set_rect,-U,_jbox_get_patching_rect,-U,_jbox_set_patching_rect,-U,_jbox_get_presentation_rect,-U,_jbox_set_presentation_rect,-U,_jbox_set_position,-U,_jbox_get_patching_position,-U,_jbox_set_patching_position,-U,_jbox_get_presentation_position,-U,_jbox_set_presentation_position,-U,_jbox_set_size,-U,_jbox_get_patching_size,-U,_jbox_set_patching_size,-U,_jbox_get_presentation_size,-U,_jbox_set_presentation_size,-U,_jbox_get_hidden,-U,_jbox_set_hidden,-U,_jbox_get_fontname,-U,_jbox_set_fontname,-U,_jbox_get_fontsize,-U,_jbox_createfont,-U,_jbox_set_fontsize,-U,_jbox_fontface_to_weight_slant,-U,_jbox_get_font_slant,-U,_jbox_get_font_weight,-U,_jbox_get_color,-U,_jbox_set_color,-U,_jbox_get_nextobject,-U,_jbox_get_prevobject,-U,_jbox_get_varname,-U,_jbox_set_varname,-U,_jbox_get_id,-U,_jbox_get_canhilite,-U,_jbox_get_background,-U,_jbox_set_background,-U,_jbox_get_ignoreclick,-U,_jbox_set_ignoreclick,-U,_jbox_get_drawfirstin,-U,_jbox_get_outline,-U,_jbox_set_outline,-U,_jbox_get_growy,-U,_jbox_get_growboth,-U,_jbox_get_nogrow,-U,_jbox_get_drawinlast,-U,_jbox_get_mousedragdelta,-U,_jbox_set_mousedragdelta,-U,_jbox_get_textfield,-U,_jbox_set_hinttrack,-U,_jbox_get_hinttrack,-U,_jbox_set_hintstring,-U,_jpatchline_get_startpoint,-U,_jpatchline_get_endpoint,-U,_jpatchline_get_nummidpoints,-U,_jpatchline_get_pending,-U,_jpatchline_get_box1,-U,_jpatchline_get_outletnum,-U,_jpatchline_get_box2,-U,_jpatchline_get_inletnum,-U,_jpatchline_get_straightthresh,-U,_jpatchline_set_straightthresh,-U,_jpatchline_get_straightstart,-U,_jpatchline_get_straightend,-U,_jpatchline_set_straightstart,-U,_jpatchline_set_straightend,-U,_jpatchline_get_nextline,-U,_jpatchline_get_hidden,-U,_jpatchline_set_hidden,-U,_jpatchline_get_color,-U,_jpatchline_set_color,-U,_jpatchline_addpaintmethod,-U,_patcherview_get_visible,-U,_patcherview_set_visible,-U,_patcherview_get_locked,-U,_patcherview_set_locked,-U,_patcherview_get_zoomfactor,-U,_patcherview_set_zoomfactor,-U,_patcherview_get_nextview,-U,_patcherview_get_topview,-U,_patcherview_get_jgraphics,-U,_patcherview_set_jgraphics,-U,_patcherview_get_patcher,-U,_patcherview_get_rect,-U,_patcherview_set_rect,-U,_patcherview_canvas_to_screen,-U,_patcherview_get_presentation,-U,_textfield_get_owner,-U,_textfield_get_textcolor,-U,_textfield_set_textcolor,-U,_textfield_get_bgcolor,-U,_textfield_set_bgcolor,-U,_textfield_get_textmargins,-U,_textfield_set_textmargins,-U,_textfield_get_editonclick,-U,_textfield_set_editonclick,-U,_textfield_get_selectallonedit,-U,_textfield_set_selectallonedit,-U,_textfield_get_noactivate,-U,_textfield_set_noactivate,-U,_textfield_get_readonly,-U,_textfield_set_readonly,-U,_textfield_get_wordwrap,-U,_textfield_set_wordwrap,-U,_textfield_get_useellipsis,-U,_textfield_set_useellipsis,-U,_textfield_get_autoscroll,-U,_textfield_set_autoscroll,-U,_textfield_get_wantsreturn,-U,_textfield_set_wantsreturn,-U,_textfield_get_wantstab,-U,_textfield_set_wantstab,-U,_textfield_get_autofixwidth,-U,_textfield_set_autofixwidth,-U,_textfield_set_emptytext,-U,_textfield_get_emptytext,-U,_textfield_set_underline,-U,_textfield_get_underline,-U,_textfield_set_justification,-U,_textfield_get_justification,-U,_jdrag_getitemstring,-U,_jdrag_getobject,-U,_jdrag_getlocation,-U,_jdrag_createobject,-U,_jdrag_createnewobj,-U,_jdrag_createmessage,-U,_jdrag_add,-U,_jdrag_matchdragrole,-U,_jdrag_setboxlocation,-U,_jdrag_box_add,-U,_jdrag_object_add,-U,_jgraphics_getfiletypes,-U,_jgraphics_round,-U,_jgraphics_image_surface_clear,-U,_jgraphics_image_surface_create,-U,_jgraphics_image_surface_create_referenced,-U,_jgraphics_image_surface_create_from_file,-U,_jgraphics_image_surface_create_for_data,-U,_jgraphics_image_surface_create_from_filedata,-U,_jgraphics_image_surface_create_from_resource,-U,_jgraphics_image_surface_writepng,-U,_jgraphics_surface_reference,-U,_jgraphics_surface_destroy,-U,_jgraphics_surface_set_device_offset,-U,_jgraphics_surface_get_device_offset,-U,_jgraphics_image_surface_get_width,-U,_j",
 				);
-				PRELINK_LIBS = "$(inherited)";
-				PRODUCT_NAME = o_expr;
+				PRELINK_LIBS = "/Users/rama/Documents/__CNMAT/cnmat-git/libo/libo.a /Users/rama/Documents/__CNMAT/cnmat-git/libomax/libomax.a";
+				PRODUCT_NAME = oexpr;
 				SDKROOT = macosx10.7;
 			};
 			name = Release;
@@ -1250,7 +2128,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		210CBBF717453A98006CAB74 /* Build configuration list for PBXNativeTarget "o_pack" */ = {
+		210CBBF717453A98006CAB74 /* Build configuration list for PBXNativeTarget "opack" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				210CBBF517453A98006CAB74 /* Debug */,
@@ -1259,7 +2137,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		210CBBFD17453AB3006CAB74 /* Build configuration list for PBXNativeTarget "o_pak" */ = {
+		210CBBFD17453AB3006CAB74 /* Build configuration list for PBXNativeTarget "opak" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				210CBBFE17453AB3006CAB74 /* Debug */,
@@ -1268,7 +2146,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		210CBC0517453ACF006CAB74 /* Build configuration list for PBXNativeTarget "o_route" */ = {
+		210CBC0517453ACF006CAB74 /* Build configuration list for PBXNativeTarget "oroute" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				210CBC0617453ACF006CAB74 /* Debug */,
@@ -1277,7 +2155,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		210CBC0D17453AE6006CAB74 /* Build configuration list for PBXNativeTarget "o_select" */ = {
+		210CBC0D17453AE6006CAB74 /* Build configuration list for PBXNativeTarget "oselect" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				210CBC0E17453AE6006CAB74 /* Debug */,
@@ -1286,7 +2164,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		210CBC1D1745953F006CAB74 /* Build configuration list for PBXNativeTarget "o_collect" */ = {
+		210CBC1D1745953F006CAB74 /* Build configuration list for PBXNativeTarget "ocollect" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				210CBC1E1745953F006CAB74 /* Debug */,
@@ -1295,7 +2173,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		210CBC2517459549006CAB74 /* Build configuration list for PBXNativeTarget "o_print" */ = {
+		210CBC2517459549006CAB74 /* Build configuration list for PBXNativeTarget "oprint" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				210CBC2617459549006CAB74 /* Debug */,
@@ -1304,7 +2182,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		210CBC2D17459550006CAB74 /* Build configuration list for PBXNativeTarget "o_printbytes" */ = {
+		210CBC2D17459550006CAB74 /* Build configuration list for PBXNativeTarget "oprintbytes" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				210CBC2E17459550006CAB74 /* Debug */,
@@ -1313,7 +2191,123 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		21B8484D174447B900103A7F /* Build configuration list for PBXNativeTarget "o_if" */ = {
+		210CBC3B174752DB006CAB74 /* Build configuration list for PBXNativeTarget "oatomize" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				210CBC3C174752DB006CAB74 /* Debug */,
+				210CBC3D174752DB006CAB74 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		210CBC43174752E3006CAB74 /* Build configuration list for PBXNativeTarget "oappend" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				210CBC44174752E3006CAB74 /* Debug */,
+				210CBC45174752E3006CAB74 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		210CBC4B174752EA006CAB74 /* Build configuration list for PBXNativeTarget "oprepend" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				210CBC4C174752EA006CAB74 /* Debug */,
+				210CBC4D174752EA006CAB74 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		210CBC53174752F1006CAB74 /* Build configuration list for PBXNativeTarget "ochange" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				210CBC54174752F1006CAB74 /* Debug */,
+				210CBC55174752F1006CAB74 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		210CBC5B174752FE006CAB74 /* Build configuration list for PBXNativeTarget "odelay" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				210CBC5C174752FE006CAB74 /* Debug */,
+				210CBC5D174752FE006CAB74 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		210CBC631747530D006CAB74 /* Build configuration list for PBXNativeTarget "oexplode" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				210CBC641747530D006CAB74 /* Debug */,
+				210CBC651747530D006CAB74 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		210CBC6B17475316006CAB74 /* Build configuration list for PBXNativeTarget "oflatten" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				210CBC6C17475316006CAB74 /* Debug */,
+				210CBC6D17475316006CAB74 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		210CBC7317475323006CAB74 /* Build configuration list for PBXNativeTarget "omappatch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				210CBC7417475323006CAB74 /* Debug */,
+				210CBC7517475323006CAB74 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		210CBC7B17475331006CAB74 /* Build configuration list for PBXNativeTarget "oschedule" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				210CBC7C17475331006CAB74 /* Debug */,
+				210CBC7D17475331006CAB74 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		210CBC831747533C006CAB74 /* Build configuration list for PBXNativeTarget "otable" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				210CBC841747533C006CAB74 /* Debug */,
+				210CBC851747533C006CAB74 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		210CBC8B17475344006CAB74 /* Build configuration list for PBXNativeTarget "otimetag" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				210CBC8C17475344006CAB74 /* Debug */,
+				210CBC8D17475344006CAB74 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		216794B11756C13A008F0301 /* Build configuration list for PBXNativeTarget "omessage" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				216794AF1756C13A008F0301 /* Debug */,
+				216794B01756C13A008F0301 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		216B180017657C7300D6023A /* Build configuration list for PBXNativeTarget "omenu" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				216B17FE17657C7300D6023A /* Debug */,
+				216B17FF17657C7300D6023A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		21B8484D174447B900103A7F /* Build configuration list for PBXNativeTarget "oif" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				21B8484E174447B900103A7F /* Debug */,
@@ -1322,7 +2316,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		21B8485717444A4400103A7F /* Build configuration list for PBXNativeTarget "o_cond" */ = {
+		21B8485717444A4400103A7F /* Build configuration list for PBXNativeTarget "ocond" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				21B8485817444A4400103A7F /* Debug */,
@@ -1331,7 +2325,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		21B8485F17444A9200103A7F /* Build configuration list for PBXNativeTarget "o_when" */ = {
+		21B8485F17444A9200103A7F /* Build configuration list for PBXNativeTarget "owhen" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				21B8486017444A9200103A7F /* Debug */,
@@ -1340,7 +2334,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		21B8486717444AAD00103A7F /* Build configuration list for PBXNativeTarget "o_unless" */ = {
+		21B8486717444AAD00103A7F /* Build configuration list for PBXNativeTarget "ounless" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				21B8486817444AAD00103A7F /* Debug */,
@@ -1349,7 +2343,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		21B8487917446B4A00103A7F /* Build configuration list for PBXNativeTarget "o_var" */ = {
+		21B8487917446B4A00103A7F /* Build configuration list for PBXNativeTarget "ovar" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				21B8487A17446B4A00103A7F /* Debug */,
@@ -1358,7 +2352,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		21B8488117446B6500103A7F /* Build configuration list for PBXNativeTarget "o_union" */ = {
+		21B8488117446B6500103A7F /* Build configuration list for PBXNativeTarget "ounion" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				21B8488217446B6500103A7F /* Debug */,
@@ -1367,7 +2361,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		21B8488917446B6F00103A7F /* Build configuration list for PBXNativeTarget "o_intersection" */ = {
+		21B8488917446B6F00103A7F /* Build configuration list for PBXNativeTarget "ointersection" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				21B8488A17446B6F00103A7F /* Debug */,
@@ -1376,7 +2370,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		21B8489117446B7A00103A7F /* Build configuration list for PBXNativeTarget "o_difference" */ = {
+		21B8489117446B7A00103A7F /* Build configuration list for PBXNativeTarget "odifference" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				21B8489217446B7A00103A7F /* Debug */,
@@ -1394,7 +2388,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		21CA080D17346FD6003F5B84 /* Build configuration list for PBXNativeTarget "o_expr" */ = {
+		21CA080D17346FD6003F5B84 /* Build configuration list for PBXNativeTarget "oexpr" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				21CA080E17346FD6003F5B84 /* Debug */,

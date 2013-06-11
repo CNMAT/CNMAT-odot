@@ -46,6 +46,7 @@ VERSION 1.1: renamed o.pack (from o.build)
 #ifdef OMAX_PD_VERSION
 #include "m_pd.h"
 #include "omax_pd_proxy.h"
+#define proxy_getinlet(x) (((t_opack *)(x))->inlet)
 #else
 #include "ext.h"
 #include "ext_obex.h"
@@ -79,8 +80,12 @@ typedef struct _opack{
 	char **inlet_assist_strings;
 } t_opack;
 
+#ifdef OMAX_PD_VERSION
 t_omax_pd_proxy_class *opack_class;
 t_omax_pd_proxy_class *opack_proxy_class;
+#else
+void *opack_class;
+#endif
 
 void opack_outputBundle(t_opack *x);
 int opack_checkPosAndResize(char *buf, int len, char *pos);
@@ -88,12 +93,10 @@ void opack_anything(t_opack *x, t_symbol *msg, short argc, t_atom *argv);
 
 void opack_fullPacket(t_opack *x, t_symbol *msg, int argc, t_atom *argv)
 {
-    post("yes fullpacket");
 	OMAX_UTIL_GET_LEN_AND_PTR
 	critical_enter(x->lock);
 	osc_bundle_s_wrap_naked_message(len, ptr);
 	int inlet = proxy_getinlet((t_object *)x);
-            post("fullpacket inlet %i", inlet);
 	osc_message_u_clearArgs(x->messages[inlet]);
 	osc_message_u_appendBndl(x->messages[inlet], len, ptr);
 	critical_exit(x->lock);
@@ -132,6 +135,9 @@ void opack_doAnything(t_opack *x, t_symbol *msg, short argc, t_atom *argv, int s
 		osc_message_u_appendString(x->messages[messagenum], msg->s_name);
 	}
 	int i;
+#ifdef OMAX_PD_VERSION
+    t_symbol *sym;
+#endif
 	for(i = 0; i < argc; i++){
 		switch(atom_gettype(argv + i)){
 		case A_FLOAT:
@@ -141,7 +147,15 @@ void opack_doAnything(t_opack *x, t_symbol *msg, short argc, t_atom *argv, int s
 			osc_message_u_appendInt32(x->messages[messagenum], atom_getlong(argv + i));
 			break;
 		case A_SYM:
-			osc_message_u_appendString(x->messages[messagenum], atom_getsym(argv + i)->s_name);
+#ifdef OMAX_PD_VERSION
+            sym = atom_getsym(argv + i);
+            char buf[ strlen(sym->s_name) ];
+            strcpy(buf, sym->s_name);
+            omax_util_hashBrackets2Curlies(buf);
+            osc_message_u_appendString(x->messages[messagenum], buf);
+#else
+            osc_message_u_appendString(x->messages[messagenum], atom_getsym(argv + i)->s_name);
+#endif
 			break;
 		}
 	}
@@ -155,7 +169,6 @@ void opack_anything(t_opack *x, t_symbol *msg, short argc, t_atom *argv)
 {
 	critical_enter(x->lock);
 	int inlet  = proxy_getinlet((t_object *)x);
-    post("anything inlet %i", inlet);
 	critical_exit(x->lock);
 	int shouldoutput = inlet == 0;
 #ifdef PAK
@@ -269,6 +282,7 @@ void opack_free(t_opack *x)
 }
 
 #ifdef OMAX_PD_VERSION
+
 void *opack_new(t_symbol *msg, short argc, t_atom *argv)
 {
 	t_opack *x;
@@ -289,19 +303,22 @@ void *opack_new(t_symbol *msg, short argc, t_atom *argv)
 			object_error((t_object *)x, "the first argument must be an OSC address");
 			return NULL;
 		}
-		if(atom_getsym(argv)->s_name[0] != '/' && atom_getsym(argv)->s_name[0] != '#'){
+		if(atom_getsym(argv)->s_name[0] != '/' && atom_getsym(argv)->s_name[0] != '$'){
 			object_error((t_object *)x, "the first argument must be an OSC string that begins with a slash (/)");
 			return NULL;
 		}
-        
+
 		t_atom *addresses[argc];
-		int numargs[argc];
+        t_atom subcurlies[argc];
+
+        char buf[4098];
+        int numargs[argc];
 		int count = 0;
 		int i;
 		for(i = 0; i < argc; i++){
 			numargs[i] = 0;
 			if(atom_gettype(argv + i) == A_SYM){
-				if(atom_getsym(argv + i)->s_name[0] == '/' || atom_getsym(argv + i)->s_name[0] == '#'){
+				if(atom_getsym(argv + i)->s_name[0] == '/' || atom_getsym(argv + i)->s_name[0] == '$'){
 					int j;
 					for(j = 0; j < count; j++){
 						if(atom_getsym(addresses[j]) == atom_getsym(argv + i)){
@@ -309,7 +326,11 @@ void *opack_new(t_symbol *msg, short argc, t_atom *argv)
 							return NULL;
 						}
 					}
-					addresses[count++] = argv + i;
+                    memset(buf, '\0', 4098);
+                    strcpy(buf, atom_getsymbol(argv + i)->s_name);
+                    omax_util_hashBrackets2Curlies(buf);
+                    atom_setsym(&subcurlies[i], gensym(buf));
+                    addresses[count++] = &subcurlies[i];
 				}else{
 					numargs[count - 1]++;
 				}
@@ -335,11 +356,9 @@ void *opack_new(t_symbol *msg, short argc, t_atom *argv)
 			osc_bundle_u_addMsg(x->bndl, x->messages[i]);
 		}
         
-        
 		x->proxy = (void **)malloc(count * sizeof(t_omax_pd_proxy *));
         for(i = 0; i < count; i++){
 			x->proxy[i] = proxy_new((t_object *)x, i, &(x->inlet), opack_proxy_class);
-            post("%p", x->proxy[i]);
 		}
 
 		x->outlet = outlet_new(&x->ob, gensym("FullPacket"));
@@ -351,31 +370,28 @@ void *opack_new(t_symbol *msg, short argc, t_atom *argv)
 
 
 #ifdef PAK
-int o_pak_setup(void)
+int opak_setup(void)
 {
-	t_symbol *name = gensym("o_pak");
+	t_symbol *name = gensym("opak");
 #else
-int o_pack_setup(void)
+int opack_setup(void)
 {
-	t_symbol *name = gensym("o_pack");
+	t_symbol *name = gensym("opack");
 #endif
 	omax_pd_class_new(opack_class, name, (t_newmethod)opack_new, (t_method)opack_free, sizeof(t_opack),  CLASS_NOINLET, A_GIMME, 0);
 
     t_omax_pd_proxy_class *c = NULL;
 	omax_pd_class_new(c, NULL, NULL, NULL, sizeof(t_omax_pd_proxy), CLASS_PD | CLASS_NOINLET, 0);
     
+    omax_pd_class_addmethod(c, (t_method)odot_version, gensym("version"));
 	omax_pd_class_addmethod(c, (t_method)opack_list, gensym("list"));
 	omax_pd_class_addmethod(c, (t_method)opack_set, gensym("set"));
 	omax_pd_class_addmethod(c, (t_method)opack_fullPacket, gensym("FullPacket"));
 	omax_pd_class_addanything(c, (t_method)opack_anything);
 	omax_pd_class_addfloat(c, (t_method)opack_float);
 	omax_pd_class_addbang(c, (t_method)opack_bang);
-	
-    /*
-	class_addmethod(opack_class->class, (t_method)odot_version, gensym("version"), 0);
-	class_addmethod(opack_class->class, (t_method)opack_doc, gensym("doc"), 0);
-*/
-        
+//	omax_pd_class_addmethod(c, (t_method)opack_doc, gensym("doc")); //<<crashes
+
 	opack_proxy_class = c;
     
 	ODOT_PRINT_VERSION;
