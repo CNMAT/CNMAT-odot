@@ -1,7 +1,12 @@
 #ifndef __ODOT_VERSION_H__
 #define __ODOT_VERSION_H__
 
+#ifdef OMAX_PD_VERSION
+#include "m_pd.h"
+#else
 #include "ext.h"
+#endif
+
 #include "odot_current_version.h"
 #include "report_compiler.h"
 //#define ODOT_VERSION "1.2.11" 

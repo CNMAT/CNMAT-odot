@@ -38,7 +38,11 @@
 #endif
 
 #if !defined(OCOND) && !defined(OWHEN) && !defined(OIF) && !defined(OUNLESS)
+#ifdef OMAX_PD_VERSION
+#define OMAX_DOC_NAME "oexpr"
+#else
 #define OMAX_DOC_NAME "o.expr"
+#endif
 #define OMAX_DOC_SHORT_DESC "Evaluate a C-like expression containing OSC addresses."
 #define OMAX_DOC_LONG_DESC "When it reveives a packet, o.expr substitutes any OSC addresses contained in the expression for the values to which they are bound in the incoming packet.  The expression is then evaluated and the resulting bundle, containing any side effects of the expression, is output."
 #define OMAX_DOC_INLETS_DESC (char *[]){"OSC packet containing addresses that the expression will be applied to."}
@@ -58,10 +62,17 @@
 #include <mach/mach.h>
 #include <mach/mach_time.h>
 #endif
+
+#ifdef OMAX_PD_VERSION
+#include "m_pd.h"
+#else
 #include "ext.h"
 #include "ext_obex.h"
 #include "ext_obex_util.h"
-//#include "jpatcher_api.h" 
+#include "ext_critical.h"
+#endif
+
+//#include "jpatcher_api.h"
 //#include "jgraphics.h"
 #include "osc.h"
 #include "osc_expr.h"
@@ -77,6 +88,8 @@
 
 //#define __OSC_PROFILE__
 #include "osc_profile.h"
+
+#include "o.h"
 
 typedef struct _oexpr{
 	t_object ob;
@@ -320,7 +333,9 @@ void oexpr_bang(t_oexpr *x)
 	oexpr_fullPacket(x, NULL, 2, a);
 }
 
+#ifndef OMAX_PD_VERSION
 OMAX_DICT_DICTIONARY(t_oexpr, x, oexpr_fullPacket);
+#endif
 
 void oexpr_doc_cat(t_oexpr *x, t_symbol *msg, int argc, t_atom *argv)
 {
@@ -394,6 +409,7 @@ void oexpr_doc(t_oexpr *x)
 #endif
 }
 
+#ifndef OMAX_PD_VERSION
 void oexpr_assist(t_oexpr *x, void *b, long io, long num, char *buf){
 #ifdef OCOND
 	_omax_doc_assist(io, num, buf, OMAX_DOC_NINLETS, OMAX_DOC_INLETS_DESC, x->num_exprs + 1, x->outlets_desc);
@@ -401,6 +417,8 @@ void oexpr_assist(t_oexpr *x, void *b, long io, long num, char *buf){
 	omax_doc_assist(io, num, buf);
 #endif
 }
+
+#endif
 
 void oexpr_free(t_oexpr *x){
 	if(x->expr){
@@ -411,7 +429,7 @@ void oexpr_free(t_oexpr *x){
 		free(x->outlets);
 	}
 #endif
-#ifdef OCOND
+#if defined (OCOND) && !defined (OMAX_PD_VERSION)
 	int i;
 	for(i = 0; i < x->num_exprs; i++){
 		if(x->outlets_desc[i]){
@@ -422,6 +440,7 @@ void oexpr_free(t_oexpr *x){
 #endif
 }
 
+#ifndef OMAX_PD_VERSION
 t_max_err oexpr_notify(t_oexpr *x, t_symbol *s, t_symbol *msg, void *sender, void *data){
 	return MAX_ERR_NONE;
 	t_symbol *attrname;
@@ -431,7 +450,160 @@ t_max_err oexpr_notify(t_oexpr *x, t_symbol *s, t_symbol *msg, void *sender, voi
 	}
 	return MAX_ERR_NONE;
 }
+#endif
 
+#ifdef OMAX_PD_VERSION
+void *oexpr_new(t_symbol *msg, short argc, t_atom *argv){
+	t_oexpr *x;
+	if((x = (t_oexpr *)object_alloc(oexpr_class))){
+		t_osc_expr *f = NULL;
+		if(argc){
+			char buf[65536];
+			memset(buf, '\0', sizeof(buf));
+			char *ptr = buf;
+			int i;
+			for(i = 0; i < argc; i++){
+				switch(atom_gettype(argv + i)){
+                    case A_LONG:
+                        ptr += sprintf(ptr, "%ld ", atom_getlong(argv + i));
+                        break;
+                    case A_FLOAT:
+                        ptr += sprintf(ptr, "%f ", atom_getfloat(argv + i));
+                        break;
+                    case A_SYM:
+					{
+						char *s = atom_getsym(argv + i)->s_name;
+						int len = strlen(s); // null byte
+						int j;
+						for(j = 0; j < len; j++){
+							if(s[j] == '#'){
+								if((j + 1) < len){
+									if((s[j + 1] <= 47 || s[j + 1] >= 58)){
+										object_error((t_object *)x, "address can't contain a #");
+										return NULL;
+									}
+									ptr += sprintf(ptr, "/_%d_", s[j + 1] - 48);
+									j++;
+								}else{
+									object_error((t_object *)x, "address can't contain a #");
+									return NULL;
+								}
+							}else{
+								*ptr++ = s[j];
+							}
+						}
+						*ptr++ = ' ';
+					}
+                        break;
+				}
+			}
+			if(1){//if(!haspound){
+//				OSC_PROFILE_TIMER_START(foo);
+				int ret = osc_expr_parser_parseExpr(buf, &f);
+//				OSC_PROFILE_TIMER_STOP(foo);
+//				OSC_PROFILE_TIMER_PRINTF(foo);
+//				OSC_PROFILE_TIMER_SNPRINTF(foo, buff);
+#ifdef __OSC_PROFILE__
+				post("%s\n", buff);
+#endif
+				if(!f || ret){
+					object_error((t_object *)x, "error parsing %s\n", buf);
+					return NULL;
+				}
+				x->expr = f;
+			}else{
+				x->expr = NULL;
+			}
+		}
+        
+		int n = 0;
+		while(f){
+			n++;
+			f = osc_expr_next(f);
+		}
+        
+#if defined (OIF)
+		if(n == 0 || n > 1){
+			object_error((t_object *)x, "invalid number of expressions: %d", n);
+			return NULL;
+		}
+		x->outlets = osc_mem_alloc(2 * sizeof(void *));
+        x->outlets[0] = outlet_new(&x->ob, gensym("FullPacket"));
+		x->outlets[1] = outlet_new(&x->ob, gensym("FullPacket"));
+#elif defined (OUNLESS) || defined (OWHEN)
+		if(n == 0 || n > 1){
+			object_error((t_object *)x, "invalid number of expressions: %d", n);
+			return NULL;
+		}
+		x->outlet = outlet_new(&x->ob, gensym("FullPacket"));
+#elif defined (OCOND)
+		x->num_exprs = n;
+		// implicit 't' as the last condition
+		x->outlets = osc_mem_alloc((n + 1) * sizeof(void *));
+		int i;
+		for(i = 0; i <= n; i++){ 
+			x->outlets[i] = outlet_new(&x->ob, gensym("FullPacket"));;
+		}
+        /*
+		x->outlets_desc = (char **)osc_mem_alloc((x->num_exprs + 1) * sizeof(char *));
+		for(i = 0; i < x->num_exprs; i++){
+			x->outlets_desc[i] = (char *)osc_mem_alloc(128);
+			sprintf(x->outlets_desc[i], "Input OSC packet if expression %d returns true or non-zero", i+1);
+		}
+		x->outlets_desc[x->num_exprs] = (char *)osc_mem_alloc(128);
+		sprintf(x->outlets_desc[x->num_exprs], "Input OSC packet if all expressions return false or zero");
+         */
+#else
+		x->outlet = outlet_new(&x->ob, gensym("FullPacket"));
+#endif
+	}
+    
+	return x;
+}
+
+#if defined (OIF)
+int o_if_setup(void)
+#elif defined (OUNLESS)
+int o_unless_setup(void)
+#elif defined (OWHEN)
+int o_when_setup(void)
+#elif defined (OCOND)
+int o_cond_setup(void)
+#else
+int o_expr_setup(void)
+#endif
+{
+	t_class *c = class_new(gensym(NAME), (t_newmethod)oexpr_new, (t_method)oexpr_free, sizeof(t_oexpr), 0L, A_GIMME, 0);
+    
+
+	class_addmethod(c, (t_method)oexpr_fullPacket, gensym("FullPacket"), A_GIMME, 0);
+//	class_addmethod(c, (t_method)oexpr_assist, gensym("assist"), A_CANT, 0);
+	class_addmethod(c, (t_method)oexpr_bang, gensym("bang"), 0);
+    
+	class_addmethod(c, (t_method)oexpr_postExprIR, gensym("post-expr-ir"), 0);
+
+	class_addmethod(c, (t_method)oexpr_doc, gensym("doc"), 0);
+	class_addmethod(c, (t_method)oexpr_doc_func, gensym("doc-func"), A_GIMME, 0);
+	class_addmethod(c, (t_method)oexpr_doc_func, gensym("doc-function"), A_GIMME, 0);
+	class_addmethod(c, (t_method)oexpr_doc_cat, gensym("doc-cat"), A_GIMME, 0);
+	class_addmethod(c, (t_method)oexpr_doc_cat, gensym("doc-category"), A_GIMME, 0);
+
+
+    
+	class_addmethod(c, (t_method)odot_version, gensym("version"), 0);
+    
+	oexpr_class = c;
+    
+//	common_symbols_init();
+    
+//	osc_error_setHandler(omax_util_liboErrorHandler);
+    
+	ODOT_PRINT_VERSION;
+    
+	return 0;
+}
+
+#else
 void *oexpr_new(t_symbol *msg, short argc, t_atom *argv){
 	t_oexpr *x;
 	if((x = (t_oexpr *)object_alloc(oexpr_class))){
@@ -575,3 +747,4 @@ int main(void)
 	return 0;
 }
 
+#endif
