@@ -140,9 +140,10 @@ void omax_util_hashBrackets2Curlies(char *s)
     
 }
 
-void omax_util_curlies2hashBrackets(char *str)
+void omax_util_curlies2hashBrackets(char **ptr)
 {
     
+    char *str = (*ptr);
     int i, j = 0;
     int len = strlen(str);
     char buf[len * 2]; //<< max possible size with every character being a { or }
@@ -165,8 +166,8 @@ void omax_util_curlies2hashBrackets(char *str)
     }
     if(j != i)
     {
-        osc_mem_resize(str, sizeof(char) * j);
-        strcpy(str, buf);
+        *ptr = (char *)osc_mem_resize(*ptr, sizeof(char) * j);
+        strcpy(*ptr, buf);
     }
 }
 
@@ -177,10 +178,10 @@ void printargs(int argc, t_atom *argv)
     {
         switch ((argv+i)->a_type) {
             case A_FLOAT:
-                post("%s argv[%d] %f", __func__, i, atom_getfloat(argv+i));
+                post("%s A_FLOAT argv[%d] %f", __func__, i, atom_getfloat(argv+i));
                 break;
             case A_SYMBOL:
-                post("%s argv[%d] %s", __func__, i, atom_getsymbol(argv+i)->s_name);
+                post("%s A_SYMBOL argv[%d] %s", __func__, i, atom_getsymbol(argv+i)->s_name);
                 break;
             default:
                 break;
