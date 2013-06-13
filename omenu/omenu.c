@@ -394,9 +394,8 @@ void omenu_addItem(t_omenu *x, int id, char *str)
 
     sys_vgui("bind %s <FocusOut> {+pdsend {%s focusout }}\n", x->m_id, x->receive_name->s_name);
     sys_vgui("bind %s <Leave> {+pdsend {%s focusout } }\n", x->m_id, x->receive_name->s_name);
-
-    sys_vgui("wm geometry %s %dx%d+%d+%d  \n", x->m_id, x->m_width, x->m_height+10, wx1, wy1);
-
+    
+    sys_vgui("wm geometry %s %dx%d+[expr %d - int([%s canvasx 0])]+[expr %d - int([%s canvasy 0])]  \n", x->m_id, x->m_width, x->m_height+10, wx1, x->canvas_id, wy1, x->canvas_id);
 }
 
 
@@ -427,7 +426,6 @@ static int omenu_click(t_gobj *z, t_glist *glist, int xpix, int ypix, int shift,
 
 void omenu_vis(t_gobj *z, t_glist *glist, int flag)
 {
-    post("%s %d", __func__, flag);
 
     if(flag)
     {
