@@ -1285,7 +1285,8 @@ void omessage_outsideclick_callback(t_omessage *x)
     x->c_bind = 0;
     
     sys_vgui("bind %s <Button-1> $::%s::canvas%lxBUTTONBINDING\n", x->canvas_id, x->tcl_namespace, glist_getcanvas(x->glist));
-    
+    sys_vgui("bind %s <MouseWheel> $::%s::canvas%lxSCROLLBINDING \n", x->canvas_id,x->tcl_namespace, glist_getcanvas(x->glist) );
+
     sys_vgui("focus %s\n", x->canvas_id);
     gobj_select((t_gobj *)x, x->glist, 0); //    omessage_storeTextAndExitEditor(x); called from select function
 
@@ -1304,8 +1305,14 @@ void omessage_pdnofocus_callback(t_omessage *x)
     x->c_bind = 0;
 
     sys_vgui("bind %s <Button-1> $::%s::canvas%lxBUTTONBINDING\n", x->canvas_id, x->tcl_namespace, glist_getcanvas(x->glist));
-    
+    sys_vgui("bind %s <MouseWheel> $::%s::canvas%lxSCROLLBINDING \n", x->canvas_id,x->tcl_namespace, glist_getcanvas(x->glist) );
+
     gobj_select((t_gobj *)x, x->glist, 0);
+}
+
+void omessage_mousewheel_callback(t_omessage *x)
+{
+    omessage_pdnofocus_callback(x);
 }
 
 void omessage_keyup_callback(t_omessage *x, t_symbol *s, int argc, t_atom *argv)
@@ -1402,6 +1409,7 @@ void omessage_bind_text_events(t_omessage *x)
     {
 //        post("%p %s no bind", x, __func__);
         sys_vgui("bind %s <Button-1> {+pdsend {%s outsideclick }}\n", x->canvas_id, x->receive_name->s_name);
+        sys_vgui("bind %s <MouseWheel> {+pdsend {%s mousewheel %%D }}\n", x->canvas_id, x->receive_name->s_name);
         
         x->c_bind = 1;
     }
@@ -1428,11 +1436,6 @@ void omessage_storeTextAndExitEditorTick(t_omessage *x)
 void omessage_storeTextAndExitEditor(t_omessage *x)
 {
     if(x->textediting){
-        //        sys_vgui("::pdwindow::post [split [string2hex [%s get 0.0 end]] {}]\n", x->text_id);
-        
-        //        sys_vgui("pdsend \"%s textbuf hex [string2hex [%s get 0.0 end]] \"\n", x->receive_name->s_name, x->text_id); //sendchunks
-//        post("%p pdsend \"%s textbuf hex [sendchunks [%s get 0.0 end]] \"\n", x, x->receive_name->s_name, x->text_id); //sendchunks
-        
         sys_vgui("sendchunks [%s get 0.0 end] %s \n", x->text_id, x->receive_name->s_name ); //sendchunks
         //receive happens on next tick
     }
@@ -1441,8 +1444,10 @@ void omessage_storeTextAndExitEditor(t_omessage *x)
 
 void omessage_getTextAndCreateEditor(t_omessage *x, int firsttime)
 {
-    int x1 = text_xpix(&x->ob, x->glist);
-    int y1 = text_ypix(&x->ob, x->glist);
+    int x1 = x->ob.te_xpix;
+    int y1 = x->ob.te_ypix;
+    
+//    post("%s %d %d", __func__, x1, y1);
     
     if(firsttime)
     {
@@ -1450,8 +1455,14 @@ void omessage_getTextAndCreateEditor(t_omessage *x, int firsttime)
         glist_noselect(x->glist);
         sys_vgui("%s itemconfigure text%lx -fill white \n", x->canvas_id, (long)x);
         sys_vgui("text %s -font {{%s} %d %s} -undo true -fg \"black\" -bg #f8f8f6 -takefocus 1 -state normal -highlightthickness 0 -wrap word\n", x->text_id, sys_font, glist_getfont(x->glist), sys_fontweight );
-        sys_vgui("place %s -x [expr %d - [expr [lindex [%s xview] 0] * [lindex [%s cget -scrollregion ] 2]]] -y [expr %d - [expr [lindex [%s yview] 0] * [lindex [%s cget -scrollregion ] 3]]] -width %d -height %d\n", x->text_id, x1+4, x->canvas_id, x->canvas_id, y1+4, x->canvas_id, x->canvas_id, x->width-10, x->height-10);
         
+        sys_vgui("place %s -x [expr %d - [%s canvasx 0]] -y [expr %d - [%s canvasy 0]] -width %d -height %d\n", x->text_id, x1+4, x->canvas_id, y1+4, x->canvas_id, x->width-10, x->height-10);
+        
+       
+//        sys_vgui("::pdwindow::post \"checkexpr [expr %d + [expr [lindex [%s xview] 0] * [expr [expr 1 / [expr [lindex [%s xview] 1] - [lindex [%s xview] 0]]] * [winfo width %s]]]] \n\"\n", x->ob.te_xpix, x->canvas_id, x->canvas_id, x->canvas_id, x->canvas_id);
+
+//        sys_vgui("::pdwindow::post \"scrollivew [%s cget -scrollregion ] \n\"\n",  x->canvas_id);
+
         if(x->tk_text)
             sys_vgui("%s insert 1.0 [subst -nobackslash -nocommands -novariables [regsub -all -line {^[ \t]+|[ \t]+$}  {%s} \"\" ]] \n", x->text_id, x->tk_text);
         
@@ -1557,7 +1568,8 @@ void omessage_drawElements(t_omessage *x, t_glist *glist, int width2, int height
         {
             sys_vgui("namespace eval ::%s [list set canvas%lxBUTTONBINDING [bind %s <Button-1>]] \n", x->tcl_namespace, glist_getcanvas(x->glist), x->canvas_id);
             sys_vgui("namespace eval ::%s [list set canvas%lxKEYBINDING [bind %s <Key>]] \n", x->tcl_namespace, glist_getcanvas(x->glist), x->canvas_id);
-            
+            sys_vgui("namespace eval ::%s [list set canvas%lxSCROLLBINDING [bind %s <MouseWheel>]] \n", x->tcl_namespace, glist_getcanvas(x->glist), x->canvas_id);
+
             //border
             sys_vgui("%s create rectangle %d %d %d %d -outline #f8f8f6 -fill #f8f8f6 -tags [list %s msg]\n",x->canvas_id, x1, y1, x2, y2, x->border_tag);
             
@@ -1568,7 +1580,7 @@ void omessage_drawElements(t_omessage *x, t_glist *glist, int width2, int height
             //handle
             sys_vgui("canvas %s -width 5 -height 5 \n", x->handle_id);
             sys_vgui("%s create rectangle %d %d %d %d -outline \"blue\" -fill \"blue\" -tags %lxHANDLE \n",x->handle_id, 0, 0, 5, 5, (long)x);
-            sys_vgui("place %s -x %d -y %d -width %d -height %d\n", x->handle_id, x2-5, y2-5, 5, 5);
+            sys_vgui("place %s -x [expr %d - [%s canvasx 0]] -y [expr %d - [%s canvasy 0]] -width %d -height %d\n", x->handle_id, x2-5, x->canvas_id, y2-5, x->canvas_id, 5, 5);
             sys_vgui("bind %s <Button-1> {+pdsend {%s resize_mousedown}} \n", x->handle_id, x->receive_name->s_name );
             sys_vgui("bind %s <Motion> {+pdsend {%s resize_mousemove %%x %%y }} \n", x->handle_id, x->receive_name->s_name );
             sys_vgui("bind %s <ButtonRelease-1> {+pdsend {%s resize_mouseup }} \n", x->handle_id, x->receive_name->s_name );
@@ -1591,11 +1603,12 @@ void omessage_drawElements(t_omessage *x, t_glist *glist, int width2, int height
             
             if (!x->mouseDown)
             {
-                sys_vgui("place %s -x [expr %d - [expr [lindex [%s xview] 0] * [lindex [%s cget -scrollregion ] 2]]] -y [expr %d - [expr [lindex [%s yview] 0] * [lindex [%s cget -scrollregion ] 3]]] -width %d -height %d\n", x->handle_id, x2-5, x->canvas_id, x->canvas_id, y2-5, x->canvas_id, x->canvas_id, 5, 5);
+                sys_vgui("place %s -x [expr %d - [%s canvasx 0]] -y [expr %d - [%s canvasy 0]] -width %d -height %d\n", x->handle_id, x2-5, x->canvas_id, y2-5, x->canvas_id, 5, 5);
+
             }
             if (x->textediting)
             {
-                sys_vgui("place %s -x [expr %d - [expr [lindex [%s xview] 0] * [lindex [%s cget -scrollregion ] 2]]] -y [expr %d - [expr [lindex [%s yview] 0] * [lindex [%s cget -scrollregion ] 3]]] -width %d -height %d\n", x->text_id, x1+4, x->canvas_id, x->canvas_id, y1+4, x->canvas_id, x->canvas_id, x->width-10, x->height-10);
+                sys_vgui("place %s -x [expr %d - [%s canvasx 0]] -y [expr %d - [%s canvasy 0]] -width %d -height %d\n", x->text_id, x1+4, x->canvas_id, y1+4, x->canvas_id, x->width-10, x->height-10);
             }
             
             if (x->tk_text)
@@ -1660,13 +1673,20 @@ static void omessage_displace(t_gobj *z, t_glist *glist,int dx, int dy)
     
     t_omessage *x = (t_omessage *)z;
     
-//    post("%s %s %s %s", x->receive_name->s_name, x->text_id, x->tcl_namespace, x->canvas_id);
     
     x->ob.te_xpix += dx;
     x->ob.te_ypix += dy;
+    //x->ob.te_xpix = x->ob.te_xpix < 0 ? 0 : x->ob.te_xpix;
+    //x->ob.te_ypix = x->ob.te_ypix < 0 ? 0 : x->ob.te_ypix;
+    
+//    post("%s %d %d\n", __func__, x->ob.te_xpix, x->ob.te_ypix);
+//    sys_vgui("::pdwindow::post \"width [winfo width %s] \n xview [%s xview]\n rootx [winfo rootx %s] \n canvasx [%s canvasx 0] \n\"\n", x->canvas_id, x->canvas_id, x->canvas_id, x->canvas_id  );
+//    sys_vgui("::pdwindow::post \"scrollivew [%s cget -scrollregion ] \n\"\n",  x->canvas_id);
+//    sys_vgui("::pdwindow::post \"check [expr [lindex [%s xview] 0] * [expr [expr 1 / [expr [lindex [%s xview] 1] - [lindex [%s xview] 0]]] * [winfo width %s]]] \n\"\n",  x->canvas_id, x->canvas_id, x->canvas_id, x->canvas_id); //[expr %d - [%s canvasx 0] + x->ob.te_xpix,
+
+    
     int x2 = x->ob.te_xpix+x->width;
     int y2 = x->ob.te_ypix+x->height;
-    
     
     sys_vgui("%s move %s %d %d\n", x->canvas_id, x->border_tag, dx, dy);
     sys_vgui("%s move %s %d %d\n", x->canvas_id, x->corner_tag, dx, dy);
@@ -1674,13 +1694,12 @@ static void omessage_displace(t_gobj *z, t_glist *glist,int dx, int dy)
     sys_vgui("%s move text%lx %d %d\n", x->canvas_id, (long)x, dx, dy);
     
     if (!x->mouseDown)
-        sys_vgui("place %s -x %d -y %d -width %d -height %d\n", x->handle_id, x2-5, y2-5, 5, 5);
-    
-    // post("%s %d", __func__, x->textediting);
+        sys_vgui("place %s -x [expr %d - [%s canvasx 0]] -y [expr %d - [%s canvasy 0]] -width %d -height %d\n", x->handle_id, x2-5, x->canvas_id, y2-5, x->canvas_id, 5, 5);
     
     if(x->textediting)
     {
-        sys_vgui("place %s -x %d -y %d -width %d -height %d\n", x->text_id, x->ob.te_xpix+4, x->ob.te_ypix+4, x->width-10, x->height-10);
+        sys_vgui("place %s -x [expr %d - [%s canvasx 0]] -y [expr %d - [%s canvasy 0]] -width %d -height %d\n", x->text_id, x->ob.te_xpix+4, x->canvas_id, x->ob.te_ypix+4, x->canvas_id, x->width-10, x->height-10);
+        //sys_vgui("place %s -x %d -y %d -width %d -height %d\n", x->text_id, x->ob.te_xpix+4, x->ob.te_ypix+4, x->width-10, x->height-10);
         
     }
     
@@ -1691,44 +1710,6 @@ static void omessage_displace(t_gobj *z, t_glist *glist,int dx, int dy)
     
     canvas_fixlinesfor(glist, &x->ob);
     
-    /*
-     if(glist_isvisible(glist))
-     {
-     t_canvas *canv = glist_getcanvas(glist);
-     x->ob.te_xpix += dx;
-     x->ob.te_xpix = (x->ob.te_xpix >= 0) ? x->ob.te_xpix : 0;
-     x->ob.te_xpix = (x->ob.te_xpix + x->width) <= canv->gl_screenx2 ? x->ob.te_xpix : x->ob.te_xpix - x->width;
-     
-     x->ob.te_ypix += dy;
-     x->ob.te_ypix = (x->ob.te_ypix >= 0) ? x->ob.te_ypix : 0;
-     x->ob.te_ypix = (x->ob.te_ypix + x->height) <= canv->gl_screeny2 ? x->ob.te_ypix : x->ob.te_ypix - x->height;
-     
-     int x2 = x->ob.te_xpix+x->width;
-     int y2 = x->ob.te_ypix+x->height;
-     
-     int cx2 = x2 - 2;
-     int cy2 = y2 - 2;
-     int c_width = x->width * 0.75;
-     int c_height = x->height * 0.75;
-     int c_linewidth = 0;
-     
-     sys_vgui("%s coords %s %d %d %d %d\n", x->canvas_id, x->border_tag, x->ob.te_xpix, x->ob.te_ypix, x2, y2);
-     sys_vgui("%s coords %s %d %d %d %d %d %d %d %d %d %d %d %d \n",x->canvas_id, x->corner_tag,
-     cx2-c_width, cy2, cx2, cy2, cx2, cy2-c_height, cx2-c_linewidth, cy2-c_height, cx2-c_linewidth, cy2-c_linewidth, cx2-c_width, cy2-c_linewidth);
-     
-     sys_vgui("place %s -x %d -y %d -width %d -height %d\n", x->handle_id, x2-5, y2-5, 5, 5);
-     
-     omessage_drawElements(x, glist, x->width, x->height, 0);
-     
-     if(x->textediting)
-     {
-     sys_vgui("place %s -x %d -y %d -width %d -height %d\n", x->text_id, x->ob.te_xpix+4, x->ob.te_ypix+4, x->width-10, x->height-10);
-     
-     }
-     
-     sys_vgui("%s move text%lx %d %d\n", x->canvas_id, (long)x, dx, dy);
-     
-     }*/
 }
 
 static void omessage_select(t_gobj *z, t_glist *glist, int state)
@@ -2114,6 +2095,7 @@ void omessage_setup(void) {
     class_addmethod(omessage_class->class, (t_method)omessage_resize_mousedown, gensym("resize_mousedown"), 0);
     class_addmethod(omessage_class->class, (t_method)omessage_resize_mousemove, gensym("resize_mousemove"), A_DEFFLOAT, A_DEFFLOAT, 0);
     class_addmethod(omessage_class->class, (t_method)omessage_resize_mouseup, gensym("resize_mouseup"), 0);
+    class_addmethod(omessage_class->class, (t_method)omessage_mousewheel_callback, gensym("mousewheel"), 0);
     
     class_addmethod(omessage_class->class, (t_method)omessage_setHeight, gensym("setheight"), A_DEFFLOAT, 0);
     
@@ -2335,10 +2317,6 @@ int main(void){
 
 /*  PD NOTES
 
- the current implementation sends gui information back to the object via the send/recieve routinue (tcl: pdsend)
- in a future version it woudl be possible to wrap our own binding in TK and so do most if not all of the gui adjustments
- straight in tcl/tk -- specifically for the height, when the text changes we want to resize the box, right now (for ease
- I have it sending it back to the setheight(), but if all the object's gui objects were referring to tcl variables it woudln't
- have to go back to C
+ still room for improvement on the handle placement, and cursor change in selection mode
 
 */
