@@ -1,0 +1,32 @@
+#N canvas 581 199 938 605 10;
+#X floatatom 154 215 5 0 0 0 - - -;
+#X floatatom 161 23 5 0 0 0 - - -;
+#X floatatom 230 216 5 0 0 0 - - -;
+#X floatatom 391 28 5 0 0 0 - - -;
+#X msg 391 55 5 4 \$1 paul 2;
+#X obj 340 274 omessage 207 23 hex 2F6C6973742031203220332034202261222022722220227322202274220A
+;
+#X obj 341 327 oexpr map(fn(l \, i)#[ assign("/listelem/" +i \, l)
+\; ]# \, /list \, aseq(1 \, length(/list)));
+#X obj 350 400 omessage 207 153 hex 2F6C697374203120322033203420226122202272222022732220227422200A2F6C697374656C656D2F312031200A2F6C697374656C656D2F322032200A2F6C697374656C656D2F332033200A2F6C697374656C656D2F342034200A2F6C697374656C656D2F3520226122200A2F6C697374656C656D2F3620227222200A2F6C697374656C656D2F3720227322200A2F6C697374656C656D2F382022742220
+;
+#X obj 161 76 opack /bar;
+#X obj 162 113 oexpr /foo = sin(/bar) \; /squid = /foo * 2;
+#X obj 162 151 oroute /foo /squid;
+#X obj 391 82 opack /squid;
+#X obj 391 109 oexpr /fish = [ /squid[[2]] \, steve ];
+#X obj 385 164 oprint;
+#X obj 567 272 omessage 207 23 hex 2F6C6973742031302039203820372036203520342033203220310A
+;
+#X connect 1 0 8 0;
+#X connect 3 0 4 0;
+#X connect 4 0 11 0;
+#X connect 5 0 6 0;
+#X connect 6 0 7 1;
+#X connect 8 0 9 0;
+#X connect 9 0 10 0;
+#X connect 10 0 0 0;
+#X connect 10 1 2 0;
+#X connect 11 0 12 0;
+#X connect 12 0 13 0;
+#X connect 14 0 6 0;
