@@ -390,7 +390,11 @@ void oroute_free(t_oroute *x)
 	if(x->proxy){
 		for(int i = 0; i < x->num_selectors; i++){
 			if(x->proxy[i]){
-				object_free(x->proxy[i]);
+#ifdef OMAX_PD_VERSION
+                free(x->proxy[i]);
+#else
+                object_free(x->proxy[i]);
+#endif
 			}
 		}
 		free(x->proxy);
@@ -511,7 +515,7 @@ void *oroute_new(t_symbol *msg, short argc, t_atom *argv)
         x->proxy = (void **)malloc(argc * sizeof(t_omax_pd_proxy *));
         
 		for(i = 0; i < argc; i++){
-			x->outlets[i] = outlet_new(&x->ob, NULL);
+			x->outlets[argc - i - 1] = outlet_new(&x->ob, NULL);
 			x->proxy[i] = proxy_new((t_object *)x, i, &(x->inlet), oroute_proxy_class);
 
 			if(atom_gettype(argv + i) != A_SYM){
@@ -524,7 +528,7 @@ void *oroute_new(t_symbol *msg, short argc, t_atom *argv)
 			if(len > x->nbytes_selector){
 				x->nbytes_selector = len;
 			}
-			x->selectors[i] = selector;
+			x->selectors[x->num_selectors - i - 1] = selector;
             
 		}
         
