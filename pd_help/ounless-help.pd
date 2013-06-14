@@ -1,0 +1,11 @@
+#N canvas 782 345 450 300 10;
+#X obj 128 166 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X floatatom 149 50 5 0 0 0 - - -;
+#X obj 151 83 opack /foo;
+#X obj 151 110 ounless /foo > 3;
+#X obj 151 165 oprint yes;
+#X connect 1 0 2 0;
+#X connect 2 0 3 0;
+#X connect 3 0 0 0;
+#X connect 3 0 4 0;
