@@ -1780,9 +1780,10 @@ static void omessage_activate(t_gobj *z, t_glist *glist, int state)
 static void omessage_delete(t_gobj *z, t_glist *glist)
 {
     t_omessage *x = (t_omessage *)z;
-    omessage_pdnofocus_callback(x);
+   // omessage_pdnofocus_callback(x);
     
     canvas_deletelinesfor(glist_getcanvas(glist), &x->ob);
+
     glist_eraseiofor(glist, &x->ob, x->iolets_tag);
     sys_vgui("%s delete %s\n", x->canvas_id, x->border_tag);
     sys_vgui("%s delete %s\n", x->canvas_id, x->corner_tag);
@@ -1793,7 +1794,7 @@ static void omessage_delete(t_gobj *z, t_glist *glist)
         sys_vgui("destroy %s\n", x->text_id);
     
     sys_vgui("destroy %s\n", x->handle_id);
-    
+
     
 }
 
@@ -1849,7 +1850,9 @@ static void omessage_save(t_gobj *z, t_binbuf *b)
     
     t_omessage *x = (t_omessage *)z;
     omessage_setHexFromText(x, x->text);
-    omessage_pdnofocus_callback(x);
+
+    if(!x->firsttime)
+        omessage_pdnofocus_callback(x);
     
     binbuf_addv(b, "ssiisiis", gensym("#X"),gensym("obj"),(t_int)x->ob.te_xpix, (t_int)x->ob.te_ypix, gensym("omessage"), x->width, x->height, gensym("hex"));
     
@@ -1881,6 +1884,7 @@ static void omessage_save(t_gobj *z, t_binbuf *b)
 void omessage_free(t_omessage *x)
 {
     free(x->text);
+    free(x->tk_text);
     free(x->hex);
     free(x->text_id);
     free(x->canvas_id);
@@ -1890,6 +1894,8 @@ void omessage_free(t_omessage *x)
     free(x->iolets_tag);
     free(x->handle_id);
     pd_unbind(&x->ob.ob_pd, x->receive_name);
+    free(x->receive_name);
+    
     clock_free(x->m_clock);
     
     
@@ -1966,7 +1972,7 @@ void *omessage_new(t_symbol *msg, short argc, t_atom *argv)
         x->canvas_id = NULL;
         x->canvas_id = (char *)malloc(sizeof(char) * (strlen(buf)+1));
         strcpy(x->canvas_id, buf);
-        
+                
         sprintf(buf, ".x%lx.t%lxTEXT", (long unsigned int)glist_getcanvas(x->glist), (long unsigned int)x);
         x->text_id = NULL;
         x->text_id = (char *)malloc(sizeof(char) * (strlen(buf)+1));
@@ -2002,7 +2008,7 @@ void *omessage_new(t_symbol *msg, short argc, t_atom *argv)
         x->receive_name = gensym(buf);
         pd_bind(&x->ob.ob_pd, x->receive_name);
         
-//        printargs(argc, argv);
+  //      printargs(argc, argv);
         
         x->width = 100;
         x->height = 10;
@@ -2017,7 +2023,7 @@ void *omessage_new(t_symbol *msg, short argc, t_atom *argv)
         {
             x->width = atom_getfloat(argv);
             x->height = atom_getfloat(argv+1);
-            if((argv+2)->a_type == A_SYMBOL && atom_getsymbol(argv+2) == gensym("hex"))
+            if(((argv+2)->a_type == A_SYMBOL) && (atom_getsymbol(argv+2) == gensym("hex")))
             {
                 omessage_textbuf(x, NULL, argc-2, (argv+2));
                 t_atom done[2];

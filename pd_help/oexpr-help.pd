@@ -1,9 +1,9 @@
-#N canvas 190 212 938 605 10;
-#X floatatom 154 215 5 0 0 0 - - -;
-#X floatatom 161 23 5 0 0 0 - - -;
-#X floatatom 230 216 5 0 0 0 - - -;
-#X floatatom 391 28 5 0 0 0 - - -;
-#X msg 391 55 5 4 \$1 paul 2;
+#N canvas 564 112 938 605 10;
+#X floatatom 58 425 5 0 0 0 - - -;
+#X floatatom 65 233 5 0 0 0 - - -;
+#X floatatom 134 426 5 0 0 0 - - -;
+#X floatatom 78 31 5 0 0 0 - - -;
+#X msg 78 58 5 4 \$1 paul 2;
 #X obj 340 274 omessage 207 23 hex 2F6C6973742031203220332034202261222022722220227322202274220A
 ;
 #X obj 341 327 oexpr map(fn(l \, i)#[ assign("/listelem/" +i \, l)
@@ -12,14 +12,15 @@
 6C697374656C656D2F312031200A2F6C697374656C656D2F322032200A2F6C69 7374656C656D2F332033200A2F6C697374656C656D2F342034200A2F6C697374
 656C656D2F3520226122200A2F6C697374656C656D2F3620227222200A2F6C69 7374656C656D2F3720227322200A2F6C697374656C656D2F382022742220
 ;
-#X obj 161 76 opack /bar;
-#X obj 162 113 oexpr /foo = sin(/bar) \; /squid = /foo * 2;
-#X obj 162 151 oroute /foo /squid;
-#X obj 391 82 opack /squid;
-#X obj 391 109 oexpr /fish = [ /squid[[2]] \, steve ];
-#X obj 385 164 oprint;
+#X obj 65 286 opack /bar;
+#X obj 66 323 oexpr /foo = sin(/bar) \; /squid = /foo * 2;
+#X obj 66 361 oroute /foo /squid;
+#X obj 78 85 opack /squid;
+#X obj 78 112 oexpr /fish = [ /squid[[2]] \, steve ];
+#X obj 78 167 oprint;
 #X obj 567 272 omessage 207 23 hex 2F6C6973742031302039203820372036203520342033203220310A
 ;
+#X obj 478 63 oexpr-functions;
 #X connect 1 0 8 0;
 #X connect 3 0 4 0;
 #X connect 4 0 11 0;

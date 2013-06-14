@@ -29,11 +29,15 @@
 #define OMAX_DOC_OUTLETS_DESC (char *[]){"Bundle if valid", "Bundle if invalid", "OSC bundle containing error messages"}
 #define OMAX_DOC_SEEALSO  (char *[]){}
 
-#include "o.h"
 #include "odot_version.h"
+#ifdef OMAX_PD_VERSION
+#include "m_pd.h"
+#else
 #include "ext.h"
 #include "ext_obex.h"
 #include "ext_obex_util.h"
+#include "omax_dict.h"
+#endif
 #include "osc.h"
 #include "osc_mem.h"
 #include "osc_serial.h"
@@ -42,7 +46,8 @@
 #include "osc_atom_u.h"
 #include "omax_util.h"
 #include "omax_doc.h"
-#include "omax_dict.h"
+#include "o.h"
+
 
 typedef struct _ovalidate{
 	t_object ob;
@@ -91,22 +96,55 @@ void ovalidate_fullPacket(t_ovalidate *x, t_symbol *msg, int argc, t_atom *argv)
 	omax_util_outletOSC(x->outletVal, len, ptr);
 }
 
-OMAX_DICT_DICTIONARY(t_ovalidate, x, ovalidate_fullPacket);
 
 void ovalidate_doc(t_ovalidate *x)
 {
 	omax_doc_outletDoc(x->outletVal);
 }
 
+#ifndef OMAX_PD_VERSION
+OMAX_DICT_DICTIONARY(t_ovalidate, x, ovalidate_fullPacket);
+
 void ovalidate_assist(t_ovalidate *x, void *b, long io, long num, char *buf)
 {
 	omax_doc_assist(io, num, buf);
 }
+#endif
 
 void ovalidate_free(t_ovalidate *x)
 {
 }
 
+#ifdef OMAX_PD_VERSION
+void *ovalidate_new(t_symbol *msg, short argc, t_atom *argv)
+{
+	t_ovalidate *x;
+	if((x = (t_ovalidate *)pd_new(ovalidate_class))){
+		x->outletErr = outlet_new((t_object *)x, gensym("FullPacket"));
+		x->outletInval = outlet_new((t_object *)x, gensym("FullPacket"));
+		x->outletVal = outlet_new((t_object *)x, gensym("FullPacket"));
+	}
+	return x;
+}
+
+int ovalidate_setup(void)
+{
+	t_class *c = class_new(gensym("ovalidate"), (t_newmethod)ovalidate_new, (t_method)ovalidate_free, sizeof(t_ovalidate), 0L, A_GIMME, 0);
+	//class_addmethod(c, (method)ovalidate_fullPacket, "FullPacket", A_LONG, A_LONG, 0);
+	class_addmethod(c, (t_method)ovalidate_fullPacket, gensym("FullPacket"), A_GIMME, 0);
+	class_addmethod(c, (t_method)ovalidate_doc, gensym("doc"), 0);
+	//class_addmethod(c, (method)ovalidate_bang, "bang", 0);
+	//class_addmethod(c, (method)ovalidate_anything, "anything", A_GIMME, 0);
+	// remove this if statement when we stop supporting Max 5
+    class_addmethod(c, (t_method)odot_version, gensym("version"), 0);
+    
+	ovalidate_class = c;
+        
+	ODOT_PRINT_VERSION;
+	return 0;
+}
+
+#else
 void *ovalidate_new(t_symbol *msg, short argc, t_atom *argv)
 {
 	t_ovalidate *x;
@@ -151,3 +189,4 @@ t_max_err ovalidate_notify(t_ovalidate *x, t_symbol *s, t_symbol *msg, void *sen
 	return MAX_ERR_NONE;
 }
 */
+#endif

@@ -50,6 +50,7 @@ typedef struct _omenu {
     int         selected;
     int         numitems;
     
+    char        *tcl_namespace;
     char        *canvas_id;
     char        *m_id;
     char        *m_canvas_id;
@@ -67,6 +68,7 @@ typedef struct _omenu {
 	
     int         displayvalues;
     
+    int         exists;
     void        **outlets;
 } t_omenu;
 
@@ -199,9 +201,14 @@ void omenu_setMenu(t_omenu *x)
         //            outlet_anything(outlet, address, natoms - 1, atoms + 1); //<< the rest of the data is in the atoms
     }
     osc_msg_it_s_destroy(it);
-    sys_vgui("%s itemconfigure mtext%s -text {%s\n} -fill black \n", x->canvas_id, x->button_tag, x->menu[0]);
-    sys_vgui("%s itemconfigure carrot%s -text v \n", x->canvas_id, x->button_tag);
+    
     x->numitems = count;
+
+    if(glist_isvisible(x->glist) && gobj_shouldvis(&x->ob.te_g, x->glist))
+    {
+        sys_vgui("%s itemconfigure mtext%s -text {%s\n} -fill black \n", x->canvas_id, x->button_tag, x->menu[0]);
+        sys_vgui("%s itemconfigure carrot%s -text v \n", x->canvas_id, x->button_tag);
+    }
    
 }
 
@@ -226,7 +233,6 @@ void omenu_fullPacket(t_omenu *x, t_symbol *msg, int argc, t_atom *argv)
         memcpy(x->bndl, ptr, len); //<< store bundle
         x->len = len;
         critical_exit(x->lock);
-        
         omenu_setMenu(x);
     }
 }
@@ -273,22 +279,24 @@ static void omenu_displace(t_gobj *z, t_glist *glist,int dx, int dy)
 static void omenu_delete(t_gobj *z, t_glist *glist)
 {
     t_omenu *x = (t_omenu *)z;
-    
-    canvas_deletelinesfor(glist, &x->ob);
-    glist_eraseiofor(glist, &x->ob, x->io_tag);
-    sys_vgui("destroy %s\n", x->m_id);
-    x->m_height = 0;
-    sys_vgui("%s delete mtext%s \n", x->canvas_id, x->button_tag);
-    sys_vgui("%s delete carrot%s \n", x->canvas_id, x->button_tag);
-    sys_vgui("%s delete %s \n", x->canvas_id, x->button_tag);
-    x->menuopen = 0;
+    post("%s %d", __func__, x->exists);
+
+        canvas_deletelinesfor(glist, &x->ob);
+    if(x->exists)
+    {
+        glist_eraseiofor(glist, &x->ob, x->io_tag);
+        x->m_height = 0;
+        sys_vgui("%s delete mtext%s \n", x->canvas_id, x->button_tag);
+        sys_vgui("%s delete carrot%s \n", x->canvas_id, x->button_tag);
+        sys_vgui("%s delete %s \n", x->canvas_id, x->button_tag);
+        sys_vgui("destroy %s\n", x->m_id);
+        x->menuopen = 0;
+    }
 }
 
 
 void omenu_dropdownFocusOut(t_omenu *x)
-{
-//    post("%s", __func__);
-    
+{    
     sys_vgui("destroy %s\n", x->m_id);
     x->m_height = 0;
     sys_vgui("%s itemconfigure carrot%s -text v \n", x->canvas_id, x->button_tag);
@@ -426,7 +434,8 @@ static int omenu_click(t_gobj *z, t_glist *glist, int xpix, int ypix, int shift,
 
 void omenu_vis(t_gobj *z, t_glist *glist, int flag)
 {
-
+    post("%s %d", __func__, flag);
+    
     if(flag)
     {
         t_omenu *x = (t_omenu *)z;
@@ -434,7 +443,9 @@ void omenu_vis(t_gobj *z, t_glist *glist, int flag)
     
         //store canvas binding for reset?
         omenu_getrect((t_gobj *)x, x->glist, &x1, &y1, &x2, &y2);
-        sys_vgui("%s create rectangle %d %d %d %d -tags %s \n", x->canvas_id, x1, y1, x2, y2, x->button_tag);
+        omenu_setMenu(x);
+        
+        sys_vgui("%s create rectangle %d %d %d %d -tags %s -fill #f8f8f6 \n", x->canvas_id, x1, y1, x2, y2, x->button_tag);
 
         sys_vgui("%s create text %d %d -anchor nw -width %d -font {{%s} %d %s} -tags mtext%s -text {%s\n} \n",
                  x->canvas_id, x1+6, y1+2, x->width-12, sys_font, glist_getfont(x->glist), sys_fontweight, x->button_tag, x->menu[0]);
@@ -446,8 +457,10 @@ void omenu_vis(t_gobj *z, t_glist *glist, int flag)
         glist_drawiofor(glist, &x->ob, 1, x->io_tag, x1, y1, x2, y2);
         canvas_fixlinesfor(glist, &x->ob);
 
+        x->exists = 1;
+
     } else {
-        omenu_delete(z, glist);
+      //  omenu_delete(z, glist);
     }
 }
 
@@ -467,6 +480,8 @@ static void omenu_save(t_gobj *z, t_binbuf *b)
 {
     
     t_omenu *x = (t_omenu *)z;
+    
+    
     binbuf_addv(b, "ssiis;", gensym("#X"),gensym("obj"), (t_int)x->ob.te_xpix, (t_int)x->ob.te_ypix, gensym("omenu"));    
 }
 
@@ -474,28 +489,34 @@ void omenu_setdisplymode(t_omenu *x, float t)
 {
 //    post("%s %f", __func__, t);
     x->displayvalues = (int)(t > 0);
-    omenu_setMenu(x);
+    if (glist_isvisible(x->glist) && gobj_shouldvis(&x->ob.te_g, x->glist))
+        omenu_setMenu(x);
 }
 
 void omenu_free(t_omenu *x)
 {
+    free(x->tcl_namespace);
     free(x->io_tag);
     free(x->button_tag);
     free(x->canvas_id);
     free(x->m_canvas_id);
     free(x->m_id);
     int i;
-    for( i = 0; i < 4098; i++)
+    for( i = 0; i < 4096; i++)
     {
         free(x->menu[i]);
     }
     free(x->menu);
 
     pd_unbind(&x->ob.ob_pd, x->receive_name);
+    free(x->receive_name);
     
     if(x->bndl){
 		osc_mem_free(x->bndl);
 	}
+    
+    free(x->outlets);
+    
 }
 
 
@@ -520,6 +541,7 @@ void *omenu_new(t_symbol *msg, short argc, t_atom *argv)
     for( i = 0; i < 4096; i++)
     {
         x->menu[i] = (char *)malloc(sizeof(char) * 4096);
+        memset(x->menu[i], '\0', 4096);
     }
     
     char buf[MAXPDSTRING];
@@ -528,11 +550,15 @@ void *omenu_new(t_symbol *msg, short argc, t_atom *argv)
     x->canvas_id = (char *)malloc(sizeof(char) * (strlen(buf)+1));
     strcpy(x->canvas_id, buf);
     
+    post("%s %s", __func__, x->canvas_id);
+    
     sprintf(buf, "%s.w%lxdropdown", x->canvas_id, (long)x);
+    x->m_id = NULL;
     x->m_id = (char *)malloc(sizeof(char) * (strlen(buf)+1));
     strcpy(x->m_id, buf);
 
     sprintf(buf, "%s.c%lxcanvas", x->m_id, (long)x);
+    x->m_canvas_id = NULL;
     x->m_canvas_id = (char *)malloc(sizeof(char) * (strlen(buf)+1));
     strcpy(x->m_canvas_id, buf);
     
@@ -542,10 +568,17 @@ void *omenu_new(t_symbol *msg, short argc, t_atom *argv)
     strcpy(x->button_tag, buf);
     
     sprintf(buf, "%lxomenuIO", (long)x);
+    x->io_tag = NULL;
     x->io_tag = (char *)malloc(sizeof(char) * (strlen(buf)+1));
     strcpy(x->io_tag, buf);
     
-    sprintf(buf, "omenu%lx", (long)x);
+    sprintf(buf,"omenu%lx",(long unsigned int)x);
+    x->tcl_namespace = NULL;
+    x->tcl_namespace = (char *)malloc(sizeof(char) * (strlen(buf)+1));
+    strcpy(x->tcl_namespace, buf);
+    
+    sprintf(buf, "#omenu%lx", (long)x);
+    x->receive_name= NULL;
     x->receive_name = gensym(buf);
     pd_bind(&x->ob.ob_pd, x->receive_name);
 
@@ -558,6 +591,8 @@ void *omenu_new(t_symbol *msg, short argc, t_atom *argv)
     x->buflen = 0;
     x->bndl = NULL;
 
+    x->exists = 0;
+    
     x->menuopen = 0;
     return (void *)x;
 }
