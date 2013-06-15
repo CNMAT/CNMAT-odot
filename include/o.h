@@ -140,10 +140,17 @@ void omax_util_hashBrackets2Curlies(char *s)
     
 }
 
-void omax_util_curlies2hashBrackets(char **ptr)
+void omax_util_curlies2hashBrackets(char **ptr, long bufsize)
 {
-    
+    printf("%s", __func__);
+
     char *str = (*ptr);
+    if(!str)
+    {
+        error("no string in buffer");
+        return;
+    }
+        
     int i, j = 0;
     int len = strlen(str);
     char buf[len * 2]; //<< max possible size with every character being a { or }
@@ -166,7 +173,8 @@ void omax_util_curlies2hashBrackets(char **ptr)
     }
     if(j != i)
     {
-        *ptr = (char *)osc_mem_resize(*ptr, sizeof(char) * j);
+        memset(*ptr, '\0', bufsize);
+//        *ptr = (char *)realloc(*ptr, sizeof(char) * j);
         strcpy(*ptr, buf);
     }
 }

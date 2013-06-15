@@ -58,7 +58,7 @@ typedef struct _omenu {
     char        *button_tag;
     char        *io_tag;
     
-    t_symbol    *receive_name;
+    char        *receive_name;
     
     char        *hex;
     
@@ -279,7 +279,7 @@ static void omenu_displace(t_gobj *z, t_glist *glist,int dx, int dy)
 static void omenu_delete(t_gobj *z, t_glist *glist)
 {
     t_omenu *x = (t_omenu *)z;
-    post("%s %d", __func__, x->exists);
+//    post("%s %d", __func__, x->exists);
 
         canvas_deletelinesfor(glist, &x->ob);
     if(x->exists)
@@ -397,11 +397,11 @@ void omenu_addItem(t_omenu *x, int id, char *str)
     sys_vgui("%s bind rect%s%d <Leave> {%s itemconfigure rect%s%d -fill white } \n",  x->m_canvas_id, x->button_tag, id, x->m_canvas_id, x->button_tag, id );
     sys_vgui("%s bind text%s%d <Leave> {%s itemconfigure rect%s%d -fill white } \n",  x->m_canvas_id, x->button_tag, id, x->m_canvas_id, x->button_tag, id );
 
-    sys_vgui("%s bind rect%s%d <Button-1> {+pdsend \"%s selection %d \"} \n",  x->m_canvas_id, x->button_tag, id, x->receive_name->s_name, id );
-    sys_vgui("%s bind text%s%d <Button-1> {+pdsend \"%s selection %d \"} \n",  x->m_canvas_id, x->button_tag, id, x->receive_name->s_name, id );
+    sys_vgui("%s bind rect%s%d <Button-1> {+pdsend \"%s selection %d \"} \n",  x->m_canvas_id, x->button_tag, id, x->receive_name, id );
+    sys_vgui("%s bind text%s%d <Button-1> {+pdsend \"%s selection %d \"} \n",  x->m_canvas_id, x->button_tag, id, x->receive_name, id );
 
-    sys_vgui("bind %s <FocusOut> {+pdsend {%s focusout }}\n", x->m_id, x->receive_name->s_name);
-    sys_vgui("bind %s <Leave> {+pdsend {%s focusout } }\n", x->m_id, x->receive_name->s_name);
+    sys_vgui("bind %s <FocusOut> {+pdsend {%s focusout }}\n", x->m_id, x->receive_name);
+    sys_vgui("bind %s <Leave> {+pdsend {%s focusout } }\n", x->m_id, x->receive_name);
     
     sys_vgui("wm geometry %s %dx%d+[expr %d - int([%s canvasx 0])]+[expr %d - int([%s canvasy 0])]  \n", x->m_id, x->m_width, x->m_height+10, wx1, x->canvas_id, wy1, x->canvas_id);
 }
@@ -434,7 +434,7 @@ static int omenu_click(t_gobj *z, t_glist *glist, int xpix, int ypix, int shift,
 
 void omenu_vis(t_gobj *z, t_glist *glist, int flag)
 {
-    post("%s %d", __func__, flag);
+//    post("%s %d", __func__, flag);
     
     if(flag)
     {
@@ -502,13 +502,13 @@ void omenu_free(t_omenu *x)
     free(x->m_canvas_id);
     free(x->m_id);
     int i;
-    for( i = 0; i < 4096; i++)
+    for( i = 0; i < 1024; i++)
     {
         free(x->menu[i]);
     }
     free(x->menu);
-
-    pd_unbind(&x->ob.ob_pd, x->receive_name);
+    
+    pd_unbind(&x->ob.ob_pd, gensym(x->receive_name));
     free(x->receive_name);
     
     if(x->bndl){
@@ -525,75 +525,78 @@ void *omenu_new(t_symbol *msg, short argc, t_atom *argv)
 {
     t_omenu *x = (t_omenu *)pd_new(omenu_class);
 
-    x->outlets = (void **)malloc(2 * sizeof(void *));
-    x->outlets[0] = outlet_new(&x->ob, NULL);
-    x->outlets[1] = outlet_new(&x->ob, NULL);
-    
-    x->glist = canvas_getcurrent();
-    
-    x->selected = -1;
-    x->numitems = 0;
-    
-    x->displayvalues = 0;
-    
-    x->menu = (char **)malloc(sizeof(char *) * 4096 );
-    int i;
-    for( i = 0; i < 4096; i++)
+    if(x)
     {
-        x->menu[i] = (char *)malloc(sizeof(char) * 4096);
-        memset(x->menu[i], '\0', 4096);
+        x->outlets = (void **)malloc(2 * sizeof(void *));
+        x->outlets[0] = outlet_new(&x->ob, NULL);
+        x->outlets[1] = outlet_new(&x->ob, NULL);
+        
+        x->glist = canvas_getcurrent();
+        
+        x->selected = -1;
+        x->numitems = 0;
+        
+        x->displayvalues = 0;
+        
+        x->menu = (char **)malloc(sizeof(char *) * 1024 );
+        int i;
+        for( i = 0; i < 1024; i++)
+        {
+            x->menu[i] = (char *)malloc(sizeof(char) * 4096);
+            memset(x->menu[i], '\0', 4096);
+        }
+        
+        char buf[MAXPDSTRING];
+        sprintf(buf,".x%lx.c", (long unsigned int)glist_getcanvas(x->glist));
+        x->canvas_id = NULL;
+        x->canvas_id = (char *)malloc(sizeof(char) * (strlen(buf)+1));
+        strcpy(x->canvas_id, buf);
+            
+        sprintf(buf, "%s.w%lxdropdown", x->canvas_id, (long)x);
+        x->m_id = NULL;
+        x->m_id = (char *)malloc(sizeof(char) * (strlen(buf)+1));
+        strcpy(x->m_id, buf);
+
+        sprintf(buf, "%s.c%lxcanvas", x->m_id, (long)x);
+        x->m_canvas_id = NULL;
+        x->m_canvas_id = (char *)malloc(sizeof(char) * (strlen(buf)+1));
+        strcpy(x->m_canvas_id, buf);
+        
+        sprintf(buf, "%lxomenu", (long unsigned int)x);
+        x->button_tag = NULL;
+        x->button_tag = (char *)malloc(sizeof(char) * (strlen(buf)+1));
+        strcpy(x->button_tag, buf);
+        
+        sprintf(buf, "%lxomenuIO", (long)x);
+        x->io_tag = NULL;
+        x->io_tag = (char *)malloc(sizeof(char) * (strlen(buf)+1));
+        strcpy(x->io_tag, buf);
+        
+        sprintf(buf,"omenu%lx",(long unsigned int)x);
+        x->tcl_namespace = NULL;
+        x->tcl_namespace = (char *)malloc(sizeof(char) * (strlen(buf)+1));
+        strcpy(x->tcl_namespace, buf);
+        
+        sprintf(buf, "#omenu%lx", (long)x);
+        x->receive_name = NULL;
+        x->receive_name = (char *)malloc(sizeof(char) * (strlen(buf)+1));
+        strcpy(x->receive_name, buf);
+
+        pd_bind(&x->ob.ob_pd, gensym(x->receive_name));
+
+        x->width = 100;
+        x->height = sys_fontheight(glist_getfont(x->glist)) + 4;
+        x->m_width = x->width;
+        x->m_height = 0;
+
+        x->len = 0;
+        x->buflen = 0;
+        x->bndl = NULL;
+
+        x->exists = 0;
+        
+        x->menuopen = 0;
     }
-    
-    char buf[MAXPDSTRING];
-    sprintf(buf,".x%lx.c", (long unsigned int)glist_getcanvas(x->glist));
-    x->canvas_id = NULL;
-    x->canvas_id = (char *)malloc(sizeof(char) * (strlen(buf)+1));
-    strcpy(x->canvas_id, buf);
-    
-    post("%s %s", __func__, x->canvas_id);
-    
-    sprintf(buf, "%s.w%lxdropdown", x->canvas_id, (long)x);
-    x->m_id = NULL;
-    x->m_id = (char *)malloc(sizeof(char) * (strlen(buf)+1));
-    strcpy(x->m_id, buf);
-
-    sprintf(buf, "%s.c%lxcanvas", x->m_id, (long)x);
-    x->m_canvas_id = NULL;
-    x->m_canvas_id = (char *)malloc(sizeof(char) * (strlen(buf)+1));
-    strcpy(x->m_canvas_id, buf);
-    
-    sprintf(buf, "%lxomenu", (long unsigned int)x);
-    x->button_tag = NULL;
-    x->button_tag = (char *)malloc(sizeof(char) * (strlen(buf)+1));
-    strcpy(x->button_tag, buf);
-    
-    sprintf(buf, "%lxomenuIO", (long)x);
-    x->io_tag = NULL;
-    x->io_tag = (char *)malloc(sizeof(char) * (strlen(buf)+1));
-    strcpy(x->io_tag, buf);
-    
-    sprintf(buf,"omenu%lx",(long unsigned int)x);
-    x->tcl_namespace = NULL;
-    x->tcl_namespace = (char *)malloc(sizeof(char) * (strlen(buf)+1));
-    strcpy(x->tcl_namespace, buf);
-    
-    sprintf(buf, "#omenu%lx", (long)x);
-    x->receive_name= NULL;
-    x->receive_name = gensym(buf);
-    pd_bind(&x->ob.ob_pd, x->receive_name);
-
-    x->width = 100;
-    x->height = sys_fontheight(glist_getfont(x->glist)) + 4;
-    x->m_width = x->width;
-    x->m_height = 0;
-
-    x->len = 0;
-    x->buflen = 0;
-    x->bndl = NULL;
-
-    x->exists = 0;
-    
-    x->menuopen = 0;
     return (void *)x;
 }
 

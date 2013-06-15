@@ -425,8 +425,6 @@ void oroute_free(t_oroute *x)
 	}
 #endif
    
-    free(x->proxy);    
-    free(x->outlets);
 }
 
 void oroute_makeSchema(t_oroute *x)
