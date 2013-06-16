@@ -282,7 +282,7 @@ static void omenu_delete(t_gobj *z, t_glist *glist)
 //    post("%s %d", __func__, x->exists);
 
         canvas_deletelinesfor(glist, &x->ob);
-    if(x->exists)
+    if(x->exists && glist_getcanvas(glist)->gl_editor)
     {
         glist_eraseiofor(glist, &x->ob, x->io_tag);
         x->m_height = 0;
@@ -460,7 +460,7 @@ void omenu_vis(t_gobj *z, t_glist *glist, int flag)
         x->exists = 1;
 
     } else {
-      //  omenu_delete(z, glist);
+//        omenu_delete(z, glist);
     }
 }
 
