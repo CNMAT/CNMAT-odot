@@ -37,7 +37,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
 					"patching_rect" : [ 1236.0, 175.0, 107.0, 20.0 ],
-					"presentation_rect" : [ 1236.0, 175.0, 0.0, 0.0 ],
 					"text" : "o.io.kinect.expand"
 				}
 
@@ -66,7 +65,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
 					"patching_rect" : [ 1107.0, 180.0, 107.0, 20.0 ],
-					"presentation_rect" : [ 1107.0, 180.0, 0.0, 0.0 ],
 					"text" : "o.io.kinect.expand"
 				}
 
@@ -95,7 +93,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
 					"patching_rect" : [ 991.0, 181.0, 107.0, 20.0 ],
-					"presentation_rect" : [ 991.0, 181.0, 0.0, 0.0 ],
 					"text" : "o.io.kinect.expand"
 				}
 
@@ -124,7 +121,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
 					"patching_rect" : [ 870.0, 182.0, 107.0, 20.0 ],
-					"presentation_rect" : [ 870.0, 182.0, 0.0, 0.0 ],
 					"text" : "o.io.kinect.expand"
 				}
 
@@ -153,7 +149,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
 					"patching_rect" : [ 741.0, 187.0, 107.0, 20.0 ],
-					"presentation_rect" : [ 741.0, 187.0, 0.0, 0.0 ],
 					"text" : "o.io.kinect.expand"
 				}
 
@@ -182,7 +177,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
 					"patching_rect" : [ 625.0, 188.0, 107.0, 20.0 ],
-					"presentation_rect" : [ 625.0, 188.0, 0.0, 0.0 ],
 					"text" : "o.io.kinect.expand"
 				}
 
@@ -211,7 +205,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
 					"patching_rect" : [ 506.0, 187.0, 107.0, 20.0 ],
-					"presentation_rect" : [ 506.0, 187.0, 0.0, 0.0 ],
 					"text" : "o.io.kinect.expand"
 				}
 
@@ -240,7 +233,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
 					"patching_rect" : [ 392.0, 190.0, 107.0, 20.0 ],
-					"presentation_rect" : [ 392.0, 190.0, 0.0, 0.0 ],
 					"text" : "o.io.kinect.expand"
 				}
 
@@ -269,7 +261,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
 					"patching_rect" : [ 281.0, 190.0, 107.0, 20.0 ],
-					"presentation_rect" : [ 281.0, 190.0, 0.0, 0.0 ],
 					"text" : "o.io.kinect.expand"
 				}
 
@@ -298,7 +289,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
 					"patching_rect" : [ 170.0, 191.0, 107.0, 20.0 ],
-					"presentation_rect" : [ 170.0, 191.0, 0.0, 0.0 ],
 					"text" : "o.io.kinect.expand"
 				}
 
