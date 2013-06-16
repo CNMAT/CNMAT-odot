@@ -40,10 +40,16 @@
 #endif
 
 #include "odot_version.h"
+#ifdef OMAX_PD_VERSION
+#include "m_pd.h"
+#include "omax_pd_proxy.h"
+#define proxy_getinlet(x) (((t_ovar *)(x))->inlet)
+#else
 #include "ext.h"
 #include "ext_obex.h"
 #include "ext_obex_util.h"
 #include "ext_critical.h"
+#endif
 #include "osc.h"
 #include "osc_mem.h"
 #include "osc_bundle_s.h"
@@ -51,10 +57,16 @@
 #include "omax_doc.h"
 #include "omax_dict.h"
 
+#include "o.h"
+
 typedef struct _ovar{
 	t_object ob;
 	void *outlet;
+#ifdef OMAX_PD_VERSION
+	void **proxy;
+#else
 	void *proxy;
+#endif
 	long inlet;
 	long len;
 	char *bndl;
@@ -63,7 +75,13 @@ typedef struct _ovar{
 	char emptybndl[OSC_HEADER_SIZE];
 } t_ovar;
 
+
+#ifdef OMAX_PD_VERSION
+t_omax_pd_proxy_class *ovar_class;
+t_omax_pd_proxy_class *ovar_proxy_class;
+#else
 void *ovar_class;
+#endif
 
 void ovar_clear(t_ovar *x);
 void ovar_anything(t_ovar *x, t_symbol *msg, int argc, t_atom *argv);
@@ -143,7 +161,7 @@ void ovar_clear(t_ovar *x)
 	critical_exit(x->lock);
 }
 
-void ovar_anything(t_ovar *x, t_symbol *msg, int argc, t_atom *argv)
+void ovar_doAnything(t_ovar *x, t_symbol *msg, int argc, t_atom *argv, long inlet)
 {
 	t_symbol *address = NULL;
 	if(msg){
@@ -183,7 +201,12 @@ void ovar_anything(t_ovar *x, t_symbol *msg, int argc, t_atom *argv)
 	if(bndl_u){
 		osc_bundle_u_free(bndl_u);
 	}
-	ovar_doFullPacket(x, len, buf, proxy_getinlet((t_object *)x));
+	ovar_doFullPacket(x, len, buf, inlet);
+}
+
+void ovar_anything(t_ovar *x, t_symbol *msg, int argc, t_atom *argv)
+{
+    ovar_doAnything(x, msg, argc, argv, proxy_getinlet((t_object *)x));
 }
 
 void ovar_bang(t_ovar *x)
@@ -208,27 +231,128 @@ void ovar_bang(t_ovar *x)
 #endif
 }
 
+#ifndef OMAX_PD_VERSION
 OMAX_DICT_DICTIONARY(t_ovar, x, ovar_fullPacket);
+
+void ovar_assist(t_ovar *x, void *b, long io, long num, char *buf)
+{
+	omax_doc_assist(io, num, buf);
+}
+#endif
 
 void ovar_doc(t_ovar *x)
 {
 	omax_doc_outletDoc(x->outlet);
 }
 
-void ovar_assist(t_ovar *x, void *b, long io, long num, char *buf)
-{
-	omax_doc_assist(io, num, buf);
-}
-
 void ovar_free(t_ovar *x)
-{	
-	object_free(x->proxy);
+{
+	free(x->proxy);
 	if(x->bndl){
 		osc_mem_free(x->bndl);
 	}
 	critical_free(x->lock);
 }
 
+#ifdef OMAX_PD_VERSION
+void ovar_fullPacket_in1(t_ovar *x, t_symbol *msg, int argc, t_atom *argv)
+{
+    OMAX_UTIL_GET_LEN_AND_PTR
+    ovar_doFullPacket(x, len, ptr, 1);
+}
+
+
+void *ovar_new(t_symbol *msg, short argc, t_atom *argv)
+{
+	t_ovar *x;
+	if((x = (t_ovar *)object_alloc(ovar_class->class))){
+		x->outlet = outlet_new(&x->ob, gensym("FullPacket"));
+
+		x->proxy = (void **)malloc(2 * sizeof(t_omax_pd_proxy *));
+		x->proxy[0] = proxy_new((t_object *)x, 0, &(x->inlet), ovar_proxy_class);
+        x->proxy[1] = proxy_new((t_object *)x, 1, &(x->inlet), ovar_proxy_class);
+        
+		critical_new(&(x->lock));
+		x->len = 0;
+		x->buflen = 0;
+		x->bndl = NULL;
+		memset(x->emptybndl, '\0', OSC_HEADER_SIZE);
+		osc_bundle_s_setBundleID(x->emptybndl);
+ /*
+#if !defined ODOT_UNION && !defined ODOT_INTERSECTION && !defined ODOT_DIFFERENCE
+		int nargs = attr_args_offset(argc, argv);
+		if(nargs){
+			if(atom_gettype(argv) == A_SYM){
+				if(osc_error_validateAddress(atom_getsym(argv)->s_name)){
+					object_error((t_object *)x, "arguments must begin with a valid OSC address");
+					return NULL;
+				}
+				t_symbol *address = atom_getsym(argv);
+                
+                
+				t_osc_bndl_u *bndl_u = osc_bundle_u_alloc();
+				t_osc_msg_u *msg_u = NULL;
+				t_osc_err e = omax_util_maxAtomsToOSCMsg_u(&msg_u, address, argc - 1, argv + 1);
+				if(e){
+					object_error((t_object *)x, "%s", osc_error_string(e));
+					return NULL;
+				}
+				osc_bundle_u_addMsg(bndl_u, msg_u);
+				x->buflen = 0;
+				x->bndl = NULL;
+				osc_bundle_u_serialize(bndl_u, &(x->buflen), &(x->bndl));
+				x->len = x->buflen;
+				if(bndl_u){
+					osc_bundle_u_free(bndl_u);
+				}
+			}else{
+				object_error((t_object *)x, "arguments must begin with a valid OSC address");
+				return NULL;
+			}
+		}
+#endif
+  */
+	}
+    
+	return x;
+}
+
+#ifdef ODOT_UNION
+int ounion_setup(void)
+{
+    t_symbol *name = gensym("ounion");
+#elif defined ODOT_INTERSECTION
+int ointersection_setup(void)
+{
+    t_symbol *name = gensym("ointersection");
+#elif defined ODOT_DIFFERENCE
+int odifference_setup(void)
+{
+    t_symbol *name = gensym("odifference");
+#else
+int ovar_setup(void)
+{
+    t_symbol *name = gensym("ovar");
+#endif
+    omax_pd_class_new(ovar_class, name, (t_newmethod)ovar_new, (t_method)ovar_free, sizeof(t_ovar),  CLASS_NOINLET, A_GIMME, 0);
+    
+    t_omax_pd_proxy_class *c = NULL;
+	omax_pd_class_new(c, NULL, NULL, NULL, sizeof(t_omax_pd_proxy), CLASS_PD | CLASS_NOINLET, 0);
+    
+    omax_pd_class_addmethod(c, (t_method)odot_version, gensym("version"));
+	omax_pd_class_addmethod(c, (t_method)ovar_fullPacket, gensym("FullPacket"));
+    omax_pd_class_addmethod(c, (t_method)ovar_clear, gensym("clear"));
+	omax_pd_class_addanything(c, (t_method)ovar_anything);
+	omax_pd_class_addbang(c, (t_method)ovar_bang);
+    //	omax_pd_class_addmethod(c, (t_method)opack_doc, gensym("doc")); //<<crashes
+    
+	ovar_proxy_class = c;
+    
+	ODOT_PRINT_VERSION;
+	return 0;
+}
+
+#else
 void *ovar_new(t_symbol *msg, short argc, t_atom *argv)
 {
 	t_ovar *x;
@@ -313,3 +437,4 @@ int main(void){
 	return 0;
 }
 
+#endif

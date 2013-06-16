@@ -39,17 +39,26 @@ VERSION 0.0: First try
 
 #include <stdlib.h>
 #include "odot_version.h"
+
+#ifdef OMAX_PD_VERSION
+#include "m_pd.h"
+#include "string.h"
+#else
 #include "ext.h"
 #include "ext_obex.h"
 #include "ext_obex_util.h"
 #include "ext_critical.h"
+#include "omax_dict.h"
+#endif
+
 #include "osc.h"
 #include "osc_mem.h"
 #include "osc_bundle_s.h"
 #include "osc_bundle_iterator_s.h"
 #include "omax_util.h"
 #include "omax_doc.h"
-#include "omax_dict.h"
+
+#include "o.h"
 
 typedef struct _ocoll{
 	t_object ob;
@@ -61,7 +70,7 @@ typedef struct _ocoll{
 } t_ocoll;
 
 void *ocoll_class;
-
+void ocoll_fullPacket_(t_ocoll *x, long len, long ptr);
 
 void ocoll_fullPacket_impl(t_ocoll *x, long len, char *ptr)
 {
@@ -92,16 +101,16 @@ void ocoll_fullPacket_impl(t_ocoll *x, long len, char *ptr)
 			memcpy(x->buffer + x->buffer_pos, osc_message_s_getPtr(m), l);
 			x->buffer_pos += l;
 		}else{
-			// this function can resize its buffer, but we don't have to worry about that 
+			// this function can resize its buffer, but we don't have to worry about that
 			// since we already resized it above to accommidate the entire bundle
 			int i;
 			for(i = 0; i < osc_message_array_s_getLen(match); i++){
 				t_osc_msg_s *mm = osc_message_array_s_get(match, i);
 				osc_bundle_s_replaceMessage(&(x->buffer_len),
-							    &(x->buffer_pos),
-							    &(x->buffer),
-							    mm,
-							    m);
+                                            &(x->buffer_pos),
+                                            &(x->buffer),
+                                            mm,
+                                            m);
 			}
 			osc_message_array_s_free(match);
 		}
@@ -113,7 +122,7 @@ void ocoll_fullPacket_impl(t_ocoll *x, long len, char *ptr)
 void ocoll_fullPacket(t_ocoll *x, t_symbol *msg, int argc, t_atom *argv)
 {
 	OMAX_UTIL_GET_LEN_AND_PTR
-        ocoll_fullPacket_impl(x, len, ptr);
+    ocoll_fullPacket_impl(x, len, ptr);
 }
 
 void ocoll_anything(t_ocoll *x, t_symbol *msg, int argc, t_atom *argv)
@@ -135,23 +144,27 @@ void ocoll_anything(t_ocoll *x, t_symbol *msg, int argc, t_atom *argv)
 	if(bndl_u){
 		osc_bundle_u_free(bndl_u);
 	}
-
+    
 	ocoll_fullPacket_impl(x, len, buf);
 	if(buf){
 		osc_mem_free(buf);
 	}
+
 }
 
 void ocoll_bang(t_ocoll *x){
-		critical_enter(x->lock);
-		int len = x->buffer_pos;
-		char outbuf[len];
-		memcpy(outbuf, x->buffer, len);
-		memset(x->buffer + OSC_HEADER_SIZE, '\0', len - OSC_HEADER_SIZE);
-		x->buffer_pos = OSC_HEADER_SIZE;
-		critical_exit(x->lock);
-		omax_util_outletOSC(x->outlet, len, outbuf);
+    critical_enter(x->lock);
+    int len = x->buffer_pos;
+    char outbuf[len];
+    memcpy(outbuf, x->buffer, len);
+    memset(x->buffer + OSC_HEADER_SIZE, '\0', len - OSC_HEADER_SIZE);
+    x->buffer_pos = OSC_HEADER_SIZE;
+    critical_exit(x->lock);
+    omax_util_outletOSC(x->outlet, len, outbuf);
 }
+
+
+#ifndef OMAX_PD_VERSION
 
 OMAX_DICT_DICTIONARY(t_ocoll, x, ocoll_fullPacket);
 
@@ -171,13 +184,60 @@ void ocoll_doc(t_ocoll *x)
 void ocoll_assist(t_ocoll *x, void *b, long io, long num, char *buf){
 	omax_doc_assist(io, num, buf);
 }
+#endif
 
 void ocoll_free(t_ocoll *x){
 	if(x->buffer){
 		free(x->buffer);
 	}
 	critical_free(x->lock);
+    
+    //need to free proxy?
 }
+
+
+
+#ifdef OMAX_PD_VERSION
+void *ocoll_new(t_symbol *msg, short argc, t_atom *argv){
+	t_ocoll *x;
+	if((x = (t_ocoll *)object_alloc(ocoll_class))){
+		x->outlet = outlet_new((t_object *)x, NULL);
+		x->buffer_len = 1024;
+		if(argc){
+			if(atom_gettype(argv) == A_LONG){
+				//x->buffer_len = atom_getlong(argv);
+				object_error((t_object *)x, "o.collect no longer takes an argument to specify its internal buffer size.");
+				object_error((t_object *)x, "The buffer will expand as necessary.");
+			}
+		}
+		x->buffer = (char *)osc_mem_alloc(x->buffer_len * sizeof(char));
+		memset(x->buffer, '\0', x->buffer_len);
+		x->buffer_pos = OSC_HEADER_SIZE;
+		osc_bundle_s_setBundleID(x->buffer);
+		critical_new(&(x->lock));
+	}
+    
+	return(x);
+}
+
+int ocollect_setup(void){
+	t_class *c = class_new(gensym("ocollect"), (t_newmethod)ocoll_new, (t_method)ocoll_free, sizeof(t_ocoll), 0L, A_GIMME, 0);
+
+	class_addmethod(c, (t_method)ocoll_fullPacket, gensym("FullPacket"), A_GIMME, 0);
+//	class_addmethod(c, (t_method)ocoll_doc, "doc", 0);
+//	class_addmethod(c, (t_method)ocoll_assist, "assist", A_CANT, 0);
+	class_addmethod(c, (t_method)ocoll_anything, gensym("anything"), A_GIMME, 0);
+
+    class_addbang(c, ocoll_bang);
+
+	class_addmethod(c, (t_method)odot_version, gensym("version"), 0);
+    
+	ocoll_class = c;
+        
+	ODOT_PRINT_VERSION;
+	return 0;
+}
+#else
 
 void *ocoll_new(t_symbol *msg, short argc, t_atom *argv){
 	t_ocoll *x;
@@ -197,10 +257,9 @@ void *ocoll_new(t_symbol *msg, short argc, t_atom *argv){
 		osc_bundle_s_setBundleID(x->buffer);
 		critical_new(&(x->lock));
 	}
-		   	
+    
 	return(x);
 }
-
 int main(void){
 	t_class *c = class_new("o.collect", (method)ocoll_new, (method)ocoll_free, sizeof(t_ocoll), 0L, A_GIMME, 0);
 	//class_addmethod(c, (method)ocoll_fullPacket, "FullPacket", A_LONG, A_LONG, 0);
@@ -224,4 +283,4 @@ int main(void){
 	ODOT_PRINT_VERSION;
 	return 0;
 }
-
+#endif

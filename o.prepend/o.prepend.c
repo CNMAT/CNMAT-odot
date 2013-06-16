@@ -43,9 +43,11 @@ version 1.0: Rewritten to only take one argument (the symbol to be prepended) wh
 #endif
 
 #include "odot_version.h"
+#ifdef OMAX_PD_VERSION
+#include "m_pd.h"
+#else
 #include "ext.h"
-#include "osc.h"
-#include "ext.h"
+
 #ifndef ulong
 #define ulong
 #endif
@@ -56,6 +58,7 @@ version 1.0: Rewritten to only take one argument (the symbol to be prepended) wh
 #define ushort
 #endif
 #include "ext_obex.h"
+
 #ifdef ulong
 #undef ulong
 #endif
@@ -66,12 +69,17 @@ version 1.0: Rewritten to only take one argument (the symbol to be prepended) wh
 #define ushort
 #endif
 #include "ext_obex_util.h"
+#include "ext_critical.h"
+#endif
+
 #include "osc.h"
 #include "osc_bundle_s.h"
 #include "osc_bundle_iterator_s.h"
 #include "omax_util.h"
 #include "omax_doc.h"
 #include "omax_dict.h"
+
+#include "o.h"
 
 typedef struct _oppnd{
 	t_object ob;
@@ -89,7 +97,6 @@ void oppnd_doFullPacket(t_oppnd *x, long len, char *ptr, t_symbol *sym_to_prepen
 
 t_symbol *ps_FullPacket;
 
-//void oppnd_fullPacket(t_oppnd *x, long len, long ptr)
 void oppnd_fullPacket(t_oppnd *x, t_symbol *msg, int argc, t_atom *argv)
 {
 	OMAX_UTIL_GET_LEN_AND_PTR
@@ -227,20 +234,77 @@ void oppnd_anything(t_oppnd *x, t_symbol *msg, short argc, t_atom *argv)
 	omax_util_outletOSC(x->outlet, len, oscbuf);
 }
 
-OMAX_DICT_DICTIONARY(t_oppnd, x, oppnd_fullPacket);
 
 void oppnd_doc(t_oppnd *x)
 {
 	omax_doc_outletDoc(x->outlet);
 }
 
+void oppnd_free(t_oppnd *x){}
+
+
+#ifdef OMAX_PD_VERSION
+
+void *oppnd_new(t_symbol *msg, short argc, t_atom *argv)
+{
+	t_oppnd *x;
+	if((x = (t_oppnd *)object_alloc(oppnd_class))){
+		x->outlet = outlet_new((t_object *)x, gensym("FullPacket"));
+		x->sym_to_prepend = NULL;
+		if(argc){
+			t_symbol *sym = atom_getsym(argv);
+			char *c = sym->s_name;
+			int len = strlen(c);
+			t_osc_err e = osc_error_validateAddress(c);
+			if(e){
+				if(len == 2 && c[0] == '#'){
+					// this is ok
+				}else{
+					object_error((t_object *)x, "%s", osc_error_string(e));
+					return NULL;
+				}
+			}
+			x->sym_to_prepend = sym;
+			x->sym_to_prepend_len = strlen(c);
+		}
+	}
+    
+	return(x);
+}
+
+#ifdef APPEND
+int oappend_setup(void)
+{
+    t_symbol *name = gensym("oappend");
+#else
+int oprepend_setup(void)
+{
+    t_symbol *name = gensym("oprepend");
+#endif
+    t_class *c = class_new(name, (t_newmethod)oppnd_new, (t_method)oppnd_free, sizeof(t_oppnd), 0L, A_GIMME, 0);
+    
+	class_addmethod(c, (t_method)oppnd_fullPacket, gensym("FullPacket"), A_GIMME, 0);
+    
+	class_addmethod(c, (t_method)oppnd_doc, gensym("doc"), 0);
+	class_addmethod(c, (t_method)oppnd_anything, gensym("anything"), A_GIMME, 0);
+    
+	class_addmethod(c, (t_method)oppnd_set, gensym("set"), A_GIMME, 0);
+    
+	class_addmethod(c, (t_method)odot_version, gensym("version"), 0);
+    
+	oppnd_class = c;
+    ps_FullPacket = gensym("FullPacket");
+	
+    ODOT_PRINT_VERSION;
+	return 0;
+}
+    
+#else
+OMAX_DICT_DICTIONARY(t_oppnd, x, oppnd_fullPacket);
+
 void oppnd_assist(t_oppnd *x, void *b, long io, long num, char *buf)
 {
 	omax_doc_assist(io, num, buf);
-}
-
-void oppnd_free(t_oppnd *x)
-{
 }
 
 void *oppnd_new(t_symbol *msg, short argc, t_atom *argv)
@@ -297,3 +361,4 @@ int main(void)
 	ODOT_PRINT_VERSION;
 	return 0;
 }
+#endif

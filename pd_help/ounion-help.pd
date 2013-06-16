@@ -1,0 +1,14 @@
+#N canvas 859 292 450 300 10;
+#X floatatom 87 15 5 0 0 0 - - -;
+#X floatatom 177 15 5 0 0 0 - - -;
+#X floatatom 266 16 5 0 0 0 - - -;
+#X obj 88 44 opack /foo;
+#X obj 178 44 opack /foo /bar;
+#X obj 99 181 oprint;
+#X obj 88 114 ounion;
+#X connect 0 0 3 0;
+#X connect 1 0 4 0;
+#X connect 2 0 4 1;
+#X connect 3 0 6 0;
+#X connect 4 0 6 1;
+#X connect 6 0 5 0;

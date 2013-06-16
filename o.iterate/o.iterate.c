@@ -30,9 +30,13 @@
 #define OMAX_DOC_SEEALSO  (char *[]){"o.atomize"}
 
 #include "odot_version.h"
+#ifdef OMAX_PD_VERSION
+#include "m_pd.h"
+#else
 #include "ext.h"
 #include "ext_obex.h"
 #include "ext_obex_util.h"
+#endif
 #include "osc.h"
 #include "osc_mem.h"
 #include "osc_bundle_s.h"
@@ -41,6 +45,8 @@
 #include "omax_util.h"
 #include "omax_doc.h"
 #include "omax_dict.h"
+#include "o.h"
+
 
 typedef struct _oiterate{
 	t_object ob;
@@ -64,22 +70,56 @@ void oiterate_fullPacket(t_oiterate *x, t_symbol *msg, int argc, t_atom *argv)
 	osc_bndl_it_s_destroy(it);
 }
 
-OMAX_DICT_DICTIONARY(t_oiterate, x, oiterate_fullPacket);
 
 void oiterate_doc(t_oiterate *x)
 {
 	omax_doc_outletDoc(x->outlet);
 }
 
+#ifndef OMAX_PD_VERSION
+OMAX_DICT_DICTIONARY(t_oiterate, x, oiterate_fullPacket);
+
 void oiterate_assist(t_oiterate *x, void *b, long io, long num, char *buf)
 {
 	omax_doc_assist(io, num, buf);
 }
 
+#endif
+
 void oiterate_free(t_oiterate *x)
 {
 }
 
+#ifdef OMAX_PD_VERSION
+void *oiterate_new(t_symbol *msg, short argc, t_atom *argv)
+{
+	t_oiterate *x;
+	if((x = (t_oiterate *)pd_new(oiterate_class))){
+		x->outlet = outlet_new((t_object *)x, gensym("FullPacket"));
+	}
+	return x;
+}
+
+int oiterate_setup(void)
+{
+	t_class *c = class_new(gensym("oiterate"), (t_newmethod)oiterate_new, (t_method)oiterate_free, sizeof(t_oiterate), 0L, A_GIMME, 0);
+	//class_addmethod(c, (method)oiterate_fullPacket, "FullPacket", A_LONG, A_LONG, 0);
+	class_addmethod(c, (t_method)oiterate_fullPacket, gensym("FullPacket"), A_GIMME, 0);
+	class_addmethod(c, (t_method)oiterate_doc, gensym("doc"), 0);
+    
+	//class_addmethod(c, (method)oiterate_bang, "bang", 0);
+	//class_addmethod(c, (method)oiterate_anything, "anything", A_GIMME, 0);
+	// remove this if statement when we stop supporting Max 5
+
+	class_addmethod(c, (t_method)odot_version, gensym("version"), 0);
+    
+	oiterate_class = c;
+        
+	ODOT_PRINT_VERSION;
+	return 0;
+}
+
+#else
 void *oiterate_new(t_symbol *msg, short argc, t_atom *argv)
 {
 	t_oiterate *x;
@@ -122,3 +162,4 @@ t_max_err oiterate_notify(t_oiterate *x, t_symbol *s, t_symbol *msg, void *sende
 	return MAX_ERR_NONE;
 }
 */
+#endif

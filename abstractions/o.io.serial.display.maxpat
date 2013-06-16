@@ -4,11 +4,11 @@
 		"appversion" : 		{
 			"major" : 6,
 			"minor" : 1,
-			"revision" : 2,
+			"revision" : 3,
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 658.0, 44.0, 782.0, 688.0 ],
+		"rect" : [ 9.0, 76.0, 782.0, 687.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
@@ -28,6 +28,22 @@
 		"digest" : "",
 		"tags" : "",
 		"boxes" : [ 			{
+				"box" : 				{
+					"bgtransparent" : 1,
+					"border" : 0,
+					"id" : "obj-11",
+					"idle" : 1,
+					"maxclass" : "lcd",
+					"numinlets" : 1,
+					"numoutlets" : 4,
+					"outlettype" : [ "list", "list", "int", "" ],
+					"patching_rect" : [ 118.666672, 189.0, 128.0, 128.0 ],
+					"presentation" : 1,
+					"presentation_rect" : [ 6.0, 2.0, 175.0, 40.0 ]
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
@@ -163,7 +179,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 464.0, 937.0, 150.0, 33.0 ],
+					"patching_rect" : [ 464.0, 937.0, 150.0, 34.0 ],
 					"text" : "/port \n/baudrate 150 ",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -192,7 +208,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 448.0, 298.0, 59.0, 20.0 ],
+					"patching_rect" : [ 437.0, 360.0, 59.0, 20.0 ],
 					"text" : "tosymbol"
 				}
 
@@ -206,7 +222,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 443.0, 329.0, 96.0, 20.0 ],
+					"patching_rect" : [ 437.0, 390.0, 96.0, 20.0 ],
 					"text" : "prepend symbol"
 				}
 
@@ -318,7 +334,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 232.0, 392.0, 20.0, 20.0 ]
+					"patching_rect" : [ 155.0, 360.0, 20.0, 20.0 ]
 				}
 
 			}
@@ -395,7 +411,7 @@
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"id" : "obj-2",
-					"items" : [ "a", "Bluetooth-PDA-Sync", ",", "b", "Bluetooth-Modem" ],
+					"items" : [ "a", "usbmodemfa141", ",", "b", "Bluetooth-Modem", ",", "c", "Bluetooth-PDA-Sync" ],
 					"maxclass" : "umenu",
 					"numinlets" : 1,
 					"numoutlets" : 3,
@@ -627,21 +643,6 @@
 					"outlettype" : [ "int", "" ],
 					"patching_rect" : [ 171.454529, 495.818237, 89.0, 17.0 ],
 					"text" : "serial @autoopen 0"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"border" : 0,
-					"id" : "obj-11",
-					"idle" : 1,
-					"maxclass" : "lcd",
-					"numinlets" : 1,
-					"numoutlets" : 4,
-					"outlettype" : [ "list", "list", "int", "" ],
-					"patching_rect" : [ 248.0, 237.0, 128.0, 128.0 ],
-					"presentation" : 1,
-					"presentation_rect" : [ 13.0, 10.0, 187.0, 34.0 ]
 				}
 
 			}

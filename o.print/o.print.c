@@ -38,15 +38,23 @@ VERSION 0.0: First try
 #define OMAX_DOC_SEEALSO (char *[]){"o.printbytes", "print", "printit"}
 
 #include "odot_version.h"
+#ifdef OMAX_PD_VERSION
+#include "m_pd.h"
+#else
 #include "ext.h"
 #include "ext_obex.h"
 #include "ext_obex_util.h"
+#include "ext_critical.h"
+#endif
+
 #include "osc.h"
 #include "osc_mem.h"
 #include "osc_bundle_s.h"
 #include "omax_util.h"
 #include "omax_doc.h"
 #include "omax_dict.h"
+
+#include "o.h"
 
 typedef struct _oprint{
 	t_object ob;
@@ -66,6 +74,7 @@ void oprint_free(t_oprint *x);
 void *oprint_new(t_symbol *msg, short argc, t_atom *argv);
 t_max_err oprint_notify(t_oprint *x, t_symbol *s, t_symbol *msg, void *sender, void *data);
 
+
 t_symbol *ps_FullPacket;
 
 //void oprint_fullPacket(t_oprint *x, long len, long ptr)
@@ -75,7 +84,7 @@ void oprint_fullPacket(t_oprint *x, t_symbol *msg, int argc, t_atom *argv)
 	osc_bundle_s_wrap_naked_message(len, ptr);
 	long buflen = 0;
 	char *buf = NULL;
-	osc_bundle_s_format(len, ptr, &buflen, &buf);
+	osc_bundle_s_format(len, (char *)ptr, &buflen, &buf);
 	post("[");
 	if(buflen == 0){
 		post("<empty bundle>");
@@ -98,11 +107,14 @@ void oprint_fullPacket(t_oprint *x, t_symbol *msg, int argc, t_atom *argv)
 	if(buf){
 		osc_mem_free(buf);
 	}
-	omax_util_outletOSC(x->outlet, len, ptr);
+	omax_util_outletOSC(x->outlet, len, (char *)ptr);
 }
 
 void oprint_anything(t_oprint *x, t_symbol *msg, int argc, t_atom *argv)
 {
+#ifdef OMAX_PD_VERSION
+    post("currently only printing FullPackets in PD");
+#else
 	char *buf = NULL;
 	long len = 0;
 	atom_gettext(argc, argv, &len, &buf, 0);
@@ -115,10 +127,14 @@ void oprint_anything(t_oprint *x, t_symbol *msg, int argc, t_atom *argv)
 		sysmem_freeptr(buf);
 	}
 	outlet_anything(x->outlet, msg, argc, argv);
+#endif
 }
 
 void oprint_list(t_oprint *x, t_symbol *msg, int argc, t_atom *argv)
 {
+#ifdef OMAX_PD_VERSION
+    post("currently only printing FullPackets in PD");
+#else
 	char *buf = NULL;
 	long len = 0;
 	atom_gettext(argc, argv, &len, &buf, 0);
@@ -127,20 +143,30 @@ void oprint_list(t_oprint *x, t_symbol *msg, int argc, t_atom *argv)
 		sysmem_freeptr(buf);
 	}
 	outlet_list(x->outlet, NULL, argc, argv);
+#endif
 }
 
 void oprint_int(t_oprint *x, long l)
 {
+#ifdef OMAX_PD_VERSION
+    post("currently only printing FullPackets in PD");
+#else
 	post("%s: %ld", x->myname->s_name, l);
 	outlet_int(x->outlet, l);
+#endif
 }
 
 void oprint_float(t_oprint *x, double f)
 {
+#ifdef OMAX_PD_VERSION
+    post("currently only printing FullPackets in PD");
+#else
 	post("%s: %f", x->myname->s_name, f);
 	outlet_float(x->outlet, f);
+#endif
 }
 
+#ifndef OMAX_PD_VERSION
 OMAX_DICT_DICTIONARY(t_oprint, x, oprint_fullPacket);
 
 void oprint_doc(t_oprint *x)
@@ -152,10 +178,63 @@ void oprint_assist(t_oprint *x, void *b, long io, long num, char *buf)
 {
 	omax_doc_assist(io, num, buf);
 }
+#endif
 
 void oprint_free(t_oprint *x){
 }
 
+#ifdef OMAX_PD_VERSION
+
+void *oprint_new(t_symbol *msg, short argc, t_atom *argv){
+	t_oprint *x;
+	if((x = (t_oprint *)object_alloc(oprint_class))){
+		x->myname = gensym("o_print");
+		x->outlet = outlet_new(&x->ob, NULL);
+		if(argc > 0){
+			char buf[128];
+			switch(atom_gettype(argv)){
+                case A_FLOAT:
+                    sprintf(buf, "%f", atom_getfloat(argv));
+                    x->myname = gensym(buf);
+                    break;
+                case A_LONG:
+                    sprintf(buf, "%ld", atom_getlong(argv));
+                    x->myname = gensym(buf);
+                    break;
+                case A_SYM:
+                    x->myname = atom_getsym(argv);
+                    break;
+			}
+		}
+	}
+    
+	return(x);
+}
+
+int oprint_setup(void){
+	t_class *c = class_new(gensym("oprint"), (t_newmethod)oprint_new, (t_method)oprint_free, sizeof(t_oprint), 0L, A_GIMME, 0);
+
+	//class_addmethod(c, (method)oprint_fullPacket, "FullPacket", A_LONG, A_LONG, 0);
+	class_addmethod(c, (t_method)oprint_fullPacket, gensym("FullPacket"), A_GIMME, 0);
+    
+//	class_addmethod(c, (method)oprint_assist, "assist", A_CANT, 0);
+//	class_addmethod(c, (method)oprint_doc, "doc", 0);
+	class_addmethod(c, (t_method)oprint_anything, gensym("anything"), A_GIMME, 0);
+	class_addmethod(c, (t_method)oprint_list, gensym("list"), A_GIMME, 0);
+	class_addmethod(c, (t_method)oprint_int, gensym("int"), A_DEFFLOAT, 0);
+	class_addmethod(c, (t_method)oprint_float, gensym("float"), A_FLOAT, 0);
+	class_addmethod(c, (t_method)odot_version, gensym("version"), 0);
+    
+	oprint_class = c;
+    
+	ps_FullPacket = gensym("FullPacket");
+    
+//	common_symbols_init();
+	ODOT_PRINT_VERSION;
+	return 0;
+}
+
+#else
 void *oprint_new(t_symbol *msg, short argc, t_atom *argv){
 	t_oprint *x;
 	if((x = (t_oprint *)object_alloc(oprint_class))){
@@ -169,7 +248,7 @@ void *oprint_new(t_symbol *msg, short argc, t_atom *argv){
 				x->myname = gensym(buf);
 				break;
 			case A_LONG:
-				sprintf(buf, "%ld", atom_getlong(argv));
+				sprintf(buf, "%lld", (long long)atom_getlong(argv));
 				x->myname = gensym(buf);
 				break;
 			case A_SYM:
@@ -212,3 +291,4 @@ int main(void){
 	ODOT_PRINT_VERSION;
 	return 0;
 }
+#endif

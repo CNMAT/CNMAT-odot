@@ -4,11 +4,11 @@
 		"appversion" : 		{
 			"major" : 6,
 			"minor" : 1,
-			"revision" : 2,
+			"revision" : 3,
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 359.0, 280.0, 640.0, 362.0 ],
+		"rect" : [ 261.0, 158.0, 640.0, 362.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -37,9 +37,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 261.0, 196.0, 150.0, 33.0 ],
-					"presentation_rect" : [ 261.0, 196.0, 0.0, 0.0 ],
-					"text" : "/port \"a\" \n/baud 57600 \n",
+					"patching_rect" : [ 261.0, 196.0, 150.0, 34.0 ],
+					"text" : "/port \"b\" \n/baud 110 \n",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -54,8 +53,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 462.0, 108.0, 150.0, 33.0 ],
-					"text" : "/port \"a\" \n/baud 57600 \n",
+					"patching_rect" : [ 462.0, 108.0, 150.0, 34.0 ],
+					"text" : "/port \"b\" \n/baud 110 \n",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -68,8 +67,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 37.0, 42.0, 358.0, 36.0 ],
-					"presentation_rect" : [ 36.0, 67.0, 0.0, 0.0 ]
+					"patching_rect" : [ 34.0, 45.0, 358.0, 36.0 ]
 				}
 
 			}
@@ -116,14 +114,10 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "o.io.serial.display.maxpat",
-				"bootpath" : "/Applications/Max 6.1/patches/CNMAT_Externals/odot/abstractions",
+				"bootpath" : "/Users/jml/Documents/materials/programming/max_files/5_berkeley/projects/cnmat/repositories/git/CNMAT-odot/abstractions",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
-			}
-, 			{
-				"name" : "o.message.mxo",
-				"type" : "iLaX"
 			}
 , 			{
 				"name" : "o.pack.mxo",
@@ -131,6 +125,10 @@
 			}
 , 			{
 				"name" : "o.route.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.message.mxo",
 				"type" : "iLaX"
 			}
  ]

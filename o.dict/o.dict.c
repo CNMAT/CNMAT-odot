@@ -38,6 +38,7 @@
 #define OMAX_DOC_OUTLETS_DESC (char *[]){"Dictionary."}
 #define OMAX_DOC_SEEALSO (char *[]){""}
 
+#include "o.h"
 #include "odot_version.h"
 #include "ext.h"
 #include "ext_obex.h"

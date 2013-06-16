@@ -45,10 +45,18 @@ VERSION 0.1: Addresses to match can now have patterns
 
 
 #include "odot_version.h"
+
+#ifdef OMAX_PD_VERSION
+#include "m_pd.h"
+#include "omax_pd_proxy.h"
+#define proxy_getinlet(x) (((t_oroute *)(x))->inlet)
+#else
 #include "ext.h"
 #include "ext_obex.h"
 #include "ext_obex_util.h"
 #include "ext_critical.h"
+#endif
+
 #include "osc.h"
 #include "osc_mem.h"
 #include "osc_match.h"
@@ -62,6 +70,8 @@ VERSION 0.1: Addresses to match can now have patterns
 #include "omax_dict.h"
 #include "osc_rset.h"
 #include "osc_query.h"
+
+#include "o.h"
 
 typedef struct _oroute{
 	t_object ob;
@@ -82,7 +92,12 @@ typedef struct _oroute{
 	char **outlet_assist_strings;
 } t_oroute;
 
+#ifdef OMAX_PD_VERSION
+t_omax_pd_proxy_class *oroute_class;
+t_omax_pd_proxy_class *oroute_proxy_class;
+#else
 void *oroute_class;
+#endif
 
 void oroute_dispatch_rset(t_oroute *x, t_osc_rset *rset, int num_selectors, char **selectors);
 void oroute_anything(t_oroute *x, t_symbol *msg, short argc, t_atom *argv);
@@ -201,8 +216,16 @@ void oroute_dispatch_rset(t_oroute *x, t_osc_rset *rset, int num_selectors, char
 					t_osc_msg_s *msg = osc_bndl_it_s_next(it);
 					int num_atoms = omax_util_getNumAtomsInOSCMsg(msg);
 					t_atom a[num_atoms];
+#ifdef OMAX_PD_VERSION
+                    if(omax_util_oscMsg2MaxAtoms(msg, a))
+                    {
+                        object_error((t_object *)x, "pure data does not like { }, hopefully someone will fix this eventually\n");
+                        return;
+                    }
+#else
 					omax_util_oscMsg2MaxAtoms(msg, a);
-					if(num_atoms - 1 == 0){
+#endif
+                    if(num_atoms - 1 == 0){
 						outlet_bang(x->outlets[i]);
 					}else{
 						outlet_atoms(x->outlets[i], num_atoms - 1, a + 1);
@@ -305,7 +328,7 @@ void oroute_set(t_oroute *x, t_symbol *msg, int argc, t_atom *argv)
 
 void oroute_doSet(t_oroute *x, long index, t_symbol *sym){
 	if(index < 1 || index > x->num_selectors){
-		object_error((t_object *)x, "index (%d) out of bounds", index);
+		object_error((t_object *)x, "index (%ld) out of bounds", index);
 		return;
 	}
 	critical_enter(x->lock);
@@ -322,7 +345,21 @@ void oroute_doSet(t_oroute *x, long index, t_symbol *sym){
 	critical_exit(x->lock);
 }
 
+#ifndef OMAX_PD_VERSION
+
 OMAX_DICT_DICTIONARY(t_oroute, x, oroute_fullPacket);
+
+void oroute_assist(t_oroute *x, void *b, long io, long num, char *buf)
+{
+	_omax_doc_assist(io,
+                     num,
+                     buf,
+                     x->num_selectors + 1,
+                     x->inlet_assist_strings,
+                     x->num_selectors + 1,
+                     x->outlet_assist_strings);
+}
+#endif
 
 void oroute_doc(t_oroute *x)
 {
@@ -342,16 +379,7 @@ void oroute_doc(t_oroute *x)
 			    OMAX_DOC_SEEALSO);
 }
 
-void oroute_assist(t_oroute *x, void *b, long io, long num, char *buf)
-{
-	_omax_doc_assist(io,			
-			 num,			
-			 buf,			
-			 x->num_selectors + 1,
-			 x->inlet_assist_strings,
-			 x->num_selectors + 1,
-			 x->outlet_assist_strings);
-}
+
 
 void oroute_free(t_oroute *x)
 {
@@ -362,7 +390,11 @@ void oroute_free(t_oroute *x)
 	if(x->proxy){
 		for(int i = 0; i < x->num_selectors; i++){
 			if(x->proxy[i]){
-				object_free(x->proxy[i]);
+#ifdef OMAX_PD_VERSION
+                free(x->proxy[i]);
+#else
+                object_free(x->proxy[i]);
+#endif
 			}
 		}
 		free(x->proxy);
@@ -376,6 +408,7 @@ void oroute_free(t_oroute *x)
 	if(x->schema){
 		osc_mem_free(x->schema);
 	}
+#ifndef OMAX_PD_VERSION
 	for(int i = 0; i < x->num_selectors + 1; i++){
 		if(x->inlet_assist_strings[i]){
 			osc_mem_free(x->inlet_assist_strings[i]);
@@ -390,6 +423,8 @@ void oroute_free(t_oroute *x)
 	if(x->outlet_assist_strings){
 		osc_mem_free(x->outlet_assist_strings);
 	}
+#endif
+   
 }
 
 void oroute_makeSchema(t_oroute *x)
@@ -417,7 +452,15 @@ void oroute_atomizeBundle(void *outlet, long len, char *bndl)
 		t_osc_msg_s *msg = osc_bndl_it_s_next(it);
 		int natoms = omax_util_getNumAtomsInOSCMsg(msg);
 		t_atom atoms[natoms];
-		omax_util_oscMsg2MaxAtoms(msg, atoms);
+#ifdef OMAX_PD_VERSION
+		if(omax_util_oscMsg2MaxAtoms(msg, atoms))
+        {
+            object_error((t_object *)x, "pure data does not like { }, hopefully someone will fix this eventually\n");
+            return;
+        }
+#else
+        omax_util_oscMsg2MaxAtoms(msg, atoms);
+#endif
 		t_symbol *address = atom_getsym(atoms);
 		outlet_anything(outlet, address, natoms - 1, atoms + 1);
 	}
@@ -452,12 +495,99 @@ void oroute_makeUniqueSelectors(int nselectors,
 	*nunique_selectors = n;
 }
 
+#ifdef OMAX_PD_VERSION
+void *oroute_new(t_symbol *msg, short argc, t_atom *argv)
+{
+	t_oroute *x;
+	if((x = (t_oroute *)object_alloc(oroute_class->class))){
+		critical_new(&(x->lock));
+		x->outlets = (void **)malloc(argc * sizeof(void *));
+
+		x->selectors = (char **)malloc(argc * sizeof(char *));
+		x->num_selectors = argc;
+		x->unique_selectors = (char **)malloc(x->num_selectors * sizeof(char *));
+        
+        
+		x->nbytes_selector = 0;
+		int i;
+        x->proxy = (void **)malloc(argc * sizeof(t_omax_pd_proxy *));
+        
+		for(i = 0; i < argc; i++){
+			x->outlets[argc - i - 1] = outlet_new(&x->ob, NULL);
+			x->proxy[i] = proxy_new((t_object *)x, i, &(x->inlet), oroute_proxy_class);
+
+			if(atom_gettype(argv + i) != A_SYM){
+				object_error((t_object *)x, "argument %d is not an OSC address", i);
+				return NULL;
+			}
+            
+			char *selector = atom_getsym(argv + i)->s_name;
+			int len = strlen(selector);
+			if(len > x->nbytes_selector){
+				x->nbytes_selector = len;
+			}
+			x->selectors[x->num_selectors - i - 1] = selector;
+            
+		}
+        
+        x->delegation_outlet = outlet_new(&x->ob, gensym("FullPacket"));
+
+		oroute_makeUniqueSelectors(x->num_selectors,
+                                   x->selectors,
+                                   &(x->num_unique_selectors),
+                                   &(x->unique_selectors));
+        
+		x->schema = NULL;
+		x->schemalen = 0;
+		oroute_makeSchema(x);
+		
+	}
+    
+	return(x);
+}
+
+
+#ifdef SELECT
+int oselect_setup(void)
+{
+	t_symbol *name = gensym("oselect");
+#elif defined ATOMIZE
+int oatomize_setup(void)
+{
+	t_symbol *name = gensym("oatomize");
+#else
+int oroute_setup(void)
+{
+	t_symbol *name = gensym("oroute");
+#endif
+    omax_pd_class_new(oroute_class, name, (t_newmethod)oroute_new, (t_method)oroute_free, sizeof(t_oroute),  CLASS_NOINLET, A_GIMME, 0);
+    
+    t_omax_pd_proxy_class *c = NULL;
+	omax_pd_class_new(c, NULL, NULL, NULL, sizeof(t_omax_pd_proxy), CLASS_PD | CLASS_NOINLET, 0);
+    
+    omax_pd_class_addmethod(c, (t_method)odot_version, gensym("version"));
+	omax_pd_class_addmethod(c, (t_method)oroute_set, gensym("set"));
+	omax_pd_class_addmethod(c, (t_method)oroute_fullPacket, gensym("FullPacket"));
+	omax_pd_class_addanything(c, (t_method)oroute_anything);
+
+    //	omax_pd_class_addmethod(c, (t_method)opack_doc, gensym("doc")); //<<crashes
+    
+	oroute_proxy_class = c;
+    
+	ps_FullPacket = gensym("FullPacket");
+	ps_oscschemalist = gensym("/osc/schema/list");
+    
+	ODOT_PRINT_VERSION;
+	return 0;
+}
+
+#else
 void *oroute_new(t_symbol *msg, short argc, t_atom *argv)
 {
 	t_oroute *x;
 	if((x = (t_oroute *)object_alloc(oroute_class))){
 		critical_new(&(x->lock));
-		x->delegation_outlet = outlet_new(x, "FullPacket"); // unmatched outlet
+		x->delegation_outlet = outlet_new(x, "FullPacket");
 		x->outlets = (void **)malloc(argc * sizeof(void *));
 		x->proxy = (void **)malloc(argc * sizeof(void *));
 		x->selectors = (char **)malloc(argc * sizeof(char *));
@@ -545,3 +675,4 @@ int main(void)
 	ODOT_PRINT_VERSION;
 	return 0;
 }
+#endif
