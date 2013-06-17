@@ -1160,7 +1160,7 @@ void omessage_setHexFromText(t_omessage *x, char *str)
 
 void omessage_textbuf(t_omessage *x, t_symbol *msg, int argc, t_atom *argv)
 {
-    printf("%p %s \n", x, __func__);
+//    printf("%p %s \n", x, __func__);
    // printargs(argc, argv);
     
     if(argc >= 2)
@@ -1514,6 +1514,7 @@ void omessage_resetText(t_omessage *x, char *s)
     }
     else if(glist_isvisible(x->glist))
     {
+//        post("%s %d", __func__, glist_isvisible(x->glist));
         sys_vgui("%s itemconfigure text%lx -width %d -text [subst -nobackslash -nocommands -novariables [string trimright [regsub -all -line {^[ \t]+|[ \t]+$}  {%s} \"\" ]]] \n", x->canvas_id, (long)x, x->width-10, x->tk_text);
         
         omessage_getRectAndDraw(x, 1);
@@ -1523,7 +1524,7 @@ void omessage_resetText(t_omessage *x, char *s)
 
 static void omessage_getrect(t_gobj *z, t_glist *glist,int *xp1, int *yp1, int *xp2, int *yp2)
 {
-    //   post("%s", __func__);
+    //post("%s", __func__);
     t_omessage *x = (t_omessage *)z;
     int x1, y1, x2, y2;
     
@@ -1549,7 +1550,7 @@ static void omessage_getrect(t_gobj *z, t_glist *glist,int *xp1, int *yp1, int *
 
 void omessage_drawElements(t_omessage *x, t_glist *glist, int width2, int height2, int firsttime)
 {
-    printf("%s %d\n", __func__, firsttime);
+//    post("%s %d\n", __func__, firsttime);
     int x1, y1, x2, y2;
     omessage_getrect((t_gobj *)x, glist, &x1, &y1, &x2, &y2);
     int cx1 = x1;// - 2;
@@ -1566,7 +1567,7 @@ void omessage_drawElements(t_omessage *x, t_glist *glist, int width2, int height
     {
         if (firsttime)
         {
-            post("%s drawing firsttime", __func__);
+//            post("%s drawing firsttime", __func__);
             sys_vgui("namespace eval ::%s [list set canvas%lxBUTTONBINDING [bind %s <Button-1>]] \n", x->tcl_namespace, glist_getcanvas(x->glist), x->canvas_id);
             sys_vgui("namespace eval ::%s [list set canvas%lxKEYBINDING [bind %s <Key>]] \n", x->tcl_namespace, glist_getcanvas(x->glist), x->canvas_id);
             sys_vgui("namespace eval ::%s [list set canvas%lxSCROLLBINDING [bind %s <MouseWheel>]] \n", x->tcl_namespace, glist_getcanvas(x->glist), x->canvas_id);
@@ -1649,7 +1650,7 @@ static void omessage_vis(t_gobj *z, t_glist *glist, int vis)
 {
     t_omessage *x = (t_omessage *)z;
     
-    printf("%s %d\n",__func__, vis);
+//    post("%s %d\n",__func__, vis);
     if(vis)
     {
         if(!x->firsttime)
@@ -1788,7 +1789,7 @@ static void omessage_delete(t_gobj *z, t_glist *glist)
 {
     t_omessage *x = (t_omessage *)z;
    // omessage_pdnofocus_callback(x);
-    printf("%s %d %p \n",__func__, x->firsttime, glist->gl_editor);
+//    printf("%s %d %p \n",__func__, x->firsttime, glist->gl_editor);
     
     if(!x->firsttime && glist->gl_editor)
     {
@@ -1894,7 +1895,7 @@ static void omessage_save(t_gobj *z, t_binbuf *b)
 
 void omessage_free(t_omessage *x)
 {
-    printf("%s\n", __func__);
+//    printf("%s\n", __func__);
     free(x->text);
     free(x->tk_text);
     free(x->hex);
@@ -1949,7 +1950,7 @@ void *omessage_new(t_symbol *msg, short argc, t_atom *argv)
     t_omessage *x = (t_omessage *)pd_new(omessage_class->class);
     if(x)
     {
-        printf("%s %p\n", __func__, x);
+//        printf("%s %p\n", __func__, x);
         
         x->glist = (t_glist *)canvas_getcurrent();
         
@@ -2069,7 +2070,7 @@ void *omessage_new(t_symbol *msg, short argc, t_atom *argv)
         x->receive_name = NULL;
         x->receive_name = (char *)malloc(sizeof(char) * (strlen(buf)+1));
 
-        printf("%p %s %d %s\n", x, __func__, __LINE__, buf);
+//        printf("%p %s %d %s\n", x, __func__, __LINE__, buf);
         
         if(x->receive_name == NULL)
         {
@@ -2079,10 +2080,10 @@ void *omessage_new(t_symbol *msg, short argc, t_atom *argv)
         strcpy(x->receive_name, buf);
 
         
-        printf("%p %s %d\n", x, __func__, __LINE__);
+//        printf("%p %s %d\n", x, __func__, __LINE__);
 
         pd_bind(&x->ob.ob_pd, gensym(x->receive_name));
-        printf("%p %s %d\n", x, __func__, __LINE__);
+//        printf("%p %s %d\n", x, __func__, __LINE__);
 
        // printargs(argc, argv);
         
