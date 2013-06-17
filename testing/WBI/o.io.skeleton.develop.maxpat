@@ -32,12 +32,39 @@
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"frgb" : 0.0,
+					"id" : "obj-8",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 226.0, 451.0, 150.0, 20.0 ],
+					"text" : "Touch yourself"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-5",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "FullPacket" ],
+					"patching_rect" : [ 103.0, 470.0, 235.0, 20.0 ],
+					"text" : "o.io.skeleton.headshoulderskneesandtoes"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"frgb" : 0.0,
 					"id" : "obj-22",
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 118.0, 246.0, 326.0, 20.0 ],
-					"presentation_rect" : [ 168.0, 238.0, 0.0, 0.0 ],
+					"patching_rect" : [ 99.0, 262.0, 326.0, 20.0 ],
 					"text" : "Compute the height from the floor"
 				}
 
@@ -81,7 +108,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 114.0, 394.0, 602.0, 47.0 ],
+					"patching_rect" : [ 80.0, 363.0, 602.0, 47.0 ],
 					"text" : "o.expr /end/center/head/elevation/value = (dot(/end/center/head/value\\,/floor/normal/value) - dot(/floor/position/value\\,/floor/normal/value)) / l2norm(/floor/position/value)\\; /end/center/head/elevation/quality = /end/center/head/quality"
 				}
 
@@ -159,8 +186,7 @@
  ]
 					}
 ,
-					"patching_rect" : [ 127.0, 471.0, 47.0, 20.0 ],
-					"presentation_rect" : [ 132.0, 451.0, 0.0, 0.0 ],
+					"patching_rect" : [ 86.0, 434.0, 47.0, 20.0 ],
 					"saved_object_attributes" : 					{
 						"default_fontface" : 0,
 						"default_fontname" : "Arial",
@@ -432,7 +458,7 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-2", 0 ],
+					"destination" : [ "obj-5", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-17", 0 ]
@@ -495,6 +521,15 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-2", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-5", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-16", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
@@ -504,6 +539,20 @@
 			}
  ],
 		"dependency_cache" : [ 			{
+				"name" : "o.io.skeleton.headshoulderskneesandtoes.maxpat",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/testing/WBI",
+				"patcherrelativepath" : ".",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "o.io.skeleton.between.maxpat",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/testing/WBI",
+				"patcherrelativepath" : ".",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
 				"name" : "o.if.mxo",
 				"type" : "iLaX"
 			}
