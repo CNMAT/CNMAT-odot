@@ -46,6 +46,8 @@
 #define OMAX_DOC_OUTLETS_DESC (char *[]){"OSC packet", "OSC packet which has missed the scheduling deadline or if queue is full", "OSC packet which has an immediate timetag"}
 #define OMAX_DOC_SEEALSO (char *[]){"o.timetag"}
 
+#include "o.h"
+
 #ifndef WIN_VERSION
 #include <CoreServices/CoreServices.h>
 #endif
@@ -69,8 +71,6 @@
 #include "omax_util.h"
 #include "omax_doc.h"
 #include "omax_dict.h"
-
-#include "o.h"
 
 // default options
 #define DEFAULT_PACKET_SIZE 1000
