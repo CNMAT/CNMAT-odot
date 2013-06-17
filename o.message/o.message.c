@@ -1125,6 +1125,10 @@ void omessage_setTextFromString(t_omessage *x, char *str)
         post("max o_message string size = %d", OMAX_PD_MAXSTRINGSIZE);
         return;
     }
+    
+    memset(x->text, '\0', OMAX_PD_MAXSTRINGSIZE);
+    strcpy(x->text, str);
+    
     memset(x->tk_text, '\0', OMAX_PD_MAXSTRINGSIZE);
     strcpy(x->tk_text, str);
     omax_util_curlies2hashBrackets(&x->tk_text, OMAX_PD_MAXSTRINGSIZE);
@@ -1627,9 +1631,7 @@ void omessage_drawElements(t_omessage *x, t_glist *glist, int width2, int height
         }
         if (firsttime) /* raise cords over everything else */
             sys_vgui(".x%lx.c raise cord\n", glist_getcanvas(glist));
-        
-        canvas_fixlinesfor(glist, &x->ob);
-        
+                
         if(!x->editmode)
             sys_vgui("%s configure -cursor left_ptr \n", x->handle_id);
         else if(x->editmode && !x->selected)
@@ -1637,6 +1639,8 @@ void omessage_drawElements(t_omessage *x, t_glist *glist, int width2, int height
         else if(x->textediting || x->selected)
             sys_vgui("%s configure -cursor fleur \n", x->handle_id);
         
+       
+        canvas_fixlinesfor(glist, &x->ob);
         
         sys_vgui("%s itemconfigure %s -outline %s\n", x->canvas_id, x->corner_tag, (x->parse_error?  "red" : "black" ));
         sys_vgui("%s itemconfigure %sTL -outline %s\n", x->canvas_id, x->corner_tag, (x->parse_error? "red" : "black" ));
@@ -1653,9 +1657,10 @@ static void omessage_vis(t_gobj *z, t_glist *glist, int vis)
 //    post("%s %d\n",__func__, vis);
     if(vis)
     {
+        
         if(!x->firsttime)
         {
-            omessage_delete(z, glist);
+     //       omessage_delete(z, glist);
             x->firsttime = 1;
         }
         
@@ -1666,6 +1671,7 @@ static void omessage_vis(t_gobj *z, t_glist *glist, int vis)
         {
             omessage_getTextAndCreateEditor(x, 1);
         }
+
     }
     else
     {
@@ -1791,7 +1797,7 @@ static void omessage_delete(t_gobj *z, t_glist *glist)
    // omessage_pdnofocus_callback(x);
 //    printf("%s %d %p \n",__func__, x->firsttime, glist->gl_editor);
     
-    if(!x->firsttime && glist->gl_editor)
+    if(!x->firsttime && glist_getcanvas(glist)->gl_editor)
     {
         sys_vgui("%s delete %s\n", x->canvas_id, x->border_tag);
         sys_vgui("%s delete %s\n", x->canvas_id, x->corner_tag);
@@ -1863,7 +1869,7 @@ static void omessage_save(t_gobj *z, t_binbuf *b)
     t_omessage *x = (t_omessage *)z;
     omessage_setHexFromText(x, x->text);
 
-    if(!x->firsttime)
+    if(!x->firsttime && glist_getcanvas(x->glist)->gl_editor)
         omessage_pdnofocus_callback(x);
     
     binbuf_addv(b, "ssiisiis", gensym("#X"),gensym("obj"),(t_int)x->ob.te_xpix, (t_int)x->ob.te_ypix, gensym("omessage"), x->width, x->height, gensym("hex"));

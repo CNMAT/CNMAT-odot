@@ -1,31 +1,10 @@
-#N canvas 564 112 938 605 10;
-#X floatatom 58 425 5 0 0 0 - - -;
-#X floatatom 65 233 5 0 0 0 - - -;
-#X floatatom 134 426 5 0 0 0 - - -;
-#X floatatom 78 31 5 0 0 0 - - -;
-#X msg 78 58 5 4 \$1 paul 2;
-#X obj 340 274 omessage 207 23 hex 2F6C6973742031203220332034202261222022722220227322202274220A
-;
-#X obj 341 327 oexpr map(fn(l \, i)#[ assign("/listelem/" +i \, l)
-\; ]# \, /list \, aseq(1 \, length(/list)));
-#X obj 350 400 omessage 207 127 hex 2F6C697374203120322033203420226122202272222022732220227422200A2F
-6C697374656C656D2F312031200A2F6C697374656C656D2F322032200A2F6C69 7374656C656D2F332033200A2F6C697374656C656D2F342034200A2F6C697374
-656C656D2F3520226122200A2F6C697374656C656D2F3620227222200A2F6C69 7374656C656D2F3720227322200A2F6C697374656C656D2F3820227422200A
-;
-#X obj 65 286 opack /bar;
-#X obj 66 323 oexpr /foo = sin(/bar) \; /squid = /foo * 2;
-#X obj 66 361 oroute /foo /squid;
-#X obj 78 85 opack /squid;
-#X obj 78 112 oexpr /fish = [ /squid[[2]] \, steve ];
-#X obj 78 167 oprint;
-#X obj 567 272 omessage 207 23 hex 2F6C6973742031302039203820372036203520342033203220310A
-;
-#N canvas 305 61 1344 771 oexpr-functions 0;
-#X obj 65 -112 omenu;
-#X obj 65 -50 omenu;
-#X obj 65 12 omenu;
-#X obj 65 74 omenu;
-#X obj 65 137 omenu;
+#N canvas 173 75 1082 756 12;
+#N canvas 230 22 1344 771 functions 0;
+#X obj 65 -12 omenu;
+#X obj 65 50 omenu;
+#X obj 65 112 omenu;
+#X obj 65 174 omenu;
+#X obj 65 237 omenu;
 #N canvas 902 46 450 300 init 0;
 #X obj -1476 58 oexpr;
 #X msg -1476 -65 /math \, /vector \, /statistics \, /string \, /predicate
@@ -41,8 +20,8 @@
 #X connect 3 0 2 0;
 #X connect 4 0 6 0;
 #X connect 5 0 1 0;
-#X restore 65 -170 pd init;
-#X obj 65 195 omenu;
+#X restore 65 -70 pd init;
+#X obj 65 295 omenu;
 #N canvas 797 299 450 300 /math/operator/assignment 0;
 #X obj 236 204 outlet;
 #X obj 15 245 outlet;
@@ -59,9 +38,9 @@
 #X connect 5 0 1 0;
 #X connect 5 1 0 0;
 #X connect 6 0 7 0;
-#X restore 65 47 pd /math/operator/assignment;
-#X obj 65 254 omenu;
-#X obj 65 312 omenu;
+#X restore 65 147 pd /math/operator/assignment;
+#X obj 65 354 omenu;
+#X obj 65 412 omenu;
 #N canvas 897 505 450 300 /math/conversion 0;
 #X obj 256 164 outlet;
 #X obj 35 205 outlet;
@@ -78,8 +57,8 @@
 #X connect 5 0 1 0;
 #X connect 5 1 0 0;
 #X connect 6 0 7 0;
-#X restore 65 286 pd /math/conversion ________;
-#X obj 65 372 omenu;
+#X restore 65 386 pd /math/conversion ________;
+#X obj 65 472 omenu;
 #N canvas 897 505 450 300 /math/specialfunction 0;
 #X obj 256 164 outlet;
 #X obj 35 205 outlet;
@@ -96,8 +75,8 @@
 #X connect 5 0 1 0;
 #X connect 5 1 0 0;
 #X connect 6 0 7 0;
-#X restore 65 346 pd /math/specialfunction ___;
-#X obj 65 431 omenu;
+#X restore 65 446 pd /math/specialfunction ___;
+#X obj 65 531 omenu;
 #N canvas 897 505 450 300 /math/constant 0;
 #X obj 256 164 outlet;
 #X obj 35 205 outlet;
@@ -114,9 +93,9 @@
 #X connect 5 0 1 0;
 #X connect 5 1 0 0;
 #X connect 6 0 7 0;
-#X restore 65 405 pd /math/constant __________;
-#X obj 286 -113 omenu;
-#X obj 286 -56 omenu;
+#X restore 65 505 pd /math/constant __________;
+#X obj 316 -13 omenu;
+#X obj 316 44 omenu;
 #N canvas 897 505 450 300 /vector 0;
 #X obj 256 164 outlet;
 #X obj 35 205 outlet;
@@ -129,7 +108,7 @@
 #X connect 4 0 1 0;
 #X connect 4 1 0 0;
 #X connect 5 0 4 0;
-#X restore 286 -139 pd /vector _________________;
+#X restore 316 -39 pd /vector _________________;
 #N canvas 897 505 450 300 /statistics 0;
 #X obj 256 164 outlet;
 #X obj 35 205 outlet;
@@ -146,8 +125,8 @@
 #X connect 5 0 1 0;
 #X connect 5 1 0 0;
 #X connect 6 0 7 0;
-#X restore 286 -82 pd /statistics _____________;
-#X obj 286 1 omenu;
+#X restore 316 18 pd /statistics _____________;
+#X obj 316 101 omenu;
 #N canvas 897 505 450 300 /string/operator 0;
 #X obj 256 164 outlet;
 #X obj 35 205 outlet;
@@ -164,8 +143,8 @@
 #X connect 5 0 6 0;
 #X connect 7 0 1 0;
 #X connect 7 1 0 0;
-#X restore 286 -25 pd /string/operator ________;
-#X obj 286 61 omenu;
+#X restore 316 75 pd /string/operator ________;
+#X obj 316 161 omenu;
 #N canvas 897 505 450 300 /predicate 0;
 #X obj 256 164 outlet;
 #X obj 35 205 outlet;
@@ -182,8 +161,8 @@
 #X connect 5 0 6 0;
 #X connect 7 0 1 0;
 #X connect 7 1 0 0;
-#X restore 286 35 pd /predicate ______________;
-#X obj 286 121 omenu;
+#X restore 316 135 pd /predicate ______________;
+#X obj 316 221 omenu;
 #N canvas 897 505 450 300 /conditional 0;
 #X obj 256 164 outlet;
 #X obj 35 205 outlet;
@@ -200,8 +179,8 @@
 #X connect 5 0 6 0;
 #X connect 7 0 1 0;
 #X connect 7 1 0 0;
-#X restore 286 95 pd /conditional ____________;
-#X obj 286 181 omenu;
+#X restore 316 195 pd /conditional ____________;
+#X obj 316 281 omenu;
 #N canvas 897 505 450 300 /core 0;
 #X obj 256 164 outlet;
 #X obj 35 205 outlet;
@@ -218,9 +197,9 @@
 #X connect 5 0 6 0;
 #X connect 7 0 1 0;
 #X connect 7 1 0 0;
-#X restore 286 155 pd /core ___________________;
-#X obj 151 464 s selector;
-#X obj 372 216 s selector;
+#X restore 316 255 pd /core ___________________;
+#X obj 151 564 s selector;
+#X obj 402 316 s selector;
 #N canvas 217 553 932 555 selection 0;
 #X obj 95 117 oexpr;
 #X obj 95 150 oroute /doc/function;
@@ -250,7 +229,7 @@
 #X connect 11 3 8 0;
 #X connect 11 4 8 0;
 #X connect 11 5 3 0;
-#X restore 509 -141 pd selection;
+#X restore 288 572 pd selection;
 #N canvas 889 210 450 300 /math/operator/logical 0;
 #X obj 226 194 outlet;
 #X obj 5 235 outlet;
@@ -267,7 +246,7 @@
 #X connect 5 0 6 0;
 #X connect 7 0 1 0;
 #X connect 7 1 0 0;
-#X restore 65 -15 pd /math/operator/logical __;
+#X restore 65 85 pd /math/operator/logical __;
 #N canvas 886 313 450 300 /math/arithmetic 0;
 #X obj 246 174 outlet;
 #X obj 25 215 outlet;
@@ -284,7 +263,7 @@
 #X connect 5 0 1 0;
 #X connect 5 1 0 0;
 #X connect 6 0 7 0;
-#X restore 65 109 pd /math/arithmetic ________;
+#X restore 65 209 pd /math/arithmetic ________;
 #N canvas 897 505 450 300 /math/trigonometric 0;
 #X obj 256 164 outlet;
 #X obj 35 205 outlet;
@@ -301,7 +280,7 @@
 #X connect 5 0 1 0;
 #X connect 5 1 0 0;
 #X connect 6 0 7 0;
-#X restore 65 169 pd /math/trigonometric _____;
+#X restore 65 269 pd /math/trigonometric _____;
 #N canvas 897 505 450 300 /math/power 0;
 #X obj 256 164 outlet;
 #X obj 35 205 outlet;
@@ -318,8 +297,12 @@
 #X connect 5 0 1 0;
 #X connect 5 1 0 0;
 #X connect 6 0 7 0;
-#X restore 65 228 pd /math/power _____________;
-#X obj 507 7 omessage 556 62 hex 0A0A;
+#X restore 65 328 pd /math/power _____________;
+#X obj 577 107 omessage 556 100 hex 2F6E756D5F72657175697265645F617267732032200A2F6E756D5F6F7074696F
+6E616C5F617267732030200A2F6172672F72657175697265642F6E616D652F31 20226C656674206F706572616E6422200A2F6172672F72657175697265642F74
+797065732F3120226E756D6265722C206C6973742C20737472696E672C204F53 43206164647265737322200A2F6172672F72657175697265642F6E616D652F32
+20227269676874206F706572616E6422200A2F6172672F72657175697265642F 74797065732F3220226E756D6265722C206C6973742C20737472696E672C204F
+5343206164647265737322200A;
 #N canvas 720 22 450 300 /math/operator/arithmetic 0;
 #X obj -45 118 oroute /math/operator/arithmetic;
 #X obj -45 75 inlet;
@@ -332,7 +315,7 @@
 #X connect 1 0 0 0;
 #X connect 4 0 5 0;
 #X connect 5 0 3 0;
-#X restore 65 -139 pd /math/operator/arithmetic;
+#X restore 65 -39 pd /math/operator/arithmetic;
 #N canvas 864 67 450 300 /math/operator/relational 0;
 #X obj 74 25 inlet;
 #X obj 216 184 outlet;
@@ -349,17 +332,19 @@
 #X connect 4 1 1 0;
 #X connect 5 0 6 0;
 #X connect 6 0 2 0;
-#X restore 65 -77 pd /math/operator/relational;
-#X obj 1054 -104 r name;
-#X obj 507 -80 omessage 554 36 hex 2F6E616D652022646976220A2F646F63737472696E672022416464220A0A
+#X restore 65 23 pd /math/operator/relational;
+#X obj 1124 -4 r name;
+#X obj 577 20 omessage 554 40 hex 2F6E616D6520222B22200A2F646F63737472696E67202241646422200A
 ;
-#X obj 1056 -17 r args;
-#X obj 835 167 r signature;
-#X obj 569 196 omessage 273 23 hex 2F7369676E617475726520222F726573756C74203D222022243122203E202224
-32220A;
-#X obj 569 240 oexpr eval(/signature);
-#X obj 570 280 omessage 273 36 hex 2F7369676E617475726520222F726573756C74203D202431203E202432220A
+#X obj 1126 83 r args;
+#X obj 852 226 r signature;
+#X obj 586 255 omessage 273 25 hex 2F7369676E617475726520222F726573756C74203D202431202B20243222200A
 ;
+#X obj 586 299 oexpr eval(/signature);
+#X obj 587 339 omessage 273 25 hex 2F7369676E617475726520222F726573756C74203D202431203E2024322220
+;
+#X text 1131 -129 _;
+#X text 572 -12 function information:;
 #X connect 0 1 36 1;
 #X connect 1 1 30 1;
 #X connect 2 1 7 1;
@@ -413,16 +398,432 @@
 #X connect 40 0 41 1;
 #X connect 41 0 42 0;
 #X connect 42 0 43 1;
-#X restore 478 63 pd oexpr-functions;
-#X connect 1 0 8 0;
-#X connect 3 0 4 0;
-#X connect 4 0 11 0;
+#X restore -150 254 pd functions;
+#X obj -150 82 omessage 733 115 hex 2F6E616D6520226F6578707222200A2F73686F727420224576616C7561746520
+6120432D6C696B652065787072657373696F6E20636F6E7461696E696E67204F 5343206164647265737365732E22200A2F6C6F6E6720225768656E2069742072
+657665697665732061207061636B65742C206F2E657870722073756273746974 7574657320616E79204F53432061646472657373657320636F6E7461696E6564
+20696E207468652065787072657373696F6E20666F72207468652076616C7565 7320746F20776869636820746865792061726520626F756E6420696E20746865
+20696E636F6D696E67207061636B65742E20205468652065787072657373696F 6E206973207468656E206576616C756174656420616E64207468652072657375
+6C74696E672062756E646C652C20636F6E7461696E696E6720616E7920736964 652065666665637473206F66207468652065787072657373696F6E2C20697320
+6F75747075742E22200A2F696E6C65742F3120224F5343207061636B65742063 6F6E7461696E696E672061646472657373657320746861742074686520657870
+72657373696F6E2077696C6C206265206170706C69656420746F2E22200A2F6F 75746C65742F312022546865204F5343207061636B657420636F6E7461696E69
+6E672074686520726573756C7473206F66207468652065787072657373696F6E 2E22200A
+;
+#N canvas 714 278 624 461 init 0;
+#X obj -414 90 oexpr;
+#X msg -414 58 doc;
+#X obj -346 364 outlet;
+#X obj -414 18 loadbang;
+#X obj -414 124 oroute /doc;
+#X obj -414 199 oselect /outlet /inlet /long /short;
+#X obj -345 298 ocollect;
+#X obj -414 159 oroute /desc;
+#X obj -108 199 oselect /name;
+#X obj -414 229 t b a;
+#X connect 0 0 4 0;
+#X connect 1 0 0 0;
+#X connect 3 0 1 0;
+#X connect 4 0 7 0;
+#X connect 5 0 9 0;
+#X connect 5 1 6 0;
+#X connect 5 2 6 0;
+#X connect 5 3 6 0;
+#X connect 6 0 2 0;
+#X connect 7 0 5 0;
+#X connect 7 1 8 0;
+#X connect 8 0 6 0;
+#X connect 9 0 6 0;
+#X connect 9 1 6 0;
+#X restore 576 44 pd init;
+#X obj -150 44 oexpr;
+#X obj 303 238 loadbang;
+#X msg 303 273 0 \, 1 2000;
+#X obj 303 308 line 1 20;
+#X obj 303 343 omessage 100 55 hex 2F74696D652022243122200A2F667265712031200A2F706861736520302E20
+;
+#X obj 303 413 oexpr /y = sin(2 * pi() * /freq * /time + /phase);
+#X obj 211 341 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 303 448 oif /time == 1;
+#X obj 284 532 omessage 135 70 hex 2F74696D6520302E3939200A2F667265712031200A2F706861736520302E200A
+2F79202D302E30363237393035200A;
+#X obj 466 537 oroute /y;
+#X text -261 331 |;
+#N canvas 581 225 565 431 speedlim 0;
+#X text 14 15 omessage is currently not automatically speedlimited
+so can be expensive with streaming data;
+#X obj 61 177 inlet;
+#X obj 32 258 ovar;
+#X obj 32 114 loadbang;
+#X obj 32 331 outlet;
+#X obj 137 126 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 32 148 metro 50;
+#X obj 32 288 ochange;
+#X connect 1 0 2 1;
+#X connect 2 0 7 0;
+#X connect 3 0 6 0;
 #X connect 5 0 6 0;
-#X connect 6 0 7 1;
+#X connect 6 0 2 0;
+#X connect 7 0 4 0;
+#X restore 412 486 pd speedlim;
+#X obj 466 591 spigot;
+#X obj 511 567 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 469 637 hsl 128 15 -1 1 0 0 empty empty /y -25 8 0 14 -262144
+-1 -1 0 1;
+#X msg 393 273 stop;
+#N canvas 197 353 1207 630 conditional-operators 0;
+#X obj 158 37 loadbang;
+#X msg 158 72 0 \, 1 2000;
+#X obj 158 107 line 1 20;
+#X obj 158 137 omessage 100 25 hex 2F74696D65202224312220;
+#X obj 158 177 oexpr /freq = /freq ?? 1 \; /phase = /phase ?? 0 \;
+/y = sin(2 * pi() * /freq * /time + /phase);
+#X obj 41 385 omessage 145 70 hex 2F74696D6520302E3939200A2F6672657120312E200A2F706861736520302E20
+0A2F79202D302E30363237393035200A;
+#X obj 267 336 oexpr /sign = if(/y < 0 \, -1 \, if(/y > 0 \, 1 \, 0))
+;
+#X obj 744 336 oexpr /sign = /y < 0 ? -1 : /y > 0 ? 1 : 0;
+#X text 675 336 ==;
+#X text 673 125 ?? is the "null coalescing operator" which returns
+its left argument if it is bound in the packet \, or its right argument
+otherwise;
+#X obj 158 255 oif /time == 1;
+#X obj 47 182 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 257 399 omessage 145 85 hex 2F74696D6520302E3939200A2F6672657120312E200A2F706861736520302E20
+0A2F79202D302E30363237393035200A2F7369676E202D312E200A;
+#X obj 745 422 omessage 145 85 hex 2F74696D6520302E3939200A2F6672657120312E200A2F706861736520302E20
+0A2F79202D302E30363237393035200A2F7369676E202D312E200A;
+#X msg 258 72 stop;
+#N canvas 581 225 472 511 speedlim 0;
+#X text 14 15 omessage is currently not automatically speedlimited
+so can be expensive with streaming data;
+#X obj 61 177 inlet;
+#X obj 32 218 ovar;
+#X obj 32 114 loadbang;
+#X obj 32 295 outlet;
+#X obj 137 126 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 32 148 metro 50;
+#X obj 32 256 ochange;
+#X connect 1 0 2 1;
+#X connect 2 0 7 0;
+#X connect 3 0 6 0;
+#X connect 5 0 6 0;
+#X connect 6 0 2 0;
+#X connect 7 0 4 0;
+#X restore 267 283 pd speedlim;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 2 0 3 0;
+#X connect 3 0 4 0;
+#X connect 4 0 10 0;
+#X connect 6 0 12 1;
+#X connect 7 0 13 1;
+#X connect 10 0 11 0;
+#X connect 10 1 15 0;
+#X connect 11 0 1 0;
+#X connect 14 0 2 0;
+#X connect 15 0 5 1;
+#X connect 15 0 6 0;
+#X connect 15 0 7 0;
+#X restore -150 286 pd conditional-operators;
+#N canvas 181 40 1034 786 list-construction 0;
+#X obj 49 0 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 49 28 oexpr /foo = list(1 \, 2 \, 3);
+#X obj 54 68 omessage 100 25 hex 2F666F6F203120322E203320;
+#X obj 304 68 omessage 100 25 hex 2F666F6F203120322E203320;
+#X obj 299 28 oexpr /foo = [1 \, 2 \, 3];
+#X text 518 49 the list function is the basic list constructor which
+is equvalent to enclosing comma-separated items in square brackets.
+;
+#X text 518 17 list(x1 \, x2 \, ... \, xn);
+#X obj 49 160 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 54 228 omessage 213 25 hex 2F62617220312E20332E20352E20372E20392E20
+;
+#X obj 304 228 omessage 169 25 hex 2F6261722031203320352037203920;
+#X obj 49 188 oexpr /bar = aseq(1 \, 10 \, 2);
+#X obj 299 188 oexpr /bar = [1:2:10];
+#X text 529 212 arithmetic sequence. similar to enclosing colon separated
+values in square brackets.;
+#X text 527 184 aseq(start \, end \, optional: step);
+#X text 2 127 |;
+#X obj 47 345 oexpr /bar = nfill(5 \, 6);
+#X obj 49 393 omessage 213 25 hex 2F62617220312E20332E20352E20372E20392E20
+;
+#X obj 47 310 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X text 299 367 create a list of n copies of x;
+#X text 300 345 nfill(n \, x);
+#X obj 54 588 omessage 216 40 hex 2F666F6F203420352036200A2F626172203120322E20332E2034203520362037
+2E20382E203920;
+#X obj 374 588 omessage 256 40 hex 2F666F6F203420352036200A2F626172203120322E20332E2034203520362037
+2E20382E203920;
+#X obj 49 548 oexpr /bar = [1 \, 2 \, 3 \, /foo \, 7 \, 8 \, 9];
+#X obj 369 548 oexpr /bar = list(1 \, 2 \, 3 \, /foo \, 7 \, 8 \, 9)
+;
+#X obj 49 504 omessage 100 25 hex 2F666F6F20342035203620;
+#X text 361 456 OSC addresses within square brackets are expanded and
+spliced into the list just as they would be if the list had been constructed
+using the equivalent function;
+#N canvas 396 113 870 668 note 0;
+#X obj 109 20 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 109 85 oexpr /tt = typetags(/foo);
+#X obj 109 132 omessage 160 40 hex 2F666F6F203120322E2033200A2F747420276927202764272027692720
+;
+#X obj 106 271 oexpr /tt = typetags(/foo);
+#X obj 116 321 omessage 155 40 hex 2F666F6F203120322033200A2F747420276927202769272027692720
+;
+#X obj 106 224 omessage 100 25 hex 2F666F6F20312032203320;
+#X text 7 111 |;
+#X text 364 53 since pd does not use integers there is some inconsistency
+when initializing a list in an object box. see the typetag information
+here.;
+#X text 364 213 when initialized in an omessage object \, numbers without
+a decimal are considered integers.;
+#X obj 109 410 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 109 475 oexpr /tt = typetags(/foo);
+#X obj 109 522 omessage 160 40 hex 2F666F6F203120322033200A2F747420276927202769272027692720
+;
+#X obj 109 441 oexpr /foo = int32([1 \, 2 \, 3]);
+#X text 374 433 as a workaround \, you can cast the list as a specified
+type for example int32();
+#X obj 109 51 oexpr /foo = [1 \, 2 \, 3];
+#X connect 0 0 14 0;
+#X connect 1 0 2 1;
+#X connect 3 0 4 1;
+#X connect 5 0 3 0;
+#X connect 9 0 12 0;
+#X connect 10 0 11 1;
+#X connect 12 0 10 0;
+#X connect 14 0 1 0;
+#X restore 721 362 pd note on initialization;
+#X connect 0 0 1 0;
+#X connect 0 0 4 0;
+#X connect 1 0 2 1;
+#X connect 4 0 3 1;
+#X connect 7 0 10 0;
+#X connect 7 0 11 0;
+#X connect 10 0 8 1;
+#X connect 11 0 9 1;
+#X connect 15 0 16 1;
+#X connect 17 0 15 0;
+#X connect 22 0 20 1;
+#X connect 23 0 21 1;
+#X connect 24 0 22 0;
+#X connect 24 0 23 0;
+#X restore -150 318 pd list-construction;
+#N canvas 422 63 1036 839 list-manipulation 0;
+#X obj 398 41 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 398 69 oexpr /bar = aseq(0. \, 10.);
+#X obj 398 124 oexpr /len/bar = length(/bar) \; /foo = /bar[[/len/bar
+- 1]];
+#X obj 398 215 oexpr /subset = /bar[[2 \, 3 \, 4]];
+#X obj 398 340 oexpr /rev = reverse(/bar);
+#X obj 398 385 oexpr /sum = sum(/bar) \; /cumsum = cumsum(/bar);
+#X obj 398 446 oexpr /extrema = extrema(/bar);
+#X obj 398 611 oexpr /norm = /bar / max(/bar);
+#X obj 19 645 omessage 349 145 hex 2F62617220302E20312E20322E20332E20342E20352E20362E20372E20382E20
+392E2031302E200A2F6C656E2F626172203131200A2F666F6F2031302E200A2F 73756273657420322E20332E20342E200A2F7265762031302E20392E20382E20
+372E20362E20352E20342E20332E20322E20312E20302E200A2F73756D203535 2E200A2F63756D73756D20302031203320362031302031352032312032382033
+36203435203535200A2F65787472656D6120302E2031302E200A2F6E6F726D20 302E20302E3120302E3220302E3320302E3420302E3520302E3620302E372030
+2E3820302E3920312E20;
+#X obj 20 495 omessage 333 130 hex 2F62617220302E20312E20322E20332E20342E20352E20362E20372E20382E20
+392E2031302E200A2F6C656E2F626172203131200A2F666F6F2031302E200A2F 73756273657420322E20332E20342E200A2F7265762031302E20392E20382E20
+372E20362E20352E20342E20332E20322E20312E20302E200A2F73756D203535 2E200A2F63756D73756D20302031203320362031302031352032312032382033
+36203435203535200A2F65787472656D6120302E2031302E20;
+#X obj 20 253 omessage 320 70 hex 2F62617220302E20312E20322E20332E20342E20352E20362E20372E20382E20
+392E2031302E200A2F6C656E2F626172203131200A2F666F6F2031302E200A2F 73756273657420322E20332E20342E20
+;
+#X obj 24 175 omessage 318 55 hex 2F62617220302E20312E20322E20332E20342E20352E20362E20372E20382E20
+392E2031302E200A2F6C656E2F626172203131200A2F666F6F2031302E20;
+#X obj 24 105 omessage 308 25 hex 2F62617220302E20312E20322E20332E20342E20352E20362E20372E20382E20
+392E2031302E20;
+#X text -29 364 |;
+#X text 697 -11 -;
+#X text 661 64 construct a list;
+#X text 662 125 double-square brackets can be used to index elements
+of a list;
+#X text 665 208 use comma separated values to extract more than one
+list element;
+#X text 667 390 some list operations;
+#X text 668 611 arithmetic operations work over lists;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 1 0 12 1;
+#X connect 2 0 3 0;
+#X connect 2 0 11 1;
+#X connect 3 0 4 0;
+#X connect 3 0 10 1;
+#X connect 4 0 5 0;
+#X connect 5 0 6 0;
+#X connect 6 0 7 0;
+#X connect 6 0 9 1;
+#X connect 7 0 8 1;
+#X restore -150 350 pd list-manipulation;
+#N canvas 620 235 892 648 prevent-expansion 0;
+#X obj 337 96 omessage 100 25 hex 2F666F6F20342035203620;
+#X obj 337 161 oexpr /bar = [1 \, 2 \, 3 \, /foo \, quote(/foo) \,
+7 \, 8 \, 9];
+#X obj 337 356 oexpr /unquoted = value(/bar[[6]]);
+#X text 356 192 prevent expansion of OSC addresses by placing them
+inside a call to the quote() function;
+#X obj 50 222 omessage 267 40 hex 2F666F6F203420352036200A2F626172203120322E20332E2034203520362022
+2F666F6F2220372E20382E203920;
+#X obj 50 412 omessage 294 55 hex 2F666F6F203420352036200A2F626172203120322E20332E2034203520362022
+2F666F6F2220372E20382E2039200A2F756E71756F74656420342035203620;
+#X text 362 388 to force expansion \, use the value() function;
+#X text -5 3 |;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 1 0 4 1;
+#X connect 2 0 5 1;
+#X restore -150 382 pd prevent-expansion;
+#N canvas 493 198 860 571 dynamic-expr 0;
+#X obj 352 306 oexpr eval(/foo);
+#X obj 28 356 omessage 331 55 hex 2F666F6F20222F626172203D2073696E2832202A2070692829202A203434302E
+202A202F74696D652922200A2F74696D6520302E32200A2F62617220332E3532 383936652D313420
+;
+#X obj 352 152 omessage 302 25 hex 2F666F6F20222F626172203D2073696E2832202A2070692829202A203430302E
+202A20302E35292220;
+#X obj 391 210 omessage 334 40 hex 2F666F6F20222F626172203D2073696E2832202A2070692829202A203434302E
+202A202F74696D652922200A2F74696D6520302E3220;
+#X obj 352 152 omessage 302 25 hex 2F666F6F20222F626172203D2073696E2832202A2070692829202A203430302E
+202A20302E35292220;
+#X text 1 -4 -;
+#X text 47 44 the eval function takes an OSC address as an argument
+and compiles and executes its data;
+#X connect 0 0 1 1;
+#X connect 2 0 0 0;
+#X connect 3 0 0 0;
+#X restore -150 414 pd dynamic-expr;
+#N canvas 254 22 1066 902 high-order-functions 0;
+#X obj 312 289 omessage 243 25 hex 2F6C69737420312032203320342022612220227222202273222022742220
+;
+#X obj 312 329 oexpr map(fn(l \, i)#[ assign("/listelem/" +i \, l)
+\; ]# \, /list \, aseq(1 \, length(/list)));
+#X obj 422 419 oroute /list;
+#X obj 76 412 omessage 243 145 hex 2F6C697374203120322033203420226122202272222022732220227422200A2F
+6C697374656C656D2F312031200A2F6C697374656C656D2F322032200A2F6C69 7374656C656D2F332033200A2F6C697374656C656D2F342034200A2F6C697374
+656C656D2F3520226122200A2F6C697374656C656D2F3620227222200A2F6C69 7374656C656D2F3720227322200A2F6C697374656C656D2F382022742220
+;
+#X obj 515 458 oexpr map(fn(v)#[ if(bound(/newlist) \, /newlist = list(/newlist
+\, value(v)) \, /newlist = value(v)) \; ]# \, getaddresses());
+#X obj 279 599 omessage 243 160 hex 2F6C697374656C656D2F312031200A2F6C697374656C656D2F322032200A2F6C
+697374656C656D2F332033200A2F6C697374656C656D2F342034200A2F6C6973 74656C656D2F3520226122200A2F6C697374656C656D2F3620227222200A2F6C
+697374656C656D2F3720227322200A2F6C697374656C656D2F3820227422200A 2F6E65776C697374203120322033203420226122202272222022732220227422
+202205/02220;
+#X obj 676 570 oroute /listelem;
+#X obj 565 612 omessage 243 40 hex 2F6E65776C697374203120322033203420226122202272222022732220227422
+202205/02220;
+#X obj 93 -93 omessage 134 40 hex 2F66756E63202273696E22200A2F61726720332E313431353920
+;
+#X obj 93 -28 oexpr /result = apply(/func \, /arg);
+#X obj 94 11 omessage 216 55 hex 2F66756E63202273696E22200A2F61726720332E3134313539200A2F72657375
+6C7420322E3635333539652D303620;
+#X obj 426 -36 oexpr apply(fn(a \, b)#[ /sum = a + b \; /product =
+a * b \; ]# \, /a \, /b);
+#X obj 426 -96 omessage 134 40 hex 2F612032200A2F62203320;
+#X obj 426 40 omessage 216 70 hex 2F612032200A2F622033200A2F73756D2035200A2F70726F64756374203620
+;
+#X text 91 122 Anonymous functions are supported with the following
+syntax: fn(arg1 \, arg2 \, ... \, argn)expr1 \; expr2 \; exprn \; The
+keyword 'lambda' is an alias for 'fn';
+#X text 7 -156 -;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 1 0 3 1;
+#X connect 2 1 4 0;
+#X connect 4 0 5 1;
+#X connect 4 0 6 0;
+#X connect 6 1 7 1;
 #X connect 8 0 9 0;
-#X connect 9 0 10 0;
-#X connect 10 0 0 0;
-#X connect 10 1 2 0;
-#X connect 11 0 12 0;
-#X connect 12 0 13 0;
-#X connect 14 0 6 0;
+#X connect 9 0 10 1;
+#X connect 11 0 13 1;
+#X connect 12 0 11 0;
+#X restore -150 446 pd high-order-functions;
+#N canvas 367 75 1072 699 introspection 0;
+#X obj 350 149 oexpr /hasstuff = !emptybundle();
+#X obj 350 202 oexpr /addresses = getaddresses();
+#X obj 350 257 oexpr /msgcount = getmsgcount();
+#X obj 350 343 oexpr /bloo = /addresses[[1]];
+#X obj 729 348 oexpr /bloo = value(/addresses[[1]]);
+#X obj 350 78 omessage 193 40 hex 2F666F6F20226122202272222022732220227422200A2F62617220226F222022
+05)*;
+#X text 624 148 see if the bundle is empty;
+#X text 625 203 get a list of all the addresses in the bundle;
+#X text 625 255 get the number of messages in the bundle;
+#X text 432 549 the addresses assigned to /addresses are strings and
+will not be interpreted unless passed to the values() function;
+#X obj 66 426 omessage 291 100 hex 2F666F6F20226122202272222022732220227422200A2F62617220226F222022
+69222022652220226E22200A2F68617373747566662074727565200A2F616464 72657373657320222F666F6F2220222F6261722220222F686173737475666622
+200A2F6D7367636F756E742034200A2F626C6F6F20222F6261722220;
+#X obj 445 426 omessage 291 100 hex 2F666F6F20226122202272222022732220227422200A2F62617220226F222022
+69222022652220226E22200A2F68617373747566662074727565200A2F616464 72657373657320222F666F6F2220222F6261722220222F686173737475666622
+200A2F6D7367636F756E742034200A2F626C6F6F20226F222022692220226522 20226E2220
+;
+#X text 13 5 -;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 2 0 3 0;
+#X connect 2 0 4 0;
+#X connect 3 0 10 1;
+#X connect 4 0 11 1;
+#X connect 5 0 0 0;
+#X restore -150 478 pd introspection;
+#N canvas 334 147 1163 741 documentation 0;
+#X obj 71 361 oexpr;
+#X msg 71 84 doc;
+#X obj 55 433 omessage 543 220 hex 2F646F632F6E616D6520226F6578707222200A2F646F632F646573632F73686F
+727420224576616C75617465206120432D6C696B652065787072657373696F6E 20636F6E7461696E696E67204F5343206164647265737365732E22200A2F646F
+632F646573632F6C6F6E6720225768656E206974207265766569766573206120 7061636B65742C206F2E6578707220737562737469747574657320616E79204F
+53432061646472657373657320636F6E7461696E656420696E20746865206578 7072657373696F6E20666F72207468652076616C75657320746F207768696368
+20746865792061726520626F756E6420696E2074686520696E636F6D696E6720 7061636B65742E205468652065787072657373696F6E206973207468656E2065
+76616C756174656420616E642074686520726573756C74696E672062756E646C 652C20636F6E7461696E696E6720616E7920736964652065666665637473206F
+66207468652065787072657373696F6E2C206973206F75747075742E22200A2F 646F632F6E696E6C6574732031200A2F646F632F6E6F75746C6574732031200A
+2F646F632F646573632F696E6C65742F3120224F5343207061636B657420636F 6E7461696E696E67206164647265737365732074686174207468652065787072
+657373696F6E2077696C6C206265206170706C69656420746F2E22200A2F646F 632F646573632F6F75746C65742F312022546865204F5343207061636B657420
+636F6E7461696E696E672074686520726573756C7473206F6620746865206578 7072657373696F6E2E22200A2F646F632F736565616C736F20226F2E63616C6C
+70617463682220226F2E69662220226F2E636F6E642220226F2E7768656E2220 226F2E756E6C657373222022657870722220226A69742E657870722220
+;
+#X msg 121 164 doc-cat;
+#X msg 201 234 doc-cat /math/operator/*;
+#X msg 421 234 doc-cat /math/constant;
+#X msg 413 314 doc-func sin;
+#X text 130 70 oexpr (like all odot objects) responds to the doc message
+and produces an OSC bundle with basic information about the object
+;
+#X text 195 161 get a bundle of all function categories;
+#X text 545 312 get documentation for a specific function;
+#X text 5 0 -;
+#X text 621 229 get the functions contained in a specific category
+(pattern matching works);
+#X connect 0 0 2 1;
+#X connect 1 0 0 0;
+#X connect 3 0 0 0;
+#X connect 4 0 0 0;
+#X connect 5 0 0 0;
+#X connect 6 0 0 0;
+#X restore -150 510 pd documentation;
+#X connect 2 0 1 1;
+#X connect 4 0 5 0;
+#X connect 5 0 6 0;
+#X connect 6 0 7 0;
+#X connect 7 0 8 0;
+#X connect 8 0 10 0;
+#X connect 9 0 5 0;
+#X connect 10 0 9 0;
+#X connect 10 1 14 0;
+#X connect 12 0 15 0;
+#X connect 14 0 11 1;
+#X connect 14 0 12 0;
+#X connect 15 0 17 0;
+#X connect 16 0 15 1;
+#X connect 18 0 6 0;

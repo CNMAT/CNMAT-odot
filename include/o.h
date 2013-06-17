@@ -142,7 +142,7 @@ void omax_util_hashBrackets2Curlies(char *s)
 
 void omax_util_curlies2hashBrackets(char **ptr, long bufsize)
 {
-    printf("%s", __func__);
+ //   printf("%s", __func__);
 
     char *str = (*ptr);
     if(!str)

@@ -281,7 +281,7 @@ static void omenu_delete(t_gobj *z, t_glist *glist)
     t_omenu *x = (t_omenu *)z;
 //    post("%s %d", __func__, x->exists);
 
-        canvas_deletelinesfor(glist, &x->ob);
+    canvas_deletelinesfor(glist, &x->ob);
     if(x->exists && glist_getcanvas(glist)->gl_editor)
     {
         glist_eraseiofor(glist, &x->ob, x->io_tag);
@@ -296,7 +296,8 @@ static void omenu_delete(t_gobj *z, t_glist *glist)
 
 
 void omenu_dropdownFocusOut(t_omenu *x)
-{    
+{
+//    post("%s", __func__);
     sys_vgui("destroy %s\n", x->m_id);
     x->m_height = 0;
     sys_vgui("%s itemconfigure carrot%s -text v \n", x->canvas_id, x->button_tag);
@@ -387,15 +388,15 @@ void omenu_addItem(t_omenu *x, int id, char *str)
     int itemY2 = itemY1 + fontheight;
     x->m_height += fontheight;
     
-    sys_vgui("%s create rectangle %d %d %d %d -tags rect%s%d \n",
+    sys_vgui("%s create rectangle %d %d %d %d -tags rect%s%d -fill #f8f8f6 -outline white \n",
              x->m_canvas_id, 3, itemY1, x->width-6, itemY2, x->button_tag, id);
     sys_vgui("%s create text %d %d -anchor nw -width %d -font {{%s} %d %s} -tags text%s%d -text {%s\n} -fill %s\n",
              x->m_canvas_id, 6, itemY1, x->width-12, sys_font, glist_getfont(x->glist), sys_fontweight, x->button_tag, id, str, ((id == x->selected) ? "blue" : "black"));
     
     sys_vgui("%s bind rect%s%d <Enter> {%s itemconfigure rect%s%d -fill yellow } \n", x->m_canvas_id, x->button_tag, id, x->m_canvas_id, x->button_tag, id);
     sys_vgui("%s bind text%s%d <Enter> {%s itemconfigure rect%s%d -fill yellow } \n", x->m_canvas_id, x->button_tag, id, x->m_canvas_id, x->button_tag, id);
-    sys_vgui("%s bind rect%s%d <Leave> {%s itemconfigure rect%s%d -fill white } \n",  x->m_canvas_id, x->button_tag, id, x->m_canvas_id, x->button_tag, id );
-    sys_vgui("%s bind text%s%d <Leave> {%s itemconfigure rect%s%d -fill white } \n",  x->m_canvas_id, x->button_tag, id, x->m_canvas_id, x->button_tag, id );
+    sys_vgui("%s bind rect%s%d <Leave> {%s itemconfigure rect%s%d -fill #f8f8f6 } \n",  x->m_canvas_id, x->button_tag, id, x->m_canvas_id, x->button_tag, id );
+    sys_vgui("%s bind text%s%d <Leave> {%s itemconfigure rect%s%d -fill #f8f8f6 } \n",  x->m_canvas_id, x->button_tag, id, x->m_canvas_id, x->button_tag, id );
 
     sys_vgui("%s bind rect%s%d <Button-1> {+pdsend \"%s selection %d \"} \n",  x->m_canvas_id, x->button_tag, id, x->receive_name, id );
     sys_vgui("%s bind text%s%d <Button-1> {+pdsend \"%s selection %d \"} \n",  x->m_canvas_id, x->button_tag, id, x->receive_name, id );
@@ -411,7 +412,6 @@ static int omenu_click(t_gobj *z, t_glist *glist, int xpix, int ypix, int shift,
 {
     t_omenu *x = (t_omenu *)z;
     //on click
-    
     if(doit){
         if(x->menuopen)
         {
@@ -419,15 +419,19 @@ static int omenu_click(t_gobj *z, t_glist *glist, int xpix, int ypix, int shift,
             x->m_height = 0;
         }
             
-        sys_vgui("%s itemconfigure carrot%s -text ⋀ \n", x->canvas_id, x->button_tag);
+        sys_vgui("%s itemconfigure carrot%s -text ^ \n", x->canvas_id, x->button_tag);
         sys_vgui("%s itemconfigure mtext%s -fill blue \n", x->canvas_id, x->button_tag);
-        sys_vgui("toplevel %s ; wm overrideredirect %s 1 ; wm geometry %s %dx%d+100+100 ; wm attributes %s -transparent 1 -alpha 0.9 ; pack [canvas %s] -fill both -expand 1 \n", x->m_id, x->m_id, x->m_id, x->m_width, x->m_height, x->m_id, x->m_canvas_id);
+        sys_vgui("toplevel %s ; wm overrideredirect %s 1 ; wm geometry %s %dx%d+100+100 ; wm attributes %s -transparent 0 ; pack [canvas %s] -fill both -expand 1 \n", x->m_id, x->m_id, x->m_id, x->m_width, x->m_height, x->m_id, x->m_canvas_id, x->m_canvas_id); //-alpha 0.99
         int i;
         for (i = 0; i < x->numitems; i++) {
             omenu_addItem(x, i, x->menu[i]);
         }
         
         x->menuopen = 1;
+    } else {
+        if(x->menuopen)
+            omenu_outsideCLick(x);
+        
     }
     return 1;
 }
@@ -451,7 +455,7 @@ void omenu_vis(t_gobj *z, t_glist *glist, int flag)
                  x->canvas_id, x1+6, y1+2, x->width-12, sys_font, glist_getfont(x->glist), sys_fontweight, x->button_tag, x->menu[0]);
 
         sys_vgui("%s create text %d %d -anchor nw -width %d -font {{%s} %d bold} -tags carrot%s -text v \n",
-                 x->canvas_id, x2-8, y1+2, 4, sys_font, glist_getfont(x->glist), x->button_tag);
+                 x->canvas_id, x2-sys_fontwidth(glist_getfont(glist))-2, y1+2, 4, sys_font, glist_getfont(x->glist), x->button_tag);
 
         
         glist_drawiofor(glist, &x->ob, 1, x->io_tag, x1, y1, x2, y2);
