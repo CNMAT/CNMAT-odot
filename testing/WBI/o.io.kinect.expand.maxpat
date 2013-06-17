@@ -5,7 +5,7 @@
 			"major" : 6,
 			"minor" : 1,
 			"revision" : 2,
-			"architecture" : "x86"
+			"architecture" : "x64"
 		}
 ,
 		"rect" : [ 108.0, 188.0, 1210.0, 486.0 ],
@@ -87,7 +87,7 @@
 							"major" : 6,
 							"minor" : 1,
 							"revision" : 2,
-							"architecture" : "x86"
+							"architecture" : "x64"
 						}
 ,
 						"rect" : [ 50.0, 94.0, 1126.0, 559.0 ],
@@ -675,7 +675,7 @@
 							"major" : 6,
 							"minor" : 1,
 							"revision" : 2,
-							"architecture" : "x86"
+							"architecture" : "x64"
 						}
 ,
 						"rect" : [ 50.0, 94.0, 1126.0, 559.0 ],
@@ -1465,10 +1465,10 @@
 							"major" : 6,
 							"minor" : 1,
 							"revision" : 2,
-							"architecture" : "x86"
+							"architecture" : "x64"
 						}
 ,
-						"rect" : [ 25.0, 69.0, 640.0, 480.0 ],
+						"rect" : [ 25.0, 69.0, 879.0, 480.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -1496,8 +1496,8 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "FullPacket" ],
-									"patching_rect" : [ 630.0, 216.0, 114.0, 20.0 ],
-									"text" : "o.prepend /fingertip"
+									"patching_rect" : [ 630.0, 216.0, 91.0, 20.0 ],
+									"text" : "o.prepend /foot"
 								}
 
 							}
@@ -1524,8 +1524,8 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "FullPacket" ],
-									"patching_rect" : [ 473.0, 213.0, 114.0, 20.0 ],
-									"text" : "o.prepend /fingertip"
+									"patching_rect" : [ 473.0, 213.0, 91.0, 20.0 ],
+									"text" : "o.prepend /foot"
 								}
 
 							}
@@ -2097,7 +2097,7 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "o.io.kinect.jointsandends.maxpat",
-				"bootpath" : "/Users/adrian2013/CNMAT-odot/testing/WBI",
+				"bootpath" : "/Users/john/Development/CNMAT/CNMAT/CNMAT-odot/testing/WBI",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
