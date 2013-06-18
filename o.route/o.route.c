@@ -507,28 +507,40 @@ void *oroute_new(t_symbol *msg, short argc, t_atom *argv)
 		x->num_selectors = argc;
 		x->unique_selectors = (char **)malloc(x->num_selectors * sizeof(char *));
         
-        
 		x->nbytes_selector = 0;
-		int i;
-        x->proxy = (void **)malloc(argc * sizeof(t_omax_pd_proxy *));
         
-		for(i = 0; i < argc; i++){
-			x->outlets[argc - i - 1] = outlet_new(&x->ob, NULL);
-			x->proxy[i] = proxy_new((t_object *)x, i, &(x->inlet), oroute_proxy_class);
+#ifdef ATOMIZE
+        if (argc == 0)
+        {
+            x->proxy = (void **)malloc(1 * sizeof(t_omax_pd_proxy *));
+            x->proxy[0] = proxy_new((t_object *)x, 0, &(x->inlet), oroute_proxy_class);
+        } else {
+#endif
+            
+            int i;
+            x->proxy = (void **)malloc(argc * sizeof(t_omax_pd_proxy *));
+            
+            for(i = 0; i < argc; i++){
+                x->outlets[argc - i - 1] = outlet_new(&x->ob, NULL);
+                x->proxy[i] = proxy_new((t_object *)x, i, &(x->inlet), oroute_proxy_class);
 
-			if(atom_gettype(argv + i) != A_SYM){
-				object_error((t_object *)x, "argument %d is not an OSC address", i);
-				return NULL;
-			}
+                if(atom_gettype(argv + i) != A_SYM){
+                    object_error((t_object *)x, "argument %d is not an OSC address", i);
+                    return NULL;
+                }
+                
+                char *selector = atom_getsym(argv + i)->s_name;
+                int len = strlen(selector);
+                if(len > x->nbytes_selector){
+                    x->nbytes_selector = len;
+                }
+                x->selectors[x->num_selectors - i - 1] = selector;
+                
+            }
+#ifdef ATOMIZE
+        }
+#endif
             
-			char *selector = atom_getsym(argv + i)->s_name;
-			int len = strlen(selector);
-			if(len > x->nbytes_selector){
-				x->nbytes_selector = len;
-			}
-			x->selectors[x->num_selectors - i - 1] = selector;
-            
-		}
         
         x->delegation_outlet = outlet_new(&x->ob, gensym("FullPacket"));
 
@@ -536,7 +548,6 @@ void *oroute_new(t_symbol *msg, short argc, t_atom *argv)
                                    x->selectors,
                                    &(x->num_unique_selectors),
                                    &(x->unique_selectors));
-        
 		x->schema = NULL;
 		x->schemalen = 0;
 		oroute_makeSchema(x);
