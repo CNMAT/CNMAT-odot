@@ -1116,6 +1116,8 @@ void omessage_setTextFromHex(t_omessage *x, char *hex)
     memset(x->text, '\0', OMAX_PD_MAXSTRINGSIZE);
     strcpy(x->text, buf);
     
+ //   post("%s tk_text %s", __func__, x->tk_text);
+ //   post("%s text %s", __func__, x->text);
     
 }
 
@@ -1125,6 +1127,10 @@ void omessage_setTextFromString(t_omessage *x, char *str)
         post("max o_message string size = %d", OMAX_PD_MAXSTRINGSIZE);
         return;
     }
+    
+    memset(x->text, '\0', OMAX_PD_MAXSTRINGSIZE);
+    strcpy(x->text, str);
+    
     memset(x->tk_text, '\0', OMAX_PD_MAXSTRINGSIZE);
     strcpy(x->tk_text, str);
     omax_util_curlies2hashBrackets(&x->tk_text, OMAX_PD_MAXSTRINGSIZE);
@@ -1134,9 +1140,27 @@ void omessage_setTextFromString(t_omessage *x, char *str)
 
 void omessage_setHexFromText(t_omessage *x, char *str)
 {
-    int length = strlen(x->text);
-    memset(x->hex, '\0', OMAX_PD_MAXSTRINGSIZE);
+//    int length = strlen(x->text);
+    memset(x->hex, '\0', OMAX_PD_MAXSTRINGSIZE*2);
     
+//    post("%s %s %d", __func__, str, strlen(str));
+    
+    char *pin = str;
+    const char * hex = "0123456789ABCDEF";
+    char *pout = x->hex;
+    int i = 0;
+    for(; i < strlen(str)-1; ++i)
+    {
+        *pout++ = hex[(*pin>>4)&0xF];
+        *pout++ = hex[(*pin++)&0xF];
+    }
+    *pout++ = hex[(*pin>>4)&0xF];
+    *pout++ = hex[(*pin)&0xF];
+    *pout = 0;
+    
+  //  post("%s %s %d\n", __func__, pout, strlen(pout));
+        
+    /*
     int i, k;
     char h1, h2;
     for( i = 0, k = 0; i < length; i++, k=i*2 )
@@ -1153,6 +1177,8 @@ void omessage_setHexFromText(t_omessage *x, char *str)
         
     }
     x->hex[k] = '\0';
+     
+     */
     //    post("%s %s", __func__, x->hex);
     
 }
@@ -1160,8 +1186,8 @@ void omessage_setHexFromText(t_omessage *x, char *str)
 
 void omessage_textbuf(t_omessage *x, t_symbol *msg, int argc, t_atom *argv)
 {
-//    printf("%p %s \n", x, __func__);
-   // printargs(argc, argv);
+//    post("%p %s \n", x, __func__);
+//    printargs(argc, argv);
     
     if(argc >= 2)
     {
@@ -1188,17 +1214,66 @@ void omessage_textbuf(t_omessage *x, t_symbol *msg, int argc, t_atom *argv)
                         buf = atom_getsymbol(argv+i)->s_name;
                         
                         charcount = strlen(buf) + strlen(x->hex);
-                        //post("%s %d", __func__, strlen(x->hex));
+
                         if(charcount < (OMAX_PD_MAXSTRINGSIZE * 2))
                         {
                             strcat(x->hex, buf);
                         }
                         else
                         {
-                            error("maximum hex buffers size is set to %d", OMAX_PD_MAXSTRINGSIZE);
+                            error("maximum hex buffers size is set to %d", OMAX_PD_MAXSTRINGSIZE*2);
                             return;
                         }
                         
+                    } else {
+                        if(x->textediting)
+                            omessage_storeTextAndExitEditorTick(x);
+
+                        omessage_setTextFromHex(x, x->hex);
+                        omessage_gettext(x);
+                        x->streamflag = 0;
+                        break;
+                        
+                    }
+                }
+                
+//                post("%s %s %d", __func__, x->hex, __LINE__);
+                
+                
+            }
+            else if(s == gensym("binhex"))
+            {
+                
+                int i, charcount = 0;
+                if(!x->streamflag)
+                {
+                    x->streamflag = 1;
+                    memset(x->hex, '\0', OMAX_PD_MAXSTRINGSIZE * 2);
+                }
+                char *buf = NULL;
+                
+                for( i = 1; i < argc; i++ )
+                {
+                    if(atom_getsymbol(argv+i) != gensym(x->receive_name))
+                    {
+                        
+                        buf = atom_getsymbol(argv+i)->s_name;
+                        
+                        if(buf[0] == 'b' && buf[1] == '#')
+                        {
+                            buf += 2;
+                            charcount = strlen(buf) + strlen(x->hex);
+                            //post("%s %d", __func__, strlen(x->hex));
+                            if(charcount < (OMAX_PD_MAXSTRINGSIZE * 2))
+                            {
+                                strcat(x->hex, buf);
+                            }
+                            else
+                            {
+                                error("maximum hex buffers size is set to %d", OMAX_PD_MAXSTRINGSIZE*2);
+                                return;
+                            }
+                        }
                         
                     } else {
                         if(x->textediting)
@@ -1212,10 +1287,11 @@ void omessage_textbuf(t_omessage *x, t_symbol *msg, int argc, t_atom *argv)
                     }
                 }
                 
-                //post("%s %d %s", __func__, x->textediting, x->hex);
+//                post("%s %s %d", __func__, x->hex, __LINE__);
                 
                 
             }
+            
             else if (s == gensym("text"))
             {
                 //this probably could go back to the pre-concat version since textFromString is always within C (so no socket size issue)
@@ -1627,9 +1703,7 @@ void omessage_drawElements(t_omessage *x, t_glist *glist, int width2, int height
         }
         if (firsttime) /* raise cords over everything else */
             sys_vgui(".x%lx.c raise cord\n", glist_getcanvas(glist));
-        
-        canvas_fixlinesfor(glist, &x->ob);
-        
+                
         if(!x->editmode)
             sys_vgui("%s configure -cursor left_ptr \n", x->handle_id);
         else if(x->editmode && !x->selected)
@@ -1637,6 +1711,8 @@ void omessage_drawElements(t_omessage *x, t_glist *glist, int width2, int height
         else if(x->textediting || x->selected)
             sys_vgui("%s configure -cursor fleur \n", x->handle_id);
         
+       
+        canvas_fixlinesfor(glist, &x->ob);
         
         sys_vgui("%s itemconfigure %s -outline %s\n", x->canvas_id, x->corner_tag, (x->parse_error?  "red" : "black" ));
         sys_vgui("%s itemconfigure %sTL -outline %s\n", x->canvas_id, x->corner_tag, (x->parse_error? "red" : "black" ));
@@ -1653,9 +1729,10 @@ static void omessage_vis(t_gobj *z, t_glist *glist, int vis)
 //    post("%s %d\n",__func__, vis);
     if(vis)
     {
+        
         if(!x->firsttime)
         {
-            omessage_delete(z, glist);
+     //       omessage_delete(z, glist);
             x->firsttime = 1;
         }
         
@@ -1666,6 +1743,7 @@ static void omessage_vis(t_gobj *z, t_glist *glist, int vis)
         {
             omessage_getTextAndCreateEditor(x, 1);
         }
+
     }
     else
     {
@@ -1791,7 +1869,7 @@ static void omessage_delete(t_gobj *z, t_glist *glist)
    // omessage_pdnofocus_callback(x);
 //    printf("%s %d %p \n",__func__, x->firsttime, glist->gl_editor);
     
-    if(!x->firsttime && glist->gl_editor)
+    if(!x->firsttime && glist_getcanvas(glist)->gl_editor)
     {
         sys_vgui("%s delete %s\n", x->canvas_id, x->border_tag);
         sys_vgui("%s delete %s\n", x->canvas_id, x->corner_tag);
@@ -1863,27 +1941,34 @@ static void omessage_save(t_gobj *z, t_binbuf *b)
     t_omessage *x = (t_omessage *)z;
     omessage_setHexFromText(x, x->text);
 
-    if(!x->firsttime)
+    post("%s %s", __func__, x->text);
+
+    if(!x->firsttime && glist_getcanvas(x->glist)->gl_editor)
         omessage_pdnofocus_callback(x);
     
-    binbuf_addv(b, "ssiisiis", gensym("#X"),gensym("obj"),(t_int)x->ob.te_xpix, (t_int)x->ob.te_ypix, gensym("omessage"), x->width, x->height, gensym("hex"));
+    binbuf_addv(b, "ssiisiis", gensym("#X"),gensym("obj"),(t_int)x->ob.te_xpix, (t_int)x->ob.te_ypix, gensym("omessage"), x->width, x->height, gensym("binhex"));
     
-    long chunksize = 64;
-    char buf[chunksize+1];
+    long chunksize = 32;
+    char buf[chunksize+3];
     long len = strlen(x->hex);
     long chunks = len / chunksize;
     long chad = len % chunksize;
     long i,k;
     for (k = 0; k < chunks; k++) {
-        memset(buf, '\0', chunksize+1 );
+        memset(buf, '\0', chunksize+3 );
+        buf[0] = 'b';
+        buf[1] = '#';
         for (i = 0; i < chunksize; i++) {
-            buf[i] = x->hex[i + (k*chunksize) ];
+            buf[i+2] = x->hex[i + (k*chunksize) ];
         }
         binbuf_addv(b, "s", gensym(buf));
     }
-    memset(buf, '\0', chunksize+1 );
+    memset(buf, '\0', chunksize+3 );
+    buf[0] = 'b';
+    buf[1] = '#';
+    
     for (i = 0; i < chad; i++) {
-        buf[i] = x->hex[i + (k*chunksize) ];
+        buf[i+2] = x->hex[i + (k*chunksize) ];
     }
     binbuf_addv(b, "s", gensym(buf));
     
@@ -2079,13 +2164,9 @@ void *omessage_new(t_symbol *msg, short argc, t_atom *argv)
         }
         strcpy(x->receive_name, buf);
 
-        
-//        printf("%p %s %d\n", x, __func__, __LINE__);
-
         pd_bind(&x->ob.ob_pd, gensym(x->receive_name));
-//        printf("%p %s %d\n", x, __func__, __LINE__);
 
-       // printargs(argc, argv);
+//        printargs(argc, argv);
         
         x->width = 100;
         x->height = 10;
@@ -2100,12 +2181,12 @@ void *omessage_new(t_symbol *msg, short argc, t_atom *argv)
         {
             x->width = atom_getfloat(argv);
             x->height = atom_getfloat(argv+1);
-            if(((argv+2)->a_type == A_SYMBOL ) && (atom_getsymbol(argv+2) == gensym("hex")))
+            if(((argv+2)->a_type == A_SYMBOL ) && (atom_getsymbol(argv+2) == gensym("binhex")))
             {
               
                 omessage_textbuf(x, NULL, argc-2, (argv+2));
                 t_atom done[2];
-                atom_setsym(done, gensym("hex"));
+                atom_setsym(done, gensym("binhex"));
                 atom_setsym(done+1, gensym(x->receive_name));
                 omessage_textbuf(x, NULL, 2, done);
               

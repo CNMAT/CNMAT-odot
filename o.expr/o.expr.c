@@ -327,10 +327,16 @@ void oexpr_bang(t_oexpr *x)
 	memset(buf, '\0', 16);
 	strncpy(buf, "#bundle\0", 8);
 	//oexpr_fullPacket(x, 16, (long)buf);
+#ifdef OMAX_PD_VERSION
+    t_atom a[3];
+    omax_util_oscLenAndPtr2Atoms(a, 16, buf);
+    oexpr_fullPacket(x, NULL, 3, a);
+#else
 	t_atom a[2];
 	atom_setlong(a, 16);
 	atom_setlong(a + 1, (long)buf);
 	oexpr_fullPacket(x, NULL, 2, a);
+#endif
 }
 
 #ifndef OMAX_PD_VERSION

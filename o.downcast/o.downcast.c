@@ -31,9 +31,13 @@
 
 #include "o.h"
 #include "odot_version.h"
+#ifdef OMAX_PD_VERSION
+#include "m_pd.h"
+#else
 #include "ext.h"
 #include "ext_obex.h"
 #include "ext_obex_util.h"
+#endif
 #include "osc.h"
 #include "osc_mem.h"
 #include "osc_bundle_u.h"
