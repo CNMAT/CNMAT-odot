@@ -18,9 +18,9 @@
 #X msg 499 238 /bob;
 #X msg 539 238 /bar;
 #X obj 333 270 oselect /foo /bar;
-#X obj 201 335 omessage 100 23 hex 2F666F6F205B0A2F706F7374626172202D352E0A5D0A
+#X obj 201 335 omessage 100 23 binhex b#2F666F6F205B0A2F706F7374626172202D352E0A5D0A
 ;
-#X obj 316 336 omessage 100 23 hex 0A0A0A0A;
+#X obj 316 336 omessage 100 23 binhex b#0A0A0A0A;
 #X obj 448 316 oprint unmatched;
 #X connect 0 0 12 0;
 #X connect 1 0 12 0;
