@@ -1,21 +1,21 @@
 #N canvas 728 242 860 496 10;
-#X obj 103 103 omessage 88 23 hex 2F666F6F20312032203320;
+#X obj 103 103 omessage 88 23 binhex b#2F666F6F20312032203320;
 #X obj 103 140 oprint;
 #X text 223 97 omessage is similar the standard message box except
 that it converts its data to OSC packets.;
 #X msg 615 100;
-#X obj 106 245 omessage 88 23 hex 2F666F6F20312022243122203320;
+#X obj 106 245 omessage 88 23 binhex b#2F666F6F20312022243122203320;
 #X obj 106 282 oprint;
 #X floatatom 106 217 5 0 0 0 - - -;
 #X obj 490 254 opack /foo 0;
 #X floatatom 490 218 5 0 0 0 - - -;
 #X text 213 245 $n style variable substitution;
-#X obj 473 307 omessage 88 23 hex 2F666F6F202D31382E20;
+#X obj 473 307 omessage 88 23 binhex b#2F666F6F202D31382E20;
 #X text 430 348 o.message can be used to display the contents of an
 OSC bundle;
 #N canvas 798 225 667 423 nested-bundles 0;
-#X obj 22 53 omessage 164 62 hex 2F666F6F205B0A2F626172203120322033200A2F626C6F6F2022612220227222
-20227322200A5D;
+#X obj 22 53 omessage 164 62 binhex b#2F666F6F205B0A2F626172203120322033200A2F626C6F6F2022612220227222
+b#20227322200A5D;
 #X obj 22 153 oroute /foo;
 #X msg 22 240 1 2 3;
 #N canvas 951 499 450 300 set 0;
@@ -82,7 +82,7 @@ causing state change after the canvas has been freed - the resize handle
 is not always in the right place;
 #X restore 106 397 pd alpha-release-notes;
 #X text 104 19 omessage;
-#X obj 107 39 omessage 100 23 hex 0A;
+#X obj 107 39 omessage 100 23 binhex b#0A;
 #X connect 0 0 1 0;
 #X connect 4 0 5 0;
 #X connect 6 0 4 0;
