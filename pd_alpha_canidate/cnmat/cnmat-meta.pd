@@ -1,0 +1,7 @@
+#N canvas 15 49 200 200 10;
+#N canvas 490 133 420 300 META 0;
+#X text 10 25 AUTHOR John MacCallum \, Adrian Freed \, Rama Gottfried
+;
+#X text 10 10 VERSION odot 1.3-124-g5057d51 (pd alpha version);
+#X text 11 41 NAME CNMAT / odot library;
+#X restore 10 10 pd META;
