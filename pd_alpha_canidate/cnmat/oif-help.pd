@@ -1,0 +1,11 @@
+#N canvas 552 492 450 300 10;
+#X obj 118 29 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 118 66 opack /foo;
+#X obj 118 101 oif /foo == 1;
+#X obj 118 132 oprint yes;
+#X obj 193 133 oprint no;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 2 0 3 0;
+#X connect 2 1 4 0;

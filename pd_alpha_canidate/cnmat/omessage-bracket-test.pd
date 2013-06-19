@@ -1,0 +1,7 @@
+#N canvas 739 72 450 300 10;
+#X obj 69 167 oprintbytes;
+#X obj 82 200 omessage 144 23 binhex b#2F666F6F203120227B612C62235D22200A
+;
+#X obj 80 103 omessage 144 23 binhex b#2F666F6F203120227B612C62220A;
+#X connect 2 0 0 0;
+#X connect 2 0 1 1;

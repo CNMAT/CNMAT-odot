@@ -1,0 +1,21 @@
+#N canvas 621 272 450 300 10;
+#X obj 97 17 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
+;
+#X msg 124 39 3;
+#X msg 159 41 2;
+#X msg 199 43 1;
+#X obj 97 74 opack /foo;
+#X obj 97 109 ocond /foo == 1 \; /foo == 2 \; /foo == 3;
+#X obj 190 162 oprint other;
+#X obj 159 194 oprint three;
+#X obj 128 218 oprint two;
+#X obj 97 245 oprint one;
+#X connect 0 0 4 0;
+#X connect 1 0 4 0;
+#X connect 2 0 4 0;
+#X connect 3 0 4 0;
+#X connect 4 0 5 0;
+#X connect 5 0 9 0;
+#X connect 5 1 8 0;
+#X connect 5 2 7 0;
+#X connect 5 3 6 0;

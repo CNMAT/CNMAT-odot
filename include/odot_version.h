@@ -12,12 +12,15 @@
 //#define ODOT_VERSION "1.2.11" 
 //#define ODOT_RELEASE_DATE "[2012-12-21 Fri]"
 #define ODOT_COPYRIGHT_YEARS "2008-13"
-#define ODOT_AUTHORS "John MacCallum, Adrian Freed"
+#define ODOT_AUTHORS "John MacCallum, Adrian Freed, Rama Gottfried"
 #define ODOT_COPYRIGHT_STRING "Regents of the University of California. All rights reserved."
 
 void __odot_version(void)
 {
 	post("odot version %s (compiled %s), by %s\n", ODOT_VERSION, ODOT_COMPILE_DATE, ODOT_AUTHORS);
+#ifdef OMAX_PD_VERSION
+    post("alpha pd version");
+#endif
 	post("Copyright (c) %s %s", ODOT_COPYRIGHT_YEARS, ODOT_COPYRIGHT_STRING);
 }
 

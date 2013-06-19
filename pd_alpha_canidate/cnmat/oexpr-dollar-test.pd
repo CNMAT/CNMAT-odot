@@ -1,0 +1,6 @@
+#N canvas 591 188 450 300 10;
+#X obj 169 74 inlet;
+#X obj 170 167 outlet;
+#X obj 170 120 oexpr /foo = \$1 + \$2;
+#X connect 0 0 2 0;
+#X connect 2 0 1 0;
