@@ -1,0 +1,9 @@
+#N canvas 177 458 450 300 10;
+#X obj 130 23 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 122 50 opack /foo/bar/1 11 /foo/bar/2 22;
+#X obj 122 85 oexplode @sep /foo;
+#X obj 122 117 oprint;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 2 0 3 0;
