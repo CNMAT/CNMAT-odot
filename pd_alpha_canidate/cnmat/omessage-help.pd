@@ -1,0 +1,90 @@
+#N canvas 728 242 860 496 10;
+#X obj 103 103 omessage 88 23 binhex b#2F666F6F20312032203320;
+#X obj 103 140 oprint;
+#X text 223 97 omessage is similar the standard message box except
+that it converts its data to OSC packets.;
+#X msg 615 100;
+#X obj 106 245 omessage 88 23 binhex b#2F666F6F20312022243122203320;
+#X obj 106 282 oprint;
+#X floatatom 106 217 5 0 0 0 - - -;
+#X obj 490 254 opack /foo 0;
+#X floatatom 490 218 5 0 0 0 - - -;
+#X text 213 245 $n style variable substitution;
+#X obj 473 307 omessage 88 23 binhex b#2F666F6F202D31382E20;
+#X text 430 348 o.message can be used to display the contents of an
+OSC bundle;
+#N canvas 798 225 667 423 nested-bundles 0;
+#X obj 22 53 omessage 164 62 binhex b#2F666F6F205B0A2F626172203120322033200A2F626C6F6F2022612220227222
+b#20227322200A5D;
+#X obj 22 153 oroute /foo;
+#X msg 22 240 1 2 3;
+#N canvas 951 499 450 300 set 0;
+#X obj 71 85 inlet;
+#X obj 81 170 outlet;
+#X obj 72 108 list prepend set;
+#X obj 72 143 list trim;
+#X connect 0 0 2 0;
+#X connect 2 0 3 0;
+#X connect 3 0 1 0;
+#X restore 22 211 pd set;
+#X msg 71 240 a r s;
+#N canvas 951 499 450 300 set 0;
+#X obj 71 85 inlet;
+#X obj 81 170 outlet;
+#X obj 72 108 list prepend set;
+#X obj 72 143 list trim;
+#X connect 0 0 2 0;
+#X connect 2 0 3 0;
+#X connect 3 0 1 0;
+#X restore 71 211 pd set;
+#X obj 22 183 oroute /bar /bloo;
+#X obj 215 167 oatomize;
+#X msg 215 237 /foo FullPacket 1.12104e-43 0 -1.99903;
+#N canvas 951 499 450 300 set 0;
+#X obj 71 85 inlet;
+#X obj 81 170 outlet;
+#X obj 72 108 list prepend set;
+#X obj 72 143 list trim;
+#X connect 0 0 2 0;
+#X connect 2 0 3 0;
+#X connect 3 0 1 0;
+#X restore 215 208 pd set;
+#X text 207 80 the messages in a nested bundle must be on their own
+lines and the final square bracket must be on a new line;
+#X text 207 48 nested bundles can be constructed using square brackets
+in the arguments of a message.;
+#X obj 490 168 oroute /foo;
+#X obj 490 196 oatomize /bar /bloo;
+#X obj 490 233 print nested;
+#X connect 0 0 1 0;
+#X connect 0 0 7 0;
+#X connect 0 0 12 0;
+#X connect 1 0 6 0;
+#X connect 3 0 2 0;
+#X connect 5 0 4 0;
+#X connect 6 0 3 0;
+#X connect 6 1 5 0;
+#X connect 7 0 9 0;
+#X connect 9 0 8 0;
+#X connect 12 0 13 0;
+#X connect 13 0 14 0;
+#X connect 13 1 14 0;
+#X restore 106 363 pd nested-bundles;
+#X text 6 4 _;
+#N canvas 1012 621 450 300 alpha-release-notes 0;
+#X text 10 4 -;
+#X text 49 66 currently in the alpha release there are a few issues
+with omessage that will be fixed in the beta: - there appears to be
+some issue with recalling saved values on instantiation - if there
+is a stream of data coming into the object when closing the toplevel
+patch there could be a TCL/TK error due to input events to omessage
+causing state change after the canvas has been freed - the resize handle
+is not always in the right place;
+#X restore 106 397 pd alpha-release-notes;
+#X text 104 19 omessage;
+#X obj 107 39 omessage 100 23 binhex b#0A;
+#X connect 0 0 1 0;
+#X connect 4 0 5 0;
+#X connect 6 0 4 0;
+#X connect 7 0 10 1;
+#X connect 8 0 7 0;

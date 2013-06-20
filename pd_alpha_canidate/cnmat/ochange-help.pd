@@ -1,0 +1,24 @@
+#N canvas 752 312 648 457 10;
+#X obj 63 289 ochange;
+#X obj 63 348 oprint;
+#X obj 82 319 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 63 224 omessage 100 36 binhex b#2F626172203420352036200A2F666F6F20312032203320
+;
+#X obj 183 224 omessage 100 36 binhex b#2F666F6F203120322033200A2F62617220342035203620
+;
+#X obj 305 237 omessage 100 23 binhex b#2F666F6F20312032203320;
+#X obj 423 234 omessage 100 36 binhex b#2F666F6F203120322033200A2F62617220342035203720
+;
+#X text 60 138 o.change passes a bundle through if it is different
+from the last bundle that it received. Any change including reordering
+the contents will cause the bundle to be passed through;
+#X text 60 113 Output a bundle if it changes.;
+#X obj 62 70 ochange;
+#X text 15 4 -;
+#X connect 0 0 1 0;
+#X connect 0 0 2 0;
+#X connect 3 0 0 0;
+#X connect 4 0 0 0;
+#X connect 5 0 0 0;
+#X connect 6 0 0 0;

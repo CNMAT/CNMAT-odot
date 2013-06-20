@@ -1,0 +1,33 @@
+#N canvas 548 22 657 731 10;
+#X obj 104 41 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 104 61 t f f;
+#X obj 104 153 sel 0;
+#X msg 104 175 reset;
+#X obj 195 95 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 195 262 oexpr /time/activate = /time/acquired + 0.5;
+#X obj 104 404 oschedule /time/activate;
+#X obj 104 436 otimetag /time/activated;
+#X obj 104 468 oexpr /time/diff = /time/activated - /time/activate
+;
+#X obj 110 539 omessage 392 62 binhex b#2F74696D652F61637175697265642022
+b#323031332D30362D31385431323A3433 b#3A32332E3938383331315A22200A2F74
+b#696D652F616374697661746520223230 b#31332D30362D31385431323A34333A32
+b#342E3438383331315A22200A2F74696D b#652F6163746976617465642022323031
+b#332D30362D31385431323A34333A3234 b#2E3530363935325A22200A2F74696D65
+b#2F6469666620302E3031383634303320 b#;
+#X obj 195 162 otimetag /time/acquired;
+#X obj 195 125 metro 50;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 1 1 4 0;
+#X connect 2 0 3 0;
+#X connect 3 0 6 0;
+#X connect 4 0 11 0;
+#X connect 5 0 6 0;
+#X connect 6 0 7 0;
+#X connect 7 0 8 0;
+#X connect 8 0 9 1;
+#X connect 10 0 5 0;
+#X connect 11 0 10 0;
