@@ -1920,8 +1920,7 @@ static void omessage_tick(t_omessage *x)
 {
     if (glist_isvisible(x->glist))
     {
-        sys_vgui(".x%lx.c itemconfigure %s -width 1\n",
-                 glist_getcanvas(x->glist), x->border_tag);
+        sys_vgui(".x%lx.c itemconfigure %s -width 1\n", glist_getcanvas(x->glist), x->border_tag);
     }
 }
 
