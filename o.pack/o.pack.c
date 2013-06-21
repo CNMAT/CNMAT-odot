@@ -263,7 +263,7 @@ void opack_free(t_opack *x)
 		int i;
 		for(i = 1; i < x->num_messages; i++){
 			if(x->proxy[i]){
-				sysmem_freeptr(x->proxy[i]);
+				object_free(x->proxy[i]);
 			}
 		}
 		free(x->proxy);

@@ -247,7 +247,7 @@ void ovar_doc(t_ovar *x)
 
 void ovar_free(t_ovar *x)
 {
-	free(x->proxy);
+	object_free(x->proxy);
 	if(x->bndl){
 		osc_mem_free(x->bndl);
 	}

@@ -52,7 +52,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 1064.0, 360.0, 118.0, 18.0 ],
-					"presentation_rect" : [ 1064.0, 356.0, 0.0, 0.0 ],
 					"text" : "o.validate"
 				}
 
@@ -67,7 +66,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 1182.0, 360.0, 283.0, 20.0 ],
-					"presentation_rect" : [ 1182.0, 356.0, 0.0, 0.0 ],
 					"text" : "Validates a bundle or message"
 				}
 
@@ -97,7 +95,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 1064.0, 320.0, 118.0, 18.0 ],
-					"presentation_rect" : [ 1061.0, 320.0, 0.0, 0.0 ],
 					"text" : "o.iterate"
 				}
 
@@ -112,7 +109,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 1182.0, 320.0, 283.0, 20.0 ],
-					"presentation_rect" : [ 1179.0, 320.0, 0.0, 0.0 ],
 					"text" : "Iterate over the contents of a bundle"
 				}
 
@@ -142,7 +138,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 1064.0, 282.0, 118.0, 18.0 ],
-					"presentation_rect" : [ 1062.0, 279.315796, 0.0, 0.0 ],
 					"text" : "o.downcast"
 				}
 
@@ -157,7 +152,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 1182.0, 282.0, 283.0, 20.0 ],
-					"presentation_rect" : [ 1180.0, 279.315796, 0.0, 0.0 ],
 					"text" : "Returns a bundle that conforms to OSC 1.0"
 				}
 
@@ -172,7 +166,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 1064.0, 240.0, 227.0, 27.0 ],
-					"presentation_rect" : [ 1062.0, 237.315796, 0.0, 0.0 ],
 					"text" : "Specification Conformance"
 				}
 
@@ -1722,6 +1715,15 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-28", 0 ],
+					"disabled" : 0,
+					"hidden" : 1,
+					"source" : [ "obj-108", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-10", 0 ],
 					"disabled" : 0,
 					"hidden" : 1,
@@ -1753,6 +1755,15 @@
 					"disabled" : 0,
 					"hidden" : 1,
 					"source" : [ "obj-110", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-28", 0 ],
+					"disabled" : 0,
+					"hidden" : 1,
+					"source" : [ "obj-111", 0 ]
 				}
 
 			}
@@ -2055,6 +2066,15 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-28", 0 ],
+					"disabled" : 0,
+					"hidden" : 1,
+					"source" : [ "obj-45", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-24", 1 ],
 					"disabled" : 0,
 					"hidden" : 1,
@@ -2136,6 +2156,15 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-28", 0 ],
+					"disabled" : 0,
+					"hidden" : 1,
+					"source" : [ "obj-54", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-58", 1 ],
 					"disabled" : 0,
 					"hidden" : 1,
@@ -2149,6 +2178,15 @@
 					"disabled" : 0,
 					"hidden" : 1,
 					"source" : [ "obj-57", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-28", 0 ],
+					"disabled" : 0,
+					"hidden" : 1,
+					"source" : [ "obj-58", 0 ]
 				}
 
 			}
@@ -2365,6 +2403,15 @@
 					"disabled" : 0,
 					"hidden" : 1,
 					"source" : [ "obj-81", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-28", 0 ],
+					"disabled" : 0,
+					"hidden" : 1,
+					"source" : [ "obj-82", 0 ]
 				}
 
 			}
