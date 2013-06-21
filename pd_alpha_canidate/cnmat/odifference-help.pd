@@ -1,4 +1,4 @@
-#N canvas 738 376 762 300 10;
+#N canvas 285 237 762 300 10;
 #X floatatom 100 52 5 0 0 0 - - -;
 #X floatatom 362 50 5 0 0 0 - - -;
 #X obj 94 93 opack /foo/1;
@@ -9,6 +9,9 @@
 #X obj 210 145 ointersection;
 #X obj 359 141 ounion;
 #X obj 359 182 oprint union;
+#X msg 84 -3 o.difference takes two bundles and forms a new bundle
+that contains the messages with addresses that are not common to both
+bundles;
 #X connect 0 0 2 0;
 #X connect 1 0 3 0;
 #X connect 1 0 3 1;

@@ -5,6 +5,8 @@
 #X obj 151 165 oprint yes;
 #X obj 151 110 owhen /foo > 3;
 #X obj 151 83 opack /foo;
+#X msg 81 14 o.when behaves like o.if with only the left-most outlet
+(i.e. the "then" outlet);
 #X connect 1 0 4 0;
 #X connect 3 0 0 0;
 #X connect 3 0 2 0;

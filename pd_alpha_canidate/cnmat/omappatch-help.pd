@@ -6,11 +6,18 @@
 #X obj 210 75 opack /bob 3;
 #X obj 210 107 opack /foo 1 /bar 2 /steve 3;
 #X obj 210 168 omappatch;
-#X obj 57 277 omessage 118 75 binhex b#2F666F6F205B0A2F626F6220332E0A5D0A2F62617220322E0A2F737465766520
-b#332E0A0A;
+#X obj 57 277 omessage 118 75 binhex b#2F666F6F205B0A2F626F6220332E200A
+b#5D0A2F62617220322E200A2F73746576 b#6520332E20;
 #X obj 210 327 oprint;
-#X obj 34 167 omessage 118 75 binhex b#2F666F6F205B0A2F626F6220332E0A5D0A2F62617220322E0A2F737465766520
-b#332E0A0A;
+#X obj 34 167 omessage 118 75 binhex b#2F666F6F205B0A2F626F6220332E200A
+b#5D0A2F62617220322E200A2F73746576 b#6520332E20;
+#X msg 48 -75 o.mappatch takes an OSC bundle in the right inlet and
+outputs each of the messages contained in it in sequence out the right
+outlet as OSC-style Max-messages. After processing each message \,
+it should be sent back into the right inlet (or not if it is to be
+excluded from the bundle). After all messages have been processed \,
+the resulting bundle with any modifications will come out the left
+outlet.;
 #X connect 0 0 3 0;
 #X connect 1 0 5 1;
 #X connect 3 0 4 0;
