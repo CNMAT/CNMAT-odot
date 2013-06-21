@@ -21,6 +21,11 @@
 #X msg 550 181 /bob \$1;
 #X msg 499 238 /bob;
 #X msg 539 238 /bar;
+#X msg 98 -45 o.route does pattern matching on addresses contained
+in OSC packets. All messages in a bundle with addresses that match
+an address specified as an argument to o.route are bundled together
+and sent out the corresponding outlet with the portion of the address
+that match removed.;
 #X connect 0 0 14 0;
 #X connect 1 0 14 0;
 #X connect 2 0 4 0;
