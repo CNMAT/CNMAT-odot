@@ -8,7 +8,7 @@
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 556.0, 65.0, 825.0, 488.0 ],
+		"rect" : [ 642.0, 77.0, 640.0, 480.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -29,13 +29,28 @@
 		"tags" : "",
 		"boxes" : [ 			{
 				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"frgb" : 0.0,
+					"id" : "obj-9",
+					"linecount" : 6,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 341.0, 177.0, 150.0, 87.0 ],
+					"text" : "propagate the quality estimate to the derived value. Think of this as a probability that the estimate will be useful in subsequent calculations."
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"comment" : "",
 					"id" : "obj-6",
 					"maxclass" : "inlet",
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 36.0, -1.0, 25.0, 25.0 ]
+					"patching_rect" : [ 51.0, 14.0, 25.0, 25.0 ]
 				}
 
 			}
@@ -46,7 +61,7 @@
 					"maxclass" : "outlet",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 214.0, 298.0, 25.0, 25.0 ]
+					"patching_rect" : [ 229.0, 313.0, 25.0, 25.0 ]
 				}
 
 			}
@@ -60,8 +75,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 38.0, 101.0, 596.0, 33.0 ],
-					"text" : "o.expr #3/value = l2norm( #1/position/value - #2/position/value )\\; #3/quality = #1/quality * #2/quality; #3/space = \"R1\"; #3/units = \"mm\""
+					"patching_rect" : [ 53.0, 116.0, 591.0, 33.0 ],
+					"text" : "o.expr #3/value = 0.5*( #1/position/value + #2/position/value )\\; #3/quality = #1/quality * #2/quality\\; #3/space = R1\\; #3/units = mm"
 				}
 
 			}
@@ -74,7 +89,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 38.0, 69.0, 329.0, 20.0 ],
+					"patching_rect" : [ 53.0, 84.0, 329.0, 20.0 ],
 					"text" : "o.if bound( #1/position/value ) && bound( #2/position/value )"
 				}
 
@@ -94,7 +109,7 @@
 					"destination" : [ "obj-4", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"midpoints" : [ 357.5, 90.0, 378.0, 90.0, 378.0, 54.0, 665.0, 54.0, 665.0, 285.0, 223.5, 285.0 ],
+					"midpoints" : [ 372.5, 105.0, 393.0, 105.0, 393.0, 69.0, 680.0, 69.0, 680.0, 300.0, 238.5, 300.0 ],
 					"source" : [ "obj-2", 1 ]
 				}
 
