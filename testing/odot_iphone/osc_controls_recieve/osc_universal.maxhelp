@@ -3,11 +3,12 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 6,
-			"minor" : 0,
-			"revision" : 5
+			"minor" : 1,
+			"revision" : 2,
+			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 251.0, 101.0, 690.0, 538.0 ],
+		"rect" : [ 100.0, 100.0, 670.0, 530.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -40,11 +41,12 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 6,
-							"minor" : 0,
-							"revision" : 5
+							"minor" : 1,
+							"revision" : 2,
+							"architecture" : "x86"
 						}
 ,
-						"rect" : [ 0.0, 26.0, 690.0, 512.0 ],
+						"rect" : [ 0.0, 26.0, 670.0, 504.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -68,6 +70,7 @@
 								"box" : 								{
 									"fontname" : "Arial",
 									"fontsize" : 12.0,
+									"frgb" : 0.0,
 									"id" : "obj-25",
 									"maxclass" : "comment",
 									"numinlets" : 1,
@@ -81,6 +84,7 @@
 								"box" : 								{
 									"fontname" : "Arial",
 									"fontsize" : 12.0,
+									"frgb" : 0.0,
 									"id" : "obj-23",
 									"maxclass" : "comment",
 									"numinlets" : 1,
@@ -268,70 +272,21 @@
 								}
 
 							}
- ],
-						"dependency_cache" : [ 							{
-								"name" : "osc_universal.maxpat",
-								"bootpath" : "/Users/samgmansfield/Documents/CNMAT/cnmat/trunk/max/externals/odot/trunk/testing/odot_iphone/osc_controls_recieve",
-								"type" : "JSON",
-								"implicit" : 1
-							}
-, 							{
-								"name" : "osc_button.maxpat",
-								"bootpath" : "/Users/samgmansfield/Documents/CNMAT/cnmat/trunk/max/externals/odot/trunk/testing/odot_iphone/osc_controls_recieve",
-								"type" : "JSON",
-								"implicit" : 1
-							}
-, 							{
-								"name" : "osc_multislider.maxpat",
-								"bootpath" : "/Users/samgmansfield/Documents/CNMAT/cnmat/trunk/max/externals/odot/trunk/testing/odot_iphone/osc_controls_recieve",
-								"type" : "JSON",
-								"implicit" : 1
-							}
-, 							{
-								"name" : "osc_pictslider.maxpat",
-								"bootpath" : "/Users/samgmansfield/Documents/CNMAT/cnmat/trunk/max/externals/odot/trunk/testing/odot_iphone/osc_controls_recieve",
-								"type" : "JSON",
-								"implicit" : 1
-							}
-, 							{
-								"name" : "osc_toggle.maxpat",
-								"bootpath" : "/Users/samgmansfield/Documents/CNMAT/cnmat/trunk/max/externals/odot/trunk/testing/odot_iphone/osc_controls_recieve",
-								"type" : "JSON",
-								"implicit" : 1
-							}
-, 							{
-								"name" : "osc_accelerometer.maxpat",
-								"bootpath" : "/Users/samgmansfield/Documents/CNMAT/cnmat/trunk/max/externals/odot/trunk/testing/odot_iphone/osc_controls_recieve",
-								"type" : "JSON",
-								"implicit" : 1
-							}
-, 							{
-								"name" : "o.route.mxo",
-								"type" : "iLaX"
-							}
-, 							{
-								"name" : "o.message.mxo",
-								"type" : "iLaX"
-							}
-, 							{
-								"name" : "o.atomize.mxo",
-								"type" : "iLaX"
-							}
  ]
 					}
 ,
 					"patching_rect" : [ 77.0, 18.0, 72.0, 20.0 ],
 					"saved_object_attributes" : 					{
-						"fontname" : "Arial",
-						"tags" : "",
 						"default_fontface" : 0,
-						"globalpatchername" : "",
-						"digest" : "",
 						"default_fontname" : "Arial",
-						"fontface" : 0,
-						"fontsize" : 12.0,
 						"default_fontsize" : 12.0,
-						"description" : ""
+						"description" : "",
+						"digest" : "",
+						"fontface" : 0,
+						"fontname" : "Arial",
+						"fontsize" : 12.0,
+						"globalpatchername" : "",
+						"tags" : ""
 					}
 ,
 					"text" : "p examples"
@@ -350,11 +305,12 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 6,
-							"minor" : 0,
-							"revision" : 5
+							"minor" : 1,
+							"revision" : 2,
+							"architecture" : "x86"
 						}
 ,
-						"rect" : [ 251.0, 127.0, 690.0, 512.0 ],
+						"rect" : [ 100.0, 126.0, 670.0, 504.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -378,66 +334,7 @@
 								"box" : 								{
 									"fontname" : "Arial",
 									"fontsize" : 12.0,
-									"id" : "obj-4",
-									"items" : [ "osc_accelerometer", ",", "osc_button", ",", "osc_multislider", ",", "osc_pictslider", ",", "osc_toggle" ],
-									"maxclass" : "umenu",
-									"numinlets" : 1,
-									"numoutlets" : 3,
-									"outlettype" : [ "int", "", "" ],
-									"parameter_enable" : 0,
-									"patching_rect" : [ 394.5, 449.0, 100.0, 20.0 ]
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"fontname" : "Arial",
-									"fontsize" : 12.0,
-									"hidden" : 1,
-									"id" : "obj-22",
-									"maxclass" : "message",
-									"numinlets" : 2,
-									"numoutlets" : 1,
-									"outlettype" : [ "" ],
-									"patching_rect" : [ 305.0, 546.0, 333.0, 18.0 ],
-									"text" : "load osc_toggle.maxhelp"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"fontname" : "Arial",
-									"fontsize" : 12.0,
-									"hidden" : 1,
-									"id" : "obj-16",
-									"maxclass" : "newobj",
-									"numinlets" : 1,
-									"numoutlets" : 1,
-									"outlettype" : [ "" ],
-									"patching_rect" : [ 435.0, 506.0, 53.0, 20.0 ],
-									"text" : "pcontrol"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"fontname" : "Arial",
-									"fontsize" : 12.0,
-									"hidden" : 1,
-									"id" : "obj-11",
-									"maxclass" : "newobj",
-									"numinlets" : 1,
-									"numoutlets" : 1,
-									"outlettype" : [ "" ],
-									"patching_rect" : [ 435.0, 477.0, 138.0, 20.0 ],
-									"text" : "sprintf load %s.maxhelp"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"fontname" : "Arial",
-									"fontsize" : 12.0,
+									"frgb" : 0.0,
 									"id" : "obj-27",
 									"maxclass" : "comment",
 									"numinlets" : 1,
@@ -449,11 +346,74 @@
 							}
 , 							{
 								"box" : 								{
+									"fontname" : "Arial",
+									"fontsize" : 12.0,
+									"hidden" : 1,
+									"id" : "obj-25",
+									"maxclass" : "message",
+									"numinlets" : 2,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 297.0, 374.0, 90.0, 18.0 ],
+									"text" : "autopopulate 1"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"fontname" : "Arial",
+									"fontsize" : 12.0,
+									"hidden" : 1,
+									"id" : "obj-20",
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 399.5, 412.0, 87.0, 20.0 ],
+									"text" : "prepend prefix"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"fontname" : "Arial",
+									"fontsize" : 12.0,
+									"hidden" : 1,
+									"id" : "obj-16",
+									"maxclass" : "message",
+									"numinlets" : 2,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 393.0, 374.0, 199.0, 18.0 ],
+									"text" : "./patches/odot_iphone/osc_controls"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"autopopulate" : 1,
+									"fontname" : "Arial",
+									"fontsize" : 12.0,
+									"id" : "obj-4",
+									"items" : [ "Cycling '74", ",", "examples", ",", "java-doc", ",", "Max Runtime.app", ",", "Max.app", ",", "patches", ",", "support" ],
+									"maxclass" : "umenu",
+									"numinlets" : 1,
+									"numoutlets" : 3,
+									"outlettype" : [ "int", "", "" ],
+									"parameter_enable" : 0,
+									"patching_rect" : [ 393.0, 449.0, 100.0, 20.0 ],
+									"prefix" : "./patches/odot_iphone/osc_controls"
+								}
+
+							}
+, 							{
+								"box" : 								{
 									"bubble" : 1,
 									"bubblepoint" : 0.19,
 									"bubbleside" : 2,
 									"fontname" : "Arial",
 									"fontsize" : 12.0,
+									"frgb" : 0.0,
 									"id" : "obj-8",
 									"maxclass" : "comment",
 									"numinlets" : 1,
@@ -468,6 +428,7 @@
 									"bubble" : 1,
 									"fontname" : "Arial",
 									"fontsize" : 12.0,
+									"frgb" : 0.0,
 									"id" : "obj-23",
 									"maxclass" : "comment",
 									"numinlets" : 1,
@@ -484,6 +445,7 @@
 									"bubbleside" : 2,
 									"fontname" : "Arial",
 									"fontsize" : 12.0,
+									"frgb" : 0.0,
 									"id" : "obj-21",
 									"maxclass" : "comment",
 									"numinlets" : 1,
@@ -535,12 +497,13 @@
 								"box" : 								{
 									"fontname" : "Arial",
 									"fontsize" : 12.0,
+									"frgb" : 0.0,
 									"id" : "obj-19",
 									"linecount" : 5,
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 327.0, 176.5, 190.0, 75.0 ],
+									"patching_rect" : [ 327.0, 176.5, 190.0, 74.0 ],
 									"text" : "If a number appears before the name of the object (#/object#) that number is the tab number. The number follwing the name of the object is the object number."
 								}
 
@@ -549,12 +512,13 @@
 								"box" : 								{
 									"fontname" : "Arial",
 									"fontsize" : 12.0,
+									"frgb" : 0.0,
 									"id" : "obj-1",
 									"linecount" : 3,
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 6.0, 148.5, 292.0, 48.0 ],
+									"patching_rect" : [ 6.0, 148.5, 292.0, 47.0 ],
 									"text" : "osc_universal takes three arguments: control, object number and tab number. Tab number is exclusively for touchosc. "
 								}
 
@@ -564,6 +528,7 @@
 									"bubble" : 1,
 									"fontname" : "Arial",
 									"fontsize" : 12.0,
+									"frgb" : 0.0,
 									"id" : "obj-13",
 									"maxclass" : "comment",
 									"numinlets" : 1,
@@ -580,6 +545,7 @@
 									"bubbleside" : 2,
 									"fontname" : "Arial",
 									"fontsize" : 12.0,
+									"frgb" : 0.0,
 									"id" : "obj-10",
 									"maxclass" : "comment",
 									"numinlets" : 1,
@@ -609,12 +575,13 @@
 									"bubblepoint" : 1.0,
 									"fontname" : "Arial",
 									"fontsize" : 12.0,
+									"frgb" : 0.0,
 									"id" : "obj-17",
 									"linecount" : 4,
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 485.0, 296.0, 140.0, 66.0 ],
+									"patching_rect" : [ 485.0, 296.0, 140.0, 64.0 ],
 									"text" : "If you see data here then osc messages are being sent over port 10000."
 								}
 
@@ -642,8 +609,8 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 327.0, 306.0, 106.0, 20.0 ],
-									"text" : "udpreceive 10000"
+									"patching_rect" : [ 327.0, 306.0, 151.0, 20.0 ],
+									"text" : "udpreceive 10000 CNMAT"
 								}
 
 							}
@@ -651,13 +618,13 @@
 								"box" : 								{
 									"fontname" : "Arial",
 									"fontsize" : 12.0,
-									"frgb" : [ 0.485712, 0.485712, 0.485712, 1.0 ],
+									"frgb" : 0.0,
 									"id" : "obj-5",
 									"linecount" : 3,
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 6.0, 88.0, 599.0, 48.0 ],
+									"patching_rect" : [ 6.0, 88.0, 599.0, 47.0 ],
 									"text" : "osc_universal interprets osc messages from the iphone using  touchosc, oscemote, iosc, mrmr, as well as a particular processing sketch, provided in the odot_iphone folder. It can be used as a button, multislider, pictslider, toggle, and accelerometer. By default the port is set to 10000.",
 									"textcolor" : [ 0.485712, 0.485712, 0.485712, 1.0 ]
 								}
@@ -667,6 +634,7 @@
 								"box" : 								{
 									"fontname" : "Arial",
 									"fontsize" : 12.0,
+									"frgb" : 0.0,
 									"id" : "obj-2",
 									"maxclass" : "comment",
 									"numinlets" : 1,
@@ -680,11 +648,12 @@
 								"box" : 								{
 									"fontname" : "Arial",
 									"fontsize" : 48.0,
+									"frgb" : 0.0,
 									"id" : "obj-3",
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 6.0, 6.0, 551.0, 62.0 ],
+									"patching_rect" : [ 6.0, 6.0, 551.0, 60.0 ],
 									"text" : "osc_universal"
 								}
 
@@ -697,6 +666,7 @@
 									"bubbleside" : 2,
 									"fontname" : "Arial",
 									"fontsize" : 12.0,
+									"frgb" : 0.0,
 									"id" : "obj-6",
 									"maxclass" : "comment",
 									"numinlets" : 1,
@@ -709,24 +679,6 @@
  ],
 						"lines" : [ 							{
 								"patchline" : 								{
-									"destination" : [ "obj-16", 0 ],
-									"disabled" : 0,
-									"hidden" : 1,
-									"source" : [ "obj-11", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-22", 1 ],
-									"disabled" : 0,
-									"hidden" : 1,
-									"source" : [ "obj-11", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
 									"destination" : [ "obj-15", 1 ],
 									"disabled" : 0,
 									"hidden" : 0,
@@ -736,10 +688,28 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-11", 0 ],
+									"destination" : [ "obj-20", 0 ],
 									"disabled" : 0,
 									"hidden" : 1,
-									"source" : [ "obj-4", 1 ]
+									"source" : [ "obj-16", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-4", 0 ],
+									"disabled" : 0,
+									"hidden" : 1,
+									"source" : [ "obj-20", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-4", 0 ],
+									"disabled" : 0,
+									"hidden" : 1,
+									"source" : [ "obj-25", 0 ]
 								}
 
 							}
@@ -770,70 +740,21 @@
 								}
 
 							}
- ],
-						"dependency_cache" : [ 							{
-								"name" : "osc_universal.maxpat",
-								"bootpath" : "/Users/samgmansfield/Documents/CNMAT/cnmat/trunk/max/externals/odot/trunk/testing/odot_iphone/osc_controls_recieve",
-								"type" : "JSON",
-								"implicit" : 1
-							}
-, 							{
-								"name" : "osc_button.maxpat",
-								"bootpath" : "/Users/samgmansfield/Documents/CNMAT/cnmat/trunk/max/externals/odot/trunk/testing/odot_iphone/osc_controls_recieve",
-								"type" : "JSON",
-								"implicit" : 1
-							}
-, 							{
-								"name" : "osc_multislider.maxpat",
-								"bootpath" : "/Users/samgmansfield/Documents/CNMAT/cnmat/trunk/max/externals/odot/trunk/testing/odot_iphone/osc_controls_recieve",
-								"type" : "JSON",
-								"implicit" : 1
-							}
-, 							{
-								"name" : "osc_pictslider.maxpat",
-								"bootpath" : "/Users/samgmansfield/Documents/CNMAT/cnmat/trunk/max/externals/odot/trunk/testing/odot_iphone/osc_controls_recieve",
-								"type" : "JSON",
-								"implicit" : 1
-							}
-, 							{
-								"name" : "osc_toggle.maxpat",
-								"bootpath" : "/Users/samgmansfield/Documents/CNMAT/cnmat/trunk/max/externals/odot/trunk/testing/odot_iphone/osc_controls_recieve",
-								"type" : "JSON",
-								"implicit" : 1
-							}
-, 							{
-								"name" : "osc_accelerometer.maxpat",
-								"bootpath" : "/Users/samgmansfield/Documents/CNMAT/cnmat/trunk/max/externals/odot/trunk/testing/odot_iphone/osc_controls_recieve",
-								"type" : "JSON",
-								"implicit" : 1
-							}
-, 							{
-								"name" : "o.message.mxo",
-								"type" : "iLaX"
-							}
-, 							{
-								"name" : "o.route.mxo",
-								"type" : "iLaX"
-							}
-, 							{
-								"name" : "o.atomize.mxo",
-								"type" : "iLaX"
-							}
  ]
 					}
 ,
 					"patching_rect" : [ 16.0, 18.0, 49.0, 20.0 ],
 					"saved_object_attributes" : 					{
-						"fontname" : "Arial",
-						"tags" : "",
 						"default_fontface" : 0,
-						"globalpatchername" : "",
-						"digest" : "",
 						"default_fontname" : "Arial",
-						"fontface" : 0,
-						"fontsize" : 12.0,
 						"default_fontsize" : 12.0,
-						"description" : ""
+						"description" : "",
+						"digest" : "",
+						"fontface" : 0,
+						"fontname" : "Arial",
+						"fontsize" : 12.0,
+						"globalpatchername" : "",
+						"tags" : ""
 					}
 ,
 					"text" : "p basic"
@@ -844,43 +765,43 @@
 		"lines" : [  ],
 		"dependency_cache" : [ 			{
 				"name" : "osc_universal.maxpat",
-				"bootpath" : "/Users/samgmansfield/Documents/CNMAT/cnmat/trunk/max/externals/odot/trunk/testing/odot_iphone/osc_controls_recieve",
-				"patcherrelativepath" : "",
+				"bootpath" : "/Users/samgmansfield/Documents/CNMAT/CNMAT-odot/testing/odot_iphone/osc_controls",
+				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "osc_button.maxpat",
-				"bootpath" : "/Users/samgmansfield/Documents/CNMAT/cnmat/trunk/max/externals/odot/trunk/testing/odot_iphone/osc_controls_recieve",
-				"patcherrelativepath" : "",
+				"bootpath" : "/Users/samgmansfield/Documents/CNMAT/CNMAT-odot/testing/odot_iphone/osc_controls",
+				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "osc_multislider.maxpat",
-				"bootpath" : "/Users/samgmansfield/Documents/CNMAT/cnmat/trunk/max/externals/odot/trunk/testing/odot_iphone/osc_controls_recieve",
-				"patcherrelativepath" : "",
+				"bootpath" : "/Users/samgmansfield/Documents/CNMAT/CNMAT-odot/testing/odot_iphone/osc_controls",
+				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "osc_pictslider.maxpat",
-				"bootpath" : "/Users/samgmansfield/Documents/CNMAT/cnmat/trunk/max/externals/odot/trunk/testing/odot_iphone/osc_controls_recieve",
-				"patcherrelativepath" : "",
+				"bootpath" : "/Users/samgmansfield/Documents/CNMAT/CNMAT-odot/testing/odot_iphone/osc_controls",
+				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "osc_toggle.maxpat",
-				"bootpath" : "/Users/samgmansfield/Documents/CNMAT/cnmat/trunk/max/externals/odot/trunk/testing/odot_iphone/osc_controls_recieve",
-				"patcherrelativepath" : "",
+				"bootpath" : "/Users/samgmansfield/Documents/CNMAT/CNMAT-odot/testing/odot_iphone/osc_controls",
+				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "osc_accelerometer.maxpat",
-				"bootpath" : "/Users/samgmansfield/Documents/CNMAT/cnmat/trunk/max/externals/odot/trunk/testing/odot_iphone/osc_controls_recieve",
-				"patcherrelativepath" : "",
+				"bootpath" : "/Users/samgmansfield/Documents/CNMAT/CNMAT-odot/testing/odot_iphone/osc_controls",
+				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
