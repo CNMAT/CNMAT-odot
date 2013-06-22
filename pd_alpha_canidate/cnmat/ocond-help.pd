@@ -10,6 +10,9 @@
 #X obj 159 194 oprint three;
 #X obj 128 218 oprint two;
 #X obj 97 245 oprint one;
+#X msg 49 -48 o.cond creates one outlet for each expression separated
+by a semicolon. The bundle will come out the outlet that corresponds
+to the first expression that evaluates to true or non-zero.;
 #X connect 0 0 4 0;
 #X connect 1 0 4 0;
 #X connect 2 0 4 0;
