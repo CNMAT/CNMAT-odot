@@ -247,7 +247,11 @@ void ovar_doc(t_ovar *x)
 
 void ovar_free(t_ovar *x)
 {
+#ifdef OMAX_PD_VERSION
+    free(x->proxy);
+#else
 	object_free(x->proxy);
+#endif
 	if(x->bndl){
 		osc_mem_free(x->bndl);
 	}
