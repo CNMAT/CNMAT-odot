@@ -1,0 +1,32 @@
+#N canvas 605 151 774 500 10;
+#X msg 41 -178 o.pak takes a OSC addresses as arguments and creates
+an inlet for each one. Anything sent into an inlet is bound to the
+corresponding address and the OSC packet is output with all other addresses
+bound to their most recent values.;
+#X floatatom 49 -94 5 0 0 0 - - -;
+#X msg 106 -94 1 2 3;
+#X obj 51 -52 opak /foo /bar;
+#X obj 54 -7 omessage 100 36 binhex b#0A;
+#X obj 56 82 omessage 100 36 binhex b#2F626C6F6F203120322033200A2F626C
+b#6F6220342035203620;
+#X obj 57 141 opak /foo /bar a b c;
+#X obj 58 184 omessage 100 88 binhex b#0A;
+#X msg 170 -41 left inlet triggers output \, since all inlets are active
+;
+#X msg 200 138 a bundle sent in to one of the inlets will become a
+nested bundle;
+#X msg 553 -7 default arguments can be placed after OSC addresses;
+#X floatatom 389 -84 5 0 0 0 - - -;
+#X msg 442 -85 sploo;
+#X msg 507 -85 123;
+#X obj 404 -34 opak /foo /bar 7 8 9;
+#X obj 403 8 omessage 100 36 binhex b#0A;
+#X connect 1 0 3 0;
+#X connect 2 0 3 1;
+#X connect 3 0 4 1;
+#X connect 5 0 6 0;
+#X connect 6 0 7 1;
+#X connect 11 0 14 0;
+#X connect 12 0 14 0;
+#X connect 13 0 14 1;
+#X connect 14 0 15 1;

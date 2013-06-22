@@ -1,4 +1,4 @@
-#N canvas 738 376 762 300 10;
+#N canvas 488 324 762 300 10;
 #X floatatom 100 52 5 0 0 0 - - -;
 #X floatatom 199 55 5 0 0 0 - - -;
 #X obj 94 93 opack /foo/1;
@@ -9,6 +9,10 @@
 #X obj 210 145 ointersection;
 #X obj 361 142 ounion;
 #X obj 360 172 oprint union;
+#X msg 83 -16 o.intersection takes two bundles and forms a new bundle
+that contains the OSC messages from the bundle received in the left
+inlet whose addresses are also present in the bundle received in the
+right inlet.;
 #X connect 0 0 2 0;
 #X connect 1 0 3 0;
 #X connect 1 0 3 1;

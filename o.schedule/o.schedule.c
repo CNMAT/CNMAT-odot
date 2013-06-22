@@ -400,7 +400,11 @@ t_osc_timetag osched_getTimetag(t_osched *x, long len, char *ptr)
 void osched_free(t_osched *x)
 {
 	clock_unset(x->clock);
+#ifdef OMAX_PD_VERSION
 	free(x->clock);
+#else
+	object_free(x->clock);
+#endif
 	critical_free(x->lock);
 	osc_mem_free(x->packet_data);
 	osc_mem_free(x->packet_free);

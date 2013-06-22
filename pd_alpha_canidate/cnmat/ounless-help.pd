@@ -5,6 +5,8 @@
 #X obj 151 83 opack /foo;
 #X obj 151 110 ounless /foo > 3;
 #X obj 151 165 oprint yes;
+#X msg 38 14 o.unless behaves like o.if with only the right-most outlet
+(i.e. the "else" outlet).;
 #X connect 1 0 2 0;
 #X connect 2 0 3 0;
 #X connect 3 0 0 0;
