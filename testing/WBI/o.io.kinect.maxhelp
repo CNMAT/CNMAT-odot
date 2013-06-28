@@ -8,7 +8,7 @@
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 42.0, 67.0, 1398.0, 778.0 ],
+		"rect" : [ 255.0, 93.0, 1398.0, 778.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -180,7 +180,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 143.0, 256.0, 210.0, 47.0 ],
-					"text" : "/read \"jit.openni_config.xml\" 0 \n/version_jit.openni 0 8 8 \n/version_openni 1 5 4 0 \n",
+					"text" : "/read \"jit.openni_config.xml\" 1 \n/version_jit.openni 0 8 8 \n/version_openni 1 5 4 0 \n",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -429,6 +429,27 @@
 			}
 , 			{
 				"name" : "o.io.skeleton.develop.maxpat",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/testing/WBI",
+				"patcherrelativepath" : ".",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "o.io.skeleton.headshoulderskneesandtoes.maxpat",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/testing/WBI",
+				"patcherrelativepath" : ".",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "o.io.skeleton.between.maxpat",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/testing/WBI",
+				"patcherrelativepath" : ".",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "o.io.skeleton.middle.maxpat",
 				"bootpath" : "/Users/adrian2013/CNMAT-odot/testing/WBI",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
