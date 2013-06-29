@@ -1,4 +1,4 @@
-#N canvas 15 511 450 300 10;
+#N canvas 402 308 450 300 10;
 #X floatatom 161 56 5 0 0 0 - - -;
 #X msg 219 55 testo;
 #X floatatom 292 44 5 0 0 0 - - -;
@@ -9,6 +9,8 @@
 #X obj 162 103 opack /foo;
 #X obj 72 140 oprint pack_monitor;
 #X obj 243 141 oroute /foo/*;
+#X msg 44 -30 o.print prints the contents of an OSC packet to the Max
+window and passes the packet through its outlet unaltered.;
 #X connect 0 0 7 0;
 #X connect 1 0 7 0;
 #X connect 2 0 5 0;

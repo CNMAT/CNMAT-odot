@@ -3,13 +3,14 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 6,
-			"minor" : 0,
-			"revision" : 5
+			"minor" : 1,
+			"revision" : 2,
+			"architecture" : "x86"
 		}
 ,
 		"rect" : [ 31.0, 87.0, 1091.0, 559.0 ],
 		"bglocked" : 0,
-		"openinpresentation" : 0,
+		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
 		"default_fontface" : 0,
 		"default_fontname" : "Arial",
@@ -35,7 +36,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 12.5, 43.0, 79.0, 20.0 ],
+					"patching_rect" : [ 75.5, 43.0, 79.0, 20.0 ],
 					"text" : "prepend port"
 				}
 
@@ -48,7 +49,7 @@
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 12.5, 11.0, 25.0, 25.0 ]
+					"patching_rect" : [ 75.5, 11.0, 25.0, 25.0 ]
 				}
 
 			}
@@ -65,8 +66,9 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 6,
-							"minor" : 0,
-							"revision" : 5
+							"minor" : 1,
+							"revision" : 2,
+							"architecture" : "x86"
 						}
 ,
 						"rect" : [ 151.0, 129.0, 778.0, 503.0 ],
@@ -404,26 +406,21 @@
 								}
 
 							}
- ],
-						"dependency_cache" : [ 							{
-								"name" : "o.atomize.mxo",
-								"type" : "iLaX"
-							}
  ]
 					}
 ,
-					"patching_rect" : [ 410.0, 251.0, 143.0, 20.0 ],
+					"patching_rect" : [ 473.0, 251.0, 143.0, 20.0 ],
 					"saved_object_attributes" : 					{
 						"default_fontface" : 0,
-						"digest" : "",
 						"default_fontname" : "Arial",
-						"fontname" : "Arial",
-						"tags" : "",
 						"default_fontsize" : 12.0,
 						"description" : "",
-						"globalpatchername" : "",
+						"digest" : "",
 						"fontface" : 0,
-						"fontsize" : 12.0
+						"fontname" : "Arial",
+						"fontsize" : 12.0,
+						"globalpatchername" : "",
+						"tags" : ""
 					}
 ,
 					"text" : "p parseOmessageButton"
@@ -439,7 +436,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 476.0, 349.0, 43.0, 18.0 ],
+					"patching_rect" : [ 539.0, 349.0, 43.0, 18.0 ],
 					"text" : "empty"
 				}
 
@@ -453,7 +450,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 618.0, 408.0, 51.0, 20.0 ],
+					"patching_rect" : [ 681.0, 408.0, 51.0, 20.0 ],
 					"text" : "trigger l"
 				}
 
@@ -467,7 +464,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 543.5, 339.0, 43.0, 18.0 ],
+					"patching_rect" : [ 606.5, 339.0, 43.0, 18.0 ],
 					"text" : "empty"
 				}
 
@@ -482,7 +479,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 598.75, 311.0, 308.0, 46.0 ],
+					"patching_rect" : [ 661.75, 311.0, 308.0, 45.0 ],
 					"text" : "If you are using mrmr turn off \"Include Device ID\" under the prefs tab. Otherwise you are using an unsupported osc app or you are not pressing a button."
 				}
 
@@ -496,7 +493,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 410.0, 306.0, 20.0, 20.0 ],
+					"patching_rect" : [ 473.0, 306.0, 20.0, 20.0 ],
 					"text" : "t l"
 				}
 
@@ -508,7 +505,7 @@
 					"maxclass" : "outlet",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 727.0, 455.0, 25.0, 25.0 ]
+					"patching_rect" : [ 790.0, 455.0, 25.0, 25.0 ]
 				}
 
 			}
@@ -519,7 +516,7 @@
 					"maxclass" : "outlet",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 420.0, 455.0, 25.0, 25.0 ]
+					"patching_rect" : [ 483.0, 455.0, 25.0, 25.0 ]
 				}
 
 			}
@@ -532,7 +529,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 632.5, 164.0, 165.0, 20.0 ],
+					"patching_rect" : [ 695.5, 164.0, 165.0, 20.0 ],
 					"text" : "sprintf /processing/button/%s"
 				}
 
@@ -545,7 +542,9 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "int" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 219.0, 366.0, 20.0, 20.0 ]
+					"patching_rect" : [ 282.0, 366.0, 20.0, 20.0 ],
+					"presentation" : 1,
+					"presentation_rect" : [ 5.0, 8.0, 20.0, 20.0 ]
 				}
 
 			}
@@ -558,7 +557,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 12.5, 214.0, 68.0, 20.0 ],
+					"patching_rect" : [ 75.5, 214.0, 68.0, 20.0 ],
 					"text" : "route bang"
 				}
 
@@ -572,7 +571,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 640.0, 200.0, 382.0, 20.0 ],
+					"patching_rect" : [ 703.0, 200.0, 382.0, 20.0 ],
 					"text" : "/mrmr/slider/horizontal/24/SamMansfieldPhone4 489 ",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -587,7 +586,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 411.0, 164.0, 221.0, 20.0 ],
+					"patching_rect" : [ 474.0, 164.0, 221.0, 20.0 ],
 					"text" : "sprintf /mrmr/pushbutton/%s/jedermann"
 				}
 
@@ -601,7 +600,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 269.0, 164.0, 122.0, 20.0 ],
+					"patching_rect" : [ 332.0, 164.0, 122.0, 20.0 ],
 					"text" : "sprintf /osc/button%s"
 				}
 
@@ -615,7 +614,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 154.0, 164.0, 103.0, 20.0 ],
+					"patching_rect" : [ 217.0, 164.0, 103.0, 20.0 ],
 					"text" : "sprintf /button/%s"
 				}
 
@@ -629,7 +628,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 32.0, 164.0, 113.0, 20.0 ],
+					"patching_rect" : [ 95.0, 164.0, 113.0, 20.0 ],
 					"text" : "sprintf /%s/push%s"
 				}
 
@@ -643,7 +642,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 38.0, 126.0, 79.0, 20.0 ],
+					"patching_rect" : [ 101.0, 126.0, 79.0, 20.0 ],
 					"text" : "loadmess #2"
 				}
 
@@ -657,7 +656,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 126.0, 126.0, 79.0, 20.0 ],
+					"patching_rect" : [ 189.0, 126.0, 79.0, 20.0 ],
 					"text" : "loadmess #1"
 				}
 
@@ -671,7 +670,7 @@
 					"maxclass" : "outlet",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 219.0, 455.0, 25.0, 25.0 ]
+					"patching_rect" : [ 282.0, 455.0, 25.0, 25.0 ]
 				}
 
 			}
@@ -684,7 +683,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "int" ],
-					"patching_rect" : [ 308.0, 311.0, 44.0, 20.0 ],
+					"patching_rect" : [ 371.0, 311.0, 44.0, 20.0 ],
 					"text" : "/ 1000"
 				}
 
@@ -698,7 +697,7 @@
 					"numinlets" : 6,
 					"numoutlets" : 6,
 					"outlettype" : [ "", "", "", "", "", "FullPacket" ],
-					"patching_rect" : [ 110.0, 248.0, 272.0, 20.0 ],
+					"patching_rect" : [ 173.0, 248.0, 272.0, 20.0 ],
 					"text" : "o.route touchosc oscemote iosc mrmr processing"
 				}
 
@@ -712,7 +711,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 12.5, 72.0, 151.0, 20.0 ],
+					"patching_rect" : [ 75.5, 72.0, 151.0, 20.0 ],
 					"text" : "udpreceive 10000 CNMAT"
 				}
 
@@ -723,7 +722,7 @@
 					"destination" : [ "obj-14", 1 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"midpoints" : [ 44.0, 97.0, 804.0, 109.0, 796.0, 207.0 ],
+					"midpoints" : [ 107.0, 97.0, 867.0, 109.0, 859.0, 207.0 ],
 					"source" : [ "obj-1", 0 ]
 				}
 
@@ -895,7 +894,7 @@
 					"destination" : [ "obj-15", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"midpoints" : [ 227.0, 365.0 ],
+					"midpoints" : [ 290.0, 365.0 ],
 					"source" : [ "obj-4", 0 ]
 				}
 

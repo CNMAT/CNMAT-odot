@@ -298,7 +298,11 @@ void omap_doc(t_omap *x)
 
 void omap_free(t_omap *x)
 {
-#ifndef OMAX_PD_VERSION
+#ifdef OMAX_PD_VERSION
+    if(x->proxy)
+        free(x->proxy);
+    
+#else
 	if(x->proxy){
 		object_free(x->proxy);
 	}

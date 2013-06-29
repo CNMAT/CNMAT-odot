@@ -6,6 +6,8 @@
 #X obj 160 132 oprint prepend;
 #X obj 260 100 oappend /bar;
 #X obj 260 132 oprint append;
+#X msg 37 -25 o.prepend takes an OSC address as an argument and prepends
+it to every address in the bundle.;
 #X connect 0 0 1 0;
 #X connect 1 0 2 0;
 #X connect 1 0 4 0;
