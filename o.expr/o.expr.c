@@ -274,7 +274,7 @@ void oexpr_fullPacket(t_oexpr *x, t_symbol *msg, int argc, t_atom *argv)
 #endif
 }
 
-void oexpr_postExprIR(t_oexpr *fg)
+void oexpr_postExprAST(t_oexpr *fg)
 {
 	char *buf = NULL;
 	long len = 0;
@@ -733,7 +733,7 @@ int main(void)
 	class_addmethod(c, (method)oexpr_assist, "assist", A_CANT, 0);
 	class_addmethod(c, (method)oexpr_bang, "bang", 0);
 
-	class_addmethod(c, (method)oexpr_postExprIR, "post-expr-ir", 0);
+	class_addmethod(c, (method)oexpr_postExprAST, "post-ast", 0);
 
 	class_addmethod(c, (method)oexpr_doc, "doc", 0);
 	class_addmethod(c, (method)oexpr_doc_func, "doc-func", A_GIMME, 0);
