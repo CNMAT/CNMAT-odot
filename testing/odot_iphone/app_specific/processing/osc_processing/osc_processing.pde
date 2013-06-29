@@ -33,7 +33,7 @@ void setup() {
   multislider = new Multislider(width/1.5, height/6.0, 15, 0, 255, 0, new OscMessage("/processing/multislider/1"));
   controlsArray[counter] = multislider;
   counter++;
-  pictslider = new Pictslider(width/3.0, height/1.5, 80, 0, 255, 0, new OscMessage("/processing/pictslider/x/1"), new OscMessage("/processing/pictslider/y/1"));
+  pictslider = new Pictslider(width/3.0, height/1.5, 80, 0, 255, 0, new OscMessage("/processing/pictslider/1/x"), new OscMessage("/processing/pictslider/1/y"));
   controlsArray[counter] = pictslider;
   counter++;
   //the next two lines are copied from an example given in the oscP5 library
