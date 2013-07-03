@@ -399,8 +399,6 @@ void oroute_free(t_oroute *x)
 		}
 #ifdef OMAX_PD_VERSION
         free(x->proxy);
-#else
-        object_free(x->proxy);
 #endif
 	}
     
