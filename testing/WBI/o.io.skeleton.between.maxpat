@@ -2,8 +2,8 @@
 	"boxes" : [ 		{
 			"box" : 			{
 				"maxclass" : "comment",
-				"text" : "What does I2norm does?",
-				"patching_rect" : [ 123.0, 143.0, 150.0, 20.0 ],
+				"text" : "What I2norm does?",
+				"patching_rect" : [ 607.0, 36.0, 150.0, 20.0 ],
 				"id" : "obj-7",
 				"fontsize" : 12.0,
 				"numinlets" : 1,
@@ -16,7 +16,7 @@
 , 		{
 			"box" : 			{
 				"maxclass" : "comment",
-				"text" : "What does bound do?",
+				"text" : "What bound does?",
 				"patching_rect" : [ 449.0, 36.0, 150.0, 20.0 ],
 				"id" : "obj-5",
 				"fontsize" : 12.0,
@@ -42,7 +42,7 @@
 , 		{
 			"box" : 			{
 				"maxclass" : "outlet",
-				"patching_rect" : [ 38.0, 150.0, 25.0, 25.0 ],
+				"patching_rect" : [ 38.0, 177.0, 25.0, 25.0 ],
 				"id" : "obj-4",
 				"numinlets" : 1,
 				"numoutlets" : 0,
@@ -102,7 +102,7 @@
 				"source" : [ "obj-2", 1 ],
 				"destination" : [ "obj-4", 0 ],
 				"hidden" : 0,
-				"midpoints" : [ 1172.5, 136.0, 47.5, 136.0 ],
+				"midpoints" : [ 1172.5, 165.0, 47.5, 165.0 ],
 				"disabled" : 0
 			}
 
