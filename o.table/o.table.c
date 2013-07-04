@@ -181,7 +181,18 @@ void otable_append(t_otable *x, t_symbol *msg, int argc, t_atom *argv)
 void otable_fullPacket(t_otable *x, t_symbol *msg, int argc, t_atom *argv)
 {
 	OMAX_UTIL_GET_LEN_AND_PTR;
+	char *copy = NULL;
+	long copylen = 0;
+	char alloc = 0;
+	if(strncmp(ptr, "#bundle\0", 8)){
+		osc_bundle_s_wrapMessage(len, ptr, &copylen, &copy, &alloc);
+		len = copylen;
+		ptr = copy;
+	}
 	otable_insert(x, len, ptr, osc_linkedlist_append);
+	if(alloc && copy){
+		osc_mem_free(copy);
+	}
 }
 
 void otable_pop(t_otable *x, void *(*ll_pop)(t_osc_linkedlist*))
