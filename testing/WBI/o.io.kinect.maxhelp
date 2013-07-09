@@ -8,7 +8,7 @@
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 18.0, 344.0, 1398.0, 778.0 ],
+		"rect" : [ 16.0, 133.0, 1398.0, 778.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -428,34 +428,6 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "o.io.skeleton.develop.maxpat",
-				"bootpath" : "/Users/adrian2013/CNMAT-odot/testing/WBI",
-				"patcherrelativepath" : ".",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "o.io.skeleton.headshoulderskneesandtoes.maxpat",
-				"bootpath" : "/Users/adrian2013/CNMAT-odot/testing/WBI",
-				"patcherrelativepath" : ".",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "o.io.skeleton.between.maxpat",
-				"bootpath" : "/Users/adrian2013/CNMAT-odot/testing/WBI",
-				"patcherrelativepath" : ".",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "o.io.skeleton.middle.maxpat",
-				"bootpath" : "/Users/adrian2013/CNMAT-odot/testing/WBI",
-				"patcherrelativepath" : ".",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
 				"name" : "jit.openni.mxo",
 				"type" : "iLaX"
 			}
@@ -473,14 +445,6 @@
 			}
 , 			{
 				"name" : "o.prepend.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.if.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.expr.mxo",
 				"type" : "iLaX"
 			}
  ]
