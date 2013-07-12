@@ -452,7 +452,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "" ],
 					"patching_rect" : [ 45.0, 105.0, 120.77272, 19.0 ],
-					"text" : "route reset on"
+					"text" : "route reset int"
 				}
 
 			}
