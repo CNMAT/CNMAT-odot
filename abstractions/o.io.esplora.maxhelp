@@ -29,6 +29,18 @@
 		"tags" : "",
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-25",
+					"maxclass" : "toggle",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "int" ],
+					"parameter_enable" : 0,
+					"patching_rect" : [ 120.0, 120.0, 20.0, 20.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"id" : "obj-15",
@@ -100,7 +112,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 56.0, 300.0, 150.0, 101.0 ],
-									"text" : "/horizontal 0.0078125 \n/vertical -0.0117188 \n/button \"released\" \n/backward \"released\" \n/left \"released\" \n/forward \"released\" \n/right \"released\" \n",
+									"text" : "/horizontal 0.0078125 \n/vertical -0.0117188 \n/button \"released\" \n/backward \"released\" \n/left \"released\" \n/forward \"released\" \n/right \"released\" ",
 									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 
@@ -362,8 +374,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 990.0, 495.0, 210.0, 21.0 ],
-					"text" : "/photoresistor 0.887586 \n",
+					"patching_rect" : [ 990.0, 495.0, 210.0, 20.0 ],
+					"text" : "/photoresistor 0.887586 ",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -404,8 +416,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 585.0, 401.0, 210.0, 21.0 ],
-					"text" : "/horizontal 0.538612 \n",
+					"patching_rect" : [ 585.0, 401.0, 210.0, 20.0 ],
+					"text" : "/horizontal 0.538612 ",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -421,7 +433,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 802.5, 444.5, 210.0, 34.0 ],
-					"text" : "/fahrenheit 73. \n/celsius 23. \n",
+					"text" : "/fahrenheit 73. \n/celsius 23. ",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -981,7 +993,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 900.0, 275.0, 152.0, 114.0 ],
-					"text" : "/portname \"usbmodemfd131\" \n/rate/output 103 \n/rate/input 0 \n/mediansize/received 189.5 \n/baud 115200 \n/port \"a\" \n",
+					"text" : "/portname \"usbmodemfd131\" \n/rate/output 103 \n/rate/input 0 \n/mediansize/received 189.5 \n/baud 115200 \n/port \"a\" ",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -1026,7 +1038,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 330.0, 401.0, 90.0, 100.0 ],
-					"text" : "/backward \"released\" \n/left \"released\" \n/forward \"released\" \n/right \"released\" \n",
+					"text" : "/backward \"released\" \n/left \"released\" \n/forward \"released\" \n/right \"released\" ",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -1040,8 +1052,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 437.0, 355.0, 210.0, 21.0 ],
-					"text" : "/loudness 0. \n",
+					"patching_rect" : [ 437.0, 355.0, 210.0, 20.0 ],
+					"text" : "/loudness 0. ",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -1460,7 +1472,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 580.0, 116.5, 90.0, 47.0 ],
-									"text" : "/x 0.0996094 \n/y -0.193359 \n/z 0.136719 \n",
+									"text" : "/x 0.0996094 \n/y -0.193359 \n/z 0.136719 ",
 									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 
@@ -1935,7 +1947,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 50.0, 301.5, 87.0, 61.0 ],
-					"text" : "/red 0 \n/green 0 \n/blue 0 \n/rgb 0 0 0 \n",
+					"text" : "/red 0 \n/green 0 \n/blue 0 \n/rgb 0 0 0 ",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -2173,6 +2185,15 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-1", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-25", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-1", 1 ],
 					"disabled" : 0,
 					"hidden" : 0,
@@ -2300,7 +2321,7 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "o.io.esplora.maxpat",
-				"bootpath" : "/Users/jml/Documents/materials/programming/max_files/5_berkeley/projects/cnmat/repositories/git/CNMAT-odot/testing/abstractions",
+				"bootpath" : "/Users/jml/Documents/materials/programming/max_files/5_berkeley/projects/cnmat/repositories/git/CNMAT-odot/abstractions",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
@@ -2308,7 +2329,7 @@
 , 			{
 				"name" : "o.io.slipserial.maxpat",
 				"bootpath" : "/Users/jml/Documents/materials/programming/max_files/5_berkeley/projects/cnmat/repositories/git/CNMAT-odot/abstractions",
-				"patcherrelativepath" : "../../abstractions",
+				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
