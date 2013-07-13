@@ -248,6 +248,8 @@ void ovar_doc(t_ovar *x)
 void ovar_free(t_ovar *x)
 {
 #ifdef OMAX_PD_VERSION
+    pd_free(x->proxy[0]);
+    pd_free(x->proxy[1]);
     free(x->proxy);
 #else
 	object_free(x->proxy);
