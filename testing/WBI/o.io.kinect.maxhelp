@@ -4,11 +4,11 @@
 		"appversion" : 		{
 			"major" : 6,
 			"minor" : 1,
-			"revision" : 2,
+			"revision" : 3,
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 42.0, 67.0, 1398.0, 778.0 ],
+		"rect" : [ 16.0, 133.0, 1398.0, 778.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -428,13 +428,6 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "o.io.skeleton.develop.maxpat",
-				"bootpath" : "/Users/adrian2013/CNMAT-odot/testing/WBI",
-				"patcherrelativepath" : ".",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
 				"name" : "jit.openni.mxo",
 				"type" : "iLaX"
 			}
@@ -452,14 +445,6 @@
 			}
 , 			{
 				"name" : "o.prepend.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.if.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.expr.mxo",
 				"type" : "iLaX"
 			}
  ]
