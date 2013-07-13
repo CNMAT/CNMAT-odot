@@ -783,6 +783,9 @@ void omessage_list(t_omessage *x, t_symbol *list_sym, short argc, t_atom *argv){
 	switch(proxy_getinlet((t_object *)x)){
 	case 0:
 		{
+			if(!x->bndl){
+				return;
+			}
 			if(x->bndltype == OMESSAGE_S){
 				// this is lame...  we can't just deserialize because that process 
 				// doesn't produce the $n substitution structure.  so we have 
@@ -923,7 +926,9 @@ void omessage_list(t_omessage *x, t_symbol *list_sym, short argc, t_atom *argv){
 			char *buf = NULL;
 			osc_bundle_u_serialize(x->bndl, &len, &buf);
 			omax_util_outletOSC(x->outlet, len, buf);
-			osc_mem_free(buf);
+			if(buf){
+				osc_mem_free(buf);
+			}
 			t_osc_parser_subst *s = x->substitutions;
 			while(s){
 				if(s->listitem > argc){

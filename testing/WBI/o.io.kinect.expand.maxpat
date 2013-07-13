@@ -8,7 +8,7 @@
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 265.0, 162.0, 1210.0, 486.0 ],
+		"rect" : [ 230.0, 162.0, 1210.0, 486.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -67,7 +67,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 419.0, 19.0, 649.0, 248.0 ],
+					"patching_rect" : [ 419.0, 19.0, 579.0, 248.0 ],
 					"text" : "rewrite the name space and reorganize the data into the following schema\n\n/{end,joint}/{left,center,right}/body-part-location/{point,orientation}/{value,quality,unit,space,structure}  floating point numbers...\n\n\nAnother way of describing  these attributes is:\n- location in the stick figure tree\n- arity and side of the body part (1, 2)\n- body-part-location names: \n- measurand\n- value and  quality (the estimated probability that inferences and computations on that quantity will be valid)\n- units\n- space  (measure space?) \n- frame (world or body or object?)\n\n\n"
 				}
 
@@ -109,6 +109,7 @@
 						"description" : "",
 						"digest" : "",
 						"tags" : "",
+						"visible" : 1,
 						"boxes" : [ 							{
 								"box" : 								{
 									"fontname" : "Arial",
@@ -133,7 +134,6 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "FullPacket", "FullPacket" ],
 									"patching_rect" : [ 1147.0, 257.0, 227.0, 20.0 ],
-									"presentation_rect" : [ 1147.0, 257.0, 0.0, 0.0 ],
 									"text" : "o.io.kinect.jointsandends /sternum /collar"
 								}
 
@@ -148,7 +148,6 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "FullPacket", "FullPacket" ],
 									"patching_rect" : [ 1092.0, 189.0, 221.0, 20.0 ],
-									"presentation_rect" : [ 1092.0, 189.0, 0.0, 0.0 ],
 									"text" : "o.io.kinect.jointsandends /wrist /forearm"
 								}
 
@@ -163,7 +162,6 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "FullPacket", "FullPacket" ],
 									"patching_rect" : [ 1059.0, 160.0, 238.0, 20.0 ],
-									"presentation_rect" : [ 1059.0, 160.0, 0.0, 0.0 ],
 									"text" : "o.io.kinect.jointsandends /elbow /upperarm"
 								}
 
@@ -178,7 +176,6 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "FullPacket", "FullPacket" ],
 									"patching_rect" : [ 1037.0, 135.0, 227.0, 20.0 ],
-									"presentation_rect" : [ 1037.0, 135.0, 0.0, 0.0 ],
 									"text" : "o.io.kinect.jointsandends /shoulder /back"
 								}
 
@@ -193,7 +190,6 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "FullPacket", "FullPacket" ],
 									"patching_rect" : [ 836.0, 191.0, 207.0, 20.0 ],
-									"presentation_rect" : [ 836.0, 191.0, 0.0, 0.0 ],
 									"text" : "o.io.kinect.jointsandends /thigh /knee"
 								}
 
@@ -208,7 +204,6 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "FullPacket", "FullPacket" ],
 									"patching_rect" : [ 1138.0, 227.0, 208.0, 20.0 ],
-									"presentation_rect" : [ 1138.0, 227.0, 0.0, 0.0 ],
 									"text" : "o.io.kinect.jointsandends /hand /palm"
 								}
 
@@ -223,7 +218,6 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "FullPacket", "FullPacket" ],
 									"patching_rect" : [ 820.0, 162.0, 206.0, 20.0 ],
-									"presentation_rect" : [ 820.0, 162.0, 0.0, 0.0 ],
 									"text" : "o.io.kinect.jointsandends /shin /ankle"
 								}
 
@@ -238,7 +232,6 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "FullPacket", "FullPacket" ],
 									"patching_rect" : [ 797.0, 135.0, 197.0, 20.0 ],
-									"presentation_rect" : [ 797.0, 135.0, 0.0, 0.0 ],
 									"text" : "o.io.kinect.jointsandends /hip /thigh"
 								}
 
@@ -462,8 +455,8 @@
 									"numinlets" : 20,
 									"numoutlets" : 20,
 									"outlettype" : [ "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "FullPacket" ],
-									"patching_rect" : [ 16.0, 75.0, 1285.0, 20.0 ],
-									"text" : "o.route /waist /neck /torso /l_hip /l_ankle /l_knee /l_shoulder /l_elbow /l_wrist /l_hand /l_collar /l_hip /l_ankle /l_knee /l_shoulder /l_elbow /l_wrist /l_hand /l_collar"
+									"patching_rect" : [ 16.0, 75.0, 1311.0, 20.0 ],
+									"text" : "o.route /waist /neck /torso /l_hip /l_ankle /l_knee /l_shoulder /l_elbow /l_wrist /l_hand /l_collar /r_hip /r_ankle /r_knee /r_shoulder /r_elbow /r_wrist /r_hand /r_collar"
 								}
 
 							}
@@ -1136,7 +1129,6 @@
 						"description" : "",
 						"digest" : "",
 						"tags" : "",
-						"visible" : 1,
 						"boxes" : [ 							{
 								"box" : 								{
 									"fontname" : "Arial",

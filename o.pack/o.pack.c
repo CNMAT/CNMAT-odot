@@ -273,7 +273,7 @@ void opack_free(t_opack *x)
 #ifdef OMAX_PD_VERSION
         free(x->proxy);
 #else
-        object_free(x->proxy);
+        free(x->proxy);
 #endif
 
 	}
