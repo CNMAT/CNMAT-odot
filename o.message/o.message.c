@@ -2000,6 +2000,8 @@ void omessage_free(t_omessage *x)
         
         critical_free(x->lock);
         if(x->proxy){
+            pd_free(x->proxy[0]);
+            pd_free(x->proxy[1]);
             free(x->proxy);
         }
         if(x->bndl){
