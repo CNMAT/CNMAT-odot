@@ -29,6 +29,20 @@
 		"tags" : "",
 		"boxes" : [ 			{
 				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-36",
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 345.5, 216.0, 59.0, 18.0 ],
+					"text" : "diagnose"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-25",
 					"maxclass" : "toggle",
 					"numinlets" : 1,
@@ -374,8 +388,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 990.0, 495.0, 210.0, 20.0 ],
-					"text" : "/photoresistor 0.887586 ",
+					"patching_rect" : [ 990.0, 495.0, 210.0, 21.0 ],
+					"text" : "/photoresistor 0.956989 \n",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -416,8 +430,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 585.0, 401.0, 210.0, 20.0 ],
-					"text" : "/horizontal 0.538612 ",
+					"patching_rect" : [ 585.0, 401.0, 210.0, 21.0 ],
+					"text" : "/horizontal 0.816227 \n",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -433,7 +447,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 802.5, 444.5, 210.0, 34.0 ],
-					"text" : "/fahrenheit 73. \n/celsius 23. ",
+					"text" : "/fahrenheit 72. \n/celsius 22. \n",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -987,13 +1001,13 @@
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"id" : "obj-4",
-					"linecount" : 8,
+					"linecount" : 10,
 					"maxclass" : "o.message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 900.0, 275.0, 152.0, 114.0 ],
-					"text" : "/portname \"usbmodemfd131\" \n/rate/output 103 \n/rate/input 0 \n/mediansize/received 189.5 \n/baud 115200 \n/port \"a\" ",
+					"patching_rect" : [ 900.0, 275.0, 152.0, 141.0 ],
+					"text" : "/portname \"usbmodemfa141\" \"Bluetooth-PDA-Sync\" \"Bluetooth-Modem\" \n/rate/output 103 \n/rate/input 0 \n/mediansize/received 174.5 \n/baud 115200 \n/port \"a\" \n",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -1038,7 +1052,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 330.0, 401.0, 90.0, 100.0 ],
-					"text" : "/backward \"released\" \n/left \"released\" \n/forward \"released\" \n/right \"released\" ",
+					"text" : "/backward \"released\" \n/left \"released\" \n/forward \"released\" \n/right \"released\" \n",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -1052,8 +1066,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 437.0, 355.0, 210.0, 20.0 ],
-					"text" : "/loudness 0. ",
+					"patching_rect" : [ 437.0, 355.0, 210.0, 21.0 ],
+					"text" : "/loudness 0.00195503 \n",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -1947,7 +1961,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 50.0, 301.5, 87.0, 61.0 ],
-					"text" : "/red 0 \n/green 0 \n/blue 0 \n/rgb 0 0 0 ",
+					"text" : "/red 0 \n/green 0 \n/blue 0 \n/rgb 0 0 0 \n",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -2252,6 +2266,15 @@
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-31", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-1", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-36", 0 ]
 				}
 
 			}
