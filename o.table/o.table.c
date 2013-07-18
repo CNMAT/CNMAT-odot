@@ -358,14 +358,67 @@ void otable_anything(t_otable *x, t_symbol *msg, int argc, t_atom *argv)
 	}
 }
 
+void otable_doread(t_otable *x, t_symbol *msg, int argc, t_atom *argv)
+{
+	if(!argc){
+		object_error((t_object *)x, "you need to supply a filepath");
+		return;
+	}
+	if(atom_gettype(argv) != A_SYM){
+		object_error((t_object *)x, "%s: argument must be a symbol (path)", __func__);
+		return;
+	}
+	char *path = atom_getsym(argv);
+	FILE *f = fopen(path, "r");
+	if(f){
+		object_post((t_object *)x, "opened %s for reading", path);
+	}else{
+		object_error((t_object *)x, "couldn't open %s!\n", path);
+		return;
+	}
+}
+
 void otable_read(t_otable *x, t_symbol *msg, int argc, t_atom *argv)
 {
+	defer(x,(method)otable_doread, msg, argc, argv);
+}
 
+void otable_dowrite(t_otable *x, t_symbol *msg, int argc, t_atom *argv)
+{
+	if(!argc){
+		object_error((t_object *)x, "you need to supply a filepath");
+		return;
+	}
+	if(atom_gettype(argv) != A_SYM){
+		object_error((t_object *)x, "%s: argument must be a symbol (path)", __func__);
+		return;
+	}
+	char *path = atom_getsym(argv)->s_name;
+	FILE *f = fopen(path, "w");
+	if(f){
+		object_post((t_object *)x, "opened %s for writing", path);
+		critical_enter(x->lock);
+		unsigned long n = osc_linkedlist_getCount(x->db->ll);
+		size_t count = 0;
+		for(int i = 0; i < n; i++){
+			t_osc_bndl_s *bndl = (t_osc_bndl_s *)osc_linkedlist_peekNth(x->db->ll, i);
+			uint32_t len = osc_bundle_s_getLen(bndl);
+			char *ptr = osc_bundle_s_getPtr(bndl);
+			count += fwrite(&len, 4, 1, f);
+			count += fwrite(ptr, 1, len, f);
+		}
+		critical_exit(x->lock);
+		fclose(f);
+		object_post((t_object *)x, "finished writing %d bundles (%d bytes total)", n, count);
+	}else{
+		object_error((t_object *)x, "couldn't open %s!\n", path);
+		return;
+	}
 }
 
 void otable_write(t_otable *x, t_symbol *msg, int argc, t_atom *argv)
 {
-
+	defer(x,(method)otable_dowrite, msg, argc, argv);
 }
 
 void otable_free(t_otable *x)
@@ -602,8 +655,8 @@ int main(void)
 	class_addmethod(c, (method)otable_refer, "refer", A_GIMME, 0);
 	class_addmethod(c, (method)otable_clear, "clear", 0);
 	class_addmethod(c, (method)otable_dump, "dump", 0);
-	class_addmethod(c, (method)otable_read, "read", A_DEFSYM, 0);
-	class_addmethod(c, (method)otable_write, "write", A_DEFSYM, 0);
+	class_addmethod(c, (method)otable_read, "read", A_GIMME, 0);
+	class_addmethod(c, (method)otable_write, "write", A_GIMME, 0);
 	class_addmethod(c, (method)odot_version, "version", 0);
 
 	class_addmethod(c, (method)otable_prepend, "prepend", A_GIMME, 0);
