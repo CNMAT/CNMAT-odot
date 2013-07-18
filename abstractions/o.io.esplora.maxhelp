@@ -8,7 +8,7 @@
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 13.0, 81.0, 1326.0, 564.0 ],
+		"rect" : [ 100.0, 100.0, 1326.0, 564.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -28,6 +28,32 @@
 		"digest" : "",
 		"tags" : "",
 		"boxes" : [ 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-36",
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 345.5, 216.0, 59.0, 18.0 ],
+					"text" : "diagnose"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-25",
+					"maxclass" : "toggle",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "int" ],
+					"parameter_enable" : 0,
+					"patching_rect" : [ 118.0, 137.5, 20.0, 20.0 ]
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
@@ -100,7 +126,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 56.0, 300.0, 150.0, 101.0 ],
-									"text" : "/horizontal 0.0078125 \n/vertical -0.0117188 \n/button \"released\" \n/backward \"released\" \n/left \"released\" \n/forward \"released\" \n/right \"released\" \n",
+									"text" : "/horizontal 0.0078125 \n/vertical -0.0117188 \n/button \"released\" \n/backward \"released\" \n/left \"released\" \n/forward \"released\" \n/right \"released\" ",
 									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 
@@ -363,7 +389,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 990.0, 495.0, 210.0, 21.0 ],
-					"text" : "/photoresistor 0.887586 \n",
+					"text" : "/photoresistor 0.956989 \n",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -405,7 +431,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 585.0, 401.0, 210.0, 21.0 ],
-					"text" : "/horizontal 0.538612 \n",
+					"text" : "/horizontal 0.816227 \n",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -421,7 +447,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 802.5, 444.5, 210.0, 34.0 ],
-					"text" : "/fahrenheit 73. \n/celsius 23. \n",
+					"text" : "/fahrenheit 72. \n/celsius 22. \n",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -975,13 +1001,13 @@
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"id" : "obj-4",
-					"linecount" : 8,
+					"linecount" : 10,
 					"maxclass" : "o.message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 900.0, 275.0, 152.0, 114.0 ],
-					"text" : "/portname \"usbmodemfd131\" \n/rate/output 103 \n/rate/input 0 \n/mediansize/received 189.5 \n/baud 115200 \n/port \"a\" \n",
+					"patching_rect" : [ 900.0, 275.0, 152.0, 141.0 ],
+					"text" : "/portname \"usbmodemfa141\" \"Bluetooth-PDA-Sync\" \"Bluetooth-Modem\" \n/rate/output 103 \n/rate/input 0 \n/mediansize/received 174.5 \n/baud 115200 \n/port \"a\" \n",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -1041,7 +1067,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 437.0, 355.0, 210.0, 21.0 ],
-					"text" : "/loudness 0. \n",
+					"text" : "/loudness 0.00195503 \n",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -1460,7 +1486,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 580.0, 116.5, 90.0, 47.0 ],
-									"text" : "/x 0.0996094 \n/y -0.193359 \n/z 0.136719 \n",
+									"text" : "/x 0.0996094 \n/y -0.193359 \n/z 0.136719 ",
 									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 
@@ -2173,6 +2199,15 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-1", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-25", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-1", 1 ],
 					"disabled" : 0,
 					"hidden" : 0,
@@ -2231,6 +2266,15 @@
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-31", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-1", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-36", 0 ]
 				}
 
 			}
@@ -2300,7 +2344,7 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "o.io.esplora.maxpat",
-				"bootpath" : "/Users/jml/Documents/materials/programming/max_files/5_berkeley/projects/cnmat/repositories/git/CNMAT-odot/testing/abstractions",
+				"bootpath" : "/Users/jml/Documents/materials/programming/max_files/5_berkeley/projects/cnmat/repositories/git/CNMAT-odot/abstractions",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
@@ -2308,7 +2352,7 @@
 , 			{
 				"name" : "o.io.slipserial.maxpat",
 				"bootpath" : "/Users/jml/Documents/materials/programming/max_files/5_berkeley/projects/cnmat/repositories/git/CNMAT-odot/abstractions",
-				"patcherrelativepath" : "../../abstractions",
+				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
