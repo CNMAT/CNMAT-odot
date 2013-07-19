@@ -8,7 +8,7 @@
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 171.0, 70.0, 947.0, 735.0 ],
+		"rect" : [ 0.0, 44.0, 1280.0, 599.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -29,6 +29,31 @@
 		"tags" : "",
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-17",
+					"maxclass" : "button",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "bang" ],
+					"patching_rect" : [ 180.0, 3.0, 20.0, 20.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-15",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "bang" ],
+					"patching_rect" : [ 178.0, 28.0, 60.0, 20.0 ],
+					"text" : "loadbang"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"id" : "obj-14",
@@ -37,8 +62,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 110.0, 495.0, 253.0, 100.0 ],
-					"presentation_rect" : [ 695.0, 303.0, 0.0, 0.0 ],
+					"patching_rect" : [ 97.0, 471.0, 253.0, 100.0 ],
 					"text" : "/position -0.1 -0.4 \"$1\" \n/radius 0.04 \n/radiusbis \"$1\" \n/blue \n/radius/bis 0.01 \n/length 0.7 \n/shape \"cone\" ",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -100,7 +124,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 88.0, 391.0, 253.0, 87.0 ],
+					"patching_rect" : [ 29.0, 375.0, 253.0, 87.0 ],
 					"text" : "/position -0.1 0.2 \"$1\" \n/radius 0.04 \n/green \n/radius/bis 0.01 \n/length 0.7 \n/shape \"cylinder\" ",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -131,7 +155,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 458.0, 412.0, 330.0, 288.0 ]
+					"patching_rect" : [ 760.0, 262.0, 330.0, 288.0 ]
 				}
 
 			}
@@ -192,7 +216,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 47.0, 7.0, 71.0, 18.0 ],
+					"patching_rect" : [ 67.0, 33.0, 71.0, 18.0 ],
 					"text" : "0, 0.5 3000"
 				}
 
@@ -221,7 +245,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 733.0, 74.0, 150.0, 100.0 ],
+					"patching_rect" : [ 516.0, 106.0, 150.0, 100.0 ],
 					"text" : "/reset \n/position 0. 0. \n/red \n/radius/outer \"$1\" \n/radius/inner 0.05 \n/orientation 0 45 90 \n/shape \"torus\" ",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -236,7 +260,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "FullPacket" ],
-					"patching_rect" : [ 61.0, 702.0, 75.0, 20.0 ],
+					"patching_rect" : [ 519.0, 504.0, 75.0, 20.0 ],
 					"text" : "o.io.gl place"
 				}
 
@@ -284,6 +308,24 @@
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-14", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-5", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-15", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-15", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-17", 0 ]
 				}
 
 			}
