@@ -3,11 +3,12 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 6,
-			"minor" : 0,
-			"revision" : 8
+			"minor" : 1,
+			"revision" : 3,
+			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 204.0, 44.0, 640.0, 480.0 ],
+		"rect" : [ 40.0, 150.0, 640.0, 480.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -104,8 +105,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 128.0, 144.0, 32.5, 20.0 ],
-					"text" : "o.?"
+					"patching_rect" : [ 128.0, 144.0, 50.0, 20.0 ],
+					"text" : "o.osc-p"
 				}
 
 			}
@@ -157,9 +158,9 @@
 			}
  ],
 		"dependency_cache" : [ 			{
-				"name" : "o.?.maxpat",
-				"bootpath" : "/Users/john/Development/CNMAT/CNMAT/CNMAT-odot/abstractions",
-				"patcherrelativepath" : "",
+				"name" : "o.osc-p.maxpat",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions",
+				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
