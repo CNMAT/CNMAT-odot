@@ -155,7 +155,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 760.0, 262.0, 330.0, 288.0 ]
+					"patching_rect" : [ 709.0, 260.0, 330.0, 288.0 ],
+					"pickray" : 1
 				}
 
 			}

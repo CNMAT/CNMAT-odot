@@ -94,7 +94,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 614.0, 252.0, 150.0, 20.0 ],
-					"presentation_rect" : [ 677.0, 236.0, 0.0, 0.0 ],
 					"text" : "repeat in two scenes"
 				}
 
@@ -901,21 +900,21 @@
 		"dependency_cache" : [ 			{
 				"name" : "o.io.gl.maxpat",
 				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions",
-				"patcherrelativepath" : ".",
+				"patcherrelativepath" : "../abstractions",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.io.gl.platohelper.maxpat",
 				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions",
-				"patcherrelativepath" : ".",
+				"patcherrelativepath" : "../abstractions",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.stringcurtain.maxpat",
-				"bootpath" : "/Users/adrian2013/movementworkshop/dance",
-				"patcherrelativepath" : "../../movementworkshop/dance",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions",
+				"patcherrelativepath" : "../abstractions",
 				"type" : "JSON",
 				"implicit" : 1
 			}
