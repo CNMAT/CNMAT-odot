@@ -33,11 +33,12 @@
 					"fontsize" : 12.0,
 					"frgb" : 0.0,
 					"id" : "obj-20",
+					"linecount" : 2,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 24.0, 20.0, 150.0, 20.0 ],
-					"text" : "Adrian Freed"
+					"patching_rect" : [ 24.0, 20.0, 150.0, 33.0 ],
+					"text" : "Adrian Freed\n2013"
 				}
 
 			}
@@ -93,8 +94,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 163.0, 157.0, 219.0, 20.0 ],
-					"text" : "o.expr /ball/step *= /ball/reflected? 1: -1"
+					"patching_rect" : [ 163.0, 157.0, 222.0, 20.0 ],
+					"text" : "o.expr /ball/step *= /ball/reflected? -1 : 1"
 				}
 
 			}
@@ -389,7 +390,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 636.0, 99.0, 210.0, 74.0 ],
-					"text" : "/ball/position 0. 0. 0. \n/ball/step 0.07 0.025 0.035 \n/ball/reflected 0 0 0 \n/bound/lower -0.5 -0.5 -0.5 \n/bound/upper 0.5 0.5 0.5 ",
+					"text" : "/ball/position 0. 0. 0. \n/ball/step 0.07 0.025 0.035 \n/ball/reflected false false false \n/bound/lower -0.5 -0.5 -0.5 \n/bound/upper 0.5 0.5 0.5 ",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -404,8 +405,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 36.0, 265.5, 285.0, 74.0 ],
-					"text" : "/ball/position 0.07 0.025 0.035 \n/ball/step -0.07 -0.025 -0.035 \n/ball/reflected false false false \n/bound/lower -0.5 -0.5 -0.5 \n/bound/upper 0.5 0.5 0.5 \n",
+					"patching_rect" : [ 36.0, 251.5, 285.0, 74.0 ],
+					"text" : "/ball/position 0.21 0.075 -0.455 \n/ball/step 0.07 0.025 -0.035 \n/ball/reflected false false false \n/bound/lower -0.5 -0.5 -0.5 \n/bound/upper 0.5 0.5 0.5 \n",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -524,21 +525,21 @@
 		"dependency_cache" : [ 			{
 				"name" : "o.foreveryoung.maxpat",
 				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions",
-				"patcherrelativepath" : "./CNMAT-odot/abstractions",
+				"patcherrelativepath" : "../abstractions",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.io.gl.maxpat",
 				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions",
-				"patcherrelativepath" : "./CNMAT-odot/abstractions",
+				"patcherrelativepath" : "../abstractions",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.io.gl.platohelper.maxpat",
 				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions",
-				"patcherrelativepath" : "./CNMAT-odot/abstractions",
+				"patcherrelativepath" : "../abstractions",
 				"type" : "JSON",
 				"implicit" : 1
 			}
