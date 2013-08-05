@@ -149,7 +149,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 44.0, 298.0, 150.0, 154.0 ],
-					"text" : "/persecond 1 \n/mu 1. \n/r 0.953095 \n/time_to_next_event 0.0530404 \n/time/now 2013-08-04T22:15:05.052133Z\n/time/event 2013-08-04T22:15:05.105173Z\n",
+					"text" : "/persecond 1 \n/mu 1. \n/r 0.0111011 \n/time_to_next_event 4.50571 \n/time/now 2013-08-04T22:17:08.340626Z\n/time/event 2013-08-04T22:17:12.846336Z\n",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
