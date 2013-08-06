@@ -77,7 +77,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 211.0, 241.0, 431.0, 74.0 ],
-					"text" : "/orientation/vector \"$5\" \"$6\" \"$7\" \"$8\" \"$9\" \"$10\" \"$11\" \"$12\" \"$13\" \n/orientation/value \"$14\" \n/orientation/unit \"mm\" \n/orientation/space \"3vector\" \n/orientation/frame \"world\" ",
+					"text" : "/orientation/vector/value \"$5\" \"$6\" \"$7\" \"$8\" \"$9\" \"$10\" \"$11\" \"$12\" \"$13\" \n/orientation/quality \"$14\" \n/orientation/unit \"mm\" \n/orientation/space \"3vector\" \n/orientation/frame \"world\" ",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 

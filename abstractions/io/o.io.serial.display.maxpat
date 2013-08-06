@@ -4,11 +4,11 @@
 		"appversion" : 		{
 			"major" : 6,
 			"minor" : 1,
-			"revision" : 3,
+			"revision" : 2,
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 9.0, 76.0, 782.0, 687.0 ],
+		"rect" : [ 2.0, 47.0, 819.0, 689.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
@@ -28,22 +28,6 @@
 		"digest" : "",
 		"tags" : "",
 		"boxes" : [ 			{
-				"box" : 				{
-					"bgtransparent" : 1,
-					"border" : 0,
-					"id" : "obj-11",
-					"idle" : 1,
-					"maxclass" : "lcd",
-					"numinlets" : 1,
-					"numoutlets" : 4,
-					"outlettype" : [ "list", "list", "int", "" ],
-					"patching_rect" : [ 118.666672, 189.0, 128.0, 128.0 ],
-					"presentation" : 1,
-					"presentation_rect" : [ 6.0, 2.0, 175.0, 40.0 ]
-				}
-
-			}
-, 			{
 				"box" : 				{
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
@@ -179,7 +163,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 464.0, 937.0, 150.0, 34.0 ],
+					"patching_rect" : [ 464.0, 937.0, 150.0, 33.0 ],
 					"text" : "/port \n/baudrate 150 ",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -240,7 +224,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 437.0, 419.0, 100.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 184.0, 10.0, 159.0, 20.0 ],
+					"presentation_rect" : [ 168.0, 2.0, 159.0, 20.0 ],
 					"varname" : "umenu[1]"
 				}
 
@@ -411,7 +395,7 @@
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"id" : "obj-2",
-					"items" : [ "a", "usbmodemfa141", ",", "b", "Bluetooth-Modem", ",", "c", "Bluetooth-PDA-Sync" ],
+					"items" : [ "a", "Bluetooth-PDA-Sync", ",", "b", "Bluetooth-Modem" ],
 					"maxclass" : "umenu",
 					"numinlets" : 1,
 					"numoutlets" : 3,
@@ -419,7 +403,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 206.0, 825.0, 100.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 15.0, 9.0, 159.0, 20.0 ],
+					"presentation_rect" : [ -1.0, 1.0, 159.0, 20.0 ],
 					"varname" : "umenu"
 				}
 
@@ -643,6 +627,23 @@
 					"outlettype" : [ "int", "" ],
 					"patching_rect" : [ 171.454529, 495.818237, 89.0, 17.0 ],
 					"text" : "serial @autoopen 0"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"bgtransparent" : 1,
+					"border" : 0,
+					"id" : "obj-11",
+					"idle" : 1,
+					"local" : 0,
+					"maxclass" : "lcd",
+					"numinlets" : 1,
+					"numoutlets" : 4,
+					"outlettype" : [ "list", "list", "int", "" ],
+					"patching_rect" : [ 118.666672, 189.0, 128.0, 128.0 ],
+					"presentation" : 1,
+					"presentation_rect" : [ -10.0, -6.0, 175.0, 40.0 ]
 				}
 
 			}
