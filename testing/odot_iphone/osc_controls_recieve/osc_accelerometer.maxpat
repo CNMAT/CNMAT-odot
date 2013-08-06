@@ -3,13 +3,14 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 6,
-			"minor" : 0,
-			"revision" : 5
+			"minor" : 1,
+			"revision" : 2,
+			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 403.0, 118.0, 640.0, 480.0 ],
+		"rect" : [ 682.0, 66.0, 640.0, 480.0 ],
 		"bglocked" : 0,
-		"openinpresentation" : 0,
+		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
 		"default_fontface" : 0,
 		"default_fontname" : "Arial",
@@ -28,26 +29,12 @@
 		"tags" : "",
 		"boxes" : [ 			{
 				"box" : 				{
-					"fontname" : "Arial",
-					"fontsize" : 12.0,
-					"id" : "obj-9",
-					"maxclass" : "message",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 250.0, 389.0, 43.0, 18.0 ],
-					"text" : "empty"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"comment" : "acceleromter# tab#",
+					"comment" : "Not Used",
 					"id" : "obj-7",
 					"maxclass" : "outlet",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 250.0, 434.0, 25.0, 25.0 ]
+					"patching_rect" : [ 252.5, 420.0, 25.0, 25.0 ]
 				}
 
 			}
@@ -67,7 +54,9 @@
 			}
 , 			{
 				"box" : 				{
-					"comment" : "",
+					"annotation" : "",
+					"comment" : "Port Number",
+					"hint" : "",
 					"id" : "obj-4",
 					"maxclass" : "inlet",
 					"numinlets" : 0,
@@ -79,7 +68,7 @@
 			}
 , 			{
 				"box" : 				{
-					"comment" : "error",
+					"comment" : "Error Message",
 					"id" : "obj-13",
 					"maxclass" : "outlet",
 					"numinlets" : 1,
@@ -112,14 +101,14 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 376.0, 237.0, 219.0, 32.0 ],
+					"patching_rect" : [ 376.0, 237.0, 219.0, 31.0 ],
 					"text" : "You are using an unsupported osc app or you are not using the accelerometer"
 				}
 
 			}
 , 			{
 				"box" : 				{
-					"comment" : "output",
+					"comment" : "Output",
 					"id" : "obj-5",
 					"maxclass" : "outlet",
 					"numinlets" : 1,
@@ -137,6 +126,8 @@
 					"outlettype" : [ "", "" ],
 					"parameter_enable" : 0,
 					"patching_rect" : [ 154.0, 305.0, 132.0, 66.0 ],
+					"presentation" : 1,
+					"presentation_rect" : [ 6.0, 6.0, 132.0, 66.0 ],
 					"setstyle" : 2,
 					"size" : 3
 				}
@@ -190,16 +181,6 @@
 					"destination" : [ "obj-2", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"source" : [ "obj-1", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-9", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"midpoints" : [ 68.0, 242.0, 301.0, 298.0, 301.0, 372.0 ],
 					"source" : [ "obj-1", 0 ]
 				}
 
@@ -302,20 +283,6 @@
 					"source" : [ "obj-6", 0 ]
 				}
 
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-7", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"source" : [ "obj-9", 0 ]
-				}
-
-			}
- ],
-		"dependency_cache" : [ 			{
-				"name" : "o.route.mxo",
-				"type" : "iLaX"
 			}
  ]
 	}

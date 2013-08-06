@@ -3,8 +3,9 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 6,
-			"minor" : 0,
-			"revision" : 5
+			"minor" : 1,
+			"revision" : 2,
+			"architecture" : "x86"
 		}
 ,
 		"rect" : [ 168.0, 84.0, 664.0, 561.0 ],
@@ -40,8 +41,9 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 6,
-							"minor" : 0,
-							"revision" : 5
+							"minor" : 1,
+							"revision" : 2,
+							"architecture" : "x86"
 						}
 ,
 						"rect" : [ 0.0, 26.0, 664.0, 535.0 ],
@@ -133,8 +135,8 @@
 									"numinlets" : 1,
 									"numoutlets" : 3,
 									"outlettype" : [ "int", "", "" ],
-									"patching_rect" : [ 10.0, 299.0, 79.0, 20.0 ],
-									"text" : "osc_toggle 1"
+									"patching_rect" : [ 10.0, 299.0, 127.0, 20.0 ],
+									"text" : "osc_toggle @toggle 1"
 								}
 
 							}
@@ -147,8 +149,8 @@
 									"numinlets" : 1,
 									"numoutlets" : 3,
 									"outlettype" : [ "int", "", "" ],
-									"patching_rect" : [ 211.0, 299.0, 79.0, 20.0 ],
-									"text" : "osc_toggle 3"
+									"patching_rect" : [ 211.0, 299.0, 127.0, 20.0 ],
+									"text" : "osc_toggle @toggle 3"
 								}
 
 							}
@@ -161,8 +163,8 @@
 									"numinlets" : 1,
 									"numoutlets" : 3,
 									"outlettype" : [ "int", "", "" ],
-									"patching_rect" : [ 434.0, 103.0, 79.0, 20.0 ],
-									"text" : "osc_toggle 1"
+									"patching_rect" : [ 434.0, 103.0, 127.0, 20.0 ],
+									"text" : "osc_toggle @toggle 1"
 								}
 
 							}
@@ -175,8 +177,8 @@
 									"numinlets" : 1,
 									"numoutlets" : 3,
 									"outlettype" : [ "int", "", "" ],
-									"patching_rect" : [ 211.0, 83.0, 79.0, 20.0 ],
-									"text" : "osc_toggle 2"
+									"patching_rect" : [ 211.0, 83.0, 127.0, 20.0 ],
+									"text" : "osc_toggle @toggle 2"
 								}
 
 							}
@@ -184,12 +186,13 @@
 								"box" : 								{
 									"fontname" : "Arial",
 									"fontsize" : 12.0,
+									"frgb" : 0.0,
 									"id" : "obj-23",
 									"linecount" : 5,
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 434.0, 27.0, 165.0, 76.0 ],
+									"patching_rect" : [ 434.0, 27.0, 165.0, 74.0 ],
 									"text" : "processing:\nUsing the processing sketch osc_processing, which is provided, and clicking the toggle."
 								}
 
@@ -198,12 +201,13 @@
 								"box" : 								{
 									"fontname" : "Arial",
 									"fontsize" : 12.0,
+									"frgb" : 0.0,
 									"id" : "obj-19",
 									"linecount" : 3,
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 211.0, 251.0, 187.0, 48.0 ],
+									"patching_rect" : [ 211.0, 251.0, 187.0, 47.0 ],
 									"text" : "mrmr: Using the maxMSP_demo and holding down the top right toggle."
 								}
 
@@ -212,12 +216,13 @@
 								"box" : 								{
 									"fontname" : "Arial",
 									"fontsize" : 12.0,
+									"frgb" : 0.0,
 									"id" : "obj-13",
 									"linecount" : 4,
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 211.0, 21.0, 155.0, 62.0 ],
+									"patching_rect" : [ 211.0, 21.0, 155.0, 60.0 ],
 									"text" : "iosc:\nUsing the six button set and holding down the top middle toggle."
 								}
 
@@ -226,12 +231,13 @@
 								"box" : 								{
 									"fontname" : "Arial",
 									"fontsize" : 12.0,
+									"frgb" : 0.0,
 									"id" : "obj-9",
 									"linecount" : 2,
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 10.0, 265.0, 192.0, 34.0 ],
+									"patching_rect" : [ 10.0, 265.0, 192.0, 33.0 ],
 									"text" : "oscemote:.Using the sliders tab and tapping the leftmost toggle."
 								}
 
@@ -245,8 +251,8 @@
 									"numinlets" : 1,
 									"numoutlets" : 3,
 									"outlettype" : [ "int", "", "" ],
-									"patching_rect" : [ 10.0, 103.0, 89.0, 20.0 ],
-									"text" : "osc_toggle 1 1"
+									"patching_rect" : [ 10.0, 103.0, 166.0, 20.0 ],
+									"text" : "osc_toggle @toggle1 @tab 1"
 								}
 
 							}
@@ -254,12 +260,13 @@
 								"box" : 								{
 									"fontname" : "Arial",
 									"fontsize" : 12.0,
+									"frgb" : 0.0,
 									"id" : "obj-5",
 									"linecount" : 5,
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 10.0, 27.0, 150.0, 76.0 ],
+									"patching_rect" : [ 10.0, 27.0, 150.0, 74.0 ],
 									"text" : "touchosc:\nUsing the simple layout and tapping the bottom left hand toggle in the first tab."
 								}
 
@@ -311,40 +318,21 @@
 								}
 
 							}
- ],
-						"dependency_cache" : [ 							{
-								"name" : "osc_toggle.maxpat",
-								"bootpath" : "/Users/samgmansfield/Documents/CNMAT/cnmat/trunk/max/externals/odot/trunk/testing/odot_iphone/osc_controls",
-								"type" : "JSON",
-								"implicit" : 1
-							}
-, 							{
-								"name" : "o.route.mxo",
-								"type" : "iLaX"
-							}
-, 							{
-								"name" : "o.message.mxo",
-								"type" : "iLaX"
-							}
-, 							{
-								"name" : "o.atomize.mxo",
-								"type" : "iLaX"
-							}
  ]
 					}
 ,
 					"patching_rect" : [ 77.0, 18.0, 72.0, 20.0 ],
 					"saved_object_attributes" : 					{
-						"globalpatchername" : "",
-						"fontface" : 0,
-						"fontsize" : 12.0,
 						"default_fontface" : 0,
-						"digest" : "",
 						"default_fontname" : "Arial",
-						"fontname" : "Arial",
-						"tags" : "",
 						"default_fontsize" : 12.0,
-						"description" : ""
+						"description" : "",
+						"digest" : "",
+						"fontface" : 0,
+						"fontname" : "Arial",
+						"fontsize" : 12.0,
+						"globalpatchername" : "",
+						"tags" : ""
 					}
 ,
 					"text" : "p examples"
@@ -363,8 +351,9 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 6,
-							"minor" : 0,
-							"revision" : 5
+							"minor" : 1,
+							"revision" : 2,
+							"architecture" : "x86"
 						}
 ,
 						"rect" : [ 168.0, 110.0, 664.0, 535.0 ],
@@ -394,44 +383,13 @@
 									"bubbleside" : 2,
 									"fontname" : "Arial",
 									"fontsize" : 12.0,
+									"frgb" : 0.0,
 									"id" : "obj-12",
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 15.0, 276.0, 43.0, 39.0 ],
+									"patching_rect" : [ 19.0, 219.0, 43.0, 39.0 ],
 									"text" : "port#"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"bubble" : 1,
-									"bubbleside" : 3,
-									"fontname" : "Arial",
-									"fontsize" : 12.0,
-									"id" : "obj-9",
-									"linecount" : 3,
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 6.0, 406.0, 134.0, 52.0 ],
-									"text" : "The third outlet displays any error messages"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"bubble" : 1,
-									"bubblepoint" : 0.2,
-									"fontname" : "Arial",
-									"fontsize" : 12.0,
-									"id" : "obj-16",
-									"linecount" : 3,
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 94.0, 354.0, 149.0, 52.0 ],
-									"text" : "The second outlet displays the toggle# and tab#"
 								}
 
 							}
@@ -444,7 +402,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 156.0, 423.0, 50.0, 18.0 ],
+									"patching_rect" : [ 138.0, 331.0, 50.0, 18.0 ],
 									"text" : "empty"
 								}
 
@@ -458,8 +416,8 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 44.0, 354.0, 50.0, 18.0 ],
-									"text" : "1 1"
+									"patching_rect" : [ 48.0, 297.0, 77.0, 18.0 ],
+									"text" : "empty"
 								}
 
 							}
@@ -467,12 +425,13 @@
 								"box" : 								{
 									"fontname" : "Arial",
 									"fontsize" : 12.0,
+									"frgb" : 0.0,
 									"id" : "obj-19",
 									"linecount" : 6,
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 327.0, 171.5, 180.0, 89.0 ],
+									"patching_rect" : [ 325.0, 373.5, 180.0, 87.0 ],
 									"text" : "If a number appears before the name of the toggle (#/toggle#) that number is the tab number. The number follwing the name of the toggle is the toggle number."
 								}
 
@@ -485,52 +444,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "int" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 15.0, 354.0, 20.0, 20.0 ]
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"fontname" : "Arial",
-									"fontsize" : 12.0,
-									"id" : "obj-1",
-									"linecount" : 3,
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 6.0, 148.5, 226.0, 48.0 ],
-									"text" : "osc_toggle takes two arguments: object number and tab number. Tab number is exclusively for touchosc. "
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"bubble" : 1,
-									"fontname" : "Arial",
-									"fontsize" : 12.0,
-									"id" : "obj-13",
-									"linecount" : 2,
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 103.0, 306.0, 150.0, 38.0 ],
-									"text" : "object tab # (touchosc only)"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"bubble" : 1,
-									"bubblepoint" : 0.1,
-									"bubbleside" : 2,
-									"fontname" : "Arial",
-									"fontsize" : 12.0,
-									"id" : "obj-10",
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 71.0, 276.0, 79.0, 39.0 ],
-									"text" : "object #"
+									"patching_rect" : [ 19.0, 297.0, 20.0, 20.0 ]
 								}
 
 							}
@@ -543,8 +457,8 @@
 									"numinlets" : 1,
 									"numoutlets" : 3,
 									"outlettype" : [ "int", "", "" ],
-									"patching_rect" : [ 15.0, 315.0, 89.0, 20.0 ],
-									"text" : "osc_toggle 1 1"
+									"patching_rect" : [ 19.0, 261.0, 169.0, 20.0 ],
+									"text" : "osc_toggle @toggle 2 @tab 1"
 								}
 
 							}
@@ -554,12 +468,13 @@
 									"bubblepoint" : 1.0,
 									"fontname" : "Arial",
 									"fontsize" : 12.0,
+									"frgb" : 0.0,
 									"id" : "obj-17",
 									"linecount" : 4,
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 485.0, 296.0, 140.0, 66.0 ],
+									"patching_rect" : [ 489.0, 239.0, 140.0, 64.0 ],
 									"text" : "If you see data here then osc messages are being sent over port 10000."
 								}
 
@@ -569,12 +484,13 @@
 									"fontname" : "Arial",
 									"fontsize" : 12.0,
 									"id" : "obj-15",
+									"linecount" : 4,
 									"maxclass" : "o.message",
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 327.0, 347.0, 153.0, 20.0 ],
-									"text" : "/1/toggle1 0. ",
+									"patching_rect" : [ 331.0, 290.0, 153.0, 60.0 ],
+									"text" : "/hello \"OSCemote@c00883b4181b2de6906ed3b19584e5f95ffcade3\" ",
 									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 
@@ -588,8 +504,8 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 327.0, 306.0, 106.0, 20.0 ],
-									"text" : "udpreceive 10000"
+									"patching_rect" : [ 331.0, 249.0, 151.0, 20.0 ],
+									"text" : "udpreceive 10000 CNMAT"
 								}
 
 							}
@@ -597,14 +513,14 @@
 								"box" : 								{
 									"fontname" : "Arial",
 									"fontsize" : 12.0,
-									"frgb" : [ 0.485712, 0.485712, 0.485712, 1.0 ],
+									"frgb" : 0.0,
 									"id" : "obj-5",
-									"linecount" : 2,
+									"linecount" : 7,
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 6.0, 88.0, 572.0, 34.0 ],
-									"text" : "osc_toggle interprets osc messages from the iphone using  touchosc, oscemote, iosc, mrmr, as well as a particular processing sketch, provided in the odot_iphone folder. By default the port is set to 10000.",
+									"patching_rect" : [ 6.0, 88.0, 583.0, 100.0 ],
+									"text" : "osc_toggle interprets osc messages from the iphone using  touchosc, oscemote, iosc, mrmr, as well as a particular processing sketch, provided in the odot_iphone folder. By default the port is set to 10000, but can be changed by providing a different port number to the inlet of the osc_toggle object. osc_toggle takes two attributes, toggle number and tab number, which are the numbers follwing @toggle and @tab. The first output of osc_toggle is the ouput from the osc app. The second output displays the attributes to get the output from the current tobble pressedi in the osc app. The third output displays any error messages that may be causing bad or no output.",
 									"textcolor" : [ 0.485712, 0.485712, 0.485712, 1.0 ]
 								}
 
@@ -613,6 +529,7 @@
 								"box" : 								{
 									"fontname" : "Arial",
 									"fontsize" : 12.0,
+									"frgb" : 0.0,
 									"id" : "obj-2",
 									"maxclass" : "comment",
 									"numinlets" : 1,
@@ -626,11 +543,12 @@
 								"box" : 								{
 									"fontname" : "Arial",
 									"fontsize" : 48.0,
+									"frgb" : 0.0,
 									"id" : "obj-3",
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 6.0, 6.0, 551.0, 62.0 ],
+									"patching_rect" : [ 6.0, 6.0, 551.0, 60.0 ],
 									"text" : "osc_toggle"
 								}
 
@@ -672,40 +590,21 @@
 								}
 
 							}
- ],
-						"dependency_cache" : [ 							{
-								"name" : "osc_toggle.maxpat",
-								"bootpath" : "/Users/samgmansfield/Documents/CNMAT/cnmat/trunk/max/externals/odot/trunk/testing/odot_iphone/osc_controls",
-								"type" : "JSON",
-								"implicit" : 1
-							}
-, 							{
-								"name" : "o.message.mxo",
-								"type" : "iLaX"
-							}
-, 							{
-								"name" : "o.route.mxo",
-								"type" : "iLaX"
-							}
-, 							{
-								"name" : "o.atomize.mxo",
-								"type" : "iLaX"
-							}
  ]
 					}
 ,
 					"patching_rect" : [ 16.0, 18.0, 49.0, 20.0 ],
 					"saved_object_attributes" : 					{
-						"globalpatchername" : "",
-						"fontface" : 0,
-						"fontsize" : 12.0,
 						"default_fontface" : 0,
-						"digest" : "",
 						"default_fontname" : "Arial",
-						"fontname" : "Arial",
-						"tags" : "",
 						"default_fontsize" : 12.0,
-						"description" : ""
+						"description" : "",
+						"digest" : "",
+						"fontface" : 0,
+						"fontname" : "Arial",
+						"fontsize" : 12.0,
+						"globalpatchername" : "",
+						"tags" : ""
 					}
 ,
 					"text" : "p basic"
@@ -716,8 +615,8 @@
 		"lines" : [  ],
 		"dependency_cache" : [ 			{
 				"name" : "osc_toggle.maxpat",
-				"bootpath" : "/Users/samgmansfield/Documents/CNMAT/cnmat/trunk/max/externals/odot/trunk/testing/odot_iphone/osc_controls",
-				"patcherrelativepath" : "",
+				"bootpath" : "/Users/samgmansfield/Documents/CNMAT/CNMAT-odot/testing/odot_iphone/osc_controls_recieve",
+				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
