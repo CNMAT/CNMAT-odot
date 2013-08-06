@@ -3,11 +3,12 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 6,
-			"minor" : 0,
-			"revision" : 5
+			"minor" : 1,
+			"revision" : 2,
+			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 363.0, 169.0, 803.0, 478.0 ],
+		"rect" : [ 100.0, 100.0, 661.0, 471.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -40,11 +41,12 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 6,
-							"minor" : 0,
-							"revision" : 5
+							"minor" : 1,
+							"revision" : 2,
+							"architecture" : "x86"
 						}
 ,
-						"rect" : [ 0.0, 26.0, 803.0, 452.0 ],
+						"rect" : [ 0.0, 26.0, 661.0, 445.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -125,12 +127,13 @@
 								"box" : 								{
 									"fontname" : "Arial",
 									"fontsize" : 12.0,
+									"frgb" : 0.0,
 									"id" : "obj-9",
 									"linecount" : 5,
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 291.0, 52.0, 150.0, 76.0 ],
+									"patching_rect" : [ 291.0, 52.0, 150.0, 74.0 ],
 									"text" : "oscemote:\nTurning on the accelerometer under the accel tab and waving the device around."
 								}
 
@@ -139,12 +142,13 @@
 								"box" : 								{
 									"fontname" : "Arial",
 									"fontsize" : 12.0,
+									"frgb" : 0.0,
 									"id" : "obj-5",
 									"linecount" : 5,
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 19.0, 52.0, 150.0, 76.0 ],
+									"patching_rect" : [ 19.0, 52.0, 150.0, 74.0 ],
 									"text" : "touchosc:\nTurning on the accelerometer under the info button and wave the device around."
 								}
 
@@ -168,32 +172,21 @@
 								}
 
 							}
- ],
-						"dependency_cache" : [ 							{
-								"name" : "osc_accelerometer.maxpat",
-								"bootpath" : "/Users/samgmansfield/Documents/CNMAT/cnmat/trunk/max/externals/odot/trunk/testing/odot_iphone/osc_controls",
-								"type" : "JSON",
-								"implicit" : 1
-							}
-, 							{
-								"name" : "o.route.mxo",
-								"type" : "iLaX"
-							}
  ]
 					}
 ,
 					"patching_rect" : [ 77.0, 18.0, 72.0, 20.0 ],
 					"saved_object_attributes" : 					{
-						"description" : "",
-						"fontname" : "Arial",
-						"tags" : "",
 						"default_fontface" : 0,
-						"digest" : "",
-						"globalpatchername" : "",
 						"default_fontname" : "Arial",
+						"default_fontsize" : 12.0,
+						"description" : "",
+						"digest" : "",
 						"fontface" : 0,
+						"fontname" : "Arial",
 						"fontsize" : 12.0,
-						"default_fontsize" : 12.0
+						"globalpatchername" : "",
+						"tags" : ""
 					}
 ,
 					"text" : "p examples"
@@ -212,11 +205,12 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 6,
-							"minor" : 0,
-							"revision" : 5
+							"minor" : 1,
+							"revision" : 2,
+							"architecture" : "x86"
 						}
 ,
-						"rect" : [ 363.0, 195.0, 803.0, 452.0 ],
+						"rect" : [ 100.0, 126.0, 661.0, 445.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -239,30 +233,17 @@
 						"boxes" : [ 							{
 								"box" : 								{
 									"bubble" : 1,
+									"bubblepoint" : 0.62,
+									"bubbleside" : 0,
 									"fontname" : "Arial",
 									"fontsize" : 12.0,
+									"frgb" : 0.0,
 									"id" : "obj-11",
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 131.0, 161.0, 98.0, 24.0 ],
+									"patching_rect" : [ 60.5, 181.0, 98.0, 39.0 ],
 									"text" : "error messge"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"bubble" : 1,
-									"bubblepoint" : 0.25,
-									"bubbleside" : 0,
-									"fontname" : "Arial",
-									"fontsize" : 12.0,
-									"id" : "obj-6",
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 56.0, 181.0, 82.0, 39.0 ],
-									"text" : "place holder"
 								}
 
 							}
@@ -273,6 +254,7 @@
 									"bubbleside" : 2,
 									"fontname" : "Arial",
 									"fontsize" : 12.0,
+									"frgb" : 0.0,
 									"id" : "obj-4",
 									"maxclass" : "comment",
 									"numinlets" : 1,
@@ -286,6 +268,7 @@
 								"box" : 								{
 									"fontname" : "Arial",
 									"fontsize" : 12.0,
+									"frgb" : 0.0,
 									"id" : "obj-18",
 									"maxclass" : "comment",
 									"numinlets" : 1,
@@ -300,6 +283,7 @@
 									"bubble" : 1,
 									"fontname" : "Arial",
 									"fontsize" : 12.0,
+									"frgb" : 0.0,
 									"id" : "obj-12",
 									"maxclass" : "comment",
 									"numinlets" : 1,
@@ -314,6 +298,7 @@
 									"bubble" : 1,
 									"fontname" : "Arial",
 									"fontsize" : 12.0,
+									"frgb" : 0.0,
 									"id" : "obj-10",
 									"maxclass" : "comment",
 									"numinlets" : 1,
@@ -328,6 +313,7 @@
 									"bubble" : 1,
 									"fontname" : "Arial",
 									"fontsize" : 12.0,
+									"frgb" : 0.0,
 									"id" : "obj-8",
 									"maxclass" : "comment",
 									"numinlets" : 1,
@@ -372,12 +358,13 @@
 									"bubblepoint" : 1.0,
 									"fontname" : "Arial",
 									"fontsize" : 12.0,
+									"frgb" : 0.0,
 									"id" : "obj-17",
 									"linecount" : 4,
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 506.0, 203.0, 140.0, 66.0 ],
+									"patching_rect" : [ 506.0, 203.0, 140.0, 64.0 ],
 									"text" : "If you see data here then osc messages are being sent over port 10000."
 								}
 
@@ -387,11 +374,13 @@
 									"fontname" : "Arial",
 									"fontsize" : 12.0,
 									"id" : "obj-15",
+									"linecount" : 3,
 									"maxclass" : "o.message",
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 348.0, 254.0, 153.0, 20.0 ],
+									"patching_rect" : [ 348.0, 254.0, 153.0, 47.0 ],
+									"text" : "/acceleration/xyz 0.0337219 -0.225067 -0.999008 ",
 									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 
@@ -405,8 +394,8 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 348.0, 213.0, 106.0, 20.0 ],
-									"text" : "udpreceive 10000"
+									"patching_rect" : [ 348.0, 213.0, 151.0, 20.0 ],
+									"text" : "udpreceive 10000 CNMAT"
 								}
 
 							}
@@ -414,13 +403,13 @@
 								"box" : 								{
 									"fontname" : "Arial",
 									"fontsize" : 12.0,
-									"frgb" : [ 0.485712, 0.485712, 0.485712, 1.0 ],
+									"frgb" : 0.0,
 									"id" : "obj-5",
 									"linecount" : 2,
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 6.0, 88.0, 551.0, 34.0 ],
+									"patching_rect" : [ 6.0, 88.0, 551.0, 33.0 ],
 									"text" : "osc_accelerometer interprets osc messages from the iphone using  touchosc and oscemote,. By default the port number is set to 10000.",
 									"textcolor" : [ 0.485712, 0.485712, 0.485712, 1.0 ]
 								}
@@ -430,6 +419,7 @@
 								"box" : 								{
 									"fontname" : "Arial",
 									"fontsize" : 12.0,
+									"frgb" : 0.0,
 									"id" : "obj-2",
 									"maxclass" : "comment",
 									"numinlets" : 1,
@@ -443,11 +433,12 @@
 								"box" : 								{
 									"fontname" : "Arial",
 									"fontsize" : 48.0,
+									"frgb" : 0.0,
 									"id" : "obj-3",
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 6.0, 6.0, 551.0, 62.0 ],
+									"patching_rect" : [ 6.0, 6.0, 551.0, 60.0 ],
 									"text" : "osc_accelerometer"
 								}
 
@@ -471,36 +462,21 @@
 								}
 
 							}
- ],
-						"dependency_cache" : [ 							{
-								"name" : "osc_accelerometer.maxpat",
-								"bootpath" : "/Users/samgmansfield/Documents/CNMAT/cnmat/trunk/max/externals/odot/trunk/testing/odot_iphone/osc_controls",
-								"type" : "JSON",
-								"implicit" : 1
-							}
-, 							{
-								"name" : "o.message.mxo",
-								"type" : "iLaX"
-							}
-, 							{
-								"name" : "o.route.mxo",
-								"type" : "iLaX"
-							}
  ]
 					}
 ,
 					"patching_rect" : [ 16.0, 18.0, 49.0, 20.0 ],
 					"saved_object_attributes" : 					{
-						"description" : "",
-						"fontname" : "Arial",
-						"tags" : "",
 						"default_fontface" : 0,
-						"digest" : "",
-						"globalpatchername" : "",
 						"default_fontname" : "Arial",
+						"default_fontsize" : 12.0,
+						"description" : "",
+						"digest" : "",
 						"fontface" : 0,
+						"fontname" : "Arial",
 						"fontsize" : 12.0,
-						"default_fontsize" : 12.0
+						"globalpatchername" : "",
+						"tags" : ""
 					}
 ,
 					"text" : "p basic"
@@ -511,8 +487,8 @@
 		"lines" : [  ],
 		"dependency_cache" : [ 			{
 				"name" : "osc_accelerometer.maxpat",
-				"bootpath" : "/Users/samgmansfield/Documents/CNMAT/cnmat/trunk/max/externals/odot/trunk/testing/odot_iphone/osc_controls",
-				"patcherrelativepath" : "",
+				"bootpath" : "/Users/samgmansfield/Documents/CNMAT/CNMAT-odot/testing/odot_iphone/osc_controls_recieve",
+				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
