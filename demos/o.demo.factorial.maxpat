@@ -4,11 +4,11 @@
 		"appversion" : 		{
 			"major" : 6,
 			"minor" : 1,
-			"revision" : 2,
+			"revision" : 3,
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 32.0, 97.0, 1280.0, 667.0 ],
+		"rect" : [ 57.0, 44.0, 1280.0, 667.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 20.0,
@@ -38,7 +38,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 404.973145, 574.0, 157.0, 67.0 ],
-					"text" : "/n 4 7 2 \n/n/factorial 1 \n/n/n 4 7 2 \n",
+					"text" : "/n 4 7 2 \n/n/factorial 1 \n/n/n 4 7 2 ",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -133,7 +133,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 40.973145, 726.0, 290.0, 47.0 ],
-					"text" : "/n 4 7 2 \n/n/factorial 0 5040 0 \n",
+					"text" : "/n 4 7 2 \n/n/factorial 0 5040 0 ",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -260,7 +260,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 641.973145, 696.0, 553.0, 47.0 ],
-					"text" : "/a 1 5 7 4 \n/a/factorial 1 5 7 4 \n",
+					"text" : "/a 1 5 7 4 \n/a/factorial 1 5 7 4 ",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -474,7 +474,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 40.973145, 408.0, 157.0, 67.0 ],
-					"text" : "/n -3 0 -5 \n/n/factorial 0 5040 0 \n",
+					"text" : "/n -3 0 -5 \n/n/factorial 0 5040 0 ",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -574,7 +574,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 163.973145, 335.0, 204.0, 27.0 ],
+					"patching_rect" : [ 170.973145, 340.0, 204.0, 27.0 ],
 					"text" : "o.expr /n/factorial *= /n--"
 				}
 
@@ -609,6 +609,7 @@
 			}
 , 			{
 				"box" : 				{
+					"background" : 1,
 					"bgcolor" : [ 0.011765, 1.0, 0.803922, 1.0 ],
 					"fontname" : "Arial",
 					"fontsize" : 18.0,
@@ -618,7 +619,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 38.0, 224.0, 349.0, 167.0 ],
+					"patching_rect" : [ 45.0, 226.0, 349.0, 167.0 ],
 					"text" : "                 The core recursion\n\n\n\n\n\n\n\n"
 				}
 
@@ -783,7 +784,7 @@
 					"destination" : [ "obj-2", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"midpoints" : [ 173.473145, 380.0, 378.986572, 380.0, 378.986572, 290.0, 96.473137, 290.0 ],
+					"midpoints" : [ 180.473145, 380.0, 378.986572, 380.0, 378.986572, 290.0, 96.473137, 290.0 ],
 					"source" : [ "obj-3", 0 ]
 				}
 

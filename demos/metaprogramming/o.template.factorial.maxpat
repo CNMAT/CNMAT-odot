@@ -3,8 +3,9 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 6,
-			"minor" : 0,
-			"revision" : 4
+			"minor" : 1,
+			"revision" : 3,
+			"architecture" : "x86"
 		}
 ,
 		"rect" : [ 245.0, 113.0, 985.0, 613.0 ],
@@ -49,7 +50,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 68.0, 455.0, 66.0, 29.0 ],
+					"patching_rect" : [ 566.0, 497.0, 66.0, 29.0 ],
 					"text" : "o.print"
 				}
 
@@ -63,7 +64,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 68.0, 338.0, 32.5, 27.0 ],
+					"patching_rect" : [ 119.0, 521.0, 32.5, 27.0 ],
 					"text" : "1"
 				}
 
@@ -76,7 +77,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 68.0, 394.0, 41.0, 32.0 ]
+					"patching_rect" : [ 265.0, 541.0, 41.0, 32.0 ]
 				}
 
 			}
@@ -98,13 +99,13 @@
 				"box" : 				{
 					"fontname" : "Arial",
 					"fontsize" : 20.0,
-					"frgb" : [ 0.0, 0.0, 0.0, 1.0 ],
+					"frgb" : 0.0,
 					"id" : "obj-9",
 					"linecount" : 2,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 562.0, 293.0, 296.0, 52.0 ],
+					"patching_rect" : [ 562.0, 293.0, 296.0, 51.0 ],
 					"text" : "supports lists by descent to the bottom of the largest argument"
 				}
 
@@ -141,13 +142,13 @@
 				"box" : 				{
 					"fontname" : "Arial",
 					"fontsize" : 20.0,
-					"frgb" : [ 0.0, 0.0, 0.0, 1.0 ],
+					"frgb" : 0.0,
 					"id" : "obj-6",
 					"linecount" : 4,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 515.0, 143.0, 241.0, 99.0 ],
+					"patching_rect" : [ 515.0, 143.0, 241.0, 96.0 ],
 					"text" : "Factorial\n\n\nAdrian Freed 2011"
 				}
 
@@ -193,13 +194,13 @@
 				"box" : 				{
 					"fontname" : "Arial",
 					"fontsize" : 18.0,
-					"frgb" : [ 0.0, 0.0, 0.0, 1.0 ],
+					"frgb" : 0.0,
 					"id" : "obj-15",
 					"linecount" : 3,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 274.0, 54.0, 331.0, 68.0 ],
+					"patching_rect" : [ 274.0, 54.0, 331.0, 67.0 ],
 					"text" : "OSC messages without /n or outside numerical bounds are passed through.\n\n"
 				}
 
@@ -226,7 +227,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 2,
-					"outlettype" : [ "", "" ],
+					"outlettype" : [ "FullPacket", "FullPacket" ],
 					"patching_rect" : [ 224.973145, 310.0, 212.0, 27.0 ],
 					"text" : "o.if product( #1/temp) > 1"
 				}
@@ -362,11 +363,11 @@
 			}
  ],
 		"dependency_cache" : [ 			{
-				"name" : "o.expr.mxo",
+				"name" : "o.if.mxo",
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "o.if.mxo",
+				"name" : "o.expr.mxo",
 				"type" : "iLaX"
 			}
 , 			{
