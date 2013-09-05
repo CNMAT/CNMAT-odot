@@ -46,6 +46,8 @@
 #include "osc.h"
 #include "osc_serial.h"
 #include "osc_mem.h"
+#include "osc_bundle_iterator_s.h"
+#include "o.h"
 #include "omax_util.h"
 #include "omax_doc.h"
 #include "omax_dict.h"
@@ -62,15 +64,107 @@ void *oO_class;
 //void oO_fullPacket(t_oO *x, long len, long ptr)
 void oO_fullPacket(t_oO *x, t_symbol *msg, int argc, t_atom *argv)
 {
+	char bracket[] = {'[', ']', '{', '}'};
+	char wild[] = {'*', '?'};
+	char alphanum[62];
+	for(int i = 0; i < 10; i++){
+		alphanum[i] = i + 48;
+	}
+	for(int i = 0; i < 26; i++){
+		alphanum[i + 10] = i + 65;
+	}
+	for(int i = 0; i < 26; i++){
+		alphanum[i + 36] = i + 97;
+	}
+
 	OMAX_UTIL_GET_LEN_AND_PTR;
-	uint64_t state = OSC_STATE_INIT;
-	for(int i = 0; i < len; i++){
-		state = process_byte(ptr[i], state);
-		if(osc_state_errorp(state)){
-			object_error((t_object *)x, "%s", osc_state_errstr(state));
-			return;
+	char copy[len];
+	memcpy(copy, ptr, len);
+	int n = 0;
+	osc_bundle_s_getMsgCount(len, copy, &n);
+	long r = floor(((double)random() / 2147483647.) * n);
+	t_osc_bndl_it_s *it = osc_bndl_it_s_get(len, copy);
+	int i = 0;
+	t_osc_msg_s *m = NULL;
+	while(i <= r && osc_bndl_it_s_hasNext(it)){
+		i++;
+		m = osc_bndl_it_s_next(it);
+	}
+	osc_bndl_it_s_destroy(it);
+	if(m){
+		char *p = osc_message_s_getAddress(m);
+		if(p){
+			int n = osc_message_s_getSize(m);
+			long r = floor(((double)random() / 2147483647.) * n);
+			if(r <= strlen(p)){
+				// inside address section---can add a random NULL byte or fuck with wildcard chars
+				switch(random() & 0x1){
+				case 0:
+					object_post((t_object *)x, "replaced '%c' at position %d with NULL\n", p[r], r);
+					p[r] = '\0';
+					break;
+				case 1:
+					{
+						int isbracket = 0;
+						for(int i = 0; i < sizeof(bracket); i++){
+							if(bracket[i] == p[r]){
+								isbracket = 1;
+								break;
+							}
+						}
+						if(isbracket){
+							// we have a bracket, replace it with an alphanum char or NULL
+							switch(random() & 0x1){
+							case 0:
+								{
+									long rrr = (long)floor(((double)random() / 2147483647.) * sizeof(alphanum));
+									object_post((t_object *)x, "replaced '%c' at position %d with '%c'\n", p[r], r, alphanum[rrr]);
+									p[r] = alphanum[rrr];
+								}
+								break;
+							case 1:
+								object_post((t_object *)x, "replaced '%c' at position %d with NULL\n", p[r], r);
+								p[r] = NULL;
+								break;
+							}
+						}else{
+							// not a bracket, replace it with one or NULL
+							switch(random() & 0x1){
+							case 0:
+								{
+									long rrr = (long)floor(((double)random() / 2147483647.) * sizeof(bracket));
+									object_post((t_object *)x, "replaced '%c' at position %d with '%c'\n", p[r], r, bracket[rrr]);
+									p[r] = bracket[rrr];
+								}
+								break;
+							case 1:
+								object_post((t_object *)x, "replaced '%c' at position %d with NULL\n", p[r], r);
+								p[r] = NULL;
+								break;
+							}
+						}
+					}
+					break;
+				}
+			}else if(r < (osc_message_s_getData(m) - p)){
+				// typetag section---add a NULL or char
+				if(p[r] == NULL){
+					long rrr = (long)floor(((double)random() / 2147483647.) * sizeof(alphanum));
+					object_post((t_object *)x, "replaced NULL at position %d with '%c'\n", r, alphanum[rrr]);
+					p[r] = alphanum[rrr];
+				}else{
+					object_post((t_object *)x, "replaced '%c' at position %d with NULL\n", p[r], r);
+					p[r] = NULL;
+				}
+			}else{
+				// not much we can do here unles we know it's a string or something else with NULL padding, 
+				// so just try again
+				oO_fullPacket(x, msg, argc, argv);
+				return;
+			}
 		}
 	}
+	omax_util_outletOSC(x->outlet, len, copy);
 }
 
 void oO_anything(t_oO *x, t_symbol *msg, int argc, t_atom *argv)
@@ -100,7 +194,7 @@ void oO_free(t_oO *x)
 
 void *oO_new(t_symbol *msg, short argc, t_atom *argv)
 {
-	t_oO *x;
+	t_oO *x = NULL;
 	if((x = (t_oO *)object_alloc(oO_class))){
 		x->outlet = outlet_new((t_object *)x, "FullPacket");
 		critical_new(&(x->lock));
@@ -129,6 +223,8 @@ int main(void)
 	common_symbols_init();
 
 	ODOT_PRINT_VERSION;
+
+	srandomdev();
 	return 0;
 }
 /*

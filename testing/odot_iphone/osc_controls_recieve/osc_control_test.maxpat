@@ -3,8 +3,9 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 6,
-			"minor" : 0,
-			"revision" : 5
+			"minor" : 1,
+			"revision" : 2,
+			"architecture" : "x86"
 		}
 ,
 		"rect" : [ 2.0, 44.0, 1143.0, 655.0 ],
@@ -88,7 +89,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 640.0, 273.0, 50.0, 18.0 ],
-					"text" : "1 none"
+					"text" : "empty"
 				}
 
 			}
@@ -111,12 +112,12 @@
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"id" : "obj-24",
-					"linecount" : 25,
+					"linecount" : 9,
 					"maxclass" : "message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 486.0, 392.0, 52.0, 349.0 ],
+					"patching_rect" : [ 400.0, 390.5, 114.0, 125.0 ],
 					"text" : "If you are using mrmr turn off \"Include Device ID\" under the prefs tab. Otherwise you are using an unsupported osc app or you are not pressing a toggle."
 				}
 
@@ -130,7 +131,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 414.0, 392.0, 50.0, 18.0 ],
+					"patching_rect" : [ 329.0, 390.5, 50.0, 18.0 ],
 					"text" : "empty"
 				}
 
@@ -140,12 +141,12 @@
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"id" : "obj-18",
-					"linecount" : 23,
+					"linecount" : 7,
 					"maxclass" : "message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 897.0, 64.0, 55.0, 322.0 ],
+					"patching_rect" : [ 897.0, 64.0, 140.0, 98.0 ],
 					"text" : "If you are using mrmr turn off \"Include Device ID\" under the prefs tab. Otherwise you are using an unsupported osc app or you are not using a pictslider."
 				}
 
@@ -169,12 +170,13 @@
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"id" : "obj-19",
+					"linecount" : 7,
 					"maxclass" : "message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 507.0, 78.0, 48.0, 18.0 ],
-					"text" : "empty"
+					"patching_rect" : [ 507.0, 78.0, 137.0, 98.0 ],
+					"text" : "If you are using mrmr turn off \"Include Device ID\" under the prefs tab. Otherwise you are using an unsupported osc app or you are not using a multislider.."
 				}
 
 			}
@@ -188,7 +190,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 444.0, 78.0, 50.0, 18.0 ],
-					"text" : "1 none"
+					"text" : "empty"
 				}
 
 			}
@@ -197,13 +199,12 @@
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"id" : "obj-15",
-					"linecount" : 27,
 					"maxclass" : "message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 221.0, 138.0, 49.0, 377.0 ],
-					"text" : "If you are using mrmr turn off \"Include Device ID\" under the prefs tab. Otherwise you are using an unsupported osc app or you are not pressing a button."
+					"patching_rect" : [ 221.0, 138.0, 52.0, 18.0 ],
+					"text" : "empty"
 				}
 
 			}
@@ -212,12 +213,13 @@
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"id" : "obj-12",
+					"linecount" : 2,
 					"maxclass" : "message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 36.0, 138.0, 55.0, 18.0 ],
-					"text" : "empty"
+					"patching_rect" : [ 36.0, 138.0, 55.0, 31.0 ],
+					"text" : "@button D3"
 				}
 
 			}
@@ -255,8 +257,8 @@
 					"id" : "obj-25",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
-					"numoutlets" : 3,
-					"outlettype" : [ "", "", "" ],
+					"numoutlets" : 2,
+					"outlettype" : [ "", "" ],
 					"patching_rect" : [ 16.0, 341.0, 112.0, 20.0 ],
 					"text" : "osc_accelerometer"
 				}
@@ -270,7 +272,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "int" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 384.5, 392.0, 20.0, 20.0 ]
+					"patching_rect" : [ 299.5, 390.5, 20.0, 20.0 ]
 				}
 
 			}
@@ -283,7 +285,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 3,
 					"outlettype" : [ "int", "", "" ],
-					"patching_rect" : [ 384.5, 350.0, 79.0, 20.0 ],
+					"patching_rect" : [ 299.5, 348.5, 79.0, 20.0 ],
 					"text" : "osc_toggle 1"
 				}
 
@@ -573,43 +575,43 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "osc_button.maxpat",
-				"bootpath" : "/Users/samgmansfield/Documents/CNMAT/cnmat/trunk/max/externals/odot/trunk/testing/odot_iphone/osc_controls",
-				"patcherrelativepath" : "",
+				"bootpath" : "/Users/samgmansfield/Documents/CNMAT/CNMAT-odot/testing/odot_iphone/osc_controls_recieve",
+				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "osc_multislider.maxpat",
-				"bootpath" : "/Users/samgmansfield/Documents/CNMAT/cnmat/trunk/max/externals/odot/trunk/testing/odot_iphone/osc_controls",
-				"patcherrelativepath" : "",
+				"bootpath" : "/Users/samgmansfield/Documents/CNMAT/CNMAT-odot/testing/odot_iphone/osc_controls_recieve",
+				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "osc_pictslider.maxpat",
-				"bootpath" : "/Users/samgmansfield/Documents/CNMAT/cnmat/trunk/max/externals/odot/trunk/testing/odot_iphone/osc_controls",
-				"patcherrelativepath" : "",
+				"bootpath" : "/Users/samgmansfield/Documents/CNMAT/CNMAT-odot/testing/odot_iphone/osc_controls_recieve",
+				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "osc_toggle.maxpat",
-				"bootpath" : "/Users/samgmansfield/Documents/CNMAT/cnmat/trunk/max/externals/odot/trunk/testing/odot_iphone/osc_controls",
-				"patcherrelativepath" : "",
+				"bootpath" : "/Users/samgmansfield/Documents/CNMAT/CNMAT-odot/testing/odot_iphone/osc_controls_recieve",
+				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "osc_accelerometer.maxpat",
-				"bootpath" : "/Users/samgmansfield/Documents/CNMAT/cnmat/trunk/max/externals/odot/trunk/testing/odot_iphone/osc_controls",
-				"patcherrelativepath" : "",
+				"bootpath" : "/Users/samgmansfield/Documents/CNMAT/CNMAT-odot/testing/odot_iphone/osc_controls_recieve",
+				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "osc_universal.maxpat",
-				"bootpath" : "/Users/samgmansfield/Documents/CNMAT/cnmat/trunk/max/externals/odot/trunk/testing/odot_iphone/osc_controls",
-				"patcherrelativepath" : "",
+				"bootpath" : "/Users/samgmansfield/Documents/CNMAT/CNMAT-odot/testing/odot_iphone/osc_controls_recieve",
+				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}

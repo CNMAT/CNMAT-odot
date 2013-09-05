@@ -7,7 +7,7 @@
 		<key>Build all copy.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>34</integer>
+			<integer>33</integer>
 		</dict>
 		<key>Build all.xcscheme</key>
 		<dict>
@@ -22,7 +22,7 @@
 		<key>o.O.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>29</integer>
+			<integer>34</integer>
 		</dict>
 		<key>o.append.xcscheme</key>
 		<dict>
@@ -67,7 +67,7 @@
 		<key>o.downcast.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>30</integer>
+			<integer>29</integer>
 		</dict>
 		<key>o.explode.xcscheme</key>
 		<dict>
@@ -102,7 +102,7 @@
 		<key>o.iterate.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>32</integer>
+			<integer>31</integer>
 		</dict>
 		<key>o.mappatch.xcscheme</key>
 		<dict>
@@ -142,7 +142,7 @@
 		<key>o.random.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>33</integer>
+			<integer>32</integer>
 		</dict>
 		<key>o.route.xcscheme</key>
 		<dict>
@@ -182,7 +182,7 @@
 		<key>o.validate.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>31</integer>
+			<integer>30</integer>
 		</dict>
 		<key>o.var.xcscheme</key>
 		<dict>
@@ -353,6 +353,11 @@
 			<true/>
 		</dict>
 		<key>52C839D1167A5B24000AA688</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>52F0C47817B581CC009FBD24</key>
 		<dict>
 			<key>primary</key>
 			<true/>

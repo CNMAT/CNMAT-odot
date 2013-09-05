@@ -8,7 +8,7 @@
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 25.0, 69.0, 1017.0, 363.0 ],
+		"rect" : [ 332.0, 165.0, 1017.0, 363.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -82,7 +82,7 @@
 					"maxclass" : "inlet",
 					"numinlets" : 0,
 					"numoutlets" : 1,
-					"outlettype" : [ "" ],
+					"outlettype" : [ "bang" ],
 					"patching_rect" : [ 114.0, 69.0, 25.0, 25.0 ]
 				}
 
@@ -125,7 +125,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "FullPacket" ],
 					"patching_rect" : [ 114.0, 200.0, 211.5, 22.0 ],
-					"text" : "o.io.slipserial a 115200"
+					"text" : "o.io.slipserial #1 115200"
 				}
 
 			}

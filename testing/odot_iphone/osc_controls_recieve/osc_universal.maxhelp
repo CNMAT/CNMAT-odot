@@ -8,7 +8,7 @@
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 100.0, 100.0, 670.0, 530.0 ],
+		"rect" : [ 27.0, 77.0, 924.0, 569.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -46,7 +46,7 @@
 							"architecture" : "x86"
 						}
 ,
-						"rect" : [ 0.0, 26.0, 670.0, 504.0 ],
+						"rect" : [ 0.0, 26.0, 924.0, 543.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -75,7 +75,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 13.0, 256.0, 176.0, 20.0 ],
+									"patching_rect" : [ 579.5, 255.0, 176.0, 20.0 ],
 									"text" : "Using oscemote accelerometer"
 								}
 
@@ -102,7 +102,7 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "", "" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 13.0, 313.0, 145.0, 139.0 ],
+									"patching_rect" : [ 579.5, 312.0, 145.0, 139.0 ],
 									"setstyle" : 2,
 									"size" : 3
 								}
@@ -116,7 +116,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "int" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 486.0, 109.0, 20.0, 20.0 ]
+									"patching_rect" : [ 328.0, 312.0, 20.0, 20.0 ]
 								}
 
 							}
@@ -128,7 +128,7 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "int", "int" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 321.0, 109.0, 100.0, 100.0 ]
+									"patching_rect" : [ 19.0, 312.0, 100.0, 100.0 ]
 								}
 
 							}
@@ -140,7 +140,7 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "", "" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 153.0, 102.0, 20.0, 140.0 ]
+									"patching_rect" : [ 403.0, 102.0, 20.0, 140.0 ]
 								}
 
 							}
@@ -165,8 +165,8 @@
 									"numinlets" : 1,
 									"numoutlets" : 3,
 									"outlettype" : [ "", "", "" ],
-									"patching_rect" : [ 13.0, 283.0, 163.0, 20.0 ],
-									"text" : "osc_universal accelerometer"
+									"patching_rect" : [ 579.5, 282.0, 211.0, 20.0 ],
+									"text" : "osc_universal @object accelerometer"
 								}
 
 							}
@@ -178,9 +178,9 @@
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 3,
-									"outlettype" : [ "", "", "" ],
-									"patching_rect" : [ 486.0, 71.0, 120.0, 20.0 ],
-									"text" : "osc_universal toggle"
+									"outlettype" : [ "int", "", "" ],
+									"patching_rect" : [ 328.0, 274.0, 250.0, 20.0 ],
+									"text" : "osc_universal @object toggle @objectNum 1"
 								}
 
 							}
@@ -193,8 +193,8 @@
 									"numinlets" : 1,
 									"numoutlets" : 3,
 									"outlettype" : [ "", "", "" ],
-									"patching_rect" : [ 321.0, 71.0, 151.0, 20.0 ],
-									"text" : "osc_universal pictslider 32"
+									"patching_rect" : [ 19.0, 274.0, 272.0, 20.0 ],
+									"text" : "osc_universal @object pictslider @objectNum 32"
 								}
 
 							}
@@ -207,8 +207,8 @@
 									"numinlets" : 1,
 									"numoutlets" : 3,
 									"outlettype" : [ "", "", "" ],
-									"patching_rect" : [ 153.0, 71.0, 158.0, 20.0 ],
-									"text" : "osc_universal multislider 24"
+									"patching_rect" : [ 403.0, 71.0, 278.0, 20.0 ],
+									"text" : "osc_universal @object multislider @objectNum 24"
 								}
 
 							}
@@ -220,9 +220,9 @@
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 3,
-									"outlettype" : [ "", "", "" ],
-									"patching_rect" : [ 13.0, 71.0, 131.0, 20.0 ],
-									"text" : "osc_universal button 1"
+									"outlettype" : [ "int", "", "" ],
+									"patching_rect" : [ 13.0, 71.0, 251.0, 20.0 ],
+									"text" : "osc_universal @object button @objectNum 1"
 								}
 
 							}
@@ -310,7 +310,7 @@
 							"architecture" : "x86"
 						}
 ,
-						"rect" : [ 100.0, 126.0, 670.0, 504.0 ],
+						"rect" : [ 27.0, 103.0, 924.0, 543.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -334,137 +334,13 @@
 								"box" : 								{
 									"fontname" : "Arial",
 									"fontsize" : 12.0,
-									"frgb" : 0.0,
-									"id" : "obj-27",
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 393.0, 429.0, 93.5, 20.0 ],
-									"text" : "see also:"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"fontname" : "Arial",
-									"fontsize" : 12.0,
-									"hidden" : 1,
-									"id" : "obj-25",
-									"maxclass" : "message",
-									"numinlets" : 2,
-									"numoutlets" : 1,
-									"outlettype" : [ "" ],
-									"patching_rect" : [ 297.0, 374.0, 90.0, 18.0 ],
-									"text" : "autopopulate 1"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"fontname" : "Arial",
-									"fontsize" : 12.0,
-									"hidden" : 1,
-									"id" : "obj-20",
-									"maxclass" : "newobj",
-									"numinlets" : 1,
-									"numoutlets" : 1,
-									"outlettype" : [ "" ],
-									"patching_rect" : [ 399.5, 412.0, 87.0, 20.0 ],
-									"text" : "prepend prefix"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"fontname" : "Arial",
-									"fontsize" : 12.0,
-									"hidden" : 1,
-									"id" : "obj-16",
-									"maxclass" : "message",
-									"numinlets" : 2,
-									"numoutlets" : 1,
-									"outlettype" : [ "" ],
-									"patching_rect" : [ 393.0, 374.0, 199.0, 18.0 ],
-									"text" : "./patches/odot_iphone/osc_controls"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"autopopulate" : 1,
-									"fontname" : "Arial",
-									"fontsize" : 12.0,
-									"id" : "obj-4",
-									"items" : [ "Cycling '74", ",", "examples", ",", "java-doc", ",", "Max Runtime.app", ",", "Max.app", ",", "patches", ",", "support" ],
-									"maxclass" : "umenu",
-									"numinlets" : 1,
-									"numoutlets" : 3,
-									"outlettype" : [ "int", "", "" ],
-									"parameter_enable" : 0,
-									"patching_rect" : [ 393.0, 449.0, 100.0, 20.0 ],
-									"prefix" : "./patches/odot_iphone/osc_controls"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"bubble" : 1,
-									"bubblepoint" : 0.19,
-									"bubbleside" : 2,
-									"fontname" : "Arial",
-									"fontsize" : 12.0,
-									"frgb" : 0.0,
-									"id" : "obj-8",
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 6.0, 221.0, 38.0, 39.0 ],
-									"text" : "port#"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"bubble" : 1,
-									"fontname" : "Arial",
-									"fontsize" : 12.0,
-									"frgb" : 0.0,
-									"id" : "obj-23",
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 87.0, 296.0, 87.0, 24.0 ],
-									"text" : "objet# tab#"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"bubble" : 1,
-									"bubblepoint" : 0.18,
-									"bubbleside" : 2,
-									"fontname" : "Arial",
-									"fontsize" : 12.0,
-									"frgb" : 0.0,
-									"id" : "obj-21",
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 98.0, 328.0, 105.0, 39.0 ],
-									"text" : "error message"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"fontname" : "Arial",
-									"fontsize" : 12.0,
 									"id" : "obj-18",
 									"maxclass" : "message",
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 98.0, 367.0, 50.0, 18.0 ]
+									"patching_rect" : [ 103.0, 325.0, 53.0, 18.0 ],
+									"text" : "empty"
 								}
 
 							}
@@ -473,11 +349,13 @@
 									"fontname" : "Arial",
 									"fontsize" : 12.0,
 									"id" : "obj-12",
+									"linecount" : 2,
 									"maxclass" : "message",
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 37.0, 296.0, 50.0, 18.0 ]
+									"patching_rect" : [ 42.0, 254.0, 50.0, 31.0 ],
+									"text" : "@button A1"
 								}
 
 							}
@@ -489,7 +367,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "int" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 7.0, 296.0, 20.0, 20.0 ]
+									"patching_rect" : [ 12.0, 254.0, 20.0, 20.0 ]
 								}
 
 							}
@@ -503,55 +381,8 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 327.0, 176.5, 190.0, 74.0 ],
+									"patching_rect" : [ 314.5, 387.5, 190.0, 74.0 ],
 									"text" : "If a number appears before the name of the object (#/object#) that number is the tab number. The number follwing the name of the object is the object number."
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"fontname" : "Arial",
-									"fontsize" : 12.0,
-									"frgb" : 0.0,
-									"id" : "obj-1",
-									"linecount" : 3,
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 6.0, 148.5, 292.0, 47.0 ],
-									"text" : "osc_universal takes three arguments: control, object number and tab number. Tab number is exclusively for touchosc. "
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"bubble" : 1,
-									"fontname" : "Arial",
-									"fontsize" : 12.0,
-									"frgb" : 0.0,
-									"id" : "obj-13",
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 148.0, 260.0, 150.0, 24.0 ],
-									"text" : "tab# (touchosc only)"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"bubble" : 1,
-									"bubblepoint" : 0.08,
-									"bubbleside" : 2,
-									"fontname" : "Arial",
-									"fontsize" : 12.0,
-									"frgb" : 0.0,
-									"id" : "obj-10",
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 118.0, 221.0, 79.0, 39.0 ],
-									"text" : "object#"
 								}
 
 							}
@@ -563,9 +394,9 @@
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 3,
-									"outlettype" : [ "", "", "" ],
-									"patching_rect" : [ 7.0, 260.0, 141.0, 20.0 ],
-									"text" : "osc_universal button 1 1"
+									"outlettype" : [ "int", "", "" ],
+									"patching_rect" : [ 12.0, 218.0, 301.0, 20.0 ],
+									"text" : "osc_universal @object button @objectNum A1 @tab 1"
 								}
 
 							}
@@ -581,7 +412,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 485.0, 296.0, 140.0, 64.0 ],
+									"patching_rect" : [ 491.0, 208.0, 140.0, 64.0 ],
 									"text" : "If you see data here then osc messages are being sent over port 10000."
 								}
 
@@ -595,7 +426,8 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 327.0, 347.0, 153.0, 20.0 ],
+									"patching_rect" : [ 333.0, 259.0, 153.0, 20.0 ],
+									"text" : "/button/A1 0 \n",
 									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 
@@ -609,7 +441,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 327.0, 306.0, 151.0, 20.0 ],
+									"patching_rect" : [ 333.0, 218.0, 151.0, 20.0 ],
 									"text" : "udpreceive 10000 CNMAT"
 								}
 
@@ -620,12 +452,12 @@
 									"fontsize" : 12.0,
 									"frgb" : 0.0,
 									"id" : "obj-5",
-									"linecount" : 3,
+									"linecount" : 8,
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 6.0, 88.0, 599.0, 47.0 ],
-									"text" : "osc_universal interprets osc messages from the iphone using  touchosc, oscemote, iosc, mrmr, as well as a particular processing sketch, provided in the odot_iphone folder. It can be used as a button, multislider, pictslider, toggle, and accelerometer. By default the port is set to 10000.",
+									"patching_rect" : [ 6.0, 88.0, 551.0, 114.0 ],
+									"text" : "osc_universal interprets osc messages from the iphone using  touchosc, oscemote, iosc, mrmr, as well as a particular processing sketch, provided in the odot_iphone folder. It can be used as a button, multislider, pictslider, toggle, and accelerometer. By default the port is set to 10000, the port number can be changed by providing a port number into the inlet of the osc_universal object. osc_universal takes three attributes: object, objectNum, and tab. The object attribute can either be button, multislider, pictslider, toggle, and acclerometer. The first outlet outputs the data from the osc app. The second outlet displays what attributes are needed to display the current object begin pressed. The third outlet displays any errors that may be causing bad or not output from the first outlet. ",
 									"textcolor" : [ 0.485712, 0.485712, 0.485712, 1.0 ]
 								}
 
@@ -640,7 +472,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 6.0, 68.0, 551.0, 20.0 ],
-									"text" : "A universal osc control for mobile device."
+									"text" : "A universal osc control for mobile osc apps."
 								}
 
 							}
@@ -658,24 +490,6 @@
 								}
 
 							}
-, 							{
-								"box" : 								{
-									"background" : 1,
-									"bubble" : 1,
-									"bubblepoint" : 0.87,
-									"bubbleside" : 2,
-									"fontname" : "Arial",
-									"fontsize" : 12.0,
-									"frgb" : 0.0,
-									"id" : "obj-6",
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 53.5, 221.0, 64.0, 39.0 ],
-									"text" : "control"
-								}
-
-							}
  ],
 						"lines" : [ 							{
 								"patchline" : 								{
@@ -683,33 +497,6 @@
 									"disabled" : 0,
 									"hidden" : 0,
 									"source" : [ "obj-14", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-20", 0 ],
-									"disabled" : 0,
-									"hidden" : 1,
-									"source" : [ "obj-16", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-4", 0 ],
-									"disabled" : 0,
-									"hidden" : 1,
-									"source" : [ "obj-20", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-4", 0 ],
-									"disabled" : 0,
-									"hidden" : 1,
-									"source" : [ "obj-25", 0 ]
 								}
 
 							}
@@ -765,42 +552,42 @@
 		"lines" : [  ],
 		"dependency_cache" : [ 			{
 				"name" : "osc_universal.maxpat",
-				"bootpath" : "/Users/samgmansfield/Documents/CNMAT/CNMAT-odot/testing/odot_iphone/osc_controls",
+				"bootpath" : "/Users/samgmansfield/Documents/CNMAT/CNMAT-odot/testing/odot_iphone/osc_controls_recieve",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "osc_button.maxpat",
-				"bootpath" : "/Users/samgmansfield/Documents/CNMAT/CNMAT-odot/testing/odot_iphone/osc_controls",
+				"bootpath" : "/Users/samgmansfield/Documents/CNMAT/CNMAT-odot/testing/odot_iphone/osc_controls_recieve",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "osc_multislider.maxpat",
-				"bootpath" : "/Users/samgmansfield/Documents/CNMAT/CNMAT-odot/testing/odot_iphone/osc_controls",
+				"bootpath" : "/Users/samgmansfield/Documents/CNMAT/CNMAT-odot/testing/odot_iphone/osc_controls_recieve",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "osc_pictslider.maxpat",
-				"bootpath" : "/Users/samgmansfield/Documents/CNMAT/CNMAT-odot/testing/odot_iphone/osc_controls",
+				"bootpath" : "/Users/samgmansfield/Documents/CNMAT/CNMAT-odot/testing/odot_iphone/osc_controls_recieve",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "osc_toggle.maxpat",
-				"bootpath" : "/Users/samgmansfield/Documents/CNMAT/CNMAT-odot/testing/odot_iphone/osc_controls",
+				"bootpath" : "/Users/samgmansfield/Documents/CNMAT/CNMAT-odot/testing/odot_iphone/osc_controls_recieve",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "osc_accelerometer.maxpat",
-				"bootpath" : "/Users/samgmansfield/Documents/CNMAT/CNMAT-odot/testing/odot_iphone/osc_controls",
+				"bootpath" : "/Users/samgmansfield/Documents/CNMAT/CNMAT-odot/testing/odot_iphone/osc_controls_recieve",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
