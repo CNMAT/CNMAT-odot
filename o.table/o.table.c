@@ -67,6 +67,7 @@ typedef struct _otable_db{
 	t_osc_linkedlist *ll;
 	char *keyaddress;
 	int refcount;
+	uint64_t bytecount;
 } t_otable_db;
 
 typedef struct _otable{
@@ -140,6 +141,7 @@ void otable_insert(t_otable *x, long len, char *ptr, void (*ll_fptr)(t_osc_linke
 		osc_hashtab_store(x->db->ht, keylen, key, bndl);
 	}
 	ll_fptr(x->db->ll, bndl);
+	x->db->bytecount += len;
 	critical_exit(x->lock);
 }
 
@@ -178,9 +180,8 @@ void otable_append(t_otable *x, t_symbol *msg, int argc, t_atom *argv)
 	otable_dopend(x, msg, argc, argv, osc_linkedlist_append);
 }
 
-void otable_fullPacket(t_otable *x, t_symbol *msg, int argc, t_atom *argv)
+void otable_processFullPacket(t_otable *x, long len, char *ptr)
 {
-	OMAX_UTIL_GET_LEN_AND_PTR;
 	char *copy = NULL;
 	long copylen = 0;
 	char alloc = 0;
@@ -193,6 +194,12 @@ void otable_fullPacket(t_otable *x, t_symbol *msg, int argc, t_atom *argv)
 	if(alloc && copy){
 		osc_mem_free(copy);
 	}
+}
+
+void otable_fullPacket(t_otable *x, t_symbol *msg, int argc, t_atom *argv)
+{
+	OMAX_UTIL_GET_LEN_AND_PTR;
+	otable_processFullPacket(x, len, ptr);
 }
 
 void otable_pop(t_otable *x, void *(*ll_pop)(t_osc_linkedlist*))
@@ -213,6 +220,7 @@ void otable_pop(t_otable *x, void *(*ll_pop)(t_osc_linkedlist*))
 		char *ptr = osc_bundle_s_getPtr(bndl);
 		omax_util_outletOSC(x->outlet, len, ptr);
 		osc_bundle_s_deepFree(bndl);
+		x->db->bytecount -= len;
 	}else{
 		omax_util_outletOSC(x->outlet, OSC_HEADER_SIZE, OSC_EMPTY_HEADER);
 	}
@@ -235,6 +243,7 @@ void otable_popnth(t_otable *x, int n)
 		char *ptr = osc_bundle_s_getPtr(bndl);
 		omax_util_outletOSC(x->outlet, len, ptr);
 		osc_bundle_s_deepFree(bndl);
+		x->db->bytecount -= len;
 	}else{
 		omax_util_outletOSC(x->outlet, OSC_HEADER_SIZE, OSC_EMPTY_HEADER);
 	}
@@ -337,6 +346,7 @@ void otable_clear(t_otable *x)
 	osc_hashtab_clear(x->db->ht);
 	osc_linkedlist_clear(x->db->ll);
 	critical_exit(x->lock);
+	x->db->bytecount = 0;
 }
 
 void otable_refer(t_otable *x, t_symbol *msg, int argc, t_atom *argv)
@@ -358,14 +368,94 @@ void otable_anything(t_otable *x, t_symbol *msg, int argc, t_atom *argv)
 	}
 }
 
+void otable_doread(t_otable *x, t_symbol *msg, int argc, t_atom *argv)
+{
+	if(!argc){
+		object_error((t_object *)x, "you need to supply a filepath");
+		return;
+	}
+	if(atom_gettype(argv) != A_SYM){
+		object_error((t_object *)x, "%s: argument must be a symbol (path)", __func__);
+		return;
+	}
+	char *path = atom_getsym(argv)->s_name;
+	FILE *f = fopen(path, "r");
+	if(f){
+		object_post((t_object *)x, "opened %s for reading", path);
+		critical_enter(x->lock);
+		otable_clear(x);
+		fseek(f, 0, SEEK_END);
+		long n = ftell(f);
+		fseek(f, 0, SEEK_SET);
+		char *buf = (char *)malloc(n);
+		if(buf){
+			long nn = fread(buf, 1, n, f);
+			if(nn != n){
+				object_error((t_object *)x, "error reading file %s!  Expected %ld bytes, but got %ld\n", path, n, nn);
+				free(buf);
+				fclose(f);
+				return;
+			}
+			char *ptr = buf;
+			while(ptr - buf < n){
+				int32_t len = ntoh32(*((long *)ptr));
+				ptr += 4;
+				otable_processFullPacket(x, len, ptr);
+				ptr += len;
+			}
+			free(buf);
+			fclose(f);
+		}
+		critical_exit(x->lock);
+	}else{
+		object_error((t_object *)x, "couldn't open %s!\n", path);
+		return;
+	}
+}
+
 void otable_read(t_otable *x, t_symbol *msg, int argc, t_atom *argv)
 {
+	defer(x,(method)otable_doread, msg, argc, argv);
+}
 
+void otable_dowrite(t_otable *x, t_symbol *msg, int argc, t_atom *argv)
+{
+	if(!argc){
+		object_error((t_object *)x, "you need to supply a filepath");
+		return;
+	}
+	if(atom_gettype(argv) != A_SYM){
+		object_error((t_object *)x, "%s: argument must be a symbol (path)", __func__);
+		return;
+	}
+	char *path = atom_getsym(argv)->s_name;
+	FILE *f = fopen(path, "w");
+	if(f){
+		object_post((t_object *)x, "opened %s for writing", path);
+		critical_enter(x->lock);
+		unsigned long n = osc_linkedlist_getCount(x->db->ll);
+		size_t count = 0;
+		for(int i = 0; i < n; i++){
+			t_osc_bndl_s *bndl = (t_osc_bndl_s *)osc_linkedlist_peekNth(x->db->ll, i);
+			int32_t len = osc_bundle_s_getLen(bndl);
+			//printf("%d, %d\n", i, len);
+			int32_t len_n = hton32(len);
+			char *ptr = osc_bundle_s_getPtr(bndl);
+			count += fwrite(&len_n, 4, 1, f);
+			count += fwrite(ptr, 1, len, f);
+		}
+		critical_exit(x->lock);
+		fclose(f);
+		object_post((t_object *)x, "finished writing %d bundles (%d bytes total)", n, count);
+	}else{
+		object_error((t_object *)x, "couldn't open %s!\n", path);
+		return;
+	}
 }
 
 void otable_write(t_otable *x, t_symbol *msg, int argc, t_atom *argv)
 {
-
+	defer(x,(method)otable_dowrite, msg, argc, argv);
 }
 
 void otable_free(t_otable *x)
@@ -407,6 +497,7 @@ t_otable_db *otable_makedb(void)
 		db->ll = osc_linkedlist_new(otable_linkedlist_dtor);
 		db->refcount = 0;
 		db->keyaddress = NULL;
+		db->bytecount = 0;
 	}
 	return db;
 }
@@ -458,13 +549,48 @@ t_max_err otable_getKey(t_otable *x, void *attr, long *ac, t_atom **av)
 }
 #endif
 
+void otable_outputinfo(t_otable *x)
+{
+	critical_enter(x->lock);
+	t_symbol *name = x->name;
+	unsigned long n = osc_linkedlist_getCount(x->db->ll);
+	uint64_t bytecount = x->db->bytecount;
+	critical_exit(x->lock);
+	t_osc_bndl_u *b = osc_bundle_u_alloc();
+	t_osc_msg_u *msgname = osc_message_u_alloc();
+	osc_message_u_setAddress(msgname, "/name");
+	if(name){
+		osc_message_u_appendString(msgname, name->s_name);
+	}
+	osc_bundle_u_addMsg(b, msgname);
+
+	t_osc_msg_u *msgn = osc_message_u_alloc();
+	osc_message_u_setAddress(msgn, "/count");
+	osc_message_u_appendUInt64(msgn, n);
+	osc_bundle_u_addMsg(b, msgn);
+
+	t_osc_msg_u *msgmem = osc_message_u_alloc();
+	osc_message_u_setAddress(msgmem, "/bytecount");
+	osc_message_u_appendUInt64(msgmem, bytecount);
+	osc_bundle_u_addMsg(b, msgmem);
+
+	long len = 0;
+	char *buf = NULL;
+	osc_bundle_u_serialize(b, &len, &buf);
+	if(buf){
+		omax_util_outletOSC(x->outlet, len, buf);
+		osc_mem_free(buf);
+	}
+	osc_bundle_u_free(b);
+}
+
 t_max_err otable_setKey(t_otable *x, void *attr, long ac, t_atom *av)
 {
 	if(x->db){
 		critical_enter(x->lock);
 		x->db->keyaddress = atom_getsym(av)->s_name;
 		// wtf are we supposed to do here?  go through every bundle already stored and
-		// rehash the whole thing using this new key??
+		// rehash the whole fucking thing using this new key??
 		critical_exit(x->lock);
 	}
 	return MAX_ERR_NONE;
@@ -602,8 +728,8 @@ int main(void)
 	class_addmethod(c, (method)otable_refer, "refer", A_GIMME, 0);
 	class_addmethod(c, (method)otable_clear, "clear", 0);
 	class_addmethod(c, (method)otable_dump, "dump", 0);
-	class_addmethod(c, (method)otable_read, "read", A_DEFSYM, 0);
-	class_addmethod(c, (method)otable_write, "write", A_DEFSYM, 0);
+	class_addmethod(c, (method)otable_read, "read", A_GIMME, 0);
+	class_addmethod(c, (method)otable_write, "write", A_GIMME, 0);
 	class_addmethod(c, (method)odot_version, "version", 0);
 
 	class_addmethod(c, (method)otable_prepend, "prepend", A_GIMME, 0);
@@ -614,6 +740,8 @@ int main(void)
 	class_addmethod(c, (method)otable_peekfirst, "peekfirst", 0);
 	class_addmethod(c, (method)otable_peeklast, "peeklast", 0);
 	class_addmethod(c, (method)otable_peeknth, "peeknth", A_LONG, 0);
+
+	class_addmethod(c, (method)otable_outputinfo, "info", 0);
 
 	class_addmethod(c, (method)otable_doc, "doc", 0);
 

@@ -200,21 +200,21 @@ void printargs(int argc, t_atom *argv)
     
 #else
     //MAX VERSION
-#define OMAX_UTIL_GET_LEN_AND_PTR \
-if(argc != 2){\
-object_error((t_object *)x, "%s: expected 2 arguments but got %d", __func__, argc);\
-return;\
-}\
-if(atom_gettype(argv) != A_LONG){\
-object_error((t_object *)x, "%s: argument 1 should be an int", __func__);\
-return;\
-}\
-if(atom_gettype(argv + 1) != A_LONG){\
-object_error((t_object *)x, "%s: argument 2 should be an int", __func__);\
-return;\
-}\
-long len = atom_getlong(argv);\
-char *ptr = (char *)atom_getlong(argv + 1);
+#define OMAX_UTIL_GET_LEN_AND_PTR					\
+	if(argc != 2){							\
+		object_error((t_object *)x, "expected 2 arguments but got %d", argc); \
+		return;							\
+	}								\
+	if(atom_gettype(argv) != A_LONG){				\
+		object_error((t_object *)x, "argument 1 should be an int"); \
+		return;							\
+	}								\
+	if(atom_gettype(argv + 1) != A_LONG){				\
+		object_error((t_object *)x, "argument 2 should be an int"); \
+		return;							\
+	}								\
+	long len = atom_getlong(argv);					\
+	char *ptr = (char *)atom_getlong(argv + 1);
 
 #endif
 #ifdef __cplusplus 

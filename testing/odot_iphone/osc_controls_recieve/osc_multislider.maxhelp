@@ -3,11 +3,12 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 6,
-			"minor" : 0,
-			"revision" : 5
+			"minor" : 1,
+			"revision" : 2,
+			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 235.0, 108.0, 726.0, 538.0 ],
+		"rect" : [ 12.0, 46.0, 726.0, 538.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -40,8 +41,9 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 6,
-							"minor" : 0,
-							"revision" : 5
+							"minor" : 1,
+							"revision" : 2,
+							"architecture" : "x86"
 						}
 ,
 						"rect" : [ 0.0, 26.0, 726.0, 512.0 ],
@@ -85,8 +87,8 @@
 									"numinlets" : 1,
 									"numoutlets" : 3,
 									"outlettype" : [ "", "", "" ],
-									"patching_rect" : [ 458.0, 110.0, 100.0, 20.0 ],
-									"text" : "osc_multislider 1"
+									"patching_rect" : [ 458.0, 110.0, 169.0, 20.0 ],
+									"text" : "osc_multislider @multislider 1"
 								}
 
 							}
@@ -94,12 +96,13 @@
 								"box" : 								{
 									"fontname" : "Arial",
 									"fontsize" : 12.0,
+									"frgb" : 0.0,
 									"id" : "obj-23",
 									"linecount" : 5,
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 458.0, 32.0, 165.0, 76.0 ],
+									"patching_rect" : [ 458.0, 32.0, 165.0, 74.0 ],
 									"text" : "processing:\nUsing the processing sketch osc_processing, which is provided, and moving the multislider."
 								}
 
@@ -126,8 +129,8 @@
 									"numinlets" : 1,
 									"numoutlets" : 3,
 									"outlettype" : [ "", "", "" ],
-									"patching_rect" : [ 214.0, 387.0, 107.0, 20.0 ],
-									"text" : "osc_multislider 24"
+									"patching_rect" : [ 214.0, 387.0, 176.0, 20.0 ],
+									"text" : "osc_multislider @multislider 24"
 								}
 
 							}
@@ -135,12 +138,13 @@
 								"box" : 								{
 									"fontname" : "Arial",
 									"fontsize" : 12.0,
+									"frgb" : 0.0,
 									"id" : "obj-19",
 									"linecount" : 5,
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 214.0, 311.0, 225.0, 76.0 ],
+									"patching_rect" : [ 214.0, 311.0, 225.0, 74.0 ],
 									"text" : "mrmr:\nUsing maxMSP_demo and moving the first multislider (the 25th item, mrmr counts from 0). Turn off \"Include Device ID\"."
 								}
 
@@ -153,7 +157,7 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "", "" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 214.0, 123.0, 20.0, 140.0 ]
+									"patching_rect" : [ 240.0, 123.0, 20.0, 140.0 ]
 								}
 
 							}
@@ -166,8 +170,8 @@
 									"numinlets" : 1,
 									"numoutlets" : 3,
 									"outlettype" : [ "", "", "" ],
-									"patching_rect" : [ 214.0, 90.0, 100.0, 20.0 ],
-									"text" : "osc_multislider 2"
+									"patching_rect" : [ 240.0, 90.0, 169.0, 20.0 ],
+									"text" : "osc_multislider @multislider 2"
 								}
 
 							}
@@ -175,12 +179,13 @@
 								"box" : 								{
 									"fontname" : "Arial",
 									"fontsize" : 12.0,
+									"frgb" : 0.0,
 									"id" : "obj-13",
 									"linecount" : 4,
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 214.0, 32.0, 150.0, 62.0 ],
+									"patching_rect" : [ 240.0, 32.0, 150.0, 60.0 ],
 									"text" : "iosc:\nUsing the two multislider set and moving the second multislider."
 								}
 
@@ -207,8 +212,8 @@
 									"numinlets" : 1,
 									"numoutlets" : 3,
 									"outlettype" : [ "", "", "" ],
-									"patching_rect" : [ 13.0, 346.0, 100.0, 20.0 ],
-									"text" : "osc_multislider 1"
+									"patching_rect" : [ 14.0, 345.0, 169.0, 20.0 ],
+									"text" : "osc_multislider @multislider 1"
 								}
 
 							}
@@ -216,12 +221,13 @@
 								"box" : 								{
 									"fontname" : "Arial",
 									"fontsize" : 12.0,
+									"frgb" : 0.0,
 									"id" : "obj-9",
 									"linecount" : 3,
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 13.0, 298.0, 150.0, 48.0 ],
+									"patching_rect" : [ 13.0, 298.0, 150.0, 47.0 ],
 									"text" : "oscemote:\nUsing the sliders tab and moving the first multislider."
 								}
 
@@ -247,8 +253,8 @@
 									"numinlets" : 1,
 									"numoutlets" : 3,
 									"outlettype" : [ "", "", "" ],
-									"patching_rect" : [ 13.0, 94.0, 110.0, 20.0 ],
-									"text" : "osc_multislider 5 1"
+									"patching_rect" : [ 13.0, 94.0, 212.0, 20.0 ],
+									"text" : "osc_multislider @multislider 5 @tab 1"
 								}
 
 							}
@@ -256,12 +262,13 @@
 								"box" : 								{
 									"fontname" : "Arial",
 									"fontsize" : 12.0,
+									"frgb" : 0.0,
 									"id" : "obj-5",
 									"linecount" : 4,
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 13.0, 32.0, 150.0, 62.0 ],
+									"patching_rect" : [ 13.0, 32.0, 150.0, 60.0 ],
 									"text" : "touchosc:\nUsing the simple layout and moving the top multislider in the first tab."
 								}
 
@@ -312,40 +319,21 @@
 								}
 
 							}
- ],
-						"dependency_cache" : [ 							{
-								"name" : "osc_multislider.maxpat",
-								"bootpath" : "/Users/samgmansfield/Documents/CNMAT/cnmat/trunk/max/externals/odot/trunk/testing/odot_iphone/osc_controls",
-								"type" : "JSON",
-								"implicit" : 1
-							}
-, 							{
-								"name" : "o.route.mxo",
-								"type" : "iLaX"
-							}
-, 							{
-								"name" : "o.message.mxo",
-								"type" : "iLaX"
-							}
-, 							{
-								"name" : "o.atomize.mxo",
-								"type" : "iLaX"
-							}
  ]
 					}
 ,
 					"patching_rect" : [ 84.0, 18.0, 72.0, 20.0 ],
 					"saved_object_attributes" : 					{
-						"globalpatchername" : "",
-						"fontface" : 0,
-						"fontsize" : 12.0,
 						"default_fontface" : 0,
-						"digest" : "",
 						"default_fontname" : "Arial",
-						"fontname" : "Arial",
-						"tags" : "",
 						"default_fontsize" : 12.0,
-						"description" : ""
+						"description" : "",
+						"digest" : "",
+						"fontface" : 0,
+						"fontname" : "Arial",
+						"fontsize" : 12.0,
+						"globalpatchername" : "",
+						"tags" : ""
 					}
 ,
 					"text" : "p examples"
@@ -364,11 +352,12 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 6,
-							"minor" : 0,
-							"revision" : 5
+							"minor" : 1,
+							"revision" : 2,
+							"architecture" : "x86"
 						}
 ,
-						"rect" : [ 235.0, 134.0, 726.0, 512.0 ],
+						"rect" : [ 12.0, 72.0, 726.0, 512.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -395,6 +384,7 @@
 									"bubbleside" : 2,
 									"fontname" : "Arial",
 									"fontsize" : 12.0,
+									"frgb" : 0.0,
 									"id" : "obj-6",
 									"maxclass" : "comment",
 									"numinlets" : 1,
@@ -406,47 +396,16 @@
 							}
 , 							{
 								"box" : 								{
-									"bubble" : 1,
-									"bubbleside" : 3,
-									"fontname" : "Arial",
-									"fontsize" : 12.0,
-									"id" : "obj-22",
-									"linecount" : 2,
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 133.5, 418.0, 85.0, 38.0 ],
-									"text" : "Error message"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"bubble" : 1,
-									"bubblepoint" : 0.29,
-									"bubbleside" : 0,
-									"fontname" : "Arial",
-									"fontsize" : 12.0,
-									"id" : "obj-20",
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 72.5, 372.0, 150.0, 39.0 ],
-									"text" : "Displays multislider# tab#"
-								}
-
-							}
-, 							{
-								"box" : 								{
 									"fontname" : "Arial",
 									"fontsize" : 12.0,
 									"id" : "obj-16",
+									"linecount" : 25,
 									"maxclass" : "message",
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 245.0, 428.0, 50.0, 18.0 ],
-									"text" : "empty"
+									"patching_rect" : [ 179.0, 383.0, 52.0, 340.0 ],
+									"text" : "If you are using mrmr turn off \"Include Device ID\" under the prefs tab. Otherwise you are using an unsupported osc app or you are not using a multislider.."
 								}
 
 							}
@@ -459,8 +418,8 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 94.0, 345.0, 50.0, 18.0 ],
-									"text" : "5 1"
+									"patching_rect" : [ 78.0, 352.0, 90.0, 18.0 ],
+									"text" : "empty"
 								}
 
 							}
@@ -468,12 +427,13 @@
 								"box" : 								{
 									"fontname" : "Arial",
 									"fontsize" : 12.0,
+									"frgb" : 0.0,
 									"id" : "obj-19",
 									"linecount" : 7,
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 327.0, 164.5, 166.0, 103.0 ],
+									"patching_rect" : [ 324.0, 404.0, 166.0, 100.0 ],
 									"text" : "If a number appears before the name of the multislider (#/fader#) that number is the tab number. The number follwing the name of the multislider is the multislider number."
 								}
 
@@ -484,12 +444,13 @@
 									"bubblepoint" : 1.0,
 									"fontname" : "Arial",
 									"fontsize" : 12.0,
+									"frgb" : 0.0,
 									"id" : "obj-17",
 									"linecount" : 4,
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 485.0, 284.0, 140.0, 66.0 ],
+									"patching_rect" : [ 482.0, 256.0, 140.0, 64.0 ],
 									"text" : "If you see data here then osc messages are being sent over port 10000."
 								}
 
@@ -503,8 +464,8 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 327.0, 335.0, 153.0, 20.0 ],
-									"text" : "/1/fader5 0.249071 ",
+									"patching_rect" : [ 324.0, 307.0, 153.0, 20.0 ],
+									"text" : "/segmented/0 \"D\" ",
 									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 
@@ -518,39 +479,8 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 327.0, 294.0, 106.0, 20.0 ],
-									"text" : "udpreceive 10000"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"bubble" : 1,
-									"fontname" : "Arial",
-									"fontsize" : 12.0,
-									"id" : "obj-13",
-									"linecount" : 2,
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 116.0, 275.0, 150.0, 38.0 ],
-									"text" : "multislder tab # (touchosc only)"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"bubble" : 1,
-									"bubblepoint" : 0.1,
-									"bubbleside" : 2,
-									"fontname" : "Arial",
-									"fontsize" : 12.0,
-									"id" : "obj-10",
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 85.0, 245.0, 79.0, 39.0 ],
-									"text" : "multislider #"
+									"patching_rect" : [ 324.0, 266.0, 151.0, 20.0 ],
+									"text" : "udpreceive 10000 CNMAT"
 								}
 
 							}
@@ -575,8 +505,8 @@
 									"numinlets" : 1,
 									"numoutlets" : 3,
 									"outlettype" : [ "", "", "" ],
-									"patching_rect" : [ 6.0, 284.0, 110.0, 20.0 ],
-									"text" : "osc_multislider 1 1"
+									"patching_rect" : [ 6.0, 284.0, 212.0, 20.0 ],
+									"text" : "osc_multislider @multislider 1 @tab 1"
 								}
 
 							}
@@ -584,28 +514,14 @@
 								"box" : 								{
 									"fontname" : "Arial",
 									"fontsize" : 12.0,
-									"id" : "obj-1",
-									"linecount" : 4,
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 6.0, 164.5, 190.0, 62.0 ],
-									"text" : "osc_multislder takes two arguments: multislider number and tab number. Tab number is exclusively for touchosc. "
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"fontname" : "Arial",
-									"fontsize" : 12.0,
-									"frgb" : [ 0.485712, 0.485712, 0.485712, 1.0 ],
+									"frgb" : 0.0,
 									"id" : "obj-5",
-									"linecount" : 3,
+									"linecount" : 8,
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 6.0, 88.0, 551.0, 48.0 ],
-									"text" : "osc_multislider interprets osc messages from the iphone using  touchosc, oscemote, iosc, mrmr, as well as a particular processing sketch, provided in the odot_iphone folder. By default the port is set to 10000.",
+									"patching_rect" : [ 6.0, 88.0, 551.0, 114.0 ],
+									"text" : "osc_multislider interprets osc messages from the iphone using  touchosc, oscemote, iosc, mrmr, as well as a particular processing sketch, provided in the odot_iphone folder. By default the port is set to 10000, the port number can be changed by providing a different port number to the inlet of the osc_multislider object. osc_multislider takes two arguments multislder number and tab number (tab number is exclusively for touchosc), whcih are the numbers following @multisider and @tab. The first output of osc_multislider is the data sent from the osc app. The second outlet shows what arguments must be provided in the instantiation of the osc_multislider object to get data output. The third output displays any error messages that may be causing bad data or no data to output. ",
 									"textcolor" : [ 0.485712, 0.485712, 0.485712, 1.0 ]
 								}
 
@@ -614,6 +530,7 @@
 								"box" : 								{
 									"fontname" : "Arial",
 									"fontsize" : 12.0,
+									"frgb" : 0.0,
 									"id" : "obj-2",
 									"maxclass" : "comment",
 									"numinlets" : 1,
@@ -627,11 +544,12 @@
 								"box" : 								{
 									"fontname" : "Arial",
 									"fontsize" : 48.0,
+									"frgb" : 0.0,
 									"id" : "obj-3",
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 6.0, 6.0, 551.0, 62.0 ],
+									"patching_rect" : [ 6.0, 6.0, 551.0, 60.0 ],
 									"text" : "osc_multislider"
 								}
 
@@ -673,40 +591,21 @@
 								}
 
 							}
- ],
-						"dependency_cache" : [ 							{
-								"name" : "osc_multislider.maxpat",
-								"bootpath" : "/Users/samgmansfield/Documents/CNMAT/cnmat/trunk/max/externals/odot/trunk/testing/odot_iphone/osc_controls",
-								"type" : "JSON",
-								"implicit" : 1
-							}
-, 							{
-								"name" : "o.route.mxo",
-								"type" : "iLaX"
-							}
-, 							{
-								"name" : "o.message.mxo",
-								"type" : "iLaX"
-							}
-, 							{
-								"name" : "o.atomize.mxo",
-								"type" : "iLaX"
-							}
  ]
 					}
 ,
 					"patching_rect" : [ 16.0, 18.0, 49.0, 20.0 ],
 					"saved_object_attributes" : 					{
-						"globalpatchername" : "",
-						"fontface" : 0,
-						"fontsize" : 12.0,
 						"default_fontface" : 0,
-						"digest" : "",
 						"default_fontname" : "Arial",
-						"fontname" : "Arial",
-						"tags" : "",
 						"default_fontsize" : 12.0,
-						"description" : ""
+						"description" : "",
+						"digest" : "",
+						"fontface" : 0,
+						"fontname" : "Arial",
+						"fontsize" : 12.0,
+						"globalpatchername" : "",
+						"tags" : ""
 					}
 ,
 					"text" : "p basic"
@@ -717,8 +616,8 @@
 		"lines" : [  ],
 		"dependency_cache" : [ 			{
 				"name" : "osc_multislider.maxpat",
-				"bootpath" : "/Users/samgmansfield/Documents/CNMAT/cnmat/trunk/max/externals/odot/trunk/testing/odot_iphone/osc_controls",
-				"patcherrelativepath" : "",
+				"bootpath" : "/Users/samgmansfield/Documents/CNMAT/CNMAT-odot/testing/odot_iphone/osc_controls_recieve",
+				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
