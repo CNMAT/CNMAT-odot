@@ -48,6 +48,7 @@
 #include "osc_mem.h"
 #include "osc_bundle_iterator_s.h"
 #include "o.h"
+#include "osc_gconfig.h"
 #include "omax_util.h"
 #include "omax_doc.h"
 #include "omax_dict.h"
@@ -199,7 +200,7 @@ void *oO_new(t_symbol *msg, short argc, t_atom *argv)
 		x->outlet = outlet_new((t_object *)x, "FullPacket");
 		critical_new(&(x->lock));
 	}
-	return(x);
+	return x;
 }
 
 int main(void)
