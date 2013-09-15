@@ -99,6 +99,11 @@
 			<key>orderHint</key>
 			<integer>14</integer>
 		</dict>
+		<key>o.io.bluetoothle.hrm.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>37</integer>
+		</dict>
 		<key>o.io.leap.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -373,6 +378,11 @@
 			<true/>
 		</dict>
 		<key>52B6550317D68D7C004FD84E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>52B6551917E3B971004FD84E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
