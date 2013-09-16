@@ -1,4 +1,4 @@
-v#define OMAX_DOC_NAME "o.io.bluetoothle.hrm"
+#define OMAX_DOC_NAME "o.io.bluetoothle.hrm"
 #define OMAX_DOC_SHORT_DESC "Outputs OSC data from a Bluetooth LE heart rate monitor."
 #define OMAX_DOC_LONG_DESC "Reports OSC data from a Bluetooth LE heart rate monitor."
 #define OMAX_DOC_INLETS_DESC (char *[]){""}
@@ -55,7 +55,7 @@ void ohrm_outputOSCBundle(t_ohrm *x, t_symbol *msg, int argc, t_atom *argv);
 - (void) startScan;
 - (void) stopScan;
 - (BOOL) isLECapableHardware;
-- (uint16_t) computeHeartRate:(NSData *)data peripheral:(CBPeripheral *)p OSCBundle:(t_osc_bndl_u *)b;
+- (void) computeHeartRate:(NSData *)data peripheral:(CBPeripheral *)p OSCBundle:(t_osc_bndl_u *)b;
 - (t_symbol *) makeOSCAddressFromPeripheral:(CBPeripheral *)p withPrefix:(const char *)prefix withPostfix:(const char *)postfix;
 - (void)ohrm_init:(struct _ohrm *)x;
 
@@ -390,12 +390,12 @@ void ohrm_outputOSCBundle(t_ohrm *x, t_symbol *msg, int argc, t_atom *argv);
 		}
 	}else  if([characteristic.UUID isEqual:[CBUUID UUIDWithString:@"2A38"]]){
 		// Value for body sensor location received
-		t_osc_msg_u *msg_data = osc_message_u_alloc();
-		osc_bundle_u_addMsg(b, msg_data);
-		char data_address[128];
 		NSData * updatedValue = characteristic.value;        
 		uint8_t* dataPointer = (uint8_t*)[updatedValue bytes];
 		if(dataPointer){
+			t_osc_msg_u *msg_data = osc_message_u_alloc();
+			osc_bundle_u_addMsg(b, msg_data);
+			char data_address[128];
 			uint8_t location = dataPointer[0];
 			char *locationString;
 			switch(location)
@@ -427,6 +427,8 @@ void ohrm_outputOSCBundle(t_ohrm *x, t_symbol *msg, int argc, t_atom *argv);
 				}
 			sprintf(data_address, "/%s/location", name);
 			osc_message_u_appendString(msg_data, locationString);
+			ohrm_replaceSpacesWithSlashes(sizeof(data_address), data_address);
+			osc_message_u_setAddress(msg_data, data_address);
 		}
 	}else if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:CBUUIDDeviceNameString]]){
 		// Value for device Name received
@@ -435,6 +437,8 @@ void ohrm_outputOSCBundle(t_ohrm *x, t_symbol *msg, int argc, t_atom *argv);
 		char data_address[128];
 		sprintf(data_address, "/%s/devicename", name);
 		osc_message_u_appendString(msg_data, [characteristic.value bytes]);
+		ohrm_replaceSpacesWithSlashes(sizeof(data_address), data_address);
+		osc_message_u_setAddress(msg_data, data_address);
 	}else if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:@"2A29"]]){
 		// Value for manufacturer name received
 		t_osc_msg_u *msg_data = osc_message_u_alloc();
@@ -442,10 +446,10 @@ void ohrm_outputOSCBundle(t_ohrm *x, t_symbol *msg, int argc, t_atom *argv);
 		char data_address[128];
 		sprintf(data_address, "/%s/manufacturer", name);
 		osc_message_u_appendString(msg_data, [characteristic.value bytes]);
+		ohrm_replaceSpacesWithSlashes(sizeof(data_address), data_address);
+		osc_message_u_setAddress(msg_data, data_address);
 	}else{
 	}
-	ohrm_replaceSpacesWithSlashes(sizeof(data_address), data_address);
-	osc_message_u_setAddress(msg_data, data_address);
 	long len = 0;
 	char *buf = NULL;
 	osc_bundle_u_serialize(b, &len, &buf);
@@ -492,7 +496,7 @@ void ohrm_assist(t_ohrm *x, void *b, long io, long num, char *buf)
 	omax_doc_assist(io, num, buf);
 }
 
-void ohrm_doc(t_ochange *x)
+void ohrm_doc(t_ohrm *x)
 {
 	omax_doc_outletDoc(x->outlet);
 }
