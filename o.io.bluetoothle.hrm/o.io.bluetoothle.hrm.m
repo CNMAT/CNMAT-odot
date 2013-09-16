@@ -1,4 +1,4 @@
-#define OMAX_DOC_NAME "o.io.bluetoothle.hrm"
+v#define OMAX_DOC_NAME "o.io.bluetoothle.hrm"
 #define OMAX_DOC_SHORT_DESC "Outputs OSC data from a Bluetooth LE heart rate monitor."
 #define OMAX_DOC_LONG_DESC "Reports OSC data from a Bluetooth LE heart rate monitor."
 #define OMAX_DOC_INLETS_DESC (char *[]){""}
@@ -33,33 +33,10 @@ void ohrm_replaceSpacesWithSlashes(long len, char *buf)
 	}
 }
 
-//@interface HeartRateMonitorAppDelegate : NSObject <NSApplicationDelegate, CBCentralManagerDelegate, CBPeripheralDelegate> 
 @interface HeartRateMonitor : NSObject <CBCentralManagerDelegate, CBPeripheralDelegate> 
 {
-	//NSWindow *window;
-	//NSWindow *scanSheet;
-	//NSView *heartView;
-	//NSTimer *pulseTimer;
-	//NSArrayController *arrayController;
-    
 	CBCentralManager *manager;
-	//CBPeripheral *peripheral;
-    
-	//NSMutableArray *heartRateMonitors;
-    
-	//NSString *manufacturer;
-    
-	//uint16_t heartRate;
-    
-	//IBOutlet NSButton* connectButton;
-	//BOOL autoConnect;
-	//NSString *connected;
-
 	struct _ohrm *maxobj;
-    
-	// Progress Indicator
-	//IBOutlet NSButton * indicatorButton;
-	//IBOutlet NSProgressIndicator *progressIndicator;    
 }
 
 // max object
@@ -73,215 +50,117 @@ typedef struct _ohrm
 // max object forward decls
 void ohrm_outputOSCBundle(t_ohrm *x, t_symbol *msg, int argc, t_atom *argv);
 
-//@property (assign) IBOutlet NSWindow *window;
-//@property (assign) IBOutlet NSWindow *scanSheet;
-//@property (assign) IBOutlet NSView *heartView;
-//@property (assign) IBOutlet NSArrayController *arrayController;
-//@property (assign) uint16_t heartRate;
-//@property (retain) NSTimer *pulseTimer;
-//@property (retain) NSMutableArray *heartRateMonitors;
-//@property (copy) NSString *manufacturer;
-//@property (copy) NSString *connected;
 @property (retain) CBCentralManager *manager;
-
-//- (IBAction) openScanSheet:(id) sender;
-//- (IBAction) closeScanSheet:(id)sender;
-//- (IBAction) cancelScanSheet:(id)sender;
-//- (IBAction) connectButtonPressed:(id)sender;
 
 - (void) startScan;
 - (void) stopScan;
 - (BOOL) isLECapableHardware;
-
-//- (void) pulse;
-- (uint16_t) computeHeartRate:(NSData *)data;
+- (uint16_t) computeHeartRate:(NSData *)data peripheral:(CBPeripheral *)p OSCBundle:(t_osc_bndl_u *)b;
 - (t_symbol *) makeOSCAddressFromPeripheral:(CBPeripheral *)p withPrefix:(const char *)prefix withPostfix:(const char *)postfix;
-
 - (void)ohrm_init:(struct _ohrm *)x;
 
 
 @end
 
 @implementation HeartRateMonitor
-
-//@synthesize window;
-//@synthesize heartRate;
-//@synthesize heartView;
-//@synthesize pulseTimer;
-//@synthesize scanSheet;
-//@synthesize heartRateMonitors;
-//@synthesize arrayController;
-//@synthesize manufacturer;
-//@synthesize connected;
 @synthesize manager;
-
-#define PULSESCALE 1.2
-#define PULSEDURATION 0.2
-
-// relevant stuff moved to Max's new instance routine
-/*
-  - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
-  {
-  self.heartRate = 0;
-  // autoConnect = TRUE; uncomment this line if you want to automatically connect to previosly known peripheral 
-  self.heartRateMonitors = [NSMutableArray array];
-       
-  [NSAnimationContext beginGrouping];
-  [[NSAnimationContext currentContext] setDuration:0.];
-  [self.heartView layer].position = CGPointMake( [[self.heartView layer] frame].size.width / 2, [[self.heartView layer] frame].size.height / 2 );
-  [self.heartView layer].anchorPoint = CGPointMake(0.5, 0.5);
-  [NSAnimationContext endGrouping];
-
-  manager = [[CBCentralManager alloc] initWithDelegate:self queue:nil];
-  if( autoConnect )
-  {
-  [self startScan];
-  }
-  }
-*/
 
 - (void) dealloc
 {
 	[self stopScan];
-
-	//if(peripheral){
-	//[manager cancelPeripheralConnection:peripheral];        
-	//}    
-	//[peripheral setDelegate:nil];
-	//[peripheral release];
-    
-	//[heartRateMonitors release];
-
 	[manager release];
-    
 	[super dealloc];
 }
 
-/* 
-   Disconnect peripheral when application terminate 
-   - (void) applicationWillTerminate:(NSNotification *)notification
-   {
-   if(peripheral)
-   {
-   [manager cancelPeripheralConnection:peripheral];
-   }
-   }
-*/
-
-#pragma mark - Scan sheet methods
-
-/* 
-   Open scan sheet to discover heart rate peripherals if it is LE capable hardware 
-   - (IBAction)openScanSheet:(id)sender 
-   {
-   if( [self isLECapableHardware] )
-   {
-   autoConnect = FALSE;
-   [arrayController removeObjects:heartRateMonitors];
-   [NSApp beginSheet:self.scanSheet modalForWindow:self.window modalDelegate:self didEndSelector:@selector(sheetDidEnd:returnCode:contextInfo:) contextInfo:nil];
-   [self startScan];
-   }
-   }
-*/
-
-/*
-  Close scan sheet once device is selected
-  - (IBAction)closeScanSheet:(id)sender 
-  {
-  [NSApp endSheet:self.scanSheet returnCode:NSAlertDefaultReturn];
-  [self.scanSheet orderOut:self];    
-  }
-*/
-
-/*
-  Close scan sheet without choosing any device
-  - (IBAction)cancelScanSheet:(id)sender 
-  {
-  [NSApp endSheet:self.scanSheet returnCode:NSAlertAlternateReturn];
-  [self.scanSheet orderOut:self];
-  }
-*/
-
-/* 
-   This method is called when Scan sheet is closed. Initiate connection to selected heart rate peripheral
-   - (void)sheetDidEnd:(NSWindow *)sheet returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo 
-   {
-   [self stopScan];
-   if( returnCode == NSAlertDefaultReturn )
-   {
-   NSIndexSet *indexes = [self.arrayController selectionIndexes];
-   if ([indexes count] != 0) 
-   {
-   NSUInteger anIndex = [indexes firstIndex];
-   peripheral = [self.heartRateMonitors objectAtIndex:anIndex];
-   [peripheral retain];
-   [indicatorButton setHidden:FALSE];
-   [progressIndicator setHidden:FALSE];
-   [progressIndicator startAnimation:self];
-   [connectButton setTitle:@"Cancel"];
-   [manager connectPeripheral:peripheral options:nil];
-   }
-   }
-   }
-*/
-
-#pragma mark - Connect Button
-
-/*
-  This method is called when connect button pressed and it takes appropriate actions depending on device connection state
-  - (IBAction)connectButtonPressed:(id)sender
-  {
-  if(peripheral && ([peripheral isConnected]))
-  { 
-  //Disconnect if it's already connected
-  [manager cancelPeripheralConnection:peripheral]; 
-  }
-  else if (peripheral)
-  {
-  //Device is not connected, cancel pendig connection 
-  [indicatorButton setHidden:TRUE];
-  [progressIndicator setHidden:TRUE];
-  [progressIndicator stopAnimation:self];
-  [connectButton setTitle:@"Connect"];
-  [manager cancelPeripheralConnection:peripheral];
-  [self openScanSheet:nil];
-  }
-  else
-  {   //No outstanding connection, open scan sheet 
-  [self openScanSheet:nil];
-  }
-  }
-*/
-
 #pragma mark - Heart Rate Data
 
-/* 
-   Update UI with heart rate data received from device
-*/
-- (uint16_t) computeHeartRate:(NSData *)data 
+- (void) computeHeartRate:(NSData *)data peripheral:(CBPeripheral *)p OSCBundle:(t_osc_bndl_u *)b
 {
 	const uint8_t *reportData = [data bytes];
-	uint16_t bpm = 0;
+	uint8_t *ptr = reportData + 1;
+
+	// would be great to put this in the bundle as a blob!
+	/*
+	for(int i = 0; i < [data length]; i++){
+		printf("0x%x ", reportData[i]);
+	}
+	printf("\n");
+	*/
+
+	//uint16_t bpm = 0;
     
-	if ((reportData[0] & 0x01) == 0) 
+	t_osc_msg_u *bpm = osc_message_u_alloc();
+	osc_bundle_u_addMsg(b, bpm);
+	osc_message_u_setAddress(bpm, [self makeOSCAddressFromPeripheral:p withPrefix:NULL withPostfix:"/heartrate"]->s_name);
+	// heart rate can be reported as either an 8-bit or 16-bit unsigned int
+	if((reportData[0] & 0x01) == 0){
+		// uint8 bpm
+		osc_message_u_appendInt32(bpm, *ptr);
+		ptr++;
+	}else{
+		// uint16 bpm
+		osc_message_u_appendInt32(bpm, CFSwapInt16LittleToHost(*(uint16_t *)ptr));
+		ptr += 2;
+	}
+
+	t_osc_msg_u *scsupport = osc_message_u_alloc();
+	osc_bundle_u_addMsg(b, scsupport);
+	osc_message_u_setAddress(scsupport, [self makeOSCAddressFromPeripheral:p withPrefix:NULL withPostfix:"/sensorcontact/support"]->s_name);
+	switch((reportData[0] >> 1) & 0x03){
+	case 0: // not supported
+	case 1: // not supported
+		osc_message_u_appendFalse(scsupport);
+		break;
+	case 2: // supported but not connected
+		osc_message_u_appendTrue(scsupport);
 		{
-			/* uint8 bpm */
-			bpm = reportData[1];
-		} 
-	else 
-		{
-			/* uint16 bpm */
-			bpm = CFSwapInt16LittleToHost(*(uint16_t *)(&reportData[1]));
+			t_osc_msg_u *scstatus = osc_message_u_alloc();
+			osc_bundle_u_addMsg(b, scstatus);
+			osc_message_u_setAddress(scstatus, [self makeOSCAddressFromPeripheral:p withPrefix:NULL withPostfix:"/sensorcontact/status"]->s_name);
+			osc_message_u_appendFalse(scstatus);
 		}
-    
-	//uint16_t oldBpm = self.heartRate;
-	//self.heartRate = bpm;
-	return bpm;
-	//if (oldBpm == 0) 
-	//{
-	//[self pulse];
-	//self.pulseTimer = [NSTimer scheduledTimerWithTimeInterval:(60. / heartRate) target:self selector:@selector(pulse) userInfo:nil repeats:NO];
-	//}
+		break;
+	case 3: // supported and connected
+		osc_message_u_appendTrue(scsupport);
+		{
+			t_osc_msg_u *scstatus = osc_message_u_alloc();
+			osc_bundle_u_addMsg(b, scstatus);
+			osc_message_u_setAddress(scstatus, [self makeOSCAddressFromPeripheral:p withPrefix:NULL withPostfix:"/sensorcontact/status"]->s_name);
+			osc_message_u_appendTrue(scstatus);
+		}
+		break;
+	}
+
+	t_osc_msg_u *eesupport = osc_message_u_alloc();
+	osc_bundle_u_addMsg(b, eesupport);
+	osc_message_u_setAddress(eesupport, [self makeOSCAddressFromPeripheral:p withPrefix:NULL withPostfix:"/energyexpended/support"]->s_name);
+	if(!(reportData[0] & 0x08)){
+		osc_message_u_appendFalse(eesupport);
+	}else{
+		osc_message_u_appendTrue(eesupport);
+		t_osc_msg_u *eestatus = osc_message_u_alloc();
+		osc_bundle_u_addMsg(b, eestatus);
+		osc_message_u_setAddress(eestatus, [self makeOSCAddressFromPeripheral:p withPrefix:NULL withPostfix:"/energyexpended/kJoules"]->s_name);
+		osc_message_u_appendInt32(eestatus, CFSwapInt16LittleToHost(*(uint16_t *)ptr));
+		ptr += 2;
+	}
+
+	t_osc_msg_u *rrsupport = osc_message_u_alloc();
+	osc_bundle_u_addMsg(b, rrsupport);
+	osc_message_u_setAddress(rrsupport, [self makeOSCAddressFromPeripheral:p withPrefix:NULL withPostfix:"/rrinterval/support"]->s_name);
+	if(!(reportData[0] & 0x10)){
+		osc_message_u_appendFalse(rrsupport);
+	}else{
+		osc_message_u_appendTrue(rrsupport);
+		t_osc_msg_u *rrstatus = osc_message_u_alloc();
+		osc_bundle_u_addMsg(b, rrstatus);
+		osc_message_u_setAddress(rrstatus, [self makeOSCAddressFromPeripheral:p withPrefix:NULL withPostfix:"/rrinterval/seconds"]->s_name);
+		while(ptr - reportData < [data length]){
+			double rr = (double)CFSwapInt16LittleToHost(*(uint16_t *)ptr);
+			osc_message_u_appendDouble(rrstatus, rr / 1024.);
+			ptr += 2;
+		}
+	}
 }
 
 - (t_symbol *) makeOSCAddressFromPeripheral:(CBPeripheral *)p withPrefix:(const char *)prefix withPostfix:(const char *)postfix
@@ -316,31 +195,34 @@ void ohrm_outputOSCBundle(t_ohrm *x, t_symbol *msg, int argc, t_atom *argv);
 	return m;
 }
 
-/*
-  Update pulse UI
-  - (void) pulse 
-  {
-  CABasicAnimation *pulseAnimation = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
-    
-  pulseAnimation.toValue = [NSNumber numberWithFloat:PULSESCALE];
-  pulseAnimation.fromValue = [NSNumber numberWithFloat:1.0];
-    
-  pulseAnimation.duration = PULSEDURATION;
-  pulseAnimation.repeatCount = 1;
-  pulseAnimation.autoreverses = YES;
-  pulseAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
-    
-  [[heartView layer] addAnimation:pulseAnimation forKey:@"scale"];
-    
-  self.pulseTimer = [NSTimer scheduledTimerWithTimeInterval:(60. / heartRate) target:self selector:@selector(pulse) userInfo:nil repeats:NO];
-  }
-*/
+- (void) sendOSCStatusBundle:(CBPeripheral *)p status:(const char *)status
+{
+	t_osc_bndl_u *b = osc_bundle_u_alloc();
+	t_osc_msg_u *m = osc_message_u_alloc();
+	t_symbol *s = [self makeOSCAddressFromPeripheral:p withPrefix:NULL withPostfix:"/status"];
+	osc_message_u_setAddress(m, s->s_name);
+	osc_message_u_appendString(m, "disconnected");
+	osc_bundle_u_addMsg(b, m);
+	t_osc_msg_u *mself = osc_message_u_alloc();
+	osc_message_u_setAddress(mself, "/self");
+	s = [self makeOSCAddressFromPeripheral:p withPrefix:NULL withPostfix:NULL];
+	osc_message_u_appendString(mself, s->s_name);
+	osc_bundle_u_addMsg(b, mself);
+	long len = 0;
+	char *buf = NULL;
+	osc_bundle_u_serialize(b, &len, &buf);
+	if(buf){
+		t_atom a[2];
+		atom_setlong(a, len);
+		atom_setlong(a + 1, (long)buf);
+		schedule_delay(maxobj, (method)ohrm_outputOSCBundle, 0, ps_FullPacket, 2, a);
+		osc_bundle_u_free(b);
+		// don't free buf here!!!
+	}
+}
 
 #pragma mark - Start/Stop Scan methods
 
-/*
-  Uses CBCentralManager to check whether the current platform/hardware supports Bluetooth LE. An alert is raised if Bluetooth LE is not enabled or is not supported.
-*/
 - (BOOL) isLECapableHardware
 {
 	NSString * state = nil;
@@ -365,271 +247,152 @@ void ohrm_outputOSCBundle(t_ohrm *x, t_symbol *msg, int argc, t_atom *argv);
 		}
     
 	NSLog(@"Central manager state: %@", state);
-    
-	//[self cancelScanSheet:nil];
-    
-	//NSAlert *alert = [[[NSAlert alloc] init] autorelease];
-	//[alert setMessageText:state];
-	//[alert addButtonWithTitle:@"OK"];
-	//[alert setIcon:[[[NSImage alloc] initWithContentsOfFile:@"AppIcon"] autorelease]];
-	//[alert beginSheetModalForWindow:[self window] modalDelegate:self didEndSelector:nil contextInfo:nil];
 	return FALSE;
 }
 
-/*
-  Request CBCentralManager to scan for heart rate peripherals using service UUID 0x180D
-*/
 - (void) startScan 
 {
 	[manager scanForPeripheralsWithServices:[NSArray arrayWithObject:[CBUUID UUIDWithString:@"180D"]] options:nil];
 }
 
-/*
-  Request CBCentralManager to stop scanning for heart rate peripherals
-*/
 - (void) stopScan 
 {
 	[manager stopScan];
 }
 
 #pragma mark - CBCentralManager delegate methods
-/*
-  Invoked whenever the central manager's state is updated.
-*/
+
+// Invoked whenever the central manager's state is updated.
 - (void) centralManagerDidUpdateState:(CBCentralManager *)central 
 {
 	[self isLECapableHardware];
 }
     
-/*
-  Invoked when the central discovers heart rate peripheral while scanning.
-*/
+// Invoked when the central discovers heart rate peripheral while scanning.
 - (void) centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)aPeripheral advertisementData:(NSDictionary *)advertisementData RSSI:(NSNumber *)RSSI 
 {    
 	[aPeripheral retain];
 	[manager connectPeripheral:aPeripheral options: nil];
-
-	//name Polar H7 0055B1, UUID 8E79BD84-88D5-41F4-B8E0-5704A5569027
-	//NSMutableArray *peripherals = [self mutableArrayValueForKey:@"heartRateMonitors"];
-	//if( ![self.heartRateMonitors containsObject:aPeripheral] )
-        //[peripherals addObject:aPeripheral];
-
-	//for(int i = 0; i < [peripherals count]; i++){
-	//CBPeripheral *p = [peripherals objectAtIndex:i];
-	//NSString *n = p.name;
-	//post("name %s\n", [n UTF8String]);
-	//if(![p.name compare:@"Polar H7 0055B1"]){
-	//post("yay!");
-	//[p retain];
-	//[manager connectPeripheral:p options:nil];
-	//}
-	//}
-    
-	/* Retreive already known devices */
-	//if(autoConnect)
-	//{
-
-
-        //[manager retrievePeripherals:[NSArray arrayWithObject:(id)aPeripheral.UUID]];
-
-
-	//}
 	[self startScan];
 }
 
-/*
-  Invoked when the central manager retrieves the list of known peripherals.
-  Automatically connect to first known peripheral
-*/
+// Invoked when the central manager retrieves the list of known peripherals.
+// Automatically connect to first known peripheral
 // this method should no longer be called...
 - (void)centralManager:(CBCentralManager *)central didRetrievePeripherals:(NSArray *)peripherals
 {
-	//NSLog(@"Retrieved peripheral: %lu - %@", [peripherals count], peripherals);
-    
-	//[self stopScan];
-    
-	/* If there are any known devices, automatically connect to it.*/
-	/*
-	if([peripherals count] >=1)
-		{
-			//[indicatorButton setHidden:FALSE];
-			//[progressIndicator setHidden:FALSE];
-			//[progressIndicator startAnimation:self];
-			peripheral = [peripherals objectAtIndex:0];
-			[peripheral retain];
-			//[connectButton setTitle:@"Cancel"];
-			[manager connectPeripheral:peripheral options:[NSDictionary dictionaryWithObject:[NSNumber numberWithBool:YES] forKey:CBConnectPeripheralOptionNotifyOnDisconnectionKey]];
-		}
-	*/
+	NSLog(@"%s\n", __func__);
 }
 
-/*
-  Invoked whenever a connection is succesfully created with the peripheral. 
-  Discover available services on the peripheral
-*/
+// Invoked whenever a connection is succesfully created with the peripheral. 
+// Discover available services on the peripheral
 - (void) centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)aPeripheral 
 {    
 	[aPeripheral setDelegate:self];
 	[aPeripheral discoverServices:nil];
-	
-	//self.connected = @"Connected";
-	//[connectButton setTitle:@"Disconnect"];
-	//[indicatorButton setHidden:TRUE];
-	//[progressIndicator setHidden:TRUE];
-	//[progressIndicator stopAnimation:self];
 }
 
-/*
-  Invoked whenever an existing connection with the peripheral is torn down. 
-  Reset local variables
-*/
+// Invoked whenever an existing connection with the peripheral is torn down. 
+// Reset local variables
 - (void)centralManager:(CBCentralManager *)central didDisconnectPeripheral:(CBPeripheral *)aPeripheral error:(NSError *)error
 {
-	//self.connected = @"Not connected";
-	//[connectButton setTitle:@"Connect"];
-	//self.manufacturer = @"";
-	//self.heartRate = 0;
+	[self sendOSCStatusBundle:aPeripheral status:"disconnected"];
 	[aPeripheral setDelegate:nil];
 	[aPeripheral release];
-	//if( peripheral )
-	//{
-			//[peripheral setDelegate:nil];
-			//[peripheral release];
-			//peripheral = nil;
-	//}
 }
 
-/*
-  Invoked whenever the central manager fails to create a connection with the peripheral.
-*/
+// Invoked whenever the central manager fails to create a connection with the peripheral.
 - (void)centralManager:(CBCentralManager *)central didFailToConnectPeripheral:(CBPeripheral *)aPeripheral error:(NSError *)error
 {
-	//NSLog(@"Fail to connect to peripheral: %@ with error = %@", aPeripheral, [error localizedDescription]);
-	//[connectButton setTitle:@"Connect"]; 
 	[aPeripheral setDelegate:nil];
 	[aPeripheral release];
-	//if( peripheral )
-	//{
-			//[peripheral setDelegate:nil];
-			//[peripheral release];
-			//peripheral = nil;
-	//}
 }
 
 #pragma mark - CBPeripheral delegate methods
-/*
-  Invoked upon completion of a -[discoverServices:] request.
-  Discover available characteristics on interested services
-*/
+// Invoked upon completion of a -[discoverServices:] request.
+// Discover available characteristics on interested services
 - (void) peripheral:(CBPeripheral *)aPeripheral didDiscoverServices:(NSError *)error 
 {
-	for (CBService *aService in aPeripheral.services) 
-		{
-			//NSLog(@"Service found with UUID: %@", aService.UUID);
-        
-			/* Heart Rate Service */
-			if ([aService.UUID isEqual:[CBUUID UUIDWithString:@"180D"]]) 
-				{
-					[aPeripheral discoverCharacteristics:nil forService:aService];
-				}
-        
-			/* Device Information Service */
-			if ([aService.UUID isEqual:[CBUUID UUIDWithString:@"180A"]]) 
-				{
-					[aPeripheral discoverCharacteristics:nil forService:aService];
-				}
-        
-			/* GAP (Generic Access Profile) for Device Name */
-			if ( [aService.UUID isEqual:[CBUUID UUIDWithString:CBUUIDGenericAccessProfileString]] )
-				{
-					[aPeripheral discoverCharacteristics:nil forService:aService];
-				}
+	for(CBService *aService in aPeripheral.services){
+		// Heart Rate Service
+		if([aService.UUID isEqual:[CBUUID UUIDWithString:@"180D"]]){
+			[aPeripheral discoverCharacteristics:nil forService:aService];
 		}
+        
+		// Device Information Service
+		if([aService.UUID isEqual:[CBUUID UUIDWithString:@"180A"]]){
+			[aPeripheral discoverCharacteristics:nil forService:aService];
+		}
+        
+		// GAP (Generic Access Profile) for Device Name
+		if([aService.UUID isEqual:[CBUUID UUIDWithString:CBUUIDGenericAccessProfileString]]){
+			[aPeripheral discoverCharacteristics:nil forService:aService];
+		}
+	}
 }
 
-/*
-  Invoked upon completion of a -[discoverCharacteristics:forService:] request.
-  Perform appropriate operations on interested characteristics
-*/
+// Invoked upon completion of a -[discoverCharacteristics:forService:] request.
+// Perform appropriate operations on interested characteristics
 - (void) peripheral:(CBPeripheral *)aPeripheral didDiscoverCharacteristicsForService:(CBService *)service error:(NSError *)error 
 {    
-	if ([service.UUID isEqual:[CBUUID UUIDWithString:@"180D"]]) 
-		{
-			for (CBCharacteristic *aChar in service.characteristics) 
-				{
-					/* Set notification on heart rate measurement */
-					if ([aChar.UUID isEqual:[CBUUID UUIDWithString:@"2A37"]]) 
-						{
-							[aPeripheral setNotifyValue:YES forCharacteristic:aChar];
-							//NSLog(@"Found a Heart Rate Measurement Characteristic");
-						}
-					/* Read body sensor location */
-					if ([aChar.UUID isEqual:[CBUUID UUIDWithString:@"2A38"]]) 
-						{
-							[aPeripheral readValueForCharacteristic:aChar];
-							//NSLog(@"Found a Body Sensor Location Characteristic");
-						} 
-            
-					/* Write heart rate control point */
-					if ([aChar.UUID isEqual:[CBUUID UUIDWithString:@"2A39"]])
-						{
-							uint8_t val = 1;
-							NSData* valData = [NSData dataWithBytes:(void*)&val length:sizeof(val)];
-							[aPeripheral writeValue:valData forCharacteristic:aChar type:CBCharacteristicWriteWithResponse];
-						}
-				}
+	if([service.UUID isEqual:[CBUUID UUIDWithString:@"180D"]]){
+		for(CBCharacteristic *aChar in service.characteristics){
+			// Set notification on heart rate measurement
+			if([aChar.UUID isEqual:[CBUUID UUIDWithString:@"2A37"]]){
+				// heart rate monitor characteristic
+				[aPeripheral setNotifyValue:YES forCharacteristic:aChar];
+			}
+			// Read body sensor location
+			if([aChar.UUID isEqual:[CBUUID UUIDWithString:@"2A38"]]){
+				// body sensor location characteristic
+				[aPeripheral readValueForCharacteristic:aChar];
+			} 
+			// Write heart rate control point
+			if([aChar.UUID isEqual:[CBUUID UUIDWithString:@"2A39"]]){
+				uint8_t val = 1;
+				NSData* valData = [NSData dataWithBytes:(void*)&val length:sizeof(val)];
+				[aPeripheral writeValue:valData forCharacteristic:aChar type:CBCharacteristicWriteWithResponse];
+			}
 		}
-    
-	if ( [service.UUID isEqual:[CBUUID UUIDWithString:CBUUIDGenericAccessProfileString]] )
-		{
-			for (CBCharacteristic *aChar in service.characteristics) 
-				{
-					/* Read device name */
-					if ([aChar.UUID isEqual:[CBUUID UUIDWithString:CBUUIDDeviceNameString]]) 
-						{
-							[aPeripheral readValueForCharacteristic:aChar];
-							//NSLog(@"Found a Device Name Characteristic");
-						}
-				}
+	}
+	if([service.UUID isEqual:[CBUUID UUIDWithString:CBUUIDGenericAccessProfileString]]){
+		for(CBCharacteristic *aChar in service.characteristics){
+			// Read device name
+			if([aChar.UUID isEqual:[CBUUID UUIDWithString:CBUUIDDeviceNameString]]){
+				// device name characteristic
+				[aPeripheral readValueForCharacteristic:aChar];
+			}
 		}
-    
-	if ([service.UUID isEqual:[CBUUID UUIDWithString:@"180A"]]) 
-		{
-			for (CBCharacteristic *aChar in service.characteristics) 
-				{
-					/* Read manufacturer name */
-					if ([aChar.UUID isEqual:[CBUUID UUIDWithString:@"2A29"]]) 
-						{
-							[aPeripheral readValueForCharacteristic:aChar];
-							//NSLog(@"Found a Device Manufacturer Name Characteristic");
-						}
-				}
+	}
+	if([service.UUID isEqual:[CBUUID UUIDWithString:@"180A"]]){
+		for(CBCharacteristic *aChar in service.characteristics){
+			// Read manufacturer name
+			if([aChar.UUID isEqual:[CBUUID UUIDWithString:@"2A29"]]){
+				// device manufacturer name characteristic
+				[aPeripheral readValueForCharacteristic:aChar];
+			}
 		}
+	}
 }
 
-/*
-  Invoked upon completion of a -[readValueForCharacteristic:] request or on the reception of a notification/indication.
-*/
+// Invoked upon completion of a -[readValueForCharacteristic:] request or on the reception of a notification/indication.
 - (void) peripheral:(CBPeripheral *)aPeripheral didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error 
 {
 	t_osc_bndl_u *b = osc_bundle_u_alloc();
 	t_osc_msg_u *msg_self = [self makeOSCSelfMessage:aPeripheral];
 	osc_bundle_u_addMsg(b, msg_self);
-	t_osc_msg_u *msg_data = osc_message_u_alloc();
-	osc_bundle_u_addMsg(b, msg_data);
 	const char *name = [aPeripheral.name UTF8String];
-	char data_address[128];
 	if([characteristic.UUID isEqual:[CBUUID UUIDWithString:@"2A37"]]){
-		/* Updated value for heart rate measurement received */
+		// Updated value for heart rate measurement received
 		if((characteristic.value)  || !error){
-			/* Update UI with heart rate data */
-			uint16_t hr = [self computeHeartRate:characteristic.value];
-			sprintf(data_address, "/%s/heartrate", name);
-			osc_message_u_appendInt32(msg_data, hr);
+			// Update UI with heart rate data
+			[self computeHeartRate:characteristic.value peripheral:aPeripheral OSCBundle:b];
 		}
 	}else  if([characteristic.UUID isEqual:[CBUUID UUIDWithString:@"2A38"]]){
-		/* Value for body sensor location received */
-		//post("sensor location");
+		// Value for body sensor location received
+		t_osc_msg_u *msg_data = osc_message_u_alloc();
+		osc_bundle_u_addMsg(b, msg_data);
+		char data_address[128];
 		NSData * updatedValue = characteristic.value;        
 		uint8_t* dataPointer = (uint8_t*)[updatedValue bytes];
 		if(dataPointer){
@@ -664,22 +427,21 @@ void ohrm_outputOSCBundle(t_ohrm *x, t_symbol *msg, int argc, t_atom *argv);
 				}
 			sprintf(data_address, "/%s/location", name);
 			osc_message_u_appendString(msg_data, locationString);
-			//NSLog(@"Body Sensor Location = %@ (%d)", locationString, location);
 		}
 	}else if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:CBUUIDDeviceNameString]]){
-		/* Value for device Name received */
-		//NSString *deviceName = [[[NSString alloc] initWithData:characteristic.value encoding:NSUTF8StringEncoding] autorelease];
+		// Value for device Name received
+		t_osc_msg_u *msg_data = osc_message_u_alloc();
+		osc_bundle_u_addMsg(b, msg_data);
+		char data_address[128];
 		sprintf(data_address, "/%s/devicename", name);
-		//osc_message_u_appendString(msg_data, [deviceName UTF8String]);
 		osc_message_u_appendString(msg_data, [characteristic.value bytes]);
-		//NSLog(@"Device Name = %@", deviceName);
 	}else if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:@"2A29"]]){
-		/* Value for manufacturer name received */
-		//self.manufacturer = [[[NSString alloc] initWithData:characteristic.value encoding:NSUTF8StringEncoding] autorelease];
+		// Value for manufacturer name received
+		t_osc_msg_u *msg_data = osc_message_u_alloc();
+		osc_bundle_u_addMsg(b, msg_data);
+		char data_address[128];
 		sprintf(data_address, "/%s/manufacturer", name);
-		//osc_message_u_appendString(msg_data, [manufacturer UTF8String]);
 		osc_message_u_appendString(msg_data, [characteristic.value bytes]);
-		//NSLog(@"Manufacturer Name = %@", self.manufacturer);
 	}else{
 	}
 	ohrm_replaceSpacesWithSlashes(sizeof(data_address), data_address);
@@ -700,14 +462,8 @@ void ohrm_outputOSCBundle(t_ohrm *x, t_symbol *msg, int argc, t_atom *argv);
 
 - (void)ohrm_init:(struct _ohrm *)x
 {
-	//self.heartRate = 0;
-	//autoConnect = TRUE; //uncomment this line if you want to automatically connect to previosly known peripheral 
-	//self.heartRateMonitors = [NSMutableArray array];
-       
 	manager = [[CBCentralManager alloc] initWithDelegate:self queue:nil];
-	//if(autoConnect){
-		[self startScan];
-		//}
+	[self startScan];
 	maxobj = x;
 }
 
@@ -736,6 +492,11 @@ void ohrm_assist(t_ohrm *x, void *b, long io, long num, char *buf)
 	omax_doc_assist(io, num, buf);
 }
 
+void ohrm_doc(t_ochange *x)
+{
+	omax_doc_outletDoc(x->outlet);
+}
+
 void ohrm_free(t_ohrm *x)
 {
 	HeartRateMonitor *hrm = x->hrm;
@@ -761,15 +522,9 @@ int main(void)
 	t_class *c = class_new("o.io.bluetoothle.hrm", (method)ohrm_new, (method)ohrm_free, sizeof(t_ohrm), 0L, A_GIMME, 0);
 
 	//class_addmethod(c, (method)ohrm_fullPacket, "FullPacket", A_GIMME, 0);
-	//class_addmethod(c, (method)ohrm_assist, "assist", A_CANT, 0);
-	//class_addmethod(c, (method)ohrm_doc, "doc", 0);
+	class_addmethod(c, (method)ohrm_assist, "assist", A_CANT, 0);
+	class_addmethod(c, (method)ohrm_doc, "doc", 0);
 	//class_addmethod(c, (method)ohrm_bang, "bang", 0);
-	//class_addmethod(c, (method)ohrm_anything, "anything", A_GIMME, 0);
-
-	// remove this if statement when we stop supporting Max 5
-	//if(omax_dict_resolveDictStubs()){
-	//class_addmethod(c, (method)omax_dict_dictionary, "dictionary", A_GIMME, 0);
-	//}
 	class_addmethod(c, (method)odot_version, "version", 0);
 
 	ps_FullPacket = gensym("FullPacket");
