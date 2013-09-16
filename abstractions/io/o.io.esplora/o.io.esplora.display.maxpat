@@ -38,7 +38,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 106.5, 620.0, 300.0, 47.0 ],
-					"text" : "/coords -0.293333 0.0533333 \n/angle 349.695 \n/dist 0.298142 \n",
+					"text" : "/coords -0.213333 -0.04 \n/angle 10.6196 \n/dist 0.217051 \n",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -82,7 +82,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 3,
 					"numoutlets" : 2,
-					"outlettype" : [ "FullPacket", "clear" ],
+					"outlettype" : [ "FullPacket", "" ],
 					"patcher" : 					{
 						"fileversion" : 1,
 						"appversion" : 						{
@@ -1012,8 +1012,8 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 467.0, 515.0, 124.0, 19.0 ],
-									"text" : "draw_circle 12 240 254"
+									"patching_rect" : [ 467.0, 515.0, 164.0, 19.0 ],
+									"text" : "c.esplora.LCDcircle 12 240 254"
 								}
 
 							}
@@ -1082,8 +1082,8 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 545.0, 430.0, 118.0, 19.0 ],
-									"text" : "draw_circle 243 248 0"
+									"patching_rect" : [ 545.0, 430.0, 158.0, 19.0 ],
+									"text" : "c.esplora.LCDcircle 243 248 0"
 								}
 
 							}
@@ -1718,13 +1718,14 @@
 , 			{
 				"box" : 				{
 					"bgtransparent" : 1,
+					"border" : 0,
 					"id" : "obj-28",
 					"local" : 0,
 					"maxclass" : "lcd",
 					"numinlets" : 1,
 					"numoutlets" : 4,
 					"outlettype" : [ "list", "list", "int", "" ],
-					"patching_rect" : [ 210.0, 235.0, 150.0, 150.0 ],
+					"patching_rect" : [ 201.0, 239.0, 150.0, 150.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 300.0, 345.0, 220.0, 220.0 ]
 				}
@@ -3986,7 +3987,7 @@
 					"destination" : [ "obj-28", 0 ],
 					"disabled" : 0,
 					"hidden" : 1,
-					"midpoints" : [ 293.5, 455.0, 202.5, 455.0, 202.5, 225.0, 219.5, 225.0 ],
+					"midpoints" : [ 293.5, 455.0, 202.5, 455.0, 202.5, 225.0, 210.5, 225.0 ],
 					"source" : [ "obj-139", 1 ]
 				}
 
@@ -4193,7 +4194,14 @@
 		"dependency_cache" : [ 			{
 				"name" : "c.esplora.buttonhelper.maxpat",
 				"bootpath" : "/Users/jml/Documents/materials/programming/max_files/5_berkeley/projects/cnmat/repositories/git/CNMAT-odot/abstractions/io/o.io.esplora",
-				"patcherrelativepath" : "./o.io.esplora",
+				"patcherrelativepath" : ".",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "c.esplora.LCDcircle.maxpat",
+				"bootpath" : "/Users/jml/Documents/materials/programming/max_files/5_berkeley/projects/cnmat/repositories/git/CNMAT-odot/abstractions/io/o.io.esplora",
+				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
