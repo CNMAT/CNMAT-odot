@@ -1,0 +1,385 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Leap.Screen &mdash; Leap Motion 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/leap.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="Leap Motion 1.0 documentation" href="../index.html" /> 
+  </head>
+  <body>
+    <div class="header-wrapper">
+      <div class="header">
+        <div class="headertitle"><a
+          href="../index.html">Leap Motion 1.0 documentation</a></div>
+        <div class="rel">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a>
+        </div>
+       </div>
+    </div>
+
+    <div class="content-wrapper">
+      <div class="content">
+        <div class="document">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="leap-screen">
+<h1>Leap.Screen<a class="headerlink" href="#leap-screen" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="Leap.Screen">
+<em class="property">class </em><tt class="descclassname">Leap.</tt><tt class="descname">Screen</tt><a class="headerlink" href="#Leap.Screen" title="Permalink to this definition">¶</a></dt>
+<dd><p>The Screen class represents a computer monitor screen.</p>
+<p>The Screen class reports characteristics describing the position and
+orientation of the monitor screen within the Leap Motion coordinate system. These
+characteristics include the bottom-left corner position of the screen,
+direction vectors for the horizontal and vertical axes of the screen, and
+the screen&#8217;s normal vector. The screen must be properly registered with the
+Screen Locator for the Leap Motion software to report these characteristics accurately.
+The Screen class also reports the size of the screen in pixels, using
+information obtained from the operating system. (Run the Screen Locator
+from the Leap Motion Settings dialog, on the Screen page.)</p>
+<p>You can get the point of intersection between the screen and a ray
+projected from a Pointable object using the Screen::intersect() function.
+Likewise, you can get the closest point on the screen to a point in space
+using the Screen::project() function. Again, the screen location
+must be registered with the Screen Locator for these functions to
+return accurate values.</p>
+<p>Note that Screen objects can be invalid, which means that they do not contain
+valid screen coordinate data and do not correspond to a physical entity.
+Test for validity with the Screen::isValid() function.</p>
+<dl class="attribute">
+<dt id="Leap.Screen.bottom_left_corner">
+<tt class="descname">bottom_left_corner</tt><a class="headerlink" href="#Leap.Screen.bottom_left_corner" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="Leap.Screen.distance_to_point">
+<tt class="descname">distance_to_point</tt><big>(</big><em>*args</em><big>)</big><a class="headerlink" href="#Leap.Screen.distance_to_point" title="Permalink to this definition">¶</a></dt>
+<dd><p>The shortest distance from the specified point to the plane in which this
+Screen lies.</p>
+<p>Returns: The length of the perpendicular line segment extending from
+the plane this Screen lies in to the specified point.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="Leap.Screen.height_pixels">
+<tt class="descname">height_pixels</tt><a class="headerlink" href="#Leap.Screen.height_pixels" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="Leap.Screen.horizontal_axis">
+<tt class="descname">horizontal_axis</tt><a class="headerlink" href="#Leap.Screen.horizontal_axis" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="Leap.Screen.id">
+<tt class="descname">id</tt><a class="headerlink" href="#Leap.Screen.id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="Leap.Screen.intersect">
+<tt class="descname">intersect</tt><big>(</big><em>*args</em><big>)</big><a class="headerlink" href="#Leap.Screen.intersect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the intersection between this screen and a ray projecting from a
+Pointable object.</p>
+<p>The projected ray emanates from the Pointable tipPosition along the
+Pointable&#8217;s direction vector.</p>
+<p>Set the normalize parameter to true to request the intersection point in
+normalized screen coordinates. Normalized screen coordinates are usually
+values between 0 and 1, where 0 represents the screen&#8217;s origin at the
+bottom-left corner and 1 represents the opposite edge (either top or
+right). When you request normalized coordinates, the z-component of the
+returned vector is zero. Multiply a normalized coordinate by the values
+returned by Screen::widthPixels() or Screen::heightPixels() to calculate
+the screen position in pixels (remembering that many other computer
+graphics coordinate systems place the origin in the top-left corner).</p>
+<p>Set the normalize parameter to false to request the intersection point
+in Leap Motion coordinates (millimeters from the Leap Motion origin).</p>
+<p>If the Pointable object points outside the screen&#8217;s border (but still
+intersects the plane in which the screen lies), the returned intersection
+point is clamped to the nearest point on the edge of the screen.</p>
+<p>You can use the clampRatio parameter to contract or expand the area in
+which you can point. For example, if you set the clampRatio parameter to
+0.5, then the positions reported for intersection points outside the
+central 50% of the screen are moved to the border of this smaller area.
+If, on the other hand, you expanded the area by setting clampRatio to
+a value such as 3.0, then you could point well outside screen&#8217;s physical
+boundary before the intersection points would be clamped. The positions
+for any points clamped would also be placed on this larger outer border.
+The positions reported for any intersection points inside the clamping
+border are unaffected by clamping.</p>
+<pre>        normalizedCoordinates = screen.intersect(pointable, True, 0.5)
+</pre><p>If the Pointable object does not point toward the plane of the screen
+(i.e. it is pointing parallel to or away from the screen), then the
+components of the returned vector are all set to NaN (not-a-number).</p>
+<dl class="docutils">
+<dt>Arguments:</dt>
+<dd><p class="first">pointable (Leap::Pointable const &amp;) &#8211; The Pointable object to check for screen intersection.</p>
+<p class="last">normalize (bool) &#8211; If true, return normalized coordinates representing</p>
+</dd>
+</dl>
+<p>the intersection point as a percentage of the screen&#8217;s width and height.
+If false, return Leap Motion coordinates (millimeters from the Leap Motion origin,
+which is located at the center of the top surface of the Leap Motion device).
+If true and the clampRatio parameter is set to 1.0, coordinates will be
+of the form (0..1, 0..1, 0). Setting the clampRatio to a different value
+changes the range for normalized coordinates. For example, a clampRatio
+of 5.0 changes the range of values to be of the form (-2..3, -2..3, 0).</p>
+<blockquote>
+<div>clampRatio (float) &#8211; Adjusts the clamping border around this screen.</div></blockquote>
+<p>By default this ratio is 1.0, and the border corresponds to the actual
+boundaries of the screen. Setting clampRatio to 0.5 would reduce the
+interaction area. Likewise, setting the ratio to 2.0 would increase the
+interaction area, adding 50% around each edge of the physical monitor.
+Intersection points outside the interaction area are repositioned to
+the closest point on the clamping border before the vector is returned.</p>
+<p>Returns: A Vector containing the coordinates of the intersection between
+this screen and a ray projecting from the specified Pointable object.</p>
+<p>Returns the intersection between this screen and a ray projecting from
+the specified position along the specified direction.</p>
+<p>Set the normalize parameter to true to request the intersection point in
+normalized screen coordinates. Normalized screen coordinates are usually
+values between 0 and 1, where 0 represents the screen&#8217;s origin at the
+bottom-left corner and 1 represents the opposite edge (either top or
+right). When you request normalized coordinates, the z-component of the
+returned vector is zero. Multiply a normalized coordinate by the values
+returned by Screen::widthPixels() or Screen::heightPixels() to calculate
+the screen position in pixels (remembering that many other computer
+graphics coordinate systems place the origin in the top-left corner).</p>
+<p>Set the normalize parameter to false to request the intersection point
+in Leap Motion coordinates (millimeters from the Leap Motion origin).</p>
+<p>If the specified ray points outside the screen&#8217;s border (but still
+intersects the plane in which the screen lies), the returned intersection
+point is clamped to the nearest point on the edge of the screen.</p>
+<p>You can use the clampRatio parameter to contract or expand the area in
+which you can point. For example, if you set the clampRatio parameter to
+0.5, then the positions reported for intersection points outside the
+central 50% of the screen are moved to the border of this smaller area.
+If, on the other hand, you expanded the area by setting clampRatio to
+a value such as 3.0, then you could point well outside screen&#8217;s physical
+boundary before the intersection points would be clamped. The positions
+for any points clamped would also be placed on this larger outer border.
+The positions reported for any intersection points inside the clamping
+border are unaffected by clamping.</p>
+<p>If the specified ray does not point toward the plane of the screen
+(i.e. it is pointing parallel to or away from the screen), then the
+components of the returned vector are all set to NaN (not-a-number).</p>
+<dl class="docutils">
+<dt>Arguments:</dt>
+<dd><p class="first">position (Leap::Vector const &amp;) &#8211; The position from which to check for screen intersection.
+direction (Leap::Vector const &amp;) &#8211; The direction in which to check for screen intersection.</p>
+<p class="last">normalize (bool) &#8211; If true, return normalized coordinates representing</p>
+</dd>
+</dl>
+<p>the intersection point as a percentage of the screen&#8217;s width and height.
+If false, return Leap Motion coordinates (millimeters from the Leap Motion origin,
+which is located at the center of the top surface of the Leap Motion device).
+If true and the clampRatio parameter is set to 1.0, coordinates will be
+of the form (0..1, 0..1, 0). Setting the clampRatio to a different value
+changes the range for normalized coordinates. For example, a clampRatio
+of 5.0 changes the range of values to be of the form (-2..3, -2..3, 0).</p>
+<blockquote>
+<div>clampRatio (float) &#8211; Adjusts the clamping border around this screen.</div></blockquote>
+<p>By default this ratio is 1.0, and the border corresponds to the actual
+boundaries of the screen. Setting clampRatio to 0.5 would reduce the
+interaction area. Likewise, setting the ratio to 2.0 would increase the
+interaction area, adding 50% around each edge of the physical monitor.
+Intersection points outside the interaction area are repositioned to
+the closest point on the clamping border before the vector is returned.</p>
+<p>Returns: A Vector containing the coordinates of the intersection between
+this screen and a ray projecting from the specified position in the
+specified direction.</p>
+<p>Returns the intersection between this screen and a ray projecting from
+the specified position along the specified direction.</p>
+<p>Set the normalize parameter to true to request the intersection point in
+normalized screen coordinates. Normalized screen coordinates are usually
+values between 0 and 1, where 0 represents the screen&#8217;s origin at the
+bottom-left corner and 1 represents the opposite edge (either top or
+right). When you request normalized coordinates, the z-component of the
+returned vector is zero. Multiply a normalized coordinate by the values
+returned by Screen::widthPixels() or Screen::heightPixels() to calculate
+the screen position in pixels (remembering that many other computer
+graphics coordinate systems place the origin in the top-left corner).</p>
+<p>Set the normalize parameter to false to request the intersection point
+in Leap Motion coordinates (millimeters from the Leap Motion origin).</p>
+<p>If the specified ray points outside the screen&#8217;s border (but still
+intersects the plane in which the screen lies), the returned intersection
+point is clamped to the nearest point on the edge of the screen.</p>
+<p>You can use the clampRatio parameter to contract or expand the area in
+which you can point. For example, if you set the clampRatio parameter to
+0.5, then the positions reported for intersection points outside the
+central 50% of the screen are moved to the border of this smaller area.
+If, on the other hand, you expanded the area by setting clampRatio to
+a value such as 3.0, then you could point well outside screen&#8217;s physical
+boundary before the intersection points would be clamped. The positions
+for any points clamped would also be placed on this larger outer border.
+The positions reported for any intersection points inside the clamping
+border are unaffected by clamping.</p>
+<p>If the specified ray does not point toward the plane of the screen
+(i.e. it is pointing parallel to or away from the screen), then the
+components of the returned vector are all set to NaN (not-a-number).</p>
+<dl class="docutils">
+<dt>Arguments:</dt>
+<dd><p class="first">position (Leap::Vector const &amp;) &#8211; The position from which to check for screen intersection.
+direction (Leap::Vector const &amp;) &#8211; The direction in which to check for screen intersection.</p>
+<p class="last">normalize (bool) &#8211; If true, return normalized coordinates representing</p>
+</dd>
+</dl>
+<p>the intersection point as a percentage of the screen&#8217;s width and height.
+If false, return Leap Motion coordinates (millimeters from the Leap Motion origin,
+which is located at the center of the top surface of the Leap Motion device).
+If true and the clampRatio parameter is set to 1.0, coordinates will be
+of the form (0..1, 0..1, 0). Setting the clampRatio to a different value
+changes the range for normalized coordinates. For example, a clampRatio
+of 5.0 changes the range of values to be of the form (-2..3, -2..3, 0).</p>
+<blockquote>
+<div>clampRatio (none) &#8211; Adjusts the clamping border around this screen.</div></blockquote>
+<p>By default this ratio is 1.0, and the border corresponds to the actual
+boundaries of the screen. Setting clampRatio to 0.5 would reduce the
+interaction area. Likewise, setting the ratio to 2.0 would increase the
+interaction area, adding 50% around each edge of the physical monitor.
+Intersection points outside the interaction area are repositioned to
+the closest point on the clamping border before the vector is returned.</p>
+<p>Returns: A Vector containing the coordinates of the intersection between
+this screen and a ray projecting from the specified position in the
+specified direction.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="Leap.Screen.invalid">
+<tt class="descname">invalid</tt><em class="property"> = &lt;Leap.Screen; proxy of &lt;Swig Object of type 'Leap::Screen *' at 0x102435a50&gt; &gt;</em><a class="headerlink" href="#Leap.Screen.invalid" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="Leap.Screen.is_valid">
+<tt class="descname">is_valid</tt><a class="headerlink" href="#Leap.Screen.is_valid" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="Leap.Screen.normal">
+<tt class="descname">normal</tt><big>(</big><big>)</big><a class="headerlink" href="#Leap.Screen.normal" title="Permalink to this definition">¶</a></dt>
+<dd><p>A Vector normal to the plane in which this Screen lies.</p>
+<p>The normal vector is a unit direction vector orthogonal to the screen&#8217;s
+surface plane. It points toward a viewer positioned for typical use of
+the monitor.</p>
+<p>Returns: A Vector representing this Screen&#8217;s normal vector.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Leap.Screen.project">
+<tt class="descname">project</tt><big>(</big><em>*args</em><big>)</big><a class="headerlink" href="#Leap.Screen.project" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the projection from the specified position onto this screen.</p>
+<p>Set the normalize parameter to true to request the projection point in
+normalized screen coordinates. Normalized screen coordinates are usually
+values between 0 and 1, where 0 represents the screen&#8217;s origin at the
+bottom-left corner and 1 represents the opposite edge (either top or
+right). When you request normalized coordinates, the z-component of the
+returned vector is zero. Multiply a normalized coordinate by the values
+returned by Screen::widthPixels() or Screen::heightPixels() to calculate
+the screen position in pixels (remembering that many other computer
+graphics coordinate systems place the origin in the top-left corner).</p>
+<p>Set the normalize parameter to false to request the projection point
+in Leap Motion coordinates (millimeters from the Leap Motion origin).</p>
+<p>If the specified point projects outside the screen&#8217;s border, the returned
+projection point is clamped to the nearest point on the edge of the screen.</p>
+<p>You can use the clampRatio parameter to contract or expand the area in
+which you can point. For example, if you set the clampRatio parameter to
+0.5, then the positions reported for projection points outside the
+central 50% of the screen are moved to the border of this smaller area.
+If, on the other hand, you expanded the area by setting clampRatio to
+a value such as 3.0, then you could point well outside screen&#8217;s physical
+boundary before the projection points would be clamped. The positions
+for any points clamped would also be placed on this larger outer border.
+The positions reported for any projection points inside the clamping
+border are unaffected by clamping.</p>
+<dl class="docutils">
+<dt>Arguments:</dt>
+<dd><p class="first">position (Leap::Vector const &amp;) &#8211; The position from which to project onto this screen.</p>
+<p class="last">normalize (bool) &#8211; If true, return normalized coordinates representing</p>
+</dd>
+</dl>
+<p>the projection point as a percentage of the screen&#8217;s width and height.
+If false, return Leap Motion coordinates (millimeters from the Leap Motion origin,
+which is located at the center of the top surface of the Leap Motion device).
+If true and the clampRatio parameter is set to 1.0, coordinates will be
+of the form (0..1, 0..1, 0). Setting the clampRatio to a different value
+changes the range for normalized coordinates. For example, a clampRatio
+of 5.0 changes the range of values to be of the form (-2..3, -2..3, 0).</p>
+<blockquote>
+<div>clampRatio (float) &#8211; Adjusts the clamping border around this screen.</div></blockquote>
+<p>By default this ratio is 1.0, and the border corresponds to the actual
+boundaries of the screen. Setting clampRatio to 0.5 would reduce the
+interaction area. Likewise, setting the ratio to 2.0 would increase the
+interaction area, adding 50% around each edge of the physical monitor.
+Projection points outside the interaction area are repositioned to
+the closest point on the clamping border before the vector is returned.</p>
+<p>Returns: A Vector containing the coordinates of the projection between
+this screen and a ray projecting from the specified position onto the
+screen along its normal vector.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="Leap.Screen.vertical_axis">
+<tt class="descname">vertical_axis</tt><a class="headerlink" href="#Leap.Screen.vertical_axis" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="Leap.Screen.width_pixels">
+<tt class="descname">width_pixels</tt><a class="headerlink" href="#Leap.Screen.width_pixels" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer-wrapper">
+      <div class="footer">
+        <div class="left">
+          <a href="../genindex.html" title="General Index"
+             >index</a>
+        </div>
+
+        <div class="right">
+          
+    <div class="footer">
+        &copy; Copyright 2013, Leap Motion.
+    </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+  </body>
+</html>

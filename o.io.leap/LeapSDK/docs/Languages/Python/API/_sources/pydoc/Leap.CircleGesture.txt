@@ -1,0 +1,10 @@
+Leap.CircleGesture
+==================
+
+.. currentmodule:: Leap
+
+.. autoclass:: Leap.CircleGesture
+   :members:
+   :undoc-members:
+   
+   

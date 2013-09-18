@@ -1,0 +1,275 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Leap.Vector &mdash; Leap Motion 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/leap.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="Leap Motion 1.0 documentation" href="../index.html" /> 
+  </head>
+  <body>
+    <div class="header-wrapper">
+      <div class="header">
+        <div class="headertitle"><a
+          href="../index.html">Leap Motion 1.0 documentation</a></div>
+        <div class="rel">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a>
+        </div>
+       </div>
+    </div>
+
+    <div class="content-wrapper">
+      <div class="content">
+        <div class="document">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="leap-vector">
+<h1>Leap.Vector<a class="headerlink" href="#leap-vector" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="Leap.Vector">
+<em class="property">class </em><tt class="descclassname">Leap.</tt><tt class="descname">Vector</tt><big>(</big><em>*args</em><big>)</big><a class="headerlink" href="#Leap.Vector" title="Permalink to this definition">¶</a></dt>
+<dd><p>The Vector struct represents a three-component mathematical vector or point
+such as a direction or position in three-dimensional space.</p>
+<p>The Leap Motion software employs a right-handed Cartesian coordinate system.
+Values given are in units of real-world millimeters. The origin is centered
+at the center of the Leap Motion device. The x- and z-axes lie in the horizontal
+plane, with the x-axis running parallel to the long edge of the device.
+The y-axis is vertical, with positive values increasing upwards (in contrast
+to the downward orientation of most computer graphics coordinate systems).
+The z-axis has positive values increasing away from the computer screen.</p>
+<img src='../../../JavaScript/API/images/Leap_Axes.png'/>
+<dl class="method">
+<dt id="Leap.Vector.angle_to">
+<tt class="descname">angle_to</tt><big>(</big><em>*args</em><big>)</big><a class="headerlink" href="#Leap.Vector.angle_to" title="Permalink to this definition">¶</a></dt>
+<dd><p>The angle between this vector and the specified vector in radians.</p>
+<p>The angle is measured in the plane formed by the two vectors. The
+angle returned is always the smaller of the two conjugate angles.
+Thus A.angleTo(B) == B.angleTo(A) and is always a positive
+value less than or equal to pi radians (180 degrees).</p>
+<p>If either vector has zero length, then this function returns zero.</p>
+<img src='../../../JavaScript/API/images/Math_AngleTo.png'/>
+<pre>    angleInRadians = Leap.Vector.xAxis.angle_to(Leap.Vector.y_axis)
+    # angleInRadians = PI/2 (90 degrees)
+</pre><dl class="docutils">
+<dt>Arguments:</dt>
+<dd>other (Leap::Vector const &amp;) &#8211; A Vector object.</dd>
+</dl>
+<p>Returns: The angle between this vector and the specified vector in radians.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="Leap.Vector.backward">
+<tt class="descname">backward</tt><em class="property"> = &lt;Leap.Vector; proxy of &lt;Swig Object of type 'Leap::Vector *' at 0x102435d50&gt; &gt;</em><a class="headerlink" href="#Leap.Vector.backward" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="Leap.Vector.cross">
+<tt class="descname">cross</tt><big>(</big><em>*args</em><big>)</big><a class="headerlink" href="#Leap.Vector.cross" title="Permalink to this definition">¶</a></dt>
+<dd><p>The cross product of this vector and the specified vector.</p>
+<p>The cross product is a vector orthogonal to both original vectors.
+It has a magnitude equal to the area of a parallelogram having the
+two vectors as sides. The direction of the returned vector is
+determined by the right-hand rule. Thus A.cross(B) == -B.cross(A).</p>
+<img src='../../../JavaScript/API/images/Math_Cross.png'/>
+<pre>    crossProduct = thisVector.cross(thatVector)
+</pre><dl class="docutils">
+<dt>Arguments:</dt>
+<dd>other (Leap::Vector const &amp;) &#8211; A Vector object.</dd>
+</dl>
+<p>Returns: The cross product of this vector and the specified vector.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Leap.Vector.distance_to">
+<tt class="descname">distance_to</tt><big>(</big><em>*args</em><big>)</big><a class="headerlink" href="#Leap.Vector.distance_to" title="Permalink to this definition">¶</a></dt>
+<dd><p>The distance between the point represented by this Vector
+object and a point represented by the specified Vector object.</p>
+<pre>    aPoint = Leap.Vector(10, 0, 0)
+    origin = Leap.Vector.zero
+    distance = origin.distance_to(aPoint); # distance = 10
+</pre><dl class="docutils">
+<dt>Arguments:</dt>
+<dd>other (Leap::Vector const &amp;) &#8211; A Vector object.</dd>
+</dl>
+<p>Returns: The distance from this point to the specified point.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Leap.Vector.dot">
+<tt class="descname">dot</tt><big>(</big><em>*args</em><big>)</big><a class="headerlink" href="#Leap.Vector.dot" title="Permalink to this definition">¶</a></dt>
+<dd><p>The dot product of this vector with another vector.</p>
+<p>The dot product is the magnitude of the projection of this vector
+onto the specified vector.</p>
+<img src='../../../JavaScript/API/images/Math_Dot.png'/>
+<pre>    dotProduct = thisVector.dot(thatVector)
+</pre><dl class="docutils">
+<dt>Arguments:</dt>
+<dd>other (Leap::Vector const &amp;) &#8211; A Vector object.</dd>
+</dl>
+<p>Returns: The dot product of this vector and the specified vector.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="Leap.Vector.down">
+<tt class="descname">down</tt><em class="property"> = &lt;Leap.Vector; proxy of &lt;Swig Object of type 'Leap::Vector *' at 0x102435c60&gt; &gt;</em><a class="headerlink" href="#Leap.Vector.down" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="Leap.Vector.forward">
+<tt class="descname">forward</tt><em class="property"> = &lt;Leap.Vector; proxy of &lt;Swig Object of type 'Leap::Vector *' at 0x102435db0&gt; &gt;</em><a class="headerlink" href="#Leap.Vector.forward" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="Leap.Vector.is_valid">
+<tt class="descname">is_valid</tt><big>(</big><big>)</big><a class="headerlink" href="#Leap.Vector.is_valid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns true if all of the vector&#8217;s components are finite.  If any
+component is NaN or infinite, then this returns false.</p>
+<pre>    vectorsIsValid = thisVector.is_valid
+</pre></dd></dl>
+
+<dl class="attribute">
+<dt id="Leap.Vector.left">
+<tt class="descname">left</tt><em class="property"> = &lt;Leap.Vector; proxy of &lt;Swig Object of type 'Leap::Vector *' at 0x102435d20&gt; &gt;</em><a class="headerlink" href="#Leap.Vector.left" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="Leap.Vector.magnitude">
+<tt class="descname">magnitude</tt><a class="headerlink" href="#Leap.Vector.magnitude" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="Leap.Vector.magnitude_squared">
+<tt class="descname">magnitude_squared</tt><a class="headerlink" href="#Leap.Vector.magnitude_squared" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="Leap.Vector.normalized">
+<tt class="descname">normalized</tt><a class="headerlink" href="#Leap.Vector.normalized" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="Leap.Vector.pitch">
+<tt class="descname">pitch</tt><a class="headerlink" href="#Leap.Vector.pitch" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="Leap.Vector.right">
+<tt class="descname">right</tt><em class="property"> = &lt;Leap.Vector; proxy of &lt;Swig Object of type 'Leap::Vector *' at 0x102435cc0&gt; &gt;</em><a class="headerlink" href="#Leap.Vector.right" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="Leap.Vector.roll">
+<tt class="descname">roll</tt><a class="headerlink" href="#Leap.Vector.roll" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="Leap.Vector.to_float_array">
+<tt class="descname">to_float_array</tt><big>(</big><big>)</big><a class="headerlink" href="#Leap.Vector.to_float_array" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="Leap.Vector.to_tuple">
+<tt class="descname">to_tuple</tt><big>(</big><big>)</big><a class="headerlink" href="#Leap.Vector.to_tuple" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="Leap.Vector.up">
+<tt class="descname">up</tt><em class="property"> = &lt;Leap.Vector; proxy of &lt;Swig Object of type 'Leap::Vector *' at 0x102435c90&gt; &gt;</em><a class="headerlink" href="#Leap.Vector.up" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="Leap.Vector.x">
+<tt class="descname">x</tt><a class="headerlink" href="#Leap.Vector.x" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="Leap.Vector.x_axis">
+<tt class="descname">x_axis</tt><em class="property"> = &lt;Leap.Vector; proxy of &lt;Swig Object of type 'Leap::Vector *' at 0x102435e70&gt; &gt;</em><a class="headerlink" href="#Leap.Vector.x_axis" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="Leap.Vector.y">
+<tt class="descname">y</tt><a class="headerlink" href="#Leap.Vector.y" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="Leap.Vector.y_axis">
+<tt class="descname">y_axis</tt><em class="property"> = &lt;Leap.Vector; proxy of &lt;Swig Object of type 'Leap::Vector *' at 0x102435e40&gt; &gt;</em><a class="headerlink" href="#Leap.Vector.y_axis" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="Leap.Vector.yaw">
+<tt class="descname">yaw</tt><a class="headerlink" href="#Leap.Vector.yaw" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="Leap.Vector.z">
+<tt class="descname">z</tt><a class="headerlink" href="#Leap.Vector.z" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="Leap.Vector.z_axis">
+<tt class="descname">z_axis</tt><em class="property"> = &lt;Leap.Vector; proxy of &lt;Swig Object of type 'Leap::Vector *' at 0x102435e10&gt; &gt;</em><a class="headerlink" href="#Leap.Vector.z_axis" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="Leap.Vector.zero">
+<tt class="descname">zero</tt><em class="property"> = &lt;Leap.Vector; proxy of &lt;Swig Object of type 'Leap::Vector *' at 0x102435ed0&gt; &gt;</em><a class="headerlink" href="#Leap.Vector.zero" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer-wrapper">
+      <div class="footer">
+        <div class="left">
+          <a href="../genindex.html" title="General Index"
+             >index</a>
+        </div>
+
+        <div class="right">
+          
+    <div class="footer">
+        &copy; Copyright 2013, Leap Motion.
+    </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+  </body>
+</html>

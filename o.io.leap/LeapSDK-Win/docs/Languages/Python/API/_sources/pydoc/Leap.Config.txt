@@ -1,0 +1,8 @@
+Leap.Config
+===========
+
+.. currentmodule:: Leap
+
+.. autoclass:: Config
+   :members:
+   :undoc-members:

@@ -1,0 +1,1419 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
+		<title>LeapMatrix Class Reference</title>
+		<meta id="xcode-display" name="xcode-display" content="render"/>
+		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
+		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
+		<meta name="generator" content="appledoc 2.1 (build 858)" />
+	</head>
+	<body>
+		<header id="top_header">
+			<div id="library" class="hideInXcode">
+				<h1><a id="libraryTitle" href="../index.html">Leap Motion API </a></h1>
+				<a id="developerHome" href="../index.html">Leap Motion</a>
+			</div>
+			
+			<div id="title" role="banner">
+				<h1 class="hideInXcode">LeapMatrix Class Reference</h1>
+			</div>
+			<ul id="headerButtons" role="toolbar">
+				<li id="toc_button">
+					<button aria-label="Show Table of Contents" role="checkbox" class="open" id="table_of_contents"><span class="disclosure"></span>Table of Contents</button>
+				</li>
+				<li id="jumpto_button" role="navigation">
+					<select id="jumpTo">
+<option value="top">Jump To&#133;</option>
+
+<option value="overview">Overview</option>
+
+
+
+
+<option value="tasks">Tasks</option>
+
+
+
+
+
+<option value="properties">Properties</option>
+
+<option value="//api/name/origin">&nbsp;&nbsp;&nbsp;&nbsp;origin</option>
+
+<option value="//api/name/xBasis">&nbsp;&nbsp;&nbsp;&nbsp;xBasis</option>
+
+<option value="//api/name/yBasis">&nbsp;&nbsp;&nbsp;&nbsp;yBasis</option>
+
+<option value="//api/name/zBasis">&nbsp;&nbsp;&nbsp;&nbsp;zBasis</option>
+
+
+
+
+<option value="class_methods">Class Methods</option>
+
+<option value="//api/name/identity">&nbsp;&nbsp;&nbsp;&nbsp;+ identity</option>
+
+
+
+
+<option value="instance_methods">Instance Methods</option>
+
+<option value="//api/name/equals:">&nbsp;&nbsp;&nbsp;&nbsp;- equals:</option>
+
+<option value="//api/name/initWithAxis:angleRadians:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithAxis:angleRadians:</option>
+
+<option value="//api/name/initWithAxis:angleRadians:translation:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithAxis:angleRadians:translation:</option>
+
+<option value="//api/name/initWithMatrix:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithMatrix:</option>
+
+<option value="//api/name/initWithXBasis:yBasis:zBasis:origin:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithXBasis:yBasis:zBasis:origin:</option>
+
+<option value="//api/name/rigidInverse">&nbsp;&nbsp;&nbsp;&nbsp;- rigidInverse</option>
+
+<option value="//api/name/times:">&nbsp;&nbsp;&nbsp;&nbsp;- times:</option>
+
+<option value="//api/name/toNSArray3x3">&nbsp;&nbsp;&nbsp;&nbsp;- toNSArray3x3</option>
+
+<option value="//api/name/toNSArray4x4">&nbsp;&nbsp;&nbsp;&nbsp;- toNSArray4x4</option>
+
+<option value="//api/name/transformDirection:">&nbsp;&nbsp;&nbsp;&nbsp;- transformDirection:</option>
+
+<option value="//api/name/transformPoint:">&nbsp;&nbsp;&nbsp;&nbsp;- transformPoint:</option>
+
+
+
+</select>
+				</li>
+			</ul>
+		</header>
+		<nav id="tocContainer" class="isShowingTOC">
+			<ul id="toc" role="tree">
+				
+<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
+
+
+
+
+<li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
+	
+</ul></li>
+
+
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/origin">origin</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/xBasis">xBasis</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/yBasis">yBasis</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/zBasis">zBasis</a></span></li>
+	
+</ul></li>
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#class_methods">Class Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/identity">identity</a></span></li>
+	
+</ul></li>
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/equals:">equals:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithAxis:angleRadians:">initWithAxis:angleRadians:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithAxis:angleRadians:translation:">initWithAxis:angleRadians:translation:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithMatrix:">initWithMatrix:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithXBasis:yBasis:zBasis:origin:">initWithXBasis:yBasis:zBasis:origin:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/rigidInverse">rigidInverse</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/times:">times:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/toNSArray3x3">toNSArray3x3</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/toNSArray4x4">toNSArray4x4</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/transformDirection:">transformDirection:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/transformPoint:">transformPoint:</a></span></li>
+	
+</ul></li>
+
+
+
+
+			</ul>
+		</nav>
+		<article>
+			<div id="contents" class="isShowingTOC" role="main">
+				<a title="LeapMatrix Class Reference" name="top"></a>
+				<div class="main-navigation navigation-top">
+					<ul>
+<li><a href="../index.html">Index</a></li>
+<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="header">
+					<div class="section-header">
+						<h1 class="title title-header">LeapMatrix Class Reference</h1>
+					</div>		
+				</div>
+				<div id="container">	
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+<td class="specification-title">Inherits from</td>
+<td class="specification-value">NSObject</td>
+</tr><tr>
+<td class="specification-title">Declared in</td>
+<td class="specification-value">LeapObjectiveC.h</td>
+</tr>
+						</tbody></table></div>
+					
+					
+					
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>The LeapMatrix class represents a transformation matrix.</p>
+
+<p>To use this class to transform a <a href="../Classes/LeapVector.html">LeapVector</a>, construct a matrix containing the<br/>
+desired transformation and then use the <a href="#//api/name/transformPoint:">[LeapMatrix transformPoint:]</a> or<br/>
+<a href="#//api/name/transformDirection:">[LeapMatrix transformDirection:]</a> functions to apply the transform.</p>
+
+<p>Transforms can be combined by multiplying two or more transform matrices using<br/>
+the <a href="#//api/name/times:">[LeapMatrix times:]</a> function.</p>
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						<h2 class="subtitle subtitle-tasks">Tasks</h2>
+						
+						
+						
+						
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/initWithXBasis:yBasis:zBasis:origin:">&ndash;&nbsp;initWithXBasis:yBasis:zBasis:origin:</a></code>
+		<span class="tooltip"><p>Constructs a transformation matrix from the specified basis and translation vectors.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/initWithMatrix:">&ndash;&nbsp;initWithMatrix:</a></code>
+		<span class="tooltip"><p>Constructs a copy of the specified Matrix object.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/initWithAxis:angleRadians:">&ndash;&nbsp;initWithAxis:angleRadians:</a></code>
+		<span class="tooltip"><p>Constructs a transformation matrix specifying a rotation around the specified vector.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/initWithAxis:angleRadians:translation:">&ndash;&nbsp;initWithAxis:angleRadians:translation:</a></code>
+		<span class="tooltip"><p>Constructs a transformation matrix specifying a rotation around the specified vector<br/>
+and a translation by the specified vector.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/transformPoint:">&ndash;&nbsp;transformPoint:</a></code>
+		<span class="tooltip"><p>Transforms a vector with this matrix by transforming its rotation,<br/>
+scale, and translation.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/transformDirection:">&ndash;&nbsp;transformDirection:</a></code>
+		<span class="tooltip"><p>Transforms a vector with this matrix by transforming its rotation and<br/>
+scale only.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/rigidInverse">&ndash;&nbsp;rigidInverse</a></code>
+		<span class="tooltip"><p>Performs a matrix inverse if the matrix consists entirely of rigid<br/>
+transformations (translations and rotations).  If the matrix is not rigid,<br/>
+this operation will not represent an inverse.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/times:">&ndash;&nbsp;times:</a></code>
+		<span class="tooltip"><p>Multiply transform matrices.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/equals:">&ndash;&nbsp;equals:</a></code>
+		<span class="tooltip"><p>Compare LeapMatrix equality component-wise.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/toNSArray3x3">&ndash;&nbsp;toNSArray3x3</a></code>
+		<span class="tooltip"><p>Converts a LeapMatrix object to a 9-element NSArray object.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/toNSArray4x4">&ndash;&nbsp;toNSArray4x4</a></code>
+		<span class="tooltip"><p>Converts a LeapMatrix object to a 16-element NSArray object.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/identity">+&nbsp;identity</a></code>
+		<span class="tooltip"><p>Returns the identity matrix specifying no translation, rotation, and scale.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/xBasis">&nbsp;&nbsp;xBasis</a></code>
+		<span class="tooltip"><p>The rotation and scale factors for the x-axis.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/yBasis">&nbsp;&nbsp;yBasis</a></code>
+		<span class="tooltip"><p>The rotation and scale factors for the y-axis.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/zBasis">&nbsp;&nbsp;zBasis</a></code>
+		<span class="tooltip"><p>The rotation and scale factors for the z-axis.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/origin">&nbsp;&nbsp;origin</a></code>
+		<span class="tooltip"><p>The translation factors for all three axes.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li>
+						</ul>
+						
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Properties" name="properties"></a>
+						<h2 class="subtitle subtitle-methods">Properties</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/origin" title="origin"></a>
+	<h3 class="subsubtitle method-title">origin</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The translation factors for all three axes.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) LeapVector *origin</code></div>
+
+    
+	
+	
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>Since 1.0</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The translation factors for all three axes.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">LeapObjectiveC.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/xBasis" title="xBasis"></a>
+	<h3 class="subsubtitle method-title">xBasis</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The rotation and scale factors for the x-axis.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) LeapVector *xBasis</code></div>
+
+    
+	
+	
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>Since 1.0</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The rotation and scale factors for the x-axis.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">LeapObjectiveC.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/yBasis" title="yBasis"></a>
+	<h3 class="subsubtitle method-title">yBasis</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The rotation and scale factors for the y-axis.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) LeapVector *yBasis</code></div>
+
+    
+	
+	
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>Since 1.0</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The rotation and scale factors for the y-axis.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">LeapObjectiveC.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/zBasis" title="zBasis"></a>
+	<h3 class="subsubtitle method-title">zBasis</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The rotation and scale factors for the z-axis.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) LeapVector *zBasis</code></div>
+
+    
+	
+	
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>Since 1.0</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The rotation and scale factors for the z-axis.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">LeapObjectiveC.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Class Methods" name="class_methods"></a>
+						<h2 class="subtitle subtitle-methods">Class Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/identity" title="identity"></a>
+	<h3 class="subsubtitle method-title">identity</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Returns the identity matrix specifying no translation, rotation, and scale.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (LeapMatrix *)identity</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>The identity matrix.</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>Since 1.0</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Returns the identity matrix specifying no translation, rotation, and scale.</p>
+
+<pre><code>    LeapMatrix *identity = [LeapMatrix identity];
+</code></pre>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">LeapObjectiveC.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Instance Methods" name="instance_methods"></a>
+						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/equals:" title="equals:"></a>
+	<h3 class="subsubtitle method-title">equals:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Compare LeapMatrix equality component-wise.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (BOOL)equals:(const LeapMatrix *)<em>other</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>other</em></dt>
+			<dd><p>The LeapMatrix object to compare.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>YES, if the corresponding elements in the two matrices are equal.</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>Since 1.0</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Compare LeapMatrix equality component-wise.</p>
+
+<pre><code>    bool matricesAreEqual = [thisMatrix equals:thatMatrix];
+</code></pre>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">LeapObjectiveC.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/initWithAxis:angleRadians:" title="initWithAxis:angleRadians:"></a>
+	<h3 class="subsubtitle method-title">initWithAxis:angleRadians:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Constructs a transformation matrix specifying a rotation around the specified vector.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (id)initWithAxis:(const LeapVector *)<em>axis</em> angleRadians:(float)<em>angleRadians</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>axis</em></dt>
+			<dd><p>A <a href="../Classes/LeapVector.html">LeapVector</a> specifying the axis of rotation.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>angleRadians</em></dt>
+			<dd><p>The amount of rotation in radians.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>Since 1.0</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Constructs a transformation matrix specifying a rotation around the specified vector.</p>
+
+<pre><code>    LeapMatrix *rotation = [[LeapMatrix alloc] initWithAxis:[LeapVector up]  
+                                             angleRadians:LEAP_PI/3];
+</code></pre>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">LeapObjectiveC.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/initWithAxis:angleRadians:translation:" title="initWithAxis:angleRadians:translation:"></a>
+	<h3 class="subsubtitle method-title">initWithAxis:angleRadians:translation:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Constructs a transformation matrix specifying a rotation around the specified vector<br/>
+and a translation by the specified vector.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (id)initWithAxis:(const LeapVector *)<em>axis</em> angleRadians:(float)<em>angleRadians</em> translation:(const LeapVector *)<em>translation</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>axis</em></dt>
+			<dd><p>A <a href="../Classes/LeapVector.html">LeapVector</a> specifying the axis of rotation.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>angleRadians</em></dt>
+			<dd><p>The angle of rotation in radians.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>translation</em></dt>
+			<dd><p>A <a href="../Classes/LeapVector.html">LeapVector</a> representing the translation part of the transform.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>Since 1.0</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Constructs a transformation matrix specifying a rotation around the specified vector<br/>
+and a translation by the specified vector.</p>
+
+<pre><code>    LeapMatrix *transform = [[LeapMatrix alloc] initWithAxis:[LeapVector zAxis]  
+                                                angleRadians:LEAP_PI  
+                                                 translation:[[LeapVector alloc]  
+                                                              initWithX:5  
+                                                              y:3  
+                                                              z:1]];
+</code></pre>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">LeapObjectiveC.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/initWithMatrix:" title="initWithMatrix:"></a>
+	<h3 class="subsubtitle method-title">initWithMatrix:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Constructs a copy of the specified Matrix object.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (id)initWithMatrix:(LeapMatrix *)<em>matrix</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>matrix</em></dt>
+			<dd><p>the LeapMatrix to copy.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>Since 1.0</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Constructs a copy of the specified Matrix object.</p>
+
+<pre><code>    LeapMatrix *copyMatrix = [[LeapMatrix alloc] initWithMatrix:otherMatrix];
+</code></pre>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">LeapObjectiveC.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/initWithXBasis:yBasis:zBasis:origin:" title="initWithXBasis:yBasis:zBasis:origin:"></a>
+	<h3 class="subsubtitle method-title">initWithXBasis:yBasis:zBasis:origin:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Constructs a transformation matrix from the specified basis and translation vectors.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (id)initWithXBasis:(const LeapVector *)<em>xBasis</em> yBasis:(const LeapVector *)<em>yBasis</em> zBasis:(const LeapVector *)<em>zBasis</em> origin:(const LeapVector *)<em>origin</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>xBasis</em></dt>
+			<dd><p>A <a href="../Classes/LeapVector.html">LeapVector</a> specifying rotation and scale factors for the x-axis.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>yBasis</em></dt>
+			<dd><p>A <a href="../Classes/LeapVector.html">LeapVector</a> specifying rotation and scale factors for the y-axis.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>zBasis</em></dt>
+			<dd><p>A <a href="../Classes/LeapVector.html">LeapVector</a> specifying rotation and scale factors for the z-axis.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>origin</em></dt>
+			<dd><p>A <a href="../Classes/LeapVector.html">LeapVector</a> specifying translation factors on all three axes.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>Since 1.0</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Constructs a transformation matrix from the specified basis and translation vectors.</p>
+
+<pre><code>    LeapMatrix *newMatrix = [[LeapMatrix alloc] initWithXBasis:[LeapVector xAxis]  
+                                                        yBasis:[LeapVector yAxis]  
+                                                        zBasis:[LeapVector zAxis]  
+                                                        origin:[LeapVector zero]];
+</code></pre>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">LeapObjectiveC.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/rigidInverse" title="rigidInverse"></a>
+	<h3 class="subsubtitle method-title">rigidInverse</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Performs a matrix inverse if the matrix consists entirely of rigid<br/>
+transformations (translations and rotations).  If the matrix is not rigid,<br/>
+this operation will not represent an inverse.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (LeapMatrix *)rigidInverse</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>The rigid inverse of the matrix.</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>Since 1.0</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Performs a matrix inverse if the matrix consists entirely of rigid<br/>
+transformations (translations and rotations).  If the matrix is not rigid,<br/>
+this operation will not represent an inverse.</p>
+
+<p>Note that all matricies that are directly returned by the API are rigid.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">LeapObjectiveC.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/times:" title="times:"></a>
+	<h3 class="subsubtitle method-title">times:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Multiply transform matrices.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (LeapMatrix *)times:(const LeapMatrix *)<em>other</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>other</em></dt>
+			<dd><p>A LeapMatrix to multiply on the right hand side.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>A new LeapMatrix representing the transformation equivalent to<br/>
+applying the other transformation followed by this transformation.</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>Since 1.0</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Multiply transform matrices.</p>
+
+<pre><code>    LeapMatrix *product = [thisMatrix times:thatMatrix];  
+</code></pre>
+
+<p>Combines two transformations into a single equivalent transformation.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">LeapObjectiveC.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/toNSArray3x3" title="toNSArray3x3"></a>
+	<h3 class="subsubtitle method-title">toNSArray3x3</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Converts a LeapMatrix object to a 9-element NSArray object.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (NSMutableArray *)toNSArray3x3</code></div>
+
+    
+	
+	
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>Since 1.0</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Converts a LeapMatrix object to a 9-element NSArray object.</p>
+
+<p>The elements of the matrix are inserted into the array in row-major order.</p>
+
+<pre><code>    NSArray *matrix3x3Array = thisMatrix.toNSArray3x3;  
+    float R2C1 = [[matrix3x3Array objectAtIndex:4] floatValue];  
+</code></pre>
+
+<p>Translation factors are discarded.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">LeapObjectiveC.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/toNSArray4x4" title="toNSArray4x4"></a>
+	<h3 class="subsubtitle method-title">toNSArray4x4</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Converts a LeapMatrix object to a 16-element NSArray object.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (NSMutableArray *)toNSArray4x4</code></div>
+
+    
+	
+	
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>Since 1.0</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Converts a LeapMatrix object to a 16-element NSArray object.</p>
+
+<p>The elements of the matrix are inserted into the array in row-major order.</p>
+
+<pre><code>    NSArray *matrix4x4Array = thisMatrix.toNSArray4x4;  
+    float R4C3 = [[matrix4x4Array objectAtIndex:15] floatValue];  
+}  
+@end
+</code></pre>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">LeapObjectiveC.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/transformDirection:" title="transformDirection:"></a>
+	<h3 class="subsubtitle method-title">transformDirection:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Transforms a vector with this matrix by transforming its rotation and<br/>
+scale only.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (LeapVector *)transformDirection:(const LeapVector *)<em>direction</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>direction</em></dt>
+			<dd><p>The <a href="../Classes/LeapVector.html">LeapVector</a> to transform.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>A new <a href="../Classes/LeapVector.html">LeapVector</a> representing the transformed original.</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>Since 1.0</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Transforms a vector with this matrix by transforming its rotation and<br/>
+scale only.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">LeapObjectiveC.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/transformPoint:" title="transformPoint:"></a>
+	<h3 class="subsubtitle method-title">transformPoint:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Transforms a vector with this matrix by transforming its rotation,<br/>
+scale, and translation.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (LeapVector *)transformPoint:(const LeapVector *)<em>point</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>point</em></dt>
+			<dd><p>A <a href="../Classes/LeapVector.html">LeapVector</a> representing the 3D position to transform.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>A new <a href="../Classes/LeapVector.html">LeapVector</a> representing the transformed original.</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>Since 1.0</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Transforms a vector with this matrix by transforming its rotation,<br/>
+scale, and translation.</p>
+
+<p>Translation is applied after rotation and scale.</p>
+
+<pre><code>    LeapVector *point = [[LeapVector alloc] initWithX:10 y:100 z:-30];  
+    LeapVector *transformedPoint = [thisMatrix transformPoint:point];
+</code></pre>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">LeapObjectiveC.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+					
+					
+				</div>
+				<div class="main-navigation navigation-bottom">
+					<ul>
+<li><a href="../index.html">Index</a></li>
+<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="footer">
+					<hr />
+					<div class="footer-copyright">
+						<p><span class="copyright">&copy; 2013 Leap Motion. All rights reserved. (Last updated: 2013-07-19)</span><br />
+						
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 858)</a>.</span></p>
+						
+					</div>
+				</div>
+			</div>
+		</article>
+		<script type="text/javascript">
+			function jumpToChange()
+			{
+				window.location.hash = this.options[this.selectedIndex].value;
+			}
+			
+			function toggleTOC()
+			{
+				var contents = document.getElementById('contents');
+				var tocContainer = document.getElementById('tocContainer');
+				
+				if (this.getAttribute('class') == 'open')
+				{
+					this.setAttribute('class', '');
+					contents.setAttribute('class', '');
+					tocContainer.setAttribute('class', '');
+					
+					window.name = "hideTOC";
+				}
+				else
+				{
+					this.setAttribute('class', 'open');
+					contents.setAttribute('class', 'isShowingTOC');
+					tocContainer.setAttribute('class', 'isShowingTOC');
+					
+					window.name = "";
+				}
+				return false;
+			}
+			
+			function toggleTOCEntryChildren(e)
+			{
+				e.stopPropagation();
+				var currentClass = this.getAttribute('class');
+				if (currentClass == 'children') {
+					this.setAttribute('class', 'children open');
+				}
+				else if (currentClass == 'children open') {
+					this.setAttribute('class', 'children');
+				}
+				return false;
+			}
+			
+			function tocEntryClick(e)
+			{
+				e.stopPropagation();
+				return true;
+			}
+			
+			function init()
+			{
+				var selectElement = document.getElementById('jumpTo');
+				selectElement.addEventListener('change', jumpToChange, false);
+				
+				var tocButton = document.getElementById('table_of_contents');
+				tocButton.addEventListener('click', toggleTOC, false);
+				
+				var taskTreeItem = document.getElementById('task_treeitem');
+				if (taskTreeItem.getElementsByTagName('li').length > 0)
+				{
+					taskTreeItem.setAttribute('class', 'children');
+					taskTreeItem.firstChild.setAttribute('class', 'disclosure');
+				}
+				
+				var tocList = document.getElementById('toc');
+				
+				var tocEntries = tocList.getElementsByTagName('li');
+				for (var i = 0; i < tocEntries.length; i++) {
+					tocEntries[i].addEventListener('click', toggleTOCEntryChildren, false);
+				}
+				
+				var tocLinks = tocList.getElementsByTagName('a');
+				for (var i = 0; i < tocLinks.length; i++) {
+					tocLinks[i].addEventListener('click', tocEntryClick, false);
+				}
+				
+				if (window.name == "hideTOC") {
+					toggleTOC.call(tocButton);
+				}
+			}
+			
+			window.onload = init;
+
+			
+			// If showing in Xcode, hide the TOC and Header
+			if (navigator.userAgent.match(/xcode/i)) {
+				document.getElementById("contents").className = "hideInXcode"
+				document.getElementById("tocContainer").className = "hideInXcode"
+				document.getElementById("top_header").className = "hideInXcode"
+			}
+			
+		</script>
+	</body>
+</html>

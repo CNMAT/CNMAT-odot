@@ -1,0 +1,886 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
+		<title>LeapInteractionBox Class Reference</title>
+		<meta id="xcode-display" name="xcode-display" content="render"/>
+		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
+		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
+		<meta name="generator" content="appledoc 2.1 (build 858)" />
+	</head>
+	<body>
+		<header id="top_header">
+			<div id="library" class="hideInXcode">
+				<h1><a id="libraryTitle" href="../index.html">Leap Motion API </a></h1>
+				<a id="developerHome" href="../index.html">Leap Motion</a>
+			</div>
+			
+			<div id="title" role="banner">
+				<h1 class="hideInXcode">LeapInteractionBox Class Reference</h1>
+			</div>
+			<ul id="headerButtons" role="toolbar">
+				<li id="toc_button">
+					<button aria-label="Show Table of Contents" role="checkbox" class="open" id="table_of_contents"><span class="disclosure"></span>Table of Contents</button>
+				</li>
+				<li id="jumpto_button" role="navigation">
+					<select id="jumpTo">
+<option value="top">Jump To&#133;</option>
+
+<option value="overview">Overview</option>
+
+
+
+
+<option value="tasks">Tasks</option>
+
+
+
+
+
+
+
+<option value="class_methods">Class Methods</option>
+
+<option value="//api/name/invalid">&nbsp;&nbsp;&nbsp;&nbsp;+ invalid</option>
+
+
+
+
+<option value="instance_methods">Instance Methods</option>
+
+<option value="//api/name/center">&nbsp;&nbsp;&nbsp;&nbsp;- center</option>
+
+<option value="//api/name/denormalizePoint:">&nbsp;&nbsp;&nbsp;&nbsp;- denormalizePoint:</option>
+
+<option value="//api/name/depth">&nbsp;&nbsp;&nbsp;&nbsp;- depth</option>
+
+<option value="//api/name/equals:">&nbsp;&nbsp;&nbsp;&nbsp;- equals:</option>
+
+<option value="//api/name/height">&nbsp;&nbsp;&nbsp;&nbsp;- height</option>
+
+<option value="//api/name/isValid">&nbsp;&nbsp;&nbsp;&nbsp;- isValid</option>
+
+<option value="//api/name/normalizePoint:clamp:">&nbsp;&nbsp;&nbsp;&nbsp;- normalizePoint:clamp:</option>
+
+<option value="//api/name/width">&nbsp;&nbsp;&nbsp;&nbsp;- width</option>
+
+
+
+</select>
+				</li>
+			</ul>
+		</header>
+		<nav id="tocContainer" class="isShowingTOC">
+			<ul id="toc" role="tree">
+				
+<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
+
+
+
+
+<li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
+	
+</ul></li>
+
+
+
+
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#class_methods">Class Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/invalid">invalid</a></span></li>
+	
+</ul></li>
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/center">center</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/denormalizePoint:">denormalizePoint:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/depth">depth</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/equals:">equals:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/height">height</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/isValid">isValid</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/normalizePoint:clamp:">normalizePoint:clamp:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/width">width</a></span></li>
+	
+</ul></li>
+
+
+
+
+			</ul>
+		</nav>
+		<article>
+			<div id="contents" class="isShowingTOC" role="main">
+				<a title="LeapInteractionBox Class Reference" name="top"></a>
+				<div class="main-navigation navigation-top">
+					<ul>
+<li><a href="../index.html">Index</a></li>
+<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="header">
+					<div class="section-header">
+						<h1 class="title title-header">LeapInteractionBox Class Reference</h1>
+					</div>		
+				</div>
+				<div id="container">	
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+<td class="specification-title">Inherits from</td>
+<td class="specification-value">NSObject</td>
+</tr><tr>
+<td class="specification-title">Declared in</td>
+<td class="specification-value">LeapObjectiveC.h</td>
+</tr>
+						</tbody></table></div>
+					
+					
+					
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>The LeapInteractionBox class represents a box-shaped region completely<br/>
+within the field of view of the Leap Motion controller.</p>
+
+<p>The interaction box is an axis-aligned rectangular prism and provides normalized<br/>
+coordinates for hands, fingers, and tools within this box. The InteractionBox class<br/>
+can make it easier to map positions in the Leap Motion coordinate system to 2D or<br/>
+3D coordinate systems used for application drawing.</p>
+
+<p><img src="../docs/images/Leap_InteractionBox.png"/></p>
+
+<p>The LeapInteractionBox region is defined by a center and dimensions along the x, y,<br/>
+and z axes.</p>
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						<h2 class="subtitle subtitle-tasks">Tasks</h2>
+						
+						
+						
+						
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/normalizePoint:clamp:">&ndash;&nbsp;normalizePoint:clamp:</a></code>
+		<span class="tooltip"><p>Normalizes the coordinates of a point using the interaction box.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/denormalizePoint:">&ndash;&nbsp;denormalizePoint:</a></code>
+		<span class="tooltip"><p>Converts a position defined by normalized LeapInteractionBox coordinates into device<br/>
+coordinates in millimeters.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/center">&ndash;&nbsp;center</a></code>
+		<span class="tooltip"><p>The center of the LeapInteractionBox in device coordinates (millimeters). This point<br/>
+is equidistant from all sides of the box.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/width">&ndash;&nbsp;width</a></code>
+		<span class="tooltip"><p>The width of the LeapInteractionBox in millimeters, measured along the x-axis.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/height">&ndash;&nbsp;height</a></code>
+		<span class="tooltip"><p>The height of the LeapInteractionBox in millimeters, measured along the y-axis.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/depth">&ndash;&nbsp;depth</a></code>
+		<span class="tooltip"><p>The depth of the LeapInteractionBox in millimeters, measured along the z-axis.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/isValid">&ndash;&nbsp;isValid</a></code>
+		<span class="tooltip"><p>Reports whether this is a valid LeapInteractionBox object.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/equals:">&ndash;&nbsp;equals:</a></code>
+		<span class="tooltip"><p>Reports whether this is a valid LeapInteractionBox object.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/invalid">+&nbsp;invalid</a></code>
+		<span class="tooltip"><p>Returns an invalid LeapInteractionBox object.</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+					</div>
+					
+					
+					
+					
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Class Methods" name="class_methods"></a>
+						<h2 class="subtitle subtitle-methods">Class Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/invalid" title="invalid"></a>
+	<h3 class="subsubtitle method-title">invalid</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Returns an invalid LeapInteractionBox object.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (LeapInteractionBox *)invalid</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>The invalid InteractionBox instance.</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>Since 1.0</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Returns an invalid LeapInteractionBox object.</p>
+
+<p>You can use the instance returned by this function in comparisons testing<br/>
+whether a given LeapInteractionBox instance is valid or invalid. (You can also use the<br/>
+[LeapInterationBox isValid] function.)</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">LeapObjectiveC.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Instance Methods" name="instance_methods"></a>
+						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/center" title="center"></a>
+	<h3 class="subsubtitle method-title">center</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The center of the LeapInteractionBox in device coordinates (millimeters). This point<br/>
+is equidistant from all sides of the box.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (LeapVector *)center</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>The LeapInteractionBox center in device coordinates.</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>Since 1.0</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The center of the LeapInteractionBox in device coordinates (millimeters). This point<br/>
+is equidistant from all sides of the box.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">LeapObjectiveC.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/denormalizePoint:" title="denormalizePoint:"></a>
+	<h3 class="subsubtitle method-title">denormalizePoint:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Converts a position defined by normalized LeapInteractionBox coordinates into device<br/>
+coordinates in millimeters.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (LeapVector *)denormalizePoint:(const LeapVector *)<em>position</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>normalizedPosition</em></dt>
+			<dd><p>The input position in LeapInteractionBox coordinates.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>The corresponding denormalized position in device coordinates.</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>Since 1.0</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Converts a position defined by normalized LeapInteractionBox coordinates into device<br/>
+coordinates in millimeters.</p>
+
+<p>This function performs the inverse of [LeapInteractionBox normalizePoint:].</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">LeapObjectiveC.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/depth" title="depth"></a>
+	<h3 class="subsubtitle method-title">depth</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The depth of the LeapInteractionBox in millimeters, measured along the z-axis.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (float)depth</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>The LeapInteractionBox depth in millimeters.</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>Since 1.0</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The depth of the LeapInteractionBox in millimeters, measured along the z-axis.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">LeapObjectiveC.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/equals:" title="equals:"></a>
+	<h3 class="subsubtitle method-title">equals:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Reports whether this is a valid LeapInteractionBox object.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (BOOL)equals:(const LeapInteractionBox *)<em>other</em></code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>True, if this LeapInteractionBox object contains valid data.</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>Since 1.0</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Reports whether this is a valid LeapInteractionBox object.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">LeapObjectiveC.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/height" title="height"></a>
+	<h3 class="subsubtitle method-title">height</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The height of the LeapInteractionBox in millimeters, measured along the y-axis.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (float)height</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>The LeapInteractionBox height in millimeters.</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>Since 1.0</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The height of the LeapInteractionBox in millimeters, measured along the y-axis.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">LeapObjectiveC.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/isValid" title="isValid"></a>
+	<h3 class="subsubtitle method-title">isValid</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Reports whether this is a valid LeapInteractionBox object.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (BOOL)isValid</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>True, if this LeapInteractionBox object contains valid data.</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>Since 1.0</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Reports whether this is a valid LeapInteractionBox object.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">LeapObjectiveC.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/normalizePoint:clamp:" title="normalizePoint:clamp:"></a>
+	<h3 class="subsubtitle method-title">normalizePoint:clamp:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Normalizes the coordinates of a point using the interaction box.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (LeapVector *)normalizePoint:(const LeapVector *)<em>position</em> clamp:(BOOL)<em>clamp</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>position</em></dt>
+			<dd><p>The input position in device coordinates.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>clamp</em></dt>
+			<dd><p>Whether or not to limit the output value to the range [0,1] when the<br/>
+input position is outside the LeapInteractionBox. Defaults to true.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>The normalized position.</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>Since 1.0</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Normalizes the coordinates of a point using the interaction box.</p>
+
+<p>Coordinates from the Leap frame of reference (millimeters) are converted<br/>
+to a range of [0..1] such that the minimum value of the LeapInteractionBox maps to 0<br/>
+and the maximum value of the LeapInteractionBox maps to 1.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">LeapObjectiveC.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/width" title="width"></a>
+	<h3 class="subsubtitle method-title">width</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The width of the LeapInteractionBox in millimeters, measured along the x-axis.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (float)width</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>The LeapInteractionBox width in millimeters.</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>Since 1.0</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The width of the LeapInteractionBox in millimeters, measured along the x-axis.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">LeapObjectiveC.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+					
+					
+				</div>
+				<div class="main-navigation navigation-bottom">
+					<ul>
+<li><a href="../index.html">Index</a></li>
+<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="footer">
+					<hr />
+					<div class="footer-copyright">
+						<p><span class="copyright">&copy; 2013 Leap Motion. All rights reserved. (Last updated: 2013-07-19)</span><br />
+						
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 858)</a>.</span></p>
+						
+					</div>
+				</div>
+			</div>
+		</article>
+		<script type="text/javascript">
+			function jumpToChange()
+			{
+				window.location.hash = this.options[this.selectedIndex].value;
+			}
+			
+			function toggleTOC()
+			{
+				var contents = document.getElementById('contents');
+				var tocContainer = document.getElementById('tocContainer');
+				
+				if (this.getAttribute('class') == 'open')
+				{
+					this.setAttribute('class', '');
+					contents.setAttribute('class', '');
+					tocContainer.setAttribute('class', '');
+					
+					window.name = "hideTOC";
+				}
+				else
+				{
+					this.setAttribute('class', 'open');
+					contents.setAttribute('class', 'isShowingTOC');
+					tocContainer.setAttribute('class', 'isShowingTOC');
+					
+					window.name = "";
+				}
+				return false;
+			}
+			
+			function toggleTOCEntryChildren(e)
+			{
+				e.stopPropagation();
+				var currentClass = this.getAttribute('class');
+				if (currentClass == 'children') {
+					this.setAttribute('class', 'children open');
+				}
+				else if (currentClass == 'children open') {
+					this.setAttribute('class', 'children');
+				}
+				return false;
+			}
+			
+			function tocEntryClick(e)
+			{
+				e.stopPropagation();
+				return true;
+			}
+			
+			function init()
+			{
+				var selectElement = document.getElementById('jumpTo');
+				selectElement.addEventListener('change', jumpToChange, false);
+				
+				var tocButton = document.getElementById('table_of_contents');
+				tocButton.addEventListener('click', toggleTOC, false);
+				
+				var taskTreeItem = document.getElementById('task_treeitem');
+				if (taskTreeItem.getElementsByTagName('li').length > 0)
+				{
+					taskTreeItem.setAttribute('class', 'children');
+					taskTreeItem.firstChild.setAttribute('class', 'disclosure');
+				}
+				
+				var tocList = document.getElementById('toc');
+				
+				var tocEntries = tocList.getElementsByTagName('li');
+				for (var i = 0; i < tocEntries.length; i++) {
+					tocEntries[i].addEventListener('click', toggleTOCEntryChildren, false);
+				}
+				
+				var tocLinks = tocList.getElementsByTagName('a');
+				for (var i = 0; i < tocLinks.length; i++) {
+					tocLinks[i].addEventListener('click', tocEntryClick, false);
+				}
+				
+				if (window.name == "hideTOC") {
+					toggleTOC.call(tocButton);
+				}
+			}
+			
+			window.onload = init;
+
+			
+			// If showing in Xcode, hide the TOC and Header
+			if (navigator.userAgent.match(/xcode/i)) {
+				document.getElementById("contents").className = "hideInXcode"
+				document.getElementById("tocContainer").className = "hideInXcode"
+				document.getElementById("top_header").className = "hideInXcode"
+			}
+			
+		</script>
+	</body>
+</html>
