@@ -48,7 +48,6 @@
 #include "osc_mem.h"
 #include "osc_bundle_iterator_s.h"
 #include "o.h"
-#include "osc_gconfig.h"
 #include "omax_util.h"
 #include "omax_doc.h"
 #include "omax_dict.h"
