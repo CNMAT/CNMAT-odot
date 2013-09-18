@@ -1,0 +1,236 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
+		<title>Leap_Application Document</title>
+		<meta id="xcode-display" name="xcode-display" content="render"/>
+		<link rel="stylesheet" type="text/css" href="../../css/styles.css" media="all" />
+		<link rel="stylesheet" type="text/css" media="print" href="../../css/stylesPrint.css" />	
+		<meta name="generator" content="appledoc 2.1 (build 858)" />
+	</head>
+	<body>
+		<header id="top_header">
+			<div id="library" class="hideInXcode">
+				<h1><a id="libraryTitle" href="../index.html">Leap Motion API </a></h1>
+				<a id="developerHome" href="../index.html">Leap Motion</a>
+			</div>
+			
+			<div id="title" role="banner">
+				<h1 class="hideInXcode" id="pageTitleHeader">Leap_Application Document</h1>
+			</div>
+			<ul id="headerButtons" role="toolbar"></ul>
+		</header>
+		<article>
+			<a title="Leap_Application Document" name="top"></a>
+			<div id="overview_contents" role="main">
+				<div id="container">	
+					<h1>Leap Motion Settings  </h1>
+
+<p>This article describes the Leap Motion Control Panel, which you use to set the available options for your Leap Motion Controller.</p>
+
+<h2>Overview</h2>
+
+<p>When the Leap Motion menu bar application is running, it displays an icon in Mac Finder bar. <br/>
+When a Leap Motion device is plugged in and working properly, the icon turns green. <br/>
+Other colors indicate errors and abnormal operating conditions:</p>
+
+<ul>
+<li><img src="../../docs/images/Leap_App_Icon_Unplugged.png" alt="Unplugged-Icon" /> — the Leap Motion controller is unplugged (or the Leap application hasn&rsquo;t detected it yet).</li>
+<li><img src="../../docs/images/Leap_App_Icon_Normal.png" alt="Normal-Icon" /> — the Leap Motion controller and application are operating normally.</li>
+<li><img src="../../docs/images/Leap_App_Icon_Robust.png" alt="Robust-Icon" /> — the Leap Motion controller is operating in robust mode. See Operating Modes_ for more information.</li>
+<li><img src="../../docs/images/Leap_App_Icon_Smudge.png" alt="Smudge-Icon" /> — shown briefly, this icon indicates that a smudge or other contamination might be clouding the Leap Motion Controller sensor window.</li>
+<li><img src="../../docs/images/Leap_App_Icon_Error.png" alt="Error-Icon" /> — an error has occured from which the Leap application is unable to recover. Open the application log using the <code>Show Log</code> menu command for more information about the error.</li>
+</ul>
+
+
+<p>The Leap Motion application icon menu provides the following commands:</p>
+
+<ul>
+<li>Launch Airspace — Opens the Airspace application.</li>
+<li>Settings&hellip; — Opens the Leap Motion Control Panel.</li>
+<li>Visualizer&hellip; — Launches the Visualizer application.</li>
+<li>Pause/Resume Tracking — Stops/Resumes the production of Leap Motion tracking data.</li>
+<li>Quit — Exits the control panel application, removing the icon from the menu bar. Leap Motion tracking data remains available from the Leap Motiondaemon.</li>
+</ul>
+
+
+<h2>Leap Motion Settings</h2>
+
+<p>You can adjust the behavior of the Leap Motion system and perform diagnostic checks using the Leap Motion Control Panel.</p>
+
+<h3>General settings</h3>
+
+<p>The General page of the Leap Motion Control Panel provides the following settings:</p>
+
+<p>Check the <em>Allow Web Apps</em> checkbox to turn on the WebSocket server that provides tracking data to web applications. (It is possible for other applications to connect to the WebSocket server, so turning this setting off could affect a few desktop applications as well.)</p>
+
+<p>Check <em>Allow Background Apps</em> to permit applications to receive tracking data when they are not the foreground, focused application.</p>
+
+<p>Check <em>Automatic Power Saving</em> to allow the Leap Motion software to reduce power usage by adjusting the tracking frame rate based on the amount of movement in the field of view. Power saving is always used when a computer is running on battery power.</p>
+
+<p>Check <em>Automatic Interaction Height</em> to allow the Leap Motion software to adjust the height of the interaction box automatically. This setting affects the InteractionBox class provided by the Leap Motion API. Adjust the <em>Interaction Height</em> slider to manually set the interaction box height.</p>
+
+<p>Check <em>Automatically Check for Updates</em> to allow the Leap Motion software to automatically check for and download software updates on a regular interval. Click the <em>Check for Updates</em> button to check immediately. Click <em>Install Update</em> when an update is available.</p>
+
+<h2>Tracking settings</h2>
+
+<p>The Leap Motion system has several operating modes which determine how the system analyzes data. The following modes are user-selectable from the Control panel of the Leap Motion application:</p>
+
+<p>Tracking Priority:</p>
+
+<ul>
+<li>Precision — prioritizes precision over speed</li>
+<li>Balanced — balances precision with speed</li>
+<li>High Speed — prioritizes speed over precision</li>
+</ul>
+
+
+<p>Check <em>Auto Orient Device</em> to allow the device to flip the z axis when it detects a hand entering the field of view from the opposite side. Click the <em>Reverse Orientation</em> button to flip the axis manually.</p>
+
+<h3>Robust tracking mode</h3>
+
+<p>The Leap Motion Controller automatically drops into robust mode when lighting conditions become poor. The Leap Motion switches back into the last user-selected operating mode when lighting conditions improve, but will remain in robust mode for at least 30 seconds. The Leap Motion task bar or menu bar icon changes from green to yellow when in this mode. While in robust mode, the other tracking modes cannot be selected.</p>
+
+<p>The <em>Robust Mode</em> improves the reliability of the tracking data in bright lighting conditions. Robust mode allows the Leap Motion Controller to operate in a wider range of environmental conditions; however, other performance characteristics may be reduced. The main effects on performance are that there will be increased processing latency and very fast motions by the user will cause a loss of tracking data.</p>
+
+<h2>Troubleshooting</h2>
+
+<p>Click <em>Show Software Log</em> to view events related to the Leap Motion application. If you are having problems, we may ask you to save the log and send it to <code>Leap Motion</code>_ to help us assess the problem. You can save the log by copying the contents of the log window to an email or text document.</p>
+
+<p>Click <em>Diagnostic Visualizer</em> to open the developer Visualizer application.</p>
+
+<p>Click <em>Recalibrate Device</em> to start the device calibration utility. See <a href="#Device_recalibration">Device recalibration</a> for  information.</p>
+
+<p>Click <em>Report Bug</em> to open the bug report form. See <a href="#Reporting_bugs">Reporting bugs</a> for information.</p>
+
+<p>Click <em>Restore Default Settings</em> to revert all of the Leap Motion settings to their original values.</p>
+
+<p>Check the <em>Low Resource Mode</em> checkbox to reduce the CPU and USB bandwidth used by the Leap Motion device and software. This setting reduces maximum tracking range, speed, and accuracy, but may be necessary on computers with congested USB busses (from multiple USB and Bluetooth devices) or lower-rated CPU chips.</p>
+
+<p>Click <em>Run Diagnostics</em> to perform a series of system and environmental tests.</p>
+
+<h3>Diagnostics</h3>
+
+<p>The Diagnostic tests include two sets of checks. The first set tests the Leap Motion device and software:</p>
+
+<ul>
+<li>Authentication — validates the controller firmware identity. If this test fails, please contact Leap Motion support.</li>
+<li>Device Test — checks that the controller can send data to the Leap Motion software.</li>
+<li>Check USB Bandwidth — checks that the USB bus has sufficient bandwidth.</li>
+<li>Software Test — checks that the Leap Motion software produces tracking data (this test an object in view during the test).</li>
+</ul>
+
+
+<p>The second set of checks tests external environmental factors:</p>
+
+<ul>
+<li>Check for smudge — checks the device window for dirt and smudges. If this test fails, clean the device window with a soft cloth.</li>
+<li>Check lighting conditions — checks for bright infrared light sources in the Leap Motion controller&rsquo;s field of view. If this tests fails, consider moving controller or the light source, if possible, or shielding the controller from the light source.</li>
+</ul>
+
+
+<p>Click <em>Report Diagnostics</em> to send a report containing the test results to Leap Motion. We use the information for quality control.</p>
+
+<p><a name="Device_recalibration"></a></p>
+
+<h2>Device recalibration</h2>
+
+<p>If the sensors on the Leap device are knocked out of their initial<br/>
+alignment, the device must be recalibrated. Symptoms that may indicate<br/>
+the need to recalibrate include:</p>
+
+<blockquote><ul>
+<li>Persistent jumpiness</li>
+<li>Frequent discontinuities in the tracking data</li>
+<li>Aberrations in tracking data that occur only in certain areas of<br/>
+the field of view</li>
+<li>Poor tracking range</li>
+</ul>
+</blockquote>
+
+<p>You can look for these symptoms using the <a href="Leap_Visualizer.html">Leap<br/>
+Visualizer</a>.</p>
+
+<p>To recalibrate your Leap device:</p>
+
+<ol>
+<li>Open the Leap Motion Settins application using the icon menu on the Windows Taskbar or Mac Finder bar.</li>
+<li>Select the Troubleshooting page.</li>
+<li>Click the <em>Recalibrate Device</em> button.</li>
+<li><p>Follow the on-screen instructions to perform the calibration procedure.</p>
+
+<p> <img src="../../docs/images/Leap_Recalibrate.png" alt="Calibration" /></p></li>
+</ol>
+
+
+<p>You will need a flat, reflective surface. A mirror is ideal, but many<br/>
+other reflective surfaces like a flat screen monitor will work accetably<br/>
+as well. During the procedure, hold the Leap so that the LEDs shine on<br/>
+the reflective surface and are reflected back into the top of the<br/>
+device. The calibration window displays a disk that moves as you change<br/>
+the angle between the surface and the device. Rotate the Leap to move<br/>
+this disc so that it &ldquo;paints&rdquo; the window. Moving the Leap up and down or<br/>
+side to side does not adversely affect the calibration, but calibration<br/>
+requires rotation.</p>
+
+<p><a name="Reporting_bugs"></a></p>
+
+<h2>Reporting bugs</h2>
+
+<p>If you are having problems with the Leap software, please contact us so<br/>
+we can help you resolve the issue. You can submit reports on the ~!@<a href="https://developer.leapmotion.com">Leap<br/>
+Motion</a>@!~ Developer Portal or by using<br/>
+the Bug Report form of the Leap Application.</p>
+
+<p>We may ask you to reproduce the issue on your device and record some<br/>
+diagnostic information which you can send to ~!@<a href="https://developer.leapmotion.com">Leap<br/>
+Motion</a>@!~ to help us assess the problem.<br/>
+You can start and stop the recording of diagnostic information from the<br/>
+Leap Bug Report form. The data is compressed and encrypted and is not<br/>
+useful for your local application debugging. The data recorded can grow<br/>
+large over time, so we do not recommend recording diagnostics for an<br/>
+extended period.</p>
+
+<p>To report a bug,</p>
+
+<ol>
+<li>Open the Leap Motion Settins application using the icon menu on the Windows Taskbar or Mac Finder bar.</li>
+<li>Select the Troubleshooting page.</li>
+<li>Click the Report Bug button.</li>
+<li>On the Bug Report form, select the reason that best fits your bug<br/>
+from the Reason drop-down list.</li>
+<li>Add any important details, such as how to reproduce your bug in the<br/>
+Details section.</li>
+<li>For some types of bugs, you will be asked to record diagnostic<br/>
+information.</li>
+<li>When finished, click the Send button. Your bug information and<br/>
+recorded diagnostics will be sent to Leap Motion.</li>
+</ol>
+
+
+<p>If you are asked to record diagnostic information,</p>
+
+<ol>
+<li>Press the <em>Record</em> button.</li>
+<li>Reproduce the problem (it may help to have the <a href="Leap_Visualizer.html">Leap<br/>
+Visualizer</a> running).</li>
+<li>Press the <em>Stop</em> button after a short period of time.</li>
+<li>Click <em>Send</em> to upload the diagnostic file to ~!@<a href="https://developer.leapmotion.com">Leap<br/>
+Motion</a>@!~ for analysis.</li>
+</ol>
+
+				</div>
+				<div id="footer">
+					<hr />
+					<div class="footer-copyright">
+						<p><span class="copyright">&copy; 2013 Leap Motion. All rights reserved. (Last updated: 2013-07-19)</span><br />
+						
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 858)</a>.</span></p>
+						
+					
+					</div>
+				</div>
+			</div>
+		</article>
+	</body>
+</html>

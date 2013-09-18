@@ -1,0 +1,176 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Leap.Matrix &mdash; Leap Motion 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/leap.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="Leap Motion 1.0 documentation" href="../index.html" /> 
+  </head>
+  <body>
+    <div class="header-wrapper">
+      <div class="header">
+        <div class="headertitle"><a
+          href="../index.html">Leap Motion 1.0 documentation</a></div>
+        <div class="rel">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a>
+        </div>
+       </div>
+    </div>
+
+    <div class="content-wrapper">
+      <div class="content">
+        <div class="document">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="leap-matrix">
+<h1>Leap.Matrix<a class="headerlink" href="#leap-matrix" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="Leap.Matrix">
+<em class="property">class </em><tt class="descclassname">Leap.</tt><tt class="descname">Matrix</tt><big>(</big><em>*args</em><big>)</big><a class="headerlink" href="#Leap.Matrix" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div>The Matrix struct represents a transformation matrix.</div></blockquote>
+<p>To use this struct to transform a Vector, construct a matrix containing the
+desired transformation and then use the Matrix::transformPoint() or
+Matrix::transformDirection() functions to apply the transform.</p>
+<p>Transforms can be combined by multiplying two or more transform matrices using
+the * operator.</p>
+<dl class="attribute">
+<dt id="Leap.Matrix.identity">
+<tt class="descname">identity</tt><em class="property"> = &lt;Leap.Matrix; proxy of &lt;Swig Object of type 'Leap::Matrix *' at 0x102640990&gt; &gt;</em><a class="headerlink" href="#Leap.Matrix.identity" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="Leap.Matrix.origin">
+<tt class="descname">origin</tt><a class="headerlink" href="#Leap.Matrix.origin" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="Leap.Matrix.rigid_inverse">
+<tt class="descname">rigid_inverse</tt><big>(</big><big>)</big><a class="headerlink" href="#Leap.Matrix.rigid_inverse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Performs a matrix inverse if the matrix consists entirely of rigid
+transformations (translations and rotations).  If the matrix is not rigid,
+this operation will not represent an inverse.</p>
+<p>Note that all matricies that are directly returned by the API are rigid.</p>
+<p>Returns: The rigid inverse of the matrix.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Leap.Matrix.set_rotation">
+<tt class="descname">set_rotation</tt><big>(</big><em>*args</em><big>)</big><a class="headerlink" href="#Leap.Matrix.set_rotation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets this transformation matrix to represent a rotation around the specified vector.</p>
+<p>This function erases any previous rotation and scale transforms applied
+to this matrix, but does not affect translation.</p>
+<dl class="docutils">
+<dt>Arguments:</dt>
+<dd>axis (Leap::Vector const &amp;) &#8211; A Vector specifying the axis of rotation.
+angleRadians (float) &#8211; The amount of rotation in radians.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="Leap.Matrix.to_array_3x3">
+<tt class="descname">to_array_3x3</tt><big>(</big><em>output=None</em><big>)</big><a class="headerlink" href="#Leap.Matrix.to_array_3x3" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="Leap.Matrix.to_array_4x4">
+<tt class="descname">to_array_4x4</tt><big>(</big><em>output=None</em><big>)</big><a class="headerlink" href="#Leap.Matrix.to_array_4x4" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="Leap.Matrix.transform_direction">
+<tt class="descname">transform_direction</tt><big>(</big><em>*args</em><big>)</big><a class="headerlink" href="#Leap.Matrix.transform_direction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transforms a vector with this matrix by transforming its rotation and
+scale only.</p>
+<dl class="docutils">
+<dt>Arguments:</dt>
+<dd>in (Leap::Vector const &amp;) &#8211; The Vector to transform.</dd>
+</dl>
+<p>Returns: A new Vector representing the transformed original.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Leap.Matrix.transform_point">
+<tt class="descname">transform_point</tt><big>(</big><em>*args</em><big>)</big><a class="headerlink" href="#Leap.Matrix.transform_point" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transforms a vector with this matrix by transforming its rotation,
+scale, and translation.</p>
+<p>Translation is applied after rotation and scale.</p>
+<dl class="docutils">
+<dt>Arguments:</dt>
+<dd>in (Leap::Vector const &amp;) &#8211; The Vector to transform.</dd>
+</dl>
+<p>Returns: A new Vector representing the transformed original.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="Leap.Matrix.x_basis">
+<tt class="descname">x_basis</tt><a class="headerlink" href="#Leap.Matrix.x_basis" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="Leap.Matrix.y_basis">
+<tt class="descname">y_basis</tt><a class="headerlink" href="#Leap.Matrix.y_basis" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="Leap.Matrix.z_basis">
+<tt class="descname">z_basis</tt><a class="headerlink" href="#Leap.Matrix.z_basis" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer-wrapper">
+      <div class="footer">
+        <div class="left">
+          <a href="../genindex.html" title="General Index"
+             >index</a>
+        </div>
+
+        <div class="right">
+          
+    <div class="footer">
+        &copy; Copyright 2013, Leap Motion.
+    </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+  </body>
+</html>
