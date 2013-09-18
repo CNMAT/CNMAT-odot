@@ -98,6 +98,8 @@
 		525525481504D2BB00A10E5D /* o.unless.c in Sources */ = {isa = PBXBuildFile; fileRef = 525525471504D2BB00A10E5D /* o.unless.c */; };
 		5255254A1504D2C400A10E5D /* o.var.c in Sources */ = {isa = PBXBuildFile; fileRef = 525525491504D2C400A10E5D /* o.var.c */; };
 		5255254C1504D2CC00A10E5D /* o.when.c in Sources */ = {isa = PBXBuildFile; fileRef = 5255254B1504D2CC00A10E5D /* o.when.c */; };
+		527294B417E9314000AA15E1 /* o.io.leap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 52B654BE17CD5F45004FD84E /* o.io.leap.cpp */; };
+		527294B617E9335600AA15E1 /* libLeap.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 527294B517E9335600AA15E1 /* libLeap.dylib */; };
 		529781591555B6FD0018A44D /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */; };
 		52A8394016E978D7002E273C /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52CEF59416375BFB0016EC39 /* commonsyms.c */; };
 		52A8394216E978D7002E273C /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */; };
@@ -144,7 +146,6 @@
 		52B53D1B174FD0B300237A19 /* libomax.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5C6163763CF0016EC39 /* libomax.a */; };
 		52B53D21174FD0EF00237A19 /* o.random.c in Sources */ = {isa = PBXBuildFile; fileRef = 52B53D20174FD0EF00237A19 /* o.random.c */; };
 		52B654C317CD5F94004FD84E /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52CEF59416375BFB0016EC39 /* commonsyms.c */; };
-		52B654C417CD5F94004FD84E /* o.O.c in Sources */ = {isa = PBXBuildFile; fileRef = 52F0C48617B581FF009FBD24 /* o.O.c */; };
 		52B654C617CD5F94004FD84E /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */; };
 		52B654C717CD5F94004FD84E /* libo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5AD163763BD0016EC39 /* libo.a */; };
 		52B654C817CD5F94004FD84E /* libomax.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5C6163763CF0016EC39 /* libomax.a */; };
@@ -529,6 +530,7 @@
 		525525471504D2BB00A10E5D /* o.unless.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.unless.c; path = o.unless/o.unless.c; sourceTree = "<group>"; };
 		525525491504D2C400A10E5D /* o.var.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.var.c; path = o.var/o.var.c; sourceTree = "<group>"; };
 		5255254B1504D2CC00A10E5D /* o.when.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.when.c; path = o.when/o.when.c; sourceTree = "<group>"; };
+		527294B517E9335600AA15E1 /* libLeap.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libLeap.dylib; path = "o.io.leap/LeapSDK/lib/libc++/libLeap.dylib"; sourceTree = "<group>"; };
 		529781601555B6FD0018A44D /* o.flatten.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.flatten.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
 		52A8393A16E978CD002E273C /* o.append.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = o.append.c; path = o.append/o.append.c; sourceTree = "<group>"; };
 		52A8394916E978D7002E273C /* o.append.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.append.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -550,7 +552,7 @@
 		52B53D1F174FD0B300237A19 /* o.random.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.random.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
 		52B53D20174FD0EF00237A19 /* o.random.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.random.c; path = o.random/o.random.c; sourceTree = "<group>"; };
 		52B654BE17CD5F45004FD84E /* o.io.leap.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = o.io.leap.cpp; path = o.io.leap/o.io.leap.cpp; sourceTree = "<group>"; };
-		52B654CC17CD5F94004FD84E /* o.O copy.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "o.O copy.mxo"; sourceTree = BUILT_PRODUCTS_DIR; };
+		52B654CC17CD5F94004FD84E /* o.io.leap.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.io.leap.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
 		52B654EF17D159B6004FD84E /* o.edge~.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = "o.edge~.c"; path = "o.edge~/o.edge~.c"; sourceTree = "<group>"; };
 		52B654FD17D159B9004FD84E /* o.edge~.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "o.edge~.mxo"; sourceTree = BUILT_PRODUCTS_DIR; };
 		52B6550117D1690F004FD84E /* MaxAudioAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MaxAudioAPI.framework; path = "../max6-sdk/c74support/msp-includes/MaxAudioAPI.framework"; sourceTree = "<group>"; };
@@ -891,6 +893,7 @@
 				52B654C617CD5F94004FD84E /* Carbon.framework in Frameworks */,
 				52B654C717CD5F94004FD84E /* libo.a in Frameworks */,
 				52B654C817CD5F94004FD84E /* libomax.a in Frameworks */,
+				527294B617E9335600AA15E1 /* libLeap.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1016,6 +1019,7 @@
 				52B6550117D1690F004FD84E /* MaxAudioAPI.framework */,
 				52CEF5C6163763CF0016EC39 /* libomax.a */,
 				52CEF5AD163763BD0016EC39 /* libo.a */,
+				527294B517E9335600AA15E1 /* libLeap.dylib */,
 				08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */,
 			);
 			name = "External Frameworks and Libraries";
@@ -1057,7 +1061,7 @@
 				52B53D0D17484E5500237A19 /* o.iterate.mxo */,
 				52B53D1F174FD0B300237A19 /* o.random.mxo */,
 				52F0C48517B581CC009FBD24 /* o.O.mxo */,
-				52B654CC17CD5F94004FD84E /* o.O copy.mxo */,
+				52B654CC17CD5F94004FD84E /* o.io.leap.mxo */,
 				52B654FD17D159B9004FD84E /* o.edge~.mxo */,
 				52B6551117D68D7C004FD84E /* o.schedule~.mxo */,
 				52B6552617E3B971004FD84E /* o.io.bluetoothle.hrm.mxo */,
@@ -1920,6 +1924,7 @@
 				52B654C117CD5F94004FD84E /* Resources */,
 				52B654C217CD5F94004FD84E /* Sources */,
 				52B654C517CD5F94004FD84E /* Frameworks */,
+				527294B317E92F5200AA15E1 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1927,7 +1932,7 @@
 			);
 			name = o.io.leap;
 			productName = cv.jit.dilate;
-			productReference = 52B654CC17CD5F94004FD84E /* o.O copy.mxo */;
+			productReference = 52B654CC17CD5F94004FD84E /* o.io.leap.mxo */;
 			productType = "com.apple.product-type.bundle";
 		};
 		52B654F017D159B9004FD84E /* o.edge~ */ = {
@@ -2373,6 +2378,22 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		527294B317E92F5200AA15E1 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cp $SRCROOT/o.io.leap/LeapSDK/lib/libc++/libLeap.dylib $SRCROOT/build/Release/o.io.leap.mxo/Contents/MacOS";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		520C0E1C158468F7005F2955 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -2659,7 +2680,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				52B654C317CD5F94004FD84E /* commonsyms.c in Sources */,
-				52B654C417CD5F94004FD84E /* o.O.c in Sources */,
+				527294B417E9314000AA15E1 /* o.io.leap.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6069,17 +6090,25 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(inherited)";
-				HEADER_SEARCH_PATHS = "$(inherited)";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(HEADER_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+				);
+				HEADER_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/o.io.leap/LeapSDK/include\"";
 				INFOPLIST_FILE = "$(inherited)";
 				INSTALL_PATH = "$(inherited)";
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_3)",
+				);
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../libo\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../libomax\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_3 = "\"$(SRCROOT)/o.io.leap/LeapSDK/lib/libc++\"";
 				MACOSX_DEPLOYMENT_TARGET = 10.5;
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
 				PREBINDING = YES;
-				PRODUCT_NAME = "o.O copy";
+				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
 				SYMROOT = "$(inherited)";
@@ -6107,17 +6136,25 @@
 				GCC_MODEL_TUNING = G4;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(inherited)";
-				HEADER_SEARCH_PATHS = "$(inherited)";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(HEADER_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+				);
+				HEADER_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/o.io.leap/LeapSDK/include\"";
 				INFOPLIST_FILE = "$(inherited)";
 				INSTALL_PATH = "$(inherited)";
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_3)",
+				);
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../libo\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../libomax\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_3 = "\"$(SRCROOT)/o.io.leap/LeapSDK/lib/libc++\"";
 				MACOSX_DEPLOYMENT_TARGET = 10.5;
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
 				PREBINDING = YES;
-				PRODUCT_NAME = "o.O copy";
+				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
 				SYMROOT = "$(inherited)";
