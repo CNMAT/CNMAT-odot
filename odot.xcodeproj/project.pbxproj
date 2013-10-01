@@ -13,6 +13,8 @@
 			buildPhases = (
 			);
 			dependencies = (
+				5292DC3D17FB7B5F00598BDC /* PBXTargetDependency */,
+				5292DC3B17FB7B5500598BDC /* PBXTargetDependency */,
 				52B654FF17D15A3A004FD84E /* PBXTargetDependency */,
 				52B53D1117484EF400237A19 /* PBXTargetDependency */,
 				52B53CFD174828B200237A19 /* PBXTargetDependency */,
@@ -408,6 +410,20 @@
 			proxyType = 1;
 			remoteGlobalIDString = 525524EE1504D16600A10E5D;
 			remoteInfo = o.when;
+		};
+		5292DC3A17FB7B5500598BDC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 527294B817EDE93B00AA15E1;
+			remoteInfo = o.context;
+		};
+		5292DC3C17FB7B5F00598BDC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 52B6551917E3B971004FD84E;
+			remoteInfo = o.io.bluetoothle.hrm;
 		};
 		529781621555B7490018A44D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -2850,6 +2866,16 @@
 			isa = PBXTargetDependency;
 			target = 525524EE1504D16600A10E5D /* o.when */;
 			targetProxy = 525525241504D1FE00A10E5D /* PBXContainerItemProxy */;
+		};
+		5292DC3B17FB7B5500598BDC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 527294B817EDE93B00AA15E1 /* o.context */;
+			targetProxy = 5292DC3A17FB7B5500598BDC /* PBXContainerItemProxy */;
+		};
+		5292DC3D17FB7B5F00598BDC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 52B6551917E3B971004FD84E /* o.io.bluetoothle.hrm */;
+			targetProxy = 5292DC3C17FB7B5F00598BDC /* PBXContainerItemProxy */;
 		};
 		529781631555B7490018A44D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
