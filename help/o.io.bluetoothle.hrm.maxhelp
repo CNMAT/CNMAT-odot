@@ -5,10 +5,10 @@
 			"major" : 6,
 			"minor" : 1,
 			"revision" : 2,
-			"architecture" : "x64"
+			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 657.0, 44.0, 936.0, 914.0 ],
+		"rect" : [ 224.0, 44.0, 1416.0, 1070.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -29,6 +29,357 @@
 		"tags" : "",
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-56",
+					"maxclass" : "scope~",
+					"numinlets" : 2,
+					"numoutlets" : 0,
+					"patching_rect" : [ 240.0, 504.0, 464.0, 112.0 ],
+					"presentation_rect" : [ 241.0, 506.0, 0.0, 0.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-55",
+					"maxclass" : "scope~",
+					"numinlets" : 2,
+					"numoutlets" : 0,
+					"patching_rect" : [ 240.0, 632.0, 464.0, 112.0 ],
+					"presentation_rect" : [ 239.0, 631.0, 0.0, 0.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-54",
+					"maxclass" : "scope~",
+					"numinlets" : 2,
+					"numoutlets" : 0,
+					"patching_rect" : [ 240.0, 885.5, 464.0, 112.0 ],
+					"presentation_rect" : [ 761.0, 789.5, 0.0, 0.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-53",
+					"maxclass" : "scope~",
+					"numinlets" : 2,
+					"numoutlets" : 0,
+					"patching_rect" : [ 240.0, 760.0, 464.0, 112.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-2",
+					"maxclass" : "newobj",
+					"numinlets" : 2,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "FullPacket" ],
+					"patching_rect" : [ 1198.5, 296.0, 97.0, 20.0 ],
+					"text" : "o.route /address"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-4",
+					"maxclass" : "newobj",
+					"numinlets" : 2,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "FullPacket" ],
+					"patching_rect" : [ 1160.0, 352.0, 97.0, 20.0 ],
+					"text" : "o.route /address"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-6",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "" ],
+					"patching_rect" : [ 1160.0, 253.0, 32.5, 20.0 ],
+					"text" : "t l l"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-13",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "FullPacket" ],
+					"patching_rect" : [ 1160.0, 200.0, 174.0, 20.0 ],
+					"text" : "o.expr /address = /devices[[/n]]"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-14",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 1276.0, 104.0, 72.0, 20.0 ],
+					"text" : "loadmess 1"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-15",
+					"maxclass" : "newobj",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "FullPacket" ],
+					"patching_rect" : [ 1160.0, 168.0, 50.0, 20.0 ],
+					"text" : "o.union"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-27",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "FullPacket" ],
+					"patching_rect" : [ 1276.0, 136.0, 69.0, 20.0 ],
+					"text" : "o.pack /n 0"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-28",
+					"linecount" : 12,
+					"maxclass" : "o.message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 1075.0, 424.0, 344.0, 167.0 ],
+					"text" : "/Polar/H7/25A661/status \"disconnected\" \n/self \"/Polar/H7/25A661\" \n/Polar/H7/25A661/heartrate 94 \n/Polar/H7/25A661/sensorcontact/support true \n/Polar/H7/25A661/sensorcontact/status true \n/Polar/H7/25A661/energyexpended/support false \n/Polar/H7/25A661/rrinterval/support true \n/Polar/H7/25A661/rrinterval/seconds 0.635742 0.620117 \n/Polar/H7/25A661/RSSI/dBm -58 \n/Polar/H7/25A661/manufacturer \"Polar Electro Oy\" \n/Polar/H7/25A661/location \"Chest\" \n/Polar/H7/25A661/devicename \"Polar H7 25A661\" \n",
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-67",
+					"maxclass" : "newobj",
+					"numinlets" : 2,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "FullPacket" ],
+					"patching_rect" : [ 838.5, 296.0, 97.0, 20.0 ],
+					"text" : "o.route /address"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-66",
+					"maxclass" : "newobj",
+					"numinlets" : 2,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "FullPacket" ],
+					"patching_rect" : [ 800.0, 352.0, 97.0, 20.0 ],
+					"text" : "o.route /address"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-65",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "" ],
+					"patching_rect" : [ 800.0, 253.0, 32.5, 20.0 ],
+					"text" : "t l l"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-64",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "FullPacket" ],
+					"patching_rect" : [ 800.0, 200.0, 174.0, 20.0 ],
+					"text" : "o.expr /address = /devices[[/n]]"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-63",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 916.0, 104.0, 72.0, 20.0 ],
+					"text" : "loadmess 0"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-62",
+					"maxclass" : "newobj",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "FullPacket" ],
+					"patching_rect" : [ 800.0, 168.0, 50.0, 20.0 ],
+					"text" : "o.union"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-61",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "FullPacket" ],
+					"patching_rect" : [ 916.0, 136.0, 69.0, 20.0 ],
+					"text" : "o.pack /n 0"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-59",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "FullPacket" ],
+					"patching_rect" : [ 800.0, 72.0, 213.0, 20.0 ],
+					"text" : "o.expr /devices = sort(getaddresses())"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-51",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 32.0, 209.5, 39.0, 20.0 ],
+					"text" : "o.self"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-22",
+					"maxclass" : "gain~",
+					"numinlets" : 2,
+					"numoutlets" : 2,
+					"outlettype" : [ "signal", "int" ],
+					"parameter_enable" : 0,
+					"patching_rect" : [ 32.5, 768.0, 22.0, 140.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-19",
+					"maxclass" : "newobj",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "signal" ],
+					"patching_rect" : [ 32.0, 704.0, 49.0, 20.0 ],
+					"text" : "*~ 100."
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-18",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "signal", "list" ],
+					"patching_rect" : [ 32.0, 736.0, 191.0, 20.0 ],
+					"text" : "resonators~ 440. 1. 7. 800 0.5 15."
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-17",
+					"maxclass" : "flonum",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "float", "bang" ],
+					"parameter_enable" : 0,
+					"patching_rect" : [ 560.0, 136.0, 120.0, 20.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-7",
+					"maxclass" : "newobj",
+					"numinlets" : 2,
+					"numoutlets" : 2,
+					"outlettype" : [ "float", "" ],
+					"patching_rect" : [ 560.0, 104.0, 37.0, 20.0 ],
+					"text" : "timer"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-41",
 					"maxclass" : "button",
 					"numinlets" : 1,
@@ -48,8 +399,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 560.0, 266.5, 344.0, 167.0 ],
-					"text" : "/Polar/H7/0055B1 [\n/self \"/Polar/H7/0055B1\" \n/Polar/H7/0055B1/heartrate 72 \n/Polar/H7/0055B1/sensorcontact/support true \n/Polar/H7/0055B1/sensorcontact/status true \n/Polar/H7/0055B1/energyexpended/support false \n/Polar/H7/0055B1/rrinterval/support true \n/Polar/H7/0055B1/rrinterval/seconds 0.823242 \n/Polar/H7/0055B1/manufacturer \"Polar Electro Oy\" \n/Polar/H7/0055B1/location \"Chest\" \n/Polar/H7/0055B1/devicename \"Polar H7 0055B1\" \n]\n",
+					"patching_rect" : [ 715.0, 424.0, 344.0, 167.0 ],
+					"text" : "/Polar/H7/0055B1/status \"disconnected\" \n/self \"/Polar/H7/0055B1\" \n/Polar/H7/0055B1/heartrate 80 \n/Polar/H7/0055B1/sensorcontact/support true \n/Polar/H7/0055B1/sensorcontact/status false \n/Polar/H7/0055B1/energyexpended/support false \n/Polar/H7/0055B1/rrinterval/support false \n/Polar/H7/0055B1/RSSI/dBm -59 \n/Polar/H7/0055B1/rrinterval/seconds 0.484375 0.291016 \n/Polar/H7/0055B1/manufacturer \"Polar Electro Oy\" \n/Polar/H7/0055B1/location \"Chest\" \n/Polar/H7/0055B1/devicename \"Polar H7 0055B1\" \n",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -69,10 +420,10 @@
 							"major" : 6,
 							"minor" : 1,
 							"revision" : 2,
-							"architecture" : "x64"
+							"architecture" : "x86"
 						}
 ,
-						"rect" : [ 25.0, 69.0, 723.0, 794.0 ],
+						"rect" : [ 25.0, 69.0, 786.0, 968.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -161,13 +512,13 @@
 									"fontname" : "Arial",
 									"fontsize" : 12.0,
 									"id" : "obj-19",
-									"linecount" : 12,
+									"linecount" : 30,
 									"maxclass" : "o.message",
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 131.0, 573.0, 283.0, 167.0 ],
-									"text" : "/Polar/H7/0055B1 [\n/self \"/Polar/H7/0055B1\" \n/Polar/H7/0055B1/heartrate 72 \n/Polar/H7/0055B1/sensorcontact/support true \n/Polar/H7/0055B1/sensorcontact/status true \n/Polar/H7/0055B1/energyexpended/support false \n/Polar/H7/0055B1/rrinterval/support true \n/Polar/H7/0055B1/rrinterval/seconds 0.823242 \n/Polar/H7/0055B1/manufacturer \"Polar Electro Oy\" \n/Polar/H7/0055B1/location \"Chest\" \n/Polar/H7/0055B1/devicename \"Polar H7 0055B1\" \n]\n",
+									"patching_rect" : [ 131.0, 573.0, 283.0, 368.0 ],
+									"text" : "/Polar/H7/0055B1 [\n/Polar/H7/0055B1/status \"disconnected\" \n/self \"/Polar/H7/0055B1\" \n/Polar/H7/0055B1/heartrate 80 \n/Polar/H7/0055B1/sensorcontact/support true \n/Polar/H7/0055B1/sensorcontact/status false \n/Polar/H7/0055B1/energyexpended/support false \n/Polar/H7/0055B1/rrinterval/support false \n/Polar/H7/0055B1/RSSI/dBm -59 \n/Polar/H7/0055B1/rrinterval/seconds 0.484375 0.291016 \n/Polar/H7/0055B1/manufacturer \"Polar Electro Oy\" \n/Polar/H7/0055B1/location \"Chest\" \n/Polar/H7/0055B1/devicename \"Polar H7 0055B1\" \n]\n/Polar/H7/25A661 [\n/Polar/H7/25A661/status \"disconnected\" \n/self \"/Polar/H7/25A661\" \n/Polar/H7/25A661/heartrate 94 \n/Polar/H7/25A661/sensorcontact/support true \n/Polar/H7/25A661/sensorcontact/status true \n/Polar/H7/25A661/energyexpended/support false \n/Polar/H7/25A661/rrinterval/support true \n/Polar/H7/25A661/rrinterval/seconds 0.635742 0.620117 \n/Polar/H7/25A661/RSSI/dBm -58 \n/Polar/H7/25A661/manufacturer \"Polar Electro Oy\" \n/Polar/H7/25A661/location \"Chest\" \n/Polar/H7/25A661/devicename \"Polar H7 25A661\" \n]\n",
 									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 
@@ -289,13 +640,13 @@
 									"fontname" : "Arial",
 									"fontsize" : 12.0,
 									"id" : "obj-37",
-									"linecount" : 10,
+									"linecount" : 25,
 									"maxclass" : "o.message",
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 50.0, 229.0, 283.0, 141.0 ],
-									"text" : "/self \"/Polar/H7/0055B1\" \n/Polar/H7/0055B1/heartrate 72 \n/Polar/H7/0055B1/sensorcontact/support true \n/Polar/H7/0055B1/sensorcontact/status true \n/Polar/H7/0055B1/energyexpended/support false \n/Polar/H7/0055B1/rrinterval/support true \n/Polar/H7/0055B1/rrinterval/seconds 0.823242 \n/Polar/H7/0055B1/manufacturer \"Polar Electro Oy\" \n/Polar/H7/0055B1/location \"Chest\" \n/Polar/H7/0055B1/devicename \"Polar H7 0055B1\" \n",
+									"patching_rect" : [ 50.0, 229.0, 283.0, 301.0 ],
+									"text" : "/Polar/H7/0055B1/status \"disconnected\" \n/self \"/Polar/H7/0055B1\" \n/Polar/H7/25A661/status \"disconnected\" \n/Polar/H7/0055B1/heartrate 80 \n/Polar/H7/0055B1/sensorcontact/support true \n/Polar/H7/0055B1/sensorcontact/status false \n/Polar/H7/0055B1/energyexpended/support false \n/Polar/H7/0055B1/rrinterval/support false \n/Polar/H7/25A661/heartrate 94 \n/Polar/H7/25A661/sensorcontact/support true \n/Polar/H7/25A661/sensorcontact/status true \n/Polar/H7/25A661/energyexpended/support false \n/Polar/H7/25A661/rrinterval/support true \n/Polar/H7/25A661/rrinterval/seconds 0.635742 0.620117 \n/Polar/H7/0055B1/RSSI/dBm -59 \n/Polar/H7/25A661/RSSI/dBm -58 \n/Polar/H7/0055B1/rrinterval/seconds 0.484375 0.291016 \n/Polar/H7/25A661/manufacturer \"Polar Electro Oy\" \n/Polar/H7/25A661/location \"Chest\" \n/Polar/H7/25A661/devicename \"Polar H7 25A661\" \n/Polar/H7/0055B1/manufacturer \"Polar Electro Oy\" \n/Polar/H7/0055B1/location \"Chest\" \n/Polar/H7/0055B1/devicename \"Polar H7 0055B1\" \n",
 									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 
@@ -477,7 +828,7 @@
  ]
 					}
 ,
-					"patching_rect" : [ 688.0, 88.0, 55.0, 20.0 ],
+					"patching_rect" : [ 800.0, 40.0, 55.0, 20.0 ],
 					"saved_object_attributes" : 					{
 						"default_fontface" : 0,
 						"default_fontname" : "Arial",
@@ -504,8 +855,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 328.0, 232.0, 161.0, 20.0 ],
-					"text" : "o.when length(/stream) == 3"
+					"patching_rect" : [ 32.0, 320.0, 212.0, 20.0 ],
+					"text" : "o.when length(/heartrate/stream) == 3"
 				}
 
 			}
@@ -518,41 +869,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 328.0, 200.0, 131.0, 20.0 ],
-					"text" : "o.when exists(/stream)"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-26",
-					"maxclass" : "scope~",
-					"numinlets" : 2,
-					"numoutlets" : 0,
-					"patching_rect" : [ 496.0, 728.0, 352.0, 120.0 ],
-					"range" : [ 0.0, 1.0 ]
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-25",
-					"maxclass" : "scope~",
-					"numinlets" : 2,
-					"numoutlets" : 0,
-					"patching_rect" : [ 496.0, 602.5, 352.0, 120.0 ],
-					"range" : [ 0.0, 1.0 ]
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-24",
-					"maxclass" : "scope~",
-					"numinlets" : 2,
-					"numoutlets" : 0,
-					"patching_rect" : [ 496.0, 478.5, 352.0, 120.0 ],
-					"range" : [ 0.0, 2.0 ]
+					"patching_rect" : [ 32.0, 288.0, 183.0, 20.0 ],
+					"text" : "o.when exists(/heartrate/stream)"
 				}
 
 			}
@@ -566,7 +884,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "float", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 400.0, 400.0, 50.0, 20.0 ]
+					"patching_rect" : [ 104.0, 488.0, 50.0, 20.0 ]
 				}
 
 			}
@@ -579,8 +897,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "FullPacket" ],
-					"patching_rect" : [ 328.0, 352.0, 75.0, 20.0 ],
-					"text" : "o.route /freq"
+					"patching_rect" : [ 32.0, 440.0, 127.0, 20.0 ],
+					"text" : "o.route /heartrate/freq"
 				}
 
 			}
@@ -593,8 +911,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 328.0, 309.5, 154.0, 20.0 ],
-					"text" : "o.expr /freq = /median / 60."
+					"patching_rect" : [ 32.0, 397.5, 257.0, 20.0 ],
+					"text" : "o.expr /heartrate/freq = /heartrate/median / 60."
 				}
 
 			}
@@ -604,32 +922,7 @@
 					"maxclass" : "ezdac~",
 					"numinlets" : 2,
 					"numoutlets" : 0,
-					"patching_rect" : [ 168.0, 440.0, 45.0, 45.0 ]
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-15",
-					"maxclass" : "button",
-					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 328.0, 658.5, 64.0, 64.0 ]
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontname" : "Arial",
-					"fontsize" : 12.0,
-					"id" : "obj-13",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 2,
-					"outlettype" : [ "bang", "bang" ],
-					"patching_rect" : [ 328.0, 618.5, 44.0, 20.0 ],
-					"text" : "edge~"
+					"patching_rect" : [ 32.0, 920.0, 45.0, 45.0 ]
 				}
 
 			}
@@ -642,7 +935,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "signal" ],
-					"patching_rect" : [ 328.0, 578.5, 32.5, 20.0 ],
+					"patching_rect" : [ 32.0, 666.5, 32.5, 20.0 ],
 					"text" : "<~"
 				}
 
@@ -656,7 +949,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "signal" ],
-					"patching_rect" : [ 341.5, 530.5, 66.0, 20.0 ],
+					"patching_rect" : [ 45.5, 618.5, 66.0, 20.0 ],
 					"text" : "delay~ 1 1"
 				}
 
@@ -670,7 +963,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "signal" ],
-					"patching_rect" : [ 328.0, 498.5, 54.0, 20.0 ],
+					"patching_rect" : [ 32.0, 586.5, 54.0, 20.0 ],
 					"text" : "phasor~"
 				}
 
@@ -684,7 +977,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "signal" ],
-					"patching_rect" : [ 328.0, 458.5, 84.0, 20.0 ],
+					"patching_rect" : [ 32.0, 546.5, 84.0, 20.0 ],
 					"text" : "onepole~ 100"
 				}
 
@@ -698,24 +991,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "signal" ],
-					"patching_rect" : [ 328.0, 416.0, 33.0, 20.0 ],
+					"patching_rect" : [ 32.0, 504.0, 33.0, 20.0 ],
 					"text" : "sig~"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontname" : "Arial",
-					"fontsize" : 12.0,
-					"id" : "obj-6",
-					"linecount" : 15,
-					"maxclass" : "o.message",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 104.0, 296.0, 150.0, 208.0 ],
-					"text" : "/stream 0 1 0.823242 \n/self \"/Polar/H7/0055B1\" \n/Polar/H7/0055B1/heartrate 72 \n/Polar/H7/0055B1/sensorcontact/support true \n/Polar/H7/0055B1/sensorcontact/status true \n/Polar/H7/0055B1/energyexpended/support false \n/Polar/H7/0055B1/rrinterval/support true \n/Polar/H7/0055B1/rrinterval/seconds 0.823242 \n/median 0.823242 \n",
-					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
 			}
@@ -728,24 +1005,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 328.0, 280.0, 191.0, 20.0 ],
-					"text" : "o.expr /median = median(/stream)"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontname" : "Arial",
-					"fontsize" : 12.0,
-					"id" : "obj-4",
-					"linecount" : 14,
-					"maxclass" : "o.message",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 104.0, 232.0, 150.0, 194.0 ],
-					"text" : "/stream 0 1 0.823242 \n/self \"/Polar/H7/0055B1\" \n/Polar/H7/0055B1/heartrate 72 \n/Polar/H7/0055B1/sensorcontact/support true \n/Polar/H7/0055B1/sensorcontact/status true \n/Polar/H7/0055B1/energyexpended/support false \n/Polar/H7/0055B1/rrinterval/support true \n/Polar/H7/0055B1/rrinterval/seconds 0.823242 \n",
-					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
+					"patching_rect" : [ 32.0, 368.0, 294.0, 20.0 ],
+					"text" : "o.expr /heartrate/median = median(/heartrate/stream)"
 				}
 
 			}
@@ -758,24 +1019,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 328.0, 168.0, 306.0, 20.0 ],
-					"text" : "o.callpatch /Polar/H7/0055B1 [zl stream 3] @as /stream"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontname" : "Arial",
-					"fontsize" : 12.0,
-					"id" : "obj-2",
-					"linecount" : 13,
-					"maxclass" : "o.message",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 104.0, 112.0, 150.0, 181.0 ],
-					"text" : "/self \"/Polar/H7/0055B1\" \n/Polar/H7/0055B1/heartrate 72 \n/Polar/H7/0055B1/sensorcontact/support true \n/Polar/H7/0055B1/sensorcontact/status true \n/Polar/H7/0055B1/energyexpended/support false \n/Polar/H7/0055B1/rrinterval/support true \n/Polar/H7/0055B1/rrinterval/seconds 0.823242 \n",
-					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
+					"patching_rect" : [ 32.0, 256.0, 314.0, 20.0 ],
+					"text" : "o.callpatch /heartrate [zl stream 3] @as /heartrate/stream"
 				}
 
 			}
@@ -795,24 +1040,6 @@
 			}
  ],
 		"lines" : [ 			{
-				"patchline" : 				{
-					"destination" : [ "obj-2", 1 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"source" : [ "obj-1", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-3", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"source" : [ "obj-1", 0 ]
-				}
-
-			}
-, 			{
 				"patchline" : 				{
 					"destination" : [ "obj-38", 0 ],
 					"disabled" : 0,
@@ -850,7 +1077,7 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-25", 0 ],
+					"destination" : [ "obj-53", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-10", 0 ]
@@ -868,7 +1095,7 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-13", 0 ],
+					"destination" : [ "obj-19", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-12", 0 ]
@@ -877,7 +1104,7 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-26", 0 ],
+					"destination" : [ "obj-54", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-12", 0 ]
@@ -886,10 +1113,55 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-15", 0 ],
+					"destination" : [ "obj-6", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-13", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-27", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-14", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-13", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-15", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-22", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-18", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-18", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-19", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-4", 1 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-2", 0 ]
 				}
 
 			}
@@ -922,16 +1194,34 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-30", 0 ],
+					"destination" : [ "obj-16", 1 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"source" : [ "obj-3", 0 ]
+					"source" : [ "obj-22", 0 ]
 				}
 
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-4", 1 ],
+					"destination" : [ "obj-16", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-22", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-15", 1 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-27", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-30", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-3", 0 ]
@@ -958,10 +1248,37 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-39", 1 ],
+					"destination" : [ "obj-59", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-38", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-28", 1 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-4", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-7", 1 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-41", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-7", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-41", 0 ]
 				}
 
 			}
@@ -976,10 +1293,145 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-6", 1 ],
+					"destination" : [ "obj-3", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"source" : [ "obj-5", 0 ]
+					"source" : [ "obj-51", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-15", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-59", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-62", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-59", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-2", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-6", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-4", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-6", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-62", 1 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-61", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-64", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-62", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-61", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-63", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-65", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-64", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-66", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-65", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-67", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-65", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-39", 1 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-66", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-51", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-66", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-66", 1 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-67", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-17", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-7", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-56", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-8", 0 ]
 				}
 
 			}
@@ -1003,7 +1455,7 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-24", 0 ],
+					"destination" : [ "obj-55", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-9", 0 ]
@@ -1026,11 +1478,14 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "o.io.bluetoothle.hrm.mxo",
-				"type" : "iLaX"
+				"name" : "o.self.maxpat",
+				"bootpath" : "/Users/john/MMJ-dev/CNMAT_Externals/odot/abstractions",
+				"patcherrelativepath" : "../../../../../MMJ-dev/CNMAT_Externals/odot/abstractions",
+				"type" : "JSON",
+				"implicit" : 1
 			}
 , 			{
-				"name" : "o.message.mxo",
+				"name" : "o.io.bluetoothle.hrm.mxo",
 				"type" : "iLaX"
 			}
 , 			{
@@ -1051,6 +1506,10 @@
 			}
 , 			{
 				"name" : "o.var.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.message.mxo",
 				"type" : "iLaX"
 			}
 , 			{
@@ -1075,6 +1534,10 @@
 			}
 , 			{
 				"name" : "o.difference.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "resonators~.mxo",
 				"type" : "iLaX"
 			}
  ]

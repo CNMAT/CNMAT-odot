@@ -44,10 +44,10 @@
 			<key>orderHint</key>
 			<integer>5</integer>
 		</dict>
-		<key>o.crap.xcscheme</key>
+		<key>o.context.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>39</integer>
+			<integer>38</integer>
 		</dict>
 		<key>o.dict.xcscheme</key>
 		<dict>
@@ -103,11 +103,6 @@
 		<dict>
 			<key>orderHint</key>
 			<integer>37</integer>
-		</dict>
-		<key>o.io.bluetoothle.xcscheme</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>38</integer>
 		</dict>
 		<key>o.io.leap.xcscheme</key>
 		<dict>
@@ -338,6 +333,11 @@
 			<true/>
 		</dict>
 		<key>527294A017E927B100AA15E1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>527294B817EDE93B00AA15E1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
