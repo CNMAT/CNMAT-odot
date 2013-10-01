@@ -630,6 +630,50 @@ void *oroute_new(t_symbol *msg, short argc, t_atom *argv)
 			}
 			x->selectors[x->num_selectors - i - 1] = selector;
 
+			int nbackticks = 0;
+			for(int j = 0; j < len; j++){
+				if(selector[j] == '`'){
+					nbackticks++;
+				}
+			}
+			post("nbackticks = %d", nbackticks);
+			if(nbackticks % 2 != 0){
+				object_error((t_object *)x, "odd number of backticks");
+				return NULL;
+			}
+
+			if(nbackticks){
+				int backtick = 0;
+				char *backtickptr = NULL;
+				// we're going to substitute every `/foo` for %s and can assume that our new string will be 
+				// shorter than the original since the shortest address will take up 4 chars (ie, `/a` -> %s)
+				char selector_fmt[len]; 
+				memset(selector_fmt, '\0', len);
+				char *selector_fmt_ptr = selector_fmt;
+				for(int j = 0; j < len; j++){
+					if(selector[j] == '`'){
+						if(backtick){
+							int addylen = (selector + j) - backtickptr;
+							char addy[addylen + 1];
+							snprintf(addy, addylen, "%s", backtickptr + 1);
+							//selector_fmt_ptr += sprintf(selector_fmt_ptr, "%%s");
+							*selector_fmt_ptr++ = '%';
+							*selector_fmt_ptr++ = 's';
+							backtick = 0;
+							post("addy = %s", addy);
+						}else{
+							backtick = 1;
+							backtickptr = selector + j;
+						}
+					}else if(backtick){
+						// nothing
+					}else{
+						*selector_fmt_ptr++ = selector[j];
+					}
+				}
+				post(selector_fmt, "/bar");
+			}
+
 			x->inlet_assist_strings[i + 1] = osc_mem_alloc(128);
 			x->outlet_assist_strings[i] = osc_mem_alloc(128);
 			sprintf(x->inlet_assist_strings[i + 1], "Change the selector %s", selector);
