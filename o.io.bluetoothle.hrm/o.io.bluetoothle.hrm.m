@@ -201,7 +201,7 @@ void ohrm_outputOSCBundle(t_ohrm *x, t_symbol *msg, int argc, t_atom *argv);
 	t_osc_msg_u *m = osc_message_u_alloc();
 	t_symbol *s = [self makeOSCAddressFromPeripheral:p withPrefix:NULL withPostfix:"/status"];
 	osc_message_u_setAddress(m, s->s_name);
-	osc_message_u_appendString(m, "disconnected");
+	osc_message_u_appendString(m, status);
 	osc_bundle_u_addMsg(b, m);
 	t_osc_msg_u *mself = osc_message_u_alloc();
 	osc_message_u_setAddress(mself, "/self");
@@ -288,6 +288,7 @@ void ohrm_outputOSCBundle(t_ohrm *x, t_symbol *msg, int argc, t_atom *argv);
 // Discover available services on the peripheral
 - (void) centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)aPeripheral 
 {    
+	[self sendOSCStatusBundle:aPeripheral status:"connected"];
 	[aPeripheral setDelegate:self];
 	[aPeripheral discoverServices:nil];
 }
@@ -304,9 +305,19 @@ void ohrm_outputOSCBundle(t_ohrm *x, t_symbol *msg, int argc, t_atom *argv);
 // Invoked whenever the central manager fails to create a connection with the peripheral.
 - (void)centralManager:(CBCentralManager *)central didFailToConnectPeripheral:(CBPeripheral *)aPeripheral error:(NSError *)error
 {
+	[self sendOSCStatusBundle:aPeripheral status:"disconnected"];
 	[aPeripheral setDelegate:nil];
 	[aPeripheral release];
 }
+
+/*
+2013-09-20 15:40:12.492 Max[51380:707] -[HeartRateMonitor peripheral:didDiscoverServices:]: Generic Access Profile
+2013-09-20 15:40:12.492 Max[51380:707] -[HeartRateMonitor peripheral:didDiscoverServices:]: Generic Attribute Profile
+2013-09-20 15:40:12.493 Max[51380:707] -[HeartRateMonitor peripheral:didDiscoverServices:]: Unknown (<180d>) heart rate
+2013-09-20 15:40:12.493 Max[51380:707] -[HeartRateMonitor peripheral:didDiscoverServices:]: Unknown (<180a>) device info
+2013-09-20 15:40:12.493 Max[51380:707] -[HeartRateMonitor peripheral:didDiscoverServices:]: Unknown (<180f>) battery service
+2013-09-20 15:40:12.493 Max[51380:707] -[HeartRateMonitor peripheral:didDiscoverServices:]: Unknown (<6217ff49 ac7b547e eecf016a 06970ba9>)
+ */
 
 #pragma mark - CBPeripheral delegate methods
 // Invoked upon completion of a -[discoverServices:] request.
@@ -328,6 +339,12 @@ void ohrm_outputOSCBundle(t_ohrm *x, t_symbol *msg, int argc, t_atom *argv);
 		if([aService.UUID isEqual:[CBUUID UUIDWithString:CBUUIDGenericAccessProfileString]]){
 			[aPeripheral discoverCharacteristics:nil forService:aService];
 		}
+
+		if([aService.UUID isEqual:[CBUUID UUIDWithString:@"6217ff49ac7b547eeecf016a06970ba9"]]){
+			[aPeripheral discoverCharacteristics:nil forService:aService];
+		}
+
+		NSLog(@"%s: %@", __func__, aService.UUID);
 	}
 }
 
@@ -371,6 +388,11 @@ void ohrm_outputOSCBundle(t_ohrm *x, t_symbol *msg, int argc, t_atom *argv);
 				// device manufacturer name characteristic
 				[aPeripheral readValueForCharacteristic:aChar];
 			}
+		}
+	}
+	if([service.UUID isEqual:[CBUUID UUIDWithString:@"6217ff49ac7b547eeecf016a06970ba9"]]){
+		for(CBCharacteristic *aChar in service.characteristics){
+			NSLog(@"%s: %@\n", __func__, aChar.UUID);
 		}
 	}
 }
@@ -461,6 +483,32 @@ void ohrm_outputOSCBundle(t_ohrm *x, t_symbol *msg, int argc, t_atom *argv);
 		osc_bundle_u_free(b);
 		// don't free buf here!! it's pointer has been passed to the scheduler and will be freed when
 		// the callback executes
+	}
+	[aPeripheral readRSSI];
+}
+
+- (void)peripheralDidUpdateRSSI:(CBPeripheral *)peripheral error:(NSError *)error
+{
+	//NSLog(@"%@", [peripheral RSSI]);
+	t_osc_bndl_u *b = osc_bundle_u_alloc();
+	t_osc_msg_u *msg_self = [self makeOSCSelfMessage:peripheral];
+	osc_bundle_u_addMsg(b, msg_self);
+	int rssi = [peripheral.RSSI intValue];
+	t_osc_msg_u *data = osc_message_u_alloc();
+	t_symbol *s = [self makeOSCAddressFromPeripheral:peripheral withPrefix:NULL withPostfix:"/RSSI/dBm"];
+	osc_message_u_setAddress(data, s->s_name);
+	osc_message_u_appendInt32(data, rssi);
+	osc_bundle_u_addMsg(b, data);
+	long len = 0;
+	char *buf = NULL;
+	osc_bundle_u_serialize(b, &len, &buf);
+	if(buf){
+		t_atom a[2];
+		atom_setlong(a, len);
+		atom_setlong(a + 1, (long)buf);
+		schedule_delay(maxobj, (method)ohrm_outputOSCBundle, 0, ps_FullPacket, 2, a);
+		osc_bundle_u_free(b);
+		// don't free buf here!!!
 	}
 }
 
