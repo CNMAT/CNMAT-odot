@@ -104,6 +104,11 @@
 			<key>orderHint</key>
 			<integer>37</integer>
 		</dict>
+		<key>o.io.bluetoothle.sensortag.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>39</integer>
+		</dict>
 		<key>o.io.leap.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -338,6 +343,11 @@
 			<true/>
 		</dict>
 		<key>527294B817EDE93B00AA15E1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>5292DC3E17FCC6AD00598BDC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
