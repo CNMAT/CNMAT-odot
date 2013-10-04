@@ -98,6 +98,7 @@ typedef struct _oexpr{
 #else
 	void *outlet;
 #endif
+	void *error_delegation_outlet;
 #ifdef OCOND
 	int num_exprs;
 	char **outlets_desc;
@@ -135,7 +136,7 @@ void oexpr_fullPacket(t_oexpr *x, t_symbol *msg, int argc, t_atom *argv)
 #if defined (OIF)
 	int ret = osc_expr_eval(x->expr, &len, &copy, &av);
 	if(ret || !av || osc_atom_array_u_getLen(av) == 0){
-		omax_util_outletOSC(x->outlets[1], len, ptr);
+		omax_util_outletOSC(x->error_delegation_outlet, len, ptr);
 	}else{
 		int i;
 		for(i = 0; i < osc_atom_array_u_getLen(av); i++){
@@ -156,7 +157,7 @@ void oexpr_fullPacket(t_oexpr *x, t_symbol *msg, int argc, t_atom *argv)
 #elif defined (OUNLESS)
 	int ret = osc_expr_eval(x->expr, &len, &copy, &av);
 	if(ret || !av || osc_atom_array_u_getLen(av) == 0){
-		omax_util_outletOSC(x->outlet, len, ptr);
+		omax_util_outletOSC(x->error_delegation_outlet, len, ptr);
 	}else{
 		int i;
 		for(i = 0; i < osc_atom_array_u_getLen(av); i++){
@@ -176,6 +177,7 @@ void oexpr_fullPacket(t_oexpr *x, t_symbol *msg, int argc, t_atom *argv)
 #elif defined (OWHEN)
 	int ret = osc_expr_eval(x->expr, &len, &copy, &av);
 	if(ret || !av || osc_atom_array_u_getLen(av) == 0){
+		omax_util_outletOSC(x->error_delegation_outlet, len, ptr);
 	}else{
 		int i;
 		for(i = 0; i < osc_atom_array_u_getLen(av); i++){
@@ -214,6 +216,8 @@ void oexpr_fullPacket(t_oexpr *x, t_symbol *msg, int argc, t_atom *argv)
 				omax_util_outletOSC(x->outlets[j], len, ptr);
 				goto out;
 			}
+		}else{
+			omax_util_outletOSC(x->error_delegation_outlet, len, ptr);
 		}
 		f = osc_expr_next(f);
 		j++;
@@ -264,7 +268,8 @@ void oexpr_fullPacket(t_oexpr *x, t_symbol *msg, int argc, t_atom *argv)
 		}
 	}
 	if(ret){
-		omax_util_outletOSC(x->outlet, len, ptr);
+		//omax_util_outletOSC(x->outlet, len, ptr);
+		omax_util_outletOSC(x->error_delegation_outlet, copylen, copy);
 	}else{
 		omax_util_outletOSC(x->outlet, copylen, copy);
 	}
@@ -686,6 +691,7 @@ void *oexpr_new(t_symbol *msg, short argc, t_atom *argv){
 			f = osc_expr_next(f);
 		}
 
+		x->error_delegation_outlet = outlet_new((t_object *)x, "FullPacket");
 #if defined (OIF)
 		if(n == 0 || n > 1){
 			object_error((t_object *)x, "invalid number of expressions: %d", n);
