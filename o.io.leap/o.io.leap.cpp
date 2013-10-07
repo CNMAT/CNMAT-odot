@@ -101,6 +101,28 @@ void oleap_bundleMessage(t_osc_bundle_u *bundle, const char* address, float datu
     
 }
 
+void oleap_bundleMessage(t_osc_bundle_u *bundle, const char* address, float datum,float datum2, float datum3)
+{
+    t_osc_message_u *mes = osc_message_u_alloc();
+    
+    osc_message_u_setAddress(mes, address);
+    
+    t_osc_atom_u *atom = osc_atom_u_alloc();
+    t_osc_atom_u *atom2 = osc_atom_u_alloc();
+    t_osc_atom_u *atom3 = osc_atom_u_alloc();
+    
+    osc_atom_u_setFloat(atom, datum);
+    osc_atom_u_setFloat(atom2, datum2);
+    osc_atom_u_setFloat(atom3, datum3);
+    
+    osc_message_u_appendAtom(mes, atom);
+    osc_message_u_appendAtom(mes, atom2);
+    osc_message_u_appendAtom(mes, atom3);
+    
+    osc_bundle_u_addMsg(bundle, mes);
+    
+}
+
 void oleap_showme(t_oleap *x, t_symbol *s, long argc, t_atom *argv)
 {
     object_post((t_object *)x, "Full odot namespace:");
@@ -357,6 +379,9 @@ void oleap_bang(t_oleap *x)
                 Leap::CircleGesture circle = gesture;
                 std::string clockwiseness;
                 
+                sprintf(buff,"/gesture/circle/center/vector");
+                oleap_bundleMessage(bundle,buff,circle.center().x,circle.center().y,circle.center().z);
+                
                 sprintf(buff,"/gesture/circle/center/x");
                 oleap_bundleMessage(bundle,buff,circle.center().x);
                 
@@ -417,6 +442,9 @@ void oleap_bang(t_oleap *x)
                 
                 ////////////////////////////////Swipe data
                 
+                sprintf(buff,"/gesture/swipe/direction/vector");
+                oleap_bundleMessage(bundle,buff,swipe_direction.x,swipe_direction.y,swipe_direction.z);
+                
                 sprintf(buff,"/gesture/swipe/direction/x");
                 oleap_bundleMessage(bundle,buff,swipe_direction.x);
                 
@@ -425,6 +453,9 @@ void oleap_bang(t_oleap *x)
                 
                 sprintf(buff,"/gesture/swipe/direction/x");
                 oleap_bundleMessage(bundle,buff,swipe_direction.z);
+                
+                sprintf(buff,"/gesture/swipe/position/vector");
+                oleap_bundleMessage(bundle,buff,swipe.position().x,swipe.position().y,swipe.position().z);
                 
                 sprintf(buff,"/gesture/swipe/position/x");
                 oleap_bundleMessage(bundle,buff,swipe.position().x);
@@ -443,6 +474,9 @@ void oleap_bang(t_oleap *x)
                 
                 sprintf(buff,"/gesture/swipe/roll");
                 oleap_bundleMessage(bundle,buff,swipe.position().roll());
+                
+                sprintf(buff,"/gesture/swipe/position/start/vector");
+                oleap_bundleMessage(bundle,buff,swipe.startPosition().x,swipe.startPosition().y,swipe.startPosition().z);
                 
                 sprintf(buff,"/gesture/swipe/position/start/x");
                 oleap_bundleMessage(bundle,buff,swipe.startPosition().x);
@@ -472,6 +506,9 @@ void oleap_bang(t_oleap *x)
                 
                 ////////////////////////////////Key tap data
                 
+                sprintf(buff,"/gesture/tap/down/position/vector");
+                oleap_bundleMessage(bundle,buff,tap_position.x,tap_position.y,tap_position.z);
+                
                 sprintf(buff,"/gesture/tap/down/position/x");
                 oleap_bundleMessage(bundle,buff,tap_position.x);
                 
@@ -480,6 +517,9 @@ void oleap_bang(t_oleap *x)
                 
                 sprintf(buff,"/gesture/tap/down/position/z");
                 oleap_bundleMessage(bundle,buff,tap_position.z);
+                
+                sprintf(buff,"/gesture/tap/down/direction/vector");
+                oleap_bundleMessage(bundle,buff,tap_direction.x,tap_direction.y,tap_direction.z);
                 
                 sprintf(buff,"/gesture/tap/down/direction/x");
                 oleap_bundleMessage(bundle,buff,tap_direction.x);
@@ -505,6 +545,9 @@ void oleap_bang(t_oleap *x)
                 
                 ////////////////////////////////Screen tap data
                 
+                sprintf(buff,"/gesture/tap/forward/position/vector");
+                oleap_bundleMessage(bundle,buff,screentap_position.x,screentap_position.y,screentap_position.z);
+                
                 sprintf(buff,"/gesture/tap/forward/position/x");
                 oleap_bundleMessage(bundle,buff,screentap_position.x);
                 
@@ -513,6 +556,9 @@ void oleap_bang(t_oleap *x)
                 
                 sprintf(buff,"/gesture/tap/forward/position/z");
                 oleap_bundleMessage(bundle,buff,screentap_position.z);
+                
+                sprintf(buff,"/gesture/tap/forward/direction/vector");
+                oleap_bundleMessage(bundle,buff,screentap_direction.x,screentap_direction.y,screentap_direction.z);
                 
                 sprintf(buff,"/gesture/tap/forward/direction/x");
                 oleap_bundleMessage(bundle,buff,screentap_direction.x);
@@ -545,15 +591,21 @@ void oleap_bang(t_oleap *x)
     sprintf(buff,"/hand/leftmost/id");
     oleap_bundleMessage(bundle,buff,leftmost.id());
     
-    sprintf(buff,"/hand/leftmost/palm/positiony/x");
+    sprintf(buff,"/hand/leftmost/palm/position/vector");
+    oleap_bundleMessage(bundle,buff,leftmost.palmPosition().x,leftmost.palmPosition().y,leftmost.palmPosition().z);
+    
+    sprintf(buff,"/hand/leftmost/palm/position/x");
     oleap_bundleMessage(bundle,buff,leftmost.palmPosition().x);
     
-    sprintf(buff,"/hand/leftmost/palm/positiony/y");
+    sprintf(buff,"/hand/leftmost/palm/position/y");
     oleap_bundleMessage(bundle,buff,leftmost.palmPosition().y);
     
-    sprintf(buff,"/hand/leftmost/palm/positiony/z");
+    sprintf(buff,"/hand/leftmost/palm/position/z");
     oleap_bundleMessage(bundle,buff,leftmost.palmPosition().z);
 
+    sprintf(buff,"/hand/leftmost/direction/vector");
+    oleap_bundleMessage(bundle,buff,leftmost.direction().x,leftmost.direction().y,leftmost.direction().z);
+    
     sprintf(buff,"/hand/leftmost/direction/x");
     oleap_bundleMessage(bundle,buff,leftmost.direction().x);
     
@@ -572,6 +624,9 @@ void oleap_bang(t_oleap *x)
     sprintf(buff,"/hand/leftmost/roll");
     oleap_bundleMessage(bundle,buff,leftmost.palmPosition().roll());
     
+    sprintf(buff,"/hand/leftmost/palm/velocity/vector");
+    oleap_bundleMessage(bundle,buff,leftmost.palmVelocity().x,leftmost.palmVelocity().y,leftmost.palmVelocity().z);
+    
     sprintf(buff,"/hand/leftmost/palm/velocity/x");
     oleap_bundleMessage(bundle,buff,leftmost.palmVelocity().x);
     
@@ -580,6 +635,9 @@ void oleap_bang(t_oleap *x)
     
     sprintf(buff,"/hand/leftmost/palm/velocity/z");
     oleap_bundleMessage(bundle,buff,leftmost.palmVelocity().z);
+    
+    sprintf(buff,"/hand/leftmost/palm/sphere/center/vector");
+    oleap_bundleMessage(bundle,buff,leftmost.sphereCenter().x,leftmost.sphereCenter().y,leftmost.sphereCenter().z);
     
     sprintf(buff,"/hand/leftmost/palm/sphere/center/x");
     oleap_bundleMessage(bundle,buff,leftmost.sphereCenter().x);
@@ -592,6 +650,9 @@ void oleap_bang(t_oleap *x)
 
     sprintf(buff,"/hand/leftmost/palm/sphere/radius");
     oleap_bundleMessage(bundle,buff,leftmost.sphereRadius());
+    
+    sprintf(buff,"/hand/leftmost/palm/normal/vector");
+    oleap_bundleMessage(bundle,buff,leftmost.palmNormal().x,leftmost.palmNormal().y,leftmost.palmNormal().z);
     
     sprintf(buff,"/hand/leftmost/palm/normal/x");
     oleap_bundleMessage(bundle,buff,leftmost.palmNormal().x);
@@ -626,6 +687,9 @@ void oleap_bang(t_oleap *x)
         sprintf(buff,"/hand/leftmost/finger/%d/finger_id",j+1);
         oleap_bundleMessage(bundle,buff,finger.id());
         
+        sprintf(buff,"/hand/leftmost/finger/%d/position/vector",j+1);
+        oleap_bundleMessage(bundle,buff,position.x,position.y,position.z);
+        
         sprintf(buff,"/hand/leftmost/finger/%d/position/x",j+1);
         oleap_bundleMessage(bundle,buff,position.x);
         
@@ -634,6 +698,9 @@ void oleap_bang(t_oleap *x)
         
         sprintf(buff,"/hand/leftmost/finger/%d/position/z",j+1);
         oleap_bundleMessage(bundle,buff,position.z);
+        
+        sprintf(buff,"/hand/leftmost/finger/%d/direction/vector",j+1);
+        oleap_bundleMessage(bundle,buff,direction.x,direction.y,direction.z);
         
         sprintf(buff,"/hand/leftmost/finger/%d/direction/x",j+1);
         oleap_bundleMessage(bundle,buff,direction.x);
@@ -644,6 +711,9 @@ void oleap_bang(t_oleap *x)
         sprintf(buff,"/hand/leftmost/finger/%d/direction/z",j+1);
         oleap_bundleMessage(bundle,buff,direction.z);
         
+        sprintf(buff,"/hand/leftmost/finger/%d/velocity/vector",j+1);
+        oleap_bundleMessage(bundle,buff,velocity.x,velocity.y,velocity.z);
+        
         sprintf(buff,"/hand/leftmost/finger/%d/velocity/x",j+1);
         oleap_bundleMessage(bundle,buff,velocity.x);
         
@@ -652,6 +722,9 @@ void oleap_bang(t_oleap *x)
         
         sprintf(buff,"/hand/leftmost/finger/%d/velocity/z",j+1);
         oleap_bundleMessage(bundle,buff,velocity.z);
+        
+        sprintf(buff,"/hand/leftmost/finger/%d/direction/normalized/vector",j+1);
+        oleap_bundleMessage(bundle,buff,direction.normalized().x,direction.normalized().y,direction.normalized().z);
     
         sprintf(buff,"/hand/leftmost/finger/%d/direction/normalized/x",j+1);
         oleap_bundleMessage(bundle,buff,direction.normalized().x);
@@ -662,13 +735,13 @@ void oleap_bang(t_oleap *x)
         sprintf(buff,"/hand/leftmost/finger/%d/direction/normalized/z",j+1);
         oleap_bundleMessage(bundle,buff,direction.normalized().z);
         
-        sprintf(buff,"/hand/leftmost/finger/%d/pitch/normalized/",j+1);
+        sprintf(buff,"/hand/leftmost/finger/%d/pitch/normalized",j+1);
         oleap_bundleMessage(bundle,buff,direction.normalized().pitch());
         
-        sprintf(buff,"/hand/leftmost/finger/%d/yaw/normalized/",j+1);
+        sprintf(buff,"/hand/leftmost/finger/%d/yaw/normalized",j+1);
         oleap_bundleMessage(bundle,buff,direction.normalized().yaw());
         
-        sprintf(buff,"/hand/leftmost/finger/%d/roll/normalized/",j+1);
+        sprintf(buff,"/hand/leftmost/finger/%d/roll/normalized",j+1);
         oleap_bundleMessage(bundle,buff,direction.normalized().roll());
         
         sprintf(buff,"/hand/leftmost/finger/%d/width",j+1);
@@ -695,6 +768,9 @@ void oleap_bang(t_oleap *x)
     sprintf(buff,"/hand/rightmost/id");
     oleap_bundleMessage(bundle,buff,rightmost.id());
     
+    sprintf(buff,"/hand/rightmost/palm/positiony/vector");
+    oleap_bundleMessage(bundle,buff,rightmost.palmPosition().x,rightmost.palmPosition().y,rightmost.palmPosition().z);
+    
     sprintf(buff,"/hand/rightmost/palm/positiony/x");
     oleap_bundleMessage(bundle,buff,rightmost.palmPosition().x);
     
@@ -703,6 +779,9 @@ void oleap_bang(t_oleap *x)
     
     sprintf(buff,"/hand/rightmost/palm/positiony/z");
     oleap_bundleMessage(bundle,buff,rightmost.palmPosition().z);
+
+    sprintf(buff,"/hand/rightmost/direction/vector");
+    oleap_bundleMessage(bundle,buff,rightmost.direction().x,rightmost.direction().y,rightmost.direction().z);
     
     sprintf(buff,"/hand/rightmost/direction/x");
     oleap_bundleMessage(bundle,buff,rightmost.direction().x);
@@ -722,6 +801,9 @@ void oleap_bang(t_oleap *x)
     sprintf(buff,"/hand/rightmost/roll");
     oleap_bundleMessage(bundle,buff,rightmost.palmPosition().roll());
     
+    sprintf(buff,"/hand/rightmost/palm/velocity/vector");
+    oleap_bundleMessage(bundle,buff,rightmost.palmVelocity().x,rightmost.palmVelocity().y,rightmost.palmVelocity().z);
+    
     sprintf(buff,"/hand/rightmost/palm/velocity/x");
     oleap_bundleMessage(bundle,buff,rightmost.palmVelocity().x);
     
@@ -730,6 +812,9 @@ void oleap_bang(t_oleap *x)
     
     sprintf(buff,"/hand/rightmost/palm/velocity/z");
     oleap_bundleMessage(bundle,buff,rightmost.palmVelocity().z);
+    
+    sprintf(buff,"/hand/rightmost/palm/sphere/center/vector");
+    oleap_bundleMessage(bundle,buff,rightmost.sphereCenter().x,rightmost.sphereCenter().y,rightmost.sphereCenter().z);
     
     sprintf(buff,"/hand/rightmost/palm/sphere/center/x");
     oleap_bundleMessage(bundle,buff,rightmost.sphereCenter().x);
@@ -742,6 +827,9 @@ void oleap_bang(t_oleap *x)
     
     sprintf(buff,"/hand/rightmost/palm/sphere/radius");
     oleap_bundleMessage(bundle,buff,rightmost.sphereRadius());
+    
+    sprintf(buff,"/hand/rightmost/palm/normal/vector");
+    oleap_bundleMessage(bundle,buff,rightmost.palmNormal().x,rightmost.palmNormal().y,rightmost.palmNormal().z);
     
     sprintf(buff,"/hand/rightmost/palm/normal/x");
     oleap_bundleMessage(bundle,buff,rightmost.palmNormal().x);
@@ -776,6 +864,9 @@ void oleap_bang(t_oleap *x)
         sprintf(buff,"/hand/rightmost/finger/%d/finger_id",j+1);
         oleap_bundleMessage(bundle,buff,finger.id());
         
+        sprintf(buff,"/hand/rightmost/finger/%d/position/vector",j+1);
+        oleap_bundleMessage(bundle,buff,position.x,position.y,position.z);
+        
         sprintf(buff,"/hand/rightmost/finger/%d/position/x",j+1);
         oleap_bundleMessage(bundle,buff,position.x);
         
@@ -784,6 +875,9 @@ void oleap_bang(t_oleap *x)
         
         sprintf(buff,"/hand/rightmost/finger/%d/position/z",j+1);
         oleap_bundleMessage(bundle,buff,position.z);
+        
+        sprintf(buff,"/hand/rightmost/finger/%d/direction/vector",j+1);
+        oleap_bundleMessage(bundle,buff,direction.x,direction.y,direction.z);
         
         sprintf(buff,"/hand/rightmost/finger/%d/direction/x",j+1);
         oleap_bundleMessage(bundle,buff,direction.x);
@@ -794,6 +888,9 @@ void oleap_bang(t_oleap *x)
         sprintf(buff,"/hand/rightmost/finger/%d/direction/z",j+1);
         oleap_bundleMessage(bundle,buff,direction.z);
         
+        sprintf(buff,"/hand/rightmost/finger/%d/velocity/velocity",j+1);
+        oleap_bundleMessage(bundle,buff,velocity.x,velocity.y,velocity.z);
+        
         sprintf(buff,"/hand/rightmost/finger/%d/velocity/x",j+1);
         oleap_bundleMessage(bundle,buff,velocity.x);
         
@@ -802,6 +899,9 @@ void oleap_bang(t_oleap *x)
         
         sprintf(buff,"/hand/rightmost/finger/%d/velocity/z",j+1);
         oleap_bundleMessage(bundle,buff,velocity.z);
+        
+        sprintf(buff,"/hand/rightmost/finger/%d/direction/normalized/vector",j+1);
+        oleap_bundleMessage(bundle,buff,direction.normalized().x,direction.normalized().y,direction.normalized().z);
         
         sprintf(buff,"/hand/rightmost/finger/%d/direction/normalized/x",j+1);
         oleap_bundleMessage(bundle,buff,direction.normalized().x);
@@ -917,6 +1017,9 @@ void oleap_bang(t_oleap *x)
             sprintf(buff,"/hand/%d/finger/%d/finger_id",i+1,j+1);
             oleap_bundleMessage(bundle,buff,finger_id);
 
+            sprintf(buff,"/hand/%d/finger/%d/position/vector",i+1,j+1);
+            oleap_bundleMessage(bundle,buff,position.x,position.y,position.z);
+            
             sprintf(buff,"/hand/%d/finger/%d/position/x",i+1,j+1);
             oleap_bundleMessage(bundle,buff,position.x);
             
@@ -925,7 +1028,10 @@ void oleap_bang(t_oleap *x)
             
             sprintf(buff,"/hand/%d/finger/%d/position/z",i+1,j+1);
             oleap_bundleMessage(bundle,buff,position.z);
-
+            
+            sprintf(buff,"/hand/%d/finger/%d/direction/vector",i+1,j+1);
+            oleap_bundleMessage(bundle,buff,direction.x,direction.y,direction.z);
+            
             sprintf(buff,"/hand/%d/finger/%d/direction/x",i+1,j+1);
             oleap_bundleMessage(bundle,buff,direction.x);
             
@@ -934,7 +1040,10 @@ void oleap_bang(t_oleap *x)
 
             sprintf(buff,"/hand/%d/finger/%d/direction/z",i+1,j+1);
             oleap_bundleMessage(bundle,buff,direction.z);
-
+            
+            sprintf(buff,"/hand/%d/finger/%d/velocity/vector",i+1,j+1);
+            oleap_bundleMessage(bundle,buff,velocity.x,velocity.y,velocity.z);
+            
             sprintf(buff,"/hand/%d/finger/%d/velocity/x",i+1,j+1);
             oleap_bundleMessage(bundle,buff,velocity.x);
 
@@ -973,6 +1082,9 @@ void oleap_bang(t_oleap *x)
         sprintf(buff,"/hand/%d/palm/frame_id",i+1);
         oleap_bundleMessage(bundle,buff,frame_id);
         
+        sprintf(buff,"/hand/%d/palm/position/vector",i+1);
+        oleap_bundleMessage(bundle,buff,position.x,position.y,position.z);
+        
         sprintf(buff,"/hand/%d/palm/position/x",i+1);
         oleap_bundleMessage(bundle,buff,position.x);
         
@@ -981,6 +1093,9 @@ void oleap_bang(t_oleap *x)
         
         sprintf(buff,"/hand/%d/palm/position/z",i+1);
         oleap_bundleMessage(bundle,buff,position.z);
+        
+        sprintf(buff,"/hand/%d/palm/direction/vector",i+1);
+        oleap_bundleMessage(bundle,buff,direction.x,direction.y,direction.z);
         
         sprintf(buff,"/hand/%d/palm/direction/x",i+1);
         oleap_bundleMessage(bundle,buff,direction.x);
@@ -991,6 +1106,9 @@ void oleap_bang(t_oleap *x)
         sprintf(buff,"/hand/%d/palm/direction/z",i+1);
         oleap_bundleMessage(bundle,buff,direction.z);
         
+        sprintf(buff,"/hand/%d/palm/velocity/vector",i+1);
+        oleap_bundleMessage(bundle,buff,velocity.x,velocity.y,velocity.z);
+        
         sprintf(buff,"/hand/%d/palm/velocity/x",i+1);
         oleap_bundleMessage(bundle,buff,velocity.x);
         
@@ -999,6 +1117,9 @@ void oleap_bang(t_oleap *x)
         
         sprintf(buff,"/hand/%d/palm/velocity/z",i+1);
         oleap_bundleMessage(bundle,buff,velocity.z);
+        
+        sprintf(buff,"/hand/%d/palm/normal/vector",i+1);
+        oleap_bundleMessage(bundle,buff,normal.x,normal.y,normal.z);
         
         sprintf(buff,"/hand/%d/palm/normal/x",i+1);
         oleap_bundleMessage(bundle,buff,normal.x);
@@ -1009,12 +1130,14 @@ void oleap_bang(t_oleap *x)
         sprintf(buff,"/hand/%d/palm/normal/z",i+1);
         oleap_bundleMessage(bundle,buff,normal.z);
         
-        
         sprintf(buff,"/hand/%d/sphere/id",i);
         oleap_bundleMessage(bundle,buff,hand_id);
         
         sprintf(buff,"/hand/%d/sphere/frame_id",i);
         oleap_bundleMessage(bundle,buff,frame_id);
+        
+        sprintf(buff,"/hand/%d/sphere/center/vector",i+1);
+        oleap_bundleMessage(bundle,buff,sphereCenter.x,sphereCenter.y,sphereCenter.z);
         
         sprintf(buff,"/hand/%d/sphere/center/x",i+1);
         oleap_bundleMessage(bundle,buff,sphereCenter.x);
@@ -1043,7 +1166,10 @@ void oleap_bang(t_oleap *x)
             
             sprintf(buff,"/hand/%d/pointable/%d/width",i+1,j+1);
             oleap_bundleMessage(bundle,buff,pointables.operator[](j).width());
-        
+            
+            sprintf(buff,"/hand/%d/pointable/%d/direction/vector",i+1,j+1);
+            oleap_bundleMessage(bundle,buff,pointables.operator[](j).direction().x,pointables.operator[](j).direction().y,pointables.operator[](j).direction().z);
+            
             sprintf(buff,"/hand/%d/pointable/%d/direction/x",i+1,j+1);
             oleap_bundleMessage(bundle,buff,pointables.operator[](j).direction().x);
         
@@ -1058,7 +1184,10 @@ void oleap_bang(t_oleap *x)
             
             sprintf(buff,"/hand/%d/pointable/%d/isTool",i+1,j+1);
             oleap_bundleMessage(bundle,buff,pointables.operator[](j).isTool());
-        
+            
+            sprintf(buff,"/hand/%d/pointable/%d/position/tip/vector",i+1,j+1);
+            oleap_bundleMessage(bundle,buff,pointables.operator[](j).tipPosition().x,pointables.operator[](j).tipPosition().y,pointables.operator[](j).tipPosition().z);
+            
             sprintf(buff,"/hand/%d/pointable/%d/position/tip/x",i+1,j+1);
             oleap_bundleMessage(bundle,buff,pointables.operator[](j).tipPosition().x);
             
@@ -1068,6 +1197,9 @@ void oleap_bang(t_oleap *x)
             sprintf(buff,"/hand/%d/pointable/%d/position/tip/z",i+1,j+1);
             oleap_bundleMessage(bundle,buff,pointables.operator[](j).tipPosition().z);
             
+            sprintf(buff,"/hand/%d/pointable/%d/velocity/tip/vector",i+1,j+1);
+            oleap_bundleMessage(bundle,buff,pointables.operator[](j).tipVelocity().x,pointables.operator[](j).tipVelocity().y,pointables.operator[](j).tipVelocity().z);
+            
             sprintf(buff,"/hand/%d/pointable/%d/velocity/tip/x",i+1,j+1);
             oleap_bundleMessage(bundle,buff,pointables.operator[](j).tipVelocity().x);
             
@@ -1076,7 +1208,10 @@ void oleap_bang(t_oleap *x)
             
             sprintf(buff,"/hand/%d/pointable/%d/velocity/tip/z",i+1,j+1);
             oleap_bundleMessage(bundle,buff,pointables.operator[](j).tipVelocity().z);
-     
+            
+            sprintf(buff,"/hand/%d/pointable/%d/position/stabilized/vector",i+1,j+1);
+            oleap_bundleMessage(bundle,buff,pointables.operator[](j).stabilizedTipPosition().x,pointables.operator[](j).stabilizedTipPosition().y,pointables.operator[](j).stabilizedTipPosition().z);
+            
             sprintf(buff,"/hand/%d/pointable/%d/position/stabilized/x",i+1,j+1);
             oleap_bundleMessage(bundle,buff,pointables.operator[](j).stabilizedTipPosition().x);
             
@@ -1107,6 +1242,9 @@ void oleap_bang(t_oleap *x)
         sprintf(buff,"/hand/%d/interactionBox/depth",i+1);
         oleap_bundleMessage(bundle,buff,box.depth());
         
+        sprintf(buff,"/hand/%d/interactionBox/center/vector",i+1);
+        oleap_bundleMessage(bundle,buff,center.x,center.y,center.z);
+        
         sprintf(buff,"/hand/%d/interactionBox/center/x",i+1);
         oleap_bundleMessage(bundle,buff,center.x);
         
@@ -1115,6 +1253,9 @@ void oleap_bang(t_oleap *x)
         
         sprintf(buff,"/hand/%d/interactionBox/center/z",i+1);
         oleap_bundleMessage(bundle,buff,center.z);
+        
+        sprintf(buff,"/hand/%d/interactionBox/position/normalized/vector",i+1);
+        oleap_bundleMessage(bundle,buff,normalizedPosition.x,normalizedPosition.y,normalizedPosition.z);
         
         sprintf(buff,"/hand/%d/interactionBox/position/normalized/x",i+1);
         oleap_bundleMessage(bundle,buff,normalizedPosition.x);
