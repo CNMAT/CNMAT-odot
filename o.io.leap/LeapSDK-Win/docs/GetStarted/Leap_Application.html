@@ -1,0 +1,468 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Docutils 0.9.1: http://docutils.sourceforge.net/" />
+<title>Using the Leap Motion Control Panel</title>
+<style type="text/css">
+
+/*
+:Author: David Goodger (goodger@python.org)
+:Id: $Id: html4css1.css 7434 2012-05-11 21:06:27Z milde $
+:Copyright: This stylesheet has been placed in the public domain.
+
+Default cascading style sheet for the HTML output of Docutils.
+
+See http://docutils.sf.net/docs/howto/html-stylesheets.html for how to
+customize this style sheet.
+*/
+
+/* used to remove borders from tables and images */
+.borderless, table.borderless td, table.borderless th {
+  border: 0 }
+
+table.borderless td, table.borderless th {
+  /* Override padding for "table.docutils td" with "! important".
+     The right padding separates the table cells. */
+  padding: 0 0.5em 0 0 ! important }
+
+.first {
+  /* Override more specific margin styles with "! important". */
+  margin-top: 0 ! important }
+
+.last, .with-subtitle {
+  margin-bottom: 0 ! important }
+
+.hidden {
+  display: none }
+
+a.toc-backref {
+  text-decoration: none ;
+  color: black }
+
+blockquote.epigraph {
+  margin: 2em 5em ; }
+
+dl.docutils dd {
+  margin-bottom: 0.5em }
+
+object[type="image/svg+xml"], object[type="application/x-shockwave-flash"] {
+  overflow: hidden;
+}
+
+/* Uncomment (and remove this text!) to get bold-faced definition list terms
+dl.docutils dt {
+  font-weight: bold }
+*/
+
+div.abstract {
+  margin: 2em 5em }
+
+div.abstract p.topic-title {
+  font-weight: bold ;
+  text-align: center }
+
+div.admonition, div.attention, div.caution, div.danger, div.error,
+div.hint, div.important, div.note, div.tip, div.warning {
+  margin: 2em ;
+  border: medium outset ;
+  padding: 1em }
+
+div.admonition p.admonition-title, div.hint p.admonition-title,
+div.important p.admonition-title, div.note p.admonition-title,
+div.tip p.admonition-title {
+  font-weight: bold ;
+  font-family: sans-serif }
+
+div.attention p.admonition-title, div.caution p.admonition-title,
+div.danger p.admonition-title, div.error p.admonition-title,
+div.warning p.admonition-title {
+  color: red ;
+  font-weight: bold ;
+  font-family: sans-serif }
+
+/* Uncomment (and remove this text!) to get reduced vertical space in
+   compound paragraphs.
+div.compound .compound-first, div.compound .compound-middle {
+  margin-bottom: 0.5em }
+
+div.compound .compound-last, div.compound .compound-middle {
+  margin-top: 0.5em }
+*/
+
+div.dedication {
+  margin: 2em 5em ;
+  text-align: center ;
+  font-style: italic }
+
+div.dedication p.topic-title {
+  font-weight: bold ;
+  font-style: normal }
+
+div.figure {
+  margin-left: 2em ;
+  margin-right: 2em }
+
+div.footer, div.header {
+  clear: both;
+  font-size: smaller }
+
+div.line-block {
+  display: block ;
+  margin-top: 1em ;
+  margin-bottom: 1em }
+
+div.line-block div.line-block {
+  margin-top: 0 ;
+  margin-bottom: 0 ;
+  margin-left: 1.5em }
+
+div.sidebar {
+  margin: 0 0 0.5em 1em ;
+  border: medium outset ;
+  padding: 1em ;
+  background-color: #ffffee ;
+  width: 40% ;
+  float: right ;
+  clear: right }
+
+div.sidebar p.rubric {
+  font-family: sans-serif ;
+  font-size: medium }
+
+div.system-messages {
+  margin: 5em }
+
+div.system-messages h1 {
+  color: red }
+
+div.system-message {
+  border: medium outset ;
+  padding: 1em }
+
+div.system-message p.system-message-title {
+  color: red ;
+  font-weight: bold }
+
+div.topic {
+  margin: 2em }
+
+h1.section-subtitle, h2.section-subtitle, h3.section-subtitle,
+h4.section-subtitle, h5.section-subtitle, h6.section-subtitle {
+  margin-top: 0.4em }
+
+h1.title {
+  text-align: center }
+
+h2.subtitle {
+  text-align: center }
+
+hr.docutils {
+  width: 75% }
+
+img.align-left, .figure.align-left, object.align-left {
+  clear: left ;
+  float: left ;
+  margin-right: 1em }
+
+img.align-right, .figure.align-right, object.align-right {
+  clear: right ;
+  float: right ;
+  margin-left: 1em }
+
+img.align-center, .figure.align-center, object.align-center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.align-left {
+  text-align: left }
+
+.align-center {
+  clear: both ;
+  text-align: center }
+
+.align-right {
+  text-align: right }
+
+/* reset inner alignment in figures */
+div.align-right {
+  text-align: inherit }
+
+/* div.align-center * { */
+/*   text-align: left } */
+
+ol.simple, ul.simple {
+  margin-bottom: 1em }
+
+ol.arabic {
+  list-style: decimal }
+
+ol.loweralpha {
+  list-style: lower-alpha }
+
+ol.upperalpha {
+  list-style: upper-alpha }
+
+ol.lowerroman {
+  list-style: lower-roman }
+
+ol.upperroman {
+  list-style: upper-roman }
+
+p.attribution {
+  text-align: right ;
+  margin-left: 50% }
+
+p.caption {
+  font-style: italic }
+
+p.credits {
+  font-style: italic ;
+  font-size: smaller }
+
+p.label {
+  white-space: nowrap }
+
+p.rubric {
+  font-weight: bold ;
+  font-size: larger ;
+  color: maroon ;
+  text-align: center }
+
+p.sidebar-title {
+  font-family: sans-serif ;
+  font-weight: bold ;
+  font-size: larger }
+
+p.sidebar-subtitle {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+p.topic-title {
+  font-weight: bold }
+
+pre.address {
+  margin-bottom: 0 ;
+  margin-top: 0 ;
+  font: inherit }
+
+pre.literal-block, pre.doctest-block, pre.math, pre.code {
+  margin-left: 2em ;
+  margin-right: 2em }
+
+pre.code .ln { /* line numbers */
+  color: grey;
+}
+
+.code {
+  background-color: #eeeeee
+}
+
+span.classifier {
+  font-family: sans-serif ;
+  font-style: oblique }
+
+span.classifier-delimiter {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+span.interpreted {
+  font-family: sans-serif }
+
+span.option {
+  white-space: nowrap }
+
+span.pre {
+  white-space: pre }
+
+span.problematic {
+  color: red }
+
+span.section-subtitle {
+  /* font-size relative to parent (h1..h6 element) */
+  font-size: 80% }
+
+table.citation {
+  border-left: solid 1px gray;
+  margin-left: 1px }
+
+table.docinfo {
+  margin: 2em 4em }
+
+table.docutils {
+  margin-top: 0.5em ;
+  margin-bottom: 0.5em }
+
+table.footnote {
+  border-left: solid 1px black;
+  margin-left: 1px }
+
+table.docutils td, table.docutils th,
+table.docinfo td, table.docinfo th {
+  padding-left: 0.5em ;
+  padding-right: 0.5em ;
+  vertical-align: top }
+
+table.docutils th.field-name, table.docinfo th.docinfo-name {
+  font-weight: bold ;
+  text-align: left ;
+  white-space: nowrap ;
+  padding-left: 0 }
+
+h1 tt.docutils, h2 tt.docutils, h3 tt.docutils,
+h4 tt.docutils, h5 tt.docutils, h6 tt.docutils {
+  font-size: 100% }
+
+ul.auto-toc {
+  list-style-type: none }
+
+</style>
+</head>
+<body>
+<div class="document" id="using-the-leap-motion-control-panel">
+<h1 class="title">Using the Leap Motion Control Panel</h1>
+
+<p>This article describes the Leap Motion Control Panel, which you use to set the available options for your Leap Motion Controller.</p>
+<div class="contents topic" id="topics">
+<p class="topic-title first">Topics:</p>
+<ul class="simple">
+<li><a class="reference internal" href="#overview" id="id1">Overview</a></li>
+<li><a class="reference internal" href="#leap-motion-settings" id="id2">Leap Motion Settings</a><ul>
+<li><a class="reference internal" href="#general-settings" id="id3">General settings</a></li>
+<li><a class="reference internal" href="#tracking-settings" id="id4">Tracking settings</a><ul>
+<li><a class="reference internal" href="#robust-tracking-mode" id="id5">Robust tracking mode</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#troubleshooting" id="id6">Troubleshooting</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#diagnostics" id="id7">Diagnostics</a></li>
+<li><a class="reference internal" href="#device-recalibration" id="id8">Device recalibration</a></li>
+<li><a class="reference internal" href="#reporting-bugs" id="id9">Reporting bugs</a></li>
+</ul>
+</div>
+<div class="section" id="overview">
+<h1><a class="toc-backref" href="#id1">Overview</a></h1>
+<p>When the the Leap Motion application is running, it displays an icon in the notification area of the Windows Taskbar or Mac Finder bar. You can use the menu attached to the icon to open the control panel and launch the Airspace application, among other things. When the Leap Motion device is plugged in and working properly, the icon turns green. Other colors indicate errors and abnormal operating conditions:</p>
+<ul class="simple">
+<li><img alt="Unplugged-Icon" src="../Common/images/Leap_App_Icon_Unplugged.png" /> — the Leap Motion Controller is unplugged (or the Leap Motion software hasn't detected it yet).</li>
+<li><img alt="Normal-Icon" src="../Common/images/Leap_App_Icon_Normal.png" /> — the Leap Motion Controller and software are operating normally.</li>
+<li><img alt="Robust-Icon" src="../Common/images/Leap_App_Icon_Robust.png" /> — the Leap Motion Controller is operating in robust mode. See <a class="reference internal" href="#tracking-settings">Tracking settings</a> for more information.</li>
+<li><img alt="Smudge-Icon" src="../Common/images/Leap_App_Icon_Smudge.png" /> — shown briefly, this icon indicates that a smudge or other contamination might be clouding the Leap Motion Controller sensor window.</li>
+<li><img alt="Error-Icon" src="../Common/images/Leap_App_Icon_Error.png" /> — an error has occured from which the Leap Motion system is unable to recover. Open the application log using the <tt class="docutils literal">Show Log</tt> menu command for more information about the error.</li>
+</ul>
+<p>The Leap Motion application icon menu provides the following commands:</p>
+<ul class="simple">
+<li>Launch Airspace — Opens the Airspace application.</li>
+<li>Settings... — Opens the Leap Motion Control Panel.</li>
+<li>Visualizer... — launches the Visualizer application.</li>
+<li>Pause/Resume Tracking — Stops/Resumes the production of Leap Motion tracking data.</li>
+</ul>
+</div>
+<div class="section" id="leap-motion-settings">
+<h1><a class="toc-backref" href="#id2">Leap Motion Settings</a></h1>
+<p>You can adjust the behavior of the Leap Motion system and perform diagnostic checks using the Leap Motion Control Panel. Open the control panel using the <em>Settings...</em> command of the icon menu.</p>
+<div class="section" id="general-settings">
+<h2><a class="toc-backref" href="#id3">General settings</a></h2>
+<p>The General page of the Leap Motion Control Panel provides the following settings:</p>
+<p>Check the <em>Allow Web Apps</em> checkbox to turn on the WebSocket server that provides tracking data to web applications. (It is possible for other applications to connect to the WebSocket server, so turning this setting off could affect a few desktop applications as well.)</p>
+<p>Check <em>Allow Background Apps</em> to permit applications to receive tracking data when they are not the foreground, focused application.</p>
+<p>Check <em>Automatic Power Saving</em> to allow the Leap Motion software to reduce power usage by adjusting the tracking frame rate based on the amount of movement in the field of view. Power saving is always used when a computer is running on battery power.</p>
+<p>Check <em>Automatic Interaction Height</em> to allow the Leap Motion software to adjust the height of the interaction box automatically. This setting affects the InteractionBox class provided by the Leap Motion API. Adjust the <em>Interaction Height</em> slider to manually set the interaction box height.</p>
+<p>Check <em>Automatically Check for Updates</em> to allow the Leap Motion software to automatically check for and download software updates on a regular interval. Click the <em>Check for Updates</em> button to check immediately. Click <em>Install Update</em> when an update is available.</p>
+</div>
+<div class="section" id="tracking-settings">
+<h2><a class="toc-backref" href="#id4">Tracking settings</a></h2>
+<p>The Leap Motion system has several operating modes which determine how the system analyzes data. The following modes are user-selectable from the control panel:</p>
+<p>Tracking Priority:</p>
+<ul class="simple">
+<li>Precision — prioritizes precision over speed</li>
+<li>Balanced — balances precision with speed</li>
+<li>High Speed — prioritizes speed over precision</li>
+</ul>
+<!-- The *Hand and Tool Isolation* -->
+<p>Check <em>Auto Orient Device</em> to allow the device to flip the z axis when it detects a hand entering the field of view from the opposite side. Click the <em>Reverse Orientation</em> button to flip the axis manually.</p>
+<div class="section" id="robust-tracking-mode">
+<h3><a class="toc-backref" href="#id5">Robust tracking mode</a></h3>
+<p>The <em>Robust Mode</em> improves the reliability of the tracking data in bright lighting conditions. Robust mode allows the Leap Motion Controller to operate in a wider range of environmental conditions; however, other performance characteristics may be reduced. The main effects on performance are that there will be increased processing latency and very fast motions by the user will cause a loss of tracking data. While in robust mode, the other tracking modes cannot be selected.</p>
+<p>The Leap Motion Controller automatically drops into robust mode when lighting conditions become poor. The Leap Motion switches back into the last user-selected operating mode when lighting conditions improve, but will remain in robust mode for at least 30 seconds. The Leap Motion task bar or menu bar icon changes from green to yellow when in this mode.</p>
+</div>
+</div>
+<div class="section" id="troubleshooting">
+<h2><a class="toc-backref" href="#id6">Troubleshooting</a></h2>
+<p>Click <em>Show Software Log</em> to view events related to the Leap Motion application. If you are having problems, we may ask you to save the log and send it to <a class="reference external" href="https://developer.leapmotion.com">Leap Motion</a> to help us assess the problem. You can save the log by copying the contents of the log window to an email or text document.</p>
+<p>Click <em>Diagnostic Visualizer</em> to open the developer Visualizer application.</p>
+<p>Click <em>Recalibrate Device</em> to start the device calibration utility. See <a class="reference internal" href="#device-recalibration">Device recalibration</a> for  information.</p>
+<p>Click <em>Report Bug</em> to open the bug report form. See <a class="reference internal" href="#reporting-bugs">Reporting bugs</a> for information.</p>
+<p>Click <em>Restore Default Settings</em> to revert all of the Leap Motion settings to their original values.</p>
+<p>Check the <em>Low Resource Mode</em> checkbox to reduce the CPU and USB bandwidth used by the Leap Motion device and software. This setting may reduce maximum tracking range, speed, and accuracy, but may be necessary on computers with congested USB busses (from multiple USB and Bluetooth devices) or lower-rated CPU chips.</p>
+<p>Click <em>Run Diagnostics</em> to perform a series of system and environmental tests. See <a class="reference internal" href="#diagnostics">Diagnostics</a> for information.</p>
+</div>
+</div>
+<div class="section" id="diagnostics">
+<h1><a class="toc-backref" href="#id7">Diagnostics</a></h1>
+<p>The Diagnostic tests include two sets of checks. The first set tests the Leap Motion device and software:</p>
+<ul class="simple">
+<li>Authentication — validates the controller firmware identity. If this test fails, please contact Leap Motion support.</li>
+<li>Device Test — checks that the controller sends data to the Leap Motion software.</li>
+<li>Software Test — checks that the Leap Motion software produces tracking data (this test requires that you hold a hand in view during the test).</li>
+</ul>
+<p>The second set of checks tests external environmental factors:</p>
+<ul class="simple">
+<li>Check for smudge — checks the device window for dirt and smudges. If this test fails, clean the device window with a soft cloth.</li>
+<li>Check lighting conditions — checks for bright infrared light sources in the Leap Motion controller's field of view. If this tests fails, consider moving controller or the light source, if possible, or shielding the controller from the light source.</li>
+</ul>
+<p>Click <em>Report Diagnostics</em> to send a report containing the test results to Leap Motion. We use the information for quality control.</p>
+</div>
+<div class="section" id="device-recalibration">
+<h1><a class="toc-backref" href="#id8">Device recalibration</a></h1>
+<p>If the sensors on the Leap Motion Controller are knocked out of their initial alignment, the device must be recalibrated. Symptoms that may indicate the need to recalibrate include:</p>
+<blockquote>
+<ul class="simple">
+<li>Persistent jumpiness</li>
+<li>Frequent discontinuities in the tracking data</li>
+<li>Aberrations in tracking data that occur only in certain areas of the field of view</li>
+<li>Poor tracking range</li>
+</ul>
+</blockquote>
+<p>You can look for these symptoms using the the <a class="reference external" href="Leap_Visualizer.html">Leap Motion Visualizer</a>.</p>
+<p>To recalibrate your Leap Motion Controller:</p>
+<ol class="arabic simple">
+<li>Open the Leap Motion Settins application using the icon menu on the Windows Taskbar or Mac Finder bar.</li>
+<li>Select the Troubleshooting page.</li>
+<li>Click the <em>Recalibrate Device</em> button.</li>
+<li>Follow the on-screen instructions to perform the calibration procedure.</li>
+</ol>
+<div class="figure">
+<img alt="../Common/images/Leap_Recalibrate.png" src="../Common/images/Leap_Recalibrate.png" />
+<p class="caption">You will need a flat, reflective surface. A mirror is ideal, but many other reflective surfaces like a flat screen monitor will work accetably as well. During the procedure, hold the Leap Motion Controller so that the LEDs shine on the reflective surface and are reflected back into the top of the device. The calibration window displays a disk that moves as you change the angle between the surface and the device. Rotate the controller to move this disc so that it &quot;paints&quot; the window. Moving the Leap Motion Controller up and down or side to side does not adversely affect the calibration, but calibration requires rotation.</p>
+</div>
+</div>
+<div class="section" id="reporting-bugs">
+<h1><a class="toc-backref" href="#id9">Reporting bugs</a></h1>
+<p>If you are having problems with the Leap Motion software or hardware, please contact us so we can help you resolve the issue. You can submit reports on the <a class="reference external" href="https://developer.leapmotion.com">Leap Motion</a> Developer Portal or by using the Bug Report form of the Leap Motion application.</p>
+<p>We may ask you to reproduce the issue on your device and record some diagnostic information which you can send to <a class="reference external" href="https://developer.leapmotion.com">Leap Motion</a> to help us assess the problem. You can start and stop the recording of diagnostic information from the Leap Motion Bug Report form. The data is compressed and encrypted and is not useful for your local application debugging. The data recorded can grow large over time, so we do not recommend recording diagnostics for an extended period.</p>
+<p>To report a bug,</p>
+<ol class="arabic simple">
+<li>Open the Leap Motion Settins application using the icon menu on the Windows Taskbar or Mac Finder bar.</li>
+<li>Select the Troubleshooting page.</li>
+<li>Click the Report Bug button.</li>
+<li>On the Bug Report form, select the reason that best fits your bug from the Reason drop-down list.</li>
+<li>Add any important details, such as how to reproduce your bug in the Details section.</li>
+<li>For some types of bugs, you will be asked to record diagnostic information.</li>
+<li>When finished, click the Send button. Your bug information and recorded diagnostics will be sent to Leap Motion.</li>
+</ol>
+<p>If you are asked to record diagnostic information,</p>
+<ol class="arabic simple">
+<li>Press the <em>Record</em> button.</li>
+<li>Reproduce the problem (it may help to have the <a class="reference external" href="Leap_Visualizer.html">Leap Motion Visualizer</a> running).</li>
+<li>Press the <em>Stop</em> button after a short period of time.</li>
+<li>Click <em>Send</em> to upload the diagnostic file to <a class="reference external" href="https://developer.leapmotion.com">Leap Motion</a> for analysis.</li>
+</ol>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,8 @@
+Leap.Gesture
+============
+
+.. currentmodule:: Leap
+
+.. autoclass:: Gesture
+   :members:
+   :undoc-members:

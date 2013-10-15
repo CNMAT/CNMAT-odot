@@ -1,0 +1,403 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
+		<title>Sample_ObjectiveC_Tutorial Document</title>
+		<meta id="xcode-display" name="xcode-display" content="render"/>
+		<link rel="stylesheet" type="text/css" href="../../css/styles.css" media="all" />
+		<link rel="stylesheet" type="text/css" media="print" href="../../css/stylesPrint.css" />	
+		<meta name="generator" content="appledoc 2.1 (build 858)" />
+	</head>
+	<body>
+		<header id="top_header">
+			<div id="library" class="hideInXcode">
+				<h1><a id="libraryTitle" href="../index.html">Leap Motion API </a></h1>
+				<a id="developerHome" href="../index.html">Leap Motion</a>
+			</div>
+			
+			<div id="title" role="banner">
+				<h1 class="hideInXcode" id="pageTitleHeader">Sample_ObjectiveC_Tutorial Document</h1>
+			</div>
+			<ul id="headerButtons" role="toolbar"></ul>
+		</header>
+		<article>
+			<a title="Sample_ObjectiveC_Tutorial Document" name="top"></a>
+			<div id="overview_contents" role="main">
+				<div id="container">	
+					<h1>Understanding the Objective-C Sample Application  </h1>
+
+<p>This article discusses the Objective-C sample application included with<br/>
+the Leap SDK. After reading this article, you should be ready to access<br/>
+Leap hand tracking data from your own Objective-C applications.</p>
+
+<p>In the Leap SDK folder, you can find the following files used for this<br/>
+article:</p>
+
+<ul>
+<li><code>LeapSDK/samples/SampleObjectiveC.xcodeproj</code> — Xcode project file.</li>
+<li><code>LeapSDK/samples/ObjectiveC/Sample.h</code> — Header file for the sample<br/>
+code which interacts with the Leap library.</li>
+<li><code>LeapSDK/samples/ObjectiveC/Sample.m</code> — Sample code that interacts<br/>
+with the Leap library to print out tracking data.</li>
+<li><code>LeapSDK/samples/ObjectiveC/*</code> — Miscellaneous standard OS X<br/>
+application files.</li>
+<li><code>LeapSDK/include/LeapObjectiveC.h</code> — Header file for the Leap<br/>
+Objective C++ wrapper.</li>
+<li><code>LeapSDK/include/LeapObjectiveC.mm</code> — Objective C++ wrapper for the<br/>
+Leap library.</li>
+<li><code>LeapSDK/include/Leap.h</code> — Leap C++ API class and struct<br/>
+definitions.</li>
+<li><code>LeapSDK/include/LeapMath.h</code> — Leap C++ API Vector and Matrix class<br/>
+and struct definitions.</li>
+<li><code>LeapSDK/lib/libLeap.dylib</code> — Leap library for Mac.</li>
+</ul>
+
+
+<p>All the files needed for the sample application are already referenced<br/>
+in the SampleObjectiveC Xcode project file.</p>
+
+<h2>Overview  </h2>
+
+<p>In a nutshell, the Leap motion tracking device detects and tracks hands<br/>
+and fingers placed within its field of view. The Leap captures this data<br/>
+one <em>frame</em> at a time. Your applications can use the Leap API to access<br/>
+this data.</p>
+
+<p>The sample application demonstrates how to use the Leap API to listen<br/>
+for frame events dispatched by the Leap and how to access the hand and<br/>
+finger data in each frame. The application is a small program that<br/>
+prints information about detected hands and fingers to standard output.</p>
+
+<p>The sample application uses most of the key classes in the Leap API,<br/>
+including:</p>
+
+<ul>
+<li><a href="../../Classes/LeapController.html">LeapController</a> — the interface between the Leap and your<br/>
+application</li>
+<li><a href="../../Classes/LeapFrame.html">LeapFrame</a> — contains a set of hand and finger tracking data</li>
+<li><a href="../../Classes/LeapHand.html">LeapHand</a> — contains tracking data for a detected hand</li>
+<li><a href="../../Classes/LeapFinger.html">LeapFinger</a> — contains tracking data for a detected finger</li>
+<li><a href="../../Classes/LeapVector.html">LeapVector</a> — represents a 3D position or directional vector</li>
+<li><a href="../../Classes/LeapGesture.html">LeapGesture</a> — represents a recognized gesture.</li>
+</ul>
+
+
+<p>For more detailed information about these classes, pleases refer to the<br/>
+Leap API reference documentation.</p>
+
+<h2>Using the Leap Objective-C Wrapper  </h2>
+
+<p>The Objective-C wrapper translates the classes in the standard Leap C++<br/>
+API into classes that can be used directly from Objective-C.</p>
+
+<p>The main difference between the Objective-C API and the Leap C++ API is<br/>
+the Listener callback mechanism. In Objective-C, you can use either an<br/>
+NSNotification-based listener or the LeapDelegate protocol to observe<br/>
+Leap events dispatched by a LeapController object. Another difference in<br/>
+the two APIs is that the class names of the Objective-C wrapper use the<br/>
+prefix <code>Leap</code>. Thus, the C++ <code>Controller</code> class is named<br/>
+<code>LeapController</code> in Objective-C.</p>
+
+<h2>Creating a LeapController object  </h2>
+
+<p>The <a href="../../Classes/LeapController.html">LeapController</a> class provides the main interface between the Leap<br/>
+and your application. When you create a LeapController object, it<br/>
+connects to the Leap software running on the computer and makes hand<br/>
+tracking data available through <LeapFrame> objects. You can access<br/>
+these Frame objects by instantiating a LeapController object and calling<br/>
+the <a href="../../Classes/LeapController.html#//api/name/frame:">[LeapController frame:]</a> method.</p>
+
+<p>If your application has a natural update loop or frame rate, then you<br/>
+can call the LeapController <code>frame:</code> method as part of this<br/>
+update. Otherwise, you can either receive NSNotifications when a new<br/>
+Frame of data is ready or add a delegate to the controller object.</p>
+
+<p>The sample application creates a LeapController object in the <code>run</code><br/>
+method of the Sample class. The Sample class adopts the LeapListener<br/>
+protocol and adds itself to the LeapController object so that it can<br/>
+receive the Leap events:</p>
+
+<pre><code>- (void)run  
+{  
+    controller = [[LeapController alloc] init];  
+    [controller addListener:self];  
+    NSLog(@"running");  
+}  
+</code></pre>
+
+<p>The <a href="../../Classes/LeapController.html#//api/name/addListener:">[LeapController addListener:]</a> method automatically<br/>
+subscribes the listener object to receive NSNotifications for the<br/>
+members of the LeapListener protocol which it implements.</p>
+
+<p>Note that the Leap library is multi-threaded. Using the<br/>
+NSNotification-based listener avoids most threading issues since all of<br/>
+the Leap callback functions are invoked on the main thread. If you use a<br/>
+delegate instead, be aware that the delegate functions are invoked from<br/>
+threads created by the Leap library, not the main, UI thread.</p>
+
+<h2>Adopting the LeapListener protocol  </h2>
+
+<p>To add a listener object to a controller, create an object adopting the<br/>
+<a href="../../Protocols/LeapListener.html">LeapListener</a> protocol. All the protocol methods are optional. The Sample<br/>
+class implements the methods in the LeapListener protocol to handle<br/>
+notifications dispatched by the Leap. The methods include:</p>
+
+<ul>
+<li><a href="../../Protocols/LeapListener.html#//api/name/onInit:">[LeapListener onInit:]</a> — dispatched once, when the controller to<br/>
+which the delegate is registered is initialized.</li>
+<li><a href="../../Protocols/LeapListener.html#//api/name/onConnect:">[LeapListener onConnect:]</a> — dispatched when the controller connects<br/>
+to the Leap and is ready to begin sending frames of motion tracking<br/>
+data.</li>
+<li><a href="../../Protocols/LeapListener.html#//api/name/onDisconnect:">[LeapListener onDisconnect:]</a> — dispatched if the controller<br/>
+disconnects from the Leap (for example, if you unplug the Leap<br/>
+device or shut down the Leap software).</li>
+<li><a href="../../Protocols/LeapListener.html#//api/name/onExit:">[LeapListener onExit:]</a> — Not implemented for notifications; will<br/>
+never be dispatched.</li>
+<li><a href="../../Protocols/LeapListener.html#//api/name/onFrame:">[LeapListener onFrame:]</a> — dispatched when a new frame of motion<br/>
+tracking data is available.</li>
+</ul>
+
+
+<p>In the lifecycle notification handlers, <code>onInit</code>, <code>onConnect</code>, and<br/>
+<code>onDisconnect</code>, the sample application simply prints a message to the<br/>
+NSLog output. For the <code>onFrame</code> notification, the handler implementation<br/>
+does a bit more work. When the controller dispatches <br/>
+<code>onFrame:</code>, the method gets the latest frame of motion<br/>
+tracking data and prints information about the detected objects to the<br/>
+NSLog output.</p>
+
+<p>You must add a listener to the LeapController to use NSNotifications.<br/>
+While any object can subscribe to the Leap notifications, the controller<br/>
+does not dispatch notifications unless there is at least one Listener<br/>
+explicitly assigned.</p>
+
+<h3>Adopting the LeapDelgate Protocol</h3>
+
+<p>If you prefer to use a delegate rather than NSNotifications, you can<br/>
+create an object adopting the <a href="../../Protocols/LeapDelegate.html">LeapDelegate</a> protocol. The methods of the<br/>
+LeapDelegate protocol are the same as the LeapListener protocol except<br/>
+that they take a LeapController object as a parameter instead of an<br/>
+NSNotification object. The controller object invokes the methods defined<br/>
+in your LeapDelegate implementation whenever a new frame of tracking<br/>
+data is available (and also for a few other Leap events).</p>
+
+<p>You can assign either a LeapListener object or a LeapDelegate object to<br/>
+a controller, but not both.</p>
+
+<h2>Getting a Frame of data  </h2>
+
+<p>The LeapController object dispatches an NSNotification object when the<br/>
+Leap generates a new frame of motion tracking data. The notification<br/>
+object includes a reference to the controller. You can access the new<br/>
+frame of data by calling the controller object&rsquo;s <code>frame:</code> method.<br/>
+The <a href="../../Classes/LeapFrame.html">LeapFrame</a> object returned by <code>frame:</code> is the top level of the<br/>
+Leap model heirarchy and provides such information as a frame ID, a<br/>
+timestamp, and lists containing the hands, fingers, and tools in view.</p>
+
+<p>The following code defined in the Sample class&rsquo;s implementation of the<br/>
+<code>onFrame:</code> method gets the most recent LeapFrame object from<br/>
+the controller, retrieves the list of <a href="../../Classes/LeapHand.html">LeapHand</a> objects from the LeapFrame and<br/>
+then logs the frame ID, timestamp, and the number of hands, fingers, and<br/>
+tools detected in the frame:</p>
+
+<pre><code>- (void)onFrame:(NSNotification *)notification;  
+{  
+    LeapController *aController = (LeapController *)[notification object];  
+
+    // Get the most recent frame and report some basic information  
+    LeapFrame *frame = [aController frame:0];  
+    NSLog(@"Frame id: %lld, timestamp: %lld, hands: %ld, fingers: %ld, tools: %ld",  
+          [frame id], [frame timestamp], [[frame hands] count],  
+          [[frame fingers] count], [[frame tools] count]);  
+</code></pre>
+
+<p>The method goes on to examine the first hand in the list of hands:</p>
+
+<pre><code>if ([[frame hands] count] != 0) {  
+    // Get the first hand  
+    LeapHand *hand = [[frame hands] objectAtIndex:0];  
+</code></pre>
+
+<p>A <a href="../../Classes/LeapHand.html">LeapHand</a> object contains an ID, properties representing the hand's<br/>
+physical characteristics, and a list of <a href="../../Classes/LeapFinger.html">LeapFinger</a> objects. Each<br/>
+LeapFinger object contains an ID and properties representing the<br/>
+characteristic of the finger.</p>
+
+<p>Once it has retrieved a hand, the method checks it for fingers and then<br/>
+averages the finger tip positions, printing the result with the number<br/>
+of fingers:</p>
+
+<pre><code>// Check if the hand has any fingers  
+NSArray *fingers = [hand fingers];  
+if ([fingers count] != 0) {  
+    // Calculate the hand's average finger tip position  
+    LeapVector *avgPos = [[LeapVector alloc] init];  
+    for (int i = 0; i &lt; [fingers count]; i++) {  
+        LeapFinger *finger = [fingers objectAtIndex:i];  
+        avgPos = [avgPos plus:[finger tipPosition]];  
+    }  
+    avgPos = [avgPos divide:[fingers count]];  
+    NSLog(@"Hand has %ld fingers, average finger tip position %@",  
+          [fingers count], avgPos);  
+}  
+</code></pre>
+
+<p>Next, the method prints the radius of a sphere fit to the hand's<br/>
+curvature, along with the hand&rsquo;s palm position:</p>
+
+<pre><code>// Get the hand's sphere radius and palm position  
+NSLog(@"Hand sphere radius: %f mm, palm position: %@",  
+      [hand sphereRadius], [hand palmPosition]);  
+</code></pre>
+
+<p>Finally, the <code>onFrame:</code> method uses <a href="../../Classes/LeapVector.html">LeapVector</a> class methods<br/>
+to get the hand&rsquo;s pitch, roll, and yaw angles from the hand&rsquo;s normal<br/>
+vector and the direction vectors. The angles are converted from radians<br/>
+to degrees:</p>
+
+<pre><code>// Get the hand's normal vector and direction  
+const LeapVector *normal = [hand palmNormal];  
+const LeapVector *direction = [hand direction];  
+
+// Calculate the hand's pitch, roll, and yaw angles  
+NSLog(@"Hand pitch: %f degrees, roll: %f degrees, yaw: %f degrees\n",  
+      [direction pitch] * LEAP_RAD_TO_DEG,  
+      [normal roll] * LEAP_RAD_TO_DEG,  
+      [direction yaw] * LEAP_RAD_TO_DEG);  
+</code></pre>
+
+<h2>Getting Gestures  </h2>
+
+<p>To receive gestures from the Leap, you first have to enable recognition<br/>
+for each type of gesture you are interested in. You can enable gesture<br/>
+recognition any time after the controller connects to the Leap. In the<br/>
+sample program, all gestures are enabled in the <code>onConnect:</code><br/>
+handler using the <a href="../../Classes/LeapController.html#//api/name/enableGesture:enable:">[LeapController enableGesture:enable:]</a> method:</p>
+
+<pre><code>- (void)onConnect:(NSNotification *)notification;  
+{  
+    NSLog(@"Connected");  
+    LeapController *aController = (LeapController *)[notification object];  
+    [aController enableGesture:LEAP_GESTURE_TYPE_CIRCLE enable:YES];  
+    [aController enableGesture:LEAP_GESTURE_TYPE_KEY_TAP enable:YES];  
+    [aController enableGesture:LEAP_GESTURE_TYPE_SCREEN_TAP enable:YES];  
+    [aController enableGesture:LEAP_GESTURE_TYPE_SWIPE enable:YES];  
+}  
+</code></pre>
+
+<p>The Leap adds <a href="../../Classes/LeapGesture.html">LeapGesture</a> objects representing each recognized movement<br/>
+pattern to the gestures list in the Frame object. In the<br/>
+<code>onFrame:</code> handler, the sample application loops through the<br/>
+gesture list and prints information about each one to the standard<br/>
+output. This operation is performed with a standard for-loop and switch<br/>
+statement.</p>
+
+<p>It is sometimes useful to compare the properties of a gesture in the<br/>
+current frame to those from an earlier frame. For example, the circle<br/>
+gesture has a progress attribute that describes how many times the<br/>
+finger has traversed the circle. This is the total progress, however; if<br/>
+you want the progress between frames, you must subtract the progress<br/>
+value of the gesture in the previous frame. You can do this by looking<br/>
+up the gesture in the previous frame using the gesture ID. The following<br/>
+code calculates the progress since the previous frame to derive the<br/>
+angle in radians:</p>
+
+<pre><code>// Calculate the angle swept since the last frame  
+float sweptAngle = 0;  
+if(gesture.state != LEAP_GESTURE_STATE_START) {  
+    LeapGesture *previousUpdate = [[aController frame:1] gesture:gesture.id];  
+    sweptAngle = (gesture.progress - previousUpdate.progress) * 2 * LEAP_PI;  
+}  
+</code></pre>
+
+<p>The full code for the gesture loop is:</p>
+
+<pre><code>NSArray *gestures = [frame gestures:nil];  
+for (int g = 0; g &lt; [gestures count]; g++) {  
+    LeapGesture *gesture = [gestures objectAtIndex:g];  
+    switch (gesture.type) {  
+        case LEAP_GESTURE_TYPE_CIRCLE: {  
+            LeapCircleGesture *circleGesture = (LeapCircleGesture *)gesture;  
+            // Calculate the angle swept since the last frame  
+            float sweptAngle = 0;  
+            if(circleGesture.state != LEAP_GESTURE_STATE_START) {  
+                LeapCircleGesture *previousUpdate =   
+                    (LeapCircleGesture *)[[aController frame:1] gesture:gesture.id];  
+                sweptAngle = (circleGesture.progress - previousUpdate.progress) * 2 * LEAP_PI;  
+            }  
+
+            NSLog(@"Circle id: %d, %@, progress: %f, radius %f, angle: %f degrees",  
+                  circleGesture.id, [Sample stringForState:gesture.state],  
+                  circleGesture.progress, circleGesture.radius, sweptAngle * LEAP_RAD_TO_DEG);  
+            break;  
+        }  
+        case LEAP_GESTURE_TYPE_SWIPE: {  
+            LeapSwipeGesture *swipeGesture = (LeapSwipeGesture *)gesture;  
+            NSLog(@"Swipe id: %d, %@, position: %@, direction: %@, speed: %f",  
+                  swipeGesture.id, [Sample stringForState:swipeGesture.state],  
+                  swipeGesture.position, swipeGesture.direction, swipeGesture.speed);  
+            break;  
+        }  
+        case LEAP_GESTURE_TYPE_KEY_TAP: {  
+            LeapKeyTapGesture *keyTapGesture = (LeapKeyTapGesture *)gesture;  
+            NSLog(@"Key Tap id: %d, %@, position: %@, direction: %@",  
+                  keyTapGesture.id, [Sample stringForState:keyTapGesture.state],  
+                  keyTapGesture.position, keyTapGesture.direction);  
+            break;  
+        }  
+        case LEAP_GESTURE_TYPE_SCREEN_TAP: {  
+            LeapScreenTapGesture *screenTapGesture = (LeapScreenTapGesture *)gesture;  
+            NSLog(@"Screen Tap id: %d, %@, position: %@, direction: %@",  
+                  screenTapGesture.id, [Sample stringForState:screenTapGesture.state],  
+                  screenTapGesture.position, screenTapGesture.direction);  
+            break;  
+        }  
+        default:  
+            NSLog(@"Unknown gesture type");  
+            break;  
+    }  
+}  
+</code></pre>
+
+<h2>Running the sample  </h2>
+
+<p>To run the sample application:</p>
+
+<ol>
+<li><p>Plug the Leap device into a USB port and place it in front of you.</p></li>
+<li><p>If you haven&rsquo;t already, install the Leap software.</p></li>
+<li><p>Start the Leap software. If prompted, enter your registered email<br/>
+address and password. The Leap icon appears on the finder bar and<br/>
+turns green when ready.</p></li>
+<li><p>Open the SampleObjectiveC project file in Xcode.</p></li>
+<li><p>Press the Xcode <em>Run</em> button.</p></li>
+</ol>
+
+
+<p>You should see the messages &ldquo;Initialized&rdquo; and &ldquo;Connected&rdquo; printed to<br/>
+Debug Output area in Xcode when the application initializes and connects<br/>
+to the Leap. You should then see frame information printed to the Debug<br/>
+Output area each time the Leap dispatches the <code>onFrame</code> event. When you<br/>
+place a hand above the Leap, you should also see finger and palm<br/>
+position information printed. Note that the application window is<br/>
+intentionally left blank. All output appears in the Xcode Debug Output<br/>
+area.</p>
+
+<p>Now that you have seen how to access motion tracking data from the Leap,<br/>
+you can begin developing your own Objective-C applications that<br/>
+integrate the Leap.</p>
+				</div>
+				<div id="footer">
+					<hr />
+					<div class="footer-copyright">
+						<p><span class="copyright">&copy; 2013 Leap Motion. All rights reserved. (Last updated: 2013-07-19)</span><br />
+						
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 858)</a>.</span></p>
+						
+					
+					</div>
+				</div>
+			</div>
+		</article>
+	</body>
+</html>

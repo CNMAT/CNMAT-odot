@@ -1,0 +1,266 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
+		<title>Leap_Touch_Emulation Document</title>
+		<meta id="xcode-display" name="xcode-display" content="render"/>
+		<link rel="stylesheet" type="text/css" href="../../css/styles.css" media="all" />
+		<link rel="stylesheet" type="text/css" media="print" href="../../css/stylesPrint.css" />	
+		<meta name="generator" content="appledoc 2.1 (build 858)" />
+	</head>
+	<body>
+		<header id="top_header">
+			<div id="library" class="hideInXcode">
+				<h1><a id="libraryTitle" href="../index.html">Leap Motion API </a></h1>
+				<a id="developerHome" href="../index.html">Leap Motion</a>
+			</div>
+			
+			<div id="title" role="banner">
+				<h1 class="hideInXcode" id="pageTitleHeader">Leap_Touch_Emulation Document</h1>
+			</div>
+			<ul id="headerButtons" role="toolbar"></ul>
+		</header>
+		<article>
+			<a title="Leap_Touch_Emulation Document" name="top"></a>
+			<div id="overview_contents" role="main">
+				<div id="container">	
+					<h1>Touch Emulation  </h1>
+
+<p>The Leap Motion API provides information that you can use to implement<br/>
+touch emulation in your application. Touch information is provided by<br/>
+the <a href="../../Classes/LeapPointable.html">LeapPointable</a> class.</p>
+
+<h2>Overview  </h2>
+
+<p>The Leap Motion API defines an adaptive touch surface that you can use to<br/>
+orchestrate interaction with 2D elements of your application. This<br/>
+surface is oriented roughly parallel to the x-y plane, but adapts to the<br/>
+user&rsquo;s finger and hand position. As the user reaches forward with a<br/>
+finger or tool, the Leap reports whether that pointable object is<br/>
+close-to or touching this imaginary surface. The API reports touches<br/>
+with respect to the surface with two values: the zone and the distance<br/>
+to the touch plane.</p>
+
+<p><img src="../../docs/images/Leap_Touch_Plane.png" alt="The virtual touch  
+surface" /></p>
+
+<p>The touch zone identifies whether the Leap Motion software considers a<br/>
+<a href="../../Classes/LeapPointable.html">LeapPointable</a> as hovering near the touch surface, as penetrating the touch<br/>
+surface, or as too far from the surface (or pointing in the wrong<br/>
+direction). The zones are &ldquo;hovering,&rdquo; &ldquo;touching,&rdquo; and &ldquo;none.&rdquo; The<br/>
+transition between zones tends to lag behind the touch distance. This<br/>
+lag is used to prevent abrupt and repeated transitions. If you are<br/>
+implementing touch interaction within an application, you may not need<br/>
+to consider the touch zone very often.</p>
+
+<p>The touch distance is valid only when a Pointable is within the hovering<br/>
+or touching zones. The distance is a normalized value in the range<br/>
+[+1..-1]. When a LeapPointable first enters the hovering zone, the touch<br/>
+distance is +1.0 and the distance decreases toward 0 as the LeapPointable<br/>
+nears the touch surface. When the LeapPointable penetrates the surface, the<br/>
+distance is 0. As the LeapPointable pushes deeper into the touch zone, the<br/>
+distance approaches, but never exceeds, -1.</p>
+
+<p>You can use the zone value to decide when to update UI elements based on<br/>
+hover or touch. You can use the distance to further modify UI elements<br/>
+based on proximity to the touch plane. For example, you can show the<br/>
+highlight state of a control when a finger is over the control and in<br/>
+the hovering zone and change the cursor based on distance to provide<br/>
+feedback about how close the user is to touching the control.</p>
+
+<p>As part of the touch emulation API the Leap Motion provides a stabilized<br/>
+position for LeapPointable objects in addition to the standard position. The<br/>
+Leap Motion software stabilizes the position using an adaptive filter<br/>
+that smooths and slows the motion to make it easier for the user to<br/>
+interact with small regions on the screen (like buttons and links). The<br/>
+smoothing is greater when the movement is slow so that the user can zero<br/>
+in and touch a particular point more easily.</p>
+
+<h2>Getting the Touch Zone  </h2>
+
+<p>The touch zone is reported by the <code>touchZone</code> attribute of the <a href="../../Classes/LeapPointable.html">LeapPointable</a><br/>
+class. The zones are identified using the LeapPointableZone enumeration, which<br/>
+defines the following states:</p>
+
+<ul>
+<li>LEAP_POINTABLE_ZONE_NONE — the pointable is either too far from the touch surface to be<br/>
+considered touching, or it is pointing back toward the user.</li>
+<li>LEAP_POINTABLE_ZONE_HOVERING — the pointable tip has crossed into the hovering zone, but<br/>
+isn&rsquo;t considered touching.</li>
+<li>LEAP_POINTABLE_ZONE_TOUCHING — the pointable has crossed the virtual touch surface.</li>
+</ul>
+
+
+<p>The following code snippet illustrates how to retrieve the zone of the<br/>
+forward-most finger:</p>
+
+<pre><code>LeapFrame *frame = [leap frame:0];  
+LeapPointable *pointable = [[frame pointables] frontmost];  
+LeapPointableZone *zone = [pointable touchZone];  
+</code></pre>
+
+<h2>Getting the Touch Distance  </h2>
+
+<p>The touch distance is reported by the <code>touchDistance</code> attribute of the<br/>
+<a href="../../Classes/LeapPointable.html">LeapPointable</a> class. The distance ranges from +1 to -1 as the finger moves<br/>
+to and though the virtual touch surface. The distance does not represent<br/>
+a physical quantity, but rather how close to touching the Leap Software<br/>
+considers the pointable.</p>
+
+<p>The following code snippet illustrates how to retrieve the touch<br/>
+distance of the forward-most finger:</p>
+
+<pre><code>LeapFrame *frame = [leap frame:0];  
+LeapPointable *pointable = [[frame pointables] frontmost];  
+float distance = [pointable touchDistance];  
+</code></pre>
+
+<h2>Getting the Stabilized Position of a Pointable  </h2>
+
+<p>The stabilized position is reported by the <code>stabilizedTipPosition</code><br/>
+attribute of the <a href="../../Classes/LeapPointable.html">LeapPointable</a> class. This position is reported in reference<br/>
+to the standard Leap Motion coordinate system, but has a<br/>
+context-sensitive amount of filtering and stabilization.</p>
+
+<p>The following code snippet illustrates how to retrieve the stabilized<br/>
+position of the forward-most finger:</p>
+
+<pre><code>LeapFrame *frame = [leap frame:0];  
+LeapPointable *pointable = [[frame pointables] frontmost];  
+LeapVector *stabilizedPosition = [pointable stabilizedTipPosition];  
+</code></pre>
+
+<h2>Converting from Leap Motion Coordinates to Application Coordinates  </h2>
+
+<p>When implementing touch emulation, you must map the Leap Motion<br/>
+coordinate space to the screen space of your application. To make this<br/>
+mapping easier, the Leap Motion API provides the <a href="../../Classes/LeapInteractionBox.html">LeapInteractionBox</a> class.<br/>
+The LeapInteractionBox represents a rectilinear volume within the Leap<br/>
+Motion field of view. The class provides a function that normalizes<br/>
+positions within this volume to coordinates in the range [0..1]. You can<br/>
+normalize a position and then scale the resulting coordinate by the<br/>
+application dimensions to get a point in application coordinates.</p>
+
+<p>For example, if you have a window with a client-area size represented by<br/>
+the variables <code>windowWidth</code> and <code>windowHeight</code>, you can get the 2D pixel<br/>
+coordinates of a touch point within this window using the following<br/>
+code:</p>
+
+<pre><code>LeapFrame *frame = [leap frame:0];  
+LeapPointable *pointable = [[frame pointables] frontmost];  
+LeapVector *stabilizedPosition = [pointable stabilizedTipPosition];  
+
+LeapInteractionBox *iBox = [frame interactionBox];  
+LeapVector *normalizedPosition = [iBox normalizePoint:stabilizedPosition clamp:YES];  
+float x = [normalizedPosition x] * windowWidth;  
+float y = windowHeight - [normalizedPosition y] * windowHeight;  
+</code></pre>
+
+<h2>TouchPoints Example  </h2>
+
+<p>The following example uses the touch emulation APIs to display the<br/>
+positions of all detected Pointable objects in an NSView.<br/>
+The example uses the touch zone to set the color of the points and uses<br/>
+the touch distance to set the alpha value. The stabilized tip positions<br/>
+are mapped to the NSView bounds using the <a href="../../Classes/LeapInteractionBox.html">LeapInteractionBox</a> class.</p>
+
+<p><img src="../../docs/images/Leap_Touch_Point_Example.png" alt="The TouchPoints  
+example" /></p>
+
+<pre><code>#import "LeapObjectiveC.h"  
+
+@interface LMETouchPointView : NSViewLeapListener  
+
+@property (nonatomic, strong) LeapController *leap;  
+
+@end  
+
+@implementation LMETouchPointView  
+
+@synthesize leap = _leap;  
+
+- (id)initWithFrame:(NSRect)frame  
+{  
+    self = [super initWithFrame:frame];  
+    if (self) {  
+        self.leap = [[LeapController alloc] initWithListener:self];  
+        [NSColor setIgnoresAlpha:NO];  
+    }  
+    return self;  
+}  
+
+- (void)drawRect:(NSRect)dirtyRect  
+{  
+    [[NSColor colorWithDeviceRed:.97 green:.93 blue:.79 alpha:1.0] set];  
+    NSRectFillUsingOperation(self.bounds, NSCompositeCopy);  
+
+    LeapFrame *frame = [self.leap frame:0];  
+    LeapInteractionBox *iBox = frame.interactionBox;  
+    for (LeapFinger *finger in frame.fingers)  
+    {  
+        LeapVector *normalizedPosition = [iBox normalizePoint:finger.stabilizedTipPosition clamp:YES];  
+
+        NSRect cursorBounds = NSMakeRect(normalizedPosition.x * self.bounds.size.width - 20,  
+                                        normalizedPosition.y * self.bounds.size.height - 20,  
+                                        40, 40);  
+        NSBezierPath *cursor = [NSBezierPath bezierPathWithOvalInRect:cursorBounds];  
+
+        if (finger.touchZone == LEAP_POINTABLE_ZONE_HOVERING)  
+        {  
+            [[NSColor colorWithDeviceRed:0 green:1 blue:0 alpha:1.25 - finger.touchDistance] set];  
+        }  
+        else if (finger.touchZone == LEAP_POINTABLE_ZONE_TOUCHING)  
+        {  
+            [[NSColor colorWithDeviceRed:1 green:0 blue:0 alpha: -finger.touchDistance] set];  
+        }  
+        else  
+        {  
+            [[NSColor colorWithDeviceRed:0 green:0 blue:1 alpha:0.25] set];  
+        }  
+        [cursor fill];  
+    }  
+}  
+
+-(void)onFrame:(NSNotification *)notification  
+{  
+    NSLog(@"OnFrame");  
+    [self setNeedsDisplay:YES];  
+}  
+
+-(void)onConnect:(NSNotification *)notification  
+{  
+    NSLog(@"OnConnect");  
+}  
+
+-(void)onInit:(NSNotification *)notification  
+{  
+    NSLog(@"OnInit");  
+}  
+
+-(void)onDisconnect:(NSNotification *)notification  
+{  
+    NSLog(@"OnDisconnect");  
+}  
+
+-(void)onExit:(NSNotification *)notification  
+{  
+    NSLog(@"OnExit");  
+}  
+
+@end
+</code></pre>
+				</div>
+				<div id="footer">
+					<hr />
+					<div class="footer-copyright">
+						<p><span class="copyright">&copy; 2013 Leap Motion. All rights reserved. (Last updated: 2013-07-19)</span><br />
+						
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 858)</a>.</span></p>
+						
+					
+					</div>
+				</div>
+			</div>
+		</article>
+	</body>
+</html>

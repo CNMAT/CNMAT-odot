@@ -1,0 +1,692 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
+		<title>LeapListener Protocol Reference</title>
+		<meta id="xcode-display" name="xcode-display" content="render"/>
+		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
+		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
+		<meta name="generator" content="appledoc 2.1 (build 858)" />
+	</head>
+	<body>
+		<header id="top_header">
+			<div id="library" class="hideInXcode">
+				<h1><a id="libraryTitle" href="../index.html">Leap Motion API </a></h1>
+				<a id="developerHome" href="../index.html">Leap Motion</a>
+			</div>
+			
+			<div id="title" role="banner">
+				<h1 class="hideInXcode">LeapListener Protocol Reference</h1>
+			</div>
+			<ul id="headerButtons" role="toolbar">
+				<li id="toc_button">
+					<button aria-label="Show Table of Contents" role="checkbox" class="open" id="table_of_contents"><span class="disclosure"></span>Table of Contents</button>
+				</li>
+				<li id="jumpto_button" role="navigation">
+					<select id="jumpTo">
+<option value="top">Jump To&#133;</option>
+
+<option value="overview">Overview</option>
+
+
+
+
+<option value="tasks">Tasks</option>
+
+
+
+
+
+
+
+
+
+<option value="instance_methods">Instance Methods</option>
+
+<option value="//api/name/onConnect:">&nbsp;&nbsp;&nbsp;&nbsp;- onConnect:</option>
+
+<option value="//api/name/onDisconnect:">&nbsp;&nbsp;&nbsp;&nbsp;- onDisconnect:</option>
+
+<option value="//api/name/onExit:">&nbsp;&nbsp;&nbsp;&nbsp;- onExit:</option>
+
+<option value="//api/name/onFrame:">&nbsp;&nbsp;&nbsp;&nbsp;- onFrame:</option>
+
+<option value="//api/name/onInit:">&nbsp;&nbsp;&nbsp;&nbsp;- onInit:</option>
+
+
+
+</select>
+				</li>
+			</ul>
+		</header>
+		<nav id="tocContainer" class="isShowingTOC">
+			<ul id="toc" role="tree">
+				
+<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
+
+
+
+
+<li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
+	
+</ul></li>
+
+
+
+
+
+
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/onConnect:">onConnect:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/onDisconnect:">onDisconnect:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/onExit:">onExit:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/onFrame:">onFrame:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/onInit:">onInit:</a></span></li>
+	
+</ul></li>
+
+
+
+
+			</ul>
+		</nav>
+		<article>
+			<div id="contents" class="isShowingTOC" role="main">
+				<a title="LeapListener Protocol Reference" name="top"></a>
+				<div class="main-navigation navigation-top">
+					<ul>
+<li><a href="../index.html">Index</a></li>
+<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="header">
+					<div class="section-header">
+						<h1 class="title title-header">LeapListener Protocol Reference</h1>
+					</div>		
+				</div>
+				<div id="container">	
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+<td class="specification-title">Conforms to</td>
+<td class="specification-value">NSObject</td>
+</tr><tr>
+<td class="specification-title">Declared in</td>
+<td class="specification-value">LeapObjectiveC.h</td>
+</tr>
+						</tbody></table></div>
+					
+					
+					
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>The LeapListener protocol defines a set of methods that you can<br/>
+implement to respond to NSNotification messages dispatched by a LeapController object.</p>
+
+<p>To use the LeapListener protocol, implement a class adopting the protocol<br/>
+and assign an instance of that class to a <a href="../Classes/LeapController.html">LeapController</a> instance:</p>
+
+<p><code>MYListener *listener = [[MYListener alloc] init];</code><br/>
+<code>LeapController *controller = [[LeapController alloc] initWithListener:listener];</code></p>
+
+<p>The controller subscribes the LeapListener instance to the appropriate NSNotifications<br/>
+for the Leap events. When a new frame of data is ready, the controller dispatches an<br/>
+NSNotification on the main application thread, which is handled by your<br/>
+<a href="#//api/name/onFrame:">[LeapListener onFrame:]</a> implementation.</p>
+
+<p>You can handle the other Leap events, <code>onInit</code>, <code>onConnect</code>, <code>onDisconnect</code>,<br/>
+<code>onExit</code>, <code>onFocusGained</code>, and <code>onFocusLost</code> in the same manner.</p>
+
+<p>You must have a running NSRunLoop to receive NSNotification objects.<br/>
+This is usually present and running by default in a Cocoa application.<br/>
+Calling <a href="../Classes/LeapController.html#//api/name/addListener:">[LeapController addListener:]</a> takes care subscribing the listener object<br/>
+to the appropriate notifications. The LeapListener object is the notification observer,<br/>
+while the LeapController object is the notification sender. You can also subscribe to<br/>
+notifications manually. For example, to subscribe to the OnFrame message, call:</p>
+
+<p><code>[[NSNotificationCenter defaultCenter] selector:@selector(onFrame:) name:@"OnFrame" object:controller]]</code></p>
+
+<p>However, at least one listener must be added to the controller with [LeapController addListener:]<br/>
+or the controller does not bother to dispatch notification messages.</p>
+
+<p>Using the LeapListener protocol is not mandatory. You can also use<br/>
+a delegate implementing the <a href="../Protocols/LeapDelegate.html">LeapDelegate</a> protocol or simply poll the<br/>
+controller object (as described in the <a href="../Classes/LeapController.html">LeapController</a> class overview).</p>
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						<h2 class="subtitle subtitle-tasks">Tasks</h2>
+						
+						
+						
+						
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/onInit:">&ndash;&nbsp;onInit:</a></code>
+		<span class="tooltip"><p>Dispatched once, when the <a href="../Classes/LeapController.html">LeapController</a> has finished initializing.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/onConnect:">&ndash;&nbsp;onConnect:</a></code>
+		<span class="tooltip"><p>Dispatched when the <a href="../Classes/LeapController.html">LeapController</a> object connects to the Leap software, or when<br/>
+this ListenerListener object is added to a controller that is already connected.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/onDisconnect:">&ndash;&nbsp;onDisconnect:</a></code>
+		<span class="tooltip"><p>Dispatched when the <a href="../Classes/LeapController.html">LeapController</a> object disconnects from the Leap software.<br/>
+The controller can disconnect when the Leap device is unplugged, the<br/>
+user shuts the Leap software down, or the Leap software encounters an<br/>
+unrecoverable error.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/onExit:">&ndash;&nbsp;onExit:</a></code>
+		<span class="tooltip"><p>Dispatched when this LeapListener object is removed from the <a href="../Classes/LeapController.html">LeapController</a><br/>
+or the controller instance is destroyed.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/onFrame:">&ndash;&nbsp;onFrame:</a></code>
+		<span class="tooltip"><p>Dispatched when a new <a href="../Classes/LeapFrame.html">LeapFrame</a> containing hand and finger tracking data is available.<br/>
+Access the new frame data using the <a href="../Classes/LeapController.html#//api/name/frame:">[LeapController frame:]</a> function.</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+					</div>
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Instance Methods" name="instance_methods"></a>
+						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/onConnect:" title="onConnect:"></a>
+	<h3 class="subsubtitle method-title">onConnect:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Dispatched when the <a href="../Classes/LeapController.html">LeapController</a> object connects to the Leap software, or when<br/>
+this ListenerListener object is added to a controller that is already connected.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)onConnect:(NSNotification *)<em>notification</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>notification</em></dt>
+			<dd><p>The <a href="../Classes/LeapController.html">LeapController</a> object dispatching the notification.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>Since 1.0</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Dispatched when the <a href="../Classes/LeapController.html">LeapController</a> object connects to the Leap software, or when<br/>
+this ListenerListener object is added to a controller that is already connected.</p>
+
+<p><code>- (void)onConnect:(NSNotification *)notification</code><br/>
+<code>{</code><br/>
+<code>  NSLog(@"Connected");</code><br/>
+<code>   LeapController *aController = (LeapController *)[notification object];</code><br/>
+<code>   [aController enableGesture:LEAP_GESTURE_TYPE_CIRCLE enable:YES];</code><br/>
+<code>   //...</code><br/>
+<code>}</code></p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">LeapObjectiveC.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/onDisconnect:" title="onDisconnect:"></a>
+	<h3 class="subsubtitle method-title">onDisconnect:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Dispatched when the <a href="../Classes/LeapController.html">LeapController</a> object disconnects from the Leap software.<br/>
+The controller can disconnect when the Leap device is unplugged, the<br/>
+user shuts the Leap software down, or the Leap software encounters an<br/>
+unrecoverable error.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)onDisconnect:(NSNotification *)<em>notification</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>notification</em></dt>
+			<dd><p>The <a href="../Classes/LeapController.html">LeapController</a> object dispatching the notification.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>Since 1.0</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Dispatched when the <a href="../Classes/LeapController.html">LeapController</a> object disconnects from the Leap software.<br/>
+The controller can disconnect when the Leap device is unplugged, the<br/>
+user shuts the Leap software down, or the Leap software encounters an<br/>
+unrecoverable error.</p>
+
+<p><code>- (void)onDisconnect:(NSNotification *)notification</code><br/>
+<code>{</code><br/>
+<code>   NSLog(@"Disconnected");</code><br/>
+<code>}</code></p>
+
+<p>Note: When you launch a Leap-enabled application in a debugger, the<br/>
+Leap library does not disconnect from the application. This is to allow<br/>
+you to step through code without losing the connection because of time outs.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">LeapObjectiveC.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/onExit:" title="onExit:"></a>
+	<h3 class="subsubtitle method-title">onExit:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Dispatched when this LeapListener object is removed from the <a href="../Classes/LeapController.html">LeapController</a><br/>
+or the controller instance is destroyed.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)onExit:(NSNotification *)<em>notification</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>notification</em></dt>
+			<dd><p>The <a href="../Classes/LeapController.html">LeapController</a> object dispatching the notification.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>Since 1.0</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Dispatched when this LeapListener object is removed from the <a href="../Classes/LeapController.html">LeapController</a><br/>
+or the controller instance is destroyed.</p>
+
+<p><code>- (void)onExit:(NSNotification *)notification</code><br/>
+<code>{</code><br/>
+<code>   NSLog(@"Exited");</code><br/>
+<code>}</code></p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">LeapObjectiveC.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/onFrame:" title="onFrame:"></a>
+	<h3 class="subsubtitle method-title">onFrame:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Dispatched when a new <a href="../Classes/LeapFrame.html">LeapFrame</a> containing hand and finger tracking data is available.<br/>
+Access the new frame data using the <a href="../Classes/LeapController.html#//api/name/frame:">[LeapController frame:]</a> function.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)onFrame:(NSNotification *)<em>notification</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>notification</em></dt>
+			<dd><p>The <a href="../Classes/LeapController.html">LeapController</a> object dispatching the notification.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>Since 1.0</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Dispatched when a new <a href="../Classes/LeapFrame.html">LeapFrame</a> containing hand and finger tracking data is available.<br/>
+Access the new frame data using the <a href="../Classes/LeapController.html#//api/name/frame:">[LeapController frame:]</a> function.</p>
+
+<p><code>- (void)onFrame:(NSNotification *)notification</code><br/>
+<code>{</code><br/>
+<code>    NSLog(@"New LeapFrame");</code><br/>
+<code>    LeapController *controller = (LeapController *)[notification object];</code><br/>
+<code>    LeapFrame *frame = [controller frame:0];</code><br/>
+<code>    //...</code><br/>
+<code>}</code></p>
+
+<p>Note, the <a href="../Classes/LeapController.html">LeapController</a> skips any pending onFrame notifications while your<br/>
+onFrame handler executes. If your implementation takes too long to return,<br/>
+one or more frames can be skipped. The controller still inserts the skipped<br/>
+frames into the frame history. You can access recent frames by setting<br/>
+the history parameter when calling the [LeapController frame:] function.<br/>
+You can determine if any pending onFrame events were skipped by comparing<br/>
+the ID of the most recent frame with the ID of the last received frame.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">LeapObjectiveC.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/onInit:" title="onInit:"></a>
+	<h3 class="subsubtitle method-title">onInit:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Dispatched once, when the <a href="../Classes/LeapController.html">LeapController</a> has finished initializing.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)onInit:(NSNotification *)<em>notification</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>notification</em></dt>
+			<dd><p>The <a href="../Classes/LeapController.html">LeapController</a> object dispatching the notification.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>Since 1.0</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Dispatched once, when the <a href="../Classes/LeapController.html">LeapController</a> has finished initializing.</p>
+
+<p>Only the first LeapListener added to the controller receives this notification.</p>
+
+<p><code>- (void)onInit:(NSNotification *)notification</code><br/>
+<code>{  
+</code>    NSLog(@&ldquo;Initialized&rdquo;);<code>  
+</code>    //&hellip;<code>  
+</code>}`</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">LeapObjectiveC.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+					
+					
+				</div>
+				<div class="main-navigation navigation-bottom">
+					<ul>
+<li><a href="../index.html">Index</a></li>
+<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="footer">
+					<hr />
+					<div class="footer-copyright">
+						<p><span class="copyright">&copy; 2013 Leap Motion. All rights reserved. (Last updated: 2013-07-19)</span><br />
+						
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 858)</a>.</span></p>
+						
+					</div>
+				</div>
+			</div>
+		</article>
+		<script type="text/javascript">
+			function jumpToChange()
+			{
+				window.location.hash = this.options[this.selectedIndex].value;
+			}
+			
+			function toggleTOC()
+			{
+				var contents = document.getElementById('contents');
+				var tocContainer = document.getElementById('tocContainer');
+				
+				if (this.getAttribute('class') == 'open')
+				{
+					this.setAttribute('class', '');
+					contents.setAttribute('class', '');
+					tocContainer.setAttribute('class', '');
+					
+					window.name = "hideTOC";
+				}
+				else
+				{
+					this.setAttribute('class', 'open');
+					contents.setAttribute('class', 'isShowingTOC');
+					tocContainer.setAttribute('class', 'isShowingTOC');
+					
+					window.name = "";
+				}
+				return false;
+			}
+			
+			function toggleTOCEntryChildren(e)
+			{
+				e.stopPropagation();
+				var currentClass = this.getAttribute('class');
+				if (currentClass == 'children') {
+					this.setAttribute('class', 'children open');
+				}
+				else if (currentClass == 'children open') {
+					this.setAttribute('class', 'children');
+				}
+				return false;
+			}
+			
+			function tocEntryClick(e)
+			{
+				e.stopPropagation();
+				return true;
+			}
+			
+			function init()
+			{
+				var selectElement = document.getElementById('jumpTo');
+				selectElement.addEventListener('change', jumpToChange, false);
+				
+				var tocButton = document.getElementById('table_of_contents');
+				tocButton.addEventListener('click', toggleTOC, false);
+				
+				var taskTreeItem = document.getElementById('task_treeitem');
+				if (taskTreeItem.getElementsByTagName('li').length > 0)
+				{
+					taskTreeItem.setAttribute('class', 'children');
+					taskTreeItem.firstChild.setAttribute('class', 'disclosure');
+				}
+				
+				var tocList = document.getElementById('toc');
+				
+				var tocEntries = tocList.getElementsByTagName('li');
+				for (var i = 0; i < tocEntries.length; i++) {
+					tocEntries[i].addEventListener('click', toggleTOCEntryChildren, false);
+				}
+				
+				var tocLinks = tocList.getElementsByTagName('a');
+				for (var i = 0; i < tocLinks.length; i++) {
+					tocLinks[i].addEventListener('click', tocEntryClick, false);
+				}
+				
+				if (window.name == "hideTOC") {
+					toggleTOC.call(tocButton);
+				}
+			}
+			
+			window.onload = init;
+
+			
+			// If showing in Xcode, hide the TOC and Header
+			if (navigator.userAgent.match(/xcode/i)) {
+				document.getElementById("contents").className = "hideInXcode"
+				document.getElementById("tocContainer").className = "hideInXcode"
+				document.getElementById("top_header").className = "hideInXcode"
+			}
+			
+		</script>
+	</body>
+</html>

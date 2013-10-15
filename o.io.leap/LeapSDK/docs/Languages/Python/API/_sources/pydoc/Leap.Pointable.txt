@@ -1,0 +1,8 @@
+Leap.Pointable
+==============
+
+.. currentmodule:: Leap
+
+.. autoclass:: Pointable
+   :members:
+   :undoc-members:
