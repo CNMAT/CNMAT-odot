@@ -1,0 +1,8 @@
+Leap.SwipeGesture
+=================
+
+.. currentmodule:: Leap
+
+.. autoclass:: SwipeGesture
+   :members:
+   :undoc-members:

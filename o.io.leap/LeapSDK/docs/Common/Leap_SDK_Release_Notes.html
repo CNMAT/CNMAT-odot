@@ -1,0 +1,855 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Docutils 0.10: http://docutils.sourceforge.net/" />
+<title>Leap Motion SDK Release Notes</title>
+<style type="text/css">
+
+/*
+:Author: David Goodger (goodger@python.org)
+:Id: $Id$
+:Copyright: This stylesheet has been placed in the public domain.
+
+Default cascading style sheet for the HTML output of Docutils.
+
+See http://docutils.sf.net/docs/howto/html-stylesheets.html for how to
+customize this style sheet.
+*/
+
+/* used to remove borders from tables and images */
+.borderless, table.borderless td, table.borderless th {
+  border: 0 }
+
+table.borderless td, table.borderless th {
+  /* Override padding for "table.docutils td" with "! important".
+     The right padding separates the table cells. */
+  padding: 0 0.5em 0 0 ! important }
+
+.first {
+  /* Override more specific margin styles with "! important". */
+  margin-top: 0 ! important }
+
+.last, .with-subtitle {
+  margin-bottom: 0 ! important }
+
+.hidden {
+  display: none }
+
+a.toc-backref {
+  text-decoration: none ;
+  color: black }
+
+blockquote.epigraph {
+  margin: 2em 5em ; }
+
+dl.docutils dd {
+  margin-bottom: 0.5em }
+
+object[type="image/svg+xml"], object[type="application/x-shockwave-flash"] {
+  overflow: hidden;
+}
+
+/* Uncomment (and remove this text!) to get bold-faced definition list terms
+dl.docutils dt {
+  font-weight: bold }
+*/
+
+div.abstract {
+  margin: 2em 5em }
+
+div.abstract p.topic-title {
+  font-weight: bold ;
+  text-align: center }
+
+div.admonition, div.attention, div.caution, div.danger, div.error,
+div.hint, div.important, div.note, div.tip, div.warning {
+  margin: 2em ;
+  border: medium outset ;
+  padding: 1em }
+
+div.admonition p.admonition-title, div.hint p.admonition-title,
+div.important p.admonition-title, div.note p.admonition-title,
+div.tip p.admonition-title {
+  font-weight: bold ;
+  font-family: sans-serif }
+
+div.attention p.admonition-title, div.caution p.admonition-title,
+div.danger p.admonition-title, div.error p.admonition-title,
+div.warning p.admonition-title, .code .error {
+  color: red ;
+  font-weight: bold ;
+  font-family: sans-serif }
+
+/* Uncomment (and remove this text!) to get reduced vertical space in
+   compound paragraphs.
+div.compound .compound-first, div.compound .compound-middle {
+  margin-bottom: 0.5em }
+
+div.compound .compound-last, div.compound .compound-middle {
+  margin-top: 0.5em }
+*/
+
+div.dedication {
+  margin: 2em 5em ;
+  text-align: center ;
+  font-style: italic }
+
+div.dedication p.topic-title {
+  font-weight: bold ;
+  font-style: normal }
+
+div.figure {
+  margin-left: 2em ;
+  margin-right: 2em }
+
+div.footer, div.header {
+  clear: both;
+  font-size: smaller }
+
+div.line-block {
+  display: block ;
+  margin-top: 1em ;
+  margin-bottom: 1em }
+
+div.line-block div.line-block {
+  margin-top: 0 ;
+  margin-bottom: 0 ;
+  margin-left: 1.5em }
+
+div.sidebar {
+  margin: 0 0 0.5em 1em ;
+  border: medium outset ;
+  padding: 1em ;
+  background-color: #ffffee ;
+  width: 40% ;
+  float: right ;
+  clear: right }
+
+div.sidebar p.rubric {
+  font-family: sans-serif ;
+  font-size: medium }
+
+div.system-messages {
+  margin: 5em }
+
+div.system-messages h1 {
+  color: red }
+
+div.system-message {
+  border: medium outset ;
+  padding: 1em }
+
+div.system-message p.system-message-title {
+  color: red ;
+  font-weight: bold }
+
+div.topic {
+  margin: 2em }
+
+h1.section-subtitle, h2.section-subtitle, h3.section-subtitle,
+h4.section-subtitle, h5.section-subtitle, h6.section-subtitle {
+  margin-top: 0.4em }
+
+h1.title {
+  text-align: center }
+
+h2.subtitle {
+  text-align: center }
+
+hr.docutils {
+  width: 75% }
+
+img.align-left, .figure.align-left, object.align-left {
+  clear: left ;
+  float: left ;
+  margin-right: 1em }
+
+img.align-right, .figure.align-right, object.align-right {
+  clear: right ;
+  float: right ;
+  margin-left: 1em }
+
+img.align-center, .figure.align-center, object.align-center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.align-left {
+  text-align: left }
+
+.align-center {
+  clear: both ;
+  text-align: center }
+
+.align-right {
+  text-align: right }
+
+/* reset inner alignment in figures */
+div.align-right {
+  text-align: inherit }
+
+/* div.align-center * { */
+/*   text-align: left } */
+
+ol.simple, ul.simple {
+  margin-bottom: 1em }
+
+ol.arabic {
+  list-style: decimal }
+
+ol.loweralpha {
+  list-style: lower-alpha }
+
+ol.upperalpha {
+  list-style: upper-alpha }
+
+ol.lowerroman {
+  list-style: lower-roman }
+
+ol.upperroman {
+  list-style: upper-roman }
+
+p.attribution {
+  text-align: right ;
+  margin-left: 50% }
+
+p.caption {
+  font-style: italic }
+
+p.credits {
+  font-style: italic ;
+  font-size: smaller }
+
+p.label {
+  white-space: nowrap }
+
+p.rubric {
+  font-weight: bold ;
+  font-size: larger ;
+  color: maroon ;
+  text-align: center }
+
+p.sidebar-title {
+  font-family: sans-serif ;
+  font-weight: bold ;
+  font-size: larger }
+
+p.sidebar-subtitle {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+p.topic-title {
+  font-weight: bold }
+
+pre.address {
+  margin-bottom: 0 ;
+  margin-top: 0 ;
+  font: inherit }
+
+pre.literal-block, pre.doctest-block, pre.math, pre.code {
+  margin-left: 2em ;
+  margin-right: 2em }
+
+pre.code .ln { color: grey; } /* line numbers */
+pre.code, code { background-color: #eeeeee }
+pre.code .comment, code .comment { color: #5C6576 }
+pre.code .keyword, code .keyword { color: #3B0D06; font-weight: bold }
+pre.code .literal.string, code .literal.string { color: #0C5404 }
+pre.code .name.builtin, code .name.builtin { color: #352B84 }
+pre.code .deleted, code .deleted { background-color: #DEB0A1}
+pre.code .inserted, code .inserted { background-color: #A3D289}
+
+span.classifier {
+  font-family: sans-serif ;
+  font-style: oblique }
+
+span.classifier-delimiter {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+span.interpreted {
+  font-family: sans-serif }
+
+span.option {
+  white-space: nowrap }
+
+span.pre {
+  white-space: pre }
+
+span.problematic {
+  color: red }
+
+span.section-subtitle {
+  /* font-size relative to parent (h1..h6 element) */
+  font-size: 80% }
+
+table.citation {
+  border-left: solid 1px gray;
+  margin-left: 1px }
+
+table.docinfo {
+  margin: 2em 4em }
+
+table.docutils {
+  margin-top: 0.5em ;
+  margin-bottom: 0.5em }
+
+table.footnote {
+  border-left: solid 1px black;
+  margin-left: 1px }
+
+table.docutils td, table.docutils th,
+table.docinfo td, table.docinfo th {
+  padding-left: 0.5em ;
+  padding-right: 0.5em ;
+  vertical-align: top }
+
+table.docutils th.field-name, table.docinfo th.docinfo-name {
+  font-weight: bold ;
+  text-align: left ;
+  white-space: nowrap ;
+  padding-left: 0 }
+
+h1 tt.docutils, h2 tt.docutils, h3 tt.docutils,
+h4 tt.docutils, h5 tt.docutils, h6 tt.docutils {
+  font-size: 100% }
+
+ul.auto-toc {
+  list-style-type: none }
+
+</style>
+</head>
+<body>
+<div class="document" id="leap-motion-sdk-release-notes">
+<h1 class="title">Leap Motion SDK Release Notes</h1>
+
+<p><em>Version 1.0.8</em></p>
+<div class="contents topic" id="topics">
+<p class="topic-title first">Topics:</p>
+<ul class="simple">
+<li><a class="reference internal" href="#highlights" id="id1">Highlights</a></li>
+<li><a class="reference internal" href="#sdk-folder-contents" id="id2">SDK folder contents</a></li>
+<li><a class="reference internal" href="#hardware-requirements" id="id3">Hardware requirements</a></li>
+<li><a class="reference internal" href="#supported-operating-systems" id="id4">Supported operating systems</a></li>
+<li><a class="reference internal" href="#supported-compilers-and-runtimes" id="id5">Supported compilers and runtimes</a></li>
+<li><a class="reference internal" href="#api-documentation" id="id6">API documentation</a></li>
+<li><a class="reference internal" href="#sample-application" id="id7">Sample application</a></li>
+<li><a class="reference internal" href="#javascript-client-library" id="id8">JavaScript client library</a></li>
+<li><a class="reference internal" href="#troubleshooting" id="id9">Troubleshooting</a></li>
+<li><a class="reference internal" href="#known-issues" id="id10">Known issues</a></li>
+<li><a class="reference internal" href="#change-log" id="id11">Change log</a><ul>
+<li><a class="reference internal" href="#version-1-0-8" id="id12">Version 1.0.8</a></li>
+<li><a class="reference internal" href="#version-0-8-2" id="id13">Version 0.8.2</a></li>
+<li><a class="reference internal" href="#version-0-8-1" id="id14">Version 0.8.1</a></li>
+<li><a class="reference internal" href="#version-0-8-0" id="id15">Version 0.8.0</a></li>
+<li><a class="reference internal" href="#version-0-7-9" id="id16">Version 0.7.9</a></li>
+<li><a class="reference internal" href="#version-0-7-8" id="id17">Version 0.7.8</a></li>
+<li><a class="reference internal" href="#version-0-7-7" id="id18">Version 0.7.7</a></li>
+<li><a class="reference internal" href="#version-0-7-6" id="id19">Version 0.7.6</a></li>
+<li><a class="reference internal" href="#version-0-7-5" id="id20">Version 0.7.5</a></li>
+<li><a class="reference internal" href="#version-0-7-4" id="id21">Version 0.7.4</a></li>
+<li><a class="reference internal" href="#version-0-7-3" id="id22">Version 0.7.3</a></li>
+<li><a class="reference internal" href="#version-0-7-2" id="id23">Version 0.7.2</a></li>
+<li><a class="reference internal" href="#version-0-7-1" id="id24">Version 0.7.1</a></li>
+<li><a class="reference internal" href="#version-0-7-0" id="id25">Version 0.7.0</a></li>
+<li><a class="reference internal" href="#version-0-6-6" id="id26">Version 0.6.6</a></li>
+<li><a class="reference internal" href="#version-0-6-5" id="id27">Version 0.6.5</a></li>
+<li><a class="reference internal" href="#version-0-6-4" id="id28">Version 0.6.4</a></li>
+<li><a class="reference internal" href="#version-0-6-3" id="id29">Version 0.6.3</a></li>
+<li><a class="reference internal" href="#version-0-6-2" id="id30">Version 0.6.2</a></li>
+<li><a class="reference internal" href="#version-0-6-1" id="id31">Version 0.6.1</a></li>
+<li><a class="reference internal" href="#version-0-6-0" id="id32">Version 0.6.0</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="highlights">
+<h1><a class="toc-backref" href="#id1">Highlights</a></h1>
+<p>The first version 1.0 release of the Leap Motion software development kit.</p>
+</div>
+<div class="section" id="sdk-folder-contents">
+<h1><a class="toc-backref" href="#id2">SDK folder contents</a></h1>
+<ul class="simple">
+<li><tt class="docutils literal">docs</tt> — Leap Motion API reference documentation and sample application tutorials</li>
+<li><tt class="docutils literal">samples</tt> — sample applications in C++, Objective-C (Mac only), C#, Java, JavaScript and Python, plus a Makefile for C++ and an Xcode project for Objective-C (Mac only) or Visual Studio project and solution files for C++ (Windows only)</li>
+<li><tt class="docutils literal">include</tt> — Leap Motion API header and source files for including in C++ and Objective-C applications</li>
+<li><tt class="docutils literal">lib</tt> — compile-time and runtime libraries for all supported programming languages<ul>
+<li><tt class="docutils literal">x86</tt> — libraries for 32-bit architectures (Windows and Linux only)</li>
+<li><tt class="docutils literal">x64</tt> — libraries for 64-bit architectures (Windows and Linux only)</li>
+<li><tt class="docutils literal">libc++</tt> — the libLeap.dylib library compiled aganst libc++ instead of libstdc++ (Mac only)</li>
+<li><tt class="docutils literal">UnityAssets</tt> — plug-in files for Unity Pro</li>
+</ul>
+</li>
+<li><tt class="docutils literal">util</tt>  — Utility classes.</li>
+<li><tt class="docutils literal">Examples</tt> — contains examples and demo applications:<ul>
+<li>FingerVisualizer — A simplified visualizer that displays tracked fingers.</li>
+<li>FlockingDemo — An inspirational technology demo (no source code).</li>
+<li>GesturesDemo — A demonstration of the Gesture API.</li>
+<li>MotionVisualizer — A demonstration of the Motion API.</li>
+<li>UnitySandbox — A demonstration of the basic tracking API in a 3D Unity scene.</li>
+<li>ThirdParty — Third-party code and libraries used in the example applications.</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="hardware-requirements">
+<h1><a class="toc-backref" href="#id3">Hardware requirements</a></h1>
+<ul class="simple">
+<li>USB 2.0 or 3.0 port</li>
+</ul>
+</div>
+<div class="section" id="supported-operating-systems">
+<h1><a class="toc-backref" href="#id4">Supported operating systems</a></h1>
+<ul class="simple">
+<li>Windows 7 and 8</li>
+<li>Mac OS 10.6 and higher</li>
+<li>Ubuntu Linux 12.04 LTS and Ubuntu 13.04 Raring Ringtail</li>
+</ul>
+</div>
+<div class="section" id="supported-compilers-and-runtimes">
+<h1><a class="toc-backref" href="#id5">Supported compilers and runtimes</a></h1>
+<ul class="simple">
+<li>C++ on Windows: Visual Studio 2008, 2010, and 2012</li>
+<li>C++ on Mac: Xcode 3.0+, clang 3.0+, and gcc</li>
+<li>Objective-C: Mac OS 10.7+, Xcode 4.2+ and clang 3.0+</li>
+<li>C# for .NET framework versions 3.5 and 4.0</li>
+<li>Mono version 2.10</li>
+<li>Unity Pro version 4.0</li>
+<li>Java versions 6 and 7</li>
+<li>Python version 2.7.3</li>
+</ul>
+</div>
+<div class="section" id="api-documentation">
+<h1><a class="toc-backref" href="#id6">API documentation</a></h1>
+<p>Leap Motion API reference documentation is located both online at <a class="reference external" href="https://developer.leapmotion.com/docs">Leap SDK documentation</a> and in the <cite>docs</cite> folder of the SDK package. Objective-C programmers can install the Leap Motion documentation as an Xcode doc set. This provides context-sensitive help within the Xcode IDE. <a class="reference external" href="https://developer.leapmotion.com/articles/installing-the-leap-api-docs-for-objective-c-in-xcode">Instructions for installing the doc set</a> are provided on the Leap Motion Developer Portal.</p>
+</div>
+<div class="section" id="sample-application">
+<h1><a class="toc-backref" href="#id7">Sample application</a></h1>
+<p>A working sample application is provided for your reference, with versions written in C++, Objective-C, C#, Java, JavaScript, and Python. Tutorials for these sample applications are provided in the SDK documentation. These tutorials are essentially the Leap Motion &quot;Hello World&quot; and should help you get your development environment set up for creating Leap-enabled applications. The sample code files are available in <tt class="docutils literal">LeapSDK/samples</tt>. You can also find a Makefile, an Xcode project file, and Visual Studio project and solution files in the <tt class="docutils literal">samples</tt> folder.</p>
+<p>More complex demos and examples with source code are available in the Examples folder included with the SDK download.</p>
+</div>
+<div class="section" id="javascript-client-library">
+<h1><a class="toc-backref" href="#id8">JavaScript client library</a></h1>
+<p>The Leap Motion JavaScript client library, <tt class="docutils literal">leap.js</tt>, is open-source and distributed separately from the main Leap Motion SDK. You can download <tt class="docutils literal">leap.js</tt> from <a class="reference external" href="http://js.leapmotion.com/">js.leapmotion.com</a>. We encourage community contributions to this library.</p>
+</div>
+<div class="section" id="troubleshooting">
+<h1><a class="toc-backref" href="#id9">Troubleshooting</a></h1>
+<p>If you have trouble getting reliable hand tracking data in your application, consider the following:</p>
+<ul>
+<li><p class="first">Check the Leap Motion icon in the notification area of the Windows Taskbar or Mac Finder bar. The icon will display green if the Leap Motion software is working properly, flash yellow while the software is initializing, and turn red if errors have occurred. Open the Leap Motion log window and check for errors.</p>
+</li>
+<li><p class="first">Run the diagnostic tests using the Leap Motion Control Panel Troubleshooting page.</p>
+</li>
+<li><p class="first">Check whether the Leap Motion Controller and software work outside of your application. Run the Leap Motion Visualizer or included sample application to see if other applications can receive motion tracking data.</p>
+</li>
+<li><p class="first">Make sure that all libraries required to receive Leap Motion tracking data are in the correct directories or library search paths. Refer to the sample application tutorial for the language in which your application is written for details.</p>
+</li>
+<li><p class="first">Plug the Leap Motion USB cable directly into your computer (not a USB hub). Remove other USB devices. If another high-bandwidth device is running on the same USB bus, there may not be enough bandwidth for both devices.</p>
+</li>
+<li><p class="first">Rule out lighting issues by moving to an environment with standard indoor lighting conditions. That is, one with artificial light at a comfortable reading intensity.</p>
+</li>
+<li><p class="first">If the Leap Motion software does not appear to be producing data, stop the Leap Motion service or daemon and restart it. Unplug the Leap Motion Controller and plug it back in.</p>
+<p>On Windows, run the following commands as Administrator:</p>
+<blockquote>
+<p><tt class="docutils literal">net stop LeapService</tt></p>
+<p><tt class="docutils literal">net start LeapService</tt></p>
+</blockquote>
+<p>On Mac, run the following commands:</p>
+<blockquote>
+<p><tt class="docutils literal">sudo launchctl unload /Library/LaunchDaemons/com.leapmotion.leapd.plist</tt></p>
+<p><tt class="docutils literal">sudo launchctl load /Library/LaunchDaemons/com.leapmotion.leapd.plist</tt></p>
+</blockquote>
+<p>On Linux, run the following commands:</p>
+<blockquote>
+<p><tt class="docutils literal">sudo service leapd stop</tt></p>
+<p><tt class="docutils literal">sudo service leapd start</tt></p>
+</blockquote>
+</li>
+<li><p class="first">If the Leap Motion log reports repeated disconnects, switch to the Low Resource operating mode. This can indicate congestion on the USB bus.</p>
+</li>
+<li><p class="first">When using Microsoft Visual Studio, if you do not get tracking data when you compile your application in debug mode, but do get tracking data when you compile in release mode, then make sure you are linking with <tt class="docutils literal">Leapd.lib</tt> for the debug configuration of the project.</p>
+</li>
+<li><p class="first">Ensure that port 5905 on the localhost domain is not blocked by a firewall or other program.</p>
+</li>
+</ul>
+</div>
+<div class="section" id="known-issues">
+<h1><a class="toc-backref" href="#id10">Known issues</a></h1>
+<ul>
+<li><p class="first">Computers with integrated graphics circuits may not display the 3D graphics in the Leap Motion sample applications correctly. (The 3D objects in the samples appear as black silhouettes.) A workaround is to set your computer to use a discrete graphics card or chipset, if available.</p>
+</li>
+<li><p class="first">The WebSocket protocol and JavaScript client library allows all gesture recognition to be enabled or disabled, but does not allow individual gesture types to be enabled as in the native client library.</p>
+</li>
+<li><p class="first">The WebSocket protocol and JavaScript client library do not support setting gesture parameters.</p>
+</li>
+<li><p class="first">The Screen Locator tool is not currently supported on any operating system.</p>
+</li>
+<li><p class="first">Applications running on Linux receive tracking data even when they don't have the operating system input focus, including when the <em>Allow Background Apps</em> checkbox is unchecked. Ensure that interaction occurring when the user is working with another application does not cause unintended consequences in your application.</p>
+</li>
+<li><p class="first">The <tt class="docutils literal"><span class="pre">Controller::setPolicyFlag()</span></tt> method added in version 0.7.9 is not currently supported on Linux.</p>
+</li>
+<li><p class="first">The <tt class="docutils literal"><span class="pre">Listener::onFocusGained()</span></tt> and <tt class="docutils literal"><span class="pre">Listener::onFocusLost()</span></tt> event callbacks added in version 0.7.7 are not currently supported on Linux.</p>
+</li>
+<li><p class="first">After a firmware update, you must stop and restart the Leap Motion service/daemon to get tracking data.</p>
+<p>On Windows, run the following commands as Administrator:</p>
+<blockquote>
+<p><tt class="docutils literal">net stop LeapService</tt></p>
+<p><tt class="docutils literal">net start LeapService</tt></p>
+</blockquote>
+<p>On Mac, run the following commands:</p>
+<blockquote>
+<p><tt class="docutils literal">sudo launchctl unload /Library/LaunchDaemons/com.leapmotion.leapd.plist</tt></p>
+<p><tt class="docutils literal">sudo launchctl load /Library/LaunchDaemons/com.leapmotion.leapd.plist</tt></p>
+</blockquote>
+<p>On Linux, run the following commands:</p>
+<blockquote>
+<p><tt class="docutils literal">sudo service leapd stop</tt></p>
+<p><tt class="docutils literal">sudo service leapd start</tt></p>
+</blockquote>
+</li>
+<li><p class="first">On Mac OS X 10.6, after running the device calibration you must restart the Leap Motion service/daemon (see above for instructions).</p>
+</li>
+<li><p class="first">On Windows, you must make sure that the Leap Motion software is not running when you install a new version. If the Leap Motion task bar application is running, the old files are not completely removed and the update will fail.</p>
+</li>
+<li><p class="first">On Windows 7, the Chrome browser application sometimes fails to respond to emulated touch points. To fix this; click inside of the program with a mouse.</p>
+</li>
+</ul>
+</div>
+<div class="section" id="change-log">
+<h1><a class="toc-backref" href="#id11">Change log</a></h1>
+<div class="section" id="version-1-0-8">
+<h2><a class="toc-backref" href="#id12">Version 1.0.8</a></h2>
+<ul class="simple">
+<li>The first version 1.0 release of the Leap Motion software development kit.</li>
+<li>Background applications no longer receive frames of tracking data when a Leap-enabled application has operating system focus. They do, however, still receive frames when a non-Leap-enabled application has focus, provided the user has enabled background applications in the Leap Motion Control Panel.</li>
+<li>Fixed a bug that caused instabilities when <tt class="docutils literal"><span class="pre">Hand::frame()</span></tt> or other methods that call it were called.</li>
+<li>Fixed a bug that calculated hand motion (translation, rotation, and scaling) probabilities incorrectly.</li>
+<li>Removed the following methods that had been deprecated since version 0.7.7:<ul>
+<li><tt class="docutils literal"><span class="pre">Controller::calibratedScreens()</span></tt> — use <tt class="docutils literal"><span class="pre">Controller::locatedScreens()</span></tt> instead.</li>
+<li><tt class="docutils literal"><span class="pre">PointableList::empty()</span></tt> — use <tt class="docutils literal"><span class="pre">PointableList::isEmpty()</span></tt> instead.</li>
+<li><tt class="docutils literal"><span class="pre">FingerList::empty()</span></tt> — use <tt class="docutils literal"><span class="pre">FingerList::isEmpty()</span></tt> instead.</li>
+<li><tt class="docutils literal"><span class="pre">ToolList::empty()</span></tt> — use <tt class="docutils literal"><span class="pre">ToolList::isEmpty()</span></tt> instead.</li>
+<li><tt class="docutils literal"><span class="pre">HandList::empty()</span></tt> — use <tt class="docutils literal"><span class="pre">HandList::isEmpty()</span></tt> instead.</li>
+<li><tt class="docutils literal"><span class="pre">GestureList::empty()</span></tt> — use <tt class="docutils literal"><span class="pre">GestureList::isEmpty()</span></tt> instead.</li>
+<li><tt class="docutils literal"><span class="pre">ScreenList::empty()</span></tt> — use <tt class="docutils literal"><span class="pre">ScreenList::isEmpty()</span></tt> instead.</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="version-0-8-2">
+<h2><a class="toc-backref" href="#id13">Version 0.8.2</a></h2>
+<ul class="simple">
+<li>Separated the OS Interaction multitouch and mouse emulation feature into a separate application, downloadable from the Airspace Store.</li>
+<li>Reorganized the Leap Motion Control Panel to simplify and streamline the settings available to consumers.</li>
+<li>Added a diagnostic test facility, which can be initiated from the Troubleshooting page of the Leap Motion Control Panel.</li>
+<li>Changed the Visualizer application opened from the task/menu bar icon's menu to a simplified, consumer-facing version. The original, developer-facing Diagnostic Visualizer can be opened from the Troubleshooting page of the Leap Motion Control Panel.</li>
+<li>Removed the Screen Locator tool. We are re-evaluating this feature due to the difficulty in performing the location procedure and confusion about its purpose. The Screen class still exists in the API, but should not be used in consumer-facing applications until the Screen Locator tool (or an equivalent utility) is available.</li>
+</ul>
+</div>
+<div class="section" id="version-0-8-1">
+<h2><a class="toc-backref" href="#id14">Version 0.8.1</a></h2>
+<ul class="simple">
+<li>Added the Airspace Home application, the desktop portion of the Airspace Store. (Launch from the Leap Motion task/menu bar icon's menu.)</li>
+<li>Added OS Interaction controls providing multitouch and mouse emulation. (Enable on the OS Interaction page of the Leap Motion Settings dialog.)</li>
+<li>Added the <tt class="docutils literal"><span class="pre">Hand::stabilizedPalmPosition</span></tt> attribute, which reports a stabilized position analogous to the <tt class="docutils literal"><span class="pre">Pointable::stabilizedTipPosition</span></tt> attribute.</li>
+<li>Added the <tt class="docutils literal"><span class="pre">Hand::timeVisible</span></tt> and <tt class="docutils literal"><span class="pre">Pointable::timeVisible</span></tt> attributes, which report how long the associated hand, finger, or tool has been visible.</li>
+<li>Added the <tt class="docutils literal"><span class="pre">Frame::currentFrameRate</span></tt> attribute, which reports the current rate at which the Leap Motion software is generating frames of tracking data.</li>
+<li>Improved the stability of Pointable ID assignments.</li>
+<li>Added a protocol version string to the WebSocket endpoint URL. Use <tt class="docutils literal"><span class="pre">ws://localhost:6347/v1.json</span></tt> for the original JSON protocol. Use <tt class="docutils literal"><span class="pre">ws://localhost:6347/v2.json</span></tt> for the newer JSON protocol introduced in 0.8.0. Clients that do not request a specific protocol will get version 1.</li>
+<li>Added a &quot;heartbeat&quot; message to the WebSocket JSON protocol version 2 and JavaScript client library. The heartbeat tells the Leap Motion service/daemon that a Leap-enabled web application using the WebSocket protocol is active so that OS Interaction can be disabled to avoid interfering.</li>
+<li>Added logic to help prevent background objects like faces and shirts from appearing in the Leap Motion tracking data. (Enable Hand and Tool Isolation on the Advanced page of the Leap Motion Settings dialog.)</li>
+<li>Added an option to adaptively reduce the frame rate based on the amount of activity in the field of view. (Enable Automatic Power Saving on the Advanced page of the Leap Motion Settings dialog.)</li>
+<li>The Leap Motion installer for Windows now includes the Windows 7 multitouch drivers.</li>
+<li>The Leap Motion installer for Windows now includes the Visual C++ 2010 Redistributable so the related Microsoft libraries no longer need to be included with your applications.</li>
+</ul>
+</div>
+<div class="section" id="version-0-8-0">
+<h2><a class="toc-backref" href="#id15">Version 0.8.0</a></h2>
+<ul class="simple">
+<li>Separated the Leap Motion software into two components: a service (Windows) or daemon (Mac/Linux) process and a task bar (Windows) or menu bar (Mac/Linux) icon application.</li>
+<li>Added a .pkg installer (Mac only) that installs both components of the Leap Motion software.</li>
+<li>Added a touch emulation API to the <tt class="docutils literal">Pointable</tt> class, including the <tt class="docutils literal">touchZone</tt>, <tt class="docutils literal">touchDistance</tt>, and <tt class="docutils literal">stabilizedTipPosition</tt> methods.</li>
+<li>Added the <tt class="docutils literal">InteractionBox</tt> class, which provides normalized coordinates for hand, finger, tool, and gesture positions within this box. Normalized coordinates can make it easier to map positions in the Leap Motion coordinate system to 2D or 3D coordinate systems used for application drawing.</li>
+<li>Added the <tt class="docutils literal">Device</tt> and <tt class="docutils literal">DeviceList</tt> classes, which provide information about the view angle and range of a Leap Motion Controller.</li>
+<li>Updated the Visualizer application to display device range and current interaction box. Press &quot;L&quot; to cycle between different modes.</li>
+<li>Added a drawing mode to the Visualizer application, which demonstrates the touch emulation API. Press &quot;D&quot; to turn drawing on and off. Press space bar to clear the drawing.</li>
+<li>Fixed an issue that required restarting the Leap Motion software when a device was unplugged and plugged into a different USB port.</li>
+<li>Fixed USB-related stability issues affecting first-generation Mac Pro and other legacy chipsets.</li>
+<li>Fixed problems that prevented the Leap Motion software from running on Windows XP.</li>
+<li>Added support for Ubuntu 13.04 Raring Ringtail.</li>
+</ul>
+<p><em>Note:</em> The Leap Motion JavaScript library (available from <a class="reference external" href="http://js.leapmotion.com/">js.leapmotion.com</a>) does not currently support the <tt class="docutils literal">Device</tt> and <tt class="docutils literal">DeviceList</tt> classes.</p>
+</div>
+<div class="section" id="version-0-7-9">
+<h2><a class="toc-backref" href="#id16">Version 0.7.9</a></h2>
+<ul class="simple">
+<li>Added support for background applications (Mac and Windows only):<ul>
+<li>Added the <tt class="docutils literal"><span class="pre">Controller::PolicyFlag</span></tt> enumeration.</li>
+<li>Added the <tt class="docutils literal"><span class="pre">Controller::policyFlag()</span></tt> method to get policy flag status.</li>
+<li>Added the asynchronous <tt class="docutils literal"><span class="pre">Controller::setPolicyFlag()</span></tt> method to request a change to policy flags.</li>
+<li>Added the <em>Allow Background Apps</em> checkbox to the Leap Motion settings to globally override background app policy requests.</li>
+</ul>
+</li>
+<li>Improved tracking accuracy when hands are distant from the Leap Motion Controller (more than 1 foot / 30 cm).</li>
+<li>Fixed a tracking reliability issue introduced in version 0.7.8.</li>
+<li>Fixed a bug in which the Leap Motion Controller was sometimes not recognized when first connected to a computer.</li>
+<li>Fixed a bug that disabled auto-check for updates on Linux.</li>
+<li>Digitally signed all binaries authored by Leap Motion (Mac and Windows only).</li>
+<li>Updated device firmware to version 17.</li>
+</ul>
+</div>
+<div class="section" id="version-0-7-8">
+<h2><a class="toc-backref" href="#id17">Version 0.7.8</a></h2>
+<ul class="simple">
+<li>Applications no longer receive empty frames of data when they don't have operating system focus (Mac and Windows only).</li>
+<li>Added an Objective-C documentation set that can be installed in Xcode and provide context-sensitive help (Mac only).</li>
+<li>Changed the Objective-C <tt class="docutils literal">PointableOrHandList</tt> category's <tt class="docutils literal">leftmost</tt>, <tt class="docutils literal">rightmost</tt>, and <tt class="docutils literal">frontmost</tt> methods to work with empty lists by returning <tt class="docutils literal">nil</tt> when the NSArray is empty (Mac only).</li>
+<li>Fixed a bug with the Objective-C <tt class="docutils literal">PointableOrHandList</tt> category's <tt class="docutils literal">leftmost</tt> method (Mac only).</li>
+<li>Fixed a bug in the Leap Motion JavaScript library (available from <a class="reference external" href="http://js.leapmotion.com/">js.leapmotion.com</a>) that prevented apps using the library from running in browsers other than Google Chrome.</li>
+<li>Disabled the Screen Locator tool in the Leap Motion application settings on Linux because it is not currently supported.</li>
+<li>Updated device firmware to version 15.</li>
+</ul>
+</div>
+<div class="section" id="version-0-7-7">
+<h2><a class="toc-backref" href="#id18">Version 0.7.7</a></h2>
+<ul class="simple">
+<li>Improved hand/palm tracking robustness and noise rejection.</li>
+<li>Added methods to the <tt class="docutils literal">Frame</tt> and <tt class="docutils literal">Hand</tt> classes that report probabilities that a frame or hand's motion is primarily translation, rotation, or scaling. You can use these probabilities to exclude or dampen unwanted transformations.</li>
+<li>Added parameters for configuring gesture recognition:<ul>
+<li><tt class="docutils literal">SwipeGesture</tt>: minimum length and minimum velocity</li>
+<li><tt class="docutils literal">CircleGesture</tt>: minimum radius and minimum traced arc</li>
+<li><tt class="docutils literal">KeyTapGesture</tt>: minimum velocity, minimum distance and duration of recognition window</li>
+<li><tt class="docutils literal">ScreenTapGesture</tt>: minimum velocity, minimum distance and duration of recognition window</li>
+</ul>
+</li>
+<li>Added setter methods to the <tt class="docutils literal">Config</tt> class for changing gesture recognition parameters.</li>
+<li>Added a <tt class="docutils literal">save()</tt> method to the <tt class="docutils literal">Config</tt> class for sending configuration changes to the Leap Motion application.</li>
+<li>Added methods for getting the leftmost, rightmost, or frontmost entity to the <tt class="docutils literal">PointableList</tt>, <tt class="docutils literal">FingerList</tt>, <tt class="docutils literal">ToolList</tt>, and <tt class="docutils literal">HandList</tt> classes.</li>
+<li>Added event callbacks to the <tt class="docutils literal">Listener</tt> class that are dispatched by the Controller when an application gains or loses operating system focus (Mac and Windows only).</li>
+<li>The Leap Motion application now only provides tracking data to the application which has the operating system's input focus (Mac and Windows only).</li>
+<li>Added automatic detection of poor calibration to the Leap Motion application.</li>
+<li>Added automatic detection of lens cover smudges to the Leap Motion application.</li>
+<li>Added automatic error reporting to the Leap Motion application.</li>
+<li>In the Objective-C API, changed the name of the <tt class="docutils literal">[LeapController calibratedScreens]</tt> selector to <tt class="docutils literal">[LeapController locatedScreens]</tt> (Mac only).</li>
+<li>Deprecated the following methods:<ul>
+<li><tt class="docutils literal"><span class="pre">Controller::calibratedScreens()</span></tt> — use <tt class="docutils literal"><span class="pre">Controller::locatedScreens()</span></tt> instead.</li>
+<li><tt class="docutils literal"><span class="pre">PointableList::empty()</span></tt> — use <tt class="docutils literal"><span class="pre">PointableList::isEmpty()</span></tt> instead.</li>
+<li><tt class="docutils literal"><span class="pre">FingerList::empty()</span></tt> — use <tt class="docutils literal"><span class="pre">FingerList::isEmpty()</span></tt> instead.</li>
+<li><tt class="docutils literal"><span class="pre">ToolList::empty()</span></tt> — use <tt class="docutils literal"><span class="pre">ToolList::isEmpty()</span></tt> instead.</li>
+<li><tt class="docutils literal"><span class="pre">HandList::empty()</span></tt> — use <tt class="docutils literal"><span class="pre">HandList::isEmpty()</span></tt> instead.</li>
+<li><tt class="docutils literal"><span class="pre">GestureList::empty()</span></tt> — use <tt class="docutils literal"><span class="pre">GestureList::isEmpty()</span></tt> instead.</li>
+<li><tt class="docutils literal"><span class="pre">ScreenList::empty()</span></tt> — use <tt class="docutils literal"><span class="pre">ScreenList::isEmpty()</span></tt> instead.</li>
+</ul>
+</li>
+</ul>
+<p><em>Note:</em> The Leap Motion JavaScript library does not currently support focus events or configuration of gesture recognition parameters.</p>
+</div>
+<div class="section" id="version-0-7-6">
+<h2><a class="toc-backref" href="#id19">Version 0.7.6</a></h2>
+<ul class="simple">
+<li>New finger tracking technique that handles a greater variety of finger orientations, such as parallel to the Leap Motion Controller.</li>
+<li>First Linux release of the Leap Motion software, SDK, and example applications.</li>
+<li>Added a <tt class="docutils literal"><span class="pre">Screen::intersect()</span></tt> method to calculate the intersection point of a projected ray with the screen plane.</li>
+<li>Added a <tt class="docutils literal"><span class="pre">Screen::project()</span></tt> method to calculate the location where a point is projected onto the screen plane.</li>
+<li>Added a <tt class="docutils literal"><span class="pre">ScreenList::closestScreenHit()</span></tt> method to find the closest screen that a projected ray will intersect.</li>
+<li>Added a <tt class="docutils literal"><span class="pre">ScreenList::closestScreen()</span></tt> method to find the closest screen to a point.</li>
+<li>Added a new Screen projection mode to the Visualizer application. Press &quot;B&quot; to cycle between different modes.</li>
+<li>Added a checkbox to enable/disable automatic device reorientation to the &quot;Tracking&quot; tab in the Leap Motion application settings.</li>
+<li>Added a checkbox to enable/disable WebSocket connections in a new &quot;WebSocket&quot; tab in the Leap Motion application settings.</li>
+<li>Added sliders to control framerate and range sensitivity in a new &quot;Advanced&quot; tab in the Leap Motion application settings.</li>
+<li>Added a standby mode to the Leap Motion application, which reduces CPU usage and USB bandwidth to 10% after 5 minutes of inactivity.</li>
+<li>Reduced the number of threads and sockets used by the Leap Motion application.</li>
+<li>Added <tt class="docutils literal">NSArray+LeapScreenList</tt> category to the Objective-C API providing functions for finding the closest screen (Mac only).</li>
+<li>Removed all <tt class="docutils literal">const</tt> qualifiers from Objective-C API return types (Mac only).</li>
+<li>Removed unneccessary <tt class="docutils literal">leapDelegate</tt> parameter from the Objective-C function: <tt class="docutils literal">[LeapController <span class="pre">removeDelegate:(id&lt;LeapDelegate&gt;)leapDelegate]</span></tt> (Mac only).</li>
+<li>Added a complete Objective-C API reference and other Objective-C guides (Mac only).</li>
+<li>Added a complete Java API reference.</li>
+<li>Added preliminary API references for Python and C# containing API signatures only.</li>
+<li>Fixed a bug where NaN values were sent out WebSocket in JSON data frame motion values.</li>
+<li>Fixed a bug where <tt class="docutils literal"><span class="pre">CircleGesture::duration()</span></tt> started at 0 but <tt class="docutils literal">progress()</tt> was &gt; 0.</li>
+<li>Updated device firmware to version 14 to improve robustness of firmware updates.</li>
+</ul>
+</div>
+<div class="section" id="version-0-7-5">
+<h2><a class="toc-backref" href="#id20">Version 0.7.5</a></h2>
+<ul class="simple">
+<li>Added gestures to the WebSocket JSON output and the JavaScript client library (available from <a class="reference external" href="http://js.leapmotion.com/">js.leapmotion.com</a>).</li>
+<li>Added Mac retina display support for Leap Motion application windows.</li>
+<li>Fixed very low framerate on certain computers when objects enter device field of view.</li>
+<li>Updated device firmware to version 13.</li>
+</ul>
+</div>
+<div class="section" id="version-0-7-4">
+<h2><a class="toc-backref" href="#id21">Version 0.7.4</a></h2>
+<ul class="simple">
+<li>Added an early-stage Gesture API supporting circle, swipe, and two tap gestures. (Not supported in the WebSocket JSON output or JavaScript client library in this version.)</li>
+<li>Added Gesture visualization to the Visualizer application. Press &quot;O&quot; to turn gestures on and off.</li>
+<li>Added a GesturesDemo particle field application with source code to the SDK examples.</li>
+<li>Updated the C++, C#, Java, Python, and Objective-C sample applications to demonstrate the Gesture API.</li>
+<li>Updated the JavaScript sample, <tt class="docutils literal">Sample.html</tt>, to use the <tt class="docutils literal">leap.js</tt> client library (available from <a class="reference external" href="http://js.leapmotion.com/">js.leapmotion.com</a>).</li>
+<li>Updated the recalibration utility to work with revision 6.5 Leap Motion Controllers.</li>
+<li>Combined the example applications with the SDK so there is only one download package.</li>
+<li>Removed underscore characters from library names. <strong>Important:</strong> This is a breaking change. You will have to update your project configurations when updating to version 0.7.4 of the SDK.</li>
+<li>Objective-C (Mac only): Added NSNotification support for Leap Motion events and changed some method signatures to better conform to language conventions.</li>
+</ul>
+</div>
+<div class="section" id="version-0-7-3">
+<h2><a class="toc-backref" href="#id22">Version 0.7.3</a></h2>
+<ul class="simple">
+<li>Added the Leap Motion Device Recalibration utility to the Leap Motion application.</li>
+<li>Updated device firmware to version 12.</li>
+</ul>
+</div>
+<div class="section" id="version-0-7-2">
+<h2><a class="toc-backref" href="#id23">Version 0.7.2</a></h2>
+<ul class="simple">
+<li>Added a Report Bug command to the Leap Motion application menu. This command opens a Bug Report form that allows you to more easily record diagnostics and submit them with bug reports to Leap Motion.</li>
+<li>Added an option to automatically send diagnostic information to Leap Motion when certain types of errors are encountered by the Leap. This option defaults to off, but we encourage you to turn it on to help us improve the Leap Motion software.</li>
+<li>Renamed the &quot;Screen Calibration&quot; settings tool to &quot;Screen Locator&quot; to avoid confusion with Leap Motion Controller calibration. Screen Location is only needed to use the Screen class in the Leap Motion API. No other features of the Leap Motion system are affected.</li>
+<li>Added support for Unity 3.5 (in addition to 4.0) in the UnitySandbox example.</li>
+<li>Changed the Objective-C library to use automatic reference counting.</li>
+<li>Improved stability of Leap Motion application.</li>
+<li>Improved support for <a class="reference external" href="https://developer.leapmotion.com/blog/information-about-the-latest-units">revision 5 and 6 Leap Motion developer devices</a>.</li>
+<li>Tuned processing and motion tracking for revison 6 devices.</li>
+<li>Updated device firmware to version 10.</li>
+</ul>
+</div>
+<div class="section" id="version-0-7-1">
+<h2><a class="toc-backref" href="#id24">Version 0.7.1</a></h2>
+<ul class="simple">
+<li>Added motion properties to <tt class="docutils literal">Hand</tt> and <tt class="docutils literal">Frame</tt> classes, which provide information about the translation, rotation, and scaling of a hand or all objects in a frame.</li>
+<li>Added <tt class="docutils literal">isConnected</tt> method to the to the <tt class="docutils literal">Controller</tt> class, allowing polling-based applications to know when a controller is connected to the Leap Motion application and device.</li>
+<li>Added <tt class="docutils literal">Screen</tt> class to represent located screens and perform ray intersection.</li>
+<li>Added <tt class="docutils literal">ScreenList</tt> class to contain all located screens and find the closest screen intersection.</li>
+<li>Added ability to establish screen locations to the Leap Motion application settings window.</li>
+<li>Added ability to display screen information to the Visualizer.</li>
+<li>Updated Objective-C wrapper for the complete API.</li>
+<li>Changed format of JSON data sent through WebSocket to prepare for upcoming JavaScript client library.</li>
+<li>Running a Leap-enabled application compiled with a Leap Motion library with a version greater than the Leap Motion application's version will trigger the Leap Motion application to check for an update.</li>
+</ul>
+<p><em>Note:</em> The Leap Motion JavaScript library (available from <a class="reference external" href="http://js.leapmotion.com/">js.leapmotion.com</a>) does not currently support the <tt class="docutils literal">Screen</tt> and <tt class="docutils literal">ScreenList</tt> classes.</p>
+</div>
+<div class="section" id="version-0-7-0">
+<h2><a class="toc-backref" href="#id25">Version 0.7.0</a></h2>
+<p><strong>Important:</strong> Version 0.7.0 contains several changes to the Leap Motion API that are incompatible with previous versions. When updating from an earlier version, you will have to make code changes and recompile your applications. Applications compiled against earlier versions of the API will not work with version 0.7.0 of the Leap Motion application. See the <a class="reference external" href="https://developer.leapmotion.com/articles/migrating-to-api-version-0-7-0">0.7.0 Migration Guide</a> for tips on updating your application code to work with version 0.7.0 of the Leap Motion API.</p>
+<ul class="simple">
+<li>Added <tt class="docutils literal">LeapMath.h</tt> library containing <tt class="docutils literal">Vector</tt> and <tt class="docutils literal">Matrix</tt> struct definitions.</li>
+<li>Added <tt class="docutils literal">Pointable</tt> class to abstract characteristics common to fingers and tools.</li>
+<li>Added <tt class="docutils literal">Tool</tt> class which inherits from <tt class="docutils literal">Pointable</tt> class.</li>
+<li>Revised <tt class="docutils literal">Finger</tt> class to inherit from <tt class="docutils literal">Pointable</tt> class.</li>
+<li>Replaced C++ STL vectors with <tt class="docutils literal">HandList</tt>, <tt class="docutils literal">FingerList</tt>, <tt class="docutils literal">ToolList</tt>, and <tt class="docutils literal">PointableList</tt> classes.</li>
+<li>Replaced nearly all pointers with references (check for <tt class="docutils literal">isValid()</tt> instead of a null pointer).</li>
+<li>Added convenience methods for retrieving fingers, tools, and pointables directly from a frame or by ID.</li>
+<li>Added <tt class="docutils literal">addListener</tt> and <tt class="docutils literal">removeListener</tt> methods to the <tt class="docutils literal">Controller</tt> class, allowing multiple listeners to be added to a single controller instance.</li>
+<li>Added <tt class="docutils literal">onExit</tt> callback to the <tt class="docutils literal">Listener</tt> class, allowing a listener to be notified when it has been removed from a controller.</li>
+<li>Removed <tt class="docutils literal">Ray</tt> and <tt class="docutils literal">Ball</tt> classes, and flattened methods that returned these objects.</li>
+<li>Removed hands with id = -1 (&quot;phantom hands&quot;), which were not visible in the frame but contained fingers.</li>
+<li>Reversed direction vectors on <tt class="docutils literal">Hand</tt> and <tt class="docutils literal">Finger</tt> classes to point forward (this disagreed with documentation).</li>
+<li>Fixed erroneous hand velocity reporting.</li>
+<li>Changed the standard type for numeric values used in the API from <tt class="docutils literal">double</tt> to <tt class="docutils literal">float</tt>.</li>
+<li>Changed member names in C# and Python to reflect the standard capitalization for each language.</li>
+<li>Changed no-argument const methods to properties in C# and Python.</li>
+<li>Updated C++, C#, Java, and Python sample applications to use the new API structure.</li>
+<li>Fixed Java DLL issue for Eclipse on Windows.</li>
+<li>Added libc++-compatible library on Mac.</li>
+<li>Added preliminary Objective-C wrapper and sample project (Mac only).</li>
+<li>Added support for Visual Studio 2008.</li>
+<li>Added separate window to manage Leap Motion application settings.</li>
+<li>Added ability for the Leap Motion application to automatically check for updates on startup.</li>
+<li>Added ability for tracking direction to reorient when a full hand is seen.</li>
+<li>Improved performance of devices that may have fallen out of calibration.</li>
+<li>Updated device firmware to version 8.</li>
+</ul>
+</div>
+<div class="section" id="version-0-6-6">
+<h2><a class="toc-backref" href="#id26">Version 0.6.6</a></h2>
+<ul class="simple">
+<li>Added preliminary JavaScript support: the Leap Motion application provides a WebSocket server that sends tracking data as JSON messages.</li>
+<li>Added ability to save Leap Motion application settings between sessions.</li>
+<li>Added pause to the Leap Motion Visualizer. Use the P key to freeze and unfreeze the display.</li>
+<li>Improved stability of tracking data.</li>
+</ul>
+</div>
+<div class="section" id="version-0-6-5">
+<h2><a class="toc-backref" href="#id27">Version 0.6.5</a></h2>
+<ul class="simple">
+<li>Added <tt class="docutils literal">Leapd.lib</tt> and <tt class="docutils literal">Leapd.dll</tt> for Visual Studio debug build configurations.</li>
+<li>Added <tt class="docutils literal">com.leapmotion.leap</tt> package to the Java library.</li>
+<li>Added <tt class="docutils literal">Leap</tt> namespace to the C# library.</li>
+<li>Added support for Unity projects with C# and the UnityAssets plug-in.</li>
+<li>Added finger velocity display to the Visualizer application. Use the <tt class="docutils literal">L</tt> key to show finger velocities.</li>
+<li>Improved transition to and from robust mode when bad lighting conditions are detected.</li>
+<li>Updated device firmware to version 7.</li>
+</ul>
+</div>
+<div class="section" id="version-0-6-4">
+<h2><a class="toc-backref" href="#id28">Version 0.6.4</a></h2>
+<ul class="simple">
+<li>Added the <tt class="docutils literal"><span class="pre">Leap::Ball</span></tt> class to represent the position and radius of a sphere.</li>
+<li>Added the following member functions to the <tt class="docutils literal"><span class="pre">Leap::Hand</span></tt> class:<ul>
+<li><tt class="docutils literal"><span class="pre">Hand::normal()</span></tt> — a unit direction vector perpendicular to a plane tangent to the palm</li>
+<li><tt class="docutils literal"><span class="pre">Hand::ball()</span></tt> — a sphere fit to the curvature of the hand, as if the hand were holding a ball</li>
+</ul>
+</li>
+<li>Added tool detection and tracking. (For backwards compatibility, tools are included in the array of <tt class="docutils literal">Finger</tt> objects attached to a <tt class="docutils literal">Hand</tt> object.)</li>
+<li>Added the following member functions to the <tt class="docutils literal"><span class="pre">Leap::Finger</span></tt> class:<ul>
+<li><tt class="docutils literal"><span class="pre">Finger::isTool()</span></tt> — whether or not a finger is likely a tool (e.g., pen, pencil, chopstick)</li>
+<li><tt class="docutils literal"><span class="pre">Finger::length()</span></tt> — the length of the finger or tool (as much as is visible)</li>
+<li><tt class="docutils literal"><span class="pre">Finger::width()</span></tt> — the width of the finger or tool</li>
+</ul>
+</li>
+<li>Added new visualization modes to the Visualizer application:<ul>
+<li>Use the <tt class="docutils literal">N</tt> key to cycle through the new hand properties visualization modes.</li>
+<li>Use the <tt class="docutils literal">T</tt> key to switch to the new finger and tool visualization mode.</li>
+</ul>
+</li>
+<li>Updated C++, C#, Java, and Python sample applications to make use of new hand properties.</li>
+<li>Finger trails are now cleared in the Visualizer after the Leap Motion disconnects.</li>
+<li>Axes are now labeled correctly in the Visualizer after recentering the view.</li>
+<li>Arms are no longer occasionally misclassified as fingers.</li>
+<li>Added separate C# libraries for .NET 3.5 and .NET 4.0.</li>
+<li>Combined 32- and 64-bit versions of C# class definition libraries.</li>
+<li>Fixed issues when using the release Leap.dll in debug mode on Windows.</li>
+<li>Updated device firmware to version 6.</li>
+</ul>
+</div>
+<div class="section" id="version-0-6-3">
+<h2><a class="toc-backref" href="#id29">Version 0.6.3</a></h2>
+<ul class="simple">
+<li>Added robust lighting mode to permit operation in bright environments.</li>
+<li>Added low resource mode to permit operation on slower computers.</li>
+<li>Added ability to reverse tracking orientation manually.</li>
+<li>Added support for 64-bit libraries on Windows.</li>
+<li>Updated device firmware to version 5.</li>
+</ul>
+</div>
+<div class="section" id="version-0-6-2">
+<h2><a class="toc-backref" href="#id30">Version 0.6.2</a></h2>
+<ul class="simple">
+<li>Improved stability of C# sample application.</li>
+<li>Added support for C# development on Mac with Mono.</li>
+<li>Added support for 64-bit libraries on Mac.</li>
+</ul>
+</div>
+<div class="section" id="version-0-6-1">
+<h2><a class="toc-backref" href="#id31">Version 0.6.1</a></h2>
+<ul class="simple">
+<li>Improved stability when switching quality mode.</li>
+</ul>
+</div>
+<div class="section" id="version-0-6-0">
+<h2><a class="toc-backref" href="#id32">Version 0.6.0</a></h2>
+<ul class="simple">
+<li>Initial developer beta release of Leap Motion software and SDK.</li>
+</ul>
+<hr class="docutils" />
+<p>Copyright © 2012-2013 Leap Motion, Inc. All rights reserved.</p>
+<p>Leap Motion proprietary and confidential. Not for distribution. Use subject to the terms of the Leap Motion SDK Agreement available at <a class="reference external" href="https://developer.leapmotion.com/sdk_agreement">https://developer.leapmotion.com/sdk_agreement</a>, or another agreement between Leap Motion and you, your company or other organization.</p>
+</div>
+</div>
+</div>
+</body>
+</html>

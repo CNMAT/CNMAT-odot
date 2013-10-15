@@ -9,11 +9,6 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
-		<key>o 2.xcscheme</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>24</integer>
-		</dict>
 		<key>o.O.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -48,6 +43,11 @@
 		<dict>
 			<key>orderHint</key>
 			<integer>5</integer>
+		</dict>
+		<key>o.context.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>38</integer>
 		</dict>
 		<key>o.dict.xcscheme</key>
 		<dict>
@@ -104,10 +104,10 @@
 			<key>orderHint</key>
 			<integer>37</integer>
 		</dict>
-		<key>o.io.bluetoothle.xcscheme</key>
+		<key>o.io.bluetoothle.sensortag.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>38</integer>
+			<integer>39</integer>
 		</dict>
 		<key>o.io.leap.xcscheme</key>
 		<dict>
@@ -328,6 +328,26 @@
 			<true/>
 		</dict>
 		<key>5271F0AC1767E380001B05EC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>5272949017E926E500AA15E1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>527294A017E927B100AA15E1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>527294B817EDE93B00AA15E1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>5292DC3E17FCC6AD00598BDC</key>
 		<dict>
 			<key>primary</key>
 			<true/>

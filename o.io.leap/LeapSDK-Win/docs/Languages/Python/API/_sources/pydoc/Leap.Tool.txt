@@ -1,0 +1,8 @@
+Leap.Tool
+=========
+
+.. currentmodule:: Leap
+
+.. autoclass:: Tool
+   :members:
+   :undoc-members:
