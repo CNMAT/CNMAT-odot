@@ -1,8 +1,0 @@
-Leap.Controller
-===============
-
-.. currentmodule:: Leap
-
-.. autoclass:: Controller
-   :members:
-   :undoc-members:
