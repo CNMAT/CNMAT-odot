@@ -76,6 +76,7 @@
 //#include "jgraphics.h"
 #include "osc.h"
 #include "osc_expr.h"
+#include "osc_expr_funcdefs.h"
 #include "osc_expr_parser.h"
 #include "osc_mem.h"
 #include "osc_atom_u.h"
@@ -306,26 +307,6 @@ void oexpr_postExprAST(t_oexpr *fg)
 	}
 }
 
-void oexpr_postFunctionTable(t_oexpr *fg)
-{
-	char *buf = NULL;
-	long len = 0;
-	osc_expr_formatFunctionTable(&len, &buf);
-	char *ptr1 = buf, *ptr2 = buf;
-	while(*ptr2){
-		if(*ptr2 == '\n'){
-			*ptr2 = '\0';
-			post("%s", ptr1);
-			ptr1 = ptr2 + 1;
-			ptr2++;
-		}
-		ptr2++;
-	}
-	if(buf){
-		osc_mem_free(buf);
-	}
-}
-
 void oexpr_bang(t_oexpr *x)
 {
 	char buf[16];
@@ -352,7 +333,9 @@ void oexpr_doc_cat(t_oexpr *x, t_symbol *msg, int argc, t_atom *argv)
 {
 	if(argc == 0){
 		t_osc_bndl_s *b = osc_expr_getCategories();
-		omax_util_outletOSC(LEFTOUTLET, osc_bundle_s_getLen(b), osc_bundle_s_getPtr(b));
+		if(b){
+			omax_util_outletOSC(LEFTOUTLET, osc_bundle_s_getLen(b), osc_bundle_s_getPtr(b));
+		}
 	}else{
 		if(atom_gettype(argv) != A_SYM){
 			object_error((t_object *)x, "doc-cat: argument must be a symbol");
