@@ -305,8 +305,6 @@ void omessage_doFullPacket(t_omessage *x, long len, char *ptr){
 		return;
 	}
 
-	long bufpos = 0;
-	char *buf = NULL;
 	int have_subs = 0;
 	{
 		t_osc_bndl_it_s *bit = osc_bndl_it_s_get(len, (char *)ptr);
@@ -339,6 +337,8 @@ void omessage_doFullPacket(t_omessage *x, long len, char *ptr){
 		osc_bndl_it_s_destroy(bit);
 	}
 
+	long bufpos = 0;
+	char *buf = NULL;
 	if(have_subs){
 		t_osc_bndl_u *ubndl = NULL;
 		osc_bundle_s_deserialize(len, (char *)ptr, &ubndl);
@@ -720,7 +720,7 @@ void omessage_gettext(t_omessage *x){
 #endif
         
         if(formatted){
-			osc_mem_free(formatted);
+		osc_mem_free(formatted);
 		}
 		if(subs){
 			x->bndl = bndl;
