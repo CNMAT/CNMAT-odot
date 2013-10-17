@@ -1,0 +1,169 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Leap Motion API Reference</title>
+		<link rel="stylesheet" type="text/css" href="css/styles.css" media="all" />
+		<link rel="stylesheet" type="text/css" media="print" href="css/stylesPrint.css" />
+		<meta name="generator" content="appledoc 2.1 (build 858)" />
+	</head>
+	<body>
+		<header id="top_header">
+			<div id="library" class="hideInXcode">
+				<h1><a id="libraryTitle" href="index.html">Leap Motion API </a></h1>
+				<a id="developerHome" href="index.html">Leap Motion</a>
+			</div>
+			
+			<div id="title" role="banner">
+				<h1 class="hideInXcode">Leap Motion API Reference</h1>
+			</div>
+			<ul id="headerButtons" role="toolbar"></ul>
+		</header>
+		<article>
+			<div id="overview_contents" role="main">
+				<div class="main-navigation navigation-top">
+					<a href="hierarchy.html">Next</a>
+				</div>
+				<div id="header">
+					<div class="section-header">
+						<h1 class="title title-header">Leap Motion API Reference</h1>
+					</div>		
+				</div>
+				<div id="container">
+					
+					<div class="section section-overview index-overview">
+						
+						
+						<p>The Leap Motion Objective-C API is implemented as a wrapper around the Leap C++ API. The Objective-C wrapper allows you to program Leap-enabled applications in Objective-C (rather than Objective-C++ or C++).</p>
+
+<p>To include the Leap API in an Objective-C project, add the following files from the Leap SDK:</p>
+
+<ul>
+<li><strong>include/LeapObjectiveC.h</strong> and <strong>include/LeapObjectiveC.mm</strong></li>
+<li><strong>include/Leap.h</strong> and <strong>include/LeapMath.h</strong></li>
+<li><strong>lib/libLeap.dylib</strong></li>
+</ul>
+
+
+<p>In addition, add a <em>Copy Files</em> Build Phase to the project and copy libLeap.dylib to the <em>Executables</em> destination.</p>
+
+<h2>Accessing Leap tracking data in your application  </h2>
+
+<p>The <a href="Classes/LeapController.html">LeapController</a> class provides access to the Leap tracking data through <a href="Classes/LeapFrame.html">LeapFrame</a> objects. You can either poll the LeapController object when your application is ready to process a frame of data use one of the available event protocols to receive a message when a new frame is ready (as well as other events). The recommended mechanism for handling Leap events is to implement the <a href="Protocols/LeapListener.html">LeapListener</a> protocol. The <a href="Protocols/LeapListener.html">LeapListener</a> protocol uses NSNotifications and delivers messages on the main application thread. You can also use the <a href="Protocols/LeapDelegate.html">LeapDelegate</a> protocol and add a delegate to the controller object. However, the delegate callbacks are called on threads created by the Leap library rather than the main thread, so you must ensure that you only perform thread-safe operations in the delegate functions.</p>
+						
+						
+					</div>
+					
+                        
+                    
+                        <div class="index-column">
+						<h2 class="index-title">Programming Guides</h2>
+						<ul>
+                        
+                        <li><a href="docs/objCdocset/Leap_Application.html">Leap_Application</a></li>
+                        
+                        <li><a href="docs/objCdocset/Leap_Architecture.html">Leap_Architecture</a></li>
+                        
+                        <li><a href="docs/objCdocset/Leap_Frames.html">Leap_Frames</a></li>
+                        
+                        <li><a href="docs/objCdocset/Leap_Overview.html">Leap_Overview</a></li>
+                        
+                        <li><a href="docs/objCdocset/Leap_Touch_Emulation.html">Leap_Touch_Emulation</a></li>
+                        
+                        <li><a href="docs/objCdocset/Leap_Tracking.html">Leap_Tracking</a></li>
+                        
+                        <li><a href="docs/objCdocset/Leap_UX_Guidelines.html">Leap_UX_Guidelines</a></li>
+                        
+                        <li><a href="docs/objCdocset/Leap_Visualizer.html">Leap_Visualizer</a></li>
+                        
+                        <li><a href="docs/objCdocset/Sample_ObjectiveC_Tutorial.html">Sample_ObjectiveC_Tutorial</a></li>
+                        
+						</ul>
+                        </div>
+                    
+					
+					
+					<div class="index-column">
+						<h2 class="index-title">Class References</h2>
+						<ul>
+							
+							<li><a href="Classes/LeapCircleGesture.html">LeapCircleGesture</a></li>
+							
+							<li><a href="Classes/LeapConfig.html">LeapConfig</a></li>
+							
+							<li><a href="Classes/LeapController.html">LeapController</a></li>
+							
+							<li><a href="Classes/LeapDevice.html">LeapDevice</a></li>
+							
+							<li><a href="Classes/LeapFinger.html">LeapFinger</a></li>
+							
+							<li><a href="Classes/LeapFrame.html">LeapFrame</a></li>
+							
+							<li><a href="Classes/LeapGesture.html">LeapGesture</a></li>
+							
+							<li><a href="Classes/LeapHand.html">LeapHand</a></li>
+							
+							<li><a href="Classes/LeapInteractionBox.html">LeapInteractionBox</a></li>
+							
+							<li><a href="Classes/LeapKeyTapGesture.html">LeapKeyTapGesture</a></li>
+							
+							<li><a href="Classes/LeapMatrix.html">LeapMatrix</a></li>
+							
+							<li><a href="Classes/LeapPointable.html">LeapPointable</a></li>
+							
+							<li><a href="Classes/LeapScreen.html">LeapScreen</a></li>
+							
+							<li><a href="Classes/LeapScreenTapGesture.html">LeapScreenTapGesture</a></li>
+							
+							<li><a href="Classes/LeapSwipeGesture.html">LeapSwipeGesture</a></li>
+							
+							<li><a href="Classes/LeapTool.html">LeapTool</a></li>
+							
+							<li><a href="Classes/LeapVector.html">LeapVector</a></li>
+							
+						</ul>
+					</div>
+					
+					
+						
+					<div class="index-column">
+						
+						<h2 class="index-title">Protocol References</h2>
+						<ul>
+							
+							<li><a href="Protocols/LeapDelegate.html">LeapDelegate</a></li>
+							
+							<li><a href="Protocols/LeapListener.html">LeapListener</a></li>
+							
+						</ul>
+						
+						
+						<h2 class="index-title">Category References</h2>
+						<ul>
+							
+							<li><a href="Categories/NSArray+LeapPointableOrHandList.html">NSArray(LeapPointableOrHandList)</a></li>
+							
+							<li><a href="Categories/NSArray+LeapScreenList.html">NSArray(LeapScreenList)</a></li>
+							
+						</ul>
+						
+					</div>
+					
+				</div>
+				<div class="main-navigation navigation-bottom">
+					<a href="hierarchy.html">Next</a>
+				</div>
+				<div id="footer">
+					<hr />
+					<div class="footer-copyright">
+						<p><span class="copyright">&copy; 2013 Leap Motion. All rights reserved. (Last updated: 2013-07-19)</span><br />
+						
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 858)</a>.</span></p>
+						
+	
+					</div>
+				</div>
+			</div>
+		</article>		
+	</body>
+</html>

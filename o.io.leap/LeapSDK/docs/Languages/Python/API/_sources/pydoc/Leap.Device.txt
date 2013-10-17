@@ -1,0 +1,8 @@
+Leap.Device
+===========
+
+.. currentmodule:: Leap
+
+.. autoclass:: Device
+   :members:
+   :undoc-members:

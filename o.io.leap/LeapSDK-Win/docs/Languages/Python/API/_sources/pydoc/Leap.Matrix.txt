@@ -1,0 +1,8 @@
+Leap.Matrix
+===========
+
+.. currentmodule:: Leap
+
+.. autoclass:: Matrix
+   :members:
+   :undoc-members:

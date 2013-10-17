@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Namespace: Leap</title>
+    
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+    
+    <h1 class="page-title">Namespace: Leap</h1>
+    
+    
+
+
+
+<section>
+    
+<header>
+    <h2>
+    Leap
+    </h2>
+    
+</header>  
+
+<article>
+    <div class="container-overview">
+    
+    
+    
+        
+            <div class="description"><p>Leap is the global namespace of the Leap API.</p></div>
+        
+        
+        
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        index.js, line 1
+    </li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+        
+        
+    
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    
+        <h3 class="subsection-title">Classes</h3>
+        
+        <dl>
+            <dt><a href="Leap.CircleGesture.html">CircleGesture</a></dt>
+            <dd></dd>
+        
+            <dt><a href="Leap.Controller.html">Controller</a></dt>
+            <dd></dd>
+        
+            <dt><a href="Leap.Frame.html">Frame</a></dt>
+            <dd></dd>
+        
+            <dt><a href="Leap.Gesture.html">Gesture</a></dt>
+            <dd></dd>
+        
+            <dt><a href="Leap.Hand.html">Hand</a></dt>
+            <dd></dd>
+        
+            <dt><a href="Leap.InteractionBox.html">InteractionBox</a></dt>
+            <dd></dd>
+        
+            <dt><a href="Leap.KeyTapGesture.html">KeyTapGesture</a></dt>
+            <dd></dd>
+        
+            <dt><a href="Leap.Pointable.html">Pointable</a></dt>
+            <dd></dd>
+        
+            <dt><a href="Leap.ScreenTapGesture.html">ScreenTapGesture</a></dt>
+            <dd></dd>
+        
+            <dt><a href="Leap.SwipeGesture.html">SwipeGesture</a></dt>
+            <dd></dd>
+        </dl>
+    
+    
+    
+    
+    
+    
+    
+        <h3 class="subsection-title">Methods</h3>
+        
+        <dl>
+            
+<dt>
+    <h4 class="name" id="loop"><span class="type-signature">&lt;static> </span>loop<span class="signature">(callback)</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>The Leap.loop() function passes a frame of Leap data to your
+callback function and then calls window.requestAnimationFrame() after
+executing your callback function.</p>
+
+<p>Leap.loop() sets up the Leap controller and WebSocket connection for you.
+You do not need to create your own controller when using this method.</p>
+
+<p>Your callback function is called on an interval determined by the client
+browser. Typically, this is on an interval of 60 frames/second. The most
+recent frame of Leap data is passed to your callback function. If the Leap
+is producing frames at a slower rate than the browser frame rate, the same
+frame of Leap data can be passed to your function in successive animation
+updates.</p>
+
+<p>As an alternative, you can create your own Controller object and use a
+onFrame callback to process the data at
+the frame rate of the Leap device. See Controller for an
+example.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last"><p>A function called when the browser is ready to
+draw to the screen. The most recent Frame object is passed to
+your callback function.</p>
+
+<div class="highlight"><pre lang="javascript">   Leap.loop( function( frame ) {
+       // ... your code here
+   })
+</pre></div></td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        index.js, line 17
+    </li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        </dl>
+    
+    
+    
+    
+    
+</article>
+
+</section>  
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Index</a></h2><h3>Classes</h3><ul><li><a href="Leap.CircleGesture.html">CircleGesture</a></li><li><a href="Leap.Controller.html">Controller</a></li><li><a href="Leap.Frame.html">Frame</a></li><li><a href="Leap.Gesture.html">Gesture</a></li><li><a href="Leap.Hand.html">Hand</a></li><li><a href="Leap.InteractionBox.html">InteractionBox</a></li><li><a href="Leap.KeyTapGesture.html">KeyTapGesture</a></li><li><a href="Leap.Pointable.html">Pointable</a></li><li><a href="Leap.ScreenTapGesture.html">ScreenTapGesture</a></li><li><a href="Leap.SwipeGesture.html">SwipeGesture</a></li></ul><h3>Namespaces</h3><ul><li><a href="Leap.html">Leap</a></li></ul>
+</nav>
+
+<br clear="both">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0-dev</a> on Fri Jul 19 2013 15:40:46 GMT-0700 (PDT)
+</footer>
+
+<script> prettyPrint(); </script>
+</body>
+</html>

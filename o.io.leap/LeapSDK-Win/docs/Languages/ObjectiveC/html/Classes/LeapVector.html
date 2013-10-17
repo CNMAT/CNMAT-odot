@@ -1,0 +1,2552 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
+		<title>LeapVector Class Reference</title>
+		<meta id="xcode-display" name="xcode-display" content="render"/>
+		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
+		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
+		<meta name="generator" content="appledoc 2.1 (build 858)" />
+	</head>
+	<body>
+		<header id="top_header">
+			<div id="library" class="hideInXcode">
+				<h1><a id="libraryTitle" href="../index.html">Leap Motion API </a></h1>
+				<a id="developerHome" href="../index.html">Leap Motion</a>
+			</div>
+			
+			<div id="title" role="banner">
+				<h1 class="hideInXcode">LeapVector Class Reference</h1>
+			</div>
+			<ul id="headerButtons" role="toolbar">
+				<li id="toc_button">
+					<button aria-label="Show Table of Contents" role="checkbox" class="open" id="table_of_contents"><span class="disclosure"></span>Table of Contents</button>
+				</li>
+				<li id="jumpto_button" role="navigation">
+					<select id="jumpTo">
+<option value="top">Jump To&#133;</option>
+
+<option value="overview">Overview</option>
+
+
+
+
+<option value="tasks">Tasks</option>
+
+
+
+
+
+<option value="properties">Properties</option>
+
+<option value="//api/name/x">&nbsp;&nbsp;&nbsp;&nbsp;x</option>
+
+<option value="//api/name/y">&nbsp;&nbsp;&nbsp;&nbsp;y</option>
+
+<option value="//api/name/z">&nbsp;&nbsp;&nbsp;&nbsp;z</option>
+
+
+
+
+<option value="class_methods">Class Methods</option>
+
+<option value="//api/name/backward">&nbsp;&nbsp;&nbsp;&nbsp;+ backward</option>
+
+<option value="//api/name/down">&nbsp;&nbsp;&nbsp;&nbsp;+ down</option>
+
+<option value="//api/name/forward">&nbsp;&nbsp;&nbsp;&nbsp;+ forward</option>
+
+<option value="//api/name/left">&nbsp;&nbsp;&nbsp;&nbsp;+ left</option>
+
+<option value="//api/name/right">&nbsp;&nbsp;&nbsp;&nbsp;+ right</option>
+
+<option value="//api/name/up">&nbsp;&nbsp;&nbsp;&nbsp;+ up</option>
+
+<option value="//api/name/xAxis">&nbsp;&nbsp;&nbsp;&nbsp;+ xAxis</option>
+
+<option value="//api/name/yAxis">&nbsp;&nbsp;&nbsp;&nbsp;+ yAxis</option>
+
+<option value="//api/name/zAxis">&nbsp;&nbsp;&nbsp;&nbsp;+ zAxis</option>
+
+<option value="//api/name/zero">&nbsp;&nbsp;&nbsp;&nbsp;+ zero</option>
+
+
+
+
+<option value="instance_methods">Instance Methods</option>
+
+<option value="//api/name/angleTo:">&nbsp;&nbsp;&nbsp;&nbsp;- angleTo:</option>
+
+<option value="//api/name/cross:">&nbsp;&nbsp;&nbsp;&nbsp;- cross:</option>
+
+<option value="//api/name/distanceTo:">&nbsp;&nbsp;&nbsp;&nbsp;- distanceTo:</option>
+
+<option value="//api/name/divide:">&nbsp;&nbsp;&nbsp;&nbsp;- divide:</option>
+
+<option value="//api/name/dot:">&nbsp;&nbsp;&nbsp;&nbsp;- dot:</option>
+
+<option value="//api/name/equals:">&nbsp;&nbsp;&nbsp;&nbsp;- equals:</option>
+
+<option value="//api/name/initWithVector:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithVector:</option>
+
+<option value="//api/name/initWithX:y:z:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithX:y:z:</option>
+
+<option value="//api/name/magnitude">&nbsp;&nbsp;&nbsp;&nbsp;- magnitude</option>
+
+<option value="//api/name/magnitudeSquared">&nbsp;&nbsp;&nbsp;&nbsp;- magnitudeSquared</option>
+
+<option value="//api/name/minus:">&nbsp;&nbsp;&nbsp;&nbsp;- minus:</option>
+
+<option value="//api/name/negate">&nbsp;&nbsp;&nbsp;&nbsp;- negate</option>
+
+<option value="//api/name/normalized">&nbsp;&nbsp;&nbsp;&nbsp;- normalized</option>
+
+<option value="//api/name/pitch">&nbsp;&nbsp;&nbsp;&nbsp;- pitch</option>
+
+<option value="//api/name/plus:">&nbsp;&nbsp;&nbsp;&nbsp;- plus:</option>
+
+<option value="//api/name/roll">&nbsp;&nbsp;&nbsp;&nbsp;- roll</option>
+
+<option value="//api/name/times:">&nbsp;&nbsp;&nbsp;&nbsp;- times:</option>
+
+<option value="//api/name/toFloatPointer">&nbsp;&nbsp;&nbsp;&nbsp;- toFloatPointer</option>
+
+<option value="//api/name/toNSArray">&nbsp;&nbsp;&nbsp;&nbsp;- toNSArray</option>
+
+<option value="//api/name/yaw">&nbsp;&nbsp;&nbsp;&nbsp;- yaw</option>
+
+
+
+</select>
+				</li>
+			</ul>
+		</header>
+		<nav id="tocContainer" class="isShowingTOC">
+			<ul id="toc" role="tree">
+				
+<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
+
+
+
+
+<li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
+	
+</ul></li>
+
+
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/x">x</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/y">y</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/z">z</a></span></li>
+	
+</ul></li>
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#class_methods">Class Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/backward">backward</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/down">down</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/forward">forward</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/left">left</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/right">right</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/up">up</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/xAxis">xAxis</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/yAxis">yAxis</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/zAxis">zAxis</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/zero">zero</a></span></li>
+	
+</ul></li>
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/angleTo:">angleTo:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/cross:">cross:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/distanceTo:">distanceTo:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/divide:">divide:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/dot:">dot:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/equals:">equals:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithVector:">initWithVector:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithX:y:z:">initWithX:y:z:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/magnitude">magnitude</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/magnitudeSquared">magnitudeSquared</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/minus:">minus:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/negate">negate</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/normalized">normalized</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/pitch">pitch</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/plus:">plus:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/roll">roll</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/times:">times:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/toFloatPointer">toFloatPointer</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/toNSArray">toNSArray</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/yaw">yaw</a></span></li>
+	
+</ul></li>
+
+
+
+
+			</ul>
+		</nav>
+		<article>
+			<div id="contents" class="isShowingTOC" role="main">
+				<a title="LeapVector Class Reference" name="top"></a>
+				<div class="main-navigation navigation-top">
+					<ul>
+<li><a href="../index.html">Index</a></li>
+<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="header">
+					<div class="section-header">
+						<h1 class="title title-header">LeapVector Class Reference</h1>
+					</div>		
+				</div>
+				<div id="container">	
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+<td class="specification-title">Inherits from</td>
+<td class="specification-value">NSObject</td>
+</tr><tr>
+<td class="specification-title">Declared in</td>
+<td class="specification-value">LeapObjectiveC.h</td>
+</tr>
+						</tbody></table></div>
+					
+					
+					
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>The LeapVector class represents a three-component mathematical vector or point<br/>
+such as a direction or position in three-dimensional space.</p>
+
+<p>The Leap software employs a right-handed Cartesian coordinate system.<br/>
+Values given are in units of real-world millimeters. The origin is centered<br/>
+at the center of the Leap device. The x- and z-axes lie in the horizontal<br/>
+plane, with the x-axis running parallel to the long edge of the device.<br/>
+The y-axis is vertical, with positive values increasing upwards (in contrast<br/>
+to the downward orientation of most computer graphics coordinate systems).<br/>
+The z-axis has positive values increasing away from the computer screen.</p>
+
+<p><img src="../docs/images/Leap_Axes.png"/></p>
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						<h2 class="subtitle subtitle-tasks">Tasks</h2>
+						
+						
+						
+						
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/initWithX:y:z:">&ndash;&nbsp;initWithX:y:z:</a></code>
+		<span class="tooltip"><p>Creates a new LeapVector with the specified component values.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/initWithVector:">&ndash;&nbsp;initWithVector:</a></code>
+		<span class="tooltip"><p>Copies the specified LeapVector.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/magnitude">&ndash;&nbsp;magnitude</a></code>
+		<span class="tooltip"><p>The magnitude, or length, of this vector.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/magnitudeSquared">&ndash;&nbsp;magnitudeSquared</a></code>
+		<span class="tooltip"><p>The square of the magnitude, or length, of this vector.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/distanceTo:">&ndash;&nbsp;distanceTo:</a></code>
+		<span class="tooltip"><p>The distance between the point represented by this LeapVector<br/>
+object and a point represented by the specified LeapVector object.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/angleTo:">&ndash;&nbsp;angleTo:</a></code>
+		<span class="tooltip"><p>The angle between this vector and the specified vector in radians.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/pitch">&ndash;&nbsp;pitch</a></code>
+		<span class="tooltip"><p>The pitch angle in radians.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/roll">&ndash;&nbsp;roll</a></code>
+		<span class="tooltip"><p>The roll angle in radians.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/yaw">&ndash;&nbsp;yaw</a></code>
+		<span class="tooltip"><p>The yaw angle in radians.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/plus:">&ndash;&nbsp;plus:</a></code>
+		<span class="tooltip"><p>Adds two vectors.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/minus:">&ndash;&nbsp;minus:</a></code>
+		<span class="tooltip"><p>Subtract a vector from this vector.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/negate">&ndash;&nbsp;negate</a></code>
+		<span class="tooltip"><p>Negate this vector.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/times:">&ndash;&nbsp;times:</a></code>
+		<span class="tooltip"><p>Multiply this vector by a number.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/divide:">&ndash;&nbsp;divide:</a></code>
+		<span class="tooltip"><p>Divide this vector by a number.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/equals:">&ndash;&nbsp;equals:</a></code>
+		<span class="tooltip"><p>Checks LeapVector equality.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/dot:">&ndash;&nbsp;dot:</a></code>
+		<span class="tooltip"><p>The dot product of this vector with another vector.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/cross:">&ndash;&nbsp;cross:</a></code>
+		<span class="tooltip"><p>The cross product of this vector and the specified vector.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/normalized">&ndash;&nbsp;normalized</a></code>
+		<span class="tooltip"><p>A normalized copy of this vector.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/toNSArray">&ndash;&nbsp;toNSArray</a></code>
+		<span class="tooltip"><p>Returns an NSArray object containing the vector components in the<br/>
+order: x, y, z.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/toFloatPointer">&ndash;&nbsp;toFloatPointer</a></code>
+		<span class="tooltip"><p>Returns an NSMutableData object containing the vector components as<br/>
+consecutive floating point values.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/zero">+&nbsp;zero</a></code>
+		<span class="tooltip"><p>The zero vector: (0, 0, 0)</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/xAxis">+&nbsp;xAxis</a></code>
+		<span class="tooltip"><p>The x-axis unit vector: (1, 0, 0).</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/yAxis">+&nbsp;yAxis</a></code>
+		<span class="tooltip"><p>The y-axis unit vector: (0, 1, 0).</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/zAxis">+&nbsp;zAxis</a></code>
+		<span class="tooltip"><p>The z-axis unit vector: (0, 0, 1).</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/left">+&nbsp;left</a></code>
+		<span class="tooltip"><p>The unit vector pointing left along the negative x-axis: (-1, 0, 0).</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/right">+&nbsp;right</a></code>
+		<span class="tooltip"><p>The unit vector pointing right along the positive x-axis: (1, 0, 0).</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/down">+&nbsp;down</a></code>
+		<span class="tooltip"><p>The unit vector pointing down along the negative y-axis: (0, -1, 0).</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/up">+&nbsp;up</a></code>
+		<span class="tooltip"><p>The unit vector pointing up along the positive y-axis: (0, 1, 0).</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/forward">+&nbsp;forward</a></code>
+		<span class="tooltip"><p>The unit vector pointing forward along the negative z-axis: (0, 0, -1).</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/backward">+&nbsp;backward</a></code>
+		<span class="tooltip"><p>The unit vector pointing backward along the positive z-axis: (0, 0, 1).</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/x">&nbsp;&nbsp;x</a></code>
+		<span class="tooltip"><p>The horizontal component.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/y">&nbsp;&nbsp;y</a></code>
+		<span class="tooltip"><p>The vertical component.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/z">&nbsp;&nbsp;z</a></code>
+		<span class="tooltip"><p>The depth component.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li>
+						</ul>
+						
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Properties" name="properties"></a>
+						<h2 class="subtitle subtitle-methods">Properties</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/x" title="x"></a>
+	<h3 class="subsubtitle method-title">x</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The horizontal component.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign, readonly) float x</code></div>
+
+    
+	
+	
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>Since 1.0</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The horizontal component.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">LeapObjectiveC.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/y" title="y"></a>
+	<h3 class="subsubtitle method-title">y</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The vertical component.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign, readonly) float y</code></div>
+
+    
+	
+	
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>Since 1.0</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The vertical component.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">LeapObjectiveC.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/z" title="z"></a>
+	<h3 class="subsubtitle method-title">z</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The depth component.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign, readonly) float z</code></div>
+
+    
+	
+	
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>Since 1.0</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The depth component.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">LeapObjectiveC.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Class Methods" name="class_methods"></a>
+						<h2 class="subtitle subtitle-methods">Class Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/backward" title="backward"></a>
+	<h3 class="subsubtitle method-title">backward</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The unit vector pointing backward along the positive z-axis: (0, 0, 1).</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (LeapVector *)backward</code></div>
+
+    
+	
+	
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>Since 1.0</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The unit vector pointing backward along the positive z-axis: (0, 0, 1).</p>
+
+<pre><code>    LeapVector *backwardVector = [LeapVector backward];
+</code></pre>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">LeapObjectiveC.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/down" title="down"></a>
+	<h3 class="subsubtitle method-title">down</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The unit vector pointing down along the negative y-axis: (0, -1, 0).</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (LeapVector *)down</code></div>
+
+    
+	
+	
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>Since 1.0</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The unit vector pointing down along the negative y-axis: (0, -1, 0).</p>
+
+<pre><code>    LeapVector *downVector = [LeapVector down];
+</code></pre>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">LeapObjectiveC.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/forward" title="forward"></a>
+	<h3 class="subsubtitle method-title">forward</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The unit vector pointing forward along the negative z-axis: (0, 0, -1).</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (LeapVector *)forward</code></div>
+
+    
+	
+	
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>Since 1.0</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The unit vector pointing forward along the negative z-axis: (0, 0, -1).</p>
+
+<pre><code>    LeapVector *forwardVector = [LeapVector forward];
+</code></pre>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">LeapObjectiveC.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/left" title="left"></a>
+	<h3 class="subsubtitle method-title">left</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The unit vector pointing left along the negative x-axis: (-1, 0, 0).</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (LeapVector *)left</code></div>
+
+    
+	
+	
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>Since 1.0</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The unit vector pointing left along the negative x-axis: (-1, 0, 0).</p>
+
+<pre><code>    LeapVector *leftVector = [LeapVector left];
+</code></pre>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">LeapObjectiveC.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/right" title="right"></a>
+	<h3 class="subsubtitle method-title">right</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The unit vector pointing right along the positive x-axis: (1, 0, 0).</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (LeapVector *)right</code></div>
+
+    
+	
+	
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>Since 1.0</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The unit vector pointing right along the positive x-axis: (1, 0, 0).</p>
+
+<pre><code>    LeapVector *rightVector = [LeapVector right];
+</code></pre>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">LeapObjectiveC.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/up" title="up"></a>
+	<h3 class="subsubtitle method-title">up</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The unit vector pointing up along the positive y-axis: (0, 1, 0).</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (LeapVector *)up</code></div>
+
+    
+	
+	
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>Since 1.0</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The unit vector pointing up along the positive y-axis: (0, 1, 0).</p>
+
+<pre><code>    LeapVector *upVector = [LeapVector up];
+</code></pre>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">LeapObjectiveC.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/xAxis" title="xAxis"></a>
+	<h3 class="subsubtitle method-title">xAxis</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The x-axis unit vector: (1, 0, 0).</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (LeapVector *)xAxis</code></div>
+
+    
+	
+	
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>Since 1.0</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The x-axis unit vector: (1, 0, 0).</p>
+
+<pre><code>    LeapVector *xAxisVector = [LeapVector xAxis];
+</code></pre>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">LeapObjectiveC.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/yAxis" title="yAxis"></a>
+	<h3 class="subsubtitle method-title">yAxis</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The y-axis unit vector: (0, 1, 0).</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (LeapVector *)yAxis</code></div>
+
+    
+	
+	
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>Since 1.0</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The y-axis unit vector: (0, 1, 0).</p>
+
+<pre><code>    LeapVector *yAxisVector = [LeapVector yAxis];
+</code></pre>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">LeapObjectiveC.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/zAxis" title="zAxis"></a>
+	<h3 class="subsubtitle method-title">zAxis</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The z-axis unit vector: (0, 0, 1).</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (LeapVector *)zAxis</code></div>
+
+    
+	
+	
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>Since 1.0</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The z-axis unit vector: (0, 0, 1).</p>
+
+<pre><code>    LeapVector *zAxisVector = [LeapVector zAxis];
+</code></pre>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">LeapObjectiveC.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/zero" title="zero"></a>
+	<h3 class="subsubtitle method-title">zero</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The zero vector: (0, 0, 0)</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (LeapVector *)zero</code></div>
+
+    
+	
+	
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>Since 1.0</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The zero vector: (0, 0, 0)</p>
+
+<pre><code>    LeapVector *zeroVector = [LeapVector zero];
+</code></pre>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">LeapObjectiveC.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Instance Methods" name="instance_methods"></a>
+						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/angleTo:" title="angleTo:"></a>
+	<h3 class="subsubtitle method-title">angleTo:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The angle between this vector and the specified vector in radians.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (float)angleTo:(const LeapVector *)<em>vector</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>vector</em></dt>
+			<dd><p>A LeapVector object.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>The angle between this vector and the specified vector in radians.</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>Since 1.0</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The angle between this vector and the specified vector in radians.</p>
+
+<pre><code>    float angleInRadians = [[LeapVector xAxis] angleTo:[LeapVector yAxis]];  
+    // angleInRadians = PI/2 (90 degrees)  
+</code></pre>
+
+<p>The angle is measured in the plane formed by the two vectors. The<br/>
+angle returned is always the smaller of the two conjugate angles.<br/>
+Thus <code>[A angleTo:B] == [B angleTo:A]</code> and is always a positive<br/>
+value less than or equal to pi radians (180 degrees).</p>
+
+<p>If either vector has zero length, then this function returns zero.</p>
+
+<p><img src="../docs/images/Math_AngleTo.png"/></p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">LeapObjectiveC.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/cross:" title="cross:"></a>
+	<h3 class="subsubtitle method-title">cross:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The cross product of this vector and the specified vector.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (LeapVector *)cross:(const LeapVector *)<em>vector</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>vector</em></dt>
+			<dd><p>A LeapVector object.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>The cross product of this vector and the specified vector.</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>Since 1.0</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The cross product of this vector and the specified vector.</p>
+
+<pre><code>    LeapVector *crossProduct = [thisVector cross:thatVector];  
+</code></pre>
+
+<p>The cross product is a vector orthogonal to both original vectors.<br/>
+It has a magnitude equal to the area of a parallelogram having the<br/>
+two vectors as sides. The direction of the returned vector is<br/>
+determined by the right-hand rule. Thus <code>[A cross:B] ==  
+[[B negate] cross:A]</code>.</p>
+
+<p><img src="../docs/images/Math_Cross.png"/></p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">LeapObjectiveC.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/distanceTo:" title="distanceTo:"></a>
+	<h3 class="subsubtitle method-title">distanceTo:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The distance between the point represented by this LeapVector<br/>
+object and a point represented by the specified LeapVector object.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (float)distanceTo:(const LeapVector *)<em>vector</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>vector</em></dt>
+			<dd><p>A LeapVector object.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>The distance from this point to the specified point.</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>Since 1.0</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The distance between the point represented by this LeapVector<br/>
+object and a point represented by the specified LeapVector object.</p>
+
+<pre><code>    LeapVector *aPoint = [[LeapVector alloc] initWithX:10 y:0 z:0];  
+    LeapVector *origin = [LeapVector zero];  
+    float distance = [origin distanceTo:aPoint]; // distance = 10
+</code></pre>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">LeapObjectiveC.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/divide:" title="divide:"></a>
+	<h3 class="subsubtitle method-title">divide:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Divide this vector by a number.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (LeapVector *)divide:(float)<em>scalar</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>scalar</em></dt>
+			<dd><p>The scalar divisor;</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>The dividend of this LeapVector divided by a scalar.</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>Since 1.0</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Divide this vector by a number.</p>
+
+<pre><code>    LeapVector *quotient = [thisVector divide:2.5];
+</code></pre>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">LeapObjectiveC.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/dot:" title="dot:"></a>
+	<h3 class="subsubtitle method-title">dot:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The dot product of this vector with another vector.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (float)dot:(const LeapVector *)<em>vector</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>vector</em></dt>
+			<dd><p>A LeapVector object.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>The dot product of this vector and the specified vector.</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>Since 1.0</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The dot product of this vector with another vector.</p>
+
+<pre><code>    float dotProduct = [thisVector dot:thatVector];  
+</code></pre>
+
+<p>The dot product is the magnitude of the projection of this vector<br/>
+onto the specified vector.</p>
+
+<p><img src="../docs/images/Math_Dot.png"/></p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">LeapObjectiveC.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/equals:" title="equals:"></a>
+	<h3 class="subsubtitle method-title">equals:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Checks LeapVector equality.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (BOOL)equals:(const LeapVector *)<em>vector</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>vector</em></dt>
+			<dd><p>The LeapVector to compare.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>YES, if the LeapVectors are equal.</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>Since 1.0</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Checks LeapVector equality.</p>
+
+<pre><code>    bool vectorsAreEqual = [thisVector equals:thatVector];  
+</code></pre>
+
+<p>Vectors are equal if each corresponding component is equal.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">LeapObjectiveC.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/initWithVector:" title="initWithVector:"></a>
+	<h3 class="subsubtitle method-title">initWithVector:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Copies the specified LeapVector.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (id)initWithVector:(const LeapVector *)<em>vector</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>vector</em></dt>
+			<dd><p>The LeapVector to copy.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>Since 1.0</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Copies the specified LeapVector.</p>
+
+<pre><code>    LeapVector *copiedVector = [[LeapVector alloc] initWithVector:otherVector];
+</code></pre>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">LeapObjectiveC.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/initWithX:y:z:" title="initWithX:y:z:"></a>
+	<h3 class="subsubtitle method-title">initWithX:y:z:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Creates a new LeapVector with the specified component values.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (id)initWithX:(float)<em>x</em> y:(float)<em>y</em> z:(float)<em>z</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>x</em></dt>
+			<dd><p>The horizontal component.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>y</em></dt>
+			<dd><p>The vertical component.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>z</em></dt>
+			<dd><p>The depth component.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>Since 1.0</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Creates a new LeapVector with the specified component values.</p>
+
+<pre><code>    LeapVector *newVector = [[LeapVector alloc] initWithX:0.5 y:200.3 z:67];
+</code></pre>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">LeapObjectiveC.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/magnitude" title="magnitude"></a>
+	<h3 class="subsubtitle method-title">magnitude</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The magnitude, or length, of this vector.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (float)magnitude</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>The length of this vector.</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>Since 1.0</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The magnitude, or length, of this vector.</p>
+
+<pre><code>    float length = thisVector.magnitude;  
+</code></pre>
+
+<p>The magnitude is the L2 norm, or Euclidean distance between the origin and<br/>
+the point represented by the (x, y, z) components of this LeapVector object.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">LeapObjectiveC.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/magnitudeSquared" title="magnitudeSquared"></a>
+	<h3 class="subsubtitle method-title">magnitudeSquared</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The square of the magnitude, or length, of this vector.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (float)magnitudeSquared</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>The square of the length of this vector.</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>Since 1.0</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The square of the magnitude, or length, of this vector.</p>
+
+<pre><code>    float lengthSquared = thisVector.magnitudeSquared;
+</code></pre>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">LeapObjectiveC.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/minus:" title="minus:"></a>
+	<h3 class="subsubtitle method-title">minus:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Subtract a vector from this vector.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (LeapVector *)minus:(const LeapVector *)<em>vector</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>vector</em></dt>
+			<dd><p>the LeapVector subtrahend.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>the difference between the two LeapVectors.</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>Since 1.0</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Subtract a vector from this vector.</p>
+
+<pre><code>    LeapVector *difference = [thisVector minus:thatVector];
+</code></pre>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">LeapObjectiveC.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/negate" title="negate"></a>
+	<h3 class="subsubtitle method-title">negate</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Negate this vector.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (LeapVector *)negate</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>The negation of this LeapVector.</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>Since 1.0</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Negate this vector.</p>
+
+<pre><code>    LeapVector *negation = thisVector.negate;
+</code></pre>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">LeapObjectiveC.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/normalized" title="normalized"></a>
+	<h3 class="subsubtitle method-title">normalized</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>A normalized copy of this vector.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (LeapVector *)normalized</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>A LeapVector object with a length of one, pointing in the same<br/>
+direction as this Vector object.</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>Since 1.0</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>A normalized copy of this vector.</p>
+
+<pre><code>    LeapVector *normalizedVector = otherVector.normalized;  
+</code></pre>
+
+<p>A normalized vector has the same direction as the original vector,<br/>
+but with a length of one.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">LeapObjectiveC.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/pitch" title="pitch"></a>
+	<h3 class="subsubtitle method-title">pitch</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The pitch angle in radians.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (float)pitch</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>The angle of this vector above or below the horizon (x-z plane).</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>Since 1.0</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The pitch angle in radians.</p>
+
+<pre><code>    float pitchInRadians = thisVector.pitch;  
+</code></pre>
+
+<p>Pitch is the angle between the negative z-axis and the projection of<br/>
+the vector onto the y-z plane. In other words, pitch represents rotation<br/>
+around the x-axis.<br/>
+If the vector points upward, the returned angle is between 0 and pi radians<br/>
+(180 degrees); if it points downward, the angle is between 0 and -pi radians.</p>
+
+<p><img src="../docs/images/Math_Pitch_Angle.png"/></p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">LeapObjectiveC.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/plus:" title="plus:"></a>
+	<h3 class="subsubtitle method-title">plus:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Adds two vectors.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (LeapVector *)plus:(const LeapVector *)<em>vector</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>vector</em></dt>
+			<dd><p>The LeapVector addend.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>The sum of the two LeapVectors.</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>Since 1.0</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Adds two vectors.</p>
+
+<pre><code>    LeapVector *sum = [thisVector plus:thatVector];
+</code></pre>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">LeapObjectiveC.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/roll" title="roll"></a>
+	<h3 class="subsubtitle method-title">roll</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The roll angle in radians.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (float)roll</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>The angle of this vector to the right or left of the y-axis.</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>Since 1.0</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The roll angle in radians.</p>
+
+<pre><code>    float rollInRadians = thatVector.roll;  
+</code></pre>
+
+<p>Roll is the angle between the y-axis and the projection of<br/>
+the vector onto the x-y plane. In other words, roll represents rotation<br/>
+around the z-axis. If the vector points to the left of the y-axis,<br/>
+then the returned angle is between 0 and pi radians (180 degrees);<br/>
+if it points to the right, the angle is between 0 and -pi radians.</p>
+
+<p><img src="../docs/images/Math_Roll_Angle.png"/></p>
+
+<p>Use this function to get roll angle of the plane to which this vector is a<br/>
+normal. For example, if this vector represents the normal to the palm,<br/>
+then this function returns the tilt or roll of the palm plane compared<br/>
+to the horizontal (x-z) plane.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">LeapObjectiveC.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/times:" title="times:"></a>
+	<h3 class="subsubtitle method-title">times:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Multiply this vector by a number.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (LeapVector *)times:(float)<em>scalar</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>scalar</em></dt>
+			<dd><p>The scalar factor.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>The product of this LeapVector and a scalar.</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>Since 1.0</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Multiply this vector by a number.</p>
+
+<pre><code>    LeapVector *product = [thisVector times:5.0];
+</code></pre>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">LeapObjectiveC.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/toFloatPointer" title="toFloatPointer"></a>
+	<h3 class="subsubtitle method-title">toFloatPointer</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Returns an NSMutableData object containing the vector components as<br/>
+consecutive floating point values.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (NSMutableData *)toFloatPointer</code></div>
+
+    
+	
+	
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>Since 1.0</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Returns an NSMutableData object containing the vector components as<br/>
+consecutive floating point values.</p>
+
+<pre><code>    NSData *vectorData = thisVector.toFloatPointer;  
+    float x, y, z;  
+    [vectorData getBytes:&amp;x length:sizeof(float)];  
+    [vectorData getBytes:&amp;y length:sizeof(float)];  
+    [vectorData getBytes:&amp;z length:sizeof(float)];  
+    //Or access as an array of float:  
+    float array[3];  
+    [vectorData getBytes:&amp;array length:sizeof(float) * 3];  
+    x = array[0];  
+    y = array[1];  
+    z = array[2];
+</code></pre>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">LeapObjectiveC.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/toNSArray" title="toNSArray"></a>
+	<h3 class="subsubtitle method-title">toNSArray</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Returns an NSArray object containing the vector components in the<br/>
+order: x, y, z.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (NSArray *)toNSArray</code></div>
+
+    
+	
+	
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>Since 1.0</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Returns an NSArray object containing the vector components in the<br/>
+order: x, y, z.</p>
+
+<pre><code>    NSArray *vectorArray = thisVector.toNSArray;
+</code></pre>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">LeapObjectiveC.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/yaw" title="yaw"></a>
+	<h3 class="subsubtitle method-title">yaw</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The yaw angle in radians.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (float)yaw</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>The angle of this vector to the right or left of the negative z-axis.</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>Since 1.0</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The yaw angle in radians.</p>
+
+<pre><code>    float yawInRadians = thisVector.yaw;  
+</code></pre>
+
+<p>Yaw is the angle between the negative z-axis and the projection of<br/>
+the vector onto the x-z plane. In other words, yaw represents rotation<br/>
+around the y-axis. If the vector points to the right of the negative z-axis,<br/>
+then the returned angle is between 0 and pi radians (180 degrees);<br/>
+if it points to the left, the angle is between 0 and -pi radians.</p>
+
+<p><img src="../docs/images/Math_Yaw_Angle.png"/></p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">LeapObjectiveC.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+					
+					
+				</div>
+				<div class="main-navigation navigation-bottom">
+					<ul>
+<li><a href="../index.html">Index</a></li>
+<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="footer">
+					<hr />
+					<div class="footer-copyright">
+						<p><span class="copyright">&copy; 2013 Leap Motion. All rights reserved. (Last updated: 2013-07-19)</span><br />
+						
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 858)</a>.</span></p>
+						
+					</div>
+				</div>
+			</div>
+		</article>
+		<script type="text/javascript">
+			function jumpToChange()
+			{
+				window.location.hash = this.options[this.selectedIndex].value;
+			}
+			
+			function toggleTOC()
+			{
+				var contents = document.getElementById('contents');
+				var tocContainer = document.getElementById('tocContainer');
+				
+				if (this.getAttribute('class') == 'open')
+				{
+					this.setAttribute('class', '');
+					contents.setAttribute('class', '');
+					tocContainer.setAttribute('class', '');
+					
+					window.name = "hideTOC";
+				}
+				else
+				{
+					this.setAttribute('class', 'open');
+					contents.setAttribute('class', 'isShowingTOC');
+					tocContainer.setAttribute('class', 'isShowingTOC');
+					
+					window.name = "";
+				}
+				return false;
+			}
+			
+			function toggleTOCEntryChildren(e)
+			{
+				e.stopPropagation();
+				var currentClass = this.getAttribute('class');
+				if (currentClass == 'children') {
+					this.setAttribute('class', 'children open');
+				}
+				else if (currentClass == 'children open') {
+					this.setAttribute('class', 'children');
+				}
+				return false;
+			}
+			
+			function tocEntryClick(e)
+			{
+				e.stopPropagation();
+				return true;
+			}
+			
+			function init()
+			{
+				var selectElement = document.getElementById('jumpTo');
+				selectElement.addEventListener('change', jumpToChange, false);
+				
+				var tocButton = document.getElementById('table_of_contents');
+				tocButton.addEventListener('click', toggleTOC, false);
+				
+				var taskTreeItem = document.getElementById('task_treeitem');
+				if (taskTreeItem.getElementsByTagName('li').length > 0)
+				{
+					taskTreeItem.setAttribute('class', 'children');
+					taskTreeItem.firstChild.setAttribute('class', 'disclosure');
+				}
+				
+				var tocList = document.getElementById('toc');
+				
+				var tocEntries = tocList.getElementsByTagName('li');
+				for (var i = 0; i < tocEntries.length; i++) {
+					tocEntries[i].addEventListener('click', toggleTOCEntryChildren, false);
+				}
+				
+				var tocLinks = tocList.getElementsByTagName('a');
+				for (var i = 0; i < tocLinks.length; i++) {
+					tocLinks[i].addEventListener('click', tocEntryClick, false);
+				}
+				
+				if (window.name == "hideTOC") {
+					toggleTOC.call(tocButton);
+				}
+			}
+			
+			window.onload = init;
+
+			
+			// If showing in Xcode, hide the TOC and Header
+			if (navigator.userAgent.match(/xcode/i)) {
+				document.getElementById("contents").className = "hideInXcode"
+				document.getElementById("tocContainer").className = "hideInXcode"
+				document.getElementById("top_header").className = "hideInXcode"
+			}
+			
+		</script>
+	</body>
+</html>
