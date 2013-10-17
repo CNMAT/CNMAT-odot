@@ -199,7 +199,7 @@ void *oO_new(t_symbol *msg, short argc, t_atom *argv)
 		x->outlet = outlet_new((t_object *)x, "FullPacket");
 		critical_new(&(x->lock));
 	}
-	return(x);
+	return x;
 }
 
 int main(void)

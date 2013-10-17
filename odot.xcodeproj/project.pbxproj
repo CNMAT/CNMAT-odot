@@ -13,6 +13,9 @@
 			buildPhases = (
 			);
 			dependencies = (
+				5292DC3D17FB7B5F00598BDC /* PBXTargetDependency */,
+				5292DC3B17FB7B5500598BDC /* PBXTargetDependency */,
+				52B654FF17D15A3A004FD84E /* PBXTargetDependency */,
 				52B53D1117484EF400237A19 /* PBXTargetDependency */,
 				52B53CFD174828B200237A19 /* PBXTargetDependency */,
 				52B53CEB17480CBE00237A19 /* PBXTargetDependency */,
@@ -97,6 +100,19 @@
 		525525481504D2BB00A10E5D /* o.unless.c in Sources */ = {isa = PBXBuildFile; fileRef = 525525471504D2BB00A10E5D /* o.unless.c */; };
 		5255254A1504D2C400A10E5D /* o.var.c in Sources */ = {isa = PBXBuildFile; fileRef = 525525491504D2C400A10E5D /* o.var.c */; };
 		5255254C1504D2CC00A10E5D /* o.when.c in Sources */ = {isa = PBXBuildFile; fileRef = 5255254B1504D2CC00A10E5D /* o.when.c */; };
+		527294B417E9314000AA15E1 /* o.io.leap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 52B654BE17CD5F45004FD84E /* o.io.leap.cpp */; };
+		527294B617E9335600AA15E1 /* libLeap.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 527294B517E9335600AA15E1 /* libLeap.dylib */; };
+		527294BC17EDE93B00AA15E1 /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52CEF59416375BFB0016EC39 /* commonsyms.c */; };
+		527294BF17EDE93B00AA15E1 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */; };
+		527294C017EDE93B00AA15E1 /* libo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5AD163763BD0016EC39 /* libo.a */; };
+		527294C117EDE93B00AA15E1 /* libomax.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5C6163763CF0016EC39 /* libomax.a */; };
+		527294C617EDEE0200AA15E1 /* o.context.c in Sources */ = {isa = PBXBuildFile; fileRef = 527294B717EDE93100AA15E1 /* o.context.c */; };
+		5292DC4217FCC6AD00598BDC /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52CEF59416375BFB0016EC39 /* commonsyms.c */; };
+		5292DC4517FCC6AD00598BDC /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */; };
+		5292DC4617FCC6AD00598BDC /* libo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5AD163763BD0016EC39 /* libo.a */; };
+		5292DC4717FCC6AD00598BDC /* libomax.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5C6163763CF0016EC39 /* libomax.a */; };
+		5292DC4817FCC6AD00598BDC /* IOBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B6552817E3C04B004FD84E /* IOBluetooth.framework */; };
+		5292DC4E17FCC6D300598BDC /* o.io.bluetoothle.sensortag.m in Sources */ = {isa = PBXBuildFile; fileRef = 5292DC4D17FCC6D300598BDC /* o.io.bluetoothle.sensortag.m */; };
 		529781591555B6FD0018A44D /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */; };
 		52A8394016E978D7002E273C /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52CEF59416375BFB0016EC39 /* commonsyms.c */; };
 		52A8394216E978D7002E273C /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */; };
@@ -115,6 +131,7 @@
 		52A8397F16F3F900002E273C /* o.schedule.c in Sources */ = {isa = PBXBuildFile; fileRef = 52A8396B16F3F886002E273C /* o.schedule.c */; };
 		52A8398016F3F900002E273C /* pqops.c in Sources */ = {isa = PBXBuildFile; fileRef = 52A8396C16F3F893002E273C /* pqops.c */; };
 		52A8398116F3F900002E273C /* pqops.h in Headers */ = {isa = PBXBuildFile; fileRef = 52A8396D16F3F893002E273C /* pqops.h */; };
+		52ABA7D517E591C400D0E5C9 /* o.io.bluetoothle.hrm.m in Sources */ = {isa = PBXBuildFile; fileRef = 52ABA7D417E591C400D0E5C9 /* o.io.bluetoothle.hrm.m */; };
 		52B53CE117480C8100237A19 /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52CEF59416375BFB0016EC39 /* commonsyms.c */; };
 		52B53CE317480C8100237A19 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */; };
 		52B53CE417480C8100237A19 /* libo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5AD163763BD0016EC39 /* libo.a */; };
@@ -135,6 +152,27 @@
 		52B53D1A174FD0B300237A19 /* libo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5AD163763BD0016EC39 /* libo.a */; };
 		52B53D1B174FD0B300237A19 /* libomax.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5C6163763CF0016EC39 /* libomax.a */; };
 		52B53D21174FD0EF00237A19 /* o.random.c in Sources */ = {isa = PBXBuildFile; fileRef = 52B53D20174FD0EF00237A19 /* o.random.c */; };
+		52B654C317CD5F94004FD84E /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52CEF59416375BFB0016EC39 /* commonsyms.c */; };
+		52B654C617CD5F94004FD84E /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */; };
+		52B654C717CD5F94004FD84E /* libo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5AD163763BD0016EC39 /* libo.a */; };
+		52B654C817CD5F94004FD84E /* libomax.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5C6163763CF0016EC39 /* libomax.a */; };
+		52B654F417D159B9004FD84E /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52CEF59416375BFB0016EC39 /* commonsyms.c */; };
+		52B654F717D159B9004FD84E /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */; };
+		52B654F817D159B9004FD84E /* libo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5AD163763BD0016EC39 /* libo.a */; };
+		52B654F917D159B9004FD84E /* libomax.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5C6163763CF0016EC39 /* libomax.a */; };
+		52B6550017D16315004FD84E /* o.edge~.c in Sources */ = {isa = PBXBuildFile; fileRef = 52B654EF17D159B6004FD84E /* o.edge~.c */; };
+		52B6550217D1690F004FD84E /* MaxAudioAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B6550117D1690F004FD84E /* MaxAudioAPI.framework */; };
+		52B6550717D68D7C004FD84E /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52CEF59416375BFB0016EC39 /* commonsyms.c */; };
+		52B6550A17D68D7C004FD84E /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */; };
+		52B6550B17D68D7C004FD84E /* libo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5AD163763BD0016EC39 /* libo.a */; };
+		52B6550C17D68D7C004FD84E /* libomax.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5C6163763CF0016EC39 /* libomax.a */; };
+		52B6550D17D68D7C004FD84E /* MaxAudioAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B6550117D1690F004FD84E /* MaxAudioAPI.framework */; };
+		52B6551717D6A2CF004FD84E /* o.schedule~.c in Sources */ = {isa = PBXBuildFile; fileRef = 52B6551617D6A2CF004FD84E /* o.schedule~.c */; };
+		52B6551E17E3B971004FD84E /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52CEF59416375BFB0016EC39 /* commonsyms.c */; };
+		52B6552017E3B971004FD84E /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */; };
+		52B6552117E3B971004FD84E /* libo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5AD163763BD0016EC39 /* libo.a */; };
+		52B6552217E3B971004FD84E /* libomax.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5C6163763CF0016EC39 /* libomax.a */; };
+		52B6552917E3C04B004FD84E /* IOBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B6552817E3C04B004FD84E /* IOBluetooth.framework */; };
 		52C839D6167A5B24000AA688 /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52CEF59416375BFB0016EC39 /* commonsyms.c */; };
 		52C839D8167A5B24000AA688 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */; };
 		52C839D9167A5B24000AA688 /* libo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5AD163763BD0016EC39 /* libo.a */; };
@@ -379,6 +417,20 @@
 			remoteGlobalIDString = 525524EE1504D16600A10E5D;
 			remoteInfo = o.when;
 		};
+		5292DC3A17FB7B5500598BDC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 527294B817EDE93B00AA15E1;
+			remoteInfo = o.context;
+		};
+		5292DC3C17FB7B5F00598BDC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 52B6551917E3B971004FD84E;
+			remoteInfo = o.io.bluetoothle.hrm;
+		};
 		529781621555B7490018A44D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
@@ -427,6 +479,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 52B53D0017484E5500237A19;
 			remoteInfo = o.iterate;
+		};
+		52B654FE17D15A3A004FD84E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 52B654F017D159B9004FD84E;
+			remoteInfo = "o.edge~";
 		};
 		52CB897F17077E4100178AAF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -492,6 +551,11 @@
 		525525471504D2BB00A10E5D /* o.unless.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.unless.c; path = o.unless/o.unless.c; sourceTree = "<group>"; };
 		525525491504D2C400A10E5D /* o.var.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.var.c; path = o.var/o.var.c; sourceTree = "<group>"; };
 		5255254B1504D2CC00A10E5D /* o.when.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.when.c; path = o.when/o.when.c; sourceTree = "<group>"; };
+		527294B517E9335600AA15E1 /* libLeap.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libLeap.dylib; path = "o.io.leap/LeapSDK/lib/libc++/libLeap.dylib"; sourceTree = "<group>"; };
+		527294B717EDE93100AA15E1 /* o.context.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = o.context.c; path = o.context/o.context.c; sourceTree = "<group>"; };
+		527294C517EDE93B00AA15E1 /* o.context.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.context.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
+		5292DC4C17FCC6AD00598BDC /* o.io.bluetoothle.sensortag.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.io.bluetoothle.sensortag.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
+		5292DC4D17FCC6D300598BDC /* o.io.bluetoothle.sensortag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = o.io.bluetoothle.sensortag.m; path = o.io.bluetoothle.sensortag/o.io.bluetoothle.sensortag.m; sourceTree = "<group>"; };
 		529781601555B6FD0018A44D /* o.flatten.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.flatten.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
 		52A8393A16E978CD002E273C /* o.append.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = o.append.c; path = o.append/o.append.c; sourceTree = "<group>"; };
 		52A8394916E978D7002E273C /* o.append.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.append.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -501,6 +565,7 @@
 		52A8396C16F3F893002E273C /* pqops.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = pqops.c; path = o.schedule/pqops.c; sourceTree = "<group>"; };
 		52A8396D16F3F893002E273C /* pqops.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = pqops.h; path = o.schedule/pqops.h; sourceTree = "<group>"; };
 		52A8397C16F3F898002E273C /* o.schedule.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.schedule.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
+		52ABA7D417E591C400D0E5C9 /* o.io.bluetoothle.hrm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = o.io.bluetoothle.hrm.m; path = o.io.bluetoothle.hrm/o.io.bluetoothle.hrm.m; sourceTree = "<group>"; };
 		52B53CE917480C8100237A19 /* o.downcast.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.downcast.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
 		52B53CEC17480CFC00237A19 /* o.downcast.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.downcast.c; path = o.downcast/o.downcast.c; sourceTree = "<group>"; };
 		52B53CFB1748287A00237A19 /* o.validate.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.validate.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -509,6 +574,15 @@
 		52B53D0E17484E9F00237A19 /* o.iterate.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.iterate.c; path = o.iterate/o.iterate.c; sourceTree = "<group>"; };
 		52B53D1F174FD0B300237A19 /* o.random.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.random.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
 		52B53D20174FD0EF00237A19 /* o.random.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.random.c; path = o.random/o.random.c; sourceTree = "<group>"; };
+		52B654BE17CD5F45004FD84E /* o.io.leap.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = o.io.leap.cpp; path = o.io.leap/o.io.leap.cpp; sourceTree = "<group>"; };
+		52B654CC17CD5F94004FD84E /* o.io.leap.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.io.leap.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
+		52B654EF17D159B6004FD84E /* o.edge~.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = "o.edge~.c"; path = "o.edge~/o.edge~.c"; sourceTree = "<group>"; };
+		52B654FD17D159B9004FD84E /* o.edge~.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "o.edge~.mxo"; sourceTree = BUILT_PRODUCTS_DIR; };
+		52B6550117D1690F004FD84E /* MaxAudioAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MaxAudioAPI.framework; path = "../max6-sdk/c74support/msp-includes/MaxAudioAPI.framework"; sourceTree = "<group>"; };
+		52B6551117D68D7C004FD84E /* o.schedule~.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "o.schedule~.mxo"; sourceTree = BUILT_PRODUCTS_DIR; };
+		52B6551617D6A2CF004FD84E /* o.schedule~.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = "o.schedule~.c"; path = "o.schedule~/o.schedule~.c"; sourceTree = "<group>"; };
+		52B6552617E3B971004FD84E /* o.io.bluetoothle.hrm.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.io.bluetoothle.hrm.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
+		52B6552817E3C04B004FD84E /* IOBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOBluetooth.framework; path = ../../../../../../System/Library/Frameworks/IOBluetooth.framework; sourceTree = "<group>"; };
 		52C839CF167A5B1A000AA688 /* o.table.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = o.table.c; path = o.table/o.table.c; sourceTree = "<group>"; };
 		52C839DF167A5B24000AA688 /* o.table.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.table.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
 		52C839E6167A5BE2000AA688 /* avl.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = avl.c; path = "../CNMAT-Externs/lib/rumati_avl/avl.c"; sourceTree = "<group>"; };
@@ -744,6 +818,27 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		527294BE17EDE93B00AA15E1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				527294BF17EDE93B00AA15E1 /* Carbon.framework in Frameworks */,
+				527294C017EDE93B00AA15E1 /* libo.a in Frameworks */,
+				527294C117EDE93B00AA15E1 /* libomax.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5292DC4417FCC6AD00598BDC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5292DC4517FCC6AD00598BDC /* Carbon.framework in Frameworks */,
+				5292DC4617FCC6AD00598BDC /* libo.a in Frameworks */,
+				5292DC4717FCC6AD00598BDC /* libomax.a in Frameworks */,
+				5292DC4817FCC6AD00598BDC /* IOBluetooth.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		529781581555B6FD0018A44D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -824,6 +919,50 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		52B654C517CD5F94004FD84E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				52B654C617CD5F94004FD84E /* Carbon.framework in Frameworks */,
+				52B654C717CD5F94004FD84E /* libo.a in Frameworks */,
+				52B654C817CD5F94004FD84E /* libomax.a in Frameworks */,
+				527294B617E9335600AA15E1 /* libLeap.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		52B654F617D159B9004FD84E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				52B654F717D159B9004FD84E /* Carbon.framework in Frameworks */,
+				52B654F817D159B9004FD84E /* libo.a in Frameworks */,
+				52B654F917D159B9004FD84E /* libomax.a in Frameworks */,
+				52B6550217D1690F004FD84E /* MaxAudioAPI.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		52B6550917D68D7C004FD84E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				52B6550A17D68D7C004FD84E /* Carbon.framework in Frameworks */,
+				52B6550B17D68D7C004FD84E /* libo.a in Frameworks */,
+				52B6550C17D68D7C004FD84E /* libomax.a in Frameworks */,
+				52B6550D17D68D7C004FD84E /* MaxAudioAPI.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		52B6551F17E3B971004FD84E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				52B6552017E3B971004FD84E /* Carbon.framework in Frameworks */,
+				52B6552117E3B971004FD84E /* libo.a in Frameworks */,
+				52B6552217E3B971004FD84E /* libomax.a in Frameworks */,
+				52B6552917E3C04B004FD84E /* IOBluetooth.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		52C839D7167A5B24000AA688 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -866,14 +1005,19 @@
 				525523D81504CC6000A10E5D /* o.change.c */,
 				525525271504D21500A10E5D /* o.collect.c */,
 				525525291504D22A00A10E5D /* o.cond.c */,
+				527294B717EDE93100AA15E1 /* o.context.c */,
 				520C0E2A158469F4005F2955 /* o.dict.c */,
 				5255252B1504D23400A10E5D /* o.difference.c */,
 				52B53CEC17480CFC00237A19 /* o.downcast.c */,
+				52B654EF17D159B6004FD84E /* o.edge~.c */,
 				5217D90C158EEBEB005B5238 /* o.explode.c */,
 				5255252D1504D23C00A10E5D /* o.expr.c */,
 				5203467B1555BF16001EA532 /* o.flatten.c */,
 				5255252F1504D24500A10E5D /* o.if.c */,
 				525525311504D24D00A10E5D /* o.intersection.c */,
+				52ABA7D417E591C400D0E5C9 /* o.io.bluetoothle.hrm.m */,
+				5292DC4D17FCC6D300598BDC /* o.io.bluetoothle.sensortag.m */,
+				52B654BE17CD5F45004FD84E /* o.io.leap.cpp */,
 				52B53D0E17484E9F00237A19 /* o.iterate.c */,
 				525525331504D25500A10E5D /* o.mappatch.c */,
 				525525351504D25F00A10E5D /* o.message.c */,
@@ -886,6 +1030,7 @@
 				52B53D20174FD0EF00237A19 /* o.random.c */,
 				525525411504D29D00A10E5D /* o.route.c */,
 				52A8396B16F3F886002E273C /* o.schedule.c */,
+				52B6551617D6A2CF004FD84E /* o.schedule~.c */,
 				525525431504D2A800A10E5D /* o.select.c */,
 				52C839CF167A5B1A000AA688 /* o.table.c */,
 				52A8395816EFFBC4002E273C /* o.timetag.c */,
@@ -904,8 +1049,11 @@
 		089C1671FE841209C02AAC07 /* External Frameworks and Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				52B6552817E3C04B004FD84E /* IOBluetooth.framework */,
+				52B6550117D1690F004FD84E /* MaxAudioAPI.framework */,
 				52CEF5C6163763CF0016EC39 /* libomax.a */,
 				52CEF5AD163763BD0016EC39 /* libo.a */,
+				527294B517E9335600AA15E1 /* libLeap.dylib */,
 				08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */,
 			);
 			name = "External Frameworks and Libraries";
@@ -947,6 +1095,12 @@
 				52B53D0D17484E5500237A19 /* o.iterate.mxo */,
 				52B53D1F174FD0B300237A19 /* o.random.mxo */,
 				52F0C48517B581CC009FBD24 /* o.O.mxo */,
+				52B654CC17CD5F94004FD84E /* o.io.leap.mxo */,
+				52B654FD17D159B9004FD84E /* o.edge~.mxo */,
+				52B6551117D68D7C004FD84E /* o.schedule~.mxo */,
+				52B6552617E3B971004FD84E /* o.io.bluetoothle.hrm.mxo */,
+				527294C517EDE93B00AA15E1 /* o.context.mxo */,
+				5292DC4C17FCC6AD00598BDC /* o.io.bluetoothle.sensortag.mxo */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1121,6 +1275,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		527294B917EDE93B00AA15E1 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5292DC3F17FCC6AD00598BDC /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		529781531555B6FD0018A44D /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -1172,6 +1340,34 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		52B53D13174FD0B300237A19 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		52B654C017CD5F94004FD84E /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		52B654F117D159B9004FD84E /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		52B6550417D68D7C004FD84E /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		52B6551A17E3B971004FD84E /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1600,6 +1796,42 @@
 			productReference = 525524FC1504D16600A10E5D /* o.when.mxo */;
 			productType = "com.apple.product-type.bundle";
 		};
+		527294B817EDE93B00AA15E1 /* o.context */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 527294C217EDE93B00AA15E1 /* Build configuration list for PBXNativeTarget "o.context" */;
+			buildPhases = (
+				527294B917EDE93B00AA15E1 /* Headers */,
+				527294BA17EDE93B00AA15E1 /* Resources */,
+				527294BB17EDE93B00AA15E1 /* Sources */,
+				527294BE17EDE93B00AA15E1 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = o.context;
+			productName = cv.jit.dilate;
+			productReference = 527294C517EDE93B00AA15E1 /* o.context.mxo */;
+			productType = "com.apple.product-type.bundle";
+		};
+		5292DC3E17FCC6AD00598BDC /* o.io.bluetoothle.sensortag */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5292DC4917FCC6AD00598BDC /* Build configuration list for PBXNativeTarget "o.io.bluetoothle.sensortag" */;
+			buildPhases = (
+				5292DC3F17FCC6AD00598BDC /* Headers */,
+				5292DC4017FCC6AD00598BDC /* Resources */,
+				5292DC4117FCC6AD00598BDC /* Sources */,
+				5292DC4417FCC6AD00598BDC /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = o.io.bluetoothle.sensortag;
+			productName = cv.jit.dilate;
+			productReference = 5292DC4C17FCC6AD00598BDC /* o.io.bluetoothle.sensortag.mxo */;
+			productType = "com.apple.product-type.bundle";
+		};
 		529781521555B6FD0018A44D /* o.flatten */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5297815D1555B6FD0018A44D /* Build configuration list for PBXNativeTarget "o.flatten" */;
@@ -1744,6 +1976,79 @@
 			productReference = 52B53D1F174FD0B300237A19 /* o.random.mxo */;
 			productType = "com.apple.product-type.bundle";
 		};
+		52B654BF17CD5F94004FD84E /* o.io.leap */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 52B654C917CD5F94004FD84E /* Build configuration list for PBXNativeTarget "o.io.leap" */;
+			buildPhases = (
+				52B654C017CD5F94004FD84E /* Headers */,
+				52B654C117CD5F94004FD84E /* Resources */,
+				52B654C217CD5F94004FD84E /* Sources */,
+				52B654C517CD5F94004FD84E /* Frameworks */,
+				527294B317E92F5200AA15E1 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = o.io.leap;
+			productName = cv.jit.dilate;
+			productReference = 52B654CC17CD5F94004FD84E /* o.io.leap.mxo */;
+			productType = "com.apple.product-type.bundle";
+		};
+		52B654F017D159B9004FD84E /* o.edge~ */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 52B654FA17D159B9004FD84E /* Build configuration list for PBXNativeTarget "o.edge~" */;
+			buildPhases = (
+				52B654F117D159B9004FD84E /* Headers */,
+				52B654F217D159B9004FD84E /* Resources */,
+				52B654F317D159B9004FD84E /* Sources */,
+				52B654F617D159B9004FD84E /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "o.edge~";
+			productName = cv.jit.dilate;
+			productReference = 52B654FD17D159B9004FD84E /* o.edge~.mxo */;
+			productType = "com.apple.product-type.bundle";
+		};
+		52B6550317D68D7C004FD84E /* o.schedule~ */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 52B6550E17D68D7C004FD84E /* Build configuration list for PBXNativeTarget "o.schedule~" */;
+			buildPhases = (
+				52B6550417D68D7C004FD84E /* Headers */,
+				52B6550517D68D7C004FD84E /* Resources */,
+				52B6550617D68D7C004FD84E /* Sources */,
+				52B6550917D68D7C004FD84E /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "o.schedule~";
+			productName = cv.jit.dilate;
+			productReference = 52B6551117D68D7C004FD84E /* o.schedule~.mxo */;
+			productType = "com.apple.product-type.bundle";
+		};
+		52B6551917E3B971004FD84E /* o.io.bluetoothle.hrm */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 52B6552317E3B971004FD84E /* Build configuration list for PBXNativeTarget "o.io.bluetoothle.hrm" */;
+			buildPhases = (
+				52B6551A17E3B971004FD84E /* Headers */,
+				52B6551B17E3B971004FD84E /* Resources */,
+				52B6551C17E3B971004FD84E /* Sources */,
+				52B6551F17E3B971004FD84E /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = o.io.bluetoothle.hrm;
+			productName = cv.jit.dilate;
+			productReference = 52B6552617E3B971004FD84E /* o.io.bluetoothle.hrm.mxo */;
+			productType = "com.apple.product-type.bundle";
+		};
 		52C839D1167A5B24000AA688 /* o.table */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 52C839DC167A5B24000AA688 /* Build configuration list for PBXNativeTarget "o.table" */;
@@ -1827,14 +2132,19 @@
 				525523C91504CB9E00A10E5D /* o.change */,
 				525523E01504D0B200A10E5D /* o.collect */,
 				525523EF1504D14200A10E5D /* o.cond */,
+				527294B817EDE93B00AA15E1 /* o.context */,
 				520C0E19158468F7005F2955 /* o.dict */,
 				525523FE1504D14400A10E5D /* o.difference */,
 				52B53CDC17480C8100237A19 /* o.downcast */,
+				52B654F017D159B9004FD84E /* o.edge~ */,
 				5217D8FB158EEBC4005B5238 /* o.explode */,
 				5255240D1504D14600A10E5D /* o.expr */,
 				529781521555B6FD0018A44D /* o.flatten */,
 				5255241C1504D14B00A10E5D /* o.if */,
 				5255242B1504D14F00A10E5D /* o.intersection */,
+				52B654BF17CD5F94004FD84E /* o.io.leap */,
+				52B6551917E3B971004FD84E /* o.io.bluetoothle.hrm */,
+				5292DC3E17FCC6AD00598BDC /* o.io.bluetoothle.sensortag */,
 				52B53D0017484E5500237A19 /* o.iterate */,
 				5255243A1504D15000A10E5D /* o.mappatch */,
 				525524491504D15200A10E5D /* o.message */,
@@ -1846,6 +2156,7 @@
 				52B53D12174FD0B300237A19 /* o.random */,
 				525524A31504D15D00A10E5D /* o.route */,
 				52A8396E16F3F898002E273C /* o.schedule */,
+				52B6550317D68D7C004FD84E /* o.schedule~ */,
 				525524B21504D15F00A10E5D /* o.select */,
 				52C839D1167A5B24000AA688 /* o.table */,
 				52A8395916EFFBC9002E273C /* o.timetag */,
@@ -2014,6 +2325,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		527294BA17EDE93B00AA15E1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5292DC4017FCC6AD00598BDC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		529781541555B6FD0018A44D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -2070,6 +2395,34 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		52B654C117CD5F94004FD84E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		52B654F217D159B9004FD84E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		52B6550517D68D7C004FD84E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		52B6551B17E3B971004FD84E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		52C839D3167A5B24000AA688 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -2092,6 +2445,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		527294B317E92F5200AA15E1 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cp $SRCROOT/o.io.leap/LeapSDK/lib/libc++/libLeap.dylib $SRCROOT/build/Release/o.io.leap.mxo/Contents/MacOS";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		520C0E1C158468F7005F2955 /* Sources */ = {
@@ -2292,6 +2661,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		527294BB17EDE93B00AA15E1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				527294BC17EDE93B00AA15E1 /* commonsyms.c in Sources */,
+				527294C617EDEE0200AA15E1 /* o.context.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5292DC4117FCC6AD00598BDC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5292DC4217FCC6AD00598BDC /* commonsyms.c in Sources */,
+				5292DC4E17FCC6D300598BDC /* o.io.bluetoothle.sensortag.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		529781551555B6FD0018A44D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -2362,6 +2749,42 @@
 			files = (
 				52B53D16174FD0B300237A19 /* commonsyms.c in Sources */,
 				52B53D21174FD0EF00237A19 /* o.random.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		52B654C217CD5F94004FD84E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				52B654C317CD5F94004FD84E /* commonsyms.c in Sources */,
+				527294B417E9314000AA15E1 /* o.io.leap.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		52B654F317D159B9004FD84E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				52B654F417D159B9004FD84E /* commonsyms.c in Sources */,
+				52B6550017D16315004FD84E /* o.edge~.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		52B6550617D68D7C004FD84E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				52B6550717D68D7C004FD84E /* commonsyms.c in Sources */,
+				52B6551717D6A2CF004FD84E /* o.schedule~.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		52B6551C17E3B971004FD84E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				52B6551E17E3B971004FD84E /* commonsyms.c in Sources */,
+				52ABA7D517E591C400D0E5C9 /* o.io.bluetoothle.hrm.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2507,6 +2930,16 @@
 			target = 525524EE1504D16600A10E5D /* o.when */;
 			targetProxy = 525525241504D1FE00A10E5D /* PBXContainerItemProxy */;
 		};
+		5292DC3B17FB7B5500598BDC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 527294B817EDE93B00AA15E1 /* o.context */;
+			targetProxy = 5292DC3A17FB7B5500598BDC /* PBXContainerItemProxy */;
+		};
+		5292DC3D17FB7B5F00598BDC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 52B6551917E3B971004FD84E /* o.io.bluetoothle.hrm */;
+			targetProxy = 5292DC3C17FB7B5F00598BDC /* PBXContainerItemProxy */;
+		};
 		529781631555B7490018A44D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 529781521555B6FD0018A44D /* o.flatten */;
@@ -2541,6 +2974,11 @@
 			isa = PBXTargetDependency;
 			target = 52B53D0017484E5500237A19 /* o.iterate */;
 			targetProxy = 52B53D1017484EF400237A19 /* PBXContainerItemProxy */;
+		};
+		52B654FF17D15A3A004FD84E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 52B654F017D159B9004FD84E /* o.edge~ */;
+			targetProxy = 52B654FE17D15A3A004FD84E /* PBXContainerItemProxy */;
 		};
 		52CB898017077E4100178AAF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -2590,11 +3028,13 @@
 					"$(HEADER_SEARCH_PATHS_QUOTED_FOR_PROJECT_2)",
 					"$(HEADER_SEARCH_PATHS_QUOTED_FOR_PROJECT_3)",
 					"$(HEADER_SEARCH_PATHS_QUOTED_FOR_PROJECT_4)",
+					"$(HEADER_SEARCH_PATHS_QUOTED_FOR_PROJECT_5)",
 				);
 				HEADER_SEARCH_PATHS_QUOTED_FOR_PROJECT_1 = "\"$(SRCROOT)/../max6-sdk/c74support/max-includes\"";
 				HEADER_SEARCH_PATHS_QUOTED_FOR_PROJECT_2 = "\"$(SRCROOT)/../libo\"";
 				HEADER_SEARCH_PATHS_QUOTED_FOR_PROJECT_3 = "\"$(SRCROOT)/../libomax\"";
 				HEADER_SEARCH_PATHS_QUOTED_FOR_PROJECT_4 = "\"$(SRCROOT)/include\"";
+				HEADER_SEARCH_PATHS_QUOTED_FOR_PROJECT_5 = "\"$(SRCROOT)/../max6-sdk/c74support/msp-includes\"";
 				INFOPLIST_FILE = "$(TARGET_NAME)/Info.plist";
 				INSTALL_OWNER = "$(USER)";
 				INSTALL_PATH = "";
@@ -2668,11 +3108,13 @@
 					"$(HEADER_SEARCH_PATHS_QUOTED_FOR_PROJECT_2)",
 					"$(HEADER_SEARCH_PATHS_QUOTED_FOR_PROJECT_3)",
 					"$(HEADER_SEARCH_PATHS_QUOTED_FOR_PROJECT_4)",
+					"$(HEADER_SEARCH_PATHS_QUOTED_FOR_PROJECT_5)",
 				);
 				HEADER_SEARCH_PATHS_QUOTED_FOR_PROJECT_1 = "\"$(SRCROOT)/../max6-sdk/c74support/max-includes\"";
 				HEADER_SEARCH_PATHS_QUOTED_FOR_PROJECT_2 = "\"$(SRCROOT)/../libo\"";
 				HEADER_SEARCH_PATHS_QUOTED_FOR_PROJECT_3 = "\"$(SRCROOT)/../libomax\"";
 				HEADER_SEARCH_PATHS_QUOTED_FOR_PROJECT_4 = "\"$(SRCROOT)/include\"";
+				HEADER_SEARCH_PATHS_QUOTED_FOR_PROJECT_5 = "\"$(SRCROOT)/../max6-sdk/c74support/msp-includes\"";
 				INFOPLIST_FILE = "$(TARGET_NAME)/Info.plist";
 				INSTALL_OWNER = "$(USER)";
 				INSTALL_PATH = "";
@@ -4843,6 +5285,180 @@
 			};
 			name = Release;
 		};
+		527294C317EDE93B00AA15E1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(inherited)";
+				CONFIGURATION_BUILD_DIR = "$(inherited)";
+				CONFIGURATION_TEMP_DIR = "$(inherited)";
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../max6-sdk/c74support/max-includes\"";
+				GCC_ALTIVEC_EXTENSIONS = YES;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INPUT_FILETYPE = automatic;
+				GCC_MODEL_TUNING = G4;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(inherited)";
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = "$(inherited)";
+				INSTALL_PATH = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../libo\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../libomax\"";
+				MACOSX_DEPLOYMENT_TARGET = 10.5;
+				OBJROOT = "$(inherited)";
+				OTHER_LDFLAGS = "$(inherited)";
+				PREBINDING = YES;
+				PRODUCT_NAME = "$(inherited)";
+				SDKROOT = macosx;
+				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SYMROOT = "$(inherited)";
+				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
+				WARNING_CFLAGS = "$(inherited)";
+				WRAPPER_EXTENSION = "$(inherited)";
+				ZERO_LINK = YES;
+			};
+			name = Debug;
+		};
+		527294C417EDE93B00AA15E1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(inherited)";
+				CONFIGURATION_BUILD_DIR = "$(inherited)";
+				CONFIGURATION_TEMP_DIR = "$(inherited)";
+				COPY_PHASE_STRIP = YES;
+				DSTROOT = "$(PROJECT_DIR)";
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../max6-sdk/c74support/max-includes\"";
+				GCC_ALTIVEC_EXTENSIONS = YES;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INPUT_FILETYPE = automatic;
+				GCC_MODEL_TUNING = G4;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(inherited)";
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = "$(inherited)";
+				INSTALL_PATH = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../libo\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../libomax\"";
+				MACOSX_DEPLOYMENT_TARGET = 10.5;
+				OBJROOT = "$(inherited)";
+				OTHER_LDFLAGS = "$(inherited)";
+				PREBINDING = YES;
+				PRODUCT_NAME = "$(inherited)";
+				SDKROOT = macosx;
+				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SYMROOT = "$(inherited)";
+				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
+				WARNING_CFLAGS = "$(inherited)";
+				WRAPPER_EXTENSION = "$(inherited)";
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+		5292DC4A17FCC6AD00598BDC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(inherited)";
+				CONFIGURATION_BUILD_DIR = "$(inherited)";
+				CONFIGURATION_TEMP_DIR = "$(inherited)";
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+				);
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../max6-sdk/c74support/max-includes\"";
+				GCC_ALTIVEC_EXTENSIONS = YES;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INPUT_FILETYPE = automatic;
+				GCC_MODEL_TUNING = G4;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(inherited)";
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = "$(inherited)";
+				INSTALL_PATH = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
+				);
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../libo\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../libomax\"";
+				MACOSX_DEPLOYMENT_TARGET = 10.5;
+				OBJROOT = "$(inherited)";
+				OTHER_LDFLAGS = "$(inherited)";
+				PREBINDING = YES;
+				PRODUCT_NAME = "$(inherited)";
+				SDKROOT = macosx;
+				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SYMROOT = "$(inherited)";
+				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
+				WARNING_CFLAGS = "$(inherited)";
+				WRAPPER_EXTENSION = "$(inherited)";
+				ZERO_LINK = YES;
+			};
+			name = Debug;
+		};
+		5292DC4B17FCC6AD00598BDC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(inherited)";
+				CONFIGURATION_BUILD_DIR = "$(inherited)";
+				CONFIGURATION_TEMP_DIR = "$(inherited)";
+				COPY_PHASE_STRIP = YES;
+				DSTROOT = "$(PROJECT_DIR)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+				);
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../max6-sdk/c74support/max-includes\"";
+				GCC_ALTIVEC_EXTENSIONS = YES;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INPUT_FILETYPE = automatic;
+				GCC_MODEL_TUNING = G4;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(inherited)";
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = "$(inherited)";
+				INSTALL_PATH = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
+				);
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../libo\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../libomax\"";
+				MACOSX_DEPLOYMENT_TARGET = 10.5;
+				OBJROOT = "$(inherited)";
+				OTHER_LDFLAGS = "$(inherited)";
+				PREBINDING = YES;
+				PRODUCT_NAME = "$(inherited)";
+				SDKROOT = macosx;
+				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SYMROOT = "$(inherited)";
+				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
+				WARNING_CFLAGS = "$(inherited)";
+				WRAPPER_EXTENSION = "$(inherited)";
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
 		5297815E1555B6FD0018A44D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -5620,6 +6236,398 @@
 			};
 			name = Release;
 		};
+		52B654CA17CD5F94004FD84E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(inherited)";
+				CONFIGURATION_BUILD_DIR = "$(inherited)";
+				CONFIGURATION_TEMP_DIR = "$(inherited)";
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../max6-sdk/c74support/max-includes\"";
+				GCC_ALTIVEC_EXTENSIONS = YES;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INPUT_FILETYPE = automatic;
+				GCC_MODEL_TUNING = G4;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(inherited)";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(HEADER_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+				);
+				HEADER_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/o.io.leap/LeapSDK/include\"";
+				INFOPLIST_FILE = "$(inherited)";
+				INSTALL_PATH = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_3)",
+				);
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../libo\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../libomax\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_3 = "\"$(SRCROOT)/o.io.leap/LeapSDK/lib/libc++\"";
+				MACOSX_DEPLOYMENT_TARGET = 10.5;
+				OBJROOT = "$(inherited)";
+				OTHER_LDFLAGS = "$(inherited)";
+				PREBINDING = YES;
+				PRODUCT_NAME = "$(inherited)";
+				SDKROOT = macosx;
+				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SYMROOT = "$(inherited)";
+				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
+				WARNING_CFLAGS = "$(inherited)";
+				WRAPPER_EXTENSION = "$(inherited)";
+				ZERO_LINK = YES;
+			};
+			name = Debug;
+		};
+		52B654CB17CD5F94004FD84E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(inherited)";
+				CONFIGURATION_BUILD_DIR = "$(inherited)";
+				CONFIGURATION_TEMP_DIR = "$(inherited)";
+				COPY_PHASE_STRIP = YES;
+				DSTROOT = "$(PROJECT_DIR)";
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../max6-sdk/c74support/max-includes\"";
+				GCC_ALTIVEC_EXTENSIONS = YES;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INPUT_FILETYPE = automatic;
+				GCC_MODEL_TUNING = G4;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(inherited)";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(HEADER_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+				);
+				HEADER_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/o.io.leap/LeapSDK/include\"";
+				INFOPLIST_FILE = "$(inherited)";
+				INSTALL_PATH = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_3)",
+				);
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../libo\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../libomax\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_3 = "\"$(SRCROOT)/o.io.leap/LeapSDK/lib/libc++\"";
+				MACOSX_DEPLOYMENT_TARGET = 10.5;
+				OBJROOT = "$(inherited)";
+				OTHER_LDFLAGS = "$(inherited)";
+				PREBINDING = YES;
+				PRODUCT_NAME = "$(inherited)";
+				SDKROOT = macosx;
+				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SYMROOT = "$(inherited)";
+				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
+				WARNING_CFLAGS = "$(inherited)";
+				WRAPPER_EXTENSION = "$(inherited)";
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+		52B654FB17D159B9004FD84E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(inherited)";
+				CONFIGURATION_BUILD_DIR = "$(inherited)";
+				CONFIGURATION_TEMP_DIR = "$(inherited)";
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
+				);
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../max6-sdk/c74support/max-includes\"";
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../max6-sdk/c74support/msp-includes\"";
+				GCC_ALTIVEC_EXTENSIONS = YES;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INPUT_FILETYPE = automatic;
+				GCC_MODEL_TUNING = G4;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(inherited)";
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = "$(inherited)";
+				INSTALL_PATH = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
+				);
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../libo\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../libomax\"";
+				MACOSX_DEPLOYMENT_TARGET = 10.5;
+				OBJROOT = "$(inherited)";
+				OTHER_LDFLAGS = "$(inherited)";
+				PREBINDING = YES;
+				PRODUCT_NAME = "o.edge~";
+				SDKROOT = macosx;
+				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SYMROOT = "$(inherited)";
+				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
+				WARNING_CFLAGS = "$(inherited)";
+				WRAPPER_EXTENSION = "$(inherited)";
+				ZERO_LINK = YES;
+			};
+			name = Debug;
+		};
+		52B654FC17D159B9004FD84E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(inherited)";
+				CONFIGURATION_BUILD_DIR = "$(inherited)";
+				CONFIGURATION_TEMP_DIR = "$(inherited)";
+				COPY_PHASE_STRIP = YES;
+				DSTROOT = "$(PROJECT_DIR)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
+				);
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../max6-sdk/c74support/max-includes\"";
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../max6-sdk/c74support/msp-includes\"";
+				GCC_ALTIVEC_EXTENSIONS = YES;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INPUT_FILETYPE = automatic;
+				GCC_MODEL_TUNING = G4;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(inherited)";
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = "$(inherited)";
+				INSTALL_PATH = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
+				);
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../libo\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../libomax\"";
+				MACOSX_DEPLOYMENT_TARGET = 10.5;
+				OBJROOT = "$(inherited)";
+				OTHER_LDFLAGS = "$(inherited)";
+				PREBINDING = YES;
+				PRODUCT_NAME = "o.edge~";
+				SDKROOT = macosx;
+				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SYMROOT = "$(inherited)";
+				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
+				WARNING_CFLAGS = "$(inherited)";
+				WRAPPER_EXTENSION = "$(inherited)";
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+		52B6550F17D68D7C004FD84E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(inherited)";
+				CONFIGURATION_BUILD_DIR = "$(inherited)";
+				CONFIGURATION_TEMP_DIR = "$(inherited)";
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
+				);
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../max6-sdk/c74support/max-includes\"";
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../max6-sdk/c74support/msp-includes\"";
+				GCC_ALTIVEC_EXTENSIONS = YES;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INPUT_FILETYPE = automatic;
+				GCC_MODEL_TUNING = G4;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(inherited)";
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = "$(inherited)";
+				INSTALL_PATH = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
+				);
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../libo\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../libomax\"";
+				MACOSX_DEPLOYMENT_TARGET = 10.5;
+				OBJROOT = "$(inherited)";
+				OTHER_LDFLAGS = "$(inherited)";
+				PREBINDING = YES;
+				PRODUCT_NAME = "o.schedule~";
+				SDKROOT = macosx;
+				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SYMROOT = "$(inherited)";
+				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
+				WARNING_CFLAGS = "$(inherited)";
+				WRAPPER_EXTENSION = "$(inherited)";
+				ZERO_LINK = YES;
+			};
+			name = Debug;
+		};
+		52B6551017D68D7C004FD84E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(inherited)";
+				CONFIGURATION_BUILD_DIR = "$(inherited)";
+				CONFIGURATION_TEMP_DIR = "$(inherited)";
+				COPY_PHASE_STRIP = YES;
+				DSTROOT = "$(PROJECT_DIR)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
+				);
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../max6-sdk/c74support/max-includes\"";
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../max6-sdk/c74support/msp-includes\"";
+				GCC_ALTIVEC_EXTENSIONS = YES;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INPUT_FILETYPE = automatic;
+				GCC_MODEL_TUNING = G4;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(inherited)";
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = "$(inherited)";
+				INSTALL_PATH = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
+				);
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../libo\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../libomax\"";
+				MACOSX_DEPLOYMENT_TARGET = 10.5;
+				OBJROOT = "$(inherited)";
+				OTHER_LDFLAGS = "$(inherited)";
+				PREBINDING = YES;
+				PRODUCT_NAME = "o.schedule~";
+				SDKROOT = macosx;
+				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SYMROOT = "$(inherited)";
+				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
+				WARNING_CFLAGS = "$(inherited)";
+				WRAPPER_EXTENSION = "$(inherited)";
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+		52B6552417E3B971004FD84E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(inherited)";
+				CONFIGURATION_BUILD_DIR = "$(inherited)";
+				CONFIGURATION_TEMP_DIR = "$(inherited)";
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+				);
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../max6-sdk/c74support/max-includes\"";
+				GCC_ALTIVEC_EXTENSIONS = YES;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INPUT_FILETYPE = automatic;
+				GCC_MODEL_TUNING = G4;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(inherited)";
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = "$(inherited)";
+				INSTALL_PATH = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
+				);
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../libo\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../libomax\"";
+				MACOSX_DEPLOYMENT_TARGET = 10.5;
+				OBJROOT = "$(inherited)";
+				OTHER_LDFLAGS = "$(inherited)";
+				PREBINDING = YES;
+				PRODUCT_NAME = o.io.bluetoothle.hrm;
+				SDKROOT = macosx;
+				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SYMROOT = "$(inherited)";
+				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
+				WARNING_CFLAGS = "$(inherited)";
+				WRAPPER_EXTENSION = "$(inherited)";
+				ZERO_LINK = YES;
+			};
+			name = Debug;
+		};
+		52B6552517E3B971004FD84E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(inherited)";
+				CONFIGURATION_BUILD_DIR = "$(inherited)";
+				CONFIGURATION_TEMP_DIR = "$(inherited)";
+				COPY_PHASE_STRIP = YES;
+				DSTROOT = "$(PROJECT_DIR)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+				);
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../max6-sdk/c74support/max-includes\"";
+				GCC_ALTIVEC_EXTENSIONS = YES;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INPUT_FILETYPE = automatic;
+				GCC_MODEL_TUNING = G4;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(inherited)";
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = "$(inherited)";
+				INSTALL_PATH = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
+				);
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../libo\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../libomax\"";
+				MACOSX_DEPLOYMENT_TARGET = 10.5;
+				OBJROOT = "$(inherited)";
+				OTHER_LDFLAGS = "$(inherited)";
+				PREBINDING = YES;
+				PRODUCT_NAME = o.io.bluetoothle.hrm;
+				SDKROOT = macosx;
+				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SYMROOT = "$(inherited)";
+				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
+				WARNING_CFLAGS = "$(inherited)";
+				WRAPPER_EXTENSION = "$(inherited)";
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
 		52C839DD167A5B24000AA688 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -6159,6 +7167,24 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		527294C217EDE93B00AA15E1 /* Build configuration list for PBXNativeTarget "o.context" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				527294C317EDE93B00AA15E1 /* Debug */,
+				527294C417EDE93B00AA15E1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5292DC4917FCC6AD00598BDC /* Build configuration list for PBXNativeTarget "o.io.bluetoothle.sensortag" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5292DC4A17FCC6AD00598BDC /* Debug */,
+				5292DC4B17FCC6AD00598BDC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		5297815D1555B6FD0018A44D /* Build configuration list for PBXNativeTarget "o.flatten" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -6227,6 +7253,42 @@
 			buildConfigurations = (
 				52B53D1D174FD0B300237A19 /* Debug */,
 				52B53D1E174FD0B300237A19 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		52B654C917CD5F94004FD84E /* Build configuration list for PBXNativeTarget "o.io.leap" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				52B654CA17CD5F94004FD84E /* Debug */,
+				52B654CB17CD5F94004FD84E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		52B654FA17D159B9004FD84E /* Build configuration list for PBXNativeTarget "o.edge~" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				52B654FB17D159B9004FD84E /* Debug */,
+				52B654FC17D159B9004FD84E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		52B6550E17D68D7C004FD84E /* Build configuration list for PBXNativeTarget "o.schedule~" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				52B6550F17D68D7C004FD84E /* Debug */,
+				52B6551017D68D7C004FD84E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		52B6552317E3B971004FD84E /* Build configuration list for PBXNativeTarget "o.io.bluetoothle.hrm" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				52B6552417E3B971004FD84E /* Debug */,
+				52B6552517E3B971004FD84E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -1,0 +1,8 @@
+Leap.Hand
+=========
+
+.. currentmodule:: Leap
+
+.. autoclass:: Hand
+   :members:
+   :undoc-members:

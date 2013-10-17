@@ -1,0 +1,8 @@
+Leap.Finger
+===========
+
+.. currentmodule:: Leap
+
+.. autoclass:: Finger
+   :members:
+   :undoc-members:

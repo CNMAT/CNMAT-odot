@@ -1,0 +1,2230 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
+		<title>LeapHand Class Reference</title>
+		<meta id="xcode-display" name="xcode-display" content="render"/>
+		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
+		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
+		<meta name="generator" content="appledoc 2.1 (build 858)" />
+	</head>
+	<body>
+		<header id="top_header">
+			<div id="library" class="hideInXcode">
+				<h1><a id="libraryTitle" href="../index.html">Leap Motion API </a></h1>
+				<a id="developerHome" href="../index.html">Leap Motion</a>
+			</div>
+			
+			<div id="title" role="banner">
+				<h1 class="hideInXcode">LeapHand Class Reference</h1>
+			</div>
+			<ul id="headerButtons" role="toolbar">
+				<li id="toc_button">
+					<button aria-label="Show Table of Contents" role="checkbox" class="open" id="table_of_contents"><span class="disclosure"></span>Table of Contents</button>
+				</li>
+				<li id="jumpto_button" role="navigation">
+					<select id="jumpTo">
+<option value="top">Jump To&#133;</option>
+
+<option value="overview">Overview</option>
+
+
+
+
+<option value="tasks">Tasks</option>
+
+
+
+
+
+
+
+<option value="class_methods">Class Methods</option>
+
+<option value="//api/name/invalid">&nbsp;&nbsp;&nbsp;&nbsp;+ invalid</option>
+
+
+
+
+<option value="instance_methods">Instance Methods</option>
+
+<option value="//api/name/direction">&nbsp;&nbsp;&nbsp;&nbsp;- direction</option>
+
+<option value="//api/name/finger:">&nbsp;&nbsp;&nbsp;&nbsp;- finger:</option>
+
+<option value="//api/name/fingers">&nbsp;&nbsp;&nbsp;&nbsp;- fingers</option>
+
+<option value="//api/name/frame">&nbsp;&nbsp;&nbsp;&nbsp;- frame</option>
+
+<option value="//api/name/id">&nbsp;&nbsp;&nbsp;&nbsp;- id</option>
+
+<option value="//api/name/isValid">&nbsp;&nbsp;&nbsp;&nbsp;- isValid</option>
+
+<option value="//api/name/palmNormal">&nbsp;&nbsp;&nbsp;&nbsp;- palmNormal</option>
+
+<option value="//api/name/palmPosition">&nbsp;&nbsp;&nbsp;&nbsp;- palmPosition</option>
+
+<option value="//api/name/palmVelocity">&nbsp;&nbsp;&nbsp;&nbsp;- palmVelocity</option>
+
+<option value="//api/name/pointable:">&nbsp;&nbsp;&nbsp;&nbsp;- pointable:</option>
+
+<option value="//api/name/pointables">&nbsp;&nbsp;&nbsp;&nbsp;- pointables</option>
+
+<option value="//api/name/rotationAngle:">&nbsp;&nbsp;&nbsp;&nbsp;- rotationAngle:</option>
+
+<option value="//api/name/rotationAngle:axis:">&nbsp;&nbsp;&nbsp;&nbsp;- rotationAngle:axis:</option>
+
+<option value="//api/name/rotationAxis:">&nbsp;&nbsp;&nbsp;&nbsp;- rotationAxis:</option>
+
+<option value="//api/name/rotationMatrix:">&nbsp;&nbsp;&nbsp;&nbsp;- rotationMatrix:</option>
+
+<option value="//api/name/rotationProbability:">&nbsp;&nbsp;&nbsp;&nbsp;- rotationProbability:</option>
+
+<option value="//api/name/scaleFactor:">&nbsp;&nbsp;&nbsp;&nbsp;- scaleFactor:</option>
+
+<option value="//api/name/scaleProbability:">&nbsp;&nbsp;&nbsp;&nbsp;- scaleProbability:</option>
+
+<option value="//api/name/sphereCenter">&nbsp;&nbsp;&nbsp;&nbsp;- sphereCenter</option>
+
+<option value="//api/name/sphereRadius">&nbsp;&nbsp;&nbsp;&nbsp;- sphereRadius</option>
+
+<option value="//api/name/stabilizedPalmPosition">&nbsp;&nbsp;&nbsp;&nbsp;- stabilizedPalmPosition</option>
+
+<option value="//api/name/tool:">&nbsp;&nbsp;&nbsp;&nbsp;- tool:</option>
+
+<option value="//api/name/tools">&nbsp;&nbsp;&nbsp;&nbsp;- tools</option>
+
+<option value="//api/name/translation:">&nbsp;&nbsp;&nbsp;&nbsp;- translation:</option>
+
+<option value="//api/name/translationProbability:">&nbsp;&nbsp;&nbsp;&nbsp;- translationProbability:</option>
+
+
+
+</select>
+				</li>
+			</ul>
+		</header>
+		<nav id="tocContainer" class="isShowingTOC">
+			<ul id="toc" role="tree">
+				
+<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
+
+
+
+
+<li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
+	
+</ul></li>
+
+
+
+
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#class_methods">Class Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/invalid">invalid</a></span></li>
+	
+</ul></li>
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/direction">direction</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/finger:">finger:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/fingers">fingers</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/frame">frame</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/id">id</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/isValid">isValid</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/palmNormal">palmNormal</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/palmPosition">palmPosition</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/palmVelocity">palmVelocity</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/pointable:">pointable:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/pointables">pointables</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/rotationAngle:">rotationAngle:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/rotationAngle:axis:">rotationAngle:axis:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/rotationAxis:">rotationAxis:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/rotationMatrix:">rotationMatrix:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/rotationProbability:">rotationProbability:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/scaleFactor:">scaleFactor:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/scaleProbability:">scaleProbability:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sphereCenter">sphereCenter</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sphereRadius">sphereRadius</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/stabilizedPalmPosition">stabilizedPalmPosition</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/tool:">tool:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/tools">tools</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/translation:">translation:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/translationProbability:">translationProbability:</a></span></li>
+	
+</ul></li>
+
+
+
+
+			</ul>
+		</nav>
+		<article>
+			<div id="contents" class="isShowingTOC" role="main">
+				<a title="LeapHand Class Reference" name="top"></a>
+				<div class="main-navigation navigation-top">
+					<ul>
+<li><a href="../index.html">Index</a></li>
+<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="header">
+					<div class="section-header">
+						<h1 class="title title-header">LeapHand Class Reference</h1>
+					</div>		
+				</div>
+				<div id="container">	
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+<td class="specification-title">Inherits from</td>
+<td class="specification-value">NSObject</td>
+</tr><tr>
+<td class="specification-title">Declared in</td>
+<td class="specification-value">LeapObjectiveC.h</td>
+</tr>
+						</tbody></table></div>
+					
+					
+					
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>The LeapHand class reports the physical characteristics of a detected hand.</p>
+
+<p>Hand tracking data includes a palm position and velocity; vectors for<br/>
+the palm normal and direction to the fingers; properties of a sphere fit<br/>
+to the hand; and lists of the attached fingers and tools.</p>
+
+<p>Note that LeapHand objects can be invalid, which means that they do not contain<br/>
+valid tracking data and do not correspond to a physical entity. Invalid LeapHand<br/>
+objects can be the result of asking for a Hand object using an ID from an<br/>
+earlier frame when no hand objects with that ID exist in the current frame.<br/>
+A hand object created from the LeapHand constructor is also invalid.<br/>
+Test for validity with the LeapHand isValid function.</p>
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						<h2 class="subtitle subtitle-tasks">Tasks</h2>
+						
+						
+						
+						
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/id">&ndash;&nbsp;id</a></code>
+		<span class="tooltip"><p>A unique ID assigned to this LeapHand object, whose value remains the same<br/>
+across consecutive frames while the tracked hand remains visible.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/pointables">&ndash;&nbsp;pointables</a></code>
+		<span class="tooltip"><p>The list of <a href="../Classes/LeapPointable.html">LeapPointable</a> objects (fingers and tools) detected in this frame<br/>
+that are associated with this hand, given in arbitrary order.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/fingers">&ndash;&nbsp;fingers</a></code>
+		<span class="tooltip"><p>The list of <a href="../Classes/LeapFinger.html">LeapFinger</a> objects detected in this frame that are attached to<br/>
+this hand, given in arbitrary order.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/tools">&ndash;&nbsp;tools</a></code>
+		<span class="tooltip"><p>The list of <a href="../Classes/LeapTool.html">LeapTool</a> objects detected in this frame that are held by this<br/>
+hand, given in arbitrary order.<br/>
+The list can be empty if no tools held by this hand are detected.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/pointable:">&ndash;&nbsp;pointable:</a></code>
+		<span class="tooltip"><p>The <a href="../Classes/LeapPointable.html">LeapPointable</a> object with the specified ID associated with this hand.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/finger:">&ndash;&nbsp;finger:</a></code>
+		<span class="tooltip"><p>The <a href="../Classes/LeapFinger.html">LeapFinger</a> object with the specified ID attached to this hand.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/tool:">&ndash;&nbsp;tool:</a></code>
+		<span class="tooltip"><p>The <a href="../Classes/LeapTool.html">LeapTool</a> object with the specified ID held by this hand.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/palmPosition">&ndash;&nbsp;palmPosition</a></code>
+		<span class="tooltip"><p>The center position of the palm in millimeters from the Leap origin.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/stabilizedPalmPosition">&ndash;&nbsp;stabilizedPalmPosition</a></code>
+		<span class="tooltip"><p>The stabilized tip position of this Pointable.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/palmVelocity">&ndash;&nbsp;palmVelocity</a></code>
+		<span class="tooltip"><p>The rate of change of the palm position in millimeters/second.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/palmNormal">&ndash;&nbsp;palmNormal</a></code>
+		<span class="tooltip"><p>The normal vector to the palm. If your hand is flat, this vector will<br/>
+point downward, or &ldquo;out&rdquo; of the front surface of your palm.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/direction">&ndash;&nbsp;direction</a></code>
+		<span class="tooltip"><p>The direction from the palm position toward the fingers.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/sphereCenter">&ndash;&nbsp;sphereCenter</a></code>
+		<span class="tooltip"><p>The center of a sphere fit to the curvature of this hand.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/sphereRadius">&ndash;&nbsp;sphereRadius</a></code>
+		<span class="tooltip"><p>The radius of a sphere fit to the curvature of this hand.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/isValid">&ndash;&nbsp;isValid</a></code>
+		<span class="tooltip"><p>Reports whether this is a valid LeapHand object.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/frame">&ndash;&nbsp;frame</a></code>
+		<span class="tooltip"><p>The <a href="../Classes/LeapFrame.html">LeapFrame</a> associated with this Hand.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/translation:">&ndash;&nbsp;translation:</a></code>
+		<span class="tooltip"><p>The change of position of this hand between the current <a href="../Classes/LeapFrame.html">LeapFrame</a> and<br/>
+the specified LeapFrame.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/translationProbability:">&ndash;&nbsp;translationProbability:</a></code>
+		<span class="tooltip"><p>The estimated probability that the hand motion between the current<br/>
+frame and the specified <a href="../Classes/LeapFrame.html">LeapFrame</a> is intended to be a translating motion.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/rotationAxis:">&ndash;&nbsp;rotationAxis:</a></code>
+		<span class="tooltip"><p>The axis of rotation derived from the change in orientation of this<br/>
+hand, and any associated fingers and tools, between the current <a href="../Classes/LeapFrame.html">LeapFrame</a><br/>
+and the specified LeapFrame.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/rotationAngle:">&ndash;&nbsp;rotationAngle:</a></code>
+		<span class="tooltip"><p>The angle of rotation around the rotation axis derived from the change<br/>
+in orientation of this hand, and any associated fingers and tools,<br/>
+between the current <a href="../Classes/LeapFrame.html">LeapFrame</a> and the specified LeapFrame.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/rotationAngle:axis:">&ndash;&nbsp;rotationAngle:axis:</a></code>
+		<span class="tooltip"><p>The angle of rotation around the specified axis derived from the change<br/>
+in orientation of this hand, and any associated fingers and tools,<br/>
+between the current <a href="../Classes/LeapFrame.html">LeapFrame</a> and the specified LeapFrame.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/rotationMatrix:">&ndash;&nbsp;rotationMatrix:</a></code>
+		<span class="tooltip"><p>The transform matrix expressing the rotation derived from the change<br/>
+in orientation of this hand, and any associated fingers and tools,<br/>
+between the current <a href="../Classes/LeapFrame.html">LeapFrame</a> and the specified LeapFrame.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/rotationProbability:">&ndash;&nbsp;rotationProbability:</a></code>
+		<span class="tooltip"><p>The estimated probability that the hand motion between the current<br/>
+<a href="../Classes/LeapFrame.html">LeapFrame</a> and the specified LeapFrame is intended to be a rotating motion.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/scaleFactor:">&ndash;&nbsp;scaleFactor:</a></code>
+		<span class="tooltip"><p>The scale factor derived from this hand&rsquo;s motion between the current<br/>
+<a href="../Classes/LeapFrame.html">LeapFrame</a> and the specified LeapFrame.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/scaleProbability:">&ndash;&nbsp;scaleProbability:</a></code>
+		<span class="tooltip"><p>The estimated probability that the hand motion between the current<br/>
+<a href="../Classes/LeapFrame.html">LeapFrame</a> and the specified LeapFrame is intended to be a scaling motion.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/invalid">+&nbsp;invalid</a></code>
+		<span class="tooltip"><p>Returns an invalid LeapHand object.</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+					</div>
+					
+					
+					
+					
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Class Methods" name="class_methods"></a>
+						<h2 class="subtitle subtitle-methods">Class Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/invalid" title="invalid"></a>
+	<h3 class="subsubtitle method-title">invalid</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Returns an invalid LeapHand object.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (LeapHand *)invalid</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>The invalid LeapHand instance.</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>Since 1.0</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Returns an invalid LeapHand object.</p>
+
+<p>You can use the instance returned by this function in comparisons testing<br/>
+whether a given LeapHand instance is valid or invalid. (You can also use the<br/>
+LeapHand isValid: function.)</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">LeapObjectiveC.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Instance Methods" name="instance_methods"></a>
+						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/direction" title="direction"></a>
+	<h3 class="subsubtitle method-title">direction</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The direction from the palm position toward the fingers.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (LeapVector *)direction</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>The <a href="../Classes/LeapVector.html">LeapVector</a> pointing from the palm position toward the fingers.</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>Since 1.0</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The direction from the palm position toward the fingers.</p>
+
+<p>The direction is expressed as a unit vector pointing in the same<br/>
+direction as the directed line from the palm position to the fingers.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">LeapObjectiveC.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/finger:" title="finger:"></a>
+	<h3 class="subsubtitle method-title">finger:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The <a href="../Classes/LeapFinger.html">LeapFinger</a> object with the specified ID attached to this hand.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (LeapFinger *)finger:(int32_t)<em>fingerId</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>fingerId</em></dt>
+			<dd><p>The ID value of a <a href="../Classes/LeapFinger.html">LeapFinger</a> object from a previous frame.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>The <a href="../Classes/LeapFinger.html">LeapFinger</a> object with the matching ID if one exists for this<br/>
+hand in this frame; otherwise, an invalid LeapFinger object is returned.</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>Since 1.0</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The <a href="../Classes/LeapFinger.html">LeapFinger</a> object with the specified ID attached to this hand.</p>
+
+<p>Use this [LeapHand finger:] function to retrieve a LeapFinger object attached to<br/>
+this hand using an ID value obtained from a previous frame.<br/>
+This function always returns a LeapFinger object, but if no finger<br/>
+with the specified ID is present, an invalid LeapFinger object is returned.</p>
+
+<p>Note that ID values persist across frames, but only until tracking of a<br/>
+particular object is lost. If tracking of a finger is lost and subsequently<br/>
+regained, the new LeapFinger object representing that finger may have a<br/>
+different ID than that representing the finger in an earlier frame.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">LeapObjectiveC.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/fingers" title="fingers"></a>
+	<h3 class="subsubtitle method-title">fingers</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The list of <a href="../Classes/LeapFinger.html">LeapFinger</a> objects detected in this frame that are attached to<br/>
+this hand, given in arbitrary order.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (NSArray *)fingers</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>An NSArray containing all <a href="../Classes/LeapFinger.html">LeapFinger</a> objects attached to this hand.</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>Since 1.0</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The list of <a href="../Classes/LeapFinger.html">LeapFinger</a> objects detected in this frame that are attached to<br/>
+this hand, given in arbitrary order.</p>
+
+<p>The list can be empty if no fingers attached to this hand are detected.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">LeapObjectiveC.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/frame" title="frame"></a>
+	<h3 class="subsubtitle method-title">frame</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The <a href="../Classes/LeapFrame.html">LeapFrame</a> associated with this Hand.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (LeapFrame *)frame</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>The associated <a href="../Classes/LeapFrame.html">LeapFrame</a> object, if available; otherwise,<br/>
+an invalid LeapFrame object is returned.</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>Since 1.0</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The <a href="../Classes/LeapFrame.html">LeapFrame</a> associated with this Hand.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">LeapObjectiveC.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/id" title="id"></a>
+	<h3 class="subsubtitle method-title">id</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>A unique ID assigned to this LeapHand object, whose value remains the same<br/>
+across consecutive frames while the tracked hand remains visible.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (int32_t)id</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>The ID of this hand.</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>Since 1.0</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>A unique ID assigned to this LeapHand object, whose value remains the same<br/>
+across consecutive frames while the tracked hand remains visible.</p>
+
+<p>If tracking is lost (for example, when a hand is occluded by another hand<br/>
+or when it is withdrawn from or reaches the edge of the Leap field of view),<br/>
+the Leap may assign a new ID when it detects the hand in a future frame.</p>
+
+<p>Use the ID value with the <a href="../Classes/LeapFrame.html#//api/name/hand:">[LeapFrame hand:]</a> function to find this LeapHand object<br/>
+in future frames.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">LeapObjectiveC.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/isValid" title="isValid"></a>
+	<h3 class="subsubtitle method-title">isValid</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Reports whether this is a valid LeapHand object.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (BOOL)isValid</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>YES, if this LeapHand object contains valid tracking data.</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>Since 1.0</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Reports whether this is a valid LeapHand object.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">LeapObjectiveC.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/palmNormal" title="palmNormal"></a>
+	<h3 class="subsubtitle method-title">palmNormal</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The normal vector to the palm. If your hand is flat, this vector will<br/>
+point downward, or &ldquo;out&rdquo; of the front surface of your palm.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (LeapVector *)palmNormal</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>The <a href="../Classes/LeapVector.html">LeapVector</a> normal to the plane formed by the palm.</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>Since 1.0</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The normal vector to the palm. If your hand is flat, this vector will<br/>
+point downward, or &ldquo;out&rdquo; of the front surface of your palm.</p>
+
+<p><img src="../docs/images/Leap_Palm_Vectors.png"/></p>
+
+<p>The direction is expressed as a unit vector pointing in the same<br/>
+direction as the palm normal (that is, a vector orthogonal to the palm).</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">LeapObjectiveC.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/palmPosition" title="palmPosition"></a>
+	<h3 class="subsubtitle method-title">palmPosition</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The center position of the palm in millimeters from the Leap origin.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (LeapVector *)palmPosition</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>The <a href="../Classes/LeapVector.html">LeapVector</a> representing the coordinates of the palm position.</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>Since 1.0</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The center position of the palm in millimeters from the Leap origin.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">LeapObjectiveC.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/palmVelocity" title="palmVelocity"></a>
+	<h3 class="subsubtitle method-title">palmVelocity</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The rate of change of the palm position in millimeters/second.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (LeapVector *)palmVelocity</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>The <a href="../Classes/LeapVector.html">LeapVector</a> representing the coordinates of the palm velocity.</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>Since 1.0</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The rate of change of the palm position in millimeters/second.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">LeapObjectiveC.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/pointable:" title="pointable:"></a>
+	<h3 class="subsubtitle method-title">pointable:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The <a href="../Classes/LeapPointable.html">LeapPointable</a> object with the specified ID associated with this hand.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (LeapPointable *)pointable:(int32_t)<em>pointableId</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>pointableId</em></dt>
+			<dd><p>The ID value of a <a href="../Classes/LeapPointable.html">LeapPointable</a> object from a previous frame.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>The <a href="../Classes/LeapPointable.html">LeapPointable</a> object with the matching ID if one exists for this<br/>
+hand in this frame; otherwise, an invalid LeapPointable object is returned.</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>Since 1.0</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The <a href="../Classes/LeapPointable.html">LeapPointable</a> object with the specified ID associated with this hand.</p>
+
+<p>Use this [LeapHand pointable:] function to retrieve a LeapPointable object<br/>
+associated with this hand using an ID value obtained from a previous frame.<br/>
+This function always returns a LeapPointable object, but if no finger or tool<br/>
+with the specified ID is present, an invalid LeapPointable object is returned.</p>
+
+<p>Note that ID values persist across frames, but only until tracking of a<br/>
+particular object is lost. If tracking of a finger or tool is lost and subsequently<br/>
+regained, the new LeapPointable object representing that finger or tool may have a<br/>
+different ID than that representing the finger or tool in an earlier frame.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">LeapObjectiveC.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/pointables" title="pointables"></a>
+	<h3 class="subsubtitle method-title">pointables</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The list of <a href="../Classes/LeapPointable.html">LeapPointable</a> objects (fingers and tools) detected in this frame<br/>
+that are associated with this hand, given in arbitrary order.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (NSArray *)pointables</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>An NSArray containing all <a href="../Classes/LeapPointable.html">LeapPointable</a> objects associated with this hand.</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>Since 1.0</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The list of <a href="../Classes/LeapPointable.html">LeapPointable</a> objects (fingers and tools) detected in this frame<br/>
+that are associated with this hand, given in arbitrary order.</p>
+
+<p>The list can be empty if no fingers or tools associated with this hand<br/>
+are detected.</p>
+
+<p>Use the [LeapPointable isFinger] function to determine whether or not an<br/>
+item in the list represents a finger. Use the [LeapPointable isTool] function<br/>
+to determine whether or not an item in the list represents a tool.<br/>
+You can also get only fingers using the <a href="#//api/name/fingers">[LeapHand fingers]</a> function or<br/>
+only tools using the <a href="#//api/name/tools">[LeapHand tools]</a> function.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">LeapObjectiveC.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/rotationAngle:" title="rotationAngle:"></a>
+	<h3 class="subsubtitle method-title">rotationAngle:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The angle of rotation around the rotation axis derived from the change<br/>
+in orientation of this hand, and any associated fingers and tools,<br/>
+between the current <a href="../Classes/LeapFrame.html">LeapFrame</a> and the specified LeapFrame.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (float)rotationAngle:(const LeapFrame *)<em>sinceFrame</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>sinceFrame</em></dt>
+			<dd><p>The starting <a href="../Classes/LeapFrame.html">LeapFrame</a> for computing the relative rotation.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>A positive value representing the heuristically determined<br/>
+rotational change of the hand between the current frame and that<br/>
+specified in the sinceFrame parameter.</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>Since 1.0</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The angle of rotation around the rotation axis derived from the change<br/>
+in orientation of this hand, and any associated fingers and tools,<br/>
+between the current <a href="../Classes/LeapFrame.html">LeapFrame</a> and the specified LeapFrame.</p>
+
+<p>The returned angle is expressed in radians measured clockwise around the<br/>
+rotation axis (using the right-hand rule) between the start and end frames.<br/>
+The value is always between 0 and pi radians (0 and 180 degrees).</p>
+
+<p>If a corresponding LeapHand object is not found in sinceFrame, or if either<br/>
+this frame or sinceFrame are invalid LeapFrame objects, then the angle of<br/>
+rotation is zero.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">LeapObjectiveC.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/rotationAngle:axis:" title="rotationAngle:axis:"></a>
+	<h3 class="subsubtitle method-title">rotationAngle:axis:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The angle of rotation around the specified axis derived from the change<br/>
+in orientation of this hand, and any associated fingers and tools,<br/>
+between the current <a href="../Classes/LeapFrame.html">LeapFrame</a> and the specified LeapFrame.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (float)rotationAngle:(const LeapFrame *)<em>sinceFrame</em> axis:(const LeapVector *)<em>axis</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>sinceFrame</em></dt>
+			<dd><p>The starting <a href="../Classes/LeapFrame.html">LeapFrame</a> for computing the relative rotation.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>axis</em></dt>
+			<dd><p>A <a href="../Classes/LeapVector.html">LeapVector</a> representing the axis to measure rotation around.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>A value representing the heuristically determined rotational<br/>
+change of the hand between the current frame and that specified in the<br/>
+sinceFrame parameter around the specified axis.</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>Since 1.0</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The angle of rotation around the specified axis derived from the change<br/>
+in orientation of this hand, and any associated fingers and tools,<br/>
+between the current <a href="../Classes/LeapFrame.html">LeapFrame</a> and the specified LeapFrame.</p>
+
+<p>The returned angle is expressed in radians measured clockwise around the<br/>
+rotation axis (using the right-hand rule) between the start and end frames.<br/>
+The value is always between -pi and pi radians (-180 and 180 degrees).</p>
+
+<p>If a corresponding LeapHand object is not found in sinceFrame, or if either<br/>
+this frame or sinceFrame are invalid LeapFrame objects, then the angle of<br/>
+rotation is zero.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">LeapObjectiveC.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/rotationAxis:" title="rotationAxis:"></a>
+	<h3 class="subsubtitle method-title">rotationAxis:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The axis of rotation derived from the change in orientation of this<br/>
+hand, and any associated fingers and tools, between the current <a href="../Classes/LeapFrame.html">LeapFrame</a><br/>
+and the specified LeapFrame.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (LeapVector *)rotationAxis:(const LeapFrame *)<em>sinceFrame</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>sinceFrame</em></dt>
+			<dd><p>The starting <a href="../Classes/LeapFrame.html">LeapFrame</a> for computing the relative rotation.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>A <a href="../Classes/LeapVector.html">LeapVector</a> containing the normalized direction vector representing the heuristically<br/>
+determined axis of rotational change of the hand between the current<br/>
+frame and that specified in the sinceFrame parameter.</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>Since 1.0</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The axis of rotation derived from the change in orientation of this<br/>
+hand, and any associated fingers and tools, between the current <a href="../Classes/LeapFrame.html">LeapFrame</a><br/>
+and the specified LeapFrame.</p>
+
+<p>The returned direction vector is normalized.</p>
+
+<p>If a corresponding LeapHand object is not found in sinceFrame, or if either<br/>
+this frame or sinceFrame are invalid LeapFrame objects, then this method<br/>
+returns a zero vector.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">LeapObjectiveC.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/rotationMatrix:" title="rotationMatrix:"></a>
+	<h3 class="subsubtitle method-title">rotationMatrix:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The transform matrix expressing the rotation derived from the change<br/>
+in orientation of this hand, and any associated fingers and tools,<br/>
+between the current <a href="../Classes/LeapFrame.html">LeapFrame</a> and the specified LeapFrame.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (LeapMatrix *)rotationMatrix:(const LeapFrame *)<em>sinceFrame</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>sinceFrame</em></dt>
+			<dd><p>The starting <a href="../Classes/LeapFrame.html">LeapFrame</a> for computing the relative rotation.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>A transformation <a href="../Classes/LeapMatrix.html">LeapMatrix</a> representing the heuristically determined<br/>
+rotational change of the hand between the current frame and that specified<br/>
+in the sinceFrame parameter.</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>Since 1.0</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The transform matrix expressing the rotation derived from the change<br/>
+in orientation of this hand, and any associated fingers and tools,<br/>
+between the current <a href="../Classes/LeapFrame.html">LeapFrame</a> and the specified LeapFrame.</p>
+
+<p>If a corresponding LeapHand object is not found in sinceFrame, or if either<br/>
+this frame or sinceFrame are invalid LeapFrame objects, then this method<br/>
+returns an identity matrix.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">LeapObjectiveC.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/rotationProbability:" title="rotationProbability:"></a>
+	<h3 class="subsubtitle method-title">rotationProbability:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The estimated probability that the hand motion between the current<br/>
+<a href="../Classes/LeapFrame.html">LeapFrame</a> and the specified LeapFrame is intended to be a rotating motion.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (float)rotationProbability:(const LeapFrame *)<em>sinceFrame</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>sinceFrame</em></dt>
+			<dd><p>The starting <a href="../Classes/LeapFrame.html">LeapFrame</a> for computing the relative rotation.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>A value between 0 and 1 representing the estimated probability<br/>
+that the hand motion between the current frame and the specified frame<br/>
+is intended to be a rotating motion.</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>Since 1.0</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The estimated probability that the hand motion between the current<br/>
+<a href="../Classes/LeapFrame.html">LeapFrame</a> and the specified LeapFrame is intended to be a rotating motion.</p>
+
+<p>If a corresponding LeapHand object is not found in sinceFrame, or if either<br/>
+this frame or sinceFrame are invalid LeapFrame objects, then this method<br/>
+returns zero.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">LeapObjectiveC.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/scaleFactor:" title="scaleFactor:"></a>
+	<h3 class="subsubtitle method-title">scaleFactor:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The scale factor derived from this hand&rsquo;s motion between the current<br/>
+<a href="../Classes/LeapFrame.html">LeapFrame</a> and the specified LeapFrame.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (float)scaleFactor:(const LeapFrame *)<em>sinceFrame</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>sinceFrame</em></dt>
+			<dd><p>The starting <a href="../Classes/LeapFrame.html">LeapFrame</a> for computing the relative scaling.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>A positive value representing the heuristically determined<br/>
+scaling change ratio of the hand between the current frame and that<br/>
+specified in the sinceFrame parameter.</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>Since 1.0</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The scale factor derived from this hand&rsquo;s motion between the current<br/>
+<a href="../Classes/LeapFrame.html">LeapFrame</a> and the specified LeapFrame.</p>
+
+<p>The scale factor is always positive. A value of 1.0 indicates no<br/>
+scaling took place. Values between 0.0 and 1.0 indicate contraction<br/>
+and values greater than 1.0 indicate expansion.</p>
+
+<p>The Leap derives scaling from the relative inward or outward motion of<br/>
+a hand and its associated fingers and tools (independent of translation<br/>
+and rotation).</p>
+
+<p>If a corresponding LeapHand object is not found in sinceFrame, or if either<br/>
+this frame or sinceFrame are invalid LeapFrame objects, then this method<br/>
+returns 1.0.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">LeapObjectiveC.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/scaleProbability:" title="scaleProbability:"></a>
+	<h3 class="subsubtitle method-title">scaleProbability:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The estimated probability that the hand motion between the current<br/>
+<a href="../Classes/LeapFrame.html">LeapFrame</a> and the specified LeapFrame is intended to be a scaling motion.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (float)scaleProbability:(const LeapFrame *)<em>sinceFrame</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>sinceFrame</em></dt>
+			<dd><p>The starting <a href="../Classes/LeapFrame.html">LeapFrame</a> for computing the relative scaling.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>A value between 0 and 1 representing the estimated probability<br/>
+that the hand motion between the current frame and the specified frame<br/>
+is intended to be a scaling motion.</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>Since 1.0</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The estimated probability that the hand motion between the current<br/>
+<a href="../Classes/LeapFrame.html">LeapFrame</a> and the specified LeapFrame is intended to be a scaling motion.</p>
+
+<p>If a corresponding LeapHand object is not found in sinceFrame, or if either<br/>
+this frame or sinceFrame are invalid LeapFrame objects, then this method<br/>
+returns zero.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">LeapObjectiveC.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/sphereCenter" title="sphereCenter"></a>
+	<h3 class="subsubtitle method-title">sphereCenter</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The center of a sphere fit to the curvature of this hand.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (LeapVector *)sphereCenter</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>The <a href="../Classes/LeapVector.html">LeapVector</a> representing the center position of the sphere.</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>Since 1.0</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The center of a sphere fit to the curvature of this hand.</p>
+
+<p>This sphere is placed roughly as if the hand were holding a ball.</p>
+
+<p><img src="../docs/images/Leap_Hand_Ball.png"/></p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">LeapObjectiveC.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/sphereRadius" title="sphereRadius"></a>
+	<h3 class="subsubtitle method-title">sphereRadius</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The radius of a sphere fit to the curvature of this hand.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (float)sphereRadius</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>The radius of the sphere in millimeters.</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>Since 1.0</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The radius of a sphere fit to the curvature of this hand.</p>
+
+<p>This sphere is placed roughly as if the hand were holding a ball. Thus the<br/>
+size of the sphere decreases as the fingers are curled into a fist.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">LeapObjectiveC.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/stabilizedPalmPosition" title="stabilizedPalmPosition"></a>
+	<h3 class="subsubtitle method-title">stabilizedPalmPosition</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The stabilized tip position of this Pointable.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (LeapVector *)stabilizedPalmPosition</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>A modified tip position of this Pointable object<br/>
+with some additional smoothing and stabilization applied.</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>Since 1.0</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The stabilized tip position of this Pointable.</p>
+
+<p>Smoothing and stabilization is performed in order to make<br/>
+this value more suitable for interaction with 2D content.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">LeapObjectiveC.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/tool:" title="tool:"></a>
+	<h3 class="subsubtitle method-title">tool:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The <a href="../Classes/LeapTool.html">LeapTool</a> object with the specified ID held by this hand.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (LeapTool *)tool:(int32_t)<em>toolId</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>toolId</em></dt>
+			<dd><p>The ID value of a <a href="../Classes/LeapTool.html">LeapTool</a> object from a previous frame.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>The <a href="../Classes/LeapTool.html">LeapTool</a> object with the matching ID if one exists for this<br/>
+hand in this frame; otherwise, an invalid LeapTool object is returned.</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>Since 1.0</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The <a href="../Classes/LeapTool.html">LeapTool</a> object with the specified ID held by this hand.</p>
+
+<p>Use this [LeapHand tool:] function to retrieve a LeapTool object held by<br/>
+this hand using an ID value obtained from a previous frame.<br/>
+This function always returns a LeapTool object, but if no tool<br/>
+with the specified ID is present, an invalid LeapTool object is returned.</p>
+
+<p>Note that ID values persist across frames, but only until tracking of a<br/>
+particular object is lost. If tracking of a tool is lost and subsequently<br/>
+regained, the new LeapTool object representing that tool may have a<br/>
+different ID than that representing the tool in an earlier frame.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">LeapObjectiveC.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/tools" title="tools"></a>
+	<h3 class="subsubtitle method-title">tools</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The list of <a href="../Classes/LeapTool.html">LeapTool</a> objects detected in this frame that are held by this<br/>
+hand, given in arbitrary order.<br/>
+The list can be empty if no tools held by this hand are detected.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (NSArray *)tools</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>An NSArray containing all <a href="../Classes/LeapTool.html">LeapTool</a> objects held by this hand.</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>Since 1.0</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The list of <a href="../Classes/LeapTool.html">LeapTool</a> objects detected in this frame that are held by this<br/>
+hand, given in arbitrary order.<br/>
+The list can be empty if no tools held by this hand are detected.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">LeapObjectiveC.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/translation:" title="translation:"></a>
+	<h3 class="subsubtitle method-title">translation:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The change of position of this hand between the current <a href="../Classes/LeapFrame.html">LeapFrame</a> and<br/>
+the specified LeapFrame.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (LeapVector *)translation:(const LeapFrame *)<em>sinceFrame</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>sinceFrame</em></dt>
+			<dd><p>The starting <a href="../Classes/LeapFrame.html">LeapFrame</a> for computing the translation.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>A <a href="../Classes/LeapVector.html">LeapVector</a> representing the heuristically determined change in<br/>
+hand position between the current frame and that specified in the<br/>
+sinceFrame parameter.</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>Since 1.0</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The change of position of this hand between the current <a href="../Classes/LeapFrame.html">LeapFrame</a> and<br/>
+the specified LeapFrame.</p>
+
+<p>The returned translation vector provides the magnitude and direction of<br/>
+the movement in millimeters.</p>
+
+<p>If a corresponding LeapHand object is not found in sinceFrame, or if either<br/>
+this frame or sinceFrame are invalid LeapFrame objects, then this method<br/>
+returns a zero vector.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">LeapObjectiveC.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/translationProbability:" title="translationProbability:"></a>
+	<h3 class="subsubtitle method-title">translationProbability:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The estimated probability that the hand motion between the current<br/>
+frame and the specified <a href="../Classes/LeapFrame.html">LeapFrame</a> is intended to be a translating motion.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (float)translationProbability:(const LeapFrame *)<em>sinceFrame</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>sinceFrame</em></dt>
+			<dd><p>The starting <a href="../Classes/LeapFrame.html">LeapFrame</a> for computing the translation.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>A value between 0 and 1 representing the estimated probability<br/>
+that the hand motion between the current frame and the specified frame<br/>
+is intended to be a translating motion.</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>Since 1.0</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The estimated probability that the hand motion between the current<br/>
+frame and the specified <a href="../Classes/LeapFrame.html">LeapFrame</a> is intended to be a translating motion.</p>
+
+<p>If a corresponding LeapHand object is not found in sinceFrame, or if either<br/>
+this frame or sinceFrame are invalid LeapFrame objects, then this method<br/>
+returns zero.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">LeapObjectiveC.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+					
+					
+				</div>
+				<div class="main-navigation navigation-bottom">
+					<ul>
+<li><a href="../index.html">Index</a></li>
+<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="footer">
+					<hr />
+					<div class="footer-copyright">
+						<p><span class="copyright">&copy; 2013 Leap Motion. All rights reserved. (Last updated: 2013-07-19)</span><br />
+						
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 858)</a>.</span></p>
+						
+					</div>
+				</div>
+			</div>
+		</article>
+		<script type="text/javascript">
+			function jumpToChange()
+			{
+				window.location.hash = this.options[this.selectedIndex].value;
+			}
+			
+			function toggleTOC()
+			{
+				var contents = document.getElementById('contents');
+				var tocContainer = document.getElementById('tocContainer');
+				
+				if (this.getAttribute('class') == 'open')
+				{
+					this.setAttribute('class', '');
+					contents.setAttribute('class', '');
+					tocContainer.setAttribute('class', '');
+					
+					window.name = "hideTOC";
+				}
+				else
+				{
+					this.setAttribute('class', 'open');
+					contents.setAttribute('class', 'isShowingTOC');
+					tocContainer.setAttribute('class', 'isShowingTOC');
+					
+					window.name = "";
+				}
+				return false;
+			}
+			
+			function toggleTOCEntryChildren(e)
+			{
+				e.stopPropagation();
+				var currentClass = this.getAttribute('class');
+				if (currentClass == 'children') {
+					this.setAttribute('class', 'children open');
+				}
+				else if (currentClass == 'children open') {
+					this.setAttribute('class', 'children');
+				}
+				return false;
+			}
+			
+			function tocEntryClick(e)
+			{
+				e.stopPropagation();
+				return true;
+			}
+			
+			function init()
+			{
+				var selectElement = document.getElementById('jumpTo');
+				selectElement.addEventListener('change', jumpToChange, false);
+				
+				var tocButton = document.getElementById('table_of_contents');
+				tocButton.addEventListener('click', toggleTOC, false);
+				
+				var taskTreeItem = document.getElementById('task_treeitem');
+				if (taskTreeItem.getElementsByTagName('li').length > 0)
+				{
+					taskTreeItem.setAttribute('class', 'children');
+					taskTreeItem.firstChild.setAttribute('class', 'disclosure');
+				}
+				
+				var tocList = document.getElementById('toc');
+				
+				var tocEntries = tocList.getElementsByTagName('li');
+				for (var i = 0; i < tocEntries.length; i++) {
+					tocEntries[i].addEventListener('click', toggleTOCEntryChildren, false);
+				}
+				
+				var tocLinks = tocList.getElementsByTagName('a');
+				for (var i = 0; i < tocLinks.length; i++) {
+					tocLinks[i].addEventListener('click', tocEntryClick, false);
+				}
+				
+				if (window.name == "hideTOC") {
+					toggleTOC.call(tocButton);
+				}
+			}
+			
+			window.onload = init;
+
+			
+			// If showing in Xcode, hide the TOC and Header
+			if (navigator.userAgent.match(/xcode/i)) {
+				document.getElementById("contents").className = "hideInXcode"
+				document.getElementById("tocContainer").className = "hideInXcode"
+				document.getElementById("top_header").className = "hideInXcode"
+			}
+			
+		</script>
+	</body>
+</html>
