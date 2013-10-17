@@ -1,8 +1,0 @@
-Leap.InteractionBox
-===================
-
-.. currentmodule:: Leap
-
-.. autoclass:: InteractionBox
-   :members:
-   :undoc-members:

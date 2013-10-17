@@ -1,8 +1,0 @@
-Leap.Screen
-===========
-
-.. currentmodule:: Leap
-
-.. autoclass:: Screen
-   :members:
-   :undoc-members:

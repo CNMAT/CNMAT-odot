@@ -1,8 +1,0 @@
-Leap.FingerList
-===============
-
-.. currentmodule:: Leap
-
-.. autoclass:: FingerList
-   :members:
-   :undoc-members:
