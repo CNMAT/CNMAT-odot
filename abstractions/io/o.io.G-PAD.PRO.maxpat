@@ -8,7 +8,7 @@
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 29.0, 44.0, 1429.0, 730.0 ],
+		"rect" : [ 45.0, 77.0, 1429.0, 730.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -31,14 +31,13 @@
 				"box" : 				{
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
-					"id" : "obj-95",
-					"maxclass" : "o.message",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 301.0, 38.0, 150.0, 20.0 ],
-					"text" : "/17 528 \n",
-					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
+					"frgb" : 0.0,
+					"id" : "obj-3",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 80.0, 370.0, 150.0, 20.0 ],
+					"text" : "Adrian Freed 2013"
 				}
 
 			}
@@ -113,23 +112,6 @@
 				"box" : 				{
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
-					"id" : "obj-84",
-					"linecount" : 28,
-					"maxclass" : "o.message",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 922.0, 331.0, 336.0, 382.0 ],
-					"presentation_rect" : [ 1028.0, 448.0, 0.0, 0.0 ],
-					"text" : "/left/paddle/horizontal -0.0205279 \n/left/paddle/vertical 0.0322581 \n/right/paddle/vertical -0.00684262 \n/right/paddle/hoirizontal -0.0146628 \n/orientation/pitch 0.0322581 \n/orientation/roll -0.0205279 \n/button/1 0 \n/button/2 0 \n/button/3 0 \n/button/4 0 \n/button/5 0 \n/button/6 0 \n/button/7 0 \n/button/8 0 \n/button/11 0 \n/button/12 0 \n/left/paddle/button 0 \n/right/paddle/button 0 \n/N 0 \n/NE 0 \n/E 0 \n/SE 0 \n/S 0 \n/SW 0 \n/W 0 \n/NW 0 \n/Instruction \"Press mode until blue light appears for orientation data\" \n",
-					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontname" : "Arial",
-					"fontsize" : 12.0,
 					"id" : "obj-83",
 					"maxclass" : "newobj",
 					"numinlets" : 2,
@@ -173,7 +155,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "float" ],
 									"patching_rect" : [ 584.0, 127.0, 33.0, 20.0 ],
-									"presentation_rect" : [ 517.0, 127.0, 0.0, 0.0 ],
 									"text" : "float"
 								}
 
@@ -188,7 +169,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 584.0, 156.0, 109.0, 20.0 ],
-									"presentation_rect" : [ 517.0, 156.0, 0.0, 0.0 ],
 									"text" : "scale 0 1023 -1. 1."
 								}
 
@@ -203,7 +183,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "float" ],
 									"patching_rect" : [ 417.0, 131.0, 33.0, 20.0 ],
-									"presentation_rect" : [ 350.0, 131.0, 0.0, 0.0 ],
 									"text" : "float"
 								}
 
@@ -218,7 +197,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 417.0, 160.0, 109.0, 20.0 ],
-									"presentation_rect" : [ 350.0, 160.0, 0.0, 0.0 ],
 									"text" : "scale 0 1023 -1. 1."
 								}
 
@@ -233,7 +211,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "float" ],
 									"patching_rect" : [ 273.0, 130.0, 33.0, 20.0 ],
-									"presentation_rect" : [ 206.0, 130.0, 0.0, 0.0 ],
 									"text" : "float"
 								}
 
@@ -248,7 +225,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 273.0, 159.0, 109.0, 20.0 ],
-									"presentation_rect" : [ 206.0, 159.0, 0.0, 0.0 ],
 									"text" : "scale 0 1023 -1. 1."
 								}
 
@@ -274,8 +250,7 @@
 									"maxclass" : "outlet",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 620.0, 418.0, 25.0, 25.0 ],
-									"presentation_rect" : [ 226.0, 311.0, 0.0, 0.0 ]
+									"patching_rect" : [ 620.0, 418.0, 25.0, 25.0 ]
 								}
 
 							}
@@ -957,7 +932,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 1280.0, 134.0, 154.0, 315.0 ],
-					"text" : "/button/1 0 \n/button/2 0 \n/button/3 0 \n/button/4 0 \n/button/5 0 \n/button/6 0 \n/button/7 0 \n/button/8 0 \n/button/11 0 \n/button/12 0 \n/left/paddle/button 0 \n/right/paddle/button 0 \n/N 0 \n/NE 0 \n/E 0 \n/SE 0 \n/S 0 \n/SW 0 \n/W 0 \n/NW 0 \n/Instruction \"Press mode until blue light appears for orientation data\" ",
+					"text" : "/button/1 0\n/button/2 0\n/button/3 0\n/button/4 0\n/button/5 0\n/button/6 0\n/button/7 0\n/button/8 0\n/button/11 0\n/button/12 0\n/left/paddle/button 0\n/right/paddle/button 0\n/N 0\n/NE 0\n/E 0\n/SE 0\n/S 0\n/SW 0\n/W 0\n/NW 0\n/Instruction \"Press mode until blue light appears for orientation data\"",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -1011,7 +986,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 851.0, 225.0, 155.0, 20.0 ],
-					"text" : "/right/paddle/button \"$1\" ",
+					"text" : "/right/paddle/button \"$1\"",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -1026,7 +1001,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 778.0, 266.0, 146.0, 20.0 ],
-					"text" : "/left/paddle/button \"$1\" ",
+					"text" : "/left/paddle/button \"$1\"",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -1041,7 +1016,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 781.0, 146.0, 94.0, 20.0 ],
-					"text" : "/button/12 \"$1\" ",
+					"text" : "/button/12 \"$1\"",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -1056,7 +1031,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 703.0, 183.0, 121.0, 20.0 ],
-					"text" : "/button/11 \"$1\" ",
+					"text" : "/button/11 \"$1\"",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -1085,7 +1060,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 659.0, 218.0, 121.0, 20.0 ],
-					"text" : "/button/8 \"$1\" ",
+					"text" : "/button/8 \"$1\"",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -1100,7 +1075,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 585.0, 157.0, 121.0, 20.0 ],
-					"text" : "/button/7 \"$1\" ",
+					"text" : "/button/7 \"$1\"",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -1115,7 +1090,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 531.0, 210.0, 121.0, 20.0 ],
-					"text" : "/button/6 \"$1\" ",
+					"text" : "/button/6 \"$1\"",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -1130,7 +1105,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 458.0, 167.0, 121.0, 20.0 ],
-					"text" : "/button/5 \"$1\" ",
+					"text" : "/button/5 \"$1\"",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -1145,7 +1120,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 399.0, 210.0, 121.0, 20.0 ],
-					"text" : "/button/4 \"$1\" ",
+					"text" : "/button/4 \"$1\"",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -1160,7 +1135,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 337.0, 135.0, 121.0, 20.0 ],
-					"text" : "/button/3 \"$1\" ",
+					"text" : "/button/3 \"$1\"",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -1175,7 +1150,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 256.0, 205.0, 121.0, 20.0 ],
-					"text" : "/button/2 \"$1\" ",
+					"text" : "/button/2 \"$1\"",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -1190,7 +1165,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 222.0, 167.0, 121.0, 20.0 ],
-					"text" : "/button/1 \"$1\" ",
+					"text" : "/button/1 \"$1\"",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -1269,15 +1244,6 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-84", 1 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"source" : [ "obj-14", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
 					"destination" : [ "obj-6", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
@@ -1288,15 +1254,6 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-50", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"source" : [ "obj-33", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-95", 1 ],
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-33", 0 ]
