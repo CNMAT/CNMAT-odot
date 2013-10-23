@@ -1,8 +1,0 @@
-Leap.GestureList
-================
-
-.. currentmodule:: Leap
-
-.. autoclass:: GestureList
-   :members:
-   :undoc-members:

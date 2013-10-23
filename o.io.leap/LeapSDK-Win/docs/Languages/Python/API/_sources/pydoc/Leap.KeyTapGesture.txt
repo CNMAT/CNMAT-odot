@@ -1,8 +1,0 @@
-Leap.KeyTapGesture
-==================
-
-.. currentmodule:: Leap
-
-.. autoclass:: KeyTapGesture
-   :members:
-   :undoc-members:
