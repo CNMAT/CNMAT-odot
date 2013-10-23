@@ -1,6 +1,6 @@
-#define OMAX_DOC_NAME "o.io.bluetoothle.hrm"
-#define OMAX_DOC_SHORT_DESC "Outputs OSC data from a Bluetooth LE heart rate monitor."
-#define OMAX_DOC_LONG_DESC "Reports OSC data from a Bluetooth LE heart rate monitor."
+#define OMAX_DOC_NAME "o.io.bluetoothle.sensortag"
+#define OMAX_DOC_SHORT_DESC "Outputs OSC data from a TI Sensortag."
+#define OMAX_DOC_LONG_DESC "Reports OSC data from a TI Sensortag."
 #define OMAX_DOC_INLETS_DESC (char *[]){""}
 #define OMAX_DOC_OUTLETS_DESC (char *[]){"OSC packet."}
 #define OMAX_DOC_SEEALSO (char *[]){""}
@@ -22,7 +22,7 @@
 
 t_symbol *ps_FullPacket;
 
-void ohrm_replaceSpacesWithSlashes(long len, char *buf)
+void ostag_replaceSpacesWithSlashes(long len, char *buf)
 {
 	char *ptr = buf;
 	while(ptr - buf < len && *ptr != '\0'){
@@ -33,22 +33,22 @@ void ohrm_replaceSpacesWithSlashes(long len, char *buf)
 	}
 }
 
-@interface HeartRateMonitor : NSObject <CBCentralManagerDelegate, CBPeripheralDelegate> 
+@interface SensorTag : NSObject <CBCentralManagerDelegate, CBPeripheralDelegate> 
 {
 	CBCentralManager *manager;
-	struct _ohrm *maxobj;
+	struct _ostag *maxobj;
 }
 
 // max object
-typedef struct _ohrm
+typedef struct _ostag
 {
 	t_object o;
-	HeartRateMonitor *hrm;
+	SensorTag *st;
 	void *outlet;
-} t_ohrm;
+} t_ostag;
 
 // max object forward decls
-void ohrm_outputOSCBundle(t_ohrm *x, t_symbol *msg, int argc, t_atom *argv);
+void ostag_outputOSCBundle(t_ostag *x, t_symbol *msg, int argc, t_atom *argv);
 
 @property (retain) CBCentralManager *manager;
 
@@ -57,12 +57,12 @@ void ohrm_outputOSCBundle(t_ohrm *x, t_symbol *msg, int argc, t_atom *argv);
 - (BOOL) isLECapableHardware;
 - (void) computeHeartRate:(NSData *)data peripheral:(CBPeripheral *)p OSCBundle:(t_osc_bndl_u *)b;
 - (t_symbol *) makeOSCAddressFromPeripheral:(CBPeripheral *)p withPrefix:(const char *)prefix withPostfix:(const char *)postfix;
-- (void)ohrm_init:(struct _ohrm *)x;
+- (void)ostag_init:(struct _ostag *)x;
 
 
 @end
 
-@implementation HeartRateMonitor
+@implementation SensorTag
 @synthesize manager;
 
 - (void) dealloc
@@ -201,7 +201,7 @@ void ohrm_outputOSCBundle(t_ohrm *x, t_symbol *msg, int argc, t_atom *argv);
 	t_osc_msg_u *m = osc_message_u_alloc();
 	t_symbol *s = [self makeOSCAddressFromPeripheral:p withPrefix:NULL withPostfix:"/status"];
 	osc_message_u_setAddress(m, s->s_name);
-	osc_message_u_appendString(m, status);
+	osc_message_u_appendString(m, "disconnected");
 	osc_bundle_u_addMsg(b, m);
 	t_osc_msg_u *mself = osc_message_u_alloc();
 	osc_message_u_setAddress(mself, "/self");
@@ -215,7 +215,7 @@ void ohrm_outputOSCBundle(t_ohrm *x, t_symbol *msg, int argc, t_atom *argv);
 		t_atom a[2];
 		atom_setlong(a, len);
 		atom_setlong(a + 1, (long)buf);
-		schedule_delay(maxobj, (method)ohrm_outputOSCBundle, 0, ps_FullPacket, 2, a);
+		schedule_delay(maxobj, (method)ostag_outputOSCBundle, 0, ps_FullPacket, 2, a);
 		osc_bundle_u_free(b);
 		// don't free buf here!!!
 	}
@@ -252,7 +252,8 @@ void ohrm_outputOSCBundle(t_ohrm *x, t_symbol *msg, int argc, t_atom *argv);
 
 - (void) startScan 
 {
-	[manager scanForPeripheralsWithServices:[NSArray arrayWithObject:[CBUUID UUIDWithString:@"180D"]] options:nil];
+	//[manager scanForPeripheralsWithServices:[NSArray arrayWithObject:[CBUUID UUIDWithString:@"180D"]] options:nil];
+	[manager scanForPeripheralsWithServices:nil options:nil];
 }
 
 - (void) stopScan 
@@ -288,7 +289,6 @@ void ohrm_outputOSCBundle(t_ohrm *x, t_symbol *msg, int argc, t_atom *argv);
 // Discover available services on the peripheral
 - (void) centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)aPeripheral 
 {    
-	[self sendOSCStatusBundle:aPeripheral status:"connected"];
 	[aPeripheral setDelegate:self];
 	[aPeripheral discoverServices:nil];
 }
@@ -305,94 +305,81 @@ void ohrm_outputOSCBundle(t_ohrm *x, t_symbol *msg, int argc, t_atom *argv);
 // Invoked whenever the central manager fails to create a connection with the peripheral.
 - (void)centralManager:(CBCentralManager *)central didFailToConnectPeripheral:(CBPeripheral *)aPeripheral error:(NSError *)error
 {
-	[self sendOSCStatusBundle:aPeripheral status:"disconnected"];
 	[aPeripheral setDelegate:nil];
 	[aPeripheral release];
 }
-
-/*
-2013-09-20 15:40:12.492 Max[51380:707] -[HeartRateMonitor peripheral:didDiscoverServices:]: Generic Access Profile
-2013-09-20 15:40:12.492 Max[51380:707] -[HeartRateMonitor peripheral:didDiscoverServices:]: Generic Attribute Profile
-2013-09-20 15:40:12.493 Max[51380:707] -[HeartRateMonitor peripheral:didDiscoverServices:]: Unknown (<180d>) heart rate
-2013-09-20 15:40:12.493 Max[51380:707] -[HeartRateMonitor peripheral:didDiscoverServices:]: Unknown (<180a>) device info
-2013-09-20 15:40:12.493 Max[51380:707] -[HeartRateMonitor peripheral:didDiscoverServices:]: Unknown (<180f>) battery service
-2013-09-20 15:40:12.493 Max[51380:707] -[HeartRateMonitor peripheral:didDiscoverServices:]: Unknown (<6217ff49 ac7b547e eecf016a 06970ba9>)
- */
 
 #pragma mark - CBPeripheral delegate methods
 // Invoked upon completion of a -[discoverServices:] request.
 // Discover available characteristics on interested services
 - (void) peripheral:(CBPeripheral *)aPeripheral didDiscoverServices:(NSError *)error 
 {
-	for(CBService *aService in aPeripheral.services){
-		// Heart Rate Service
-		if([aService.UUID isEqual:[CBUUID UUIDWithString:@"180D"]]){
-			[aPeripheral discoverCharacteristics:nil forService:aService];
-		}
+	/*
+2013-10-02 14:57:14.928 Max[24179:707] -[SensorTag peripheral:didDiscoverServices:]: Generic Access Profile 1800
+2013-10-02 14:57:14.928 Max[24179:707] -[SensorTag peripheral:didDiscoverServices:]: Generic Attribute Profile 1801
+2013-10-02 14:57:14.929 Max[24179:707] -[SensorTag peripheral:didDiscoverServices:]: Unknown (<180a>) Device Information Service
+2013-10-02 14:57:14.929 Max[24179:707] -[SensorTag peripheral:didDiscoverServices:]: Unknown (<f000aa00 04514000 b0000000 00000000>)
+2013-10-02 14:57:14.929 Max[24179:707] -[SensorTag peripheral:didDiscoverServices:]: Unknown (<f000aa10 04514000 b0000000 00000000>)
+2013-10-02 14:57:14.930 Max[24179:707] -[SensorTag peripheral:didDiscoverServices:]: Unknown (<f000aa20 04514000 b0000000 00000000>)
+2013-10-02 14:57:14.930 Max[24179:707] -[SensorTag peripheral:didDiscoverServices:]: Unknown (<f000aa30 04514000 b0000000 00000000>)
+2013-10-02 14:57:14.930 Max[24179:707] -[SensorTag peripheral:didDiscoverServices:]: Unknown (<f000aa40 04514000 b0000000 00000000>)
+2013-10-02 14:57:14.930 Max[24179:707] -[SensorTag peripheral:didDiscoverServices:]: Unknown (<f000aa50 04514000 b0000000 00000000>)
+2013-10-02 14:57:14.931 Max[24179:707] -[SensorTag peripheral:didDiscoverServices:]: Unknown (<ffe0>)
+2013-10-02 14:57:14.931 Max[24179:707] -[SensorTag peripheral:didDiscoverServices:]: Unknown (<f000aa60 04514000 b0000000 00000000>)
+2013-10-02 14:57:14.931 Max[24179:707] -[SensorTag peripheral:didDiscoverServices:]: Unknown (<f000ffc0 04514000 b0000000 00000000>)
+	 */
+	for(CBService *aService in aPeripheral.services)
+		{
+			NSLog(@"%s: %@\n", __func__, aService.UUID);
+			if([aService.UUID isEqual:[CBUUID UUIDWithString:@"1800"]] ||
+			   //[aService.UUID isEqual:[CBUUID UUIDWithString:@"1801"]] ||
+			   [aService.UUID isEqual:[CBUUID UUIDWithString:@"180a"]] ||
+			   [aService.UUID isEqual:[CBUUID UUIDWithString:@"ffe0"]])// ||
+				//[aService.UUID isEqual:[CBUUID UUIDWithString:@"f000aa00-04514000-b0000000-00000000"]])
+				{
+					[aPeripheral discoverCharacteristics:nil forService:aService];
+					/*
+					// Heart Rate Service
+					if([aService.UUID isEqual:[CBUUID UUIDWithString:@"180D"]]){
+					[aPeripheral discoverCharacteristics:nil forService:aService];
+					}
         
-		// Device Information Service
-		if([aService.UUID isEqual:[CBUUID UUIDWithString:@"180A"]]){
-			[aPeripheral discoverCharacteristics:nil forService:aService];
-		}
+					// Device Information Service
+					if([aService.UUID isEqual:[CBUUID UUIDWithString:@"180A"]]){
+					[aPeripheral discoverCharacteristics:nil forService:aService];
+					}
         
-		// GAP (Generic Access Profile) for Device Name
-		if([aService.UUID isEqual:[CBUUID UUIDWithString:CBUUIDGenericAccessProfileString]]){
-			[aPeripheral discoverCharacteristics:nil forService:aService];
+					// GAP (Generic Access Profile) for Device Name
+					if([aService.UUID isEqual:[CBUUID UUIDWithString:CBUUIDGenericAccessProfileString]]){
+					[aPeripheral discoverCharacteristics:nil forService:aService];
+					}
+					*/
+				}
 		}
-
-		if([aService.UUID isEqual:[CBUUID UUIDWithString:@"6217ff49ac7b547eeecf016a06970ba9"]]){
-			[aPeripheral discoverCharacteristics:nil forService:aService];
-		}
-
-		NSLog(@"%s: %@", __func__, aService.UUID);
-	}
 }
 
 // Invoked upon completion of a -[discoverCharacteristics:forService:] request.
 // Perform appropriate operations on interested characteristics
 - (void) peripheral:(CBPeripheral *)aPeripheral didDiscoverCharacteristicsForService:(CBService *)service error:(NSError *)error 
 {    
-	if([service.UUID isEqual:[CBUUID UUIDWithString:@"180D"]]){
+	NSLog(@"%s: %@\n", __func__, service.UUID);
+	if([service.UUID isEqual:[CBUUID UUIDWithString:@"180a"]]){
 		for(CBCharacteristic *aChar in service.characteristics){
-			// Set notification on heart rate measurement
-			if([aChar.UUID isEqual:[CBUUID UUIDWithString:@"2A37"]]){
-				// heart rate monitor characteristic
-				[aPeripheral setNotifyValue:YES forCharacteristic:aChar];
-			}
-			// Read body sensor location
-			if([aChar.UUID isEqual:[CBUUID UUIDWithString:@"2A38"]]){
-				// body sensor location characteristic
-				[aPeripheral readValueForCharacteristic:aChar];
-			} 
-			// Write heart rate control point
-			if([aChar.UUID isEqual:[CBUUID UUIDWithString:@"2A39"]]){
-				uint8_t val = 1;
-				NSData* valData = [NSData dataWithBytes:(void*)&val length:sizeof(val)];
-				[aPeripheral writeValue:valData forCharacteristic:aChar type:CBCharacteristicWriteWithResponse];
-			}
-		}
-	}
-	if([service.UUID isEqual:[CBUUID UUIDWithString:CBUUIDGenericAccessProfileString]]){
-		for(CBCharacteristic *aChar in service.characteristics){
-			// Read device name
-			if([aChar.UUID isEqual:[CBUUID UUIDWithString:CBUUIDDeviceNameString]]){
-				// device name characteristic
+			if([aChar.UUID isEqual:[CBUUID UUIDWithString:@"2A29"]] || // manufacturer name
+			   [aChar.UUID isEqual:[CBUUID UUIDWithString:@"2A24"]] || // model number
+			   [aChar.UUID isEqual:[CBUUID UUIDWithString:@"2A25"]]){ // serial number
 				[aPeripheral readValueForCharacteristic:aChar];
 			}
 		}
-	}
-	if([service.UUID isEqual:[CBUUID UUIDWithString:@"180A"]]){
+	}else if([service.UUID isEqual:[CBUUID UUIDWithString:@"1800"]]){
 		for(CBCharacteristic *aChar in service.characteristics){
-			// Read manufacturer name
-			if([aChar.UUID isEqual:[CBUUID UUIDWithString:@"2A29"]]){
-				// device manufacturer name characteristic
+			if([aChar.UUID isEqual:[CBUUID UUIDWithString:@"2A00"]]){ // device name
 				[aPeripheral readValueForCharacteristic:aChar];
 			}
 		}
-	}
-	if([service.UUID isEqual:[CBUUID UUIDWithString:@"6217ff49ac7b547eeecf016a06970ba9"]]){
+	}else if([service.UUID isEqual:[CBUUID UUIDWithString:@"ffe0"]]){
 		for(CBCharacteristic *aChar in service.characteristics){
-			NSLog(@"%s: %@\n", __func__, aChar.UUID);
+			NSLog(@"%s: characteristic for service ffe0: %@\n", __func__, aChar.UUID);
 		}
 	}
 }
@@ -404,72 +391,27 @@ void ohrm_outputOSCBundle(t_ohrm *x, t_symbol *msg, int argc, t_atom *argv);
 	t_osc_msg_u *msg_self = [self makeOSCSelfMessage:aPeripheral];
 	osc_bundle_u_addMsg(b, msg_self);
 	const char *name = [aPeripheral.name UTF8String];
-	if([characteristic.UUID isEqual:[CBUUID UUIDWithString:@"2A37"]]){
-		// Updated value for heart rate measurement received
-		if((characteristic.value)  || !error){
-			// Update UI with heart rate data
-			[self computeHeartRate:characteristic.value peripheral:aPeripheral OSCBundle:b];
-		}
-	}else  if([characteristic.UUID isEqual:[CBUUID UUIDWithString:@"2A38"]]){
-		// Value for body sensor location received
-		NSData * updatedValue = characteristic.value;        
-		uint8_t* dataPointer = (uint8_t*)[updatedValue bytes];
-		if(dataPointer){
-			t_osc_msg_u *msg_data = osc_message_u_alloc();
-			osc_bundle_u_addMsg(b, msg_data);
-			char data_address[128];
-			uint8_t location = dataPointer[0];
-			char *locationString;
-			switch(location)
-				{
-				case 0:
-					locationString = "Other";
-					break;
-				case 1:
-					locationString = "Chest";
-					break;
-				case 2:
-					locationString = "Wrist";
-					break;
-				case 3:
-					locationString = "Finger";
-					break;
-				case 4:
-					locationString = "Hand";
-					break;
-				case 5:
-					locationString = "Ear Lobe";
-					break;
-				case 6: 
-					locationString = "Foot";
-					break;
-				default:
-					locationString = "Reserved";
-					break;
-				}
-			sprintf(data_address, "/%s/location", name);
-			osc_message_u_appendString(msg_data, locationString);
-			ohrm_replaceSpacesWithSlashes(sizeof(data_address), data_address);
-			osc_message_u_setAddress(msg_data, data_address);
-		}
-	}else if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:CBUUIDDeviceNameString]]){
-		// Value for device Name received
+	if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:@"2A24"]]){
+		// Value for model number received
+		NSLog(@"%s: model number: %s\n", __func__, [characteristic.value bytes]);
+		/*
 		t_osc_msg_u *msg_data = osc_message_u_alloc();
 		osc_bundle_u_addMsg(b, msg_data);
 		char data_address[128];
 		sprintf(data_address, "/%s/devicename", name);
 		osc_message_u_appendString(msg_data, [characteristic.value bytes]);
-		ohrm_replaceSpacesWithSlashes(sizeof(data_address), data_address);
+		ostag_replaceSpacesWithSlashes(sizeof(data_address), data_address);
 		osc_message_u_setAddress(msg_data, data_address);
+		*/
+	}else if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:@"2A25"]]){
+		// Value for serial number received
+		NSLog(@"%s: serial number: %s\n", __func__, [characteristic.value bytes]);
 	}else if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:@"2A29"]]){
 		// Value for manufacturer name received
-		t_osc_msg_u *msg_data = osc_message_u_alloc();
-		osc_bundle_u_addMsg(b, msg_data);
-		char data_address[128];
-		sprintf(data_address, "/%s/manufacturer", name);
-		osc_message_u_appendString(msg_data, [characteristic.value bytes]);
-		ohrm_replaceSpacesWithSlashes(sizeof(data_address), data_address);
-		osc_message_u_setAddress(msg_data, data_address);
+		NSLog(@"%s: manufacturer name: %s\n", __func__, [characteristic.value bytes]);
+	}else if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:@"2A00"]]){
+		// Value for device name received
+		NSLog(@"%s: device name: %s\n", __func__, [characteristic.value bytes]);
 	}else{
 	}
 	long len = 0;
@@ -479,40 +421,14 @@ void ohrm_outputOSCBundle(t_ohrm *x, t_symbol *msg, int argc, t_atom *argv);
 		t_atom a[2];
 		atom_setlong(a, len);
 		atom_setlong(a + 1, (long)buf);
-		schedule_delay(maxobj, (method)ohrm_outputOSCBundle, 0, ps_FullPacket, 2, a);
+		schedule_delay(maxobj, (method)ostag_outputOSCBundle, 0, ps_FullPacket, 2, a);
 		osc_bundle_u_free(b);
 		// don't free buf here!! it's pointer has been passed to the scheduler and will be freed when
 		// the callback executes
 	}
-	[aPeripheral readRSSI];
 }
 
-- (void)peripheralDidUpdateRSSI:(CBPeripheral *)peripheral error:(NSError *)error
-{
-	//NSLog(@"%@", [peripheral RSSI]);
-	t_osc_bndl_u *b = osc_bundle_u_alloc();
-	t_osc_msg_u *msg_self = [self makeOSCSelfMessage:peripheral];
-	osc_bundle_u_addMsg(b, msg_self);
-	int rssi = [peripheral.RSSI intValue];
-	t_osc_msg_u *data = osc_message_u_alloc();
-	t_symbol *s = [self makeOSCAddressFromPeripheral:peripheral withPrefix:NULL withPostfix:"/RSSI/dBm"];
-	osc_message_u_setAddress(data, s->s_name);
-	osc_message_u_appendInt32(data, rssi);
-	osc_bundle_u_addMsg(b, data);
-	long len = 0;
-	char *buf = NULL;
-	osc_bundle_u_serialize(b, &len, &buf);
-	if(buf){
-		t_atom a[2];
-		atom_setlong(a, len);
-		atom_setlong(a + 1, (long)buf);
-		schedule_delay(maxobj, (method)ohrm_outputOSCBundle, 0, ps_FullPacket, 2, a);
-		osc_bundle_u_free(b);
-		// don't free buf here!!!
-	}
-}
-
-- (void)ohrm_init:(struct _ohrm *)x
+- (void)ostag_init:(struct _ostag *)x
 {
 	manager = [[CBCentralManager alloc] initWithDelegate:self queue:nil];
 	[self startScan];
@@ -523,9 +439,9 @@ void ohrm_outputOSCBundle(t_ohrm *x, t_symbol *msg, int argc, t_atom *argv);
 
 // Max object
 
-t_class *ohrm_class;
+t_class *ostag_class;
 
-void ohrm_outputOSCBundle(t_ohrm *x, t_symbol *msg, int argc, t_atom *argv)
+void ostag_outputOSCBundle(t_ostag *x, t_symbol *msg, int argc, t_atom *argv)
 {
 	OMAX_UTIL_GET_LEN_AND_PTR;
 	if(ptr){
@@ -535,35 +451,35 @@ void ohrm_outputOSCBundle(t_ohrm *x, t_symbol *msg, int argc, t_atom *argv)
 
 }
 
-void ohrm_bang(t_ohrm *x)
+void ostag_bang(t_ostag *x)
 {
 }
 
-void ohrm_assist(t_ohrm *x, void *b, long io, long num, char *buf)
+void ostag_assist(t_ostag *x, void *b, long io, long num, char *buf)
 {
 	omax_doc_assist(io, num, buf);
 }
 
-void ohrm_doc(t_ohrm *x)
+void ostag_doc(t_ostag *x)
 {
 	omax_doc_outletDoc(x->outlet);
 }
 
-void ohrm_free(t_ohrm *x)
+void ostag_free(t_ostag *x)
 {
-	HeartRateMonitor *hrm = x->hrm;
-	[hrm release];
+	SensorTag *st = x->st;
+	[st release];
 }
 
-void *ohrm_new(t_symbol *msg, short argc, t_atom *argv)
+void *ostag_new(t_symbol *msg, short argc, t_atom *argv)
 {
-	t_ohrm *x = NULL;
-	HeartRateMonitor *hrm = [[HeartRateMonitor alloc] init];
-	if(hrm){
-		if((x = (t_ohrm *)object_alloc(ohrm_class))){
+	t_ostag *x = NULL;
+	SensorTag *st = [[SensorTag alloc] init];
+	if(st){
+		if((x = (t_ostag *)object_alloc(ostag_class))){
 			x->outlet = outlet_new((t_object *)x, "FullPacket");
-			[hrm ohrm_init:x];
-			x->hrm = hrm;
+			[st ostag_init:x];
+			x->st = st;
 		}
 	}
 	return x;
@@ -571,18 +487,18 @@ void *ohrm_new(t_symbol *msg, short argc, t_atom *argv)
 
 int main(void)
 {
-	t_class *c = class_new("o.io.bluetoothle.hrm", (method)ohrm_new, (method)ohrm_free, sizeof(t_ohrm), 0L, A_GIMME, 0);
+	t_class *c = class_new("o.io.bluetoothle.sensortag", (method)ostag_new, (method)ostag_free, sizeof(t_ostag), 0L, A_GIMME, 0);
 
-	//class_addmethod(c, (method)ohrm_fullPacket, "FullPacket", A_GIMME, 0);
-	class_addmethod(c, (method)ohrm_assist, "assist", A_CANT, 0);
-	class_addmethod(c, (method)ohrm_doc, "doc", 0);
-	//class_addmethod(c, (method)ohrm_bang, "bang", 0);
+	//class_addmethod(c, (method)ostag_fullPacket, "FullPacket", A_GIMME, 0);
+	class_addmethod(c, (method)ostag_assist, "assist", A_CANT, 0);
+	class_addmethod(c, (method)ostag_doc, "doc", 0);
+	//class_addmethod(c, (method)ostag_bang, "bang", 0);
 	class_addmethod(c, (method)odot_version, "version", 0);
 
 	ps_FullPacket = gensym("FullPacket");
 	
 	class_register(CLASS_BOX, c);
-	ohrm_class = c;
+	ostag_class = c;
 
 	common_symbols_init();
 

@@ -1,6 +1,0 @@
-Leap.Vector
-=============
-
-.. autoclass:: Leap.Vector
-   :members:
-   :undoc-members:

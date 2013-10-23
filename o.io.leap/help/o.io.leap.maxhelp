@@ -3,9 +3,8 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 6,
-			"minor" : 1,
-			"revision" : 3,
-			"architecture" : "x86"
+			"minor" : 0,
+			"revision" : 8
 		}
 ,
 		"rect" : [ 11.0, 44.0, 1041.0, 660.0 ],
@@ -28,6 +27,51 @@
 		"digest" : "",
 		"tags" : "",
 		"boxes" : [ 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-9",
+					"linecount" : 2,
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 703.0, 286.0, 50.0, 31.0 ],
+					"text" : "3.141593"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-8",
+					"linecount" : 2,
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 517.0, 286.0, 50.0, 31.0 ],
+					"text" : "3.141593"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-7",
+					"linecount" : 2,
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 368.0, 286.0, 50.0, 31.0 ],
+					"text" : "3.141593"
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
@@ -160,13 +204,12 @@
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"id" : "obj-15",
-					"linecount" : 2,
 					"maxclass" : "message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 204.5, 286.0, 50.0, 31.0 ],
-					"text" : "25.681087"
+					"patching_rect" : [ 204.5, 286.0, 50.0, 18.0 ],
+					"text" : "0."
 				}
 
 			}
@@ -189,13 +232,13 @@
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"id" : "obj-5",
-					"linecount" : 147,
+					"linecount" : 97,
 					"maxclass" : "o.message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 14.0, 113.0, 150.0, 1977.0 ],
-					"text" : "/timeStamp \"1.45991e+09.\" \n/Hands 1. \n/hand/leftmost/id 84. \n/hand/leftmost/palm/positiony/x 25.6811 \n/hand/leftmost/palm/positiony/y 205.325 \n/hand/leftmost/palm/positiony/z -6.6657 \n/hand/leftmost/direction/x -0.0468082 \n/hand/leftmost/direction/y 0.661151 \n/hand/leftmost/direction/z -0.748791 \n/hand/leftmost/pitch 1.53834 \n/hand/leftmost/yaw 1.31684 \n/hand/leftmost/roll 3.01716 \n/hand/leftmost/palm/velocity/x -1.1407 \n/hand/leftmost/palm/velocity/y 41.2889 \n/hand/leftmost/palm/velocity/z -43.5368 \n/hand/leftmost/palm/sphere/center/x 27.9089 \n/hand/leftmost/palm/sphere/center/y 213.644 \n/hand/leftmost/palm/sphere/center/z -34.6833 \n/hand/leftmost/palm/sphere/radius 66.5794 \n/hand/leftmost/palm/normal/x 0.652914 \n/hand/leftmost/palm/normal/y 0.587568 \n/hand/leftmost/palm/normal/z 0.477983 \n/hand/leftmost/distance/from/rightmost 0. \n/hand/rightmost/id 84. \n/hand/rightmost/palm/positiony/x 25.6811 \n/hand/rightmost/palm/positiony/y 205.325 \n/hand/rightmost/palm/positiony/z -6.6657 \n/hand/rightmost/direction/x -0.0468082 \n/hand/rightmost/direction/y 0.661151 \n/hand/rightmost/direction/z -0.748791 \n/hand/rightmost/pitch 1.53834 \n/hand/rightmost/yaw 1.31684 \n/hand/rightmost/roll 3.01716 \n/hand/rightmost/palm/velocity/x -1.1407 \n/hand/rightmost/palm/velocity/y 41.2889 \n/hand/rightmost/palm/velocity/z -43.5368 \n/hand/rightmost/palm/sphere/center/x 27.9089 \n/hand/rightmost/palm/sphere/center/y 213.644 \n/hand/rightmost/palm/sphere/center/z -34.6833 \n/hand/rightmost/palm/sphere/radius 66.5794 \n/hand/rightmost/palm/normal/x 0.652914 \n/hand/rightmost/palm/normal/y 0.587568 \n/hand/rightmost/palm/normal/z 0.477983 \n/hand/rightmost/distance/from/leftmost 0. \n/hand/1/id 84. \n/hand/1/fingers 0. \n/hand/1/pitch 0.72332 \n/hand/1/yaw -0.0624304 \n/hand/1/roll 2.30357 \n/hand/1/palm/hand_id 84. \n/hand/1/palm/frame_id 68256. \n/hand/1/palm/position/x 25.6811 \n/hand/1/palm/position/y 205.325 \n/hand/1/palm/position/z -6.6657 \n/hand/1/palm/direction/x -0.0468082 \n/hand/1/palm/direction/y 0.661151 \n/hand/1/palm/direction/z -0.748791 \n/hand/1/palm/velocity/x -1.1407 \n/hand/1/palm/velocity/x 41.2889 \n/hand/1/palm/velocity/z -43.5368 \n/hand/1/palm/normal/x 0.652914 \n/hand/1/palm/normal/y 0.587568 \n/hand/1/palm/normal/z 0.477983 \n/hand/0/sphere/id 84. \n/hand/0/sphere/frame_id 68256. \n/hand/1/sphere/center/x 27.9089 \n/hand/1/sphere/center/y 213.644 \n/hand/1/sphere/center/z -34.6833 \n/hand/1/sphere/radius 66.5794 \n/hand/1/interactionBox/depth 154.742 \n/hand/1/interactionBox/center/x 0. \n/hand/1/interactionBox/center/y 200. \n/hand/1/interactionBox/center/z 0. \n/hand/1/interactionBox/position/normalized/x 0.615984 \n/hand/1/interactionBox/position/normalized/y 0.52405 \n/hand/1/interactionBox/position/normalized/z 0.456924 \n/hand/1/interactionBox/width 221.418 \n/hand/1/interactionBox/height 221.418 ",
+					"patching_rect" : [ 14.0, 113.0, 157.0, 1307.0 ],
+					"text" : "/timeStamp 4.63991e+09. \n/Hands 0. \n/hand/leftmost/id -1. \n/hand/leftmost/palm/position/vector 0. 0. 0. \n/hand/leftmost/palm/position/x 0. \n/hand/leftmost/palm/position/y 0. \n/hand/leftmost/palm/position/z 0. \n/hand/leftmost/direction/vector 0. 0. 0. \n/hand/leftmost/direction/x 0. \n/hand/leftmost/direction/y 0. \n/hand/leftmost/direction/z 0. \n/hand/leftmost/pitch 3.14159 \n/hand/leftmost/yaw 3.14159 \n/hand/leftmost/roll 3.14159 \n/hand/leftmost/palm/velocity/vector 0. 0. 0. \n/hand/leftmost/palm/velocity/x 0. \n/hand/leftmost/palm/velocity/y 0. \n/hand/leftmost/palm/velocity/z 0. \n/hand/leftmost/palm/sphere/center/vector 0. 0. 0. \n/hand/leftmost/palm/sphere/center/x 0. \n/hand/leftmost/palm/sphere/center/y 0. \n/hand/leftmost/palm/sphere/center/z 0. \n/hand/leftmost/palm/sphere/radius 0. \n/hand/leftmost/palm/normal/vector 0. 0. 0. \n/hand/leftmost/palm/normal/x 0. \n/hand/leftmost/palm/normal/y 0. \n/hand/leftmost/palm/normal/z 0. \n/hand/leftmost/distance/from/rightmost 0. \n/hand/rightmost/id -1. \n/hand/rightmost/palm/positiony/vector 0. 0. 0. \n/hand/rightmost/palm/positiony/x 0. \n/hand/rightmost/palm/positiony/y 0. \n/hand/rightmost/palm/positiony/z 0. \n/hand/rightmost/direction/vector 0. 0. 0. \n/hand/rightmost/direction/x 0. \n/hand/rightmost/direction/y 0. \n/hand/rightmost/direction/z 0. \n/hand/rightmost/pitch 3.14159 \n/hand/rightmost/yaw 3.14159 \n/hand/rightmost/roll 3.14159 \n/hand/rightmost/palm/velocity/vector 0. 0. 0. \n/hand/rightmost/palm/velocity/x 0. \n/hand/rightmost/palm/velocity/y 0. \n/hand/rightmost/palm/velocity/z 0. \n/hand/rightmost/palm/sphere/center/vector 0. 0. 0. \n/hand/rightmost/palm/sphere/center/x 0. \n/hand/rightmost/palm/sphere/center/y 0. \n/hand/rightmost/palm/sphere/center/z 0. \n/hand/rightmost/palm/sphere/radius 0. \n/hand/rightmost/palm/normal/vector 0. 0. 0. \n/hand/rightmost/palm/normal/x 0. \n/hand/rightmost/palm/normal/y 0. \n/hand/rightmost/palm/normal/z 0. \n/hand/rightmost/distance/from/leftmost 0. \n",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -328,6 +371,33 @@
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-6", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-7", 1 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-6", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-8", 1 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-6", 2 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-9", 1 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-6", 3 ]
 				}
 
 			}
