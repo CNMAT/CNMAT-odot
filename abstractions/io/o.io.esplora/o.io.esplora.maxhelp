@@ -4,11 +4,11 @@
 		"appversion" : 		{
 			"major" : 6,
 			"minor" : 1,
-			"revision" : 3,
+			"revision" : 4,
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 100.0, 100.0, 1326.0, 564.0 ],
+		"rect" : [ 61.0, 273.0, 1326.0, 564.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -28,6 +28,22 @@
 		"digest" : "",
 		"tags" : "",
 		"boxes" : [ 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-14",
+					"linecount" : 2,
+					"maxclass" : "o.message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 585.0, 480.0, 114.0, 34.0 ],
+					"text" : "/manifest 3 3 7543 \n/serialnumber 1 ",
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
@@ -66,7 +82,7 @@
 						"appversion" : 						{
 							"major" : 6,
 							"minor" : 1,
-							"revision" : 3,
+							"revision" : 4,
 							"architecture" : "x86"
 						}
 ,
@@ -205,7 +221,7 @@
 						"appversion" : 						{
 							"major" : 6,
 							"minor" : 1,
-							"revision" : 3,
+							"revision" : 4,
 							"architecture" : "x86"
 						}
 ,
@@ -384,12 +400,13 @@
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"id" : "obj-32",
+					"linecount" : 2,
 					"maxclass" : "o.message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 990.0, 495.0, 210.0, 21.0 ],
-					"text" : "/photoresistor 0.956989 \n",
+					"patching_rect" : [ 990.0, 495.0, 210.0, 34.0 ],
+					"text" : "/manifest 3 3 146770 \n/serialnumber 1 \n",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -431,7 +448,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 585.0, 401.0, 210.0, 21.0 ],
-					"text" : "/horizontal 0.816227 \n",
+					"text" : "/horizontal 0. \n",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -466,7 +483,7 @@
 						"appversion" : 						{
 							"major" : 6,
 							"minor" : 1,
-							"revision" : 3,
+							"revision" : 4,
 							"architecture" : "x86"
 						}
 ,
@@ -1001,13 +1018,13 @@
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"id" : "obj-4",
-					"linecount" : 10,
+					"linecount" : 7,
 					"maxclass" : "o.message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 900.0, 275.0, 152.0, 141.0 ],
-					"text" : "/portname \"usbmodemfa141\" \"Bluetooth-PDA-Sync\" \"Bluetooth-Modem\" \n/rate/output 103 \n/rate/input 0 \n/mediansize/received 174.5 \n/baud 115200 \n/port \"a\" \n",
+					"patching_rect" : [ 900.0, 275.0, 152.0, 101.0 ],
+					"text" : "/portname \n/rate/output 90 \n/rate/input 0 \n/mediansize/received 188.5 \n/baud 115200 \n/port \"a\" \n",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -1036,8 +1053,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "FullPacket" ],
-					"patching_rect" : [ 118.0, 216.0, 73.0, 20.0 ],
-					"text" : "o.io.esplora"
+					"patching_rect" : [ 118.0, 216.0, 83.0, 20.0 ],
+					"text" : "o.io.esplora a"
 				}
 
 			}
@@ -1067,7 +1084,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 437.0, 355.0, 210.0, 21.0 ],
-					"text" : "/loudness 0.00195503 \n",
+					"text" : "/loudness 0. \n",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -1085,7 +1102,7 @@
 						"appversion" : 						{
 							"major" : 6,
 							"minor" : 1,
-							"revision" : 3,
+							"revision" : 4,
 							"architecture" : "x86"
 						}
 ,
@@ -1137,7 +1154,7 @@
 										"appversion" : 										{
 											"major" : 6,
 											"minor" : 1,
-											"revision" : 3,
+											"revision" : 4,
 											"architecture" : "x86"
 										}
 ,
@@ -1545,7 +1562,7 @@
 										"appversion" : 										{
 											"major" : 6,
 											"minor" : 1,
-											"revision" : 3,
+											"revision" : 4,
 											"architecture" : "x86"
 										}
 ,
@@ -2344,15 +2361,15 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "o.io.esplora.maxpat",
-				"bootpath" : "/Users/jml/Documents/materials/programming/max_files/5_berkeley/projects/cnmat/repositories/git/CNMAT-odot/abstractions",
+				"bootpath" : "/Users/jml/Documents/materials/programming/max_files/5_berkeley/projects/cnmat/repositories/git/CNMAT-odot/abstractions/io/o.io.esplora",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.io.slipserial.maxpat",
-				"bootpath" : "/Users/jml/Documents/materials/programming/max_files/5_berkeley/projects/cnmat/repositories/git/CNMAT-odot/abstractions",
-				"patcherrelativepath" : ".",
+				"bootpath" : "/Users/jml/Documents/materials/programming/max_files/5_berkeley/projects/cnmat/repositories/git/CNMAT-odot/abstractions/io",
+				"patcherrelativepath" : "..",
 				"type" : "JSON",
 				"implicit" : 1
 			}
@@ -2390,6 +2407,10 @@
 			}
 , 			{
 				"name" : "o.collect.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.union.mxo",
 				"type" : "iLaX"
 			}
  ]
