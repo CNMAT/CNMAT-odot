@@ -3,11 +3,12 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 6,
-			"minor" : 0,
-			"revision" : 3
+			"minor" : 1,
+			"revision" : 3,
+			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 140.0, 44.0, 1144.0, 751.0 ],
+		"rect" : [ 162.0, 44.0, 1144.0, 751.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
@@ -128,22 +129,6 @@
 				"box" : 				{
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
-					"id" : "obj-9",
-					"linecount" : 3,
-					"maxclass" : "o.message",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 656.0, 710.0, 150.0, 48.0 ],
-					"text" : "/left/x -0.02 \n/left/y 0.68 \n/left/z 0.680294 \n",
-					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontname" : "Arial",
-					"fontsize" : 12.0,
 					"id" : "obj-8",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
@@ -202,7 +187,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 165.0, 553.0, 36.0, 20.0 ],
+					"patching_rect" : [ 165.0, 553.0, 36.0, 19.0 ],
 					"text" : "o.var"
 				}
 
@@ -216,7 +201,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 317.0, 528.0, 36.0, 20.0 ],
+					"patching_rect" : [ 317.0, 528.0, 36.0, 19.0 ],
 					"text" : "o.var"
 				}
 
@@ -230,7 +215,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 234.0, 553.0, 36.0, 20.0 ],
+					"patching_rect" : [ 234.0, 553.0, 36.0, 19.0 ],
 					"text" : "o.var"
 				}
 
@@ -244,7 +229,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 836.0, 564.0, 36.0, 20.0 ],
+					"patching_rect" : [ 836.0, 564.0, 36.0, 19.0 ],
 					"text" : "o.var"
 				}
 
@@ -258,7 +243,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 916.0, 628.0, 36.0, 20.0 ],
+					"patching_rect" : [ 916.0, 628.0, 36.0, 19.0 ],
 					"text" : "o.var"
 				}
 
@@ -272,7 +257,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 873.0, 593.0, 36.0, 20.0 ],
+					"patching_rect" : [ 873.0, 593.0, 36.0, 19.0 ],
 					"text" : "o.var"
 				}
 
@@ -306,20 +291,6 @@
 				"box" : 				{
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
-					"id" : "obj-3",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 2,
-					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 17.0, 97.0, 32.5, 20.0 ],
-					"text" : "t l l"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontname" : "Arial",
-					"fontsize" : 12.0,
 					"id" : "obj-146",
 					"maxclass" : "newobj",
 					"numinlets" : 3,
@@ -329,8 +300,9 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 6,
-							"minor" : 0,
-							"revision" : 3
+							"minor" : 1,
+							"revision" : 3,
+							"architecture" : "x86"
 						}
 ,
 						"rect" : [ 385.0, 44.0, 718.0, 704.0 ],
@@ -1346,26 +1318,21 @@
 								}
 
 							}
- ],
-						"dependency_cache" : [ 							{
-								"name" : "o.route.mxo",
-								"type" : "iLaX"
-							}
  ]
 					}
 ,
 					"patching_rect" : [ 884.666687, 424.0, 74.0, 20.0 ],
 					"saved_object_attributes" : 					{
-						"description" : "",
-						"globalpatchername" : "",
-						"fontface" : 0,
-						"fontsize" : 14.0,
-						"tags" : "",
 						"default_fontface" : 0,
-						"digest" : "",
 						"default_fontname" : "Andale Mono",
+						"default_fontsize" : 14.0,
+						"description" : "",
+						"digest" : "",
+						"fontface" : 0,
 						"fontname" : "Andale Mono",
-						"default_fontsize" : 14.0
+						"fontsize" : 14.0,
+						"globalpatchername" : "",
+						"tags" : ""
 					}
 ,
 					"text" : "p drawPoint"
@@ -1381,7 +1348,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 933.0, 575.0, 91.0, 20.0 ],
+					"patching_rect" : [ 933.0, 575.0, 91.0, 19.0 ],
 					"text" : "prepend /right/z"
 				}
 
@@ -1395,7 +1362,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 903.0, 545.0, 91.0, 20.0 ],
+					"patching_rect" : [ 903.0, 545.0, 91.0, 19.0 ],
 					"text" : "prepend /right/y"
 				}
 
@@ -1409,7 +1376,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 873.0, 515.0, 91.0, 20.0 ],
+					"patching_rect" : [ 873.0, 515.0, 91.0, 19.0 ],
 					"text" : "prepend /right/x"
 				}
 
@@ -1444,8 +1411,9 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 6,
-							"minor" : 0,
-							"revision" : 3
+							"minor" : 1,
+							"revision" : 3,
+							"architecture" : "x86"
 						}
 ,
 						"rect" : [ 385.0, 44.0, 718.0, 704.0 ],
@@ -2461,26 +2429,21 @@
 								}
 
 							}
- ],
-						"dependency_cache" : [ 							{
-								"name" : "o.route.mxo",
-								"type" : "iLaX"
-							}
  ]
 					}
 ,
 					"patching_rect" : [ 189.0, 398.0, 74.0, 20.0 ],
 					"saved_object_attributes" : 					{
-						"description" : "",
-						"globalpatchername" : "",
-						"fontface" : 0,
-						"fontsize" : 14.0,
-						"tags" : "",
 						"default_fontface" : 0,
-						"digest" : "",
 						"default_fontname" : "Andale Mono",
+						"default_fontsize" : 14.0,
+						"description" : "",
+						"digest" : "",
+						"fontface" : 0,
 						"fontname" : "Andale Mono",
-						"default_fontsize" : 14.0
+						"fontsize" : 14.0,
+						"globalpatchername" : "",
+						"tags" : ""
 					}
 ,
 					"text" : "p drawPoint"
@@ -2496,7 +2459,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 341.0, 457.0, 84.0, 20.0 ],
+					"patching_rect" : [ 341.0, 457.0, 84.0, 19.0 ],
 					"text" : "prepend /left/z"
 				}
 
@@ -2510,7 +2473,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 220.0, 457.0, 84.0, 20.0 ],
+					"patching_rect" : [ 220.0, 457.0, 84.0, 19.0 ],
 					"text" : "prepend /left/y"
 				}
 
@@ -2524,7 +2487,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 117.0, 457.0, 84.0, 20.0 ],
+					"patching_rect" : [ 117.0, 457.0, 84.0, 19.0 ],
 					"text" : "prepend /left/x"
 				}
 
@@ -2561,12 +2524,13 @@
 				"box" : 				{
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
+					"frgb" : 0.0,
 					"id" : "obj-38",
 					"linecount" : 5,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 228.0, 5.0, 214.0, 76.0 ],
+					"patching_rect" : [ 228.0, 5.0, 214.0, 74.0 ],
 					"text" : "o.io.gametrak.display2\n\nAnother version with simplified mouse controls at the expense of 3 independant control variables. "
 				}
 
@@ -2652,7 +2616,7 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-3", 0 ],
+					"destination" : [ "obj-12", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-10", 0 ]
@@ -2689,15 +2653,6 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-29", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"source" : [ "obj-11", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-9", 1 ],
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-11", 0 ]
@@ -3059,15 +3014,6 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-12", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"source" : [ "obj-3", 1 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
 					"destination" : [ "obj-20", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
@@ -3167,10 +3113,6 @@
 			}
 , 			{
 				"name" : "o.collect.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.message.mxo",
 				"type" : "iLaX"
 			}
 , 			{
