@@ -8,6 +8,7 @@
 #import <Cocoa/Cocoa.h>
 #import <Carbon/Carbon.h>
 #import <IOBluetooth/IOBluetooth.h>
+#import <Foundation/Foundation.h>
 //#import <QuartzCore/QuartzCore.h>
 #include "ext.h"
 #include "ext_obex.h"
@@ -19,6 +20,7 @@
 #include "omax_dict.h"
 #include "o.h"
 #include "odot_version.h"
+
 
 t_symbol *ps_FullPacket;
 
@@ -32,6 +34,117 @@ void ostag_replaceSpacesWithSlashes(long len, char *buf)
 		ptr++;
 	}
 }
+
+@interface  sensorC953A: NSObject 
+{
+	UInt16 c1,c2,c3,c4;
+	int16_t c5,c6,c7,c8;
+}
+
+///Calibration values unsigned
+@property UInt16 c1,c2,c3,c4;
+///Calibration values signed
+@property int16_t c5,c6,c7,c8;
+
+-(id) initWithCalibrationData:(NSData *)data;
+
+-(int) calcPressure:(NSData *)data;
+
+
+@end
+
+
+
+@interface sensorIMU3000: NSObject
+{
+	float lastX,lastY,lastZ;
+	float calX,calY,calZ;
+}
+
+@property float lastX,lastY,lastZ;
+@property float calX,calY,calZ;
+
+#define IMU3000_RANGE 500.0
+
+-(id) init;
+
+-(void) calibrate;
+-(float) calcXValue:(NSData *)data;
+-(float) calcYValue:(NSData *)data;
+-(float) calcZValue:(NSData *)data;
++(float) getRange;
+
+@end
+
+@interface sensorKXTJ9 : NSObject
+
+#define KXTJ9_RANGE 4.0
+
++(float) calcXValue:(NSData *)data;
++(float) calcYValue:(NSData *)data;
++(float) calcZValue:(NSData *)data;
++(float) getRange;
+
+@end
+
+@interface sensorMAG3110 : NSObject
+/*
+{
+	float lastX,lastY,lastZ;
+	float calX,calY,calZ;
+}
+
+@property float lastX,lastY,lastZ;
+@property float calX,calY,calZ;
+*/
+
+#define MAG3110_RANGE 2000.0
+
+-(id) init;
+-(void) calibrate;
+-(float) calcXValue:(NSData *)data;
+-(float) calcYValue:(NSData *)data;
+-(float) calcZValue:(NSData *)data;
++(float) getRange;
+
+@end
+
+@interface sensorTMP006 : NSObject
+
+
+
++(float) calcTAmb:(NSData *)data;
++(float) calcTAmb:(NSData *)data offset:(int)offset;
++(float) calcTObj:(NSData *)data;
+@end
+
+@interface sensorSHT21 : NSObject
+
++(float) calcPress:(NSData *)data;
++(float) calcTemp:(NSData *)data;
+
+@end
+
+
+
+@interface sensorTagValues : NSObject
+
+@property float tAmb;
+@property float tIR;
+@property float press;
+@property float humidity;
+@property float accX;
+@property float accY;
+@property float accZ;
+@property float gyroX;
+@property float gyroY;
+@property float gyroZ;
+@property float magX;
+@property float magY;
+@property float magZ;
+@property NSString *timeStamp;
+
+@end
 
 @interface SensorTag : NSObject <CBCentralManagerDelegate, CBPeripheralDelegate> 
 {
@@ -62,6 +175,272 @@ void ostag_outputOSCBundle(t_ostag *x, t_symbol *msg, int argc, t_atom *argv);
 
 @end
 
+@implementation sensorC953A
+@synthesize c1,c2,c3,c4,c5,c6,c7,c8;
+
+
+-(id) initWithCalibrationData:(NSData *)data {
+    self = [[sensorC953A alloc] init];
+    if (self) {
+        unsigned char scratchVal[16];
+        [data getBytes:&scratchVal length:16];
+        self.c1 = ((scratchVal[0] & 0xff) | ((scratchVal[1] << 8) & 0xff00));
+        self.c2 = ((scratchVal[2] & 0xff) | ((scratchVal[3] << 8) & 0xff00));
+        self.c3 = ((scratchVal[4] & 0xff) | ((scratchVal[5] << 8) & 0xff00));
+        self.c4 = ((scratchVal[6] & 0xff) | ((scratchVal[7] << 8) & 0xff00));
+        self.c5 = ((scratchVal[8] & 0xff) | ((scratchVal[9] << 8) & 0xff00));
+        self.c6 = ((scratchVal[10] & 0xff) | ((scratchVal[11] << 8) & 0xff00));
+        self.c7 = ((scratchVal[12] & 0xff) | ((scratchVal[13] << 8) & 0xff00));
+        self.c8 = ((scratchVal[14] & 0xff) | ((scratchVal[15] << 8) & 0xff00));
+    }
+    return self;
+}
+-(int) calcPressure:(NSData *)data {
+    if (data.length < 4) return -0.0f;
+    char scratchVal[4];
+    [data getBytes:&scratchVal length:4];
+    int16_t temp;
+    uint16_t pressure;
+
+    temp = (scratchVal[0] & 0xff) | ((scratchVal[1] << 8) & 0xff00);
+    pressure = (scratchVal[2] & 0xff) | ((scratchVal[3] << 8) & 0xff00);
+    
+    long long tempTemp = (long long)temp;
+    // Temperature calculation
+    long temperature = ((((long)self.c1 * (long)tempTemp)/(long)1024) + (long)((self.c2) / (long)4 - (long)16384));
+    NSLog(@"Calculation of Barometer Temperature : temperature = %ld(%lx)",temperature,temperature);
+    // Barometer calculation
+    
+    long long S = self.c3 + ((self.c4 * (long long)tempTemp)/((long long)1 << 17)) + ((self.c5 * ((long long)tempTemp * (long long)tempTemp))/(long long)((long long)1 << 34));
+    long long O = (self.c6 * ((long long)1 << 14)) + (((self.c7 * (long long)tempTemp)/((long long)1 << 3))) + ((self.c8 * ((long long)tempTemp * (long long)tempTemp))/(long long)((long long)1 << 19));
+    long long Pa = (((S * (long long)pressure) + O) / (long long)((long long)1 << 14));
+    
+    
+    return (int)((int)Pa/(int)100);
+    
+}
+
+@end
+
+
+@implementation sensorIMU3000
+
+@synthesize lastX,lastY,lastZ;
+@synthesize calX,calY,calZ;
+
+-(id) init {
+    self = [super init];
+    if (self) {
+        self.calX = 0.0f;
+        self.calY = 0.0f;
+        self.calZ = 0.0f;
+    }
+    return self;
+}
+
+-(void) calibrate {
+    self.calX = self.lastX;
+    self.calY = self.lastY;
+    self.calZ = self.lastZ;
+    
+}
+
+-(float) calcXValue:(NSData *)data {
+    //Orientation of sensor on board means we need to swap X (multiplying with -1)
+    char scratchVal[6];
+    [data getBytes:&scratchVal length:6];
+    int16_t rawX = (scratchVal[0] & 0xff) | ((scratchVal[1] << 8) & 0xff00);
+    self.lastX = (((float)rawX * 1.0) / ( 65536 / IMU3000_RANGE )) * -1;
+    return (self.lastX - self.calX);
+}
+-(float) calcYValue:(NSData *)data {
+    //Orientation of sensor on board means we need to swap Y (multiplying with -1)
+    char scratchVal[6];
+    [data getBytes:&scratchVal length:6];
+    int16_t rawY = ((scratchVal[2] & 0xff) | ((scratchVal[3] << 8) & 0xff00));
+    self.lastY = (((float)rawY * 1.0) / ( 65536 / IMU3000_RANGE )) * -1;
+    return (self.lastY - self.calY);
+}
+-(float) calcZValue:(NSData *)data {
+    char scratchVal[6];
+    [data getBytes:&scratchVal length:6];
+    int16_t rawZ = (scratchVal[4] & 0xff) | ((scratchVal[5] << 8) & 0xff00);
+    self.lastZ = ((float)rawZ * 1.0) / ( 65536 / IMU3000_RANGE );
+    return (self.lastZ - self.calZ);
+}
++(float) getRange {
+    return IMU3000_RANGE;
+}
+
+@end
+
+
+@implementation sensorKXTJ9
+
++(float) calcXValue:(NSData *)data {
+    char scratchVal[data.length];
+    [data getBytes:&scratchVal length:3];
+    return ((scratchVal[0] * 1.0) / (256 / KXTJ9_RANGE));
+}
++(float) calcYValue:(NSData *)data {
+    //Orientation of sensor on board means we need to swap Y (multiplying with -1)
+    char scratchVal[data.length];
+    [data getBytes:&scratchVal length:3];
+    return ((scratchVal[1] * 1.0) / (256 / KXTJ9_RANGE)) * -1;
+}
++(float) calcZValue:(NSData *)data {
+    char scratchVal[data.length];
+    [data getBytes:&scratchVal length:3];
+    return ((scratchVal[2] * 1.0) / (256 / KXTJ9_RANGE));
+}
++(float) getRange {
+    return KXTJ9_RANGE;
+}
+
+
+@end
+
+
+@implementation sensorMAG3110
+
+//@synthesize lastX,lastY,lastZ;
+//@synthesize calX,calY,calZ;
+/*
+-(id) init {
+    self = [super init];
+    if (self) {
+        self.calX = 0.0f;
+        self.calY = 0.0f;
+        self.calZ = 0.0f;
+    }
+    return self;
+}
+*/
+
+/*
+-(void) calibrate {
+    self.calX = self.lastX;
+    self.calY = self.lastY;
+    self.calZ = self.lastZ;
+ 
+}
+*/
+
++(float) calcXValue:(NSData *)data {
+    //Orientation of sensor on board means we need to swap X (multiplying with -1)
+    char scratchVal[6];
+    [data getBytes:&scratchVal length:6];
+    int16_t rawX = (scratchVal[0] & 0xff) | ((scratchVal[1] << 8) & 0xff00);
+    return (((float)rawX * 1.0) / ( 65536 / MAG3110_RANGE )) * -1;
+    /* we'll let the user do this in max
+    self.lastX = (((float)rawX * 1.0) / ( 65536 / MAG3110_RANGE )) * -1;
+    return (self.lastX - self.calX);
+    */
+}
++(float) calcYValue:(NSData *)data {
+    //Orientation of sensor on board means we need to swap Y (multiplying with -1)
+    char scratchVal[6];
+    [data getBytes:&scratchVal length:6];
+    int16_t rawY = ((scratchVal[2] & 0xff) | ((scratchVal[3] << 8) & 0xff00));
+    return (((float)rawY * 1.0) / ( 65536 / MAG3110_RANGE )) * -1;
+    /*
+    self.lastY = (((float)rawY * 1.0) / ( 65536 / MAG3110_RANGE )) * -1;
+    return (self.lastY - self.calY);
+    */
+}
++(float) calcZValue:(NSData *)data {
+    char scratchVal[6];
+    [data getBytes:&scratchVal length:6];
+    int16_t rawZ = (scratchVal[4] & 0xff) | ((scratchVal[5] << 8) & 0xff00);
+    return ((float)rawZ * 1.0) / ( 65536 / MAG3110_RANGE );
+    /*
+    self.lastZ =  ((float)rawZ * 1.0) / ( 65536 / MAG3110_RANGE );
+    return (self.lastZ - self.calZ);
+    */
+}
++(float) getRange {
+    return 60.0;
+}
+@end
+
+@implementation sensorTMP006
+
++(float) calcTAmb:(NSData *)data {
+    char scratchVal[data.length];
+    int16_t ambTemp;
+    [data getBytes:&scratchVal length:data.length];
+    ambTemp = ((scratchVal[2] & 0xff)| ((scratchVal[3] << 8) & 0xff00));
+    
+    return (float)((float)ambTemp / (float)128);
+}
+
++(float) calcTAmb:(NSData *)data offset:(int)offset {
+    char scratchVal[data.length];
+    int16_t ambTemp;
+    [data getBytes:&scratchVal length:data.length];
+    ambTemp = ((scratchVal[offset] & 0xff)| ((scratchVal[offset + 1] << 8) & 0xff00));
+    
+    return (float)((float)ambTemp / (float)128);
+}
+
+
++(float) calcTObj:(NSData *)data {
+    char scratchVal[data.length];
+    int16_t objTemp;
+    int16_t ambTemp;
+    [data getBytes:&scratchVal length:data.length];
+    objTemp = (scratchVal[0] & 0xff)| ((scratchVal[1] << 8) & 0xff00);
+    ambTemp = ((scratchVal[2] & 0xff)| ((scratchVal[3] << 8) & 0xff00));
+    
+    float temp = (float)((float)ambTemp / (float)128);
+    long double Vobj2 = (double)objTemp * .00000015625;
+    long double Tdie2 = (double)temp + 273.15;
+    long double S0 = 6.4*pow(10,-14);
+    long double a1 = 1.75*pow(10,-3);
+    long double a2 = -1.678*pow(10,-5);
+    long double b0 = -2.94*pow(10,-5);
+    long double b1 = -5.7*pow(10,-7);
+    long double b2 = 4.63*pow(10,-9);
+    long double c2 = 13.4f;
+    long double Tref = 298.15;
+    long double S = S0*(1+a1*(Tdie2 - Tref)+a2*pow((Tdie2 - Tref),2));
+    long double Vos = b0 + b1*(Tdie2 - Tref) + b2*pow((Tdie2 - Tref),2);
+    long double fObj = (Vobj2 - Vos) + c2*pow((Vobj2 - Vos),2);
+    long double Tobj = pow(pow(Tdie2,4) + (fObj/S),.25);
+    Tobj = (Tobj - 273.15);
+    return (float)Tobj;
+}
+
+@end
+
+@implementation sensorSHT21
+
++(float) calcPress:(NSData *)data {
+    char scratchVal[data.length];
+    [data getBytes:&scratchVal length:data.length];
+    UInt16 hum;
+    float rHVal;
+    hum = (scratchVal[2] & 0xff) | ((scratchVal[3] << 8) & 0xff00);
+    rHVal = -6.0f + 125.0f * (float)((float)hum/(float)65535);
+    return rHVal;
+}
++(float) calcTemp:(NSData *)data {
+    char scratchVal[data.length];
+    [data getBytes:&scratchVal length:data.length];
+    UInt16 temp;
+    temp = (scratchVal[0] & 0xff) | ((scratchVal[1] << 8) & 0xff00);
+    return (float)temp;
+}
+
+
+@end
+
+
+@implementation sensorTagValues
+
+@end
+
+
 @implementation SensorTag
 @synthesize manager;
 
@@ -70,97 +449,6 @@ void ostag_outputOSCBundle(t_ostag *x, t_symbol *msg, int argc, t_atom *argv);
 	[self stopScan];
 	[manager release];
 	[super dealloc];
-}
-
-#pragma mark - Heart Rate Data
-
-- (void) computeHeartRate:(NSData *)data peripheral:(CBPeripheral *)p OSCBundle:(t_osc_bndl_u *)b
-{
-	const uint8_t *reportData = [data bytes];
-	uint8_t *ptr = reportData + 1;
-
-	// would be great to put this in the bundle as a blob!
-	/*
-	for(int i = 0; i < [data length]; i++){
-		printf("0x%x ", reportData[i]);
-	}
-	printf("\n");
-	*/
-
-	//uint16_t bpm = 0;
-    
-	t_osc_msg_u *bpm = osc_message_u_alloc();
-	osc_bundle_u_addMsg(b, bpm);
-	osc_message_u_setAddress(bpm, [self makeOSCAddressFromPeripheral:p withPrefix:NULL withPostfix:"/heartrate"]->s_name);
-	// heart rate can be reported as either an 8-bit or 16-bit unsigned int
-	if((reportData[0] & 0x01) == 0){
-		// uint8 bpm
-		osc_message_u_appendInt32(bpm, *ptr);
-		ptr++;
-	}else{
-		// uint16 bpm
-		osc_message_u_appendInt32(bpm, CFSwapInt16LittleToHost(*(uint16_t *)ptr));
-		ptr += 2;
-	}
-
-	t_osc_msg_u *scsupport = osc_message_u_alloc();
-	osc_bundle_u_addMsg(b, scsupport);
-	osc_message_u_setAddress(scsupport, [self makeOSCAddressFromPeripheral:p withPrefix:NULL withPostfix:"/sensorcontact/support"]->s_name);
-	switch((reportData[0] >> 1) & 0x03){
-	case 0: // not supported
-	case 1: // not supported
-		osc_message_u_appendFalse(scsupport);
-		break;
-	case 2: // supported but not connected
-		osc_message_u_appendTrue(scsupport);
-		{
-			t_osc_msg_u *scstatus = osc_message_u_alloc();
-			osc_bundle_u_addMsg(b, scstatus);
-			osc_message_u_setAddress(scstatus, [self makeOSCAddressFromPeripheral:p withPrefix:NULL withPostfix:"/sensorcontact/status"]->s_name);
-			osc_message_u_appendFalse(scstatus);
-		}
-		break;
-	case 3: // supported and connected
-		osc_message_u_appendTrue(scsupport);
-		{
-			t_osc_msg_u *scstatus = osc_message_u_alloc();
-			osc_bundle_u_addMsg(b, scstatus);
-			osc_message_u_setAddress(scstatus, [self makeOSCAddressFromPeripheral:p withPrefix:NULL withPostfix:"/sensorcontact/status"]->s_name);
-			osc_message_u_appendTrue(scstatus);
-		}
-		break;
-	}
-
-	t_osc_msg_u *eesupport = osc_message_u_alloc();
-	osc_bundle_u_addMsg(b, eesupport);
-	osc_message_u_setAddress(eesupport, [self makeOSCAddressFromPeripheral:p withPrefix:NULL withPostfix:"/energyexpended/support"]->s_name);
-	if(!(reportData[0] & 0x08)){
-		osc_message_u_appendFalse(eesupport);
-	}else{
-		osc_message_u_appendTrue(eesupport);
-		t_osc_msg_u *eestatus = osc_message_u_alloc();
-		osc_bundle_u_addMsg(b, eestatus);
-		osc_message_u_setAddress(eestatus, [self makeOSCAddressFromPeripheral:p withPrefix:NULL withPostfix:"/energyexpended/kJoules"]->s_name);
-		osc_message_u_appendInt32(eestatus, CFSwapInt16LittleToHost(*(uint16_t *)ptr));
-		ptr += 2;
-	}
-
-	t_osc_msg_u *rrsupport = osc_message_u_alloc();
-	osc_bundle_u_addMsg(b, rrsupport);
-	osc_message_u_setAddress(rrsupport, [self makeOSCAddressFromPeripheral:p withPrefix:NULL withPostfix:"/rrinterval/support"]->s_name);
-	if(!(reportData[0] & 0x10)){
-		osc_message_u_appendFalse(rrsupport);
-	}else{
-		osc_message_u_appendTrue(rrsupport);
-		t_osc_msg_u *rrstatus = osc_message_u_alloc();
-		osc_bundle_u_addMsg(b, rrstatus);
-		osc_message_u_setAddress(rrstatus, [self makeOSCAddressFromPeripheral:p withPrefix:NULL withPostfix:"/rrinterval/seconds"]->s_name);
-		while(ptr - reportData < [data length]){
-			double rr = (double)CFSwapInt16LittleToHost(*(uint16_t *)ptr);
-			osc_message_u_appendDouble(rrstatus, rr / 1024.);
-			ptr += 2;
-		}
-	}
 }
 
 - (t_symbol *) makeOSCAddressFromPeripheral:(CBPeripheral *)p withPrefix:(const char *)prefix withPostfix:(const char *)postfix
@@ -331,11 +619,13 @@ void ostag_outputOSCBundle(t_ostag *x, t_symbol *msg, int argc, t_atom *argv);
 	for(CBService *aService in aPeripheral.services)
 		{
 			NSLog(@"%s: %@\n", __func__, aService.UUID);
+			/*
 			if([aService.UUID isEqual:[CBUUID UUIDWithString:@"1800"]] ||
 			   //[aService.UUID isEqual:[CBUUID UUIDWithString:@"1801"]] ||
 			   [aService.UUID isEqual:[CBUUID UUIDWithString:@"180a"]] ||
 			   [aService.UUID isEqual:[CBUUID UUIDWithString:@"ffe0"]])// ||
 				//[aService.UUID isEqual:[CBUUID UUIDWithString:@"f000aa00-04514000-b0000000-00000000"]])
+				*/
 				{
 					[aPeripheral discoverCharacteristics:nil forService:aService];
 					/*
@@ -362,7 +652,6 @@ void ostag_outputOSCBundle(t_ostag *x, t_symbol *msg, int argc, t_atom *argv);
 // Perform appropriate operations on interested characteristics
 - (void) peripheral:(CBPeripheral *)aPeripheral didDiscoverCharacteristicsForService:(CBService *)service error:(NSError *)error 
 {    
-	NSLog(@"%s: %@\n", __func__, service.UUID);
 	if([service.UUID isEqual:[CBUUID UUIDWithString:@"180a"]]){
 		for(CBCharacteristic *aChar in service.characteristics){
 			if([aChar.UUID isEqual:[CBUUID UUIDWithString:@"2A29"]] || // manufacturer name
@@ -379,7 +668,74 @@ void ostag_outputOSCBundle(t_ostag *x, t_symbol *msg, int argc, t_atom *argv);
 		}
 	}else if([service.UUID isEqual:[CBUUID UUIDWithString:@"ffe0"]]){
 		for(CBCharacteristic *aChar in service.characteristics){
-			NSLog(@"%s: characteristic for service ffe0: %@\n", __func__, aChar.UUID);
+			[aPeripheral readValueForCharacteristic:aChar];
+		}
+	}else if([service.UUID isEqual:[CBUUID UUIDWithString:@"F000AA00-0451-4000-B000-000000000000"]]){
+		// temperature 
+		for(CBCharacteristic *aChar in service.characteristics){
+			if([aChar.UUID isEqual:[CBUUID UUIDWithString:@"F000AA01-0451-4000-B000-000000000000"]]){
+				// set up notification for temperature data
+				[aPeripheral setNotifyValue:YES forCharacteristic:aChar];
+			}else if([aChar.UUID isEqual:[CBUUID UUIDWithString:@"F000AA02-0451-4000-B000-000000000000"]]){
+				// turn it on
+				uint8_t val = 1;
+				NSData* valData = [NSData dataWithBytes:(void*)&val length:sizeof(val)];
+				[aPeripheral writeValue:valData forCharacteristic:aChar type:CBCharacteristicWriteWithResponse];
+			}
+		}
+	}else if([service.UUID isEqual:[CBUUID UUIDWithString:@"F000AA10-0451-4000-B000-000000000000"]]){
+		// accelerometer
+		for(CBCharacteristic *aChar in service.characteristics){
+			if([aChar.UUID isEqual:[CBUUID UUIDWithString:@"F000AA11-0451-4000-B000-000000000000"]]){
+				// set up notification for accelerometer data
+				[aPeripheral setNotifyValue:YES forCharacteristic:aChar];
+			}else if([aChar.UUID isEqual:[CBUUID UUIDWithString:@"F000AA12-0451-4000-B000-000000000000"]]){
+				// turn it on
+				uint8_t val = 1;
+				NSData* valData = [NSData dataWithBytes:(void*)&val length:sizeof(val)];
+				[aPeripheral writeValue:valData forCharacteristic:aChar type:CBCharacteristicWriteWithResponse];
+			}else if([aChar.UUID isEqual:[CBUUID UUIDWithString:@"F000AA13-0451-4000-B000-000000000000"]]){
+				// set the update rate to 100 ms (val * 10)
+				uint8_t val = 10;
+				NSData* valData = [NSData dataWithBytes:(void*)&val length:sizeof(val)];
+				[aPeripheral writeValue:valData forCharacteristic:aChar type:CBCharacteristicWriteWithResponse];
+			}
+		}
+	}else if([service.UUID isEqual:[CBUUID UUIDWithString:@"F000AA20-0451-4000-B000-000000000000"]]){
+		// humidity
+		for(CBCharacteristic *aChar in service.characteristics){
+			if([aChar.UUID isEqual:[CBUUID UUIDWithString:@"F000AA21-0451-4000-B000-000000000000"]]){
+				// set up notification for humidity data
+				[aPeripheral setNotifyValue:YES forCharacteristic:aChar];
+			}else if([aChar.UUID isEqual:[CBUUID UUIDWithString:@"F000AA22-0451-4000-B000-000000000000"]]){
+				// turn it on
+				uint8_t val = 1;
+				NSData* valData = [NSData dataWithBytes:(void*)&val length:sizeof(val)];
+				[aPeripheral writeValue:valData forCharacteristic:aChar type:CBCharacteristicWriteWithResponse];
+			}
+		}
+	}else if([service.UUID isEqual:[CBUUID UUIDWithString:@"F000AA30-0451-4000-B000-000000000000"]]){
+		// magnetometer
+		for(CBCharacteristic *aChar in service.characteristics){
+			if([aChar.UUID isEqual:[CBUUID UUIDWithString:@"F000AA31-0451-4000-B000-000000000000"]]){
+				// set up notification for magnetometer data
+				[aPeripheral setNotifyValue:YES forCharacteristic:aChar];
+			}else if([aChar.UUID isEqual:[CBUUID UUIDWithString:@"F000AA32-0451-4000-B000-000000000000"]]){
+				// turn it on
+				uint8_t val = 1;
+				NSData* valData = [NSData dataWithBytes:(void*)&val length:sizeof(val)];
+				[aPeripheral writeValue:valData forCharacteristic:aChar type:CBCharacteristicWriteWithResponse];
+			}else if([aChar.UUID isEqual:[CBUUID UUIDWithString:@"F000AA33-0451-4000-B000-000000000000"]]){
+				// set the update rate to 100 ms (val * 10)
+				uint8_t val = 10;
+				NSData* valData = [NSData dataWithBytes:(void*)&val length:sizeof(val)];
+				[aPeripheral writeValue:valData forCharacteristic:aChar type:CBCharacteristicWriteWithResponse];
+			}
+		}
+	}else{
+		//NSLog(@"%s: service not handled: %@\n", __func__, service.UUID);
+		for(CBCharacteristic *aChar in service.characteristics){
+			[aPeripheral readValueForCharacteristic:aChar];
 		}
 	}
 }
@@ -387,10 +743,13 @@ void ostag_outputOSCBundle(t_ostag *x, t_symbol *msg, int argc, t_atom *argv);
 // Invoked upon completion of a -[readValueForCharacteristic:] request or on the reception of a notification/indication.
 - (void) peripheral:(CBPeripheral *)aPeripheral didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error 
 {
+	/*
 	t_osc_bndl_u *b = osc_bundle_u_alloc();
 	t_osc_msg_u *msg_self = [self makeOSCSelfMessage:aPeripheral];
 	osc_bundle_u_addMsg(b, msg_self);
 	const char *name = [aPeripheral.name UTF8String];
+	*/
+	//NSLog(@"%s: %@", __func__, characteristic.UUID);
 	if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:@"2A24"]]){
 		// Value for model number received
 		NSLog(@"%s: model number: %s\n", __func__, [characteristic.value bytes]);
@@ -412,8 +771,32 @@ void ostag_outputOSCBundle(t_ostag *x, t_symbol *msg, int argc, t_atom *argv);
 	}else if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:@"2A00"]]){
 		// Value for device name received
 		NSLog(@"%s: device name: %s\n", __func__, [characteristic.value bytes]);
+	}else if([characteristic.UUID isEqual:[CBUUID UUIDWithString:@"F000AA01-0451-4000-B000-000000000000"]]){
+		// temp in celsius
+		float tAmb = [sensorTMP006 calcTAmb:characteristic.value];
+		float tObj = [sensorTMP006 calcTObj:characteristic.value];
+		NSLog(@"%s: ambient temp = %f", __func__, tAmb);
+		NSLog(@"%s: IR temp = %f", __func__, tObj);
+	}else if([characteristic.UUID isEqual:[CBUUID UUIDWithString:@"F000AA11-0451-4000-B000-000000000000"]]){
+		// acc
+		float x = [sensorKXTJ9 calcXValue:characteristic.value];
+		float y = [sensorKXTJ9 calcYValue:characteristic.value];
+		float z = [sensorKXTJ9 calcZValue:characteristic.value];
+		NSLog(@"%s: acc: %f %f %f\n", __func__, x, y, z);
+	}else if([characteristic.UUID isEqual:[CBUUID UUIDWithString:@"F000AA21-0451-4000-B000-000000000000"]]){
+		// humidity
+		float rHVal = [sensorSHT21 calcPress:characteristic.value];
+		NSLog(@"%s: hum: %f\n", __func__, rHVal);
+	}else if([characteristic.UUID isEqual:[CBUUID UUIDWithString:@"F000AA31-0451-4000-B000-000000000000"]]){
+		// magnetometer
+		float x = [sensorMAG3110 calcXValue:characteristic.value];
+		float y = [sensorMAG3110 calcYValue:characteristic.value];
+		float z = [sensorMAG3110 calcZValue:characteristic.value];
+		NSLog(@"%s: mag: %f %f %f\n", __func__, x, y, z);
 	}else{
+		NSLog(@"%s: %@", __func__, characteristic.UUID);
 	}
+	/*
 	long len = 0;
 	char *buf = NULL;
 	osc_bundle_u_serialize(b, &len, &buf);
@@ -426,6 +809,7 @@ void ostag_outputOSCBundle(t_ostag *x, t_symbol *msg, int argc, t_atom *argv);
 		// don't free buf here!! it's pointer has been passed to the scheduler and will be freed when
 		// the callback executes
 	}
+	*/
 }
 
 - (void)ostag_init:(struct _ostag *)x
