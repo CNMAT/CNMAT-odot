@@ -1,8 +1,0 @@
-Leap.HandList
-=============
-
-.. currentmodule:: Leap
-
-.. autoclass:: HandList
-   :members:
-   :undoc-members:

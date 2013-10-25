@@ -1,8 +1,0 @@
-Leap.Listener
-=============
-
-.. currentmodule:: Leap
-
-.. autoclass:: Listener
-   :members:
-   :undoc-members:
