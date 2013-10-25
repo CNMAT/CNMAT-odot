@@ -31,6 +31,34 @@
 				"box" : 				{
 					"fontname" : "Arial",
 					"fontsize" : 11.0,
+					"id" : "obj-7",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "bang", "" ],
+					"patching_rect" : [ 23.0, 41.0, 32.5, 19.0 ],
+					"text" : "t b l"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 11.0,
+					"id" : "obj-1",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 20.0, 341.0, 51.0, 19.0 ],
+					"text" : "o.collect"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 11.0,
 					"id" : "obj-8",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
@@ -50,7 +78,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 47.0, 51.0, 50.0, 19.0 ],
+					"patching_rect" : [ 42.0, 73.0, 50.0, 19.0 ],
 					"text" : "o.iterate"
 				}
 
@@ -79,8 +107,8 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 351.0, 87.0, 246.0, 56.0 ],
-					"text" : "o.io.hid.helper.map\nleft input takes o.io.hid OSC messages\nand uses lookup bundle send in the   right inlet to rename input values"
+					"patching_rect" : [ 351.0, 87.0, 251.0, 56.0 ],
+					"text" : "o.io.hid.helper.map\nleft input takes o.io.hid OSC messages\nand uses lookup bundle sent in the   right inlet to rename input values"
 				}
 
 			}
@@ -93,7 +121,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 50.0, 307.0, 203.0, 19.0 ],
+					"patching_rect" : [ 49.0, 306.0, 203.0, 19.0 ],
 					"text" : "o.expr /input = list( /label \\, value(/label))"
 				}
 
@@ -107,7 +135,7 @@
 					"numinlets" : 4,
 					"numoutlets" : 4,
 					"outlettype" : [ "", "", "", "FullPacket" ],
-					"patching_rect" : [ 50.0, 336.0, 123.0, 19.0 ],
+					"patching_rect" : [ 51.0, 367.0, 123.0, 19.0 ],
 					"text" : "o.route /out /map /label"
 				}
 
@@ -176,7 +204,7 @@
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 50.0, 15.0, 25.0, 25.0 ]
+					"patching_rect" : [ 23.0, 7.0, 25.0, 25.0 ]
 				}
 
 			}
@@ -217,6 +245,15 @@
  ],
 		"lines" : [ 			{
 				"patchline" : 				{
+					"destination" : [ "obj-16", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-1", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-14", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
@@ -229,7 +266,7 @@
 					"destination" : [ "obj-19", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"midpoints" : [ 335.5, 280.25, 59.5, 280.25 ],
+					"midpoints" : [ 335.5, 280.25, 58.5, 280.25 ],
 					"source" : [ "obj-10", 1 ]
 				}
 
@@ -263,7 +300,7 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-16", 0 ],
+					"destination" : [ "obj-1", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-19", 0 ]
@@ -272,7 +309,7 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-6", 0 ],
+					"destination" : [ "obj-7", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-20", 0 ]
@@ -317,6 +354,24 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-1", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-7", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-6", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-7", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-5", 1 ],
 					"disabled" : 0,
 					"hidden" : 0,
@@ -347,6 +402,10 @@
 			}
 , 			{
 				"name" : "o.prepend.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.collect.mxo",
 				"type" : "iLaX"
 			}
  ]
