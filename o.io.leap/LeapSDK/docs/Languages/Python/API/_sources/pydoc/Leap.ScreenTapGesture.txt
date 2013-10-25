@@ -1,8 +1,0 @@
-Leap.ScreenTapGesture
-=====================
-
-.. currentmodule:: Leap
-
-.. autoclass:: ScreenTapGesture
-   :members:
-   :undoc-members:

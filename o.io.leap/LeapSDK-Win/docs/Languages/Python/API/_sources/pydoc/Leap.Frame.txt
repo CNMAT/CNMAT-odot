@@ -1,8 +1,0 @@
-Leap.Frame
-==========
-
-.. currentmodule:: Leap
-
-.. autoclass:: Frame
-   :members:
-   :undoc-members:

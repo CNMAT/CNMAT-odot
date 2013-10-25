@@ -98,7 +98,7 @@ void oprint_fullPacket(t_oprint *x, t_symbol *msg, int argc, t_atom *argv)
 				char line[n + 1];
 				memcpy(line, start, n);
 				line[n] = '\0';
-				post("%s: %s\n", x->myname->s_name, line);
+				post("%s: %s", x->myname->s_name, line);
 				start = buf + i + 1;
 			}
 		}
