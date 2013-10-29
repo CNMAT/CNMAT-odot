@@ -94,6 +94,7 @@ void otimetag_doFullPacket(t_otimetag *x,
 		osc_bundle_s_deserialize(len, ptr, &copy);
 
 		t_osc_timetag t = osc_timetag_now();
+		post("%llu", t);
 		t_osc_msg_u *m = osc_message_u_allocWithTimetag(x->address->s_name, osc_timetag_now());
 		osc_bundle_u_addMsgWithoutDups(copy, m);
 
@@ -222,6 +223,19 @@ void *otimetag_new(t_symbol *msg, short argc, t_atom *argv)
 	t_otimetag *x;
 	if((x = (t_otimetag *)object_alloc(otimetag_class))){
 		x->address = NULL;
+		if(argc){
+			if(atom_gettype(argv) == A_SYM){
+				t_symbol *s = atom_getsym(argv);
+				if(s->s_name[0] != '/'){
+					object_error((t_object *)x, "address must begin with a slash");
+					return NULL;
+				}
+				x->address = s;
+			}else{
+				object_error((t_object *)x, "argument must be an OSC address (symbol)");
+				return NULL;
+			}
+		}
 		x->outlet = outlet_new((t_object *)x, NULL);
 		critical_new(&(x->lock));
 	}    
