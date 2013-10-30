@@ -38,7 +38,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 913.0, 124.0, 236.0, 47.0 ],
-					"presentation_rect" : [ 851.666687, 129.0, 0.0, 0.0 ],
 					"text" : "wrapped midi values come out left outlet, everything else comes out right outlet -- latest input is prepended with /input"
 				}
 
@@ -53,7 +52,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 913.0, 91.0, 172.0, 27.0 ],
-					"presentation_rect" : [ 810.0, 44.0, 0.0, 0.0 ],
 					"text" : "o.io.helper.map.midi"
 				}
 
@@ -68,7 +66,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 606.666687, 588.0, 44.0, 22.0 ],
-					"presentation_rect" : [ 603.666687, 651.0, 0.0, 0.0 ],
 					"text" : "<<< "
 				}
 
@@ -83,7 +80,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 1122.0, 565.0, 160.0, 22.0 ],
-					"presentation_rect" : [ 1085.0, 528.5, 0.0, 0.0 ],
 					"text" : "your namespace is here"
 				}
 
@@ -437,7 +433,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "FullPacket" ],
 					"patching_rect" : [ 583.0, 493.0, 138.0, 22.0 ],
-					"text" : "o.io.helper.map.midi"
+					"text" : "o.io.midi.helper.map"
 				}
 
 			}
@@ -1072,8 +1068,8 @@
 			}
  ],
 		"dependency_cache" : [ 			{
-				"name" : "o.io.helper.map.midi.maxpat",
-				"bootpath" : "/Users/rama/Documents/__CNMAT/cnmat-git/CNMAT-Pedagogy/Music-158",
+				"name" : "o.io.midi.helper.map.maxpat",
+				"bootpath" : "/Users/rama/Documents/__CNMAT/cnmat-git/CNMAT-odot/testing/io",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
@@ -1081,7 +1077,7 @@
 , 			{
 				"name" : "o.broadcast.api.maxpat",
 				"bootpath" : "/Users/rama/Documents/Max/Packages/CNMAT-MMJSS-2013/patchers",
-				"patcherrelativepath" : "../../../../Max/Packages/CNMAT-MMJSS-2013/patchers",
+				"patcherrelativepath" : "../../../../../Max/Packages/CNMAT-MMJSS-2013/patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
