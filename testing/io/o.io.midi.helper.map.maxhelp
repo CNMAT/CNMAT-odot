@@ -29,6 +29,293 @@
 		"tags" : "",
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-57",
+					"maxclass" : "button",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "bang" ],
+					"patching_rect" : [ 942.0, 450.0, 20.0, 20.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 11.0,
+					"id" : "obj-55",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patcher" : 					{
+						"fileversion" : 1,
+						"appversion" : 						{
+							"major" : 6,
+							"minor" : 1,
+							"revision" : 4,
+							"architecture" : "x86"
+						}
+,
+						"rect" : [ 25.0, 69.0, 640.0, 480.0 ],
+						"bglocked" : 0,
+						"openinpresentation" : 0,
+						"default_fontsize" : 11.0,
+						"default_fontface" : 0,
+						"default_fontname" : "Arial",
+						"gridonopen" : 0,
+						"gridsize" : [ 5.0, 5.0 ],
+						"gridsnaponopen" : 0,
+						"statusbarvisible" : 2,
+						"toolbarvisible" : 1,
+						"boxanimatetime" : 200,
+						"imprint" : 0,
+						"enablehscroll" : 1,
+						"enablevscroll" : 1,
+						"devicewidth" : 0.0,
+						"description" : "",
+						"digest" : "",
+						"tags" : "",
+						"boxes" : [ 							{
+								"box" : 								{
+									"id" : "obj-4",
+									"maxclass" : "button",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "bang" ],
+									"patching_rect" : [ 50.0, 57.0, 20.0, 20.0 ]
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"comment" : "",
+									"id" : "obj-2",
+									"maxclass" : "inlet",
+									"numinlets" : 0,
+									"numoutlets" : 1,
+									"outlettype" : [ "bang" ],
+									"patching_rect" : [ 50.0, 18.0, 25.0, 25.0 ]
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"fontname" : "Arial",
+									"fontsize" : 11.0,
+									"id" : "obj-48",
+									"linecount" : 2,
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "FullPacket" ],
+									"patching_rect" : [ 50.0, 271.0, 227.0, 31.0 ],
+									"text" : "o.expr map( lambda(n\\, p){ assign( quote(/note/) + n\\, p)\\; }\\, /noteNumbers\\, /pitch)"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"fontname" : "Arial",
+									"fontsize" : 11.0,
+									"id" : "obj-47",
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "FullPacket" ],
+									"patching_rect" : [ 50.0, 236.0, 322.0, 19.0 ],
+									"text" : "o.expr /pitch = quote(/) + /notes[[/intervals]] + quote(/) + /octave"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"fontname" : "Arial",
+									"fontsize" : 11.0,
+									"id" : "obj-46",
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "FullPacket" ],
+									"patching_rect" : [ 50.0, 203.0, 238.0, 19.0 ],
+									"text" : "o.expr /octave = ((/noteNumbers - 24) / 12) + 2"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"fontname" : "Arial",
+									"fontsize" : 11.0,
+									"id" : "obj-45",
+									"maxclass" : "o.message",
+									"numinlets" : 2,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 50.0, 100.0, 265.0, 19.0 ],
+									"text" : "/notes \"c\" \"c#\" \"d\" \"d#\" \"e\" \"f\" \"f#\" \"g\" \"g#\" \"a\" \"a#\" \"b\"",
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"fontname" : "Arial",
+									"fontsize" : 11.0,
+									"id" : "obj-31",
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "FullPacket" ],
+									"patching_rect" : [ 50.0, 172.0, 227.0, 19.0 ],
+									"text" : "o.expr /intervals = (/noteNumbers - 24) % 12"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"fontname" : "Arial",
+									"fontsize" : 11.0,
+									"id" : "obj-27",
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "FullPacket" ],
+									"patching_rect" : [ 50.0, 145.0, 194.0, 19.0 ],
+									"text" : "o.expr /noteNumbers = aseq(24\\, 108)"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"comment" : "",
+									"id" : "obj-54",
+									"maxclass" : "outlet",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 15.0, 352.0, 25.0, 25.0 ]
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"fontname" : "Arial",
+									"fontsize" : 11.0,
+									"id" : "obj-1",
+									"linecount" : 86,
+									"maxclass" : "o.message",
+									"numinlets" : 2,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 50.0, 334.0, 156.0, 1064.0 ],
+									"text" : "/channel \"/channel\"\n/note/24 \"/c/2\"\n/note/25 \"/c#/2\"\n/note/26 \"/d/2\"\n/note/27 \"/d#/2\"\n/note/28 \"/e/2\"\n/note/29 \"/f/2\"\n/note/30 \"/f#/2\"\n/note/31 \"/g/2\"\n/note/32 \"/g#/2\"\n/note/33 \"/a/2\"\n/note/34 \"/a#/2\"\n/note/35 \"/b/2\"\n/note/36 \"/c/3\"\n/note/37 \"/c#/3\"\n/note/38 \"/d/3\"\n/note/39 \"/d#/3\"\n/note/40 \"/e/3\"\n/note/41 \"/f/3\"\n/note/42 \"/f#/3\"\n/note/43 \"/g/3\"\n/note/44 \"/g#/3\"\n/note/45 \"/a/3\"\n/note/46 \"/a#/3\"\n/note/47 \"/b/3\"\n/note/48 \"/c/4\"\n/note/49 \"/c#/4\"\n/note/50 \"/d/4\"\n/note/51 \"/d#/4\"\n/note/52 \"/e/4\"\n/note/53 \"/f/4\"\n/note/54 \"/f#/4\"\n/note/55 \"/g/4\"\n/note/56 \"/g#/4\"\n/note/57 \"/a/4\"\n/note/58 \"/a#/4\"\n/note/59 \"/b/4\"\n/note/60 \"/c/5\"\n/note/61 \"/c#/5\"\n/note/62 \"/d/5\"\n/note/63 \"/d#/5\"\n/note/64 \"/e/5\"\n/note/65 \"/f/5\"\n/note/66 \"/f#/5\"\n/note/67 \"/g/5\"\n/note/68 \"/g#/5\"\n/note/69 \"/a/5\"\n/note/70 \"/a#/5\"\n/note/71 \"/b/5\"\n/note/72 \"/c/6\"\n/note/73 \"/c#/6\"\n/note/74 \"/d/6\"\n/note/75 \"/d#/6\"\n/note/76 \"/e/6\"\n/note/77 \"/f/6\"\n/note/78 \"/f#/6\"\n/note/79 \"/g/6\"\n/note/80 \"/g#/6\"\n/note/81 \"/a/6\"\n/note/82 \"/a#/6\"\n/note/83 \"/b/6\"\n/note/84 \"/c/7\"\n/note/85 \"/c#/7\"\n/note/86 \"/d/7\"\n/note/87 \"/d#/7\"\n/note/88 \"/e/7\"\n/note/89 \"/f/7\"\n/note/90 \"/f#/7\"\n/note/91 \"/g/7\"\n/note/92 \"/g#/7\"\n/note/93 \"/a/7\"\n/note/94 \"/a#/7\"\n/note/95 \"/b/7\"\n/note/96 \"/c/8\"\n/note/97 \"/c#/8\"\n/note/98 \"/d/8\"\n/note/99 \"/d#/8\"\n/note/100 \"/e/8\"\n/note/101 \"/f/8\"\n/note/102 \"/f#/8\"\n/note/103 \"/g/8\"\n/note/104 \"/g#/8\"\n/note/105 \"/a/8\"\n/note/106 \"/a#/8\"\n/note/107 \"/b/8\"\n/note/108 \"/c/9\"",
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
+								}
+
+							}
+ ],
+						"lines" : [ 							{
+								"patchline" : 								{
+									"destination" : [ "obj-54", 0 ],
+									"disabled" : 0,
+									"hidden" : 0,
+									"source" : [ "obj-1", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-4", 0 ],
+									"disabled" : 0,
+									"hidden" : 0,
+									"source" : [ "obj-2", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-31", 0 ],
+									"disabled" : 0,
+									"hidden" : 0,
+									"source" : [ "obj-27", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-46", 0 ],
+									"disabled" : 0,
+									"hidden" : 0,
+									"source" : [ "obj-31", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-45", 0 ],
+									"disabled" : 0,
+									"hidden" : 0,
+									"source" : [ "obj-4", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-27", 0 ],
+									"disabled" : 0,
+									"hidden" : 0,
+									"source" : [ "obj-45", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-47", 0 ],
+									"disabled" : 0,
+									"hidden" : 0,
+									"source" : [ "obj-46", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-48", 0 ],
+									"disabled" : 0,
+									"hidden" : 0,
+									"source" : [ "obj-47", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-1", 0 ],
+									"disabled" : 0,
+									"hidden" : 0,
+									"source" : [ "obj-48", 0 ]
+								}
+
+							}
+ ]
+					}
+,
+					"patching_rect" : [ 942.0, 475.0, 218.0, 19.0 ],
+					"saved_object_attributes" : 					{
+						"default_fontface" : 0,
+						"default_fontname" : "Arial",
+						"default_fontsize" : 11.0,
+						"description" : "",
+						"digest" : "",
+						"fontface" : 0,
+						"fontname" : "Arial",
+						"fontsize" : 11.0,
+						"globalpatchername" : "",
+						"tags" : ""
+					}
+,
+					"text" : "p example-wrapper-scripting for QuNexus"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"fontname" : "Arial",
 					"fontsize" : 11.0,
 					"frgb" : 0.0,
@@ -36,7 +323,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 927.0, 191.963684, 150.0, 19.0 ],
+					"patching_rect" : [ 947.0, 157.793289, 150.0, 19.0 ],
 					"text" : "<< o.io.midiin"
 				}
 
@@ -50,7 +337,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 563.0, 149.0, 56.0, 19.0 ],
+					"patching_rect" : [ 583.0, 114.829605, 56.0, 19.0 ],
 					"text" : "loadbang"
 				}
 
@@ -60,14 +347,13 @@
 					"fontname" : "Arial",
 					"fontsize" : 11.0,
 					"id" : "obj-39",
-					"linecount" : 3,
+					"linecount" : 6,
 					"maxclass" : "o.message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 844.0, 279.0, 193.0, 44.0 ],
-					"presentation_rect" : [ 844.0, 278.0, 0.0, 0.0 ],
-					"text" : "/midi/device/0 \"IAC Driver IAC Bus 1\"\n/midi/device/1 \"to Max 1\"\n/midi/device/2 \"to Max 2\"",
+					"patching_rect" : [ 742.0, 202.829605, 193.0, 81.0 ],
+					"text" : "/midi/device/0 \"IAC Driver IAC Bus 1\"\n/midi/device/1 \"to Max 1\"\n/midi/device/2 \"to Max 2\"\n/midi/device/3 \"QuNexus Port 1\"\n/midi/device/4 \"QuNexus Port 2\"\n/midi/device/5 \"QuNexus Port 3\"",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -81,8 +367,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 627.5, 279.0, 150.0, 19.0 ],
-					"text" : "/rawMIDI 37",
+					"patching_rect" : [ 574.0, 214.829605, 150.0, 19.0 ],
+					"text" : "/rawMIDI 0",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -97,7 +383,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "int", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 554.0, 57.463684, 50.0, 19.0 ]
+					"patching_rect" : [ 574.0, 23.293289, 50.0, 19.0 ]
 				}
 
 			}
@@ -109,7 +395,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 3,
 					"numoutlets" : 0,
-					"patching_rect" : [ 563.0, 112.463684, 161.0, 19.0 ],
+					"patching_rect" : [ 583.0, 78.293289, 161.0, 19.0 ],
 					"text" : "noteout \"IAC Driver IAC Bus 1\""
 				}
 
@@ -123,7 +409,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "" ],
-					"patching_rect" : [ 563.0, 177.0, 352.0, 52.268158 ]
+					"patching_rect" : [ 583.0, 142.829605, 352.0, 52.268158 ]
 				}
 
 			}
@@ -232,13 +518,13 @@
 					"fontname" : "Arial",
 					"fontsize" : 11.0,
 					"id" : "obj-29",
-					"linecount" : 123,
+					"linecount" : 53,
 					"maxclass" : "o.message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 1147.0, 695.0, 117.0, 1519.0 ],
-					"text" : "/channel\n/note/0\n/note/1\n/note/10\n/note/100\n/note/102\n/note/103\n/note/104\n/note/105\n/note/106\n/note/108\n/note/109\n/note/11\n/note/110\n/note/111\n/note/112\n/note/114\n/note/115\n/note/116\n/note/118\n/note/119\n/note/12\n/note/121\n/note/122\n/note/123\n/note/124\n/note/125\n/note/126\n/note/127\n/note/13\n/note/14\n/note/15\n/note/16\n/note/17\n/note/18\n/note/19\n/note/2\n/note/20\n/note/21\n/note/22\n/note/23\n/note/24\n/note/25\n/note/26\n/note/27\n/note/28\n/note/29\n/note/3\n/note/30\n/note/31\n/note/32\n/note/33\n/note/34\n/note/35\n/note/36\n/note/37\n/note/38\n/note/39\n/note/4\n/note/40\n/note/41\n/note/42\n/note/43\n/note/44\n/note/45\n/note/46\n/note/47\n/note/48\n/note/49\n/note/5\n/note/50\n/note/51\n/note/52\n/note/53\n/note/54\n/note/55\n/note/56\n/note/57\n/note/58\n/note/59\n/note/6\n/note/60\n/note/61\n/note/62\n/note/63\n/note/64\n/note/65\n/note/66\n/note/67\n/note/68\n/note/69\n/note/7\n/note/70\n/note/71\n/note/72\n/note/73\n/note/74\n/note/75\n/note/76\n/note/77\n/note/78\n/note/79\n/note/8\n/note/80\n/note/81\n/note/82\n/note/83\n/note/84\n/note/85\n/note/87\n/note/88\n/note/89\n/note/9\n/note/90\n/note/91\n/note/92\n/note/93\n/note/94\n/note/95\n/note/96\n/note/97\n/note/98\n/note/99",
+					"patching_rect" : [ 1147.0, 695.0, 117.0, 658.0 ],
+					"text" : "/channel\n/note/100\n/note/102\n/note/108\n/note/24\n/note/25\n/note/26\n/note/27\n/note/28\n/note/29\n/note/30\n/note/31\n/note/32\n/note/33\n/note/34\n/note/35\n/note/36\n/note/42\n/note/48\n/note/50\n/note/52\n/note/53\n/note/54\n/note/55\n/note/57\n/note/59\n/note/60\n/note/62\n/note/64\n/note/65\n/note/66\n/note/67\n/note/69\n/note/71\n/note/72\n/note/74\n/note/76\n/note/77\n/note/78\n/note/79\n/note/81\n/note/83\n/note/84\n/note/86\n/note/87\n/note/88\n/note/89\n/note/90\n/note/91\n/note/93\n/note/95\n/note/96\n/note/98",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -317,13 +603,13 @@
 					"fontname" : "Arial",
 					"fontsize" : 11.0,
 					"id" : "obj-9",
-					"linecount" : 3,
+					"linecount" : 40,
 					"maxclass" : "o.message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 113.333313, 645.963684, 109.0, 44.0 ],
-					"text" : "/slider/red 63\n/slider/green 62\n/slider/1 60",
+					"patching_rect" : [ 113.333313, 645.963684, 109.0, 499.0 ],
+					"text" : "/channel 1\n/c/6 0\n/e/6 0\n/g/6 0\n/a/6 0\n/b/6 0\n/d/7 0\n/c/7 0\n/e/7 0\n/g/7 0\n/f#/7 0\n/d/6 0\n/f/6 0\n/a/7 0\n/f/7 0\n/d#/7 0\n/d/8 0\n/c/8 0\n/b/7 0\n/e/8 0\n/f#/8 0\n/f#/6 0\n/f#/5 0\n/f#/4 0\n/c/3 0\n/c/4 0\n/f#/3 0\n/b/5 0\n/a/5 0\n/g/5 0\n/f/5 0\n/g/4 0\n/f/4 0\n/e/4 0\n/d/4 0\n/page 1\n/C/3 0\n/slider/green 0\n/C3 0\n/slider/1 0",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -380,7 +666,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 337.0, 632.0, 354.0, 47.0 ],
+					"patching_rect" : [ 328.0, 645.963684, 354.0, 47.0 ],
 					"text" : "if no wrapped value is found in the lookup table, output is sent out the right outlet"
 				}
 
@@ -390,13 +676,13 @@
 					"fontname" : "Arial",
 					"fontsize" : 11.0,
 					"id" : "obj-89",
-					"linecount" : 9,
+					"linecount" : 11,
 					"maxclass" : "o.message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 893.0, 645.963684, 192.0, 118.0 ],
-					"text" : "/note 37 37\n/midiinName \"/note\"\n/wrapName/note/60 \"/slider/1\"\n/wrapName/note/62 \"/slider/green\"\n/wrapName/note/63 \"/slider/red\"\n/wrapName/cc/55 \"/knob/1\"\n/wrapName/cc/23 \"/knob/2\"\n/wrapName/program \"/button/val\"\n/wrapperLabel \"/wrapName/note/37\"",
+					"patching_rect" : [ 893.0, 645.963684, 192.0, 142.0 ],
+					"text" : "/channel 1\n/midiinName \"/note\"\n/wrapName/note/48 \"/C/3\"\n/wrapName/channel \"/page\"\n/wrapName/note/62 \"/slider/green\"\n/wrapName/note/63 \"/slider/red\"\n/wrapName/cc/55 \"/knob/1\"\n/wrapName/cc/23 \"/knob/2\"\n/wrapName/program \"/button/val\"\n/wrapperLabel \"/wrapName/note/48\"\n/note 48 0",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -556,12 +842,13 @@
 					"fontname" : "Arial",
 					"fontsize" : 11.0,
 					"id" : "obj-61",
+					"linecount" : 4,
 					"maxclass" : "o.message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 696.0, 805.963684, 182.0, 19.0 ],
-					"text" : "/input \"/note/37\" 37",
+					"patching_rect" : [ 696.0, 805.963684, 182.0, 56.0 ],
+					"text" : "/input [\n\t/channel 1\n\t/note/72 0\n]",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -571,12 +858,13 @@
 					"fontname" : "Arial",
 					"fontsize" : 18.0,
 					"id" : "obj-60",
+					"linecount" : 2,
 					"maxclass" : "o.message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 469.0, 588.0, 133.0, 27.0 ],
-					"text" : "/slider/red 63",
+					"patching_rect" : [ 469.0, 588.0, 133.0, 48.0 ],
+					"text" : "/channel 1\n/c/6 0",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -789,13 +1077,13 @@
 					"fontname" : "Arial",
 					"fontsize" : 11.0,
 					"id" : "obj-1",
-					"linecount" : 6,
+					"linecount" : 7,
 					"maxclass" : "o.message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 702.0, 377.0, 150.0, 81.0 ],
-					"text" : "/note/60 \"/slider/1\"\n/note/62 \"/slider/green\"\n/note/63 \"/slider/red\"\n/cc/55 \"/knob/1\"\n/cc/23 \"/knob/2\"\n/program \"/button/val\"",
+					"patching_rect" : [ 702.0, 377.0, 150.0, 93.0 ],
+					"text" : "/note/48 \"/C/3\"\n/channel \"/page\"\n/note/62 \"/slider/green\"\n/note/63 \"/slider/red\"\n/cc/55 \"/knob/1\"\n/cc/23 \"/knob/2\"\n/program \"/button/val\"",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -969,6 +1257,24 @@
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-42", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-76", 1 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-55", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-55", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-57", 0 ]
 				}
 
 			}
@@ -1167,6 +1473,10 @@
 				"type" : "iLaX"
 			}
 , 			{
+				"name" : "o.collect.mxo",
+				"type" : "iLaX"
+			}
+, 			{
 				"name" : "o.select.mxo",
 				"type" : "iLaX"
 			}
@@ -1176,10 +1486,6 @@
 			}
 , 			{
 				"name" : "o.var.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.collect.mxo",
 				"type" : "iLaX"
 			}
  ]
