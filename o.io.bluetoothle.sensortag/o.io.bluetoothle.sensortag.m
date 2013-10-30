@@ -56,6 +56,7 @@ void ostag_replaceSpacesWithSlashes(long len, char *buf)
 
 
 @interface sensorIMU3000: NSObject
+/*
 {
 	float lastX,lastY,lastZ;
 	float calX,calY,calZ;
@@ -63,15 +64,15 @@ void ostag_replaceSpacesWithSlashes(long len, char *buf)
 
 @property float lastX,lastY,lastZ;
 @property float calX,calY,calZ;
-
+*/
 #define IMU3000_RANGE 500.0
 
--(id) init;
+//-(id) init;
 
--(void) calibrate;
--(float) calcXValue:(NSData *)data;
--(float) calcYValue:(NSData *)data;
--(float) calcZValue:(NSData *)data;
+//-(void) calibrate;
++(float) calcXValue:(NSData *)data;
++(float) calcYValue:(NSData *)data;
++(float) calcZValue:(NSData *)data;
 +(float) getRange;
 
 @end
@@ -224,7 +225,7 @@ void ostag_outputOSCBundle(t_ostag *x, t_symbol *msg, int argc, t_atom *argv);
 
 
 @implementation sensorIMU3000
-
+/*
 @synthesize lastX,lastY,lastZ;
 @synthesize calX,calY,calZ;
 
@@ -244,29 +245,38 @@ void ostag_outputOSCBundle(t_ostag *x, t_symbol *msg, int argc, t_atom *argv);
     self.calZ = self.lastZ;
     
 }
-
--(float) calcXValue:(NSData *)data {
+*/
++(float) calcXValue:(NSData *)data {
     //Orientation of sensor on board means we need to swap X (multiplying with -1)
     char scratchVal[6];
     [data getBytes:&scratchVal length:6];
     int16_t rawX = (scratchVal[0] & 0xff) | ((scratchVal[1] << 8) & 0xff00);
+    return (((float)rawX * 1.0) / ( 65536 / IMU3000_RANGE )) * -1;
+    /*
     self.lastX = (((float)rawX * 1.0) / ( 65536 / IMU3000_RANGE )) * -1;
     return (self.lastX - self.calX);
+    */
 }
--(float) calcYValue:(NSData *)data {
++(float) calcYValue:(NSData *)data {
     //Orientation of sensor on board means we need to swap Y (multiplying with -1)
     char scratchVal[6];
     [data getBytes:&scratchVal length:6];
     int16_t rawY = ((scratchVal[2] & 0xff) | ((scratchVal[3] << 8) & 0xff00));
+    return (((float)rawY * 1.0) / ( 65536 / IMU3000_RANGE )) * -1;
+    /*
     self.lastY = (((float)rawY * 1.0) / ( 65536 / IMU3000_RANGE )) * -1;
     return (self.lastY - self.calY);
+    */
 }
--(float) calcZValue:(NSData *)data {
++(float) calcZValue:(NSData *)data {
     char scratchVal[6];
     [data getBytes:&scratchVal length:6];
     int16_t rawZ = (scratchVal[4] & 0xff) | ((scratchVal[5] << 8) & 0xff00);
+    return ((float)rawZ * 1.0) / ( 65536 / IMU3000_RANGE );
+    /*
     self.lastZ = ((float)rawZ * 1.0) / ( 65536 / IMU3000_RANGE );
     return (self.lastZ - self.calZ);
+    */
 }
 +(float) getRange {
     return IMU3000_RANGE;
@@ -451,27 +461,37 @@ void ostag_outputOSCBundle(t_ostag *x, t_symbol *msg, int argc, t_atom *argv);
 	[super dealloc];
 }
 
-- (t_symbol *) makeOSCAddressFromPeripheral:(CBPeripheral *)p withPrefix:(const char *)prefix withPostfix:(const char *)postfix
+- (long) makeOSCAddressFromPeripheral:(CBPeripheral *)p withPrefix:(const char *)prefix withPostfix:(const char *)postfix buf:(char *)buf buflen:(long)buflen
 {
 	const char *name = [p.name UTF8String];
-	char buf[128];
+
+	CFStringRef uuidsr = CFUUIDCreateString(NULL, [p UUID]);
+	long len = CFStringGetLength(uuidsr) + 1;
+	char uuidstring[len];
+	CFStringGetCString(uuidsr, uuidstring, len, kCFStringEncodingUTF8);
+	CFRelease(uuidsr);
+
+	long i = 0;
+
 	if(prefix && postfix){
-		sprintf(buf, "%s/%s%s", prefix, name, postfix);
+		i += snprintf(buf, buflen, "%s/%s/%s%s", prefix, name, uuidstring, postfix);
 	}else if(prefix){
-		sprintf(buf, "%s/%s", prefix, name);
+		i += snprintf(buf, buflen, "%s/%s/%s", prefix, name, uuidstring);
 	}else if(postfix){
-		sprintf(buf, "/%s%s", name, postfix);
+		i += snprintf(buf, buflen, "/%s/%s%s", name, uuidstring, postfix);
 	}else{
-		sprintf(buf, "/%s", name);
+		i += snprintf(buf, buflen, "/%s/%s", name, uuidstring);
 	}
-	char *ptr = buf;
-	while(*ptr != '\0' && ptr - buf < sizeof(buf)){
-		if(*ptr == ' '){
-			*ptr = '/';
+	if(buf){
+		char *ptr = buf;
+		while(*ptr != '\0' && ptr - buf < sizeof(buf)){
+			if(*ptr == ' '){
+				*ptr = '/';
+			}
+			ptr++;
 		}
-		ptr++;
 	}
-	return gensym(buf);
+	return i;
 }
 
 - (t_osc_msg_u *) makeOSCSelfMessage:(CBPeripheral *)p
@@ -654,17 +674,17 @@ void ostag_outputOSCBundle(t_ostag *x, t_symbol *msg, int argc, t_atom *argv);
 {    
 	if([service.UUID isEqual:[CBUUID UUIDWithString:@"180a"]]){
 		for(CBCharacteristic *aChar in service.characteristics){
-			if([aChar.UUID isEqual:[CBUUID UUIDWithString:@"2A29"]] || // manufacturer name
-			   [aChar.UUID isEqual:[CBUUID UUIDWithString:@"2A24"]] || // model number
-			   [aChar.UUID isEqual:[CBUUID UUIDWithString:@"2A25"]]){ // serial number
+			//if([aChar.UUID isEqual:[CBUUID UUIDWithString:@"2A29"]] || // manufacturer name
+				//[aChar.UUID isEqual:[CBUUID UUIDWithString:@"2A24"]] || // model number
+				//[aChar.UUID isEqual:[CBUUID UUIDWithString:@"2A25"]]){ // serial number
 				[aPeripheral readValueForCharacteristic:aChar];
-			}
+				//}
 		}
 	}else if([service.UUID isEqual:[CBUUID UUIDWithString:@"1800"]]){
 		for(CBCharacteristic *aChar in service.characteristics){
-			if([aChar.UUID isEqual:[CBUUID UUIDWithString:@"2A00"]]){ // device name
+			//if([aChar.UUID isEqual:[CBUUID UUIDWithString:@"2A00"]]){ // device name
 				[aPeripheral readValueForCharacteristic:aChar];
-			}
+				//}
 		}
 	}else if([service.UUID isEqual:[CBUUID UUIDWithString:@"ffe0"]]){
 		for(CBCharacteristic *aChar in service.characteristics){
@@ -732,6 +752,40 @@ void ostag_outputOSCBundle(t_ostag *x, t_symbol *msg, int argc, t_atom *argv);
 				[aPeripheral writeValue:valData forCharacteristic:aChar type:CBCharacteristicWriteWithResponse];
 			}
 		}
+	}else if([service.UUID isEqual:[CBUUID UUIDWithString:@"F000AA40-0451-4000-B000-000000000000"]]){
+		// barometer
+		for(CBCharacteristic *aChar in service.characteristics){
+			if([aChar.UUID isEqual:[CBUUID UUIDWithString:@"F000AA41-0451-4000-B000-000000000000"]]){
+				// set up notification for barometer data
+				[aPeripheral setNotifyValue:YES forCharacteristic:aChar];
+			}else if([aChar.UUID isEqual:[CBUUID UUIDWithString:@"F000AA42-0451-4000-B000-000000000000"]]){
+				// turn it on
+				//uint8_t val = 2;
+				//NSData* valData = [NSData dataWithBytes:(void*)&val length:sizeof(val)];
+				//[aPeripheral writeValue:valData forCharacteristic:aChar type:CBCharacteristicWriteWithResponse];
+				//val = 1;
+				//valData = [NSData dataWithBytes:(void*)&val length:sizeof(val)];
+				//[aPeripheral writeValue:valData forCharacteristic:aChar type:CBCharacteristicWriteWithResponse];
+			}else if([aChar.UUID isEqual:[CBUUID UUIDWithString:@"F000AA43-0451-4000-B000-000000000000"]]){
+				//uint8_t val = 2;
+				//NSData* valData = [NSData dataWithBytes:(void*)&val length:sizeof(val)];
+				//[aPeripheral writeValue:valData forCharacteristic:aChar type:CBCharacteristicWriteWithResponse];
+				NSLog(@"%s: barometer calibration: %lu\n", __func__, (unsigned long)[aChar.value length]);
+			}
+		}
+	}else if([service.UUID isEqual:[CBUUID UUIDWithString:@"F000AA50-0451-4000-B000-000000000000"]]){
+		// gyro
+		for(CBCharacteristic *aChar in service.characteristics){
+			if([aChar.UUID isEqual:[CBUUID UUIDWithString:@"F000AA51-0451-4000-B000-000000000000"]]){
+				// set up notification for gyro data
+				[aPeripheral setNotifyValue:YES forCharacteristic:aChar];
+			}else if([aChar.UUID isEqual:[CBUUID UUIDWithString:@"F000AA52-0451-4000-B000-000000000000"]]){
+				// turn it on and ask for x, y, and z
+				uint8_t val = 7;
+				NSData* valData = [NSData dataWithBytes:(void*)&val length:sizeof(val)];
+				[aPeripheral writeValue:valData forCharacteristic:aChar type:CBCharacteristicWriteWithResponse];
+			}
+		}
 	}else{
 		//NSLog(@"%s: service not handled: %@\n", __func__, service.UUID);
 		for(CBCharacteristic *aChar in service.characteristics){
@@ -743,14 +797,38 @@ void ostag_outputOSCBundle(t_ostag *x, t_symbol *msg, int argc, t_atom *argv);
 // Invoked upon completion of a -[readValueForCharacteristic:] request or on the reception of a notification/indication.
 - (void) peripheral:(CBPeripheral *)aPeripheral didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error 
 {
-	/*
 	t_osc_bndl_u *b = osc_bundle_u_alloc();
-	t_osc_msg_u *msg_self = [self makeOSCSelfMessage:aPeripheral];
+	t_osc_msg_u *msg_self = osc_message_u_alloc();
 	osc_bundle_u_addMsg(b, msg_self);
-	const char *name = [aPeripheral.name UTF8String];
-	*/
+	long baseaddresslen = [self makeOSCAddressFromPeripheral:aPeripheral withPrefix:NULL withPostfix:NULL buf:NULL buflen:0] + 1;
+	char baseaddress[baseaddresslen];
+	[self makeOSCAddressFromPeripheral:aPeripheral withPrefix:NULL withPostfix:NULL buf:baseaddress buflen:baseaddresslen];
+	osc_message_u_setAddress(msg_self, "/self");
+	osc_message_u_appendString(msg_self, baseaddress);
+
 	//NSLog(@"%s: %@", __func__, characteristic.UUID);
-	if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:@"2A24"]]){
+	if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:@"2A00"]]){
+		// Value for serial number received
+		NSLog(@"%s: device name: %s\n", __func__, [characteristic.value bytes]);
+	}else if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:@"2A01"]]){
+		// Value for serial number received
+		NSLog(@"%s: appearance: %s\n", __func__, [characteristic.value bytes]);
+	}else if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:@"2A02"]]){
+		// Value for serial number received
+		NSLog(@"%s: peripheral privacy flag: %s\n", __func__, [characteristic.value bytes]);
+	}else if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:@"2A03"]]){
+		// Value for serial number received
+		NSLog(@"%s: reconnection address: %s\n", __func__, [characteristic.value bytes]);
+	}else if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:@"2A04"]]){
+		// Value for serial number received
+		NSLog(@"%s: peripheral preferred connection parameters: %s\n", __func__, [characteristic.value bytes]);
+	}else if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:@"2A05"]]){
+		// Value for serial number received
+		NSLog(@"%s: service changed: %s\n", __func__, [characteristic.value bytes]);
+	}else if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:@"2A23"]]){
+		// Value for serial number received
+		NSLog(@"%s: system id: %s\n", __func__, [characteristic.value bytes]);
+	}else if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:@"2A24"]]){
 		// Value for model number received
 		NSLog(@"%s: model number: %s\n", __func__, [characteristic.value bytes]);
 		/*
@@ -765,38 +843,102 @@ void ostag_outputOSCBundle(t_ostag *x, t_symbol *msg, int argc, t_atom *argv);
 	}else if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:@"2A25"]]){
 		// Value for serial number received
 		NSLog(@"%s: serial number: %s\n", __func__, [characteristic.value bytes]);
+	}else if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:@"2A26"]]){
+		// Value for serial number received
+		NSLog(@"%s: firmware rev: %s\n", __func__, [characteristic.value bytes]);
+	}else if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:@"2A27"]]){
+		// Value for serial number received
+		NSLog(@"%s: hardware rev: %s\n", __func__, [characteristic.value bytes]);
+	}else if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:@"2A28"]]){
+		// Value for serial number received
+		NSLog(@"%s: software rev: %s\n", __func__, [characteristic.value bytes]);
 	}else if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:@"2A29"]]){
 		// Value for manufacturer name received
 		NSLog(@"%s: manufacturer name: %s\n", __func__, [characteristic.value bytes]);
-	}else if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:@"2A00"]]){
-		// Value for device name received
-		NSLog(@"%s: device name: %s\n", __func__, [characteristic.value bytes]);
 	}else if([characteristic.UUID isEqual:[CBUUID UUIDWithString:@"F000AA01-0451-4000-B000-000000000000"]]){
 		// temp in celsius
 		float tAmb = [sensorTMP006 calcTAmb:characteristic.value];
 		float tObj = [sensorTMP006 calcTObj:characteristic.value];
-		NSLog(@"%s: ambient temp = %f", __func__, tAmb);
-		NSLog(@"%s: IR temp = %f", __func__, tObj);
+
+		char *addresses[] = {"/temperature/ambient/celsius", "/temperature/ir/celsius"};
+		float dat[3] = {tAmb, tObj};
+		for(int i = 0; i < sizeof(addresses) / sizeof(char*); i++){
+			long l = [self makeOSCAddressFromPeripheral:aPeripheral withPrefix:NULL withPostfix:addresses[i] buf:NULL buflen:0] + 1;
+			char address[l];
+			[self makeOSCAddressFromPeripheral:aPeripheral withPrefix:NULL withPostfix:addresses[i] buf:address buflen:l];
+			t_osc_msg_u *msgx = osc_message_u_allocWithFloat(address, dat[i]);
+			osc_bundle_u_addMsg(b, msgx);
+		}
+		//NSLog(@"%s: ambient temp = %f", __func__, tAmb);
+		//NSLog(@"%s: IR temp = %f", __func__, tObj);
 	}else if([characteristic.UUID isEqual:[CBUUID UUIDWithString:@"F000AA11-0451-4000-B000-000000000000"]]){
 		// acc
 		float x = [sensorKXTJ9 calcXValue:characteristic.value];
 		float y = [sensorKXTJ9 calcYValue:characteristic.value];
 		float z = [sensorKXTJ9 calcZValue:characteristic.value];
-		NSLog(@"%s: acc: %f %f %f\n", __func__, x, y, z);
+
+		char *addresses[] = {"/accelerometer/x", "/accelerometer/y", "/accelerometer/z"};
+		float dat[3] = {x, y, z};
+		for(int i = 0; i < 3; i++){
+			long l = [self makeOSCAddressFromPeripheral:aPeripheral withPrefix:NULL withPostfix:addresses[i] buf:NULL buflen:0] + 1;
+			char address[l];
+			[self makeOSCAddressFromPeripheral:aPeripheral withPrefix:NULL withPostfix:addresses[i] buf:address buflen:l];
+			t_osc_msg_u *msgx = osc_message_u_allocWithFloat(address, dat[i]);
+			osc_bundle_u_addMsg(b, msgx);
+		}
+		//NSLog(@"%s: acc: %f %f %f\n", __func__, x, y, z);
 	}else if([characteristic.UUID isEqual:[CBUUID UUIDWithString:@"F000AA21-0451-4000-B000-000000000000"]]){
 		// humidity
 		float rHVal = [sensorSHT21 calcPress:characteristic.value];
-		NSLog(@"%s: hum: %f\n", __func__, rHVal);
+
+		long l = [self makeOSCAddressFromPeripheral:aPeripheral withPrefix:NULL withPostfix:"/humidity" buf:NULL buflen:0] + 1;
+		char address[l];
+		[self makeOSCAddressFromPeripheral:aPeripheral withPrefix:NULL withPostfix:"/humidity" buf:address buflen:l];
+		t_osc_msg_u *msgx = osc_message_u_allocWithFloat(address, rHVal);
+		osc_bundle_u_addMsg(b, msgx);
+		//NSLog(@"%s: hum: %f\n", __func__, rHVal);
 	}else if([characteristic.UUID isEqual:[CBUUID UUIDWithString:@"F000AA31-0451-4000-B000-000000000000"]]){
 		// magnetometer
 		float x = [sensorMAG3110 calcXValue:characteristic.value];
 		float y = [sensorMAG3110 calcYValue:characteristic.value];
 		float z = [sensorMAG3110 calcZValue:characteristic.value];
-		NSLog(@"%s: mag: %f %f %f\n", __func__, x, y, z);
+
+		char *addresses[] = {"/magnetometer/x", "/magnetometer/y", "/magnetometer/z"};
+		float dat[3] = {x, y, z};
+		for(int i = 0; i < 3; i++){
+			long l = [self makeOSCAddressFromPeripheral:aPeripheral withPrefix:NULL withPostfix:addresses[i] buf:NULL buflen:0] + 1;
+			char address[l];
+			[self makeOSCAddressFromPeripheral:aPeripheral withPrefix:NULL withPostfix:addresses[i] buf:address buflen:l];
+			t_osc_msg_u *msgx = osc_message_u_allocWithFloat(address, dat[i]);
+			osc_bundle_u_addMsg(b, msgx);
+		}
+		//NSLog(@"%s: mag: %f %f %f\n", __func__, x, y, z);
+	}else if([characteristic.UUID isEqual:[CBUUID UUIDWithString:@"F000AA41-0451-4000-B000-000000000000"]]){
+		// barometer
+		NSLog(@"%s: BAROMETER", __func__);
+	}else if([characteristic.UUID isEqual:[CBUUID UUIDWithString:@"F000AA43-0451-4000-B000-000000000000"]]){
+		// barometer calibration
+		NSLog(@"%s: BAROMETER calibration", __func__);
+	}else if([characteristic.UUID isEqual:[CBUUID UUIDWithString:@"F000AA51-0451-4000-B000-000000000000"]]){
+		// gyro
+		float x = [sensorIMU3000 calcXValue:characteristic.value];
+		float y = [sensorIMU3000 calcYValue:characteristic.value];
+		float z = [sensorIMU3000 calcZValue:characteristic.value];
+
+		char *addresses[] = {"/gyro/x", "/gyro/y", "/gyro/z"};
+		float dat[3] = {x, y, z};
+		for(int i = 0; i < 3; i++){
+			long l = [self makeOSCAddressFromPeripheral:aPeripheral withPrefix:NULL withPostfix:addresses[i] buf:NULL buflen:0] + 1;
+			char address[l];
+			[self makeOSCAddressFromPeripheral:aPeripheral withPrefix:NULL withPostfix:addresses[i] buf:address buflen:l];
+			t_osc_msg_u *msgx = osc_message_u_allocWithFloat(address, dat[i]);
+			osc_bundle_u_addMsg(b, msgx);
+		}
+		//NSLog(@"%s: gyro: %f %f %f\n", __func__, x, y, z);
 	}else{
-		NSLog(@"%s: %@", __func__, characteristic.UUID);
+		NSLog(@"%s: not handled: %@", __func__, characteristic.UUID);
 	}
-	/*
+
 	long len = 0;
 	char *buf = NULL;
 	osc_bundle_u_serialize(b, &len, &buf);
@@ -809,7 +951,6 @@ void ostag_outputOSCBundle(t_ostag *x, t_symbol *msg, int argc, t_atom *argv);
 		// don't free buf here!! it's pointer has been passed to the scheduler and will be freed when
 		// the callback executes
 	}
-	*/
 }
 
 - (void)ostag_init:(struct _ostag *)x
