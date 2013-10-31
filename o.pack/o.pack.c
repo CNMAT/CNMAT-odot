@@ -264,7 +264,7 @@ void opack_free(t_opack *x)
 		for(i = 1; i < x->num_messages; i++){
 			if(x->proxy[i]){
 #ifdef OMAX_PD_VERSION
- //               free(x->proxy[i]);  //<< I think this is not required for the pd version since they are all new classes?
+                pd_free(x->proxy[i]);  //<< I think this is not required for the pd version since they are all new classes?
 #else
 				object_free(x->proxy[i]);
 #endif
