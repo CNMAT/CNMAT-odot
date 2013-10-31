@@ -8,7 +8,7 @@
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 443.0, 44.0, 1585.0, 807.0 ],
+		"rect" : [ 95.0, 44.0, 1585.0, 807.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 11.0,
@@ -919,7 +919,7 @@
 							"architecture" : "x86"
 						}
 ,
-						"rect" : [ 246.0, 165.0, 1254.0, 929.0 ],
+						"rect" : [ 385.0, 70.0, 1254.0, 929.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 11.0,
@@ -938,17 +938,93 @@
 						"description" : "",
 						"digest" : "",
 						"tags" : "",
+						"visible" : 1,
 						"boxes" : [ 							{
 								"box" : 								{
 									"fontname" : "Arial",
 									"fontsize" : 11.0,
-									"id" : "obj-14",
+									"id" : "obj-25",
+									"linecount" : 3,
+									"maxclass" : "o.message",
+									"numinlets" : 2,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 602.25, 580.0, 150.0, 44.0 ],
+									"presentation_rect" : [ 598.0, 580.0, 0.0, 0.0 ],
+									"text" : "/1 12\n/2 22\n/3 33",
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"fontname" : "Arial",
+									"fontsize" : 11.0,
+									"id" : "obj-21",
 									"maxclass" : "newobj",
 									"numinlets" : 2,
 									"numoutlets" : 2,
+									"outlettype" : [ "", "FullPacket" ],
+									"patching_rect" : [ 782.0, 538.0, 100.0, 19.0 ],
+									"text" : "o.select /usehead"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"fontname" : "Arial",
+									"fontsize" : 11.0,
+									"id" : "obj-20",
+									"maxclass" : "newobj",
+									"numinlets" : 2,
+									"numoutlets" : 2,
+									"outlettype" : [ "", "FullPacket" ],
+									"patching_rect" : [ 863.0, 501.0, 100.0, 19.0 ],
+									"text" : "o.route /usehead"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"fontname" : "Arial",
+									"fontsize" : 11.0,
+									"id" : "obj-19",
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 2,
 									"outlettype" : [ "", "" ],
-									"patching_rect" : [ 765.0, 140.0, 100.0, 19.0 ],
-									"text" : "zl.compare"
+									"patching_rect" : [ 782.0, 355.0, 100.0, 19.0 ],
+									"text" : "t l l"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"fontname" : "Arial",
+									"fontsize" : 11.0,
+									"id" : "obj-15",
+									"linecount" : 3,
+									"maxclass" : "o.message",
+									"numinlets" : 2,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 764.0, 77.0, 150.0, 44.0 ],
+									"text" : "/1 12\n/2 22\n/3 33",
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"fontname" : "Arial",
+									"fontsize" : 11.0,
+									"id" : "obj-9",
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "FullPacket" ],
+									"patching_rect" : [ 884.0, 290.0, 100.0, 19.0 ],
+									"text" : "o.expr"
 								}
 
 							}
@@ -957,12 +1033,13 @@
 									"fontname" : "Arial",
 									"fontsize" : 11.0,
 									"id" : "obj-13",
+									"linecount" : 2,
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "FullPacket" ],
-									"patching_rect" : [ 655.0, 416.0, 174.0, 19.0 ],
-									"text" : "o.expr"
+									"patching_rect" : [ 863.0, 451.0, 308.5, 31.0 ],
+									"text" : "o.expr map( lambda(i){ if(value(/allheads[[i]]) == /maxval\\, /usehead = /allheads[[i]])\\; }\\, aseq(0\\, length(/allheads) - 1 ) )"
 								}
 
 							}
@@ -975,7 +1052,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "FullPacket" ],
-									"patching_rect" : [ 655.0, 357.0, 100.0, 19.0 ],
+									"patching_rect" : [ 863.0, 386.0, 100.0, 19.0 ],
 									"text" : "o.route /distance"
 								}
 
@@ -985,12 +1062,13 @@
 									"fontname" : "Arial",
 									"fontsize" : 11.0,
 									"id" : "obj-11",
+									"linecount" : 2,
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "FullPacket" ],
-									"patching_rect" : [ 655.0, 385.0, 174.0, 19.0 ],
-									"text" : "o.expr /allheads = getaddresses()"
+									"patching_rect" : [ 863.0, 414.0, 364.0, 31.0 ],
+									"text" : "o.expr /allheads = getaddresses()\\; /maxval = max(map(value\\, /allheads))\\; /usehead = /nil"
 								}
 
 							}
@@ -1142,7 +1220,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 160.25, 416.0, 32.5, 19.0 ],
+									"patching_rect" : [ 160.25, 538.0, 32.5, 19.0 ],
 									"text" : "gate"
 								}
 
@@ -1199,7 +1277,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "FullPacket" ],
-									"patching_rect" : [ 160.25, 442.0, 47.0, 19.0 ],
+									"patching_rect" : [ 160.25, 564.0, 47.0, 19.0 ],
 									"text" : "o.union"
 								}
 
@@ -1275,23 +1353,14 @@
 									"maxclass" : "outlet",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 160.25, 503.0, 25.0, 25.0 ]
+									"patching_rect" : [ 160.25, 625.0, 25.0, 25.0 ]
 								}
 
 							}
  ],
 						"lines" : [ 							{
 								"patchline" : 								{
-									"destination" : [ "obj-110", 1 ],
-									"disabled" : 0,
-									"hidden" : 0,
-									"source" : [ "obj-10", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-4", 1 ],
+									"destination" : [ "obj-19", 0 ],
 									"disabled" : 0,
 									"hidden" : 0,
 									"source" : [ "obj-10", 0 ]
@@ -1313,6 +1382,15 @@
 									"disabled" : 0,
 									"hidden" : 0,
 									"source" : [ "obj-108", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-13", 0 ],
+									"disabled" : 0,
+									"hidden" : 0,
+									"source" : [ "obj-11", 0 ]
 								}
 
 							}
@@ -1354,6 +1432,15 @@
 							}
 , 							{
 								"patchline" : 								{
+									"destination" : [ "obj-20", 0 ],
+									"disabled" : 0,
+									"hidden" : 0,
+									"source" : [ "obj-13", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
 									"destination" : [ "obj-1", 0 ],
 									"disabled" : 0,
 									"hidden" : 0,
@@ -1372,6 +1459,24 @@
 							}
 , 							{
 								"patchline" : 								{
+									"destination" : [ "obj-12", 0 ],
+									"disabled" : 0,
+									"hidden" : 0,
+									"source" : [ "obj-19", 1 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-21", 0 ],
+									"disabled" : 0,
+									"hidden" : 0,
+									"source" : [ "obj-19", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
 									"destination" : [ "obj-7", 0 ],
 									"disabled" : 0,
 									"hidden" : 0,
@@ -1385,6 +1490,24 @@
 									"disabled" : 0,
 									"hidden" : 0,
 									"source" : [ "obj-2", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-21", 1 ],
+									"disabled" : 0,
+									"hidden" : 0,
+									"source" : [ "obj-20", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-4", 1 ],
+									"disabled" : 0,
+									"hidden" : 0,
+									"source" : [ "obj-21", 0 ]
 								}
 
 							}
@@ -3324,35 +3447,35 @@
 		"dependency_cache" : [ 			{
 				"name" : "o.io.ax12.set-position.maxpat",
 				"bootpath" : "/Users/rama/Documents/__CNMAT/cnmat-git/CNMAT-odot/testing/io",
-				"patcherrelativepath" : "../../../../__CNMAT/cnmat-git/CNMAT-odot/testing/io",
+				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "cv.jit.blobs.centroids.draw.maxpat",
 				"bootpath" : "/Users/rama/Documents/_max5_library/3rd party (active)/cv.jit_OSX_v1.7.2/cv.jit-support/Abstractions",
-				"patcherrelativepath" : "../../../3rd party (active)/cv.jit_OSX_v1.7.2/cv.jit-support/Abstractions",
+				"patcherrelativepath" : "../../../../../_max5_library/3rd party (active)/cv.jit_OSX_v1.7.2/cv.jit-support/Abstractions",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.gather.maxpat",
 				"bootpath" : "/Users/rama/Documents/_max5_library/3rd party (active)/CNMAT_Externals/odot/abstractions",
-				"patcherrelativepath" : "../../../3rd party (active)/CNMAT_Externals/odot/abstractions",
+				"patcherrelativepath" : "../../../../../_max5_library/3rd party (active)/CNMAT_Externals/odot/abstractions",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.address.reorder.maxpat",
 				"bootpath" : "/Users/rama/Documents/__CNMAT/cnmat-git/CNMAT-odot/testing/abstractions",
-				"patcherrelativepath" : "../../../../__CNMAT/cnmat-git/CNMAT-odot/testing/abstractions",
+				"patcherrelativepath" : "../abstractions",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.io.ax12.set-compliance.maxpat",
 				"bootpath" : "/Users/rama/Documents/__CNMAT/cnmat-git/CNMAT-odot/testing/io",
-				"patcherrelativepath" : "../../../../__CNMAT/cnmat-git/CNMAT-odot/testing/io",
+				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
