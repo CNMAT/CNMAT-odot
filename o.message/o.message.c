@@ -364,7 +364,14 @@ void omessage_paint(t_omessage *x, t_object *patcherview)
 		critical_exit(x->lock);
 		long bufpos = 0;
 		char *buf = NULL;
-		osc_bundle_s_format(len, (char *)ptr, &bufpos, &buf);
+		t_osc_err e = osc_bundle_s_format(len, (char *)ptr, &bufpos, &buf);
+		if(e){
+			object_error((t_object *)x, "%s", osc_error_string(e));
+			if(buf){
+				osc_mem_free(buf);
+			}
+			return;
+		}
 		if(buf[bufpos - 2] == '\n'){
 			buf[bufpos - 2] = '\0';
 		}
