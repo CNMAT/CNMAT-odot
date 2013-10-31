@@ -60,6 +60,25 @@ void *ovalidate_class;
 void ovalidate_fullPacket(t_ovalidate *x, t_symbol *msg, int argc, t_atom *argv)
 {
 	OMAX_UTIL_GET_LEN_AND_PTR;
+	t_osc_err e = osc_error_bundleSanityCheck(len, ptr);
+	if(e){
+		t_osc_bndl_u *b = osc_bundle_u_alloc();
+
+		t_osc_msg_u *merr = osc_message_u_alloc();
+		osc_message_u_setAddress(merr, "/error/str");
+		osc_message_u_appendString(merr, osc_error_string(e));
+		osc_bundle_u_addMsg(b, merr);
+
+		long l = 0;
+		char *buf = NULL;
+		osc_bundle_u_serialize(b, &l, &buf);
+		if(buf){
+			omax_util_outletOSC(x->outletErr, l, buf);
+			omax_util_outletOSC(x->outletInval, len, ptr);
+			osc_mem_free(buf);
+		}
+		return;
+	}
 	uint64_t state = OSC_SERIAL_INIT;
 	for(int i = 0; i < len; i++){
 		state = osc_serial_processByte(ptr[i], state);
@@ -96,6 +115,19 @@ void ovalidate_fullPacket(t_ovalidate *x, t_symbol *msg, int argc, t_atom *argv)
 	omax_util_outletOSC(x->outletVal, len, ptr);
 }
 
+void ovalidate_anything(t_ovalidate *x, t_symbol *msg, int argc, t_atom *argv)
+{
+	if(msg == gensym("xosc-msgsize-bug")){
+		// DON'T DO SHIT LIKE THIS---THIS ISN'T THE WILD FUCKING WEST
+		long len = atom_getlong(argv + 1);
+		char *ptr = (char *)atom_getlong(argv + 2);
+		char *size = ptr + OSC_HEADER_SIZE;
+		*((int32_t *)size) = hton32(100);
+		ovalidate_fullPacket(x, atom_getsym(argv), argc - 1, argv + 1);
+	}else{
+		object_error((t_object *)x, "doesn't understand message %s", msg->s_name);
+	}
+}
 
 void ovalidate_doc(t_ovalidate *x)
 {
@@ -164,7 +196,7 @@ int main(void)
 	class_addmethod(c, (method)ovalidate_assist, "assist", A_CANT, 0);
 	class_addmethod(c, (method)ovalidate_doc, "doc", 0);
 	//class_addmethod(c, (method)ovalidate_bang, "bang", 0);
-	//class_addmethod(c, (method)ovalidate_anything, "anything", A_GIMME, 0);
+	class_addmethod(c, (method)ovalidate_anything, "anything", A_GIMME, 0);
 	// remove this if statement when we stop supporting Max 5
 	if(omax_dict_resolveDictStubs()){
 		class_addmethod(c, (method)omax_dict_dictionary, "dictionary", A_GIMME, 0);
