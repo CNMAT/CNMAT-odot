@@ -85,6 +85,7 @@ typedef struct _oppnd{
 	t_object ob;
 	void *outlet;
 	t_symbol *sym_to_prepend;
+	int have_valid_sym;
 	int sym_to_prepend_len;
 	char *buffer;
 	int bufferLen;
@@ -151,6 +152,11 @@ void oppnd_set(t_oppnd *x, t_symbol *msg, int argc, t_atom *argv)
 		object_error((t_object *)x, "argument should be a symbol");
 		return;
 	}
+	t_osc_err e = osc_error_validateAddress(atom_getsym(argv)->s_name);
+	if(e){
+		object_error((t_object *)x, "%s", osc_error_string(e));
+		return;
+	}
 	t_symbol *sym_to_prepend = atom_getsym(argv);
 	if(!sym_to_prepend){
 		object_error((t_object *)x, "argument does not appear to be a symbol");
@@ -171,6 +177,11 @@ void oppnd_anything(t_oppnd *x, t_symbol *msg, short argc, t_atom *argv)
 {
 	if(!msg){
 		object_error((t_object *)x, "message must be an OSC address");
+		return;
+	}
+	t_osc_err e = osc_error_validateAddress(msg->s_name);
+	if(e){
+		object_error((t_object *)x, "%s", osc_error_string(e));
 		return;
 	}
 	t_symbol *address = msg, *sym_to_prepend = x->sym_to_prepend;
@@ -219,7 +230,7 @@ void oppnd_anything(t_oppnd *x, t_symbol *msg, short argc, t_atom *argv)
 
 	t_osc_bndl_u *bndl_u = osc_bundle_u_alloc();
 	t_osc_msg_u *msg_u = NULL;
-	t_osc_err e = omax_util_maxAtomsToOSCMsg_u(&msg_u, newaddress, argc, argv);
+	e = omax_util_maxAtomsToOSCMsg_u(&msg_u, newaddress, argc, argv);
 	if(e){
 		object_error((t_object *)x, "%s", osc_error_string(e));
 		return;
@@ -251,6 +262,7 @@ void *oppnd_new(t_symbol *msg, short argc, t_atom *argv)
 	if((x = (t_oppnd *)object_alloc(oppnd_class))){
 		x->outlet = outlet_new((t_object *)x, gensym("FullPacket"));
 		x->sym_to_prepend = NULL;
+		x->sym_to_prepend_len = 0;;
 		if(argc){
 			t_symbol *sym = atom_getsym(argv);
 			char *c = sym->s_name;
@@ -263,9 +275,10 @@ void *oppnd_new(t_symbol *msg, short argc, t_atom *argv)
 					object_error((t_object *)x, "%s", osc_error_string(e));
 					return NULL;
 				}
+			}else{
+				x->sym_to_prepend = sym;
+				x->sym_to_prepend_len = strlen(c);
 			}
-			x->sym_to_prepend = sym;
-			x->sym_to_prepend_len = strlen(c);
 		}
 	}
     
@@ -313,6 +326,7 @@ void *oppnd_new(t_symbol *msg, short argc, t_atom *argv)
 	if((x = (t_oppnd *)object_alloc(oppnd_class))){
 		x->outlet = outlet_new(x, "FullPacket");
 		x->sym_to_prepend = NULL;
+		x->sym_to_prepend_len = 0;
 		if(argc){
 			t_symbol *sym = atom_getsym(argv);
 			char *c = sym->s_name;
@@ -325,9 +339,10 @@ void *oppnd_new(t_symbol *msg, short argc, t_atom *argv)
 					object_error((t_object *)x, "%s", osc_error_string(e));
 					return NULL;
 				}
+			}else{
+				x->sym_to_prepend = sym;
+				x->sym_to_prepend_len = strlen(c);
 			}
-			x->sym_to_prepend = sym;
-			x->sym_to_prepend_len = strlen(c);
 		}
 	}
 		   	
