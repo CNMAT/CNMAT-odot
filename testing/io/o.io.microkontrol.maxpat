@@ -36,7 +36,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 957.0, 1156.0, 72.0, 20.0 ],
+					"patching_rect" : [ 838.729736, 1149.0, 72.0, 20.0 ],
 					"text" : "loadmess 0"
 				}
 
@@ -678,7 +678,7 @@
 					"presentation" : 1,
 					"presentation_linecount" : 38,
 					"presentation_rect" : [ 397.0, -163.0, 150.0, 516.0 ],
-					"text" : "/grid/1/1 0 \n/grid/1/2 0 \n/grid/1/3 0 \n/grid/1/4 0 \n/grid/2/1 0 \n/grid/2/2 0 \n/grid/2/3 0 \n/grid/2/4 0 \n/grid/3/1 0 \n/grid/3/2 0 \n/grid/3/3 0 \n/grid/3/4 0 \n/grid/4/1 0 \n/grid/4/2 0 \n/grid/4/3 0 \n/grid/4/4 0 \n/slider/1 0 \n/slider/2 0 \n/slider/3 0 \n/slider/4 0 \n/slider/5 0 \n/slider/6 0 \n/slider/7 0 \n/slider/8 0 \n/knob/1 81 \n/knob/2 0 \n/knob/3 0 \n/knob/4 0 \n/knob/5 0 \n/knob/6 0 \n/knob/7 0 \n/knob/8 0 \n/pedal 0 \n/joystick/verticle -1. \n/joystick/horizontal -1. \n/keys/midi/pitch 0 \n/keys/midi/velocity 0 \n/keys/midi/pitchvelocity 0 \n",
+					"text" : "/button/1/1 0 \n/button/1/2 1 \n/button/1/3 \n/button/1/4 \n/button/2/1 \n/button/2/2 \n/button/2/3 \n/button/2/4 \n/button/3/1 \n/button/3/2 \n/button/3/3 \n/button/3/4 0 \n/button/4/1 \n/button/4/2 \n/button/4/3 \n/button/4/4 0 \n/slider/1 \n/slider/2 13 \n/slider/3 \n/slider/4 \n/slider/5 \n/slider/6 \n/slider/7 \n/slider/8 \n/dial/1 2 \n/dial/2 \n/dial/3 \n/dial/4 \n/dial/5 \n/dial/6 \n/dial/7 \n/dial/8 \n/pedal \n/joystick/verticle \n/joystick/horizontal \n/keys/midi/pitch \n/keys/midi/velocity \n/keys/midi/pitchvelocity \n",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -693,8 +693,8 @@
 					"numinlets" : 38,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 253.729736, 1245.0, 604.0, 60.0 ],
-					"text" : "o.pak /grid/1/1 /grid/1/2 /grid/1/3 /grid/1/4 /grid/2/1 /grid/2/2 /grid/2/3 /grid/2/4 /grid/3/1 /grid/3/2 /grid/3/3 /grid/3/4 /grid/4/1 /grid/4/2 /grid/4/3 /grid/4/4 /slider/1 /slider/2 /slider/3 /slider/4 /slider/5 /slider/6 /slider/7 /slider/8 /knob/1 /knob/2 /knob/3 /knob/4 /knob/5 /knob/6 /knob/7 /knob/8 /pedal /joystick/verticle /joystick/horizontal /keys/midi/pitch /keys/midi/velocity /keys/midi/pitchvelocity"
+					"patching_rect" : [ 253.729736, 1245.0, 584.0, 60.0 ],
+					"text" : "o.pak /button/1/1 /button/1/2 /button/1/3 /button/1/4 /button/2/1 /button/2/2 /button/2/3 /button/2/4 /button/3/1 /button/3/2 /button/3/3 /button/3/4 /button/4/1 /button/4/2 /button/4/3 /button/4/4 /slider/1 /slider/2 /slider/3 /slider/4 /slider/5 /slider/6 /slider/7 /slider/8 /dial/1 /dial/2 /dial/3 /dial/4 /dial/5 /dial/6 /dial/7 /dial/8 /pedal /joystick/verticle /joystick/horizontal /keys/midi/pitch /keys/midi/velocity /keys/midi/pitchvelocity"
 				}
 
 			}
@@ -4942,6 +4942,29 @@
 					"source" : [ "obj-97", 0 ]
 				}
 
+			}
+ ],
+		"dependency_cache" : [ 			{
+				"name" : "IMG139.jpg",
+				"bootpath" : "/Users/derekrazo/Documents/Max_Enabled/Stuff_for_searchpath/o.io.microkontrol",
+				"patcherrelativepath" : "../../../../../Documents/Max_Enabled/Stuff_for_searchpath/o.io.microkontrol",
+				"type" : "JPEG",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "kmkTog.maxpat",
+				"bootpath" : "/Users/derekrazo/Documents/Max_Enabled/Stuff_for_searchpath/Patches_yo",
+				"patcherrelativepath" : "../../../../../Documents/Max_Enabled/Stuff_for_searchpath/Patches_yo",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "o.pak.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.message.mxo",
+				"type" : "iLaX"
 			}
  ]
 	}
