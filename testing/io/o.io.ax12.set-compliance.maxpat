@@ -31,6 +31,20 @@
 				"box" : 				{
 					"fontname" : "Arial",
 					"fontsize" : 11.0,
+					"id" : "obj-2",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "FullPacket" ],
+					"patching_rect" : [ 554.0, 619.0, 100.0, 19.0 ],
+					"text" : "o.pack /byteArray"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 11.0,
 					"id" : "obj-34",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
@@ -104,7 +118,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 638.5, 245.0, 77.0, 20.0 ],
-					"presentation_rect" : [ 580.0, 268.0, 0.0, 0.0 ],
 					"text" : "clip 0 255"
 				}
 
@@ -119,7 +132,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 538.0, 237.0, 77.0, 20.0 ],
-					"presentation_rect" : [ 542.0, 239.0, 0.0, 0.0 ],
 					"text" : "clip 0 255"
 				}
 
@@ -134,7 +146,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 444.0, 237.0, 77.0, 20.0 ],
-					"presentation_rect" : [ 440.0, 258.0, 0.0, 0.0 ],
 					"text" : "clip 0 255"
 				}
 
@@ -149,7 +160,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 361.0, 245.0, 77.0, 20.0 ],
-					"presentation_rect" : [ 330.0, 258.0, 0.0, 0.0 ],
 					"text" : "clip 0 255"
 				}
 
@@ -164,7 +174,6 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "FullPacket" ],
 					"patching_rect" : [ 538.0, 190.0, 117.0, 19.0 ],
-					"presentation_rect" : [ 538.0, 189.0, 0.0, 0.0 ],
 					"text" : "o.route /margin /slope"
 				}
 
@@ -179,7 +188,6 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "FullPacket" ],
 					"patching_rect" : [ 405.0, 190.0, 117.0, 19.0 ],
-					"presentation_rect" : [ 405.0, 190.0, 0.0, 0.0 ],
 					"text" : "o.route /margin /slope"
 				}
 
@@ -1511,7 +1519,7 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-3", 0 ],
+					"destination" : [ "obj-2", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-16", 0 ]
@@ -1551,6 +1559,15 @@
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-19", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-3", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-2", 0 ]
 				}
 
 			}
@@ -1760,6 +1777,15 @@
 					"source" : [ "obj-8", 0 ]
 				}
 
+			}
+ ],
+		"dependency_cache" : [ 			{
+				"name" : "o.route.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.pack.mxo",
+				"type" : "iLaX"
 			}
  ]
 	}
