@@ -1,2 +1,0 @@
-#define ODOT_VERSION "1.3-323-g4be57fb"
-#define ODOT_COMPILE_DATE "Thu Oct 31 20:24:37 PDT 2013"
