@@ -246,7 +246,7 @@ void ohrm_outputOSCBundle(t_ohrm *x, t_symbol *msg, int argc, t_atom *argv);
             
 		}
     
-	NSLog(@"Central manager state: %@", state);
+	//NSLog(@"Central manager state: %@", state);
 	return FALSE;
 }
 
@@ -311,6 +311,15 @@ void ohrm_outputOSCBundle(t_ohrm *x, t_symbol *msg, int argc, t_atom *argv);
 }
 
 /*
+	0   CoreFoundation                      0x00007fff8abbfb06 __exceptionPreprocess + 198
+	1   libobjc.A.dylib                     0x00007fff91dc33f0 objc_exception_throw + 43
+	2   CoreFoundation                      0x00007fff8abbf8dc +[NSException raise:format:] + 204
+	3   CoreBluetooth                       0x00007fff96bdab13 -[CBUUID initWithString:] + 546
+	4   CoreBluetooth                       0x00007fff96bdadab +[CBUUID UUIDWithString:] + 48
+	5   o.io.bluetoothle.hrm                0x0000000101e07c96 -[HeartRateMonitor peripheral:didDiscoverServices:] + 534
+ */
+
+/*
 2013-09-20 15:40:12.492 Max[51380:707] -[HeartRateMonitor peripheral:didDiscoverServices:]: Generic Access Profile
 2013-09-20 15:40:12.492 Max[51380:707] -[HeartRateMonitor peripheral:didDiscoverServices:]: Generic Attribute Profile
 2013-09-20 15:40:12.493 Max[51380:707] -[HeartRateMonitor peripheral:didDiscoverServices:]: Unknown (<180d>) heart rate
@@ -334,17 +343,17 @@ void ohrm_outputOSCBundle(t_ohrm *x, t_symbol *msg, int argc, t_atom *argv);
 		if([aService.UUID isEqual:[CBUUID UUIDWithString:@"180A"]]){
 			[aPeripheral discoverCharacteristics:nil forService:aService];
 		}
-        
+
 		// GAP (Generic Access Profile) for Device Name
-		if([aService.UUID isEqual:[CBUUID UUIDWithString:CBUUIDGenericAccessProfileString]]){
+		if([aService.UUID isEqual:[CBUUID UUIDWithString:@"1800"]]){
 			[aPeripheral discoverCharacteristics:nil forService:aService];
 		}
-
+		/*
 		if([aService.UUID isEqual:[CBUUID UUIDWithString:@"6217ff49ac7b547eeecf016a06970ba9"]]){
 			[aPeripheral discoverCharacteristics:nil forService:aService];
 		}
-
-		NSLog(@"%s: %@", __func__, aService.UUID);
+		*/
+		//NSLog(@"%s: %@", __func__, aService.UUID);
 	}
 }
 
@@ -390,11 +399,13 @@ void ohrm_outputOSCBundle(t_ohrm *x, t_symbol *msg, int argc, t_atom *argv);
 			}
 		}
 	}
+	/*
 	if([service.UUID isEqual:[CBUUID UUIDWithString:@"6217ff49ac7b547eeecf016a06970ba9"]]){
 		for(CBCharacteristic *aChar in service.characteristics){
 			NSLog(@"%s: %@\n", __func__, aChar.UUID);
 		}
 	}
+	*/
 }
 
 // Invoked upon completion of a -[readValueForCharacteristic:] request or on the reception of a notification/indication.
