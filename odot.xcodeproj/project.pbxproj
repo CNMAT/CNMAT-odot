@@ -13,6 +13,7 @@
 			buildPhases = (
 			);
 			dependencies = (
+				52CC5A3518232D9C001D46E3 /* PBXTargetDependency */,
 				52517B9D181F701F00879497 /* PBXTargetDependency */,
 				52517B9F181F701F00879497 /* PBXTargetDependency */,
 				52517BA1181F701F00879497 /* PBXTargetDependency */,
@@ -493,6 +494,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 52C839D1167A5B24000AA688;
 			remoteInfo = o.table;
+		};
+		52CC5A3418232D9C001D46E3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5292DC3E17FCC6AD00598BDC;
+			remoteInfo = o.io.bluetoothle.sensortag;
 		};
 		B4E73DF30E188A4C001E52BE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -2984,6 +2992,11 @@
 			isa = PBXTargetDependency;
 			target = 52C839D1167A5B24000AA688 /* o.table */;
 			targetProxy = 52CB897F17077E4100178AAF /* PBXContainerItemProxy */;
+		};
+		52CC5A3518232D9C001D46E3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5292DC3E17FCC6AD00598BDC /* o.io.bluetoothle.sensortag */;
+			targetProxy = 52CC5A3418232D9C001D46E3 /* PBXContainerItemProxy */;
 		};
 		B4E73DF40E188A4C001E52BE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;

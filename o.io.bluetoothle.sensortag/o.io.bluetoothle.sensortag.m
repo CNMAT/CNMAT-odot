@@ -170,7 +170,7 @@ void ostag_outputOSCBundle(t_ostag *x, t_symbol *msg, int argc, t_atom *argv);
 - (void) stopScan;
 - (BOOL) isLECapableHardware;
 - (void) computeHeartRate:(NSData *)data peripheral:(CBPeripheral *)p OSCBundle:(t_osc_bndl_u *)b;
-- (t_symbol *) makeOSCAddressFromPeripheral:(CBPeripheral *)p withPrefix:(const char *)prefix withPostfix:(const char *)postfix;
+- (long) makeOSCAddressFromPeripheral:(CBPeripheral *)p withPrefix:(const char *)prefix withPostfix:(const char *)postfix buf:(char *)buf buflen:(long)buflen;
 - (void)ostag_init:(struct _ostag *)x;
 
 
@@ -494,27 +494,22 @@ void ostag_outputOSCBundle(t_ostag *x, t_symbol *msg, int argc, t_atom *argv);
 	return i;
 }
 
-- (t_osc_msg_u *) makeOSCSelfMessage:(CBPeripheral *)p
-{
-	t_osc_msg_u *m = osc_message_u_alloc();
-	osc_message_u_setAddress(m, "/self");
-	t_symbol *s = [self makeOSCAddressFromPeripheral:p withPrefix:NULL withPostfix:NULL];
-	osc_message_u_appendString(m, s->s_name);
-	return m;
-}
-
 - (void) sendOSCStatusBundle:(CBPeripheral *)p status:(const char *)status
 {
 	t_osc_bndl_u *b = osc_bundle_u_alloc();
 	t_osc_msg_u *m = osc_message_u_alloc();
-	t_symbol *s = [self makeOSCAddressFromPeripheral:p withPrefix:NULL withPostfix:"/status"];
-	osc_message_u_setAddress(m, s->s_name);
+	long statuslen = [self makeOSCAddressFromPeripheral:p withPrefix:NULL withPostfix:"/status" buf:NULL buflen:0] + 1;
+	char statusaddress[statuslen];
+	[self makeOSCAddressFromPeripheral:p withPrefix:NULL withPostfix:"/status" buf:statusaddress buflen:statuslen];
+	osc_message_u_setAddress(m, statusaddress);
 	osc_message_u_appendString(m, "disconnected");
 	osc_bundle_u_addMsg(b, m);
 	t_osc_msg_u *mself = osc_message_u_alloc();
 	osc_message_u_setAddress(mself, "/self");
-	s = [self makeOSCAddressFromPeripheral:p withPrefix:NULL withPostfix:NULL];
-	osc_message_u_appendString(mself, s->s_name);
+	long selflen = [self makeOSCAddressFromPeripheral:p withPrefix:NULL withPostfix:NULL buf:NULL buflen:0] + 1;
+	char selfaddress[selflen];
+	[self makeOSCAddressFromPeripheral:p withPrefix:NULL withPostfix:NULL buf:selfaddress buflen:selflen];
+	osc_message_u_appendString(mself, selfaddress);
 	osc_bundle_u_addMsg(b, mself);
 	long len = 0;
 	char *buf = NULL;
@@ -554,7 +549,7 @@ void ostag_outputOSCBundle(t_ostag *x, t_symbol *msg, int argc, t_atom *argv);
             
 		}
     
-	NSLog(@"Central manager state: %@", state);
+	//NSLog(@"Central manager state: %@", state);
 	return FALSE;
 }
 
@@ -577,11 +572,15 @@ void ostag_outputOSCBundle(t_ostag *x, t_symbol *msg, int argc, t_atom *argv);
 	[self isLECapableHardware];
 }
     
-// Invoked when the central discovers heart rate peripheral while scanning.
 - (void) centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)aPeripheral advertisementData:(NSDictionary *)advertisementData RSSI:(NSNumber *)RSSI 
 {    
-	[aPeripheral retain];
-	[manager connectPeripheral:aPeripheral options: nil];
+	//NSLog(@"peripheral UUID: %@", [aPeripheral UUID]);
+	NSString *st = [advertisementData objectForKey:CBAdvertisementDataLocalNameKey];
+	//NSLog(@"name: %@", st);
+	if([st compare:@"SensorTag"] == NSOrderedSame){
+		[aPeripheral retain];
+		[manager connectPeripheral:aPeripheral options: nil];
+	}
 	[self startScan];
 }
 
