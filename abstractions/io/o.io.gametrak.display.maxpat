@@ -121,7 +121,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 2,
-					"outlettype" : [ "FullPacket", "" ],
+					"outlettype" : [ "", "" ],
 					"patching_rect" : [ 493.0, 458.0, 114.0, 20.0 ],
 					"text" : "c.lcd.xyhelper /right"
 				}
@@ -191,7 +191,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 2,
-					"outlettype" : [ "FullPacket", "" ],
+					"outlettype" : [ "", "" ],
 					"patching_rect" : [ 90.0, 458.0, 107.0, 20.0 ],
 					"text" : "c.lcd.xyhelper /left"
 				}
@@ -579,9 +579,9 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "c.esplora.LCDcircle.maxpat",
-				"bootpath" : "/Users/jml/Documents/materials/programming/max_files/5_berkeley/projects/cnmat/repositories/git/CNMAT-odot/abstractions/io/o.io.esplora",
-				"patcherrelativepath" : "./o.io.esplora",
+				"name" : "c.lcd.circle.maxpat",
+				"bootpath" : "/Users/jml/Documents/materials/programming/max_files/5_berkeley/projects/cnmat/repositories/git/CNMAT-odot/abstractions/io",
+				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
