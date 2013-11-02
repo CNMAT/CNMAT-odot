@@ -8,7 +8,7 @@
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 53.0, 61.0, 683.0, 803.0 ],
+		"rect" : [ 48.0, 60.0, 683.0, 803.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -32,13 +32,13 @@
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"id" : "obj-3",
-					"linecount" : 3,
+					"linecount" : 6,
 					"maxclass" : "o.message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 495.0, 704.0, 150.0, 47.0 ],
-					"text" : "/right/x -0.3\n/right/y 0.336364\n/right/z 0.450711",
+					"patching_rect" : [ 495.0, 704.0, 150.0, 88.0 ],
+					"text" : "/left/x -0.472727\n/left/y 0.490909\n/left/z 0.681515\n/right/x -0.145455\n/right/y 0.881818\n/right/z 0.893734",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -64,13 +64,13 @@
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"id" : "obj-6",
-					"linecount" : 3,
+					"linecount" : 6,
 					"maxclass" : "o.message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 495.0, 435.0, 150.0, 47.0 ],
-					"text" : "/right/x -0.0454545\n/right/y 0.545455\n/right/z 0.547345",
+					"patching_rect" : [ 495.0, 435.0, 150.0, 88.0 ],
+					"text" : "/right/x -0.127273\n/right/y 0.154545\n/right/z 0.200207\n/left/x -0.481818\n/left/y 0.6\n/left/z 0.769512",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -258,11 +258,15 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "o.collect.mxo",
+				"name" : "o.message.mxo",
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "o.message.mxo",
+				"name" : "o.cond.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.collect.mxo",
 				"type" : "iLaX"
 			}
  ]
