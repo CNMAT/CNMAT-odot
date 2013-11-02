@@ -8,7 +8,7 @@
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 40.0, 57.0, 971.0, 820.0 ],
+		"rect" : [ 829.0, 148.0, 971.0, 820.0 ],
 		"bgcolor" : [ 1.0, 1.0, 1.0, 0.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
@@ -116,20 +116,6 @@
 					}
 ,
 					"text" : "p thru"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontname" : "Arial",
-					"fontsize" : 12.0,
-					"id" : "obj-25",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 740.0, 560.0, 123.0, 20.0 ],
-					"text" : "o.pack /mic/loudness"
 				}
 
 			}
@@ -286,13 +272,13 @@
 									"fontname" : "Arial",
 									"fontsize" : 12.0,
 									"id" : "obj-1",
-									"linecount" : 36,
+									"linecount" : 34,
 									"maxclass" : "o.message",
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 30.0, 110.0, 320.0, 490.0 ],
-									"text" : "/left false \n/right false \n/forward false \n/backward false \n/led/rgb 0 0 0 \n/led/red 0 \n/led/green 0 \n/led/blue 0 \n/led/onboard 0 \n/tone 0 0 \n/diamond/left \"released\" \n/diamond/forward \"released\" \n/diamond/backward \"released\" \n/diamond/right \"released\" \n/acceleration/x 0. \n/acceleration/y 0. \n/acceleration/z 0. \n/temperature/fahrenheit -60. \n/temperature/celcius -51.1111 \n/joystick/horizontal 0 \n/joystick/vertical 0 \n/joystick/button \"released\" \n/joystick/left false \n/joystick/right false \n/joystick/forward false \n/joystick/backward false \n/slider/horizontal 0. \n/photoresistor 0. \n/connector/white/right 0. \n/connector/white/left 0. \n/diamond/backward \"released\" \n/diamond/left \"released\" \n/diamond/forward \"released\" \n/diamond/right \"released\" \n/loudness 0. \n/mic/loudness 0. ",
+									"patching_rect" : [ 30.0, 110.0, 320.0, 463.0 ],
+									"text" : "/left false \n/right false \n/forward false \n/backward false \n/led/rgb 0 0 0 \n/led/red 0 \n/led/green 0 \n/led/blue 0 \n/led/onboard 0 \n/tone 0 0 \n/diamond/left \"released\" \n/diamond/forward \"released\" \n/diamond/backward \"released\" \n/diamond/right \"released\" \n/acceleration/x 0. \n/acceleration/y 0. \n/acceleration/z 0. \n/temperature/fahrenheit -60. \n/temperature/celcius -51.1111 \n/joystick/horizontal 0 \n/joystick/vertical 0 \n/joystick/button \"released\" \n/joystick/left false \n/joystick/right false \n/joystick/forward false \n/joystick/backward false \n/slider/horizontal 0. \n/photoresistor 0. \n/connector/white/right 0. \n/connector/white/left 0. \n/diamond/backward \"released\" \n/diamond/left \"released\" \n/diamond/forward \"released\" \n/diamond/right \"released\" ",
 									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 
@@ -1020,6 +1006,20 @@
 								"box" : 								{
 									"fontname" : "Arial",
 									"fontsize" : 11.0,
+									"id" : "obj-3",
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "FullPacket" ],
+									"patching_rect" : [ 50.0, 190.0, 163.0, 19.0 ],
+									"text" : "o.expr /vertical = (/vertical * -1.)"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"fontname" : "Arial",
+									"fontsize" : 11.0,
 									"id" : "obj-2",
 									"maxclass" : "newobj",
 									"numinlets" : 1,
@@ -1195,7 +1195,7 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-4", 0 ],
+									"destination" : [ "obj-3", 0 ],
 									"disabled" : 0,
 									"hidden" : 0,
 									"source" : [ "obj-10", 0 ]
@@ -1235,6 +1235,15 @@
 									"disabled" : 0,
 									"hidden" : 0,
 									"source" : [ "obj-2", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-4", 0 ],
+									"disabled" : 0,
+									"hidden" : 0,
+									"source" : [ "obj-3", 0 ]
 								}
 
 							}
@@ -1676,7 +1685,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 310.0, 260.0, 109.0, 20.0 ],
-									"text" : "scale -1. 1. 0. 100."
+									"text" : "scale 1. -1. 0. 100."
 								}
 
 							}
@@ -2053,7 +2062,7 @@
 							"architecture" : "x86"
 						}
 ,
-						"rect" : [ 0.0, 44.0, 868.0, 644.0 ],
+						"rect" : [ 602.0, 104.0, 868.0, 644.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 11.0,
@@ -5894,15 +5903,6 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-10", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"source" : [ "obj-25", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
 					"destination" : [ "obj-1", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
@@ -6006,15 +6006,6 @@
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-34", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-25", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"source" : [ "obj-35", 0 ]
 				}
 
 			}

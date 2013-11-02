@@ -44,7 +44,7 @@
 , 			{
 				"box" : 				{
 					"fontname" : "Arial",
-					"fontsize" : 12.0,
+					"fontsize" : 15.0,
 					"id" : "obj-6",
 					"maxclass" : "newobj",
 					"numinlets" : 0,
@@ -58,7 +58,7 @@
 							"architecture" : "x86"
 						}
 ,
-						"rect" : [ 686.0, 127.0, 640.0, 480.0 ],
+						"rect" : [ 245.0, 122.0, 557.0, 367.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -86,7 +86,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 220.0, 150.0, 59.0, 18.0 ],
+									"patching_rect" : [ 170.0, 30.0, 59.0, 18.0 ],
 									"text" : "diagnose"
 								}
 
@@ -98,7 +98,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "bang" ],
-									"patching_rect" : [ 190.0, 140.0, 20.0, 20.0 ]
+									"patching_rect" : [ 140.0, 20.0, 20.0, 20.0 ]
 								}
 
 							}
@@ -112,7 +112,7 @@
 									"numoutlets" : 1,
 									"offset" : [ -24.0, -5.0 ],
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 60.0, 220.0, 522.0, 237.0 ]
+									"patching_rect" : [ 10.0, 100.0, 522.0, 237.0 ]
 								}
 
 							}
@@ -126,7 +126,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 90.0, 130.0, 65.0, 24.0 ],
+									"patching_rect" : [ 40.0, 10.0, 65.0, 24.0 ],
 									"text" : "turn on"
 								}
 
@@ -139,7 +139,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "int" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 60.0, 130.0, 20.0, 20.0 ]
+									"patching_rect" : [ 10.0, 10.0, 20.0, 20.0 ]
 								}
 
 							}
@@ -152,7 +152,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "FullPacket" ],
-									"patching_rect" : [ 60.0, 180.0, 83.0, 20.0 ],
+									"patching_rect" : [ 10.0, 60.0, 83.0, 20.0 ],
 									"text" : "o.io.esplora a"
 								}
 
@@ -197,7 +197,7 @@
  ]
 					}
 ,
-					"patching_rect" : [ 340.0, 440.0, 76.0, 20.0 ],
+					"patching_rect" : [ 670.0, 634.0, 93.0, 23.0 ],
 					"saved_object_attributes" : 					{
 						"default_fontface" : 0,
 						"default_fontname" : "Arial",
@@ -220,13 +220,13 @@
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"id" : "obj-3",
-					"linecount" : 32,
+					"linecount" : 31,
 					"maxclass" : "o.message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 550.0, 150.0, 270.0, 436.0 ],
-					"text" : "/joystick/horizontal -0.52 \n/joystick/vertical -0.506667 \n/joystick/button \"released\" \n/joystick/left false \n/joystick/right false \n/joystick/forward false \n/joystick/backward false \n/photoresistor 0.764706 \n/diamond/backward \"released\" \n/diamond/right \"released\" \n/diamond/forward \"released\" \n/diamond/left \"released\" \n/temperature/fahrenheit 57.5172 \n/temperature/celcius 14.1762 \n/acceleration/x 0.666667 \n/acceleration/y 0.666667 \n/acceleration/z 0.333333 \n/slider/horizontal 0.328467 \n/left false \n/right false \n/forward false \n/backward false \n/led/rgb 0 0 0 \n/led/red 0 \n/led/green 0 \n/led/blue 0 \n/led/onboard 0 \n/tone 0 0 \n/connector/white/right 0. \n/connector/white/left 0. \n/loudness 0. \n/mic/loudness 0. \n",
+					"patching_rect" : [ 550.0, 150.0, 270.0, 423.0 ],
+					"text" : "/microphone/loudness 0.0187322 \n/joystick/horizontal -0.4 \n/joystick/vertical 0.76 \n/joystick/button \"released\" \n/joystick/left false \n/joystick/right false \n/joystick/forward false \n/joystick/backward false \n/left false \n/right false \n/forward false \n/backward false \n/led/rgb 0 0 0 \n/led/red 0 \n/led/green 0 \n/led/blue 0 \n/led/onboard 0 \n/tone 0 0 \n/diamond/left \"released\" \n/diamond/forward \"released\" \n/diamond/backward \"released\" \n/diamond/right \"released\" \n/acceleration/x 0. \n/acceleration/y 0. \n/acceleration/z 0. \n/temperature/fahrenheit -60. \n/temperature/celcius -51.1111 \n/slider/horizontal 0. \n/photoresistor 0. \n/connector/white/right 0. \n/connector/white/left 0. \n",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
