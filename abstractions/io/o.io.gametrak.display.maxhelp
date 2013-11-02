@@ -8,7 +8,7 @@
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 53.0, 61.0, 683.0, 749.0 ],
+		"rect" : [ 53.0, 61.0, 683.0, 803.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -31,6 +31,22 @@
 				"box" : 				{
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
+					"id" : "obj-3",
+					"linecount" : 3,
+					"maxclass" : "o.message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 495.0, 704.0, 150.0, 47.0 ],
+					"text" : "/right/x -0.3\n/right/y 0.336364\n/right/z 0.450711",
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
 					"id" : "obj-7",
 					"linecount" : 6,
 					"maxclass" : "o.message",
@@ -38,7 +54,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 495.0, 555.0, 150.0, 88.0 ],
-					"presentation_rect" : [ 571.0, 542.0, 0.0, 0.0 ],
 					"text" : "/left/x 0.0363636\n/left/y 0.6\n/left/z 0.601101\n/right/x 0.472727\n/right/y 0.245455\n/right/z 0.532653",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -49,14 +64,13 @@
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"id" : "obj-6",
-					"linecount" : 6,
+					"linecount" : 3,
 					"maxclass" : "o.message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 495.0, 435.0, 150.0, 88.0 ],
-					"presentation_rect" : [ 509.0, 329.0, 0.0, 0.0 ],
-					"text" : "/left/x -0.318182\n/left/y 0.518182\n/left/z 0.608072\n/right/x -0.0818182\n/right/y 0.6\n/right/z 0.605553",
+					"patching_rect" : [ 495.0, 435.0, 150.0, 47.0 ],
+					"text" : "/right/x -0.0454545\n/right/y 0.545455\n/right/z 0.547345",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -160,6 +174,16 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-3", 1 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"midpoints" : [ 37.5, 760.0, 477.0, 760.0, 477.0, 695.0, 635.5, 695.0 ],
+					"source" : [ "obj-4", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-1", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
@@ -193,9 +217,9 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "c.esplora.LCDcircle.maxpat",
-				"bootpath" : "/Users/jml/Documents/materials/programming/max_files/5_berkeley/projects/cnmat/repositories/git/CNMAT-odot/abstractions/io/o.io.esplora",
-				"patcherrelativepath" : "./o.io.esplora",
+				"name" : "c.lcd.circle.maxpat",
+				"bootpath" : "/Users/jml/Documents/materials/programming/max_files/5_berkeley/projects/cnmat/repositories/git/CNMAT-odot/abstractions/io",
+				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
