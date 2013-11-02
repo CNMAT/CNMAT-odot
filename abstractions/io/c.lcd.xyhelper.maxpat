@@ -374,7 +374,7 @@
 							"architecture" : "x86"
 						}
 ,
-						"rect" : [ 602.0, 104.0, 868.0, 644.0 ],
+						"rect" : [ 103.0, 207.0, 868.0, 644.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 11.0,
@@ -1089,8 +1089,8 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 467.0, 515.0, 170.0, 19.0 ],
-									"text" : "c.esplora.LCDcircle 200 200 200"
+									"patching_rect" : [ 467.0, 515.0, 126.0, 19.0 ],
+									"text" : "c.lcd.circle 200 200 200"
 								}
 
 							}
@@ -1145,8 +1145,8 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 545.0, 430.0, 164.0, 19.0 ],
-									"text" : "c.esplora.LCDcircle 255 137 20"
+									"patching_rect" : [ 545.0, 430.0, 120.0, 19.0 ],
+									"text" : "c.lcd.circle 255 137 20"
 								}
 
 							}
@@ -1789,7 +1789,7 @@
 					"maxclass" : "inlet",
 					"numinlets" : 0,
 					"numoutlets" : 1,
-					"outlettype" : [ "" ],
+					"outlettype" : [ "FullPacket" ],
 					"patching_rect" : [ 42.5, 50.0, 25.0, 25.0 ]
 				}
 
