@@ -8,7 +8,7 @@
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 62.0, 44.0, 1211.0, 913.0 ],
+		"rect" : [ 32.0, 66.0, 1211.0, 503.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -32,11 +32,136 @@
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"frgb" : 0.0,
+					"id" : "obj-26",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 810.0, 30.0, 150.0, 20.0 ],
+					"text" : "example output"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-13",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patcher" : 					{
+						"fileversion" : 1,
+						"appversion" : 						{
+							"major" : 6,
+							"minor" : 1,
+							"revision" : 4,
+							"architecture" : "x86"
+						}
+,
+						"rect" : [ 25.0, 69.0, 640.0, 480.0 ],
+						"bglocked" : 0,
+						"openinpresentation" : 0,
+						"default_fontsize" : 12.0,
+						"default_fontface" : 0,
+						"default_fontname" : "Arial",
+						"gridonopen" : 0,
+						"gridsize" : [ 10.0, 10.0 ],
+						"gridsnaponopen" : 0,
+						"statusbarvisible" : 2,
+						"toolbarvisible" : 1,
+						"boxanimatetime" : 200,
+						"imprint" : 0,
+						"enablehscroll" : 1,
+						"enablevscroll" : 1,
+						"devicewidth" : 0.0,
+						"description" : "",
+						"digest" : "",
+						"tags" : "",
+						"boxes" : [ 							{
+								"box" : 								{
+									"fontname" : "Arial",
+									"fontsize" : 12.0,
+									"id" : "obj-13",
+									"linecount" : 72,
+									"maxclass" : "o.message",
+									"numinlets" : 2,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 50.0, 100.0, 320.0, 972.0 ],
+									"text" : "/6/rawlist 0 0 0 0\n/6/normlist 0. 0. 0. 0.\n/6/xy 0. 0.\n/6/horizontal 0.\n/6/vertical 0.\n/6/button false false false false\n/3/rawlist 0 0 0 0\n/3/normlist 0. 0. 0. 0.\n/3/xy 0. 0.\n/3/horizontal 0.\n/3/vertical 0.\n/3/button false false false false\n/1/rawlist 0 0 0 0\n/1/normlist 0. 0. 0. 0.\n/1/xy 0. 0.\n/1/horizontal 0.\n/1/vertical 0.\n/1/button false false false false\n/7/rawlist 0 0 0 0\n/7/normlist 0. 0. 0. 0.\n/7/xy 0. 0.\n/7/horizontal 0.\n/7/vertical 0.\n/7/button false false false false\n/2/rawlist 0 0 0 0\n/2/normlist 0. 0. 0. 0.\n/2/xy 0. 0.\n/2/horizontal 0.\n/2/vertical 0.\n/2/button false false false false\n/8/rawlist 0 0 0 0\n/8/normlist 0. 0. 0. 0.\n/8/xy 0. 0.\n/8/horizontal 0.\n/8/vertical 0.\n/8/button false false false false\n/9/rawlist 0 0 0 0\n/9/normlist 0. 0. 0. 0.\n/9/xy 0. 0.\n/9/horizontal 0.\n/9/vertical 0.\n/9/button false false false false\n/4/rawlist 0 0 0 0\n/4/normlist 0. 0. 0. 0.\n/4/xy 0. 0.\n/4/horizontal 0.\n/4/vertical 0.\n/4/button false false false false\n/10/rawlist 0 0 0 0\n/10/normlist 0. 0. 0. 0.\n/10/xy 0. 0.\n/10/horizontal 0.\n/10/vertical 0.\n/10/button false false false false\n/5/rawlist 0 0 0 0\n/5/normlist 0. 0. 0. 0.\n/5/xy 0. 0.\n/5/horizontal 0.\n/5/vertical 0.\n/5/button false false false false\n/diamond/left/button 0.\n/diamond/right/pressure 0.\n/diamond/forward/pressure 0.\n/diamond/backward/pressure 0.\n/diamond/backward/button \"released\"\n/diamond/right/button \"released\"\n/diamond/forward/button \"released\"\n/diamond/left/pressure \"released\"\n/Instruction \"Push on 4 corners of any pad for corresponding data\"\n/Manufacturer \"Keith McMillen Instruments\"\n/Product \"SoftStep\"",
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"comment" : "",
+									"id" : "obj-12",
+									"maxclass" : "inlet",
+									"numinlets" : 0,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 351.0, 40.0, 25.0, 25.0 ]
+								}
+
+							}
+ ],
+						"lines" : [ 							{
+								"patchline" : 								{
+									"destination" : [ "obj-13", 1 ],
+									"disabled" : 0,
+									"hidden" : 0,
+									"source" : [ "obj-12", 0 ]
+								}
+
+							}
+ ]
+					}
+,
+					"patching_rect" : [ 410.0, 240.0, 45.0, 20.0 ],
+					"saved_object_attributes" : 					{
+						"default_fontface" : 0,
+						"default_fontname" : "Arial",
+						"default_fontsize" : 12.0,
+						"description" : "",
+						"digest" : "",
+						"fontface" : 0,
+						"fontname" : "Arial",
+						"fontsize" : 12.0,
+						"globalpatchername" : "",
+						"tags" : ""
+					}
+,
+					"text" : "p view"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-5",
+					"linecount" : 72,
+					"maxclass" : "o.message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 810.0, 60.0, 320.0, 972.0 ],
+					"text" : "/6/rawlist 0 0 0 0\n/6/normlist 0. 0. 0. 0.\n/6/xy 0. 0.\n/6/horizontal 0.\n/6/vertical 0.\n/6/button false false false false\n/3/rawlist 0 0 0 0\n/3/normlist 0. 0. 0. 0.\n/3/xy 0. 0.\n/3/horizontal 0.\n/3/vertical 0.\n/3/button false false false false\n/1/rawlist 0 0 0 0\n/1/normlist 0. 0. 0. 0.\n/1/xy 0. 0.\n/1/horizontal 0.\n/1/vertical 0.\n/1/button false false false false\n/7/rawlist 0 0 0 0\n/7/normlist 0. 0. 0. 0.\n/7/xy 0. 0.\n/7/horizontal 0.\n/7/vertical 0.\n/7/button false false false false\n/2/rawlist 0 0 0 0\n/2/normlist 0. 0. 0. 0.\n/2/xy 0. 0.\n/2/horizontal 0.\n/2/vertical 0.\n/2/button false false false false\n/8/rawlist 0 0 0 0\n/8/normlist 0. 0. 0. 0.\n/8/xy 0. 0.\n/8/horizontal 0.\n/8/vertical 0.\n/8/button false false false false\n/9/rawlist 0 0 0 0\n/9/normlist 0. 0. 0. 0.\n/9/xy 0. 0.\n/9/horizontal 0.\n/9/vertical 0.\n/9/button false false false false\n/4/rawlist 0 0 0 0\n/4/normlist 0. 0. 0. 0.\n/4/xy 0. 0.\n/4/horizontal 0.\n/4/vertical 0.\n/4/button false false false false\n/10/rawlist 0 0 0 0\n/10/normlist 0. 0. 0. 0.\n/10/xy 0. 0.\n/10/horizontal 0.\n/10/vertical 0.\n/10/button false false false false\n/5/rawlist 0 0 0 0\n/5/normlist 0. 0. 0. 0.\n/5/xy 0. 0.\n/5/horizontal 0.\n/5/vertical 0.\n/5/button false false false false\n/diamond/left/button 0.\n/diamond/right/pressure 0.\n/diamond/forward/pressure 0.\n/diamond/backward/pressure 0.\n/diamond/backward/button \"released\"\n/diamond/right/button \"released\"\n/diamond/forward/button \"released\"\n/diamond/left/pressure \"released\"\n/Instruction \"Push on 4 corners of any pad for corresponding data\"\n/Manufacturer \"Keith McMillen Instruments\"\n/Product \"SoftStep\"",
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"frgb" : 0.0,
 					"id" : "obj-25",
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 840.0, 210.0, 150.0, 20.0 ],
+					"patching_rect" : [ 517.0, 450.0, 150.0, 20.0 ],
 					"text" : "unmatched input"
 				}
 
@@ -185,7 +310,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 760.0, 240.0, 320.0, 20.0 ],
+					"patching_rect" : [ 437.0, 430.0, 320.0, 20.0 ],
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -197,7 +322,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 500.0, 380.0, 20.0, 20.0 ]
+					"patching_rect" : [ 100.0, 410.0, 20.0, 20.0 ]
 				}
 
 			}
@@ -210,7 +335,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 435.0, 410.0, 270.0, 20.0 ],
+					"patching_rect" : [ 35.0, 440.0, 270.0, 20.0 ],
 					"text" : "/softstep/5/button false false false false",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -225,7 +350,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 540.0, 350.0, 60.0, 20.0 ],
+					"patching_rect" : [ 140.0, 380.0, 60.0, 20.0 ],
 					"text" : "o.change"
 				}
 
@@ -254,7 +379,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "FullPacket" ],
-					"patching_rect" : [ 540.0, 320.0, 148.0, 20.0 ],
+					"patching_rect" : [ 140.0, 350.0, 148.0, 20.0 ],
 					"text" : "o.select /softstep/5/button"
 				}
 
@@ -318,22 +443,6 @@
 			}
 , 			{
 				"box" : 				{
-					"fontname" : "Arial",
-					"fontsize" : 12.0,
-					"id" : "obj-13",
-					"linecount" : 76,
-					"maxclass" : "o.message",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 70.0, 230.0, 320.0, 1026.0 ],
-					"text" : "/softstep/1/rawlist 0 0 0 0\n/softstep/1/normlist 0. 0. 0. 0.\n/softstep/1/xy 0. 0.\n/softstep/1/pressure 0.\n/softstep/1/horizontal 0.\n/softstep/1/vertical 0.\n/softstep/1/button false false false false\n/softstep/6/rawlist 0 0 0 0\n/softstep/6/normlist 0. 0. 0. 0.\n/softstep/6/xy 0. 0.\n/softstep/6/pressure 0.\n/softstep/6/horizontal 0.\n/softstep/6/vertical 0.\n/softstep/6/button false false false false\n/softstep/7/rawlist 0 0 0 0\n/softstep/7/normlist 0. 0. 0. 0.\n/softstep/7/xy 0. 0.\n/softstep/7/pressure 0.\n/softstep/7/horizontal 0.\n/softstep/7/vertical 0.\n/softstep/7/button false false false false\n/softstep/8/rawlist 0 0 0 0\n/softstep/8/normlist 0. 0. 0. 0.\n/softstep/8/xy 0. 0.\n/softstep/8/pressure 0.\n/softstep/8/horizontal 0.\n/softstep/8/vertical 0.\n/softstep/8/button false false false false\n/softstep/4/rawlist 0 0 0 0\n/softstep/4/normlist 0. 0. 0. 0.\n/softstep/4/xy 0. 0.\n/softstep/4/pressure 0.\n/softstep/4/horizontal 0.\n/softstep/4/vertical 0.\n/softstep/4/button false false false false\n/softstep/10/rawlist 0 0 0 0\n/softstep/10/normlist 0. 0. 0. 0.\n/softstep/10/xy 0. 0.\n/softstep/10/pressure 0.\n/softstep/10/horizontal 0.\n/softstep/10/vertical 0.\n/softstep/10/button false false false false\n/softstep/diamond/backward/pressure 0.\n/softstep/diamond/left/pressure 0.\n/softstep/diamond/right/pressure 0.\n/softstep/diamond/right/button \"released\"\n/softstep/diamond/forward/pressure 0.\n/softstep/diamond/left/button 0.\n/softstep/diamond/backward/button \"released\"\n/softstep/diamond/forward/button \"released\"\n/softstep/9/rawlist 0 0 0 0\n/softstep/9/normlist 0. 0. 0. 0.\n/softstep/9/xy 0. 0.\n/softstep/9/pressure 0.\n/softstep/9/horizontal 0.\n/softstep/9/vertical 0.\n/softstep/9/button false false false false\n/softstep/5/rawlist 0 0 0 0\n/softstep/5/normlist 0. 0. 0. 0.\n/softstep/5/xy 0. 0.\n/softstep/5/pressure 0.\n/softstep/5/horizontal 0.\n/softstep/5/vertical 0.\n/softstep/5/button false false false false\n/softstep/3/rawlist 0 0 0 0\n/softstep/3/normlist 0. 0. 0. 0.\n/softstep/3/xy 0. 0.\n/softstep/3/horizontal 0.\n/softstep/3/vertical 0.\n/softstep/3/button false false false false\n/softstep/2/rawlist 0 0 0 0\n/softstep/2/normlist 0. 0. 0. 0.\n/softstep/2/xy 0. 0.\n/softstep/2/horizontal 0.\n/softstep/2/vertical 0.\n/softstep/2/button false false false false",
-					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
-				}
-
-			}
-, 			{
-				"box" : 				{
 					"color" : [ 0.945098, 0.913725, 0.407843, 1.0 ],
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
@@ -341,7 +450,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 2,
-					"outlettype" : [ "FullPacket", "FullPacket" ],
+					"outlettype" : [ "", "FullPacket" ],
 					"patching_rect" : [ 410.0, 190.0, 75.0, 20.0 ],
 					"text" : "o.io.softstep"
 				}
@@ -404,7 +513,7 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-13", 1 ],
+					"destination" : [ "obj-13", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-2", 0 ]
@@ -556,11 +665,11 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "o.prepend.mxo",
+				"name" : "o.route.mxo",
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "o.route.mxo",
+				"name" : "o.prepend.mxo",
 				"type" : "iLaX"
 			}
 , 			{
