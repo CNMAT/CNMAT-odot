@@ -38,7 +38,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 495.0, 704.0, 150.0, 114.0 ],
-					"text" : "/right/x 0.163636\n/right/y 0.527273\n/right/z 0.552081\n/left/x 0.\n/left/y 0.\n/left/z 0.\n/vendor \"Madcatz\"\n/productname \"Gametrak\"",
+					"text" : "/left/x -0.982418\n/left/y -0.145299\n/left/z 0.993104\n/right/x 0.\n/right/y 0.\n/right/z 0.\n/vendor \"Madcatz\"\n/productname \"Gametrak\"",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -70,7 +70,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 495.0, 435.0, 150.0, 114.0 ],
-					"text" : "/right/x 0.0181818\n/right/y 0.218182\n/right/z 0.218938\n/left/x 0.\n/left/y 0.\n/left/z 0.\n/vendor \"Madcatz\"\n/productname \"Gametrak\"",
+					"text" : "/left/x -0.982418\n/left/y -0.145299\n/left/z 0.993104\n/right/x 0.\n/right/y 0.\n/right/z 0.\n/vendor \"Madcatz\"\n/productname \"Gametrak\"",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -92,6 +92,7 @@
 , 			{
 				"box" : 				{
 					"id" : "obj-5",
+					"int" : 1,
 					"maxclass" : "gswitch",
 					"numinlets" : 3,
 					"numoutlets" : 1,
