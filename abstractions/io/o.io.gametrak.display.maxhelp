@@ -8,7 +8,7 @@
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 48.0, 60.0, 683.0, 803.0 ],
+		"rect" : [ 48.0, 60.0, 683.0, 841.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -32,13 +32,13 @@
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"id" : "obj-3",
-					"linecount" : 6,
+					"linecount" : 8,
 					"maxclass" : "o.message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 495.0, 704.0, 150.0, 88.0 ],
-					"text" : "/left/x -0.472727\n/left/y 0.490909\n/left/z 0.681515\n/right/x -0.145455\n/right/y 0.881818\n/right/z 0.893734",
+					"patching_rect" : [ 495.0, 704.0, 150.0, 114.0 ],
+					"text" : "/right/x 0.163636\n/right/y 0.527273\n/right/z 0.552081\n/left/x 0.\n/left/y 0.\n/left/z 0.\n/vendor \"Madcatz\"\n/productname \"Gametrak\"",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -64,13 +64,13 @@
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"id" : "obj-6",
-					"linecount" : 6,
+					"linecount" : 8,
 					"maxclass" : "o.message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 495.0, 435.0, 150.0, 88.0 ],
-					"text" : "/right/x -0.127273\n/right/y 0.154545\n/right/z 0.200207\n/left/x -0.481818\n/left/y 0.6\n/left/z 0.769512",
+					"patching_rect" : [ 495.0, 435.0, 150.0, 114.0 ],
+					"text" : "/right/x 0.0181818\n/right/y 0.218182\n/right/z 0.218938\n/left/x 0.\n/left/y 0.\n/left/z 0.\n/vendor \"Madcatz\"\n/productname \"Gametrak\"",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
