@@ -171,7 +171,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 140.0, 50.0, 210.0, 34.0 ],
-									"text" : "/manifest 3 3 146770 \n/serialnumber 1 ",
+									"text" : "/manifest 3 3 146770\n/serialnumber 1",
 									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 
@@ -181,13 +181,13 @@
 									"fontname" : "Arial",
 									"fontsize" : 12.0,
 									"id" : "obj-1",
-									"linecount" : 34,
+									"linecount" : 36,
 									"maxclass" : "o.message",
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 30.0, 110.0, 320.0, 463.0 ],
-									"text" : "/left false \n/right false \n/forward false \n/backward false \n/led/rgb 0 0 0 \n/led/red 0 \n/led/green 0 \n/led/blue 0 \n/led/onboard 0 \n/tone 0 0 \n/diamond/left \"released\" \n/diamond/forward \"released\" \n/diamond/backward \"released\" \n/diamond/right \"released\" \n/acceleration/x 0. \n/acceleration/y 0. \n/acceleration/z 0. \n/temperature/fahrenheit -60. \n/temperature/celcius -51.1111 \n/joystick/horizontal 0 \n/joystick/vertical 0 \n/joystick/button \"released\" \n/joystick/left false \n/joystick/right false \n/joystick/forward false \n/joystick/backward false \n/slider/horizontal 0. \n/photoresistor 0. \n/connector/white/right 0. \n/connector/white/left 0. \n/diamond/backward \"released\" \n/diamond/left \"released\" \n/diamond/forward \"released\" \n/diamond/right \"released\" ",
+									"patching_rect" : [ 30.0, 110.0, 320.0, 490.0 ],
+									"text" : "/left false\n/right false\n/forward false\n/backward false\n/led/rgb 0 0 0\n/led/red 0\n/led/green 0\n/led/blue 0\n/led/onboard 0\n/tone 0 0\n/diamond/left \"released\"\n/diamond/forward \"released\"\n/diamond/backward \"released\"\n/diamond/right \"released\"\n/acceleration/x 0.\n/acceleration/y 0.\n/acceleration/z 0.\n/temperature/fahrenheit -60.\n/temperature/celcius -51.1111\n/joystick/horizontal 0\n/joystick/vertical 0\n/joystick/button \"released\"\n/joystick/left false\n/joystick/right false\n/joystick/forward false\n/joystick/backward false\n/slider/horizontal 0.\n/photoresistor 0.\n/connector/white/right 0.\n/connector/white/left 0.\n/diamond/backward \"released\"\n/diamond/left \"released\"\n/diamond/forward \"released\"\n/diamond/right \"released\"\n/vendor \"Arduino\"\n/productname \"Esplora\"",
 									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 
@@ -2407,8 +2407,8 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 467.0, 515.0, 164.0, 19.0 ],
-									"text" : "c.esplora.LCDcircle 12 240 254"
+									"patching_rect" : [ 467.0, 515.0, 120.0, 19.0 ],
+									"text" : "c.lcd.circle 12 240 254"
 								}
 
 							}
@@ -2463,8 +2463,8 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 545.0, 430.0, 158.0, 19.0 ],
-									"text" : "c.esplora.LCDcircle 243 248 0"
+									"patching_rect" : [ 545.0, 430.0, 114.0, 19.0 ],
+									"text" : "c.lcd.circle 243 248 0"
 								}
 
 							}
@@ -5799,9 +5799,9 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "c.esplora.LCDcircle.maxpat",
-				"bootpath" : "/Users/jml/Documents/materials/programming/max_files/5_berkeley/projects/cnmat/repositories/git/CNMAT-odot/abstractions/io/o.io.esplora",
-				"patcherrelativepath" : ".",
+				"name" : "c.lcd.circle.maxpat",
+				"bootpath" : "/Users/jml/Documents/materials/programming/max_files/5_berkeley/projects/cnmat/repositories/git/CNMAT-odot/abstractions/io",
+				"patcherrelativepath" : "..",
 				"type" : "JSON",
 				"implicit" : 1
 			}
