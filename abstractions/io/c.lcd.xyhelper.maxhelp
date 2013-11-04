@@ -31,6 +31,66 @@
 				"box" : 				{
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
+					"frgb" : 0.0,
+					"id" : "obj-8",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 198.0, 120.0, 62.0, 20.0 ],
+					"text" : "click-drag"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"frgb" : 0.0,
+					"id" : "obj-6",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 80.0, 510.0, 94.0, 20.0 ],
+					"presentation_rect" : [ 91.5, 501.0, 0.0, 0.0 ],
+					"text" : "resultant param"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"frgb" : 0.0,
+					"id" : "obj-5",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 402.5, 320.0, 87.0, 20.0 ],
+					"text" : "send param in"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-3",
+					"linecount" : 4,
+					"maxclass" : "o.message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 380.0, 340.0, 132.0, 61.0 ],
+					"presentation_rect" : [ 380.0, 235.0, 0.0, 0.0 ],
+					"text" : "/myparam/x -0.481818\n/myparam/y 0.163636\n/myparam/button 0\n/myparam/z 0.508847",
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
 					"id" : "obj-2",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
@@ -52,8 +112,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 370.0, 544.0, 250.0, 61.0 ],
-					"presentation_rect" : [ 379.0, 379.0, 0.0, 0.0 ],
-					"text" : "/myparam/x -0.454545\n/myparam/y 0.272727\n/myparam/button 1\n/myparam/z 0.530087",
+					"text" : "/myparam/x 0.0909091\n/myparam/y 0.290909\n/myparam/button 1\n/myparam/z 0.304783",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -69,7 +128,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 40.0, 530.0, 250.0, 61.0 ],
-					"text" : "/myparam/x -0.454545\n/myparam/y 0.281818\n/myparam/button 0\n/myparam/z 0.534821",
+					"text" : "/myparam/x 0.0818182\n/myparam/y 0.3\n/myparam/button 0\n/myparam/z 0.310957",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -251,6 +310,15 @@
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-22", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-11", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-3", 0 ]
 				}
 
 			}
