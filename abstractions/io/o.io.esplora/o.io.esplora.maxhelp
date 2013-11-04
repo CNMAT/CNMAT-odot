@@ -406,7 +406,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 990.0, 495.0, 210.0, 34.0 ],
-					"text" : "/manifest 3 3 146770 \n/serialnumber 1 \n",
+					"text" : "/manifest 3 3 146770 \n/serialnumber 1 ",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -447,8 +447,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 585.0, 401.0, 210.0, 21.0 ],
-					"text" : "/horizontal 0. \n",
+					"patching_rect" : [ 585.0, 401.0, 210.0, 20.0 ],
+					"text" : "/horizontal 0. ",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -464,7 +464,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 802.5, 444.5, 210.0, 34.0 ],
-					"text" : "/fahrenheit 72. \n/celsius 22. \n",
+					"text" : "/fahrenheit 72. \n/celsius 22. ",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -1024,7 +1024,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 900.0, 275.0, 152.0, 101.0 ],
-					"text" : "/portname \n/rate/output 90 \n/rate/input 0 \n/mediansize/received 188.5 \n/baud 115200 \n/port \"a\" \n",
+					"text" : "/portname \n/rate/output 90 \n/rate/input 0 \n/mediansize/received 188.5 \n/baud 115200 \n/port \"a\" ",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -1069,7 +1069,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 330.0, 401.0, 90.0, 100.0 ],
-					"text" : "/backward \"released\" \n/left \"released\" \n/forward \"released\" \n/right \"released\" \n",
+					"text" : "/backward \"released\" \n/left \"released\" \n/forward \"released\" \n/right \"released\" ",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -1083,8 +1083,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 437.0, 355.0, 210.0, 21.0 ],
-					"text" : "/loudness 0. \n",
+					"patching_rect" : [ 437.0, 355.0, 210.0, 20.0 ],
+					"text" : "/loudness 0. ",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -1978,7 +1978,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 50.0, 301.5, 87.0, 61.0 ],
-					"text" : "/red 0 \n/green 0 \n/blue 0 \n/rgb 0 0 0 \n",
+					"text" : "/red 0 \n/green 0 \n/blue 0 \n/rgb 0 0 0 ",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -2407,10 +2407,6 @@
 			}
 , 			{
 				"name" : "o.collect.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.union.mxo",
 				"type" : "iLaX"
 			}
  ]
