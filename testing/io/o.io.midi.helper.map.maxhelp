@@ -8,7 +8,7 @@
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 41.0, 44.0, 1533.0, 920.0 ],
+		"rect" : [ 100.0, 100.0, 1533.0, 920.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 11.0,
@@ -28,6 +28,20 @@
 		"digest" : "",
 		"tags" : "",
 		"boxes" : [ 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 11.0,
+					"id" : "obj-6",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "FullPacket" ],
+					"patching_rect" : [ 417.0, 395.0, 90.0, 19.0 ],
+					"text" : "o.pack /rawMIDI"
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"id" : "obj-57",
 					"maxclass" : "button",
@@ -347,13 +361,13 @@
 					"fontname" : "Arial",
 					"fontsize" : 11.0,
 					"id" : "obj-39",
-					"linecount" : 6,
+					"linecount" : 3,
 					"maxclass" : "o.message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 742.0, 202.829605, 193.0, 81.0 ],
-					"text" : "/midi/device/0 \"IAC Driver IAC Bus 1\"\n/midi/device/1 \"to Max 1\"\n/midi/device/2 \"to Max 2\"\n/midi/device/3 \"QuNexus Port 1\"\n/midi/device/4 \"QuNexus Port 2\"\n/midi/device/5 \"QuNexus Port 3\"",
+					"patching_rect" : [ 742.0, 202.829605, 193.0, 44.0 ],
+					"text" : "/midi/device/0 \"IAC Driver IAC Bus 1\"\n/midi/device/1 \"to Max 1\"\n/midi/device/2 \"to Max 2\"",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -368,7 +382,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 574.0, 214.829605, 150.0, 19.0 ],
-					"text" : "/rawMIDI 0",
+					"text" : "/rawMIDI 57",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -518,13 +532,13 @@
 					"fontname" : "Arial",
 					"fontsize" : 11.0,
 					"id" : "obj-29",
-					"linecount" : 53,
+					"linecount" : 72,
 					"maxclass" : "o.message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 1147.0, 695.0, 117.0, 658.0 ],
-					"text" : "/channel\n/note/100\n/note/102\n/note/108\n/note/24\n/note/25\n/note/26\n/note/27\n/note/28\n/note/29\n/note/30\n/note/31\n/note/32\n/note/33\n/note/34\n/note/35\n/note/36\n/note/42\n/note/48\n/note/50\n/note/52\n/note/53\n/note/54\n/note/55\n/note/57\n/note/59\n/note/60\n/note/62\n/note/64\n/note/65\n/note/66\n/note/67\n/note/69\n/note/71\n/note/72\n/note/74\n/note/76\n/note/77\n/note/78\n/note/79\n/note/81\n/note/83\n/note/84\n/note/86\n/note/87\n/note/88\n/note/89\n/note/90\n/note/91\n/note/93\n/note/95\n/note/96\n/note/98",
+					"patching_rect" : [ 1147.0, 695.0, 117.0, 892.0 ],
+					"text" : "/channel\n/note/0\n/note/1\n/note/10\n/note/11\n/note/13\n/note/14\n/note/15\n/note/16\n/note/17\n/note/18\n/note/2\n/note/20\n/note/22\n/note/26\n/note/27\n/note/28\n/note/29\n/note/3\n/note/30\n/note/31\n/note/32\n/note/33\n/note/34\n/note/35\n/note/36\n/note/37\n/note/38\n/note/39\n/note/4\n/note/40\n/note/41\n/note/42\n/note/43\n/note/44\n/note/45\n/note/46\n/note/47\n/note/48\n/note/49\n/note/5\n/note/50\n/note/51\n/note/52\n/note/53\n/note/54\n/note/55\n/note/56\n/note/57\n/note/58\n/note/59\n/note/6\n/note/60\n/note/61\n/note/62\n/note/63\n/note/64\n/note/66\n/note/67\n/note/68\n/note/69\n/note/7\n/note/70\n/note/71\n/note/72\n/note/73\n/note/74\n/note/75\n/note/76\n/note/77\n/note/8\n/note/9",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -603,13 +617,13 @@
 					"fontname" : "Arial",
 					"fontsize" : 11.0,
 					"id" : "obj-9",
-					"linecount" : 40,
+					"linecount" : 4,
 					"maxclass" : "o.message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 113.333313, 645.963684, 109.0, 499.0 ],
-					"text" : "/channel 1\n/c/6 0\n/e/6 0\n/g/6 0\n/a/6 0\n/b/6 0\n/d/7 0\n/c/7 0\n/e/7 0\n/g/7 0\n/f#/7 0\n/d/6 0\n/f/6 0\n/a/7 0\n/f/7 0\n/d#/7 0\n/d/8 0\n/c/8 0\n/b/7 0\n/e/8 0\n/f#/8 0\n/f#/6 0\n/f#/5 0\n/f#/4 0\n/c/3 0\n/c/4 0\n/f#/3 0\n/b/5 0\n/a/5 0\n/g/5 0\n/f/5 0\n/g/4 0\n/f/4 0\n/e/4 0\n/d/4 0\n/page 1\n/C/3 0\n/slider/green 0\n/C3 0\n/slider/1 0",
+					"patching_rect" : [ 113.333313, 645.963684, 109.0, 56.0 ],
+					"text" : "/page 1\n/slider/red 28\n/slider/green 83\n/C/3 48",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -848,7 +862,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 696.0, 805.963684, 182.0, 56.0 ],
-					"text" : "/input [\n\t/channel 1\n\t/note/72 0\n]",
+					"text" : "/input [\n\t/channel 1\n\t/note/63 28\n]",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -864,7 +878,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 469.0, 588.0, 133.0, 48.0 ],
-					"text" : "/channel 1\n/c/6 0",
+					"text" : "/page 1\n/slider/red 28",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -1088,6 +1102,20 @@
 				}
 
 			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 11.0,
+					"id" : "obj-27",
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 859.0, 556.5, 50.0, 17.0 ],
+					"text" : "version"
+				}
+
+			}
  ],
 		"lines" : [ 			{
 				"patchline" : 				{
@@ -1136,10 +1164,19 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-76", 0 ],
+					"destination" : [ "obj-6", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-21", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-80", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-27", 0 ]
 				}
 
 			}
@@ -1283,6 +1320,15 @@
 					"destination" : [ "obj-76", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
+					"source" : [ "obj-6", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-6", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
 					"source" : [ "obj-62", 0 ]
 				}
 
@@ -1397,7 +1443,7 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-76", 0 ],
+					"destination" : [ "obj-6", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-82", 0 ]
