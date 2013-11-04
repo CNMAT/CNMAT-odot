@@ -429,13 +429,13 @@
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"id" : "obj-25",
-					"linecount" : 9,
+					"linecount" : 7,
 					"maxclass" : "o.message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 630.0, 370.0, 365.0, 128.0 ],
-					"text" : "/diamond/backward \"released\"\n/diamond/left \"released\"\n/diamond/forward \"released\"\n/diamond/right \"released\"\n/microphone/loudness 0.\n/temperature/fahrenheit 70.\n/temperature/celsius 21.\n/slider/horizontal 0.216031\n/serialnumber 2",
+					"patching_rect" : [ 630.0, 370.0, 365.0, 101.0 ],
+					"text" : "/horizontal 0.00390625\n/vertical 0.0117188\n/button \"released\"\n/backward \"released\"\n/left \"released\"\n/forward \"released\"\n/right \"released\"",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -449,8 +449,8 @@
 					"numinlets" : 3,
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "FullPacket" ],
-					"patching_rect" : [ 319.5, 290.0, 115.0, 20.0 ],
-					"text" : "o.route /ser/1 /ser/2"
+					"patching_rect" : [ 319.5, 290.0, 200.0, 20.0 ],
+					"text" : "o.route /ser/1/joystick /ser/2/joystick"
 				}
 
 			}
@@ -459,13 +459,13 @@
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"id" : "obj-22",
-					"linecount" : 9,
+					"linecount" : 7,
 					"maxclass" : "o.message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 230.0, 380.0, 365.0, 128.0 ],
-					"text" : "/diamond/backward \"released\"\n/diamond/left \"released\"\n/diamond/forward \"released\"\n/diamond/right \"released\"\n/microphone/loudness 0.\n/temperature/fahrenheit 72.\n/temperature/celsius 22.\n/slider/horizontal 0.427175\n/serialnumber 1",
+					"patching_rect" : [ 230.0, 380.0, 365.0, 101.0 ],
+					"text" : "/horizontal 0.0273438\n/vertical -0.0273438\n/button \"released\"\n/backward \"released\"\n/left \"released\"\n/forward \"released\"\n/right \"released\"",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
