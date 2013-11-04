@@ -88,7 +88,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 50.0, 140.0, 380.0, 20.0 ],
-									"text" : "/6/rawlist 24 55 16 30",
+									"text" : "/6/rawlist 3 112 1 8",
 									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 
