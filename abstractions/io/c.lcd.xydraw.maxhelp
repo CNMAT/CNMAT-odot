@@ -8,7 +8,7 @@
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 24.0, 74.0, 688.0, 584.0 ],
+		"rect" : [ 100.0, 100.0, 688.0, 584.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -52,7 +52,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 390.0, 140.0, 250.0, 47.0 ],
-					"presentation_rect" : [ 392.0, 137.0, 0.0, 0.0 ],
 					"text" : "/myparam/x 0.5\n/myparam/y -0.5\n/myparam/z 0.636429",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -124,7 +123,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 60.0, 490.0, 250.0, 47.0 ],
-					"text" : "/myparam/x -0.763636\n/myparam/y 0.527273\n/myparam/z 0.927985",
+					"text" : "/myparam/x 0.445455\n/myparam/y 0.790909\n/myparam/z 0.907726",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -214,6 +213,15 @@
 			}
  ],
 		"lines" : [ 			{
+				"patchline" : 				{
+					"destination" : [ "obj-7", 1 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-1", 0 ]
+				}
+
+			}
+, 			{
 				"patchline" : 				{
 					"destination" : [ "obj-7", 0 ],
 					"disabled" : 0,
