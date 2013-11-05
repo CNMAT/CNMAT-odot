@@ -109,6 +109,11 @@
 			<key>orderHint</key>
 			<integer>39</integer>
 		</dict>
+		<key>o.io.bluetoothle.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>40</integer>
+		</dict>
 		<key>o.io.leap.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -217,6 +222,11 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>520A44A41824777800CB610F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>520C0E19158468F7005F2955</key>
 		<dict>
 			<key>primary</key>
