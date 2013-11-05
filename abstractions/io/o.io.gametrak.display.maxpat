@@ -9,6 +9,7 @@
 		}
 ,
 		"rect" : [ 424.0, 105.0, 855.0, 842.0 ],
+		"bgcolor" : [ 1.0, 1.0, 1.0, 0.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
