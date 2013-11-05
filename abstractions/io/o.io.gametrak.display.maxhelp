@@ -8,7 +8,7 @@
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 48.0, 60.0, 683.0, 841.0 ],
+		"rect" : [ 28.0, 66.0, 683.0, 841.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -38,7 +38,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 495.0, 704.0, 150.0, 114.0 ],
-					"text" : "/left/x -0.982418\n/left/y -0.145299\n/left/z 0.993104\n/right/x 0.\n/right/y 0.\n/right/z 0.\n/vendor \"Madcatz\"\n/productname \"Gametrak\"",
+					"text" : "/right/x -0.809091\n/right/y 0.554545\n/right/z 0.980892\n/left/x -0.527273\n/left/y 0.718182\n/left/z 0.890955\n/vendor \"Madcatz\"\n/productname \"Gametrak\"",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -70,7 +70,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 495.0, 435.0, 150.0, 114.0 ],
-					"text" : "/left/x -0.982418\n/left/y -0.145299\n/left/z 0.993104\n/right/x 0.\n/right/y 0.\n/right/z 0.\n/vendor \"Madcatz\"\n/productname \"Gametrak\"",
+					"text" : "/right/x 0.381818\n/right/y 0.618182\n/right/z 0.726591\n/left/x -0.609091\n/left/y 0.390909\n/left/z 0.723741\n/vendor \"Madcatz\"\n/productname \"Gametrak\"",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -211,7 +211,7 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "c.lcd.xyhelper.maxpat",
+				"name" : "c.lcd.xydraw.maxpat",
 				"bootpath" : "/Users/jml/Documents/materials/programming/max_files/5_berkeley/projects/cnmat/repositories/git/CNMAT-odot/abstractions/io",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
@@ -221,6 +221,13 @@
 				"name" : "c.lcd.circle.maxpat",
 				"bootpath" : "/Users/jml/Documents/materials/programming/max_files/5_berkeley/projects/cnmat/repositories/git/CNMAT-odot/abstractions/io",
 				"patcherrelativepath" : ".",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "o.gather.maxpat",
+				"bootpath" : "/Users/jml/Documents/materials/programming/max_files/5_berkeley/projects/cnmat/repositories/git/CNMAT-odot/abstractions",
+				"patcherrelativepath" : "..",
 				"type" : "JSON",
 				"implicit" : 1
 			}
@@ -243,10 +250,6 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "o.pack.mxo",
-				"type" : "iLaX"
-			}
-, 			{
 				"name" : "o.expr.mxo",
 				"type" : "iLaX"
 			}
@@ -255,7 +258,15 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "o.prepend.mxo",
+				"name" : "o.intersection.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.collect.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.difference.mxo",
 				"type" : "iLaX"
 			}
 , 			{
@@ -263,11 +274,15 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "o.cond.mxo",
+				"name" : "o.prepend.mxo",
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "o.collect.mxo",
+				"name" : "o.pack.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.select.mxo",
 				"type" : "iLaX"
 			}
  ]
