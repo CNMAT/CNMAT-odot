@@ -8,7 +8,7 @@
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 24.0, 74.0, 688.0, 691.0 ],
+		"rect" : [ 24.0, 74.0, 688.0, 584.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -29,6 +29,51 @@
 		"tags" : "",
 		"boxes" : [ 			{
 				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"frgb" : 0.0,
+					"id" : "obj-4",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 450.0, 110.0, 150.0, 20.0 ],
+					"text" : "set display without output"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-2",
+					"linecount" : 3,
+					"maxclass" : "o.message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 390.0, 140.0, 250.0, 47.0 ],
+					"presentation_rect" : [ 392.0, 137.0, 0.0, 0.0 ],
+					"text" : "/myparam/x 0.5\n/myparam/y -0.5\n/myparam/z 0.636429",
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-1",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "FullPacket" ],
+					"patching_rect" : [ 328.0, 330.0, 73.0, 20.0 ],
+					"text" : "o.pack /rect"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-30",
 					"maxclass" : "button",
 					"numinlets" : 1,
@@ -43,13 +88,13 @@
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"id" : "obj-28",
-					"linecount" : 10,
+					"linecount" : 3,
 					"maxclass" : "o.message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 390.0, 209.0, 250.0, 141.0 ],
-					"text" : "/myparam/location 109 40\n/myparam/button 0\n/myparam/rect 700. 120. 220. 220.\n/myparam/size 220. 220.\n/myparam/xy -0.00909091 0.636364\n/myparam/z 0.636429\n/myparam/drawcenter 110. 110.\n/myparam/dotoffset 11.\n/myparam/baseoffset 22.\n/myparam/lcddotloc 109. 40.",
+					"patching_rect" : [ 390.0, 209.0, 250.0, 47.0 ],
+					"text" : "/myparam/x -0.5\n/myparam/y 0.5\n/myparam/z 0.636429",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -79,7 +124,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 60.0, 490.0, 250.0, 47.0 ],
-					"text" : "/myparam/x 0.463636\n/myparam/y 0.436364\n/myparam/z 0.636688",
+					"text" : "/myparam/x -0.763636\n/myparam/y 0.527273\n/myparam/z 0.927985",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -93,8 +138,8 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 218.0, 130.0, 62.0, 20.0 ],
-					"text" : "click-drag"
+					"patching_rect" : [ 70.0, 130.0, 194.0, 20.0 ],
+					"text" : "click-drag sets display and outputs"
 				}
 
 			}
@@ -104,11 +149,11 @@
 					"fontsize" : 12.0,
 					"id" : "obj-17",
 					"maxclass" : "newobj",
-					"numinlets" : 3,
+					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 60.0, 363.0, 287.0, 20.0 ],
-					"text" : "o.pack /location /button /rect"
+					"patching_rect" : [ 60.0, 363.0, 153.0, 20.0 ],
+					"text" : "o.pack /location /button"
 				}
 
 			}
@@ -145,10 +190,10 @@
 					"fontsize" : 12.0,
 					"id" : "obj-7",
 					"maxclass" : "newobj",
-					"numinlets" : 1,
+					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "" ],
-					"patching_rect" : [ 60.0, 400.0, 133.0, 20.0 ],
+					"patching_rect" : [ 60.0, 400.0, 287.0, 20.0 ],
 					"text" : "c.lcd.xydraw /myparam"
 				}
 
@@ -179,7 +224,7 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-17", 2 ],
+					"destination" : [ "obj-1", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-19", 0 ]
@@ -192,6 +237,15 @@
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-19", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-7", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-2", 0 ]
 				}
 
 			}
@@ -236,7 +290,7 @@
 					"destination" : [ "obj-20", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"midpoints" : [ 183.5, 429.0, 51.5, 429.0, 51.5, 120.0, 69.5, 120.0 ],
+					"midpoints" : [ 337.5, 429.0, 51.5, 429.0, 51.5, 120.0, 69.5, 120.0 ],
 					"source" : [ "obj-7", 1 ]
 				}
 
@@ -307,6 +361,10 @@
 			}
 , 			{
 				"name" : "o.prepend.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.union.mxo",
 				"type" : "iLaX"
 			}
 , 			{
