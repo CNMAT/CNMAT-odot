@@ -8,7 +8,7 @@
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 28.0, 66.0, 683.0, 841.0 ],
+		"rect" : [ 14.0, 54.0, 658.0, 827.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -31,6 +31,52 @@
 				"box" : 				{
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
+					"id" : "obj-22",
+					"maxclass" : "number",
+					"minimum" : 2,
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "int", "bang" ],
+					"parameter_enable" : 0,
+					"patching_rect" : [ 255.0, 21.0, 78.0, 20.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-20",
+					"maxclass" : "o.message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 255.0, 45.0, 78.0, 20.0 ],
+					"text" : "/poll_ms \"$1\"",
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-8",
+					"linecount" : 9,
+					"maxclass" : "o.message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 480.0, 135.0, 150.0, 128.0 ],
+					"text" : "/left/x 0.4779\n/left/y 0.424176\n/left/z 0.99243\n/right/x -0.705006\n/right/y 0.866178\n/right/z 0.99243\n/footswitch 0\n/vendor \"Madcatz\"\n/productname \"Gametrak\"",
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
 					"id" : "obj-3",
 					"linecount" : 8,
 					"maxclass" : "o.message",
@@ -38,7 +84,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 495.0, 704.0, 150.0, 114.0 ],
-					"text" : "/right/x -0.809091\n/right/y 0.554545\n/right/z 0.980892\n/left/x -0.527273\n/left/y 0.718182\n/left/z 0.890955\n/vendor \"Madcatz\"\n/productname \"Gametrak\"",
+					"text" : "/right/x 0.581818\n/right/y 0.154545\n/right/z 0.601994\n/left/x 0.381818\n/left/y -0.436364\n/left/z 0.579826\n/vendor \"Madcatz\"\n/productname \"Gametrak\"",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -69,8 +115,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 495.0, 435.0, 150.0, 114.0 ],
-					"text" : "/right/x 0.381818\n/right/y 0.618182\n/right/z 0.726591\n/left/x -0.609091\n/left/y 0.390909\n/left/z 0.723741\n/vendor \"Madcatz\"\n/productname \"Gametrak\"",
+					"patching_rect" : [ 495.0, 428.0, 150.0, 114.0 ],
+					"text" : "/left/x 0.145455\n/left/y 0.790909\n/left/z 0.804173\n/right/x 0.\n/right/y 0.\n/right/z 0.\n/vendor \"Madcatz\"\n/productname \"Gametrak\"",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -122,11 +168,11 @@
 					"fontsize" : 12.0,
 					"id" : "obj-2",
 					"maxclass" : "newobj",
-					"numinlets" : 0,
+					"numinlets" : 1,
 					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 39.0, 42.0, 83.0, 20.0 ],
-					"text" : "o.io.gametrak"
+					"outlettype" : [ "FullPacket" ],
+					"patching_rect" : [ 39.0, 45.0, 157.0, 20.0 ],
+					"text" : "o.io.gametrak @poll_ms 10"
 				}
 
 			}
@@ -175,6 +221,24 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-2", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-20", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-20", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-22", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-3", 1 ],
 					"disabled" : 0,
 					"hidden" : 0,
@@ -188,6 +252,16 @@
 					"destination" : [ "obj-1", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
+					"source" : [ "obj-5", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-8", 1 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"midpoints" : [ 37.5, 119.5, 620.5, 119.5 ],
 					"source" : [ "obj-5", 0 ]
 				}
 
