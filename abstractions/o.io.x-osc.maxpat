@@ -294,7 +294,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 20.0, 498.0, 1128.0, 234.0 ],
-					"text" : "/bundle/time 2036-02-07T22:37:08.405212Z\n/analog/a 0.0324747\n/analog/b 0.0443169\n/analog/c 0.0662923\n/analog/d 0.110731\n/analog/e 0.163228\n/analog/f 0.252716\n/analog/g 0.0278354\n/analog/h 0.0260042\n/analog/i 0.0239287\n/analog/j 0.0228299\n/analog/k 0.0223416\n/analog/l 0.0223416\n/analog/m 0.0234404\n/analog/n 0.775485\n/analog/o 0.388719\n/analog/p 0.399463",
+					"text" : "/bundle/time 2036-02-07T14:34:53.372955Z\n/analog/a 0.0228299\n/analog/b 0.0483457\n/analog/c 0.0772799\n/analog/d 0.137224\n/analog/e 0.206568\n/analog/f 0.323892\n/analog/g 0.0234404\n/analog/h 0.024417\n/analog/i 0.4953\n/analog/j 0.419973\n/analog/k 0.562447\n/analog/l 0.280063\n/analog/m 0.143572\n/analog/n 0.707972\n/analog/o 0.419241\n/analog/p 0.518984",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -554,6 +554,15 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-33", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-31", 2 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-7", 1 ],
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-31", 2 ]
