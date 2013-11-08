@@ -83,7 +83,7 @@ void oedge_callback(t_oedge *x, t_symbol *msg, int argc, t_atom *argv)
 	double sr = atom_getfloat(argv);
 	double blockcount = atom_getlong(argv + 1);
 	t_osc_timetag dspstarttime = x->dspstarttime;
-	t_osc_timetag now = (((uint64_t)atom_getlong(argv + 2)) << 32) | ((uint64_t)atom_getlong(argv + 3));
+	t_osc_timetag now = (t_osc_timetag){atom_getlong(argv + 2), atom_getlong(argv + 3)};//(((uint64_t)atom_getlong(argv + 2)) << 32) | ((uint64_t)atom_getlong(argv + 3));
 	int shouldoutput = 0;
 
 	for(int i = 0; i < argc - 4; i++){
@@ -133,8 +133,8 @@ void oedge_perform64(t_oedge *x, t_object *dsp64, double **ins, long numins, dou
 	omax_realtime_clock_now(&now);
 
 	atom_setlong(x->av + 1, x->blockcount++);
-	atom_setlong(x->av + 2, (((uint64_t)now) & 0xffffffff00000000) >> 32);
-	atom_setlong(x->av + 3, (((uint64_t)now) & 0xffffffff));
+	atom_setlong(x->av + 2, osc_timetag_ntp_getSeconds(now));//(((uint64_t)now) & 0xffffffff00000000) >> 32);
+	atom_setlong(x->av + 3, osc_timetag_ntp_getFraction(now));//(((uint64_t)now) & 0xffffffff));
 	atom_setdouble_array(x->ac, x->av + 4, vectorsize, ins[0]);
 	schedule_delay(x, (method)oedge_callback, 0, NULL, vectorsize + 4, x->av);
 }
@@ -150,8 +150,8 @@ t_int *oedge_perform(t_int *w)
 	omax_realtime_clock_now(&now);
 
 	atom_setlong(x->av + 1, x->blockcount++);
-	atom_setlong(x->av + 2, (((uint64_t)now) & 0xffffffff00000000) >> 32);
-	atom_setlong(x->av + 3, (((uint64_t)now) & 0xffffffff));
+	atom_setlong(x->av + 2, osc_timetag_ntp_getSeconds(now));//(((uint64_t)now) & 0xffffffff00000000) >> 32);
+	atom_setlong(x->av + 3, osc_timetag_ntp_getFraction(now));//(((uint64_t)now) & 0xffffffff));
 	atom_setdouble_array(x->ac, x->av + 4, n, in);
 	schedule_delay(x, (method)oedge_callback, 0, NULL, n + 4, x->av);
 	return w + 4;

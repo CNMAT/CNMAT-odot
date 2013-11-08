@@ -81,7 +81,7 @@ void odowncast_fullPacket(t_odowncast *x, t_symbol *msg, int argc, t_atom *argv)
 	t_osc_bndl_u **nestedbundles = NULL;
 	int nnestedbundles = 0, nestedbundles_buflen = 0;
 	t_osc_bndl_it_u *bit = osc_bndl_it_u_get(b);
-	t_osc_timetag timetag = 0;
+	t_osc_timetag timetag = OSC_TIMETAG_NULL;
 	while(osc_bndl_it_u_hasNext(bit)){
 		t_osc_msg_u *m = osc_bndl_it_u_next(bit);
 		t_osc_msg_it_u *mit = osc_msg_it_u_get(m);
@@ -118,6 +118,7 @@ void odowncast_fullPacket(t_odowncast *x, t_symbol *msg, int argc, t_atom *argv)
 				}
 				break;
 			case OSC_TIMETAG_TYPETAG:
+#if OSC_TIMETAG_FORMAT == OSC_TIMETAG_NTP
 				if(x->timetags){
 					t_osc_timetag tt = osc_atom_u_getTimetag(a);
 					if(x->timetag_address){
@@ -128,12 +129,17 @@ void odowncast_fullPacket(t_odowncast *x, t_symbol *msg, int argc, t_atom *argv)
 					}
 					t_osc_atom_u *aa = osc_atom_u_alloc();
 					int32_t tt1, tt2;
-					tt1 = (tt & 0xffffffff00000000) >> 32;
-					tt2 = tt & 0xffffffff;
+					//tt1 = (tt & 0xffffffff00000000) >> 32;
+					//tt2 = tt & 0xffffffff;
+					tt1 = osc_timetag_ntp_getSeconds(tt);
+					tt2 = osc_timetag_ntp_getFraction(tt);
 					osc_atom_u_setInt32(aa, ntoh32(tt1));
 					osc_atom_u_setInt32(a, ntoh32(tt2));
 					osc_message_u_insertAtom(m, aa, ++i);
 				}
+#else
+				object_error((t_object *)x, "o.downcast only supports NTP timetags");
+#endif
 				break;
 			}
 			i++;
