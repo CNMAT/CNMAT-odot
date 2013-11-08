@@ -3,7 +3,7 @@ o.intersection o.mappatch o.message o.pack o.pak o.prepend o.print o.printbytes 
 o.timetag o.union o.unless o.var o.when
 
 PATCHDIRS = help demos abstractions deprecated overview
-TEXTFILES = README_ODOT.txt
+#TEXTFILES = README_ODOT.txt
 
 VPATH = $(OBJECT_LIST)
 
