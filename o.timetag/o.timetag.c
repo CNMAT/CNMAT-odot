@@ -94,7 +94,6 @@ void otimetag_doFullPacket(t_otimetag *x,
 		osc_bundle_s_deserialize(len, ptr, &copy);
 
 		t_osc_timetag t = osc_timetag_now();
-		post("%llu", t);
 		t_osc_msg_u *m = osc_message_u_allocWithTimetag(x->address->s_name, osc_timetag_now());
 		osc_bundle_u_addMsgWithoutDups(copy, m);
 
