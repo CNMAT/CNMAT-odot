@@ -641,8 +641,8 @@ void *oroute_new(t_symbol *msg, short argc, t_atom *argv)
 		}
 		char *delegation_assist_str = "Unmatched messages (delegation)";
 		long delegation_assist_str_len = strlen(delegation_assist_str);
-		x->inlet_assist_strings[argc] = osc_mem_alloc(delegation_assist_str_len + 1);
-		snprintf(x->inlet_assist_strings[argc], delegation_assist_str_len + 1, "%s", delegation_assist_str);
+		x->outlet_assist_strings[argc] = osc_mem_alloc(delegation_assist_str_len + 1);
+		snprintf(x->outlet_assist_strings[argc], delegation_assist_str_len + 1, "%s", delegation_assist_str);
 
 		oroute_makeUniqueSelectors(x->num_selectors,
 					   x->selectors,
