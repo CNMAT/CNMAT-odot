@@ -55,24 +55,10 @@ void *ocontext_class;
 void ocontext_doFullPacket(t_ocontext *x, long len, char *ptr)
 {
 	t_object *parent = NULL, *patcher = NULL;
-	t_jbox *box = NULL;
         object_obex_lookup(x, gensym("#P"), &patcher);
-        object_obex_lookup(x, gensym("#B"), &box);
-	if(box){
-		if(box->b_name){
-			post("name: %s\n", box->b_name->s_name);
-		}else{
-			post("no name\n");
-		}
-		if(box->b_id){
-			post("id: %s\n", box->b_id->s_name);
-		}else{
-			post("no id\n");
-		}
-	}else{
-		post("no box\n");
-	}
 
+	t_jbox *box = NULL;
+        object_obex_lookup(x, gensym("#B"), &box);
 	parent = patcher;
 
 	char prefix[64];
@@ -89,10 +75,19 @@ void ocontext_doFullPacket(t_ocontext *x, long len, char *ptr)
 	}else{
 		sprintf(prefix, "/context/patcher");
 	}
-	char addressbuf[256];
+	char addressbuf[512];
+	/*
+	long lll = 0;
+	t_symbol **sss = NULL;
+	object_attr_getnames(parent, &lll, &sss);
+	for(int i = 0; i < lll; i++){
+		printf("%s\n", sss[i]->s_name);
+	}
+	*/
 
 	t_symbol *patchername = object_attr_getsym(patcher, gensym("name"));
 	t_symbol *filepath = object_attr_getsym(patcher, gensym("filepath"));
+
 	char hierarchy[256];
 	char hierarchy2[256];
 	memset(hierarchy, '\0', sizeof(hierarchy));
@@ -112,27 +107,49 @@ void ocontext_doFullPacket(t_ocontext *x, long len, char *ptr)
 		}
         } while (parent != NULL);
 
+	// get the parent patcher's arguments
+	t_atom *av = NULL;
+	long ac = 0;
+	object_attr_getvalueof(patcher, gensym("arguments"), &ac, &av);
+
+	// build the bundle
 	t_osc_bndl_u *b = osc_bundle_u_alloc();
 	if(patchername){
 		t_osc_msg_u *mpn = osc_message_u_alloc();
-		sprintf(addressbuf, "%s/name", prefix);
+		snprintf(addressbuf, sizeof(addressbuf), "%s/name", prefix);
 		osc_message_u_setAddress(mpn, addressbuf);
 		osc_message_u_appendString(mpn, patchername->s_name);
 		osc_bundle_u_addMsg(b, mpn);
 	}
 	if(filepath){
 		t_osc_msg_u *mfp = osc_message_u_alloc();
-		sprintf(addressbuf, "%s/filepath", prefix);
+		snprintf(addressbuf, sizeof(addressbuf), "%s/filepath", prefix);
 		osc_message_u_setAddress(mfp, addressbuf);
 		osc_message_u_appendString(mfp, filepath->s_name);
 		osc_bundle_u_addMsg(b, mfp);
 	}
 
 	t_osc_msg_u *mh = osc_message_u_alloc();
-	sprintf(addressbuf, "%s/hierarchy", prefix);
+	snprintf(addressbuf, sizeof(addressbuf), "%s/hierarchy", prefix);
 	osc_message_u_setAddress(mh, addressbuf);
 	osc_message_u_appendString(mh, hierarchy);
 	osc_bundle_u_addMsg(b, mh);
+
+	snprintf(addressbuf, sizeof(addressbuf), "%s/patcher/args", prefix);
+	t_osc_msg_u *margs = osc_message_u_allocWithAddress(addressbuf);
+	for(int i = 0; i < ac - 1; i++){
+		t_osc_atom_u *a = osc_atom_u_alloc();
+		omax_util_maxAtomToOSCAtom_u(&a, av + i + 1);
+		osc_message_u_appendAtom(margs, a);
+	}
+	osc_bundle_u_addMsg(b, margs);
+
+	snprintf(addressbuf, sizeof(addressbuf), "%s/patcher/uuid", prefix);
+	t_osc_msg_u *muuid = osc_message_u_allocWithAddress(addressbuf);
+	t_osc_atom_u *a = osc_atom_u_alloc();
+	omax_util_maxAtomToOSCAtom_u(&a, av);
+	osc_message_u_appendAtom(muuid, a);
+	osc_bundle_u_addMsg(b, muuid);
 
 	long l = 0;
 	char *buf = NULL;
