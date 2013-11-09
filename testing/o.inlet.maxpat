@@ -50,8 +50,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 163.0, 192.0, 194.0, 20.0 ],
-					"text" : "o.port @parentuuid #1 @type inlet"
+					"patching_rect" : [ 163.0, 192.0, 105.0, 20.0 ],
+					"text" : "o.port @type inlet"
 				}
 
 			}

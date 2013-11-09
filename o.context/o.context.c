@@ -77,12 +77,12 @@ void ocontext_doFullPacket(t_ocontext *x, long len, char *ptr)
 	}
 	char addressbuf[512];
 	/*
-	long lll = 0;
-	t_symbol **sss = NULL;
-	object_attr_getnames(parent, &lll, &sss);
-	for(int i = 0; i < lll; i++){
-		printf("%s\n", sss[i]->s_name);
-	}
+	  long lll = 0;
+	  t_symbol **sss = NULL;
+	  object_attr_getnames(parent, &lll, &sss);
+	  for(int i = 0; i < lll; i++){
+	  printf("%s\n", sss[i]->s_name);
+	  }
 	*/
 
 	t_symbol *patchername = object_attr_getsym(patcher, gensym("name"));
@@ -135,21 +135,23 @@ void ocontext_doFullPacket(t_ocontext *x, long len, char *ptr)
 	osc_message_u_appendString(mh, hierarchy);
 	osc_bundle_u_addMsg(b, mh);
 
-	snprintf(addressbuf, sizeof(addressbuf), "%s/patcher/args", prefix);
-	t_osc_msg_u *margs = osc_message_u_allocWithAddress(addressbuf);
-	for(int i = 0; i < ac - 1; i++){
-		t_osc_atom_u *a = osc_atom_u_alloc();
-		omax_util_maxAtomToOSCAtom_u(&a, av + i + 1);
-		osc_message_u_appendAtom(margs, a);
-	}
-	osc_bundle_u_addMsg(b, margs);
+	if(ac){
+		snprintf(addressbuf, sizeof(addressbuf), "%s/patcher/args", prefix);
+		t_osc_msg_u *margs = osc_message_u_allocWithAddress(addressbuf);
+		for(int i = 0; i < ac - 1; i++){
+			t_osc_atom_u *a = osc_atom_u_alloc();
+			omax_util_maxAtomToOSCAtom_u(&a, av + i + 1);
+			osc_message_u_appendAtom(margs, a);
+		}
+		osc_bundle_u_addMsg(b, margs);
 
-	snprintf(addressbuf, sizeof(addressbuf), "%s/patcher/uuid", prefix);
-	t_osc_msg_u *muuid = osc_message_u_allocWithAddress(addressbuf);
-	t_osc_atom_u *a = osc_atom_u_alloc();
-	omax_util_maxAtomToOSCAtom_u(&a, av);
-	osc_message_u_appendAtom(muuid, a);
-	osc_bundle_u_addMsg(b, muuid);
+		snprintf(addressbuf, sizeof(addressbuf), "%s/patcher/uuid", prefix);
+		t_osc_msg_u *muuid = osc_message_u_allocWithAddress(addressbuf);
+		t_osc_atom_u *a = osc_atom_u_alloc();
+		omax_util_maxAtomToOSCAtom_u(&a, av);
+		osc_message_u_appendAtom(muuid, a);
+		osc_bundle_u_addMsg(b, muuid);
+	}
 
 	long l = 0;
 	char *buf = NULL;

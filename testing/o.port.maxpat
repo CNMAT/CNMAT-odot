@@ -51,6 +51,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 296.0, 176.0, 150.0, 20.0 ],
+					"text" : "/_aspect/returnaddress",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
