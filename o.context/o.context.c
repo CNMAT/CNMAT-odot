@@ -54,8 +54,25 @@ void *ocontext_class;
 
 void ocontext_doFullPacket(t_ocontext *x, long len, char *ptr)
 {
-	t_object *parent, *patcher;
+	t_object *parent = NULL, *patcher = NULL;
+	t_jbox *box = NULL;
         object_obex_lookup(x, gensym("#P"), &patcher);
+        object_obex_lookup(x, gensym("#B"), &box);
+	if(box){
+		if(box->b_name){
+			post("name: %s\n", box->b_name->s_name);
+		}else{
+			post("no name\n");
+		}
+		if(box->b_id){
+			post("id: %s\n", box->b_id->s_name);
+		}else{
+			post("no id\n");
+		}
+	}else{
+		post("no box\n");
+	}
+
 	parent = patcher;
 
 	char prefix[64];
