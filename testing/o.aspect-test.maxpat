@@ -47,8 +47,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 168.0, 352.0, 50.0, 20.0 ],
-					"text" : "o.outlet"
+					"patching_rect" : [ 168.0, 352.0, 144.0, 20.0 ],
+					"text" : "o.outlet @name continue"
 				}
 
 			}
@@ -105,8 +105,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 168.0, 128.0, 69.0, 20.0 ],
-					"text" : "o.inlet #0 1"
+					"patching_rect" : [ 168.0, 128.0, 107.0, 20.0 ],
+					"text" : "o.inlet @name in1"
 				}
 
 			}
@@ -179,6 +179,13 @@
 				"implicit" : 1
 			}
 , 			{
+				"name" : "o.gather.maxpat",
+				"bootpath" : "/Users/john/MMJ-dev/CNMAT_Externals/odot/abstractions",
+				"patcherrelativepath" : "../../../../../MMJ-dev/CNMAT_Externals/odot/abstractions",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
 				"name" : "o.collect.mxo",
 				"type" : "iLaX"
 			}
@@ -195,7 +202,35 @@
 				"type" : "iLaX"
 			}
 , 			{
+				"name" : "o.context.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.route.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.select.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.print.mxo",
+				"type" : "iLaX"
+			}
+, 			{
 				"name" : "o.message.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.intersection.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.difference.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.var.mxo",
 				"type" : "iLaX"
 			}
  ]
