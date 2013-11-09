@@ -611,7 +611,8 @@ void *oroute_new(t_symbol *msg, short argc, t_atom *argv)
 		x->inlet_assist_strings = (char **)osc_mem_alloc((argc + 1) * sizeof(char *));
 		x->outlet_assist_strings = (char **)osc_mem_alloc((argc + 1) * sizeof(char *));
 
-		x->inlet_assist_strings[0] = osc_mem_alloc(128);
+		char *left_assist_str = "OSC bundle or Max message";
+		x->inlet_assist_strings[0] = osc_mem_alloc(strlen(left_assist_str) + 1);
 		sprintf(x->inlet_assist_strings[0], "OSC bundle or Max message");
 		x->nbytes_selector = 0;
 		int i;
@@ -630,12 +631,14 @@ void *oroute_new(t_symbol *msg, short argc, t_atom *argv)
 			}
 			x->selectors[x->num_selectors - i - 1] = selector;
 
-			x->inlet_assist_strings[i + 1] = osc_mem_alloc(128);
-			x->outlet_assist_strings[i] = osc_mem_alloc(128);
-			sprintf(x->inlet_assist_strings[i + 1], "Change the selector %s", selector);
-			sprintf(x->outlet_assist_strings[i], "Messages that match %s", selector);
+			long ilen = snprintf(NULL, 0, "Change the selector %s", selector);
+			long olen = snprintf(NULL, 0, "Messages that match %s", selector);
+			x->inlet_assist_strings[i + 1] = osc_mem_alloc(ilen + 1);
+			x->outlet_assist_strings[i] = osc_mem_alloc(olen + 1);
+			snprintf(x->inlet_assist_strings[i + 1], ilen, "Change the selector %s", selector);
+			snprintf(x->outlet_assist_strings[i], olen, "Messages that match %s", selector);
 		}
-		x->outlet_assist_strings[argc] = osc_mem_alloc(128);
+		x->outlet_assist_strings[argc] = osc_mem_alloc(512);
 		sprintf(x->outlet_assist_strings[argc], "Unmatched messages (delegation)");
 
 		oroute_makeUniqueSelectors(x->num_selectors,
