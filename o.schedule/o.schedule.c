@@ -171,7 +171,7 @@ void osched_fullPacket(t_osched *x, t_symbol *s, int argc, t_atom *argv)
 	t_osc_timetag now = osc_timetag_now();
         
 	// now plus scheduler precision interval -> x_nowp1
-	t_osc_timetag nowp1 = osc_timetag_add(now, osc_timetag_floatToTimetag(x->precision));
+	t_osc_timetag nowp1 = osc_timetag_add(now, x->precision);//osc_timetag_floatToTimetag(x->precision));
 
         
 	// compare

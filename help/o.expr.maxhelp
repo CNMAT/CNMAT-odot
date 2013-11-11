@@ -4,8 +4,8 @@
 		"appversion" : 		{
 			"major" : 6,
 			"minor" : 1,
-			"revision" : 2,
-			"architecture" : "x86"
+			"revision" : 4,
+			"architecture" : "x64"
 		}
 ,
 		"rect" : [ 269.0, 87.0, 1035.0, 785.0 ],
@@ -42,8 +42,8 @@
 						"appversion" : 						{
 							"major" : 6,
 							"minor" : 1,
-							"revision" : 2,
-							"architecture" : "x86"
+							"revision" : 4,
+							"architecture" : "x64"
 						}
 ,
 						"rect" : [ 0.0, 26.0, 1035.0, 759.0 ],
@@ -416,8 +416,8 @@
 						"appversion" : 						{
 							"major" : 6,
 							"minor" : 1,
-							"revision" : 2,
-							"architecture" : "x86"
+							"revision" : 4,
+							"architecture" : "x64"
 						}
 ,
 						"rect" : [ 0.0, 26.0, 1035.0, 759.0 ],
@@ -684,8 +684,8 @@
 						"appversion" : 						{
 							"major" : 6,
 							"minor" : 1,
-							"revision" : 2,
-							"architecture" : "x86"
+							"revision" : 4,
+							"architecture" : "x64"
 						}
 ,
 						"rect" : [ 0.0, 26.0, 1035.0, 759.0 ],
@@ -879,8 +879,8 @@
 						"appversion" : 						{
 							"major" : 6,
 							"minor" : 1,
-							"revision" : 2,
-							"architecture" : "x86"
+							"revision" : 4,
+							"architecture" : "x64"
 						}
 ,
 						"rect" : [ 0.0, 26.0, 1035.0, 759.0 ],
@@ -1195,8 +1195,8 @@
 						"appversion" : 						{
 							"major" : 6,
 							"minor" : 1,
-							"revision" : 2,
-							"architecture" : "x86"
+							"revision" : 4,
+							"architecture" : "x64"
 						}
 ,
 						"rect" : [ 0.0, 26.0, 1035.0, 759.0 ],
@@ -1613,8 +1613,8 @@
 						"appversion" : 						{
 							"major" : 6,
 							"minor" : 1,
-							"revision" : 2,
-							"architecture" : "x86"
+							"revision" : 4,
+							"architecture" : "x64"
 						}
 ,
 						"rect" : [ 0.0, 26.0, 1035.0, 759.0 ],
@@ -1773,11 +1773,11 @@
 						"appversion" : 						{
 							"major" : 6,
 							"minor" : 1,
-							"revision" : 2,
-							"architecture" : "x86"
+							"revision" : 4,
+							"architecture" : "x64"
 						}
 ,
-						"rect" : [ 269.0, 113.0, 1035.0, 759.0 ],
+						"rect" : [ 0.0, 26.0, 1035.0, 759.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -1869,8 +1869,8 @@
 										"appversion" : 										{
 											"major" : 6,
 											"minor" : 1,
-											"revision" : 2,
-											"architecture" : "x86"
+											"revision" : 4,
+											"architecture" : "x64"
 										}
 ,
 										"rect" : [ 25.0, 69.0, 1047.0, 883.0 ],
@@ -1892,7 +1892,6 @@
 										"description" : "",
 										"digest" : "",
 										"tags" : "",
-										"visible" : 1,
 										"boxes" : [ 											{
 												"box" : 												{
 													"fontname" : "Arial",
@@ -2000,8 +1999,8 @@
 														"appversion" : 														{
 															"major" : 6,
 															"minor" : 1,
-															"revision" : 2,
-															"architecture" : "x86"
+															"revision" : 4,
+															"architecture" : "x64"
 														}
 ,
 														"rect" : [ 25.0, 69.0, 640.0, 480.0 ],
@@ -2394,8 +2393,8 @@
 														"appversion" : 														{
 															"major" : 6,
 															"minor" : 1,
-															"revision" : 2,
-															"architecture" : "x86"
+															"revision" : 4,
+															"architecture" : "x64"
 														}
 ,
 														"rect" : [ 50.0, 94.0, 640.0, 480.0 ],
@@ -3444,8 +3443,8 @@
 										"appversion" : 										{
 											"major" : 6,
 											"minor" : 1,
-											"revision" : 2,
-											"architecture" : "x86"
+											"revision" : 4,
+											"architecture" : "x64"
 										}
 ,
 										"rect" : [ 471.0, 44.0, 1056.0, 875.0 ],
@@ -4531,7 +4530,7 @@
 									"numoutlets" : 3,
 									"outlettype" : [ "int", "", "" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 75.0, 100.0, 100.0, 20.0 ],
+									"patching_rect" : [ 75.0, 100.0, 100.0, 16.0 ],
 									"varname" : "/math/operator/arithmetic"
 								}
 
@@ -4562,7 +4561,7 @@
 									"numoutlets" : 3,
 									"outlettype" : [ "int", "", "" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 75.0, 130.0, 100.0, 20.0 ],
+									"patching_rect" : [ 75.0, 130.0, 100.0, 16.0 ],
 									"varname" : "/math/operator/relational"
 								}
 
@@ -4593,7 +4592,7 @@
 									"numoutlets" : 3,
 									"outlettype" : [ "int", "", "" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 75.0, 160.0, 100.0, 20.0 ],
+									"patching_rect" : [ 75.0, 160.0, 100.0, 16.0 ],
 									"varname" : "/math/operator/logical"
 								}
 
@@ -4624,7 +4623,7 @@
 									"numoutlets" : 3,
 									"outlettype" : [ "int", "", "" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 75.0, 190.0, 100.0, 20.0 ],
+									"patching_rect" : [ 75.0, 190.0, 100.0, 16.0 ],
 									"varname" : "/math/operator/assignment"
 								}
 
@@ -4655,7 +4654,7 @@
 									"numoutlets" : 3,
 									"outlettype" : [ "int", "", "" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 75.0, 220.0, 100.0, 20.0 ],
+									"patching_rect" : [ 75.0, 220.0, 100.0, 16.0 ],
 									"varname" : "/math/arithmetic"
 								}
 
@@ -4686,7 +4685,7 @@
 									"numoutlets" : 3,
 									"outlettype" : [ "int", "", "" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 75.0, 250.0, 100.0, 20.0 ],
+									"patching_rect" : [ 75.0, 250.0, 100.0, 16.0 ],
 									"varname" : "/math/trigonometric"
 								}
 
@@ -4717,7 +4716,7 @@
 									"numoutlets" : 3,
 									"outlettype" : [ "int", "", "" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 75.0, 280.0, 100.0, 20.0 ],
+									"patching_rect" : [ 75.0, 280.0, 100.0, 16.0 ],
 									"varname" : "/math/power"
 								}
 
@@ -4748,7 +4747,7 @@
 									"numoutlets" : 3,
 									"outlettype" : [ "int", "", "" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 75.0, 310.0, 100.0, 20.0 ],
+									"patching_rect" : [ 75.0, 310.0, 100.0, 16.0 ],
 									"varname" : "/math/conversion"
 								}
 
@@ -4779,7 +4778,7 @@
 									"numoutlets" : 3,
 									"outlettype" : [ "int", "", "" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 75.0, 340.0, 100.0, 20.0 ],
+									"patching_rect" : [ 75.0, 340.0, 100.0, 16.0 ],
 									"varname" : "/math/specialfunction"
 								}
 
@@ -4810,7 +4809,7 @@
 									"numoutlets" : 3,
 									"outlettype" : [ "int", "", "" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 75.0, 370.0, 100.0, 20.0 ],
+									"patching_rect" : [ 75.0, 370.0, 100.0, 16.0 ],
 									"varname" : "/math/constant"
 								}
 
@@ -4841,7 +4840,7 @@
 									"numoutlets" : 3,
 									"outlettype" : [ "int", "", "" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 75.0, 400.0, 100.0, 20.0 ],
+									"patching_rect" : [ 75.0, 400.0, 100.0, 16.0 ],
 									"varname" : "/vector"
 								}
 
@@ -4872,7 +4871,7 @@
 									"numoutlets" : 3,
 									"outlettype" : [ "int", "", "" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 75.0, 430.0, 100.0, 20.0 ],
+									"patching_rect" : [ 75.0, 430.0, 100.0, 16.0 ],
 									"varname" : "/statistics"
 								}
 
@@ -4903,7 +4902,7 @@
 									"numoutlets" : 3,
 									"outlettype" : [ "int", "", "" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 75.0, 460.0, 100.0, 20.0 ],
+									"patching_rect" : [ 75.0, 460.0, 100.0, 16.0 ],
 									"varname" : "/string/function"
 								}
 
@@ -4934,7 +4933,7 @@
 									"numoutlets" : 3,
 									"outlettype" : [ "int", "", "" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 75.0, 490.0, 100.0, 20.0 ],
+									"patching_rect" : [ 75.0, 490.0, 100.0, 16.0 ],
 									"varname" : "/string/operator"
 								}
 
@@ -4965,7 +4964,7 @@
 									"numoutlets" : 3,
 									"outlettype" : [ "int", "", "" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 75.0, 520.0, 100.0, 20.0 ],
+									"patching_rect" : [ 75.0, 520.0, 100.0, 16.0 ],
 									"varname" : "/predicate"
 								}
 
@@ -4996,7 +4995,7 @@
 									"numoutlets" : 3,
 									"outlettype" : [ "int", "", "" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 75.0, 550.0, 100.0, 20.0 ],
+									"patching_rect" : [ 75.0, 550.0, 100.0, 16.0 ],
 									"varname" : "/conditional"
 								}
 
@@ -5021,13 +5020,13 @@
 									"fontname" : "Arial",
 									"fontsize" : 12.0,
 									"id" : "obj-87",
-									"items" : [ "getaddresses", ",", "getmsgcount", ",", "eval", ",", "tokenize", ",", "prog1", ",", "prog2", ",", "progn", ",", "apply", ",", "quote", ",", "value", ",", "lambda", ",", "float32", ",", "float64", ",", "int8", ",", "char", ",", "int16", ",", "int32", ",", "int64", ",", "uint8", ",", "uint16", ",", "uint32", ",", "uint64", ",", "string", ",", "cast", ",", "typetags" ],
+									"items" : [ "getaddresses", ",", "delete", ",", "getmsgcount", ",", "eval", ",", "tokenize", ",", "prog1", ",", "prog2", ",", "progn", ",", "apply", ",", "quote", ",", "value", ",", "lambda", ",", "gettimetag", ",", "settimetag", ",", "float32", ",", "float64", ",", "int8", ",", "char", ",", "int16", ",", "int32", ",", "int64", ",", "uint8", ",", "uint16", ",", "uint32", ",", "uint64", ",", "bool", ",", "string", ",", "blob", ",", "cast", ",", "typetags", ",", "hton32", ",", "ntoh32", ",", "hton64", ",", "ntoh64" ],
 									"maxclass" : "umenu",
 									"numinlets" : 1,
 									"numoutlets" : 3,
 									"outlettype" : [ "int", "", "" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 75.0, 580.0, 100.0, 20.0 ],
+									"patching_rect" : [ 75.0, 580.0, 100.0, 16.0 ],
 									"varname" : "/core"
 								}
 
@@ -5337,8 +5336,8 @@
 						"appversion" : 						{
 							"major" : 6,
 							"minor" : 1,
-							"revision" : 2,
-							"architecture" : "x86"
+							"revision" : 4,
+							"architecture" : "x64"
 						}
 ,
 						"rect" : [ 0.0, 26.0, 1035.0, 759.0 ],
@@ -5883,8 +5882,8 @@
 						"appversion" : 						{
 							"major" : 6,
 							"minor" : 1,
-							"revision" : 2,
-							"architecture" : "x86"
+							"revision" : 4,
+							"architecture" : "x64"
 						}
 ,
 						"rect" : [ 0.0, 26.0, 1035.0, 759.0 ],
@@ -6269,11 +6268,11 @@
 						"appversion" : 						{
 							"major" : 6,
 							"minor" : 1,
-							"revision" : 2,
-							"architecture" : "x86"
+							"revision" : 4,
+							"architecture" : "x64"
 						}
 ,
-						"rect" : [ 0.0, 26.0, 1035.0, 759.0 ],
+						"rect" : [ 269.0, 113.0, 1035.0, 759.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -6373,7 +6372,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 288.0, 481.0, 150.0, 60.0 ],
-									"text" : "/time 0.94\n/freq 1\n/phase 0.\n/y -0.368125",
+									"text" : "/time 0.52\n/freq 1\n/phase 0.\n/y -0.125333",
 									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 
