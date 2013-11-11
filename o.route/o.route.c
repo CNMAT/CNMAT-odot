@@ -611,8 +611,10 @@ void *oroute_new(t_symbol *msg, short argc, t_atom *argv)
 		x->inlet_assist_strings = (char **)osc_mem_alloc((argc + 1) * sizeof(char *));
 		x->outlet_assist_strings = (char **)osc_mem_alloc((argc + 1) * sizeof(char *));
 
-		x->inlet_assist_strings[0] = osc_mem_alloc(128);
-		sprintf(x->inlet_assist_strings[0], "OSC bundle or Max message");
+		char *left_inlet_assist_str = "OSC bundle or Max message";
+		long left_inlet_assist_str_len = strlen(left_inlet_assist_str);
+		x->inlet_assist_strings[0] = osc_mem_alloc(left_inlet_assist_str_len + 1);
+		snprintf(x->inlet_assist_strings[0], left_inlet_assist_str_len + 1, "%s", left_inlet_assist_str);
 		x->nbytes_selector = 0;
 		int i;
 		for(i = 0; i < argc; i++){
@@ -630,13 +632,17 @@ void *oroute_new(t_symbol *msg, short argc, t_atom *argv)
 			}
 			x->selectors[x->num_selectors - i - 1] = selector;
 
-			x->inlet_assist_strings[i + 1] = osc_mem_alloc(128);
-			x->outlet_assist_strings[i] = osc_mem_alloc(128);
-			sprintf(x->inlet_assist_strings[i + 1], "Change the selector %s", selector);
-			sprintf(x->outlet_assist_strings[i], "Messages that match %s", selector);
+			long ilen = snprintf(NULL, 0, "Change the selector %s", selector);
+			long olen = snprintf(NULL, 0, "Messages that match %s", selector);
+			x->inlet_assist_strings[i + 1] = osc_mem_alloc(ilen + 1);
+			x->outlet_assist_strings[i] = osc_mem_alloc(olen + 1);
+			snprintf(x->inlet_assist_strings[i + 1], ilen + 1, "Change the selector %s", selector);
+			snprintf(x->outlet_assist_strings[i], olen + 1, "Messages that match %s", selector);
 		}
-		x->outlet_assist_strings[argc] = osc_mem_alloc(128);
-		sprintf(x->outlet_assist_strings[argc], "Unmatched messages (delegation)");
+		char *delegation_assist_str = "Unmatched messages (delegation)";
+		long delegation_assist_str_len = strlen(delegation_assist_str);
+		x->outlet_assist_strings[argc] = osc_mem_alloc(delegation_assist_str_len + 1);
+		snprintf(x->outlet_assist_strings[argc], delegation_assist_str_len + 1, "%s", delegation_assist_str);
 
 		oroute_makeUniqueSelectors(x->num_selectors,
 					   x->selectors,

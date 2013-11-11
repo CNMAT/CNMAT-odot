@@ -13,7 +13,6 @@
 			buildPhases = (
 			);
 			dependencies = (
-				52AE28351826E44500F2DC3E /* PBXTargetDependency */,
 				52CC5A3518232D9C001D46E3 /* PBXTargetDependency */,
 				52517B9D181F701F00879497 /* PBXTargetDependency */,
 				52517B9F181F701F00879497 /* PBXTargetDependency */,
@@ -480,13 +479,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 52A8395916EFFBC9002E273C;
 			remoteInfo = o.timetag;
-		};
-		52AE28341826E44500F2DC3E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 520A44A41824777800CB610F;
-			remoteInfo = o.io.bluetoothle;
 		};
 		52B53CFC174828B200237A19 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -3048,11 +3040,6 @@
 			isa = PBXTargetDependency;
 			target = 52A8395916EFFBC9002E273C /* o.timetag */;
 			targetProxy = 52A8396816EFFC09002E273C /* PBXContainerItemProxy */;
-		};
-		52AE28351826E44500F2DC3E /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 520A44A41824777800CB610F /* o.io.bluetoothle */;
-			targetProxy = 52AE28341826E44500F2DC3E /* PBXContainerItemProxy */;
 		};
 		52B53CFD174828B200237A19 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;

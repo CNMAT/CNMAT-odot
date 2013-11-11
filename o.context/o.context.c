@@ -51,86 +51,81 @@ typedef struct _ocontext{
 
 void *ocontext_class;
 
+t_osc_bndl_u *ocontext_processPatcher(t_object *patcher)
+{
+	t_osc_bndl_u *patcher_bndl = osc_bundle_u_alloc();
+	if(patcher == NULL){
+		// return empty bundle---this is intentional
+		return patcher_bndl;
+	}
+	long nattrs = 0;
+	t_symbol **attrs = NULL;
+	object_attr_getnames(patcher, &nattrs, &attrs);
+	for(int i = 0; i < nattrs; i++){
+		t_atom *av = NULL;
+		long ac = 0;
+		object_attr_getvalueof(patcher, attrs[i], &ac, &av);
+		if(av && ac){
+			long addresslen = strlen(attrs[i]->s_name) + 2;
+			char address[addresslen];
+			snprintf(address, addresslen, "/%s", attrs[i]->s_name);
+			t_osc_msg_u *msg = NULL;
+			if(ac == 1 && atom_gettype(av) == A_OBJ){
+				//printf("%s has object: %p %p\n", address, patcher, atom_getobj(av));
+				continue;
+				t_osc_bndl_u *b = ocontext_processPatcher(atom_getobj(av));
+				if(b){
+					msg = osc_message_u_allocWithAddress(address);
+					osc_message_u_appendBndl_u(msg, b);
+					osc_bundle_u_addMsg(patcher_bndl, msg);
+				}
+			}else{
+				omax_util_maxAtomsToOSCMsg_u(&msg, gensym(address), ac, av);
+				if(msg){
+					osc_bundle_u_addMsg(patcher_bndl, msg);
+				}
+			}
+		}
+	}
+	sysmem_freeptr(attrs);
+
+	t_symbol *maxclass = object_attr_getsym(patcher, gensym("maxclass"));
+	if(maxclass && maxclass == gensym("jpatcher")){
+		patcher = jpatcher_get_parentpatcher(patcher);
+		t_osc_bndl_u *parent_bndl = ocontext_processPatcher(patcher);
+
+		t_osc_msg_u *msg = osc_message_u_allocWithAddress("/parent");
+		osc_message_u_appendBndl_u(msg, parent_bndl);
+		osc_bundle_u_addMsg(patcher_bndl, msg);
+	}
+
+	return patcher_bndl;
+}
 
 void ocontext_doFullPacket(t_ocontext *x, long len, char *ptr)
 {
-	t_object *parent, *patcher;
+	t_object *parent = NULL, *patcher = NULL;
         object_obex_lookup(x, gensym("#P"), &patcher);
-	parent = patcher;
 
-	char prefix[64];
-	if(x->prefix){
-		if(x->prefix->s_name){
-			//if(x->prefix->s_name[0] == '/'){
-				sprintf(prefix, "%s/context/patcher", x->prefix->s_name);
-				//}else{
-				//sprintf(prefix, "/%s/context/patcher", x->prefix->s_name);
-				//}
-		}else{
-			sprintf(prefix, "/context/patcher");
-		}
-	}else{
-		sprintf(prefix, "/context/patcher");
-	}
-	char addressbuf[256];
+	//t_jbox *box = NULL;
+        //object_obex_lookup(x, gensym("#B"), &box);
 
-	t_symbol *patchername = object_attr_getsym(patcher, gensym("name"));
-	t_symbol *filepath = object_attr_getsym(patcher, gensym("filepath"));
-	char hierarchy[256];
-	char hierarchy2[256];
-	memset(hierarchy, '\0', sizeof(hierarchy));
-	memset(hierarchy2, '\0', sizeof(hierarchy2));
-	if(patchername){
-		sprintf(hierarchy, "/%s", patchername->s_name);
-	}
-	do{
-		parent = jpatcher_get_parentpatcher(parent);
-		if(parent){
-			t_symbol *name = object_attr_getsym(parent, gensym("name"));
-			if(name){
-				//hp += sprintf(hp, "/%s", name->s_name);
-				memcpy(hierarchy2, hierarchy, sizeof(hierarchy2));
-				sprintf(hierarchy, "/%s%s", name->s_name, hierarchy2);
-			}
-		}
-        } while (parent != NULL);
-
-	t_osc_bndl_u *b = osc_bundle_u_alloc();
-	if(patchername){
-		t_osc_msg_u *mpn = osc_message_u_alloc();
-		sprintf(addressbuf, "%s/name", prefix);
-		osc_message_u_setAddress(mpn, addressbuf);
-		osc_message_u_appendString(mpn, patchername->s_name);
-		osc_bundle_u_addMsg(b, mpn);
-	}
-	if(filepath){
-		t_osc_msg_u *mfp = osc_message_u_alloc();
-		sprintf(addressbuf, "%s/filepath", prefix);
-		osc_message_u_setAddress(mfp, addressbuf);
-		osc_message_u_appendString(mfp, filepath->s_name);
-		osc_bundle_u_addMsg(b, mfp);
-	}
-
-	t_osc_msg_u *mh = osc_message_u_alloc();
-	sprintf(addressbuf, "%s/hierarchy", prefix);
-	osc_message_u_setAddress(mh, addressbuf);
-	osc_message_u_appendString(mh, hierarchy);
-	osc_bundle_u_addMsg(b, mh);
-
-	long l = 0;
-	char *buf = NULL;
-	osc_bundle_u_serialize(b, &l, &buf);
-	if(buf){
-		if(ptr){
-			char out[l + len - OSC_HEADER_SIZE];
-			long ll = osc_bundle_s_concat(len, ptr, l, buf, out);
-			omax_util_outletOSC(x->outlet, ll, out);
-		}else{
+	t_osc_bndl_u *mypatcher_bndl = ocontext_processPatcher(patcher);
+	t_osc_msg_u *context_msg = osc_message_u_allocWithAddress("/context");
+	osc_message_u_appendBndl_u(context_msg, mypatcher_bndl);
+	t_osc_bndl_u *bu = NULL;
+	osc_bundle_s_deserialize(len, ptr, &bu);
+	if(bu){
+		osc_bundle_u_addMsgWithoutDups(bu, context_msg);
+		long l = 0;
+		char *buf = NULL;
+		osc_bundle_u_serialize(bu, &l, &buf);
+		if(buf){
 			omax_util_outletOSC(x->outlet, l, buf);
+			osc_mem_free(buf);
 		}
-		osc_mem_free(buf);
 	}
-	osc_bundle_u_free(b);
+	osc_bundle_u_free(mypatcher_bndl);
 }
 
 void ocontext_fullPacket(t_ocontext *x, t_symbol *msg, int argc, t_atom *argv)
