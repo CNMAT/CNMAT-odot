@@ -8599,7 +8599,7 @@
 											"architecture" : "x86"
 										}
 ,
-										"rect" : [ 113.0, 113.0, 1318.0, 662.0 ],
+										"rect" : [ 305.0, 404.0, 1318.0, 662.0 ],
 										"bglocked" : 0,
 										"openinpresentation" : 0,
 										"default_fontsize" : 12.0,
@@ -14337,7 +14337,7 @@
  ]
 													}
 ,
-													"patching_rect" : [ 289.75, 476.0, 113.5, 20.0 ],
+													"patching_rect" : [ 287.25, 476.0, 113.5, 20.0 ],
 													"saved_object_attributes" : 													{
 														"default_fontface" : 0,
 														"default_fontname" : "Arial",
@@ -26944,7 +26944,7 @@
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"id" : "obj-2",
-					"items" : [ "AU DLS Synth 1", ",", "from Max 1", ",", "from Max 2", ",", "QUNEO" ],
+					"items" : [ "AU DLS Synth 1", ",", "QUNEO", ",", "from Max 1", ",", "from Max 2" ],
 					"maxclass" : "umenu",
 					"numinlets" : 1,
 					"numoutlets" : 3,
@@ -27071,8 +27071,8 @@
 					"id" : "obj-28",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
+					"numoutlets" : 2,
+					"outlettype" : [ "", "" ],
 					"patching_rect" : [ 482.085388, 58.0, 149.0, 20.0 ],
 					"text" : "o.collectwithtimeout 0.002"
 				}
