@@ -32,6 +32,20 @@
 				"box" : 				{
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
+					"id" : "obj-29",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 113.0, 1155.0, 146.0, 20.0 ],
+					"text" : "o.timetag /time/happened"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
 					"frgb" : 0.0,
 					"id" : "obj-31",
 					"linecount" : 2,
@@ -282,13 +296,13 @@
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"id" : "obj-15",
-					"linecount" : 4,
+					"linecount" : 5,
 					"maxclass" : "o.message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 801.916443, 559.122498, 150.0, 60.0 ],
-					"text" : "/pad/a/4/velocity 0.\n/pad/a/4/pressure 0.\n/pad/a/4/x 0.606299\n/pad/a/4/y 0.125984",
+					"patching_rect" : [ 801.916443, 559.122498, 150.0, 74.0 ],
+					"text" : "/pad/a/4/velocity 0.\n/pad/a/4/pressure 0.00787402\n/pad/a/4/x 0.440945\n/pad/a/4/y 0.685039",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -308,35 +322,6 @@
 			}
 , 			{
 				"box" : 				{
-					"fontname" : "Arial",
-					"fontsize" : 12.0,
-					"id" : "obj-12",
-					"linecount" : 3,
-					"maxclass" : "o.message",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 719.401489, 426.28125, 150.0, 47.0 ],
-					"text" : "/arrowbutton/a/4/velocity 0.\n/arrowbutton/a/4/pressure 0.",
-					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"args" : [ "/arrowbutton/a/4" ],
-					"id" : "obj-10",
-					"maxclass" : "bpatcher",
-					"name" : "o.io.quneo.display.helper.arrow.1A-D.maxpat",
-					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 795.401489, 368.413849, 47.474506, 44.253487 ]
-				}
-
-			}
-, 			{
-				"box" : 				{
 					"args" : [ "/pad/a/4" ],
 					"id" : "obj-9",
 					"maxclass" : "bpatcher",
@@ -345,19 +330,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
 					"patching_rect" : [ 892.916443, 299.812622, 118.336945, 104.867409 ]
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"args" : [ "/arrowbutton/a/4" ],
-					"id" : "obj-4",
-					"maxclass" : "bpatcher",
-					"name" : "o.io.quneo.display.helper.arrow.1A-D.maxpat",
-					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 795.401489, 309.602417, 47.474506, 44.253487 ]
 				}
 
 			}
@@ -386,7 +358,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 738.155273, 680.562256, 378.0, 368.0 ],
+					"patching_rect" : [ 738.155273, 680.562256, 380.0, 368.0 ],
 					"text" : "'Redness' represents velocity.\n'Blueness' represents pressure.\n'Green' shows  range (only on the longSlider) and position ( only on the sliders and pads), responding to touch of the device.\n'Yellow' the color code for a user interface handle, responding to click and drag of the mouse. \n'Circles' represent positions within respective domains (i.e. pads or sliders), while one circle (green)  acts in the touch of the controller, the other (yellow)  acts in the 'dragging' of the mouse on a specific domain. The latter type is a user interface handle, all graphics of this type are color coded 'yellow,'"
 				}
 
@@ -432,7 +404,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 24.135496, 84.695938, 397.0, 33.0 ],
-					"text" : "Provides graphical representation of sensor activity, as well as a  namespace encoding gesture derivation and LED control."
+					"text" : "Provides graphical representation of sensor activity, as well as a  namespace encoding for gesture derivation and LED control."
 				}
 
 			}
@@ -476,7 +448,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 78.30719, 309.602417, 611.602783, 187.0 ],
-					"text" : "/pad/a/4/velocity 0.\n/pad/a/4/pressure 0.\n/pad/a/4/x 1.\n/pad/a/4/y 1.\n/port \"QUNEO\"\n/instructions \"first tap 'mode' button, then tap 'pad /a/1' to enable preset 1. Ok to change the velocity settings within preset 1, using the QuNeo Editor.\"\n/manufactuer \"KESUMO, LLC.\" \"Keith McMillen\"\n/product \"Quneo, #K-707\"",
+					"text" : "/pad/a/4/velocity 0.\n/pad/a/4/pressure 0.00787402\n/pad/a/4/x 0.598425\n/pad/a/4/y 0.472441\n/port \"QUNEO\"\n/instructions \"first tap 'mode' button, then tap 'pad /a/1' to enable preset 1. Ok to change the velocity settings within preset 1, using the QuNeo Editor.\"\n/manufactuer \"KESUMO, LLC.\" \"Keith McMillen\"\n/product \"Quneo, #K-707\"",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -486,13 +458,13 @@
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"id" : "obj-8",
-					"linecount" : 3,
+					"linecount" : 6,
 					"maxclass" : "o.message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 39.516193, 1211.366211, 150.0, 47.0 ],
-					"text" : "/rhombus.button/velocity\n/rhombus.button/pressure 0.",
+					"patching_rect" : [ 39.516193, 1211.366211, 150.0, 87.0 ],
+					"text" : "/arrowbutton/a/3/velocity 0.\n/arrowbutton/a/3/pressure 0.0393701\n/time/happened 2013-11-14T15:40:08.427616Z",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -562,26 +534,17 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 1.186984, 545.122498, 736.968262, 581.374939 ]
+					"patching_rect" : [ 1.187012, 552.562256, 736.968262, 581.374939 ]
 				}
 
 			}
  ],
 		"lines" : [ 			{
 				"patchline" : 				{
-					"destination" : [ "obj-8", 1 ],
+					"destination" : [ "obj-29", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-1", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-12", 1 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"source" : [ "obj-10", 0 ]
 				}
 
 			}
@@ -623,20 +586,20 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-2", 1 ],
+					"destination" : [ "obj-8", 1 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"midpoints" : [ 2206.121826, 1509.573608, 2241.871826, 1509.573608, 2241.871826, 1430.573608, 2223.621826, 1430.573608 ],
-					"source" : [ "obj-3", 1 ]
+					"source" : [ "obj-29", 0 ]
 				}
 
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-10", 0 ],
+					"destination" : [ "obj-2", 1 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"source" : [ "obj-4", 0 ]
+					"midpoints" : [ 2206.121826, 1509.573608, 2241.871826, 1509.573608, 2241.871826, 1430.573608, 2223.621826, 1430.573608 ],
+					"source" : [ "obj-3", 1 ]
 				}
 
 			}
@@ -652,15 +615,6 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-11", 1 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"source" : [ "obj-5", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-4", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-5", 0 ]
@@ -715,56 +669,56 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "o.io.quneo.display.maxpat",
-				"bootpath" : "/Users/gabacheker/Documents/maxliB/o.io.quneo.all",
+				"bootpath" : "/Users/gabacheker/Documents/CNMAT_Work/CNMAT_GITHUB/CNMAT-odot/abstractions/io/o.io.quneo",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "quneopic.jpg",
-				"bootpath" : "/Users/gabacheker/Documents/maxliB/o.io.quneo.all",
+				"bootpath" : "/Users/gabacheker/Documents/CNMAT_Work/CNMAT_GITHUB/CNMAT-odot/abstractions/io/o.io.quneo",
 				"patcherrelativepath" : ".",
 				"type" : "JPEG",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.io.quneo.display.helper.pad.maxpat",
-				"bootpath" : "/Users/gabacheker/Documents/maxliB/o.io.quneo.all",
+				"bootpath" : "/Users/gabacheker/Documents/CNMAT_Work/CNMAT_GITHUB/CNMAT-odot/abstractions/io/o.io.quneo",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "green-circle.png",
-				"bootpath" : "/Users/gabacheker/Documents/maxliB/o.io.quneo.all",
+				"bootpath" : "/Users/gabacheker/Documents/CNMAT_Work/CNMAT_GITHUB/CNMAT-odot/abstractions/io/o.io.quneo",
 				"patcherrelativepath" : ".",
 				"type" : "PNG ",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "yellow-circle.png",
-				"bootpath" : "/Users/gabacheker/Documents/maxliB/o.io.quneo.all",
+				"bootpath" : "/Users/gabacheker/Documents/CNMAT_Work/CNMAT_GITHUB/CNMAT-odot/abstractions/io/o.io.quneo",
 				"patcherrelativepath" : ".",
 				"type" : "PNG ",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.io.quneo.display.helper.slide.A-D.maxpat",
-				"bootpath" : "/Users/gabacheker/Documents/maxliB/o.io.quneo.all",
+				"bootpath" : "/Users/gabacheker/Documents/CNMAT_Work/CNMAT_GITHUB/CNMAT-odot/abstractions/io/o.io.quneo",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.io.quneo.display.helper.slide.1-4.maxpat",
-				"bootpath" : "/Users/gabacheker/Documents/maxliB/o.io.quneo.all",
+				"bootpath" : "/Users/gabacheker/Documents/CNMAT_Work/CNMAT_GITHUB/CNMAT-odot/abstractions/io/o.io.quneo",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.io.quneo.display.helper.longslide.maxpat",
-				"bootpath" : "/Users/gabacheker/Documents/maxliB/o.io.quneo.all",
+				"bootpath" : "/Users/gabacheker/Documents/CNMAT_Work/CNMAT_GITHUB/CNMAT-odot/abstractions/io/o.io.quneo",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
@@ -772,90 +726,90 @@
 , 			{
 				"name" : "o.io.quneo.display.helper.arrow.2A-D.maxpat",
 				"bootpath" : "/Users/gabacheker/Documents/maxliB/o.io.quneo.all",
-				"patcherrelativepath" : ".",
+				"patcherrelativepath" : "../../../../../../maxliB/o.io.quneo.all",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.io.quneo.display.helper.arrow.1A-D.maxpat",
 				"bootpath" : "/Users/gabacheker/Documents/maxliB/o.io.quneo.all",
-				"patcherrelativepath" : ".",
+				"patcherrelativepath" : "../../../../../../maxliB/o.io.quneo.all",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.io.quneo.display.helper.rotor.maxpat",
-				"bootpath" : "/Users/gabacheker/Documents/maxliB/o.io.quneo.all",
+				"bootpath" : "/Users/gabacheker/Documents/CNMAT_Work/CNMAT_GITHUB/CNMAT-odot/abstractions/io/o.io.quneo",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.io.quneo.display.helper.large.arrowbutton.2A-B.maxpat",
-				"bootpath" : "/Users/gabacheker/Documents/maxliB/o.io.quneo.all",
+				"bootpath" : "/Users/gabacheker/Documents/CNMAT_Work/CNMAT_GITHUB/CNMAT-odot/abstractions/io/o.io.quneo",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.io.quneo.display.helper.large.arrowbutton.1A-B.maxpat",
-				"bootpath" : "/Users/gabacheker/Documents/maxliB/o.io.quneo.all",
+				"bootpath" : "/Users/gabacheker/Documents/CNMAT_Work/CNMAT_GITHUB/CNMAT-odot/abstractions/io/o.io.quneo",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.io.quneo.display.helper.button.A.maxpat",
-				"bootpath" : "/Users/gabacheker/Documents/maxliB/o.io.quneo.all",
+				"bootpath" : "/Users/gabacheker/Documents/CNMAT_Work/CNMAT_GITHUB/CNMAT-odot/abstractions/io/o.io.quneo",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.io.quneo.display.helper.button.B.maxpat",
-				"bootpath" : "/Users/gabacheker/Documents/maxliB/o.io.quneo.all",
+				"bootpath" : "/Users/gabacheker/Documents/CNMAT_Work/CNMAT_GITHUB/CNMAT-odot/abstractions/io/o.io.quneo",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.io.quneo.display.helper.button.C.maxpat",
-				"bootpath" : "/Users/gabacheker/Documents/maxliB/o.io.quneo.all",
+				"bootpath" : "/Users/gabacheker/Documents/CNMAT_Work/CNMAT_GITHUB/CNMAT-odot/abstractions/io/o.io.quneo",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.io.quneo.display.helper.rhombusbutton.maxpat",
-				"bootpath" : "/Users/gabacheker/Documents/maxliB/o.io.quneo.all",
+				"bootpath" : "/Users/gabacheker/Documents/CNMAT_Work/CNMAT_GITHUB/CNMAT-odot/abstractions/io/o.io.quneo",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.io.quneo.maxpat",
-				"bootpath" : "/Users/gabacheker/Documents/maxliB/o.io.quneo.all",
+				"bootpath" : "/Users/gabacheker/Documents/CNMAT_Work/CNMAT_GITHUB/CNMAT-odot/abstractions/io/o.io.quneo",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.collectwithtimeout.maxpat",
-				"bootpath" : "/Users/gabacheker/Documents/maxliB/o.io.qunexus/patchers",
-				"patcherrelativepath" : "../o.io.qunexus/patchers",
+				"bootpath" : "/Users/gabacheker/Documents/maxliB/lib",
+				"patcherrelativepath" : "../../../../../../maxliB/lib",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.io.quneo.helper.encode.maxpat",
-				"bootpath" : "/Users/gabacheker/Documents/maxliB/o.io.quneo.all",
+				"bootpath" : "/Users/gabacheker/Documents/CNMAT_Work/CNMAT_GITHUB/CNMAT-odot/abstractions/io/o.io.quneo",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.io.quneo.display.helper.pad.gesture.trace.maxpat",
-				"bootpath" : "/Users/gabacheker/Documents/maxliB/o.io.quneo.all",
+				"bootpath" : "/Users/gabacheker/Documents/CNMAT_Work/CNMAT_GITHUB/CNMAT-odot/abstractions/io/o.io.quneo",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
@@ -877,11 +831,15 @@
 				"type" : "iLaX"
 			}
 , 			{
+				"name" : "o.prepend.mxo",
+				"type" : "iLaX"
+			}
+, 			{
 				"name" : "o.message.mxo",
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "o.prepend.mxo",
+				"name" : "o.timetag.mxo",
 				"type" : "iLaX"
 			}
  ]
