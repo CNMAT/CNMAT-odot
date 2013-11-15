@@ -32,7 +32,7 @@
 					"args" : [ "/arrowbutton/a/4" ],
 					"id" : "obj-48",
 					"maxclass" : "bpatcher",
-					"name" : "o.io.quneo.display.helper.arrow.1A-D.maxpat",
+					"name" : "o.io.quneo.display.helper.arrowbutton.1A-D.maxpat",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
@@ -220,7 +220,7 @@
 					"args" : [ "/arrowbutton/a/1" ],
 					"id" : "obj-54",
 					"maxclass" : "bpatcher",
-					"name" : "o.io.quneo.display.helper.arrow.1A-D.maxpat",
+					"name" : "o.io.quneo.display.helper.arrowbutton.1A-D.maxpat",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
@@ -235,7 +235,7 @@
 					"args" : [ "/arrowbutton/a/2" ],
 					"id" : "obj-58",
 					"maxclass" : "bpatcher",
-					"name" : "o.io.quneo.display.helper.arrow.1A-D.maxpat",
+					"name" : "o.io.quneo.display.helper.arrowbutton.1A-D.maxpat",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
@@ -250,7 +250,7 @@
 					"args" : [ "/arrowbutton/a/3" ],
 					"id" : "obj-49",
 					"maxclass" : "bpatcher",
-					"name" : "o.io.quneo.display.helper.arrow.1A-D.maxpat",
+					"name" : "o.io.quneo.display.helper.arrowbutton.1A-D.maxpat",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
@@ -265,7 +265,7 @@
 					"args" : [ "/arrowbutton/b/4" ],
 					"id" : "obj-45",
 					"maxclass" : "bpatcher",
-					"name" : "o.io.quneo.display.helper.arrow.2A-D.maxpat",
+					"name" : "o.io.quneo.display.helper.arrowbutton.2A-D.maxpat",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
@@ -280,7 +280,7 @@
 					"args" : [ "/arrowbutton/b/3" ],
 					"id" : "obj-46",
 					"maxclass" : "bpatcher",
-					"name" : "o.io.quneo.display.helper.arrow.2A-D.maxpat",
+					"name" : "o.io.quneo.display.helper.arrowbutton.2A-D.maxpat",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
@@ -295,7 +295,7 @@
 					"args" : [ "/arrowbutton/b/2" ],
 					"id" : "obj-43",
 					"maxclass" : "bpatcher",
-					"name" : "o.io.quneo.display.helper.arrow.2A-D.maxpat",
+					"name" : "o.io.quneo.display.helper.arrowbutton.2A-D.maxpat",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
@@ -310,7 +310,7 @@
 					"args" : [ "/arrowbutton/b/1" ],
 					"id" : "obj-40",
 					"maxclass" : "bpatcher",
-					"name" : "o.io.quneo.display.helper.arrow.2A-D.maxpat",
+					"name" : "o.io.quneo.display.helper.arrowbutton.2A-D.maxpat",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
@@ -1486,112 +1486,112 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "quneopic.jpg",
-				"bootpath" : "/Users/gabacheker/Documents/maxliB/o.io.quneo.all",
+				"bootpath" : "/Users/gabacheker/Documents/CNMAT_Work/CNMAT_GITHUB/CNMAT-odot/abstractions/io/o.io.quneo",
 				"patcherrelativepath" : ".",
 				"type" : "JPEG",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.io.quneo.display.helper.pad.maxpat",
-				"bootpath" : "/Users/gabacheker/Documents/maxliB/o.io.quneo.all",
+				"bootpath" : "/Users/gabacheker/Documents/CNMAT_Work/CNMAT_GITHUB/CNMAT-odot/abstractions/io/o.io.quneo",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "green-circle.png",
-				"bootpath" : "/Users/gabacheker/Documents/maxliB/o.io.quneo.all",
+				"bootpath" : "/Users/gabacheker/Documents/CNMAT_Work/CNMAT_GITHUB/CNMAT-odot/abstractions/io/o.io.quneo",
 				"patcherrelativepath" : ".",
 				"type" : "PNG ",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "yellow-circle.png",
-				"bootpath" : "/Users/gabacheker/Documents/maxliB/o.io.quneo.all",
+				"bootpath" : "/Users/gabacheker/Documents/CNMAT_Work/CNMAT_GITHUB/CNMAT-odot/abstractions/io/o.io.quneo",
 				"patcherrelativepath" : ".",
 				"type" : "PNG ",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.io.quneo.display.helper.slide.A-D.maxpat",
-				"bootpath" : "/Users/gabacheker/Documents/maxliB/o.io.quneo.all",
+				"bootpath" : "/Users/gabacheker/Documents/CNMAT_Work/CNMAT_GITHUB/CNMAT-odot/abstractions/io/o.io.quneo",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.io.quneo.display.helper.slide.1-4.maxpat",
-				"bootpath" : "/Users/gabacheker/Documents/maxliB/o.io.quneo.all",
+				"bootpath" : "/Users/gabacheker/Documents/CNMAT_Work/CNMAT_GITHUB/CNMAT-odot/abstractions/io/o.io.quneo",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.io.quneo.display.helper.longslide.maxpat",
-				"bootpath" : "/Users/gabacheker/Documents/maxliB/o.io.quneo.all",
+				"bootpath" : "/Users/gabacheker/Documents/CNMAT_Work/CNMAT_GITHUB/CNMAT-odot/abstractions/io/o.io.quneo",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "o.io.quneo.display.helper.arrow.2A-D.maxpat",
-				"bootpath" : "/Users/gabacheker/Documents/maxliB/o.io.quneo.all",
+				"name" : "o.io.quneo.display.helper.arrowbutton.2A-D.maxpat",
+				"bootpath" : "/Users/gabacheker/Documents/CNMAT_Work/CNMAT_GITHUB/CNMAT-odot/abstractions/io/o.io.quneo",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "o.io.quneo.display.helper.arrow.1A-D.maxpat",
-				"bootpath" : "/Users/gabacheker/Documents/maxliB/o.io.quneo.all",
+				"name" : "o.io.quneo.display.helper.arrowbutton.1A-D.maxpat",
+				"bootpath" : "/Users/gabacheker/Documents/CNMAT_Work/CNMAT_GITHUB/CNMAT-odot/abstractions/io/o.io.quneo",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.io.quneo.display.helper.rotor.maxpat",
-				"bootpath" : "/Users/gabacheker/Documents/maxliB/o.io.quneo.all",
+				"bootpath" : "/Users/gabacheker/Documents/CNMAT_Work/CNMAT_GITHUB/CNMAT-odot/abstractions/io/o.io.quneo",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.io.quneo.display.helper.large.arrowbutton.2A-B.maxpat",
-				"bootpath" : "/Users/gabacheker/Documents/maxliB/o.io.quneo.all",
+				"bootpath" : "/Users/gabacheker/Documents/CNMAT_Work/CNMAT_GITHUB/CNMAT-odot/abstractions/io/o.io.quneo",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.io.quneo.display.helper.large.arrowbutton.1A-B.maxpat",
-				"bootpath" : "/Users/gabacheker/Documents/maxliB/o.io.quneo.all",
+				"bootpath" : "/Users/gabacheker/Documents/CNMAT_Work/CNMAT_GITHUB/CNMAT-odot/abstractions/io/o.io.quneo",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.io.quneo.display.helper.button.A.maxpat",
-				"bootpath" : "/Users/gabacheker/Documents/maxliB/o.io.quneo.all",
+				"bootpath" : "/Users/gabacheker/Documents/CNMAT_Work/CNMAT_GITHUB/CNMAT-odot/abstractions/io/o.io.quneo",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.io.quneo.display.helper.button.B.maxpat",
-				"bootpath" : "/Users/gabacheker/Documents/maxliB/o.io.quneo.all",
+				"bootpath" : "/Users/gabacheker/Documents/CNMAT_Work/CNMAT_GITHUB/CNMAT-odot/abstractions/io/o.io.quneo",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.io.quneo.display.helper.button.C.maxpat",
-				"bootpath" : "/Users/gabacheker/Documents/maxliB/o.io.quneo.all",
+				"bootpath" : "/Users/gabacheker/Documents/CNMAT_Work/CNMAT_GITHUB/CNMAT-odot/abstractions/io/o.io.quneo",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.io.quneo.display.helper.rhombusbutton.maxpat",
-				"bootpath" : "/Users/gabacheker/Documents/maxliB/o.io.quneo.all",
+				"bootpath" : "/Users/gabacheker/Documents/CNMAT_Work/CNMAT_GITHUB/CNMAT-odot/abstractions/io/o.io.quneo",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1

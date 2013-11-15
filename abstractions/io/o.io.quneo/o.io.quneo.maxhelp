@@ -354,12 +354,12 @@
 					"fontsize" : 18.0,
 					"frgb" : 0.0,
 					"id" : "obj-93",
-					"linecount" : 15,
+					"linecount" : 10,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 738.155273, 680.562256, 380.0, 368.0 ],
-					"text" : "'Redness' represents velocity.\n'Blueness' represents pressure.\n'Green' shows  range (only on the longSlider) and position ( only on the sliders and pads), responding to touch of the device.\n'Yellow' the color code for a user interface handle, responding to click and drag of the mouse. \n'Circles' represent positions within respective domains (i.e. pads or sliders), while one circle (green)  acts in the touch of the controller, the other (yellow)  acts in the 'dragging' of the mouse on a specific domain. The latter type is a user interface handle, all graphics of this type are color coded 'yellow,'"
+					"patching_rect" : [ 738.155273, 680.562256, 543.0, 272.0 ],
+					"text" : "'Redness' represents velocity.\n\n'Blueness' represents pressure.\n\n'Green things' act in the touch of the device, in the case of range (only on the longSlider) and position ( only on the sliders and pads).\n\n'Yellow things' are the color of 'user interface handles,' responding to click and drag of the mouse.  (green things can't be moused)\n"
 				}
 
 			}
@@ -458,13 +458,13 @@
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"id" : "obj-8",
-					"linecount" : 6,
+					"linecount" : 7,
 					"maxclass" : "o.message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 39.516193, 1211.366211, 150.0, 87.0 ],
-					"text" : "/arrowbutton/a/3/velocity 0.\n/arrowbutton/a/3/pressure 0.0393701\n/time/happened 2013-11-14T15:40:08.427616Z",
+					"patching_rect" : [ 39.516193, 1211.366211, 150.0, 100.0 ],
+					"text" : "/arrowbutton/b/1/velocity 0.0944882\n/arrowbutton/b/1/pressure 0.\n/time/happened 2013-11-14T16:36:25.273923Z",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -724,16 +724,16 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "o.io.quneo.display.helper.arrow.2A-D.maxpat",
-				"bootpath" : "/Users/gabacheker/Documents/maxliB/o.io.quneo.all",
-				"patcherrelativepath" : "../../../../../../maxliB/o.io.quneo.all",
+				"name" : "o.io.quneo.display.helper.arrowbutton.2A-D.maxpat",
+				"bootpath" : "/Users/gabacheker/Documents/CNMAT_Work/CNMAT_GITHUB/CNMAT-odot/abstractions/io/o.io.quneo",
+				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "o.io.quneo.display.helper.arrow.1A-D.maxpat",
-				"bootpath" : "/Users/gabacheker/Documents/maxliB/o.io.quneo.all",
-				"patcherrelativepath" : "../../../../../../maxliB/o.io.quneo.all",
+				"name" : "o.io.quneo.display.helper.arrowbutton.1A-D.maxpat",
+				"bootpath" : "/Users/gabacheker/Documents/CNMAT_Work/CNMAT_GITHUB/CNMAT-odot/abstractions/io/o.io.quneo",
+				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
