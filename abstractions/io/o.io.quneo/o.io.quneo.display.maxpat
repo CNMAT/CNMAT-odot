@@ -42,34 +42,6 @@
 				"box" : 				{
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
-					"id" : "obj-12",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 2,
-					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 405.674988, 704.0, 32.5, 20.0 ],
-					"text" : "t l l"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontname" : "Arial",
-					"fontsize" : 12.0,
-					"id" : "obj-10",
-					"maxclass" : "newobj",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 405.674988, 672.0, 50.0, 20.0 ],
-					"text" : "o.union"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontname" : "Arial",
-					"fontsize" : 12.0,
 					"id" : "obj-7",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
@@ -762,38 +734,10 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-12", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"source" : [ "obj-10", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
 					"destination" : [ "obj-7", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-11", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-10", 1 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"midpoints" : [ 428.674988, 733.0, 487.424988, 733.0, 487.424988, 662.0, 446.174988, 662.0 ],
-					"source" : [ "obj-12", 1 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-13", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"source" : [ "obj-12", 0 ]
 				}
 
 			}
@@ -1123,7 +1067,7 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-10", 0 ],
+					"destination" : [ "obj-13", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-7", 0 ]
@@ -1565,112 +1509,112 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "quneopic.jpg",
-				"bootpath" : "/Users/gabacheker/Documents/maxliB/o.io.quneo.all",
+				"bootpath" : "/Users/gabacheker/Documents/CNMAT_Work/CNMAT_GITHUB/CNMAT-odot/abstractions/io/o.io.quneo",
 				"patcherrelativepath" : ".",
 				"type" : "JPEG",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.io.quneo.display.helper.pad.maxpat",
-				"bootpath" : "/Users/gabacheker/Documents/maxliB/o.io.quneo.all",
+				"bootpath" : "/Users/gabacheker/Documents/CNMAT_Work/CNMAT_GITHUB/CNMAT-odot/abstractions/io/o.io.quneo",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "green-circle.png",
-				"bootpath" : "/Users/gabacheker/Documents/maxliB/o.io.quneo.all",
+				"bootpath" : "/Users/gabacheker/Documents/CNMAT_Work/CNMAT_GITHUB/CNMAT-odot/abstractions/io/o.io.quneo",
 				"patcherrelativepath" : ".",
 				"type" : "PNG ",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "yellow-circle.png",
-				"bootpath" : "/Users/gabacheker/Documents/maxliB/o.io.quneo.all",
+				"bootpath" : "/Users/gabacheker/Documents/CNMAT_Work/CNMAT_GITHUB/CNMAT-odot/abstractions/io/o.io.quneo",
 				"patcherrelativepath" : ".",
 				"type" : "PNG ",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.io.quneo.display.helper.slide.A-D.maxpat",
-				"bootpath" : "/Users/gabacheker/Documents/maxliB/o.io.quneo.all",
+				"bootpath" : "/Users/gabacheker/Documents/CNMAT_Work/CNMAT_GITHUB/CNMAT-odot/abstractions/io/o.io.quneo",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.io.quneo.display.helper.slide.1-4.maxpat",
-				"bootpath" : "/Users/gabacheker/Documents/maxliB/o.io.quneo.all",
+				"bootpath" : "/Users/gabacheker/Documents/CNMAT_Work/CNMAT_GITHUB/CNMAT-odot/abstractions/io/o.io.quneo",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.io.quneo.display.helper.longslide.maxpat",
-				"bootpath" : "/Users/gabacheker/Documents/maxliB/o.io.quneo.all",
+				"bootpath" : "/Users/gabacheker/Documents/CNMAT_Work/CNMAT_GITHUB/CNMAT-odot/abstractions/io/o.io.quneo",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.io.quneo.display.helper.arrowbutton.2A-D.maxpat",
-				"bootpath" : "/Users/gabacheker/Documents/maxliB/o.io.quneo.all",
+				"bootpath" : "/Users/gabacheker/Documents/CNMAT_Work/CNMAT_GITHUB/CNMAT-odot/abstractions/io/o.io.quneo",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.io.quneo.display.helper.arrowbutton.1A-D.maxpat",
-				"bootpath" : "/Users/gabacheker/Documents/maxliB/o.io.quneo.all",
+				"bootpath" : "/Users/gabacheker/Documents/CNMAT_Work/CNMAT_GITHUB/CNMAT-odot/abstractions/io/o.io.quneo",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.io.quneo.display.helper.rotor.maxpat",
-				"bootpath" : "/Users/gabacheker/Documents/maxliB/o.io.quneo.all",
+				"bootpath" : "/Users/gabacheker/Documents/CNMAT_Work/CNMAT_GITHUB/CNMAT-odot/abstractions/io/o.io.quneo",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.io.quneo.display.helper.large.arrowbutton.2A-B.maxpat",
-				"bootpath" : "/Users/gabacheker/Documents/maxliB/o.io.quneo.all",
+				"bootpath" : "/Users/gabacheker/Documents/CNMAT_Work/CNMAT_GITHUB/CNMAT-odot/abstractions/io/o.io.quneo",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.io.quneo.display.helper.large.arrowbutton.1A-B.maxpat",
-				"bootpath" : "/Users/gabacheker/Documents/maxliB/o.io.quneo.all",
+				"bootpath" : "/Users/gabacheker/Documents/CNMAT_Work/CNMAT_GITHUB/CNMAT-odot/abstractions/io/o.io.quneo",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.io.quneo.display.helper.button.A.maxpat",
-				"bootpath" : "/Users/gabacheker/Documents/maxliB/o.io.quneo.all",
+				"bootpath" : "/Users/gabacheker/Documents/CNMAT_Work/CNMAT_GITHUB/CNMAT-odot/abstractions/io/o.io.quneo",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.io.quneo.display.helper.button.B.maxpat",
-				"bootpath" : "/Users/gabacheker/Documents/maxliB/o.io.quneo.all",
+				"bootpath" : "/Users/gabacheker/Documents/CNMAT_Work/CNMAT_GITHUB/CNMAT-odot/abstractions/io/o.io.quneo",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.io.quneo.display.helper.button.C.maxpat",
-				"bootpath" : "/Users/gabacheker/Documents/maxliB/o.io.quneo.all",
+				"bootpath" : "/Users/gabacheker/Documents/CNMAT_Work/CNMAT_GITHUB/CNMAT-odot/abstractions/io/o.io.quneo",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.io.quneo.display.helper.rhombusbutton.maxpat",
-				"bootpath" : "/Users/gabacheker/Documents/maxliB/o.io.quneo.all",
+				"bootpath" : "/Users/gabacheker/Documents/CNMAT_Work/CNMAT_GITHUB/CNMAT-odot/abstractions/io/o.io.quneo",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
@@ -1678,7 +1622,7 @@
 , 			{
 				"name" : "o.collectwithtimeout.maxpat",
 				"bootpath" : "/Users/gabacheker/Documents/maxliB/lib",
-				"patcherrelativepath" : "../lib",
+				"patcherrelativepath" : "../../../../../../maxliB/lib",
 				"type" : "JSON",
 				"implicit" : 1
 			}
@@ -1692,10 +1636,6 @@
 			}
 , 			{
 				"name" : "o.collect.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.union.mxo",
 				"type" : "iLaX"
 			}
  ]
