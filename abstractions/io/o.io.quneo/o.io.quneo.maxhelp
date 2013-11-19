@@ -32,13 +32,15 @@
 				"box" : 				{
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
-					"id" : "obj-29",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
+					"id" : "obj-4",
+					"linecount" : 8,
+					"maxclass" : "o.message",
+					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 113.0, 1155.0, 146.0, 20.0 ],
-					"text" : "o.timetag /time/happened"
+					"patching_rect" : [ 52.896057, 299.812622, 690.0, 114.0 ],
+					"text" : "/pad/b/4/velocity 0.\n/pad/b/4/pressure 0.\n/pad/b/4/x 0.645669\n/pad/b/4/y 0.897638\n/instructions \"first tap 'mode' button, then tap 'pad /a/1' to enable preset 1. Ok to change the velocity settings within preset 1, using the QuNeo Editor.\"\n/manufactuer \"KESUMO, LLC.\" \"Keith McMillen\"\n/product \"Quneo, #K-707\"",
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
 			}
@@ -163,95 +165,6 @@
 				"box" : 				{
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
-					"id" : "obj-24",
-					"maxclass" : "newobj",
-					"numinlets" : 0,
-					"numoutlets" : 0,
-					"patcher" : 					{
-						"fileversion" : 1,
-						"appversion" : 						{
-							"major" : 6,
-							"minor" : 1,
-							"revision" : 3,
-							"architecture" : "x86"
-						}
-,
-						"rect" : [ 50.0, 94.0, 640.0, 480.0 ],
-						"bglocked" : 0,
-						"openinpresentation" : 0,
-						"default_fontsize" : 12.0,
-						"default_fontface" : 0,
-						"default_fontname" : "Arial",
-						"gridonopen" : 0,
-						"gridsize" : [ 15.0, 15.0 ],
-						"gridsnaponopen" : 0,
-						"statusbarvisible" : 2,
-						"toolbarvisible" : 1,
-						"boxanimatetime" : 200,
-						"imprint" : 0,
-						"enablehscroll" : 1,
-						"enablevscroll" : 1,
-						"devicewidth" : 0.0,
-						"description" : "",
-						"digest" : "",
-						"tags" : "",
-						"boxes" : [ 							{
-								"box" : 								{
-									"fontname" : "Arial",
-									"fontsize" : 12.0,
-									"frgb" : 0.0,
-									"id" : "obj-2",
-									"linecount" : 2,
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 41.0, 61.0, 312.0, 33.0 ],
-									"text" : "A bundle like this could be used to set the state of the quneo display"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"fontname" : "Arial",
-									"fontsize" : 12.0,
-									"id" : "obj-23",
-									"linecount" : 135,
-									"maxclass" : "o.message",
-									"numinlets" : 2,
-									"numoutlets" : 1,
-									"outlettype" : [ "" ],
-									"patching_rect" : [ 50.0, 100.000008, 486.0, 1816.0 ],
-									"text" : "/port \"QUNEO\"\n/instructions \"first tap 'mode' button, then tap 'pad /a/1' to enable preset 1. ONLY WORKS IN PRESET 1.\"\n/manufactuer \"KESUMO, LLC\" \"Keith McMillen\"\n/product \"Quneo, #K-707\"\n/button/c/velocity 0\n/button/c/pressure 0\n/button/b/velocity 0\n/button/b/pressure 0\n/button/a/velocity 0\n/button/a/pressure 0\n/slide/4/velocity 0\n/slide/4/pressure 0\n/slide/4/location 0\n/slide/3/velocity 0\n/slide/3/pressure 0\n/slide/3/location 95\n/slide/2/velocity 0\n/slide/2/pressure 0\n/slide/2/location 74\n/slide/1/velocity 0\n/slide/1/pressure 0\n/slide/1/location 87\n/arrowbutton/a/4/velocity 0\n/arrowbutton/a/4/pressure 0\n/arrowbutton/b/4/velocity 0\n/arrowbutton/b/4/pressure 0\n/arrowbutton/a/3/velocity 0\n/arrowbutton/a/3/pressure 0\n/arrowbutton/b/3/velocity 0\n/arrowbutton/b/3/pressure 0\n/arrowbutton/a/2/velocity 0\n/arrowbutton/a/2/pressure 0\n/arrowbutton/b/2/velocity 0\n/arrowbutton/b/2/pressure 0\n/arrowbutton/a/1/velocity 0\n/arrowbutton/a/1/pressure 0\n/arrowbutton/b/1/velocity 0\n/arrowbutton/b/1/pressure 0\n/rotor/b/velocity 0\n/rotor/b/pressure 0\n/rotor/b/direction 1\n/rotor/a/velocity 0\n/rotor/a/pressure 0\n/rotor/a/direction 1\n/rhombus.button/velocity 0\n/rhombus.button/pressure 0\n/slide/a/velocity 0\n/slide/a/pressure 0\n/slide/a/location 18\n/slide/b/velocity 0\n/slide/b/pressure 0\n/slide/b/location 26\n/slide/c/velocity 0\n/slide/c/pressure 0\n/slide/c/location 6\n/slide/d/velocity 0\n/slide/d/pressure 0\n/slide/d/location 0\n/large.arrowbutton/a/1/velocity 0\n/large.arrowbutton/a/1/pressure 0\n/large.arrowbutton/a/2/velocity 0\n/large.arrowbutton/a/2/pressure 0\n/pad/a/1/velocity 0\n/pad/a/1/pressure 0\n/pad/a/1/x 63\n/pad/a/1/y 63\n/large.arrowbutton/b/2/velocity 0\n/large.arrowbutton/b/2/pressure 0\n/large.arrowbutton/b/1/velocity 0\n/large.arrowbutton/b/1/pressure 0\n/longslide/velocity 0\n/longslide/pressure 0\n/longslide/location 123\n/longslide/width 90\n/pad/d/4/velocity 0\n/pad/d/4/pressure 0\n/pad/d/4/x 63\n/pad/d/4/y 63\n/pad/d/3/velocity 0\n/pad/d/3/pressure 0\n/pad/d/3/x 63\n/pad/d/3/y 63\n/pad/d/2/velocity 0\n/pad/d/2/pressure 0\n/pad/d/2/x 63\n/pad/d/2/y 63\n/pad/d/1/velocity 0\n/pad/d/1/pressure 0\n/pad/d/1/x 63\n/pad/d/1/y 63\n/pad/c/1/velocity 0\n/pad/c/1/pressure 0\n/pad/c/1/x 63\n/pad/c/1/y 63\n/pad/c/2/velocity 0\n/pad/c/2/pressure 0\n/pad/c/2/x 63\n/pad/c/2/y 63\n/pad/c/3/velocity 0\n/pad/c/3/pressure 0\n/pad/c/3/x 63\n/pad/c/3/y 63\n/pad/c/4/velocity 0\n/pad/c/4/pressure 0\n/pad/c/4/x 63\n/pad/c/4/y 63\n/pad/b/4/velocity 0\n/pad/b/4/pressure 0\n/pad/b/4/x 62\n/pad/b/4/y 127\n/pad/b/3/velocity 0\n/pad/b/3/pressure 0\n/pad/b/3/x 63\n/pad/b/3/y 63\n/pad/b/2/velocity 0\n/pad/b/2/pressure 0\n/pad/b/2/x 63\n/pad/b/2/y 63\n/pad/b/1/velocity 0\n/pad/b/1/pressure 0\n/pad/b/1/x 63\n/pad/b/1/y 63\n/pad/a/2/velocity 0\n/pad/a/2/pressure 0\n/pad/a/2/x 63\n/pad/a/2/y 63\n/pad/a/3/velocity 0\n/pad/a/3/pressure 0\n/pad/a/3/x 63\n/pad/a/3/y 63\n/pad/a/4/velocity 0\n/pad/a/4/pressure 0\n/pad/a/4/x 64\n/pad/a/4/y 61",
-									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
-								}
-
-							}
- ],
-						"lines" : [  ]
-					}
-,
-					"patching_rect" : [ 24.135496, 525.122498, 219.0, 20.0 ],
-					"saved_object_attributes" : 					{
-						"default_fontface" : 0,
-						"default_fontname" : "Arial",
-						"default_fontsize" : 12.0,
-						"description" : "",
-						"digest" : "",
-						"fontface" : 0,
-						"fontname" : "Arial",
-						"fontsize" : 12.0,
-						"globalpatchername" : "",
-						"tags" : ""
-					}
-,
-					"text" : "p Showing all addresses in one bundle."
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontname" : "Arial",
-					"fontsize" : 12.0,
 					"frgb" : 0.0,
 					"id" : "obj-20",
 					"maxclass" : "comment",
@@ -271,7 +184,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 199.793213, 1243.487061, 150.0, 20.0 ],
+					"patching_rect" : [ 176.187012, 1216.487061, 150.0, 20.0 ],
 					"text" : "<< Resulting Bundle"
 				}
 
@@ -296,13 +209,13 @@
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"id" : "obj-15",
-					"linecount" : 5,
+					"linecount" : 4,
 					"maxclass" : "o.message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 801.916443, 559.122498, 150.0, 74.0 ],
-					"text" : "/pad/a/4/velocity 0.\n/pad/a/4/pressure 0.00787402\n/pad/a/4/x 0.440945\n/pad/a/4/y 0.685039",
+					"patching_rect" : [ 801.916443, 559.122498, 150.0, 60.0 ],
+					"text" : "/pad/a/4/velocity 0.\n/pad/a/4/pressure 0.\n/pad/a/4/x 1.\n/pad/a/4/y 0.",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -358,7 +271,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 738.155273, 680.562256, 543.0, 272.0 ],
+					"patching_rect" : [ 738.155273, 680.562256, 543.0, 248.0 ],
 					"text" : "'Redness' represents velocity.\n\n'Blueness' represents pressure.\n\n'Green things' act in the touch of the device, in the case of range (only on the longSlider) and position ( only on the sliders and pads).\n\n'Yellow things' are the color of 'user interface handles,' responding to click and drag of the mouse.  (green things can't be moused)\n"
 				}
 
@@ -440,31 +353,15 @@
 , 			{
 				"box" : 				{
 					"fontname" : "Arial",
-					"fontsize" : 18.0,
-					"id" : "obj-11",
-					"linecount" : 9,
-					"maxclass" : "o.message",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 78.30719, 309.602417, 611.602783, 187.0 ],
-					"text" : "/pad/a/4/velocity 0.\n/pad/a/4/pressure 0.00787402\n/pad/a/4/x 0.598425\n/pad/a/4/y 0.472441\n/port \"QUNEO\"\n/instructions \"first tap 'mode' button, then tap 'pad /a/1' to enable preset 1. Ok to change the velocity settings within preset 1, using the QuNeo Editor.\"\n/manufactuer \"KESUMO, LLC.\" \"Keith McMillen\"\n/product \"Quneo, #K-707\"",
-					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"id" : "obj-8",
-					"linecount" : 7,
+					"linecount" : 31,
 					"maxclass" : "o.message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 39.516193, 1211.366211, 150.0, 100.0 ],
-					"text" : "/arrowbutton/b/1/velocity 0.0944882\n/arrowbutton/b/1/pressure 0.\n/time/happened 2013-11-14T16:36:25.273923Z",
+					"patching_rect" : [ 26.187012, 1165.366211, 150.0, 422.0 ],
+					"text" : "/pad/b/3/velocity 0.\n/pad/b/3/pressure 0.\n/pad/b/3/x 0.496063\n/pad/b/3/y 0.496063\n/pad/c/3/velocity 0.\n/pad/c/3/pressure 0.\n/pad/c/3/x 0.496063\n/pad/c/3/y 0.496063\n/pad/a/2/velocity 0.\n/pad/a/2/pressure 0.\n/pad/a/2/x 0.496063\n/pad/a/2/y 0.496063\n/pad/c/4/velocity 0.\n/pad/c/4/pressure 0.\n/pad/c/4/x 0.496063\n/pad/c/4/y 0.496063\n/pad/a/4/velocity 0.\n/pad/a/4/pressure 0.\n/pad/a/4/x 0.76378\n/pad/a/4/y 0.480315\n/pad/a/3/velocity 0.\n/pad/a/3/pressure 0.\n/pad/a/3/x 0.645669\n/pad/a/3/y 0.692913\n/pad/b/4/velocity 0.\n/pad/b/4/pressure 0.\n/pad/b/4/x 0.874016\n/pad/b/4/y 1.\n/time/happened 2013-11-18T16:25:08.687919Z",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -533,22 +430,13 @@
 					"name" : "o.io.quneo.display.maxpat",
 					"numinlets" : 1,
 					"numoutlets" : 1,
-					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 1.187012, 552.562256, 736.968262, 581.374939 ]
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 1.186984, 429.562256, 736.968262, 581.374939 ]
 				}
 
 			}
  ],
 		"lines" : [ 			{
-				"patchline" : 				{
-					"destination" : [ "obj-29", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"source" : [ "obj-1", 0 ]
-				}
-
-			}
-, 			{
 				"patchline" : 				{
 					"destination" : [ "obj-15", 1 ],
 					"disabled" : 0,
@@ -586,15 +474,6 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-8", 1 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"source" : [ "obj-29", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
 					"destination" : [ "obj-2", 1 ],
 					"disabled" : 0,
 					"hidden" : 0,
@@ -614,7 +493,7 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-11", 1 ],
+					"destination" : [ "obj-4", 1 ],
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-5", 0 ]
@@ -787,16 +666,16 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "o.io.quneo.maxpat",
-				"bootpath" : "/Users/gabacheker/Documents/CNMAT_Work/CNMAT_GITHUB/CNMAT-odot/abstractions/io/o.io.quneo",
-				"patcherrelativepath" : ".",
+				"name" : "o.collectwithtimeout.maxpat",
+				"bootpath" : "/Users/gabacheker/Documents/maxliB/lib",
+				"patcherrelativepath" : "../../../../../../maxliB/lib",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "o.collectwithtimeout.maxpat",
-				"bootpath" : "/Users/gabacheker/Documents/maxliB/lib",
-				"patcherrelativepath" : "../../../../../../maxliB/lib",
+				"name" : "o.io.quneo.maxpat",
+				"bootpath" : "/Users/gabacheker/Documents/CNMAT_Work/CNMAT_GITHUB/CNMAT-odot/abstractions/io/o.io.quneo",
+				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
@@ -823,11 +702,11 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "o.union.mxo",
+				"name" : "o.collect.mxo",
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "o.collect.mxo",
+				"name" : "o.union.mxo",
 				"type" : "iLaX"
 			}
 , 			{
@@ -836,10 +715,6 @@
 			}
 , 			{
 				"name" : "o.message.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.timetag.mxo",
 				"type" : "iLaX"
 			}
  ]
