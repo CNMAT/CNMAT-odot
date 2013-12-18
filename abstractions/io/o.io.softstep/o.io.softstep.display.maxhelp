@@ -8,7 +8,7 @@
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 32.0, 60.0, 1208.0, 587.0 ],
+		"rect" : [ 21.0, 58.0, 1208.0, 587.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -44,7 +44,7 @@
 							"architecture" : "x86"
 						}
 ,
-						"rect" : [ 25.0, 69.0, 485.0, 194.0 ],
+						"rect" : [ 85.0, 327.0, 485.0, 194.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -200,13 +200,13 @@
 									"fontname" : "Arial",
 									"fontsize" : 12.0,
 									"id" : "obj-4",
-									"linecount" : 6,
+									"linecount" : 7,
 									"maxclass" : "o.message",
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 50.0, 140.0, 380.0, 88.0 ],
-									"text" : "/6/rawlist 0 0 0 0\n/6/normlist 0. 0. 0. 0.\n/6/xy 0. 0.\n/6/horizontal 0.\n/6/vertical 0.\n/6/button false false false false",
+									"patching_rect" : [ 50.0, 140.0, 380.0, 101.0 ],
+									"text" : "/6/rawlist 0 0 0 0\n/6/normlist 0. 0. 0. 0.\n/6/xy 0. 0.\n/6/pressure 0.\n/6/horizontal 0.\n/6/vertical 0.\n/6/button false false false false",
 									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 
@@ -259,7 +259,7 @@
  ]
 					}
 ,
-					"patching_rect" : [ 180.0, 40.0, 147.0, 20.0 ],
+					"patching_rect" : [ 180.0, 60.0, 147.0, 20.0 ],
 					"saved_object_attributes" : 					{
 						"default_fontface" : 0,
 						"default_fontname" : "Arial",
@@ -296,13 +296,13 @@
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"id" : "obj-8",
-					"linecount" : 71,
+					"linecount" : 81,
 					"maxclass" : "o.message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 720.0, 50.0, 380.0, 959.0 ],
-					"text" : "/6/rawlist 0 0 0 0\n/6/normlist 0. 0. 0. 0.\n/6/xy 0. 0.\n/6/horizontal 0.\n/6/vertical 0.\n/6/button false false false false\n/3/rawlist 0 0 0 0\n/3/normlist 0. 0. 0. 0.\n/3/xy 0. 0.\n/3/horizontal 0.\n/3/vertical 0.\n/3/button false false false false\n/1/rawlist 0 0 0 0\n/1/normlist 0. 0. 0. 0.\n/1/xy 0. 0.\n/1/horizontal 0.\n/1/vertical 0.\n/1/button false false false false\n/7/rawlist 0 0 0 0\n/7/normlist 0. 0. 0. 0.\n/7/xy 0. 0.\n/7/horizontal 0.\n/7/vertical 0.\n/7/button false false false false\n/2/rawlist 0 0 0 0\n/2/normlist 0. 0. 0. 0.\n/2/xy 0. 0.\n/2/horizontal 0.\n/2/vertical 0.\n/2/button false false false false\n/8/rawlist 0 0 0 0\n/8/normlist 0. 0. 0. 0.\n/8/xy 0. 0.\n/8/horizontal 0.\n/8/vertical 0.\n/8/button false false false false\n/9/rawlist 0 0 0 0\n/9/normlist 0. 0. 0. 0.\n/9/xy 0. 0.\n/9/horizontal 0.\n/9/vertical 0.\n/9/button false false false false\n/4/rawlist 0 0 0 0\n/4/normlist 0. 0. 0. 0.\n/4/xy 0. 0.\n/4/horizontal 0.\n/4/vertical 0.\n/4/button false false false false\n/10/rawlist 0 0 0 0\n/10/normlist 0. 0. 0. 0.\n/10/xy 0. 0.\n/10/horizontal 0.\n/10/vertical 0.\n/10/button false false false false\n/5/rawlist 0 0 0 0\n/5/normlist 0. 0. 0. 0.\n/5/xy 0. 0.\n/5/horizontal 0.\n/5/vertical 0.\n/5/button false false false false\n/diamond/left/button 0.\n/diamond/right/pressure 0.\n/diamond/forward/pressure 0.\n/diamond/backward/pressure 0.\n/diamond/backward/button \"released\"\n/diamond/right/button \"released\"\n/diamond/forward/button \"released\"\n/diamond/left/pressure \"released\"\n/Instruction \"Push on 4 corners of any pad for corresponding data\"\n/Manufacturer \"Keith McMillen Instruments\"\n/Product \"SoftStep\"",
+					"patching_rect" : [ 720.0, 50.0, 380.0, 1093.0 ],
+					"text" : "/6/rawlist 0 0 0 0\n/6/normlist 0. 0. 0. 0.\n/6/xy 0. 0.\n/6/pressure 0.\n/6/horizontal 0.\n/6/vertical 0.\n/6/button false false false false\n/1/rawlist 0 0 0 0\n/1/normlist 0. 0. 0. 0.\n/1/xy 0. 0.\n/1/pressure 0.\n/1/horizontal 0.\n/1/vertical 0.\n/1/button false false false false\n/10/rawlist 0 0 0 0\n/10/normlist 0. 0. 0. 0.\n/10/xy 0. 0.\n/10/pressure 0.\n/10/horizontal 0.\n/10/vertical 0.\n/10/button false false false false\n/9/rawlist 0 0 0 0\n/9/normlist 0. 0. 0. 0.\n/9/xy 0. 0.\n/9/pressure 0.\n/9/horizontal 0.\n/9/vertical 0.\n/9/button false false false false\n/8/rawlist 0 0 0 0\n/8/normlist 0. 0. 0. 0.\n/8/xy 0. 0.\n/8/pressure 0.\n/8/horizontal 0.\n/8/vertical 0.\n/8/button false false false false\n/7/rawlist 0 0 0 0\n/7/normlist 0. 0. 0. 0.\n/7/xy 0. 0.\n/7/pressure 0.\n/7/horizontal 0.\n/7/vertical 0.\n/7/button false false false false\n/3/rawlist 0 0 0 0\n/3/normlist 0. 0. 0. 0.\n/3/xy 0. 0.\n/3/pressure 0.\n/3/horizontal 0.\n/3/vertical 0.\n/3/button false false false false\n/2/rawlist 0 0 0 0\n/2/normlist 0. 0. 0. 0.\n/2/xy 0. 0.\n/2/pressure 0.\n/2/horizontal 0.\n/2/vertical 0.\n/2/button false false false false\n/4/rawlist 0 0 0 0\n/4/normlist 0. 0. 0. 0.\n/4/xy 0. 0.\n/4/pressure 0.\n/4/horizontal 0.\n/4/vertical 0.\n/4/button false false false false\n/pedal 0.0495868\n/5/rawlist 0 0 0 0\n/5/normlist 0. 0. 0. 0.\n/5/xy 0. 0.\n/5/horizontal 0.\n/5/vertical 0.\n/5/button false false false false\n/diamond/left/button 0.\n/diamond/right/pressure 0.\n/diamond/forward/pressure 0.\n/diamond/backward/pressure 0.\n/diamond/backward/button \"released\"\n/diamond/right/button \"released\"\n/diamond/forward/button \"released\"\n/diamond/left/pressure \"released\"\n/Instruction \"Push on 4 corners of any pad for corresponding data\"\n/Manufacturer \"Keith McMillen Instruments\"\n/Product \"SoftStep\"",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -348,13 +348,13 @@
 									"fontname" : "Arial",
 									"fontsize" : 12.0,
 									"id" : "obj-7",
-									"linecount" : 71,
+									"linecount" : 80,
 									"maxclass" : "o.message",
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 30.0, 50.0, 380.0, 959.0 ],
-									"text" : "/6/rawlist 0 0 0 0\n/6/normlist 0. 0. 0. 0.\n/6/xy 0. 0.\n/6/horizontal 0.\n/6/vertical 0.\n/6/button false false false false\n/3/rawlist 0 0 0 0\n/3/normlist 0. 0. 0. 0.\n/3/xy 0. 0.\n/3/horizontal 0.\n/3/vertical 0.\n/3/button false false false false\n/1/rawlist 0 0 0 0\n/1/normlist 0. 0. 0. 0.\n/1/xy 0. 0.\n/1/horizontal 0.\n/1/vertical 0.\n/1/button false false false false\n/7/rawlist 0 0 0 0\n/7/normlist 0. 0. 0. 0.\n/7/xy 0. 0.\n/7/horizontal 0.\n/7/vertical 0.\n/7/button false false false false\n/2/rawlist 0 0 0 0\n/2/normlist 0. 0. 0. 0.\n/2/xy 0. 0.\n/2/horizontal 0.\n/2/vertical 0.\n/2/button false false false false\n/8/rawlist 0 0 0 0\n/8/normlist 0. 0. 0. 0.\n/8/xy 0. 0.\n/8/horizontal 0.\n/8/vertical 0.\n/8/button false false false false\n/9/rawlist 0 0 0 0\n/9/normlist 0. 0. 0. 0.\n/9/xy 0. 0.\n/9/horizontal 0.\n/9/vertical 0.\n/9/button false false false false\n/4/rawlist 0 0 0 0\n/4/normlist 0. 0. 0. 0.\n/4/xy 0. 0.\n/4/horizontal 0.\n/4/vertical 0.\n/4/button false false false false\n/10/rawlist 0 0 0 0\n/10/normlist 0. 0. 0. 0.\n/10/xy 0. 0.\n/10/horizontal 0.\n/10/vertical 0.\n/10/button false false false false\n/5/rawlist 0 0 0 0\n/5/normlist 0. 0. 0. 0.\n/5/xy 0. 0.\n/5/horizontal 0.\n/5/vertical 0.\n/5/button false false false false\n/diamond/left/button 0.\n/diamond/right/pressure 0.\n/diamond/forward/pressure 0.\n/diamond/backward/pressure 0.\n/diamond/backward/button \"released\"\n/diamond/right/button \"released\"\n/diamond/forward/button \"released\"\n/diamond/left/pressure \"released\"\n/Instruction \"Push on 4 corners of any pad for corresponding data\"\n/Manufacturer \"Keith McMillen Instruments\"\n/Product \"SoftStep\"",
+									"patching_rect" : [ 30.0, 50.0, 380.0, 1080.0 ],
+									"text" : "/7/rawlist 0 0 0 0\n/7/normlist 0. 0. 0. 0.\n/7/xy 0. 0.\n/7/pressure 0.\n/7/horizontal 0.\n/7/vertical 0.\n/7/button false false false false\n/6/rawlist 0 0 0 0\n/6/normlist 0. 0. 0. 0.\n/6/xy 0. 0.\n/6/pressure 0.\n/6/horizontal 0.\n/6/vertical 0.\n/6/button false false false false\n/1/rawlist 0 0 0 0\n/1/normlist 0. 0. 0. 0.\n/1/xy 0. 0.\n/1/pressure 0.\n/1/horizontal 0.\n/1/vertical 0.\n/1/button false false false false\n/3/rawlist 0 0 0 0\n/3/normlist 0. 0. 0. 0.\n/3/xy 0. 0.\n/3/pressure 0.\n/3/horizontal 0.\n/3/vertical 0.\n/3/button false false false false\n/2/rawlist 0 0 0 0\n/2/normlist 0. 0. 0. 0.\n/2/xy 0. 0.\n/2/pressure 0.\n/2/horizontal 0.\n/2/vertical 0.\n/2/button false false false false\n/4/rawlist 0 0 0 0\n/4/normlist 0. 0. 0. 0.\n/4/xy 0. 0.\n/4/pressure 0.\n/4/horizontal 0.\n/4/vertical 0.\n/4/button false false false false\n/9/rawlist 0 0 0 0\n/9/normlist 0. 0. 0. 0.\n/9/xy 0. 0.\n/9/pressure 0.\n/9/horizontal 0.\n/9/vertical 0.\n/9/button false false false false\n/8/rawlist 0 0 0 0\n/8/normlist 0. 0. 0. 0.\n/8/xy 0. 0.\n/8/pressure 0.\n/8/horizontal 0.\n/8/vertical 0.\n/8/button false false false false\n/pedal 0.0495868\n/10/rawlist 0 0 0 0\n/10/normlist 0. 0. 0. 0.\n/10/xy 0. 0.\n/10/horizontal 0.\n/10/vertical 0.\n/10/button false false false false\n/5/rawlist 0 0 0 0\n/5/normlist 0. 0. 0. 0.\n/5/xy 0. 0.\n/5/horizontal 0.\n/5/vertical 0.\n/5/button false false false false\n/diamond/left/button 0.\n/diamond/right/pressure 0.\n/diamond/forward/pressure 0.\n/diamond/backward/pressure 0.\n/diamond/backward/button \"released\"\n/diamond/right/button \"released\"\n/diamond/forward/button \"released\"\n/diamond/left/pressure \"released\"\n/Instruction \"Push on 4 corners of any pad for corresponding data\"\n/Manufacturer \"Keith McMillen Instruments\"\n/Product \"SoftStep\"",
 									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 
@@ -384,7 +384,7 @@
  ]
 					}
 ,
-					"patching_rect" : [ 340.0, 40.0, 72.0, 20.0 ],
+					"patching_rect" : [ 340.0, 60.0, 72.0, 20.0 ],
 					"saved_object_attributes" : 					{
 						"default_fontface" : 0,
 						"default_fontname" : "Arial",
@@ -462,7 +462,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 30.0, 70.0, 657.0, 155.0 ]
+					"patching_rect" : [ 30.0, 90.0, 657.0, 155.0 ]
 				}
 
 			}
@@ -508,6 +508,7 @@
 					"destination" : [ "obj-12", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
+					"midpoints" : [ 39.5, 49.5, 189.5, 49.5 ],
 					"source" : [ "obj-2", 0 ]
 				}
 
@@ -517,6 +518,17 @@
 					"destination" : [ "obj-14", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
+					"midpoints" : [ 39.5, 49.5, 349.5, 49.5 ],
+					"source" : [ "obj-2", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-8", 1 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"midpoints" : [ 39.5, 44.5, 1090.5, 44.5 ],
 					"source" : [ "obj-2", 0 ]
 				}
 
