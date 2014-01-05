@@ -528,9 +528,9 @@ void *osched_new(t_symbol *s, short argc, t_atom *argv)
     
 }
 
-int oschedule_setup(void)
+int setup_o0x2eschedule(void)
 {
-    t_class *c = class_new(gensym("oschedule"), (t_newmethod)osched_new, (t_method)osched_free, (short)sizeof(t_osched), 0L, A_GIMME, 0);
+    t_class *c = class_new(gensym("o.schedule"), (t_newmethod)osched_new, (t_method)osched_free, (short)sizeof(t_osched), 0L, A_GIMME, 0);
     
 	class_addmethod(c, (t_method)osched_fullPacket, gensym("FullPacket"), A_GIMME, 0);
 	class_addmethod(c, (t_method)osched_reset, gensym("reset"), 0);

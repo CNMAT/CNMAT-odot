@@ -604,9 +604,9 @@ void *omenu_new(t_symbol *msg, short argc, t_atom *argv)
     return (void *)x;
 }
 
-void omenu_setup(void)
+void setup_o0x2emenu(void)
 {
-    omenu_class = class_new(gensym("omenu"), (t_newmethod)omenu_new, (t_method)omenu_free, sizeof(t_omenu), 0, A_GIMME, 0);
+    omenu_class = class_new(gensym("o.menu"), (t_newmethod)omenu_new, (t_method)omenu_free, sizeof(t_omenu), 0, A_GIMME, 0);
     
     class_addmethod(omenu_class, (t_method)omenu_selectionClick, gensym("selection"), A_DEFFLOAT, 0);
     class_addmethod(omenu_class, (t_method)omenu_dropdownFocusOut, gensym("focusout"), A_CANT, 0);

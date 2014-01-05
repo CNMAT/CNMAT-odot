@@ -2276,9 +2276,9 @@ void *omessage_new(t_symbol *msg, short argc, t_atom *argv)
     return (void *)x;
 }
 
-void omessage_setup(void) {
+void setup_o0x2emessage(void) {
     
-    omax_pd_class_new(omessage_class, gensym("omessage"), (t_newmethod)omessage_new, (t_method)omessage_free, sizeof(t_omessage),  CLASS_NOINLET, A_GIMME, 0);
+    omax_pd_class_new(omessage_class, gensym("o.message"), (t_newmethod)omessage_new, (t_method)omessage_free, sizeof(t_omessage),  CLASS_NOINLET, A_GIMME, 0);
     
     class_addmethod(omessage_class->class, (t_method)omessage_textbuf,gensym("textbuf"), A_GIMME, 0);
     class_addmethod(omessage_class->class, (t_method)omessage_insideclick_callback, gensym("insideclick"), 0);
