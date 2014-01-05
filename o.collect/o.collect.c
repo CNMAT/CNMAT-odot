@@ -220,8 +220,8 @@ void *ocoll_new(t_symbol *msg, short argc, t_atom *argv){
 	return(x);
 }
 
-int ocollect_setup(void){
-	t_class *c = class_new(gensym("ocollect"), (t_newmethod)ocoll_new, (t_method)ocoll_free, sizeof(t_ocoll), 0L, A_GIMME, 0);
+int setup_0x2ecollect(void){
+	t_class *c = class_new(gensym("o.collect"), (t_newmethod)ocoll_new, (t_method)ocoll_free, sizeof(t_ocoll), 0L, A_GIMME, 0);
 
 	class_addmethod(c, (t_method)ocoll_fullPacket, gensym("FullPacket"), A_GIMME, 0);
 //	class_addmethod(c, (t_method)ocoll_doc, "doc", 0);

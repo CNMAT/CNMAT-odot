@@ -324,21 +324,21 @@ void *ovar_new(t_symbol *msg, short argc, t_atom *argv)
 }
 
 #ifdef ODOT_UNION
-int ounion_setup(void)
+int setup_o0x2eunion(void)
 {
-    t_symbol *name = gensym("ounion");
+    t_symbol *name = gensym("o.union");
 #elif defined ODOT_INTERSECTION
-int ointersection_setup(void)
+int setup_o0x2eintersection(void)
 {
-    t_symbol *name = gensym("ointersection");
+    t_symbol *name = gensym("o.intersection");
 #elif defined ODOT_DIFFERENCE
-int odifference_setup(void)
+int setup_o0x2edifference(void)
 {
-    t_symbol *name = gensym("odifference");
+    t_symbol *name = gensym("o.difference");
 #else
-int ovar_setup(void)
+int setup_o0x2evar(void)
 {
-    t_symbol *name = gensym("ovar");
+    t_symbol *name = gensym("o.var");
 #endif
     omax_pd_class_new(ovar_class, name, (t_newmethod)ovar_new, (t_method)ovar_free, sizeof(t_ovar),  CLASS_NOINLET, A_GIMME, 0);
     

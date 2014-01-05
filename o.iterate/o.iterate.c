@@ -100,9 +100,9 @@ void *oiterate_new(t_symbol *msg, short argc, t_atom *argv)
 	return x;
 }
 
-int oiterate_setup(void)
+int setup_o0x2eiterate(void)
 {
-	t_class *c = class_new(gensym("oiterate"), (t_newmethod)oiterate_new, (t_method)oiterate_free, sizeof(t_oiterate), 0L, A_GIMME, 0);
+	t_class *c = class_new(gensym("o.iterate"), (t_newmethod)oiterate_new, (t_method)oiterate_free, sizeof(t_oiterate), 0L, A_GIMME, 0);
 	//class_addmethod(c, (method)oiterate_fullPacket, "FullPacket", A_LONG, A_LONG, 0);
 	class_addmethod(c, (t_method)oiterate_fullPacket, gensym("FullPacket"), A_GIMME, 0);
 	class_addmethod(c, (t_method)oiterate_doc, gensym("doc"), 0);

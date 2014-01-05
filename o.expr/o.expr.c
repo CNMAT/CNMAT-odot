@@ -38,11 +38,8 @@
 #endif
 
 #if !defined(OCOND) && !defined(OWHEN) && !defined(OIF) && !defined(OUNLESS)
-#ifdef OMAX_PD_VERSION
-#define OMAX_DOC_NAME "oexpr"
-#else
+
 #define OMAX_DOC_NAME "o.expr"
-#endif
 #define OMAX_DOC_SHORT_DESC "Evaluate a C-like expression containing OSC addresses."
 #define OMAX_DOC_LONG_DESC "When it reveives a packet, o.expr substitutes any OSC addresses contained in the expression for the values to which they are bound in the incoming packet.  The expression is then evaluated and the resulting bundle, containing any side effects of the expression, is output."
 #define OMAX_DOC_INLETS_DESC (char *[]){"OSC packet containing addresses that the expression will be applied to."}
@@ -515,6 +512,9 @@ void *oexpr_new(t_symbol *msg, short argc, t_atom *argv){
 				OSC_PROFILE_TIMER_STOP(foo);
 				OSC_PROFILE_TIMER_PRINTF(foo);
 				OSC_PROFILE_TIMER_SNPRINTF(foo, buff);
+                
+                post("%s %s\n", __func__, buf);
+
 #ifdef __OSC_PROFILE__
 				post("%s\n", buff);
 #endif
@@ -575,15 +575,15 @@ void *oexpr_new(t_symbol *msg, short argc, t_atom *argv){
 }
 
 #if defined (OIF)
-int oif_setup(void)
+int setup_o0x2eif(void)
 #elif defined (OUNLESS)
-int ounless_setup(void)
+int setup_o0x2eunless(void)
 #elif defined (OWHEN)
-int owhen_setup(void)
+int setup_o0x2ewhen(void)
 #elif defined (OCOND)
-int ocond_setup(void)
+int setup_o0x2econd(void)
 #else
-int oexpr_setup(void)
+int setup_o0x2eexpr(void)
 #endif
 {
 	t_class *c = class_new(gensym(NAME), (t_newmethod)oexpr_new, (t_method)oexpr_free, sizeof(t_oexpr), 0L, A_GIMME, 0);
@@ -593,7 +593,7 @@ int oexpr_setup(void)
 //	class_addmethod(c, (t_method)oexpr_assist, gensym("assist"), A_CANT, 0);
 	class_addmethod(c, (t_method)oexpr_bang, gensym("bang"), 0);
     
-	class_addmethod(c, (t_method)oexpr_postExprIR, gensym("post-expr-ir"), 0);
+//	class_addmethod(c, (t_method)oexpr_postExprIR, gensym("post-expr-ir"), 0);
 
 	class_addmethod(c, (t_method)oexpr_doc, gensym("doc"), 0);
 	class_addmethod(c, (t_method)oexpr_doc_func, gensym("doc-func"), A_GIMME, 0);
