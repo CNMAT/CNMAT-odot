@@ -134,6 +134,8 @@ typedef struct _omessage {
     t_glist     *glist; //the canvas heirarchy
     
     char        *text;
+    long        textlen;
+
     char        *hex;
     char        *tk_text;
     
@@ -176,11 +178,17 @@ typedef struct _omessage {
 	void **proxy;
 	long inlet;
     
-    void *bndl; // this should be a t_osc_bndl
-	int bndltype;
+    //new version
+    int newbndl;
+	t_osc_bndl_u *bndl_u;
+	t_osc_bndl_s *bndl_s;
+	int bndl_has_subs;
+	int bndl_has_been_checked_for_subs;
+    
 	t_osc_parser_subst *substitutions;
 	long nsubs;
 
+    int     in_new_flag;
 	//t_jrgba frame_color, background_color, text_color;
     
 } t_omessage;
@@ -284,9 +292,11 @@ void omessage_doFullPacket(t_omessage *x, long len, char *ptr)
 	memcpy(copyptr, ptr, len);
 	t_osc_bndl_s *b = osc_bundle_s_alloc(copylen, copyptr);
 	omessage_newBundle(x, NULL, b);
-
-	//jbox_redraw((t_jbox *)x);
+#ifdef OMAX_PD_VERSION
+	jbox_redraw((t_jbox *)x);
+#else
 	qelem_set(x->qelem);
+#endif
 }
 
 void omessage_newBundle(t_omessage *x, t_osc_bndl_u *bu, t_osc_bndl_s *bs)
@@ -323,11 +333,13 @@ void omessage_clearBundles(t_omessage *x)
 		x->nsubs = 0;
 	}
 	*/
+#ifndef OMAX_PD_VERSION
 	if(x->text){
 		x->textlen = 0;
 		osc_mem_free(x->text);
 		x->text = NULL;
 	}
+#endif
 	critical_exit(x->lock);
 }
 
@@ -353,10 +365,9 @@ void omessage_output_bundle(t_omessage *x)
 	omax_util_outletOSC(x->outlet, OSC_HEADER_SIZE, buf);
 }
 
-#ifndef OMAX_PD_VERSION
-void omessage_paint(t_omessage *x, t_object *patcherview)
+void omessage_bundle2text(t_omessage *x)
 {
-	critical_enter(x->lock);
+    critical_enter(x->lock);
 	if(x->newbndl && x->bndl_s){
 		long len = osc_bundle_s_getLen(x->bndl_s);
 		char ptr[len];
@@ -375,17 +386,18 @@ void omessage_paint(t_omessage *x, t_object *patcherview)
 		if(buf[bufpos - 2] == '\n'){
 			buf[bufpos - 2] = '\0';
 		}
+#ifndef OMAX_PD_VERSION
 		critical_enter(x->lock);
 		if(x->text){
 			osc_mem_free(x->text);
 		}
 		x->textlen = bufpos;
-		x->text = buf;
+        x->text = buf;
 		critical_exit(x->lock);
-#ifdef OMAX_PD_VERSION
-		omessage_resetText(x, buf);
+        object_method(jbox_get_textfield((t_object *)x), gensym("settext"), buf);
 #else
-		object_method(jbox_get_textfield((t_object *)x), gensym("settext"), buf);
+        omessage_resetText(x, buf);
+
 #endif
 		if(buf){
 			//osc_mem_free(buf);
@@ -393,6 +405,14 @@ void omessage_paint(t_omessage *x, t_object *patcherview)
 		x->newbndl = 0;
 	}
 	critical_exit(x->lock);
+}
+
+#ifndef OMAX_PD_VERSION
+void omessage_paint(t_omessage *x, t_object *patcherview)
+{
+	
+    omessage_bundle2text(x);
+    
 	t_rect rect;
 	t_jgraphics *g = (t_jgraphics *)patcherview_get_jgraphics(patcherview);
 	jbox_get_rect_for_view((t_object *)x, patcherview, &rect);
@@ -683,7 +703,11 @@ void omessage_gettext(t_omessage *x)
 	osc_bundle_u_serialize(bndl_u, &bndl_s_len, &bndl_s_ptr);
 	t_osc_bndl_s *bndl_s = osc_bundle_s_alloc(bndl_s_len, bndl_s_ptr);
 	omessage_newBundle(x, bndl_u, bndl_s);
+#ifdef OMAX_PD_VERSION
+	jbox_redraw((t_jbox *)x);
+#else
 	qelem_set(x->qelem);
+#endif
 	/*
 	if(size > 2){
 		int i;
@@ -1006,8 +1030,11 @@ void omessage_anything(t_omessage *x, t_symbol *msg, short argc, t_atom *argv)
 		//omessage_processAtoms(x, ac, av);
 		break;
 	}
+#ifdef OMAX_PD_VERSION
+	jbox_redraw((t_jbox *)x);
+#else
 	qelem_set(x->qelem);
-	//jbox_redraw((t_jbox *)x);
+#endif
 }
 
 void omessage_set(t_omessage *x, t_symbol *s, long ac, t_atom *av)
@@ -1169,8 +1196,12 @@ void omessage_setTextFromString(t_omessage *x, char *str)
 
 void omessage_setHexFromText(t_omessage *x, char *str)
 {
-//    int length = strlen(x->text);
+    
     memset(x->hex, '\0', OMAX_PD_MAXSTRINGSIZE*2);
+
+    int length = strlen(str);
+    if(length == 0)
+        return;
     
 //    post("%s %s %d", __func__, str, strlen(str));
     
@@ -1653,9 +1684,18 @@ static void omessage_getrect(t_gobj *z, t_glist *glist,int *xp1, int *yp1, int *
     *yp2 = y2;
 }
 
+
+// probably do like in new max version: make clock tick delay so only redraw once per frame rate
+// i.e. and only redraw if something has changed!
 void omessage_drawElements(t_omessage *x, t_glist *glist, int width2, int height2, int firsttime)
 {
-//    post("%s %d\n", __func__, firsttime);
+    if(x->in_new_flag)
+        return;
+
+    printf("%s %p %d\n", __func__, x, __LINE__);
+    omessage_bundle2text(x);
+    
+    post("%s %d\n", __func__, firsttime);
     int x1, y1, x2, y2;
     omessage_getrect((t_gobj *)x, glist, &x1, &y1, &x2, &y2);
     int cx1 = x1;// - 2;
@@ -1672,7 +1712,7 @@ void omessage_drawElements(t_omessage *x, t_glist *glist, int width2, int height
     {
         if (firsttime)
         {
-//            post("%s drawing firsttime", __func__);
+            post("%s drawing firsttime", __func__);
             sys_vgui("namespace eval ::%s [list set canvas%lxBUTTONBINDING [bind %s <Button-1>]] \n", x->tcl_namespace, glist_getcanvas(x->glist), x->canvas_id);
             sys_vgui("namespace eval ::%s [list set canvas%lxKEYBINDING [bind %s <Key>]] \n", x->tcl_namespace, glist_getcanvas(x->glist), x->canvas_id);
             sys_vgui("namespace eval ::%s [list set canvas%lxSCROLLBINDING [bind %s <MouseWheel>]] \n", x->tcl_namespace, glist_getcanvas(x->glist), x->canvas_id);
@@ -1967,14 +2007,14 @@ static void omessage_save(t_gobj *z, t_binbuf *b)
      */
     
     t_omessage *x = (t_omessage *)z;
+
     omessage_setHexFromText(x, x->text);
-
-    post("%s %s", __func__, x->text);
-
+    
+    
     if(!x->firsttime && glist_getcanvas(x->glist)->gl_editor)
         omessage_pdnofocus_callback(x);
     
-    binbuf_addv(b, "ssiisiis", gensym("#X"),gensym("obj"),(t_int)x->ob.te_xpix, (t_int)x->ob.te_ypix, gensym("omessage"), x->width, x->height, gensym("binhex"));
+    binbuf_addv(b, "ssiisiis", gensym("#X"),gensym("obj"),(t_int)x->ob.te_xpix, (t_int)x->ob.te_ypix, gensym("o.message"), x->width, x->height, gensym("binhex"));
     
     long chunksize = 32;
     char buf[chunksize+3];
@@ -1999,6 +2039,8 @@ static void omessage_save(t_gobj *z, t_binbuf *b)
         buf[i+2] = x->hex[i + (k*chunksize) ];
     }
     binbuf_addv(b, "s", gensym(buf));
+    
+    post("%s binbuf %s", __func__, buf);
     
     binbuf_addsemi(b);
     
@@ -2033,6 +2075,7 @@ void omessage_free(t_omessage *x)
             pd_free(x->proxy[1]);
             free(x->proxy);
         }
+        /*
         if(x->bndl){
             switch(x->bndltype){
                 case OMESSAGE_S:
@@ -2043,6 +2086,10 @@ void omessage_free(t_omessage *x)
                     break;
             }
         }
+         */
+        
+        omessage_clearBundles(x);
+        
         if(x->substitutions){
             t_osc_parser_subst *s = x->substitutions;
             while(s){
@@ -2065,7 +2112,9 @@ void *omessage_new(t_symbol *msg, short argc, t_atom *argv)
     t_omessage *x = (t_omessage *)pd_new(omessage_class->class);
     if(x)
     {
-//        printf("%s %p\n", __func__, x);
+        printf("%s %p %d\n", __func__, x, __LINE__);
+     
+        x->in_new_flag = 1;
         
         x->glist = (t_glist *)canvas_getcurrent();
         
@@ -2077,8 +2126,13 @@ void *omessage_new(t_symbol *msg, short argc, t_atom *argv)
         x->proxy[0] = proxy_new((t_object *)x, 0, &(x->inlet), omessage_proxy_class);
         x->proxy[1] = proxy_new((t_object *)x, 1, &(x->inlet), omessage_proxy_class);
         
-        x->bndl = NULL;
-        x->substitutions = NULL;
+        x->bndl_u = NULL;
+		x->bndl_s = NULL;
+		x->newbndl = 0;
+		x->textlen = 0;
+        
+        x->substitutions = NULL; //maybe not used now?
+        
         critical_new(&(x->lock));
         //        x->qelem = qelem_new((t_object *)x, (method)omessage_refresh);
         
@@ -2271,6 +2325,9 @@ void *omessage_new(t_symbol *msg, short argc, t_atom *argv)
         x->selected = 0;
         x->editmode = glist_getcanvas(x->glist)->gl_edit;
         x->textediting = 0;
+        
+        x->in_new_flag = 0;
+        printf("%s %p %d\n", __func__, x, __LINE__);
         
     }
     return (void *)x;
