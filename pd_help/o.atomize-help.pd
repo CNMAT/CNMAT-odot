@@ -1,0 +1,34 @@
+#N canvas 329 91 806 467 10;
+#X text 54 98 o.atomize does pattern matching on addresses contained
+in OSC packets. All messages in a bundle with addresses that match
+an address specified as an argument to o.atomize are bundled together
+and sent out the corresponding outlet with their addresses kept in
+tact and as Max messages. With no arguments \, o.atomize simply iterates
+over the messages in a bundle sending them out as Max messages.;
+#X text 53 61 Dispatch OSC messages according to an address hierarchy
+and convert them to Max messages.;
+#X text 0 -3 -;
+#X obj 56 395 print;
+#X floatatom 440 243 5 0 0 0 - - -;
+#X obj 440 375 print left;
+#X obj 561 375 print middle;
+#X obj 683 375 print right;
+#X text 50 237 with no arguments \, o.atomize unpacks the bundle and
+outputs each message as a Max message in the order they appear in the
+bundle.;
+#X obj 55 34 o.atomize;
+#X obj 56 291 o.message 149 49 binhex b#2F6D7973796E74682F322F6672657120
+b#3434302E0A2F6D7973796E74682F322F b#6761696E20302E350A2F6E6164612022
+b#7269656E22;
+#X obj 440 271 o.message 149 49 binhex b#2F6D7973796E74682F322F6672657120
+b#3434302E0A2F6D7973796E74682F322F b#6761696E20222431220A2F6E61646120
+b#227269656E22;
+#X obj 440 344 o.atomize /mysynth/2/freq /mysynth/2/gain;
+#X obj 56 359 o.atomize;
+#X connect 4 0 11 0;
+#X connect 10 0 13 0;
+#X connect 11 0 12 0;
+#X connect 12 0 5 0;
+#X connect 12 1 6 0;
+#X connect 12 2 7 0;
+#X connect 13 0 3 0;

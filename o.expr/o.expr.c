@@ -106,6 +106,8 @@ void *oexpr_class;
 
 void oexpr_output_bundle(t_oexpr *x);
 
+
+
 //void oexpr_fullPacket(t_oexpr *x, long len, long ptr)
 void oexpr_fullPacket(t_oexpr *x, t_symbol *msg, int argc, t_atom *argv)
 {
@@ -476,15 +478,18 @@ void *oexpr_new(t_symbol *msg, short argc, t_atom *argv){
                         break;
                     case A_SYM:
 					{
-                        strcpy(symbuf[i], atom_getsymbol(argv + i)->s_name);
+                        //strcpy(symbuf[i], atom_getsymbol(argv + i)->s_name);
 
-                        omax_util_hashBrackets2Curlies(symbuf[i]);
+                        //omax_util_hashBrackets2Curlies(symbuf[i]);
                                                 
-						char *s = symbuf[i];
-						int len = strlen(s); // null byte
-						int j;
-						for(j = 0; j < len; j++){
-                                                                                                            //<< check this for pd version
+						//char *s = symbuf[i];
+                        
+                        char *s = atom_getsym(argv + i)->s_name;
+                        long len = strlen(s); // null byte
+
+                        post("arg: %d A_SYM %s %ld chars", i, s, len);
+						long j;
+						for(j = 0; j < len; j++){  //<< check this for pd version
 							if(s[j] == '$'){
 								if((j + 1) < len){
 									if((s[j + 1] <= 47 || s[j + 1] >= 58)){
@@ -499,32 +504,32 @@ void *oexpr_new(t_symbol *msg, short argc, t_atom *argv){
 								}
 							}else{
 								*ptr++ = s[j];
+                                post("char %d: %c\n", j, s[j]);
 							}
 						}
 						*ptr++ = ' ';
 					}
-                        break;
+                    break;
 				}
 			}
 			if(1){//if(!haspound){
 				OSC_PROFILE_TIMER_START(foo);
-				int ret = osc_expr_parser_parseExpr(buf, &f);
+				t_osc_err ret = osc_expr_parser_parseExpr(buf, &f);
 				OSC_PROFILE_TIMER_STOP(foo);
 				OSC_PROFILE_TIMER_PRINTF(foo);
 				OSC_PROFILE_TIMER_SNPRINTF(foo, buff);
-                
-                post("%s %s\n", __func__, buf);
-
+                post("%s %s error: %s\n", __func__, buf, osc_error_string(ret));
+ 
 #ifdef __OSC_PROFILE__
 				post("%s\n", buff);
 #endif
 				if(!f || ret){
 					object_error((t_object *)x, "error parsing %s\n", buf);
 //					return NULL;  //<< avioding bogus object
-                    x->expr = NULL;
-				} else {
+                    return NULL;
+				} //else {
                     x->expr = f;
-                }
+                //}
 			}else{
 				x->expr = NULL;
 			}
@@ -595,6 +600,9 @@ int setup_o0x2eexpr(void)
     
 //	class_addmethod(c, (t_method)oexpr_postExprIR, gensym("post-expr-ir"), 0);
 
+    class_addmethod(c, (t_method)oexpr_postExprAST, gensym("post-ast"), 0);
+
+    
 	class_addmethod(c, (t_method)oexpr_doc, gensym("doc"), 0);
 	class_addmethod(c, (t_method)oexpr_doc_func, gensym("doc-func"), A_GIMME, 0);
 	class_addmethod(c, (t_method)oexpr_doc_func, gensym("doc-function"), A_GIMME, 0);
@@ -672,6 +680,8 @@ void *oexpr_new(t_symbol *msg, short argc, t_atom *argv){
 #endif
 				if(!f || ret){
 					object_error((t_object *)x, "error parsing %s\n", buf);
+                    post("error: %s\n", osc_error_string(ret));
+
 					return NULL;
 				}
 				x->expr = f;
