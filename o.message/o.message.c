@@ -1692,10 +1692,10 @@ void omessage_drawElements(t_omessage *x, t_glist *glist, int width2, int height
     if(x->in_new_flag)
         return;
 
-    printf("%s %p %d\n", __func__, x, __LINE__);
+//    printf("%s %p %d\n", __func__, x, __LINE__);
     omessage_bundle2text(x);
     
-    post("%s %d\n", __func__, firsttime);
+    //post("%s %d\n", __func__, firsttime);
     int x1, y1, x2, y2;
     omessage_getrect((t_gobj *)x, glist, &x1, &y1, &x2, &y2);
     int cx1 = x1;// - 2;
@@ -1712,7 +1712,7 @@ void omessage_drawElements(t_omessage *x, t_glist *glist, int width2, int height
     {
         if (firsttime)
         {
-            post("%s drawing firsttime", __func__);
+            //post("%s drawing firsttime", __func__);
             sys_vgui("namespace eval ::%s [list set canvas%lxBUTTONBINDING [bind %s <Button-1>]] \n", x->tcl_namespace, glist_getcanvas(x->glist), x->canvas_id);
             sys_vgui("namespace eval ::%s [list set canvas%lxKEYBINDING [bind %s <Key>]] \n", x->tcl_namespace, glist_getcanvas(x->glist), x->canvas_id);
             sys_vgui("namespace eval ::%s [list set canvas%lxSCROLLBINDING [bind %s <MouseWheel>]] \n", x->tcl_namespace, glist_getcanvas(x->glist), x->canvas_id);
@@ -2040,7 +2040,7 @@ static void omessage_save(t_gobj *z, t_binbuf *b)
     }
     binbuf_addv(b, "s", gensym(buf));
     
-    post("%s binbuf %s", __func__, buf);
+    //post("%s binbuf %s", __func__, buf);
     
     binbuf_addsemi(b);
     
@@ -2112,7 +2112,7 @@ void *omessage_new(t_symbol *msg, short argc, t_atom *argv)
     t_omessage *x = (t_omessage *)pd_new(omessage_class->class);
     if(x)
     {
-        printf("%s %p %d\n", __func__, x, __LINE__);
+//        printf("%s %p %d\n", __func__, x, __LINE__);
      
         x->in_new_flag = 1;
         
@@ -2327,7 +2327,7 @@ void *omessage_new(t_symbol *msg, short argc, t_atom *argv)
         x->textediting = 0;
         
         x->in_new_flag = 0;
-        printf("%s %p %d\n", __func__, x, __LINE__);
+        //printf("%s %p %d\n", __func__, x, __LINE__);
         
     }
     return (void *)x;
@@ -2381,6 +2381,8 @@ void setup_o0x2emessage(void) {
     
     omessage_proxy_class = c;
     
+    ODOT_PRINT_VERSION;
+
     //return 0;
     
 }
