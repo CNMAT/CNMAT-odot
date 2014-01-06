@@ -1074,10 +1074,10 @@ void omessage_clear(t_omessage *x)
 
 void omessage_setHeight(t_omessage *x, float y)
 {
-    int h = ((int)y - x->ob.te_ypix) + 5;
+    int h = ((int)y - x->ob.te_ypix + 10);
     h = (h > 20) ? h : 20;
     
-    //    post("%s %d", __func__, h);
+//    post("%s h %d", __func__, h);
     
     if((h != x->height) || x->forceredraw)
     {
@@ -1089,10 +1089,38 @@ void omessage_setHeight(t_omessage *x, float y)
     }
 }
 
+void omessage_setHeightFromLineCount(t_omessage *x, float n)
+{
+    int h = (glist_getfont(x->glist) * 1.5 * (int)n) + 9;
+    h = (h > 23) ? h : 23;
+    
+//    post("%s h %d", __func__, h);
+    
+    if((h != x->height) || x->forceredraw)
+    {
+        x->height = h;
+        omessage_drawElements(x, x->glist, x->width, x->height, x->firsttime);
+        x->forceredraw = 0;
+        //        post("%s height set to %d", __func__, x->height);
+        
+    }}
+
+
 void omessage_getRectAndDraw(t_omessage *x, int forceredraw)
 {
     x->forceredraw = forceredraw;
-    sys_vgui("pdsend \"%s setheight [lindex [%s bbox text%lx] 3]\" \n", x->receive_name, x->canvas_id, (long)x);
+    
+    if(x->textediting)
+    {
+        sys_vgui("pdsend \"%s linecount [%s count -lines 1.0 end]\"\n", x->receive_name, x->text_id);
+//        sys_vgui("::pdwindow::post \"text lines: [%s count -lines 1.0 end] %d \n\"\n", x->text_id, glist_getfont(x->glist));
+    }
+    else
+    {
+        sys_vgui("pdsend \"%s setheight [lindex [%s bbox text%lx] 3]\" \n", x->receive_name, x->canvas_id, (long)x);
+    }
+
+
 }
 
 void omessage_resize_mousedown(t_omessage *x)
@@ -1476,7 +1504,7 @@ void omessage_key_callback(t_omessage *x, t_symbol *s, int argc, t_atom *argv)
     {
         if(argv->a_type == A_FLOAT)
         {
-            // post("%s %d", __func__, (int)atom_getfloat(argv));
+        //    post("%s %d", __func__, (int)atom_getfloat(argv));
             int k = (int)atom_getfloat(argv);
             switch (k) {
                 case 65307: //esc
@@ -1518,11 +1546,12 @@ void omessage_key_callback(t_omessage *x, t_symbol *s, int argc, t_atom *argv)
                 
                 sys_vgui("%s itemconfigure text%lx -width %d -text [subst -nobackslash -nocommands -novariables [regsub -all -line {^[ \t]+|[ \t]+$} [%s get 0.0 end] \"\" ]] \n", x->canvas_id, x, x->width-10, x->text_id);
                 //                sys_vgui("::pdwindow::post \"testtext [%s itemcget text%lx -text ]\n\"\n", x->canvas_id, (long)x);
-                omessage_getRectAndDraw(x, 0);
+                
             }
             
             
         }
+        omessage_getRectAndDraw(x, 0);
         
     }
     
@@ -1563,6 +1592,7 @@ void omessage_storeTextAndExitEditorTick(t_omessage *x)
     x->textediting = 0;
     
     omessage_getRectAndDraw(x, 1);
+
     //        post("%s %d", __func__, x->textediting);
     
 
@@ -1592,13 +1622,15 @@ void omessage_getTextAndCreateEditor(t_omessage *x, int firsttime)
         sys_vgui("%s itemconfigure text%lx -fill white \n", x->canvas_id, (long)x);
         sys_vgui("text %s -font {{%s} %d %s} -undo true -fg \"black\" -bg #f8f8f6 -takefocus 1 -state normal -highlightthickness 0 -wrap word\n", x->text_id, sys_font, glist_getfont(x->glist), sys_fontweight );
         
-        sys_vgui("place %s -x [expr %d - [%s canvasx 0]] -y [expr %d - [%s canvasy 0]] -width %d -height %d\n", x->text_id, x1+4, x->canvas_id, y1+4, x->canvas_id, x->width-10, x->height-10);
-        
+        sys_vgui("place %s -x [expr %d - [%s canvasx 0]] -y [expr %d - [%s canvasy 0]] -width %d -height %d\n", x->text_id, x1+4, x->canvas_id, y1+4, x->canvas_id, x->width-6, x->height-6);
+
        
 //        sys_vgui("::pdwindow::post \"checkexpr [expr %d + [expr [lindex [%s xview] 0] * [expr [expr 1 / [expr [lindex [%s xview] 1] - [lindex [%s xview] 0]]] * [winfo width %s]]]] \n\"\n", x->ob.te_xpix, x->canvas_id, x->canvas_id, x->canvas_id, x->canvas_id);
 
 //        sys_vgui("::pdwindow::post \"scrollivew [%s cget -scrollregion ] \n\"\n",  x->canvas_id);
 
+       // sys_vgui("::pdwindow::post \"text lines: [%s count -lines 1.0 end] \n\"\n", x->text_id);
+        
         if(x->tk_text)
             sys_vgui("%s insert 1.0 [subst -nobackslash -nocommands -novariables [regsub -all -line {^[ \t]+|[ \t]+$}  {%s} \"\" ]] \n", x->text_id, x->tk_text);
         
@@ -1628,7 +1660,6 @@ void omessage_getTextAndCreateEditor(t_omessage *x, int firsttime)
     }
     
     x->textediting = 1;
-    
     
 }
 
@@ -1674,6 +1705,7 @@ static void omessage_getrect(t_gobj *z, t_glist *glist,int *xp1, int *yp1, int *
      x->width = (x->width > 0 ? x->width : 6) * fontwidth + 2;
      x->height = fontheight + 3;
      */
+    
     x1 = text_xpix(&x->ob, glist);
     y1 = text_ypix(&x->ob, glist);
     x2 = x1 + x->width;
@@ -2010,6 +2042,7 @@ static void omessage_save(t_gobj *z, t_binbuf *b)
 
     omessage_setHexFromText(x, x->text);
     
+    //post("%s height %d", __func__, x->height);
     
     if(!x->firsttime && glist_getcanvas(x->glist)->gl_editor)
         omessage_pdnofocus_callback(x);
@@ -2039,8 +2072,6 @@ static void omessage_save(t_gobj *z, t_binbuf *b)
         buf[i+2] = x->hex[i + (k*chunksize) ];
     }
     binbuf_addv(b, "s", gensym(buf));
-    
-    //post("%s binbuf %s", __func__, buf);
     
     binbuf_addsemi(b);
     
@@ -2253,7 +2284,7 @@ void *omessage_new(t_symbol *msg, short argc, t_atom *argv)
 //        printargs(argc, argv);
         
         x->width = 100;
-        x->height = 10;
+        x->height = 23;
         x->firsttime = 1;
         x->forceredraw = 0;
         x->parse_error = 0;
@@ -2277,6 +2308,8 @@ void *omessage_new(t_symbol *msg, short argc, t_atom *argv)
             }
         }
         
+        //post("%s height %d", __func__, x->height);
+
 
         sys_vgui("namespace eval ::%s [list set textbuf%lx \"\"] \n", x->tcl_namespace, (long)x);
         sys_vgui("namespace eval ::%s set textheight%lx 10 \n", x->tcl_namespace, (long)x);
@@ -2349,6 +2382,7 @@ void setup_o0x2emessage(void) {
     class_addmethod(omessage_class->class, (t_method)omessage_mousewheel_callback, gensym("mousewheel"), 0);
     
     class_addmethod(omessage_class->class, (t_method)omessage_setHeight, gensym("setheight"), A_DEFFLOAT, 0);
+    class_addmethod(omessage_class->class, (t_method)omessage_setHeightFromLineCount, gensym("linecount"), A_DEFFLOAT, 0);
     
     t_omax_pd_proxy_class *c = NULL;
     omax_pd_class_new(c, NULL, NULL, NULL, sizeof(t_omax_pd_proxy), CLASS_PD | CLASS_NOINLET, 0);
