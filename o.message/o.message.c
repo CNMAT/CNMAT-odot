@@ -1791,6 +1791,10 @@ void omessage_drawElements(t_omessage *x, t_glist *glist, int width2, int height
             else if (x->tk_text)
             {
                 sys_vgui("%s itemconfigure text%lx -width %d -text [subst -nobackslash -nocommands -novariables [string trimright [regsub -all -line {^[ \t]+|[ \t]+$}  {%s} \"\" ]]] \n", x->canvas_id, (long)x, x->width-10, x->tk_text);
+                
+                
+                
+                //do syntax highlighting here?
             }
             
         }
@@ -1816,6 +1820,8 @@ void omessage_drawElements(t_omessage *x, t_glist *glist, int width2, int height
         sys_vgui("%s itemconfigure %s -outline %s\n", x->canvas_id, x->corner_tag, (x->parse_error?  "red" : "black" ));
         sys_vgui("%s itemconfigure %sTL -outline %s\n", x->canvas_id, x->corner_tag, (x->parse_error? "red" : "black" ));
         
+        if(glist_isselected(x->glist, &x->ob.te_g))
+            gobj_select(&x->ob.te_g, x->glist, 1);
         
     }
     else
@@ -1838,12 +1844,16 @@ static void omessage_vis(t_gobj *z, t_glist *glist, int vis)
      //       omessage_delete(z, glist);
             x->firsttime = 1;
         }
-        //post("%x %s first time", x, __func__);
 
-        if (glist_isvisible(glist)) //not visible when loading from disk (and from subpatcher?)
+        if (glist_isvisible(glist))
+        {//not visible when loading from disk (and from subpatcher?)
+//            post("%x %s first time is vis", x, __func__);
             omessage_drawElements(x, glist, x->width, x->height, 1);
+        }
         else
-            omessage_getRectAndDraw(x, 0);
+        {
+            omessage_getRectAndDraw(x, 1);
+        }
         
         if(x->textediting)
         {
