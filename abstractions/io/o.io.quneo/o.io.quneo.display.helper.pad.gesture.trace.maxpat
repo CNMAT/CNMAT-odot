@@ -70,11 +70,12 @@
 					"fontsize" : 12.0,
 					"frgb" : 0.0,
 					"id" : "obj-71",
+					"linecount" : 2,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 76.5, 247.0, 253.0, 20.0 ],
-					"text" : "bang signifies 'the moment of release'"
+					"patching_rect" : [ 76.5, 247.0, 253.0, 33.0 ],
+					"text" : "bang signifies the moment of a touch released"
 				}
 
 			}
@@ -110,7 +111,7 @@
 							"architecture" : "x86"
 						}
 ,
-						"rect" : [ 25.0, 69.0, 640.0, 480.0 ],
+						"rect" : [ 800.0, 265.0, 640.0, 480.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -194,7 +195,7 @@
 									"numinlets" : 5,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 264.000031, 100.0, 97.0, 20.0 ],
+									"patching_rect" : [ 264.000031, 90.0, 97.0, 20.0 ],
 									"text" : "zmap 0. 1 0 255"
 								}
 
@@ -208,7 +209,7 @@
 									"numinlets" : 5,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 157.0, 100.0, 97.0, 20.0 ],
+									"patching_rect" : [ 157.0, 90.0, 97.0, 20.0 ],
 									"text" : "zmap 0. 1 0 127"
 								}
 
@@ -458,8 +459,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "bang", "" ],
-					"patching_rect" : [ 58.5, 217.0, 36.0, 20.0 ],
-					"text" : "sel 0"
+					"patching_rect" : [ 58.5, 217.0, 39.0, 20.0 ],
+					"text" : "sel 0."
 				}
 
 			}
@@ -514,7 +515,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 4,
 					"outlettype" : [ "list", "list", "int", "" ],
-					"patching_rect" : [ 88.75, 353.75, 127.75, 127.5 ],
+					"patching_rect" : [ 88.75, 460.75, 127.75, 127.5 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 3.25, 1.75, 127.75, 123.5 ]
 				}
