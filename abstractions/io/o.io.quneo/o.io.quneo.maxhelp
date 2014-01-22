@@ -8,7 +8,7 @@
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 51.0, 44.0, 1307.0, 972.0 ],
+		"rect" : [ 324.0, 44.0, 1307.0, 972.0 ],
 		"bgcolor" : [ 0.962353, 1.0, 0.998526, 1.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
@@ -33,13 +33,12 @@
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"id" : "obj-8",
-					"linecount" : 2,
 					"maxclass" : "message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 511.877441, 362.211334, 50.0, 31.0 ],
-					"text" : "0.433071"
+					"patching_rect" : [ 511.877441, 362.211334, 50.0, 18.0 ],
+					"text" : "0."
 				}
 
 			}
@@ -191,7 +190,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 318.877441, 1103.937256, 163.134995, 18.0 ],
-					"text" : "0.511811"
+					"text" : "0."
 				}
 
 			}
@@ -248,7 +247,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 43.665028, 1096.510498, 150.0, 60.0 ],
-					"text" : "/velocity 0.\n/pressure 0.\n/x 0.511811\n/y 0.433071",
+					"text" : "/velocity 0.\n/pressure 0.\n/x 0.\n/y 0.",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -320,7 +319,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 414.111786, 355.562958, 91.765656, 18.0 ],
-					"text" : "0.519685"
+					"text" : "0."
 				}
 
 			}
@@ -377,7 +376,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 133.158035, 330.414978, 162.644501, 60.0 ],
-					"text" : "/pressure 0.\n/x 0.519685\n/y 0.433071\n/velocity 0.",
+					"text" : "/velocity 0.\n/pressure 0.\n/x 0.\n/y 0.",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -443,7 +442,7 @@
 							"architecture" : "x86"
 						}
 ,
-						"rect" : [ 50.0, 94.0, 640.0, 480.0 ],
+						"rect" : [ 491.0, 101.0, 840.0, 556.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -488,7 +487,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 50.0, 100.0, 690.0, 1816.0 ],
-									"text" : "/slider/long/pressure 0.\n/slider/long/velocity 0.\n/slider/long/2nd/position 0.275591\n/slider/long/position 0.590551\n/pad/d/4/pressure 0.\n/pad/b/4/x 0.362205\n/pad/b/4/y 0.480315\n/pad/b/4/pressure 0.\n/pad/c/4/x 0.0393701\n/pad/c/4/pressure 0.\n/pad/d/4/x 0.0393701\n/pad/d/4/y 0.\n/pad/d/4/velocity 0.\n/pad/b/4/velocity 0.\n/pad/c/4/y 1.\n/pad/c/4/velocity 0.\n/slider/d/pressure 0.\n/slider/d/velocity 0.\n/slider/b/velocity 0.\n/slider/d/position 0.661417\n/slider/b/position 0.527559\n/slider/b/pressure 0.\n/pad/b/3/pressure 0.\n/pad/b/3/y 0.92126\n/pad/b/3/velocity 0.\n/pad/b/3/x 1.\n/pad/a/3/x 1.\n/pad/a/3/y 0.889764\n/pad/a/3/velocity 0.\n/pad/a/3/pressure 0.\n/disc/b/pressure 0.\n/disc/b/velocity 0.\n/disc/b/direction 1.\n/pad/c/3/x 1.\n/pad/c/3/y 0.\n/pad/c/3/velocity 0.\n/pad/c/3/pressure 0.\n/pad/a/4/pressure 0.\n/pad/a/4/x 0.88189\n/pad/a/4/y 0.\n/pad/a/4/velocity 0.\n/pad/a/1/pressure 0.\n/pad/a/1/x 0.519685\n/pad/a/1/y 0.433071\n/pad/a/1/velocity 0.\n/disc/a/pressure 0.\n/disc/a/velocity 0.\n/disc/a/direction 0.\n/button/rhombus/pressure 0.\n/button/rhombus/velocity 0.\n/button/c/velocity 0.\n/button/c/pressure 0.\n/button/b/pressure 0.\n/button/b/velocity 0.\n/button/a/velocity 0.\n/button/a/pressure 0.\n/large.arrowbutton/b/1/pressure 0.\n/large.arrowbutton/b/1/velocity 0.\n/large.arrowbutton/b/2/pressure 0.\n/large.arrowbutton/b/2/velocity 0.\n/large.arrowbutton/a/1/pressure 0.\n/large.arrowbutton/a/1/velocity 0.\n/large.arrowbutton/a/2/velocity 0.\n/large.arrowbutton/a/2/pressure 0.\n/arrowbutton/b/1/velocity 0.\n/arrowbutton/b/1/pressure 0.\n/arrowbutton/a/1/velocity 0.\n/arrowbutton/a/1/pressure 0.\n/arrowbutton/b/2/pressure 0.\n/arrowbutton/b/2/velocity 0.\n/arrowbutton/a/2/pressure 0.\n/arrowbutton/a/2/velocity 0.\n/arrowbutton/b/3/velocity 0.\n/arrowbutton/b/3/pressure 0.\n/arrowbutton/a/3/velocity 0.\n/arrowbutton/a/3/pressure 0.\n/arrowbutton/b/4/pressure 0.\n/arrowbutton/b/4/velocity 0.\n/arrowbutton/a/4/pressure 0.\n/arrowbutton/a/4/velocity 0.\n/slider/c/pressure 0.\n/slider/c/position 0.\n/slider/c/velocity 0.\n/slider/a/velocity 0.\n/slider/a/pressure 0.\n/slider/a/position 0.\n/slider/1/velocity 0.\n/slider/1/pressure 0.\n/slider/1/position 0.\n/slider/2/velocity 0.\n/slider/2/pressure 0.\n/slider/2/position 0.\n/slider/3/pressure 0.\n/slider/3/velocity 0.\n/slider/3/position 0.\n/slider/4/pressure 0.\n/slider/4/position 0.\n/slider/4/velocity 0.\n/pad/d/3/pressure 0.\n/pad/d/3/y 0.\n/pad/d/3/velocity 0.\n/pad/d/3/x 0.\n/pad/d/2/pressure 0.\n/pad/d/2/y 0.\n/pad/d/2/velocity 0.\n/pad/d/2/x 0.\n/pad/c/2/pressure 0.\n/pad/c/2/y 0.\n/pad/c/2/velocity 0.\n/pad/c/2/x 0.\n/pad/b/2/pressure 0.\n/pad/b/2/x 0.\n/pad/b/2/y 0.\n/pad/b/2/velocity 0.\n/pad/a/2/pressure 0.\n/pad/a/2/x 0.\n/pad/a/2/y 0.\n/pad/a/2/velocity 0.\n/pad/d/1/velocity 0.\n/pad/d/1/pressure 0.\n/pad/d/1/x 0.\n/pad/d/1/y 0.\n/pad/c/1/x 0.\n/pad/c/1/y 0.\n/pad/c/1/velocity 0.\n/pad/c/1/pressure 0.\n/pad/b/1/pressure 0.\n/pad/b/1/y 0.\n/pad/b/1/velocity 0.\n/pad/b/1/x 0.\n/USB/port \"QUNEO\"\n/instructions \"first tap 'mode' button, then tap 'pad /a/1' to enable preset 1. Ok to change the settings within preset 1, using the QuNeo Editor, as long as the midi mappings are not changed\"\n/manufactuer \"KESUMO, LLC.\" \"Keith McMillen\"\n/product \"Quneo, #K-707\"",
+									"text" : "/pad/b/4/y 1.\n/pad/b/4/velocity 0.\n/pad/b/4/pressure 0.00787402\n/pad/b/4/x 0.913386\n/pad/a/4/pressure 0.\n/pad/a/4/y 1.\n/pad/a/4/velocity 0.\n/pad/a/4/x 0.952756\n/slider/long/pressure 0.\n/slider/long/velocity 0.\n/slider/long/2nd/position 0.220472\n/slider/long/position 0.110236\n/pad/a/3/pressure 0.\n/pad/a/3/x 1.\n/pad/a/3/y 1.\n/pad/a/3/velocity 0.\n/slider/4/velocity 0.\n/slider/4/position 0.173228\n/slider/4/pressure 0.\n/pad/c/4/pressure 0.\n/pad/c/4/x 1.\n/pad/c/4/y 0.503937\n/pad/c/4/velocity 0.\n/disc/b/pressure 0.\n/disc/b/velocity 0.\n/disc/b/direction 0.\n/disc/a/pressure 0.\n/disc/a/velocity 0.\n/disc/a/direction 0.\n/button/rhombus/pressure 0.\n/button/rhombus/velocity 0.\n/button/c/velocity 0.\n/button/c/pressure 0.\n/button/b/pressure 0.\n/button/b/velocity 0.\n/button/a/velocity 0.\n/button/a/pressure 0.\n/large.arrowbutton/b/1/pressure 0.\n/large.arrowbutton/b/1/velocity 0.\n/large.arrowbutton/b/2/pressure 0.\n/large.arrowbutton/b/2/velocity 0.\n/large.arrowbutton/a/1/pressure 0.\n/large.arrowbutton/a/1/velocity 0.\n/large.arrowbutton/a/2/velocity 0.\n/large.arrowbutton/a/2/pressure 0.\n/arrowbutton/b/1/velocity 0.\n/arrowbutton/b/1/pressure 0.\n/arrowbutton/a/1/velocity 0.\n/arrowbutton/a/1/pressure 0.\n/arrowbutton/b/2/pressure 0.\n/arrowbutton/b/2/velocity 0.\n/arrowbutton/a/2/pressure 0.\n/arrowbutton/a/2/velocity 0.\n/arrowbutton/b/3/velocity 0.\n/arrowbutton/b/3/pressure 0.\n/arrowbutton/a/3/velocity 0.\n/arrowbutton/a/3/pressure 0.\n/arrowbutton/b/4/pressure 0.\n/arrowbutton/b/4/velocity 0.\n/arrowbutton/a/4/pressure 0.\n/arrowbutton/a/4/velocity 0.\n/slider/d/velocity 0.\n/slider/d/position 0.\n/slider/d/pressure 0.\n/slider/c/pressure 0.\n/slider/c/position 0.\n/slider/c/velocity 0.\n/slider/b/position 0.\n/slider/b/pressure 0.\n/slider/b/velocity 0.\n/slider/a/velocity 0.\n/slider/a/pressure 0.\n/slider/a/position 0.\n/slider/1/velocity 0.\n/slider/1/pressure 0.\n/slider/1/position 0.\n/slider/2/velocity 0.\n/slider/2/pressure 0.\n/slider/2/position 0.\n/slider/3/pressure 0.\n/slider/3/velocity 0.\n/slider/3/position 0.\n/pad/d/4/velocity 0.\n/pad/d/4/pressure 0.\n/pad/d/4/x 0.\n/pad/d/4/y 0.\n/pad/d/3/pressure 0.\n/pad/d/3/y 0.\n/pad/d/3/velocity 0.\n/pad/d/3/x 0.\n/pad/c/3/velocity 0.\n/pad/c/3/pressure 0.\n/pad/c/3/x 0.\n/pad/c/3/y 0.\n/pad/b/3/pressure 0.\n/pad/b/3/x 0.\n/pad/b/3/y 0.\n/pad/b/3/velocity 0.\n/pad/d/2/pressure 0.\n/pad/d/2/y 0.\n/pad/d/2/velocity 0.\n/pad/d/2/x 0.\n/pad/c/2/pressure 0.\n/pad/c/2/y 0.\n/pad/c/2/velocity 0.\n/pad/c/2/x 0.\n/pad/b/2/pressure 0.\n/pad/b/2/x 0.\n/pad/b/2/y 0.\n/pad/b/2/velocity 0.\n/pad/a/2/pressure 0.\n/pad/a/2/x 0.\n/pad/a/2/y 0.\n/pad/a/2/velocity 0.\n/pad/d/1/velocity 0.\n/pad/d/1/pressure 0.\n/pad/d/1/x 0.\n/pad/d/1/y 0.\n/pad/c/1/x 0.\n/pad/c/1/y 0.\n/pad/c/1/velocity 0.\n/pad/c/1/pressure 0.\n/pad/b/1/pressure 0.\n/pad/b/1/y 0.\n/pad/b/1/velocity 0.\n/pad/b/1/x 0.\n/pad/a/1/velocity 0.\n/pad/a/1/pressure 0.\n/pad/a/1/x 0.\n/pad/a/1/y 0.\n/USB/port \"QUNEO\"\n/instructions \"first tap 'mode' button, then tap 'pad /a/1' to enable preset 1. Ok to change the settings within preset 1, using the QuNeo Editor, as long as the midi mappings are not changed\"\n/manufactuer \"KESUMO, LLC.\" \"Keith McMillen\"\n/product \"Quneo, #K-707\"",
 									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 
@@ -678,7 +677,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 758.020569, 560.453491, 150.0, 60.0 ],
-					"text" : "/pad/a/4/velocity 0.\n/pad/a/4/pressure 0.\n/pad/a/4/x 0.409449\n/pad/a/4/y 0.858268",
+					"text" : "/pad/a/4/velocity 0.\n/pad/a/4/pressure 0.\n/pad/a/4/x 0.590551\n/pad/a/4/y 0.858268",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
