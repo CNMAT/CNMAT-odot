@@ -8,7 +8,7 @@
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 175.0, 102.0, 1683.0, 806.0 ],
+		"rect" : [ 252.0, 44.0, 1683.0, 806.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -37,7 +37,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 649.741272, 428.0, 288.0, 47.0 ],
+					"patching_rect" : [ 649.741272, 428.0, 290.0, 47.0 ],
 					"text" : "o.expr /pen/position[[1]] = scale(/pen/position[[1]]\\, 0.\\, 1\\, 1\\, 0)\\; /pen/position[[1]] = clip(/pen/position[[1]]\\, 0.\\, 1)"
 				}
 
@@ -1567,6 +1567,15 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-23", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-10", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-3", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
@@ -1913,7 +1922,7 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-23", 0 ],
+					"destination" : [ "obj-10", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-7", 0 ]

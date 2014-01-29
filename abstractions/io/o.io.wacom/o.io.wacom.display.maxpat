@@ -8,7 +8,7 @@
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 53.0, 63.0, 1695.0, 805.0 ],
+		"rect" : [ 205.0, 44.0, 1695.0, 805.0 ],
 		"bgcolor" : [ 1.0, 1.0, 1.0, 0.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
@@ -361,28 +361,28 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "wacom-intuos-5-tablet.jpg",
-				"bootpath" : "/Users/gabacheker/Documents/maxliB/wacom",
+				"bootpath" : "/Users/gabacheker/Documents/CNMAT_Work/CNMAT_GITHUB/CNMAT-odot/abstractions/io/o.io.wacom",
 				"patcherrelativepath" : ".",
 				"type" : "JPEG",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.io.wacom.display.helper.touch.maxpat",
-				"bootpath" : "/Users/gabacheker/Documents/maxliB/wacom",
+				"bootpath" : "/Users/gabacheker/Documents/CNMAT_Work/CNMAT_GITHUB/CNMAT-odot/abstractions/io/o.io.wacom",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.io.wacom.display.helper.pen.xyz.maxpat",
-				"bootpath" : "/Users/gabacheker/Documents/maxliB/wacom",
+				"bootpath" : "/Users/gabacheker/Documents/CNMAT_Work/CNMAT_GITHUB/CNMAT-odot/abstractions/io/o.io.wacom",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.io.wacom.display.helper.pen.tilt.maxpat",
-				"bootpath" : "/Users/gabacheker/Documents/maxliB/wacom",
+				"bootpath" : "/Users/gabacheker/Documents/CNMAT_Work/CNMAT_GITHUB/CNMAT-odot/abstractions/io/o.io.wacom",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
@@ -390,20 +390,20 @@
 , 			{
 				"name" : "o.io.gl.maxpat",
 				"bootpath" : "/Users/gabacheker/Documents/maxliB/CNMAT_Externals/odot/abstractions/io/graphics",
-				"patcherrelativepath" : "../CNMAT_Externals/odot/abstractions/io/graphics",
+				"patcherrelativepath" : "../../../../../../maxliB/CNMAT_Externals/odot/abstractions/io/graphics",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.io.gl.platohelper.maxpat",
 				"bootpath" : "/Users/gabacheker/Documents/maxliB/CNMAT_Externals/odot/abstractions/io/graphics",
-				"patcherrelativepath" : "../CNMAT_Externals/odot/abstractions/io/graphics",
+				"patcherrelativepath" : "../../../../../../maxliB/CNMAT_Externals/odot/abstractions/io/graphics",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.io.wacom.display.helper.pen.button.maxpat",
-				"bootpath" : "/Users/gabacheker/Documents/maxliB/wacom",
+				"bootpath" : "/Users/gabacheker/Documents/CNMAT_Work/CNMAT_GITHUB/CNMAT-odot/abstractions/io/o.io.wacom",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
