@@ -3,11 +3,12 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 6,
-			"minor" : 0,
-			"revision" : 7
+			"minor" : 1,
+			"revision" : 3,
+			"architecture" : "x86"
 		}
 ,
-		"rect" : [ -1597.0, 22.0, 1440.0, 1011.0 ],
+		"rect" : [ 0.0, 53.0, 1440.0, 1011.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -35,7 +36,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 379.0, 350.0, 60.0, 20.0 ],
+					"patching_rect" : [ 883.0, 302.0, 60.0, 20.0 ],
 					"text" : "loadbang"
 				}
 
@@ -45,13 +46,13 @@
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"id" : "obj-3",
-					"linecount" : 4,
+					"linecount" : 8,
 					"maxclass" : "o.message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 379.0, 380.0, 270.0, 60.0 ],
-					"text" : "/*/pluck/upper/threshold 0.05 \n/*/pluck/lower/threshold -0.05 \n/*/clockwise/delta/orientation/threshold -0.001 \n/*/anticlockwise/delta/orientation/threshold 0.001 ",
+					"patching_rect" : [ 881.0, 339.0, 337.0, 114.0 ],
+					"text" : "/left/pluck/upper/threshold 0.05\n/right/pluck/upper/threshold 0.05\n/left/pluck/lower/threshold -0.05\n/right/pluck/lower/threshold -0.05\n/left/clockwise/delta/orientation/threshold -0.001\n/right/clockwise/delta/orientation/threshold -0.001\n/left/anticlockwise/delta/orientation/threshold 0.001\n/right/anticlockwise/delta/orientation/threshold 0.001",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -241,8 +242,9 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 6,
-							"minor" : 0,
-							"revision" : 7
+							"minor" : 1,
+							"revision" : 3,
+							"architecture" : "x86"
 						}
 ,
 						"rect" : [ 25.0, 69.0, 640.0, 480.0 ],
@@ -293,8 +295,9 @@
 										"fileversion" : 1,
 										"appversion" : 										{
 											"major" : 6,
-											"minor" : 0,
-											"revision" : 7
+											"minor" : 1,
+											"revision" : 3,
+											"architecture" : "x86"
 										}
 ,
 										"rect" : [ 25.0, 69.0, 770.0, 521.0 ],
@@ -576,8 +579,9 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 6,
-							"minor" : 0,
-							"revision" : 7
+							"minor" : 1,
+							"revision" : 3,
+							"architecture" : "x86"
 						}
 ,
 						"rect" : [ 25.0, 69.0, 640.0, 480.0 ],
@@ -686,7 +690,7 @@
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 1,
-									"outlettype" : [ "FullPacket" ],
+									"outlettype" : [ "" ],
 									"patching_rect" : [ 50.0, 210.0, 607.0, 20.0 ],
 									"text" : "o.expr map(fn(lval\\, val\\, min\\, max){assign(lval\\, scale(value(val)\\, 0.\\, 4095.\\, min\\, max))\\;}\\, /lvals\\, /vals\\, /mins\\, /maxs)"
 								}
@@ -731,7 +735,7 @@
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 1,
-									"outlettype" : [ "FullPacket" ],
+									"outlettype" : [ "" ],
 									"patching_rect" : [ 74.0, 530.0, 409.0, 20.0 ],
 									"text" : "o.expr map(fn(f\\, lval\\, val){apply(value(f)\\, lval\\, value(val))\\;}\\, /fns\\, /lvals\\, /vals)"
 								}
@@ -877,7 +881,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 956.0, 27.0, 152.0, 87.0 ],
-					"text" : "/left/raw/x 604 \n/left/raw/y 387 \n/left/raw/z 4060 \n/right/raw/x 4095 \n/right/raw/y 1508 \n/right/raw/z 4056 ",
+					"text" : "/left/raw/x 604\n/left/raw/y 387\n/left/raw/z 4060\n/right/raw/x 4095\n/right/raw/y 1508\n/right/raw/z 4056",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"varname" : "display[7]"
 				}
@@ -896,7 +900,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 50.0, 80.0, 230.0, 51.0 ],
+					"patching_rect" : [ 50.0, 80.0, 232.0, 51.0 ],
 					"text" : "Situate with respect to the performer \n(note OS/X specific HID numbers, use o.io.gametrak for PC)"
 				}
 
@@ -1002,7 +1006,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 300.0, 940.0, 388.0, 516.0 ],
-					"text" : "/right/window/radius 1.01895 1.01895 1.01886 1.01904 1.01914 \n/right/was/orientation 2.94796 \n/right/raw/x 2450 \n/right/raw/y 0 \n/right/raw/z 4072 \n/right/x 0.196581 \n/right/y -1. \n/right/z 0.00561661 \n/right/pluck/upper/threshold 0.05 \n/right/pluck/lower/threshold -0.05 \n/right/clockwise/delta/orientation/threshold -0.001 \n/right/anticlockwise/delta/orientation/threshold 0.001 \n/right/radius 1.01914 \n/right/orientation 2.94749 \n/right/delta/orientation -0.000470272 \n/right/anticlockwise false \n/right/clockwise false \n/right/radius/delta 0.000281574 \n/right/pluck false \n/left/window/radius 1.23582 1.23582 1.23582 1.23582 1.23582 \n/left/was/orientation 2.44293 \n/left/raw/x 3675 \n/left/raw/y 110 \n/left/raw/z 4076 \n/left/x 0.794872 \n/left/y -0.946276 \n/left/z 0.0046398 \n/left/pluck/upper/threshold 0.05 \n/left/pluck/lower/threshold -0.05 \n/left/clockwise/delta/orientation/threshold -0.001 \n/left/anticlockwise/delta/orientation/threshold 0.001 \n/left/radius 1.23582 \n/left/orientation 2.44293 \n/left/delta/orientation 0. \n/left/anticlockwise false \n/left/clockwise false \n/left/radius/delta -4.91886e-08 \n/left/pluck false \n",
+					"text" : "/right/window/radius 0.872668 0.872668 0.872339 0.872339 0.872339\n/right/was/orientation 2.40451\n/right/raw/x 3248\n/right/raw/y 725\n/right/raw/z 4081\n/right/x 0.586325\n/right/y -0.64591\n/right/z 0.0034188\n/right/pluck/upper/threshold 0.05\n/right/pluck/lower/threshold -0.05\n/right/clockwise/delta/orientation/threshold -0.001\n/right/anticlockwise/delta/orientation/threshold 0.001\n/right/radius 0.872339\n/right/orientation 2.40451\n/right/delta/orientation 0.\n/right/anticlockwise false\n/right/clockwise false\n/right/radius/delta -2.92219e-08\n/right/pluck false\n/left/window/radius 1.11932 1.11932 1.11932 1.11886 1.12144\n/left/was/orientation 2.06246\n/left/raw/x 4073\n/left/raw/y 966\n/left/raw/z 4088\n/left/x 0.989255\n/left/y -0.528205\n/left/z 0.0017094\n/left/pluck/upper/threshold 0.05\n/left/pluck/lower/threshold -0.05\n/left/clockwise/delta/orientation/threshold -0.001\n/left/anticlockwise/delta/orientation/threshold 0.001\n/left/radius 1.12144\n/left/orientation 2.06123\n/left/delta/orientation -0.00123362\n/left/anticlockwise false\n/left/clockwise true\n/left/radius/delta 0.00212265\n/left/pluck false",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -1743,41 +1747,45 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "o.io.hid.maxpat",
-				"bootpath" : "/Users/john/MMJ5-dev/odot/abstractions",
-				"patcherrelativepath" : "../../../../../../../../MMJ5-dev/odot/abstractions",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions/io",
+				"patcherrelativepath" : "../abstractions/io",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.multisliders.maxpat",
-				"bootpath" : "/Users/john/MMJ5-dev/odot/abstractions",
-				"patcherrelativepath" : "../../../../../../../../MMJ5-dev/odot/abstractions",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions",
+				"patcherrelativepath" : "../abstractions",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.demo.gestureprocessing.gametrak.fuse.novelty.feature.maxpat",
-				"bootpath" : "/Users/john/Development/cnmat/trunk/max/externals/odot/trunk/demos",
-				"patcherrelativepath" : "",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/demos",
+				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.remember.maxpat",
-				"bootpath" : "/Users/john/MMJ5-dev/odot/abstractions",
-				"patcherrelativepath" : "../../../../../../../../MMJ5-dev/odot/abstractions",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions",
+				"patcherrelativepath" : "../abstractions",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.callpatch.maxpat",
-				"bootpath" : "/Users/john/MMJ5-dev/odot/abstractions",
-				"patcherrelativepath" : "../../../../../../../../MMJ5-dev/odot/abstractions",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions",
+				"patcherrelativepath" : "../abstractions",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "OpenSoundControl.mxo",
+				"name" : "o.collect.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.message.mxo",
 				"type" : "iLaX"
 			}
 , 			{
@@ -1793,15 +1801,7 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "o.collect.mxo",
-				"type" : "iLaX"
-			}
-, 			{
 				"name" : "o.prepend.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.message.mxo",
 				"type" : "iLaX"
 			}
 , 			{
