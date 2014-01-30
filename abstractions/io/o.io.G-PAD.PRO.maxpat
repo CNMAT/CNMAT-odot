@@ -94,13 +94,13 @@
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"id" : "obj-2",
-					"linecount" : 50,
+					"linecount" : 49,
 					"maxclass" : "o.message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 685.0, 214.0, 474.0, 677.0 ],
-					"text" : "/button/North/down false\n/button/North/up true\n/button/South/down false\n/button/South/up true\n/button/East/down false\n/button/East/up true\n/button/West/down false\n/button/West/up true\n/button/Northeast/down false\n/button/Northeast/up true\n/button/Southeast/down false\n/button/Southeast/up true\n/button/Southwest/down false\n/button/Southwest/up true\n/button/Northwest/down false\n/button/Northwest/up true\n/button/1/down false\n/button/1/released\n/button/1/up true\n/button/2/down false\n/button/2/up true\n/button/3/down false\n/button/3/up true\n/button/4/down false\n/button/4/up true\n/button/5/down false\n/button/5/up true\n/button/6/down false\n/button/6/up true\n/button/7/down false\n/button/7/up true\n/button/8/down false\n/button/8/up true\n/button/11/down false\n/button/11/up true\n/button/12/down false\n/button/12/up true\n/button/left/paddle/down false\n/button/left/paddle/up true\n/button/right/paddle/down false\n/button/right/paddle/up true\n/left/paddle/horizontal -0.0205279\n/left/paddle/vertical 0.0322581\n/right/paddle/vertical -0.00684262\n/right/paddle/hoirizontal -0.0146628\n/orientation/pitch 0.0322581\n/orientation/roll -0.0205279\n/Instruction \"Press mode until blue light appears for orientation data\"\n/Manufacturer \"Sentigal\" \"eDimensional\"\n/Product \"VRMS Joypad\" \"G-PAD PRO\"",
+					"patching_rect" : [ 685.0, 214.0, 474.0, 663.0 ],
+					"text" : "/button/North/down false\n/button/North/up true\n/button/South/down false\n/button/South/up true\n/button/East/down false\n/button/East/up true\n/button/West/down false\n/button/West/up true\n/button/Northeast/down false\n/button/Northeast/up true\n/button/Southeast/down false\n/button/Southeast/up true\n/button/Southwest/down false\n/button/Southwest/up true\n/button/Northwest/down false\n/button/Northwest/up true\n/button/1/down false\n/button/1/up true\n/button/2/down false\n/button/2/up true\n/button/3/down false\n/button/3/up true\n/button/4/down false\n/button/4/up true\n/button/5/down false\n/button/5/up true\n/button/6/down false\n/button/6/up true\n/button/7/down false\n/button/7/up true\n/button/8/down false\n/button/8/up true\n/button/11/down false\n/button/11/up true\n/button/12/down false\n/button/12/up true\n/button/left/paddle/down false\n/button/left/paddle/up true\n/button/right/paddle/down false\n/button/right/paddle/up true\n/left/paddle/horizontal -0.000977517\n/left/paddle/vertical 0.085044\n/right/paddle/vertical -0.0107527\n/right/paddle/hoirizontal -0.0185728\n/orientation/pitch 0.085044\n/orientation/roll -0.000977517\n/Instruction \"Press mode until blue light appears for orientation data\"\n/Manufacturer \"Sentigal\" \"eDimensional\"\n/Product \"VRMS Joypad\" \"G-PAD PRO\"",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -1877,6 +1877,15 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-10", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-14", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-2", 1 ],
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-14", 0 ]
