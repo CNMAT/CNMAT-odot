@@ -74,6 +74,11 @@
 			<key>orderHint</key>
 			<integer>10</integer>
 		</dict>
+		<key>o.expr.codebox.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>41</integer>
+		</dict>
 		<key>o.expr.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -358,6 +363,11 @@
 			<true/>
 		</dict>
 		<key>5273D322189B049B009B4EB0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>5273D332189B12A4009B4EB0</key>
 		<dict>
 			<key>primary</key>
 			<true/>
