@@ -182,6 +182,10 @@ typedef struct _omessage {
     
     //new version
     int newbndl;
+	t_osc_bndl_u *bndl_u;
+	t_osc_bndl_s *bndl_s;
+	int bndl_has_subs;
+	int bndl_has_been_checked_for_subs;
 
     int     in_new_flag;
 	//t_jrgba frame_color, background_color, text_color;
