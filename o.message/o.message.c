@@ -182,13 +182,6 @@ typedef struct _omessage {
     
     //new version
     int newbndl;
-	t_osc_bndl_u *bndl_u;
-	t_osc_bndl_s *bndl_s;
-	int bndl_has_subs;
-	int bndl_has_been_checked_for_subs;
-    
-	t_osc_parser_subst *substitutions;
-	long nsubs;
 
     int     in_new_flag;
 	//t_jrgba frame_color, background_color, text_color;
@@ -323,18 +316,6 @@ void omessage_clearBundles(t_omessage *x)
 		osc_bundle_s_deepFree(x->bndl_s);
 		x->bndl_s = NULL;
 	}
-	/*
-	if(x->substitutions){
-		t_osc_parser_subst *s = x->substitutions;
-		while(s){
-			t_osc_parser_subst *next = s->next;
-			osc_mem_free(s);
-			s = next;
-		}
-		x->substitutions = NULL;
-		x->nsubs = 0;
-	}
-	*/
 #ifndef OMAX_PD_VERSION
 	if(x->text){
 		x->textlen = 0;
@@ -680,19 +661,7 @@ void omessage_gettext(t_omessage *x)
 	}
 
 	t_osc_bndl_u *bndl_u = NULL;
-	t_osc_parser_subst *subs = NULL;
-	long nsubs = 0;
-	t_osc_err e = osc_parser_parseString(size, buf, &bndl_u, &nsubs, &subs);
-	if(subs){
-		t_osc_parser_subst *s = subs;
-		while(s){
-			t_osc_parser_subst *next = s->next;
-			osc_mem_free(s);
-			s = next;
-		}
-		subs = NULL;
-		nsubs = 0;
-	}
+	t_osc_err e = osc_parser_parseString(size, buf, &bndl_u);
 	if(e){
 #ifdef OMAX_PD_VERSION
 		x->parse_error = 1;
@@ -2144,16 +2113,6 @@ void omessage_free(t_omessage *x)
         
         omessage_clearBundles(x);
         
-        if(x->substitutions){
-            t_osc_parser_subst *s = x->substitutions;
-            while(s){
-                t_osc_parser_subst *next = s->next;
-                osc_mem_free(s);
-                s = next;
-            }
-            x->substitutions = NULL;
-            x->nsubs = 0;
-        }
     }
     
     
@@ -2185,7 +2144,6 @@ void *omessage_new(t_symbol *msg, short argc, t_atom *argv)
 		x->newbndl = 0;
 		x->textlen = 0;
         
-        x->substitutions = NULL; //maybe not used now?
         
         critical_new(&(x->lock));
         //        x->qelem = qelem_new((t_object *)x, (method)omessage_refresh);
@@ -2509,7 +2467,6 @@ void *omessage_new(t_symbol *msg, short argc, t_atom *argv){
 		x->newbndl = 0;
 		x->textlen = 0;
 		x->text = NULL;
-		//x->substitutions = NULL;
 		x->bndl_has_been_checked_for_subs = 0;
 		x->bndl_has_subs = 0;
 		critical_new(&(x->lock));
