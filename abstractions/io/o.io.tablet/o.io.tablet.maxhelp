@@ -29,6 +29,17 @@
 		"tags" : "",
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-2",
+					"maxclass" : "bpatcher",
+					"name" : "o.io.tablet.display.maxpat",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 239.0, 183.0, 558.0, 341.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"frgb" : 0.0,
@@ -67,7 +78,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 19.397188, 20.447449, 396.0, 60.0 ],
-					"text" : "o.io.wacom"
+					"text" : "o.io.tablet"
 				}
 
 			}
@@ -87,9 +98,11 @@
 			}
 , 			{
 				"box" : 				{
-					"bgcolor" : [ 0.87451, 0.933333, 1.0, 1.0 ],
+					"bgcolor" : [ 0.629254, 1.0, 0.743511, 1.0 ],
 					"border" : 5,
-					"bordercolor" : [ 0.4, 0.4, 0.8, 1.0 ],
+					"bordercolor" : [ 0.133558, 0.8, 0.0, 1.0 ],
+					"grad1" : [ 0.325952, 0.929412, 0.424782, 1.0 ],
+					"grad2" : [ 0.696938, 0.721569, 0.680295, 1.0 ],
 					"id" : "obj-28",
 					"maxclass" : "panel",
 					"numinlets" : 1,
@@ -110,19 +123,8 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 5.186983, 183.0, 203.0, 435.0 ],
-					"text" : "/pen/position 0.36484 0.686754\n/pen/pressure 0.\n/pen/tilt 0.0312204 -0.109378\n/pen/proximity \"true\"\n/pen/contact \"false\"\n/pen/situated/as \"writer\"\n/pen/button/pressed \"up\" \"up\"\n/pen/rotation\n/pen/Z-position -1\n/pen/tangential/pressure\n/details/ID/vendor 1386\n/details/ID/tablet 791\n/details/ID/fromOS/tablet 1\n/details/serialnumber/pen 931189726\n/details/serialnumber/tablet \"8805614146526\"\n/details/code 6087\n/capabilities/code 6087\n/capabilities/deviceId true\n/capabilities/absX true\n/capabilities/absY true\n/capabilities/vendor1 false\n/capabilities/vendor2 false\n/capabilities/vendor3 false\n/capabilities/buttons false\n/capabilities/tiltX true\n/capabilities/tiltY true\n/capabilities/absZ true\n/capabilities/pressure true\n/capabilities/tangential/pressure true\n/capabilities/orientation false\n/capabilities/rotation true",
+					"text" : "/pen/position 0.34454 0.646276\n/pen/pressure 0.\n/pen/tilt -0.0468764 -0.109378\n/pen/proximity \"true\"\n/pen/contact \"false\"\n/pen/situated/as \"writer\"\n/pen/button/pressed \"up\" \"up\"\n/pen/rotation\n/pen/Z-position -1\n/pen/tangential/pressure\n/details/ID/vendor 1386\n/details/ID/tablet 791\n/details/ID/fromOS/tablet 1\n/details/serialnumber/pen 931189726\n/details/serialnumber/tablet \"8805614146526\"\n/details/code 6087\n/capabilities/code 6087\n/capabilities/deviceId true\n/capabilities/absX true\n/capabilities/absY true\n/capabilities/vendor1 false\n/capabilities/vendor2 false\n/capabilities/vendor3 false\n/capabilities/buttons false\n/capabilities/tiltX true\n/capabilities/tiltY true\n/capabilities/absZ true\n/capabilities/pressure true\n/capabilities/tangential/pressure true\n/capabilities/orientation false\n/capabilities/rotation true",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-3",
-					"maxclass" : "bpatcher",
-					"name" : "o.io.wacom.display.maxpat",
-					"numinlets" : 1,
-					"numoutlets" : 0,
-					"patching_rect" : [ 217.0, 196.0, 558.0, 337.0 ]
 				}
 
 			}
@@ -135,15 +137,15 @@
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 217.0, 138.0, 71.0, 20.0 ],
-					"text" : "o.io.wacom"
+					"patching_rect" : [ 217.0, 138.0, 63.0, 20.0 ],
+					"text" : "o.io.tablet"
 				}
 
 			}
  ],
 		"lines" : [ 			{
 				"patchline" : 				{
-					"destination" : [ "obj-3", 0 ],
+					"destination" : [ "obj-2", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-1", 0 ]
@@ -161,8 +163,8 @@
 			}
  ],
 		"dependency_cache" : [ 			{
-				"name" : "o.io.wacom.maxpat",
-				"bootpath" : "/Users/gabacheker/Documents/maxliB/wacom",
+				"name" : "o.io.tablet.maxpat",
+				"bootpath" : "/Users/gabacheker/Documents/CNMAT_Work/CNMAT_GITHUB/CNMAT-odot/abstractions/io/o.io.tablet",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
@@ -170,55 +172,55 @@
 , 			{
 				"name" : "recycleFingersIDs.maxpat",
 				"bootpath" : "/Users/gabacheker/Documents/maxliB/s2m.wacomtouchV1.0",
-				"patcherrelativepath" : "../s2m.wacomtouchV1.0",
+				"patcherrelativepath" : "../../../../../../maxliB/s2m.wacomtouchV1.0",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.collectwithtimeout.maxpat",
 				"bootpath" : "/Users/gabacheker/Documents/maxliB/lib",
-				"patcherrelativepath" : "../lib",
+				"patcherrelativepath" : "../../../../../../maxliB/lib",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "o.io.wacom.helper.encode.touch.maxpat",
-				"bootpath" : "/Users/gabacheker/Documents/maxliB/wacom",
+				"name" : "o.io.tablet.helper.encode.touch.maxpat",
+				"bootpath" : "/Users/gabacheker/Documents/CNMAT_Work/CNMAT_GITHUB/CNMAT-odot/abstractions/io/o.io.tablet",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "o.io.wacom.display.maxpat",
-				"bootpath" : "/Users/gabacheker/Documents/maxliB/wacom",
+				"name" : "o.io.tablet.display.maxpat",
+				"bootpath" : "/Users/gabacheker/Documents/CNMAT_Work/CNMAT_GITHUB/CNMAT-odot/abstractions/io/o.io.tablet",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "wacom-intuos-5-tablet.jpg",
-				"bootpath" : "/Users/gabacheker/Documents/maxliB/wacom",
+				"bootpath" : "/Users/gabacheker/Documents/CNMAT_Work/CNMAT_GITHUB/CNMAT-odot/abstractions/io/o.io.tablet",
 				"patcherrelativepath" : ".",
 				"type" : "JPEG",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "o.io.wacom.display.helper.touch.maxpat",
-				"bootpath" : "/Users/gabacheker/Documents/maxliB/wacom",
+				"name" : "o.io.tablet.display.helper.touch.maxpat",
+				"bootpath" : "/Users/gabacheker/Documents/CNMAT_Work/CNMAT_GITHUB/CNMAT-odot/abstractions/io/o.io.tablet",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "o.io.wacom.display.helper.pen.xyz.maxpat",
-				"bootpath" : "/Users/gabacheker/Documents/maxliB/wacom",
+				"name" : "o.io.tablet.display.helper.pen.xyz.maxpat",
+				"bootpath" : "/Users/gabacheker/Documents/CNMAT_Work/CNMAT_GITHUB/CNMAT-odot/abstractions/io/o.io.tablet",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "o.io.wacom.display.helper.pen.tilt.maxpat",
-				"bootpath" : "/Users/gabacheker/Documents/maxliB/wacom",
+				"name" : "o.io.tablet.display.helper.pen.tilt.maxpat",
+				"bootpath" : "/Users/gabacheker/Documents/CNMAT_Work/CNMAT_GITHUB/CNMAT-odot/abstractions/io/o.io.tablet",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
@@ -226,20 +228,20 @@
 , 			{
 				"name" : "o.io.gl.maxpat",
 				"bootpath" : "/Users/gabacheker/Documents/maxliB/CNMAT_Externals/odot/abstractions/io/graphics",
-				"patcherrelativepath" : "../CNMAT_Externals/odot/abstractions/io/graphics",
+				"patcherrelativepath" : "../../../../../../maxliB/CNMAT_Externals/odot/abstractions/io/graphics",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.io.gl.platohelper.maxpat",
 				"bootpath" : "/Users/gabacheker/Documents/maxliB/CNMAT_Externals/odot/abstractions/io/graphics",
-				"patcherrelativepath" : "../CNMAT_Externals/odot/abstractions/io/graphics",
+				"patcherrelativepath" : "../../../../../../maxliB/CNMAT_Externals/odot/abstractions/io/graphics",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "o.io.wacom.display.helper.pen.button.maxpat",
-				"bootpath" : "/Users/gabacheker/Documents/maxliB/wacom",
+				"name" : "o.io.tablet.display.helper.pen.button.maxpat",
+				"bootpath" : "/Users/gabacheker/Documents/CNMAT_Work/CNMAT_GITHUB/CNMAT-odot/abstractions/io/o.io.tablet",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
