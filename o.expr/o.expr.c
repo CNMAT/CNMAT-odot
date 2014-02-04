@@ -478,16 +478,14 @@ void *oexpr_new(t_symbol *msg, short argc, t_atom *argv){
                         break;
                     case A_SYM:
 					{
-                        //strcpy(symbuf[i], atom_getsymbol(argv + i)->s_name);
+                        strcpy(symbuf[i], atom_getsymbol(argv + i)->s_name);
 
-                        //omax_util_hashBrackets2Curlies(symbuf[i]);
+                        omax_util_hashBrackets2Curlies(symbuf[i]);
                                                 
-						//char *s = symbuf[i];
-                        
-                        char *s = atom_getsym(argv + i)->s_name;
+						char *s = symbuf[i];
+
                         long len = strlen(s); // null byte
 
-                        post("arg: %d A_SYM %s %ld chars", i, s, len);
 						long j;
 						for(j = 0; j < len; j++){  //<< check this for pd version
 							if(s[j] == '$'){
@@ -504,7 +502,6 @@ void *oexpr_new(t_symbol *msg, short argc, t_atom *argv){
 								}
 							}else{
 								*ptr++ = s[j];
-                                post("char %d: %c\n", j, s[j]);
 							}
 						}
 						*ptr++ = ' ';
@@ -518,7 +515,6 @@ void *oexpr_new(t_symbol *msg, short argc, t_atom *argv){
 				OSC_PROFILE_TIMER_STOP(foo);
 				OSC_PROFILE_TIMER_PRINTF(foo);
 				OSC_PROFILE_TIMER_SNPRINTF(foo, buff);
-                post("%s %s error: %s\n", __func__, buf, osc_error_string(ret));
  
 #ifdef __OSC_PROFILE__
 				post("%s\n", buff);
@@ -680,7 +676,6 @@ void *oexpr_new(t_symbol *msg, short argc, t_atom *argv){
 #endif
 				if(!f || ret){
 					object_error((t_object *)x, "error parsing %s\n", buf);
-                    post("error: %s\n", osc_error_string(ret));
 
 					return NULL;
 				}

@@ -486,7 +486,7 @@ static void omenu_save(t_gobj *z, t_binbuf *b)
     t_omenu *x = (t_omenu *)z;
     
     
-    binbuf_addv(b, "ssiis;", gensym("#X"),gensym("obj"), (t_int)x->ob.te_xpix, (t_int)x->ob.te_ypix, gensym("omenu"));    
+    binbuf_addv(b, "ssiis;", gensym("#X"),gensym("obj"), (t_int)x->ob.te_xpix, (t_int)x->ob.te_ypix, gensym("o.menu"));
 }
 
 void omenu_setdisplymode(t_omenu *x, float t)
