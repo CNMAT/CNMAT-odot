@@ -8,7 +8,7 @@
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 434.0, 69.0, 1030.0, 650.0 ],
+		"rect" : [ 128.0, 51.0, 1030.0, 650.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -35,7 +35,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 124.0, 480.0, 49.0, 20.0 ],
+					"patching_rect" : [ 107.0, 273.928192, 49.0, 20.0 ],
 					"text" : "midiout"
 				}
 
@@ -48,7 +48,7 @@
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 115.0, 68.0, 25.0, 25.0 ]
+					"patching_rect" : [ 207.0, 24.0, 25.0, 25.0 ]
 				}
 
 			}
@@ -59,7 +59,7 @@
 					"maxclass" : "outlet",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 690.0, 450.0, 25.0, 25.0 ]
+					"patching_rect" : [ 843.0, 486.0, 25.0, 25.0 ]
 				}
 
 			}
@@ -81,7 +81,7 @@
 							"architecture" : "x86"
 						}
 ,
-						"rect" : [ 0.0, 0.0, 640.0, 480.0 ],
+						"rect" : [ 25.0, 69.0, 1079.0, 480.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -639,7 +639,7 @@
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 346.175537, 40.0, 25.0, 25.0 ]
+					"patching_rect" : [ 346.175537, 24.0, 25.0, 25.0 ]
 				}
 
 			}
@@ -662,7 +662,7 @@
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"id" : "obj-2",
-					"items" : [ "AU DLS Synth 1", ",", "from Max 1", ",", "from Max 2" ],
+					"items" : [ "AU DLS Synth 1", ",", "QuNexus Port 1", ",", "QuNexus Port 2", ",", "QuNexus Port 3", ",", "from Max 1", ",", "from Max 2" ],
 					"maxclass" : "umenu",
 					"numinlets" : 1,
 					"numoutlets" : 3,
@@ -695,7 +695,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "FullPacket" ],
-					"patching_rect" : [ 346.175537, 82.0, 75.0, 20.0 ],
+					"patching_rect" : [ 346.175537, 66.0, 75.0, 20.0 ],
 					"text" : "o.route /port"
 				}
 

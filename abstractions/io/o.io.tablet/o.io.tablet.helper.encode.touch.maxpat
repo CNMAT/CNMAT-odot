@@ -3,12 +3,11 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 6,
-			"minor" : 1,
-			"revision" : 3,
-			"architecture" : "x86"
+			"minor" : 0,
+			"revision" : 8
 		}
 ,
-		"rect" : [ 104.0, 102.0, 1307.0, 755.0 ],
+		"rect" : [ 144.0, 44.0, 1307.0, 755.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -52,7 +51,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
 					"patching_rect" : [ 52.0, 251.5, 573.0, 47.0 ],
-					"text" : "o.expr /name = [ \\\"/1\\\"\\, \\\"/2\\\"\\, \\\"/3\\\"\\, \\\"/4\\\"\\,\\\"/5\\\"\\, \\\"/6\\\"\\, \\\"/7\\\"\\, \\\"/8\\\"\\, \\\"/9\\\"\\, \\\"/10\\\"\\, \\\"/11\\\"\\, \\\"/12\\\"\\,\\\"/13\\\"\\, \\\"/14\\\"\\, \\\"/15\\\"\\, \\\"/16\\\" ] [[(/pre/count [[0]])]]\\; assign(/name + \\\"/state\\\"\\, /pre/state)\\; assign(/name + \\\"/position\\\"\\, /pre/position)\\; assign(/name + \\\"/size\\\"\\, /pre/size)"
+					"text" : "o.expr /name = [ \\\"/1\\\"\\, \\\"/2\\\"\\, \\\"/3\\\"\\, \\\"/4\\\"\\,\\\"/5\\\"\\, \\\"/6\\\"\\, \\\"/7\\\"\\, \\\"/8\\\"\\, \\\"/9\\\"\\, \\\"/10\\\"\\, \\\"/11\\\"\\, \\\"/12\\\"\\,\\\"/13\\\"\\, \\\"/14\\\"\\, \\\"/15\\\"\\, \\\"/16\\\" ] [[(/pre/count[[0]])]]\\; assign(/name + \\\"/state\\\"\\, /pre/state)\\; assign(/name + \\\"/position\\\"\\, /pre/position)\\; assign(/name + \\\"/size\\\"\\, /pre/size)"
 				}
 
 			}

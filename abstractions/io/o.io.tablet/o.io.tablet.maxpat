@@ -8,7 +8,7 @@
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 252.0, 44.0, 1683.0, 806.0 ],
+		"rect" : [ 146.0, 64.0, 1683.0, 806.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -31,13 +31,27 @@
 				"box" : 				{
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
+					"id" : "obj-9",
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 364.0, 358.0, 50.0, 18.0 ],
+					"text" : "0"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
 					"id" : "obj-19",
 					"linecount" : 3,
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 649.741272, 428.0, 290.0, 47.0 ],
+					"patching_rect" : [ 661.741272, 427.0, 290.0, 47.0 ],
 					"text" : "o.expr /pen/position[[1]] = scale(/pen/position[[1]]\\, 0.\\, 1\\, 1\\, 0)\\; /pen/position[[1]] = clip(/pen/position[[1]]\\, 0.\\, 1)"
 				}
 
@@ -1153,8 +1167,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 60.333332, 279.0, 183.0, 20.0 ],
-					"text" : "o.io.wacom.helper.encode.touch"
+					"patching_rect" : [ 60.333332, 279.0, 174.0, 20.0 ],
+					"text" : "o.io.tablet.helper.encode.touch"
 				}
 
 			}
@@ -1413,36 +1427,6 @@
 				"box" : 				{
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
-					"id" : "obj-18",
-					"items" : [ "logical", "(default)", ",", "proportionnal", ",", "physical", "(mm)" ],
-					"labelclick" : 1,
-					"maxclass" : "umenu",
-					"numinlets" : 1,
-					"numoutlets" : 3,
-					"outlettype" : [ "int", "", "" ],
-					"parameter_enable" : 0,
-					"patching_rect" : [ 141.833344, 130.0, 111.0, 20.0 ]
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontname" : "Arial",
-					"fontsize" : 12.0,
-					"id" : "obj-26",
-					"maxclass" : "message",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 141.833344, 155.0, 70.0, 18.0 ],
-					"text" : "xyrange $1"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontname" : "Arial",
-					"fontsize" : 12.0,
 					"id" : "obj-29",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
@@ -1477,7 +1461,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 311.833344, 155.0, 47.0, 17.0 ],
+					"patching_rect" : [ 228.833344, 155.0, 47.0, 17.0 ],
 					"text" : "getinfo"
 				}
 
@@ -1520,7 +1504,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 4,
 					"outlettype" : [ "list", "list", "list", "list" ],
-					"patching_rect" : [ 60.333332, 198.654999, 402.0, 19.0 ],
+					"patching_rect" : [ 60.333332, 199.654999, 402.0, 19.0 ],
 					"text" : "s2m.wacomtouch"
 				}
 
@@ -1534,7 +1518,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 649.741272, 393.721069, 91.0, 20.0 ],
+					"patching_rect" : [ 661.741272, 393.721069, 91.0, 20.0 ],
 					"text" : "o.prepend /pen"
 				}
 
@@ -1549,7 +1533,7 @@
 					"numinlets" : 10,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 649.741272, 343.030823, 526.0, 33.0 ],
+					"patching_rect" : [ 661.741272, 350.5, 526.0, 33.0 ],
 					"text" : "o.pack /position /pressure /tilt /proximity /contact /situated/as /button/pressed /rotation /Z-position /tangential/pressure"
 				}
 
@@ -1567,7 +1551,7 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-23", 0 ],
+					"destination" : [ "obj-21", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-10", 0 ]
@@ -1590,15 +1574,6 @@
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-170", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-26", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"source" : [ "obj-18", 0 ]
 				}
 
 			}
@@ -1631,16 +1606,6 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-3", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"midpoints" : [ 151.333344, 184.0, 69.833328, 184.0 ],
-					"source" : [ "obj-26", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
 					"destination" : [ "obj-35", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
@@ -1662,6 +1627,15 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-7", 1 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-29", 2 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-9", 1 ],
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-29", 2 ]
@@ -1876,7 +1850,7 @@
 					"destination" : [ "obj-3", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"midpoints" : [ 321.333344, 184.5, 69.833328, 184.5 ],
+					"midpoints" : [ 238.333344, 184.5, 69.833328, 184.5 ],
 					"source" : [ "obj-5", 0 ]
 				}
 

@@ -116,7 +116,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 64.5, 315.0, 75.0, 20.0 ],
-									"presentation_rect" : [ 132.0, 455.0, 0.0, 0.0 ],
 									"text" : "speedlim 30"
 								}
 
@@ -423,8 +422,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "FullPacket" ],
-					"patching_rect" : [ 123.5, 373.5, 75.0, 20.0 ],
-					"text" : "o.io.gl place"
+					"patching_rect" : [ 123.5, 373.5, 83.0, 20.0 ],
+					"text" : "o.io.gl tilt.disp"
 				}
 
 			}
