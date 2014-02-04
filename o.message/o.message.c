@@ -1753,7 +1753,6 @@ void omessage_drawElements(t_omessage *x, t_glist *glist, int width2, int height
             sys_vgui("bind %s <Motion> {+pdsend {%s resize_mousemove %%x %%y }} \n", x->handle_id, x->receive_name);
             sys_vgui("bind %s <ButtonRelease-1> {+pdsend {%s resize_mouseup }} \n", x->handle_id, x->receive_name);
             
-            //omessage_gettext(x);
             if (x->tk_text)
             {
                 sys_vgui("%s create text %d %d -anchor nw -width %d -font {{%s} %d %s} -tags text%lx -text [subst -nobackslash -nocommands -novariables [string trimright [regsub -all -line {^[ \t]+|[ \t]+$}  {%s} \"\" ]]] \n", x->canvas_id, text_xpix(&x->ob, x->glist)+5, text_ypix(&x->ob, x->glist)+5, x->width-10, sys_font, glist_getfont(x->glist), sys_fontweight, (long)x, x->tk_text );
@@ -1761,9 +1760,7 @@ void omessage_drawElements(t_omessage *x, t_glist *glist, int width2, int height
                 
 // get height of text bbox, send to "setheight" to set height and redraw in the case of cmd-d duplicate, this gets called first, and then is displaced, so the bbox value is actually pre-displacement, see setheight function above
                 omessage_getRectAndDraw(x, 1);
-                
-                //sys_vgui("pdsend \"%s setheight [lindex [%s bbox text%lx] 3]\" \n", x->receive_name, x->canvas_id, (long)x);
-                //sys_vgui("::pdwindow::post \"%x %s Tk bbox height [lindex [%s bbox text%lx] 3]\n\"\n", x, __func__, x->canvas_id, (long)x);
+
 
             }
             x->firsttime = 0;
