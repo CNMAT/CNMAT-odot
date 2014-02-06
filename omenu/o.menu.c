@@ -375,10 +375,24 @@ void omenu_selectionClick(t_omenu *x, float f)
     
 }
 
+void omenu_constrainPosToScreen(t_omenu *x)
+{
+    int x1, y1, x2, y2;
+    omenu_getrect((t_gobj *)x, x->glist, &x1, &y1, &x2, &y2);
+    
+    int wx1 = x1 + x->glist->gl_screenx1;
+    int wy1 = x->height + y2 + x->glist->gl_screeny1 + 6;
+    
+//    sys_vgui("::pdwindow::post \"%x %s Tk offsety = [expr [winfo screenheight %s] - %d]\n\"\n", x, __func__, x->m_id, x->m_height + wy1);
+    sys_vgui("offsetMenu %s %d %d %d %d \n", x->m_id, wx1, wy1, x->m_width, x->m_height);
+  //  post("%s offset function input %s %d %d %d %d", __func__, x->m_id, wx1, wy1, x->m_width, x->m_height);
+ 
+}
+
 void omenu_addItem(t_omenu *x, int id, char *str)
 {
     int x1, y1, x2, y2;
-    int fontheight = sys_fontheight(glist_getfont(x->glist));
+    int fontheight = x->glist->gl_font + 6;//sys_fontheight(glist_getfont(x->glist));
     omenu_getrect((t_gobj *)x, x->glist, &x1, &y1, &x2, &y2);
     
     int wx1 = x1 + x->glist->gl_screenx1;
@@ -405,6 +419,8 @@ void omenu_addItem(t_omenu *x, int id, char *str)
     sys_vgui("bind %s <Leave> {+pdsend {%s focusout } }\n", x->m_id, x->receive_name);
     
     sys_vgui("wm geometry %s %dx%d+[expr %d - int([%s canvasx 0])]+[expr %d - int([%s canvasy 0])]  \n", x->m_id, x->m_width, x->m_height+10, wx1, x->canvas_id, wy1, x->canvas_id);
+    
+    //sys_vgui("::pdwindow::post \"%x %s Tk screenheight %d == [winfo screenheight %s]\n\"\n", x, __func__, x->m_height + wy1, x->m_id);
 }
 
 
@@ -412,7 +428,7 @@ static int omenu_click(t_gobj *z, t_glist *glist, int xpix, int ypix, int shift,
 {
     t_omenu *x = (t_omenu *)z;
     //on click
-    if(doit){
+    if(doit && x->numitems){
         if(x->menuopen)
         {
             sys_vgui("destroy %s\n", x->m_id);
@@ -426,7 +442,7 @@ static int omenu_click(t_gobj *z, t_glist *glist, int xpix, int ypix, int shift,
         for (i = 0; i < x->numitems; i++) {
             omenu_addItem(x, i, x->menu[i]);
         }
-        
+        omenu_constrainPosToScreen(x);
         x->menuopen = 1;
     } else {
         if(x->menuopen)
@@ -586,10 +602,19 @@ void *omenu_new(t_symbol *msg, short argc, t_atom *argv)
         x->receive_name = (char *)malloc(sizeof(char) * (strlen(buf)+1));
         strcpy(x->receive_name, buf);
 
+        sys_vgui("proc offsetMenu {m_name m_x1 m_y1 m_width m_height} {\n\
+                    set scrHeight [winfo screenheight $m_name] \n\
+                    set dy [expr $scrHeight - [expr $m_y1 + $m_height]] \n\
+                    if {$dy < 0} { \n\
+                        set shifted_y1 [expr $m_y1 + $dy - 8] \n\
+                        wm geometry $m_name ${m_width}x[expr ${m_height} + 8]+${m_x1}+${shifted_y1} \n\
+                    }\n\
+                 }\n"); //
+
         pd_bind(&x->ob.ob_pd, gensym(x->receive_name));
 
         x->width = 100;
-        x->height = sys_fontheight(glist_getfont(x->glist)) + 4;
+        x->height = x->glist->gl_font + 6;//sys_fontheight(glist_getfont(x->glist)) + 4;
         x->m_width = x->width;
         x->m_height = 0;
 
