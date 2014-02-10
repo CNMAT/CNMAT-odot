@@ -8,7 +8,7 @@
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 100.0, 100.0, 813.0, 781.0 ],
+		"rect" : [ 224.0, 44.0, 813.0, 781.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -34,7 +34,83 @@
 					"name" : "o.io.tablet.display.maxpat",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 239.0, 183.0, 558.0, 341.0 ]
+					"patching_rect" : [ 215.0, 190.0, 562.0, 340.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-4",
+					"linecount" : 33,
+					"maxclass" : "o.message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 26.794376, 480.5, 155.0, 449.0 ],
+					"text" : "/total/count 2\n/touch/2/state \"retracted\"\n/touch/2/position 0.657959 0.552246\n/touch/2/size 0.010498 0.0212402\n/touch/3/state \"retracted\"\n/touch/3/position 0.566895 0.697266\n/touch/3/size 0.010498 0.0212402\n/touch/4/state \"retracted\"\n/touch/4/position 0.437256 0.696045\n/touch/4/size 0.0158691 0.0317383\n/capabilities/code 6087\n/capabilities/deviceId true\n/capabilities/absX true\n/capabilities/absY true\n/capabilities/vendor1 false\n/capabilities/vendor2 false\n/capabilities/vendor3 false\n/capabilities/buttons false\n/capabilities/tiltX true\n/capabilities/tiltY true\n/capabilities/absZ true\n/capabilities/pressure true\n/capabilities/tangential/pressure true\n/capabilities/orientation false\n/capabilities/rotation true",
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-8",
+					"maxclass" : "o.message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 105.186981, 170.0, 92.0, 20.0 ],
+					"text" : "/pen \"nopoll\"",
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-9",
+					"maxclass" : "o.message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 103.789795, 144.0, 77.397186, 20.0 ],
+					"text" : "/pen \"poll\"",
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-6",
+					"maxclass" : "o.message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 9.794376, 170.0, 92.0, 20.0 ],
+					"text" : "/touch \"nopoll\"",
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-3",
+					"maxclass" : "o.message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 8.397188, 144.0, 77.397186, 20.0 ],
+					"text" : "/touch \"poll\"",
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
 			}
@@ -59,25 +135,25 @@
 					"fontsize" : 12.0,
 					"frgb" : 0.0,
 					"id" : "obj-7",
-					"linecount" : 13,
+					"linecount" : 14,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 531.0, 541.0, 220.0, 181.0 ],
-					"text" : "The display:\nIf the pen is sensed by the wacom a red blog appears. The larger the blog, the more pressure applied by the pen.  The red cylinder on the left of the display represents the tilt of the pen. (If the pen tilt display doesn't work, then open its inspector and name it 'place'.)\n\nIf touch(s) is sensed yellowish blogs appear.  The sizes of the blobs corresponds to the surface area of the touch. "
+					"patching_rect" : [ 531.0, 541.0, 220.0, 194.0 ],
+					"text" : "The display:\nIf the pen is sensed by the wacom a red blog appears. The larger the blog, the more pressure applied by the pen.  The red cylinder on the left of the display represents the tilt of the pen. (If the pen tilt display doesn't work, then open its inspector and name it 'tilt.disp'.)\n\nIf touch(s) is sensed yellowish blogs appear.  The sizes of the blobs corresponds to the surface area of the touch. "
 				}
 
 			}
 , 			{
 				"box" : 				{
-					"fontname" : "Arial",
-					"fontsize" : 48.0,
+					"fontname" : "Menlo Regular",
+					"fontsize" : 36.0,
 					"frgb" : 0.0,
 					"id" : "obj-25",
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 19.397188, 20.447449, 396.0, 60.0 ],
+					"patching_rect" : [ 19.397188, 20.447449, 453.0, 48.0 ],
 					"text" : "o.io.tablet"
 				}
 
@@ -116,28 +192,12 @@
 				"box" : 				{
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
-					"id" : "obj-4",
-					"linecount" : 32,
-					"maxclass" : "o.message",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 5.186983, 183.0, 203.0, 435.0 ],
-					"text" : "/pen/position 0.34454 0.646276\n/pen/pressure 0.\n/pen/tilt -0.0468764 -0.109378\n/pen/proximity \"true\"\n/pen/contact \"false\"\n/pen/situated/as \"writer\"\n/pen/button/pressed \"up\" \"up\"\n/pen/rotation\n/pen/Z-position -1\n/pen/tangential/pressure\n/details/ID/vendor 1386\n/details/ID/tablet 791\n/details/ID/fromOS/tablet 1\n/details/serialnumber/pen 931189726\n/details/serialnumber/tablet \"8805614146526\"\n/details/code 6087\n/capabilities/code 6087\n/capabilities/deviceId true\n/capabilities/absX true\n/capabilities/absY true\n/capabilities/vendor1 false\n/capabilities/vendor2 false\n/capabilities/vendor3 false\n/capabilities/buttons false\n/capabilities/tiltX true\n/capabilities/tiltY true\n/capabilities/absZ true\n/capabilities/pressure true\n/capabilities/tangential/pressure true\n/capabilities/orientation false\n/capabilities/rotation true",
-					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontname" : "Arial",
-					"fontsize" : 12.0,
 					"id" : "obj-1",
 					"maxclass" : "newobj",
-					"numinlets" : 0,
+					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 217.0, 138.0, 63.0, 20.0 ],
+					"patching_rect" : [ 20.794376, 227.0, 63.0, 20.0 ],
 					"text" : "o.io.tablet"
 				}
 
@@ -161,6 +221,42 @@
 				}
 
 			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-1", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-3", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-1", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-6", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-1", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-8", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-1", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-9", 0 ]
+				}
+
+			}
  ],
 		"dependency_cache" : [ 			{
 				"name" : "o.io.tablet.maxpat",
@@ -170,16 +266,16 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "recycleFingersIDs.maxpat",
-				"bootpath" : "/Users/gabacheker/Documents/maxliB/s2m.wacomtouchV1.0",
-				"patcherrelativepath" : "../../../../../../maxliB/s2m.wacomtouchV1.0",
+				"name" : "o.collectwithtimeout.maxpat",
+				"bootpath" : "/Users/gabacheker/Documents/maxliB/lib",
+				"patcherrelativepath" : "../../../../../../maxliB/lib",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "o.collectwithtimeout.maxpat",
-				"bootpath" : "/Users/gabacheker/Documents/maxliB/lib",
-				"patcherrelativepath" : "../../../../../../maxliB/lib",
+				"name" : "recycleFingersIDs.maxpat",
+				"bootpath" : "/Users/gabacheker/Documents/maxliB/s2m.wacomtouchV1.0",
+				"patcherrelativepath" : "../../../../../../maxliB/s2m.wacomtouchV1.0",
 				"type" : "JSON",
 				"implicit" : 1
 			}
@@ -247,31 +343,7 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "o.pack.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.prepend.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "s2m.wacomtouch.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.collect.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "s2m.wacom.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.union.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.message.mxo",
+				"name" : "o.select.mxo",
 				"type" : "iLaX"
 			}
 , 			{
@@ -283,15 +355,39 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "o.select.mxo",
+				"name" : "o.collect.mxo",
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "o.iterate.mxo",
+				"name" : "o.prepend.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.message.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.union.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "s2m.wacom.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.pack.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "s2m.wacomtouch.mxo",
 				"type" : "iLaX"
 			}
 , 			{
 				"name" : "o.cond.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.iterate.mxo",
 				"type" : "iLaX"
 			}
 , 			{
