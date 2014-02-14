@@ -1,0 +1,441 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 42;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0D9F32491455625000C962CC /* s2m.wacom.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9F32481455625000C962CC /* s2m.wacom.m */; };
+		0DA41D311461A68B003231C2 /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 0DA41D301461A68B003231C2 /* commonsyms.c */; };
+		0DA41D581461A798003231C2 /* MaxAudioSignal.h in Headers */ = {isa = PBXBuildFile; fileRef = 0DA41D511461A798003231C2 /* MaxAudioSignal.h */; };
+		0DA41D591461A798003231C2 /* MaxAudioSignal.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DA41D521461A798003231C2 /* MaxAudioSignal.m */; };
+		0DA41D5A1461A798003231C2 /* MaxObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 0DA41D531461A798003231C2 /* MaxObject.h */; };
+		0DA41D5B1461A798003231C2 /* MaxObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DA41D541461A798003231C2 /* MaxObject.m */; };
+		0DA41D5C1461A798003231C2 /* MaxObject_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 0DA41D551461A798003231C2 /* MaxObject_Prefix.pch */; };
+		0DA41D5D1461A798003231C2 /* maxobjectbridge.h in Headers */ = {isa = PBXBuildFile; fileRef = 0DA41D561461A798003231C2 /* maxobjectbridge.h */; };
+		0DA41D5E1461A798003231C2 /* maxobjectbridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DA41D571461A798003231C2 /* maxobjectbridge.m */; };
+		0DCCFC47144ECEF8006F1097 /* NSAppleEventDescriptorHelperCategory.h in Headers */ = {isa = PBXBuildFile; fileRef = 0DCCFC42144ECEF8006F1097 /* NSAppleEventDescriptorHelperCategory.h */; };
+		0DCCFC48144ECEF8006F1097 /* NSAppleEventDescriptorHelperCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DCCFC43144ECEF8006F1097 /* NSAppleEventDescriptorHelperCategory.m */; };
+		0DCCFC49144ECEF8006F1097 /* TabletAEDictionary.h in Headers */ = {isa = PBXBuildFile; fileRef = 0DCCFC44144ECEF8006F1097 /* TabletAEDictionary.h */; };
+		0DCCFC4A144ECEF8006F1097 /* WacomTabletDriver.h in Headers */ = {isa = PBXBuildFile; fileRef = 0DCCFC45144ECEF8006F1097 /* WacomTabletDriver.h */; };
+		0DCCFC4B144ECEF8006F1097 /* WacomTabletDriver.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DCCFC46144ECEF8006F1097 /* WacomTabletDriver.m */; };
+		0DCCFD03144ED121006F1097 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DCCFD01144ED121006F1097 /* CoreData.framework */; };
+		0DCCFD04144ED121006F1097 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DCCFD02144ED121006F1097 /* Foundation.framework */; };
+		0DFC6C1A14FBC12F00B429A0 /* MaxAudioAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DFC6C1914FBC12F00B429A0 /* MaxAudioAPI.framework */; };
+		0F5B62030919440900A62EB9 /* MaxAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F5B62020919440900A62EB9 /* MaxAPI.framework */; };
+		229080F70CA9FF3900530300 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 229080F60CA9FF3900530300 /* Cocoa.framework */; };
+		8D01CCCE0486CAD60068D4B7 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
+		0D9F32481455625000C962CC /* s2m.wacom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = s2m.wacom.m; sourceTree = "<group>"; };
+		0DA41D301461A68B003231C2 /* commonsyms.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = commonsyms.c; path = "../../c74support/max-includes/common/commonsyms.c"; sourceTree = SOURCE_ROOT; };
+		0DA41D511461A798003231C2 /* MaxAudioSignal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaxAudioSignal.h; sourceTree = "<group>"; };
+		0DA41D521461A798003231C2 /* MaxAudioSignal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaxAudioSignal.m; sourceTree = "<group>"; };
+		0DA41D531461A798003231C2 /* MaxObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaxObject.h; sourceTree = "<group>"; };
+		0DA41D541461A798003231C2 /* MaxObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaxObject.m; sourceTree = "<group>"; };
+		0DA41D551461A798003231C2 /* MaxObject_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaxObject_Prefix.pch; sourceTree = "<group>"; };
+		0DA41D561461A798003231C2 /* maxobjectbridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = maxobjectbridge.h; sourceTree = "<group>"; };
+		0DA41D571461A798003231C2 /* maxobjectbridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = maxobjectbridge.m; sourceTree = "<group>"; };
+		0DCCFC42144ECEF8006F1097 /* NSAppleEventDescriptorHelperCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSAppleEventDescriptorHelperCategory.h; sourceTree = "<group>"; };
+		0DCCFC43144ECEF8006F1097 /* NSAppleEventDescriptorHelperCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSAppleEventDescriptorHelperCategory.m; sourceTree = "<group>"; };
+		0DCCFC44144ECEF8006F1097 /* TabletAEDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabletAEDictionary.h; sourceTree = "<group>"; };
+		0DCCFC45144ECEF8006F1097 /* WacomTabletDriver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WacomTabletDriver.h; sourceTree = "<group>"; };
+		0DCCFC46144ECEF8006F1097 /* WacomTabletDriver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WacomTabletDriver.m; sourceTree = "<group>"; };
+		0DCCFD01144ED121006F1097 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
+		0DCCFD02144ED121006F1097 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
+		0DFC6AEC14FBBD1A00B429A0 /* maxmspsdk.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = maxmspsdk.xcconfig; path = ../maxmspsdk.xcconfig; sourceTree = SOURCE_ROOT; };
+		0DFC6C1914FBC12F00B429A0 /* MaxAudioAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MaxAudioAPI.framework; path = "../../c74support/msp-includes/MaxAudioAPI.framework"; sourceTree = SOURCE_ROOT; };
+		0F5B62020919440900A62EB9 /* MaxAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MaxAPI.framework; path = "../../c74support/max-includes/MaxAPI.framework"; sourceTree = SOURCE_ROOT; };
+		229080F60CA9FF3900530300 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
+		542ED84F09C02A0000DBC7EB /* s2m.wacom.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = s2m.wacom.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8D01CCCD0486CAD60068D4B7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D01CCCE0486CAD60068D4B7 /* Carbon.framework in Frameworks */,
+				0F5B62030919440900A62EB9 /* MaxAPI.framework in Frameworks */,
+				229080F70CA9FF3900530300 /* Cocoa.framework in Frameworks */,
+				0DCCFD03144ED121006F1097 /* CoreData.framework in Frameworks */,
+				0DCCFD04144ED121006F1097 /* Foundation.framework in Frameworks */,
+				0DFC6C1A14FBC12F00B429A0 /* MaxAudioAPI.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		089C166AFE841209C02AAC07 /* abs~ */ = {
+			isa = PBXGroup;
+			children = (
+				0DFC6AEC14FBBD1A00B429A0 /* maxmspsdk.xcconfig */,
+				08FB77ADFE841716C02AAC07 /* Source */,
+				089C167CFE841241C02AAC07 /* Resources */,
+				089C1671FE841209C02AAC07 /* External Frameworks and Libraries */,
+				19C28FB4FE9D528D11CA2CBB /* Products */,
+			);
+			name = "abs~";
+			sourceTree = "<group>";
+		};
+		089C1671FE841209C02AAC07 /* External Frameworks and Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				0DFC6C1914FBC12F00B429A0 /* MaxAudioAPI.framework */,
+				0F5B62020919440900A62EB9 /* MaxAPI.framework */,
+				0DCCFD01144ED121006F1097 /* CoreData.framework */,
+				0DCCFD02144ED121006F1097 /* Foundation.framework */,
+				08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */,
+				229080F60CA9FF3900530300 /* Cocoa.framework */,
+			);
+			name = "External Frameworks and Libraries";
+			sourceTree = "<group>";
+		};
+		089C167CFE841241C02AAC07 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		08FB77ADFE841716C02AAC07 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				0D9F32481455625000C962CC /* s2m.wacom.m */,
+				0DA41D501461A798003231C2 /* MaxObject */,
+				0DA41D301461A68B003231C2 /* commonsyms.c */,
+				0DCCFC41144ECEF8006F1097 /* Wacom */,
+			);
+			name = Source;
+			sourceTree = "<group>";
+		};
+		0DA41D501461A798003231C2 /* MaxObject */ = {
+			isa = PBXGroup;
+			children = (
+				0DA41D511461A798003231C2 /* MaxAudioSignal.h */,
+				0DA41D521461A798003231C2 /* MaxAudioSignal.m */,
+				0DA41D531461A798003231C2 /* MaxObject.h */,
+				0DA41D541461A798003231C2 /* MaxObject.m */,
+				0DA41D551461A798003231C2 /* MaxObject_Prefix.pch */,
+				0DA41D561461A798003231C2 /* maxobjectbridge.h */,
+				0DA41D571461A798003231C2 /* maxobjectbridge.m */,
+			);
+			name = MaxObject;
+			path = ../MaxObject;
+			sourceTree = "<group>";
+		};
+		0DCCFC41144ECEF8006F1097 /* Wacom */ = {
+			isa = PBXGroup;
+			children = (
+				0DCCFC42144ECEF8006F1097 /* NSAppleEventDescriptorHelperCategory.h */,
+				0DCCFC43144ECEF8006F1097 /* NSAppleEventDescriptorHelperCategory.m */,
+				0DCCFC44144ECEF8006F1097 /* TabletAEDictionary.h */,
+				0DCCFC45144ECEF8006F1097 /* WacomTabletDriver.h */,
+				0DCCFC46144ECEF8006F1097 /* WacomTabletDriver.m */,
+			);
+			path = Wacom;
+			sourceTree = "<group>";
+		};
+		19C28FB4FE9D528D11CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				542ED84F09C02A0000DBC7EB /* s2m.wacom.mxo */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		8D01CCC70486CAD60068D4B7 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0DCCFC47144ECEF8006F1097 /* NSAppleEventDescriptorHelperCategory.h in Headers */,
+				0DCCFC49144ECEF8006F1097 /* TabletAEDictionary.h in Headers */,
+				0DCCFC4A144ECEF8006F1097 /* WacomTabletDriver.h in Headers */,
+				0DA41D581461A798003231C2 /* MaxAudioSignal.h in Headers */,
+				0DA41D5A1461A798003231C2 /* MaxObject.h in Headers */,
+				0DA41D5C1461A798003231C2 /* MaxObject_Prefix.pch in Headers */,
+				0DA41D5D1461A798003231C2 /* maxobjectbridge.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		8D01CCC60486CAD60068D4B7 /* s2m.wacom */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0FFBB95809731BB700D78707 /* Build configuration list for PBXNativeTarget "s2m.wacom" */;
+			buildPhases = (
+				8D01CCC70486CAD60068D4B7 /* Headers */,
+				8D01CCC90486CAD60068D4B7 /* Resources */,
+				8D01CCCB0486CAD60068D4B7 /* Sources */,
+				8D01CCCD0486CAD60068D4B7 /* Frameworks */,
+				8D01CCCF0486CAD60068D4B7 /* Rez */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = s2m.wacom;
+			productInstallPath = "$(HOME)/Library/Bundles";
+			productName = MSPExternal;
+			productReference = 542ED84F09C02A0000DBC7EB /* s2m.wacom.mxo */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		089C1669FE841209C02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 0FFBB95C09731BB700D78707 /* Build configuration list for PBXProject "s2m.wacom" */;
+			compatibilityVersion = "Xcode 2.4";
+			developmentRegion = English;
+			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+			);
+			mainGroup = 089C166AFE841209C02AAC07 /* abs~ */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8D01CCC60486CAD60068D4B7 /* s2m.wacom */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8D01CCC90486CAD60068D4B7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXRezBuildPhase section */
+		8D01CCCF0486CAD60068D4B7 /* Rez */ = {
+			isa = PBXRezBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXRezBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8D01CCCB0486CAD60068D4B7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0DCCFC48144ECEF8006F1097 /* NSAppleEventDescriptorHelperCategory.m in Sources */,
+				0DCCFC4B144ECEF8006F1097 /* WacomTabletDriver.m in Sources */,
+				0D9F32491455625000C962CC /* s2m.wacom.m in Sources */,
+				0DA41D311461A68B003231C2 /* commonsyms.c in Sources */,
+				0DA41D591461A798003231C2 /* MaxAudioSignal.m in Sources */,
+				0DA41D5B1461A798003231C2 /* MaxObject.m in Sources */,
+				0DA41D5E1461A798003231C2 /* maxobjectbridge.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		0FFBB95909731BB700D78707 /* Development */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0DFC6AEC14FBBD1A00B429A0 /* maxmspsdk.xcconfig */;
+			buildSettings = {
+				ARCHS = (
+					i386,
+					x86_64,
+				);
+				COPY_PHASE_STRIP = NO;
+				DEBUGGING_SYMBOLS = YES;
+				DEPLOYMENT_LOCATION = YES;
+				DSTROOT = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"../../c74support/max-includes",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					"../../c74support/msp-includes",
+				);
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../../c74support/msp-includes\"";
+				GCC_ALTIVEC_EXTENSIONS = YES;
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_ENABLE_TRIGRAPHS = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "$(C74SUPPORT)/max-includes/macho-prefix.pch";
+				GCC_UNROLL_LOOPS = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_EFFECTIVE_CPLUSPLUS_VIOLATIONS = NO;
+				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
+				GCC_WARN_SHADOW = NO;
+				GCC_WARN_UNKNOWN_PRAGMAS = NO;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_PKGINFO_FILE = YES;
+				HEADER_SEARCH_PATHS = (
+					../MaxObject/,
+					"$(HEADER_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					"$(HEADER_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
+				);
+				HEADER_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(C74SUPPORT)/max-includes\"";
+				HEADER_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(C74SUPPORT)/msp-includes\"";
+				INFOPLIST_FILE = "$(SRCROOT)/../Info.plist";
+				INSTALL_PATH = /.;
+				LIBRARY_STYLE = Bundle;
+				MACOSX_DEPLOYMENT_TARGET = 10.5;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "-Wl,-U,_addbang,-U,_addfloat,-U,_addftx,-U,_addint,-U,_addinx,-U,_addmess,-U,_advise,-U,_advise_explain,-U,_alias,-U,_AnyKeyDown,-U,_appbuilder_keyword,-U,_appbuilder_register,-U,_argpad,-U,_assist_string,-U,_asyncfile_callback_free,-U,_asyncfile_callback_new,-U,_asyncfile_close,-U,_asyncfile_create,-U,_asyncfile_geteof,-U,_asyncfile_init,-U,_asyncfile_params_default,-U,_asyncfile_params_free,-U,_asyncfile_params_new,-U,_asyncfile_read,-U,_asyncfile_seteof,-U,_asyncfile_write,-U,_atom_alloc,-U,_atom_alloc_array,-U,_atom_arg_getdouble,-U,_atom_arg_getfloat,-U,_atom_arg_getlong,-U,_atom_arg_getsym,-U,_atom_dynamic_end,-U,_atom_dynamic_start,-U,_atom_getatom_array,-U,_atom_getchar_array,-U,_atom_getcharfix,-U,_atom_getdouble_array,-U,_atom_getfloat,-U,_atom_getfloat_array,-U,_atom_getformat,-U,_atom_getlong,-U,_atom_getlong_array,-U,_atom_getobj,-U,_atom_getobj_array,-U,_atom_getsym,-U,_atom_getsym_array,-U,_atom_gettext,-U,_atom_gettype,-U,_atom_setatom_array,-U,_atom_setattrval,-U,_atom_setbinbuf,-U,_atom_setchar_array,-U,_atom_setdouble_array,-U,_atom_setfloat,-U,_atom_setfloat_array,-U,_atom_setformat,-U,_atom_setlong,-U,_atom_setlong_array,-U,_atom_setobj,-U,_atom_setobj_array,-U,_atom_setobjval,-U,_atom_setparse,-U,_atom_setsym,-U,_atom_setsym_array,-U,_atom_string,-U,_atombuf_append,-U,_atombuf_count,-U,_atombuf_eval,-U,_atombuf_firstatom,-U,_atombuf_free,-U,_atombuf_misc,-U,_atombuf_new,-U,_atombuf_next,-U,_atombuf_prepend,-U,_atombuf_replace,-U,_atombuf_replacepoundargs,-U,_atombuf_save,-U,_atombuf_set,-U,_atombuf_subst,-U,_atombuf_text,-U,_atombuf_totext,-U,_atomisatomarray,-U,_atomisdictionary,-U,_atomisstring,-U,_atoms_totext,-U,_attr_addfilter_clip,-U,_attr_addfilter_clip_scale,-U,_attr_addfilterget_clip,-U,_attr_addfilterget_clip_scale,-U,_attr_addfilterget_proc,-U,_attr_addfilterset_clip,-U,_attr_addfilterset_clip_scale,-U,_attr_addfilterset_proc,-U,_attr_args_dictionary,-U,_attr_args_offset,-U,_attr_args_process,-U,_attr_dictionary_process,-U,_attr_filter_clip_new,-U,_attr_filter_proc_new,-U,_attr_offset_array_new,-U,_attr_offset_new,-U,_attr_typedfun_set,-U,_attribute_new,-U,_attribute_new_atoms,-U,_attribute_new_attrval,-U,_attribute_new_binbuf,-U,_attribute_new_format,-U,_attribute_new_objval,-U,_attribute_new_parse,-U,_auxtable_checksym,-U,_bangout,-U,_bf_singlefast,-U,_binbuf_addtext,-U,_binbuf_append,-U,_binbuf_delete,-U,_binbuf_eval,-U,_binbuf_getatom,-U,_binbuf_gethandle,-U,_binbuf_insert,-U,_binbuf_inshandle,-U,_binbuf_make,-U,_binbuf_new,-U,_binbuf_read,-U,_binbuf_set,-U,_binbuf_text,-U,_binbuf_totext,-U,_binbuf_vinsert,-U,_binbuf_write,-U,_bitwrap_bell_filter,-U,_bitwrap_box_filter,-U,_bitwrap_bspline_filter,-U,_bitwrap_filter_default,-U,_bitwrap_filter_filter,-U,_bitwrap_interp,-U,_bitwrap_lanczos3_filter,-U,_bitwrap_mitchell_filter,-U,_bitwrap_triangle_filter,-U,_bitwrap_wrap_gworld,-U,_box_getcolor,-U,_boxcolor_rgb2index,-U,_call_method_attrval,-U,_call_method_binbuf,-U,_call_method_char,-U,_call_method_char_array,-U,_call_method_double,-U,_call_method_double_array,-U,_call_method_float,-U,_call_method_float_array,-U,_call_method_format,-U,_call_method_long,-U,_call_method_long_array,-U,_call_method_obj,-U,_call_method_obj_array,-U,_call_method_objval,-U,_call_method_parse,-U,_call_method_sym,-U,_call_method_sym_array,-U,_call_method_typed,-U,_charset_convert,-U,_charset_utf8tounicode,-U,_charset_unicodetoutf8,-U,_charset_isvalidutf8,-U,_charset_utf8_count,-U,_charset_utf8_offset,-U,_class_addadornment,-U,_class_addattr,-U,_class_addattr_atoms,-U,_class_addattr_atoms,-U,_class_addattr_format,-U,_class_addattr_format,-U,_class_addattr_parse,-U,_class_addattr_parse,-U,_class_addcommand,-U,_class_addmethod,-U,_class_addtypedwrapper,-U,_class_adornment_get,-U,_class_attr_addattr,-U,_class_attr_addattr_atoms,-U,_class_attr_addattr_atoms,-U,_class_attr_addattr_format,-U,_class_attr_addattr_format,-U,_class_attr_addattr_parse,-U,_class_attr_addattr_parse,-U,_class_attr_attr_get,-U,_class_attr_attr_getvalueof,-U,_class_attr_attr_setvalueof,-U,_class_attr_get,-U,_class_attr_method,-U,_class_buildprototype,-U,_class_clonable,-U,_class_cloneprototype,-U,_class_extra_lookup,-U,_class_extra_store,-U,_class_extra_storeflags,-U,_class_findbyname,-U,_class_free,-U,_class_getmethod_object,-U,_class_getpath,-U,_class_is_ui,-U,_class_is_box,-U,_class_mess,-U,_class_method,-U,_class_nameget,-U,_class_new,-U,_class_noinlet,-U,_class_obexoffset_get,-U,_class_obexoffset_set,-U,_class_register,-U,_class_alias,-U,_class_copy,-U,_class_dumpout_wrap,-U,_class_setname,-U,_class_setpath,-U,_class_sticky,-U,_class_sticky_clear,-U,_class_typedwrapper_get,-U,_classname_openhelp,-U,_classname_openrefpage,-U,_classname_openquery,-U,_clock_delay,-U,_clock_fdelay,-U,_clock_fdelay2,-U,_clock_fset,-U,_clock_fset2,-U,_clock_getextfmt,-U,_clock_getftime,-U,_clock_gettime,-U,_clock_new,-U,_clock_new_withscheduler,-U,_clock_set,-U,_clock_unset,-U,_clock_everytime_set,-U,_clock_xdelay,-U,_clock_xset,-U,_clock_xunset,-U,_CmdKeyDown,-U,_compression_compressjson_headless,-U,_compression_decompressjson_headless,-U,_connection_client,-U,_connection_delete,-U,_connection_send,-U,_connection_server,-U,_CopyFromGWorld,-U,_cpost,-U,_critical_enter,-U,_critical_exit,-U,_critical_free,-U,_critical_new,-U,_critical_tryenter,-U,_crosshatch,-U,_CtrlKeyDown,-U,_CurrentOptionKeysDown,-U,_debug_printf,-U,_defer,-U,_defer_front,-U,_defer_low,-U,_defer_medium,-U,_defer_sys_low,-U,_defvolume,-U,_dialog_setkey,-U,_dictionary_appendatom,-U,_dictionary_appendatomarray,-U,_dictionary_appendatoms,-U,_dictionary_appendatoms_flags,-U,_dictionary_appendattribute,-U,_dictionary_appendbinbuf,-U,_dictionary_appenddictionary,-U,_dictionary_appendfloat,-U,_dictionary_appendlong,-U,_dictionary_appendobject,-U,_dictionary_appendobject_flags,-U,_dictionary_appendstring,-U,_dictionary_appendsym,-U,_dictionary_chuckentry,-U,_dictionary_clear,-U,_dictionary_copyatoms,-U,_dictionary_copydefatoms,-U,_dictionary_copyentries,-U,_dictionary_copyunique,-U,_dictionary_deleteentry,-U,_dictionary_dump,-U,_dictionary_entry_getkey,-U,_dictionary_entry_getvalue,-U,_dictionary_entry_getvalues,-U,_dictionary_entryisatomarray,-U,_dictionary_entryisdictionary,-U,_dictionary_entryisstring,-U,_dictionary_freekeys,-U,_dictionary_funall,-U,_dictionary_getatom,-U,_dictionary_getatomarray,-U,_dictionary_getatoms,-U,_dictionary_getattribute,-U,_dictionary_getdefatom,-U,_dictionary_getdefatoms,-U,_dictionary_getdeffloat,-U,_dictionary_getdeflong,-U,_dictionary_getdefstring,-U,_dictionary_getdefsym,-U,_dictionary_getdictionary,-U,_dictionary_getentrycount,-U,_dictionary_getfloat,-U,_dictionary_getkeys,-U,_dictionary_getkeys_ordered,-U,_dictionary_getlong,-U,_dictionary_getobject,-U,_dictionary_getstring,-U,_dictionary_getsym,-U,_dictionary_hasentry,-U,_dictionary_new,-U,_dictionary_prototypefromclass,-U,_dictionary_read,-U,_dictionary_sprintf,-U,_dictionary_write,-U,_dictobj_register,-U,_dictobj_unregister,-U,_dictobj_findregistered_clone,-U,_dictobj_findregistered_retain,-U,_dictobj_release,-U,_dictobj_namefromptr,-U,_dictobj_outlet_atoms,-U,_dictobj_atom_safety,-U,_dictobj_validate,-U,_dictobj_jsonfromstring,-U,_dictobj_dictionaryfromstring,-U,_dictobj_dictionaryfromatoms,-U,_dictobj_dictionarytoatoms,-U,_disposhandle,-U,_drawstr,-U,_ed_new,-U,_ed_settext,-U,_ed_vis,-U,_egetfn,-U,_error,-U,_error_subscribe,-U,_error_sym,-U,_error_unsubscribe,-U,_errorcount_get,-U,_errorcount_set,-U,_evnum_get,-U,_evnum_incr,-U,_expr_eval,-U,_expr_new,-U,_fileformat_installsniffer,-U,_fileformat_sniff,-U,_fileformat_sniffdata,-U,_fileformat_stripsuffix,-U,_fileformat_suffix,-U,_filekind_getfiletypes,-U,_filekind_getname,-U,_filekind_nametoicon,-U,_fileload,-U,_fileload_extended,-U,_fileload_type,-U,_fileusage_addfile,-U,_fileusage_addfilename,-U,_fileusage_addpathname,-U,_fileusage_copyfolder,-U,_fileusage_makefolder,-U,_filewatcher_new,-U,_filewatcher_start,-U,_filewatcher_stop,-U,_finder_addclass,-U,_floatin,-U,_floatout,-U,_fontinfo_getname,-U,_fontinfo_getnumber,-U,_fontinfo_getsize,-U,_fontmap_getmapping,-U,_force_install,-U,_freebytes,-U,_freeobject,-U,_gensym,-U,_gensym_tr,-U,_getbytes,-U,_getexttime,-U,_getfn,-U,_getfolder,-U,_getschedtime,-U,_gettime,-U,_globalsymbol_reference,-U,_globalsymbol_dereference,-U,_globalsymbol_bind,-U,_globalsymbol_unbind,-U,_globalsymbol_notify,-U,_growhandle,-U,_GWorldFromPict,-U,_handle2tempfile,-U,_hashtab_chuck,-U,_hashtab_chuckkey,-U,_hashtab_clear,-U,_hashtab_delete,-U,_hashtab_findfirst,-U,_hashtab_flags,-U,_hashtab_funall,-U,_hashtab_getflags,-U,_hashtab_getkeyflags,-U,_hashtab_getkeys,-U,_hashtab_getsize,-U,_hashtab_keyflags,-U,_hashtab_lookup,-U,_hashtab_lookupentry,-U,_hashtab_lookupflags,-U,_hashtab_lookuplong,-U,_hashtab_lookupsym,-U,_hashtab_methodall,-U,_hashtab_methodall_imp,-U,_hashtab_new,-U,_hashtab_objfunall,-U,_hashtab_print,-U,_hashtab_readonly,-U,_hashtab_store,-U,_hashtab_store_safe,-U,_hashtab_storeflags,-U,_hashtab_storelong,-U,_hashtab_storesym,-U,_helpstring,-U,_inisr_set,-U,_inlet_append,-U,_inlet_count,-U,_inlet_new,-U,_inlet_nth,-U,_inlet_to,-U,_inlet4,-U,_inspector_open,-U,_intin,-U,_intload,-U,_intout,-U,_IsKeyDown,-U,_isbpatcher,-U,_isnewex,-U,_ispatcher,-U,_isr,-U,_isr_set,-U,_linklist_append,-U,_linklist_chuck,-U,_linklist_chuckindex,-U,_linklist_chuckptr,-U,_linklist_clear,-U,_linklist_deleteindex,-U,_linklist_findall,-U,_linklist_findfirst,-U,_linklist_flags,-U,_linklist_funall,-U,_linklist_funall_break,-U,_linklist_funindex,-U,_linklist_getflags,-U,_linklist_getindex,-U,_linklist_getsize,-U,_linklist_insert_sorted,-U,_linklist_insertafterobjptr,-U,_linklist_insertbeforeobjptr,-U,_linklist_insertindex,-U,_linklist_last,-U,_linklist_makearray,-U,_linklist_methodall,-U,_linklist_methodall_imp,-U,_linklist_methodindex,-U,_linklist_moveafterobjptr,-U,_linklist_movebeforeobjptr,-U,_linklist_new,-U,_linklist_next,-U,_linklist_objptr2index,-U,_linklist_prev,-U,_linklist_readonly,-U,_linklist_reverse,-U,_linklist_rotate,-U,_linklist_shuffle,-U,_linklist_sort,-U,_linklist_substitute,-U,_linklist_swap,-U,_linklist_match,-U,_linklist_chuckobject,-U,_linklist_deleteobject,-U,_linklist_prune,-U,_listout,-U,_loadbang_dequeue,-U,_loadbang_queueobject,-U,_loadbang_resume,-U,_loadbang_suspend,-U,_loader_setpath,-U,_locatefile,-U,_locatefile_extended,-U,_locatefilelist,-U,_locatefiletype,-U,_lockout_set,-U,_lowload_jpatcher_frombuffer,-U,_lowload_jpatcher_frombuffer_withobexprototype,-U,_maxversion,-U,_max_unicodekeydown,-U,_max_unicodekeyup,-U,_mayquote,-U,_method_false,-U,_method_object_free,-U,_method_object_getmesslist,-U,_method_object_getmethod,-U,_method_object_getname,-U,_method_object_new,-U,_method_object_new_messlist,-U,_method_object_setmesslist,-U,_method_object_setmethod,-U,_method_object_setname,-U,_method_true,-U,_milf_idle,-U,_milf_init,-U,_movecursor,-U,_nameinpath,-U,_nameload,-U,_nameload_unique,-U,_nameload_unique_internal,-U,_nametab_filename,-U,_newex_knows,-U,_newhandle,-U,_newinstance,-U,_newobject,-U,_newobject_fromdictionary,-U,_newobject_sprintf,-U,_noloadbangdisable_get,-U,_noloadbangdisable_set,-U,_notify_free,-U,_nullfn,-U,_object_addattr,-U,_object_addattr_atoms,-U,_object_addattr_atoms,-U,_object_addattr_format,-U,_object_addattr_format,-U,_object_addattr_parse,-U,_object_addattr_parse,-U,_object_addmethod,-U,_object_alloc,-U,_object_attach,-U,_object_attach_byptr,-U,_object_attach_byptr_register,-U,_object_attr_addattr,-U,_object_attr_addattr_atoms,-U,_object_attr_addattr_atoms,-U,_object_attr_addattr_format,-U,_object_attr_addattr_format,-U,_object_attr_addattr_parse,-U,_object_attr_addattr_parse,-U,_object_attr_attr_get,-U,_object_attr_attr_getvalueof,-U,_object_attr_attr_setvalueof,-U,_object_attr_enforcelocal,-U,_object_attr_get,-U,_object_attr_getchar,-U,_object_attr_getchar_array,-U,_object_attr_getdouble_array,-U,_object_attr_getdump,-U,_object_attr_getfloat,-U,_object_attr_getfloat_array,-U,_object_attr_getlong,-U,_object_attr_getlong_array,-U,_object_attr_getnames,-U,_object_attr_getobj,-U,_object_attr_getsym,-U,_object_attr_getsym_array,-U,_object_attr_getvalueof,-U,_object_attr_method,-U,_object_attr_setattrval,-U,_object_attr_setbinbuf,-U,_object_attr_setchar,-U,_object_attr_setchar_array,-U,_object_attr_setdisabled,-U,_object_attr_setdouble_array,-U,_object_attr_setfloat,-U,_object_attr_setfloat_array,-U,_object_attr_setformat,-U,_object_attr_setlong,-U,_object_attr_setlong_array,-U,_object_attr_setobj,-U,_object_attr_setobjval,-U,_object_attr_setparse,-U,_object_attr_setsym,-U,_object_attr_setsym_array,-U,_object_attr_setvalueof,-U,_object_attr_usercanget,-U,_object_attr_usercanset,-U,_object_attrhash_apply,-U,_object_bug,-U,_object_chuckattr,-U,_object_chuckmethod,-U,_object_class,-U,_object_classname,-U,_object_namespace,-U,_class_namespace,-U,_object_classname_compare,-U,_object_clonable,-U,_object_clone,-U,_object_clone_generic,-U,_object_commandenabled,-U,_object_deleteattr,-U,_object_deletemethod,-U,_object_detach,-U,_object_detach_byptr,-U,_object_dictionary_fromnewargs,-U,_object_dictionaryarg,-U,_object_error,-U,_object_error_obtrusive,-U,_object_findregistered,-U,_object_findregisteredbyptr,-U,_object_free,-U,_object_getcommand,-U,_object_getenabler,-U,_object_getmethod,-U,_object_getmethod_object,-U,_object_getvalueof,-U,_object_getvalueof_ext,-U,_object_handlecommand,-U,_object_inspect,-U,_object_method,-U,_object_method_imp,-U,_object_method_attrval,-U,_object_method_binbuf,-U,_object_method_char,-U,_object_method_char_array,-U,_object_method_double,-U,_object_method_double_array,-U,_object_method_float,-U,_object_method_float_array,-U,_object_method_format,-U,_object_method_long,-U,_object_method_long_array,-U,_object_method_obj,-U,_object_method_obj_array,-U,_object_method_objval,-U,_object_method_parse,-U,_object_method_sym,-U,_object_method_sym_array,-U,_object_method_typed,-U,_object_method_typedfun,-U,_object_new,-U,_object_new_imp,-U,_object_new_attrval,-U,_object_new_binbuf,-U,_object_new_format,-U,_object_new_objval,-U,_object_new_parse,-U,_object_new_typed,-U,_object_notify,-U,_object_obex_dumpout,-U,_object_obex_free,-U,_object_obex_get,-U,_object_obex_lookup,-U,_object_obex_lookuplong,-U,_object_obex_lookupsym,-U,_object_obex_quickref,-U,_object_obex_set,-U,_object_obex_store,-U,_object_obex_storelong,-U,_object_obex_storesym,-U,_object_post,-U,_object_poststring,-U,_object_refpage_get_class_info,-U,_object_refpage_get_class_info_fromclassname,-U,_object_refpage_method_is_undocumented,-U,_object_refpage_method_is_groupreference,-U,_object_register,-U,_object_replaceargs,-U,_object_reveal,-U,_object_setvalueof,-U,_object_setvalueof_ext,-U,_object_show,-U,_object_sticky,-U,_object_sticky_clear,-U,_object_subpatcher,-U,_object_unregister,-U,_object_warn,-U,_object_zero,-U,_onecopy_fileload,-U,_open_dialog,-U,_open_messageset,-U,_open_promptset,-U,_OptionKeyDown,-U,_ouchstring,-U,_outlet_add,-U,_outlet_addmonitor,-U,_outlet_anything,-U,_outlet_append,-U,_outlet_atoms,-U,_outlet_bang,-U,_outlet_canadd,-U,_outlet_count,-U,_outlet_float,-U,_outlet_int,-U,_outlet_list,-U,_outlet_msg,-U,_outlet_new,-U,_outlet_notify,-U,_outlet_nth,-U,_outlet_removemonitor,-U,_outlet_rm,-U,_palette_getcolor,-U,_patcher_eachdo,-U,_path_addnamed,-U,_path_addpath,-U,_path_build,-U,_path_closefolder,-U,_path_copyfile,-U,_path_copyfolder,-U,_path_copytotempfile,-U,_path_createfolder,-U,_path_createressysfile,-U,_path_createsysfile,-U,_path_deletefile,-U,_path_desktopfolder,-U,_path_extendedfileinfo,-U,_path_fileinfo,-U,_path_fileisresource,-U,_path_foldernextfile,-U,_path_frompathname,-U,_path_fromunicodepathname,-U,_path_toabsolutesystempath,-U,_path_getapppath,-U,_path_getdefault,-U,_path_getfilecreationdate,-U,_path_getfilemoddate,-U,_path_getmoddate,-U,_path_getname,-U,_path_getnext,-U,_path_getpath,-U,_path_getprefstring,-U,_path_getseparator,-U,_path_getstyle,-U,_path_getsupportpath,-U,_path_infoforopensysfile,-U,_path_nameconform,-U,_path_nameinpath,-U,_path_nameisrelative,-U,_path_openfolder,-U,_path_openresfile,-U,_path_openressysfile,-U,_path_opensysfile,-U,_path_removefromlist,-U,_path_removepath,-U,_path_renamefile,-U,_path_resolvefile,-U,_path_setdefault,-U,_path_setfileinfo,-U,_path_setpermanent,-U,_path_setprefstring,-U,_path_sysnameinpath,-U,_path_topathname,-U,_path_topotentialname,-U,_path_topotentialunicodename,-U,_path_frompotentialpathname,-U,_path_splitnames,-U,_plug_free,-U,_plug_init,-U,_plug_setloopfun,-U,_post,-U,_post_displayrecent,-U,_post_getpos,-U,_post_sym,-U,_postatom,-U,_poststring,-U,_preferences_class_define,-U,_preferences_class_defineoption,-U,_preferences_define,-U,_preferences_defineoption,-U,_preferences_getatomforkey,-U,_preferences_getatoms,-U,_preferences_getchar,-U,_preferences_getlong,-U,_preferences_getsym,-U,_preferences_path,-U,_preferences_readdictionary,-U,_preferences_setatoms,-U,_preferences_setchar,-U,_preferences_setlong,-U,_preferences_setsym,-U,_preferences_subpath,-U,_preferences_writedictionary,-U,_preset_int,-U,_preset_set,-U,_preset_store,-U,_proxy_getinlet,-U,_proxy_new,-U,_qelem_free,-U,_qelem_front,-U,_qelem_idlefree,-U,_qelem_idlefront,-U,_qelem_idleset,-U,_qelem_idleunset,-U,_qelem_new,-U,_qelem_set,-U,_qelem_unset,-U,_quotestring,-U,_qti_extra_flags_get,-U,_qti_extra_flags_set,-U,_qti_extra_free,-U,_qti_extra_matrix_get,-U,_qti_extra_matrix_set,-U,_qti_extra_new,-U,_qti_extra_pixelformat_get,-U,_qti_extra_pixelformat_set,-U,_qti_extra_rect_get,-U,_qti_extra_rect_set,-U,_qti_extra_scalemode_get,-U,_qti_extra_scalemode_set,-U,_qti_extra_time_get,-U,_qti_extra_time_set,-U,_qtimage_getrect,-U,_qtimage_open,-U,_quickmap_add,-U,_quickmap_drop,-U,_quickmap_lookup_key1,-U,_quickmap_lookup_key2,-U,_quickmap_readonly,-U,_quickmap_new,-U,_quittask_install,-U,_quittask_remove,-U,_quittask_remove2,-U,_readatom,-U,_readtohandle,-U,_recent_add,-U,_reg_object_namespace_lookup,-U,_rerand,-U,_saveas_autoextension,-U,_saveas_dialog,-U,_saveas_messageset,-U,_saveas_promptset,-U,_saveas_setselectedtype,-U,_saveasdialog_extended,-U,_saveasdialog_pathset,-U,_sched_idledequeue,-U,_sched_isinpoll,-U,_sched_isinqueue,-U,_sched_resume,-U,_sched_set_takeover,-U,_sched_setpollthrottle,-U,_sched_setqueuethrottle,-U,_sched_suspend,-U,_schedule,-U,_schedule_defer,-U,_schedule_delay,-U,_schedule_fdefer,-U,_schedule_fdelay,-U,_schedulef,-U,_scheduler_gettime,-U,_scheduler_new,-U,_scheduler_run,-U,_scheduler_get,-U,_scheduler_set,-U,_scheduler_settime,-U,_scheduler_fromobject,-U,_scheduler_shift,-U,_serialno,-U,_setclock_delay,-U,_setclock_fdelay,-U,_setclock_fgettime,-U,_setclock_getftime,-U,_setclock_gettime,-U,_setclock_unset,-U,_setup,-U,_ShiftKeyDown,-U,_sndfile_info,-U,_sndfile_writeheader,-U,_sprintf,-U,_sscanf,-U,_sprintf_tr,-U,_stdinletinfo,-U,_stdlist,-U,_str_tr,-U,_string_getptr,-U,_string_new,-U,_string_reserve,-U,_string_append,-U,_string_chop,-U,_stringload,-U,_strncpy_zero,-U,_snprintf_zero,-U,_strncat_zero,-U,_symbol_tr,-U,_symbol_unique,-U,_symbolarray_sort,-U,_symobject_new,-U,_symobject_linklist_match,-U,_sysdateformat_strftimetodatetime,-U,_sysdateformat_formatdatetime,-U,_sysfile_close,-U,_sysfile_geteof,-U,_sysfile_getpos,-U,_sysfile_openhandle,-U,_sysfile_openptrsize,-U,_sysfile_read,-U,_sysfile_readtextfile,-U,_sysfile_readtohandle,-U,_sysfile_readtoptr,-U,_sysfile_seteof,-U,_sysfile_setobject,-U,_sysfile_setpos,-U,_sysfile_spoolcopy,-U,_sysfile_write,-U,_sysfile_writetextfile,-U,_sysmem_copyptr,-U,_sysmem_freehandle,-U,_sysmem_freeptr,-U,_sysmem_handlesize,-U,_sysmem_lockhandle,-U,_sysmem_newhandle,-U,_sysmem_newhandleclear,-U,_sysmem_newptr,-U,_sysmem_newptrclear,-U,_sysmem_nullterminatehandle,-U,_sysmem_ptrandhand,-U,_sysmem_ptrbeforehand,-U,_sysmem_ptrsize,-U,_sysmem_resizehandle,-U,_sysmem_resizeptr,-U,_sysmem_resizeptrclear,-U,_sysmenu_appenditem,-U,_sysmenu_appendrawitem,-U,_sysmenu_appendseparator,-U,_sysmenu_assignsubmenu,-U,_sysmenu_checkitem,-U,_sysmenu_cmdid_popup,-U,_sysmenu_cmdid_set,-U,_sysmenu_copyitems,-U,_sysmenu_delete,-U,_sysmenu_deleteallitems,-U,_sysmenu_deleteitem,-U,_sysmenu_deletemh,-U,_sysmenu_dispose,-U,_sysmenu_getcheck,-U,_sysmenu_gethelp,-U,_sysmenu_getid,-U,_sysmenu_gettext,-U,_sysmenu_gettitle,-U,_sysmenu_insert,-U,_sysmenu_insertsubmenu,-U,_sysmenu_itemcount,-U,_sysmenu_menufromid,-U,_sysmenu_new,-U,_sysmenu_popup,-U,_sysmenu_setfont,-U,_sysmenu_setitem,-U,_sysmenu_setreference,-U,_sysmenu_setshortcut,-U,_sysmenu_settext,-U,_sysmidi_createport,-U,_sysmidi_deletemarked,-U,_sysmidi_enqbigpacket,-U,_sysmidi_idtoport,-U,_sysmidi_indextoname,-U,_sysmidi_iterate,-U,_sysmidi_numinports,-U,_sysmidi_numoutports,-U,_sysmidi_uniqueid,-U,_sysparallel_processorcount,-U,_sysparallel_task_benchprint,-U,_sysparallel_task_cancel,-U,_sysparallel_task_data,-U,_sysparallel_task_execute,-U,_sysparallel_task_free,-U,_sysparallel_task_new,-U,_sysparallel_task_workerproc,-U,_sysparallel_worker_execute,-U,_sysparallel_worker_free,-U,_sysparallel_worker_new,-U,_systhread_cond_broadcast,-U,_systhread_cond_free,-U,_systhread_cond_new,-U,_systhread_cond_signal,-U,_systhread_cond_wait,-U,_systhread_create,-U,_systhread_exit,-U,_systhread_getspecific,-U,_systhread_ismainthread,-U,_systhread_istimerthread,-U,_systhread_join,-U,_systhread_mutex_free,-U,_systhread_mutex_lock,-U,_systhread_mutex_new,-U,_systhread_mutex_newlock,-U,_systhread_mutex_trylock,-U,_systhread_mutex_unlock,-U,_systhread_rwlock_new,-U,_systhread_rwlock_free,-U,_systhread_rwlock_rdlock,-U,_systhread_rwlock_tryrdlock,-U,_systhread_rwlock_rdunlock,-U,_systhread_rwlock_wrlock,-U,_systhread_rwlock_trywrlock,-U,_systhread_rwlock_wrunlock,-U,_systhread_rwlock_setspintime,-U,_systhread_rwlock_getspintime,-U,_systhread_key_create,-U,_systhread_key_delete,-U,_systhread_self,-U,_systhread_setpriority,-U,_systhread_getpriority,-U,_systhread_setspecific,-U,_systhread_eliminatedenormals,-U,_systhread_sleep,-U,_systhread_terminate,-U,_systime_datetime,-U,_systime_datetoseconds,-U,_systime_ms,-U,_systime_seconds,-U,_systime_secondstodate,-U,_systime_ticks,-U,_systimer_gettime,-U,_tabfromhandle,-U,_table_dirty,-U,_table_get,-U,_textpreferences_add,-U,_textpreferences_addoption,-U,_textpreferences_addraw,-U,_textpreferences_addrect,-U,_textpreferences_close,-U,_textpreferences_default,-U,_textpreferences_open,-U,_textpreferences_read,-U,_time_stop,-U,_time_tick,-U,_time_getms,-U,_time_getticks,-U,_time_listen,-U,_time_getphase,-U,_time_setvalue,-U,_class_time_addattr,-U,_time_new,-U,_time_getnamed,-U,_time_enable_attributes,-U,_time_isfixedunit,-U,_time_schedule,-U,_time_schedule_limit,-U,_time_now,-U,_time_getitm,-U,_time_calcquantize,-U,_time_setclock,-U,_toolfile_fread,-U,_toolfile_fwrite,-U,_toolfile_getc,-U,_toolfile_new,-U,_translation_getinterfacepath,-U,_typedmess,-U,_typelist_make,-U,_typelist_make,-U,_utils_setcontext,-U,_utils_usecontext,-U,_wind_advise,-U,_wind_advise_explain,-U,_wind_nocancel,-U,_wind_setcursor,-U,_xmltree_attr_symcompare,-U,_xmltree_attribute_free,-U,_xmltree_attribute_new,-U,_xmltree_cdata_free,-U,_xmltree_cdata_new,-U,_xmltree_cdata_splittext,-U,_xmltree_charnode_addinterface,-U,_xmltree_charnode_appenddata,-U,_xmltree_charnode_deletedata,-U,_xmltree_charnode_free,-U,_xmltree_charnode_insertdata,-U,_xmltree_charnode_new,-U,_xmltree_charnode_replacedata,-U,_xmltree_charnode_substringdata,-U,_xmltree_comment_free,-U,_xmltree_comment_new,-U,_xmltree_document_createattribute,-U,_xmltree_document_createcdatasection,-U,_xmltree_document_createcomment,-U,_xmltree_document_createelement,-U,_xmltree_document_createheader,-U,_xmltree_document_createtextnode,-U,_xmltree_document_filename,-U,_xmltree_document_free,-U,_xmltree_document_getelementsbytagname,-U,_xmltree_document_new,-U,_xmltree_document_print,-U,_xmltree_document_read,-U,_xmltree_document_write,-U,_xmltree_document_xmlparse_cdata_end,-U,_xmltree_document_xmlparse_cdata_start,-U,_xmltree_document_xmlparse_characterdata,-U,_xmltree_document_xmlparse_comment,-U,_xmltree_document_xmlparse_default,-U,_xmltree_document_xmlparse_doctype_end,-U,_xmltree_document_xmlparse_doctype_start,-U,_xmltree_document_xmlparse_element_end,-U,_xmltree_document_xmlparse_element_start,-U,_xmltree_element_free,-U,_xmltree_element_getattribute,-U,_xmltree_element_getattribute_float,-U,_xmltree_element_getattribute_float_array,-U,_xmltree_element_getattribute_long,-U,_xmltree_element_getattribute_long_array,-U,_xmltree_element_getattribute_sym,-U,_xmltree_element_getattribute_sym_array,-U,_xmltree_element_getattributenode,-U,_xmltree_element_getelementsbytagname,-U,_xmltree_element_new,-U,_xmltree_element_removeattribute,-U,_xmltree_element_removeattributenode,-U,_xmltree_element_setattribute,-U,_xmltree_element_setattribute_float,-U,_xmltree_element_setattribute_float_array,-U,_xmltree_element_setattribute_long,-U,_xmltree_element_setattribute_long_array,-U,_xmltree_element_setattribute_sym,-U,_xmltree_element_setattribute_sym_array,-U,_xmltree_element_setattributenode,-U,_xmltree_element_symcompare,-U,_xmltree_init,-U,_xmltree_node_addinterface,-U,_xmltree_node_appendchild,-U,_xmltree_node_clonenode,-U,_xmltree_node_free,-U,_xmltree_node_getnodevalasstring,-U,_xmltree_node_getnodevalue,-U,_xmltree_node_getnodevalue_float,-U,_xmltree_node_getnodevalue_float_array,-U,_xmltree_node_getnodevalue_long,-U,_xmltree_node_getnodevalue_long_array,-U,_xmltree_node_getnodevalue_sym,-U,_xmltree_node_getnodevalue_sym_array,-U,_xmltree_node_haschildnodes,-U,_xmltree_node_insertbefore,-U,_xmltree_node_new,-U,_xmltree_node_nodevalue,-U,_xmltree_node_nodevalue_float,-U,_xmltree_node_nodevalue_float_array,-U,_xmltree_node_nodevalue_long,-U,_xmltree_node_nodevalue_long_array,-U,_xmltree_node_nodevalue_sym,-U,_xmltree_node_nodevalue_sym_array,-U,_xmltree_node_removeallchildren,-U,_xmltree_node_removechild,-U,_xmltree_node_replacechild,-U,_xmltree_node_setnodevalasstring,-U,_xmltree_node_write,-U,_xmltree_text_free,-U,_xmltree_text_new,-U,_xmltree_text_splittext,-U,_xpcoll_dereference,-U,_xpcoll_load,-U,_xpcoll_open,-U,_xpcoll_opensysfile,-U,_xpcoll_reference,-U,_xpcoll_setclientcallback,-U,_xpcoll_getvol,-U,_xpcoll_openfile,-U,_xpcoll_fromnameddata,-U,_xsetpost,-U,_zgetfn,-U,_jbox_initclass,-U,_jbox_new,-U,_jbox_free,-U,_jbox_ready,-U,_jbox_redraw,-U,_jbox_redrawcontents,-U,_jbox_getoutlet,-U,_jbox_getinlet,-U,_jbox_updatetextfield,-U,_jbox_updatetextfield_safe,-U,_jbox_updatetextfield_lockmutex,-U,_jbox_grabfocus,-U,_jbox_show_caption,-U,_jbox_hide_caption,-U,_jbox_invalidate_layer,-U,_jbox_remove_layer,-U,_jbox_start_layer,-U,_jbox_end_layer,-U,_jbox_paint_layer,-U,_jbox_get_boxpath,-U,_jbox_validaterects,-U,_jpatcher_deleteobj,-U,_jpatcher_is_patcher,-U,_jpatcher_get_box,-U,_jpatcher_get_count,-U,_jpatcher_get_firstobject,-U,_jpatcher_get_lastobject,-U,_jpatcher_get_firstline,-U,_jpatcher_get_firstview,-U,_jpatcher_set_locked,-U,_jpatcher_get_title,-U,_jpatcher_set_title,-U,_jpatcher_get_name,-U,_jpatcher_get_filename,-U,_jpatcher_get_filepath,-U,_jpatcher_get_dirty,-U,_jpatcher_set_dirty,-U,_jpatcher_get_bgcolor,-U,_jpatcher_set_bgcolor,-U,_jpatcher_get_gridsize,-U,_jpatcher_set_gridsize,-U,_jpatcher_get_parentpatcher,-U,_jpatcher_get_toppatcher,-U,_jpatcher_get_maxclass,-U,_jpatcher_get_parentclass,-U,_jpatcher_get_rect,-U,_jpatcher_set_rect,-U,_jpatcher_get_noedit,-U,_jpatcher_uniqueboxname,-U,_jpatcher_getboxfont,-U,_jpatcher_get_controller,-U,_jpatcher_addboxlistener,-U,_jpatcher_removeboxlistener,-U,_jpatcher_get_fileversion,-U,_jpatcher_get_currentfileversion,-U,_jpatchercontroller_createobject,-U,_jpatchercontroller_setpatcherview,-U,_jpatchercontroller_pastefileintoobject,-U,_jpatchercontroller_pastefileat,-U,_jpatchercontroller_connectobjects,-U,_object_attr_get_rect,-U,_object_attr_set_rect,-U,_object_attr_getcolor,-U,_object_attr_setcolor,-U,_object_attr_getpt,-U,_object_attr_setpt,-U,_object_attr_getsize,-U,_object_attr_setsize,-U,_jbox_get_maxclass,-U,_jbox_get_patcher,-U,_jbox_get_object,-U,_jbox_get_rect_for_view,-U,_jbox_set_rect_for_view,-U,_jbox_get_rect_for_sym,-U,_jbox_set_rect_for_sym,-U,_jbox_set_rect,-U,_jbox_get_patching_rect,-U,_jbox_set_patching_rect,-U,_jbox_get_presentation_rect,-U,_jbox_set_presentation_rect,-U,_jbox_set_position,-U,_jbox_get_patching_position,-U,_jbox_set_patching_position,-U,_jbox_get_presentation_position,-U,_jbox_set_presentation_position,-U,_jbox_set_size,-U,_jbox_get_patching_size,-U,_jbox_set_patching_size,-U,_jbox_get_presentation_size,-U,_jbox_set_presentation_size,-U,_jbox_get_hidden,-U,_jbox_set_hidden,-U,_jbox_get_fontname,-U,_jbox_set_fontname,-U,_jbox_get_fontsize,-U,_jbox_createfont,-U,_jbox_set_fontsize,-U,_jbox_fontface_to_weight_slant,-U,_jbox_get_font_slant,-U,_jbox_get_font_weight,-U,_jbox_get_color,-U,_jbox_set_color,-U,_jbox_get_nextobject,-U,_jbox_get_prevobject,-U,_jbox_get_varname,-U,_jbox_set_varname,-U,_jbox_get_id,-U,_jbox_get_canhilite,-U,_jbox_get_background,-U,_jbox_set_background,-U,_jbox_get_ignoreclick,-U,_jbox_set_ignoreclick,-U,_jbox_get_drawfirstin,-U,_jbox_get_outline,-U,_jbox_set_outline,-U,_jbox_get_growy,-U,_jbox_get_growboth,-U,_jbox_get_nogrow,-U,_jbox_get_drawinlast,-U,_jbox_get_mousedragdelta,-U,_jbox_set_mousedragdelta,-U,_jbox_get_textfield,-U,_jbox_set_hinttrack,-U,_jbox_get_hinttrack,-U,_jbox_set_hintstring,-U,_jpatchline_get_startpoint,-U,_jpatchline_get_endpoint,-U,_jpatchline_get_nummidpoints,-U,_jpatchline_get_pending,-U,_jpatchline_get_box1,-U,_jpatchline_get_outletnum,-U,_jpatchline_get_box2,-U,_jpatchline_get_inletnum,-U,_jpatchline_get_straightthresh,-U,_jpatchline_set_straightthresh,-U,_jpatchline_get_straightstart,-U,_jpatchline_get_straightend,-U,_jpatchline_set_straightstart,-U,_jpatchline_set_straightend,-U,_jpatchline_get_nextline,-U,_jpatchline_get_hidden,-U,_jpatchline_set_hidden,-U,_jpatchline_get_color,-U,_jpatchline_set_color,-U,_jpatchline_addpaintmethod,-U,_patcherview_get_visible,-U,_patcherview_set_visible,-U,_patcherview_get_locked,-U,_patcherview_set_locked,-U,_patcherview_get_zoomfactor,-U,_patcherview_set_zoomfactor,-U,_patcherview_get_nextview,-U,_patcherview_get_topview,-U,_patcherview_get_jgraphics,-U,_patcherview_set_jgraphics,-U,_patcherview_get_patcher,-U,_patcherview_get_rect,-U,_patcherview_set_rect,-U,_patcherview_canvas_to_screen,-U,_patcherview_get_presentation,-U,_textfield_get_owner,-U,_textfield_get_textcolor,-U,_textfield_set_textcolor,-U,_textfield_get_bgcolor,-U,_textfield_set_bgcolor,-U,_textfield_get_textmargins,-U,_textfield_set_textmargins,-U,_textfield_get_editonclick,-U,_textfield_set_editonclick,-U,_textfield_get_selectallonedit,-U,_textfield_set_selectallonedit,-U,_textfield_get_noactivate,-U,_textfield_set_noactivate,-U,_textfield_get_readonly,-U,_textfield_set_readonly,-U,_textfield_get_wordwrap,-U,_textfield_set_wordwrap,-U,_textfield_get_useellipsis,-U,_textfield_set_useellipsis,-U,_textfield_get_autoscroll,-U,_textfield_set_autoscroll,-U,_textfield_get_wantsreturn,-U,_textfield_set_wantsreturn,-U,_textfield_get_wantstab,-U,_textfield_set_wantstab,-U,_textfield_get_autofixwidth,-U,_textfield_set_autofixwidth,-U,_textfield_set_emptytext,-U,_textfield_get_emptytext,-U,_textfield_set_underline,-U,_textfield_get_underline,-U,_textfield_set_justification,-U,_textfield_get_justification,-U,_jdrag_getitemstring,-U,_jdrag_getobject,-U,_jdrag_getlocation,-U,_jdrag_createobject,-U,_jdrag_createnewobj,-U,_jdrag_createmessage,-U,_jdrag_add,-U,_jdrag_matchdragrole,-U,_jdrag_setboxlocation,-U,_jdrag_box_add,-U,_jdrag_object_add,-U,_jgraphics_getfiletypes,-U,_jgraphics_round,-U,_jgraphics_image_surface_clear,-U,_jgraphics_image_surface_create,-U,_jgraphics_image_surface_create_referenced,-U,_jgraphics_image_surface_create_from_file,-U,_jgraphics_image_surface_create_for_data,-U,_jgraphics_image_surface_create_from_filedata,-U,_jgraphics_image_surface_create_from_resource,-U,_jgraphics_image_surface_writepng,-U,_jgraphics_surface_reference,-U,_jgraphics_surface_destroy,-U,_jgraphics_surface_set_device_offset,-U,_jgraphics_surface_get_device_offset,-U,_jgraphics_image_surface_get_width,-U,_j";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = s2m.wacom;
+				PRODUCT_VERSION = 6.1.0;
+				SDKROOT = macosx10.8;
+				SECTORDER_FLAGS = "";
+				SKIP_INSTALL = NO;
+				SYMROOT = "$(PROJECT_DIR)";
+				USER_HEADER_SEARCH_PATHS = "../../c74support/max-includes";
+				VALID_ARCHS = "i386 x86_64";
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"-Wno-conversion",
+				);
+				WRAPPER_EXTENSION = mxo;
+				ZERO_LINK = YES;
+			};
+			name = Development;
+		};
+		0FFBB95A09731BB700D78707 /* Deployment */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0DFC6AEC14FBBD1A00B429A0 /* maxmspsdk.xcconfig */;
+			buildSettings = {
+				ARCHS = (
+					i386,
+					x86_64,
+				);
+				COPY_PHASE_STRIP = YES;
+				DEPLOYMENT_LOCATION = YES;
+				DSTROOT = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					/Library/Frameworks,
+					"../../c74support/max-includes",
+					"../../c74support/msp-includes",
+				);
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../../c74support/msp-includes\"";
+				GCC_ALTIVEC_EXTENSIONS = YES;
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_ENABLE_TRIGRAPHS = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "$(C74SUPPORT)/max-includes/macho-prefix.pch";
+				GCC_UNROLL_LOOPS = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_EFFECTIVE_CPLUSPLUS_VIOLATIONS = NO;
+				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
+				GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES;
+				GCC_WARN_MULTIPLE_DEFINITION_TYPES_FOR_SELECTOR = YES;
+				GCC_WARN_PEDANTIC = YES;
+				GCC_WARN_PROTOTYPE_CONVERSION = YES;
+				GCC_WARN_SHADOW = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNKNOWN_PRAGMAS = NO;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_LABEL = YES;
+				GCC_WARN_UNUSED_PARAMETER = YES;
+				GCC_WARN_UNUSED_VALUE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_PKGINFO_FILE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(HEADER_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					../MaxObject/,
+					"$(HEADER_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
+				);
+				HEADER_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(C74SUPPORT)/max-includes\"";
+				HEADER_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(C74SUPPORT)/msp-includes\"";
+				INFOPLIST_FILE = "$(SRCROOT)/../Info.plist";
+				INSTALL_PATH = /.;
+				LIBRARY_STYLE = Bundle;
+				MACOSX_DEPLOYMENT_TARGET = 10.5;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "-Wl,-U,_addbang,-U,_addfloat,-U,_addftx,-U,_addint,-U,_addinx,-U,_addmess,-U,_advise,-U,_advise_explain,-U,_alias,-U,_AnyKeyDown,-U,_appbuilder_keyword,-U,_appbuilder_register,-U,_argpad,-U,_assist_string,-U,_asyncfile_callback_free,-U,_asyncfile_callback_new,-U,_asyncfile_close,-U,_asyncfile_create,-U,_asyncfile_geteof,-U,_asyncfile_init,-U,_asyncfile_params_default,-U,_asyncfile_params_free,-U,_asyncfile_params_new,-U,_asyncfile_read,-U,_asyncfile_seteof,-U,_asyncfile_write,-U,_atom_alloc,-U,_atom_alloc_array,-U,_atom_arg_getdouble,-U,_atom_arg_getfloat,-U,_atom_arg_getlong,-U,_atom_arg_getsym,-U,_atom_dynamic_end,-U,_atom_dynamic_start,-U,_atom_getatom_array,-U,_atom_getchar_array,-U,_atom_getcharfix,-U,_atom_getdouble_array,-U,_atom_getfloat,-U,_atom_getfloat_array,-U,_atom_getformat,-U,_atom_getlong,-U,_atom_getlong_array,-U,_atom_getobj,-U,_atom_getobj_array,-U,_atom_getsym,-U,_atom_getsym_array,-U,_atom_gettext,-U,_atom_gettype,-U,_atom_setatom_array,-U,_atom_setattrval,-U,_atom_setbinbuf,-U,_atom_setchar_array,-U,_atom_setdouble_array,-U,_atom_setfloat,-U,_atom_setfloat_array,-U,_atom_setformat,-U,_atom_setlong,-U,_atom_setlong_array,-U,_atom_setobj,-U,_atom_setobj_array,-U,_atom_setobjval,-U,_atom_setparse,-U,_atom_setsym,-U,_atom_setsym_array,-U,_atom_string,-U,_atombuf_append,-U,_atombuf_count,-U,_atombuf_eval,-U,_atombuf_firstatom,-U,_atombuf_free,-U,_atombuf_misc,-U,_atombuf_new,-U,_atombuf_next,-U,_atombuf_prepend,-U,_atombuf_replace,-U,_atombuf_replacepoundargs,-U,_atombuf_save,-U,_atombuf_set,-U,_atombuf_subst,-U,_atombuf_text,-U,_atombuf_totext,-U,_atomisatomarray,-U,_atomisdictionary,-U,_atomisstring,-U,_atoms_totext,-U,_attr_addfilter_clip,-U,_attr_addfilter_clip_scale,-U,_attr_addfilterget_clip,-U,_attr_addfilterget_clip_scale,-U,_attr_addfilterget_proc,-U,_attr_addfilterset_clip,-U,_attr_addfilterset_clip_scale,-U,_attr_addfilterset_proc,-U,_attr_args_dictionary,-U,_attr_args_offset,-U,_attr_args_process,-U,_attr_dictionary_process,-U,_attr_filter_clip_new,-U,_attr_filter_proc_new,-U,_attr_offset_array_new,-U,_attr_offset_new,-U,_attr_typedfun_set,-U,_attribute_new,-U,_attribute_new_atoms,-U,_attribute_new_attrval,-U,_attribute_new_binbuf,-U,_attribute_new_format,-U,_attribute_new_objval,-U,_attribute_new_parse,-U,_auxtable_checksym,-U,_bangout,-U,_bf_singlefast,-U,_binbuf_addtext,-U,_binbuf_append,-U,_binbuf_delete,-U,_binbuf_eval,-U,_binbuf_getatom,-U,_binbuf_gethandle,-U,_binbuf_insert,-U,_binbuf_inshandle,-U,_binbuf_make,-U,_binbuf_new,-U,_binbuf_read,-U,_binbuf_set,-U,_binbuf_text,-U,_binbuf_totext,-U,_binbuf_vinsert,-U,_binbuf_write,-U,_bitwrap_bell_filter,-U,_bitwrap_box_filter,-U,_bitwrap_bspline_filter,-U,_bitwrap_filter_default,-U,_bitwrap_filter_filter,-U,_bitwrap_interp,-U,_bitwrap_lanczos3_filter,-U,_bitwrap_mitchell_filter,-U,_bitwrap_triangle_filter,-U,_bitwrap_wrap_gworld,-U,_box_getcolor,-U,_boxcolor_rgb2index,-U,_call_method_attrval,-U,_call_method_binbuf,-U,_call_method_char,-U,_call_method_char_array,-U,_call_method_double,-U,_call_method_double_array,-U,_call_method_float,-U,_call_method_float_array,-U,_call_method_format,-U,_call_method_long,-U,_call_method_long_array,-U,_call_method_obj,-U,_call_method_obj_array,-U,_call_method_objval,-U,_call_method_parse,-U,_call_method_sym,-U,_call_method_sym_array,-U,_call_method_typed,-U,_charset_convert,-U,_charset_utf8tounicode,-U,_charset_unicodetoutf8,-U,_charset_isvalidutf8,-U,_charset_utf8_count,-U,_charset_utf8_offset,-U,_class_addadornment,-U,_class_addattr,-U,_class_addattr_atoms,-U,_class_addattr_atoms,-U,_class_addattr_format,-U,_class_addattr_format,-U,_class_addattr_parse,-U,_class_addattr_parse,-U,_class_addcommand,-U,_class_addmethod,-U,_class_addtypedwrapper,-U,_class_adornment_get,-U,_class_attr_addattr,-U,_class_attr_addattr_atoms,-U,_class_attr_addattr_atoms,-U,_class_attr_addattr_format,-U,_class_attr_addattr_format,-U,_class_attr_addattr_parse,-U,_class_attr_addattr_parse,-U,_class_attr_attr_get,-U,_class_attr_attr_getvalueof,-U,_class_attr_attr_setvalueof,-U,_class_attr_get,-U,_class_attr_method,-U,_class_buildprototype,-U,_class_clonable,-U,_class_cloneprototype,-U,_class_extra_lookup,-U,_class_extra_store,-U,_class_extra_storeflags,-U,_class_findbyname,-U,_class_free,-U,_class_getmethod_object,-U,_class_getpath,-U,_class_is_ui,-U,_class_is_box,-U,_class_mess,-U,_class_method,-U,_class_nameget,-U,_class_new,-U,_class_noinlet,-U,_class_obexoffset_get,-U,_class_obexoffset_set,-U,_class_register,-U,_class_alias,-U,_class_copy,-U,_class_dumpout_wrap,-U,_class_setname,-U,_class_setpath,-U,_class_sticky,-U,_class_sticky_clear,-U,_class_typedwrapper_get,-U,_classname_openhelp,-U,_classname_openrefpage,-U,_classname_openquery,-U,_clock_delay,-U,_clock_fdelay,-U,_clock_fdelay2,-U,_clock_fset,-U,_clock_fset2,-U,_clock_getextfmt,-U,_clock_getftime,-U,_clock_gettime,-U,_clock_new,-U,_clock_new_withscheduler,-U,_clock_set,-U,_clock_unset,-U,_clock_everytime_set,-U,_clock_xdelay,-U,_clock_xset,-U,_clock_xunset,-U,_CmdKeyDown,-U,_compression_compressjson_headless,-U,_compression_decompressjson_headless,-U,_connection_client,-U,_connection_delete,-U,_connection_send,-U,_connection_server,-U,_CopyFromGWorld,-U,_cpost,-U,_critical_enter,-U,_critical_exit,-U,_critical_free,-U,_critical_new,-U,_critical_tryenter,-U,_crosshatch,-U,_CtrlKeyDown,-U,_CurrentOptionKeysDown,-U,_debug_printf,-U,_defer,-U,_defer_front,-U,_defer_low,-U,_defer_medium,-U,_defer_sys_low,-U,_defvolume,-U,_dialog_setkey,-U,_dictionary_appendatom,-U,_dictionary_appendatomarray,-U,_dictionary_appendatoms,-U,_dictionary_appendatoms_flags,-U,_dictionary_appendattribute,-U,_dictionary_appendbinbuf,-U,_dictionary_appenddictionary,-U,_dictionary_appendfloat,-U,_dictionary_appendlong,-U,_dictionary_appendobject,-U,_dictionary_appendobject_flags,-U,_dictionary_appendstring,-U,_dictionary_appendsym,-U,_dictionary_chuckentry,-U,_dictionary_clear,-U,_dictionary_copyatoms,-U,_dictionary_copydefatoms,-U,_dictionary_copyentries,-U,_dictionary_copyunique,-U,_dictionary_deleteentry,-U,_dictionary_dump,-U,_dictionary_entry_getkey,-U,_dictionary_entry_getvalue,-U,_dictionary_entry_getvalues,-U,_dictionary_entryisatomarray,-U,_dictionary_entryisdictionary,-U,_dictionary_entryisstring,-U,_dictionary_freekeys,-U,_dictionary_funall,-U,_dictionary_getatom,-U,_dictionary_getatomarray,-U,_dictionary_getatoms,-U,_dictionary_getattribute,-U,_dictionary_getdefatom,-U,_dictionary_getdefatoms,-U,_dictionary_getdeffloat,-U,_dictionary_getdeflong,-U,_dictionary_getdefstring,-U,_dictionary_getdefsym,-U,_dictionary_getdictionary,-U,_dictionary_getentrycount,-U,_dictionary_getfloat,-U,_dictionary_getkeys,-U,_dictionary_getkeys_ordered,-U,_dictionary_getlong,-U,_dictionary_getobject,-U,_dictionary_getstring,-U,_dictionary_getsym,-U,_dictionary_hasentry,-U,_dictionary_new,-U,_dictionary_prototypefromclass,-U,_dictionary_read,-U,_dictionary_sprintf,-U,_dictionary_write,-U,_dictobj_register,-U,_dictobj_unregister,-U,_dictobj_findregistered_clone,-U,_dictobj_findregistered_retain,-U,_dictobj_release,-U,_dictobj_namefromptr,-U,_dictobj_outlet_atoms,-U,_dictobj_atom_safety,-U,_dictobj_validate,-U,_dictobj_jsonfromstring,-U,_dictobj_dictionaryfromstring,-U,_dictobj_dictionaryfromatoms,-U,_dictobj_dictionarytoatoms,-U,_disposhandle,-U,_drawstr,-U,_ed_new,-U,_ed_settext,-U,_ed_vis,-U,_egetfn,-U,_error,-U,_error_subscribe,-U,_error_sym,-U,_error_unsubscribe,-U,_errorcount_get,-U,_errorcount_set,-U,_evnum_get,-U,_evnum_incr,-U,_expr_eval,-U,_expr_new,-U,_fileformat_installsniffer,-U,_fileformat_sniff,-U,_fileformat_sniffdata,-U,_fileformat_stripsuffix,-U,_fileformat_suffix,-U,_filekind_getfiletypes,-U,_filekind_getname,-U,_filekind_nametoicon,-U,_fileload,-U,_fileload_extended,-U,_fileload_type,-U,_fileusage_addfile,-U,_fileusage_addfilename,-U,_fileusage_addpathname,-U,_fileusage_copyfolder,-U,_fileusage_makefolder,-U,_filewatcher_new,-U,_filewatcher_start,-U,_filewatcher_stop,-U,_finder_addclass,-U,_floatin,-U,_floatout,-U,_fontinfo_getname,-U,_fontinfo_getnumber,-U,_fontinfo_getsize,-U,_fontmap_getmapping,-U,_force_install,-U,_freebytes,-U,_freeobject,-U,_gensym,-U,_gensym_tr,-U,_getbytes,-U,_getexttime,-U,_getfn,-U,_getfolder,-U,_getschedtime,-U,_gettime,-U,_globalsymbol_reference,-U,_globalsymbol_dereference,-U,_globalsymbol_bind,-U,_globalsymbol_unbind,-U,_globalsymbol_notify,-U,_growhandle,-U,_GWorldFromPict,-U,_handle2tempfile,-U,_hashtab_chuck,-U,_hashtab_chuckkey,-U,_hashtab_clear,-U,_hashtab_delete,-U,_hashtab_findfirst,-U,_hashtab_flags,-U,_hashtab_funall,-U,_hashtab_getflags,-U,_hashtab_getkeyflags,-U,_hashtab_getkeys,-U,_hashtab_getsize,-U,_hashtab_keyflags,-U,_hashtab_lookup,-U,_hashtab_lookupentry,-U,_hashtab_lookupflags,-U,_hashtab_lookuplong,-U,_hashtab_lookupsym,-U,_hashtab_methodall,-U,_hashtab_methodall_imp,-U,_hashtab_new,-U,_hashtab_objfunall,-U,_hashtab_print,-U,_hashtab_readonly,-U,_hashtab_store,-U,_hashtab_store_safe,-U,_hashtab_storeflags,-U,_hashtab_storelong,-U,_hashtab_storesym,-U,_helpstring,-U,_inisr_set,-U,_inlet_append,-U,_inlet_count,-U,_inlet_new,-U,_inlet_nth,-U,_inlet_to,-U,_inlet4,-U,_inspector_open,-U,_intin,-U,_intload,-U,_intout,-U,_IsKeyDown,-U,_isbpatcher,-U,_isnewex,-U,_ispatcher,-U,_isr,-U,_isr_set,-U,_linklist_append,-U,_linklist_chuck,-U,_linklist_chuckindex,-U,_linklist_chuckptr,-U,_linklist_clear,-U,_linklist_deleteindex,-U,_linklist_findall,-U,_linklist_findfirst,-U,_linklist_flags,-U,_linklist_funall,-U,_linklist_funall_break,-U,_linklist_funindex,-U,_linklist_getflags,-U,_linklist_getindex,-U,_linklist_getsize,-U,_linklist_insert_sorted,-U,_linklist_insertafterobjptr,-U,_linklist_insertbeforeobjptr,-U,_linklist_insertindex,-U,_linklist_last,-U,_linklist_makearray,-U,_linklist_methodall,-U,_linklist_methodall_imp,-U,_linklist_methodindex,-U,_linklist_moveafterobjptr,-U,_linklist_movebeforeobjptr,-U,_linklist_new,-U,_linklist_next,-U,_linklist_objptr2index,-U,_linklist_prev,-U,_linklist_readonly,-U,_linklist_reverse,-U,_linklist_rotate,-U,_linklist_shuffle,-U,_linklist_sort,-U,_linklist_substitute,-U,_linklist_swap,-U,_linklist_match,-U,_linklist_chuckobject,-U,_linklist_deleteobject,-U,_linklist_prune,-U,_listout,-U,_loadbang_dequeue,-U,_loadbang_queueobject,-U,_loadbang_resume,-U,_loadbang_suspend,-U,_loader_setpath,-U,_locatefile,-U,_locatefile_extended,-U,_locatefilelist,-U,_locatefiletype,-U,_lockout_set,-U,_lowload_jpatcher_frombuffer,-U,_lowload_jpatcher_frombuffer_withobexprototype,-U,_maxversion,-U,_max_unicodekeydown,-U,_max_unicodekeyup,-U,_mayquote,-U,_method_false,-U,_method_object_free,-U,_method_object_getmesslist,-U,_method_object_getmethod,-U,_method_object_getname,-U,_method_object_new,-U,_method_object_new_messlist,-U,_method_object_setmesslist,-U,_method_object_setmethod,-U,_method_object_setname,-U,_method_true,-U,_milf_idle,-U,_milf_init,-U,_movecursor,-U,_nameinpath,-U,_nameload,-U,_nameload_unique,-U,_nameload_unique_internal,-U,_nametab_filename,-U,_newex_knows,-U,_newhandle,-U,_newinstance,-U,_newobject,-U,_newobject_fromdictionary,-U,_newobject_sprintf,-U,_noloadbangdisable_get,-U,_noloadbangdisable_set,-U,_notify_free,-U,_nullfn,-U,_object_addattr,-U,_object_addattr_atoms,-U,_object_addattr_atoms,-U,_object_addattr_format,-U,_object_addattr_format,-U,_object_addattr_parse,-U,_object_addattr_parse,-U,_object_addmethod,-U,_object_alloc,-U,_object_attach,-U,_object_attach_byptr,-U,_object_attach_byptr_register,-U,_object_attr_addattr,-U,_object_attr_addattr_atoms,-U,_object_attr_addattr_atoms,-U,_object_attr_addattr_format,-U,_object_attr_addattr_format,-U,_object_attr_addattr_parse,-U,_object_attr_addattr_parse,-U,_object_attr_attr_get,-U,_object_attr_attr_getvalueof,-U,_object_attr_attr_setvalueof,-U,_object_attr_enforcelocal,-U,_object_attr_get,-U,_object_attr_getchar,-U,_object_attr_getchar_array,-U,_object_attr_getdouble_array,-U,_object_attr_getdump,-U,_object_attr_getfloat,-U,_object_attr_getfloat_array,-U,_object_attr_getlong,-U,_object_attr_getlong_array,-U,_object_attr_getnames,-U,_object_attr_getobj,-U,_object_attr_getsym,-U,_object_attr_getsym_array,-U,_object_attr_getvalueof,-U,_object_attr_method,-U,_object_attr_setattrval,-U,_object_attr_setbinbuf,-U,_object_attr_setchar,-U,_object_attr_setchar_array,-U,_object_attr_setdisabled,-U,_object_attr_setdouble_array,-U,_object_attr_setfloat,-U,_object_attr_setfloat_array,-U,_object_attr_setformat,-U,_object_attr_setlong,-U,_object_attr_setlong_array,-U,_object_attr_setobj,-U,_object_attr_setobjval,-U,_object_attr_setparse,-U,_object_attr_setsym,-U,_object_attr_setsym_array,-U,_object_attr_setvalueof,-U,_object_attr_usercanget,-U,_object_attr_usercanset,-U,_object_attrhash_apply,-U,_object_bug,-U,_object_chuckattr,-U,_object_chuckmethod,-U,_object_class,-U,_object_classname,-U,_object_namespace,-U,_class_namespace,-U,_object_classname_compare,-U,_object_clonable,-U,_object_clone,-U,_object_clone_generic,-U,_object_commandenabled,-U,_object_deleteattr,-U,_object_deletemethod,-U,_object_detach,-U,_object_detach_byptr,-U,_object_dictionary_fromnewargs,-U,_object_dictionaryarg,-U,_object_error,-U,_object_error_obtrusive,-U,_object_findregistered,-U,_object_findregisteredbyptr,-U,_object_free,-U,_object_getcommand,-U,_object_getenabler,-U,_object_getmethod,-U,_object_getmethod_object,-U,_object_getvalueof,-U,_object_getvalueof_ext,-U,_object_handlecommand,-U,_object_inspect,-U,_object_method,-U,_object_method_imp,-U,_object_method_attrval,-U,_object_method_binbuf,-U,_object_method_char,-U,_object_method_char_array,-U,_object_method_double,-U,_object_method_double_array,-U,_object_method_float,-U,_object_method_float_array,-U,_object_method_format,-U,_object_method_long,-U,_object_method_long_array,-U,_object_method_obj,-U,_object_method_obj_array,-U,_object_method_objval,-U,_object_method_parse,-U,_object_method_sym,-U,_object_method_sym_array,-U,_object_method_typed,-U,_object_method_typedfun,-U,_object_new,-U,_object_new_imp,-U,_object_new_attrval,-U,_object_new_binbuf,-U,_object_new_format,-U,_object_new_objval,-U,_object_new_parse,-U,_object_new_typed,-U,_object_notify,-U,_object_obex_dumpout,-U,_object_obex_free,-U,_object_obex_get,-U,_object_obex_lookup,-U,_object_obex_lookuplong,-U,_object_obex_lookupsym,-U,_object_obex_quickref,-U,_object_obex_set,-U,_object_obex_store,-U,_object_obex_storelong,-U,_object_obex_storesym,-U,_object_post,-U,_object_poststring,-U,_object_refpage_get_class_info,-U,_object_refpage_get_class_info_fromclassname,-U,_object_refpage_method_is_undocumented,-U,_object_refpage_method_is_groupreference,-U,_object_register,-U,_object_replaceargs,-U,_object_reveal,-U,_object_setvalueof,-U,_object_setvalueof_ext,-U,_object_show,-U,_object_sticky,-U,_object_sticky_clear,-U,_object_subpatcher,-U,_object_unregister,-U,_object_warn,-U,_object_zero,-U,_onecopy_fileload,-U,_open_dialog,-U,_open_messageset,-U,_open_promptset,-U,_OptionKeyDown,-U,_ouchstring,-U,_outlet_add,-U,_outlet_addmonitor,-U,_outlet_anything,-U,_outlet_append,-U,_outlet_atoms,-U,_outlet_bang,-U,_outlet_canadd,-U,_outlet_count,-U,_outlet_float,-U,_outlet_int,-U,_outlet_list,-U,_outlet_msg,-U,_outlet_new,-U,_outlet_notify,-U,_outlet_nth,-U,_outlet_removemonitor,-U,_outlet_rm,-U,_palette_getcolor,-U,_patcher_eachdo,-U,_path_addnamed,-U,_path_addpath,-U,_path_build,-U,_path_closefolder,-U,_path_copyfile,-U,_path_copyfolder,-U,_path_copytotempfile,-U,_path_createfolder,-U,_path_createressysfile,-U,_path_createsysfile,-U,_path_deletefile,-U,_path_desktopfolder,-U,_path_extendedfileinfo,-U,_path_fileinfo,-U,_path_fileisresource,-U,_path_foldernextfile,-U,_path_frompathname,-U,_path_fromunicodepathname,-U,_path_toabsolutesystempath,-U,_path_getapppath,-U,_path_getdefault,-U,_path_getfilecreationdate,-U,_path_getfilemoddate,-U,_path_getmoddate,-U,_path_getname,-U,_path_getnext,-U,_path_getpath,-U,_path_getprefstring,-U,_path_getseparator,-U,_path_getstyle,-U,_path_getsupportpath,-U,_path_infoforopensysfile,-U,_path_nameconform,-U,_path_nameinpath,-U,_path_nameisrelative,-U,_path_openfolder,-U,_path_openresfile,-U,_path_openressysfile,-U,_path_opensysfile,-U,_path_removefromlist,-U,_path_removepath,-U,_path_renamefile,-U,_path_resolvefile,-U,_path_setdefault,-U,_path_setfileinfo,-U,_path_setpermanent,-U,_path_setprefstring,-U,_path_sysnameinpath,-U,_path_topathname,-U,_path_topotentialname,-U,_path_topotentialunicodename,-U,_path_frompotentialpathname,-U,_path_splitnames,-U,_plug_free,-U,_plug_init,-U,_plug_setloopfun,-U,_post,-U,_post_displayrecent,-U,_post_getpos,-U,_post_sym,-U,_postatom,-U,_poststring,-U,_preferences_class_define,-U,_preferences_class_defineoption,-U,_preferences_define,-U,_preferences_defineoption,-U,_preferences_getatomforkey,-U,_preferences_getatoms,-U,_preferences_getchar,-U,_preferences_getlong,-U,_preferences_getsym,-U,_preferences_path,-U,_preferences_readdictionary,-U,_preferences_setatoms,-U,_preferences_setchar,-U,_preferences_setlong,-U,_preferences_setsym,-U,_preferences_subpath,-U,_preferences_writedictionary,-U,_preset_int,-U,_preset_set,-U,_preset_store,-U,_proxy_getinlet,-U,_proxy_new,-U,_qelem_free,-U,_qelem_front,-U,_qelem_idlefree,-U,_qelem_idlefront,-U,_qelem_idleset,-U,_qelem_idleunset,-U,_qelem_new,-U,_qelem_set,-U,_qelem_unset,-U,_quotestring,-U,_qti_extra_flags_get,-U,_qti_extra_flags_set,-U,_qti_extra_free,-U,_qti_extra_matrix_get,-U,_qti_extra_matrix_set,-U,_qti_extra_new,-U,_qti_extra_pixelformat_get,-U,_qti_extra_pixelformat_set,-U,_qti_extra_rect_get,-U,_qti_extra_rect_set,-U,_qti_extra_scalemode_get,-U,_qti_extra_scalemode_set,-U,_qti_extra_time_get,-U,_qti_extra_time_set,-U,_qtimage_getrect,-U,_qtimage_open,-U,_quickmap_add,-U,_quickmap_drop,-U,_quickmap_lookup_key1,-U,_quickmap_lookup_key2,-U,_quickmap_readonly,-U,_quickmap_new,-U,_quittask_install,-U,_quittask_remove,-U,_quittask_remove2,-U,_readatom,-U,_readtohandle,-U,_recent_add,-U,_reg_object_namespace_lookup,-U,_rerand,-U,_saveas_autoextension,-U,_saveas_dialog,-U,_saveas_messageset,-U,_saveas_promptset,-U,_saveas_setselectedtype,-U,_saveasdialog_extended,-U,_saveasdialog_pathset,-U,_sched_idledequeue,-U,_sched_isinpoll,-U,_sched_isinqueue,-U,_sched_resume,-U,_sched_set_takeover,-U,_sched_setpollthrottle,-U,_sched_setqueuethrottle,-U,_sched_suspend,-U,_schedule,-U,_schedule_defer,-U,_schedule_delay,-U,_schedule_fdefer,-U,_schedule_fdelay,-U,_schedulef,-U,_scheduler_gettime,-U,_scheduler_new,-U,_scheduler_run,-U,_scheduler_get,-U,_scheduler_set,-U,_scheduler_settime,-U,_scheduler_fromobject,-U,_scheduler_shift,-U,_serialno,-U,_setclock_delay,-U,_setclock_fdelay,-U,_setclock_fgettime,-U,_setclock_getftime,-U,_setclock_gettime,-U,_setclock_unset,-U,_setup,-U,_ShiftKeyDown,-U,_sndfile_info,-U,_sndfile_writeheader,-U,_sprintf,-U,_sscanf,-U,_sprintf_tr,-U,_stdinletinfo,-U,_stdlist,-U,_str_tr,-U,_string_getptr,-U,_string_new,-U,_string_reserve,-U,_string_append,-U,_string_chop,-U,_stringload,-U,_strncpy_zero,-U,_snprintf_zero,-U,_strncat_zero,-U,_symbol_tr,-U,_symbol_unique,-U,_symbolarray_sort,-U,_symobject_new,-U,_symobject_linklist_match,-U,_sysdateformat_strftimetodatetime,-U,_sysdateformat_formatdatetime,-U,_sysfile_close,-U,_sysfile_geteof,-U,_sysfile_getpos,-U,_sysfile_openhandle,-U,_sysfile_openptrsize,-U,_sysfile_read,-U,_sysfile_readtextfile,-U,_sysfile_readtohandle,-U,_sysfile_readtoptr,-U,_sysfile_seteof,-U,_sysfile_setobject,-U,_sysfile_setpos,-U,_sysfile_spoolcopy,-U,_sysfile_write,-U,_sysfile_writetextfile,-U,_sysmem_copyptr,-U,_sysmem_freehandle,-U,_sysmem_freeptr,-U,_sysmem_handlesize,-U,_sysmem_lockhandle,-U,_sysmem_newhandle,-U,_sysmem_newhandleclear,-U,_sysmem_newptr,-U,_sysmem_newptrclear,-U,_sysmem_nullterminatehandle,-U,_sysmem_ptrandhand,-U,_sysmem_ptrbeforehand,-U,_sysmem_ptrsize,-U,_sysmem_resizehandle,-U,_sysmem_resizeptr,-U,_sysmem_resizeptrclear,-U,_sysmenu_appenditem,-U,_sysmenu_appendrawitem,-U,_sysmenu_appendseparator,-U,_sysmenu_assignsubmenu,-U,_sysmenu_checkitem,-U,_sysmenu_cmdid_popup,-U,_sysmenu_cmdid_set,-U,_sysmenu_copyitems,-U,_sysmenu_delete,-U,_sysmenu_deleteallitems,-U,_sysmenu_deleteitem,-U,_sysmenu_deletemh,-U,_sysmenu_dispose,-U,_sysmenu_getcheck,-U,_sysmenu_gethelp,-U,_sysmenu_getid,-U,_sysmenu_gettext,-U,_sysmenu_gettitle,-U,_sysmenu_insert,-U,_sysmenu_insertsubmenu,-U,_sysmenu_itemcount,-U,_sysmenu_menufromid,-U,_sysmenu_new,-U,_sysmenu_popup,-U,_sysmenu_setfont,-U,_sysmenu_setitem,-U,_sysmenu_setreference,-U,_sysmenu_setshortcut,-U,_sysmenu_settext,-U,_sysmidi_createport,-U,_sysmidi_deletemarked,-U,_sysmidi_enqbigpacket,-U,_sysmidi_idtoport,-U,_sysmidi_indextoname,-U,_sysmidi_iterate,-U,_sysmidi_numinports,-U,_sysmidi_numoutports,-U,_sysmidi_uniqueid,-U,_sysparallel_processorcount,-U,_sysparallel_task_benchprint,-U,_sysparallel_task_cancel,-U,_sysparallel_task_data,-U,_sysparallel_task_execute,-U,_sysparallel_task_free,-U,_sysparallel_task_new,-U,_sysparallel_task_workerproc,-U,_sysparallel_worker_execute,-U,_sysparallel_worker_free,-U,_sysparallel_worker_new,-U,_systhread_cond_broadcast,-U,_systhread_cond_free,-U,_systhread_cond_new,-U,_systhread_cond_signal,-U,_systhread_cond_wait,-U,_systhread_create,-U,_systhread_exit,-U,_systhread_getspecific,-U,_systhread_ismainthread,-U,_systhread_istimerthread,-U,_systhread_join,-U,_systhread_mutex_free,-U,_systhread_mutex_lock,-U,_systhread_mutex_new,-U,_systhread_mutex_newlock,-U,_systhread_mutex_trylock,-U,_systhread_mutex_unlock,-U,_systhread_rwlock_new,-U,_systhread_rwlock_free,-U,_systhread_rwlock_rdlock,-U,_systhread_rwlock_tryrdlock,-U,_systhread_rwlock_rdunlock,-U,_systhread_rwlock_wrlock,-U,_systhread_rwlock_trywrlock,-U,_systhread_rwlock_wrunlock,-U,_systhread_rwlock_setspintime,-U,_systhread_rwlock_getspintime,-U,_systhread_key_create,-U,_systhread_key_delete,-U,_systhread_self,-U,_systhread_setpriority,-U,_systhread_getpriority,-U,_systhread_setspecific,-U,_systhread_eliminatedenormals,-U,_systhread_sleep,-U,_systhread_terminate,-U,_systime_datetime,-U,_systime_datetoseconds,-U,_systime_ms,-U,_systime_seconds,-U,_systime_secondstodate,-U,_systime_ticks,-U,_systimer_gettime,-U,_tabfromhandle,-U,_table_dirty,-U,_table_get,-U,_textpreferences_add,-U,_textpreferences_addoption,-U,_textpreferences_addraw,-U,_textpreferences_addrect,-U,_textpreferences_close,-U,_textpreferences_default,-U,_textpreferences_open,-U,_textpreferences_read,-U,_time_stop,-U,_time_tick,-U,_time_getms,-U,_time_getticks,-U,_time_listen,-U,_time_getphase,-U,_time_setvalue,-U,_class_time_addattr,-U,_time_new,-U,_time_getnamed,-U,_time_enable_attributes,-U,_time_isfixedunit,-U,_time_schedule,-U,_time_schedule_limit,-U,_time_now,-U,_time_getitm,-U,_time_calcquantize,-U,_time_setclock,-U,_toolfile_fread,-U,_toolfile_fwrite,-U,_toolfile_getc,-U,_toolfile_new,-U,_translation_getinterfacepath,-U,_typedmess,-U,_typelist_make,-U,_typelist_make,-U,_utils_setcontext,-U,_utils_usecontext,-U,_wind_advise,-U,_wind_advise_explain,-U,_wind_nocancel,-U,_wind_setcursor,-U,_xmltree_attr_symcompare,-U,_xmltree_attribute_free,-U,_xmltree_attribute_new,-U,_xmltree_cdata_free,-U,_xmltree_cdata_new,-U,_xmltree_cdata_splittext,-U,_xmltree_charnode_addinterface,-U,_xmltree_charnode_appenddata,-U,_xmltree_charnode_deletedata,-U,_xmltree_charnode_free,-U,_xmltree_charnode_insertdata,-U,_xmltree_charnode_new,-U,_xmltree_charnode_replacedata,-U,_xmltree_charnode_substringdata,-U,_xmltree_comment_free,-U,_xmltree_comment_new,-U,_xmltree_document_createattribute,-U,_xmltree_document_createcdatasection,-U,_xmltree_document_createcomment,-U,_xmltree_document_createelement,-U,_xmltree_document_createheader,-U,_xmltree_document_createtextnode,-U,_xmltree_document_filename,-U,_xmltree_document_free,-U,_xmltree_document_getelementsbytagname,-U,_xmltree_document_new,-U,_xmltree_document_print,-U,_xmltree_document_read,-U,_xmltree_document_write,-U,_xmltree_document_xmlparse_cdata_end,-U,_xmltree_document_xmlparse_cdata_start,-U,_xmltree_document_xmlparse_characterdata,-U,_xmltree_document_xmlparse_comment,-U,_xmltree_document_xmlparse_default,-U,_xmltree_document_xmlparse_doctype_end,-U,_xmltree_document_xmlparse_doctype_start,-U,_xmltree_document_xmlparse_element_end,-U,_xmltree_document_xmlparse_element_start,-U,_xmltree_element_free,-U,_xmltree_element_getattribute,-U,_xmltree_element_getattribute_float,-U,_xmltree_element_getattribute_float_array,-U,_xmltree_element_getattribute_long,-U,_xmltree_element_getattribute_long_array,-U,_xmltree_element_getattribute_sym,-U,_xmltree_element_getattribute_sym_array,-U,_xmltree_element_getattributenode,-U,_xmltree_element_getelementsbytagname,-U,_xmltree_element_new,-U,_xmltree_element_removeattribute,-U,_xmltree_element_removeattributenode,-U,_xmltree_element_setattribute,-U,_xmltree_element_setattribute_float,-U,_xmltree_element_setattribute_float_array,-U,_xmltree_element_setattribute_long,-U,_xmltree_element_setattribute_long_array,-U,_xmltree_element_setattribute_sym,-U,_xmltree_element_setattribute_sym_array,-U,_xmltree_element_setattributenode,-U,_xmltree_element_symcompare,-U,_xmltree_init,-U,_xmltree_node_addinterface,-U,_xmltree_node_appendchild,-U,_xmltree_node_clonenode,-U,_xmltree_node_free,-U,_xmltree_node_getnodevalasstring,-U,_xmltree_node_getnodevalue,-U,_xmltree_node_getnodevalue_float,-U,_xmltree_node_getnodevalue_float_array,-U,_xmltree_node_getnodevalue_long,-U,_xmltree_node_getnodevalue_long_array,-U,_xmltree_node_getnodevalue_sym,-U,_xmltree_node_getnodevalue_sym_array,-U,_xmltree_node_haschildnodes,-U,_xmltree_node_insertbefore,-U,_xmltree_node_new,-U,_xmltree_node_nodevalue,-U,_xmltree_node_nodevalue_float,-U,_xmltree_node_nodevalue_float_array,-U,_xmltree_node_nodevalue_long,-U,_xmltree_node_nodevalue_long_array,-U,_xmltree_node_nodevalue_sym,-U,_xmltree_node_nodevalue_sym_array,-U,_xmltree_node_removeallchildren,-U,_xmltree_node_removechild,-U,_xmltree_node_replacechild,-U,_xmltree_node_setnodevalasstring,-U,_xmltree_node_write,-U,_xmltree_text_free,-U,_xmltree_text_new,-U,_xmltree_text_splittext,-U,_xpcoll_dereference,-U,_xpcoll_load,-U,_xpcoll_open,-U,_xpcoll_opensysfile,-U,_xpcoll_reference,-U,_xpcoll_setclientcallback,-U,_xpcoll_getvol,-U,_xpcoll_openfile,-U,_xpcoll_fromnameddata,-U,_xsetpost,-U,_zgetfn,-U,_jbox_initclass,-U,_jbox_new,-U,_jbox_free,-U,_jbox_ready,-U,_jbox_redraw,-U,_jbox_redrawcontents,-U,_jbox_getoutlet,-U,_jbox_getinlet,-U,_jbox_updatetextfield,-U,_jbox_updatetextfield_safe,-U,_jbox_updatetextfield_lockmutex,-U,_jbox_grabfocus,-U,_jbox_show_caption,-U,_jbox_hide_caption,-U,_jbox_invalidate_layer,-U,_jbox_remove_layer,-U,_jbox_start_layer,-U,_jbox_end_layer,-U,_jbox_paint_layer,-U,_jbox_get_boxpath,-U,_jbox_validaterects,-U,_jpatcher_deleteobj,-U,_jpatcher_is_patcher,-U,_jpatcher_get_box,-U,_jpatcher_get_count,-U,_jpatcher_get_firstobject,-U,_jpatcher_get_lastobject,-U,_jpatcher_get_firstline,-U,_jpatcher_get_firstview,-U,_jpatcher_set_locked,-U,_jpatcher_get_title,-U,_jpatcher_set_title,-U,_jpatcher_get_name,-U,_jpatcher_get_filename,-U,_jpatcher_get_filepath,-U,_jpatcher_get_dirty,-U,_jpatcher_set_dirty,-U,_jpatcher_get_bgcolor,-U,_jpatcher_set_bgcolor,-U,_jpatcher_get_gridsize,-U,_jpatcher_set_gridsize,-U,_jpatcher_get_parentpatcher,-U,_jpatcher_get_toppatcher,-U,_jpatcher_get_maxclass,-U,_jpatcher_get_parentclass,-U,_jpatcher_get_rect,-U,_jpatcher_set_rect,-U,_jpatcher_get_noedit,-U,_jpatcher_uniqueboxname,-U,_jpatcher_getboxfont,-U,_jpatcher_get_controller,-U,_jpatcher_addboxlistener,-U,_jpatcher_removeboxlistener,-U,_jpatcher_get_fileversion,-U,_jpatcher_get_currentfileversion,-U,_jpatchercontroller_createobject,-U,_jpatchercontroller_setpatcherview,-U,_jpatchercontroller_pastefileintoobject,-U,_jpatchercontroller_pastefileat,-U,_jpatchercontroller_connectobjects,-U,_object_attr_get_rect,-U,_object_attr_set_rect,-U,_object_attr_getcolor,-U,_object_attr_setcolor,-U,_object_attr_getpt,-U,_object_attr_setpt,-U,_object_attr_getsize,-U,_object_attr_setsize,-U,_jbox_get_maxclass,-U,_jbox_get_patcher,-U,_jbox_get_object,-U,_jbox_get_rect_for_view,-U,_jbox_set_rect_for_view,-U,_jbox_get_rect_for_sym,-U,_jbox_set_rect_for_sym,-U,_jbox_set_rect,-U,_jbox_get_patching_rect,-U,_jbox_set_patching_rect,-U,_jbox_get_presentation_rect,-U,_jbox_set_presentation_rect,-U,_jbox_set_position,-U,_jbox_get_patching_position,-U,_jbox_set_patching_position,-U,_jbox_get_presentation_position,-U,_jbox_set_presentation_position,-U,_jbox_set_size,-U,_jbox_get_patching_size,-U,_jbox_set_patching_size,-U,_jbox_get_presentation_size,-U,_jbox_set_presentation_size,-U,_jbox_get_hidden,-U,_jbox_set_hidden,-U,_jbox_get_fontname,-U,_jbox_set_fontname,-U,_jbox_get_fontsize,-U,_jbox_createfont,-U,_jbox_set_fontsize,-U,_jbox_fontface_to_weight_slant,-U,_jbox_get_font_slant,-U,_jbox_get_font_weight,-U,_jbox_get_color,-U,_jbox_set_color,-U,_jbox_get_nextobject,-U,_jbox_get_prevobject,-U,_jbox_get_varname,-U,_jbox_set_varname,-U,_jbox_get_id,-U,_jbox_get_canhilite,-U,_jbox_get_background,-U,_jbox_set_background,-U,_jbox_get_ignoreclick,-U,_jbox_set_ignoreclick,-U,_jbox_get_drawfirstin,-U,_jbox_get_outline,-U,_jbox_set_outline,-U,_jbox_get_growy,-U,_jbox_get_growboth,-U,_jbox_get_nogrow,-U,_jbox_get_drawinlast,-U,_jbox_get_mousedragdelta,-U,_jbox_set_mousedragdelta,-U,_jbox_get_textfield,-U,_jbox_set_hinttrack,-U,_jbox_get_hinttrack,-U,_jbox_set_hintstring,-U,_jpatchline_get_startpoint,-U,_jpatchline_get_endpoint,-U,_jpatchline_get_nummidpoints,-U,_jpatchline_get_pending,-U,_jpatchline_get_box1,-U,_jpatchline_get_outletnum,-U,_jpatchline_get_box2,-U,_jpatchline_get_inletnum,-U,_jpatchline_get_straightthresh,-U,_jpatchline_set_straightthresh,-U,_jpatchline_get_straightstart,-U,_jpatchline_get_straightend,-U,_jpatchline_set_straightstart,-U,_jpatchline_set_straightend,-U,_jpatchline_get_nextline,-U,_jpatchline_get_hidden,-U,_jpatchline_set_hidden,-U,_jpatchline_get_color,-U,_jpatchline_set_color,-U,_jpatchline_addpaintmethod,-U,_patcherview_get_visible,-U,_patcherview_set_visible,-U,_patcherview_get_locked,-U,_patcherview_set_locked,-U,_patcherview_get_zoomfactor,-U,_patcherview_set_zoomfactor,-U,_patcherview_get_nextview,-U,_patcherview_get_topview,-U,_patcherview_get_jgraphics,-U,_patcherview_set_jgraphics,-U,_patcherview_get_patcher,-U,_patcherview_get_rect,-U,_patcherview_set_rect,-U,_patcherview_canvas_to_screen,-U,_patcherview_get_presentation,-U,_textfield_get_owner,-U,_textfield_get_textcolor,-U,_textfield_set_textcolor,-U,_textfield_get_bgcolor,-U,_textfield_set_bgcolor,-U,_textfield_get_textmargins,-U,_textfield_set_textmargins,-U,_textfield_get_editonclick,-U,_textfield_set_editonclick,-U,_textfield_get_selectallonedit,-U,_textfield_set_selectallonedit,-U,_textfield_get_noactivate,-U,_textfield_set_noactivate,-U,_textfield_get_readonly,-U,_textfield_set_readonly,-U,_textfield_get_wordwrap,-U,_textfield_set_wordwrap,-U,_textfield_get_useellipsis,-U,_textfield_set_useellipsis,-U,_textfield_get_autoscroll,-U,_textfield_set_autoscroll,-U,_textfield_get_wantsreturn,-U,_textfield_set_wantsreturn,-U,_textfield_get_wantstab,-U,_textfield_set_wantstab,-U,_textfield_get_autofixwidth,-U,_textfield_set_autofixwidth,-U,_textfield_set_emptytext,-U,_textfield_get_emptytext,-U,_textfield_set_underline,-U,_textfield_get_underline,-U,_textfield_set_justification,-U,_textfield_get_justification,-U,_jdrag_getitemstring,-U,_jdrag_getobject,-U,_jdrag_getlocation,-U,_jdrag_createobject,-U,_jdrag_createnewobj,-U,_jdrag_createmessage,-U,_jdrag_add,-U,_jdrag_matchdragrole,-U,_jdrag_setboxlocation,-U,_jdrag_box_add,-U,_jdrag_object_add,-U,_jgraphics_getfiletypes,-U,_jgraphics_round,-U,_jgraphics_image_surface_clear,-U,_jgraphics_image_surface_create,-U,_jgraphics_image_surface_create_referenced,-U,_jgraphics_image_surface_create_from_file,-U,_jgraphics_image_surface_create_for_data,-U,_jgraphics_image_surface_create_from_filedata,-U,_jgraphics_image_surface_create_from_resource,-U,_jgraphics_image_surface_writepng,-U,_jgraphics_surface_reference,-U,_jgraphics_surface_destroy,-U,_jgraphics_surface_set_device_offset,-U,_jgraphics_surface_get_device_offset,-U,_jgraphics_image_surface_get_width,-U,_j";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = s2m.wacom;
+				PRODUCT_VERSION = 6.1.0;
+				SDKROOT = macosx10.8;
+				SECTORDER_FLAGS = "";
+				SKIP_INSTALL = NO;
+				SYMROOT = "$(PROJECT_DIR)";
+				USER_HEADER_SEARCH_PATHS = "../../c74support/max-includes";
+				VALID_ARCHS = "i386 x86_64";
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"-Wno-conversion",
+				);
+				WRAPPER_EXTENSION = mxo;
+				ZERO_LINK = NO;
+			};
+			name = Deployment;
+		};
+		0FFBB95D09731BB700D78707 /* Development */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PREPROCESSOR_DEFINITIONS = "DEBUG=1";
+			};
+			name = Development;
+		};
+		0FFBB95E09731BB700D78707 /* Deployment */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				SDKROOT = macosx10.6;
+			};
+			name = Deployment;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0FFBB95809731BB700D78707 /* Build configuration list for PBXNativeTarget "s2m.wacom" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0FFBB95909731BB700D78707 /* Development */,
+				0FFBB95A09731BB700D78707 /* Deployment */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Development;
+		};
+		0FFBB95C09731BB700D78707 /* Build configuration list for PBXProject "s2m.wacom" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0FFBB95D09731BB700D78707 /* Development */,
+				0FFBB95E09731BB700D78707 /* Deployment */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Development;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 089C1669FE841209C02AAC07 /* Project object */;
+}
