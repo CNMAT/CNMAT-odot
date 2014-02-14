@@ -1,0 +1,245 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6B0E9AAB181EB6CC00D77BE2 /* maxmspsdk.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 6B0E9AAA181EB6CC00D77BE2 /* maxmspsdk.xcconfig */; };
+		6B0E9AAD181EB6D400D77BE2 /* s2m.wacomtouch.c in Sources */ = {isa = PBXBuildFile; fileRef = 6B0E9AAC181EB6D400D77BE2 /* s2m.wacomtouch.c */; };
+		6B0E9AB8181EB8A200D77BE2 /* WacomMultiTouch.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B0E9AB3181EB8A200D77BE2 /* WacomMultiTouch.h */; };
+		6B0E9AB9181EB8A200D77BE2 /* WacomMultiTouchTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B0E9AB4181EB8A200D77BE2 /* WacomMultiTouchTypes.h */; };
+		6B0E9ABF181EBBE800D77BE2 /* WacomMultiTouch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B0E9ABE181EBBE800D77BE2 /* WacomMultiTouch.framework */; };
+		6B0E9AC4181EBC9F00D77BE2 /* JitterAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B0E9AC3181EBC9F00D77BE2 /* JitterAPI.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		2FBBEAE508F335360078DB84 /* s2m.wacomtouch.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = s2m.wacomtouch.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
+		6B0E9AAA181EB6CC00D77BE2 /* maxmspsdk.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = maxmspsdk.xcconfig; path = ../maxmspsdk.xcconfig; sourceTree = "<group>"; };
+		6B0E9AAC181EB6D400D77BE2 /* s2m.wacomtouch.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = s2m.wacomtouch.c; sourceTree = "<group>"; };
+		6B0E9AB3181EB8A200D77BE2 /* WacomMultiTouch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WacomMultiTouch.h; sourceTree = "<group>"; };
+		6B0E9AB4181EB8A200D77BE2 /* WacomMultiTouchTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WacomMultiTouchTypes.h; sourceTree = "<group>"; };
+		6B0E9ABE181EBBE800D77BE2 /* WacomMultiTouch.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WacomMultiTouch.framework; path = ../../../../../../../Library/Frameworks/WacomMultiTouch.framework; sourceTree = "<group>"; };
+		6B0E9AC3181EBC9F00D77BE2 /* JitterAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JitterAPI.framework; path = "../../../../../SDKs/MaxSDK-6.1.3/c74support/jit-includes/JitterAPI.framework"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2FBBEADC08F335360078DB84 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6B0E9ABF181EBBE800D77BE2 /* WacomMultiTouch.framework in Frameworks */,
+				6B0E9AC4181EBC9F00D77BE2 /* JitterAPI.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		089C166AFE841209C02AAC07 /* iterator */ = {
+			isa = PBXGroup;
+			children = (
+				6B0E9AAA181EB6CC00D77BE2 /* maxmspsdk.xcconfig */,
+				6B0E9AAC181EB6D400D77BE2 /* s2m.wacomtouch.c */,
+				6B0E9AC3181EBC9F00D77BE2 /* JitterAPI.framework */,
+				6B0E9ABE181EBBE800D77BE2 /* WacomMultiTouch.framework */,
+				6B0E9AB1181EB8A200D77BE2 /* Wacom_Feel_SDK */,
+				19C28FB4FE9D528D11CA2CBB /* Products */,
+			);
+			name = iterator;
+			sourceTree = "<group>";
+		};
+		19C28FB4FE9D528D11CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2FBBEAE508F335360078DB84 /* s2m.wacomtouch.mxo */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6B0E9AB1181EB8A200D77BE2 /* Wacom_Feel_SDK */ = {
+			isa = PBXGroup;
+			children = (
+				6B0E9AB2181EB8A200D77BE2 /* inc */,
+			);
+			path = Wacom_Feel_SDK;
+			sourceTree = "<group>";
+		};
+		6B0E9AB2181EB8A200D77BE2 /* inc */ = {
+			isa = PBXGroup;
+			children = (
+				6B0E9AB3181EB8A200D77BE2 /* WacomMultiTouch.h */,
+				6B0E9AB4181EB8A200D77BE2 /* WacomMultiTouchTypes.h */,
+			);
+			path = inc;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		2FBBEAD708F335360078DB84 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6B0E9AB8181EB8A200D77BE2 /* WacomMultiTouch.h in Headers */,
+				6B0E9AB9181EB8A200D77BE2 /* WacomMultiTouchTypes.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		2FBBEAD608F335360078DB84 /* max-external */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2FBBEAE008F335360078DB84 /* Build configuration list for PBXNativeTarget "max-external" */;
+			buildPhases = (
+				2FBBEAD708F335360078DB84 /* Headers */,
+				2FBBEAD808F335360078DB84 /* Resources */,
+				2FBBEADA08F335360078DB84 /* Sources */,
+				2FBBEADC08F335360078DB84 /* Frameworks */,
+				2FBBEADF08F335360078DB84 /* Rez */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "max-external";
+			productName = iterator;
+			productReference = 2FBBEAE508F335360078DB84 /* s2m.wacomtouch.mxo */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		089C1669FE841209C02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0460;
+			};
+			buildConfigurationList = 2FBBEACF08F335010078DB84 /* Build configuration list for PBXProject "s2m.wacomtouch" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 1;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 089C166AFE841209C02AAC07 /* iterator */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2FBBEAD608F335360078DB84 /* max-external */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2FBBEAD808F335360078DB84 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6B0E9AAB181EB6CC00D77BE2 /* maxmspsdk.xcconfig in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXRezBuildPhase section */
+		2FBBEADF08F335360078DB84 /* Rez */ = {
+			isa = PBXRezBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXRezBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2FBBEADA08F335360078DB84 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6B0E9AAD181EB6D400D77BE2 /* s2m.wacomtouch.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		2FBBEAD008F335010078DB84 /* Development */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Development;
+		};
+		2FBBEAD108F335010078DB84 /* Deployment */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Deployment;
+		};
+		2FBBEAE108F335360078DB84 /* Development */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6B0E9AAA181EB6CC00D77BE2 /* maxmspsdk.xcconfig */;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(C74SUPPORT)/max-includes\"",
+					"\"$(C74SUPPORT)/msp-includes\"",
+					"\"$(C74SUPPORT)/jit-includes\"",
+				);
+				GCC_OPTIMIZATION_LEVEL = 0;
+				MACOSX_DEPLOYMENT_TARGET = 10.5;
+				OTHER_LDFLAGS = (
+					"-framework",
+					"CoreServices,",
+					"$(C74_SYM_LINKER_FLAGS)",
+				);
+			};
+			name = Development;
+		};
+		2FBBEAE208F335360078DB84 /* Deployment */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6B0E9AAA181EB6CC00D77BE2 /* maxmspsdk.xcconfig */;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(C74SUPPORT)/max-includes\"",
+					"\"$(C74SUPPORT)/msp-includes\"",
+					"\"$(C74SUPPORT)/jit-includes\"",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.5;
+				OTHER_LDFLAGS = (
+					"-framework",
+					"CoreServices,",
+					"$(C74_SYM_LINKER_FLAGS)",
+				);
+			};
+			name = Deployment;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2FBBEACF08F335010078DB84 /* Build configuration list for PBXProject "s2m.wacomtouch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2FBBEAD008F335010078DB84 /* Development */,
+				2FBBEAD108F335010078DB84 /* Deployment */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Development;
+		};
+		2FBBEAE008F335360078DB84 /* Build configuration list for PBXNativeTarget "max-external" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2FBBEAE108F335360078DB84 /* Development */,
+				2FBBEAE208F335360078DB84 /* Deployment */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Development;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 089C1669FE841209C02AAC07 /* Project object */;
+}
