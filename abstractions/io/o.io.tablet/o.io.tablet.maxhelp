@@ -8,7 +8,7 @@
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 100.0, 100.0, 813.0, 781.0 ],
+		"rect" : [ 55.0, 109.0, 813.0, 781.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -28,6 +28,21 @@
 		"digest" : "",
 		"tags" : "",
 		"boxes" : [ 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"frgb" : 0.0,
+					"id" : "obj-10",
+					"linecount" : 2,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 214.0, 144.0, 150.0, 33.0 ],
+					"text" : "<< active , de-activate  with these messages"
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
@@ -139,7 +154,7 @@
 							"architecture" : "x86"
 						}
 ,
-						"rect" : [ 0.0, 0.0, 640.0, 480.0 ],
+						"rect" : [ 25.0, 69.0, 640.0, 480.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -199,7 +214,7 @@
  ]
 					}
 ,
-					"patching_rect" : [ 236.0, 606.0, 95.0, 20.0 ],
+					"patching_rect" : [ 179.0, 569.0, 95.0, 20.0 ],
 					"saved_object_attributes" : 					{
 						"default_fontface" : 0,
 						"default_fontname" : "Arial",
@@ -225,7 +240,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 214.0, 190.0, 562.0, 340.0 ]
+					"patching_rect" : [ 179.0, 201.0, 562.0, 340.0 ]
 				}
 
 			}
@@ -295,12 +310,12 @@
 					"fontsize" : 12.0,
 					"frgb" : 0.0,
 					"id" : "obj-5",
-					"linecount" : 4,
+					"linecount" : 5,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 440.607391, 9.115921, 156.0, 60.0 ],
-					"text" : "Relies on s2m.wacom and s2m.wacomtouch objects, downloadable at maxobjects.com"
+					"patching_rect" : [ 477.607391, 9.115921, 156.0, 74.0 ],
+					"text" : "Relies on s2m.wacom and s2m.wacomtouch objects, provided in this download, possible updates available at maxobjects.com"
 				}
 
 			}
@@ -310,12 +325,12 @@
 					"fontsize" : 12.0,
 					"frgb" : 0.0,
 					"id" : "obj-7",
-					"linecount" : 14,
+					"linecount" : 11,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 531.0, 541.0, 220.0, 194.0 ],
-					"text" : "The display:\nIf the pen is sensed by the wacom a red blog appears. The larger the blog, the more pressure applied by the pen.  The red cylinder on the left of the display represents the tilt of the pen. (If the pen tilt display doesn't work, then open its inspector and name it 'tilt.disp'.)\n\nIf touch(s) is sensed yellowish blogs appear.  The sizes of the blobs corresponds to the surface area of the touch. "
+					"patching_rect" : [ 531.0, 541.0, 270.0, 154.0 ],
+					"text" : "The display:\nIf the pen is sensed by the wacom a red circle appears. The larger the circle, the more pressure applied by the pen.  The red cylinder on the left of the display represents the tilt of the pen. (If the pen tilt display doesn't work, then open its inspector and name it 'tilt.disp'.)\n\nIf touch(s) is sensed yellowish blogs appear.  The sizes of the blobs corresponds to the surface area of the touch. "
 				}
 
 			}
@@ -458,8 +473,8 @@
 			}
 , 			{
 				"name" : "recycleFingersIDs.maxpat",
-				"bootpath" : "/Users/gabacheker/Documents/maxliB/s2m.wacomtouchV1.0",
-				"patcherrelativepath" : "../../../../../../maxliB/s2m.wacomtouchV1.0",
+				"bootpath" : "/Users/gabacheker/Documents/CNMAT_Work/CNMAT_GITHUB/CNMAT-odot/abstractions/io/o.io.tablet/externals/s2m.wacomtouchV1.0",
+				"patcherrelativepath" : "./externals/s2m.wacomtouchV1.0",
 				"type" : "JSON",
 				"implicit" : 1
 			}
