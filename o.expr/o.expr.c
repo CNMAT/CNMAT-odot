@@ -75,7 +75,7 @@
 //#include "jpatcher_api.h"
 //#include "jgraphics.h"
 #include "osc.h"
-#include "osc_expr.h"
+#include "osc_expr_ast_expr.h"
 #include "osc_expr_parser.h"
 #include "osc_mem.h"
 #include "osc_atom_u.h"
@@ -102,7 +102,7 @@ typedef struct _oexpr{
 	int num_exprs;
 	char **outlets_desc;
 #endif
-	t_osc_expr *expr;
+	t_osc_expr_ast_expr *expr;
 } t_oexpr;
 
 void *oexpr_class;
@@ -133,7 +133,7 @@ void oexpr_fullPacket(t_oexpr *x, t_symbol *msg, int argc, t_atom *argv)
 	}
 
 #if defined (OIF)
-	int ret = osc_expr_eval(x->expr, &len, &copy, &av);
+	int ret = osc_expr_ast_expr_eval(x->expr, &len, &copy, &av);
 	if(ret || !av || osc_atom_array_u_getLen(av) == 0){
 		omax_util_outletOSC(x->outlets[1], len, ptr);
 	}else{
@@ -154,7 +154,7 @@ void oexpr_fullPacket(t_oexpr *x, t_symbol *msg, int argc, t_atom *argv)
 		osc_mem_free(copy);
 	}
 #elif defined (OUNLESS)
-	int ret = osc_expr_eval(x->expr, &len, &copy, &av);
+	int ret = osc_expr_ast_expr_eval(x->expr, &len, &copy, &av);
 	if(ret || !av || osc_atom_array_u_getLen(av) == 0){
 		omax_util_outletOSC(x->outlet, len, ptr);
 	}else{
@@ -174,7 +174,7 @@ void oexpr_fullPacket(t_oexpr *x, t_symbol *msg, int argc, t_atom *argv)
 		osc_mem_free(copy);
 	}
 #elif defined (OWHEN)
-	int ret = osc_expr_eval(x->expr, &len, &copy, &av);
+	int ret = osc_expr_ast_expr_eval(x->expr, &len, &copy, &av);
 	if(ret || !av || osc_atom_array_u_getLen(av) == 0){
 	}else{
 		int i;
@@ -193,10 +193,10 @@ void oexpr_fullPacket(t_oexpr *x, t_symbol *msg, int argc, t_atom *argv)
 		osc_mem_free(copy);
 	}
 #elif defined (OCOND)
-	t_osc_expr *f = x->expr;
+	t_osc_expr_ast_expr *f = x->expr;
 	int j = 0;
 	while(f){
-		int ret = osc_expr_eval(f, &len, &copy, &av);
+		int ret = osc_expr_ast_expr_eval(f, &len, &copy, &av);
 		if(!ret){
 			int i;
 			int fail = 0;
@@ -215,7 +215,7 @@ void oexpr_fullPacket(t_oexpr *x, t_symbol *msg, int argc, t_atom *argv)
 				goto out;
 			}
 		}
-		f = osc_expr_next(f);
+		f = osc_expr_ast_expr_next(f);
 		j++;
 	}
 	omax_util_outletOSC(x->outlets[j], len, ptr);
@@ -245,7 +245,7 @@ void oexpr_fullPacket(t_oexpr *x, t_symbol *msg, int argc, t_atom *argv)
 		memcpy(copy, ptr, len);
 	}
 	int ret = 0;
-	t_osc_expr *f = x->expr;
+	t_osc_expr_ast_expr *f = x->expr;
 	if(!f){
 		//t_osc_atom_ar_u *av = NULL;
 		//osc_expr_evalLexExprsInBndl(&copylen, &copy, &av);
@@ -253,14 +253,14 @@ void oexpr_fullPacket(t_oexpr *x, t_symbol *msg, int argc, t_atom *argv)
 		while(f){
 			//int argc = 0;
 			t_osc_atom_ar_u *av = NULL;
-			ret = osc_expr_eval(f, &copylen, &copy, &av);
+			ret = osc_expr_ast_expr_eval(f, &copylen, &copy, &av);
 			if(av){
 				osc_atom_array_u_free(av);
 			}
 			if(ret){
 				break;
 			}
-			f = osc_expr_next(f);
+			f = osc_expr_ast_expr_next(f);
 		}
 	}
 	if(ret){
@@ -276,11 +276,12 @@ void oexpr_fullPacket(t_oexpr *x, t_symbol *msg, int argc, t_atom *argv)
 
 void oexpr_postExprAST(t_oexpr *fg)
 {
-	char *buf = NULL;
-	long len = 0;
-	t_osc_expr *f = fg->expr;
+	t_osc_expr_ast_expr *f = fg->expr;
 	//while(f){
-	osc_expr_format(f, &len, &buf);
+	//osc_expr_format(f, &len, &buf);
+	long len = osc_expr_ast_expr_formatLisp(NULL, 0, f);
+	char buf[len + 1];
+	osc_expr_ast_expr_formatLisp(buf, len + 1, f);
 	// the modulo op '%' gets consumed as a format character with cycling's post() function.
 	// so go through and escape each one with another %
 	char buf2[len * 2];
@@ -303,6 +304,7 @@ void oexpr_postExprAST(t_oexpr *fg)
 
 void oexpr_postFunctionTable(t_oexpr *fg)
 {
+	/*
 	char *buf = NULL;
 	long len = 0;
 	osc_expr_formatFunctionTable(&len, &buf);
@@ -319,6 +321,7 @@ void oexpr_postFunctionTable(t_oexpr *fg)
 	if(buf){
 		osc_mem_free(buf);
 	}
+	*/
 }
 
 void oexpr_bang(t_oexpr *x)
@@ -345,6 +348,7 @@ OMAX_DICT_DICTIONARY(t_oexpr, x, oexpr_fullPacket);
 
 void oexpr_doc_cat(t_oexpr *x, t_symbol *msg, int argc, t_atom *argv)
 {
+	/*
 	if(argc == 0){
 		t_osc_bndl_s *b = osc_expr_getCategories();
 		omax_util_outletOSC(LEFTOUTLET, osc_bundle_s_getLen(b), osc_bundle_s_getPtr(b));
@@ -362,10 +366,12 @@ void oexpr_doc_cat(t_oexpr *x, t_symbol *msg, int argc, t_atom *argv)
 			osc_mem_free(ptr);
 		}
 	}
+	*/
 }
 
 void oexpr_doc_func(t_oexpr *x, t_symbol *msg, int argc, t_atom *argv)
 {
+	/*
 	if(argc != 1){
 		object_error((t_object *)x, "doc-func expected an argument--the name of a function");
 		return;
@@ -391,6 +397,7 @@ void oexpr_doc_func(t_oexpr *x, t_symbol *msg, int argc, t_atom *argv)
 		}
 		osc_bundle_u_free(bndl);
 	}
+	*/
 }
 
 void oexpr_doc(t_oexpr *x)
@@ -428,7 +435,7 @@ void oexpr_assist(t_oexpr *x, void *b, long io, long num, char *buf){
 
 void oexpr_free(t_oexpr *x){
 	if(x->expr){
-		osc_expr_free(x->expr);
+		osc_expr_ast_expr_free(x->expr);
 	}
 #if defined (OIF) || defined (OCOND)
 	if(x->outlets){
@@ -620,7 +627,7 @@ int oexpr_setup(void)
 void *oexpr_new(t_symbol *msg, short argc, t_atom *argv){
 	t_oexpr *x;
 	if((x = (t_oexpr *)object_alloc(oexpr_class))){
-		t_osc_expr *f = NULL;
+		t_osc_expr_ast_expr *f = NULL;
 		if(argc){
 			char buf[65536];
 			memset(buf, '\0', sizeof(buf));
@@ -683,7 +690,7 @@ void *oexpr_new(t_symbol *msg, short argc, t_atom *argv){
 		int n = 0;
 		while(f){
 			n++;
-			f = osc_expr_next(f);
+			f = osc_expr_ast_expr_next(f);
 		}
 
 #if defined (OIF)

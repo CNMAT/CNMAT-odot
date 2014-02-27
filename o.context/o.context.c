@@ -76,7 +76,7 @@ t_osc_bndl_u *ocontext_processPatcher(t_object *patcher)
 				t_osc_bndl_u *b = ocontext_processPatcher(atom_getobj(av));
 				if(b){
 					msg = osc_message_u_allocWithAddress(address);
-					osc_message_u_appendBndl_u(msg, b);
+					osc_message_u_appendBndl_u(msg, b, 1);
 					osc_bundle_u_addMsg(patcher_bndl, msg);
 				}
 			}else{
@@ -95,7 +95,7 @@ t_osc_bndl_u *ocontext_processPatcher(t_object *patcher)
 		t_osc_bndl_u *parent_bndl = ocontext_processPatcher(patcher);
 
 		t_osc_msg_u *msg = osc_message_u_allocWithAddress("/parent");
-		osc_message_u_appendBndl_u(msg, parent_bndl);
+		osc_message_u_appendBndl_u(msg, parent_bndl, 1);
 		osc_bundle_u_addMsg(patcher_bndl, msg);
 	}
 
@@ -112,7 +112,7 @@ void ocontext_doFullPacket(t_ocontext *x, long len, char *ptr)
 
 	t_osc_bndl_u *mypatcher_bndl = ocontext_processPatcher(patcher);
 	t_osc_msg_u *context_msg = osc_message_u_allocWithAddress("/context");
-	osc_message_u_appendBndl_u(context_msg, mypatcher_bndl);
+	osc_message_u_appendBndl_u(context_msg, mypatcher_bndl, 1);
 	t_osc_bndl_u *bu = NULL;
 	osc_bundle_s_deserialize(len, ptr, &bu);
 	if(bu){
