@@ -8,7 +8,7 @@
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 55.0, 109.0, 813.0, 781.0 ],
+		"rect" : [ 582.0, 44.0, 858.0, 781.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -38,7 +38,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 214.0, 144.0, 150.0, 33.0 ],
-					"text" : "<< active , de-activate  with these messages"
+					"text" : "<< active , de-activate  with  messages"
 				}
 
 			}
@@ -329,7 +329,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 531.0, 541.0, 270.0, 154.0 ],
+					"patching_rect" : [ 531.0, 541.0, 274.0, 154.0 ],
 					"text" : "The display:\nIf the pen is sensed by the wacom a red circle appears. The larger the circle, the more pressure applied by the pen.  The red cylinder on the left of the display represents the tilt of the pen. (If the pen tilt display doesn't work, then open its inspector and name it 'tilt.disp'.)\n\nIf touch(s) is sensed yellowish blogs appear.  The sizes of the blobs corresponds to the surface area of the touch. "
 				}
 
@@ -480,8 +480,8 @@
 			}
 , 			{
 				"name" : "o.collectwithtimeout.maxpat",
-				"bootpath" : "/Users/gabacheker/Documents/maxliB/lib",
-				"patcherrelativepath" : "../../../../../../maxliB/lib",
+				"bootpath" : "/Users/gabacheker/Documents/maxliB/o.io.qunexus/patchers",
+				"patcherrelativepath" : "../../../../../../maxliB/o.io.qunexus/patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}

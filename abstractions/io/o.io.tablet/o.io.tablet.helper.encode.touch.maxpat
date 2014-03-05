@@ -8,7 +8,7 @@
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 459.0, 49.0, 500.0, 755.0 ],
+		"rect" : [ 459.0, 49.0, 981.0, 801.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -34,7 +34,7 @@
 					"maxclass" : "outlet",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 383.0, 619.0, 25.0, 25.0 ]
+					"patching_rect" : [ 479.0, 602.0, 25.0, 25.0 ]
 				}
 
 			}
@@ -73,7 +73,7 @@
 					"maxclass" : "outlet",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 295.0, 618.0, 25.0, 25.0 ]
+					"patching_rect" : [ 59.0, 602.0, 25.0, 25.0 ]
 				}
 
 			}
@@ -85,7 +85,7 @@
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"outlettype" : [ "int" ],
-					"patching_rect" : [ 351.0, 450.0, 25.0, 25.0 ]
+					"patching_rect" : [ 479.0, 422.0, 25.0, 25.0 ]
 				}
 
 			}
@@ -98,7 +98,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 351.0, 508.825897, 108.0, 20.0 ],
+					"patching_rect" : [ 479.0, 480.825897, 108.0, 20.0 ],
 					"text" : "o.pack /total/count"
 				}
 
@@ -155,8 +155,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 52.0, 296.0, 590.0, 47.0 ],
-					"text" : "o.expr /name = [ \\\"/1\\\"\\, \\\"/2\\\"\\, \\\"/3\\\"\\, \\\"/4\\\"\\,\\\"/5\\\"\\, \\\"/6\\\"\\, \\\"/7\\\"\\, \\\"/8\\\"\\, \\\"/9\\\"\\, \\\"/10\\\"\\, \\\"/11\\\"\\, \\\"/12\\\"\\,\\\"/13\\\"\\, \\\"/14\\\"\\, \\\"/15\\\"\\, \\\"/16\\\" ] [[/pre/count]]\\; assign(/name + \\\"/state\\\"\\, /pre/state)\\; assign(/name + \\\"/position\\\"\\, /pre/position)\\; assign(/name + \\\"/size\\\"\\, /pre/size)"
+					"patching_rect" : [ 52.0, 296.0, 594.0, 47.0 ],
+					"text" : "o.expr /name = [ \\\"/1\\\"\\, \\\"/2\\\"\\, \\\"/3\\\"\\, \\\"/4\\\"\\,\\\"/5\\\"\\, \\\"/6\\\"\\, \\\"/7\\\"\\, \\\"/8\\\"\\, \\\"/9\\\"\\, \\\"/10\\\"\\, \\\"/11\\\"\\, \\\"/12\\\"\\,\\\"/13\\\"\\, \\\"/14\\\"\\, \\\"/15\\\"\\, \\\"/16\\\" ] [[/pre/count]]\\; assign(/name + \\\"/state\\\"\\, /pre/state)\\; assign(/name + \\\"/position\\\" \\, /pre/position)\\; assign(/name + \\\"/size\\\"\\, /pre/size)"
 				}
 
 			}
