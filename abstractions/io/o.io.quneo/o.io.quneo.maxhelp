@@ -8,7 +8,7 @@
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 324.0, 44.0, 1307.0, 972.0 ],
+		"rect" : [ 18.0, 44.0, 1307.0, 972.0 ],
 		"bgcolor" : [ 0.962353, 1.0, 0.998526, 1.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
@@ -30,15 +30,27 @@
 		"tags" : "",
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-10",
+					"maxclass" : "button",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "bang" ],
+					"patching_rect" : [ 130.0, 229.0, 20.0, 20.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"id" : "obj-8",
+					"linecount" : 2,
 					"maxclass" : "message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 511.877441, 362.211334, 50.0, 18.0 ],
-					"text" : "0."
+					"patching_rect" : [ 511.877441, 362.211334, 50.0, 31.0 ],
+					"text" : "0.433071"
 				}
 
 			}
@@ -74,7 +86,7 @@
 							"architecture" : "x86"
 						}
 ,
-						"rect" : [ 50.0, 94.0, 911.0, 756.0 ],
+						"rect" : [ 529.0, 137.0, 911.0, 756.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -93,18 +105,19 @@
 						"description" : "",
 						"digest" : "",
 						"tags" : "",
+						"visible" : 1,
 						"boxes" : [ 							{
 								"box" : 								{
 									"fontname" : "Arial",
 									"fontsize" : 12.0,
 									"id" : "obj-4",
-									"linecount" : 33,
+									"linecount" : 138,
 									"maxclass" : "o.message",
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 50.0, 100.0, 230.0, 449.0 ],
-									"text" : "/pad/a/4/velocity 0.\n/pad/a/4/pressure 0.\n/pad/a/4/position 0.496063 0.488189\n/pad/d/4/velocity 0.\n/pad/d/4/pressure 0.\n/pad/d/4/position 0.566929 0.543307\n/pad/a/1/velocity 0.\n/pad/a/1/pressure 0.\n/pad/a/1/position 0.511811 0.433071\n/large.arrowbutton/b/1/velocity 0.\n/large.arrowbutton/b/1/pressure 0.\n/large.arrowbutton/a/1/velocity 0.\n/large.arrowbutton/a/1/pressure 0.\n/large.arrowbutton/b/2/velocity 0.\n/large.arrowbutton/b/2/pressure 0.\n/large.arrowbutton/a/2/velocity 0.\n/large.arrowbutton/a/2/pressure 0.\n/slider/long/velocity\n/slider/long/pressure 0.\n/slider/long/position 0.425197\n/slider/long/2nd/position 0.346457\n/slider/d/velocity 0.\n/slider/d/pressure 0.\n/slider/d/location 0.\n/slider/c/velocity 0.\n/slider/c/pressure 0.\n/slider/c/location 0.\n/slider/b/velocity 0.\n/slider/b/pressure 0.\n/slider/b/location 0.\n/slider/a/velocity 0.\n/slider/a/pressure 0.\n/slider/a/location 0.11811",
+									"patching_rect" : [ 50.0, 100.0, 230.0, 1857.0 ],
+									"text" : "/pad/c/3/velocity 0.\n/pad/c/3/pressure 0.\n/pad/c/3/x 0.622047\n/pad/c/3/y 0.370079\n/pad/b/3/velocity 0.\n/pad/b/3/pressure 0.\n/pad/b/3/x 0.535433\n/pad/b/3/y 0.629921\n/pad/a/3/velocity 0.\n/pad/a/3/pressure 0.\n/pad/a/3/x 0.503937\n/pad/a/3/y 0.283465\n/pad/a/1/velocity 0.\n/pad/a/1/pressure 0.\n/pad/a/1/x 0.511811\n/pad/a/1/y 0.433071\n/pad/b/4/velocity 0.\n/pad/b/4/pressure 0.\n/pad/b/4/x 0.511811\n/pad/b/4/y 0.874016\n/pad/c/4/velocity 0.\n/pad/c/4/pressure 0.\n/pad/c/4/x 0.519685\n/pad/c/4/y 0.543307\n/pad/a/4/velocity 0.\n/pad/a/4/pressure 0.\n/pad/a/4/x 0.511811\n/pad/a/4/y 0.590551\n/disc/b/velocity 0.\n/disc/b/pressure 0.\n/disc/b/direction \"clockwise\"\n/disc/a/velocity 0.\n/disc/a/pressure 0.\n/disc/a/direction \"clockwise\"\n/large.arrowbutton/b/1/velocity 0.\n/large.arrowbutton/b/1/pressure 0.\n/large.arrowbutton/a/1/velocity 0.\n/large.arrowbutton/a/1/pressure 0.\n/large.arrowbutton/b/2/velocity 0.\n/large.arrowbutton/b/2/pressure 0.\n/large.arrowbutton/a/2/velocity 0.\n/large.arrowbutton/a/2/pressure 0.\n/arrowbutton/a/2/velocity 0.\n/arrowbutton/a/2/pressure 0.\n/arrowbutton/a/1/velocity 0.\n/arrowbutton/a/1/pressure 0.\n/arrowbutton/a/3/velocity 0.\n/arrowbutton/a/3/pressure 0.\n/arrowbutton/a/4/velocity 0.\n/arrowbutton/a/4/pressure 0.\n/arrowbutton/b/3/velocity 0.\n/arrowbutton/b/3/pressure 0.\n/arrowbutton/b/4/velocity 0.\n/arrowbutton/b/4/pressure 0.\n/arrowbutton/b/2/velocity 0.\n/arrowbutton/b/2/pressure 0.\n/arrowbutton/b/1/velocity 0.\n/arrowbutton/b/1/pressure 0.\n/slider/long/velocity\n/slider/long/pressure 0.\n/slider/long/position 0.\n/slider/long/2nd/position 0.\n/slider/2/velocity 0.\n/slider/2/pressure 0.\n/slider/2/location 0.\n/slider/1/velocity 0.\n/slider/1/pressure 0.\n/slider/1/location 0.\n/slider/3/velocity 0.\n/slider/3/pressure 0.\n/slider/3/location 0.\n/slider/4/velocity 0.\n/slider/4/pressure 0.\n/slider/4/location 0.\n/slider/d/velocity 0.\n/slider/d/pressure 0.\n/slider/d/location 0.\n/slider/c/velocity 0.\n/slider/c/pressure 0.\n/slider/c/location 0.\n/slider/b/velocity 0.\n/slider/b/pressure 0.\n/slider/b/location 0.\n/slider/a/velocity 0.\n/slider/a/pressure 0.\n/slider/a/location 0.\n/pad/d/4/velocity 0.\n/pad/d/4/pressure 0.\n/pad/d/4/x 0.\n/pad/d/4/y 0.\n/pad/d/3/velocity 0.\n/pad/d/3/pressure 0.\n/pad/d/3/x 0.\n/pad/d/3/y 0.\n/pad/d/2/velocity 0.\n/pad/d/2/pressure 0.\n/pad/d/2/x 0.\n/pad/d/2/y 0.\n/pad/d/1/velocity 0.\n/pad/d/1/pressure 0.\n/pad/d/1/x 0.\n/pad/d/1/y 0.\n/pad/c/2/velocity 0.\n/pad/c/2/pressure 0.\n/pad/c/2/x 0.\n/pad/c/2/y 0.\n/pad/c/1/velocity 0.\n/pad/c/1/pressure 0.\n/pad/c/1/x 0.\n/pad/c/1/y 0.\n/pad/b/2/velocity 0.\n/pad/b/2/pressure 0.\n/pad/b/2/x 0.\n/pad/b/2/y 0.\n/pad/b/1/velocity 0.\n/pad/b/1/pressure 0.\n/pad/b/1/x 0.\n/pad/b/1/y 0.\n/pad/a/2/velocity 0.\n/pad/a/2/pressure 0.\n/pad/a/2/x 0.\n/pad/a/2/y 0.\n/button/rhombus/pressure 0.\n/button/rhombus/velocity 0.\n/button/c/velocity 0.\n/button/c/pressure 0.\n/button/b/pressure 0.\n/button/b/velocity 0.\n/button/a/velocity 0.\n/button/a/pressure 0.\n/slider/d/position 0.\n/slider/c/position 0.\n/slider/b/position 0.\n/slider/a/position 0.\n/slider/1/position 0.\n/slider/2/position 0.\n/slider/3/position 0.\n/slider/4/position 0.",
 									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 
@@ -116,7 +129,7 @@
 									"maxclass" : "inlet",
 									"numinlets" : 0,
 									"numoutlets" : 1,
-									"outlettype" : [ "" ],
+									"outlettype" : [ "FullPacket" ],
 									"patching_rect" : [ 261.0, 48.0, 25.0, 25.0 ]
 								}
 
@@ -190,7 +203,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 318.877441, 1103.937256, 163.134995, 18.0 ],
-					"text" : "0."
+					"text" : "0.511811"
 				}
 
 			}
@@ -247,7 +260,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 43.665028, 1096.510498, 150.0, 60.0 ],
-					"text" : "/velocity 0.\n/pressure 0.\n/x 0.\n/y 0.",
+					"text" : "/velocity\n/pressure 0.\n/x\n/y",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -319,7 +332,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 414.111786, 355.562958, 91.765656, 18.0 ],
-					"text" : "0."
+					"text" : "0.519685"
 				}
 
 			}
@@ -376,7 +389,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 133.158035, 330.414978, 162.644501, 60.0 ],
-					"text" : "/velocity 0.\n/pressure 0.\n/x 0.\n/y 0.",
+					"text" : "/pressure 0.\n/y 0.433071\n/x 0.519685\n/velocity 0.",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -677,7 +690,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 758.020569, 560.453491, 150.0, 60.0 ],
-					"text" : "/pad/a/4/velocity 0.\n/pad/a/4/pressure 0.\n/pad/a/4/x 0.590551\n/pad/a/4/y 0.858268",
+					"text" : "/pad/a/4/velocity 0.\n/pad/a/4/pressure 0.\n/pad/a/4/x 0.503937\n/pad/a/4/y 0.590551",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -823,7 +836,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 10.187012, 171.241302, 150.0, 20.0 ],
-					"text" : "/USB/port \"QUNEO\"",
+					"text" : "/port \"QUNEO\"",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -877,7 +890,7 @@
 					"name" : "o.io.quneo.display.maxpat",
 					"numinlets" : 1,
 					"numoutlets" : 1,
-					"outlettype" : [ "" ],
+					"outlettype" : [ "FullPacket" ],
 					"patching_rect" : [ 1.187012, 391.900238, 736.968262, 581.374939 ]
 				}
 
@@ -886,6 +899,15 @@
 		"lines" : [ 			{
 				"patchline" : 				{
 					"destination" : [ "obj-60", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-1", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-61", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-1", 0 ]
@@ -1004,6 +1026,15 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-1", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-5", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-10", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-5", 0 ]
@@ -1266,6 +1297,27 @@
 				"implicit" : 1
 			}
 , 			{
+				"name" : "nothing.maxpat",
+				"bootpath" : "/Users/gabacheker/Documents/maxliB/CNMAT-CNMAT-MMJ-Depot-7782752/modules/basic_programming",
+				"patcherrelativepath" : "../../../../../../maxliB/CNMAT-CNMAT-MMJ-Depot-7782752/modules/basic_programming",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "uc_license.maxpat",
+				"bootpath" : "/Users/gabacheker/Documents/maxliB/CNMAT-CNMAT-MMJ-Depot-7782752/modules/depot_support",
+				"patcherrelativepath" : "../../../../../../maxliB/CNMAT-CNMAT-MMJ-Depot-7782752/modules/depot_support",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "cnmat_blue.gif",
+				"bootpath" : "/Users/gabacheker/Documents/maxliB/CNMAT-CNMAT-MMJ-Depot-7782752/modules/depot_support",
+				"patcherrelativepath" : "../../../../../../maxliB/CNMAT-CNMAT-MMJ-Depot-7782752/modules/depot_support",
+				"type" : "GIFf",
+				"implicit" : 1
+			}
+, 			{
 				"name" : "o.collectwithtimeout.maxpat",
 				"bootpath" : "/Users/gabacheker/Documents/maxliB/lib",
 				"patcherrelativepath" : "../../../../../../maxliB/lib",
@@ -1281,8 +1333,15 @@
 			}
 , 			{
 				"name" : "o.io.quneo.helper.encoder.maxpat",
-				"bootpath" : "/Users/gabacheker/Documents/maxliB/o.io.quneo.all",
-				"patcherrelativepath" : "../../../../../../maxliB/o.io.quneo.all",
+				"bootpath" : "/Users/gabacheker/Documents/CNMAT_Work/CNMAT_GITHUB/CNMAT-odot/abstractions/io/o.io.quneo",
+				"patcherrelativepath" : ".",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "o.io.midi.maxpat",
+				"bootpath" : "/Users/gabacheker/Documents/CNMAT_Work/CNMAT_GITHUB/CNMAT-odot/abstractions/io",
+				"patcherrelativepath" : "..",
 				"type" : "JSON",
 				"implicit" : 1
 			}
@@ -1318,15 +1377,15 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "o.cond.mxo",
-				"type" : "iLaX"
-			}
-, 			{
 				"name" : "o.message.mxo",
 				"type" : "iLaX"
 			}
 , 			{
 				"name" : "o.expr.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.cond.mxo",
 				"type" : "iLaX"
 			}
 , 			{

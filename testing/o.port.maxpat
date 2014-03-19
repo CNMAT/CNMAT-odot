@@ -31,12 +31,26 @@
 				"box" : 				{
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
+					"id" : "obj-2",
+					"maxclass" : "newobj",
+					"numinlets" : 2,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "FullPacket" ],
+					"patching_rect" : [ 328.0, 288.0, 107.0, 20.0 ],
+					"text" : "o.let \"/context = 0\""
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
 					"id" : "obj-5",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 328.0, 272.0, 59.0, 20.0 ],
+					"patching_rect" : [ 416.0, 320.0, 59.0, 20.0 ],
 					"text" : "o.context"
 				}
 
@@ -78,7 +92,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 128.0, 528.0, 211.0, 20.0 ],
+					"patching_rect" : [ 328.0, 440.0, 211.0, 20.0 ],
 					"text" : "o.expr delete(/_aspect/returnaddress)"
 				}
 
@@ -159,7 +173,7 @@
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 128.0, 496.0, 108.0, 20.0 ],
+					"patching_rect" : [ 416.0, 256.0, 108.0, 20.0 ],
 					"text" : "receive #0_aspect"
 				}
 
@@ -172,7 +186,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 328.0, 328.0, 85.0, 20.0 ],
+					"patching_rect" : [ 416.0, 360.0, 85.0, 20.0 ],
 					"text" : "send o.aspect"
 				}
 
@@ -219,7 +233,7 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-5", 0 ],
+					"destination" : [ "obj-2", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-13", 0 ]
@@ -264,6 +278,24 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-14", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-2", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-5", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-2", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-3", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
@@ -273,7 +305,7 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-14", 0 ],
+					"destination" : [ "obj-2", 1 ],
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-8", 0 ]
@@ -309,6 +341,13 @@
 			}
  ],
 		"dependency_cache" : [ 			{
+				"name" : "o.let.maxpat",
+				"bootpath" : "/Users/john/MMJ-dev/CNMAT_Externals/odot/abstractions",
+				"patcherrelativepath" : "../../../../../MMJ-dev/CNMAT_Externals/odot/abstractions",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
 				"name" : "o.collect.mxo",
 				"type" : "iLaX"
 			}
@@ -326,6 +365,22 @@
 			}
 , 			{
 				"name" : "o.context.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.route.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.var.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.message.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.difference.mxo",
 				"type" : "iLaX"
 			}
  ]

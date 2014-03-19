@@ -1,0 +1,413 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 42;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0D9F32491455625000C962CC /* s2m.wacom.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9F32481455625000C962CC /* s2m.wacom.m */; };
+		0DA41D311461A68B003231C2 /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 0DA41D301461A68B003231C2 /* commonsyms.c */; };
+		0DA41D581461A798003231C2 /* MaxAudioSignal.h in Headers */ = {isa = PBXBuildFile; fileRef = 0DA41D511461A798003231C2 /* MaxAudioSignal.h */; };
+		0DA41D591461A798003231C2 /* MaxAudioSignal.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DA41D521461A798003231C2 /* MaxAudioSignal.m */; };
+		0DA41D5A1461A798003231C2 /* MaxObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 0DA41D531461A798003231C2 /* MaxObject.h */; };
+		0DA41D5B1461A798003231C2 /* MaxObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DA41D541461A798003231C2 /* MaxObject.m */; };
+		0DA41D5C1461A798003231C2 /* MaxObject_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 0DA41D551461A798003231C2 /* MaxObject_Prefix.pch */; };
+		0DA41D5D1461A798003231C2 /* maxobjectbridge.h in Headers */ = {isa = PBXBuildFile; fileRef = 0DA41D561461A798003231C2 /* maxobjectbridge.h */; };
+		0DA41D5E1461A798003231C2 /* maxobjectbridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DA41D571461A798003231C2 /* maxobjectbridge.m */; };
+		0DCCFC47144ECEF8006F1097 /* NSAppleEventDescriptorHelperCategory.h in Headers */ = {isa = PBXBuildFile; fileRef = 0DCCFC42144ECEF8006F1097 /* NSAppleEventDescriptorHelperCategory.h */; };
+		0DCCFC48144ECEF8006F1097 /* NSAppleEventDescriptorHelperCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DCCFC43144ECEF8006F1097 /* NSAppleEventDescriptorHelperCategory.m */; };
+		0DCCFC49144ECEF8006F1097 /* TabletAEDictionary.h in Headers */ = {isa = PBXBuildFile; fileRef = 0DCCFC44144ECEF8006F1097 /* TabletAEDictionary.h */; };
+		0DCCFC4A144ECEF8006F1097 /* WacomTabletDriver.h in Headers */ = {isa = PBXBuildFile; fileRef = 0DCCFC45144ECEF8006F1097 /* WacomTabletDriver.h */; };
+		0DCCFC4B144ECEF8006F1097 /* WacomTabletDriver.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DCCFC46144ECEF8006F1097 /* WacomTabletDriver.m */; };
+		0DCCFD03144ED121006F1097 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DCCFD01144ED121006F1097 /* CoreData.framework */; };
+		0DCCFD04144ED121006F1097 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DCCFD02144ED121006F1097 /* Foundation.framework */; };
+		0DFC6C1A14FBC12F00B429A0 /* MaxAudioAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DFC6C1914FBC12F00B429A0 /* MaxAudioAPI.framework */; };
+		0F5B62030919440900A62EB9 /* MaxAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F5B62020919440900A62EB9 /* MaxAPI.framework */; };
+		229080F70CA9FF3900530300 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 229080F60CA9FF3900530300 /* Cocoa.framework */; };
+		8D01CCCE0486CAD60068D4B7 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
+		0D9F32481455625000C962CC /* s2m.wacom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = s2m.wacom.m; sourceTree = "<group>"; };
+		0DA41D301461A68B003231C2 /* commonsyms.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = commonsyms.c; path = "../../c74support/max-includes/common/commonsyms.c"; sourceTree = SOURCE_ROOT; };
+		0DA41D511461A798003231C2 /* MaxAudioSignal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaxAudioSignal.h; sourceTree = "<group>"; };
+		0DA41D521461A798003231C2 /* MaxAudioSignal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaxAudioSignal.m; sourceTree = "<group>"; };
+		0DA41D531461A798003231C2 /* MaxObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaxObject.h; sourceTree = "<group>"; };
+		0DA41D541461A798003231C2 /* MaxObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaxObject.m; sourceTree = "<group>"; };
+		0DA41D551461A798003231C2 /* MaxObject_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaxObject_Prefix.pch; sourceTree = "<group>"; };
+		0DA41D561461A798003231C2 /* maxobjectbridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = maxobjectbridge.h; sourceTree = "<group>"; };
+		0DA41D571461A798003231C2 /* maxobjectbridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = maxobjectbridge.m; sourceTree = "<group>"; };
+		0DCCFC42144ECEF8006F1097 /* NSAppleEventDescriptorHelperCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSAppleEventDescriptorHelperCategory.h; sourceTree = "<group>"; };
+		0DCCFC43144ECEF8006F1097 /* NSAppleEventDescriptorHelperCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSAppleEventDescriptorHelperCategory.m; sourceTree = "<group>"; };
+		0DCCFC44144ECEF8006F1097 /* TabletAEDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabletAEDictionary.h; sourceTree = "<group>"; };
+		0DCCFC45144ECEF8006F1097 /* WacomTabletDriver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WacomTabletDriver.h; sourceTree = "<group>"; };
+		0DCCFC46144ECEF8006F1097 /* WacomTabletDriver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WacomTabletDriver.m; sourceTree = "<group>"; };
+		0DCCFD01144ED121006F1097 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
+		0DCCFD02144ED121006F1097 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
+		0DFC6AEC14FBBD1A00B429A0 /* maxmspsdk.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = maxmspsdk.xcconfig; path = ../maxmspsdk.xcconfig; sourceTree = SOURCE_ROOT; };
+		0DFC6C1914FBC12F00B429A0 /* MaxAudioAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MaxAudioAPI.framework; path = "../../c74support/msp-includes/MaxAudioAPI.framework"; sourceTree = SOURCE_ROOT; };
+		0F5B62020919440900A62EB9 /* MaxAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MaxAPI.framework; path = "../../c74support/max-includes/MaxAPI.framework"; sourceTree = SOURCE_ROOT; };
+		229080F60CA9FF3900530300 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
+		22A403C90CAD7E7000E5299E /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		542ED84F09C02A0000DBC7EB /* s2m.wacom.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = s2m.wacom.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8D01CCCD0486CAD60068D4B7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D01CCCE0486CAD60068D4B7 /* Carbon.framework in Frameworks */,
+				0F5B62030919440900A62EB9 /* MaxAPI.framework in Frameworks */,
+				229080F70CA9FF3900530300 /* Cocoa.framework in Frameworks */,
+				0DCCFD03144ED121006F1097 /* CoreData.framework in Frameworks */,
+				0DCCFD04144ED121006F1097 /* Foundation.framework in Frameworks */,
+				0DFC6C1A14FBC12F00B429A0 /* MaxAudioAPI.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		089C166AFE841209C02AAC07 /* abs~ */ = {
+			isa = PBXGroup;
+			children = (
+				0DFC6AEC14FBBD1A00B429A0 /* maxmspsdk.xcconfig */,
+				08FB77ADFE841716C02AAC07 /* Source */,
+				089C167CFE841241C02AAC07 /* Resources */,
+				089C1671FE841209C02AAC07 /* External Frameworks and Libraries */,
+				19C28FB4FE9D528D11CA2CBB /* Products */,
+			);
+			name = "abs~";
+			sourceTree = "<group>";
+		};
+		089C1671FE841209C02AAC07 /* External Frameworks and Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				0DFC6C1914FBC12F00B429A0 /* MaxAudioAPI.framework */,
+				0F5B62020919440900A62EB9 /* MaxAPI.framework */,
+				0DCCFD01144ED121006F1097 /* CoreData.framework */,
+				0DCCFD02144ED121006F1097 /* Foundation.framework */,
+				08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */,
+				229080F60CA9FF3900530300 /* Cocoa.framework */,
+			);
+			name = "External Frameworks and Libraries";
+			sourceTree = "<group>";
+		};
+		089C167CFE841241C02AAC07 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				22A403C90CAD7E7000E5299E /* Info.plist */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		08FB77ADFE841716C02AAC07 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				0D9F32481455625000C962CC /* s2m.wacom.m */,
+				0DA41D501461A798003231C2 /* MaxObject */,
+				0DA41D301461A68B003231C2 /* commonsyms.c */,
+				0DCCFC41144ECEF8006F1097 /* Wacom */,
+			);
+			name = Source;
+			sourceTree = "<group>";
+		};
+		0DA41D501461A798003231C2 /* MaxObject */ = {
+			isa = PBXGroup;
+			children = (
+				0DA41D511461A798003231C2 /* MaxAudioSignal.h */,
+				0DA41D521461A798003231C2 /* MaxAudioSignal.m */,
+				0DA41D531461A798003231C2 /* MaxObject.h */,
+				0DA41D541461A798003231C2 /* MaxObject.m */,
+				0DA41D551461A798003231C2 /* MaxObject_Prefix.pch */,
+				0DA41D561461A798003231C2 /* maxobjectbridge.h */,
+				0DA41D571461A798003231C2 /* maxobjectbridge.m */,
+			);
+			path = MaxObject;
+			sourceTree = "<group>";
+		};
+		0DCCFC41144ECEF8006F1097 /* Wacom */ = {
+			isa = PBXGroup;
+			children = (
+				0DCCFC42144ECEF8006F1097 /* NSAppleEventDescriptorHelperCategory.h */,
+				0DCCFC43144ECEF8006F1097 /* NSAppleEventDescriptorHelperCategory.m */,
+				0DCCFC44144ECEF8006F1097 /* TabletAEDictionary.h */,
+				0DCCFC45144ECEF8006F1097 /* WacomTabletDriver.h */,
+				0DCCFC46144ECEF8006F1097 /* WacomTabletDriver.m */,
+			);
+			path = Wacom;
+			sourceTree = "<group>";
+		};
+		19C28FB4FE9D528D11CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				542ED84F09C02A0000DBC7EB /* s2m.wacom.mxo */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		8D01CCC70486CAD60068D4B7 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0DCCFC47144ECEF8006F1097 /* NSAppleEventDescriptorHelperCategory.h in Headers */,
+				0DCCFC49144ECEF8006F1097 /* TabletAEDictionary.h in Headers */,
+				0DCCFC4A144ECEF8006F1097 /* WacomTabletDriver.h in Headers */,
+				0DA41D581461A798003231C2 /* MaxAudioSignal.h in Headers */,
+				0DA41D5A1461A798003231C2 /* MaxObject.h in Headers */,
+				0DA41D5C1461A798003231C2 /* MaxObject_Prefix.pch in Headers */,
+				0DA41D5D1461A798003231C2 /* maxobjectbridge.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		8D01CCC60486CAD60068D4B7 /* s2m.wacom */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0FFBB95809731BB700D78707 /* Build configuration list for PBXNativeTarget "s2m.wacom" */;
+			buildPhases = (
+				8D01CCC70486CAD60068D4B7 /* Headers */,
+				8D01CCC90486CAD60068D4B7 /* Resources */,
+				8D01CCCB0486CAD60068D4B7 /* Sources */,
+				8D01CCCD0486CAD60068D4B7 /* Frameworks */,
+				8D01CCCF0486CAD60068D4B7 /* Rez */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = s2m.wacom;
+			productInstallPath = "$(HOME)/Library/Bundles";
+			productName = MSPExternal;
+			productReference = 542ED84F09C02A0000DBC7EB /* s2m.wacom.mxo */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		089C1669FE841209C02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 0FFBB95C09731BB700D78707 /* Build configuration list for PBXProject "s2m.wacom" */;
+			compatibilityVersion = "Xcode 2.4";
+			developmentRegion = English;
+			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+			);
+			mainGroup = 089C166AFE841209C02AAC07 /* abs~ */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8D01CCC60486CAD60068D4B7 /* s2m.wacom */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8D01CCC90486CAD60068D4B7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXRezBuildPhase section */
+		8D01CCCF0486CAD60068D4B7 /* Rez */ = {
+			isa = PBXRezBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXRezBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8D01CCCB0486CAD60068D4B7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0DCCFC48144ECEF8006F1097 /* NSAppleEventDescriptorHelperCategory.m in Sources */,
+				0DCCFC4B144ECEF8006F1097 /* WacomTabletDriver.m in Sources */,
+				0D9F32491455625000C962CC /* s2m.wacom.m in Sources */,
+				0DA41D311461A68B003231C2 /* commonsyms.c in Sources */,
+				0DA41D591461A798003231C2 /* MaxAudioSignal.m in Sources */,
+				0DA41D5B1461A798003231C2 /* MaxObject.m in Sources */,
+				0DA41D5E1461A798003231C2 /* maxobjectbridge.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		0FFBB95909731BB700D78707 /* Development */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0DFC6AEC14FBBD1A00B429A0 /* maxmspsdk.xcconfig */;
+			buildSettings = {
+				ARCHS = i386;
+				COPY_PHASE_STRIP = NO;
+				DEBUGGING_SYMBOLS = YES;
+				DEPLOYMENT_LOCATION = YES;
+				DSTROOT = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"../../c74support/max-includes",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+				);
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../../c74support/msp-includes\"";
+				GCC_ALTIVEC_EXTENSIONS = YES;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_ENABLE_TRIGRAPHS = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "$(GCC_PREFIX_HEADER)";
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_EFFECTIVE_CPLUSPLUS_VIOLATIONS = NO;
+				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
+				GCC_WARN_SHADOW = NO;
+				GCC_WARN_UNKNOWN_PRAGMAS = NO;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_PKGINFO_FILE = YES;
+				HEADER_SEARCH_PATHS = "";
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = /.;
+				LIBRARY_STYLE = Bundle;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = s2m.wacom;
+				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.6.sdk";
+				SECTORDER_FLAGS = "";
+				SKIP_INSTALL = NO;
+				SYMROOT = "$(PROJECT_DIR)";
+				USER_HEADER_SEARCH_PATHS = "../../c74support/max-includes ../../c74support/msp-includes";
+				VALID_ARCHS = i386;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"-Wno-conversion",
+				);
+				WRAPPER_EXTENSION = mxo;
+				ZERO_LINK = YES;
+			};
+			name = Development;
+		};
+		0FFBB95A09731BB700D78707 /* Deployment */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0DFC6AEC14FBBD1A00B429A0 /* maxmspsdk.xcconfig */;
+			buildSettings = {
+				ARCHS = i386;
+				COPY_PHASE_STRIP = YES;
+				DEPLOYMENT_LOCATION = YES;
+				DSTROOT = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"../../c74support/max-includes",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+				);
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../../c74support/msp-includes\"";
+				GCC_ALTIVEC_EXTENSIONS = YES;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_ENABLE_TRIGRAPHS = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "$(GCC_PREFIX_HEADER)";
+				GCC_UNROLL_LOOPS = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_EFFECTIVE_CPLUSPLUS_VIOLATIONS = NO;
+				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
+				GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES;
+				GCC_WARN_MULTIPLE_DEFINITION_TYPES_FOR_SELECTOR = YES;
+				GCC_WARN_PEDANTIC = YES;
+				GCC_WARN_PROTOTYPE_CONVERSION = YES;
+				GCC_WARN_SHADOW = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNKNOWN_PRAGMAS = NO;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_LABEL = YES;
+				GCC_WARN_UNUSED_PARAMETER = YES;
+				GCC_WARN_UNUSED_VALUE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_PKGINFO_FILE = YES;
+				HEADER_SEARCH_PATHS = "";
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = /.;
+				LIBRARY_STYLE = Bundle;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = s2m.wacom;
+				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.6.sdk";
+				SECTORDER_FLAGS = "";
+				SKIP_INSTALL = NO;
+				SYMROOT = "$(PROJECT_DIR)";
+				USER_HEADER_SEARCH_PATHS = "../../c74support/max-includes ../../c74support/msp-includes";
+				VALID_ARCHS = "i386 ";
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"-Wno-conversion",
+				);
+				WRAPPER_EXTENSION = mxo;
+				ZERO_LINK = NO;
+			};
+			name = Deployment;
+		};
+		0FFBB95D09731BB700D78707 /* Development */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Development;
+		};
+		0FFBB95E09731BB700D78707 /* Deployment */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Deployment;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0FFBB95809731BB700D78707 /* Build configuration list for PBXNativeTarget "s2m.wacom" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0FFBB95909731BB700D78707 /* Development */,
+				0FFBB95A09731BB700D78707 /* Deployment */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Development;
+		};
+		0FFBB95C09731BB700D78707 /* Build configuration list for PBXProject "s2m.wacom" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0FFBB95D09731BB700D78707 /* Development */,
+				0FFBB95E09731BB700D78707 /* Deployment */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Development;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 089C1669FE841209C02AAC07 /* Project object */;
+}
