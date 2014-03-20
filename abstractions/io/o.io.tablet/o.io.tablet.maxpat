@@ -64,6 +64,7 @@
 						"description" : "",
 						"digest" : "",
 						"tags" : "",
+						"visible" : 1,
 						"boxes" : [ 							{
 								"box" : 								{
 									"comment" : "",
@@ -744,7 +745,7 @@
 													"fontname" : "Arial",
 													"fontsize" : 12.0,
 													"id" : "obj-55",
-													"items" : [ "All tablets and tools", ",", "<separator>", ",", "(0: Intuos pro L / all tools)", ",", "(0: Intuos pro L / 1: R3JpcCBQZW4)", ",", "<separator>", ",", "(1: Intuos pro S / all tools)", ",", "(1: Intuos pro S / 1: R3JpcCBQZW4)" ],
+													"items" : [ "All tablets and tools", ",", "<separator>", ",", "0: Intuos pro L / all tools", ",", "0: Intuos pro L / 1: R3JpcCBQZW4", ",", "<separator>", ",", "(1: Intuos pro S / all tools)", ",", "(1: Intuos pro S / 1: R3JpcCBQZW4)" ],
 													"labelclick" : 1,
 													"maxclass" : "umenu",
 													"numinlets" : 1,
@@ -1269,7 +1270,7 @@
 													"fontname" : "Arial",
 													"fontsize" : 11.5,
 													"id" : "obj-16",
-													"items" : "All tablets",
+													"items" : [ "All tablets", ",", "tablet ID 0 " ],
 													"maxclass" : "umenu",
 													"numinlets" : 1,
 													"numoutlets" : 3,
@@ -2253,7 +2254,7 @@
 					"maxclass" : "outlet",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 7.456665, 591.0, 25.0, 25.0 ]
+					"patching_rect" : [ 64.456665, 665.0, 25.0, 25.0 ]
 				}
 
 			}
@@ -4183,16 +4184,16 @@
 					"destination" : [ "obj-35", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"source" : [ "obj-3", 0 ]
+					"source" : [ "obj-3", 1 ]
 				}
 
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-6", 0 ],
+					"destination" : [ "obj-35", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"source" : [ "obj-3", 1 ]
+					"source" : [ "obj-3", 0 ]
 				}
 
 			}
