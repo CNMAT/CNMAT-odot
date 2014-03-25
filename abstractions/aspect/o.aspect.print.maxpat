@@ -75,11 +75,11 @@
 					"fontsize" : 12.0,
 					"id" : "obj-5",
 					"maxclass" : "newobj",
-					"numinlets" : 2,
-					"numoutlets" : 2,
-					"outlettype" : [ "", "FullPacket" ],
-					"patching_rect" : [ 557.5, 208.0, 82.0, 20.0 ],
-					"text" : "o.route /oport"
+					"numinlets" : 3,
+					"numoutlets" : 3,
+					"outlettype" : [ "", "", "FullPacket" ],
+					"patching_rect" : [ 557.5, 208.0, 131.0, 20.0 ],
+					"text" : "o.route /oport /_aspect"
 				}
 
 			}
@@ -490,7 +490,7 @@
 					"destination" : [ "obj-22", 1 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"source" : [ "obj-5", 1 ]
+					"source" : [ "obj-5", 2 ]
 				}
 
 			}
