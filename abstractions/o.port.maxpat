@@ -246,8 +246,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 328.0, 512.0, 196.0, 20.0 ],
-					"text" : "o.expr delete(/oport/returnaddress)"
+					"patching_rect" : [ 328.0, 512.0, 331.0, 20.0 ],
+					"text" : "o.expr delete(/_aspect/returnaddress)\\; delete(/oport/context)"
 				}
 
 			}
@@ -274,8 +274,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 359.0, 104.0, 208.0, 20.0 ],
-					"text" : "o.pack /oport/returnaddress #0_oport"
+					"patching_rect" : [ 359.0, 104.0, 231.0, 20.0 ],
+					"text" : "o.pack /_aspect/returnaddress #0_aspect"
 				}
 
 			}
@@ -327,8 +327,8 @@
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 447.0, 256.0, 100.0, 20.0 ],
-					"text" : "receive #0_oport"
+					"patching_rect" : [ 447.0, 256.0, 108.0, 20.0 ],
+					"text" : "receive #0_aspect"
 				}
 
 			}
