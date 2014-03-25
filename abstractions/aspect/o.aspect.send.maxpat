@@ -5,7 +5,7 @@
 			"major" : 6,
 			"minor" : 1,
 			"revision" : 4,
-			"architecture" : "x64"
+			"architecture" : "x86"
 		}
 ,
 		"rect" : [ 25.0, 69.0, 640.0, 480.0 ],
@@ -78,8 +78,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "FullPacket" ],
-					"patching_rect" : [ 104.0, 144.0, 174.0, 20.0 ],
-					"text" : "o.route /_aspect/returnaddress"
+					"patching_rect" : [ 104.0, 144.0, 159.0, 20.0 ],
+					"text" : "o.route /oport/returnaddress"
 				}
 
 			}
