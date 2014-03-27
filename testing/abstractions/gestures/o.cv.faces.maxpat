@@ -8,7 +8,7 @@
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 415.0, 48.0, 1025.0, 777.0 ],
+		"rect" : [ 348.0, 136.0, 1025.0, 777.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -181,7 +181,7 @@
 							"architecture" : "x86"
 						}
 ,
-						"rect" : [ 25.0, 69.0, 640.0, 480.0 ],
+						"rect" : [ 737.0, 44.0, 640.0, 480.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -290,7 +290,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "" ],
-									"patching_rect" : [ 65.0, 145.0, 48.0, 17.0 ],
+									"patching_rect" : [ 102.0, 151.0, 48.0, 17.0 ],
 									"text" : "route dim"
 								}
 
@@ -345,9 +345,9 @@
 									"maxclass" : "newobj",
 									"numinlets" : 2,
 									"numoutlets" : 1,
-									"outlettype" : [ "int" ],
-									"patching_rect" : [ 309.427704, 333.381042, 36.0, 17.0 ],
-									"text" : "/ 120.."
+									"outlettype" : [ "float" ],
+									"patching_rect" : [ 309.427704, 333.381042, 33.0, 17.0 ],
+									"text" : "/ 120."
 								}
 
 							}
@@ -360,7 +360,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 2,
 									"outlettype" : [ "jit_matrix", "" ],
-									"patching_rect" : [ 119.0, 362.0, 57.0, 17.0 ],
+									"patching_rect" : [ 122.0, 423.0, 57.0, 17.0 ],
 									"text" : "jit.op @op *"
 								}
 
@@ -471,7 +471,7 @@
 									"numinlets" : 0,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 65.0, 40.0, 25.0, 25.0 ]
+									"patching_rect" : [ 123.0, 46.0, 25.0, 25.0 ]
 								}
 
 							}
@@ -505,7 +505,7 @@
 									"maxclass" : "outlet",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 132.000031, 460.5, 25.0, 25.0 ]
+									"patching_rect" : [ 195.000031, 464.5, 25.0, 25.0 ]
 								}
 
 							}
@@ -516,7 +516,7 @@
 									"maxclass" : "outlet",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 141.0, 460.5, 25.0, 25.0 ]
+									"patching_rect" : [ 296.0, 449.5, 25.0, 25.0 ]
 								}
 
 							}
@@ -708,7 +708,7 @@
 									"destination" : [ "obj-1", 1 ],
 									"disabled" : 0,
 									"hidden" : 0,
-									"midpoints" : [ 255.927704, 398.0, 166.5, 398.0 ],
+									"midpoints" : [ 255.927704, 398.0, 169.5, 398.0 ],
 									"source" : [ "obj-5", 0 ]
 								}
 
@@ -727,7 +727,7 @@
 									"destination" : [ "obj-7", 0 ],
 									"disabled" : 0,
 									"hidden" : 0,
-									"midpoints" : [ 74.5, 203.0, 398.5, 203.0 ],
+									"midpoints" : [ 111.5, 203.0, 398.5, 203.0 ],
 									"source" : [ "obj-6", 0 ]
 								}
 
@@ -737,7 +737,7 @@
 									"destination" : [ "obj-8", 0 ],
 									"disabled" : 0,
 									"hidden" : 0,
-									"midpoints" : [ 74.5, 210.0, 59.5, 210.0 ],
+									"midpoints" : [ 111.5, 210.0, 59.5, 210.0 ],
 									"source" : [ "obj-6", 0 ]
 								}
 
@@ -821,7 +821,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 383.0, 508.0, 150.0, 47.0 ],
-					"text" : "/rectangle 158. 10320. 230. 18960.\n/area 622080",
+					"text" : "/rectangle 132. 120. 216. 204.\n/area 7056",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -1449,13 +1449,13 @@
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"id" : "obj-57",
-					"linecount" : 10,
+					"linecount" : 8,
 					"maxclass" : "o.message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 88.0, 411.0, 175.0, 141.0 ],
-					"text" : "/faces [\n\t/rectangle 162. 10800. 222. 18000.\n\t/area 432000\n]\n/largestface [\n\t/rectangle 158. 10320. 230. 18960.\n\t/area 622080\n]",
+					"patching_rect" : [ 88.0, 411.0, 175.0, 114.0 ],
+					"text" : "/faces [\n\t/rectangle 136. 120. 220. 204.\n\t/area 7056\n]\n/largestface [\n\t/rectangle 132. 120. 216. 204.\n\t/area 7056\n]",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -1562,7 +1562,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "jit_matrix" ],
-					"patching_rect" : [ 625.0, 270.0, 82.0, 18.0 ],
+					"patching_rect" : [ 454.0, 326.0, 82.0, 18.0 ],
 					"text" : "cv.jit.faces.draw"
 				}
 
@@ -1600,7 +1600,7 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-33", 0 ],
+					"destination" : [ "obj-26", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-22", 0 ]
