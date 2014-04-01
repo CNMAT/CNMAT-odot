@@ -36,7 +36,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 104.0, 328.0, 84.0, 20.0 ],
+					"patching_rect" : [ 104.0, 248.0, 84.0, 20.0 ],
 					"text" : "prepend send"
 				}
 
@@ -64,7 +64,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 146.5, 256.0, 37.0, 20.0 ],
+					"patching_rect" : [ 200.0, 248.0, 37.0, 20.0 ],
 					"text" : "o.var"
 				}
 
@@ -91,7 +91,7 @@
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 104.0, 80.0, 25.0, 25.0 ]
+					"patching_rect" : [ 104.0, 96.0, 25.0, 25.0 ]
 				}
 
 			}
@@ -103,7 +103,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 104.0, 408.0, 51.0, 20.0 ],
+					"patching_rect" : [ 104.0, 304.0, 51.0, 20.0 ],
 					"text" : "forward"
 				}
 
