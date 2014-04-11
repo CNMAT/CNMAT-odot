@@ -8,7 +8,7 @@
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 25.0, 69.0, 558.0, 567.0 ],
+		"rect" : [ 736.0, 44.0, 890.0, 767.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -35,7 +35,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 64.0, 520.0, 347.0, 20.0 ],
+					"patching_rect" : [ 432.0, 248.0, 347.0, 20.0 ],
 					"text" : "print \"ERROR: you must supply the @name attribute for o.inlet\""
 				}
 
@@ -49,7 +49,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 64.0, 488.0, 128.0, 20.0 ],
+					"patching_rect" : [ 432.0, 216.0, 128.0, 20.0 ],
 					"text" : "o.cond !bound(/name)"
 				}
 
@@ -63,7 +63,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 64.0, 456.0, 83.0, 20.0 ],
+					"patching_rect" : [ 432.0, 184.0, 83.0, 20.0 ],
 					"text" : "o.pack /name"
 				}
 
@@ -77,22 +77,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 64.0, 424.0, 107.0, 20.0 ],
+					"patching_rect" : [ 432.0, 152.0, 107.0, 20.0 ],
 					"text" : "patcherargs name"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontname" : "Arial",
-					"fontsize" : 12.0,
-					"id" : "obj-4",
-					"maxclass" : "newobj",
-					"numinlets" : 3,
-					"numoutlets" : 3,
-					"outlettype" : [ "", "", "" ],
-					"patching_rect" : [ 100.0, 136.0, 145.0, 20.0 ],
-					"text" : "routepass doc FullPacket"
 				}
 
 			}
@@ -104,8 +90,8 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 163.0, 192.0, 105.0, 20.0 ],
+					"outlettype" : [ "FullPacket" ],
+					"patching_rect" : [ 100.0, 112.0, 105.0, 20.0 ],
 					"text" : "o.port @type inlet"
 				}
 
@@ -117,7 +103,7 @@
 					"maxclass" : "outlet",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 163.0, 336.0, 25.0, 25.0 ]
+					"patching_rect" : [ 100.0, 152.0, 25.0, 25.0 ]
 				}
 
 			}
@@ -136,7 +122,7 @@
  ],
 		"lines" : [ 			{
 				"patchline" : 				{
-					"destination" : [ "obj-4", 0 ],
+					"destination" : [ "obj-3", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-1", 0 ]
@@ -149,33 +135,6 @@
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-3", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-2", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"source" : [ "obj-4", 2 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-2", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"source" : [ "obj-4", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-3", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"source" : [ "obj-4", 1 ]
 				}
 
 			}
@@ -215,18 +174,18 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "o.let.maxpat",
-				"bootpath" : "/Users/john/Development/CNMAT/CNMAT/CNMAT-odot/abstractions",
-				"patcherrelativepath" : ".",
+				"name" : "o.aspect.joinpoint.maxpat",
+				"bootpath" : "/Users/john/Development/CNMAT/CNMAT/CNMAT-odot/abstractions/aspect",
+				"patcherrelativepath" : "./aspect",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "o.collect.mxo",
+				"name" : "o.pack.mxo",
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "o.pack.mxo",
+				"name" : "o.if.mxo",
 				"type" : "iLaX"
 			}
 , 			{
@@ -234,11 +193,15 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "o.expr.mxo",
+				"name" : "o.select.mxo",
 				"type" : "iLaX"
 			}
 , 			{
 				"name" : "o.context.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.collect.mxo",
 				"type" : "iLaX"
 			}
 , 			{
@@ -250,11 +213,11 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "o.message.mxo",
+				"name" : "o.pak.mxo",
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "o.difference.mxo",
+				"name" : "o.prepend.mxo",
 				"type" : "iLaX"
 			}
 , 			{
