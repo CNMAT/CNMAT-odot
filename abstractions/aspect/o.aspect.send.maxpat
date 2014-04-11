@@ -78,8 +78,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "FullPacket" ],
-					"patching_rect" : [ 104.0, 144.0, 174.0, 20.0 ],
-					"text" : "o.route /_aspect/returnaddress"
+					"patching_rect" : [ 104.0, 144.0, 232.0, 20.0 ],
+					"text" : "o.route /o_aspect_joinpoint/returnaddress"
 				}
 
 			}
