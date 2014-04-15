@@ -8,7 +8,7 @@
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 18.0, 44.0, 1307.0, 972.0 ],
+		"rect" : [ 9.0, 44.0, 1307.0, 972.0 ],
 		"bgcolor" : [ 0.962353, 1.0, 0.998526, 1.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
@@ -30,6 +30,192 @@
 		"tags" : "",
 		"boxes" : [ 			{
 				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-12",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patcher" : 					{
+						"fileversion" : 1,
+						"appversion" : 						{
+							"major" : 6,
+							"minor" : 1,
+							"revision" : 3,
+							"architecture" : "x86"
+						}
+,
+						"rect" : [ 0.0, 0.0, 640.0, 480.0 ],
+						"bglocked" : 0,
+						"openinpresentation" : 0,
+						"default_fontsize" : 12.0,
+						"default_fontface" : 0,
+						"default_fontname" : "Arial",
+						"gridonopen" : 0,
+						"gridsize" : [ 15.0, 15.0 ],
+						"gridsnaponopen" : 0,
+						"statusbarvisible" : 2,
+						"toolbarvisible" : 1,
+						"boxanimatetime" : 200,
+						"imprint" : 0,
+						"enablehscroll" : 1,
+						"enablevscroll" : 1,
+						"devicewidth" : 0.0,
+						"description" : "",
+						"digest" : "",
+						"tags" : "",
+						"boxes" : [ 							{
+								"box" : 								{
+									"fontname" : "Arial",
+									"fontsize" : 12.0,
+									"id" : "obj-8",
+									"linecount" : 2,
+									"maxclass" : "message",
+									"numinlets" : 2,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 243.0, 151.750732, 50.0, 31.0 ],
+									"text" : "0.433071"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"fontname" : "Arial",
+									"fontsize" : 12.0,
+									"id" : "obj-44",
+									"maxclass" : "message",
+									"numinlets" : 2,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 145.234344, 145.102356, 91.765656, 18.0 ],
+									"text" : "0.519685"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"fontname" : "Arial",
+									"fontsize" : 12.0,
+									"id" : "obj-43",
+									"maxclass" : "message",
+									"numinlets" : 2,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 100.241333, 145.102356, 50.0, 18.0 ],
+									"text" : "0."
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"fontname" : "Arial",
+									"fontsize" : 12.0,
+									"id" : "obj-42",
+									"maxclass" : "message",
+									"numinlets" : 2,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 50.0, 145.102356, 50.0, 18.0 ],
+									"text" : "0."
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"fontname" : "Arial",
+									"fontsize" : 12.0,
+									"id" : "obj-38",
+									"maxclass" : "newobj",
+									"numinlets" : 5,
+									"numoutlets" : 5,
+									"outlettype" : [ "", "", "", "", "FullPacket" ],
+									"patching_rect" : [ 71.179321, 100.0, 173.0, 20.0 ],
+									"text" : "o.route /velocity /pressure /x /y"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"comment" : "",
+									"id" : "obj-4",
+									"maxclass" : "inlet",
+									"numinlets" : 0,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 71.179321, 40.0, 25.0, 25.0 ]
+								}
+
+							}
+ ],
+						"lines" : [ 							{
+								"patchline" : 								{
+									"destination" : [ "obj-42", 1 ],
+									"disabled" : 0,
+									"hidden" : 0,
+									"source" : [ "obj-38", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-43", 1 ],
+									"disabled" : 0,
+									"hidden" : 0,
+									"source" : [ "obj-38", 1 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-44", 1 ],
+									"disabled" : 0,
+									"hidden" : 0,
+									"source" : [ "obj-38", 2 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-8", 1 ],
+									"disabled" : 0,
+									"hidden" : 0,
+									"source" : [ "obj-38", 3 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-38", 0 ],
+									"disabled" : 0,
+									"hidden" : 0,
+									"source" : [ "obj-4", 0 ]
+								}
+
+							}
+ ]
+					}
+,
+					"patching_rect" : [ 318.877441, 310.460602, 48.0, 20.0 ],
+					"saved_object_attributes" : 					{
+						"default_fontface" : 0,
+						"default_fontname" : "Arial",
+						"default_fontsize" : 12.0,
+						"description" : "",
+						"digest" : "",
+						"fontface" : 0,
+						"fontname" : "Arial",
+						"fontsize" : 12.0,
+						"globalpatchername" : "",
+						"tags" : ""
+					}
+,
+					"text" : "p route"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-10",
 					"maxclass" : "button",
 					"numinlets" : 1,
@@ -43,28 +229,13 @@
 				"box" : 				{
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
-					"id" : "obj-8",
-					"linecount" : 2,
-					"maxclass" : "message",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 511.877441, 362.211334, 50.0, 31.0 ],
-					"text" : "0.433071"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontname" : "Arial",
-					"fontsize" : 12.0,
 					"frgb" : 0.0,
 					"id" : "obj-63",
 					"linecount" : 3,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 133.158035, 254.523651, 242.0, 47.0 ],
+					"patching_rect" : [ 145.643097, 246.706314, 242.0, 47.0 ],
 					"text" : "/a/1 is the bottom rightmost pad\n +Note how different QuNeo parts can be selected and routed into max messages."
 				}
 
@@ -86,7 +257,7 @@
 							"architecture" : "x86"
 						}
 ,
-						"rect" : [ 529.0, 137.0, 911.0, 756.0 ],
+						"rect" : [ 381.0, 44.0, 911.0, 756.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -105,19 +276,18 @@
 						"description" : "",
 						"digest" : "",
 						"tags" : "",
-						"visible" : 1,
 						"boxes" : [ 							{
 								"box" : 								{
 									"fontname" : "Arial",
 									"fontsize" : 12.0,
 									"id" : "obj-4",
-									"linecount" : 138,
+									"linecount" : 130,
 									"maxclass" : "o.message",
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 50.0, 100.0, 230.0, 1857.0 ],
-									"text" : "/pad/c/3/velocity 0.\n/pad/c/3/pressure 0.\n/pad/c/3/x 0.622047\n/pad/c/3/y 0.370079\n/pad/b/3/velocity 0.\n/pad/b/3/pressure 0.\n/pad/b/3/x 0.535433\n/pad/b/3/y 0.629921\n/pad/a/3/velocity 0.\n/pad/a/3/pressure 0.\n/pad/a/3/x 0.503937\n/pad/a/3/y 0.283465\n/pad/a/1/velocity 0.\n/pad/a/1/pressure 0.\n/pad/a/1/x 0.511811\n/pad/a/1/y 0.433071\n/pad/b/4/velocity 0.\n/pad/b/4/pressure 0.\n/pad/b/4/x 0.511811\n/pad/b/4/y 0.874016\n/pad/c/4/velocity 0.\n/pad/c/4/pressure 0.\n/pad/c/4/x 0.519685\n/pad/c/4/y 0.543307\n/pad/a/4/velocity 0.\n/pad/a/4/pressure 0.\n/pad/a/4/x 0.511811\n/pad/a/4/y 0.590551\n/disc/b/velocity 0.\n/disc/b/pressure 0.\n/disc/b/direction \"clockwise\"\n/disc/a/velocity 0.\n/disc/a/pressure 0.\n/disc/a/direction \"clockwise\"\n/large.arrowbutton/b/1/velocity 0.\n/large.arrowbutton/b/1/pressure 0.\n/large.arrowbutton/a/1/velocity 0.\n/large.arrowbutton/a/1/pressure 0.\n/large.arrowbutton/b/2/velocity 0.\n/large.arrowbutton/b/2/pressure 0.\n/large.arrowbutton/a/2/velocity 0.\n/large.arrowbutton/a/2/pressure 0.\n/arrowbutton/a/2/velocity 0.\n/arrowbutton/a/2/pressure 0.\n/arrowbutton/a/1/velocity 0.\n/arrowbutton/a/1/pressure 0.\n/arrowbutton/a/3/velocity 0.\n/arrowbutton/a/3/pressure 0.\n/arrowbutton/a/4/velocity 0.\n/arrowbutton/a/4/pressure 0.\n/arrowbutton/b/3/velocity 0.\n/arrowbutton/b/3/pressure 0.\n/arrowbutton/b/4/velocity 0.\n/arrowbutton/b/4/pressure 0.\n/arrowbutton/b/2/velocity 0.\n/arrowbutton/b/2/pressure 0.\n/arrowbutton/b/1/velocity 0.\n/arrowbutton/b/1/pressure 0.\n/slider/long/velocity\n/slider/long/pressure 0.\n/slider/long/position 0.\n/slider/long/2nd/position 0.\n/slider/2/velocity 0.\n/slider/2/pressure 0.\n/slider/2/location 0.\n/slider/1/velocity 0.\n/slider/1/pressure 0.\n/slider/1/location 0.\n/slider/3/velocity 0.\n/slider/3/pressure 0.\n/slider/3/location 0.\n/slider/4/velocity 0.\n/slider/4/pressure 0.\n/slider/4/location 0.\n/slider/d/velocity 0.\n/slider/d/pressure 0.\n/slider/d/location 0.\n/slider/c/velocity 0.\n/slider/c/pressure 0.\n/slider/c/location 0.\n/slider/b/velocity 0.\n/slider/b/pressure 0.\n/slider/b/location 0.\n/slider/a/velocity 0.\n/slider/a/pressure 0.\n/slider/a/location 0.\n/pad/d/4/velocity 0.\n/pad/d/4/pressure 0.\n/pad/d/4/x 0.\n/pad/d/4/y 0.\n/pad/d/3/velocity 0.\n/pad/d/3/pressure 0.\n/pad/d/3/x 0.\n/pad/d/3/y 0.\n/pad/d/2/velocity 0.\n/pad/d/2/pressure 0.\n/pad/d/2/x 0.\n/pad/d/2/y 0.\n/pad/d/1/velocity 0.\n/pad/d/1/pressure 0.\n/pad/d/1/x 0.\n/pad/d/1/y 0.\n/pad/c/2/velocity 0.\n/pad/c/2/pressure 0.\n/pad/c/2/x 0.\n/pad/c/2/y 0.\n/pad/c/1/velocity 0.\n/pad/c/1/pressure 0.\n/pad/c/1/x 0.\n/pad/c/1/y 0.\n/pad/b/2/velocity 0.\n/pad/b/2/pressure 0.\n/pad/b/2/x 0.\n/pad/b/2/y 0.\n/pad/b/1/velocity 0.\n/pad/b/1/pressure 0.\n/pad/b/1/x 0.\n/pad/b/1/y 0.\n/pad/a/2/velocity 0.\n/pad/a/2/pressure 0.\n/pad/a/2/x 0.\n/pad/a/2/y 0.\n/button/rhombus/pressure 0.\n/button/rhombus/velocity 0.\n/button/c/velocity 0.\n/button/c/pressure 0.\n/button/b/pressure 0.\n/button/b/velocity 0.\n/button/a/velocity 0.\n/button/a/pressure 0.\n/slider/d/position 0.\n/slider/c/position 0.\n/slider/b/position 0.\n/slider/a/position 0.\n/slider/1/position 0.\n/slider/2/position 0.\n/slider/3/position 0.\n/slider/4/position 0.",
+									"patching_rect" : [ 50.0, 100.0, 230.0, 1749.0 ],
+									"text" : "/pad/a/4/velocity 0.\n/pad/a/4/pressure 0.\n/pad/a/4/x 1.\n/pad/a/4/y 0.889764\n/pad/a/3/velocity 0.\n/pad/a/3/pressure 0.\n/pad/a/3/x 0.535433\n/pad/a/3/y 0.417323\n/disc/b/pressure 0.\n/disc/b/velocity 0.\n/disc/b/direction 0.\n/disc/a/pressure 0.\n/disc/a/velocity 0.\n/disc/a/direction 0.\n/button/rhombus/pressure 0.\n/button/rhombus/velocity 0.\n/button/c/velocity 0.\n/button/c/pressure 0.\n/button/b/pressure 0.\n/button/b/velocity 0.\n/button/a/velocity 0.\n/button/a/pressure 0.\n/large.arrowbutton/b/1/pressure 0.\n/large.arrowbutton/b/1/velocity 0.\n/large.arrowbutton/b/2/pressure 0.\n/large.arrowbutton/b/2/velocity 0.\n/large.arrowbutton/a/1/pressure 0.\n/large.arrowbutton/a/1/velocity 0.\n/large.arrowbutton/a/2/velocity 0.\n/large.arrowbutton/a/2/pressure 0.\n/arrowbutton/b/1/velocity 0.\n/arrowbutton/b/1/pressure 0.\n/arrowbutton/a/1/velocity 0.\n/arrowbutton/a/1/pressure 0.\n/arrowbutton/b/2/pressure 0.\n/arrowbutton/b/2/velocity 0.\n/arrowbutton/a/2/pressure 0.\n/arrowbutton/a/2/velocity 0.\n/arrowbutton/b/3/velocity 0.\n/arrowbutton/b/3/pressure 0.\n/arrowbutton/a/3/velocity 0.\n/arrowbutton/a/3/pressure 0.\n/arrowbutton/b/4/pressure 0.\n/arrowbutton/b/4/velocity 0.\n/arrowbutton/a/4/pressure 0.\n/arrowbutton/a/4/velocity 0.\n/slider/long/velocity 0.\n/slider/long/pressure 0.\n/slider/long/2nd/position 0.\n/slider/long/position 0.\n/slider/d/velocity 0.\n/slider/d/position 0.\n/slider/d/pressure 0.\n/slider/c/pressure 0.\n/slider/c/position 0.\n/slider/c/velocity 0.\n/slider/b/position 0.\n/slider/b/pressure 0.\n/slider/b/velocity 0.\n/slider/a/velocity 0.\n/slider/a/pressure 0.\n/slider/a/position 0.\n/slider/1/velocity 0.\n/slider/1/pressure 0.\n/slider/1/position 0.\n/slider/2/velocity 0.\n/slider/2/pressure 0.\n/slider/2/position 0.\n/slider/3/pressure 0.\n/slider/3/velocity 0.\n/slider/3/position 0.\n/slider/4/pressure 0.\n/slider/4/position 0.\n/slider/4/velocity 0.\n/pad/d/4/velocity 0.\n/pad/d/4/pressure 0.\n/pad/d/4/x 0.\n/pad/d/4/y 0.\n/pad/c/4/velocity 0.\n/pad/c/4/pressure 0.\n/pad/c/4/x 0.\n/pad/c/4/y 0.\n/pad/b/4/pressure 0.\n/pad/b/4/x 0.\n/pad/b/4/y 0.\n/pad/b/4/velocity 0.\n/pad/d/3/pressure 0.\n/pad/d/3/y 0.\n/pad/d/3/velocity 0.\n/pad/d/3/x 0.\n/pad/c/3/velocity 0.\n/pad/c/3/pressure 0.\n/pad/c/3/x 0.\n/pad/c/3/y 0.\n/pad/b/3/pressure 0.\n/pad/b/3/x 0.\n/pad/b/3/y 0.\n/pad/b/3/velocity 0.\n/pad/d/2/pressure 0.\n/pad/d/2/y 0.\n/pad/d/2/velocity 0.\n/pad/d/2/x 0.\n/pad/c/2/pressure 0.\n/pad/c/2/y 0.\n/pad/c/2/velocity 0.\n/pad/c/2/x 0.\n/pad/b/2/pressure 0.\n/pad/b/2/x 0.\n/pad/b/2/y 0.\n/pad/b/2/velocity 0.\n/pad/a/2/pressure 0.\n/pad/a/2/x 0.\n/pad/a/2/y 0.\n/pad/a/2/velocity 0.\n/pad/d/1/velocity 0.\n/pad/d/1/pressure 0.\n/pad/d/1/x 0.\n/pad/d/1/y 0.\n/pad/c/1/x 0.\n/pad/c/1/y 0.\n/pad/c/1/velocity 0.\n/pad/c/1/pressure 0.\n/pad/b/1/pressure 0.\n/pad/b/1/y 0.\n/pad/b/1/velocity 0.\n/pad/b/1/x 0.\n/pad/a/1/velocity 0.\n/pad/a/1/pressure 0.\n/pad/a/1/x 0.\n/pad/a/1/y 0.",
 									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 
@@ -203,7 +373,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 318.877441, 1103.937256, 163.134995, 18.0 ],
-					"text" : "0.511811"
+					"text" : "0."
 				}
 
 			}
@@ -260,7 +430,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 43.665028, 1096.510498, 150.0, 60.0 ],
-					"text" : "/velocity\n/pressure 0.\n/x\n/y",
+					"text" : "/velocity 0.\n/pressure 0.\n/x 0.\n/y 0.",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -326,62 +496,6 @@
 				"box" : 				{
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
-					"id" : "obj-44",
-					"maxclass" : "message",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 414.111786, 355.562958, 91.765656, 18.0 ],
-					"text" : "0.519685"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontname" : "Arial",
-					"fontsize" : 12.0,
-					"id" : "obj-43",
-					"maxclass" : "message",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 369.118774, 355.562958, 50.0, 18.0 ],
-					"text" : "0."
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontname" : "Arial",
-					"fontsize" : 12.0,
-					"id" : "obj-42",
-					"maxclass" : "message",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 318.877441, 355.562958, 50.0, 18.0 ],
-					"text" : "0."
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontname" : "Arial",
-					"fontsize" : 12.0,
-					"id" : "obj-38",
-					"maxclass" : "newobj",
-					"numinlets" : 5,
-					"numoutlets" : 5,
-					"outlettype" : [ "", "", "", "", "FullPacket" ],
-					"patching_rect" : [ 340.056763, 310.460602, 173.0, 20.0 ],
-					"text" : "o.route /velocity /pressure /x /y"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontname" : "Arial",
-					"fontsize" : 12.0,
 					"id" : "obj-37",
 					"linecount" : 4,
 					"maxclass" : "o.message",
@@ -389,7 +503,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 133.158035, 330.414978, 162.644501, 60.0 ],
-					"text" : "/pressure 0.\n/y 0.433071\n/x 0.519685\n/velocity 0.",
+					"text" : "/x 0.519685\n/y 0.433071\n/velocity 0.\n/pressure 0.",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -455,7 +569,7 @@
 							"architecture" : "x86"
 						}
 ,
-						"rect" : [ 491.0, 101.0, 840.0, 556.0 ],
+						"rect" : [ 42.0, 80.0, 840.0, 556.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -478,29 +592,14 @@
 								"box" : 								{
 									"fontname" : "Arial",
 									"fontsize" : 12.0,
-									"frgb" : 0.0,
-									"id" : "obj-3",
-									"linecount" : 3,
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 161.0, 40.0, 150.0, 47.0 ],
-									"text" : "entire state accumulates after all the QuNeo have been touched"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"fontname" : "Arial",
-									"fontsize" : 12.0,
 									"id" : "obj-4",
-									"linecount" : 135,
+									"linecount" : 134,
 									"maxclass" : "o.message",
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 50.0, 100.0, 690.0, 1816.0 ],
-									"text" : "/pad/b/4/y 1.\n/pad/b/4/velocity 0.\n/pad/b/4/pressure 0.00787402\n/pad/b/4/x 0.913386\n/pad/a/4/pressure 0.\n/pad/a/4/y 1.\n/pad/a/4/velocity 0.\n/pad/a/4/x 0.952756\n/slider/long/pressure 0.\n/slider/long/velocity 0.\n/slider/long/2nd/position 0.220472\n/slider/long/position 0.110236\n/pad/a/3/pressure 0.\n/pad/a/3/x 1.\n/pad/a/3/y 1.\n/pad/a/3/velocity 0.\n/slider/4/velocity 0.\n/slider/4/position 0.173228\n/slider/4/pressure 0.\n/pad/c/4/pressure 0.\n/pad/c/4/x 1.\n/pad/c/4/y 0.503937\n/pad/c/4/velocity 0.\n/disc/b/pressure 0.\n/disc/b/velocity 0.\n/disc/b/direction 0.\n/disc/a/pressure 0.\n/disc/a/velocity 0.\n/disc/a/direction 0.\n/button/rhombus/pressure 0.\n/button/rhombus/velocity 0.\n/button/c/velocity 0.\n/button/c/pressure 0.\n/button/b/pressure 0.\n/button/b/velocity 0.\n/button/a/velocity 0.\n/button/a/pressure 0.\n/large.arrowbutton/b/1/pressure 0.\n/large.arrowbutton/b/1/velocity 0.\n/large.arrowbutton/b/2/pressure 0.\n/large.arrowbutton/b/2/velocity 0.\n/large.arrowbutton/a/1/pressure 0.\n/large.arrowbutton/a/1/velocity 0.\n/large.arrowbutton/a/2/velocity 0.\n/large.arrowbutton/a/2/pressure 0.\n/arrowbutton/b/1/velocity 0.\n/arrowbutton/b/1/pressure 0.\n/arrowbutton/a/1/velocity 0.\n/arrowbutton/a/1/pressure 0.\n/arrowbutton/b/2/pressure 0.\n/arrowbutton/b/2/velocity 0.\n/arrowbutton/a/2/pressure 0.\n/arrowbutton/a/2/velocity 0.\n/arrowbutton/b/3/velocity 0.\n/arrowbutton/b/3/pressure 0.\n/arrowbutton/a/3/velocity 0.\n/arrowbutton/a/3/pressure 0.\n/arrowbutton/b/4/pressure 0.\n/arrowbutton/b/4/velocity 0.\n/arrowbutton/a/4/pressure 0.\n/arrowbutton/a/4/velocity 0.\n/slider/d/velocity 0.\n/slider/d/position 0.\n/slider/d/pressure 0.\n/slider/c/pressure 0.\n/slider/c/position 0.\n/slider/c/velocity 0.\n/slider/b/position 0.\n/slider/b/pressure 0.\n/slider/b/velocity 0.\n/slider/a/velocity 0.\n/slider/a/pressure 0.\n/slider/a/position 0.\n/slider/1/velocity 0.\n/slider/1/pressure 0.\n/slider/1/position 0.\n/slider/2/velocity 0.\n/slider/2/pressure 0.\n/slider/2/position 0.\n/slider/3/pressure 0.\n/slider/3/velocity 0.\n/slider/3/position 0.\n/pad/d/4/velocity 0.\n/pad/d/4/pressure 0.\n/pad/d/4/x 0.\n/pad/d/4/y 0.\n/pad/d/3/pressure 0.\n/pad/d/3/y 0.\n/pad/d/3/velocity 0.\n/pad/d/3/x 0.\n/pad/c/3/velocity 0.\n/pad/c/3/pressure 0.\n/pad/c/3/x 0.\n/pad/c/3/y 0.\n/pad/b/3/pressure 0.\n/pad/b/3/x 0.\n/pad/b/3/y 0.\n/pad/b/3/velocity 0.\n/pad/d/2/pressure 0.\n/pad/d/2/y 0.\n/pad/d/2/velocity 0.\n/pad/d/2/x 0.\n/pad/c/2/pressure 0.\n/pad/c/2/y 0.\n/pad/c/2/velocity 0.\n/pad/c/2/x 0.\n/pad/b/2/pressure 0.\n/pad/b/2/x 0.\n/pad/b/2/y 0.\n/pad/b/2/velocity 0.\n/pad/a/2/pressure 0.\n/pad/a/2/x 0.\n/pad/a/2/y 0.\n/pad/a/2/velocity 0.\n/pad/d/1/velocity 0.\n/pad/d/1/pressure 0.\n/pad/d/1/x 0.\n/pad/d/1/y 0.\n/pad/c/1/x 0.\n/pad/c/1/y 0.\n/pad/c/1/velocity 0.\n/pad/c/1/pressure 0.\n/pad/b/1/pressure 0.\n/pad/b/1/y 0.\n/pad/b/1/velocity 0.\n/pad/b/1/x 0.\n/pad/a/1/velocity 0.\n/pad/a/1/pressure 0.\n/pad/a/1/x 0.\n/pad/a/1/y 0.\n/USB/port \"QUNEO\"\n/instructions \"first tap 'mode' button, then tap 'pad /a/1' to enable preset 1. Ok to change the settings within preset 1, using the QuNeo Editor, as long as the midi mappings are not changed\"\n/manufactuer \"KESUMO, LLC.\" \"Keith McMillen\"\n/product \"Quneo, #K-707\"",
+									"patching_rect" : [ 50.0, 100.0, 690.0, 1803.0 ],
+									"text" : "/pad/b/4/pressure 0.\n/pad/b/4/x 0.740157\n/pad/b/4/y 0.370079\n/pad/b/4/velocity 0.\n/pad/a/2/x 0.496063\n/pad/a/2/y 0.496063\n/pad/a/2/velocity 0.\n/pad/a/2/pressure 0.\n/pad/c/4/x 0.519685\n/pad/c/4/y 0.527559\n/pad/c/4/velocity 0.\n/pad/c/4/pressure 0.\n/pad/a/1/x 0.519685\n/pad/a/1/y 0.433071\n/pad/a/1/velocity 0.\n/pad/a/1/pressure 0.\n/pad/a/4/x 0.929134\n/pad/a/4/y 0.\n/pad/a/4/velocity 0.\n/pad/a/4/pressure 0.\n/pad/d/4/pressure 0.\n/pad/d/4/x 1.\n/pad/d/4/y 1.\n/pad/d/4/velocity 0.\n/disc/a/pressure 0.\n/disc/a/velocity 0.\n/disc/a/direction 1.\n/disc/b/pressure 0.\n/disc/b/velocity 0.\n/disc/b/direction 0.00787402\n/pad/b/2/pressure 0.\n/pad/b/2/y 0.417323\n/pad/b/2/x 0.543307\n/pad/b/2/velocity 0.\n/pad/d/3/x 0.0629921\n/pad/d/3/y 1.\n/pad/d/3/velocity 0.\n/pad/d/3/pressure 0.\n/button/rhombus/pressure 0.\n/button/rhombus/velocity 0.\n/button/c/velocity 0.\n/button/c/pressure 0.\n/button/b/pressure 0.\n/button/b/velocity 0.\n/button/a/velocity 0.\n/button/a/pressure 0.\n/large.arrowbutton/b/1/pressure 0.\n/large.arrowbutton/b/1/velocity 0.\n/large.arrowbutton/b/2/pressure 0.\n/large.arrowbutton/b/2/velocity 0.\n/large.arrowbutton/a/1/pressure 0.\n/large.arrowbutton/a/1/velocity 0.\n/large.arrowbutton/a/2/velocity 0.\n/large.arrowbutton/a/2/pressure 0.\n/arrowbutton/b/1/velocity 0.\n/arrowbutton/b/1/pressure 0.\n/arrowbutton/a/1/velocity 0.\n/arrowbutton/a/1/pressure 0.\n/arrowbutton/b/2/pressure 0.\n/arrowbutton/b/2/velocity 0.\n/arrowbutton/a/2/pressure 0.\n/arrowbutton/a/2/velocity 0.\n/arrowbutton/b/3/velocity 0.\n/arrowbutton/b/3/pressure 0.\n/arrowbutton/a/3/velocity 0.\n/arrowbutton/a/3/pressure 0.\n/arrowbutton/b/4/pressure 0.\n/arrowbutton/b/4/velocity 0.\n/arrowbutton/a/4/pressure 0.\n/arrowbutton/a/4/velocity 0.\n/slider/long/velocity 0.\n/slider/long/pressure 0.\n/slider/long/2nd/position 0.\n/slider/long/position 0.\n/slider/d/velocity 0.\n/slider/d/position 0.\n/slider/d/pressure 0.\n/slider/c/pressure 0.\n/slider/c/position 0.\n/slider/c/velocity 0.\n/slider/b/position 0.\n/slider/b/pressure 0.\n/slider/b/velocity 0.\n/slider/a/velocity 0.\n/slider/a/pressure 0.\n/slider/a/position 0.\n/slider/1/velocity 0.\n/slider/1/pressure 0.\n/slider/1/position 0.\n/slider/2/velocity 0.\n/slider/2/pressure 0.\n/slider/2/position 0.\n/slider/3/pressure 0.\n/slider/3/velocity 0.\n/slider/3/position 0.\n/slider/4/pressure 0.\n/slider/4/position 0.\n/slider/4/velocity 0.\n/pad/c/3/velocity 0.\n/pad/c/3/pressure 0.\n/pad/c/3/x 0.\n/pad/c/3/y 0.\n/pad/b/3/pressure 0.\n/pad/b/3/x 0.\n/pad/b/3/y 0.\n/pad/b/3/velocity 0.\n/pad/a/3/pressure 0.\n/pad/a/3/y 0.\n/pad/a/3/velocity 0.\n/pad/a/3/x 0.\n/pad/d/2/pressure 0.\n/pad/d/2/y 0.\n/pad/d/2/velocity 0.\n/pad/d/2/x 0.\n/pad/c/2/pressure 0.\n/pad/c/2/y 0.\n/pad/c/2/velocity 0.\n/pad/c/2/x 0.\n/pad/d/1/velocity 0.\n/pad/d/1/pressure 0.\n/pad/d/1/x 0.\n/pad/d/1/y 0.\n/pad/c/1/x 0.\n/pad/c/1/y 0.\n/pad/c/1/velocity 0.\n/pad/c/1/pressure 0.\n/pad/b/1/pressure 0.\n/pad/b/1/y 0.\n/pad/b/1/velocity 0.\n/pad/b/1/x 0.\n/instructions \"first tap 'mode' button, then tap 'pad /a/1' to enable preset 1. Ok to change the settings within preset 1, using the QuNeo Editor, as long as the midi mappings are not changed\"\n/manufactuer \"KESUMO, LLC.\" \"Keith McMillen\"\n/product \"Quneo, #K-707\"",
 									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 
@@ -600,7 +699,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 209.643097, 206.241302, 150.0, 33.0 ],
-					"text" : "/led/disc/linear.position/red/a 0.",
+					"text" : "/led/disc/linear.position/red/a 0.16",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -690,7 +789,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 758.020569, 560.453491, 150.0, 60.0 ],
-					"text" : "/pad/a/4/velocity 0.\n/pad/a/4/pressure 0.\n/pad/a/4/x 0.503937\n/pad/a/4/y 0.590551",
+					"text" : "/pad/a/4/velocity 0.\n/pad/a/4/pressure 0.\n/pad/a/4/x 0.496063\n/pad/a/4/y 0.433071",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -971,55 +1070,19 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-12", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-36", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-37", 1 ],
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-36", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-38", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"source" : [ "obj-36", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-42", 1 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"source" : [ "obj-38", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-43", 1 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"source" : [ "obj-38", 1 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-44", 1 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"source" : [ "obj-38", 2 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-8", 1 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"source" : [ "obj-38", 3 ]
 				}
 
 			}
@@ -1298,29 +1361,29 @@
 			}
 , 			{
 				"name" : "nothing.maxpat",
-				"bootpath" : "/Users/gabacheker/Documents/maxliB/CNMAT-CNMAT-MMJ-Depot-7782752/modules/basic_programming",
-				"patcherrelativepath" : "../../../../../../maxliB/CNMAT-CNMAT-MMJ-Depot-7782752/modules/basic_programming",
+				"bootpath" : "/Users/gabacheker/Documents/Max/Packages/CNMAT-CNMAT-MMJ-Depot-7782752/modules/basic_programming",
+				"patcherrelativepath" : "../../../../../../Max/Packages/CNMAT-CNMAT-MMJ-Depot-7782752/modules/basic_programming",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "uc_license.maxpat",
-				"bootpath" : "/Users/gabacheker/Documents/maxliB/CNMAT-CNMAT-MMJ-Depot-7782752/modules/depot_support",
-				"patcherrelativepath" : "../../../../../../maxliB/CNMAT-CNMAT-MMJ-Depot-7782752/modules/depot_support",
+				"bootpath" : "/Users/gabacheker/Documents/Max/Packages/CNMAT-CNMAT-MMJ-Depot-7782752/modules/depot_support",
+				"patcherrelativepath" : "../../../../../../Max/Packages/CNMAT-CNMAT-MMJ-Depot-7782752/modules/depot_support",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "cnmat_blue.gif",
-				"bootpath" : "/Users/gabacheker/Documents/maxliB/CNMAT-CNMAT-MMJ-Depot-7782752/modules/depot_support",
-				"patcherrelativepath" : "../../../../../../maxliB/CNMAT-CNMAT-MMJ-Depot-7782752/modules/depot_support",
+				"bootpath" : "/Users/gabacheker/Documents/Max/Packages/CNMAT-CNMAT-MMJ-Depot-7782752/modules/depot_support",
+				"patcherrelativepath" : "../../../../../../Max/Packages/CNMAT-CNMAT-MMJ-Depot-7782752/modules/depot_support",
 				"type" : "GIFf",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.collectwithtimeout.maxpat",
-				"bootpath" : "/Users/gabacheker/Documents/maxliB/lib",
-				"patcherrelativepath" : "../../../../../../maxliB/lib",
+				"bootpath" : "/Users/gabacheker/Documents/Max/Packages/maxliB/o.io.qunexus/patchers",
+				"patcherrelativepath" : "../../../../../../Max/Packages/maxliB/o.io.qunexus/patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
