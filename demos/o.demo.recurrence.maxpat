@@ -8,7 +8,7 @@
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 30.0, 54.0, 1359.0, 786.0 ],
+		"rect" : [ 172.0, 44.0, 1359.0, 786.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 20.0,
@@ -48,7 +48,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 682.758972, 862.406921, 150.0, 29.0 ],
-					"presentation_rect" : [ 749.30896, 858.41394, 0.0, 0.0 ],
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -63,7 +62,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 637.54895, 248.896957, 150.0, 29.0 ],
-					"presentation_rect" : [ 637.54895, 248.896957, 0.0, 0.0 ],
 					"text" : "exponential"
 				}
 
@@ -135,7 +133,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 1111.384888, 256.882965, 348.31897, 29.0 ],
-					"presentation_rect" : [ 1075.447876, 194.325974, 0.0, 0.0 ],
 					"text" : "cube root"
 				}
 
@@ -202,13 +199,11 @@
 					"fontname" : "Arial",
 					"fontsize" : 20.0,
 					"id" : "obj-36",
-					"linecount" : 5,
 					"maxclass" : "o.message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 69.818024, 1037.773071, 1068.0, 118.0 ],
-					"text" : "/cuberoot 3 \n/argument 27 \n/power4root 1. \n/function \"/power4root = sqrt(sqrt(/power4root)) ; /cuberoot = /cuberoot * /power4root ; /until = (/power4root==1)\" \n/until true \n",
+					"patching_rect" : [ 69.818024, 1037.773071, 1068.0, 29.0 ],
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -294,7 +289,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 833.184021, 324.515015, 855.0, 118.0 ],
-					"text" : "/cuberoot 1. \n/argument \"$1\" \n/power4root \"$1\" \n/function \"/power4root = sqrt(sqrt(/power4root)) ; /cuberoot = /cuberoot * /power4root ; /until = (/power4root==1)\" ",
+					"text" : "/cuberoot 1.\n/argument \"$1\"\n/power4root \"$1\"\n/function \"/power4root = sqrt(sqrt(/power4root)) ; /cuberoot = /cuberoot * /power4root ; /until = (/power4root==1)\"",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -338,7 +333,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 810.120972, 129.584991, 851.0, 96.0 ],
-					"text" : "/state 0. 0.07 \n/omega 0.02 \n/r \"$1\" \n/function \"/state = [ 2*cos(twopi()* /omega) * /r *first(/state) - /r * /r *last(/state),first(/state) ]\" ",
+					"text" : "/state 0. 0.07\n/omega 0.02\n/r \"$1\"\n/function \"/state = [ 2*cos(twopi()* /omega) * /r *first(/state) - /r * /r *last(/state),first(/state) ]\"",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -354,7 +349,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 275.936981, 318.557007, 398.0, 51.0 ],
-					"text" : "/state 0 \n/function \"/state+=0.002 + /state\" ",
+					"text" : "/state 0\n/function \"/state+=0.002 + /state\"",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -370,7 +365,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 216.936996, 253.556992, 398.0, 51.0 ],
-					"text" : "/state 0.01 \n/function \"/state=1.1 * /state\" ",
+					"text" : "/state 0.01\n/function \"/state=1.1 * /state\"",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -415,7 +410,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 182.936996, 189.556992, 398.0, 51.0 ],
-					"text" : "/state 1 \n/function \"/state=0.9 * /state\" ",
+					"text" : "/state 1\n/function \"/state=0.9 * /state\"",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -431,7 +426,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 130.936996, 128.556992, 398.0, 51.0 ],
-					"text" : "/state 0 \n/function \"/state=plus1(/state)\" ",
+					"text" : "/state 0\n/function \"/state=plus1(/state)\"",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -458,7 +453,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 73.936996, 69.556992, 398.0, 51.0 ],
-					"text" : "/state 0 1 \n/function \"/state=[sum(/state),first(/state) ]\" ",
+					"text" : "/state 0 1\n/function \"/state=[sum(/state),first(/state) ]\"",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -468,13 +463,13 @@
 					"fontname" : "Arial",
 					"fontsize" : 20.0,
 					"id" : "obj-2",
-					"linecount" : 6,
+					"linecount" : 5,
 					"maxclass" : "o.message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 136.936996, 584.650024, 531.0, 141.0 ],
-					"text" : "/cuberoot 3 \n/argument 27 \n/power4root 1 \n/function \"/power4root = sqrt(sqrt(/power4root)) ; /cuberoot = /cuberoot * /power4root ; /until = (/power4root==1)\" \n/until false \n",
+					"patching_rect" : [ 138.091003, 597.534119, 531.0, 118.0 ],
+					"text" : "/state 0. 0.07\n/omega 0.02\n/r \"$1\"\n/function \"/state = [ 2*cos(twopi()* /omega) * /r *first(/state) - /r * /r *last(/state),first(/state) ]\"",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -491,7 +486,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 14.640976, 7.986028, 1703.276855, 476.0 ],
+					"patching_rect" : [ 14.640976, 7.986028, 1703.276855, 453.0 ],
 					"text" : "\n1: Choose the recurrence and initial conditions\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
 				}
 
@@ -664,7 +659,7 @@
 					"destination" : [ "obj-2", 1 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"midpoints" : [ 614.501953, 810.0, 946.862, 810.0, 946.862, 579.0, 658.437012, 579.0 ],
+					"midpoints" : [ 614.501953, 810.0, 946.862, 810.0, 946.862, 579.0, 659.591003, 579.0 ],
 					"source" : [ "obj-35", 1 ]
 				}
 
