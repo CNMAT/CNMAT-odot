@@ -8,7 +8,7 @@
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 243.0, 44.0, 1134.0, 746.0 ],
+		"rect" : [ 6.0, 305.0, 1134.0, 746.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
@@ -41,7 +41,7 @@
 					"presentation" : 1,
 					"presentation_linecount" : 2,
 					"presentation_rect" : [ 320.0, 164.0, 286.0, 33.0 ],
-					"text" : "/width 3.\n/position 100.",
+					"text" : "/width 1.43\n/position 100.",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -1318,7 +1318,7 @@
 					"outlettype" : [ "list", "list", "int", "" ],
 					"patching_rect" : [ 559.0, 411.0, 415.0, 131.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 1.0, 2.0, 264.0, 137.0 ]
+					"presentation_rect" : [ 8.0, 2.0, 264.0, 137.0 ]
 				}
 
 			}
