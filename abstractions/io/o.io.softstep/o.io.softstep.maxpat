@@ -4,11 +4,11 @@
 		"appversion" : 		{
 			"major" : 6,
 			"minor" : 1,
-			"revision" : 4,
+			"revision" : 7,
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 104.0, 49.0, 754.0, 518.0 ],
+		"rect" : [ 104.0, 50.0, 754.0, 518.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -31,14 +31,42 @@
 				"box" : 				{
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
+					"id" : "obj-8",
+					"maxclass" : "newobj",
+					"numinlets" : 2,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "FullPacket" ],
+					"patching_rect" : [ 45.0, 225.0, 110.0, 20.0 ],
+					"text" : "o.route /ctldata/out"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-7",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "FullPacket" ],
+					"patching_rect" : [ 45.0, 201.0, 122.0, 20.0 ],
+					"text" : "o.io.softstep.platform"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
 					"id" : "obj-11",
 					"linecount" : 3,
 					"maxclass" : "o.message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 240.0, 318.0, 363.0, 47.0 ],
-					"text" : "/Instruction \"Push on 4 corners of any pad for corresponding data\"\n/Manufacturer \"Keith McMillen Instruments\"\n/Product \"SoftStep\"",
+					"patching_rect" : [ 240.0, 318.0, 363.0, 48.0 ],
+					"text" : "/Instruction \"Push on 4 corners of any pad for corresponding data\" \n/Manufacturer \"Keith McMillen Instruments\" \n/Product \"SoftStep\" ",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -54,48 +82,6 @@
 					"outlettype" : [ "bang" ],
 					"patching_rect" : [ 240.0, 285.0, 60.0, 20.0 ],
 					"text" : "loadbang"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontname" : "Arial",
-					"fontsize" : 12.0,
-					"id" : "obj-24",
-					"maxclass" : "newobj",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 45.0, 201.0, 70.0, 20.0 ],
-					"text" : "pack"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontname" : "Arial",
-					"fontsize" : 12.0,
-					"id" : "obj-14",
-					"maxclass" : "newobj",
-					"numinlets" : 2,
-					"numoutlets" : 2,
-					"outlettype" : [ "int", "int" ],
-					"patching_rect" : [ 45.0, 178.0, 71.0, 20.0 ],
-					"text" : "swap"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontname" : "Arial",
-					"fontsize" : 12.0,
-					"id" : "obj-12",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 3,
-					"outlettype" : [ "int", "int", "int" ],
-					"patching_rect" : [ 45.0, 154.0, 124.0, 20.0 ],
-					"text" : "ctlin \"SSCOM Port 1\""
 				}
 
 			}
@@ -151,7 +137,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 500.0, 50.0, 150.0, 74.0 ],
+					"patching_rect" : [ 500.0, 50.0, 150.0, 75.0 ],
 					"text" : "timer on first thing that comes in\n\ncollect all \n\n"
 				}
 
@@ -194,7 +180,7 @@
 						"appversion" : 						{
 							"major" : 6,
 							"minor" : 1,
-							"revision" : 4,
+							"revision" : 7,
 							"architecture" : "x86"
 						}
 ,
@@ -304,7 +290,7 @@
 									"fontsize" : 12.0,
 									"id" : "obj-1",
 									"maxclass" : "newobj",
-									"numinlets" : 4,
+									"numinlets" : 2,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "" ],
 									"patching_rect" : [ 33.0, 260.0, 61.0, 20.0 ],
@@ -499,7 +485,7 @@
 						"appversion" : 						{
 							"major" : 6,
 							"minor" : 1,
-							"revision" : 4,
+							"revision" : 7,
 							"architecture" : "x86"
 						}
 ,
@@ -924,7 +910,7 @@
 						"appversion" : 						{
 							"major" : 6,
 							"minor" : 1,
-							"revision" : 4,
+							"revision" : 7,
 							"architecture" : "x86"
 						}
 ,
@@ -973,7 +959,7 @@
 										"appversion" : 										{
 											"major" : 6,
 											"minor" : 1,
-											"revision" : 4,
+											"revision" : 7,
 											"architecture" : "x86"
 										}
 ,
@@ -2837,42 +2823,6 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-14", 1 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"source" : [ "obj-12", 1 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-14", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"source" : [ "obj-12", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-24", 1 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"source" : [ "obj-14", 1 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-24", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"source" : [ "obj-14", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
 					"destination" : [ "obj-29", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
@@ -2886,15 +2836,6 @@
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-2", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-63", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"source" : [ "obj-24", 0 ]
 				}
 
 			}
@@ -2997,6 +2938,103 @@
 					"source" : [ "obj-63", 0 ]
 				}
 
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-8", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-7", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-63", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-8", 0 ]
+				}
+
+			}
+ ],
+		"dependency_cache" : [ 			{
+				"name" : "c.softstep.pad.maxpat",
+				"bootpath" : "/Users/jml/Documents/git_repositories/CNMAT-odot/abstractions/io/o.io.softstep",
+				"patcherrelativepath" : ".",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "c.softstep.navbutton.maxpat",
+				"bootpath" : "/Users/jml/Documents/git_repositories/CNMAT-odot/abstractions/io/o.io.softstep",
+				"patcherrelativepath" : ".",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "c.softstep.led.maxpat",
+				"bootpath" : "/Users/jml/Documents/git_repositories/CNMAT-odot/abstractions/io/o.io.softstep",
+				"patcherrelativepath" : ".",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "o.io.collectwithtimeout.maxpat",
+				"bootpath" : "/Users/jml/Documents/git_repositories/CNMAT-odot/abstractions/io",
+				"patcherrelativepath" : "..",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "o.io.softstep.platform.maxpat",
+				"bootpath" : "/Users/jml/Documents/git_repositories/CNMAT-odot/abstractions/io/o.io.softstep",
+				"patcherrelativepath" : ".",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "o.maxplatform.maxpat",
+				"bootpath" : "/Users/jml/Documents/git_repositories/CNMAT-odot/abstractions",
+				"patcherrelativepath" : "../..",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "o.route.mxe",
+				"type" : "iLaF"
+			}
+, 			{
+				"name" : "o.prepend.mxe",
+				"type" : "iLaF"
+			}
+, 			{
+				"name" : "o.pack.mxe",
+				"type" : "iLaF"
+			}
+, 			{
+				"name" : "o.var.mxe",
+				"type" : "iLaF"
+			}
+, 			{
+				"name" : "o.message.mxe",
+				"type" : "iLaF"
+			}
+, 			{
+				"name" : "o.expr.mxe",
+				"type" : "iLaF"
+			}
+, 			{
+				"name" : "o.union.mxe",
+				"type" : "iLaF"
+			}
+, 			{
+				"name" : "ss.mxe",
+				"type" : "iLaF"
+			}
+, 			{
+				"name" : "o.collect.mxe",
+				"type" : "iLaF"
 			}
  ]
 	}
