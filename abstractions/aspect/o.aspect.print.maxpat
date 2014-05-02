@@ -51,7 +51,7 @@
 					"numinlets" : 6,
 					"numoutlets" : 6,
 					"outlettype" : [ "", "", "", "", "", "FullPacket" ],
-					"patching_rect" : [ 115.5, 120.0, 276.5, 60.0 ],
+					"patching_rect" : [ 115.5, 120.0, 239.0, 60.0 ],
 					"text" : "o.route /o_inlet/parent/patcher/name /o_outlet/parent/patcher/name /o_inlet/this/patcher/name /o_outlet/this/patcher/name /o_port/type"
 				}
 
@@ -65,7 +65,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 52.0, 352.0, 44.0, 20.0 ],
+					"patching_rect" : [ 320.0, 312.0, 44.0, 20.0 ],
 					"text" : "o.print"
 				}
 
@@ -93,23 +93,8 @@
 					"numinlets" : 3,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 115.5, 232.0, 107.0, 20.0 ],
+					"patching_rect" : [ 115.5, 232.0, 195.0, 20.0 ],
 					"text" : "sprintf %s:%s:%s:"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontname" : "Arial",
-					"fontsize" : 12.0,
-					"frgb" : 0.0,
-					"id" : "obj-8",
-					"linecount" : 6,
-					"maxclass" : "comment",
-					"numinlets" : 1,
-					"numoutlets" : 0,
-					"patching_rect" : [ 432.0, 93.0, 305.0, 87.0 ],
-					"text" : "Simple patch to demonstrate aspect oriented programming. \n\nPull some useful stuff out of the context like the name of the patcher this came from and the name of the port and print it to the max window."
 				}
 
 			}
@@ -142,6 +127,7 @@
 					"destination" : [ "obj-4", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
+					"midpoints" : [ 125.0, 267.0, 351.0, 267.0, 351.0, 304.0, 329.5, 304.0 ],
 					"source" : [ "obj-2", 0 ]
 				}
 
@@ -151,6 +137,7 @@
 					"destination" : [ "obj-4", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
+					"midpoints" : [ 188.5, 105.0, 364.0, 105.0, 364.0, 305.0, 329.5, 305.0 ],
 					"source" : [ "obj-3", 2 ]
 				}
 
@@ -223,6 +210,7 @@
 					"destination" : [ "obj-4", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
+					"midpoints" : [ 329.5, 315.0, 329.5, 315.0 ],
 					"source" : [ "obj-6", 4 ]
 				}
 
