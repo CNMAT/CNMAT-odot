@@ -4,11 +4,11 @@
 		"appversion" : 		{
 			"major" : 6,
 			"minor" : 1,
-			"revision" : 4,
+			"revision" : 7,
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 32.0, 66.0, 1211.0, 503.0 ],
+		"rect" : [ 32.0, 66.0, 1278.0, 923.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -29,6 +29,201 @@
 		"tags" : "",
 		"boxes" : [ 			{
 				"box" : 				{
+					"bubble" : 1,
+					"bubblepoint" : 0.25,
+					"bubbleside" : 0,
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"frgb" : 0.0,
+					"id" : "obj-41",
+					"linecount" : 3,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 380.0, 40.0, 164.0, 67.0 ],
+					"text" : "in the future, input will allow for addressing of LEDs and illumination of pads."
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-39",
+					"maxclass" : "o.message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 361.0, 10.0, 79.0, 20.0 ],
+					"text" : "/nada \"?\" ",
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-38",
+					"linecount" : 3,
+					"maxclass" : "o.message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 189.0, 770.0, 370.0, 48.0 ],
+					"text" : "/Instruction \"Push on 4 corners of any pad for corresponding data\" \n/Manufacturer \"Keith McMillen Instruments\" \n/Product \"SoftStep\" \n",
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-37",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "FullPacket" ],
+					"patching_rect" : [ 540.0, 730.0, 242.0, 20.0 ],
+					"text" : "o.gather /Instruction /Manufacturer /Product"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-35",
+					"linecount" : 20,
+					"maxclass" : "o.message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 570.0, 420.0, 161.0, 282.0 ],
+					"text" : "/8/horizontal 0. \n/8/vertical 0. \n/6/horizontal 0. \n/6/vertical 0. \n/3/horizontal 0. \n/3/vertical 0. \n/1/horizontal 0. \n/1/vertical 0. \n/7/horizontal 0. \n/7/vertical 0. \n/2/horizontal 0. \n/2/vertical 0. \n/9/horizontal 0. \n/9/vertical 0. \n/4/horizontal 0. \n/4/vertical 0. \n/10/horizontal 0. \n/10/vertical 0. \n/5/horizontal 0. \n/5/vertical 0. \n",
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-34",
+					"linecount" : 10,
+					"maxclass" : "o.message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 400.0, 420.0, 151.25, 144.0 ],
+					"text" : "/8/xy 0. 0. \n/6/xy 0. 0. \n/3/xy 0. 0. \n/1/xy 0. 0. \n/7/xy 0. 0. \n/2/xy 0. 0. \n/9/xy 0. 0. \n/4/xy 0. 0. \n/10/xy 0. 0. \n/5/xy 0. 0. \n",
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-33",
+					"linecount" : 10,
+					"maxclass" : "o.message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 260.0, 420.0, 120.0, 144.0 ],
+					"text" : "/8/rawlist 0 0 0 0 \n/6/rawlist 0 0 0 0 \n/3/rawlist 0 0 0 0 \n/1/rawlist 0 0 0 0 \n/7/rawlist 0 0 0 0 \n/2/rawlist 0 0 0 0 \n/9/rawlist 0 0 0 0 \n/4/rawlist 0 0 0 0 \n/10/rawlist 0 0 0 0 \n/5/rawlist 0 0 0 0 \n",
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-32",
+					"linecount" : 10,
+					"maxclass" : "o.message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 50.0, 420.0, 176.25, 144.0 ],
+					"text" : "/8/button false false false false \n/6/button false false false false \n/3/button false false false false \n/1/button false false false false \n/7/button false false false false \n/2/button false false false false \n/9/button false false false false \n/4/button false false false false \n/10/button false false false false \n/5/button false false false false \n",
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-30",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "FullPacket" ],
+					"patching_rect" : [ 712.0, 370.0, 174.0, 20.0 ],
+					"text" : "o.gather /*/horizontal /*/vertical"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-29",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "FullPacket" ],
+					"patching_rect" : [ 532.25, 370.0, 81.0, 20.0 ],
+					"text" : "o.gather /*/xy"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-28",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "FullPacket" ],
+					"patching_rect" : [ 361.0, 370.0, 103.0, 20.0 ],
+					"text" : "o.gather /*/rawlist"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-27",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "FullPacket" ],
+					"patching_rect" : [ 207.25, 370.0, 103.0, 20.0 ],
+					"text" : "o.gather /*/button"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"blinkcolor" : [ 0.172549, 1.0, 0.090196, 1.0 ],
+					"id" : "obj-24",
+					"maxclass" : "button",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "bang" ],
+					"patching_rect" : [ 120.0, 220.0, 30.0, 30.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"frgb" : 0.0,
@@ -36,7 +231,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 810.0, 30.0, 150.0, 20.0 ],
+					"patching_rect" : [ 900.0, 10.0, 150.0, 20.0 ],
 					"text" : "example output"
 				}
 
@@ -54,11 +249,11 @@
 						"appversion" : 						{
 							"major" : 6,
 							"minor" : 1,
-							"revision" : 4,
+							"revision" : 7,
 							"architecture" : "x86"
 						}
 ,
-						"rect" : [ 25.0, 69.0, 640.0, 480.0 ],
+						"rect" : [ 25.0, 69.0, 455.0, 695.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -82,13 +277,13 @@
 									"fontname" : "Arial",
 									"fontsize" : 12.0,
 									"id" : "obj-13",
-									"linecount" : 72,
+									"linecount" : 73,
 									"maxclass" : "o.message",
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 50.0, 100.0, 320.0, 972.0 ],
-									"text" : "/6/rawlist 0 0 0 0\n/6/normlist 0. 0. 0. 0.\n/6/xy 0. 0.\n/6/horizontal 0.\n/6/vertical 0.\n/6/button false false false false\n/3/rawlist 0 0 0 0\n/3/normlist 0. 0. 0. 0.\n/3/xy 0. 0.\n/3/horizontal 0.\n/3/vertical 0.\n/3/button false false false false\n/1/rawlist 0 0 0 0\n/1/normlist 0. 0. 0. 0.\n/1/xy 0. 0.\n/1/horizontal 0.\n/1/vertical 0.\n/1/button false false false false\n/7/rawlist 0 0 0 0\n/7/normlist 0. 0. 0. 0.\n/7/xy 0. 0.\n/7/horizontal 0.\n/7/vertical 0.\n/7/button false false false false\n/2/rawlist 0 0 0 0\n/2/normlist 0. 0. 0. 0.\n/2/xy 0. 0.\n/2/horizontal 0.\n/2/vertical 0.\n/2/button false false false false\n/8/rawlist 0 0 0 0\n/8/normlist 0. 0. 0. 0.\n/8/xy 0. 0.\n/8/horizontal 0.\n/8/vertical 0.\n/8/button false false false false\n/9/rawlist 0 0 0 0\n/9/normlist 0. 0. 0. 0.\n/9/xy 0. 0.\n/9/horizontal 0.\n/9/vertical 0.\n/9/button false false false false\n/4/rawlist 0 0 0 0\n/4/normlist 0. 0. 0. 0.\n/4/xy 0. 0.\n/4/horizontal 0.\n/4/vertical 0.\n/4/button false false false false\n/10/rawlist 0 0 0 0\n/10/normlist 0. 0. 0. 0.\n/10/xy 0. 0.\n/10/horizontal 0.\n/10/vertical 0.\n/10/button false false false false\n/5/rawlist 0 0 0 0\n/5/normlist 0. 0. 0. 0.\n/5/xy 0. 0.\n/5/horizontal 0.\n/5/vertical 0.\n/5/button false false false false\n/diamond/left/button 0.\n/diamond/right/pressure 0.\n/diamond/forward/pressure 0.\n/diamond/backward/pressure 0.\n/diamond/backward/button \"released\"\n/diamond/right/button \"released\"\n/diamond/forward/button \"released\"\n/diamond/left/pressure \"released\"\n/Instruction \"Push on 4 corners of any pad for corresponding data\"\n/Manufacturer \"Keith McMillen Instruments\"\n/Product \"SoftStep\"",
+									"patching_rect" : [ 50.0, 100.0, 320.0, 1138.0 ],
+									"text" : "/8/rawlist 0 0 0 0 \n/8/normlist 0. 0. 0. 0. \n/8/xy 0. 0. \n/8/pressure 0. \n/8/horizontal 0. \n/8/vertical 0. \n/8/button false false false false \n/6/rawlist 0 0 0 0 \n/6/normlist 0. 0. 0. 0. \n/6/xy 0. 0. \n/6/horizontal 0. \n/6/vertical 0. \n/6/button false false false false \n/3/rawlist 0 0 0 0 \n/3/normlist 0. 0. 0. 0. \n/3/xy 0. 0. \n/3/horizontal 0. \n/3/vertical 0. \n/3/button false false false false \n/1/rawlist 0 0 0 0 \n/1/normlist 0. 0. 0. 0. \n/1/xy 0. 0. \n/1/horizontal 0. \n/1/vertical 0. \n/1/button false false false false \n/7/rawlist 0 0 0 0 \n/7/normlist 0. 0. 0. 0. \n/7/xy 0. 0. \n/7/horizontal 0. \n/7/vertical 0. \n/7/button false false false false \n/2/rawlist 0 0 0 0 \n/2/normlist 0. 0. 0. 0. \n/2/xy 0. 0. \n/2/horizontal 0. \n/2/vertical 0. \n/2/button false false false false \n/9/rawlist 0 0 0 0 \n/9/normlist 0. 0. 0. 0. \n/9/xy 0. 0. \n/9/horizontal 0. \n/9/vertical 0. \n/9/button false false false false \n/4/rawlist 0 0 0 0 \n/4/normlist 0. 0. 0. 0. \n/4/xy 0. 0. \n/4/horizontal 0. \n/4/vertical 0. \n/4/button false false false false \n/10/rawlist 0 0 0 0 \n/10/normlist 0. 0. 0. 0. \n/10/xy 0. 0. \n/10/horizontal 0. \n/10/vertical 0. \n/10/button false false false false \n/5/rawlist 0 0 0 0 \n/5/normlist 0. 0. 0. 0. \n/5/xy 0. 0. \n/5/horizontal 0. \n/5/vertical 0. \n/5/button false false false false \n/diamond/left/button 0. \n/diamond/right/pressure 0. \n/diamond/forward/pressure 0. \n/diamond/backward/pressure 0. \n/diamond/backward/button \"released\" \n/diamond/right/button \"released\" \n/diamond/forward/button \"released\" \n/diamond/left/pressure \"released\" \n/Instruction \"Push on 4 corners of any pad for corresponding data\" \n/Manufacturer \"Keith McMillen Instruments\" \n/Product \"SoftStep\" \n",
 									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 
@@ -118,7 +313,7 @@
  ]
 					}
 ,
-					"patching_rect" : [ 410.0, 240.0, 45.0, 20.0 ],
+					"patching_rect" : [ 180.0, 220.0, 93.0, 20.0 ],
 					"saved_object_attributes" : 					{
 						"default_fontface" : 0,
 						"default_fontname" : "Arial",
@@ -132,7 +327,7 @@
 						"tags" : ""
 					}
 ,
-					"text" : "p view"
+					"text" : "p entire_bundle"
 				}
 
 			}
@@ -146,8 +341,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 810.0, 60.0, 320.0, 972.0 ],
-					"text" : "/6/rawlist 0 0 0 0\n/6/normlist 0. 0. 0. 0.\n/6/xy 0. 0.\n/6/horizontal 0.\n/6/vertical 0.\n/6/button false false false false\n/3/rawlist 0 0 0 0\n/3/normlist 0. 0. 0. 0.\n/3/xy 0. 0.\n/3/horizontal 0.\n/3/vertical 0.\n/3/button false false false false\n/1/rawlist 0 0 0 0\n/1/normlist 0. 0. 0. 0.\n/1/xy 0. 0.\n/1/horizontal 0.\n/1/vertical 0.\n/1/button false false false false\n/7/rawlist 0 0 0 0\n/7/normlist 0. 0. 0. 0.\n/7/xy 0. 0.\n/7/horizontal 0.\n/7/vertical 0.\n/7/button false false false false\n/2/rawlist 0 0 0 0\n/2/normlist 0. 0. 0. 0.\n/2/xy 0. 0.\n/2/horizontal 0.\n/2/vertical 0.\n/2/button false false false false\n/8/rawlist 0 0 0 0\n/8/normlist 0. 0. 0. 0.\n/8/xy 0. 0.\n/8/horizontal 0.\n/8/vertical 0.\n/8/button false false false false\n/9/rawlist 0 0 0 0\n/9/normlist 0. 0. 0. 0.\n/9/xy 0. 0.\n/9/horizontal 0.\n/9/vertical 0.\n/9/button false false false false\n/4/rawlist 0 0 0 0\n/4/normlist 0. 0. 0. 0.\n/4/xy 0. 0.\n/4/horizontal 0.\n/4/vertical 0.\n/4/button false false false false\n/10/rawlist 0 0 0 0\n/10/normlist 0. 0. 0. 0.\n/10/xy 0. 0.\n/10/horizontal 0.\n/10/vertical 0.\n/10/button false false false false\n/5/rawlist 0 0 0 0\n/5/normlist 0. 0. 0. 0.\n/5/xy 0. 0.\n/5/horizontal 0.\n/5/vertical 0.\n/5/button false false false false\n/diamond/left/button 0.\n/diamond/right/pressure 0.\n/diamond/forward/pressure 0.\n/diamond/backward/pressure 0.\n/diamond/backward/button \"released\"\n/diamond/right/button \"released\"\n/diamond/forward/button \"released\"\n/diamond/left/pressure \"released\"\n/Instruction \"Push on 4 corners of any pad for corresponding data\"\n/Manufacturer \"Keith McMillen Instruments\"\n/Product \"SoftStep\"",
+					"patching_rect" : [ 900.0, 40.0, 320.0, 1000.0 ],
+					"text" : "/6/rawlist 0 0 0 0 \n/6/normlist 0. 0. 0. 0. \n/6/xy 0. 0. \n/6/horizontal 0. \n/6/vertical 0. \n/6/button false false false false \n/3/rawlist 0 0 0 0 \n/3/normlist 0. 0. 0. 0. \n/3/xy 0. 0. \n/3/horizontal 0. \n/3/vertical 0. \n/3/button false false false false \n/1/rawlist 0 0 0 0 \n/1/normlist 0. 0. 0. 0. \n/1/xy 0. 0. \n/1/horizontal 0. \n/1/vertical 0. \n/1/button false false false false \n/7/rawlist 0 0 0 0 \n/7/normlist 0. 0. 0. 0. \n/7/xy 0. 0. \n/7/horizontal 0. \n/7/vertical 0. \n/7/button false false false false \n/2/rawlist 0 0 0 0 \n/2/normlist 0. 0. 0. 0. \n/2/xy 0. 0. \n/2/horizontal 0. \n/2/vertical 0. \n/2/button false false false false \n/8/rawlist 0 0 0 0 \n/8/normlist 0. 0. 0. 0. \n/8/xy 0. 0. \n/8/horizontal 0. \n/8/vertical 0. \n/8/button false false false false \n/9/rawlist 0 0 0 0 \n/9/normlist 0. 0. 0. 0. \n/9/xy 0. 0. \n/9/horizontal 0. \n/9/vertical 0. \n/9/button false false false false \n/4/rawlist 0 0 0 0 \n/4/normlist 0. 0. 0. 0. \n/4/xy 0. 0. \n/4/horizontal 0. \n/4/vertical 0. \n/4/button false false false false \n/10/rawlist 0 0 0 0 \n/10/normlist 0. 0. 0. 0. \n/10/xy 0. 0. \n/10/horizontal 0. \n/10/vertical 0. \n/10/button false false false false \n/5/rawlist 0 0 0 0 \n/5/normlist 0. 0. 0. 0. \n/5/xy 0. 0. \n/5/horizontal 0. \n/5/vertical 0. \n/5/button false false false false \n/diamond/left/button 0. \n/diamond/right/pressure 0. \n/diamond/forward/pressure 0. \n/diamond/backward/pressure 0. \n/diamond/backward/button \"released\" \n/diamond/right/button \"released\" \n/diamond/forward/button \"released\" \n/diamond/left/pressure \"released\" \n/Instruction \"Push on 4 corners of any pad for corresponding data\" \n/Manufacturer \"Keith McMillen Instruments\" \n/Product \"SoftStep\" ",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -161,143 +356,8 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 517.0, 450.0, 150.0, 20.0 ],
+					"patching_rect" : [ 671.0, 230.0, 150.0, 20.0 ],
 					"text" : "unmatched input"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontname" : "Arial",
-					"fontsize" : 12.0,
-					"id" : "obj-1",
-					"maxclass" : "o.message",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 610.0, 138.0, 147.0, 20.0 ],
-					"text" : "/softstep/10/led \"off\"",
-					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontname" : "Arial",
-					"fontsize" : 12.0,
-					"id" : "obj-3",
-					"maxclass" : "o.message",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 610.0, 114.0, 147.0, 20.0 ],
-					"text" : "/softstep/10/led \"red\"",
-					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontname" : "Arial",
-					"fontsize" : 12.0,
-					"id" : "obj-10",
-					"maxclass" : "o.message",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 610.0, 90.0, 147.0, 20.0 ],
-					"text" : "/softstep/10/led \"green\"",
-					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontname" : "Arial",
-					"fontsize" : 12.0,
-					"id" : "obj-23",
-					"maxclass" : "o.message",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 50.0, 128.0, 151.0, 20.0 ],
-					"text" : "/softstep/*/led \"red\"",
-					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontname" : "Arial",
-					"fontsize" : 12.0,
-					"id" : "obj-20",
-					"maxclass" : "o.message",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 50.0, 104.0, 151.0, 20.0 ],
-					"text" : "/softstep/*/led \"green\"",
-					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontname" : "Arial",
-					"fontsize" : 12.0,
-					"id" : "obj-15",
-					"maxclass" : "o.message",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 50.0, 80.0, 147.0, 20.0 ],
-					"text" : "/softstep/*/led \"off\"",
-					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontname" : "Arial",
-					"fontsize" : 12.0,
-					"id" : "obj-14",
-					"maxclass" : "o.message",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 220.0, 128.0, 147.0, 20.0 ],
-					"text" : "/softstep/1/led \"off\"",
-					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontname" : "Arial",
-					"fontsize" : 12.0,
-					"id" : "obj-7",
-					"maxclass" : "o.message",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 220.0, 104.0, 147.0, 20.0 ],
-					"text" : "/softstep/1/led \"red\"",
-					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontname" : "Arial",
-					"fontsize" : 12.0,
-					"id" : "obj-4",
-					"maxclass" : "o.message",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 220.0, 80.0, 147.0, 20.0 ],
-					"text" : "/softstep/1/led \"green\"",
-					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
 			}
@@ -310,140 +370,13 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 437.0, 430.0, 320.0, 20.0 ],
+					"patching_rect" : [ 620.0, 210.0, 123.5, 20.0 ],
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
 			}
 , 			{
 				"box" : 				{
-					"id" : "obj-17",
-					"maxclass" : "button",
-					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 100.0, 410.0, 20.0, 20.0 ]
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontname" : "Arial",
-					"fontsize" : 12.0,
-					"id" : "obj-11",
-					"maxclass" : "o.message",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 35.0, 440.0, 270.0, 20.0 ],
-					"text" : "/softstep/5/button false false false false",
-					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontname" : "Arial",
-					"fontsize" : 12.0,
-					"id" : "obj-9",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 140.0, 380.0, 60.0, 20.0 ],
-					"text" : "o.change"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontname" : "Arial",
-					"fontsize" : 12.0,
-					"frgb" : 0.0,
-					"id" : "obj-8",
-					"linecount" : 3,
-					"maxclass" : "comment",
-					"numinlets" : 1,
-					"numoutlets" : 0,
-					"patching_rect" : [ 484.25, 30.0, 150.0, 47.0 ],
-					"text" : "gain parameter adjusts how sensitive the pads are"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontname" : "Arial",
-					"fontsize" : 12.0,
-					"id" : "obj-6",
-					"maxclass" : "newobj",
-					"numinlets" : 2,
-					"numoutlets" : 2,
-					"outlettype" : [ "", "FullPacket" ],
-					"patching_rect" : [ 140.0, 350.0, 148.0, 20.0 ],
-					"text" : "o.select /softstep/5/button"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontname" : "Arial",
-					"fontsize" : 12.0,
-					"id" : "obj-22",
-					"maxclass" : "message",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 410.0, 30.0, 32.5, 18.0 ],
-					"text" : "7"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontname" : "Arial",
-					"fontsize" : 12.0,
-					"id" : "obj-21",
-					"maxclass" : "message",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 451.75, 30.0, 32.5, 18.0 ],
-					"text" : "1"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontname" : "Arial",
-					"fontsize" : 12.0,
-					"id" : "obj-19",
-					"maxclass" : "flonum",
-					"numinlets" : 1,
-					"numoutlets" : 2,
-					"outlettype" : [ "float", "bang" ],
-					"parameter_enable" : 0,
-					"patching_rect" : [ 410.0, 60.0, 50.0, 20.0 ]
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontname" : "Arial",
-					"fontsize" : 12.0,
-					"id" : "obj-16",
-					"maxclass" : "o.message",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 410.0, 90.0, 148.0, 20.0 ],
-					"text" : "/softstep/[1-9]?/gain \"$1\"",
-					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"color" : [ 0.945098, 0.913725, 0.407843, 1.0 ],
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"id" : "obj-2",
@@ -451,67 +384,13 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "FullPacket" ],
-					"patching_rect" : [ 410.0, 190.0, 75.0, 20.0 ],
+					"patching_rect" : [ 361.0, 130.0, 75.0, 20.0 ],
 					"text" : "o.io.softstep"
 				}
 
 			}
  ],
 		"lines" : [ 			{
-				"patchline" : 				{
-					"destination" : [ "obj-2", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"source" : [ "obj-1", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-2", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"source" : [ "obj-10", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-2", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"source" : [ "obj-14", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-2", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"source" : [ "obj-15", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-2", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"source" : [ "obj-16", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-16", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"source" : [ "obj-19", 0 ]
-				}
-
-			}
-, 			{
 				"patchline" : 				{
 					"destination" : [ "obj-13", 0 ],
 					"disabled" : 0,
@@ -531,7 +410,7 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-6", 0 ],
+					"destination" : [ "obj-24", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-2", 0 ]
@@ -540,173 +419,192 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-27", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-2", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-28", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-2", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-29", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-2", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-30", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-2", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-37", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-2", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-32", 1 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-27", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-33", 1 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-28", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-34", 1 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-29", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-35", 1 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-30", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-38", 1 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-37", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-2", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"source" : [ "obj-20", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-19", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"source" : [ "obj-21", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-19", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"source" : [ "obj-22", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-2", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"source" : [ "obj-23", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-2", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"source" : [ "obj-3", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-2", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"source" : [ "obj-4", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-9", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"source" : [ "obj-6", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-2", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"source" : [ "obj-7", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-11", 1 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"source" : [ "obj-9", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-17", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"source" : [ "obj-9", 0 ]
+					"source" : [ "obj-39", 0 ]
 				}
 
 			}
  ],
 		"dependency_cache" : [ 			{
 				"name" : "o.io.softstep.maxpat",
-				"bootpath" : "/Users/jml/Documents/materials/programming/max_files/5_berkeley/projects/cnmat/repositories/git/CNMAT-odot/abstractions/io/o.io.softstep",
+				"bootpath" : "/Users/jml/Documents/git_repositories/CNMAT-odot/abstractions/io/o.io.softstep",
 				"patcherrelativepath" : ".",
-				"type" : "TEXT",
+				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "c.softstep.pad.maxpat",
-				"bootpath" : "/Users/jml/Documents/materials/programming/max_files/5_berkeley/projects/cnmat/repositories/git/CNMAT-odot/abstractions/io/o.io.softstep",
+				"bootpath" : "/Users/jml/Documents/git_repositories/CNMAT-odot/abstractions/io/o.io.softstep",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "c.softstep.navbutton.maxpat",
-				"bootpath" : "/Users/jml/Documents/materials/programming/max_files/5_berkeley/projects/cnmat/repositories/git/CNMAT-odot/abstractions/io/o.io.softstep",
-				"patcherrelativepath" : ".",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "c.softstep.led.maxpat",
-				"bootpath" : "/Users/jml/Documents/materials/programming/max_files/5_berkeley/projects/cnmat/repositories/git/CNMAT-odot/abstractions/io/o.io.softstep",
+				"bootpath" : "/Users/jml/Documents/git_repositories/CNMAT-odot/abstractions/io/o.io.softstep",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.io.collectwithtimeout.maxpat",
-				"bootpath" : "/Users/jml/Documents/materials/programming/max_files/5_berkeley/projects/cnmat/repositories/git/CNMAT-odot/abstractions/io",
+				"bootpath" : "/Users/jml/Documents/git_repositories/CNMAT-odot/abstractions/io",
 				"patcherrelativepath" : "..",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "o.route.mxo",
-				"type" : "iLaX"
+				"name" : "o.io.softstep.platform.maxpat",
+				"bootpath" : "/Users/jml/Documents/git_repositories/CNMAT-odot/abstractions/io/o.io.softstep",
+				"patcherrelativepath" : ".",
+				"type" : "JSON",
+				"implicit" : 1
 			}
 , 			{
-				"name" : "o.prepend.mxo",
-				"type" : "iLaX"
+				"name" : "o.maxplatform.maxpat",
+				"bootpath" : "/Users/jml/Documents/git_repositories/CNMAT-odot/abstractions",
+				"patcherrelativepath" : "../..",
+				"type" : "JSON",
+				"implicit" : 1
 			}
 , 			{
-				"name" : "o.pack.mxo",
-				"type" : "iLaX"
+				"name" : "o.gather.maxpat",
+				"bootpath" : "/Users/jml/Documents/git_repositories/CNMAT-odot/abstractions/namespace",
+				"patcherrelativepath" : "../../namespace",
+				"type" : "JSON",
+				"implicit" : 1
 			}
 , 			{
-				"name" : "o.var.mxo",
-				"type" : "iLaX"
+				"name" : "o.route.mxe",
+				"type" : "iLaF"
 			}
 , 			{
-				"name" : "o.message.mxo",
-				"type" : "iLaX"
+				"name" : "o.prepend.mxe",
+				"type" : "iLaF"
 			}
 , 			{
-				"name" : "o.expr.mxo",
-				"type" : "iLaX"
+				"name" : "o.pack.mxe",
+				"type" : "iLaF"
 			}
 , 			{
-				"name" : "o.union.mxo",
-				"type" : "iLaX"
+				"name" : "o.var.mxe",
+				"type" : "iLaF"
 			}
 , 			{
-				"name" : "ss.mxo",
-				"type" : "iLaX"
+				"name" : "o.message.mxe",
+				"type" : "iLaF"
 			}
 , 			{
-				"name" : "o.collect.mxo",
-				"type" : "iLaX"
+				"name" : "o.expr.mxe",
+				"type" : "iLaF"
 			}
 , 			{
-				"name" : "o.select.mxo",
-				"type" : "iLaX"
+				"name" : "o.union.mxe",
+				"type" : "iLaF"
 			}
 , 			{
-				"name" : "o.change.mxo",
-				"type" : "iLaX"
+				"name" : "o.collect.mxe",
+				"type" : "iLaF"
+			}
+, 			{
+				"name" : "o.intersection.mxe",
+				"type" : "iLaF"
+			}
+, 			{
+				"name" : "o.difference.mxe",
+				"type" : "iLaF"
 			}
  ]
 	}

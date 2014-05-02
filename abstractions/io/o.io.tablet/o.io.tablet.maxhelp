@@ -8,7 +8,7 @@
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 582.0, 44.0, 858.0, 781.0 ],
+		"rect" : [ 100.0, 100.0, 858.0, 781.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -101,7 +101,7 @@
 									"maxclass" : "inlet",
 									"numinlets" : 0,
 									"numoutlets" : 1,
-									"outlettype" : [ "" ],
+									"outlettype" : [ "FullPacket" ],
 									"patching_rect" : [ 186.0, 40.0, 25.0, 25.0 ]
 								}
 
@@ -196,7 +196,7 @@
 									"maxclass" : "inlet",
 									"numinlets" : 0,
 									"numoutlets" : 1,
-									"outlettype" : [ "" ],
+									"outlettype" : [ "FullPacket" ],
 									"patching_rect" : [ 181.0, 40.0, 25.0, 25.0 ]
 								}
 
@@ -239,7 +239,7 @@
 					"name" : "o.io.tablet.display.maxpat",
 					"numinlets" : 1,
 					"numoutlets" : 1,
-					"outlettype" : [ "" ],
+					"outlettype" : [ "FullPacket" ],
 					"patching_rect" : [ 179.0, 201.0, 562.0, 340.0 ]
 				}
 
@@ -329,7 +329,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 531.0, 541.0, 274.0, 154.0 ],
+					"patching_rect" : [ 531.0, 541.0, 277.0, 154.0 ],
 					"text" : "The display:\nIf the pen is sensed by the wacom a red circle appears. The larger the circle, the more pressure applied by the pen.  The red cylinder on the left of the display represents the tilt of the pen. (If the pen tilt display doesn't work, then open its inspector and name it 'tilt.disp'.)\n\nIf touch(s) is sensed yellowish blogs appear.  The sizes of the blobs corresponds to the surface area of the touch. "
 				}
 
@@ -386,7 +386,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 1,
-					"outlettype" : [ "" ],
+					"outlettype" : [ "FullPacket" ],
 					"patching_rect" : [ 20.794376, 227.0, 63.0, 20.0 ],
 					"text" : "o.io.tablet"
 				}
@@ -480,8 +480,8 @@
 			}
 , 			{
 				"name" : "o.collectwithtimeout.maxpat",
-				"bootpath" : "/Users/gabacheker/Documents/maxliB/o.io.qunexus/patchers",
-				"patcherrelativepath" : "../../../../../../maxliB/o.io.qunexus/patchers",
+				"bootpath" : "/Users/gabacheker/Documents/Max/Packages/maxliB/o.io.qunexus/patchers",
+				"patcherrelativepath" : "../../../../../../Max/Packages/maxliB/o.io.qunexus/patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
@@ -522,15 +522,15 @@
 			}
 , 			{
 				"name" : "o.io.gl.maxpat",
-				"bootpath" : "/Users/gabacheker/Documents/maxliB/CNMAT_Externals/odot/abstractions/io/graphics",
-				"patcherrelativepath" : "../../../../../../maxliB/CNMAT_Externals/odot/abstractions/io/graphics",
+				"bootpath" : "/Users/gabacheker/Documents/Max/Packages/CNMAT_Externals/odot/abstractions/io/graphics",
+				"patcherrelativepath" : "../../../../../../Max/Packages/CNMAT_Externals/odot/abstractions/io/graphics",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.io.gl.platohelper.maxpat",
-				"bootpath" : "/Users/gabacheker/Documents/maxliB/CNMAT_Externals/odot/abstractions/io/graphics",
-				"patcherrelativepath" : "../../../../../../maxliB/CNMAT_Externals/odot/abstractions/io/graphics",
+				"bootpath" : "/Users/gabacheker/Documents/Max/Packages/CNMAT_Externals/odot/abstractions/io/graphics",
+				"patcherrelativepath" : "../../../../../../Max/Packages/CNMAT_Externals/odot/abstractions/io/graphics",
 				"type" : "JSON",
 				"implicit" : 1
 			}
@@ -579,6 +579,10 @@
 			}
 , 			{
 				"name" : "o.select.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.var.mxo",
 				"type" : "iLaX"
 			}
 , 			{
