@@ -29,6 +29,37 @@
 		"tags" : "",
 		"boxes" : [ 			{
 				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"frgb" : 0.0,
+					"id" : "obj-9",
+					"linecount" : 3,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 288.0, 338.5, 358.0, 47.0 ],
+					"presentation_rect" : [ 288.0, 343.5, 0.0, 0.0 ],
+					"text" : "The leftmost outlet should be called \"main\". If your patch has a delegation outlet, call it \"delegate\". Other types of outlets might be \"forward\", \"error\", etc..."
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"frgb" : 0.0,
+					"id" : "obj-8",
+					"linecount" : 2,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 288.0, 121.5, 352.0, 33.0 ],
+					"text" : "@name is a requirement. The leftmost inlet should be called \"main\", others should be called something suitably descriptive."
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"comment" : "",
 					"id" : "obj-6",
 					"maxclass" : "outlet",
@@ -46,7 +77,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 1,
-					"outlettype" : [ "" ],
+					"outlettype" : [ "FullPacket" ],
 					"patching_rect" : [ 168.0, 352.0, 112.0, 20.0 ],
 					"text" : "o.out @name main"
 				}
@@ -104,7 +135,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 1,
-					"outlettype" : [ "" ],
+					"outlettype" : [ "FullPacket" ],
 					"patching_rect" : [ 168.0, 128.0, 105.0, 20.0 ],
 					"text" : "o.in @name main"
 				}
@@ -159,43 +190,34 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "o.in.maxpat",
-				"bootpath" : "/Users/john/MMJ-dev/CNMAT_Externals/odot/abstractions",
-				"patcherrelativepath" : "../../../../../MMJ-dev/CNMAT_Externals/odot/abstractions",
+				"bootpath" : "/Users/john/Development/CNMAT/CNMAT/CNMAT-odot/abstractions",
+				"patcherrelativepath" : "../abstractions",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.port.maxpat",
-				"bootpath" : "/Users/john/MMJ-dev/CNMAT_Externals/odot/abstractions",
-				"patcherrelativepath" : "../../../../../MMJ-dev/CNMAT_Externals/odot/abstractions",
+				"bootpath" : "/Users/john/Development/CNMAT/CNMAT/CNMAT-odot/abstractions",
+				"patcherrelativepath" : "../abstractions",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "o.aspect.joinpoint.maxpat",
+				"bootpath" : "/Users/john/Development/CNMAT/CNMAT/CNMAT-odot/abstractions/aspect",
+				"patcherrelativepath" : "../abstractions/aspect",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.out.maxpat",
-				"bootpath" : "/Users/john/MMJ-dev/CNMAT_Externals/odot/abstractions",
-				"patcherrelativepath" : "../../../../../MMJ-dev/CNMAT_Externals/odot/abstractions",
+				"bootpath" : "/Users/john/Development/CNMAT/CNMAT/CNMAT-odot/abstractions",
+				"patcherrelativepath" : "../abstractions",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "o.collect.mxo",
-				"type" : "iLaX"
-			}
-, 			{
 				"name" : "o.pack.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.union.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.expr.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.context.mxo",
 				"type" : "iLaX"
 			}
 , 			{
@@ -203,11 +225,35 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "o.prepend.mxo",
+				"name" : "o.union.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.select.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.context.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.collect.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.route.mxo",
 				"type" : "iLaX"
 			}
 , 			{
 				"name" : "o.var.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.pak.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.prepend.mxo",
 				"type" : "iLaX"
 			}
 , 			{
