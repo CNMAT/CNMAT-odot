@@ -27187,7 +27187,7 @@
  ]
 					}
 ,
-					"patching_rect" : [ 51.65686, 155.0, 73.0, 20.0 ],
+					"patching_rect" : [ 51.65686, 150.0, 73.0, 20.0 ],
 					"saved_object_attributes" : 					{
 						"default_fontface" : 0,
 						"default_fontname" : "Arial",
