@@ -182,21 +182,101 @@ void odowncast_fullPacket(t_odowncast *x, t_symbol *msg, int argc, t_atom *argv)
 	osc_bundle_u_free(b);
 }
 
-OMAX_DICT_DICTIONARY(t_odowncast, x, odowncast_fullPacket);
 
 void odowncast_doc(t_odowncast *x)
 {
 	omax_doc_outletDoc(x->outlet);
 }
 
+void odowncast_free(t_odowncast *x)
+{
+}
+
+
+#ifdef OMAX_PD_VERSION
+
+void *odowncast_new(t_symbol *msg, short argc, t_atom *argv)
+{
+	t_odowncast *x;
+	if((x = (t_odowncast *)object_alloc(odowncast_class))){
+		x->outlet = outlet_new((t_object *)x, gensym("FullPacket"));
+		x->timetag_address = NULL;
+		x->doubles = x->ints = x->bundles = x->timetags = 1;
+        
+        
+        /*
+         CLASS_ATTR_SYM(c, "headertimetag", 0, t_odowncast, timetag_address);
+         CLASS_ATTR_LONG(c, "doubles", 0, t_odowncast, doubles);
+         CLASS_ATTR_LONG(c, "ints", 0, t_odowncast, ints);
+         CLASS_ATTR_LONG(c, "bundles", 0, t_odowncast, bundles);
+         CLASS_ATTR_LONG(c, "timetags", 0, t_odowncast, timetags);
+         */
+        
+        /*
+        //NOT IMPLEMENTED, JUST COPIED FROM EXPLODE
+        int i;
+        for(i = 0; i < argc; i++)
+        {
+            if(atom_gettype(argv + i) == A_SYM)
+            {
+                t_symbol *attribute = atom_gensym(argv+i);
+                if(attribute == gensym("@level")){
+                    if(atom_gettype(argv+(++i)) == A_FLOAT)
+                    {
+                        x->level = atom_getfloat(argv+i);
+                    } else {
+                        post("@level value must be a number");
+                        return 0;
+                    }
+                } else if(attribute == gensym("@sep")){
+                    if(atom_gettype(argv+(++i)) == A_SYMBOL)
+                    {
+                        x->sep = atom_getsym(argv+i);
+                    } else {
+                        post("@sep value must be a symbol");
+                        return 0;
+                    }
+                } else if(attribute->s_name[0] == '@') {
+                    post("unknown attribute");
+                }  else {
+                    post("o.explode optional attributes are @level <value> and @sep <value>");
+                }
+                
+            } else {
+                post("o.explode optional attributes are @level <value> and @sep <value>");
+                return 0;
+            }
+            
+            
+        }
+        */
+	}
+	return x;
+}
+
+int setup_o0x2edowncast(void)
+{
+    
+	t_class *c = class_new(gensym("o.downcast"), (t_newmethod)odowncast_new, (t_method)odowncast_free, sizeof(t_odowncast), 0L, A_GIMME, 0);
+	class_addmethod(c, (t_method)odowncast_fullPacket, gensym("FullPacket"), A_GIMME, 0);
+//	class_addmethod(c, (t_method)odowncast_assist, gensym("assist"), A_CANT, 0);
+	class_addmethod(c, (t_method)odowncast_doc, gensym("doc"), 0);
+	class_addmethod(c, (t_method)odot_version, gensym("version"), 0);
+    
+	odowncast_class = c;
+    
+	ODOT_PRINT_VERSION;
+	return 0;
+}
+
+#else
+OMAX_DICT_DICTIONARY(t_odowncast, x, odowncast_fullPacket);
+
 void odowncast_assist(t_odowncast *x, void *b, long io, long num, char *buf)
 {
 	omax_doc_assist(io, num, buf);
 }
 
-void odowncast_free(t_odowncast *x)
-{
-}
 
 void *odowncast_new(t_symbol *msg, short argc, t_atom *argv)
 {
@@ -246,3 +326,4 @@ t_max_err odowncast_notify(t_odowncast *x, t_symbol *s, t_symbol *msg, void *sen
 	return MAX_ERR_NONE;
 }
 */
+#endif

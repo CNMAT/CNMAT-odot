@@ -379,13 +379,13 @@ void *opack_new(t_symbol *msg, short argc, t_atom *argv)
 
 
 #ifdef PAK
-int opak_setup(void)
+int setup_o0x2epak(void)
 {
-	t_symbol *name = gensym("opak");
+	t_symbol *name = gensym("o.pak");
 #else
-int opack_setup(void)
+int setup_o0x2epack(void)
 {
-	t_symbol *name = gensym("opack");
+	t_symbol *name = gensym("o.pack");
 #endif
 	omax_pd_class_new(opack_class, name, (t_newmethod)opack_new, (t_method)opack_free, sizeof(t_opack),  CLASS_NOINLET, A_GIMME, 0);
 

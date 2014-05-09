@@ -211,8 +211,8 @@ void *oprint_new(t_symbol *msg, short argc, t_atom *argv){
 	return(x);
 }
 
-int oprint_setup(void){
-	t_class *c = class_new(gensym("oprint"), (t_newmethod)oprint_new, (t_method)oprint_free, sizeof(t_oprint), 0L, A_GIMME, 0);
+int setup_o0x2eprint(void){
+	t_class *c = class_new(gensym("o.print"), (t_newmethod)oprint_new, (t_method)oprint_free, sizeof(t_oprint), 0L, A_GIMME, 0);
 
 	//class_addmethod(c, (method)oprint_fullPacket, "FullPacket", A_LONG, A_LONG, 0);
 	class_addmethod(c, (t_method)oprint_fullPacket, gensym("FullPacket"), A_GIMME, 0);

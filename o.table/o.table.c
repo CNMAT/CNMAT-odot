@@ -415,11 +415,16 @@ void otable_doread(t_otable *x, t_symbol *msg, int argc, t_atom *argv)
 
 void otable_read(t_otable *x, t_symbol *msg, int argc, t_atom *argv)
 {
+#ifdef OMAX_PD_VERSION
+	otable_doread(x, msg, argc, argv);
+#else
 	defer(x,(method)otable_doread, msg, argc, argv);
+#endif
 }
 
 void otable_dowrite(t_otable *x, t_symbol *msg, int argc, t_atom *argv)
 {
+    
 	if(!argc){
 		object_error((t_object *)x, "you need to supply a filepath");
 		return;
@@ -429,6 +434,7 @@ void otable_dowrite(t_otable *x, t_symbol *msg, int argc, t_atom *argv)
 		return;
 	}
 	char *path = atom_getsym(argv)->s_name;
+    
 	FILE *f = fopen(path, "w");
 	if(f){
 		object_post((t_object *)x, "opened %s for writing", path);
@@ -455,7 +461,11 @@ void otable_dowrite(t_otable *x, t_symbol *msg, int argc, t_atom *argv)
 
 void otable_write(t_otable *x, t_symbol *msg, int argc, t_atom *argv)
 {
+#ifdef OMAX_PD_VERSION
+	otable_dowrite(x, msg, argc, argv);
+#else
 	defer(x,(method)otable_dowrite, msg, argc, argv);
+#endif
 }
 
 void otable_free(t_otable *x)
@@ -469,10 +479,12 @@ void otable_doc(t_otable *x)
 	omax_doc_outletDoc(x->outlet);
 }
 
+#ifndef OMAX_PD_VERSION
 void otable_assist(t_otable *x, void *b, long io, long num, char *buf)
 {
 	omax_doc_assist(io, num, buf);
 }
+#endif
 
 void otable_linkedlist_dtor(void *bndl)
 {
@@ -656,9 +668,9 @@ void *otable_new(t_symbol *msg, short argc, t_atom *argv)
 }
 
 
-int otable_setup(void)
+int setup_o0x2etable(void)
 {
-	t_class *c = class_new(gensym("otable"), (t_newmethod)otable_new, (t_method)otable_free, sizeof(t_otable), 0L, A_GIMME, 0);
+	t_class *c = class_new(gensym("o.table"), (t_newmethod)otable_new, (t_method)otable_free, sizeof(t_otable), 0L, A_GIMME, 0);
     
 	class_addmethod(c, (t_method)otable_fullPacket, gensym("FullPacket"), A_GIMME, 0);
 	class_addmethod(c, (t_method)otable_anything, gensym("anything"), A_GIMME, 0);
@@ -666,8 +678,8 @@ int otable_setup(void)
 	class_addmethod(c, (t_method)otable_refer, gensym("refer"), A_GIMME, 0);
 	class_addmethod(c, (t_method)otable_clear, gensym("clear"), 0);
 	class_addmethod(c, (t_method)otable_dump, gensym("dump"), 0);
-	class_addmethod(c, (t_method)otable_read, gensym("read"), A_DEFSYM, 0);
-	class_addmethod(c, (t_method)otable_write, gensym("write"), A_DEFSYM, 0);
+	class_addmethod(c, (t_method)otable_read, gensym("read"), A_GIMME, 0);
+	class_addmethod(c, (t_method)otable_write, gensym("write"), A_GIMME, 0);
 	class_addmethod(c, (t_method)odot_version, gensym("version"), 0);
     
 	class_addmethod(c, (t_method)otable_prepend, gensym("prepend"), A_GIMME, 0);

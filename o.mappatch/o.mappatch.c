@@ -300,7 +300,7 @@ void omap_free(t_omap *x)
 {
 #ifdef OMAX_PD_VERSION
     if(x->proxy){
-        pd_free(x->proxy[0]); t_getbytes
+        pd_free(x->proxy[0]); 
         pd_free(x->proxy[1]);
         free(x->proxy);
     }
@@ -332,9 +332,9 @@ void *omap_new(t_symbol *msg, short argc, t_atom *argv){
 	return(x);
 }
 
-int omappatch_setup(void){
+int setup_o0x2emappatch(void){
     
-    omax_pd_class_new(omap_class, gensym("omappatch"), (t_newmethod)omap_new, (t_method)omap_free, sizeof(t_omap),  CLASS_NOINLET, A_GIMME, 0);
+    omax_pd_class_new(omap_class, gensym("o.mappatch"), (t_newmethod)omap_new, (t_method)omap_free, sizeof(t_omap),  CLASS_NOINLET, A_GIMME, 0);
     
     t_omax_pd_proxy_class *c = NULL;
 	omax_pd_class_new(c, NULL, NULL, NULL, sizeof(t_omax_pd_proxy), CLASS_PD | CLASS_NOINLET, 0);

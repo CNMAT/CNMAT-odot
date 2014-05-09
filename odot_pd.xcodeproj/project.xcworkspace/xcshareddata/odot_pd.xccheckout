@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>011E57AC-3248-4F90-9A42-AB052C27C66B</string>
+	<key>IDESourceControlProjectName</key>
+	<string>odot_pd</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>5213FF43-CCCB-46D8-B6FB-960EE7075ABA</key>
+		<string>https://github.com/CNMAT/CNMAT-odot.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>odot_pd/odot_pd.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>5213FF43-CCCB-46D8-B6FB-960EE7075ABA</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/CNMAT/CNMAT-odot.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>5213FF43-CCCB-46D8-B6FB-960EE7075ABA</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>5213FF43-CCCB-46D8-B6FB-960EE7075ABA</string>
+			<key>IDESourceControlWCCName</key>
+			<string>CNMAT-odot</string>
+		</dict>
+	</array>
+</dict>
+</plist>

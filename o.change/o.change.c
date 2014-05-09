@@ -170,9 +170,9 @@ void *ochange_new(t_symbol *msg, short argc, t_atom *argv)
 	return(x);
 }
 
-int ochange_setup(void)
+int setup_o0x2echange(void)
 {
-	t_class *c = class_new(gensym("ochange"), (t_newmethod)ochange_new, (t_method)ochange_free, sizeof(t_ochange), 0L, A_GIMME, 0);
+	t_class *c = class_new(gensym("o.change"), (t_newmethod)ochange_new, (t_method)ochange_free, sizeof(t_ochange), 0L, A_GIMME, 0);
 
 	class_addmethod(c, (t_method)ochange_fullPacket, gensym("FullPacket"), A_GIMME, 0);
 	class_addmethod(c, (t_method)ochange_doc, gensym("doc"), 0);
@@ -188,7 +188,7 @@ int ochange_setup(void)
 }
 
 #else
-void *ochange_new(t_symbol *msg, short argc, t_atom *argv)
+void *change_new(t_symbol *msg, short argc, t_atom *argv)
 {
 	t_ochange *x;
 	if((x = (t_ochange *)object_alloc(ochange_class))){

@@ -134,6 +134,8 @@ typedef struct _omessage {
     t_glist     *glist; //the canvas heirarchy
     
     char        *text;
+    long        textlen;
+
     char        *hex;
     char        *tk_text;
     
@@ -155,6 +157,8 @@ typedef struct _omessage {
     uint16_t    selected;
     uint16_t    displacing;
     uint16_t    firsttime;
+    uint16_t    firstdisplace;
+    
     uint16_t    forceredraw;
     
     uint16_t    parse_error;
@@ -176,9 +180,14 @@ typedef struct _omessage {
 	void **proxy;
 	long inlet;
     
-    void *bndl; // this should be a t_osc_bndl
-	int bndltype;
+    //new version
+    int newbndl;
+	t_osc_bndl_u *bndl_u;
+	t_osc_bndl_s *bndl_s;
+	int bndl_has_subs;
+	int bndl_has_been_checked_for_subs;
 
+    int     in_new_flag;
 	//t_jrgba frame_color, background_color, text_color;
     
 } t_omessage;
@@ -282,9 +291,11 @@ void omessage_doFullPacket(t_omessage *x, long len, char *ptr)
 	memcpy(copyptr, ptr, len);
 	t_osc_bndl_s *b = osc_bundle_s_alloc(copylen, copyptr);
 	omessage_newBundle(x, NULL, b);
-
-	//jbox_redraw((t_jbox *)x);
+#ifdef OMAX_PD_VERSION
+	jbox_redraw((t_jbox *)x);
+#else
 	qelem_set(x->qelem);
+#endif
 }
 
 void omessage_newBundle(t_omessage *x, t_osc_bndl_u *bu, t_osc_bndl_s *bs)
@@ -309,11 +320,13 @@ void omessage_clearBundles(t_omessage *x)
 		osc_bundle_s_deepFree(x->bndl_s);
 		x->bndl_s = NULL;
 	}
+#ifndef OMAX_PD_VERSION
 	if(x->text){
 		x->textlen = 0;
 		osc_mem_free(x->text);
 		x->text = NULL;
 	}
+#endif
 	critical_exit(x->lock);
 }
 
@@ -339,10 +352,9 @@ void omessage_output_bundle(t_omessage *x)
 	omax_util_outletOSC(x->outlet, OSC_HEADER_SIZE, buf);
 }
 
-#ifndef OMAX_PD_VERSION
-void omessage_paint(t_omessage *x, t_object *patcherview)
+void omessage_bundle2text(t_omessage *x)
 {
-	critical_enter(x->lock);
+    critical_enter(x->lock);
 	if(x->newbndl && x->bndl_s){
 		long len = osc_bundle_s_getLen(x->bndl_s);
 		char ptr[len];
@@ -361,17 +373,18 @@ void omessage_paint(t_omessage *x, t_object *patcherview)
 		if(buf[bufpos - 2] == '\n'){
 			buf[bufpos - 2] = '\0';
 		}
+#ifndef OMAX_PD_VERSION
 		critical_enter(x->lock);
 		if(x->text){
 			osc_mem_free(x->text);
 		}
 		x->textlen = bufpos;
-		x->text = buf;
+        x->text = buf;
 		critical_exit(x->lock);
-#ifdef OMAX_PD_VERSION
-		omessage_resetText(x, buf);
+        object_method(jbox_get_textfield((t_object *)x), gensym("settext"), buf);
 #else
-		object_method(jbox_get_textfield((t_object *)x), gensym("settext"), buf);
+        omessage_resetText(x, buf);
+
 #endif
 		if(buf){
 			//osc_mem_free(buf);
@@ -379,6 +392,14 @@ void omessage_paint(t_omessage *x, t_object *patcherview)
 		x->newbndl = 0;
 	}
 	critical_exit(x->lock);
+}
+
+#ifndef OMAX_PD_VERSION
+void omessage_paint(t_omessage *x, t_object *patcherview)
+{
+	
+    omessage_bundle2text(x);
+    
 	t_rect rect;
 	t_jgraphics *g = (t_jgraphics *)patcherview_get_jgraphics(patcherview);
 	jbox_get_rect_for_view((t_object *)x, patcherview, &rect);
@@ -518,7 +539,11 @@ void omessage_gettext(t_omessage *x)
 	osc_bundle_u_serialize(bndl_u, &bndl_s_len, &bndl_s_ptr);
 	t_osc_bndl_s *bndl_s = osc_bundle_s_alloc(bndl_s_len, bndl_s_ptr);
 	omessage_newBundle(x, bndl_u, bndl_s);
+#ifdef OMAX_PD_VERSION
+	jbox_redraw((t_jbox *)x);
+#else
 	qelem_set(x->qelem);
+#endif
 	/*
 	if(size > 2){
 		int i;
@@ -658,8 +683,11 @@ void omessage_anything(t_omessage *x, t_symbol *msg, short argc, t_atom *argv)
 		//omessage_processAtoms(x, ac, av);
 		break;
 	}
+#ifdef OMAX_PD_VERSION
+	jbox_redraw((t_jbox *)x);
+#else
 	qelem_set(x->qelem);
-	//jbox_redraw((t_jbox *)x);
+#endif
 }
 
 void omessage_set(t_omessage *x, t_symbol *s, long ac, t_atom *av)
@@ -699,25 +727,32 @@ void omessage_clear(t_omessage *x)
 
 void omessage_setHeight(t_omessage *x, float y)
 {
-    int h = ((int)y - x->ob.te_ypix) + 5;
-    h = (h > 20) ? h : 20;
-    
-    //    post("%s %d", __func__, h);
+    int h = ((int)y - x->ob.te_ypix + 5);
+    h = (h > 23) ? h : 23;
+
+    //post("%x %s y %f te_ypix %d ", x, __func__, y, x->ob.te_ypix);
     
     if((h != x->height) || x->forceredraw)
     {
         x->height = h;
+        //post("%x %s height set to %d", x, __func__, x->height);
+
         omessage_drawElements(x, x->glist, x->width, x->height, x->firsttime);
         x->forceredraw = 0;
-        //        post("%s height set to %d", __func__, x->height);
         
+    } else {
+        ;
+        //post("%x %s height == h && !redraw ", x, __func__);
     }
 }
 
 void omessage_getRectAndDraw(t_omessage *x, int forceredraw)
 {
     x->forceredraw = forceredraw;
+    
     sys_vgui("pdsend \"%s setheight [lindex [%s bbox text%lx] 3]\" \n", x->receive_name, x->canvas_id, (long)x);
+//    sys_vgui("::pdwindow::post \"%x %s Tk bbox y2 px: [lindex [%s bbox text%lx] 3]\n\"\n", x, __func__, x->canvas_id, (long)x);
+
 }
 
 void omessage_resize_mousedown(t_omessage *x)
@@ -821,8 +856,12 @@ void omessage_setTextFromString(t_omessage *x, char *str)
 
 void omessage_setHexFromText(t_omessage *x, char *str)
 {
-//    int length = strlen(x->text);
+    
     memset(x->hex, '\0', OMAX_PD_MAXSTRINGSIZE*2);
+
+    int length = strlen(str);
+    if(length == 0)
+        return;
     
 //    post("%s %s %d", __func__, str, strlen(str));
     
@@ -911,7 +950,7 @@ void omessage_textbuf(t_omessage *x, t_symbol *msg, int argc, t_atom *argv)
                             omessage_storeTextAndExitEditorTick(x);
 
                         omessage_setTextFromHex(x, x->hex);
-                        omessage_gettext(x);
+                        omessage_gettext(x); //converts to text to bundle, reformats after parsing
                         x->streamflag = 0;
                         break;
                         
@@ -1091,22 +1130,25 @@ void omessage_keyup_callback(t_omessage *x, t_symbol *s, int argc, t_atom *argv)
 
 void omessage_key_callback(t_omessage *x, t_symbol *s, int argc, t_atom *argv)
 {
-    
+ // in order to expand textbox when typing carrige return, need to *not trim trailing newline*
+ //
     
     if(argc == 1)
     {
         if(argv->a_type == A_FLOAT)
         {
-            // post("%s %d", __func__, (int)atom_getfloat(argv));
+            //post("%x %s %d", x,  __func__, (int)atom_getfloat(argv));
             int k = (int)atom_getfloat(argv);
             switch (k) {
                 case 65307: //esc
                     omessage_outsideclick_callback(x);
                     return;
                     break;
-                case 65511:
+                case 65511: // cmd
                     x->cmdDown = 1;
                     break;
+//                case 65293: // return
+//                    break;
                 default:
                     break;
             }
@@ -1136,9 +1178,7 @@ void omessage_key_callback(t_omessage *x, t_symbol *s, int argc, t_atom *argv)
                     }
                 }
             } else {
-                
-                sys_vgui("%s itemconfigure text%lx -width %d -text [subst -nobackslash -nocommands -novariables [regsub -all -line {^[ \t]+|[ \t]+$} [%s get 0.0 end] \"\" ]] \n", x->canvas_id, x, x->width-10, x->text_id);
-                //                sys_vgui("::pdwindow::post \"testtext [%s itemcget text%lx -text ]\n\"\n", x->canvas_id, (long)x);
+                sys_vgui("%s itemconfigure text%lx -width %d -text [subst -nobackslash -nocommands -novariables [regsub -all -line {^[ \t]+|[ \t]+$} [%s get 0.0 end-1c] \"\" ]] \n", x->canvas_id, x, x->width-10, x->text_id);
                 omessage_getRectAndDraw(x, 0);
             }
             
@@ -1184,6 +1224,7 @@ void omessage_storeTextAndExitEditorTick(t_omessage *x)
     x->textediting = 0;
     
     omessage_getRectAndDraw(x, 1);
+
     //        post("%s %d", __func__, x->textediting);
     
 
@@ -1204,22 +1245,23 @@ void omessage_getTextAndCreateEditor(t_omessage *x, int firsttime)
     int x1 = x->ob.te_xpix;
     int y1 = x->ob.te_ypix;
     
-//    post("%s %d %d", __func__, x1, y1);
+    //post("%x %s %d x1 %d y1 %d x2 %d y2 %d", x, __func__, firsttime, x1, y1, x1+x->width, y1+x->height);
     
     if(firsttime)
     {
         //        sys_vgui("%s delete text%lx\n", x->canvas_id, (long)x);
         glist_noselect(x->glist);
         sys_vgui("%s itemconfigure text%lx -fill white \n", x->canvas_id, (long)x);
-        sys_vgui("text %s -font {{%s} %d %s} -undo true -fg \"black\" -bg #f8f8f6 -takefocus 1 -state normal -highlightthickness 0 -wrap word\n", x->text_id, sys_font, glist_getfont(x->glist), sys_fontweight );
+        sys_vgui("text %s -font {{%s} %d %s} -undo true -fg \"black\" -bg #f8f8f6 -takefocus 1 -state normal -highlightthickness 0 -wrap word -spacing3 0\n", x->text_id, sys_font, glist_getfont(x->glist), sys_fontweight );
         
-        sys_vgui("place %s -x [expr %d - [%s canvasx 0]] -y [expr %d - [%s canvasy 0]] -width %d -height %d\n", x->text_id, x1+4, x->canvas_id, y1+4, x->canvas_id, x->width-10, x->height-10);
-        
+        sys_vgui("place %s -x [expr %d - [%s canvasx 0]] -y [expr %d - [%s canvasy 0]] -width %d -height %d\n", x->text_id, x1+4, x->canvas_id, y1+4, x->canvas_id, x->width-6, x->height-6);
        
 //        sys_vgui("::pdwindow::post \"checkexpr [expr %d + [expr [lindex [%s xview] 0] * [expr [expr 1 / [expr [lindex [%s xview] 1] - [lindex [%s xview] 0]]] * [winfo width %s]]]] \n\"\n", x->ob.te_xpix, x->canvas_id, x->canvas_id, x->canvas_id, x->canvas_id);
 
 //        sys_vgui("::pdwindow::post \"scrollivew [%s cget -scrollregion ] \n\"\n",  x->canvas_id);
 
+       // sys_vgui("::pdwindow::post \"text lines: [%s count -lines 1.0 end] \n\"\n", x->text_id);
+        
         if(x->tk_text)
             sys_vgui("%s insert 1.0 [subst -nobackslash -nocommands -novariables [regsub -all -line {^[ \t]+|[ \t]+$}  {%s} \"\" ]] \n", x->text_id, x->tk_text);
         
@@ -1228,6 +1270,7 @@ void omessage_getTextAndCreateEditor(t_omessage *x, int firsttime)
         sys_vgui("%s tag add sel 0.0 end\n", x->text_id);
         
         omessage_bind_text_events(x);
+        
     }
     else
     { // pretty sure that this never gets called
@@ -1249,8 +1292,7 @@ void omessage_getTextAndCreateEditor(t_omessage *x, int firsttime)
     }
     
     x->textediting = 1;
-    
-    
+//    omessage_getRectAndDraw(x, 0);
 }
 
 
@@ -1295,6 +1337,7 @@ static void omessage_getrect(t_gobj *z, t_glist *glist,int *xp1, int *yp1, int *
      x->width = (x->width > 0 ? x->width : 6) * fontwidth + 2;
      x->height = fontheight + 3;
      */
+    
     x1 = text_xpix(&x->ob, glist);
     y1 = text_ypix(&x->ob, glist);
     x2 = x1 + x->width;
@@ -1305,9 +1348,21 @@ static void omessage_getrect(t_gobj *z, t_glist *glist,int *xp1, int *yp1, int *
     *yp2 = y2;
 }
 
+
+// probably do like in new max version: make clock tick delay so only redraw once per frame rate
+// i.e. and only redraw if something has changed!
+
 void omessage_drawElements(t_omessage *x, t_glist *glist, int width2, int height2, int firsttime)
 {
-//    post("%s %d\n", __func__, firsttime);
+    if(x->in_new_flag)
+    {
+        //post("%x %s new bounce ---", x, __func__);
+        return;
+    }
+
+//    printf("%s %p %d\n", __func__, x, __LINE__);
+    omessage_bundle2text(x);
+    
     int x1, y1, x2, y2;
     omessage_getrect((t_gobj *)x, glist, &x1, &y1, &x2, &y2);
     int cx1 = x1;// - 2;
@@ -1322,9 +1377,14 @@ void omessage_drawElements(t_omessage *x, t_glist *glist, int width2, int height
     
     if (glist_isvisible(glist))
     {
+        //post("%x %s %d\n", x, __func__, firsttime);
+
         if (firsttime)
         {
-//            post("%s drawing firsttime", __func__);
+            //post("%x %s FIRST VIS height %d y1 %d y2 %d \n", x, __func__, x->height, y1, y2);
+
+            //fist time: create canvas elements, then add text, then get text height, and re-draw
+            //post("%s drawing firsttime", __func__);
             sys_vgui("namespace eval ::%s [list set canvas%lxBUTTONBINDING [bind %s <Button-1>]] \n", x->tcl_namespace, glist_getcanvas(x->glist), x->canvas_id);
             sys_vgui("namespace eval ::%s [list set canvas%lxKEYBINDING [bind %s <Key>]] \n", x->tcl_namespace, glist_getcanvas(x->glist), x->canvas_id);
             sys_vgui("namespace eval ::%s [list set canvas%lxSCROLLBINDING [bind %s <MouseWheel>]] \n", x->tcl_namespace, glist_getcanvas(x->glist), x->canvas_id);
@@ -1344,17 +1404,23 @@ void omessage_drawElements(t_omessage *x, t_glist *glist, int width2, int height
             sys_vgui("bind %s <Motion> {+pdsend {%s resize_mousemove %%x %%y }} \n", x->handle_id, x->receive_name);
             sys_vgui("bind %s <ButtonRelease-1> {+pdsend {%s resize_mouseup }} \n", x->handle_id, x->receive_name);
             
-            //omessage_gettext(x);
-            
             if (x->tk_text)
             {
                 sys_vgui("%s create text %d %d -anchor nw -width %d -font {{%s} %d %s} -tags text%lx -text [subst -nobackslash -nocommands -novariables [string trimright [regsub -all -line {^[ \t]+|[ \t]+$}  {%s} \"\" ]]] \n", x->canvas_id, text_xpix(&x->ob, x->glist)+5, text_ypix(&x->ob, x->glist)+5, x->width-10, sys_font, glist_getfont(x->glist), sys_fontweight, (long)x, x->tk_text );
-                sys_vgui("pdsend \"%s setheight [lindex [%s bbox text%lx] 3]\" \n", x->receive_name, x->canvas_id, (long)x);
+                
+                
+// get height of text bbox, send to "setheight" to set height and redraw in the case of cmd-d duplicate, this gets called first, and then is displaced, so the bbox value is actually pre-displacement, see setheight function above
+                omessage_getRectAndDraw(x, 1);
+
+
             }
             x->firsttime = 0;
+
         }
         else
         {
+            //post("%x %s REDRAW height %d y1 %d y2 %d \n", x, __func__, x->height, y1, y2);
+
             sys_vgui(".x%lx.c coords %s %d %d %d %d\n", canvas, x->border_tag, x1, y1, x2, y2);
             sys_vgui("%s coords %s %d %d %d %d %d %d %d %d %d %d %d %d \n",x->canvas_id, x->corner_tag,
                      cx2-c_width, cy2, cx2, cy2, cx2, cy2-5, cx2-c_linewidth, cy2-5, cx2-c_linewidth, cy2-c_linewidth, cx2-c_width, cy2-c_linewidth);
@@ -1365,14 +1431,18 @@ void omessage_drawElements(t_omessage *x, t_glist *glist, int width2, int height
                 sys_vgui("place %s -x [expr %d - [%s canvasx 0]] -y [expr %d - [%s canvasy 0]] -width %d -height %d\n", x->handle_id, x2-5, x->canvas_id, y2-5, x->canvas_id, 5, 5);
 
             }
+            
             if (x->textediting)
             {
-                sys_vgui("place %s -x [expr %d - [%s canvasx 0]] -y [expr %d - [%s canvasy 0]] -width %d -height %d\n", x->text_id, x1+4, x->canvas_id, y1+4, x->canvas_id, x->width-10, x->height-10);
+                sys_vgui("place %s -x [expr %d - [%s canvasx 0]] -y [expr %d - [%s canvasy 0]] -width %d -height %d\n", x->text_id, x1+4, x->canvas_id, y1+4, x->canvas_id, x->width-6, x->height-6);
             }
-            
-            if (x->tk_text)
+            else if (x->tk_text)
             {
                 sys_vgui("%s itemconfigure text%lx -width %d -text [subst -nobackslash -nocommands -novariables [string trimright [regsub -all -line {^[ \t]+|[ \t]+$}  {%s} \"\" ]]] \n", x->canvas_id, (long)x, x->width-10, x->tk_text);
+                
+                
+                
+                //do syntax highlighting here?
             }
             
         }
@@ -1398,8 +1468,15 @@ void omessage_drawElements(t_omessage *x, t_glist *glist, int width2, int height
         sys_vgui("%s itemconfigure %s -outline %s\n", x->canvas_id, x->corner_tag, (x->parse_error?  "red" : "black" ));
         sys_vgui("%s itemconfigure %sTL -outline %s\n", x->canvas_id, x->corner_tag, (x->parse_error? "red" : "black" ));
         
+        if(glist_isselected(x->glist, &x->ob.te_g))
+            gobj_select(&x->ob.te_g, x->glist, 1);
         
     }
+    else
+    {
+        //post("%s not VIS \n", __func__);
+    }
+    
 }
 
 
@@ -1407,7 +1484,6 @@ static void omessage_vis(t_gobj *z, t_glist *glist, int vis)
 {
     t_omessage *x = (t_omessage *)z;
     
-//    post("%s %d\n",__func__, vis);
     if(vis)
     {
         
@@ -1416,9 +1492,16 @@ static void omessage_vis(t_gobj *z, t_glist *glist, int vis)
      //       omessage_delete(z, glist);
             x->firsttime = 1;
         }
-        
-        omessage_getRectAndDraw(x, 0);
-        omessage_drawElements(x, glist, x->width, x->height, 1);
+
+        if (glist_isvisible(glist))
+        {//not visible when loading from disk (and from subpatcher?)
+//            post("%x %s first time is vis", x, __func__);
+            omessage_drawElements(x, glist, x->width, x->height, 1);
+        }
+        else
+        {
+            omessage_getRectAndDraw(x, 1);
+        }
         
         if(x->textediting)
         {
@@ -1446,7 +1529,8 @@ static void omessage_displace(t_gobj *z, t_glist *glist,int dx, int dy)
     //x->ob.te_xpix = x->ob.te_xpix < 0 ? 0 : x->ob.te_xpix;
     //x->ob.te_ypix = x->ob.te_ypix < 0 ? 0 : x->ob.te_ypix;
     
-//    post("%s %d %d\n", __func__, x->ob.te_xpix, x->ob.te_ypix);
+//    post("%x %s %d %d height %d\n", x, __func__, x->ob.te_xpix, x->ob.te_ypix, x->height );
+    
 //    sys_vgui("::pdwindow::post \"width [winfo width %s] \n xview [%s xview]\n rootx [winfo rootx %s] \n canvasx [%s canvasx 0] \n\"\n", x->canvas_id, x->canvas_id, x->canvas_id, x->canvas_id  );
 //    sys_vgui("::pdwindow::post \"scrollivew [%s cget -scrollregion ] \n\"\n",  x->canvas_id);
 //    sys_vgui("::pdwindow::post \"check [expr [lindex [%s xview] 0] * [expr [expr 1 / [expr [lindex [%s xview] 1] - [lindex [%s xview] 0]]] * [winfo width %s]]] \n\"\n",  x->canvas_id, x->canvas_id, x->canvas_id, x->canvas_id); //[expr %d - [%s canvasx 0] + x->ob.te_xpix,
@@ -1476,6 +1560,13 @@ static void omessage_displace(t_gobj *z, t_glist *glist,int dx, int dy)
     }
     
     canvas_fixlinesfor(glist, &x->ob);
+    
+    if(x->firstdisplace)
+    {
+        omessage_getRectAndDraw(x, 1);
+        x->firstdisplace = 0;
+    }
+    
     
 }
 
@@ -1619,14 +1710,15 @@ static void omessage_save(t_gobj *z, t_binbuf *b)
      */
     
     t_omessage *x = (t_omessage *)z;
+
     omessage_setHexFromText(x, x->text);
-
-    post("%s %s", __func__, x->text);
-
+    
+//    post("%x %s height %d", x, __func__, x->height);
+    
     if(!x->firsttime && glist_getcanvas(x->glist)->gl_editor)
         omessage_pdnofocus_callback(x);
     
-    binbuf_addv(b, "ssiisiis", gensym("#X"),gensym("obj"),(t_int)x->ob.te_xpix, (t_int)x->ob.te_ypix, gensym("omessage"), x->width, x->height, gensym("binhex"));
+    binbuf_addv(b, "ssiisiis", gensym("#X"),gensym("obj"),(t_int)x->ob.te_xpix, (t_int)x->ob.te_ypix, gensym("o.message"), x->width, x->height, gensym("binhex"));
     
     long chunksize = 32;
     char buf[chunksize+3];
@@ -1685,6 +1777,7 @@ void omessage_free(t_omessage *x)
             pd_free(x->proxy[1]);
             free(x->proxy);
         }
+        /*
         if(x->bndl){
             switch(x->bndltype){
                 case OMESSAGE_S:
@@ -1695,6 +1788,10 @@ void omessage_free(t_omessage *x)
                     break;
             }
         }
+         */
+        
+        omessage_clearBundles(x);
+        
     }
     
     
@@ -1707,7 +1804,9 @@ void *omessage_new(t_symbol *msg, short argc, t_atom *argv)
     t_omessage *x = (t_omessage *)pd_new(omessage_class->class);
     if(x)
     {
-//        printf("%s %p\n", __func__, x);
+//        printf("%s %p %d\n", __func__, x, __LINE__);
+     
+        x->in_new_flag = 1;
         
         x->glist = (t_glist *)canvas_getcurrent();
         
@@ -1719,7 +1818,11 @@ void *omessage_new(t_symbol *msg, short argc, t_atom *argv)
         x->proxy[0] = proxy_new((t_object *)x, 0, &(x->inlet), omessage_proxy_class);
         x->proxy[1] = proxy_new((t_object *)x, 1, &(x->inlet), omessage_proxy_class);
         
-        x->bndl = NULL;
+        x->bndl_u = NULL;
+		x->bndl_s = NULL;
+		x->newbndl = 0;
+		x->textlen = 0;
+        
         critical_new(&(x->lock));
         //        x->qelem = qelem_new((t_object *)x, (method)omessage_refresh);
         
@@ -1840,8 +1943,9 @@ void *omessage_new(t_symbol *msg, short argc, t_atom *argv)
 //        printargs(argc, argv);
         
         x->width = 100;
-        x->height = 10;
+        x->height = -1;
         x->firsttime = 1;
+        x->firstdisplace = 1;
         x->forceredraw = 0;
         x->parse_error = 0;
         x->streamflag = 0;
@@ -1864,6 +1968,8 @@ void *omessage_new(t_symbol *msg, short argc, t_atom *argv)
             }
         }
         
+        //post("%x %s height %d", x, __func__, x->height);
+
 
         sys_vgui("namespace eval ::%s [list set textbuf%lx \"\"] \n", x->tcl_namespace, (long)x);
         sys_vgui("namespace eval ::%s set textheight%lx 10 \n", x->tcl_namespace, (long)x);
@@ -1913,13 +2019,16 @@ void *omessage_new(t_symbol *msg, short argc, t_atom *argv)
         x->editmode = glist_getcanvas(x->glist)->gl_edit;
         x->textediting = 0;
         
+        x->in_new_flag = 0;
+        //printf("%s %p %d\n", __func__, x, __LINE__);
+        
     }
     return (void *)x;
 }
 
-void omessage_setup(void) {
+void setup_o0x2emessage(void) {
     
-    omax_pd_class_new(omessage_class, gensym("omessage"), (t_newmethod)omessage_new, (t_method)omessage_free, sizeof(t_omessage),  CLASS_NOINLET, A_GIMME, 0);
+    omax_pd_class_new(omessage_class, gensym("o.message"), (t_newmethod)omessage_new, (t_method)omessage_free, sizeof(t_omessage),  CLASS_NOINLET, A_GIMME, 0);
     
     class_addmethod(omessage_class->class, (t_method)omessage_textbuf,gensym("textbuf"), A_GIMME, 0);
     class_addmethod(omessage_class->class, (t_method)omessage_insideclick_callback, gensym("insideclick"), 0);
@@ -1965,6 +2074,8 @@ void omessage_setup(void) {
     
     omessage_proxy_class = c;
     
+    ODOT_PRINT_VERSION;
+
     //return 0;
     
 }
@@ -2139,5 +2250,9 @@ int main(void){
 /*  PD NOTES
 
 need to not do any binding if canvas is not visible (in subpatcher), it seems to be happening, and I'm not sure why
+**update: check status on that
+ 
+new: duplication seems to alwasy be off by 10px not sure where that is yet
+ 
  
 */
