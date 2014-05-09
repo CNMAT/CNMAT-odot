@@ -71,7 +71,6 @@
 		520A44B4182477D800CB610F /* o.io.bluetoothle.m in Sources */ = {isa = PBXBuildFile; fileRef = 520A44B3182477D800CB610F /* o.io.bluetoothle.m */; };
 		520C0E20158468F7005F2955 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */; };
 		520C0E2B158469F4005F2955 /* o.dict.c in Sources */ = {isa = PBXBuildFile; fileRef = 520C0E2A158469F4005F2955 /* o.dict.c */; };
-		52149966191D4C0100642F55 /* o_print_pd.cp in Sources */ = {isa = PBXBuildFile; fileRef = 52149965191D4C0100642F55 /* o_print_pd.cp */; };
 		5214996A191D520500642F55 /* o.print.c in Sources */ = {isa = PBXBuildFile; fileRef = 5255253D1504D28900A10E5D /* o.print.c */; };
 		5217D902158EEBC4005B5238 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */; };
 		5217D90D158EEBEB005B5238 /* o.explode.c in Sources */ = {isa = PBXBuildFile; fileRef = 5217D90C158EEBEB005B5238 /* o.explode.c */; };
@@ -535,7 +534,7 @@
 		520A44B3182477D800CB610F /* o.io.bluetoothle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = o.io.bluetoothle.m; path = o.io.bluetoothle/o.io.bluetoothle.m; sourceTree = "<group>"; };
 		520C0E27158468F7005F2955 /* o.dict.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.dict.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
 		520C0E2A158469F4005F2955 /* o.dict.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.dict.c; path = o.dict/o.dict.c; sourceTree = "<group>"; };
-		5214995D191D4C0100642F55 /* o.print.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = o.print.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		5214995D191D4C0100642F55 /* o.print.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = o.print.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
 		52149960191D4C0100642F55 /* o.print.pd-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "o.print.pd-Prefix.pch"; sourceTree = "<group>"; };
 		52149961191D4C0100642F55 /* o_print_pdProj.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = o_print_pdProj.xcconfig; sourceTree = "<group>"; };
 		52149962191D4C0100642F55 /* o_print_pdTarget.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = o_print_pdTarget.xcconfig; sourceTree = "<group>"; };
@@ -1169,7 +1168,7 @@
 				527294C517EDE93B00AA15E1 /* o.context.mxo */,
 				5292DC4C17FCC6AD00598BDC /* o.io.bluetoothle.sensortag.mxo */,
 				520A44B21824777800CB610F /* o.io.bluetoothle.mxo */,
-				5214995D191D4C0100642F55 /* o.print.dylib */,
+				5214995D191D4C0100642F55 /* o.print.pd_darwin */,
 				11EF2AD318AFEBB900156403 /* o.svg.mxo */,
 			);
 			name = Products;
@@ -1581,7 +1580,7 @@
 			);
 			name = o.print.pd;
 			productName = o.print.pd;
-			productReference = 5214995D191D4C0100642F55 /* o.print.dylib */;
+			productReference = 5214995D191D4C0100642F55 /* o.print.pd_darwin */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
 		5217D8FB158EEBC4005B5238 /* o.explode */ = {
@@ -2690,7 +2689,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52149966191D4C0100642F55 /* o_print_pd.cp in Sources */,
 				5214996A191D520500642F55 /* o.print.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -7548,6 +7546,7 @@
 				52149969191D4C0100642F55 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5217D906158EEBC4005B5238 /* Build configuration list for PBXNativeTarget "o.explode" */ = {
 			isa = XCConfigurationList;

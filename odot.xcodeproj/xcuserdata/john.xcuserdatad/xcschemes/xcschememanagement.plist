@@ -199,6 +199,11 @@
 			<key>orderHint</key>
 			<integer>27</integer>
 		</dict>
+		<key>o.svg.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>44</integer>
+		</dict>
 		<key>o.table.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -237,6 +242,11 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>11EF2AC618AFEBB900156403</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>520A44A41824777800CB610F</key>
 		<dict>
 			<key>primary</key>
