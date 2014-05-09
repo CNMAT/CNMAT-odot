@@ -72,6 +72,7 @@
 		520C0E20158468F7005F2955 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */; };
 		520C0E2B158469F4005F2955 /* o.dict.c in Sources */ = {isa = PBXBuildFile; fileRef = 520C0E2A158469F4005F2955 /* o.dict.c */; };
 		5214996A191D520500642F55 /* o.print.c in Sources */ = {isa = PBXBuildFile; fileRef = 5255253D1504D28900A10E5D /* o.print.c */; };
+		52149976191D56C100642F55 /* o.printbytes.c in Sources */ = {isa = PBXBuildFile; fileRef = 5255253F1504D29200A10E5D /* o.printbytes.c */; };
 		5217D902158EEBC4005B5238 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */; };
 		5217D90D158EEBEB005B5238 /* o.explode.c in Sources */ = {isa = PBXBuildFile; fileRef = 5217D90C158EEBEB005B5238 /* o.explode.c */; };
 		525523D01504CB9E00A10E5D /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */; };
@@ -541,6 +542,7 @@
 		52149963191D4C0100642F55 /* o_print_pd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = o_print_pd.h; sourceTree = "<group>"; };
 		52149964191D4C0100642F55 /* o_print_pdPriv.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = o_print_pdPriv.h; sourceTree = "<group>"; };
 		52149965191D4C0100642F55 /* o_print_pd.cp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = o_print_pd.cp; sourceTree = "<group>"; };
+		52149975191D563700642F55 /* o.printbytes.pd.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = o.printbytes.pd.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
 		5217D909158EEBC4005B5238 /* o.explode.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.explode.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
 		5217D90C158EEBEB005B5238 /* o.explode.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.explode.c; path = o.explode/o.explode.c; sourceTree = "<group>"; };
 		525523B41504C3FD00A10E5D /* o.atomize.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.atomize.c; path = o.atomize/o.atomize.c; sourceTree = SOURCE_ROOT; };
@@ -664,6 +666,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		5214995A191D4C0100642F55 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		52149970191D563700642F55 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1170,6 +1179,7 @@
 				520A44B21824777800CB610F /* o.io.bluetoothle.mxo */,
 				5214995D191D4C0100642F55 /* o.print.pd_darwin */,
 				11EF2AD318AFEBB900156403 /* o.svg.mxo */,
+				52149975191D563700642F55 /* o.printbytes.pd.pd_darwin */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1233,6 +1243,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		5214995B191D4C0100642F55 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		52149971191D563700642F55 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1581,6 +1598,24 @@
 			name = o.print.pd;
 			productName = o.print.pd;
 			productReference = 5214995D191D4C0100642F55 /* o.print.pd_darwin */;
+			productType = "com.apple.product-type.library.dynamic";
+		};
+		5214996C191D563700642F55 /* o.printbytes.pd */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 52149972191D563700642F55 /* Build configuration list for PBXNativeTarget "o.printbytes.pd" */;
+			buildPhases = (
+				5214996D191D563700642F55 /* ShellScript */,
+				5214996E191D563700642F55 /* Sources */,
+				52149970191D563700642F55 /* Frameworks */,
+				52149971191D563700642F55 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = o.printbytes.pd;
+			productName = o.print.pd;
+			productReference = 52149975191D563700642F55 /* o.printbytes.pd.pd_darwin */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
 		5217D8FB158EEBC4005B5238 /* o.explode */ = {
@@ -2334,6 +2369,7 @@
 				525524EE1504D16600A10E5D /* o.when */,
 				52F0C47817B581CC009FBD24 /* o.O */,
 				5214995C191D4C0100642F55 /* o.print.pd */,
+				5214996C191D563700642F55 /* o.printbytes.pd */,
 			);
 		};
 /* End PBXProject section */
@@ -2642,6 +2678,19 @@
 			shellPath = /bin/sh;
 			shellScript = "echo \"#define ODOT_VERSION \\\"\"`git describe --tags --long`\"\\\"\" > include/odot_current_version.h\necho \"#define ODOT_COMPILE_DATE \\\"\"`date`\"\\\"\" >> include/odot_current_version.h";
 		};
+		5214996D191D563700642F55 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "echo \"#define ODOT_VERSION \\\"\"`git describe --tags --long`\"\\\"\" > include/odot_current_version.h\necho \"#define ODOT_COMPILE_DATE \\\"\"`date`\"\\\"\" >> include/odot_current_version.h";
+		};
 		527294B317E92F5200AA15E1 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -2690,6 +2739,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				5214996A191D520500642F55 /* o.print.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5214996E191D563700642F55 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				52149976191D56C100642F55 /* o.printbytes.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3786,6 +3843,125 @@
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../libo/libo.a\" \"$(SRCROOT)/../libomax/libopd.a\"";
 				PRODUCT_NAME = o.print;
+				WRAPPER_EXTENSION = "";
+			};
+			name = Release;
+		};
+		52149973191D563700642F55 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ONLY_ACTIVE_ARCH_PRE_XCODE_3_1)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				EXECUTABLE_EXTENSION = pd_darwin;
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREFIX_HEADER = "";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_PKGINFO_FILE = NO;
+				HEADER_SEARCH_PATHS = (
+					"$(HEADER_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					"$(HEADER_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
+					"$(HEADER_SEARCH_PATHS_QUOTED_FOR_TARGET_3)",
+					"$(HEADER_SEARCH_PATHS_QUOTED_FOR_TARGET_4)",
+				);
+				HEADER_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../libo\"";
+				HEADER_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../libomax\"";
+				HEADER_SEARCH_PATHS_QUOTED_FOR_TARGET_3 = "\"$(SRCROOT)/../pd-src/src\"";
+				HEADER_SEARCH_PATHS_QUOTED_FOR_TARGET_4 = "\"$(SRCROOT)/include\"";
+				INFOPLIST_FILE = "";
+				LIBRARY_SEARCH_PATHS = (
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
+				);
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../libo\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../libomax\"";
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				ONLY_ACTIVE_ARCH_PRE_XCODE_3_1 = "$(NATIVE_ARCH_ACTUAL)";
+				OTHER_CFLAGS = (
+					"-DOMAX_PD_VERSION",
+					"-DNO_TRANSLATION_SUPPORT",
+				);
+				OTHER_LDFLAGS = (
+					"-undefined",
+					dynamic_lookup,
+				);
+				PRELINK_LIBS = "\"$(SRCROOT)/../libo/libo.a\" \"$(SRCROOT)/../libomax/libopd.a\"";
+				PRODUCT_NAME = o.printbytes;
+				WRAPPER_EXTENSION = "";
+			};
+			name = Debug;
+		};
+		52149974191D563700642F55 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1)";
+				ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1 = "x86_64 i386 ppc";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				EXECUTABLE_EXTENSION = pd_darwin;
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PREFIX_HEADER = "";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_PKGINFO_FILE = NO;
+				HEADER_SEARCH_PATHS = (
+					"$(HEADER_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					"$(HEADER_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
+					"$(HEADER_SEARCH_PATHS_QUOTED_FOR_TARGET_3)",
+					"$(HEADER_SEARCH_PATHS_QUOTED_FOR_TARGET_4)",
+				);
+				HEADER_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../libo\"";
+				HEADER_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../libomax\"";
+				HEADER_SEARCH_PATHS_QUOTED_FOR_TARGET_3 = "\"$(SRCROOT)/../pd-src/src\"";
+				HEADER_SEARCH_PATHS_QUOTED_FOR_TARGET_4 = "\"$(SRCROOT)/include\"";
+				INFOPLIST_FILE = "";
+				LIBRARY_SEARCH_PATHS = (
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
+				);
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../libo\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../libomax\"";
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				OTHER_CFLAGS = (
+					"-DOMAX_PD_VERSION",
+					"-DNO_TRANSLATION_SUPPORT",
+				);
+				OTHER_LDFLAGS = (
+					"-undefined",
+					dynamic_lookup,
+				);
+				PRELINK_LIBS = "\"$(SRCROOT)/../libo/libo.a\" \"$(SRCROOT)/../libomax/libopd.a\"";
+				PRODUCT_NAME = o.printbytes;
 				WRAPPER_EXTENSION = "";
 			};
 			name = Release;
@@ -7544,6 +7720,15 @@
 			buildConfigurations = (
 				52149968191D4C0100642F55 /* Debug */,
 				52149969191D4C0100642F55 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		52149972191D563700642F55 /* Build configuration list for PBXNativeTarget "o.printbytes.pd" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				52149973191D563700642F55 /* Debug */,
+				52149974191D563700642F55 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

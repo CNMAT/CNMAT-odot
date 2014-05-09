@@ -169,6 +169,11 @@
 			<key>orderHint</key>
 			<integer>21</integer>
 		</dict>
+		<key>o.printbytes.pd.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>45</integer>
+		</dict>
 		<key>o.printbytes.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -263,6 +268,11 @@
 			<true/>
 		</dict>
 		<key>5214995C191D4C0100642F55</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>5214996C191D563700642F55</key>
 		<dict>
 			<key>primary</key>
 			<true/>
