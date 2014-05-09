@@ -126,6 +126,8 @@
 /* Begin PBXProject section */
 		089C1669FE841209C02AAC07 /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+			};
 			buildConfigurationList = 0FF6670E096B494E00E9E0B4 /* Build configuration list for PBXProject "o.print" */;
 			compatibilityVersion = "Xcode 2.4";
 			developmentRegion = English;
@@ -178,7 +180,7 @@
 		0FF6670C096B494E00E9E0B4 /* Deployment */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = i386;
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				COPY_PHASE_STRIP = YES;
 				DEPLOYMENT_LOCATION = NO;
 				DSTROOT = "$(PROJECT_DIR)";
@@ -190,7 +192,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "../../../c74support/max-includes/macho-prefix.pch";
 				GCC_UNROLL_LOOPS = YES;
-				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_VERSION = "";
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = NO;
 				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
 				GCC_WARN_UNKNOWN_PRAGMAS = NO;
@@ -220,7 +222,7 @@
 				OTHER_REZFLAGS = "";
 				PRELINK_LIBS = "\"$(SRCROOT)/../libo/libo.a\" \"$(SRCROOT)/../libomax/libomax.a\"";
 				PRODUCT_NAME = o.print;
-				SDKROOT = macosx;
+				SDKROOT = macosx10.8;
 				SECTORDER_FLAGS = "";
 				USER_HEADER_SEARCH_PATHS = /usr/local/include;
 				WARNING_CFLAGS = (
@@ -236,6 +238,22 @@
 		0FF66710096B494E00E9E0B4 /* Deployment */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				GENERATE_MASTER_OBJECT_FILE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					../../libomax,
+					../../libo,
+					../include,
+					"../../max6-sdk/c74support/max-includes",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					../../libomax,
+					../../libo,
+				);
+				PRELINK_LIBS = "../../libomax/libomax.a ../../libo/libo.a";
+				SDKROOT = macosx10.8;
 			};
 			name = Deployment;
 		};

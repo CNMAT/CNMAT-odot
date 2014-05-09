@@ -560,19 +560,18 @@ void *oroute_new(t_symbol *msg, short argc, t_atom *argv)
 	return(x);
 }
 
-
 #ifdef SELECT
-int oselect_setup(void)
+int setup_o0x2eselect(void)
 {
-	t_symbol *name = gensym("oselect");
+	t_symbol *name = gensym("o.select");
 #elif defined ATOMIZE
-int oatomize_setup(void)
+int setup_o0x2eatomize(void)
 {
-	t_symbol *name = gensym("oatomize");
+	t_symbol *name = gensym("o.atomize");
 #else
-int oroute_setup(void)
+int setup_o0x2eroute(void)
 {
-	t_symbol *name = gensym("oroute");
+	t_symbol *name = gensym("o.route");
 #endif
     omax_pd_class_new(oroute_class, name, (t_newmethod)oroute_new, (t_method)oroute_free, sizeof(t_oroute),  CLASS_NOINLET, A_GIMME, 0);
     

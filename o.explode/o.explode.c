@@ -142,9 +142,9 @@ void *oexplode_new(t_symbol *msg, short argc, t_atom *argv)
 	return x;
 }
 
-int oexplode_setup(void)
+int setup_o0x2eexplode(void)
 {
-	t_class *c = class_new(gensym("oexplode"), (t_newmethod)oexplode_new, NULL, sizeof(t_oexplode), 0L, A_GIMME, 0);
+	t_class *c = class_new(gensym("o.explode"), (t_newmethod)oexplode_new, NULL, sizeof(t_oexplode), 0L, A_GIMME, 0);
 
 	class_addmethod(c, (t_method)oexplode_fullPacket, gensym("FullPacket"), A_GIMME, 0);
 	class_addmethod(c, (t_method)oexplode_doc, gensym("doc"), 0);

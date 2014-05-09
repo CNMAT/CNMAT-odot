@@ -74,6 +74,11 @@
 			<key>orderHint</key>
 			<integer>10</integer>
 		</dict>
+		<key>o.expr.codebox.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>41</integer>
+		</dict>
 		<key>o.expr.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -149,10 +154,25 @@
 			<key>orderHint</key>
 			<integer>20</integer>
 		</dict>
+		<key>o.print copy.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>42</integer>
+		</dict>
+		<key>o.print.pd.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>43</integer>
+		</dict>
 		<key>o.print.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>21</integer>
+		</dict>
+		<key>o.printbytes.pd.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>45</integer>
 		</dict>
 		<key>o.printbytes.xcscheme</key>
 		<dict>
@@ -183,6 +203,11 @@
 		<dict>
 			<key>orderHint</key>
 			<integer>27</integer>
+		</dict>
+		<key>o.svg.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>44</integer>
 		</dict>
 		<key>o.table.xcscheme</key>
 		<dict>
@@ -222,12 +247,32 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>11EF2AC618AFEBB900156403</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>520A44A41824777800CB610F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>520C0E19158468F7005F2955</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>5214994B191D4B6300642F55</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>5214995C191D4C0100642F55</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>5214996C191D563700642F55</key>
 		<dict>
 			<key>primary</key>
 			<true/>

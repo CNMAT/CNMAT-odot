@@ -286,13 +286,13 @@ void *oppnd_new(t_symbol *msg, short argc, t_atom *argv)
 }
 
 #ifdef APPEND
-int oappend_setup(void)
+int setup_o0x2eappend(void)
 {
-    t_symbol *name = gensym("oappend");
+    t_symbol *name = gensym("o.append");
 #else
-int oprepend_setup(void)
+int setup_o0x2eprepend(void)
 {
-    t_symbol *name = gensym("oprepend");
+    t_symbol *name = gensym("o.prepend");
 #endif
     t_class *c = class_new(name, (t_newmethod)oppnd_new, (t_method)oppnd_free, sizeof(t_oppnd), 0L, A_GIMME, 0);
     
