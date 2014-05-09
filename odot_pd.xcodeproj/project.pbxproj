@@ -2406,7 +2406,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "../libo/libo.a ../libomax/libopd.a";
-				SDKROOT = macosx10.9;
+				SDKROOT = macosx10.8;
 			};
 			name = Debug;
 		};
@@ -2459,7 +2459,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "../libo/libo.a ../libomax/libopd.a";
-				SDKROOT = macosx10.9;
+				SDKROOT = macosx10.8;
 			};
 			name = Release;
 		};
@@ -2749,6 +2749,7 @@
 				110165CC18A074EE00F69D4C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1192C91B1878BEBD005350DE /* Build configuration list for PBXNativeTarget "o.flatten" */ = {
 			isa = XCConfigurationList;
