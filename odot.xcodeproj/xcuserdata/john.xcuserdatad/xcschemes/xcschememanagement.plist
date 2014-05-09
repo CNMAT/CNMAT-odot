@@ -74,6 +74,11 @@
 			<key>orderHint</key>
 			<integer>10</integer>
 		</dict>
+		<key>o.expr.codebox.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>41</integer>
+		</dict>
 		<key>o.expr.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -148,6 +153,16 @@
 		<dict>
 			<key>orderHint</key>
 			<integer>20</integer>
+		</dict>
+		<key>o.print copy.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>42</integer>
+		</dict>
+		<key>o.print.pd.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>43</integer>
 		</dict>
 		<key>o.print.xcscheme</key>
 		<dict>
@@ -228,6 +243,16 @@
 			<true/>
 		</dict>
 		<key>520C0E19158468F7005F2955</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>5214994B191D4B6300642F55</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>5214995C191D4C0100642F55</key>
 		<dict>
 			<key>primary</key>
 			<true/>
