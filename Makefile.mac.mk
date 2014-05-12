@@ -78,7 +78,7 @@ clean:
 	rm -rf $(STAGINGDIR)
 	rm -rf $(ARCHIVE)
 	rm -rf $(LOCAL_INSTALL_PATH)
-	rm $(CURRENT_VERSION_FILE)
+	#rm $(CURRENT_VERSION_FILE)
 
 ##################################################
 ## create directories

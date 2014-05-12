@@ -13,6 +13,34 @@
 			buildPhases = (
 			);
 			dependencies = (
+				52183D2719218B3100F61786 /* PBXTargetDependency */,
+				52183D2919218B3100F61786 /* PBXTargetDependency */,
+				52183D2B19218B3100F61786 /* PBXTargetDependency */,
+				52183D2D19218B3100F61786 /* PBXTargetDependency */,
+				52183D2F19218B3100F61786 /* PBXTargetDependency */,
+				52183D3119218B3100F61786 /* PBXTargetDependency */,
+				52183D3319218B3100F61786 /* PBXTargetDependency */,
+				52183D3519218B3100F61786 /* PBXTargetDependency */,
+				52183D3719218B3100F61786 /* PBXTargetDependency */,
+				52183D3919218B3100F61786 /* PBXTargetDependency */,
+				52183D3B19218B3100F61786 /* PBXTargetDependency */,
+				52183D3D19218B3100F61786 /* PBXTargetDependency */,
+				52183D3F19218B3100F61786 /* PBXTargetDependency */,
+				52183D4119218B3100F61786 /* PBXTargetDependency */,
+				52183D4319218B3100F61786 /* PBXTargetDependency */,
+				52183D4519218B3100F61786 /* PBXTargetDependency */,
+				52183D4719218B3100F61786 /* PBXTargetDependency */,
+				52183D4919218B3100F61786 /* PBXTargetDependency */,
+				52183D4B19218B3100F61786 /* PBXTargetDependency */,
+				52183D4D19218B3100F61786 /* PBXTargetDependency */,
+				52183D4F19218B3100F61786 /* PBXTargetDependency */,
+				52183D5119218B3100F61786 /* PBXTargetDependency */,
+				52183D5319218B3100F61786 /* PBXTargetDependency */,
+				52183D5519218B3100F61786 /* PBXTargetDependency */,
+				52183D5719218B3100F61786 /* PBXTargetDependency */,
+				52183D5919218B3100F61786 /* PBXTargetDependency */,
+				52183D5B19218B3100F61786 /* PBXTargetDependency */,
+				52183D5D19218B3100F61786 /* PBXTargetDependency */,
 				52CC5A3518232D9C001D46E3 /* PBXTargetDependency */,
 				52517B9D181F701F00879497 /* PBXTargetDependency */,
 				52517B9F181F701F00879497 /* PBXTargetDependency */,
@@ -318,6 +346,202 @@
 			remoteGlobalIDString = 5217D8FB158EEBC4005B5238;
 			remoteInfo = o.explode;
 		};
+		52183D2619218B3100F61786 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 119FA028191D5814001C3325;
+			remoteInfo = o.append.pd;
+		};
+		52183D2819218B3100F61786 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 119FA033191D58CA001C3325;
+			remoteInfo = o.atomize.pd;
+		};
+		52183D2A19218B3100F61786 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 119FA03E191D58FF001C3325;
+			remoteInfo = o.change.pd;
+		};
+		52183D2C19218B3100F61786 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 119FA049191D5A2A001C3325;
+			remoteInfo = o.collect.pd;
+		};
+		52183D2E19218B3100F61786 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 119FA053191D5A53001C3325;
+			remoteInfo = o.cond.pd;
+		};
+		52183D3019218B3100F61786 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 119FA05D191D5A67001C3325;
+			remoteInfo = o.difference.pd;
+		};
+		52183D3219218B3100F61786 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 119FA06A191D5D2B001C3325;
+			remoteInfo = o.explode.pd;
+		};
+		52183D3419218B3100F61786 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 119FA074191D5D3A001C3325;
+			remoteInfo = o.expr.pd;
+		};
+		52183D3619218B3100F61786 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 119FA07E191D5D43001C3325;
+			remoteInfo = o.flatten.pd;
+		};
+		52183D3819218B3100F61786 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 119FA088191D5D52001C3325;
+			remoteInfo = o.if.pd;
+		};
+		52183D3A19218B3100F61786 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 119FA092191D5D5B001C3325;
+			remoteInfo = o.intersection.pd;
+		};
+		52183D3C19218B3100F61786 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 119FA0A1191D5E91001C3325;
+			remoteInfo = o.iterate.pd;
+		};
+		52183D3E19218B3100F61786 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 119FA0AB191D5E9D001C3325;
+			remoteInfo = o.mappatch.pd;
+		};
+		52183D4019218B3100F61786 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 119FA0B5191D5EC6001C3325;
+			remoteInfo = o.message.pd;
+		};
+		52183D4219218B3100F61786 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 119FA0BF191D5EF5001C3325;
+			remoteInfo = o.pack.pd;
+		};
+		52183D4419218B3100F61786 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 119FA0C9191D5F05001C3325;
+			remoteInfo = o.pak.pd;
+		};
+		52183D4619218B3100F61786 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 119FA0D3191D5F0F001C3325;
+			remoteInfo = o.prepend.pd;
+		};
+		52183D4819218B3100F61786 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5214995C191D4C0100642F55;
+			remoteInfo = o.print.pd;
+		};
+		52183D4A19218B3100F61786 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5214996C191D563700642F55;
+			remoteInfo = o.printbytes.pd;
+		};
+		52183D4C19218B3100F61786 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 119FA0E3191D5FFB001C3325;
+			remoteInfo = o.route.pd;
+		};
+		52183D4E19218B3100F61786 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 119FA0ED191D6002001C3325;
+			remoteInfo = o.schedule.pd;
+		};
+		52183D5019218B3100F61786 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 119FA0F7191D6009001C3325;
+			remoteInfo = o.select.pd;
+		};
+		52183D5219218B3100F61786 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 119FA101191D6010001C3325;
+			remoteInfo = o.table.pd;
+		};
+		52183D5419218B3100F61786 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 119FA10B191D6027001C3325;
+			remoteInfo = o.timetag.pd;
+		};
+		52183D5619218B3100F61786 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 119FA115191D602E001C3325;
+			remoteInfo = o.union.pd;
+		};
+		52183D5819218B3100F61786 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 119FA11F191D6032001C3325;
+			remoteInfo = o.unless.pd;
+		};
+		52183D5A19218B3100F61786 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 119FA129191D6040001C3325;
+			remoteInfo = o.var.pd;
+		};
+		52183D5C19218B3100F61786 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 119FA133191D6052001C3325;
+			remoteInfo = o.when.pd;
+		};
 		52517B9C181F701F00879497 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
@@ -553,7 +777,7 @@
 
 /* Begin PBXFileReference section */
 		08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
-		119FA031191D5814001C3325 /* o.print.pd copy.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = "o.print.pd copy.pd_darwin"; sourceTree = BUILT_PRODUCTS_DIR; };
+		119FA031191D5814001C3325 /* o.append.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = o.append.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
 		119FA03C191D58CA001C3325 /* o.atomize.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = o.atomize.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
 		119FA047191D58FF001C3325 /* o.change.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = o.change.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
 		119FA052191D5A2A001C3325 /* o.collect.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = o.collect.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -564,26 +788,26 @@
 		119FA087191D5D43001C3325 /* o.flatten.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = o.flatten.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
 		119FA091191D5D52001C3325 /* o.if.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = o.if.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
 		119FA09B191D5D5B001C3325 /* o.intersection.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = o.intersection.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
-		119FA0AA191D5E91001C3325 /* o.intersection.pd copy.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = "o.intersection.pd copy.pd_darwin"; sourceTree = BUILT_PRODUCTS_DIR; };
+		119FA0AA191D5E91001C3325 /* o.iterate.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = o.iterate.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
 		119FA0B4191D5E9D001C3325 /* o.mappatch.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = o.mappatch.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
-		119FA0BE191D5EC6001C3325 /* o.mappatch.pd copy.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = "o.mappatch.pd copy.pd_darwin"; sourceTree = BUILT_PRODUCTS_DIR; };
-		119FA0C8191D5EF5001C3325 /* o.message.pd copy.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = "o.message.pd copy.pd_darwin"; sourceTree = BUILT_PRODUCTS_DIR; };
-		119FA0D2191D5F05001C3325 /* o.pack.pd copy.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = "o.pack.pd copy.pd_darwin"; sourceTree = BUILT_PRODUCTS_DIR; };
-		119FA0DC191D5F0F001C3325 /* o.pak.pd copy.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = "o.pak.pd copy.pd_darwin"; sourceTree = BUILT_PRODUCTS_DIR; };
-		119FA0EC191D5FFB001C3325 /* o.printbytes.pd copy.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = "o.printbytes.pd copy.pd_darwin"; sourceTree = BUILT_PRODUCTS_DIR; };
-		119FA0F6191D6002001C3325 /* o.route.pd copy.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = "o.route.pd copy.pd_darwin"; sourceTree = BUILT_PRODUCTS_DIR; };
+		119FA0BE191D5EC6001C3325 /* o.message.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = o.message.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
+		119FA0C8191D5EF5001C3325 /* o.pack.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = o.pack.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
+		119FA0D2191D5F05001C3325 /* o.pak.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = o.pak.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
+		119FA0DC191D5F0F001C3325 /* o.prepend.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = o.prepend.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
+		119FA0EC191D5FFB001C3325 /* o.route.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = o.route.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
+		119FA0F6191D6002001C3325 /* o.schedule.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = o.schedule.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
 		119FA100191D6009001C3325 /* o.select.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = o.select.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
-		119FA10A191D6010001C3325 /* o.select.pd copy.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = "o.select.pd copy.pd_darwin"; sourceTree = BUILT_PRODUCTS_DIR; };
+		119FA10A191D6010001C3325 /* o.table.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = o.table.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
 		119FA114191D6027001C3325 /* o.timetag.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = o.timetag.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
 		119FA11E191D602E001C3325 /* o.union.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = o.union.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
-		119FA128191D6032001C3325 /* o.union.pd copy.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = "o.union.pd copy.pd_darwin"; sourceTree = BUILT_PRODUCTS_DIR; };
-		119FA132191D6040001C3325 /* o.unless.pd copy.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = "o.unless.pd copy.pd_darwin"; sourceTree = BUILT_PRODUCTS_DIR; };
-		119FA13C191D6052001C3325 /* o.var.pd copy.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = "o.var.pd copy.pd_darwin"; sourceTree = BUILT_PRODUCTS_DIR; };
+		119FA128191D6032001C3325 /* o.unless.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = o.unless.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
+		119FA132191D6040001C3325 /* o.var.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = o.var.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
+		119FA13C191D6052001C3325 /* o.when.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = o.when.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
 		11EF2AD318AFEBB900156403 /* o.svg.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.svg.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
 		11EF2AD418AFEBFC00156403 /* o.svg.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.svg.c; path = o.svg/o.svg.c; sourceTree = "<group>"; };
 		11EF2AD618AFF7A900156403 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		5203467B1555BF16001EA532 /* o.flatten.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.flatten.c; path = o.flatten/o.flatten.c; sourceTree = "<group>"; };
-		520A44B21824777800CB610F /* o.io.bluetoothle.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.io.bluetoothle.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
+		520A44B21824777800CB610F /* o.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
 		520A44B3182477D800CB610F /* o.io.bluetoothle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = o.io.bluetoothle.m; path = o.io.bluetoothle/o.io.bluetoothle.m; sourceTree = "<group>"; };
 		520C0E27158468F7005F2955 /* o.dict.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.dict.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
 		520C0E2A158469F4005F2955 /* o.dict.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.dict.c; path = o.dict/o.dict.c; sourceTree = "<group>"; };
@@ -598,27 +822,27 @@
 		5217D909158EEBC4005B5238 /* o.explode.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.explode.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
 		5217D90C158EEBEB005B5238 /* o.explode.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.explode.c; path = o.explode/o.explode.c; sourceTree = "<group>"; };
 		525523B41504C3FD00A10E5D /* o.atomize.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.atomize.c; path = o.atomize/o.atomize.c; sourceTree = SOURCE_ROOT; };
-		525523D71504CB9E00A10E5D /* o.change.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.change.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
+		525523D71504CB9E00A10E5D /* o.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
 		525523D81504CC6000A10E5D /* o.change.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.change.c; path = o.change/o.change.c; sourceTree = "<group>"; };
-		525523EE1504D0B200A10E5D /* o.collect.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.collect.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
-		525523FD1504D14200A10E5D /* o.cond.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.cond.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
-		5255240C1504D14400A10E5D /* o.difference.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.difference.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
-		5255241B1504D14600A10E5D /* o.expr.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.expr.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
-		5255242A1504D14B00A10E5D /* o.if.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.if.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
-		525524391504D14F00A10E5D /* o.intersection.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.intersection.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
-		525524481504D15000A10E5D /* o.mappatch.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.mappatch.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
-		525524571504D15200A10E5D /* o.message.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.message.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
-		525524661504D15400A10E5D /* o.pack.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.pack.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
-		525524751504D15600A10E5D /* o.pak.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.pak.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
-		525524841504D15700A10E5D /* o.prepend.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.prepend.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
-		525524931504D15900A10E5D /* o.print.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.print.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
-		525524A21504D15B00A10E5D /* o.printbytes.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.printbytes.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
-		525524B11504D15D00A10E5D /* o.route.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.route.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
-		525524C01504D15F00A10E5D /* o.select.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.select.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
-		525524CF1504D16100A10E5D /* o.union.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.union.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
-		525524DE1504D16200A10E5D /* o.unless.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.unless.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
-		525524ED1504D16400A10E5D /* o.var.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.var.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
-		525524FC1504D16600A10E5D /* o.when.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.when.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
+		525523EE1504D0B200A10E5D /* o.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
+		525523FD1504D14200A10E5D /* o.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
+		5255240C1504D14400A10E5D /* o.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
+		5255241B1504D14600A10E5D /* o.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
+		5255242A1504D14B00A10E5D /* o.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
+		525524391504D14F00A10E5D /* o.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
+		525524481504D15000A10E5D /* o.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
+		525524571504D15200A10E5D /* o.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
+		525524661504D15400A10E5D /* o.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
+		525524751504D15600A10E5D /* o.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
+		525524841504D15700A10E5D /* o.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
+		525524931504D15900A10E5D /* o.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
+		525524A21504D15B00A10E5D /* o.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
+		525524B11504D15D00A10E5D /* o.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
+		525524C01504D15F00A10E5D /* o.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
+		525524CF1504D16100A10E5D /* o.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
+		525524DE1504D16200A10E5D /* o.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
+		525524ED1504D16400A10E5D /* o.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
+		525524FC1504D16600A10E5D /* o.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
 		525525271504D21500A10E5D /* o.collect.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.collect.c; path = o.collect/o.collect.c; sourceTree = "<group>"; };
 		525525291504D22A00A10E5D /* o.cond.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.cond.c; path = o.cond/o.cond.c; sourceTree = "<group>"; };
 		5255252B1504D23400A10E5D /* o.difference.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.difference.c; path = o.difference/o.difference.c; sourceTree = "<group>"; };
@@ -640,14 +864,14 @@
 		5255254B1504D2CC00A10E5D /* o.when.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.when.c; path = o.when/o.when.c; sourceTree = "<group>"; };
 		527294B517E9335600AA15E1 /* libLeap.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libLeap.dylib; path = "o.io.leap/LeapSDK/lib/libc++/libLeap.dylib"; sourceTree = "<group>"; };
 		527294B717EDE93100AA15E1 /* o.context.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = o.context.c; path = o.context/o.context.c; sourceTree = "<group>"; };
-		527294C517EDE93B00AA15E1 /* o.context.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.context.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
-		5292DC4C17FCC6AD00598BDC /* o.io.bluetoothle.sensortag.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.io.bluetoothle.sensortag.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
+		527294C517EDE93B00AA15E1 /* o.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
+		5292DC4C17FCC6AD00598BDC /* o.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
 		5292DC4D17FCC6D300598BDC /* o.io.bluetoothle.sensortag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = o.io.bluetoothle.sensortag.m; path = o.io.bluetoothle.sensortag/o.io.bluetoothle.sensortag.m; sourceTree = "<group>"; };
 		529781601555B6FD0018A44D /* o.flatten.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.flatten.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
 		52A8393A16E978CD002E273C /* o.append.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = o.append.c; path = o.append/o.append.c; sourceTree = "<group>"; };
 		52A8394916E978D7002E273C /* o.append.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.append.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
 		52A8395816EFFBC4002E273C /* o.timetag.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = o.timetag.c; path = o.timetag/o.timetag.c; sourceTree = "<group>"; };
-		52A8396716EFFBC9002E273C /* o.timetag.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.timetag.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
+		52A8396716EFFBC9002E273C /* o.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
 		52A8396B16F3F886002E273C /* o.schedule.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = o.schedule.c; path = o.schedule/o.schedule.c; sourceTree = "<group>"; };
 		52A8396C16F3F893002E273C /* pqops.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = pqops.c; path = o.schedule/pqops.c; sourceTree = "<group>"; };
 		52A8396D16F3F893002E273C /* pqops.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = pqops.h; path = o.schedule/pqops.h; sourceTree = "<group>"; };
@@ -662,7 +886,7 @@
 		52B53D1F174FD0B300237A19 /* o.random.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.random.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
 		52B53D20174FD0EF00237A19 /* o.random.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.random.c; path = o.random/o.random.c; sourceTree = "<group>"; };
 		52B654BE17CD5F45004FD84E /* o.io.leap.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = o.io.leap.cpp; path = o.io.leap/o.io.leap.cpp; sourceTree = "<group>"; };
-		52B654CC17CD5F94004FD84E /* o.io.leap.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.io.leap.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
+		52B654CC17CD5F94004FD84E /* o.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
 		52B654EF17D159B6004FD84E /* o.edge~.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = "o.edge~.c"; path = "o.edge~/o.edge~.c"; sourceTree = "<group>"; };
 		52B654FD17D159B9004FD84E /* o.edge~.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "o.edge~.mxo"; sourceTree = BUILT_PRODUCTS_DIR; };
 		52B6550117D1690F004FD84E /* MaxAudioAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MaxAudioAPI.framework; path = "../max6-sdk/c74support/msp-includes/MaxAudioAPI.framework"; sourceTree = "<group>"; };
@@ -681,7 +905,7 @@
 		52CEF5C6163763CF0016EC39 /* libomax.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libomax.a; path = ../libomax/libomax.a; sourceTree = "<group>"; };
 		52F0C48517B581CC009FBD24 /* o.O.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.O.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
 		52F0C48617B581FF009FBD24 /* o.O.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.O.c; path = o.O/o.O.c; sourceTree = "<group>"; };
-		B4CDCF1510621C0800847C22 /* o.atomize.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.atomize.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
+		B4CDCF1510621C0800847C22 /* o.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1371,50 +1595,50 @@
 		19C28FB4FE9D528D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B4CDCF1510621C0800847C22 /* o.atomize.mxo */,
-				525523D71504CB9E00A10E5D /* o.change.mxo */,
-				525523EE1504D0B200A10E5D /* o.collect.mxo */,
-				525523FD1504D14200A10E5D /* o.cond.mxo */,
-				5255240C1504D14400A10E5D /* o.difference.mxo */,
-				5255241B1504D14600A10E5D /* o.expr.mxo */,
-				5255242A1504D14B00A10E5D /* o.if.mxo */,
-				525524391504D14F00A10E5D /* o.intersection.mxo */,
-				525524481504D15000A10E5D /* o.mappatch.mxo */,
-				525524571504D15200A10E5D /* o.message.mxo */,
-				525524661504D15400A10E5D /* o.pack.mxo */,
-				525524751504D15600A10E5D /* o.pak.mxo */,
-				525524841504D15700A10E5D /* o.prepend.mxo */,
-				525524931504D15900A10E5D /* o.print.mxo */,
-				525524A21504D15B00A10E5D /* o.printbytes.mxo */,
-				525524B11504D15D00A10E5D /* o.route.mxo */,
-				525524C01504D15F00A10E5D /* o.select.mxo */,
-				525524CF1504D16100A10E5D /* o.union.mxo */,
-				525524DE1504D16200A10E5D /* o.unless.mxo */,
-				525524ED1504D16400A10E5D /* o.var.mxo */,
-				525524FC1504D16600A10E5D /* o.when.mxo */,
+				B4CDCF1510621C0800847C22 /* o.mxo */,
+				525523D71504CB9E00A10E5D /* o.mxo */,
+				525523EE1504D0B200A10E5D /* o.mxo */,
+				525523FD1504D14200A10E5D /* o.mxo */,
+				5255240C1504D14400A10E5D /* o.mxo */,
+				5255241B1504D14600A10E5D /* o.mxo */,
+				5255242A1504D14B00A10E5D /* o.mxo */,
+				525524391504D14F00A10E5D /* o.mxo */,
+				525524481504D15000A10E5D /* o.mxo */,
+				525524571504D15200A10E5D /* o.mxo */,
+				525524661504D15400A10E5D /* o.mxo */,
+				525524751504D15600A10E5D /* o.mxo */,
+				525524841504D15700A10E5D /* o.mxo */,
+				525524931504D15900A10E5D /* o.mxo */,
+				525524A21504D15B00A10E5D /* o.mxo */,
+				525524B11504D15D00A10E5D /* o.mxo */,
+				525524C01504D15F00A10E5D /* o.mxo */,
+				525524CF1504D16100A10E5D /* o.mxo */,
+				525524DE1504D16200A10E5D /* o.mxo */,
+				525524ED1504D16400A10E5D /* o.mxo */,
+				525524FC1504D16600A10E5D /* o.mxo */,
 				529781601555B6FD0018A44D /* o.flatten.mxo */,
 				520C0E27158468F7005F2955 /* o.dict.mxo */,
 				5217D909158EEBC4005B5238 /* o.explode.mxo */,
 				52C839DF167A5B24000AA688 /* o.table.mxo */,
 				52A8394916E978D7002E273C /* o.append.mxo */,
-				52A8396716EFFBC9002E273C /* o.timetag.mxo */,
+				52A8396716EFFBC9002E273C /* o.mxo */,
 				52A8397C16F3F898002E273C /* o.schedule.mxo */,
 				52B53CE917480C8100237A19 /* o.downcast.mxo */,
 				52B53CFB1748287A00237A19 /* o.validate.mxo */,
 				52B53D0D17484E5500237A19 /* o.iterate.mxo */,
 				52B53D1F174FD0B300237A19 /* o.random.mxo */,
 				52F0C48517B581CC009FBD24 /* o.O.mxo */,
-				52B654CC17CD5F94004FD84E /* o.io.leap.mxo */,
+				52B654CC17CD5F94004FD84E /* o.mxo */,
 				52B654FD17D159B9004FD84E /* o.edge~.mxo */,
 				52B6551117D68D7C004FD84E /* o.schedule~.mxo */,
 				52B6552617E3B971004FD84E /* o.io.bluetoothle.hrm.mxo */,
-				527294C517EDE93B00AA15E1 /* o.context.mxo */,
-				5292DC4C17FCC6AD00598BDC /* o.io.bluetoothle.sensortag.mxo */,
-				520A44B21824777800CB610F /* o.io.bluetoothle.mxo */,
+				527294C517EDE93B00AA15E1 /* o.mxo */,
+				5292DC4C17FCC6AD00598BDC /* o.mxo */,
+				520A44B21824777800CB610F /* o.mxo */,
 				5214995D191D4C0100642F55 /* o.print.pd_darwin */,
 				11EF2AD318AFEBB900156403 /* o.svg.mxo */,
 				52149975191D563700642F55 /* o.printbytes.pd_darwin */,
-				119FA031191D5814001C3325 /* o.print.pd copy.pd_darwin */,
+				119FA031191D5814001C3325 /* o.append.pd_darwin */,
 				119FA03C191D58CA001C3325 /* o.atomize.pd_darwin */,
 				119FA047191D58FF001C3325 /* o.change.pd_darwin */,
 				119FA052191D5A2A001C3325 /* o.collect.pd_darwin */,
@@ -1425,21 +1649,21 @@
 				119FA087191D5D43001C3325 /* o.flatten.pd_darwin */,
 				119FA091191D5D52001C3325 /* o.if.pd_darwin */,
 				119FA09B191D5D5B001C3325 /* o.intersection.pd_darwin */,
-				119FA0AA191D5E91001C3325 /* o.intersection.pd copy.pd_darwin */,
+				119FA0AA191D5E91001C3325 /* o.iterate.pd_darwin */,
 				119FA0B4191D5E9D001C3325 /* o.mappatch.pd_darwin */,
-				119FA0BE191D5EC6001C3325 /* o.mappatch.pd copy.pd_darwin */,
-				119FA0C8191D5EF5001C3325 /* o.message.pd copy.pd_darwin */,
-				119FA0D2191D5F05001C3325 /* o.pack.pd copy.pd_darwin */,
-				119FA0DC191D5F0F001C3325 /* o.pak.pd copy.pd_darwin */,
-				119FA0EC191D5FFB001C3325 /* o.printbytes.pd copy.pd_darwin */,
-				119FA0F6191D6002001C3325 /* o.route.pd copy.pd_darwin */,
+				119FA0BE191D5EC6001C3325 /* o.message.pd_darwin */,
+				119FA0C8191D5EF5001C3325 /* o.pack.pd_darwin */,
+				119FA0D2191D5F05001C3325 /* o.pak.pd_darwin */,
+				119FA0DC191D5F0F001C3325 /* o.prepend.pd_darwin */,
+				119FA0EC191D5FFB001C3325 /* o.route.pd_darwin */,
+				119FA0F6191D6002001C3325 /* o.schedule.pd_darwin */,
 				119FA100191D6009001C3325 /* o.select.pd_darwin */,
-				119FA10A191D6010001C3325 /* o.select.pd copy.pd_darwin */,
+				119FA10A191D6010001C3325 /* o.table.pd_darwin */,
 				119FA114191D6027001C3325 /* o.timetag.pd_darwin */,
 				119FA11E191D602E001C3325 /* o.union.pd_darwin */,
-				119FA128191D6032001C3325 /* o.union.pd copy.pd_darwin */,
-				119FA132191D6040001C3325 /* o.unless.pd copy.pd_darwin */,
-				119FA13C191D6052001C3325 /* o.var.pd copy.pd_darwin */,
+				119FA128191D6032001C3325 /* o.unless.pd_darwin */,
+				119FA132191D6040001C3325 /* o.var.pd_darwin */,
+				119FA13C191D6052001C3325 /* o.when.pd_darwin */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1985,7 +2209,7 @@
 			);
 			name = o.append.pd;
 			productName = o.print.pd;
-			productReference = 119FA031191D5814001C3325 /* o.print.pd copy.pd_darwin */;
+			productReference = 119FA031191D5814001C3325 /* o.append.pd_darwin */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
 		119FA033191D58CA001C3325 /* o.atomize.pd */ = {
@@ -2183,7 +2407,7 @@
 			);
 			name = o.iterate.pd;
 			productName = o.print.pd;
-			productReference = 119FA0AA191D5E91001C3325 /* o.intersection.pd copy.pd_darwin */;
+			productReference = 119FA0AA191D5E91001C3325 /* o.iterate.pd_darwin */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
 		119FA0AB191D5E9D001C3325 /* o.mappatch.pd */ = {
@@ -2219,7 +2443,7 @@
 			);
 			name = o.message.pd;
 			productName = o.print.pd;
-			productReference = 119FA0BE191D5EC6001C3325 /* o.mappatch.pd copy.pd_darwin */;
+			productReference = 119FA0BE191D5EC6001C3325 /* o.message.pd_darwin */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
 		119FA0BF191D5EF5001C3325 /* o.pack.pd */ = {
@@ -2237,7 +2461,7 @@
 			);
 			name = o.pack.pd;
 			productName = o.print.pd;
-			productReference = 119FA0C8191D5EF5001C3325 /* o.message.pd copy.pd_darwin */;
+			productReference = 119FA0C8191D5EF5001C3325 /* o.pack.pd_darwin */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
 		119FA0C9191D5F05001C3325 /* o.pak.pd */ = {
@@ -2255,7 +2479,7 @@
 			);
 			name = o.pak.pd;
 			productName = o.print.pd;
-			productReference = 119FA0D2191D5F05001C3325 /* o.pack.pd copy.pd_darwin */;
+			productReference = 119FA0D2191D5F05001C3325 /* o.pak.pd_darwin */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
 		119FA0D3191D5F0F001C3325 /* o.prepend.pd */ = {
@@ -2273,7 +2497,7 @@
 			);
 			name = o.prepend.pd;
 			productName = o.print.pd;
-			productReference = 119FA0DC191D5F0F001C3325 /* o.pak.pd copy.pd_darwin */;
+			productReference = 119FA0DC191D5F0F001C3325 /* o.prepend.pd_darwin */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
 		119FA0E3191D5FFB001C3325 /* o.route.pd */ = {
@@ -2291,7 +2515,7 @@
 			);
 			name = o.route.pd;
 			productName = o.print.pd;
-			productReference = 119FA0EC191D5FFB001C3325 /* o.printbytes.pd copy.pd_darwin */;
+			productReference = 119FA0EC191D5FFB001C3325 /* o.route.pd_darwin */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
 		119FA0ED191D6002001C3325 /* o.schedule.pd */ = {
@@ -2309,7 +2533,7 @@
 			);
 			name = o.schedule.pd;
 			productName = o.print.pd;
-			productReference = 119FA0F6191D6002001C3325 /* o.route.pd copy.pd_darwin */;
+			productReference = 119FA0F6191D6002001C3325 /* o.schedule.pd_darwin */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
 		119FA0F7191D6009001C3325 /* o.select.pd */ = {
@@ -2345,7 +2569,7 @@
 			);
 			name = o.table.pd;
 			productName = o.print.pd;
-			productReference = 119FA10A191D6010001C3325 /* o.select.pd copy.pd_darwin */;
+			productReference = 119FA10A191D6010001C3325 /* o.table.pd_darwin */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
 		119FA10B191D6027001C3325 /* o.timetag.pd */ = {
@@ -2399,7 +2623,7 @@
 			);
 			name = o.unless.pd;
 			productName = o.print.pd;
-			productReference = 119FA128191D6032001C3325 /* o.union.pd copy.pd_darwin */;
+			productReference = 119FA128191D6032001C3325 /* o.unless.pd_darwin */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
 		119FA129191D6040001C3325 /* o.var.pd */ = {
@@ -2417,7 +2641,7 @@
 			);
 			name = o.var.pd;
 			productName = o.print.pd;
-			productReference = 119FA132191D6040001C3325 /* o.unless.pd copy.pd_darwin */;
+			productReference = 119FA132191D6040001C3325 /* o.var.pd_darwin */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
 		119FA133191D6052001C3325 /* o.when.pd */ = {
@@ -2435,7 +2659,7 @@
 			);
 			name = o.when.pd;
 			productName = o.print.pd;
-			productReference = 119FA13C191D6052001C3325 /* o.var.pd copy.pd_darwin */;
+			productReference = 119FA13C191D6052001C3325 /* o.when.pd_darwin */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
 		11EF2AC618AFEBB900156403 /* o.svg */ = {
@@ -2471,7 +2695,7 @@
 			);
 			name = o.io.bluetoothle;
 			productName = cv.jit.dilate;
-			productReference = 520A44B21824777800CB610F /* o.io.bluetoothle.mxo */;
+			productReference = 520A44B21824777800CB610F /* o.mxo */;
 			productType = "com.apple.product-type.bundle";
 		};
 		520C0E19158468F7005F2955 /* o.dict */ = {
@@ -2561,7 +2785,7 @@
 			);
 			name = o.change;
 			productName = cv.jit.dilate;
-			productReference = 525523D71504CB9E00A10E5D /* o.change.mxo */;
+			productReference = 525523D71504CB9E00A10E5D /* o.mxo */;
 			productType = "com.apple.product-type.bundle";
 		};
 		525523E01504D0B200A10E5D /* o.collect */ = {
@@ -2579,7 +2803,7 @@
 			);
 			name = o.collect;
 			productName = cv.jit.dilate;
-			productReference = 525523EE1504D0B200A10E5D /* o.collect.mxo */;
+			productReference = 525523EE1504D0B200A10E5D /* o.mxo */;
 			productType = "com.apple.product-type.bundle";
 		};
 		525523EF1504D14200A10E5D /* o.cond */ = {
@@ -2597,7 +2821,7 @@
 			);
 			name = o.cond;
 			productName = cv.jit.dilate;
-			productReference = 525523FD1504D14200A10E5D /* o.cond.mxo */;
+			productReference = 525523FD1504D14200A10E5D /* o.mxo */;
 			productType = "com.apple.product-type.bundle";
 		};
 		525523FE1504D14400A10E5D /* o.difference */ = {
@@ -2615,7 +2839,7 @@
 			);
 			name = o.difference;
 			productName = cv.jit.dilate;
-			productReference = 5255240C1504D14400A10E5D /* o.difference.mxo */;
+			productReference = 5255240C1504D14400A10E5D /* o.mxo */;
 			productType = "com.apple.product-type.bundle";
 		};
 		5255240D1504D14600A10E5D /* o.expr */ = {
@@ -2633,7 +2857,7 @@
 			);
 			name = o.expr;
 			productName = cv.jit.dilate;
-			productReference = 5255241B1504D14600A10E5D /* o.expr.mxo */;
+			productReference = 5255241B1504D14600A10E5D /* o.mxo */;
 			productType = "com.apple.product-type.bundle";
 		};
 		5255241C1504D14B00A10E5D /* o.if */ = {
@@ -2651,7 +2875,7 @@
 			);
 			name = o.if;
 			productName = cv.jit.dilate;
-			productReference = 5255242A1504D14B00A10E5D /* o.if.mxo */;
+			productReference = 5255242A1504D14B00A10E5D /* o.mxo */;
 			productType = "com.apple.product-type.bundle";
 		};
 		5255242B1504D14F00A10E5D /* o.intersection */ = {
@@ -2669,7 +2893,7 @@
 			);
 			name = o.intersection;
 			productName = cv.jit.dilate;
-			productReference = 525524391504D14F00A10E5D /* o.intersection.mxo */;
+			productReference = 525524391504D14F00A10E5D /* o.mxo */;
 			productType = "com.apple.product-type.bundle";
 		};
 		5255243A1504D15000A10E5D /* o.mappatch */ = {
@@ -2687,7 +2911,7 @@
 			);
 			name = o.mappatch;
 			productName = cv.jit.dilate;
-			productReference = 525524481504D15000A10E5D /* o.mappatch.mxo */;
+			productReference = 525524481504D15000A10E5D /* o.mxo */;
 			productType = "com.apple.product-type.bundle";
 		};
 		525524491504D15200A10E5D /* o.message */ = {
@@ -2705,7 +2929,7 @@
 			);
 			name = o.message;
 			productName = cv.jit.dilate;
-			productReference = 525524571504D15200A10E5D /* o.message.mxo */;
+			productReference = 525524571504D15200A10E5D /* o.mxo */;
 			productType = "com.apple.product-type.bundle";
 		};
 		525524581504D15400A10E5D /* o.pack */ = {
@@ -2723,7 +2947,7 @@
 			);
 			name = o.pack;
 			productName = cv.jit.dilate;
-			productReference = 525524661504D15400A10E5D /* o.pack.mxo */;
+			productReference = 525524661504D15400A10E5D /* o.mxo */;
 			productType = "com.apple.product-type.bundle";
 		};
 		525524671504D15600A10E5D /* o.pak */ = {
@@ -2741,7 +2965,7 @@
 			);
 			name = o.pak;
 			productName = cv.jit.dilate;
-			productReference = 525524751504D15600A10E5D /* o.pak.mxo */;
+			productReference = 525524751504D15600A10E5D /* o.mxo */;
 			productType = "com.apple.product-type.bundle";
 		};
 		525524761504D15700A10E5D /* o.prepend */ = {
@@ -2759,7 +2983,7 @@
 			);
 			name = o.prepend;
 			productName = cv.jit.dilate;
-			productReference = 525524841504D15700A10E5D /* o.prepend.mxo */;
+			productReference = 525524841504D15700A10E5D /* o.mxo */;
 			productType = "com.apple.product-type.bundle";
 		};
 		525524851504D15900A10E5D /* o.print */ = {
@@ -2777,7 +3001,7 @@
 			);
 			name = o.print;
 			productName = cv.jit.dilate;
-			productReference = 525524931504D15900A10E5D /* o.print.mxo */;
+			productReference = 525524931504D15900A10E5D /* o.mxo */;
 			productType = "com.apple.product-type.bundle";
 		};
 		525524941504D15B00A10E5D /* o.printbytes */ = {
@@ -2795,7 +3019,7 @@
 			);
 			name = o.printbytes;
 			productName = cv.jit.dilate;
-			productReference = 525524A21504D15B00A10E5D /* o.printbytes.mxo */;
+			productReference = 525524A21504D15B00A10E5D /* o.mxo */;
 			productType = "com.apple.product-type.bundle";
 		};
 		525524A31504D15D00A10E5D /* o.route */ = {
@@ -2813,7 +3037,7 @@
 			);
 			name = o.route;
 			productName = cv.jit.dilate;
-			productReference = 525524B11504D15D00A10E5D /* o.route.mxo */;
+			productReference = 525524B11504D15D00A10E5D /* o.mxo */;
 			productType = "com.apple.product-type.bundle";
 		};
 		525524B21504D15F00A10E5D /* o.select */ = {
@@ -2831,7 +3055,7 @@
 			);
 			name = o.select;
 			productName = cv.jit.dilate;
-			productReference = 525524C01504D15F00A10E5D /* o.select.mxo */;
+			productReference = 525524C01504D15F00A10E5D /* o.mxo */;
 			productType = "com.apple.product-type.bundle";
 		};
 		525524C11504D16100A10E5D /* o.union */ = {
@@ -2849,7 +3073,7 @@
 			);
 			name = o.union;
 			productName = cv.jit.dilate;
-			productReference = 525524CF1504D16100A10E5D /* o.union.mxo */;
+			productReference = 525524CF1504D16100A10E5D /* o.mxo */;
 			productType = "com.apple.product-type.bundle";
 		};
 		525524D01504D16200A10E5D /* o.unless */ = {
@@ -2867,7 +3091,7 @@
 			);
 			name = o.unless;
 			productName = cv.jit.dilate;
-			productReference = 525524DE1504D16200A10E5D /* o.unless.mxo */;
+			productReference = 525524DE1504D16200A10E5D /* o.mxo */;
 			productType = "com.apple.product-type.bundle";
 		};
 		525524DF1504D16400A10E5D /* o.var */ = {
@@ -2885,7 +3109,7 @@
 			);
 			name = o.var;
 			productName = cv.jit.dilate;
-			productReference = 525524ED1504D16400A10E5D /* o.var.mxo */;
+			productReference = 525524ED1504D16400A10E5D /* o.mxo */;
 			productType = "com.apple.product-type.bundle";
 		};
 		525524EE1504D16600A10E5D /* o.when */ = {
@@ -2903,7 +3127,7 @@
 			);
 			name = o.when;
 			productName = cv.jit.dilate;
-			productReference = 525524FC1504D16600A10E5D /* o.when.mxo */;
+			productReference = 525524FC1504D16600A10E5D /* o.mxo */;
 			productType = "com.apple.product-type.bundle";
 		};
 		527294B817EDE93B00AA15E1 /* o.context */ = {
@@ -2921,7 +3145,7 @@
 			);
 			name = o.context;
 			productName = cv.jit.dilate;
-			productReference = 527294C517EDE93B00AA15E1 /* o.context.mxo */;
+			productReference = 527294C517EDE93B00AA15E1 /* o.mxo */;
 			productType = "com.apple.product-type.bundle";
 		};
 		5292DC3E17FCC6AD00598BDC /* o.io.bluetoothle.sensortag */ = {
@@ -2939,7 +3163,7 @@
 			);
 			name = o.io.bluetoothle.sensortag;
 			productName = cv.jit.dilate;
-			productReference = 5292DC4C17FCC6AD00598BDC /* o.io.bluetoothle.sensortag.mxo */;
+			productReference = 5292DC4C17FCC6AD00598BDC /* o.mxo */;
 			productType = "com.apple.product-type.bundle";
 		};
 		529781521555B6FD0018A44D /* o.flatten */ = {
@@ -2993,7 +3217,7 @@
 			);
 			name = o.timetag;
 			productName = cv.jit.dilate;
-			productReference = 52A8396716EFFBC9002E273C /* o.timetag.mxo */;
+			productReference = 52A8396716EFFBC9002E273C /* o.mxo */;
 			productType = "com.apple.product-type.bundle";
 		};
 		52A8396E16F3F898002E273C /* o.schedule */ = {
@@ -3102,7 +3326,7 @@
 			);
 			name = o.io.leap;
 			productName = cv.jit.dilate;
-			productReference = 52B654CC17CD5F94004FD84E /* o.io.leap.mxo */;
+			productReference = 52B654CC17CD5F94004FD84E /* o.mxo */;
 			productType = "com.apple.product-type.bundle";
 		};
 		52B654F017D159B9004FD84E /* o.edge~ */ = {
@@ -3210,7 +3434,7 @@
 			);
 			name = o.atomize;
 			productName = cv.jit.dilate;
-			productReference = B4CDCF1510621C0800847C22 /* o.atomize.mxo */;
+			productReference = B4CDCF1510621C0800847C22 /* o.mxo */;
 			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */
@@ -4590,6 +4814,146 @@
 			target = 5217D8FB158EEBC4005B5238 /* o.explode */;
 			targetProxy = 5217D90E158EEC91005B5238 /* PBXContainerItemProxy */;
 		};
+		52183D2719218B3100F61786 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 119FA028191D5814001C3325 /* o.append.pd */;
+			targetProxy = 52183D2619218B3100F61786 /* PBXContainerItemProxy */;
+		};
+		52183D2919218B3100F61786 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 119FA033191D58CA001C3325 /* o.atomize.pd */;
+			targetProxy = 52183D2819218B3100F61786 /* PBXContainerItemProxy */;
+		};
+		52183D2B19218B3100F61786 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 119FA03E191D58FF001C3325 /* o.change.pd */;
+			targetProxy = 52183D2A19218B3100F61786 /* PBXContainerItemProxy */;
+		};
+		52183D2D19218B3100F61786 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 119FA049191D5A2A001C3325 /* o.collect.pd */;
+			targetProxy = 52183D2C19218B3100F61786 /* PBXContainerItemProxy */;
+		};
+		52183D2F19218B3100F61786 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 119FA053191D5A53001C3325 /* o.cond.pd */;
+			targetProxy = 52183D2E19218B3100F61786 /* PBXContainerItemProxy */;
+		};
+		52183D3119218B3100F61786 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 119FA05D191D5A67001C3325 /* o.difference.pd */;
+			targetProxy = 52183D3019218B3100F61786 /* PBXContainerItemProxy */;
+		};
+		52183D3319218B3100F61786 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 119FA06A191D5D2B001C3325 /* o.explode.pd */;
+			targetProxy = 52183D3219218B3100F61786 /* PBXContainerItemProxy */;
+		};
+		52183D3519218B3100F61786 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 119FA074191D5D3A001C3325 /* o.expr.pd */;
+			targetProxy = 52183D3419218B3100F61786 /* PBXContainerItemProxy */;
+		};
+		52183D3719218B3100F61786 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 119FA07E191D5D43001C3325 /* o.flatten.pd */;
+			targetProxy = 52183D3619218B3100F61786 /* PBXContainerItemProxy */;
+		};
+		52183D3919218B3100F61786 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 119FA088191D5D52001C3325 /* o.if.pd */;
+			targetProxy = 52183D3819218B3100F61786 /* PBXContainerItemProxy */;
+		};
+		52183D3B19218B3100F61786 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 119FA092191D5D5B001C3325 /* o.intersection.pd */;
+			targetProxy = 52183D3A19218B3100F61786 /* PBXContainerItemProxy */;
+		};
+		52183D3D19218B3100F61786 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 119FA0A1191D5E91001C3325 /* o.iterate.pd */;
+			targetProxy = 52183D3C19218B3100F61786 /* PBXContainerItemProxy */;
+		};
+		52183D3F19218B3100F61786 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 119FA0AB191D5E9D001C3325 /* o.mappatch.pd */;
+			targetProxy = 52183D3E19218B3100F61786 /* PBXContainerItemProxy */;
+		};
+		52183D4119218B3100F61786 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 119FA0B5191D5EC6001C3325 /* o.message.pd */;
+			targetProxy = 52183D4019218B3100F61786 /* PBXContainerItemProxy */;
+		};
+		52183D4319218B3100F61786 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 119FA0BF191D5EF5001C3325 /* o.pack.pd */;
+			targetProxy = 52183D4219218B3100F61786 /* PBXContainerItemProxy */;
+		};
+		52183D4519218B3100F61786 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 119FA0C9191D5F05001C3325 /* o.pak.pd */;
+			targetProxy = 52183D4419218B3100F61786 /* PBXContainerItemProxy */;
+		};
+		52183D4719218B3100F61786 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 119FA0D3191D5F0F001C3325 /* o.prepend.pd */;
+			targetProxy = 52183D4619218B3100F61786 /* PBXContainerItemProxy */;
+		};
+		52183D4919218B3100F61786 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5214995C191D4C0100642F55 /* o.print.pd */;
+			targetProxy = 52183D4819218B3100F61786 /* PBXContainerItemProxy */;
+		};
+		52183D4B19218B3100F61786 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5214996C191D563700642F55 /* o.printbytes.pd */;
+			targetProxy = 52183D4A19218B3100F61786 /* PBXContainerItemProxy */;
+		};
+		52183D4D19218B3100F61786 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 119FA0E3191D5FFB001C3325 /* o.route.pd */;
+			targetProxy = 52183D4C19218B3100F61786 /* PBXContainerItemProxy */;
+		};
+		52183D4F19218B3100F61786 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 119FA0ED191D6002001C3325 /* o.schedule.pd */;
+			targetProxy = 52183D4E19218B3100F61786 /* PBXContainerItemProxy */;
+		};
+		52183D5119218B3100F61786 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 119FA0F7191D6009001C3325 /* o.select.pd */;
+			targetProxy = 52183D5019218B3100F61786 /* PBXContainerItemProxy */;
+		};
+		52183D5319218B3100F61786 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 119FA101191D6010001C3325 /* o.table.pd */;
+			targetProxy = 52183D5219218B3100F61786 /* PBXContainerItemProxy */;
+		};
+		52183D5519218B3100F61786 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 119FA10B191D6027001C3325 /* o.timetag.pd */;
+			targetProxy = 52183D5419218B3100F61786 /* PBXContainerItemProxy */;
+		};
+		52183D5719218B3100F61786 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 119FA115191D602E001C3325 /* o.union.pd */;
+			targetProxy = 52183D5619218B3100F61786 /* PBXContainerItemProxy */;
+		};
+		52183D5919218B3100F61786 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 119FA11F191D6032001C3325 /* o.unless.pd */;
+			targetProxy = 52183D5819218B3100F61786 /* PBXContainerItemProxy */;
+		};
+		52183D5B19218B3100F61786 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 119FA129191D6040001C3325 /* o.var.pd */;
+			targetProxy = 52183D5A19218B3100F61786 /* PBXContainerItemProxy */;
+		};
+		52183D5D19218B3100F61786 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 119FA133191D6052001C3325 /* o.when.pd */;
+			targetProxy = 52183D5C19218B3100F61786 /* PBXContainerItemProxy */;
+		};
 		52517B9D181F701F00879497 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 52B53CDC17480C8100237A19 /* o.downcast */;
@@ -4762,7 +5126,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ONLY_ACTIVE_ARCH_PRE_XCODE_3_1)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -4805,7 +5169,7 @@
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../libo\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../libomax\"";
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH_PRE_XCODE_3_1 = "$(NATIVE_ARCH_ACTUAL)";
 				OTHER_CFLAGS = (
 					"-DOMAX_PD_VERSION",
 					"-DNO_TRANSLATION_SUPPORT",
@@ -4824,7 +5188,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1)";
+				ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1 = "x86_64 i386 ppc";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -4880,7 +5245,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ONLY_ACTIVE_ARCH_PRE_XCODE_3_1)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -4923,7 +5288,7 @@
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../libo\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../libomax\"";
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH_PRE_XCODE_3_1 = "$(NATIVE_ARCH_ACTUAL)";
 				OTHER_CFLAGS = (
 					"-DOMAX_PD_VERSION",
 					"-DNO_TRANSLATION_SUPPORT",
@@ -4942,7 +5307,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1)";
+				ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1 = "x86_64 i386 ppc";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -4998,7 +5364,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ONLY_ACTIVE_ARCH_PRE_XCODE_3_1)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -5041,7 +5407,7 @@
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../libo\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../libomax\"";
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH_PRE_XCODE_3_1 = "$(NATIVE_ARCH_ACTUAL)";
 				OTHER_CFLAGS = (
 					"-DOMAX_PD_VERSION",
 					"-DNO_TRANSLATION_SUPPORT",
@@ -5060,7 +5426,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1)";
+				ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1 = "x86_64 i386 ppc";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -5116,7 +5483,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ONLY_ACTIVE_ARCH_PRE_XCODE_3_1)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -5159,7 +5526,7 @@
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../libo\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../libomax\"";
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH_PRE_XCODE_3_1 = "$(NATIVE_ARCH_ACTUAL)";
 				OTHER_CFLAGS = (
 					"-DOMAX_PD_VERSION",
 					"-DNO_TRANSLATION_SUPPORT",
@@ -5178,7 +5545,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1)";
+				ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1 = "x86_64 i386 ppc";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -5234,7 +5602,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ONLY_ACTIVE_ARCH_PRE_XCODE_3_1)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -5277,7 +5645,7 @@
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../libo\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../libomax\"";
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH_PRE_XCODE_3_1 = "$(NATIVE_ARCH_ACTUAL)";
 				OTHER_CFLAGS = (
 					"-DOMAX_PD_VERSION",
 					"-DNO_TRANSLATION_SUPPORT",
@@ -5296,7 +5664,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1)";
+				ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1 = "x86_64 i386 ppc";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -5352,7 +5721,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ONLY_ACTIVE_ARCH_PRE_XCODE_3_1)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -5395,7 +5764,7 @@
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../libo\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../libomax\"";
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH_PRE_XCODE_3_1 = "$(NATIVE_ARCH_ACTUAL)";
 				OTHER_CFLAGS = (
 					"-DOMAX_PD_VERSION",
 					"-DNO_TRANSLATION_SUPPORT",
@@ -5414,7 +5783,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1)";
+				ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1 = "x86_64 i386 ppc";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -5470,7 +5840,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ONLY_ACTIVE_ARCH_PRE_XCODE_3_1)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -5513,7 +5883,7 @@
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../libo\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../libomax\"";
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH_PRE_XCODE_3_1 = "$(NATIVE_ARCH_ACTUAL)";
 				OTHER_CFLAGS = (
 					"-DOMAX_PD_VERSION",
 					"-DNO_TRANSLATION_SUPPORT",
@@ -5532,7 +5902,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1)";
+				ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1 = "x86_64 i386 ppc";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -5588,7 +5959,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ONLY_ACTIVE_ARCH_PRE_XCODE_3_1)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -5631,7 +6002,7 @@
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../libo\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../libomax\"";
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH_PRE_XCODE_3_1 = "$(NATIVE_ARCH_ACTUAL)";
 				OTHER_CFLAGS = (
 					"-DOMAX_PD_VERSION",
 					"-DNO_TRANSLATION_SUPPORT",
@@ -5650,7 +6021,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1)";
+				ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1 = "x86_64 i386 ppc";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -5706,7 +6078,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ONLY_ACTIVE_ARCH_PRE_XCODE_3_1)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -5749,7 +6121,7 @@
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../libo\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../libomax\"";
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH_PRE_XCODE_3_1 = "$(NATIVE_ARCH_ACTUAL)";
 				OTHER_CFLAGS = (
 					"-DOMAX_PD_VERSION",
 					"-DNO_TRANSLATION_SUPPORT",
@@ -5768,7 +6140,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1)";
+				ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1 = "x86_64 i386 ppc";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -5824,7 +6197,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ONLY_ACTIVE_ARCH_PRE_XCODE_3_1)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -5867,7 +6240,7 @@
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../libo\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../libomax\"";
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH_PRE_XCODE_3_1 = "$(NATIVE_ARCH_ACTUAL)";
 				OTHER_CFLAGS = (
 					"-DOMAX_PD_VERSION",
 					"-DNO_TRANSLATION_SUPPORT",
@@ -5886,7 +6259,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1)";
+				ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1 = "x86_64 i386 ppc";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -5942,7 +6316,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ONLY_ACTIVE_ARCH_PRE_XCODE_3_1)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -5985,7 +6359,7 @@
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../libo\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../libomax\"";
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH_PRE_XCODE_3_1 = "$(NATIVE_ARCH_ACTUAL)";
 				OTHER_CFLAGS = (
 					"-DOMAX_PD_VERSION",
 					"-DNO_TRANSLATION_SUPPORT",
@@ -6004,7 +6378,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1)";
+				ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1 = "x86_64 i386 ppc";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -6060,7 +6435,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ONLY_ACTIVE_ARCH_PRE_XCODE_3_1)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -6103,7 +6478,7 @@
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../libo\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../libomax\"";
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH_PRE_XCODE_3_1 = "$(NATIVE_ARCH_ACTUAL)";
 				OTHER_CFLAGS = (
 					"-DOMAX_PD_VERSION",
 					"-DNO_TRANSLATION_SUPPORT",
@@ -6122,7 +6497,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1)";
+				ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1 = "x86_64 i386 ppc";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -6178,7 +6554,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ONLY_ACTIVE_ARCH_PRE_XCODE_3_1)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -6221,7 +6597,7 @@
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../libo\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../libomax\"";
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH_PRE_XCODE_3_1 = "$(NATIVE_ARCH_ACTUAL)";
 				OTHER_CFLAGS = (
 					"-DOMAX_PD_VERSION",
 					"-DNO_TRANSLATION_SUPPORT",
@@ -6240,7 +6616,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1)";
+				ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1 = "x86_64 i386 ppc";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -6296,7 +6673,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ONLY_ACTIVE_ARCH_PRE_XCODE_3_1)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -6339,7 +6716,7 @@
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../libo\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../libomax\"";
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH_PRE_XCODE_3_1 = "$(NATIVE_ARCH_ACTUAL)";
 				OTHER_CFLAGS = (
 					"-DOMAX_PD_VERSION",
 					"-DNO_TRANSLATION_SUPPORT",
@@ -6358,7 +6735,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1)";
+				ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1 = "x86_64 i386 ppc";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -6414,7 +6792,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ONLY_ACTIVE_ARCH_PRE_XCODE_3_1)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -6457,7 +6835,7 @@
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../libo\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../libomax\"";
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH_PRE_XCODE_3_1 = "$(NATIVE_ARCH_ACTUAL)";
 				OTHER_CFLAGS = (
 					"-DOMAX_PD_VERSION",
 					"-DNO_TRANSLATION_SUPPORT",
@@ -6476,7 +6854,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1)";
+				ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1 = "x86_64 i386 ppc";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -6532,7 +6911,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ONLY_ACTIVE_ARCH_PRE_XCODE_3_1)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -6575,7 +6954,7 @@
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../libo\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../libomax\"";
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH_PRE_XCODE_3_1 = "$(NATIVE_ARCH_ACTUAL)";
 				OTHER_CFLAGS = (
 					"-DOMAX_PD_VERSION",
 					"-DNO_TRANSLATION_SUPPORT",
@@ -6594,7 +6973,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1)";
+				ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1 = "x86_64 i386 ppc";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -6650,7 +7030,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ONLY_ACTIVE_ARCH_PRE_XCODE_3_1)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -6693,7 +7073,7 @@
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../libo\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../libomax\"";
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH_PRE_XCODE_3_1 = "$(NATIVE_ARCH_ACTUAL)";
 				OTHER_CFLAGS = (
 					"-DOMAX_PD_VERSION",
 					"-DNO_TRANSLATION_SUPPORT",
@@ -6712,7 +7092,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1)";
+				ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1 = "x86_64 i386 ppc";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -6768,7 +7149,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ONLY_ACTIVE_ARCH_PRE_XCODE_3_1)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -6811,7 +7192,7 @@
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../libo\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../libomax\"";
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH_PRE_XCODE_3_1 = "$(NATIVE_ARCH_ACTUAL)";
 				OTHER_CFLAGS = (
 					"-DOMAX_PD_VERSION",
 					"-DNO_TRANSLATION_SUPPORT",
@@ -6830,7 +7211,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1)";
+				ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1 = "x86_64 i386 ppc";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -6886,7 +7268,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ONLY_ACTIVE_ARCH_PRE_XCODE_3_1)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -6929,7 +7311,7 @@
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../libo\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../libomax\"";
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH_PRE_XCODE_3_1 = "$(NATIVE_ARCH_ACTUAL)";
 				OTHER_CFLAGS = (
 					"-DOMAX_PD_VERSION",
 					"-DNO_TRANSLATION_SUPPORT",
@@ -6948,7 +7330,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1)";
+				ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1 = "x86_64 i386 ppc";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -7004,7 +7387,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ONLY_ACTIVE_ARCH_PRE_XCODE_3_1)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -7047,7 +7430,7 @@
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../libo\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../libomax\"";
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH_PRE_XCODE_3_1 = "$(NATIVE_ARCH_ACTUAL)";
 				OTHER_CFLAGS = (
 					"-DOMAX_PD_VERSION",
 					"-DNO_TRANSLATION_SUPPORT",
@@ -7066,7 +7449,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1)";
+				ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1 = "x86_64 i386 ppc";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -7122,7 +7506,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ONLY_ACTIVE_ARCH_PRE_XCODE_3_1)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -7165,7 +7549,7 @@
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../libo\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../libomax\"";
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH_PRE_XCODE_3_1 = "$(NATIVE_ARCH_ACTUAL)";
 				OTHER_CFLAGS = (
 					"-DOMAX_PD_VERSION",
 					"-DNO_TRANSLATION_SUPPORT",
@@ -7184,7 +7568,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1)";
+				ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1 = "x86_64 i386 ppc";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -7240,7 +7625,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ONLY_ACTIVE_ARCH_PRE_XCODE_3_1)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -7283,7 +7668,7 @@
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../libo\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../libomax\"";
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH_PRE_XCODE_3_1 = "$(NATIVE_ARCH_ACTUAL)";
 				OTHER_CFLAGS = (
 					"-DOMAX_PD_VERSION",
 					"-DNO_TRANSLATION_SUPPORT",
@@ -7302,7 +7687,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1)";
+				ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1 = "x86_64 i386 ppc";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -7358,7 +7744,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ONLY_ACTIVE_ARCH_PRE_XCODE_3_1)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -7401,7 +7787,7 @@
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../libo\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../libomax\"";
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH_PRE_XCODE_3_1 = "$(NATIVE_ARCH_ACTUAL)";
 				OTHER_CFLAGS = (
 					"-DOMAX_PD_VERSION",
 					"-DNO_TRANSLATION_SUPPORT",
@@ -7420,7 +7806,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1)";
+				ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1 = "x86_64 i386 ppc";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -7476,7 +7863,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ONLY_ACTIVE_ARCH_PRE_XCODE_3_1)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -7519,7 +7906,7 @@
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../libo\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../libomax\"";
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH_PRE_XCODE_3_1 = "$(NATIVE_ARCH_ACTUAL)";
 				OTHER_CFLAGS = (
 					"-DOMAX_PD_VERSION",
 					"-DNO_TRANSLATION_SUPPORT",
@@ -7538,7 +7925,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1)";
+				ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1 = "x86_64 i386 ppc";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -7594,7 +7982,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ONLY_ACTIVE_ARCH_PRE_XCODE_3_1)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -7637,7 +8025,7 @@
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../libo\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../libomax\"";
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH_PRE_XCODE_3_1 = "$(NATIVE_ARCH_ACTUAL)";
 				OTHER_CFLAGS = (
 					"-DOMAX_PD_VERSION",
 					"-DNO_TRANSLATION_SUPPORT",
@@ -7656,7 +8044,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1)";
+				ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1 = "x86_64 i386 ppc";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -7712,7 +8101,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ONLY_ACTIVE_ARCH_PRE_XCODE_3_1)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -7755,7 +8144,7 @@
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../libo\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../libomax\"";
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH_PRE_XCODE_3_1 = "$(NATIVE_ARCH_ACTUAL)";
 				OTHER_CFLAGS = (
 					"-DOMAX_PD_VERSION",
 					"-DNO_TRANSLATION_SUPPORT",
@@ -7774,7 +8163,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1)";
+				ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1 = "x86_64 i386 ppc";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -7865,7 +8255,7 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PREBINDING = YES;
 				PRELINK_LIBS = "\"$(SRCROOT)/../libo/libo.a\" \"$(SRCROOT)/../libomax/libomax.a\"";
-				PRODUCT_NAME = o.svg;
+				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
 				SYMROOT = "$(inherited)";
@@ -7915,7 +8305,7 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PREBINDING = YES;
 				PRELINK_LIBS = "\"$(SRCROOT)/../libo/libo.a\" \"$(SRCROOT)/../libomax/libomax.a\"";
-				PRODUCT_NAME = o.svg;
+				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
 				SYMROOT = "$(inherited)";
@@ -7988,7 +8378,7 @@
 				OTHER_LDFLAGS = "@../max6-sdk/c74support/max-includes/c74_linker_flags.txt";
 				PREBINDING = YES;
 				PRELINK_LIBS = "\"$(SRCROOT)/../libo/libo.a\" \"$(SRCROOT)/../libomax/libomax.a\"";
-				PRODUCT_NAME = o;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
@@ -8068,7 +8458,7 @@
 				OTHER_LDFLAGS = "@../max6-sdk/c74support/max-includes/c74_linker_flags.txt";
 				PREBINDING = YES;
 				PRELINK_LIBS = "\"$(SRCROOT)/../libo/libo.a\" \"$(SRCROOT)/../libomax/libomax.a\"";
-				PRODUCT_NAME = o;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
@@ -8218,7 +8608,7 @@
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
 				PREBINDING = YES;
-				PRODUCT_NAME = o.dict;
+				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
 				SYMROOT = "$(inherited)";
@@ -8267,7 +8657,7 @@
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
 				PREBINDING = YES;
-				PRODUCT_NAME = o.dict;
+				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
 				SYMROOT = "$(inherited)";
@@ -8282,7 +8672,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ONLY_ACTIVE_ARCH_PRE_XCODE_3_1)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -8325,7 +8715,7 @@
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../libo\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../libomax\"";
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH_PRE_XCODE_3_1 = "$(NATIVE_ARCH_ACTUAL)";
 				OTHER_CFLAGS = (
 					"-DOMAX_PD_VERSION",
 					"-DNO_TRANSLATION_SUPPORT",
@@ -8344,7 +8734,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1)";
+				ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1 = "x86_64 i386 ppc";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -8400,7 +8791,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ONLY_ACTIVE_ARCH_PRE_XCODE_3_1)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -8443,7 +8834,7 @@
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../libo\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../libomax\"";
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH_PRE_XCODE_3_1 = "$(NATIVE_ARCH_ACTUAL)";
 				OTHER_CFLAGS = (
 					"-DOMAX_PD_VERSION",
 					"-DNO_TRANSLATION_SUPPORT",
@@ -8462,7 +8853,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1)";
+				ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1 = "x86_64 i386 ppc";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -8552,7 +8944,7 @@
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
 				PREBINDING = YES;
-				PRODUCT_NAME = o.explode;
+				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
 				SYMROOT = "$(inherited)";
@@ -8601,7 +8993,7 @@
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
 				PREBINDING = YES;
-				PRODUCT_NAME = o.explode;
+				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
 				SYMROOT = "$(inherited)";
@@ -10764,7 +11156,7 @@
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
 				PREBINDING = YES;
-				PRODUCT_NAME = o.flatten;
+				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
 				SYMROOT = "$(inherited)";
@@ -10813,7 +11205,7 @@
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
 				PREBINDING = YES;
-				PRODUCT_NAME = o.flatten;
+				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
 				SYMROOT = "$(inherited)";
@@ -10862,7 +11254,7 @@
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
 				PREBINDING = YES;
-				PRODUCT_NAME = o.append;
+				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
 				SYMROOT = "$(inherited)";
@@ -10910,7 +11302,7 @@
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
 				PREBINDING = YES;
-				PRODUCT_NAME = o.append;
+				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
 				SYMROOT = "$(inherited)";
@@ -11056,7 +11448,7 @@
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
 				PREBINDING = YES;
-				PRODUCT_NAME = o.schedule;
+				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
 				SYMROOT = "$(inherited)";
@@ -11104,7 +11496,7 @@
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
 				PREBINDING = YES;
-				PRODUCT_NAME = o.schedule;
+				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
 				SYMROOT = "$(inherited)";
@@ -11153,7 +11545,7 @@
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
 				PREBINDING = YES;
-				PRODUCT_NAME = o.downcast;
+				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
 				SYMROOT = "$(inherited)";
@@ -11201,7 +11593,7 @@
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
 				PREBINDING = YES;
-				PRODUCT_NAME = o.downcast;
+				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
 				SYMROOT = "$(inherited)";
@@ -11250,7 +11642,7 @@
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
 				PREBINDING = YES;
-				PRODUCT_NAME = o.validate;
+				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
 				SYMROOT = "$(inherited)";
@@ -11298,7 +11690,7 @@
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
 				PREBINDING = YES;
-				PRODUCT_NAME = o.validate;
+				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
 				SYMROOT = "$(inherited)";
@@ -11347,7 +11739,7 @@
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
 				PREBINDING = YES;
-				PRODUCT_NAME = o.iterate;
+				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
 				SYMROOT = "$(inherited)";
@@ -11395,7 +11787,7 @@
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
 				PREBINDING = YES;
-				PRODUCT_NAME = o.iterate;
+				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
 				SYMROOT = "$(inherited)";
@@ -11444,7 +11836,7 @@
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
 				PREBINDING = YES;
-				PRODUCT_NAME = o.random;
+				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
 				SYMROOT = "$(inherited)";
@@ -11492,7 +11884,7 @@
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
 				PREBINDING = YES;
-				PRODUCT_NAME = o.random;
+				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
 				SYMROOT = "$(inherited)";
@@ -11636,7 +12028,7 @@
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
 				PREBINDING = YES;
-				PRODUCT_NAME = "o.edge~";
+				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
 				SYMROOT = "$(inherited)";
@@ -11686,7 +12078,7 @@
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
 				PREBINDING = YES;
-				PRODUCT_NAME = "o.edge~";
+				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
 				SYMROOT = "$(inherited)";
@@ -11737,7 +12129,7 @@
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
 				PREBINDING = YES;
-				PRODUCT_NAME = "o.schedule~";
+				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
 				SYMROOT = "$(inherited)";
@@ -11787,7 +12179,7 @@
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
 				PREBINDING = YES;
-				PRODUCT_NAME = "o.schedule~";
+				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
 				SYMROOT = "$(inherited)";
@@ -11836,7 +12228,7 @@
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
 				PREBINDING = YES;
-				PRODUCT_NAME = o.io.bluetoothle.hrm;
+				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
 				SYMROOT = "$(inherited)";
@@ -11884,7 +12276,7 @@
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
 				PREBINDING = YES;
-				PRODUCT_NAME = o.io.bluetoothle.hrm;
+				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
 				SYMROOT = "$(inherited)";
@@ -11933,7 +12325,7 @@
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
 				PREBINDING = YES;
-				PRODUCT_NAME = o.table;
+				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
 				SYMROOT = "$(inherited)";
@@ -11981,7 +12373,7 @@
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
 				PREBINDING = YES;
-				PRODUCT_NAME = o.table;
+				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
 				SYMROOT = "$(inherited)";
@@ -12020,7 +12412,7 @@
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
 				PREBINDING = YES;
-				PRODUCT_NAME = o.O;
+				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
 				SYMROOT = "$(inherited)";
@@ -12058,7 +12450,7 @@
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
 				PREBINDING = YES;
-				PRODUCT_NAME = o.O;
+				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
 				SYMROOT = "$(inherited)";
@@ -12089,7 +12481,7 @@
 				INFOPLIST_PREPROCESSOR_DEFINITIONS = "";
 				INSTALL_PATH = "$(inherited)";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PRODUCT_NAME = odot;
+				PRODUCT_NAME = "$(inherited)";
 				PUBLIC_HEADERS_FOLDER_PATH = "";
 				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.7.sdk";
 				SYMROOT = build;
@@ -12118,7 +12510,7 @@
 				INFOPLIST_PREPROCESSOR_DEFINITIONS = "";
 				INSTALL_PATH = "$(inherited)";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PRODUCT_NAME = odot;
+				PRODUCT_NAME = "$(inherited)";
 				PUBLIC_HEADERS_FOLDER_PATH = "";
 				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.7.sdk";
 				SYMROOT = build;
