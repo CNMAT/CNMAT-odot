@@ -188,7 +188,7 @@ int setup_o0x2echange(void)
 }
 
 #else
-void *change_new(t_symbol *msg, short argc, t_atom *argv)
+void *ochange_new(t_symbol *msg, short argc, t_atom *argv)
 {
 	t_ochange *x;
 	if((x = (t_ochange *)object_alloc(ochange_class))){
