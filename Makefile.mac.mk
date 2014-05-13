@@ -78,7 +78,7 @@ clean:
 	rm -rf $(STAGINGDIR)
 	rm -rf $(ARCHIVE)
 	rm -rf $(LOCAL_INSTALL_PATH)
-	#rm $(CURRENT_VERSION_FILE)
+	rm $(CURRENT_VERSION_FILE)
 
 ##################################################
 ## create directories
@@ -99,5 +99,6 @@ $(INSTALLDIR)/objects: $(INSTALLDIR) $(RELEASEDIR)
 	cp -r $(RELEASEDIR)/* $(INSTALLDIR)
 
 $(CURRENT_VERSION_FILE):
-	echo "#define ODOT_VERSION \""`git describe --tags --long`"\"" > $(CURRENT_VERSION_FILE)
-	echo "#define ODOT_COMPILE_DATE \""`date`"\""  >> $(CURRENT_VERSION_FILE)
+	sh odot_current_version.sh
+#	echo "#define ODOT_VERSION \""`git describe --tags --long`"\"" > $(CURRENT_VERSION_FILE)
+#	echo "#define ODOT_COMPILE_DATE \""`date`"\""  >> $(CURRENT_VERSION_FILE)
