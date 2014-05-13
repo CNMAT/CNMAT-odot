@@ -7,6 +7,89 @@
 	objects = {
 
 /* Begin PBXAggregateTarget section */
+		52183D5E19218CCB00F61786 /* Build all Max */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 52183DDD19218CCB00F61786 /* Build configuration list for PBXAggregateTarget "Build all Max" */;
+			buildPhases = (
+			);
+			dependencies = (
+				52183D9719218CCB00F61786 /* PBXTargetDependency */,
+				52183D9919218CCB00F61786 /* PBXTargetDependency */,
+				52183D9B19218CCB00F61786 /* PBXTargetDependency */,
+				52183D9D19218CCB00F61786 /* PBXTargetDependency */,
+				52183D9F19218CCB00F61786 /* PBXTargetDependency */,
+				52183DA119218CCB00F61786 /* PBXTargetDependency */,
+				52183DA319218CCB00F61786 /* PBXTargetDependency */,
+				52183DA519218CCB00F61786 /* PBXTargetDependency */,
+				52183DA719218CCB00F61786 /* PBXTargetDependency */,
+				52183DA919218CCB00F61786 /* PBXTargetDependency */,
+				52183DAB19218CCB00F61786 /* PBXTargetDependency */,
+				52183DAD19218CCB00F61786 /* PBXTargetDependency */,
+				52183DAF19218CCB00F61786 /* PBXTargetDependency */,
+				52183DB119218CCB00F61786 /* PBXTargetDependency */,
+				52183DB319218CCB00F61786 /* PBXTargetDependency */,
+				52183DB519218CCB00F61786 /* PBXTargetDependency */,
+				52183DB719218CCB00F61786 /* PBXTargetDependency */,
+				52183DB919218CCB00F61786 /* PBXTargetDependency */,
+				52183DBB19218CCB00F61786 /* PBXTargetDependency */,
+				52183DBD19218CCB00F61786 /* PBXTargetDependency */,
+				52183DBF19218CCB00F61786 /* PBXTargetDependency */,
+				52183DC119218CCB00F61786 /* PBXTargetDependency */,
+				52183DC319218CCB00F61786 /* PBXTargetDependency */,
+				52183DC519218CCB00F61786 /* PBXTargetDependency */,
+				52183DC719218CCB00F61786 /* PBXTargetDependency */,
+				52183DC919218CCB00F61786 /* PBXTargetDependency */,
+				52183DCB19218CCB00F61786 /* PBXTargetDependency */,
+				52183DCD19218CCB00F61786 /* PBXTargetDependency */,
+				52183DCF19218CCB00F61786 /* PBXTargetDependency */,
+				52183DD119218CCB00F61786 /* PBXTargetDependency */,
+				52183DD319218CCB00F61786 /* PBXTargetDependency */,
+				52183DD519218CCB00F61786 /* PBXTargetDependency */,
+				52183DD719218CCB00F61786 /* PBXTargetDependency */,
+				52183DD919218CCB00F61786 /* PBXTargetDependency */,
+				52183DDB19218CCB00F61786 /* PBXTargetDependency */,
+			);
+			name = "Build all Max";
+			productName = "Build all";
+		};
+		52183DE019218CF200F61786 /* Build all PD */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 52183E5F19218CF200F61786 /* Build configuration list for PBXAggregateTarget "Build all PD" */;
+			buildPhases = (
+			);
+			dependencies = (
+				52183DE119218CF200F61786 /* PBXTargetDependency */,
+				52183DE319218CF200F61786 /* PBXTargetDependency */,
+				52183DE519218CF200F61786 /* PBXTargetDependency */,
+				52183DE719218CF200F61786 /* PBXTargetDependency */,
+				52183DE919218CF200F61786 /* PBXTargetDependency */,
+				52183DEB19218CF200F61786 /* PBXTargetDependency */,
+				52183DED19218CF200F61786 /* PBXTargetDependency */,
+				52183DEF19218CF200F61786 /* PBXTargetDependency */,
+				52183DF119218CF200F61786 /* PBXTargetDependency */,
+				52183DF319218CF200F61786 /* PBXTargetDependency */,
+				52183DF519218CF200F61786 /* PBXTargetDependency */,
+				52183DF719218CF200F61786 /* PBXTargetDependency */,
+				52183DF919218CF200F61786 /* PBXTargetDependency */,
+				52183DFB19218CF200F61786 /* PBXTargetDependency */,
+				52183DFD19218CF200F61786 /* PBXTargetDependency */,
+				52183DFF19218CF200F61786 /* PBXTargetDependency */,
+				52183E0119218CF200F61786 /* PBXTargetDependency */,
+				52183E0319218CF200F61786 /* PBXTargetDependency */,
+				52183E0519218CF200F61786 /* PBXTargetDependency */,
+				52183E0719218CF200F61786 /* PBXTargetDependency */,
+				52183E0919218CF200F61786 /* PBXTargetDependency */,
+				52183E0B19218CF200F61786 /* PBXTargetDependency */,
+				52183E0D19218CF200F61786 /* PBXTargetDependency */,
+				52183E0F19218CF200F61786 /* PBXTargetDependency */,
+				52183E1119218CF200F61786 /* PBXTargetDependency */,
+				52183E1319218CF200F61786 /* PBXTargetDependency */,
+				52183E1519218CF200F61786 /* PBXTargetDependency */,
+				52183E1719218CF200F61786 /* PBXTargetDependency */,
+			);
+			name = "Build all PD";
+			productName = "Build all";
+		};
 		B4E73DAC0E1888E9001E52BE /* Build all */ = {
 			isa = PBXAggregateTarget;
 			buildConfigurationList = B4E73DB00E1888EA001E52BE /* Build configuration list for PBXAggregateTarget "Build all" */;
@@ -542,6 +625,447 @@
 			remoteGlobalIDString = 119FA133191D6052001C3325;
 			remoteInfo = o.when.pd;
 		};
+		52183D9819218CCB00F61786 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5292DC3E17FCC6AD00598BDC;
+			remoteInfo = o.io.bluetoothle.sensortag;
+		};
+		52183D9A19218CCB00F61786 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 52B53CDC17480C8100237A19;
+			remoteInfo = o.downcast;
+		};
+		52183D9C19218CCB00F61786 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 52B654F017D159B9004FD84E;
+			remoteInfo = "o.edge~";
+		};
+		52183D9E19218CCB00F61786 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 52A8396E16F3F898002E273C;
+			remoteInfo = o.schedule;
+		};
+		52183DA019218CCB00F61786 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 52B6551917E3B971004FD84E;
+			remoteInfo = o.io.bluetoothle.hrm;
+		};
+		52183DA219218CCB00F61786 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 527294B817EDE93B00AA15E1;
+			remoteInfo = o.context;
+		};
+		52183DA419218CCB00F61786 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 52B53D0017484E5500237A19;
+			remoteInfo = o.iterate;
+		};
+		52183DA619218CCB00F61786 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 52B53CEE1748287A00237A19;
+			remoteInfo = o.validate;
+		};
+		52183DA819218CCB00F61786 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 52C839D1167A5B24000AA688;
+			remoteInfo = o.table;
+		};
+		52183DAA19218CCB00F61786 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 52A8395916EFFBC9002E273C;
+			remoteInfo = o.timetag;
+		};
+		52183DAC19218CCB00F61786 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 52A8393B16E978D7002E273C;
+			remoteInfo = o.append;
+		};
+		52183DAE19218CCB00F61786 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 520C0E19158468F7005F2955;
+			remoteInfo = o.dict;
+		};
+		52183DB019218CCB00F61786 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 529781521555B6FD0018A44D;
+			remoteInfo = o.flatten;
+		};
+		52183DB219218CCB00F61786 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 525523E01504D0B200A10E5D;
+			remoteInfo = o.collect;
+		};
+		52183DB419218CCB00F61786 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 525523EF1504D14200A10E5D;
+			remoteInfo = o.cond;
+		};
+		52183DB619218CCB00F61786 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 525523FE1504D14400A10E5D;
+			remoteInfo = o.difference;
+		};
+		52183DB819218CCB00F61786 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5217D8FB158EEBC4005B5238;
+			remoteInfo = o.explode;
+		};
+		52183DBA19218CCB00F61786 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5255240D1504D14600A10E5D;
+			remoteInfo = o.expr;
+		};
+		52183DBC19218CCB00F61786 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5255241C1504D14B00A10E5D;
+			remoteInfo = o.if;
+		};
+		52183DBE19218CCB00F61786 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5255242B1504D14F00A10E5D;
+			remoteInfo = o.intersection;
+		};
+		52183DC019218CCB00F61786 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5255243A1504D15000A10E5D;
+			remoteInfo = o.mappatch;
+		};
+		52183DC219218CCB00F61786 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 525524491504D15200A10E5D;
+			remoteInfo = o.message;
+		};
+		52183DC419218CCB00F61786 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 525524581504D15400A10E5D;
+			remoteInfo = o.pack;
+		};
+		52183DC619218CCB00F61786 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 525524671504D15600A10E5D;
+			remoteInfo = o.pak;
+		};
+		52183DC819218CCB00F61786 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 525524761504D15700A10E5D;
+			remoteInfo = o.prepend;
+		};
+		52183DCA19218CCB00F61786 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 525524851504D15900A10E5D;
+			remoteInfo = o.print;
+		};
+		52183DCC19218CCB00F61786 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 525524941504D15B00A10E5D;
+			remoteInfo = o.printbytes;
+		};
+		52183DCE19218CCB00F61786 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 525524A31504D15D00A10E5D;
+			remoteInfo = o.route;
+		};
+		52183DD019218CCB00F61786 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 525524B21504D15F00A10E5D;
+			remoteInfo = o.select;
+		};
+		52183DD219218CCB00F61786 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 525524C11504D16100A10E5D;
+			remoteInfo = o.union;
+		};
+		52183DD419218CCB00F61786 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 525524D01504D16200A10E5D;
+			remoteInfo = o.unless;
+		};
+		52183DD619218CCB00F61786 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 525524DF1504D16400A10E5D;
+			remoteInfo = o.var;
+		};
+		52183DD819218CCB00F61786 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 525524EE1504D16600A10E5D;
+			remoteInfo = o.when;
+		};
+		52183DDA19218CCB00F61786 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 525523C91504CB9E00A10E5D;
+			remoteInfo = o.change;
+		};
+		52183DDC19218CCB00F61786 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B4FEACE30CEF01BF00C2A20C;
+			remoteInfo = cv.jit.binedge;
+		};
+		52183DE219218CF200F61786 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 119FA028191D5814001C3325;
+			remoteInfo = o.append.pd;
+		};
+		52183DE419218CF200F61786 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 119FA033191D58CA001C3325;
+			remoteInfo = o.atomize.pd;
+		};
+		52183DE619218CF200F61786 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 119FA03E191D58FF001C3325;
+			remoteInfo = o.change.pd;
+		};
+		52183DE819218CF200F61786 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 119FA049191D5A2A001C3325;
+			remoteInfo = o.collect.pd;
+		};
+		52183DEA19218CF200F61786 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 119FA053191D5A53001C3325;
+			remoteInfo = o.cond.pd;
+		};
+		52183DEC19218CF200F61786 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 119FA05D191D5A67001C3325;
+			remoteInfo = o.difference.pd;
+		};
+		52183DEE19218CF200F61786 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 119FA06A191D5D2B001C3325;
+			remoteInfo = o.explode.pd;
+		};
+		52183DF019218CF200F61786 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 119FA074191D5D3A001C3325;
+			remoteInfo = o.expr.pd;
+		};
+		52183DF219218CF200F61786 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 119FA07E191D5D43001C3325;
+			remoteInfo = o.flatten.pd;
+		};
+		52183DF419218CF200F61786 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 119FA088191D5D52001C3325;
+			remoteInfo = o.if.pd;
+		};
+		52183DF619218CF200F61786 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 119FA092191D5D5B001C3325;
+			remoteInfo = o.intersection.pd;
+		};
+		52183DF819218CF200F61786 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 119FA0A1191D5E91001C3325;
+			remoteInfo = o.iterate.pd;
+		};
+		52183DFA19218CF200F61786 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 119FA0AB191D5E9D001C3325;
+			remoteInfo = o.mappatch.pd;
+		};
+		52183DFC19218CF200F61786 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 119FA0B5191D5EC6001C3325;
+			remoteInfo = o.message.pd;
+		};
+		52183DFE19218CF200F61786 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 119FA0BF191D5EF5001C3325;
+			remoteInfo = o.pack.pd;
+		};
+		52183E0019218CF200F61786 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 119FA0C9191D5F05001C3325;
+			remoteInfo = o.pak.pd;
+		};
+		52183E0219218CF200F61786 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 119FA0D3191D5F0F001C3325;
+			remoteInfo = o.prepend.pd;
+		};
+		52183E0419218CF200F61786 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5214995C191D4C0100642F55;
+			remoteInfo = o.print.pd;
+		};
+		52183E0619218CF200F61786 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5214996C191D563700642F55;
+			remoteInfo = o.printbytes.pd;
+		};
+		52183E0819218CF200F61786 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 119FA0E3191D5FFB001C3325;
+			remoteInfo = o.route.pd;
+		};
+		52183E0A19218CF200F61786 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 119FA0ED191D6002001C3325;
+			remoteInfo = o.schedule.pd;
+		};
+		52183E0C19218CF200F61786 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 119FA0F7191D6009001C3325;
+			remoteInfo = o.select.pd;
+		};
+		52183E0E19218CF200F61786 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 119FA101191D6010001C3325;
+			remoteInfo = o.table.pd;
+		};
+		52183E1019218CF200F61786 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 119FA10B191D6027001C3325;
+			remoteInfo = o.timetag.pd;
+		};
+		52183E1219218CF200F61786 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 119FA115191D602E001C3325;
+			remoteInfo = o.union.pd;
+		};
+		52183E1419218CF200F61786 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 119FA11F191D6032001C3325;
+			remoteInfo = o.unless.pd;
+		};
+		52183E1619218CF200F61786 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 119FA129191D6040001C3325;
+			remoteInfo = o.var.pd;
+		};
+		52183E1819218CF200F61786 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 119FA133191D6052001C3325;
+			remoteInfo = o.when.pd;
+		};
 		52517B9C181F701F00879497 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
@@ -807,7 +1331,7 @@
 		11EF2AD418AFEBFC00156403 /* o.svg.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.svg.c; path = o.svg/o.svg.c; sourceTree = "<group>"; };
 		11EF2AD618AFF7A900156403 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		5203467B1555BF16001EA532 /* o.flatten.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.flatten.c; path = o.flatten/o.flatten.c; sourceTree = "<group>"; };
-		520A44B21824777800CB610F /* o.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
+		520A44B21824777800CB610F /* o.io.bluetoothle.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.io.bluetoothle.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
 		520A44B3182477D800CB610F /* o.io.bluetoothle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = o.io.bluetoothle.m; path = o.io.bluetoothle/o.io.bluetoothle.m; sourceTree = "<group>"; };
 		520C0E27158468F7005F2955 /* o.dict.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.dict.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
 		520C0E2A158469F4005F2955 /* o.dict.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.dict.c; path = o.dict/o.dict.c; sourceTree = "<group>"; };
@@ -822,27 +1346,27 @@
 		5217D909158EEBC4005B5238 /* o.explode.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.explode.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
 		5217D90C158EEBEB005B5238 /* o.explode.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.explode.c; path = o.explode/o.explode.c; sourceTree = "<group>"; };
 		525523B41504C3FD00A10E5D /* o.atomize.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.atomize.c; path = o.atomize/o.atomize.c; sourceTree = SOURCE_ROOT; };
-		525523D71504CB9E00A10E5D /* o.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
+		525523D71504CB9E00A10E5D /* o.change.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.change.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
 		525523D81504CC6000A10E5D /* o.change.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.change.c; path = o.change/o.change.c; sourceTree = "<group>"; };
-		525523EE1504D0B200A10E5D /* o.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
-		525523FD1504D14200A10E5D /* o.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
-		5255240C1504D14400A10E5D /* o.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
-		5255241B1504D14600A10E5D /* o.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
-		5255242A1504D14B00A10E5D /* o.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
-		525524391504D14F00A10E5D /* o.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
-		525524481504D15000A10E5D /* o.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
-		525524571504D15200A10E5D /* o.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
-		525524661504D15400A10E5D /* o.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
-		525524751504D15600A10E5D /* o.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
-		525524841504D15700A10E5D /* o.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
-		525524931504D15900A10E5D /* o.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
-		525524A21504D15B00A10E5D /* o.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
-		525524B11504D15D00A10E5D /* o.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
-		525524C01504D15F00A10E5D /* o.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
-		525524CF1504D16100A10E5D /* o.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
-		525524DE1504D16200A10E5D /* o.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
-		525524ED1504D16400A10E5D /* o.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
-		525524FC1504D16600A10E5D /* o.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
+		525523EE1504D0B200A10E5D /* o.collect.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.collect.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
+		525523FD1504D14200A10E5D /* o.cond.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.cond.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
+		5255240C1504D14400A10E5D /* o.difference.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.difference.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
+		5255241B1504D14600A10E5D /* o.expr.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.expr.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
+		5255242A1504D14B00A10E5D /* o.if.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.if.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
+		525524391504D14F00A10E5D /* o.intersection.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.intersection.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
+		525524481504D15000A10E5D /* o.mappatch.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.mappatch.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
+		525524571504D15200A10E5D /* o.message.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.message.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
+		525524661504D15400A10E5D /* o.pack.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.pack.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
+		525524751504D15600A10E5D /* o.pak.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.pak.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
+		525524841504D15700A10E5D /* o.prepend.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.prepend.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
+		525524931504D15900A10E5D /* o.print.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.print.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
+		525524A21504D15B00A10E5D /* o.printbytes.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.printbytes.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
+		525524B11504D15D00A10E5D /* o.route.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.route.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
+		525524C01504D15F00A10E5D /* o.select.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.select.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
+		525524CF1504D16100A10E5D /* o.union.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.union.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
+		525524DE1504D16200A10E5D /* o.unless.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.unless.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
+		525524ED1504D16400A10E5D /* o.var.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.var.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
+		525524FC1504D16600A10E5D /* o.when.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.when.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
 		525525271504D21500A10E5D /* o.collect.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.collect.c; path = o.collect/o.collect.c; sourceTree = "<group>"; };
 		525525291504D22A00A10E5D /* o.cond.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.cond.c; path = o.cond/o.cond.c; sourceTree = "<group>"; };
 		5255252B1504D23400A10E5D /* o.difference.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.difference.c; path = o.difference/o.difference.c; sourceTree = "<group>"; };
@@ -864,14 +1388,14 @@
 		5255254B1504D2CC00A10E5D /* o.when.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.when.c; path = o.when/o.when.c; sourceTree = "<group>"; };
 		527294B517E9335600AA15E1 /* libLeap.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libLeap.dylib; path = "o.io.leap/LeapSDK/lib/libc++/libLeap.dylib"; sourceTree = "<group>"; };
 		527294B717EDE93100AA15E1 /* o.context.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = o.context.c; path = o.context/o.context.c; sourceTree = "<group>"; };
-		527294C517EDE93B00AA15E1 /* o.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
-		5292DC4C17FCC6AD00598BDC /* o.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
+		527294C517EDE93B00AA15E1 /* o.context.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.context.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
+		5292DC4C17FCC6AD00598BDC /* o.io.bluetoothle.sensortag.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.io.bluetoothle.sensortag.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
 		5292DC4D17FCC6D300598BDC /* o.io.bluetoothle.sensortag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = o.io.bluetoothle.sensortag.m; path = o.io.bluetoothle.sensortag/o.io.bluetoothle.sensortag.m; sourceTree = "<group>"; };
 		529781601555B6FD0018A44D /* o.flatten.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.flatten.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
 		52A8393A16E978CD002E273C /* o.append.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = o.append.c; path = o.append/o.append.c; sourceTree = "<group>"; };
 		52A8394916E978D7002E273C /* o.append.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.append.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
 		52A8395816EFFBC4002E273C /* o.timetag.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = o.timetag.c; path = o.timetag/o.timetag.c; sourceTree = "<group>"; };
-		52A8396716EFFBC9002E273C /* o.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
+		52A8396716EFFBC9002E273C /* o.timetag.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.timetag.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
 		52A8396B16F3F886002E273C /* o.schedule.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = o.schedule.c; path = o.schedule/o.schedule.c; sourceTree = "<group>"; };
 		52A8396C16F3F893002E273C /* pqops.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = pqops.c; path = o.schedule/pqops.c; sourceTree = "<group>"; };
 		52A8396D16F3F893002E273C /* pqops.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = pqops.h; path = o.schedule/pqops.h; sourceTree = "<group>"; };
@@ -886,7 +1410,7 @@
 		52B53D1F174FD0B300237A19 /* o.random.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.random.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
 		52B53D20174FD0EF00237A19 /* o.random.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.random.c; path = o.random/o.random.c; sourceTree = "<group>"; };
 		52B654BE17CD5F45004FD84E /* o.io.leap.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = o.io.leap.cpp; path = o.io.leap/o.io.leap.cpp; sourceTree = "<group>"; };
-		52B654CC17CD5F94004FD84E /* o.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
+		52B654CC17CD5F94004FD84E /* o.io.leap.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.io.leap.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
 		52B654EF17D159B6004FD84E /* o.edge~.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = "o.edge~.c"; path = "o.edge~/o.edge~.c"; sourceTree = "<group>"; };
 		52B654FD17D159B9004FD84E /* o.edge~.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "o.edge~.mxo"; sourceTree = BUILT_PRODUCTS_DIR; };
 		52B6550117D1690F004FD84E /* MaxAudioAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MaxAudioAPI.framework; path = "../max6-sdk/c74support/msp-includes/MaxAudioAPI.framework"; sourceTree = "<group>"; };
@@ -905,7 +1429,7 @@
 		52CEF5C6163763CF0016EC39 /* libomax.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libomax.a; path = ../libomax/libomax.a; sourceTree = "<group>"; };
 		52F0C48517B581CC009FBD24 /* o.O.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.O.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
 		52F0C48617B581FF009FBD24 /* o.O.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.O.c; path = o.O/o.O.c; sourceTree = "<group>"; };
-		B4CDCF1510621C0800847C22 /* o.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
+		B4CDCF1510621C0800847C22 /* o.atomize.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.atomize.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1595,46 +2119,46 @@
 		19C28FB4FE9D528D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B4CDCF1510621C0800847C22 /* o.mxo */,
-				525523D71504CB9E00A10E5D /* o.mxo */,
-				525523EE1504D0B200A10E5D /* o.mxo */,
-				525523FD1504D14200A10E5D /* o.mxo */,
-				5255240C1504D14400A10E5D /* o.mxo */,
-				5255241B1504D14600A10E5D /* o.mxo */,
-				5255242A1504D14B00A10E5D /* o.mxo */,
-				525524391504D14F00A10E5D /* o.mxo */,
-				525524481504D15000A10E5D /* o.mxo */,
-				525524571504D15200A10E5D /* o.mxo */,
-				525524661504D15400A10E5D /* o.mxo */,
-				525524751504D15600A10E5D /* o.mxo */,
-				525524841504D15700A10E5D /* o.mxo */,
-				525524931504D15900A10E5D /* o.mxo */,
-				525524A21504D15B00A10E5D /* o.mxo */,
-				525524B11504D15D00A10E5D /* o.mxo */,
-				525524C01504D15F00A10E5D /* o.mxo */,
-				525524CF1504D16100A10E5D /* o.mxo */,
-				525524DE1504D16200A10E5D /* o.mxo */,
-				525524ED1504D16400A10E5D /* o.mxo */,
-				525524FC1504D16600A10E5D /* o.mxo */,
+				B4CDCF1510621C0800847C22 /* o.atomize.mxo */,
+				525523D71504CB9E00A10E5D /* o.change.mxo */,
+				525523EE1504D0B200A10E5D /* o.collect.mxo */,
+				525523FD1504D14200A10E5D /* o.cond.mxo */,
+				5255240C1504D14400A10E5D /* o.difference.mxo */,
+				5255241B1504D14600A10E5D /* o.expr.mxo */,
+				5255242A1504D14B00A10E5D /* o.if.mxo */,
+				525524391504D14F00A10E5D /* o.intersection.mxo */,
+				525524481504D15000A10E5D /* o.mappatch.mxo */,
+				525524571504D15200A10E5D /* o.message.mxo */,
+				525524661504D15400A10E5D /* o.pack.mxo */,
+				525524751504D15600A10E5D /* o.pak.mxo */,
+				525524841504D15700A10E5D /* o.prepend.mxo */,
+				525524931504D15900A10E5D /* o.print.mxo */,
+				525524A21504D15B00A10E5D /* o.printbytes.mxo */,
+				525524B11504D15D00A10E5D /* o.route.mxo */,
+				525524C01504D15F00A10E5D /* o.select.mxo */,
+				525524CF1504D16100A10E5D /* o.union.mxo */,
+				525524DE1504D16200A10E5D /* o.unless.mxo */,
+				525524ED1504D16400A10E5D /* o.var.mxo */,
+				525524FC1504D16600A10E5D /* o.when.mxo */,
 				529781601555B6FD0018A44D /* o.flatten.mxo */,
 				520C0E27158468F7005F2955 /* o.dict.mxo */,
 				5217D909158EEBC4005B5238 /* o.explode.mxo */,
 				52C839DF167A5B24000AA688 /* o.table.mxo */,
 				52A8394916E978D7002E273C /* o.append.mxo */,
-				52A8396716EFFBC9002E273C /* o.mxo */,
+				52A8396716EFFBC9002E273C /* o.timetag.mxo */,
 				52A8397C16F3F898002E273C /* o.schedule.mxo */,
 				52B53CE917480C8100237A19 /* o.downcast.mxo */,
 				52B53CFB1748287A00237A19 /* o.validate.mxo */,
 				52B53D0D17484E5500237A19 /* o.iterate.mxo */,
 				52B53D1F174FD0B300237A19 /* o.random.mxo */,
 				52F0C48517B581CC009FBD24 /* o.O.mxo */,
-				52B654CC17CD5F94004FD84E /* o.mxo */,
+				52B654CC17CD5F94004FD84E /* o.io.leap.mxo */,
 				52B654FD17D159B9004FD84E /* o.edge~.mxo */,
 				52B6551117D68D7C004FD84E /* o.schedule~.mxo */,
 				52B6552617E3B971004FD84E /* o.io.bluetoothle.hrm.mxo */,
-				527294C517EDE93B00AA15E1 /* o.mxo */,
-				5292DC4C17FCC6AD00598BDC /* o.mxo */,
-				520A44B21824777800CB610F /* o.mxo */,
+				527294C517EDE93B00AA15E1 /* o.context.mxo */,
+				5292DC4C17FCC6AD00598BDC /* o.io.bluetoothle.sensortag.mxo */,
+				520A44B21824777800CB610F /* o.io.bluetoothle.mxo */,
 				5214995D191D4C0100642F55 /* o.print.pd_darwin */,
 				11EF2AD318AFEBB900156403 /* o.svg.mxo */,
 				52149975191D563700642F55 /* o.printbytes.pd_darwin */,
@@ -2198,7 +2722,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 119FA02E191D5814001C3325 /* Build configuration list for PBXNativeTarget "o.append.pd" */;
 			buildPhases = (
-				119FA029191D5814001C3325 /* ShellScript */,
 				119FA02A191D5814001C3325 /* Sources */,
 				119FA02C191D5814001C3325 /* Frameworks */,
 				119FA02D191D5814001C3325 /* Headers */,
@@ -2216,7 +2739,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 119FA039191D58CA001C3325 /* Build configuration list for PBXNativeTarget "o.atomize.pd" */;
 			buildPhases = (
-				119FA034191D58CA001C3325 /* ShellScript */,
 				119FA035191D58CA001C3325 /* Sources */,
 				119FA037191D58CA001C3325 /* Frameworks */,
 				119FA038191D58CA001C3325 /* Headers */,
@@ -2234,7 +2756,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 119FA044191D58FF001C3325 /* Build configuration list for PBXNativeTarget "o.change.pd" */;
 			buildPhases = (
-				119FA03F191D58FF001C3325 /* ShellScript */,
 				119FA040191D58FF001C3325 /* Sources */,
 				119FA042191D58FF001C3325 /* Frameworks */,
 				119FA043191D58FF001C3325 /* Headers */,
@@ -2252,7 +2773,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 119FA04F191D5A2A001C3325 /* Build configuration list for PBXNativeTarget "o.collect.pd" */;
 			buildPhases = (
-				119FA04A191D5A2A001C3325 /* ShellScript */,
 				119FA04B191D5A2A001C3325 /* Sources */,
 				119FA04D191D5A2A001C3325 /* Frameworks */,
 				119FA04E191D5A2A001C3325 /* Headers */,
@@ -2270,7 +2790,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 119FA059191D5A53001C3325 /* Build configuration list for PBXNativeTarget "o.cond.pd" */;
 			buildPhases = (
-				119FA054191D5A53001C3325 /* ShellScript */,
 				119FA055191D5A53001C3325 /* Sources */,
 				119FA057191D5A53001C3325 /* Frameworks */,
 				119FA058191D5A53001C3325 /* Headers */,
@@ -2288,7 +2807,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 119FA063191D5A67001C3325 /* Build configuration list for PBXNativeTarget "o.difference.pd" */;
 			buildPhases = (
-				119FA05E191D5A67001C3325 /* ShellScript */,
 				119FA05F191D5A67001C3325 /* Sources */,
 				119FA061191D5A67001C3325 /* Frameworks */,
 				119FA062191D5A67001C3325 /* Headers */,
@@ -2306,7 +2824,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 119FA070191D5D2B001C3325 /* Build configuration list for PBXNativeTarget "o.explode.pd" */;
 			buildPhases = (
-				119FA06B191D5D2B001C3325 /* ShellScript */,
 				119FA06C191D5D2B001C3325 /* Sources */,
 				119FA06E191D5D2B001C3325 /* Frameworks */,
 				119FA06F191D5D2B001C3325 /* Headers */,
@@ -2324,7 +2841,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 119FA07A191D5D3A001C3325 /* Build configuration list for PBXNativeTarget "o.expr.pd" */;
 			buildPhases = (
-				119FA075191D5D3A001C3325 /* ShellScript */,
 				119FA076191D5D3A001C3325 /* Sources */,
 				119FA078191D5D3A001C3325 /* Frameworks */,
 				119FA079191D5D3A001C3325 /* Headers */,
@@ -2342,7 +2858,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 119FA084191D5D43001C3325 /* Build configuration list for PBXNativeTarget "o.flatten.pd" */;
 			buildPhases = (
-				119FA07F191D5D43001C3325 /* ShellScript */,
 				119FA080191D5D43001C3325 /* Sources */,
 				119FA082191D5D43001C3325 /* Frameworks */,
 				119FA083191D5D43001C3325 /* Headers */,
@@ -2360,7 +2875,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 119FA08E191D5D52001C3325 /* Build configuration list for PBXNativeTarget "o.if.pd" */;
 			buildPhases = (
-				119FA089191D5D52001C3325 /* ShellScript */,
 				119FA08A191D5D52001C3325 /* Sources */,
 				119FA08C191D5D52001C3325 /* Frameworks */,
 				119FA08D191D5D52001C3325 /* Headers */,
@@ -2378,7 +2892,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 119FA098191D5D5B001C3325 /* Build configuration list for PBXNativeTarget "o.intersection.pd" */;
 			buildPhases = (
-				119FA093191D5D5B001C3325 /* ShellScript */,
 				119FA094191D5D5B001C3325 /* Sources */,
 				119FA096191D5D5B001C3325 /* Frameworks */,
 				119FA097191D5D5B001C3325 /* Headers */,
@@ -2396,7 +2909,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 119FA0A7191D5E91001C3325 /* Build configuration list for PBXNativeTarget "o.iterate.pd" */;
 			buildPhases = (
-				119FA0A2191D5E91001C3325 /* ShellScript */,
 				119FA0A3191D5E91001C3325 /* Sources */,
 				119FA0A5191D5E91001C3325 /* Frameworks */,
 				119FA0A6191D5E91001C3325 /* Headers */,
@@ -2414,7 +2926,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 119FA0B1191D5E9D001C3325 /* Build configuration list for PBXNativeTarget "o.mappatch.pd" */;
 			buildPhases = (
-				119FA0AC191D5E9D001C3325 /* ShellScript */,
 				119FA0AD191D5E9D001C3325 /* Sources */,
 				119FA0AF191D5E9D001C3325 /* Frameworks */,
 				119FA0B0191D5E9D001C3325 /* Headers */,
@@ -2432,7 +2943,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 119FA0BB191D5EC6001C3325 /* Build configuration list for PBXNativeTarget "o.message.pd" */;
 			buildPhases = (
-				119FA0B6191D5EC6001C3325 /* ShellScript */,
 				119FA0B7191D5EC6001C3325 /* Sources */,
 				119FA0B9191D5EC6001C3325 /* Frameworks */,
 				119FA0BA191D5EC6001C3325 /* Headers */,
@@ -2450,7 +2960,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 119FA0C5191D5EF5001C3325 /* Build configuration list for PBXNativeTarget "o.pack.pd" */;
 			buildPhases = (
-				119FA0C0191D5EF5001C3325 /* ShellScript */,
 				119FA0C1191D5EF5001C3325 /* Sources */,
 				119FA0C3191D5EF5001C3325 /* Frameworks */,
 				119FA0C4191D5EF5001C3325 /* Headers */,
@@ -2468,7 +2977,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 119FA0CF191D5F05001C3325 /* Build configuration list for PBXNativeTarget "o.pak.pd" */;
 			buildPhases = (
-				119FA0CA191D5F05001C3325 /* ShellScript */,
 				119FA0CB191D5F05001C3325 /* Sources */,
 				119FA0CD191D5F05001C3325 /* Frameworks */,
 				119FA0CE191D5F05001C3325 /* Headers */,
@@ -2486,7 +2994,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 119FA0D9191D5F0F001C3325 /* Build configuration list for PBXNativeTarget "o.prepend.pd" */;
 			buildPhases = (
-				119FA0D4191D5F0F001C3325 /* ShellScript */,
 				119FA0D5191D5F0F001C3325 /* Sources */,
 				119FA0D7191D5F0F001C3325 /* Frameworks */,
 				119FA0D8191D5F0F001C3325 /* Headers */,
@@ -2504,7 +3011,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 119FA0E9191D5FFB001C3325 /* Build configuration list for PBXNativeTarget "o.route.pd" */;
 			buildPhases = (
-				119FA0E4191D5FFB001C3325 /* ShellScript */,
 				119FA0E5191D5FFB001C3325 /* Sources */,
 				119FA0E7191D5FFB001C3325 /* Frameworks */,
 				119FA0E8191D5FFB001C3325 /* Headers */,
@@ -2522,7 +3028,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 119FA0F3191D6002001C3325 /* Build configuration list for PBXNativeTarget "o.schedule.pd" */;
 			buildPhases = (
-				119FA0EE191D6002001C3325 /* ShellScript */,
 				119FA0EF191D6002001C3325 /* Sources */,
 				119FA0F1191D6002001C3325 /* Frameworks */,
 				119FA0F2191D6002001C3325 /* Headers */,
@@ -2540,7 +3045,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 119FA0FD191D6009001C3325 /* Build configuration list for PBXNativeTarget "o.select.pd" */;
 			buildPhases = (
-				119FA0F8191D6009001C3325 /* ShellScript */,
 				119FA0F9191D6009001C3325 /* Sources */,
 				119FA0FB191D6009001C3325 /* Frameworks */,
 				119FA0FC191D6009001C3325 /* Headers */,
@@ -2558,7 +3062,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 119FA107191D6010001C3325 /* Build configuration list for PBXNativeTarget "o.table.pd" */;
 			buildPhases = (
-				119FA102191D6010001C3325 /* ShellScript */,
 				119FA103191D6010001C3325 /* Sources */,
 				119FA105191D6010001C3325 /* Frameworks */,
 				119FA106191D6010001C3325 /* Headers */,
@@ -2576,7 +3079,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 119FA111191D6027001C3325 /* Build configuration list for PBXNativeTarget "o.timetag.pd" */;
 			buildPhases = (
-				119FA10C191D6027001C3325 /* ShellScript */,
 				119FA10D191D6027001C3325 /* Sources */,
 				119FA10F191D6027001C3325 /* Frameworks */,
 				119FA110191D6027001C3325 /* Headers */,
@@ -2594,7 +3096,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 119FA11B191D602E001C3325 /* Build configuration list for PBXNativeTarget "o.union.pd" */;
 			buildPhases = (
-				119FA116191D602E001C3325 /* ShellScript */,
 				119FA117191D602E001C3325 /* Sources */,
 				119FA119191D602E001C3325 /* Frameworks */,
 				119FA11A191D602E001C3325 /* Headers */,
@@ -2612,7 +3113,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 119FA125191D6032001C3325 /* Build configuration list for PBXNativeTarget "o.unless.pd" */;
 			buildPhases = (
-				119FA120191D6032001C3325 /* ShellScript */,
 				119FA121191D6032001C3325 /* Sources */,
 				119FA123191D6032001C3325 /* Frameworks */,
 				119FA124191D6032001C3325 /* Headers */,
@@ -2630,7 +3130,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 119FA12F191D6040001C3325 /* Build configuration list for PBXNativeTarget "o.var.pd" */;
 			buildPhases = (
-				119FA12A191D6040001C3325 /* ShellScript */,
 				119FA12B191D6040001C3325 /* Sources */,
 				119FA12D191D6040001C3325 /* Frameworks */,
 				119FA12E191D6040001C3325 /* Headers */,
@@ -2648,7 +3147,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 119FA139191D6052001C3325 /* Build configuration list for PBXNativeTarget "o.when.pd" */;
 			buildPhases = (
-				119FA134191D6052001C3325 /* ShellScript */,
 				119FA135191D6052001C3325 /* Sources */,
 				119FA137191D6052001C3325 /* Frameworks */,
 				119FA138191D6052001C3325 /* Headers */,
@@ -2695,7 +3193,7 @@
 			);
 			name = o.io.bluetoothle;
 			productName = cv.jit.dilate;
-			productReference = 520A44B21824777800CB610F /* o.mxo */;
+			productReference = 520A44B21824777800CB610F /* o.io.bluetoothle.mxo */;
 			productType = "com.apple.product-type.bundle";
 		};
 		520C0E19158468F7005F2955 /* o.dict */ = {
@@ -2720,7 +3218,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 52149967191D4C0100642F55 /* Build configuration list for PBXNativeTarget "o.print.pd" */;
 			buildPhases = (
-				5214996B191D525400642F55 /* ShellScript */,
 				52149959191D4C0100642F55 /* Sources */,
 				5214995A191D4C0100642F55 /* Frameworks */,
 				5214995B191D4C0100642F55 /* Headers */,
@@ -2738,7 +3235,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 52149972191D563700642F55 /* Build configuration list for PBXNativeTarget "o.printbytes.pd" */;
 			buildPhases = (
-				5214996D191D563700642F55 /* ShellScript */,
 				5214996E191D563700642F55 /* Sources */,
 				52149970191D563700642F55 /* Frameworks */,
 				52149971191D563700642F55 /* Headers */,
@@ -2785,7 +3281,7 @@
 			);
 			name = o.change;
 			productName = cv.jit.dilate;
-			productReference = 525523D71504CB9E00A10E5D /* o.mxo */;
+			productReference = 525523D71504CB9E00A10E5D /* o.change.mxo */;
 			productType = "com.apple.product-type.bundle";
 		};
 		525523E01504D0B200A10E5D /* o.collect */ = {
@@ -2803,7 +3299,7 @@
 			);
 			name = o.collect;
 			productName = cv.jit.dilate;
-			productReference = 525523EE1504D0B200A10E5D /* o.mxo */;
+			productReference = 525523EE1504D0B200A10E5D /* o.collect.mxo */;
 			productType = "com.apple.product-type.bundle";
 		};
 		525523EF1504D14200A10E5D /* o.cond */ = {
@@ -2821,7 +3317,7 @@
 			);
 			name = o.cond;
 			productName = cv.jit.dilate;
-			productReference = 525523FD1504D14200A10E5D /* o.mxo */;
+			productReference = 525523FD1504D14200A10E5D /* o.cond.mxo */;
 			productType = "com.apple.product-type.bundle";
 		};
 		525523FE1504D14400A10E5D /* o.difference */ = {
@@ -2839,7 +3335,7 @@
 			);
 			name = o.difference;
 			productName = cv.jit.dilate;
-			productReference = 5255240C1504D14400A10E5D /* o.mxo */;
+			productReference = 5255240C1504D14400A10E5D /* o.difference.mxo */;
 			productType = "com.apple.product-type.bundle";
 		};
 		5255240D1504D14600A10E5D /* o.expr */ = {
@@ -2857,7 +3353,7 @@
 			);
 			name = o.expr;
 			productName = cv.jit.dilate;
-			productReference = 5255241B1504D14600A10E5D /* o.mxo */;
+			productReference = 5255241B1504D14600A10E5D /* o.expr.mxo */;
 			productType = "com.apple.product-type.bundle";
 		};
 		5255241C1504D14B00A10E5D /* o.if */ = {
@@ -2875,7 +3371,7 @@
 			);
 			name = o.if;
 			productName = cv.jit.dilate;
-			productReference = 5255242A1504D14B00A10E5D /* o.mxo */;
+			productReference = 5255242A1504D14B00A10E5D /* o.if.mxo */;
 			productType = "com.apple.product-type.bundle";
 		};
 		5255242B1504D14F00A10E5D /* o.intersection */ = {
@@ -2893,7 +3389,7 @@
 			);
 			name = o.intersection;
 			productName = cv.jit.dilate;
-			productReference = 525524391504D14F00A10E5D /* o.mxo */;
+			productReference = 525524391504D14F00A10E5D /* o.intersection.mxo */;
 			productType = "com.apple.product-type.bundle";
 		};
 		5255243A1504D15000A10E5D /* o.mappatch */ = {
@@ -2911,7 +3407,7 @@
 			);
 			name = o.mappatch;
 			productName = cv.jit.dilate;
-			productReference = 525524481504D15000A10E5D /* o.mxo */;
+			productReference = 525524481504D15000A10E5D /* o.mappatch.mxo */;
 			productType = "com.apple.product-type.bundle";
 		};
 		525524491504D15200A10E5D /* o.message */ = {
@@ -2929,7 +3425,7 @@
 			);
 			name = o.message;
 			productName = cv.jit.dilate;
-			productReference = 525524571504D15200A10E5D /* o.mxo */;
+			productReference = 525524571504D15200A10E5D /* o.message.mxo */;
 			productType = "com.apple.product-type.bundle";
 		};
 		525524581504D15400A10E5D /* o.pack */ = {
@@ -2947,7 +3443,7 @@
 			);
 			name = o.pack;
 			productName = cv.jit.dilate;
-			productReference = 525524661504D15400A10E5D /* o.mxo */;
+			productReference = 525524661504D15400A10E5D /* o.pack.mxo */;
 			productType = "com.apple.product-type.bundle";
 		};
 		525524671504D15600A10E5D /* o.pak */ = {
@@ -2965,7 +3461,7 @@
 			);
 			name = o.pak;
 			productName = cv.jit.dilate;
-			productReference = 525524751504D15600A10E5D /* o.mxo */;
+			productReference = 525524751504D15600A10E5D /* o.pak.mxo */;
 			productType = "com.apple.product-type.bundle";
 		};
 		525524761504D15700A10E5D /* o.prepend */ = {
@@ -2983,7 +3479,7 @@
 			);
 			name = o.prepend;
 			productName = cv.jit.dilate;
-			productReference = 525524841504D15700A10E5D /* o.mxo */;
+			productReference = 525524841504D15700A10E5D /* o.prepend.mxo */;
 			productType = "com.apple.product-type.bundle";
 		};
 		525524851504D15900A10E5D /* o.print */ = {
@@ -3001,7 +3497,7 @@
 			);
 			name = o.print;
 			productName = cv.jit.dilate;
-			productReference = 525524931504D15900A10E5D /* o.mxo */;
+			productReference = 525524931504D15900A10E5D /* o.print.mxo */;
 			productType = "com.apple.product-type.bundle";
 		};
 		525524941504D15B00A10E5D /* o.printbytes */ = {
@@ -3019,7 +3515,7 @@
 			);
 			name = o.printbytes;
 			productName = cv.jit.dilate;
-			productReference = 525524A21504D15B00A10E5D /* o.mxo */;
+			productReference = 525524A21504D15B00A10E5D /* o.printbytes.mxo */;
 			productType = "com.apple.product-type.bundle";
 		};
 		525524A31504D15D00A10E5D /* o.route */ = {
@@ -3037,7 +3533,7 @@
 			);
 			name = o.route;
 			productName = cv.jit.dilate;
-			productReference = 525524B11504D15D00A10E5D /* o.mxo */;
+			productReference = 525524B11504D15D00A10E5D /* o.route.mxo */;
 			productType = "com.apple.product-type.bundle";
 		};
 		525524B21504D15F00A10E5D /* o.select */ = {
@@ -3055,7 +3551,7 @@
 			);
 			name = o.select;
 			productName = cv.jit.dilate;
-			productReference = 525524C01504D15F00A10E5D /* o.mxo */;
+			productReference = 525524C01504D15F00A10E5D /* o.select.mxo */;
 			productType = "com.apple.product-type.bundle";
 		};
 		525524C11504D16100A10E5D /* o.union */ = {
@@ -3073,7 +3569,7 @@
 			);
 			name = o.union;
 			productName = cv.jit.dilate;
-			productReference = 525524CF1504D16100A10E5D /* o.mxo */;
+			productReference = 525524CF1504D16100A10E5D /* o.union.mxo */;
 			productType = "com.apple.product-type.bundle";
 		};
 		525524D01504D16200A10E5D /* o.unless */ = {
@@ -3091,7 +3587,7 @@
 			);
 			name = o.unless;
 			productName = cv.jit.dilate;
-			productReference = 525524DE1504D16200A10E5D /* o.mxo */;
+			productReference = 525524DE1504D16200A10E5D /* o.unless.mxo */;
 			productType = "com.apple.product-type.bundle";
 		};
 		525524DF1504D16400A10E5D /* o.var */ = {
@@ -3109,7 +3605,7 @@
 			);
 			name = o.var;
 			productName = cv.jit.dilate;
-			productReference = 525524ED1504D16400A10E5D /* o.mxo */;
+			productReference = 525524ED1504D16400A10E5D /* o.var.mxo */;
 			productType = "com.apple.product-type.bundle";
 		};
 		525524EE1504D16600A10E5D /* o.when */ = {
@@ -3127,7 +3623,7 @@
 			);
 			name = o.when;
 			productName = cv.jit.dilate;
-			productReference = 525524FC1504D16600A10E5D /* o.mxo */;
+			productReference = 525524FC1504D16600A10E5D /* o.when.mxo */;
 			productType = "com.apple.product-type.bundle";
 		};
 		527294B817EDE93B00AA15E1 /* o.context */ = {
@@ -3145,7 +3641,7 @@
 			);
 			name = o.context;
 			productName = cv.jit.dilate;
-			productReference = 527294C517EDE93B00AA15E1 /* o.mxo */;
+			productReference = 527294C517EDE93B00AA15E1 /* o.context.mxo */;
 			productType = "com.apple.product-type.bundle";
 		};
 		5292DC3E17FCC6AD00598BDC /* o.io.bluetoothle.sensortag */ = {
@@ -3163,7 +3659,7 @@
 			);
 			name = o.io.bluetoothle.sensortag;
 			productName = cv.jit.dilate;
-			productReference = 5292DC4C17FCC6AD00598BDC /* o.mxo */;
+			productReference = 5292DC4C17FCC6AD00598BDC /* o.io.bluetoothle.sensortag.mxo */;
 			productType = "com.apple.product-type.bundle";
 		};
 		529781521555B6FD0018A44D /* o.flatten */ = {
@@ -3217,7 +3713,7 @@
 			);
 			name = o.timetag;
 			productName = cv.jit.dilate;
-			productReference = 52A8396716EFFBC9002E273C /* o.mxo */;
+			productReference = 52A8396716EFFBC9002E273C /* o.timetag.mxo */;
 			productType = "com.apple.product-type.bundle";
 		};
 		52A8396E16F3F898002E273C /* o.schedule */ = {
@@ -3326,7 +3822,7 @@
 			);
 			name = o.io.leap;
 			productName = cv.jit.dilate;
-			productReference = 52B654CC17CD5F94004FD84E /* o.mxo */;
+			productReference = 52B654CC17CD5F94004FD84E /* o.io.leap.mxo */;
 			productType = "com.apple.product-type.bundle";
 		};
 		52B654F017D159B9004FD84E /* o.edge~ */ = {
@@ -3434,7 +3930,7 @@
 			);
 			name = o.atomize;
 			productName = cv.jit.dilate;
-			productReference = B4CDCF1510621C0800847C22 /* o.mxo */;
+			productReference = B4CDCF1510621C0800847C22 /* o.atomize.mxo */;
 			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */
@@ -3461,6 +3957,8 @@
 			projectRoot = "<Project File Directory>/../../../";
 			targets = (
 				B4E73DAC0E1888E9001E52BE /* Build all */,
+				52183D5E19218CCB00F61786 /* Build all Max */,
+				52183DE019218CF200F61786 /* Build all PD */,
 				52A8393B16E978D7002E273C /* o.append */,
 				119FA028191D5814001C3325 /* o.append.pd */,
 				B4FEACE30CEF01BF00C2A20C /* o.atomize */,
@@ -3825,370 +4323,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		119FA029191D5814001C3325 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "echo \"#define ODOT_VERSION \\\"\"`git describe --tags --long`\"\\\"\" > include/odot_current_version.h\necho \"#define ODOT_COMPILE_DATE \\\"\"`date`\"\\\"\" >> include/odot_current_version.h";
-		};
-		119FA034191D58CA001C3325 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "echo \"#define ODOT_VERSION \\\"\"`git describe --tags --long`\"\\\"\" > include/odot_current_version.h\necho \"#define ODOT_COMPILE_DATE \\\"\"`date`\"\\\"\" >> include/odot_current_version.h";
-		};
-		119FA03F191D58FF001C3325 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "echo \"#define ODOT_VERSION \\\"\"`git describe --tags --long`\"\\\"\" > include/odot_current_version.h\necho \"#define ODOT_COMPILE_DATE \\\"\"`date`\"\\\"\" >> include/odot_current_version.h";
-		};
-		119FA04A191D5A2A001C3325 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "echo \"#define ODOT_VERSION \\\"\"`git describe --tags --long`\"\\\"\" > include/odot_current_version.h\necho \"#define ODOT_COMPILE_DATE \\\"\"`date`\"\\\"\" >> include/odot_current_version.h";
-		};
-		119FA054191D5A53001C3325 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "echo \"#define ODOT_VERSION \\\"\"`git describe --tags --long`\"\\\"\" > include/odot_current_version.h\necho \"#define ODOT_COMPILE_DATE \\\"\"`date`\"\\\"\" >> include/odot_current_version.h";
-		};
-		119FA05E191D5A67001C3325 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "echo \"#define ODOT_VERSION \\\"\"`git describe --tags --long`\"\\\"\" > include/odot_current_version.h\necho \"#define ODOT_COMPILE_DATE \\\"\"`date`\"\\\"\" >> include/odot_current_version.h";
-		};
-		119FA06B191D5D2B001C3325 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "echo \"#define ODOT_VERSION \\\"\"`git describe --tags --long`\"\\\"\" > include/odot_current_version.h\necho \"#define ODOT_COMPILE_DATE \\\"\"`date`\"\\\"\" >> include/odot_current_version.h";
-		};
-		119FA075191D5D3A001C3325 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "echo \"#define ODOT_VERSION \\\"\"`git describe --tags --long`\"\\\"\" > include/odot_current_version.h\necho \"#define ODOT_COMPILE_DATE \\\"\"`date`\"\\\"\" >> include/odot_current_version.h";
-		};
-		119FA07F191D5D43001C3325 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "echo \"#define ODOT_VERSION \\\"\"`git describe --tags --long`\"\\\"\" > include/odot_current_version.h\necho \"#define ODOT_COMPILE_DATE \\\"\"`date`\"\\\"\" >> include/odot_current_version.h";
-		};
-		119FA089191D5D52001C3325 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "echo \"#define ODOT_VERSION \\\"\"`git describe --tags --long`\"\\\"\" > include/odot_current_version.h\necho \"#define ODOT_COMPILE_DATE \\\"\"`date`\"\\\"\" >> include/odot_current_version.h";
-		};
-		119FA093191D5D5B001C3325 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "echo \"#define ODOT_VERSION \\\"\"`git describe --tags --long`\"\\\"\" > include/odot_current_version.h\necho \"#define ODOT_COMPILE_DATE \\\"\"`date`\"\\\"\" >> include/odot_current_version.h";
-		};
-		119FA0A2191D5E91001C3325 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "echo \"#define ODOT_VERSION \\\"\"`git describe --tags --long`\"\\\"\" > include/odot_current_version.h\necho \"#define ODOT_COMPILE_DATE \\\"\"`date`\"\\\"\" >> include/odot_current_version.h";
-		};
-		119FA0AC191D5E9D001C3325 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "echo \"#define ODOT_VERSION \\\"\"`git describe --tags --long`\"\\\"\" > include/odot_current_version.h\necho \"#define ODOT_COMPILE_DATE \\\"\"`date`\"\\\"\" >> include/odot_current_version.h";
-		};
-		119FA0B6191D5EC6001C3325 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "echo \"#define ODOT_VERSION \\\"\"`git describe --tags --long`\"\\\"\" > include/odot_current_version.h\necho \"#define ODOT_COMPILE_DATE \\\"\"`date`\"\\\"\" >> include/odot_current_version.h";
-		};
-		119FA0C0191D5EF5001C3325 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "echo \"#define ODOT_VERSION \\\"\"`git describe --tags --long`\"\\\"\" > include/odot_current_version.h\necho \"#define ODOT_COMPILE_DATE \\\"\"`date`\"\\\"\" >> include/odot_current_version.h";
-		};
-		119FA0CA191D5F05001C3325 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "echo \"#define ODOT_VERSION \\\"\"`git describe --tags --long`\"\\\"\" > include/odot_current_version.h\necho \"#define ODOT_COMPILE_DATE \\\"\"`date`\"\\\"\" >> include/odot_current_version.h";
-		};
-		119FA0D4191D5F0F001C3325 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "echo \"#define ODOT_VERSION \\\"\"`git describe --tags --long`\"\\\"\" > include/odot_current_version.h\necho \"#define ODOT_COMPILE_DATE \\\"\"`date`\"\\\"\" >> include/odot_current_version.h";
-		};
-		119FA0E4191D5FFB001C3325 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "echo \"#define ODOT_VERSION \\\"\"`git describe --tags --long`\"\\\"\" > include/odot_current_version.h\necho \"#define ODOT_COMPILE_DATE \\\"\"`date`\"\\\"\" >> include/odot_current_version.h";
-		};
-		119FA0EE191D6002001C3325 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "echo \"#define ODOT_VERSION \\\"\"`git describe --tags --long`\"\\\"\" > include/odot_current_version.h\necho \"#define ODOT_COMPILE_DATE \\\"\"`date`\"\\\"\" >> include/odot_current_version.h";
-		};
-		119FA0F8191D6009001C3325 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "echo \"#define ODOT_VERSION \\\"\"`git describe --tags --long`\"\\\"\" > include/odot_current_version.h\necho \"#define ODOT_COMPILE_DATE \\\"\"`date`\"\\\"\" >> include/odot_current_version.h";
-		};
-		119FA102191D6010001C3325 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "echo \"#define ODOT_VERSION \\\"\"`git describe --tags --long`\"\\\"\" > include/odot_current_version.h\necho \"#define ODOT_COMPILE_DATE \\\"\"`date`\"\\\"\" >> include/odot_current_version.h";
-		};
-		119FA10C191D6027001C3325 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "echo \"#define ODOT_VERSION \\\"\"`git describe --tags --long`\"\\\"\" > include/odot_current_version.h\necho \"#define ODOT_COMPILE_DATE \\\"\"`date`\"\\\"\" >> include/odot_current_version.h";
-		};
-		119FA116191D602E001C3325 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "echo \"#define ODOT_VERSION \\\"\"`git describe --tags --long`\"\\\"\" > include/odot_current_version.h\necho \"#define ODOT_COMPILE_DATE \\\"\"`date`\"\\\"\" >> include/odot_current_version.h";
-		};
-		119FA120191D6032001C3325 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "echo \"#define ODOT_VERSION \\\"\"`git describe --tags --long`\"\\\"\" > include/odot_current_version.h\necho \"#define ODOT_COMPILE_DATE \\\"\"`date`\"\\\"\" >> include/odot_current_version.h";
-		};
-		119FA12A191D6040001C3325 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "echo \"#define ODOT_VERSION \\\"\"`git describe --tags --long`\"\\\"\" > include/odot_current_version.h\necho \"#define ODOT_COMPILE_DATE \\\"\"`date`\"\\\"\" >> include/odot_current_version.h";
-		};
-		119FA134191D6052001C3325 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "echo \"#define ODOT_VERSION \\\"\"`git describe --tags --long`\"\\\"\" > include/odot_current_version.h\necho \"#define ODOT_COMPILE_DATE \\\"\"`date`\"\\\"\" >> include/odot_current_version.h";
-		};
-		5214996B191D525400642F55 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "echo \"#define ODOT_VERSION \\\"\"`git describe --tags --long`\"\\\"\" > include/odot_current_version.h\necho \"#define ODOT_COMPILE_DATE \\\"\"`date`\"\\\"\" >> include/odot_current_version.h";
-		};
-		5214996D191D563700642F55 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "echo \"#define ODOT_VERSION \\\"\"`git describe --tags --long`\"\\\"\" > include/odot_current_version.h\necho \"#define ODOT_COMPILE_DATE \\\"\"`date`\"\\\"\" >> include/odot_current_version.h";
-		};
 		527294B317E92F5200AA15E1 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -4953,6 +5087,321 @@
 			isa = PBXTargetDependency;
 			target = 119FA133191D6052001C3325 /* o.when.pd */;
 			targetProxy = 52183D5C19218B3100F61786 /* PBXContainerItemProxy */;
+		};
+		52183D9719218CCB00F61786 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5292DC3E17FCC6AD00598BDC /* o.io.bluetoothle.sensortag */;
+			targetProxy = 52183D9819218CCB00F61786 /* PBXContainerItemProxy */;
+		};
+		52183D9919218CCB00F61786 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 52B53CDC17480C8100237A19 /* o.downcast */;
+			targetProxy = 52183D9A19218CCB00F61786 /* PBXContainerItemProxy */;
+		};
+		52183D9B19218CCB00F61786 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 52B654F017D159B9004FD84E /* o.edge~ */;
+			targetProxy = 52183D9C19218CCB00F61786 /* PBXContainerItemProxy */;
+		};
+		52183D9D19218CCB00F61786 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 52A8396E16F3F898002E273C /* o.schedule */;
+			targetProxy = 52183D9E19218CCB00F61786 /* PBXContainerItemProxy */;
+		};
+		52183D9F19218CCB00F61786 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 52B6551917E3B971004FD84E /* o.io.bluetoothle.hrm */;
+			targetProxy = 52183DA019218CCB00F61786 /* PBXContainerItemProxy */;
+		};
+		52183DA119218CCB00F61786 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 527294B817EDE93B00AA15E1 /* o.context */;
+			targetProxy = 52183DA219218CCB00F61786 /* PBXContainerItemProxy */;
+		};
+		52183DA319218CCB00F61786 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 52B53D0017484E5500237A19 /* o.iterate */;
+			targetProxy = 52183DA419218CCB00F61786 /* PBXContainerItemProxy */;
+		};
+		52183DA519218CCB00F61786 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 52B53CEE1748287A00237A19 /* o.validate */;
+			targetProxy = 52183DA619218CCB00F61786 /* PBXContainerItemProxy */;
+		};
+		52183DA719218CCB00F61786 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 52C839D1167A5B24000AA688 /* o.table */;
+			targetProxy = 52183DA819218CCB00F61786 /* PBXContainerItemProxy */;
+		};
+		52183DA919218CCB00F61786 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 52A8395916EFFBC9002E273C /* o.timetag */;
+			targetProxy = 52183DAA19218CCB00F61786 /* PBXContainerItemProxy */;
+		};
+		52183DAB19218CCB00F61786 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 52A8393B16E978D7002E273C /* o.append */;
+			targetProxy = 52183DAC19218CCB00F61786 /* PBXContainerItemProxy */;
+		};
+		52183DAD19218CCB00F61786 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 520C0E19158468F7005F2955 /* o.dict */;
+			targetProxy = 52183DAE19218CCB00F61786 /* PBXContainerItemProxy */;
+		};
+		52183DAF19218CCB00F61786 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 529781521555B6FD0018A44D /* o.flatten */;
+			targetProxy = 52183DB019218CCB00F61786 /* PBXContainerItemProxy */;
+		};
+		52183DB119218CCB00F61786 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 525523E01504D0B200A10E5D /* o.collect */;
+			targetProxy = 52183DB219218CCB00F61786 /* PBXContainerItemProxy */;
+		};
+		52183DB319218CCB00F61786 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 525523EF1504D14200A10E5D /* o.cond */;
+			targetProxy = 52183DB419218CCB00F61786 /* PBXContainerItemProxy */;
+		};
+		52183DB519218CCB00F61786 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 525523FE1504D14400A10E5D /* o.difference */;
+			targetProxy = 52183DB619218CCB00F61786 /* PBXContainerItemProxy */;
+		};
+		52183DB719218CCB00F61786 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5217D8FB158EEBC4005B5238 /* o.explode */;
+			targetProxy = 52183DB819218CCB00F61786 /* PBXContainerItemProxy */;
+		};
+		52183DB919218CCB00F61786 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5255240D1504D14600A10E5D /* o.expr */;
+			targetProxy = 52183DBA19218CCB00F61786 /* PBXContainerItemProxy */;
+		};
+		52183DBB19218CCB00F61786 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5255241C1504D14B00A10E5D /* o.if */;
+			targetProxy = 52183DBC19218CCB00F61786 /* PBXContainerItemProxy */;
+		};
+		52183DBD19218CCB00F61786 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5255242B1504D14F00A10E5D /* o.intersection */;
+			targetProxy = 52183DBE19218CCB00F61786 /* PBXContainerItemProxy */;
+		};
+		52183DBF19218CCB00F61786 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5255243A1504D15000A10E5D /* o.mappatch */;
+			targetProxy = 52183DC019218CCB00F61786 /* PBXContainerItemProxy */;
+		};
+		52183DC119218CCB00F61786 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 525524491504D15200A10E5D /* o.message */;
+			targetProxy = 52183DC219218CCB00F61786 /* PBXContainerItemProxy */;
+		};
+		52183DC319218CCB00F61786 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 525524581504D15400A10E5D /* o.pack */;
+			targetProxy = 52183DC419218CCB00F61786 /* PBXContainerItemProxy */;
+		};
+		52183DC519218CCB00F61786 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 525524671504D15600A10E5D /* o.pak */;
+			targetProxy = 52183DC619218CCB00F61786 /* PBXContainerItemProxy */;
+		};
+		52183DC719218CCB00F61786 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 525524761504D15700A10E5D /* o.prepend */;
+			targetProxy = 52183DC819218CCB00F61786 /* PBXContainerItemProxy */;
+		};
+		52183DC919218CCB00F61786 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 525524851504D15900A10E5D /* o.print */;
+			targetProxy = 52183DCA19218CCB00F61786 /* PBXContainerItemProxy */;
+		};
+		52183DCB19218CCB00F61786 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 525524941504D15B00A10E5D /* o.printbytes */;
+			targetProxy = 52183DCC19218CCB00F61786 /* PBXContainerItemProxy */;
+		};
+		52183DCD19218CCB00F61786 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 525524A31504D15D00A10E5D /* o.route */;
+			targetProxy = 52183DCE19218CCB00F61786 /* PBXContainerItemProxy */;
+		};
+		52183DCF19218CCB00F61786 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 525524B21504D15F00A10E5D /* o.select */;
+			targetProxy = 52183DD019218CCB00F61786 /* PBXContainerItemProxy */;
+		};
+		52183DD119218CCB00F61786 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 525524C11504D16100A10E5D /* o.union */;
+			targetProxy = 52183DD219218CCB00F61786 /* PBXContainerItemProxy */;
+		};
+		52183DD319218CCB00F61786 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 525524D01504D16200A10E5D /* o.unless */;
+			targetProxy = 52183DD419218CCB00F61786 /* PBXContainerItemProxy */;
+		};
+		52183DD519218CCB00F61786 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 525524DF1504D16400A10E5D /* o.var */;
+			targetProxy = 52183DD619218CCB00F61786 /* PBXContainerItemProxy */;
+		};
+		52183DD719218CCB00F61786 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 525524EE1504D16600A10E5D /* o.when */;
+			targetProxy = 52183DD819218CCB00F61786 /* PBXContainerItemProxy */;
+		};
+		52183DD919218CCB00F61786 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 525523C91504CB9E00A10E5D /* o.change */;
+			targetProxy = 52183DDA19218CCB00F61786 /* PBXContainerItemProxy */;
+		};
+		52183DDB19218CCB00F61786 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B4FEACE30CEF01BF00C2A20C /* o.atomize */;
+			targetProxy = 52183DDC19218CCB00F61786 /* PBXContainerItemProxy */;
+		};
+		52183DE119218CF200F61786 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 119FA028191D5814001C3325 /* o.append.pd */;
+			targetProxy = 52183DE219218CF200F61786 /* PBXContainerItemProxy */;
+		};
+		52183DE319218CF200F61786 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 119FA033191D58CA001C3325 /* o.atomize.pd */;
+			targetProxy = 52183DE419218CF200F61786 /* PBXContainerItemProxy */;
+		};
+		52183DE519218CF200F61786 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 119FA03E191D58FF001C3325 /* o.change.pd */;
+			targetProxy = 52183DE619218CF200F61786 /* PBXContainerItemProxy */;
+		};
+		52183DE719218CF200F61786 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 119FA049191D5A2A001C3325 /* o.collect.pd */;
+			targetProxy = 52183DE819218CF200F61786 /* PBXContainerItemProxy */;
+		};
+		52183DE919218CF200F61786 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 119FA053191D5A53001C3325 /* o.cond.pd */;
+			targetProxy = 52183DEA19218CF200F61786 /* PBXContainerItemProxy */;
+		};
+		52183DEB19218CF200F61786 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 119FA05D191D5A67001C3325 /* o.difference.pd */;
+			targetProxy = 52183DEC19218CF200F61786 /* PBXContainerItemProxy */;
+		};
+		52183DED19218CF200F61786 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 119FA06A191D5D2B001C3325 /* o.explode.pd */;
+			targetProxy = 52183DEE19218CF200F61786 /* PBXContainerItemProxy */;
+		};
+		52183DEF19218CF200F61786 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 119FA074191D5D3A001C3325 /* o.expr.pd */;
+			targetProxy = 52183DF019218CF200F61786 /* PBXContainerItemProxy */;
+		};
+		52183DF119218CF200F61786 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 119FA07E191D5D43001C3325 /* o.flatten.pd */;
+			targetProxy = 52183DF219218CF200F61786 /* PBXContainerItemProxy */;
+		};
+		52183DF319218CF200F61786 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 119FA088191D5D52001C3325 /* o.if.pd */;
+			targetProxy = 52183DF419218CF200F61786 /* PBXContainerItemProxy */;
+		};
+		52183DF519218CF200F61786 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 119FA092191D5D5B001C3325 /* o.intersection.pd */;
+			targetProxy = 52183DF619218CF200F61786 /* PBXContainerItemProxy */;
+		};
+		52183DF719218CF200F61786 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 119FA0A1191D5E91001C3325 /* o.iterate.pd */;
+			targetProxy = 52183DF819218CF200F61786 /* PBXContainerItemProxy */;
+		};
+		52183DF919218CF200F61786 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 119FA0AB191D5E9D001C3325 /* o.mappatch.pd */;
+			targetProxy = 52183DFA19218CF200F61786 /* PBXContainerItemProxy */;
+		};
+		52183DFB19218CF200F61786 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 119FA0B5191D5EC6001C3325 /* o.message.pd */;
+			targetProxy = 52183DFC19218CF200F61786 /* PBXContainerItemProxy */;
+		};
+		52183DFD19218CF200F61786 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 119FA0BF191D5EF5001C3325 /* o.pack.pd */;
+			targetProxy = 52183DFE19218CF200F61786 /* PBXContainerItemProxy */;
+		};
+		52183DFF19218CF200F61786 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 119FA0C9191D5F05001C3325 /* o.pak.pd */;
+			targetProxy = 52183E0019218CF200F61786 /* PBXContainerItemProxy */;
+		};
+		52183E0119218CF200F61786 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 119FA0D3191D5F0F001C3325 /* o.prepend.pd */;
+			targetProxy = 52183E0219218CF200F61786 /* PBXContainerItemProxy */;
+		};
+		52183E0319218CF200F61786 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5214995C191D4C0100642F55 /* o.print.pd */;
+			targetProxy = 52183E0419218CF200F61786 /* PBXContainerItemProxy */;
+		};
+		52183E0519218CF200F61786 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5214996C191D563700642F55 /* o.printbytes.pd */;
+			targetProxy = 52183E0619218CF200F61786 /* PBXContainerItemProxy */;
+		};
+		52183E0719218CF200F61786 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 119FA0E3191D5FFB001C3325 /* o.route.pd */;
+			targetProxy = 52183E0819218CF200F61786 /* PBXContainerItemProxy */;
+		};
+		52183E0919218CF200F61786 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 119FA0ED191D6002001C3325 /* o.schedule.pd */;
+			targetProxy = 52183E0A19218CF200F61786 /* PBXContainerItemProxy */;
+		};
+		52183E0B19218CF200F61786 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 119FA0F7191D6009001C3325 /* o.select.pd */;
+			targetProxy = 52183E0C19218CF200F61786 /* PBXContainerItemProxy */;
+		};
+		52183E0D19218CF200F61786 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 119FA101191D6010001C3325 /* o.table.pd */;
+			targetProxy = 52183E0E19218CF200F61786 /* PBXContainerItemProxy */;
+		};
+		52183E0F19218CF200F61786 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 119FA10B191D6027001C3325 /* o.timetag.pd */;
+			targetProxy = 52183E1019218CF200F61786 /* PBXContainerItemProxy */;
+		};
+		52183E1119218CF200F61786 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 119FA115191D602E001C3325 /* o.union.pd */;
+			targetProxy = 52183E1219218CF200F61786 /* PBXContainerItemProxy */;
+		};
+		52183E1319218CF200F61786 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 119FA11F191D6032001C3325 /* o.unless.pd */;
+			targetProxy = 52183E1419218CF200F61786 /* PBXContainerItemProxy */;
+		};
+		52183E1519218CF200F61786 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 119FA129191D6040001C3325 /* o.var.pd */;
+			targetProxy = 52183E1619218CF200F61786 /* PBXContainerItemProxy */;
+		};
+		52183E1719218CF200F61786 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 119FA133191D6052001C3325 /* o.when.pd */;
+			targetProxy = 52183E1819218CF200F61786 /* PBXContainerItemProxy */;
 		};
 		52517B9D181F701F00879497 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -9004,6 +9453,122 @@
 			};
 			name = Release;
 		};
+		52183DDE19218CCB00F61786 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					x86_64,
+					i386,
+				);
+				CONFIGURATION_BUILD_DIR = build;
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_VERSION = "";
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GENERATE_PKGINFO_FILE = yes;
+				INFOPLIST_FILE = "";
+				INFOPLIST_OTHER_PREPROCESSOR_FLAGS = "";
+				INFOPLIST_PREFIX_HEADER = "";
+				INFOPLIST_PREPROCESSOR_DEFINITIONS = "";
+				INSTALL_PATH = "$(inherited)";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_NAME = "Build all copy";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.7.sdk";
+				SYMROOT = build;
+				WRAPPER_EXTENSION = "";
+			};
+			name = Debug;
+		};
+		52183DDF19218CCB00F61786 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					x86_64,
+					i386,
+				);
+				CONFIGURATION_BUILD_DIR = build;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_VERSION = "";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GENERATE_PKGINFO_FILE = yes;
+				INFOPLIST_FILE = "";
+				INFOPLIST_OTHER_PREPROCESSOR_FLAGS = "";
+				INFOPLIST_PREFIX_HEADER = "";
+				INFOPLIST_PREPROCESSOR_DEFINITIONS = "";
+				INSTALL_PATH = "$(inherited)";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_NAME = "Build all copy";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.7.sdk";
+				SYMROOT = build;
+				WRAPPER_EXTENSION = "";
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+		52183E6019218CF200F61786 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					x86_64,
+					i386,
+				);
+				CONFIGURATION_BUILD_DIR = build;
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_VERSION = "";
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GENERATE_PKGINFO_FILE = yes;
+				INFOPLIST_FILE = "";
+				INFOPLIST_OTHER_PREPROCESSOR_FLAGS = "";
+				INFOPLIST_PREFIX_HEADER = "";
+				INFOPLIST_PREPROCESSOR_DEFINITIONS = "";
+				INSTALL_PATH = "$(inherited)";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_NAME = "Build all copy";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.7.sdk";
+				SYMROOT = build;
+				WRAPPER_EXTENSION = "";
+			};
+			name = Debug;
+		};
+		52183E6119218CF200F61786 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					x86_64,
+					i386,
+				);
+				CONFIGURATION_BUILD_DIR = build;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_VERSION = "";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GENERATE_PKGINFO_FILE = yes;
+				INFOPLIST_FILE = "";
+				INFOPLIST_OTHER_PREPROCESSOR_FLAGS = "";
+				INFOPLIST_PREFIX_HEADER = "";
+				INFOPLIST_PREPROCESSOR_DEFINITIONS = "";
+				INSTALL_PATH = "$(inherited)";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_NAME = "Build all copy";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.7.sdk";
+				SYMROOT = build;
+				WRAPPER_EXTENSION = "";
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
 		525523D51504CB9E00A10E5D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -12912,6 +13477,24 @@
 			buildConfigurations = (
 				5217D907158EEBC4005B5238 /* Debug */,
 				5217D908158EEBC4005B5238 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		52183DDD19218CCB00F61786 /* Build configuration list for PBXAggregateTarget "Build all Max" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				52183DDE19218CCB00F61786 /* Debug */,
+				52183DDF19218CCB00F61786 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		52183E5F19218CF200F61786 /* Build configuration list for PBXAggregateTarget "Build all PD" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				52183E6019218CF200F61786 /* Debug */,
+				52183E6119218CF200F61786 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
