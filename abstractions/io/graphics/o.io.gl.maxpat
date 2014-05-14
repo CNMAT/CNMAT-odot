@@ -8,7 +8,7 @@
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 220.0, 49.0, 1220.0, 707.0 ],
+		"rect" : [ 140.0, 129.0, 1220.0, 707.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -29,15 +29,40 @@
 		"tags" : "",
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-41",
+					"maxclass" : "button",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "bang" ],
+					"patching_rect" : [ 401.0, 224.0, 20.0, 20.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
-					"id" : "obj-36",
+					"id" : "obj-35",
 					"maxclass" : "newobj",
 					"numinlets" : 2,
 					"numoutlets" : 2,
-					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 50.0, 153.0, 49.0, 20.0 ],
-					"text" : "zl iter 3"
+					"outlettype" : [ "", "FullPacket" ],
+					"patching_rect" : [ 76.0, 194.0, 81.0, 20.0 ],
+					"text" : "o.route /reset"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-14",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "FullPacket" ],
+					"patching_rect" : [ 65.0, 153.0, 111.0, 20.0 ],
+					"text" : "o.listiter /displaylist"
 				}
 
 			}
@@ -50,8 +75,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "FullPacket" ],
-					"patching_rect" : [ 49.0, 58.0, 107.0, 20.0 ],
-					"text" : "o.route /displaylist"
+					"patching_rect" : [ 49.0, 58.0, 111.0, 20.0 ],
+					"text" : "o.select /displaylist"
 				}
 
 			}
@@ -1994,6 +2019,24 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-35", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-14", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-41", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-14", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-18", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
@@ -2093,7 +2136,7 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-36", 0 ],
+					"destination" : [ "obj-14", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-25", 1 ]
@@ -2258,7 +2301,7 @@
 					"destination" : [ "obj-66", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"source" : [ "obj-36", 0 ]
+					"source" : [ "obj-35", 1 ]
 				}
 
 			}
@@ -2523,6 +2566,13 @@
 				"implicit" : 1
 			}
 , 			{
+				"name" : "o.listiter.maxpat",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions/programming",
+				"patcherrelativepath" : "../../programming",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
 				"name" : "o.iterate.mxo",
 				"type" : "iLaX"
 			}
@@ -2548,6 +2598,14 @@
 			}
 , 			{
 				"name" : "o.if.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.select.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.atomize.mxo",
 				"type" : "iLaX"
 			}
  ]
