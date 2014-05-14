@@ -8,7 +8,7 @@
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 291.0, 97.0, 1280.0, 599.0 ],
+		"rect" : [ 384.0, 116.0, 1280.0, 599.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -233,7 +233,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 652.0, 52.0, 286.0, 33.0 ],
-					"presentation_rect" : [ 880.0, 41.0, 0.0, 0.0 ],
 					"text" : "in this (recommended approach)\n we send a display list of subbundles with all the "
 				}
 
@@ -701,6 +700,13 @@
 				"implicit" : 1
 			}
 , 			{
+				"name" : "o.listiter.maxpat",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions/programming",
+				"patcherrelativepath" : "../../programming",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
 				"name" : "o.iterate.mxo",
 				"type" : "iLaX"
 			}
@@ -726,6 +732,14 @@
 			}
 , 			{
 				"name" : "o.if.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.select.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.atomize.mxo",
 				"type" : "iLaX"
 			}
  ]
