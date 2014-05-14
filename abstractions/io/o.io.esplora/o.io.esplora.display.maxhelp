@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 6,
 			"minor" : 1,
-			"revision" : 4,
+			"revision" : 6,
 			"architecture" : "x86"
 		}
 ,
@@ -40,7 +40,7 @@
 						"appversion" : 						{
 							"major" : 6,
 							"minor" : 1,
-							"revision" : 4,
+							"revision" : 6,
 							"architecture" : "x86"
 						}
 ,
@@ -74,11 +74,11 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 121.25, 280.0, 247.0, 834.0 ],
+									"patching_rect" : [ 121.25, 280.0, 247.0, 833.0 ],
 									"presentation" : 1,
 									"presentation_linecount" : 30,
-									"presentation_rect" : [ 10.0, 10.0, 410.0, 678.0 ],
-									"text" : "/acceleration/x 0.0078125\n/acceleration/y 0.0644531\n/acceleration/z 0.269531\n/photoresistor 0.982405\n/joystick/horizontal 0.00390625\n/joystick/vertical 0.0117188\n/joystick/button \"released\"\n/joystick/backward \"released\"\n/joystick/left \"released\"\n/joystick/forward \"released\"\n/joystick/right \"released\"\n/serialnumber 2\n/connector/white/left 0.945259\n/connector/white/right 0.88563\n/led/red 0\n/led/green 0\n/led/blue 0\n/led/rgb 0 0 0\n/connector/orange/right 0\n/connector/orange/left 1\n/vendor \"Arduino\"\n/productname \"Esplora\"\n/diamond/backward \"released\"\n/diamond/left \"released\"\n/diamond/forward \"released\"\n/diamond/right \"released\"\n/microphone/loudness 0.\n/temperature/fahrenheit 70.\n/temperature/celsius 21.\n/slider/horizontal 0.764418",
+									"presentation_rect" : [ 10.0, 10.0, 410.0, 677.0 ],
+									"text" : "/connector/white/left 0.945259\n/connector/white/right 0.87781\n/led/red 0\n/led/green 0\n/led/blue 0\n/led/rgb 0 0 0\n/connector/orange/right 0\n/connector/orange/left 1\n/vendor \"Arduino\"\n/productname \"Esplora\"\n/serialnumber 1099\n/diamond/backward \"released\"\n/diamond/left \"released\"\n/diamond/forward \"released\"\n/diamond/right \"released\"\n/microphone/loudness 0.\n/temperature/fahrenheit 81.\n/temperature/celsius 27.\n/slider/horizontal 0.731183\n/acceleration/x -0.0507812\n/acceleration/y -0.0351562\n/acceleration/z 0.277344\n/photoresistor 0.911046\n/joystick/horizontal -0.00195312\n/joystick/vertical 0.0175781\n/joystick/button \"released\"\n/joystick/backward \"released\"\n/joystick/left \"released\"\n/joystick/forward \"released\"\n/joystick/right \"released\"",
 									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 
@@ -118,7 +118,7 @@
 									"maxclass" : "inlet",
 									"numinlets" : 0,
 									"numoutlets" : 1,
-									"outlettype" : [ "" ],
+									"outlettype" : [ "FullPacket" ],
 									"patching_rect" : [ 130.0, 110.0, 25.0, 25.0 ]
 								}
 
@@ -190,7 +190,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 643.5, 73.0, 59.0, 18.0 ],
+					"patching_rect" : [ 637.5, 38.0, 59.0, 18.0 ],
 					"text" : "diagnose"
 				}
 
@@ -202,7 +202,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 613.5, 73.0, 20.0, 20.0 ]
+					"patching_rect" : [ 608.5, 31.0, 20.0, 20.0 ]
 				}
 
 			}
@@ -241,9 +241,9 @@
 					"maxclass" : "newobj",
 					"numinlets" : 2,
 					"numoutlets" : 2,
-					"outlettype" : [ "", "FullPacket" ],
-					"patching_rect" : [ 506.0, 68.5, 83.0, 20.0 ],
-					"text" : "o.io.esplora a"
+					"outlettype" : [ "FullPacket", "FullPacket" ],
+					"patching_rect" : [ 480.0, 73.5, 83.0, 20.0 ],
+					"text" : "o.io.esplora h"
 				}
 
 			}
@@ -285,7 +285,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 550.0, 150.0, 220.0, 450.0 ],
+					"patching_rect" : [ 550.0, 150.0, 220.0, 449.0 ],
 					"text" : "/microphone/loudness 0.0935003\n/left false\n/right false\n/forward false\n/backward false\n/led/rgb 0 0 0\n/led/red 0\n/led/green 0\n/led/blue 0\n/led/onboard 0\n/tone 0 0\n/diamond/left \"released\"\n/diamond/forward \"released\"\n/diamond/backward \"released\"\n/diamond/right \"released\"\n/acceleration/x 0.\n/acceleration/y 0.\n/acceleration/z 0.\n/temperature/fahrenheit -60.\n/temperature/celcius -51.1111\n/joystick/horizontal 0\n/joystick/vertical 0\n/joystick/button \"released\"\n/joystick/left false\n/joystick/right false\n/joystick/forward false\n/joystick/backward false\n/slider/horizontal 0.\n/photoresistor 0.\n/connector/white/right 0.\n/connector/white/left 0.\n/vendor \"Arduino\"\n/productname \"Esplora\"",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -365,7 +365,6 @@
 			}
 , 			{
 				"box" : 				{
-					"bordercolor" : [ 0.5, 0.5, 0.5, 1.0 ],
 					"id" : "obj-9",
 					"maxclass" : "ezdac~",
 					"numinlets" : 2,
@@ -534,7 +533,7 @@
 					"destination" : [ "obj-1", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"midpoints" : [ 515.5, 118.75, 29.5, 118.75 ],
+					"midpoints" : [ 489.5, 118.75, 29.5, 118.75 ],
 					"source" : [ "obj-21", 0 ]
 				}
 
@@ -580,49 +579,49 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "o.io.esplora.display.maxpat",
-				"bootpath" : "/Users/jml/Documents/materials/programming/max_files/5_berkeley/projects/cnmat/repositories/git/CNMAT-odot/abstractions/io/o.io.esplora",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions/io/o.io.esplora",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "c.esplora.buttonui.maxpat",
-				"bootpath" : "/Users/jml/Documents/materials/programming/max_files/5_berkeley/projects/cnmat/repositories/git/CNMAT-odot/abstractions/io/o.io.esplora",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions/io/o.io.esplora",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "c.esplora.buttonhelper.maxpat",
-				"bootpath" : "/Users/jml/Documents/materials/programming/max_files/5_berkeley/projects/cnmat/repositories/git/CNMAT-odot/abstractions/io/o.io.esplora",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions/io/o.io.esplora",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "c.lcd.circle.maxpat",
-				"bootpath" : "/Users/jml/Documents/materials/programming/max_files/5_berkeley/projects/cnmat/repositories/git/CNMAT-odot/abstractions/io",
-				"patcherrelativepath" : "..",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions/gui",
+				"patcherrelativepath" : "../../gui",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "c.esplora.p2i.maxpat",
-				"bootpath" : "/Users/jml/Documents/materials/programming/max_files/5_berkeley/projects/cnmat/repositories/git/CNMAT-odot/abstractions/io/o.io.esplora",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions/io/o.io.esplora",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.io.esplora.maxpat",
-				"bootpath" : "/Users/jml/Documents/materials/programming/max_files/5_berkeley/projects/cnmat/repositories/git/CNMAT-odot/abstractions/io/o.io.esplora",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions/io/o.io.esplora",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.io.slipserial.maxpat",
-				"bootpath" : "/Users/jml/Documents/materials/programming/max_files/5_berkeley/projects/cnmat/repositories/git/CNMAT-odot/abstractions/io",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions/io",
 				"patcherrelativepath" : "..",
 				"type" : "JSON",
 				"implicit" : 1
@@ -669,6 +668,14 @@
 			}
 , 			{
 				"name" : "OpenSoundControl.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.validate.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.print.mxo",
 				"type" : "iLaX"
 			}
  ]
