@@ -191,6 +191,18 @@ void obtle_outputOSCBundle(t_obtle *x, t_symbol *msg, int argc, t_atom *argv);
 	t_osc_msg_u *pname_msg = osc_message_u_allocWithString(buf, (char *)pname);
 	osc_bundle_u_addMsg(bndl, pname_msg);
 
+	t_obtle *x = maxobj;
+	omax_util_outletOSC_u(x->outlet, bndl);
+	osc_bundle_u_free(bndl);
+	int r = [self interrogateResponse:"/discover/services"];
+	if(r > 0){
+		[p retain];
+		[manager connectPeripheral:p options: nil];
+		[self startScan];
+	}
+	osc_mem_free(x->response_bndl);
+	x->response_bndl = NULL;
+	x->response_len = 0;
 	/*
 	CFUUIDRef uuid = [p UUID];
 	if(uuid){
@@ -221,18 +233,6 @@ void obtle_outputOSCBundle(t_obtle *x, t_symbol *msg, int argc, t_atom *argv);
 		}
 	}
 	*/
-	t_obtle *x = maxobj;
-	omax_util_outletOSC_u(x->outlet, bndl);
-	osc_bundle_u_free(bndl);
-	int r = [self interrogateResponse:"/discover/services"];
-	if(r > 0){
-		osc_mem_free(x->response_bndl);
-		x->response_bndl = NULL;
-		x->response_len = 0;
-		[p retain];
-		[manager connectPeripheral:p options: nil];
-		[self startScan];
-	}
 }
 
 // Invoked when the central manager retrieves the list of known peripherals.
