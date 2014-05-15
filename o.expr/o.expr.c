@@ -103,6 +103,7 @@ typedef struct _oexpr{
 	char **outlets_desc;
 #endif
 	t_osc_expr_ast_expr *expr;
+	int processbundle;
 } t_oexpr;
 
 void *oexpr_class;
@@ -246,21 +247,29 @@ void oexpr_fullPacket(t_oexpr *x, t_symbol *msg, int argc, t_atom *argv)
 	}
 	int ret = 0;
 	t_osc_expr_ast_expr *f = x->expr;
-	if(!f){
-		//t_osc_atom_ar_u *av = NULL;
-		//osc_expr_evalLexExprsInBndl(&copylen, &copy, &av);
+	if(x->processbundle){
+		int ret = osc_expr_ast_expr_evalBundle_s(&copylen, &copy);
+		if(ret){
+			object_error((t_oexpr *)x, "error processing bundle");
+			return;
+		}
 	}else{
-		while(f){
-			//int argc = 0;
-			t_osc_atom_ar_u *av = NULL;
-			ret = osc_expr_ast_expr_eval(f, &copylen, &copy, &av);
-			if(av){
-				osc_atom_array_u_free(av);
+		if(!f){
+			//t_osc_atom_ar_u *av = NULL;
+			//osc_expr_evalLexExprsInBndl(&copylen, &copy, &av);
+		}else{
+			while(f){
+				//int argc = 0;
+				t_osc_atom_ar_u *av = NULL;
+				ret = osc_expr_ast_expr_eval(f, &copylen, &copy, &av);
+				if(av){
+					osc_atom_array_u_free(av);
+				}
+				if(ret){
+					break;
+				}
+				f = osc_expr_ast_expr_next(f);
 			}
-			if(ret){
-				break;
-			}
-			f = osc_expr_ast_expr_next(f);
 		}
 	}
 	if(ret){
@@ -747,6 +756,9 @@ int main(void)
 	class_addmethod(c, (method)oexpr_doc_func, "doc-function", A_GIMME, 0);
 	class_addmethod(c, (method)oexpr_doc_cat, "doc-cat", A_GIMME, 0);
 	class_addmethod(c, (method)oexpr_doc_cat, "doc-category", A_GIMME, 0);
+
+	CLASS_ATTR_LONG(c, "processbundle", 0, t_oexpr, processbundle);
+	CLASS_ATTR_DEFAULT(c, "processbundle", 0, "0");
 
 	// remove this if statement when we stop supporting Max 5
 	if(omax_dict_resolveDictStubs()){
