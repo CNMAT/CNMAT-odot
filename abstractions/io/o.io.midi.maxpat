@@ -662,7 +662,7 @@
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"id" : "obj-2",
-					"items" : [ "AU DLS Synth 1", ",", "QuNexus Port 1", ",", "QuNexus Port 2", ",", "QuNexus Port 3", ",", "from Max 1", ",", "from Max 2" ],
+					"items" : [ "AU DLS Synth 1", ",", "from Max 1", ",", "from Max 2", ",", "nanoKONTROL CTRL" ],
 					"maxclass" : "umenu",
 					"numinlets" : 1,
 					"numoutlets" : 3,
