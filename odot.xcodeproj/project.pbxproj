@@ -1366,7 +1366,7 @@
 		52149975191D563700642F55 /* o.printbytes.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = o.printbytes.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
 		5217D909158EEBC4005B5238 /* o.explode.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.explode.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
 		5217D90C158EEBEB005B5238 /* o.explode.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.explode.c; path = o.explode/o.explode.c; sourceTree = "<group>"; };
-		5223ADDA1923EB5700C8FBB5 /* o.expr.codobox.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.expr.codobox.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
+		5223ADDA1923EB5700C8FBB5 /* o.expr.codebox.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.expr.codebox.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
 		5223ADDB1923EB9000C8FBB5 /* o.expr.codebox.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.expr.codebox.c; path = o.expr.codebox/o.expr.codebox.c; sourceTree = "<group>"; };
 		525523B41504C3FD00A10E5D /* o.atomize.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.atomize.c; path = o.atomize/o.atomize.c; sourceTree = SOURCE_ROOT; };
 		525523D71504CB9E00A10E5D /* o.change.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.change.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -2222,7 +2222,7 @@
 				119FA128191D6032001C3325 /* o.unless.pd_darwin */,
 				119FA132191D6040001C3325 /* o.var.pd_darwin */,
 				119FA13C191D6052001C3325 /* o.when.pd_darwin */,
-				5223ADDA1923EB5700C8FBB5 /* o.expr.codobox.mxo */,
+				5223ADDA1923EB5700C8FBB5 /* o.expr.codebox.mxo */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -3323,7 +3323,7 @@
 			);
 			name = o.expr.codebox;
 			productName = cv.jit.dilate;
-			productReference = 5223ADDA1923EB5700C8FBB5 /* o.expr.codobox.mxo */;
+			productReference = 5223ADDA1923EB5700C8FBB5 /* o.expr.codebox.mxo */;
 			productType = "com.apple.product-type.bundle";
 		};
 		525523C91504CB9E00A10E5D /* o.change */ = {
@@ -13224,14 +13224,17 @@
 				GCC_OPTIMIZATION_LEVEL = 3;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GENERATE_PKGINFO_FILE = yes;
+				GENERATE_PROFILING_CODE = NO;
 				INFOPLIST_FILE = "";
 				INFOPLIST_OTHER_PREPROCESSOR_FLAGS = "";
 				INFOPLIST_PREFIX_HEADER = "";
 				INFOPLIST_PREPROCESSOR_DEFINITIONS = "";
 				INSTALL_PATH = "$(inherited)";
+				PRECOMPS_INCLUDE_HEADERS_FROM_BUILT_PRODUCTS_DIR = YES;
 				PRIVATE_HEADERS_FOLDER_PATH = "";
 				PRODUCT_NAME = "$(inherited)";
 				PUBLIC_HEADERS_FOLDER_PATH = "";
+				RUN_CLANG_STATIC_ANALYZER = NO;
 				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.7.sdk";
 				SYMROOT = build;
 				WRAPPER_EXTENSION = "";
@@ -13253,14 +13256,17 @@
 				GCC_OPTIMIZATION_LEVEL = 3;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GENERATE_PKGINFO_FILE = yes;
+				GENERATE_PROFILING_CODE = NO;
 				INFOPLIST_FILE = "";
 				INFOPLIST_OTHER_PREPROCESSOR_FLAGS = "";
 				INFOPLIST_PREFIX_HEADER = "";
 				INFOPLIST_PREPROCESSOR_DEFINITIONS = "";
 				INSTALL_PATH = "$(inherited)";
+				PRECOMPS_INCLUDE_HEADERS_FROM_BUILT_PRODUCTS_DIR = YES;
 				PRIVATE_HEADERS_FOLDER_PATH = "";
 				PRODUCT_NAME = "$(inherited)";
 				PUBLIC_HEADERS_FOLDER_PATH = "";
+				RUN_CLANG_STATIC_ANALYZER = NO;
 				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.7.sdk";
 				SYMROOT = build;
 				WRAPPER_EXTENSION = "";
