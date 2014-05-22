@@ -24,15 +24,20 @@
 
 t_symbol *ps_FullPacket;
 
-void obtle_replaceSpacesWithChar(long len, char *buf, char c)
+void obtle_replaceCharWithChar(long len, char *buf, char old, char new)
 {
 	char *ptr = buf;
 	while(ptr - buf < len && *ptr != '\0'){
-		if(*ptr == ' '){
-			*ptr = c;
+		if(*ptr == old){
+			*ptr = new;
 		}
 		ptr++;
 	}
+}
+
+void obtle_replaceSpacesWithChar(long len, char *buf, char c)
+{
+	obtle_replaceCharWithChar(len, buf, ' ', c);
 }
 
 @interface CBUUID (StringExtraction)
@@ -187,7 +192,8 @@ void obtle_outputOSCBundle(t_obtle *x, t_symbol *msg, int argc, t_atom *argv);
 	long len = strlen(pname) + strlen(prefix) + 1;
 	char buf[len];
 	sprintf(buf, "%s%s", prefix, pname);
-	obtle_replaceSpacesWithChar(len, buf, '-');
+	obtle_replaceSpacesWithChar(len, buf, '_');
+	obtle_replaceCharWithChar(len, buf, '-', '_');
 	t_osc_msg_u *pname_msg = osc_message_u_allocWithString(buf, (char *)pname);
 	osc_bundle_u_addMsg(bndl, pname_msg);
 
@@ -302,11 +308,13 @@ void obtle_outputOSCBundle(t_obtle *x, t_symbol *msg, int argc, t_atom *argv);
 			NSString *sr = [uuid representativeString];
 			if(sr){
 				const char *uuidstring = [sr UTF8String];
+				obtle_replaceCharWithChar(strlen(uuidstring), uuidstring, '-', '_');
 				if(uuidstring){
 					long addresslen = strlen(ifx) + strlen(pfx) + strlen(uuidstring) + strlen(pname) + 2;
 					char address[addresslen];
 					sprintf(address, "%s%s%s%s", pfx, pname, ifx, uuidstring);
-					obtle_replaceSpacesWithChar(addresslen, address, '-');
+					obtle_replaceSpacesWithChar(addresslen, address, '_');
+					obtle_replaceCharWithChar(addresslen, address, '-', '_');
 					t_osc_msg_u *m = osc_message_u_allocWithString(address, (char *)uuidstring);
 					osc_bundle_u_addMsg(b, m);
 
@@ -377,13 +385,15 @@ void obtle_outputOSCBundle(t_obtle *x, t_symbol *msg, int argc, t_atom *argv);
 	const char *pname = [[p name] UTF8String];
 	const char * const spfx = "/service/uuid/";
 	const char *suuidstring = [[[s UUID] representativeString] UTF8String];
+	obtle_replaceCharWithChar(strlen(suuidstring), suuidstring, '-', '_');
 	const char * const cpfx = "/characteristic/uuid/";
 	for(CBCharacteristic *c in s.characteristics){
 		const char *cuuidstring = [[[c UUID] representativeString] UTF8String];
+		obtle_replaceCharWithChar(strlen(cuuidstring), cuuidstring, '-', '_');
 		long addresslen = strlen(pfx) + strlen(pname) + strlen(spfx) + strlen(suuidstring) + strlen(cpfx) + strlen(cuuidstring) + 1;
 		char address[addresslen];
 		sprintf(address, "%s%s%s%s%s%s", pfx, pname, spfx, suuidstring, cpfx, cuuidstring);
-		obtle_replaceSpacesWithChar(addresslen, address, '-');
+		obtle_replaceSpacesWithChar(addresslen, address, '_');
 		t_osc_msg_u *m = osc_message_u_allocWithString(address, (char *)cuuidstring);
 		osc_bundle_u_addMsg(b, m);
 
@@ -492,6 +502,7 @@ void obtle_outputOSCBundle(t_obtle *x, t_symbol *msg, int argc, t_atom *argv);
 	long puuidstrlen = CFStringGetLength(puuidstr) + 1;
 	char puuidstring[puuidstrlen];
 	CFStringGetCString(puuidstr, puuidstring, puuidstrlen, kCFStringEncodingUTF8);
+	obtle_replaceCharWithChar(puuidstrlen, puuidstring, '-', '_');
 	CFRelease(puuidstr);
 
 	char puuidstring_slash[puuidstrlen + 2];
@@ -500,10 +511,12 @@ void obtle_outputOSCBundle(t_obtle *x, t_symbol *msg, int argc, t_atom *argv);
 	const char *pname = [[p name] UTF8String];
 	const char * const cfx = "/characteristic/";
 	const char *cuuidstring = [[[c UUID] representativeString] UTF8String];
+	obtle_replaceCharWithChar(strlen(cuuidstring), cuuidstring, '-', '_');
 	long addresslen = strlen(puuidstring_slash) + strlen(pfx) + strlen(pname) + strlen(cfx) + strlen(cuuidstring) + 1;
 	char address[addresslen];
 	sprintf(address, "%s%s%s%s%s", puuidstring_slash, pfx, pname, cfx, cuuidstring);
-	obtle_replaceSpacesWithChar(addresslen, address, '-');
+	obtle_replaceSpacesWithChar(addresslen, address, '_');
+	obtle_replaceCharWithChar(addresslen, address, '-', '_');
 
 	t_osc_msg_u *m = osc_message_u_allocWithBlob(address, data);
 	osc_bundle_u_addMsg(b, m);
