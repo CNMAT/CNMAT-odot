@@ -1011,7 +1011,13 @@ void svglookup_doopen(t_osvg *x, t_symbol *s)
 	
 	if (s==ps_nothing) {
 		if (open_dialog(filename,&path,&type,0L,0))
+        {
+            
+            post("%s %s", __func__, filename);
 			return;
+        }
+        
+        
 	} else {
 		strcpy(filename,s->s_name);
 		if (locatefile_extended(filename,&path,&type,&type,-1)) {
