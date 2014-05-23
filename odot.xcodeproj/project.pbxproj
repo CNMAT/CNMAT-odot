@@ -13,6 +13,7 @@
 			buildPhases = (
 			);
 			dependencies = (
+				52A89BFD192FE77B0045F929 /* PBXTargetDependency */,
 				5223ADE01923EBD000C8FBB5 /* PBXTargetDependency */,
 				52183D9719218CCB00F61786 /* PBXTargetDependency */,
 				52183D9919218CCB00F61786 /* PBXTargetDependency */,
@@ -97,6 +98,7 @@
 			buildPhases = (
 			);
 			dependencies = (
+				52A89BFB192FD3CB0045F929 /* PBXTargetDependency */,
 				5223ADDE1923EBB700C8FBB5 /* PBXTargetDependency */,
 				52183D2719218B3100F61786 /* PBXTargetDependency */,
 				52183D2919218B3100F61786 /* PBXTargetDependency */,
@@ -1282,6 +1284,20 @@
 			proxyType = 1;
 			remoteGlobalIDString = 52A8395916EFFBC9002E273C;
 			remoteInfo = o.timetag;
+		};
+		52A89BFA192FD3CB0045F929 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 520A44A41824777800CB610F;
+			remoteInfo = o.io.bluetoothle;
+		};
+		52A89BFC192FE77B0045F929 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 520A44A41824777800CB610F;
+			remoteInfo = o.io.bluetoothle;
 		};
 		52B53CFC174828B200237A19 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -5629,6 +5645,16 @@
 			isa = PBXTargetDependency;
 			target = 52A8395916EFFBC9002E273C /* o.timetag */;
 			targetProxy = 52A8396816EFFC09002E273C /* PBXContainerItemProxy */;
+		};
+		52A89BFB192FD3CB0045F929 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 520A44A41824777800CB610F /* o.io.bluetoothle */;
+			targetProxy = 52A89BFA192FD3CB0045F929 /* PBXContainerItemProxy */;
+		};
+		52A89BFD192FE77B0045F929 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 520A44A41824777800CB610F /* o.io.bluetoothle */;
+			targetProxy = 52A89BFC192FE77B0045F929 /* PBXContainerItemProxy */;
 		};
 		52B53CFD174828B200237A19 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
