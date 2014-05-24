@@ -37,9 +37,9 @@
 #endif
 
 #ifdef OMAX_PD_VERSION
-#define OMAX_DOC_NAME "oexpr"
+#define OMAX_DOC_NAME "oexprcodebox"
 #else
-#define OMAX_DOC_NAME "o.expr"
+#define OMAX_DOC_NAME "o.expr.codebox"
 #endif
 #define OMAX_DOC_SHORT_DESC "Evaluate a C-like expression containing OSC addresses."
 #define OMAX_DOC_LONG_DESC "When it reveives a packet, o.expr substitutes any OSC addresses contained in the expression for the values to which they are bound in the incoming packet.  The expression is then evaluated and the resulting bundle, containing any side effects of the expression, is output."
@@ -79,19 +79,19 @@
 
 #include "o.h"
 
-typedef struct _oexpr{
+typedef struct _oexprcodebox{
         t_jbox ob;
         t_critical lock;
         long textlen;
         char *text;
         t_jrgba frame_color, background_color, text_color;
-        void **outlets;
+        void *outlets[2];
         t_osc_expr *expr;
-} t_oexpr;
+} t_oexprcodebox;
 
-void *oexpr_class;
+void *oexprcodebox_class;
 
-void oexpr_fullPacket(t_oexpr *x, t_symbol *msg, int argc, t_atom *argv)
+void oexprcodebox_fullPacket(t_oexprcodebox *x, t_symbol *msg, int argc, t_atom *argv)
 {
         OMAX_UTIL_GET_LEN_AND_PTR
 		if(len <= 0){
@@ -139,7 +139,7 @@ void oexpr_fullPacket(t_oexpr *x, t_symbol *msg, int argc, t_atom *argv)
 	}
 }
 
-void oexpr_paint(t_oexpr *x, t_object *patcherview)
+void oexprcodebox_paint(t_oexprcodebox *x, t_object *patcherview)
 {
         critical_enter(x->lock);
         critical_exit(x->lock);
@@ -173,7 +173,7 @@ void oexpr_paint(t_oexpr *x, t_object *patcherview)
         jgraphics_stroke(g);
 }
 
-void oexpr_doselect(t_oexpr *x){
+void oexprcodebox_doselect(t_oexprcodebox *x){
         t_object *p = NULL; 
         object_obex_lookup(x,gensym("#P"), &p);
         if (p) {
@@ -185,11 +185,11 @@ void oexpr_doselect(t_oexpr *x){
         }
 }
 
-void oexpr_select(t_oexpr *x){
-        defer(x, (method)oexpr_doselect, 0, 0, 0);
+void oexprcodebox_select(t_oexprcodebox *x){
+        defer(x, (method)oexprcodebox_doselect, 0, 0, 0);
 }
 
-long oexpr_key(t_oexpr *x, t_object *patcherview, long keycode, long modifiers, long textcharacter){
+long oexprcodebox_key(t_oexprcodebox *x, t_object *patcherview, long keycode, long modifiers, long textcharacter){
         char buff[256];
         buff[0] = textcharacter;  // we know this is just a simple char
         buff[1] = 0; 
@@ -199,25 +199,25 @@ long oexpr_key(t_oexpr *x, t_object *patcherview, long keycode, long modifiers, 
         return 1; 
 }
 
-long oexpr_keyfilter(t_oexpr *x, t_object *patcherview, long *keycode, long *modifiers, long *textcharacter){
+long oexprcodebox_keyfilter(t_oexprcodebox *x, t_object *patcherview, long *keycode, long *modifiers, long *textcharacter){
         t_atom arv;
         long rv = 1;
         long k = *keycode;
         
         if (k == JKEY_TAB || k == JKEY_ESC) {
                 object_method_typed(patcherview, gensym("endeditbox"), 0, NULL, &arv); 
-                rv = 0;                // don't pass those keys to oexpr
+                rv = 0;                // don't pass those keys to oexprcodebox
         }
         return rv;
 }
 
 
-void oexpr_mousedown(t_oexpr *x, t_object *patcherview, t_pt pt, long modifiers){
+void oexprcodebox_mousedown(t_oexprcodebox *x, t_object *patcherview, t_pt pt, long modifiers){
 	textfield_set_textmargins(jbox_get_textfield((t_object *)x), 4, 4, 2, 2);
         jbox_redraw((t_jbox *)x);
 }
 
-void oexpr_mouseup(t_oexpr *x, t_object *patcherview, t_pt pt, long modifiers){
+void oexprcodebox_mouseup(t_oexprcodebox *x, t_object *patcherview, t_pt pt, long modifiers){
 	textfield_set_textmargins(jbox_get_textfield((t_object *)x), 3, 3, 3, 3);
         jbox_redraw((t_jbox *)x);
 }
@@ -226,7 +226,7 @@ void oexpr_mouseup(t_oexpr *x, t_object *patcherview, t_pt pt, long modifiers){
 // function via qelem_set which converts the OSC bundle back to text.
 // We do this so that it's formatted nicely with no unnecessary whitespace
 // and tabbed subbundles, etc.
-void oexpr_gettext(t_oexpr *x)
+void oexprcodebox_gettext(t_oexprcodebox *x)
 {
         long size        = 0;
         char *text        = NULL;
@@ -241,7 +241,7 @@ void oexpr_gettext(t_oexpr *x)
                 return;
         }    
         // free expr
-        //oexpr_clearBundles(x);
+        //oexprcodebox_clearBundles(x);
         if(x->expr){
                 critical_enter(x->lock);
                 osc_expr_free(x->expr);
@@ -256,12 +256,12 @@ void oexpr_gettext(t_oexpr *x)
 }
 
 // enter is triggerd at "endeditbox time"
-void oexpr_enter(t_oexpr *x)
+void oexprcodebox_enter(t_oexprcodebox *x)
 {
-        oexpr_gettext(x);
+        oexprcodebox_gettext(x);
 }
 
-void oexpr_postExprAST(t_oexpr *fg)
+void oexprcodebox_postExprAST(t_oexprcodebox *fg)
 {
         char *buf = NULL;
         long len = 0;
@@ -288,7 +288,7 @@ void oexpr_postExprAST(t_oexpr *fg)
         }
 }
 
-void oexpr_postFunctionTable(t_oexpr *fg)
+void oexprcodebox_postFunctionTable(t_oexprcodebox *fg)
 {
         char *buf = NULL;
         long len = 0;
@@ -308,29 +308,29 @@ void oexpr_postFunctionTable(t_oexpr *fg)
         }
 }
 
-void oexpr_bang(t_oexpr *x)
+void oexprcodebox_bang(t_oexprcodebox *x)
 {
         char buf[16];
         memset(buf, '\0', 16);
         strncpy(buf, "#bundle\0", 8);
-        //oexpr_fullPacket(x, 16, (long)buf);
+        //oexprcodebox_fullPacket(x, 16, (long)buf);
 #ifdef OMAX_PD_VERSION
 	t_atom a[3];
 	omax_util_oscLenAndPtr2Atoms(a, 16, buf);
-	oexpr_fullPacket(x, NULL, 3, a);
+	oexprcodebox_fullPacket(x, NULL, 3, a);
 #else
         t_atom a[2];
         atom_setlong(a, 16);
         atom_setlong(a + 1, (long)buf);
-        oexpr_fullPacket(x, NULL, 2, a);
+        oexprcodebox_fullPacket(x, NULL, 2, a);
 #endif
 }
 
 #ifndef OMAX_PD_VERSION
-OMAX_DICT_DICTIONARY(t_oexpr, x, oexpr_fullPacket);
+OMAX_DICT_DICTIONARY(t_oexprcodebox, x, oexprcodebox_fullPacket);
 #endif
 
-void oexpr_doc_cat(t_oexpr *x, t_symbol *msg, int argc, t_atom *argv)
+void oexprcodebox_doc_cat(t_oexprcodebox *x, t_symbol *msg, int argc, t_atom *argv)
 {
         if(argc == 0){
                 t_osc_bndl_s *b = osc_expr_getCategories();
@@ -351,7 +351,7 @@ void oexpr_doc_cat(t_oexpr *x, t_symbol *msg, int argc, t_atom *argv)
         }
 }
 
-void oexpr_doc_func(t_oexpr *x, t_symbol *msg, int argc, t_atom *argv)
+void oexprcodebox_doc_func(t_oexprcodebox *x, t_symbol *msg, int argc, t_atom *argv)
 {
         if(argc != 1){
                 object_error((t_object *)x, "doc-func expected an argument--the name of a function");
@@ -380,18 +380,18 @@ void oexpr_doc_func(t_oexpr *x, t_symbol *msg, int argc, t_atom *argv)
         }
 }
 
-void oexpr_doc(t_oexpr *x)
+void oexprcodebox_doc(t_oexprcodebox *x)
 {
         omax_doc_outletDoc(x->outlets[0]);
 }
 
 #ifndef OMAX_PD_VERSION
-void oexpr_assist(t_oexpr *x, void *b, long io, long num, char *buf){
+void oexprcodebox_assist(t_oexprcodebox *x, void *b, long io, long num, char *buf){
         omax_doc_assist(io, num, buf);
 }
 #endif
 
-void oexpr_free(t_oexpr *x){
+void oexprcodebox_free(t_oexprcodebox *x){
         if(x->expr){
                 osc_expr_free(x->expr);
         }
@@ -400,7 +400,7 @@ void oexpr_free(t_oexpr *x){
 }
 
 #ifndef OMAX_PD_VERSION
-t_max_err oexpr_notify(t_oexpr *x, t_symbol *s, t_symbol *msg, void *sender, void *data){
+t_max_err oexprcodebox_notify(t_oexprcodebox *x, t_symbol *s, t_symbol *msg, void *sender, void *data){
         return MAX_ERR_NONE;
         t_symbol *attrname;
 
@@ -412,9 +412,9 @@ t_max_err oexpr_notify(t_oexpr *x, t_symbol *s, t_symbol *msg, void *sender, voi
 #endif
 
 #ifdef OMAX_PD_VERSION
-void *oexpr_new(t_symbol *msg, short argc, t_atom *argv){
-        t_oexpr *x;
-        if((x = (t_oexpr *)object_alloc(oexpr_class))){
+void *oexprcodebox_new(t_symbol *msg, short argc, t_atom *argv){
+        t_oexprcodebox *x;
+        if((x = (t_oexprcodebox *)object_alloc(oexprcodebox_class))){
                 t_osc_expr *f = NULL;
 		char symbuf[argc][65536];
                 if(argc){
@@ -536,29 +536,29 @@ int oif_setup(void)
 #elif defined (OCOND)
 	int ocond_setup(void)
 #else
-	int oexpr_setup(void)
+	int oexprcodebox_setup(void)
 #endif
 {
-        t_class *c = class_new(gensym(NAME), (t_newmethod)oexpr_new, (t_method)oexpr_free, sizeof(t_oexpr), 0L, A_GIMME, 0);
+        t_class *c = class_new(gensym(NAME), (t_newmethod)oexprcodebox_new, (t_method)oexprcodebox_free, sizeof(t_oexprcodebox), 0L, A_GIMME, 0);
     
 
-        class_addmethod(c, (t_method)oexpr_fullPacket, gensym("FullPacket"), A_GIMME, 0);
-	//        class_addmethod(c, (t_method)oexpr_assist, gensym("assist"), A_CANT, 0);
-        class_addmethod(c, (t_method)oexpr_bang, gensym("bang"), 0);
+        class_addmethod(c, (t_method)oexprcodebox_fullPacket, gensym("FullPacket"), A_GIMME, 0);
+	//        class_addmethod(c, (t_method)oexprcodebox_assist, gensym("assist"), A_CANT, 0);
+        class_addmethod(c, (t_method)oexprcodebox_bang, gensym("bang"), 0);
     
-        class_addmethod(c, (t_method)oexpr_postExprIR, gensym("post-expr-ir"), 0);
+        class_addmethod(c, (t_method)oexprcodebox_postExprIR, gensym("post-expr-ir"), 0);
 
-        class_addmethod(c, (t_method)oexpr_doc, gensym("doc"), 0);
-        class_addmethod(c, (t_method)oexpr_doc_func, gensym("doc-func"), A_GIMME, 0);
-        class_addmethod(c, (t_method)oexpr_doc_func, gensym("doc-function"), A_GIMME, 0);
-        class_addmethod(c, (t_method)oexpr_doc_cat, gensym("doc-cat"), A_GIMME, 0);
-        class_addmethod(c, (t_method)oexpr_doc_cat, gensym("doc-category"), A_GIMME, 0);
+        class_addmethod(c, (t_method)oexprcodebox_doc, gensym("doc"), 0);
+        class_addmethod(c, (t_method)oexprcodebox_doc_func, gensym("doc-func"), A_GIMME, 0);
+        class_addmethod(c, (t_method)oexprcodebox_doc_func, gensym("doc-function"), A_GIMME, 0);
+        class_addmethod(c, (t_method)oexprcodebox_doc_cat, gensym("doc-cat"), A_GIMME, 0);
+        class_addmethod(c, (t_method)oexprcodebox_doc_cat, gensym("doc-category"), A_GIMME, 0);
 
 
     
         class_addmethod(c, (t_method)odot_version, gensym("version"), 0);
     
-        oexpr_class = c;
+        oexprcodebox_class = c;
     
 	//        common_symbols_init();
     
@@ -570,9 +570,9 @@ int oif_setup(void)
 }
 
 #else
-void *oexpr_new(t_symbol *msg, short argc, t_atom *argv)
+void *oexprcodebox_new(t_symbol *msg, short argc, t_atom *argv)
 {
-	t_oexpr *x;
+	t_oexprcodebox *x;
 	t_dictionary *d = NULL;
 	long boxflags;
     
@@ -596,7 +596,7 @@ void *oexpr_new(t_symbol *msg, short argc, t_atom *argv)
 		//      | JBOX_MOUSEDRAGDELTA
                 | JBOX_TEXTFIELD
 		;
-	if((x = (t_oexpr *)object_alloc(oexpr_class))){
+	if((x = (t_oexprcodebox *)object_alloc(oexprcodebox_class))){
 		jbox_new((t_jbox *)x, boxflags, argc, argv);
 		x->ob.b_firstin = (void *)x;
 		critical_new(&(x->lock));
@@ -612,7 +612,7 @@ void *oexpr_new(t_symbol *msg, short argc, t_atom *argv)
 			textfield_set_textcolor(textfield, &(x->text_color));
 		}
 		jbox_ready((t_jbox *)x);
-		oexpr_gettext(x);
+		oexprcodebox_gettext(x);
 	}
 	return x;
 }
@@ -622,23 +622,22 @@ void *oexpr_new(t_symbol *msg, short argc, t_atom *argv)
 int main(void)
 {
         common_symbols_init();
-        t_class *c = class_new(NAME, (method)oexpr_new, (method)oexpr_free, sizeof(t_oexpr), 0L, A_GIMME, 0);
-
+        t_class *c = class_new(NAME, (method)oexprcodebox_new, (method)oexprcodebox_free, sizeof(t_oexprcodebox), 0L, A_GIMME, 0);
         c->c_flags |= CLASS_FLAG_NEWDICTIONARY;
 	jbox_initclass(c, JBOX_TEXTFIELD | JBOX_FIXWIDTH | JBOX_FONTATTR);
 
-        //class_addmethod(c, (method)oexpr_fullPacket, "FullPacket", A_LONG, A_LONG, 0);
-        class_addmethod(c, (method)oexpr_fullPacket, "FullPacket", A_GIMME, 0);
-        class_addmethod(c, (method)oexpr_assist, "assist", A_CANT, 0);
-        class_addmethod(c, (method)oexpr_bang, "bang", 0);
+        //class_addmethod(c, (method)oexprcodebox_fullPacket, "FullPacket", A_LONG, A_LONG, 0);
+        class_addmethod(c, (method)oexprcodebox_fullPacket, "FullPacket", A_GIMME, 0);
+        class_addmethod(c, (method)oexprcodebox_assist, "assist", A_CANT, 0);
+        class_addmethod(c, (method)oexprcodebox_bang, "bang", 0);
 
-        class_addmethod(c, (method)oexpr_postExprAST, "post-ast", 0);
+        class_addmethod(c, (method)oexprcodebox_postExprAST, "post-ast", 0);
 
-        class_addmethod(c, (method)oexpr_doc, "doc", 0);
-        class_addmethod(c, (method)oexpr_doc_func, "doc-func", A_GIMME, 0);
-        class_addmethod(c, (method)oexpr_doc_func, "doc-function", A_GIMME, 0);
-        class_addmethod(c, (method)oexpr_doc_cat, "doc-cat", A_GIMME, 0);
-        class_addmethod(c, (method)oexpr_doc_cat, "doc-category", A_GIMME, 0);
+        class_addmethod(c, (method)oexprcodebox_doc, "doc", 0);
+        class_addmethod(c, (method)oexprcodebox_doc_func, "doc-func", A_GIMME, 0);
+        class_addmethod(c, (method)oexprcodebox_doc_func, "doc-function", A_GIMME, 0);
+        class_addmethod(c, (method)oexprcodebox_doc_cat, "doc-cat", A_GIMME, 0);
+        class_addmethod(c, (method)oexprcodebox_doc_cat, "doc-category", A_GIMME, 0);
 
         // remove this if statement when we stop supporting Max 5
         if(omax_dict_resolveDictStubs()){
@@ -648,27 +647,27 @@ int main(void)
         class_addmethod(c, (method)odot_version, "version", 0);
 
         // gui stuff
-        class_addmethod(c, (method)oexpr_paint, "paint", A_CANT, 0);
+        class_addmethod(c, (method)oexprcodebox_paint, "paint", A_CANT, 0);
 
-        class_addmethod(c, (method)oexpr_key, "key", A_CANT, 0);
-        class_addmethod(c, (method)oexpr_keyfilter, "keyfilter", A_CANT, 0);
-        class_addmethod(c, (method)oexpr_enter, "enter", A_CANT, 0);
-        class_addmethod(c, (method)oexpr_select, "select", 0);
+        class_addmethod(c, (method)oexprcodebox_key, "key", A_CANT, 0);
+        class_addmethod(c, (method)oexprcodebox_keyfilter, "keyfilter", A_CANT, 0);
+        class_addmethod(c, (method)oexprcodebox_enter, "enter", A_CANT, 0);
+        class_addmethod(c, (method)oexprcodebox_select, "select", 0);
     
-        class_addmethod(c, (method)oexpr_mousedown, "mousedown", A_CANT, 0);
-        class_addmethod(c, (method)oexpr_mouseup, "mouseup", A_CANT, 0);
+        class_addmethod(c, (method)oexprcodebox_mousedown, "mousedown", A_CANT, 0);
+        class_addmethod(c, (method)oexprcodebox_mouseup, "mouseup", A_CANT, 0);
 
-	CLASS_ATTR_RGBA(c, "background_color", 0, t_oexpr, background_color);
+	CLASS_ATTR_RGBA(c, "background_color", 0, t_oexprcodebox, background_color);
 	CLASS_ATTR_DEFAULT_SAVE_PAINT(c, "background_color", 0, ".87 .87 .87 1.");
 	CLASS_ATTR_STYLE_LABEL(c, "background_color", 0, "rgba", "Background Color");
         CLASS_ATTR_CATEGORY_KLUDGE(c, "background_color", 0, "Color");
     
-	CLASS_ATTR_RGBA(c, "frame_color", 0, t_oexpr, frame_color);
+	CLASS_ATTR_RGBA(c, "frame_color", 0, t_oexprcodebox, frame_color);
 	CLASS_ATTR_DEFAULT_SAVE_PAINT(c, "frame_color", 0, "0. 0. 0. 1.");
 	CLASS_ATTR_STYLE_LABEL(c, "frame_color", 0, "rgba", "Frame Color");
         CLASS_ATTR_CATEGORY_KLUDGE(c, "frame_color", 0, "Color");
     
-	CLASS_ATTR_RGBA(c, "text_color", 0, t_oexpr, text_color);
+	CLASS_ATTR_RGBA(c, "text_color", 0, t_oexprcodebox, text_color);
 	CLASS_ATTR_DEFAULT_SAVE_PAINT(c, "text_color", 0, "0. 0. 0. 1.");
 	CLASS_ATTR_STYLE_LABEL(c, "text_color", 0, "rgba", "Text Color");
         CLASS_ATTR_CATEGORY_KLUDGE(c, "text_color", 0, "Color");
@@ -676,12 +675,12 @@ int main(void)
         CLASS_ATTR_DEFAULT(c, "rect", 0, "0. 0. 150., 18.");
 
         class_register(CLASS_BOX, c);
-        oexpr_class = c;
+        oexprcodebox_class = c;
 
         osc_error_setHandler(omax_util_liboErrorHandler);
 
         ODOT_PRINT_VERSION;
-
+	printf("done\n");
         return 0;
 }
 
