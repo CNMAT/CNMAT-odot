@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 6,
 			"minor" : 1,
-			"revision" : 3,
+			"revision" : 6,
 			"architecture" : "x86"
 		}
 ,
@@ -28,6 +28,20 @@
 		"digest" : "",
 		"tags" : "",
 		"boxes" : [ 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-8",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "FullPacket" ],
+					"patching_rect" : [ 72.0, 477.0, 105.0, 20.0 ],
+					"text" : "o.pack /displaylist"
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
@@ -141,7 +155,7 @@
 						"appversion" : 						{
 							"major" : 6,
 							"minor" : 1,
-							"revision" : 3,
+							"revision" : 6,
 							"architecture" : "x86"
 						}
 ,
@@ -201,8 +215,8 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "FullPacket" ],
-									"patching_rect" : [ 50.0, 100.0, 229.0, 20.0 ],
-									"text" : "o.expr /reset = 1\\; /position = /ball/position"
+									"patching_rect" : [ 50.0, 100.0, 172.0, 20.0 ],
+									"text" : "o.expr /position = /ball/position"
 								}
 
 							}
@@ -217,7 +231,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 199.0, 152.0, 150.0, 47.0 ],
-									"text" : "/color 0.9 0.3 0.1 \n/radius 0.04 \n/shape \"sphere\" ",
+									"text" : "/color 0.9 0.3 0.1\n/radius 0.04\n/shape \"sphere\"",
 									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 
@@ -332,9 +346,9 @@
 					"id" : "obj-10",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
-					"numoutlets" : 2,
-					"outlettype" : [ "", "FullPacket" ],
-					"patching_rect" : [ 37.0, 408.0, 116.0, 20.0 ],
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 49.0, 555.0, 116.0, 20.0 ],
 					"text" : "o.io.gl o.demo.pong"
 				}
 
@@ -390,7 +404,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 636.0, 99.0, 210.0, 74.0 ],
-					"text" : "/ball/position 0. 0. 0. \n/ball/step 0.07 0.025 0.035 \n/ball/reflected false false false \n/bound/lower -0.5 -0.5 -0.5 \n/bound/upper 0.5 0.5 0.5 ",
+					"text" : "/ball/position 0. 0. 0.\n/ball/step 0.07 0.025 0.035\n/ball/reflected false false false\n/bound/lower -0.5 -0.5 -0.5\n/bound/upper 0.5 0.5 0.5",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -406,7 +420,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 36.0, 251.5, 285.0, 74.0 ],
-					"text" : "/ball/position 0.21 0.075 -0.455 \n/ball/step 0.07 0.025 -0.035 \n/ball/reflected false false false \n/bound/lower -0.5 -0.5 -0.5 \n/bound/upper 0.5 0.5 0.5 \n",
+					"text" : "/ball/position 0.35 0.075 0.455\n/ball/step 0.07 -0.025 -0.035\n/ball/reflected false false false\n/bound/lower -0.5 -0.5 -0.5\n/bound/upper 0.5 0.5 0.5",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -459,7 +473,7 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-10", 0 ],
+					"destination" : [ "obj-8", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-22", 0 ]
@@ -521,23 +535,46 @@
 				}
 
 			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-10", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-8", 0 ]
+				}
+
+			}
  ],
 		"dependency_cache" : [ 			{
 				"name" : "o.foreveryoung.maxpat",
-				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions",
-				"patcherrelativepath" : "../abstractions",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions/time",
+				"patcherrelativepath" : "../abstractions/time",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.io.gl.maxpat",
-				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions",
-				"patcherrelativepath" : "../abstractions",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions/io/graphics",
+				"patcherrelativepath" : "../abstractions/io/graphics",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.io.gl.platohelper.maxpat",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions/io/graphics",
+				"patcherrelativepath" : "../abstractions/io/graphics",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "o.listiter.maxpat",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions/programming",
+				"patcherrelativepath" : "../abstractions/programming",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "o.oscbundle.maxpat",
 				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions",
 				"patcherrelativepath" : "../abstractions",
 				"type" : "JSON",
@@ -569,6 +606,22 @@
 			}
 , 			{
 				"name" : "o.if.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.select.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.atomize.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.var.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.pack.mxo",
 				"type" : "iLaX"
 			}
  ]
