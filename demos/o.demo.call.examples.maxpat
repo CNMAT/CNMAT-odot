@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 6,
 			"minor" : 1,
-			"revision" : 3,
+			"revision" : 6,
 			"architecture" : "x86"
 		}
 ,
@@ -28,6 +28,21 @@
 		"digest" : "",
 		"tags" : "",
 		"boxes" : [ 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"frgb" : 0.0,
+					"id" : "obj-46",
+					"linecount" : 3,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 371.0, 327.0, 189.0, 47.0 ],
+					"text" : "warning: bugs in zl objects mean they don't support message forwarding (deelgation back)"
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
@@ -95,7 +110,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 28.0, 556.0, 138.0, 20.0 ],
-					"text" : "/number 0.707692 ",
+					"text" : "/number 0.461538",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -124,7 +139,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 26.0, 505.0, 80.0, 20.0 ],
-					"text" : "/number \"$1\" ",
+					"text" : "/number \"$1\"",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -139,7 +154,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 27.0, 438.0, 138.0, 20.0 ],
-					"text" : "/numbers 0.3 ",
+					"text" : "/numbers 0.2",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -168,7 +183,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 26.0, 382.0, 179.0, 20.0 ],
-					"text" : "/numbers 0.2 0.4 0.4 -6. ",
+					"text" : "/numbers 0.2 0.4 0.4 -6. 0.2",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -183,7 +198,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 19.0, 151.0, 169.0, 20.0 ],
-					"text" : "\n",
+					"text" : "/pitches \"c\" \"b\" \"a\"",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -213,7 +228,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 19.0, 93.0, 91.0, 33.0 ],
-					"text" : "/pitches \"a\" \"b\" \"c\" ",
+					"text" : "/pitches \"a\" \"b\" \"c\"",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -243,7 +258,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 1084.0, 650.0, 138.0, 20.0 ],
-					"text" : "/symbols \"jd\" ",
+					"text" : "/symbols \"jd\"",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -286,7 +301,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 837.0, 87.0, 232.0, 20.0 ],
-					"text" : "\n",
+					"text" : "/numbers -6 0.4 0.4 0.2",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -315,7 +330,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 111.0, 695.0, 246.0, 20.0 ],
-					"text" : "/number 0.21 ",
+					"text" : "/number 13.",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -330,7 +345,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 376.0, 668.0, 138.0, 20.0 ],
-					"text" : "/number 0.7 ",
+					"text" : "/number 43.3333",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -359,7 +374,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 657.0, 607.0, 246.0, 20.0 ],
-					"text" : "/numbers 0.2 3. -1.1 ",
+					"text" : "/numbers 0.2 3. -1.1",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -374,7 +389,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 899.0, 731.0, 138.0, 20.0 ],
-					"text" : "/numbers -1.1 ",
+					"text" : "/numbers -1.1",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -403,7 +418,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 605.0, 742.0, 138.0, 20.0 ],
-					"text" : "/number 0.458258 ",
+					"text" : "/number 3.60555",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -432,7 +447,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 437.0, 737.0, 138.0, 20.0 ],
-					"text" : "/number -0.21 ",
+					"text" : "/number -13.",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -461,7 +476,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 170.0, 744.0, 138.0, 20.0 ],
-					"text" : "/number 1.21 ",
+					"text" : "/number 14.",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -490,7 +505,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 286.0, 543.0, 246.0, 20.0 ],
-					"text" : "/number \"$1\" ",
+					"text" : "/number \"$1\"",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -506,7 +521,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 1154.0, 393.0, 138.0, 33.0 ],
-					"text" : "/symbols \"john\" \"adrian\" \"Matt\" \"sir\" ",
+					"text" : "/symbols \"john\" \"adrian\" \"Matt\" \"sir\"",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -535,7 +550,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 24.0, 245.0, 139.0, 20.0 ],
-					"text" : "\n",
+					"text" : "/e 0.0314159",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -550,7 +565,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 19.0, 191.0, 58.0, 20.0 ],
-					"text" : "/e 0.1 ",
+					"text" : "/e 0.1",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -579,7 +594,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 1124.0, 495.0, 138.0, 20.0 ],
-					"text" : "/symbols \"adrian\" ",
+					"text" : "/symbols \"adrian\"",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -609,7 +624,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 897.0, 482.0, 138.0, 33.0 ],
-					"text" : "/symbols \"Matt\" \"adrian\" \"john\" ",
+					"text" : "/symbols \"Matt\" \"adrian\" \"john\"",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -639,7 +654,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 683.0, 481.0, 138.0, 33.0 ],
-					"text" : "/symbols \"adrian\" \"Matt\" \"john\" ",
+					"text" : "/symbols \"Matt\" \"john\" \"adrian\"",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -668,7 +683,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 334.0, 432.0, 138.0, 20.0 ],
-					"text" : "/symbols 3 ",
+					"text" : "/symbols 3",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -697,7 +712,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 1148.0, 258.0, 143.0, 20.0 ],
-					"text" : "/numbers 0.4 -6. 0.4 0.2 ",
+					"text" : "/numbers 0.4 -6. 0.4 0.2",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -726,7 +741,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 830.0, 295.0, 138.0, 20.0 ],
-					"text" : "/numbers 4 ",
+					"text" : "/numbers 4",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -755,7 +770,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 662.0, 290.0, 138.0, 20.0 ],
-					"text" : "/numbers -5. ",
+					"text" : "/numbers -5.",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -784,7 +799,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 395.0, 297.0, 138.0, 20.0 ],
-					"text" : "/numbers 0.3 ",
+					"text" : "/numbers 0.3",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -813,7 +828,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 651.0, 328.0, 246.0, 20.0 ],
-					"text" : "/symbols \"john\" \"adrian\" \"Matt\" ",
+					"text" : "/symbols \"john\" \"adrian\" \"Matt\"",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -828,7 +843,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 535.0, 27.0, 246.0, 20.0 ],
-					"text" : "/numbers 0.2 0.4 0.4 -6. ",
+					"text" : "/numbers 0.2 0.4 0.4 -6.",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -843,7 +858,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 25.0, 346.0, 223.0, 20.0 ],
-					"text" : "\n",
+					"text" : "/vector 0.04 1. 4.",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -858,7 +873,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 23.0, 286.0, 121.0, 20.0 ],
-					"text" : "/vector 0.2 1. 2. ",
+					"text" : "/vector 0.2 1. 2.",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -1295,8 +1310,8 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "o.callpatch.maxpat",
-				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions",
-				"patcherrelativepath" : "../abstractions",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions/programming",
+				"patcherrelativepath" : "../abstractions/programming",
 				"type" : "JSON",
 				"implicit" : 1
 			}
