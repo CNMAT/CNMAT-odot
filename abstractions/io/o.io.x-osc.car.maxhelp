@@ -8,7 +8,7 @@
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 514.0, 50.0, 797.0, 773.0 ],
+		"rect" : [ 140.0, 44.0, 1280.0, 648.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -31,13 +31,26 @@
 				"box" : 				{
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
+					"id" : "obj-10",
+					"maxclass" : "newobj",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "FullPacket" ],
+					"patching_rect" : [ 77.0, 188.0, 186.0, 20.0 ],
+					"text" : "o.pack /left/velocity /right/velocity"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
 					"id" : "obj-9",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 460.0, 385.0, 74.0, 20.0 ],
-					"presentation_rect" : [ 461.0, 632.0, 0.0, 0.0 ],
 					"text" : "prepend set"
 				}
 
@@ -116,41 +129,14 @@
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"id" : "obj-2",
-					"linecount" : 29,
+					"linecount" : 33,
 					"maxclass" : "o.message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 99.0, 291.0, 260.0, 395.0 ],
-					"text" : "/rotations -53.5366 14.4512 1.46341\n/accelerations 0.176758 0.0297852 -0.985352\n/orientations -0.0871795 -0.246154 0.402564\n/temperature 46.9324\n/analog/a 0.02576\n/analog/b 0.0282017\n/analog/c 0.0313759\n/analog/d 0.0380906\n/analog/e 0.0363814\n/analog/f 0.0325968\n/analog/g 0.0245391\n/analog/h 0.024295\n/analog/i 0.0231962\n/analog/j 0.0225858\n/analog/k 0.0225858\n/analog/l 0.0223416\n/analog/m 0.0231962\n/analog/n 0.0231962\n/analog/o 0.0228299\n/analog/p 0.0225858\n/battery 3.85344\n/ping \"169.254.1.1\" \"00:1E:C0:11:68:F8\"\n/units/rotations \"degrees/second\"\n/units/accelerations \"g\"\n/units/orientations \"Ga\"\n/units/temperature \"Celsius\"\n/units/battery \"Volts\"\n/left/velocity -0.405797\n/right/velocity 0.695652",
+					"patching_rect" : [ 23.0, 291.0, 260.0, 449.0 ],
+					"text" : "/received/time 2014-05-25T01:04:56.695428Z\n/device/time 1900-01-01T00:00:00.000000Z\n/ping \"169.254.1.1\" \"00:1E:C0:11:68:F8\" \"v0.15\"\n/units/rotations \"degrees/second\"\n/units/accelerations \"g\"\n/units/orientations \"Ga\"\n/units/temperature \"Celsius\"\n/units/battery \"Volts\"\n/battery 3.89936\n/analog/a 0.0253937\n/analog/b 0.0282017\n/analog/c 0.0312538\n/analog/d 0.0379685\n/analog/e 0.0362593\n/analog/f 0.0323526\n/analog/g 0.024417\n/analog/h 0.024295\n/analog/i 0.0233183\n/analog/j 0.0224637\n/analog/k 0.0224637\n/analog/l 0.0224637\n/analog/m 0.0231962\n/analog/n 0.0233183\n/analog/o 0.0224637\n/analog/p 0.0224637\n/rotations -31.3415 -18.2317 -15.9756\n/accelerations 0.633789 -0.174805 0.839355\n/orientations -0.405128 0.0794872 -0.220513\n/temperature 45.8971\n/unique/id \"mac:00:1E:C0:11:68:F8\"\n/left/velocity 0.766423 0.255474\n/right/velocity\n",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"contdata" : 1,
-					"id" : "obj-24",
-					"maxclass" : "multislider",
-					"numinlets" : 1,
-					"numoutlets" : 2,
-					"outlettype" : [ "", "" ],
-					"parameter_enable" : 0,
-					"patching_rect" : [ 176.0, 43.0, 20.0, 140.0 ]
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontname" : "Arial",
-					"fontsize" : 12.0,
-					"id" : "obj-23",
-					"maxclass" : "newobj",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 15.0, 193.0, 179.0, 20.0 ],
-					"text" : "o.pak /left/velocity /right/velocity"
 				}
 
 			}
@@ -163,7 +149,8 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 18.0, 42.0, 20.0, 140.0 ]
+					"patching_rect" : [ 18.0, 42.0, 50.0, 139.0 ],
+					"size" : 2
 				}
 
 			}
@@ -202,28 +189,19 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-23", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"source" : [ "obj-22", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
 					"destination" : [ "obj-1", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"source" : [ "obj-23", 0 ]
+					"source" : [ "obj-10", 0 ]
 				}
 
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-23", 1 ],
+					"destination" : [ "obj-10", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"source" : [ "obj-24", 0 ]
+					"source" : [ "obj-22", 0 ]
 				}
 
 			}
@@ -272,28 +250,10 @@
 				}
 
 			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-22", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"source" : [ "obj-8", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-24", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"source" : [ "obj-9", 0 ]
-				}
-
-			}
  ],
 		"dependency_cache" : [ 			{
 				"name" : "o.io.x-osc.car.maxpat",
-				"bootpath" : "/Users/adrian2013/Desktop",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions/io",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
@@ -301,42 +261,42 @@
 , 			{
 				"name" : "o.io.x-osc.maxpat",
 				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions/io",
-				"patcherrelativepath" : "../CNMAT-odot/abstractions/io",
+				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.gather.maxpat",
 				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions/namespace",
-				"patcherrelativepath" : "../CNMAT-odot/abstractions/namespace",
+				"patcherrelativepath" : "../namespace",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.in.maxpat",
 				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions",
-				"patcherrelativepath" : "../CNMAT-odot/abstractions",
+				"patcherrelativepath" : "..",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.port.maxpat",
 				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions",
-				"patcherrelativepath" : "../CNMAT-odot/abstractions",
+				"patcherrelativepath" : "..",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.aspect.joinpoint.maxpat",
 				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions/aspect",
-				"patcherrelativepath" : "../CNMAT-odot/abstractions/aspect",
+				"patcherrelativepath" : "../aspect",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.out.maxpat",
 				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions",
-				"patcherrelativepath" : "../CNMAT-odot/abstractions",
+				"patcherrelativepath" : "..",
 				"type" : "JSON",
 				"implicit" : 1
 			}
@@ -345,23 +305,15 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "o.union.mxo",
-				"type" : "iLaX"
-			}
-, 			{
 				"name" : "o.expr.mxo",
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "o.message.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "OpenSoundControl.mxo",
-				"type" : "iLaX"
-			}
-, 			{
 				"name" : "o.iterate.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.message.mxo",
 				"type" : "iLaX"
 			}
 , 			{
@@ -377,15 +329,27 @@
 				"type" : "iLaX"
 			}
 , 			{
+				"name" : "OpenSoundControl.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.var.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.collect.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.union.mxo",
+				"type" : "iLaX"
+			}
+, 			{
 				"name" : "o.if.mxo",
 				"type" : "iLaX"
 			}
 , 			{
 				"name" : "o.intersection.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.collect.mxo",
 				"type" : "iLaX"
 			}
 , 			{
@@ -402,10 +366,6 @@
 			}
 , 			{
 				"name" : "o.context.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.var.mxo",
 				"type" : "iLaX"
 			}
 , 			{
