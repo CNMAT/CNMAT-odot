@@ -129,13 +129,13 @@
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"id" : "obj-2",
-					"linecount" : 32,
+					"linecount" : 33,
 					"maxclass" : "o.message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 23.0, 291.0, 260.0, 435.0 ],
-					"text" : "/rotations -3.35366 2.07317 -0.97561\n/accelerations -0.043457 0.0141602 1.09326\n/orientations -0.246154 0.0128205 -0.430769\n/temperature 51.1676\n/analog/a 0.0255158\n/analog/b 0.0283238\n/analog/c 0.0316201\n/analog/d 0.0385789\n/analog/e 0.0369918\n/analog/f 0.0333293\n/analog/g 0.0245391\n/analog/h 0.024295\n/analog/i 0.0233183\n/analog/j 0.0228299\n/analog/k 0.0228299\n/analog/l 0.0224637\n/analog/m 0.0231962\n/analog/n 0.0233183\n/analog/o 0.022952\n/analog/p 0.0227078\n/battery 3.97565\n/ping \"169.254.1.1\" \"00:1E:C0:11:68:F8\"\n/received/time 2014-05-23T21:08:07.797603Z\n/device/time 1900-01-01T00:00:00.000000Z\n/units/rotations \"degrees/second\"\n/units/accelerations \"g\"\n/units/orientations \"Ga\"\n/units/temperature \"Celsius\"\n/units/battery \"Volts\"\n/unique/id \"mac:00:1E:C0:11:68:F8\"\n/left/velocity 0.144928\n/right/velocity -0.521739\n",
+					"patching_rect" : [ 23.0, 291.0, 260.0, 449.0 ],
+					"text" : "/received/time 2014-05-25T01:04:56.695428Z\n/device/time 1900-01-01T00:00:00.000000Z\n/ping \"169.254.1.1\" \"00:1E:C0:11:68:F8\" \"v0.15\"\n/units/rotations \"degrees/second\"\n/units/accelerations \"g\"\n/units/orientations \"Ga\"\n/units/temperature \"Celsius\"\n/units/battery \"Volts\"\n/battery 3.89936\n/analog/a 0.0253937\n/analog/b 0.0282017\n/analog/c 0.0312538\n/analog/d 0.0379685\n/analog/e 0.0362593\n/analog/f 0.0323526\n/analog/g 0.024417\n/analog/h 0.024295\n/analog/i 0.0233183\n/analog/j 0.0224637\n/analog/k 0.0224637\n/analog/l 0.0224637\n/analog/m 0.0231962\n/analog/n 0.0233183\n/analog/o 0.0224637\n/analog/p 0.0224637\n/rotations -31.3415 -18.2317 -15.9756\n/accelerations 0.633789 -0.174805 0.839355\n/orientations -0.405128 0.0794872 -0.220513\n/temperature 45.8971\n/unique/id \"mac:00:1E:C0:11:68:F8\"\n/left/velocity 0.766423 0.255474\n/right/velocity\n",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -184,6 +184,24 @@
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-1", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-1", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-10", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-10", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-22", 0 ]
 				}
 
 			}
@@ -287,10 +305,6 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "o.union.mxo",
-				"type" : "iLaX"
-			}
-, 			{
 				"name" : "o.expr.mxo",
 				"type" : "iLaX"
 			}
@@ -319,15 +333,23 @@
 				"type" : "iLaX"
 			}
 , 			{
+				"name" : "o.var.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.collect.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.union.mxo",
+				"type" : "iLaX"
+			}
+, 			{
 				"name" : "o.if.mxo",
 				"type" : "iLaX"
 			}
 , 			{
 				"name" : "o.intersection.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.collect.mxo",
 				"type" : "iLaX"
 			}
 , 			{
@@ -344,10 +366,6 @@
 			}
 , 			{
 				"name" : "o.context.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.var.mxo",
 				"type" : "iLaX"
 			}
 , 			{
