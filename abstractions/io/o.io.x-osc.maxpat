@@ -8,7 +8,7 @@
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 114.0, 179.0, 1280.0, 648.0 ],
+		"rect" : [ 74.0, 133.0, 1280.0, 648.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -28,6 +28,48 @@
 		"digest" : "",
 		"tags" : "",
 		"boxes" : [ 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-22",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 941.0, 36.0, 173.0, 20.0 ],
+					"text" : "loadmess maxqueuesize 1024"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-21",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "bang" ],
+					"patching_rect" : [ 26.0, 101.0, 60.0, 20.0 ],
+					"text" : "loadbang"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 13.0,
+					"id" : "obj-13",
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 13.0, 135.0, 260.0, 19.0 ],
+					"text" : "maxqueuesize 1024, maxpacketsize 64000"
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
@@ -106,7 +148,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 411.0, 341.0, 37.0, 20.0 ],
+					"patching_rect" : [ 345.0, 319.0, 37.0, 20.0 ],
 					"text" : "o.var"
 				}
 
@@ -158,13 +200,13 @@
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"id" : "obj-16",
-					"linecount" : 9,
+					"linecount" : 5,
 					"maxclass" : "o.message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 1012.0, 99.0, 150.0, 127.0 ],
-					"text" : "/inputs/analogue 0.0245391 0.0264925 0.0302771 0.0368697 0.0351605 0.0321084 0.0241729 0.0234404 0.0224637 0.0224637 0.0223416 0.021487 0.0223416 0.0224637 0.0223416 0.0224637",
+					"patching_rect" : [ 1012.0, 99.0, 150.0, 74.0 ],
+					"text" : "/imu -2.68293 1.64634 -0.243902 -0.0932617 -0.00195312 1.03125 -0.274359 -0.474359 -0.505128 55.6382",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -201,7 +243,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 104.0, 233.0, 180.0, 20.0 ],
-					"presentation_rect" : [ 104.0, 233.0, 0.0, 0.0 ],
 					"text" : "udpsend 255.255.255.255 9000"
 				}
 
@@ -706,7 +747,7 @@
 					"maxclass" : "inlet",
 					"numinlets" : 0,
 					"numoutlets" : 1,
-					"outlettype" : [ "" ],
+					"outlettype" : [ "FullPacket" ],
 					"patching_rect" : [ 60.0, 50.0, 25.0, 25.0 ]
 				}
 
@@ -791,7 +832,7 @@
 					"numinlets" : 6,
 					"numoutlets" : 6,
 					"outlettype" : [ "", "", "", "", "", "FullPacket" ],
-					"patching_rect" : [ 427.0, 227.0, 315.0, 20.0 ],
+					"patching_rect" : [ 398.0, 223.0, 315.0, 20.0 ],
 					"text" : "o.select /imu /inputs/analogue /battery /inputs/digital /ping"
 				}
 
@@ -826,6 +867,15 @@
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-1", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-10", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-13", 0 ]
 				}
 
 			}
@@ -880,15 +930,6 @@
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-20", 1 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-24", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"source" : [ "obj-20", 4 ]
 				}
 
 			}
@@ -961,6 +1002,24 @@
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-20", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-13", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-21", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-1", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-22", 0 ]
 				}
 
 			}
