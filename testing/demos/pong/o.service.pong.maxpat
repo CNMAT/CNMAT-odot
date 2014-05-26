@@ -8,7 +8,7 @@
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 346.0, 44.0, 1017.0, 736.0 ],
+		"rect" : [ 675.0, 127.0, 1017.0, 736.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -76,8 +76,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 204.0, 284.0, 443.0, 20.0 ],
-					"text" : "o.ts.service o.pong.engine @host localhost @sendport 9000 @receiveport 10000"
+					"patching_rect" : [ 204.0, 284.0, 479.0, 20.0 ],
+					"text" : "o.ts.service o.pong.engine @host 128.32.122.142 @sendport 9000 @receiveport 10000"
 				}
 
 			}
@@ -879,7 +879,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 476.0, 390.0, 472.0, 221.0 ],
-					"text" : "/was/now 2014-05-26T00:26:48.138209Z\n/was/ball/velocity 2.12 -2.684\n/ball/position -0.305546 -0.937777\n/ball/rate 0.53 0.671\n/bat/left -0.9 0.\n/bat/right 0.9 0.\n/bat/halfheight 0.05\n/ball/phase 0 0\n/range/ball/position -1 1\n/range/bats/position -1 1\n/game/start false\n/start/time 2014-05-26T00:26:35.121631Z\n/now 2014-05-26T00:26:48.185052Z\n/ball/velocity 2.12 -0.0273475\n/ball/acceleration 2.04329e-07 56.7135\n/bounce false true\n",
+					"text" : "/was/now 2014-05-26T03:51:08.790343Z\n/was/ball/velocity -2.12 -2.684\n/ball/position -0.314717 -0.621085\n/ball/rate 0.53 0.671\n/bat/left -0.9 0.\n/bat/right 0.9 0.\n/bat/halfheight 0.05\n/ball/phase 0 0\n/range/ball/position -1 1\n/range/bats/position -1 1\n/game/start false\n/start/time 2014-05-26T03:10:35.685082Z\n/now 2014-05-26T03:51:08.852401Z\n/ball/velocity -2.12 -2.684\n/ball/acceleration -7.37066e-11 7.4136e-12\n/bounce false false\n",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -917,7 +917,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 137.0, 503.0, 279.0, 207.0 ],
+					"patching_rect" : [ 137.0, 500.0, 279.0, 207.0 ],
 					"varname" : "pong"
 				}
 
@@ -933,20 +933,6 @@
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 243.0, 369.0, 73.0, 20.0 ],
 					"text" : "o.io.gl pong"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontname" : "Arial",
-					"fontsize" : 12.0,
-					"id" : "obj-1",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 137.0, 63.0, 401.0, 20.0 ],
-					"text" : "o.ts.service o.expr @host localhost @sendport 9000 @receiveport 10000"
 				}
 
 			}
@@ -1063,55 +1049,6 @@
 			}
  ],
 		"dependency_cache" : [ 			{
-				"name" : "o.ts.service.maxpat",
-				"bootpath" : "/Users/adrian2013/CNMAT-odot/testing/abstractions",
-				"patcherrelativepath" : "../../abstractions",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "o.in.maxpat",
-				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions",
-				"patcherrelativepath" : "../../../abstractions",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "o.port.maxpat",
-				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions",
-				"patcherrelativepath" : "../../../abstractions",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "o.aspect.joinpoint.maxpat",
-				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions/aspect",
-				"patcherrelativepath" : "../../../abstractions/aspect",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "o.io.udpreceive.maxpat",
-				"bootpath" : "/Users/adrian2013/CNMAT-odot/testing/abstractions",
-				"patcherrelativepath" : "../../abstractions",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "o.out.maxpat",
-				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions",
-				"patcherrelativepath" : "../../../abstractions",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "o.io.udpsend.maxpat",
-				"bootpath" : "/Users/adrian2013/CNMAT-odot/testing/abstractions",
-				"patcherrelativepath" : "../../abstractions",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
 				"name" : "o.io.gl.maxpat",
 				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions/io/graphics",
 				"patcherrelativepath" : "../../../abstractions/io/graphics",
@@ -1136,6 +1073,27 @@
 				"name" : "o.oscbundle.maxpat",
 				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions",
 				"patcherrelativepath" : "../../../abstractions",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "o.out.maxpat",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions",
+				"patcherrelativepath" : "../../../abstractions",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "o.port.maxpat",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions",
+				"patcherrelativepath" : "../../../abstractions",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "o.aspect.joinpoint.maxpat",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions/aspect",
+				"patcherrelativepath" : "../../../abstractions/aspect",
 				"type" : "JSON",
 				"implicit" : 1
 			}
@@ -1168,6 +1126,27 @@
 				"implicit" : 1
 			}
 , 			{
+				"name" : "o.in.maxpat",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions",
+				"patcherrelativepath" : "../../../abstractions",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "o.ts.service.maxpat",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/testing/abstractions",
+				"patcherrelativepath" : "../../abstractions",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "o.io.udpreceive.maxpat",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/testing/abstractions",
+				"patcherrelativepath" : "../../abstractions",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
 				"name" : "o.pong.engine.maxpat",
 				"bootpath" : "/Users/adrian2013/CNMAT-odot/testing/demos/pong",
 				"patcherrelativepath" : ".",
@@ -1182,6 +1161,13 @@
 				"implicit" : 1
 			}
 , 			{
+				"name" : "o.io.udpsend.maxpat",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/testing/abstractions",
+				"patcherrelativepath" : "../../abstractions",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
 				"name" : "o.pong.visualize.maxpat",
 				"bootpath" : "/Users/adrian2013/CNMAT-odot/testing/demos/pong",
 				"patcherrelativepath" : ".",
@@ -1189,11 +1175,15 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "o.pack.mxo",
+				"name" : "o.iterate.mxo",
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "o.if.mxo",
+				"name" : "o.route.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.cond.mxo",
 				"type" : "iLaX"
 			}
 , 			{
@@ -1201,7 +1191,35 @@
 				"type" : "iLaX"
 			}
 , 			{
+				"name" : "o.message.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.expr.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.if.mxo",
+				"type" : "iLaX"
+			}
+, 			{
 				"name" : "o.select.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.atomize.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.var.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.print.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.pack.mxo",
 				"type" : "iLaX"
 			}
 , 			{
@@ -1213,43 +1231,11 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "o.route.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.var.mxo",
-				"type" : "iLaX"
-			}
-, 			{
 				"name" : "o.pak.mxo",
 				"type" : "iLaX"
 			}
 , 			{
 				"name" : "o.prepend.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.cond.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.expr.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.iterate.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.message.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.atomize.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.print.mxo",
 				"type" : "iLaX"
 			}
 , 			{

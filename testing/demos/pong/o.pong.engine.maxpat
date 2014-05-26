@@ -8,7 +8,7 @@
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 25.0, 69.0, 1193.0, 586.0 ],
+		"rect" : [ 247.0, 137.0, 1193.0, 586.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -296,7 +296,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 294.0, 147.0, 66.0, 20.0 ],
+					"patching_rect" : [ 294.0, 147.0, 65.0, 20.0 ],
 					"text" : "qmetro 50"
 				}
 
@@ -748,7 +748,7 @@
 					"maxclass" : "inlet",
 					"numinlets" : 0,
 					"numoutlets" : 1,
-					"outlettype" : [ "" ],
+					"outlettype" : [ "FullPacket" ],
 					"patching_rect" : [ 120.0, 10.0, 25.0, 25.0 ]
 				}
 
@@ -819,7 +819,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 188.0, 318.5, 285.0, 154.0 ],
-					"text" : "/ball/position 0.0555938 0.681705\n/ball/rate 0.53 0.671\n/bat/right 0.9 0.\n/bat/halfheight 0.05\n/ball/phase 0 0\n/range/ball/position -1 1\n/range/bats/position -1 1\n/game/start false\n/start/time 2014-05-25T20:53:16.706636Z\n/bat/left -0.9 -0.0612245\n/now 2014-05-25T20:58:58.242294Z\n",
+					"text" : "/ball/position 0.981821 -0.704147\n/ball/rate 0.53 0.671\n/bat/left -0.9 0.\n/bat/right 0.9 0.\n/bat/halfheight 0.05\n/ball/phase 0 0\n/range/ball/position -1 1\n/range/bats/position -1 1\n/game/start false\n/start/time 2014-05-26T03:10:35.685082Z\n/now 2014-05-26T03:11:36.525564Z\n",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -978,106 +978,6 @@
 					"source" : [ "obj-8", 0 ]
 				}
 
-			}
- ],
-		"dependency_cache" : [ 			{
-				"name" : "o.in.maxpat",
-				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions",
-				"patcherrelativepath" : "../../../abstractions",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "o.port.maxpat",
-				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions",
-				"patcherrelativepath" : "../../../abstractions",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "o.aspect.joinpoint.maxpat",
-				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions/aspect",
-				"patcherrelativepath" : "../../../abstractions/aspect",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "o.out.maxpat",
-				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions",
-				"patcherrelativepath" : "../../../abstractions",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "o.remember.maxpat",
-				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions/time",
-				"patcherrelativepath" : "../../../abstractions/time",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "o.message.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.pack.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.if.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.union.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.select.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.context.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.collect.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.route.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.var.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.pak.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.prepend.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.cond.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.timetag.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.expr.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.difference.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.intersection.mxo",
-				"type" : "iLaX"
 			}
  ]
 	}
