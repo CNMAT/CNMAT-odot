@@ -8,7 +8,7 @@
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 0.0, 44.0, 1280.0, 648.0 ],
+		"rect" : [ 26.0, 44.0, 1403.0, 733.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -31,6 +31,34 @@
 				"box" : 				{
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
+					"id" : "obj-9",
+					"maxclass" : "newobj",
+					"numinlets" : 2,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "FullPacket" ],
+					"patching_rect" : [ 580.0, 584.0, 91.0, 20.0 ],
+					"text" : "o.route /analog"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-2",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "FullPacket" ],
+					"patching_rect" : [ 580.0, 556.0, 282.0, 20.0 ],
+					"text" : "o.expr /light/yin = /analog/m\\; /light/yang = /analog/n"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
 					"frgb" : 0.0,
 					"id" : "obj-11",
 					"maxclass" : "comment",
@@ -48,7 +76,7 @@
 					"maxclass" : "outlet",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 580.0, 614.0, 25.0, 25.0 ]
+					"patching_rect" : [ 653.0, 666.0, 25.0, 25.0 ]
 				}
 
 			}
@@ -61,7 +89,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 571.0, 565.0, 112.0, 20.0 ],
+					"patching_rect" : [ 652.0, 626.0, 112.0, 20.0 ],
 					"text" : "o.out @name main"
 				}
 
@@ -73,8 +101,8 @@
 					"maxclass" : "inlet",
 					"numinlets" : 0,
 					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 475.0, 51.0, 25.0, 25.0 ]
+					"outlettype" : [ "FullPacket" ],
+					"patching_rect" : [ 464.0, -20.0, 25.0, 25.0 ]
 				}
 
 			}
@@ -87,7 +115,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 495.0, 102.0, 105.0, 20.0 ],
+					"patching_rect" : [ 464.0, 15.0, 105.0, 20.0 ],
 					"text" : "o.in @name main"
 				}
 
@@ -101,8 +129,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "FullPacket" ],
-					"patching_rect" : [ 495.0, 129.0, 194.0, 20.0 ],
-					"text" : "o.gather /left/velocity /right/velocity"
+					"patching_rect" : [ 464.0, 44.0, 265.0, 20.0 ],
+					"text" : "o.gather /wheel/yin/velocity /wheel/yang/velocity"
 				}
 
 			}
@@ -111,11 +139,13 @@
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"id" : "obj-35",
+					"linecount" : 5,
 					"maxclass" : "o.message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 942.0, 507.0, 150.0, 20.0 ],
+					"patching_rect" : [ 804.0, 594.0, 150.0, 74.0 ],
+					"text" : "/outputs/digital/2 0\n/outputs/pwm/frequency/1 50000.\n/outputs/pwm/duty/1 35.2941",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -129,7 +159,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 765.0, 453.0, 71.0, 20.0 ],
+					"patching_rect" : [ 934.0, 459.0, 71.0, 20.0 ],
 					"text" : "o.downcast"
 				}
 
@@ -143,8 +173,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "FullPacket" ],
-					"patching_rect" : [ 754.0, 401.0, 194.0, 20.0 ],
-					"text" : "o.gather /left/velocity /right/velocity"
+					"patching_rect" : [ 606.0, 425.0, 348.0, 20.0 ],
+					"text" : "o.gather /wheel/yin/velocity /wheel/yang/velocity"
 				}
 
 			}
@@ -158,8 +188,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 759.0, 184.0, 588.0, 33.0 ],
-					"text" : "o.expr /outputs/digital/state/6 = 0\\; /outputs/pwm/frequency/5 = 50000.\\; /outputs/pwm/duty/5 = /right/velocity * -100."
+					"patching_rect" : [ 605.0, 149.0, 596.0, 33.0 ],
+					"text" : "o.expr /outputs/digital/6 = 0\\; /outputs/pwm/frequency/5 = 50000.\\; /outputs/pwm/duty/5 = /wheel/yang/velocity * 100."
 				}
 
 			}
@@ -173,8 +203,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 737.0, 224.0, 588.0, 33.0 ],
-					"text" : "o.expr /outputs/digital/state/5 = 0\\; /outputs/pwm/frequency/5 = 50000.\\; /outputs/pwm/duty/6 = /right/velocity * 100."
+					"patching_rect" : [ 469.0, 211.0, 596.0, 33.0 ],
+					"text" : "o.expr /outputs/digital/5 = 0\\; /outputs/pwm/frequency/5 = 50000.\\; /outputs/pwm/duty/6 = /wheel/yang/velocity * -100."
 				}
 
 			}
@@ -187,8 +217,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 693.0, 157.0, 114.0, 20.0 ],
-					"text" : "o.if /right/velocity>0"
+					"patching_rect" : [ 466.0, 112.0, 158.0, 20.0 ],
+					"text" : "o.if /wheel/yang/velocity < 0"
 				}
 
 			}
@@ -202,8 +232,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 776.0, 307.0, 580.0, 33.0 ],
-					"text" : "o.expr /outputs/digital/state/2 = 0\\; /outputs/pwm/frequency/1 = 50000.\\; /outputs/pwm/duty/1 = /left/velocity * -100."
+					"patching_rect" : [ 736.0, 310.0, 585.0, 33.0 ],
+					"text" : "o.expr /outputs/digital/2 = 0\\; /outputs/pwm/frequency/1 = 50000.\\; /outputs/pwm/duty/1 = /wheel/yin/velocity * -100."
 				}
 
 			}
@@ -217,8 +247,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 749.0, 354.0, 580.0, 33.0 ],
-					"text" : "o.expr /outputs/digital/state/1 = 0\\; /outputs/pwm/frequency/2 = 50000.\\; /outputs/pwm/duty/2 = /left/velocity * 100."
+					"patching_rect" : [ 607.0, 350.0, 585.0, 33.0 ],
+					"text" : "o.expr /outputs/digital/1 = 0\\; /outputs/pwm/frequency/2 = 50000.\\; /outputs/pwm/duty/2 = /wheel/yin/velocity * 100."
 				}
 
 			}
@@ -231,8 +261,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 743.0, 274.0, 106.0, 20.0 ],
-					"text" : "o.if /left/velocity>0"
+					"patching_rect" : [ 608.0, 275.0, 147.0, 20.0 ],
+					"text" : "o.if /wheel/yin/velocity > 0"
 				}
 
 			}
@@ -245,7 +275,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 579.0, 509.0, 50.0, 20.0 ],
+					"patching_rect" : [ 580.0, 526.0, 50.0, 20.0 ],
 					"text" : "o.union"
 				}
 
@@ -255,13 +285,13 @@
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"id" : "obj-10",
-					"linecount" : 30,
+					"linecount" : 31,
 					"maxclass" : "o.message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 84.0, 348.0, 381.0, 409.0 ],
-					"text" : "/rotations -2.80488 1.58537 -0.304878\n/accelerations -0.0512695 0.00683594 1.02832\n/orientations -0.246154 0.0358974 -0.392308\n/temperature 50.8382\n/analog/a 0.0251496\n/analog/b 0.0282017\n/analog/c 0.0318642\n/analog/d 0.038701\n/analog/e 0.0371139\n/analog/f 0.0333293\n/analog/g 0.024417\n/analog/h 0.024295\n/analog/i 0.0233183\n/analog/j 0.0225858\n/analog/k 0.0227078\n/analog/l 0.0224637\n/analog/m 0.0233183\n/analog/n 0.0233183\n/analog/o 0.022952\n/analog/p 0.0224637\n/battery 4.02913\n/ping \"169.254.1.1\" \"00:1E:C0:11:68:F8\"\n/received/time 2014-05-23T21:03:30.501653Z\n/device/time 1900-01-01T00:00:00.000000Z\n/units/rotations \"degrees/second\"\n/units/accelerations \"g\"\n/units/orientations \"Ga\"\n/units/temperature \"Celsius\"\n/units/battery \"Volts\"\n/unique/id \"mac:00:1E:C0:11:68:F8\"\n",
+					"patching_rect" : [ 84.0, 348.0, 381.0, 422.0 ],
+					"text" : "/received/time 2014-05-26T06:06:29.795651Z\n/device/time 1900-01-01T00:00:00.000000Z\n/ping \"169.254.1.1\" \"00:1E:C0:11:68:F8\" \"v0.15\"\n/units/rotations \"degrees/second\"\n/units/accelerations \"g\"\n/units/orientations \"Ga\"\n/units/temperature \"Celsius\"\n/units/battery \"Volts\"\n/battery 3.86039\n/analog/a 0.0261262\n/analog/b 0.0289342\n/analog/c 0.0328409\n/analog/d 0.0408985\n/analog/e 0.041509\n/analog/f 0.0418752\n/analog/g 0.0250275\n/analog/h 0.0246612\n/analog/i 0.0236845\n/analog/j 0.0230741\n/analog/k 0.0230741\n/analog/l 0.0228299\n/analog/m 0.108778\n/analog/n 0.0838725\n/analog/o 0.0518862\n/analog/p 0.0361372\n/rotations -3.17073 1.58537 -0.243902\n/accelerations -0.0830078 -0.000488281 1.0332\n/orientations -0.269231 -0.2 -0.307692\n/temperature 54.9324\n/unique/id \"mac:00:1E:C0:11:68:F8\"\n/wheel/yin/velocity -0.352941\n",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -275,7 +305,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 571.0, 459.0, 62.0, 20.0 ],
+					"patching_rect" : [ 580.0, 494.0, 62.0, 20.0 ],
 					"text" : "o.io.x-osc"
 				}
 
@@ -332,6 +362,15 @@
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-19", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-9", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-2", 0 ]
 				}
 
 			}
@@ -454,10 +493,19 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-6", 0 ],
+					"destination" : [ "obj-2", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-7", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-6", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-9", 1 ]
 				}
 
 			}
