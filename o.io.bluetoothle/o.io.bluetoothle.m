@@ -389,6 +389,7 @@ void obtle_outputOSCBundle(t_obtle *x, t_symbol *msg, int argc, t_atom *argv);
 	const char * const cpfx = "/characteristic/uuid/";
 	for(CBCharacteristic *c in s.characteristics){
 		const char *cuuidstring = [[[c UUID] representativeString] UTF8String];
+		printf("cuuidstring = %s\n", cuuidstring);
 		obtle_replaceCharWithChar(strlen(cuuidstring), cuuidstring, '-', '_');
 		long addresslen = strlen(pfx) + strlen(pname) + strlen(spfx) + strlen(suuidstring) + strlen(cpfx) + strlen(cuuidstring) + 1;
 		char address[addresslen];
