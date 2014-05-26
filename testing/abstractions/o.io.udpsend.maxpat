@@ -133,8 +133,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 133.5, 47.0, 267.0, 19.0 ],
-					"text" : "maxpacketsize 100000, maxqueuesize 4096"
+					"patching_rect" : [ 133.5, 47.0, 260.0, 19.0 ],
+					"text" : "maxpacketsize 65507, maxqueuesize 4096"
 				}
 
 			}
