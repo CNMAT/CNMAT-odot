@@ -8,7 +8,7 @@
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 140.0, 44.0, 1280.0, 648.0 ],
+		"rect" : [ 52.0, 44.0, 1320.0, 761.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -29,15 +29,42 @@
 		"tags" : "",
 		"boxes" : [ 			{
 				"box" : 				{
+					"contdata" : 1,
+					"id" : "obj-13",
+					"maxclass" : "multislider",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "" ],
+					"parameter_enable" : 0,
+					"patching_rect" : [ 67.0, 23.0, 13.0, 138.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
-					"id" : "obj-10",
+					"id" : "obj-12",
 					"maxclass" : "newobj",
-					"numinlets" : 2,
+					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 77.0, 188.0, 186.0, 20.0 ],
-					"text" : "o.pack /left/velocity /right/velocity"
+					"patching_rect" : [ 114.0, 136.0, 157.0, 20.0 ],
+					"text" : "o.pack /wheel/yang/velocity"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-5",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "FullPacket" ],
+					"patching_rect" : [ 12.0, 170.0, 146.0, 20.0 ],
+					"text" : "o.pack /wheel/yin/velocity"
 				}
 
 			}
@@ -50,7 +77,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 460.0, 385.0, 74.0, 20.0 ],
+					"patching_rect" : [ 126.0, 348.0, 74.0, 20.0 ],
 					"text" : "prepend set"
 				}
 
@@ -64,7 +91,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 382.0, 420.0, 74.0, 20.0 ],
+					"patching_rect" : [ 48.0, 383.0, 74.0, 20.0 ],
 					"text" : "prepend set"
 				}
 
@@ -78,8 +105,8 @@
 					"numinlets" : 3,
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "FullPacket" ],
-					"patching_rect" : [ 368.0, 341.0, 187.0, 20.0 ],
-					"text" : "o.route /left/velocity /right/velocity"
+					"patching_rect" : [ 34.0, 304.0, 259.0, 20.0 ],
+					"text" : "o.route /wheel/yin/velocity /wheel/yang/velocity"
 				}
 
 			}
@@ -105,7 +132,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 345.0, 157.0, 150.0, 33.0 ],
-					"text" : "/left/velocity 0.\n/right/velocity 0.",
+					"text" : "/wheel/yin/velocity 0.\n/wheel/yang/velocity 0.",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -129,13 +156,13 @@
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"id" : "obj-2",
-					"linecount" : 33,
+					"linecount" : 19,
 					"maxclass" : "o.message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 23.0, 291.0, 260.0, 449.0 ],
-					"text" : "/received/time 2014-05-25T01:04:56.695428Z\n/device/time 1900-01-01T00:00:00.000000Z\n/ping \"169.254.1.1\" \"00:1E:C0:11:68:F8\" \"v0.15\"\n/units/rotations \"degrees/second\"\n/units/accelerations \"g\"\n/units/orientations \"Ga\"\n/units/temperature \"Celsius\"\n/units/battery \"Volts\"\n/battery 3.89936\n/analog/a 0.0253937\n/analog/b 0.0282017\n/analog/c 0.0312538\n/analog/d 0.0379685\n/analog/e 0.0362593\n/analog/f 0.0323526\n/analog/g 0.024417\n/analog/h 0.024295\n/analog/i 0.0233183\n/analog/j 0.0224637\n/analog/k 0.0224637\n/analog/l 0.0224637\n/analog/m 0.0231962\n/analog/n 0.0233183\n/analog/o 0.0224637\n/analog/p 0.0224637\n/rotations -31.3415 -18.2317 -15.9756\n/accelerations 0.633789 -0.174805 0.839355\n/orientations -0.405128 0.0794872 -0.220513\n/temperature 45.8971\n/unique/id \"mac:00:1E:C0:11:68:F8\"\n/left/velocity 0.766423 0.255474\n/right/velocity\n",
+					"patching_rect" : [ 834.0, 242.0, 260.0, 261.0 ],
+					"text" : "/received/time 2014-05-26T06:07:53.052423Z\n/device/time 1900-01-01T00:00:00.000000Z\n/ping \"169.254.1.1\" \"00:1E:C0:11:68:F8\" \"v0.15\"\n/units/rotations \"degrees/second\"\n/units/accelerations \"g\"\n/units/orientations \"Ga\"\n/units/temperature \"Celsius\"\n/units/battery \"Volts\"\n/battery 3.85737\n/rotations -9.57317 3.17073 72.6829\n/accelerations -0.0957031 0.000488281 1.07129\n/orientations 0.0512821 -0.297436 -0.4\n/temperature 54.2735\n/unique/id \"mac:00:1E:C0:11:68:F8\"\n/wheel/yin/velocity 0.0882353\n/light/yin 0.555854\n/light/yang 0.748504\n",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -149,8 +176,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 18.0, 42.0, 50.0, 139.0 ],
-					"size" : 2
+					"patching_rect" : [ 17.0, 8.0, 13.0, 138.0 ]
 				}
 
 			}
@@ -192,13 +218,22 @@
 					"destination" : [ "obj-1", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"source" : [ "obj-10", 0 ]
+					"source" : [ "obj-12", 0 ]
 				}
 
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-10", 0 ],
+					"destination" : [ "obj-12", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-13", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-5", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-22", 0 ]
@@ -220,6 +255,15 @@
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-4", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-1", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-5", 0 ]
 				}
 
 			}
@@ -247,6 +291,24 @@
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-7", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-22", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-8", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-13", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-9", 0 ]
 				}
 
 			}
