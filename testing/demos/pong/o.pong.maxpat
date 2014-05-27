@@ -8,7 +8,7 @@
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 116.0, 44.0, 1216.0, 698.0 ],
+		"rect" : [ 116.0, 44.0, 1058.0, 703.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -36,7 +36,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 229.0, 322.0, 97.0, 20.0 ],
+					"patching_rect" : [ 222.0, 186.0, 97.0, 20.0 ],
 					"text" : "o.pong.visualize"
 				}
 
@@ -49,7 +49,7 @@
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 14.0, 155.0, 25.0, 25.0 ]
+					"patching_rect" : [ 7.0, 19.0, 25.0, 25.0 ]
 				}
 
 			}
@@ -62,7 +62,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 14.0, 191.0, 105.0, 20.0 ],
+					"patching_rect" : [ 7.0, 55.0, 105.0, 20.0 ],
 					"text" : "o.in @name main"
 				}
 
@@ -76,7 +76,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 189.0, 269.0, 87.0, 20.0 ],
+					"patching_rect" : [ 182.0, 133.0, 87.0, 20.0 ],
 					"text" : "o.pong.engine"
 				}
 
@@ -90,7 +90,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 66.0, 326.0, 73.0, 20.0 ],
+					"patching_rect" : [ 59.0, 190.0, 73.0, 20.0 ],
 					"text" : "o.pong.bats"
 				}
 
@@ -825,7 +825,7 @@
  ]
 					}
 ,
-					"patching_rect" : [ 618.0, 654.628052, 43.0, 20.0 ],
+					"patching_rect" : [ 493.0, 582.628052, 43.0, 20.0 ],
 					"saved_object_attributes" : 					{
 						"default_fontface" : 0,
 						"default_fontname" : "Arial",
@@ -849,7 +849,7 @@
 					"maxclass" : "ezdac~",
 					"numinlets" : 2,
 					"numoutlets" : 0,
-					"patching_rect" : [ 611.0, 696.0, 45.0, 45.0 ]
+					"patching_rect" : [ 486.0, 624.0, 45.0, 45.0 ]
 				}
 
 			}
@@ -862,7 +862,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 204.0, 191.0, 150.0, 20.0 ],
+					"patching_rect" : [ 197.0, 55.0, 150.0, 20.0 ],
 					"text" : "/game/start true",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -873,13 +873,13 @@
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"id" : "obj-7",
-					"linecount" : 16,
+					"linecount" : 21,
 					"maxclass" : "o.message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 461.0, 375.0, 472.0, 221.0 ],
-					"text" : "/was/now 2014-05-25T21:26:27.619972Z\n/was/ball/velocity 2.12 2.684\n/ball/position 0.984229 0.280034\n/ball/rate 0.53 0.671\n/bat/right 0.9 0.\n/bat/halfheight 0.05\n/ball/phase 0 0\n/range/ball/position -1 1\n/range/bats/position -1 1\n/start/time 2014-05-25T21:21:02.677047Z\n/game/start false\n/bat/left -0.9 -0.163265\n/now 2014-05-25T21:26:27.669608Z\n/ball/velocity 2.12 2.684\n/ball/acceleration -6.76382e-12 6.5151e-11\n/bounce false false\n",
+					"patching_rect" : [ 540.0, 44.0, 472.0, 288.0 ],
+					"text" : "/was/now 2014-05-27T05:25:36.305954Z\n/was/ball/velocity -47.4586 1.24\n/ball/position -0.927694 -0.0879255\n/ball/rate 0.2 0.31\n/bat/right 0.95 0.\n/bat/halfheight 0.15\n/ball/left/direction 1 1\n/ball/right/direction -1 1\n/ball/left/phase 122.522 0\n/ball/right/phase 81.6814 0\n/range/ball/position -1 1\n/range/bats/position -1 1\n/game/start false\n/holdoff 2014-05-27T05:25:36.364857Z\n/start/time 2014-05-27T05:24:26.254389Z\n/hold 2014-05-27T05:25:36.342974Z\n/bat/left -0.9 -0.366197\n/now 2014-05-27T05:25:36.344772Z\n/ball/velocity 0.8 1.24\n/ball/acceleration 1243.19 -3.78671e-12\n/bounce true false\n",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -891,7 +891,7 @@
 					"maxclass" : "outlet",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 38.0, 429.0, 25.0, 25.0 ]
+					"patching_rect" : [ 31.0, 293.0, 25.0, 25.0 ]
 				}
 
 			}
@@ -904,7 +904,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 38.0, 398.0, 112.0, 20.0 ],
+					"patching_rect" : [ 31.0, 262.0, 112.0, 20.0 ],
 					"text" : "o.out @name main"
 				}
 
@@ -917,7 +917,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 122.0, 488.0, 279.0, 207.0 ],
+					"patching_rect" : [ 146.0, 247.0, 361.0, 249.0 ],
 					"varname" : "pong"
 				}
 
@@ -931,7 +931,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 228.0, 354.0, 73.0, 20.0 ],
+					"patching_rect" : [ 221.0, 218.0, 73.0, 20.0 ],
 					"text" : "o.io.gl pong"
 				}
 
@@ -969,7 +969,7 @@
 					"destination" : [ "obj-24", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"midpoints" : [ 75.5, 367.0, 42.0, 367.0, 42.0, 251.0, 198.5, 251.0 ],
+					"midpoints" : [ 68.5, 231.0, 35.0, 231.0, 35.0, 115.0, 191.5, 115.0 ],
 					"source" : [ "obj-21", 0 ]
 				}
 
@@ -988,7 +988,7 @@
 					"destination" : [ "obj-21", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"midpoints" : [ 198.5, 309.0, 183.0, 309.0, 183.0, 308.0, 75.5, 308.0 ],
+					"midpoints" : [ 191.5, 173.0, 176.0, 173.0, 176.0, 172.0, 68.5, 172.0 ],
 					"source" : [ "obj-24", 0 ]
 				}
 
@@ -1007,6 +1007,7 @@
 					"destination" : [ "obj-7", 1 ],
 					"disabled" : 0,
 					"hidden" : 0,
+					"midpoints" : [ 191.5, 165.0, 525.0, 165.0, 525.0, 30.0, 1002.5, 30.0 ],
 					"source" : [ "obj-24", 0 ]
 				}
 
@@ -1073,6 +1074,13 @@
 				"name" : "o.oscbundle.maxpat",
 				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions",
 				"patcherrelativepath" : "../../../abstractions",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "o.io.gltexthelper.maxpat",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions/io/graphics",
+				"patcherrelativepath" : "../../../abstractions/io/graphics",
 				"type" : "JSON",
 				"implicit" : 1
 			}
