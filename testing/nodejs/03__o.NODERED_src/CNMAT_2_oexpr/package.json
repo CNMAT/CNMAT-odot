@@ -1,0 +1,8 @@
+{
+  "name": "odot",
+  "version": "0.0.1",
+  "description": "o.expr (odot expression language) support for Node, accessible through 'expr' object in 'odot'",
+  "main": "test_o_expr.js",
+  "private": true,
+  "gypfile": true
+}
