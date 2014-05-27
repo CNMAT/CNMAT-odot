@@ -8,7 +8,7 @@
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 0.0, 44.0, 1440.0, 778.0 ],
+		"rect" : [ 242.0, 44.0, 1440.0, 778.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -656,13 +656,13 @@
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"id" : "obj-5",
-					"linecount" : 57,
+					"linecount" : 67,
 					"maxclass" : "o.message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 17.0, 662.0, 298.0, 771.0 ],
-					"text" : "/displaylist [\n\t/position 0.1 0.600858 0.600858\n\t/color 0.3 0.600858 0.5\n\t/radius 0.1\n\t/shape \"sphere\"\n] [\n\t/position 0.600858 0.600858 0.600858\n\t/color 0.7 0.9 0.5\n\t/radius 0.1\n\t/shape \"framecircle\"\n] [\n\t/position 0. 0.\n\t/red\n\t/radius/outer 0.600858\n\t/radius/inner 0.05\n\t/orientation 0 45 90\n\t/shape \"torus\"\n] [\n\t/shape \"icosahedron\"\n\t/size 0.600858 0.600858 0.600858\n\t/position -0.2 0.600858 -0.4\n\t/color 1. 0.2 0.5\n] [\n\t/shape \"dodecahedron\"\n\t/size 0.2 0.2 0.2\n\t/value 0.600858\n\t/position 0.4 0.600858 -0.4\n\t/color 0.4 0.2 0.5\n] [\n\t/a 0.600858 0.600858 -0.2\n\t/b -0.4 0.6 0.4\n\t/c -0.6 0.2 -0.6\n\t/color 0.2 0.600858 0.8\n\t/shape \"triangle\"\n] [\n\t/position -0.1 -0.4 0.600858\n\t/radius 0.04\n\t/radiusbis 0.600858\n\t/blue\n\t/radius/bis 0.01\n\t/length 0.7\n\t/shape \"cone\"\n] [\n\t/position 0.600858 0.3 -0.2\n\t/cube 0.7 0.9 0.5\n\t/blue\n\t/scale 0.1 0.600858 0.2\n\t/orientation 0 45 90\n\t/shape \"cube\"\n] [\n\t/position -0.1 0.2 0.600858\n\t/radius 0.04\n\t/green\n\t/radius/bis 0.01\n\t/length 0.7\n\t/shape \"cylinder\"\n]",
+					"patching_rect" : [ 17.0, 662.0, 298.0, 905.0 ],
+					"text" : "/displaylist [\n\t/position 0. 0.\n\t/color 0.7 0.9 0.5\n\t/text \"hello world\"\n\t/shape \"text\"\n] [\n\t/position 0. 0.3\n\t/color 0.7 0.2 0.5\n\t/text \"thing world\"\n\t/shape \"text\"\n] [\n\t/position 0.1 0.158798 0.158798\n\t/color 0.3 0.158798 0.5\n\t/radius 0.1\n\t/shape \"sphere\"\n] [\n\t/position 0.158798 0.158798 0.158798\n\t/color 0.7 0.9 0.5\n\t/radius 0.1\n\t/shape \"framecircle\"\n] [\n\t/position 0. 0.\n\t/red\n\t/radius/outer 0.158798\n\t/radius/inner 0.05\n\t/orientation 0 45 90\n\t/shape \"torus\"\n] [\n\t/shape \"icosahedron\"\n\t/size 0.158798 0.158798 0.158798\n\t/position -0.2 0.158798 -0.4\n\t/color 1. 0.2 0.5\n] [\n\t/shape \"dodecahedron\"\n\t/size 0.2 0.2 0.2\n\t/value 0.158798\n\t/position 0.4 0.158798 -0.4\n\t/color 0.4 0.2 0.5\n] [\n\t/a 0.158798 0.158798 -0.2\n\t/b -0.4 0.6 0.4\n\t/c -0.6 0.2 -0.6\n\t/color 0.2 0.158798 0.8\n\t/shape \"triangle\"\n] [\n\t/position -0.1 -0.4 0.158798\n\t/radius 0.04\n\t/radiusbis 0.158798\n\t/blue\n\t/radius/bis 0.01\n\t/length 0.7\n\t/shape \"cone\"\n] [\n\t/position 0.158798 0.3 -0.2\n\t/cube 0.7 0.9 0.5\n\t/blue\n\t/scale 0.1 0.158798 0.2\n\t/orientation 0 45 90\n\t/shape \"cube\"\n] [\n\t/position -0.1 0.2 0.158798\n\t/radius 0.04\n\t/green\n\t/radius/bis 0.01\n\t/length 0.7\n\t/shape \"cylinder\"\n]",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -868,13 +868,13 @@
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"id" : "obj-21",
-					"linecount" : 57,
+					"linecount" : 67,
 					"maxclass" : "o.message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 791.0, 146.0, 242.0, 771.0 ],
-					"text" : "/displaylist [\n\t/position 0.1 \"$1\" \"$1\"\n\t/color 0.3 \"$1\" 0.5\n\t/radius 0.1\n\t/shape \"sphere\"\n] [\n\t/position \"$1\" \"$1\" \"$1\"\n\t/color 0.7 0.9 0.5\n\t/radius 0.1\n\t/shape \"framecircle\"\n] [\n\t/position 0. 0.\n\t/red\n\t/radius/outer \"$1\"\n\t/radius/inner 0.05\n\t/orientation 0 45 90\n\t/shape \"torus\"\n] [\n\t/shape \"icosahedron\"\n\t/size \"$1\" \"$1\" \"$1\"\n\t/position -0.2 \"$1\" -0.4\n\t/color 1. 0.2 0.5\n] [\n\t/shape \"dodecahedron\"\n\t/size 0.2 0.2 0.2\n\t/value \"$1\"\n\t/position 0.4 \"$1\" -0.4\n\t/color 0.4 0.2 0.5\n] [\n\t/a \"$1\" \"$1\" -0.2\n\t/b -0.4 0.6 0.4\n\t/c -0.6 0.2 -0.6\n\t/color 0.2 \"$1\" 0.8\n\t/shape \"triangle\"\n] [\n\t/position -0.1 -0.4 \"$1\"\n\t/radius 0.04\n\t/radiusbis \"$1\"\n\t/blue\n\t/radius/bis 0.01\n\t/length 0.7\n\t/shape \"cone\"\n] [\n\t/position \"$1\" 0.3 -0.2\n\t/cube 0.7 0.9 0.5\n\t/blue\n\t/scale 0.1 \"$1\" 0.2\n\t/orientation 0 45 90\n\t/shape \"cube\"\n] [\n\t/position -0.1 0.2 \"$1\"\n\t/radius 0.04\n\t/green\n\t/radius/bis 0.01\n\t/length 0.7\n\t/shape \"cylinder\"\n]",
+					"patching_rect" : [ 791.0, 146.0, 242.0, 905.0 ],
+					"text" : "/displaylist [\n\t/position 0. 0.\n\t/color 0.7 0.9 0.5\n\t/text \"hello world\"\n\t/shape \"text\"\n] [\n\t/position 0. 0.3\n\t/color 0.7 0.2 0.5\n\t/text \"thing world\"\n\t/shape \"text\"\n] [\n\t/position 0.1 \"$1\" \"$1\"\n\t/color 0.3 \"$1\" 0.5\n\t/radius 0.1\n\t/shape \"sphere\"\n] [\n\t/position \"$1\" \"$1\" \"$1\"\n\t/color 0.7 0.9 0.5\n\t/radius 0.1\n\t/shape \"framecircle\"\n] [\n\t/position 0. 0.\n\t/red\n\t/radius/outer \"$1\"\n\t/radius/inner 0.05\n\t/orientation 0 45 90\n\t/shape \"torus\"\n] [\n\t/shape \"icosahedron\"\n\t/size \"$1\" \"$1\" \"$1\"\n\t/position -0.2 \"$1\" -0.4\n\t/color 1. 0.2 0.5\n] [\n\t/shape \"dodecahedron\"\n\t/size 0.2 0.2 0.2\n\t/value \"$1\"\n\t/position 0.4 \"$1\" -0.4\n\t/color 0.4 0.2 0.5\n] [\n\t/a \"$1\" \"$1\" -0.2\n\t/b -0.4 0.6 0.4\n\t/c -0.6 0.2 -0.6\n\t/color 0.2 \"$1\" 0.8\n\t/shape \"triangle\"\n] [\n\t/position -0.1 -0.4 \"$1\"\n\t/radius 0.04\n\t/radiusbis \"$1\"\n\t/blue\n\t/radius/bis 0.01\n\t/length 0.7\n\t/shape \"cone\"\n] [\n\t/position \"$1\" 0.3 -0.2\n\t/cube 0.7 0.9 0.5\n\t/blue\n\t/scale 0.1 \"$1\" 0.2\n\t/orientation 0 45 90\n\t/shape \"cube\"\n] [\n\t/position -0.1 0.2 \"$1\"\n\t/radius 0.04\n\t/green\n\t/radius/bis 0.01\n\t/length 0.7\n\t/shape \"cylinder\"\n]",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -1064,6 +1064,10 @@
 			}
 , 			{
 				"name" : "o.var.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.print.mxo",
 				"type" : "iLaX"
 			}
 , 			{
