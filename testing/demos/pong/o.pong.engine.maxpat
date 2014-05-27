@@ -8,7 +8,7 @@
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 544.0, 44.0, 1321.0, 600.0 ],
+		"rect" : [ 119.0, 44.0, 1321.0, 600.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -1035,6 +1035,7 @@
 						"description" : "",
 						"digest" : "",
 						"tags" : "",
+						"visible" : 1,
 						"boxes" : [ 							{
 								"box" : 								{
 									"fontname" : "Arial",
@@ -1044,8 +1045,8 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "FullPacket" ],
-									"patching_rect" : [ 137.0, 281.0, 238.0, 20.0 ],
-									"text" : "o.expr /start/time = /now\\; /game/start=false"
+									"patching_rect" : [ 137.0, 281.0, 454.0, 20.0 ],
+									"text" : "o.expr /start/time = /now\\; /game/start=false \\; /ball/left/phase=0\\; /ball/right/phase = 0\\;"
 								}
 
 							}
@@ -1245,7 +1246,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 239.0, 369.5, 285.0, 221.0 ],
-					"text" : "/ball/position -0.496362 0.0921379\n/ball/rate 0.4 0.51\n/bat/left -0.95 0.\n/bat/right 0.95 0.\n/bat/halfheight 0.15\n/ball/left/direction -1 1\n/ball/right/direction 1 1\n/ball/left/phase 18.8496 0\n/ball/right/phase 37.6991 0\n/range/ball/position -1 1\n/range/bats/position -1 1\n/game/start false\n/holdoff 2014-05-27T07:06:16.271255Z\n/start/time 2014-05-27T07:05:51.196490Z\n/hold 2014-05-27T07:06:02.526337Z\n/now 2014-05-27T07:06:17.131717Z\n",
+					"text" : "/ball/position -0.531071 -0.552116\n/ball/rate 0.4 0.51\n/bat/left -0.95 0.\n/bat/right 0.95 0.\n/bat/halfheight 0.15\n/ball/left/direction -1 1\n/ball/right/direction 1 1\n/ball/left/phase 53.4071 0\n/ball/right/phase 229.336 0\n/range/ball/position -1 1\n/range/bats/position -1 1\n/holdoff 2014-05-27T07:13:42.770641Z\n/start/time 2014-05-27T07:12:13.906995Z\n/hold 2014-05-27T07:13:44.004536Z\n/game/start false\n/now 2014-05-27T07:13:44.863914Z\n",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
