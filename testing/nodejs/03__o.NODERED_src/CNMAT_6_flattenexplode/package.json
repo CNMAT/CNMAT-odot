@@ -1,0 +1,8 @@
+{
+  "name": "o_flattenexplode",
+  "version": "0.0.1",
+  "description": "osc bundle operations for 'flattening' and 'exploding' of OSC bundles, accessible through 'flatten( <NODEjs Buffer> )' and 'explode( <NODEjs Buffer> )' functions",
+  "main": "o_flattenexplode.js",
+  "private": true,
+  "gypfile": true
+}
