@@ -4,11 +4,11 @@
 		"appversion" : 		{
 			"major" : 6,
 			"minor" : 1,
-			"revision" : 2,
-			"architecture" : "x64"
+			"revision" : 6,
+			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 228.0, 44.0, 712.0, 774.0 ],
+		"rect" : [ 464.0, 44.0, 712.0, 774.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -31,13 +31,38 @@
 				"box" : 				{
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
+					"id" : "obj-33",
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 274.0, 652.0, 225.0, 18.0 ],
+					"text" : "read /Users/Adrian2013/inigo_walks.osc"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-9",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 0,
+					"patching_rect" : [ 329.0, 629.0, 100.0, 20.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
 					"frgb" : 0.0,
 					"id" : "obj-40",
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 475.0, 434.0, 219.0, 20.0 ],
-					"presentation_rect" : [ 517.0, 634.0, 0.0, 0.0 ],
 					"text" : "Output the nth bundle (counting from 0)"
 				}
 
@@ -52,7 +77,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 475.0, 391.0, 219.0, 20.0 ],
-					"presentation_rect" : [ 517.0, 603.0, 0.0, 0.0 ],
 					"text" : "Output the last bundle"
 				}
 
@@ -67,7 +91,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 475.0, 367.0, 219.0, 20.0 ],
-					"presentation_rect" : [ 517.0, 579.0, 0.0, 0.0 ],
 					"text" : "Output the first bundle"
 				}
 
@@ -83,7 +106,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 470.0, 295.0, 219.0, 33.0 ],
-					"presentation_rect" : [ 511.0, 629.0, 0.0, 0.0 ],
 					"text" : "Remove and output the nth bundle (counting from 0)"
 				}
 
@@ -98,7 +120,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 470.0, 264.0, 219.0, 20.0 ],
-					"presentation_rect" : [ 512.0, 606.0, 0.0, 0.0 ],
 					"text" : "Remove and output the last bundle"
 				}
 
@@ -113,7 +134,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 470.0, 240.0, 219.0, 20.0 ],
-					"presentation_rect" : [ 162.0, 411.0, 0.0, 0.0 ],
 					"text" : "Remove and output the first bundle"
 				}
 
@@ -129,7 +149,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 162.5, 495.0, 170.5, 33.0 ],
-					"presentation_rect" : [ 61.0, 299.5, 0.0, 0.0 ],
 					"text" : "Messages recall bundles associated with specific keys"
 				}
 
@@ -145,7 +164,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 93.0, 357.0, 219.0, 33.0 ],
-					"presentation_rect" : [ 676.0, 573.5, 0.0, 0.0 ],
 					"text" : "Bundles can be prepended to the front, or explicitly appended to the end."
 				}
 
@@ -203,7 +221,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 45.0, 153.0, 600.0, 20.0 ],
-					"text" : "o.table stores OSC bundles in an associative array."
+					"text" : "o.table appends incoming bundles to the end of an array and optionally associates them with a key."
 				}
 
 			}
@@ -458,7 +476,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 195.0, 390.0, 61.0, 20.0 ],
-					"text" : "/bar \"foo\" ",
+					"text" : "/bar \"foo\"",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -473,7 +491,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 93.0, 390.0, 61.0, 20.0 ],
-					"text" : "/foo \"bar\" ",
+					"text" : "/foo \"bar\"",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -531,7 +549,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 69.0, 282.0, 150.0, 33.0 ],
-					"text" : "/bar \"foo\" \n/key \"bar\" ",
+					"text" : "/bar \"foo\"\n/key \"bar\"",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -575,7 +593,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 45.0, 240.0, 150.0, 33.0 ],
-					"text" : "/foo \"bar\" \n/key \"foo\" ",
+					"text" : "/foo \"bar\"\n/key \"foo\"",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -809,6 +827,15 @@
 					"destination" : [ "obj-1", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
+					"source" : [ "obj-33", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-1", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
 					"midpoints" : [ 172.0, 626.0, 54.5, 626.0 ],
 					"source" : [ "obj-4", 0 ]
 				}
@@ -855,8 +882,8 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "o.helpfilehelper.maxpat",
-				"bootpath" : "/Users/john/MMJ-dev/CNMAT_Externals/odot/overview",
-				"patcherrelativepath" : "../../../../../MMJ-dev/CNMAT_Externals/odot/overview",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/overview",
+				"patcherrelativepath" : "../overview",
 				"type" : "JSON",
 				"implicit" : 1
 			}
