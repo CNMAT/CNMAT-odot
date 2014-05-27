@@ -1,0 +1,8 @@
+{
+  "name": "o_parse",
+  "version": "0.0.1",
+  "description": "osc parsing for Node, accessible through 'parse( <string_to_parse> )' function",
+  "main": "o_parse.js",
+  "private": true,
+  "gypfile": true
+}
