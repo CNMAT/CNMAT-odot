@@ -8,7 +8,7 @@
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 340.0, 88.0, 1321.0, 600.0 ],
+		"rect" : [ 544.0, 44.0, 1321.0, 600.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -1229,7 +1229,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 507.0, 102.0, 272.0, 167.0 ],
-					"text" : "/ball/position 0. 0.\n/ball/rate 0.2 0.31\n/bat/left -0.95 0.\n/bat/right 0.95 0.\n/bat/halfheight 0.15\n/ball/left/direction 1 1\n/ball/right/direction 1 1\n/ball/left/phase 0 0\n/ball/right/phase 0 0\n/range/ball/position -1 1\n/range/bats/position -1 1\n/game/start true",
+					"text" : "/ball/position 0. 0.\n/ball/rate 0.4 0.51\n/bat/left -0.95 0.\n/bat/right 0.95 0.\n/bat/halfheight 0.15\n/ball/left/direction 1 1\n/ball/right/direction 1 1\n/ball/left/phase 0 0\n/ball/right/phase 0 0\n/range/ball/position -1 1\n/range/bats/position -1 1\n/game/start true",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -1245,7 +1245,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 239.0, 369.5, 285.0, 221.0 ],
-					"text" : "/ball/position 0.228991 -0.795065\n/ball/rate 0.2 0.31\n/bat/left -0.95 0.\n/bat/right 0.95 0.\n/bat/halfheight 0.15\n/ball/left/direction 1 1\n/ball/right/direction -1 1\n/ball/left/phase 94.2478 0\n/ball/right/phase 257.611 0\n/range/ball/position -1 1\n/range/bats/position -1 1\n/game/start false\n/holdoff 2014-05-27T03:51:11.255263Z\n/start/time 2014-05-27T03:47:18.714286Z\n/hold 2014-05-27T03:51:06.306992Z\n/now 2014-05-27T03:51:12.750525Z\n",
+					"text" : "/ball/position -0.496362 0.0921379\n/ball/rate 0.4 0.51\n/bat/left -0.95 0.\n/bat/right 0.95 0.\n/bat/halfheight 0.15\n/ball/left/direction -1 1\n/ball/right/direction 1 1\n/ball/left/phase 18.8496 0\n/ball/right/phase 37.6991 0\n/range/ball/position -1 1\n/range/bats/position -1 1\n/game/start false\n/holdoff 2014-05-27T07:06:16.271255Z\n/start/time 2014-05-27T07:05:51.196490Z\n/hold 2014-05-27T07:06:02.526337Z\n/now 2014-05-27T07:06:17.131717Z\n",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 

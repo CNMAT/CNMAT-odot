@@ -113,7 +113,7 @@
 							"architecture" : "x86"
 						}
 ,
-						"rect" : [ 149.0, 97.0, 1231.0, 665.0 ],
+						"rect" : [ 604.0, 305.0, 1231.0, 665.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -133,6 +133,45 @@
 						"digest" : "",
 						"tags" : "",
 						"boxes" : [ 							{
+								"box" : 								{
+									"fontname" : "Arial",
+									"fontsize" : 12.0,
+									"id" : "obj-33",
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 2,
+									"outlettype" : [ "float", "float" ],
+									"patching_rect" : [ 84.0, 168.0, 63.0, 20.0 ],
+									"text" : "unpack f f"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"fontname" : "Arial",
+									"fontsize" : 12.0,
+									"id" : "obj-30",
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 2,
+									"outlettype" : [ "float", "float" ],
+									"patching_rect" : [ 805.0, 177.0, 63.0, 20.0 ],
+									"text" : "unpack f f"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-23",
+									"maxclass" : "button",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "bang" ],
+									"patching_rect" : [ 184.0, 197.0, 20.0, 20.0 ]
+								}
+
+							}
+, 							{
 								"box" : 								{
 									"fontname" : "Arial",
 									"fontsize" : 12.0,
@@ -197,7 +236,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "FullPacket" ],
-									"patching_rect" : [ 377.0, 100.0, 99.0, 20.0 ],
+									"patching_rect" : [ 422.0, 104.0, 99.0, 20.0 ],
 									"text" : "o.route /distance"
 								}
 
@@ -355,28 +394,13 @@
 								"box" : 								{
 									"fontname" : "Arial",
 									"fontsize" : 12.0,
-									"id" : "obj-8",
-									"linecount" : 2,
-									"maxclass" : "message",
-									"numinlets" : 2,
-									"numoutlets" : 1,
-									"outlettype" : [ "" ],
-									"patching_rect" : [ 739.429688, 188.735504, 28.0, 31.0 ],
-									"text" : "-0.9"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"fontname" : "Arial",
-									"fontsize" : 12.0,
 									"id" : "obj-10",
 									"maxclass" : "newobj",
 									"numinlets" : 2,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "FullPacket" ],
-									"patching_rect" : [ 769.710693, 135.801636, 127.0, 20.0 ],
-									"text" : "o.route /ball/x/position"
+									"patching_rect" : [ 769.710693, 135.801636, 118.0, 20.0 ],
+									"text" : "o.route /ball/position"
 								}
 
 							}
@@ -389,8 +413,8 @@
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "FullPacket", "FullPacket" ],
-									"patching_rect" : [ 777.487549, 108.0, 128.0, 20.0 ],
-									"text" : "o.if /ball/y/reflected!=0"
+									"patching_rect" : [ 777.487549, 108.0, 127.0, 20.0 ],
+									"text" : "o.if /bounce[[1]]==true"
 								}
 
 							}
@@ -455,7 +479,7 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "", "" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 310.0, 211.371918, 35.0, 81.0 ],
+									"patching_rect" : [ 309.0, 213.371918, 35.0, 81.0 ],
 									"peakcolor" : [ 0.4, 0.4, 0.941176, 1.0 ],
 									"setminmax" : [ 0.25, 2.0 ],
 									"setstyle" : 1,
@@ -480,28 +504,13 @@
 								"box" : 								{
 									"fontname" : "Arial",
 									"fontsize" : 12.0,
-									"id" : "obj-20",
-									"linecount" : 2,
-									"maxclass" : "message",
-									"numinlets" : 2,
-									"numoutlets" : 1,
-									"outlettype" : [ "" ],
-									"patching_rect" : [ 105.429688, 180.735504, 24.0, 31.0 ],
-									"text" : "-0.8"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"fontname" : "Arial",
-									"fontsize" : 12.0,
 									"id" : "obj-11",
 									"maxclass" : "newobj",
 									"numinlets" : 2,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "FullPacket" ],
-									"patching_rect" : [ 137.710693, 127.801636, 127.0, 20.0 ],
-									"text" : "o.route /ball/y/position"
+									"patching_rect" : [ 129.710693, 133.801636, 118.0, 20.0 ],
+									"text" : "o.route /ball/position"
 								}
 
 							}
@@ -514,8 +523,8 @@
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "FullPacket", "FullPacket" ],
-									"patching_rect" : [ 143.487549, 100.0, 128.0, 20.0 ],
-									"text" : "o.if /ball/x/reflected!=0"
+									"patching_rect" : [ 143.487549, 100.0, 127.0, 20.0 ],
+									"text" : "o.if /bounce[[0]]==true"
 								}
 
 							}
@@ -526,7 +535,7 @@
 									"maxclass" : "inlet",
 									"numinlets" : 0,
 									"numoutlets" : 1,
-									"outlettype" : [ "" ],
+									"outlettype" : [ "FullPacket" ],
 									"patching_rect" : [ 143.487549, 40.0, 25.0, 25.0 ]
 								}
 
@@ -538,7 +547,7 @@
 									"maxclass" : "outlet",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 50.0, 655.371948, 25.0, 25.0 ]
+									"patching_rect" : [ 70.0, 634.371948, 25.0, 25.0 ]
 								}
 
 							}
@@ -563,7 +572,7 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-1", 0 ],
+									"destination" : [ "obj-30", 0 ],
 									"disabled" : 0,
 									"hidden" : 0,
 									"source" : [ "obj-10", 0 ]
@@ -572,25 +581,7 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-8", 1 ],
-									"disabled" : 0,
-									"hidden" : 0,
-									"source" : [ "obj-10", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-15", 0 ],
-									"disabled" : 0,
-									"hidden" : 0,
-									"source" : [ "obj-11", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-20", 1 ],
+									"destination" : [ "obj-33", 0 ],
 									"disabled" : 0,
 									"hidden" : 0,
 									"source" : [ "obj-11", 0 ]
@@ -627,6 +618,15 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-29", 0 ],
+									"disabled" : 0,
+									"hidden" : 0,
+									"source" : [ "obj-15", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-9", 0 ],
 									"disabled" : 0,
 									"hidden" : 0,
 									"source" : [ "obj-15", 0 ]
@@ -672,15 +672,6 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-12", 0 ],
-									"disabled" : 0,
-									"hidden" : 0,
-									"source" : [ "obj-21", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-25", 0 ],
 									"disabled" : 0,
 									"hidden" : 0,
 									"source" : [ "obj-21", 0 ]
@@ -773,7 +764,25 @@
 									"destination" : [ "obj-7", 0 ],
 									"disabled" : 0,
 									"hidden" : 0,
+									"source" : [ "obj-30", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-7", 0 ],
+									"disabled" : 0,
+									"hidden" : 0,
 									"source" : [ "obj-32", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-9", 0 ],
+									"disabled" : 0,
+									"hidden" : 0,
+									"source" : [ "obj-33", 1 ]
 								}
 
 							}
@@ -879,7 +888,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 540.0, 44.0, 472.0, 288.0 ],
-					"text" : "/was/now 2014-05-27T05:25:36.305954Z\n/was/ball/velocity -47.4586 1.24\n/ball/position -0.927694 -0.0879255\n/ball/rate 0.2 0.31\n/bat/right 0.95 0.\n/bat/halfheight 0.15\n/ball/left/direction 1 1\n/ball/right/direction -1 1\n/ball/left/phase 122.522 0\n/ball/right/phase 81.6814 0\n/range/ball/position -1 1\n/range/bats/position -1 1\n/game/start false\n/holdoff 2014-05-27T05:25:36.364857Z\n/start/time 2014-05-27T05:24:26.254389Z\n/hold 2014-05-27T05:25:36.342974Z\n/bat/left -0.9 -0.366197\n/now 2014-05-27T05:25:36.344772Z\n/ball/velocity 0.8 1.24\n/ball/acceleration 1243.19 -3.78671e-12\n/bounce true false\n",
+					"text" : "/was/now 2014-05-27T07:06:18.649430Z\n/was/ball/velocity 1.6 1.83553\n/ball/position 0.99848 0.898062\n/ball/rate 0.4 0.51\n/bat/left -0.95 0.\n/bat/right 0.95 0.\n/bat/halfheight 0.15\n/ball/left/direction 1 1\n/ball/right/direction 1 1\n/ball/left/phase 21.9911 0\n/ball/right/phase 43.9823 0\n/range/ball/position -1 1\n/range/bats/position -1 1\n/game/start false\n/holdoff 2014-05-27T07:06:18.797441Z\n/start/time 2014-05-27T07:05:51.196490Z\n/hold 2014-05-27T07:06:17.534025Z\n/now 2014-05-27T07:06:18.697440Z\n/ball/velocity 1.53669 -2.04\n/ball/acceleration -1.31862 -80.7228\n/bounce true true\n",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -971,6 +980,15 @@
 					"hidden" : 0,
 					"midpoints" : [ 68.5, 231.0, 35.0, 231.0, 35.0, 115.0, 191.5, 115.0 ],
 					"source" : [ "obj-21", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-11", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-24", 0 ]
 				}
 
 			}
