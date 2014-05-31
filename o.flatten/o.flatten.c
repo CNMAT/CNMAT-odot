@@ -145,7 +145,7 @@ void *oflatten_new(t_symbol *msg, short argc, t_atom *argv)
 	return x;
 }
 
-int setup_o0x2eoflatten(void)
+int setup_o0x2eflatten(void)
 {
 	t_class *c = class_new(gensym("o.flatten"), (t_newmethod)oflatten_new, NULL, sizeof(t_oflatten), 0L, A_GIMME, 0);
 	class_addmethod(c, (t_method)oflatten_fullPacket, gensym("FullPacket"), A_GIMME, 0);
