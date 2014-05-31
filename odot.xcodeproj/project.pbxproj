@@ -170,6 +170,8 @@
 
 /* Begin PBXBuildFile section */
 		112AC8611939427D003244E9 /* o.menu.c in Sources */ = {isa = PBXBuildFile; fileRef = 112AC8601939427D003244E9 /* o.menu.c */; };
+		118D280019394C9500739CB3 /* pqops.c in Sources */ = {isa = PBXBuildFile; fileRef = 52A8396C16F3F893002E273C /* pqops.c */; };
+		118D280119394C9800739CB3 /* pqops.h in Headers */ = {isa = PBXBuildFile; fileRef = 52A8396D16F3F893002E273C /* pqops.h */; };
 		119FA032191D5835001C3325 /* o.append.c in Sources */ = {isa = PBXBuildFile; fileRef = 52A8393A16E978CD002E273C /* o.append.c */; };
 		119FA03D191D58F0001C3325 /* o.atomize.c in Sources */ = {isa = PBXBuildFile; fileRef = 525523B41504C3FD00A10E5D /* o.atomize.c */; };
 		119FA048191D59CA001C3325 /* o.change.c in Sources */ = {isa = PBXBuildFile; fileRef = 525523D81504CC6000A10E5D /* o.change.c */; };
@@ -2421,6 +2423,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				118D280119394C9800739CB3 /* pqops.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2787,9 +2790,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		112AC85719394255003244E9 /* o.menu */ = {
+		112AC85719394255003244E9 /* o.menu.pd */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 112AC85C19394255003244E9 /* Build configuration list for PBXNativeTarget "o.menu" */;
+			buildConfigurationList = 112AC85C19394255003244E9 /* Build configuration list for PBXNativeTarget "o.menu.pd" */;
 			buildPhases = (
 				112AC85819394255003244E9 /* Sources */,
 				112AC85A19394255003244E9 /* Frameworks */,
@@ -2799,7 +2802,7 @@
 			);
 			dependencies = (
 			);
-			name = o.menu;
+			name = o.menu.pd;
 			productName = o.print.pd;
 			productReference = 112AC85F19394255003244E9 /* o.menu.pd_darwin */;
 			productType = "com.apple.product-type.library.dynamic";
@@ -4098,7 +4101,7 @@
 				119FA0A1191D5E91001C3325 /* o.iterate.pd */,
 				5255243A1504D15000A10E5D /* o.mappatch */,
 				119FA0AB191D5E9D001C3325 /* o.mappatch.pd */,
-				112AC85719394255003244E9 /* o.menu */,
+				112AC85719394255003244E9 /* o.menu.pd */,
 				525524491504D15200A10E5D /* o.message */,
 				119FA0B5191D5EC6001C3325 /* o.message.pd */,
 				525524581504D15400A10E5D /* o.pack */,
@@ -4609,6 +4612,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				119FA13E191D607F001C3325 /* o.schedule.c in Sources */,
+				118D280019394C9500739CB3 /* pqops.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -13522,7 +13526,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		112AC85C19394255003244E9 /* Build configuration list for PBXNativeTarget "o.menu" */ = {
+		112AC85C19394255003244E9 /* Build configuration list for PBXNativeTarget "o.menu.pd" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				112AC85D19394255003244E9 /* Debug */,
