@@ -172,6 +172,8 @@
 		112AC8611939427D003244E9 /* o.menu.c in Sources */ = {isa = PBXBuildFile; fileRef = 112AC8601939427D003244E9 /* o.menu.c */; };
 		118D280019394C9500739CB3 /* pqops.c in Sources */ = {isa = PBXBuildFile; fileRef = 52A8396C16F3F893002E273C /* pqops.c */; };
 		118D280119394C9800739CB3 /* pqops.h in Headers */ = {isa = PBXBuildFile; fileRef = 52A8396D16F3F893002E273C /* pqops.h */; };
+		118D2805193A915E00739CB3 /* avl.c in Sources */ = {isa = PBXBuildFile; fileRef = 52C839E6167A5BE2000AA688 /* avl.c */; };
+		118D2806193A916200739CB3 /* avl.h in Headers */ = {isa = PBXBuildFile; fileRef = 52C839E7167A5BE2000AA688 /* avl.h */; };
 		119FA032191D5835001C3325 /* o.append.c in Sources */ = {isa = PBXBuildFile; fileRef = 52A8393A16E978CD002E273C /* o.append.c */; };
 		119FA03D191D58F0001C3325 /* o.atomize.c in Sources */ = {isa = PBXBuildFile; fileRef = 525523B41504C3FD00A10E5D /* o.atomize.c */; };
 		119FA048191D59CA001C3325 /* o.change.c in Sources */ = {isa = PBXBuildFile; fileRef = 525523D81504CC6000A10E5D /* o.change.c */; };
@@ -2438,6 +2440,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				118D2806193A916200739CB3 /* avl.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4629,6 +4632,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				119FA140191D6086001C3325 /* o.table.c in Sources */,
+				118D2805193A915E00739CB3 /* avl.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
