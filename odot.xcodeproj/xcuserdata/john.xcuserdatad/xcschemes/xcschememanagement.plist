@@ -122,7 +122,7 @@
 		<key>o.expr.codebox.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>72</integer>
+			<integer>50</integer>
 		</dict>
 		<key>o.expr.pd.xcscheme</key>
 		<dict>
@@ -208,6 +208,11 @@
 		<dict>
 			<key>orderHint</key>
 			<integer>59</integer>
+		</dict>
+		<key>o.menu.pd.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>51</integer>
 		</dict>
 		<key>o.message.pd.xcscheme</key>
 		<dict>
@@ -382,6 +387,11 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>112AC85719394255003244E9</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>119FA028191D5814001C3325</key>
 		<dict>
 			<key>primary</key>
