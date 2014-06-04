@@ -1,0 +1,12 @@
+#N canvas 782 345 450 300 10;
+#X floatatom 149 50 5 0 0 0 - - -;
+#X obj 151 83 o.pack /foo;
+#X obj 138 197 o.print ==;
+#X obj 151 110 o.cond /foo < 3 \; /foo == 3 \; /foo > 3;
+#X obj 230 197 o.print >;
+#X obj 58 198 o.print <;
+#X connect 0 0 1 0;
+#X connect 1 0 3 0;
+#X connect 3 0 5 0;
+#X connect 3 1 2 0;
+#X connect 3 2 4 0;

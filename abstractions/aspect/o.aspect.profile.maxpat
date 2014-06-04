@@ -8,7 +8,7 @@
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 604.0, 44.0, 981.0, 544.0 ],
+		"rect" : [ 604.0, 44.0, 615.0, 453.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -37,7 +37,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 72.0, 408.0, 564.0, 33.0 ],
+					"patching_rect" : [ 24.0, 352.0, 564.0, 33.0 ],
 					"text" : "o.expr assign(\\\"/\\\" + /o_outlet/this/patcher/name + \\\"/elapsed\\\"\\, value(\\\"/\\\" +/o_outlet/this/patcher/name + \\\"/outlet/time\\\") - value(\\\"/\\\" + /o_outlet/this/patcher/name + \\\"/inlet/time\\\"))"
 				}
 
@@ -51,7 +51,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 72.0, 376.0, 143.0, 20.0 ],
+					"patching_rect" : [ 24.0, 320.0, 143.0, 20.0 ],
 					"text" : "o.if /o_port/type == outlet"
 				}
 
@@ -65,7 +65,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 208.0, 224.0, 87.0, 20.0 ],
+					"patching_rect" : [ 160.0, 168.0, 87.0, 20.0 ],
 					"text" : "sprintf /%s/%s"
 				}
 
@@ -79,7 +79,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 72.0, 344.0, 50.0, 20.0 ],
+					"patching_rect" : [ 24.0, 288.0, 50.0, 20.0 ],
 					"text" : "o.union"
 				}
 
@@ -93,7 +93,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 208.0, 272.0, 74.0, 20.0 ],
+					"patching_rect" : [ 160.0, 216.0, 74.0, 20.0 ],
 					"text" : "prepend set"
 				}
 
@@ -107,7 +107,7 @@
 					"numinlets" : 4,
 					"numoutlets" : 4,
 					"outlettype" : [ "", "", "", "FullPacket" ],
-					"patching_rect" : [ 208.0, 184.0, 403.0, 20.0 ],
+					"patching_rect" : [ 160.0, 128.0, 403.0, 20.0 ],
 					"text" : "o.route /o_inlet/this/patcher/name /o_outlet/this/patcher/name /o_port/type"
 				}
 
@@ -121,7 +121,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 103.0, 312.0, 65.0, 20.0 ],
+					"patching_rect" : [ 55.0, 256.0, 65.0, 20.0 ],
 					"text" : "o.prepend"
 				}
 
@@ -135,7 +135,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 103.0, 272.0, 89.0, 20.0 ],
+					"patching_rect" : [ 55.0, 216.0, 89.0, 20.0 ],
 					"text" : "o.timetag /time"
 				}
 
@@ -149,7 +149,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 3,
 					"outlettype" : [ "", "bang", "" ],
-					"patching_rect" : [ 72.0, 144.0, 81.0, 20.0 ],
+					"patching_rect" : [ 24.0, 88.0, 81.0, 20.0 ],
 					"text" : "t l b l"
 				}
 
@@ -162,7 +162,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 72.0, 456.0, 85.0, 20.0 ],
+					"patching_rect" : [ 24.0, 400.0, 85.0, 20.0 ],
 					"text" : "o.aspect.send"
 				}
 
@@ -176,7 +176,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 72.0, 104.0, 173.0, 20.0 ],
+					"patching_rect" : [ 24.0, 48.0, 173.0, 20.0 ],
 					"text" : "o.when exists(/_aspect/profile)"
 				}
 
@@ -190,7 +190,7 @@
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 72.0, 40.0, 98.0, 20.0 ],
+					"patching_rect" : [ 24.0, 16.0, 98.0, 20.0 ],
 					"text" : "o.aspect.receive"
 				}
 
