@@ -1,0 +1,115 @@
+<!-- /* * * *
+      * O.EXPR // Node-Red Module
+      *
+      * Written by Ilya Rostovtsev The Center for New Music and Audio Technologies,
+      * University of California, Berkeley.  Copyright (c) 2014-ll, The Regents of
+      * the University of California (Regents). 
+      *
+      * Permission to use, copy, modify, distribute, and distribute modified versions
+      * of this software and its documentation without fee and without a signed
+      * licensing agreement, is hereby granted, provided that the above copyright
+      * notice, this paragraph and the following two paragraphs appear in all copies,
+      * modifications, and distributions.
+      *
+      * IN NO EVENT SHALL REGENTS BE LIABLE TO ANY PARTY FOR DIRECT, INDIRECT,
+      * SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES, INCLUDING LOST PROFITS, ARISING
+      * OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN IF REGENTS HAS
+      * BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+      * 
+      * REGENTS SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+      * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+      * PURPOSE. THE SOFTWARE AND ACCOMPANYING DOCUMENTATION, IF ANY, PROVIDED
+      * HEREUNDER IS PROVIDED "AS IS". REGENTS HAS NO OBLIGATION TO PROVIDE
+      * MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
+      * * * * -->
+
+<!-- o.expr node -->
+<script type="text/x-red" data-template-name="o_expr">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-func"><i class="icon-wrench"></i> Function</label>
+        <input type="hidden" id="node-input-func" autofocus="autofocus">
+        <div style="height: 250px;" class="node-text-editor" id="node-input-func-editor" ></div>
+    </div>
+    <div class="form-tips">For syntax and help with o.expr, please see the INFO pane.</div>
+</script>
+
+<script type="text/x-red" data-help-name="o_expr">
+        <p>Provides a block for expressions capable of operating directly on serialized 
+           OSC bundles.</p>
+        <h4>Input Payload:</h4>
+        <p>If you choose to leave the code-box empty, you may provide both the expression 
+           string as well as the serialized bundle in the input payload using 
+           <code>.payload.expr</code> and <code>.payload.bundle</code> properties, 
+           respectively.</p>
+        <p>If you write expressions in the code box, <code>o.expr</code> looks for a 
+           serialized bundle in the <code>.payload</code> property of its input.
+        <p>You may also evaluate expressions stored in the OSC bundle itself using 
+           <code>eval( /address/with/expression );</code> function call.
+        <h4>Output:</h4>
+        <p>The output is a serialized OSC bundle contained in the <code>.payload</code>
+           property of the passed message. It can be decoded to JSON using the 
+           <code>osc2json</code> object, modified further by other CNMAT odot objects in 
+           Node-Red, or transmitted over network (e.g. with the <code>udp</code> module).
+        <h4>Syntax:</h4>
+        <p>Functions supported by o.expr are listed in the o.expr.pdf document in 
+           <code>/(%NODE-RED-ROOT)/modules/cnmat</code>.
+</script>
+
+<script type="text/javascript">
+    RED.nodes.registerType('o_expr',{
+        color:"#B0C6D9",
+        category: 'function',
+        defaults: {
+            name: {value:"o.expr"},
+            func: {value:"/result = /foo + /bar;"},
+            outputs: {value:1}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "cnmat.png",
+        label: function() {
+            return this.name;
+        },
+        oneditprepare: function() {
+            function functionDialogResize(ev,ui) {
+                $("#node-input-func-editor").css("height",(ui.size.height-275)+"px");
+            };
+
+            $( "#dialog" ).on("dialogresize", functionDialogResize);
+            $( "#dialog" ).one("dialogopen", function(ev) {
+                var size = $( "#dialog" ).dialog('option','sizeCache-function');
+                if (size) {
+                    functionDialogResize(null,{size:size});
+                }
+            });
+            $( "#dialog" ).one("dialogclose", function(ev,ui) {
+                var height = $( "#dialog" ).dialog('option','height');
+                $( "#dialog" ).off("dialogresize",functionDialogResize);
+            });
+            var that = this;
+            require(["orion/editor/edit"], function(edit) {
+                that.editor = edit({
+                    parent:document.getElementById('node-input-func-editor'),
+                    lang:"",
+                    contents: $("#node-input-func").val()
+                });
+                RED.library.create({
+                    url:"functions", // where to get the data from
+                    type:"function", // the type of object the library is for
+                    editor:that.editor, // the field name the main text body goes to
+                    fields:['name','outputs']
+                });
+                $("#node-input-name").focus();
+
+            });
+        },
+        oneditsave: function() {
+            $("#node-input-func").val(this.editor.getText())
+            delete this.editor;
+        }
+    });
+</script>

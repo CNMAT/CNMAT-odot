@@ -165,7 +165,7 @@ void obtle_outputOSCBundle(t_obtle *x, t_symbol *msg, int argc, t_atom *argv);
 
 - (void) startScan 
 {
-	//[manager scanForPeripheralsWithServices:[NSArray arrayWithObject:[CBUUID UUIDWithString:@"180D"]] options:nil];
+	//[manager scanForPeripheralsWithServices:[NSArray arrayWithObject:[CBUUID UUIDWithString:@"ffe0"]] options:nil];
 	[manager scanForPeripheralsWithServices:nil options:nil];
 }
 
@@ -188,6 +188,9 @@ void obtle_outputOSCBundle(t_obtle *x, t_symbol *msg, int argc, t_atom *argv);
 {    
 	t_osc_bndl_u *bndl = osc_bundle_u_alloc();
 	const char *pname = [[p name] UTF8String];
+	if(!pname){
+		return;
+	}
 	const char * const prefix = "/discover/peripheral/name/";
 	long len = strlen(pname) + strlen(prefix) + 1;
 	char buf[len];
