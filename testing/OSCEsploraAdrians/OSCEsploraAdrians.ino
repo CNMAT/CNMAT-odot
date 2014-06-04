@@ -180,16 +180,14 @@ int oscstrlen(const char *s)
 void oscstrsend(char *s)
 {
   
-int32_t counter = 0; 
 int32_t serialnumber = 1099;   //hard coded; beware
 
-     };
+};
      
      
-// TODO endianness! 
 inline void oscwriteinteger(SLIPEncodedUSBSerial &usbs, int32_t i)
 {
- usbs.write((uint8_t)(i>>24)); // get these in the right order!
+ usbs.write((uint8_t)(i>>24)); 
   usbs.write((uint8_t)(i>>16));
   usbs.write((uint8_t)(i>>8));
   usbs.write((uint8_t)(i));
@@ -198,7 +196,7 @@ inline void oscwritefloat(SLIPEncodedUSBSerial &usbs, float f)
 {
   union { float f; uint32_t  i; } t;
   t.f = f;
-  usbs.write((uint8_t)(t.i>>24)); // get these in the right order!
+  usbs.write((uint8_t)(t.i>>24)); 
   usbs.write((uint8_t)(t.i>>16));
   usbs.write((uint8_t)(t.i>>8));
   usbs.write((uint8_t)(t.i));
@@ -256,6 +254,7 @@ const char *a_arduino = "Arduino";
     oscwriteinteger(SLIPSerial, (int32_t)oscstrlen(a_manufacturer) + 4 + (int32_t)oscstrlen(a_arduino)); // 4 for type tag and 4 for the payload integer
     oscwritestring(SLIPSerial,a_manufacturer); oscwritestring(SLIPSerial, singlestring); oscwritestring(SLIPSerial, a_arduino);
 }
+
 {
 const char *a_accx = "/acceleration/x";    
     oscwriteinteger(SLIPSerial, (int32_t)oscstrlen(a_accx) + 4 + 4); // 4 for type tag and 4 for the payload integer
@@ -287,7 +286,6 @@ const char *a_pr= "/photoresistor";
     oscwriteinteger(SLIPSerial, (int32_t)oscstrlen(a_jsv) + 4 + 4); // 4 for type tag and 4 for the payload integer
     oscwritestring(SLIPSerial,a_jsv ); oscwritestring(SLIPSerial, singlefloat); oscwritefloat(SLIPSerial, (int32_t)Esplora.readJoystickY()/-512.0f);
 }   
- 
   
 const char *a_ledrgb = ("/led/rgb");    
     oscwriteinteger(SLIPSerial, (int32_t)oscstrlen(a_ledrgb) + 8 + 4*3); // 8 for type tag and 4 bytes * 3 for the payload integers
