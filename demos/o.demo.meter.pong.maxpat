@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 6,
 			"minor" : 1,
-			"revision" : 3,
+			"revision" : 6,
 			"architecture" : "x86"
 		}
 ,
@@ -54,7 +54,7 @@
 						"appversion" : 						{
 							"major" : 6,
 							"minor" : 1,
-							"revision" : 3,
+							"revision" : 6,
 							"architecture" : "x86"
 						}
 ,
@@ -78,6 +78,20 @@
 						"digest" : "",
 						"tags" : "",
 						"boxes" : [ 							{
+								"box" : 								{
+									"fontname" : "Arial",
+									"fontsize" : 12.0,
+									"id" : "obj-1",
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "FullPacket" ],
+									"patching_rect" : [ 168.0, 244.0, 105.0, 20.0 ],
+									"text" : "o.pack /displaylist"
+								}
+
+							}
+, 							{
 								"box" : 								{
 									"fontname" : "Arial",
 									"fontsize" : 12.0,
@@ -130,7 +144,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 199.0, 152.0, 150.0, 47.0 ],
-									"text" : "/color 0.9 0.3 0.1 \n/radius 0.04 \n/shape \"sphere\" ",
+									"text" : "/color 0.9 0.3 0.1\n/radius 0.04\n/shape \"sphere\"",
 									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 
@@ -161,6 +175,15 @@
  ],
 						"lines" : [ 							{
 								"patchline" : 								{
+									"destination" : [ "obj-21", 0 ],
+									"disabled" : 0,
+									"hidden" : 0,
+									"source" : [ "obj-1", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
 									"destination" : [ "obj-13", 0 ],
 									"disabled" : 0,
 									"hidden" : 0,
@@ -179,7 +202,7 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-21", 0 ],
+									"destination" : [ "obj-1", 0 ],
 									"disabled" : 0,
 									"hidden" : 0,
 									"source" : [ "obj-13", 0 ]
@@ -232,8 +255,8 @@
 					"id" : "obj-11",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
-					"numoutlets" : 2,
-					"outlettype" : [ "", "FullPacket" ],
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
 					"patching_rect" : [ 563.0, 515.0, 149.0, 20.0 ],
 					"text" : "o.io.gl o.demo.meter.pong"
 				}
@@ -290,7 +313,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 285.0, 87.0, 125.0, 154.0 ],
-					"text" : "/ball/x/position 0. \n/ball/x/step \"$2\" \n/ball/y/position 0. \n/ball/y/step \"$1\" \n/ball/z/step \"$3\" \n/ball/z/position 0. \n/ball/z/reflected 0 \n/bound/lower -1. \n/bound/upper 1. \n/ball/x/reflected 0 \n/ball/y/reflected 0 ",
+					"text" : "/ball/x/position 0.\n/ball/x/step \"$2\"\n/ball/y/position 0.\n/ball/y/step \"$1\"\n/ball/z/step \"$3\"\n/ball/z/position 0.\n/ball/z/reflected 0\n/bound/lower -1.\n/bound/upper 1.\n/ball/x/reflected 0\n/ball/y/reflected 0",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -377,7 +400,7 @@
 						"appversion" : 						{
 							"major" : 6,
 							"minor" : 1,
-							"revision" : 3,
+							"revision" : 6,
 							"architecture" : "x86"
 						}
 ,
@@ -630,7 +653,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 739.429688, 188.735504, 50.0, 31.0 ],
-									"text" : "-0.35373"
+									"text" : "0.353732"
 								}
 
 							}
@@ -755,7 +778,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 105.429688, 180.735504, 50.0, 31.0 ],
-									"text" : "0.940299"
+									"text" : "-0.850746"
 								}
 
 							}
@@ -1132,7 +1155,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 143.0, 11.0, 108.0, 154.0 ],
-					"text" : "/ball/x/position 0. \n/ball/x/step 0.24 \n/ball/y/position 0. \n/ball/y/step 0.15 \n/ball/z/step 0.035 \n/ball/z/position 0. \n/ball/z/reflected 0 \n/bound/lower -1. \n/bound/upper 1. \n/ball/x/reflected 0 \n/ball/y/reflected 0 ",
+					"text" : "/ball/x/position 0.\n/ball/x/step 0.24\n/ball/y/position 0.\n/ball/y/step 0.15\n/ball/z/step 0.035\n/ball/z/position 0.\n/ball/z/reflected 0\n/bound/lower -1.\n/bound/upper 1.\n/ball/x/reflected 0\n/ball/y/reflected 0",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -1176,7 +1199,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 138.0, 262.5, 285.0, 154.0 ],
-					"text" : "/ball/x/position 0.353732 \n/ball/x/step 0.353731 \n/ball/y/position 0.761194 \n/ball/y/step -0.0447761 \n/ball/z/step 0.434328 \n/ball/z/position 0.434329 \n/ball/z/reflected 0 \n/bound/lower -1. \n/bound/upper 1. \n/ball/x/reflected 0 \n/ball/y/reflected 0 \n",
+					"text" : "/ball/x/position -0.35373\n/ball/x/step 0.353731\n/ball/y/position -0.761193\n/ball/y/step 0.0447761\n/ball/z/step 0.434328\n/ball/z/position -0.434327\n/ball/z/reflected 0\n/bound/lower -1.\n/bound/upper 1.\n/ball/x/reflected 0\n/ball/y/reflected 0",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -1339,50 +1362,71 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "reflector.maxpat",
-				"bootpath" : "/Applications/Max 6.1/patches/CNMAT_Externals/odot/demos/metaprogramming",
-				"patcherrelativepath" : "../../../../Applications/Max 6.1/patches/CNMAT_Externals/odot/demos/metaprogramming",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/testing/demos/metaprogramming",
+				"patcherrelativepath" : "../testing/demos/metaprogramming",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "v.sdif.resonance.maxpat",
-				"bootpath" : "/Users/adrian2013/vdot/players",
-				"patcherrelativepath" : "../../vdot/players",
+				"bootpath" : "/Users/adrian2013/Documents/Max/Packages/CompletelyUnfinished/patchers",
+				"patcherrelativepath" : "../../Documents/Max/Packages/CompletelyUnfinished/patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "c.parentsize.js",
-				"bootpath" : "/Users/adrian2013/vdot/players",
-				"patcherrelativepath" : "../../vdot/players",
+				"bootpath" : "/Users/adrian2013/Documents/Max/Packages/vdot/javascript",
+				"patcherrelativepath" : "../../Documents/Max/Packages/vdot/javascript",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.restransformmap.maxpat",
-				"bootpath" : "/Users/adrian2013/CNMAT-odot/testing",
-				"patcherrelativepath" : "../testing",
+				"bootpath" : "/Users/adrian2013/Documents/Max/Packages/CompletelyUnfinished/patchers",
+				"patcherrelativepath" : "../../Documents/Max/Packages/CompletelyUnfinished/patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.foreveryoung.maxpat",
-				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions",
-				"patcherrelativepath" : "../abstractions",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions/time",
+				"patcherrelativepath" : "../abstractions/time",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.io.gl.maxpat",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions/io/graphics",
+				"patcherrelativepath" : "../abstractions/io/graphics",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "o.io.gl.platohelper.maxpat",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions/io/graphics",
+				"patcherrelativepath" : "../abstractions/io/graphics",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "o.listiter.maxpat",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions/programming",
+				"patcherrelativepath" : "../abstractions/programming",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "o.oscbundle.maxpat",
 				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions",
 				"patcherrelativepath" : "../abstractions",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "o.io.gl.platohelper.maxpat",
-				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions",
-				"patcherrelativepath" : "../abstractions",
+				"name" : "o.io.gltexthelper.maxpat",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions/io/graphics",
+				"patcherrelativepath" : "../abstractions/io/graphics",
 				"type" : "JSON",
 				"implicit" : 1
 			}
@@ -1440,6 +1484,26 @@
 			}
 , 			{
 				"name" : "o.union.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.select.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.atomize.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.var.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.print.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.pack.mxo",
 				"type" : "iLaX"
 			}
  ]
