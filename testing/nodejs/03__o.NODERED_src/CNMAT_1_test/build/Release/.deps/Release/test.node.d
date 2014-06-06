@@ -1,1 +1,0 @@
-cmd_Release/test.node := ./gyp-mac-tool flock ./Release/linker.lock c++ -bundle -Wl,-search_paths_first -mmacosx-version-min=10.5 -arch x86_64 -L./Release  -o Release/test.node Release/obj.target/test/test.o -undefined dynamic_lookup /Users/ilyarostovtsev/Documents/node_werk/node_cpp_examples/node-addon-examples/CNMAT_1_test/lib/libo.a
