@@ -8,7 +8,7 @@
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 33.0, -1017.0, 1402.0, 817.0 ],
+		"rect" : [ 33.0, -1017.0, 1092.0, 788.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -237,7 +237,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 168.545441, 259.181824, 50.0, 18.0 ],
-									"text" : "500."
+									"text" : "1000."
 								}
 
 							}
@@ -520,8 +520,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 440.818115, 216.999985, 115.0, 20.0 ],
-					"text" : "o.in @name default"
+					"patching_rect" : [ 440.818115, 216.999985, 36.0, 20.0 ],
+					"text" : "o.init"
 				}
 
 			}
