@@ -3,8 +3,9 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 6,
-			"minor" : 0,
-			"revision" : 1
+			"minor" : 1,
+			"revision" : 6,
+			"architecture" : "x86"
 		}
 ,
 		"rect" : [ 441.0, 45.0, 640.0, 480.0 ],
@@ -56,13 +57,11 @@
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"id" : "obj-3",
-					"linecount" : 3,
 					"maxclass" : "o.message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 22.0, 179.0, 200.0, 48.0 ],
-					"text" : "/english hi \n/french salut \n/yorkshire eyup \n",
+					"patching_rect" : [ 22.0, 179.0, 200.0, 20.0 ],
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 

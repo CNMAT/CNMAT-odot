@@ -4,11 +4,11 @@
 		"appversion" : 		{
 			"major" : 6,
 			"minor" : 1,
-			"revision" : 3,
+			"revision" : 6,
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 172.0, 44.0, 1359.0, 786.0 ],
+		"rect" : [ 81.0, 44.0, 1359.0, 786.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 20.0,
@@ -463,13 +463,13 @@
 					"fontname" : "Arial",
 					"fontsize" : 20.0,
 					"id" : "obj-2",
-					"linecount" : 5,
+					"linecount" : 6,
 					"maxclass" : "o.message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 138.091003, 597.534119, 531.0, 118.0 ],
-					"text" : "/state 0. 0.07\n/omega 0.02\n/r \"$1\"\n/function \"/state = [ 2*cos(twopi()* /omega) * /r *first(/state) - /r * /r *last(/state),first(/state) ]\"",
+					"patching_rect" : [ 138.091003, 597.534119, 531.0, 141.0 ],
+					"text" : "/cuberoot 3\n/argument 27\n/power4root 1\n/function \"/power4root = sqrt(sqrt(/power4root)) ; /cuberoot = /cuberoot * /power4root ; /until = (/power4root==1)\"\n/until false",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
