@@ -8,7 +8,7 @@
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 20.0, 61.0, 1078.0, 705.0 ],
+		"rect" : [ 633.0, 56.0, 1078.0, 705.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -132,8 +132,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 252.0, 72.0, 118.0, 20.0 ],
-					"text" : "o.arguments /rate 1."
+					"patching_rect" : [ 252.0, 72.0, 127.0, 20.0 ],
+					"text" : "o.arguments /bpm 60."
 				}
 
 			}
