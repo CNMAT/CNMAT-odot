@@ -31,15 +31,28 @@
 				"box" : 				{
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
+					"id" : "obj-5",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "FullPacket" ],
+					"patching_rect" : [ 471.0, 163.0, 211.0, 20.0 ],
+					"text" : "o.iterate.expr /count = (/count??0) + 1"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
 					"id" : "obj-3",
-					"linecount" : 10,
+					"linecount" : 11,
 					"maxclass" : "o.message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 165.0, 442.0, 467.0, 141.0 ],
-					"presentation_rect" : [ 165.0, 442.0, 0.0, 0.0 ],
-					"text" : "/rate 1.\n/units/interval \"Seconds\"\n/units/bpm \"Beats Per Minute\"\n/units/rate \"Hertz (cycles per second)\"\n/o_init/this/patcher/name \"o.metro\"\n/o_init/this/patcher/args 1868 0 0 0 0 0 0 0 0 0\n/o_init/parent/patcher/name \"o.metro.maxhelp\"\n/o_init/parent/patcher/args \"#0\" \"#1\" \"#2\" \"#3\" \"#4\" \"#5\" \"#6\" \"#7\" \"#8\" \"#9\"\n/interval 1.\n/bpm 60.",
+					"patching_rect" : [ 165.0, 442.0, 467.0, 154.0 ],
+					"text" : "/rate 3.\n/bpm 180.\n/units/interval \"Seconds\"\n/units/bpm \"Beats Per Minute\"\n/units/rate \"Hertz (cycles per second)\"\n/o_init/this/patcher/name \"o.metro\"\n/o_init/this/patcher/args 1447 \"/rate\" 3 0 0 0 0 0 0 0\n/o_init/parent/patcher/name \"o.metro.maxhelp\"\n/o_init/parent/patcher/args \"#0\" \"#1\" \"#2\" \"#3\" \"#4\" \"#5\" \"#6\" \"#7\" \"#8\" \"#9\"\n/interval 0.333333\n/iteratingfunction \"$1\"",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -112,7 +125,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 133.0, 236.0, 572.0, 141.0 ],
-					"text" : "/rate 1.\n/units/interval \"Seconds\"\n/units/bpm \"Beats Per Minute\"\n/units/rate \"Hertz (cycles per second)\"\n/o_init/this/patcher/name \"o.metro\"\n/o_init/this/patcher/args 1935 0 0 0 0 0 0 0 0 0\n/o_init/parent/patcher/name \"o.metro.maxhelp\"\n/o_init/parent/patcher/args \"#0\" \"#1\" \"#2\" \"#3\" \"#4\" \"#5\" \"#6\" \"#7\" \"#8\" \"#9\"\n/interval 1.\n/bpm 60.",
+					"text" : "/rate 3.\n/bpm 180.\n/units/interval \"Seconds\"\n/units/bpm \"Beats Per Minute\"\n/units/rate \"Hertz (cycles per second)\"\n/o_init/this/patcher/name \"o.metro\"\n/o_init/this/patcher/args 1447 \"/rate\" 3 0 0 0 0 0 0 0\n/o_init/parent/patcher/name \"o.metro.maxhelp\"\n/o_init/parent/patcher/args \"#0\" \"#1\" \"#2\" \"#3\" \"#4\" \"#5\" \"#6\" \"#7\" \"#8\" \"#9\"\n/interval 0.333333",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -126,8 +139,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 147.0, 154.0, 51.0, 20.0 ],
-					"text" : "o.metro"
+					"patching_rect" : [ 147.0, 154.0, 89.0, 20.0 ],
+					"text" : "o.metro /rate 3"
 				}
 
 			}
@@ -152,10 +165,28 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-5", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-1", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-1", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-13", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-3", 1 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-5", 0 ]
 				}
 
 			}
@@ -229,6 +260,13 @@
 			}
 , 			{
 				"name" : "o.arguments.maxpat",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions",
+				"patcherrelativepath" : "..",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "o.iterate.expr.maxpat",
 				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions",
 				"patcherrelativepath" : "..",
 				"type" : "JSON",
