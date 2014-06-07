@@ -46,13 +46,13 @@
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"id" : "obj-3",
-					"linecount" : 11,
+					"linecount" : 12,
 					"maxclass" : "o.message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 165.0, 442.0, 467.0, 154.0 ],
-					"text" : "/rate 3.\n/bpm 180.\n/units/interval \"Seconds\"\n/units/bpm \"Beats Per Minute\"\n/units/rate \"Hertz (cycles per second)\"\n/o_init/this/patcher/name \"o.metro\"\n/o_init/this/patcher/args 1447 \"/rate\" 3 0 0 0 0 0 0 0\n/o_init/parent/patcher/name \"o.metro.maxhelp\"\n/o_init/parent/patcher/args \"#0\" \"#1\" \"#2\" \"#3\" \"#4\" \"#5\" \"#6\" \"#7\" \"#8\" \"#9\"\n/interval 0.333333\n/iteratingfunction \"$1\"",
+					"patching_rect" : [ 165.0, 442.0, 467.0, 167.0 ],
+					"text" : "/rate 3.\n/bpm 180.\n/units/interval \"Seconds\"\n/units/bpm \"Beats Per Minute\"\n/units/rate \"Hertz (cycles per second)\"\n/o_init/this/patcher/name \"o.metro\"\n/o_init/this/patcher/args 1534 \"/rate\" 3 0 0 0 0 0 0 0\n/o_init/parent/patcher/name \"o.metro.maxhelp\"\n/o_init/parent/patcher/args \"#0\" \"#1\" \"#2\" \"#3\" \"#4\" \"#5\" \"#6\" \"#7\" \"#8\" \"#9\"\n/interval 0.333333\n/iteratingfunction \"/count = (/count??0) + 1\"\n/count 1477",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -125,7 +125,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 133.0, 236.0, 572.0, 141.0 ],
-					"text" : "/rate 3.\n/bpm 180.\n/units/interval \"Seconds\"\n/units/bpm \"Beats Per Minute\"\n/units/rate \"Hertz (cycles per second)\"\n/o_init/this/patcher/name \"o.metro\"\n/o_init/this/patcher/args 1447 \"/rate\" 3 0 0 0 0 0 0 0\n/o_init/parent/patcher/name \"o.metro.maxhelp\"\n/o_init/parent/patcher/args \"#0\" \"#1\" \"#2\" \"#3\" \"#4\" \"#5\" \"#6\" \"#7\" \"#8\" \"#9\"\n/interval 0.333333",
+					"text" : "/rate 3.\n/bpm 180.\n/units/interval \"Seconds\"\n/units/bpm \"Beats Per Minute\"\n/units/rate \"Hertz (cycles per second)\"\n/o_init/this/patcher/name \"o.metro\"\n/o_init/this/patcher/args 1534 \"/rate\" 3 0 0 0 0 0 0 0\n/o_init/parent/patcher/name \"o.metro.maxhelp\"\n/o_init/parent/patcher/args \"#0\" \"#1\" \"#2\" \"#3\" \"#4\" \"#5\" \"#6\" \"#7\" \"#8\" \"#9\"\n/interval 0.333333",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
