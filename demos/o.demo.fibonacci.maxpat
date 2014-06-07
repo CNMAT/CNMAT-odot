@@ -4,11 +4,11 @@
 		"appversion" : 		{
 			"major" : 6,
 			"minor" : 1,
-			"revision" : 3,
+			"revision" : 6,
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 65.0, 45.0, 1434.0, 753.0 ],
+		"rect" : [ 6.0, 45.0, 1434.0, 753.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 20.0,
@@ -33,12 +33,11 @@
 					"fontsize" : 20.0,
 					"frgb" : 0.0,
 					"id" : "obj-8",
-					"linecount" : 3,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 29.0, 21.0, 200.0, 74.0 ],
-					"text" : "o.demo.fibonacci\n\nAdrian Freed"
+					"patching_rect" : [ 29.0, 21.0, 200.0, 29.0 ],
+					"text" : "o.demo.fibonacci"
 				}
 
 			}
@@ -68,7 +67,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 693.0, 570.0, 350.0, 96.0 ],
-					"text" : "/state 144 89 55 34 21 13 8 5 3 2 1 1 0 \n/function \"/state=[/state[[1]] + /state[[0]],/state ]\" \n/phi 1.61798 \n",
+					"text" : "/state 144 89 55 34 21 13 8 5 3 2 1 1 0\n/function \"/state=[/state[[1]] + /state[[0]],/state ]\"\n/phi 1.61798",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -141,7 +140,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 787.0, 196.0, 438.0, 51.0 ],
-					"text" : "/state 1 0 \n/function \"/state=[sum(/state[[0,1]]),/state ]\" ",
+					"text" : "/state 1 0\n/function \"/state=[sum(/state[[0,1]]),/state ]\"",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -157,7 +156,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 784.0, 128.0, 448.0, 51.0 ],
-					"text" : "/state 1 0 \n/function \"/state=[/state[[1]] + /state[[0]],/state ]\" ",
+					"text" : "/state 1 0\n/function \"/state=[/state[[1]] + /state[[0]],/state ]\"",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -184,7 +183,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 258.0, 511.0, 287.0, 96.0 ],
-					"text" : "/state 144 89 55 34 21 13 8 5 3 2 1 1 0 \n/function \"/state=[/state[[1]] + /state[[0]],/state ]\" \n",
+					"text" : "/state 144 89 55 34 21 13 8 5 3 2 1 1 0\n/function \"/state=[/state[[1]] + /state[[0]],/state ]\"",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -214,7 +213,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 236.0, 122.0, 398.0, 51.0 ],
-					"text" : "/state 0 1 \n/function \"/state=[sum(/state),first(/state) ]\" ",
+					"text" : "/state 0 1\n/function \"/state=[sum(/state),first(/state) ]\"",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 

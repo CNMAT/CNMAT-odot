@@ -111,21 +111,6 @@
 , 			{
 				"box" : 				{
 					"fontname" : "Arial",
-					"fontsize" : 40.0,
-					"frgb" : 0.0,
-					"id" : "obj-22",
-					"linecount" : 3,
-					"maxclass" : "comment",
-					"numinlets" : 1,
-					"numoutlets" : 0,
-					"patching_rect" : [ 999.580933, 560.351013, 845.0, 141.0 ],
-					"text" : "Recurrences\n\nAdrian Freed"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontname" : "Arial",
 					"fontsize" : 20.0,
 					"frgb" : 0.0,
 					"id" : "obj-18",
@@ -463,13 +448,13 @@
 					"fontname" : "Arial",
 					"fontsize" : 20.0,
 					"id" : "obj-2",
-					"linecount" : 6,
+					"linecount" : 2,
 					"maxclass" : "o.message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 138.091003, 597.534119, 531.0, 141.0 ],
-					"text" : "/cuberoot 3\n/argument 27\n/power4root 1\n/function \"/power4root = sqrt(sqrt(/power4root)) ; /cuberoot = /cuberoot * /power4root ; /until = (/power4root==1)\"\n/until false",
+					"patching_rect" : [ 138.091003, 597.534119, 531.0, 51.0 ],
+					"text" : "/state 2 1\n/function \"/state=[sum(/state),first(/state) ]\"",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
