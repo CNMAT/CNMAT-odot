@@ -8,7 +8,7 @@
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 46.0, 249.0, 640.0, 480.0 ],
+		"rect" : [ 194.0, 90.0, 818.0, 601.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -28,6 +28,23 @@
 		"digest" : "",
 		"tags" : "",
 		"boxes" : [ 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-3",
+					"linecount" : 10,
+					"maxclass" : "o.message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 165.0, 442.0, 467.0, 141.0 ],
+					"presentation_rect" : [ 165.0, 442.0, 0.0, 0.0 ],
+					"text" : "/rate 1.\n/units/interval \"Seconds\"\n/units/bpm \"Beats Per Minute\"\n/units/rate \"Hertz (cycles per second)\"\n/o_init/this/patcher/name \"o.metro\"\n/o_init/this/patcher/args 1868 0 0 0 0 0 0 0 0 0\n/o_init/parent/patcher/name \"o.metro.maxhelp\"\n/o_init/parent/patcher/args \"#0\" \"#1\" \"#2\" \"#3\" \"#4\" \"#5\" \"#6\" \"#7\" \"#8\" \"#9\"\n/interval 1.\n/bpm 60.",
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
@@ -80,7 +97,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 152.0, 242.0, 20.0, 20.0 ]
+					"patching_rect" : [ 148.0, 195.0, 20.0, 20.0 ]
 				}
 
 			}
@@ -89,13 +106,13 @@
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"id" : "obj-2",
-					"linecount" : 6,
+					"linecount" : 10,
 					"maxclass" : "o.message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 161.0, 280.0, 354.0, 87.0 ],
-					"text" : "/rate 1.\n/units/interval \"Seconds\"\n/units/bpm \"Beats Per Minute\"\n/units/rate \"Hertz (cycles per second)\"\n/interval 1.\n/bpm 60.",
+					"patching_rect" : [ 133.0, 236.0, 572.0, 141.0 ],
+					"text" : "/rate 1.\n/units/interval \"Seconds\"\n/units/bpm \"Beats Per Minute\"\n/units/rate \"Hertz (cycles per second)\"\n/o_init/this/patcher/name \"o.metro\"\n/o_init/this/patcher/args 1935 0 0 0 0 0 0 0 0 0\n/o_init/parent/patcher/name \"o.metro.maxhelp\"\n/o_init/parent/patcher/args \"#0\" \"#1\" \"#2\" \"#3\" \"#4\" \"#5\" \"#6\" \"#7\" \"#8\" \"#9\"\n/interval 1.\n/bpm 60.",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -109,8 +126,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 147.0, 154.0, 99.0, 20.0 ],
-					"text" : "o.metro /rate 0.5"
+					"patching_rect" : [ 147.0, 154.0, 51.0, 20.0 ],
+					"text" : "o.metro"
 				}
 
 			}
@@ -267,10 +284,6 @@
 			}
 , 			{
 				"name" : "o.message.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "OpenSoundControl.mxo",
 				"type" : "iLaX"
 			}
  ]
