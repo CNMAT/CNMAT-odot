@@ -29,15 +29,12 @@
 		"tags" : "",
 		"boxes" : [ 			{
 				"box" : 				{
-					"fontname" : "Arial",
-					"fontsize" : 12.0,
-					"id" : "obj-8",
-					"maxclass" : "newobj",
+					"id" : "obj-12",
+					"maxclass" : "button",
 					"numinlets" : 1,
 					"numoutlets" : 1,
-					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 72.0, 477.0, 105.0, 20.0 ],
-					"text" : "o.pack /displaylist"
+					"outlettype" : [ "bang" ],
+					"patching_rect" : [ 37.0, 218.0, 20.0, 20.0 ]
 				}
 
 			}
@@ -45,14 +42,13 @@
 				"box" : 				{
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
-					"frgb" : 0.0,
-					"id" : "obj-20",
-					"linecount" : 2,
-					"maxclass" : "comment",
+					"id" : "obj-8",
+					"maxclass" : "newobj",
 					"numinlets" : 1,
-					"numoutlets" : 0,
-					"patching_rect" : [ 24.0, 20.0, 150.0, 33.0 ],
-					"text" : "Adrian Freed\n2013"
+					"numoutlets" : 1,
+					"outlettype" : [ "FullPacket" ],
+					"patching_rect" : [ 37.0, 415.0, 105.0, 20.0 ],
+					"text" : "o.pack /displaylist"
 				}
 
 			}
@@ -65,7 +61,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 163.0, 93.0, 288.0, 20.0 ],
+					"patching_rect" : [ 163.0, 93.0, 317.0, 20.0 ],
 					"text" : "o.if bound( /bound/lower ) && bound( /bound/upper )"
 				}
 
@@ -348,7 +344,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 49.0, 555.0, 116.0, 20.0 ],
+					"patching_rect" : [ 36.0, 457.0, 116.0, 20.0 ],
 					"text" : "o.io.gl o.demo.pong"
 				}
 
@@ -361,7 +357,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 36.0, 213.0, 41.0, 32.0 ]
+					"patching_rect" : [ 36.0, 177.0, 41.0, 32.0 ]
 				}
 
 			}
@@ -372,10 +368,10 @@
 					"id" : "obj-6",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
-					"numoutlets" : 2,
-					"outlettype" : [ "bang", "FullPacket" ],
-					"patching_rect" : [ 52.0, 185.0, 117.0, 20.0 ],
-					"text" : "o.foreveryoung 0.05"
+					"numoutlets" : 1,
+					"outlettype" : [ "FullPacket" ],
+					"patching_rect" : [ 48.0, 134.0, 95.0, 20.0 ],
+					"text" : "o.metro /rate 20"
 				}
 
 			}
@@ -420,7 +416,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 36.0, 251.5, 285.0, 74.0 ],
-					"text" : "/ball/position 0.35 0.075 0.455\n/ball/step 0.07 -0.025 -0.035\n/ball/reflected false false false\n/bound/lower -0.5 -0.5 -0.5\n/bound/upper 0.5 0.5 0.5",
+					"text" : "/ball/position -0.28 -0.5 -0.35\n/ball/step 0.07 0.025 -0.035\n/ball/reflected false true false\n/bound/lower -0.5 -0.5 -0.5\n/bound/upper 0.5 0.5 0.5",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -432,6 +428,15 @@
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-1", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-3", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-12", 0 ]
 				}
 
 			}
@@ -519,7 +524,7 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-3", 0 ],
+					"destination" : [ "obj-12", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-5", 0 ]
@@ -546,9 +551,58 @@
 			}
  ],
 		"dependency_cache" : [ 			{
-				"name" : "o.foreveryoung.maxpat",
+				"name" : "o.metro.maxpat",
 				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions/time",
 				"patcherrelativepath" : "../abstractions/time",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "o.in.maxpat",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions/core",
+				"patcherrelativepath" : "../abstractions/core",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "o.port.maxpat",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions/core",
+				"patcherrelativepath" : "../abstractions/core",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "o.aspect.joinpoint.maxpat",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/experimental/aspect",
+				"patcherrelativepath" : "../experimental/aspect",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "o.init.maxpat",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions/core",
+				"patcherrelativepath" : "../abstractions/core",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "o.righttoleft.maxpat",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions/core",
+				"patcherrelativepath" : "../abstractions/core",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "o.out.maxpat",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions/core",
+				"patcherrelativepath" : "../abstractions/core",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "o.arguments.maxpat",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions",
+				"patcherrelativepath" : "../abstractions",
 				"type" : "JSON",
 				"implicit" : 1
 			}
@@ -575,8 +629,15 @@
 			}
 , 			{
 				"name" : "o.oscbundle.maxpat",
-				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions",
-				"patcherrelativepath" : "../abstractions",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/experimental",
+				"patcherrelativepath" : "../experimental",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "o.io.gltexthelper.maxpat",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions/io/graphics",
+				"patcherrelativepath" : "../abstractions/io/graphics",
 				"type" : "JSON",
 				"implicit" : 1
 			}
@@ -585,23 +646,7 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "o.route.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.iterate.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.cond.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.union.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.expr.mxo",
+				"name" : "o.var.mxo",
 				"type" : "iLaX"
 			}
 , 			{
@@ -609,7 +654,47 @@
 				"type" : "iLaX"
 			}
 , 			{
+				"name" : "o.expr.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.pack.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.union.mxo",
+				"type" : "iLaX"
+			}
+, 			{
 				"name" : "o.select.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.context.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.collect.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.route.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.pak.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.prepend.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.cond.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.iterate.mxo",
 				"type" : "iLaX"
 			}
 , 			{
@@ -617,11 +702,7 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "o.var.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.pack.mxo",
+				"name" : "o.print.mxo",
 				"type" : "iLaX"
 			}
  ]

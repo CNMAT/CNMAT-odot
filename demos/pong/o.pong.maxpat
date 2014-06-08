@@ -134,7 +134,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 507.0, 154.0, 264.0, 288.0 ],
-					"text" : "/was/now 2014-05-27T07:25:54.517583Z\n/was/ball/velocity -1.6 2.04\n/ball/position 0.356709 -0.529803\n/ball/rate 0.4 0.51\n/bat/left -0.95 0.\n/bat/right 0.95 0.\n/bat/halfheight 0.15\n/ball/left/direction 1 1\n/ball/right/direction 1 1\n/ball/left/phase 40.8407 0\n/ball/right/phase 94.2478 0\n/range/ball/position -1 1\n/range/bats/position -1 1\n/game/start false\n/holdoff 2014-05-27T07:25:52.971519Z\n/start/time 2014-05-27T07:25:00.398910Z\n/hold 2014-05-27T07:25:54.254230Z\n/now 2014-05-27T07:25:54.550967Z\n/ball/velocity -1.6 2.04\n/ball/acceleration 1.35285e-11 6.02597e-12\n/bounce false false\n",
+					"text" : "/was/now 2014-06-08T06:08:34.714473Z\n/was/ball/velocity 1.6 -2.04\n/ball/position -0.494644 -0.444329\n/ball/rate 0.4 0.51\n/bat/left -0.95 0.\n/bat/right 0.95 0.\n/bat/halfheight 0.15\n/ball/left/direction -1 1\n/ball/right/direction -1 1\n/ball/left/phase 273.319 0\n/ball/right/phase 684.867 0\n/range/ball/position -1 1\n/range/bats/position -1 1\n/game/start false\n/holdoff 2014-06-08T06:08:34.563763Z\n/start/time 2014-06-08T06:01:34.447657Z\n/hold 2014-06-08T06:08:25.812780Z\n/now 2014-06-08T06:08:34.763504Z\n/ball/velocity 1.6 -2.04\n/ball/acceleration 2.37758e-12 2.44551e-13\n/bounce false false\n",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -298,97 +298,125 @@
 		"dependency_cache" : [ 			{
 				"name" : "o.io.gl.maxpat",
 				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions/io/graphics",
-				"patcherrelativepath" : "../../../abstractions/io/graphics",
+				"patcherrelativepath" : "../../abstractions/io/graphics",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.io.gl.platohelper.maxpat",
 				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions/io/graphics",
-				"patcherrelativepath" : "../../../abstractions/io/graphics",
+				"patcherrelativepath" : "../../abstractions/io/graphics",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.listiter.maxpat",
 				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions/programming",
-				"patcherrelativepath" : "../../../abstractions/programming",
+				"patcherrelativepath" : "../../abstractions/programming",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.oscbundle.maxpat",
-				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions",
-				"patcherrelativepath" : "../../../abstractions",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/experimental",
+				"patcherrelativepath" : "../../experimental",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.io.gltexthelper.maxpat",
 				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions/io/graphics",
-				"patcherrelativepath" : "../../../abstractions/io/graphics",
+				"patcherrelativepath" : "../../abstractions/io/graphics",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.out.maxpat",
-				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions",
-				"patcherrelativepath" : "../../../abstractions",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions/core",
+				"patcherrelativepath" : "../../abstractions/core",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.port.maxpat",
-				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions",
-				"patcherrelativepath" : "../../../abstractions",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions/core",
+				"patcherrelativepath" : "../../abstractions/core",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.aspect.joinpoint.maxpat",
-				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions/aspect",
-				"patcherrelativepath" : "../../../abstractions/aspect",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/experimental/aspect",
+				"patcherrelativepath" : "../../experimental/aspect",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.pong.bats.maxpat",
-				"bootpath" : "/Users/adrian2013/CNMAT-odot/testing/demos/pong",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/demos/pong",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.in.maxpat",
-				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions",
-				"patcherrelativepath" : "../../../abstractions",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions/core",
+				"patcherrelativepath" : "../../abstractions/core",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.pong.engine.maxpat",
-				"bootpath" : "/Users/adrian2013/CNMAT-odot/testing/demos/pong",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/demos/pong",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "o.remember.maxpat",
+				"name" : "o.righttoleft.maxpat",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions/core",
+				"patcherrelativepath" : "../../abstractions/core",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "o.metro.maxpat",
 				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions/time",
-				"patcherrelativepath" : "../../../abstractions/time",
+				"patcherrelativepath" : "../../abstractions/time",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "o.init.maxpat",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions/core",
+				"patcherrelativepath" : "../../abstractions/core",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "o.arguments.maxpat",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions",
+				"patcherrelativepath" : "../../abstractions",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "o.was.maxpat",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions/time",
+				"patcherrelativepath" : "../../abstractions/time",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.pong.visualize.maxpat",
-				"bootpath" : "/Users/adrian2013/CNMAT-odot/testing/demos/pong",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/demos/pong",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.pong.sonify.maxpat",
-				"bootpath" : "/Users/adrian2013/CNMAT-odot/testing/demos/pong",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/demos/pong",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
@@ -396,21 +424,21 @@
 , 			{
 				"name" : "v.sdif.resonance.maxpat",
 				"bootpath" : "/Users/adrian2013/Documents/Max/Packages/CompletelyUnfinished/patchers",
-				"patcherrelativepath" : "../../../../Documents/Max/Packages/CompletelyUnfinished/patchers",
+				"patcherrelativepath" : "../../../Documents/Max/Packages/CompletelyUnfinished/patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "c.parentsize.js",
 				"bootpath" : "/Users/adrian2013/Documents/Max/Packages/vdot/javascript",
-				"patcherrelativepath" : "../../../../Documents/Max/Packages/vdot/javascript",
+				"patcherrelativepath" : "../../../Documents/Max/Packages/vdot/javascript",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.restransformmap.maxpat",
 				"bootpath" : "/Users/adrian2013/Documents/Max/Packages/CompletelyUnfinished/patchers",
-				"patcherrelativepath" : "../../../../Documents/Max/Packages/CompletelyUnfinished/patchers",
+				"patcherrelativepath" : "../../../Documents/Max/Packages/CompletelyUnfinished/patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}

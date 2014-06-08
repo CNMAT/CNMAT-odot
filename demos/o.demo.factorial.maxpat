@@ -4,11 +4,11 @@
 		"appversion" : 		{
 			"major" : 6,
 			"minor" : 1,
-			"revision" : 3,
+			"revision" : 6,
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 57.0, 44.0, 1280.0, 667.0 ],
+		"rect" : [ 57.0, 44.0, 787.0, 779.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 20.0,
@@ -38,7 +38,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 404.973145, 574.0, 157.0, 67.0 ],
-					"text" : "/n 4 7 2 \n/n/factorial 1 \n/n/n 4 7 2 ",
+					"text" : "/n 4 7 2\n/n/factorial 1\n/n/n 4 7 2",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -53,72 +53,8 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 273.973145, 430.0, 157.0, 27.0 ],
-					"text" : "/n 6 ",
+					"text" : "/n 6",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontname" : "Arial",
-					"fontsize" : 20.0,
-					"frgb" : 0.0,
-					"id" : "obj-31",
-					"maxclass" : "comment",
-					"numinlets" : 1,
-					"numoutlets" : 0,
-					"patching_rect" : [ 951.0, 573.0, 150.0, 29.0 ],
-					"text" : "tracing"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-25",
-					"maxclass" : "button",
-					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 895.0, 565.0, 20.0, 20.0 ]
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontname" : "Arial",
-					"fontsize" : 20.0,
-					"id" : "obj-27",
-					"maxclass" : "newobj",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 894.0, 606.0, 257.0, 29.0 ],
-					"text" : "o.pack /a 5 7 4 /verbose 1"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-23",
-					"maxclass" : "button",
-					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 716.0, 561.0, 20.0, 20.0 ]
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontname" : "Arial",
-					"fontsize" : 20.0,
-					"id" : "obj-21",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 715.0, 602.0, 158.0, 29.0 ],
-					"text" : "o.pack /a 5 7 4"
 				}
 
 			}
@@ -133,7 +69,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 40.973145, 726.0, 290.0, 47.0 ],
-					"text" : "/n 4 7 2 \n/n/factorial 0 5040 0 ",
+					"text" : "/n 4 7 2\n/n/factorial 0 5040 0",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -196,46 +132,6 @@
 			}
 , 			{
 				"box" : 				{
-					"id" : "obj-50",
-					"maxclass" : "button",
-					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 623.0, 555.0, 20.0, 20.0 ]
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontname" : "Arial",
-					"fontsize" : 20.0,
-					"id" : "obj-48",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 584.0, 611.0, 111.0, 29.0 ],
-					"text" : "o.expr /a=4"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontname" : "Arial",
-					"fontsize" : 20.0,
-					"frgb" : 0.0,
-					"id" : "obj-47",
-					"linecount" : 3,
-					"maxclass" : "comment",
-					"numinlets" : 1,
-					"numoutlets" : 0,
-					"patching_rect" : [ 669.0, 468.0, 380.0, 74.0 ],
-					"text" : "You can signal the OSC address to compute from using an abstraction to wrap the core recursion like this:"
-				}
-
-			}
-, 			{
-				"box" : 				{
 					"fontname" : "Arial",
 					"fontsize" : 20.0,
 					"frgb" : 0.0,
@@ -244,38 +140,8 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 7.0, 481.0, 555.0, 51.0 ],
+					"patching_rect" : [ 224.0, 478.0, 362.0, 51.0 ],
 					"text" : "We can create a temporary variable so\nas to leave /n untouched:\n"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontname" : "Arial",
-					"fontsize" : 18.0,
-					"id" : "obj-43",
-					"linecount" : 2,
-					"maxclass" : "o.message",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 641.973145, 696.0, 553.0, 47.0 ],
-					"text" : "/a 1 5 7 4 \n/a/factorial 1 5 7 4 ",
-					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontname" : "Arial",
-					"fontsize" : 20.0,
-					"id" : "obj-42",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 584.0, 648.0, 202.0, 29.0 ],
-					"text" : "o.template.factorial /a"
 				}
 
 			}
@@ -474,7 +340,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 40.973145, 408.0, 157.0, 67.0 ],
-					"text" : "/n -3 0 -5 \n/n/factorial 0 5040 0 ",
+					"text" : "/n -3 0 -5\n/n/factorial 0 5040 0",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -517,7 +383,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 398.0, 230.0, 188.0, 107.0 ],
+					"patching_rect" : [ 400.0, 249.0, 188.0, 107.0 ],
 					"text" : "OSC messages without /n or outside numerical bounds are passed through.\n\n"
 				}
 
@@ -528,12 +394,12 @@
 					"fontsize" : 18.0,
 					"frgb" : 0.0,
 					"id" : "obj-12",
-					"linecount" : 5,
+					"linecount" : 3,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 467.0, 11.0, 405.0, 107.0 ],
-					"text" : "This tutorial illustrates some classical defensive programming practices with o. using the factorial function as an example.\n\nAdrian Freed 2011 "
+					"patching_rect" : [ 432.0, 111.0, 407.0, 67.0 ],
+					"text" : "This  illustrates some defensive programming practices with o. using the factorial function as an example."
 				}
 
 			}
@@ -649,6 +515,7 @@
 					"destination" : [ "obj-1", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
+					"midpoints" : [ 34.5, 165.0, 94.473137, 165.0 ],
 					"source" : [ "obj-10", 0 ]
 				}
 
@@ -676,6 +543,7 @@
 					"destination" : [ "obj-1", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
+					"midpoints" : [ 239.5, 150.0, 231.0, 150.0, 231.0, 165.0, 94.473137, 165.0 ],
 					"source" : [ "obj-17", 0 ]
 				}
 
@@ -700,28 +568,10 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-42", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"source" : [ "obj-21", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
 					"destination" : [ "obj-1", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-22", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-21", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"source" : [ "obj-23", 0 ]
 				}
 
 			}
@@ -736,36 +586,20 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-27", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"source" : [ "obj-25", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
 					"destination" : [ "obj-1", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
+					"midpoints" : [ 230.5, 108.0, 102.0, 108.0, 102.0, 165.0, 94.473137, 165.0 ],
 					"source" : [ "obj-26", 0 ]
 				}
 
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-42", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"source" : [ "obj-27", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
 					"destination" : [ "obj-1", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
+					"midpoints" : [ 171.5, 165.0, 94.473137, 165.0 ],
 					"source" : [ "obj-28", 0 ]
 				}
 
@@ -775,6 +609,7 @@
 					"destination" : [ "obj-1", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
+					"midpoints" : [ 166.5, 54.0, 159.0, 54.0, 159.0, 165.0, 94.473137, 165.0 ],
 					"source" : [ "obj-29", 0 ]
 				}
 
@@ -794,6 +629,7 @@
 					"destination" : [ "obj-1", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
+					"midpoints" : [ 279.5, 108.0, 102.0, 108.0, 102.0, 165.0, 94.473137, 165.0 ],
 					"source" : [ "obj-32", 0 ]
 				}
 
@@ -854,36 +690,10 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-43", 1 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"source" : [ "obj-42", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-42", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"source" : [ "obj-48", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-48", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"source" : [ "obj-50", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
 					"destination" : [ "obj-1", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
+					"midpoints" : [ 70.5, 165.0, 94.473137, 165.0 ],
 					"source" : [ "obj-6", 0 ]
 				}
 
@@ -927,13 +737,6 @@
 			}
  ],
 		"dependency_cache" : [ 			{
-				"name" : "o.template.factorial.maxpat",
-				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions",
-				"patcherrelativepath" : "../abstractions",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
 				"name" : "o.pack.mxo",
 				"type" : "iLaX"
 			}
@@ -951,10 +754,6 @@
 			}
 , 			{
 				"name" : "o.route.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.print.mxo",
 				"type" : "iLaX"
 			}
  ]

@@ -4,11 +4,11 @@
 		"appversion" : 		{
 			"major" : 6,
 			"minor" : 1,
-			"revision" : 3,
+			"revision" : 6,
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ -17.0, 128.0, 965.0, 489.0 ],
+		"rect" : [ 0.0, 128.0, 965.0, 489.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -36,8 +36,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 168.0, 84.0, 179.0, 20.0 ],
-					"text" : "o.remember /horizontal /vertical"
+					"patching_rect" : [ 168.0, 84.0, 145.0, 20.0 ],
+					"text" : "o.was /horizontal /vertical"
 				}
 
 			}
@@ -65,8 +65,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 167.0, 163.0, 111.0, 20.0 ],
-					"text" : "o.remember /angle"
+					"patching_rect" : [ 167.0, 163.0, 78.0, 20.0 ],
+					"text" : "o.was /angle"
 				}
 
 			}
@@ -81,8 +81,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 39.0, 280.0, 150.0, 194.0 ],
-					"presentation_rect" : [ 267.0, 304.0, 0.0, 0.0 ],
-					"text" : "/was/angle 0. \n/was/horizontal 712 \n/was/vertical 213 \n/horizontal 712 \n/vertical 213 \n/shift \"up\" \n/capslock \"up\" \n/option \"up\" \n/control \"up\" \n/command \"down\" \n/button/is \"up\" \n/angle 0. \n/angle/difference 0. \n/direction \"still\" \n",
+					"text" : "/was/angle 0.\n/was/horizontal 412\n/was/vertical 265\n/horizontal 412\n/vertical 265\n/shift \"up\"\n/capslock \"up\"\n/option \"up\"\n/control \"up\"\n/command \"down\"\n/button/is \"up\"\n/angle 0.\n/angle/difference 0.\n/direction \"still\"",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -109,7 +108,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 0,
 					"numoutlets" : 1,
-					"outlettype" : [ "" ],
+					"outlettype" : [ "FullPacket" ],
 					"patching_rect" : [ 168.0, 55.0, 69.0, 20.0 ],
 					"text" : "o.io.mouse"
 				}
@@ -164,15 +163,36 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "o.io.mouse.maxpat",
-				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions",
-				"patcherrelativepath" : "../abstractions",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions/io",
+				"patcherrelativepath" : "../abstractions/io",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "o.remember.maxpat",
-				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions",
-				"patcherrelativepath" : "../abstractions",
+				"name" : "o.out.maxpat",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions/core",
+				"patcherrelativepath" : "../abstractions/core",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "o.port.maxpat",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions/core",
+				"patcherrelativepath" : "../abstractions/core",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "o.aspect.joinpoint.maxpat",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/experimental/aspect",
+				"patcherrelativepath" : "../experimental/aspect",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "o.was.maxpat",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions/time",
+				"patcherrelativepath" : "../abstractions/time",
 				"type" : "JSON",
 				"implicit" : 1
 			}
@@ -193,11 +213,39 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "o.expr.mxo",
+				"name" : "o.if.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.union.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.select.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.context.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.route.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.pak.mxo",
 				"type" : "iLaX"
 			}
 , 			{
 				"name" : "o.prepend.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.cond.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.expr.mxo",
 				"type" : "iLaX"
 			}
 , 			{
