@@ -31,6 +31,65 @@
 				"box" : 				{
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
+					"id" : "obj-10",
+					"linecount" : 5,
+					"maxclass" : "o.message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 247.0, 350.0, 309.0, 74.0 ],
+					"presentation_rect" : [ 247.0, 368.0, 0.0, 0.0 ],
+					"text" : "/was/time 2014-06-08T03:54:52.837356Z\n/persecond 5\n/mu 0.2\n/time 2014-06-08T03:54:53.051337Z\n/interval 0.213982\n",
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-9",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "FullPacket" ],
+					"patching_rect" : [ 248.0, 302.0, 190.0, 20.0 ],
+					"text" : "o.expr /interval = /time - /was/time"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-8",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 248.0, 270.0, 71.0, 20.0 ],
+					"text" : "o.was /time"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-7",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 248.0, 238.0, 89.0, 20.0 ],
+					"text" : "o.timetag /time"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
 					"id" : "obj-4",
 					"maxclass" : "o.message",
 					"numinlets" : 2,
@@ -149,6 +208,15 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-7", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-1", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-1", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
@@ -174,10 +242,37 @@
 				}
 
 			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-8", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-7", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-9", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-8", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-10", 1 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-9", 0 ]
+				}
+
+			}
  ],
 		"dependency_cache" : [ 			{
 				"name" : "o.poissonprocess.maxpat",
-				"bootpath" : "/Users/adrian2013/CNMAT-odot/experimental/time",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions/time",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
@@ -185,42 +280,56 @@
 , 			{
 				"name" : "o.uniform.maxpat",
 				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions",
-				"patcherrelativepath" : "../../abstractions",
+				"patcherrelativepath" : "..",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.righttoleft.maxpat",
 				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions/core",
-				"patcherrelativepath" : "../../abstractions/core",
+				"patcherrelativepath" : "../core",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.in.maxpat",
 				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions/core",
-				"patcherrelativepath" : "../../abstractions/core",
+				"patcherrelativepath" : "../core",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.port.maxpat",
 				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions/core",
-				"patcherrelativepath" : "../../abstractions/core",
+				"patcherrelativepath" : "../core",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.aspect.joinpoint.maxpat",
 				"bootpath" : "/Users/adrian2013/CNMAT-odot/experimental/aspect",
-				"patcherrelativepath" : "../aspect",
+				"patcherrelativepath" : "../../experimental/aspect",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.out.maxpat",
 				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions/core",
-				"patcherrelativepath" : "../../abstractions/core",
+				"patcherrelativepath" : "../core",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "o.arguments.maxpat",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions",
+				"patcherrelativepath" : "..",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "o.was.maxpat",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions/time",
+				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
@@ -282,6 +391,10 @@
 			}
 , 			{
 				"name" : "o.message.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.intersection.mxo",
 				"type" : "iLaX"
 			}
  ]
