@@ -3,11 +3,12 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 6,
-			"minor" : 0,
-			"revision" : 1
+			"minor" : 1,
+			"revision" : 6,
+			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 541.0, 145.0, 744.0, 643.0 ],
+		"rect" : [ 541.0, 145.0, 470.0, 607.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 20.0,
@@ -31,14 +32,11 @@
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"id" : "obj-1",
-					"linecount" : 3,
 					"maxclass" : "o.message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 217.0, 501.0, 36.0, 48.0 ],
-					"presentation_rect" : [ 214.0, 502.0, 0.0, 0.0 ],
-					"text" : "/b 0 \n/a \n/t 0 \n",
+					"patching_rect" : [ 217.0, 501.0, 144.0, 20.0 ],
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -47,6 +45,7 @@
 				"box" : 				{
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
+					"frgb" : 0.0,
 					"id" : "obj-34",
 					"maxclass" : "comment",
 					"numinlets" : 1,
@@ -65,7 +64,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 237.0, 305.0, 47.0, 18.0 ],
+					"patching_rect" : [ 232.0, 293.0, 47.0, 18.0 ],
 					"text" : "240 54"
 				}
 
@@ -79,7 +78,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 154.0, 304.0, 34.0, 18.0 ],
+					"patching_rect" : [ 149.0, 292.0, 34.0, 18.0 ],
 					"text" : "12 9"
 				}
 
@@ -93,7 +92,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 114.0, 431.0, 182.0, 20.0 ],
+					"patching_rect" : [ 112.0, 426.0, 182.0, 20.0 ],
 					"text" : "o.expr /t = /b\\; /b = /a % /b\\; /a = /t"
 				}
 
@@ -135,7 +134,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 74.0, 304.0, 41.0, 18.0 ],
+					"patching_rect" : [ 69.0, 292.0, 41.0, 18.0 ],
 					"text" : "17 19"
 				}
 
@@ -150,8 +149,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 68.0, 334.0, 131.0, 35.0 ],
-					"text" : "/b $1 \n/a $2",
+					"patching_rect" : [ 68.0, 334.0, 131.0, 33.0 ],
+					"text" : "/b \"$1\"\n/a \"$2\"",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -165,7 +164,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 68.0, 403.0, 64.0, 20.0 ],
+					"patching_rect" : [ 68.0, 398.0, 64.0, 20.0 ],
 					"text" : "o.if /b== 0"
 				}
 
@@ -174,19 +173,7 @@
 				"box" : 				{
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
-					"id" : "obj-33",
-					"maxclass" : "comment",
-					"numinlets" : 1,
-					"numoutlets" : 0,
-					"patching_rect" : [ 363.0, 68.0, 150.0, 20.0 ],
-					"text" : "Adrian Freed 2011"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontname" : "Arial",
-					"fontsize" : 12.0,
+					"frgb" : 0.0,
 					"id" : "obj-11",
 					"maxclass" : "comment",
 					"numinlets" : 1,
@@ -369,7 +356,7 @@
 					"destination" : [ "obj-39", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"midpoints" : [ 123.5, 466.0, 353.0, 466.0, 353.0, 382.0, 77.5, 382.0 ],
+					"midpoints" : [ 121.5, 461.0, 308.0, 461.0, 308.0, 387.0, 77.5, 387.0 ],
 					"source" : [ "obj-27", 0 ]
 				}
 

@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 6,
 			"minor" : 1,
-			"revision" : 3,
+			"revision" : 6,
 			"architecture" : "x86"
 		}
 ,
@@ -64,7 +64,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 119.0, 521.0, 32.5, 27.0 ],
+					"patching_rect" : [ 165.0, 509.0, 32.5, 27.0 ],
 					"text" : "1"
 				}
 
@@ -77,7 +77,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 265.0, 541.0, 41.0, 32.0 ]
+					"patching_rect" : [ 225.0, 545.0, 41.0, 32.0 ]
 				}
 
 			}
@@ -119,7 +119,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "FullPacket" ],
-					"patching_rect" : [ 307.0, 429.0, 151.0, 29.0 ],
+					"patching_rect" : [ 418.0, 409.0, 151.0, 29.0 ],
 					"text" : "o.route #1/temp"
 				}
 
@@ -160,7 +160,7 @@
 					"maxclass" : "outlet",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 224.0, 473.0, 25.0, 25.0 ]
+					"patching_rect" : [ 201.0, 469.0, 25.0, 25.0 ]
 				}
 
 			}
@@ -171,7 +171,7 @@
 					"maxclass" : "inlet",
 					"numinlets" : 0,
 					"numoutlets" : 1,
-					"outlettype" : [ "" ],
+					"outlettype" : [ "FullPacket" ],
 					"patching_rect" : [ 164.0, 72.0, 25.0, 25.0 ]
 				}
 
@@ -360,23 +360,6 @@
 					"source" : [ "obj-7", 0 ]
 				}
 
-			}
- ],
-		"dependency_cache" : [ 			{
-				"name" : "o.if.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.expr.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.route.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.print.mxo",
-				"type" : "iLaX"
 			}
  ]
 	}

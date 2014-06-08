@@ -3,8 +3,9 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 6,
-			"minor" : 0,
-			"revision" : 7
+			"minor" : 1,
+			"revision" : 6,
+			"architecture" : "x86"
 		}
 ,
 		"rect" : [ 25.0, 69.0, 778.0, 745.0 ],
@@ -121,8 +122,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 73.5, 180.0, 138.0, 20.0 ],
-					"text" : "o.remember /orientation"
+					"patching_rect" : [ 73.5, 180.0, 105.0, 20.0 ],
+					"text" : "o.was /orientation"
 				}
 
 			}
@@ -297,16 +298,16 @@
 			}
  ],
 		"dependency_cache" : [ 			{
-				"name" : "o.remember.maxpat",
-				"bootpath" : "/Users/john/MMJ5-dev/odot/abstractions",
-				"patcherrelativepath" : "../../../../../../../../MMJ5-dev/odot/abstractions",
+				"name" : "o.was.maxpat",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions/time",
+				"patcherrelativepath" : "../abstractions/time",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.callpatch.maxpat",
-				"bootpath" : "/Users/john/MMJ5-dev/odot/abstractions",
-				"patcherrelativepath" : "../../../../../../../../MMJ5-dev/odot/abstractions",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/experimental",
+				"patcherrelativepath" : "../experimental",
 				"type" : "JSON",
 				"implicit" : 1
 			}
