@@ -8,7 +8,7 @@
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 292.0, 75.0, 1440.0, 779.0 ],
+		"rect" : [ 733.0, 44.0, 1440.0, 779.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -28,6 +28,21 @@
 		"digest" : "",
 		"tags" : "",
 		"boxes" : [ 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-17",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "FullPacket" ],
+					"patching_rect" : [ 212.0, 326.0, 71.0, 20.0 ],
+					"presentation_rect" : [ 313.0, 317.0, 0.0, 0.0 ],
+					"text" : "o.uniform /r"
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
@@ -243,9 +258,9 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 1,
-					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 211.0, 313.0, 71.0, 20.0 ],
-					"text" : "o.uniform /r"
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 211.0, 302.0, 67.0, 20.0 ],
+					"text" : "trampoline"
 				}
 
 			}
@@ -258,7 +273,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 211.0, 345.0, 272.0, 20.0 ],
+					"patching_rect" : [ 211.0, 351.0, 272.0, 20.0 ],
 					"text" : "o.expr /time_to_next_event += (-1. * /mu) * log(/r)"
 				}
 
@@ -439,6 +454,15 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-7", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-17", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-21", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
@@ -529,7 +553,7 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-7", 0 ],
+					"destination" : [ "obj-17", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-3", 0 ]
@@ -710,6 +734,10 @@
 			}
 , 			{
 				"name" : "o.timetag.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "trampoline.mxo",
 				"type" : "iLaX"
 			}
  ]

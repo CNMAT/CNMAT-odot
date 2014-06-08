@@ -38,7 +38,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 247.0, 350.0, 309.0, 74.0 ],
-					"text" : "/was/time 2014-06-08T04:52:59.798783Z\n/mu 0.02\n/persecond 50.\n/time 2014-06-08T04:52:59.799099Z\n/interval 0.000316002\n",
+					"text" : "/was/time 2014-06-08T05:06:41.194360Z\n/mu 0.005\n/persecond 200.\n/time 2014-06-08T05:06:41.195142Z\n/interval 0.000782006\n",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -152,7 +152,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 44.0, 298.0, 150.0, 33.0 ],
-					"text" : "/mu 0.02\n/persecond 50.",
+					"text" : "/mu 0.005\n/persecond 200.",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -167,7 +167,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 75.0, 99.0, 150.0, 20.0 ],
-					"text" : "/mu 0.02",
+					"text" : "/mu 0.001",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -393,6 +393,10 @@
 			}
 , 			{
 				"name" : "o.timetag.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "trampoline.mxo",
 				"type" : "iLaX"
 			}
 , 			{
