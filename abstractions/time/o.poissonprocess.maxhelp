@@ -8,7 +8,7 @@
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 638.0, 305.0, 640.0, 480.0 ],
+		"rect" : [ 226.0, 141.0, 679.0, 565.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -38,8 +38,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 247.0, 350.0, 309.0, 74.0 ],
-					"presentation_rect" : [ 247.0, 368.0, 0.0, 0.0 ],
-					"text" : "/was/time 2014-06-08T03:54:52.837356Z\n/persecond 5\n/mu 0.2\n/time 2014-06-08T03:54:53.051337Z\n/interval 0.213982\n",
+					"text" : "/was/time 2014-06-08T04:52:59.798783Z\n/mu 0.02\n/persecond 50.\n/time 2014-06-08T04:52:59.799099Z\n/interval 0.000316002\n",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -153,7 +152,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 44.0, 298.0, 150.0, 33.0 ],
-					"text" : "/persecond 5\n/mu 0.2",
+					"text" : "/mu 0.02\n/persecond 50.",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -182,8 +181,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 78.0, 175.0, 104.0, 20.0 ],
-					"text" : "o.poissonprocess"
+					"patching_rect" : [ 78.0, 175.0, 147.0, 20.0 ],
+					"text" : "o.poissonprocess /mu 0.1"
 				}
 
 			}
@@ -327,6 +326,13 @@
 				"implicit" : 1
 			}
 , 			{
+				"name" : "o.init.maxpat",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions/core",
+				"patcherrelativepath" : "../core",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
 				"name" : "o.was.maxpat",
 				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions/time",
 				"patcherrelativepath" : ".",
@@ -342,15 +348,15 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "o.if.mxo",
-				"type" : "iLaX"
-			}
-, 			{
 				"name" : "o.pack.mxo",
 				"type" : "iLaX"
 			}
 , 			{
 				"name" : "o.union.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.if.mxo",
 				"type" : "iLaX"
 			}
 , 			{
