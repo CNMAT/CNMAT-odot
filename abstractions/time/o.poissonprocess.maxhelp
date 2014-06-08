@@ -88,13 +88,13 @@
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"id" : "obj-3",
-					"linecount" : 6,
+					"linecount" : 2,
 					"maxclass" : "o.message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 44.0, 298.0, 150.0, 87.0 ],
-					"text" : "/persecond 1\n/mu 1.\n/time_to_next_event 2014-06-08T02:03:15.856124Z\n/r 0.0833581\n",
+					"patching_rect" : [ 44.0, 298.0, 150.0, 33.0 ],
+					"text" : "/persecond 5\n/mu 0.2",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
