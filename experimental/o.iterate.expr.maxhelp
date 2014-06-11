@@ -8,7 +8,7 @@
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 200.0, 204.0, 640.0, 480.0 ],
+		"rect" : [ 493.0, 181.0, 640.0, 480.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -31,13 +31,26 @@
 				"box" : 				{
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
+					"id" : "obj-4",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 420.0, 309.0, 58.0, 20.0 ],
+					"text" : "expr 1+1"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
 					"id" : "obj-3",
 					"maxclass" : "o.message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 202.0, 214.0, 150.0, 20.0 ],
-					"presentation_rect" : [ 202.0, 214.0, 0.0, 0.0 ],
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -65,8 +78,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 208.0, 152.0, 342.0, 20.0 ],
-					"text" : "o.iterate.expr /pair=[sum(/pair ?? [0 \\, 1]) \\, first(/pair ?? [0 \\, 1] ) ]"
+					"patching_rect" : [ 208.0, 152.0, 329.0, 20.0 ],
+					"text" : "o.iterate.expr /pair=[sum(/pair ?? [0\\,1]) \\, first(/pair ?? [0\\, 1] )]"
 				}
 
 			}
