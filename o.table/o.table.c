@@ -62,6 +62,8 @@ VERSION 0.1: porting to pd, note: the name and key attributes are only setable o
 
 #include "o.h"
 
+#define OTABLE_MANGLE_PFX "__CNMAT_otable_name_"
+
 typedef struct _otable_db{
 	t_osc_hashtab *ht;
 	t_osc_linkedlist *ll;
@@ -80,7 +82,7 @@ typedef struct _otable{
 
 void *otable_class;
 
-
+t_otable_db *otable_makedb(void);
 void otable_destroydb(t_otable *x, t_otable_db *db);
 void otable_linkedlist_dtor(void *bndl);
 void otable_hashtab_dtor(char *key, void *data);
@@ -349,8 +351,33 @@ void otable_clear(t_otable *x)
 	x->db->bytecount = 0;
 }
 
+t_symbol *otable_mangle(t_symbol *name)
+{
+	long len = strlen(name->s_name) + strlen(OTABLE_MANGLE_PFX) + 1;
+	char buf[len];
+	snprintf(buf, len, "%s%s", OTABLE_MANGLE_PFX, name->s_name);
+	return gensym(buf);
+}
+
 void otable_refer(t_otable *x, t_symbol *msg, int argc, t_atom *argv)
 {
+	critical_enter(x->lock);
+	if(x->db){
+		otable_destroydb(x, x->db);
+		x->db = NULL;
+	}
+	t_symbol *name = atom_getsym(argv);
+	t_symbol *mangled_name = otable_mangle(name);
+	if(mangled_name->s_thing){
+		t_otable_db *db = (t_otable_db *)mangled_name->s_thing;
+		db->refcount++;
+		x->db = db;
+	}else{
+		x->db = otable_makedb();
+		mangled_name->s_thing = (void *)x->db;
+	}
+	x->name = name;
+	critical_exit(x->lock);
 }
 
 void otable_anything(t_otable *x, t_symbol *msg, int argc, t_atom *argv)
@@ -444,7 +471,6 @@ void otable_dowrite(t_otable *x, t_symbol *msg, int argc, t_atom *argv)
 		for(int i = 0; i < n; i++){
 			t_osc_bndl_s *bndl = (t_osc_bndl_s *)osc_linkedlist_peekNth(x->db->ll, i);
 			int32_t len = osc_bundle_s_getLen(bndl);
-			//printf("%d, %d\n", i, len);
 			int32_t len_n = hton32(len);
 			char *ptr = osc_bundle_s_getPtr(bndl);
 			count += fwrite(&len_n, 4, 1, f);
@@ -507,7 +533,7 @@ t_otable_db *otable_makedb(void)
 	if(db){
 		db->ht = osc_hashtab_new(-1, otable_hashtab_dtor);
 		db->ll = osc_linkedlist_new(otable_linkedlist_dtor);
-		db->refcount = 0;
+		db->refcount = 1;
 		db->keyaddress = NULL;
 		db->bytecount = 0;
 	}
@@ -517,21 +543,26 @@ t_otable_db *otable_makedb(void)
 void otable_destroydb(t_otable *x, t_otable_db *db)
 {
 	critical_enter(x->lock);
-	db->refcount--;
-	if(db->refcount == 0){
-		osc_hashtab_destroy(db->ht);
-		osc_linkedlist_destroy(db->ll);
+	if(db){
+		db->refcount--;
+		if(db->refcount == 0){
+			osc_hashtab_destroy(db->ht);
+			osc_linkedlist_destroy(db->ll);
+			t_symbol *mangled_name = otable_mangle(x->name);
+			mangled_name->s_thing = NULL;
+			osc_mem_free(db);
+		}
 	}
 	critical_exit(x->lock);
 }
 
 t_max_err otable_setName(t_otable *x, void *attr, long ac, t_atom *av)
 {
-	if(x->db){
-		critical_enter(x->lock);
+	//if(x->db){
+	//critical_enter(x->lock);
 		otable_refer(x, NULL, ac, av);
-		critical_exit(x->lock);
-	}
+		//critical_exit(x->lock);
+		//}
 	return MAX_ERR_NONE;
 }
 
@@ -721,7 +752,6 @@ void *otable_new(t_symbol *msg, short argc, t_atom *argv)
 				return NULL;
 			}
 		}
-		attr_args_process(x, argc, argv);
 	}
 		   	
 	return x;
