@@ -29,12 +29,40 @@
 		"tags" : "",
 		"boxes" : [ 			{
 				"box" : 				{
+					"fontname" : "Helvetica Neue",
+					"fontsize" : 12.0,
+					"id" : "obj-5",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "FullPacket" ],
+					"patching_rect" : [ 110.0, 316.0, 110.0, 20.0 ],
+					"text" : "o.out @name main"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Helvetica Neue",
+					"fontsize" : 12.0,
+					"id" : "obj-4",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "FullPacket" ],
+					"patching_rect" : [ 74.0, 42.0, 102.0, 20.0 ],
+					"text" : "o.in @name main"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"comment" : "",
 					"id" : "obj-17",
 					"maxclass" : "outlet",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 116.0, 300.0, 25.0, 25.0 ]
+					"patching_rect" : [ 110.0, 384.0, 25.0, 25.0 ]
 				}
 
 			}
@@ -47,8 +75,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "FullPacket" ],
-					"patching_rect" : [ 75.0, 210.0, 60.0, 20.0 ],
-					"text" : "o.route /r"
+					"patching_rect" : [ 70.0, 209.0, 65.0, 20.0 ],
+					"text" : "o.route #1"
 				}
 
 			}
@@ -130,14 +158,14 @@
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 75.0, 30.0, 25.0, 25.0 ]
+					"patching_rect" : [ 72.0, 8.0, 25.0, 25.0 ]
 				}
 
 			}
  ],
 		"lines" : [ 			{
 				"patchline" : 				{
-					"destination" : [ "obj-2", 0 ],
+					"destination" : [ "obj-4", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-1", 0 ]
@@ -164,7 +192,7 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-17", 0 ],
+					"destination" : [ "obj-5", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-15", 0 ]
@@ -207,38 +235,56 @@
 				}
 
 			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-2", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-4", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-17", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-5", 0 ]
+				}
+
+			}
  ],
 		"dependency_cache" : [ 			{
 				"name" : "o.righttoleft.maxpat",
-				"bootpath" : "/Users/ilyarostovtsev/Documents/Creative Coding/odot/CNMAT-odot/abstractions/core",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions/core",
 				"patcherrelativepath" : "./core",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.in.maxpat",
-				"bootpath" : "/Users/ilyarostovtsev/Documents/Creative Coding/odot/CNMAT-odot/abstractions/core",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions/core",
 				"patcherrelativepath" : "./core",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.port.maxpat",
-				"bootpath" : "/Users/ilyarostovtsev/Documents/Creative Coding/odot/CNMAT-odot/abstractions/core",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions/core",
 				"patcherrelativepath" : "./core",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.aspect.joinpoint.maxpat",
-				"bootpath" : "/Users/ilyarostovtsev/Documents/Max Externals/Active/CNMAT_Externals/odot/abstractions/aspect",
-				"patcherrelativepath" : "../../../../Max Externals/Active/CNMAT_Externals/odot/abstractions/aspect",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/experimental/aspect",
+				"patcherrelativepath" : "../experimental/aspect",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.out.maxpat",
-				"bootpath" : "/Users/ilyarostovtsev/Documents/Creative Coding/odot/CNMAT-odot/abstractions/core",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions/core",
 				"patcherrelativepath" : "./core",
 				"type" : "JSON",
 				"implicit" : 1
