@@ -134,14 +134,16 @@ void osched_fullPacket(t_osched *x, t_symbol *s, int argc, t_atom *argv)
 	// check for queue full condition
 	if(x->q.heap_size == x->packets_max) {
 		object_error((t_object *)x, "queue overflow");
-		outlet_anything(x->outlets[1], ps_FullPacket, 2, argv);
+		//outlet_anything(x->outlets[1], ps_FullPacket, 2, argv);
+		omax_util_outletOSC(x->outlets[1], len, ptr);
 		return;
 	}
         
 	// check for length condition
 	if(n.length >= x->packet_size) {
 		object_error((t_object *)x, "packet length %d exceeds maximum", n.length);
-		outlet_anything(x->outlets[1], ps_FullPacket, 2, argv);
+		//outlet_anything(x->outlets[1], ps_FullPacket, 2, argv);
+		omax_util_outletOSC(x->outlets[1], len, ptr);
 		return;
 	}
         
@@ -149,7 +151,8 @@ void osched_fullPacket(t_osched *x, t_symbol *s, int argc, t_atom *argv)
 	if(strcmp(bndl, "#bundle") != 0) {
 		// not a bundle, send it out the 2nd outlet
 		object_error((t_object *)x, "OSC-schedule: input is not a bundle");
-		outlet_anything(x->outlets[1], ps_FullPacket, argc, argv);
+		//outlet_anything(x->outlets[1], ps_FullPacket, argc, argv);
+		omax_util_outletOSC(x->outlets[1], len, ptr);
 		return;
 	}
         
@@ -163,7 +166,8 @@ void osched_fullPacket(t_osched *x, t_symbol *s, int argc, t_atom *argv)
         
 	// immediate goes out the third outlet 
 	if(osc_timetag_isImmediate(timetag)){
-		outlet_anything(x->outlets[2], ps_FullPacket, 2, argv);
+		//outlet_anything(x->outlets[2], ps_FullPacket, 2, argv);
+		omax_util_outletOSC(x->outlets[2], len, ptr);
 		return;
 	}
         
@@ -177,7 +181,8 @@ void osched_fullPacket(t_osched *x, t_symbol *s, int argc, t_atom *argv)
 	// compare
 	switch(osc_timetag_compare(nowp1, n.timestamp)){
 	case 0: // output is on time
-		outlet_anything(x->outlets[0], ps_FullPacket, 2, argv);
+		//outlet_anything(x->outlets[0], ps_FullPacket, 2, argv);
+		omax_util_outletOSC(x->outlets[0], len, ptr);
 		return;
               
 	case 1: // deadline miss or on-time
@@ -185,11 +190,13 @@ void osched_fullPacket(t_osched *x, t_symbol *s, int argc, t_atom *argv)
 		switch(osc_timetag_compare(now, n.timestamp)){
 		case -1: // within scheduler boundary, output on time
 		case 0:
-			outlet_anything(x->outlets[0], ps_FullPacket, 2, argv);
+			//outlet_anything(x->outlets[0], ps_FullPacket, 2, argv);
+			omax_util_outletOSC(x->outlets[0], len, ptr);
 			return;
                     
 		case 1: // deadline missed
-			outlet_anything(x->outlets[1], ps_FullPacket, 2, argv);
+			//outlet_anything(x->outlets[1], ps_FullPacket, 2, argv);
+			omax_util_outletOSC(x->outlets[1], len, ptr);
 			return;
 		}
 	}
@@ -203,7 +210,8 @@ void osched_fullPacket(t_osched *x, t_symbol *s, int argc, t_atom *argv)
 	// delay exceeds maximum
 	if(osc_timetag_compare(nowp1, n.timestamp) < 0){
 		object_error((t_object *)x, "delay exceeds maximum");
-		outlet_anything(x->outlets[1], ps_FullPacket, 2, argv);
+		//outlet_anything(x->outlets[1], ps_FullPacket, 2, argv);
+		omax_util_outletOSC(x->outlets[1], len, ptr);
 		return;
 	}
         
