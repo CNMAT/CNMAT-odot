@@ -291,6 +291,38 @@ void otable_peeklast(t_otable *x)
 	otable_peeknth(x, -1);
 }
 
+#ifdef OMAX_PD_VERSION
+void otable_delnth(t_otable *x, float f)
+{
+    int n = (int)f;
+#else
+void otable_delnth(t_otable *x, int n)
+{
+#endif
+	critical_enter(x->lock);
+	t_osc_bndl_s *bndl = (t_osc_bndl_s *)osc_linkedlist_popNth(x->db->ll, n);
+	critical_exit(x->lock);
+	if(bndl){
+		long len = osc_bundle_s_getLen(bndl);
+		//char *ptr = osc_bundle_s_getPtr(bndl);
+		//omax_util_outletOSC(x->outlet, len, ptr);
+		osc_bundle_s_deepFree(bndl);
+		x->db->bytecount -= len;
+	}else{
+		//omax_util_outletOSC(x->outlet, OSC_HEADER_SIZE, OSC_EMPTY_HEADER);
+	}
+}
+
+void otable_delfirst(t_otable *x)
+{
+	otable_delnth(x, 0);
+}
+
+void otable_dellast(t_otable *x)
+{
+	otable_delnth(x, -1);
+}
+
 void otable_dumpCallback(void *obj, int index, void *data)
 {
 	t_otable *x = (t_otable *)obj;
@@ -782,6 +814,9 @@ int main(void)
 	class_addmethod(c, (method)otable_peekfirst, "peekfirst", 0);
 	class_addmethod(c, (method)otable_peeklast, "peeklast", 0);
 	class_addmethod(c, (method)otable_peeknth, "peeknth", A_LONG, 0);
+	class_addmethod(c, (method)otable_delfirst, "delfirst", 0);
+	class_addmethod(c, (method)otable_dellast, "dellast", 0);
+	class_addmethod(c, (method)otable_delnth, "delnth", A_LONG, 0);
 
 	class_addmethod(c, (method)otable_outputinfo, "info", 0);
 
