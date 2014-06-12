@@ -4,11 +4,11 @@
 		"appversion" : 		{
 			"major" : 6,
 			"minor" : 1,
-			"revision" : 3,
+			"revision" : 6,
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 429.0, 77.0, 686.0, 647.0 ],
+		"rect" : [ 429.0, 77.0, 875.0, 647.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -37,7 +37,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "int", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 8.0, 184.0, 50.0, 20.0 ]
+					"patching_rect" : [ 375.0, 175.0, 50.0, 20.0 ]
 				}
 
 			}
@@ -51,7 +51,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 68.0, 293.0, 150.0, 33.0 ],
+					"patching_rect" : [ 131.0, 332.0, 82.0, 33.0 ],
 					"text" : "/down false\n/up true",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -66,7 +66,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "bang", "bang" ],
-					"patching_rect" : [ 102.0, 174.0, 34.0, 20.0 ],
+					"patching_rect" : [ 9.0, 159.0, 34.0, 20.0 ],
 					"text" : "t b b"
 				}
 
@@ -81,7 +81,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 15.0, 318.0, 150.0, 33.0 ],
+					"patching_rect" : [ 26.0, 333.0, 92.0, 33.0 ],
 					"text" : "/down true\n/up false",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -96,7 +96,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "int" ],
-					"patching_rect" : [ 36.0, 221.0, 33.0, 20.0 ],
+					"patching_rect" : [ 25.0, 221.0, 33.0, 20.0 ],
 					"text" : "int 0",
 					"textcolor" : [ 1.0, 0.0, 0.0, 1.0 ]
 				}
@@ -111,7 +111,7 @@
 					"numinlets" : 3,
 					"numoutlets" : 3,
 					"outlettype" : [ "bang", "bang", "" ],
-					"patching_rect" : [ 29.0, 258.0, 62.0, 20.0 ],
+					"patching_rect" : [ 26.0, 275.0, 124.0, 20.0 ],
 					"text" : "select 1 0"
 				}
 
@@ -125,7 +125,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 54.0, 144.0, 54.0, 20.0 ],
+					"patching_rect" : [ 129.0, 150.0, 54.0, 20.0 ],
 					"text" : "route int"
 				}
 
@@ -137,7 +137,7 @@
 					"maxclass" : "outlet",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 173.0, 478.0, 25.0, 25.0 ]
+					"patching_rect" : [ 14.0, 576.0, 25.0, 25.0 ]
 				}
 
 			}
@@ -150,7 +150,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 162.0, 446.0, 55.0, 20.0 ],
+					"patching_rect" : [ 14.0, 540.0, 55.0, 20.0 ],
 					"text" : "o.collect"
 				}
 
@@ -164,7 +164,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 98.0, 393.0, 81.0, 20.0 ],
+					"patching_rect" : [ 157.0, 451.0, 113.0, 20.0 ],
 					"text" : "o.prepend #2"
 				}
 
@@ -178,7 +178,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "bang", "" ],
-					"patching_rect" : [ 147.0, 52.0, 32.5, 20.0 ],
+					"patching_rect" : [ 115.0, 67.0, 32.5, 20.0 ],
 					"text" : "t b l"
 				}
 
@@ -192,7 +192,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "FullPacket" ],
-					"patching_rect" : [ 161.0, 107.0, 65.0, 20.0 ],
+					"patching_rect" : [ 129.0, 105.0, 65.0, 20.0 ],
 					"text" : "o.route #1"
 				}
 
@@ -205,7 +205,7 @@
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 78.0, 31.0, 25.0, 25.0 ]
+					"patching_rect" : [ 115.0, 16.0, 25.0, 25.0 ]
 				}
 
 			}
@@ -216,7 +216,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 171.0, 257.0, 20.0, 20.0 ]
+					"patching_rect" : [ 317.0, 305.0, 20.0, 20.0 ]
 				}
 
 			}
@@ -227,7 +227,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 154.0, 305.0, 20.0, 20.0 ]
+					"patching_rect" : [ 233.0, 304.0, 20.0, 20.0 ]
 				}
 
 			}
@@ -240,7 +240,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 240.0, 301.0, 150.0, 20.0 ],
+					"patching_rect" : [ 318.0, 339.0, 62.0, 20.0 ],
 					"text" : "/released",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -255,7 +255,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 154.0, 344.0, 150.0, 20.0 ],
+					"patching_rect" : [ 233.0, 340.0, 61.0, 20.0 ],
 					"text" : "/pressed",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -270,7 +270,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 3,
 					"outlettype" : [ "", "int", "int" ],
-					"patching_rect" : [ 86.0, 220.0, 50.0, 20.0 ],
+					"patching_rect" : [ 252.0, 257.0, 50.0, 20.0 ],
 					"text" : "change",
 					"textcolor" : [ 1.0, 0.0, 0.0, 1.0 ]
 				}
@@ -426,6 +426,7 @@
 					"destination" : [ "obj-9", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
+					"midpoints" : [ 184.5, 135.0, 457.0, 135.0, 457.0, 261.0, 457.0, 261.0, 457.0, 525.0, 23.5, 525.0 ],
 					"source" : [ "obj-4", 1 ]
 				}
 
@@ -483,23 +484,6 @@
 					"source" : [ "obj-9", 0 ]
 				}
 
-			}
- ],
-		"dependency_cache" : [ 			{
-				"name" : "o.message.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.route.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.prepend.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.collect.mxo",
-				"type" : "iLaX"
 			}
  ]
 	}
