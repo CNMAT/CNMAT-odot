@@ -149,6 +149,14 @@ void oexprcodebox_paint(t_oexprcodebox *x, t_object *patcherview)
 
         jgraphics_set_source_jrgba(g, &(x->background_color));
         //jgraphics_rectangle(g, 0., 0., rect.width, rect.height);
+	jgraphics_rectangle(g, 8., 8., rect.width - 8, rect.height - 8);
+	jgraphics_fill(g);
+
+        jgraphics_set_source_jrgba(g, &(x->frame_color));
+        jgraphics_set_line_width(g, 8.);
+	jgraphics_rectangle_rounded(g, 4, 4, rect.width - 8, rect.height - 8, 4, 4);
+	jgraphics_stroke(g);
+	/*
         jgraphics_move_to(g, 0, 0);
         jgraphics_line_to(g, 0, rect.height - 8);
         jgraphics_line_to(g, 8, rect.height);
@@ -171,6 +179,7 @@ void oexprcodebox_paint(t_oexprcodebox *x, t_object *patcherview)
         jgraphics_line_to(g, rect.width, rect.height);
         jgraphics_line_to(g, rect.width, rect.height - (rect.height * .25));
         jgraphics_stroke(g);
+	*/
 }
 
 void oexprcodebox_doselect(t_oexprcodebox *x){
@@ -245,11 +254,11 @@ void oexprcodebox_gettext(t_oexprcodebox *x)
         if(x->expr){
                 critical_enter(x->lock);
                 osc_expr_free(x->expr);
+		x->expr = NULL;
                 // search and replace #n params
                 critical_exit(x->lock);
         }
         critical_enter(x->lock);
-        osc_expr_free(x->expr);
         // search and replace #n params
         osc_expr_parser_parseExpr(text, &(x->expr));
         critical_exit(x->lock);
@@ -588,7 +597,7 @@ void *oexprcodebox_new(t_symbol *msg, short argc, t_atom *argv)
                 | JBOX_TRANSPARENT
 		//      | JBOX_NOGROW
 		//| JBOX_GROWY
-		//| JBOX_GROWBOTH
+		| JBOX_GROWBOTH
 		//      | JBOX_HILITE
 		//| JBOX_BACKGROUND
 		//| JBOX_DRAWBACKGROUND
@@ -608,7 +617,7 @@ void *oexprcodebox_new(t_symbol *msg, short argc, t_atom *argv)
 		if(textfield){
 			object_attr_setchar(textfield, gensym("editwhenunlocked"), 1);
 			textfield_set_editonclick(textfield, 0);
-			textfield_set_textmargins(textfield, 3, 3, 3, 3);
+			textfield_set_textmargins(textfield, 8, 8, 8, 8);
 			textfield_set_textcolor(textfield, &(x->text_color));
 		}
 		jbox_ready((t_jbox *)x);
@@ -624,7 +633,8 @@ int main(void)
         common_symbols_init();
         t_class *c = class_new(NAME, (method)oexprcodebox_new, (method)oexprcodebox_free, sizeof(t_oexprcodebox), 0L, A_GIMME, 0);
         c->c_flags |= CLASS_FLAG_NEWDICTIONARY;
-	jbox_initclass(c, JBOX_TEXTFIELD | JBOX_FIXWIDTH | JBOX_FONTATTR);
+	//jbox_initclass(c, JBOX_TEXTFIELD | JBOX_FIXWIDTH | JBOX_FONTATTR);
+	jbox_initclass(c, JBOX_TEXTFIELD | JBOX_FONTATTR);
 
         //class_addmethod(c, (method)oexprcodebox_fullPacket, "FullPacket", A_LONG, A_LONG, 0);
         class_addmethod(c, (method)oexprcodebox_fullPacket, "FullPacket", A_GIMME, 0);
@@ -658,12 +668,12 @@ int main(void)
         class_addmethod(c, (method)oexprcodebox_mouseup, "mouseup", A_CANT, 0);
 
 	CLASS_ATTR_RGBA(c, "background_color", 0, t_oexprcodebox, background_color);
-	CLASS_ATTR_DEFAULT_SAVE_PAINT(c, "background_color", 0, ".87 .87 .87 1.");
+	CLASS_ATTR_DEFAULT_SAVE_PAINT(c, "background_color", 0, "1. 1. 1. 1.");
 	CLASS_ATTR_STYLE_LABEL(c, "background_color", 0, "rgba", "Background Color");
         CLASS_ATTR_CATEGORY_KLUDGE(c, "background_color", 0, "Color");
     
 	CLASS_ATTR_RGBA(c, "frame_color", 0, t_oexprcodebox, frame_color);
-	CLASS_ATTR_DEFAULT_SAVE_PAINT(c, "frame_color", 0, "0. 0. 0. 1.");
+	CLASS_ATTR_DEFAULT_SAVE_PAINT(c, "frame_color", 0, "0.0 0.8 1.0 1.");
 	CLASS_ATTR_STYLE_LABEL(c, "frame_color", 0, "rgba", "Frame Color");
         CLASS_ATTR_CATEGORY_KLUDGE(c, "frame_color", 0, "Color");
     
@@ -680,7 +690,6 @@ int main(void)
         osc_error_setHandler(omax_util_liboErrorHandler);
 
         ODOT_PRINT_VERSION;
-	printf("done\n");
         return 0;
 }
 
