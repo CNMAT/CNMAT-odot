@@ -145,6 +145,7 @@ typedef struct _omessage {
     char        *border_tag;
     char        *corner_tag;
     char        *iolets_tag;
+    char        *updatedot_tag;
     char        *tcl_namespace;
     int         streamflag;
     
@@ -189,6 +190,10 @@ typedef struct _omessage {
 
     int     in_new_flag;
 	//t_jrgba frame_color, background_color, text_color;
+    
+    int have_new_data;
+	int draw_new_data_indicator;
+	t_clock *new_data_indicator_clock;
     
 } t_omessage;
 
@@ -295,6 +300,8 @@ void omessage_doFullPacket(t_omessage *x, long len, char *ptr)
 	t_osc_bndl_s *b = osc_bundle_s_alloc(copylen, copyptr);
 	omessage_newBundle(x, NULL, b);
 #ifdef OMAX_PD_VERSION
+    x->draw_new_data_indicator = 1;
+	x->have_new_data = 1;
 	jbox_redraw((t_jbox *)x);
 #else
 	x->draw_new_data_indicator = 1;
@@ -453,12 +460,15 @@ void omessage_paint(t_omessage *x, t_object *patcherview)
 	}
 }
 
+#endif
+
 void omessage_refresh(t_omessage *x)
 {
+#ifdef OMAX_PD_VERSION
+    x->draw_new_data_indicator = 0;
+#endif
 	jbox_redraw((t_jbox *)x);
 }
-
-#endif
 
 #ifndef OMAX_PD_VERSION
 void omessage_select(t_omessage *x){
@@ -564,6 +574,7 @@ void omessage_gettext(t_omessage *x)
 	t_osc_bndl_s *bndl_s = osc_bundle_s_alloc(bndl_s_len, bndl_s_ptr);
 	omessage_newBundle(x, bndl_u, bndl_s);
 #ifdef OMAX_PD_VERSION
+    x->have_new_data = 1;
 	jbox_redraw((t_jbox *)x);
 #else
 	x->have_new_data = 1;
@@ -709,6 +720,8 @@ void omessage_anything(t_omessage *x, t_symbol *msg, short argc, t_atom *argv)
 		break;
 	}
 #ifdef OMAX_PD_VERSION
+    x->draw_new_data_indicator = 1;
+	x->have_new_data = 1;
 	jbox_redraw((t_jbox *)x);
 #else
 	x->draw_new_data_indicator = 1;
@@ -1376,9 +1389,6 @@ static void omessage_getrect(t_gobj *z, t_glist *glist,int *xp1, int *yp1, int *
 }
 
 
-// probably do like in new max version: make clock tick delay so only redraw once per frame rate
-// i.e. and only redraw if something has changed!
-
 void omessage_drawElements(t_omessage *x, t_glist *glist, int width2, int height2, int firsttime)
 {
     if(x->in_new_flag)
@@ -1387,8 +1397,18 @@ void omessage_drawElements(t_omessage *x, t_glist *glist, int width2, int height
         return;
     }
 
-//    printf("%s %p %d\n", __func__, x, __LINE__);
-    omessage_bundle2text(x);
+    int have_new_data = 0;
+	int draw_new_data_indicator = 0;
+	critical_enter(x->lock);
+	have_new_data = x->have_new_data;
+	draw_new_data_indicator = x->draw_new_data_indicator;
+	critical_exit(x->lock);
+	if(have_new_data){
+        omessage_bundle2text(x);
+	}
+    
+    
+   // omessage_bundle2text(x);
     
     int x1, y1, x2, y2;
     omessage_getrect((t_gobj *)x, glist, &x1, &y1, &x2, &y2);
@@ -1423,6 +1443,10 @@ void omessage_drawElements(t_omessage *x, t_glist *glist, int width2, int height
                      cx2-c_width, cy2, cx2, cy2, cx2, cy2-5, cx2-c_linewidth, cy2-5, cx2-c_linewidth, cy2-c_linewidth, cx2-c_width, cy2-c_linewidth, x->corner_tag);
             sys_vgui("%s create polygon %d %d %d %d %d %d %d %d %d %d %d %d -outline \"black\" -fill #f8f8f6 -tags %sTL \n",x->canvas_id, cx1+c_width, cy1, cx1, cy1, cx1, cy1+5, cx1-c_linewidth, cy1+5, cx1-c_linewidth, cy1-c_linewidth, cx1+c_width, cy1-c_linewidth, x->corner_tag);
             
+            //update dot
+            sys_vgui("%s create oval %d %d %d %d -fill #f8f8f6 -outline #f8f8f6 -tags %s \n", x->canvas_id, x1+5, y1+5, x1+10, y1+10, x->updatedot_tag);
+
+            
             //handle
             sys_vgui("canvas %s -width 5 -height 5 \n", x->handle_id);
             sys_vgui("%s create rectangle %d %d %d %d -outline \"blue\" -fill \"blue\" -tags %lxHANDLE \n",x->handle_id, 0, 0, 5, 5, (long)x);
@@ -1452,6 +1476,9 @@ void omessage_drawElements(t_omessage *x, t_glist *glist, int width2, int height
             sys_vgui("%s coords %s %d %d %d %d %d %d %d %d %d %d %d %d \n",x->canvas_id, x->corner_tag,
                      cx2-c_width, cy2, cx2, cy2, cx2, cy2-5, cx2-c_linewidth, cy2-5, cx2-c_linewidth, cy2-c_linewidth, cx2-c_width, cy2-c_linewidth);
             sys_vgui("%s coords %sTL %d %d %d %d %d %d %d %d %d %d %d %d \n",x->canvas_id, x->corner_tag, cx1+c_width, cy1, cx1, cy1, cx1, cy1+5, cx1-c_linewidth, cy1+5, cx1-c_linewidth, cy1-c_linewidth, cx1+c_width, cy1-c_linewidth);
+            
+            //sys_vgui("%s coords %s %d %d %d %d \n",x->canvas_id, x->updatedot_tag, x1+5, y1+5, y1+10, y2+10);
+
             
             if (!x->mouseDown)
             {
@@ -1494,6 +1521,12 @@ void omessage_drawElements(t_omessage *x, t_glist *glist, int width2, int height
         
         sys_vgui("%s itemconfigure %s -outline %s\n", x->canvas_id, x->corner_tag, (x->parse_error?  "red" : "black" ));
         sys_vgui("%s itemconfigure %sTL -outline %s\n", x->canvas_id, x->corner_tag, (x->parse_error? "red" : "black" ));
+        
+        sys_vgui("%s itemconfigure %s -fill %s \n", x->canvas_id, x->updatedot_tag, (draw_new_data_indicator?  "black" : "#f8f8f6" ));
+
+//        post("%x %s drawnew %d", x, __func__, draw_new_data_indicator);
+        if(draw_new_data_indicator)
+            clock_delay(x->new_data_indicator_clock, 100);
         
         if(glist_isselected(x->glist, &x->ob.te_g))
             gobj_select(&x->ob.te_g, x->glist, 1);
@@ -1570,6 +1603,8 @@ static void omessage_displace(t_gobj *z, t_glist *glist,int dx, int dy)
     sys_vgui("%s move %s %d %d\n", x->canvas_id, x->corner_tag, dx, dy);
     sys_vgui("%s move %sTL %d %d\n", x->canvas_id, x->corner_tag, dx, dy);
     sys_vgui("%s move text%lx %d %d\n", x->canvas_id, (long)x, dx, dy);
+    sys_vgui("%s move %s %d %d\n", x->canvas_id, x->updatedot_tag, dx, dy);
+    
     
     if (!x->mouseDown)
         sys_vgui("place %s -x [expr %d - [%s canvasx 0]] -y [expr %d - [%s canvasy 0]] -width %d -height %d\n", x->handle_id, x2-5, x->canvas_id, y2-5, x->canvas_id, 5, 5);
@@ -1630,6 +1665,9 @@ static void omessage_select(t_gobj *z, t_glist *glist, int state)
         //       sys_vgui(".x%lx.c itemconfigure %s -outline %s\n", glist, x->border_tag, (state? "$select_color" : "$msg_box_fill" )); //was "$box_outline"
         sys_vgui(".x%lx.c itemconfigure %s -outline %s\n", glist, x->corner_tag, (state? "blue" : "black"));
         sys_vgui(".x%lx.c itemconfigure %sTL -outline %s\n", glist, x->corner_tag, (state? "blue" : "black"));
+
+        sys_vgui(".x%lx.c itemconfigure %s -fill %s\n", glist, x->updatedot_tag, (x->draw_new_data_indicator? (state? "blue" : "black") : "#f8f8f6"));
+
         
         if(!x->textediting){
             sys_vgui(".x%lx.c itemconfigure text%lx -fill %s\n", glist, (long)x, (state? "blue" : "black"));
@@ -1660,6 +1698,8 @@ static void omessage_activate(t_gobj *z, t_glist *glist, int state)
     //    sys_vgui(".x%lx.c itemconfigure %s -outline %s\n", glist, x->border_tag, (state? "$select_color" : "$msg_box_fill"));//was "$box_outline"
     sys_vgui(".x%lx.c itemconfigure %s -outline %s\n", glist, x->corner_tag, (state? "blue" : "black"));
     sys_vgui(".x%lx.c itemconfigure %sTL -outline %s\n", glist, x->corner_tag, (state? "blue" : "black"));
+    sys_vgui(".x%lx.c itemconfigure %s -fill %s\n", glist, x->updatedot_tag, (x->draw_new_data_indicator? (state? "blue" : "black") : "#f8f8f6"));
+
 }
 
 static void omessage_delete(t_gobj *z, t_glist *glist)
@@ -1674,6 +1714,7 @@ static void omessage_delete(t_gobj *z, t_glist *glist)
         sys_vgui("%s delete %s\n", x->canvas_id, x->corner_tag);
         sys_vgui("%s delete %sTL\n", x->canvas_id, x->corner_tag);
         sys_vgui("%s delete text%lx \n", x->canvas_id, (long)x);
+        sys_vgui("%s delete %s\n", x->canvas_id, x->updatedot_tag);
         
         if(x->textediting)
             sys_vgui("destroy %s\n", x->text_id);
@@ -1686,7 +1727,6 @@ static void omessage_delete(t_gobj *z, t_glist *glist)
     canvas_deletelinesfor(glist_getcanvas(glist), &x->ob);
     
 }
-
 
 static void omessage_doClick(t_omessage *x,
                              t_floatarg xpos, t_floatarg ypos, t_floatarg shift,
@@ -1786,6 +1826,7 @@ void omessage_free(t_omessage *x)
     free(x->text_id);
     free(x->canvas_id);
     free(x->tcl_namespace);
+    free(x->updatedot_tag);
     free(x->border_tag);
     free(x->corner_tag);
     free(x->iolets_tag);
@@ -1794,6 +1835,7 @@ void omessage_free(t_omessage *x)
     free(x->receive_name);
     
     clock_free(x->m_clock);
+    clock_free(x->new_data_indicator_clock);
     
     
     {
@@ -1854,6 +1896,10 @@ void *omessage_new(t_symbol *msg, short argc, t_atom *argv)
         //        x->qelem = qelem_new((t_object *)x, (method)omessage_refresh);
         
         x->m_clock = clock_new(x, (t_method)omessage_tick);
+        
+        x->new_data_indicator_clock = clock_new(x, (t_method)omessage_refresh);
+        x->have_new_data = 1;
+        x->draw_new_data_indicator = 0;
         
         x->text = NULL;
         x->text = (char *)malloc(OMAX_PD_MAXSTRINGSIZE * sizeof(char));
@@ -1920,6 +1966,16 @@ void *omessage_new(t_symbol *msg, short argc, t_atom *argv)
             return NULL;
         }
         strcpy(x->border_tag, buf);
+        
+        sprintf(buf, "%lxDOT", (long unsigned int)x);
+        x->updatedot_tag = NULL;
+        x->updatedot_tag = (char *)malloc(sizeof(char) * (strlen(buf)+1));
+        if(x->updatedot_tag == NULL)
+        {
+            printf("out of memory %d\n", __LINE__);
+            return NULL;
+        }
+        strcpy(x->updatedot_tag, buf);
         
         sprintf(buf, "%lxCORNER", (long unsigned int)x);
         x->corner_tag = NULL;
