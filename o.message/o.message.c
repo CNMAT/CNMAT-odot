@@ -212,6 +212,9 @@ typedef struct _omessage{
 	char *text;
 	t_jrgba frame_color, background_color, text_color;
 	void *qelem;
+	int have_new_data;
+	int draw_new_data_indicator;
+	void *new_data_indicator_clock;
 } t_omessage;
 
 static t_class *omessage_class;
@@ -294,6 +297,8 @@ void omessage_doFullPacket(t_omessage *x, long len, char *ptr)
 #ifdef OMAX_PD_VERSION
 	jbox_redraw((t_jbox *)x);
 #else
+	x->draw_new_data_indicator = 1;
+	x->have_new_data = 1;
 	qelem_set(x->qelem);
 #endif
 }
@@ -397,8 +402,15 @@ void omessage_bundle2text(t_omessage *x)
 #ifndef OMAX_PD_VERSION
 void omessage_paint(t_omessage *x, t_object *patcherview)
 {
-	
-    omessage_bundle2text(x);
+	int have_new_data = 0;
+	int draw_new_data_indicator = 0;
+	critical_enter(x->lock);
+	have_new_data = x->have_new_data;
+	draw_new_data_indicator = x->draw_new_data_indicator;
+	critical_exit(x->lock);
+	if(have_new_data){	
+    		omessage_bundle2text(x);
+	}
     
 	t_rect rect;
 	t_jgraphics *g = (t_jgraphics *)patcherview_get_jgraphics(patcherview);
@@ -428,12 +440,24 @@ void omessage_paint(t_omessage *x, t_object *patcherview)
 	jgraphics_line_to(g, rect.width, rect.height);
 	jgraphics_line_to(g, rect.width, rect.height - (rect.height * .25));
 	jgraphics_stroke(g);
+
+	if(draw_new_data_indicator){
+		//jgraphics_move_to(g, 4, 4);
+		jgraphics_set_source_jrgba(g, &(x->frame_color));
+		jgraphics_ellipse(g, 2, 2, 3, 3);
+		jgraphics_fill(g);
+		critical_enter(x->lock);
+		x->draw_new_data_indicator = 0;
+		critical_exit(x->lock);
+		clock_delay(x->new_data_indicator_clock, 100);
+	}
 }
 
 void omessage_refresh(t_omessage *x)
 {
 	jbox_redraw((t_jbox *)x);
 }
+
 #endif
 
 #ifndef OMAX_PD_VERSION
@@ -542,6 +566,7 @@ void omessage_gettext(t_omessage *x)
 #ifdef OMAX_PD_VERSION
 	jbox_redraw((t_jbox *)x);
 #else
+	x->have_new_data = 1;
 	qelem_set(x->qelem);
 #endif
 	/*
@@ -686,6 +711,8 @@ void omessage_anything(t_omessage *x, t_symbol *msg, short argc, t_atom *argv)
 #ifdef OMAX_PD_VERSION
 	jbox_redraw((t_jbox *)x);
 #else
+	x->draw_new_data_indicator = 1;
+	x->have_new_data = 1;
 	qelem_set(x->qelem);
 #endif
 }
@@ -2149,6 +2176,9 @@ void *omessage_new(t_symbol *msg, short argc, t_atom *argv){
 		x->bndl_has_subs = 0;
 		critical_new(&(x->lock));
 		x->qelem = qelem_new((t_object *)x, (method)omessage_refresh);
+		x->new_data_indicator_clock = clock_new((t_object *)x, (method)omessage_refresh);
+		x->have_new_data = 1;
+		x->draw_new_data_indicator = 0;
 		attr_dictionary_process(x, d);
         
 		t_object *textfield = jbox_get_textfield((t_object *)x);
