@@ -60,6 +60,7 @@ void *ovalidate_class;
 void ovalidate_fullPacket(t_ovalidate *x, t_symbol *msg, int argc, t_atom *argv)
 {
 	OMAX_UTIL_GET_LEN_AND_PTR;
+	/*
 	t_osc_err e = osc_error_bundleSanityCheck(len, ptr);
 	if(e){
 		t_osc_bndl_u *b = osc_bundle_u_alloc();
@@ -79,6 +80,7 @@ void ovalidate_fullPacket(t_ovalidate *x, t_symbol *msg, int argc, t_atom *argv)
 		}
 		return;
 	}
+	*/
 	uint64_t state = OSC_SERIAL_INIT;
 	for(int i = 0; i < len; i++){
 		state = osc_serial_processByte(ptr[i], state);
