@@ -624,6 +624,7 @@ t_max_err otable_getKey(t_otable *x, void *attr, long *ac, t_atom **av)
 }
 #endif
 
+#define OTABLE_INFO_PFX "/otable/info"
 void otable_outputinfo(t_otable *x)
 {
 	critical_enter(x->lock);
@@ -633,19 +634,19 @@ void otable_outputinfo(t_otable *x)
 	critical_exit(x->lock);
 	t_osc_bndl_u *b = osc_bundle_u_alloc();
 	t_osc_msg_u *msgname = osc_message_u_alloc();
-	osc_message_u_setAddress(msgname, "/name");
+	osc_message_u_setAddress(msgname, OTABLE_INFO_PFX"/name");
 	if(name){
 		osc_message_u_appendString(msgname, name->s_name);
 	}
 	osc_bundle_u_addMsg(b, msgname);
 
 	t_osc_msg_u *msgn = osc_message_u_alloc();
-	osc_message_u_setAddress(msgn, "/count");
+	osc_message_u_setAddress(msgn, OTABLE_INFO_PFX"/count");
 	osc_message_u_appendUInt64(msgn, n);
 	osc_bundle_u_addMsg(b, msgn);
 
 	t_osc_msg_u *msgmem = osc_message_u_alloc();
-	osc_message_u_setAddress(msgmem, "/bytecount");
+	osc_message_u_setAddress(msgmem, OTABLE_INFO_PFX"/bytecount");
 	osc_message_u_appendUInt64(msgmem, bytecount);
 	osc_bundle_u_addMsg(b, msgmem);
 
