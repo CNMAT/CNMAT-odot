@@ -385,6 +385,9 @@ void otable_clear(t_otable *x)
 
 t_symbol *otable_mangle(t_symbol *name)
 {
+	if(!name){
+		return NULL;
+	}
 	long len = strlen(name->s_name) + strlen(OTABLE_MANGLE_PFX) + 1;
 	char buf[len];
 	snprintf(buf, len, "%s%s", OTABLE_MANGLE_PFX, name->s_name);
@@ -400,7 +403,7 @@ void otable_refer(t_otable *x, t_symbol *msg, int argc, t_atom *argv)
 	}
 	t_symbol *name = atom_getsym(argv);
 	t_symbol *mangled_name = otable_mangle(name);
-	if(mangled_name->s_thing){
+	if(mangled_name && mangled_name->s_thing){
 		t_otable_db *db = (t_otable_db *)mangled_name->s_thing;
 		db->refcount++;
 		x->db = db;
