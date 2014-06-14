@@ -154,9 +154,9 @@ void *ovalidate_new(t_symbol *msg, short argc, t_atom *argv)
 {
 	t_ovalidate *x;
 	if((x = (t_ovalidate *)pd_new(ovalidate_class))){
+        x->outletVal = outlet_new((t_object *)x, gensym("FullPacket"));
+        x->outletInval = outlet_new((t_object *)x, gensym("FullPacket"));
 		x->outletErr = outlet_new((t_object *)x, gensym("FullPacket"));
-		x->outletInval = outlet_new((t_object *)x, gensym("FullPacket"));
-		x->outletVal = outlet_new((t_object *)x, gensym("FullPacket"));
 	}
 	return x;
 }
@@ -164,12 +164,10 @@ void *ovalidate_new(t_symbol *msg, short argc, t_atom *argv)
 int setup_o0x2evalidate(void)
 {
 	t_class *c = class_new(gensym("o.validate"), (t_newmethod)ovalidate_new, (t_method)ovalidate_free, sizeof(t_ovalidate), 0L, A_GIMME, 0);
-	//class_addmethod(c, (method)ovalidate_fullPacket, "FullPacket", A_LONG, A_LONG, 0);
 	class_addmethod(c, (t_method)ovalidate_fullPacket, gensym("FullPacket"), A_GIMME, 0);
 	class_addmethod(c, (t_method)ovalidate_doc, gensym("doc"), 0);
 	//class_addmethod(c, (method)ovalidate_bang, "bang", 0);
-	//class_addmethod(c, (method)ovalidate_anything, "anything", A_GIMME, 0);
-	// remove this if statement when we stop supporting Max 5
+	class_addmethod(c, (t_method)ovalidate_anything, gensym("anything"), A_GIMME, 0);
     class_addmethod(c, (t_method)odot_version, gensym("version"), 0);
     
 	ovalidate_class = c;
