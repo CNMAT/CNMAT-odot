@@ -212,44 +212,67 @@ void *odowncast_new(t_symbol *msg, short argc, t_atom *argv)
          CLASS_ATTR_LONG(c, "timetags", 0, t_odowncast, timetags);
          */
         
-        /*
-        //NOT IMPLEMENTED, JUST COPIED FROM EXPLODE
+
         int i;
         for(i = 0; i < argc; i++)
         {
             if(atom_gettype(argv + i) == A_SYM)
             {
                 t_symbol *attribute = atom_gensym(argv+i);
-                if(attribute == gensym("@level")){
-                    if(atom_gettype(argv+(++i)) == A_FLOAT)
-                    {
-                        x->level = atom_getfloat(argv+i);
-                    } else {
-                        post("@level value must be a number");
-                        return 0;
-                    }
-                } else if(attribute == gensym("@sep")){
+                if(attribute == gensym("@headertimetag")){
                     if(atom_gettype(argv+(++i)) == A_SYMBOL)
                     {
-                        x->sep = atom_getsym(argv+i);
+                        x->timetag_address = atom_getsym(argv+i);
                     } else {
-                        post("@sep value must be a symbol");
+                        post("@headertimetag value must be an address symbol");
+                        return 0;
+                    }
+                } else if(attribute == gensym("@doubles")){
+                    if(atom_gettype(argv+(++i)) == A_FLOAT)
+                    {
+                        x->doubles = (long)(atom_getfloat(argv+i) != 0);
+                    } else {
+                        post("@doubles flag must be a number (0/1)");
+                        return 0;
+                    }
+                } else if(attribute == gensym("@ints")){
+                    if(atom_gettype(argv+(++i)) == A_FLOAT)
+                    {
+                        x->ints = (long)(atom_getfloat(argv+i) != 0);
+                    } else {
+                        post("@ints flag must be a number (0/1)");
+                        return 0;
+                    }
+                } else if(attribute == gensym("@bundles")){
+                    if(atom_gettype(argv+(++i)) == A_FLOAT)
+                    {
+                        x->bundles = (long)(atom_getfloat(argv+i) != 0);
+                    } else {
+                        post("@bundles flag must be a number (0/1)");
+                        return 0;
+                    }
+                } else if(attribute == gensym("@timetags")){
+                    if(atom_gettype(argv+(++i)) == A_FLOAT)
+                    {
+                        x->timetags = (long)(atom_getfloat(argv+i) != 0);
+                    } else {
+                        post("@timetags flag must be a number (0/1)");
                         return 0;
                     }
                 } else if(attribute->s_name[0] == '@') {
                     post("unknown attribute");
                 }  else {
-                    post("o.explode optional attributes are @level <value> and @sep <value>");
+                    post("o.downcast optional attributes are: @headertimetag, @doubles, @ints, @bundles, and @timetags");
                 }
                 
             } else {
-                post("o.explode optional attributes are @level <value> and @sep <value>");
+                post("o.downcast optional attributes are: @headertimetag, @doubles, @ints, @bundles, and @timetags");
                 return 0;
             }
             
             
         }
-        */
+
 	}
 	return x;
 }
