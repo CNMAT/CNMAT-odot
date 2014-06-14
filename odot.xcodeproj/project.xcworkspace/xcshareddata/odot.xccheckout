@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>16143F64-14C0-4BB9-AF05-5475F3AC108A</string>
+	<key>IDESourceControlProjectName</key>
+	<string>odot</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>33C825AD-5C20-4452-8E3E-B1F64047E2B2</key>
+		<string>https://github.com/CNMAT/libo.git</string>
+		<key>5DC92571-CC31-4D3D-9A69-656ECF80CE62</key>
+		<string>https://github.com/CNMAT/libomax.git</string>
+		<key>CA1C694D-FBFC-49EB-95BF-C10CA7DC131D</key>
+		<string>https://github.com/CNMAT/CNMAT-odot.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>odot.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>33C825AD-5C20-4452-8E3E-B1F64047E2B2</key>
+		<string>../../../libo</string>
+		<key>5DC92571-CC31-4D3D-9A69-656ECF80CE62</key>
+		<string>../../../libomax</string>
+		<key>CA1C694D-FBFC-49EB-95BF-C10CA7DC131D</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/CNMAT/CNMAT-odot.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>CA1C694D-FBFC-49EB-95BF-C10CA7DC131D</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>CA1C694D-FBFC-49EB-95BF-C10CA7DC131D</string>
+			<key>IDESourceControlWCCName</key>
+			<string>CNMAT-odot</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>33C825AD-5C20-4452-8E3E-B1F64047E2B2</string>
+			<key>IDESourceControlWCCName</key>
+			<string>libo</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>5DC92571-CC31-4D3D-9A69-656ECF80CE62</string>
+			<key>IDESourceControlWCCName</key>
+			<string>libomax</string>
+		</dict>
+	</array>
+</dict>
+</plist>
