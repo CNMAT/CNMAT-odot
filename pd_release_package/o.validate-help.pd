@@ -11,7 +11,6 @@
 #X obj 223 61 o.message 100 36 binhex b#2F666F6F2031300A2F626172203230
 ;
 #X obj 90 184 route list;
-#X obj 41 103 print;
 #X connect 0 0 5 0;
 #X connect 0 1 6 0;
 #X connect 0 2 7 0;
@@ -21,7 +20,6 @@
 #X connect 2 2 4 2;
 #X connect 2 3 4 3;
 #X connect 3 0 2 0;
-#X connect 3 0 10 0;
 #X connect 4 0 9 0;
 #X connect 8 0 0 0;
 #X connect 9 0 0 0;

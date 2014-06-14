@@ -154,9 +154,9 @@ void *ovalidate_new(t_symbol *msg, short argc, t_atom *argv)
 {
 	t_ovalidate *x;
 	if((x = (t_ovalidate *)pd_new(ovalidate_class))){
+        x->outletVal = outlet_new((t_object *)x, gensym("FullPacket"));
+        x->outletInval = outlet_new((t_object *)x, gensym("FullPacket"));
 		x->outletErr = outlet_new((t_object *)x, gensym("FullPacket"));
-		x->outletInval = outlet_new((t_object *)x, gensym("FullPacket"));
-		x->outletVal = outlet_new((t_object *)x, gensym("FullPacket"));
 	}
 	return x;
 }
