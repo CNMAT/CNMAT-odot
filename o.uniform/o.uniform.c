@@ -63,6 +63,8 @@ typedef struct _ouniform{
 	t_object ob;
 	void *outlet;
 	t_symbol *address;
+    long seed;
+    long state;
 	t_critical lock;
 } t_ouniform;
 
@@ -77,6 +79,7 @@ void ouniform_free(t_ouniform *x);
 void ouniform_assist(t_ouniform *x, void *b, long io, long num, char *buf);
 void *ouniform_new(t_symbol *msg, short argc, t_atom *argv);
 //t_max_err ouniform_notify(t_ouniform *x, t_symbol *s, t_symbol *msg, void *sender, void *data);
+long ouniform_getNumber(long len, char *ptr, char *address);
 
 t_symbol *ps_FullPacket;
 
@@ -91,15 +94,52 @@ void ouniform_doFullPacket(t_ouniform *x,
                            long len,
                            char *ptr)
 {
+    int seed_is_bound = 0;
+    osc_bundle_s_addressIsBound(len, ptr, "/uniform/set/seed", 1, &seed_is_bound);
+    if (seed_is_bound) {
+        long change_to = ouniform_getNumber(len, ptr, "/uniform/set/seed");
+        
+        if (change_to > 0) {
+            if (x->seed != change_to) {
+                x->seed = change_to;
+                srand(x->seed);
+                x->state = 0;
+            }
+        }
+        osc_bundle_s_removeMessage("/uniform/set/seed", &len, ptr, 1);
+    }
+    int state_is_bound = 0;
+    osc_bundle_s_addressIsBound(len, ptr, "/uniform/set/state", 1, &state_is_bound);
+    if (state_is_bound) {
+        long change_to = ouniform_getNumber(len, ptr, "/uniform/set/state");
+        if (change_to >= 0) {
+            x->state = 0;
+            srand(x->seed);
+            for (int i = 0; i < change_to; ++i) {
+                rand();
+                ++x->state;
+            }
+        }
+        osc_bundle_s_removeMessage("/uniform/set/state", &len, ptr, 1);
+    }
+    
     t_osc_bndl_u *copy = NULL;
     osc_bundle_s_deserialize(len, ptr, &copy);
-    t_osc_message_u *m = NULL;
+    t_osc_message_u *result = NULL;
     if(x->address) {
-        m = osc_message_u_allocWithFloat(x->address->s_name, (1.0f * rand() / RAND_MAX));
+        result = osc_message_u_allocWithFloat(x->address->s_name, (1.0f * rand() / RAND_MAX));
     }else{
-        m = osc_message_u_allocWithFloat("/uniform", (1.0f * rand() / RAND_MAX));
+        result = osc_message_u_allocWithFloat("/uniform/random", (1.0f * rand() / RAND_MAX));
     }
-    osc_bundle_u_addMsgWithoutDups(copy, m);
+    t_osc_message_u *seed = osc_message_u_allocWithAddress("/uniform/seed");
+    osc_message_u_appendInt32(seed, x->seed);
+    t_osc_message_u *state = osc_message_u_allocWithAddress("/uniform/state");
+    osc_message_u_appendInt32(state, x->state);
+    osc_bundle_u_addMsgWithoutDups(copy, result);
+    osc_bundle_u_addMsgWithoutDups(copy, seed);
+    osc_bundle_u_addMsgWithoutDups(copy, state);
+    
+    ++x->state;
     
     long copylen = 0;
     char *copyptr = NULL;
@@ -109,6 +149,30 @@ void ouniform_doFullPacket(t_ouniform *x,
         osc_mem_free(copyptr);
     }
     osc_bundle_u_free(copy);
+}
+
+long ouniform_getNumber(long len, char *ptr, char *address)
+{
+    t_osc_array* matches = NULL;
+    osc_bundle_s_lookupAddress(len, ptr, address, &matches, 1);
+    //long matches_length = osc_array_getLen( matches );
+    long change_to = -1;
+    t_osc_message_s* msg = ( t_osc_message_s* )osc_array_get( matches, 0 );
+    t_osc_atom_s* atom = NULL;
+    osc_message_s_getArg( msg, 0, &atom );
+    char type = osc_atom_s_getTypetag( atom );
+    if (type == 'i') {
+        change_to = (long)osc_atom_s_getInt32(atom);
+    } else if (type == 'I') {
+        change_to = (long)osc_atom_s_getInt64(atom);
+    } else if (type == 'I') {
+        change_to = (long)osc_atom_s_getUInt32(atom);
+    } else if (type == 'I') {
+        change_to = (long)osc_atom_s_getUInt64(atom);
+    } else {
+        // do something here to tell the end user how unclever they are.
+    }
+    return change_to;
 }
 
 void ouniform_bang(t_ouniform *x)
@@ -233,6 +297,9 @@ void *ouniform_new(t_symbol *msg, short argc, t_atom *argv)
 			}
 		}
 		x->outlet = outlet_new((t_object *)x, NULL);
+        x->seed = time(NULL);
+        x->state = 0;
+        srand(x->seed);
 		critical_new(&(x->lock));
 	}
 	return x;
@@ -289,7 +356,6 @@ int main(void)
     
 	common_symbols_init();
 	ps_FullPacket = gensym("FullPacket");
-    srand(time(NULL));
 	ODOT_PRINT_VERSION;
 	return 0;
 }
