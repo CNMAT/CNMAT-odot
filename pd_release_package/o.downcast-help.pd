@@ -1,0 +1,39 @@
+#N canvas 543 22 818 715 10;
+#X obj 74 115 o.expr /bar = int64(/bar);
+#X obj 74 58 o.message 100 36 binhex b#2F666F6F2036362E360A2F6261722031
+b#30;
+#X obj 74 146 o.timetag /time;
+#X obj 124 193 o.downcast @headertimetag /time;
+#X obj 124 228 o.expr map(lambda(a)#[ assign(quote(/typetags)+a \,
+typetags(value(a))) \; ]# \, getaddresses());
+#X obj 122 299 o.message 283 88 binhex b#2F666F6F2036362E360A2F6261722031
+b#300A2F74696D65203239333130393138 b#35202D3738393033353330350A2F7479
+b#7065746167732F666F6F202766270A2F b#74797065746167732F62617220276927
+b#0A2F74797065746167732F74696D6520 b#27692720276927;
+#X obj 74 449 o.expr map(lambda(a)#[ assign(quote(/typetags)+a \, typetags(value(a)))
+\; ]# \, getaddresses());
+#X obj 72 520 o.message 283 88 binhex b#2F666F6F2036362E360A2F6261722031
+b#300A2F74696D65203239333130393138 b#35202D3738393033353330350A2F7479
+b#7065746167732F666F6F202764270A2F b#74797065746167732F62617220276927
+b#0A2F74797065746167732F74696D6520 b#27692720276927;
+#X obj 74 414 o.downcast @doubles 0;
+#X obj 439 299 o.message 283 88 binhex b#2F666F6F2036362E360A2F6261722031
+b#300A2F74696D6520323031342D30362D b#31345431363A33373A33362E37353538
+b#32315A0A2F74797065746167732F666F b#6F202764270A2F74797065746167732F
+b#626172202768270A2F74797065746167 b#732F74696D65202774270A;
+#X obj 439 210 o.expr map(lambda(a)#[ assign(quote(/typetags)+a \,
+typetags(value(a))) \; ]# \, getaddresses());
+#X text 323 82 Downcasts optional types supported by the odot objects
+to the required types of OSC 1.0.;
+#X text 322 55 Returns a bundle that conforms to OSC 1;
+#X text 321 25 o.downcast;
+#X connect 0 0 2 0;
+#X connect 1 0 0 0;
+#X connect 2 0 3 0;
+#X connect 2 0 8 0;
+#X connect 2 0 10 0;
+#X connect 3 0 4 0;
+#X connect 4 0 5 1;
+#X connect 6 0 7 1;
+#X connect 8 0 6 0;
+#X connect 10 0 9 1;
