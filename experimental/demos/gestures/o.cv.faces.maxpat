@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 6,
 			"minor" : 1,
-			"revision" : 6,
+			"revision" : 3,
 			"architecture" : "x86"
 		}
 ,
@@ -119,7 +119,7 @@
 						"appversion" : 						{
 							"major" : 6,
 							"minor" : 1,
-							"revision" : 6,
+							"revision" : 3,
 							"architecture" : "x86"
 						}
 ,
@@ -314,7 +314,7 @@
 										"appversion" : 										{
 											"major" : 6,
 											"minor" : 1,
-											"revision" : 6,
+											"revision" : 3,
 											"architecture" : "x86"
 										}
 ,
@@ -690,7 +690,7 @@
 									"maxclass" : "inlet",
 									"numinlets" : 0,
 									"numoutlets" : 1,
-									"outlettype" : [ "" ],
+									"outlettype" : [ "FullPacket" ],
 									"patching_rect" : [ 587.0, 70.0, 25.0, 25.0 ]
 								}
 
@@ -928,13 +928,13 @@
 					"maxclass" : "newobj",
 					"numinlets" : 2,
 					"numoutlets" : 9,
-					"outlettype" : [ "", "", "", "", "", "float", "float", "", "jit_matrix" ],
+					"outlettype" : [ "", "", "", "", "", "", "float", "", "jit_matrix" ],
 					"patcher" : 					{
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 6,
 							"minor" : 1,
-							"revision" : 6,
+							"revision" : 3,
 							"architecture" : "x86"
 						}
 ,
@@ -1131,7 +1131,7 @@
 										"appversion" : 										{
 											"major" : 6,
 											"minor" : 1,
-											"revision" : 6,
+											"revision" : 3,
 											"architecture" : "x86"
 										}
 ,
@@ -1231,7 +1231,7 @@
 														"appversion" : 														{
 															"major" : 6,
 															"minor" : 1,
-															"revision" : 6,
+															"revision" : 3,
 															"architecture" : "x86"
 														}
 ,
@@ -1296,7 +1296,7 @@
 																		"appversion" : 																		{
 																			"major" : 6,
 																			"minor" : 1,
-																			"revision" : 6,
+																			"revision" : 3,
 																			"architecture" : "x86"
 																		}
 ,
@@ -1772,7 +1772,7 @@
 																		"appversion" : 																		{
 																			"major" : 6,
 																			"minor" : 1,
-																			"revision" : 6,
+																			"revision" : 3,
 																			"architecture" : "x86"
 																		}
 ,
@@ -1963,7 +1963,7 @@
 																		"appversion" : 																		{
 																			"major" : 6,
 																			"minor" : 1,
-																			"revision" : 6,
+																			"revision" : 3,
 																			"architecture" : "x86"
 																		}
 ,
@@ -2436,7 +2436,7 @@
 														"appversion" : 														{
 															"major" : 6,
 															"minor" : 1,
-															"revision" : 6,
+															"revision" : 3,
 															"architecture" : "x86"
 														}
 ,
@@ -2631,7 +2631,7 @@
 																	"maxclass" : "inlet",
 																	"numinlets" : 0,
 																	"numoutlets" : 1,
-																	"outlettype" : [ "jit_matrix" ],
+																	"outlettype" : [ "" ],
 																	"patching_rect" : [ 50.0, 30.0, 15.0, 15.0 ]
 																}
 
@@ -2837,8 +2837,8 @@
 													"id" : "obj-21",
 													"maxclass" : "newobj",
 													"numinlets" : 1,
-													"numoutlets" : 2,
-													"outlettype" : [ "jit_matrix", "" ],
+													"numoutlets" : 1,
+													"outlettype" : [ "" ],
 													"patching_rect" : [ 152.0, 256.0, 62.0, 17.0 ],
 													"text" : "cv.jit.track"
 												}
@@ -2981,7 +2981,7 @@
 										"appversion" : 										{
 											"major" : 6,
 											"minor" : 1,
-											"revision" : 6,
+											"revision" : 3,
 											"architecture" : "x86"
 										}
 ,
@@ -3081,7 +3081,7 @@
 														"appversion" : 														{
 															"major" : 6,
 															"minor" : 1,
-															"revision" : 6,
+															"revision" : 3,
 															"architecture" : "x86"
 														}
 ,
@@ -3146,7 +3146,7 @@
 																		"appversion" : 																		{
 																			"major" : 6,
 																			"minor" : 1,
-																			"revision" : 6,
+																			"revision" : 3,
 																			"architecture" : "x86"
 																		}
 ,
@@ -3622,7 +3622,7 @@
 																		"appversion" : 																		{
 																			"major" : 6,
 																			"minor" : 1,
-																			"revision" : 6,
+																			"revision" : 3,
 																			"architecture" : "x86"
 																		}
 ,
@@ -3813,7 +3813,7 @@
 																		"appversion" : 																		{
 																			"major" : 6,
 																			"minor" : 1,
-																			"revision" : 6,
+																			"revision" : 3,
 																			"architecture" : "x86"
 																		}
 ,
@@ -4286,7 +4286,7 @@
 														"appversion" : 														{
 															"major" : 6,
 															"minor" : 1,
-															"revision" : 6,
+															"revision" : 3,
 															"architecture" : "x86"
 														}
 ,
@@ -4481,7 +4481,7 @@
 																	"maxclass" : "inlet",
 																	"numinlets" : 0,
 																	"numoutlets" : 1,
-																	"outlettype" : [ "jit_matrix" ],
+																	"outlettype" : [ "" ],
 																	"patching_rect" : [ 50.0, 30.0, 15.0, 15.0 ]
 																}
 
@@ -4687,8 +4687,8 @@
 													"id" : "obj-21",
 													"maxclass" : "newobj",
 													"numinlets" : 1,
-													"numoutlets" : 2,
-													"outlettype" : [ "jit_matrix", "" ],
+													"numoutlets" : 1,
+													"outlettype" : [ "" ],
 													"patching_rect" : [ 152.0, 256.0, 62.0, 17.0 ],
 													"text" : "cv.jit.track"
 												}
@@ -4831,7 +4831,7 @@
 										"appversion" : 										{
 											"major" : 6,
 											"minor" : 1,
-											"revision" : 6,
+											"revision" : 3,
 											"architecture" : "x86"
 										}
 ,
@@ -4931,7 +4931,7 @@
 														"appversion" : 														{
 															"major" : 6,
 															"minor" : 1,
-															"revision" : 6,
+															"revision" : 3,
 															"architecture" : "x86"
 														}
 ,
@@ -4996,7 +4996,7 @@
 																		"appversion" : 																		{
 																			"major" : 6,
 																			"minor" : 1,
-																			"revision" : 6,
+																			"revision" : 3,
 																			"architecture" : "x86"
 																		}
 ,
@@ -5472,7 +5472,7 @@
 																		"appversion" : 																		{
 																			"major" : 6,
 																			"minor" : 1,
-																			"revision" : 6,
+																			"revision" : 3,
 																			"architecture" : "x86"
 																		}
 ,
@@ -5663,7 +5663,7 @@
 																		"appversion" : 																		{
 																			"major" : 6,
 																			"minor" : 1,
-																			"revision" : 6,
+																			"revision" : 3,
 																			"architecture" : "x86"
 																		}
 ,
@@ -6136,7 +6136,7 @@
 														"appversion" : 														{
 															"major" : 6,
 															"minor" : 1,
-															"revision" : 6,
+															"revision" : 3,
 															"architecture" : "x86"
 														}
 ,
@@ -6331,7 +6331,7 @@
 																	"maxclass" : "inlet",
 																	"numinlets" : 0,
 																	"numoutlets" : 1,
-																	"outlettype" : [ "jit_matrix" ],
+																	"outlettype" : [ "" ],
 																	"patching_rect" : [ 50.0, 30.0, 15.0, 15.0 ]
 																}
 
@@ -6537,8 +6537,8 @@
 													"id" : "obj-21",
 													"maxclass" : "newobj",
 													"numinlets" : 1,
-													"numoutlets" : 2,
-													"outlettype" : [ "jit_matrix", "" ],
+													"numoutlets" : 1,
+													"outlettype" : [ "" ],
 													"patching_rect" : [ 152.0, 256.0, 62.0, 17.0 ],
 													"text" : "cv.jit.track"
 												}
@@ -6739,7 +6739,7 @@
 										"appversion" : 										{
 											"major" : 6,
 											"minor" : 1,
-											"revision" : 6,
+											"revision" : 3,
 											"architecture" : "x86"
 										}
 ,
@@ -6984,7 +6984,7 @@
 										"appversion" : 										{
 											"major" : 6,
 											"minor" : 1,
-											"revision" : 6,
+											"revision" : 3,
 											"architecture" : "x86"
 										}
 ,
@@ -7229,7 +7229,7 @@
 										"appversion" : 										{
 											"major" : 6,
 											"minor" : 1,
-											"revision" : 6,
+											"revision" : 3,
 											"architecture" : "x86"
 										}
 ,
@@ -7441,8 +7441,8 @@
 													"id" : "obj-64",
 													"maxclass" : "newobj",
 													"numinlets" : 1,
-													"numoutlets" : 4,
-													"outlettype" : [ "", "", "", "" ],
+													"numoutlets" : 1,
+													"outlettype" : [ "" ],
 													"patching_rect" : [ 148.0, 426.0, 59.5, 17.0 ],
 													"text" : "cv.jit.shift"
 												}
@@ -8273,7 +8273,7 @@
 										"appversion" : 										{
 											"major" : 6,
 											"minor" : 1,
-											"revision" : 6,
+											"revision" : 3,
 											"architecture" : "x86"
 										}
 ,
@@ -8485,8 +8485,8 @@
 													"id" : "obj-64",
 													"maxclass" : "newobj",
 													"numinlets" : 1,
-													"numoutlets" : 4,
-													"outlettype" : [ "", "", "", "" ],
+													"numoutlets" : 1,
+													"outlettype" : [ "" ],
 													"patching_rect" : [ 148.0, 426.0, 59.5, 17.0 ],
 													"text" : "cv.jit.shift"
 												}
@@ -9421,7 +9421,7 @@
 										"appversion" : 										{
 											"major" : 6,
 											"minor" : 1,
-											"revision" : 6,
+											"revision" : 3,
 											"architecture" : "x86"
 										}
 ,
@@ -9750,7 +9750,7 @@
 										"appversion" : 										{
 											"major" : 6,
 											"minor" : 1,
-											"revision" : 6,
+											"revision" : 3,
 											"architecture" : "x86"
 										}
 ,
@@ -9995,7 +9995,7 @@
 										"appversion" : 										{
 											"major" : 6,
 											"minor" : 1,
-											"revision" : 6,
+											"revision" : 3,
 											"architecture" : "x86"
 										}
 ,
@@ -10095,7 +10095,7 @@
 														"appversion" : 														{
 															"major" : 6,
 															"minor" : 1,
-															"revision" : 6,
+															"revision" : 3,
 															"architecture" : "x86"
 														}
 ,
@@ -10160,7 +10160,7 @@
 																		"appversion" : 																		{
 																			"major" : 6,
 																			"minor" : 1,
-																			"revision" : 6,
+																			"revision" : 3,
 																			"architecture" : "x86"
 																		}
 ,
@@ -10636,7 +10636,7 @@
 																		"appversion" : 																		{
 																			"major" : 6,
 																			"minor" : 1,
-																			"revision" : 6,
+																			"revision" : 3,
 																			"architecture" : "x86"
 																		}
 ,
@@ -10827,7 +10827,7 @@
 																		"appversion" : 																		{
 																			"major" : 6,
 																			"minor" : 1,
-																			"revision" : 6,
+																			"revision" : 3,
 																			"architecture" : "x86"
 																		}
 ,
@@ -11300,7 +11300,7 @@
 														"appversion" : 														{
 															"major" : 6,
 															"minor" : 1,
-															"revision" : 6,
+															"revision" : 3,
 															"architecture" : "x86"
 														}
 ,
@@ -11495,7 +11495,7 @@
 																	"maxclass" : "inlet",
 																	"numinlets" : 0,
 																	"numoutlets" : 1,
-																	"outlettype" : [ "jit_matrix" ],
+																	"outlettype" : [ "" ],
 																	"patching_rect" : [ 50.0, 30.0, 15.0, 15.0 ]
 																}
 
@@ -11701,8 +11701,8 @@
 													"id" : "obj-21",
 													"maxclass" : "newobj",
 													"numinlets" : 1,
-													"numoutlets" : 2,
-													"outlettype" : [ "jit_matrix", "" ],
+													"numoutlets" : 1,
+													"outlettype" : [ "" ],
 													"patching_rect" : [ 152.0, 256.0, 62.0, 17.0 ],
 													"text" : "cv.jit.track"
 												}
@@ -11845,7 +11845,7 @@
 										"appversion" : 										{
 											"major" : 6,
 											"minor" : 1,
-											"revision" : 6,
+											"revision" : 3,
 											"architecture" : "x86"
 										}
 ,
@@ -12057,8 +12057,8 @@
 													"id" : "obj-64",
 													"maxclass" : "newobj",
 													"numinlets" : 1,
-													"numoutlets" : 4,
-													"outlettype" : [ "", "", "", "" ],
+													"numoutlets" : 1,
+													"outlettype" : [ "" ],
 													"patching_rect" : [ 148.0, 426.0, 59.5, 17.0 ],
 													"text" : "cv.jit.shift"
 												}
@@ -12917,7 +12917,7 @@
 										"appversion" : 										{
 											"major" : 6,
 											"minor" : 1,
-											"revision" : 6,
+											"revision" : 3,
 											"architecture" : "x86"
 										}
 ,
@@ -13129,8 +13129,8 @@
 													"id" : "obj-64",
 													"maxclass" : "newobj",
 													"numinlets" : 1,
-													"numoutlets" : 4,
-													"outlettype" : [ "", "", "", "" ],
+													"numoutlets" : 1,
+													"outlettype" : [ "" ],
 													"patching_rect" : [ 148.0, 426.0, 59.5, 17.0 ],
 													"text" : "cv.jit.shift"
 												}
@@ -13975,7 +13975,7 @@
 										"appversion" : 										{
 											"major" : 6,
 											"minor" : 1,
-											"revision" : 6,
+											"revision" : 3,
 											"architecture" : "x86"
 										}
 ,
@@ -14593,7 +14593,7 @@
 										"appversion" : 										{
 											"major" : 6,
 											"minor" : 1,
-											"revision" : 6,
+											"revision" : 3,
 											"architecture" : "x86"
 										}
 ,
@@ -15211,7 +15211,7 @@
 										"appversion" : 										{
 											"major" : 6,
 											"minor" : 1,
-											"revision" : 6,
+											"revision" : 3,
 											"architecture" : "x86"
 										}
 ,
@@ -15829,7 +15829,7 @@
 										"appversion" : 										{
 											"major" : 6,
 											"minor" : 1,
-											"revision" : 6,
+											"revision" : 3,
 											"architecture" : "x86"
 										}
 ,
@@ -16470,7 +16470,7 @@
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 1,
-									"outlettype" : [ "float" ],
+									"outlettype" : [ "" ],
 									"patching_rect" : [ 511.0, 690.0, 73.0, 17.0 ],
 									"text" : "cv.jit.orientation"
 								}
@@ -16483,8 +16483,8 @@
 									"id" : "obj-50",
 									"maxclass" : "newobj",
 									"numinlets" : 1,
-									"numoutlets" : 5,
-									"outlettype" : [ "", "", "", "", "" ],
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
 									"patching_rect" : [ 511.0, 669.0, 73.0, 17.0 ],
 									"text" : "cv.jit.moments"
 								}
@@ -17647,7 +17647,7 @@
 					"maxclass" : "inlet",
 					"numinlets" : 0,
 					"numoutlets" : 1,
-					"outlettype" : [ "" ],
+					"outlettype" : [ "jit_matrix" ],
 					"patching_rect" : [ 41.0, 51.0, 25.0, 25.0 ]
 				}
 
@@ -17660,9 +17660,9 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 1,
-					"outlettype" : [ "" ],
+					"outlettype" : [ "FullPacket" ],
 					"patching_rect" : [ 46.0, 148.0, 157.0, 20.0 ],
-					"text" : "o.inlet @name videostream"
+					"text" : "o.in @name videostream"
 				}
 
 			}
@@ -17700,9 +17700,9 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 1,
-					"outlettype" : [ "" ],
+					"outlettype" : [ "FullPacket" ],
 					"patching_rect" : [ 224.0, 165.0, 117.0, 20.0 ],
-					"text" : "o.inlet @name main"
+					"text" : "o.in @name main"
 				}
 
 			}
@@ -17714,9 +17714,9 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 1,
-					"outlettype" : [ "" ],
+					"outlettype" : [ "FullPacket" ],
 					"patching_rect" : [ 57.0, 608.0, 125.0, 20.0 ],
-					"text" : "o.outlet @name main"
+					"text" : "o.out @name main"
 				}
 
 			}
@@ -17739,13 +17739,13 @@
 					"maxclass" : "newobj",
 					"numinlets" : 2,
 					"numoutlets" : 3,
-					"outlettype" : [ "jit_matrix", "jit_matrix", "jit_matrix" ],
+					"outlettype" : [ "jit_matrix", "", "jit_matrix" ],
 					"patcher" : 					{
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 6,
 							"minor" : 1,
-							"revision" : 6,
+							"revision" : 3,
 							"architecture" : "x86"
 						}
 ,
@@ -17971,8 +17971,8 @@
 									"id" : "obj-13",
 									"maxclass" : "newobj",
 									"numinlets" : 1,
-									"numoutlets" : 2,
-									"outlettype" : [ "jit_matrix", "" ],
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
 									"patching_rect" : [ 132.000031, 284.969177, 53.0, 17.0 ],
 									"text" : "cv.jit.faces"
 								}
@@ -18346,7 +18346,7 @@
 						"appversion" : 						{
 							"major" : 6,
 							"minor" : 1,
-							"revision" : 6,
+							"revision" : 3,
 							"architecture" : "x86"
 						}
 ,
@@ -19397,117 +19397,6 @@
 					"source" : [ "obj-9", 0 ]
 				}
 
-			}
- ],
-		"dependency_cache" : [ 			{
-				"name" : "o.outlet.maxpat",
-				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions",
-				"patcherrelativepath" : "../../../abstractions",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "o.port.maxpat",
-				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions",
-				"patcherrelativepath" : "../../../abstractions",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "o.let.maxpat",
-				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions/programming",
-				"patcherrelativepath" : "../../../abstractions/programming",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "o.inlet.maxpat",
-				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions",
-				"patcherrelativepath" : "../../../abstractions",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "cv.jit.orientation.maxpat",
-				"bootpath" : "/Applications/Max 6.1/patches/cv.jit-support/Abstractions",
-				"patcherrelativepath" : "../../../../../../Applications/Max 6.1/patches/cv.jit-support/Abstractions",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "cv.jit.features2track.maxpat",
-				"bootpath" : "/Applications/Max 6.1/patches/cv.jit-support/Abstractions",
-				"patcherrelativepath" : "../../../../../../Applications/Max 6.1/patches/cv.jit-support/Abstractions",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "o.message.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.expr.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.var.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.route.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.union.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.if.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "cv.jit.faces.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.collect.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.pack.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.context.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.difference.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.cond.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.prepend.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "cv.jit.moments.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "cv.jit.shift.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "cv.jit.track.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "cv.jit.features.mxo",
-				"type" : "iLaX"
 			}
  ]
 	}
