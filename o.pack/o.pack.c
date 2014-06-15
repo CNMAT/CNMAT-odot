@@ -167,6 +167,7 @@ void opack_doAnything(t_opack *x, t_symbol *msg, short argc, t_atom *argv, int s
 
 void opack_anything(t_opack *x, t_symbol *msg, short argc, t_atom *argv)
 {
+
 	critical_enter(x->lock);
 	int inlet  = proxy_getinlet((t_object *)x);
 	critical_exit(x->lock);
@@ -195,6 +196,15 @@ void opack_bang(t_opack *x)
 {
 	opack_outputBundle(x);
 }
+
+#ifdef OMAX_PD_VERSION
+void opack_symbol(t_opack *x, t_symbol *msg)
+{
+    t_atom a;
+    atom_setsym(&a, msg);
+	opack_anything(x, NULL, 1, &a);
+}
+#endif
 
 void opack_set(t_opack *x, t_symbol *msg, int argc, t_atom *argv)
 {
@@ -399,6 +409,7 @@ int setup_o0x2epack(void)
 	omax_pd_class_addanything(c, (t_method)opack_anything);
 	omax_pd_class_addfloat(c, (t_method)opack_float);
 	omax_pd_class_addbang(c, (t_method)opack_bang);
+    omax_pd_class_addsymbol(c, (t_method)opack_symbol);
 //	omax_pd_class_addmethod(c, (t_method)opack_doc, gensym("doc")); //<<crashes
 
 	opack_proxy_class = c;
