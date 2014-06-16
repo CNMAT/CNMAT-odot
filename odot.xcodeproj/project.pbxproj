@@ -4291,6 +4291,7 @@
 				5292DC3E17FCC6AD00598BDC /* o.io.bluetoothle.sensortag */,
 				52B53D0017484E5500237A19 /* o.iterate */,
 				119FA0A1191D5E91001C3325 /* o.iterate.pd */,
+				9B5FD7D0194EB74A00E0369C /* o.listiter */,
 				5255243A1504D15000A10E5D /* o.mappatch */,
 				119FA0AB191D5E9D001C3325 /* o.mappatch.pd */,
 				112AC85719394255003244E9 /* o.menu.pd */,
@@ -4320,6 +4321,7 @@
 				119FA101191D6010001C3325 /* o.table.pd */,
 				52A8395916EFFBC9002E273C /* o.timetag */,
 				119FA10B191D6027001C3325 /* o.timetag.pd */,
+				9B67861D194BAE98007894BC /* o.uniform */,
 				525524C11504D16100A10E5D /* o.union */,
 				119FA115191D602E001C3325 /* o.union.pd */,
 				525524D01504D16200A10E5D /* o.unless */,
@@ -4331,8 +4333,6 @@
 				525524EE1504D16600A10E5D /* o.when */,
 				119FA133191D6052001C3325 /* o.when.pd */,
 				52F0C47817B581CC009FBD24 /* o.O */,
-				9B67861D194BAE98007894BC /* o.uniform */,
-				9B5FD7D0194EB74A00E0369C /* o.listiter */,
 			);
 		};
 /* End PBXProject section */
