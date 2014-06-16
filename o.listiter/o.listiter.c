@@ -93,8 +93,10 @@ void olistiter_doFullPacket(t_olistiter *x,
             t_osc_message_s* message_match = (t_osc_message_s*)osc_array_get(matches, i);
             t_osc_message_u* unserialized_msg = NULL;
             osc_message_s_deserialize(message_match, &unserialized_msg);
+            
+            int array_length = osc_message_u_getArgCount(unserialized_msg);
 
-            for (int j = 0; j < osc_message_u_getArgCount(unserialized_msg); ++j) {
+            for (int j = 0; j < array_length; ++j) {
                 t_osc_atom_u* iter_atom = NULL;
                 osc_message_u_getArg(unserialized_msg, j, &iter_atom);
                 if (iter_atom) {
@@ -113,7 +115,10 @@ void olistiter_doFullPacket(t_olistiter *x,
                     
                     t_osc_message_u* count = osc_message_u_allocWithAddress("/iterationcount");
                     osc_message_u_appendInt32(count, (j+1));
+                    t_osc_message_u* length = osc_message_u_allocWithAddress("/length");
+                    osc_message_u_appendInt32(length, array_length);
                     osc_bundle_u_addMsg(unserialized_result, count);
+                    osc_bundle_u_addMsg(unserialized_result, length);
                     long serialized_result_length = 0;
                     char* serialized_result = NULL;
                     osc_bundle_u_serialize(unserialized_result, &serialized_result_length, &serialized_result);
@@ -122,10 +127,28 @@ void olistiter_doFullPacket(t_olistiter *x,
                         omax_util_outletOSC(x->outlet, serialized_result_length, serialized_result);
                         osc_mem_free(serialized_result);
                         osc_bundle_u_free(unserialized_result);
+                        unserialized_result = NULL;
                     }
                 }
             }
             osc_message_u_free(unserialized_msg);
+        }
+    } else {
+        t_osc_message_u* count = osc_message_u_allocWithAddress("/iterationcount");
+        osc_message_u_appendInt32(count, 0);
+        t_osc_message_u* length = osc_message_u_allocWithAddress("/length");
+        osc_message_u_appendInt32(length, 0);
+        t_osc_bundle_u* unserialized_result = osc_bundle_u_alloc();
+        osc_bundle_u_addMsg(unserialized_result, count);
+        osc_bundle_u_addMsg(unserialized_result, length);
+        long serialized_result_length = 0;
+        char* serialized_result = NULL;
+        osc_bundle_u_serialize(unserialized_result, &serialized_result_length, &serialized_result);
+        if (serialized_result) {
+            omax_util_outletOSC(x->outlet, serialized_result_length, serialized_result);
+            osc_mem_free(serialized_result);
+            osc_bundle_u_free(unserialized_result);
+            unserialized_result = NULL;
         }
     }
 }
@@ -182,7 +205,9 @@ void *olistiter_new(t_symbol *msg, short argc, t_atom *argv)
 				object_error((t_object *)x, "argument must be an OSC address (symbol)");
 				return NULL;
 			}
-		}
+		} else {
+            object_error((t_object*)x, "o.listiter needs an OSC address as its first argument");
+        }
 		x->outlet = outlet_new((t_object *)x, NULL);
 		critical_new(&(x->lock));
 	}
@@ -190,9 +215,9 @@ void *olistiter_new(t_symbol *msg, short argc, t_atom *argv)
 }
 #ifdef OMAX_PD_VERSION
 
-int setup_o0x2etimetag(void)
+int setup_o0x2elistiter(void)
 {
-	t_class *c = class_new(gensym("o.uniform"), (t_newmethod)olistiter_new, (t_method)olistiter_free, sizeof(t_olistiter), 0L, A_GIMME, 0);
+	t_class *c = class_new(gensym("o.listiter"), (t_newmethod)olistiter_new, (t_method)olistiter_free, sizeof(t_olistiter), 0L, A_GIMME, 0);
     
 	class_addmethod(c, (t_method)olistiter_fullPacket, gensym("FullPacket"), A_GIMME, 0);
 	class_addmethod(c, (t_method)olistiter_anything, gensym("anything"), A_GIMME, 0);
