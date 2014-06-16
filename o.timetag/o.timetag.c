@@ -250,7 +250,8 @@ int setup_o0x2etimetag(void)
 	class_addmethod(c, (t_method)otimetag_bang, gensym("bang"), 0);
 	//class_addmethod(c, (t_method)otimetag_set, gensym("set"), A_GIMME, 0);
 	class_addmethod(c, (t_method)odot_version, gensym("version"), 0);
-    
+    class_addmethod(c, (t_method)otimetag_doc, gensym("doc"), 0);
+
 	otimetag_class = c;
     
 	ps_FullPacket = gensym("FullPacket");
