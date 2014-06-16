@@ -758,6 +758,9 @@ int setup_o0x2etable(void)
 	class_addmethod(c, (t_method)otable_peeklast, gensym("peeklast"), 0);
 	class_addmethod(c, (t_method)otable_peeknth, gensym("peeknth"), A_DEFFLOAT, 0);//<<long
     
+    class_addmethod(c, (t_method)otable_doc, gensym("doc"), 0);
+
+    
 //	CLASS_ATTR_SYM(c, "name", 0, t_otable, name);
 //	CLASS_ATTR_ACCESSORS(c, "name", NULL, otable_setName);
     

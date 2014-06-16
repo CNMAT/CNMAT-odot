@@ -1815,7 +1815,10 @@ static void omessage_save(t_gobj *z, t_binbuf *b)
     
 }
 
-
+void omessage_doc(t_omessage *x)
+{
+	omax_doc_outletDoc(x->outlet);
+}
 
 void omessage_free(t_omessage *x)
 {
@@ -1862,8 +1865,6 @@ void omessage_free(t_omessage *x)
         omessage_clearBundles(x);
         
     }
-    
-    
     
 }
 
@@ -2136,7 +2137,8 @@ void setup_o0x2emessage(void) {
 	omax_pd_class_addmethod(c, (t_method)omessage_list, gensym("list"));
 	omax_pd_class_addanything(c, (t_method)omessage_anything);
 	omax_pd_class_addmethod(c, (t_method)omessage_set, gensym("set"));
-    //	class_addmethod(c, (method)omessage_doc, "doc", 0);
+    omax_pd_class_addmethod(c, (t_method)omessage_doc, gensym("doc"));
+
     
 	omax_pd_class_addmethod(c, (t_method)omessage_fullPacket, gensym("FullPacket"));
     
@@ -2176,10 +2178,6 @@ void omessage_free(t_omessage *x)
 
 OMAX_DICT_DICTIONARY(t_omessage, x, omessage_fullPacket);
 
-void omessage_doc(t_omessage *x)
-{
-	omax_doc_outletDoc(x->outlet);
-}
 
 void omessage_assist(t_omessage *x, void *b, long io, long num, char *buf)
 {

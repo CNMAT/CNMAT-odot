@@ -344,7 +344,7 @@ int setup_o0x2emappatch(void){
     omax_pd_class_addmethod(c, (t_method)omap_list, gensym("list"));
 	omax_pd_class_addanything(c, (t_method)omap_anything);
 	omax_pd_class_addfloat(c, (t_method)omap_float);
-    //	omax_pd_class_addmethod(c, (t_method)opack_doc, gensym("doc")); //<<crashes
+    omax_pd_class_addmethod(c, (t_method)omap_doc, gensym("doc"));
     
 	omap_proxy_class = c;
     
