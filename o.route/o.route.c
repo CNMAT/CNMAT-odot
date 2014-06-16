@@ -367,6 +367,10 @@ void oroute_doc(t_oroute *x)
 	if(x->num_selectors > 0){
 		outlet = x->outlets[x->num_selectors - 1];
 	}
+    
+#ifdef OMAX_PD_VERSION
+    omax_doc_outletDoc(outlet); //<< I think this also works in max, but left JM code just in case -- rama
+#else
 	_omax_doc_outletDoc(outlet,
 			    OMAX_DOC_NAME,		
 			    OMAX_DOC_SHORT_DESC,	
@@ -377,6 +381,7 @@ void oroute_doc(t_oroute *x)
 			    x->outlet_assist_strings,
 			    OMAX_DOC_NUM_SEE_ALSO_REFS,	
 			    OMAX_DOC_SEEALSO);
+#endif
 }
 
 
@@ -391,13 +396,14 @@ void oroute_free(t_oroute *x)
 		for(int i = 0; i < x->num_selectors; i++){
 			if(x->proxy[i]){
 #ifdef OMAX_PD_VERSION
-                pd_free(x->proxy[i]);  //<< I think this is not required for the pd version since they are all new classes?
+                pd_free(x->proxy[i+1]);  //<< I think this is not required for the pd version since they are all new classes?
 #else
                 object_free(x->proxy[i]);
 #endif
 			}
 		}
 #ifdef OMAX_PD_VERSION
+        pd_free(x->proxy[0]);
         free(x->proxy);
 #endif
 	}
@@ -512,20 +518,13 @@ void *oroute_new(t_symbol *msg, short argc, t_atom *argv)
         
 		x->nbytes_selector = 0;
         
-#ifdef ATOMIZE
-        if (argc == 0)
-        {
-            x->proxy = (void **)malloc(1 * sizeof(t_omax_pd_proxy *));
-            x->proxy[0] = proxy_new((t_object *)x, 0, &(x->inlet), oroute_proxy_class);
-        } else {
-#endif
-            
             int i;
-            x->proxy = (void **)malloc(argc * sizeof(t_omax_pd_proxy *));
-            
+            x->proxy = (void **)malloc((argc + 1) * sizeof(t_omax_pd_proxy *));
+            x->proxy[0] = proxy_new((t_object *)x, 0, &(x->inlet), oroute_proxy_class);
+        
             for(i = 0; i < argc; i++){
                 x->outlets[argc - i - 1] = outlet_new(&x->ob, NULL);
-                x->proxy[i] = proxy_new((t_object *)x, i, &(x->inlet), oroute_proxy_class);
+                x->proxy[i+1] = proxy_new((t_object *)x, i+1, &(x->inlet), oroute_proxy_class);
 
                 if(atom_gettype(argv + i) != A_SYM){
                     object_error((t_object *)x, "argument %d is not an OSC address", i);
@@ -540,10 +539,7 @@ void *oroute_new(t_symbol *msg, short argc, t_atom *argv)
                 x->selectors[x->num_selectors - i - 1] = selector;
                 
             }
-#ifdef ATOMIZE
-        }
-#endif
-            
+   
         
         x->delegation_outlet = outlet_new(&x->ob, gensym("FullPacket"));
 
@@ -583,7 +579,7 @@ int setup_o0x2eroute(void)
 	omax_pd_class_addmethod(c, (t_method)oroute_fullPacket, gensym("FullPacket"));
 	omax_pd_class_addanything(c, (t_method)oroute_anything);
 
-    //	omax_pd_class_addmethod(c, (t_method)opack_doc, gensym("doc")); //<<crashes
+    omax_pd_class_addmethod(c, (t_method)oroute_doc, gensym("doc"));
     
 	oroute_proxy_class = c;
     
