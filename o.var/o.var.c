@@ -350,7 +350,7 @@ int setup_o0x2evar(void)
     omax_pd_class_addmethod(c, (t_method)ovar_clear, gensym("clear"));
 	omax_pd_class_addanything(c, (t_method)ovar_anything);
 	omax_pd_class_addbang(c, (t_method)ovar_bang);
-    //	omax_pd_class_addmethod(c, (t_method)opack_doc, gensym("doc")); //<<crashes
+    omax_pd_class_addmethod(c, (t_method)ovar_doc, gensym("doc"));
     
 	ovar_proxy_class = c;
     

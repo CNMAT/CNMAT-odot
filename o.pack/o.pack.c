@@ -248,6 +248,9 @@ void opack_assist(t_opack *x, void *b, long io, long num, char *buf)
 
 void opack_doc(t_opack *x)
 {
+#ifdef OMAX_PD_VERSION
+    omax_doc_outletDoc(x->outlet);
+#else
 	_omax_doc_outletDoc(x->outlet,
                         OMAX_DOC_NAME,
                         OMAX_DOC_SHORT_DESC,
@@ -258,6 +261,7 @@ void opack_doc(t_opack *x)
                         OMAX_DOC_OUTLETS_DESC,	
                         OMAX_DOC_NUM_SEE_ALSO_REFS,	
                         OMAX_DOC_SEEALSO);
+#endif
 }
 
 void opack_free(t_opack *x)
@@ -410,7 +414,7 @@ int setup_o0x2epack(void)
 	omax_pd_class_addfloat(c, (t_method)opack_float);
 	omax_pd_class_addbang(c, (t_method)opack_bang);
     omax_pd_class_addsymbol(c, (t_method)opack_symbol);
-//	omax_pd_class_addmethod(c, (t_method)opack_doc, gensym("doc")); //<<crashes
+	omax_pd_class_addmethod(c, (t_method)opack_doc, gensym("doc"));
 
 	opack_proxy_class = c;
     

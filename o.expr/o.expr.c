@@ -395,7 +395,10 @@ void oexpr_doc_func(t_oexpr *x, t_symbol *msg, int argc, t_atom *argv)
 void oexpr_doc(t_oexpr *x)
 {
 #ifdef OCOND
-	_omax_doc_outletDoc(x->outlets[0],			
+#ifdef OMAX_PD_VERSION
+    omax_doc_outletDoc(x->outlets[0]);
+#else
+	_omax_doc_outletDoc(x->outlets[0],
 			    OMAX_DOC_NAME,		
 			    OMAX_DOC_SHORT_DESC,	
 			    OMAX_DOC_LONG_DESC,		
@@ -405,6 +408,7 @@ void oexpr_doc(t_oexpr *x)
 			    x->outlets_desc,
 			    OMAX_DOC_NUM_SEE_ALSO_REFS,	
 			    OMAX_DOC_SEEALSO);
+#endif
 #else
 #ifdef OIF
 	omax_doc_outletDoc(x->outlets[0]);

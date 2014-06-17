@@ -73,6 +73,7 @@ void oprint_list(t_oprint *x, t_symbol *msg, int argc, t_atom *argv);
 void oprint_free(t_oprint *x);
 void *oprint_new(t_symbol *msg, short argc, t_atom *argv);
 t_max_err oprint_notify(t_oprint *x, t_symbol *s, t_symbol *msg, void *sender, void *data);
+void oprint_doc(t_oprint *x);
 
 
 t_symbol *ps_FullPacket;
@@ -113,7 +114,12 @@ void oprint_fullPacket(t_oprint *x, t_symbol *msg, int argc, t_atom *argv)
 void oprint_anything(t_oprint *x, t_symbol *msg, int argc, t_atom *argv)
 {
 #ifdef OMAX_PD_VERSION
-    post("currently only printing FullPackets in PD");
+    if(msg == gensym("doc"))
+    {
+        oprint_doc(x);
+    }
+    else
+        post("currently only printing FullPackets in PD");
 #else
 	char *buf = NULL;
 	long len = 0;
@@ -169,16 +175,16 @@ void oprint_float(t_oprint *x, double f)
 #ifndef OMAX_PD_VERSION
 OMAX_DICT_DICTIONARY(t_oprint, x, oprint_fullPacket);
 
-void oprint_doc(t_oprint *x)
-{
-	omax_doc_outletDoc(x->outlet);
-}
-
 void oprint_assist(t_oprint *x, void *b, long io, long num, char *buf)
 {
 	omax_doc_assist(io, num, buf);
 }
 #endif
+
+void oprint_doc(t_oprint *x)
+{
+	omax_doc_outletDoc(x->outlet);
+}
 
 void oprint_free(t_oprint *x){
 }
@@ -218,7 +224,7 @@ int setup_o0x2eprint(void){
 	class_addmethod(c, (t_method)oprint_fullPacket, gensym("FullPacket"), A_GIMME, 0);
     
 //	class_addmethod(c, (method)oprint_assist, "assist", A_CANT, 0);
-//	class_addmethod(c, (method)oprint_doc, "doc", 0);
+	class_addmethod(c, (t_method)oprint_doc, gensym("doc"), 0);
 	class_addmethod(c, (t_method)oprint_anything, gensym("anything"), A_GIMME, 0);
 	class_addmethod(c, (t_method)oprint_list, gensym("list"), A_GIMME, 0);
 	class_addmethod(c, (t_method)oprint_int, gensym("int"), A_DEFFLOAT, 0);

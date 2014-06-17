@@ -86,16 +86,17 @@ void opbytes_fullPacket(t_opbytes *x, t_symbol *msg, int argc, t_atom *argv)
 #ifndef OMAX_PD_VERSION
 OMAX_DICT_DICTIONARY(t_opbytes, x, opbytes_fullPacket);
 
-void opbytes_doc(t_opbytes *x)
-{
-	omax_doc_outletDoc(x->outlet);
-}
-
 void opbytes_assist(t_opbytes *x, void *b, long io, long num, char *buf)
 {
 	omax_doc_assist(io, num, buf);
 }
 #endif
+
+void opbytes_doc(t_opbytes *x)
+{
+	omax_doc_outletDoc(x->outlet);
+}
+
 
 void opbytes_free(t_opbytes *x){
 }
@@ -118,7 +119,7 @@ int setup_o0x2eprintbytes(void){
 	class_addmethod(c, (t_method)opbytes_fullPacket, gensym("FullPacket"), A_GIMME, 0);
 	
     
-//	class_addmethod(c, (t_method)opbytes_doc, gensym("doc"), 0);
+	class_addmethod(c, (t_method)opbytes_doc, gensym("doc"), 0);
 //	class_addmethod(c, (t_method)opbytes_assist, gensym("assist"), A_CANT, 0);
     
 	class_addmethod(c, (t_method)odot_version, gensym("version"), 0);
