@@ -1391,6 +1391,8 @@ static void omessage_getrect(t_gobj *z, t_glist *glist,int *xp1, int *yp1, int *
 
 void omessage_drawElements(t_omessage *x, t_glist *glist, int width2, int height2, int firsttime)
 {
+    
+    post("%x %s glist %x canvas %x %s", x, __func__, glist, glist_getcanvas(glist), x->canvas_id);
     if(x->in_new_flag)
     {
         //post("%x %s new bounce ---", x, __func__);
@@ -1424,11 +1426,11 @@ void omessage_drawElements(t_omessage *x, t_glist *glist, int width2, int height
     
     if (glist_isvisible(glist))
     {
-        //post("%x %s %d\n", x, __func__, firsttime);
+        //post("%x %s %d %d\n", x, __func__, firsttime, x->firsttime);
 
         if (firsttime)
         {
-            //post("%x %s FIRST VIS height %d y1 %d y2 %d \n", x, __func__, x->height, y1, y2);
+          //  post("%x %s FIRST VIS height %d y1 %d y2 %d \n", x, __func__, x->height, y1, y2);
 
             //fist time: create canvas elements, then add text, then get text height, and re-draw
             //post("%s drawing firsttime", __func__);
@@ -1544,12 +1546,14 @@ static void omessage_vis(t_gobj *z, t_glist *glist, int vis)
 {
     t_omessage *x = (t_omessage *)z;
     
+    // post("%x %s vis %d firsttime %d", x, __func__, vis, x->firsttime);
+    
     if(vis)
     {
         
         if(!x->firsttime)
         {
-     //       omessage_delete(z, glist);
+            omessage_delete(z, glist); //<< necessary for GOP? keep an eye on this
             x->firsttime = 1;
         }
 
@@ -1589,7 +1593,7 @@ static void omessage_displace(t_gobj *z, t_glist *glist,int dx, int dy)
     //x->ob.te_xpix = x->ob.te_xpix < 0 ? 0 : x->ob.te_xpix;
     //x->ob.te_ypix = x->ob.te_ypix < 0 ? 0 : x->ob.te_ypix;
     
-//    post("%x %s %d %d height %d\n", x, __func__, x->ob.te_xpix, x->ob.te_ypix, x->height );
+    //post("%x %s %d %d height %d\n", x, __func__, x->ob.te_xpix, x->ob.te_ypix, x->height );
     
 //    sys_vgui("::pdwindow::post \"width [winfo width %s] \n xview [%s xview]\n rootx [winfo rootx %s] \n canvasx [%s canvasx 0] \n\"\n", x->canvas_id, x->canvas_id, x->canvas_id, x->canvas_id  );
 //    sys_vgui("::pdwindow::post \"scrollivew [%s cget -scrollregion ] \n\"\n",  x->canvas_id);
@@ -1679,7 +1683,7 @@ static void omessage_select(t_gobj *z, t_glist *glist, int state)
 
 static void omessage_activate(t_gobj *z, t_glist *glist, int state)
 {
-    //    post("%s %d", __func__, state);
+    //post("%s %d", __func__, state);
     
     t_omessage *x = (t_omessage *)z;
     if(state)
@@ -1707,9 +1711,10 @@ static void omessage_delete(t_gobj *z, t_glist *glist)
     t_omessage *x = (t_omessage *)z;
    // omessage_pdnofocus_callback(x);
 //    printf("%s %d %p \n",__func__, x->firsttime, glist->gl_editor);
-    
+      //post("%s %d %p \n",__func__, x->firsttime, glist_getcanvas(glist)->gl_editor);
     if(!x->firsttime && glist_getcanvas(glist)->gl_editor)
     {
+        //post("deleting\n");
         sys_vgui("%s delete %s\n", x->canvas_id, x->border_tag);
         sys_vgui("%s delete %s\n", x->canvas_id, x->corner_tag);
         sys_vgui("%s delete %sTL\n", x->canvas_id, x->corner_tag);
@@ -1874,12 +1879,11 @@ void *omessage_new(t_symbol *msg, short argc, t_atom *argv)
     t_omessage *x = (t_omessage *)pd_new(omessage_class->class);
     if(x)
     {
-//        printf("%s %p %d\n", __func__, x, __LINE__);
-     
         x->in_new_flag = 1;
         
         x->glist = (t_glist *)canvas_getcurrent();
-        
+        post("%s %p %d glist %x canvas %x\n", __func__, x, __LINE__, x->glist, glist_getcanvas(x->glist));
+   
         x->outlet = outlet_new(&x->ob, NULL);
         
         //            x->ob.b_firstin = (void *)x;
@@ -1926,6 +1930,8 @@ void *omessage_new(t_symbol *msg, short argc, t_atom *argv)
             return NULL;
         }
         
+        
+        // NOTE: in Graph On Parent (GOP) situation, the canvas is created AFTER the new function so we need to do this once we know we are in the right canvas context
         //object name heirarchy:
         char buf[MAXPDSTRING];
         sprintf(buf,".x%lx.c", (long unsigned int)glist_getcanvas(x->glist));
