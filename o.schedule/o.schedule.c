@@ -543,6 +543,7 @@ int setup_o0x2eschedule(void)
 	class_addmethod(c, (t_method)osched_fullPacket, gensym("FullPacket"), A_GIMME, 0);
 	class_addmethod(c, (t_method)osched_reset, gensym("reset"), 0);
 	class_addmethod(c, (t_method)odot_version, gensym("version"), 0);
+    class_addmethod(c, (t_method)osched_doc, gensym("doc"), 0);
 	
 /*
 	CLASS_ATTR_FLOAT(c, "precision", 0, t_osched, precision);

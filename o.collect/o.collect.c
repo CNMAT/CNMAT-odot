@@ -176,15 +176,15 @@ void ocoll_clear(t_ocoll *x)
 	critical_exit(x->lock);
 }
 
-void ocoll_doc(t_ocoll *x)
-{
-	omax_doc_outletDoc(x->outlet);
-}
-
 void ocoll_assist(t_ocoll *x, void *b, long io, long num, char *buf){
 	omax_doc_assist(io, num, buf);
 }
 #endif
+
+void ocoll_doc(t_ocoll *x)
+{
+	omax_doc_outletDoc(x->outlet);
+}
 
 void ocoll_free(t_ocoll *x){
 	if(x->buffer){
@@ -224,7 +224,7 @@ int setup_o0x2ecollect(void){
 	t_class *c = class_new(gensym("o.collect"), (t_newmethod)ocoll_new, (t_method)ocoll_free, sizeof(t_ocoll), 0L, A_GIMME, 0);
 
 	class_addmethod(c, (t_method)ocoll_fullPacket, gensym("FullPacket"), A_GIMME, 0);
-//	class_addmethod(c, (t_method)ocoll_doc, "doc", 0);
+	class_addmethod(c, (t_method)ocoll_doc, gensym("doc"), 0);
 //	class_addmethod(c, (t_method)ocoll_assist, "assist", A_CANT, 0);
 	class_addmethod(c, (t_method)ocoll_anything, gensym("anything"), A_GIMME, 0);
 
