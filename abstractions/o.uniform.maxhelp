@@ -38,8 +38,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 28.0, 123.0, 200.0, 33.0 ],
-					"presentation_rect" : [ 142.0, 327.0, 0.0, 0.0 ],
-					"text" : "/r 0.528817\n/thing",
+					"text" : "/r 0.0800211\n/thing",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -53,7 +52,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 158.0, 46.0, 150.0, 20.0 ],
+					"patching_rect" : [ 209.0, 36.0, 150.0, 20.0 ],
 					"text" : "/thing",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
