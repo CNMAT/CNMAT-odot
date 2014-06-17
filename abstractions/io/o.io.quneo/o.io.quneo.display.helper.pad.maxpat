@@ -8,7 +8,7 @@
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 131.0, 55.0, 1109.0, 712.0 ],
+		"rect" : [ 862.0, 97.0, 653.0, 781.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
@@ -33,9 +33,9 @@
 					"fontsize" : 12.0,
 					"id" : "obj-12",
 					"maxclass" : "newobj",
-					"numinlets" : 2,
-					"numoutlets" : 2,
-					"outlettype" : [ "", "FullPacket" ],
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
 					"patching_rect" : [ 287.40625, 15.021118, 69.0, 20.0 ],
 					"text" : "o.select #1"
 				}
@@ -225,9 +225,9 @@
 					"fontsize" : 12.0,
 					"id" : "obj-717",
 					"maxclass" : "newobj",
-					"numinlets" : 2,
-					"numoutlets" : 2,
-					"outlettype" : [ "", "FullPacket" ],
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
 					"patching_rect" : [ 287.40625, 42.271118, 65.0, 20.0 ],
 					"text" : "o.route #1"
 				}
@@ -519,7 +519,7 @@
  ]
 					}
 ,
-					"patching_rect" : [ 145.6875, 143.271118, 60.0, 20.0 ],
+					"patching_rect" : [ 145.6875, 147.271118, 60.0, 20.0 ],
 					"saved_object_attributes" : 					{
 						"default_fontface" : 0,
 						"default_fontname" : "Arial",
@@ -581,7 +581,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 4,
 					"numoutlets" : 1,
-					"outlettype" : [ "FullPacket" ],
+					"outlettype" : [ "" ],
 					"patching_rect" : [ 279.739594, 452.521118, 219.0, 20.0 ],
 					"text" : "o.pak #1/velocity #1/pressure #1/x #1/y"
 				}
@@ -645,11 +645,11 @@
 					"fontsize" : 12.0,
 					"id" : "obj-13",
 					"maxclass" : "newobj",
-					"numinlets" : 6,
+					"numinlets" : 2,
 					"numoutlets" : 1,
-					"outlettype" : [ "" ],
+					"outlettype" : [ "float" ],
 					"patching_rect" : [ 494.90625, 111.0, 95.0, 20.0 ],
-					"text" : "scale 0. 1 0 127"
+					"text" : "* 127."
 				}
 
 			}
@@ -659,11 +659,11 @@
 					"fontsize" : 12.0,
 					"id" : "obj-19",
 					"maxclass" : "newobj",
-					"numinlets" : 6,
+					"numinlets" : 2,
 					"numoutlets" : 1,
-					"outlettype" : [ "" ],
+					"outlettype" : [ "float" ],
 					"patching_rect" : [ 597.90625, 111.0, 95.0, 20.0 ],
-					"text" : "scale 0. 1 0 127"
+					"text" : "* 127."
 				}
 
 			}
@@ -920,33 +920,6 @@
 					"source" : [ "obj-8", 0 ]
 				}
 
-			}
- ],
-		"dependency_cache" : [ 			{
-				"name" : "green-circle.png",
-				"bootpath" : "/Users/gabacheker/Documents/CNMAT_Work/CNMAT_GITHUB/CNMAT-odot/abstractions/io/o.io.quneo",
-				"patcherrelativepath" : ".",
-				"type" : "PNG ",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "yellow-circle.png",
-				"bootpath" : "/Users/gabacheker/Documents/CNMAT_Work/CNMAT_GITHUB/CNMAT-odot/abstractions/io/o.io.quneo",
-				"patcherrelativepath" : ".",
-				"type" : "PNG ",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "o.pak.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.route.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.select.mxo",
-				"type" : "iLaX"
 			}
  ]
 	}
