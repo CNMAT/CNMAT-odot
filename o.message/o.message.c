@@ -757,6 +757,12 @@ void omessage_clear(t_omessage *x)
 	osc_bundle_s_setBundleID(buf);
 	omessage_doFullPacket(x, OSC_HEADER_SIZE, buf);
 }
+
+void omessage_doc(t_omessage *x)
+{
+	omax_doc_outletDoc(x->outlet);
+}
+
 /*
     ...........................................................................................
     ................................  PD VERSION  .............................................
@@ -1815,11 +1821,6 @@ static void omessage_save(t_gobj *z, t_binbuf *b)
     
 }
 
-void omessage_doc(t_omessage *x)
-{
-	omax_doc_outletDoc(x->outlet);
-}
-
 void omessage_free(t_omessage *x)
 {
 //    printf("%s\n", __func__);
@@ -2166,6 +2167,7 @@ void setup_o0x2emessage(void) {
 }
 
 #else
+
 void omessage_free(t_omessage *x)
 {
 	jbox_free((t_jbox *)x);

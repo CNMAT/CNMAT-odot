@@ -583,8 +583,10 @@ void otable_destroydb(t_otable *x, t_otable_db *db)
 		if(db->refcount == 0){
 			osc_hashtab_destroy(db->ht);
 			osc_linkedlist_destroy(db->ll);
-			t_symbol *mangled_name = otable_mangle(x->name);
-			mangled_name->s_thing = NULL;
+			if(x->name){
+				t_symbol *mangled_name = otable_mangle(x->name);
+				mangled_name->s_thing = NULL;
+			}
 			osc_mem_free(db);
 		}
 	}
