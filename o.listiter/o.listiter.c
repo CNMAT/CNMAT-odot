@@ -27,6 +27,7 @@
  COPYRIGHT_YEARS: 2014-ll
  SVN_REVISION: $LastChangedRevision: 587 $
  VERSION 0.0: First try
+ VERSION 0.9: Delegation Outlet; Everything but the nomenclature for the output.-=
  @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
  */
 
@@ -35,7 +36,7 @@
 #define OMAX_DOC_LONG_DESC "o.listiter iterates over a list at a user-defined OSC address."
 #define OMAX_DOC_INLETS_DESC (char *[]){"OSC packet."}
 #define OMAX_DOC_OUTLETS_DESC (char *[]){"OSC packets for each element of the list.", "Delegation outlet - unmatched OSC addresses."}
-#define OMAX_DOC_SEEALSO (char *[]){"o.route"}
+#define OMAX_DOC_SEEALSO (char *[]){"o.iterate"}
 
 #include "odot_version.h"
 #ifdef OMAX_PD_VERSION
@@ -67,6 +68,7 @@ void *olistiter_class;
 
 void olistiter_fullPacket(t_olistiter *x, t_symbol *msg, int argc, t_atom *argv);
 void olistiter_doFullPacket(t_olistiter *x, long len, char *ptr);
+void olistiter_noMatchesOrData(t_olistiter *x);
 void olistiter_bang(t_olistiter *x);
 void olistiter_anything(t_olistiter *x, t_symbol *msg, short argc, t_atom *argv);
 void olistiter_free(t_olistiter *x);
@@ -99,7 +101,11 @@ void olistiter_doFullPacket(t_olistiter *x,
     if (matches) {
         // right outlet:
         osc_bundle_s_removeMessage(x->address->s_name, &dlen, delegate, 1);
-        omax_util_outletOSC(x->outlets[0], dlen, delegate);
+        int message_count = 0;
+        osc_bundle_s_getMsgCount(dlen, delegate, &message_count);
+        if (message_count > 0) {
+            omax_util_outletOSC(x->outlets[0], dlen, delegate);
+        }
         
         // left outlet:
         for (int i = 0; i < osc_array_getLen(matches); ++i) {
@@ -108,69 +114,98 @@ void olistiter_doFullPacket(t_olistiter *x,
             osc_message_s_deserialize(message_match, &unserialized_msg);
             
             int array_length = osc_message_u_getArgCount(unserialized_msg);
-
-            for (int j = 0; j < array_length; ++j) {
-                t_osc_atom_u* iter_atom = NULL;
-                osc_message_u_getArg(unserialized_msg, j, &iter_atom);
-                if (iter_atom) {
-                    t_osc_bundle_u* unserialized_result = NULL;
-                    
-                    char type = osc_atom_u_getTypetag(iter_atom);
-                    
-                    if (type == '.') { // subbundle
-                        osc_bundle_u_copy(&unserialized_result, osc_atom_u_getBndl(iter_atom));
-                    } else { // not a subbundle
-                        unserialized_result = osc_bundle_u_alloc();
-                        t_osc_message_u* value = osc_message_u_allocWithAddress("/anonymous");
-                        osc_message_u_appendAtom(value, iter_atom);
-                        osc_bundle_u_addMsg(unserialized_result, value);
-                    }
-                    
-                    t_osc_message_u* count = osc_message_u_allocWithAddress("/iterationcount");
-                    osc_message_u_appendInt32(count, (j+1));
-                    t_osc_message_u* length = osc_message_u_allocWithAddress("/length");
-                    osc_message_u_appendInt32(length, array_length);
-                    osc_bundle_u_addMsg(unserialized_result, count);
-                    osc_bundle_u_addMsg(unserialized_result, length);
-                    long serialized_result_length = 0;
-                    char* serialized_result = NULL;
-                    osc_bundle_u_serialize(unserialized_result, &serialized_result_length, &serialized_result);
-                    
-                    if (serialized_result) {
-                        omax_util_outletOSC(x->outlets[1], serialized_result_length, serialized_result);
-                        osc_mem_free(serialized_result);
-                        osc_bundle_u_free(unserialized_result);
+            if (array_length > 0)
+            {
+                for (int j = 0; j < array_length; ++j)
+                {
+                    t_osc_atom_u* iter_atom = NULL;
+                    osc_message_u_getArg(unserialized_msg, j, &iter_atom);
+                    t_osc_atom_u* atom_copy = NULL;
+                    osc_atom_u_copy(&atom_copy, iter_atom);
+                    if (atom_copy)
+                    {
+                        t_osc_bundle_u* unserialized_result = NULL;
+                        char type = osc_atom_u_getTypetag(atom_copy);
+                        if (type == '.')
+                        {
+                            // subbundle
+                            osc_bundle_u_copy(&unserialized_result, osc_atom_u_getBndl(atom_copy));
+                        }
+                        else
+                        {
+                            // not a subbundle
+                            unserialized_result = osc_bundle_u_alloc();
+                            t_osc_message_u* value = osc_message_u_allocWithAddress("/anonymous");
+                            osc_message_u_appendAtom(value, atom_copy);
+                            osc_bundle_u_addMsg(unserialized_result, value);
+                        }
+                        
+                        t_osc_message_u* count = osc_message_u_allocWithAddress("/iterationcount");
+                        osc_message_u_appendInt32(count, (j+1));
+                        t_osc_message_u* length = osc_message_u_allocWithAddress("/length");
+                        osc_message_u_appendInt32(length, array_length);
+                        osc_bundle_u_addMsg(unserialized_result, count);
+                        osc_bundle_u_addMsg(unserialized_result, length);
+                        long serialized_result_length = 0;
+                        char* serialized_result = NULL;
+                        osc_bundle_u_serialize(unserialized_result, &serialized_result_length, &serialized_result);
+                        osc_bundle_u_free(unserialized_result); // frees value, count, length
                         unserialized_result = NULL;
+                        osc_atom_u_free(atom_copy);
+                        atom_copy = NULL;
+                        
+                        if (serialized_result)
+                        {
+                            omax_util_outletOSC(x->outlets[1], serialized_result_length, serialized_result);
+                            osc_mem_free(serialized_result);
+                            serialized_result = NULL;
+                        }
                     }
                 }
+                osc_message_u_free(unserialized_msg);
+            } else {
+                olistiter_noMatchesOrData(x);
             }
-            osc_message_u_free(unserialized_msg);
         }
     } else {
         // right outlet:
-        omax_util_outletOSC(x->outlets[0], dlen, delegate);
+        int message_count = 0;
+        osc_bundle_s_getMsgCount(dlen, delegate, &message_count);
+        if (message_count > 0) {
+            omax_util_outletOSC(x->outlets[0], dlen, delegate);
+        }
         
         // left outlet:
-        t_osc_message_u* count = osc_message_u_allocWithAddress("/iterationcount");
-        osc_message_u_appendInt32(count, 0);
-        t_osc_message_u* length = osc_message_u_allocWithAddress("/length");
-        osc_message_u_appendInt32(length, 0);
-        t_osc_bundle_u* unserialized_result = osc_bundle_u_alloc();
-        osc_bundle_u_addMsg(unserialized_result, count);
-        osc_bundle_u_addMsg(unserialized_result, length);
-        
-        long serialized_result_length = 0;
-        char* serialized_result = NULL;
-        osc_bundle_u_serialize(unserialized_result, &serialized_result_length, &serialized_result);
-        
-        if (serialized_result) {
-            omax_util_outletOSC(x->outlets[1], serialized_result_length, serialized_result);
-            osc_mem_free(serialized_result);
-            osc_bundle_u_free(unserialized_result);
-            unserialized_result = NULL;
-        }
+        olistiter_noMatchesOrData(x);
     }
-    osc_mem_free(delegate);
+    
+    if (matches) {
+        osc_array_free(matches);
+    }
+}
+
+void olistiter_noMatchesOrData(t_olistiter *x)
+{
+    // left outlet only!
+    t_osc_message_u* count = osc_message_u_allocWithAddress("/iterationcount");
+    osc_message_u_appendInt32(count, 0);
+    t_osc_message_u* length = osc_message_u_allocWithAddress("/length");
+    osc_message_u_appendInt32(length, 0);
+    t_osc_bundle_u* unserialized_result = osc_bundle_u_alloc();
+    osc_bundle_u_addMsg(unserialized_result, count);
+    osc_bundle_u_addMsg(unserialized_result, length);
+    
+    long serialized_result_length = 0;
+    char* serialized_result = NULL;
+    osc_bundle_u_serialize(unserialized_result, &serialized_result_length, &serialized_result);
+    osc_bundle_u_free(unserialized_result);
+    unserialized_result = NULL;
+    
+    if (serialized_result) {
+        omax_util_outletOSC(x->outlets[1], serialized_result_length, serialized_result);
+        osc_mem_free(serialized_result);
+        serialized_result = NULL;
+    }
 }
 
 void olistiter_bang(t_olistiter *x)
