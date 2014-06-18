@@ -270,7 +270,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 221.0, 390.0, 95.0, 20.0 ],
+					"patching_rect" : [ 236.0, 390.0, 95.0, 20.0 ],
 					"text" : "o.print delegate"
 				}
 
@@ -312,8 +312,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 90.0, 315.0, 150.0, 20.0 ],
-					"text" : "o.listiter /foo"
+					"patching_rect" : [ 90.0, 315.0, 118.0, 20.0 ],
+					"text" : "o.listenumerate /foo"
 				}
 
 			}
@@ -428,7 +428,7 @@
 			}
  ],
 		"dependency_cache" : [ 			{
-				"name" : "o.listiter.mxo",
+				"name" : "o.listenumerate.mxo",
 				"type" : "iLaX"
 			}
 , 			{
