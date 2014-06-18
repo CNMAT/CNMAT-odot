@@ -21,7 +21,7 @@
  
  
  @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
- NAME: o.listiter
+ NAME: o.listenumerate
  DESCRIPTION: Spit out dedicated subbundles for every element of a list at a user-defined OSC address.
  AUTHORS: Ilya Y. Rostovtsev
  COPYRIGHT_YEARS: 2014-ll
@@ -31,9 +31,9 @@
  @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
  */
 
-#define OMAX_DOC_NAME "o.listiter"
+#define OMAX_DOC_NAME "o.listenumerate"
 #define OMAX_DOC_SHORT_DESC "Iterate over a list at a user-defined OSC address"
-#define OMAX_DOC_LONG_DESC "o.listiter iterates over a list at a user-defined OSC address."
+#define OMAX_DOC_LONG_DESC "o.listenumerate iterates over a list at a user-defined OSC address."
 #define OMAX_DOC_INLETS_DESC (char *[]){"OSC packet."}
 #define OMAX_DOC_OUTLETS_DESC (char *[]){"OSC packets for each element of the list.", "Delegation outlet - unmatched OSC addresses."}
 #define OMAX_DOC_SEEALSO (char *[]){"o.iterate"}
@@ -56,35 +56,35 @@
 
 #include "o.h"
 
-typedef struct _olistiter{
+typedef struct _olistenumerate{
 	t_object ob;
 	void **outlets;
 	t_symbol *address;
 	t_critical lock;
-} t_olistiter;
+} t_olistenumerate;
 
 
-void *olistiter_class;
+void *olistenumerate_class;
 
-void olistiter_fullPacket(t_olistiter *x, t_symbol *msg, int argc, t_atom *argv);
-void olistiter_doFullPacket(t_olistiter *x, long len, char *ptr);
-void olistiter_noMatchesOrData(t_olistiter *x);
-void olistiter_bang(t_olistiter *x);
-void olistiter_anything(t_olistiter *x, t_symbol *msg, short argc, t_atom *argv);
-void olistiter_free(t_olistiter *x);
-void olistiter_assist(t_olistiter *x, void *b, long io, long num, char *buf);
-void *olistiter_new(t_symbol *msg, short argc, t_atom *argv);
+void olistenumerate_fullPacket(t_olistenumerate *x, t_symbol *msg, int argc, t_atom *argv);
+void olistenumerate_doFullPacket(t_olistenumerate *x, long len, char *ptr);
+void olistenumerate_noMatchesOrData(t_olistenumerate *x);
+void olistenumerate_bang(t_olistenumerate *x);
+void olistenumerate_anything(t_olistenumerate *x, t_symbol *msg, short argc, t_atom *argv);
+void olistenumerate_free(t_olistenumerate *x);
+void olistenumerate_assist(t_olistenumerate *x, void *b, long io, long num, char *buf);
+void *olistenumerate_new(t_symbol *msg, short argc, t_atom *argv);
 
 t_symbol *ps_FullPacket;
 
-void olistiter_fullPacket(t_olistiter *x, t_symbol *msg, int argc, t_atom *argv)
+void olistenumerate_fullPacket(t_olistenumerate *x, t_symbol *msg, int argc, t_atom *argv)
 {
 	OMAX_UTIL_GET_LEN_AND_PTR;
 	osc_bundle_s_wrap_naked_message(len, ptr);
-	olistiter_doFullPacket(x, len, ptr);
+	olistenumerate_doFullPacket(x, len, ptr);
 }
 
-void olistiter_doFullPacket(t_olistiter *x,
+void olistenumerate_doFullPacket(t_olistenumerate *x,
                            long len,
                            char *ptr)
 {
@@ -126,25 +126,31 @@ void olistiter_doFullPacket(t_olistiter *x,
                     {
                         t_osc_bundle_u* unserialized_result = NULL;
                         char type = osc_atom_u_getTypetag(atom_copy);
+                        unserialized_result = osc_bundle_u_alloc();
                         if (type == '.')
                         {
                             // subbundle
-                            osc_bundle_u_copy(&unserialized_result, osc_atom_u_getBndl(atom_copy));
+                            t_osc_bundle_u* subbundle = NULL;
+                            osc_bundle_u_copy(&subbundle, osc_atom_u_getBndl(atom_copy));
+                            t_osc_message_u* value = osc_message_u_allocWithAddress("/value");
+                            osc_message_u_appendBndl_u(value, subbundle);
+                            osc_bundle_u_addMsg(unserialized_result, value);
                         }
                         else
                         {
                             // not a subbundle
-                            unserialized_result = osc_bundle_u_alloc();
-                            t_osc_message_u* value = osc_message_u_allocWithAddress("/anonymous");
+                            t_osc_message_u* value = osc_message_u_allocWithAddress("/value");
                             osc_message_u_appendAtom(value, atom_copy);
                             osc_bundle_u_addMsg(unserialized_result, value);
                         }
                         
-                        t_osc_message_u* count = osc_message_u_allocWithAddress("/iterationcount");
-                        osc_message_u_appendInt32(count, (j+1));
+                        t_osc_message_u* address = osc_message_u_allocWithString("/address", x->address->s_name);
+                        t_osc_message_u* index = osc_message_u_allocWithAddress("/index");
+                        osc_message_u_appendInt32(index, j);
                         t_osc_message_u* length = osc_message_u_allocWithAddress("/length");
                         osc_message_u_appendInt32(length, array_length);
-                        osc_bundle_u_addMsg(unserialized_result, count);
+                        osc_bundle_u_addMsg(unserialized_result, address);
+                        osc_bundle_u_addMsg(unserialized_result, index);
                         osc_bundle_u_addMsg(unserialized_result, length);
                         long serialized_result_length = 0;
                         char* serialized_result = NULL;
@@ -164,7 +170,7 @@ void olistiter_doFullPacket(t_olistiter *x,
                 }
                 osc_message_u_free(unserialized_msg);
             } else {
-                olistiter_noMatchesOrData(x);
+                olistenumerate_noMatchesOrData(x);
             }
         }
     } else {
@@ -176,7 +182,7 @@ void olistiter_doFullPacket(t_olistiter *x,
         }
         
         // left outlet:
-        olistiter_noMatchesOrData(x);
+        olistenumerate_noMatchesOrData(x);
     }
     
     if (matches) {
@@ -184,10 +190,10 @@ void olistiter_doFullPacket(t_olistiter *x,
     }
 }
 
-void olistiter_noMatchesOrData(t_olistiter *x)
+void olistenumerate_noMatchesOrData(t_olistenumerate *x)
 {
     // left outlet only!
-    t_osc_message_u* count = osc_message_u_allocWithAddress("/iterationcount");
+    t_osc_message_u* count = osc_message_u_allocWithAddress("/index");
     osc_message_u_appendInt32(count, 0);
     t_osc_message_u* length = osc_message_u_allocWithAddress("/length");
     osc_message_u_appendInt32(length, 0);
@@ -208,12 +214,12 @@ void olistiter_noMatchesOrData(t_olistiter *x)
     }
 }
 
-void olistiter_bang(t_olistiter *x)
+void olistenumerate_bang(t_olistenumerate *x)
 {
-	olistiter_doFullPacket(x, OSC_HEADER_SIZE, OSC_EMPTY_HEADER);
+	olistenumerate_doFullPacket(x, OSC_HEADER_SIZE, OSC_EMPTY_HEADER);
 }
 
-void olistiter_anything(t_olistiter *x, t_symbol *selector, short argc, t_atom *argv)
+void olistenumerate_anything(t_olistenumerate *x, t_symbol *selector, short argc, t_atom *argv)
 {
 	t_osc_msg_u *msg = NULL;
 	t_osc_err e = omax_util_maxAtomsToOSCMsg_u(&msg, selector, argc, argv);
@@ -227,27 +233,29 @@ void olistiter_anything(t_olistiter *x, t_symbol *selector, short argc, t_atom *
 	char *buf = NULL;
 	osc_bundle_u_serialize(bndl, &len, &buf);
 	if(buf){
-		olistiter_doFullPacket(x, len, buf);
+		olistenumerate_doFullPacket(x, len, buf);
 		osc_mem_free(buf);
 	}
 	osc_bundle_u_free(bndl);
 }
 
-void olistiter_doc(t_olistiter *x)
+void olistenumerate_doc(t_olistenumerate *x)
 {
 	omax_doc_outletDoc(x->outlets[0]);
 }
 
-void olistiter_free(t_olistiter *x)
+void olistenumerate_free(t_olistenumerate *x)
 {
 	critical_free(x->lock);
-    free(x->outlets);
+    if (x->outlets) {
+        free(x->outlets);
+    }
 }
 
-void *olistiter_new(t_symbol *msg, short argc, t_atom *argv)
+void *olistenumerate_new(t_symbol *msg, short argc, t_atom *argv)
 {
-	t_olistiter *x;
-	if((x = (t_olistiter *)object_alloc(olistiter_class))){
+	t_olistenumerate *x;
+	if((x = (t_olistenumerate *)object_alloc(olistenumerate_class))){
 		x->address = NULL;
 		if(argc){
 			if(atom_gettype(argv) == A_SYM){
@@ -266,7 +274,8 @@ void *olistiter_new(t_symbol *msg, short argc, t_atom *argv)
             x->outlets[1] = outlet_new((t_object*)x, NULL);
             critical_new(&(x->lock));
 		} else {
-            object_error((t_object*)x, "o.listiter needs an OSC address as its first argument");
+            object_error((t_object*)x, "o.listenumerate needs an OSC address as its first argument");
+            return NULL;
         }
 	}
 	return x;
@@ -275,14 +284,14 @@ void *olistiter_new(t_symbol *msg, short argc, t_atom *argv)
 
 int setup_o0x2elistiter(void)
 {
-	t_class *c = class_new(gensym("o.listiter"), (t_newmethod)olistiter_new, (t_method)olistiter_free, sizeof(t_olistiter), 0L, A_GIMME, 0);
+	t_class *c = class_new(gensym("o.listenumerate"), (t_newmethod)olistenumerate_new, (t_method)olistenumerate_free, sizeof(t_olistenumerate), 0L, A_GIMME, 0);
     
-	class_addmethod(c, (t_method)olistiter_fullPacket, gensym("FullPacket"), A_GIMME, 0);
-	class_addmethod(c, (t_method)olistiter_anything, gensym("anything"), A_GIMME, 0);
-	class_addmethod(c, (t_method)olistiter_bang, gensym("bang"), 0);
+	class_addmethod(c, (t_method)olistenumerate_fullPacket, gensym("FullPacket"), A_GIMME, 0);
+	class_addmethod(c, (t_method)olistenumerate_anything, gensym("anything"), A_GIMME, 0);
+	class_addmethod(c, (t_method)olistenumerate_bang, gensym("bang"), 0);
 	class_addmethod(c, (t_method)odot_version, gensym("version"), 0);
     
-	olistiter_class = c;
+	olistenumerate_class = c;
     
 	ps_FullPacket = gensym("FullPacket");
 	ODOT_PRINT_VERSION;
@@ -291,24 +300,24 @@ int setup_o0x2elistiter(void)
 
 #else
 
-void olistiter_assist(t_olistiter *x, void *b, long io, long num, char *buf)
+void olistenumerate_assist(t_olistenumerate *x, void *b, long io, long num, char *buf)
 {
 	omax_doc_assist(io, num, buf);
 }
 
-OMAX_DICT_DICTIONARY(t_olistiter, x, olistiter_fullPacket);
+OMAX_DICT_DICTIONARY(t_olistenumerate, x, olistenumerate_fullPacket);
 
 
 int main(void)
 {
-	t_class *c = class_new("o.listiter", (method)olistiter_new, (method)olistiter_free, sizeof(t_olistiter), 0L, A_GIMME, 0);
+	t_class *c = class_new("o.listenumerate", (method)olistenumerate_new, (method)olistenumerate_free, sizeof(t_olistenumerate), 0L, A_GIMME, 0);
     
-	class_addmethod(c, (method)olistiter_fullPacket, "FullPacket", A_GIMME, 0);
-	class_addmethod(c, (method)olistiter_assist, "assist", A_CANT, 0);
-	class_addmethod(c, (method)olistiter_anything, "anything", A_GIMME, 0);
-	class_addmethod(c, (method)olistiter_bang, "bang", 0);
+	class_addmethod(c, (method)olistenumerate_fullPacket, "FullPacket", A_GIMME, 0);
+	class_addmethod(c, (method)olistenumerate_assist, "assist", A_CANT, 0);
+	class_addmethod(c, (method)olistenumerate_anything, "anything", A_GIMME, 0);
+	class_addmethod(c, (method)olistenumerate_bang, "bang", 0);
 	class_addmethod(c, (method)odot_version, "version", 0);
-	class_addmethod(c, (method)olistiter_doc, "doc", 0);
+	class_addmethod(c, (method)olistenumerate_doc, "doc", 0);
     
 	if(omax_dict_resolveDictStubs()){
 		//class_addmethod(c, (method)omax_util_dictionary, "dictionary", A_SYM, 0);
@@ -316,7 +325,7 @@ int main(void)
 	}
     
 	class_register(CLASS_BOX, c);
-	olistiter_class = c;
+	olistenumerate_class = c;
     
 	common_symbols_init();
 	ps_FullPacket = gensym("FullPacket");
