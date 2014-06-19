@@ -31,13 +31,29 @@
 				"box" : 				{
 					"fontname" : "Arial",
 					"fontsize" : 14.0,
+					"id" : "obj-8",
+					"maxclass" : "o.message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 406.933411, 750.928162, 113.0, 22.0 ],
+					"presentation_rect" : [ 406.933411, 750.928162, 0.0, 0.0 ],
+					"text" : "/n 21",
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 14.0,
 					"id" : "obj-6",
 					"maxclass" : "o.message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 837.933411, 342.928162, 113.0, 22.0 ],
-					"text" : "/n 22",
+					"text" : "/n 21",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -60,25 +76,13 @@
 , 			{
 				"box" : 				{
 					"fontname" : "Arial",
-					"fontsize" : 20.0,
-					"id" : "obj-13",
-					"maxclass" : "newobj",
-					"numinlets" : 0,
-					"numoutlets" : 0,
-					"patching_rect" : [ 252.0, 390.0, 100.0, 29.0 ]
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontname" : "Arial",
 					"fontsize" : 14.0,
 					"id" : "obj-12",
 					"maxclass" : "o.message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 162.933411, 230.928162, 113.0, 22.0 ],
+					"patching_rect" : [ 269.933411, 752.928162, 113.0, 22.0 ],
 					"text" : "/n 20",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -108,7 +112,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 86.933411, 194.928162, 113.0, 22.0 ],
+					"patching_rect" : [ 232.933411, 719.928162, 113.0, 22.0 ],
 					"text" : "/n 12",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -124,8 +128,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 56.0, 340.558777, 316.0, 53.0 ],
-					"text" : "/n 7\n/factorial 5040\n/t 'i'",
+					"patching_rect" : [ 63.0, 862.558777, 316.0, 53.0 ],
+					"text" : "/n 21\n/factorial 5.10909e+19.\n/t 'd'",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -140,7 +144,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 95.0, 288.558777, 247.0, 48.0 ],
+					"patching_rect" : [ 225.0, 786.558777, 247.0, 48.0 ],
 					"text" : "/factorial  = product(aseq(1,/n));\n/t = typetags(/factorial)",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -196,12 +200,12 @@
 					"fontname" : "Arial",
 					"fontsize" : 14.0,
 					"id" : "obj-1",
-					"linecount" : 10,
+					"linecount" : 6,
 					"maxclass" : "o.message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 572.14093, 859.425293, 108.0, 163.0 ],
+					"patching_rect" : [ 572.14093, 859.425293, 388.0, 100.0 ],
 					"text" : "/n 7\n/factorial/function \"lambda(n)\n { \n    if( n>0, n * apply(/factorial/function, n - 1), 1);\n }\"\n/factorial 5040",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -245,8 +249,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 757.378845, 663.973999, 155.0, 38.0 ],
-					"text" : "/n 7\n/factorial 5040",
+					"patching_rect" : [ 757.378845, 663.973999, 239.0, 38.0 ],
+					"text" : "/n 21\n/factorial 14197454024290336768",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -318,7 +322,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 211.504684, 469.925049, 110.0, 22.0 ],
+					"patching_rect" : [ 231.504684, 449.925049, 110.0, 22.0 ],
 					"text" : "counting down"
 				}
 
@@ -333,8 +337,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 662.461121, 737.335571, 347.0, 85.0 ],
-					"text" : "/factorial/function= \"lambda(n)\n { \n    if( n>0, n * apply(/factorial/function, n - 1), 1);\n }\";\n/factorial = apply(/factorial/function, /n);",
+					"patching_rect" : [ 624.461121, 724.335571, 406.0, 85.0 ],
+					"text" : " /factorial/function= \"lambda(n)\n { \n    if( n>0, n * apply(/factorial/function, n - 1), 1);\n }\";\n/factorial = apply(/factorial/function, /n);",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -478,8 +482,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 426.640991, 628.725281, 108.0, 38.0 ],
-					"text" : "/n 7\n/factorial 5040",
+					"patching_rect" : [ 426.640991, 628.725281, 285.0, 38.0 ],
+					"text" : "/n 21\n/factorial 14197454024290336768",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -548,13 +552,13 @@
 					"fontname" : "Arial",
 					"fontsize" : 14.0,
 					"id" : "obj-30",
-					"linecount" : 2,
+					"linecount" : 3,
 					"maxclass" : "o.message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 176.0, 515.558777, 189.0, 38.0 ],
-					"text" : "/n 1\n/factorial 5040",
+					"patching_rect" : [ 176.0, 515.558777, 189.0, 53.0 ],
+					"text" : "/n 1\n/factorial 14197454024290336768",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -994,6 +998,15 @@
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-7", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-7", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-8", 0 ]
 				}
 
 			}
