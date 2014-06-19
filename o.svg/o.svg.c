@@ -22,7 +22,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 NAME: o.svg
-DESCRIPTION: Collect OSC messages and bundles
+DESCRIPTION: SVG Rendering???
 AUTHORS: John MacCallum
 COPYRIGHT_YEARS: 2011
 SVN_REVISION: $LastChangedRevision: 587 $
