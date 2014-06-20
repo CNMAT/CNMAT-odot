@@ -508,11 +508,11 @@
 					"fontsize" : 12.0,
 					"id" : "obj-5",
 					"maxclass" : "newobj",
-					"numinlets" : 6,
-					"numoutlets" : 6,
-					"outlettype" : [ "", "", "", "", "", "FullPacket" ],
-					"patching_rect" : [ 161.0, 576.0, 250.0, 20.0 ],
-					"text" : "o.select /o_port /o_in /o_out /o_inlet /o_outlet"
+					"numinlets" : 3,
+					"numoutlets" : 3,
+					"outlettype" : [ "", "", "FullPacket" ],
+					"patching_rect" : [ 161.0, 576.0, 152.0, 20.0 ],
+					"text" : "o.select /o_port /o_dummy"
 				}
 
 			}
@@ -703,6 +703,15 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-5", 2 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-17", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-19", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
@@ -797,7 +806,7 @@
 					"destination" : [ "obj-2", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"source" : [ "obj-5", 5 ]
+					"source" : [ "obj-5", 2 ]
 				}
 
 			}

@@ -160,7 +160,6 @@
 					}
 ,
 					"patching_rect" : [ 464.0, 144.0, 102.0, 20.0 ],
-					"presentation_rect" : [ 464.0, 140.0, 0.0, 0.0 ],
 					"saved_object_attributes" : 					{
 						"default_fontface" : 0,
 						"default_fontname" : "Arial",
@@ -214,7 +213,6 @@
 						"description" : "",
 						"digest" : "",
 						"tags" : "",
-						"visible" : 1,
 						"boxes" : [ 							{
 								"box" : 								{
 									"fontname" : "Arial",
@@ -660,7 +658,7 @@
 							"architecture" : "x86"
 						}
 ,
-						"rect" : [ 70.0, 340.0, 821.0, 185.0 ],
+						"rect" : [ 70.0, 340.0, 821.0, 214.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -679,8 +677,21 @@
 						"description" : "",
 						"digest" : "",
 						"tags" : "",
-						"visible" : 1,
 						"boxes" : [ 							{
+								"box" : 								{
+									"fontname" : "Arial",
+									"fontsize" : 12.0,
+									"id" : "obj-2",
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "FullPacket" ],
+									"patching_rect" : [ 16.0, 48.0, 239.0, 20.0 ],
+									"text" : "o.when bound(/o_outlet/this/patcher/name)"
+								}
+
+							}
+, 							{
 								"box" : 								{
 									"fontname" : "Arial",
 									"fontsize" : 12.0,
@@ -689,7 +700,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 580.0, 144.0, 79.0, 20.0 ],
+									"patching_rect" : [ 580.0, 176.0, 79.0, 20.0 ],
 									"text" : "o.table outlet"
 								}
 
@@ -703,7 +714,7 @@
 									"numinlets" : 5,
 									"numoutlets" : 5,
 									"outlettype" : [ "", "", "", "", "FullPacket" ],
-									"patching_rect" : [ 312.0, 112.0, 287.0, 20.0 ],
+									"patching_rect" : [ 312.0, 144.0, 287.0, 20.0 ],
 									"text" : "o.route /o_outlet /o_inlet /o_port /o_aspect_joinpoint"
 								}
 
@@ -717,7 +728,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 3,
 									"outlettype" : [ "FullPacket", "FullPacket", "FullPacket" ],
-									"patching_rect" : [ 16.0, 80.0, 611.0, 20.0 ],
+									"patching_rect" : [ 16.0, 112.0, 611.0, 20.0 ],
 									"text" : "o.cond /o_port/type == inlet\\; /o_port/type == outlet"
 								}
 
@@ -731,7 +742,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 608.0, 112.0, 202.0, 20.0 ],
+									"patching_rect" : [ 608.0, 144.0, 202.0, 20.0 ],
 									"text" : "remove aspect and port related data"
 								}
 
@@ -745,7 +756,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 336.0, 48.0, 150.0, 20.0 ],
+									"patching_rect" : [ 336.0, 80.0, 150.0, 20.0 ],
 									"text" : "specify what to log"
 								}
 
@@ -759,7 +770,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 284.0, 144.0, 72.0, 20.0 ],
+									"patching_rect" : [ 284.0, 176.0, 72.0, 20.0 ],
 									"text" : "o.table inlet"
 								}
 
@@ -773,7 +784,7 @@
 									"numinlets" : 5,
 									"numoutlets" : 5,
 									"outlettype" : [ "", "", "", "", "FullPacket" ],
-									"patching_rect" : [ 16.0, 112.0, 287.0, 20.0 ],
+									"patching_rect" : [ 16.0, 144.0, 287.0, 20.0 ],
 									"text" : "o.route /o_outlet /o_inlet /o_port /o_aspect_joinpoint"
 								}
 
@@ -787,7 +798,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "FullPacket" ],
-									"patching_rect" : [ 16.0, 48.0, 297.0, 20.0 ],
+									"patching_rect" : [ 16.0, 80.0, 297.0, 20.0 ],
 									"text" : "o.when /o_outlet/this/patcher/name == o.demo.aspect"
 								}
 
@@ -809,10 +820,19 @@
  ],
 						"lines" : [ 							{
 								"patchline" : 								{
-									"destination" : [ "obj-3", 0 ],
+									"destination" : [ "obj-2", 0 ],
 									"disabled" : 0,
 									"hidden" : 0,
 									"source" : [ "obj-1", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-3", 0 ],
+									"disabled" : 0,
+									"hidden" : 0,
+									"source" : [ "obj-2", 0 ]
 								}
 
 							}
@@ -893,7 +913,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 111.0, 160.0, 329.0, 87.0 ],
-					"text" : "/foo 10\n/bar 20\n/_aspect/profile\n/o.demo.aspect/inlet/time 2014-05-27T06:57:25.727578Z\n/o.demo.aspect/outlet/time 2014-05-27T06:57:26.729853Z\n/o.demo.aspect/elapsed 1.00228\n",
+					"text" : "/foo 131\n/bar 20\n/_aspect/profile\n/o.demo.aspect/inlet/time 2014-06-20T02:44:26.656107Z\n/o.demo.aspect/outlet/time 2014-06-20T02:44:26.657392Z\n/o.demo.aspect/elapsed 0.00128501\n",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -1006,57 +1026,57 @@
 			}
 , 			{
 				"name" : "o.in.maxpat",
-				"bootpath" : "/Users/john/Development/CNMAT/CNMAT/CNMAT-odot/abstractions",
-				"patcherrelativepath" : "../abstractions",
+				"bootpath" : "/Users/john/Development/CNMAT/CNMAT/CNMAT-odot/abstractions/core",
+				"patcherrelativepath" : "../abstractions/core",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.port.maxpat",
-				"bootpath" : "/Users/john/Development/CNMAT/CNMAT/CNMAT-odot/abstractions",
-				"patcherrelativepath" : "../abstractions",
+				"bootpath" : "/Users/john/Development/CNMAT/CNMAT/CNMAT-odot/abstractions/core",
+				"patcherrelativepath" : "../abstractions/core",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.aspect.joinpoint.maxpat",
-				"bootpath" : "/Users/john/Development/CNMAT/CNMAT/CNMAT-odot/abstractions/aspect",
-				"patcherrelativepath" : "../abstractions/aspect",
+				"bootpath" : "/Users/john/Development/CNMAT/CNMAT/CNMAT-odot/experimental/aspect",
+				"patcherrelativepath" : "../experimental/aspect",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.out.maxpat",
-				"bootpath" : "/Users/john/Development/CNMAT/CNMAT/CNMAT-odot/abstractions",
-				"patcherrelativepath" : "../abstractions",
+				"bootpath" : "/Users/john/Development/CNMAT/CNMAT/CNMAT-odot/abstractions/core",
+				"patcherrelativepath" : "../abstractions/core",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.aspect.profile.maxpat",
-				"bootpath" : "/Users/john/Development/CNMAT/CNMAT/CNMAT-odot/abstractions/aspect",
-				"patcherrelativepath" : "../abstractions/aspect",
+				"bootpath" : "/Users/john/Development/CNMAT/CNMAT/CNMAT-odot/experimental/aspect",
+				"patcherrelativepath" : "../experimental/aspect",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.aspect.receive.maxpat",
-				"bootpath" : "/Users/john/Development/CNMAT/CNMAT/CNMAT-odot/abstractions/aspect",
-				"patcherrelativepath" : "../abstractions/aspect",
+				"bootpath" : "/Users/john/Development/CNMAT/CNMAT/CNMAT-odot/experimental/aspect",
+				"patcherrelativepath" : "../experimental/aspect",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.aspect.send.maxpat",
-				"bootpath" : "/Users/john/Development/CNMAT/CNMAT/CNMAT-odot/abstractions/aspect",
-				"patcherrelativepath" : "../abstractions/aspect",
+				"bootpath" : "/Users/john/Development/CNMAT/CNMAT/CNMAT-odot/experimental/aspect",
+				"patcherrelativepath" : "../experimental/aspect",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.aspect.print.maxpat",
-				"bootpath" : "/Users/john/Development/CNMAT/CNMAT/CNMAT-odot/abstractions/aspect",
-				"patcherrelativepath" : "../abstractions/aspect",
+				"bootpath" : "/Users/john/Development/CNMAT/CNMAT/CNMAT-odot/experimental/aspect",
+				"patcherrelativepath" : "../experimental/aspect",
 				"type" : "JSON",
 				"implicit" : 1
 			}
