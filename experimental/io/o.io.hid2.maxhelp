@@ -4,11 +4,11 @@
 		"appversion" : 		{
 			"major" : 6,
 			"minor" : 1,
-			"revision" : 4,
+			"revision" : 6,
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 521.0, 97.0, 972.0, 552.0 ],
+		"rect" : [ 468.0, 97.0, 972.0, 552.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 11.0,
@@ -76,13 +76,11 @@
 					"fontname" : "Arial",
 					"fontsize" : 11.0,
 					"id" : "obj-4",
-					"linecount" : 8,
 					"maxclass" : "o.message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 490.0, 392.0, 260.0, 105.0 ],
-					"text" : "/hi/device/0 \"OSCulator HID 2\"\n/hi/device/1 \"OSCulator HID 1\"\n/hi/device/2 \"Apple Mikey HID Driver\"\n/hi/device/3 \"Apple IR\"\n/hi/device/4 \"Apple Internal Keyboard / Trackpad\"\n/hi/device/5 \"Apple Internal Keyboard / Trackpad 2\"\n/hi/device/6 \"Apple Internal Keyboard / Trackpad 3\"\n/hi/device/7 \"Apple Internal Keyboard / Trackpad 4\"",
+					"patching_rect" : [ 490.0, 392.0, 260.0, 19.0 ],
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -145,8 +143,15 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "o.io.hid2.maxpat",
-				"bootpath" : "/Users/rama/Documents/__CNMAT/cnmat-git/CNMAT-odot/testing/io",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/experimental/io",
 				"patcherrelativepath" : ".",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "thru.maxpat",
+				"bootpath" : "/Applications/Max 6.1/patches/m4l-patches/Pluggo for Live resources/patches",
+				"patcherrelativepath" : "../../../../../Applications/Max 6.1/patches/m4l-patches/Pluggo for Live resources/patches",
 				"type" : "JSON",
 				"implicit" : 1
 			}
@@ -159,11 +164,11 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "o.route.mxo",
+				"name" : "o.collect.mxo",
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "o.collect.mxo",
+				"name" : "o.route.mxo",
 				"type" : "iLaX"
 			}
 , 			{
