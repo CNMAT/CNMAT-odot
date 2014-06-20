@@ -86,7 +86,7 @@ void oprint_fullPacket(t_oprint *x, t_symbol *msg, int argc, t_atom *argv)
 	long buflen = 0;
 	char *buf = NULL;
 	osc_bundle_s_format(len, (char *)ptr, &buflen, &buf);
-	post("[");
+	post("%s: [", x->myname->s_name);
 	if(buflen == 0){
 		post("<empty bundle>");
 	}else{
@@ -104,7 +104,7 @@ void oprint_fullPacket(t_oprint *x, t_symbol *msg, int argc, t_atom *argv)
 			}
 		}
 	}
-	post("]");
+	post("%s: ]", x->myname->s_name);
 	if(buf){
 		osc_mem_free(buf);
 	}

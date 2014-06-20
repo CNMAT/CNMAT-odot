@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 6,
 			"minor" : 1,
-			"revision" : 6,
+			"revision" : 4,
 			"architecture" : "x86"
 		}
 ,
@@ -28,32 +28,6 @@
 		"digest" : "",
 		"tags" : "",
 		"boxes" : [ 			{
-				"box" : 				{
-					"fontname" : "Arial",
-					"fontsize" : 12.0,
-					"id" : "obj-33",
-					"maxclass" : "message",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 274.0, 652.0, 225.0, 18.0 ],
-					"text" : "read /Users/Adrian2013/inigo_walks.osc"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontname" : "Arial",
-					"fontsize" : 12.0,
-					"id" : "obj-9",
-					"maxclass" : "newobj",
-					"numinlets" : 0,
-					"numoutlets" : 0,
-					"patching_rect" : [ 329.0, 629.0, 100.0, 20.0 ]
-				}
-
-			}
-, 			{
 				"box" : 				{
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
@@ -205,7 +179,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 0,
 					"numoutlets" : 4,
-					"outlettype" : [ "", "", "", "clear" ],
+					"outlettype" : [ "", "", "", "" ],
 					"patching_rect" : [ 425.5, 16.0, 163.0, 20.0 ],
 					"text" : "o.helpfilehelper @obj o.table"
 				}
@@ -827,15 +801,6 @@
 					"destination" : [ "obj-1", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"source" : [ "obj-33", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-1", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
 					"midpoints" : [ 172.0, 626.0, 54.5, 626.0 ],
 					"source" : [ "obj-4", 0 ]
 				}
@@ -881,13 +846,6 @@
 			}
  ],
 		"dependency_cache" : [ 			{
-				"name" : "o.helpfilehelper.maxpat",
-				"bootpath" : "/Users/adrian2013/CNMAT-odot/overview",
-				"patcherrelativepath" : "../overview",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
 				"name" : "o.table.mxo",
 				"type" : "iLaX"
 			}
@@ -901,10 +859,6 @@
 			}
 , 			{
 				"name" : "o.print.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.route.mxo",
 				"type" : "iLaX"
 			}
  ]
