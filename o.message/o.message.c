@@ -769,7 +769,7 @@ void omessage_doc(t_omessage *x)
 
 void omessage_setHeight(t_omessage *x, float y)
 {
-    int h = ((int)y - x->ob.te_ypix + 5);
+    int h = ((int)y - text_ypix(&x->ob, x->glist) + 5);
     h = (h > 23) ? h : 23;
 
     //post("%x %s y %f te_ypix %d ", x, __func__, y, x->ob.te_ypix);
@@ -1369,7 +1369,6 @@ void omessage_resetText(t_omessage *x, char *s)
 
 static void omessage_getrect(t_gobj *z, t_glist *glist,int *xp1, int *yp1, int *xp2, int *yp2)
 {
-    //post("%s", __func__);
     t_omessage *x = (t_omessage *)z;
     int x1, y1, x2, y2;
     
@@ -1392,13 +1391,15 @@ static void omessage_getrect(t_gobj *z, t_glist *glist,int *xp1, int *yp1, int *
     *yp1 = y1;
     *xp2 = x2;
     *yp2 = y2;
+    //post("%s %d %d %d %d", __func__, x1, y1, x2, y2);
+
 }
 
 
 void omessage_drawElements(t_omessage *x, t_glist *glist, int width2, int height2, int firsttime)
 {
     
-    //post("%x %s glist %x canvas %x", x, __func__, glist, glist_getcanvas(glist));
+   // post("%x %s glist %x canvas %x", x, __func__, glist, glist_getcanvas(glist));
     if(x->in_new_flag)
     {
         //post("%x %s new bounce ---", x, __func__);
@@ -1583,7 +1584,7 @@ static void omessage_vis(t_gobj *z, t_glist *glist, int vis)
     }
     else
     {
-        if(!x->firsttime)
+        //if(!x->firsttime)
         {
             omessage_delete(z, glist);
         }
@@ -1742,7 +1743,7 @@ static void omessage_delete(t_gobj *z, t_glist *glist)
         glist_eraseiofor(glist, &x->ob, x->iolets_tag);
     }
     
-    canvas_deletelinesfor(glist_getcanvas(glist), &x->ob);
+    canvas_deletelinesfor(canvas, &x->ob);
     
 }
 

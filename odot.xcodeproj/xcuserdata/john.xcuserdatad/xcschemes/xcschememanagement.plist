@@ -49,6 +49,11 @@
 			<key>orderHint</key>
 			<integer>51</integer>
 		</dict>
+		<key>o.change copy.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>52</integer>
+		</dict>
 		<key>o.change.pd.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -98,6 +103,11 @@
 		<dict>
 			<key>orderHint</key>
 			<integer>55</integer>
+		</dict>
+		<key>o.downcast.pd.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>54</integer>
 		</dict>
 		<key>o.downcast.xcscheme</key>
 		<dict>
@@ -198,6 +208,16 @@
 		<dict>
 			<key>orderHint</key>
 			<integer>24</integer>
+		</dict>
+		<key>o.listenumerate.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>57</integer>
+		</dict>
+		<key>o.listiter.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>56</integer>
 		</dict>
 		<key>o.mappatch.pd.xcscheme</key>
 		<dict>
@@ -339,6 +359,11 @@
 			<key>orderHint</key>
 			<integer>42</integer>
 		</dict>
+		<key>o.uniform.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>53</integer>
+		</dict>
 		<key>o.union.pd.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -358,6 +383,11 @@
 		<dict>
 			<key>orderHint</key>
 			<integer>69</integer>
+		</dict>
+		<key>o.validate.pd.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>55</integer>
 		</dict>
 		<key>o.validate.xcscheme</key>
 		<dict>
@@ -523,6 +553,16 @@
 			<true/>
 		</dict>
 		<key>11EF2AC618AFEBB900156403</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>11F7B52B194C48EF0090045B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>11FC8B02194C417F00635118</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -727,6 +767,11 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>52AA36F4194B7D21009A1920</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>52ABA7D717E661F900D0E5C9</key>
 		<dict>
 			<key>primary</key>
@@ -778,6 +823,21 @@
 			<true/>
 		</dict>
 		<key>52F0C47817B581CC009FBD24</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9B5FD7D0194EB74A00E0369C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9B67861D194BAE98007894BC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9BB5E9D11952570000932005</key>
 		<dict>
 			<key>primary</key>
 			<true/>

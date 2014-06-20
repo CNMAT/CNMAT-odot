@@ -22,9 +22,9 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 NAME: o.svg
-DESCRIPTION: SVG Rendering???
-AUTHORS: John MacCallum
-COPYRIGHT_YEARS: 2011
+DESCRIPTION: SVG file to OSC bundle conversion
+AUTHORS: Rama Gottfried
+COPYRIGHT_YEARS: 2013
 SVN_REVISION: $LastChangedRevision: 587 $
 VERSION 0.0: First try
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
