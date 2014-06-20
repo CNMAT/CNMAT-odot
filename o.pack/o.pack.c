@@ -139,25 +139,9 @@ void opack_doAnything(t_opack *x, t_symbol *msg, short argc, t_atom *argv, int s
     t_symbol *sym;
 #endif
 	for(i = 0; i < argc; i++){
-		switch(atom_gettype(argv + i)){
-		case A_FLOAT:
-			osc_message_u_appendDouble(x->messages[messagenum], atom_getfloat(argv + i));
-			break;
-		case A_LONG:
-			osc_message_u_appendInt32(x->messages[messagenum], atom_getlong(argv + i));
-			break;
-		case A_SYM:
-#ifdef OMAX_PD_VERSION
-            sym = atom_getsym(argv + i);
-            char buf[ strlen(sym->s_name) ];
-            strcpy(buf, sym->s_name);
-            omax_util_hashBrackets2Curlies(buf);
-            osc_message_u_appendString(x->messages[messagenum], buf);
-#else
-            osc_message_u_appendString(x->messages[messagenum], atom_getsym(argv + i)->s_name);
-#endif
-			break;
-		}
+		t_osc_atom_u *a = NULL;
+		omax_util_maxAtomToOSCAtom_u(&a, argv + i);
+		osc_message_u_appendAtom(x->messages[messagenum], a);
 	}
 	critical_exit(x->lock);
 	if(shouldOutput){

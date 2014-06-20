@@ -1,13 +1,51 @@
-OBJECT_LIST = o.append o.atomize o.change o.collect o.cond o.dict o.difference o.explode o.expr o.flatten o.if \
-o.intersection o.mappatch o.message o.pack o.pak o.prepend o.print o.printbytes o.route o.schedule o.select o.table \
-o.timetag o.union o.unless o.var o.when
+COBJECT_LIST = o.append \
+o.atomize \
+o.change \
+o.collect \
+o.cond \
+o.context \
+o.dict \
+o.difference \
+o.downcast \
+o.explode \
+o.expr \
+o.expr.codebox \
+o.flatten \
+o.if \
+o.intersection \
+o.iterate \
+o.listenumerate \
+o.mappatch \
+o.message \
+o.pack \
+o.pak \
+o.prepend \
+o.print \
+o.printbytes \
+o.route \
+o.schedule \
+o.select \
+o.table \
+o.timetag \
+o.union \
+o.unless \
+o.validate \
+o.var \
+o.when
 
-PATCHDIRS = help demos abstractions deprecated overview
+MOBJECT_LIST = o.io.bluetoothle
+
+OBJECT_LIST = $(COBJECT_LIST) $(MOBJECT_LIST)
+
+PATCHDIRS = help demos abstractions deprecated overview experimental
 #TEXTFILES = README_ODOT.txt
 
 VPATH = $(OBJECT_LIST)
 
-CFILES = $(foreach f, $(OBJECT_LIST), $(f)/$(f).c)
+CFILES = $(foreach f, $(COBJECT_LIST), $(f)/$(f).c)
+MFILES = $(foreach f, $(MOBJECT_LIST), $(f)/$(f).m)
+
+CODE_FILES = $(CFILES) $(MFILES)
 
 C74SUPPORT = ../max6-sdk/c74support
 MAX_INCLUDES = $(C74SUPPORT)/max-includes
@@ -43,7 +81,7 @@ SERVER_PATH = /home/www-data/berkeley.edu-cnmat.www/maxdl/files/odot
 ##################################################
 ## Mac specific
 ##################################################
-all: $(CFILES) $(CURRENT_VERSION_FILE)
+all: $(CODE_FILES) $(CURRENT_VERSION_FILE)
 	xcodebuild -target "Build all" -project odot.xcodeproj -configuration Release
 
 ##################################################
@@ -71,6 +109,9 @@ release: $(DIRS) $(OBJECTS) $(ARCHIVE)
 
 $(ARCHIVE): $(STAGED_PRODUCTS)
 	tar zvcf $(ARCHIVE) $(STAGINGDIR)
+
+.PHONY: archive
+archive: $(ARCHIVE)
 
 .PHONY: clean
 clean: 
