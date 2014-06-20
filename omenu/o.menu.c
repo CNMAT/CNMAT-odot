@@ -30,6 +30,9 @@
 
 #include "o.h"
 
+#define OMAX_PD_MAXSTRINGSIZE (1<<16)
+
+
 static t_class *omenu_class;
 
 typedef struct _omenu {
@@ -177,6 +180,21 @@ void omenu_setMenu(t_omenu *x)
         t_osc_msg_s *msg = osc_bndl_it_s_next(it);
         int natoms = omax_util_getNumAtomsInOSCMsg(msg);
         t_atom atoms[natoms];
+        
+        char buf[OMAX_PD_MAXSTRINGSIZE];
+        char *ptr = buf;
+        int i;
+        for(i=0; i<natoms; i++)
+        {
+            if(atom_gettype(atoms+i) == A_SYM)
+            {
+                strcpy(buf, atom_getsym(atoms+i)->s_name);
+                omax_util_curlies2hashBrackets(&ptr, OMAX_PD_MAXSTRINGSIZE);
+                atom_setsym(atoms+i, gensym(buf));
+                //post("%s",buf);
+            }
+        }
+        
         if(omax_util_oscMsg2MaxAtoms(msg, atoms))
         {
             object_error((t_object *)x, "pure data does not like { }, hopefully someone will fix this eventually\n");
@@ -251,8 +269,8 @@ static void omenu_getrect(t_gobj *z, t_glist *glist,int *xp1, int *yp1, int *xp2
     
     *xp1 = text_xpix(&x->ob, glist);
     *yp1 = text_ypix(&x->ob, glist);
-    *xp2 = x->ob.te_xpix + x->width;
-    *yp2 = x->ob.te_ypix + x->height;
+    *xp2 = *xp1 + x->width;
+    *yp2 = *yp1 + x->height;
 
 }
 
@@ -452,6 +470,30 @@ static int omenu_click(t_gobj *z, t_glist *glist, int xpix, int ypix, int shift,
     return 1;
 }
 
+void omenu_makeTK_namespace(t_gobj *z, t_glist *glist)
+{
+    t_omenu *x = (t_omenu *)z;
+    
+    x->glist = glist;
+    
+    char buf[MAXPDSTRING];
+    sprintf(buf,".x%lx.c", (long unsigned int)glist_getcanvas(x->glist));
+    x->canvas_id = NULL;
+    x->canvas_id = (char *)malloc(sizeof(char) * (strlen(buf)+1));
+    strcpy(x->canvas_id, buf);
+    
+    sprintf(buf, "%s.w%lxdropdown", x->canvas_id, (long)x);
+    x->m_id = NULL;
+    x->m_id = (char *)malloc(sizeof(char) * (strlen(buf)+1));
+    strcpy(x->m_id, buf);
+    
+    sprintf(buf, "%s.c%lxcanvas", x->m_id, (long)x);
+    x->m_canvas_id = NULL;
+    x->m_canvas_id = (char *)malloc(sizeof(char) * (strlen(buf)+1));
+    strcpy(x->m_canvas_id, buf);
+
+}
+
 void omenu_vis(t_gobj *z, t_glist *glist, int flag)
 {
 //    post("%s %d", __func__, flag);
@@ -461,9 +503,13 @@ void omenu_vis(t_gobj *z, t_glist *glist, int flag)
         t_omenu *x = (t_omenu *)z;
         int x1, x2, y1, y2;
     
+        if(x->exists == 0)
+            omenu_makeTK_namespace(z, glist);
+        
         //store canvas binding for reset?
         omenu_getrect((t_gobj *)x, x->glist, &x1, &y1, &x2, &y2);
         omenu_setMenu(x);
+        
         
         sys_vgui("%s create rectangle %d %d %d %d -tags %s -fill #f8f8f6 \n", x->canvas_id, x1, y1, x2, y2, x->button_tag);
 
@@ -480,14 +526,14 @@ void omenu_vis(t_gobj *z, t_glist *glist, int flag)
         x->exists = 1;
 
     } else {
-//        omenu_delete(z, glist);
+        omenu_delete(z, glist);
     }
 }
 
 static void omenu_select(t_gobj *z, t_glist *glist, int state)
 {
     t_omenu *x = (t_omenu *)z;
-    
+
     if (glist_isvisible(glist) && gobj_shouldvis(&x->ob.te_g, glist)){
         sys_vgui(".x%lx.c itemconfigure %s -outline %s\n", glist, x->button_tag, (state? "blue" : "black"));
         sys_vgui(".x%lx.c itemconfigure mtext%s -fill %s\n", glist, x->button_tag, (state? "blue" : "black"));
@@ -567,20 +613,6 @@ void *omenu_new(t_symbol *msg, short argc, t_atom *argv)
         }
         
         char buf[MAXPDSTRING];
-        sprintf(buf,".x%lx.c", (long unsigned int)glist_getcanvas(x->glist));
-        x->canvas_id = NULL;
-        x->canvas_id = (char *)malloc(sizeof(char) * (strlen(buf)+1));
-        strcpy(x->canvas_id, buf);
-            
-        sprintf(buf, "%s.w%lxdropdown", x->canvas_id, (long)x);
-        x->m_id = NULL;
-        x->m_id = (char *)malloc(sizeof(char) * (strlen(buf)+1));
-        strcpy(x->m_id, buf);
-
-        sprintf(buf, "%s.c%lxcanvas", x->m_id, (long)x);
-        x->m_canvas_id = NULL;
-        x->m_canvas_id = (char *)malloc(sizeof(char) * (strlen(buf)+1));
-        strcpy(x->m_canvas_id, buf);
         
         sprintf(buf, "%lxomenu", (long unsigned int)x);
         x->button_tag = NULL;
