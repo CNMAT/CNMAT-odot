@@ -285,6 +285,15 @@ void sliplist(t_oslipserial *x, struct symbol *s, int argc, struct atom *argv)
 OMAX_DICT_DICTIONARY(t_oslipserial, x, oslipserial_FullPacket);
 #endif
 
+void oslipserial_assist(t_oslipserial *x, void *b, long m, long a, char *dst) {
+	omax_doc_assist(m, a, dst);
+}
+
+void oslipserial_doc(t_oslipserial *x)
+{
+	omax_doc_outletDoc(x->outlet);
+}
+
 void myobject_free(t_oslipserial *x);
 void myobject_free(t_oslipserial *x)
 {
@@ -293,30 +302,32 @@ void myobject_free(t_oslipserial *x)
 
 int main (void)
 {  
-	oslipserial_class = class_new(OMAX_DOC_NAME, (method) oslipserial_new,(method) myobject_free,(short)sizeof(t_oslipserial),0L,A_DEFLONG,0);
+	t_class *c = class_new(OMAX_DOC_NAME, (method) oslipserial_new,(method) myobject_free,(short)sizeof(t_oslipserial),0L,A_DEFLONG,0);
   
-	class_addmethod(oslipserial_class, (method)oslipserial_assist, "assist", A_CANT,0);
-	class_addmethod(oslipserial_class, (method)odot_version, "version", 0);
+	class_addmethod(c, (method)oslipserial_assist, "assist", A_CANT,0);
+	class_addmethod(c, (method)odot_version, "version", 0);
+	class_addmethod(c, (method)oslipserial_doc, "doc", 0);
 
 #ifdef OSLIPSERIAL_DECODE  
-	class_addmethod(oslipserial_class, (method)slipbyte, "int", A_LONG, 0);
-	class_addmethod(oslipserial_class, (method)sliplist, "list", A_GIMME, 0);
+	class_addmethod(c, (method)slipbyte, "int", A_LONG, 0);
+	class_addmethod(c, (method)sliplist, "list", A_GIMME, 0);
 #endif
   
-	class_addmethod(oslipserial_class, (method)oslipserial_printcontents, "printcontents", 0);
+	class_addmethod(c, (method)oslipserial_printcontents, "printcontents", 0);
 #ifdef OSLIPSERIAL_ENCODE
-	class_addmethod(oslipserial_class, (method)oslipserial_FullPacket, "FullPacket", A_LONG, A_LONG, 0);
+	class_addmethod(c, (method)oslipserial_FullPacket, "FullPacket", A_LONG, A_LONG, 0);
 #endif
 
 	// remove this if statement when we stop supporting Max 5
 #ifdef OSLIPSERIAL_ENCODE
 	if(omax_dict_resolveDictStubs()){
-		class_addmethod(oslipserial_class, (method)omax_dict_dictionary, "dictionary", A_GIMME, 0);
+		class_addmethod(c, (method)omax_dict_dictionary, "dictionary", A_GIMME, 0);
 	}
 #endif
 	finder_addclass("Devices","slipOSC");
 
-	class_register(CLASS_BOX, oslipserial_class);
+	class_register(CLASS_BOX, c);
+	oslipserial_class = c;
 
 	ODOT_PRINT_VERSION;
 	return 0;
@@ -338,15 +349,6 @@ void *oslipserial_new(long arg) {
 	critical_new(&(x->lock));
   
 	return x;
-}
-
-void oslipserial_assist(t_oslipserial *x, void *b, long m, long a, char *dst) {
-	omax_doc_assist(m, a, dst);
-}
-
-void oslipserial_doc(t_oslipserial *x)
-{
-	omax_doc_outletDoc(x->outlet);
 }
 
 #define MAX_ARGS_TO_oslipserial_MSG 1024
