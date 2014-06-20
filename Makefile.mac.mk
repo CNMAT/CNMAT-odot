@@ -14,7 +14,7 @@ o.flatten \
 o.if \
 o.intersection \
 o.iterate \
-o.listiter \
+o.listenumerate \
 o.mappatch \
 o.message \
 o.pack \
@@ -46,8 +46,6 @@ CFILES = $(foreach f, $(COBJECT_LIST), $(f)/$(f).c)
 MFILES = $(foreach f, $(MOBJECT_LIST), $(f)/$(f).m)
 
 CODE_FILES = $(CFILES) $(MFILES)
-
-$(info $(CODE_FILES))
 
 C74SUPPORT = ../max6-sdk/c74support
 MAX_INCLUDES = $(C74SUPPORT)/max-includes
