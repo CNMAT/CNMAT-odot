@@ -1,8 +1,6 @@
-#N canvas 200 200 200 400 10;
-#X obj 41 25 omessage 100 23 binhex b#2F666F6F203120;
-#X obj 41 75 oexpr /foo += 1 \;;
-#X obj 41 125 omessage 100 23 binhex b#2F666F6F20322E20;
-#X obj 41 175 omessage 100 23 binhex b#2F666F6F20322E20;
-#X connect 0 0 1 0;
-#X connect 1 0 2 1;
-#X connect 2 0 3 0;
+#N canvas 442 225 758 310 10;
+#X obj 30 135 omessage 150.0 10 binhex b#2f666f6f203220;
+#X obj 30 75 oexpr /foo += 1\;, f 18.1818181818;
+#X obj 30 30 omessage 150.0 10 binhex b#2f666f6f20310a2f626172203220;
+#X connect 2 0 1 0;
+#X connect 1 0 0 1;

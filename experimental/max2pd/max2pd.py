@@ -39,7 +39,7 @@ def get_pd_object(box):
         result = '#X floatatom {0} {1} {2} {3} {4} 0 - - -, f {2};'.format(int(dim[0]), int(dim[1]), dim[2] / 5.5, minimum, maximum)
         return result
     if mc == 'o.message':
-        result = "#X obj {0} {1} {2} {3} 10 binhex b#{4}20;".format(int(dim[0]), int(dim[1]), mc, dim[2] / 5.5, b['text'].encode('hex'))
+        result = "#X obj {0} {1} {2} {3} 10 binhex b#{4}20;".format(int(dim[0]), int(dim[1]), mc, dim[2], b['text'].encode('hex'))
         return result
     if mc == 'toggle':
         result = "#X obj {0} {1} tgl {2} 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1;".format(int(dim[0]), int(dim[1]), int(dim[2]) )
