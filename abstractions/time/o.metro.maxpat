@@ -8,7 +8,7 @@
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 427.0, 79.0, 1013.0, 736.0 ],
+		"rect" : [ 167.0, 79.0, 1013.0, 736.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -28,6 +28,21 @@
 		"digest" : "",
 		"tags" : "",
 		"boxes" : [ 			{
+				"box" : 				{
+					"fontname" : "Helvetica Neue",
+					"fontsize" : 12.0,
+					"frgb" : 0.0,
+					"id" : "obj-19",
+					"linecount" : 3,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 313.0, 647.0, 150.0, 48.0 ],
+					"text" : "Ilya \nAdrian\n2014"
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"fontname" : "Helvetica Neue",
 					"fontsize" : 12.0,
@@ -88,7 +103,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 1,
-					"outlettype" : [ "bang" ],
+					"outlettype" : [ "FullPacket" ],
 					"patcher" : 					{
 						"fileversion" : 1,
 						"appversion" : 						{
@@ -98,7 +113,7 @@
 							"architecture" : "x86"
 						}
 ,
-						"rect" : [ 522.0, 232.0, 640.0, 480.0 ],
+						"rect" : [ 0.0, 44.0, 1440.0, 779.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -121,12 +136,40 @@
 								"box" : 								{
 									"fontname" : "Helvetica Neue",
 									"fontsize" : 12.0,
+									"id" : "obj-4",
+									"maxclass" : "message",
+									"numinlets" : 2,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 264.0, 347.0, 37.0, 18.0 ],
+									"text" : "reset"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"fontname" : "Helvetica Neue",
+									"fontsize" : 12.0,
+									"id" : "obj-2",
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "FullPacket" ],
+									"patching_rect" : [ 303.0, 410.0, 62.0, 20.0 ],
+									"text" : "o.forward"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"fontname" : "Helvetica Neue",
+									"fontsize" : 12.0,
 									"frgb" : 0.0,
 									"id" : "obj-46",
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 240.0, 407.5, 88.0, 20.0 ],
+									"patching_rect" : [ 242.0, 463.5, 88.0, 20.0 ],
 									"text" : "outputs bangs"
 								}
 
@@ -152,10 +195,10 @@
 									"id" : "obj-43",
 									"maxclass" : "newobj",
 									"numinlets" : 1,
-									"numoutlets" : 2,
-									"outlettype" : [ "", "reset" ],
-									"patching_rect" : [ 210.0, 75.0, 375.0, 20.0 ],
-									"text" : "t l reset"
+									"numoutlets" : 8,
+									"outlettype" : [ "FullPacket", "FullPacket", "FullPacket", "FullPacket", "FullPacket", "FullPacket", "FullPacket", "FullPacket" ],
+									"patching_rect" : [ 210.0, 75.0, 113.5, 20.0 ],
+									"text" : "o.righttoleft"
 								}
 
 							}
@@ -178,21 +221,7 @@
 									"maxclass" : "outlet",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 210.0, 405.0, 25.0, 25.0 ]
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"fontname" : "Helvetica Neue",
-									"fontsize" : 12.0,
-									"id" : "obj-38",
-									"maxclass" : "newobj",
-									"numinlets" : 1,
-									"numoutlets" : 1,
-									"outlettype" : [ "bang" ],
-									"patching_rect" : [ 210.0, 375.0, 25.0, 20.0 ],
-									"text" : "t b"
+									"patching_rect" : [ 212.0, 461.0, 25.0, 25.0 ]
 								}
 
 							}
@@ -207,7 +236,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 20.0, 167.0, 190.0, 62.0 ],
-									"text" : "init functions;\nnote that /metro/started is offset by 0.01 seconds to avoid missed schedule on the first event."
+									"text" : "init functions;\nnote that /metro/started is offset by 0.01 seconds to provide bounded latency on first tick."
 								}
 
 							}
@@ -220,7 +249,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "FullPacket" ],
-									"patching_rect" : [ 210.0, 120.0, 119.0, 20.0 ],
+									"patching_rect" : [ 210.0, 145.0, 119.0, 20.0 ],
 									"text" : "o.when /interval > 0."
 								}
 
@@ -234,7 +263,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 3,
 									"outlettype" : [ "FullPacket", "FullPacket", "FullPacket" ],
-									"patching_rect" : [ 210.0, 315.0, 135.0, 20.0 ],
+									"patching_rect" : [ 212.0, 371.0, 135.0, 20.0 ],
 									"text" : "o.schedule /metro/next"
 								}
 
@@ -262,8 +291,8 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "FullPacket" ],
-									"patching_rect" : [ 210.0, 270.0, 349.0, 20.0 ],
-									"text" : "o.expr /metro/next = /n * /metro/interval + /metro/started\\; ++/n\\;"
+									"patching_rect" : [ 210.0, 270.0, 314.0, 20.0 ],
+									"text" : "o.expr /metro/next = /n * /interval + /metro/started\\; ++/n\\;"
 								}
 
 							}
@@ -293,6 +322,16 @@
 							}
 , 							{
 								"patchline" : 								{
+									"destination" : [ "obj-6", 0 ],
+									"disabled" : 0,
+									"hidden" : 0,
+									"midpoints" : [ 312.5, 447.0, 546.0, 447.0, 546.0, 345.0, 546.0, 345.0, 546.0, 247.0, 219.5, 247.0 ],
+									"source" : [ "obj-2", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
 									"destination" : [ "obj-1", 0 ],
 									"disabled" : 0,
 									"hidden" : 0,
@@ -302,10 +341,10 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-39", 0 ],
+									"destination" : [ "obj-9", 0 ],
 									"disabled" : 0,
 									"hidden" : 0,
-									"source" : [ "obj-38", 0 ]
+									"source" : [ "obj-4", 0 ]
 								}
 
 							}
@@ -329,11 +368,11 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-9", 0 ],
+									"destination" : [ "obj-4", 0 ],
 									"disabled" : 0,
 									"hidden" : 0,
-									"midpoints" : [ 575.5, 300.0, 219.5, 300.0 ],
-									"source" : [ "obj-43", 1 ]
+									"midpoints" : [ 314.0, 105.0, 583.0, 105.0, 583.0, 255.0, 583.0, 255.0, 583.0, 333.0, 273.5, 333.0 ],
+									"source" : [ "obj-43", 7 ]
 								}
 
 							}
@@ -357,7 +396,16 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-38", 0 ],
+									"destination" : [ "obj-2", 0 ],
+									"disabled" : 0,
+									"hidden" : 0,
+									"source" : [ "obj-9", 1 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-2", 0 ],
 									"disabled" : 0,
 									"hidden" : 0,
 									"source" : [ "obj-9", 0 ]
@@ -366,10 +414,18 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-6", 0 ],
+									"destination" : [ "obj-39", 0 ],
 									"disabled" : 0,
 									"hidden" : 0,
-									"midpoints" : [ 219.5, 359.0, 180.0, 359.0, 180.0, 256.0, 219.5, 256.0 ],
+									"source" : [ "obj-9", 1 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-39", 0 ],
+									"disabled" : 0,
+									"hidden" : 0,
 									"source" : [ "obj-9", 0 ]
 								}
 
@@ -404,8 +460,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 209.0, 555.0, 125.0, 20.0 ],
-					"text" : "o.var"
+					"patching_rect" : [ 209.0, 571.0, 50.0, 20.0 ],
+					"text" : "o.union"
 				}
 
 			}
@@ -888,50 +944,57 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "o.arguments.maxpat",
-				"bootpath" : "/Users/ilyarostovtsev/Documents/Creative Coding/odot/CNMAT-odot/abstractions",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions",
 				"patcherrelativepath" : "..",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.righttoleft.maxpat",
-				"bootpath" : "/Users/ilyarostovtsev/Documents/Creative Coding/odot/CNMAT-odot/abstractions/core",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions/core",
 				"patcherrelativepath" : "../core",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.in.maxpat",
-				"bootpath" : "/Users/ilyarostovtsev/Documents/Creative Coding/odot/CNMAT-odot/abstractions/core",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions/core",
 				"patcherrelativepath" : "../core",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.port.maxpat",
-				"bootpath" : "/Users/ilyarostovtsev/Documents/Creative Coding/odot/CNMAT-odot/abstractions/core",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions/core",
 				"patcherrelativepath" : "../core",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.aspect.joinpoint.maxpat",
-				"bootpath" : "/Users/ilyarostovtsev/Documents/Max Externals/Active/CNMAT_Externals/odot/abstractions/aspect",
-				"patcherrelativepath" : "../../../../../Max Externals/Active/CNMAT_Externals/odot/abstractions/aspect",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/experimental/aspect",
+				"patcherrelativepath" : "../../experimental/aspect",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.out.maxpat",
-				"bootpath" : "/Users/ilyarostovtsev/Documents/Creative Coding/odot/CNMAT-odot/abstractions/core",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions/core",
 				"patcherrelativepath" : "../core",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.init.maxpat",
-				"bootpath" : "/Users/ilyarostovtsev/Documents/Creative Coding/odot/CNMAT-odot/abstractions/core",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions/core",
 				"patcherrelativepath" : "../core",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "o.forward.maxpat",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions",
+				"patcherrelativepath" : "..",
 				"type" : "JSON",
 				"implicit" : 1
 			}
@@ -997,6 +1060,10 @@
 			}
 , 			{
 				"name" : "o.when.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "trampoline.mxo",
 				"type" : "iLaX"
 			}
  ]

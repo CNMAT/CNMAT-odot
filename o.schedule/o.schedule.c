@@ -43,7 +43,7 @@
 #define OMAX_DOC_SHORT_DESC "Schedules packets using OSC timetags"
 #define OMAX_DOC_LONG_DESC "Takes OSC packets and outputs them at the time indicated by the timestamp."
 #define OMAX_DOC_INLETS_DESC (char *[]){"OSC packet to be scheduled."}
-#define OMAX_DOC_OUTLETS_DESC (char *[]){"OSC packet", "OSC packet which has missed the scheduling deadline or if queue is full", "OSC packet which has an immediate timetag"}
+#define OMAX_DOC_OUTLETS_DESC (char *[]){"OSC packet", "OSC packet which has missed the scheduling deadline", "OSC packet which has an immediate timetag", "OSC packet output if the queue is full"}
 #define OMAX_DOC_SEEALSO (char *[]){"o.timetag"}
 
 #include "o.h"
@@ -76,11 +76,16 @@
 #define DEFAULT_PACKET_SIZE 1000
 #define DEFAULT_QUEUE_SIZE 1500
 
+#define OSCHEDULE_OUTLET_MAIN x->outlets[0]
+#define OSCHEDULE_OUTLET_MISSED x->outlets[1]
+#define OSCHEDULE_OUTLET_DELEGATE x->outlets[3]
+#define OSCHEDULE_OUTLET_IMMEDIATE x->outlets[2]
+
 /* structure definition of your object */
 typedef struct _osched
 {
 	t_object ob; // required header
-	void *outlets[3];
+	void *outlets[4];
 	void *clock;
 	t_critical lock;
 	int soft_lock;
@@ -89,9 +94,6 @@ typedef struct _osched
     
 	// scheduler precision
 	t_osc_timetag precision;
-    
-	// maximum delay permitted
-	t_osc_timetag maxdelay;
     
 	// binary heap
 	binary_heap q;
@@ -118,8 +120,6 @@ void osched_free(t_osched *x);
 void osched_assist (t_osched *x, void *box, long msg, long arg, char *dstString);
 t_max_err osched_getPrecision(t_osched *x, void *attr, long *ac, t_atom **av);
 t_max_err osched_setPrecision(t_osched *x, void *attr, long ac, t_atom *av);
-t_max_err osched_getMaxdelay(t_osched *x, void *attr, long *ac, t_atom **av);
-t_max_err osched_setMaxdelay(t_osched *x, void *attr, long ac, t_atom *av);
 
 void osched_fullPacket(t_osched *x, t_symbol *s, int argc, t_atom *argv)
 {
@@ -134,28 +134,17 @@ void osched_fullPacket(t_osched *x, t_symbol *s, int argc, t_atom *argv)
 	// check for queue full condition
 	if(x->q.heap_size == x->packets_max) {
 		object_error((t_object *)x, "queue overflow");
-		//outlet_anything(x->outlets[1], ps_FullPacket, 2, argv);
-		omax_util_outletOSC(x->outlets[1], len, ptr);
+		omax_util_outletOSC(OSCHEDULE_OUTLET_DELEGATE, len, ptr);
 		return;
 	}
         
 	// check for length condition
 	if(n.length >= x->packet_size) {
 		object_error((t_object *)x, "packet length %d exceeds maximum", n.length);
-		//outlet_anything(x->outlets[1], ps_FullPacket, 2, argv);
-		omax_util_outletOSC(x->outlets[1], len, ptr);
+		omax_util_outletOSC(OSCHEDULE_OUTLET_DELEGATE, len, ptr);
 		return;
 	}
-        
-	// make sure its a bundle
-	if(strcmp(bndl, "#bundle") != 0) {
-		// not a bundle, send it out the 2nd outlet
-		object_error((t_object *)x, "OSC-schedule: input is not a bundle");
-		//outlet_anything(x->outlets[1], ps_FullPacket, argc, argv);
-		omax_util_outletOSC(x->outlets[1], len, ptr);
-		return;
-	}
-        
+                
 	t_osc_timetag timetag = osched_getTimetag(x, len, bndl);
 	/*
 	n.timestamp.sec = ntohl(*((unsigned long *)(bndl+8)));
@@ -166,8 +155,7 @@ void osched_fullPacket(t_osched *x, t_symbol *s, int argc, t_atom *argv)
         
 	// immediate goes out the third outlet 
 	if(osc_timetag_isImmediate(timetag)){
-		//outlet_anything(x->outlets[2], ps_FullPacket, 2, argv);
-		omax_util_outletOSC(x->outlets[2], len, ptr);
+		omax_util_outletOSC(OSCHEDULE_OUTLET_IMMEDIATE, len, ptr);
 		return;
 	}
         
@@ -181,8 +169,7 @@ void osched_fullPacket(t_osched *x, t_symbol *s, int argc, t_atom *argv)
 	// compare
 	switch(osc_timetag_compare(nowp1, n.timestamp)){
 	case 0: // output is on time
-		//outlet_anything(x->outlets[0], ps_FullPacket, 2, argv);
-		omax_util_outletOSC(x->outlets[0], len, ptr);
+		omax_util_outletOSC(OSCHEDULE_OUTLET_MAIN, len, ptr);
 		return;
               
 	case 1: // deadline miss or on-time
@@ -190,31 +177,17 @@ void osched_fullPacket(t_osched *x, t_symbol *s, int argc, t_atom *argv)
 		switch(osc_timetag_compare(now, n.timestamp)){
 		case -1: // within scheduler boundary, output on time
 		case 0:
-			//outlet_anything(x->outlets[0], ps_FullPacket, 2, argv);
-			omax_util_outletOSC(x->outlets[0], len, ptr);
+			omax_util_outletOSC(OSCHEDULE_OUTLET_MAIN, len, ptr);
 			return;
                     
 		case 1: // deadline missed
-			//outlet_anything(x->outlets[1], ps_FullPacket, 2, argv);
-			omax_util_outletOSC(x->outlets[1], len, ptr);
+			omax_util_outletOSC(OSCHEDULE_OUTLET_MISSED, len, ptr);
 			return;
 		}
 	}
         
 	// message is candidate for future scheduling...
-        
-	// check that delay is less than maxdelay...
-        
-	nowp1 = osc_timetag_add(now, x->maxdelay);
-        
-	// delay exceeds maximum
-	if(osc_timetag_compare(nowp1, n.timestamp) < 0){
-		object_error((t_object *)x, "delay exceeds maximum");
-		//outlet_anything(x->outlets[1], ps_FullPacket, 2, argv);
-		omax_util_outletOSC(x->outlets[1], len, ptr);
-		return;
-	}
-        
+                
 	// lock
 	critical_enter(x->lock);
         
@@ -327,10 +300,18 @@ void osched_tick(t_osched *x)
 // be added to the queue.  --JM
 //////////////////////////////////////////////////
 
+			long len = n.length;
+			char buf[n.length];
+			memcpy(buf, x->packet_data + (x->packet_size * n.id), n.length);
 			critical_exit(x->lock);
-			//outlet_anything(x->outlets[0], ps_FullPacket, 2, fp); // outlet can't be in critical section
 			x->soft_lock = 0;
-			omax_util_outletOSC(x->outlets[0], n.length, x->packet_data + (x->packet_size * n.id));
+			t_osc_timetag tt = osched_getTimetag(x, len, buf);
+			void *outlet = OSCHEDULE_OUTLET_MAIN;
+			int tcomp = osc_timetag_compare(tt, now);
+			if(tcomp < 0){
+				outlet = OSCHEDULE_OUTLET_MISSED;
+			}
+			omax_util_outletOSC(outlet, len, buf);
 			critical_enter(x->lock);
 
 			while(x->soft_lock == 1){
@@ -422,7 +403,7 @@ void osched_free(t_osched *x)
 
 void osched_doc(t_osched *x)
 {
-	omax_doc_outletDoc(x->outlets[0]);
+	omax_doc_outletDoc(OSCHEDULE_OUTLET_MAIN);
 }
 
 #ifdef OMAX_PD_VERSION
@@ -451,9 +432,7 @@ void *osched_new(t_symbol *s, short argc, t_atom *argv)
 	x->packet_size = DEFAULT_PACKET_SIZE;
     
 	//OSCTimeTag_float_to_ntp(0.003, &(x->precision));
-	//OSCTimeTag_float_to_ntp(1000.0, &(x->maxdelay));
 	x->precision = osc_timetag_floatToTimetag(0.003);
-	x->maxdelay = osc_timetag_floatToTimetag(1000.0);
     
 	x->id = 0;
     
@@ -475,9 +454,6 @@ void *osched_new(t_symbol *s, short argc, t_atom *argv)
      CLASS_ATTR_FLOAT(c, "precision", 0, t_osched, precision);
      CLASS_ATTR_ACCESSORS(c, "precision", osched_getPrecision, osched_setPrecision);
      
-     CLASS_ATTR_FLOAT(c, "maxdelay", 0, t_osched, maxdelay);
-     CLASS_ATTR_ACCESSORS(c, "maxdelay", osched_getMaxdelay, osched_setMaxdelay);
-     
      CLASS_ATTR_LONG(c, "queuesize", 0, t_osched, packets_max);
      CLASS_ATTR_LONG(c, "packetsize", 0, t_osched, packet_size);
      */
@@ -493,14 +469,6 @@ void *osched_new(t_symbol *s, short argc, t_atom *argv)
                     osched_setPrecision(x, NULL, 1, argv+i);
                 } else {
                     post("@precision value must be a number");
-                    return 0;
-                }
-            } else if(attribute == gensym("@maxdelay")){
-                if(atom_gettype(argv+(++i)) == A_FLOAT)
-                {
-                    osched_setMaxdelay(x, NULL, 1, argv+i);
-                } else {
-                    post("@maxdelay value must be a number");
                     return 0;
                 }
             } else if(attribute == gensym("@queuesize")){
@@ -534,9 +502,10 @@ void *osched_new(t_symbol *s, short argc, t_atom *argv)
     }
 
     
-	x->outlets[0] = outlet_new((t_object *)x, gensym("FullPacket"));
-	x->outlets[1] = outlet_new((t_object *)x, gensym("FullPacket"));
-	x->outlets[2] = outlet_new((t_object *)x, gensym("FullPacket"));
+	OSCHEDULE_OUTLET_MAIN = outlet_new((t_object *)x, gensym("FullPacket"));
+	OSCHEDULE_OUTLET_MISSED = outlet_new((t_object *)x, gensym("FullPacket"));
+	OSCHEDULE_OUTLET_DELEGATE = outlet_new((t_object *)x, gensym("FullPacket"));
+	OSCHEDULE_OUTLET_IMMEDIATE = outlet_new((t_object *)x, gensym("FullPacket"));
     
 	// allocate packet data buffer
 	x->packet_data = (char*)osc_mem_alloc(x->packets_max * x->packet_size);
@@ -559,10 +528,9 @@ int setup_o0x2eschedule(void)
     t_class *c = class_new(gensym("o.schedule"), (t_newmethod)osched_new, (t_method)osched_free, (short)sizeof(t_osched), 0L, A_GIMME, 0);
     
 	class_addmethod(c, (t_method)osched_fullPacket, gensym("FullPacket"), A_GIMME, 0);
-	class_addmethod(c, (t_method)osched_reset, gensym("reset"), 0);
+	class_addmethod(c, (t_method)osched_reset, gensym("clear"), 0);
 	class_addmethod(c, (t_method)odot_version, gensym("version"), 0);
     class_addmethod(c, (t_method)osched_doc, gensym("doc"), 0);
-    class_addmethod(c, (t_method)osched_setMaxdelay, gensym("maxdelay"), A_GIMME, 0);//<< A_GIMME to be compatible with attrs
     class_addmethod(c, (t_method)osched_setPrecision, gensym("precision"), A_GIMME, 0);
     class_addmethod(c, (t_method)osched_setQueSize, gensym("queuesize"), A_FLOAT, 0);
     class_addmethod(c, (t_method)osched_setPacketSize, gensym("packetsize"), A_FLOAT, 0);
@@ -597,10 +565,7 @@ void *osched_new(t_symbol *s, short argc, t_atom *argv)
 	x->packets_max = DEFAULT_QUEUE_SIZE;
 	x->packet_size = DEFAULT_PACKET_SIZE;
     
-	//OSCTimeTag_float_to_ntp(0.003, &(x->precision));
-	//OSCTimeTag_float_to_ntp(1000.0, &(x->maxdelay));
 	x->precision = osc_timetag_floatToTimetag(0.003);
-	x->maxdelay = osc_timetag_floatToTimetag(1000.0);
     
 	x->id = 0;
     
@@ -619,9 +584,10 @@ void *osched_new(t_symbol *s, short argc, t_atom *argv)
 
 	attr_args_process(x, argc, argv);
     
-	x->outlets[2] = outlet_new(x, "FullPacket");
-	x->outlets[1] = outlet_new(x, "FullPacket");
-	x->outlets[0] = outlet_new(x, "FullPacket");
+	OSCHEDULE_OUTLET_IMMEDIATE = outlet_new(x, "FullPacket");
+	OSCHEDULE_OUTLET_DELEGATE = outlet_new(x, "FullPacket");
+	OSCHEDULE_OUTLET_MISSED = outlet_new(x, "FullPacket");
+	OSCHEDULE_OUTLET_MAIN = outlet_new(x, "FullPacket");
     
 	// allocate packet data buffer
 	x->packet_data = (char*)osc_mem_alloc(x->packets_max * x->packet_size);
@@ -644,7 +610,7 @@ int main(void)
     	t_class *c = class_new("o.schedule", (method)osched_new, (method)osched_free, (short)sizeof(t_osched), 0L, A_GIMME, 0);
 
 	class_addmethod(c, (method)osched_fullPacket, "FullPacket", A_GIMME, 0);    
-	class_addmethod(c, (method)osched_reset, "reset", 0);
+	class_addmethod(c, (method)osched_reset, "clear", 0);
 	class_addmethod(c, (method)osched_assist, "assist", A_CANT, 0);
 	class_addmethod(c, (method)odot_version, "version", 0);
 	class_addmethod(c, (method)osched_doc, "doc", 0);
@@ -654,9 +620,6 @@ int main(void)
 
 	CLASS_ATTR_FLOAT(c, "precision", 0, t_osched, precision);
 	CLASS_ATTR_ACCESSORS(c, "precision", osched_getPrecision, osched_setPrecision);
-
-	CLASS_ATTR_FLOAT(c, "maxdelay", 0, t_osched, maxdelay);
-	CLASS_ATTR_ACCESSORS(c, "maxdelay", osched_getMaxdelay, osched_setMaxdelay);
 
 	CLASS_ATTR_LONG(c, "queuesize", 0, t_osched, packets_max);
 	CLASS_ATTR_LONG(c, "packetsize", 0, t_osched, packet_size);
@@ -709,11 +672,4 @@ t_max_err osched_getMaxdelay(t_osched *x, void *attr, long *ac, t_atom **av)
 }
 #endif
 
-t_max_err osched_setMaxdelay(t_osched *x, void *attr, long ac, t_atom *av)
-{
-	if(ac && av && atom_gettype(av) == A_FLOAT){
-		double maxdelay = atom_getfloat(av);
-		x->maxdelay = osc_timetag_floatToTimetag(maxdelay);
-	}
-	return MAX_ERR_NONE;
-}
+
