@@ -1,0 +1,8 @@
+#N canvas 200 200 200 400 10;
+#X obj 41 25 omessage 100 23 binhex b#2F666F6F203120;
+#X obj 41 75 oexpr /foo += 1 \;;
+#X obj 41 125 omessage 100 23 binhex b#2F666F6F20322E20;
+#X obj 41 175 omessage 100 23 binhex b#2F666F6F20322E20;
+#X connect 0 0 1 0;
+#X connect 1 0 2 1;
+#X connect 2 0 3 0;

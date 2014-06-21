@@ -1,0 +1,4 @@
+#N canvas 442 225 758 310 10;
+#X obj 30 135 omessage 150 10 binhex b#2f666f6f203220;
+#X obj 30 75 oexpr /foo += 1\;;
+#X obj 30 30 omessage 150 10 binhex b#2f666f6f20310a2f626172203220;
