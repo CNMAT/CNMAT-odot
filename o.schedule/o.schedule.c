@@ -427,6 +427,16 @@ void osched_doc(t_osched *x)
 
 #ifdef OMAX_PD_VERSION
 
+void osched_setQueSize(t_osched *x, double f)
+{
+    x->packets_max = f;
+}
+
+void osched_setPacketSize(t_osched *x, double f)
+{
+    x->packet_size = f;
+}
+
 void *osched_new(t_symbol *s, short argc, t_atom *argv)
 {
     t_osched *x;
@@ -461,6 +471,17 @@ void *osched_new(t_symbol *s, short argc, t_atom *argv)
 	}
 
     //	attr_args_process(x, argc, argv);
+    /*
+     CLASS_ATTR_FLOAT(c, "precision", 0, t_osched, precision);
+     CLASS_ATTR_ACCESSORS(c, "precision", osched_getPrecision, osched_setPrecision);
+     
+     CLASS_ATTR_FLOAT(c, "maxdelay", 0, t_osched, maxdelay);
+     CLASS_ATTR_ACCESSORS(c, "maxdelay", osched_getMaxdelay, osched_setMaxdelay);
+     
+     CLASS_ATTR_LONG(c, "queuesize", 0, t_osched, packets_max);
+     CLASS_ATTR_LONG(c, "packetsize", 0, t_osched, packet_size);
+     */
+    
     for(i = 1; i < argc; i++)
     {
         if(atom_gettype(argv + i) == A_SYM)
@@ -469,38 +490,35 @@ void *osched_new(t_symbol *s, short argc, t_atom *argv)
             if(attribute == gensym("@precision")){
                 if(atom_gettype(argv+(++i)) == A_FLOAT)
                 {
-     //               x->precision = atom_getfloat(argv+i);
                     osched_setPrecision(x, NULL, 1, argv+i);
                 } else {
-                    post("@level value must be a number");
-                    return 0;
-                }
-            } else if(attribute == gensym("@queuesize")){
-                if(atom_gettype(argv+(++i)) == A_FLOAT)
-                {
-//                    x->maxdelay = atom_getfloat(argv+i);
-                    osched_setMaxdelay(x, NULL, 1, argv+i);
-                } else {
-                    post("@sep value must be a symbol");
-                    return 0;
-                }
-            } else if(attribute == gensym("@packetsize")){
-                if(atom_gettype(argv+(++i)) == A_FLOAT)
-                {
-                    x->packets_max = atom_getfloat(argv+i);
-                } else {
-                    post("@sep value must be a symbol");
+                    post("@precision value must be a number");
                     return 0;
                 }
             } else if(attribute == gensym("@maxdelay")){
                 if(atom_gettype(argv+(++i)) == A_FLOAT)
                 {
-                    x->packet_size = atom_getfloat(argv+i);
+                    osched_setMaxdelay(x, NULL, 1, argv+i);
                 } else {
-                    post("@sep value must be a symbol");
+                    post("@maxdelay value must be a number");
                     return 0;
                 }
-                
+            } else if(attribute == gensym("@queuesize")){
+                if(atom_gettype(argv+(++i)) == A_FLOAT)
+                {
+                    x->packets_max = atom_getfloat(argv+i);
+                } else {
+                    post("@queuesize value must be a number");
+                    return 0;
+                }
+            } else if(attribute == gensym("@packetsize")){
+                if(atom_gettype(argv+(++i)) == A_FLOAT)
+                {
+                    x->packet_size = atom_getfloat(argv+i);
+                } else {
+                    post("@packetsize value must be a number");
+                    return 0;
+                }
             } else if(attribute->s_name[0] == '@') {
                 post("unknown attribute");
             }  else {
@@ -544,17 +562,11 @@ int setup_o0x2eschedule(void)
 	class_addmethod(c, (t_method)osched_reset, gensym("reset"), 0);
 	class_addmethod(c, (t_method)odot_version, gensym("version"), 0);
     class_addmethod(c, (t_method)osched_doc, gensym("doc"), 0);
-	
-/*
-	CLASS_ATTR_FLOAT(c, "precision", 0, t_osched, precision);
-	CLASS_ATTR_ACCESSORS(c, "precision", osched_getPrecision, osched_setPrecision);
-    
-	CLASS_ATTR_FLOAT(c, "maxdelay", 0, t_osched, maxdelay);
-	CLASS_ATTR_ACCESSORS(c, "maxdelay", osched_getMaxdelay, osched_setMaxdelay);
-    
-	CLASS_ATTR_LONG(c, "queuesize", 0, t_osched, packets_max);
-	CLASS_ATTR_LONG(c, "packetsize", 0, t_osched, packet_size);
-*/  
+    class_addmethod(c, (t_method)osched_setMaxdelay, gensym("maxdelay"), A_GIMME, 0);//<< A_GIMME to be compatible with attrs
+    class_addmethod(c, (t_method)osched_setPrecision, gensym("precision"), A_GIMME, 0);
+    class_addmethod(c, (t_method)osched_setQueSize, gensym("queuesize"), A_FLOAT, 0);
+    class_addmethod(c, (t_method)osched_setPacketSize, gensym("packetsize"), A_FLOAT, 0);
+	 
 	osched_class = c;
 	ps_FullPacket = gensym("FullPacket");
 
@@ -675,7 +687,7 @@ t_max_err osched_getPrecision(t_osched *x, void *attr, long *ac, t_atom **av)
 
 t_max_err osched_setPrecision(t_osched *x, void *attr, long ac, t_atom *av)
 {
-	if(ac && av){
+	if(ac && av && atom_gettype(av) == A_FLOAT){
 		double precision = atom_getfloat(av);
 		x->precision = osc_timetag_floatToTimetag(precision);
 	}
@@ -699,7 +711,7 @@ t_max_err osched_getMaxdelay(t_osched *x, void *attr, long *ac, t_atom **av)
 
 t_max_err osched_setMaxdelay(t_osched *x, void *attr, long ac, t_atom *av)
 {
-	if(ac && av){
+	if(ac && av && atom_gettype(av) == A_FLOAT){
 		double maxdelay = atom_getfloat(av);
 		x->maxdelay = osc_timetag_floatToTimetag(maxdelay);
 	}
