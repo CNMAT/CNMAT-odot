@@ -300,9 +300,18 @@ void osched_tick(t_osched *x)
 // be added to the queue.  --JM
 //////////////////////////////////////////////////
 
+			long len = n.length;
+			char buf[n.length];
+			memcpy(buf, x->packet_data + (x->packet_size * n.id), n.length);
 			critical_exit(x->lock);
 			x->soft_lock = 0;
-			omax_util_outletOSC(OSCHEDULE_OUTLET_MAIN, n.length, x->packet_data + (x->packet_size * n.id));
+			t_osc_timetag tt = osched_getTimetag(x, len, buf);
+			void *outlet = OSCHEDULE_OUTLET_MAIN;
+			int tcomp = osc_timetag_compare(tt, now);
+			if(tcomp < 0){
+				outlet = OSCHEDULE_OUTLET_MISSED;
+			}
+			omax_util_outletOSC(outlet, len, buf);
 			critical_enter(x->lock);
 
 			while(x->soft_lock == 1){
