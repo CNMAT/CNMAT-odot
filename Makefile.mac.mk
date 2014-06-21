@@ -35,14 +35,17 @@ o.when
 
 MOBJECT_LIST = o.io.bluetoothle
 
-OBJECT_LIST = $(COBJECT_LIST) $(MOBJECT_LIST)
+DOBJECT_LIST = o.slipserial.decode \
+o.slipserial.encode
+
+OBJECT_LIST = $(COBJECT_LIST) $(MOBJECT_LIST) $(DOBJECT_LIST)
 
 PATCHDIRS = help demos abstractions deprecated overview experimental
 #TEXTFILES = README_ODOT.txt
 
-VPATH = $(OBJECT_LIST)
+VPATH = $(OBJECT_LIST) o.slipserial
 
-CFILES = $(foreach f, $(COBJECT_LIST), $(f)/$(f).c)
+CFILES = $(foreach f, $(COBJECT_LIST), $(f)/$(f).c) o.slipserial.c
 MFILES = $(foreach f, $(MOBJECT_LIST), $(f)/$(f).m)
 
 CODE_FILES = $(CFILES) $(MFILES)
