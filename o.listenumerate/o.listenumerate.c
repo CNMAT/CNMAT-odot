@@ -27,13 +27,14 @@
  COPYRIGHT_YEARS: 2014-ll
  SVN_REVISION: $LastChangedRevision: 587 $
  VERSION 0.0: First try
- VERSION 0.9: Delegation Outlet; Everything but the nomenclature for the output.-=
+ VERSION 0.9: Delegation Outlet; Everything but the nomenclature for the output.
+ VERSION RC : Functions to-spec, 1.0 after testing.
  @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
  */
 
 #define OMAX_DOC_NAME "o.listenumerate"
 #define OMAX_DOC_SHORT_DESC "Iterate over a list at a user-defined OSC address"
-#define OMAX_DOC_LONG_DESC "o.listenumerate iterates over a list at a user-defined OSC address."
+#define OMAX_DOC_LONG_DESC "o.listenumerate enumerates the values of a list at an OSC address and outputs them out one at a time."
 #define OMAX_DOC_INLETS_DESC (char *[]){"OSC packet."}
 #define OMAX_DOC_OUTLETS_DESC (char *[]){"OSC packets for each element of the list.", "Delegation outlet - unmatched OSC addresses."}
 #define OMAX_DOC_SEEALSO (char *[]){"o.iterate"}
@@ -108,7 +109,8 @@ void olistenumerate_doFullPacket(t_olistenumerate *x,
         }
         
         // left outlet:
-        for (int i = 0; i < osc_array_getLen(matches); ++i) {
+        for (int i = 0; i < osc_array_getLen(matches); ++i)
+        {
             t_osc_message_s* message_match = (t_osc_message_s*)osc_array_get(matches, i);
             t_osc_message_u* unserialized_msg = NULL;
             osc_message_s_deserialize(message_match, &unserialized_msg);
@@ -127,22 +129,17 @@ void olistenumerate_doFullPacket(t_olistenumerate *x,
                         t_osc_bundle_u* unserialized_result = NULL;
                         char type = osc_atom_u_getTypetag(atom_copy);
                         unserialized_result = osc_bundle_u_alloc();
-                        if (type == '.')
-                        {
+                        t_osc_message_u* value = osc_message_u_allocWithAddress("/value");
+                        if (type == OSC_BUNDLE_TYPETAG) {
                             // subbundle
                             t_osc_bundle_u* subbundle = NULL;
                             osc_bundle_u_copy(&subbundle, osc_atom_u_getBndl(atom_copy));
-                            t_osc_message_u* value = osc_message_u_allocWithAddress("/value");
                             osc_message_u_appendBndl_u(value, subbundle);
-                            osc_bundle_u_addMsg(unserialized_result, value);
-                        }
-                        else
-                        {
+                        } else {
                             // not a subbundle
-                            t_osc_message_u* value = osc_message_u_allocWithAddress("/value");
                             osc_message_u_appendAtom(value, atom_copy);
-                            osc_bundle_u_addMsg(unserialized_result, value);
                         }
+                        osc_bundle_u_addMsg(unserialized_result, value);
                         
                         t_osc_message_u* address = osc_message_u_allocWithString("/address", x->address->s_name);
                         t_osc_message_u* index = osc_message_u_allocWithAddress("/index");
@@ -173,16 +170,9 @@ void olistenumerate_doFullPacket(t_olistenumerate *x,
                 olistenumerate_noMatchesOrData(x);
             }
         }
-    } else {
+    } else { // no matches
         // right outlet:
-        int message_count = 0;
-        osc_bundle_s_getMsgCount(dlen, delegate, &message_count);
-        if (message_count > 0) {
-            omax_util_outletOSC(x->outlets[0], dlen, delegate);
-        }
-        
-        // left outlet:
-        olistenumerate_noMatchesOrData(x);
+        omax_util_outletOSC(x->outlets[0], dlen, delegate);
     }
     
     if (matches) {
@@ -192,13 +182,12 @@ void olistenumerate_doFullPacket(t_olistenumerate *x,
 
 void olistenumerate_noMatchesOrData(t_olistenumerate *x)
 {
-    // left outlet only!
-    t_osc_message_u* count = osc_message_u_allocWithAddress("/index");
-    osc_message_u_appendInt32(count, 0);
+    // left outlet:
+    t_osc_message_u* address = osc_message_u_allocWithString("/address", x->address->s_name);
     t_osc_message_u* length = osc_message_u_allocWithAddress("/length");
     osc_message_u_appendInt32(length, 0);
     t_osc_bundle_u* unserialized_result = osc_bundle_u_alloc();
-    osc_bundle_u_addMsg(unserialized_result, count);
+    osc_bundle_u_addMsg(unserialized_result, address);
     osc_bundle_u_addMsg(unserialized_result, length);
     
     long serialized_result_length = 0;
@@ -216,7 +205,8 @@ void olistenumerate_noMatchesOrData(t_olistenumerate *x)
 
 void olistenumerate_bang(t_olistenumerate *x)
 {
-	olistenumerate_doFullPacket(x, OSC_HEADER_SIZE, OSC_EMPTY_HEADER);
+	//olistenumerate_doFullPacket(x, OSC_HEADER_SIZE, OSC_EMPTY_HEADER);
+    return; // ignore bangs
 }
 
 void olistenumerate_anything(t_olistenumerate *x, t_symbol *selector, short argc, t_atom *argv)
