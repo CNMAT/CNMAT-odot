@@ -30,9 +30,6 @@
 
 #include "o.h"
 
-#define OMAX_PD_MAXSTRINGSIZE (1<<16)
-
-
 static t_class *omenu_class;
 
 typedef struct _omenu {
@@ -180,21 +177,7 @@ void omenu_setMenu(t_omenu *x)
         t_osc_msg_s *msg = osc_bndl_it_s_next(it);
         int natoms = omax_util_getNumAtomsInOSCMsg(msg);
         t_atom atoms[natoms];
-        
-        char buf[OMAX_PD_MAXSTRINGSIZE];
-        char *ptr = buf;
-        int i;
-        for(i=0; i<natoms; i++)
-        {
-            if(atom_gettype(atoms+i) == A_SYM)
-            {
-                strcpy(buf, atom_getsym(atoms+i)->s_name);
-                omax_util_curlies2hashBrackets(&ptr, OMAX_PD_MAXSTRINGSIZE);
-                atom_setsym(atoms+i, gensym(buf));
-                //post("%s",buf);
-            }
-        }
-        
+
         if(omax_util_oscMsg2MaxAtoms(msg, atoms))
         {
             object_error((t_object *)x, "pure data does not like { }, hopefully someone will fix this eventually\n");
