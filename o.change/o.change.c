@@ -83,7 +83,15 @@ void ochange_fullPacket(t_ochange *x, t_symbol *msg, int argc, t_atom *argv)
 	memcpy(buf, x->buf, x->buflen);
 	critical_exit(x->lock);
 	if(buflen == len){
-		if(!memcmp(buf, ptr, buflen)){
+		if(*buf == '#' && *ptr == '#'){
+			if(!memcmp(buf + OSC_HEADER_SIZE, ptr + OSC_HEADER_SIZE, buflen - OSC_HEADER_SIZE)){
+				return;
+			}
+		}else if(*buf == '/' && *ptr == '/'){
+			if(!memcmp(buf, ptr, buflen)){
+				return;
+			}
+		}else{
 			return;
 		}
 	}
