@@ -4,11 +4,11 @@
 		"appversion" : 		{
 			"major" : 6,
 			"minor" : 1,
-			"revision" : 2,
-			"architecture" : "x64"
+			"revision" : 4,
+			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 293.0, 44.0, 695.0, 648.0 ],
+		"rect" : [ 293.0, 44.0, 750.0, 642.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -31,12 +31,26 @@
 				"box" : 				{
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
+					"id" : "obj-17",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 599.0, 459.0, 140.0, 20.0 ],
+					"text" : "o.print \"error delegation\""
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
 					"id" : "obj-15",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 531.0, 459.0, 103.0, 20.0 ],
+					"patching_rect" : [ 496.0, 459.0, 103.0, 20.0 ],
 					"text" : "o.print immediate"
 				}
 
@@ -50,7 +64,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 369.0, 459.0, 146.0, 20.0 ],
+					"patching_rect" : [ 348.333344, 459.0, 146.0, 20.0 ],
 					"text" : "o.print \"missed deadline!\""
 				}
 
@@ -215,13 +229,13 @@
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"id" : "obj-21",
-					"linecount" : 5,
+					"linecount" : 4,
 					"maxclass" : "o.message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 67.0, 555.0, 259.0, 74.0 ],
-					"text" : "/time/acquired \"2013-03-16T15:48:06.165110Z\" \n/time/activate \"2013-03-16T15:48:06.665110Z\" \n/time/activated \"2013-03-16T15:48:06.665149Z\" \n/time/diff 3.88077e-05 ",
+					"patching_rect" : [ 67.0, 555.0, 259.0, 60.0 ],
+					"text" : "/time/acquired 2014-06-21T02:55:44.613351Z\n/time/activate 2014-06-21T02:55:45.113351Z\n/time/activated 2014-06-21T02:55:45.113157Z\n/time/diff 0.000193808\n",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -235,8 +249,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 307.0, 515.0, 265.0, 20.0 ],
-					"text" : "o.expr /time/diff = /time/activated - /time/activate"
+					"patching_rect" : [ 307.0, 515.0, 269.0, 20.0 ],
+					"text" : "o.expr /time/diff = /time/activated - /time/acquired"
 				}
 
 			}
@@ -290,7 +304,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 307.0, 331.0, 37.0, 18.0 ],
-					"text" : "reset"
+					"text" : "clear"
 				}
 
 			}
@@ -329,8 +343,8 @@
 					"id" : "obj-1",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
-					"numoutlets" : 3,
-					"outlettype" : [ "FullPacket", "FullPacket", "FullPacket" ],
+					"numoutlets" : 4,
+					"outlettype" : [ "FullPacket", "FullPacket", "FullPacket", "FullPacket" ],
 					"patching_rect" : [ 307.0, 427.0, 143.0, 20.0 ],
 					"text" : "o.schedule /time/activate"
 				}
@@ -352,6 +366,15 @@
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-1", 2 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-17", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-1", 3 ]
 				}
 
 			}
@@ -520,8 +543,8 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "o.helpfilehelper.maxpat",
-				"bootpath" : "/Users/john/MMJ-dev/CNMAT_Externals/odot/overview",
-				"patcherrelativepath" : "../../../../../MMJ-dev/CNMAT_Externals/odot/overview",
+				"bootpath" : "/Users/john/Development/CNMAT/CNMAT/CNMAT-odot/overview",
+				"patcherrelativepath" : "../overview",
 				"type" : "JSON",
 				"implicit" : 1
 			}
