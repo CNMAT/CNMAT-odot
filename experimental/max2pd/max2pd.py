@@ -1,6 +1,12 @@
 import json
 import sys
 
+pdp = {
+    'newobj'  : 'obj',
+    'message' : 'msg',
+    'comment' : 'text'
+} ## this dictionary is declared outside a function so that we don't keep rebuilding it
+
 def get_json_data(filename):
     with open(filename) as data_file:
         data = json.load(data_file)
@@ -11,29 +17,21 @@ def get_patcher(patcher):
     result = "#N canvas {0} {1} {2} {3} 10;".format(int(rect[0]), int(rect[1]), int(rect[2]), int(rect[3]))
     return result
 
-pdp = {
-    'newobj'  : 'obj',
-    'message' : 'msg',
-    'comment' : 'text'
-} # this dictionary is declared outside a function so that we don't keep rebuilding it
-
 def get_pd_object(box):
     b = box['box']
     mc = b['maxclass']
     dim = b['patching_rect']
-    result = ""
     if mc == 'newobj' or mc == 'message' or mc == 'comment':
         result = '#X {0} {1} {2} {3}, f {4};'.format(pdp[mc], int(dim[0]), int(dim[1]), b['text'], dim[2] / 5.5)
         return result
     if mc == 'flonum' or mc == 'number':
-        minimum = 0
-        maximum = 0
+        minimum = maximum = 0
         try:
             minimum = b['minumum']
         except:
             mininum = 0
         try:
-            maxumum = b['maximum']
+            maximum = b['maximum']
         except:
             maximum = 0
         result = '#X floatatom {0} {1} {2} {3} {4} 0 - - -, f {2};'.format(int(dim[0]), int(dim[1]), dim[2] / 5.5, minimum, maximum)
@@ -47,7 +45,7 @@ def get_pd_object(box):
     if mc == 'button':
         result = "#X obj {0} {1} bng {2} 250 50 0 empty empty empty 17 7 0 10 -262144 -1 -1;".format(int(dim[0]), int(dim[1]), int(dim[2]))
         return result
-    return "#X obj {0} {1} {2};".format(int(dim[0]), int(dim[1]), mc)
+    return "#X obj {0} {1} {2};".format(int(dim[0]), int(dim[1]), mc) ## the default that works for inlets & outlets
 
 def boxes(patcher, object_ids):
     result = []
