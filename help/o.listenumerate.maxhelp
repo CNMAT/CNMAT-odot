@@ -8,7 +8,7 @@
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 170.0, 96.0, 688.0, 613.0 ],
+		"rect" : [ 170.0, 96.0, 685.0, 613.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -46,7 +46,7 @@
 							"architecture" : "x86"
 						}
 ,
-						"rect" : [ 0.0, 26.0, 688.0, 587.0 ],
+						"rect" : [ 0.0, 26.0, 685.0, 587.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -164,9 +164,9 @@
 									"maxclass" : "newobj",
 									"numinlets" : 0,
 									"numoutlets" : 4,
-									"outlettype" : [ "", "", "", "" ],
-									"patching_rect" : [ 498.5, 278.0, 209.0, 20.0 ],
-									"text" : "o.helpfilehelper @obj o.listenumerate"
+									"outlettype" : [ "", "", "", "clear" ],
+									"patching_rect" : [ 498.5, 278.0, 232.0, 20.0 ],
+									"text" : "o.helpfilehelper @obj o.listenumerate /foo"
 								}
 
 							}
@@ -343,7 +343,6 @@
 					}
 ,
 					"patching_rect" : [ 199.0, 59.0, 87.0, 20.0 ],
-					"presentation_rect" : [ 199.0, 59.0, 0.0, 0.0 ],
 					"saved_object_attributes" : 					{
 						"default_fontface" : 0,
 						"default_fontname" : "Helvetica Neue",
@@ -378,7 +377,7 @@
 							"architecture" : "x86"
 						}
 ,
-						"rect" : [ 0.0, 26.0, 688.0, 587.0 ],
+						"rect" : [ 0.0, 26.0, 685.0, 587.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -496,9 +495,9 @@
 									"maxclass" : "newobj",
 									"numinlets" : 0,
 									"numoutlets" : 4,
-									"outlettype" : [ "", "", "", "" ],
-									"patching_rect" : [ 498.5, 278.0, 209.0, 20.0 ],
-									"text" : "o.helpfilehelper @obj o.listenumerate"
+									"outlettype" : [ "", "", "", "clear" ],
+									"patching_rect" : [ 498.5, 278.0, 232.0, 20.0 ],
+									"text" : "o.helpfilehelper @obj o.listenumerate /foo"
 								}
 
 							}
@@ -709,7 +708,7 @@
 							"architecture" : "x86"
 						}
 ,
-						"rect" : [ 170.0, 122.0, 688.0, 587.0 ],
+						"rect" : [ 170.0, 122.0, 685.0, 587.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -754,7 +753,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 45.0, 375.0, 150.0, 62.0 ],
-									"presentation_rect" : [ 46.0, 455.0, 0.0, 0.0 ],
 									"text" : "/value 5\n/address \"/foo\"\n/index 4\n/length 5",
 									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
@@ -770,7 +768,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 176.0, 330.0, 157.0, 20.0 ],
-									"presentation_rect" : [ 178.0, 394.0, 0.0, 0.0 ],
 									"text" : "see Max window for output"
 								}
 
@@ -855,9 +852,9 @@
 									"maxclass" : "newobj",
 									"numinlets" : 0,
 									"numoutlets" : 4,
-									"outlettype" : [ "", "", "", "" ],
-									"patching_rect" : [ 498.5, 278.0, 209.0, 20.0 ],
-									"text" : "o.helpfilehelper @obj o.listenumerate"
+									"outlettype" : [ "", "", "", "clear" ],
+									"patching_rect" : [ 498.5, 278.0, 232.0, 20.0 ],
+									"text" : "o.helpfilehelper @obj o.listenumerate /foo"
 								}
 
 							}
@@ -1054,7 +1051,18 @@
  ],
 		"lines" : [  ],
 		"dependency_cache" : [ 			{
+				"name" : "o.helpfilehelper.maxpat",
+				"bootpath" : "/Users/ilyarostovtsev/Documents/Creative Coding/odot/_externals/CNMAT-odot/overview",
+				"patcherrelativepath" : "../overview",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
 				"name" : "o.listenumerate.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.route.mxo",
 				"type" : "iLaX"
 			}
 , 			{

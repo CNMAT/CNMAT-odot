@@ -34,7 +34,7 @@
 
 #define OMAX_DOC_NAME "o.listenumerate"
 #define OMAX_DOC_SHORT_DESC "Iterate over a list at a user-defined OSC address"
-#define OMAX_DOC_LONG_DESC "o.listenumerate iterates over a list at a user-defined OSC address."
+#define OMAX_DOC_LONG_DESC "o.listenumerate enumerates the values of a list at an OSC address and outputs them out one at a time."
 #define OMAX_DOC_INLETS_DESC (char *[]){"OSC packet."}
 #define OMAX_DOC_OUTLETS_DESC (char *[]){"OSC packets for each element of the list.", "Delegation outlet - unmatched OSC addresses."}
 #define OMAX_DOC_SEEALSO (char *[]){"o.iterate"}
