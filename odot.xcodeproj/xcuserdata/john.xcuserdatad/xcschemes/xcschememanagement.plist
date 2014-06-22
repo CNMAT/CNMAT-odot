@@ -324,10 +324,20 @@
 			<key>orderHint</key>
 			<integer>59</integer>
 		</dict>
+		<key>o.slipserial.decode.pd.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>80</integer>
+		</dict>
 		<key>o.slipserial.decode.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>61</integer>
+		</dict>
+		<key>o.slipserial.encode.pd.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>81</integer>
 		</dict>
 		<key>o.slipserial.encode.xcscheme</key>
 		<dict>
@@ -548,6 +558,16 @@
 			<true/>
 		</dict>
 		<key>119FA133191D6052001C3325</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>11A5D9CA19571A8300333C1F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>11A5D9D319571AC400333C1F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
