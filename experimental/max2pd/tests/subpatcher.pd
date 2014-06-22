@@ -1,0 +1,14 @@
+#N canvas 59 69 179 258 10;
+#N canvas 84 84 84 480 subpatcher 0;
+#X obj 60 135 + 1, f 5.90909090909;
+#X obj 60 195 outlet;
+#X obj 60 75 inlet;
+#X connect 2 0 0 0;
+#X connect 0 0 1 0;
+#X restore 45 90 pd subpatcher;
+#X msg 45 180 3, f 9.09090909091;
+#X obj 45 135 prepend set, f 13.6363636364;
+#X msg 45 45 2, f 5.90909090909;
+#X connect 3 0 0 0;
+#X connect 2 0 1 0;
+#X connect 0 0 2 0;

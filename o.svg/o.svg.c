@@ -35,7 +35,7 @@ VERSION 0.0: First try
 #define OMAX_DOC_LONG_DESC "o.svg collects OSC and OSC-style Max messages to be bundled together and output on bang.  When the bundle is output, the internal buffer is cleared."
 #define OMAX_DOC_INLETS_DESC (char *[]){"OSC messages to collect."}
 #define OMAX_DOC_OUTLETS_DESC (char *[]){"OSC packet containing all messages collected."}
-#define OMAX_DOC_SEEALSO (char *[]){"zl group"}
+#define OMAX_DOC_SEEALSO (char *[]){""}
 
 #include <stdlib.h>
 #include "odot_version.h"
