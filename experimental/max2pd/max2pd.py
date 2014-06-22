@@ -12,7 +12,7 @@ def get_json_data(filename):
         data = json.load(data_file)
         return data['patcher']
 
-def get_patcher(patcher):
+def get_patcher_rect(patcher):
     rect = patcher['rect']
     result = "#N canvas {0} {1} {2} {3} 10;".format(int(rect[0]), int(rect[1]), int(rect[2]), int(rect[3]))
     return result
@@ -50,7 +50,11 @@ def get_pd_object(box):
 def boxes(patcher, object_ids):
     result = []
     for box in patcher['boxes']:
-        r = get_pd_object(box)
+        sub = check_for_subpatcher(box['box'])
+        if sub != 0:
+            r = write_subpatcher(sub, box)
+        else:
+            r = get_pd_object(box)
         if (r):
             object_ids.append(box['box']['id'])
             result.append(r)
@@ -68,6 +72,30 @@ def patch_cords(patcher, object_ids):
         result.append(to_add)
     return result
 
+def check_for_subpatcher(box):
+    if box['maxclass'] != 'newobj':
+        return 0
+    try:
+        subpatcher = box['patcher']
+    except:
+        return 0;
+    return subpatcher
+
+def write_subpatcher(subpatcher, subbox):
+    sub_object_ids = []
+    rect = subpatcher['rect']
+    text = subbox['box']['text']
+    pos = subbox['box']['patching_rect']
+    name = text[2:]
+    result = "#N canvas {0} {1} {2} {3} {4} 0;\n".format(int(rect[0]), int(rect[0]), int(rect[0]), int(rect[3]), name)
+    sub_objects = boxes(subpatcher, sub_object_ids);
+    for o in sub_objects:
+        result += o + "\n"
+    for p in patch_cords(subpatcher, sub_object_ids):
+        result += p + "\n"
+    result += "#X restore {0} {1} pd {2};".format(int(pos[0]), int(pos[1]), name)
+    return result
+
 
 #------------------------------------------------------------------------------------------------------------
 
@@ -75,7 +103,7 @@ filename = str(sys.argv[1])
 object_ids = []
 out = open(sys.argv[2], 'w')
 patcher = get_json_data(filename)
-out.write(get_patcher(patcher) + "\n")
+out.write(get_patcher_rect(patcher) + "\n")
 objects = boxes(patcher, object_ids)
 for o in objects:
     out.write(o + "\n")
