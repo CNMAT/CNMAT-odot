@@ -8,7 +8,7 @@
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 31.0, 66.0, 1262.0, 604.0 ],
+		"rect" : [ 110.0, 44.0, 1262.0, 604.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -37,7 +37,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 932.0, 465.0, 150.0, 33.0 ],
+					"patching_rect" : [ 703.0, 476.0, 150.0, 33.0 ],
 					"text" : "Adrian Freed, Jeff Lubow 2014"
 				}
 
@@ -78,7 +78,6 @@
 						"description" : "",
 						"digest" : "",
 						"tags" : "",
-						"visible" : 1,
 						"boxes" : [ 							{
 								"box" : 								{
 									"fontname" : "Arial",
@@ -614,7 +613,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 764.0, 220.0, 150.0, 47.0 ],
+					"patching_rect" : [ 672.0, 207.0, 150.0, 47.0 ],
 					"text" : "for Esplora on Mac look for \nusbmodemXXXX\n"
 				}
 
@@ -627,7 +626,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 763.0, 277.0, 160.0, 22.0 ]
+					"patching_rect" : [ 671.0, 264.0, 160.0, 22.0 ]
 				}
 
 			}
@@ -636,13 +635,13 @@
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"id" : "obj-14",
-					"linecount" : 22,
+					"linecount" : 37,
 					"maxclass" : "o.message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 359.0, 400.0, 272.0, 301.0 ],
-					"text" : "/Manufacturer \"Arduino\"\n/Device \"Esplora\"\n/Serialnumber 1099\n/acceleration/x 0.00976562\n/acceleration/y 0.0800781\n/acceleration/z 0.283203\n/photoresistor 0.951124\n/slider/horizontal 0.85044\n/joystick/horizontal -0.00195312\n/joystick/vertical 0.0175781\n/connector/white/left 0.497556\n/connector/white/right 0.478983\n/connector/orange/left true\n/connector/orange/right false\n/temperature/fahrenheit 69.\n/temperature/celsius 20.\n/microphone/loudness 0.\n/led/rgb 0 138 131\n/joystick/button/down false\n/joystick/button/up true\n/diamond/backward/button/down false\n/diamond/backward/button/up true",
+					"patching_rect" : [ 359.0, 400.0, 272.0, 503.0 ],
+					"text" : "/Manufacturer \"Arduino\"\n/Device \"Esplora\"\n/Serialnumber 1099\n/Sequence/Number 1133\n/acceleration/x 0.0117188\n/acceleration/y 0.0878906\n/acceleration/z 0.28125\n/photoresistor 0.954057\n/slider/horizontal 0.969697\n/connector/white/right 0.926686\n/connector/orange/left true\n/connector/orange/right false\n/temperature/fahrenheit 69.\n/temperature/celsius 20.\n/microphone/loudness 0.\n/led/rgb 0 0 0\n/joystick/horizontal -0.\n/joystick/vertical 0.0175781\n/connector/white/left 0.498534\n/joystick/button/down false\n/joystick/button/up true\n/joystick/forward/button/down false\n/joystick/forward/button/up true\n/joystick/left/button/down false\n/joystick/left/button/up true\n/joystick/right/button/down false\n/joystick/right/button/up true\n/joystick/backward/button/down false\n/joystick/backward/button/up true\n/diamond/backward/button/down false\n/diamond/backward/button/up true\n/diamond/left/button/down false\n/diamond/left/button/up true\n/diamond/right/button/down false\n/diamond/right/button/up true\n/diamond/forward/button/down false\n/diamond/forward/button/up true",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -846,7 +845,7 @@
  ]
 					}
 ,
-					"patching_rect" : [ 809.0, 147.0, 85.0, 20.0 ],
+					"patching_rect" : [ 637.0, 145.0, 85.0, 20.0 ],
 					"saved_object_attributes" : 					{
 						"default_fontface" : 0,
 						"default_fontname" : "Arial",
@@ -871,7 +870,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 809.0, 117.0, 20.0, 20.0 ]
+					"patching_rect" : [ 637.0, 115.0, 20.0, 20.0 ]
 				}
 
 			}
@@ -884,7 +883,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 944.0, 177.0, 127.0, 20.0 ],
+					"patching_rect" : [ 772.0, 175.0, 127.0, 20.0 ],
 					"text" : "/led/rgb \"$1\" \"$2\" \"$3\"",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -899,7 +898,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "float" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 945.0, 44.333328, 195.0, 88.666672 ]
+					"patching_rect" : [ 773.0, 42.333328, 195.0, 88.666672 ]
 				}
 
 			}
@@ -913,7 +912,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 151.0, 117.5, 89.0, 47.0 ],
+					"patching_rect" : [ 41.0, 116.5, 89.0, 47.0 ],
 					"text" : "/led/green 0\n/led/red 0\n/led/blue 0",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -929,7 +928,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 159.0, 186.5, 89.0, 47.0 ],
+					"patching_rect" : [ 49.0, 185.5, 89.0, 47.0 ],
 					"text" : "/led/green 0\n/led/red 255\n/led/blue 0",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -944,7 +943,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 139.0, 55.0, 150.0, 20.0 ],
+					"patching_rect" : [ 29.0, 54.0, 150.0, 20.0 ],
 					"text" : "/led/rgb 0 0 0",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -958,7 +957,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "int" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 446.0, 94.666656, 20.0, 20.0 ]
+					"patching_rect" : [ 336.0, 93.666656, 20.0, 20.0 ]
 				}
 
 			}
@@ -971,7 +970,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 445.0, 123.666656, 223.0, 20.0 ],
+					"patching_rect" : [ 335.0, 122.666656, 223.0, 20.0 ],
 					"text" : "/connector/orange/left \"$1\"",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -985,7 +984,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "int" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 446.0, 45.0, 20.0, 20.0 ]
+					"patching_rect" : [ 336.0, 44.0, 20.0, 20.0 ]
 				}
 
 			}
@@ -998,7 +997,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 448.0, 73.0, 215.0, 20.0 ],
+					"patching_rect" : [ 338.0, 72.0, 215.0, 20.0 ],
 					"text" : "/connector/orange/right \"$1\"",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -1013,7 +1012,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 767.0, 14.333313, 150.0, 20.0 ],
+					"patching_rect" : [ 595.0, 12.333313, 150.0, 20.0 ],
 					"text" : "/tone 200 200",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -1028,7 +1027,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 314.0, 57.0, 105.0, 20.0 ],
+					"patching_rect" : [ 311.0, 174.0, 105.0, 20.0 ],
 					"text" : "/led \"$1\"",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -1042,7 +1041,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "int" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 316.0, 28.0, 20.0, 20.0 ]
+					"patching_rect" : [ 313.0, 145.0, 20.0, 20.0 ]
 				}
 
 			}
@@ -1055,7 +1054,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 767.0, 40.0, 150.0, 20.0 ],
+					"patching_rect" : [ 595.0, 38.0, 150.0, 20.0 ],
 					"text" : "/tone 440",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -1070,7 +1069,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 314.0, 82.0, 89.0, 20.0 ],
+					"patching_rect" : [ 204.0, 81.0, 89.0, 20.0 ],
 					"text" : "/led/green 200",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -1085,7 +1084,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 314.0, 132.0, 89.0, 20.0 ],
+					"patching_rect" : [ 204.0, 131.0, 89.0, 20.0 ],
 					"text" : "/led/blue 200",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -1100,7 +1099,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 314.0, 107.0, 89.0, 20.0 ],
+					"patching_rect" : [ 204.0, 106.0, 89.0, 20.0 ],
 					"text" : "/led/red 100",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -1115,7 +1114,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 139.0, 79.0, 150.0, 20.0 ],
+					"patching_rect" : [ 29.0, 78.0, 150.0, 20.0 ],
 					"text" : "/led/rgb 200 0 0",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -1130,7 +1129,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 767.0, 90.0, 150.0, 20.0 ],
+					"patching_rect" : [ 595.0, 88.0, 150.0, 20.0 ],
 					"text" : "/tone/off",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -1146,8 +1145,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 741.0, 341.0, 305.0, 87.0 ],
-					"text" : "/portname \"usbmodem1421\"\n/rate/output 58\n/rate/input 35\n/mediansize/received 184.5\n/baud 110\n/port \"h\"",
+					"patching_rect" : [ 650.0, 377.0, 305.0, 87.0 ],
+					"text" : "/portname \"usbmodem1421\"\n/rate/output 24\n/rate/input 1\n/mediansize/received 171.5\n/baud 110\n/port \"h\"",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -1161,7 +1160,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 767.0, 65.0, 150.0, 20.0 ],
+					"patching_rect" : [ 595.0, 63.0, 150.0, 20.0 ],
 					"text" : "/tone 220.",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -1508,10 +1507,6 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "o.message.mxo",
-				"type" : "iLaX"
-			}
-, 			{
 				"name" : "o.if.mxo",
 				"type" : "iLaX"
 			}
@@ -1541,6 +1536,10 @@
 			}
 , 			{
 				"name" : "o.cond.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.message.mxo",
 				"type" : "iLaX"
 			}
 , 			{
