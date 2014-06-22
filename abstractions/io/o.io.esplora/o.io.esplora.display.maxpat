@@ -4,11 +4,11 @@
 		"appversion" : 		{
 			"major" : 6,
 			"minor" : 1,
-			"revision" : 4,
+			"revision" : 6,
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 23.0, 68.0, 971.0, 820.0 ],
+		"rect" : [ 0.0, 44.0, 1440.0, 779.0 ],
 		"bgcolor" : [ 1.0, 1.0, 1.0, 0.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
@@ -112,7 +112,7 @@
 						"appversion" : 						{
 							"major" : 6,
 							"minor" : 1,
-							"revision" : 4,
+							"revision" : 6,
 							"architecture" : "x86"
 						}
 ,
@@ -272,7 +272,7 @@
 						"appversion" : 						{
 							"major" : 6,
 							"minor" : 1,
-							"revision" : 4,
+							"revision" : 6,
 							"architecture" : "x86"
 						}
 ,
@@ -409,7 +409,7 @@
 						"appversion" : 						{
 							"major" : 6,
 							"minor" : 1,
-							"revision" : 4,
+							"revision" : 6,
 							"architecture" : "x86"
 						}
 ,
@@ -609,7 +609,7 @@
 						"appversion" : 						{
 							"major" : 6,
 							"minor" : 1,
-							"revision" : 4,
+							"revision" : 6,
 							"architecture" : "x86"
 						}
 ,
@@ -939,7 +939,7 @@
 						"appversion" : 						{
 							"major" : 6,
 							"minor" : 1,
-							"revision" : 4,
+							"revision" : 6,
 							"architecture" : "x86"
 						}
 ,
@@ -1219,7 +1219,7 @@
 						"appversion" : 						{
 							"major" : 6,
 							"minor" : 1,
-							"revision" : 4,
+							"revision" : 6,
 							"architecture" : "x86"
 						}
 ,
@@ -1503,7 +1503,7 @@
 						"appversion" : 						{
 							"major" : 6,
 							"minor" : 1,
-							"revision" : 4,
+							"revision" : 6,
 							"architecture" : "x86"
 						}
 ,
@@ -1688,7 +1688,7 @@
 						"appversion" : 						{
 							"major" : 6,
 							"minor" : 1,
-							"revision" : 4,
+							"revision" : 6,
 							"architecture" : "x86"
 						}
 ,
@@ -1891,7 +1891,7 @@
 										"appversion" : 										{
 											"major" : 6,
 											"minor" : 1,
-											"revision" : 4,
+											"revision" : 6,
 											"architecture" : "x86"
 										}
 ,
@@ -3114,7 +3114,7 @@
 						"appversion" : 						{
 							"major" : 6,
 							"minor" : 1,
-							"revision" : 4,
+							"revision" : 6,
 							"architecture" : "x86"
 						}
 ,
@@ -3137,6 +3137,7 @@
 						"description" : "",
 						"digest" : "",
 						"tags" : "",
+						"visible" : 1,
 						"boxes" : [ 							{
 								"box" : 								{
 									"comment" : "",
@@ -3308,7 +3309,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "signal" ],
-									"patching_rect" : [ 60.0, 350.0, 50.0, 20.0 ],
+									"patching_rect" : [ 60.0, 350.0, 49.0, 20.0 ],
 									"text" : "saw~ 0"
 								}
 
@@ -3548,7 +3549,7 @@
 						"appversion" : 						{
 							"major" : 6,
 							"minor" : 1,
-							"revision" : 4,
+							"revision" : 6,
 							"architecture" : "x86"
 						}
 ,
@@ -3749,7 +3750,7 @@
 						"appversion" : 						{
 							"major" : 6,
 							"minor" : 1,
-							"revision" : 4,
+							"revision" : 6,
 							"architecture" : "x86"
 						}
 ,
@@ -4051,7 +4052,7 @@
 						"appversion" : 						{
 							"major" : 6,
 							"minor" : 1,
-							"revision" : 4,
+							"revision" : 6,
 							"architecture" : "x86"
 						}
 ,
@@ -4314,7 +4315,7 @@
 						"appversion" : 						{
 							"major" : 6,
 							"minor" : 1,
-							"revision" : 4,
+							"revision" : 6,
 							"architecture" : "x86"
 						}
 ,
@@ -4779,7 +4780,7 @@
 						"appversion" : 						{
 							"major" : 6,
 							"minor" : 1,
-							"revision" : 4,
+							"revision" : 6,
 							"architecture" : "x86"
 						}
 ,
@@ -5786,28 +5787,21 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "c.esplora.buttonui.maxpat",
-				"bootpath" : "/Users/jml/Documents/materials/programming/max_files/5_berkeley/projects/cnmat/repositories/git/CNMAT-odot/abstractions/io/o.io.esplora",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions/io/o.io.esplora",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "c.esplora.buttonhelper.maxpat",
-				"bootpath" : "/Users/jml/Documents/materials/programming/max_files/5_berkeley/projects/cnmat/repositories/git/CNMAT-odot/abstractions/io/o.io.esplora",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions/io/o.io.esplora",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "c.lcd.circle.maxpat",
-				"bootpath" : "/Users/jml/Documents/materials/programming/max_files/5_berkeley/projects/cnmat/repositories/git/CNMAT-odot/abstractions/io",
-				"patcherrelativepath" : "..",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
 				"name" : "c.esplora.p2i.maxpat",
-				"bootpath" : "/Users/jml/Documents/materials/programming/max_files/5_berkeley/projects/cnmat/repositories/git/CNMAT-odot/abstractions/io/o.io.esplora",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions/io/o.io.esplora",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
