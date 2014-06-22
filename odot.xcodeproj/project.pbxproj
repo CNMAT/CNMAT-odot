@@ -61,6 +61,9 @@
 			buildPhases = (
 			);
 			dependencies = (
+				1110757A195786660090D286 /* PBXTargetDependency */,
+				1110757C195786660090D286 /* PBXTargetDependency */,
+				11107578195785110090D286 /* PBXTargetDependency */,
 				110C2AA71950476E00802233 /* PBXTargetDependency */,
 				52183DE119218CF200F61786 /* PBXTargetDependency */,
 				52183DE319218CF200F61786 /* PBXTargetDependency */,
@@ -387,6 +390,27 @@
 			proxyType = 1;
 			remoteGlobalIDString = 11FC8B02194C417F00635118;
 			remoteInfo = o.validate.pd;
+		};
+		11107577195785110090D286 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 11A5D9DE19574A1B00333C1F;
+			remoteInfo = o.context.pd;
+		};
+		11107579195786660090D286 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 11A5D9CA19571A8300333C1F;
+			remoteInfo = o.slipserial.decode.pd;
+		};
+		1110757B195786660090D286 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 11A5D9D319571AC400333C1F;
+			remoteInfo = o.slipserial.encode.pd;
 		};
 		112643F6194E3BA500726422 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -4949,6 +4973,21 @@
 			target = 11FC8B02194C417F00635118 /* o.validate.pd */;
 			targetProxy = 110C2AA61950476E00802233 /* PBXContainerItemProxy */;
 		};
+		11107578195785110090D286 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 11A5D9DE19574A1B00333C1F /* o.context.pd */;
+			targetProxy = 11107577195785110090D286 /* PBXContainerItemProxy */;
+		};
+		1110757A195786660090D286 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 11A5D9CA19571A8300333C1F /* o.slipserial.decode.pd */;
+			targetProxy = 11107579195786660090D286 /* PBXContainerItemProxy */;
+		};
+		1110757C195786660090D286 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 11A5D9D319571AC400333C1F /* o.slipserial.encode.pd */;
+			targetProxy = 1110757B195786660090D286 /* PBXContainerItemProxy */;
+		};
 		112643F7194E3BA500726422 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 11F7B52B194C48EF0090045B /* o.downcast.pd */;
@@ -8637,6 +8676,7 @@
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../libo/libo.a\" \"$(SRCROOT)/../libomax/libopd.a\"";
 				PRODUCT_NAME = o.slipserial.decode;
+				SYMROOT = "$(PROJECT_DIR)/pd_release_package";
 				WRAPPER_EXTENSION = "";
 			};
 			name = Release;
@@ -8757,6 +8797,7 @@
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../libo/libo.a\" \"$(SRCROOT)/../libomax/libopd.a\"";
 				PRODUCT_NAME = o.slipserial.encode;
+				SYMROOT = "$(PROJECT_DIR)/pd_release_package";
 				WRAPPER_EXTENSION = "";
 			};
 			name = Release;
@@ -8819,6 +8860,7 @@
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../libo/libo.a\" \"$(SRCROOT)/../libomax/libopd.a\"";
 				PRODUCT_NAME = o.context;
+				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
 			};
 			name = Debug;
@@ -8875,6 +8917,7 @@
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../libo/libo.a\" \"$(SRCROOT)/../libomax/libopd.a\"";
 				PRODUCT_NAME = o.context;
+				SYMROOT = "$(PROJECT_DIR)/pd_release_package";
 				WRAPPER_EXTENSION = "";
 			};
 			name = Release;
