@@ -1,4 +1,3 @@
-$(info $(ACTION))
 COBJECT_LIST = o.append \
 o.atomize \
 o.change \
