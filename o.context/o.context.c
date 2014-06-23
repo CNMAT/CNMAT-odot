@@ -29,11 +29,17 @@
 #define OMAX_DOC_SEEALSO (char *[]){""}
 
 #include "odot_version.h"
+
+#ifdef OMAX_PD_VERSION
+#include "m_pd.h"
+#include "g_canvas.h"
+#else
 #include "ext.h"
 #include "ext_obex.h"
 #include "ext_critical.h"
 #include "ext_obex_util.h"
 #include "jpatcher_api.h"
+#endif
 #include "osc.h"
 #include "osc_serial.h"
 #include "osc_mem.h"
@@ -43,14 +49,204 @@
 #include "omax_doc.h"
 #include "omax_dict.h"
 
+#ifdef OMAX_PD_VERSION
+struct _canvasenvironment
+{
+    t_symbol *ce_dir;      /* directory patch lives in */
+    int ce_argc;           /* number of "$" arguments */
+    t_atom *ce_argv;       /* array of "$" arguments */
+    int ce_dollarzero;     /* value of "$0" */
+};
+#endif
+
 typedef struct _ocontext{
 	t_object ob;
 	void *outlet;
 	t_symbol *prefix;
+    
+#ifdef OMAX_PD_VERSION
+    t_canvas *canvas;
+    t_glist *glist;
+#endif
+    
 } t_ocontext;
 
 void *ocontext_class;
 
+#ifdef OMAX_PD_VERSION
+t_osc_bndl_u *ocontext_processCanvas(t_canvas *canvas)
+{
+	t_osc_bndl_u *canvas_bndl = osc_bundle_u_alloc();
+	if(canvas == NULL){
+		// return empty bundle---this is intentional
+		return canvas_bndl;
+	}
+
+    t_osc_msg_u *msg = NULL;
+
+    msg = osc_message_u_allocWithAddress("/name");
+    osc_message_u_appendString(msg, canvas->gl_name->s_name);
+    osc_bundle_u_addMsg(canvas_bndl, msg);
+
+    t_canvasenvironment *c_env = canvas_getenv(canvas);
+    
+    msg = osc_message_u_allocWithAddress("/path");
+    osc_message_u_appendString(msg, c_env->ce_dir->s_name);
+    osc_bundle_u_addMsg(canvas_bndl, msg);
+    
+    msg = osc_message_u_allocWithAddress("/$0");
+    osc_message_u_appendInt32(msg, c_env->ce_dollarzero);
+    osc_bundle_u_addMsg(canvas_bndl, msg);
+    
+    msg = osc_message_u_allocWithAddress("/isabstraction");
+    osc_message_u_appendBool(msg, !canvas_isabstraction(canvas));
+    osc_bundle_u_addMsg(canvas_bndl, msg);
+    
+    msg = osc_message_u_allocWithAddress("/editmode");
+    osc_message_u_appendBool(msg, canvas->gl_edit);
+    osc_bundle_u_addMsg(canvas_bndl, msg);
+
+    msg = osc_message_u_allocWithAddress("/font");
+    osc_message_u_appendString(msg, sys_font);
+    osc_bundle_u_addMsg(canvas_bndl, msg);
+    
+    msg = osc_message_u_allocWithAddress("/fontsize");
+    osc_message_u_appendInt32(msg, canvas->gl_font);
+    osc_bundle_u_addMsg(canvas_bndl, msg);
+    
+    msg = osc_message_u_allocWithAddress("/dirty");
+    osc_message_u_appendBool(msg, canvas->gl_dirty);
+    osc_bundle_u_addMsg(canvas_bndl, msg);
+
+    if(!canvas_isabstraction(canvas))
+    {
+        msg = osc_message_u_allocWithAddress("/abstraction/position/x1");
+        osc_message_u_appendInt32(msg, canvas->gl_obj.te_xpix);
+        osc_bundle_u_addMsg(canvas_bndl, msg);
+        
+        msg = osc_message_u_allocWithAddress("/abstraction/position/y1");
+        osc_message_u_appendInt32(msg, canvas->gl_obj.te_ypix);
+        osc_bundle_u_addMsg(canvas_bndl, msg);
+    }
+    
+    msg = osc_message_u_allocWithAddress("/pixwidth");
+    osc_message_u_appendInt32(msg, canvas->gl_pixwidth);
+    osc_bundle_u_addMsg(canvas_bndl, msg);
+    
+    msg = osc_message_u_allocWithAddress("/pixheight");
+    osc_message_u_appendInt32(msg, canvas->gl_pixheight);
+    osc_bundle_u_addMsg(canvas_bndl, msg);
+    
+    msg = osc_message_u_allocWithAddress("/screen/x1");
+    osc_message_u_appendInt32(msg, canvas->gl_screenx1);
+    osc_bundle_u_addMsg(canvas_bndl, msg);
+    
+    msg = osc_message_u_allocWithAddress("/screen/y1");
+    osc_message_u_appendInt32(msg, canvas->gl_screeny1);
+    osc_bundle_u_addMsg(canvas_bndl, msg);
+    
+    msg = osc_message_u_allocWithAddress("/screen/x2");
+    osc_message_u_appendInt32(msg, canvas->gl_screenx2);
+    osc_bundle_u_addMsg(canvas_bndl, msg);
+    
+    msg = osc_message_u_allocWithAddress("/screen/y2");
+    osc_message_u_appendInt32(msg, canvas->gl_screeny2);
+    osc_bundle_u_addMsg(canvas_bndl, msg);
+
+    msg = osc_message_u_allocWithAddress("/xmargin");
+    osc_message_u_appendInt32(msg, canvas->gl_xmargin);
+    osc_bundle_u_addMsg(canvas_bndl, msg);
+
+    msg = osc_message_u_allocWithAddress("/ymargin");
+    osc_message_u_appendInt32(msg, canvas->gl_ymargin);
+    osc_bundle_u_addMsg(canvas_bndl, msg);
+    
+    if(canvas->gl_goprect && canvas->gl_owner)
+    {
+        int x1,y1,x2,y2;
+        gobj_getrect(&canvas->gl_obj.te_g, canvas->gl_owner, &x1, &y1, &x2, &y2);
+
+        msg = osc_message_u_allocWithAddress("/graphrect");
+        osc_message_u_appendInt32(msg, x1);
+        osc_message_u_appendInt32(msg, y1);
+        osc_message_u_appendInt32(msg, x2);
+        osc_message_u_appendInt32(msg, y2);
+        osc_bundle_u_addMsg(canvas_bndl, msg);
+    }
+    
+    t_binbuf *b = NULL;
+    b = canvas->gl_obj.te_binbuf;
+    
+    if(b)
+    {
+        int argc = binbuf_getnatom(b);
+        t_atom *argv = binbuf_getvec(b);
+
+        if(argc)
+        {
+            t_osc_msg_u *msg_u = NULL;
+            int abstr = !canvas_isabstraction(canvas);
+            t_osc_err e = omax_util_maxAtomsToOSCMsg_u(&msg_u, gensym("/arguments"), argc-1-abstr, argv+1+abstr);
+            if(e)
+            {
+                if(e){
+                    object_error((t_object *)x, "%s", osc_error_string(e));
+                    goto exit;
+                }
+            }
+            osc_bundle_u_addMsg(canvas_bndl, msg_u);
+        }
+        else
+        {
+            msg = osc_message_u_allocWithAddress("/arguments");
+            osc_message_u_appendString(msg, "");
+            osc_bundle_u_addMsg(canvas_bndl, msg);
+        }
+    }
+    else
+    {
+        msg = osc_message_u_allocWithAddress("/arguments");
+        osc_message_u_appendString(msg, "");
+        osc_bundle_u_addMsg(canvas_bndl, msg);
+    }
+    
+exit:
+    if(canvas->gl_owner)
+    {
+        t_osc_bndl_u *parent_bndl = ocontext_processCanvas(canvas->gl_owner);
+		t_osc_msg_u *pmsg = osc_message_u_allocWithAddress("/parent");
+		osc_message_u_appendBndl_u(pmsg, parent_bndl);
+		osc_bundle_u_addMsg(canvas_bndl, pmsg);
+    }
+    
+	return canvas_bndl;
+}
+
+void ocontext_doFullPacket(t_ocontext *x, long len, char *ptr)
+{
+	t_canvas *patcher = NULL;
+    
+    patcher = x->canvas;
+    
+	t_osc_bndl_u *mypatcher_bndl = ocontext_processCanvas(patcher);
+	t_osc_msg_u *context_msg = osc_message_u_allocWithAddress("/context");
+	osc_message_u_appendBndl_u(context_msg, mypatcher_bndl);
+	t_osc_bndl_u *bu = NULL;
+	osc_bundle_s_deserialize(len, ptr, &bu);
+	if(bu){
+		osc_bundle_u_addMsgWithoutDups(bu, context_msg);
+		long l = 0;
+		char *buf = NULL;
+		osc_bundle_u_serialize(bu, &l, &buf);
+		if(buf){
+			omax_util_outletOSC(x->outlet, l, buf);
+			osc_mem_free(buf);
+		}
+	}
+	osc_bundle_u_free(mypatcher_bndl);
+}
+
+#else
 t_osc_bndl_u *ocontext_processPatcher(t_object *patcher)
 {
 	t_osc_bndl_u *patcher_bndl = osc_bundle_u_alloc();
@@ -127,6 +323,7 @@ void ocontext_doFullPacket(t_ocontext *x, long len, char *ptr)
 	}
 	osc_bundle_u_free(mypatcher_bndl);
 }
+#endif
 
 void ocontext_fullPacket(t_ocontext *x, t_symbol *msg, int argc, t_atom *argv)
 {
@@ -139,51 +336,90 @@ void ocontext_bang(t_ocontext *x)
 	ocontext_doFullPacket(x, 0, NULL);
 }
 
-OMAX_DICT_DICTIONARY(t_ocontext, x, ocontext_fullPacket);
 
 void ocontext_doc(t_ocontext *x)
 {
 	omax_doc_outletDoc(x->outlet);
 }
 
+void ocontext_free(t_ocontext *x)
+{
+}
+
+
+#ifdef OMAX_PD_VERSION
+void *ocontext_new(t_symbol *msg, short argc, t_atom *argv)
+{
+	t_ocontext *x = NULL;
+	if((x = (t_ocontext *)object_alloc(ocontext_class))){
+		x->outlet = outlet_new(&x->ob, gensym("FullPacket"));
+		x->prefix = gensym("");
+
+        x->glist = (t_glist *)canvas_getcurrent();
+        x->canvas = (t_canvas *)glist_getcanvas(x->glist);
+        
+        // DO PSEUDO ATTRS PROCESSING
+        /*
+         CLASS_ATTR_ATOM(c, "prefix", 0, t_ocontext, prefix);
+         CLASS_ATTR_LABEL(c, "prefix", 0, "OSC Address Prefix");
+         CLASS_ATTR_ACCESSORS(c, "prefix", ocontext_attr_prefix_get, ocontext_attr_prefix_set);
+         
+         class_register(CLASS_BOX, c);
+         */
+        
+        
+	}
+	return x;
+}
+
+int setup_o0x2econtext(void)
+{
+	t_class *c = class_new(gensym("o.context"), (t_newmethod)ocontext_new, (t_method)ocontext_free, sizeof(t_ocontext), 0L, A_GIMME, 0);
+	class_addmethod(c, (t_method)ocontext_fullPacket, gensym("FullPacket"), A_GIMME, 0);
+	class_addmethod(c, (t_method)ocontext_doc, gensym("doc"), 0);
+	class_addbang(c, ocontext_bang);
+    class_addmethod(c, (t_method)odot_version, gensym("version"), 0);
+    /*
+	CLASS_ATTR_ATOM(c, "prefix", 0, t_ocontext, prefix);
+	CLASS_ATTR_LABEL(c, "prefix", 0, "OSC Address Prefix");
+	CLASS_ATTR_ACCESSORS(c, "prefix", ocontext_attr_prefix_get, ocontext_attr_prefix_set);
+	
+	class_register(CLASS_BOX, c);
+     */
+	ocontext_class = c;
+    
+    
+	ODOT_PRINT_VERSION;
+	return 0;
+}
+
+#else
+
+OMAX_DICT_DICTIONARY(t_ocontext, x, ocontext_fullPacket);
+
 void ocontext_assist(t_ocontext *x, void *b, long io, long num, char *buf)
 {
 	omax_doc_assist(io, num, buf);
 }
 
-void ocontext_free(t_ocontext *x)
-{
-}
-
-void *ocontext_new(t_symbol *msg, short argc, t_atom *argv)
-{
-	t_ocontext *x = NULL;
-	if((x = (t_ocontext *)object_alloc(ocontext_class))){
-		x->outlet = outlet_new((t_object *)x, "FullPacket");
-		x->prefix = gensym("");
-		attr_args_process(x, argc, argv);
-	}
-	return x;
-}
-
 t_max_err ocontext_attr_prefix_get(t_ocontext *x, t_object *attr, long *argc, t_atom **argv)
 {
 	char alloc;
-        atom_alloc(argc, argv, &alloc);
- 
-        if(x->prefix){
+    atom_alloc(argc, argv, &alloc);
+    
+    if(x->prefix){
 		atom_setsym(*argv, x->prefix);
 	}else{
 		atom_setsym(*argv, gensym(""));
 	}
- 
-        return 0;
+    
+    return 0;
 }
 
 t_max_err ocontext_attr_prefix_set(t_ocontext *x, t_object *attr, long argc, t_atom *argv)
 {
 	switch(atom_gettype(argv)){
-	case A_SYM:
+        case A_SYM:
 		{
 			t_symbol *s = atom_getsym(argv);
 			if(s->s_name[0] != '/'){
@@ -194,20 +430,32 @@ t_max_err ocontext_attr_prefix_set(t_ocontext *x, t_object *attr, long argc, t_a
 				x->prefix = atom_getsym(argv);
 			}
 		}
-		break;
-	case A_LONG:
+            break;
+        case A_LONG:
 		{
 			long l = atom_getlong(argv);
 			char buf[128];
 			sprintf(buf, "/%ld", l);
 			x->prefix = gensym(buf);
 		}
-		break;
-	default:
-		object_error((t_object *)x, "prefix value must be an integer or a string");
-		return MAX_ERR_GENERIC;
+            break;
+        default:
+            object_error((t_object *)x, "prefix value must be an integer or a string");
+            return MAX_ERR_GENERIC;
 	}
 	return MAX_ERR_NONE;
+}
+
+
+void *ocontext_new(t_symbol *msg, short argc, t_atom *argv)
+{
+	t_ocontext *x = NULL;
+	if((x = (t_ocontext *)object_alloc(ocontext_class))){
+		x->outlet = outlet_new((t_object *)x, "FullPacket");
+		x->prefix = gensym("");
+		attr_args_process(x, argc, argv);
+	}
+	return x;
 }
 
 int main(void)
@@ -235,3 +483,4 @@ int main(void)
 	ODOT_PRINT_VERSION;
 	return 0;
 }
+#endif
