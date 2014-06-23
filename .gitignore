@@ -1,6 +1,7 @@
 *.[oa]
 *.mxo
 *.mxe
+*.pd_darwin
 *.class
 *.objinfo.txt
 *.tar.gz
