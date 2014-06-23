@@ -79,6 +79,11 @@
 			<key>orderHint</key>
 			<integer>11</integer>
 		</dict>
+		<key>o.context.pd.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>82</integer>
+		</dict>
 		<key>o.context.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -568,6 +573,11 @@
 			<true/>
 		</dict>
 		<key>11A5D9D319571AC400333C1F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>11A5D9DE19574A1B00333C1F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
