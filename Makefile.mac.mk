@@ -100,7 +100,7 @@ $(STAGINGDIR)/%: $(STAGINGDIR)
 	rsync -avq --exclude=*/.* $* $(STAGINGDIR)
 
 #.PHONY: install
-install: $(DIRS) $(OBJECTS) $(STAGED_PRODUCTS) $(INSTALLED_PRODUCTS)
+#install: $(DIRS) $(OBJECTS) $(STAGED_PRODUCTS) $(INSTALLED_PRODUCTS)
 
 # executed to satisfy the $(INSTALLED_PRODUCTS) dependancy
 $(LOCAL_INSTALL_PATH)/%: $(LOCAL_INSTALL_DIR)
@@ -118,11 +118,12 @@ archive: $(ARCHIVE)
 
 .PHONY: clean
 clean: 
+	@echo "clean, bitches"
 	rm -rf build
 	rm -rf $(STAGINGDIR)
 	rm -rf $(ARCHIVE)
 	rm -rf $(LOCAL_INSTALL_PATH)
-	rm $(CURRENT_VERSION_FILE)
+	rm -f $(CURRENT_VERSION_FILE)
 
 ##################################################
 ## create directories

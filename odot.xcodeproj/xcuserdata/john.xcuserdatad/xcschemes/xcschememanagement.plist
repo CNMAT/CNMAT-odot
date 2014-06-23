@@ -19,6 +19,11 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>Clean.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>85</integer>
+		</dict>
 		<key>Current Version.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -653,6 +658,11 @@
 			<true/>
 		</dict>
 		<key>5224C9FB1958BFDF00E37AED</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>5224CA071958C2E700E37AED</key>
 		<dict>
 			<key>primary</key>
 			<true/>
