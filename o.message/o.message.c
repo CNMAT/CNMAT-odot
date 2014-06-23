@@ -191,6 +191,8 @@ typedef struct _omessage {
 	int draw_new_data_indicator;
 	t_clock *new_data_indicator_clock;
     
+    int     softlock;
+    
 } t_omessage;
 
 t_omax_pd_proxy_class *omessage_class;
@@ -298,7 +300,7 @@ void omessage_doFullPacket(t_omessage *x, long len, char *ptr)
 #ifdef OMAX_PD_VERSION
     x->draw_new_data_indicator = 1;
 	x->have_new_data = 1;
-	jbox_redraw((t_jbox *)x);
+    jbox_redraw((t_jbox *)x);
 #else
 	x->draw_new_data_indicator = 1;
 	x->have_new_data = 1;
@@ -773,12 +775,12 @@ void omessage_setHeight(t_omessage *x, float y)
     h = (h > 23) ? h : 23;
 
     //post("%x %s y %f te_ypix %d ", x, __func__, y, x->ob.te_ypix);
+    x->softlock = 0;
     
     if((h != x->height) || x->forceredraw)
     {
         x->height = h;
-        //post("%x %s height set to %d", x, __func__, x->height);
-
+//        post("%x %s height set to %d x->firsttime %d", x, __func__, x->height, x->firsttime);
         omessage_drawElements(x, x->glist, x->width, x->height, x->firsttime);
         x->forceredraw = 0;
         
@@ -791,7 +793,9 @@ void omessage_setHeight(t_omessage *x, float y)
 void omessage_getRectAndDraw(t_omessage *x, int forceredraw)
 {
     x->forceredraw = forceredraw;
-    
+    x->softlock = 1;
+   // post("pdsend \"%s setheight [lindex [.x%lx.c bbox text%lx] 3]\" \n", x->receive_name, glist_getcanvas(x->glist), (long)x);
+
     sys_vgui("pdsend \"%s setheight [lindex [.x%lx.c bbox text%lx] 3]\" \n", x->receive_name, glist_getcanvas(x->glist), (long)x);
 //    sys_vgui("::pdwindow::post \"%x %s Tk bbox y2 px: [lindex [%s bbox text%lx] 3]\n\"\n", x, __func__, x->canvas_id, (long)x);
 
@@ -1359,7 +1363,7 @@ void omessage_resetText(t_omessage *x, char *s)
     }
     else if(glist_isvisible(x->glist))
     {
-//        post("%s %d", __func__, glist_isvisible(x->glist));
+        //post("%s %d", __func__, glist_isvisible(x->glist));
         sys_vgui(".x%lx.c itemconfigure text%lx -width %d -text [subst -nobackslash -nocommands -novariables [string trimright [regsub -all -line {^[ \t]+|[ \t]+$}  {%s} \"\" ]]] \n", glist_getcanvas(x->glist), (long)x, x->width-10, x->tk_text);
         
         omessage_getRectAndDraw(x, 1);
@@ -1400,7 +1404,7 @@ void omessage_drawElements(t_omessage *x, t_glist *glist, int width2, int height
 {
     
    // post("%x %s glist %x canvas %x", x, __func__, glist, glist_getcanvas(glist));
-    if(x->in_new_flag)
+    if(x->in_new_flag || x->softlock)
     {
         //post("%x %s new bounce ---", x, __func__);
         return;
@@ -1433,9 +1437,9 @@ void omessage_drawElements(t_omessage *x, t_glist *glist, int width2, int height
     
     //post("%x %s isvisible %d isgraph %d", x, __func__, glist_isvisible(glist), glist_isgraph(glist));
     
-    if (glist_isvisible(glist))
+    if (glist_isvisible(glist) && canvas->gl_editor)
     {
-        //post("%x %s %d %d\n", x, __func__, firsttime, x->firsttime);
+      //  post("%x %s %d %d\n", x, __func__, firsttime, x->firsttime);
 
         if (firsttime)
         {
@@ -1481,7 +1485,7 @@ void omessage_drawElements(t_omessage *x, t_glist *glist, int width2, int height
         }
         else
         {
-            //post("%x %s REDRAW height %d y1 %d y2 %d \n", x, __func__, x->height, y1, y2);
+            // post("%x %s REDRAW height %d y1 %d y2 %d \n", x, __func__, x->height, y1, y2);
 
             sys_vgui(".x%lx.c coords %s %d %d %d %d\n", canvas, x->border_tag, x1, y1, x2, y2);
             sys_vgui(".x%lx.c coords %s %d %d %d %d %d %d %d %d %d %d %d %d \n",canvas, x->corner_tag,
@@ -1527,8 +1531,6 @@ void omessage_drawElements(t_omessage *x, t_glist *glist, int width2, int height
         else if(x->textediting || x->selected)
             sys_vgui(".x%lx.h%lxHANDLE configure -cursor fleur \n", canvas, (long)x);
         
-       
-        canvas_fixlinesfor(glist, &x->ob);
         
         sys_vgui(".x%lx.c itemconfigure %s -outline %s\n", canvas, x->corner_tag, (x->parse_error?  "red" : "black" ));
         sys_vgui(".x%lx.c itemconfigure %sTL -outline %s\n", canvas, x->corner_tag, (x->parse_error? "red" : "black" ));
@@ -1541,11 +1543,13 @@ void omessage_drawElements(t_omessage *x, t_glist *glist, int width2, int height
         
         if(glist_isselected(x->glist, &x->ob.te_g))
             gobj_select(&x->ob.te_g, x->glist, 1);
-        
+       
+        canvas_fixlinesfor(glist, &x->ob);
+
     }
     else
     {
-        //post("%s not VIS \n", __func__);
+      //  post("%s not isvisible \n", __func__);
     }
     
 }
@@ -1555,24 +1559,27 @@ static void omessage_vis(t_gobj *z, t_glist *glist, int vis)
 {
     t_omessage *x = (t_omessage *)z;
     
-    //post("%x %s vis %d firsttime %d visable %d", x, __func__, vis, x->firsttime, glist_isvisible(glist));
+//    post("%x %s vis %d firsttime %d visable %d", x, __func__, vis, x->firsttime, glist_isvisible(glist));
     
     if(vis)
     {
         
-        if(!x->firsttime)
+        if(!x->firsttime && glist_isgraph(glist))
         {
+            //post("GOP vis");
             omessage_delete(z, glist); //<< necessary for GOP? keep an eye on this
             x->firsttime = 1;
         }
 
         if (glist_isvisible(glist))
         {//not visible when loading from disk (and from subpatcher?)
-//            post("%x %s first time is vis", x, __func__);
+            //post("%x %s vis and isvisble", x, __func__);
             omessage_drawElements(x, glist, x->width, x->height, 1);
         }
         else
         {
+            //post("%x %s vis but not isvisible", x, __func__);
+            x->firsttime = 1;
             omessage_getRectAndDraw(x, 1);
         }
         
@@ -1723,11 +1730,13 @@ static void omessage_delete(t_gobj *z, t_glist *glist)
     t_omessage *x = (t_omessage *)z;
    // omessage_pdnofocus_callback(x);
 
- //     post("%s %d %p \n",__func__, x->firsttime, glist->gl_editor);
+  //    post("%s %d %p \n",__func__, x->firsttime, glist->gl_editor);
     
     t_canvas *canvas = glist_getcanvas(glist);
     if(!x->firsttime && canvas->gl_editor)
     {
+        sys_vgui("destroy .x%lx.h%lxHANDLE\n", canvas, (long)x);
+
         //post("deleting\n");
         sys_vgui(".x%lx.c delete %s\n", canvas, x->border_tag);
         sys_vgui(".x%lx.c delete %s\n", canvas, x->corner_tag);
@@ -1737,9 +1746,7 @@ static void omessage_delete(t_gobj *z, t_glist *glist)
         
         if(x->textediting)
             sys_vgui("destroy .x%lx.t%lxTEXT\n", canvas, (long)x);
-       
-        sys_vgui("destroy .x%lx.h%lxHANDLE\n", canvas, (long)x);
-       
+        
         glist_eraseiofor(glist, &x->ob, x->iolets_tag);
     }
     
@@ -2091,6 +2098,8 @@ void *omessage_new(t_symbol *msg, short argc, t_atom *argv)
         
         x->in_new_flag = 0;
         //printf("%s %p %d\n", __func__, x, __LINE__);
+        
+        x->softlock = 0;
         
     }
     return (void *)x;
