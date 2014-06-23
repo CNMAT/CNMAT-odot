@@ -1,3 +1,4 @@
+$(info $(ACTION))
 COBJECT_LIST = o.append \
 o.atomize \
 o.change \
@@ -118,7 +119,6 @@ archive: $(ARCHIVE)
 
 .PHONY: clean
 clean: 
-	@echo "clean, bitches"
 	rm -rf build
 	rm -rf $(STAGINGDIR)
 	rm -rf $(ARCHIVE)

@@ -52,7 +52,6 @@
 				52183DD719218CCB00F61786 /* PBXTargetDependency */,
 				52183DD919218CCB00F61786 /* PBXTargetDependency */,
 				52183DDB19218CCB00F61786 /* PBXTargetDependency */,
-				5224CA0E1958C3A800E37AED /* PBXTargetDependency */,
 			);
 			name = "Build all Max";
 			productName = "Build all";
@@ -98,7 +97,6 @@
 				52183E1319218CF200F61786 /* PBXTargetDependency */,
 				52183E1519218CF200F61786 /* PBXTargetDependency */,
 				52183E1719218CF200F61786 /* PBXTargetDependency */,
-				5224CA101958C3AD00E37AED /* PBXTargetDependency */,
 			);
 			name = "Build all PD";
 			productName = "Build all";
@@ -112,7 +110,6 @@
 				5224CA021958C0CD00E37AED /* PBXTargetDependency */,
 				52AA372C19553EAA009A1920 /* PBXTargetDependency */,
 				52AA372A19553EA5009A1920 /* PBXTargetDependency */,
-				5224CA0C1958C3A000E37AED /* PBXTargetDependency */,
 				52AA37081950DE4E009A1920 /* PBXTargetDependency */,
 			);
 			name = "Build all";
@@ -876,27 +873,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 5224C9FB1958BFDF00E37AED;
 			remoteInfo = "Current Version";
-		};
-		5224CA0B1958C3A000E37AED /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 5224CA071958C2E700E37AED;
-			remoteInfo = Clean;
-		};
-		5224CA0D1958C3A800E37AED /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 5224CA071958C2E700E37AED;
-			remoteInfo = Clean;
-		};
-		5224CA0F1958C3AD00E37AED /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 5224CA071958C2E700E37AED;
-			remoteInfo = Clean;
 		};
 		5224CA111958CBDF00E37AED /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -3067,20 +3043,6 @@
 			passBuildSettingsInEnvironment = 1;
 			productName = "Current Version";
 		};
-		5224CA071958C2E700E37AED /* Clean */ = {
-			isa = PBXLegacyTarget;
-			buildArgumentsString = "-f Makefile.mac.mk $(ACTION)";
-			buildConfigurationList = 5224CA081958C2E700E37AED /* Build configuration list for PBXLegacyTarget "Clean" */;
-			buildPhases = (
-			);
-			buildToolPath = /usr/bin/make;
-			buildWorkingDirectory = "";
-			dependencies = (
-			);
-			name = Clean;
-			passBuildSettingsInEnvironment = 1;
-			productName = Clean;
-		};
 /* End PBXLegacyTarget section */
 
 /* Begin PBXNativeTarget section */
@@ -4560,7 +4522,6 @@
 				52183D5E19218CCB00F61786 /* Build all Max */,
 				52183DE019218CF200F61786 /* Build all PD */,
 				5224C9FB1958BFDF00E37AED /* Current Version */,
-				5224CA071958C2E700E37AED /* Clean */,
 				52A8393B16E978D7002E273C /* o.append */,
 				119FA028191D5814001C3325 /* o.append.pd */,
 				B4FEACE30CEF01BF00C2A20C /* o.atomize */,
@@ -5993,21 +5954,6 @@
 			isa = PBXTargetDependency;
 			target = 5224C9FB1958BFDF00E37AED /* Current Version */;
 			targetProxy = 5224CA051958C21600E37AED /* PBXContainerItemProxy */;
-		};
-		5224CA0C1958C3A000E37AED /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 5224CA071958C2E700E37AED /* Clean */;
-			targetProxy = 5224CA0B1958C3A000E37AED /* PBXContainerItemProxy */;
-		};
-		5224CA0E1958C3A800E37AED /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 5224CA071958C2E700E37AED /* Clean */;
-			targetProxy = 5224CA0D1958C3A800E37AED /* PBXContainerItemProxy */;
-		};
-		5224CA101958C3AD00E37AED /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 5224CA071958C2E700E37AED /* Clean */;
-			targetProxy = 5224CA0F1958C3AD00E37AED /* PBXContainerItemProxy */;
 		};
 		5224CA121958CBDF00E37AED /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -11366,69 +11312,6 @@
 			};
 			name = Release;
 		};
-		5224CA091958C2E700E37AED /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ONLY_ACTIVE_ARCH_PRE_XCODE_3_1)";
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				DEBUGGING_SYMBOLS = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
-				ONLY_ACTIVE_ARCH_PRE_XCODE_3_1 = "$(NATIVE_ARCH_64)";
-				OTHER_CFLAGS = "";
-				OTHER_LDFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
-		};
-		5224CA0A1958C2E700E37AED /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT_PRE_XCODE_3_1)";
-				ARCHS_STANDARD_64_BIT_PRE_XCODE_3_1 = x86_64;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COPY_PHASE_STRIP = YES;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
-				OTHER_CFLAGS = "";
-				OTHER_LDFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
 		525523D51504CB9E00A10E5D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -15692,14 +15575,7 @@
 				5224C9FE1958BFDF00E37AED /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-		};
-		5224CA081958C2E700E37AED /* Build configuration list for PBXLegacyTarget "Clean" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				5224CA091958C2E700E37AED /* Debug */,
-				5224CA0A1958C2E700E37AED /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		525523D41504CB9E00A10E5D /* Build configuration list for PBXNativeTarget "o.change" */ = {
 			isa = XCConfigurationList;
