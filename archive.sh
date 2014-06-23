@@ -19,7 +19,7 @@ if [ $platform = "Darwin" ]; then
 	platform="MacOSX"
 fi
 
-maxstagingdir=odot-Max-$platform
+maxstagingdir=odot
 pdstagingdir=pd_release_package
 
 #don't need to make a PD staging dir as it's already checked in and part of the repo
