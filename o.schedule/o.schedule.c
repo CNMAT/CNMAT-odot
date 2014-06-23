@@ -657,19 +657,3 @@ t_max_err osched_setPrecision(t_osched *x, void *attr, long ac, t_atom *av)
 	return MAX_ERR_NONE;
 }
 
-#ifndef OMAX_PD_VERSION
-t_max_err osched_getMaxdelay(t_osched *x, void *attr, long *ac, t_atom **av)
-{
-	double f = osc_timetag_timetagToFloat(x->maxdelay);
-	if(ac && av){
-		char alloc;
-		if(atom_alloc(ac, av, &alloc)){
-			return MAX_ERR_GENERIC;
-		}
-		atom_setfloat(*av, f);
-	}
-	return MAX_ERR_NONE;
-}
-#endif
-
-
