@@ -245,50 +245,6 @@
 		52AA37111954D1AD009A1920 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */; };
 		52AA37121954D1AD009A1920 /* libo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5AD163763BD0016EC39 /* libo.a */; };
 		52AA37131954D1AD009A1920 /* libomax.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5C6163763CF0016EC39 /* libomax.a */; };
-		52AA372E19575120009A1920 /* Max-config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 52AA372D19575120009A1920 /* Max-config.xcconfig */; };
-		52AA3732195762C5009A1920 /* Max-config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 52AA372D19575120009A1920 /* Max-config.xcconfig */; };
-		52AA3733195762C5009A1920 /* Max-config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 52AA372D19575120009A1920 /* Max-config.xcconfig */; };
-		52AA3734195762C6009A1920 /* Max-config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 52AA372D19575120009A1920 /* Max-config.xcconfig */; };
-		52AA3735195762C7009A1920 /* Max-config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 52AA372D19575120009A1920 /* Max-config.xcconfig */; };
-		52AA3736195762CA009A1920 /* Max-config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 52AA372D19575120009A1920 /* Max-config.xcconfig */; };
-		52AA3737195762CA009A1920 /* Max-config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 52AA372D19575120009A1920 /* Max-config.xcconfig */; };
-		52AA3738195762CB009A1920 /* Max-config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 52AA372D19575120009A1920 /* Max-config.xcconfig */; };
-		52AA3739195762CC009A1920 /* Max-config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 52AA372D19575120009A1920 /* Max-config.xcconfig */; };
-		52AA373A195762CC009A1920 /* Max-config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 52AA372D19575120009A1920 /* Max-config.xcconfig */; };
-		52AA373B195762CE009A1920 /* Max-config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 52AA372D19575120009A1920 /* Max-config.xcconfig */; };
-		52AA373C195762CF009A1920 /* Max-config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 52AA372D19575120009A1920 /* Max-config.xcconfig */; };
-		52AA373D195762CF009A1920 /* Max-config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 52AA372D19575120009A1920 /* Max-config.xcconfig */; };
-		52AA373E195762D0009A1920 /* Max-config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 52AA372D19575120009A1920 /* Max-config.xcconfig */; };
-		52AA373F195762D3009A1920 /* Max-config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 52AA372D19575120009A1920 /* Max-config.xcconfig */; };
-		52AA3740195762D4009A1920 /* Max-config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 52AA372D19575120009A1920 /* Max-config.xcconfig */; };
-		52AA3741195762D5009A1920 /* Max-config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 52AA372D19575120009A1920 /* Max-config.xcconfig */; };
-		52AA3742195762D6009A1920 /* Max-config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 52AA372D19575120009A1920 /* Max-config.xcconfig */; };
-		52AA3743195762D6009A1920 /* Max-config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 52AA372D19575120009A1920 /* Max-config.xcconfig */; };
-		52AA3744195762D7009A1920 /* Max-config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 52AA372D19575120009A1920 /* Max-config.xcconfig */; };
-		52AA3745195762D8009A1920 /* Max-config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 52AA372D19575120009A1920 /* Max-config.xcconfig */; };
-		52AA3746195762DB009A1920 /* Max-config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 52AA372D19575120009A1920 /* Max-config.xcconfig */; };
-		52AA3747195762DC009A1920 /* Max-config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 52AA372D19575120009A1920 /* Max-config.xcconfig */; };
-		52AA3748195762DD009A1920 /* Max-config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 52AA372D19575120009A1920 /* Max-config.xcconfig */; };
-		52AA3749195762DE009A1920 /* Max-config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 52AA372D19575120009A1920 /* Max-config.xcconfig */; };
-		52AA374A195762DF009A1920 /* Max-config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 52AA372D19575120009A1920 /* Max-config.xcconfig */; };
-		52AA374B195762E0009A1920 /* Max-config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 52AA372D19575120009A1920 /* Max-config.xcconfig */; };
-		52AA374C195762E2009A1920 /* Max-config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 52AA372D19575120009A1920 /* Max-config.xcconfig */; };
-		52AA374D195762E2009A1920 /* Max-config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 52AA372D19575120009A1920 /* Max-config.xcconfig */; };
-		52AA374E195762E3009A1920 /* Max-config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 52AA372D19575120009A1920 /* Max-config.xcconfig */; };
-		52AA374F195762E4009A1920 /* Max-config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 52AA372D19575120009A1920 /* Max-config.xcconfig */; };
-		52AA3750195762E4009A1920 /* Max-config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 52AA372D19575120009A1920 /* Max-config.xcconfig */; };
-		52AA3751195762E5009A1920 /* Max-config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 52AA372D19575120009A1920 /* Max-config.xcconfig */; };
-		52AA3752195762E6009A1920 /* Max-config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 52AA372D19575120009A1920 /* Max-config.xcconfig */; };
-		52AA3753195762E9009A1920 /* Max-config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 52AA372D19575120009A1920 /* Max-config.xcconfig */; };
-		52AA3754195762EA009A1920 /* Max-config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 52AA372D19575120009A1920 /* Max-config.xcconfig */; };
-		52AA3755195762EA009A1920 /* Max-config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 52AA372D19575120009A1920 /* Max-config.xcconfig */; };
-		52AA3756195762EB009A1920 /* Max-config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 52AA372D19575120009A1920 /* Max-config.xcconfig */; };
-		52AA3757195762EC009A1920 /* Max-config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 52AA372D19575120009A1920 /* Max-config.xcconfig */; };
-		52AA3758195762ED009A1920 /* Max-config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 52AA372D19575120009A1920 /* Max-config.xcconfig */; };
-		52AA3759195762ED009A1920 /* Max-config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 52AA372D19575120009A1920 /* Max-config.xcconfig */; };
-		52AA375A195762F0009A1920 /* Max-config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 52AA372D19575120009A1920 /* Max-config.xcconfig */; };
-		52AA375B195762F0009A1920 /* Max-config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 52AA372D19575120009A1920 /* Max-config.xcconfig */; };
-		52AA375C195762F1009A1920 /* Max-config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 52AA372D19575120009A1920 /* Max-config.xcconfig */; };
 		52B53CE117480C8100237A19 /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52CEF59416375BFB0016EC39 /* commonsyms.c */; };
 		52B53CE317480C8100237A19 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */; };
 		52B53CE417480C8100237A19 /* libo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5AD163763BD0016EC39 /* libo.a */; };
@@ -3928,7 +3884,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52AA3753195762E9009A1920 /* Max-config.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3936,7 +3891,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52AA3742195762D6009A1920 /* Max-config.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3944,7 +3898,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52AA3737195762CA009A1920 /* Max-config.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3952,7 +3905,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52AA373B195762CE009A1920 /* Max-config.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3960,7 +3912,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52AA373D195762CF009A1920 /* Max-config.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3968,7 +3919,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52AA3733195762C5009A1920 /* Max-config.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3976,7 +3926,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52AA3734195762C6009A1920 /* Max-config.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3984,7 +3933,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52AA3735195762C7009A1920 /* Max-config.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3992,7 +3940,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52AA3738195762CB009A1920 /* Max-config.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4000,7 +3947,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52AA373C195762CF009A1920 /* Max-config.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4008,7 +3954,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52AA373F195762D3009A1920 /* Max-config.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4016,7 +3961,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52AA3740195762D4009A1920 /* Max-config.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4024,7 +3968,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52AA3745195762D8009A1920 /* Max-config.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4032,7 +3975,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52AA3746195762DB009A1920 /* Max-config.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4040,7 +3982,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52AA3747195762DC009A1920 /* Max-config.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4048,7 +3989,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52AA3748195762DD009A1920 /* Max-config.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4056,7 +3996,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52AA3749195762DE009A1920 /* Max-config.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4064,7 +4003,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52AA374A195762DF009A1920 /* Max-config.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4072,7 +4010,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52AA374B195762E0009A1920 /* Max-config.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4080,7 +4017,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52AA374D195762E2009A1920 /* Max-config.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4088,7 +4024,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52AA3750195762E4009A1920 /* Max-config.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4096,7 +4031,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52AA3757195762EC009A1920 /* Max-config.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4104,7 +4038,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52AA3758195762ED009A1920 /* Max-config.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4112,7 +4045,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52AA375A195762F0009A1920 /* Max-config.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4120,7 +4052,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52AA375B195762F0009A1920 /* Max-config.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4128,7 +4059,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52AA3736195762CA009A1920 /* Max-config.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4136,7 +4066,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52AA373E195762D0009A1920 /* Max-config.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4144,7 +4073,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52AA372E19575120009A1920 /* Max-config.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4152,7 +4080,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52AA3755195762EA009A1920 /* Max-config.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4160,7 +4087,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52AA374E195762E3009A1920 /* Max-config.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4168,7 +4094,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52AA3752195762E6009A1920 /* Max-config.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4176,7 +4101,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52AA3751195762E5009A1920 /* Max-config.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4184,7 +4108,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52AA3739195762CC009A1920 /* Max-config.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4192,7 +4115,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52AA3759195762ED009A1920 /* Max-config.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4200,7 +4122,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52AA3743195762D6009A1920 /* Max-config.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4208,7 +4129,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52AA374C195762E2009A1920 /* Max-config.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4216,7 +4136,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52AA3741195762D5009A1920 /* Max-config.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4224,7 +4143,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52AA373A195762CC009A1920 /* Max-config.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4232,7 +4150,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52AA374F195762E4009A1920 /* Max-config.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4240,7 +4157,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52AA3754195762EA009A1920 /* Max-config.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4248,7 +4164,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52AA375C195762F1009A1920 /* Max-config.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4256,7 +4171,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52AA3756195762EB009A1920 /* Max-config.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4264,7 +4178,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52AA3744195762D7009A1920 /* Max-config.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4272,7 +4185,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52AA3732195762C5009A1920 /* Max-config.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
