@@ -19,6 +19,16 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>Current Version.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>84</integer>
+		</dict>
+		<key>Precompile.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>83</integer>
+		</dict>
 		<key>o.O.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -642,6 +652,11 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>5224C9FB1958BFDF00E37AED</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>525523C91504CB9E00A10E5D</key>
 		<dict>
 			<key>primary</key>
@@ -848,6 +863,11 @@
 			<true/>
 		</dict>
 		<key>52B6551917E3B971004FD84E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>52C42C161958B99B006CE0B5</key>
 		<dict>
 			<key>primary</key>
 			<true/>
