@@ -118,6 +118,7 @@ archive: $(ARCHIVE)
 
 .PHONY: clean
 clean: 
+	xcodebuild -target "Build all" -project odot.xcodeproj buildaction clean
 	rm -rf build
 	rm -rf $(STAGINGDIR)
 	rm -rf $(ARCHIVE)
