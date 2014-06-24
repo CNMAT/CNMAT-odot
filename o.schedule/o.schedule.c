@@ -98,10 +98,10 @@ typedef struct _osched
 	// binary heap
 	binary_heap q;
     
-	int packets_max;
+	long packets_max;
 	int *packet_free;
 	char *packet_data;
-	int packet_size;
+	long packet_size;
     
 	unsigned int id;
     
@@ -514,7 +514,7 @@ void *osched_new(t_symbol *s, short argc, t_atom *argv)
 	heap_initialize(&(x->q), x->packets_max);
     
 	// allocate free markers
-	x->packet_free = (int*)osc_mem_alloc(sizeof(int) * x->packets_max);
+	x->packet_free = (int *)osc_mem_alloc(sizeof(int) * x->packets_max);
 	for(i = 0; i < x->packets_max; i++) {
 		x->packet_free[i] = 1;
 	}
@@ -588,7 +588,6 @@ void *osched_new(t_symbol *s, short argc, t_atom *argv)
 	OSCHEDULE_OUTLET_DELEGATE = outlet_new(x, "FullPacket");
 	OSCHEDULE_OUTLET_MISSED = outlet_new(x, "FullPacket");
 	OSCHEDULE_OUTLET_MAIN = outlet_new(x, "FullPacket");
-    
 	// allocate packet data buffer
 	x->packet_data = (char*)osc_mem_alloc(x->packets_max * x->packet_size);
     
@@ -596,7 +595,7 @@ void *osched_new(t_symbol *s, short argc, t_atom *argv)
 	heap_initialize(&(x->q), x->packets_max);
     
 	// allocate free markers
-	x->packet_free = (int*)osc_mem_alloc(sizeof(int) * x->packets_max);
+	x->packet_free = (int *)osc_mem_alloc(sizeof(int) * x->packets_max);
 	for(i = 0; i < x->packets_max; i++) {
 		x->packet_free[i] = 1;
 	}
