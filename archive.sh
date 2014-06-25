@@ -6,17 +6,19 @@ nonpackagedirs=(experimental)
 dirs=("${packagedirs[@]}" "${nonpackagedirs[@]}")
 
 # pass ww (wild west, or wet and wild) to make an archive without checking for uncommitted changes
-if [ $1 -ne "ww" ]; then
-    git diff --exit-code > /dev/null
-    if [ $? -ne 0 ]; then
-	echo "Your working directory contains uncommitted changes. Please commit them before making a release."
-	exit 1;
-    fi
+if [$# -ne 0 ]; then
+    if [ $1 -ne "ww" ]; then
+	git diff --exit-code > /dev/null
+	if [ $? -ne 0 ]; then
+	    echo "Your working directory contains uncommitted changes. Please commit them before making a release."
+	    exit 1;
+	fi
 
-    git diff --cached --exit-code > /dev/null
-    if [ $? -ne 0 ]; then
-	echo "Your working directory contains modified files that have been staged for commit. Please commit them before making a release."
-	exit 1;
+	git diff --cached --exit-code > /dev/null
+	if [ $? -ne 0 ]; then
+	    echo "Your working directory contains modified files that have been staged for commit. Please commit them before making a release."
+	    exit 1;
+	fi
     fi
 fi
 
