@@ -5,21 +5,70 @@ nonpackagedirs=(experimental)
 
 dirs=("${packagedirs[@]}" "${nonpackagedirs[@]}")
 
-# pass ww (wild west, or wet and wild) to make an archive without checking for uncommitted changes
-if [$# -ne 0 ]; then
-    if [ $1 -ne "ww" ]; then
-	git diff --exit-code > /dev/null
-	if [ $? -ne 0 ]; then
-	    echo "Your working directory contains uncommitted changes. Please commit them before making a release."
-	    exit 1;
-	fi
+# odotbranch=`git branch | egrep '^\*' | awk '{print $2}'`
+# libobranch=`cd ../libo && git branch | egrep '^\*' | awk '{print $2}'`
+# libomaxbranch=`cd ../libomax && git branch | egrep '^\*' | awk '{print $2}'`
 
-	git diff --cached --exit-code > /dev/null
-	if [ $? -ne 0 ]; then
-	    echo "Your working directory contains modified files that have been staged for commit. Please commit them before making a release."
-	    exit 1;
-	fi
+function git_branch()
+{
+    local branch=`cd $1 && git branch | egrep '^\*' | awk '{print $2}'`
+    echo $branch
+}
+
+function chk_same_branch()
+{
+    local b1=`git_branch $1`
+    local b2=`git_branch $2`
+    local curdir=`pwd`
+    if [ "$b1" != "$b2" ]; then
+	echo "ERROR: "`cd $1 && pwd` "and" `cd $2 && pwd` "are not on the same branch ($b1, $b2)"
+	return 1;
     fi
+}
+
+function chk_git_status()
+{
+    local curdir=`pwd`
+    cd $1
+    git diff --exit-code > /dev/null
+    if [ $? -ne 0 ]; then
+	echo "ERROR: $1 contains uncommitted changes. Please commit them before making a release."
+	return 1;
+    fi
+
+    git diff --cached --exit-code > /dev/null
+    if [ $? -ne 0 ]; then
+	echo "ERROR: $1 contains modified files that have been staged for commit. Please commit them before making a release."
+	return 1;
+    fi
+    cd $curdir
+}
+
+function chk_repos()
+{
+    local ret=0;
+    chk_git_status .
+    ret=`expr $ret + $?`
+    chk_git_status ../libo
+    ret=`expr $ret + $?`
+    chk_git_status ../libomax
+    ret=`expr $ret + $?`
+    chk_same_branch . ../libo
+    ret=`expr $ret + $?`
+    chk_same_branch . ../libomax
+    ret=`expr $ret + $?`
+    if [ $ret -ne 0 ]; then
+	exit 1
+    fi
+}
+
+# pass ww (wild west, or wet and wild) to make an archive without checking for uncommitted changes
+if [ $# -ne 0 ]; then
+    if [ $1 -ne "ww" ]; then
+	chk_repos
+    fi
+else
+    chk_repos
 fi
 
 platform=`uname`
