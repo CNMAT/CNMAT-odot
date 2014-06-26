@@ -8,7 +8,7 @@
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 110.0, 44.0, 1262.0, 604.0 ],
+		"rect" : [ 252.0, 234.0, 1262.0, 604.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -28,6 +28,20 @@
 		"digest" : "",
 		"tags" : "",
 		"boxes" : [ 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-25",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "FullPacket" ],
+					"patching_rect" : [ 379.0, 317.0, 135.0, 20.0 ],
+					"text" : "o.expr /tt = gettimetag()"
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
@@ -635,13 +649,13 @@
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"id" : "obj-14",
-					"linecount" : 37,
+					"linecount" : 10,
 					"maxclass" : "o.message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 359.0, 400.0, 272.0, 503.0 ],
-					"text" : "/Manufacturer \"Arduino\"\n/Device \"Esplora\"\n/Serialnumber 1099\n/Sequence/Number 1133\n/acceleration/x 0.0117188\n/acceleration/y 0.0878906\n/acceleration/z 0.28125\n/photoresistor 0.954057\n/slider/horizontal 0.969697\n/connector/white/right 0.926686\n/connector/orange/left true\n/connector/orange/right false\n/temperature/fahrenheit 69.\n/temperature/celsius 20.\n/microphone/loudness 0.\n/led/rgb 0 0 0\n/joystick/horizontal -0.\n/joystick/vertical 0.0175781\n/connector/white/left 0.498534\n/joystick/button/down false\n/joystick/button/up true\n/joystick/forward/button/down false\n/joystick/forward/button/up true\n/joystick/left/button/down false\n/joystick/left/button/up true\n/joystick/right/button/down false\n/joystick/right/button/up true\n/joystick/backward/button/down false\n/joystick/backward/button/up true\n/diamond/backward/button/down false\n/diamond/backward/button/up true\n/diamond/left/button/down false\n/diamond/left/button/up true\n/diamond/right/button/down false\n/diamond/right/button/up true\n/diamond/forward/button/down false\n/diamond/forward/button/up true",
+					"patching_rect" : [ 359.0, 400.0, 272.0, 141.0 ],
+					"text" : "/diamond/backward \"released\"\n/diamond/left \"released\"\n/diamond/forward \"released\"\n/diamond/right \"released\"\n/microphone/loudness 0.00293255\n/temperature/fahrenheit 72.\n/temperature/celsius 22.\n/slider/horizontal 0.823069\n/serialnumber 2\n/tt 1916-08-13T04:06:14.000000Z\n",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -1023,12 +1037,13 @@
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"id" : "obj-21",
+					"linecount" : 2,
 					"maxclass" : "o.message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 311.0, 174.0, 105.0, 20.0 ],
-					"text" : "/led \"$1\"",
+					"patching_rect" : [ 311.0, 174.0, 105.0, 33.0 ],
+					"text" : "/led \"$1\"\n/led/green \"$1\"",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -1146,7 +1161,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 650.0, 377.0, 305.0, 87.0 ],
-					"text" : "/portname \"usbmodem1421\"\n/rate/output 24\n/rate/input 1\n/mediansize/received 171.5\n/baud 110\n/port \"h\"",
+					"text" : "/portname \"usbmodemOSCes321\"\n/rate/output 89\n/rate/input 0\n/mediansize/received 157.5\n/baud 110\n/port \"h\"",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -1192,7 +1207,7 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-14", 1 ],
+					"destination" : [ "obj-25", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-1", 0 ]
@@ -1327,6 +1342,15 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-14", 1 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-25", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-1", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
@@ -1427,50 +1451,50 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "o.io.esplora.maxpat",
-				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions/io/o.io.esplora",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/patchers/io",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.io.slipserial.maxpat",
-				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions/io",
-				"patcherrelativepath" : "..",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/patchers/io",
+				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.in.maxpat",
-				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions/core",
-				"patcherrelativepath" : "../../core",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/patchers/core",
+				"patcherrelativepath" : "../core",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.port.maxpat",
-				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions/core",
-				"patcherrelativepath" : "../../core",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/patchers/core",
+				"patcherrelativepath" : "../core",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.aspect.joinpoint.maxpat",
 				"bootpath" : "/Users/adrian2013/CNMAT-odot/experimental/aspect",
-				"patcherrelativepath" : "../../../experimental/aspect",
+				"patcherrelativepath" : "../../experimental/aspect",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.out.maxpat",
-				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions/core",
-				"patcherrelativepath" : "../../core",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/patchers/core",
+				"patcherrelativepath" : "../core",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.io.serial.display.maxpat",
-				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions/io",
-				"patcherrelativepath" : "..",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/patchers/io",
+				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
@@ -1539,11 +1563,19 @@
 				"type" : "iLaX"
 			}
 , 			{
+				"name" : "o.timetag.mxo",
+				"type" : "iLaX"
+			}
+, 			{
 				"name" : "o.message.mxo",
 				"type" : "iLaX"
 			}
 , 			{
 				"name" : "o.expr.codebox.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.expr.mxo",
 				"type" : "iLaX"
 			}
  ]
