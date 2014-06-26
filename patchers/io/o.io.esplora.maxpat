@@ -8,7 +8,7 @@
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 483.0, 67.0, 670.0, 644.0 ],
+		"rect" : [ 784.0, 114.0, 670.0, 644.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -166,8 +166,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 114.0, 200.0, 351.0, 22.0 ],
-					"text" : "o.io.slipserial #1 115200"
+					"patching_rect" : [ 114.0, 200.0, 91.0, 22.0 ],
+					"text" : "o.io.slipserial"
 				}
 
 			}

@@ -202,7 +202,6 @@ int oscstrlen(const char *s)
   return n+ (4-(n%4))%4;
 }
 
-const int32_t cnmatserialnumber = 1099;   //hard coded; beware xxx pickout from arduino serial number call it unique
 
      
      
@@ -278,15 +277,18 @@ const char *a_arduino = "Arduino";
 {
 const char *a_device = "/Device";  
 const char *a_name = "Esplora";
-    oscwriteinteger(SLIPSerial, (int32_t)oscstrlen(a_device) + 4 + (int32_t)oscstrlen(a_device)); // 4 for type tag and 4 for the payload integer
+    oscwriteinteger(SLIPSerial, (int32_t)oscstrlen(a_device) + 4 + (int32_t)oscstrlen(a_name)); // 4 for type tag and 4 for the payload integer
     oscwritestring(SLIPSerial,a_device); oscwritestring(SLIPSerial, singlestring); oscwritestring(SLIPSerial, a_name);
 }
 
+#if 1
 {
-const char *a_sn = "/Serial/Number";    
-    oscwriteinteger(SLIPSerial, (int32_t)oscstrlen(a_sn) + 4 + 4); // 4 for type tag and 4 for the payload integer
-    oscwritestring(SLIPSerial,a_sn); oscwritestring(SLIPSerial, singleinteger); oscwriteinteger(SLIPSerial, cnmatserialnumber);
+const char *a_uid= "/UniqueID";  
+const char *a_id = "usbmodemOSCes321";
+    oscwriteinteger(SLIPSerial, (int32_t)oscstrlen(a_uid) + 4 + (int32_t)oscstrlen(a_id)); // 4 for type tag and 4 for the payload integer
+    oscwritestring(SLIPSerial,a_uid); oscwritestring(SLIPSerial, singlestring); oscwritestring(SLIPSerial, a_id);
 }
+#endif
 
 {
     static  int32_t seqno= 0;
@@ -349,10 +351,10 @@ const char *a_ps= "/slider/horizontal";
 #else
 
 {
-const char *a_manufacturer = "/units/temperature";  
-const char *a_arduino = "Celsius";
-    oscwriteinteger(SLIPSerial, (int32_t)oscstrlen(a_manufacturer) + 4 + (int32_t)oscstrlen(a_arduino)); // 4 for type tag and 4 for the payload integer
-    oscwritestring(SLIPSerial,a_manufacturer); oscwritestring(SLIPSerial, singlestring); oscwritestring(SLIPSerial, a_arduino);
+const char *a_unitstemp = "/units/temperature";  
+const char *a_units = "Celsius";
+    oscwriteinteger(SLIPSerial, (int32_t)oscstrlen(a_unitstemp) + 4 + (int32_t)oscstrlen(a_units)); // 4 for type tag and 4 for the payload integer
+    oscwritestring(SLIPSerial,a_unitstemp); oscwritestring(SLIPSerial, singlestring); oscwritestring(SLIPSerial, a_units);
 }
 #endif
  {
