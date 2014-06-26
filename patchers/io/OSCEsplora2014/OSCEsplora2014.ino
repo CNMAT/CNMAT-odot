@@ -26,7 +26,9 @@
 #include <Esplora.h>
 #include <OSCMessage.h>
 #include <OSCBundle.h>
-#include <OSCTiming.h>
+#include <OSCtiming.h>
+
+#define TIMESTAMPSUPPORT
 
 //Teensy and Leonardo variants have special USB serial
 #include <SLIPEncodedUSBSerial.h>
@@ -97,7 +99,8 @@ void routeLed(OSCMessage &msg, int addrOffset ){
     {
       onboardled =  msg.getInt(0)>0?HIGH:LOW;
       digitalWrite(13, onboardled);
-    }else
+    }
+else
     if (msg.isBoolean(0))  {
       onboardled =  msg.getBoolean(0)?HIGH:LOW;
       digitalWrite(13, onboardled);
@@ -230,10 +233,10 @@ void oscwritestring(SLIPEncodedUSBSerial &usbs, const char *s)
 }
 
 
-    OSCBundle bundleIN;
 
 
 void loop(){
+    OSCBundle bundleIN;
 
   if(!SLIPSerial.available())
   {
@@ -256,8 +259,8 @@ const char *oscfalse = ",F\0";
     
     SLIPSerial.write((const uint8_t *)"#bundle", 8);          //bundle header
     // time stamp didn't advance: (oscuino bug)
-#ifdef NOROOM
-if(1) // not enough
+#if 0
+if(0) // not enough
 {
   osctime_t tt = oscTime();
      oscwriteinteger(SLIPSerial,tt.seconds);
@@ -278,7 +281,6 @@ const char *a_name = "Esplora";
     oscwriteinteger(SLIPSerial, (int32_t)oscstrlen(a_device) + 4 + (int32_t)oscstrlen(a_device)); // 4 for type tag and 4 for the payload integer
     oscwritestring(SLIPSerial,a_device); oscwritestring(SLIPSerial, singlestring); oscwritestring(SLIPSerial, a_name);
 }
-
 
 {
 const char *a_sn = "/Serial/Number";    
@@ -338,12 +340,21 @@ const char *a_ps= "/slider/horizontal";
     oscwriteinteger(SLIPSerial, (int32_t)oscstrlen(a_cr) + 4 + 0); // 4 for type tag and 4 for the payload integer
     oscwritestring(SLIPSerial,a_cr);  oscwritestring(SLIPSerial,  (digitalRead(11)==HIGH)?oscfalse:osctrue); 
 }   
-
+#ifdef OLDWayUnitsarepreferred
  {
   const char *a_t = "/temperature/fahrenheit";    
     oscwriteinteger(SLIPSerial, (int32_t)oscstrlen(a_t) + 4 + 4); // 4 for type tag and 4 for the payload integer
     oscwritestring(SLIPSerial,a_t ); oscwritestring(SLIPSerial, singlefloat); oscwritefloat(SLIPSerial,(float)Esplora.readTemperature(DEGREES_F) );
-}  
+} 
+#else
+
+{
+const char *a_manufacturer = "/units/temperature";  
+const char *a_arduino = "Celsius";
+    oscwriteinteger(SLIPSerial, (int32_t)oscstrlen(a_manufacturer) + 4 + (int32_t)oscstrlen(a_arduino)); // 4 for type tag and 4 for the payload integer
+    oscwritestring(SLIPSerial,a_manufacturer); oscwritestring(SLIPSerial, singlestring); oscwritestring(SLIPSerial, a_arduino);
+}
+#endif
  {
   const char *a_t = "/temperature/celsius";    
     oscwriteinteger(SLIPSerial, (int32_t)oscstrlen(a_t) + 4 + 4); // 4 for type tag and 4 for the payload integer
@@ -365,6 +376,9 @@ const char *a_ledrgb = ("/led/rgb");
       oscwriteinteger(SLIPSerial, Esplora.readGreen());
       oscwriteinteger(SLIPSerial, Esplora.readBlue());
 }
+
+
+
 #if 1
 
 { // BEGINNING OF JOYSTICK STUFF
@@ -722,15 +736,15 @@ const char *a_ledrgb = ("/led/rgb");
     
     bndl.add("/serialnumber").add(serialnumber);    
 #endif
-
+#ifdef TIMETAGSUPPORT
 if( (receivedtime!=0))
 {
   {
 const char *a_ms = "/received/microseconds";    
     oscwriteinteger(SLIPSerial, (int32_t)oscstrlen(a_ms) + 4 + 4); // 4 for type tag and 4 for the payload integer
     oscwritestring(SLIPSerial,a_ms); oscwritestring(SLIPSerial, singleinteger); oscwriteinteger(SLIPSerial,receivedtime);
-}
-if(1){
+  }
+  {
 const char *a_rt = "/received/time";    
 const char *timetagtypestring = ",t\0";
     oscwriteinteger(SLIPSerial, (int32_t)oscstrlen(a_rt) + 4 + 8); // 4 for type tag and 8 for the payload timetag
@@ -744,6 +758,7 @@ const char *timetagtypestring = ",t\0";
   }
 }
 }
+#endif
 
 {
 const char *a_ms = "/microseconds";    
@@ -762,14 +777,15 @@ const char *a_ms = "/microseconds";
   
   
   else
+  
   {
     int size;
-    boolean first = true;
+      boolean first = true;
     
     while(!SLIPSerial.endofPacket())
       if ((size =SLIPSerial.available()) > 0)
       {
-        if(first)
+     if(first)
         {
             packetstarttime = micros();
             first = false;
@@ -777,6 +793,8 @@ const char *a_ms = "/microseconds";
         while(size--)
           bundleIN.fill(SLIPSerial.read());
       }
+      
+      
     {
       if(!bundleIN.hasError())
       {
@@ -787,10 +805,12 @@ const char *a_ms = "/microseconds";
         bundleIN.route("/tone", routeTone);
         bundleIN.route("/squarewave", routeTone);
         bundleIN.route("/tone/off", routeTone);
-        bundleIN.route("/send", routeSendtime);
-      }
-     bundleIN.empty();
+//       bundleIN.route("/send", routeSendtime);
 
+      }
+           bundleIN.empty();
+
+ 
     }
   }
 }
