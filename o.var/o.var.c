@@ -109,7 +109,8 @@ void ovar_doFullPacket(t_ovar *x, long len, char *ptr, long inlet)
 #if (defined ODOT_UNION || defined ODOT_INTERSECTION || defined ODOT_DIFFERENCE)
 		critical_enter(x->lock);
 		long copylen = x->len;
-		char copy[copylen];
+		//char copy[copylen];
+		char *copy = osc_mem_alloc(copylen);
 		memcpy(copy, x->bndl, copylen);
 		critical_exit(x->lock);
 		long bndllen = 0;
@@ -124,6 +125,10 @@ void ovar_doFullPacket(t_ovar *x, long len, char *ptr, long inlet)
 		omax_util_outletOSC(x->outlet, bndllen, bndl);
 		if(bndl){
 			osc_mem_free(bndl);
+		}
+		omax_util_outletOSC(x->outlet, len, ptr);
+		if(copy){
+			osc_mem_free(copy);
 		}
 #else // o.var
 		if(len > 0){
@@ -141,7 +146,6 @@ void ovar_doFullPacket(t_ovar *x, long len, char *ptr, long inlet)
 			x->len = len;
 			critical_exit(x->lock);
 		}
-		omax_util_outletOSC(x->outlet, len, ptr);
 #endif
 	}
 }
