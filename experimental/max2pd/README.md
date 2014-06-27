@@ -5,14 +5,13 @@
 ```
 % python max2pd.py <input.maxpat> <output.pd>
 ```
-
-Won't work with Python 3.1 and above, I'll look into a modern way of encoding binhex for pd way of storing o.messages. Tested with python `v2.7.2`.
+Tested with python `v2.7.5` and `v3.3.5`
 
 ### DOES
 
 * non-gui max objects
 * messages
-* o.messages (binhex)
+* o.messages (binhex) + added support for empty bundles
 * buttons
 * toggles
 * number boxes
