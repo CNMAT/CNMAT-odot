@@ -26,10 +26,7 @@
   AUTHORS: John MacCallum
   COPYRIGHT_YEARS: 2009-11
   SVN_REVISION: $LastChangedRevision: 587 $
-  VERSION 0.0: First try
-  VERSION 1.0: using updated lib
-  VERSION 1.0.1: newlines now delimit messages
-  VERSION 2.0: uses newly refactored libo and has initial support for nested bundles
+  VERSION 0.0: Inherited from v2.0 of o.message
   @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
 */
@@ -47,21 +44,20 @@
 
 
 #ifdef OMAX_PD_VERSION
-#include "m_pd.h"
-#include "m_imp.h"
-#include "g_canvas.h"
-#include "g_all_guis.h"
-#include "omax_pd_proxy.h"
-#define OMAX_PD_MAXSTRINGSIZE (1<<16)
-//#define proxy_getinlet(x) (((t_ocompose *)(x))->inlet)
+    #include "m_pd.h"
+    #include "m_imp.h"
+    #include "g_canvas.h"
+    #include "g_all_guis.h"
+    #include "omax_pd_proxy.h"
+    #define OMAX_PD_MAXSTRINGSIZE (1<<16)
 #else
-#include "ext.h"
-#include "ext_obex.h"
-#include "ext_obex_util.h"
-#include "ext_critical.h"
-#include "jpatcher_api.h"
-//#include "jpatcher_syms.h"
-#include "jgraphics.h"
+    #include "ext.h"
+    #include "ext_obex.h"
+    #include "ext_obex_util.h"
+    #include "ext_critical.h"
+    #include "jpatcher_api.h"
+    //#include "jpatcher_syms.h"
+    #include "jgraphics.h"
 #endif
 
 #include "omax_util.h"
@@ -91,9 +87,8 @@
 
 #ifdef WIN_VERSION
 // currently we have to compile windows versions with gcc 3 on cygwin and i'm getting undefined
-// refs to strsep, so here it is fucker.
-char *
-strsep(stringp, delim)
+// refs to strsep, so here it is.
+char * strsep(stringp, delim)
      register char **stringp;
      register const char *delim;
 {
@@ -109,10 +104,11 @@ strsep(stringp, delim)
 		spanp = delim;
 		do {
 			if ((sc = *spanp++) == c) {
-				if (c == 0)
+				if (c == 0) {
 					s = NULL;
-				else
+				} else {
 					s[-1] = 0;
+                }
 				*stringp = s;
 				return (tok);
 			}
@@ -188,7 +184,6 @@ typedef struct _ocompose {
 	//t_jrgba frame_color, background_color, text_color;
     
     int have_new_data;
-	int draw_new_data_indicator;
 	t_clock *new_data_indicator_clock;
     
     int     softlock;
@@ -199,7 +194,7 @@ t_omax_pd_proxy_class *ocompose_class;
 t_omax_pd_proxy_class *ocompose_proxy_class;
 t_widgetbehavior ocompose_widgetbehavior;
 
-#else
+#else // MAX:
 typedef struct _ocompose{
 	t_jbox ob;
 	void *outlet;
@@ -211,10 +206,9 @@ typedef struct _ocompose{
 	int bndl_has_been_checked_for_subs;
 	long textlen;
 	char *text;
-	t_jrgba frame_color, background_color, text_color;
+	t_jrgba frame_color, header_color, background_color, text_color;
 	void *qelem;
 	int have_new_data;
-	int draw_new_data_indicator;
 	void *new_data_indicator_clock;
 } t_ocompose;
 
@@ -226,7 +220,6 @@ long ocompose_keyfilter(t_ocompose *x, t_object *patcherview, long *keycode, lon
 void ocompose_mousedown(t_ocompose *x, t_object *patcherview, t_pt pt, long modifiers);
 void ocompose_mouseup(t_ocompose *x, t_object *patcherview, t_pt pt, long modifiers);
 void ocompose_select(t_ocompose *x);
-
 #endif
 
 void ocompose_doFullPacket(t_ocompose *x, long len, char *ptr);
@@ -278,7 +271,6 @@ t_symbol *ps_newline, *ps_FullPacket;
 
 void ocompose_fullPacket(t_ocompose *x, t_symbol *msg, int argc, t_atom *argv)
 {
-	OMAX_UTIL_GET_LEN_AND_PTR
 }
 
 void ocompose_doFullPacket(t_ocompose *x, long len, char *ptr)
@@ -290,11 +282,9 @@ void ocompose_doFullPacket(t_ocompose *x, long len, char *ptr)
 	t_osc_bndl_s *b = osc_bundle_s_alloc(copylen, copyptr);
 	ocompose_newBundle(x, NULL, b);
 #ifdef OMAX_PD_VERSION
-    x->draw_new_data_indicator = 1;
 	x->have_new_data = 1;
     jbox_redraw((t_jbox *)x);
 #else
-	x->draw_new_data_indicator = 1;
 	x->have_new_data = 1;
 	qelem_set(x->qelem);
 #endif
@@ -400,10 +390,8 @@ void ocompose_bundle2text(t_ocompose *x)
 void ocompose_paint(t_ocompose *x, t_object *patcherview)
 {
 	int have_new_data = 0;
-	int draw_new_data_indicator = 0;
 	critical_enter(x->lock);
 	have_new_data = x->have_new_data;
-	draw_new_data_indicator = x->draw_new_data_indicator;
 	critical_exit(x->lock);
 	if(have_new_data){	
     		ocompose_bundle2text(x);
@@ -412,51 +400,46 @@ void ocompose_paint(t_ocompose *x, t_object *patcherview)
 	t_rect rect;
 	t_jgraphics *g = (t_jgraphics *)patcherview_get_jgraphics(patcherview);
 	jbox_get_rect_for_view((t_object *)x, patcherview, &rect);
-
-	jgraphics_set_source_jrgba(g, &(x->background_color));
-	//jgraphics_rectangle(g, 0., 0., rect.width, rect.height);
-	jgraphics_move_to(g, 0, 0);
-	jgraphics_line_to(g, 0, rect.height - 8);
-	jgraphics_line_to(g, 8, rect.height);
-	jgraphics_line_to(g, rect.width, rect.height);
-	jgraphics_line_to(g, rect.width, 8);
-	jgraphics_line_to(g, rect.width - 8, 0);
-	jgraphics_line_to(g, 0, 0);
-	jgraphics_fill(g);
-
-	jgraphics_ellipse(g, rect.width - 16., 0., 16, 16);
-	jgraphics_ellipse(g, 0., rect.height - 16., 16., 16.);
-	jgraphics_fill(g);
-
-	jgraphics_set_source_jrgba(g, &(x->frame_color));
-	jgraphics_set_line_width(g, 2.);
-	jgraphics_move_to(g, rect.width * .75, 0.);
-	jgraphics_line_to(g, 0., 0.);
-	jgraphics_line_to(g, 0., rect.height * .25);
-	jgraphics_move_to(g, rect.width - (rect.width * .75), rect.height);
-	jgraphics_line_to(g, rect.width, rect.height);
-	jgraphics_line_to(g, rect.width, rect.height - (rect.height * .25));
-	jgraphics_stroke(g);
-
-	if(draw_new_data_indicator){
-		//jgraphics_move_to(g, 4, 4);
-		jgraphics_set_source_jrgba(g, &(x->frame_color));
-		jgraphics_ellipse(g, 2, 2, 3, 3);
-		jgraphics_fill(g);
-		critical_enter(x->lock);
-		x->draw_new_data_indicator = 0;
-		critical_exit(x->lock);
-		clock_delay(x->new_data_indicator_clock, 100);
-	}
+    
+    // box
+    jgraphics_set_source_jrgba(g, &(x->background_color));
+    jgraphics_move_to(g, 0, 0);
+    jgraphics_line_to(g, rect.width - 10, 0);
+    jgraphics_line_to(g, rect.width, 10);
+    jgraphics_line_to(g, rect.width, rect.height);
+    jgraphics_line_to(g, 0, rect.height);
+    jgraphics_line_to(g, 0, 0);
+    jgraphics_fill(g);
+    
+    // outline
+    jgraphics_set_source_jrgba(g, &(x->header_color));
+    jgraphics_set_line_width(g, 2.);
+    jgraphics_move_to(g, rect.width - 1, 10);
+    jgraphics_line_to(g, rect.width - 1, rect.height - 1);
+    jgraphics_line_to(g, 1, rect.height - 1);
+    jgraphics_line_to(g, 1, 1);
+    jgraphics_line_to(g, rect.width - 10, 1);
+    jgraphics_stroke(g);
+    
+    // thin diagonal
+    jgraphics_set_line_width(g, 1.);
+    jgraphics_move_to(g, rect.width - 10, 0);
+    jgraphics_line_to(g, rect.width, 10);
+    jgraphics_stroke(g);
+    
+    // triangle
+    jgraphics_set_source_jrgba(g, &(x->header_color));
+    jgraphics_set_line_width(g, 2.);
+    jgraphics_move_to(g, rect.width - 11, 0);
+    jgraphics_line_to(g, rect.width - 11, 11);
+    jgraphics_line_to(g, rect.width, 11);
+    jgraphics_stroke(g);
 }
 
 #endif
 
 void ocompose_refresh(t_ocompose *x)
 {
-#ifdef OMAX_PD_VERSION
-    x->draw_new_data_indicator = 0;
-#endif
 	jbox_redraw((t_jbox *)x);
 }
 
@@ -502,12 +485,12 @@ long ocompose_keyfilter(t_ocompose *x, t_object *patcherview, long *keycode, lon
 
 
 void ocompose_mousedown(t_ocompose *x, t_object *patcherview, t_pt pt, long modifiers){
-    textfield_set_textmargins(jbox_get_textfield((t_object *)x), 4, 4, 2, 2);
+    textfield_set_textmargins(jbox_get_textfield((t_object *)x), 6, 6, 10, 5);
 	jbox_redraw((t_jbox *)x);
 }
 
 void ocompose_mouseup(t_ocompose *x, t_object *patcherview, t_pt pt, long modifiers){
-    textfield_set_textmargins(jbox_get_textfield((t_object *)x), 3, 3, 3, 3);
+    textfield_set_textmargins(jbox_get_textfield((t_object *)x), 5, 5, 10, 5);
 	jbox_redraw((t_jbox *)x);
 	ocompose_output_bundle(x);
 }
@@ -590,19 +573,19 @@ void ocompose_float(t_ocompose *x, double f){
 
 void ocompose_list(t_ocompose *x, t_symbol *list_sym, short argc, t_atom *argv)
 {
-	if(x->bndl_has_been_checked_for_subs && !x->bndl_has_subs){
-		if(!x->bndl_s){
-			if(x->bndl_u){
+	if (x->bndl_has_been_checked_for_subs && !x->bndl_has_subs) {
+		if (!x->bndl_s) {
+			if (x->bndl_u) {
 				long len = 0;
 				char *ptr = NULL;
 				critical_enter(x->lock);
 				osc_bundle_u_serialize(x->bndl_u, &len, &ptr);
 				critical_exit(x->lock);
 				x->bndl_s = osc_bundle_s_alloc(len, ptr);
-			}else if(x->text){
+			} else if (x->text) {
 				// pretty sure this can't happen...
 				post("%d\n", __LINE__);
-			}else{
+			} else {
 				return;
 			}
 		}
@@ -613,26 +596,26 @@ void ocompose_list(t_ocompose *x, t_symbol *list_sym, short argc, t_atom *argv)
 		memcpy(copy, ptr, len);
 		critical_exit(x->lock);
 		omax_util_outletOSC(x->outlet, len, copy);
-	}else{
-		if(!x->bndl_u){
-			if(x->bndl_s){
+	} else {
+		if (!x->bndl_u) {
+			if (x->bndl_s) {
 				critical_enter(x->lock);
 				osc_bundle_s_deserialize(osc_bundle_s_getLen(x->bndl_s), osc_bundle_s_getPtr(x->bndl_s), &(x->bndl_u));
 				critical_exit(x->lock);
-			}else if(x->text){
+			} else if (x->text) {
 				// pretty sure this can't happen...
 				post("%d\n", __LINE__);
-			}else{
+			} else {
 				return;
 			}
 		}
 		critical_enter(x->lock);
 		t_osc_bndl_u *copy = NULL;
 		t_osc_err e = omax_util_copyBundleWithSubs_u(&copy, x->bndl_u, argc, argv, &(x->bndl_has_subs));
-		if(e){
+		if (e) {
 			return;
 		}
-		if(!copy){
+		if (!copy) {
 			return;
 		}
 		x->bndl_has_been_checked_for_subs = 1;
@@ -640,12 +623,12 @@ void ocompose_list(t_ocompose *x, t_symbol *list_sym, short argc, t_atom *argv)
 		long len = 0;
 		char *copy_s = NULL;
 		e = osc_bundle_u_serialize(copy, &len, &copy_s);
-		if(e){
+		if (e) {
 			object_error((t_object *)x, "%s\n", osc_error_string(e));
 			osc_bundle_u_free(copy);
 			return;
 		}
-		if(copy_s){
+		if (copy_s) {
 			omax_util_outletOSC(x->outlet, len, copy_s);
 			osc_mem_free(copy_s);
 		}
@@ -658,23 +641,21 @@ void ocompose_anything(t_ocompose *x, t_symbol *msg, short argc, t_atom *argv)
 	t_atom av[argc + 1];
 	int ac = argc;
 
-	if(msg){
+	if (msg) {
 		ac = argc + 1;
 		atom_setsym(av, msg);
 		if(argc > 0){
 			memcpy(av + 1, argv, argc * sizeof(t_atom));
 		}
-	}else{
+	} else {
 		memcpy(av, argv, argc * sizeof(t_atom));
 	}
     ocompose_list(x, NULL, ac, av);
 
 #ifdef OMAX_PD_VERSION
-    x->draw_new_data_indicator = 1;
 	x->have_new_data = 1;
 	jbox_redraw((t_jbox *)x);
 #else
-	x->draw_new_data_indicator = 1;
 	x->have_new_data = 1;
 	qelem_set(x->qelem);
 #endif
@@ -682,15 +663,15 @@ void ocompose_anything(t_ocompose *x, t_symbol *msg, short argc, t_atom *argv)
 
 void ocompose_set(t_ocompose *x, t_symbol *s, long ac, t_atom *av)
 {
-	if(ac){
-		if(atom_gettype(av) == A_SYM){
+	if (ac) {
+		if (atom_gettype(av) == A_SYM) {
 			t_symbol *sym = atom_getsym(av);
-			if(sym == ps_FullPacket && ac == 3){
+			if (sym == ps_FullPacket && ac == 3) {
 				ocompose_doFullPacket(x, atom_getlong(av + 1), (char *)atom_getlong(av + 2));
 				return;
 			}
 		}
-	}else{
+	} else {
 		ocompose_clear(x);
 	}
 	jbox_redraw((t_jbox *)x);
@@ -1176,12 +1157,8 @@ void ocompose_key_callback(t_ocompose *x, t_symbol *s, int argc, t_atom *argv)
                 sys_vgui(".x%lx.c itemconfigure text%lx -width %d -text [subst -nobackslash -nocommands -novariables [regsub -all -line {^[ \t]+|[ \t]+$} [.x%lx.t%lxTEXT get 0.0 end-1c] \"\" ]] \n", glist_getcanvas(x->glist), x, x->width-10, glist_getcanvas(x->glist), (long)x);
                 ocompose_getRectAndDraw(x, 0);
             }
-            
-            
         }
-        
     }
-    
 }
 
 
@@ -1191,9 +1168,6 @@ void ocompose_bind_text_events(t_ocompose *x)
     t_canvas *canvas = glist_getcanvas(x->glist);
     sys_vgui("bind .x%lx.t%lxTEXT <Key> {+pdsend {%s key %%N }}\n", canvas, (long)x, x->receive_name);
     sys_vgui("bind .x%lx.t%lxTEXT <KeyRelease> {+pdsend {%s keyup %%N }}\n",  canvas, (long)x, x->receive_name);
-    
-  //  sys_vgui("namespace eval ::%s [list set canvas%lxBUTTONBINDING [bind %s <Button-1>]] \n", x->tcl_namespace, glist_getcanvas(x->glist), x->canvas_id);
-  //  sys_vgui("namespace eval ::%s [list set canvas%lxKEYBINDING [bind %s <Key>]] \n", x->tcl_namespace, glist_getcanvas(x->glist), x->canvas_id);
     
     //focusout for clicking to other windows other than the main canvas
     sys_vgui("bind .x%lx.t%lxTEXT <FocusOut> {+pdsend {%s pdnofocus }}\n", canvas, (long)x, x->receive_name);
@@ -1359,10 +1333,8 @@ void ocompose_drawElements(t_ocompose *x, t_glist *glist, int width2, int height
     }
 
     int have_new_data = 0;
-	int draw_new_data_indicator = 0;
 	critical_enter(x->lock);
 	have_new_data = x->have_new_data;
-	draw_new_data_indicator = x->draw_new_data_indicator;
 	critical_exit(x->lock);
 	if(have_new_data){
         ocompose_bundle2text(x);
@@ -1482,12 +1454,8 @@ void ocompose_drawElements(t_ocompose *x, t_glist *glist, int width2, int height
         
         sys_vgui(".x%lx.c itemconfigure %s -outline %s\n", canvas, x->corner_tag, (x->parse_error?  "red" : "black" ));
         sys_vgui(".x%lx.c itemconfigure %sTL -outline %s\n", canvas, x->corner_tag, (x->parse_error? "red" : "black" ));
-        
-        sys_vgui(".x%lx.c itemconfigure %s -fill %s \n", canvas, x->updatedot_tag, (draw_new_data_indicator?  "black" : "#f8f8f6" ));
 
 //        post("%x %s drawnew %d", x, __func__, draw_new_data_indicator);
-        if(draw_new_data_indicator)
-            clock_delay(x->new_data_indicator_clock, 100);
         
         if(glist_isselected(x->glist, &x->ob.te_g))
             gobj_select(&x->ob.te_g, x->glist, 1);
@@ -1635,9 +1603,6 @@ static void ocompose_select(t_gobj *z, t_glist *glist, int state)
         //       sys_vgui(".x%lx.c itemconfigure %s -outline %s\n", glist, x->border_tag, (state? "$select_color" : "$msg_box_fill" )); //was "$box_outline"
         sys_vgui(".x%lx.c itemconfigure %s -outline %s\n", canvas, x->corner_tag, (state? "blue" : "black"));
         sys_vgui(".x%lx.c itemconfigure %sTL -outline %s\n", canvas, x->corner_tag, (state? "blue" : "black"));
-
-        sys_vgui(".x%lx.c itemconfigure %s -fill %s\n", canvas, x->updatedot_tag, (x->draw_new_data_indicator? (state? "blue" : "black") : "#f8f8f6"));
-
         
         if(!x->textediting){
             sys_vgui(".x%lx.c itemconfigure text%lx -fill %s\n", canvas, (long)x, (state? "blue" : "black"));
@@ -1669,8 +1634,6 @@ static void ocompose_activate(t_gobj *z, t_glist *glist, int state)
     //    sys_vgui(".x%lx.c itemconfigure %s -outline %s\n", glist, x->border_tag, (state? "$select_color" : "$msg_box_fill"));//was "$box_outline"
     sys_vgui(".x%lx.c itemconfigure %s -outline %s\n", canvas, x->corner_tag, (state? "blue" : "black"));
     sys_vgui(".x%lx.c itemconfigure %sTL -outline %s\n", canvas, x->corner_tag, (state? "blue" : "black"));
-    sys_vgui(".x%lx.c itemconfigure %s -fill %s\n", canvas, x->updatedot_tag, (x->draw_new_data_indicator? (state? "blue" : "black") : "#f8f8f6"));
-
 }
 
 static void ocompose_delete(t_gobj *z, t_glist *glist)
@@ -1865,7 +1828,6 @@ void *ocompose_new(t_symbol *msg, short argc, t_atom *argv)
         
         x->new_data_indicator_clock = clock_new(x, (t_method)ocompose_refresh);
         x->have_new_data = 1;
-        x->draw_new_data_indicator = 0;
         
         x->text = NULL;
         x->text = (char *)malloc(OMAX_PD_MAXSTRINGSIZE * sizeof(char));
@@ -2149,14 +2111,14 @@ void *ocompose_new(t_symbol *msg, short argc, t_atom *argv){
     | JBOX_NODRAWBOX
     | JBOX_DRAWINLAST
     | JBOX_TRANSPARENT
-    //      | JBOX_NOGROW
+    //| JBOX_NOGROW
     //| JBOX_GROWY
     //| JBOX_GROWBOTH
-    //      | JBOX_HILITE
+    //| JBOX_HILITE
     //| JBOX_BACKGROUND
     //| JBOX_DRAWBACKGROUND
-    //      | JBOX_NOFLOATINSPECTOR
-    //      | JBOX_MOUSEDRAGDELTA
+    //| JBOX_NOFLOATINSPECTOR
+    //| JBOX_MOUSEDRAGDELTA
     | JBOX_TEXTFIELD
     ;
     
@@ -2164,7 +2126,6 @@ void *ocompose_new(t_symbol *msg, short argc, t_atom *argv){
 		jbox_new((t_jbox *)x, boxflags, argc, argv);
  		x->ob.b_firstin = (void *)x;
 		x->outlet = outlet_new(x, NULL);
-		//x->proxy = proxy_new(x, 1, &(x->inlet));
 		x->bndl_u = NULL;
 		x->bndl_s = NULL;
 		x->newbndl = 0;
@@ -2176,14 +2137,13 @@ void *ocompose_new(t_symbol *msg, short argc, t_atom *argv){
 		x->qelem = qelem_new((t_object *)x, (method)ocompose_refresh);
 		x->new_data_indicator_clock = clock_new((t_object *)x, (method)ocompose_refresh);
 		x->have_new_data = 1;
-		x->draw_new_data_indicator = 0;
 		attr_dictionary_process(x, d);
         
 		t_object *textfield = jbox_get_textfield((t_object *)x);
 		if(textfield){
 			object_attr_setchar(textfield, gensym("editwhenunlocked"), 1);
 			textfield_set_editonclick(textfield, 0);
-			textfield_set_textmargins(textfield, 3, 3, 3, 3);
+			textfield_set_textmargins(textfield, 5, 5, 10, 5);
 			textfield_set_textcolor(textfield, &(x->text_color));
 		}
         
@@ -2195,15 +2155,8 @@ void *ocompose_new(t_symbol *msg, short argc, t_atom *argv){
 	return NULL;
 }
 
-// CLASS_ATTR_STYLE_LABEL as defined in ext_obex_util.h uses gensym_tr() which isn't included in the SDK causing
-// compilation to fail.  This kludge just replaces gensym_tr() with gensym()
-/*
- #define CLASS_ATTR_STYLE_LABEL_KLUDGE(c,attrname,flags,stylestr,labelstr) \
- { CLASS_ATTR_ATTR_PARSE(c,attrname,"style",USESYM(symbol),flags,stylestr); CLASS_ATTR_ATTR_FORMAT(c,attrname,"label",USESYM(symbol),flags,"s",gensym(labelstr)); }
- */
 #define CLASS_ATTR_CATEGORY_KLUDGE(c,attrname,flags,parsestr) \
 CLASS_ATTR_ATTR_PARSE(c,attrname,"category",USESYM(symbol),flags,parsestr)
-
 
 int main(void){
 	common_symbols_init();
@@ -2223,9 +2176,8 @@ int main(void){
 	class_addmethod(c, (method)ocompose_set, "set", A_GIMME, 0);
 	class_addmethod(c, (method)ocompose_assist, "assist", A_CANT, 0);
 	class_addmethod(c, (method)ocompose_doc, "doc", 0);
-	//class_addmethod(c, (method)stdinletinfo, "inletinfo", A_CANT, 0);
-	//class_addmethod(c, (method)ocompose_fullPacket, "FullPacket", A_LONG, A_LONG, 0);
 	class_addmethod(c, (method)ocompose_fullPacket, "FullPacket", A_GIMME, 0);
+    
 	// remove this if statement when we stop supporting Max 5
 	if(omax_dict_resolveDictStubs()){
 		class_addmethod(c, (method)omax_dict_dictionary, "dictionary", A_GIMME, 0);
@@ -2249,6 +2201,11 @@ int main(void){
  	CLASS_ATTR_STYLE_LABEL(c, "background_color", 0, "rgba", "Background Color");
 	CLASS_ATTR_CATEGORY_KLUDGE(c, "background_color", 0, "Color");
     
+    CLASS_ATTR_RGBA(c, "header_color", 0, t_ocompose, header_color);
+ 	CLASS_ATTR_DEFAULT_SAVE_PAINT(c, "header_color", 0, "0. 0.5 1. 1.");
+ 	CLASS_ATTR_STYLE_LABEL(c, "header_color", 0, "rgba", "Header Color");
+	CLASS_ATTR_CATEGORY_KLUDGE(c, "header_color", 0, "Color");
+    
  	CLASS_ATTR_RGBA(c, "frame_color", 0, t_ocompose, frame_color);
  	CLASS_ATTR_DEFAULT_SAVE_PAINT(c, "frame_color", 0, "0. 0. 1. 1.");
  	CLASS_ATTR_STYLE_LABEL(c, "frame_color", 0, "rgba", "Frame Color");
@@ -2260,7 +2217,7 @@ int main(void){
  	//CLASS_ATTR_STYLE_LABEL(c, "text_color", 0, "rgba", "Text Color");
 	//CLASS_ATTR_CATEGORY_KLUDGE(c, "text_color", 0, "Color");
     
-	CLASS_ATTR_DEFAULT(c, "rect", 0, "0. 0. 150., 18.");
+	CLASS_ATTR_DEFAULT(c, "rect", 0, "0. 0. 150., 20.");
     
 	class_register(CLASS_BOX, c);
 	ocompose_class = c;
