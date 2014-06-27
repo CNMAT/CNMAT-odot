@@ -1,7 +1,9 @@
 /*
 
-  Written by Matt Wright, The Center for New Music and Audio Technologies,
-  University of California, Berkeley.  Copyright (c) 1996,97,98,99,2000,01,02,03,04,05
+  Written by Matt Wright, Adrian Freed, Andy Schmeder, John MacCallum
+ 
+  The Center for New Music and Audio Technologies,
+  University of California, Berkeley.  Copyright (c) 1996,97,98,99,2000,01,02,03,04,05, 2014
   The Regents of the University of California (Regents).  
 
   Permission to use, copy, modify, distribute, and distribute modified versions
@@ -111,27 +113,23 @@ void oslipserial_FullPacket(t_oslipserial *x, long size, unsigned char *source) 
 	unsigned char c;
     
 	atom_setlong(encoded + i++, END);
-	//x->out[i++].a_w.w_long  = END;
+
 	for(int j = 0; j < size; j++) {
 		switch(c=*source++)
 			{
 			case END:
 				atom_setlong(encoded + i++, ESC);
 				atom_setlong(encoded + i++, ESC_END);
-				//x->out[i++].a_w.w_long = ESC;
-				//x->out[i].a_w.w_long = ESC_END;
 				break;
 	  
 			case ESC:
 				atom_setlong(encoded + i++, ESC);
 				atom_setlong(encoded + i++, ESC_ESC);
-				//x->out[i++].a_w.w_long = ESC;
-				//x->out[i].a_w.w_long = ESC_ESC;
 				break;
 	  
 			default:
 				atom_setlong(encoded + i++, c);
-				//x->out[i].a_w.w_long = c;
+
 	  
 			}
 	}
@@ -164,7 +162,7 @@ void oslipserial_FullPacket(t_oslipserial *x, long size, unsigned char *source) 
   
 int oslipserial_decode(t_oslipserial *x, unsigned char c)
 {
-	critical_enter(x->lock); // try to make this critical section smaller if possible...
+	critical_enter(x->lock);
 	int t; 
 	switch(x->istate)
 		{
@@ -177,7 +175,7 @@ int oslipserial_decode(t_oslipserial *x, unsigned char c)
 			switch(c){
 			case END:
 				if((x->icount > 0)){ // it was the END byte
-#ifdef DEBUGOUTPUT					
+#ifdef untestedDEBUGOUTPUT
 					// full packet process		
 					char stringbuf[4096];
 					int j=0;
@@ -201,11 +199,12 @@ int oslipserial_decode(t_oslipserial *x, unsigned char c)
 					if((t % 4) == 0){
 						char buf[t];
 						memcpy(buf, x->slipibuf, t);
-						critical_exit(x->lock);
+	critical_exit(x->lock);
 						omax_util_outletOSC(x->outlet, t, buf);
 						//oslipserial_sendData(x, t, x->slipibuf);
 						return 0;
 					}else{
+    critical_exit(x->lock);
 						object_error((t_object *)x, "bad packet: not a multiple of 4 length");
 						return 0;
 					}
@@ -258,6 +257,7 @@ int oslipserial_decode(t_oslipserial *x, unsigned char c)
 			break;
       
 		}
+
 	critical_exit(x->lock);
 	return 1;
 }
