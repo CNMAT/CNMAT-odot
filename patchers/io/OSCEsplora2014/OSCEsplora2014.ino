@@ -26,7 +26,9 @@
 #include <Esplora.h>
 #include <OSCMessage.h>
 #include <OSCBundle.h>
-//#include <OSCTiming.h>
+#include <OSCtiming.h>
+
+#define TIMESTAMPSUPPORT
 
 //Teensy and Leonardo variants have special USB serial
 #include <SLIPEncodedUSBSerial.h>
@@ -97,7 +99,8 @@ void routeLed(OSCMessage &msg, int addrOffset ){
     {
       onboardled =  msg.getInt(0)>0?HIGH:LOW;
       digitalWrite(13, onboardled);
-    }else
+    }
+else
     if (msg.isBoolean(0))  {
       onboardled =  msg.getBoolean(0)?HIGH:LOW;
       digitalWrite(13, onboardled);
@@ -127,10 +130,11 @@ void routeOut(OSCMessage &msg, int addrOffset ){
   }
 }
 uint32_t   packetstarttime = 0;
-uint64_t senttime =0;
+osctime_t senttime;
 uint32_t receivedtime;
-void routeSendtime(OSCMessage &msg, int addrOffset ){
-    if (msg.isTime(0)) 
+void routeSendtime(OSCMessage &msg, int addrOffset )
+{
+    if (msg.match("/time", addrOffset) && msg.isTime(0)) 
      {
        senttime = msg.getTime(0);
        receivedtime = packetstarttime;
@@ -198,7 +202,6 @@ int oscstrlen(const char *s)
   return n+ (4-(n%4))%4;
 }
 
-const int32_t cnmatserialnumber = 1099;   //hard coded; beware
 
      
      
@@ -227,7 +230,12 @@ void oscwritestring(SLIPEncodedUSBSerial &usbs, const char *s)
   while(i--)
     usbs.write('\0');
 }
+
+
+
+
 void loop(){
+    OSCBundle bundleIN;
 
   if(!SLIPSerial.available())
   {
@@ -249,21 +257,15 @@ const char *oscfalse = ",F\0";
     SLIPSerial.beginPacket(); // mark the beginning of the OSC Packet    
     
     SLIPSerial.write((const uint8_t *)"#bundle", 8);          //bundle header
- #ifdef SHIT   
     // time stamp didn't advance: (oscuino bug)
+#if 0
 if(0) // not enough
 {
-  uint64_t tt = oscTime();
-    SLIPSerial.write((uint8_t)(tt>>56));
-    SLIPSerial.write((uint8_t)(tt>>48));
-    SLIPSerial.write((uint8_t)(tt>>40));
-    SLIPSerial.write((uint8_t)(tt>>32));
-    SLIPSerial.write((uint8_t)(tt>>24));
-    SLIPSerial.write((uint8_t)(tt>>16));
-    SLIPSerial.write((uint8_t)(tt>>8));
-    SLIPSerial.write((uint8_t)tt);
-}     
-else
+  osctime_t tt = oscTime();
+     oscwriteinteger(SLIPSerial,tt.seconds);
+    oscwriteinteger(SLIPSerial, tt.fractionofseconds);
+  }     
+//else
 #endif
     SLIPSerial.write((const uint8_t *)"\0\0\0\0\0\0\0", 8);    //Time tag
 {
@@ -275,16 +277,18 @@ const char *a_arduino = "Arduino";
 {
 const char *a_device = "/Device";  
 const char *a_name = "Esplora";
-    oscwriteinteger(SLIPSerial, (int32_t)oscstrlen(a_device) + 4 + (int32_t)oscstrlen(a_device)); // 4 for type tag and 4 for the payload integer
+    oscwriteinteger(SLIPSerial, (int32_t)oscstrlen(a_device) + 4 + (int32_t)oscstrlen(a_name)); // 4 for type tag and 4 for the payload integer
     oscwritestring(SLIPSerial,a_device); oscwritestring(SLIPSerial, singlestring); oscwritestring(SLIPSerial, a_name);
 }
 
-
+#if 1
 {
-const char *a_sn = "/Serial/Number";    
-    oscwriteinteger(SLIPSerial, (int32_t)oscstrlen(a_sn) + 4 + 4); // 4 for type tag and 4 for the payload integer
-    oscwritestring(SLIPSerial,a_sn); oscwritestring(SLIPSerial, singleinteger); oscwriteinteger(SLIPSerial, cnmatserialnumber);
+const char *a_uid= "/UniqueID";  
+const char *a_id = "usbmodemOSCes311";
+    oscwriteinteger(SLIPSerial, (int32_t)oscstrlen(a_uid) + 4 + (int32_t)oscstrlen(a_id)); // 4 for type tag and 4 for the payload integer
+    oscwritestring(SLIPSerial,a_uid); oscwritestring(SLIPSerial, singlestring); oscwritestring(SLIPSerial, a_id);
 }
+#endif
 
 {
     static  int32_t seqno= 0;
@@ -338,12 +342,21 @@ const char *a_ps= "/slider/horizontal";
     oscwriteinteger(SLIPSerial, (int32_t)oscstrlen(a_cr) + 4 + 0); // 4 for type tag and 4 for the payload integer
     oscwritestring(SLIPSerial,a_cr);  oscwritestring(SLIPSerial,  (digitalRead(11)==HIGH)?oscfalse:osctrue); 
 }   
-
+#ifdef OLDWayUnitsarepreferred
  {
   const char *a_t = "/temperature/fahrenheit";    
     oscwriteinteger(SLIPSerial, (int32_t)oscstrlen(a_t) + 4 + 4); // 4 for type tag and 4 for the payload integer
     oscwritestring(SLIPSerial,a_t ); oscwritestring(SLIPSerial, singlefloat); oscwritefloat(SLIPSerial,(float)Esplora.readTemperature(DEGREES_F) );
-}  
+} 
+#else
+
+{
+const char *a_unitstemp = "/units/temperature";  
+const char *a_units = "Celsius";
+    oscwriteinteger(SLIPSerial, (int32_t)oscstrlen(a_unitstemp) + 4 + (int32_t)oscstrlen(a_units)); // 4 for type tag and 4 for the payload integer
+    oscwritestring(SLIPSerial,a_unitstemp); oscwritestring(SLIPSerial, singlestring); oscwritestring(SLIPSerial, a_units);
+}
+#endif
  {
   const char *a_t = "/temperature/celsius";    
     oscwriteinteger(SLIPSerial, (int32_t)oscstrlen(a_t) + 4 + 4); // 4 for type tag and 4 for the payload integer
@@ -365,6 +378,11 @@ const char *a_ledrgb = ("/led/rgb");
       oscwriteinteger(SLIPSerial, Esplora.readGreen());
       oscwriteinteger(SLIPSerial, Esplora.readBlue());
 }
+
+
+
+#if 1
+
 { // BEGINNING OF JOYSTICK STUFF
 {
   const char *a_jsh = "/joystick/horizontal";    
@@ -627,6 +645,7 @@ const char *a_ledrgb = ("/led/rgb");
     } 
     lastjsbutton = b;
 }     
+#endif
 
 {
     static boolean lastjsbutton  = Esplora.readButton(SWITCH_3)>0;
@@ -689,7 +708,7 @@ const char *a_ledrgb = ("/led/rgb");
       bndl.send(SLIPSerial); // send the bytes to the SLIP stream
       SLIPSerial.endPacket(); // mark the end of the OSC Packet
       bndl.empty();
-    #endif //RAW
+#endif //RAW
 
 
     
@@ -719,36 +738,29 @@ const char *a_ledrgb = ("/led/rgb");
     
     bndl.add("/serialnumber").add(serialnumber);    
 #endif
-
+#ifdef TIMETAGSUPPORT
 if( (receivedtime!=0))
 {
   {
 const char *a_ms = "/received/microseconds";    
     oscwriteinteger(SLIPSerial, (int32_t)oscstrlen(a_ms) + 4 + 4); // 4 for type tag and 4 for the payload integer
     oscwritestring(SLIPSerial,a_ms); oscwritestring(SLIPSerial, singleinteger); oscwriteinteger(SLIPSerial,receivedtime);
-}
-{
-const char *a_ms = "/received/time";    
+  }
+  {
+const char *a_rt = "/received/time";    
 const char *timetagtypestring = ",t\0";
-    oscwriteinteger(SLIPSerial, (int32_t)oscstrlen(a_ms) + 4 + 8); // 4 for type tag and 8 for the payload timetag
+    oscwriteinteger(SLIPSerial, (int32_t)oscstrlen(a_rt) + 4 + 8); // 4 for type tag and 8 for the payload timetag
 
-    oscwritestring(SLIPSerial,a_ms); oscwritestring(SLIPSerial, timetagtypestring);
- //      SLIPSerial.write((uint8_t)senttime>>56);
- //   SLIPSerial.write((uint8_t)(senttime>>48));
- //   SLIPSerial.write((uint8_t)(senttime>>40));
- //   SLIPSerial.write((uint8_t)senttime>>32);
- //   SLIPSerial.write((uint8_t)senttime>>24);
- //   SLIPSerial.write((uint8_t)senttime>>16);
- //   SLIPSerial.write((uint8_t)(senttime>>8));
- //   SLIPSerial.write((uint8_t)senttime); 
+    oscwritestring(SLIPSerial,a_rt); oscwritestring(SLIPSerial, timetagtypestring);
+
  {
-   union { uint64_t ll; uint32_t ii[2]; } t;
-   t.ll = senttime;
-      oscwriteinteger(SLIPSerial,t.ii[1]);
-    oscwriteinteger(SLIPSerial, t.ii[0]);
+ 
+    oscwriteinteger(SLIPSerial,senttime.seconds);
+    oscwriteinteger(SLIPSerial, senttime.fractionofseconds);
   }
 }
 }
+#endif
 
 {
 const char *a_ms = "/microseconds";    
@@ -764,16 +776,18 @@ const char *a_ms = "/microseconds";
     //   bndl.add("/32u4/temperature").add(getTemperature());
 
   }
+  
+  
   else
+  
   {
-    OSCBundle bundleIN;
     int size;
-    boolean first = true;
+      boolean first = true;
     
     while(!SLIPSerial.endofPacket())
       if ((size =SLIPSerial.available()) > 0)
       {
-        if(first)
+     if(first)
         {
             packetstarttime = micros();
             first = false;
@@ -781,6 +795,8 @@ const char *a_ms = "/microseconds";
         while(size--)
           bundleIN.fill(SLIPSerial.read());
       }
+      
+      
     {
       if(!bundleIN.hasError())
       {
@@ -791,8 +807,12 @@ const char *a_ms = "/microseconds";
         bundleIN.route("/tone", routeTone);
         bundleIN.route("/squarewave", routeTone);
         bundleIN.route("/tone/off", routeTone);
-        bundleIN.route("/send/time", routeSendtime);
+//       bundleIN.route("/send", routeSendtime);
+
       }
+           bundleIN.empty();
+
+ 
     }
   }
 }
