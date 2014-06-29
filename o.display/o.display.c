@@ -23,19 +23,16 @@
   @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
   NAME: o.display
   DESCRIPTION: Message box for OSC bundles
-  AUTHORS: John MacCallum
+  AUTHORS: Ilya Y. Rostovtsev, John MacCallum
   COPYRIGHT_YEARS: 2009-11
   SVN_REVISION: $LastChangedRevision: 587 $
-  VERSION 0.0: First try
-  VERSION 1.0: using updated lib
-  VERSION 1.0.1: newlines now delimit messages
-  VERSION 2.0: uses newly refactored libo and has initial support for nested bundles
+  VERSION 0.0: Inherited from o.message
   @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
 */
 
 #define OMAX_DOC_NAME "o.display"
-#define OMAX_DOC_SHORT_DESC "Create and display OSC bundles"
+#define OMAX_DOC_SHORT_DESC "Display OSC bundles as text"
 #define OMAX_DOC_LONG_DESC "o.display behaves like the standard Max message box except that it converts its data to OSC packets."
 #define OMAX_DOC_INLETS_DESC (char *[]){"Bang sends the OSC FullPacket out.", "Set the contents."}
 #define OMAX_DOC_OUTLETS_DESC (char *[]){"OSC FullPacket"}
@@ -60,7 +57,6 @@
 #include "ext_obex_util.h"
 #include "ext_critical.h"
 #include "jpatcher_api.h"
-//#include "jpatcher_syms.h"
 #include "jgraphics.h"
 #endif
 
@@ -80,7 +76,6 @@
 #include "osc_atom_s.h"
 #include "omax_doc.h"
 #include "omax_dict.h"
-//#include <mach/mach_time.h>
 
 #include "o.h"
 
@@ -91,7 +86,7 @@
 
 #ifdef WIN_VERSION
 // currently we have to compile windows versions with gcc 3 on cygwin and i'm getting undefined
-// refs to strsep, so here it is fucker.
+// refs to strsep, so here it is.
 char *
 strsep(stringp, delim)
      register char **stringp;
@@ -223,8 +218,6 @@ typedef struct _odisplay{
 static t_class *odisplay_class;
 
 void odisplay_paint(t_odisplay *x, t_object *patcherview);
-//long odisplay_key(t_odisplay *x, t_object *patcherview, long keycode, long modifiers, long textcharacter);
-//long odisplay_keyfilter(t_odisplay *x, t_object *patcherview, long *keycode, long *modifiers, long *textcharacter);
 void odisplay_mousedown(t_odisplay *x, t_object *patcherview, t_pt pt, long modifiers);
 void odisplay_mouseup(t_odisplay *x, t_object *patcherview, t_pt pt, long modifiers);
 void odisplay_select(t_odisplay *x);
@@ -278,8 +271,6 @@ void jbox_redraw(t_jbox *x){ odisplay_drawElements((t_odisplay *)x, x->glist, x-
 
 t_symbol *ps_newline, *ps_FullPacket;
 
-
-//void odisplay_fullPacket(t_odisplay *x, long len, long ptr)
 void odisplay_fullPacket(t_odisplay *x, t_symbol *msg, int argc, t_atom *argv)
 {
 	OMAX_UTIL_GET_LEN_AND_PTR
@@ -424,7 +415,24 @@ void odisplay_paint(t_odisplay *x, t_object *patcherview)
 	jbox_get_rect_for_view((t_object *)x, patcherview, &rect);
 
 	jgraphics_set_source_jrgba(g, &(x->background_color));
-	//jgraphics_rectangle(g, 0., 0., rect.width, rect.height);
+    jgraphics_rectangle_rounded(g, 0, 0, rect.width, rect.height - 10, 8, 8);
+    jgraphics_rectangle(g, 0, rect.height - 14, 4, 4);
+    jgraphics_rectangle(g, rect.width - 4, rect.height - 14, 4, 4);
+    jgraphics_fill(g);
+    jgraphics_set_source_jrgba(g, &(x->frame_color));
+    jgraphics_rectangle_rounded(g, 0, rect.height - 10, rect.width, 10, 8, 8);
+    jgraphics_rectangle(g, 0, rect.height - 10, 4, 4);
+    jgraphics_rectangle(g, rect.width - 4, rect.height - 10, 4, 4);
+    jgraphics_fill(g);
+    
+    jgraphics_rectangle_rounded(g, 1, 1, rect.width - 2, rect.height - 2, 8, 8);
+    jgraphics_set_line_width(g, 2.);
+    jgraphics_stroke(g);
+    
+
+    /*
+    jgraphics_move_to(g, 0, rect.height - 10);
+    
 	jgraphics_move_to(g, 0, 0);
 	jgraphics_line_to(g, 0, rect.height - 8);
 	jgraphics_line_to(g, 8, rect.height);
@@ -447,6 +455,7 @@ void odisplay_paint(t_odisplay *x, t_object *patcherview)
 	jgraphics_line_to(g, rect.width, rect.height);
 	jgraphics_line_to(g, rect.width, rect.height - (rect.height * .25));
 	jgraphics_stroke(g);
+     */
 
 	if(draw_new_data_indicator){
 		//jgraphics_move_to(g, 4, 4);
@@ -487,47 +496,17 @@ void odisplay_doselect(t_odisplay *x){
 	}
 }
 
-
-long odisplay_key(t_odisplay *x, t_object *patcherview, long keycode, long modifiers, long textcharacter){
-	char buff[256];
-	buff[0] = textcharacter;  // we know this is just a simple char
-	buff[1] = 0; 
-	object_method(patcherview, gensym("insertboxtext"), x, buff);
-	jbox_redraw((t_jbox *)x);
-
-	return 1; 
-}
-
-long odisplay_keyfilter(t_odisplay *x, t_object *patcherview, long *keycode, long *modifiers, long *textcharacter){
-	t_atom arv;
-	long rv = 1;
-	long k = *keycode;
-	
-	if (k == JKEY_TAB || k == JKEY_ESC) {
-		object_method_typed(patcherview, gensym("endeditbox"), 0, NULL, &arv); 
-		rv = 0;		// don't pass those keys to odisplay
-	}
-	return rv;
-}
-
-
 void odisplay_mousedown(t_odisplay *x, t_object *patcherview, t_pt pt, long modifiers){
-    textfield_set_textmargins(jbox_get_textfield((t_object *)x), 4, 4, 2, 2);
+    textfield_set_textmargins(jbox_get_textfield((t_object *)x), 6, 6, 5, 15);
 	jbox_redraw((t_jbox *)x);
 }
 
 void odisplay_mouseup(t_odisplay *x, t_object *patcherview, t_pt pt, long modifiers){
-    textfield_set_textmargins(jbox_get_textfield((t_object *)x), 3, 3, 3, 3);
+    textfield_set_textmargins(jbox_get_textfield((t_object *)x), 5, 5, 5, 15);
 	jbox_redraw((t_jbox *)x);
 	odisplay_output_bundle(x);
 }
 #endif
-
-// enter is triggerd at "endeditbox time"
-void odisplay_enter(t_odisplay *x)
-{
-	odisplay_gettext(x);
-}
 
 // we get the text, convert it to an OSC bundle, and then call the paint
 // function via qelem_set which converts the OSC bundle back to text.
@@ -616,74 +595,7 @@ void odisplay_float(t_odisplay *x, double f){
 
 void odisplay_list(t_odisplay *x, t_symbol *list_sym, short argc, t_atom *argv)
 {
-    /*
-	if(proxy_getinlet((t_object *)x) == 1){ */
-		object_error((t_object *)x, "o.display doesn't accept non-OSC lists in its right inlet");
-		return;
-    /*
-	}
-	if(x->bndl_has_been_checked_for_subs && !x->bndl_has_subs){
-		if(!x->bndl_s){
-			if(x->bndl_u){
-				long len = 0;
-				char *ptr = NULL;
-				critical_enter(x->lock);
-				osc_bundle_u_serialize(x->bndl_u, &len, &ptr);
-				critical_exit(x->lock);
-				x->bndl_s = osc_bundle_s_alloc(len, ptr);
-			}else if(x->text){
-				// pretty sure this can't happen...
-				post("%d\n", __LINE__);
-			}else{
-				return;
-			}
-		}
-		critical_enter(x->lock);
-		long len = osc_bundle_s_getLen(x->bndl_s);
-		char *ptr = osc_bundle_s_getPtr(x->bndl_s);
-		char copy[len];
-		memcpy(copy, ptr, len);
-		critical_exit(x->lock);
-		omax_util_outletOSC(x->outlet, len, copy);
-	}else{
-		if(!x->bndl_u){
-			if(x->bndl_s){
-				critical_enter(x->lock);
-				osc_bundle_s_deserialize(osc_bundle_s_getLen(x->bndl_s), osc_bundle_s_getPtr(x->bndl_s), &(x->bndl_u));
-				critical_exit(x->lock);
-			}else if(x->text){
-				// pretty sure this can't happen...
-				post("%d\n", __LINE__);
-			}else{
-				return;
-			}
-		}
-		critical_enter(x->lock);
-		t_osc_bndl_u *copy = NULL;
-		t_osc_err e = omax_util_copyBundleWithSubs_u(&copy, x->bndl_u, argc, argv, &(x->bndl_has_subs));
-		if(e){
-			return;
-		}
-		if(!copy){
-			return;
-		}
-		x->bndl_has_been_checked_for_subs = 1;
-		critical_exit(x->lock);
-		long len = 0;
-		char *copy_s = NULL;
-		e = osc_bundle_u_serialize(copy, &len, &copy_s);
-		if(e){
-			object_error((t_object *)x, "%s\n", osc_error_string(e));
-			osc_bundle_u_free(copy);
-			return;
-		}
-		if(copy_s){
-			omax_util_outletOSC(x->outlet, len, copy_s);
-			osc_mem_free(copy_s);
-		}
-		osc_bundle_u_free(copy);
-	}
-     */
+    object_error((t_object *)x, "o.display doesn't accept non-OSC lists in its inlet");
 }
 
 void odisplay_anything(t_odisplay *x, t_symbol *msg, short argc, t_atom *argv)
@@ -2245,9 +2157,9 @@ void *odisplay_new(t_symbol *msg, short argc, t_atom *argv){
         
 		t_object *textfield = jbox_get_textfield((t_object *)x);
 		if(textfield){
-			object_attr_setchar(textfield, /*gensym("editwhenunlocked"),*/ NULL, 1);
-			//textfield_set_editonclick(textfield, 0);
-			textfield_set_textmargins(textfield, 3, 3, 3, 3);
+			object_attr_setchar(textfield, gensym("editwhenunlocked"), 0);
+            textfield_set_readonly(textfield, '1');
+			textfield_set_textmargins(textfield, 5, 5, 5, 15);
 			textfield_set_textcolor(textfield, &(x->text_color));
 		}
         
@@ -2309,12 +2221,12 @@ int main(void){
     
     
  	CLASS_ATTR_RGBA(c, "background_color", 0, t_odisplay, background_color);
- 	CLASS_ATTR_DEFAULT_SAVE_PAINT(c, "background_color", 0, ".87 .87 .87 1.");
+ 	CLASS_ATTR_DEFAULT_SAVE_PAINT(c, "background_color", 0, ".98 .98 .98 1.");
  	CLASS_ATTR_STYLE_LABEL(c, "background_color", 0, "rgba", "Background Color");
 	CLASS_ATTR_CATEGORY_KLUDGE(c, "background_color", 0, "Color");
     
  	CLASS_ATTR_RGBA(c, "frame_color", 0, t_odisplay, frame_color);
- 	CLASS_ATTR_DEFAULT_SAVE_PAINT(c, "frame_color", 0, "1. 0. 0. 1.");
+ 	CLASS_ATTR_DEFAULT_SAVE_PAINT(c, "frame_color", 0, ".216 .435 .7137 1.");
  	CLASS_ATTR_STYLE_LABEL(c, "frame_color", 0, "rgba", "Frame Color");
 	CLASS_ATTR_CATEGORY_KLUDGE(c, "frame_color", 0, "Color");
     
@@ -2323,7 +2235,7 @@ int main(void){
  	//CLASS_ATTR_STYLE_LABEL(c, "text_color", 0, "rgba", "Text Color"); /* this line & next make two Text Color fields in the inspector - remove them for justice */
 	//CLASS_ATTR_CATEGORY_KLUDGE(c, "text_color", 0, "Color");
     
-	CLASS_ATTR_DEFAULT(c, "rect", 0, "0. 0. 150., 18.");
+	CLASS_ATTR_DEFAULT(c, "rect", 0, "0. 0. 150. 18.");
     
 	class_register(CLASS_BOX, c);
 	odisplay_class = c;

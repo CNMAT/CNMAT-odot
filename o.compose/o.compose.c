@@ -23,20 +23,20 @@
   @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
   NAME: o.compose
   DESCRIPTION: Message box for OSC bundles
-  AUTHORS: John MacCallum
+  AUTHORS: Ilya Rostovtsev, John MacCallum
   COPYRIGHT_YEARS: 2009-11
-  SVN_REVISION: $LastChangedRevision: 587 $
   VERSION 0.0: Inherited from v2.0 of o.message
+  VERSION 0.D: Dev copy with multiple visual looks
   @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
 */
 
 #define OMAX_DOC_NAME "o.compose"
-#define OMAX_DOC_SHORT_DESC "Create and display OSC bundles"
+#define OMAX_DOC_SHORT_DESC "Create OSC bundles from text"
 #define OMAX_DOC_LONG_DESC "o.compose behaves like the standard Max message box except that it converts its data to OSC packets."
-#define OMAX_DOC_INLETS_DESC (char *[]){"Bang sends the OSC FullPacket out.", "Set the contents."}
+#define OMAX_DOC_INLETS_DESC (char *[]){"Bang sends the OSC FullPacket out."}
 #define OMAX_DOC_OUTLETS_DESC (char *[]){"OSC FullPacket"}
-#define OMAX_DOC_SEEALSO (char *[]){"message"}
+#define OMAX_DOC_SEEALSO (char *[]){"o.display", "o.message"}
 
 
 #include <string.h>
@@ -206,7 +206,7 @@ typedef struct _ocompose{
 	int bndl_has_been_checked_for_subs;
 	long textlen;
 	char *text;
-	t_jrgba frame_color, header_color, background_color, text_color;
+	t_jrgba frame_color, background_color, text_color;
 	void *qelem;
 	int have_new_data;
 	void *new_data_indicator_clock;
@@ -412,7 +412,7 @@ void ocompose_paint(t_ocompose *x, t_object *patcherview)
     jgraphics_fill(g);
     
     // outline
-    jgraphics_set_source_jrgba(g, &(x->header_color));
+    jgraphics_set_source_jrgba(g, &(x->frame_color));
     jgraphics_set_line_width(g, 2.);
     jgraphics_move_to(g, rect.width - 1, 10);
     jgraphics_line_to(g, rect.width - 1, rect.height - 1);
@@ -428,7 +428,7 @@ void ocompose_paint(t_ocompose *x, t_object *patcherview)
     jgraphics_stroke(g);
     
     // triangle
-    jgraphics_set_source_jrgba(g, &(x->header_color));
+//    jgraphics_set_source_jrgba(g, &(x->frame_color));
     jgraphics_set_line_width(g, 2.);
     jgraphics_move_to(g, rect.width - 11, 0);
     jgraphics_line_to(g, rect.width - 11, 11);
@@ -2201,13 +2201,8 @@ int main(void){
  	CLASS_ATTR_STYLE_LABEL(c, "background_color", 0, "rgba", "Background Color");
 	CLASS_ATTR_CATEGORY_KLUDGE(c, "background_color", 0, "Color");
     
-    CLASS_ATTR_RGBA(c, "header_color", 0, t_ocompose, header_color);
- 	CLASS_ATTR_DEFAULT_SAVE_PAINT(c, "header_color", 0, "0. 0.5 1. 1.");
- 	CLASS_ATTR_STYLE_LABEL(c, "header_color", 0, "rgba", "Header Color");
-	CLASS_ATTR_CATEGORY_KLUDGE(c, "header_color", 0, "Color");
-    
  	CLASS_ATTR_RGBA(c, "frame_color", 0, t_ocompose, frame_color);
- 	CLASS_ATTR_DEFAULT_SAVE_PAINT(c, "frame_color", 0, "0. 0. 1. 1.");
+ 	CLASS_ATTR_DEFAULT_SAVE_PAINT(c, "frame_color", 0, ".216 .435 .7137 1.");
  	CLASS_ATTR_STYLE_LABEL(c, "frame_color", 0, "rgba", "Frame Color");
 	CLASS_ATTR_CATEGORY_KLUDGE(c, "frame_color", 0, "Color");
     
@@ -2217,7 +2212,7 @@ int main(void){
  	//CLASS_ATTR_STYLE_LABEL(c, "text_color", 0, "rgba", "Text Color");
 	//CLASS_ATTR_CATEGORY_KLUDGE(c, "text_color", 0, "Color");
     
-	CLASS_ATTR_DEFAULT(c, "rect", 0, "0. 0. 150., 20.");
+	CLASS_ATTR_DEFAULT(c, "rect", 0, "0. 0. 150. 20.");
     
 	class_register(CLASS_BOX, c);
 	ocompose_class = c;

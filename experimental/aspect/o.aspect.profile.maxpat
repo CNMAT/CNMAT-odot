@@ -343,14 +343,14 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "o.aspect.receive.maxpat",
-				"bootpath" : "/Users/john/Development/CNMAT/CNMAT/CNMAT-odot/abstractions/aspect",
+				"bootpath" : "/Users/john/Development/CNMAT/CNMAT/CNMAT-odot/experimental/aspect",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.aspect.send.maxpat",
-				"bootpath" : "/Users/john/Development/CNMAT/CNMAT/CNMAT-odot/abstractions/aspect",
+				"bootpath" : "/Users/john/Development/CNMAT/CNMAT/CNMAT-odot/experimental/aspect",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1

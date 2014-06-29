@@ -80,23 +80,23 @@
 #include "o.h"
 
 typedef struct _oexprcodebox{
-        t_jbox ob;
-        t_critical lock;
-        long textlen;
-        char *text;
-        t_jrgba frame_color, background_color, text_color;
-        void *outlets[2];
-        t_osc_expr *expr;
+    t_jbox ob;
+    t_critical lock;
+    long textlen;
+    char *text;
+    t_jrgba frame_color, background_color, text_color;
+    void *outlets[2];
+    t_osc_expr *expr;
 } t_oexprcodebox;
 
 void *oexprcodebox_class;
 
 void oexprcodebox_fullPacket(t_oexprcodebox *x, t_symbol *msg, int argc, t_atom *argv)
 {
-        OMAX_UTIL_GET_LEN_AND_PTR
-		if(len <= 0){
-			return;
-		}
+    OMAX_UTIL_GET_LEN_AND_PTR
+    if(len <= 0){
+        return;
+    }
 	// we need to make a copy incase the expression contains assignment that will
 	// alter the bundle.
 	// the copy needs to use memory allocated with osc_mem_alloc in case the 
@@ -141,94 +141,68 @@ void oexprcodebox_fullPacket(t_oexprcodebox *x, t_symbol *msg, int argc, t_atom 
 
 void oexprcodebox_paint(t_oexprcodebox *x, t_object *patcherview)
 {
-        critical_enter(x->lock);
-        critical_exit(x->lock);
-        t_rect rect;
-        t_jgraphics *g = (t_jgraphics *)patcherview_get_jgraphics(patcherview);
-        jbox_get_rect_for_view((t_object *)x, patcherview, &rect);
-
-        jgraphics_set_source_jrgba(g, &(x->background_color));
-        //jgraphics_rectangle(g, 0., 0., rect.width, rect.height);
-	jgraphics_rectangle(g, 8., 8., rect.width - 8, rect.height - 8);
+    critical_enter(x->lock);
+    critical_exit(x->lock);
+    t_rect rect;
+    t_jgraphics *g = (t_jgraphics *)patcherview_get_jgraphics(patcherview);
+    jbox_get_rect_for_view((t_object *)x, patcherview, &rect);
+    
+    jgraphics_set_source_jrgba(g, &(x->frame_color));
+	jgraphics_rectangle_rounded(g, 0, 0, rect.width, rect.height, 6, 6);
 	jgraphics_fill(g);
 
-        jgraphics_set_source_jrgba(g, &(x->frame_color));
-        jgraphics_set_line_width(g, 8.);
-	jgraphics_rectangle_rounded(g, 4, 4, rect.width - 8, rect.height - 8, 4, 4);
-	jgraphics_stroke(g);
-	/*
-        jgraphics_move_to(g, 0, 0);
-        jgraphics_line_to(g, 0, rect.height - 8);
-        jgraphics_line_to(g, 8, rect.height);
-        jgraphics_line_to(g, rect.width, rect.height);
-        jgraphics_line_to(g, rect.width, 8);
-        jgraphics_line_to(g, rect.width - 8, 0);
-        jgraphics_line_to(g, 0, 0);
-        jgraphics_fill(g);
-
-        jgraphics_ellipse(g, rect.width - 16., 0., 16, 16);
-        jgraphics_ellipse(g, 0., rect.height - 16., 16., 16.);
-        jgraphics_fill(g);
-
-        jgraphics_set_source_jrgba(g, &(x->frame_color));
-        jgraphics_set_line_width(g, 2.);
-        jgraphics_move_to(g, rect.width * .75, 0.);
-        jgraphics_line_to(g, 0., 0.);
-        jgraphics_line_to(g, 0., rect.height * .25);
-        jgraphics_move_to(g, rect.width - (rect.width * .75), rect.height);
-        jgraphics_line_to(g, rect.width, rect.height);
-        jgraphics_line_to(g, rect.width, rect.height - (rect.height * .25));
-        jgraphics_stroke(g);
-	*/
+    jgraphics_set_source_jrgba(g, &(x->background_color));
+    jgraphics_rectangle(g, 1, 5, rect.width - 2, rect.height - 10);
+	jgraphics_fill(g);
 }
 
 void oexprcodebox_doselect(t_oexprcodebox *x){
-        t_object *p = NULL; 
-        object_obex_lookup(x,gensym("#P"), &p);
-        if (p) {
-                t_atom rv; 
-                long ac = 1; 
-                t_atom av[1]; 
-                atom_setobj(av, x); 
-                object_method_typed(p, gensym("selectbox"), ac, av, &rv); 
-        }
+    t_object *p = NULL;
+    object_obex_lookup(x,gensym("#P"), &p);
+    if (p) {
+            t_atom rv; 
+            long ac = 1; 
+            t_atom av[1]; 
+            atom_setobj(av, x); 
+            object_method_typed(p, gensym("selectbox"), ac, av, &rv); 
+    }
 }
 
 void oexprcodebox_select(t_oexprcodebox *x){
-        defer(x, (method)oexprcodebox_doselect, 0, 0, 0);
+    defer(x, (method)oexprcodebox_doselect, 0, 0, 0);
 }
 
 long oexprcodebox_key(t_oexprcodebox *x, t_object *patcherview, long keycode, long modifiers, long textcharacter){
-        char buff[256];
-        buff[0] = textcharacter;  // we know this is just a simple char
-        buff[1] = 0; 
-        object_method(patcherview, gensym("insertboxtext"), x, buff);
-        jbox_redraw((t_jbox *)x);
+    char buff[256];
+    buff[0] = textcharacter;  // we know this is just a simple char
+    buff[1] = 0; 
+    object_method(patcherview, gensym("insertboxtext"), x, buff);
+    jbox_redraw((t_jbox *)x);
 
-        return 1; 
+    return 1; 
 }
 
 long oexprcodebox_keyfilter(t_oexprcodebox *x, t_object *patcherview, long *keycode, long *modifiers, long *textcharacter){
-        t_atom arv;
-        long rv = 1;
-        long k = *keycode;
-        
-        if (k == JKEY_TAB || k == JKEY_ESC) {
-                object_method_typed(patcherview, gensym("endeditbox"), 0, NULL, &arv); 
-                rv = 0;                // don't pass those keys to oexprcodebox
-        }
-        return rv;
+    t_atom arv;
+    long rv = 1;
+    long k = *keycode;
+    
+    if (k == JKEY_TAB || k == JKEY_ESC) {
+            object_method_typed(patcherview, gensym("endeditbox"), 0, NULL, &arv); 
+            rv = 0;                // don't pass those keys to oexprcodebox
+    }
+    return rv;
 }
 
 
 void oexprcodebox_mousedown(t_oexprcodebox *x, t_object *patcherview, t_pt pt, long modifiers){
-	textfield_set_textmargins(jbox_get_textfield((t_object *)x), 4, 4, 2, 2);
-        jbox_redraw((t_jbox *)x);
+	textfield_set_textmargins(jbox_get_textfield((t_object *)x), 6, 9, 4, 10);
+    jbox_redraw((t_jbox *)x);
 }
 
 void oexprcodebox_mouseup(t_oexprcodebox *x, t_object *patcherview, t_pt pt, long modifiers){
-	textfield_set_textmargins(jbox_get_textfield((t_object *)x), 3, 3, 3, 3);
-        jbox_redraw((t_jbox *)x);
+	textfield_set_textmargins(jbox_get_textfield((t_object *)x), 5, 8, 5, 11);
+    jbox_redraw((t_jbox *)x);
 }
 
 // we get the text, convert it to an OSC bundle, and then call the paint
@@ -237,101 +211,101 @@ void oexprcodebox_mouseup(t_oexprcodebox *x, t_object *patcherview, t_pt pt, lon
 // and tabbed subbundles, etc.
 void oexprcodebox_gettext(t_oexprcodebox *x)
 {
-        long size        = 0;
-        char *text        = NULL;
+    long size        = 0;
+    char *text       = NULL;
 #ifdef OMAX_PD_VERSION
-        text = x->text;
+    text = x->text;
 #else
-        t_object *textfield = jbox_get_textfield((t_object *)x);
-        object_method(textfield, gensym("gettextptr"), &text, &size);
+    t_object *textfield = jbox_get_textfield((t_object *)x);
+    object_method(textfield, gensym("gettextptr"), &text, &size);
 #endif
-        size = strlen(text); // the value returned in text doesn't make sense
-        if(size == 0){
-                return;
-        }    
-        // free expr
-        //oexprcodebox_clearBundles(x);
-        if(x->expr){
-                critical_enter(x->lock);
-                osc_expr_free(x->expr);
-		x->expr = NULL;
-                // search and replace #n params
-                critical_exit(x->lock);
-        }
-        critical_enter(x->lock);
-        // search and replace #n params
-        osc_expr_parser_parseExpr(text, &(x->expr));
-        critical_exit(x->lock);
+    size = strlen(text); // the value returned in text doesn't make sense
+    if(size == 0){
+            return;
+    }    
+    // free expr
+    //oexprcodebox_clearBundles(x);
+    if(x->expr){
+            critical_enter(x->lock);
+            osc_expr_free(x->expr);
+    x->expr = NULL;
+            // search and replace #n params
+            critical_exit(x->lock);
+    }
+    critical_enter(x->lock);
+    // search and replace #n params
+    osc_expr_parser_parseExpr(text, &(x->expr));
+    critical_exit(x->lock);
 }
 
 // enter is triggerd at "endeditbox time"
 void oexprcodebox_enter(t_oexprcodebox *x)
 {
-        oexprcodebox_gettext(x);
+    oexprcodebox_gettext(x);
 }
 
 void oexprcodebox_postExprAST(t_oexprcodebox *fg)
 {
-        char *buf = NULL;
-        long len = 0;
-        t_osc_expr *f = fg->expr;
-        //while(f){
-        osc_expr_format(f, &len, &buf);
-        // the modulo op '%' gets consumed as a format character with cycling's post() function.
-        // so go through and escape each one with another %
-        char buf2[len * 2];
-        char *r = buf, *w = buf2;
-        int i;
-        for(i = 0; i < len; i++){
-                if(*r == '%'){
-                        *w++ = '%';
-                }
-                *w++ = *r++;
-        }
-        *w = '\0';
-        post("%s", buf2);
-        //f = osc_expr_next(f);
-        //
-        if(buf){
-                osc_mem_free(buf);
-        }
+    char *buf = NULL;
+    long len = 0;
+    t_osc_expr *f = fg->expr;
+    //while(f){
+    osc_expr_format(f, &len, &buf);
+    // the modulo op '%' gets consumed as a format character with cycling's post() function.
+    // so go through and escape each one with another %
+    char buf2[len * 2];
+    char *r = buf, *w = buf2;
+    int i;
+    for(i = 0; i < len; i++){
+            if(*r == '%'){
+                    *w++ = '%';
+            }
+            *w++ = *r++;
+    }
+    *w = '\0';
+    post("%s", buf2);
+    //f = osc_expr_next(f);
+    //
+    if(buf){
+            osc_mem_free(buf);
+    }
 }
 
 void oexprcodebox_postFunctionTable(t_oexprcodebox *fg)
 {
-        char *buf = NULL;
-        long len = 0;
-        osc_expr_formatFunctionTable(&len, &buf);
-        char *ptr1 = buf, *ptr2 = buf;
-        while(*ptr2){
-                if(*ptr2 == '\n'){
-                        *ptr2 = '\0';
-                        post("%s", ptr1);
-                        ptr1 = ptr2 + 1;
-                        ptr2++;
-                }
-                ptr2++;
-        }
-        if(buf){
-                osc_mem_free(buf);
-        }
+    char *buf = NULL;
+    long len = 0;
+    osc_expr_formatFunctionTable(&len, &buf);
+    char *ptr1 = buf, *ptr2 = buf;
+    while(*ptr2){
+            if(*ptr2 == '\n'){
+                    *ptr2 = '\0';
+                    post("%s", ptr1);
+                    ptr1 = ptr2 + 1;
+                    ptr2++;
+            }
+            ptr2++;
+    }
+    if(buf){
+            osc_mem_free(buf);
+    }
 }
 
 void oexprcodebox_bang(t_oexprcodebox *x)
 {
-        char buf[16];
-        memset(buf, '\0', 16);
-        strncpy(buf, "#bundle\0", 8);
-        //oexprcodebox_fullPacket(x, 16, (long)buf);
+    char buf[16];
+    memset(buf, '\0', 16);
+    strncpy(buf, "#bundle\0", 8);
+    //oexprcodebox_fullPacket(x, 16, (long)buf);
 #ifdef OMAX_PD_VERSION
 	t_atom a[3];
 	omax_util_oscLenAndPtr2Atoms(a, 16, buf);
 	oexprcodebox_fullPacket(x, NULL, 3, a);
 #else
-        t_atom a[2];
-        atom_setlong(a, 16);
-        atom_setlong(a + 1, (long)buf);
-        oexprcodebox_fullPacket(x, NULL, 2, a);
+    t_atom a[2];
+    atom_setlong(a, 16);
+    atom_setlong(a + 1, (long)buf);
+    oexprcodebox_fullPacket(x, NULL, 2, a);
 #endif
 }
 
@@ -391,135 +365,141 @@ void oexprcodebox_doc_func(t_oexprcodebox *x, t_symbol *msg, int argc, t_atom *a
 
 void oexprcodebox_doc(t_oexprcodebox *x)
 {
-        omax_doc_outletDoc(x->outlets[0]);
+    omax_doc_outletDoc(x->outlets[0]);
 }
 
 #ifndef OMAX_PD_VERSION
-void oexprcodebox_assist(t_oexprcodebox *x, void *b, long io, long num, char *buf){
-        omax_doc_assist(io, num, buf);
+void oexprcodebox_assist(t_oexprcodebox *x, void *b, long io, long num, char *buf)
+{
+    omax_doc_assist(io, num, buf);
 }
 #endif
 
-void oexprcodebox_free(t_oexprcodebox *x){
-        if(x->expr){
-                osc_expr_free(x->expr);
-        }
-        jbox_free((t_jbox *)x);
-        critical_free(x->lock);
+void oexprcodebox_free(t_oexprcodebox *x)
+{
+    if(x->expr){
+            osc_expr_free(x->expr);
+    }
+    jbox_free((t_jbox *)x);
+    critical_free(x->lock);
 }
 
 #ifndef OMAX_PD_VERSION
-t_max_err oexprcodebox_notify(t_oexprcodebox *x, t_symbol *s, t_symbol *msg, void *sender, void *data){
-        return MAX_ERR_NONE;
-        t_symbol *attrname;
+t_max_err oexprcodebox_notify(t_oexprcodebox *x, t_symbol *s, t_symbol *msg, void *sender, void *data)
+{
+    return MAX_ERR_NONE;
+    t_symbol *attrname;
 
-        if(msg == gensym("attr_modified")){
-                attrname = (t_symbol *)object_method((t_object *)data, gensym("getname"));
-        }
-        return MAX_ERR_NONE;
+    if(msg == gensym("attr_modified")){
+            attrname = (t_symbol *)object_method((t_object *)data, gensym("getname"));
+    }
+    return MAX_ERR_NONE;
 }
 #endif
 
 #ifdef OMAX_PD_VERSION
-void *oexprcodebox_new(t_symbol *msg, short argc, t_atom *argv){
-        t_oexprcodebox *x;
-        if((x = (t_oexprcodebox *)object_alloc(oexprcodebox_class))){
-                t_osc_expr *f = NULL;
-		char symbuf[argc][65536];
-                if(argc){
-                        char buf[65536];
-                        memset(buf, '\0', sizeof(buf));
-                        char *ptr = buf;
-                        int i;
-                        for(i = 0; i < argc; i++){
-                                switch(atom_gettype(argv + i)){
-				case A_LONG:
-					ptr += sprintf(ptr, "%ld ", atom_getlong(argv + i));
-					break;
-				case A_FLOAT:
-					ptr += sprintf(ptr, "%f ", atom_getfloat(argv + i));
-					break;
-				case A_SYM:
-                                        {
-						strcpy(symbuf[i], atom_getsymbol(argv + i)->s_name);
-
-						omax_util_hashBrackets2Curlies(symbuf[i]);
+void *oexprcodebox_new(t_symbol *msg, short argc, t_atom *argv)
+{
+    t_oexprcodebox *x;
+    if((x = (t_oexprcodebox *)object_alloc(oexprcodebox_class))){
+        t_osc_expr *f = NULL;
+    char symbuf[argc][65536];
+        if(argc){
+            char buf[65536];
+            memset(buf, '\0', sizeof(buf));
+            char *ptr = buf;
+            int i;
+            for(i = 0; i < argc; i++){
+                switch(atom_gettype(argv + i)){
+                    case A_LONG:
+                        ptr += sprintf(ptr, "%ld ", atom_getlong(argv + i));
+                        break;
+                    case A_FLOAT:
+                        ptr += sprintf(ptr, "%f ", atom_getfloat(argv + i));
+                        break;
+                    case A_SYM:
+                    {
+                        strcpy(symbuf[i], atom_getsymbol(argv + i)->s_name);
+                        omax_util_hashBrackets2Curlies(symbuf[i]);
                                                 
-                                                char *s = symbuf[i];
-                                                int len = strlen(s); // null byte
-                                                int j;
-                                                for(j = 0; j < len; j++){
-							//<< check this for pd version
-                                                        if(s[j] == '$'){
-                                                                if((j + 1) < len){
-                                                                        if((s[j + 1] <= 47 || s[j + 1] >= 58)){
-                                                                                object_error((t_object *)x, "address can't contain a $");
-                                                                                return NULL;
-                                                                        }
-                                                                        ptr += sprintf(ptr, "/_%d_", s[j + 1] - 48);
-                                                                        j++;
-                                                                }else{
-                                                                        object_error((t_object *)x, "address can't contain a $");
-                                                                        return NULL;
-                                                                }
-                                                        }else{
-                                                                *ptr++ = s[j];
-                                                        }
-                                                }
-                                                *ptr++ = ' ';
-                                        }
-					break;
-                                }
-                        }
-                        if(1){//if(!haspound){
-                                OSC_PROFILE_TIMER_START(foo);
-                                int ret = osc_expr_parser_parseExpr(buf, &f);
-                                OSC_PROFILE_TIMER_STOP(foo);
-                                OSC_PROFILE_TIMER_PRINTF(foo);
-                                OSC_PROFILE_TIMER_SNPRINTF(foo, buff);
-#ifdef __OSC_PROFILE__
-                                post("%s\n", buff);
-#endif
-                                if(!f || ret){
-                                        object_error((t_object *)x, "error parsing %s\n", buf);
-					//                                        return NULL;  //<< avioding bogus object
-					x->expr = NULL;
+                        char *s = symbuf[i];
+                        int len = strlen(s); // null byte
+                        int j;
+                        for(j = 0; j < len; j++) {
+//<< check this for pd version
+                            if(s[j] == '$'){
+                                if((j + 1) < len){
+                                    if((s[j + 1] <= 47 || s[j + 1] >= 58)){
+                                        object_error((t_object *)x, "address can't contain a $");
+                                        return NULL;
+                                    }
+                                    ptr += sprintf(ptr, "/_%d_", s[j + 1] - 48);
+                                    j++;
                                 } else {
-					x->expr = f;
-				}
-                        }else{
-                                x->expr = NULL;
+                                    object_error((t_object *)x, "address can't contain a $");
+                                    return NULL;
+                                }
+                            } else {
+                                *ptr++ = s[j];
+                            }
                         }
+                        
+                        *ptr++ = ' ';
+                    }
+                        break;
                 }
-        
-                int n = 0;
-                while(f){
-                        n++;
-                        f = osc_expr_next(f);
+            }
+            
+            if(1){//if(!haspound){
+                OSC_PROFILE_TIMER_START(foo);
+                int ret = osc_expr_parser_parseExpr(buf, &f);
+                OSC_PROFILE_TIMER_STOP(foo);
+                OSC_PROFILE_TIMER_PRINTF(foo);
+                OSC_PROFILE_TIMER_SNPRINTF(foo, buff);
+#ifdef __OSC_PROFILE__
+                post("%s\n", buff);
+#endif
+                if(!f || ret) {
+                    object_error((t_object *)x, "error parsing %s\n", buf);
+//                              return NULL;  //<< avioding bogus object
+                    x->expr = NULL;
+                } else {
+                    x->expr = f;
                 }
+            } else {
+                x->expr = NULL;
+            }
+            
+        }
+    
+        int n = 0;
+        while(f){
+            n++;
+            f = osc_expr_next(f);
+        }
         
 #if defined (OIF)
-                if(n == 0 || n > 1){
-                        object_error((t_object *)x, "invalid number of expressions: %d", n);
-                        return NULL;
-                }
-                x->outlets = osc_mem_alloc(2 * sizeof(void *));
+        if(n == 0 || n > 1){
+            object_error((t_object *)x, "invalid number of expressions: %d", n);
+            return NULL;
+        }
+        x->outlets = osc_mem_alloc(2 * sizeof(void *));
 		x->outlets[0] = outlet_new(&x->ob, gensym("FullPacket"));
-                x->outlets[1] = outlet_new(&x->ob, gensym("FullPacket"));
+        x->outlets[1] = outlet_new(&x->ob, gensym("FullPacket"));
 #elif defined (OUNLESS) || defined (OWHEN)
-                if(n == 0 || n > 1){
-                        object_error((t_object *)x, "invalid number of expressions: %d", n);
-                        return NULL;
-                }
-                x->outlet = outlet_new(&x->ob, gensym("FullPacket"));
+        if(n == 0 || n > 1){
+            object_error((t_object *)x, "invalid number of expressions: %d", n);
+            return NULL;
+        }
+        x->outlet = outlet_new(&x->ob, gensym("FullPacket"));
 #elif defined (OCOND)
-                x->num_exprs = n;
-                // implicit 't' as the last condition
-                x->outlets = osc_mem_alloc((n + 1) * sizeof(void *));
-                int i;
-                for(i = 0; i <= n; i++){ 
-                        x->outlets[i] = outlet_new(&x->ob, gensym("FullPacket"));;
-                }
+        x->num_exprs = n;
+        // implicit 't' as the last condition
+        x->outlets = osc_mem_alloc((n + 1) * sizeof(void *));
+        int i;
+        for(i = 0; i <= n; i++) {
+            x->outlets[i] = outlet_new(&x->ob, gensym("FullPacket"));;
+        }
 		/*
 		  x->outlets_desc = (char **)osc_mem_alloc((x->num_exprs + 1) * sizeof(char *));
 		  for(i = 0; i < x->num_exprs; i++){
@@ -530,7 +510,7 @@ void *oexprcodebox_new(t_symbol *msg, short argc, t_atom *argv){
 		  sprintf(x->outlets_desc[x->num_exprs], "Input OSC packet if all expressions return false or zero");
 		*/
 #else
-                x->outlet = outlet_new(&x->ob, gensym("FullPacket"));
+        x->outlet = outlet_new(&x->ob, gensym("FullPacket"));
 #endif
         }
         return x;
@@ -539,43 +519,40 @@ void *oexprcodebox_new(t_symbol *msg, short argc, t_atom *argv){
 #if defined (OIF)
 int oif_setup(void)
 #elif defined (OUNLESS)
-	int ounless_setup(void)
+int ounless_setup(void)
 #elif defined (OWHEN)
-	int owhen_setup(void)
+int owhen_setup(void)
 #elif defined (OCOND)
-	int ocond_setup(void)
+int ocond_setup(void)
 #else
-	int oexprcodebox_setup(void)
+int oexprcodebox_setup(void)
 #endif
 {
-        t_class *c = class_new(gensym(NAME), (t_newmethod)oexprcodebox_new, (t_method)oexprcodebox_free, sizeof(t_oexprcodebox), 0L, A_GIMME, 0);
-    
-
-        class_addmethod(c, (t_method)oexprcodebox_fullPacket, gensym("FullPacket"), A_GIMME, 0);
-	//        class_addmethod(c, (t_method)oexprcodebox_assist, gensym("assist"), A_CANT, 0);
-        class_addmethod(c, (t_method)oexprcodebox_bang, gensym("bang"), 0);
-    
-        class_addmethod(c, (t_method)oexprcodebox_postExprIR, gensym("post-expr-ir"), 0);
-
-        class_addmethod(c, (t_method)oexprcodebox_doc, gensym("doc"), 0);
-        class_addmethod(c, (t_method)oexprcodebox_doc_func, gensym("doc-func"), A_GIMME, 0);
-        class_addmethod(c, (t_method)oexprcodebox_doc_func, gensym("doc-function"), A_GIMME, 0);
-        class_addmethod(c, (t_method)oexprcodebox_doc_cat, gensym("doc-cat"), A_GIMME, 0);
-        class_addmethod(c, (t_method)oexprcodebox_doc_cat, gensym("doc-category"), A_GIMME, 0);
+    t_class *c = class_new(gensym(NAME), (t_newmethod)oexprcodebox_new, (t_method)oexprcodebox_free, sizeof(t_oexprcodebox), 0L, A_GIMME, 0);
 
 
-    
-        class_addmethod(c, (t_method)odot_version, gensym("version"), 0);
-    
-        oexprcodebox_class = c;
-    
-	//        common_symbols_init();
-    
-	//        osc_error_setHandler(omax_util_liboErrorHandler);
-    
-        ODOT_PRINT_VERSION;
-    
-        return 0;
+    class_addmethod(c, (t_method)oexprcodebox_fullPacket, gensym("FullPacket"), A_GIMME, 0);
+//  class_addmethod(c, (t_method)oexprcodebox_assist, gensym("assist"), A_CANT, 0);
+    class_addmethod(c, (t_method)oexprcodebox_bang, gensym("bang"), 0);
+
+    class_addmethod(c, (t_method)oexprcodebox_postExprIR, gensym("post-expr-ir"), 0);
+
+    class_addmethod(c, (t_method)oexprcodebox_doc, gensym("doc"), 0);
+    class_addmethod(c, (t_method)oexprcodebox_doc_func, gensym("doc-func"), A_GIMME, 0);
+    class_addmethod(c, (t_method)oexprcodebox_doc_func, gensym("doc-function"), A_GIMME, 0);
+    class_addmethod(c, (t_method)oexprcodebox_doc_cat, gensym("doc-cat"), A_GIMME, 0);
+    class_addmethod(c, (t_method)oexprcodebox_doc_cat, gensym("doc-category"), A_GIMME, 0);
+
+    class_addmethod(c, (t_method)odot_version, gensym("version"), 0);
+
+    oexprcodebox_class = c;
+
+//  common_symbols_init();
+//  osc_error_setHandler(omax_util_liboErrorHandler);
+
+    ODOT_PRINT_VERSION;
+
+    return 0;
 }
 
 #else
@@ -591,25 +568,26 @@ void *oexprcodebox_new(t_symbol *msg, short argc, t_atom *argv)
 	}
     
         boxflags = 0
-                | JBOX_DRAWFIRSTIN
-                | JBOX_NODRAWBOX
-                | JBOX_DRAWINLAST
-                | JBOX_TRANSPARENT
-		//      | JBOX_NOGROW
-		//| JBOX_GROWY
-		| JBOX_GROWBOTH
-		//      | JBOX_HILITE
-		//| JBOX_BACKGROUND
-		//| JBOX_DRAWBACKGROUND
-		//      | JBOX_NOFLOATINSPECTOR
-		//      | JBOX_MOUSEDRAGDELTA
-                | JBOX_TEXTFIELD
+        | JBOX_DRAWFIRSTIN
+        | JBOX_NODRAWBOX
+        | JBOX_DRAWINLAST
+        | JBOX_TRANSPARENT
+        //| JBOX_NOGROW
+        //| JBOX_GROWY
+        | JBOX_GROWBOTH
+        //| JBOX_HILITE
+        //| JBOX_BACKGROUND
+        //| JBOX_DRAWBACKGROUND
+        //| JBOX_NOFLOATINSPECTOR
+        //| JBOX_MOUSEDRAGDELTA
+        | JBOX_TEXTFIELD
 		;
 	if((x = (t_oexprcodebox *)object_alloc(oexprcodebox_class))){
 		jbox_new((t_jbox *)x, boxflags, argc, argv);
 		x->ob.b_firstin = (void *)x;
+        x->text = "\n";
 		critical_new(&(x->lock));
-		t_osc_expr *f = NULL;
+		//t_osc_expr *f = NULL;
 		x->outlets[1] = outlet_new((t_object *)x, "FullPacket");
 		x->outlets[0] = outlet_new((t_object *)x, "FullPacket");
 		attr_dictionary_process(x, d);
@@ -617,7 +595,7 @@ void *oexprcodebox_new(t_symbol *msg, short argc, t_atom *argv)
 		if(textfield){
 			object_attr_setchar(textfield, gensym("editwhenunlocked"), 1);
 			textfield_set_editonclick(textfield, 0);
-			textfield_set_textmargins(textfield, 8, 8, 8, 8);
+			textfield_set_textmargins(textfield, 5, 8, 5, 11);
 			textfield_set_textcolor(textfield, &(x->text_color));
 		}
 		jbox_ready((t_jbox *)x);
@@ -630,67 +608,67 @@ void *oexprcodebox_new(t_symbol *msg, short argc, t_atom *argv)
 	CLASS_ATTR_ATTR_PARSE(c,attrname,"category",USESYM(symbol),flags,parsestr)
 int main(void)
 {
-        common_symbols_init();
-        t_class *c = class_new(NAME, (method)oexprcodebox_new, (method)oexprcodebox_free, sizeof(t_oexprcodebox), 0L, A_GIMME, 0);
-        c->c_flags |= CLASS_FLAG_NEWDICTIONARY;
+    common_symbols_init();
+    t_class *c = class_new(NAME, (method)oexprcodebox_new, (method)oexprcodebox_free, sizeof(t_oexprcodebox), 0L, A_GIMME, 0);
+    c->c_flags |= CLASS_FLAG_NEWDICTIONARY;
 	//jbox_initclass(c, JBOX_TEXTFIELD | JBOX_FIXWIDTH | JBOX_FONTATTR);
 	jbox_initclass(c, JBOX_TEXTFIELD | JBOX_FONTATTR);
 
-        //class_addmethod(c, (method)oexprcodebox_fullPacket, "FullPacket", A_LONG, A_LONG, 0);
-        class_addmethod(c, (method)oexprcodebox_fullPacket, "FullPacket", A_GIMME, 0);
-        class_addmethod(c, (method)oexprcodebox_assist, "assist", A_CANT, 0);
-        class_addmethod(c, (method)oexprcodebox_bang, "bang", 0);
+    //class_addmethod(c, (method)oexprcodebox_fullPacket, "FullPacket", A_LONG, A_LONG, 0);
+    class_addmethod(c, (method)oexprcodebox_fullPacket, "FullPacket", A_GIMME, 0);
+    class_addmethod(c, (method)oexprcodebox_assist, "assist", A_CANT, 0);
+    class_addmethod(c, (method)oexprcodebox_bang, "bang", 0);
 
-        class_addmethod(c, (method)oexprcodebox_postExprAST, "post-ast", 0);
+    class_addmethod(c, (method)oexprcodebox_postExprAST, "post-ast", 0);
 
-        class_addmethod(c, (method)oexprcodebox_doc, "doc", 0);
-        class_addmethod(c, (method)oexprcodebox_doc_func, "doc-func", A_GIMME, 0);
-        class_addmethod(c, (method)oexprcodebox_doc_func, "doc-function", A_GIMME, 0);
-        class_addmethod(c, (method)oexprcodebox_doc_cat, "doc-cat", A_GIMME, 0);
-        class_addmethod(c, (method)oexprcodebox_doc_cat, "doc-category", A_GIMME, 0);
+    class_addmethod(c, (method)oexprcodebox_doc, "doc", 0);
+    class_addmethod(c, (method)oexprcodebox_doc_func, "doc-func", A_GIMME, 0);
+    class_addmethod(c, (method)oexprcodebox_doc_func, "doc-function", A_GIMME, 0);
+    class_addmethod(c, (method)oexprcodebox_doc_cat, "doc-cat", A_GIMME, 0);
+    class_addmethod(c, (method)oexprcodebox_doc_cat, "doc-category", A_GIMME, 0);
 
-        // remove this if statement when we stop supporting Max 5
-        if(omax_dict_resolveDictStubs()){
-                class_addmethod(c, (method)omax_dict_dictionary, "dictionary", A_GIMME, 0);
-        }
+    // remove this if statement when we stop supporting Max 5
+    if(omax_dict_resolveDictStubs()){
+            class_addmethod(c, (method)omax_dict_dictionary, "dictionary", A_GIMME, 0);
+    }
 
-        class_addmethod(c, (method)odot_version, "version", 0);
+    class_addmethod(c, (method)odot_version, "version", 0);
 
-        // gui stuff
-        class_addmethod(c, (method)oexprcodebox_paint, "paint", A_CANT, 0);
+    // gui stuff
+    class_addmethod(c, (method)oexprcodebox_paint, "paint", A_CANT, 0);
 
-        class_addmethod(c, (method)oexprcodebox_key, "key", A_CANT, 0);
-        class_addmethod(c, (method)oexprcodebox_keyfilter, "keyfilter", A_CANT, 0);
-        class_addmethod(c, (method)oexprcodebox_enter, "enter", A_CANT, 0);
-        class_addmethod(c, (method)oexprcodebox_select, "select", 0);
-    
-        class_addmethod(c, (method)oexprcodebox_mousedown, "mousedown", A_CANT, 0);
-        class_addmethod(c, (method)oexprcodebox_mouseup, "mouseup", A_CANT, 0);
+    class_addmethod(c, (method)oexprcodebox_key, "key", A_CANT, 0);
+    class_addmethod(c, (method)oexprcodebox_keyfilter, "keyfilter", A_CANT, 0);
+    class_addmethod(c, (method)oexprcodebox_enter, "enter", A_CANT, 0);
+    class_addmethod(c, (method)oexprcodebox_select, "select", 0);
+
+    class_addmethod(c, (method)oexprcodebox_mousedown, "mousedown", A_CANT, 0);
+    class_addmethod(c, (method)oexprcodebox_mouseup, "mouseup", A_CANT, 0);
 
 	CLASS_ATTR_RGBA(c, "background_color", 0, t_oexprcodebox, background_color);
 	CLASS_ATTR_DEFAULT_SAVE_PAINT(c, "background_color", 0, "1. 1. 1. 1.");
 	CLASS_ATTR_STYLE_LABEL(c, "background_color", 0, "rgba", "Background Color");
-        CLASS_ATTR_CATEGORY_KLUDGE(c, "background_color", 0, "Color");
+    CLASS_ATTR_CATEGORY_KLUDGE(c, "background_color", 0, "Color");
     
 	CLASS_ATTR_RGBA(c, "frame_color", 0, t_oexprcodebox, frame_color);
-	CLASS_ATTR_DEFAULT_SAVE_PAINT(c, "frame_color", 0, "0.0 0.8 1.0 1.");
+	CLASS_ATTR_DEFAULT_SAVE_PAINT(c, "frame_color", 0, ".216 .435 .7137 1.");
 	CLASS_ATTR_STYLE_LABEL(c, "frame_color", 0, "rgba", "Frame Color");
-        CLASS_ATTR_CATEGORY_KLUDGE(c, "frame_color", 0, "Color");
+    CLASS_ATTR_CATEGORY_KLUDGE(c, "frame_color", 0, "Color");
     
 	CLASS_ATTR_RGBA(c, "text_color", 0, t_oexprcodebox, text_color);
 	CLASS_ATTR_DEFAULT_SAVE_PAINT(c, "text_color", 0, "0. 0. 0. 1.");
-	CLASS_ATTR_STYLE_LABEL(c, "text_color", 0, "rgba", "Text Color");
-        CLASS_ATTR_CATEGORY_KLUDGE(c, "text_color", 0, "Color");
-    
-        CLASS_ATTR_DEFAULT(c, "rect", 0, "0. 0. 150., 18.");
+	//CLASS_ATTR_STYLE_LABEL(c, "text_color", 0, "rgba", "Text Color");
+    //CLASS_ATTR_CATEGORY_KLUDGE(c, "text_color", 0, "Color");
 
-        class_register(CLASS_BOX, c);
-        oexprcodebox_class = c;
+    CLASS_ATTR_DEFAULT(c, "rect", 0, "0. 0. 150. 30.");
 
-        osc_error_setHandler(omax_util_liboErrorHandler);
+    class_register(CLASS_BOX, c);
+    oexprcodebox_class = c;
 
-        ODOT_PRINT_VERSION;
-        return 0;
+    osc_error_setHandler(omax_util_liboErrorHandler);
+
+    ODOT_PRINT_VERSION;
+    return 0;
 }
 
 #endif
