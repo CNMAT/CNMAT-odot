@@ -2235,7 +2235,7 @@ int main(void){
  	//CLASS_ATTR_STYLE_LABEL(c, "text_color", 0, "rgba", "Text Color"); /* this line & next make two Text Color fields in the inspector - remove them for justice */
 	//CLASS_ATTR_CATEGORY_KLUDGE(c, "text_color", 0, "Color");
     
-	CLASS_ATTR_DEFAULT(c, "rect", 0, "0. 0. 150., 18.");
+	CLASS_ATTR_DEFAULT(c, "rect", 0, "0. 0. 150. 18.");
     
 	class_register(CLASS_BOX, c);
 	odisplay_class = c;

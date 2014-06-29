@@ -2212,7 +2212,7 @@ int main(void){
  	//CLASS_ATTR_STYLE_LABEL(c, "text_color", 0, "rgba", "Text Color");
 	//CLASS_ATTR_CATEGORY_KLUDGE(c, "text_color", 0, "Color");
     
-	CLASS_ATTR_DEFAULT(c, "rect", 0, "0. 0. 150., 20.");
+	CLASS_ATTR_DEFAULT(c, "rect", 0, "0. 0. 150. 20.");
     
 	class_register(CLASS_BOX, c);
 	ocompose_class = c;
