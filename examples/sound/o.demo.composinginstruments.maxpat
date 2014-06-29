@@ -52,8 +52,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 390.0, 156.0, 27.0, 26.0 ],
-					"presentation_rect" : [ 28.0, 80.0, 0.0, 0.0 ],
+					"patching_rect" : [ 407.0, 154.0, 27.0, 26.0 ],
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -68,8 +67,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 223.0, 121.0, 158.0, 57.0 ],
-					"presentation_rect" : [ 797.0, 90.0, 0.0, 0.0 ],
+					"patching_rect" : [ 240.0, 119.0, 158.0, 57.0 ],
 					"text" : "/frequency 440.\n/key/down false\n/key/up true",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -85,7 +83,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 54.0, 76.0, 158.0, 104.0 ],
+					"patching_rect" : [ 71.0, 74.0, 158.0, 104.0 ],
 					"text" : "/frequency 440.\n/key/velocity 0.3\n/key/down true\n/key/up false\n/amplitude 1.\n/noise/amplitude 1.25",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -114,7 +112,7 @@
 					"numinlets" : 3,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "signal" ],
-					"patching_rect" : [ 37.0, 390.0, 262.0, 22.0 ],
+					"patching_rect" : [ 37.0, 390.0, 261.0, 22.0 ],
 					"text" : "o.sound.fuzz"
 				}
 
@@ -128,7 +126,7 @@
 					"numinlets" : 3,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "signal" ],
-					"patching_rect" : [ 37.0, 357.0, 137.0, 22.0 ],
+					"patching_rect" : [ 37.0, 357.0, 141.0, 22.0 ],
 					"text" : "o.sound.waveforms"
 				}
 
@@ -198,7 +196,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 30.0, 11.0, 516.0, 60.0 ]
+					"patching_rect" : [ 38.0, 11.0, 516.0, 60.0 ]
 				}
 
 			}
