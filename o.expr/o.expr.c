@@ -206,7 +206,7 @@ void oexpr_fullPacket(t_oexpr *x, t_symbol *msg, int argc, t_atom *argv)
 				}
 			}
 			if(av){
-				osc_mem_free(av);
+				osc_atom_array_u_free(av);
 				av = NULL;
 			}
 			if(!fail){
@@ -223,7 +223,7 @@ void oexpr_fullPacket(t_oexpr *x, t_symbol *msg, int argc, t_atom *argv)
 		osc_atom_array_u_free(av);
 	}
 	if(copy){
-		free(copy);
+		osc_mem_free(copy);
 	}
 #endif
 

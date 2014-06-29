@@ -126,7 +126,6 @@ void ovar_doFullPacket(t_ovar *x, long len, char *ptr, long inlet)
 		if(bndl){
 			osc_mem_free(bndl);
 		}
-		omax_util_outletOSC(x->outlet, len, ptr);
 		if(copy){
 			osc_mem_free(copy);
 		}
