@@ -30,14 +30,15 @@
 		"boxes" : [ 			{
 				"box" : 				{
 					"fontname" : "Arial",
-					"fontsize" : 20.0,
+					"fontsize" : 14.0,
 					"id" : "obj-13",
+					"linecount" : 20,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 37.0, 463.0, 320.0, 43.0 ],
-					"text" : "/playing true",
+					"patching_rect" : [ 37.0, 463.0, 395.0, 333.0 ],
+					"text" : "/key/number 84.\n/key/velocity 0.244094\n/key/down false\n/key/up true\n/instructions \"Key height represents velocity\"\n/range/key/velocity 0. 1.\n/range/key/number 0. 128.\n/waveforms/frequency 1046.5\n/waveforms/portamento/time 0.2\n/trigger false\n/attack 151.181\n/adsr/amplitude 0.244094\n/fuzz 2.92913\n/sine/amplitude 1.\n/sawtooth/amplitude 0.\n/triangle/amplitude 0.\n/noise/amplitude 0.\n/square/amplitude 0.\n/waveforms/ramp/time 0.01\n/fuzz/ramp/time 0.01",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
