@@ -8,7 +8,7 @@
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 377.0, 160.0, 1039.0, 572.0 ],
+		"rect" : [ 577.0, -937.0, 670.0, 571.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -31,6 +31,35 @@
 				"box" : 				{
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
+					"frgb" : 0.0,
+					"id" : "obj-18",
+					"linecount" : 3,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 421.0, 137.0, 150.0, 47.0 ],
+					"text" : "Symmetric distortion\n\nAdrian Freed 2014"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"frgb" : 0.0,
+					"id" : "obj-16",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 195.0, 349.0, 29.0, 20.0 ],
+					"text" : "mS"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
 					"ft1" : 44.0,
 					"id" : "obj-9",
 					"maxclass" : "number~",
@@ -39,13 +68,14 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "signal", "float" ],
-					"patching_rect" : [ 114.0, 373.0, 56.0, 20.0 ],
-					"sig" : 3.11811
+					"patching_rect" : [ 126.0, 348.0, 56.0, 20.0 ],
+					"sig" : 6.047244
 				}
 
 			}
 , 			{
 				"box" : 				{
+					"color" : [ 0.8, 0.8, 0.8, 1.0 ],
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"id" : "obj-8",
@@ -53,7 +83,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 114.0, 337.0, 49.0, 20.0 ],
+					"patching_rect" : [ 126.0, 312.0, 49.0, 20.0 ],
 					"text" : "pack f f"
 				}
 
@@ -67,7 +97,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "signal" ],
-					"patching_rect" : [ 424.0, 50.0, 124.0, 22.0 ],
+					"patching_rect" : [ 395.0, 50.0, 124.0, 22.0 ],
 					"text" : "o.in~ @name fuzz"
 				}
 
@@ -80,7 +110,7 @@
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 425.0, 11.0, 25.0, 25.0 ]
+					"patching_rect" : [ 396.0, 11.0, 25.0, 25.0 ]
 				}
 
 			}
@@ -94,8 +124,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 49.0, 125.0, 189.0, 62.0 ],
-					"text" : " /fuzz ??= 0;\n/fuzz/ramp/time ??= 0.01;",
+					"patching_rect" : [ 49.0, 125.0, 201.0, 46.0 ],
+					"text" : "/fuzz ??= 0;\n/fuzz/ramp/time ??= 0.01;",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -135,7 +165,7 @@
 					"numinlets" : 3,
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "FullPacket" ],
-					"patching_rect" : [ 86.0, 271.0, 187.0, 22.0 ],
+					"patching_rect" : [ 75.0, 264.0, 187.0, 22.0 ],
 					"text" : "o.route /fuzz /fuzz/ramp/time"
 				}
 
@@ -149,7 +179,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 52.0, 227.0, 129.0, 22.0 ],
+					"patching_rect" : [ 52.0, 409.0, 129.0, 22.0 ],
 					"text" : "o.out @name main"
 				}
 
@@ -199,11 +229,10 @@
 					"fontsize" : 14.0,
 					"frgb" : 0.0,
 					"id" : "obj-2",
-					"linecount" : 2,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 343.0, 436.0, 242.0, 38.0 ],
+					"patching_rect" : [ 315.0, 451.0, 288.0, 22.0 ],
 					"text" : " tanh~ as a handy   monotonic odd function"
 				}
 
@@ -262,6 +291,7 @@
  ],
 		"lines" : [ 			{
 				"patchline" : 				{
+					"color" : [ 1.0, 0.8, 0.4, 1.0 ],
 					"destination" : [ "obj-14", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
@@ -307,6 +337,7 @@
 			}
 , 			{
 				"patchline" : 				{
+					"color" : [ 1.0, 0.8, 0.4, 1.0 ],
 					"destination" : [ "obj-11", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
@@ -316,6 +347,7 @@
 			}
 , 			{
 				"patchline" : 				{
+					"color" : [ 1.0, 0.8, 0.4, 1.0 ],
 					"destination" : [ "obj-6", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
@@ -352,6 +384,7 @@
 			}
 , 			{
 				"patchline" : 				{
+					"color" : [ 1.0, 0.8, 0.4, 1.0 ],
 					"destination" : [ "obj-1", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
@@ -379,6 +412,7 @@
 			}
 , 			{
 				"patchline" : 				{
+					"color" : [ 1.0, 0.8, 0.4, 1.0 ],
 					"destination" : [ "obj-7", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
