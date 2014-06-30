@@ -8,7 +8,7 @@
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 86.0, 33.0, 776.0, 811.0 ],
+		"rect" : [ 0.0, 44.0, 762.0, 702.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 20.0,
@@ -102,13 +102,13 @@
 					"fontname" : "Arial",
 					"fontsize" : 14.0,
 					"id" : "obj-13",
-					"linecount" : 2,
+					"linecount" : 3,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 37.0, 616.0, 395.0, 52.0 ],
-					"text" : "/play/end\n/instance 86.",
+					"patching_rect" : [ 37.0, 616.0, 395.0, 67.0 ],
+					"text" : "/play/end true\n/play/begin false\n/instance 71.",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -182,7 +182,7 @@
 					"numinlets" : 3,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "signal" ],
-					"patching_rect" : [ 134.0, 449.0, 161.0, 22.0 ],
+					"patching_rect" : [ 134.0, 451.0, 161.0, 22.0 ],
 					"text" : "o.sound.fuzz"
 				}
 
