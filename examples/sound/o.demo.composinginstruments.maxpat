@@ -8,7 +8,7 @@
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 528.0, -981.0, 738.0, 594.0 ],
+		"rect" : [ 405.0, -1023.0, 776.0, 811.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 20.0,
@@ -31,14 +31,58 @@
 				"box" : 				{
 					"fontname" : "Arial",
 					"fontsize" : 14.0,
+					"frgb" : 0.0,
+					"id" : "obj-15",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 574.0, 593.0, 122.0, 22.0 ],
+					"presentation_rect" : [ 569.0, 593.0, 0.0, 0.0 ],
+					"text" : "API"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 14.0,
+					"frgb" : 0.0,
+					"id" : "obj-7",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 571.0, 389.0, 122.0, 22.0 ],
+					"presentation_rect" : [ 571.0, 366.0, 0.0, 0.0 ],
+					"text" : "Synthesis"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 14.0,
+					"frgb" : 0.0,
+					"id" : "obj-6",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 574.0, 266.0, 122.0, 22.0 ],
+					"presentation_rect" : [ 413.0, 197.0, 0.0, 0.0 ],
+					"text" : "Control Stucture"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 14.0,
 					"id" : "obj-13",
-					"linecount" : 20,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 37.0, 463.0, 395.0, 333.0 ],
-					"text" : "/key/number 84.\n/key/velocity 0.244094\n/key/down false\n/key/up true\n/instructions \"Key height represents velocity\"\n/range/key/velocity 0. 1.\n/range/key/number 0. 128.\n/waveforms/frequency 1046.5\n/waveforms/portamento/time 0.2\n/trigger false\n/attack 151.181\n/adsr/amplitude 0.244094\n/fuzz 2.92913\n/sine/amplitude 1.\n/sawtooth/amplitude 0.\n/triangle/amplitude 0.\n/noise/amplitude 0.\n/square/amplitude 0.\n/waveforms/ramp/time 0.01\n/fuzz/ramp/time 0.01",
+					"patching_rect" : [ 37.0, 463.0, 395.0, 36.0 ],
+					"text" : "/playing true",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -172,7 +216,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 449.0, 215.0, 231.0, 132.0 ],
+					"patching_rect" : [ 511.0, 637.0, 231.0, 132.0 ],
 					"text" : "Composing Instruments\nKeyboard note based\n\" o.\" MSP design pattern\nAdrian Freed 2011-2014\n\nTODO: \nsort out main/delegation semantics\nbusy delegation for multiple voices"
 				}
 
@@ -196,7 +240,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 38.0, 11.0, 516.0, 60.0 ]
+					"patching_rect" : [ 39.0, 8.0, 516.0, 60.0 ]
 				}
 
 			}
