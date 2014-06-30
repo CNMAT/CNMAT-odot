@@ -8,7 +8,7 @@
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 405.0, -1023.0, 776.0, 811.0 ],
+		"rect" : [ 8.0, 44.0, 776.0, 811.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 20.0,
@@ -30,6 +30,48 @@
 		"boxes" : [ 			{
 				"box" : 				{
 					"fontname" : "Arial",
+					"fontsize" : 20.0,
+					"id" : "obj-19",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 169.0, 570.0, 66.0, 29.0 ],
+					"text" : "o.print"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 20.0,
+					"id" : "obj-18",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "FullPacket" ],
+					"patching_rect" : [ 37.0, 519.0, 180.0, 29.0 ],
+					"text" : "o.out @name main"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-16",
+					"maxclass" : "newobj",
+					"numinlets" : 3,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "FullPacket" ],
+					"patching_rect" : [ 37.0, 388.0, 117.0, 20.0 ],
+					"text" : "o.sound.note.helper"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
 					"fontsize" : 14.0,
 					"frgb" : 0.0,
 					"id" : "obj-15",
@@ -37,7 +79,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 574.0, 593.0, 122.0, 22.0 ],
-					"presentation_rect" : [ 569.0, 593.0, 0.0, 0.0 ],
 					"text" : "API"
 				}
 
@@ -52,7 +93,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 571.0, 389.0, 122.0, 22.0 ],
-					"presentation_rect" : [ 571.0, 366.0, 0.0, 0.0 ],
 					"text" : "Synthesis"
 				}
 
@@ -67,7 +107,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 574.0, 266.0, 122.0, 22.0 ],
-					"presentation_rect" : [ 413.0, 197.0, 0.0, 0.0 ],
 					"text" : "Control Stucture"
 				}
 
@@ -81,8 +120,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 37.0, 463.0, 395.0, 36.0 ],
-					"text" : "/playing true",
+					"patching_rect" : [ 37.0, 616.0, 395.0, 36.0 ],
+					"text" : "/play/end",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -140,9 +179,9 @@
 					"id" : "obj-5",
 					"maxclass" : "newobj",
 					"numinlets" : 2,
-					"numoutlets" : 2,
-					"outlettype" : [ "FullPacket", "signal" ],
-					"patching_rect" : [ 37.0, 427.0, 260.0, 22.0 ],
+					"numoutlets" : 3,
+					"outlettype" : [ "FullPacket", "FullPacket", "signal" ],
+					"patching_rect" : [ 134.0, 486.0, 161.0, 22.0 ],
 					"text" : "o.sound.note.adsr"
 				}
 
@@ -156,7 +195,7 @@
 					"numinlets" : 3,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "signal" ],
-					"patching_rect" : [ 37.0, 390.0, 261.0, 22.0 ],
+					"patching_rect" : [ 134.0, 449.0, 161.0, 22.0 ],
 					"text" : "o.sound.fuzz"
 				}
 
@@ -170,7 +209,7 @@
 					"numinlets" : 3,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "signal" ],
-					"patching_rect" : [ 37.0, 357.0, 141.0, 22.0 ],
+					"patching_rect" : [ 134.0, 416.0, 141.0, 22.0 ],
 					"text" : "o.sound.waveforms"
 				}
 
@@ -180,13 +219,13 @@
 					"fontname" : "Arial",
 					"fontsize" : 14.0,
 					"id" : "obj-14",
-					"linecount" : 8,
+					"linecount" : 10,
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 37.0, 202.0, 365.0, 144.0 ],
-					"text" : "/key/number ??= 60;\n/waveforms/frequency ??= mtof(/key/number);\n/waveforms/portamento/time ??= 0.2;\n/trigger = /key/down??false;\n/key/velocity ??= 1.;\n/attack = (1.0 - /key/velocity) *200.;\n/adsr/amplitude = /key/velocity;\n/fuzz = /key/velocity * 12.;\n",
+					"patching_rect" : [ 37.0, 202.0, 365.0, 176.0 ],
+					"text" : "/key/number ??= 60;\n/instance = /key/number;\n/waveforms/frequency ??= mtof(/key/number);\n/waveforms/portamento/time ??= 0.2;\n/trigger = /key/down??false;\n/key/velocity ??= 1.;\n/attack = (1.0 - /key/velocity) *0.2;\n/adsr/amplitude = /key/velocity;\n/fuzz = /key/velocity * 12.;\n",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -227,7 +266,7 @@
 					"maxclass" : "ezdac~",
 					"numinlets" : 2,
 					"numoutlets" : 0,
-					"patching_rect" : [ 514.0, 474.0, 45.0, 45.0 ]
+					"patching_rect" : [ 263.0, 538.0, 45.0, 45.0 ]
 				}
 
 			}
@@ -240,7 +279,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 39.0, 8.0, 516.0, 60.0 ]
+					"patching_rect" : [ 47.0, 5.0, 516.0, 60.0 ]
 				}
 
 			}
@@ -286,11 +325,48 @@
 			}
 , 			{
 				"patchline" : 				{
-					"color" : [ 1.0, 0.8, 0.4, 1.0 ],
-					"destination" : [ "obj-1", 0 ],
+					"destination" : [ "obj-16", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-14", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-1", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-16", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"color" : [ 1.0, 0.8, 0.4, 1.0 ],
+					"destination" : [ "obj-18", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"midpoints" : [ 46.5, 504.0, 46.5, 504.0 ],
+					"source" : [ "obj-16", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-13", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-18", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-19", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-18", 0 ]
 				}
 
 			}
@@ -325,8 +401,18 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-16", 1 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"midpoints" : [ 214.5, 518.0, 317.0, 518.0, 317.0, 381.0, 95.5, 381.0 ],
+					"source" : [ "obj-5", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"color" : [ 1.0, 0.8, 0.4, 1.0 ],
-					"destination" : [ "obj-13", 0 ],
+					"destination" : [ "obj-18", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-5", 0 ]
@@ -338,7 +424,7 @@
 					"destination" : [ "obj-4", 1 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"source" : [ "obj-5", 1 ]
+					"source" : [ "obj-5", 2 ]
 				}
 
 			}
@@ -347,7 +433,7 @@
 					"destination" : [ "obj-4", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"source" : [ "obj-5", 1 ]
+					"source" : [ "obj-5", 2 ]
 				}
 
 			}
@@ -504,6 +590,14 @@
 			}
 , 			{
 				"name" : "o.display.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.message.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.print.mxo",
 				"type" : "iLaX"
 			}
  ]
