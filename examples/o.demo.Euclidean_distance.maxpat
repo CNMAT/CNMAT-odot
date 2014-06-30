@@ -4,11 +4,11 @@
 		"appversion" : 		{
 			"major" : 6,
 			"minor" : 1,
-			"revision" : 2,
+			"revision" : 6,
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ -1641.0, 150.0, 1053.0, 647.0 ],
+		"rect" : [ 0.0, 150.0, 1053.0, 647.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -31,15 +31,30 @@
 				"box" : 				{
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
-					"id" : "obj-22",
+					"frgb" : 0.0,
+					"id" : "obj-10",
 					"linecount" : 3,
-					"maxclass" : "o.message",
-					"numinlets" : 2,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 128.0, 387.0, 150.0, 47.0 ],
+					"text" : "John MacCallum\nAdrian Freed\n2013, 2014"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-8",
+					"linecount" : 6,
+					"maxclass" : "o.display",
+					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 576.0, 136.0, 169.0, 47.0 ],
-					"presentation_rect" : [ 573.0, 141.0, 0.0, 0.0 ],
-					"text" : "/p 0 1 2 3 4 5 \n/q 0.01 1.2 1.9 3.001 4. 4.999 \n/dist 0.223835 \n",
+					"patching_rect" : [ 532.0, 347.0, 385.0, 101.0 ],
+					"presentation_rect" : [ 532.0, 347.0, 0.0, 0.0 ],
+					"text" : "/p 0 1 2 -3 4 5 2e-05 3\n/q 0.01 1.2 -1.9 3.001 4. 4.999 1e-05 4\n/delta 0.01 0.2 -3.9 6.001 0. -0.001 -1e-05 1\n/squared/delta 0.0001 0.04 15.21 36.012 0. 1e-06 1e-10 1.\n/sum/squared/delta 52.2621\n/dist 7.22925",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -48,15 +63,63 @@
 				"box" : 				{
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
-					"id" : "obj-23",
-					"linecount" : 2,
-					"maxclass" : "o.message",
-					"numinlets" : 2,
+					"id" : "obj-7",
+					"linecount" : 4,
+					"maxclass" : "o.expr.codebox",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "FullPacket", "FullPacket" ],
+					"patching_rect" : [ 534.0, 249.0, 366.0, 73.0 ],
+					"text" : " /delta = /q - /p;\n /squared/delta = pow(/delta, 2.0);\n /sum/squared/delta = sum(/squared/delta);\n /dist = sqrt(/sum/squared/delta);",
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-6",
+					"linecount" : 3,
+					"maxclass" : "o.display",
+					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 576.0, 32.0, 169.0, 33.0 ],
-					"presentation_rect" : [ 573.0, 37.0, 0.0, 0.0 ],
-					"text" : "/p 0 1 2 3 4 5 \n/q 0.01 1.2 1.9 3.001 4. 4.999 ",
+					"patching_rect" : [ 577.0, 171.0, 221.0, 61.0 ],
+					"presentation_rect" : [ 561.0, 190.0, 0.0, 0.0 ],
+					"text" : "/p 0 1 2 -3 4 5 2e-05 3\n/q 0.01 1.2 -1.9 3.001 4. 4.999 1e-05 4\n/dist 7.22925",
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-5",
+					"linecount" : 3,
+					"maxclass" : "o.display",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 111.0, 248.0, 221.0, 61.0 ],
+					"text" : "/p 0 1 2 -3 4 5 2e-05 3\n/q 0.01 1.2 -1.9 3.001 4. 4.999 1e-05 4\n/dist 7.22925",
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-4",
+					"linecount" : 2,
+					"maxclass" : "o.compose",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 399.0, 24.0, 262.0, 37.0 ],
+					"text" : "/p 0 1 2 -3 4 5 2e-05 3\n/q 0.01 1.2 -1.9 3.001 4. 4.999 1e-05 4",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -66,134 +129,12 @@
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"id" : "obj-24",
-					"maxclass" : "newobj",
+					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 576.0, 88.0, 158.0, 20.0 ],
-					"text" : "o.expr /dist = l2norm(/q - /p)"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontname" : "Arial",
-					"fontsize" : 12.0,
-					"id" : "obj-21",
-					"linecount" : 6,
-					"maxclass" : "o.message",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 56.0, 400.0, 266.0, 87.0 ],
-					"presentation_rect" : [ 161.0, 411.0, 0.0, 0.0 ],
-					"text" : "/p 0 1 2 3 4 5 \n/q 0.01 1.2 1.9 3.001 4. 4.999 \n/delta 0.01 0.2 -0.1 0.001 0. -0.001 \n/squared/delta 0.0001 0.04 0.01 1e-06 0. 1e-06 \n/sum/squared/delta 0.050102 \n/dist 0.223835 \n",
-					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontname" : "Arial",
-					"fontsize" : 12.0,
-					"id" : "obj-20",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 56.0, 368.0, 213.0, 20.0 ],
-					"text" : "o.expr /dist = sqrt(/sum/squared/delta)"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontname" : "Arial",
-					"fontsize" : 12.0,
-					"id" : "obj-19",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 56.0, 336.0, 270.0, 20.0 ],
-					"text" : "o.expr /sum/squared/delta = sum(/squared/delta)"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontname" : "Arial",
-					"fontsize" : 12.0,
-					"id" : "obj-18",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 56.0, 304.0, 220.0, 20.0 ],
-					"text" : "o.expr /squared/delta = pow(/delta\\, 2.0)"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontname" : "Arial",
-					"fontsize" : 12.0,
-					"id" : "obj-17",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 56.0, 272.0, 121.0, 20.0 ],
-					"text" : "o.expr /delta = /q - /p"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontname" : "Arial",
-					"fontsize" : 12.0,
-					"id" : "obj-16",
-					"linecount" : 2,
-					"maxclass" : "o.message",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 56.0, 224.0, 169.0, 33.0 ],
-					"presentation_rect" : [ 158.0, 232.0, 0.0, 0.0 ],
-					"text" : "/p 0 1 2 3 4 5 \n/q 0.01 1.2 1.9 3.001 4. 4.999 ",
-					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontname" : "Arial",
-					"fontsize" : 12.0,
-					"id" : "obj-3",
-					"linecount" : 3,
-					"maxclass" : "o.message",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 56.0, 136.0, 169.0, 47.0 ],
-					"presentation_rect" : [ 49.0, 158.0, 0.0, 0.0 ],
-					"text" : "/p 0 1 2 3 4 5 \n/q 0.01 1.2 1.9 3.001 4. 4.999 \n/dist 0.223835 \n",
-					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontname" : "Arial",
-					"fontsize" : 12.0,
-					"id" : "obj-2",
-					"linecount" : 2,
-					"maxclass" : "o.message",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 56.0, 32.0, 169.0, 33.0 ],
-					"text" : "/p 0 1 2 3 4 5 \n/q 0.01 1.2 1.9 3.001 4. 4.999 ",
+					"numoutlets" : 2,
+					"outlettype" : [ "FullPacket", "FullPacket" ],
+					"patching_rect" : [ 578.0, 124.0, 150.0, 33.0 ],
+					"text" : " /dist = l2norm(/q - /p)",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -203,19 +144,20 @@
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"id" : "obj-1",
-					"maxclass" : "newobj",
+					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 56.0, 88.0, 406.0, 20.0 ],
-					"text" : "o.expr /dist = sqrt(lreduce(add\\, map(lambda(p\\, q){pow(q - p\\, 2.0)\\;}\\, /p\\, /q)))"
+					"numoutlets" : 2,
+					"outlettype" : [ "FullPacket", "FullPacket" ],
+					"patching_rect" : [ 111.0, 202.0, 384.0, 35.0 ],
+					"text" : " /dist = sqrt(lreduce(add, map(lambda(p, q){pow(q - p, 2.0);}, /p, /q)))",
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
 			}
  ],
 		"lines" : [ 			{
 				"patchline" : 				{
-					"destination" : [ "obj-3", 1 ],
+					"destination" : [ "obj-5", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-1", 0 ]
@@ -224,37 +166,10 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-17", 0 ],
+					"destination" : [ "obj-6", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"source" : [ "obj-16", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-18", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"source" : [ "obj-17", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-19", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"source" : [ "obj-18", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-20", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"source" : [ "obj-19", 0 ]
+					"source" : [ "obj-24", 0 ]
 				}
 
 			}
@@ -263,16 +178,7 @@
 					"destination" : [ "obj-1", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"source" : [ "obj-2", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-21", 1 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"source" : [ "obj-20", 0 ]
+					"source" : [ "obj-4", 0 ]
 				}
 
 			}
@@ -281,26 +187,39 @@
 					"destination" : [ "obj-24", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"source" : [ "obj-23", 0 ]
+					"source" : [ "obj-4", 0 ]
 				}
 
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-22", 1 ],
+					"destination" : [ "obj-7", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"source" : [ "obj-24", 0 ]
+					"source" : [ "obj-4", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-8", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-7", 0 ]
 				}
 
 			}
  ],
 		"dependency_cache" : [ 			{
-				"name" : "o.expr.mxo",
+				"name" : "o.expr.codebox.mxo",
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "o.message.mxo",
+				"name" : "o.compose.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.display.mxo",
 				"type" : "iLaX"
 			}
  ]
