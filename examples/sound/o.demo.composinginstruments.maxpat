@@ -8,7 +8,7 @@
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 27.0, 82.0, 762.0, 702.0 ],
+		"rect" : [ 156.0, -1055.0, 762.0, 702.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 20.0,
@@ -64,7 +64,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 550.0, 627.0, 122.0, 22.0 ],
+					"patching_rect" : [ 570.0, 625.0, 122.0, 22.0 ],
 					"text" : "API"
 				}
 
@@ -102,13 +102,13 @@
 					"fontname" : "Arial",
 					"fontsize" : 14.0,
 					"id" : "obj-13",
-					"linecount" : 13,
+					"linecount" : 3,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 37.0, 616.0, 395.0, 224.0 ],
-					"text" : "/key/number 20\n/key/velocity 0.3\n/key/down true\n/key/up false\n/amplitude 1.\n/noise/amplitude 1.25\n/instance 20\n/waveforms/frequency 25.9565\n/waveforms/portamento/time 0.2\n/trigger true\n/attack 0.14\n/adsr/amplitude 0.3\n/fuzz 3.6",
+					"patching_rect" : [ 37.0, 616.0, 395.0, 67.0 ],
+					"text" : "/play/end true\n/play/begin false\n/instance 65.",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -227,7 +227,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 570.0, 31.0, 109.0, 38.0 ],
+					"patching_rect" : [ 584.0, 24.0, 109.0, 38.0 ],
 					"text" : "Gesture Acquisition"
 				}
 
@@ -514,6 +514,13 @@
 				"implicit" : 1
 			}
 , 			{
+				"name" : "o.righttoleft.maxpat",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/patchers/core",
+				"patcherrelativepath" : "../../patchers/core",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
 				"name" : "o.route.mxo",
 				"type" : "iLaX"
 			}
@@ -522,7 +529,7 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "o.expr.mxo",
+				"name" : "o.expr.codebox.mxo",
 				"type" : "iLaX"
 			}
 , 			{
@@ -562,10 +569,6 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "o.expr.codebox.mxo",
-				"type" : "iLaX"
-			}
-, 			{
 				"name" : "o.compose.mxo",
 				"type" : "iLaX"
 			}
@@ -574,7 +577,7 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "o.message.mxo",
+				"name" : "o.expr.mxo",
 				"type" : "iLaX"
 			}
  ]
