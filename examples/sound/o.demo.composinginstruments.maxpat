@@ -8,7 +8,7 @@
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 8.0, 44.0, 776.0, 811.0 ],
+		"rect" : [ 86.0, 33.0, 776.0, 811.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 20.0,
@@ -31,20 +31,6 @@
 				"box" : 				{
 					"fontname" : "Arial",
 					"fontsize" : 20.0,
-					"id" : "obj-19",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 169.0, 570.0, 66.0, 29.0 ],
-					"text" : "o.print"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontname" : "Arial",
-					"fontsize" : 20.0,
 					"id" : "obj-18",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
@@ -61,9 +47,9 @@
 					"fontsize" : 12.0,
 					"id" : "obj-16",
 					"maxclass" : "newobj",
-					"numinlets" : 3,
+					"numinlets" : 2,
 					"numoutlets" : 2,
-					"outlettype" : [ "", "FullPacket" ],
+					"outlettype" : [ "FullPacket", "FullPacket" ],
 					"patching_rect" : [ 37.0, 388.0, 117.0, 20.0 ],
 					"text" : "o.sound.note.helper"
 				}
@@ -78,7 +64,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 574.0, 593.0, 122.0, 22.0 ],
+					"patching_rect" : [ 550.0, 627.0, 122.0, 22.0 ],
 					"text" : "API"
 				}
 
@@ -116,12 +102,13 @@
 					"fontname" : "Arial",
 					"fontsize" : 14.0,
 					"id" : "obj-13",
+					"linecount" : 2,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 37.0, 616.0, 395.0, 36.0 ],
-					"text" : "/play/end",
+					"patching_rect" : [ 37.0, 616.0, 395.0, 52.0 ],
+					"text" : "/play/end\n/instance 86.",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -151,7 +138,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 240.0, 119.0, 158.0, 57.0 ],
-					"text" : "/frequency 440.\n/key/down false\n/key/up true",
+					"text" : "/key/number 20\n/key/down false\n/key/up true",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -167,7 +154,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 71.0, 74.0, 158.0, 104.0 ],
-					"text" : "/frequency 440.\n/key/velocity 0.3\n/key/down true\n/key/up false\n/amplitude 1.\n/noise/amplitude 1.25",
+					"text" : "/key/number 20\n/key/velocity 0.3\n/key/down true\n/key/up false\n/amplitude 1.\n/noise/amplitude 1.25",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -219,7 +206,7 @@
 					"fontname" : "Arial",
 					"fontsize" : 14.0,
 					"id" : "obj-14",
-					"linecount" : 10,
+					"linecount" : 9,
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
@@ -251,12 +238,12 @@
 					"fontsize" : 14.0,
 					"frgb" : 0.0,
 					"id" : "obj-8",
-					"linecount" : 8,
+					"linecount" : 4,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 511.0, 637.0, 231.0, 132.0 ],
-					"text" : "Composing Instruments\nKeyboard note based\n\" o.\" MSP design pattern\nAdrian Freed 2011-2014\n\nTODO: \nsort out main/delegation semantics\nbusy delegation for multiple voices"
+					"patching_rect" : [ 417.0, 72.0, 166.0, 69.0 ],
+					"text" : "Composing Instruments\nKeyboard note based\n\" o.\" MSP design pattern\nAdrian Freed 2011-2014"
 				}
 
 			}
@@ -363,15 +350,6 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-19", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"source" : [ "obj-18", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
 					"destination" : [ "obj-5", 1 ],
 					"disabled" : 0,
 					"hidden" : 0,
@@ -404,7 +382,7 @@
 					"destination" : [ "obj-16", 1 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"midpoints" : [ 214.5, 518.0, 317.0, 518.0, 317.0, 381.0, 95.5, 381.0 ],
+					"midpoints" : [ 214.5, 518.0, 317.0, 518.0, 317.0, 381.0, 144.5, 381.0 ],
 					"source" : [ "obj-5", 1 ]
 				}
 
@@ -594,10 +572,6 @@
 			}
 , 			{
 				"name" : "o.message.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.print.mxo",
 				"type" : "iLaX"
 			}
  ]
