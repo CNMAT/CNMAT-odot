@@ -2125,14 +2125,14 @@ void *odisplay_new(t_symbol *msg, short argc, t_atom *argv){
     | JBOX_NODRAWBOX
     | JBOX_DRAWINLAST
     | JBOX_TRANSPARENT
-    //      | JBOX_NOGROW
+    //| JBOX_NOGROW
     //| JBOX_GROWY
     //| JBOX_GROWBOTH
-    //      | JBOX_HILITE
+    //| JBOX_HILITE
     //| JBOX_BACKGROUND
     //| JBOX_DRAWBACKGROUND
-    //      | JBOX_NOFLOATINSPECTOR
-    //      | JBOX_MOUSEDRAGDELTA
+    //| JBOX_NOFLOATINSPECTOR
+    //| JBOX_MOUSEDRAGDELTA
     | JBOX_TEXTFIELD
     ;
     
@@ -2164,8 +2164,8 @@ void *odisplay_new(t_symbol *msg, short argc, t_atom *argv){
 		}
         
  		jbox_ready((t_jbox *)x);
-        
-		odisplay_gettext(x);
+		//odisplay_gettext(x);
+        odisplay_clear(x);
 		return x;
 	}
 	return NULL;
