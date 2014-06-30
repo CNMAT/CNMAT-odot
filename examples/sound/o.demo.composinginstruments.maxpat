@@ -8,7 +8,7 @@
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 0.0, 44.0, 762.0, 702.0 ],
+		"rect" : [ 27.0, 82.0, 762.0, 702.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 20.0,
@@ -102,13 +102,13 @@
 					"fontname" : "Arial",
 					"fontsize" : 14.0,
 					"id" : "obj-13",
-					"linecount" : 3,
+					"linecount" : 13,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 37.0, 616.0, 395.0, 67.0 ],
-					"text" : "/play/end true\n/play/begin false\n/instance 71.",
+					"patching_rect" : [ 37.0, 616.0, 395.0, 224.0 ],
+					"text" : "/key/number 20\n/key/velocity 0.3\n/key/down true\n/key/up false\n/amplitude 1.\n/noise/amplitude 1.25\n/instance 20\n/waveforms/frequency 25.9565\n/waveforms/portamento/time 0.2\n/trigger true\n/attack 0.14\n/adsr/amplitude 0.3\n/fuzz 3.6",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -211,7 +211,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 37.0, 202.0, 365.0, 176.0 ],
+					"patching_rect" : [ 37.0, 194.0, 365.0, 176.0 ],
 					"text" : "/key/number ??= 60;\n/instance = /key/number;\n/waveforms/frequency ??= mtof(/key/number);\n/waveforms/portamento/time ??= 0.2;\n/trigger = /key/down??false;\n/key/velocity ??= 1.;\n/attack = (1.0 - /key/velocity) *0.2;\n/adsr/amplitude = /key/velocity;\n/fuzz = /key/velocity * 12.;\n",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -312,6 +312,7 @@
 			}
 , 			{
 				"patchline" : 				{
+					"color" : [ 1.0, 0.8, 0.4, 1.0 ],
 					"destination" : [ "obj-16", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
@@ -341,6 +342,7 @@
 			}
 , 			{
 				"patchline" : 				{
+					"color" : [ 1.0, 0.8, 0.4, 1.0 ],
 					"destination" : [ "obj-13", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
@@ -379,6 +381,7 @@
 			}
 , 			{
 				"patchline" : 				{
+					"color" : [ 1.0, 0.8, 0.4, 1.0 ],
 					"destination" : [ "obj-16", 1 ],
 					"disabled" : 0,
 					"hidden" : 0,

@@ -8,7 +8,7 @@
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 0.0, 128.0, 965.0, 489.0 ],
+		"rect" : [ 0.0, 128.0, 768.0, 456.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -31,12 +31,43 @@
 				"box" : 				{
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
+					"frgb" : 0.0,
+					"id" : "obj-3",
+					"linecount" : 4,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 310.0, 268.0, 150.0, 60.0 ],
+					"text" : "Direction of rotation of a cursor device\n\nAdrian Freed 2013 2014"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-1",
+					"linecount" : 14,
+					"maxclass" : "o.display",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 12.0, 231.0, 252.0, 208.0 ],
+					"text" : "/horizontal 759\n/vertical 624\n/shift \"up\"\n/capslock \"up\"\n/option \"up\"\n/control \"up\"\n/command \"down\"\n/button/is \"up\"\n/was/horizontal 759\n/was/vertical 624\n/angle 0.\n/was/angle 0.\n/angle/difference 0.\n/direction \"still\"",
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
 					"id" : "obj-10",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 168.0, 84.0, 145.0, 20.0 ],
+					"outlettype" : [ "FullPacket" ],
+					"patching_rect" : [ 13.0, 56.0, 145.0, 20.0 ],
 					"text" : "o.was /horizontal /vertical"
 				}
 
@@ -47,12 +78,13 @@
 					"fontsize" : 12.0,
 					"id" : "obj-9",
 					"linecount" : 2,
-					"maxclass" : "newobj",
+					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 166.0, 193.0, 572.0, 33.0 ],
-					"text" : "o.expr /angle/difference = /angle - /was/angle\\; /direction = /angle/difference==0?still:(/angle/difference>0? clockwise:anticlockwise)"
+					"numoutlets" : 2,
+					"outlettype" : [ "FullPacket", "FullPacket" ],
+					"patching_rect" : [ 12.0, 164.0, 712.0, 46.0 ],
+					"text" : "/angle/difference = /angle - /was/angle; \n/direction = /angle/difference==0?still:(/angle/difference>0? clockwise:anticlockwise);",
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
 			}
@@ -64,25 +96,9 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 167.0, 163.0, 78.0, 20.0 ],
+					"outlettype" : [ "FullPacket" ],
+					"patching_rect" : [ 13.0, 125.0, 78.0, 20.0 ],
 					"text" : "o.was /angle"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontname" : "Arial",
-					"fontsize" : 12.0,
-					"id" : "obj-7",
-					"linecount" : 14,
-					"maxclass" : "o.message",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 39.0, 280.0, 150.0, 194.0 ],
-					"text" : "/was/angle 0.\n/was/horizontal 412\n/was/vertical 265\n/horizontal 412\n/vertical 265\n/shift \"up\"\n/capslock \"up\"\n/option \"up\"\n/control \"up\"\n/command \"down\"\n/button/is \"up\"\n/angle 0.\n/angle/difference 0.\n/direction \"still\"",
-					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
 			}
@@ -95,7 +111,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 167.0, 121.0, 396.0, 20.0 ],
+					"patching_rect" : [ 14.0, 92.0, 396.0, 20.0 ],
 					"text" : "o.expr /angle=atan2(/vertical - /was/vertical\\,/horizontal - /was/horizontal )"
 				}
 
@@ -109,7 +125,7 @@
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 168.0, 55.0, 69.0, 20.0 ],
+					"patching_rect" : [ 13.0, 13.0, 69.0, 20.0 ],
 					"text" : "o.io.mouse"
 				}
 
@@ -153,7 +169,7 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-7", 1 ],
+					"destination" : [ "obj-1", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-9", 0 ]
@@ -163,22 +179,22 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "o.io.mouse.maxpat",
-				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions/io",
-				"patcherrelativepath" : "../abstractions/io",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/patchers/io",
+				"patcherrelativepath" : "../patchers/io",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.out.maxpat",
-				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions/core",
-				"patcherrelativepath" : "../abstractions/core",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/patchers/core",
+				"patcherrelativepath" : "../patchers/core",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.port.maxpat",
-				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions/core",
-				"patcherrelativepath" : "../abstractions/core",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/patchers/core",
+				"patcherrelativepath" : "../patchers/core",
 				"type" : "JSON",
 				"implicit" : 1
 			}
@@ -191,8 +207,36 @@
 			}
 , 			{
 				"name" : "o.was.maxpat",
-				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions/time",
-				"patcherrelativepath" : "../abstractions/time",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/patchers/time",
+				"patcherrelativepath" : "../patchers/time",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "o.righttoleft.maxpat",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/patchers/core",
+				"patcherrelativepath" : "../patchers/core",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "o.in.maxpat",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/patchers/core",
+				"patcherrelativepath" : "../patchers/core",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "o.arguments.maxpat",
+				"bootpath" : "/Users/adrian2013/Documents/Max/Packages/odot/patchers",
+				"patcherrelativepath" : "../../Documents/Max/Packages/odot/patchers",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "o.init.maxpat",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/patchers/core",
+				"patcherrelativepath" : "../patchers/core",
 				"type" : "JSON",
 				"implicit" : 1
 			}
@@ -250,6 +294,14 @@
 			}
 , 			{
 				"name" : "o.intersection.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.expr.codebox.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.display.mxo",
 				"type" : "iLaX"
 			}
  ]
