@@ -208,7 +208,7 @@ typedef struct _odisplay{
 	int bndl_has_been_checked_for_subs;
 	long textlen;
 	char *text;
-	t_jrgba frame_color, background_color, text_color;
+	t_jrgba frame_color, background_color, text_color, flash_color;
 	void *qelem;
 	int have_new_data;
 	int draw_new_data_indicator;
@@ -419,15 +419,39 @@ void odisplay_paint(t_odisplay *x, t_object *patcherview)
     jgraphics_rectangle(g, 0, rect.height - 14, 4, 4);
     jgraphics_rectangle(g, rect.width - 4, rect.height - 14, 4, 4);
     jgraphics_fill(g);
+
     jgraphics_set_source_jrgba(g, &(x->frame_color));
+    
+    /*
+    if (draw_new_data_indicator) {
+        jgraphics_set_source_jrgba(g, &(x->flash_color));
+        critical_enter(x->lock);
+		x->draw_new_data_indicator = 0;
+		critical_exit(x->lock);
+		clock_delay(x->new_data_indicator_clock, 100);
+    }
+     */
+    
     jgraphics_rectangle_rounded(g, 0, rect.height - 10, rect.width, 10, 8, 8);
     jgraphics_rectangle(g, 0, rect.height - 10, 4, 4);
     jgraphics_rectangle(g, rect.width - 4, rect.height - 10, 4, 4);
     jgraphics_fill(g);
     
+    jgraphics_set_source_jrgba(g, &(x->frame_color));
     jgraphics_rectangle_rounded(g, 1, 1, rect.width - 2, rect.height - 2, 8, 8);
     jgraphics_set_line_width(g, 2.);
     jgraphics_stroke(g);
+    
+    if (draw_new_data_indicator)
+    {
+        jgraphics_set_source_jrgba(g, &(x->flash_color));
+		jgraphics_ellipse(g, rect.width - 12, 6, 6, 6);
+		jgraphics_fill(g);
+		critical_enter(x->lock);
+		x->draw_new_data_indicator = 0;
+		critical_exit(x->lock);
+		clock_delay(x->new_data_indicator_clock, 100);
+    }
     
 
     /*
@@ -455,7 +479,6 @@ void odisplay_paint(t_odisplay *x, t_object *patcherview)
 	jgraphics_line_to(g, rect.width, rect.height);
 	jgraphics_line_to(g, rect.width, rect.height - (rect.height * .25));
 	jgraphics_stroke(g);
-     */
 
 	if(draw_new_data_indicator){
 		//jgraphics_move_to(g, 4, 4);
@@ -467,6 +490,8 @@ void odisplay_paint(t_odisplay *x, t_object *patcherview)
 		critical_exit(x->lock);
 		clock_delay(x->new_data_indicator_clock, 100);
 	}
+     
+     */
 }
 
 #endif
@@ -2159,6 +2184,7 @@ void *odisplay_new(t_symbol *msg, short argc, t_atom *argv){
 		if(textfield){
 			object_attr_setchar(textfield, gensym("editwhenunlocked"), 0);
             textfield_set_readonly(textfield, '1');
+            textfield_set_selectallonedit(textfield, '1');
 			textfield_set_textmargins(textfield, 5, 5, 5, 15);
 			textfield_set_textcolor(textfield, &(x->text_color));
 		}
@@ -2229,6 +2255,11 @@ int main(void){
  	CLASS_ATTR_DEFAULT_SAVE_PAINT(c, "frame_color", 0, ".216 .435 .7137 1.");
  	CLASS_ATTR_STYLE_LABEL(c, "frame_color", 0, "rgba", "Frame Color");
 	CLASS_ATTR_CATEGORY_KLUDGE(c, "frame_color", 0, "Color");
+    
+    CLASS_ATTR_RGBA(c, "flash_color", 0, t_odisplay, flash_color);
+ 	CLASS_ATTR_DEFAULT_SAVE_PAINT(c, "flash_color", 0, ".761 .349 .306 1.");
+ 	CLASS_ATTR_STYLE_LABEL(c, "flash_color", 0, "rgba", "Flash Color");
+	CLASS_ATTR_CATEGORY_KLUDGE(c, "flash_color", 0, "Color");
     
  	CLASS_ATTR_RGBA(c, "text_color", 0, t_odisplay, text_color);
  	CLASS_ATTR_DEFAULT_SAVE_PAINT(c, "text_color", 0, "0. 0. 0. 1.");
