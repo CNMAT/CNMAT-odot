@@ -378,7 +378,7 @@ void oexprcodebox_assist(t_oexprcodebox *x, void *b, long io, long num, char *bu
 void oexprcodebox_free(t_oexprcodebox *x)
 {
     if(x->expr){
-            osc_expr_free(x->expr);
+        osc_expr_free(x->expr);
     }
     jbox_free((t_jbox *)x);
     critical_free(x->lock);
@@ -574,7 +574,7 @@ void *oexprcodebox_new(t_symbol *msg, short argc, t_atom *argv)
         | JBOX_TRANSPARENT
         //| JBOX_NOGROW
         //| JBOX_GROWY
-        | JBOX_GROWBOTH
+        //| JBOX_GROWBOTH
         //| JBOX_HILITE
         //| JBOX_BACKGROUND
         //| JBOX_DRAWBACKGROUND
@@ -612,7 +612,7 @@ int main(void)
     t_class *c = class_new(NAME, (method)oexprcodebox_new, (method)oexprcodebox_free, sizeof(t_oexprcodebox), 0L, A_GIMME, 0);
     c->c_flags |= CLASS_FLAG_NEWDICTIONARY;
 	//jbox_initclass(c, JBOX_TEXTFIELD | JBOX_FIXWIDTH | JBOX_FONTATTR);
-	jbox_initclass(c, JBOX_TEXTFIELD | JBOX_FONTATTR);
+	jbox_initclass(c, JBOX_TEXTFIELD | JBOX_FIXWIDTH | JBOX_FONTATTR);
 
     //class_addmethod(c, (method)oexprcodebox_fullPacket, "FullPacket", A_LONG, A_LONG, 0);
     class_addmethod(c, (method)oexprcodebox_fullPacket, "FullPacket", A_GIMME, 0);
