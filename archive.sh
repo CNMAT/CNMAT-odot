@@ -5,10 +5,6 @@ nonpackagedirs=(experimental)
 
 dirs=("${packagedirs[@]}" "${nonpackagedirs[@]}")
 
-# odotbranch=`git branch | egrep '^\*' | awk '{print $2}'`
-# libobranch=`cd ../libo && git branch | egrep '^\*' | awk '{print $2}'`
-# libomaxbranch=`cd ../libomax && git branch | egrep '^\*' | awk '{print $2}'`
-
 function git_branch()
 {
     local branch=`cd $1 && git branch | egrep '^\*' | awk '{print $2}'`
