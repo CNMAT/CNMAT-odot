@@ -790,8 +790,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 212.0, 428.0, 110.0, 20.0 ],
-					"text" : "o.slipserial.decode"
+					"patching_rect" : [ 212.0, 428.0, 81.0, 20.0 ],
+					"text" : "o.slip.decode"
 				}
 
 			}
@@ -885,8 +885,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 36.0, 340.0, 110.0, 20.0 ],
-					"text" : "o.slipserial.encode"
+					"patching_rect" : [ 36.0, 340.0, 81.0, 20.0 ],
+					"text" : "o.slip.encode"
 				}
 
 			}

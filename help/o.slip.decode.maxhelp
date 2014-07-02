@@ -4,11 +4,11 @@
 		"appversion" : 		{
 			"major" : 6,
 			"minor" : 1,
-			"revision" : 4,
+			"revision" : 6,
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 253.0, 135.0, 690.0, 546.0 ],
+		"rect" : [ 100.0, 100.0, 690.0, 546.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -42,11 +42,11 @@
 						"appversion" : 						{
 							"major" : 6,
 							"minor" : 1,
-							"revision" : 4,
+							"revision" : 6,
 							"architecture" : "x86"
 						}
 ,
-						"rect" : [ 253.0, 161.0, 690.0, 520.0 ],
+						"rect" : [ 100.0, 126.0, 690.0, 520.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -76,6 +76,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 88.0, 424.0, 150.0, 20.0 ],
+									"text" : "/foo 192 219 32",
 									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 
@@ -89,8 +90,8 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 88.0, 392.0, 110.0, 20.0 ],
-									"text" : "o.slipserial.decode"
+									"patching_rect" : [ 88.0, 392.0, 81.0, 20.0 ],
+									"text" : "o.slip.decode"
 								}
 
 							}
@@ -132,8 +133,8 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 88.0, 328.0, 110.0, 20.0 ],
-									"text" : "o.slipserial.encode"
+									"patching_rect" : [ 88.0, 328.0, 81.0, 20.0 ],
+									"text" : "o.slip.encode"
 								}
 
 							}
@@ -160,9 +161,9 @@
 									"maxclass" : "newobj",
 									"numinlets" : 0,
 									"numoutlets" : 4,
-									"outlettype" : [ "", "", "", "clear" ],
-									"patching_rect" : [ 498.0, 263.0, 226.0, 20.0 ],
-									"text" : "o.helpfilehelper @obj o.slipserial.decode"
+									"outlettype" : [ "", "", "", "" ],
+									"patching_rect" : [ 498.0, 263.0, 197.0, 20.0 ],
+									"text" : "o.helpfilehelper @obj o.slip.decode"
 								}
 
 							}
@@ -203,8 +204,8 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 30.0, 30.0, 610.0, 87.0 ],
-									"text" : "o.slipserial.decode"
+									"patching_rect" : [ 30.0, 30.0, 435.0, 87.0 ],
+									"text" : "o.slip.decode"
 								}
 
 							}
@@ -213,7 +214,7 @@
 									"fontname" : "Arial",
 									"fontsize" : 12.0,
 									"id" : "obj-1",
-									"items" : "o.slipserial.encode",
+									"items" : "o.slip.encode",
 									"maxclass" : "umenu",
 									"numinlets" : 1,
 									"numoutlets" : 3,
@@ -368,26 +369,15 @@
  ],
 		"lines" : [  ],
 		"dependency_cache" : [ 			{
-				"name" : "o.helpfilehelper.maxpat",
-				"bootpath" : "/Users/john/Development/CNMAT/CNMAT/CNMAT-odot/overview",
-				"patcherrelativepath" : "../overview",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "o.slipserial.decode.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.route.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.slipserial.encode.mxo",
+				"name" : "o.slip.encode.mxo",
 				"type" : "iLaX"
 			}
 , 			{
 				"name" : "o.message.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.slip.decode.mxo",
 				"type" : "iLaX"
 			}
  ]

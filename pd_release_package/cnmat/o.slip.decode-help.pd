@@ -1,11 +1,11 @@
 #N canvas 640 344 450 300 10;
 #X obj 89 52 o.message 124 49 binhex b#2F666F6F20310A2F62617220320A2F73
 b#7465766520226162636465666722;
-#X obj 89 109 o.slipserial.encode;
-#X obj 89 149 o.slipserial.decode;
 #X obj 52 191 o.message 124 23 binhex b#0A;
 #X obj 234 139 print bytes;
-#X connect 0 0 1 0;
-#X connect 1 0 2 0;
-#X connect 1 0 4 0;
-#X connect 2 0 3 1;
+#X obj 89 149 o.slip.decode;
+#X obj 89 109 o.slip.encode;
+#X connect 0 0 4 0;
+#X connect 3 0 1 1;
+#X connect 4 0 2 0;
+#X connect 4 0 3 0;
