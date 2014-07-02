@@ -152,7 +152,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 272.0, 128.0, 150.0, 87.0 ],
-					"text" : "/port \"Bluetooth-Incoming-Port\"\n/rate/output 0\n/rate/input 0\n/mediansize/received\n/baud",
+					"text" : "/port \"Bluetooth-Incoming-Port\"\n/rate/output\n/rate/input\n/mediansize/received\n/baud",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -191,8 +191,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 133.0, 40.0, 91.0, 20.0 ],
-					"text" : "o.io.slip c 9600"
+					"patching_rect" : [ 133.0, 40.0, 119.0, 20.0 ],
+					"text" : "o.io.slipserial c 9600"
 				}
 
 			}
@@ -329,7 +329,7 @@
 			}
  ],
 		"dependency_cache" : [ 			{
-				"name" : "o.io.slip.maxpat",
+				"name" : "o.io.slipserial.maxpat",
 				"bootpath" : "/Users/ilyarostovtsev/Documents/Creative Coding/odot/_full_build_trunk/CNMAT-odot/patchers/io",
 				"patcherrelativepath" : "../patchers/io",
 				"type" : "JSON",
