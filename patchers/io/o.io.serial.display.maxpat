@@ -4,11 +4,11 @@
 		"appversion" : 		{
 			"major" : 6,
 			"minor" : 1,
-			"revision" : 7,
+			"revision" : 6,
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 0.0, 44.0, 1440.0, 806.0 ],
+		"rect" : [ 0.0, 44.0, 1440.0, 779.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
@@ -149,7 +149,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 571.5, 810.0, 150.0, 33.0 ],
+					"patching_rect" : [ 643.5, 785.0, 150.0, 33.0 ],
 					"text" : "/port \"a\"\n/baud 110",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -265,7 +265,7 @@
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 210.0, 45.0, 25.0, 25.0 ]
+					"patching_rect" : [ 210.0, 198.0, 25.0, 25.0 ]
 				}
 
 			}
@@ -352,7 +352,7 @@
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"id" : "obj-2",
-					"items" : [ "a", "Bluetooth-Incoming-Port", ",", "b", "Bluetooth-Modem", ",", "c", "usbmodemOSCes311" ],
+					"items" : [ "a", "Bluetooth-Serial-1", ",", "b", "Bluetooth-Serial-2", ",", "c", "Bluetooth-PDA-Sync", ",", "d", "AlcatelOT-606A-SerialPo", ",", "e", "Bluetooth-Modem", ",", "f", "BlueRadios10DFAE-COM1", ",", "g", "BlueRadios10DF51-COM1", ",", "h", "usbmodemOSCes311" ],
 					"maxclass" : "umenu",
 					"numinlets" : 1,
 					"numoutlets" : 3,

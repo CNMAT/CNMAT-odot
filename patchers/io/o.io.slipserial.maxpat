@@ -818,8 +818,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 499.0, 564.0, 157.0, 20.0 ],
-					"text" : "o.out @name devicecontrol"
+					"patching_rect" : [ 499.0, 564.0, 118.0, 20.0 ],
+					"text" : "o.out @name status"
 				}
 
 			}

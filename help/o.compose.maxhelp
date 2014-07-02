@@ -438,7 +438,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 60.5, 275.0, 57.0, 20.0 ],
-									"presentation_rect" : [ 125.0, 334.0, 0.0, 0.0 ],
 									"text" : "click me!"
 								}
 
@@ -618,26 +617,12 @@
 									"fontname" : "Arial",
 									"fontsize" : 12.0,
 									"frgb" : 0.0,
-									"id" : "obj-15",
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 125.0, 317.0, 303.0, 20.0 ],
-									"text" : "except that it outputs OSC bundles"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"fontname" : "Arial",
-									"fontsize" : 12.0,
-									"frgb" : 0.0,
 									"id" : "obj-16",
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 125.0, 297.0, 310.0, 20.0 ],
-									"text" : "o.compose is similar to the standard Max message box: "
+									"text" : "o.compose: edit the text by unlocking the patch"
 								}
 
 							}
@@ -650,7 +635,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 498.0, 498.0, 150.0, 20.0 ],
+									"patching_rect" : [ 483.5, 77.0, 150.0, 20.0 ],
 									"text" : "see also:"
 								}
 
@@ -662,10 +647,10 @@
 									"hidden" : 1,
 									"id" : "obj-10",
 									"maxclass" : "newobj",
-									"numinlets" : 0,
+									"numinlets" : 1,
 									"numoutlets" : 4,
-									"outlettype" : [ "", "", "", "" ],
-									"patching_rect" : [ 483.5, 263.0, 185.0, 20.0 ],
+									"outlettype" : [ "", "", "", "clear" ],
+									"patching_rect" : [ 445.0, 32.0, 185.0, 20.0 ],
 									"text" : "o.helpfilehelper @obj o.compose"
 								}
 
@@ -680,7 +665,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 30.0, 169.0, 600.0, 20.0 ],
-									"text" : "o.compose behaves like the Max message box except that it converts its data to OSC packets."
+									"text" : "o.compose stores OSC packets that you view and edit as text"
 								}
 
 							}
@@ -694,7 +679,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 30.0, 121.0, 600.0, 20.0 ],
-									"text" : "Create OSC bundles"
+									"text" : "Create OSC bundles from text"
 								}
 
 							}
@@ -717,52 +702,23 @@
 									"fontname" : "Arial",
 									"fontsize" : 12.0,
 									"id" : "obj-1",
-									"items" : [ "o.display", ",", "message" ],
+									"items" : [ "o.display", ",", "o.message" ],
 									"maxclass" : "umenu",
 									"numinlets" : 1,
 									"numoutlets" : 3,
 									"outlettype" : [ "int", "", "" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 498.0, 520.0, 132.0, 20.0 ]
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"fontname" : "Arial",
-									"fontsize" : 12.0,
-									"hidden" : 1,
-									"id" : "obj-3",
-									"maxclass" : "newobj",
-									"numinlets" : 1,
-									"numoutlets" : 1,
-									"outlettype" : [ "" ],
-									"patching_rect" : [ 498.0, 579.0, 53.0, 20.0 ],
-									"text" : "pcontrol"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"fontname" : "Arial",
-									"fontsize" : 12.0,
-									"hidden" : 1,
-									"id" : "obj-4",
-									"maxclass" : "newobj",
-									"numinlets" : 1,
-									"numoutlets" : 1,
-									"outlettype" : [ "" ],
-									"patching_rect" : [ 498.0, 555.0, 138.0, 20.0 ],
-									"text" : "sprintf load %s.maxhelp"
+									"patching_rect" : [ 483.5, 99.0, 132.0, 20.0 ]
 								}
 
 							}
  ],
 						"lines" : [ 							{
 								"patchline" : 								{
-									"destination" : [ "obj-4", 0 ],
+									"destination" : [ "obj-10", 0 ],
 									"disabled" : 0,
 									"hidden" : 1,
+									"midpoints" : [ 549.5, 153.0, 645.0, 153.0, 645.0, 18.0, 454.5, 18.0 ],
 									"source" : [ "obj-1", 1 ]
 								}
 
@@ -857,15 +813,6 @@
 								}
 
 							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-3", 0 ],
-									"disabled" : 0,
-									"hidden" : 1,
-									"source" : [ "obj-4", 0 ]
-								}
-
-							}
  ]
 					}
 ,
@@ -890,12 +837,11 @@
  ],
 		"lines" : [  ],
 		"dependency_cache" : [ 			{
-				"name" : "o.print.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.pack.mxo",
-				"type" : "iLaX"
+				"name" : "o.helpfilehelper.maxpat",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/misc",
+				"patcherrelativepath" : "../misc",
+				"type" : "JSON",
+				"implicit" : 1
 			}
 , 			{
 				"name" : "o.compose.mxo",
@@ -903,6 +849,14 @@
 			}
 , 			{
 				"name" : "o.route.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.print.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.pack.mxo",
 				"type" : "iLaX"
 			}
 , 			{

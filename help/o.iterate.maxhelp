@@ -4,8 +4,8 @@
 		"appversion" : 		{
 			"major" : 6,
 			"minor" : 1,
-			"revision" : 2,
-			"architecture" : "x64"
+			"revision" : 6,
+			"architecture" : "x86"
 		}
 ,
 		"rect" : [ 465.0, 44.0, 808.0, 556.0 ],
@@ -31,12 +31,28 @@
 				"box" : 				{
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
+					"id" : "obj-2",
+					"linecount" : 2,
+					"maxclass" : "o.compose",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 128.0, 287.0, 150.0, 37.0 ],
+					"text" : "/foo 10\n/bar 1.23",
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
 					"frgb" : 0.0,
 					"id" : "obj-12",
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 504.0, 322.0, 150.0, 20.0 ],
+					"patching_rect" : [ 458.0, 109.0, 150.0, 20.0 ],
 					"text" : "see also:"
 				}
 
@@ -48,10 +64,10 @@
 					"hidden" : 1,
 					"id" : "obj-10",
 					"maxclass" : "newobj",
-					"numinlets" : 0,
+					"numinlets" : 1,
 					"numoutlets" : 4,
 					"outlettype" : [ "", "", "", "clear" ],
-					"patching_rect" : [ 498.5, 278.0, 170.0, 20.0 ],
+					"patching_rect" : [ 452.5, 65.0, 170.0, 20.0 ],
 					"text" : "o.helpfilehelper @obj o.iterate"
 				}
 
@@ -65,7 +81,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 45.0, 182.0, 600.0, 20.0 ],
+					"patching_rect" : [ 45.0, 182.0, 359.0, 20.0 ],
 					"text" : "Outputs each message in a bundle as an encoded OSC message"
 				}
 
@@ -79,7 +95,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 45.0, 134.0, 600.0, 20.0 ],
+					"patching_rect" : [ 45.0, 134.0, 203.0, 20.0 ],
 					"text" : "Iterate over the contents of a bundle"
 				}
 
@@ -93,7 +109,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 45.0, 45.0, 600.0, 87.0 ],
+					"patching_rect" : [ 45.0, 45.0, 271.0, 87.0 ],
 					"text" : "o.iterate"
 				}
 
@@ -109,37 +125,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "int", "", "" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 504.0, 344.0, 132.0, 20.0 ]
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontname" : "Arial",
-					"fontsize" : 12.0,
-					"hidden" : 1,
-					"id" : "obj-3",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 504.0, 403.0, 53.0, 20.0 ],
-					"text" : "pcontrol"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontname" : "Arial",
-					"fontsize" : 12.0,
-					"hidden" : 1,
-					"id" : "obj-4",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 504.0, 379.0, 138.0, 20.0 ],
-					"text" : "sprintf load %s.maxhelp"
+					"patching_rect" : [ 458.0, 131.0, 132.0, 20.0 ]
 				}
 
 			}
@@ -180,22 +166,6 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 128.0, 400.0, 92.0, 20.0 ],
 					"text" : "print messages"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontname" : "Arial",
-					"fontsize" : 12.0,
-					"id" : "obj-2",
-					"linecount" : 2,
-					"maxclass" : "o.message",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 128.0, 288.0, 150.0, 33.0 ],
-					"text" : "/foo 10 \n/bar 1.23 ",
-					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
 			}
@@ -261,9 +231,10 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-4", 0 ],
+					"destination" : [ "obj-10", 0 ],
 					"disabled" : 0,
 					"hidden" : 1,
+					"midpoints" : [ 524.0, 153.0, 437.0, 153.0, 437.0, 60.0, 462.0, 60.0 ],
 					"source" : [ "obj-13", 1 ]
 				}
 
@@ -274,15 +245,6 @@
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-2", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-3", 0 ],
-					"disabled" : 0,
-					"hidden" : 1,
-					"source" : [ "obj-4", 0 ]
 				}
 
 			}
@@ -307,8 +269,8 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "o.helpfilehelper.maxpat",
-				"bootpath" : "/Users/john/MMJ-dev/CNMAT_Externals/odot/overview",
-				"patcherrelativepath" : "../../../../../MMJ-dev/CNMAT_Externals/odot/overview",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/misc",
+				"patcherrelativepath" : "../misc",
 				"type" : "JSON",
 				"implicit" : 1
 			}
@@ -317,11 +279,11 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "o.message.mxo",
+				"name" : "o.route.mxo",
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "o.route.mxo",
+				"name" : "o.compose.mxo",
 				"type" : "iLaX"
 			}
  ]

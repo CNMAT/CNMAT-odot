@@ -8,7 +8,7 @@
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 770.0, 114.0, 670.0, 644.0 ],
+		"rect" : [ 374.0, 141.0, 670.0, 644.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -36,7 +36,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 46.181816, 167.545441, 66.0, 19.0 ],
+					"patching_rect" : [ 47.0, 160.545441, 66.0, 19.0 ],
 					"text" : "o.downcast"
 				}
 
@@ -50,7 +50,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 189.0, 171.0, 119.0, 20.0 ],
+					"patching_rect" : [ 137.0, 160.545441, 119.0, 20.0 ],
 					"text" : "o.timetag /send/time"
 				}
 
@@ -64,7 +64,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 447.0, 353.0, 118.0, 20.0 ],
+					"patching_rect" : [ 349.0, 382.0, 118.0, 20.0 ],
 					"text" : "o.out @name status"
 				}
 
@@ -78,8 +78,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 445.0, 141.0, 115.0, 20.0 ],
-					"text" : "o.in @name control"
+					"patching_rect" : [ 348.0, 103.0, 149.0, 20.0 ],
+					"text" : "o.in @name devicecontrol"
 				}
 
 			}
@@ -92,7 +92,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 115.0, 382.0, 103.0, 20.0 ],
+					"patching_rect" : [ 47.0, 382.0, 103.0, 20.0 ],
 					"text" : "o.out @name out"
 				}
 
@@ -106,7 +106,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 47.0, 134.0, 105.0, 20.0 ],
+					"patching_rect" : [ 47.0, 116.0, 105.0, 20.0 ],
 					"text" : "o.in @name main"
 				}
 
@@ -119,7 +119,7 @@
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 446.0, 69.0, 25.0, 25.0 ]
+					"patching_rect" : [ 348.0, 64.0, 25.0, 25.0 ]
 				}
 
 			}
@@ -130,7 +130,7 @@
 					"maxclass" : "outlet",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 446.0, 525.0, 25.0, 25.0 ]
+					"patching_rect" : [ 349.0, 425.0, 25.0, 25.0 ]
 				}
 
 			}
@@ -141,7 +141,7 @@
 					"maxclass" : "outlet",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 114.0, 525.0, 25.0, 25.0 ]
+					"patching_rect" : [ 47.0, 425.0, 25.0, 25.0 ]
 				}
 
 			}
@@ -152,7 +152,7 @@
 					"maxclass" : "inlet",
 					"numinlets" : 0,
 					"numoutlets" : 1,
-					"outlettype" : [ "FullPacket" ],
+					"outlettype" : [ "" ],
 					"patching_rect" : [ 47.0, 63.0, 25.0, 25.0 ]
 				}
 
@@ -166,7 +166,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 114.0, 200.0, 91.0, 22.0 ],
+					"patching_rect" : [ 47.0, 257.0, 91.0, 22.0 ],
 					"text" : "o.io.slipserial"
 				}
 
@@ -174,6 +174,7 @@
  ],
 		"lines" : [ 			{
 				"patchline" : 				{
+					"color" : [ 1.0, 0.8, 0.4, 1.0 ],
 					"destination" : [ "obj-5", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
@@ -183,6 +184,7 @@
 			}
 , 			{
 				"patchline" : 				{
+					"color" : [ 1.0, 0.8, 0.4, 1.0 ],
 					"destination" : [ "obj-4", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
@@ -192,6 +194,7 @@
 			}
 , 			{
 				"patchline" : 				{
+					"color" : [ 1.0, 0.8, 0.4, 1.0 ],
 					"destination" : [ "obj-8", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
@@ -201,6 +204,7 @@
 			}
 , 			{
 				"patchline" : 				{
+					"color" : [ 1.0, 0.8, 0.4, 1.0 ],
 					"destination" : [ "obj-36", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
@@ -210,6 +214,7 @@
 			}
 , 			{
 				"patchline" : 				{
+					"color" : [ 1.0, 0.8, 0.4, 1.0 ],
 					"destination" : [ "obj-26", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
@@ -219,6 +224,7 @@
 			}
 , 			{
 				"patchline" : 				{
+					"color" : [ 1.0, 0.8, 0.4, 1.0 ],
 					"destination" : [ "obj-7", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
@@ -228,6 +234,7 @@
 			}
 , 			{
 				"patchline" : 				{
+					"color" : [ 1.0, 0.8, 0.4, 1.0 ],
 					"destination" : [ "obj-26", 1 ],
 					"disabled" : 0,
 					"hidden" : 0,
@@ -237,6 +244,7 @@
 			}
 , 			{
 				"patchline" : 				{
+					"color" : [ 1.0, 0.8, 0.4, 1.0 ],
 					"destination" : [ "obj-3", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
@@ -246,6 +254,7 @@
 			}
 , 			{
 				"patchline" : 				{
+					"color" : [ 1.0, 0.8, 0.4, 1.0 ],
 					"destination" : [ "obj-1", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
@@ -255,6 +264,7 @@
 			}
 , 			{
 				"patchline" : 				{
+					"color" : [ 1.0, 0.8, 0.4, 1.0 ],
 					"destination" : [ "obj-26", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,

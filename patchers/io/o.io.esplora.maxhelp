@@ -8,7 +8,7 @@
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 132.0, 92.0, 1262.0, 604.0 ],
+		"rect" : [ 559.0, 95.0, 1262.0, 604.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -35,8 +35,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "int" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 46.0, 191.0, 20.0, 20.0 ],
-					"presentation_rect" : [ 361.0, 134.0, 0.0, 0.0 ]
+					"patching_rect" : [ 46.0, 191.0, 20.0, 20.0 ]
 				}
 
 			}
@@ -62,8 +61,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "int" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 13.0, 219.0, 20.0, 20.0 ],
-					"presentation_rect" : [ 278.0, 173.0, 0.0, 0.0 ]
+					"patching_rect" : [ 13.0, 219.0, 20.0, 20.0 ]
 				}
 
 			}
@@ -118,7 +116,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 754.0, 204.0, 150.0, 24.0 ],
+					"patching_rect" : [ 632.0, 204.0, 150.0, 24.0 ],
 					"text" : "/tone/off",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -133,7 +131,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 733.0, 168.5, 150.0, 24.0 ],
+					"patching_rect" : [ 611.0, 168.5, 150.0, 24.0 ],
 					"text" : "/tone 220.",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -148,7 +146,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 698.0, 130.0, 150.0, 24.0 ],
+					"patching_rect" : [ 576.0, 130.0, 150.0, 24.0 ],
 					"text" : "/tone 440",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -163,7 +161,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 682.0, 91.0, 150.0, 24.0 ],
+					"patching_rect" : [ 560.0, 91.0, 150.0, 24.0 ],
 					"text" : "/tone 200 200",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -174,13 +172,11 @@
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"id" : "obj-13",
-					"linecount" : 38,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 13.0, 405.0, 431.0, 530.0 ],
-					"text" : "/Manufacturer \"Arduino\"\n/Device \"Esplora\"\n/UniqueID \"usbmodemOSCes311\"\n/Sequence/Number 116\n/acceleration/x 0.0136719\n/acceleration/y 0.0585938\n/acceleration/z 0.244141\n/photoresistor 0.959922\n/slider/horizontal 0.\n/connector/white/right 0.948192\n/connector/orange/left true\n/connector/orange/right false\n/units/temperature \"Celsius\"\n/temperature/celsius 20.\n/microphone/loudness 0.\n/led/rgb 0 0 0\n/joystick/horizontal 0.0078125\n/joystick/vertical -0.0117188\n/connector/white/left 0.518084\n/joystick/button/down false\n/joystick/button/up true\n/joystick/forward/button/down false\n/joystick/forward/button/up true\n/joystick/left/button/down false\n/joystick/left/button/up true\n/joystick/right/button/down false\n/joystick/right/button/up true\n/joystick/backward/button/down false\n/joystick/backward/button/up true\n/diamond/backward/button/down false\n/diamond/backward/button/up true\n/diamond/left/button/down false\n/diamond/left/button/up true\n/diamond/right/button/down false\n/diamond/right/button/up true\n/diamond/forward/button/down false\n/diamond/forward/button/up true\n/microseconds 29735764",
+					"patching_rect" : [ 13.0, 405.0, 431.0, 34.0 ],
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -196,7 +192,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 525.5, 405.0, 239.0, 88.0 ],
-					"text" : "/port \"usbmodemOSCes311\"\n/rate/output 98\n/rate/input 0\n/mediansize/received 181.5\n/baud 110",
+					"text" : "/port \"usbmodemOSCes311\"\n/rate/output\n/rate/input\n/mediansize/received\n/baud 110",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -442,7 +438,7 @@
  ]
 					}
 ,
-					"patching_rect" : [ 682.0, 279.0, 85.0, 20.0 ],
+					"patching_rect" : [ 560.0, 279.0, 85.0, 20.0 ],
 					"saved_object_attributes" : 					{
 						"default_fontface" : 0,
 						"default_fontname" : "Arial",
@@ -467,7 +463,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 682.0, 249.0, 20.0, 20.0 ]
+					"patching_rect" : [ 560.0, 249.0, 20.0, 20.0 ]
 				}
 
 			}
@@ -645,7 +641,7 @@
 					"destination" : [ "obj-1", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"midpoints" : [ 691.5, 131.0, 534.0, 131.0, 534.0, 351.0, 308.0, 351.0 ],
+					"midpoints" : [ 569.5, 131.0, 534.0, 131.0, 534.0, 351.0, 308.0, 351.0 ],
 					"source" : [ "obj-14", 0 ]
 				}
 
@@ -656,7 +652,7 @@
 					"destination" : [ "obj-1", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"midpoints" : [ 707.5, 167.0, 534.0, 167.0, 534.0, 351.0, 308.0, 351.0 ],
+					"midpoints" : [ 585.5, 167.0, 534.0, 167.0, 534.0, 351.0, 308.0, 351.0 ],
 					"source" : [ "obj-15", 0 ]
 				}
 
@@ -677,7 +673,7 @@
 					"destination" : [ "obj-1", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"midpoints" : [ 742.5, 202.0, 534.0, 202.0, 534.0, 351.0, 308.0, 351.0 ],
+					"midpoints" : [ 620.5, 202.0, 534.0, 202.0, 534.0, 351.0, 308.0, 351.0 ],
 					"source" : [ "obj-17", 0 ]
 				}
 
@@ -727,7 +723,7 @@
 					"destination" : [ "obj-1", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"midpoints" : [ 763.5, 240.0, 533.0, 240.0, 533.0, 351.0, 308.0, 351.0 ],
+					"midpoints" : [ 641.5, 240.0, 533.0, 240.0, 533.0, 351.0, 308.0, 351.0 ],
 					"source" : [ "obj-25", 0 ]
 				}
 
@@ -776,7 +772,7 @@
 					"destination" : [ "obj-1", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"midpoints" : [ 691.5, 351.0, 308.0, 351.0 ],
+					"midpoints" : [ 569.5, 351.0, 308.0, 351.0 ],
 					"source" : [ "obj-51", 0 ]
 				}
 
@@ -819,6 +815,27 @@
 				"name" : "o.io.esplora.maxpat",
 				"bootpath" : "/Users/adrian2013/CNMAT-odot/patchers/io",
 				"patcherrelativepath" : ".",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "o.io.slipserial.maxpat",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/patchers/io",
+				"patcherrelativepath" : ".",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "o.arguments.maxpat",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/patchers",
+				"patcherrelativepath" : "..",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "o.righttoleft.maxpat",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/patchers/core",
+				"patcherrelativepath" : "../core",
 				"type" : "JSON",
 				"implicit" : 1
 			}
