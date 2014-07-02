@@ -145,7 +145,7 @@ void ovar_doFullPacket(t_ovar *x, long len, char *ptr, long inlet)
 			x->len = len;
 			critical_exit(x->lock);
 		}
-		omax_util_outletOSC(x->outlet, bndllen, bndl);
+		omax_util_outletOSC(x->outlet, len, ptr);
 #endif
 	}
 }
