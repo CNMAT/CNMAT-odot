@@ -32,13 +32,13 @@
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"id" : "obj-7",
-					"linecount" : 5,
+					"linecount" : 7,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 240.0, 305.0, 150.0, 88.0 ],
-					"text" : "/port \"Bluetooth-Serial-1\"\n/rate/output 0\n/rate/input 0\n/mediansize/received\n/baud",
+					"patching_rect" : [ 339.0, 189.0, 150.0, 114.0 ],
+					"text" : "/port \"usbmodemOSCes311\"\n/rate/output 314\n/rate/input 0\n/mediansize/received 216.5\n/baud 110",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -48,12 +48,13 @@
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"id" : "obj-6",
+					"linecount" : 38,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 2.0, 305.0, 150.0, 34.0 ],
-					"presentation_rect" : [ 24.0, 294.0, 0.0, 0.0 ],
+					"patching_rect" : [ 2.0, 189.0, 217.0, 530.0 ],
+					"text" : "/Manufacturer \"Arduino\"\n/Device \"Esplora\"\n/UniqueID \"usbmodemOSCes311\"\n/Sequence/Number 3174\n/acceleration/x 0.015625\n/acceleration/y 0.0585938\n/acceleration/z 0.242188\n/photoresistor 0.959922\n/slider/horizontal 0.\n/connector/white/right 0.948192\n/connector/orange/left true\n/connector/orange/right false\n/units/temperature \"Celsius\"\n/temperature/celsius 19.\n/microphone/loudness 0.\n/led/rgb 0 0 0\n/joystick/horizontal 0.0078125\n/joystick/vertical -0.0117188\n/connector/white/left 0.521017\n/joystick/button/down false\n/joystick/button/up true\n/joystick/forward/button/down false\n/joystick/forward/button/up true\n/joystick/left/button/down false\n/joystick/left/button/up true\n/joystick/right/button/down false\n/joystick/right/button/up true\n/joystick/backward/button/down false\n/joystick/backward/button/up true\n/diamond/backward/button/down false\n/diamond/backward/button/up true\n/diamond/left/button/down false\n/diamond/left/button/up true\n/diamond/right/button/down false\n/diamond/right/button/up true\n/diamond/forward/button/down false\n/diamond/forward/button/up true\n/microseconds 146237284",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -78,11 +79,13 @@
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"id" : "obj-3",
+					"linecount" : 4,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 350.0, 208.0, 150.0, 34.0 ],
+					"patching_rect" : [ 339.0, 53.0, 150.0, 74.0 ],
+					"text" : "/portletter \"h\"\n/baud 110\n/port \"usbmodemOSCes311\"",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -95,7 +98,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 240.0, 20.0, 333.0, 31.0 ]
+					"patching_rect" : [ 240.0, 20.0, 328.0, 24.0 ]
 				}
 
 			}
@@ -108,7 +111,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 179.0, 161.0, 80.0, 20.0 ],
+					"patching_rect" : [ 157.0, 87.0, 80.0, 20.0 ],
 					"text" : "o.io.slipserial"
 				}
 
@@ -271,6 +274,14 @@
 			}
 , 			{
 				"name" : "o.print.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.slip.encode.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.slip.decode.mxo",
 				"type" : "iLaX"
 			}
 , 			{
