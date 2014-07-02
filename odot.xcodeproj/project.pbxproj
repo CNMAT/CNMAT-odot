@@ -150,8 +150,6 @@
 		119FA143191D608F001C3325 /* o.unless.c in Sources */ = {isa = PBXBuildFile; fileRef = 525525471504D2BB00A10E5D /* o.unless.c */; };
 		119FA144191D6092001C3325 /* o.var.c in Sources */ = {isa = PBXBuildFile; fileRef = 525525491504D2C400A10E5D /* o.var.c */; };
 		119FA145191D6096001C3325 /* o.when.c in Sources */ = {isa = PBXBuildFile; fileRef = 5255254B1504D2CC00A10E5D /* o.when.c */; };
-		11A5D9DC19571C8C00333C1F /* o.slipserial.c in Sources */ = {isa = PBXBuildFile; fileRef = 52AA36F3194B7D15009A1920 /* o.slipserial.c */; };
-		11A5D9DD19571C8D00333C1F /* o.slipserial.c in Sources */ = {isa = PBXBuildFile; fileRef = 52AA36F3194B7D15009A1920 /* o.slipserial.c */; };
 		11A5D9E719574A5100333C1F /* o.context.c in Sources */ = {isa = PBXBuildFile; fileRef = 527294B717EDE93100AA15E1 /* o.context.c */; };
 		11EF2ACB18AFEBB900156403 /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52CEF59416375BFB0016EC39 /* commonsyms.c */; };
 		11EF2ACD18AFEBB900156403 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */; };
@@ -248,9 +246,7 @@
 		52AA36FB194B7D21009A1920 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */; };
 		52AA36FC194B7D21009A1920 /* libo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5AD163763BD0016EC39 /* libo.a */; };
 		52AA36FD194B7D21009A1920 /* libomax.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5C6163763CF0016EC39 /* libomax.a */; };
-		52AA3702194B7D36009A1920 /* o.slipserial.c in Sources */ = {isa = PBXBuildFile; fileRef = 52AA36F3194B7D15009A1920 /* o.slipserial.c */; };
 		52AA370E1954D1AD009A1920 /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52CEF59416375BFB0016EC39 /* commonsyms.c */; };
-		52AA370F1954D1AD009A1920 /* o.slipserial.c in Sources */ = {isa = PBXBuildFile; fileRef = 52AA36F3194B7D15009A1920 /* o.slipserial.c */; };
 		52AA37111954D1AD009A1920 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */; };
 		52AA37121954D1AD009A1920 /* libo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5AD163763BD0016EC39 /* libo.a */; };
 		52AA37131954D1AD009A1920 /* libomax.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5C6163763CF0016EC39 /* libomax.a */; };
@@ -372,6 +368,10 @@
 		52F0C48017B581CC009FBD24 /* libo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5AD163763BD0016EC39 /* libo.a */; };
 		52F0C48117B581CC009FBD24 /* libomax.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5C6163763CF0016EC39 /* libomax.a */; };
 		52F0C48717B581FF009FBD24 /* o.O.c in Sources */ = {isa = PBXBuildFile; fileRef = 52F0C48617B581FF009FBD24 /* o.O.c */; };
+		9B298FD31963E8FA0005B87E /* o.slip.c in Sources */ = {isa = PBXBuildFile; fileRef = 9B298FD21963E8FA0005B87E /* o.slip.c */; };
+		9B298FD41963E8FA0005B87E /* o.slip.c in Sources */ = {isa = PBXBuildFile; fileRef = 9B298FD21963E8FA0005B87E /* o.slip.c */; };
+		9B298FD51963E8FA0005B87E /* o.slip.c in Sources */ = {isa = PBXBuildFile; fileRef = 9B298FD21963E8FA0005B87E /* o.slip.c */; };
+		9B298FD61963E8FA0005B87E /* o.slip.c in Sources */ = {isa = PBXBuildFile; fileRef = 9B298FD21963E8FA0005B87E /* o.slip.c */; };
 		9B3930CB195A286D002EDAE5 /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52CEF59416375BFB0016EC39 /* commonsyms.c */; };
 		9B3930CD195A286D002EDAE5 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */; };
 		9B3930CE195A286D002EDAE5 /* libo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5AD163763BD0016EC39 /* libo.a */; };
@@ -1620,9 +1620,8 @@
 		52A8396C16F3F893002E273C /* pqops.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = pqops.c; path = o.schedule/pqops.c; sourceTree = "<group>"; };
 		52A8396D16F3F893002E273C /* pqops.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = pqops.h; path = o.schedule/pqops.h; sourceTree = "<group>"; };
 		52A8397C16F3F898002E273C /* o.schedule.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.schedule.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
-		52AA36F3194B7D15009A1920 /* o.slipserial.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = o.slipserial.c; path = o.slipserial/o.slipserial.c; sourceTree = "<group>"; };
-		52AA3701194B7D21009A1920 /* o.slipserial.encode.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.slipserial.encode.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
-		52AA37171954D1AD009A1920 /* o.slipserial.decode.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.slipserial.decode.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
+		52AA3701194B7D21009A1920 /* o.slip.encode.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.slip.encode.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
+		52AA37171954D1AD009A1920 /* o.slip.decode.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.slip.decode.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
 		52AA372D19575120009A1920 /* Max-config.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "Max-config.xcconfig"; sourceTree = "<group>"; };
 		52AA372F19575C01009A1920 /* PD-config.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "PD-config.xcconfig"; sourceTree = "<group>"; };
 		52B53CE917480C8100237A19 /* o.downcast.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.downcast.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1652,6 +1651,7 @@
 		52CEF5C6163763CF0016EC39 /* libomax.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libomax.a; path = ../libomax/libomax.a; sourceTree = "<group>"; };
 		52F0C48517B581CC009FBD24 /* o.O.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.O.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
 		52F0C48617B581FF009FBD24 /* o.O.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.O.c; path = o.O/o.O.c; sourceTree = "<group>"; };
+		9B298FD21963E8FA0005B87E /* o.slip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.slip.c; path = o.slip/o.slip.c; sourceTree = "<group>"; };
 		9B3930D3195A286D002EDAE5 /* o.compose.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.compose.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B3930E3195A2898002EDAE5 /* o.display.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.display.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B3930F4195A296C002EDAE5 /* o.compose.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.compose.c; path = o.compose/o.compose.c; sourceTree = "<group>"; };
@@ -2413,7 +2413,7 @@
 				52A8396B16F3F886002E273C /* o.schedule.c */,
 				52B6551617D6A2CF004FD84E /* o.schedule~.c */,
 				525525431504D2A800A10E5D /* o.select.c */,
-				52AA36F3194B7D15009A1920 /* o.slipserial.c */,
+				9B298FD21963E8FA0005B87E /* o.slip.c */,
 				11EF2AD418AFEBFC00156403 /* o.svg.c */,
 				52C839CF167A5B1A000AA688 /* o.table.c */,
 				52A8395816EFFBC4002E273C /* o.timetag.c */,
@@ -2516,11 +2516,11 @@
 				5223ADDA1923EB5700C8FBB5 /* o.expr.codebox.mxo */,
 				112AC85F19394255003244E9 /* o.menu.pd_darwin */,
 				11FC8B0A194C417F00635118 /* o.validate.pd_darwin */,
-				52AA3701194B7D21009A1920 /* o.slipserial.encode.mxo */,
+				52AA3701194B7D21009A1920 /* o.slip.encode.mxo */,
 				9B67862A194BAE98007894BC /* o.uniform.mxo */,
 				11F7B533194C48EF0090045B /* o.downcast.pd_darwin */,
 				9BB5E9DE1952570000932005 /* o.listenumerate.mxo */,
-				52AA37171954D1AD009A1920 /* o.slipserial.decode.mxo */,
+				52AA37171954D1AD009A1920 /* o.slip.decode.mxo */,
 				11A5D9D219571A8300333C1F /* o.slipserial.decode.pd_darwin */,
 				11A5D9DB19571AC400333C1F /* o.slipserial.encode.pd_darwin */,
 				11A5D9E619574A1B00333C1F /* o.context.pd_darwin */,
@@ -3614,9 +3614,9 @@
 			productReference = 119FA13C191D6052001C3325 /* o.when.pd_darwin */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
-		11A5D9CA19571A8300333C1F /* o.slipserial.decode.pd */ = {
+		11A5D9CA19571A8300333C1F /* o.slip.decode.pd */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 11A5D9CF19571A8300333C1F /* Build configuration list for PBXNativeTarget "o.slipserial.decode.pd" */;
+			buildConfigurationList = 11A5D9CF19571A8300333C1F /* Build configuration list for PBXNativeTarget "o.slip.decode.pd" */;
 			buildPhases = (
 				11A5D9CB19571A8300333C1F /* Sources */,
 				11A5D9CD19571A8300333C1F /* Frameworks */,
@@ -3627,14 +3627,14 @@
 			dependencies = (
 				5224CA861958CCB600E37AED /* PBXTargetDependency */,
 			);
-			name = o.slipserial.decode.pd;
+			name = o.slip.decode.pd;
 			productName = o.print.pd;
 			productReference = 11A5D9D219571A8300333C1F /* o.slipserial.decode.pd_darwin */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
-		11A5D9D319571AC400333C1F /* o.slipserial.encode.pd */ = {
+		11A5D9D319571AC400333C1F /* o.slip.encode.pd */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 11A5D9D819571AC400333C1F /* Build configuration list for PBXNativeTarget "o.slipserial.encode.pd" */;
+			buildConfigurationList = 11A5D9D819571AC400333C1F /* Build configuration list for PBXNativeTarget "o.slip.encode.pd" */;
 			buildPhases = (
 				11A5D9D419571AC400333C1F /* Sources */,
 				11A5D9D619571AC400333C1F /* Frameworks */,
@@ -3645,7 +3645,7 @@
 			dependencies = (
 				5224CA8A1958CCBD00E37AED /* PBXTargetDependency */,
 			);
-			name = o.slipserial.encode.pd;
+			name = o.slip.encode.pd;
 			productName = o.print.pd;
 			productReference = 11A5D9DB19571AC400333C1F /* o.slipserial.encode.pd_darwin */;
 			productType = "com.apple.product-type.library.dynamic";
@@ -4310,9 +4310,9 @@
 			productReference = 52A8397C16F3F898002E273C /* o.schedule.mxo */;
 			productType = "com.apple.product-type.bundle";
 		};
-		52AA36F4194B7D21009A1920 /* o.slipserial.encode */ = {
+		52AA36F4194B7D21009A1920 /* o.slip.encode */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 52AA36FE194B7D21009A1920 /* Build configuration list for PBXNativeTarget "o.slipserial.encode" */;
+			buildConfigurationList = 52AA36FE194B7D21009A1920 /* Build configuration list for PBXNativeTarget "o.slip.encode" */;
 			buildPhases = (
 				52AA36F5194B7D21009A1920 /* Headers */,
 				52AA36F6194B7D21009A1920 /* Resources */,
@@ -4324,14 +4324,14 @@
 			dependencies = (
 				5224CA881958CCBA00E37AED /* PBXTargetDependency */,
 			);
-			name = o.slipserial.encode;
+			name = o.slip.encode;
 			productName = cv.jit.dilate;
-			productReference = 52AA3701194B7D21009A1920 /* o.slipserial.encode.mxo */;
+			productReference = 52AA3701194B7D21009A1920 /* o.slip.encode.mxo */;
 			productType = "com.apple.product-type.bundle";
 		};
-		52AA37091954D1AD009A1920 /* o.slipserial.decode */ = {
+		52AA37091954D1AD009A1920 /* o.slip.decode */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 52AA37141954D1AD009A1920 /* Build configuration list for PBXNativeTarget "o.slipserial.decode" */;
+			buildConfigurationList = 52AA37141954D1AD009A1920 /* Build configuration list for PBXNativeTarget "o.slip.decode" */;
 			buildPhases = (
 				52AA370A1954D1AD009A1920 /* Headers */,
 				52AA370B1954D1AD009A1920 /* Resources */,
@@ -4343,9 +4343,9 @@
 			dependencies = (
 				5224CA841958CCB100E37AED /* PBXTargetDependency */,
 			);
-			name = o.slipserial.decode;
+			name = o.slip.decode;
 			productName = cv.jit.dilate;
-			productReference = 52AA37171954D1AD009A1920 /* o.slipserial.decode.mxo */;
+			productReference = 52AA37171954D1AD009A1920 /* o.slip.decode.mxo */;
 			productType = "com.apple.product-type.bundle";
 		};
 		52B53CDC17480C8100237A19 /* o.downcast */ = {
@@ -4701,10 +4701,10 @@
 				52B6550317D68D7C004FD84E /* o.schedule~ */,
 				525524B21504D15F00A10E5D /* o.select */,
 				119FA0F7191D6009001C3325 /* o.select.pd */,
-				52AA37091954D1AD009A1920 /* o.slipserial.decode */,
-				11A5D9CA19571A8300333C1F /* o.slipserial.decode.pd */,
-				52AA36F4194B7D21009A1920 /* o.slipserial.encode */,
-				11A5D9D319571AC400333C1F /* o.slipserial.encode.pd */,
+				52AA37091954D1AD009A1920 /* o.slip.decode */,
+				11A5D9CA19571A8300333C1F /* o.slip.decode.pd */,
+				52AA36F4194B7D21009A1920 /* o.slip.encode */,
+				11A5D9D319571AC400333C1F /* o.slip.encode.pd */,
 				11EF2AC618AFEBB900156403 /* o.svg */,
 				52C839D1167A5B24000AA688 /* o.table */,
 				119FA101191D6010001C3325 /* o.table.pd */,
@@ -5289,7 +5289,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				11A5D9DC19571C8C00333C1F /* o.slipserial.c in Sources */,
+				9B298FD41963E8FA0005B87E /* o.slip.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5297,7 +5297,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				11A5D9DD19571C8D00333C1F /* o.slipserial.c in Sources */,
+				9B298FD61963E8FA0005B87E /* o.slip.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5617,7 +5617,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				52AA36F9194B7D21009A1920 /* commonsyms.c in Sources */,
-				52AA3702194B7D36009A1920 /* o.slipserial.c in Sources */,
+				9B298FD51963E8FA0005B87E /* o.slip.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5626,7 +5626,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				52AA370E1954D1AD009A1920 /* commonsyms.c in Sources */,
-				52AA370F1954D1AD009A1920 /* o.slipserial.c in Sources */,
+				9B298FD31963E8FA0005B87E /* o.slip.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5771,12 +5771,12 @@
 		};
 		1110757A195786660090D286 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 11A5D9CA19571A8300333C1F /* o.slipserial.decode.pd */;
+			target = 11A5D9CA19571A8300333C1F /* o.slip.decode.pd */;
 			targetProxy = 11107579195786660090D286 /* PBXContainerItemProxy */;
 		};
 		1110757C195786660090D286 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 11A5D9D319571AC400333C1F /* o.slipserial.encode.pd */;
+			target = 11A5D9D319571AC400333C1F /* o.slip.encode.pd */;
 			targetProxy = 1110757B195786660090D286 /* PBXContainerItemProxy */;
 		};
 		112643F7194E3BA500726422 /* PBXTargetDependency */ = {
@@ -6525,12 +6525,12 @@
 		};
 		52AA37191954D4E6009A1920 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 52AA37091954D1AD009A1920 /* o.slipserial.decode */;
+			target = 52AA37091954D1AD009A1920 /* o.slip.decode */;
 			targetProxy = 52AA37181954D4E6009A1920 /* PBXContainerItemProxy */;
 		};
 		52AA371B1954D4E6009A1920 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 52AA36F4194B7D21009A1920 /* o.slipserial.encode */;
+			target = 52AA36F4194B7D21009A1920 /* o.slip.encode */;
 			targetProxy = 52AA371A1954D4E6009A1920 /* PBXContainerItemProxy */;
 		};
 		52AA37271954D509009A1920 /* PBXTargetDependency */ = {
@@ -9827,7 +9827,7 @@
 				OTHER_CFLAGS = (
 					"-DOMAX_PD_VERSION",
 					"-DNO_TRANSLATION_SUPPORT",
-					"-DOSLIPSERIAL_DECODE",
+					"-DOSLIP_DECODE",
 				);
 				OTHER_LDFLAGS = (
 					"-undefined",
@@ -9885,7 +9885,7 @@
 				OTHER_CFLAGS = (
 					"-DOMAX_PD_VERSION",
 					"-DNO_TRANSLATION_SUPPORT",
-					"-DOSLIPSERIAL_DECODE",
+					"-DOSLIP_DECODE",
 				);
 				OTHER_LDFLAGS = (
 					"-undefined",
@@ -9949,7 +9949,7 @@
 				OTHER_CFLAGS = (
 					"-DOMAX_PD_VERSION",
 					"-DNO_TRANSLATION_SUPPORT",
-					"-DOSLIPSERIAL_ENCODE",
+					"-DOSLIP_ENCODE",
 				);
 				OTHER_LDFLAGS = (
 					"-undefined",
@@ -10007,7 +10007,7 @@
 				OTHER_CFLAGS = (
 					"-DOMAX_PD_VERSION",
 					"-DNO_TRANSLATION_SUPPORT",
-					"-DOSLIPSERIAL_ENCODE",
+					"-DOSLIP_ENCODE",
 				);
 				OTHER_LDFLAGS = (
 					"-undefined",
@@ -13923,7 +13923,7 @@
 				OTHER_CFLAGS = (
 					"-g",
 					"-DNO_TRANSLATION_SUPPORT",
-					"-DOSLIPSERIAL_ENCODE",
+					"-DOSLIP_ENCODE",
 				);
 				OTHER_LDFLAGS = "$(inherited)";
 				PREBINDING = YES;
@@ -13977,7 +13977,7 @@
 				OTHER_CFLAGS = (
 					"-g",
 					"-DNO_TRANSLATION_SUPPORT",
-					"-DOSLIPSERIAL_ENCODE",
+					"-DOSLIP_ENCODE",
 				);
 				OTHER_LDFLAGS = "$(inherited)";
 				PREBINDING = YES;
@@ -14031,7 +14031,7 @@
 				OTHER_CFLAGS = (
 					"-g",
 					"-DNO_TRANSLATION_SUPPORT",
-					"-DOSLIPSERIAL_DECODE",
+					"-DOSLIP_DECODE",
 				);
 				OTHER_LDFLAGS = "$(inherited)";
 				PREBINDING = YES;
@@ -14085,7 +14085,7 @@
 				OTHER_CFLAGS = (
 					"-g",
 					"-DNO_TRANSLATION_SUPPORT",
-					"-DOSLIPSERIAL_DECODE",
+					"-DOSLIP_DECODE",
 				);
 				OTHER_LDFLAGS = "$(inherited)";
 				PREBINDING = YES;
@@ -15768,7 +15768,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		11A5D9CF19571A8300333C1F /* Build configuration list for PBXNativeTarget "o.slipserial.decode.pd" */ = {
+		11A5D9CF19571A8300333C1F /* Build configuration list for PBXNativeTarget "o.slip.decode.pd" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				11A5D9D019571A8300333C1F /* Debug */,
@@ -15777,7 +15777,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		11A5D9D819571AC400333C1F /* Build configuration list for PBXNativeTarget "o.slipserial.encode.pd" */ = {
+		11A5D9D819571AC400333C1F /* Build configuration list for PBXNativeTarget "o.slip.encode.pd" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				11A5D9D919571AC400333C1F /* Debug */,
@@ -16137,7 +16137,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		52AA36FE194B7D21009A1920 /* Build configuration list for PBXNativeTarget "o.slipserial.encode" */ = {
+		52AA36FE194B7D21009A1920 /* Build configuration list for PBXNativeTarget "o.slip.encode" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				52AA36FF194B7D21009A1920 /* Debug */,
@@ -16146,7 +16146,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		52AA37141954D1AD009A1920 /* Build configuration list for PBXNativeTarget "o.slipserial.decode" */ = {
+		52AA37141954D1AD009A1920 /* Build configuration list for PBXNativeTarget "o.slip.decode" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				52AA37151954D1AD009A1920 /* Debug */,

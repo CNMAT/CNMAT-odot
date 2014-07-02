@@ -25,20 +25,20 @@
 
 */
 
-#ifdef OSLIPSERIAL_ENCODE
-#define OMAX_DOC_NAME "o.slipserial.encode"
+#ifdef OSLIP_ENCODE
+#define OMAX_DOC_NAME "o.slip.encode"
 #define OMAX_DOC_SHORT_DESC "SLIP encodes an OSC packet and outputs a stream of bytes."
 #define OMAX_DOC_LONG_DESC "SLIP encodes an OSC packet and outputs a stream of bytes suitable for use with Max's serial object."
 #define OMAX_DOC_INLETS_DESC (char *[]){"FullPacket"}
 #define OMAX_DOC_OUTLETS_DESC (char *[]){"Byte stream"}
-#define OMAX_DOC_SEEALSO  (char *[]){"o.slipserial.decode"}
-#elif defined(OSLIPSERIAL_DECODE)
-#define OMAX_DOC_NAME "o.slipserial.decode"
+#define OMAX_DOC_SEEALSO  (char *[]){"o.slip.decode"}
+#elif defined(OSLIP_DECODE)
+#define OMAX_DOC_NAME "o.slip.decode"
 #define OMAX_DOC_SHORT_DESC "Decodes a SLIP stream and outputs an OSC packet."
 #define OMAX_DOC_LONG_DESC "Decodes a SLIP stream and converts it into an OSC packet."
 #define OMAX_DOC_INLETS_DESC (char *[]){"Bytes (int or list)"}
 #define OMAX_DOC_OUTLETS_DESC (char *[]){"FullPacket"}
-#define OMAX_DOC_SEEALSO  (char *[]){"o.slipserial.encode"}
+#define OMAX_DOC_SEEALSO  (char *[]){"o.slip.encode"}
 #endif
 
 #include "odot_version.h"
@@ -49,7 +49,7 @@
 #include "ext_obex.h"
 #include "ext_obex_util.h"
 #include "ext_critical.h"
-#ifdef OSLIPSERIAL_ENCODE
+#ifdef OSLIP_ENCODE
 #include "omax_dict.h"
 #endif
 #endif
@@ -60,13 +60,13 @@
 #include "omax_doc.h"
 #include "o.h"
 
-t_class *oslipserial_class;
+t_class *oslip_class;
 
 t_symbol *ps_gimme, *ps_OSCTimeTag, *ps_FullPacket, *ps_OSCBlob;
 
 #define MAXSLIPBUF 2048
 
-typedef struct oslipserial {
+typedef struct oslip {
 	t_object ob;
 	void *outlet;  
   
@@ -74,22 +74,22 @@ typedef struct oslipserial {
 	int icount;
 	short istate; // initialize to 0
 	t_critical lock;
-} t_oslipserial;
+} t_oslip;
 
-void *oslipserial_new(long arg);
-void oslipserial_assist(t_oslipserial *x, void *b, long m, long a, char *s);
+void *oslip_new(long arg);
+void oslip_assist(t_oslip *x, void *b, long m, long a, char *s);
 
-void oslipserial_send(t_oslipserial *x);
+void oslip_send(t_oslip *x);
 
-void oslipserial_bang(t_oslipserial *x);
-void oslipserial_readtypestrings(t_oslipserial *x, int yesno);
-void oslipserial_writetypestrings(t_oslipserial *x, int yesno);
-void oslipserial_printcontents(t_oslipserial *x);
+void oslip_bang(t_oslip *x);
+void oslip_readtypestrings(t_oslip *x, int yesno);
+void oslip_writetypestrings(t_oslip *x, int yesno);
+void oslip_printcontents(t_oslip *x);
 
-void oslipserial_accumulateMessage(t_oslipserial *x, char *messageName, short argc, t_atom *argv);
-int oslipserial_stringSubstitution(char *target, char *format, short *argcp, t_atom **argvp);
-void oslipserial_sendBuffer(t_oslipserial *x);
-void oslipserial_sendData(t_oslipserial *x, short size, char *data);
+void oslip_accumulateMessage(t_oslip *x, char *messageName, short argc, t_atom *argv);
+int oslip_stringSubstitution(char *target, char *format, short *argcp, t_atom **argvp);
+void oslip_sendBuffer(t_oslip *x);
+void oslip_sendData(t_oslip *x, short size, char *data);
 
 // SLIP codes
 #define END             0300    // indicates end of packet 
@@ -98,14 +98,14 @@ void oslipserial_sendData(t_oslipserial *x, short size, char *data);
 #define ESC_ESC         0335    // ESC ESC_ESC means ESC data byte
 
 
-#ifdef OSLIPSERIAL_ENCODE
+#ifdef OSLIP_ENCODE
 #ifdef OMAX_PD_VERSION
-void oslipserial_FullPacket(t_oslipserial *x, t_symbol *msg, short argc, t_atom *argv) {
+void oslip_FullPacket(t_oslip *x, t_symbol *msg, short argc, t_atom *argv) {
     OMAX_UTIL_GET_LEN_AND_PTR
     long size = len;
     char *source = ptr;
 #else
-void oslipserial_FullPacket(t_oslipserial *x, long size, unsigned char *source) {
+void oslip_FullPacket(t_oslip *x, long size, unsigned char *source) {
 #endif
 	t_atom encoded[size * 2 + 1];
 	memset(encoded, '\0', size * 2 + 1);
@@ -158,9 +158,9 @@ void oslipserial_FullPacket(t_oslipserial *x, long size, unsigned char *source) 
 	outlet_list(x->outlet, NULL, i, encoded);  
 }
 
-#elif defined(OSLIPSERIAL_DECODE)
+#elif defined(OSLIP_DECODE)
   
-int oslipserial_decode(t_oslipserial *x, unsigned char c)
+int oslip_decode(t_oslip *x, unsigned char c)
 {
 	critical_enter(x->lock);
 	int t; 
@@ -201,7 +201,7 @@ int oslipserial_decode(t_oslipserial *x, unsigned char c)
 						memcpy(buf, x->slipibuf, t);
 	critical_exit(x->lock);
 						omax_util_outletOSC(x->outlet, t, buf);
-						//oslipserial_sendData(x, t, x->slipibuf);
+						//oslip_sendData(x, t, x->slipibuf);
 						return 0;
 					}else{
     critical_exit(x->lock);
@@ -263,17 +263,17 @@ int oslipserial_decode(t_oslipserial *x, unsigned char c)
 }
 
 #ifdef OMAX_PD_VERSION
-void slipbyte(t_oslipserial *x, t_float f)
+void slipbyte(t_oslip *x, t_float f)
 {
     long n = (long)f;
 #else
-void slipbyte(t_oslipserial *x, long n)
+void slipbyte(t_oslip *x, long n)
 {
 #endif
-	oslipserial_decode(x, n);
+	oslip_decode(x, n);
 }
 
-void sliplist(t_oslipserial *x, t_symbol *s, int argc, t_atom *argv)
+void sliplist(t_oslip *x, t_symbol *s, int argc, t_atom *argv)
 {
 	int i;
 	for(i = 0; i < argc; ++i) {
@@ -292,29 +292,29 @@ void sliplist(t_oslipserial *x, t_symbol *s, int argc, t_atom *argv)
 	for(i=0;i<argc;++i) {
 		int e = atom_getlong(argv + i);
 		if(e < 256){
-			oslipserial_decode(x, e);
+			oslip_decode(x, e);
 		}
 	}
 }
 #endif
 
-void oslipserial_doc(t_oslipserial *x)
+void oslip_doc(t_oslip *x)
 {
 	omax_doc_outletDoc(x->outlet);
 }
 
-void myobject_free(t_oslipserial *x);
-void myobject_free(t_oslipserial *x)
+void myobject_free(t_oslip *x);
+void myobject_free(t_oslip *x)
 {
 	critical_free(x->lock);
 }
 
 #ifdef OMAX_PD_VERSION
 
-void *oslipserial_new(long arg) {
-	t_oslipserial *x;
+void *oslip_new(long arg) {
+	t_oslip *x;
     
-	x = (t_oslipserial *)object_alloc(oslipserial_class);
+	x = (t_oslip *)object_alloc(oslip_class);
 	if(!x){
 		return NULL;
 	}
@@ -329,25 +329,25 @@ void *oslipserial_new(long arg) {
 	return x;
 }
 
-#ifdef OSLIPSERIAL_ENCODE
-int setup_o0x2eslipserial0x2eencode(void)
-#elif defined(OSLIPSERIAL_DECODE)
-int setup_o0x2eslipserial0x2edecode(void)
+#ifdef OSLIP_ENCODE
+int setup_o0x2eslip0x2eencode(void)
+#elif defined(OSLIP_DECODE)
+int setup_o0x2eslip0x2edecode(void)
 #endif
 {
-	t_class *c = class_new( gensym(OMAX_DOC_NAME), (t_newmethod)oslipserial_new,(t_method)myobject_free, (short)sizeof(t_oslipserial),0L, A_DEFFLOAT,0);
+	t_class *c = class_new( gensym(OMAX_DOC_NAME), (t_newmethod)oslip_new,(t_method)myobject_free, (short)sizeof(t_oslip),0L, A_DEFFLOAT,0);
     
 	class_addmethod(c, (t_method)odot_version, gensym("version"), 0);
-	class_addmethod(c, (t_method)oslipserial_doc, gensym("doc"), 0);
+	class_addmethod(c, (t_method)oslip_doc, gensym("doc"), 0);
     
-#ifdef OSLIPSERIAL_DECODE
+#ifdef OSLIP_DECODE
     class_addfloat(c, slipbyte);
 	class_addmethod(c, (t_method)sliplist, gensym("list"), A_GIMME, 0);
 #endif
     
-	class_addmethod(c, (t_method)oslipserial_printcontents, gensym("printcontents"), 0);
-#ifdef OSLIPSERIAL_ENCODE
-	class_addmethod(c, (t_method)oslipserial_FullPacket, gensym("FullPacket"), A_GIMME, 0);
+	class_addmethod(c, (t_method)oslip_printcontents, gensym("printcontents"), 0);
+#ifdef OSLIP_ENCODE
+	class_addmethod(c, (t_method)oslip_FullPacket, gensym("FullPacket"), A_GIMME, 0);
 #endif
     
 	// remove this if statement when we stop supporting Max 5
@@ -355,7 +355,7 @@ int setup_o0x2eslipserial0x2edecode(void)
 //	finder_addclass("Devices","slipOSC");
     
 //	class_register(CLASS_BOX, c);
-	oslipserial_class = c;
+	oslip_class = c;
     
 	ODOT_PRINT_VERSION;
 	return 0;
@@ -363,35 +363,35 @@ int setup_o0x2eslipserial0x2edecode(void)
 
 #else
 
-#ifdef OSLIPSERIAL_ENCODE
-OMAX_DICT_DICTIONARY(t_oslipserial, x, oslipserial_FullPacket);
+#ifdef OSLIP_ENCODE
+OMAX_DICT_DICTIONARY(t_oslip, x, oslip_FullPacket);
 #endif
 
-void oslipserial_assist(t_oslipserial *x, void *b, long m, long a, char *dst) {
+void oslip_assist(t_oslip *x, void *b, long m, long a, char *dst) {
 	omax_doc_assist(m, a, dst);
 }
 
 
 int main (void)
 {  
-	t_class *c = class_new(OMAX_DOC_NAME, (method) oslipserial_new,(method) myobject_free,(short)sizeof(t_oslipserial),0L,A_DEFLONG,0);
+	t_class *c = class_new(OMAX_DOC_NAME, (method) oslip_new,(method) myobject_free,(short)sizeof(t_oslip),0L,A_DEFLONG,0);
   
-	class_addmethod(c, (method)oslipserial_assist, "assist", A_CANT,0);
+	class_addmethod(c, (method)oslip_assist, "assist", A_CANT,0);
 	class_addmethod(c, (method)odot_version, "version", 0);
-	class_addmethod(c, (method)oslipserial_doc, "doc", 0);
+	class_addmethod(c, (method)oslip_doc, "doc", 0);
 
-#ifdef OSLIPSERIAL_DECODE  
+#ifdef OSLIP_DECODE  
 	class_addmethod(c, (method)slipbyte, "int", A_LONG, 0);
 	class_addmethod(c, (method)sliplist, "list", A_GIMME, 0);
 #endif
   
-	class_addmethod(c, (method)oslipserial_printcontents, "printcontents", 0);
-#ifdef OSLIPSERIAL_ENCODE
-	class_addmethod(c, (method)oslipserial_FullPacket, "FullPacket", A_LONG, A_LONG, 0);
+	class_addmethod(c, (method)oslip_printcontents, "printcontents", 0);
+#ifdef OSLIP_ENCODE
+	class_addmethod(c, (method)oslip_FullPacket, "FullPacket", A_LONG, A_LONG, 0);
 #endif
 
 	// remove this if statement when we stop supporting Max 5
-#ifdef OSLIPSERIAL_ENCODE
+#ifdef OSLIP_ENCODE
 	if(omax_dict_resolveDictStubs()){
 		class_addmethod(c, (method)omax_dict_dictionary, "dictionary", A_GIMME, 0);
 	}
@@ -399,16 +399,16 @@ int main (void)
 	finder_addclass("Devices","slipOSC");
 
 	class_register(CLASS_BOX, c);
-	oslipserial_class = c;
+	oslip_class = c;
 
 	ODOT_PRINT_VERSION;
 	return 0;
 }
 
-void *oslipserial_new(long arg) {
-	t_oslipserial *x;
+void *oslip_new(long arg) {
+	t_oslip *x;
   
-	x = (t_oslipserial *) object_alloc(oslipserial_class);
+	x = (t_oslip *) object_alloc(oslip_class);
 	if(!x){
 		return NULL;
 	}
@@ -425,19 +425,19 @@ void *oslipserial_new(long arg) {
 
 #endif
 
-#define MAX_ARGS_TO_oslipserial_MSG 1024
+#define MAX_ARGS_TO_oslip_MSG 1024
 
 #define PRINTABLE(c) ((char) (c>= 0x20 && c <= 0x7e ? c : 'û'))
 #define isprint(c) ((c) >= 0x20 && (c) <= 0x7e)
 
-void oslipserial_printcontents (t_oslipserial *x) {
+void oslip_printcontents (t_oslip *x) {
 	char *m, buf[100], *p;
 	int n, i;
   
 	m = x->slipibuf;
 	n = x->icount;
   
-	object_post((t_object *)x, "oslipserial_printcontents: buffer %p, size %ld", m, (long) n);
+	object_post((t_object *)x, "oslip_printcontents: buffer %p, size %ld", m, (long) n);
   
 	if (n % 4 != 0) {
 		object_post((t_object *)x, "Hey, the size isn't a multiple of 4!");
@@ -483,12 +483,12 @@ void oslipserial_printcontents (t_oslipserial *x) {
 /* In the old days, we used to have to compute the size of our messages
    by hand to see if there was room in the buffer. */
 
-int oslipserial_messageSize(char *messageName, short argc, t_atom *argv) {
+int oslip_messageSize(char *messageName, short argc, t_atom *argv) {
 	int result;
 	int i;
   
 	/* First, we need space for the messageName */
-	result = oslipserial_effectiveStringLength(messageName);	
+	result = oslip_effectiveStringLength(messageName);	
  slipOSC.c:266: warning: return type of 'main' is not 'int'
     
 		/* Now account for the arguments */
@@ -503,7 +503,7 @@ int oslipserial_messageSize(char *messageName, short argc, t_atom *argv) {
 				break;
 	
 			case A_SYM:
-				result += oslipserial_effectiveStringLength(argv[i].a_w.w_sym->s_name);
+				result += oslip_effectiveStringLength(argv[i].a_w.w_sym->s_name);
 				break;
 	
 			default:
