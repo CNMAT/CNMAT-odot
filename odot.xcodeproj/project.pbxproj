@@ -1548,8 +1548,8 @@
 		119FA128191D6032001C3325 /* o.unless.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = o.unless.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
 		119FA132191D6040001C3325 /* o.var.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = o.var.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
 		119FA13C191D6052001C3325 /* o.when.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = o.when.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
-		11A5D9D219571A8300333C1F /* o.slipserial.decode.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = o.slipserial.decode.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
-		11A5D9DB19571AC400333C1F /* o.slipserial.encode.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = o.slipserial.encode.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
+		11A5D9D219571A8300333C1F /* o.slip.decode.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = o.slip.decode.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
+		11A5D9DB19571AC400333C1F /* o.slip.encode.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = o.slip.encode.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
 		11A5D9E619574A1B00333C1F /* o.context.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = o.context.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
 		11EF2AD318AFEBB900156403 /* o.svg.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.svg.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
 		11EF2AD418AFEBFC00156403 /* o.svg.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.svg.c; path = o.svg/o.svg.c; sourceTree = "<group>"; };
@@ -2521,8 +2521,8 @@
 				11F7B533194C48EF0090045B /* o.downcast.pd_darwin */,
 				9BB5E9DE1952570000932005 /* o.listenumerate.mxo */,
 				52AA37171954D1AD009A1920 /* o.slip.decode.mxo */,
-				11A5D9D219571A8300333C1F /* o.slipserial.decode.pd_darwin */,
-				11A5D9DB19571AC400333C1F /* o.slipserial.encode.pd_darwin */,
+				11A5D9D219571A8300333C1F /* o.slip.decode.pd_darwin */,
+				11A5D9DB19571AC400333C1F /* o.slip.encode.pd_darwin */,
 				11A5D9E619574A1B00333C1F /* o.context.pd_darwin */,
 				9B3930D3195A286D002EDAE5 /* o.compose.mxo */,
 				9B3930E3195A2898002EDAE5 /* o.display.mxo */,
@@ -3629,7 +3629,7 @@
 			);
 			name = o.slip.decode.pd;
 			productName = o.print.pd;
-			productReference = 11A5D9D219571A8300333C1F /* o.slipserial.decode.pd_darwin */;
+			productReference = 11A5D9D219571A8300333C1F /* o.slip.decode.pd_darwin */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
 		11A5D9D319571AC400333C1F /* o.slip.encode.pd */ = {
@@ -3647,7 +3647,7 @@
 			);
 			name = o.slip.encode.pd;
 			productName = o.print.pd;
-			productReference = 11A5D9DB19571AC400333C1F /* o.slipserial.encode.pd_darwin */;
+			productReference = 11A5D9DB19571AC400333C1F /* o.slip.encode.pd_darwin */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
 		11A5D9DE19574A1B00333C1F /* o.context.pd */ = {
@@ -9834,7 +9834,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../libo/libo.a\" \"$(SRCROOT)/../libomax/libopd.a\"";
-				PRODUCT_NAME = o.slipserial.decode;
+				PRODUCT_NAME = o.slip.decode;
 				WRAPPER_EXTENSION = "";
 			};
 			name = Debug;
@@ -9892,7 +9892,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../libo/libo.a\" \"$(SRCROOT)/../libomax/libopd.a\"";
-				PRODUCT_NAME = o.slipserial.decode;
+				PRODUCT_NAME = o.slip.decode;
 				SYMROOT = "$(PROJECT_DIR)/pd_release_package/cnmat";
 				WRAPPER_EXTENSION = "";
 			};
@@ -9956,7 +9956,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../libo/libo.a\" \"$(SRCROOT)/../libomax/libopd.a\"";
-				PRODUCT_NAME = o.slipserial.encode;
+				PRODUCT_NAME = o.slip.encode;
 				WRAPPER_EXTENSION = "";
 			};
 			name = Debug;
@@ -10014,7 +10014,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../libo/libo.a\" \"$(SRCROOT)/../libomax/libopd.a\"";
-				PRODUCT_NAME = o.slipserial.encode;
+				PRODUCT_NAME = o.slip.encode;
 				SYMROOT = "$(PROJECT_DIR)/pd_release_package/cnmat";
 				WRAPPER_EXTENSION = "";
 			};
