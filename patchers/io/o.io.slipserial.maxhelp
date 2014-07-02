@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 6,
 			"minor" : 1,
-			"revision" : 2,
+			"revision" : 6,
 			"architecture" : "x86"
 		}
 ,
@@ -31,29 +31,14 @@
 				"box" : 				{
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
-					"id" : "obj-12",
-					"maxclass" : "newobj",
+					"id" : "obj-7",
+					"linecount" : 5,
+					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 522.0, 232.0, 44.0, 20.0 ],
-					"text" : "o.print"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontname" : "Arial",
-					"fontsize" : 12.0,
-					"id" : "obj-11",
-					"linecount" : 2,
-					"maxclass" : "o.message",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 344.0, 165.0, 277.0, 33.0 ],
-					"presentation_rect" : [ 344.0, 165.0, 0.0, 0.0 ],
-					"text" : "/port \"a\" \n/baud 2400 \n",
+					"patching_rect" : [ 240.0, 305.0, 150.0, 88.0 ],
+					"text" : "/port \"Bluetooth-Serial-1\"\n/rate/output 0\n/rate/input 0\n/mediansize/received\n/baud",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -62,13 +47,13 @@
 				"box" : 				{
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
-					"id" : "obj-8",
-					"maxclass" : "o.message",
-					"numinlets" : 2,
+					"id" : "obj-6",
+					"maxclass" : "o.display",
+					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 45.0, 244.0, 277.0, 20.0 ],
-					"presentation_rect" : [ 45.0, 244.0, 0.0, 0.0 ],
+					"patching_rect" : [ 2.0, 305.0, 150.0, 34.0 ],
+					"presentation_rect" : [ 24.0, 294.0, 0.0, 0.0 ],
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -77,14 +62,13 @@
 				"box" : 				{
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
-					"id" : "obj-7",
-					"maxclass" : "o.message",
-					"numinlets" : 2,
+					"id" : "obj-4",
+					"maxclass" : "o.compose",
+					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 32.0, 53.0, 277.0, 20.0 ],
-					"presentation_rect" : [ 32.0, 53.0, 0.0, 0.0 ],
-					"text" : "/test ",
+					"patching_rect" : [ 2.0, 20.0, 150.0, 24.0 ],
+					"text" : "/test",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -93,14 +77,12 @@
 				"box" : 				{
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
-					"id" : "obj-5",
-					"linecount" : 6,
-					"maxclass" : "o.message",
-					"numinlets" : 2,
+					"id" : "obj-3",
+					"maxclass" : "o.display",
+					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 259.0, 301.0, 277.0, 87.0 ],
-					"text" : "/portname \"Bluetooth-PDA-Sync\" \n/rate/output 0 \n/rate/input 0 \n/mediansize/received \n/baud 2400 \n/port \"a\" \n",
+					"patching_rect" : [ 350.0, 208.0, 150.0, 34.0 ],
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -113,7 +95,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 250.0, 91.0, 358.0, 36.0 ]
+					"patching_rect" : [ 240.0, 20.0, 333.0, 31.0 ]
 				}
 
 			}
@@ -125,25 +107,17 @@
 					"maxclass" : "newobj",
 					"numinlets" : 2,
 					"numoutlets" : 2,
-					"outlettype" : [ "", "FullPacket" ],
-					"patching_rect" : [ 179.0, 161.0, 127.0, 20.0 ],
-					"text" : "o.io.slipserial e 38400"
+					"outlettype" : [ "FullPacket", "FullPacket" ],
+					"patching_rect" : [ 179.0, 161.0, 80.0, 20.0 ],
+					"text" : "o.io.slipserial"
 				}
 
 			}
  ],
 		"lines" : [ 			{
 				"patchline" : 				{
-					"destination" : [ "obj-5", 1 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"source" : [ "obj-1", 1 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-8", 1 ],
+					"color" : [ 1.0, 0.8, 0.4, 1.0 ],
+					"destination" : [ "obj-6", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-1", 0 ]
@@ -152,6 +126,17 @@
 			}
 , 			{
 				"patchline" : 				{
+					"color" : [ 1.0, 0.8, 0.4, 1.0 ],
+					"destination" : [ "obj-7", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-1", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"color" : [ 1.0, 0.8, 0.4, 1.0 ],
 					"destination" : [ "obj-1", 1 ],
 					"disabled" : 0,
 					"hidden" : 0,
@@ -161,7 +146,8 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-11", 1 ],
+					"color" : [ 1.0, 0.8, 0.4, 1.0 ],
+					"destination" : [ "obj-3", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-2", 0 ]
@@ -170,47 +156,81 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-12", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"source" : [ "obj-2", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
+					"color" : [ 1.0, 0.8, 0.4, 1.0 ],
 					"destination" : [ "obj-1", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"source" : [ "obj-7", 0 ]
+					"source" : [ "obj-4", 0 ]
 				}
 
 			}
  ],
 		"dependency_cache" : [ 			{
 				"name" : "o.io.slipserial.maxpat",
-				"bootpath" : "/Applications/Max 6.1/patches/CNMAT_Externals/odot/abstractions",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/patchers/io",
 				"patcherrelativepath" : ".",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "o.arguments.maxpat",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/patchers",
+				"patcherrelativepath" : "..",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "o.righttoleft.maxpat",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/patchers/core",
+				"patcherrelativepath" : "../core",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "o.in.maxpat",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/patchers/core",
+				"patcherrelativepath" : "../core",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "o.port.maxpat",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/patchers/core",
+				"patcherrelativepath" : "../core",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "o.aspect.joinpoint.maxpat",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/patchers/aspect",
+				"patcherrelativepath" : "../aspect",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "o.out.maxpat",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/patchers/core",
+				"patcherrelativepath" : "../core",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.io.serial.display.maxpat",
-				"bootpath" : "/Applications/Max 6.1/patches/CNMAT_Externals/odot/abstractions",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/patchers/io",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
-			}
-, 			{
-				"name" : "slipOSC.mxo",
-				"type" : "iLaX"
 			}
 , 			{
 				"name" : "o.pack.mxo",
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "OpenSoundControl.mxo",
+				"name" : "o.route.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.union.mxo",
 				"type" : "iLaX"
 			}
 , 			{
@@ -218,11 +238,35 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "o.downcast.mxo",
+				"name" : "o.if.mxo",
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "o.route.mxo",
+				"name" : "o.select.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.context.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.var.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.pak.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.prepend.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.cond.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.validate.mxo",
 				"type" : "iLaX"
 			}
 , 			{
@@ -231,6 +275,14 @@
 			}
 , 			{
 				"name" : "o.message.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.display.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.compose.mxo",
 				"type" : "iLaX"
 			}
  ]
