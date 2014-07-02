@@ -8,7 +8,7 @@
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 0.0, 128.0, 768.0, 456.0 ],
+		"rect" : [ 313.0, 116.0, 768.0, 456.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -37,7 +37,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 310.0, 268.0, 150.0, 60.0 ],
+					"patching_rect" : [ 334.0, 271.0, 150.0, 60.0 ],
 					"text" : "Direction of rotation of a cursor device\n\nAdrian Freed 2013 2014"
 				}
 
@@ -52,8 +52,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 12.0, 231.0, 252.0, 208.0 ],
-					"text" : "/horizontal 759\n/vertical 624\n/shift \"up\"\n/capslock \"up\"\n/option \"up\"\n/control \"up\"\n/command \"down\"\n/button/is \"up\"\n/was/horizontal 759\n/was/vertical 624\n/angle 0.\n/was/angle 0.\n/angle/difference 0.\n/direction \"still\"",
+					"patching_rect" : [ 36.0, 223.606644, 252.0, 208.0 ],
+					"text" : "/horizontal 1146\n/vertical -1020\n/shift \"up\"\n/capslock \"up\"\n/option \"up\"\n/control \"up\"\n/command \"down\"\n/button/is \"up\"\n/was/horizontal 1147\n/was/vertical -1020\n/angle 3.14159\n/was/angle 3.14159\n/angle/difference 0.\n/direction \"still\"",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -67,7 +67,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 13.0, 56.0, 145.0, 20.0 ],
+					"patching_rect" : [ 36.0, 52.569244, 145.0, 20.0 ],
 					"text" : "o.was /horizontal /vertical"
 				}
 
@@ -82,7 +82,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 12.0, 164.0, 712.0, 46.0 ],
+					"patching_rect" : [ 36.0, 162.276978, 712.0, 46.0 ],
 					"text" : "/angle/difference = /angle - /was/angle; \n/direction = /angle/difference==0?still:(/angle/difference>0? clockwise:anticlockwise);",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -97,7 +97,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 13.0, 125.0, 78.0, 20.0 ],
+					"patching_rect" : [ 36.0, 125.707726, 78.0, 20.0 ],
 					"text" : "o.was /angle"
 				}
 
@@ -111,7 +111,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 14.0, 92.0, 396.0, 20.0 ],
+					"patching_rect" : [ 36.0, 89.138489, 396.0, 20.0 ],
 					"text" : "o.expr /angle=atan2(/vertical - /was/vertical\\,/horizontal - /was/horizontal )"
 				}
 
@@ -125,7 +125,7 @@
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 13.0, 13.0, 69.0, 20.0 ],
+					"patching_rect" : [ 36.0, 16.0, 69.0, 20.0 ],
 					"text" : "o.io.mouse"
 				}
 
@@ -133,6 +133,7 @@
  ],
 		"lines" : [ 			{
 				"patchline" : 				{
+					"color" : [ 1.0, 0.8, 0.4, 1.0 ],
 					"destination" : [ "obj-6", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
@@ -142,6 +143,7 @@
 			}
 , 			{
 				"patchline" : 				{
+					"color" : [ 1.0, 0.8, 0.4, 1.0 ],
 					"destination" : [ "obj-10", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
@@ -151,6 +153,7 @@
 			}
 , 			{
 				"patchline" : 				{
+					"color" : [ 1.0, 0.8, 0.4, 1.0 ],
 					"destination" : [ "obj-8", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
@@ -160,6 +163,7 @@
 			}
 , 			{
 				"patchline" : 				{
+					"color" : [ 1.0, 0.8, 0.4, 1.0 ],
 					"destination" : [ "obj-9", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
@@ -169,6 +173,7 @@
 			}
 , 			{
 				"patchline" : 				{
+					"color" : [ 1.0, 0.8, 0.4, 1.0 ],
 					"destination" : [ "obj-1", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
@@ -228,8 +233,8 @@
 			}
 , 			{
 				"name" : "o.arguments.maxpat",
-				"bootpath" : "/Users/adrian2013/Documents/Max/Packages/odot/patchers",
-				"patcherrelativepath" : "../../Documents/Max/Packages/odot/patchers",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/patchers",
+				"patcherrelativepath" : "../patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}

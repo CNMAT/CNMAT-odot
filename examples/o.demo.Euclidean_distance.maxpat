@@ -8,7 +8,7 @@
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 0.0, 150.0, 1053.0, 647.0 ],
+		"rect" : [ 387.0, 96.0, 1053.0, 647.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -37,7 +37,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 128.0, 387.0, 150.0, 47.0 ],
+					"patching_rect" : [ 449.0, 43.0, 150.0, 47.0 ],
 					"text" : "John MacCallum\nAdrian Freed\n2013, 2014"
 				}
 
@@ -52,8 +52,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 532.0, 347.0, 385.0, 101.0 ],
-					"presentation_rect" : [ 532.0, 347.0, 0.0, 0.0 ],
+					"patching_rect" : [ 59.0, 375.0, 366.0, 101.0 ],
 					"text" : "/p 0 1 2 -3 4 5 2e-05 3\n/q 0.01 1.2 -1.9 3.001 4. 4.999 1e-05 4\n/delta 0.01 0.2 -3.9 6.001 0. -0.001 -1e-05 1\n/squared/delta 0.0001 0.04 15.21 36.012 0. 1e-06 1e-10 1.\n/sum/squared/delta 52.2621\n/dist 7.22925",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -69,7 +68,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 534.0, 249.0, 366.0, 73.0 ],
+					"patching_rect" : [ 59.0, 282.0, 366.0, 73.0 ],
 					"text" : " /delta = /q - /p;\n /squared/delta = pow(/delta, 2.0);\n /sum/squared/delta = sum(/squared/delta);\n /dist = sqrt(/sum/squared/delta);",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -85,8 +84,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 577.0, 171.0, 221.0, 61.0 ],
-					"presentation_rect" : [ 561.0, 190.0, 0.0, 0.0 ],
+					"patching_rect" : [ 566.0, 166.0, 221.0, 61.0 ],
 					"text" : "/p 0 1 2 -3 4 5 2e-05 3\n/q 0.01 1.2 -1.9 3.001 4. 4.999 1e-05 4\n/dist 7.22925",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -102,7 +100,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 111.0, 248.0, 221.0, 61.0 ],
+					"patching_rect" : [ 111.0, 166.0, 221.0, 61.0 ],
 					"text" : "/p 0 1 2 -3 4 5 2e-05 3\n/q 0.01 1.2 -1.9 3.001 4. 4.999 1e-05 4\n/dist 7.22925",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -118,7 +116,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 399.0, 24.0, 262.0, 37.0 ],
+					"patching_rect" : [ 111.0, 43.0, 262.0, 37.0 ],
 					"text" : "/p 0 1 2 -3 4 5 2e-05 3\n/q 0.01 1.2 -1.9 3.001 4. 4.999 1e-05 4",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -133,7 +131,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 578.0, 124.0, 150.0, 33.0 ],
+					"patching_rect" : [ 566.0, 118.0, 150.0, 33.0 ],
 					"text" : " /dist = l2norm(/q - /p)",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -148,7 +146,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 111.0, 202.0, 384.0, 35.0 ],
+					"patching_rect" : [ 111.0, 118.0, 384.0, 33.0 ],
 					"text" : " /dist = sqrt(lreduce(add, map(lambda(p, q){pow(q - p, 2.0);}, /p, /q)))",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -157,6 +155,7 @@
  ],
 		"lines" : [ 			{
 				"patchline" : 				{
+					"color" : [ 1.0, 0.8, 0.4, 1.0 ],
 					"destination" : [ "obj-5", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
@@ -166,6 +165,7 @@
 			}
 , 			{
 				"patchline" : 				{
+					"color" : [ 1.0, 0.8, 0.4, 1.0 ],
 					"destination" : [ "obj-6", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
@@ -175,6 +175,7 @@
 			}
 , 			{
 				"patchline" : 				{
+					"color" : [ 1.0, 0.8, 0.4, 1.0 ],
 					"destination" : [ "obj-1", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
@@ -184,24 +185,29 @@
 			}
 , 			{
 				"patchline" : 				{
+					"color" : [ 1.0, 0.8, 0.4, 1.0 ],
 					"destination" : [ "obj-24", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
+					"midpoints" : [ 120.5, 105.0, 575.5, 105.0 ],
 					"source" : [ "obj-4", 0 ]
 				}
 
 			}
 , 			{
 				"patchline" : 				{
+					"color" : [ 1.0, 0.8, 0.4, 1.0 ],
 					"destination" : [ "obj-7", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
+					"midpoints" : [ 120.5, 105.0, 68.0, 105.0, 68.0, 234.0, 68.5, 234.0 ],
 					"source" : [ "obj-4", 0 ]
 				}
 
 			}
 , 			{
 				"patchline" : 				{
+					"color" : [ 1.0, 0.8, 0.4, 1.0 ],
 					"destination" : [ "obj-8", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,

@@ -8,7 +8,7 @@
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 152.0, 69.0, 1208.0, 742.0 ],
+		"rect" : [ 152.0, 69.0, 835.0, 534.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -28,6 +28,21 @@
 		"digest" : "",
 		"tags" : "",
 		"boxes" : [ 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"frgb" : 0.0,
+					"id" : "obj-3",
+					"linecount" : 2,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 308.0, 375.0, 150.0, 33.0 ],
+					"text" : "Bouncing Ball\nAdrian Freed 2014"
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
@@ -53,8 +68,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 18.0, 233.0, 259.0, 208.0 ],
-					"text" : "/interval 0.05\n/metro/started 2014-06-30T08:45:34.674044Z\n/n 1790\n/metro/next 2014-06-30T08:47:04.124044Z\n/rate 20.\n/bpm 1200.\n/units/interval \"Seconds\"\n/units/bpm \"Beats Per Minute\"\n/units/rate \"Hertz (cycles per second)\"\n/ball/position -0.28 0.3 -0.42\n/ball/step 0.07 -0.025 0.035\n/ball/reflected false false false\n/bound/lower -0.5 -0.5 -0.5\n/bound/upper 0.5 0.5 0.5\n",
+					"patching_rect" : [ 9.0, 241.0, 259.0, 208.0 ],
+					"text" : "/interval 0.05\n/metro/started 2014-07-02T04:07:47.454770Z\n/n 2070\n/metro/next 2014-07-02T04:09:30.904769Z\n/rate 20.\n/bpm 1200.\n/units/interval \"Seconds\"\n/units/bpm \"Beats Per Minute\"\n/units/rate \"Hertz (cycles per second)\"\n/ball/position -0.21 -0.275 -0.315\n/ball/step -0.07 -0.025 0.035\n/ball/reflected false false false\n/bound/lower -0.5 -0.5 -0.5\n/bound/upper 0.5 0.5 0.5\n",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -68,7 +83,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 42.0, 173.0, 50.0, 20.0 ],
+					"patching_rect" : [ 42.0, 177.0, 129.0, 20.0 ],
 					"text" : "o.union"
 				}
 
@@ -83,8 +98,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 282.0, 197.0, 150.0, 73.0 ],
-					"text" : "/position = /ball/position;\n/color ??= [ 0.9, 0.3 ,0.1 ];\n/radius ??= 0.04 ;\n/shape ??= \"sphere\";",
+					"patching_rect" : [ 282.5, 225.0, 209.0, 73.0 ],
+					"text" : "/position = /ball/position?? [0,0,0];\n/color ??= [ 0.9, 0.3 ,0.1 ];\n/radius ??= 0.04 ;\n/shape ??= \"sphere\";",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -98,7 +113,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 282.0, 281.0, 105.0, 20.0 ],
+					"patching_rect" : [ 282.5, 311.0, 105.0, 20.0 ],
 					"text" : "o.pack /displaylist"
 				}
 
@@ -108,11 +123,11 @@
 					"id" : "obj-7",
 					"idlemouse" : 1,
 					"maxclass" : "jit.pwindow",
-					"name" : "o.demo.pongwitharrays",
+					"name" : "o.demo.bouncingball",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 470.0, 191.0, 399.0, 322.0 ]
+					"patching_rect" : [ 500.0, 218.5, 246.0, 237.0 ]
 				}
 
 			}
@@ -125,8 +140,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 282.0, 318.0, 171.0, 20.0 ],
-					"text" : "o.io.gl o.demo.pongwitharrays"
+					"patching_rect" : [ 282.5, 348.0, 157.0, 20.0 ],
+					"text" : "o.io.gl o.demo.bouncingball"
 				}
 
 			}
@@ -139,7 +154,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 42.0, 135.0, 95.0, 20.0 ],
+					"patching_rect" : [ 42.0, 140.0, 95.0, 20.0 ],
 					"text" : "o.metro /rate 20"
 				}
 
@@ -147,6 +162,7 @@
  ],
 		"lines" : [ 			{
 				"patchline" : 				{
+					"color" : [ 1.0, 0.8, 0.4, 1.0 ],
 					"destination" : [ "obj-14", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
@@ -156,6 +172,7 @@
 			}
 , 			{
 				"patchline" : 				{
+					"color" : [ 1.0, 0.8, 0.4, 1.0 ],
 					"destination" : [ "obj-2", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
@@ -165,6 +182,7 @@
 			}
 , 			{
 				"patchline" : 				{
+					"color" : [ 1.0, 0.8, 0.4, 1.0 ],
 					"destination" : [ "obj-5", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
@@ -175,6 +193,7 @@
 			}
 , 			{
 				"patchline" : 				{
+					"color" : [ 1.0, 0.8, 0.4, 1.0 ],
 					"destination" : [ "obj-8", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
@@ -184,6 +203,7 @@
 			}
 , 			{
 				"patchline" : 				{
+					"color" : [ 1.0, 0.8, 0.4, 1.0 ],
 					"destination" : [ "obj-13", 1 ],
 					"disabled" : 0,
 					"hidden" : 0,
@@ -193,6 +213,7 @@
 			}
 , 			{
 				"patchline" : 				{
+					"color" : [ 1.0, 0.8, 0.4, 1.0 ],
 					"destination" : [ "obj-13", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
@@ -202,6 +223,7 @@
 			}
 , 			{
 				"patchline" : 				{
+					"color" : [ 1.0, 0.8, 0.4, 1.0 ],
 					"destination" : [ "obj-10", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
@@ -247,8 +269,8 @@
 			}
 , 			{
 				"name" : "o.aspect.joinpoint.maxpat",
-				"bootpath" : "/Users/adrian2013/CNMAT-odot/experimental/aspect",
-				"patcherrelativepath" : "../experimental/aspect",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/patchers/aspect",
+				"patcherrelativepath" : "../patchers/aspect",
 				"type" : "JSON",
 				"implicit" : 1
 			}
