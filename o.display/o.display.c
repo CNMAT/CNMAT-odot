@@ -2210,7 +2210,7 @@ CLASS_ATTR_ATTR_PARSE(c,attrname,"category",USESYM(symbol),flags,parsestr)
 int main(void){
 	common_symbols_init();
 	t_class *c = class_new("o.display", (method)odisplay_new, (method)odisplay_free, sizeof(t_odisplay), 0L, A_GIMME, 0);
-	alias("o.m");
+	alias("o.d");
     
 	c->c_flags |= CLASS_FLAG_NEWDICTIONARY;
  	jbox_initclass(c, JBOX_TEXTFIELD | JBOX_FIXWIDTH | JBOX_FONTATTR);

@@ -610,6 +610,8 @@ int main(void)
 {
     common_symbols_init();
     t_class *c = class_new(NAME, (method)oexprcodebox_new, (method)oexprcodebox_free, sizeof(t_oexprcodebox), 0L, A_GIMME, 0);
+    alias("o.codebox");
+    
     c->c_flags |= CLASS_FLAG_NEWDICTIONARY;
 	//jbox_initclass(c, JBOX_TEXTFIELD | JBOX_FIXWIDTH | JBOX_FONTATTR);
 	jbox_initclass(c, JBOX_TEXTFIELD | JBOX_FIXWIDTH | JBOX_FONTATTR);
