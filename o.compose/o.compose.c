@@ -32,9 +32,9 @@
 */
 
 #define OMAX_DOC_NAME "o.compose"
-#define OMAX_DOC_SHORT_DESC "Create OSC bundles from text"
-#define OMAX_DOC_LONG_DESC "o.compose behaves like the standard Max message box except that it converts its data to OSC packets."
-#define OMAX_DOC_INLETS_DESC (char *[]){"Bang sends the OSC FullPacket out."}
+#define OMAX_DOC_SHORT_DESC "Produce OSC bundles from text"
+#define OMAX_DOC_LONG_DESC "o.compose allows you to edit and store  OSC packets in text form."
+#define OMAX_DOC_INLETS_DESC (char *[]){"Bang sends out an OSC  packet"}
 #define OMAX_DOC_OUTLETS_DESC (char *[]){"OSC FullPacket"}
 #define OMAX_DOC_SEEALSO (char *[]){"o.display", "o.message"}
 
@@ -80,9 +80,9 @@
 
 #include "o.h"
 
-#define ocompose_MAX_NUM_MESSAGES 128
-#define ocompose_MAX_MESSAGE_LENGTH 128
-#define BUFLEN 128
+//#define ocompose_MAX_NUM_MESSAGES 128
+//#define ocompose_MAX_MESSAGE_LENGTH 128
+// #define BUFLEN 128
 
 
 #ifdef WIN_VERSION

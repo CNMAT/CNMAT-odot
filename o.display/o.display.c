@@ -24,7 +24,7 @@
   NAME: o.display
   DESCRIPTION: Message box for OSC bundles
   AUTHORS: Ilya Y. Rostovtsev, John MacCallum
-  COPYRIGHT_YEARS: 2009-11
+  COPYRIGHT_YEARS: 2009-14
   SVN_REVISION: $LastChangedRevision: 587 $
   VERSION 0.0: Inherited from o.message
   @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -32,11 +32,11 @@
 */
 
 #define OMAX_DOC_NAME "o.display"
-#define OMAX_DOC_SHORT_DESC "Display OSC bundles as text"
-#define OMAX_DOC_LONG_DESC "o.display behaves like the standard Max message box except that it converts its data to OSC packets."
-#define OMAX_DOC_INLETS_DESC (char *[]){"Bang sends the OSC FullPacket out.", "Set the contents."}
+#define OMAX_DOC_SHORT_DESC "Display OSC bundles"
+#define OMAX_DOC_LONG_DESC "o.display displays OSC in text form."
+#define OMAX_DOC_INLETS_DESC (char *[]){"Bang outputs the OSC packet.", "Set the contents."}
 #define OMAX_DOC_OUTLETS_DESC (char *[]){"OSC FullPacket"}
-#define OMAX_DOC_SEEALSO (char *[]){"message"}
+#define OMAX_DOC_SEEALSO (char *[]){"o.compose"}
 
 
 #include <string.h>
@@ -78,11 +78,6 @@
 #include "omax_dict.h"
 
 #include "o.h"
-
-#define odisplay_MAX_NUM_MESSAGES 128
-#define odisplay_MAX_MESSAGE_LENGTH 128
-#define BUFLEN 128
-
 
 #ifdef WIN_VERSION
 // currently we have to compile windows versions with gcc 3 on cygwin and i'm getting undefined
