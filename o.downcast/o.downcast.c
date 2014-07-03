@@ -23,10 +23,10 @@
 
 
 #define OMAX_DOC_NAME "o.downcast"
-#define OMAX_DOC_SHORT_DESC "Returns a bundle that conforms to OSC 1.0"
+#define OMAX_DOC_SHORT_DESC "Produces a bundle that conforms to OSC 1.0"
 #define OMAX_DOC_LONG_DESC "Downcasts optional types supported by the odot objects to the required types of OSC 1.0."
-#define OMAX_DOC_INLETS_DESC (char *[]){"FullPacket"}
-#define OMAX_DOC_OUTLETS_DESC (char *[]){"Downcasted bundle (FullPacket)"}
+#define OMAX_DOC_INLETS_DESC (char *[]){"OSC bundle"}
+#define OMAX_DOC_OUTLETS_DESC (char *[]){"Downcasted OSC bundle"}
 #define OMAX_DOC_SEEALSO  (char *[]){}
 
 #include "o.h"
