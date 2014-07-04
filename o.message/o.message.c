@@ -88,7 +88,7 @@
 #define OMESSAGE_MAX_MESSAGE_LENGTH 128
 #define BUFLEN 128
 
-
+/*
 #ifdef WIN_VERSION
 // currently we have to compile windows versions with gcc 3 on cygwin and i'm getting undefined
 // refs to strsep, so here it is fucker.
@@ -118,10 +118,11 @@ strsep(stringp, delim)
 			}
 		} while (sc != 0);
 	}
-	/* NOTREACHED */
+	// NOTREACHED 
 }
 #endif
 
+*/
 
 enum {
 	OMESSAGE_U,
