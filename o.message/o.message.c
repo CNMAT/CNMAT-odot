@@ -2165,12 +2165,12 @@ void setup_o0x2emessage(void) {
 
 void omessage_free(t_omessage *x)
 {
+    omessage_clearBundles(x);
 	jbox_free((t_jbox *)x);
 	critical_free(x->lock);
 	if(x->proxy){
 		object_free(x->proxy);
 	}
-	omessage_clearBundles(x);
 }
 
 OMAX_DICT_DICTIONARY(t_omessage, x, omessage_fullPacket);

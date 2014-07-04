@@ -2074,12 +2074,12 @@ void setup_o0x2ecompose(void) {
 
 void ocompose_free(t_ocompose *x)
 {
+    ocompose_clearBundles(x);
 	jbox_free((t_jbox *)x);
 	critical_free(x->lock);
 	/*if(x->proxy){
 		object_free(x->proxy);
 	}*/
-	ocompose_clearBundles(x);
 }
 
 OMAX_DICT_DICTIONARY(t_ocompose, x, ocompose_fullPacket);

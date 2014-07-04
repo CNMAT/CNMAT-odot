@@ -2106,6 +2106,7 @@ void setup_o0x2edisplay(void) {
 
 void odisplay_free(t_odisplay *x)
 {
+    odisplay_clearBundles(x);
 	jbox_free((t_jbox *)x);
 	critical_free(x->lock);
     /*
@@ -2113,7 +2114,6 @@ void odisplay_free(t_odisplay *x)
 		object_free(x->proxy);
 	}
      */
-	odisplay_clearBundles(x);
 }
 
 OMAX_DICT_DICTIONARY(t_odisplay, x, odisplay_fullPacket);
@@ -2220,24 +2220,17 @@ int main(void){
 	class_addmethod(c, (method)odisplay_set, "set", A_GIMME, 0);
 	class_addmethod(c, (method)odisplay_assist, "assist", A_CANT, 0);
 	class_addmethod(c, (method)odisplay_doc, "doc", 0);
-	//class_addmethod(c, (method)stdinletinfo, "inletinfo", A_CANT, 0);
-	//class_addmethod(c, (method)odisplay_fullPacket, "FullPacket", A_LONG, A_LONG, 0);
 	class_addmethod(c, (method)odisplay_fullPacket, "FullPacket", A_GIMME, 0);
+
 	// remove this if statement when we stop supporting Max 5
 	if(omax_dict_resolveDictStubs()){
 		class_addmethod(c, (method)omax_dict_dictionary, "dictionary", A_GIMME, 0);
 	}
     
 	class_addmethod(c, (method)odisplay_clear, "clear", 0);
-    
-	//class_addmethod(c, (method)odisplay_key, "key", A_CANT, 0);
-	//class_addmethod(c, (method)odisplay_keyfilter, "keyfilter", A_CANT, 0);
-	//class_addmethod(c, (method)odisplay_enter, "enter", A_CANT, 0);
 	class_addmethod(c, (method)odisplay_select, "select", 0);
-    
 	class_addmethod(c, (method)odisplay_mousedown, "mousedown", A_CANT, 0);
 	class_addmethod(c, (method)odisplay_mouseup, "mouseup", A_CANT, 0);
-    
 	class_addmethod(c, (method)odot_version, "version", 0);
     
     
