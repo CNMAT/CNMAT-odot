@@ -1343,7 +1343,7 @@
 			}
 , 			{
 				"box" : 				{
-					"args" : [ "/7" ],
+					"args" : [ "/5" ],
 					"id" : "obj-5",
 					"maxclass" : "bpatcher",
 					"name" : "o.io.qunexus.display.helper.key.maxpat",
@@ -1373,12 +1373,13 @@
 			}
 , 			{
 				"box" : 				{
+					"args" : [ "/1" ],
 					"id" : "obj-1",
 					"maxclass" : "bpatcher",
 					"name" : "o.io.qunexus.display.helper.key.maxpat",
 					"numinlets" : 1,
 					"numoutlets" : 1,
-					"outlettype" : [ "" ],
+					"outlettype" : [ "FullPacket" ],
 					"patching_rect" : [ 237.0, 348.0, 51.0, 102.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 134.0, 139.0, 51.0, 102.0 ]
@@ -1701,6 +1702,15 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-22", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-39", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-23", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
@@ -1856,16 +1866,20 @@
 		"dependency_cache" : [ 			{
 				"name" : "QuNexus-vonoben.jpg",
 				"bootpath" : "/Users/gabacheker/Desktop",
-				"patcherrelativepath" : "../../../../Desktop",
+				"patcherrelativepath" : "../../../../../../Desktop",
 				"type" : "JPEG",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.io.qunexus.display.helper.key.maxpat",
-				"bootpath" : "/Users/gabacheker/Documents/Max/Packages/qunexus",
+				"bootpath" : "/Users/gabacheker/Documents/CNMAT_Work/CNMAT_GITHUB/CNMAT-odot/experimental/o.io.qunexus",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
+			}
+, 			{
+				"name" : "o.select.mxo",
+				"type" : "iLaX"
 			}
 , 			{
 				"name" : "o.route.mxo",
@@ -1873,10 +1887,6 @@
 			}
 , 			{
 				"name" : "o.pak.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.select.mxo",
 				"type" : "iLaX"
 			}
 , 			{
