@@ -88,7 +88,7 @@
 #define OMESSAGE_MAX_MESSAGE_LENGTH 128
 #define BUFLEN 128
 
-
+/*
 #ifdef WIN_VERSION
 // currently we have to compile windows versions with gcc 3 on cygwin and i'm getting undefined
 // refs to strsep, so here it is fucker.
@@ -118,10 +118,11 @@ strsep(stringp, delim)
 			}
 		} while (sc != 0);
 	}
-	/* NOTREACHED */
+	// NOTREACHED 
 }
 #endif
 
+*/
 
 enum {
 	OMESSAGE_U,
@@ -2164,12 +2165,12 @@ void setup_o0x2emessage(void) {
 
 void omessage_free(t_omessage *x)
 {
+    omessage_clearBundles(x);
 	jbox_free((t_jbox *)x);
 	critical_free(x->lock);
 	if(x->proxy){
 		object_free(x->proxy);
 	}
-	omessage_clearBundles(x);
 }
 
 OMAX_DICT_DICTIONARY(t_omessage, x, omessage_fullPacket);
