@@ -141,8 +141,8 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 264.0, 347.0, 37.0, 18.0 ],
-									"text" : "reset"
+									"patching_rect" : [ 264.0, 347.0, 36.0, 18.0 ],
+									"text" : "clear"
 								}
 
 							}
@@ -155,7 +155,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "FullPacket" ],
-									"patching_rect" : [ 303.0, 410.0, 62.0, 20.0 ],
+									"patching_rect" : [ 264.0, 413.0, 62.0, 20.0 ],
 									"text" : "o.forward"
 								}
 
@@ -325,7 +325,7 @@
 									"destination" : [ "obj-6", 0 ],
 									"disabled" : 0,
 									"hidden" : 0,
-									"midpoints" : [ 312.5, 447.0, 546.0, 447.0, 546.0, 345.0, 546.0, 345.0, 546.0, 247.0, 219.5, 247.0 ],
+									"midpoints" : [ 273.5, 447.0, 546.0, 447.0, 546.0, 345.0, 546.0, 345.0, 546.0, 247.0, 219.5, 247.0 ],
 									"source" : [ "obj-2", 0 ]
 								}
 
@@ -371,7 +371,7 @@
 									"destination" : [ "obj-4", 0 ],
 									"disabled" : 0,
 									"hidden" : 0,
-									"midpoints" : [ 314.0, 105.0, 583.0, 105.0, 583.0, 255.0, 583.0, 255.0, 583.0, 333.0, 273.5, 333.0 ],
+									"midpoints" : [ 314.0, 105.0, 564.0, 105.0, 564.0, 255.0, 565.0, 255.0, 565.0, 333.0, 273.5, 333.0 ],
 									"source" : [ "obj-43", 7 ]
 								}
 
@@ -964,8 +964,8 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "o.arguments.maxpat",
-				"bootpath" : "/Users/adrian2013/CNMAT-odot/patchers",
-				"patcherrelativepath" : "..",
+				"bootpath" : "/Users/adrian2013/Documents/Max/Packages/odot/patchers",
+				"patcherrelativepath" : "../../../Documents/Max/Packages/odot/patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
@@ -1013,8 +1013,8 @@
 			}
 , 			{
 				"name" : "o.forward.maxpat",
-				"bootpath" : "/Users/adrian2013/CNMAT-odot/patchers",
-				"patcherrelativepath" : "..",
+				"bootpath" : "/Users/adrian2013/Documents/Max/Packages/odot/patchers",
+				"patcherrelativepath" : "../../../Documents/Max/Packages/odot/patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}

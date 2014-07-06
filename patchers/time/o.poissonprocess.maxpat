@@ -84,7 +84,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 213.0, 437.0, 37.0, 18.0 ],
-					"text" : "reset"
+					"text" : "clear"
 				}
 
 			}
@@ -697,15 +697,15 @@
 			}
 , 			{
 				"name" : "o.forward.maxpat",
-				"bootpath" : "/Users/adrian2013/CNMAT-odot/patchers",
-				"patcherrelativepath" : "..",
+				"bootpath" : "/Users/adrian2013/Documents/Max/Packages/odot/patchers",
+				"patcherrelativepath" : "../../../Documents/Max/Packages/odot/patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.arguments.maxpat",
-				"bootpath" : "/Users/adrian2013/CNMAT-odot/patchers",
-				"patcherrelativepath" : "..",
+				"bootpath" : "/Users/adrian2013/Documents/Max/Packages/odot/patchers",
+				"patcherrelativepath" : "../../../Documents/Max/Packages/odot/patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
