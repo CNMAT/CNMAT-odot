@@ -44,20 +44,19 @@
 
 
 #ifdef OMAX_PD_VERSION
-#include "m_pd.h"
-#include "m_imp.h"
-#include "g_canvas.h"
-#include "g_all_guis.h"
-#include "omax_pd_proxy.h"
-#define OMAX_PD_MAXSTRINGSIZE (1<<16)
-//#define proxy_getinlet(x) (((t_odisplay *)(x))->inlet)
+    #include "m_pd.h"
+    #include "m_imp.h"
+    #include "g_canvas.h"
+    #include "g_all_guis.h"
+    #include "omax_pd_proxy.h"
+    #define OMAX_PD_MAXSTRINGSIZE (1<<16)
 #else
-#include "ext.h"
-#include "ext_obex.h"
-#include "ext_obex_util.h"
-#include "ext_critical.h"
-#include "jpatcher_api.h"
-#include "jgraphics.h"
+    #include "ext.h"
+    #include "ext_obex.h"
+    #include "ext_obex_util.h"
+    #include "ext_critical.h"
+    #include "jpatcher_api.h"
+    #include "jgraphics.h"
 #endif
 
 #include "omax_util.h"
@@ -79,6 +78,9 @@
 
 #include "o.h"
 /*
+
+// REMOVE THIS ONCE THIS IS VERIFIABLY IN OMAX_UTIL.C
+ 
 #ifdef WIN_VERSION
 // currently we have to compile windows versions with gcc 3 on cygwin and i'm getting undefined
 // refs to strsep, so here it is.
@@ -193,8 +195,6 @@ t_widgetbehavior odisplay_widgetbehavior;
 typedef struct _odisplay{
 	t_jbox ob;
 	void *outlet;
-	//void *proxy;
-	//long inlet;
 	t_critical lock;
 	int newbndl;
 	t_osc_bndl_u *bndl_u;
@@ -269,11 +269,6 @@ t_symbol *ps_newline, *ps_FullPacket;
 void odisplay_fullPacket(t_odisplay *x, t_symbol *msg, int argc, t_atom *argv)
 {
 	OMAX_UTIL_GET_LEN_AND_PTR
-	/*
-    if(proxy_getinlet((t_object *)x) == 0){
-		return;
-	}
-    */
 	odisplay_doFullPacket(x, len, ptr);
 }
 
@@ -402,7 +397,7 @@ void odisplay_paint(t_odisplay *x, t_object *patcherview)
 	draw_new_data_indicator = x->draw_new_data_indicator;
 	critical_exit(x->lock);
 	if(have_new_data){	
-    		odisplay_bundle2text(x);
+        odisplay_bundle2text(x);
 	}
     
 	t_rect rect;
@@ -416,17 +411,6 @@ void odisplay_paint(t_odisplay *x, t_object *patcherview)
     jgraphics_fill(g);
 
     jgraphics_set_source_jrgba(g, &(x->frame_color));
-    
-    /*
-    if (draw_new_data_indicator) {
-        jgraphics_set_source_jrgba(g, &(x->flash_color));
-        critical_enter(x->lock);
-		x->draw_new_data_indicator = 0;
-		critical_exit(x->lock);
-		clock_delay(x->new_data_indicator_clock, 100);
-    }
-     */
-    
     jgraphics_rectangle_rounded(g, 0, rect.height - 10, rect.width, 10, 8, 8);
     jgraphics_rectangle(g, 0, rect.height - 10, 4, 4);
     jgraphics_rectangle(g, rect.width - 4, rect.height - 10, 4, 4);
@@ -437,8 +421,7 @@ void odisplay_paint(t_odisplay *x, t_object *patcherview)
     jgraphics_set_line_width(g, 2.);
     jgraphics_stroke(g);
     
-    if (draw_new_data_indicator)
-    {
+    if (draw_new_data_indicator) {
         jgraphics_set_source_jrgba(g, &(x->flash_color));
 		jgraphics_ellipse(g, rect.width - 12, 6, 6, 6);
 		jgraphics_fill(g);
@@ -447,46 +430,6 @@ void odisplay_paint(t_odisplay *x, t_object *patcherview)
 		critical_exit(x->lock);
 		clock_delay(x->new_data_indicator_clock, 100);
     }
-    
-
-    /*
-    jgraphics_move_to(g, 0, rect.height - 10);
-    
-	jgraphics_move_to(g, 0, 0);
-	jgraphics_line_to(g, 0, rect.height - 8);
-	jgraphics_line_to(g, 8, rect.height);
-	jgraphics_line_to(g, rect.width, rect.height);
-	jgraphics_line_to(g, rect.width, 8);
-	jgraphics_line_to(g, rect.width - 8, 0);
-	jgraphics_line_to(g, 0, 0);
-	jgraphics_fill(g);
-
-	jgraphics_ellipse(g, rect.width - 16., 0., 16, 16);
-	jgraphics_ellipse(g, 0., rect.height - 16., 16., 16.);
-	jgraphics_fill(g);
-
-	jgraphics_set_source_jrgba(g, &(x->frame_color));
-	jgraphics_set_line_width(g, 2.);
-	jgraphics_move_to(g, rect.width * .75, 0.);
-	jgraphics_line_to(g, 0., 0.);
-	jgraphics_line_to(g, 0., rect.height * .25);
-	jgraphics_move_to(g, rect.width - (rect.width * .75), rect.height);
-	jgraphics_line_to(g, rect.width, rect.height);
-	jgraphics_line_to(g, rect.width, rect.height - (rect.height * .25));
-	jgraphics_stroke(g);
-
-	if(draw_new_data_indicator){
-		//jgraphics_move_to(g, 4, 4);
-		jgraphics_set_source_jrgba(g, &(x->frame_color));
-		jgraphics_ellipse(g, 2, 2, 3, 3);
-		jgraphics_fill(g);
-		critical_enter(x->lock);
-		x->draw_new_data_indicator = 0;
-		critical_exit(x->lock);
-		clock_delay(x->new_data_indicator_clock, 100);
-	}
-     
-     */
 }
 
 #endif
@@ -623,84 +566,56 @@ void odisplay_anything(t_odisplay *x, t_symbol *msg, short argc, t_atom *argv)
 	t_atom av[argc + 1];
 	int ac = argc;
 
-	if(msg){
-		ac = argc + 1;
-		atom_setsym(av, msg);
-		if(argc > 0){
-			memcpy(av + 1, argv, argc * sizeof(t_atom));
-		}
-	}else{
-		memcpy(av, argv, argc * sizeof(t_atom));
+	if (msg) {
+        ac = argc + 1;
+        atom_setsym(av, msg);
+        if (argc > 0) {
+            memcpy(av + 1, argv, argc * sizeof(t_atom));
+        }
+	} else {
+        memcpy(av, argv, argc * sizeof(t_atom));
 	}
-    /*
-	switch(proxy_getinlet((t_object *)x)){
-	case 0:
-		odisplay_list(x, NULL, ac, av);
-		break;
-	case 1:
-		{ */
-			t_osc_msg_u *m = NULL;
-			t_osc_err e = omax_util_maxAtomsToOSCMsg_u(&m, msg, argc, argv);
-			if(e){
-				return;
-			}
-			t_osc_bndl_u *b = osc_bundle_u_alloc();
-			osc_bundle_u_addMsg(b, m);
-			long len = 0;
-			char *ptr = NULL;
-			osc_bundle_u_serialize(b, &len, &ptr);
-			t_osc_bndl_s *bs = osc_bundle_s_alloc(len, ptr);
-			odisplay_newBundle(x, b, bs);
-    /*
-		}
-		//odisplay_processAtoms(x, ac, av);
-		break;
-	}
-     */
+
+    t_osc_msg_u *m = NULL;
+    t_osc_err e = omax_util_maxAtomsToOSCMsg_u(&m, msg, argc, argv);
+    if(e){
+        return;
+    }
+    t_osc_bndl_u *b = osc_bundle_u_alloc();
+    osc_bundle_u_addMsg(b, m);
+    long len = 0;
+    char *ptr = NULL;
+    osc_bundle_u_serialize(b, &len, &ptr);
+    t_osc_bndl_s *bs = osc_bundle_s_alloc(len, ptr);
+    odisplay_newBundle(x, b, bs);
+
 #ifdef OMAX_PD_VERSION
     x->draw_new_data_indicator = 1;
-	x->have_new_data = 1;
-	jbox_redraw((t_jbox *)x);
+    x->have_new_data = 1;
+    jbox_redraw((t_jbox *)x);
 #else
-	x->draw_new_data_indicator = 1;
-	x->have_new_data = 1;
-	qelem_set(x->qelem);
+    x->draw_new_data_indicator = 1;
+    x->have_new_data = 1;
+    qelem_set(x->qelem);
 #endif
 }
 
 void odisplay_set(t_odisplay *x, t_symbol *s, long ac, t_atom *av)
 {
-    /*
-	if(proxy_getinlet((t_object *)x)){
-		return;
-	}
-	if(ac){
-		if(atom_gettype(av) == A_SYM){
-			t_symbol *sym = atom_getsym(av);
-			if(sym == ps_FullPacket && ac == 3){
-				odisplay_doFullPacket(x, atom_getlong(av + 1), (char *)atom_getlong(av + 2));
-				return;
-			}
-			//odisplay_processAtoms(x, ac, av);
-		}
-	}else{
-		odisplay_clear(x);
-	}
-	jbox_redraw((t_jbox *)x);
-     */
+    // at present there's nothing to be done here ...
 }
 
 void odisplay_clear(t_odisplay *x)
 {
-	char buf[OSC_HEADER_SIZE];
-	memset(buf, '\0', OSC_HEADER_SIZE);
-	osc_bundle_s_setBundleID(buf);
-	odisplay_doFullPacket(x, OSC_HEADER_SIZE, buf);
+    char buf[OSC_HEADER_SIZE];
+    memset(buf, '\0', OSC_HEADER_SIZE);
+    osc_bundle_s_setBundleID(buf);
+    odisplay_doFullPacket(x, OSC_HEADER_SIZE, buf);
 }
 
 void odisplay_doc(t_odisplay *x)
 {
-	omax_doc_outletDoc(x->outlet);
+    omax_doc_outletDoc(x->outlet);
 }
 
 /*

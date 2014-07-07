@@ -206,10 +206,11 @@ typedef struct _ocompose{
 	int bndl_has_been_checked_for_subs;
 	long textlen;
 	char *text;
-	t_jrgba frame_color, background_color, text_color;
+	t_jrgba frame_color, background_color, text_color, flash_color;
 	void *qelem;
-	int have_new_data;
-	void *new_data_indicator_clock;
+    int mouse_down;
+	int draw_click_flash;
+	void *click_indicator_clock;
 } t_ocompose;
 
 static t_class *ocompose_class;
@@ -231,6 +232,7 @@ void ocompose_clear(t_ocompose *x);
 void ocompose_clearBundles(t_ocompose *x);
 void ocompose_newBundle(t_ocompose *x, t_osc_bndl_u *bu, t_osc_bndl_s *bs);
 void ocompose_output_bundle(t_ocompose *x);
+void ocompose_output_empty(t_ocompose *x);
 void ocompose_bang(t_ocompose *x);
 void ocompose_int(t_ocompose *x, long n);
 void ocompose_float(t_ocompose *x, double xx);
@@ -282,10 +284,8 @@ void ocompose_doFullPacket(t_ocompose *x, long len, char *ptr)
 	t_osc_bndl_s *b = osc_bundle_s_alloc(copylen, copyptr);
 	ocompose_newBundle(x, NULL, b);
 #ifdef OMAX_PD_VERSION
-	x->have_new_data = 1;
     jbox_redraw((t_jbox *)x);
 #else
-	x->have_new_data = 1;
 	qelem_set(x->qelem);
 #endif
 }
@@ -326,6 +326,7 @@ void ocompose_output_bundle(t_ocompose *x)
 {
 	// the use of critical sections is a little weird here, but correct.
 	critical_enter(x->lock);
+    x->draw_click_flash = 1;
 	if(x->bndl_s){
 		t_osc_bndl_s *b = x->bndl_s;
 		long len = osc_bundle_s_getLen(b);
@@ -334,14 +335,20 @@ void ocompose_output_bundle(t_ocompose *x)
 		memcpy(buf, ptr, len);
 		critical_exit(x->lock);
 		omax_util_outletOSC(x->outlet, len, buf);
+        jbox_redraw((t_jbox *)x);
 		return;
 	}
 	critical_exit(x->lock);
+    ocompose_output_empty(x);
+}
 
-	char buf[OSC_HEADER_SIZE];
+void ocompose_output_empty(t_ocompose *x)
+{
+    char buf[OSC_HEADER_SIZE];
 	memset(buf, '\0', OSC_HEADER_SIZE);
 	osc_bundle_s_setBundleID(buf);
 	omax_util_outletOSC(x->outlet, OSC_HEADER_SIZE, buf);
+    jbox_redraw((t_jbox *)x);
 }
 
 void ocompose_bundle2text(t_ocompose *x)
@@ -389,14 +396,6 @@ void ocompose_bundle2text(t_ocompose *x)
 #ifndef OMAX_PD_VERSION
 void ocompose_paint(t_ocompose *x, t_object *patcherview)
 {
-	int have_new_data = 0;
-	critical_enter(x->lock);
-	have_new_data = x->have_new_data;
-	critical_exit(x->lock);
-	if(have_new_data){	
-    		ocompose_bundle2text(x);
-	}
-    
 	t_rect rect;
 	t_jgraphics *g = (t_jgraphics *)patcherview_get_jgraphics(patcherview);
 	jbox_get_rect_for_view((t_object *)x, patcherview, &rect);
@@ -410,6 +409,22 @@ void ocompose_paint(t_ocompose *x, t_object *patcherview)
     jgraphics_line_to(g, 0, rect.height);
     jgraphics_line_to(g, 0, 0);
     jgraphics_fill(g);
+    
+    if (x->draw_click_flash) {
+        jgraphics_set_source_jrgba(g, &(x->flash_color));
+        jgraphics_move_to(g, rect.width - 10, 0);
+        jgraphics_line_to(g, rect.width, 10);
+        jgraphics_line_to(g, rect.width - 10, 10);
+        jgraphics_line_to(g, rect.width - 10, 0);
+        jgraphics_fill(g);
+        
+        if (x->mouse_down == 0) {
+            critical_enter(x->lock);
+            x->draw_click_flash = 0;
+            critical_exit(x->lock);
+            clock_delay(x->click_indicator_clock, 100);
+        }
+    }
     
     // outline
     jgraphics_set_source_jrgba(g, &(x->frame_color));
@@ -486,11 +501,18 @@ long ocompose_keyfilter(t_ocompose *x, t_object *patcherview, long *keycode, lon
 
 void ocompose_mousedown(t_ocompose *x, t_object *patcherview, t_pt pt, long modifiers){
     textfield_set_textmargins(jbox_get_textfield((t_object *)x), 6, 6, 10, 5);
+    critical_enter(x->lock);
+    x->draw_click_flash = 1;
+    x->mouse_down = 1;
+    critical_exit(x->lock);
 	jbox_redraw((t_jbox *)x);
 }
 
 void ocompose_mouseup(t_ocompose *x, t_object *patcherview, t_pt pt, long modifiers){
     textfield_set_textmargins(jbox_get_textfield((t_object *)x), 5, 5, 10, 5);
+    critical_enter(x->lock);
+    x->mouse_down = 0;
+    critical_exit(x->lock);
 	jbox_redraw((t_jbox *)x);
 	ocompose_output_bundle(x);
 }
@@ -547,10 +569,8 @@ void ocompose_gettext(t_ocompose *x)
 	t_osc_bndl_s *bndl_s = osc_bundle_s_alloc(bndl_s_len, bndl_s_ptr);
 	ocompose_newBundle(x, bndl_u, bndl_s);
 #ifdef OMAX_PD_VERSION
-    x->have_new_data = 1;
 	jbox_redraw((t_jbox *)x);
 #else
-	x->have_new_data = 1;
 	qelem_set(x->qelem);
 #endif
 }
@@ -573,6 +593,11 @@ void ocompose_float(t_ocompose *x, double f){
 
 void ocompose_list(t_ocompose *x, t_symbol *list_sym, short argc, t_atom *argv)
 {
+    critical_enter(x->lock);
+    x->draw_click_flash = 1;
+    critical_exit(x->lock);
+    jbox_redraw((t_jbox *)x);
+    
 	if (x->bndl_has_been_checked_for_subs && !x->bndl_has_subs) {
 		if (!x->bndl_s) {
 			if (x->bndl_u) {
@@ -606,6 +631,7 @@ void ocompose_list(t_ocompose *x, t_symbol *list_sym, short argc, t_atom *argv)
 				// pretty sure this can't happen...
 				post("%d\n", __LINE__);
 			} else {
+                ocompose_output_empty(x);
 				return;
 			}
 		}
@@ -613,9 +639,11 @@ void ocompose_list(t_ocompose *x, t_symbol *list_sym, short argc, t_atom *argv)
 		t_osc_bndl_u *copy = NULL;
 		t_osc_err e = omax_util_copyBundleWithSubs_u(&copy, x->bndl_u, argc, argv, &(x->bndl_has_subs));
 		if (e) {
+            critical_exit(x->lock);
 			return;
 		}
 		if (!copy) {
+            critical_exit(x->lock);
 			return;
 		}
 		x->bndl_has_been_checked_for_subs = 1;
@@ -631,7 +659,10 @@ void ocompose_list(t_ocompose *x, t_symbol *list_sym, short argc, t_atom *argv)
 		if (copy_s) {
 			omax_util_outletOSC(x->outlet, len, copy_s);
 			osc_mem_free(copy_s);
-		}
+		} else {
+            // pretty sure this can't happen...
+            ocompose_output_empty(x);
+        }
 		osc_bundle_u_free(copy);
 	}
 }
@@ -653,10 +684,8 @@ void ocompose_anything(t_ocompose *x, t_symbol *msg, short argc, t_atom *argv)
     ocompose_list(x, NULL, ac, av);
 
 #ifdef OMAX_PD_VERSION
-	x->have_new_data = 1;
 	jbox_redraw((t_jbox *)x);
 #else
-	x->have_new_data = 1;
 	qelem_set(x->qelem);
 #endif
 }
@@ -2135,8 +2164,9 @@ void *ocompose_new(t_symbol *msg, short argc, t_atom *argv){
 		x->bndl_has_subs = 0;
 		critical_new(&(x->lock));
 		x->qelem = qelem_new((t_object *)x, (method)ocompose_refresh);
-		x->new_data_indicator_clock = clock_new((t_object *)x, (method)ocompose_refresh);
-		x->have_new_data = 1;
+        x->mouse_down = 0;
+        x->draw_click_flash = 0;
+        x->click_indicator_clock = clock_new((t_object *)x, (method)ocompose_refresh);
 		attr_dictionary_process(x, d);
         
 		t_object *textfield = jbox_get_textfield((t_object *)x);
@@ -2206,6 +2236,10 @@ int main(void){
  	CLASS_ATTR_STYLE_LABEL(c, "frame_color", 0, "rgba", "Frame Color");
 	CLASS_ATTR_CATEGORY_KLUDGE(c, "frame_color", 0, "Color");
     
+    CLASS_ATTR_RGBA(c, "flash_color", 0, t_ocompose, flash_color);
+ 	CLASS_ATTR_DEFAULT_SAVE_PAINT(c, "flash_color", 0, ".216 .435 .7137 1."); // by default, it's the same as frame colour, but user-settable nonetheless
+ 	CLASS_ATTR_STYLE_LABEL(c, "flash_color", 0, "rgba", "Flash Color");
+	CLASS_ATTR_CATEGORY_KLUDGE(c, "flash_color", 0, "Color");
 
  	CLASS_ATTR_RGBA(c, "text_color", 0, t_ocompose, text_color);
  	CLASS_ATTR_DEFAULT_SAVE_PAINT(c, "text_color", 0, "0. 0. 0. 1.");
