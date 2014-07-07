@@ -665,7 +665,7 @@
  ]
 					}
 ,
-					"patching_rect" : [ 370.264038, 351.0, 54.0, 20.0 ],
+					"patching_rect" : [ 357.264038, 351.0, 54.0, 20.0 ],
 					"saved_object_attributes" : 					{
 						"default_fontface" : 0,
 						"default_fontname" : "Arial",
@@ -1070,7 +1070,7 @@
  ]
 					}
 ,
-					"patching_rect" : [ 656.178589, 351.0, 104.0, 20.0 ],
+					"patching_rect" : [ 647.178589, 351.0, 104.0, 20.0 ],
 					"saved_object_attributes" : 					{
 						"default_fontface" : 0,
 						"default_fontname" : "Arial",
@@ -1775,7 +1775,7 @@
  ]
 					}
 ,
-					"patching_rect" : [ 526.264038, 351.0, 120.0, 20.0 ],
+					"patching_rect" : [ 511.264038, 351.0, 120.0, 20.0 ],
 					"saved_object_attributes" : 					{
 						"default_fontface" : 0,
 						"default_fontname" : "Arial",
@@ -7184,7 +7184,7 @@
  ]
 					}
 ,
-					"patching_rect" : [ 272.928589, 351.0, 85.0, 20.0 ],
+					"patching_rect" : [ 266.928589, 351.0, 85.0, 20.0 ],
 					"saved_object_attributes" : 					{
 						"default_fontface" : 0,
 						"default_fontname" : "Arial",
@@ -8343,7 +8343,7 @@
  ]
 					}
 ,
-					"patching_rect" : [ 430.264038, 351.0, 84.0, 20.0 ],
+					"patching_rect" : [ 418.264038, 351.0, 84.0, 20.0 ],
 					"saved_object_attributes" : 					{
 						"default_fontface" : 0,
 						"default_fontname" : "Arial",
@@ -26305,7 +26305,7 @@
  ]
 					}
 ,
-					"patching_rect" : [ 109.5, 351.0, 49.0, 20.0 ],
+					"patching_rect" : [ 853.0, 351.0, 49.0, 20.0 ],
 					"saved_object_attributes" : 					{
 						"default_fontface" : 0,
 						"default_fontname" : "Arial",
@@ -26738,7 +26738,7 @@
  ]
 					}
 ,
-					"patching_rect" : [ 46.0, 351.0, 42.0, 20.0 ],
+					"patching_rect" : [ 779.0, 351.0, 42.0, 20.0 ],
 					"saved_object_attributes" : 					{
 						"default_fontface" : 0,
 						"default_fontname" : "Arial",
@@ -26765,7 +26765,7 @@
 					"numinlets" : 7,
 					"numoutlets" : 1,
 					"outlettype" : [ "int" ],
-					"patching_rect" : [ 169.013977, 434.5, 100.0, 20.0 ],
+					"patching_rect" : [ 175.013977, 388.5, 100.0, 20.0 ],
 					"text" : "midiformat 2"
 				}
 
@@ -26788,26 +26788,12 @@
 				"box" : 				{
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
-					"id" : "obj-30",
-					"maxclass" : "newobj",
-					"numinlets" : 7,
-					"numoutlets" : 1,
-					"outlettype" : [ "int" ],
-					"patching_rect" : [ 40.0, 434.5, 100.0, 20.0 ],
-					"text" : "midiformat 1"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontname" : "Arial",
-					"fontsize" : 12.0,
 					"id" : "obj-55",
 					"maxclass" : "newobj",
 					"numinlets" : 7,
 					"numoutlets" : 1,
 					"outlettype" : [ "int" ],
-					"patching_rect" : [ 266.928589, 434.5, 100.0, 20.0 ],
+					"patching_rect" : [ 98.928589, 535.5, 100.0, 20.0 ],
 					"text" : "midiformat 1"
 				}
 
@@ -26819,7 +26805,7 @@
 					"maxclass" : "inlet",
 					"numinlets" : 0,
 					"numoutlets" : 1,
-					"outlettype" : [ "" ],
+					"outlettype" : [ "FullPacket" ],
 					"patching_rect" : [ 145.278015, 27.0, 25.0, 25.0 ]
 				}
 
@@ -26831,7 +26817,7 @@
 					"maxclass" : "outlet",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 40.0, 624.5, 25.0, 25.0 ]
+					"patching_rect" : [ 49.0, 605.5, 25.0, 25.0 ]
 				}
 
 			}
@@ -26931,15 +26917,6 @@
 					"destination" : [ "obj-12", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"source" : [ "obj-30", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-12", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
 					"source" : [ "obj-55", 0 ]
 				}
 
@@ -26955,7 +26932,7 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-30", 2 ],
+					"destination" : [ "obj-55", 2 ],
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-74", 0 ]
@@ -26964,7 +26941,7 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-30", 2 ],
+					"destination" : [ "obj-55", 2 ],
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-77", 0 ]
@@ -27024,15 +27001,6 @@
 					"source" : [ "obj-99", 0 ]
 				}
 
-			}
- ],
-		"dependency_cache" : [ 			{
-				"name" : "o.route.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.select.mxo",
-				"type" : "iLaX"
 			}
  ]
 	}
