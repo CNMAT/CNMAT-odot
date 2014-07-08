@@ -642,7 +642,7 @@ void omessage_list(t_omessage *x, t_symbol *list_sym, short argc, t_atom *argv)
 		memcpy(copy, ptr, len);
 		critical_exit(x->lock);
 		omax_util_outletOSC(x->outlet, len, copy);
-	}else{
+	} else {
 		if(!x->bndl_u){
 			if(x->bndl_s){
 				critical_enter(x->lock);
@@ -651,7 +651,12 @@ void omessage_list(t_omessage *x, t_symbol *list_sym, short argc, t_atom *argv)
 			}else if(x->text){
 				// pretty sure this can't happen...
 				post("%d\n", __LINE__);
-			}else{
+			} else {
+                char buf[OSC_HEADER_SIZE];
+                memset(buf, '\0', OSC_HEADER_SIZE);
+                osc_bundle_s_setBundleID(buf);
+                omax_util_outletOSC(x->outlet, OSC_HEADER_SIZE, buf);
+                jbox_redraw((t_jbox *)x);
 				return;
 			}
 		}
