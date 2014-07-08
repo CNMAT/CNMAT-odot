@@ -356,6 +356,7 @@ void odisplay_bundle2text(t_odisplay *x)
 		long bufpos = 0;
 		char *buf = NULL;
 		t_osc_err e = osc_bundle_s_format(len, (char *)ptr, &bufpos, &buf);
+		
 		if(e){
 			object_error((t_object *)x, "%s", osc_error_string(e));
 			if(buf){
@@ -363,6 +364,7 @@ void odisplay_bundle2text(t_odisplay *x)
 			}
 			return;
 		}
+		
 		if(buf[bufpos - 2] == '\n'){
 			buf[bufpos - 2] = '\0';
 		}
@@ -2021,14 +2023,9 @@ void setup_o0x2edisplay(void) {
 
 void odisplay_free(t_odisplay *x)
 {
-    odisplay_clearBundles(x);
 	jbox_free((t_jbox *)x);
+    odisplay_clearBundles(x);
 	critical_free(x->lock);
-    /*
-	if(x->proxy){
-		object_free(x->proxy);
-	}
-     */
 }
 
 OMAX_DICT_DICTIONARY(t_odisplay, x, odisplay_fullPacket);
