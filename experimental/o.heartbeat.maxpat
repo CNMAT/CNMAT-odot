@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 6,
 			"minor" : 1,
-			"revision" : 0,
+			"revision" : 6,
 			"architecture" : "x86"
 		}
 ,
@@ -255,9 +255,9 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 3,
-					"outlettype" : [ "", "reset", "bang" ],
-					"patching_rect" : [ 88.0, 304.0, 60.0, 20.0 ],
-					"text" : "t l reset b"
+					"outlettype" : [ "", "clear", "bang" ],
+					"patching_rect" : [ 88.0, 304.0, 59.0, 20.0 ],
+					"text" : "t l clear b"
 				}
 
 			}
@@ -296,8 +296,8 @@
 					"id" : "obj-1",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
-					"numoutlets" : 3,
-					"outlettype" : [ "FullPacket", "FullPacket", "FullPacket" ],
+					"numoutlets" : 4,
+					"outlettype" : [ "FullPacket", "FullPacket", "FullPacket", "FullPacket" ],
 					"patching_rect" : [ 88.0, 368.0, 150.0, 20.0 ],
 					"text" : "o.schedule /time/expected"
 				}
@@ -411,15 +411,6 @@
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-4", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-1", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"source" : [ "obj-5", 1 ]
 				}
 
 			}

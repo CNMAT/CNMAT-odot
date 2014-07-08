@@ -4,11 +4,11 @@
 		"appversion" : 		{
 			"major" : 6,
 			"minor" : 1,
-			"revision" : 4,
+			"revision" : 6,
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 290.0, 44.0, 1289.0, 956.0 ],
+		"rect" : [ 151.0, 44.0, 1289.0, 956.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 11.0,
@@ -476,11 +476,11 @@
 						"appversion" : 						{
 							"major" : 6,
 							"minor" : 1,
-							"revision" : 4,
+							"revision" : 6,
 							"architecture" : "x86"
 						}
 ,
-						"rect" : [ 25.0, 69.0, 619.0, 465.0 ],
+						"rect" : [ 34.0, 69.0, 619.0, 465.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 11.0,
@@ -499,6 +499,7 @@
 						"description" : "",
 						"digest" : "",
 						"tags" : "",
+						"visible" : 1,
 						"boxes" : [ 							{
 								"box" : 								{
 									"fontname" : "Arial",
@@ -591,8 +592,8 @@
 									"linecount" : 2,
 									"maxclass" : "newobj",
 									"numinlets" : 1,
-									"numoutlets" : 3,
-									"outlettype" : [ "FullPacket", "FullPacket", "FullPacket" ],
+									"numoutlets" : 4,
+									"outlettype" : [ "FullPacket", "FullPacket", "FullPacket", "FullPacket" ],
 									"patching_rect" : [ 185.0, 278.0, 142.0, 31.0 ],
 									"text" : "o.schedule /scheduleTime @queuesize 500000"
 								}
@@ -630,8 +631,8 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 104.0, 240.0, 50.0, 17.0 ],
-									"text" : "reset"
+									"patching_rect" : [ 104.0, 240.0, 34.0, 17.0 ],
+									"text" : "clear"
 								}
 
 							}
@@ -770,11 +771,11 @@
 						"appversion" : 						{
 							"major" : 6,
 							"minor" : 1,
-							"revision" : 4,
+							"revision" : 6,
 							"architecture" : "x86"
 						}
 ,
-						"rect" : [ 587.0, 116.0, 1093.0, 842.0 ],
+						"rect" : [ 347.0, 116.0, 1093.0, 842.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 11.0,
@@ -985,7 +986,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 401.0, 221.0, 52.0, 19.0 ],
-									"text" : "/frame 0 ",
+									"text" : "/frame 0",
 									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 
@@ -1276,7 +1277,7 @@
 						"appversion" : 						{
 							"major" : 6,
 							"minor" : 1,
-							"revision" : 4,
+							"revision" : 6,
 							"architecture" : "x86"
 						}
 ,
@@ -2005,7 +2006,7 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "m158.o.io.mouse.maxpat",
-				"bootpath" : "/Users/rama/Documents/__CNMAT/cnmat-git/CNMAT-odot/testing/io",
+				"bootpath" : "/Users/ilyarostovtsev/Documents/Creative Coding/odot/_full_build_trunk/CNMAT-odot/experimental/io",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
