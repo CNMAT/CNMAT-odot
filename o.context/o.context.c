@@ -41,8 +41,8 @@
 #include "jpatcher_api.h"
 #endif
 #include "osc.h"
-#include "osc_serial.h"
 #include "osc_mem.h"
+#include "osc_serial.h"
 #include "osc_bundle_iterator_s.h"
 #include "o.h"
 #include "omax_util.h"
