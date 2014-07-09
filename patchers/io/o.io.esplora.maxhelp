@@ -8,7 +8,7 @@
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 559.0, 95.0, 1262.0, 604.0 ],
+		"rect" : [ 178.0, 95.0, 1262.0, 604.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -28,6 +28,18 @@
 		"digest" : "",
 		"tags" : "",
 		"boxes" : [ 			{
+				"box" : 				{
+					"id" : "obj-4",
+					"maxclass" : "bpatcher",
+					"name" : "o.io.esplora.display.maxpat",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 474.0, 405.0, 574.0, 248.0 ]
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"id" : "obj-26",
 					"maxclass" : "toggle",
@@ -172,11 +184,13 @@
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"id" : "obj-13",
+					"linecount" : 38,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 13.0, 405.0, 431.0, 34.0 ],
+					"patching_rect" : [ 13.0, 405.0, 431.0, 530.0 ],
+					"text" : "/Manufacturer \"Arduino\"\n/Device \"Esplora\"\n/UniqueID \"usbmodemOSCes311\"\n/Sequence/Number 9246\n/acceleration/x 0.0136719\n/acceleration/y 0.119141\n/acceleration/z 0.242188\n/photoresistor 0.960899\n/slider/horizontal 0.195503\n/connector/white/right 0.946237\n/connector/orange/left true\n/connector/orange/right false\n/units/temperature \"Celsius\"\n/temperature/celsius 21.\n/microphone/loudness 0.\n/led/rgb 0 134 35\n/joystick/horizontal 0.0078125\n/joystick/vertical -0.0117188\n/connector/white/left 0.520039\n/joystick/button/down false\n/joystick/button/up true\n/joystick/forward/button/down false\n/joystick/forward/button/up true\n/joystick/left/button/down false\n/joystick/left/button/up true\n/joystick/right/button/down false\n/joystick/right/button/up true\n/joystick/backward/button/down false\n/joystick/backward/button/up true\n/diamond/backward/button/down false\n/diamond/backward/button/up true\n/diamond/left/button/down false\n/diamond/left/button/up true\n/diamond/right/button/down false\n/diamond/right/button/up true\n/diamond/forward/button/down false\n/diamond/forward/button/up true\n/microseconds 307142848",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -191,8 +205,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 525.5, 405.0, 239.0, 88.0 ],
-					"text" : "/port \"usbmodemOSCes311\"\n/rate/output\n/rate/input\n/mediansize/received\n/baud 110",
+					"patching_rect" : [ 677.5, 249.0, 239.0, 88.0 ],
+					"text" : "/port \"usbmodemOSCes311\"\n/rate/output 33\n/rate/input 10\n/mediansize/received 192\n/baud 110",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -598,7 +612,18 @@
 					"destination" : [ "obj-3", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
+					"midpoints" : [ 362.0, 384.0, 663.0, 384.0, 663.0, 246.0, 687.0, 246.0 ],
 					"source" : [ "obj-1", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"color" : [ 1.0, 0.8, 0.4, 1.0 ],
+					"destination" : [ "obj-4", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-1", 0 ]
 				}
 
 			}
@@ -875,6 +900,13 @@
 				"implicit" : 1
 			}
 , 			{
+				"name" : "o.io.esplora.display.maxpat",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/patchers/io",
+				"patcherrelativepath" : ".",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
 				"name" : "o.pack.mxo",
 				"type" : "iLaX"
 			}
@@ -952,6 +984,10 @@
 			}
 , 			{
 				"name" : "o.compose.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.expr.mxo",
 				"type" : "iLaX"
 			}
  ]
