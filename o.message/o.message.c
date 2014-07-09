@@ -371,8 +371,7 @@ void omessage_bundle2text(t_omessage *x)
 		char ptr[len];
 		memcpy(ptr, osc_bundle_s_getPtr(x->bndl_s), len);
 		critical_exit(x->lock);
-		long bufpos = 0;
-		char *buf = NULL;
+        /*
 		t_osc_err e = osc_bundle_s_format(len, (char *)ptr, &bufpos, &buf);
 		if(e){
 			object_error((t_object *)x, "%s", osc_error_string(e));
@@ -381,6 +380,11 @@ void omessage_bundle2text(t_omessage *x)
 			}
 			return;
 		}
+         */
+        long bufpos = osc_bundle_s_nformat(NULL, 0, len, (char *)ptr, 0);
+		char *buf = osc_mem_alloc(bufpos + 1);
+        osc_bundle_s_nformat(buf, bufpos, len, (char *)ptr, 0);
+        
 		if(buf[bufpos - 2] == '\n'){
 			buf[bufpos - 2] = '\0';
 		}
