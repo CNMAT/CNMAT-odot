@@ -46,13 +46,11 @@
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"id" : "obj-4",
-					"linecount" : 45,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 13.0, 55.0, 437.0, 624.0 ],
-					"text" : "/position/pad/horizontal 0.00787402\n/timestamp 2014-07-06T03:13:42.772220Z\n/position/pad/vertical -0.637795\n/pad/12/down false\n/pad/12/up true\n/pad/12/velocity 0.\n/pad/6/down false\n/pad/6/up true\n/pad/6/velocity 0.\n/pad/5/down false\n/pad/5/up true\n/pad/5/velocity 0.\n/pad/9/down false\n/pad/9/up true\n/pad/9/velocity 0.\n/pad/3/down false\n/pad/3/up true\n/pad/3/velocity 0.\n/pad/2/down false\n/pad/2/up true\n/pad/2/velocity 0.\n/pad/4/down false\n/pad/4/up true\n/pad/4/velocity 0.\n/pad/7/down false\n/pad/7/up true\n/pad/7/velocity 0.\n/pad/10/down false\n/pad/10/up true\n/pad/10/velocity 0.\n/scene 3\n/pad/11/down false\n/pad/11/up true\n/pad/11/velocity 0.\n/pad/1/down false\n/pad/1/up true\n/pad/1/velocity 0.\n/pad/8/down false\n/pad/8/up true\n/pad/8/velocity 0.\n/Manufacturer\n/Device\n/Instructions \"Reset by holding down HOLD FLAM AND ROLL during power up\"\n/pad/7velocity\n/position/pad/touched\n",
+					"patching_rect" : [ 13.0, 55.0, 437.0, 34.0 ],
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -61,7 +59,7 @@
 				"box" : 				{
 					"id" : "obj-8",
 					"maxclass" : "bpatcher",
-					"name" : "o.io.midi.portcheck.maxpat",
+					"name" : "o.io.midi.panel.maxpat",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
@@ -99,7 +97,7 @@
 			}
  ],
 		"dependency_cache" : [ 			{
-				"name" : "o.io.midi.portcheck.maxpat",
+				"name" : "o.io.midi.panel.maxpat",
 				"bootpath" : "/Users/adrian2013/CNMAT-odot/patchers/io",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
