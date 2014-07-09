@@ -4,11 +4,11 @@
 		"appversion" : 		{
 			"major" : 6,
 			"minor" : 1,
-			"revision" : 0,
+			"revision" : 6,
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ -1287.0, 62.0, 1089.0, 907.0 ],
+		"rect" : [ 34.0, 62.0, 1089.0, 907.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -63,9 +63,9 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 2,
-					"outlettype" : [ "reset", "int" ],
-					"patching_rect" : [ 112.0, 152.0, 54.0, 20.0 ],
-					"text" : "t reset 0"
+					"outlettype" : [ "clear", "int" ],
+					"patching_rect" : [ 112.0, 152.0, 53.0, 20.0 ],
+					"text" : "t clear 0"
 				}
 
 			}
@@ -134,7 +134,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 17.0, 600.0, 311.5, 100.0 ],
-					"text" : "/avg_num_events 1 \n/num_seconds 1. \n/mu 1. \n/r 0.642764 \n/time_to_next_event 0.441977 \n/time/now 2013-03-28T15:20:20.341558Z\n/time/event 2013-03-28T15:20:20.783535Z\n",
+					"text" : "/avg_num_events 1\n/num_seconds 1.\n/mu 1.\n/r 0.642764\n/time_to_next_event 0.441977\n/time/now 2013-03-28T15:20:20.341558Z\n/time/event 2013-03-28T15:20:20.783535Z\n",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -176,8 +176,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 239.0, 373.5, 37.0, 18.0 ],
-					"text" : "reset"
+					"patching_rect" : [ 240.0, 373.5, 37.0, 18.0 ],
+					"text" : "clear"
 				}
 
 			}
@@ -202,8 +202,8 @@
 					"id" : "obj-20",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
-					"numoutlets" : 3,
-					"outlettype" : [ "FullPacket", "FullPacket", "FullPacket" ],
+					"numoutlets" : 4,
+					"outlettype" : [ "FullPacket", "FullPacket", "FullPacket", "FullPacket" ],
 					"patching_rect" : [ 311.0, 400.0, 131.0, 20.0 ],
 					"text" : "o.schedule /time/event"
 				}
@@ -592,15 +592,6 @@
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-40", 1 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-20", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"source" : [ "obj-41", 0 ]
 				}
 
 			}

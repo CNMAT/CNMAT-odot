@@ -371,19 +371,18 @@ void omessage_bundle2text(t_omessage *x)
 		char ptr[len];
 		memcpy(ptr, osc_bundle_s_getPtr(x->bndl_s), len);
 		critical_exit(x->lock);
-		long bufpos = 0;
+        
+        long bufpos = osc_bundle_s_nformat(NULL, 0, len, (char *)ptr, 0);
 		char *buf = NULL;
-		t_osc_err e = osc_bundle_s_format(len, (char *)ptr, &bufpos, &buf);
-		if(e){
-			object_error((t_object *)x, "%s", osc_error_string(e));
-			if(buf){
-				osc_mem_free(buf);
+		
+		if (bufpos != 0) {
+		    buf = osc_mem_alloc(bufpos + 1);
+			osc_bundle_s_nformat(buf, bufpos + 1, len, (char *)ptr, 0);
+			if(buf[bufpos - 2] == '\n'){
+			    buf[bufpos - 2] = '\0';
 			}
-			return;
 		}
-		if(buf[bufpos - 2] == '\n'){
-			buf[bufpos - 2] = '\0';
-		}
+        
 #ifndef OMAX_PD_VERSION
 		critical_enter(x->lock);
 		if(x->text){
@@ -397,9 +396,11 @@ void omessage_bundle2text(t_omessage *x)
         omessage_resetText(x, buf);
 
 #endif
-		if(buf){
-			//osc_mem_free(buf);
-		}
+/*
+        if(buf){
+            osc_mem_free(buf);
+        }
+*/
 		x->newbndl = 0;
 	}
 	critical_exit(x->lock);
@@ -642,7 +643,7 @@ void omessage_list(t_omessage *x, t_symbol *list_sym, short argc, t_atom *argv)
 		memcpy(copy, ptr, len);
 		critical_exit(x->lock);
 		omax_util_outletOSC(x->outlet, len, copy);
-	}else{
+	} else {
 		if(!x->bndl_u){
 			if(x->bndl_s){
 				critical_enter(x->lock);
@@ -651,7 +652,12 @@ void omessage_list(t_omessage *x, t_symbol *list_sym, short argc, t_atom *argv)
 			}else if(x->text){
 				// pretty sure this can't happen...
 				post("%d\n", __LINE__);
-			}else{
+			} else {
+                char buf[OSC_HEADER_SIZE];
+                memset(buf, '\0', OSC_HEADER_SIZE);
+                osc_bundle_s_setBundleID(buf);
+                omax_util_outletOSC(x->outlet, OSC_HEADER_SIZE, buf);
+                jbox_redraw((t_jbox *)x);
 				return;
 			}
 		}
@@ -2165,12 +2171,12 @@ void setup_o0x2emessage(void) {
 
 void omessage_free(t_omessage *x)
 {
-    omessage_clearBundles(x);
-	jbox_free((t_jbox *)x);
-	critical_free(x->lock);
-	if(x->proxy){
+    jbox_free((t_jbox *)x);
+    if(x->proxy){
 		object_free(x->proxy);
 	}
+    omessage_clearBundles(x);	
+    critical_free(x->lock);
 }
 
 OMAX_DICT_DICTIONARY(t_omessage, x, omessage_fullPacket);

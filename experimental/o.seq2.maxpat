@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 6,
 			"minor" : 1,
-			"revision" : 0,
+			"revision" : 6,
 			"architecture" : "x86"
 		}
 ,
@@ -51,7 +51,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 48.0, 304.0, 37.0, 18.0 ],
-					"text" : "reset"
+					"text" : "clear"
 				}
 
 			}
@@ -172,8 +172,8 @@
 					"id" : "obj-4",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
-					"numoutlets" : 3,
-					"outlettype" : [ "FullPacket", "FullPacket", "FullPacket" ],
+					"numoutlets" : 4,
+					"outlettype" : [ "FullPacket", "FullPacket", "FullPacket", "FullPacket" ],
 					"patching_rect" : [ 200.0, 336.0, 98.0, 20.0 ],
 					"text" : "o.schedule /time"
 				}
@@ -218,7 +218,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 200.0, 48.0, 308.0, 60.0 ],
-					"text" : "/pitches 64 64 65 67 67 65 64 62 60 60 62 64 64 62 62 \n/durations 0 1 1 1 1 1 1 1 1 1 1 1 1 1.5 0.5 1 \n/n 0 \n/scale 0.5 ",
+					"text" : "/pitches 64 64 65 67 67 65 64 62 60 60 62 64 64 62 62\n/durations 0 1 1 1 1 1 1 1 1 1 1 1 1 1.5 0.5 1\n/n 0\n/scale 0.5",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 

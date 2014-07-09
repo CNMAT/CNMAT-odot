@@ -45,7 +45,7 @@
 							"architecture" : "x86"
 						}
 ,
-						"rect" : [ 25.0, 69.0, 640.0, 480.0 ],
+						"rect" : [ 34.0, 69.0, 640.0, 480.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -242,8 +242,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 53.0, 574.0, 318.0, 82.0 ],
-					"presentation_rect" : [ 497.0, 669.0, 0.0, 0.0 ],
+					"patching_rect" : [ 53.0, 574.0, 318.0, 87.0 ],
 					"text" : "/position = scale( (/in + /between) / 6, 0. , 1.0,-0.8,0.8);\n/position = [/position, /position, /position];\n/color = [0.7 , 0.9 ,  0.5];\n/radius = 0.1;\n/shape = \"framecircle\";",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -273,8 +272,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 121.0, 277.0, 226.0, 70.0 ],
-					"presentation_rect" : [ 474.0, 66.0, 0.0, 0.0 ],
+					"patching_rect" : [ 121.0, 277.0, 226.0, 73.0 ],
 					"text" : "/position = [ 0.1, /between , /between];\n/color = [0.3  , /between,  0.5];\n/radius = 0.1;\n/shape = \"sphere\";",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -285,13 +283,13 @@
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"id" : "obj-19",
-					"linecount" : 3,
+					"linecount" : 2,
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 77.0, 80.0, 194.0, 65.0 ],
-					"text" : "\n/in = floor(/scenenumber);\n/between = /scenenumber%1.0;",
+					"patching_rect" : [ 77.0, 80.0, 194.0, 46.0 ],
+					"text" : "/in = floor(/scenenumber);\n/between = /scenenumber%1.0;",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -314,7 +312,7 @@
 							"architecture" : "x86"
 						}
 ,
-						"rect" : [ 0.0, 0.0, 640.0, 480.0 ],
+						"rect" : [ 59.0, 69.0, 640.0, 480.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -1208,92 +1206,92 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "o.io.gl.maxpat",
-				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions/io/graphics",
-				"patcherrelativepath" : "../abstractions/io/graphics",
+				"bootpath" : "/Users/ilyarostovtsev/Documents/Creative Coding/odot/_full_build_trunk/CNMAT-odot/patchers/io/graphics",
+				"patcherrelativepath" : "../patchers/io/graphics",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "thru.maxpat",
 				"bootpath" : "/Applications/Max 6.1/patches/m4l-patches/Pluggo for Live resources/patches",
-				"patcherrelativepath" : "../../../../Applications/Max 6.1/patches/m4l-patches/Pluggo for Live resources/patches",
+				"patcherrelativepath" : "../../../../../../../../Applications/Max 6.1/patches/m4l-patches/Pluggo for Live resources/patches",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.io.gl.platohelper.maxpat",
-				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions/io/graphics",
-				"patcherrelativepath" : "../abstractions/io/graphics",
+				"bootpath" : "/Users/ilyarostovtsev/Documents/Creative Coding/odot/_full_build_trunk/CNMAT-odot/patchers/io/graphics",
+				"patcherrelativepath" : "../patchers/io/graphics",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.righttoleft.maxpat",
-				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions/core",
-				"patcherrelativepath" : "../abstractions/core",
+				"bootpath" : "/Users/ilyarostovtsev/Documents/Creative Coding/odot/_full_build_trunk/CNMAT-odot/patchers/core",
+				"patcherrelativepath" : "../patchers/core",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.in.maxpat",
-				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions/core",
-				"patcherrelativepath" : "../abstractions/core",
+				"bootpath" : "/Users/ilyarostovtsev/Documents/Creative Coding/odot/_full_build_trunk/CNMAT-odot/patchers/core",
+				"patcherrelativepath" : "../patchers/core",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.port.maxpat",
-				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions/core",
-				"patcherrelativepath" : "../abstractions/core",
+				"bootpath" : "/Users/ilyarostovtsev/Documents/Creative Coding/odot/_full_build_trunk/CNMAT-odot/patchers/core",
+				"patcherrelativepath" : "../patchers/core",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.aspect.joinpoint.maxpat",
-				"bootpath" : "/Users/adrian2013/CNMAT-odot/experimental/aspect",
-				"patcherrelativepath" : "../experimental/aspect",
+				"bootpath" : "/Users/ilyarostovtsev/Documents/Creative Coding/odot/_full_build_trunk/CNMAT-odot/patchers/aspect",
+				"patcherrelativepath" : "../patchers/aspect",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.out.maxpat",
-				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions/core",
-				"patcherrelativepath" : "../abstractions/core",
+				"bootpath" : "/Users/ilyarostovtsev/Documents/Creative Coding/odot/_full_build_trunk/CNMAT-odot/patchers/core",
+				"patcherrelativepath" : "../patchers/core",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.io.gltexthelper.maxpat",
-				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions/io/graphics",
-				"patcherrelativepath" : "../abstractions/io/graphics",
+				"bootpath" : "/Users/ilyarostovtsev/Documents/Creative Coding/odot/_full_build_trunk/CNMAT-odot/patchers/io/graphics",
+				"patcherrelativepath" : "../patchers/io/graphics",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.metro.maxpat",
-				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions/time",
-				"patcherrelativepath" : "../abstractions/time",
+				"bootpath" : "/Users/ilyarostovtsev/Documents/Creative Coding/odot/_full_build_trunk/CNMAT-odot/patchers/time",
+				"patcherrelativepath" : "../patchers/time",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.arguments.maxpat",
-				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions",
-				"patcherrelativepath" : "../abstractions",
+				"bootpath" : "/Users/ilyarostovtsev/Documents/Creative Coding/odot/_full_build_trunk/CNMAT-odot/patchers",
+				"patcherrelativepath" : "../patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.init.maxpat",
-				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions/core",
-				"patcherrelativepath" : "../abstractions/core",
+				"bootpath" : "/Users/ilyarostovtsev/Documents/Creative Coding/odot/_full_build_trunk/CNMAT-odot/patchers/core",
+				"patcherrelativepath" : "../patchers/core",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.forward.maxpat",
-				"bootpath" : "/Users/adrian2013/CNMAT-odot/abstractions",
-				"patcherrelativepath" : "../abstractions",
+				"bootpath" : "/Users/ilyarostovtsev/Documents/Creative Coding/odot/_full_build_trunk/CNMAT-odot/patchers",
+				"patcherrelativepath" : "../patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
