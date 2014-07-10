@@ -4,18 +4,18 @@
 		"appversion" : 		{
 			"major" : 6,
 			"minor" : 1,
-			"revision" : 6,
+			"revision" : 7,
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 178.0, 95.0, 1262.0, 604.0 ],
+		"rect" : [ 88.0, 48.0, 1076.0, 773.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
 		"default_fontface" : 0,
 		"default_fontname" : "Arial",
 		"gridonopen" : 0,
-		"gridsize" : [ 15.0, 15.0 ],
+		"gridsize" : [ 10.0, 10.0 ],
 		"gridsnaponopen" : 0,
 		"statusbarvisible" : 2,
 		"toolbarvisible" : 1,
@@ -29,13 +29,28 @@
 		"tags" : "",
 		"boxes" : [ 			{
 				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"frgb" : 0.0,
+					"id" : "obj-32",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 50.0, 141.5, 225.0, 20.0 ],
+					"text" : "tiny LED on esplora, next to reset button"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-4",
 					"maxclass" : "bpatcher",
 					"name" : "o.io.esplora.display.maxpat",
 					"numinlets" : 1,
 					"numoutlets" : 1,
+					"offset" : [ -24.0, -5.0 ],
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 474.0, 405.0, 574.0, 248.0 ]
+					"patching_rect" : [ 504.0, 405.0, 522.0, 235.0 ]
 				}
 
 			}
@@ -47,7 +62,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "int" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 46.0, 191.0, 20.0, 20.0 ]
+					"patching_rect" : [ 70.0, 240.0, 20.0, 20.0 ]
 				}
 
 			}
@@ -60,7 +75,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 46.0, 232.0, 165.0, 20.0 ],
+					"patching_rect" : [ 70.0, 270.0, 165.0, 20.0 ],
 					"text" : "o.pack /connector/orange/left"
 				}
 
@@ -73,7 +88,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "int" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 13.0, 219.0, 20.0, 20.0 ]
+					"patching_rect" : [ 43.0, 270.0, 20.0, 20.0 ]
 				}
 
 			}
@@ -86,7 +101,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 13.0, 260.0, 173.0, 20.0 ],
+					"patching_rect" : [ 43.0, 301.0, 173.0, 20.0 ],
 					"text" : "o.pack /connector/orange/right"
 				}
 
@@ -100,7 +115,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 117.0, 182.0, 69.0, 20.0 ],
+					"patching_rect" : [ 30.0, 168.5, 69.0, 20.0 ],
 					"text" : "o.pack /led"
 				}
 
@@ -114,7 +129,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 298.5, 117.666664, 89.0, 20.0 ],
+					"patching_rect" : [ 30.0, 98.0, 89.0, 20.0 ],
 					"text" : "o.pack /led/rgb"
 				}
 
@@ -128,7 +143,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 632.0, 204.0, 150.0, 24.0 ],
+					"patching_rect" : [ 569.0, 204.0, 102.0, 24.0 ],
 					"text" : "/tone/off",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -143,7 +158,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 611.0, 168.5, 150.0, 24.0 ],
+					"patching_rect" : [ 569.0, 168.5, 102.0, 24.0 ],
 					"text" : "/tone 220.",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -158,7 +173,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 576.0, 130.0, 150.0, 24.0 ],
+					"patching_rect" : [ 569.0, 130.0, 102.0, 24.0 ],
 					"text" : "/tone 440",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -173,7 +188,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 560.0, 91.0, 150.0, 24.0 ],
+					"patching_rect" : [ 569.0, 96.0, 102.0, 24.0 ],
 					"text" : "/tone 200 200",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -189,8 +204,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 13.0, 405.0, 431.0, 530.0 ],
-					"text" : "/Manufacturer \"Arduino\"\n/Device \"Esplora\"\n/UniqueID \"usbmodemOSCes311\"\n/Sequence/Number 9246\n/acceleration/x 0.0136719\n/acceleration/y 0.119141\n/acceleration/z 0.242188\n/photoresistor 0.960899\n/slider/horizontal 0.195503\n/connector/white/right 0.946237\n/connector/orange/left true\n/connector/orange/right false\n/units/temperature \"Celsius\"\n/temperature/celsius 21.\n/microphone/loudness 0.\n/led/rgb 0 134 35\n/joystick/horizontal 0.0078125\n/joystick/vertical -0.0117188\n/connector/white/left 0.520039\n/joystick/button/down false\n/joystick/button/up true\n/joystick/forward/button/down false\n/joystick/forward/button/up true\n/joystick/left/button/down false\n/joystick/left/button/up true\n/joystick/right/button/down false\n/joystick/right/button/up true\n/joystick/backward/button/down false\n/joystick/backward/button/up true\n/diamond/backward/button/down false\n/diamond/backward/button/up true\n/diamond/left/button/down false\n/diamond/left/button/up true\n/diamond/right/button/down false\n/diamond/right/button/up true\n/diamond/forward/button/down false\n/diamond/forward/button/up true\n/microseconds 307142848",
+					"patching_rect" : [ 43.0, 405.0, 431.0, 530.0 ],
+					"text" : "/Manufacturer \"Arduino\"\n/Device \"Esplora\"\n/UniqueID \"usbmodemOSCes321\"\n/Sequence/Number 219541\n/acceleration/x 0.0605469\n/acceleration/y 0.0644531\n/acceleration/z 0.277344\n/photoresistor 0.754643\n/slider/horizontal 0.71261\n/connector/white/right 0.927664\n/connector/orange/left true\n/connector/orange/right true\n/units/temperature \"Celsius\"\n/temperature/celsius 26.\n/microphone/loudness 0.\n/led/rgb 0 0 0\n/joystick/horizontal -0.0175781\n/joystick/vertical 0.0253906\n/connector/white/left 0.663734\n/joystick/button/down false\n/joystick/button/up true\n/joystick/forward/button/down false\n/joystick/forward/button/up true\n/joystick/left/button/down false\n/joystick/left/button/up true\n/joystick/right/button/down false\n/joystick/right/button/up true\n/joystick/backward/button/down false\n/joystick/backward/button/up true\n/diamond/backward/button/down false\n/diamond/backward/button/up true\n/diamond/left/button/down false\n/diamond/left/button/up true\n/diamond/right/button/down false\n/diamond/right/button/up true\n/diamond/forward/button/down false\n/diamond/forward/button/up true\n/microseconds -335174276",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -205,8 +220,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 677.5, 249.0, 239.0, 88.0 ],
-					"text" : "/port \"usbmodemOSCes311\"\n/rate/output 33\n/rate/input 10\n/mediansize/received 192\n/baud 110",
+					"patching_rect" : [ 707.5, 249.0, 239.0, 88.0 ],
+					"text" : "/port \"usbmodemOSCes321\"\n/rate/output 32\n/rate/input 3\n/mediansize/received 152.5\n/baud 110",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -221,7 +236,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 570.0, 31.5, 150.0, 33.0 ],
+					"patching_rect" : [ 600.0, 31.5, 150.0, 33.0 ],
 					"text" : "Adrian Freed, Jeff Lubow 2014"
 				}
 
@@ -236,7 +251,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 352.5, 168.5, 170.0, 47.0 ],
+					"patching_rect" : [ 382.5, 168.5, 170.0, 47.0 ],
 					"text" : "On Macintosh look for your Esplora named like this: \nusbmodemXXXX\n"
 				}
 
@@ -249,7 +264,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 352.5, 232.0, 160.0, 22.0 ]
+					"patching_rect" : [ 382.5, 232.0, 160.0, 22.0 ]
 				}
 
 			}
@@ -267,7 +282,7 @@
 						"appversion" : 						{
 							"major" : 6,
 							"minor" : 1,
-							"revision" : 6,
+							"revision" : 7,
 							"architecture" : "x86"
 						}
 ,
@@ -452,7 +467,7 @@
  ]
 					}
 ,
-					"patching_rect" : [ 560.0, 279.0, 85.0, 20.0 ],
+					"patching_rect" : [ 590.0, 279.0, 85.0, 20.0 ],
 					"saved_object_attributes" : 					{
 						"default_fontface" : 0,
 						"default_fontname" : "Arial",
@@ -477,7 +492,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 560.0, 249.0, 20.0, 20.0 ]
+					"patching_rect" : [ 590.0, 249.0, 20.0, 20.0 ]
 				}
 
 			}
@@ -490,7 +505,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "float" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 298.5, 3.666664, 195.0, 88.666672 ]
+					"patching_rect" : [ 30.0, 7.666664, 195.0, 88.666672 ]
 				}
 
 			}
@@ -499,11 +514,11 @@
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"id" : "obj-24",
-					"maxclass" : "o.message",
-					"numinlets" : 2,
+					"maxclass" : "o.compose",
+					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 13.0, 102.0, 150.0, 20.0 ],
+					"patching_rect" : [ 360.0, 40.0, 102.0, 24.0 ],
 					"text" : "/led/rgb 0 0 0",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -517,7 +532,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "int" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 117.0, 155.0, 20.0, 20.0 ]
+					"patching_rect" : [ 30.0, 141.5, 20.0, 20.0 ]
 				}
 
 			}
@@ -526,11 +541,11 @@
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"id" : "obj-11",
-					"maxclass" : "o.message",
-					"numinlets" : 2,
+					"maxclass" : "o.compose",
+					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 163.0, 13.0, 89.0, 20.0 ],
+					"patching_rect" : [ 230.0, 7.666664, 99.0, 24.0 ],
 					"text" : "/led/green 200",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -541,11 +556,11 @@
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"id" : "obj-10",
-					"maxclass" : "o.message",
-					"numinlets" : 2,
+					"maxclass" : "o.compose",
+					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 163.0, 63.0, 89.0, 20.0 ],
+					"patching_rect" : [ 230.0, 72.333336, 99.0, 24.0 ],
 					"text" : "/led/blue 200",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -556,11 +571,11 @@
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"id" : "obj-9",
-					"maxclass" : "o.message",
-					"numinlets" : 2,
+					"maxclass" : "o.compose",
+					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 163.0, 38.0, 89.0, 20.0 ],
+					"patching_rect" : [ 230.0, 40.0, 99.0, 24.0 ],
 					"text" : "/led/red 100",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -571,11 +586,11 @@
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"id" : "obj-6",
-					"maxclass" : "o.message",
-					"numinlets" : 2,
+					"maxclass" : "o.compose",
+					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 3.0, 63.0, 150.0, 20.0 ],
+					"patching_rect" : [ 360.0, 7.666664, 102.0, 24.0 ],
 					"text" : "/led/rgb 200 0 0",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -590,7 +605,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 298.5, 364.0, 73.0, 20.0 ],
+					"patching_rect" : [ 328.5, 364.0, 73.0, 20.0 ],
 					"text" : "o.io.esplora"
 				}
 
@@ -612,7 +627,7 @@
 					"destination" : [ "obj-3", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"midpoints" : [ 362.0, 384.0, 663.0, 384.0, 663.0, 246.0, 687.0, 246.0 ],
+					"midpoints" : [ 392.0, 384.0, 693.0, 384.0, 693.0, 246.0, 717.0, 246.0 ],
 					"source" : [ "obj-1", 1 ]
 				}
 
@@ -633,7 +648,7 @@
 					"destination" : [ "obj-1", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"midpoints" : [ 172.5, 93.0, 246.0, 93.0, 246.0, 351.0, 308.0, 351.0 ],
+					"midpoints" : [ 239.5, 99.666672, 338.0, 99.666672 ],
 					"source" : [ "obj-10", 0 ]
 				}
 
@@ -644,7 +659,7 @@
 					"destination" : [ "obj-1", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"midpoints" : [ 172.5, 33.0, 159.0, 33.0, 159.0, 93.0, 246.0, 93.0, 246.0, 351.0, 308.0, 351.0 ],
+					"midpoints" : [ 239.5, 35.333328, 338.0, 35.333328 ],
 					"source" : [ "obj-11", 0 ]
 				}
 
@@ -655,7 +670,7 @@
 					"destination" : [ "obj-1", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"midpoints" : [ 22.5, 351.0, 308.0, 351.0 ],
+					"midpoints" : [ 52.5, 325.0, 338.0, 325.0 ],
 					"source" : [ "obj-12", 0 ]
 				}
 
@@ -666,7 +681,7 @@
 					"destination" : [ "obj-1", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"midpoints" : [ 569.5, 131.0, 534.0, 131.0, 534.0, 351.0, 308.0, 351.0 ],
+					"midpoints" : [ 578.5, 124.0, 564.0, 124.0, 564.0, 351.0, 338.0, 351.0 ],
 					"source" : [ "obj-14", 0 ]
 				}
 
@@ -677,7 +692,7 @@
 					"destination" : [ "obj-1", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"midpoints" : [ 585.5, 167.0, 534.0, 167.0, 534.0, 351.0, 308.0, 351.0 ],
+					"midpoints" : [ 578.5, 158.0, 564.0, 158.0, 564.0, 351.0, 338.0, 351.0 ],
 					"source" : [ "obj-15", 0 ]
 				}
 
@@ -698,7 +713,7 @@
 					"destination" : [ "obj-1", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"midpoints" : [ 620.5, 202.0, 534.0, 202.0, 534.0, 351.0, 308.0, 351.0 ],
+					"midpoints" : [ 578.5, 198.0, 564.0, 198.0, 564.0, 351.0, 338.0, 351.0 ],
 					"source" : [ "obj-17", 0 ]
 				}
 
@@ -709,6 +724,7 @@
 					"destination" : [ "obj-1", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
+					"midpoints" : [ 39.5, 121.5, 338.0, 121.5 ],
 					"source" : [ "obj-2", 0 ]
 				}
 
@@ -737,7 +753,7 @@
 					"destination" : [ "obj-1", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"midpoints" : [ 22.5, 141.0, 246.0, 141.0, 246.0, 351.0, 308.0, 351.0 ],
+					"midpoints" : [ 369.5, 68.0, 338.0, 68.0 ],
 					"source" : [ "obj-24", 0 ]
 				}
 
@@ -748,7 +764,7 @@
 					"destination" : [ "obj-1", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"midpoints" : [ 641.5, 240.0, 533.0, 240.0, 533.0, 351.0, 308.0, 351.0 ],
+					"midpoints" : [ 578.5, 233.0, 563.0, 233.0, 563.0, 351.0, 338.0, 351.0 ],
 					"source" : [ "obj-25", 0 ]
 				}
 
@@ -768,7 +784,7 @@
 					"destination" : [ "obj-1", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"midpoints" : [ 55.5, 252.0, 198.0, 252.0, 198.0, 351.0, 308.0, 351.0 ],
+					"midpoints" : [ 79.5, 294.5, 338.0, 294.5 ],
 					"source" : [ "obj-27", 0 ]
 				}
 
@@ -797,7 +813,7 @@
 					"destination" : [ "obj-1", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"midpoints" : [ 569.5, 351.0, 308.0, 351.0 ],
+					"midpoints" : [ 599.5, 356.0, 338.0, 356.0 ],
 					"source" : [ "obj-51", 0 ]
 				}
 
@@ -808,7 +824,7 @@
 					"destination" : [ "obj-1", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"midpoints" : [ 12.5, 92.0, 159.0, 92.0, 159.0, 93.0, 246.0, 93.0, 246.0, 351.0, 308.0, 351.0 ],
+					"midpoints" : [ 369.5, 33.0, 338.0, 33.0 ],
 					"source" : [ "obj-6", 0 ]
 				}
 
@@ -819,7 +835,7 @@
 					"destination" : [ "obj-1", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"midpoints" : [ 126.5, 219.0, 246.0, 219.0, 246.0, 351.0, 308.0, 351.0 ],
+					"midpoints" : [ 39.5, 192.75, 338.0, 192.75 ],
 					"source" : [ "obj-7", 0 ]
 				}
 
@@ -830,7 +846,7 @@
 					"destination" : [ "obj-1", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"midpoints" : [ 172.5, 60.0, 159.0, 60.0, 159.0, 93.0, 246.0, 93.0, 246.0, 351.0, 308.0, 351.0 ],
+					"midpoints" : [ 239.5, 67.5, 338.0, 67.5 ],
 					"source" : [ "obj-9", 0 ]
 				}
 
@@ -838,71 +854,106 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "o.io.esplora.maxpat",
-				"bootpath" : "/Users/adrian2013/CNMAT-odot/patchers/io",
+				"bootpath" : "/Users/jml/Documents/materials/programming/max_files/5_berkeley/projects/cnmat/repositories/CNMAT-odot/patchers/io/esplora",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.io.slipserial.maxpat",
-				"bootpath" : "/Users/adrian2013/CNMAT-odot/patchers/io",
-				"patcherrelativepath" : ".",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "o.arguments.maxpat",
-				"bootpath" : "/Users/adrian2013/CNMAT-odot/patchers",
+				"bootpath" : "/Users/jml/Documents/materials/programming/max_files/5_berkeley/projects/cnmat/repositories/CNMAT-odot/patchers/io",
 				"patcherrelativepath" : "..",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
+				"name" : "o.arguments.maxpat",
+				"bootpath" : "/Users/jml/Documents/materials/programming/max_files/5_berkeley/projects/cnmat/repositories/CNMAT-odot/patchers",
+				"patcherrelativepath" : "../..",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
 				"name" : "o.righttoleft.maxpat",
-				"bootpath" : "/Users/adrian2013/CNMAT-odot/patchers/core",
-				"patcherrelativepath" : "../core",
+				"bootpath" : "/Users/jml/Documents/materials/programming/max_files/5_berkeley/projects/cnmat/repositories/CNMAT-odot/patchers/core",
+				"patcherrelativepath" : "../../core",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.in.maxpat",
-				"bootpath" : "/Users/adrian2013/CNMAT-odot/patchers/core",
-				"patcherrelativepath" : "../core",
+				"bootpath" : "/Users/jml/Documents/materials/programming/max_files/5_berkeley/projects/cnmat/repositories/CNMAT-odot/patchers/core",
+				"patcherrelativepath" : "../../core",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.port.maxpat",
-				"bootpath" : "/Users/adrian2013/CNMAT-odot/patchers/core",
-				"patcherrelativepath" : "../core",
+				"bootpath" : "/Users/jml/Documents/materials/programming/max_files/5_berkeley/projects/cnmat/repositories/CNMAT-odot/patchers/core",
+				"patcherrelativepath" : "../../core",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.aspect.joinpoint.maxpat",
-				"bootpath" : "/Users/adrian2013/CNMAT-odot/patchers/aspect",
-				"patcherrelativepath" : "../aspect",
+				"bootpath" : "/Users/jml/Documents/materials/programming/max_files/5_berkeley/projects/cnmat/repositories/CNMAT-odot/patchers/aspect",
+				"patcherrelativepath" : "../../aspect",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.out.maxpat",
-				"bootpath" : "/Users/adrian2013/CNMAT-odot/patchers/core",
-				"patcherrelativepath" : "../core",
+				"bootpath" : "/Users/jml/Documents/materials/programming/max_files/5_berkeley/projects/cnmat/repositories/CNMAT-odot/patchers/core",
+				"patcherrelativepath" : "../../core",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.io.serial.display.maxpat",
-				"bootpath" : "/Users/adrian2013/CNMAT-odot/patchers/io",
-				"patcherrelativepath" : ".",
+				"bootpath" : "/Users/jml/Documents/materials/programming/max_files/5_berkeley/projects/cnmat/repositories/CNMAT-odot/patchers/io",
+				"patcherrelativepath" : "..",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.io.esplora.display.maxpat",
-				"bootpath" : "/Users/adrian2013/CNMAT-odot/patchers/io",
+				"bootpath" : "/Users/jml/Documents/materials/programming/max_files/5_berkeley/projects/cnmat/repositories/CNMAT-odot/patchers/io/esplora",
 				"patcherrelativepath" : ".",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "c.esplora.buttonui.maxpat",
+				"bootpath" : "/Users/jml/Documents/materials/programming/max_files/5_berkeley/projects/cnmat/repositories/CNMAT-odot/patchers/io/esplora",
+				"patcherrelativepath" : ".",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "c.esplora.buttonhelper.maxpat",
+				"bootpath" : "/Users/jml/Documents/materials/programming/max_files/5_berkeley/projects/cnmat/repositories/CNMAT-odot/patchers/io/esplora",
+				"patcherrelativepath" : ".",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "c.lcd.xydraw.maxpat",
+				"bootpath" : "/Users/jml/Documents/materials/programming/max_files/5_berkeley/projects/cnmat/repositories/CNMAT-odot/patchers/io/esplora",
+				"patcherrelativepath" : ".",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "c.lcd.circle.maxpat",
+				"bootpath" : "/Users/jml/Documents/materials/programming/max_files/5_berkeley/projects/cnmat/repositories/CNMAT-odot/patchers/io/esplora",
+				"patcherrelativepath" : ".",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "o.gather.maxpat",
+				"bootpath" : "/Users/jml/Documents/materials/programming/max_files/5_berkeley/projects/cnmat/repositories/CNMAT-Production/campion/auditory_fiction_02/externals/CNMAT_legacy/odot_legacy",
+				"patcherrelativepath" : "../../../../CNMAT-Production/campion/auditory_fiction_02/externals/CNMAT_legacy/odot_legacy",
 				"type" : "JSON",
 				"implicit" : 1
 			}
@@ -975,6 +1026,10 @@
 				"type" : "iLaX"
 			}
 , 			{
+				"name" : "o.compose.mxo",
+				"type" : "iLaX"
+			}
+, 			{
 				"name" : "o.message.mxo",
 				"type" : "iLaX"
 			}
@@ -983,11 +1038,15 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "o.compose.mxo",
+				"name" : "o.expr.mxo",
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "o.expr.mxo",
+				"name" : "o.intersection.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.difference.mxo",
 				"type" : "iLaX"
 			}
  ]
