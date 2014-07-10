@@ -25,34 +25,24 @@
 
 */
 
-#ifdef OSLIP_ENCODE
 #define OMAX_DOC_NAME "o.slip.encode"
 #define OMAX_DOC_SHORT_DESC "SLIP encodes an OSC packet and outputs a stream of bytes."
 #define OMAX_DOC_LONG_DESC "SLIP encodes an OSC packet and outputs a stream of bytes suitable for use with Max's serial object."
 #define OMAX_DOC_INLETS_DESC (char *[]){"FullPacket"}
 #define OMAX_DOC_OUTLETS_DESC (char *[]){"Byte stream"}
 #define OMAX_DOC_SEEALSO  (char *[]){"o.slip.decode"}
-#elif defined(OSLIP_DECODE)
-#define OMAX_DOC_NAME "o.slip.decode"
-#define OMAX_DOC_SHORT_DESC "Decodes a SLIP stream and outputs an OSC packet."
-#define OMAX_DOC_LONG_DESC "Decodes a SLIP stream and converts it into an OSC packet."
-#define OMAX_DOC_INLETS_DESC (char *[]){"Bytes (int or list)"}
-#define OMAX_DOC_OUTLETS_DESC (char *[]){"FullPacket"}
-#define OMAX_DOC_SEEALSO  (char *[]){"o.slip.encode"}
-#endif
 
 #include "odot_version.h"
 #ifdef OMAX_PD_VERSION
-#include "m_pd.h"
+    #include "m_pd.h"
 #else
-#include "ext.h"
-#include "ext_obex.h"
-#include "ext_obex_util.h"
-#include "ext_critical.h"
-#ifdef OSLIP_ENCODE
-#include "omax_dict.h"
+    #include "ext.h"
+    #include "ext_obex.h"
+    #include "ext_obex_util.h"
+    #include "ext_critical.h"
+    #include "omax_dict.h"
 #endif
-#endif
+
 #include "osc.h"
 #include "osc_mem.h"
 #include "osc_serial.h"
@@ -98,7 +88,6 @@ void oslip_sendData(t_oslip *x, short size, char *data);
 #define ESC_ESC         0335    // ESC ESC_ESC means ESC data byte
 
 
-#ifdef OSLIP_ENCODE
 #ifdef OMAX_PD_VERSION
 void oslip_FullPacket(t_oslip *x, t_symbol *msg, short argc, t_atom *argv) {
     OMAX_UTIL_GET_LEN_AND_PTR
@@ -158,146 +147,6 @@ void oslip_FullPacket(t_oslip *x, long size, unsigned char *source) {
 	outlet_list(x->outlet, NULL, i, encoded);  
 }
 
-#elif defined(OSLIP_DECODE)
-  
-int oslip_decode(t_oslip *x, unsigned char c)
-{
-	critical_enter(x->lock);
-	int t; 
-	switch(x->istate)
-		{
-		case 0: // waiting for packet to start
-			x->istate = 1;
-			if(c==END){
-				break;
-			}
-		case 1: // packet has started
-			switch(c){
-			case END:
-				if((x->icount > 0)){ // it was the END byte
-#ifdef untestedDEBUGOUTPUT
-					// full packet process		
-					char stringbuf[4096];
-					int j=0;
-					int i;
-					for(p=0;i<x->icount && i<4095;++i)
-						{
-							char c = x->slipibuf[i];
-							if(c=='/' || c=='#' || (c>='a' && c<='z')  || (c>='A' && c<='Z') || (c<='9' && c>='0') )
-								stringbuf[j++] = c;
-							else
-								stringbuf[j++] = '*';
-						}
-					stringbuf[j++] = '\0';
-					object_post((t_object *)x, "slipOSC: packet %d %s", x->icount, stringbuf);
-#endif
-					// ParseOSCPacket(x, x->slipibuf, x->icount, true);
-					t = x->icount;
-					x->icount = 0;
-					x->istate = 0;
-	      
-					if((t % 4) == 0){
-						char buf[t];
-						memcpy(buf, x->slipibuf, t);
-	critical_exit(x->lock);
-						omax_util_outletOSC(x->outlet, t, buf);
-						//oslip_sendData(x, t, x->slipibuf);
-						return 0;
-					}else{
-    critical_exit(x->lock);
-						object_error((t_object *)x, "bad packet: not a multiple of 4 length");
-						return 0;
-					}
-				}
-				x->istate = 0;
-				break;
-			case ESC:
-				x->istate = 2;
-				break;
-	  
-				// otherwise, just stick it in the packet	 buffer	
-			default:
-				if(x->icount < MAXSLIPBUF){
-					x->slipibuf[(x->icount)++] = c; 
-				}else{
-					x->istate = 3;
-				}
-				break;
-			}
-			break;
-		case 2: // process escapes
-			switch(c){
-			case ESC_END:
-				if(x->icount<MAXSLIPBUF){
-					x->slipibuf[(x->icount)++] = END;
-					x->istate = 1;
-				}
-				else
-					x->istate = 3;
-	  
-				break;
-			case ESC_ESC:
-				if(x->icount<MAXSLIPBUF){
-					x->slipibuf[(x->icount)++] = ESC;
-					x->istate = 1;
-				}
-				else
-					x->istate = 3;
-				break;
-			default:
-				object_post((t_object *)x, "slipOSC: ESC not followed by ESC_END or ESC_ESC.");
-				x->istate = 3;
-			}
-			break;
-		case 3:   // error state: hunt for END character (this should probably be a hunt for a non escaped END character..
-			if(c == END){
-				x->icount = 0;
-				x->istate = 0;
-			}
-			break;
-      
-		}
-
-	critical_exit(x->lock);
-	return 1;
-}
-
-#ifdef OMAX_PD_VERSION
-void slipbyte(t_oslip *x, t_float f)
-{
-    long n = (long)f;
-#else
-void slipbyte(t_oslip *x, long n)
-{
-#endif
-	oslip_decode(x, n);
-}
-
-void sliplist(t_oslip *x, t_symbol *s, int argc, t_atom *argv)
-{
-	int i;
-	for(i = 0; i < argc; ++i) {
-#ifdef OMAX_PD_VERSION
-        if(atom_gettype(argv+i) != A_FLOAT) {
-#else
-		if(argv[i].a_type != A_LONG) {
-#endif
-			//////////////////////////////////////////////////
-			// clear buffer??
-			//////////////////////////////////////////////////
-			object_post((t_object *)x, "slipOSC: list did not contain only integers; dropping");
-			return;
-		}
-	}
-	for(i=0;i<argc;++i) {
-		int e = atom_getlong(argv + i);
-		if(e < 256){
-			oslip_decode(x, e);
-		}
-	}
-}
-#endif
-
 void oslip_doc(t_oslip *x)
 {
 	omax_doc_outletDoc(x->outlet);
@@ -329,28 +178,16 @@ void *oslip_new(long arg) {
 	return x;
 }
 
-#ifdef OSLIP_ENCODE
 int setup_o0x2eslip0x2eencode(void)
-#elif defined(OSLIP_DECODE)
-int setup_o0x2eslip0x2edecode(void)
-#endif
 {
 	t_class *c = class_new( gensym(OMAX_DOC_NAME), (t_newmethod)oslip_new,(t_method)myobject_free, (short)sizeof(t_oslip),0L, A_DEFFLOAT,0);
     
 	class_addmethod(c, (t_method)odot_version, gensym("version"), 0);
 	class_addmethod(c, (t_method)oslip_doc, gensym("doc"), 0);
     
-#ifdef OSLIP_DECODE
-    class_addfloat(c, slipbyte);
-	class_addmethod(c, (t_method)sliplist, gensym("list"), A_GIMME, 0);
-#endif
-    
 	class_addmethod(c, (t_method)oslip_printcontents, gensym("printcontents"), 0);
-#ifdef OSLIP_ENCODE
 	class_addmethod(c, (t_method)oslip_FullPacket, gensym("FullPacket"), A_GIMME, 0);
-#endif
     
-	// remove this if statement when we stop supporting Max 5
 
 //	finder_addclass("Devices","slipOSC");
     
@@ -363,9 +200,8 @@ int setup_o0x2eslip0x2edecode(void)
 
 #else
 
-#ifdef OSLIP_ENCODE
 OMAX_DICT_DICTIONARY(t_oslip, x, oslip_FullPacket);
-#endif
+
 
 void oslip_assist(t_oslip *x, void *b, long m, long a, char *dst) {
 	omax_doc_assist(m, a, dst);
@@ -379,23 +215,15 @@ int main (void)
 	class_addmethod(c, (method)oslip_assist, "assist", A_CANT,0);
 	class_addmethod(c, (method)odot_version, "version", 0);
 	class_addmethod(c, (method)oslip_doc, "doc", 0);
-
-#ifdef OSLIP_DECODE  
-	class_addmethod(c, (method)slipbyte, "int", A_LONG, 0);
-	class_addmethod(c, (method)sliplist, "list", A_GIMME, 0);
-#endif
   
 	class_addmethod(c, (method)oslip_printcontents, "printcontents", 0);
-#ifdef OSLIP_ENCODE
 	class_addmethod(c, (method)oslip_FullPacket, "FullPacket", A_LONG, A_LONG, 0);
-#endif
 
 	// remove this if statement when we stop supporting Max 5
-#ifdef OSLIP_ENCODE
 	if(omax_dict_resolveDictStubs()){
 		class_addmethod(c, (method)omax_dict_dictionary, "dictionary", A_GIMME, 0);
 	}
-#endif
+
 	finder_addclass("Devices","slipOSC");
 
 	class_register(CLASS_BOX, c);
