@@ -8,7 +8,7 @@
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 88.0, 48.0, 1076.0, 773.0 ],
+		"rect" : [ 14.0, 51.0, 1076.0, 773.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -204,8 +204,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 43.0, 405.0, 431.0, 530.0 ],
-					"text" : "/Manufacturer \"Arduino\"\n/Device \"Esplora\"\n/UniqueID \"usbmodemOSCes321\"\n/Sequence/Number 219541\n/acceleration/x 0.0605469\n/acceleration/y 0.0644531\n/acceleration/z 0.277344\n/photoresistor 0.754643\n/slider/horizontal 0.71261\n/connector/white/right 0.927664\n/connector/orange/left true\n/connector/orange/right true\n/units/temperature \"Celsius\"\n/temperature/celsius 26.\n/microphone/loudness 0.\n/led/rgb 0 0 0\n/joystick/horizontal -0.0175781\n/joystick/vertical 0.0253906\n/connector/white/left 0.663734\n/joystick/button/down false\n/joystick/button/up true\n/joystick/forward/button/down false\n/joystick/forward/button/up true\n/joystick/left/button/down false\n/joystick/left/button/up true\n/joystick/right/button/down false\n/joystick/right/button/up true\n/joystick/backward/button/down false\n/joystick/backward/button/up true\n/diamond/backward/button/down false\n/diamond/backward/button/up true\n/diamond/left/button/down false\n/diamond/left/button/up true\n/diamond/right/button/down false\n/diamond/right/button/up true\n/diamond/forward/button/down false\n/diamond/forward/button/up true\n/microseconds -335174276",
+					"patching_rect" : [ 180.0, 405.0, 267.0, 530.0 ],
+					"text" : "/Manufacturer \"Arduino\"\n/Device \"Esplora\"\n/UniqueID \"usbmodemOSCes321\"\n/Sequence/Number 308878\n/acceleration/x 0.0390625\n/acceleration/y 0.0644531\n/acceleration/z 0.275391\n/photoresistor 0.937439\n/slider/horizontal 1.\n/connector/white/right 0.923754\n/connector/orange/left true\n/connector/orange/right true\n/units/temperature \"Celsius\"\n/temperature/celsius 28.\n/microphone/loudness 0.\n/led/rgb 0 0 0\n/joystick/horizontal -0.0175781\n/joystick/vertical 0.0214844\n/connector/white/left 0.653959\n/joystick/button/down false\n/joystick/button/up true\n/joystick/forward/button/down false\n/joystick/forward/button/up true\n/joystick/left/button/down false\n/joystick/left/button/up true\n/joystick/right/button/down false\n/joystick/right/button/up true\n/joystick/backward/button/down false\n/joystick/backward/button/up true\n/diamond/backward/button/down false\n/diamond/backward/button/up true\n/diamond/left/button/down false\n/diamond/left/button/up true\n/diamond/right/button/down false\n/diamond/right/button/up true\n/diamond/forward/button/down false\n/diamond/forward/button/up true\n/microseconds -2086803860",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -221,7 +221,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 707.5, 249.0, 239.0, 88.0 ],
-					"text" : "/port \"usbmodemOSCes321\"\n/rate/output 32\n/rate/input 3\n/mediansize/received 152.5\n/baud 110",
+					"text" : "/port \"Bluetooth-Modem\"\n/rate/output 30\n/rate/input 2\n/mediansize/received 184\n/baud 110",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
