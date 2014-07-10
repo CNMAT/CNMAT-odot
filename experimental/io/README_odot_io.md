@@ -1,6 +1,6 @@
 README_o.io
 
-ODOT io module design style  guide
+ODOT io module design recommendations
 
 -- Document or arrange for device to be in correct state
 -- Ramify messages that are 
@@ -19,9 +19,10 @@ e.g. using the chess board naming
 -- The help patch should try to find the first device available to the system
 -- Minimize state
 -- Minimize hidden state
--- Represent concurrency or logical groupings with  OSC bundles e.g., if there is an 'x' and a 'y', the parameters should be delivered as a pair i.e. "xy 0.5 0.5".  
+-- Represent concurrency or logical groupings with  OSC bundles and lists e.g., if there is an 'x' and a 'y', the parameters should be delivered as a pair i.e. "/xy 0.5 0.5".  
 
 -- Minimize Max specific features such as JavaScript or Java
+-- Use the protocol wrappers to enhance portability
 -- Create a direct manipulation GUI simulation of the device, to serve if the actual interface isn't at hand
 -- Said UI should talk to the next UI seamlessly, and update its control view (see 'model view controller')
 -- Multiple devices should be supported even when identifying a particular one is made complicated by the protocol (e.g. HID)
