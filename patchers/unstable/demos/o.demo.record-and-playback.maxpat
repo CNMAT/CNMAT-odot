@@ -1119,8 +1119,8 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 81.0, 224.0, 127.0, 19.0 ],
-									"text" : "if /oscrec/stop is bound:"
+									"patching_rect" : [ 81.0, 224.0, 142.0, 19.0 ],
+									"text" : "if /oscrec == stop:"
 								}
 
 							}
@@ -1135,7 +1135,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 81.0, 243.0, 260.0, 43.0 ],
-									"text" : "1) send /oscrec/stop into o.collect as the last event\n2) close gate\n3) output full recording as one bundle"
+									"text" : "1) send /oscrec stop into o.collect as the last event\n2) close gate\n3) output full recording as one bundle"
 								}
 
 							}
@@ -1149,7 +1149,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 81.0, 131.0, 127.0, 19.0 ],
-									"text" : "if /oscrec/start is bound:"
+									"text" : "if /oscrec == start:"
 								}
 
 							}
@@ -1164,7 +1164,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 81.0, 150.0, 254.0, 43.0 ],
-									"text" : "1) get starting time of recording\n2) open gate to o.collect\n3) send /oscrec/start message to be the first event"
+									"text" : "1) get starting time of recording\n2) open gate to o.collect\n3) send /oscrec start message to be the first event"
 								}
 
 							}
