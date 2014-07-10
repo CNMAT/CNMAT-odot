@@ -1,6 +1,40 @@
-OBJECT_LIST = o.append o.atomize o.change o.collect o.compose o.cond o.context o.dict o.difference o.display o.downcast o.explode o.expr o.expr.codebox o.flatten o.if \
-o.intersection o.iterate o.listenumerate o.mappatch o.message o.pack o.pak o.prepend o.print o.printbytes o.route o.schedule o.select o.table \
-o.timetag o.union o.unless o.validate o.var o.when
+OBJECT_LIST = o.append \
+o.atomize \
+o.change \
+o.collect \
+o.cond \
+o.context \
+o.dict \
+o.difference \
+o.downcast \
+o.explode \
+o.expr \
+o.expr.codebox \
+o.flatten \
+o.if \
+o.intersection \
+o.iterate \
+o.listenumerate \
+o.mappatch \
+o.message \
+o.pack \
+o.pak \
+o.prepend \
+o.print \
+o.printbytes \
+o.route \
+o.schedule \
+o.select \
+o.slip.decode \
+o.slip.encode \
+o.table \
+o.timetag \
+o.union \
+o.unless \
+o.validate \
+o.var \
+o.when
+
 #OBJECT_LIST = o.append o.message
 
 PATCHDIRS = help demos abstractions deprecated overview
