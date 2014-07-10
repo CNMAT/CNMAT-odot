@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 6,
 			"minor" : 1,
-			"revision" : 4,
+			"revision" : 6,
 			"architecture" : "x86"
 		}
 ,
@@ -51,7 +51,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 233.0, 59.0, 324.0, 44.0 ],
+					"patching_rect" : [ 233.0, 59.0, 324.0, 43.0 ],
 					"text" : "o.state\n\nkeep running state of unique adresses that have passed through"
 				}
 
@@ -140,6 +140,7 @@
 					"destination" : [ "obj-3", 1 ],
 					"disabled" : 0,
 					"hidden" : 0,
+					"midpoints" : [ 184.5, 147.0, 204.0, 147.0, 204.0, 93.0, 184.5, 93.0 ],
 					"source" : [ "obj-4", 1 ]
 				}
 
