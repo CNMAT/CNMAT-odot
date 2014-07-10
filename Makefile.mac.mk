@@ -25,6 +25,8 @@ o.printbytes \
 o.route \
 o.schedule \
 o.select \
+o.slip.decode \
+o.slip.encode \
 o.table \
 o.timetag \
 o.union \
@@ -35,17 +37,14 @@ o.when
 
 MOBJECT_LIST = o.io.bluetoothle
 
-DOBJECT_LIST = o.slip.decode \
-o.slip.encode
-
-OBJECT_LIST = $(COBJECT_LIST) $(MOBJECT_LIST) $(DOBJECT_LIST)
+OBJECT_LIST = $(COBJECT_LIST) $(MOBJECT_LIST)
 
 PATCHDIRS = help demos abstractions deprecated overview experimental
 #TEXTFILES = README_ODOT.txt
 
-VPATH = $(OBJECT_LIST) o.slip
+VPATH = $(OBJECT_LIST)
 
-CFILES = $(foreach f, $(COBJECT_LIST), $(f)/$(f).c) o.slip.c
+CFILES = $(foreach f, $(COBJECT_LIST), $(f)/$(f).c)
 MFILES = $(foreach f, $(MOBJECT_LIST), $(f)/$(f).m)
 
 CODE_FILES = $(CFILES) $(MFILES)
