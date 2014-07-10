@@ -2,7 +2,7 @@
 #X obj 45 53 o.context;
 #X obj 45 24 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
-#X obj 45 86 o.message 539 257 binhex b#2F636F6E74657874205B0A092F6E616D
+#X obj 45 86 o.message 539 23 binhex b#2F636F6E74657874205B0A092F6E616D
 b#6520226F2E636F6E746578742D68656C b#702E7064220A092F7061746820222F55
 b#736572732F722F446F63756D656E7473 b#2F6465762D6C69622F434E4D41542D6F
 b#646F742F70645F72656C656173655F70 b#61636B616765220A092F243020313030
@@ -12,9 +12,14 @@ b#697A652031300A092F64697274792074 b#7275650A092F70697877696474682030
 b#0A092F70697868656967687420300A09 b#2F73637265656E2F7831203532310A09
 b#2F73637265656E2F79312032320A092F b#73637265656E2F783220313434310A09
 b#2F73637265656E2F7932203634300A09 b#2F786D617267696E20300A092F796D61
-b#7267696E20300A092F617267756D656E b#74732022220A5D;
+b#7267696E20300A092F617267756D656E b#74730A5D;
 #X obj 78 364 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
+#X obj 502 381 o.context-graph-example;
+#X obj 502 354 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 502 460 o.print GOP;
+#X obj 78 434 o.print subpatches;
 #N canvas 0 22 450 300 context 0;
 #X obj 163 55 inlet;
 #X obj 163 111 outlet;
@@ -25,23 +30,21 @@ b#7267696E20300A092F617267756D656E b#74732022220A5D;
 #X obj 206 32 inlet;
 #X obj 206 54 o.context;
 #X obj 206 76 outlet;
+#X obj 280 35 loadbang;
 #X connect 0 0 1 0;
 #X connect 1 0 2 0;
+#X connect 3 0 1 0;
 #X restore 164 92 pd last-one \, the deepest is first;
 #X connect 0 0 2 0;
 #X connect 2 0 1 0;
 #X restore 163 84 pd anothersubpatch bb 2;
 #X connect 0 0 2 0;
 #X connect 2 0 1 0;
-#X restore 78 390 pd context subpatch depth example;
-#X obj 393 381 o.context-graph-example;
-#X obj 393 354 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
--1 -1;
-#X obj 393 460 o.print GOP;
-#X obj 78 420 o.print subpatches;
+#X restore 78 390 pd context subpatch depth example 1 2 3 4 5 6 7 8
+9 10 11 12 13;
 #X connect 0 0 2 1;
 #X connect 1 0 0 0;
-#X connect 3 0 4 0;
-#X connect 4 0 8 0;
-#X connect 5 0 7 0;
-#X connect 6 0 5 0;
+#X connect 3 0 8 0;
+#X connect 4 0 6 0;
+#X connect 5 0 4 0;
+#X connect 8 0 7 0;
