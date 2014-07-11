@@ -8,7 +8,7 @@
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 113.0, 44.0, 1106.0, 753.0 ],
+		"rect" : [ 170.0, 69.0, 1106.0, 753.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -366,7 +366,7 @@
 							"architecture" : "x86"
 						}
 ,
-						"rect" : [ 113.0, 70.0, 1106.0, 727.0 ],
+						"rect" : [ 170.0, 95.0, 1106.0, 727.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 11.0,
@@ -623,15 +623,26 @@
 								"box" : 								{
 									"fontname" : "Arial",
 									"fontsize" : 11.0,
-									"id" : "obj-1",
+									"frgb" : 0.0,
+									"id" : "obj-7",
 									"linecount" : 3,
-									"maxclass" : "o.message",
-									"numinlets" : 2,
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 343.0, 234.0, 150.0, 43.0 ],
+									"text" : "<< o.io.midi.panel checks available midi ports for connected devices"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-4",
+									"maxclass" : "bpatcher",
+									"name" : "o.io.midi.panel.maxpat",
+									"numinlets" : 1,
 									"numoutlets" : 1,
-									"outlettype" : [ "" ],
-									"patching_rect" : [ 309.135498, 241.241302, 150.0, 43.0 ],
-									"text" : "/device/input/port \"QUNEO\"\n/output/port/to/device \"QUNEO\"",
-									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
+									"outlettype" : [ "FullPacket" ],
+									"patching_rect" : [ 175.135498, 234.0, 156.0, 52.0 ]
 								}
 
 							}
@@ -648,18 +659,6 @@
 									"patching_rect" : [ 270.0, 575.0, 150.0, 43.0 ],
 									"text" : "/device/input/port \"QUNEO\"\n/output/port/to/device \"QUNEO\"",
 									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"id" : "obj-11",
-									"maxclass" : "bpatcher",
-									"name" : "o.io.midi.portcheck.maxpat",
-									"numinlets" : 1,
-									"numoutlets" : 1,
-									"outlettype" : [ "FullPacket" ],
-									"patching_rect" : [ 175.135498, 311.241302, 149.0, 52.0 ]
 								}
 
 							}
@@ -777,57 +776,12 @@
 								"box" : 								{
 									"fontname" : "Arial",
 									"fontsize" : 11.0,
-									"frgb" : 0.0,
-									"id" : "obj-6",
-									"linecount" : 4,
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 149.397186, 161.741302, 150.0, 56.0 ],
-									"text" : "Takes osc messages to control leds on the physical QuNeo, open object to see mapping."
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"fontname" : "Arial",
-									"fontsize" : 12.0,
-									"id" : "obj-21",
-									"maxclass" : "flonum",
-									"maximum" : 1.0,
-									"minimum" : 0.0,
-									"numinlets" : 1,
-									"numoutlets" : 2,
-									"outlettype" : [ "float", "bang" ],
-									"parameter_enable" : 0,
-									"patching_rect" : [ 68.135498, 190.176147, 50.0, 20.0 ]
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"fontname" : "Arial",
-									"fontsize" : 12.0,
-									"id" : "obj-75",
-									"maxclass" : "newobj",
-									"numinlets" : 1,
-									"numoutlets" : 1,
-									"outlettype" : [ "FullPacket" ],
-									"patching_rect" : [ 68.135498, 225.676147, 201.0, 20.0 ],
-									"text" : "o.pack /led/disc/position/red/a"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"fontname" : "Arial",
-									"fontsize" : 11.0,
 									"id" : "obj-2",
 									"maxclass" : "newobj",
 									"numinlets" : 2,
 									"numoutlets" : 2,
 									"outlettype" : [ "FullPacket", "FullPacket" ],
-									"patching_rect" : [ 94.135498, 379.0, 100.0, 19.0 ],
+									"patching_rect" : [ 94.135498, 293.0, 100.0, 19.0 ],
 									"text" : "o.io.quneo"
 								}
 
@@ -898,38 +852,21 @@
  ],
 						"lines" : [ 							{
 								"patchline" : 								{
-									"destination" : [ "obj-11", 0 ],
-									"disabled" : 0,
-									"hidden" : 0,
-									"source" : [ "obj-1", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-2", 1 ],
-									"disabled" : 0,
-									"hidden" : 0,
-									"source" : [ "obj-11", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-15", 0 ],
-									"disabled" : 0,
-									"hidden" : 0,
-									"source" : [ "obj-2", 1 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
 									"color" : [ 1.0, 0.8, 0.4, 1.0 ],
 									"destination" : [ "obj-3", 0 ],
 									"disabled" : 0,
 									"hidden" : 0,
 									"source" : [ "obj-2", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-4", 0 ],
+									"disabled" : 0,
+									"hidden" : 0,
+									"midpoints" : [ 184.635498, 321.0, 341.135498, 321.0, 341.135498, 207.0, 184.635498, 207.0 ],
+									"source" : [ "obj-2", 1 ]
 								}
 
 							}
@@ -945,19 +882,10 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-75", 0 ],
+									"destination" : [ "obj-2", 1 ],
 									"disabled" : 0,
 									"hidden" : 0,
-									"source" : [ "obj-21", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-2", 0 ],
-									"disabled" : 0,
-									"hidden" : 0,
-									"source" : [ "obj-75", 0 ]
+									"source" : [ "obj-4", 0 ]
 								}
 
 							}
@@ -992,6 +920,13 @@
 				"implicit" : 1
 			}
 , 			{
+				"name" : "o.righttoleft.maxpat",
+				"bootpath" : "/Users/gabacheker/Documents/CNMAT_Work/CNMAT_GITHUB/CNMAT-odot/patchers/core",
+				"patcherrelativepath" : "../../core",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
 				"name" : "o.in.maxpat",
 				"bootpath" : "/Users/gabacheker/Documents/CNMAT_Work/CNMAT_GITHUB/CNMAT-odot/patchers/core",
 				"patcherrelativepath" : "../../core",
@@ -1021,27 +956,13 @@
 			}
 , 			{
 				"name" : "o.io.midi.maxpat",
-				"bootpath" : "/Users/gabacheker/Documents/CNMAT_Work/CNMAT_GITHUB/CNMAT-odot/experimental/io",
-				"patcherrelativepath" : "../../../experimental/io",
+				"bootpath" : "/Users/gabacheker/Documents/CNMAT_Work/CNMAT_GITHUB/CNMAT-odot/patchers/unstable/io",
+				"patcherrelativepath" : "../../unstable/io",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "o.righttoleft.maxpat",
-				"bootpath" : "/Users/gabacheker/Documents/CNMAT_Work/CNMAT_GITHUB/CNMAT-odot/patchers/core",
-				"patcherrelativepath" : "../../core",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "o.io.quneo.helper.leds.maxpat",
-				"bootpath" : "/Users/gabacheker/Documents/CNMAT_Work/CNMAT_GITHUB/CNMAT-odot/patchers/io/o.io.quneo",
-				"patcherrelativepath" : ".",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "o.io.midi.portcheck.maxpat",
+				"name" : "o.io.midi.panel.maxpat",
 				"bootpath" : "/Users/gabacheker/Documents/CNMAT_Work/CNMAT_GITHUB/CNMAT-odot/patchers/io",
 				"patcherrelativepath" : "..",
 				"type" : "JSON",
@@ -1175,10 +1096,18 @@
 			}
 , 			{
 				"name" : "o.collectwithtimeout.maxpat",
-				"bootpath" : "/Users/gabacheker/Documents/CNMAT_Work/CNMAT_GITHUB/CNMAT-odot/experimental",
-				"patcherrelativepath" : "../../../experimental",
+				"bootpath" : "/Users/gabacheker/Documents/CNMAT_Work/CNMAT_GITHUB/CNMAT-odot/patchers/unstable",
+				"patcherrelativepath" : "../../unstable",
 				"type" : "JSON",
 				"implicit" : 1
+			}
+, 			{
+				"name" : "o.route.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.expr.mxo",
+				"type" : "iLaX"
 			}
 , 			{
 				"name" : "o.union.mxo",
@@ -1189,15 +1118,7 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "o.route.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.select.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.expr.mxo",
+				"name" : "o.collect.mxo",
 				"type" : "iLaX"
 			}
 , 			{
@@ -1205,23 +1126,15 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "o.cond.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.prepend.mxo",
-				"type" : "iLaX"
-			}
-, 			{
 				"name" : "o.if.mxo",
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "o.context.mxo",
+				"name" : "o.select.mxo",
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "o.collect.mxo",
+				"name" : "o.context.mxo",
 				"type" : "iLaX"
 			}
 , 			{
@@ -1233,7 +1146,19 @@
 				"type" : "iLaX"
 			}
 , 			{
+				"name" : "o.prepend.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.cond.mxo",
+				"type" : "iLaX"
+			}
+, 			{
 				"name" : "o.compose.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.expr.codebox.mxo",
 				"type" : "iLaX"
 			}
 , 			{
