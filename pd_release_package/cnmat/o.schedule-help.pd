@@ -1,33 +1,45 @@
-#N canvas 548 22 657 731 10;
-#X obj 104 41 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#N canvas 262 22 921 687 10;
+#X obj 351 50 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
-#X obj 104 61 t f f;
-#X obj 104 153 sel 0;
-#X msg 104 175 reset;
-#X obj 195 95 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 351 70 t f f;
+#X obj 351 162 sel 0;
+#X obj 442 104 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
-#X obj 195 262 o.expr /time/activate = /time/acquired + 0.5;
-#X obj 104 404 o.schedule /time/activate;
-#X obj 104 436 o.timetag /time/activated;
-#X obj 104 468 o.expr /time/diff = /time/activated - /time/activate
+#X obj 442 271 o.expr /time/activate = /time/acquired + 0.5;
+#X obj 351 311 o.schedule /time/activate;
+#X obj 400 445 o.timetag /time/activated;
+#X obj 400 477 o.expr /time/diff = /time/activated - /time/activate
 ;
-#X obj 110 539 o.message 392 62 binhex b#2F74696D652F61637175697265642022
-b#323031332D30362D31385431323A3433 b#3A32332E3938383331315A22200A2F74
-b#696D652F616374697661746520223230 b#31332D30362D31385431323A34333A32
-b#342E3438383331315A22200A2F74696D b#652F6163746976617465642022323031
-b#332D30362D31385431323A34333A3234 b#2E3530363935325A22200A2F74696D65
-b#2F6469666620302E3031383634303320 b#;
-#X obj 195 162 o.timetag /time/acquired;
-#X obj 195 125 metro 50;
+#X obj 394 515 o.message 392 62 binhex b#2F74696D652F61637175697265642032
+b#3031342D30372D31305432323A34333A b#30382E3736333330345A0A2F74696D65
+b#2F616374697661746520323031342D30 b#372D31305432323A34333A30392E3236
+b#333330345A0A2F74696D652F61637469 b#766174656420323031342D30372D3130
+b#5432323A34333A30392E323633353038 b#5A0A2F74696D652F6469666620302E30
+b#30303230343139350A;
+#X obj 442 171 o.timetag /time/acquired;
+#X obj 442 134 metro 50;
+#X msg 351 184 clear;
+#X obj 93 369 o.message 265 36 binhex b#2F74696D652F61637175697265642032
+b#3031342D30372D31305432323A34333A b#30382E3636343634305A0A2F74696D65
+b#2F616374697661746520323031342D30 b#372D31305432323A34333A30392E3136
+b#343634305A0A;
+#X text 272 341 on time:;
+#X obj 449 366 o.print immediate!;
+#X obj 498 340 o.print queue-full;
+#X text 406 400 late bundles come out second outlet (from left) \,
+here /time/diff tells us how late the bundle is;
 #X connect 0 0 1 0;
 #X connect 1 0 2 0;
-#X connect 1 1 4 0;
-#X connect 2 0 3 0;
-#X connect 3 0 6 0;
-#X connect 4 0 11 0;
-#X connect 5 0 6 0;
+#X connect 1 1 3 0;
+#X connect 2 0 11 0;
+#X connect 3 0 10 0;
+#X connect 4 0 5 0;
+#X connect 5 0 12 1;
+#X connect 5 1 6 0;
+#X connect 5 2 14 0;
+#X connect 5 3 15 0;
 #X connect 6 0 7 0;
-#X connect 7 0 8 0;
-#X connect 8 0 9 1;
-#X connect 10 0 5 0;
-#X connect 11 0 10 0;
+#X connect 7 0 8 1;
+#X connect 9 0 4 0;
+#X connect 10 0 9 0;
+#X connect 11 0 5 0;
