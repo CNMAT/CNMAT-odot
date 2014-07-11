@@ -143,12 +143,13 @@
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"id" : "obj-1",
+					"linecount" : 2,
 					"maxclass" : "newobj",
 					"numinlets" : 3,
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "FullPacket" ],
-					"patching_rect" : [ 227.625, 44.5, 258.0, 20.0 ],
-					"text" : "o.route /device/input/port /output/port/to/device"
+					"patching_rect" : [ 227.625, 44.5, 258.0, 33.0 ],
+					"text" : "o.route /from/device/input/port /output/port/to/device"
 				}
 
 			}
@@ -172,7 +173,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 284.175537, 290.674286, 160.75, 20.0 ],
+					"patching_rect" : [ 264.175537, 290.674286, 160.75, 20.0 ],
 					"text" : "o.pack /output/port/to/device"
 				}
 
@@ -186,8 +187,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 118.175537, 290.674286, 150.75, 20.0 ],
-					"text" : "o.pack /device/input/port"
+					"patching_rect" : [ 64.175537, 290.674286, 166.0, 20.0 ],
+					"text" : "o.pack /from/device/input/port"
 				}
 
 			}
@@ -202,7 +203,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 255.25, 142.0, 23.75, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 139.675537, 25.5, 29.0, 20.0 ],
+					"presentation_rect" : [ 139.675537, 25.5, 18.0, 20.0 ],
 					"text" : "o"
 				}
 
@@ -218,17 +219,17 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 114.175537, 142.0, 18.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 139.675537, 3.5, 18.0, 20.0 ],
+					"presentation_rect" : [ 134.175537, 3.5, 18.0, 20.0 ],
 					"text" : "i"
 				}
 
 			}
 , 			{
 				"box" : 				{
-					"bgcolor" : [ 0.901961, 0.901961, 0.901961, 1.0 ],
+					"bgcolor" : [ 0.829301, 0.829301, 0.829301, 1.0 ],
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
-					"framecolor" : [ 0.0, 0.501961, 0.0, 0.26 ],
+					"framecolor" : [ 0.0, 0.159943, 0.501961, 0.26 ],
 					"id" : "obj-25",
 					"items" : [ "AU DLS Synth 1", ",", "from Max 1", ",", "from Max 2", ",", "QUNEO" ],
 					"maxclass" : "umenu",
@@ -238,7 +239,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 210.175537, 245.5, 127.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 0.175537, 25.5, 134.0, 20.0 ],
+					"presentation_rect" : [ 5.675537, 25.5, 134.0, 20.0 ],
 					"rounded" : 19
 				}
 
