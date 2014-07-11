@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 6,
 			"minor" : 1,
-			"revision" : 2,
+			"revision" : 4,
 			"architecture" : "x86"
 		}
 ,
@@ -37,7 +37,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 340.5, 256.0, 188.0, 18.0 ],
-					"presentation_rect" : [ 415.0, 274.0, 0.0, 0.0 ],
 					"text" : "read /Users/john/MMJ-dev/teoma"
 				}
 
@@ -122,20 +121,6 @@
 					"outlettype" : [ "FullPacket" ],
 					"patching_rect" : [ 190.5, 432.0, 135.0, 20.0 ],
 					"text" : "o.unless emptybundle()"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontname" : "Arial",
-					"fontsize" : 12.0,
-					"id" : "obj-34",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 504.0, 640.0, 50.0, 20.0 ],
-					"text" : "nothing"
 				}
 
 			}
@@ -313,8 +298,8 @@
 					"id" : "obj-14",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
-					"numoutlets" : 3,
-					"outlettype" : [ "FullPacket", "FullPacket", "FullPacket" ],
+					"numoutlets" : 4,
+					"outlettype" : [ "FullPacket", "FullPacket", "FullPacket", "FullPacket" ],
 					"patching_rect" : [ 190.5, 592.0, 141.0, 20.0 ],
 					"text" : "o.schedule /time/actuate"
 				}
@@ -667,6 +652,16 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-12", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"midpoints" : [ 200.0, 650.0, 622.0, 650.0, 622.0, 165.0, 425.5, 165.0 ],
+					"source" : [ "obj-31", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-24", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
@@ -676,10 +671,11 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-34", 0 ],
+					"destination" : [ "obj-12", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"source" : [ "obj-31", 0 ]
+					"midpoints" : [ 261.0, 650.0, 610.0, 650.0, 610.0, 166.0, 425.5, 166.0 ],
+					"source" : [ "obj-32", 0 ]
 				}
 
 			}
@@ -689,25 +685,6 @@
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-32", 1 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-34", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"source" : [ "obj-32", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-12", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"midpoints" : [ 513.5, 673.0, 582.0, 673.0, 582.0, 166.0, 425.5, 166.0 ],
-					"source" : [ "obj-34", 0 ]
 				}
 
 			}
@@ -749,27 +726,6 @@
 			}
  ],
 		"dependency_cache" : [ 			{
-				"name" : "nothing.maxpat",
-				"bootpath" : "/Users/john/Development/CNMAT/CNMAT/CNMAT-MMJ-Depot/modules/basic_programming",
-				"patcherrelativepath" : "../../CNMAT-MMJ-Depot/modules/basic_programming",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "uc_license.maxpat",
-				"bootpath" : "/Users/john/Development/CNMAT/CNMAT/CNMAT-MMJ-Depot/modules/depot_support",
-				"patcherrelativepath" : "../../CNMAT-MMJ-Depot/modules/depot_support",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "cnmat_blue.gif",
-				"bootpath" : "/Users/john/Development/CNMAT/CNMAT/CNMAT-MMJ-Depot/modules/depot_support",
-				"patcherrelativepath" : "../../CNMAT-MMJ-Depot/modules/depot_support",
-				"type" : "GIFf",
-				"implicit" : 1
-			}
-, 			{
 				"name" : "o.table.mxo",
 				"type" : "iLaX"
 			}
