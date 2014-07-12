@@ -181,10 +181,10 @@ int main(void)
 		class_addmethod(c, (method)omax_dict_dictionary, "dictionary", A_GIMME, 0);
 	}
 	class_addmethod(c, (method)odot_version, "version", 0);
-
+	/*
 	CLASS_ATTR_LONG(c, "level", 0, t_oexplode, level);
 	CLASS_ATTR_SYM(c, "sep", 0, t_oexplode, sep);
-	
+	*/
 	class_register(CLASS_BOX, c);
 	oexplode_class = c;
 

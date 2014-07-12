@@ -195,11 +195,11 @@ int main(void)
 	}
 
 	class_addmethod(c, (method)odot_version, "version", 0);
-
+	/*
 	CLASS_ATTR_LONG(c, "level", 0, t_oflatten, level);
 	CLASS_ATTR_SYM(c, "sep", 0, t_oflatten, sep);
 	CLASS_ATTR_LONG(c, "remove_enclosing_address_if_empty", 0, t_oflatten, remove_enclosing_address_if_empty);
-	
+	*/
 	class_register(CLASS_BOX, c);
 	oflatten_class = c;
 
