@@ -1,9 +1,0 @@
-#N canvas 731 184 450 300 10;
-#X obj 43 20 print;
-#X msg 43 51 a message, f 34;
-#X floatatom 208 85 10 0.1 1 0 - - -, f 10;
-#X text 42 116 comment;
-#X obj 44 144 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
--1;
-#X obj 44 181 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
-1;
