@@ -265,7 +265,6 @@ static void ocompose_delete(t_gobj *z, t_glist *glist);
 
 typedef t_ocompose t_jbox;
 void jbox_redraw(t_jbox *x){ ocompose_drawElements((t_ocompose *)x, x->glist, x->width, x->height, 0);}
-
 #endif
 
 t_symbol *ps_newline, *ps_FullPacket;
@@ -273,6 +272,8 @@ t_symbol *ps_newline, *ps_FullPacket;
 
 void ocompose_fullPacket(t_ocompose *x, t_symbol *msg, int argc, t_atom *argv)
 {
+    OMAX_UTIL_GET_LEN_AND_PTR
+	ocompose_doFullPacket(x, len, ptr);
 }
 
 void ocompose_doFullPacket(t_ocompose *x, long len, char *ptr)
@@ -450,7 +451,6 @@ void ocompose_paint(t_ocompose *x, t_object *patcherview)
     jgraphics_line_to(g, rect.width, 11);
     jgraphics_stroke(g);
 }
-
 #endif
 
 void ocompose_refresh(t_ocompose *x)
@@ -575,11 +575,13 @@ void ocompose_gettext(t_ocompose *x)
 #endif
 }
 
-void ocompose_bang(t_ocompose *x){
+void ocompose_bang(t_ocompose *x)
+{
 	ocompose_output_bundle(x);
 }
 
-void ocompose_int(t_ocompose *x, long n){
+void ocompose_int(t_ocompose *x, long n)
+{
 	t_atom a;
 	atom_setlong(&a, n);
 	ocompose_list(x, NULL, 1, &a);
@@ -596,8 +598,10 @@ void ocompose_list(t_ocompose *x, t_symbol *list_sym, short argc, t_atom *argv)
     critical_enter(x->lock);
     x->draw_click_flash = 1;
     critical_exit(x->lock);
+    ocompose_bang(x);
     jbox_redraw((t_jbox *)x);
     
+    /*
 	if (x->bndl_has_been_checked_for_subs && !x->bndl_has_subs) {
 		if (!x->bndl_s) {
 			if (x->bndl_u) {
@@ -665,6 +669,7 @@ void ocompose_list(t_ocompose *x, t_symbol *list_sym, short argc, t_atom *argv)
         }
 		osc_bundle_u_free(copy);
 	}
+    */
 }
 
 void ocompose_anything(t_ocompose *x, t_symbol *msg, short argc, t_atom *argv)

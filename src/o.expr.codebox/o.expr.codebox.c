@@ -90,6 +90,8 @@ typedef struct _oexprcodebox{
 } t_oexprcodebox;
 
 void *oexprcodebox_class;
+void oexprcodebox_bang(t_oexprcodebox *x);
+
 
 void oexprcodebox_fullPacket(t_oexprcodebox *x, t_symbol *msg, int argc, t_atom *argv)
 {
@@ -99,7 +101,7 @@ void oexprcodebox_fullPacket(t_oexprcodebox *x, t_symbol *msg, int argc, t_atom 
     }
 	// we need to make a copy incase the expression contains assignment that will
 	// alter the bundle.
-	// the copy needs to use memory allocated with osc_mem_alloc in case the 
+	// the copy needs to use memory allocated with osc_mem_alloc in case the
 	// bundle has to be resized during assignment
 	char *copy = NULL;
 	long copylen = len;
@@ -203,6 +205,7 @@ void oexprcodebox_mousedown(t_oexprcodebox *x, t_object *patcherview, t_pt pt, l
 void oexprcodebox_mouseup(t_oexprcodebox *x, t_object *patcherview, t_pt pt, long modifiers){
 	textfield_set_textmargins(jbox_get_textfield((t_object *)x), 5, 8, 5, 11);
     jbox_redraw((t_jbox *)x);
+    oexprcodebox_bang(x);
 }
 
 // we get the text, convert it to an OSC bundle, and then call the paint
