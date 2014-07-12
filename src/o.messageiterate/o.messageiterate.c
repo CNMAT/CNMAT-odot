@@ -22,8 +22,8 @@
 */
 
 
-#define OMAX_DOC_NAME "o.iterate"
-#define OMAX_DOC_SHORT_DESC "Iterate over the contents of a bundle"
+#define OMAX_DOC_NAME "o.messageiterate"
+#define OMAX_DOC_SHORT_DESC "Iterate over the messages contained in a bundle"
 #define OMAX_DOC_LONG_DESC "Outputs each message in a bundle as an encoded OSC message"
 #define OMAX_DOC_INLETS_DESC (char *[]){"FullPacket"}
 #define OMAX_DOC_OUTLETS_DESC (char *[]){"Messages (FullPacket)"}
@@ -48,16 +48,16 @@
 #include "o.h"
 
 
-typedef struct _oiterate{
+typedef struct _omiterate{
 	t_object ob;
 	void *outlet;
-} t_oiterate;
+} t_omiterate;
 
-void *oiterate_class;
+void *omiterate_class;
 
 
-//void oiterate_fullPacket(t_oiterate *x, long len, long ptr)
-void oiterate_fullPacket(t_oiterate *x, t_symbol *msg, int argc, t_atom *argv)
+//void omiterate_fullPacket(t_omiterate *x, long len, long ptr)
+void omiterate_fullPacket(t_omiterate *x, t_symbol *msg, int argc, t_atom *argv)
 {
 	OMAX_UTIL_GET_LEN_AND_PTR;
 	t_osc_bndl_it_s *it = osc_bndl_it_s_get(len, ptr);
@@ -71,30 +71,30 @@ void oiterate_fullPacket(t_oiterate *x, t_symbol *msg, int argc, t_atom *argv)
 }
 
 
-void oiterate_doc(t_oiterate *x)
+void omiterate_doc(t_omiterate *x)
 {
 	omax_doc_outletDoc(x->outlet);
 }
 
 #ifndef OMAX_PD_VERSION
-OMAX_DICT_DICTIONARY(t_oiterate, x, oiterate_fullPacket);
+OMAX_DICT_DICTIONARY(t_omiterate, x, omiterate_fullPacket);
 
-void oiterate_assist(t_oiterate *x, void *b, long io, long num, char *buf)
+void omiterate_assist(t_omiterate *x, void *b, long io, long num, char *buf)
 {
 	omax_doc_assist(io, num, buf);
 }
 
 #endif
 
-void oiterate_free(t_oiterate *x)
+void omiterate_free(t_omiterate *x)
 {
 }
 
 #ifdef OMAX_PD_VERSION
-void *oiterate_new(t_symbol *msg, short argc, t_atom *argv)
+void *omiterate_new(t_symbol *msg, short argc, t_atom *argv)
 {
-	t_oiterate *x;
-	if((x = (t_oiterate *)pd_new(oiterate_class))){
+	t_omiterate *x;
+	if((x = (t_omiterate *)pd_new(omiterate_class))){
 		x->outlet = outlet_new((t_object *)x, gensym("FullPacket"));
 	}
 	return x;
@@ -102,28 +102,28 @@ void *oiterate_new(t_symbol *msg, short argc, t_atom *argv)
 
 int setup_o0x2eiterate(void)
 {
-	t_class *c = class_new(gensym("o.iterate"), (t_newmethod)oiterate_new, (t_method)oiterate_free, sizeof(t_oiterate), 0L, A_GIMME, 0);
-	//class_addmethod(c, (method)oiterate_fullPacket, "FullPacket", A_LONG, A_LONG, 0);
-	class_addmethod(c, (t_method)oiterate_fullPacket, gensym("FullPacket"), A_GIMME, 0);
-	class_addmethod(c, (t_method)oiterate_doc, gensym("doc"), 0);
+	t_class *c = class_new(gensym("o.iterate"), (t_newmethod)omiterate_new, (t_method)omiterate_free, sizeof(t_omiterate), 0L, A_GIMME, 0);
+	//class_addmethod(c, (method)omiterate_fullPacket, "FullPacket", A_LONG, A_LONG, 0);
+	class_addmethod(c, (t_method)omiterate_fullPacket, gensym("FullPacket"), A_GIMME, 0);
+	class_addmethod(c, (t_method)omiterate_doc, gensym("doc"), 0);
     
-	//class_addmethod(c, (method)oiterate_bang, "bang", 0);
-	//class_addmethod(c, (method)oiterate_anything, "anything", A_GIMME, 0);
+	//class_addmethod(c, (method)omiterate_bang, "bang", 0);
+	//class_addmethod(c, (method)omiterate_anything, "anything", A_GIMME, 0);
 	// remove this if statement when we stop supporting Max 5
 
 	class_addmethod(c, (t_method)odot_version, gensym("version"), 0);
     
-	oiterate_class = c;
+	omiterate_class = c;
         
 	ODOT_PRINT_VERSION;
 	return 0;
 }
 
 #else
-void *oiterate_new(t_symbol *msg, short argc, t_atom *argv)
+void *omiterate_new(t_symbol *msg, short argc, t_atom *argv)
 {
-	t_oiterate *x;
-	if((x = (t_oiterate *)object_alloc(oiterate_class))){
+	t_omiterate *x;
+	if((x = (t_omiterate *)object_alloc(omiterate_class))){
 		x->outlet = outlet_new((t_object *)x, "FullPacket");
 	}
 	return x;
@@ -131,13 +131,13 @@ void *oiterate_new(t_symbol *msg, short argc, t_atom *argv)
 
 int main(void)
 {
-	t_class *c = class_new("o.iterate", (method)oiterate_new, (method)oiterate_free, sizeof(t_oiterate), 0L, A_GIMME, 0);
-	//class_addmethod(c, (method)oiterate_fullPacket, "FullPacket", A_LONG, A_LONG, 0);
-	class_addmethod(c, (method)oiterate_fullPacket, "FullPacket", A_GIMME, 0);
-	class_addmethod(c, (method)oiterate_assist, "assist", A_CANT, 0);
-	class_addmethod(c, (method)oiterate_doc, "doc", 0);
-	//class_addmethod(c, (method)oiterate_bang, "bang", 0);
-	//class_addmethod(c, (method)oiterate_anything, "anything", A_GIMME, 0);
+	t_class *c = class_new("o.messageiterate", (method)omiterate_new, (method)omiterate_free, sizeof(t_omiterate), 0L, A_GIMME, 0);
+	//class_addmethod(c, (method)omiterate_fullPacket, "FullPacket", A_LONG, A_LONG, 0);
+	class_addmethod(c, (method)omiterate_fullPacket, "FullPacket", A_GIMME, 0);
+	class_addmethod(c, (method)omiterate_assist, "assist", A_CANT, 0);
+	class_addmethod(c, (method)omiterate_doc, "doc", 0);
+	//class_addmethod(c, (method)omiterate_bang, "bang", 0);
+	//class_addmethod(c, (method)omiterate_anything, "anything", A_GIMME, 0);
 	// remove this if statement when we stop supporting Max 5
 	if(omax_dict_resolveDictStubs()){
 		class_addmethod(c, (method)omax_dict_dictionary, "dictionary", A_GIMME, 0);
@@ -145,7 +145,7 @@ int main(void)
 	class_addmethod(c, (method)odot_version, "version", 0);
 
 	class_register(CLASS_BOX, c);
-	oiterate_class = c;
+	omiterate_class = c;
 
 	common_symbols_init();
 
@@ -153,7 +153,7 @@ int main(void)
 	return 0;
 }
 /*
-t_max_err oiterate_notify(t_oiterate *x, t_symbol *s, t_symbol *msg, void *sender, void *data){
+t_max_err omiterate_notify(t_omiterate *x, t_symbol *s, t_symbol *msg, void *sender, void *data){
 	t_symbol *attrname;
 
         if(msg == gensym("attr_modified")){

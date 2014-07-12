@@ -13,7 +13,7 @@ o.expr.codebox \
 o.flatten \
 o.if \
 o.intersection \
-o.iterate \
+o.messageiterate \
 o.listenumerate \
 o.mappatch \
 o.message \
