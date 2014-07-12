@@ -32,7 +32,6 @@
   @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 */
 
-#include "odot_version.h"
 #define ODOT_INTERSECTION
 #if defined ODOT_INTERSECTION
 #define OMAX_DOC_NAME "o.intersection"

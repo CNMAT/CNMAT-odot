@@ -32,7 +32,6 @@
   @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 */
 
-#include "odot_version.h"
 #define ODOT_DIFFERENCE
 #if defined ODOT_DIFFERENCE
 #define OMAX_DOC_NAME "o.difference"

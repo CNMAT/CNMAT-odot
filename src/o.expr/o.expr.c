@@ -31,8 +31,6 @@
   @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 */
 
-#include "odot_version.h"
-
 #ifdef NAME
 #undef NAME
 #endif
@@ -82,6 +80,9 @@
 #include "omax_dict.h"
 #include "osc_bundle_iterator_s.h"
 #include "osc_message_iterator_s.h"
+
+#include "odot_version.h"
+
 
 //#define __OSC_PROFILE__
 #include "osc_profile.h"

@@ -32,7 +32,6 @@
   @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 */
 
-#include "odot_version.h"
 #define ODOT_UNION
 #ifdef ODOT_UNION
 #define OMAX_DOC_NAME "o.union"
