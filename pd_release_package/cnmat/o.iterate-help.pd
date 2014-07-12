@@ -1,7 +1,0 @@
-#N canvas 616 79 450 300 10;
-#X obj 125 121 o.iterate;
-#X obj 125 37 o.message 100 62 binhex b#2F666F6F20310A2F62617220320A2F73
-b#616D20330A2F73746576652034;
-#X obj 125 168 o.print;
-#X connect 0 0 2 0;
-#X connect 1 0 0 0;

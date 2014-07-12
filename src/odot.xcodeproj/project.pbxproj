@@ -318,6 +318,7 @@
 		52C839DA167A5B24000AA688 /* libomax.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5C6163763CF0016EC39 /* libomax.a */; };
 		52C839E0167A5B8A000AA688 /* o.table.c in Sources */ = {isa = PBXBuildFile; fileRef = 52C839CF167A5B1A000AA688 /* o.table.c */; };
 		52CA34421971B04E008C36B9 /* o.messageiterate.c in Sources */ = {isa = PBXBuildFile; fileRef = 52CA34411971B04E008C36B9 /* o.messageiterate.c */; };
+		52CA34431971B345008C36B9 /* o.messageiterate.c in Sources */ = {isa = PBXBuildFile; fileRef = 52CA34411971B04E008C36B9 /* o.messageiterate.c */; };
 		52CEF59516375BFB0016EC39 /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52CEF59416375BFB0016EC39 /* commonsyms.c */; };
 		52CEF59616375BFB0016EC39 /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52CEF59416375BFB0016EC39 /* commonsyms.c */; };
 		52CEF59716375BFB0016EC39 /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52CEF59416375BFB0016EC39 /* commonsyms.c */; };
@@ -3433,9 +3434,9 @@
 			productReference = 119FA09B191D5D5B001C3325 /* o.intersection.pd_darwin */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
-		119FA0A1191D5E91001C3325 /* o.iterate.pd */ = {
+		119FA0A1191D5E91001C3325 /* o.messageiterate.pd */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 119FA0A7191D5E91001C3325 /* Build configuration list for PBXNativeTarget "o.iterate.pd" */;
+			buildConfigurationList = 119FA0A7191D5E91001C3325 /* Build configuration list for PBXNativeTarget "o.messageiterate.pd" */;
 			buildPhases = (
 				119FA0A3191D5E91001C3325 /* Sources */,
 				119FA0A5191D5E91001C3325 /* Frameworks */,
@@ -3446,7 +3447,7 @@
 			dependencies = (
 				5224CA541958CC4F00E37AED /* PBXTargetDependency */,
 			);
-			name = o.iterate.pd;
+			name = o.messageiterate.pd;
 			productName = o.print.pd;
 			productReference = 119FA0AA191D5E91001C3325 /* o.iterate.pd_darwin */;
 			productType = "com.apple.product-type.library.dynamic";
@@ -4768,7 +4769,7 @@
 				520A44A41824777800CB610F /* o.io.bluetoothle */,
 				52B53D0017484E5500237A19 /* o.messageiterate */,
 				9BB5E9D11952570000932005 /* o.listenumerate */,
-				119FA0A1191D5E91001C3325 /* o.iterate.pd */,
+				119FA0A1191D5E91001C3325 /* o.messageiterate.pd */,
 				5255243A1504D15000A10E5D /* o.mappatch */,
 				119FA0AB191D5E9D001C3325 /* o.mappatch.pd */,
 				112AC85719394255003244E9 /* o.menu.pd */,
@@ -5259,6 +5260,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52CA34431971B345008C36B9 /* o.messageiterate.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6081,7 +6083,7 @@
 		};
 		52183DF719218CF200F61786 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 119FA0A1191D5E91001C3325 /* o.iterate.pd */;
+			target = 119FA0A1191D5E91001C3325 /* o.messageiterate.pd */;
 			targetProxy = 52183DF819218CF200F61786 /* PBXContainerItemProxy */;
 		};
 		52183DF919218CF200F61786 /* PBXTargetDependency */ = {
@@ -8215,7 +8217,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
-				PRODUCT_NAME = o.iterate;
+				PRODUCT_NAME = o.messageiterate;
 				WRAPPER_EXTENSION = "";
 			};
 			name = Debug;
@@ -8274,7 +8276,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
-				PRODUCT_NAME = o.iterate;
+				PRODUCT_NAME = o.messageiterate;
 				WRAPPER_EXTENSION = "";
 			};
 			name = Release;
@@ -16031,7 +16033,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		119FA0A7191D5E91001C3325 /* Build configuration list for PBXNativeTarget "o.iterate.pd" */ = {
+		119FA0A7191D5E91001C3325 /* Build configuration list for PBXNativeTarget "o.messageiterate.pd" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				119FA0A8191D5E91001C3325 /* Debug */,
