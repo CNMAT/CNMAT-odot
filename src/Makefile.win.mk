@@ -4,8 +4,10 @@ o.change \
 o.collect \
 o.cond \
 o.context \
+o.compose \
 o.dict \
 o.difference \
+o.display \
 o.downcast \
 o.explode \
 o.expr \
