@@ -38,7 +38,7 @@
 #endif
 
 //xxx change to string and call it unique
-const int32_t serialnumber = 1099;   //hard coded; beware
+//const int32_t serialnumber = 1099;   //hard coded; beware
 #ifdef NEEDTHESPACE
 // temperature
 float getTemperature(){	
@@ -284,7 +284,7 @@ const char *a_name = "Esplora";
 #if 1
 {
 const char *a_uid= "/UniqueID";  
-const char *a_id = "usbmodemOSCes311";
+const char *a_id = "usbmodemOSCes421";
     oscwriteinteger(SLIPSerial, (int32_t)oscstrlen(a_uid) + 4 + (int32_t)oscstrlen(a_id)); // 4 for type tag and 4 for the payload integer
     oscwritestring(SLIPSerial,a_uid); oscwritestring(SLIPSerial, singlestring); oscwritestring(SLIPSerial, a_id);
 }
