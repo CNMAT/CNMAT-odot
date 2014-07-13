@@ -5,7 +5,7 @@
 			"major" : 6,
 			"minor" : 1,
 			"revision" : 6,
-			"architecture" : "x86"
+			"architecture" : "x64"
 		}
 ,
 		"rect" : [ 169.0, 72.0, 965.0, 554.0 ],
@@ -31,6 +31,33 @@
 		"showontab" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-5",
+					"maxclass" : "button",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "bang" ],
+					"patching_rect" : [ 130.0, 417.0, 20.0, 20.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-2",
+					"maxclass" : "o.display",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 37.0, 500.0, 91.0, 34.0 ],
+					"presentation_rect" : [ 34.0, 499.0, 0.0, 0.0 ],
+					"text" : "/foo 1.4\n",
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"id" : "obj-32",
@@ -38,9 +65,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 555.0, 483.0, 91.0, 34.0 ],
-					"presentation_rect" : [ 577.0, 484.0, 0.0, 0.0 ],
-					"text" : "/bloo \"a\" \"r\" \"s\"",
+					"patching_rect" : [ 555.0, 457.0, 91.0, 34.0 ],
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -54,8 +79,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 485.0, 483.0, 63.0, 34.0 ],
-					"text" : "/bar 1 2 3",
+					"patching_rect" : [ 485.0, 457.0, 63.0, 34.0 ],
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -69,23 +93,9 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 40.0, 487.0, 71.0, 24.0 ],
-					"text" : "/foo 0.27",
+					"patching_rect" : [ 37.0, 454.0, 71.0, 24.0 ],
+					"text" : "/foo 1.4\n",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontname" : "Arial",
-					"fontsize" : 12.0,
-					"id" : "obj-24",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 40.0, 450.0, 74.0, 20.0 ],
-					"text" : "prepend set"
 				}
 
 			}
@@ -99,7 +109,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 37.0, 283.5, 68.0, 24.0 ],
-					"text" : "/foo 1 2 3",
+					"text" : "/foo 1 2 3\n",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -114,7 +124,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "float", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 40.0, 390.0, 50.0, 20.0 ]
+					"patching_rect" : [ 37.0, 381.0, 50.0, 20.0 ]
 				}
 
 			}
@@ -127,7 +137,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 40.0, 420.0, 83.0, 20.0 ],
+					"patching_rect" : [ 37.0, 417.0, 83.0, 20.0 ],
 					"text" : "o.pack /foo 0."
 				}
 
@@ -138,12 +148,12 @@
 					"fontsize" : 12.0,
 					"frgb" : 0.0,
 					"id" : "obj-17",
-					"linecount" : 3,
+					"linecount" : 4,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 139.0, 464.0, 229.0, 47.0 ],
-					"text" : "o.compose can be used to display and store contents of an OSC bundle using \"prepend set\""
+					"patching_rect" : [ 140.0, 444.0, 229.0, 60.0 ],
+					"text" : "o.compose can be used to display and store contents of an OSC bundle sent to its inlet (the bundle won't come out until the object is clicked or banged)"
 				}
 
 			}
@@ -198,7 +208,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 4,
-					"outlettype" : [ "", "", "", "clear" ],
+					"outlettype" : [ "", "", "", "" ],
 					"patching_rect" : [ 427.0, 20.5, 185.0, 20.0 ],
 					"text" : "o.helpfilehelper @obj o.compose"
 				}
@@ -272,7 +282,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 485.0, 261.0, 150.0, 64.0 ],
-					"text" : "/foo [\n\t/bar 1 2 3\n\t/bloo \"a\" \"r\" \"s\"\n]",
+					"text" : "/foo [\n\t/bar 1 2 3\n\t/bloo \"a\" \"r\" \"s\"\n]\n",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -319,7 +329,7 @@
 					"numinlets" : 3,
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "FullPacket" ],
-					"patching_rect" : [ 485.0, 443.0, 159.0, 20.0 ],
+					"patching_rect" : [ 485.0, 417.0, 159.0, 20.0 ],
 					"text" : "o.select /bar /bloo"
 				}
 
@@ -333,7 +343,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "FullPacket" ],
-					"patching_rect" : [ 485.0, 407.0, 71.0, 20.0 ],
+					"patching_rect" : [ 485.0, 381.0, 71.0, 20.0 ],
 					"text" : "o.route /foo"
 				}
 
@@ -397,8 +407,7 @@
 			}
 , 			{
 				"patchline" : 				{
-					"color" : [ 1.0, 0.8, 0.4, 1.0 ],
-					"destination" : [ "obj-24", 0 ],
+					"destination" : [ "obj-25", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-21", 0 ]
@@ -416,11 +425,10 @@
 			}
 , 			{
 				"patchline" : 				{
-					"color" : [ 1.0, 0.8, 0.4, 1.0 ],
-					"destination" : [ "obj-25", 0 ],
+					"destination" : [ "obj-2", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"source" : [ "obj-24", 0 ]
+					"source" : [ "obj-25", 0 ]
 				}
 
 			}
@@ -464,15 +472,17 @@
 				}
 
 			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-25", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-5", 0 ]
+				}
+
+			}
  ],
 		"dependency_cache" : [ 			{
-				"name" : "o.helpfilehelper.maxpat",
-				"bootpath" : "/Users/adrian2013/CNMAT-odot/misc",
-				"patcherrelativepath" : "../misc",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
 				"name" : "o.route.mxo",
 				"type" : "iLaX"
 			}
