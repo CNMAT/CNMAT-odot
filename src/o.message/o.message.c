@@ -371,13 +371,15 @@ void omessage_bundle2text(t_omessage *x)
 		char ptr[len];
 		memcpy(ptr, osc_bundle_s_getPtr(x->bndl_s), len);
 		critical_exit(x->lock);
-        
         long bufpos = osc_bundle_s_nformat(NULL, 0, len, (char *)ptr, 0);
 		char *buf = osc_mem_alloc(bufpos + 1);
-		
         osc_bundle_s_nformat(buf, bufpos + 1, len, (char *)ptr, 0);
-        if(buf[bufpos - 2] == '\n'){
-            buf[bufpos - 2] = '\0';
+        if (bufpos != 0) {
+            if(buf[bufpos - 2] == '\n'){
+                buf[bufpos - 2] = '\0';
+            }
+        } else {
+            *buf = '\0';
         }
         
 #ifndef OMAX_PD_VERSION

@@ -281,12 +281,8 @@ void odisplay_doFullPacket(t_odisplay *x, long len, char *ptr)
 	t_osc_bndl_s *b = osc_bundle_s_alloc(copylen, copyptr);
 	odisplay_newBundle(x, NULL, b);
 #ifdef OMAX_PD_VERSION
-    x->draw_new_data_indicator = 1;
-	x->have_new_data = 1;
     jbox_redraw((t_jbox *)x);
 #else
-	x->draw_new_data_indicator = 1;
-	x->have_new_data = 1;
 	qelem_set(x->qelem);
 #endif
 }
@@ -299,6 +295,8 @@ void odisplay_newBundle(t_odisplay *x, t_osc_bndl_u *bu, t_osc_bndl_s *bs)
 	x->bndl_s = bs;
 	x->newbndl = 1;
 	x->bndl_has_been_checked_for_subs = 0;
+    x->draw_new_data_indicator = 1;
+	x->have_new_data = 1;
 	critical_exit(x->lock);
 }
 

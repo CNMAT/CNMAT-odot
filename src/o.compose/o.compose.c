@@ -209,6 +209,7 @@ typedef struct _ocompose{
 	t_jrgba frame_color, background_color, text_color, flash_color;
 	void *qelem;
     int mouse_down;
+    int have_new_data;
 	int draw_click_flash;
 	void *click_indicator_clock;
 } t_ocompose;
@@ -299,6 +300,7 @@ void ocompose_newBundle(t_ocompose *x, t_osc_bndl_u *bu, t_osc_bndl_s *bs)
 	x->bndl_s = bs;
 	x->newbndl = 1;
 	x->bndl_has_been_checked_for_subs = 0;
+    x->have_new_data = 1;
 	critical_exit(x->lock);
 }
 
@@ -360,19 +362,19 @@ void ocompose_bundle2text(t_ocompose *x)
 		char ptr[len];
 		memcpy(ptr, osc_bundle_s_getPtr(x->bndl_s), len);
 		critical_exit(x->lock);
-		long bufpos = 0;
-		char *buf = NULL;
-		t_osc_err e = osc_bundle_s_format(len, (char *)ptr, &bufpos, &buf);
-		if(e){
-			object_error((t_object *)x, "%s", osc_error_string(e));
-			if(buf){
-				osc_mem_free(buf);
-			}
-			return;
-		}
-		if(buf[bufpos - 2] == '\n'){
-			buf[bufpos - 2] = '\0';
-		}
+		
+        long bufpos = osc_bundle_s_nformat(NULL, 0, len, (char *)ptr, 0);
+		char *buf = osc_mem_alloc(bufpos + 1);
+        osc_bundle_s_nformat(buf, bufpos + 1, len, (char *)ptr, 0);
+        
+        if (bufpos != 0) {
+            if(buf[bufpos - 2] == '\n'){
+                buf[bufpos - 2] = '\0';
+            }
+        } else {
+            *buf = '\0';
+        }
+        
 #ifndef OMAX_PD_VERSION
 		critical_enter(x->lock);
 		if(x->text){
@@ -397,6 +399,19 @@ void ocompose_bundle2text(t_ocompose *x)
 #ifndef OMAX_PD_VERSION
 void ocompose_paint(t_ocompose *x, t_object *patcherview)
 {
+    int have_new_data = 0;
+    critical_enter(x->lock);
+    have_new_data = x->have_new_data;
+    critical_exit(x->lock);
+    
+    if (have_new_data) {
+        ocompose_bundle2text(x);
+        
+        critical_enter(x->lock);
+        x->have_new_data = 0;
+        critical_exit(x->lock);
+    }
+    
 	t_rect rect;
 	t_jgraphics *g = (t_jgraphics *)patcherview_get_jgraphics(patcherview);
 	jbox_get_rect_for_view((t_object *)x, patcherview, &rect);
@@ -568,6 +583,9 @@ void ocompose_gettext(t_ocompose *x)
 	osc_bundle_u_serialize(bndl_u, &bndl_s_len, &bndl_s_ptr);
 	t_osc_bndl_s *bndl_s = osc_bundle_s_alloc(bndl_s_len, bndl_s_ptr);
 	ocompose_newBundle(x, bndl_u, bndl_s);
+    critical_enter(x->lock);
+    x->have_new_data = 1;
+    critical_exit(x->lock);
 #ifdef OMAX_PD_VERSION
 	jbox_redraw((t_jbox *)x);
 #else
@@ -2167,6 +2185,7 @@ void *ocompose_new(t_symbol *msg, short argc, t_atom *argv){
 		critical_new(&(x->lock));
 		x->qelem = qelem_new((t_object *)x, (method)ocompose_refresh);
         x->mouse_down = 0;
+        x->have_new_data = 1;
         x->draw_click_flash = 0;
         x->click_indicator_clock = clock_new((t_object *)x, (method)ocompose_refresh);
 		attr_dictionary_process(x, d);
