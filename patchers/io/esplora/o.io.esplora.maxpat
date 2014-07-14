@@ -4,11 +4,11 @@
 		"appversion" : 		{
 			"major" : 6,
 			"minor" : 1,
-			"revision" : 6,
+			"revision" : 7,
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 374.0, 141.0, 670.0, 644.0 ],
+		"rect" : [ 53.0, 93.0, 670.0, 644.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -118,7 +118,7 @@
 					"maxclass" : "inlet",
 					"numinlets" : 0,
 					"numoutlets" : 1,
-					"outlettype" : [ "FullPacket" ],
+					"outlettype" : [ "" ],
 					"patching_rect" : [ 348.0, 64.0, 25.0, 25.0 ]
 				}
 
@@ -166,7 +166,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 47.0, 257.0, 91.0, 22.0 ],
+					"patching_rect" : [ 47.0, 257.0, 320.0, 22.0 ],
 					"text" : "o.io.slipserial"
 				}
 

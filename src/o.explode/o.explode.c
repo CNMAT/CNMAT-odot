@@ -102,6 +102,8 @@ void *oexplode_new(t_symbol *msg, short argc, t_atom *argv)
 		x->level = -1;
 		x->sep = gensym("");
         
+/********************* PD Pseudo-attributed, commented out for 1.0 release
+        
         int i;
         for(i = 0; i < argc; i++)
         {
@@ -134,9 +136,9 @@ void *oexplode_new(t_symbol *msg, short argc, t_atom *argv)
                 post("o.explode optional attributes are @level <value> and @sep <value>");
                 return 0;
             }
-            
-        
+         
         }
+*/
     }
     
 	return x;
