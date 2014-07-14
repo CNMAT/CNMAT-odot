@@ -270,6 +270,7 @@ void odisplay_fullPacket(t_odisplay *x, t_symbol *msg, int argc, t_atom *argv)
 {
 	OMAX_UTIL_GET_LEN_AND_PTR
 	odisplay_doFullPacket(x, len, ptr);
+    odisplay_output_bundle(x);
 }
 
 void odisplay_doFullPacket(t_odisplay *x, long len, char *ptr)
