@@ -95,6 +95,8 @@ void *oflatten_new(t_symbol *msg, short argc, t_atom *argv)
 		x->sep = gensym("");
 		x->remove_enclosing_address_if_empty = 1;
 
+/********************* PD Pseudo-attributed, commented out for 1.0 release
+ 
         int i;
         for(i = 0; i < argc; i++)
         {
@@ -139,7 +141,7 @@ void *oflatten_new(t_symbol *msg, short argc, t_atom *argv)
             
             
         }
-        
+*/
 	}
     
 	return x;
