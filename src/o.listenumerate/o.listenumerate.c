@@ -92,8 +92,13 @@ void olistenumerate_doFullPacket(t_olistenumerate *x,
     if (!x->address) {
         return;
     }
+    
+    critical_enter(x->lock);
+    char* address_name = x->address->s_name;
+    critical_exit(x->lock);
+    
     t_osc_array* matches = NULL;
-    osc_bundle_s_lookupAddress(len, ptr, x->address->s_name, &matches, 1);
+    osc_bundle_s_lookupAddress(len, ptr, address_name, &matches, 1);
     
     char delegate[len];
     long dlen = len;
@@ -101,7 +106,7 @@ void olistenumerate_doFullPacket(t_olistenumerate *x,
     
     if (matches) {
         // right outlet:
-        osc_bundle_s_removeMessage(x->address->s_name, &dlen, delegate, 1);
+        osc_bundle_s_removeMessage(address_name, &dlen, delegate, 1);
         int message_count = 0;
         osc_bundle_s_getMsgCount(dlen, delegate, &message_count);
         if (message_count > 0) {
@@ -141,7 +146,7 @@ void olistenumerate_doFullPacket(t_olistenumerate *x,
                         }
                         osc_bundle_u_addMsg(unserialized_result, value);
                         
-                        t_osc_message_u* address = osc_message_u_allocWithString("/address", x->address->s_name);
+                        t_osc_message_u* address = osc_message_u_allocWithString("/address", address_name);
                         t_osc_message_u* index = osc_message_u_allocWithAddress("/index");
                         osc_message_u_appendInt32(index, j);
                         t_osc_message_u* length = osc_message_u_allocWithAddress("/length");
@@ -152,9 +157,8 @@ void olistenumerate_doFullPacket(t_olistenumerate *x,
                         long serialized_result_length = 0;
                         char* serialized_result = NULL;
                         osc_bundle_u_serialize(unserialized_result, &serialized_result_length, &serialized_result);
-                        osc_bundle_u_free(unserialized_result); // frees value, count, length
+                        osc_bundle_u_free(unserialized_result); // frees value, count, length and atom_copy
                         unserialized_result = NULL;
-                        osc_atom_u_free(atom_copy);
                         atom_copy = NULL;
                         
                         if (serialized_result)
@@ -165,7 +169,12 @@ void olistenumerate_doFullPacket(t_olistenumerate *x,
                         }
                     }
                 }
-                osc_message_u_free(unserialized_msg);
+                
+                if (unserialized_msg) {
+                    osc_message_u_free(unserialized_msg);
+                    unserialized_msg = NULL;
+                }
+                
             } else {
                 olistenumerate_noMatchesOrData(x);
             }
