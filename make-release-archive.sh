@@ -1,7 +1,7 @@
 #!/bin/sh
 
 packagedirs=(clippings code default-definitions default-settings docs examples extensions externals extras help init interfaces java-classes java-doc javascript jsextensions jsui license.txt media misc patchers object-prototypes queries readme.txt source support templates)
-nonpackagedirs=(unstable)
+nonpackagedirs=(unstable deprecated)
 
 dirs=("${packagedirs[@]}" "${nonpackagedirs[@]}")
 
