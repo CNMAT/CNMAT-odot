@@ -23,20 +23,23 @@
   @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
   NAME: o.compose
   DESCRIPTION: Message box for OSC bundles
-  AUTHORS: Ilya Rostovtsev, John MacCallum
+  AUTHORS: John MacCallum
   COPYRIGHT_YEARS: 2009-11
-  VERSION 0.0: Inherited from v2.0 of o.message
-  VERSION 0.D: Dev copy with multiple visual looks
+  SVN_REVISION: $LastChangedRevision: 587 $
+  VERSION 0.0: First try
+  VERSION 1.0: using updated lib
+  VERSION 1.0.1: newlines now delimit messages
+  VERSION 2.0: uses newly refactored libo and has initial support for nested bundles
   @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
 */
 
 #define OMAX_DOC_NAME "o.compose"
-#define OMAX_DOC_SHORT_DESC "Produce OSC bundles from text"
-#define OMAX_DOC_LONG_DESC "o.compose allows you to edit and store  OSC packets in text form."
-#define OMAX_DOC_INLETS_DESC (char *[]){"Bang sends out an OSC  packet"}
+#define OMAX_DOC_SHORT_DESC "Create and display OSC bundles"
+#define OMAX_DOC_LONG_DESC "o.compose behaves like the standard Max message box except that it converts its data to OSC packets."
+#define OMAX_DOC_INLETS_DESC (char *[]){"Bang sends the OSC FullPacket out.", "Set the contents."}
 #define OMAX_DOC_OUTLETS_DESC (char *[]){"OSC FullPacket"}
-#define OMAX_DOC_SEEALSO (char *[]){"o.display", "o.message"}
+#define OMAX_DOC_SEEALSO (char *[]){"message"}
 
 
 #include <string.h>
@@ -44,20 +47,21 @@
 
 
 #ifdef OMAX_PD_VERSION
-    #include "m_pd.h"
-    #include "m_imp.h"
-    #include "g_canvas.h"
-    #include "g_all_guis.h"
-    #include "omax_pd_proxy.h"
-    #define OMAX_PD_MAXSTRINGSIZE (1<<16)
+#include "m_pd.h"
+#include "m_imp.h"
+#include "g_canvas.h"
+#include "g_all_guis.h"
+#include "omax_pd_proxy.h"
+#define OMAX_PD_MAXSTRINGSIZE (1<<16)
+#define proxy_getinlet(x) (((t_ocompose *)(x))->inlet)
 #else
-    #include "ext.h"
-    #include "ext_obex.h"
-    #include "ext_obex_util.h"
-    #include "ext_critical.h"
-    #include "jpatcher_api.h"
-    //#include "jpatcher_syms.h"
-    #include "jgraphics.h"
+#include "ext.h"
+#include "ext_obex.h"
+#include "ext_obex_util.h"
+#include "ext_critical.h"
+#include "jpatcher_api.h"
+//#include "jpatcher_syms.h"
+#include "jgraphics.h"
 #endif
 
 #include "omax_util.h"
@@ -80,48 +84,49 @@
 
 #include "o.h"
 
-//#define ocompose_MAX_NUM_MESSAGES 128
-//#define ocompose_MAX_MESSAGE_LENGTH 128
-// #define BUFLEN 128
+#define ocompose_MAX_NUM_MESSAGES 128
+#define ocompose_MAX_MESSAGE_LENGTH 128
+#define BUFLEN 128
 
 /*
 #ifdef WIN_VERSION
 // currently we have to compile windows versions with gcc 3 on cygwin and i'm getting undefined
 // refs to strsep, so here it is.
-char * strsep(stringp, delim)
+char *
+strsep(stringp, delim)
      register char **stringp;
      register const char *delim;
 {
-	register char *s;
-	register const char *spanp;
-	register int c, sc;
-	char *tok;
+    register char *s;
+    register const char *spanp;
+    register int c, sc;
+    char *tok;
 
-	if ((s = *stringp) == NULL)
-		return (NULL);
-	for (tok = s;;) {
-		c = *s++;
-		spanp = delim;
-		do {
-			if ((sc = *spanp++) == c) {
-				if (c == 0) {
-					s = NULL;
-				} else {
-					s[-1] = 0;
-                }
-				*stringp = s;
-				return (tok);
-			}
-		} while (sc != 0);
-	}
-	// NOTREACHED
+    if ((s = *stringp) == NULL)
+        return (NULL);
+    for (tok = s;;) {
+        c = *s++;
+        spanp = delim;
+        do {
+            if ((sc = *spanp++) == c) {
+                if (c == 0)
+                    s = NULL;
+                else
+                    s[-1] = 0;
+                *stringp = s;
+                return (tok);
+            }
+        } while (sc != 0);
+    }
+    // NOTREACHED 
 }
 #endif
+
 */
 
 enum {
-	ocompose_U,
-	ocompose_S,
+    ocompose_U,
+    ocompose_S,
 };
 
 #ifdef OMAX_PD_VERSION
@@ -170,21 +175,22 @@ typedef struct _ocompose {
     uint32_t    height;
 
     void *outlet;
-	void **proxy;
-	long inlet;
+    void **proxy;
+    long inlet;
     
     //new version
     int newbndl;
-	t_osc_bndl_u *bndl_u;
-	t_osc_bndl_s *bndl_s;
-	int bndl_has_subs;
-	int bndl_has_been_checked_for_subs;
+    t_osc_bndl_u *bndl_u;
+    t_osc_bndl_s *bndl_s;
+    int bndl_has_subs;
+    int bndl_has_been_checked_for_subs;
 
     int     in_new_flag;
-	//t_jrgba frame_color, background_color, text_color;
+    //t_jrgba frame_color, background_color, text_color;
     
     int have_new_data;
-	t_clock *new_data_indicator_clock;
+    int draw_new_data_indicator;
+    t_clock *new_data_indicator_clock;
     
     int     softlock;
     
@@ -194,24 +200,26 @@ t_omax_pd_proxy_class *ocompose_class;
 t_omax_pd_proxy_class *ocompose_proxy_class;
 t_widgetbehavior ocompose_widgetbehavior;
 
-#else // MAX:
+#else
 typedef struct _ocompose{
-	t_jbox ob;
-	void *outlet;
-	t_critical lock;
-	int newbndl;
-	t_osc_bndl_u *bndl_u;
-	t_osc_bndl_s *bndl_s;
-	int bndl_has_subs;
-	int bndl_has_been_checked_for_subs;
-	long textlen;
-	char *text;
-	t_jrgba frame_color, background_color, text_color, flash_color;
-	void *qelem;
+    t_jbox ob;
+    void *outlet;
+    void *proxy;
+    long inlet;
+    t_critical lock;
+    int newbndl;
+    t_osc_bndl_u *bndl_u;
+    t_osc_bndl_s *bndl_s;
+    int bndl_has_subs;
+    int bndl_has_been_checked_for_subs;
+    long textlen;
+    char *text;
+    t_jrgba frame_color, background_color, text_color, flash_color;
+    void *qelem;
     int mouse_down;
     int have_new_data;
-	int draw_click_flash;
-	void *click_indicator_clock;
+    int draw_new_data_indicator;
+    void *new_data_indicator_clock;
 } t_ocompose;
 
 static t_class *ocompose_class;
@@ -222,6 +230,7 @@ long ocompose_keyfilter(t_ocompose *x, t_object *patcherview, long *keycode, lon
 void ocompose_mousedown(t_ocompose *x, t_object *patcherview, t_pt pt, long modifiers);
 void ocompose_mouseup(t_ocompose *x, t_object *patcherview, t_pt pt, long modifiers);
 void ocompose_select(t_ocompose *x);
+
 #endif
 
 void ocompose_doFullPacket(t_ocompose *x, long len, char *ptr);
@@ -233,7 +242,6 @@ void ocompose_clear(t_ocompose *x);
 void ocompose_clearBundles(t_ocompose *x);
 void ocompose_newBundle(t_ocompose *x, t_osc_bndl_u *bu, t_osc_bndl_s *bs);
 void ocompose_output_bundle(t_ocompose *x);
-void ocompose_output_empty(t_ocompose *x);
 void ocompose_bang(t_ocompose *x);
 void ocompose_int(t_ocompose *x, long n);
 void ocompose_float(t_ocompose *x, double xx);
@@ -241,6 +249,7 @@ void ocompose_list(t_ocompose *x, t_symbol *msg, short argc, t_atom *argv);
 void ocompose_anything(t_ocompose *x, t_symbol *msg, short argc, t_atom *argv);
 void omax_util_outletOSC(void *outlet, long len, char *ptr);
 void ocompose_free(t_ocompose *x);
+void ocompose_inletinfo(t_ocompose *x, void *b, long index, char *t);
 void *ocompose_new(t_symbol *msg, short argc, t_atom *argv);
 
 #ifdef OMAX_PD_VERSION
@@ -266,107 +275,104 @@ static void ocompose_delete(t_gobj *z, t_glist *glist);
 
 typedef t_ocompose t_jbox;
 void jbox_redraw(t_jbox *x){ ocompose_drawElements((t_ocompose *)x, x->glist, x->width, x->height, 0);}
+
 #endif
 
 t_symbol *ps_newline, *ps_FullPacket;
 
 
+//void ocompose_fullPacket(t_ocompose *x, long len, long ptr)
 void ocompose_fullPacket(t_ocompose *x, t_symbol *msg, int argc, t_atom *argv)
 {
     OMAX_UTIL_GET_LEN_AND_PTR
-	ocompose_doFullPacket(x, len, ptr);
+    if(proxy_getinlet((t_object *)x) == 0){
+        return;
+    }
+    ocompose_doFullPacket(x, len, ptr);
 }
 
 void ocompose_doFullPacket(t_ocompose *x, long len, char *ptr)
 {
-	osc_bundle_s_wrap_naked_message(len, ptr);
-	long copylen = len;
-	char *copyptr = osc_mem_alloc(len);
-	memcpy(copyptr, ptr, len);
-	t_osc_bndl_s *b = osc_bundle_s_alloc(copylen, copyptr);
-	ocompose_newBundle(x, NULL, b);
+    osc_bundle_s_wrap_naked_message(len, ptr);
+    long copylen = len;
+    char *copyptr = osc_mem_alloc(len);
+    memcpy(copyptr, ptr, len);
+    t_osc_bndl_s *b = osc_bundle_s_alloc(copylen, copyptr);
+    ocompose_newBundle(x, NULL, b);
 #ifdef OMAX_PD_VERSION
     jbox_redraw((t_jbox *)x);
 #else
-	qelem_set(x->qelem);
+    qelem_set(x->qelem);
 #endif
 }
 
 void ocompose_newBundle(t_ocompose *x, t_osc_bndl_u *bu, t_osc_bndl_s *bs)
 {
-	critical_enter(x->lock);
-	ocompose_clearBundles(x);
-	x->bndl_u = bu;
-	x->bndl_s = bs;
-	x->newbndl = 1;
-	x->bndl_has_been_checked_for_subs = 0;
+    critical_enter(x->lock);
+    ocompose_clearBundles(x);
+    x->bndl_u = bu;
+    x->bndl_s = bs;
+    x->newbndl = 1;
+    x->draw_new_data_indicator = 1;
     x->have_new_data = 1;
-	critical_exit(x->lock);
+    x->bndl_has_been_checked_for_subs = 0;
+    critical_exit(x->lock);
 }
 
 void ocompose_clearBundles(t_ocompose *x)
 {
-	critical_enter(x->lock);
-	if(x->bndl_u){
-		osc_bundle_u_free(x->bndl_u);
-		x->bndl_u = NULL;
-	}
-	if(x->bndl_s){
-		osc_bundle_s_deepFree(x->bndl_s);
-		x->bndl_s = NULL;
-	}
+    critical_enter(x->lock);
+    if(x->bndl_u){
+        osc_bundle_u_free(x->bndl_u);
+        x->bndl_u = NULL;
+    }
+    if(x->bndl_s){
+        osc_bundle_s_deepFree(x->bndl_s);
+        x->bndl_s = NULL;
+    }
 #ifndef OMAX_PD_VERSION
-	if(x->text){
-		x->textlen = 0;
-		osc_mem_free(x->text);
-		x->text = NULL;
-	}
+    if(x->text){
+        x->textlen = 0;
+        osc_mem_free(x->text);
+        x->text = NULL;
+    }
 #endif
-	critical_exit(x->lock);
+    critical_exit(x->lock);
 }
 
 void ocompose_output_bundle(t_ocompose *x)
 {
-	// the use of critical sections is a little weird here, but correct.
-	critical_enter(x->lock);
-    x->draw_click_flash = 1;
-	if(x->bndl_s){
-		t_osc_bndl_s *b = x->bndl_s;
-		long len = osc_bundle_s_getLen(b);
-		char *ptr = osc_bundle_s_getPtr(b);
-		char buf[len];
-		memcpy(buf, ptr, len);
-		critical_exit(x->lock);
-		omax_util_outletOSC(x->outlet, len, buf);
-        jbox_redraw((t_jbox *)x);
-		return;
-	}
-	critical_exit(x->lock);
-    ocompose_output_empty(x);
-}
+    // the use of critical sections is a little weird here, but correct.
+    critical_enter(x->lock);
+    if(x->bndl_s){
+        t_osc_bndl_s *b = x->bndl_s;
+        long len = osc_bundle_s_getLen(b);
+        char *ptr = osc_bundle_s_getPtr(b);
+        char buf[len];
+        memcpy(buf, ptr, len);
+        critical_exit(x->lock);
+        omax_util_outletOSC(x->outlet, len, buf);
+        return;
+    }
+    critical_exit(x->lock);
 
-void ocompose_output_empty(t_ocompose *x)
-{
     char buf[OSC_HEADER_SIZE];
-	memset(buf, '\0', OSC_HEADER_SIZE);
-	osc_bundle_s_setBundleID(buf);
-	omax_util_outletOSC(x->outlet, OSC_HEADER_SIZE, buf);
-    jbox_redraw((t_jbox *)x);
+    memset(buf, '\0', OSC_HEADER_SIZE);
+    osc_bundle_s_setBundleID(buf);
+    omax_util_outletOSC(x->outlet, OSC_HEADER_SIZE, buf);
 }
 
 void ocompose_bundle2text(t_ocompose *x)
 {
     critical_enter(x->lock);
-	if(x->newbndl && x->bndl_s){
-		long len = osc_bundle_s_getLen(x->bndl_s);
-		char ptr[len];
-		memcpy(ptr, osc_bundle_s_getPtr(x->bndl_s), len);
-		critical_exit(x->lock);
-		
+    if(x->newbndl && x->bndl_s){
+        long len = osc_bundle_s_getLen(x->bndl_s);
+        char ptr[len];
+        memcpy(ptr, osc_bundle_s_getPtr(x->bndl_s), len);
+        critical_exit(x->lock);
         long bufpos = osc_bundle_s_nformat(NULL, 0, len, (char *)ptr, 0);
-		char *buf = osc_mem_alloc(bufpos + 1);
+        char *buf = osc_mem_alloc(bufpos + 1);
         osc_bundle_s_nformat(buf, bufpos + 1, len, (char *)ptr, 0);
-        
         if (bufpos != 0) {
             if(buf[bufpos - 2] == '\n'){
                 buf[bufpos - 2] = '\0';
@@ -376,151 +382,153 @@ void ocompose_bundle2text(t_ocompose *x)
         }
         
 #ifndef OMAX_PD_VERSION
-		critical_enter(x->lock);
-		if(x->text){
-			osc_mem_free(x->text);
-		}
-		x->textlen = bufpos;
+        critical_enter(x->lock);
+        if(x->text){
+            osc_mem_free(x->text);
+        }
+        x->textlen = bufpos;
         x->text = buf;
-		critical_exit(x->lock);
+        critical_exit(x->lock);
         object_method(jbox_get_textfield((t_object *)x), gensym("settext"), buf);
 #else
         ocompose_resetText(x, buf);
 
 #endif
-		if(buf){
-			//osc_mem_free(buf);
-		}
-		x->newbndl = 0;
-	}
-	critical_exit(x->lock);
+/*
+        if(buf){
+            osc_mem_free(buf);
+        }
+*/
+        x->newbndl = 0;
+    }
+    critical_exit(x->lock);
 }
 
 #ifndef OMAX_PD_VERSION
 void ocompose_paint(t_ocompose *x, t_object *patcherview)
 {
     int have_new_data = 0;
+    int draw_new_data_indicator = 0;
     critical_enter(x->lock);
     have_new_data = x->have_new_data;
+    draw_new_data_indicator = x->draw_new_data_indicator;
     critical_exit(x->lock);
-    
-    if (have_new_data) {
+    if(have_new_data){  
         ocompose_bundle2text(x);
-        
-        critical_enter(x->lock);
-        x->have_new_data = 0;
-        critical_exit(x->lock);
     }
     
-	t_rect rect;
-	t_jgraphics *g = (t_jgraphics *)patcherview_get_jgraphics(patcherview);
-	jbox_get_rect_for_view((t_object *)x, patcherview, &rect);
+    t_rect rect;
+    t_jgraphics *g = (t_jgraphics *)patcherview_get_jgraphics(patcherview);
+    jbox_get_rect_for_view((t_object *)x, patcherview, &rect);
     
     // box
     jgraphics_set_source_jrgba(g, &(x->background_color));
     jgraphics_move_to(g, 0, 0);
-    jgraphics_line_to(g, rect.width - 10, 0);
-    jgraphics_line_to(g, rect.width, 10);
-    jgraphics_line_to(g, rect.width, rect.height);
+    jgraphics_line_to(g, rect.width, 0);
+    jgraphics_line_to(g, rect.width, rect.height - 10);
+    jgraphics_line_to(g, rect.width - 10, rect.height);
     jgraphics_line_to(g, 0, rect.height);
     jgraphics_line_to(g, 0, 0);
     jgraphics_fill(g);
     
-    if (x->draw_click_flash) {
+    if (x->draw_new_data_indicator) {
         jgraphics_set_source_jrgba(g, &(x->flash_color));
-        jgraphics_move_to(g, rect.width - 10, 0);
-        jgraphics_line_to(g, rect.width, 10);
-        jgraphics_line_to(g, rect.width - 10, 10);
-        jgraphics_line_to(g, rect.width - 10, 0);
+        jgraphics_move_to(g, rect.width, rect.height - 10);
+        jgraphics_line_to(g, rect.width - 10, rect.height);
+        jgraphics_line_to(g, rect.width - 10, rect.height - 10);
+        jgraphics_line_to(g, rect.width, rect.height - 10);
         jgraphics_fill(g);
         
         if (x->mouse_down == 0) {
             critical_enter(x->lock);
-            x->draw_click_flash = 0;
+            x->draw_new_data_indicator = 0;
             critical_exit(x->lock);
-            clock_delay(x->click_indicator_clock, 100);
+            clock_delay(x->new_data_indicator_clock, 100);
         }
     }
     
     // outline
     jgraphics_set_source_jrgba(g, &(x->frame_color));
     jgraphics_set_line_width(g, 2.);
-    jgraphics_move_to(g, rect.width - 1, 10);
-    jgraphics_line_to(g, rect.width - 1, rect.height - 1);
+    jgraphics_move_to(g, rect.width - 10, rect.height - 1);
     jgraphics_line_to(g, 1, rect.height - 1);
     jgraphics_line_to(g, 1, 1);
-    jgraphics_line_to(g, rect.width - 10, 1);
+    jgraphics_line_to(g, rect.width - 1, 1);
+    jgraphics_line_to(g, rect.width - 1, rect.height - 10);
     jgraphics_stroke(g);
     
     // thin diagonal
     jgraphics_set_line_width(g, 1.);
-    jgraphics_move_to(g, rect.width - 10, 0);
-    jgraphics_line_to(g, rect.width, 10);
+    jgraphics_move_to(g, rect.width, rect.height - 10);
+    jgraphics_line_to(g, rect.width - 10, rect.height);
     jgraphics_stroke(g);
     
     // triangle
-//    jgraphics_set_source_jrgba(g, &(x->frame_color));
     jgraphics_set_line_width(g, 2.);
-    jgraphics_move_to(g, rect.width - 11, 0);
-    jgraphics_line_to(g, rect.width - 11, 11);
-    jgraphics_line_to(g, rect.width, 11);
+    jgraphics_move_to(g, rect.width - 1, rect.height - 11);
+    jgraphics_line_to(g, rect.width - 11, rect.height - 11);
+    jgraphics_line_to(g, rect.width - 11, rect.height - 1);
     jgraphics_stroke(g);
 }
+
 #endif
 
 void ocompose_refresh(t_ocompose *x)
 {
-	jbox_redraw((t_jbox *)x);
+#ifdef OMAX_PD_VERSION
+    x->draw_new_data_indicator = 0;
+#endif
+    jbox_redraw((t_jbox *)x);
 }
 
 #ifndef OMAX_PD_VERSION
 void ocompose_select(t_ocompose *x){
-	defer(x, (method)ocompose_doselect, 0, 0, 0);
+    defer(x, (method)ocompose_doselect, 0, 0, 0);
 }
 
 void ocompose_doselect(t_ocompose *x){
-	t_object *p = NULL; 
-	object_obex_lookup(x,gensym("#P"), &p);
-	if (p) {
-		t_atom rv; 
-		long ac = 1; 
-		t_atom av[1]; 
-		atom_setobj(av, x); 
-		object_method_typed(p, gensym("selectbox"), ac, av, &rv); 
-	}
+    t_object *p = NULL; 
+    object_obex_lookup(x,gensym("#P"), &p);
+    if (p) {
+        t_atom rv; 
+        long ac = 1; 
+        t_atom av[1]; 
+        atom_setobj(av, x); 
+        object_method_typed(p, gensym("selectbox"), ac, av, &rv); 
+    }
 }
 
 
 long ocompose_key(t_ocompose *x, t_object *patcherview, long keycode, long modifiers, long textcharacter){
-	char buff[256];
-	buff[0] = textcharacter;  // we know this is just a simple char
-	buff[1] = 0; 
-	object_method(patcherview, gensym("insertboxtext"), x, buff);
-	jbox_redraw((t_jbox *)x);
+    char buff[256];
+    buff[0] = textcharacter;  // we know this is just a simple char
+    buff[1] = 0; 
+    object_method(patcherview, gensym("insertboxtext"), x, buff);
+    jbox_redraw((t_jbox *)x);
 
-	return 1; 
+    return 1; 
 }
 
 long ocompose_keyfilter(t_ocompose *x, t_object *patcherview, long *keycode, long *modifiers, long *textcharacter){
-	t_atom arv;
-	long rv = 1;
-	long k = *keycode;
-	
-	if (k == JKEY_TAB || k == JKEY_ESC) {
-		object_method_typed(patcherview, gensym("endeditbox"), 0, NULL, &arv); 
-		rv = 0;		// don't pass those keys to ocompose
-	}
-	return rv;
+    t_atom arv;
+    long rv = 1;
+    long k = *keycode;
+    
+    if (k == JKEY_TAB || k == JKEY_ESC) {
+        object_method_typed(patcherview, gensym("endeditbox"), 0, NULL, &arv); 
+        rv = 0;     // don't pass those keys to ocompose
+    }
+    return rv;
 }
 
 
 void ocompose_mousedown(t_ocompose *x, t_object *patcherview, t_pt pt, long modifiers){
     textfield_set_textmargins(jbox_get_textfield((t_object *)x), 6, 6, 10, 5);
     critical_enter(x->lock);
-    x->draw_click_flash = 1;
+    x->draw_new_data_indicator = 1;
     x->mouse_down = 1;
     critical_exit(x->lock);
-	jbox_redraw((t_jbox *)x);
+    jbox_redraw((t_jbox *)x);
 }
 
 void ocompose_mouseup(t_ocompose *x, t_object *patcherview, t_pt pt, long modifiers){
@@ -528,15 +536,15 @@ void ocompose_mouseup(t_ocompose *x, t_object *patcherview, t_pt pt, long modifi
     critical_enter(x->lock);
     x->mouse_down = 0;
     critical_exit(x->lock);
-	jbox_redraw((t_jbox *)x);
-	ocompose_output_bundle(x);
+    jbox_redraw((t_jbox *)x);
+    ocompose_output_bundle(x);
 }
 #endif
 
 // enter is triggerd at "endeditbox time"
 void ocompose_enter(t_ocompose *x)
 {
-	ocompose_gettext(x);
+    ocompose_gettext(x);
 }
 
 // we get the text, convert it to an OSC bundle, and then call the paint
@@ -545,201 +553,245 @@ void ocompose_enter(t_ocompose *x)
 // and tabbed subbundles, etc.
 void ocompose_gettext(t_ocompose *x)
 {
-	long size	= 0;
-	char *text	= NULL;
+    long size   = 0;
+    char *text  = NULL;
 #ifdef OMAX_PD_VERSION
-	text = x->text;
+    text = x->text;
 #else
-	t_object *textfield = jbox_get_textfield((t_object *)x);
-	object_method(textfield, gensym("gettextptr"), &text, &size);
+    t_object *textfield = jbox_get_textfield((t_object *)x);
+    object_method(textfield, gensym("gettextptr"), &text, &size);
 #endif
     
-	ocompose_clearBundles(x);
-	size = strlen(text); // the value returned in text doesn't make sense
-	if(size == 0){
-		return;
-	}
-	char *buf = text;
+    ocompose_clearBundles(x);
+    size = strlen(text); // the value returned in text doesn't make sense
+    if(size == 0){
+        return;
+    }
+    char *buf = text;
 
-	if(text[size - 1] != '\n'){
-		buf = alloca(size + 2);
-		memcpy(buf, text, size);
-		buf[size] = '\n';
-		buf[size + 1] = '\0';
-		size += 2;
-	}
+    if(text[size - 1] != '\n'){
+        buf = alloca(size + 2);
+        memcpy(buf, text, size);
+        buf[size] = '\n';
+        buf[size + 1] = '\0';
+        size += 2;
+    }
 
-	t_osc_bndl_u *bndl_u = NULL;
-	t_osc_err e = osc_parser_parseString(size, buf, &bndl_u);
-	if(e){
+    t_osc_bndl_u *bndl_u = NULL;
+    t_osc_err e = osc_parser_parseString(size, buf, &bndl_u);
+    if(e){
 #ifdef OMAX_PD_VERSION
-		x->parse_error = 1;
+        x->parse_error = 1;
 #endif
-		object_error((t_object *)x, "error parsing bundle\n");
-		return;
-	}
-	long bndl_s_len = 0;
-	char *bndl_s_ptr = NULL;
-	osc_bundle_u_serialize(bndl_u, &bndl_s_len, &bndl_s_ptr);
-	t_osc_bndl_s *bndl_s = osc_bundle_s_alloc(bndl_s_len, bndl_s_ptr);
-	ocompose_newBundle(x, bndl_u, bndl_s);
-    critical_enter(x->lock);
+        object_error((t_object *)x, "error parsing bundle\n");
+        return;
+    }
+    long bndl_s_len = 0;
+    char *bndl_s_ptr = NULL;
+    osc_bundle_u_serialize(bndl_u, &bndl_s_len, &bndl_s_ptr);
+    t_osc_bndl_s *bndl_s = osc_bundle_s_alloc(bndl_s_len, bndl_s_ptr);
+    ocompose_newBundle(x, bndl_u, bndl_s);
+#ifdef OMAX_PD_VERSION
     x->have_new_data = 1;
-    critical_exit(x->lock);
-#ifdef OMAX_PD_VERSION
-	jbox_redraw((t_jbox *)x);
+    jbox_redraw((t_jbox *)x);
 #else
-	qelem_set(x->qelem);
+    x->have_new_data = 1;
+    qelem_set(x->qelem);
 #endif
+    /*
+    if(size > 2){
+        int i;
+        char *r = text + 1;
+        char *w = text + 1;
+        char *rm1 = text;
+        for(i = 0; i <= size; i++){
+            if(*rm1 == ' ' && *r == ' '){
+                r++;
+            }else{
+                *w++ = *r++;
+            }
+            rm1++;
+        }
+    }
+    */
 }
 
-void ocompose_bang(t_ocompose *x)
-{
-	ocompose_output_bundle(x);
+void ocompose_bang(t_ocompose *x) {
+    if(proxy_getinlet((t_object *)x) == 1) {
+        return;
+    }
+    ocompose_output_bundle(x);
 }
 
-void ocompose_int(t_ocompose *x, long n)
-{
-	t_atom a;
-	atom_setlong(&a, n);
-	ocompose_list(x, NULL, 1, &a);
+void ocompose_int(t_ocompose *x, long n) {
+    if(proxy_getinlet((t_object *)x) == 1) {
+        return;
+    }
+    object_error((t_object *)x, "o.compose doesn't accept Max atoms");
 }
 
-void ocompose_float(t_ocompose *x, double f){
-	t_atom a;
-	atom_setfloat(&a, f);
-	ocompose_list(x, NULL, 1, &a);
+void ocompose_float(t_ocompose *x, double f) {
+    if(proxy_getinlet((t_object *)x) == 1) {
+        return;
+    }
+    object_error((t_object *)x, "o.compose doesn't accept Max atoms");
 }
 
 void ocompose_list(t_ocompose *x, t_symbol *list_sym, short argc, t_atom *argv)
 {
-    critical_enter(x->lock);
-    x->draw_click_flash = 1;
-    critical_exit(x->lock);
-    ocompose_bang(x);
-    jbox_redraw((t_jbox *)x);
-    
+    object_error((t_object *)x, "o.compose doesn't accept Max lists");
     /*
-	if (x->bndl_has_been_checked_for_subs && !x->bndl_has_subs) {
-		if (!x->bndl_s) {
-			if (x->bndl_u) {
-				long len = 0;
-				char *ptr = NULL;
-				critical_enter(x->lock);
-				osc_bundle_u_serialize(x->bndl_u, &len, &ptr);
-				critical_exit(x->lock);
-				x->bndl_s = osc_bundle_s_alloc(len, ptr);
-			} else if (x->text) {
-				// pretty sure this can't happen...
-				post("%d\n", __LINE__);
-			} else {
-				return;
-			}
-		}
-		critical_enter(x->lock);
-		long len = osc_bundle_s_getLen(x->bndl_s);
-		char *ptr = osc_bundle_s_getPtr(x->bndl_s);
-		char copy[len];
-		memcpy(copy, ptr, len);
-		critical_exit(x->lock);
-		omax_util_outletOSC(x->outlet, len, copy);
-	} else {
-		if (!x->bndl_u) {
-			if (x->bndl_s) {
-				critical_enter(x->lock);
-				osc_bundle_s_deserialize(osc_bundle_s_getLen(x->bndl_s), osc_bundle_s_getPtr(x->bndl_s), &(x->bndl_u));
-				critical_exit(x->lock);
-			} else if (x->text) {
-				// pretty sure this can't happen...
-				post("%d\n", __LINE__);
-			} else {
-                ocompose_output_empty(x);
-				return;
-			}
-		}
-		critical_enter(x->lock);
-		t_osc_bndl_u *copy = NULL;
-		t_osc_err e = omax_util_copyBundleWithSubs_u(&copy, x->bndl_u, argc, argv, &(x->bndl_has_subs));
-		if (e) {
-            critical_exit(x->lock);
-			return;
-		}
-		if (!copy) {
-            critical_exit(x->lock);
-			return;
-		}
-		x->bndl_has_been_checked_for_subs = 1;
-		critical_exit(x->lock);
-		long len = 0;
-		char *copy_s = NULL;
-		e = osc_bundle_u_serialize(copy, &len, &copy_s);
-		if (e) {
-			object_error((t_object *)x, "%s\n", osc_error_string(e));
-			osc_bundle_u_free(copy);
-			return;
-		}
-		if (copy_s) {
-			omax_util_outletOSC(x->outlet, len, copy_s);
-			osc_mem_free(copy_s);
-		} else {
-            // pretty sure this can't happen...
-            ocompose_output_empty(x);
+    if(proxy_getinlet((t_object *)x) == 1){
+        object_error((t_object *)x, "o.compose doesn't accept non-OSC lists in its right inlet");
+        return;
+    }
+    if(x->bndl_has_been_checked_for_subs && !x->bndl_has_subs){
+        if(!x->bndl_s){
+            if(x->bndl_u){
+                long len = 0;
+                char *ptr = NULL;
+                critical_enter(x->lock);
+                osc_bundle_u_serialize(x->bndl_u, &len, &ptr);
+                critical_exit(x->lock);
+                x->bndl_s = osc_bundle_s_alloc(len, ptr);
+            }else if(x->text){
+                // pretty sure this can't happen...
+                post("%d\n", __LINE__);
+            }else{
+                return;
+            }
         }
-		osc_bundle_u_free(copy);
-	}
+        critical_enter(x->lock);
+        long len = osc_bundle_s_getLen(x->bndl_s);
+        char *ptr = osc_bundle_s_getPtr(x->bndl_s);
+        char copy[len];
+        memcpy(copy, ptr, len);
+        critical_exit(x->lock);
+        omax_util_outletOSC(x->outlet, len, copy);
+    } else {
+        if(!x->bndl_u){
+            if(x->bndl_s){
+                critical_enter(x->lock);
+                osc_bundle_s_deserialize(osc_bundle_s_getLen(x->bndl_s), osc_bundle_s_getPtr(x->bndl_s), &(x->bndl_u));
+                critical_exit(x->lock);
+            }else if(x->text){
+                // pretty sure this can't happen...
+                post("%d\n", __LINE__);
+            } else {
+                char buf[OSC_HEADER_SIZE];
+                memset(buf, '\0', OSC_HEADER_SIZE);
+                osc_bundle_s_setBundleID(buf);
+                omax_util_outletOSC(x->outlet, OSC_HEADER_SIZE, buf);
+                jbox_redraw((t_jbox *)x);
+                return;
+            }
+        }
+        critical_enter(x->lock);
+        t_osc_bndl_u *copy = NULL;
+        t_osc_err e = omax_util_copyBundleWithSubs_u(&copy, x->bndl_u, argc, argv, &(x->bndl_has_subs));
+        if(e){
+            return;
+        }
+        if(!copy){
+            return;
+        }
+        x->bndl_has_been_checked_for_subs = 1;
+        critical_exit(x->lock);
+        long len = 0;
+        char *copy_s = NULL;
+        e = osc_bundle_u_serialize(copy, &len, &copy_s);
+        if(e){
+            object_error((t_object *)x, "%s\n", osc_error_string(e));
+            osc_bundle_u_free(copy);
+            return;
+        }
+        if(copy_s){
+            omax_util_outletOSC(x->outlet, len, copy_s);
+            osc_mem_free(copy_s);
+        }
+        osc_bundle_u_free(copy);
+    }
     */
 }
 
 void ocompose_anything(t_ocompose *x, t_symbol *msg, short argc, t_atom *argv)
 {
-	t_atom av[argc + 1];
-	int ac = argc;
+    t_atom av[argc + 1];
+    int ac = argc;
 
-	if (msg) {
-		ac = argc + 1;
-		atom_setsym(av, msg);
-		if(argc > 0){
-			memcpy(av + 1, argv, argc * sizeof(t_atom));
-		}
-	} else {
-		memcpy(av, argv, argc * sizeof(t_atom));
-	}
-    ocompose_list(x, NULL, ac, av);
-
+    if(msg){
+        ac = argc + 1;
+        atom_setsym(av, msg);
+        if(argc > 0){
+            memcpy(av + 1, argv, argc * sizeof(t_atom));
+        }
+    }else{
+        memcpy(av, argv, argc * sizeof(t_atom));
+    }
+    switch(proxy_getinlet((t_object *)x)){
+    case 0:
+        ocompose_list(x, NULL, ac, av);
+        break;
+    case 1:
+        {
+            t_osc_msg_u *m = NULL;
+            t_osc_err e = omax_util_maxAtomsToOSCMsg_u(&m, msg, argc, argv);
+            if(e){
+                return;
+            }
+            t_osc_bndl_u *b = osc_bundle_u_alloc();
+            osc_bundle_u_addMsg(b, m);
+            long len = 0;
+            char *ptr = NULL;
+            osc_bundle_u_serialize(b, &len, &ptr);
+            t_osc_bndl_s *bs = osc_bundle_s_alloc(len, ptr);
+            ocompose_newBundle(x, b, bs);
+        }
+        //ocompose_processAtoms(x, ac, av);
+        break;
+    }
+    critical_enter(x->lock);
+    x->draw_new_data_indicator = 1;
+    x->have_new_data = 1;
+    critical_exit(x->lock);
 #ifdef OMAX_PD_VERSION
-	jbox_redraw((t_jbox *)x);
+    jbox_redraw((t_jbox *)x);
 #else
-	qelem_set(x->qelem);
+    qelem_set(x->qelem);
 #endif
 }
 
 void ocompose_set(t_ocompose *x, t_symbol *s, long ac, t_atom *av)
 {
-	if (ac) {
-		if (atom_gettype(av) == A_SYM) {
-			t_symbol *sym = atom_getsym(av);
-			if (sym == ps_FullPacket && ac == 3) {
-				ocompose_doFullPacket(x, atom_getlong(av + 1), (char *)atom_getlong(av + 2));
-				return;
-			}
-		}
-	} else {
-		ocompose_clear(x);
-	}
-	jbox_redraw((t_jbox *)x);
+    if(proxy_getinlet((t_object *)x)){
+        return;
+    }
+    if(ac){
+        if(atom_gettype(av) == A_SYM){
+            t_symbol *sym = atom_getsym(av);
+            if(sym == ps_FullPacket && ac == 3){
+                ocompose_doFullPacket(x, atom_getlong(av + 1), (char *)atom_getlong(av + 2));
+                return;
+            }
+            //ocompose_processAtoms(x, ac, av);
+        }
+    }else{
+        ocompose_clear(x);
+    }
+    jbox_redraw((t_jbox *)x);
 }
 
 void ocompose_clear(t_ocompose *x)
 {
-	char buf[OSC_HEADER_SIZE];
-	memset(buf, '\0', OSC_HEADER_SIZE);
-	osc_bundle_s_setBundleID(buf);
-	ocompose_doFullPacket(x, OSC_HEADER_SIZE, buf);
+    char buf[OSC_HEADER_SIZE];
+    memset(buf, '\0', OSC_HEADER_SIZE);
+    osc_bundle_s_setBundleID(buf);
+    ocompose_doFullPacket(x, OSC_HEADER_SIZE, buf);
 }
 
 void ocompose_doc(t_ocompose *x)
 {
-	omax_doc_outletDoc(x->outlet);
+    omax_doc_outletDoc(x->outlet);
 }
 
 /*
@@ -1209,8 +1261,12 @@ void ocompose_key_callback(t_ocompose *x, t_symbol *s, int argc, t_atom *argv)
                 sys_vgui(".x%lx.c itemconfigure text%lx -width %d -text [subst -nobackslash -nocommands -novariables [regsub -all -line {^[ \t]+|[ \t]+$} [.x%lx.t%lxTEXT get 0.0 end-1c] \"\" ]] \n", glist_getcanvas(x->glist), x, x->width-10, glist_getcanvas(x->glist), (long)x);
                 ocompose_getRectAndDraw(x, 0);
             }
+            
+            
         }
+        
     }
+    
 }
 
 
@@ -1220,6 +1276,9 @@ void ocompose_bind_text_events(t_ocompose *x)
     t_canvas *canvas = glist_getcanvas(x->glist);
     sys_vgui("bind .x%lx.t%lxTEXT <Key> {+pdsend {%s key %%N }}\n", canvas, (long)x, x->receive_name);
     sys_vgui("bind .x%lx.t%lxTEXT <KeyRelease> {+pdsend {%s keyup %%N }}\n",  canvas, (long)x, x->receive_name);
+    
+  //  sys_vgui("namespace eval ::%s [list set canvas%lxBUTTONBINDING [bind %s <Button-1>]] \n", x->tcl_namespace, glist_getcanvas(x->glist), x->canvas_id);
+  //  sys_vgui("namespace eval ::%s [list set canvas%lxKEYBINDING [bind %s <Key>]] \n", x->tcl_namespace, glist_getcanvas(x->glist), x->canvas_id);
     
     //focusout for clicking to other windows other than the main canvas
     sys_vgui("bind .x%lx.t%lxTEXT <FocusOut> {+pdsend {%s pdnofocus }}\n", canvas, (long)x, x->receive_name);
@@ -1385,12 +1444,14 @@ void ocompose_drawElements(t_ocompose *x, t_glist *glist, int width2, int height
     }
 
     int have_new_data = 0;
-	critical_enter(x->lock);
-	have_new_data = x->have_new_data;
-	critical_exit(x->lock);
-	if(have_new_data){
+    int draw_new_data_indicator = 0;
+    critical_enter(x->lock);
+    have_new_data = x->have_new_data;
+    draw_new_data_indicator = x->draw_new_data_indicator;
+    critical_exit(x->lock);
+    if(have_new_data){
         ocompose_bundle2text(x);
-	}
+    }
     
     
    // ocompose_bundle2text(x);
@@ -1506,8 +1567,12 @@ void ocompose_drawElements(t_ocompose *x, t_glist *glist, int width2, int height
         
         sys_vgui(".x%lx.c itemconfigure %s -outline %s\n", canvas, x->corner_tag, (x->parse_error?  "red" : "black" ));
         sys_vgui(".x%lx.c itemconfigure %sTL -outline %s\n", canvas, x->corner_tag, (x->parse_error? "red" : "black" ));
+        
+        sys_vgui(".x%lx.c itemconfigure %s -fill %s \n", canvas, x->updatedot_tag, (draw_new_data_indicator?  "black" : "#f8f8f6" ));
 
 //        post("%x %s drawnew %d", x, __func__, draw_new_data_indicator);
+        if(draw_new_data_indicator)
+            clock_delay(x->new_data_indicator_clock, 100);
         
         if(glist_isselected(x->glist, &x->ob.te_g))
             gobj_select(&x->ob.te_g, x->glist, 1);
@@ -1655,6 +1720,9 @@ static void ocompose_select(t_gobj *z, t_glist *glist, int state)
         //       sys_vgui(".x%lx.c itemconfigure %s -outline %s\n", glist, x->border_tag, (state? "$select_color" : "$msg_box_fill" )); //was "$box_outline"
         sys_vgui(".x%lx.c itemconfigure %s -outline %s\n", canvas, x->corner_tag, (state? "blue" : "black"));
         sys_vgui(".x%lx.c itemconfigure %sTL -outline %s\n", canvas, x->corner_tag, (state? "blue" : "black"));
+
+        sys_vgui(".x%lx.c itemconfigure %s -fill %s\n", canvas, x->updatedot_tag, (x->draw_new_data_indicator? (state? "blue" : "black") : "#f8f8f6"));
+
         
         if(!x->textediting){
             sys_vgui(".x%lx.c itemconfigure text%lx -fill %s\n", canvas, (long)x, (state? "blue" : "black"));
@@ -1686,6 +1754,8 @@ static void ocompose_activate(t_gobj *z, t_glist *glist, int state)
     //    sys_vgui(".x%lx.c itemconfigure %s -outline %s\n", glist, x->border_tag, (state? "$select_color" : "$msg_box_fill"));//was "$box_outline"
     sys_vgui(".x%lx.c itemconfigure %s -outline %s\n", canvas, x->corner_tag, (state? "blue" : "black"));
     sys_vgui(".x%lx.c itemconfigure %sTL -outline %s\n", canvas, x->corner_tag, (state? "blue" : "black"));
+    sys_vgui(".x%lx.c itemconfigure %s -fill %s\n", canvas, x->updatedot_tag, (x->draw_new_data_indicator? (state? "blue" : "black") : "#f8f8f6"));
+
 }
 
 static void ocompose_delete(t_gobj *z, t_glist *glist)
@@ -1869,9 +1939,9 @@ void *ocompose_new(t_symbol *msg, short argc, t_atom *argv)
         x->proxy[1] = proxy_new((t_object *)x, 1, &(x->inlet), ocompose_proxy_class);
         
         x->bndl_u = NULL;
-		x->bndl_s = NULL;
-		x->newbndl = 0;
-		x->textlen = 0;
+        x->bndl_s = NULL;
+        x->newbndl = 0;
+        x->textlen = 0;
         
         critical_new(&(x->lock));
         //        x->qelem = qelem_new((t_object *)x, (method)ocompose_refresh);
@@ -1880,6 +1950,7 @@ void *ocompose_new(t_symbol *msg, short argc, t_atom *argv)
         
         x->new_data_indicator_clock = clock_new(x, (t_method)ocompose_refresh);
         x->have_new_data = 1;
+        x->draw_new_data_indicator = 0;
         
         x->text = NULL;
         x->text = (char *)malloc(OMAX_PD_MAXSTRINGSIZE * sizeof(char));
@@ -2067,7 +2138,7 @@ void *ocompose_new(t_symbol *msg, short argc, t_atom *argv)
     return (void *)x;
 }
 
-void setup_o0x2ecompose(void) {
+void setup_o0x2emessage(void) {
     
     omax_pd_class_new(ocompose_class, gensym("o.compose"), (t_newmethod)ocompose_new, (t_method)ocompose_free, sizeof(t_ocompose),  CLASS_NOINLET, A_GIMME, 0);
     
@@ -2090,14 +2161,14 @@ void setup_o0x2ecompose(void) {
     omax_pd_class_addmethod(c, (t_method)odot_version, gensym("version"));
     omax_pd_class_addbang(c, (t_method)ocompose_bang);
     
-	omax_pd_class_addfloat(c, (t_method)ocompose_float);
-	omax_pd_class_addmethod(c, (t_method)ocompose_list, gensym("list"));
-	omax_pd_class_addanything(c, (t_method)ocompose_anything);
-	omax_pd_class_addmethod(c, (t_method)ocompose_set, gensym("set"));
+    omax_pd_class_addfloat(c, (t_method)ocompose_float);
+    omax_pd_class_addmethod(c, (t_method)ocompose_list, gensym("list"));
+    omax_pd_class_addanything(c, (t_method)ocompose_anything);
+    omax_pd_class_addmethod(c, (t_method)ocompose_set, gensym("set"));
     omax_pd_class_addmethod(c, (t_method)ocompose_doc, gensym("doc"));
 
     
-	omax_pd_class_addmethod(c, (t_method)ocompose_fullPacket, gensym("FullPacket"));
+    omax_pd_class_addmethod(c, (t_method)ocompose_fullPacket, gensym("FullPacket"));
     
     ocompose_widgetbehavior.w_getrectfn = ocompose_getrect;
     ocompose_widgetbehavior.w_displacefn = ocompose_displace;
@@ -2112,7 +2183,7 @@ void setup_o0x2ecompose(void) {
     class_setwidget(ocompose_class->class, &ocompose_widgetbehavior);
     
     ps_newline = gensym("\n");
-	ps_FullPacket = gensym("FullPacket");
+    ps_FullPacket = gensym("FullPacket");
     
     ocompose_proxy_class = c;
     
@@ -2126,9 +2197,12 @@ void setup_o0x2ecompose(void) {
 
 void ocompose_free(t_ocompose *x)
 {
-	jbox_free((t_jbox *)x);
-    ocompose_clearBundles(x);
-	critical_free(x->lock);
+    jbox_free((t_jbox *)x);
+    if(x->proxy){
+        object_free(x->proxy);
+    }
+    ocompose_clearBundles(x);   
+    critical_free(x->lock);
 }
 
 OMAX_DICT_DICTIONARY(t_ocompose, x, ocompose_fullPacket);
@@ -2136,7 +2210,7 @@ OMAX_DICT_DICTIONARY(t_ocompose, x, ocompose_fullPacket);
 
 void ocompose_assist(t_ocompose *x, void *b, long io, long num, char *buf)
 {
-	omax_doc_assist(io, num, buf);
+    omax_doc_assist(io, num, buf);
 }
 
 
@@ -2145,17 +2219,17 @@ void ocompose_assist(t_ocompose *x, void *b, long io, long num, char *buf)
  **************************************************/
 
 void *ocompose_new(t_symbol *msg, short argc, t_atom *argv){
-	t_ocompose *x;
+    t_ocompose *x;
     
-	t_dictionary *d = NULL;
- 	long boxflags;
+    t_dictionary *d = NULL;
+    long boxflags;
     
-	// box setup
-	if(!(d = object_dictionaryarg(argc, argv))){
-		return NULL;
-	}
+    // box setup
+    if(!(d = object_dictionaryarg(argc, argv))){
+        return NULL;
+    }
     
-	boxflags = 0
+    boxflags = 0
     | JBOX_DRAWFIRSTIN
     | JBOX_NODRAWBOX
     | JBOX_DRAWINLAST
@@ -2171,113 +2245,122 @@ void *ocompose_new(t_symbol *msg, short argc, t_atom *argv){
     | JBOX_TEXTFIELD
     ;
     
-	if((x = (t_ocompose *)object_alloc(ocompose_class))){
-		jbox_new((t_jbox *)x, boxflags, argc, argv);
- 		x->ob.b_firstin = (void *)x;
-		x->outlet = outlet_new(x, NULL);
-		x->bndl_u = NULL;
-		x->bndl_s = NULL;
-		x->newbndl = 0;
-		x->textlen = 0;
-		x->text = NULL;
-		x->bndl_has_been_checked_for_subs = 0;
-		x->bndl_has_subs = 0;
-		critical_new(&(x->lock));
-		x->qelem = qelem_new((t_object *)x, (method)ocompose_refresh);
+    if((x = (t_ocompose *)object_alloc(ocompose_class))){
+        jbox_new((t_jbox *)x, boxflags, argc, argv);
+        x->ob.b_firstin = (void *)x;
+        x->outlet = outlet_new(x, NULL);
+        x->proxy = proxy_new(x, 1, &(x->inlet));
+        x->bndl_u = NULL;
+        x->bndl_s = NULL;
+        x->newbndl = 0;
+        x->textlen = 0;
+        x->text = NULL;
+        x->bndl_has_been_checked_for_subs = 0;
+        x->bndl_has_subs = 0;
+        critical_new(&(x->lock));
+        x->qelem = qelem_new((t_object *)x, (method)ocompose_refresh);
+        x->new_data_indicator_clock = clock_new((t_object *)x, (method)ocompose_refresh);
         x->mouse_down = 0;
         x->have_new_data = 1;
-        x->draw_click_flash = 0;
-        x->click_indicator_clock = clock_new((t_object *)x, (method)ocompose_refresh);
-		attr_dictionary_process(x, d);
+        x->draw_new_data_indicator = 0;
+        attr_dictionary_process(x, d);
         
-		t_object *textfield = jbox_get_textfield((t_object *)x);
-		if(textfield){
-			object_attr_setchar(textfield, gensym("editwhenunlocked"), 1);
-			textfield_set_editonclick(textfield, 0);
-			textfield_set_textmargins(textfield, 5, 5, 10, 5);
-			textfield_set_textcolor(textfield, &(x->text_color));
-		}
+        t_object *textfield = jbox_get_textfield((t_object *)x);
+        if(textfield){
+            object_attr_setchar(textfield, gensym("editwhenunlocked"), 1);
+            textfield_set_editonclick(textfield, 0);
+            textfield_set_textmargins(textfield, 5, 5, 10, 5);
+            textfield_set_textcolor(textfield, &(x->text_color));
+        }
         
- 		jbox_ready((t_jbox *)x);
+        jbox_ready((t_jbox *)x);
         
-		ocompose_gettext(x);
-		return x;
-	}
-	return NULL;
+        ocompose_gettext(x);
+        return x;
+    }
+    return NULL;
 }
 
+// CLASS_ATTR_STYLE_LABEL as defined in ext_obex_util.h uses gensym_tr() which isn't included in the SDK causing
+// compilation to fail.  This kludge just replaces gensym_tr() with gensym()
+/*
+ #define CLASS_ATTR_STYLE_LABEL_KLUDGE(c,attrname,flags,stylestr,labelstr) \
+ { CLASS_ATTR_ATTR_PARSE(c,attrname,"style",USESYM(symbol),flags,stylestr); CLASS_ATTR_ATTR_FORMAT(c,attrname,"label",USESYM(symbol),flags,"s",gensym(labelstr)); }
+ */
 #define CLASS_ATTR_CATEGORY_KLUDGE(c,attrname,flags,parsestr) \
 CLASS_ATTR_ATTR_PARSE(c,attrname,"category",USESYM(symbol),flags,parsestr)
 
+
 int main(void){
-	common_symbols_init();
-	t_class *c = class_new("o.compose", (method)ocompose_new, (method)ocompose_free, sizeof(t_ocompose), 0L, A_GIMME, 0);
-	alias("o.c");
+    common_symbols_init();
+    t_class *c = class_new("o.compose", (method)ocompose_new, (method)ocompose_free, sizeof(t_ocompose), 0L, A_GIMME, 0);
+    alias("o.c");
     
-	c->c_flags |= CLASS_FLAG_NEWDICTIONARY;
- 	jbox_initclass(c, JBOX_TEXTFIELD | JBOX_FIXWIDTH | JBOX_FONTATTR);
+    c->c_flags |= CLASS_FLAG_NEWDICTIONARY;
+    jbox_initclass(c, JBOX_TEXTFIELD | JBOX_FIXWIDTH | JBOX_FONTATTR);
     
-	class_addmethod(c, (method)ocompose_paint, "paint", A_CANT, 0);
+    class_addmethod(c, (method)ocompose_paint, "paint", A_CANT, 0);
     
-	class_addmethod(c, (method)ocompose_bang, "bang", 0);
-	class_addmethod(c, (method)ocompose_int, "int", A_LONG, 0);
-	class_addmethod(c, (method)ocompose_float, "float", A_FLOAT, 0);
-	class_addmethod(c, (method)ocompose_list, "list", A_GIMME, 0);
-	class_addmethod(c, (method)ocompose_anything, "anything", A_GIMME, 0);
-	class_addmethod(c, (method)ocompose_set, "set", A_GIMME, 0);
-	class_addmethod(c, (method)ocompose_assist, "assist", A_CANT, 0);
-	class_addmethod(c, (method)ocompose_doc, "doc", 0);
-	class_addmethod(c, (method)ocompose_fullPacket, "FullPacket", A_GIMME, 0);
+    class_addmethod(c, (method)ocompose_bang, "bang", 0);
+    class_addmethod(c, (method)ocompose_int, "int", A_LONG, 0);
+    class_addmethod(c, (method)ocompose_float, "float", A_FLOAT, 0);
+    class_addmethod(c, (method)ocompose_list, "list", A_GIMME, 0);
+    class_addmethod(c, (method)ocompose_anything, "anything", A_GIMME, 0);
+    class_addmethod(c, (method)ocompose_set, "set", A_GIMME, 0);
+    class_addmethod(c, (method)ocompose_assist, "assist", A_CANT, 0);
+    class_addmethod(c, (method)ocompose_doc, "doc", 0);
+    class_addmethod(c, (method)stdinletinfo, "inletinfo", A_CANT, 0);
+    class_addmethod(c, (method)ocompose_fullPacket, "FullPacket", A_GIMME, 0);
+
+    // remove this if statement when we stop supporting Max 5
+    if(omax_dict_resolveDictStubs()){
+        class_addmethod(c, (method)omax_dict_dictionary, "dictionary", A_GIMME, 0);
+    }
     
-	// remove this if statement when we stop supporting Max 5
-	if(omax_dict_resolveDictStubs()){
-		class_addmethod(c, (method)omax_dict_dictionary, "dictionary", A_GIMME, 0);
-	}
+    class_addmethod(c, (method)ocompose_clear, "clear", 0);
     
-	class_addmethod(c, (method)ocompose_clear, "clear", 0);
+    class_addmethod(c, (method)ocompose_key, "key", A_CANT, 0);
+    class_addmethod(c, (method)ocompose_keyfilter, "keyfilter", A_CANT, 0);
+    class_addmethod(c, (method)ocompose_enter, "enter", A_CANT, 0);
+    class_addmethod(c, (method)ocompose_select, "select", 0);
     
-	class_addmethod(c, (method)ocompose_key, "key", A_CANT, 0);
-	class_addmethod(c, (method)ocompose_keyfilter, "keyfilter", A_CANT, 0);
-	class_addmethod(c, (method)ocompose_enter, "enter", A_CANT, 0);
-	class_addmethod(c, (method)ocompose_select, "select", 0);
+    class_addmethod(c, (method)ocompose_mousedown, "mousedown", A_CANT, 0);
+    class_addmethod(c, (method)ocompose_mouseup, "mouseup", A_CANT, 0);
     
-	class_addmethod(c, (method)ocompose_mousedown, "mousedown", A_CANT, 0);
-	class_addmethod(c, (method)ocompose_mouseup, "mouseup", A_CANT, 0);
-    
-	class_addmethod(c, (method)odot_version, "version", 0);
+    class_addmethod(c, (method)odot_version, "version", 0);
     
     
- 	CLASS_ATTR_RGBA(c, "background_color", 0, t_ocompose, background_color);
- 	CLASS_ATTR_DEFAULT_SAVE_PAINT(c, "background_color", 0, "1. 1. 1. 1.");
- 	CLASS_ATTR_STYLE_LABEL(c, "background_color", 0, "rgba", "Background Color");
-	CLASS_ATTR_CATEGORY_KLUDGE(c, "background_color", 0, "Color");
+    CLASS_ATTR_RGBA(c, "background_color", 0, t_ocompose, background_color);
+    CLASS_ATTR_DEFAULT_SAVE_PAINT(c, "background_color", 0, "1. 1. 1. 1.");
+    CLASS_ATTR_STYLE_LABEL(c, "background_color", 0, "rgba", "Background Color");
+    CLASS_ATTR_CATEGORY_KLUDGE(c, "background_color", 0, "Color");
     
- 	CLASS_ATTR_RGBA(c, "frame_color", 0, t_ocompose, frame_color);
- 	CLASS_ATTR_DEFAULT_SAVE_PAINT(c, "frame_color", 0, ".216 .435 .7137 1.");
- 	CLASS_ATTR_STYLE_LABEL(c, "frame_color", 0, "rgba", "Frame Color");
-	CLASS_ATTR_CATEGORY_KLUDGE(c, "frame_color", 0, "Color");
+    CLASS_ATTR_RGBA(c, "frame_color", 0, t_ocompose, frame_color);
+    CLASS_ATTR_DEFAULT_SAVE_PAINT(c, "frame_color", 0, ".216 .435 .7137 1.");
+    CLASS_ATTR_STYLE_LABEL(c, "frame_color", 0, "rgba", "Frame Color");
+    CLASS_ATTR_CATEGORY_KLUDGE(c, "frame_color", 0, "Color");
     
     CLASS_ATTR_RGBA(c, "flash_color", 0, t_ocompose, flash_color);
- 	CLASS_ATTR_DEFAULT_SAVE_PAINT(c, "flash_color", 0, ".216 .435 .7137 1."); // by default, it's the same as frame colour, but user-settable nonetheless
- 	CLASS_ATTR_STYLE_LABEL(c, "flash_color", 0, "rgba", "Flash Color");
-	CLASS_ATTR_CATEGORY_KLUDGE(c, "flash_color", 0, "Color");
+    CLASS_ATTR_DEFAULT_SAVE_PAINT(c, "flash_color", 0, ".216 .435 .7137 1."); // by default, it's the same as frame colour, but user-settable nonetheless
+    CLASS_ATTR_STYLE_LABEL(c, "flash_color", 0, "rgba", "Flash Color");
+    CLASS_ATTR_CATEGORY_KLUDGE(c, "flash_color", 0, "Color");
 
- 	CLASS_ATTR_RGBA(c, "text_color", 0, t_ocompose, text_color);
- 	CLASS_ATTR_DEFAULT_SAVE_PAINT(c, "text_color", 0, "0. 0. 0. 1.");
- 	//CLASS_ATTR_STYLE_LABEL(c, "text_color", 0, "rgba", "Text Color");
-	//CLASS_ATTR_CATEGORY_KLUDGE(c, "text_color", 0, "Color");
+    CLASS_ATTR_RGBA(c, "text_color", 0, t_ocompose, text_color);
+    CLASS_ATTR_DEFAULT_SAVE_PAINT(c, "text_color", 0, "0. 0. 0. 1.");
+    //CLASS_ATTR_STYLE_LABEL(c, "text_color", 0, "rgba", "Text Color");
+    //CLASS_ATTR_CATEGORY_KLUDGE(c, "text_color", 0, "Color");
     
-	CLASS_ATTR_DEFAULT(c, "rect", 0, "0. 0. 150. 20.");
+    CLASS_ATTR_DEFAULT(c, "rect", 0, "0. 0. 150. 20.");
     
-	class_register(CLASS_BOX, c);
-	ocompose_class = c;
+    class_register(CLASS_BOX, c);
+    ocompose_class = c;
     
-	ps_newline = gensym("\n");
-	ps_FullPacket = gensym("FullPacket");
+    ps_newline = gensym("\n");
+    ps_FullPacket = gensym("FullPacket");
     
-	ODOT_PRINT_VERSION;
+    ODOT_PRINT_VERSION;
     
-	return 0;
+    return 0;
 }
 
 #endif
