@@ -21,7 +21,7 @@ History
 * John MacCallum contributed the expression language
 * Andy Schmeder developed the deadline scheduling and time computation
 * Rama Gottfried did the first port to Pure Data (PD)
-* Ilya Rostotsev did the first port to Node Red
+* Ilya Rostovtsev did the first port to Node Red
 
 Integration of OSC encoding in a dataflow languages was pioneered by Amanda Chaudhary in the OSW language.
 The first release of odot integrates numerous user contributions from Dave Defilippo, Jeff Lubow, Derek Razo, and Yotam Mann.
