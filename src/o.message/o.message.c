@@ -91,7 +91,7 @@
 /*
 #ifdef WIN_VERSION
 // currently we have to compile windows versions with gcc 3 on cygwin and i'm getting undefined
-// refs to strsep, so here it is fucker.
+// refs to strsep, so here it is.
 char *
 strsep(stringp, delim)
      register char **stringp;
@@ -2317,7 +2317,7 @@ int main(void){
  	CLASS_ATTR_STYLE_LABEL(c, "text_color", 0, "rgba", "Text Color");
 	CLASS_ATTR_CATEGORY_KLUDGE(c, "text_color", 0, "Color");
     
-	CLASS_ATTR_DEFAULT(c, "rect", 0, "0. 0. 150., 18.");
+	CLASS_ATTR_DEFAULT(c, "rect", 0, "0. 0. 150. 18.");
     
 	class_register(CLASS_BOX, c);
 	omessage_class = c;

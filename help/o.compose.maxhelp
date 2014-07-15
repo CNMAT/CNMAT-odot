@@ -36,7 +36,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 130.0, 417.0, 20.0, 20.0 ]
+					"patching_rect" : [ 12.0, 417.0, 20.0, 20.0 ]
 				}
 
 			}
@@ -50,7 +50,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 37.0, 500.0, 91.0, 34.0 ],
-					"presentation_rect" : [ 34.0, 499.0, 0.0, 0.0 ],
 					"text" : "/foo 1.4\n",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -66,6 +65,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 555.0, 457.0, 91.0, 34.0 ],
+					"text" : "/bloo \"a\" \"r\" \"s\"\n",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -80,6 +80,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 485.0, 457.0, 63.0, 34.0 ],
+					"text" : "/bar 1 2 3\n",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -90,7 +91,7 @@
 					"fontsize" : 12.0,
 					"id" : "obj-25",
 					"maxclass" : "o.compose",
-					"numinlets" : 1,
+					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 37.0, 454.0, 71.0, 24.0 ],
@@ -105,7 +106,7 @@
 					"fontsize" : 12.0,
 					"id" : "obj-20",
 					"maxclass" : "o.compose",
-					"numinlets" : 1,
+					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 37.0, 283.5, 68.0, 24.0 ],
@@ -124,7 +125,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "float", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 37.0, 381.0, 50.0, 20.0 ]
+					"patching_rect" : [ 89.0, 381.0, 50.0, 20.0 ]
 				}
 
 			}
@@ -137,7 +138,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 37.0, 417.0, 83.0, 20.0 ],
+					"patching_rect" : [ 89.0, 417.0, 83.0, 20.0 ],
 					"text" : "o.pack /foo 0."
 				}
 
@@ -153,7 +154,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 140.0, 444.0, 229.0, 60.0 ],
-					"text" : "o.compose can be used to display and store contents of an OSC bundle sent to its inlet (the bundle won't come out until the object is clicked or banged)"
+					"text" : "o.compose can be used to display and store contents of an OSC bundle sent to its right inlet (the bundle won't come out until the object is clicked or banged)"
 				}
 
 			}
@@ -278,7 +279,7 @@
 					"id" : "obj-3",
 					"linecount" : 4,
 					"maxclass" : "o.compose",
-					"numinlets" : 1,
+					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 485.0, 261.0, 150.0, 64.0 ],
@@ -407,7 +408,7 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-25", 0 ],
+					"destination" : [ "obj-25", 1 ],
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-21", 0 ]
