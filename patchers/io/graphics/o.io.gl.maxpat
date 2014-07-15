@@ -4,11 +4,11 @@
 		"appversion" : 		{
 			"major" : 6,
 			"minor" : 1,
-			"revision" : 4,
-			"architecture" : "x86"
+			"revision" : 6,
+			"architecture" : "x64"
 		}
 ,
-		"rect" : [ 289.0, 44.0, 1223.0, 758.0 ],
+		"rect" : [ 217.0, 44.0, 1223.0, 758.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -89,7 +89,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "jit_matrix", "" ],
-					"patching_rect" : [ 629.0, 737.0, 127.0, 20.0 ],
+					"patching_rect" : [ 629.0, 737.0, 207.0, 20.0 ],
 					"text" : "o.io.gltexthelper  #1"
 				}
 
@@ -103,7 +103,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "jit_matrix", "" ],
-					"patching_rect" : [ 623.0, 700.0, 127.0, 20.0 ],
+					"patching_rect" : [ 623.0, 700.0, 207.0, 20.0 ],
 					"text" : "o.io.gltexthelper  #1"
 				}
 
@@ -117,7 +117,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "jit_matrix", "" ],
-					"patching_rect" : [ 27.0, 953.0, 136.0, 20.0 ],
+					"patching_rect" : [ 27.0, 953.0, 218.0, 20.0 ],
 					"text" : "o.io.gl.platohelper #1"
 				}
 
@@ -131,7 +131,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "jit_matrix", "" ],
-					"patching_rect" : [ 25.0, 913.0, 136.0, 20.0 ],
+					"patching_rect" : [ 25.0, 913.0, 218.0, 20.0 ],
 					"text" : "o.io.gl.platohelper #1"
 				}
 
@@ -145,7 +145,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "jit_matrix", "" ],
-					"patching_rect" : [ 622.0, 663.0, 127.0, 20.0 ],
+					"patching_rect" : [ 622.0, 663.0, 207.0, 20.0 ],
 					"text" : "o.io.gltexthelper  #1"
 				}
 
@@ -159,7 +159,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "jit_matrix", "" ],
-					"patching_rect" : [ 622.0, 631.0, 127.0, 20.0 ],
+					"patching_rect" : [ 622.0, 631.0, 207.0, 20.0 ],
 					"text" : "o.io.gltexthelper  #1"
 				}
 
@@ -173,7 +173,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "jit_matrix", "" ],
-					"patching_rect" : [ 621.0, 595.0, 127.0, 20.0 ],
+					"patching_rect" : [ 621.0, 595.0, 207.0, 20.0 ],
 					"text" : "o.io.gltexthelper  #1"
 				}
 
@@ -198,7 +198,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "jit_matrix", "" ],
-					"patching_rect" : [ 615.0, 562.0, 127.0, 20.0 ],
+					"patching_rect" : [ 615.0, 562.0, 207.0, 20.0 ],
 					"text" : "o.io.gltexthelper  #1"
 				}
 
@@ -217,8 +217,8 @@
 						"appversion" : 						{
 							"major" : 6,
 							"minor" : 1,
-							"revision" : 4,
-							"architecture" : "x86"
+							"revision" : 6,
+							"architecture" : "x64"
 						}
 ,
 						"rect" : [ 695.0, 111.0, 666.0, 604.0 ],
@@ -723,7 +723,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "jit_matrix", "" ],
-					"patching_rect" : [ 660.0, 1032.0, 488.0, 20.0 ],
+					"patching_rect" : [ 660.0, 1032.0, 568.0, 20.0 ],
 					"text" : "jit.gl.text3d #1 @smooth_shading 1 @depth_enable 1 @lighting_enable 1  @antialias 1"
 				}
 
@@ -750,7 +750,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 320.0, 67.0, 187.0, 154.0 ],
-					"text" : "/displaylist [\n\t/position 0.1 0.2 0.4\n\t/color 0.3 \"$1\" 0.5\n\t/radius 0.1\n\t/shape \"sphere\"\n] [\n\t/position 0. 0.5 0.7\n\t/color 0.7 0.9 0.5\n\t/radius 0.1\n\t/shape \"framecircle\"\n]",
+					"text" : "/displaylist [\n\t/position 0.1 0.2 0.4\n\t/color 0.3 \"$1\" 0.5\n\t/radius 0.1\n\t/shape \"sphere\"\n] [\n\t/position 0. 0.5 0.7\n\t/color 0.7 0.9 0.5\n\t/radius 0.1\n\t/shape \"framecircle\"\n]\n",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -850,8 +850,8 @@
 						"appversion" : 						{
 							"major" : 6,
 							"minor" : 1,
-							"revision" : 4,
-							"architecture" : "x86"
+							"revision" : 6,
+							"architecture" : "x64"
 						}
 ,
 						"rect" : [ 50.0, 94.0, 640.0, 480.0 ],
@@ -1031,7 +1031,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "jit_matrix", "" ],
-					"patching_rect" : [ 25.0, 877.0, 136.0, 20.0 ],
+					"patching_rect" : [ 25.0, 877.0, 218.0, 20.0 ],
 					"text" : "o.io.gl.platohelper #1"
 				}
 
@@ -1045,7 +1045,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "jit_matrix", "" ],
-					"patching_rect" : [ 27.0, 843.0, 136.0, 20.0 ],
+					"patching_rect" : [ 27.0, 843.0, 218.0, 20.0 ],
 					"text" : "o.io.gl.platohelper #1"
 				}
 
@@ -1059,7 +1059,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "jit_matrix", "" ],
-					"patching_rect" : [ 28.0, 806.0, 136.0, 20.0 ],
+					"patching_rect" : [ 28.0, 806.0, 218.0, 20.0 ],
 					"text" : "o.io.gl.platohelper #1"
 				}
 
@@ -1084,7 +1084,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "jit_matrix", "" ],
-					"patching_rect" : [ 29.0, 769.0, 136.0, 20.0 ],
+					"patching_rect" : [ 29.0, 769.0, 218.0, 20.0 ],
 					"text" : "o.io.gl.platohelper #1"
 				}
 
@@ -1140,7 +1140,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "bang", "" ],
-					"patching_rect" : [ 33.0, 1089.0, 556.0, 19.0 ],
+					"patching_rect" : [ 33.0, 1089.0, 636.0, 19.0 ],
 					"text" : "jit.gl.render #1 @antialias 1 @smooth_shading 1 @depth_enable 1 @lighting_enable 1 @accelerated 1 "
 				}
 
@@ -1154,7 +1154,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 555.0, 1118.0, 488.0, 20.0 ],
+					"patching_rect" : [ 555.0, 1118.0, 570.0, 20.0 ],
 					"text" : "jit.gl.sketch #1 @smooth_shading 1 @depth_enable 1 @lighting_enable 1  @antialias 1"
 				}
 
@@ -1173,8 +1173,8 @@
 						"appversion" : 						{
 							"major" : 6,
 							"minor" : 1,
-							"revision" : 4,
-							"architecture" : "x86"
+							"revision" : 6,
+							"architecture" : "x64"
 						}
 ,
 						"rect" : [ 319.0, 44.0, 640.0, 480.0 ],
@@ -1381,8 +1381,8 @@
 						"appversion" : 						{
 							"major" : 6,
 							"minor" : 1,
-							"revision" : 4,
-							"architecture" : "x86"
+							"revision" : 6,
+							"architecture" : "x64"
 						}
 ,
 						"rect" : [ 319.0, 44.0, 640.0, 480.0 ],
@@ -1566,8 +1566,8 @@
 						"appversion" : 						{
 							"major" : 6,
 							"minor" : 1,
-							"revision" : 4,
-							"architecture" : "x86"
+							"revision" : 6,
+							"architecture" : "x64"
 						}
 ,
 						"rect" : [ 25.0, 69.0, 640.0, 480.0 ],
@@ -1790,7 +1790,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 570.0, 300.0, 150.0, 20.0 ],
-					"text" : "/orientation 0. 0. 0.",
+					"text" : "/orientation 0. 0. 0.\n",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -1809,8 +1809,8 @@
 						"appversion" : 						{
 							"major" : 6,
 							"minor" : 1,
-							"revision" : 4,
-							"architecture" : "x86"
+							"revision" : 6,
+							"architecture" : "x64"
 						}
 ,
 						"rect" : [ 25.0, 69.0, 640.0, 480.0 ],
@@ -2019,7 +2019,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 300.0, 472.0, 197.0, 20.0 ],
-					"text" : "/scale 0.1",
+					"text" : "/scale 0.1\n",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -2052,8 +2052,8 @@
 						"appversion" : 						{
 							"major" : 6,
 							"minor" : 1,
-							"revision" : 4,
-							"architecture" : "x86"
+							"revision" : 6,
+							"architecture" : "x64"
 						}
 ,
 						"rect" : [ 50.0, 94.0, 640.0, 480.0 ],
@@ -2259,7 +2259,7 @@
 					"maxclass" : "inlet",
 					"numinlets" : 0,
 					"numoutlets" : 1,
-					"outlettype" : [ "" ],
+					"outlettype" : [ "FullPacket" ],
 					"patching_rect" : [ 9.0, 124.0, 25.0, 25.0 ]
 				}
 
@@ -2440,8 +2440,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 309.0, 842.0, 54.0, 20.0 ],
-					"text" : "o.iterate"
+					"patching_rect" : [ 309.0, 842.0, 103.0, 20.0 ],
+					"text" : "o.messageiterate"
 				}
 
 			}
@@ -3250,123 +3250,6 @@
 					"source" : [ "obj-9", 0 ]
 				}
 
-			}
- ],
-		"dependency_cache" : [ 			{
-				"name" : "thru.maxpat",
-				"bootpath" : "/Applications/Max 6.1/patches/m4l-patches/Pluggo for Live resources/patches",
-				"patcherrelativepath" : "../../../../../../../../../Applications/Max 6.1/patches/m4l-patches/Pluggo for Live resources/patches",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "o.io.gl.platohelper.maxpat",
-				"bootpath" : "/Users/john/Development/CNMAT/CNMAT/CNMAT-odot/patchers/io/graphics",
-				"patcherrelativepath" : ".",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "o.righttoleft.maxpat",
-				"bootpath" : "/Users/john/Development/CNMAT/CNMAT/CNMAT-odot/patchers/core",
-				"patcherrelativepath" : "../../core",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "o.in.maxpat",
-				"bootpath" : "/Users/john/Development/CNMAT/CNMAT/CNMAT-odot/patchers/core",
-				"patcherrelativepath" : "../../core",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "o.port.maxpat",
-				"bootpath" : "/Users/john/Development/CNMAT/CNMAT/CNMAT-odot/patchers/core",
-				"patcherrelativepath" : "../../core",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "o.aspect.joinpoint.maxpat",
-				"bootpath" : "/Users/john/Development/CNMAT/CNMAT/CNMAT-odot/experimental/aspect",
-				"patcherrelativepath" : "../../../experimental/aspect",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "o.out.maxpat",
-				"bootpath" : "/Users/john/Development/CNMAT/CNMAT/CNMAT-odot/patchers/core",
-				"patcherrelativepath" : "../../core",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "o.io.gltexthelper.maxpat",
-				"bootpath" : "/Users/john/Development/CNMAT/CNMAT/CNMAT-odot/patchers/io/graphics",
-				"patcherrelativepath" : ".",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "o.iterate.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.route.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.cond.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.union.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.message.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.expr.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.if.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.pack.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.select.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.context.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.collect.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.var.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.pak.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.prepend.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.listenumerate.mxo",
-				"type" : "iLaX"
 			}
  ]
 	}
