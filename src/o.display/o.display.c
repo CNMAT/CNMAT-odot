@@ -77,43 +77,6 @@
 #include "omax_dict.h"
 
 #include "o.h"
-/*
-
-// REMOVE THIS ONCE THIS IS VERIFIABLY IN OMAX_UTIL.C
- 
-#ifdef WIN_VERSION
-// currently we have to compile windows versions with gcc 3 on cygwin and i'm getting undefined
-// refs to strsep, so here it is.
-char *
-strsep(stringp, delim)
-     register char **stringp;
-     register const char *delim;
-{
-	register char *s;
-	register const char *spanp;
-	register int c, sc;
-	char *tok;
-
-	if ((s = *stringp) == NULL)
-		return (NULL);
-	for (tok = s;;) {
-		c = *s++;
-		spanp = delim;
-		do {
-			if ((sc = *spanp++) == c) {
-				if (c == 0)
-					s = NULL;
-				else
-					s[-1] = 0;
-				*stringp = s;
-				return (tok);
-			}
-		} while (sc != 0);
-	}
-	// NOTREACHED 
-}
-#endif
-*/
 
 enum {
 	odisplay_U,
