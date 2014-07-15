@@ -34,7 +34,7 @@
 #define OMAX_DOC_NAME "o.display"
 #define OMAX_DOC_SHORT_DESC "Display OSC bundles"
 #define OMAX_DOC_LONG_DESC "o.display displays OSC in text form."
-#define OMAX_DOC_INLETS_DESC (char *[]){"Bang outputs the OSC packet.", "Set the contents."}
+#define OMAX_DOC_INLETS_DESC (char *[]){"An OSC packet is displayed and passed through"}
 #define OMAX_DOC_OUTLETS_DESC (char *[]){"OSC FullPacket"}
 #define OMAX_DOC_SEEALSO (char *[]){"o.compose"}
 
@@ -199,8 +199,8 @@ typedef struct _odisplay{
 	int newbndl;
 	t_osc_bndl_u *bndl_u;
 	t_osc_bndl_s *bndl_s;
-	int bndl_has_subs;
-	int bndl_has_been_checked_for_subs;
+//	int bndl_has_subs;
+//	int bndl_has_been_checked_for_subs;
 	long textlen;
 	char *text;
 	t_jrgba frame_color, background_color, text_color, flash_color;
@@ -295,7 +295,7 @@ void odisplay_newBundle(t_odisplay *x, t_osc_bndl_u *bu, t_osc_bndl_s *bs)
 	x->bndl_u = bu;
 	x->bndl_s = bs;
 	x->newbndl = 1;
-	x->bndl_has_been_checked_for_subs = 0;
+	//x->bndl_has_been_checked_for_subs = 0;
     x->draw_new_data_indicator = 1;
 	x->have_new_data = 1;
 	critical_exit(x->lock);
@@ -2073,8 +2073,8 @@ void *odisplay_new(t_symbol *msg, short argc, t_atom *argv){
 		x->newbndl = 0;
 		x->textlen = 0;
 		x->text = NULL;
-		x->bndl_has_been_checked_for_subs = 0;
-		x->bndl_has_subs = 0;
+		//x->bndl_has_been_checked_for_subs = 0;
+		//x->bndl_has_subs = 0;
 		critical_new(&(x->lock));
 		x->qelem = qelem_new((t_object *)x, (method)odisplay_refresh);
 		x->new_data_indicator_clock = clock_new((t_object *)x, (method)odisplay_refresh);
@@ -2119,12 +2119,12 @@ int main(void){
     
 	class_addmethod(c, (method)odisplay_paint, "paint", A_CANT, 0);
     
-	class_addmethod(c, (method)odisplay_bang, "bang", 0);
-	class_addmethod(c, (method)odisplay_int, "int", A_LONG, 0);
-	class_addmethod(c, (method)odisplay_float, "float", A_FLOAT, 0);
-	class_addmethod(c, (method)odisplay_list, "list", A_GIMME, 0);
-	class_addmethod(c, (method)odisplay_anything, "anything", A_GIMME, 0);
-	class_addmethod(c, (method)odisplay_set, "set", A_GIMME, 0);
+//	class_addmethod(c, (method)odisplay_bang, "bang", 0);
+//	class_addmethod(c, (method)odisplay_int, "int", A_LONG, 0);
+//	class_addmethod(c, (method)odisplay_float, "float", A_FLOAT, 0);
+//	class_addmethod(c, (method)odisplay_list, "list", A_GIMME, 0);
+//	class_addmethod(c, (method)odisplay_anything, "anything", A_GIMME, 0);
+//	class_addmethod(c, (method)odisplay_set, "set", A_GIMME, 0);
 	class_addmethod(c, (method)odisplay_assist, "assist", A_CANT, 0);
 	class_addmethod(c, (method)odisplay_doc, "doc", 0);
 	class_addmethod(c, (method)odisplay_fullPacket, "FullPacket", A_GIMME, 0);
@@ -2136,8 +2136,8 @@ int main(void){
     
 	class_addmethod(c, (method)odisplay_clear, "clear", 0);
 	class_addmethod(c, (method)odisplay_select, "select", 0);
-	class_addmethod(c, (method)odisplay_mousedown, "mousedown", A_CANT, 0);
-	class_addmethod(c, (method)odisplay_mouseup, "mouseup", A_CANT, 0);
+//	class_addmethod(c, (method)odisplay_mousedown, "mousedown", A_CANT, 0);
+//	class_addmethod(c, (method)odisplay_mouseup, "mouseup", A_CANT, 0);
 	class_addmethod(c, (method)odot_version, "version", 0);
     
     

@@ -459,8 +459,8 @@ void ocompose_paint(t_ocompose *x, t_object *patcherview)
     
     // thin diagonal
     jgraphics_set_line_width(g, 1.);
-    jgraphics_move_to(g, rect.width, rect.height - 10);
-    jgraphics_line_to(g, rect.width - 10, rect.height);
+    jgraphics_move_to(g, rect.width, rect.height - 11);
+    jgraphics_line_to(g, rect.width - 11, rect.height);
     jgraphics_stroke(g);
     
     // triangle
