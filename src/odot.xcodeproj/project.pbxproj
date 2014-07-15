@@ -12529,7 +12529,7 @@
 		};
 		525524561504D15200A10E5D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 52CA34301971AB2E008C36B9 /* Max-unstable.xcconfig */;
+			baseConfigurationReference = 52CA342D19719E7F008C36B9 /* Max-deprecated.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(inherited)";
 				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
@@ -15393,7 +15393,7 @@
 		};
 		9B3930D2195A286D002EDAE5 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 52CA342D19719E7F008C36B9 /* Max-deprecated.xcconfig */;
+			baseConfigurationReference = 52AA372D19575120009A1920 /* Max-config.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(inherited)";
 				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";

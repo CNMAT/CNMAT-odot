@@ -83,17 +83,19 @@ void oprint_fullPacket(t_oprint *x, t_symbol *msg, int argc, t_atom *argv)
 {
 	OMAX_UTIL_GET_LEN_AND_PTR
 	osc_bundle_s_wrap_naked_message(len, ptr);
-	long buflen = 0;
-	char *buf = NULL;
-	osc_bundle_s_format(len, (char *)ptr, &buflen, &buf);
-	post("%s: [", x->myname->s_name);
+	//long buflen = 0;
+	//char *buf = NULL;
+	//osc_bundle_s_format(len, (char *)ptr, &buflen, &buf);
+	long buflen = osc_bundle_s_nformat(NULL, 0, len, (char *)ptr, 0);
+	char *buf = osc_mem_alloc(buflen + 1);
+	osc_bundle_s_nformat(buf, buflen + 1, len, (char *)ptr, 0);
+	post("%s: {", x->myname->s_name);
 	if(buflen == 0){
 		post("<empty bundle>");
 	}else{
 		// the Max window doesn't respect newlines, so we have to do them manually
 		char *start = buf;
-		int i;
-		for(i = 0; i < buflen; i++){
+		for(int i = 0; i < buflen; i++){
 			if(buf[i] == '\n'){
 				long n = ((buf + i) - start);
 				char line[n + 1];
@@ -103,8 +105,15 @@ void oprint_fullPacket(t_oprint *x, t_symbol *msg, int argc, t_atom *argv)
 				start = buf + i + 1;
 			}
 		}
+		if(start - buf < buflen){
+			long n = ((buf + buflen) - start);
+			char line[n + 1];
+			memcpy(line, start, n);
+			line[n] = '\0';
+			post("%s: %s", x->myname->s_name, line);
+		}
 	}
-	post("%s: ]", x->myname->s_name);
+	post("%s: }", x->myname->s_name);
 	if(buf){
 		osc_mem_free(buf);
 	}

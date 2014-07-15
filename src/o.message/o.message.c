@@ -365,23 +365,24 @@ void omessage_output_bundle(t_omessage *x)
 
 void omessage_bundle2text(t_omessage *x)
 {
-    critical_enter(x->lock);
+	critical_enter(x->lock);
 	if(x->newbndl && x->bndl_s){
 		long len = osc_bundle_s_getLen(x->bndl_s);
 		char ptr[len];
 		memcpy(ptr, osc_bundle_s_getPtr(x->bndl_s), len);
 		critical_exit(x->lock);
-        long bufpos = osc_bundle_s_nformat(NULL, 0, len, (char *)ptr, 0);
+		long bufpos = osc_bundle_s_nformat(NULL, 0, len, (char *)ptr, 0);
 		char *buf = osc_mem_alloc(bufpos + 1);
-        osc_bundle_s_nformat(buf, bufpos + 1, len, (char *)ptr, 0);
-        if (bufpos != 0) {
-            if(buf[bufpos - 2] == '\n'){
-                buf[bufpos - 2] = '\0';
-            }
-        } else {
-            *buf = '\0';
-        }
-        
+		osc_bundle_s_nformat(buf, bufpos + 1, len, (char *)ptr, 0);
+		/*
+		if (bufpos != 0) {
+			if(buf[bufpos - 2] == '\n'){
+				buf[bufpos - 2] = '\0';
+			}
+		} else {
+			*buf = '\0';
+		}
+		*/
 #ifndef OMAX_PD_VERSION
 		critical_enter(x->lock);
 		if(x->text){
@@ -573,27 +574,27 @@ void omessage_gettext(t_omessage *x)
 	t_osc_bndl_s *bndl_s = osc_bundle_s_alloc(bndl_s_len, bndl_s_ptr);
 	omessage_newBundle(x, bndl_u, bndl_s);
 #ifdef OMAX_PD_VERSION
-    x->have_new_data = 1;
+	x->have_new_data = 1;
 	jbox_redraw((t_jbox *)x);
 #else
 	x->have_new_data = 1;
 	qelem_set(x->qelem);
 #endif
 	/*
-	if(size > 2){
-		int i;
-		char *r = text + 1;
-		char *w = text + 1;
-		char *rm1 = text;
-		for(i = 0; i <= size; i++){
-			if(*rm1 == ' ' && *r == ' '){
-				r++;
-			}else{
-				*w++ = *r++;
-			}
-			rm1++;
-		}
-	}
+	  if(size > 2){
+	  int i;
+	  char *r = text + 1;
+	  char *w = text + 1;
+	  char *rm1 = text;
+	  for(i = 0; i <= size; i++){
+	  if(*rm1 == ' ' && *r == ' '){
+	  r++;
+	  }else{
+	  *w++ = *r++;
+	  }
+	  rm1++;
+	  }
+	  }
 	*/
 }
 
