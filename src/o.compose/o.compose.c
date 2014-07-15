@@ -356,25 +356,25 @@ void ocompose_output_empty(t_ocompose *x)
 
 void ocompose_bundle2text(t_ocompose *x)
 {
-    critical_enter(x->lock);
+	critical_enter(x->lock);
 	if(x->newbndl && x->bndl_s){
 		long len = osc_bundle_s_getLen(x->bndl_s);
 		char ptr[len];
 		memcpy(ptr, osc_bundle_s_getPtr(x->bndl_s), len);
 		critical_exit(x->lock);
 		
-        long bufpos = osc_bundle_s_nformat(NULL, 0, len, (char *)ptr, 0);
+		long bufpos = osc_bundle_s_nformat(NULL, 0, len, (char *)ptr, 0);
 		char *buf = osc_mem_alloc(bufpos + 1);
-        osc_bundle_s_nformat(buf, bufpos + 1, len, (char *)ptr, 0);
-        
-        if (bufpos != 0) {
-            if(buf[bufpos - 2] == '\n'){
-                buf[bufpos - 2] = '\0';
-            }
-        } else {
-            *buf = '\0';
-        }
-        
+		osc_bundle_s_nformat(buf, bufpos + 1, len, (char *)ptr, 0);
+		/*        
+		if (bufpos != 0) {
+			if(buf[bufpos - 2] == '\n'){
+				buf[bufpos - 2] = '\0';
+			}
+		} else {
+			*buf = '\0';
+		}
+		*/
 #ifndef OMAX_PD_VERSION
 		critical_enter(x->lock);
 		if(x->text){
