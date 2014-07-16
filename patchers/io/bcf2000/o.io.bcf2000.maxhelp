@@ -8,7 +8,7 @@
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 0.0, 44.0, 1217.0, 647.0 ],
+		"rect" : [ 124.0, 122.0, 1376.0, 649.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -28,6 +28,18 @@
 		"digest" : "",
 		"tags" : "",
 		"boxes" : [ 			{
+				"box" : 				{
+					"id" : "obj-5",
+					"maxclass" : "bpatcher",
+					"name" : "o.io.midi.panel.maxpat",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "FullPacket" ],
+					"patching_rect" : [ 451.0, 256.0, 156.0, 47.0 ]
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
@@ -455,7 +467,7 @@
 					"numoutlets" : 1,
 					"offset" : [ 4.0, -8.0 ],
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 525.0, 9.0, 673.0, 620.0 ]
+					"patching_rect" : [ 630.0, 0.0, 673.0, 620.0 ]
 				}
 
 			}
@@ -470,7 +482,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 339.0, 315.0, 150.0, 47.0 ],
-					"text" : "/channel 1\n/encoder/a/3 1.",
+					"text" : "/channel 1\n/encoder_button/d/1 0.",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -512,8 +524,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 339.0, 278.0, 100.0, 17.0 ],
-					"text" : "o.io.bcf2000 BCF2000"
+					"patching_rect" : [ 339.0, 278.0, 60.0, 17.0 ],
+					"text" : "o.io.bcf2000"
 				}
 
 			}
@@ -577,7 +589,7 @@
 					"destination" : [ "obj-33", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"midpoints" : [ 534.5, 630.0, 501.0, 630.0, 501.0, 264.0, 348.5, 264.0 ],
+					"midpoints" : [ 639.5, 621.0, 390.0, 621.0, 390.0, 360.0, 324.0, 360.0, 324.0, 273.0, 348.5, 273.0 ],
 					"source" : [ "obj-11", 0 ]
 				}
 
@@ -632,8 +644,17 @@
 					"destination" : [ "obj-11", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"midpoints" : [ 348.5, 297.0, 336.0, 297.0, 336.0, 258.0, 510.0, 258.0, 510.0, 129.0, 522.0, 129.0, 522.0, 6.0, 534.5, 6.0 ],
+					"midpoints" : [ 348.5, 297.0, 336.0, 297.0, 336.0, 258.0, 438.0, 258.0, 438.0, 198.0, 615.0, 198.0, 615.0, 0.0, 627.0, 0.0, 627.0, -3.0, 639.5, -3.0 ],
 					"source" : [ "obj-33", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-5", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-33", 1 ]
 				}
 
 			}
@@ -742,6 +763,15 @@
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-49", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-33", 1 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-5", 0 ]
 				}
 
 			}
@@ -931,6 +961,13 @@
 				"implicit" : 1
 			}
 , 			{
+				"name" : "o.io.midi.panel.maxpat",
+				"bootpath" : "/Users/adrian2013/CNMAT-odot/patchers/io",
+				"patcherrelativepath" : "..",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
 				"name" : "o.route.mxo",
 				"type" : "iLaX"
 			}
@@ -944,6 +981,18 @@
 			}
 , 			{
 				"name" : "o.display.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.union.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.message.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.compose.mxo",
 				"type" : "iLaX"
 			}
  ]
