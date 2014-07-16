@@ -8,7 +8,7 @@
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 174.0, 187.0, 1095.0, 609.0 ],
+		"rect" : [ 27.0, 44.0, 1215.0, 806.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
@@ -28,6 +28,17 @@
 		"digest" : "",
 		"tags" : "",
 		"boxes" : [ 			{
+				"box" : 				{
+					"comment" : "",
+					"id" : "obj-28",
+					"maxclass" : "outlet",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 760.0, 697.0, 25.0, 25.0 ]
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
@@ -995,7 +1006,7 @@
 					"maxclass" : "outlet",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 839.0, 687.0, 25.0, 25.0 ]
+					"patching_rect" : [ 214.5, 681.0, 25.0, 25.0 ]
 				}
 
 			}
@@ -1018,8 +1029,8 @@
 					"maxclass" : "bpatcher",
 					"name" : "o.io.qunexus.display.helper.key.maxpat",
 					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "FullPacket" ],
+					"numoutlets" : 2,
+					"outlettype" : [ "FullPacket", "FullPacket" ],
 					"patching_rect" : [ 870.0, 235.0, 51.0, 102.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 767.0, 26.0, 51.0, 102.0 ]
@@ -1033,8 +1044,8 @@
 					"maxclass" : "bpatcher",
 					"name" : "o.io.qunexus.display.helper.key.maxpat",
 					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "FullPacket" ],
+					"numoutlets" : 2,
+					"outlettype" : [ "FullPacket", "FullPacket" ],
 					"patching_rect" : [ 819.0, 235.0, 51.0, 102.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 716.0, 26.0, 51.0, 102.0 ]
@@ -1048,8 +1059,8 @@
 					"maxclass" : "bpatcher",
 					"name" : "o.io.qunexus.display.helper.key.maxpat",
 					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "FullPacket" ],
+					"numoutlets" : 2,
+					"outlettype" : [ "FullPacket", "FullPacket" ],
 					"patching_rect" : [ 768.0, 235.0, 51.0, 102.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 665.0, 26.0, 51.0, 102.0 ]
@@ -1063,8 +1074,8 @@
 					"maxclass" : "bpatcher",
 					"name" : "o.io.qunexus.display.helper.key.maxpat",
 					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "FullPacket" ],
+					"numoutlets" : 2,
+					"outlettype" : [ "FullPacket", "FullPacket" ],
 					"patching_rect" : [ 669.0, 235.0, 51.0, 102.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 566.0, 26.0, 51.0, 102.0 ]
@@ -1078,8 +1089,8 @@
 					"maxclass" : "bpatcher",
 					"name" : "o.io.qunexus.display.helper.key.maxpat",
 					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "FullPacket" ],
+					"numoutlets" : 2,
+					"outlettype" : [ "FullPacket", "FullPacket" ],
 					"patching_rect" : [ 618.0, 235.0, 51.0, 102.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 515.0, 26.0, 51.0, 102.0 ]
@@ -1093,8 +1104,8 @@
 					"maxclass" : "bpatcher",
 					"name" : "o.io.qunexus.display.helper.key.maxpat",
 					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "FullPacket" ],
+					"numoutlets" : 2,
+					"outlettype" : [ "FullPacket", "FullPacket" ],
 					"patching_rect" : [ 517.0, 235.0, 51.0, 102.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 414.0, 26.0, 51.0, 102.0 ]
@@ -1108,8 +1119,8 @@
 					"maxclass" : "bpatcher",
 					"name" : "o.io.qunexus.display.helper.key.maxpat",
 					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "FullPacket" ],
+					"numoutlets" : 2,
+					"outlettype" : [ "FullPacket", "FullPacket" ],
 					"patching_rect" : [ 466.0, 235.0, 51.0, 102.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 363.0, 26.0, 51.0, 102.0 ]
@@ -1123,8 +1134,8 @@
 					"maxclass" : "bpatcher",
 					"name" : "o.io.qunexus.display.helper.key.maxpat",
 					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "FullPacket" ],
+					"numoutlets" : 2,
+					"outlettype" : [ "FullPacket", "FullPacket" ],
 					"patching_rect" : [ 415.0, 235.0, 51.0, 102.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 312.0, 26.0, 51.0, 102.0 ]
@@ -1138,8 +1149,8 @@
 					"maxclass" : "bpatcher",
 					"name" : "o.io.qunexus.display.helper.key.maxpat",
 					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "FullPacket" ],
+					"numoutlets" : 2,
+					"outlettype" : [ "FullPacket", "FullPacket" ],
 					"patching_rect" : [ 313.0, 235.0, 51.0, 102.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 210.0, 26.0, 51.0, 102.0 ]
@@ -1153,8 +1164,8 @@
 					"maxclass" : "bpatcher",
 					"name" : "o.io.qunexus.display.helper.key.maxpat",
 					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "FullPacket" ],
+					"numoutlets" : 2,
+					"outlettype" : [ "FullPacket", "FullPacket" ],
 					"patching_rect" : [ 262.0, 235.0, 51.0, 102.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 159.0, 26.0, 51.0, 102.0 ]
@@ -1168,8 +1179,8 @@
 					"maxclass" : "bpatcher",
 					"name" : "o.io.qunexus.display.helper.key.maxpat",
 					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "FullPacket" ],
+					"numoutlets" : 2,
+					"outlettype" : [ "FullPacket", "FullPacket" ],
 					"patching_rect" : [ 951.0, 348.0, 51.0, 102.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 848.0, 139.0, 51.0, 102.0 ]
@@ -1183,8 +1194,8 @@
 					"maxclass" : "bpatcher",
 					"name" : "o.io.qunexus.display.helper.key.maxpat",
 					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "FullPacket" ],
+					"numoutlets" : 2,
+					"outlettype" : [ "FullPacket", "FullPacket" ],
 					"patching_rect" : [ 900.0, 348.0, 51.0, 102.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 797.0, 139.0, 51.0, 102.0 ]
@@ -1198,8 +1209,8 @@
 					"maxclass" : "bpatcher",
 					"name" : "o.io.qunexus.display.helper.key.maxpat",
 					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "FullPacket" ],
+					"numoutlets" : 2,
+					"outlettype" : [ "FullPacket", "FullPacket" ],
 					"patching_rect" : [ 849.0, 348.0, 51.0, 102.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 746.0, 139.0, 51.0, 102.0 ]
@@ -1213,8 +1224,8 @@
 					"maxclass" : "bpatcher",
 					"name" : "o.io.qunexus.display.helper.key.maxpat",
 					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "FullPacket" ],
+					"numoutlets" : 2,
+					"outlettype" : [ "FullPacket", "FullPacket" ],
 					"patching_rect" : [ 798.0, 348.0, 51.0, 102.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 695.0, 139.0, 51.0, 102.0 ]
@@ -1228,8 +1239,8 @@
 					"maxclass" : "bpatcher",
 					"name" : "o.io.qunexus.display.helper.key.maxpat",
 					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "FullPacket" ],
+					"numoutlets" : 2,
+					"outlettype" : [ "FullPacket", "FullPacket" ],
 					"patching_rect" : [ 747.0, 348.0, 51.0, 102.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 644.0, 139.0, 51.0, 102.0 ]
@@ -1243,8 +1254,8 @@
 					"maxclass" : "bpatcher",
 					"name" : "o.io.qunexus.display.helper.key.maxpat",
 					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "FullPacket" ],
+					"numoutlets" : 2,
+					"outlettype" : [ "FullPacket", "FullPacket" ],
 					"patching_rect" : [ 696.0, 348.0, 51.0, 102.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 593.0, 139.0, 51.0, 102.0 ]
@@ -1258,8 +1269,8 @@
 					"maxclass" : "bpatcher",
 					"name" : "o.io.qunexus.display.helper.key.maxpat",
 					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "FullPacket" ],
+					"numoutlets" : 2,
+					"outlettype" : [ "FullPacket", "FullPacket" ],
 					"patching_rect" : [ 645.0, 348.0, 51.0, 102.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 542.0, 139.0, 51.0, 102.0 ]
@@ -1273,8 +1284,8 @@
 					"maxclass" : "bpatcher",
 					"name" : "o.io.qunexus.display.helper.key.maxpat",
 					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "FullPacket" ],
+					"numoutlets" : 2,
+					"outlettype" : [ "FullPacket", "FullPacket" ],
 					"patching_rect" : [ 594.0, 348.0, 51.0, 102.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 491.0, 139.0, 51.0, 102.0 ]
@@ -1288,8 +1299,8 @@
 					"maxclass" : "bpatcher",
 					"name" : "o.io.qunexus.display.helper.key.maxpat",
 					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "FullPacket" ],
+					"numoutlets" : 2,
+					"outlettype" : [ "FullPacket", "FullPacket" ],
 					"patching_rect" : [ 543.0, 348.0, 51.0, 102.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 440.0, 139.0, 51.0, 102.0 ]
@@ -1303,8 +1314,8 @@
 					"maxclass" : "bpatcher",
 					"name" : "o.io.qunexus.display.helper.key.maxpat",
 					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "FullPacket" ],
+					"numoutlets" : 2,
+					"outlettype" : [ "FullPacket", "FullPacket" ],
 					"patching_rect" : [ 492.0, 348.0, 51.0, 102.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 389.0, 139.0, 51.0, 102.0 ]
@@ -1318,8 +1329,8 @@
 					"maxclass" : "bpatcher",
 					"name" : "o.io.qunexus.display.helper.key.maxpat",
 					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "FullPacket" ],
+					"numoutlets" : 2,
+					"outlettype" : [ "FullPacket", "FullPacket" ],
 					"patching_rect" : [ 441.0, 348.0, 51.0, 102.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 338.0, 139.0, 51.0, 102.0 ]
@@ -1333,8 +1344,8 @@
 					"maxclass" : "bpatcher",
 					"name" : "o.io.qunexus.display.helper.key.maxpat",
 					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "FullPacket" ],
+					"numoutlets" : 2,
+					"outlettype" : [ "FullPacket", "FullPacket" ],
 					"patching_rect" : [ 390.0, 348.0, 51.0, 102.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 287.0, 139.0, 51.0, 102.0 ]
@@ -1348,8 +1359,8 @@
 					"maxclass" : "bpatcher",
 					"name" : "o.io.qunexus.display.helper.key.maxpat",
 					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "FullPacket" ],
+					"numoutlets" : 2,
+					"outlettype" : [ "FullPacket", "FullPacket" ],
 					"patching_rect" : [ 339.0, 348.0, 51.0, 102.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 236.0, 139.0, 51.0, 102.0 ]
@@ -1363,8 +1374,8 @@
 					"maxclass" : "bpatcher",
 					"name" : "o.io.qunexus.display.helper.key.maxpat",
 					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "FullPacket" ],
+					"numoutlets" : 2,
+					"outlettype" : [ "FullPacket", "FullPacket" ],
 					"patching_rect" : [ 288.0, 348.0, 51.0, 102.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 185.0, 139.0, 51.0, 102.0 ]
@@ -1378,8 +1389,8 @@
 					"maxclass" : "bpatcher",
 					"name" : "o.io.qunexus.display.helper.key.maxpat",
 					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "FullPacket" ],
+					"numoutlets" : 2,
+					"outlettype" : [ "FullPacket", "FullPacket" ],
 					"patching_rect" : [ 237.0, 348.0, 51.0, 102.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 134.0, 139.0, 51.0, 102.0 ]
@@ -1405,10 +1416,28 @@
  ],
 		"lines" : [ 			{
 				"patchline" : 				{
+					"destination" : [ "obj-28", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-1", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-29", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-1", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-28", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-10", 1 ]
 				}
 
 			}
@@ -1423,10 +1452,28 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-28", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-11", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-29", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-11", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-28", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-12", 1 ]
 				}
 
 			}
@@ -1441,10 +1488,28 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-28", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-13", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-29", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-13", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-28", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-14", 1 ]
 				}
 
 			}
@@ -1459,10 +1524,28 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-28", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-15", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-29", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-15", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-28", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-16", 1 ]
 				}
 
 			}
@@ -1477,10 +1560,28 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-28", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-17", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-29", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-17", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-28", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-18", 1 ]
 				}
 
 			}
@@ -1495,10 +1596,28 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-28", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-19", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-29", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-19", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-28", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-20", 1 ]
 				}
 
 			}
@@ -1513,10 +1632,28 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-28", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-21", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-29", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-21", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-28", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-22", 1 ]
 				}
 
 			}
@@ -1531,10 +1668,28 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-28", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-23", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-29", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-23", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-28", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-24", 1 ]
 				}
 
 			}
@@ -1549,10 +1704,28 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-28", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-25", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-29", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-25", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-28", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-26", 1 ]
 				}
 
 			}
@@ -1571,6 +1744,15 @@
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-27", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-28", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-3", 1 ]
 				}
 
 			}
@@ -1810,10 +1992,28 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-28", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-4", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-29", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-4", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-28", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-5", 1 ]
 				}
 
 			}
@@ -1828,10 +2028,28 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-28", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-6", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-29", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-6", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-28", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-7", 1 ]
 				}
 
 			}
@@ -1846,10 +2064,28 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-28", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-8", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-29", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-8", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-28", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-9", 1 ]
 				}
 
 			}
@@ -1864,15 +2100,8 @@
 			}
  ],
 		"dependency_cache" : [ 			{
-				"name" : "QuNexus-vonoben.jpg",
-				"bootpath" : "/Users/gabacheker/Desktop",
-				"patcherrelativepath" : "../../../../../../Desktop",
-				"type" : "JPEG",
-				"implicit" : 1
-			}
-, 			{
 				"name" : "o.io.qunexus.display.helper.key.maxpat",
-				"bootpath" : "/Users/gabacheker/Documents/CNMAT_Work/CNMAT_GITHUB/CNMAT-odot/experimental/o.io.qunexus",
+				"bootpath" : "/Users/gabacheker/Documents/CNMAT_Work/CNMAT_GITHUB/CNMAT-odot/patchers/unstable/io/o.io.qunexus",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
@@ -1886,11 +2115,27 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "o.pak.mxo",
+				"name" : "o.prepend.mxo",
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "o.prepend.mxo",
+				"name" : "o.pack.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.expr.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.union.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.message.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.append.mxo",
 				"type" : "iLaX"
 			}
 , 			{
