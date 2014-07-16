@@ -319,9 +319,11 @@ void odisplay_bundle2text(t_odisplay *x)
 		char *buf = osc_mem_alloc(bufpos + 1);
         osc_bundle_s_nformat(buf, bufpos + 1, len, (char *)ptr, 0);
         if (bufpos != 0) {
+		/*
             if(buf[bufpos - 2] == '\n'){
                 buf[bufpos - 2] = '\0';
             }
+		*/
         } else {
             *buf = '\0';
         }
