@@ -6,5 +6,5 @@
 //  Copyright (c) 2014 edu.berkeley.cnmat. All rights reserved.
 //
 
-SYMROOT=$(PROJECT_DIR)/../deprecated
+SYMROOT=$(PROJECT_DIR)/../deprecated/externals
 OTHER_CFLAGS=-DODOT_DEPRECATED -g -DNO_TRANSLATION_SUPPORT

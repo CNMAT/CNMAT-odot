@@ -1617,7 +1617,7 @@
 		119FA087191D5D43001C3325 /* o.flatten.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = o.flatten.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
 		119FA091191D5D52001C3325 /* o.if.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = o.if.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
 		119FA09B191D5D5B001C3325 /* o.intersection.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = o.intersection.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
-		119FA0AA191D5E91001C3325 /* o.iterate.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = o.iterate.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
+		119FA0AA191D5E91001C3325 /* o.messageiterate.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = o.messageiterate.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
 		119FA0B4191D5E9D001C3325 /* o.mappatch.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = o.mappatch.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
 		119FA0BE191D5EC6001C3325 /* o.message.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = o.message.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
 		119FA0C8191D5EF5001C3325 /* o.pack.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = o.pack.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1712,7 +1712,7 @@
 		52B53CEC17480CFC00237A19 /* o.downcast.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.downcast.c; path = o.downcast/o.downcast.c; sourceTree = "<group>"; };
 		52B53CFB1748287A00237A19 /* o.validate.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.validate.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
 		52B53CFE174828C700237A19 /* o.validate.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.validate.c; path = o.validate/o.validate.c; sourceTree = "<group>"; };
-		52B53D0D17484E5500237A19 /* o.iterate.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.iterate.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
+		52B53D0D17484E5500237A19 /* o.messageiterate.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.messageiterate.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
 		52B53D1F174FD0B300237A19 /* o.random.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.random.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
 		52B53D20174FD0EF00237A19 /* o.random.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.random.c; path = o.random/o.random.c; sourceTree = "<group>"; };
 		52B654BE17CD5F45004FD84E /* o.io.leap.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = o.io.leap.cpp; path = o.io.leap/o.io.leap.cpp; sourceTree = "<group>"; };
@@ -2566,7 +2566,7 @@
 				52A8397C16F3F898002E273C /* o.schedule.mxo */,
 				52B53CE917480C8100237A19 /* o.downcast.mxo */,
 				52B53CFB1748287A00237A19 /* o.validate.mxo */,
-				52B53D0D17484E5500237A19 /* o.iterate.mxo */,
+				52B53D0D17484E5500237A19 /* o.messageiterate.mxo */,
 				52B53D1F174FD0B300237A19 /* o.random.mxo */,
 				52F0C48517B581CC009FBD24 /* o.O.mxo */,
 				52B654CC17CD5F94004FD84E /* o.io.leap.mxo */,
@@ -2588,7 +2588,7 @@
 				119FA087191D5D43001C3325 /* o.flatten.pd_darwin */,
 				119FA091191D5D52001C3325 /* o.if.pd_darwin */,
 				119FA09B191D5D5B001C3325 /* o.intersection.pd_darwin */,
-				119FA0AA191D5E91001C3325 /* o.iterate.pd_darwin */,
+				119FA0AA191D5E91001C3325 /* o.messageiterate.pd_darwin */,
 				119FA0B4191D5E9D001C3325 /* o.mappatch.pd_darwin */,
 				119FA0BE191D5EC6001C3325 /* o.message.pd_darwin */,
 				119FA0C8191D5EF5001C3325 /* o.pack.pd_darwin */,
@@ -3449,7 +3449,7 @@
 			);
 			name = o.messageiterate.pd;
 			productName = o.print.pd;
-			productReference = 119FA0AA191D5E91001C3325 /* o.iterate.pd_darwin */;
+			productReference = 119FA0AA191D5E91001C3325 /* o.messageiterate.pd_darwin */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
 		119FA0AB191D5E9D001C3325 /* o.mappatch.pd */ = {
@@ -4492,7 +4492,7 @@
 			);
 			name = o.messageiterate;
 			productName = cv.jit.dilate;
-			productReference = 52B53D0D17484E5500237A19 /* o.iterate.mxo */;
+			productReference = 52B53D0D17484E5500237A19 /* o.messageiterate.mxo */;
 			productType = "com.apple.product-type.bundle";
 		};
 		52B53D12174FD0B300237A19 /* o.random */ = {
@@ -12529,7 +12529,7 @@
 		};
 		525524561504D15200A10E5D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 52CA34301971AB2E008C36B9 /* Max-unstable.xcconfig */;
+			baseConfigurationReference = 52CA342D19719E7F008C36B9 /* Max-deprecated.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(inherited)";
 				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
@@ -15393,7 +15393,7 @@
 		};
 		9B3930D2195A286D002EDAE5 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 52CA342D19719E7F008C36B9 /* Max-deprecated.xcconfig */;
+			baseConfigurationReference = 52AA372D19575120009A1920 /* Max-config.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(inherited)";
 				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
