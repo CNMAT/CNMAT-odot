@@ -84,8 +84,10 @@ do
 done
 
 maxtarballname=odot-Max-$platform-`git describe --tags --long`-`git branch | egrep '^\*' | awk '{print $2}'`.tgz
+externstarballname=Max-externals-$platform-`git describe --tags --long`-`git branch | egrep '^\*' | awk '{print $2}'`.tgz
 pdtarballname=odot-PD-$platform-`git describe --tags --long`-`git branch | egrep '^\*' | awk '{print $2}'`.tgz
 
 tar zcvf $maxtarballname $maxstagingdir
+tar zcvf $externstarballname externals deprecated/externals unstable/externals
 tar zcvf $pdtarballname $pdstagingdir
 rm -rf $maxstagingdir
