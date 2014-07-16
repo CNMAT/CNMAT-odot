@@ -1,0 +1,12 @@
+max definecommand a patcher inserttextobj o.arguments $1 $2 $3 $4 $5 $6 $7 $8 $9;
+max definecommandinstructions patcher a "o. arguments";
+max definecommand e patcher insertobj o.expr.codebox;
+max definecommandinstructions patcher e "o. expression";
+max definecommand d patcher insertobj o.display;
+max definecommandinstructions patcher d "o. display";
+max definecommand c patcher insertobj o.compose;
+max definecommandinstructions patcher c "o. compose";
+max definecommand i patcher inserttextobj o.in @name main;
+max definecommandinstructions patcher i "o. in @name main";
+max definecommand o patcher inserttextobj o.out @name main;
+max definecommandinstructions patcher o "o. out @name main";
