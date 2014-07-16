@@ -1732,6 +1732,8 @@
 		52CA342D19719E7F008C36B9 /* Max-deprecated.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "Max-deprecated.xcconfig"; sourceTree = "<group>"; };
 		52CA34301971AB2E008C36B9 /* Max-unstable.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Max-unstable.xcconfig"; sourceTree = "<group>"; };
 		52CA34411971B04E008C36B9 /* o.messageiterate.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.messageiterate.c; path = o.messageiterate/o.messageiterate.c; sourceTree = "<group>"; };
+		52CA34441976FF7A008C36B9 /* PD-deprecated.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "PD-deprecated.xcconfig"; sourceTree = "<group>"; };
+		52CA34451976FF7A008C36B9 /* PD-unstable.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "PD-unstable.xcconfig"; sourceTree = "<group>"; };
 		52CEF59416375BFB0016EC39 /* commonsyms.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = commonsyms.c; path = "../../max6-sdk/c74support/max-includes/common/commonsyms.c"; sourceTree = "<group>"; };
 		52CEF5AD163763BD0016EC39 /* libo.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libo.a; path = ../../libo/libo.a; sourceTree = "<group>"; };
 		52CEF5C6163763CF0016EC39 /* libomax.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libomax.a; path = ../../libomax/libomax.a; sourceTree = "<group>"; };
@@ -2464,6 +2466,8 @@
 				52CA342D19719E7F008C36B9 /* Max-deprecated.xcconfig */,
 				52CA34301971AB2E008C36B9 /* Max-unstable.xcconfig */,
 				52AA372F19575C01009A1920 /* PD-config.xcconfig */,
+				52CA34441976FF7A008C36B9 /* PD-deprecated.xcconfig */,
+				52CA34451976FF7A008C36B9 /* PD-unstable.xcconfig */,
 				11EF2AD618AFF7A900156403 /* libxml2.dylib */,
 				52CEF59416375BFB0016EC39 /* commonsyms.c */,
 				52A8393A16E978CD002E273C /* o.append.c */,
