@@ -10113,7 +10113,7 @@
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
 				PRODUCT_NAME = o.slip.decode;
-				SYMROOT = "$(PROJECT_DIR)/../pd_release_package/cnmat";
+				SYMROOT = "$(PROJECT_DIR)/../pd/cnmat";
 				WRAPPER_EXTENSION = "";
 			};
 			name = Release;
@@ -10238,7 +10238,7 @@
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
 				PRODUCT_NAME = o.slip.encode;
-				SYMROOT = "$(PROJECT_DIR)/../pd_release_package/cnmat";
+				SYMROOT = "$(PROJECT_DIR)/../pd/cnmat";
 				WRAPPER_EXTENSION = "";
 			};
 			name = Release;
@@ -10362,7 +10362,7 @@
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
 				PRODUCT_NAME = o.context;
-				SYMROOT = "$(PROJECT_DIR)/../pd_release_package/cnmat";
+				SYMROOT = "$(PROJECT_DIR)/../pd/cnmat";
 				WRAPPER_EXTENSION = "";
 			};
 			name = Release;

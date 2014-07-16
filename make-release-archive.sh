@@ -73,7 +73,7 @@ if [ $platform = "Darwin" ]; then
 fi
 
 maxstagingdir=odot
-pdstagingdir=pd_release_package
+pdstagingdir=pd
 
 #don't need to make a PD staging dir as it's already checked in and part of the repo
 [ -d $maxstagingdir ] || mkdir -p $maxstagingdir
