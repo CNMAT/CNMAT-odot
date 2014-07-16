@@ -8,7 +8,7 @@
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 170.0, 69.0, 1106.0, 753.0 ],
+		"rect" : [ 566.0, 94.0, 652.0, 680.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -47,7 +47,7 @@
 							"architecture" : "x86"
 						}
 ,
-						"rect" : [ 0.0, 26.0, 1106.0, 727.0 ],
+						"rect" : [ 0.0, 26.0, 652.0, 654.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 11.0,
@@ -366,7 +366,7 @@
 							"architecture" : "x86"
 						}
 ,
-						"rect" : [ 170.0, 95.0, 1106.0, 727.0 ],
+						"rect" : [ 566.0, 120.0, 652.0, 654.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 11.0,
@@ -599,7 +599,7 @@
 							"architecture" : "x86"
 						}
 ,
-						"rect" : [ 0.0, 26.0, 1106.0, 727.0 ],
+						"rect" : [ 0.0, 26.0, 652.0, 654.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 11.0,
@@ -650,22 +650,6 @@
 								"box" : 								{
 									"fontname" : "Arial",
 									"fontsize" : 11.0,
-									"id" : "obj-15",
-									"linecount" : 3,
-									"maxclass" : "o.display",
-									"numinlets" : 1,
-									"numoutlets" : 1,
-									"outlettype" : [ "" ],
-									"patching_rect" : [ 270.0, 575.0, 150.0, 43.0 ],
-									"text" : "/device/input/port \"QUNEO\"\n/output/port/to/device \"QUNEO\"",
-									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"fontname" : "Arial",
-									"fontsize" : 11.0,
 									"hidden" : 1,
 									"id" : "obj-3",
 									"maxclass" : "newobj",
@@ -693,7 +677,7 @@
 											"architecture" : "x86"
 										}
 ,
-										"rect" : [ 151.0, 44.0, 640.0, 480.0 ],
+										"rect" : [ 587.0, 70.0, 640.0, 480.0 ],
 										"bglocked" : 0,
 										"openinpresentation" : 0,
 										"default_fontsize" : 12.0,
@@ -712,7 +696,6 @@
 										"description" : "",
 										"digest" : "",
 										"tags" : "",
-										"visible" : 1,
 										"boxes" : [ 											{
 												"box" : 												{
 													"fontname" : "Arial",
