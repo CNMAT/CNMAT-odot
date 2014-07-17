@@ -1313,7 +1313,7 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "o.forward.maxpat",
+				"name" : "o.recurse.maxpat",
 				"bootpath" : "/Users/adrian2013/Documents/Max/Packages/CNMAT-odot/patchers",
 				"patcherrelativepath" : "../patchers",
 				"type" : "JSON",

@@ -186,8 +186,8 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "FullPacket" ],
-									"patching_rect" : [ 264.0, 413.0, 62.0, 20.0 ],
-									"text" : "o.forward"
+									"patching_rect" : [ 264.0, 413.0, 61.0, 20.0 ],
+									"text" : "o.recurse"
 								}
 
 							}
