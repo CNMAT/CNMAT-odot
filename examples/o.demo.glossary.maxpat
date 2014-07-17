@@ -31,14 +31,127 @@
 				"box" : 				{
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
-					"id" : "obj-38",
-					"linecount" : 2,
+					"id" : "obj-48",
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 41.0, 2453.0, 218.0, 47.0 ],
-					"text" : "/pitch/numbers : [22, 69, 80],\n/frequencies : [29.1352, 440., 830.609]",
+					"patching_rect" : [ 68.0, 3451.0, 311.0, 34.0 ],
+					"presentation_rect" : [ 41.0, 3331.0, 0.0, 0.0 ],
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-49",
+					"maxclass" : "o.compose",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 41.0, 3107.0, 225.0, 24.0 ],
+					"presentation_rect" : [ 41.0, 3107.0, 0.0, 0.0 ],
+					"text" : "/pitch/numbers : [22, 69, 80]",
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-50",
+					"linecount" : 19,
+					"maxclass" : "o.expr.codebox",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "FullPacket", "FullPacket" ],
+					"patching_rect" : [ 41.0, 3143.0, 748.0, 274.0 ],
+					"presentation_rect" : [ 41.0, 3143.0, 0.0, 0.0 ],
+					"text" : "/equal/temperament = lambda([pitchnumber,octaveratio, intervals],  /concert/pitch * pow(octaveratio , float32(pitchnumber- /MIDI/A440 )  /  intervals),\n/twelvetone/equal/temperament =  lambda([pitchnumber],  /equal/temperament(pitchnumber, 2.0, 12.0),\n/Bohlen/Pierce/equal/temperament =  lambda([pitchnumber],  /equal/temperament(pitchnumber, 3.0, 13.0),\n/equal/tempered/frequencies/Bohlen/Pierce =  apply(/Bohlen/Pierce/equal/temperament, /pitch/numbers),\n/twelvetone/frequencies/ =  apply(/Bohlen/Pierce/equal/temperament, /pitch/numbers);\n\n\n# the frequency ratio  of the tritave:\n/octave/ratio = 3,\n# concert pitch (the frequency of the A above middle C)\n/concert/pitch = 440.0,\n# MIDI  note numbers  count semitones with 69 for A440\n/MIDI/A440 = 69,\n# the octave is divided into 12 intervals\n/intervals = 13,\n# the power function pow() satisfies the requirement that successive intervals be equal ratios\n# 32-bit IEEE floating point numbers provide acceptable resolution for the approximation that pow() provides \n",
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"frgb" : 0.0,
+					"id" : "obj-51",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 41.0, 3052.0, 698.0, 20.0 ],
+					"presentation_rect" : [ 41.0, 3052.0, 0.0, 0.0 ],
+					"text" : "Use the lambda function to wrap expressions into functions that can be applied in different contexts"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-45",
+					"linecount" : 6,
+					"maxclass" : "o.display",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 41.0, 2933.0, 311.0, 101.0 ],
+					"presentation_rect" : [ 44.0, 2992.0, 0.0, 0.0 ],
+					"text" : "/pitch/numbers : [22, 69, 80],\n/octave/ratio : 3,\n/concert/pitch : 440.,\n/MIDI/A440 : 69,\n/intervals : 13,\n/equal/tempered/frequencies2 : [8.2885, 440., 1114.73]",
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-46",
+					"maxclass" : "o.compose",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 41.0, 2709.0, 225.0, 24.0 ],
+					"presentation_rect" : [ 44.0, 2709.0, 0.0, 0.0 ],
+					"text" : "/pitch/numbers : [22, 69, 80]",
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-47",
+					"linecount" : 12,
+					"maxclass" : "o.expr.codebox",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "FullPacket", "FullPacket" ],
+					"patching_rect" : [ 41.0, 2745.0, 642.0, 180.0 ],
+					"presentation_rect" : [ 44.0, 2745.0, 0.0, 0.0 ],
+					"text" : "# the frequency ratio  of the tritave:\n/octave/ratio = 3,\n# concert pitch (the frequency of the A above middle C)\n/concert/pitch = 440.0,\n# MIDI  note numbers  count semitones with 69 for A440\n/MIDI/A440 = 69,\n# the octave is divided into 12 intervals\n/intervals = 13,\n# the power function pow() satisfies the requirement that successive intervals be equal ratios\n# 32-bit IEEE floating point numbers provide acceptable resolution for the approximation that pow() provides \n/equal/tempered/frequencies/Bohlen/Pierce = /concert/pitch * pow(/octave/ratio , float32(/pitch/numbers - /MIDI/A440 )  / /intervals),",
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-38",
+					"linecount" : 7,
+					"maxclass" : "o.display",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 41.0, 2523.0, 311.0, 114.0 ],
+					"text" : "/pitch/numbers : [22, 69, 80],\n/equal/tempered/frequencies : [29.1352, 440., 830.609],\n/octave/ratio : 2,\n/concert/pitch : 440.,\n/MIDI/A440 : 69,\n/intervals : 12,\n/equal/tempered/frequencies2 : [29.1352, 440., 830.609]",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -64,14 +177,14 @@
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"id" : "obj-32",
-					"linecount" : 10,
+					"linecount" : 16,
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 41.0, 2275.0, 447.0, 154.0 ],
+					"patching_rect" : [ 41.0, 2276.0, 634.0, 234.0 ],
 					"presentation_rect" : [ 44.0, 2322.0, 0.0, 0.0 ],
-					"text" : "# equal temperament was introduced in the West in the late seventeenth century \n# \n# the following formula converts pitch numbers into frequencies\n/equal/tempered/frequencies = 440.0 * pow(2.0 , (/pitch/numbers - 69)  / 12.0),\n# the formula is based on the following social conventions\n# the frequency ratio  of the octave:\n/octave/ratio = 2,\n# concert pitch (the frequency of the A above middle C)\n/concert/pitch = 440.0,\n",
+					"text" : "# equal temperament was introduced in the West in the late seventeenth century\n# \n# the following formula converts pitch numbers into frequencies\n/equal/tempered/frequencies = 440.0 * pow(2.0 , (/pitch/numbers - 69)  / 12.0),\n# the formula is based on the  following social conventions and standards\n# the frequency ratio  of the octave:\n/octave/ratio = 2,\n# concert pitch (the frequency of the A above middle C)\n/concert/pitch = 440.0,\n# MIDI  note numbers  count semitones with 69 for A440\n/MIDI/A440 = 69,\n# the octave is divided into 12 intervals\n/intervals = 12,\n# the power function pow() satisfies the requirement that successive intervals be equal ratios\n# 32-bit IEEE floating point numbers provide acceptable resolution for the approximation that pow() provides \n/equal/tempered/frequencies2 = /concert/pitch * pow(/octave/ratio , float32(/pitch/numbers - /MIDI/A440 )  / /intervals),",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -254,29 +367,14 @@
 				"box" : 				{
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
-					"id" : "obj-42",
-					"maxclass" : "o.expr.codebox",
-					"numinlets" : 1,
-					"numoutlets" : 2,
-					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 22.0, 2864.0, 150.0, 33.0 ],
-					"text" : "/result = 2 +2",
-					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontname" : "Arial",
-					"fontsize" : 12.0,
 					"frgb" : 0.0,
 					"id" : "obj-43",
-					"linecount" : 2,
+					"linecount" : 3,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ -2.0, 2823.0, 822.0, 33.0 ],
-					"text" : "Clicking on an expression box sends an empty bundle into the box which triggers evaluation of the expression and produces a result.\nClick on the expression box to confirm this. Click on the empty bundle of the o.compose box"
+					"patching_rect" : [ 41.0, 2654.0, 698.0, 47.0 ],
+					"text" : "Use odot to  annotate  values whose meaning would be otherwise easily lost as they travel around your host language's system.\nFor example, the expression developed above can now be used to explore other temperaments.\nHere is an interpretation of  Bohlen–Pierce equal temperament based on dividing the tritave into 13 ratiometrically equal intervals:"
 				}
 
 			}
@@ -758,10 +856,46 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-47", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-46", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-45", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-47", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-50", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-49", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-3", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-5", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-48", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-50", 0 ]
 				}
 
 			}
