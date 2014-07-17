@@ -8,7 +8,7 @@
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 697.0, 44.0, 640.0, 480.0 ],
+		"rect" : [ 371.0, 167.0, 644.0, 526.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -36,8 +36,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 258.0, 47.0, 115.0, 20.0 ],
-					"text" : "o.in @name control"
+					"patching_rect" : [ 258.0, 47.0, 128.0, 20.0 ],
+					"text" : "o.in @name configure"
 				}
 
 			}
@@ -90,8 +90,7 @@
 					"maxclass" : "outlet",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 125.0, 455.0, 25.0, 25.0 ],
-					"presentation_rect" : [ 161.0, 442.0, 0.0, 0.0 ]
+					"patching_rect" : [ 125.0, 455.0, 25.0, 25.0 ]
 				}
 
 			}
@@ -105,7 +104,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
 					"patching_rect" : [ 125.0, 406.0, 112.0, 20.0 ],
-					"presentation_rect" : [ 161.0, 410.0, 0.0, 0.0 ],
 					"text" : "o.out @name main"
 				}
 
@@ -130,8 +128,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 285.0, 406.0, 122.0, 20.0 ],
-					"text" : "o.out @name control"
+					"patching_rect" : [ 285.0, 406.0, 135.0, 20.0 ],
+					"text" : "o.out @name configure"
 				}
 
 			}
@@ -186,8 +184,7 @@
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 258.0, 7.0, 25.0, 25.0 ],
-					"presentation_rect" : [ 335.0, 67.0, 0.0, 0.0 ]
+					"patching_rect" : [ 258.0, 7.0, 25.0, 25.0 ]
 				}
 
 			}
@@ -406,36 +403,36 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "o.righttoleft.maxpat",
-				"bootpath" : "/Users/adrian2013/CNMAT-odot/patchers/core",
-				"patcherrelativepath" : "../../patchers/core",
+				"bootpath" : "/Users/adrian2013/Documents/Max/Packages/CNMAT-odot/patchers/core",
+				"patcherrelativepath" : "../patchers/core",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.in.maxpat",
-				"bootpath" : "/Users/adrian2013/CNMAT-odot/patchers/core",
-				"patcherrelativepath" : "../../patchers/core",
+				"bootpath" : "/Users/adrian2013/Documents/Max/Packages/CNMAT-odot/patchers/core",
+				"patcherrelativepath" : "../patchers/core",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.port.maxpat",
-				"bootpath" : "/Users/adrian2013/CNMAT-odot/patchers/core",
-				"patcherrelativepath" : "../../patchers/core",
+				"bootpath" : "/Users/adrian2013/Documents/Max/Packages/CNMAT-odot/patchers/core",
+				"patcherrelativepath" : "../patchers/core",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.aspect.joinpoint.maxpat",
-				"bootpath" : "/Users/adrian2013/CNMAT-odot/patchers/aspect",
-				"patcherrelativepath" : "../../patchers/aspect",
+				"bootpath" : "/Users/adrian2013/Documents/Max/Packages/CNMAT-odot/patchers/aspect",
+				"patcherrelativepath" : "../patchers/aspect",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.out.maxpat",
-				"bootpath" : "/Users/adrian2013/CNMAT-odot/patchers/core",
-				"patcherrelativepath" : "../../patchers/core",
+				"bootpath" : "/Users/adrian2013/Documents/Max/Packages/CNMAT-odot/patchers/core",
+				"patcherrelativepath" : "../patchers/core",
 				"type" : "JSON",
 				"implicit" : 1
 			}
