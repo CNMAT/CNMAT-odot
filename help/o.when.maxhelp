@@ -5,10 +5,10 @@
 			"major" : 6,
 			"minor" : 1,
 			"revision" : 6,
-			"architecture" : "x86"
+			"architecture" : "x64"
 		}
 ,
-		"rect" : [ 58.0, 81.0, 674.0, 505.0 ],
+		"rect" : [ 58.0, 81.0, 556.0, 480.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -31,17 +31,6 @@
 		"showontab" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
-					"id" : "obj-16",
-					"maxclass" : "button",
-					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 64.0, 347.0, 20.0, 20.0 ]
-				}
-
-			}
-, 			{
-				"box" : 				{
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"id" : "obj-15",
@@ -49,7 +38,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 125.0, 399.0, 150.0, 34.0 ],
+					"patching_rect" : [ 70.0, 381.0, 150.0, 34.0 ],
+					"text" : "/foo : 7",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -63,19 +53,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 125.0, 309.0, 69.0, 20.0 ],
+					"patching_rect" : [ 70.0, 291.0, 69.0, 20.0 ],
 					"text" : "o.pack /foo"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-5",
-					"maxclass" : "button",
-					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 64.0, 406.0, 20.0, 20.0 ]
 				}
 
 			}
@@ -89,7 +68,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "int", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 125.0, 258.0, 50.0, 20.0 ]
+					"patching_rect" : [ 70.0, 240.0, 50.0, 20.0 ]
 				}
 
 			}
@@ -102,7 +81,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 125.0, 347.0, 100.0, 20.0 ],
+					"patching_rect" : [ 70.0, 329.0, 100.0, 20.0 ],
 					"text" : "o.when /foo < 10"
 				}
 
@@ -116,7 +95,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 442.0, 79.0, 150.0, 20.0 ],
+					"patching_rect" : [ 380.0, 373.0, 150.0, 20.0 ],
 					"text" : "see also:"
 				}
 
@@ -131,7 +110,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 4,
 					"outlettype" : [ "", "", "", "clear" ],
-					"patching_rect" : [ 442.0, 45.0, 223.0, 20.0 ],
+					"patching_rect" : [ 380.0, 339.0, 223.0, 20.0 ],
 					"text" : "o.helpfilehelper @obj o.when /foo == 10"
 				}
 
@@ -189,7 +168,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "int", "", "" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 442.0, 101.0, 132.0, 20.0 ]
+					"patching_rect" : [ 380.0, 395.0, 132.0, 20.0 ]
 				}
 
 			}
@@ -199,7 +178,7 @@
 					"destination" : [ "obj-10", 0 ],
 					"disabled" : 0,
 					"hidden" : 1,
-					"midpoints" : [ 508.0, 131.0, 427.0, 131.0, 427.0, 31.0, 451.5, 31.0 ],
+					"midpoints" : [ 446.0, 425.0, 365.0, 425.0, 365.0, 325.0, 389.5, 325.0 ],
 					"source" : [ "obj-1", 1 ]
 				}
 
@@ -252,15 +231,6 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-5", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"source" : [ "obj-13", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
 					"color" : [ 1.0, 0.8, 0.4, 1.0 ],
 					"destination" : [ "obj-13", 0 ],
 					"disabled" : 0,
@@ -278,20 +248,11 @@
 				}
 
 			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-16", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"source" : [ "obj-2", 0 ]
-				}
-
-			}
  ],
 		"dependency_cache" : [ 			{
 				"name" : "o.helpfilehelper.maxpat",
-				"bootpath" : "/Users/adrian2013/CNMAT-odot/misc",
-				"patcherrelativepath" : "../misc",
+				"bootpath" : "/Users/ilyarostovtsev/Documents/Max/Packages/odot/misc",
+				"patcherrelativepath" : "../../../../../Max/Packages/odot/misc",
 				"type" : "JSON",
 				"implicit" : 1
 			}

@@ -4,11 +4,11 @@
 		"appversion" : 		{
 			"major" : 6,
 			"minor" : 1,
-			"revision" : 4,
+			"revision" : 7,
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 686.0, 44.0, 791.0, 912.0 ],
+		"rect" : [ 782.0, 56.0, 791.0, 912.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -41,11 +41,11 @@
 						"appversion" : 						{
 							"major" : 6,
 							"minor" : 1,
-							"revision" : 4,
+							"revision" : 7,
 							"architecture" : "x86"
 						}
 ,
-						"rect" : [ 723.0, 60.0, 424.0, 651.0 ],
+						"rect" : [ 315.0, 148.0, 727.0, 765.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -73,7 +73,7 @@
 									"numinlets" : 3,
 									"numoutlets" : 3,
 									"outlettype" : [ "", "", "FullPacket" ],
-									"patching_rect" : [ 196.5, 292.0, 152.0, 20.0 ],
+									"patching_rect" : [ 214.0, 296.0, 152.0, 20.0 ],
 									"text" : "o.route /fulltitle /arguments"
 								}
 
@@ -87,7 +87,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "FullPacket" ],
-									"patching_rect" : [ 196.5, 260.0, 89.0, 20.0 ],
+									"patching_rect" : [ 214.0, 264.0, 89.0, 20.0 ],
 									"text" : "o.route /parent"
 								}
 
@@ -101,7 +101,7 @@
 									"numinlets" : 3,
 									"numoutlets" : 3,
 									"outlettype" : [ "", "", "FullPacket" ],
-									"patching_rect" : [ 63.5, 228.0, 152.0, 20.0 ],
+									"patching_rect" : [ 81.0, 232.0, 152.0, 20.0 ],
 									"text" : "o.route /fulltitle /arguments"
 								}
 
@@ -115,7 +115,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "FullPacket" ],
-									"patching_rect" : [ 63.5, 164.0, 89.0, 20.0 ],
+									"patching_rect" : [ 81.0, 168.0, 89.0, 20.0 ],
 									"text" : "o.route /parent"
 								}
 
@@ -157,7 +157,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "" ],
-									"patching_rect" : [ 50.0, 100.0, 32.5, 20.0 ],
+									"patching_rect" : [ 50.0, 100.0, 50.0, 20.0 ],
 									"text" : "t l l"
 								}
 
@@ -172,8 +172,8 @@
 									"numinlets" : 4,
 									"numoutlets" : 1,
 									"outlettype" : [ "FullPacket" ],
-									"patching_rect" : [ 63.5, 324.0, 218.5, 47.0 ],
-									"text" : "o.pak /this/patcher/name /this/patcher/args /parent/patcher/name /parent/patcher/args"
+									"patching_rect" : [ 81.0, 328.0, 218.5, 47.0 ],
+									"text" : "o.pack /this/patcher/name /this/patcher/args /parent/patcher/name /parent/patcher/args"
 								}
 
 							}
@@ -186,7 +186,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "FullPacket" ],
-									"patching_rect" : [ 63.5, 135.0, 93.0, 20.0 ],
+									"patching_rect" : [ 81.0, 139.0, 93.0, 20.0 ],
 									"text" : "o.route /context"
 								}
 
@@ -466,10 +466,10 @@
 					"fontsize" : 12.0,
 					"id" : "obj-12",
 					"maxclass" : "newobj",
-					"numinlets" : 2,
+					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 183.0, 176.0, 289.0, 20.0 ],
+					"patching_rect" : [ 183.0, 176.0, 301.0, 20.0 ],
 					"text" : "o.pack /o_aspect_joinpoint/returnaddress #0_aspect"
 				}
 
@@ -522,7 +522,7 @@
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 152.0, 432.0, 108.0, 20.0 ],
+					"patching_rect" : [ 152.0, 432.0, 120.0, 20.0 ],
 					"text" : "receive #0_aspect"
 				}
 
@@ -755,39 +755,6 @@
 					"source" : [ "obj-9", 1 ]
 				}
 
-			}
- ],
-		"dependency_cache" : [ 			{
-				"name" : "o.context.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.collect.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.pack.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.union.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.route.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.var.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.pak.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.prepend.mxo",
-				"type" : "iLaX"
 			}
  ]
 	}
