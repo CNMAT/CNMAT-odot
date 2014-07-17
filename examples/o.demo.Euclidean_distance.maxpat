@@ -147,7 +147,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
 					"patching_rect" : [ 111.0, 118.0, 384.0, 33.0 ],
-					"text" : " /dist = sqrt(lreduce(add, map(lambda(p, q){pow(q - p, 2.0);}, /p, /q)))",
+					"text" : " /dist = sqrt(lreduce(add, map(lambda([p, q], pow(q - p, 2.0)), /p, /q)))",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
