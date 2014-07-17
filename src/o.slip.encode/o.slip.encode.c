@@ -307,41 +307,4 @@ void oslip_printcontents (t_oslip *x) {
 	}
 }
 
-#ifdef PRECOMPUTE_SIZES
-/* In the old days, we used to have to compute the size of our messages
-   by hand to see if there was room in the buffer. */
-
-int oslip_messageSize(char *messageName, short argc, t_atom *argv) {
-	int result;
-	int i;
-  
-	/* First, we need space for the messageName */
-	result = oslip_effectiveStringLength(messageName);	
- slipOSC.c:266: warning: return type of 'main' is not 'int'
-    
-		/* Now account for the arguments */
-		for (i = 0; i < argc; i++) {
-			switch (argv[i].a_type) {
-			case A_LONG:
-				result += sizeof(long);
-				break;
-	
-			case A_FLOAT:
-				result += sizeof(float);
-				break;
-	
-			case A_SYM:
-				result += oslip_effectiveStringLength(argv[i].a_w.w_sym->s_name);
-				break;
-	
-			default:
-				object_error((t_object *)x, "slipOSC: unrecognized argument type");
-				break;
-			}
-		}
-  
-	return result;
-}
-#endif
-
 
