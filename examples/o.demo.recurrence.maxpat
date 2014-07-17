@@ -45,7 +45,7 @@
 							"architecture" : "x86"
 						}
 ,
-						"rect" : [ 0.0, 26.0, 1030.0, 404.0 ],
+						"rect" : [ 122.0, 159.0, 1030.0, 404.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -146,8 +146,8 @@
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "FullPacket", "FullPacket" ],
-									"patching_rect" : [ 154.0, 112.0, 858.0, 33.0 ],
-									"text" : "/iteration = \"lambda(s) {  /power4root = sqrt(sqrt(/power4root??1)) ;  /until = (/power4root==1)  ; s * /power4root ;}   \"",
+									"patching_rect" : [ 154.0, 112.0, 626.0, 33.0 ],
+									"text" : "/iteration = \"lambda([s],  /power4root = sqrt(sqrt(/power4root ?? 1)),   /until = (/power4root==1)  , s * /power4root)  \" ",
 									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 
@@ -233,6 +233,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 4.0, 333.0, 200.0, 34.0 ],
+									"text" : "/state : 27",
 									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 
@@ -415,7 +416,7 @@
 							"architecture" : "x86"
 						}
 ,
-						"rect" : [ 122.0, 159.0, 1030.0, 404.0 ],
+						"rect" : [ 0.0, 26.0, 1030.0, 404.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -475,7 +476,7 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "FullPacket", "FullPacket" ],
 									"patching_rect" : [ 162.0, 116.0, 488.0, 33.0 ],
-									"text" : "/iteration = \"lambda(s) {  [ 2*cos(twopi()* /omega) * /r *first(s) - /r * /r *last(s), first(s) ] ;  }   \"",
+									"text" : "/iteration = \"lambda([s],  [ 2*cos(twopi()* /omega) * /r *first(s) - /r * /r *last(s), first(s) ] ) \"",
 									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 
@@ -562,6 +563,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 35.0, 338.0, 200.0, 34.0 ],
+									"text" : "/state : [-0.758822, -0.721937]",
 									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 
@@ -1309,7 +1311,7 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "FullPacket", "FullPacket" ],
 									"patching_rect" : [ 134.0, 71.0, 243.0, 33.0 ],
-									"text" : "/iteration = \"lambda(s) { [ sum(s), first(s)]; }\"",
+									"text" : "/iteration = \"lambda([s], [ sum(s), first(s) ] )\"",
 									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 
@@ -1353,7 +1355,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 20.0, 323.0, 210.0, 34.0 ],
-									"text" : "/state : [14930352, 9227465]",
+									"text" : "/state : [0, 1]",
 									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 
@@ -1524,7 +1526,7 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "FullPacket", "FullPacket" ],
 									"patching_rect" : [ 437.0, 212.0, 243.0, 33.0 ],
-									"text" : "/iteration = \"lambda(s) { s * 1.1; }\"",
+									"text" : "/iteration = \"lambda([s],  s * 1.1 )\"",
 									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 
@@ -1554,7 +1556,7 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "FullPacket", "FullPacket" ],
 									"patching_rect" : [ 436.0, 140.0, 243.0, 33.0 ],
-									"text" : "/iteration = \"lambda(s) { s * 0.9; }\"",
+									"text" : "/iteration = \"lambda([s], s * 0.9 ) \"",
 									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 
@@ -1584,7 +1586,7 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "FullPacket", "FullPacket" ],
 									"patching_rect" : [ 409.0, 74.0, 243.0, 33.0 ],
-									"text" : "/iteration = \"lambda(s) { s + 1; }\"",
+									"text" : "/iteration = \"lambda([s], s + 1)\"",
 									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 
@@ -1655,8 +1657,8 @@
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "FullPacket", "FullPacket" ],
-									"patching_rect" : [ 134.0, 71.0, 243.0, 33.0 ],
-									"text" : "/iteration = \"lambda(s) { [ sum(s), first(s)]; }\"",
+									"patching_rect" : [ 134.0, 71.0, 260.0, 33.0 ],
+									"text" : "/iteration = \"lambda([s], [ sum(s), first(s) ] ) \"",
 									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 
@@ -1700,7 +1702,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 20.0, 323.0, 96.0, 34.0 ],
-									"text" : "/state : [8, 5]",
+									"text" : "/state : 3.45227",
 									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 
