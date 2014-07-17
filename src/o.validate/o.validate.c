@@ -57,6 +57,8 @@ typedef struct _ovalidate{
 void *ovalidate_class;
 
 
+
+
 void ovalidate_fullPacket(t_ovalidate *x, t_symbol *msg, int argc, t_atom *argv)
 {
 	OMAX_UTIL_GET_LEN_AND_PTR;
@@ -81,6 +83,55 @@ void ovalidate_fullPacket(t_ovalidate *x, t_symbol *msg, int argc, t_atom *argv)
 		return;
 	}
 	*/
+	if(len % 4){
+		char errstr[128];
+		snprintf(errstr, 128, "%ld is not a multiple of 4 bytes", len);
+		t_osc_bndl_u *b = osc_bundle_u_alloc();
+
+		t_osc_msg_u *merr = osc_message_u_alloc();
+		osc_message_u_setAddress(merr, "/error/str");
+		osc_message_u_appendString(merr, errstr);
+		osc_bundle_u_addMsg(b, merr);
+
+		long l = 0;
+		char *buf = NULL;
+		osc_bundle_u_serialize(b, &l, &buf);
+		if(buf){
+			omax_util_outletOSC(x->outletErr, l, buf);
+			omax_util_outletOSC(x->outletInval, len, ptr);
+			osc_mem_free(buf);
+		}
+		return;
+	}
+	char *p = ptr;
+	p += OSC_HEADER_SIZE;
+	while((p - ptr) < (len - 4)){
+		int i = ntoh32(*((int32_t *)p));
+		if(i < 0){
+			break;
+		}
+		p += i + 4;
+	}
+	if((p - ptr) != len){
+		char errstr[128];
+		snprintf(errstr, 128, "expected %ld bytes, but found %d", len, p - ptr);
+		t_osc_bndl_u *b = osc_bundle_u_alloc();
+
+		t_osc_msg_u *merr = osc_message_u_alloc();
+		osc_message_u_setAddress(merr, "/error/str");
+		osc_message_u_appendString(merr, errstr);
+		osc_bundle_u_addMsg(b, merr);
+
+		long l = 0;
+		char *buf = NULL;
+		osc_bundle_u_serialize(b, &l, &buf);
+		if(buf){
+			omax_util_outletOSC(x->outletErr, l, buf);
+			omax_util_outletOSC(x->outletInval, len, ptr);
+			osc_mem_free(buf);
+		}
+		return;
+	}
 	uint64_t state = OSC_SERIAL_INIT;
 	for(int i = 0; i < len; i++){
 		state = osc_serial_processByte(ptr[i], state);
@@ -98,10 +149,12 @@ void ovalidate_fullPacket(t_ovalidate *x, t_symbol *msg, int argc, t_atom *argv)
 			osc_message_u_appendInt32(mbytenum, i);
 			osc_bundle_u_addMsg(b, mbytenum);
 
-			t_osc_msg_u *mbyteval = osc_message_u_alloc();
-			osc_message_u_setAddress(mbyteval, "/error/byte/val");
-			osc_message_u_appendInt32(mbyteval, ptr[i]);
-			osc_bundle_u_addMsg(b, mbyteval);
+			if(mbytenum < len){
+				t_osc_msg_u *mbyteval = osc_message_u_alloc();
+				osc_message_u_setAddress(mbyteval, "/error/byte/val");
+				osc_message_u_appendInt32(mbyteval, ptr[i]);
+				osc_bundle_u_addMsg(b, mbyteval);
+			}
 
 			long l = 0;
 			char *buf = NULL;
