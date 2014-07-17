@@ -15,10 +15,10 @@ o.expr.codebox \
 o.flatten \
 o.if \
 o.intersection \
-o.iterate \
 o.listenumerate \
 o.mappatch \
 o.message \
+o.messageiterate \
 o.pack \
 o.pak \
 o.prepend \
