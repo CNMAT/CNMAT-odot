@@ -33,7 +33,7 @@
 
 #define OMAX_DOC_NAME "o.display"
 #define OMAX_DOC_SHORT_DESC "Display incoming OSC bundles"
-#define OMAX_DOC_LONG_DESC "o.display displays OSC in text form and passes them through to its outlet"
+#define OMAX_DOC_LONG_DESC "o.display displays OSC in text form and passes them through to its outlet."
 #define OMAX_DOC_INLETS_DESC (char *[]){"An OSC packet is displayed and passed through"}
 #define OMAX_DOC_OUTLETS_DESC (char *[]){"OSC FullPacket"}
 #define OMAX_DOC_SEEALSO (char *[]){"o.compose"}

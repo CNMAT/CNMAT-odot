@@ -24,10 +24,10 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #define APPEND
 #ifdef APPEND
 #define OMAX_DOC_NAME "o.append"
-#define OMAX_DOC_SHORT_DESC "Append an OSC address to every OSC address in a bundle."
+#define OMAX_DOC_SHORT_DESC "Append an OSC address to every OSC address in a bundle"
 #define OMAX_DOC_LONG_DESC "o.append takes an OSC address as an argument and appends it to every address in the bundle."
-#define OMAX_DOC_INLETS_DESC (char *[]){"OSC packet."}
-#define OMAX_DOC_OUTLETS_DESC (char *[]){"OSC packet with argument appended."}
+#define OMAX_DOC_INLETS_DESC (char *[]){"OSC packet"}
+#define OMAX_DOC_OUTLETS_DESC (char *[]){"OSC packet with argument appended"}
 #define OMAX_DOC_SEEALSO (char *[]){"o.prepend", "prepend", "append"}
 #endif
 #include "../o.prepend/o.prepend.c"

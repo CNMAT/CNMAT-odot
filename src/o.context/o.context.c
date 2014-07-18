@@ -22,7 +22,7 @@
 
 
 #define OMAX_DOC_NAME "o.context"
-#define OMAX_DOC_SHORT_DESC "Report the current context."
+#define OMAX_DOC_SHORT_DESC "Report the current context"
 #define OMAX_DOC_LONG_DESC "o.context reports information about the current context including the patcher name and patcher hierarchy."
 #define OMAX_DOC_INLETS_DESC (char *[]){"FullPacket or bang"}
 #define OMAX_DOC_OUTLETS_DESC (char *[]){"OSC packet containing context information"}

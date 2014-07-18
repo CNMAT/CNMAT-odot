@@ -32,10 +32,10 @@
 
 
 #define OMAX_DOC_NAME "o.change"
-#define OMAX_DOC_SHORT_DESC "Output a bundle if it changes."
-#define OMAX_DOC_LONG_DESC "o.change passes a bundle through if it is different from the last bundle that it received.  Any change including reordering the contents will cause the bundle to be passed through"
-#define OMAX_DOC_INLETS_DESC (char *[]){"OSC packet."}
-#define OMAX_DOC_OUTLETS_DESC (char *[]){"The OSC packet if it changed."}
+#define OMAX_DOC_SHORT_DESC "Output a bundle if it changes"
+#define OMAX_DOC_LONG_DESC "o.change passes a bundle through if it is different from the last bundle that it received.  Any change including reordering the contents will cause the bundle to be passed through."
+#define OMAX_DOC_INLETS_DESC (char *[]){"OSC packet"}
+#define OMAX_DOC_OUTLETS_DESC (char *[]){"The OSC packet if it changed"}
 #define OMAX_DOC_SEEALSO (char *[]){"change"}
 
 #include "odot_version.h"

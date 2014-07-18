@@ -32,10 +32,10 @@ VERSION 1.0: New name
 */
 
 #define OMAX_DOC_NAME "o.mappatch"
-#define OMAX_DOC_SHORT_DESC "Map the contents of an OSC bundle onto a Max patch."
-#define OMAX_DOC_LONG_DESC "o.mappatch takes an OSC bundle in the right inlet and outputs each of the messages contained in it in sequence out the right outlet as OSC-style Max-messages.  After processing each message, it should be sent back into the right inlet (or not if it is to be excluded from the bundle).  After all messages have been processed, the resulting bundle with any modifications will come out the left outlet."
-#define OMAX_DOC_INLETS_DESC (char *[]){"OSC FullPacket", "OSC-style Max messages to be included in the bundle."}
-#define OMAX_DOC_OUTLETS_DESC (char *[]){"OSC FullPacket: results of the mapping", "OSC-style Max messages contained in the bundle."}
+#define OMAX_DOC_SHORT_DESC "Map the contents of an OSC bundle onto a Max patch"
+#define OMAX_DOC_LONG_DESC "o.mappatch takes an OSC bundle in the right inlet and outputs each of the messages contained in it in sequence out the right outlet as OSC-style Max-messages.  After processing each message, it should be sent back into the right inlet (or not if it is to be excluded from the bundle).  After all messages have been processed, the resulting bundle with any modifications will come out the left outlet"
+#define OMAX_DOC_INLETS_DESC (char *[]){"OSC FullPacket", "OSC-style Max messages to be included in the bundle"}
+#define OMAX_DOC_OUTLETS_DESC (char *[]){"OSC FullPacket: results of the mapping", "OSC-style Max messages contained in the bundle"}
 #define OMAX_DOC_SEEALSO (char *[]){"o.expr", "o.callpatch", "o.atomize"}
 
 

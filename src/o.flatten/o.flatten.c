@@ -32,10 +32,10 @@
 
 
 #define OMAX_DOC_NAME "o.flatten"
-#define OMAX_DOC_SHORT_DESC "Flatten the address hierarchy in nested bundles."
+#define OMAX_DOC_SHORT_DESC "Flatten the address hierarchy in nested bundles"
 #define OMAX_DOC_LONG_DESC "o.flatten takes messages out of nested bundles and inserts them into the top level bundle."
-#define OMAX_DOC_INLETS_DESC (char *[]){"OSC packet."}
-#define OMAX_DOC_OUTLETS_DESC (char *[]){"The flattened OSC packet."}
+#define OMAX_DOC_INLETS_DESC (char *[]){"OSC packet"}
+#define OMAX_DOC_OUTLETS_DESC (char *[]){"The flattened OSC packet"}
 #define OMAX_DOC_SEEALSO (char *[]){"o.explode"}
 
 #include "odot_version.h"
