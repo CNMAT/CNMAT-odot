@@ -150,11 +150,11 @@ void oexprcodebox_paint(t_oexprcodebox *x, t_object *patcherview)
     jbox_get_rect_for_view((t_object *)x, patcherview, &rect);
     
     jgraphics_set_source_jrgba(g, &(x->frame_color));
-	jgraphics_rectangle_rounded(g, 0, 0, rect.width, rect.height, 6, 6);
+	jgraphics_rectangle(g, 0, 0, rect.width, rect.height);
 	jgraphics_fill(g);
 
     jgraphics_set_source_jrgba(g, &(x->background_color));
-    jgraphics_rectangle(g, 1, 5, rect.width - 2, rect.height - 10);
+    jgraphics_rectangle(g, 2, 10, rect.width - 4, rect.height - 12);
 	jgraphics_fill(g);
 }
 
@@ -198,12 +198,12 @@ long oexprcodebox_keyfilter(t_oexprcodebox *x, t_object *patcherview, long *keyc
 
 
 void oexprcodebox_mousedown(t_oexprcodebox *x, t_object *patcherview, t_pt pt, long modifiers){
-	textfield_set_textmargins(jbox_get_textfield((t_object *)x), 6, 9, 4, 10);
+	textfield_set_textmargins(jbox_get_textfield((t_object *)x), 6, 14, 6, 6);
     jbox_redraw((t_jbox *)x);
 }
 
 void oexprcodebox_mouseup(t_oexprcodebox *x, t_object *patcherview, t_pt pt, long modifiers){
-	textfield_set_textmargins(jbox_get_textfield((t_object *)x), 5, 8, 5, 11);
+	textfield_set_textmargins(jbox_get_textfield((t_object *)x), 5, 13, 5, 5);
     jbox_redraw((t_jbox *)x);
     oexprcodebox_bang(x);
 }
@@ -598,7 +598,7 @@ void *oexprcodebox_new(t_symbol *msg, short argc, t_atom *argv)
 		if(textfield){
 			object_attr_setchar(textfield, gensym("editwhenunlocked"), 1);
 			textfield_set_editonclick(textfield, 0);
-			textfield_set_textmargins(textfield, 5, 8, 5, 11);
+			textfield_set_textmargins(textfield, 5, 13, 5, 5);
 			textfield_set_textcolor(textfield, &(x->text_color));
 		}
 		jbox_ready((t_jbox *)x);

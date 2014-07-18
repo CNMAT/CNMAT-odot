@@ -489,7 +489,7 @@ long ocompose_keyfilter(t_ocompose *x, t_object *patcherview, long *keycode, lon
 
 
 void ocompose_mousedown(t_ocompose *x, t_object *patcherview, t_pt pt, long modifiers){
-    textfield_set_textmargins(jbox_get_textfield((t_object *)x), 6, 6, 10, 5);
+    textfield_set_textmargins(jbox_get_textfield((t_object *)x), 6, 6, 16, 6);
     critical_enter(x->lock);
     x->draw_new_data_indicator = 1;
     x->mouse_down = 1;
@@ -498,7 +498,7 @@ void ocompose_mousedown(t_ocompose *x, t_object *patcherview, t_pt pt, long modi
 }
 
 void ocompose_mouseup(t_ocompose *x, t_object *patcherview, t_pt pt, long modifiers){
-    textfield_set_textmargins(jbox_get_textfield((t_object *)x), 5, 5, 10, 5);
+    textfield_set_textmargins(jbox_get_textfield((t_object *)x), 5, 5, 15, 5);
     critical_enter(x->lock);
     x->mouse_down = 0;
     critical_exit(x->lock);
@@ -2235,7 +2235,7 @@ void *ocompose_new(t_symbol *msg, short argc, t_atom *argv){
         if(textfield){
             object_attr_setchar(textfield, gensym("editwhenunlocked"), 1);
             textfield_set_editonclick(textfield, 0);
-            textfield_set_textmargins(textfield, 5, 5, 10, 5);
+            textfield_set_textmargins(textfield, 5, 5, 15, 5);
             textfield_set_textcolor(textfield, &(x->text_color));
         }
         
