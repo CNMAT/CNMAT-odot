@@ -37,7 +37,7 @@
 #define OMAX_DOC_LONG_DESC "o.listenumerate enumerates the values of a list at an OSC address and outputs them out one at a time."
 #define OMAX_DOC_INLETS_DESC (char *[]){"OSC packet."}
 #define OMAX_DOC_OUTLETS_DESC (char *[]){"OSC packets for each element of the list.", "Delegation outlet - unmatched OSC addresses."}
-#define OMAX_DOC_SEEALSO (char *[]){"o.iterate"}
+#define OMAX_DOC_SEEALSO (char *[]){"o.messageiterate"}
 
 #include "odot_version.h"
 #ifdef OMAX_PD_VERSION
