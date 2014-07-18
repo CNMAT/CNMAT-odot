@@ -5,7 +5,7 @@
 			"major" : 6,
 			"minor" : 1,
 			"revision" : 6,
-			"architecture" : "x86"
+			"architecture" : "x64"
 		}
 ,
 		"rect" : [ 160.0, 340.0, 1030.0, 430.0 ],
@@ -42,7 +42,7 @@
 							"major" : 6,
 							"minor" : 1,
 							"revision" : 6,
-							"architecture" : "x86"
+							"architecture" : "x64"
 						}
 ,
 						"rect" : [ 0.0, 26.0, 1030.0, 404.0 ],
@@ -412,10 +412,10 @@
 							"major" : 6,
 							"minor" : 1,
 							"revision" : 6,
-							"architecture" : "x86"
+							"architecture" : "x64"
 						}
 ,
-						"rect" : [ 160.0, 366.0, 1030.0, 404.0 ],
+						"rect" : [ 0.0, 26.0, 1030.0, 404.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -709,7 +709,7 @@
 							"major" : 6,
 							"minor" : 1,
 							"revision" : 6,
-							"architecture" : "x86"
+							"architecture" : "x64"
 						}
 ,
 						"rect" : [ 0.0, 26.0, 1030.0, 404.0 ],
@@ -958,7 +958,7 @@
 							"major" : 6,
 							"minor" : 1,
 							"revision" : 6,
-							"architecture" : "x86"
+							"architecture" : "x64"
 						}
 ,
 						"rect" : [ 0.0, 26.0, 1030.0, 404.0 ],
@@ -1206,7 +1206,7 @@
 							"major" : 6,
 							"minor" : 1,
 							"revision" : 6,
-							"architecture" : "x86"
+							"architecture" : "x64"
 						}
 ,
 						"rect" : [ 0.0, 26.0, 1030.0, 404.0 ],
@@ -1492,7 +1492,7 @@
 							"major" : 6,
 							"minor" : 1,
 							"revision" : 6,
-							"architecture" : "x86"
+							"architecture" : "x64"
 						}
 ,
 						"rect" : [ 0.0, 26.0, 1030.0, 404.0 ],

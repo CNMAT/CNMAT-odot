@@ -4,11 +4,12 @@
 		"appversion" : 		{
 			"major" : 6,
 			"minor" : 1,
-			"revision" : 6,
+			"revision" : 7,
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 222.0, 245.0, 402.0, 70.0 ],
+		"rect" : [ 222.0, 245.0, 993.0, 426.0 ],
+		"bgcolor" : [ 1.0, 1.0, 1.0, 0.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
@@ -28,6 +29,20 @@
 		"digest" : "",
 		"tags" : "",
 		"boxes" : [ 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-5",
+					"maxclass" : "o.display",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 618.0, 790.0, 150.0, 34.0 ],
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
@@ -136,22 +151,6 @@
 					"outlettype" : [ "int", "bang" ],
 					"patching_rect" : [ 531.0, 555.0, 32.5, 20.0 ],
 					"text" : "t i b"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontname" : "Arial",
-					"fontsize" : 12.0,
-					"id" : "obj-28",
-					"linecount" : 2,
-					"maxclass" : "o.message",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 643.5, 785.0, 150.0, 33.0 ],
-					"text" : "/port : \"a\",\n/baud : 110",
-					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
 			}
@@ -352,7 +351,7 @@
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"id" : "obj-2",
-					"items" : [ "a", "Bluetooth-Serial-1", ",", "b", "Bluetooth-Serial-2", ",", "c", "Bluetooth-PDA-Sync", ",", "d", "AlcatelOT-606A-SerialPo", ",", "e", "Bluetooth-Modem", ",", "f", "BlueRadios10DFAE-COM1", ",", "g", "BlueRadios10DF51-COM1", ",", "h", "usbmodemOSCes311" ],
+					"items" : [ "a", "Bluetooth-Incoming-Port", ",", "b", "Bluetooth-Modem" ],
 					"maxclass" : "umenu",
 					"numinlets" : 1,
 					"numoutlets" : 3,
@@ -1010,25 +1009,12 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-28", 1 ],
+					"destination" : [ "obj-5", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-9", 0 ]
 				}
 
-			}
- ],
-		"dependency_cache" : [ 			{
-				"name" : "o.pack.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.route.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.message.mxo",
-				"type" : "iLaX"
 			}
  ]
 	}

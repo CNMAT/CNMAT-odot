@@ -5,7 +5,7 @@
 			"major" : 6,
 			"minor" : 1,
 			"revision" : 6,
-			"architecture" : "x86"
+			"architecture" : "x64"
 		}
 ,
 		"rect" : [ 313.0, 116.0, 768.0, 456.0 ],
@@ -47,13 +47,13 @@
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"id" : "obj-1",
-					"linecount" : 14,
+					"linecount" : 13,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 36.0, 223.606644, 252.0, 208.0 ],
-					"text" : "/horizontal : 798,\n/vertical : 257,\n/shift : \"up\",\n/capslock : \"up\",\n/option : \"up\",\n/control : \"up\",\n/command : \"down\",\n/button/is : \"up\",\n/was/horizontal : 798,\n/was/vertical : 257,\n/angle : 0.,\n/was/angle : 0.,\n/angle/difference : 0.,\n/direction : \"still\"",
+					"patching_rect" : [ 36.0, 223.606644, 252.0, 195.0 ],
+					"text" : "/horizontal : 472,\n/vertical : 179,\n/shift : \"up\",\n/capslock : \"up\",\n/option : \"up\",\n/control : \"up\",\n/command : \"up\",\n/was/horizontal : 764,\n/was/vertical : 174,\n/angle : 3.12447,\n/was/angle : 0.,\n/angle/difference : 3.12447,\n/direction : \"clockwise\"",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -184,49 +184,49 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "o.io.mouse.maxpat",
-				"bootpath" : "/Users/adrian2013/Documents/Max/Packages/CNMAT-odot/patchers/io",
+				"bootpath" : "/Users/ilyarostovtsev/Documents/Creative Coding/odot/_full_build_trunk/CNMAT-odot/patchers/io",
 				"patcherrelativepath" : "../patchers/io",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.out.maxpat",
-				"bootpath" : "/Users/adrian2013/Documents/Max/Packages/CNMAT-odot/patchers/core",
+				"bootpath" : "/Users/ilyarostovtsev/Documents/Creative Coding/odot/_full_build_trunk/CNMAT-odot/patchers/core",
 				"patcherrelativepath" : "../patchers/core",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.port.maxpat",
-				"bootpath" : "/Users/adrian2013/Documents/Max/Packages/CNMAT-odot/patchers/core",
+				"bootpath" : "/Users/ilyarostovtsev/Documents/Creative Coding/odot/_full_build_trunk/CNMAT-odot/patchers/core",
 				"patcherrelativepath" : "../patchers/core",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.aspect.joinpoint.maxpat",
-				"bootpath" : "/Users/adrian2013/Documents/Max/Packages/CNMAT-odot/patchers/aspect",
+				"bootpath" : "/Users/ilyarostovtsev/Documents/Creative Coding/odot/_full_build_trunk/CNMAT-odot/patchers/aspect",
 				"patcherrelativepath" : "../patchers/aspect",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.was.maxpat",
-				"bootpath" : "/Users/adrian2013/Documents/Max/Packages/CNMAT-odot/patchers/time",
+				"bootpath" : "/Users/ilyarostovtsev/Documents/Creative Coding/odot/_full_build_trunk/CNMAT-odot/patchers/time",
 				"patcherrelativepath" : "../patchers/time",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.righttoleft.maxpat",
-				"bootpath" : "/Users/adrian2013/Documents/Max/Packages/CNMAT-odot/patchers/core",
+				"bootpath" : "/Users/ilyarostovtsev/Documents/Creative Coding/odot/_full_build_trunk/CNMAT-odot/patchers/core",
 				"patcherrelativepath" : "../patchers/core",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.in.maxpat",
-				"bootpath" : "/Users/adrian2013/Documents/Max/Packages/CNMAT-odot/patchers/core",
+				"bootpath" : "/Users/ilyarostovtsev/Documents/Creative Coding/odot/_full_build_trunk/CNMAT-odot/patchers/core",
 				"patcherrelativepath" : "../patchers/core",
 				"type" : "JSON",
 				"implicit" : 1

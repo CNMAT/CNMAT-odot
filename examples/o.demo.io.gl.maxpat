@@ -5,7 +5,7 @@
 			"major" : 6,
 			"minor" : 1,
 			"revision" : 6,
-			"architecture" : "x86"
+			"architecture" : "x64"
 		}
 ,
 		"rect" : [ 53.0, 44.0, 1378.0, 765.0 ],
@@ -58,7 +58,7 @@
 							"major" : 6,
 							"minor" : 1,
 							"revision" : 6,
-							"architecture" : "x86"
+							"architecture" : "x64"
 						}
 ,
 						"rect" : [ 34.0, 69.0, 640.0, 480.0 ],
@@ -333,7 +333,7 @@
 							"major" : 6,
 							"minor" : 1,
 							"revision" : 6,
-							"architecture" : "x86"
+							"architecture" : "x64"
 						}
 ,
 						"rect" : [ 59.0, 69.0, 640.0, 480.0 ],
@@ -1207,7 +1207,7 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "o.io.gl.maxpat",
-				"bootpath" : "/Users/adrian2013/Documents/Max/Packages/CNMAT-odot/patchers/io/graphics",
+				"bootpath" : "/Users/ilyarostovtsev/Documents/Creative Coding/odot/_full_build_trunk/CNMAT-odot/patchers/io/graphics",
 				"patcherrelativepath" : "../patchers/io/graphics",
 				"type" : "JSON",
 				"implicit" : 1
@@ -1215,83 +1215,83 @@
 , 			{
 				"name" : "thru.maxpat",
 				"bootpath" : "/Applications/Max 6.1/patches/m4l-patches/Pluggo for Live resources/patches",
-				"patcherrelativepath" : "../../../../../../../Applications/Max 6.1/patches/m4l-patches/Pluggo for Live resources/patches",
+				"patcherrelativepath" : "../../../../../../../../Applications/Max 6.1/patches/m4l-patches/Pluggo for Live resources/patches",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.io.gl.platohelper.maxpat",
-				"bootpath" : "/Users/adrian2013/Documents/Max/Packages/CNMAT-odot/patchers/io/graphics",
+				"bootpath" : "/Users/ilyarostovtsev/Documents/Creative Coding/odot/_full_build_trunk/CNMAT-odot/patchers/io/graphics",
 				"patcherrelativepath" : "../patchers/io/graphics",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.righttoleft.maxpat",
-				"bootpath" : "/Users/adrian2013/Documents/Max/Packages/CNMAT-odot/patchers/core",
+				"bootpath" : "/Users/ilyarostovtsev/Documents/Creative Coding/odot/_full_build_trunk/CNMAT-odot/patchers/core",
 				"patcherrelativepath" : "../patchers/core",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.in.maxpat",
-				"bootpath" : "/Users/adrian2013/Documents/Max/Packages/CNMAT-odot/patchers/core",
+				"bootpath" : "/Users/ilyarostovtsev/Documents/Creative Coding/odot/_full_build_trunk/CNMAT-odot/patchers/core",
 				"patcherrelativepath" : "../patchers/core",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.port.maxpat",
-				"bootpath" : "/Users/adrian2013/Documents/Max/Packages/CNMAT-odot/patchers/core",
+				"bootpath" : "/Users/ilyarostovtsev/Documents/Creative Coding/odot/_full_build_trunk/CNMAT-odot/patchers/core",
 				"patcherrelativepath" : "../patchers/core",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.aspect.joinpoint.maxpat",
-				"bootpath" : "/Users/adrian2013/Documents/Max/Packages/CNMAT-odot/patchers/aspect",
+				"bootpath" : "/Users/ilyarostovtsev/Documents/Creative Coding/odot/_full_build_trunk/CNMAT-odot/patchers/aspect",
 				"patcherrelativepath" : "../patchers/aspect",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.out.maxpat",
-				"bootpath" : "/Users/adrian2013/Documents/Max/Packages/CNMAT-odot/patchers/core",
+				"bootpath" : "/Users/ilyarostovtsev/Documents/Creative Coding/odot/_full_build_trunk/CNMAT-odot/patchers/core",
 				"patcherrelativepath" : "../patchers/core",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.io.gltexthelper.maxpat",
-				"bootpath" : "/Users/adrian2013/Documents/Max/Packages/CNMAT-odot/patchers/io/graphics",
+				"bootpath" : "/Users/ilyarostovtsev/Documents/Creative Coding/odot/_full_build_trunk/CNMAT-odot/patchers/io/graphics",
 				"patcherrelativepath" : "../patchers/io/graphics",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.metro.maxpat",
-				"bootpath" : "/Users/adrian2013/Documents/Max/Packages/CNMAT-odot/patchers/time",
+				"bootpath" : "/Users/ilyarostovtsev/Documents/Creative Coding/odot/_full_build_trunk/CNMAT-odot/patchers/time",
 				"patcherrelativepath" : "../patchers/time",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.arguments.maxpat",
-				"bootpath" : "/Users/adrian2013/Documents/Max/Packages/CNMAT-odot/patchers",
+				"bootpath" : "/Users/ilyarostovtsev/Documents/Creative Coding/odot/_full_build_trunk/CNMAT-odot/patchers",
 				"patcherrelativepath" : "../patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.init.maxpat",
-				"bootpath" : "/Users/adrian2013/Documents/Max/Packages/CNMAT-odot/patchers/core",
+				"bootpath" : "/Users/ilyarostovtsev/Documents/Creative Coding/odot/_full_build_trunk/CNMAT-odot/patchers/core",
 				"patcherrelativepath" : "../patchers/core",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.recurse.maxpat",
-				"bootpath" : "/Users/adrian2013/Documents/Max/Packages/CNMAT-odot/patchers",
+				"bootpath" : "/Users/ilyarostovtsev/Documents/Creative Coding/odot/_full_build_trunk/CNMAT-odot/patchers",
 				"patcherrelativepath" : "../patchers",
 				"type" : "JSON",
 				"implicit" : 1
