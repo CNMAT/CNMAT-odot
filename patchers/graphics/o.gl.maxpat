@@ -2234,7 +2234,7 @@
 					"numoutlets" : 10,
 					"outlettype" : [ "FullPacket", "FullPacket", "FullPacket", "FullPacket", "FullPacket", "FullPacket", "FullPacket", "FullPacket", "FullPacket", "FullPacket" ],
 					"patching_rect" : [ 116.0, 502.0, 580.0, 47.0 ],
-					"text" : "o.cond /shape==torus \\, (/shape == sphere) || (/shape==circle) || (/shape==framecircle) \\, (/shape == cube) || (/shape==plane) \\, (/shape==cylinder) \\, (/shape==line) \\, (/shape==triangle) || (/shape==frametriangle) \\, (/shape==icosahedron) || (/shape==dodecahedron) || (/shape==octagon) \\, (/shape==cone)\\, (/shape==text) \\,"
+					"text" : "o.cond /shape==torus \\, (/shape == sphere) || (/shape==circle) || (/shape==framecircle) \\, (/shape == cube) || (/shape==plane) \\, (/shape==cylinder) \\, (/shape==line) \\, (/shape==triangle) || (/shape==frametriangle) \\, (/shape==icosahedron) || (/shape==dodecahedron) || (/shape==octagon) \\, (/shape==cone)\\, (/shape==text)"
 				}
 
 			}
