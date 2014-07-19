@@ -33,11 +33,11 @@ VERSION 0.1: porting to pd, note: the name and key attributes are only setable o
 */
 
 #define OMAX_DOC_NAME "o.table"
-#define OMAX_DOC_SHORT_DESC "Store OSC bundles in a table."
+#define OMAX_DOC_SHORT_DESC "Store OSC bundles in a table"
 #define OMAX_DOC_LONG_DESC "o.table appends incoming bundles to the end of an array and optionally associates them with a key."
-#define OMAX_DOC_SEEALSO (char *[]){"o.collect", "o.message", "o.var"}
-#define OMAX_DOC_INLETS_DESC (char *[]){"OSC packet to store."}
-#define OMAX_DOC_OUTLETS_DESC (char *[]){"Recalled OSC packet(s)."}
+#define OMAX_DOC_SEEALSO (char *[]){"o.collect", "o.compose", "o.display", "o.var"}
+#define OMAX_DOC_INLETS_DESC (char *[]){"OSC packet to store"}
+#define OMAX_DOC_OUTLETS_DESC (char *[]){"Recalled OSC packet(s)"}
 
 #include "odot_version.h"
 #ifdef OMAX_PD_VERSION

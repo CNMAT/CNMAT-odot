@@ -26,7 +26,7 @@
 */
 
 #define OMAX_DOC_NAME "o.slip.decode"
-#define OMAX_DOC_SHORT_DESC "Decodes a SLIP stream and outputs an OSC packet."
+#define OMAX_DOC_SHORT_DESC "Decodes a SLIP stream and outputs an OSC packet"
 #define OMAX_DOC_LONG_DESC "Decodes a SLIP stream and converts it into an OSC packet."
 #define OMAX_DOC_INLETS_DESC (char *[]){"Bytes (int or list)"}
 #define OMAX_DOC_OUTLETS_DESC (char *[]){"FullPacket"}

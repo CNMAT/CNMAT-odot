@@ -37,7 +37,7 @@
 #define OMAX_DOC_NAME "o.message"
 #define OMAX_DOC_SHORT_DESC "Create and display OSC bundles"
 #define OMAX_DOC_LONG_DESC "o.message behaves like the standard Max message box except that it converts its data to OSC packets."
-#define OMAX_DOC_INLETS_DESC (char *[]){"Bang sends the OSC FullPacket out.", "Set the contents."}
+#define OMAX_DOC_INLETS_DESC (char *[]){"Bang sends the OSC FullPacket out", "Set the contents"}
 #define OMAX_DOC_OUTLETS_DESC (char *[]){"OSC FullPacket"}
 #define OMAX_DOC_SEEALSO (char *[]){"message"}
 

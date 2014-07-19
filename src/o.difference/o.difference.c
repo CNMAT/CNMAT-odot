@@ -35,10 +35,10 @@
 #define ODOT_DIFFERENCE
 #if defined ODOT_DIFFERENCE
 #define OMAX_DOC_NAME "o.difference"
-#define OMAX_DOC_SHORT_DESC "Output a bundle containing the difference between two bundles."
-#define OMAX_DOC_LONG_DESC "o.difference takes two bundles and forms a new bundle that contains the messages with addresses that are not common to both bundles"
-#define OMAX_DOC_INLETS_DESC (char *[]){"OSC packet.", "OSC packet."}
-#define OMAX_DOC_OUTLETS_DESC (char *[]){"OSC Packet containing the difference of the two packets."}
+#define OMAX_DOC_SHORT_DESC "Output a bundle containing the difference between two bundles"
+#define OMAX_DOC_LONG_DESC "o.difference takes two bundles and forms a new bundle that contains the messages with addresses that are not common to both bundles."
+#define OMAX_DOC_INLETS_DESC (char *[]){"OSC packet", "OSC packet"}
+#define OMAX_DOC_OUTLETS_DESC (char *[]){"OSC Packet containing the difference of the two packets"}
 #define OMAX_DOC_SEEALSO (char *[]){"o.union", "o.intersection"}
 #endif
 

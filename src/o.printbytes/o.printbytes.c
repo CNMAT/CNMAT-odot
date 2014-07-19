@@ -31,11 +31,11 @@ VERSION 0.0: First try
 */
 
 #define OMAX_DOC_NAME "o.printbytes"
-#define OMAX_DOC_SHORT_DESC "Print an OSC packet to the Max window as a sequence of bytes."
-#define OMAX_DOC_LONG_DESC "o.printbytes prints the the contents of an OSC packet to the Max window in three columns: Byte number, ASCII Character, and Decimal value.  Useful for debugging."
-#define OMAX_DOC_INLETS_DESC (char *[]){"OSC packet."}
-#define OMAX_DOC_OUTLETS_DESC (char *[]){"OSC packet (same as input)."}
-#define OMAX_DOC_SEEALSO (char *[]){"o.print", "print", "printit"}
+#define OMAX_DOC_SHORT_DESC "Print an OSC packet to the Max window as a sequence of bytes"
+#define OMAX_DOC_LONG_DESC "o.printbytes prints the the contents of an OSC packet to the Max window in three columns: Byte number, ASCII Character, and Decimal value. Useful for debugging."
+#define OMAX_DOC_INLETS_DESC (char *[]){"OSC packet"}
+#define OMAX_DOC_OUTLETS_DESC (char *[]){"OSC packet (same as input)"}
+#define OMAX_DOC_SEEALSO (char *[]){"o.print", "print"}
 
 #include "odot_version.h"
 #ifdef OMAX_PD_VERSION

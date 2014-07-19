@@ -35,10 +35,10 @@ VERSION 1.1: renamed o.pack (from o.build)
 #ifndef PAK
 
 #define OMAX_DOC_NAME "o.pack"
-#define OMAX_DOC_SHORT_DESC "Bind data to addresses."
+#define OMAX_DOC_SHORT_DESC "Bind data to addresses"
 #define OMAX_DOC_LONG_DESC "o.pack takes a OSC addresses as arguments and creates an inlet for each one.  Anything sent into an inlet is bound to the corresponding address. Output is triggered when data is recieved in the leftmost inlet."
 #define OMAX_DOC_OUTLETS_DESC (char *[]){"OSC FullPacket"}
-#define OMAX_DOC_SEEALSO (char *[]){"o.pak", "pack", "pak"}
+#define OMAX_DOC_SEEALSO (char *[]){"pack", "pak"}
 
 #endif
 

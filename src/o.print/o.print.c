@@ -31,11 +31,11 @@ VERSION 0.0: First try
 */
 
 #define OMAX_DOC_NAME "o.print"
-#define OMAX_DOC_SHORT_DESC "Print an OSC packet to the Max window."
+#define OMAX_DOC_SHORT_DESC "Print an OSC packet to the Max window"
 #define OMAX_DOC_LONG_DESC "o.print prints the contents of an OSC packet to the Max window and passes the packet through its outlet unaltered."
-#define OMAX_DOC_INLETS_DESC (char *[]){"OSC packet or Max message."}
-#define OMAX_DOC_OUTLETS_DESC (char *[]){"OSC packet or Max message (same as input)."}
-#define OMAX_DOC_SEEALSO (char *[]){"o.printbytes", "print", "printit"}
+#define OMAX_DOC_INLETS_DESC (char *[]){"OSC packet or Max message"}
+#define OMAX_DOC_OUTLETS_DESC (char *[]){"OSC packet or Max message (same as input)"}
+#define OMAX_DOC_SEEALSO (char *[]){"o.printbytes", "print"}
 
 #include "odot_version.h"
 #ifdef OMAX_PD_VERSION

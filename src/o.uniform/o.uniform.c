@@ -33,8 +33,8 @@
 #define OMAX_DOC_NAME "o.uniform"
 #define OMAX_DOC_SHORT_DESC "Bind a uniformly-distrubuted random number to an address"
 #define OMAX_DOC_LONG_DESC "o.uniform binds a uniformly-distributed random number to a user-specified address."
-#define OMAX_DOC_INLETS_DESC (char *[]){"OSC packet."}
-#define OMAX_DOC_OUTLETS_DESC (char *[]){"The OSC packet with a random number bound to an address."}
+#define OMAX_DOC_INLETS_DESC (char *[]){"OSC packet"}
+#define OMAX_DOC_OUTLETS_DESC (char *[]){"The OSC packet with a random number bound to an address"}
 #define OMAX_DOC_SEEALSO (char *[]){"o.timetag"}
 
 #include <time.h>

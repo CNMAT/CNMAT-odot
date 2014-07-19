@@ -34,9 +34,9 @@ VERSION 1.0: Completely revised to work with new odot objects and libs
 #define OMAX_DOC_NAME "o.timetag"
 #define OMAX_DOC_SHORT_DESC "Bind a timetag to an address"
 #define OMAX_DOC_LONG_DESC "o.timetag binds the current time to a user-specified address."
-#define OMAX_DOC_INLETS_DESC (char *[]){"OSC packet."}
-#define OMAX_DOC_OUTLETS_DESC (char *[]){"The OSC packet with a timestamp bound to an address."}
-#define OMAX_DOC_SEEALSO (char *[]){"o.expr"}
+#define OMAX_DOC_INLETS_DESC (char *[]){"OSC packet"}
+#define OMAX_DOC_OUTLETS_DESC (char *[]){"The OSC packet with a timestamp bound to an address"}
+#define OMAX_DOC_SEEALSO (char *[]){"o.expr.codebox"}
 
 #include "odot_version.h"
 #ifdef OMAX_PD_VERSION

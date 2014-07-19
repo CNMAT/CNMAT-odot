@@ -24,7 +24,7 @@
 
 #define OMAX_DOC_NAME "o.messageiterate"
 #define OMAX_DOC_SHORT_DESC "Iterate over the messages contained in a bundle"
-#define OMAX_DOC_LONG_DESC "Outputs each message in a bundle as an encoded OSC message"
+#define OMAX_DOC_LONG_DESC "Outputs each message in a bundle as an encoded OSC message."
 #define OMAX_DOC_INLETS_DESC (char *[]){"FullPacket"}
 #define OMAX_DOC_OUTLETS_DESC (char *[]){"Messages (FullPacket)"}
 #define OMAX_DOC_SEEALSO  (char *[]){"o.atomize"}
