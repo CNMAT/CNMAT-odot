@@ -8,7 +8,7 @@
 			"architecture" : "x64"
 		}
 ,
-		"rect" : [ 169.0, 72.0, 965.0, 554.0 ],
+		"rect" : [ 169.0, 72.0, 965.0, 517.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -63,8 +63,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 584.5, 412.5, 111.0, 34.0 ],
-					"text" : "/bloo : [\"a\", \"r\", \"s\"]",
+					"patching_rect" : [ 584.5, 455.5, 111.0, 34.0 ],
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -78,8 +77,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 478.0, 412.5, 83.0, 34.0 ],
-					"text" : "/bar : [1, 2, 3]",
+					"patching_rect" : [ 478.0, 455.5, 83.0, 34.0 ],
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -194,7 +192,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 465.5, 65.5, 150.0, 20.0 ],
+					"patching_rect" : [ 800.0, 447.5, 150.0, 20.0 ],
 					"text" : "see also:"
 				}
 
@@ -224,7 +222,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 12.0, 157.5, 600.0, 20.0 ],
-					"text" : "o.compose behaves like the standard Max message box except that it converts its data to OSC packets."
+					"text" : "o.compose converts its textual contents to OSC packets."
 				}
 
 			}
@@ -238,7 +236,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 12.0, 109.5, 600.0, 20.0 ],
-					"text" : "Create and display OSC bundles"
+					"text" : "Create OSC bundles from text"
 				}
 
 			}
@@ -251,7 +249,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 12.0, 20.5, 600.0, 87.0 ],
+					"patching_rect" : [ 12.0, 20.5, 453.5, 87.0 ],
 					"text" : "o.compose"
 				}
 
@@ -261,13 +259,13 @@
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"id" : "obj-1",
-					"items" : "message",
+					"items" : [ "message", ",", "o.display" ],
 					"maxclass" : "umenu",
 					"numinlets" : 1,
 					"numoutlets" : 3,
 					"outlettype" : [ "int", "", "" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 465.5, 87.5, 132.0, 20.0 ]
+					"patching_rect" : [ 800.0, 469.5, 132.0, 20.0 ]
 				}
 
 			}
@@ -354,7 +352,7 @@
 					"destination" : [ "obj-10", 0 ],
 					"disabled" : 0,
 					"hidden" : 1,
-					"midpoints" : [ 531.5, 141.5, 627.0, 141.5, 627.0, 6.5, 436.5, 6.5 ],
+					"midpoints" : [ 866.0, 141.5, 627.0, 141.5, 627.0, 6.5, 436.5, 6.5 ],
 					"source" : [ "obj-1", 1 ]
 				}
 
@@ -407,6 +405,7 @@
 			}
 , 			{
 				"patchline" : 				{
+					"color" : [ 1.0, 0.8, 0.4, 1.0 ],
 					"destination" : [ "obj-25", 1 ],
 					"disabled" : 0,
 					"hidden" : 0,
@@ -425,6 +424,7 @@
 			}
 , 			{
 				"patchline" : 				{
+					"color" : [ 1.0, 0.8, 0.4, 1.0 ],
 					"destination" : [ "obj-2", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
@@ -484,8 +484,8 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "o.helpfilehelper.maxpat",
-				"bootpath" : "/Users/ilyarostovtsev/Documents/Max/Packages/odot/misc",
-				"patcherrelativepath" : "../../../../../Max/Packages/odot/misc",
+				"bootpath" : "/Users/ilyarostovtsev/Documents/Creative Coding/odot/_full_build_trunk/CNMAT-odot/misc",
+				"patcherrelativepath" : "../misc",
 				"type" : "JSON",
 				"implicit" : 1
 			}

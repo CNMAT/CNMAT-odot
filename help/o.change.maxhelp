@@ -8,7 +8,7 @@
 			"architecture" : "x64"
 		}
 ,
-		"rect" : [ 253.0, 135.0, 690.0, 546.0 ],
+		"rect" : [ 253.0, 135.0, 690.0, 523.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -39,7 +39,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 320.0, 219.643677, 94.0, 37.0 ],
+					"patching_rect" : [ 341.0, 236.0, 94.0, 37.0 ],
 					"text" : "/foo : [1, 2, 3],\n/bar : [4, 5, 7]",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -50,11 +50,12 @@
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"id" : "obj-7",
+					"linecount" : 2,
 					"maxclass" : "o.compose",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 220.666672, 219.643677, 88.0, 24.0 ],
+					"patching_rect" : [ 241.666672, 236.0, 88.0, 37.0 ],
 					"text" : "/foo : [1, 2, 3]",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -70,7 +71,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 115.333336, 219.643677, 94.0, 37.0 ],
+					"patching_rect" : [ 136.333344, 236.0, 94.0, 37.0 ],
 					"text" : "/foo : [1, 2, 3],\n/bar : [4, 5, 6]",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -86,7 +87,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 9.0, 219.643677, 95.0, 37.0 ],
+					"patching_rect" : [ 30.0, 236.0, 95.0, 37.0 ],
 					"text" : "/bar : [4, 5, 6],\n/foo : [1, 2, 3]",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -101,7 +102,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 130.0, 393.643677, 150.0, 34.0 ],
+					"patching_rect" : [ 151.0, 410.0, 150.0, 34.0 ],
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -115,7 +116,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 130.0, 338.643677, 60.0, 20.0 ],
+					"patching_rect" : [ 151.0, 355.0, 60.0, 20.0 ],
 					"text" : "o.change"
 				}
 
@@ -129,7 +130,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 407.0, 72.643677, 150.0, 20.0 ],
+					"patching_rect" : [ 545.0, 402.0, 150.0, 20.0 ],
 					"text" : "see also:"
 				}
 
@@ -144,7 +145,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 4,
 					"outlettype" : [ "", "", "", "clear" ],
-					"patching_rect" : [ 455.0, 31.643677, 176.0, 20.0 ],
+					"patching_rect" : [ 476.0, 48.0, 176.0, 20.0 ],
 					"text" : "o.helpfilehelper @obj o.change"
 				}
 
@@ -159,8 +160,8 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 9.0, 150.643677, 647.0, 33.0 ],
-					"text" : "o.change passes a bundle through if it is different from the last bundle that it received.  Any change including reordering the contents will cause the bundle to be passed through"
+					"patching_rect" : [ 30.0, 167.0, 647.0, 33.0 ],
+					"text" : "o.change passes a bundle through if it is different from the last bundle that it received.  Any change including reordering the contents will cause the bundle to be passed through."
 				}
 
 			}
@@ -173,8 +174,8 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 9.0, 102.643677, 167.0, 20.0 ],
-					"text" : "Output a bundle if it changes."
+					"patching_rect" : [ 30.0, 119.0, 167.0, 20.0 ],
+					"text" : "Output a bundle if it changes"
 				}
 
 			}
@@ -187,7 +188,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 9.0, 13.643677, 307.0, 87.0 ],
+					"patching_rect" : [ 30.0, 30.0, 307.0, 87.0 ],
 					"text" : "o.change"
 				}
 
@@ -203,7 +204,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "int", "", "" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 407.0, 94.643677, 132.0, 20.0 ]
+					"patching_rect" : [ 545.0, 424.0, 132.0, 20.0 ]
 				}
 
 			}
@@ -213,7 +214,7 @@
 					"destination" : [ "obj-10", 0 ],
 					"disabled" : 0,
 					"hidden" : 1,
-					"midpoints" : [ 473.0, 124.643677, 393.0, 124.643677, 393.0, 28.643677, 464.5, 28.643677 ],
+					"midpoints" : [ 611.0, 141.0, 414.0, 141.0, 414.0, 45.0, 485.5, 45.0 ],
 					"source" : [ "obj-1", 1 ]
 				}
 
@@ -307,8 +308,8 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "o.helpfilehelper.maxpat",
-				"bootpath" : "/Users/ilyarostovtsev/Documents/Max/Packages/odot/misc",
-				"patcherrelativepath" : "../../../../../Max/Packages/odot/misc",
+				"bootpath" : "/Users/ilyarostovtsev/Documents/Creative Coding/odot/_full_build_trunk/CNMAT-odot/misc",
+				"patcherrelativepath" : "../misc",
 				"type" : "JSON",
 				"implicit" : 1
 			}
