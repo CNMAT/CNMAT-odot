@@ -320,8 +320,8 @@ void ocontext_doFullPacket(t_ocontext *x, long len, char *ptr)
 			omax_util_outletOSC(x->outlet, l, buf);
 			osc_mem_free(buf);
 		}
+		osc_bundle_u_free(bu);
 	}
-	osc_bundle_u_free(mypatcher_bndl);
 }
 #endif
 

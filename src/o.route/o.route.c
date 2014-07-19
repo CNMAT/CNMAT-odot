@@ -438,6 +438,7 @@ void oroute_free(t_oroute *x)
 
 void oroute_makeSchema(t_oroute *x)
 {
+	return;
 	t_osc_bndl_u *bndl = osc_bundle_u_alloc();
 	t_osc_msg_u *msg = osc_message_u_alloc();
 	if(!bndl || !msg){
