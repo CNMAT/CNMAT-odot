@@ -8,7 +8,7 @@
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 100.0, 100.0, 1076.0, 773.0 ],
+		"rect" : [ 93.0, 44.0, 1076.0, 690.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -50,7 +50,7 @@
 					"numoutlets" : 1,
 					"offset" : [ -24.0, -5.0 ],
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 504.0, 405.0, 522.0, 235.0 ]
+					"patching_rect" : [ 475.0, 405.0, 522.0, 235.0 ]
 				}
 
 			}
@@ -143,7 +143,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 569.0, 204.0, 102.0, 24.0 ],
+					"patching_rect" : [ 616.0, 115.666664, 102.0, 24.0 ],
 					"text" : "/tone/off",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -158,7 +158,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 569.0, 168.5, 102.0, 24.0 ],
+					"patching_rect" : [ 616.0, 80.166664, 102.0, 24.0 ],
 					"text" : "/tone : 220.",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -173,7 +173,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 569.0, 130.0, 102.0, 24.0 ],
+					"patching_rect" : [ 616.0, 41.666664, 102.0, 24.0 ],
 					"text" : "/tone : 440",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -188,7 +188,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 569.0, 96.0, 108.0, 24.0 ],
+					"patching_rect" : [ 616.0, 7.666664, 108.0, 24.0 ],
 					"text" : "/tone : [200, 200]",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -203,7 +203,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 180.0, 405.0, 267.0, 34.0 ],
+					"patching_rect" : [ 19.0, 405.0, 267.0, 34.0 ],
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -218,7 +218,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 707.5, 249.0, 158.0, 88.0 ],
+					"patching_rect" : [ 643.5, 260.0, 158.0, 88.0 ],
 					"text" : "/port : \"Bluetooth-Serial-1\",\n/rate/output : 0,\n/rate/input : 0,\n/mediansize/received,\n/baud",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -234,7 +234,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 600.0, 31.5, 150.0, 33.0 ],
+					"patching_rect" : [ 30.0, 351.0, 150.0, 33.0 ],
 					"text" : "Adrian Freed, Jeff Lubow 2014"
 				}
 
@@ -263,7 +263,7 @@
 					"numoutlets" : 1,
 					"offset" : [ 3.0, 0.0 ],
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 382.5, 232.0, 164.0, 24.0 ]
+					"patching_rect" : [ 382.5, 240.0, 164.0, 24.0 ]
 				}
 
 			}
@@ -467,7 +467,7 @@
  ]
 					}
 ,
-					"patching_rect" : [ 590.0, 279.0, 85.0, 20.0 ],
+					"patching_rect" : [ 596.0, 190.0, 85.0, 20.0 ],
 					"saved_object_attributes" : 					{
 						"default_fontface" : 0,
 						"default_fontname" : "Arial",
@@ -492,7 +492,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 590.0, 249.0, 20.0, 20.0 ]
+					"patching_rect" : [ 596.0, 160.0, 20.0, 20.0 ]
 				}
 
 			}
@@ -605,8 +605,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 328.5, 364.0, 221.0, 20.0 ],
-					"text" : "o.io.esplora /port usbmodemOSCes421"
+					"patching_rect" : [ 328.5, 364.0, 220.0, 20.0 ],
+					"text" : "o.io.esplora /port usbmodemOSCes311"
 				}
 
 			}
@@ -624,10 +624,21 @@
 , 			{
 				"patchline" : 				{
 					"color" : [ 1.0, 0.8, 0.4, 1.0 ],
+					"destination" : [ "obj-16", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"midpoints" : [ 539.0, 384.0, 627.0, 384.0, 627.0, 225.0, 392.0, 225.0 ],
+					"source" : [ "obj-1", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"color" : [ 1.0, 0.8, 0.4, 1.0 ],
 					"destination" : [ "obj-3", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"midpoints" : [ 540.0, 384.0, 693.0, 384.0, 693.0, 246.0, 717.0, 246.0 ],
+					"midpoints" : [ 539.0, 384.0, 638.0, 384.0, 638.0, 246.0, 653.0, 246.0 ],
 					"source" : [ "obj-1", 1 ]
 				}
 
@@ -681,7 +692,7 @@
 					"destination" : [ "obj-1", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"midpoints" : [ 578.5, 124.0, 564.0, 124.0, 564.0, 351.0, 338.0, 351.0 ],
+					"midpoints" : [ 625.5, 37.0, 564.0, 37.0, 564.0, 283.0, 338.0, 283.0 ],
 					"source" : [ "obj-14", 0 ]
 				}
 
@@ -692,7 +703,7 @@
 					"destination" : [ "obj-1", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"midpoints" : [ 578.5, 158.0, 564.0, 158.0, 564.0, 351.0, 338.0, 351.0 ],
+					"midpoints" : [ 625.5, 76.0, 564.0, 76.0, 564.0, 351.0, 338.0, 351.0 ],
 					"source" : [ "obj-15", 0 ]
 				}
 
@@ -713,7 +724,7 @@
 					"destination" : [ "obj-1", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"midpoints" : [ 578.5, 198.0, 564.0, 198.0, 564.0, 351.0, 338.0, 351.0 ],
+					"midpoints" : [ 625.5, 114.0, 564.0, 114.0, 564.0, 351.0, 338.0, 351.0 ],
 					"source" : [ "obj-17", 0 ]
 				}
 
@@ -764,7 +775,7 @@
 					"destination" : [ "obj-1", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"midpoints" : [ 578.5, 233.0, 563.0, 233.0, 563.0, 351.0, 338.0, 351.0 ],
+					"midpoints" : [ 625.5, 154.0, 563.0, 154.0, 563.0, 351.0, 338.0, 351.0 ],
 					"source" : [ "obj-25", 0 ]
 				}
 
@@ -813,7 +824,7 @@
 					"destination" : [ "obj-1", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"midpoints" : [ 599.5, 356.0, 338.0, 356.0 ],
+					"midpoints" : [ 605.5, 356.0, 338.0, 356.0 ],
 					"source" : [ "obj-51", 0 ]
 				}
 
@@ -854,98 +865,98 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "o.io.esplora.maxpat",
-				"bootpath" : "/Users/adrian2013/Documents/Max/Packages/CNMAT-odot/patchers/io/esplora",
+				"bootpath" : "/Users/adrian2013/Documents/Max/Packages/CNMAT-odot/patchers/esplora",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.io.slipserial.maxpat",
-				"bootpath" : "/Users/adrian2013/Documents/Max/Packages/CNMAT-odot/patchers/io",
-				"patcherrelativepath" : "..",
+				"bootpath" : "/Users/adrian2013/Documents/Max/Packages/CNMAT-odot/patchers/esplora",
+				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.arguments.maxpat",
 				"bootpath" : "/Users/adrian2013/Documents/Max/Packages/CNMAT-odot/patchers",
-				"patcherrelativepath" : "../..",
+				"patcherrelativepath" : "..",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.righttoleft.maxpat",
 				"bootpath" : "/Users/adrian2013/Documents/Max/Packages/CNMAT-odot/patchers/core",
-				"patcherrelativepath" : "../../core",
+				"patcherrelativepath" : "../core",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.in.maxpat",
 				"bootpath" : "/Users/adrian2013/Documents/Max/Packages/CNMAT-odot/patchers/core",
-				"patcherrelativepath" : "../../core",
+				"patcherrelativepath" : "../core",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.port.maxpat",
 				"bootpath" : "/Users/adrian2013/Documents/Max/Packages/CNMAT-odot/patchers/core",
-				"patcherrelativepath" : "../../core",
+				"patcherrelativepath" : "../core",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.aspect.joinpoint.maxpat",
 				"bootpath" : "/Users/adrian2013/Documents/Max/Packages/CNMAT-odot/patchers/aspect",
-				"patcherrelativepath" : "../../aspect",
+				"patcherrelativepath" : "../aspect",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.out.maxpat",
 				"bootpath" : "/Users/adrian2013/Documents/Max/Packages/CNMAT-odot/patchers/core",
-				"patcherrelativepath" : "../../core",
+				"patcherrelativepath" : "../core",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.io.serial.display.maxpat",
-				"bootpath" : "/Users/adrian2013/Documents/Max/Packages/CNMAT-odot/patchers/io",
-				"patcherrelativepath" : "..",
+				"bootpath" : "/Users/adrian2013/Documents/Max/Packages/CNMAT-odot/patchers/esplora",
+				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.io.esplora.display.maxpat",
-				"bootpath" : "/Users/adrian2013/Documents/Max/Packages/CNMAT-odot/patchers/io/esplora",
+				"bootpath" : "/Users/adrian2013/Documents/Max/Packages/CNMAT-odot/patchers/esplora",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "c.esplora.buttonui.maxpat",
-				"bootpath" : "/Users/adrian2013/Documents/Max/Packages/CNMAT-odot/patchers/io/esplora",
+				"bootpath" : "/Users/adrian2013/Documents/Max/Packages/CNMAT-odot/patchers/esplora",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "c.esplora.buttonhelper.maxpat",
-				"bootpath" : "/Users/adrian2013/Documents/Max/Packages/CNMAT-odot/patchers/io/esplora",
+				"bootpath" : "/Users/adrian2013/Documents/Max/Packages/CNMAT-odot/patchers/esplora",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "c.lcd.xydraw.maxpat",
-				"bootpath" : "/Users/adrian2013/Documents/Max/Packages/CNMAT-odot/patchers/io/esplora",
+				"bootpath" : "/Users/adrian2013/Documents/Max/Packages/CNMAT-odot/patchers/esplora",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "c.lcd.circle.maxpat",
-				"bootpath" : "/Users/adrian2013/Documents/Max/Packages/CNMAT-odot/patchers/io/esplora",
+				"bootpath" : "/Users/adrian2013/Documents/Max/Packages/CNMAT-odot/patchers/esplora",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
@@ -953,7 +964,7 @@
 , 			{
 				"name" : "o.gather.maxpat",
 				"bootpath" : "/Users/adrian2013/Documents/Max/Packages/CNMAT-odot/patchers/namespace",
-				"patcherrelativepath" : "../../namespace",
+				"patcherrelativepath" : "../namespace",
 				"type" : "JSON",
 				"implicit" : 1
 			}

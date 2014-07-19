@@ -846,8 +846,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 317.0, 65.0, 138.0, 19.0 ],
-					"text" : "o.in @name devicecontrol"
+					"patching_rect" : [ 317.0, 65.0, 118.0, 19.0 ],
+					"text" : "o.in @name configure"
 				}
 
 			}
@@ -1051,7 +1051,7 @@
 					"maxclass" : "inlet",
 					"numinlets" : 0,
 					"numoutlets" : 1,
-					"outlettype" : [ "FullPacket" ],
+					"outlettype" : [ "" ],
 					"patching_rect" : [ 317.0, 30.696976, 25.0, 25.0 ]
 				}
 
@@ -1197,7 +1197,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "int" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 215.499985, 211.0, 22.0, 22.0 ]
+					"patching_rect" : [ 215.499985, 204.0, 22.0, 22.0 ]
 				}
 
 			}
@@ -1377,6 +1377,7 @@
 					"destination" : [ "obj-73", 2 ],
 					"disabled" : 0,
 					"hidden" : 0,
+					"midpoints" : [ 224.999985, 234.0, 778.0, 234.0, 778.0, 390.0, 777.093872, 390.0 ],
 					"source" : [ "obj-25", 0 ]
 				}
 
@@ -1716,6 +1717,105 @@
 					"source" : [ "obj-9", 0 ]
 				}
 
+			}
+ ],
+		"dependency_cache" : [ 			{
+				"name" : "o.arguments.maxpat",
+				"bootpath" : "/Users/adrian2013/Documents/Max/Packages/CNMAT-odot/patchers",
+				"patcherrelativepath" : "..",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "o.righttoleft.maxpat",
+				"bootpath" : "/Users/adrian2013/Documents/Max/Packages/CNMAT-odot/patchers/core",
+				"patcherrelativepath" : "../core",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "o.in.maxpat",
+				"bootpath" : "/Users/adrian2013/Documents/Max/Packages/CNMAT-odot/patchers/core",
+				"patcherrelativepath" : "../core",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "o.port.maxpat",
+				"bootpath" : "/Users/adrian2013/Documents/Max/Packages/CNMAT-odot/patchers/core",
+				"patcherrelativepath" : "../core",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "o.aspect.joinpoint.maxpat",
+				"bootpath" : "/Users/adrian2013/Documents/Max/Packages/CNMAT-odot/patchers/aspect",
+				"patcherrelativepath" : "../aspect",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "o.out.maxpat",
+				"bootpath" : "/Users/adrian2013/Documents/Max/Packages/CNMAT-odot/patchers/core",
+				"patcherrelativepath" : "../core",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "o.pack.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.route.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.union.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.collect.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.if.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.var.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.select.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.context.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.prepend.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.cond.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.validate.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.print.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.slip.encode.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.slip.decode.mxo",
+				"type" : "iLaX"
 			}
  ]
 	}
