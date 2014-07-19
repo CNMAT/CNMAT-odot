@@ -577,7 +577,7 @@ void *oexprcodebox_new(t_symbol *msg, short argc, t_atom *argv)
         | JBOX_TRANSPARENT
         //| JBOX_NOGROW
         //| JBOX_GROWY
-        //| JBOX_GROWBOTH
+        | JBOX_GROWBOTH
         //| JBOX_HILITE
         //| JBOX_BACKGROUND
         //| JBOX_DRAWBACKGROUND
