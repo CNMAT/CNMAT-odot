@@ -68,7 +68,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 313.0, 647.0, 150.0, 48.0 ],
+					"patching_rect" : [ 313.0, 674.0, 150.0, 48.0 ],
 					"text" : "Ilya \nAdrian\n2014"
 				}
 
@@ -108,7 +108,7 @@
 					"maxclass" : "outlet",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 209.0, 660.0, 25.0, 25.0 ]
+					"patching_rect" : [ 209.0, 687.0, 25.0, 25.0 ]
 				}
 
 			}
@@ -121,7 +121,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 209.0, 600.0, 110.0, 20.0 ],
+					"patching_rect" : [ 209.0, 627.0, 110.0, 20.0 ],
 					"text" : "o.out @name main"
 				}
 
@@ -304,12 +304,13 @@
 									"fontname" : "Helvetica Neue",
 									"fontsize" : 12.0,
 									"id" : "obj-8",
-									"maxclass" : "newobj",
+									"maxclass" : "o.expr.codebox",
 									"numinlets" : 1,
-									"numoutlets" : 1,
-									"outlettype" : [ "FullPacket" ],
-									"patching_rect" : [ 210.0, 209.0, 210.0, 20.0 ],
-									"text" : "o.expr /n = 0\\, /metro/started += 0.01\\,"
+									"numoutlets" : 2,
+									"outlettype" : [ "FullPacket", "FullPacket" ],
+									"patching_rect" : [ 210.0, 209.0, 172.0, 33.0 ],
+									"text" : "/n = 0, /metro/started += 0.01",
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 
 							}
@@ -318,12 +319,13 @@
 									"fontname" : "Helvetica Neue",
 									"fontsize" : 12.0,
 									"id" : "obj-6",
-									"maxclass" : "newobj",
+									"maxclass" : "o.expr.codebox",
 									"numinlets" : 1,
-									"numoutlets" : 1,
-									"outlettype" : [ "FullPacket" ],
-									"patching_rect" : [ 210.0, 270.0, 314.0, 20.0 ],
-									"text" : "o.expr /metro/next = /n * /interval + /metro/started\\, ++/n\\,"
+									"numoutlets" : 2,
+									"outlettype" : [ "FullPacket", "FullPacket" ],
+									"patching_rect" : [ 210.0, 270.0, 278.0, 33.0 ],
+									"text" : " /metro/next = /n * /interval + /metro/started, ++/n",
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 
 							}
@@ -353,6 +355,7 @@
 							}
 , 							{
 								"patchline" : 								{
+									"color" : [ 1.0, 0.8, 0.4, 1.0 ],
 									"destination" : [ "obj-6", 0 ],
 									"disabled" : 0,
 									"hidden" : 0,
@@ -363,6 +366,7 @@
 							}
 , 							{
 								"patchline" : 								{
+									"color" : [ 1.0, 0.8, 0.4, 1.0 ],
 									"destination" : [ "obj-1", 0 ],
 									"disabled" : 0,
 									"hidden" : 0,
@@ -381,6 +385,7 @@
 							}
 , 							{
 								"patchline" : 								{
+									"color" : [ 1.0, 0.8, 0.4, 1.0 ],
 									"destination" : [ "obj-43", 0 ],
 									"disabled" : 0,
 									"hidden" : 0,
@@ -390,6 +395,7 @@
 							}
 , 							{
 								"patchline" : 								{
+									"color" : [ 1.0, 0.8, 0.4, 1.0 ],
 									"destination" : [ "obj-35", 0 ],
 									"disabled" : 0,
 									"hidden" : 0,
@@ -399,6 +405,7 @@
 							}
 , 							{
 								"patchline" : 								{
+									"color" : [ 1.0, 0.8, 0.4, 1.0 ],
 									"destination" : [ "obj-4", 0 ],
 									"disabled" : 0,
 									"hidden" : 0,
@@ -409,6 +416,7 @@
 							}
 , 							{
 								"patchline" : 								{
+									"color" : [ 1.0, 0.8, 0.4, 1.0 ],
 									"destination" : [ "obj-9", 0 ],
 									"disabled" : 0,
 									"hidden" : 0,
@@ -418,6 +426,7 @@
 							}
 , 							{
 								"patchline" : 								{
+									"color" : [ 1.0, 0.8, 0.4, 1.0 ],
 									"destination" : [ "obj-6", 0 ],
 									"disabled" : 0,
 									"hidden" : 0,
@@ -427,6 +436,7 @@
 							}
 , 							{
 								"patchline" : 								{
+									"color" : [ 1.0, 0.8, 0.4, 1.0 ],
 									"destination" : [ "obj-2", 0 ],
 									"disabled" : 0,
 									"hidden" : 0,
@@ -436,6 +446,7 @@
 							}
 , 							{
 								"patchline" : 								{
+									"color" : [ 1.0, 0.8, 0.4, 1.0 ],
 									"destination" : [ "obj-2", 0 ],
 									"disabled" : 0,
 									"hidden" : 0,
@@ -445,6 +456,7 @@
 							}
 , 							{
 								"patchline" : 								{
+									"color" : [ 1.0, 0.8, 0.4, 1.0 ],
 									"destination" : [ "obj-39", 0 ],
 									"disabled" : 0,
 									"hidden" : 0,
@@ -454,6 +466,7 @@
 							}
 , 							{
 								"patchline" : 								{
+									"color" : [ 1.0, 0.8, 0.4, 1.0 ],
 									"destination" : [ "obj-39", 0 ],
 									"disabled" : 0,
 									"hidden" : 0,
@@ -464,7 +477,7 @@
  ]
 					}
 ,
-					"patching_rect" : [ 209.0, 510.0, 82.0, 20.0 ],
+					"patching_rect" : [ 209.0, 537.0, 82.0, 20.0 ],
 					"saved_object_attributes" : 					{
 						"default_fontface" : 0,
 						"default_fontname" : "Helvetica Neue",
@@ -491,7 +504,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 209.0, 571.0, 50.0, 20.0 ],
+					"patching_rect" : [ 209.0, 598.0, 50.0, 20.0 ],
 					"text" : "o.union"
 				}
 
@@ -505,7 +518,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 330.0, 485.0, 257.0, 20.0 ],
+					"patching_rect" : [ 345.0, 557.0, 257.0, 20.0 ],
 					"text" : "blend in parameters the metronome is using..."
 				}
 
@@ -519,7 +532,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "FullPacket" ],
-					"patching_rect" : [ 209.0, 465.0, 99.0, 20.0 ],
+					"patching_rect" : [ 209.0, 492.0, 99.0, 20.0 ],
 					"text" : "o.select /interval"
 				}
 
@@ -529,12 +542,14 @@
 					"fontname" : "Helvetica Neue",
 					"fontsize" : 12.0,
 					"id" : "obj-16",
-					"maxclass" : "newobj",
+					"linecount" : 2,
+					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 315.0, 465.0, 269.0, 20.0 ],
-					"text" : "o.expr /bpm = 60. / /interval\\, /rate = 1. / /interval"
+					"numoutlets" : 2,
+					"outlettype" : [ "FullPacket", "FullPacket" ],
+					"patching_rect" : [ 315.0, 486.0, 150.0, 47.0 ],
+					"text" : "/bpm = 60. / /interval, /rate = 1. / /interval",
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
 			}
@@ -547,7 +562,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 8,
 					"outlettype" : [ "FullPacket", "FullPacket", "FullPacket", "FullPacket", "FullPacket", "FullPacket", "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 209.0, 420.0, 125.0, 20.0 ],
+					"patching_rect" : [ 209.0, 447.0, 125.0, 20.0 ],
 					"text" : "o.righttoleft"
 				}
 
@@ -557,12 +572,13 @@
 					"fontname" : "Helvetica Neue",
 					"fontsize" : 12.0,
 					"id" : "obj-14",
-					"maxclass" : "newobj",
+					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 209.0, 369.0, 150.0, 20.0 ],
-					"text" : "o.expr /interval = 1. / /rate"
+					"numoutlets" : 2,
+					"outlettype" : [ "FullPacket", "FullPacket" ],
+					"patching_rect" : [ 209.0, 396.0, 150.0, 33.0 ],
+					"text" : "/interval = 1. / /rate",
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
 			}
@@ -585,12 +601,13 @@
 					"fontname" : "Helvetica Neue",
 					"fontsize" : 12.0,
 					"id" : "obj-12",
-					"maxclass" : "newobj",
+					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 209.0, 298.0, 160.0, 20.0 ],
-					"text" : "o.expr /interval = 60. / /bpm"
+					"numoutlets" : 2,
+					"outlettype" : [ "FullPacket", "FullPacket" ],
+					"patching_rect" : [ 209.0, 298.0, 128.0, 33.0 ],
+					"text" : " /interval = 60. / /bpm",
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
 			}
@@ -643,7 +660,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 208.5, 195.5, 30.0, 20.0 ],
+					"patching_rect" : [ 208.5, 188.5, 30.0, 20.0 ],
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -657,7 +674,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 209.0, 240.5, 59.0, 20.0 ],
+					"patching_rect" : [ 209.0, 233.5, 59.0, 20.0 ],
 					"text" : "o.union"
 				}
 
@@ -671,7 +688,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 249.0, 209.5, 37.0, 20.0 ],
+					"patching_rect" : [ 249.0, 202.5, 37.0, 20.0 ],
 					"text" : "o.init"
 				}
 
@@ -685,7 +702,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 208.5, 164.5, 25.0, 20.0 ],
+					"patching_rect" : [ 208.5, 154.5, 25.0, 20.0 ],
 					"text" : "t b"
 				}
 
@@ -871,6 +888,7 @@
 			}
 , 			{
 				"patchline" : 				{
+					"color" : [ 1.0, 0.8, 0.4, 1.0 ],
 					"destination" : [ "obj-27", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
@@ -910,6 +928,7 @@
 			}
 , 			{
 				"patchline" : 				{
+					"color" : [ 1.0, 0.8, 0.4, 1.0 ],
 					"destination" : [ "obj-3", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
@@ -957,6 +976,7 @@
 			}
 , 			{
 				"patchline" : 				{
+					"color" : [ 1.0, 0.8, 0.4, 1.0 ],
 					"destination" : [ "obj-11", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
@@ -1086,7 +1106,7 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "o.expr.mxo",
+				"name" : "o.expr.codebox.mxo",
 				"type" : "iLaX"
 			}
 , 			{
@@ -1099,10 +1119,6 @@
 			}
 , 			{
 				"name" : "o.when.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.expr.codebox.mxo",
 				"type" : "iLaX"
 			}
  ]
