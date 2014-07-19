@@ -5,7 +5,7 @@
 			"major" : 6,
 			"minor" : 1,
 			"revision" : 4,
-			"architecture" : "x86"
+			"architecture" : "x64"
 		}
 ,
 		"rect" : [ 53.0, 44.0, 1378.0, 765.0 ],
@@ -63,7 +63,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
 					"patching_rect" : [ 231.166656, 357.0, 195.0, 99.0 ],
-					"text" : "/position =  [-0.1, 0.2,  /between ],\n/radius = 0.04,\n/green = list(),\n/radius/bis = 0.01,\n/length = 0.7, \n/shape = \"cylinder\",",
+					"text" : "/position =  [-0.1, 0.2,  /between ],\n/radius = 0.04,\n/green = list(),\n/radius/bis = 0.01,\n/length = 0.7, \n/shape = \"cylinder\"",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -83,7 +83,7 @@
 							"major" : 6,
 							"minor" : 1,
 							"revision" : 4,
-							"architecture" : "x86"
+							"architecture" : "x64"
 						}
 ,
 						"rect" : [ 34.0, 69.0, 640.0, 480.0 ],
@@ -306,7 +306,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
 					"patching_rect" : [ 15.0, 568.0, 318.0, 86.0 ],
-					"text" : "/position = scale( (/in + /between) / 6, 0. , 1.0,-0.8,0.8),\n/position = [/position, /position, /position],\n/color = [0.7 , 0.9 ,  0.5],\n/radius = 0.1,\n/shape = \"framecircle\",",
+					"text" : "/position = scale( (/in + /between) / 6, 0. , 1.0,-0.8,0.8),\n/position = [/position, /position, /position],\n/color = [0.7 , 0.9 ,  0.5],\n/radius = 0.1,\n/shape = \"framecircle\"",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -322,7 +322,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
 					"patching_rect" : [ 36.0, 276.0, 226.0, 72.0 ],
-					"text" : "/position = [ 0.1, /between , /between],\n/color = [0.3  , /between,  0.5],\n/radius = 0.1,\n/shape = \"sphere\",",
+					"text" : "/position = [ 0.1, /between , /between],\n/color = [0.3  , /between,  0.5],\n/radius = 0.1,\n/shape = \"sphere\"",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -338,7 +338,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
 					"patching_rect" : [ 20.0, 53.0, 262.0, 59.0 ],
-					"text" : "/scenenumber = (0.4*(/now-/beginning)) % 6.,\n/in = floor(/scenenumber),\n/between = /scenenumber%1.0,",
+					"text" : "/scenenumber = (0.4*(/now-/beginning)) % 6.,\n/in = floor(/scenenumber),\n/between = /scenenumber%1.0",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -358,7 +358,7 @@
 							"major" : 6,
 							"minor" : 1,
 							"revision" : 4,
-							"architecture" : "x86"
+							"architecture" : "x64"
 						}
 ,
 						"rect" : [ 59.0, 69.0, 640.0, 480.0 ],
