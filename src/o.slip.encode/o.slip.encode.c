@@ -26,7 +26,7 @@
 */
 
 #define OMAX_DOC_NAME "o.slip.encode"
-#define OMAX_DOC_SHORT_DESC "SLIP encodes an OSC packet and outputs a stream of bytes."
+#define OMAX_DOC_SHORT_DESC "SLIP encodes an OSC packet and outputs a stream of bytes"
 #define OMAX_DOC_LONG_DESC "SLIP encodes an OSC packet and outputs a stream of bytes suitable for use with Max's serial object."
 #define OMAX_DOC_INLETS_DESC (char *[]){"FullPacket"}
 #define OMAX_DOC_OUTLETS_DESC (char *[]){"Byte stream"}

@@ -32,10 +32,10 @@
 
 
 #define OMAX_DOC_NAME "o.explode"
-#define OMAX_DOC_SHORT_DESC "Explode address hierarchies into nested bundles (opposite of o.flatten)."
-#define OMAX_DOC_LONG_DESC "o.explode breaks address hierarchies into nested bundles, e.g., /foo/bar 10 becomes /foo [ /bar 10 ].  It is the opposite of o.flatten."
-#define OMAX_DOC_INLETS_DESC (char *[]){"OSC packet."}
-#define OMAX_DOC_OUTLETS_DESC (char *[]){"The exploded OSC packet."}
+#define OMAX_DOC_SHORT_DESC "Explode address hierarchies into nested bundles"
+#define OMAX_DOC_LONG_DESC "o.explode breaks address hierarchies into nested bundles, e.g., /foo/bar : 10 becomes /foo : { /bar : 10 }.  It is the opposite of o.flatten."
+#define OMAX_DOC_INLETS_DESC (char *[]){"OSC packet"}
+#define OMAX_DOC_OUTLETS_DESC (char *[]){"The exploded OSC packet"}
 #define OMAX_DOC_SEEALSO (char *[]){"o.flatten"}
 
 #include "odot_version.h"

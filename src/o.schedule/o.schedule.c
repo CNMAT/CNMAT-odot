@@ -42,7 +42,7 @@
 #define OMAX_DOC_NAME "o.schedule"
 #define OMAX_DOC_SHORT_DESC "Deadline Scheduler  for OSC packets using OSC timetags"
 #define OMAX_DOC_LONG_DESC "Stores incoming OSC packets and tries to output them at the time indicated by the timestamp."
-#define OMAX_DOC_INLETS_DESC (char *[]){"OSC packet to be scheduled."}
+#define OMAX_DOC_INLETS_DESC (char *[]){"OSC packet to be scheduled"}
 #define OMAX_DOC_OUTLETS_DESC (char *[]){"OSC packet", "OSC packet which has missed the scheduling deadline", "OSC packet which has an immediate timetag", "OSC packet output if the queue is full"}
 #define OMAX_DOC_SEEALSO (char *[]){"o.timetag"}
 

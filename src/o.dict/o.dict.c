@@ -32,10 +32,10 @@
 
 
 #define OMAX_DOC_NAME "o.dict"
-#define OMAX_DOC_SHORT_DESC "Convert an OSC bundle to a dictionary."
+#define OMAX_DOC_SHORT_DESC "Convert an OSC bundle to a Max dictionary"
 #define OMAX_DOC_LONG_DESC "o.dict takes an OSC bundle and turns it into a Max dictionary."
-#define OMAX_DOC_INLETS_DESC (char *[]){"OSC packet."}
-#define OMAX_DOC_OUTLETS_DESC (char *[]){"Dictionary."}
+#define OMAX_DOC_INLETS_DESC (char *[]){"OSC packet"}
+#define OMAX_DOC_OUTLETS_DESC (char *[]){"Dictionary"}
 #define OMAX_DOC_SEEALSO (char *[]){""}
 
 #include "o.h"

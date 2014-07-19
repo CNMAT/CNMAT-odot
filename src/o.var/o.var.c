@@ -35,8 +35,8 @@
 #define OMAX_DOC_NAME "o.var"
 #define OMAX_DOC_SHORT_DESC "Store a bundle and bang it out later."
 #define OMAX_DOC_LONG_DESC "o.var copies an OSC packet and stores it for later use.  Since FullPacket messages are references to data stored in memory, objects wishing to store a packet must make a copy of it rather than just save the FullPacket message.  Use o.var or o.message to store a packet, not zl reg or any other normal Max object."
-#define OMAX_DOC_INLETS_DESC (char *[]){"OSC packet will be stored and sent out immediately.  Bang to trigger output.", "OSC packet to be stored (no output)."}
-#define OMAX_DOC_OUTLETS_DESC (char *[]){"Stored OSC packet."}
+#define OMAX_DOC_INLETS_DESC (char *[]){"OSC packet will be stored and sent out immediately;  Bang to trigger output", "OSC packet to be stored (no output)"}
+#define OMAX_DOC_OUTLETS_DESC (char *[]){"Stored OSC packet"}
 #endif
 
 #include "odot_version.h"
