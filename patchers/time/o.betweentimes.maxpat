@@ -60,7 +60,7 @@
 					"maxclass" : "outlet",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 64.0, 374.0, 25.0, 25.0 ]
+					"patching_rect" : [ 64.0, 404.0, 25.0, 25.0 ]
 				}
 
 			}
@@ -73,7 +73,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 64.0, 337.0, 112.0, 20.0 ],
+					"patching_rect" : [ 64.0, 367.0, 112.0, 20.0 ],
 					"text" : "o.out @name main"
 				}
 
@@ -179,6 +179,16 @@
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-3", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"color" : [ 1.0, 0.8, 0.4, 1.0 ],
+					"destination" : [ "obj-5", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-3", 1 ]
 				}
 
 			}
