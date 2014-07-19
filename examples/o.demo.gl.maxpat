@@ -29,31 +29,6 @@
 		"tags" : "",
 		"boxes" : [ 			{
 				"box" : 				{
-					"id" : "obj-9",
-					"maxclass" : "button",
-					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 240.0, 120.0, 20.0, 20.0 ]
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontname" : "Arial",
-					"fontsize" : 12.0,
-					"id" : "obj-3",
-					"maxclass" : "newobj",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 180.0, 135.0, 37.0, 20.0 ],
-					"text" : "o.var"
-				}
-
-			}
-, 			{
-				"box" : 				{
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"id" : "obj-5",
@@ -613,8 +588,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 171.0, 766.0, 75.0, 20.0 ],
-					"text" : "o.io.gl place"
+					"patching_rect" : [ 171.0, 766.0, 62.0, 20.0 ],
+					"text" : "o.gl place"
 				}
 
 			}
@@ -1069,7 +1044,7 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-3", 1 ],
+					"destination" : [ "obj-57", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-19", 0 ]
@@ -1145,15 +1120,6 @@
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-28", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-57", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"source" : [ "obj-3", 0 ]
 				}
 
 			}
@@ -1238,18 +1204,9 @@
 				}
 
 			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-3", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"source" : [ "obj-9", 0 ]
-				}
-
-			}
  ],
 		"dependency_cache" : [ 			{
-				"name" : "o.io.gl.maxpat",
+				"name" : "o.gl.maxpat",
 				"bootpath" : "/Users/john/Development/CNMAT/CNMAT/CNMAT-odot/patchers/graphics",
 				"patcherrelativepath" : "../patchers/graphics",
 				"type" : "JSON",
@@ -1263,7 +1220,7 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "o.io.gl.platohelper.maxpat",
+				"name" : "o.gl.platohelper.maxpat",
 				"bootpath" : "/Users/john/Development/CNMAT/CNMAT/CNMAT-odot/patchers/graphics",
 				"patcherrelativepath" : "../patchers/graphics",
 				"type" : "JSON",
@@ -1305,7 +1262,7 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "o.io.gltexthelper.maxpat",
+				"name" : "o.gl.texthelper.maxpat",
 				"bootpath" : "/Users/john/Development/CNMAT/CNMAT/CNMAT-odot/patchers/graphics",
 				"patcherrelativepath" : "../patchers/graphics",
 				"type" : "JSON",
@@ -1393,6 +1350,10 @@
 			}
 , 			{
 				"name" : "o.listenumerate.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.compose.mxo",
 				"type" : "iLaX"
 			}
 , 			{
