@@ -4,11 +4,11 @@
 		"appversion" : 		{
 			"major" : 6,
 			"minor" : 1,
-			"revision" : 6,
+			"revision" : 4,
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 171.0, 310.0, 1448.0, 778.0 ],
+		"rect" : [ 216.0, 44.0, 1448.0, 778.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -37,7 +37,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 178.0, 114.0, 150.0, 34.0 ],
-					"text" : "/time : 0.426667",
+					"text" : "/time : 0.196667",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -47,13 +47,13 @@
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"id" : "obj-5",
-					"linecount" : 20,
+					"linecount" : 48,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 47.0, 269.0, 275.0, 289.0 ],
-					"text" : "/displaylist : [{\n\t/time : 0.426667,\n\t/radius : 0.142222,\n\t/shape : \"sphere\",\n\t/color : [0.3, 0.426667, 0.5],\n\t/position : [0.1, 0.426667, 0.426667]\n}, {\n\t/time : 0.426667,\n\t/shape : \"icosahedron\",\n\t/size : [0.426667, 0.426667, 0.426667],\n\t/position : [-0.2, 0.426667, -0.4],\n\t/color : [1., 0.2, 0.5]\n}, {\n\t/time : 0.426667,\n\t/a : [0.426667, 0.426667, -0.2],\n\t/b : [-0.4, 0.6, 0.4],\n\t/c : [-0.6, 0.2, -0.6],\n\t/color : [0.2, 0.426667, 0.8],\n\t/shape : \"triangle\"\n}]",
+					"patching_rect" : [ 47.0, 269.0, 275.0, 664.0 ],
+					"text" : "/displaylist : [{\n\t/time : 0.493333,\n\t/radius : 0.164444,\n\t/shape : \"sphere\",\n\t/color : [0.3, 0.493333, 0.5],\n\t/position : [0.1, 0.493333, 0.493333]\n}, {\n\t/time : 0.493333,\n\t/shape : \"icosahedron\",\n\t/size : [0.493333, 0.493333, 0.493333],\n\t/position : [-0.2, 0.493333, -0.4],\n\t/color : [1., 0.2, 0.5]\n}, {\n\t/time : 0.493333,\n\t/a : [0.493333, 0.493333, -0.2],\n\t/b : [-0.4, 0.6, 0.4],\n\t/c : [-0.6, 0.2, -0.6],\n\t/color : [0.2, 0.493333, 0.8],\n\t/shape : \"triangle\"\n}, {\n\t/time : 0.493333,\n\t/shape : \"dodecahedron\",\n\t/size : [0.2, 0.2, 0.2],\n\t/value : 0.493333,\n\t/position : [0.4, 0.493333, -0.4],\n\t/color : [0.4, 0.2, 0.5]\n}, {\n\t/time : 0.493333,\n\t/position : [0.493333, 0.493333, 0.493333],\n\t/color : [0.7, 0.9, 0.5],\n\t/radius : 0.1,\n\t/shape : \"framecircle\"\n}, {\n\t/time : 0.493333,\n\t/a : [0.493333, 0.493333, -0.2],\n\t/b : [-0.4, 0.6, 0.4],\n\t/c : [-0.6, 0.2, -0.6],\n\t/color : [0.2, 0.493333, 0.8],\n\t/shape : \"triangle\"\n}, {\n\t/time : 0.493333,\n\t/position : [0., 0.],\n\t/red,\n\t/radius/outer : 0.493333,\n\t/radius/inner : 0.05,\n\t/orientation : [0, 45, 90],\n\t/shape : \"torus\"\n}]",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -86,7 +86,7 @@
 						"appversion" : 						{
 							"major" : 6,
 							"minor" : 1,
-							"revision" : 6,
+							"revision" : 4,
 							"architecture" : "x86"
 						}
 ,
@@ -109,8 +109,71 @@
 						"description" : "",
 						"digest" : "",
 						"tags" : "",
-						"visible" : 1,
 						"boxes" : [ 							{
+								"box" : 								{
+									"fontname" : "Arial",
+									"fontsize" : 12.0,
+									"id" : "obj-7",
+									"linecount" : 6,
+									"maxclass" : "o.expr.codebox",
+									"numinlets" : 1,
+									"numoutlets" : 2,
+									"outlettype" : [ "FullPacket", "FullPacket" ],
+									"patching_rect" : [ 540.0, 290.0, 176.0, 99.0 ],
+									"text" : "/position = [0., 0.],\n/red = [],\n/radius/outer = /time,\n/radius/inner = 0.05,\n/orientation = [0, 45, 90],\n/shape = \"torus\"",
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"fontname" : "Arial",
+									"fontsize" : 12.0,
+									"id" : "obj-8",
+									"linecount" : 5,
+									"maxclass" : "o.expr.codebox",
+									"numinlets" : 1,
+									"numoutlets" : 2,
+									"outlettype" : [ "FullPacket", "FullPacket" ],
+									"patching_rect" : [ 540.0, 165.0, 176.0, 86.0 ],
+									"text" : "/a = [/time, /time, -0.2],\n/b = [-0.4, 0.6, 0.4],\n/c = [-0.6, 0.2, -0.6],\n/color = [0.2, /time, 0.8],\n/shape = \"triangle\"",
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"fontname" : "Arial",
+									"fontsize" : 12.0,
+									"id" : "obj-13",
+									"linecount" : 5,
+									"maxclass" : "o.expr.codebox",
+									"numinlets" : 1,
+									"numoutlets" : 2,
+									"outlettype" : [ "FullPacket", "FullPacket" ],
+									"patching_rect" : [ 120.0, 532.0, 208.0, 86.0 ],
+									"text" : "/shape = \"dodecahedron\",\n/size =  [0.2, 0.2, 0.2],\n/value = /time,\n/position = [0.4,  /time, -0.4],\n/color= [0.4, 0.2, 0.5]",
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"fontname" : "Arial",
+									"fontsize" : 12.0,
+									"id" : "obj-3",
+									"linecount" : 4,
+									"maxclass" : "o.expr.codebox",
+									"numinlets" : 1,
+									"numoutlets" : 2,
+									"outlettype" : [ "FullPacket", "FullPacket" ],
+									"patching_rect" : [ 399.0, 558.0, 176.0, 72.0 ],
+									"text" : "/position = [/time, /time, /time],\n/color =  [0.7, 0.9, 0.5],\n/radius = 0.1,\n/shape =  \"framecircle\"",
+									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
+								}
+
+							}
+, 							{
 								"box" : 								{
 									"fontname" : "Arial",
 									"fontsize" : 12.0,
@@ -124,7 +187,7 @@
 										"appversion" : 										{
 											"major" : 6,
 											"minor" : 1,
-											"revision" : 6,
+											"revision" : 4,
 											"architecture" : "x86"
 										}
 ,
@@ -147,8 +210,39 @@
 										"description" : "",
 										"digest" : "",
 										"tags" : "",
-										"visible" : 1,
 										"boxes" : [ 											{
+												"box" : 												{
+													"fontname" : "Arial",
+													"fontsize" : 12.0,
+													"id" : "obj-6",
+													"linecount" : 6,
+													"maxclass" : "o.expr.codebox",
+													"numinlets" : 1,
+													"numoutlets" : 2,
+													"outlettype" : [ "FullPacket", "FullPacket" ],
+													"patching_rect" : [ 780.0, 225.0, 176.0, 99.0 ],
+													"text" : "/position = [0., 0.],\n/red = [],\n/radius/outer = /time,\n/radius/inner = 0.05,\n/orientation = [0, 45, 90],\n/shape = \"torus\"",
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
+												}
+
+											}
+, 											{
+												"box" : 												{
+													"fontname" : "Arial",
+													"fontsize" : 12.0,
+													"id" : "obj-5",
+													"linecount" : 5,
+													"maxclass" : "o.expr.codebox",
+													"numinlets" : 1,
+													"numoutlets" : 2,
+													"outlettype" : [ "FullPacket", "FullPacket" ],
+													"patching_rect" : [ 780.0, 100.0, 176.0, 86.0 ],
+													"text" : "/a = [/time, /time, -0.2],\n/b = [-0.4, 0.6, 0.4],\n/c = [-0.6, 0.2, -0.6],\n/color = [0.2, \"$1\", 0.8],\n/shape = \"triangle\"",
+													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
+												}
+
+											}
+, 											{
 												"box" : 												{
 													"fontname" : "Arial",
 													"fontsize" : 12.0,
@@ -158,7 +252,7 @@
 													"numinlets" : 1,
 													"numoutlets" : 2,
 													"outlettype" : [ "FullPacket", "FullPacket" ],
-													"patching_rect" : [ 294.0, 74.0, 208.0, 87.0 ],
+													"patching_rect" : [ 294.0, 74.0, 208.0, 86.0 ],
 													"text" : "/shape = \"dodecahedron\",\n/size =  [0.2, 0.2, 0.2],\n/value = /time,\n/position = [0.4,  /time, -0.4],\n/color= [0.4, 0.2, 0.5]",
 													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 												}
@@ -174,7 +268,7 @@
 													"numinlets" : 1,
 													"numoutlets" : 2,
 													"outlettype" : [ "FullPacket", "FullPacket" ],
-													"patching_rect" : [ 573.0, 100.0, 176.0, 73.0 ],
+													"patching_rect" : [ 573.0, 100.0, 176.0, 72.0 ],
 													"text" : "/position = [/time, /time, /time],\n/color =  [0.7, 0.9, 0.5],\n/radius = 0.1,\n/shape =  \"framecircle\"",
 													"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 												}
@@ -391,7 +485,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "FullPacket", "FullPacket" ],
-									"patching_rect" : [ 122.5, 283.0, 150.0, 87.0 ],
+									"patching_rect" : [ 122.5, 283.0, 150.0, 86.0 ],
 									"text" : "/a =  [/time , /time, -0.2],\n/b = [-0.4, 0.6, 0.4],\n/c = [-0.6, 0.2, -0.6],\n/color = [0.2, /time, 0.8],\n/shape = \"triangle\"",
 									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
@@ -407,7 +501,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "FullPacket", "FullPacket" ],
-									"patching_rect" : [ 285.428589, 290.0, 167.0, 73.0 ],
+									"patching_rect" : [ 285.428589, 290.0, 167.0, 72.0 ],
 									"text" : "/shape =  \"icosahedron\",\n/size  =  [/time , /time , /time],\n/position = [-0.2, /time,  -0.4],\n/color = [1., 0.2, 0.5]",
 									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
@@ -423,7 +517,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "FullPacket", "FullPacket" ],
-									"patching_rect" : [ 310.5, 210.0, 171.0, 73.0 ],
+									"patching_rect" : [ 310.5, 210.0, 171.0, 72.0 ],
 									"text" : "/radius = /time / 3,\n/shape = \"sphere\",\n/color = [0.3, /time, 0.5],\n/position = [0.1, /time , /time]",
 									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
@@ -556,6 +650,15 @@
 							}
 , 							{
 								"patchline" : 								{
+									"destination" : [ "obj-22", 0 ],
+									"disabled" : 0,
+									"hidden" : 0,
+									"source" : [ "obj-13", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
 									"destination" : [ "obj-26", 1 ],
 									"disabled" : 0,
 									"hidden" : 0,
@@ -667,7 +770,25 @@
 									"destination" : [ "obj-22", 0 ],
 									"disabled" : 0,
 									"hidden" : 0,
+									"source" : [ "obj-3", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-22", 0 ],
+									"disabled" : 0,
+									"hidden" : 0,
 									"source" : [ "obj-32", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-13", 0 ],
+									"disabled" : 0,
+									"hidden" : 0,
+									"source" : [ "obj-33", 4 ]
 								}
 
 							}
@@ -691,10 +812,37 @@
 							}
 , 							{
 								"patchline" : 								{
+									"destination" : [ "obj-3", 0 ],
+									"disabled" : 0,
+									"hidden" : 0,
+									"source" : [ "obj-33", 3 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
 									"destination" : [ "obj-32", 0 ],
 									"disabled" : 0,
 									"hidden" : 0,
 									"source" : [ "obj-33", 5 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-7", 0 ],
+									"disabled" : 0,
+									"hidden" : 0,
+									"source" : [ "obj-33", 1 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-8", 0 ],
+									"disabled" : 0,
+									"hidden" : 0,
+									"source" : [ "obj-33", 2 ]
 								}
 
 							}
@@ -723,6 +871,24 @@
 									"hidden" : 0,
 									"midpoints" : [ 834.5, 628.0, 1077.0, 628.0, 1077.0, 589.0, 1076.0, 589.0, 1076.0, 526.0, 830.5, 526.0 ],
 									"source" : [ "obj-6", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-22", 0 ],
+									"disabled" : 0,
+									"hidden" : 0,
+									"source" : [ "obj-7", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-22", 0 ],
+									"disabled" : 0,
+									"hidden" : 0,
+									"source" : [ "obj-8", 0 ]
 								}
 
 							}
@@ -805,7 +971,7 @@
 						"appversion" : 						{
 							"major" : 6,
 							"minor" : 1,
-							"revision" : 6,
+							"revision" : 4,
 							"architecture" : "x86"
 						}
 ,
@@ -1001,13 +1167,13 @@
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"id" : "obj-21",
-					"linecount" : 67,
+					"linecount" : 48,
 					"maxclass" : "o.message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 867.0, 150.0, 242.0, 905.0 ],
-					"text" : "/displaylist : [{\n\t/position : [0., 0.],\n\t/color : [0.7, 0.9, 0.5],\n\t/text : \"hello world\",\n\t/shape : \"text\"\n}, {\n\t/position : [0., 0.3],\n\t/color : [0.7, 0.2, 0.5],\n\t/text : \"thing world\",\n\t/shape : \"text\"\n}, {\n\t/position : [0.1, \"$1\", \"$1\"],\n\t/color : [0.3, \"$1\", 0.5],\n\t/radius : 0.1,\n\t/shape : \"sphere\"\n}, {\n\t/position : [\"$1\", \"$1\", \"$1\"],\n\t/color : [0.7, 0.9, 0.5],\n\t/radius : 0.1,\n\t/shape : \"framecircle\"\n}, {\n\t/position : [0., 0.],\n\t/red,\n\t/radius/outer : \"$1\",\n\t/radius/inner : 0.05,\n\t/orientation : [0, 45, 90],\n\t/shape : \"torus\"\n}, {\n\t/shape : \"icosahedron\",\n\t/size : [\"$1\", \"$1\", \"$1\"],\n\t/position : [-0.2, \"$1\", -0.4],\n\t/color : [1., 0.2, 0.5]\n}, {\n\t/shape : \"dodecahedron\",\n\t/size : [0.2, 0.2, 0.2],\n\t/value : \"$1\",\n\t/position : [0.4, \"$1\", -0.4],\n\t/color : [0.4, 0.2, 0.5]\n}, {\n\t/a : [\"$1\", \"$1\", -0.2],\n\t/b : [-0.4, 0.6, 0.4],\n\t/c : [-0.6, 0.2, -0.6],\n\t/color : [0.2, \"$1\", 0.8],\n\t/shape : \"triangle\"\n}, {\n\t/position : [-0.1, -0.4, \"$1\"],\n\t/radius : 0.04,\n\t/radiusbis : \"$1\",\n\t/blue,\n\t/radius/bis : 0.01,\n\t/length : 0.7,\n\t/shape : \"cone\"\n}, {\n\t/position : [\"$1\", 0.3, -0.2],\n\t/cube : [0.7, 0.9, 0.5],\n\t/blue,\n\t/scale : [0.1, \"$1\", 0.2],\n\t/orientation : [0, 45, 90],\n\t/shape : \"cube\"\n}, {\n\t/position : [-0.1, 0.2, \"$1\"],\n\t/radius : 0.04,\n\t/green,\n\t/radius/bis : 0.01,\n\t/length : 0.7,\n\t/shape : \"cylinder\"\n}]",
+					"patching_rect" : [ 867.0, 150.0, 242.0, 650.0 ],
+					"text" : "/displaylist : [{\n\t/time : 0.193333,\n\t/radius : 0.0644444,\n\t/shape : \"sphere\",\n\t/color : [0.3, 0.193333, 0.5],\n\t/position : [0.1, 0.193333, 0.193333]\n}, {\n\t/time : 0.193333,\n\t/shape : \"icosahedron\",\n\t/size : [0.193333, 0.193333, 0.193333],\n\t/position : [-0.2, 0.193333, -0.4],\n\t/color : [1., 0.2, 0.5]\n}, {\n\t/time : 0.193333,\n\t/a : [0.193333, 0.193333, -0.2],\n\t/b : [-0.4, 0.6, 0.4],\n\t/c : [-0.6, 0.2, -0.6],\n\t/color : [0.2, 0.193333, 0.8],\n\t/shape : \"triangle\"\n}, {\n\t/time : 0.193333,\n\t/shape : \"dodecahedron\",\n\t/size : [0.2, 0.2, 0.2],\n\t/value : 0.193333,\n\t/position : [0.4, 0.193333, -0.4],\n\t/color : [0.4, 0.2, 0.5]\n}, {\n\t/time : 0.193333,\n\t/position : [0.193333, 0.193333, 0.193333],\n\t/color : [0.7, 0.9, 0.5],\n\t/radius : 0.1,\n\t/shape : \"framecircle\"\n}, {\n\t/time : 0.193333,\n\t/a : [0.193333, 0.193333, -0.2],\n\t/b : [-0.4, 0.6, 0.4],\n\t/c : [-0.6, 0.2, -0.6],\n\t/color : [0.2, 0.193333, 0.8],\n\t/shape : \"triangle\"\n}, {\n\t/time : 0.193333,\n\t/position : [0., 0.],\n\t/red,\n\t/radius/outer : 0.193333,\n\t/radius/inner : 0.05,\n\t/orientation : [0, 45, 90],\n\t/shape : \"torus\"\n}]",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -1041,7 +1207,7 @@
  ],
 		"lines" : [ 			{
 				"patchline" : 				{
-					"destination" : [ "obj-5", 0 ],
+					"destination" : [ "obj-21", 1 ],
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-16", 0 ]
@@ -1114,7 +1280,7 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "o.gl.maxpat",
-				"bootpath" : "/Users/adrian2013/Documents/Max/Packages/CNMAT-odot/patchers/graphics",
+				"bootpath" : "/Users/john/Development/CNMAT/CNMAT/CNMAT-odot/patchers/graphics",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
@@ -1128,56 +1294,56 @@
 			}
 , 			{
 				"name" : "o.gl.platohelper.maxpat",
-				"bootpath" : "/Users/adrian2013/Documents/Max/Packages/CNMAT-odot/patchers/graphics",
+				"bootpath" : "/Users/john/Development/CNMAT/CNMAT/CNMAT-odot/patchers/graphics",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.righttoleft.maxpat",
-				"bootpath" : "/Users/adrian2013/Documents/Max/Packages/CNMAT-odot/patchers/core",
+				"bootpath" : "/Users/john/Development/CNMAT/CNMAT/CNMAT-odot/patchers/core",
 				"patcherrelativepath" : "../core",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.in.maxpat",
-				"bootpath" : "/Users/adrian2013/Documents/Max/Packages/CNMAT-odot/patchers/core",
+				"bootpath" : "/Users/john/Development/CNMAT/CNMAT/CNMAT-odot/patchers/core",
 				"patcherrelativepath" : "../core",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.port.maxpat",
-				"bootpath" : "/Users/adrian2013/Documents/Max/Packages/CNMAT-odot/patchers/core",
+				"bootpath" : "/Users/john/Development/CNMAT/CNMAT/CNMAT-odot/patchers/core",
 				"patcherrelativepath" : "../core",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.aspect.joinpoint.maxpat",
-				"bootpath" : "/Users/adrian2013/Documents/Max/Packages/CNMAT-odot/patchers/aspect",
+				"bootpath" : "/Users/john/Development/CNMAT/CNMAT/CNMAT-odot/patchers/aspect",
 				"patcherrelativepath" : "../aspect",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.out.maxpat",
-				"bootpath" : "/Users/adrian2013/Documents/Max/Packages/CNMAT-odot/patchers/core",
+				"bootpath" : "/Users/john/Development/CNMAT/CNMAT/CNMAT-odot/patchers/core",
 				"patcherrelativepath" : "../core",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.gl.texthelper.maxpat",
-				"bootpath" : "/Users/adrian2013/Documents/Max/Packages/CNMAT-odot/patchers/graphics",
+				"bootpath" : "/Users/john/Development/CNMAT/CNMAT/CNMAT-odot/patchers/graphics",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.recurse.maxpat",
-				"bootpath" : "/Users/adrian2013/Documents/Max/Packages/CNMAT-odot/patchers",
+				"bootpath" : "/Users/john/Development/CNMAT/CNMAT/CNMAT-odot/patchers",
 				"patcherrelativepath" : "..",
 				"type" : "JSON",
 				"implicit" : 1

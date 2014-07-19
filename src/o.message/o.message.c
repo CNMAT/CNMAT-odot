@@ -306,6 +306,7 @@ void omessage_doFullPacket(t_omessage *x, long len, char *ptr)
 	x->draw_new_data_indicator = 1;
 	x->have_new_data = 1;
 	qelem_set(x->qelem);
+	//jbox_redraw((t_jbox *)x);
 #endif
 }
 
@@ -579,6 +580,7 @@ void omessage_gettext(t_omessage *x)
 #else
 	x->have_new_data = 1;
 	qelem_set(x->qelem);
+	//jbox_redraw((t_jbox *)x);
 #endif
 	/*
 	  if(size > 2){

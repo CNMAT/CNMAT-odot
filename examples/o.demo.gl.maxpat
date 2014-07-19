@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 6,
 			"minor" : 1,
-			"revision" : 6,
+			"revision" : 4,
 			"architecture" : "x64"
 		}
 ,
@@ -37,8 +37,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 231.166656, 357.0, 195.0, 100.0 ],
-					"text" : "/position =  [-0.1, 0.2,  /between ],\n/radius = 0.04,\n/green = list(),\n/radius/bis = 0.01,\n/length = 0.7, \n/shape = \"cylinder\",",
+					"patching_rect" : [ 231.166656, 357.0, 195.0, 99.0 ],
+					"text" : "/position =  [-0.1, 0.2,  /between ],\n/radius = 0.04,\n/green = list(),\n/radius/bis = 0.01,\n/length = 0.7, \n/shape = \"cylinder\"",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -57,7 +57,7 @@
 						"appversion" : 						{
 							"major" : 6,
 							"minor" : 1,
-							"revision" : 6,
+							"revision" : 4,
 							"architecture" : "x64"
 						}
 ,
@@ -280,8 +280,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 15.0, 568.0, 318.0, 87.0 ],
-					"text" : "/position = scale( (/in + /between) / 6, 0. , 1.0,-0.8,0.8),\n/position = [/position, /position, /position],\n/color = [0.7 , 0.9 ,  0.5],\n/radius = 0.1,\n/shape = \"framecircle\",",
+					"patching_rect" : [ 15.0, 568.0, 318.0, 86.0 ],
+					"text" : "/position = scale( (/in + /between) / 6, 0. , 1.0,-0.8,0.8),\n/position = [/position, /position, /position],\n/color = [0.7 , 0.9 ,  0.5],\n/radius = 0.1,\n/shape = \"framecircle\"",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -296,8 +296,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 36.0, 276.0, 226.0, 73.0 ],
-					"text" : "/position = [ 0.1, /between , /between],\n/color = [0.3  , /between,  0.5],\n/radius = 0.1,\n/shape = \"sphere\",",
+					"patching_rect" : [ 36.0, 276.0, 226.0, 72.0 ],
+					"text" : "/position = [ 0.1, /between , /between],\n/color = [0.3  , /between,  0.5],\n/radius = 0.1,\n/shape = \"sphere\"",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -312,8 +312,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 20.0, 53.0, 262.0, 60.0 ],
-					"text" : "/scenenumber = (0.4*(/now-/beginning)) % 6.,\n/in = floor(/scenenumber),\n/between = /scenenumber%1.0,",
+					"patching_rect" : [ 20.0, 53.0, 262.0, 59.0 ],
+					"text" : "/scenenumber = (0.4*(/now-/beginning)) % 6.,\n/in = floor(/scenenumber),\n/between = /scenenumber%1.0",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -332,7 +332,7 @@
 						"appversion" : 						{
 							"major" : 6,
 							"minor" : 1,
-							"revision" : 6,
+							"revision" : 4,
 							"architecture" : "x64"
 						}
 ,
@@ -588,8 +588,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 171.0, 766.0, 75.0, 20.0 ],
-					"text" : "o.io.gl place"
+					"patching_rect" : [ 171.0, 766.0, 62.0, 20.0 ],
+					"text" : "o.gl place"
 				}
 
 			}
@@ -1206,92 +1206,92 @@
 			}
  ],
 		"dependency_cache" : [ 			{
-				"name" : "o.io.gl.maxpat",
-				"bootpath" : "/Users/ilyarostovtsev/Documents/Creative Coding/odot/_full_build_trunk/CNMAT-odot/patchers/io/graphics",
-				"patcherrelativepath" : "../patchers/io/graphics",
+				"name" : "o.gl.maxpat",
+				"bootpath" : "/Users/john/Development/CNMAT/CNMAT/CNMAT-odot/patchers/graphics",
+				"patcherrelativepath" : "../patchers/graphics",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "thru.maxpat",
 				"bootpath" : "/Applications/Max 6.1/patches/m4l-patches/Pluggo for Live resources/patches",
-				"patcherrelativepath" : "../../../../../../../../Applications/Max 6.1/patches/m4l-patches/Pluggo for Live resources/patches",
+				"patcherrelativepath" : "../../../../../../../Applications/Max 6.1/patches/m4l-patches/Pluggo for Live resources/patches",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "o.io.gl.platohelper.maxpat",
-				"bootpath" : "/Users/ilyarostovtsev/Documents/Creative Coding/odot/_full_build_trunk/CNMAT-odot/patchers/io/graphics",
-				"patcherrelativepath" : "../patchers/io/graphics",
+				"name" : "o.gl.platohelper.maxpat",
+				"bootpath" : "/Users/john/Development/CNMAT/CNMAT/CNMAT-odot/patchers/graphics",
+				"patcherrelativepath" : "../patchers/graphics",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.righttoleft.maxpat",
-				"bootpath" : "/Users/ilyarostovtsev/Documents/Creative Coding/odot/_full_build_trunk/CNMAT-odot/patchers/core",
+				"bootpath" : "/Users/john/Development/CNMAT/CNMAT/CNMAT-odot/patchers/core",
 				"patcherrelativepath" : "../patchers/core",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.in.maxpat",
-				"bootpath" : "/Users/ilyarostovtsev/Documents/Creative Coding/odot/_full_build_trunk/CNMAT-odot/patchers/core",
+				"bootpath" : "/Users/john/Development/CNMAT/CNMAT/CNMAT-odot/patchers/core",
 				"patcherrelativepath" : "../patchers/core",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.port.maxpat",
-				"bootpath" : "/Users/ilyarostovtsev/Documents/Creative Coding/odot/_full_build_trunk/CNMAT-odot/patchers/core",
+				"bootpath" : "/Users/john/Development/CNMAT/CNMAT/CNMAT-odot/patchers/core",
 				"patcherrelativepath" : "../patchers/core",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.aspect.joinpoint.maxpat",
-				"bootpath" : "/Users/ilyarostovtsev/Documents/Creative Coding/odot/_full_build_trunk/CNMAT-odot/patchers/aspect",
+				"bootpath" : "/Users/john/Development/CNMAT/CNMAT/CNMAT-odot/patchers/aspect",
 				"patcherrelativepath" : "../patchers/aspect",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.out.maxpat",
-				"bootpath" : "/Users/ilyarostovtsev/Documents/Creative Coding/odot/_full_build_trunk/CNMAT-odot/patchers/core",
+				"bootpath" : "/Users/john/Development/CNMAT/CNMAT/CNMAT-odot/patchers/core",
 				"patcherrelativepath" : "../patchers/core",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "o.io.gltexthelper.maxpat",
-				"bootpath" : "/Users/ilyarostovtsev/Documents/Creative Coding/odot/_full_build_trunk/CNMAT-odot/patchers/io/graphics",
-				"patcherrelativepath" : "../patchers/io/graphics",
+				"name" : "o.gl.texthelper.maxpat",
+				"bootpath" : "/Users/john/Development/CNMAT/CNMAT/CNMAT-odot/patchers/graphics",
+				"patcherrelativepath" : "../patchers/graphics",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.metro.maxpat",
-				"bootpath" : "/Users/ilyarostovtsev/Documents/Creative Coding/odot/_full_build_trunk/CNMAT-odot/patchers/time",
+				"bootpath" : "/Users/john/Development/CNMAT/CNMAT/CNMAT-odot/patchers/time",
 				"patcherrelativepath" : "../patchers/time",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.arguments.maxpat",
-				"bootpath" : "/Users/ilyarostovtsev/Documents/Creative Coding/odot/_full_build_trunk/CNMAT-odot/patchers",
+				"bootpath" : "/Users/john/Development/CNMAT/CNMAT/CNMAT-odot/patchers",
 				"patcherrelativepath" : "../patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.init.maxpat",
-				"bootpath" : "/Users/ilyarostovtsev/Documents/Creative Coding/odot/_full_build_trunk/CNMAT-odot/patchers/core",
+				"bootpath" : "/Users/john/Development/CNMAT/CNMAT/CNMAT-odot/patchers/core",
 				"patcherrelativepath" : "../patchers/core",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.recurse.maxpat",
-				"bootpath" : "/Users/ilyarostovtsev/Documents/Creative Coding/odot/_full_build_trunk/CNMAT-odot/patchers",
+				"bootpath" : "/Users/john/Development/CNMAT/CNMAT/CNMAT-odot/patchers",
 				"patcherrelativepath" : "../patchers",
 				"type" : "JSON",
 				"implicit" : 1
@@ -1350,6 +1350,10 @@
 			}
 , 			{
 				"name" : "o.listenumerate.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.compose.mxo",
 				"type" : "iLaX"
 			}
 , 			{

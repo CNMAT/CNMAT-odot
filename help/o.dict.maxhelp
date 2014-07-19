@@ -8,7 +8,7 @@
 			"architecture" : "x64"
 		}
 ,
-		"rect" : [ 161.0, 44.0, 998.0, 510.0 ],
+		"rect" : [ 161.0, 44.0, 702.0, 396.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -38,7 +38,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 176.0, 274.938354, 277.0, 20.0 ],
+					"patching_rect" : [ 179.0, 268.0, 277.0, 20.0 ],
 					"text" : " \"o.\" objects  convert dictionaries into  \"o.\" bundles"
 				}
 
@@ -48,13 +48,11 @@
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"id" : "obj-5",
-					"linecount" : 2,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 270.0, 318.938354, 112.0, 47.0 ],
-					"text" : "/bar : [\"a\", \"r\", \"s\"],\n/foo : [1, 2, 3]",
+					"patching_rect" : [ 273.0, 312.0, 112.0, 34.0 ],
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -69,7 +67,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 59.0, 214.938354, 117.0, 37.0 ],
+					"patching_rect" : [ 62.0, 208.0, 117.0, 37.0 ],
 					"text" : "/foo : [1, 2, 3],\n/bar : [\"a\", \"r\", \"s\"]",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -81,7 +79,7 @@
 					"maxclass" : "dict.view",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 59.0, 324.938354, 150.0, 54.0 ]
+					"patching_rect" : [ 62.0, 318.0, 150.0, 54.0 ]
 				}
 
 			}
@@ -94,7 +92,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 59.0, 274.938354, 39.0, 20.0 ],
+					"patching_rect" : [ 62.0, 268.0, 39.0, 20.0 ],
 					"text" : "o.dict"
 				}
 
@@ -108,7 +106,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 433.0, 110.938354, 150.0, 20.0 ],
+					"patching_rect" : [ 523.0, 317.0, 150.0, 20.0 ],
 					"text" : "see also:"
 				}
 
@@ -123,7 +121,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 4,
 					"outlettype" : [ "", "", "", "clear" ],
-					"patching_rect" : [ 448.0, 53.938354, 155.0, 20.0 ],
+					"patching_rect" : [ 538.0, 260.0, 155.0, 20.0 ],
 					"text" : "o.helpfilehelper @obj o.dict"
 				}
 
@@ -137,7 +135,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 21.0, 167.938354, 335.0, 20.0 ],
+					"patching_rect" : [ 24.0, 161.0, 335.0, 20.0 ],
 					"text" : "o.dict takes an OSC bundle and turns it into a Max dictionary."
 				}
 
@@ -148,11 +146,12 @@
 					"fontsize" : 12.0,
 					"frgb" : 0.0,
 					"id" : "obj-8",
+					"linecount" : 2,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 21.0, 119.938354, 218.0, 20.0 ],
-					"text" : "Convert an OSC bundle to a dictionary."
+					"patching_rect" : [ 24.0, 113.0, 218.0, 33.0 ],
+					"text" : "Convert an OSC bundle to a Max dictionary"
 				}
 
 			}
@@ -165,7 +164,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 21.0, 30.938354, 183.0, 87.0 ],
+					"patching_rect" : [ 24.0, 24.0, 183.0, 87.0 ],
 					"text" : "o.dict"
 				}
 
@@ -181,7 +180,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "int", "", "" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 433.0, 132.938354, 132.0, 20.0 ]
+					"patching_rect" : [ 523.0, 339.0, 132.0, 20.0 ]
 				}
 
 			}
@@ -245,7 +244,7 @@
 					"destination" : [ "obj-10", 0 ],
 					"disabled" : 0,
 					"hidden" : 1,
-					"midpoints" : [ 499.0, 162.0, 420.0, 162.0, 420.0, 48.0, 457.5, 48.0 ],
+					"midpoints" : [ 589.0, 368.061646, 510.0, 368.061646, 510.0, 254.061646, 547.5, 254.061646 ],
 					"source" : [ "obj-19", 1 ]
 				}
 
@@ -263,8 +262,8 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "o.helpfilehelper.maxpat",
-				"bootpath" : "/Users/ilyarostovtsev/Documents/Max/Packages/odot/misc",
-				"patcherrelativepath" : "../../../../../Max/Packages/odot/misc",
+				"bootpath" : "/Users/ilyarostovtsev/Documents/Creative Coding/odot/_full_build_trunk/CNMAT-odot/misc",
+				"patcherrelativepath" : "../misc",
 				"type" : "JSON",
 				"implicit" : 1
 			}

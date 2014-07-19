@@ -8,7 +8,7 @@
 			"architecture" : "x64"
 		}
 ,
-		"rect" : [ 367.0, 44.0, 690.0, 495.0 ],
+		"rect" : [ 367.0, 44.0, 653.0, 495.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -38,7 +38,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 60.0, 450.0, 250.0, 20.0 ],
+					"patching_rect" : [ 78.0, 461.404297, 250.0, 20.0 ],
 					"text" : "input is passed through the outlet unchanged"
 				}
 
@@ -52,7 +52,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 12.0, 450.0, 44.0, 20.0 ],
+					"patching_rect" : [ 30.0, 461.404297, 44.0, 20.0 ],
 					"text" : "o.print"
 				}
 
@@ -66,7 +66,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 12.0, 218.0, 92.0, 20.0 ],
+					"patching_rect" : [ 30.0, 229.404297, 92.0, 20.0 ],
 					"text" : "o.metro /rate 1."
 				}
 
@@ -81,8 +81,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 12.0, 258.595703, 255.0, 160.0 ],
-					"text" : "/interval : 1.,\n/metro/started : 2014-07-17T18:23:13.942698Z,\n/n : 34,\n/metro/next : 2014-07-17T18:23:46.942698Z,\n/rate : 1.,\n/bpm : 60.,\n/units/interval : \"Seconds\",\n/units/bpm : \"Beats Per Minute\",\n/units/rate : \"Hertz (cycles per second)\"",
+					"patching_rect" : [ 30.0, 270.0, 255.0, 160.0 ],
+					"text" : "/interval : 1.,\n/metro/started : 2014-07-19T02:55:38.215066Z,\n/n : 25,\n/metro/next : 2014-07-19T02:56:02.215066Z,\n/rate : 1.,\n/bpm : 60.,\n/units/interval : \"Seconds\",\n/units/bpm : \"Beats Per Minute\",\n/units/rate : \"Hertz (cycles per second)\"",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -96,7 +96,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 459.0, 72.595703, 150.0, 20.0 ],
+					"patching_rect" : [ 498.0, 439.404297, 150.0, 20.0 ],
 					"text" : "see also:"
 				}
 
@@ -111,7 +111,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 4,
 					"outlettype" : [ "", "", "", "clear" ],
-					"patching_rect" : [ 459.0, 31.595703, 174.0, 20.0 ],
+					"patching_rect" : [ 498.0, 398.404297, 174.0, 20.0 ],
 					"text" : "o.helpfilehelper @obj o.display"
 				}
 
@@ -125,8 +125,8 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 12.0, 155.595703, 600.0, 20.0 ],
-					"text" : "o.display displays OSC in text form."
+					"patching_rect" : [ 30.0, 167.0, 600.0, 20.0 ],
+					"text" : "o.display displays OSC in text form and passes them through to its outlet."
 				}
 
 			}
@@ -139,8 +139,8 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 12.0, 107.595703, 163.0, 20.0 ],
-					"text" : "Display OSC bundles"
+					"patching_rect" : [ 30.0, 119.0, 600.0, 20.0 ],
+					"text" : "Display incoming OSC bundles"
 				}
 
 			}
@@ -153,7 +153,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 12.0, 18.595703, 295.0, 87.0 ],
+					"patching_rect" : [ 30.0, 30.0, 295.0, 87.0 ],
 					"text" : "o.display"
 				}
 
@@ -169,7 +169,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "int", "", "" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 459.0, 94.595703, 132.0, 20.0 ]
+					"patching_rect" : [ 498.0, 461.404297, 132.0, 20.0 ]
 				}
 
 			}
@@ -179,7 +179,7 @@
 					"destination" : [ "obj-10", 0 ],
 					"disabled" : 0,
 					"hidden" : 1,
-					"midpoints" : [ 525.0, 126.595703, 444.0, 126.595703, 444.0, 27.595703, 468.5, 27.595703 ],
+					"midpoints" : [ 564.0, 493.404297, 483.0, 493.404297, 483.0, 394.404297, 507.5, 394.404297 ],
 					"source" : [ "obj-1", 1 ]
 				}
 
@@ -243,71 +243,71 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "o.helpfilehelper.maxpat",
-				"bootpath" : "/Users/ilyarostovtsev/Documents/Max/Packages/odot/misc",
-				"patcherrelativepath" : "../../../../../Max/Packages/odot/misc",
+				"bootpath" : "/Users/ilyarostovtsev/Documents/Creative Coding/odot/_full_build_trunk/CNMAT-odot/misc",
+				"patcherrelativepath" : "../misc",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.metro.maxpat",
-				"bootpath" : "/Users/ilyarostovtsev/Documents/Max/Packages/odot/patchers/time",
-				"patcherrelativepath" : "../../../../../Max/Packages/odot/patchers/time",
+				"bootpath" : "/Users/ilyarostovtsev/Documents/Creative Coding/odot/_full_build_trunk/CNMAT-odot/patchers/time",
+				"patcherrelativepath" : "../patchers/time",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.arguments.maxpat",
-				"bootpath" : "/Users/ilyarostovtsev/Documents/Max/Packages/odot/patchers",
-				"patcherrelativepath" : "../../../../../Max/Packages/odot/patchers",
+				"bootpath" : "/Users/ilyarostovtsev/Documents/Creative Coding/odot/_full_build_trunk/CNMAT-odot/patchers",
+				"patcherrelativepath" : "../patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.righttoleft.maxpat",
-				"bootpath" : "/Users/ilyarostovtsev/Documents/Max/Packages/odot/patchers/core",
-				"patcherrelativepath" : "../../../../../Max/Packages/odot/patchers/core",
+				"bootpath" : "/Users/ilyarostovtsev/Documents/Creative Coding/odot/_full_build_trunk/CNMAT-odot/patchers/core",
+				"patcherrelativepath" : "../patchers/core",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.in.maxpat",
-				"bootpath" : "/Users/ilyarostovtsev/Documents/Max/Packages/odot/patchers/core",
-				"patcherrelativepath" : "../../../../../Max/Packages/odot/patchers/core",
+				"bootpath" : "/Users/ilyarostovtsev/Documents/Creative Coding/odot/_full_build_trunk/CNMAT-odot/patchers/core",
+				"patcherrelativepath" : "../patchers/core",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.port.maxpat",
-				"bootpath" : "/Users/ilyarostovtsev/Documents/Max/Packages/odot/patchers/core",
-				"patcherrelativepath" : "../../../../../Max/Packages/odot/patchers/core",
+				"bootpath" : "/Users/ilyarostovtsev/Documents/Creative Coding/odot/_full_build_trunk/CNMAT-odot/patchers/core",
+				"patcherrelativepath" : "../patchers/core",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.aspect.joinpoint.maxpat",
-				"bootpath" : "/Users/ilyarostovtsev/Documents/Max/Packages/odot/patchers/aspect",
-				"patcherrelativepath" : "../../../../../Max/Packages/odot/patchers/aspect",
+				"bootpath" : "/Users/ilyarostovtsev/Documents/Creative Coding/odot/_full_build_trunk/CNMAT-odot/patchers/aspect",
+				"patcherrelativepath" : "../patchers/aspect",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.out.maxpat",
-				"bootpath" : "/Users/ilyarostovtsev/Documents/Max/Packages/odot/patchers/core",
-				"patcherrelativepath" : "../../../../../Max/Packages/odot/patchers/core",
+				"bootpath" : "/Users/ilyarostovtsev/Documents/Creative Coding/odot/_full_build_trunk/CNMAT-odot/patchers/core",
+				"patcherrelativepath" : "../patchers/core",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.init.maxpat",
-				"bootpath" : "/Users/ilyarostovtsev/Documents/Max/Packages/odot/patchers/core",
-				"patcherrelativepath" : "../../../../../Max/Packages/odot/patchers/core",
+				"bootpath" : "/Users/ilyarostovtsev/Documents/Creative Coding/odot/_full_build_trunk/CNMAT-odot/patchers/core",
+				"patcherrelativepath" : "../patchers/core",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "o.forward.maxpat",
-				"bootpath" : "/Users/ilyarostovtsev/Documents/Max/Packages/odot/patchers",
-				"patcherrelativepath" : "../../../../../Max/Packages/odot/patchers",
+				"name" : "o.recurse.maxpat",
+				"bootpath" : "/Users/ilyarostovtsev/Documents/Creative Coding/odot/_full_build_trunk/CNMAT-odot/patchers",
+				"patcherrelativepath" : "../patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
@@ -348,10 +348,6 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "o.pak.mxo",
-				"type" : "iLaX"
-			}
-, 			{
 				"name" : "o.prepend.mxo",
 				"type" : "iLaX"
 			}
@@ -360,7 +356,11 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "o.expr.mxo",
+				"name" : "o.message.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.expr.codebox.mxo",
 				"type" : "iLaX"
 			}
 , 			{
@@ -372,15 +372,7 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "trampoline.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.expr.codebox.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.compose.mxo",
+				"name" : "o.when.mxo",
 				"type" : "iLaX"
 			}
 , 			{

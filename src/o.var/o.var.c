@@ -33,7 +33,7 @@
 
 #if !defined(ODOT_UNION) && !defined(ODOT_DIFFERENCE) && !defined(ODOT_INTERSECTION)
 #define OMAX_DOC_NAME "o.var"
-#define OMAX_DOC_SHORT_DESC "Store a bundle and bang it out later."
+#define OMAX_DOC_SHORT_DESC "Store a bundle and bang it out later"
 #define OMAX_DOC_LONG_DESC "o.var copies an OSC packet and stores it for later use.  Since FullPacket messages are references to data stored in memory, objects wishing to store a packet must make a copy of it rather than just save the FullPacket message.  Use o.var or o.message to store a packet, not zl reg or any other normal Max object."
 #define OMAX_DOC_INLETS_DESC (char *[]){"OSC packet will be stored and sent out immediately;  Bang to trigger output", "OSC packet to be stored (no output)"}
 #define OMAX_DOC_OUTLETS_DESC (char *[]){"Stored OSC packet"}
@@ -205,7 +205,10 @@ void ovar_doAnything(t_ovar *x, t_symbol *msg, int argc, t_atom *argv, long inle
 	if(bndl_u){
 		osc_bundle_u_free(bndl_u);
 	}
-	ovar_doFullPacket(x, len, buf, inlet);
+	if(buf){
+		ovar_doFullPacket(x, len, buf, inlet);
+		osc_mem_free(buf);
+	}
 }
 
 void ovar_anything(t_ovar *x, t_symbol *msg, int argc, t_atom *argv)

@@ -1,19 +1,10 @@
 {
   "o.append": {
-       "category": [
-      "O."
-    ],
     "digest": "Append an OSC address to every OSC address in a bundle",
     "module": "max",
-    "palette": {
-      "action": "o.append",
-      "pic": "newobj.svg",
-      "caption": "o.append",
-      "order": 1,
-      "category": [
-        "O."
-      ]
-    }
+    "category": [
+      "O."
+    ]
   },
   "o.change": {
     "digest": "Output an OSC bundle if it changes",
