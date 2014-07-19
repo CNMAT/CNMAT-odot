@@ -135,15 +135,7 @@ void olistenumerate_doFullPacket(t_olistenumerate *x,
                         char type = osc_atom_u_getTypetag(atom_copy);
                         unserialized_result = osc_bundle_u_alloc();
                         t_osc_message_u* value = osc_message_u_allocWithAddress("/value");
-                        if (type == OSC_BUNDLE_TYPETAG) {
-                            // subbundle
-                            t_osc_bundle_u* subbundle = NULL;
-                            osc_bundle_u_copy(&subbundle, osc_atom_u_getBndl(atom_copy));
-                            osc_message_u_appendBndl_u(value, subbundle);
-                        } else {
-                            // not a subbundle
-                            osc_message_u_appendAtom(value, atom_copy);
-                        }
+                        osc_message_u_appendAtom(value, atom_copy);
                         osc_bundle_u_addMsg(unserialized_result, value);
                         
                         t_osc_message_u* address = osc_message_u_allocWithString("/address", address_name);

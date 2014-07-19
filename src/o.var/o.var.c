@@ -205,7 +205,10 @@ void ovar_doAnything(t_ovar *x, t_symbol *msg, int argc, t_atom *argv, long inle
 	if(bndl_u){
 		osc_bundle_u_free(bndl_u);
 	}
-	ovar_doFullPacket(x, len, buf, inlet);
+	if(buf){
+		ovar_doFullPacket(x, len, buf, inlet);
+		osc_mem_free(buf);
+	}
 }
 
 void ovar_anything(t_ovar *x, t_symbol *msg, int argc, t_atom *argv)

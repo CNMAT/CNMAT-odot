@@ -5,10 +5,10 @@
 			"major" : 6,
 			"minor" : 1,
 			"revision" : 6,
-			"architecture" : "x64"
+			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 34.0, 44.0, 1440.0, 779.0 ],
+		"rect" : [ 0.0, 44.0, 1440.0, 779.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -52,7 +52,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 145.0, 604.0, 179.0, 72.0 ],
+					"patching_rect" : [ 145.0, 604.0, 179.0, 73.0 ],
 					"text" : "delete(/refill),\ndelete(/r),\ndelete(/time_to_next_event) , \ndelete(/emptyqueue)",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -68,7 +68,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 145.0, 110.0, 264.0, 72.0 ],
+					"patching_rect" : [ 145.0, 110.0, 264.0, 73.0 ],
 					"text" : "/emptyqueue = true,\nif( bound(/persecond), \n  /mu = 1. / /persecond,\n  /persecond = 1. / (/mu ??= 1.0) )",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -248,8 +248,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 15.0, 325.0, 107.0, 20.0 ],
-					"text" : "o.expr /refill=true \\,"
+					"patching_rect" : [ 15.0, 325.0, 100.0, 20.0 ],
+					"text" : "o.expr /refill=true"
 				}
 
 			}
@@ -655,63 +655,63 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "o.uniform.maxpat",
-				"bootpath" : "/Users/ilyarostovtsev/Documents/Creative Coding/odot/_full_build_trunk/CNMAT-odot/patchers",
+				"bootpath" : "/Users/adrian2013/Documents/Max/Packages/CNMAT-odot/patchers",
 				"patcherrelativepath" : "..",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.righttoleft.maxpat",
-				"bootpath" : "/Users/ilyarostovtsev/Documents/Creative Coding/odot/_full_build_trunk/CNMAT-odot/patchers/core",
+				"bootpath" : "/Users/adrian2013/Documents/Max/Packages/CNMAT-odot/patchers/core",
 				"patcherrelativepath" : "../core",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.in.maxpat",
-				"bootpath" : "/Users/ilyarostovtsev/Documents/Creative Coding/odot/_full_build_trunk/CNMAT-odot/patchers/core",
+				"bootpath" : "/Users/adrian2013/Documents/Max/Packages/CNMAT-odot/patchers/core",
 				"patcherrelativepath" : "../core",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.port.maxpat",
-				"bootpath" : "/Users/ilyarostovtsev/Documents/Creative Coding/odot/_full_build_trunk/CNMAT-odot/patchers/core",
+				"bootpath" : "/Users/adrian2013/Documents/Max/Packages/CNMAT-odot/patchers/core",
 				"patcherrelativepath" : "../core",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.aspect.joinpoint.maxpat",
-				"bootpath" : "/Users/ilyarostovtsev/Documents/Creative Coding/odot/_full_build_trunk/CNMAT-odot/patchers/aspect",
+				"bootpath" : "/Users/adrian2013/Documents/Max/Packages/CNMAT-odot/patchers/aspect",
 				"patcherrelativepath" : "../aspect",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.out.maxpat",
-				"bootpath" : "/Users/ilyarostovtsev/Documents/Creative Coding/odot/_full_build_trunk/CNMAT-odot/patchers/core",
+				"bootpath" : "/Users/adrian2013/Documents/Max/Packages/CNMAT-odot/patchers/core",
 				"patcherrelativepath" : "../core",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.recurse.maxpat",
-				"bootpath" : "/Users/ilyarostovtsev/Documents/Creative Coding/odot/_full_build_trunk/CNMAT-odot/patchers",
+				"bootpath" : "/Users/adrian2013/Documents/Max/Packages/CNMAT-odot/patchers",
 				"patcherrelativepath" : "..",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.arguments.maxpat",
-				"bootpath" : "/Users/ilyarostovtsev/Documents/Creative Coding/odot/_full_build_trunk/CNMAT-odot/patchers",
+				"bootpath" : "/Users/adrian2013/Documents/Max/Packages/CNMAT-odot/patchers",
 				"patcherrelativepath" : "..",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.init.maxpat",
-				"bootpath" : "/Users/ilyarostovtsev/Documents/Creative Coding/odot/_full_build_trunk/CNMAT-odot/patchers/core",
+				"bootpath" : "/Users/adrian2013/Documents/Max/Packages/CNMAT-odot/patchers/core",
 				"patcherrelativepath" : "../core",
 				"type" : "JSON",
 				"implicit" : 1
@@ -762,10 +762,6 @@
 			}
 , 			{
 				"name" : "o.cond.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "randdist.mxo",
 				"type" : "iLaX"
 			}
 , 			{
