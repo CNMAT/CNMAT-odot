@@ -9,6 +9,7 @@ o.dict \
 o.difference \
 o.display \
 o.downcast \
+o.edge~ \
 o.explode \
 o.expr \
 o.expr.codebox \
@@ -48,6 +49,7 @@ CFILES = $(foreach f, $(OBJECT_LIST), $(f)/$(f).c)
 
 C74SUPPORT = ../../max6-sdk/c74support
 MAX_INCLUDES = $(C74SUPPORT)/max-includes
+MSP_INCLUDES = $(C74SUPPORT)/msp-includes
 
 PLATFORM = Windows
 
@@ -58,10 +60,10 @@ CC = i686-w64-mingw32-gcc
 #LD = gcc
 LD = $(CC)
 CFLAGS += -mno-cygwin -DWIN_VERSION -DWIN_EXT_VERSION -U__STRICT_ANSI__ -U__ANSI_SOURCE -std=c99 -O3 -DNO_TRANSLATION_SUPPORT
-INCLUDES = -I$(MAX_INCLUDES) -I../../libo -I../../libomax -Iinclude
+INCLUDES = -I$(MAX_INCLUDES) -I$(MSP_INCLUDES) -I../../libo -I../../libomax -Iinclude
 LDFLAGS = -mno-cygwin -shared #-static-libgcc
 #LIBS = -L"/cygdrive/c/Program Files (x86)/Microsoft Visual Studio 10.0/VC/lib" -lmsvcrt -L../../libomax -lomax -L$(MAX_INCLUDES) -lMaxAPI -L../../libo -lo 
-LIBS = -L../../libomax -lomax -L$(MAX_INCLUDES) -lMaxAPI -L../../libo -lo 
+LIBS = -L../../libomax -lomax -L$(MAX_INCLUDES) -L$(MSP_INCLUDES) -lMaxAPI -lMaxAudio -L../../libo -lo 
 
 BUILDDIR = $(CURDIR)/build/Release
 STAGINGDIR = odot-$(PLATFORM)
