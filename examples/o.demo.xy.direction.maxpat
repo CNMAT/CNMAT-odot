@@ -51,7 +51,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
 					"patching_rect" : [ 38.0, 119.0, 149.0, 20.0 ],
-					"text" : "o.pack /vertical /horizontal"
+					"text" : "o.pack /horizontal /vertical"
 				}
 
 			}
@@ -81,7 +81,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 38.0, 341.606628, 252.0, 128.0 ],
-					"text" : "/vertical : 240,\n/horizontal : 0,\n/was/vertical : 240,\n/was/horizontal : 0,\n/angle : 0.,\n/was/angle : 0.,\n/angle/difference : 0.,\n/direction : \"still\"",
+					"text" : "/horizontal : 550,\n/vertical : 196,\n/was/horizontal : 550,\n/was/vertical : 196,\n/angle : 0.,\n/was/angle : 0.,\n/angle/difference : 0.,\n/direction : \"still\"",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -193,7 +193,7 @@
 					"destination" : [ "obj-2", 1 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"source" : [ "obj-5", 3 ]
+					"source" : [ "obj-5", 2 ]
 				}
 
 			}
@@ -202,7 +202,7 @@
 					"destination" : [ "obj-2", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"source" : [ "obj-5", 2 ]
+					"source" : [ "obj-5", 1 ]
 				}
 
 			}
