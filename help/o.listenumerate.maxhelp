@@ -5,7 +5,7 @@
 			"major" : 6,
 			"minor" : 1,
 			"revision" : 6,
-			"architecture" : "x64"
+			"architecture" : "x86"
 		}
 ,
 		"rect" : [ 130.0, 85.0, 1049.0, 566.0 ],
@@ -51,6 +51,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 903.0, 451.0, 98.0, 34.0 ],
+					"text" : "/bar : 43",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -74,11 +75,13 @@
 					"fontname" : "Helvetica Neue",
 					"fontsize" : 12.0,
 					"id" : "obj-20",
+					"linecount" : 4,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 659.200012, 451.0, 108.0, 34.0 ],
+					"patching_rect" : [ 659.200012, 451.0, 108.0, 76.0 ],
+					"text" : "/value : 5,\n/address : \"/foo\",\n/index : 4,\n/length : 5",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -88,11 +91,13 @@
 					"fontname" : "Helvetica Neue",
 					"fontsize" : 12.0,
 					"id" : "obj-21",
+					"linecount" : 6,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 538.400024, 451.0, 108.0, 34.0 ],
+					"patching_rect" : [ 538.400024, 451.0, 108.0, 104.0 ],
+					"text" : "/value : {\n\t/thing : 3\n},\n/address : \"/foo\",\n/index : 3,\n/length : 5",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -102,11 +107,13 @@
 					"fontname" : "Helvetica Neue",
 					"fontsize" : 12.0,
 					"id" : "obj-19",
+					"linecount" : 4,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 417.600006, 451.0, 108.0, 34.0 ],
+					"patching_rect" : [ 417.600006, 451.0, 108.0, 76.0 ],
+					"text" : "/value : \"three\",\n/address : \"/foo\",\n/index : 2,\n/length : 5",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -116,11 +123,13 @@
 					"fontname" : "Helvetica Neue",
 					"fontsize" : 12.0,
 					"id" : "obj-17",
+					"linecount" : 4,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 296.799988, 451.0, 108.0, 34.0 ],
+					"patching_rect" : [ 296.799988, 451.0, 108.0, 76.0 ],
+					"text" : "/value : 2.,\n/address : \"/foo\",\n/index : 1,\n/length : 5",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -130,11 +139,13 @@
 					"fontname" : "Helvetica Neue",
 					"fontsize" : 12.0,
 					"id" : "obj-16",
+					"linecount" : 4,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 176.0, 451.0, 108.0, 34.0 ],
+					"patching_rect" : [ 176.0, 451.0, 108.0, 76.0 ],
+					"text" : "/value : 1,\n/address : \"/foo\",\n/index : 0,\n/length : 5",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -158,11 +169,13 @@
 					"fontname" : "Helvetica Neue",
 					"fontsize" : 12.0,
 					"id" : "obj-11",
+					"linecount" : 4,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 60.0, 451.0, 108.0, 34.0 ],
+					"patching_rect" : [ 60.0, 451.0, 108.0, 76.0 ],
+					"text" : "/value : 5,\n/address : \"/foo\",\n/index : 4,\n/length : 5",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -353,7 +366,7 @@
 							"major" : 6,
 							"minor" : 1,
 							"revision" : 6,
-							"architecture" : "x64"
+							"architecture" : "x86"
 						}
 ,
 						"rect" : [ 34.0, 95.0, 1152.0, 678.0 ],
@@ -397,11 +410,13 @@
 									"fontname" : "Helvetica Neue",
 									"fontsize" : 12.0,
 									"id" : "obj-1",
+									"linecount" : 4,
 									"maxclass" : "o.display",
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 176.0, 390.0, 150.0, 34.0 ],
+									"patching_rect" : [ 176.0, 390.0, 150.0, 76.0 ],
+									"text" : "/bar : [\"woo\", \"wee\", \"waa\"],\n/boing : [\"boom\", \"tschak\"]",
 									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 
@@ -599,7 +614,7 @@
 							"major" : 6,
 							"minor" : 1,
 							"revision" : 6,
-							"architecture" : "x64"
+							"architecture" : "x86"
 						}
 ,
 						"rect" : [ 34.0, 44.0, 1152.0, 678.0 ],
@@ -632,7 +647,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 45.0, 225.0, 168.0, 66.0 ],
+									"patching_rect" : [ 45.0, 225.0, 173.0, 66.0 ],
 									"text" : "/foo : [1, 2, {\n\t/bar : [1, 2, 3],\n\t/boing : [\"boom\", \"tcshak\"]\n}]",
 									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
@@ -1001,7 +1016,7 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "o.helpfilehelper.maxpat",
-				"bootpath" : "/Users/ilyarostovtsev/Documents/Creative Coding/odot/_full_build_trunk/CNMAT-odot/misc",
+				"bootpath" : "/Users/adrian2013/Documents/Max/Packages/CNMAT-odot/misc",
 				"patcherrelativepath" : "../misc",
 				"type" : "JSON",
 				"implicit" : 1
