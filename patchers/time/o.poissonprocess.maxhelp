@@ -83,7 +83,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 78.0, 260.5, 150.0, 47.0 ],
-					"text" : "/mu : 0.1,\n/persecond : 10",
+					"text" : "/persecond : 5,\n/mu : 0.2",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -93,13 +93,13 @@
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"id" : "obj-7",
-					"linecount" : 6,
+					"linecount" : 4,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 263.0, 249.0, 150.0, 101.0 ],
-					"text" : "/mu : 0.1,\n/persecond : 10,\n/betweentime : 0.0160511,\n/units/betweentime : \"seconds\"",
+					"patching_rect" : [ 263.0, 249.0, 176.0, 74.0 ],
+					"text" : "/persecond : 5,\n/mu : 0.2,\n/betweentime : 0.220023,\n/units/betweentime : \"seconds\"",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -142,8 +142,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 78.0, 175.0, 147.0, 20.0 ],
-					"text" : "o.poissonprocess /mu 0.1"
+					"patching_rect" : [ 78.0, 175.0, 104.0, 20.0 ],
+					"text" : "o.poissonprocess"
 				}
 
 			}
@@ -266,20 +266,6 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "o.arguments.maxpat",
-				"bootpath" : "/Users/adrian2013/Documents/Max/Packages/CNMAT-odot/patchers",
-				"patcherrelativepath" : "..",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "o.init.maxpat",
-				"bootpath" : "/Users/adrian2013/Documents/Max/Packages/CNMAT-odot/patchers/core",
-				"patcherrelativepath" : "../core",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
 				"name" : "o.betweentimes.maxpat",
 				"bootpath" : "/Users/adrian2013/Documents/Max/Packages/CNMAT-odot/patchers/time",
 				"patcherrelativepath" : ".",
@@ -294,7 +280,7 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "o.expr.mxo",
+				"name" : "o.expr.codebox.mxo",
 				"type" : "iLaX"
 			}
 , 			{
@@ -343,10 +329,6 @@
 			}
 , 			{
 				"name" : "o.timetag.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.expr.codebox.mxo",
 				"type" : "iLaX"
 			}
 , 			{
