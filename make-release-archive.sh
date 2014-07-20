@@ -1,7 +1,7 @@
 #!/bin/sh
 
 packagedirs=(clippings code default-definitions default-settings docs examples extensions externals extras help init interfaces java-classes java-doc javascript jsextensions jsui license.txt media misc patchers object-prototypes queries readme.txt source support templates)
-nonpackagedirs=(unstable deprecated)
+nonpackagedirs=(dev deprecated)
 
 dirs=("${packagedirs[@]}" "${nonpackagedirs[@]}")
 
@@ -88,6 +88,6 @@ externstarballname=Max-externals-$platform-`git describe --tags --long`-`git bra
 pdtarballname=odot-PD-$platform-`git describe --tags --long`-`git branch | egrep '^\*' | awk '{print $2}'`.tgz
 
 tar zcvf $maxtarballname $maxstagingdir
-tar zcvf $externstarballname externals deprecated/externals unstable/externals
+tar zcvf $externstarballname externals deprecated/externals dev/externals
 tar zcvf $pdtarballname $pdstagingdir
 rm -rf $maxstagingdir

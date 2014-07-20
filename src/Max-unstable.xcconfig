@@ -6,5 +6,5 @@
 //  Copyright (c) 2014 edu.berkeley.cnmat. All rights reserved.
 //
 
-SYMROOT=$(PROJECT_DIR)/../unstable/externals
+SYMROOT=$(PROJECT_DIR)/../dev/externals
 OTHER_CFLAGS=-DODOT_UNSTABLE -g -DNO_TRANSLATION_SUPPORT
