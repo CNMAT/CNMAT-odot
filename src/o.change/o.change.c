@@ -34,7 +34,7 @@
 #define OMAX_DOC_NAME "o.change"
 #define OMAX_DOC_SHORT_DESC "Output a bundle if it changes"
 #define OMAX_DOC_LONG_DESC "o.change passes a bundle through if it is different from the last bundle that it received.  Any change including reordering the contents will cause the bundle to be passed through."
-#define OMAX_DOC_INLETS_DESC (char *[]){"OSC packet"}
+#define OMAX_DOC_INLETS_DESC (char *[]){"OSC packet", "OSC packet to compare against"}
 #define OMAX_DOC_OUTLETS_DESC (char *[]){"The OSC packet if identical to the previous packet", "The OSC packet if it changed"}
 #define OMAX_DOC_SEEALSO (char *[]){"change"}
 
@@ -62,6 +62,12 @@ typedef struct _ochange{
 	int buflen, bufsize;
 	char *buf;
 	t_critical lock;
+#ifdef OMAX_PD_VERSION
+	void **proxy;
+#else
+	void *proxy;
+#endif
+	long inlet;
 } t_ochange;
 
 void *ochange_class;
@@ -74,6 +80,11 @@ void ochange_fullPacket(t_ochange *x, t_symbol *msg, int argc, t_atom *argv)
 	OMAX_UTIL_GET_LEN_AND_PTR
 	critical_enter(x->lock);
 	long buflen = x->buflen;
+	if(proxy_getinlet(x) == 1){
+		critical_exit(x->lock);
+		ochange_copybundle(x, len, ptr);
+		return;
+	}
 	if(!x->buf || buflen == 0){
 		critical_exit(x->lock);
 		ochange_copybundle(x, len, ptr);
@@ -156,6 +167,9 @@ void ochange_free(t_ochange *x)
 	if(x->buf){
 		osc_mem_free(x->buf);
 	}
+#ifndef OMAX_PD_VERSION
+	object_free(x->proxy);
+#endif
 }
 
 #ifdef OMAX_PD_VERSION
@@ -182,7 +196,7 @@ int setup_o0x2echange(void)
 	class_addmethod(c, (t_method)ochange_doc, gensym("doc"), 0);
 	//class_addmethod(c, (t_method)ochange_bang, gensym("bang"), 0);
 	//class_addmethod(c, (method)ochange_anything, "anything", A_GIMME, 0);
-	class_addmethod(c, (t_method)ochange_clear, gensym("clear"), 0);
+	//class_addmethod(c, (t_method)ochange_clear, gensym("clear"), 0);
 	class_addmethod(c, (t_method)odot_version, gensym("version"), 0);
 	
 	ochange_class = c;
@@ -198,6 +212,7 @@ void *ochange_new(t_symbol *msg, short argc, t_atom *argv)
 	if((x = (t_ochange *)object_alloc(ochange_class))){
 		x->outlet_different = outlet_new((t_object *)x, "FullPacket");
 		x->outlet_same = outlet_new((t_object *)x, "FullPacket");
+		x->proxy = proxy_new((t_object *)x, 1, &(x->inlet));
 		critical_new(&(x->lock));
 		x->buf = NULL;
 		x->bufsize = x->buflen = 0;
@@ -215,7 +230,7 @@ int main(void)
 	class_addmethod(c, (method)ochange_doc, "doc", 0);
 	//class_addmethod(c, (method)ochange_bang, "bang", 0);
 	//class_addmethod(c, (method)ochange_anything, "anything", A_GIMME, 0);
-	class_addmethod(c, (method)ochange_clear, "clear", 0);
+	//class_addmethod(c, (method)ochange_clear, "clear", 0);
 	// remove this if statement when we stop supporting Max 5
 	if(omax_dict_resolveDictStubs()){
 		class_addmethod(c, (method)omax_dict_dictionary, "dictionary", A_GIMME, 0);
