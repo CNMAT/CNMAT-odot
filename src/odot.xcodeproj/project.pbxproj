@@ -13802,7 +13802,7 @@
 		};
 		52A8397B16F3F898002E273C /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 52CA34301971AB2E008C36B9 /* Max-unstable.xcconfig */;
+			baseConfigurationReference = 52AA372D19575120009A1920 /* Max-config.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(inherited)";
 				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
