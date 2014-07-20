@@ -518,7 +518,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 345.0, 557.0, 257.0, 20.0 ],
+					"patching_rect" : [ 344.0, 591.0, 257.0, 20.0 ],
 					"text" : "blend in parameters the metronome is using..."
 				}
 
