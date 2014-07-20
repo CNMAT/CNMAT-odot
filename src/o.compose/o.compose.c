@@ -489,7 +489,7 @@ long ocompose_keyfilter(t_ocompose *x, t_object *patcherview, long *keycode, lon
 
 
 void ocompose_mousedown(t_ocompose *x, t_object *patcherview, t_pt pt, long modifiers){
-    textfield_set_textmargins(jbox_get_textfield((t_object *)x), 6, 6, 16, 6);
+    textfield_set_textmargins(jbox_get_textfield((t_object *)x), 6, 6, 14, 4);
     critical_enter(x->lock);
     x->draw_new_data_indicator = 1;
     x->mouse_down = 1;
