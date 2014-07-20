@@ -146,6 +146,13 @@
       "O."
     ]
   },
+    "o.schedule": {
+    "digest": "Deadline Scheduler for OSC packets using OSC timetags",
+    "module": "max",
+    "category": [
+      "O."
+    ]
+  },
   "o.select": {
     "digest": "Dispatch OSC messages according to an address hierarchy preserving the address",
     "module": "max",
