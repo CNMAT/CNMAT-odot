@@ -19,6 +19,16 @@
 			<key>orderHint</key>
 			<integer>1</integer>
 		</dict>
+		<key>Build all PD Deprecated copy.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>87</integer>
+		</dict>
+		<key>Build all PD copy.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>86</integer>
+		</dict>
 		<key>Build all PD.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -828,6 +838,16 @@
 			<true/>
 		</dict>
 		<key>52CA34311971AB7D008C36B9</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>52CA3446197C68BA008C36B9</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>52CA3490197C6A79008C36B9</key>
 		<dict>
 			<key>primary</key>
 			<true/>
