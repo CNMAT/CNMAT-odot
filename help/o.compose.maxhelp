@@ -5,7 +5,7 @@
 			"major" : 6,
 			"minor" : 1,
 			"revision" : 6,
-			"architecture" : "x64"
+			"architecture" : "x86"
 		}
 ,
 		"rect" : [ 169.0, 72.0, 965.0, 517.0 ],
@@ -50,6 +50,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 30.0, 455.5, 91.0, 34.0 ],
+					"text" : "/foo : 6.7",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -64,6 +65,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 584.5, 455.5, 111.0, 34.0 ],
+					"text" : "/bloo : [\"a\", \"r\", \"s\"]",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -78,6 +80,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 478.0, 455.5, 83.0, 34.0 ],
+					"text" : "/bar : [1, 2, 3]",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -92,7 +95,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 30.0, 409.5, 71.0, 24.0 ],
-					"text" : "/foo : 1.4",
+					"text" : "/foo : 6.7",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -222,7 +225,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 12.0, 157.5, 600.0, 20.0 ],
-					"text" : "o.compose converts its textual contents to OSC packets."
+					"text" : "o.compose converts its textual contents to odot bundles."
 				}
 
 			}
@@ -282,23 +285,6 @@
 					"patching_rect" : [ 478.0, 230.0, 150.0, 64.0 ],
 					"text" : "/foo : {\n\t/bar : [1, 2, 3],\n\t/bloo : [\"a\", \"r\", \"s\"]\n}",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontface" : 2,
-					"fontname" : "Arial",
-					"fontsize" : 12.0,
-					"frgb" : 0.0,
-					"id" : "obj-22",
-					"linecount" : 3,
-					"maxclass" : "comment",
-					"numinlets" : 1,
-					"numoutlets" : 0,
-					"patching_rect" : [ 664.0, 278.0, 217.0, 47.0 ],
-					"text" : "the messages in a nested bundle must be on their own lines and the final square bracket must be on a new line",
-					"textcolor" : [ 0.474016, 0.474016, 0.474016, 1.0 ]
 				}
 
 			}
@@ -484,7 +470,7 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "o.helpfilehelper.maxpat",
-				"bootpath" : "/Users/ilyarostovtsev/Documents/Creative Coding/odot/_full_build_trunk/CNMAT-odot/misc",
+				"bootpath" : "/Users/adrian2013/Documents/Max/Packages/CNMAT-odot/misc",
 				"patcherrelativepath" : "../misc",
 				"type" : "JSON",
 				"implicit" : 1

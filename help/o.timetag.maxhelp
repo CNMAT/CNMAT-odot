@@ -5,7 +5,7 @@
 			"major" : 6,
 			"minor" : 1,
 			"revision" : 6,
-			"architecture" : "x64"
+			"architecture" : "x86"
 		}
 ,
 		"rect" : [ 173.0, 44.0, 571.0, 567.0 ],
@@ -32,11 +32,13 @@
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"id" : "obj-4",
+					"linecount" : 5,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 24.0, 465.0, 244.0, 34.0 ],
+					"patching_rect" : [ 24.0, 457.0, 244.0, 88.0 ],
+					"text" : "/foo : [1, 2, 3],\n/time : 2014-07-20T18:17:05.701663Z,\n/time/2 : 2014-07-20T18:17:05.701673Z,\n/nevertrue : false,\n/resolution/estimate : 9.00007e-06",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -50,23 +52,9 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 24.0, 266.0, 150.0, 24.0 ],
+					"patching_rect" : [ 24.0, 286.0, 150.0, 24.0 ],
 					"text" : "/foo : [1, 2, 3]",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontname" : "Arial",
-					"fontsize" : 12.0,
-					"frgb" : 0.0,
-					"id" : "obj-19",
-					"maxclass" : "comment",
-					"numinlets" : 1,
-					"numoutlets" : 0,
-					"patching_rect" : [ 207.0, 250.0, 259.0, 20.0 ],
-					"text" : "set the address to which the time will be bound"
 				}
 
 			}
@@ -160,20 +148,6 @@
 				"box" : 				{
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
-					"id" : "obj-20",
-					"maxclass" : "message",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 207.0, 270.0, 73.0, 18.0 ],
-					"text" : "set /timetag"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontname" : "Arial",
-					"fontsize" : 12.0,
 					"id" : "obj-15",
 					"linecount" : 2,
 					"maxclass" : "o.expr.codebox",
@@ -181,7 +155,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
 					"patching_rect" : [ 24.0, 387.0, 206.0, 45.0 ],
-					"text" : "/nevertrue = /time == /time/2,\n/resolution/estimate = /time/2 - /time,",
+					"text" : "/nevertrue = /time == /time/2,\n/resolution/estimate = /time/2 - /time",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -202,18 +176,6 @@
 			}
 , 			{
 				"box" : 				{
-					"id" : "obj-10",
-					"maxclass" : "toggle",
-					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "int" ],
-					"parameter_enable" : 0,
-					"patching_rect" : [ 24.0, 195.0, 20.0, 20.0 ]
-				}
-
-			}
-, 			{
-				"box" : 				{
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"id" : "obj-8",
@@ -221,8 +183,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 24.0, 227.0, 66.0, 20.0 ],
-					"text" : "metro 200"
+					"patching_rect" : [ 24.0, 247.0, 128.0, 20.0 ],
+					"text" : "qmetro 200 @active 1"
 				}
 
 			}
@@ -253,15 +215,6 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-8", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"source" : [ "obj-10", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
 					"color" : [ 1.0, 0.8, 0.4, 1.0 ],
 					"destination" : [ "obj-4", 0 ],
 					"disabled" : 0,
@@ -277,15 +230,6 @@
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-2", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-1", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"source" : [ "obj-20", 0 ]
 				}
 
 			}
@@ -357,7 +301,7 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "o.helpfilehelper.maxpat",
-				"bootpath" : "/Users/ilyarostovtsev/Documents/Creative Coding/odot/_full_build_trunk/CNMAT-odot/misc",
+				"bootpath" : "/Users/adrian2013/Documents/Max/Packages/CNMAT-odot/misc",
 				"patcherrelativepath" : "../misc",
 				"type" : "JSON",
 				"implicit" : 1

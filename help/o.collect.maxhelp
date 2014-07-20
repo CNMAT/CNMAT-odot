@@ -5,7 +5,7 @@
 			"major" : 6,
 			"minor" : 1,
 			"revision" : 6,
-			"architecture" : "x64"
+			"architecture" : "x86"
 		}
 ,
 		"rect" : [ 140.0, 85.0, 690.0, 504.0 ],
@@ -36,7 +36,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 120.0, 414.0, 150.0, 34.0 ],
+					"patching_rect" : [ 120.0, 381.0, 150.0, 34.0 ],
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -50,7 +50,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 179.0, 262.0, 72.0, 24.0 ],
+					"patching_rect" : [ 120.0, 296.0, 72.0, 24.0 ],
 					"text" : "/bar : 456",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -66,7 +66,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 95.5, 450.0, 199.0, 33.0 ],
+					"patching_rect" : [ 290.0, 381.0, 199.0, 33.0 ],
 					"text" : "messages in the resulting bundle are in the order they were received"
 				}
 
@@ -76,27 +76,12 @@
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"frgb" : 0.0,
-					"id" : "obj-22",
-					"maxclass" : "comment",
-					"numinlets" : 1,
-					"numoutlets" : 0,
-					"patching_rect" : [ 251.0, 265.0, 318.0, 20.0 ],
-					"text" : "accepts OSC-style Max messages and OSC bundles"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontname" : "Arial",
-					"fontsize" : 12.0,
-					"frgb" : 0.0,
 					"id" : "obj-21",
-					"linecount" : 2,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 251.0, 300.5, 277.0, 33.0 ],
-					"text" : "bang triggers output and clears the internal buffer (similar to zl group)"
+					"patching_rect" : [ 290.0, 296.0, 277.0, 20.0 ],
+					"text" : "bang triggers output and clears the internal buffer "
 				}
 
 			}
@@ -107,21 +92,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 231.0, 307.0, 20.0, 20.0 ]
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontname" : "Arial",
-					"fontsize" : 12.0,
-					"id" : "obj-11",
-					"maxclass" : "message",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 120.0, 265.0, 54.0, 18.0 ],
-					"text" : "/foo 123"
+					"patching_rect" : [ 224.0, 296.0, 20.0, 20.0 ]
 				}
 
 			}
@@ -307,15 +278,6 @@
 					"destination" : [ "obj-5", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"source" : [ "obj-11", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-5", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
 					"source" : [ "obj-14", 0 ]
 				}
 
@@ -352,7 +314,7 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "o.helpfilehelper.maxpat",
-				"bootpath" : "/Users/ilyarostovtsev/Documents/Creative Coding/odot/_full_build_trunk/CNMAT-odot/misc",
+				"bootpath" : "/Users/adrian2013/Documents/Max/Packages/CNMAT-odot/misc",
 				"patcherrelativepath" : "../misc",
 				"type" : "JSON",
 				"implicit" : 1
