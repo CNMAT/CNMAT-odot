@@ -32,13 +32,11 @@
 					"fontname" : "Arial",
 					"fontsize" : 14.0,
 					"id" : "obj-48",
-					"linecount" : 8,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 44.0, 3973.0, 944.0, 146.0 ],
-					"text" : "/pitch/numbers : [22, 69, 80],\n/concert/pitch : 440.,\n/MIDI/A440 : 69,\n/equal/temperament : \"lambda([pitchnumber,octaveratio, intervals ],  /concert/pitch * pow(octaveratio , float32(pitchnumber- /MIDI/A440 )  /  intervals))\",\n/twelvetone/equal/temperament : \"lambda([pitchnumber],  apply(/equal/temperament , pitchnumber, 2.0, 12.0 ))\",\n/Bohlen/Pierce/equal/temperament : \"lambda([pitchnumber],  apply( /equal/temperament ,  pitchnumber, 3.0, 13.0 ))\",\n/equal/tempered/frequencies/Bohlen/Pierce : [29.1352, 440., 830.609],\n/twelvetone/frequencies/ : [8.2885, 440., 1114.73]",
+					"patching_rect" : [ 44.0, 3973.0, 944.0, 36.0 ],
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -52,7 +50,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 44.0, 3682.0, 191.0, 26.0 ],
+					"patching_rect" : [ 44.0, 3682.0, 196.0, 26.0 ],
 					"text" : "/pitch/numbers : [22, 69, 80]",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -68,7 +66,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 44.0, 3728.0, 952.0, 223.0 ],
+					"patching_rect" : [ 44.0, 3728.0, 952.0, 222.0 ],
 					"text" : "# concert pitch (the frequency of the A above middle C)\n/concert/pitch = 440.0,\n# MIDI  note numbers  count semitones with 69 for A440\n/MIDI/A440 = 69,\n\n/equal/temperament = \"lambda([pitchnumber,octaveratio, intervals ],  /concert/pitch * pow(octaveratio , float32(pitchnumber- /MIDI/A440 )  /  intervals))\",\n\n# 12 ratiometrically equal intervals of the octave\n/twelvetone/equal/temperament =  \"lambda([pitchnumber],  apply(/equal/temperament , pitchnumber, 2.0, 12.0 ))\" ,\n# 13 ratiometrically equal intervals of the tritave\n/Bohlen/Pierce/equal/temperament =  \"lambda([pitchnumber],  apply( /equal/temperament ,  pitchnumber, 3.0, 13.0 ))\" ,\n/equal/tempered/frequencies/Bohlen/Pierce =  apply(/twelvetone/equal/temperament, /pitch/numbers),\n/twelvetone/frequencies/ =  apply(/Bohlen/Pierce/equal/temperament, /pitch/numbers)",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -111,7 +109,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 44.0, 3262.0, 191.0, 26.0 ],
+					"patching_rect" : [ 44.0, 3244.0, 196.0, 26.0 ],
 					"text" : "/pitch/numbers : [22, 69, 80]",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -127,8 +125,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 44.0, 3298.0, 821.0, 192.0 ],
-					"text" : "# the frequency ratio  of the tritave:\n/octave/ratio = 3,\n# concert pitch (the frequency of the A above middle C)\n/concert/pitch = 440.0,\n# MIDI  note numbers  count semitones with 69 for A440\n/MIDI/A440 = 69,\n# the octave is divided into 12 intervals\n/intervals = 13,\n# the power function pow() satisfies the requirement that successive intervals be equal ratios\n# 32-bit IEEE floating point numbers provide acceptable resolution for the approximation that pow() provides \n/equal/tempered/frequencies/Bohlen/Pierce = /concert/pitch * pow(/octave/ratio , float32(/pitch/numbers - /MIDI/A440 )  / /intervals),",
+					"patching_rect" : [ 44.0, 3298.0, 821.0, 191.0 ],
+					"text" : "# the frequency ratio  of the tritave:\n/octave/ratio = 3,\n# concert pitch (the frequency of the A above middle C)\n/concert/pitch = 440.0,\n# MIDI  note numbers  count semitones with 69 for A440\n/MIDI/A440 = 69,\n# the octave is divided into 12 intervals\n/intervals = 13,\n# the power function pow() satisfies the requirement that successive intervals be equal ratios\n# 32-bit IEEE floating point numbers provide acceptable resolution for the approximation that pow() provides \n/equal/tempered/frequencies/Bohlen/Pierce = /concert/pitch * pow(/octave/ratio , float32(/pitch/numbers - /MIDI/A440 )  / /intervals)",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -156,7 +154,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 44.0, 2701.0, 191.0, 26.0 ],
+					"patching_rect" : [ 44.0, 2701.0, 196.0, 26.0 ],
 					"text" : "/pitch/numbers : [22, 69, 80]",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -172,8 +170,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 44.0, 2740.0, 738.0, 270.0 ],
-					"text" : "# equal temperament was introduced in the West in the late seventeenth century\n# \n# the following formula converts pitch numbers into frequencies\n/equal/tempered/frequencies = 440.0 * pow(2.0 , (/pitch/numbers - 69)  / 12.0),\n# the formula is based on the  following social conventions and standards\n# the frequency ratio  of the octave:\n/octave/ratio = 2,\n# concert pitch (the frequency of the A above middle C)\n/concert/pitch = 440.0,\n# MIDI  note numbers  count semitones with 69 for A440\n/MIDI/A440 = 69,\n# the octave is divided into 12 intervals\n/intervals = 12,\n# the power function pow() satisfies the requirement that successive intervals be equal ratios\n# 32-bit IEEE floating point numbers provide acceptable resolution for the approximation that pow() provides \n/equal/tempered/frequencies2 = /concert/pitch * pow(/octave/ratio , float32(/pitch/numbers - /MIDI/A440 )  / /intervals),",
+					"patching_rect" : [ 44.0, 2740.0, 738.0, 269.0 ],
+					"text" : "# equal temperament was introduced in the West in the late seventeenth century\n# \n# the following formula converts pitch numbers into frequencies\n/equal/tempered/frequencies = 440.0 * pow(2.0 , (/pitch/numbers - 69)  / 12.0),\n# the formula is based on the  following social conventions and standards\n# the frequency ratio  of the octave:\n/octave/ratio = 2,\n# concert pitch (the frequency of the A above middle C)\n/concert/pitch = 440.0,\n# MIDI  note numbers  count semitones with 69 for A440\n/MIDI/A440 = 69,\n# the octave is divided into 12 intervals\n/intervals = 12,\n# the power function pow() satisfies the requirement that successive intervals be equal ratios\n# 32-bit IEEE floating point numbers provide acceptable resolution for the approximation that pow() provides \n/equal/tempered/frequencies2 = /concert/pitch * pow(/octave/ratio , float32(/pitch/numbers - /MIDI/A440 )  / /intervals)",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -202,7 +200,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 41.0, 2374.0, 49.0, 26.0 ],
+					"patching_rect" : [ 41.0, 2374.0, 54.0, 26.0 ],
 					"text" : "/a : 2",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -218,7 +216,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 41.0, 2526.0, 51.0, 36.0 ],
-					"text" : "/a : 24",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -233,7 +230,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 41.0, 2418.0, 182.0, 98.0 ],
+					"patching_rect" : [ 41.0, 2418.0, 182.0, 97.0 ],
 					"text" : "/a  +=  2,   # add 2 to /a\n/a  *=   6, # multiply /a by 6\n/a++,        # increment /a\n # decrement /a\n/a--      ",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -262,7 +259,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 38.0, 2084.0, 49.0, 26.0 ],
+					"patching_rect" : [ 38.0, 2075.0, 54.0, 26.0 ],
 					"text" : "/a : 2",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -278,7 +275,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 38.0, 2185.0, 51.0, 36.0 ],
-					"text" : "/a : 24",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -293,7 +289,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 38.0, 2124.0, 83.0, 51.0 ],
+					"patching_rect" : [ 38.0, 2126.0, 83.0, 50.0 ],
 					"text" : "/a = /a + 2,\n/a = /a * 6",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -323,7 +319,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 41.0, 1826.0, 56.0, 42.0 ],
+					"patching_rect" : [ 41.0, 1826.0, 61.0, 42.0 ],
 					"text" : "/a : 2,\n/b : 2",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -334,13 +330,11 @@
 					"fontname" : "Arial",
 					"fontsize" : 14.0,
 					"id" : "obj-41",
-					"linecount" : 3,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 41.0, 1925.0, 150.0, 67.0 ],
-					"text" : "/a : 2,\n/b : 2,\n/result : 4",
+					"patching_rect" : [ 41.0, 1925.0, 150.0, 36.0 ],
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -355,7 +349,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 21.0, 3193.0, 811.0, 53.0 ],
+					"patching_rect" : [ 21.0, 3172.0, 811.0, 53.0 ],
 					"text" : "Use odot to  annotate  values whose meaning would be otherwise easily lost as they travel around your host language's system.\nFor example, the expression developed above can now be used to explore other temperaments.\nHere is an interpretation of  Bohlen–Pierce equal temperament based on dividing the tritave into 13 ratiometrically equal intervals:"
 				}
 
@@ -369,7 +363,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 41.0, 1878.0, 106.0, 35.0 ],
+					"patching_rect" : [ 41.0, 1878.0, 106.0, 34.0 ],
 					"text" : "/result = /a + /b",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -427,7 +421,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 41.0, 1613.0, 94.0, 35.0 ],
+					"patching_rect" : [ 41.0, 1613.0, 94.0, 34.0 ],
 					"text" : "/result = 2 +2",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -471,7 +465,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 41.0, 1328.0, 94.0, 35.0 ],
+					"patching_rect" : [ 41.0, 1328.0, 94.0, 34.0 ],
 					"text" : "/result = 2 +2",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -501,7 +495,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 41.0, 1180.0, 94.0, 35.0 ],
+					"patching_rect" : [ 41.0, 1180.0, 94.0, 34.0 ],
 					"text" : "/result = 2 +2",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -545,7 +539,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 41.0, 1055.0, 150.0, 35.0 ],
+					"patching_rect" : [ 41.0, 1055.0, 150.0, 34.0 ],
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -560,7 +554,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 41.0, 867.0, 630.0, 73.0 ],
+					"patching_rect" : [ 41.0, 867.0, 635.0, 73.0 ],
 					"text" : "/various/constants : [33, -3.2, 2.3e-05, {\n\t/days/of/the/week : [\"monday\", \"tuesday\", \"wednesday\", \"thursday\", \"friday\", \"saturday\", \"sunday\"],\n\t/leap/year : true\n}, true, nil, false]",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -589,8 +583,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 41.0, 727.0, 403.0, 26.0 ],
-					"text" : "/various/constants: [\"monday\", 33, -3.2, 2.3e-5, true, nil, false ]",
+					"patching_rect" : [ 41.0, 727.0, 416.0, 26.0 ],
+					"text" : "/various/constants : [\"monday\", 33, -3.2, 2.3e-05, true, nil, false]",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -620,7 +614,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 41.0, 540.0, 626.0, 42.0 ],
+					"patching_rect" : [ 41.0, 540.0, 631.0, 42.0 ],
 					"text" : "/days/of/the/week : [\"monday\", \"tuesday\", \"wednesday\", \"thursday\", \"friday\", \"saturday\", \"sunday\"],\n/leap/year : true",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -650,7 +644,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 41.0, 395.0, 619.0, 26.0 ],
+					"patching_rect" : [ 41.0, 395.0, 624.0, 26.0 ],
 					"text" : "/days/of/the/week : [\"monday\", \"tuesday\", \"wednesday\", \"thursday\", \"friday\", \"saturday\", \"sunday\"]",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -680,7 +674,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 41.0, 224.0, 98.0, 26.0 ],
+					"patching_rect" : [ 41.0, 224.0, 103.0, 26.0 ],
 					"text" : "/address : 33",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
