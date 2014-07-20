@@ -5,7 +5,7 @@
 			"major" : 6,
 			"minor" : 1,
 			"revision" : 6,
-			"architecture" : "x64"
+			"architecture" : "x86"
 		}
 ,
 		"rect" : [ 253.0, 135.0, 690.0, 523.0 ],
@@ -39,7 +39,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 341.0, 236.0, 94.0, 37.0 ],
+					"patching_rect" : [ 341.0, 236.0, 99.0, 37.0 ],
 					"text" : "/foo : [1, 2, 3],\n/bar : [4, 5, 7]",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -50,12 +50,11 @@
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"id" : "obj-7",
-					"linecount" : 2,
 					"maxclass" : "o.compose",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 241.666672, 236.0, 88.0, 37.0 ],
+					"patching_rect" : [ 241.666672, 236.0, 93.0, 24.0 ],
 					"text" : "/foo : [1, 2, 3]",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
