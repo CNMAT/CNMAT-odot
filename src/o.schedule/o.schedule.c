@@ -42,7 +42,7 @@
 #define OMAX_DOC_NAME "o.schedule"
 #define OMAX_DOC_SHORT_DESC "Deadline Scheduler  for OSC packets using OSC timetags"
 #define OMAX_DOC_LONG_DESC "Stores incoming OSC packets and tries to output them at the time indicated by the timestamp."
-#define OMAX_DOC_INLETS_DESC (char *[]){"OSC packet to be scheduled"}
+#define OMAX_DOC_INLETS_DESC (char *[]){"OSC packet to be scheduled", "Inactive (reserved for future use)"}
 #define OMAX_DOC_OUTLETS_DESC (char *[]){"OSC packet", "OSC packet which has missed the scheduling deadline", "OSC packet which has an immediate timetag", "OSC packet output if the queue is full"}
 #define OMAX_DOC_SEEALSO (char *[]){"o.timetag"}
 
@@ -86,6 +86,12 @@ typedef struct _osched
 {
 	t_object ob; // required header
 	void *outlets[4];
+#ifdef OMAX_PD_VERSION
+	void **proxy;
+#else
+	void *proxy;
+#endif
+	long inlet;
 	void *clock;
 	t_critical lock;
 	int soft_lock;
@@ -393,6 +399,7 @@ void osched_free(t_osched *x)
 	free(x->clock);
 #else
 	object_free(x->clock);
+	object_free(x->proxy);
 #endif
 	critical_free(x->lock);
 	osc_mem_free(x->packet_data);
@@ -582,12 +589,13 @@ void *osched_new(t_symbol *s, short argc, t_atom *argv)
 		}
 	}
 
-	attr_args_process(x, argc, argv);
+	//attr_args_process(x, argc, argv);
     
 	OSCHEDULE_OUTLET_IMMEDIATE = outlet_new(x, "FullPacket");
 	OSCHEDULE_OUTLET_DELEGATE = outlet_new(x, "FullPacket");
 	OSCHEDULE_OUTLET_MISSED = outlet_new(x, "FullPacket");
 	OSCHEDULE_OUTLET_MAIN = outlet_new(x, "FullPacket");
+	x->proxy = proxy_new((t_object *)x, 1, &(x->inlet));
 	// allocate packet data buffer
 	x->packet_data = (char*)osc_mem_alloc(x->packets_max * x->packet_size);
     
@@ -617,12 +625,14 @@ int main(void)
 		class_addmethod(c, (method)omax_dict_dictionary, "dictionary", A_GIMME, 0);
 	}
 
+	/*
 	CLASS_ATTR_FLOAT(c, "precision", 0, t_osched, precision);
 	CLASS_ATTR_ACCESSORS(c, "precision", osched_getPrecision, osched_setPrecision);
 
 	CLASS_ATTR_LONG(c, "queuesize", 0, t_osched, packets_max);
 	CLASS_ATTR_LONG(c, "packetsize", 0, t_osched, packet_size);
-    
+	*/
+
 	osched_class = c;
 	ps_FullPacket = gensym("FullPacket");
 	class_register(CLASS_BOX, osched_class);
