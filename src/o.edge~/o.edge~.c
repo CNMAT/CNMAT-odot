@@ -36,7 +36,6 @@
 #include "ext_sysmem.h"
 #include "z_dsp.h"
 #include "osc.h"
-#include "osc_serial.h"
 #include "osc_mem.h"
 #include "osc_bundle_iterator_s.h"
 #include "osc_timetag.h"
