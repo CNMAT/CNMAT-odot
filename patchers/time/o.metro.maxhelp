@@ -32,13 +32,12 @@
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"id" : "obj-16",
-					"linecount" : 2,
+					"linecount" : 3,
 					"maxclass" : "o.compose",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 45.5, 45.5, 109.0, 37.0 ],
-					"presentation_rect" : [ 202.5, 19.0, 0.0, 0.0 ],
+					"patching_rect" : [ 45.5, 45.5, 109.0, 51.0 ],
 					"text" : "/rate : 0.2,\n/your/values : 0.3",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -55,7 +54,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 168.0, 45.5, 74.0, 37.0 ],
-					"presentation_rect" : [ 316.0, 20.0, 0.0, 0.0 ],
 					"text" : "/bpm : 60,\n/stuff0.3",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -66,12 +64,12 @@
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"id" : "obj-14",
+					"linecount" : 2,
 					"maxclass" : "o.compose",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 247.0, 52.0, 78.0, 24.0 ],
-					"presentation_rect" : [ 407.0, 35.0, 0.0, 0.0 ],
+					"patching_rect" : [ 247.0, 52.0, 78.0, 37.0 ],
 					"text" : "/rate : 1000",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -82,12 +80,12 @@
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"id" : "obj-12",
+					"linecount" : 2,
 					"maxclass" : "o.compose",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 354.0, 52.0, 72.0, 24.0 ],
-					"presentation_rect" : [ 459.0, 55.0, 0.0, 0.0 ],
+					"patching_rect" : [ 354.0, 52.0, 72.0, 37.0 ],
 					"text" : "/rate : 200",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -118,7 +116,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 147.0, 231.0, 279.0, 168.0 ],
-					"text" : "/interval : 0.01,\n/metro/started : 2014-07-19T01:53:32.088465Z,\n/n : 2796,\n/metro/next : 2014-07-19T01:54:00.038465Z,\n/rate : 100.,\n/bpm : 6000.,\n/units/interval : \"Seconds\",\n/units/bpm : \"Beats Per Minute\",\n/units/rate : \"Hertz (cycles per second)\",\n/betweentime : 0.00795006,\n/units/betweentime : \"seconds\"",
+					"text" : "/interval : 1.,\n/metro/started : 2014-07-20T16:07:26.484468Z,\n/n : 1,\n/metro/next : 2014-07-20T16:07:26.484468Z,\n/bpm : 60.,\n/units/interval : \"Seconds\",\n/units/bpm : \"Beats Per Minute\",\n/units/rate : \"Hertz (cycles per second)\",\n/rate : 1.,\n/betweentime : 1.50958,\n/units/betweentime : \"seconds\"",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -158,8 +156,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 147.0, 154.0, 102.0, 20.0 ],
-					"text" : "o.metro /rate 100"
+					"patching_rect" : [ 147.0, 154.0, 51.0, 20.0 ],
+					"text" : "o.metro"
 				}
 
 			}
@@ -253,13 +251,6 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "o.arguments.maxpat",
-				"bootpath" : "/Users/adrian2013/Documents/Max/Packages/CNMAT-odot/patchers",
-				"patcherrelativepath" : "..",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
 				"name" : "o.righttoleft.maxpat",
 				"bootpath" : "/Users/adrian2013/Documents/Max/Packages/CNMAT-odot/patchers/core",
 				"patcherrelativepath" : "../core",
@@ -323,14 +314,6 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "o.collect.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.union.mxo",
-				"type" : "iLaX"
-			}
-, 			{
 				"name" : "o.pack.mxo",
 				"type" : "iLaX"
 			}
@@ -339,11 +322,7 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "o.route.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.var.mxo",
+				"name" : "o.union.mxo",
 				"type" : "iLaX"
 			}
 , 			{
@@ -355,15 +334,23 @@
 				"type" : "iLaX"
 			}
 , 			{
+				"name" : "o.collect.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.route.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.var.mxo",
+				"type" : "iLaX"
+			}
+, 			{
 				"name" : "o.prepend.mxo",
 				"type" : "iLaX"
 			}
 , 			{
 				"name" : "o.cond.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.message.mxo",
 				"type" : "iLaX"
 			}
 , 			{
@@ -379,7 +366,7 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "o.when.mxo",
+				"name" : "o.compose.mxo",
 				"type" : "iLaX"
 			}
 , 			{
@@ -387,15 +374,7 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "o.expr.mxo",
-				"type" : "iLaX"
-			}
-, 			{
 				"name" : "o.display.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.compose.mxo",
 				"type" : "iLaX"
 			}
  ]
