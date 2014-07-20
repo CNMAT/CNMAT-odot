@@ -35,7 +35,7 @@ o.validate \
 o.var \
 o.when
 
-MOBJECT_LIST = o.io.bluetoothle
+MOBJECT_LIST = 
 
 OBJECT_LIST = $(COBJECT_LIST) $(MOBJECT_LIST)
 
