@@ -5,10 +5,10 @@
 			"major" : 6,
 			"minor" : 1,
 			"revision" : 6,
-			"architecture" : "x64"
+			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 432.0, 120.0, 719.0, 600.0 ],
+		"rect" : [ 432.0, 120.0, 664.0, 703.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -31,12 +31,131 @@
 				"box" : 				{
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
+					"frgb" : 0.0,
+					"id" : "obj-7",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 492.0, 626.0, 150.0, 20.0 ],
+					"text" : "see also:"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"hidden" : 1,
+					"id" : "obj-10",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 4,
+					"outlettype" : [ "", "", "", "clear" ],
+					"patching_rect" : [ 477.5, 257.0, 170.0, 20.0 ],
+					"text" : "o.helpfilehelper @obj o.edge~"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"frgb" : 0.0,
+					"id" : "obj-9",
+					"linecount" : 2,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 24.0, 161.0, 600.0, 33.0 ],
+					"text" : "o.edge~ is similar to edge~. It reports all zero to non-zero and non-zero to zero transitions that occur in a signal vector."
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"frgb" : 0.0,
+					"id" : "obj-14",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 24.0, 113.0, 600.0, 20.0 ],
+					"text" : "Report transitions between 0 and non-zero"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 72.0,
+					"frgb" : 0.0,
+					"id" : "obj-16",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 24.0, 24.0, 600.0, 87.0 ],
+					"text" : "o.edge~"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-17",
+					"items" : "edge~",
+					"maxclass" : "umenu",
+					"numinlets" : 1,
+					"numoutlets" : 3,
+					"outlettype" : [ "int", "", "" ],
+					"parameter_enable" : 0,
+					"patching_rect" : [ 492.0, 648.0, 132.0, 20.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"hidden" : 1,
+					"id" : "obj-25",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 492.0, 707.0, 53.0, 20.0 ],
+					"text" : "pcontrol"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"hidden" : 1,
+					"id" : "obj-26",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 492.0, 683.0, 138.0, 20.0 ],
+					"text" : "sprintf load %s.maxhelp"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
 					"id" : "obj-3",
+					"linecount" : 13,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 216.0, 264.0, 192.0, 34.0 ],
+					"patching_rect" : [ 280.0, 417.0, 192.0, 195.0 ],
+					"text" : "/zerotononzero/time : 2014-07-20T20:08:44.919446Z,\n/zerotononzero/sample/withinblock : 130,\n/zerotononzero/sample/sincedspstart : 1.08045e+06.,\n/zerotononzero/value : 1.,\n/nonzerotozero/time : 2014-07-20T20:08:44.919468Z,\n/nonzerotozero/sample/withinblock : 131,\n/nonzerotozero/sample/sincedspstart : 1.08045e+06.",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -49,7 +168,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 184.0, 504.0, 73.0, 20.0 ],
+					"patching_rect" : [ 184.0, 648.0, 73.0, 20.0 ],
 					"text" : "print middle"
 				}
 
@@ -62,7 +181,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 128.0, 504.0, 53.0, 20.0 ],
+					"patching_rect" : [ 128.0, 648.0, 53.0, 20.0 ],
 					"text" : "print left"
 				}
 
@@ -76,7 +195,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 4,
 					"outlettype" : [ "FullPacket", "FullPacket", "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 128.0, 448.0, 98.0, 20.0 ],
+					"patching_rect" : [ 128.0, 592.0, 98.0, 20.0 ],
 					"text" : "o.schedule /time"
 				}
 
@@ -90,7 +209,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "FullPacket" ],
-					"patching_rect" : [ 128.0, 416.0, 59.0, 20.0 ],
+					"patching_rect" : [ 128.0, 560.0, 59.0, 20.0 ],
 					"text" : "o.route /*"
 				}
 
@@ -104,7 +223,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 128.0, 384.0, 90.0, 20.0 ],
+					"patching_rect" : [ 128.0, 528.0, 90.0, 20.0 ],
 					"text" : "o.append /time"
 				}
 
@@ -118,7 +237,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 128.0, 352.0, 103.0, 20.0 ],
+					"patching_rect" : [ 128.0, 496.0, 103.0, 20.0 ],
 					"text" : "o.messageiterate"
 				}
 
@@ -132,7 +251,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "FullPacket" ],
-					"patching_rect" : [ 128.0, 312.0, 131.0, 20.0 ],
+					"patching_rect" : [ 128.0, 464.0, 131.0, 20.0 ],
 					"text" : "o.route /zerotononzero"
 				}
 
@@ -147,7 +266,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "int", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 264.0, 24.0, 50.0, 20.0 ]
+					"patching_rect" : [ 264.0, 208.0, 50.0, 20.0 ]
 				}
 
 			}
@@ -160,7 +279,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "signal" ],
-					"patching_rect" : [ 264.0, 128.0, 32.5, 20.0 ],
+					"patching_rect" : [ 264.0, 312.0, 32.5, 20.0 ],
 					"text" : "<~"
 				}
 
@@ -174,7 +293,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "signal" ],
-					"patching_rect" : [ 280.0, 96.0, 66.0, 20.0 ],
+					"patching_rect" : [ 280.0, 280.0, 66.0, 20.0 ],
 					"text" : "delay~ 1 1"
 				}
 
@@ -188,7 +307,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "signal" ],
-					"patching_rect" : [ 264.0, 64.0, 68.0, 20.0 ],
+					"patching_rect" : [ 264.0, 248.0, 68.0, 20.0 ],
 					"text" : "phasor~ 2."
 				}
 
@@ -202,7 +321,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 128.0, 224.0, 107.0, 20.0 ],
+					"patching_rect" : [ 128.0, 376.0, 171.0, 20.0 ],
 					"text" : "o.if emptybundle()"
 				}
 
@@ -214,7 +333,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 128.0, 64.0, 20.0, 20.0 ]
+					"patching_rect" : [ 128.0, 248.0, 20.0, 20.0 ]
 				}
 
 			}
@@ -224,7 +343,7 @@
 					"maxclass" : "ezdac~",
 					"numinlets" : 2,
 					"numoutlets" : 0,
-					"patching_rect" : [ 64.0, 327.0, 45.0, 45.0 ]
+					"patching_rect" : [ 64.0, 511.0, 45.0, 45.0 ]
 				}
 
 			}
@@ -235,7 +354,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 76.5, 224.0, 20.0, 20.0 ]
+					"patching_rect" : [ 96.0, 376.0, 20.0, 20.0 ]
 				}
 
 			}
@@ -248,7 +367,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "signal" ],
-					"patching_rect" : [ 128.0, 104.0, 41.0, 20.0 ],
+					"patching_rect" : [ 128.0, 288.0, 41.0, 20.0 ],
 					"text" : "click~"
 				}
 
@@ -262,7 +381,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 128.0, 176.0, 54.0, 20.0 ],
+					"patching_rect" : [ 128.0, 344.0, 54.0, 20.0 ],
 					"text" : "o.edge~"
 				}
 
@@ -283,6 +402,42 @@
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-1", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-14", 0 ],
+					"disabled" : 0,
+					"hidden" : 1,
+					"source" : [ "obj-10", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-16", 0 ],
+					"disabled" : 0,
+					"hidden" : 1,
+					"source" : [ "obj-10", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-17", 0 ],
+					"disabled" : 0,
+					"hidden" : 1,
+					"source" : [ "obj-10", 3 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-9", 0 ],
+					"disabled" : 0,
+					"hidden" : 1,
+					"source" : [ "obj-10", 2 ]
 				}
 
 			}
@@ -328,6 +483,15 @@
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-15", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-26", 0 ],
+					"disabled" : 0,
+					"hidden" : 1,
+					"source" : [ "obj-17", 1 ]
 				}
 
 			}
@@ -396,6 +560,15 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-25", 0 ],
+					"disabled" : 0,
+					"hidden" : 1,
+					"source" : [ "obj-26", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-18", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
@@ -423,6 +596,13 @@
 			}
  ],
 		"dependency_cache" : [ 			{
+				"name" : "o.helpfilehelper.maxpat",
+				"bootpath" : "/Users/ilyarostovtsev/Documents/Creative Coding/odot/_full_build_trunk/CNMAT-odot/misc",
+				"patcherrelativepath" : "../misc",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
 				"name" : "o.edge~.mxo",
 				"type" : "iLaX"
 			}
