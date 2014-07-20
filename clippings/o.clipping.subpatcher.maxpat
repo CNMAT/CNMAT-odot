@@ -87,7 +87,7 @@
 					"maxclass" : "outlet",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 21.0, 399.0, 25.0, 25.0 ]
+					"patching_rect" : [ 21.0, 460.0, 25.0, 25.0 ]
 				}
 
 			}
@@ -100,7 +100,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 21.0, 362.0, 112.0, 20.0 ],
+					"patching_rect" : [ 21.0, 423.0, 112.0, 20.0 ],
 					"text" : "o.out @name main"
 				}
 
@@ -136,12 +136,13 @@
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"id" : "obj-3",
+					"linecount" : 6,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 212.0, 250.0, 150.0, 34.0 ],
-					"text" : "/value : 56",
+					"patching_rect" : [ 165.0, 335.0, 150.0, 101.0 ],
+					"text" : "/address : 3.,\n/list : [1, 4, true, false, nil],\n/subbundle : {\n\t/thing : 1\n},\n/value : 56",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -155,8 +156,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 21.0, 250.0, 150.0, 32.0 ],
-					"text" : "/value ??= 56,\n",
+					"patching_rect" : [ 21.0, 249.0, 150.0, 32.0 ],
+					"text" : "/value ??= 56",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -171,7 +172,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 21.0, 151.0, 166.0, 78.0 ],
+					"patching_rect" : [ 21.0, 150.0, 166.0, 78.0 ],
 					"text" : "/address : 3.,\n/list : [1, 4, true, false, nil],\n/subbundle : {\n\t/thing : 1\n}",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -201,7 +202,7 @@
 					"destination" : [ "obj-3", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"midpoints" : [ 30.5, 293.0, 194.0, 293.0, 194.0, 245.0, 221.5, 245.0 ],
+					"midpoints" : [ 30.5, 320.0, 174.5, 320.0 ],
 					"source" : [ "obj-2", 0 ]
 				}
 
