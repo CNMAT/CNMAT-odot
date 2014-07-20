@@ -5,7 +5,7 @@
 			"major" : 6,
 			"minor" : 1,
 			"revision" : 6,
-			"architecture" : "x64"
+			"architecture" : "x86"
 		}
 ,
 		"rect" : [ 174.0, 73.0, 885.0, 474.0 ],
@@ -66,8 +66,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 59.0, 240.0, 245.0, 73.0 ],
-					"text" : " /delta = /q - /p,\n /squared/delta = pow(/delta, 2.0),\n /sum/squared/delta = sum(/squared/delta),\n /dist = sqrt(/sum/squared/delta),",
+					"patching_rect" : [ 59.0, 240.0, 245.0, 72.0 ],
+					"text" : " /delta = /q - /p,\n /squared/delta = pow(/delta, 2.0),\n /sum/squared/delta = sum(/squared/delta),\n /dist = sqrt(/sum/squared/delta)",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -110,7 +110,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 111.0, 43.0, 259.0, 37.0 ],
+					"patching_rect" : [ 111.0, 43.0, 264.0, 37.0 ],
 					"text" : "/p : [0, 1, 2, -3, 4, 5, 2e-05, 3],\n/q : [0.01, 1.2, -1.9, 3.001, 4., 4.999, 1e-05, 4]",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -125,7 +125,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 566.0, 118.0, 150.0, 33.0 ],
+					"patching_rect" : [ 566.0, 118.0, 150.0, 32.0 ],
 					"text" : " /dist = l2norm(/q - /p)",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -140,7 +140,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 111.0, 118.0, 384.0, 33.0 ],
+					"patching_rect" : [ 111.0, 118.0, 384.0, 32.0 ],
 					"text" : " /dist = sqrt(lreduce(add, map(lambda([p, q], pow(q - p, 2.0)), /p, /q)))",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
