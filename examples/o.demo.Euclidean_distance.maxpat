@@ -66,8 +66,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 59.0, 240.0, 245.0, 73.0 ],
-					"text" : " /delta = /q - /p,\n /squared/delta = pow(/delta, 2.0),\n /sum/squared/delta = sum(/squared/delta),\n /dist = sqrt(/sum/squared/delta),",
+					"patching_rect" : [ 59.0, 240.0, 245.0, 72.0 ],
+					"text" : " /delta = /q - /p,\n /squared/delta = pow(/delta, 2.0),\n /sum/squared/delta = sum(/squared/delta),\n /dist = sqrt(/sum/squared/delta)",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -105,12 +105,12 @@
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"id" : "obj-4",
-					"linecount" : 2,
+					"linecount" : 3,
 					"maxclass" : "o.compose",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 111.0, 43.0, 259.0, 37.0 ],
+					"patching_rect" : [ 111.0, 43.0, 259.0, 51.0 ],
 					"text" : "/p : [0, 1, 2, -3, 4, 5, 2e-05, 3],\n/q : [0.01, 1.2, -1.9, 3.001, 4., 4.999, 1e-05, 4]",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}

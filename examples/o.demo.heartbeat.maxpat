@@ -5,7 +5,7 @@
 			"major" : 6,
 			"minor" : 1,
 			"revision" : 6,
-			"architecture" : "x64"
+			"architecture" : "x86"
 		}
 ,
 		"rect" : [ 128.0, 99.0, 1054.0, 611.0 ],
@@ -36,8 +36,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 78.0, 362.0, 78.0, 33.0 ],
-					"text" : "/late = false,",
+					"patching_rect" : [ 88.0, 362.0, 78.0, 32.0 ],
+					"text" : "/late = false",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -51,8 +51,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 176.0, 362.0, 73.0, 33.0 ],
-					"text" : "/late = true,",
+					"patching_rect" : [ 186.0, 362.0, 73.0, 32.0 ],
+					"text" : "/late = true",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -62,13 +62,11 @@
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"id" : "obj-2",
-					"linecount" : 6,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 150.0, 458.0, 263.0, 101.0 ],
-					"text" : "/val : 2,\n/time/interval : 0.5,\n/time/current : 2014-07-18T20:35:02.434844Z,\n/time/expected : 2014-07-18T20:35:02.934844Z,\n/late : true",
+					"patching_rect" : [ 150.0, 458.0, 263.0, 34.0 ],
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
