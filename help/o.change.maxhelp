@@ -38,8 +38,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 315.5, 470.0, 150.0, 20.0 ],
-					"presentation_rect" : [ 317.0, 454.0, 0.0, 0.0 ],
+					"patching_rect" : [ 151.0, 470.0, 150.0, 20.0 ],
 					"text" : "Different"
 				}
 
@@ -53,7 +52,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 151.0, 470.0, 150.0, 20.0 ],
+					"patching_rect" : [ 315.5, 470.0, 150.0, 20.0 ],
 					"text" : "Same"
 				}
 
@@ -69,7 +68,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 315.5, 410.0, 150.0, 47.0 ],
-					"presentation_rect" : [ 313.0, 408.0, 0.0, 0.0 ],
 					"text" : "/bar : [4, 5, 6],\n/foo : [1, 2, 3]",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -149,7 +147,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 151.0, 410.0, 150.0, 47.0 ],
-					"text" : "/bar : [4, 5, 6],\n/foo : [1, 2, 3]",
+					"text" : "/foo : [1, 2, 3],\n/bar : [4, 5, 6]",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -160,7 +158,7 @@
 					"fontsize" : 12.0,
 					"id" : "obj-17",
 					"maxclass" : "newobj",
-					"numinlets" : 1,
+					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
 					"patching_rect" : [ 151.0, 355.0, 60.0, 20.0 ],
