@@ -313,10 +313,12 @@ void osched_tick(t_osched *x)
 			x->soft_lock = 0;
 			t_osc_timetag tt = osched_getTimetag(x, len, buf);
 			void *outlet = OSCHEDULE_OUTLET_MAIN;
+			/*
 			int tcomp = osc_timetag_compare(tt, now);
 			if(tcomp < 0){
 				outlet = OSCHEDULE_OUTLET_MISSED;
 			}
+			*/
 			omax_util_outletOSC(outlet, len, buf);
 			critical_enter(x->lock);
 
