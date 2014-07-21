@@ -4,4 +4,6 @@ max definecommand d patcher insertobj o.display;
 max definecommandinstructions patcher d "o. display";
 max definecommand C patcher insertobj o.compose;
 max definecommandinstructions patcher C "o. compose";
+max definecommand O patcher inserttextobj o.;
+max definecommandinstructions patcher O "o.";
 
