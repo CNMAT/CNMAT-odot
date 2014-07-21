@@ -8,7 +8,7 @@
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 313.0, 116.0, 840.0, 589.0 ],
+		"rect" : [ 156.0, 178.0, 840.0, 589.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -28,6 +28,36 @@
 		"digest" : "",
 		"tags" : "",
 		"boxes" : [ 			{
+				"box" : 				{
+					"color" : [ 1.0, 0.8, 0.4, 1.0 ],
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-11",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "FullPacket", "FullPacket" ],
+					"patching_rect" : [ 38.0, 312.0, 132.0, 20.0 ],
+					"text" : "o.if bound (/was/angle)"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"color" : [ 1.0, 0.8, 0.4, 1.0 ],
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-7",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "FullPacket", "FullPacket" ],
+					"patching_rect" : [ 38.0, 201.0, 155.0, 20.0 ],
+					"text" : "o.if bound (/was/horizontal)"
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
@@ -65,7 +95,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 336.0, 389.0, 150.0, 60.0 ],
+					"patching_rect" : [ 327.0, 469.0, 150.0, 60.0 ],
 					"text" : "Direction of rotation of a cursor device\n\nAdrian Freed 2013 2014"
 				}
 
@@ -80,8 +110,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 38.0, 341.606628, 252.0, 128.0 ],
-					"text" : "/horizontal : 550,\n/vertical : 196,\n/was/horizontal : 550,\n/was/vertical : 196,\n/angle : 0.,\n/was/angle : 0.,\n/angle/difference : 0.,\n/direction : \"still\"",
+					"patching_rect" : [ 38.0, 417.606628, 252.0, 128.0 ],
+					"text" : "/horizontal : 490,\n/vertical : 444,\n/was/horizontal : 490,\n/was/vertical : 444,\n/angle : 0.,\n/was/angle : 0.,\n/angle/difference : 0.,\n/direction : \"still\"",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -95,7 +125,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 38.0, 170.569244, 145.0, 20.0 ],
+					"patching_rect" : [ 38.0, 154.569244, 145.0, 20.0 ],
 					"text" : "o.was /horizontal /vertical"
 				}
 
@@ -110,7 +140,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 38.0, 280.276978, 712.0, 45.0 ],
+					"patching_rect" : [ 38.0, 356.276978, 457.0, 45.0 ],
 					"text" : "/angle/difference = /angle - /was/angle, \n/direction = /angle/difference==0?still:(/angle/difference>0? clockwise:anticlockwise)",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -125,7 +155,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 38.0, 243.707733, 78.0, 20.0 ],
+					"patching_rect" : [ 38.0, 278.707733, 78.0, 20.0 ],
 					"text" : "o.was /angle"
 				}
 
@@ -135,12 +165,13 @@
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"id" : "obj-6",
-					"maxclass" : "newobj",
+					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 38.0, 207.138489, 396.0, 20.0 ],
-					"text" : "o.expr /angle=atan2(/vertical - /was/vertical\\,/horizontal - /was/horizontal )"
+					"numoutlets" : 2,
+					"outlettype" : [ "FullPacket", "FullPacket" ],
+					"patching_rect" : [ 38.0, 242.138489, 376.0, 31.0 ],
+					"text" : " /angle=atan2(/vertical - /was/vertical,/horizontal - /was/horizontal )",
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
 			}
@@ -162,10 +193,20 @@
 		"lines" : [ 			{
 				"patchline" : 				{
 					"color" : [ 1.0, 0.8, 0.4, 1.0 ],
-					"destination" : [ "obj-6", 0 ],
+					"destination" : [ "obj-7", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-10", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"color" : [ 1.0, 0.8, 0.4, 1.0 ],
+					"destination" : [ "obj-9", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-11", 0 ]
 				}
 
 			}
@@ -219,7 +260,17 @@
 , 			{
 				"patchline" : 				{
 					"color" : [ 1.0, 0.8, 0.4, 1.0 ],
-					"destination" : [ "obj-9", 0 ],
+					"destination" : [ "obj-6", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-7", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"color" : [ 1.0, 0.8, 0.4, 1.0 ],
+					"destination" : [ "obj-11", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-8", 0 ]
@@ -246,13 +297,13 @@
 			}
 , 			{
 				"name" : "o.righttoleft.maxpat",
-				"bootpath" : "/Users/adrian2013/Documents/Max/Packages/CNMAT-odot/patchers/core",
-				"patcherrelativepath" : "../patchers/core",
+				"bootpath" : "/Users/adrian2013/Documents/Max/Packages/CNMAT-odot/patchers/ordering",
+				"patcherrelativepath" : "../patchers/ordering",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "o.expr.mxo",
+				"name" : "o.expr.codebox.mxo",
 				"type" : "iLaX"
 			}
 , 			{
@@ -276,15 +327,15 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "o.expr.codebox.mxo",
-				"type" : "iLaX"
-			}
-, 			{
 				"name" : "o.display.mxo",
 				"type" : "iLaX"
 			}
 , 			{
 				"name" : "o.pack.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.if.mxo",
 				"type" : "iLaX"
 			}
  ]
