@@ -1,4 +1,4 @@
-CNMAT-odot
+CNMAT-odot    pre-release
 ==========
 The odot system augments dataflow languages like Max/MSP, PD and Node Red with the following:
 
