@@ -38,7 +38,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 111.0, 160.0, 361.0, 88.0 ],
-					"text" : "/foo : 20,\n/_aspect/profile,\n/o.demo.aspect/inlet/time : 2014-07-21T01:07:42.407473Z,\n/o.demo.aspect/outlet/time : 2014-07-21T01:07:42.407949Z,\n/o.demo.aspect/elapsed : 0.000476004",
+					"text" : "/foo : 20,\n/_aspect/profile,\n/o.demo.aspect/inlet/time : 2014-07-21T01:55:39.186494Z,\n/o.demo.aspect/outlet/time : 2014-07-21T01:55:39.187387Z,\n/o.demo.aspect/elapsed : 0.000892007",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -100,13 +100,13 @@
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"id" : "obj-2",
-					"linecount" : 2,
+					"linecount" : 3,
 					"maxclass" : "o.compose",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 111.0, 56.0, 150.0, 37.0 ],
-					"text" : "/foo : 20,\n/_aspect/profile",
+					"patching_rect" : [ 111.0, 56.0, 214.0, 51.0 ],
+					"text" : "/foo : 20,\n/_aspect/profile,\n/assertions : \"lambda([], /foo == 20)\"",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -147,7 +147,7 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "o.demo.aspect.maxpat",
-				"bootpath" : "/Users/john/Development/CNMAT/CNMAT/CNMAT-odot/dev/demos/needlovefromjohn",
+				"bootpath" : "/Users/john/Development/CNMAT/CNMAT/CNMAT-odot/dev/demos",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
@@ -155,70 +155,70 @@
 , 			{
 				"name" : "o.in.maxpat",
 				"bootpath" : "/Users/john/Development/CNMAT/CNMAT/CNMAT-odot/dev",
-				"patcherrelativepath" : "../..",
+				"patcherrelativepath" : "..",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.port.maxpat",
 				"bootpath" : "/Users/john/Development/CNMAT/CNMAT/CNMAT-odot/dev",
-				"patcherrelativepath" : "../..",
+				"patcherrelativepath" : "..",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.aspect.joinpoint.maxpat",
 				"bootpath" : "/Users/john/Development/CNMAT/CNMAT/CNMAT-odot/dev/aspect",
-				"patcherrelativepath" : "../../aspect",
+				"patcherrelativepath" : "../aspect",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.out.maxpat",
 				"bootpath" : "/Users/john/Development/CNMAT/CNMAT/CNMAT-odot/dev",
-				"patcherrelativepath" : "../..",
+				"patcherrelativepath" : "..",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.aspect.profile.maxpat",
 				"bootpath" : "/Users/john/Development/CNMAT/CNMAT/CNMAT-odot/dev/aspect",
-				"patcherrelativepath" : "../../aspect",
+				"patcherrelativepath" : "../aspect",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.aspect.receive.maxpat",
 				"bootpath" : "/Users/john/Development/CNMAT/CNMAT/CNMAT-odot/dev/aspect",
-				"patcherrelativepath" : "../../aspect",
+				"patcherrelativepath" : "../aspect",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.aspect.send.maxpat",
 				"bootpath" : "/Users/john/Development/CNMAT/CNMAT/CNMAT-odot/dev/aspect",
-				"patcherrelativepath" : "../../aspect",
+				"patcherrelativepath" : "../aspect",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.aspect.print.maxpat",
 				"bootpath" : "/Users/john/Development/CNMAT/CNMAT/CNMAT-odot/dev/aspect",
-				"patcherrelativepath" : "../../aspect",
+				"patcherrelativepath" : "../aspect",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.aspect.log.outlet.maxpat",
 				"bootpath" : "/Users/john/Development/CNMAT/CNMAT/CNMAT-odot/dev/aspect",
-				"patcherrelativepath" : "../../aspect",
+				"patcherrelativepath" : "../aspect",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.aspect.assert.maxpat",
 				"bootpath" : "/Users/john/Development/CNMAT/CNMAT/CNMAT-odot/dev/aspect",
-				"patcherrelativepath" : "../../aspect",
+				"patcherrelativepath" : "../aspect",
 				"type" : "JSON",
 				"implicit" : 1
 			}
@@ -263,23 +263,19 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "o.message.mxo",
-				"type" : "iLaX"
-			}
-, 			{
 				"name" : "o.compose.mxo",
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "o.when.mxo",
+				"name" : "o.display.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.expr.codebox.mxo",
 				"type" : "iLaX"
 			}
 , 			{
 				"name" : "o.timetag.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.expr.mxo",
 				"type" : "iLaX"
 			}
 , 			{
@@ -288,10 +284,6 @@
 			}
 , 			{
 				"name" : "o.table.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.display.mxo",
 				"type" : "iLaX"
 			}
  ]
