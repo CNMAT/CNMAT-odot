@@ -8,7 +8,7 @@
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 70.0, 340.0, 821.0, 214.0 ],
+		"rect" : [ 93.0, 44.0, 853.0, 261.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -34,10 +34,10 @@
 					"id" : "obj-2",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 16.0, 48.0, 239.0, 20.0 ],
-					"text" : "o.when bound(/o_outlet/this/patcher/name)"
+					"numoutlets" : 2,
+					"outlettype" : [ "FullPacket", "FullPacket" ],
+					"patching_rect" : [ 16.0, 48.0, 216.0, 20.0 ],
+					"text" : "o.if bound(/o_outlet/this/patcher/name)"
 				}
 
 			}
@@ -146,10 +146,10 @@
 					"id" : "obj-3",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 16.0, 80.0, 297.0, 20.0 ],
-					"text" : "o.when /o_outlet/this/patcher/name == o.demo.aspect"
+					"numoutlets" : 2,
+					"outlettype" : [ "FullPacket", "FullPacket" ],
+					"patching_rect" : [ 16.0, 80.0, 274.0, 20.0 ],
+					"text" : "o.if /o_outlet/this/patcher/name == o.demo.aspect"
 				}
 
 			}
@@ -230,6 +230,30 @@
 					"source" : [ "obj-8", 4 ]
 				}
 
+			}
+ ],
+		"dependency_cache" : [ 			{
+				"name" : "o.aspect.receive.maxpat",
+				"bootpath" : "/Users/john/Development/CNMAT/CNMAT/CNMAT-odot/dev/aspect",
+				"patcherrelativepath" : ".",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "o.if.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.route.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.table.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.cond.mxo",
+				"type" : "iLaX"
 			}
  ]
 	}
