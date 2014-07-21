@@ -35,7 +35,7 @@
 #define OMAX_DOC_SHORT_DESC "Output a bundle if it changes"
 #define OMAX_DOC_LONG_DESC "o.change passes a bundle through if it is different from the last bundle that it received.  Any change including reordering the contents will cause the bundle to be passed through."
 #define OMAX_DOC_INLETS_DESC (char *[]){"OSC packet", "OSC packet to compare against"}
-#define OMAX_DOC_OUTLETS_DESC (char *[]){"The OSC packet if identical to the previous packet", "The OSC packet if it changed"}
+#define OMAX_DOC_OUTLETS_DESC (char *[]){"The OSC packet if it changed", "The OSC packet if identical to the previous packet"}
 #define OMAX_DOC_SEEALSO (char *[]){"change"}
 
 #include "odot_version.h"
@@ -178,8 +178,8 @@ void *ochange_new(t_symbol *msg, short argc, t_atom *argv)
 {
 	t_ochange *x;
 	if((x = (t_ochange *)object_alloc(ochange_class))){
-		x->outlet_different = outlet_new((t_object *)x, gensym("FullPacket"));
 		x->outlet_same = outlet_new((t_object *)x, gensym("FullPacket"));
+		x->outlet_different = outlet_new((t_object *)x, gensym("FullPacket"));
 		critical_new(&(x->lock));
 		x->buf = NULL;
 		x->bufsize = x->buflen = 0;
@@ -210,8 +210,8 @@ void *ochange_new(t_symbol *msg, short argc, t_atom *argv)
 {
 	t_ochange *x;
 	if((x = (t_ochange *)object_alloc(ochange_class))){
-		x->outlet_different = outlet_new((t_object *)x, "FullPacket");
 		x->outlet_same = outlet_new((t_object *)x, "FullPacket");
+		x->outlet_different = outlet_new((t_object *)x, "FullPacket");
 		x->proxy = proxy_new((t_object *)x, 1, &(x->inlet));
 		critical_new(&(x->lock));
 		x->buf = NULL;
