@@ -195,6 +195,7 @@ void oexpr_fullPacket(t_oexpr *x, t_symbol *msg, int argc, t_atom *argv)
 #elif defined (OCOND)
 	t_osc_expr *f = x->expr;
 	int j = 0;
+	int success = 0;
 	while(f){
 		int ret = osc_expr_eval(f, &len, &copy, &av);
 		if(!ret){
@@ -212,13 +213,17 @@ void oexpr_fullPacket(t_oexpr *x, t_symbol *msg, int argc, t_atom *argv)
 			}
 			if(!fail){
 				omax_util_outletOSC(x->outlets[j], len, ptr);
-				goto out;
+				success++;
+				//goto out;
 			}
 		}
 		f = osc_expr_next(f);
 		j++;
 	}
-	omax_util_outletOSC(x->outlets[j], len, ptr);
+	if(!success){
+		omax_util_outletOSC(x->outlets[j], len, ptr);
+	}
+
  out:
 	if(av){
 		osc_atom_array_u_free(av);
