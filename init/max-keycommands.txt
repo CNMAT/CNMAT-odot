@@ -7,3 +7,4 @@ max definecommandinstructions patcher C "o. compose";
 max definecommand O patcher inserttextobj o.;
 max definecommandinstructions patcher O "o.";
 
+
