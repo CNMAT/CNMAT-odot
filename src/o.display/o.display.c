@@ -2099,7 +2099,7 @@ int main(void){
 		class_addmethod(c, (method)omax_dict_dictionary, "dictionary", A_GIMME, 0);
 	}
     
-	class_addmethod(c, (method)odisplay_clear, "clear", 0);
+//	class_addmethod(c, (method)odisplay_clear, "clear", 0);
 	class_addmethod(c, (method)odisplay_select, "select", 0);
 //	class_addmethod(c, (method)odisplay_mousedown, "mousedown", A_CANT, 0);
 //	class_addmethod(c, (method)odisplay_mouseup, "mouseup", A_CANT, 0);
