@@ -5,7 +5,7 @@
 			"major" : 6,
 			"minor" : 1,
 			"revision" : 6,
-			"architecture" : "x64"
+			"architecture" : "x86"
 		}
 ,
 		"rect" : [ 58.0, 49.0, 1211.0, 782.0 ],
@@ -62,11 +62,13 @@
 					"fontname" : "Helvetica Neue",
 					"fontsize" : 12.0,
 					"id" : "obj-42",
+					"linecount" : 79,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 629.0, 403.5, 280.0, 34.0 ],
+					"patching_rect" : [ 629.0, 403.5, 280.0, 1124.0 ],
+					"text" : "/recording : false,\n/record/end/time : 2014-07-21T06:13:40.088470Z,\n/event : {\n\t/event/value : 47,\n\t/event/time : 2014-07-21T06:13:39.161546Z\n},\n/record/start/time : 2014-07-21T06:13:36.654804Z,\n/sequence : [{\n\t/event/value : 56,\n\t/event/time : 2014-07-21T06:13:37.656315Z\n}, {\n\t/event/value : 53,\n\t/event/time : 2014-07-21T06:13:37.720400Z\n}, {\n\t/event/value : 46,\n\t/event/time : 2014-07-21T06:13:37.736335Z\n}, {\n\t/event/value : 42,\n\t/event/time : 2014-07-21T06:13:37.753652Z\n}, {\n\t/event/value : 36,\n\t/event/time : 2014-07-21T06:13:37.778898Z\n}, {\n\t/event/value : 27,\n\t/event/time : 2014-07-21T06:13:37.812295Z\n}, {\n\t/event/value : 13,\n\t/event/time : 2014-07-21T06:13:37.950887Z\n}, {\n\t/event/value : 55,\n\t/event/time : 2014-07-21T06:13:38.076999Z\n}, {\n\t/event/value : 62,\n\t/event/time : 2014-07-21T06:13:38.086952Z\n}, {\n\t/event/value : 69,\n\t/event/time : 2014-07-21T06:13:38.112162Z\n}, {\n\t/event/value : 84,\n\t/event/time : 2014-07-21T06:13:38.172170Z\n}, {\n\t/event/value : 95,\n\t/event/time : 2014-07-21T06:13:38.363363Z\n}, {\n\t/event/value : 88,\n\t/event/time : 2014-07-21T06:13:38.519176Z\n}, {\n\t/event/value : 36,\n\t/event/time : 2014-07-21T06:13:38.644153Z\n}, {\n\t/event/value : 70,\n\t/event/time : 2014-07-21T06:13:38.812179Z\n}, {\n\t/event/value : 74,\n\t/event/time : 2014-07-21T06:13:38.820397Z\n}, {\n\t/event/value : 78,\n\t/event/time : 2014-07-21T06:13:38.846448Z\n}, {\n\t/event/value : 87,\n\t/event/time : 2014-07-21T06:13:38.908122Z\n}, {\n\t/event/value : 60,\n\t/event/time : 2014-07-21T06:13:39.074733Z\n}, {\n\t/event/value : 56,\n\t/event/time : 2014-07-21T06:13:39.086983Z\n}, {\n\t/event/value : 51,\n\t/event/time : 2014-07-21T06:13:39.107515Z\n}, {\n\t/event/value : 47,\n\t/event/time : 2014-07-21T06:13:39.161546Z\n}, {\n\t/event/value : 47,\n\t/event/time : 2014-07-21T06:13:39.161546Z\n}]",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -120,8 +122,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 94.5, 185.0, 181.0, 47.0 ],
-					"text" : "/event/time = /record/end/time,\n/event/endplayback = true,",
+					"patching_rect" : [ 94.5, 185.0, 181.0, 46.0 ],
+					"text" : "/event/time = /record/end/time,\n/event/endplayback = true",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -338,10 +340,10 @@
 					"id" : "obj-12",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 629.0, 245.5, 143.0, 20.0 ],
-					"text" : "o.when /recording==true"
+					"numoutlets" : 2,
+					"outlettype" : [ "FullPacket", "FullPacket" ],
+					"patching_rect" : [ 629.0, 245.5, 120.0, 20.0 ],
+					"text" : "o.if /recording==true"
 				}
 
 			}
@@ -354,8 +356,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 52.0, 439.5, 78.0, 33.0 ],
-					"text" : "/late = false,",
+					"patching_rect" : [ 52.0, 439.5, 78.0, 32.0 ],
+					"text" : "/late = false",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -369,8 +371,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 171.0, 439.5, 74.0, 33.0 ],
-					"text" : "/late = true,",
+					"patching_rect" : [ 171.0, 439.5, 74.0, 32.0 ],
+					"text" : "/late = true",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -516,8 +518,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 52.0, 306.0, 260.0, 47.0 ],
-					"text" : "/play/event/time = /play/start/time +\n (/value./event/time - /record/start/time) + 0.1, ",
+					"patching_rect" : [ 52.0, 306.0, 260.0, 46.0 ],
+					"text" : "/play/event/time = /play/start/time +\n (/value./event/time - /record/start/time) + 0.1",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -528,7 +530,7 @@
 					"fontsize" : 12.0,
 					"id" : "obj-37",
 					"maxclass" : "newobj",
-					"numinlets" : 1,
+					"numinlets" : 2,
 					"numoutlets" : 4,
 					"outlettype" : [ "FullPacket", "FullPacket", "FullPacket", "FullPacket" ],
 					"patching_rect" : [ 52.0, 403.5, 159.0, 20.0 ],
@@ -615,8 +617,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 629.0, 335.0, 240.0, 33.0 ],
-					"text" : "/sequence = [ /sequence ?? list(), /event ], ",
+					"patching_rect" : [ 629.0, 335.0, 240.0, 32.0 ],
+					"text" : "/sequence = [ /sequence ?? list(), /event ] ",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -923,7 +925,7 @@
 					"destination" : [ "obj-7", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"midpoints" : [ 108.166667, 435.0, 180.5, 435.0 ],
+					"midpoints" : [ 108.166664, 435.0, 180.5, 435.0 ],
 					"source" : [ "obj-37", 1 ]
 				}
 
@@ -1163,10 +1165,6 @@
 			}
 , 			{
 				"name" : "o.route.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.when.mxo",
 				"type" : "iLaX"
 			}
 , 			{
