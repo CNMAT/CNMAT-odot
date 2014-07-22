@@ -1321,7 +1321,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 357.0, 166.5, 75.0, 20.0 ]
+					"patching_rect" : [ 359.0, 150.5, 75.0, 20.0 ]
 				}
 
 			}
@@ -1344,11 +1344,13 @@
 					"fontname" : "Courier New Bold",
 					"fontsize" : 14.0,
 					"id" : "obj-48",
+					"linecount" : 10,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 41.0, 4079.0, 738.0, 36.0 ],
+					"patching_rect" : [ 41.0, 4079.0, 987.0, 179.0 ],
+					"text" : "/pitch/numbers : [22, 69, 80],\n/concert/pitch : 440.,\n/MIDI/A440 : 69,\n/equal/temperament : \"lambda([pitchnumber,octaveratio, intervals ],  \n                              /concert/pitch * pow(octaveratio ,\n                                     float32(pitchnumber- /MIDI/A440 )  /  intervals))\",\n/twelvetone/equal/temperament : \"lambda([pitchnumber],  apply(/equal/temperament , pitchnumber, 2.0, 12.0 ))\",\n/Bohlen/Pierce/equal/temperament : \"lambda([pitchnumber],  apply( /equal/temperament ,  pitchnumber, 3.0, 13.0 ))\",\n/equal/tempered/frequencies/Bohlen/Pierce : [29.1352, 440., 830.609],\n/twelvetone/frequencies/ : [8.2885, 440., 1114.73]",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -1403,11 +1405,13 @@
 					"fontname" : "Courier New Bold",
 					"fontsize" : 14.0,
 					"id" : "obj-45",
+					"linecount" : 7,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 41.0, 3612.0, 351.0, 36.0 ],
+					"patching_rect" : [ 41.0, 3612.0, 351.0, 131.0 ],
+					"text" : "/pitch/numbers : [22, 69, 80],\n/octave/ratio : 3,\n/concert/pitch : 440.,\n/MIDI/A440 : 69,\n/intervals : 13,\n/equal/tempered/frequencies/Bohlen/Pierce : [8.2885, 440., 1114.73]",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -1833,12 +1837,12 @@
 					"fontsize" : 14.0,
 					"frgb" : 0.0,
 					"id" : "obj-24",
-					"linecount" : 3,
+					"linecount" : 2,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 5.5, 1094.207031, 695.0, 53.0 ],
-					"text" : "odot bundles are transformed into new bundles according to expressions you write in an expression code box.\n\n Use the \"e\" keyboard shortcut to make one:"
+					"patching_rect" : [ 5.5, 1094.207031, 695.0, 38.0 ],
+					"text" : "odot bundles are transformed into new bundles according to expressions you write in an expression code box.\nUse the \"e\" keyboard shortcut to make one:"
 				}
 
 			}
@@ -1851,7 +1855,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 38.0, 1161.0, 150.0, 34.0 ],
+					"patching_rect" : [ 38.0, 1149.707031, 150.0, 34.0 ],
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -1866,7 +1870,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 38.0, 973.0, 872.0, 74.0 ],
+					"patching_rect" : [ 38.0, 973.0, 871.0, 74.0 ],
 					"text" : "/various/constants : [33, -3.2, 2.3e-05, {\n\t/days/of/the/week : [\"monday\", \"tuesday\", \"wednesday\", \"thursday\", \"friday\", \"saturday\", \"sunday\"],\n\t/leap/year : true\n}, true, nil, false]",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -1968,12 +1972,12 @@
 					"fontsize" : 14.0,
 					"frgb" : 0.0,
 					"id" : "obj-9",
-					"linecount" : 5,
+					"linecount" : 3,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 15.0, 402.0, 576.0, 85.0 ],
-					"text" : "Addresses start with the backslash character. Colons ( : ) separate addresses from values.\n\nUse a  space before the colon.\n\nUse square brackets when a value is a list of values:"
+					"patching_rect" : [ 15.0, 436.0, 575.0, 53.0 ],
+					"text" : "Addresses start with the backslash character. Colons ( : ) separate addresses from values.\nUse a  space before the colon.\nUse square brackets when a value is a list of values:"
 				}
 
 			}
@@ -2033,7 +2037,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 15.0, 134.0, 577.0, 85.0 ],
-					"text" : "Use odot bundles to organize information\n\nCreate bundles by typing a description of them into the o.compose box. \n\nIn Max/MSP the \"C\" keyboard shortcut will make an o.compose box in an unlocked patcher:"
+					"text" : "Use odot bundles to organize information\nCreate bundles by typing a description of them into the o.compose box. \n\nIn Max/MSP use the \"C\" keyboard to make an o.compose box appear  in an unlocked patcher:"
 				}
 
 			}
