@@ -37,7 +37,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 720.0, 1379.0, 243.0, 24.0 ],
-					"presentation_rect" : [ 720.0, 1374.207031, 0.0, 0.0 ],
 					"text" : "/help/patch : \"o.display\"",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -53,7 +52,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 1003.0, 1434.0, 105.0, 20.0 ],
-					"presentation_rect" : [ 711.0, 1429.707031, 0.0, 0.0 ],
 					"text" : "send #0.urllaunch"
 				}
 
@@ -68,7 +66,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 1298.0, 1122.207031, 105.0, 20.0 ],
-					"presentation_rect" : [ 1296.0, 1122.5, 0.0, 0.0 ],
 					"text" : "send #0.urllaunch"
 				}
 
@@ -83,7 +80,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 1004.0, 1094.207031, 243.0, 24.0 ],
-					"presentation_rect" : [ 1002.0, 1094.5, 0.0, 0.0 ],
 					"text" : "/help/patch : \"o.expr.codebox\"",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -99,7 +95,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 993.0, 194.5, 105.0, 20.0 ],
-					"presentation_rect" : [ 998.0, 196.0, 0.0, 0.0 ],
 					"text" : "send #0.urllaunch"
 				}
 
@@ -114,7 +109,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 699.0, 166.5, 243.0, 24.0 ],
-					"presentation_rect" : [ 704.0, 168.0, 0.0, 0.0 ],
 					"text" : "/help/patch : \"o.compose\"",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -130,7 +124,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 699.0, 134.0, 243.0, 24.0 ],
-					"presentation_rect" : [ 699.0, 136.0, 0.0, 0.0 ],
 					"text" : "/wikipedia : \"Associative_array\"",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -677,12 +670,13 @@
 									"fontname" : "Arial",
 									"fontsize" : 12.0,
 									"id" : "obj-10",
+									"linecount" : 2,
 									"maxclass" : "o.compose",
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 404.0, 57.0, 155.0, 24.0 ],
-									"text" : "/help/patch: \"o.compose\"",
+									"patching_rect" : [ 404.0, 57.0, 155.0, 37.0 ],
+									"text" : "/help/patch : \"o.compose\"",
 									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 
@@ -725,7 +719,6 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "FullPacket", "FullPacket" ],
 									"patching_rect" : [ 319.0, 110.0, 269.0, 32.0 ],
-									"presentation_rect" : [ 318.0, 110.0, 0.0, 0.0 ],
 									"text" : "/help = /help/patch + \".maxhelp\"",
 									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
