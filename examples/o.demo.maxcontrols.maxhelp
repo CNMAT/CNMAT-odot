@@ -46,14 +46,13 @@
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"id" : "obj-18",
-					"linecount" : 5,
+					"linecount" : 4,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 26.0, 312.0, 261.0, 88.0 ],
-					"presentation_rect" : [ 49.0, 522.0, 0.0, 0.0 ],
-					"text" : "/keyboard : 77,\n/slider : 0.688525,\n/slider2 : [1.33333, 1.50427, 1.04274, 1.36752],\n/toggle : 0",
+					"patching_rect" : [ 26.0, 312.0, 261.0, 74.0 ],
+					"text" : "/keyboard : -1,\n/slider : 0.1,\n/slider2 : [0., 0.5, 0.75, 1.],\n/toggle : 1",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -96,7 +95,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 209.0, 8.0, 47.0, 20.0 ],
-					"presentation_rect" : [ 204.5, 9.0, 0.0, 0.0 ],
 					"text" : "store"
 				}
 
@@ -122,8 +120,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 215.0, 39.0, 20.0, 20.0 ],
-					"presentation_rect" : [ 429.0, 47.0, 0.0, 0.0 ]
+					"patching_rect" : [ 215.0, 39.0, 20.0, 20.0 ]
 				}
 
 			}
@@ -177,7 +174,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 26.0, 39.0, 171.0, 64.0 ],
-					"presentation_rect" : [ 95.0, 41.0, 0.0, 0.0 ],
 					"text" : "/keyboard : -1,\n/slider : 0.1,\n/slider2 : [0., 0.5, 0.75, 1.],\n/toggle : 1",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}

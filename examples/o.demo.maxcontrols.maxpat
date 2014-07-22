@@ -8,7 +8,7 @@
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 115.0, 73.0, 451.0, 519.0 ],
+		"rect" : [ 115.0, 73.0, 755.0, 536.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
@@ -68,6 +68,7 @@
 				"box" : 				{
 					"id" : "obj-42",
 					"maxclass" : "kslider",
+					"mode" : 1,
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "int", "int" ],
@@ -153,7 +154,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 92.5, 410.0, 274.0, 74.0 ],
-					"text" : "/keyboard : 77,\n/slider : 0.630435,\n/slider2 : [0.604027, 1.03356, 1.2349, 1.46309],\n/toggle : 1",
+					"text" : "/keyboard : 71,\n/slider : 0.630435,\n/slider2 : [0.604027, 1.03356, 1.2349, 1.46309],\n/toggle : 1",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -283,14 +284,14 @@
 					"outlettype" : [ "", "", "", "" ],
 					"patching_rect" : [ 7.5, 369.0, 59.5, 20.0 ],
 					"restore" : 					{
-						"/keyboard" : [ 77 ],
+						"/keyboard" : [ -1 ],
 						"/slider" : [ 0.630435 ],
 						"/slider2" : [ 0.604027, 1.033557, 1.234899, 1.463087 ],
 						"/toggle" : [ 1 ]
 					}
 ,
 					"text" : "autopattr",
-					"varname" : "u288006494"
+					"varname" : "u203006778"
 				}
 
 			}
@@ -339,7 +340,7 @@
 					}
 ,
 					"text" : "pattrstorage",
-					"varname" : "u057006492"
+					"varname" : "u065006776"
 				}
 
 			}
