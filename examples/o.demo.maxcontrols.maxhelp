@@ -8,7 +8,7 @@
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 371.0, 178.0, 694.0, 431.0 ],
+		"rect" : [ 217.0, 150.0, 709.0, 641.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -46,13 +46,13 @@
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"id" : "obj-18",
-					"linecount" : 4,
+					"linecount" : 9,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 26.0, 312.0, 261.0, 74.0 ],
-					"text" : "/keyboard : -1,\n/slider : 0.1,\n/slider2 : [0., 0.5, 0.75, 1.],\n/toggle : 1",
+					"patching_rect" : [ 26.0, 321.0, 261.0, 141.0 ],
+					"text" : "/bfp : [1000., 0., 1., 111.702, 0.4, 0, 340.426, 0.8, 0, 340.426, 0.186667, 0, 398.936, 0.72, 0, 696.809, 0.16, 0, 1000., 0.586667, 0, \"linear\"],\n/keyboard : 53,\n/keyboard/velocity : 86,\n/slider : 0.303279,\n/slider2 : [1.47009, 1.50427, 1.55556, 1.88034],\n/toggle : 1",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -64,8 +64,8 @@
 					"name" : "o.demo.maxcontrols.maxpat",
 					"numinlets" : 1,
 					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 26.0, 177.0, 342.0, 104.0 ],
+					"outlettype" : [ "FullPacket" ],
+					"patching_rect" : [ 26.0, 177.0, 574.0, 111.0 ],
 					"varname" : "o.demo.maxcontrols[1]"
 				}
 
@@ -80,7 +80,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 410.5, 194.5, 174.0, 69.0 ],
+					"patching_rect" : [ 400.5, 367.0, 174.0, 69.0 ],
 					"text" : "Model View Controller\nDesign pattern\n\nAdrian Freed 2014"
 				}
 
@@ -301,11 +301,15 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "o.display.mxo",
+				"name" : "o.atomize.mxo",
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "o.atomize.mxo",
+				"name" : "o.change.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.display.mxo",
 				"type" : "iLaX"
 			}
  ]
