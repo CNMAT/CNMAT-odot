@@ -51,7 +51,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 26.0, 321.0, 261.0, 141.0 ],
+					"patching_rect" : [ 26.0, 398.0, 261.0, 141.0 ],
 					"text" : "/bfp : [1000., 0., 1., 111.702, 0.4, 0, 340.426, 0.8, 0, 340.426, 0.186667, 0, 398.936, 0.72, 0, 696.809, 0.16, 0, 1000., 0.586667, 0, \"linear\"],\n/keyboard : 53,\n/keyboard/velocity : 86,\n/slider : 0.303279,\n/slider2 : [1.47009, 1.50427, 1.55556, 1.88034],\n/toggle : 1",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -65,7 +65,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 26.0, 177.0, 574.0, 111.0 ],
+					"patching_rect" : [ 26.0, 254.0, 574.0, 111.0 ],
 					"varname" : "o.demo.maxcontrols[1]"
 				}
 
@@ -80,7 +80,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 400.5, 367.0, 174.0, 69.0 ],
+					"patching_rect" : [ 400.5, 444.0, 174.0, 69.0 ],
 					"text" : "Model View Controller\nDesign pattern\n\nAdrian Freed 2014"
 				}
 
@@ -184,13 +184,13 @@
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"id" : "obj-5",
-					"linecount" : 5,
+					"linecount" : 8,
 					"maxclass" : "o.compose",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 281.0, 60.0, 349.0, 78.0 ],
-					"text" : "/keyboard : [65, 33, 67, 55, 69, 59, 70, 12, 71, 67, 72, 64, 73, 21, 74, 38, 76, 55],\n/slider : 0.1,\n/slider2 : [0., 0.5, 0.75, 1.],\n/toggle : 1",
+					"patching_rect" : [ 281.0, 60.0, 349.0, 118.0 ],
+					"text" : "/bfp : [1000., 0., 1., 111.702, 0.4, 0, 340.426, 0.8, 0, 340.426, 0.186667, 0, 398.936, 0.72, 0, 696.809, 0.16, 0, 1000., 0.586667, 0, \"linear\"],\n/keyboard : 53,\n/keyboard/velocity : 86,\n/slider : 0.303279,\n/slider2 : [1.47009, 1.50427, 1.55556, 1.88034],\n/toggle : 1",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -211,7 +211,7 @@
 					"destination" : [ "obj-5", 1 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"midpoints" : [ 224.5, 154.0, 644.0, 154.0, 644.0, 43.0, 620.5, 43.0 ],
+					"midpoints" : [ 224.5, 215.0, 644.0, 215.0, 644.0, 43.0, 620.5, 43.0 ],
 					"source" : [ "obj-13", 0 ]
 				}
 
@@ -243,7 +243,7 @@
 					"destination" : [ "obj-19", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"midpoints" : [ 290.5, 165.0, 35.5, 165.0 ],
+					"midpoints" : [ 290.5, 228.0, 35.5, 228.0 ],
 					"source" : [ "obj-5", 0 ]
 				}
 
