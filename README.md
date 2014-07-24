@@ -12,7 +12,9 @@ Roadmap
 odot has been used in various experimental incarnations for many years at CNMAT. The public release roadmap is:
 
 * 1.0: for Max/MSP
-* 2.0: for PD and Node Red, and  support for class-based objects
+* 1.5: updated expression language, PD unstable
+* 2.0: for PD and Node Red, unified o. objects
+* 2.5: support for dynamic class-based objects
 * 3.0: integral support for sound, graphics and imagery
 
 History
