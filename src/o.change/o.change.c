@@ -41,6 +41,8 @@
 #include "odot_version.h"
 #ifdef OMAX_PD_VERSION
 #include "m_pd.h"
+#include "omax_pd_proxy.h"
+#define proxy_getinlet(x) (((t_ochange *)(x))->inlet)
 #else
 #include "ext.h"
 #include "ext_obex.h"
@@ -70,7 +72,12 @@ typedef struct _ochange{
 	long inlet;
 } t_ochange;
 
+#ifdef OMAX_PD_VERSION
+t_omax_pd_proxy_class *ochange_class;
+t_omax_pd_proxy_class *ochange_proxy_class;
+#else
 void *ochange_class;
+#endif
 
 int ochange_copybundle(t_ochange *x, long len, char *ptr);
 
@@ -167,7 +174,12 @@ void ochange_free(t_ochange *x)
 	if(x->buf){
 		osc_mem_free(x->buf);
 	}
-#ifndef OMAX_PD_VERSION
+#ifdef OMAX_PD_VERSION
+    pd_free(x->proxy[0]);
+    pd_free(x->proxy[1]);
+	free(x->proxy);
+    x->proxy = NULL;
+#else
 	object_free(x->proxy);
 #endif
 }
@@ -177,9 +189,15 @@ void ochange_free(t_ochange *x)
 void *ochange_new(t_symbol *msg, short argc, t_atom *argv)
 {
 	t_ochange *x;
-	if((x = (t_ochange *)object_alloc(ochange_class))){
+	if((x = (t_ochange *)object_alloc(ochange_class->class))){
+        
+        x->proxy = (void **)malloc(2 * sizeof(t_omax_pd_proxy *));
+        x->proxy[0] = proxy_new((t_object *)x, 0, &(x->inlet), ochange_proxy_class);
+        x->proxy[1] = proxy_new((t_object *)x, 1, &(x->inlet), ochange_proxy_class);
+        
+        x->outlet_different = outlet_new((t_object *)x, gensym("FullPacket"));
 		x->outlet_same = outlet_new((t_object *)x, gensym("FullPacket"));
-		x->outlet_different = outlet_new((t_object *)x, gensym("FullPacket"));
+        
 		critical_new(&(x->lock));
 		x->buf = NULL;
 		x->bufsize = x->buflen = 0;
@@ -190,16 +208,19 @@ void *ochange_new(t_symbol *msg, short argc, t_atom *argv)
 
 int setup_o0x2echange(void)
 {
-	t_class *c = class_new(gensym("o.change"), (t_newmethod)ochange_new, (t_method)ochange_free, sizeof(t_ochange), 0L, A_GIMME, 0);
-
-	class_addmethod(c, (t_method)ochange_fullPacket, gensym("FullPacket"), A_GIMME, 0);
-	class_addmethod(c, (t_method)ochange_doc, gensym("doc"), 0);
+    omax_pd_class_new(ochange_class, gensym("o.change"), (t_newmethod)ochange_new, (t_method)ochange_free, sizeof(t_ochange), CLASS_NOINLET, A_GIMME, 0);
+    
+    t_omax_pd_proxy_class *c = NULL;
+	omax_pd_class_new(c, NULL, NULL, NULL, sizeof(t_omax_pd_proxy), CLASS_PD | CLASS_NOINLET, 0);
+    
+	omax_pd_class_addmethod(c, (t_method)ochange_fullPacket, gensym("FullPacket"));
+	omax_pd_class_addmethod(c, (t_method)ochange_doc, gensym("doc"));
 	//class_addmethod(c, (t_method)ochange_bang, gensym("bang"), 0);
 	//class_addmethod(c, (method)ochange_anything, "anything", A_GIMME, 0);
 	//class_addmethod(c, (t_method)ochange_clear, gensym("clear"), 0);
-	class_addmethod(c, (t_method)odot_version, gensym("version"), 0);
+	omax_pd_class_addmethod(c, (t_method)odot_version, gensym("version"));
 	
-	ochange_class = c;
+	ochange_proxy_class = c;
     
 	ODOT_PRINT_VERSION;
 	return 0;
