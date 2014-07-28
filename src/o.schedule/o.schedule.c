@@ -46,13 +46,13 @@
 #define OMAX_DOC_OUTLETS_DESC (char *[]){"OSC packet", "OSC packet which has missed the scheduling deadline", "OSC packet which has an immediate timetag", "OSC packet output if the queue is full"}
 #define OMAX_DOC_SEEALSO (char *[]){"o.timetag"}
 
-#include "o.h"
-
 #ifndef WIN_VERSION
 #include <CoreServices/CoreServices.h>
 #endif
 #ifdef OMAX_PD_VERSION
 #include "m_pd.h"
+#include "omax_pd_proxy.h"
+#define proxy_getinlet(x) (((t_osched *)(x))->inlet)
 #else
 #include "ext.h"
 #include "ext_obex.h"
@@ -71,6 +71,8 @@
 #include "omax_util.h"
 #include "omax_doc.h"
 #include "omax_dict.h"
+
+#include "o.h"
 
 // default options
 #define DEFAULT_PACKET_SIZE 1000
@@ -113,7 +115,12 @@ typedef struct _osched
     
 } t_osched;
 
+#ifdef OMAX_PD_VERSION
+t_omax_pd_proxy_class *osched_class;
+t_omax_pd_proxy_class *osched_proxy_class;
+#else
 t_class *osched_class;
+#endif
 
 t_symbol *ps_FullPacket;
 
@@ -129,6 +136,15 @@ t_max_err osched_setPrecision(t_osched *x, void *attr, long ac, t_atom *av);
 
 void osched_fullPacket(t_osched *x, t_symbol *s, int argc, t_atom *argv)
 {
+#ifdef OMAX_PD_VERSION
+    /*currently second inlet doesn't do anything
+    if(proxy_getinlet((t_object *)x) == 1)
+    {
+        post("right inlet currently in developement");
+        return;
+    }*/
+    
+#endif
 	OMAX_UTIL_GET_LEN_AND_PTR
 	node n;
 	n.length = len;
@@ -398,7 +414,12 @@ void osched_free(t_osched *x)
 {
 	clock_unset(x->clock);
 #ifdef OMAX_PD_VERSION
-	free(x->clock);
+	clock_free(x->clock);
+    
+    pd_free(x->proxy[0]);
+    pd_free(x->proxy[1]);
+	free(x->proxy);
+    x->proxy = NULL;
 #else
 	object_free(x->clock);
 	object_free(x->proxy);
@@ -432,7 +453,7 @@ void *osched_new(t_symbol *s, short argc, t_atom *argv)
     t_osched *x;
 	int i;
     
-	x = (t_osched *)object_alloc(osched_class);
+	x = (t_osched *)object_alloc(osched_class->class);
 	if(!x){
 		return NULL;
 	}
@@ -460,13 +481,8 @@ void *osched_new(t_symbol *s, short argc, t_atom *argv)
 
     //	attr_args_process(x, argc, argv);
     /*
-     CLASS_ATTR_FLOAT(c, "precision", 0, t_osched, precision);
-     CLASS_ATTR_ACCESSORS(c, "precision", osched_getPrecision, osched_setPrecision);
-     
-     CLASS_ATTR_LONG(c, "queuesize", 0, t_osched, packets_max);
-     CLASS_ATTR_LONG(c, "packetsize", 0, t_osched, packet_size);
-     */
-    
+
+    // currently not using attributes, this seciton can probably be deleted
     for(i = 1; i < argc; i++)
     {
         if(atom_gettype(argv + i) == A_SYM)
@@ -509,7 +525,11 @@ void *osched_new(t_symbol *s, short argc, t_atom *argv)
         
         
     }
-
+*/
+    
+    x->proxy = (void **)malloc(2 * sizeof(t_omax_pd_proxy *));
+    x->proxy[0] = proxy_new((t_object *)x, 0, &(x->inlet), osched_proxy_class);
+    x->proxy[1] = proxy_new((t_object *)x, 1, &(x->inlet), osched_proxy_class);
     
 	OSCHEDULE_OUTLET_MAIN = outlet_new((t_object *)x, gensym("FullPacket"));
 	OSCHEDULE_OUTLET_MISSED = outlet_new((t_object *)x, gensym("FullPacket"));
@@ -534,17 +554,20 @@ void *osched_new(t_symbol *s, short argc, t_atom *argv)
 
 int setup_o0x2eschedule(void)
 {
-    t_class *c = class_new(gensym("o.schedule"), (t_newmethod)osched_new, (t_method)osched_free, (short)sizeof(t_osched), 0L, A_GIMME, 0);
+    omax_pd_class_new(osched_class, gensym("o.schedule"), (t_newmethod)osched_new, (t_method)osched_free, sizeof(t_osched), CLASS_NOINLET, A_GIMME, 0);
     
-	class_addmethod(c, (t_method)osched_fullPacket, gensym("FullPacket"), A_GIMME, 0);
-	class_addmethod(c, (t_method)osched_reset, gensym("clear"), 0);
-	class_addmethod(c, (t_method)odot_version, gensym("version"), 0);
-    class_addmethod(c, (t_method)osched_doc, gensym("doc"), 0);
-    class_addmethod(c, (t_method)osched_setPrecision, gensym("precision"), A_GIMME, 0);
-    class_addmethod(c, (t_method)osched_setQueSize, gensym("queuesize"), A_FLOAT, 0);
-    class_addmethod(c, (t_method)osched_setPacketSize, gensym("packetsize"), A_FLOAT, 0);
-	 
-	osched_class = c;
+    t_omax_pd_proxy_class *c = NULL;
+	omax_pd_class_new(c, NULL, NULL, NULL, sizeof(t_omax_pd_proxy), CLASS_PD | CLASS_NOINLET, 0);
+    
+	omax_pd_class_addmethod(c, (t_method)osched_fullPacket, gensym("FullPacket"));
+	omax_pd_class_addmethod(c, (t_method)osched_reset, gensym("clear"));
+	omax_pd_class_addmethod(c, (t_method)odot_version, gensym("version"));
+    omax_pd_class_addmethod(c, (t_method)osched_doc, gensym("doc"));
+//    omax_pd_class_addmethod(c, (t_method)osched_setPrecision, gensym("precision"), A_GIMME, 0);
+//    omax_pd_class_addmethod(c, (t_method)osched_setQueSize, gensym("queuesize"), A_FLOAT, 0);
+//    omax_pd_class_addmethod(c, (t_method)osched_setPacketSize, gensym("packetsize"), A_FLOAT, 0);
+
+	osched_proxy_class = c;
 	ps_FullPacket = gensym("FullPacket");
 
 	ODOT_PRINT_VERSION;
