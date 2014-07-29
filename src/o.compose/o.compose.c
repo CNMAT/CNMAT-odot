@@ -1527,7 +1527,7 @@ void ocompose_drawElements(t_ocompose *x, t_glist *glist, int width2, int height
         //sys_vgui(".x%lx.c itemconfigure %sBorder -outline %s\n", canvas, x->border_tag, (x->parse_error?  "red" : "#0066CC" ));
         //sys_vgui(".x%lx.c itemconfigure %s -outline %s\n", canvas, x->corner_tag, (x->parse_error? "red" : "blue" ));
         
-        sys_vgui(".x%lx.c itemconfigure %s -fill %s \n", canvas, x->corner_tag, (draw_new_data_indicator?  "blue" : "white" ));
+        sys_vgui(".x%lx.c itemconfigure %s -fill %s \n", canvas, x->corner_tag, (x->draw_new_data_indicator? "#0066CC" : "white"));
 
 //        post("%x %s drawnew %d", x, __func__, draw_new_data_indicator);
         if(draw_new_data_indicator)
@@ -1677,7 +1677,7 @@ static void ocompose_select(t_gobj *z, t_glist *glist, int state)
         sys_vgui(".x%lx.c itemconfigure %sBorder -outline %s\n", canvas, x->border_tag, (state? "#006699" : "#0066CC"));
         sys_vgui(".x%lx.c itemconfigure %s -outline %s\n", canvas, x->corner_tag, (state? "#006699" : "#0066CC"));
 
-        sys_vgui(".x%lx.c itemconfigure %s -fill %s\n", canvas, x->corner_tag, (x->draw_new_data_indicator? (state? "blue" : "#0066CC") : "white"));
+        sys_vgui(".x%lx.c itemconfigure %s -fill %s\n", canvas, x->corner_tag, (x->draw_new_data_indicator? (state? "#006699" : "#0066CC") : "white"));
 
         
         if(!x->textediting){
@@ -1708,9 +1708,10 @@ static void ocompose_activate(t_gobj *z, t_glist *glist, int state)
     }
     
     //    sys_vgui(".x%lx.c itemconfigure %s -outline %s\n", glist, x->border_tag, (state? "$select_color" : "$msg_box_fill"));//was "$box_outline"
-    sys_vgui(".x%lx.c itemconfigure %sBoarder -outline %s\n", canvas, x->border_tag, (state? "blue" : "black"));
-    sys_vgui(".x%lx.c itemconfigure %s -outline %s\n", canvas, x->corner_tag, (state? "blue" : "black"));
-    sys_vgui(".x%lx.c itemconfigure %s -fill %s\n", canvas, x->corner_tag, (x->draw_new_data_indicator? (state? "blue" : "black") : "#f8f8f6"));
+    sys_vgui(".x%lx.c itemconfigure %sBorder -outline %s\n", canvas, x->border_tag, (state? "#006699" : "#0066CC"));
+    sys_vgui(".x%lx.c itemconfigure %s -outline %s\n", canvas, x->corner_tag, (state? "#006699" : "#0066CC"));
+    
+    sys_vgui(".x%lx.c itemconfigure %s -fill %s\n", canvas, x->corner_tag, (x->draw_new_data_indicator? (state? "#006699" : "#0066CC") : "white"));
 
 }
 
@@ -1748,7 +1749,8 @@ static void ocompose_doClick(t_ocompose *x,
 {
     if (glist_isvisible(x->glist))
     {
-        sys_vgui(".x%lx.c itemconfigure %s -width 5\n", glist_getcanvas(x->glist), x->border_tag);
+        sys_vgui(".x%lx.c itemconfigure %s -fill %s \n", glist_getcanvas(x->glist), x->corner_tag, "#0066CC");
+        
         ocompose_bang(x);
         clock_delay(x->m_clock, 120);
     }
@@ -1773,7 +1775,7 @@ static void ocompose_tick(t_ocompose *x)
 {
     if (glist_isvisible(x->glist))
     {
-        sys_vgui(".x%lx.c itemconfigure %s -width 1\n", glist_getcanvas(x->glist), x->border_tag);
+        sys_vgui(".x%lx.c itemconfigure %s -fill \"white\" \n", glist_getcanvas(x->glist), x->corner_tag);
     }
 }
 
