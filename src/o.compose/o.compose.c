@@ -1265,7 +1265,7 @@ void ocompose_storeTextAndExitEditorTick(t_ocompose *x)
     
     t_canvas *canvas = glist_getcanvas(x->glist);
 //    error("%p %s", x, __func__);
-    sys_vgui(".x%lx.c itemconfigure text%lx -fill black -width %d -text [subst -nobackslash -nocommands -novariables [string trimright [regsub -all -line {^[ \t]+|[ \t]+$}  {%s} \"\" ]]] \n", canvas, (long)x, x->width-10, x->tk_text);
+    sys_vgui(".x%lx.c itemconfigure text%lx -fill black -width %d -text [subst -nobackslash -nocommands -novariables [string trimright [regsub -all -line {^[ \t]+|[ \t]+$}  {%s} \"\" ]]] \n", canvas, (long)x, x->width-15, x->tk_text);
     sys_vgui("destroy .x%lx.t%lxTEXT\n", canvas, (long)x);
     
     x->textediting = 0;
@@ -1302,7 +1302,7 @@ void ocompose_getTextAndCreateEditor(t_ocompose *x, int firsttime)
         sys_vgui(".x%lx.c itemconfigure text%lx -fill white \n", canvas, (long)x);
         sys_vgui("text .x%lx.t%lxTEXT -font {{%s} %d %s} -undo true -fg \"black\" -bg #f8f8f6 -takefocus 1 -state normal -highlightthickness 0 -wrap word -spacing3 0\n", canvas, (long)x, sys_font, glist_getfont(x->glist), sys_fontweight );
         
-        sys_vgui("place .x%lx.t%lxTEXT -x [expr %d - [.x%lx.c canvasx 0]] -y [expr %d - [.x%lx.c canvasy 0]] -width %d -height %d\n", canvas, (long)x, x1+4, canvas, y1+4, canvas, x->width-6, x->height-6);
+        sys_vgui("place .x%lx.t%lxTEXT -x [expr %d - [.x%lx.c canvasx 0]] -y [expr %d - [.x%lx.c canvasy 0]] -width %d -height %d\n", canvas, (long)x, x1+4, canvas, y1+4, canvas, x->width-15, x->height-6);
        
 //        sys_vgui("::pdwindow::post \"checkexpr [expr %d + [expr [lindex [%s xview] 0] * [expr [expr 1 / [expr [lindex [%s xview] 1] - [lindex [%s xview] 0]]] * [winfo width %s]]]] \n\"\n", x->ob.te_xpix, x->canvas_id, x->canvas_id, x->canvas_id, x->canvas_id);
 
@@ -1323,7 +1323,7 @@ void ocompose_getTextAndCreateEditor(t_ocompose *x, int firsttime)
     else
     { // pretty sure that this never gets called
         //        post("%s not first time", __func__);
-        sys_vgui("place .x%lx.t%lxTEXT -x %d -y %d -width %d -height %d\n", canvas, (long)x, x1+4, y1+4, x->width-10, x->height-10);
+        sys_vgui("place .x%lx.t%lxTEXT -x %d -y %d -width %d -height %d\n", canvas, (long)x, x1+4, y1+4, x->width-15, x->height-10);
     }
     
     {
@@ -1452,7 +1452,7 @@ void ocompose_drawElements(t_ocompose *x, t_glist *glist, int width2, int height
             //border
             sys_vgui(".x%lx.c create rectangle %d %d %d %d -outline \"white\" -fill \"white\" -tags [list %s msg]\n",canvas, x1, y1, x2, y2, x->border_tag);
             
-            sys_vgui(".x%lx.c create polygon %d %d %d %d %d %d %d %d %d %d %d %d  -outline \"black\" -fill \"white\" -tags %sBorder \n",canvas, cx1, cy1, cx2, cy1, cx2, cy2-10, cx2-10, cy2-10, cx2, cy2-10, cx1, cy2, x->border_tag);
+            sys_vgui(".x%lx.c create polygon %d %d %d %d %d %d %d %d %d %d %d %d  -outline #0066CC -fill \"white\" -tags %sBorder -width 2 \n",canvas, cx1, cy1, cx2, cy1, cx2, cy2-10, cx2-10, cy2-10, cx2, cy2-10, cx1, cy2, x->border_tag);
             
             sys_vgui(".x%lx.c create polygon %d %d %d %d %d %d -outline \"black\" -fill \"white\" -tags %s \n",canvas, cx2-10, cy2-10, cx2-10, cy2, cx2, cy2-10, x->corner_tag);
             
@@ -1524,10 +1524,10 @@ void ocompose_drawElements(t_ocompose *x, t_glist *glist, int width2, int height
             sys_vgui(".x%lx.h%lxHANDLE configure -cursor fleur \n", canvas, (long)x);
         
         
-        sys_vgui(".x%lx.c itemconfigure %sBorder -outline %s\n", canvas, x->border_tag, (x->parse_error?  "red" : "black" ));
-        sys_vgui(".x%lx.c itemconfigure %s -outline %s\n", canvas, x->corner_tag, (x->parse_error? "red" : "black" ));
+        //sys_vgui(".x%lx.c itemconfigure %sBorder -outline %s\n", canvas, x->border_tag, (x->parse_error?  "red" : "#0066CC" ));
+        //sys_vgui(".x%lx.c itemconfigure %s -outline %s\n", canvas, x->corner_tag, (x->parse_error? "red" : "blue" ));
         
-        sys_vgui(".x%lx.c itemconfigure %s -fill %s \n", canvas, x->corner_tag, (draw_new_data_indicator?  "black" : "#f8f8f6" ));
+        sys_vgui(".x%lx.c itemconfigure %s -fill %s \n", canvas, x->corner_tag, (draw_new_data_indicator?  "blue" : "white" ));
 
 //        post("%x %s drawnew %d", x, __func__, draw_new_data_indicator);
         if(draw_new_data_indicator)
@@ -1674,14 +1674,14 @@ static void ocompose_select(t_gobj *z, t_glist *glist, int state)
     
     if (glist_isvisible(glist) && gobj_shouldvis(&x->ob.te_g, glist)){
         //       sys_vgui(".x%lx.c itemconfigure %s -outline %s\n", glist, x->border_tag, (state? "$select_color" : "$msg_box_fill" )); //was "$box_outline"
-        sys_vgui(".x%lx.c itemconfigure %sBorder -outline %s\n", canvas, x->border_tag, (state? "blue" : "black"));
-        sys_vgui(".x%lx.c itemconfigure %s -outline %s\n", canvas, x->corner_tag, (state? "blue" : "black"));
+        sys_vgui(".x%lx.c itemconfigure %sBorder -outline %s\n", canvas, x->border_tag, (state? "#006699" : "#0066CC"));
+        sys_vgui(".x%lx.c itemconfigure %s -outline %s\n", canvas, x->corner_tag, (state? "#006699" : "#0066CC"));
 
-        sys_vgui(".x%lx.c itemconfigure %s -fill %s\n", canvas, x->corner_tag, (x->draw_new_data_indicator? (state? "blue" : "black") : "white"));
+        sys_vgui(".x%lx.c itemconfigure %s -fill %s\n", canvas, x->corner_tag, (x->draw_new_data_indicator? (state? "blue" : "#0066CC") : "white"));
 
         
         if(!x->textediting){
-            sys_vgui(".x%lx.c itemconfigure text%lx -fill %s\n", canvas, (long)x, (state? "blue" : "black"));
+            sys_vgui(".x%lx.c itemconfigure text%lx -fill %s\n", canvas, (long)x, (state? "#006699" : "black"));
         }
     }
 //    post("%p %s state %d selected %d textediting %d  << post", x, __func__, state, x->selected, x->textediting);
