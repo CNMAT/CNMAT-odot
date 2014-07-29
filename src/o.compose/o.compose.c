@@ -102,7 +102,6 @@ typedef struct _ocompose {
     long        textlen;
 
     char        *hex;
-    char        *tk_text;
     char        *border_tag;
     char        *corner_tag;
     char        *iolets_tag;
@@ -792,10 +791,7 @@ void ocompose_getRectAndDraw(t_ocompose *x, int forceredraw)
 {
     x->forceredraw = forceredraw;
     x->softlock = 1;
-   // post("pdsend \"%s setheight [lindex [.x%lx.c bbox text%lx] 3]\" \n", x->receive_name, glist_getcanvas(x->glist), (long)x);
-
     sys_vgui("pdsend \"%s setheight [lindex [.x%lx.c bbox text%lx] 3]\" \n", x->receive_name, glist_getcanvas(x->glist), (long)x);
-//    sys_vgui("::pdwindow::post \"%x %s Tk bbox y2 px: [lindex [%s bbox text%lx] 3]\n\"\n", x, __func__, x->canvas_id, (long)x);
 
 }
 
@@ -852,9 +848,6 @@ void ocompose_setTextFromHex(t_ocompose *x, char *hex)
         return;
     }
     
-    //    memset(x->hex, '\0', OMAX_PD_MAXSTRINGSIZE * 2);
-    //    strcpy(x->hex, hex);
-    
     int j, k;
     int c;
     
@@ -868,16 +861,8 @@ void ocompose_setTextFromHex(t_ocompose *x, char *hex)
     }
     buf[length] = '\0'; //<< not sure if this is necessary
     
-    
-    memset(x->tk_text, '\0', OMAX_PD_MAXSTRINGSIZE);
-    strcpy(x->tk_text, buf);
-    
-    omax_util_hashBrackets2Curlies(buf);
     memset(x->text, '\0', OMAX_PD_MAXSTRINGSIZE);
     strcpy(x->text, buf);
-    
- //   post("%s tk_text %s", __func__, x->tk_text);
- //   post("%s text %s", __func__, x->text);
     
 }
 
@@ -891,10 +876,6 @@ void ocompose_setTextFromString(t_ocompose *x, char *str)
     memset(x->text, '\0', OMAX_PD_MAXSTRINGSIZE);
     strcpy(x->text, str);
     
-    memset(x->tk_text, '\0', OMAX_PD_MAXSTRINGSIZE);
-    strcpy(x->tk_text, str);
-    omax_util_curlies2hashBrackets(&x->tk_text, OMAX_PD_MAXSTRINGSIZE);
-
     //n.b. convertion to hex done on save
 }
 
@@ -906,8 +887,6 @@ void ocompose_setHexFromText(t_ocompose *x, char *str)
     int length = strlen(str);
     if(length == 0)
         return;
-    
-//    post("%s %s %d", __func__, str, strlen(str));
     
     char *pin = str;
     const char * hex = "0123456789ABCDEF";
@@ -921,30 +900,6 @@ void ocompose_setHexFromText(t_ocompose *x, char *str)
     *pout++ = hex[(*pin>>4)&0xF];
     *pout++ = hex[(*pin)&0xF];
     *pout = 0;
-    
-  //  post("%s %s %d\n", __func__, pout, strlen(pout));
-        
-    /*
-    int i, k;
-    char h1, h2;
-    for( i = 0, k = 0; i < length; i++, k=i*2 )
-    {
-        h1 = x->text[i] / 16;
-        if(h1 <= 9) h1 += '0';
-        else h1 = h1-10 + 'A';
-        x->hex[k] = h1;
-        
-        h2 = x->text[i] % 16;
-        if(h2 <= 9) h2 += '0';
-        else h2 = h2-10 + 'A';
-        x->hex[k+1] = h2;
-        
-    }
-    x->hex[k] = '\0';
-     
-     */
-    //    post("%s %s", __func__, x->hex);
-    
 }
 
 
@@ -959,7 +914,7 @@ void ocompose_textbuf(t_ocompose *x, t_symbol *msg, int argc, t_atom *argv)
         {
             t_symbol *s = atom_getsymbol(argv);
             
-            if(s == gensym("hex"))
+            if(s == gensym("hex") || s == gensym("binhex"))
             {
                 
                 int i, charcount = 0;
@@ -976,6 +931,11 @@ void ocompose_textbuf(t_ocompose *x, t_symbol *msg, int argc, t_atom *argv)
                     {
                         
                         buf = atom_getsymbol(argv+i)->s_name;
+                        
+                        if(s == gensym("binhex") && buf[0] == 'b' && buf[1] == '#')
+                        {
+                            buf += 2;
+                        }
                         
                         charcount = strlen(buf) + strlen(x->hex);
 
@@ -1003,86 +963,6 @@ void ocompose_textbuf(t_ocompose *x, t_symbol *msg, int argc, t_atom *argv)
                 
 //                post("%s %s %d", __func__, x->hex, __LINE__);
                 
-                
-            }
-            else if(s == gensym("binhex"))
-            {
-                
-                int i, charcount = 0;
-                if(!x->streamflag)
-                {
-                    x->streamflag = 1;
-                    memset(x->hex, '\0', OMAX_PD_MAXSTRINGSIZE * 2);
-                }
-                char *buf = NULL;
-                
-                for( i = 1; i < argc; i++ )
-                {
-                    if(atom_getsymbol(argv+i) != gensym(x->receive_name))
-                    {
-                        
-                        buf = atom_getsymbol(argv+i)->s_name;
-                        
-                        if(buf[0] == 'b' && buf[1] == '#')
-                        {
-                            buf += 2;
-                            charcount = strlen(buf) + strlen(x->hex);
-                            //post("%s %d", __func__, strlen(x->hex));
-                            if(charcount < (OMAX_PD_MAXSTRINGSIZE * 2))
-                            {
-                                strcat(x->hex, buf);
-                            }
-                            else
-                            {
-                                error("maximum hex buffers size is set to %d", OMAX_PD_MAXSTRINGSIZE*2);
-                                return;
-                            }
-                        }
-                        
-                    } else {
-                        if(x->textediting)
-                            ocompose_storeTextAndExitEditorTick(x);
-                        
-                        ocompose_setTextFromHex(x, x->hex);
-                        ocompose_gettext(x);
-                        x->streamflag = 0;
-                        break;
-                        
-                    }
-                }
-                
-//                post("%s %s %d", __func__, x->hex, __LINE__);
-                
-                
-            }
-            
-            else if (s == gensym("text"))
-            {
-                //this probably could go back to the pre-concat version since textFromString is always within C (so no socket size issue)
-                int i, charcount = 0;
-                char text[OMAX_PD_MAXSTRINGSIZE];
-                memset(text, '\0', OMAX_PD_MAXSTRINGSIZE );
-                
-                char *buf = NULL;
-                
-                for( i = 1; i < argc; i++ )
-                {
-                    buf = atom_getsymbol(argv+i)->s_name;
-                    charcount += strlen(buf);
-                    if(charcount < (OMAX_PD_MAXSTRINGSIZE ))
-                    {
-                        strcat(text, buf);
-                    }
-                    else
-                    {
-                        error("maximum hex buffers size is set to %d", OMAX_PD_MAXSTRINGSIZE);
-                        return;
-                    }
-                    
-                }
-                
-                ocompose_setTextFromString(x, text);
-                //                post("%s %d %s", __func__, x->textediting, text);
                 
             }
             else
@@ -1223,7 +1103,7 @@ void ocompose_key_callback(t_ocompose *x, t_symbol *s, int argc, t_atom *argv)
                     }
                 }
             } else {
-                sys_vgui(".x%lx.c itemconfigure text%lx -width %d -text [subst -nobackslash -nocommands -novariables [regsub -all -line {^[ \t]+|[ \t]+$} [.x%lx.t%lxTEXT get 0.0 end-1c] \"\" ]] \n", glist_getcanvas(x->glist), x, x->width-10, glist_getcanvas(x->glist), (long)x);
+                sys_vgui(".x%lx.c itemconfigure text%lx -width %d -text [subst -nobackslash -nocommands -novariables [.x%lx.t%lxTEXT get 0.0 end-1c] ] \n", glist_getcanvas(x->glist), x, x->width-10, glist_getcanvas(x->glist), (long)x);
                 ocompose_getRectAndDraw(x, 0);
             }
             
@@ -1233,8 +1113,6 @@ void ocompose_key_callback(t_ocompose *x, t_symbol *s, int argc, t_atom *argv)
     }
     
 }
-
-
 
 void ocompose_bind_text_events(t_ocompose *x)
 {
@@ -1264,17 +1142,13 @@ void ocompose_storeTextAndExitEditorTick(t_ocompose *x)
 {
     
     t_canvas *canvas = glist_getcanvas(x->glist);
-//    error("%p %s", x, __func__);
-    sys_vgui(".x%lx.c itemconfigure text%lx -fill black -width %d -text [subst -nobackslash -nocommands -novariables [string trimright [regsub -all -line {^[ \t]+|[ \t]+$}  {%s} \"\" ]]] \n", canvas, (long)x, x->width-15, x->tk_text);
+    
+    sys_vgui(".x%lx.c itemconfigure text%lx -fill black -width %d -text [subst -nobackslash -nocommands -novariables [string trimright {%s} ]] \n", canvas, (long)x, x->width-15, x->text);
     sys_vgui("destroy .x%lx.t%lxTEXT\n", canvas, (long)x);
     
     x->textediting = 0;
     
     ocompose_getRectAndDraw(x, 1);
-
-    //        post("%s %d", __func__, x->textediting);
-    
-
     
 }
 
@@ -1303,15 +1177,9 @@ void ocompose_getTextAndCreateEditor(t_ocompose *x, int firsttime)
         sys_vgui("text .x%lx.t%lxTEXT -font {{%s} %d %s} -undo true -fg \"black\" -bg #f8f8f6 -takefocus 1 -state normal -highlightthickness 0 -wrap word -spacing3 0\n", canvas, (long)x, sys_font, glist_getfont(x->glist), sys_fontweight );
         
         sys_vgui("place .x%lx.t%lxTEXT -x [expr %d - [.x%lx.c canvasx 0]] -y [expr %d - [.x%lx.c canvasy 0]] -width %d -height %d\n", canvas, (long)x, x1+4, canvas, y1+4, canvas, x->width-15, x->height-6);
-       
-//        sys_vgui("::pdwindow::post \"checkexpr [expr %d + [expr [lindex [%s xview] 0] * [expr [expr 1 / [expr [lindex [%s xview] 1] - [lindex [%s xview] 0]]] * [winfo width %s]]]] \n\"\n", x->ob.te_xpix, x->canvas_id, x->canvas_id, x->canvas_id, x->canvas_id);
-
-//        sys_vgui("::pdwindow::post \"scrollivew [%s cget -scrollregion ] \n\"\n",  x->canvas_id);
-
-       // sys_vgui("::pdwindow::post \"text lines: [%s count -lines 1.0 end] \n\"\n", x->text_id);
         
-        if(x->tk_text)
-            sys_vgui(".x%lx.t%lxTEXT insert 1.0 [subst -nobackslash -nocommands -novariables [regsub -all -line {^[ \t]+|[ \t]+$}  {%s} \"\" ]] \n", canvas, (long)x, x->tk_text);
+        if(x->text)
+            sys_vgui(".x%lx.t%lxTEXT insert 1.0 [subst -nobackslash -nocommands -novariables {%s} ] \n", canvas, (long)x, x->text);
         
         sys_vgui("event generate .x%lx.t%lxTEXT <1> -x %d -y %d \n", canvas, (long)x, x1 + 10, y1 + 5);
         sys_vgui("event generate .x%lx.t%lxTEXT <ButtonRelease-1> -x %d -y %d \n", canvas, (long)x, x1 + 10, y1 + 5);
@@ -1362,7 +1230,7 @@ void ocompose_resetText(t_ocompose *x, char *s)
     else if(glist_isvisible(x->glist))
     {
         //post("%s %d", __func__, glist_isvisible(x->glist));
-        sys_vgui(".x%lx.c itemconfigure text%lx -width %d -text [subst -nobackslash -nocommands -novariables [string trimright [regsub -all -line {^[ \t]+|[ \t]+$}  {%s} \"\" ]]] \n", glist_getcanvas(x->glist), (long)x, x->width-10, x->tk_text);
+        sys_vgui(".x%lx.c itemconfigure text%lx -width %d -text [subst -nobackslash -nocommands -novariables [string trimright {%s} ]] \n", glist_getcanvas(x->glist), (long)x, x->width-10, x->text);
         
         ocompose_getRectAndDraw(x, 1);
     }
@@ -1373,17 +1241,6 @@ static void ocompose_getrect(t_gobj *z, t_glist *glist,int *xp1, int *yp1, int *
 {
     t_ocompose *x = (t_ocompose *)z;
     int x1, y1, x2, y2;
-    
-    //    post("%d",     glist_getcanvas(glist)->gl_pixheight);
-    //    sys_vgui("::pdwindow::post \"[%s cget -scrollregion ] \n\" \n", x->canvas_id);
-    
-    //do this in the text editing part maybe?  or at least coordinate them better
-    /*
-     int font = glist_getfont(glist);
-     int fontwidth = sys_fontwidth(font), fontheight = sys_fontheight(font);
-     x->width = (x->width > 0 ? x->width : 6) * fontwidth + 2;
-     x->height = fontheight + 3;
-     */
     
     x1 = text_xpix(&x->ob, glist);
     y1 = text_ypix(&x->ob, glist);
@@ -1452,23 +1309,23 @@ void ocompose_drawElements(t_ocompose *x, t_glist *glist, int width2, int height
             //border
             sys_vgui(".x%lx.c create rectangle %d %d %d %d -outline \"white\" -fill \"white\" -tags [list %s msg]\n",canvas, x1, y1, x2, y2, x->border_tag);
             
-            sys_vgui(".x%lx.c create polygon %d %d %d %d %d %d %d %d %d %d %d %d  -outline #0066CC -fill \"white\" -tags %sBorder -width 2 \n",canvas, cx1, cy1, cx2, cy1, cx2, cy2-10, cx2-10, cy2-10, cx2, cy2-10, cx1, cy2, x->border_tag);
+            sys_vgui(".x%lx.c create polygon %d %d %d %d %d %d %d %d %d %d %d %d  -outline #0066CC -fill \"white\" -tags %sBorder -width 2 \n",canvas, cx1, cy1, cx2, cy1, cx2, cy2-10, cx2-10, cy2-10, cx2-10, cy2, cx1, cy2, x->border_tag);
             
-            sys_vgui(".x%lx.c create polygon %d %d %d %d %d %d -outline \"black\" -fill \"white\" -tags %s \n",canvas, cx2-10, cy2-10, cx2-10, cy2, cx2, cy2-10, x->corner_tag);
+            sys_vgui(".x%lx.c create polygon %d %d %d %d %d %d -outline #0066CC -fill \"white\" -tags %s \n",canvas, cx2-10, cy2-10, cx2-10, cy2, cx2, cy2-10, x->corner_tag);
             
 
             
             //handle
             sys_vgui("canvas .x%lx.h%lxHANDLE -width 5 -height 5 \n", canvas, (long)x);
             sys_vgui(".x%lx.h%lxHANDLE create rectangle %d %d %d %d -outline \"blue\" -fill \"blue\" -tags %lxHANDLE \n",canvas, (long)x, 0, 0, 5, 5, (long)x);
-            sys_vgui("place .x%lx.h%lxHANDLE -x [expr %d - [.x%lx.c canvasx 0]] -y [expr %d - [.x%lx.c canvasy 0]] -width %d -height %d\n", canvas, (long)x, x2-5, canvas, y2-5, canvas, 5, 5);
+            sys_vgui("place .x%lx.h%lxHANDLE -x [expr %d - [.x%lx.c canvasx 0]] -y [expr %d - [.x%lx.c canvasy 0]] -width %d -height %d\n", canvas, (long)x, x2-4, canvas, y2-4, canvas, 5, 5);
             sys_vgui("bind .x%lx.h%lxHANDLE <Button-1> {+pdsend {%s resize_mousedown}} \n", canvas, (long)x, x->receive_name);
             sys_vgui("bind .x%lx.h%lxHANDLE <Motion> {+pdsend {%s resize_mousemove %%x %%y }} \n", canvas, (long)x, x->receive_name);
             sys_vgui("bind .x%lx.h%lxHANDLE <ButtonRelease-1> {+pdsend {%s resize_mouseup }} \n", canvas, (long)x, x->receive_name);
             
-            if (x->tk_text)
+            if (x->text)
             {
-                sys_vgui(".x%lx.c create text %d %d -anchor nw -width %d -font {{%s} %d %s} -tags text%lx -text [subst -nobackslash -nocommands -novariables [string trimright [regsub -all -line {^[ \t]+|[ \t]+$}  {%s} \"\" ]]] \n", canvas, text_xpix(&x->ob, x->glist)+5, text_ypix(&x->ob, x->glist)+5, x->width-10, sys_font, glist_getfont(x->glist), sys_fontweight, (long)x, x->tk_text );
+                sys_vgui(".x%lx.c create text %d %d -anchor nw -width %d -font {{%s} %d %s} -tags text%lx -text [subst -nobackslash -nocommands -novariables [string trimright {%s} ]] \n", canvas, text_xpix(&x->ob, x->glist)+5, text_ypix(&x->ob, x->glist)+5, x->width-10, sys_font, glist_getfont(x->glist), sys_fontweight, (long)x, x->text );
                 
                 
 // get height of text bbox, send to "setheight" to set height and redraw in the case of cmd-d duplicate, this gets called first, and then is displaced, so the bbox value is actually pre-displacement, see setheight function above
@@ -1497,9 +1354,9 @@ void ocompose_drawElements(t_ocompose *x, t_glist *glist, int width2, int height
             {
                 sys_vgui("place .x%lx.t%lxTEXT -x [expr %d - [.x%lx.c canvasx 0]] -y [expr %d - [.x%lx.c canvasy 0]] -width %d -height %d\n", canvas, (long)x, x1+4, canvas, y1+4, canvas, x->width-6, x->height-6);
             }
-            else if (x->tk_text)
+            else if (x->text)
             {
-                sys_vgui(".x%lx.c itemconfigure text%lx -width %d -text [subst -nobackslash -nocommands -novariables [string trimright [regsub -all -line {^[ \t]+|[ \t]+$}  {%s} \"\" ]]] \n", canvas, (long)x, x->width-10, x->tk_text);
+                sys_vgui(".x%lx.c itemconfigure text%lx -width %d -text [subst -nobackslash -nocommands -novariables [string trimright {%s} ]] \n", canvas, (long)x, x->width-10, x->text);
                 
                 
                 
@@ -1595,18 +1452,8 @@ static void ocompose_displace(t_gobj *z, t_glist *glist,int dx, int dy)
     
     t_ocompose *x = (t_ocompose *)z;
     
-    
     x->ob.te_xpix += dx;
     x->ob.te_ypix += dy;
-    //x->ob.te_xpix = x->ob.te_xpix < 0 ? 0 : x->ob.te_xpix;
-    //x->ob.te_ypix = x->ob.te_ypix < 0 ? 0 : x->ob.te_ypix;
-    
-    //post("%x %s %d %d height %d\n", x, __func__, x->ob.te_xpix, x->ob.te_ypix, x->height );
-    
-//    sys_vgui("::pdwindow::post \"width [winfo width %s] \n xview [%s xview]\n rootx [winfo rootx %s] \n canvasx [%s canvasx 0] \n\"\n", x->canvas_id, x->canvas_id, x->canvas_id, x->canvas_id  );
-//    sys_vgui("::pdwindow::post \"scrollivew [%s cget -scrollregion ] \n\"\n",  x->canvas_id);
-//    sys_vgui("::pdwindow::post \"check [expr [lindex [%s xview] 0] * [expr [expr 1 / [expr [lindex [%s xview] 1] - [lindex [%s xview] 0]]] * [winfo width %s]]] \n\"\n",  x->canvas_id, x->canvas_id, x->canvas_id, x->canvas_id); //[expr %d - [%s canvasx 0] + x->ob.te_xpix,
-
     
     int x2 = x->ob.te_xpix+x->width;
     int y2 = x->ob.te_ypix+x->height;
@@ -1796,8 +1643,6 @@ static void ocompose_save(t_gobj *z, t_binbuf *b)
 
     ocompose_setHexFromText(x, x->text);
     
-//    post("%x %s height %d", x, __func__, x->height);
-    
     if(!x->firsttime && glist_getcanvas(x->glist)->gl_editor)
         ocompose_pdnofocus_callback(x);
     
@@ -1833,9 +1678,7 @@ static void ocompose_save(t_gobj *z, t_binbuf *b)
 
 void ocompose_free(t_ocompose *x)
 {
-//    printf("%s\n", __func__);
     free(x->text);
-    free(x->tk_text);
     free(x->hex);
     free(x->tcl_namespace);
     free(x->border_tag);
@@ -1856,7 +1699,6 @@ void ocompose_free(t_ocompose *x)
     
     ocompose_clearBundles(x);
     
-    
 }
 
 
@@ -1872,8 +1714,6 @@ void *ocompose_new(t_symbol *msg, short argc, t_atom *argv)
    
         x->outlet = outlet_new(&x->ob, NULL);
         
-        //            x->ob.b_firstin = (void *)x;
-        
         x->proxy = (void **)malloc(argc * sizeof(t_omax_pd_proxy *));
         x->proxy[0] = proxy_new((t_object *)x, 0, &(x->inlet), ocompose_proxy_class);
         x->proxy[1] = proxy_new((t_object *)x, 1, &(x->inlet), ocompose_proxy_class);
@@ -1884,7 +1724,6 @@ void *ocompose_new(t_symbol *msg, short argc, t_atom *argv)
         x->textlen = 0;
         
         critical_new(&(x->lock));
-        //        x->qelem = qelem_new((t_object *)x, (method)ocompose_refresh);
         
         x->m_clock = clock_new(x, (t_method)ocompose_tick);
         
@@ -1895,14 +1734,6 @@ void *ocompose_new(t_symbol *msg, short argc, t_atom *argv)
         x->text = NULL;
         x->text = (char *)malloc(OMAX_PD_MAXSTRINGSIZE * sizeof(char));
         if(x->text == NULL)
-        {
-            printf("out of memory %d\n", __LINE__);
-            return NULL;
-        }
-            
-        x->tk_text = NULL;
-        x->tk_text = (char *)malloc(OMAX_PD_MAXSTRINGSIZE * sizeof(char));
-        if(x->tk_text == NULL)
         {
             printf("out of memory %d\n", __LINE__);
             return NULL;
@@ -2051,9 +1882,6 @@ void *ocompose_new(t_symbol *msg, short argc, t_atom *argv)
                  }\n");
         
         
-        
-        // sys_vgui("namespace eval ::%s [list set textbuf%lx \"/foo 1\"] \n", x->tcl_namespace, glist_getcanvas(x->glist));
-        
         x->mouseDown = 0;
         x->selected = 0;
         x->editmode = glist_getcanvas(x->glist)->gl_edit;
@@ -2091,9 +1919,11 @@ void setup_o0x2ecompose(void) {
     omax_pd_class_addmethod(c, (t_method)odot_version, gensym("version"));
     omax_pd_class_addbang(c, (t_method)ocompose_bang);
     
-    omax_pd_class_addfloat(c, (t_method)ocompose_float);
-    omax_pd_class_addmethod(c, (t_method)ocompose_list, gensym("list"));
-    omax_pd_class_addanything(c, (t_method)ocompose_anything);
+// now that we're not supporting $ substitution I think we can take these out:
+//    omax_pd_class_addfloat(c, (t_method)ocompose_float);
+//    omax_pd_class_addmethod(c, (t_method)ocompose_list, gensym("list"));
+//    omax_pd_class_addanything(c, (t_method)ocompose_anything);
+    
     omax_pd_class_addmethod(c, (t_method)ocompose_set, gensym("set"));
     omax_pd_class_addmethod(c, (t_method)ocompose_doc, gensym("doc"));
 
