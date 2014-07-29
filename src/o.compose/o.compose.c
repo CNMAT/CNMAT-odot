@@ -1847,31 +1847,15 @@ void ocompose_free(t_ocompose *x)
     clock_free(x->m_clock);
     clock_free(x->new_data_indicator_clock);
     
-    
-    {
-        
-        critical_free(x->lock);
-        if(x->proxy){
-            pd_free(x->proxy[0]);
-            pd_free(x->proxy[1]);
-            free(x->proxy);
-        }
-        /*
-        if(x->bndl){
-            switch(x->bndltype){
-                case ocompose_S:
-                    osc_bundle_s_deepFree((t_osc_bndl_s *)x->bndl);
-                    break;
-                case ocompose_U:
-                    osc_bundle_u_free((t_osc_bndl_u *)x->bndl);
-                    break;
-            }
-        }
-         */
-        
-        ocompose_clearBundles(x);
-        
+    critical_free(x->lock);
+    if(x->proxy){
+        pd_free(x->proxy[0]);
+        pd_free(x->proxy[1]);
+        free(x->proxy);
     }
+    
+    ocompose_clearBundles(x);
+    
     
 }
 
@@ -2317,5 +2301,7 @@ int main(void){
 need to not do any binding if canvas is not visible (in subpatcher), it seems to be happening, and I'm not sure why
 **update: check status on that
  
+to do: add color picker stuff, and make Tcl/TK variable to store like miller does, e.g. :
+     //    sys_vgui(".x%lx.c itemconfigure %s -outline %s\n", glist, x->border_tag, (state? "$select_color" : "$msg_box_fill"));//was "$box_outline"
  
 */
