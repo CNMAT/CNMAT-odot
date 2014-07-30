@@ -25,7 +25,7 @@
 #define OMAX_DOC_NAME "o.downcast"
 #define OMAX_DOC_SHORT_DESC "Produces a bundle that conforms to OSC 1.0"
 #define OMAX_DOC_LONG_DESC "Downcasts optional types supported by the odot objects to the required types of OSC 1.0."
-#define OMAX_DOC_INLETS_DESC (char *[]){"OSC bundle"}
+#define OMAX_DOC_INLETS_DESC (char *[]){"OSC bundle", "Inactive (reserved for future use)"}
 #define OMAX_DOC_OUTLETS_DESC (char *[]){"Downcasted OSC bundle"}
 #define OMAX_DOC_SEEALSO  (char *[]){}
 
@@ -57,6 +57,8 @@ typedef struct _odowncast{
 	void *outlet;
 	t_symbol *timetag_address;
 	long doubles, ints, bundles, timetags;
+    void *proxy; // right inlet reserved for casting options
+    long inlet;
 } t_odowncast;
 
 void *odowncast_class;
@@ -306,6 +308,7 @@ void *odowncast_new(t_symbol *msg, short argc, t_atom *argv)
 	t_odowncast *x;
 	if((x = (t_odowncast *)object_alloc(odowncast_class))){
 		x->outlet = outlet_new((t_object *)x, "FullPacket");
+        x->proxy = proxy_new((t_object *)x, 1, &(x->inlet));
 		x->timetag_address = NULL;
 		x->doubles = x->ints = x->bundles = x->timetags = 1;
 		attr_args_process(x, argc, argv);

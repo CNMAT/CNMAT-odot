@@ -2107,7 +2107,7 @@ int main(void){
     
     
  	CLASS_ATTR_RGBA(c, "background_color", 0, t_odisplay, background_color);
- 	CLASS_ATTR_DEFAULT_SAVE_PAINT(c, "background_color", 0, ".98 .98 .98 1.");
+ 	CLASS_ATTR_DEFAULT_SAVE_PAINT(c, "background_color", 0, ".884 .884 .884 1.");
  	CLASS_ATTR_STYLE_LABEL(c, "background_color", 0, "rgba", "Background Color");
 	CLASS_ATTR_CATEGORY_KLUDGE(c, "background_color", 0, "Color");
     
