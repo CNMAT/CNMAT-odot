@@ -3,8 +3,9 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 6,
-			"minor" : 0,
-			"revision" : 4
+			"minor" : 1,
+			"revision" : 6,
+			"architecture" : "x64"
 		}
 ,
 		"rect" : [ 279.0, 89.0, 1104.0, 666.0 ],
@@ -58,7 +59,7 @@
 					"fontsize" : 12.0,
 					"id" : "obj-39",
 					"maxclass" : "newobj",
-					"numinlets" : 0,
+					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
 					"patching_rect" : [ 916.0, 115.0, 58.0, 20.0 ],
@@ -76,7 +77,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 32.0, 376.0, 143.5, 18.0 ],
-					"text" : "o.message"
+					"text" : "o.compose"
 				}
 
 			}
@@ -84,13 +85,13 @@
 				"box" : 				{
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
-					"frgb" : [ 0.0, 0.0, 0.0, 1.0 ],
+					"frgb" : 0.0,
 					"id" : "obj-26",
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 402.5, 417.0, 435.5, 20.0 ],
-					"text" : "Create and display OSC bundles"
+					"text" : "Create OSC bundles from text"
 				}
 
 			}
@@ -212,7 +213,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 689.0, 72.0, 122.0, 18.0 ],
-					"text" : "obj o.message, done"
+					"text" : "obj o.compose, done"
 				}
 
 			}
@@ -273,6 +274,66 @@
 				}
 
 			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-8",
+					"maxclass" : "o.compose",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 200.0, 200.0, 150.0, 24.0 ],
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
+					"varname" : "obj"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-10",
+					"maxclass" : "o.compose",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 200.0, 200.0, 150.0, 24.0 ],
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
+					"varname" : "obj[1]"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-14",
+					"maxclass" : "o.compose",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 200.0, 200.0, 150.0, 24.0 ],
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
+					"varname" : "obj[2]"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-17",
+					"maxclass" : "o.compose",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 200.0, 200.0, 150.0, 24.0 ],
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
+					"varname" : "obj[3]"
+				}
+
+			}
  ],
 		"lines" : [ 			{
 				"patchline" : 				{
@@ -280,6 +341,15 @@
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-1", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-8", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-12", 0 ]
 				}
 
 			}
@@ -436,8 +506,21 @@
 				}
 
 			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-13", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-8", 0 ]
+				}
+
+			}
  ],
 		"dependency_cache" : [ 			{
+				"name" : "o.compose.mxo",
+				"type" : "iLaX"
+			}
+, 			{
 				"name" : "o.route.mxo",
 				"type" : "iLaX"
 			}

@@ -31,14 +31,27 @@
 				"box" : 				{
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
-					"id" : "obj-11",
-					"linecount" : 3,
-					"maxclass" : "o.message",
-					"numinlets" : 2,
+					"id" : "obj-12",
+					"maxclass" : "o.display",
+					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 160.0, 384.0, 256.0, 47.0 ],
-					"text" : "/time : 2013-03-29T13:32:23.042309Z,\n/time/start : 2013-03-29T13:30:30.585630Z,\n/time/run : 112.457",
+					"patching_rect" : [ 328.0, 360.0, 256.0, 34.0 ],
+					"presentation_rect" : [ 160.0, 437.0, 0.0, 0.0 ],
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-2",
+					"maxclass" : "o.display",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 48.0, 297.0, 256.0, 34.0 ],
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -52,7 +65,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 320.0, 264.0, 50.0, 20.0 ],
+					"patching_rect" : [ 328.0, 264.0, 50.0, 20.0 ],
 					"text" : "o.union"
 				}
 
@@ -66,7 +79,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 341.5, 328.0, 197.0, 20.0 ],
+					"patching_rect" : [ 328.0, 304.0, 197.0, 20.0 ],
 					"text" : "o.expr /time/run = /time - /time/start"
 				}
 
@@ -80,7 +93,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 341.5, 104.0, 116.0, 20.0 ],
+					"patching_rect" : [ 359.0, 104.0, 116.0, 20.0 ],
 					"text" : "o.timetag /time/start"
 				}
 
@@ -94,7 +107,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "bang", "" ],
-					"patching_rect" : [ 341.5, 72.0, 36.0, 20.0 ],
+					"patching_rect" : [ 359.0, 72.0, 36.0, 20.0 ],
 					"text" : "sel 1"
 				}
 
@@ -108,23 +121,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "int", "int" ],
-					"patching_rect" : [ 328.0, 40.0, 32.5, 20.0 ],
+					"patching_rect" : [ 328.0, 40.0, 50.0, 20.0 ],
 					"text" : "t i i"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontname" : "Arial",
-					"fontsize" : 12.0,
-					"id" : "obj-5",
-					"maxclass" : "o.message",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 32.0, 272.0, 256.0, 20.0 ],
-					"text" : "/time : 2013-03-29T13:32:23.042309Z",
-					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
 			}
@@ -137,7 +135,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 320.0, 232.0, 89.0, 20.0 ],
+					"patching_rect" : [ 328.0, 232.0, 89.0, 20.0 ],
 					"text" : "o.timetag /time"
 				}
 
@@ -163,7 +161,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 320.0, 200.0, 65.0, 20.0 ],
+					"patching_rect" : [ 328.0, 200.0, 65.0, 20.0 ],
 					"text" : "qmetro 50"
 				}
 
@@ -207,7 +205,7 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-5", 1 ],
+					"destination" : [ "obj-2", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-4", 0 ]
@@ -252,7 +250,7 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-11", 1 ],
+					"destination" : [ "obj-12", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-9", 0 ]
@@ -265,15 +263,15 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "o.message.mxo",
-				"type" : "iLaX"
-			}
-, 			{
 				"name" : "o.expr.mxo",
 				"type" : "iLaX"
 			}
 , 			{
 				"name" : "o.union.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.display.mxo",
 				"type" : "iLaX"
 			}
  ]
