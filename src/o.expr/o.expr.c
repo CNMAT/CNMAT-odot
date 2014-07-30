@@ -213,16 +213,16 @@ void oexpr_fullPacket(t_oexpr *x, t_symbol *msg, int argc, t_atom *argv)
 			}
 			if(!fail){
 				omax_util_outletOSC(x->outlets[j], len, ptr);
-				success++;
-				//goto out;
+				//success++;
+				goto out;
 			}
 		}
 		f = osc_expr_next(f);
 		j++;
 	}
-	if(!success){
-		omax_util_outletOSC(x->outlets[j], len, ptr);
-	}
+	//if(!success){
+	omax_util_outletOSC(x->outlets[j], len, ptr);
+		//}
 
  out:
 	if(av){
