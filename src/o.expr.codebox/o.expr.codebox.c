@@ -223,18 +223,20 @@ void oexprcodebox_gettext(t_oexprcodebox *x)
     object_method(textfield, gensym("gettextptr"), &text, &size);
 #endif
     size = strlen(text); // the value returned in text doesn't make sense
-    if(size == 0){
-            return;
-    }    
     // free expr
     //oexprcodebox_clearBundles(x);
     if(x->expr){
-            critical_enter(x->lock);
-            osc_expr_free(x->expr);
-    x->expr = NULL;
-            // search and replace #n params
-            critical_exit(x->lock);
+        critical_enter(x->lock);
+        osc_expr_free(x->expr);
+        x->expr = NULL;
+        // search and replace #n params
+        critical_exit(x->lock);
     }
+    
+    if(size == 0){
+            return;
+    }  
+    
     critical_enter(x->lock);
     // search and replace #n params
     osc_expr_parser_parseExpr(text, &(x->expr));
