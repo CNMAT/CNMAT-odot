@@ -75,8 +75,8 @@
 #include "o.h"
 
 // default options
-#define DEFAULT_PACKET_SIZE 1000
-#define DEFAULT_QUEUE_SIZE 1500
+#define DEFAULT_PACKET_SIZE 10000
+#define DEFAULT_QUEUE_SIZE 15000
 
 #define OSCHEDULE_OUTLET_MAIN x->outlets[0]
 #define OSCHEDULE_OUTLET_MISSED x->outlets[1]
