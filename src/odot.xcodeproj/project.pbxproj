@@ -241,6 +241,7 @@
 		110A81E4194C4938002358E3 /* o.downcast.c in Sources */ = {isa = PBXBuildFile; fileRef = 52B53CEC17480CFC00237A19 /* o.downcast.c */; };
 		112AC8611939427D003244E9 /* o.menu.c in Sources */ = {isa = PBXBuildFile; fileRef = 112AC8601939427D003244E9 /* o.menu.c */; };
 		11893E5E1986F462008303DD /* o.compose.c in Sources */ = {isa = PBXBuildFile; fileRef = 9B3930F4195A296C002EDAE5 /* o.compose.c */; };
+		11893E6219883506008303DD /* opd_textbox.h in Headers */ = {isa = PBXBuildFile; fileRef = 11893E6119881E34008303DD /* opd_textbox.h */; };
 		118D280019394C9500739CB3 /* pqops.c in Sources */ = {isa = PBXBuildFile; fileRef = 52A8396C16F3F893002E273C /* pqops.c */; };
 		118D280119394C9800739CB3 /* pqops.h in Headers */ = {isa = PBXBuildFile; fileRef = 52A8396D16F3F893002E273C /* pqops.h */; };
 		119FA032191D5835001C3325 /* o.append.c in Sources */ = {isa = PBXBuildFile; fileRef = 52A8393A16E978CD002E273C /* o.append.c */; };
@@ -2167,6 +2168,7 @@
 		112AC85F19394255003244E9 /* o.menu.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = o.menu.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
 		112AC8601939427D003244E9 /* o.menu.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.menu.c; path = omenu/o.menu.c; sourceTree = "<group>"; };
 		11893E5D1986F436008303DD /* o.compose.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = o.compose.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
+		11893E6119881E34008303DD /* opd_textbox.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = opd_textbox.h; path = o.compose/opd_textbox.h; sourceTree = "<group>"; };
 		119FA031191D5814001C3325 /* o.append.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = o.append.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
 		119FA03C191D58CA001C3325 /* o.atomize.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = o.atomize.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
 		119FA047191D58FF001C3325 /* o.change.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = o.change.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -3015,6 +3017,7 @@
 				525523D81504CC6000A10E5D /* o.change.c */,
 				525525271504D21500A10E5D /* o.collect.c */,
 				9B3930F4195A296C002EDAE5 /* o.compose.c */,
+				11893E6119881E34008303DD /* opd_textbox.h */,
 				525525291504D22A00A10E5D /* o.cond.c */,
 				527294B717EDE93100AA15E1 /* o.context.c */,
 				520C0E2A158469F4005F2955 /* o.dict.c */,
@@ -3186,6 +3189,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11893E6219883506008303DD /* opd_textbox.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
