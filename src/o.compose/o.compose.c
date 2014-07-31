@@ -101,49 +101,18 @@ enum {
 
 #ifdef OMAX_PD_VERSION
 typedef struct _ocompose {
-    t_object    ob;
-    t_glist     *glist; //the canvas heirarchy
+    t_object ob;
+    t_glist *glist; //the canvas heirarchy
     
     t_opd_textbox *textbox;
     
-    char        *text;
-    long        textlen;
+    long textlen;
 
-    char        *hex;
-    char        *border_tag;
-    char        *corner_tag;
-    char        *iolets_tag;
-    char        *tcl_namespace;
-    int         streamflag;
+    char *border_tag;
+    char *corner_tag;
     
-    t_clock     *m_clock;
+    t_clock *m_clock;
     
-    uint16_t    textediting;
-    uint16_t    c_bind;
-    
-    uint16_t    editmode;
-    uint16_t    selected;
-    uint16_t    displacing;
-    uint16_t    firsttime;
-    uint16_t    firstdisplace;
-    
-    uint16_t    forceredraw;
-    
-    uint16_t    parse_error;
-    uint16_t    cmdDown;
-    
-    uint16_t    mouseDown;
-    int         xref;
-    
-    int         yscroll;
-    
-    char        *receive_name;
-    
-    uint32_t    longestline;
-    
-    uint32_t    width;
-    uint32_t    height;
-
     void *outlet;
     void **proxy;
     long inlet;
@@ -155,14 +124,11 @@ typedef struct _ocompose {
     int bndl_has_subs;
     int bndl_has_been_checked_for_subs;
 
-    int     in_new_flag;
     //t_jrgba frame_color, background_color, text_color;
     
     int have_new_data;
     int draw_new_data_indicator;
     t_clock *new_data_indicator_clock;
-    
-    int     softlock;
     
 } t_ocompose;
 
@@ -551,9 +517,6 @@ void ocompose_gettext(t_ocompose *x)
     t_osc_bndl_u *bndl_u = NULL;
     t_osc_err e = osc_parser_parseString(size, buf, &bndl_u);
     if(e){
-#ifdef OMAX_PD_VERSION
-        x->parse_error = 1;
-#endif
         object_error((t_object *)x, "error parsing bundle\n");
         return;
     }
@@ -820,8 +783,7 @@ void ocompose_drawElements(t_object *ob, int firsttime)
     t_canvas *canvas = glist_getcanvas(glist);
     
     
-    post("%x %s %d %d\n", x, __func__, firsttime, t->firsttime);
-    post("%x %s %x %x", x, __func__, t->glist);
+//    post("%x %s %d %d\n", x, __func__, firsttime, t->firsttime);
 
     if (glist_isvisible(glist) && canvas->gl_editor)
     {
@@ -830,7 +792,7 @@ void ocompose_drawElements(t_object *ob, int firsttime)
 
         if (firsttime)
         {
-            post("%x %s FIRST VIS height %d y1 %d y2 %d \n", x, __func__, t->height, y1, y2);
+            //post("%x %s FIRST VIS height %d y1 %d y2 %d \n", x, __func__, t->height, y1, y2);
             
             //border
             sys_vgui(".x%lx.c create rectangle %d %d %d %d -outline \"\" -fill \"\" -tags [list %s msg]\n",canvas, x1, y1, x2, y2, x->border_tag);
@@ -842,7 +804,7 @@ void ocompose_drawElements(t_object *ob, int firsttime)
         }
         else
         {
-            post("%x %s REDRAW height %d y1 %d y2 %d \n", x, __func__, t->height, y1, y2);
+            //post("%x %s REDRAW height %d y1 %d y2 %d \n", x, __func__, t->height, y1, y2);
 
             sys_vgui(".x%lx.c coords %s %d %d %d %d\n", canvas, x->border_tag, x1, y1, x2, y2);
             sys_vgui(".x%lx.c coords %sBorder %d %d %d %d %d %d %d %d %d %d %d %d \n",canvas, x->border_tag, cx1, cy1, cx2, cy1, cx2, cy2-10, cx2-10, cy2-10, cx2-10, cy2, cx1, cy2);
@@ -857,7 +819,7 @@ void ocompose_drawElements(t_object *ob, int firsttime)
         
         sys_vgui(".x%lx.c itemconfigure %s -fill %s \n", canvas, x->corner_tag, (x->draw_new_data_indicator? "#0066CC" : "white"));
 
-    //        post("%x %s drawnew %d", x, __func__, draw_new_data_indicator);
+
         if(draw_new_data_indicator)
             clock_delay(x->new_data_indicator_clock, 100);
         
@@ -865,7 +827,9 @@ void ocompose_drawElements(t_object *ob, int firsttime)
         t_object *ob = pd_checkobject(&x->ob.te_pd);
         if (ob){
             glist_drawiofor(glist, ob, firsttime, t->iolets_tag, x1, y1, x2, y2);
+            canvas_fixlinesfor(glist, ob);
         }
+        
         if (firsttime) /* raise cords over everything else */
             sys_vgui(".x%lx.c raise cord\n", glist_getcanvas(glist));
         
@@ -940,6 +904,8 @@ static void ocompose_delete(t_gobj *z, t_glist *glist)
     t_opd_textbox *t = x->textbox;
     t_canvas *canvas = glist_getcanvas(glist);
     
+    //post("%x %s %d", x, __func__, canvas->gl_editor);
+    
     if(!t->firsttime && canvas->gl_editor)
     {    
         sys_vgui(".x%lx.c delete %s\n", canvas, x->border_tag);
@@ -949,7 +915,8 @@ static void ocompose_delete(t_gobj *z, t_glist *glist)
         opd_textbox_delete(t, glist);
         
         t_object *ob = pd_checkobject(&x->ob.te_pd);
-        if(ob){
+        if(ob && !t->firsttime)
+        {
             glist_eraseiofor(glist, ob, t->iolets_tag);
             canvas_deletelinesfor(canvas, ob);
         }
@@ -1038,9 +1005,6 @@ static void ocompose_save(t_gobj *z, t_binbuf *b)
 
 void ocompose_free(t_ocompose *x)
 {
-    free(x->text);
-    free(x->hex);
-    free(x->tcl_namespace);
     free(x->border_tag);
     free(x->corner_tag);
     
@@ -1066,20 +1030,18 @@ void *ocompose_new(t_symbol *msg, short argc, t_atom *argv)
     if(x)
     {
         
-        t_opd_textbox *t = opd_textbox_new(ocompose_textbox_class, gensym("o.compose"));
-        post("%d",t->width);
+        t_opd_textbox *t = opd_textbox_new(ocompose_textbox_class);
         
         t->glist = (t_glist *)canvas_getcurrent();;
         t->in_new_flag = 1;
         t->firsttime = 1;
         t->parent = (t_object *)x;
+
         t->draw_fn = (t_gotfn)ocompose_drawElements;
         t->gettext_fn = (t_gotfn)ocompose_gettext;
-        t->p_click = (t_gotfn)ocompose_click;
-        t->p_delete = (t_gotfn)ocompose_delete;
-        t->p_displace = (t_gotfn)ocompose_displace;
-        t->p_select = (t_gotfn)ocompose_select;
-        t->p_activate = (t_gotfn)ocompose_activate;
+        t->click_fn = (t_gotfn)ocompose_click;
+        t->delete_fn = (t_gotfn)ocompose_delete;
+
         t->mouseDown = 0;
         t->selected = 0;
         t->editmode = glist_getcanvas(t->glist)->gl_edit;
@@ -1087,7 +1049,7 @@ void *ocompose_new(t_symbol *msg, short argc, t_atom *argv)
         
         x->textbox = t;
         
-        post("%s %p glist %x canvas %x\n", __func__, x, t->glist, glist_getcanvas(t->glist));
+       // post("%s %p glist %x canvas %x\n", __func__, x, t->glist, glist_getcanvas(t->glist));
         
         x->outlet = outlet_new(&x->ob, NULL);
         
@@ -1108,25 +1070,6 @@ void *ocompose_new(t_symbol *msg, short argc, t_atom *argv)
         x->have_new_data = 1;
         x->draw_new_data_indicator = 0;
         
-        
-        x->text = NULL;
-        x->text = (char *)malloc(OMAX_PD_MAXSTRINGSIZE * sizeof(char));
-        if(x->text == NULL)
-        {
-            printf("out of memory %d\n", __LINE__);
-            return NULL;
-        }
-        
-        x->hex = NULL;
-        x->hex = (char *)malloc(OMAX_PD_MAXSTRINGSIZE * 2 * sizeof(char));
-        if(x->hex == NULL)
-        {
-            printf("out of memory %d\n", __LINE__);
-            return NULL;
-        }
-        
-        
-        // NOTE: in Graph On Parent (GOP) situation, the canvas is created AFTER the new function so we need to do this once we know we are in the right canvas context
         
         x->border_tag = NULL;
         x->corner_tag = NULL;
@@ -1173,7 +1116,6 @@ void *ocompose_new(t_symbol *msg, short argc, t_atom *argv)
 //        post("%x %s height %d", x, __func__, x->height);
         t->in_new_flag = 0;
         t->softlock = 0;
-        post("%s %p glist %x canvas %x\n", __func__, x, t->glist, glist_getcanvas(t->glist));
 
     }
     return (void *)x;

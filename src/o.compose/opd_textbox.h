@@ -13,9 +13,6 @@ typedef struct _opd_textbox
     char *tcl_namespace;
     char *receive_name;
     char *iolets_tag;
-    t_symbol    *parentname;
-    
-    t_clock     *m_clock;
     
     uint16_t    textediting;
     uint16_t    c_bind;
@@ -45,30 +42,37 @@ typedef struct _opd_textbox
     t_gotfn     draw_fn;
     t_gotfn     gettext_fn;
     
+    t_gotfn     delete_fn;
+    t_gotfn     click_fn;
+ /*
     t_gotfn     p_getrect;
     t_gotfn     p_displace;
     t_gotfn     p_select;
-    t_gotfn     p_delete;
-    t_gotfn     p_click;
+
     t_gotfn     p_activate;
     t_gotfn     p_vis;
     t_gotfn     p_save;
-    
+   */
 } t_opd_textbox;
 
+
+void opd_textbox_setCanvasText(t_opd_textbox *t)
+{
+
+}
 
 void opd_textbox_setHeight(t_opd_textbox *t, float y)
 {
     int h = ((int)y - text_ypix(t->parent, t->glist) + 5);
     h = (h > 23) ? h : 23;
     
-    post("%x %s y %f te_ypix %d ", t, __func__, y, text_ypix(t->parent, t->glist));
+    //post("%x %s y %f te_ypix %d h %d", t, __func__, y, text_ypix(t->parent, t->glist), h);
     t->softlock = 0;
     
     if((h != t->height) || t->forceredraw)
     {
         t->height = h;
-        post("%x %s height set to %d t->firsttime %d", t, __func__, t->height, t->firsttime);
+        //post("%x %s height set to %d t->firsttime %d", t, __func__, t->height, t->firsttime);
         if(t->draw_fn)
             t->draw_fn(t->parent, t->firsttime);
         
@@ -82,7 +86,7 @@ void opd_textbox_setHeight(t_opd_textbox *t, float y)
 
 void opd_textbox_getRectAndDraw(t_opd_textbox *t, int forceredraw)
 {
-    post("%x %s", t, __func__);
+    //post("%x %s", t, __func__);
     t->forceredraw = forceredraw;
     t->softlock = 1;
     sys_vgui("pdsend \"%s setheight [lindex [.x%lx.c bbox text%lx] 3]\" \n", t->receive_name, glist_getcanvas(t->glist), (long)t);
@@ -235,8 +239,8 @@ void opd_textbox_insideclick_callback(t_opd_textbox *t)
         sys_vgui("focus .x%lx.c\n", canvas);
         opd_textbox_storeTextAndExitEditor(t);
         
-        if(t->p_click)
-            t->p_click(t->parent);
+        if(t->click_fn)
+            t->click_fn(t->parent);
         
     }
     
@@ -244,7 +248,7 @@ void opd_textbox_insideclick_callback(t_opd_textbox *t)
 
 void opd_textbox_outsideclick_callback(t_opd_textbox *t)
 {
-    post("%p %s", t, __func__);
+  //  post("%p %s", t, __func__);
     
     t->c_bind = 0;
     t_canvas *canvas = glist_getcanvas(t->glist);
@@ -416,7 +420,7 @@ void opd_textbox_setTextFromString(t_opd_textbox *t, char *str)
     memset(t->text, '\0', OMAX_PD_MAXSTRINGSIZE);
     strcpy(t->text, str);
     
-    post("%x %s %s", t, __func__, t->text);
+    //post("%x %s %s", t, __func__, t->text);
 
     //n.b. convertion to hex done on save
 }
@@ -447,8 +451,8 @@ void opd_textbox_setHexFromText(t_opd_textbox *t, char *str)
 
 void opd_textbox_textbuf(t_opd_textbox *t, t_symbol *msg, int argc, t_atom *argv)
 {
-        post("%p %s \n", t, __func__);
-        printargs(argc, argv);
+    //    post("%p %s \n", t, __func__);
+    //    printargs(argc, argv);
     
     if(argc >= 2)
     {
@@ -535,49 +539,32 @@ void opd_textbox_resetText(t_opd_textbox *t, char *s)
     else if(glist_isvisible(t->glist))
     {
         //post("%s %d", __func__, glist_isvisible(t->glist));
-        sys_vgui(".x%lx.c itemconfigure text%lx -width %d -text [subst -nobackslash -nocommands -novariables [string trimright {%s} ]] \n", glist_getcanvas(t->glist), (long)t->parent, t->width-15, t->text);
+        sys_vgui(".x%lx.c itemconfigure text%lx -width %d -text [subst -nobackslash -nocommands -novariables [string trimright {%s} ]] \n", glist_getcanvas(t->glist), (long)t, t->width-15, t->text);
         
         opd_textbox_getRectAndDraw(t, 1);
     }
 }
 
 
-static void opd_textbox_getrect(t_gobj *z, t_glist *glist,int *xp1, int *yp1, int *xp2, int *yp2)
-{
-    t_opd_textbox *x = (t_opd_textbox *)z;
-    int x1, y1, x2, y2;
-    
-    x1 = text_xpix(&x->ob, glist);
-    y1 = text_ypix(&x->ob, glist);
-    x2 = x1 + x->width;
-    y2 = y1 + x->height;
-    *xp1 = x1;
-    *yp1 = y1;
-    *xp2 = x2;
-    *yp2 = y2;
-    //post("%s %d %d %d %d", __func__, x1, y1, x2, y2);
-    
-}
-
 int opd_textbox_drawElements(t_opd_textbox *x, int x1, int y1, int x2, int y2, int firsttime)
 {
-    post("%x %s %d %d %d %d", x, __func__, x1, y1, x2, y2);
+   // post("%x %s %d %d %d %d", x, __func__, x1, y1, x2, y2);
 
     if(x->in_new_flag || x->softlock)
     {
-        post("%x %s new bounce ---", x, __func__);
+      //  post("%x %s new bounce ---", x, __func__);
         return 0;
     }
     
     t_glist *glist = x->glist;
     t_canvas *canvas = glist_getcanvas(glist);
     
-    post("%x %s isvisible %d isgraph %d gl_editor %d", x, __func__, glist_isvisible(glist), glist_isgraph(glist), canvas->gl_editor);
+   // post("%x %s isvisible %d isgraph %d gl_editor %d", x, __func__, glist_isvisible(glist), glist_isgraph(glist), canvas->gl_editor);
     
     
     if (firsttime)
     {
-        post("%x %s FIRST VIS height %d y1 %d y2 %d \n", x, __func__, x->height, y1, y2);
+      //  post("%x %s FIRST VIS height %d y1 %d y2 %d \n", x, __func__, x->height, y1, y2);
         
         //fist time: create canvas elements, then add text, then get text height, and re-draw
         //post("%s drawing firsttime", __func__);
@@ -606,7 +593,7 @@ int opd_textbox_drawElements(t_opd_textbox *x, int x1, int y1, int x2, int y2, i
     }
     else
     {
-        post("%x %s REDRAW height %d y1 %d y2 %d \n", x, __func__, x->height, y1, y2);
+      //  post("%x %s REDRAW height %d y1 %d y2 %d \n", x, __func__, x->height, y1, y2);
 
         if (!x->mouseDown)
         {
@@ -619,8 +606,6 @@ int opd_textbox_drawElements(t_opd_textbox *x, int x1, int y1, int x2, int y2, i
         }
         else if (x->text[0] != '\0')
         {
-            post("should draw %s", x->text);
-            
             sys_vgui(".x%lx.c itemconfigure text%lx -fill \"black\" -width %d -text [subst -nobackslash -nocommands -novariables [string trimright {%s} ]] \n", canvas, (long)x, x->width-16, x->text);
             
             //[regsub -all -line {^[\t]+} {%s} \"    \" ] << replace \t with spaces
@@ -657,7 +642,7 @@ static void opd_textbox_delete(t_opd_textbox *x, t_glist *glist)
 static void opd_textbox_vis(t_opd_textbox *x, t_glist *glist, int vis)
 {
     
-    post("%p %s vis %d firsttime %d visable %d", x, __func__, vis, x->firsttime, glist_isvisible(glist));
+//    post("%p %s vis %d firsttime %d visable %d", x, __func__, vis, x->firsttime, glist_isvisible(glist));
 //    post("%s %p xglist %x glist %x\n", __func__, x, x->glist, glist);
 
     if(vis)
@@ -666,22 +651,19 @@ static void opd_textbox_vis(t_opd_textbox *x, t_glist *glist, int vis)
         if(!x->firsttime && glist_isgraph(glist))
         {
             //post("GOP vis");
-            if(x->p_delete)
-                x->p_delete(x->parent, glist); //<< this delete necessary for GOP? keep an eye on this
+            if(x->delete_fn)
+                x->delete_fn(x->parent, glist); //<< this delete necessary for GOP? keep an eye on this
             
             x->firsttime = 1;
         }
         
-        if (glist_isvisible(glist))
-        {//not visible when loading from disk (and from subpatcher?)
-
+        if(glist_isvisible(glist))
+        {
             if(x->draw_fn)
                 x->draw_fn(x->parent, 1);
-            
         }
-        else
+        else  //not visible when loading from disk (and from subpatcher?)
         {
-            //    post("%x %s vis but not isvisible", x, __func__);
             x->firsttime = 1;
             opd_textbox_getRectAndDraw(x, 1);
         }
@@ -696,8 +678,8 @@ static void opd_textbox_vis(t_opd_textbox *x, t_glist *glist, int vis)
     {
         //if(!x->firsttime)
         {
-            if(x->p_delete)
-                x->p_delete(x->parent, glist); //<< this delete necessary for GOP? keep an eye on this
+            if(x->delete_fn)
+                x->delete_fn(x->parent, glist); //<< this delete necessary for GOP? keep an eye on this
         }
     }
 }
@@ -725,7 +707,6 @@ static void opd_textbox_displace(t_opd_textbox *x, t_glist *glist, int dx, int d
     if (ob){
         glist_drawiofor(glist, ob, 0, x->iolets_tag, ob->te_xpix, ob->te_ypix, x2, y2);
         canvas_fixlinesfor(glist, ob);
-
     }
     
     if(x->firstdisplace)
@@ -739,8 +720,8 @@ static void opd_textbox_displace(t_opd_textbox *x, t_glist *glist, int dx, int d
 
 void opd_textbox_select(t_opd_textbox *x, t_glist *glist, int state)
 {
-;
-    post("%p %s state %d selected %d textediting %d <<pre", x, __func__, state, x->selected, x->textediting);
+
+ //   post("%p %s state %d selected %d textediting %d <<pre", x, __func__, state, x->selected, x->textediting);
     t_canvas *canvas = glist_getcanvas(glist);
     if(state)
         sys_vgui(".x%lx.h%lxHANDLE configure -cursor fleur \n", canvas, (long)x);
@@ -796,69 +777,6 @@ static void opd_textbox_activate(t_opd_textbox *x, t_glist *glist, int state)
 }
 
 
-static int opd_textbox_click(t_gobj *z, struct _glist *glist,
-                          int xpix, int ypix, int shift, int alt, int dbl, int doit)
-{
-    t_opd_textbox *x = (t_opd_textbox *)z;
-    
-    if(doit && x->p_click)
-    {
-        x->p_click(z, glist, xpix, ypix, shift, alt, dbl, doit);
-    }
-    return (1);
-    
-}
-
-
-static void opd_textbox_save(t_gobj *z, t_binbuf *b)
-{
-    
-    /*
-     //prints current pd file text in binbuf
-     int argc = binbuf_getnatom(b);
-     if(argc > 0){
-     t_atom *at = binbuf_getvec(b);
-     printargs(argc, at);
-     }
-     */
-    
-    t_opd_textbox *x = (t_opd_textbox *)z;
-    
-    opd_textbox_setHexFromText(x, x->text);
-    
-    if(!x->firsttime && glist_getcanvas(x->glist)->gl_editor)
-        opd_textbox_nofocus_callback(x);
-    
-    binbuf_addv(b, "ssiisiis", gensym("#X"),gensym("obj"),(t_int)x->ob.te_xpix, (t_int)x->ob.te_ypix, x->parentname, x->width, x->height, gensym("binhex"));
-    
-    long chunksize = 32;
-    char buf[chunksize+3];
-    long len = strlen(x->hex);
-    long chunks = len / chunksize;
-    long chad = len % chunksize;
-    long i,k;
-    for (k = 0; k < chunks; k++) {
-        memset(buf, '\0', chunksize+3 );
-        buf[0] = 'b';
-        buf[1] = '#';
-        for (i = 0; i < chunksize; i++) {
-            buf[i+2] = x->hex[i + (k*chunksize) ];
-        }
-        binbuf_addv(b, "s", gensym(buf));
-    }
-    memset(buf, '\0', chunksize+3 );
-    buf[0] = 'b';
-    buf[1] = '#';
-    
-    for (i = 0; i < chad; i++) {
-        buf[i+2] = x->hex[i + (k*chunksize) ];
-    }
-    binbuf_addv(b, "s", gensym(buf));
-    
-    binbuf_addsemi(b);
-    
-}
-
 void opd_textbox_free(t_opd_textbox *t)
 {
     
@@ -872,29 +790,28 @@ void opd_textbox_free(t_opd_textbox *t)
     
 }
 
-t_opd_textbox *opd_textbox_new(t_class *c, t_symbol *name)
+t_opd_textbox *opd_textbox_new(t_class *c)
 {
     t_opd_textbox *t = NULL;
     t = (t_opd_textbox *)pd_new(c);
     if(t)
     {
-        post("%x %s", t, __func__);
-        t->parentname = name;
+     //   post("%x %s", t, __func__);
         t->glist = NULL;
         t->c_bind = 0;
         t->softlock = 0;
         
         t->draw_fn = NULL;
         t->gettext_fn = NULL;
-        
+/*
         t->p_vis = NULL;
         t->p_activate = NULL;
-        t->p_click = NULL;
-        t->p_delete = NULL;
+        t->click_fn = NULL;
+        t->delete_fn = NULL;
         t->p_displace = NULL;
         t->p_getrect = NULL;
         t->p_select = NULL;
-        
+*/
         
         t->width = 100;
         t->height = -1;
@@ -936,7 +853,7 @@ t_opd_textbox *opd_textbox_new(t_class *c, t_symbol *name)
         }
         strcpy(t->receive_name, buf);
         
-        post("%s %s", __func__, t->receive_name);
+        //post("%s %s", __func__, t->receive_name);
         
         pd_bind(&t->ob.ob_pd, gensym(t->receive_name));
         
