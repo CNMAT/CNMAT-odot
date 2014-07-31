@@ -6,6 +6,7 @@ extern "C" {
 #endif
 
 #include <stdint.h>
+#include "osc_mem.h" // for the OSC_MEM_VALIDATE(ptr) macro
 
 #ifdef OMAX_PD_VERSION
 #include "m_pd.h"
@@ -35,8 +36,11 @@ extern "C" {
 	l1 <<= 32;							\
 	ff = atom_getfloat(&argv[2]);					\
 	uint64_t l2 = *((uint64_t *)&ff);				\
-	char *ptr = (char *)(l1 | l2);
-    
+	char *ptr = (char *)(l1 | l2);\
+	if(OSC_MEM_VALIDATE(ptr)){\
+		error("received something that is neither an OSC bundle nor a message");\
+		return;\
+	}
 
 
 #define sysmem_freeptr free
@@ -147,7 +151,11 @@ void printargs(int argc, t_atom *argv)
 		return;							\
 	}								\
 	long len = atom_getlong(argv);					\
-	char *ptr = (char *)atom_getlong(argv + 1);
+	char *ptr = (char *)atom_getlong(argv + 1);\
+	if(OSC_MEM_VALIDATE(ptr)){\
+		object_error((t_object *)x, "received something that is neither an OSC bundle nor a message");\
+		return;\
+	}
 
 #endif
 #ifdef __cplusplus 
