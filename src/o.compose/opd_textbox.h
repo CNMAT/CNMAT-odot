@@ -144,8 +144,6 @@ void opd_textbox_bind_text_events(t_opd_textbox *t)
 
 void opd_textbox_getTextAndCreateEditor(t_opd_textbox *t, int firsttime)
 {
-//    int x1 = t->parent->te_xpix;
-//    int y1 = t->parent->te_ypix;
     
     int x1 = text_xpix(t->parent, t->glist);
     int y1 = text_ypix(t->parent, t->glist);
@@ -650,9 +648,12 @@ static void opd_textbox_vis(t_opd_textbox *x, t_glist *glist, int vis)
         
         if(!x->firsttime && glist_isgraph(glist))
         {
-            //post("GOP vis");
-            if(x->delete_fn)
-                x->delete_fn(x->parent, glist); //<< this delete necessary for GOP? keep an eye on this
+//            post("GOP vis");
+            opd_textbox_delete(x, glist); // << delete text and custom canvases
+
+            // it seems for some reason, we only have to delete the custom cavases, so commenting this out for now:
+//            if(x->delete_fn)
+//                x->delete_fn(x->parent, glist); //<< but is this delete necessary for GOP? keep an eye on this
             
             x->firsttime = 1;
         }
@@ -662,9 +663,10 @@ static void opd_textbox_vis(t_opd_textbox *x, t_glist *glist, int vis)
             if(x->draw_fn)
                 x->draw_fn(x->parent, 1);
         }
-        else  //not visible when loading from disk (and from subpatcher?)
+        else  //not visible when loading from disk and from abstraction
         {
             x->firsttime = 1;
+            opd_textbox_delete(x, glist); // make sure custom canvases are refreshed
             opd_textbox_getRectAndDraw(x, 1);
         }
         

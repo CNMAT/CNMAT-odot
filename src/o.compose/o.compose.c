@@ -915,7 +915,7 @@ static void ocompose_delete(t_gobj *z, t_glist *glist)
         opd_textbox_delete(t, glist);
         
         t_object *ob = pd_checkobject(&x->ob.te_pd);
-        if(ob && !t->firsttime)
+        if(ob && !t->firsttime && glist_isvisible(glist))
         {
             glist_eraseiofor(glist, ob, t->iolets_tag);
             canvas_deletelinesfor(canvas, ob);
