@@ -518,16 +518,20 @@ void ocompose_gettext(t_ocompose *x)
     t_osc_err e = osc_parser_parseString(size, buf, &bndl_u);
     if(e){
         object_error((t_object *)x, "error parsing bundle\n");
+#ifndef OMAX_PD_VERSION
         x->frame_color.red = x->error_color.red;
         x->frame_color.green = x->error_color.green;
         x->frame_color.blue = x->error_color.blue;
         x->frame_color.alpha = x->error_color.alpha;
+#endif
         return;
     } else {
+#ifndef OMAX_PD_VERSION
         x->frame_color.red = x->default_color.red;
         x->frame_color.green = x->default_color.green;
         x->frame_color.blue = x->default_color.blue;
         x->frame_color.alpha = x->default_color.alpha;
+#endif
     }
     long bndl_s_len = 0;
     char *bndl_s_ptr = NULL;
