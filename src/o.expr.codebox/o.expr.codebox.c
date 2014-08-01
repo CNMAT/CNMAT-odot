@@ -84,7 +84,7 @@ typedef struct _oexprcodebox{
     t_critical lock;
     long textlen;
     char *text;
-    t_jrgba frame_color, background_color, text_color;
+    t_jrgba frame_color, background_color, text_color, default_color, error_color;
     void *outlets[2];
     t_osc_expr *expr;
 } t_oexprcodebox;
@@ -189,9 +189,18 @@ long oexprcodebox_keyfilter(t_oexprcodebox *x, t_object *patcherview, long *keyc
     long rv = 1;
     long k = *keycode;
     
-    if (k == JKEY_TAB || k == JKEY_ESC) {
-            object_method_typed(patcherview, gensym("endeditbox"), 0, NULL, &arv); 
-            rv = 0;                // don't pass those keys to oexprcodebox
+    if (k == JKEY_TAB) {
+        char buff[4];
+        for ( int i = 0; i < 4; ++i ) {
+            buff[i] = ' ';
+        }
+        object_method(patcherview, gensym("insertboxtext"), x, buff);
+        jbox_redraw((t_jbox *)x);
+    }
+    
+    if (k == JKEY_ESC) {
+        object_method_typed(patcherview, gensym("endeditbox"), 0, NULL, &arv);
+        rv = 0;                // don't pass those keys to oexprcodebox
     }
     return rv;
 }
@@ -208,10 +217,6 @@ void oexprcodebox_mouseup(t_oexprcodebox *x, t_object *patcherview, t_pt pt, lon
     oexprcodebox_bang(x);
 }
 
-// we get the text, convert it to an OSC bundle, and then call the paint
-// function via qelem_set which converts the OSC bundle back to text.
-// We do this so that it's formatted nicely with no unnecessary whitespace
-// and tabbed subbundles, etc.
 void oexprcodebox_gettext(t_oexprcodebox *x)
 {
     long size        = 0;
@@ -234,12 +239,25 @@ void oexprcodebox_gettext(t_oexprcodebox *x)
     }
     
     if(size == 0){
-            return;
+        return;
     }  
     
     critical_enter(x->lock);
     // search and replace #n params
     osc_expr_parser_parseExpr(text, &(x->expr));
+    
+    if(x->expr != NULL) {
+        x->frame_color.red = x->default_color.red;
+        x->frame_color.green = x->default_color.green;
+        x->frame_color.blue = x->default_color.blue;
+        x->frame_color.alpha = x->default_color.alpha;
+    } else {
+        x->frame_color.red = x->error_color.red;
+        x->frame_color.green = x->error_color.green;
+        x->frame_color.blue = x->error_color.blue;
+        x->frame_color.alpha = x->error_color.alpha;
+    }
+    
     critical_exit(x->lock);
 }
 
@@ -262,17 +280,17 @@ void oexprcodebox_postExprAST(t_oexprcodebox *fg)
     char *r = buf, *w = buf2;
     int i;
     for(i = 0; i < len; i++){
-            if(*r == '%'){
-                    *w++ = '%';
-            }
-            *w++ = *r++;
+        if(*r == '%'){
+            *w++ = '%';
+        }
+        *w++ = *r++;
     }
     *w = '\0';
     post("%s", buf2);
     //f = osc_expr_next(f);
     //
     if(buf){
-            osc_mem_free(buf);
+        osc_mem_free(buf);
     }
 }
 
@@ -595,12 +613,20 @@ void *oexprcodebox_new(t_symbol *msg, short argc, t_atom *argv)
 		//t_osc_expr *f = NULL;
 		x->outlets[1] = outlet_new((t_object *)x, "FullPacket");
 		x->outlets[0] = outlet_new((t_object *)x, "FullPacket");
+        x->frame_color.red = 0.216;
+        x->frame_color.green = 0.435;
+        x->frame_color.blue = 0.7137;
+        x->frame_color.alpha = 1.0;
 		attr_dictionary_process(x, d);
 		t_object *textfield = jbox_get_textfield((t_object *)x);
 		if(textfield){
 			object_attr_setchar(textfield, gensym("editwhenunlocked"), 1);
 			textfield_set_editonclick(textfield, 0);
 			textfield_set_textmargins(textfield, 5, 13, 5, 5);
+            x->text_color.red = 0.0;
+            x->text_color.blue = 0.0;
+            x->text_color.green = 0.0;
+            x->text_color.alpha = 1.0;
 			textfield_set_textcolor(textfield, &(x->text_color));
 		}
 		jbox_ready((t_jbox *)x);
@@ -657,14 +683,26 @@ int main(void)
 	CLASS_ATTR_STYLE_LABEL(c, "background_color", 0, "rgba", "Background Color");
     CLASS_ATTR_CATEGORY_KLUDGE(c, "background_color", 0, "Color");
     
-	CLASS_ATTR_RGBA(c, "frame_color", 0, t_oexprcodebox, frame_color);
-	CLASS_ATTR_DEFAULT_SAVE_PAINT(c, "frame_color", 0, ".216 .435 .7137 1.");
-	CLASS_ATTR_STYLE_LABEL(c, "frame_color", 0, "rgba", "Frame Color");
-    CLASS_ATTR_CATEGORY_KLUDGE(c, "frame_color", 0, "Color");
     
-	CLASS_ATTR_RGBA(c, "text_color", 0, t_oexprcodebox, text_color);
-	CLASS_ATTR_DEFAULT_SAVE_PAINT(c, "text_color", 0, "0. 0. 0. 1.");
+	//CLASS_ATTR_RGBA(c, "frame_color", 0, t_oexprcodebox, frame_color);
+	//CLASS_ATTR_DEFAULT_SAVE_PAINT(c, "frame_color", 0, ".216 .435 .7137 1.");
+	//CLASS_ATTR_STYLE_LABEL(c, "frame_color", 0, "rgba", "Frame Color");
+    //CLASS_ATTR_CATEGORY_KLUDGE(c, "frame_color", 0, "Color");
+    
+    CLASS_ATTR_RGBA(c, "default_color", 0, t_oexprcodebox, default_color);
+	CLASS_ATTR_DEFAULT_SAVE_PAINT(c, "default_color", 0, ".216 .435 .7137 1.");
+	CLASS_ATTR_STYLE_LABEL(c, "default_color", 0, "rgba", "Default Color");
+    CLASS_ATTR_CATEGORY_KLUDGE(c, "default_color", 0, "Color");
+    
+    CLASS_ATTR_RGBA(c, "error_color", 0, t_oexprcodebox, error_color);
+	CLASS_ATTR_DEFAULT_SAVE_PAINT(c, "error_color", 0, ".7647 .23137 .2392 1.");
+	CLASS_ATTR_STYLE_LABEL(c, "error_color", 0, "rgba", "Error Color");
+    CLASS_ATTR_CATEGORY_KLUDGE(c, "error_color", 0, "Color");
+    
     CLASS_ATTR_DEFAULT(c, "fontname", 0, "\"Courier New\"");
+    
+	//CLASS_ATTR_RGBA(c, "textcolor", 0, t_oexprcodebox, text_color);
+	//CLASS_ATTR_DEFAULT_SAVE_PAINT(c, "textcolor", 0, "0. 0. 0. 1.");
 	//CLASS_ATTR_STYLE_LABEL(c, "text_color", 0, "rgba", "Text Color");
     //CLASS_ATTR_CATEGORY_KLUDGE(c, "text_color", 0, "Color");
 
