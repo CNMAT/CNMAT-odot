@@ -760,6 +760,10 @@ void ocompose_drawElements(t_object *ob, int firsttime)
     t_ocompose *x = (t_ocompose *)ob;
     t_opd_textbox *t = x->textbox;
 
+    
+    if(!opd_textbox_shouldDraw(t))
+        return;
+    
     int have_new_data = 0;
     int draw_new_data_indicator = 0;
     critical_enter(x->lock);
@@ -787,8 +791,7 @@ void ocompose_drawElements(t_object *ob, int firsttime)
 
     if (glist_isvisible(glist) && canvas->gl_editor)
     {
-        if(!opd_textbox_drawElements(x->textbox, x1,  y1,  x2,  y2,  firsttime))
-           return;
+        
 
         if (firsttime)
         {
@@ -804,7 +807,7 @@ void ocompose_drawElements(t_object *ob, int firsttime)
         }
         else
         {
-            //post("%x %s REDRAW height %d y1 %d y2 %d \n", x, __func__, t->height, y1, y2);
+            post("%x %s REDRAW height %d y1 %d y2 %d \n", x, __func__, t->height, y1, y2);
 
             sys_vgui(".x%lx.c coords %s %d %d %d %d\n", canvas, x->border_tag, x1, y1, x2, y2);
             sys_vgui(".x%lx.c coords %sBorder %d %d %d %d %d %d %d %d %d %d %d %d \n",canvas, x->border_tag, cx1, cy1, cx2, cy1, cx2, cy2-10, cx2-10, cy2-10, cx2-10, cy2, cx1, cy2);
@@ -812,7 +815,8 @@ void ocompose_drawElements(t_object *ob, int firsttime)
             
             
         }
-
+        
+        opd_textbox_drawElements(x->textbox, x1,  y1,  x2,  y2,  firsttime);
         
         //sys_vgui(".x%lx.c itemconfigure %sBorder -outline %s\n", canvas, x->border_tag, (x->parse_error?  "red" : "#0066CC" ));
         //sys_vgui(".x%lx.c itemconfigure %s -outline %s\n", canvas, x->corner_tag, (x->parse_error? "red" : "blue" ));
@@ -863,6 +867,7 @@ static void ocompose_displace(t_gobj *z, t_glist *glist,int dx, int dy)
 
 static void ocompose_select(t_gobj *z, t_glist *glist, int state)
 {
+    post("%s %d", __func__, state);
     t_ocompose *x = (t_ocompose *)z;
     t_canvas *canvas = glist_getcanvas(glist);
 
@@ -879,7 +884,7 @@ static void ocompose_select(t_gobj *z, t_glist *glist, int state)
 
 static void ocompose_activate(t_gobj *z, t_glist *glist, int state)
 {
-    //post("%s %d", __func__, state);
+    post("%s %d", __func__, state);
     
     t_ocompose *x = (t_ocompose *)z;
     t_canvas *canvas = glist_getcanvas(glist);
@@ -899,7 +904,7 @@ static void ocompose_activate(t_gobj *z, t_glist *glist, int state)
 
 static void ocompose_delete(t_gobj *z, t_glist *glist)
 {
-    
+     post("%s", __func__);
     t_ocompose *x = (t_ocompose *)z;
     t_opd_textbox *t = x->textbox;
     t_canvas *canvas = glist_getcanvas(glist);
@@ -907,11 +912,13 @@ static void ocompose_delete(t_gobj *z, t_glist *glist)
     //post("%x %s %d", x, __func__, canvas->gl_editor);
     
     if(!t->firsttime && canvas->gl_editor)
-    {    
+    {
+//        opd_textbox_nofocus_callback(t);
+
         sys_vgui(".x%lx.c delete %s\n", canvas, x->border_tag);
         sys_vgui(".x%lx.c delete %sBorder\n", canvas, x->border_tag);
         sys_vgui(".x%lx.c delete %s\n", canvas, x->corner_tag);
-
+        
         opd_textbox_delete(t, glist);
         
         t_object *ob = pd_checkobject(&x->ob.te_pd);
@@ -963,14 +970,11 @@ static void ocompose_tick(t_ocompose *x)
 
 static void ocompose_save(t_gobj *z, t_binbuf *b)
 {
- 
     t_ocompose *x = (t_ocompose *)z;
     t_opd_textbox *t = x->textbox;
+    post("%x %s", x, __func__);
     
     opd_textbox_setHexFromText(t, t->text);
-    
-    if(!t->firsttime && glist_getcanvas(t->glist)->gl_editor)
-        opd_textbox_nofocus_callback(t);
     
     binbuf_addv(b, "ssiisiis", gensym("#X"),gensym("obj"),(t_int)x->ob.te_xpix, (t_int)x->ob.te_ypix, gensym("o.compose"), t->width, t->height, gensym("binhex"));
     
@@ -1005,6 +1009,7 @@ static void ocompose_save(t_gobj *z, t_binbuf *b)
 
 void ocompose_free(t_ocompose *x)
 {
+    post("%x %s", x, __func__);
     free(x->border_tag);
     free(x->corner_tag);
     
