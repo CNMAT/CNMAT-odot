@@ -118,6 +118,10 @@ void oroute_fullPacket(t_oroute *x, t_symbol *msg, int argc, t_atom *argv)
 {
 	OMAX_UTIL_GET_LEN_AND_PTR
 	osc_bundle_s_wrap_naked_message(len, ptr);
+	if(len == OSC_HEADER_SIZE){
+		omax_util_outletOSC(x->delegation_outlet, len, ptr);
+		return;
+	}
 	if(x->num_selectors > 0){
 		t_osc_rset *rset = NULL;
 		int strip_matched_portion_of_address = 1;
@@ -168,6 +172,8 @@ void oroute_dispatch_rset(t_oroute *x, t_osc_rset *rset, int num_selectors, char
 				    osc_bundle_s_getLen(unmatched),
 				    osc_bundle_s_getPtr(unmatched));
 #else
+		printf("%s: %d: %ld, %ld\n", __func__, __LINE__, osc_bundle_s_getLen(unmatched),
+				    osc_bundle_s_getPtr(unmatched));
 		omax_util_outletOSC(x->delegation_outlet,
 				    osc_bundle_s_getLen(unmatched),
 				    osc_bundle_s_getPtr(unmatched));
