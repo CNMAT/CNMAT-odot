@@ -5,10 +5,10 @@
 			"major" : 6,
 			"minor" : 1,
 			"revision" : 6,
-			"architecture" : "x86"
+			"architecture" : "x64"
 		}
 ,
-		"rect" : [ 25.0, 69.0, 640.0, 480.0 ],
+		"rect" : [ 516.0, 313.0, 640.0, 480.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -52,8 +52,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 42.0, 27.0, 299.0, 45.0 ],
-					"text" : "/factorial = \"lambda(v, (v > 1)? v * /factorial(v - 1) : 1)\",\n/results = map(/factorial, [3,9,5]), delete(/factorial)",
+					"patching_rect" : [ 42.0, 27.0, 336.0, 45.0 ],
+					"text" : "/factorial = \"lambda(v, (v > 1)? v * /factorial(v - 1) : 1)\",\n/results = map(readstring(/factorial), [3,9,5]), delete(/factorial)",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 

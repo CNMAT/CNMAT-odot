@@ -5,7 +5,7 @@
 			"major" : 6,
 			"minor" : 1,
 			"revision" : 6,
-			"architecture" : "x86"
+			"architecture" : "x64"
 		}
 ,
 		"rect" : [ 89.0, 44.0, 1314.0, 779.0 ],
@@ -153,7 +153,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 1043.0, 3844.5, 105.0, 20.0 ],
+					"patching_rect" : [ 1155.0, 3794.0, 105.0, 20.0 ],
 					"text" : "send #0.urllaunch"
 				}
 
@@ -643,7 +643,7 @@
 							"major" : 6,
 							"minor" : 1,
 							"revision" : 6,
-							"architecture" : "x86"
+							"architecture" : "x64"
 						}
 ,
 						"rect" : [ 63.0, 184.0, 640.0, 480.0 ],
@@ -1344,13 +1344,11 @@
 					"fontname" : "Courier New Bold",
 					"fontsize" : 14.0,
 					"id" : "obj-48",
-					"linecount" : 10,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 41.0, 4079.0, 987.0, 179.0 ],
-					"text" : "/pitch/numbers : [22, 69, 80],\n/concert/pitch : 440.,\n/MIDI/A440 : 69,\n/equal/temperament : \"lambda([pitchnumber,octaveratio, intervals ],  \n                              /concert/pitch * pow(octaveratio ,\n                                     float32(pitchnumber- /MIDI/A440 )  /  intervals))\",\n/twelvetone/equal/temperament : \"lambda([pitchnumber],  apply(/equal/temperament , pitchnumber, 2.0, 12.0 ))\",\n/Bohlen/Pierce/equal/temperament : \"lambda([pitchnumber],  apply( /equal/temperament ,  pitchnumber, 3.0, 13.0 ))\",\n/equal/tempered/frequencies/Bohlen/Pierce : [29.1352, 440., 830.609],\n/twelvetone/frequencies/ : [8.2885, 440., 1114.73]",
+					"patching_rect" : [ 41.0, 4079.0, 987.0, 36.0 ],
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -1380,8 +1378,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 41.0, 3834.0, 1004.0, 240.0 ],
-					"text" : "/concert/pitch = 440.0,  # concert pitch (the frequency of the A above middle C)\n/MIDI/A440 = 69,         # MIDI  note numbers  count semitones with 69 for A440\n/equal/temperament = \"lambda([pitchnumber,octaveratio, intervals ],  \n                              /concert/pitch * pow(octaveratio ,\n                                     float32(pitchnumber- /MIDI/A440 )  /  intervals))\",\n\n# 12 ratiometrically equal intervals of the octave\n/twelvetone/equal/temperament =  \"lambda([pitchnumber],  apply(/equal/temperament , pitchnumber, 2.0, 12.0 ))\" ,\n\n# 13 ratiometrically equal intervals of the tritave\n/Bohlen/Pierce/equal/temperament =  \"lambda([pitchnumber],  apply( /equal/temperament ,  pitchnumber, 3.0, 13.0 ))\" ,\n\n/equal/tempered/frequencies/Bohlen/Pierce =  /twelvetone/equal/temperament( /pitch/numbers),\n/twelvetone/frequencies/ =  apply(/Bohlen/Pierce/equal/temperament, /pitch/numbers)",
+					"patching_rect" : [ 41.0, 3834.0, 1106.0, 240.0 ],
+					"text" : "/concert/pitch = 440.0,  # concert pitch (the frequency of the A above middle C)\n/MIDI/A440 = 69,         # MIDI  note numbers  count semitones with 69 for A440\n/equal/temperament = \"lambda([pitchnumber,octaveratio, intervals ],  \n                              /concert/pitch * pow(octaveratio ,\n                                     float32(pitchnumber- /MIDI/A440 )  /  intervals))\",\n\n# 12 ratiometrically equal intervals of the octave\n/twelvetone/equal/temperament =  \"lambda([pitchnumber],  apply( readstring(/equal/temperament) , pitchnumber, 2.0, 12.0 ))\" ,\n\n# 13 ratiometrically equal intervals of the tritave\n/Bohlen/Pierce/equal/temperament =  \"lambda([pitchnumber],  apply( readstring(/equal/temperament) ,  pitchnumber, 3.0, 13.0 ))\" ,\n\n/equal/tempered/frequencies/Bohlen/Pierce =  /twelvetone/equal/temperament( /pitch/numbers),\n/twelvetone/frequencies/ =  apply( readstring(/Bohlen/Pierce/equal/temperament), /pitch/numbers )",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -1405,13 +1403,11 @@
 					"fontname" : "Courier New Bold",
 					"fontsize" : 14.0,
 					"id" : "obj-45",
-					"linecount" : 7,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 41.0, 3612.0, 351.0, 131.0 ],
-					"text" : "/pitch/numbers : [22, 69, 80],\n/octave/ratio : 3,\n/concert/pitch : 440.,\n/MIDI/A440 : 69,\n/intervals : 13,\n/equal/tempered/frequencies/Bohlen/Pierce : [8.2885, 440., 1114.73]",
+					"patching_rect" : [ 41.0, 3612.0, 351.0, 36.0 ],
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
