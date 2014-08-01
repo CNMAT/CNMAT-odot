@@ -21,6 +21,8 @@
 #X obj 333 396 print foooooo;
 #X msg 499 238 set 2 /bob;
 #X msg 579 238 set 2 /bar;
+#X msg 84 337 doc;
+#X obj 234 351 o.print foo;
 #X connect 0 0 14 0;
 #X connect 1 0 14 0;
 #X connect 2 0 4 0;
@@ -37,7 +39,9 @@
 #X connect 15 0 16 0;
 #X connect 16 0 17 0;
 #X connect 17 0 18 0;
+#X connect 17 0 22 0;
 #X connect 17 1 6 0;
 #X connect 17 2 3 0;
 #X connect 19 0 17 0;
 #X connect 20 0 17 0;
+#X connect 21 0 17 0;

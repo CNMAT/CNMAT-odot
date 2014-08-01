@@ -238,9 +238,7 @@ void opack_assist(t_opack *x, void *b, long io, long num, char *buf)
 
 void opack_doc(t_opack *x)
 {
-#ifdef OMAX_PD_VERSION
-    omax_doc_outletDoc(x->outlet);
-#else
+
 	_omax_doc_outletDoc(x->outlet,
                         OMAX_DOC_NAME,
                         OMAX_DOC_SHORT_DESC,
@@ -251,7 +249,7 @@ void opack_doc(t_opack *x)
                         OMAX_DOC_OUTLETS_DESC,	
                         OMAX_DOC_NUM_SEE_ALSO_REFS,	
                         OMAX_DOC_SEEALSO);
-#endif
+
 }
 
 void opack_free(t_opack *x)
@@ -281,7 +279,6 @@ void opack_free(t_opack *x)
 #endif
 
 	}
-#ifndef OMAX_PD_VERSION
 
 	int i;
 	for(i = 0; i < x->num_messages; i++){
@@ -290,7 +287,7 @@ void opack_free(t_opack *x)
 		}
 	}
 	osc_mem_free(x->inlet_assist_strings);
-#endif
+
 	critical_free(x->lock);
 }
 
@@ -356,6 +353,7 @@ void *opack_new(t_symbol *msg, short argc, t_atom *argv)
 		//x->messages = osc_message_array_u_alloc(count);
 		x->messages = (t_osc_msg_u **)osc_mem_alloc(count * sizeof(t_osc_msg_u *));
 		//osc_message_array_u_clear(x->messages);
+		x->inlet_assist_strings = (char **)osc_mem_alloc(count * sizeof(char *));
 
 		int pos = 0;
 		for(i = 0; i < count; i++){
@@ -367,6 +365,8 @@ void *opack_new(t_symbol *msg, short argc, t_atom *argv)
 			}
 			pos += numargs[i];
 			osc_bundle_u_addMsg(x->bndl, x->messages[i]);
+            x->inlet_assist_strings[i] = (char *)osc_mem_alloc(128);
+			sprintf(x->inlet_assist_strings[i], "Arguments for address %s (%d)", atom_getsym(addresses[i])->s_name, i + 1);
 		}
         
 		x->proxy = (void **)malloc(count * sizeof(t_omax_pd_proxy *));

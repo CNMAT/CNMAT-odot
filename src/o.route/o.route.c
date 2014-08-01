@@ -386,22 +386,19 @@ void oroute_doc(t_oroute *x)
 	if(x->num_selectors > 0){
 		outlet = x->outlets[x->num_selectors - 1];
 	}
-    
-#ifdef OMAX_PD_VERSION
-    omax_doc_outletDoc(outlet); //<< I think this also works in max, but left JM code just in case -- rama
-#else
+
 	_omax_doc_outletDoc(outlet,
 			    OMAX_DOC_NAME,		
 			    OMAX_DOC_SHORT_DESC,	
 			    OMAX_DOC_LONG_DESC,		
-			    x->num_selectors + 1,
+                1,
 			    //x->inlet_assist_strings,
 			    OMAX_DOC_INLETS_DESC,
 			    x->num_selectors + 1,
 			    x->outlet_assist_strings,
 			    OMAX_DOC_NUM_SEE_ALSO_REFS,	
 			    OMAX_DOC_SEEALSO);
-#endif
+
 }
 
 
@@ -422,7 +419,6 @@ void oroute_free(t_oroute *x)
 	if(x->schema){
 		osc_mem_free(x->schema);
 	}
-#ifndef OMAX_PD_VERSION
 	for(int i = 0; i < x->num_selectors + 1; i++){
 		/*
 		if(x->inlet_assist_strings[i]){
@@ -441,7 +437,6 @@ void oroute_free(t_oroute *x)
 	if(x->outlet_assist_strings){
 		osc_mem_free(x->outlet_assist_strings);
 	}
-#endif
    
 }
 
@@ -525,28 +520,39 @@ void *oroute_new(t_symbol *msg, short argc, t_atom *argv)
 		x->selectors = (char **)malloc(argc * sizeof(char *));
 		x->num_selectors = argc;
 		x->unique_selectors = (char **)malloc(x->num_selectors * sizeof(char *));
-        
+        x->outlet_assist_strings = (char **)osc_mem_alloc((argc + 1) * sizeof(char *));
+
 		x->nbytes_selector = 0;
         
-            int i;
-        
-            for(i = 0; i < argc; i++){
-                x->outlets[argc - i - 1] = outlet_new(&x->ob, NULL);
-
-                if(atom_gettype(argv + i) != A_SYM){
-                    object_error((t_object *)x, "argument %d is not an OSC address", i);
-                    return NULL;
-                }
-                
-                char *selector = atom_getsym(argv + i)->s_name;
-                int len = strlen(selector);
-                if(len > x->nbytes_selector){
-                    x->nbytes_selector = len;
-                }
-                x->selectors[x->num_selectors - i - 1] = selector;
-                
+        int i;
+    
+        for(i = 0; i < argc; i++){
+            x->outlets[argc - i - 1] = outlet_new(&x->ob, NULL);
+            
+            if(atom_gettype(argv + i) != A_SYM){
+                object_error((t_object *)x, "argument %d is not an OSC address", i);
+                return NULL;
             }
-   
+            
+            char *selector = atom_getsym(argv + i)->s_name;
+            int len = strlen(selector);
+            if(len > x->nbytes_selector){
+                x->nbytes_selector = len;
+            }
+            x->selectors[x->num_selectors - i - 1] = selector;
+            
+            long olen = snprintf(NULL, 0, "Messages that match %s", selector);
+
+            x->outlet_assist_strings[i] = osc_mem_alloc(olen + 1);
+            snprintf(x->outlet_assist_strings[i], olen + 1, "Messages that match %s", selector);
+            
+        }
+        
+		char *delegation_assist_str = "Unmatched messages (delegation)";
+		long delegation_assist_str_len = strlen(delegation_assist_str);
+		x->outlet_assist_strings[argc] = osc_mem_alloc(delegation_assist_str_len + 1);
+		snprintf(x->outlet_assist_strings[argc], delegation_assist_str_len + 1, "%s", delegation_assist_str);
+
         
         x->delegation_outlet = outlet_new(&x->ob, gensym("FullPacket"));
 
