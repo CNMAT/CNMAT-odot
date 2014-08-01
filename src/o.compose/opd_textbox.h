@@ -16,7 +16,6 @@ typedef struct _opd_textbox
     
     uint16_t    textediting;
     uint16_t    c_bind;
-    uint16_t    pd_bind;
     
     uint16_t    editmode;
     uint16_t    selected;
@@ -238,12 +237,12 @@ void opd_textbox_outsideclick_callback(t_opd_textbox *t)
 {
   //  post("%p %s", t, __func__);
     
+    t->c_bind = 0;
     t_canvas *canvas = glist_getcanvas(t->glist);
 
     sys_vgui("bind .x%lx.c <Button-1> $::%s::canvas%lxBUTTONBINDING\n", canvas, t->tcl_namespace, canvas);
     sys_vgui("bind .x%lx.c <MouseWheel> $::%s::canvas%lxSCROLLBINDING \n", canvas, t->tcl_namespace, canvas );
-    t->c_bind = 0;
-
+    
     sys_vgui("focus .x%lx.c\n", canvas);
     gobj_select(&t->parent->te_g, t->glist, 0); //<<    opd_textbox_storeTextAndExitEditor(x); called from select function
     
@@ -257,10 +256,11 @@ void opd_textbox_outsideclick_callback(t_opd_textbox *t)
 //called when clicking from one object to another without clicking on the empty canvas first
 void opd_textbox_nofocus_callback(t_opd_textbox *t)
 {
+    t->c_bind = 0;
     t_canvas *canvas = glist_getcanvas(t->glist);
+    
     sys_vgui("bind .x%lx.c <Button-1> $::%s::canvas%lxBUTTONBINDING\n", canvas, t->tcl_namespace, canvas);
     sys_vgui("bind .x%lx.c <MouseWheel> $::%s::canvas%lxSCROLLBINDING \n", canvas, t->tcl_namespace, canvas );
-    t->c_bind = 0;
     
     gobj_select(&t->parent->te_g, t->glist, 0);
 }
@@ -552,8 +552,6 @@ int opd_textbox_drawElements(t_opd_textbox *x, int x1, int y1, int x2, int y2, i
         
         //fist time: create canvas elements, then add text, then get text height, and re-draw
         //post("%s drawing firsttime", __func__);
-        
-        //save default bindings to Tcl variable
         sys_vgui("namespace eval ::%s [list set canvas%lxBUTTONBINDING [bind .x%lx.c <Button-1>]] \n", x->tcl_namespace, canvas, canvas);
         sys_vgui("namespace eval ::%s [list set canvas%lxKEYBINDING [bind .x%lx.c <Key>]] \n", x->tcl_namespace, canvas, canvas);
         sys_vgui("namespace eval ::%s [list set canvas%lxSCROLLBINDING [bind .x%lx.c <MouseWheel>]] \n", x->tcl_namespace, canvas, canvas);
@@ -638,16 +636,11 @@ static void opd_textbox_delete(t_opd_textbox *x, t_glist *glist)
 static void opd_textbox_vis(t_opd_textbox *x, t_glist *glist, int vis)
 {
     
-    post("%p %s vis %d firsttime %d visable %d", x, __func__, vis, x->firsttime, glist_isvisible(glist));
+//    post("%p %s vis %d firsttime %d visable %d", x, __func__, vis, x->firsttime, glist_isvisible(glist));
 //    post("%s %p xglist %x glist %x\n", __func__, x, x->glist, glist);
 
     if(vis)
     {
-        if(!x->pd_bind)
-        {
-            pd_bind(&x->ob.ob_pd, gensym(x->receive_name));
-            x->pd_bind = 1;
-        }
         
         if(!x->firsttime && glist_isgraph(glist))
         {
@@ -682,15 +675,8 @@ static void opd_textbox_vis(t_opd_textbox *x, t_glist *glist, int vis)
     {
         //if(!x->firsttime)
         {
-
             if(x->delete_fn)
                 x->delete_fn(x->parent, glist); //<< this delete necessary for GOP? keep an eye on this
-        }
-        
-        if(x->pd_bind)
-        {
-            pd_unbind(&x->ob.ob_pd, gensym(x->receive_name));
-            x->pd_bind = 0;
         }
     }
 }
@@ -733,7 +719,7 @@ static void opd_textbox_displace(t_opd_textbox *x, t_glist *glist, int dx, int d
 void opd_textbox_select(t_opd_textbox *x, t_glist *glist, int state)
 {
 
-    post("%p %s state %d selected %d textediting %d <<pre", x, __func__, state, x->selected, x->textediting);
+ //   post("%p %s state %d selected %d textediting %d <<pre", x, __func__, state, x->selected, x->textediting);
     
     x->selected = state;
 
@@ -765,6 +751,8 @@ void opd_textbox_free(t_opd_textbox *t)
     free(t->hex);
     free(t->tcl_namespace);
     free(t->iolets_tag);
+    
+    pd_unbind(&t->ob.ob_pd, gensym(t->receive_name));
     free(t->receive_name);
     
 }
@@ -775,10 +763,9 @@ t_opd_textbox *opd_textbox_new(t_class *c)
     t = (t_opd_textbox *)pd_new(c);
     if(t)
     {
-       post("%x %s", t, __func__);
+     //   post("%x %s", t, __func__);
         t->glist = NULL;
         t->c_bind = 0;
-        t->pd_bind = 0;
         t->softlock = 0;
         
         t->draw_fn = NULL;
@@ -834,6 +821,8 @@ t_opd_textbox *opd_textbox_new(t_class *c)
         strcpy(t->receive_name, buf);
         
         //post("%s %s", __func__, t->receive_name);
+        
+        pd_bind(&t->ob.ob_pd, gensym(t->receive_name));
         
         t->text = NULL;
         t->text = (char *)malloc(OMAX_PD_MAXSTRINGSIZE * sizeof(char));

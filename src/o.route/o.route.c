@@ -94,7 +94,7 @@ typedef struct _oroute{
 } t_oroute;
 
 #ifdef OMAX_PD_VERSION
-t_omax_pd_proxy_class *oroute_class;
+t_class *oroute_class;
 t_omax_pd_proxy_class *oroute_proxy_class;
 #else
 void *oroute_class;
@@ -326,7 +326,11 @@ void oroute_set(t_oroute *x, t_symbol *msg, int argc, t_atom *argv)
 		object_error((t_object *)x, "%s: expected 2 arguments (index and address), but got %d", __func__, argc);
 		return;
 	}
-	if(atom_gettype(argv) != A_LONG){
+#ifdef OMAX_PD_VERSION
+	if(atom_gettype(argv) != A_FLOAT){
+#else
+    if(atom_gettype(argv) != A_LONG){
+#endif
 		object_error((t_object *)x, "%s: first argument to message set should be the index (int)", __func__);
 		return;
 	}
@@ -407,24 +411,7 @@ void oroute_free(t_oroute *x)
 	if(x->outlets){
 		free(x->outlets);
 	}
-	/*
-	if(x->proxy){
-		for(int i = 0; i < x->num_selectors; i++){
-			if(x->proxy[i]){
-#ifdef OMAX_PD_VERSION
-                pd_free(x->proxy[i+1]);  //<< I think this is not required for the pd version since they are all new classes?
-#else
-                object_free(x->proxy[i]);
-#endif
-			}
-		}
-#ifdef OMAX_PD_VERSION
-        pd_free(x->proxy[0]);
-        free(x->proxy);
-#endif
-	}
-	*/
-    
+
 	if(x->selectors){
 		free(x->selectors);
 	}
@@ -530,7 +517,7 @@ void oroute_makeUniqueSelectors(int nselectors,
 void *oroute_new(t_symbol *msg, short argc, t_atom *argv)
 {
 	t_oroute *x;
-	if((x = (t_oroute *)object_alloc(oroute_class->class))){
+	if((x = (t_oroute *)object_alloc(oroute_class))){
 		critical_new(&(x->lock));
 		x->outlets = (void **)malloc(argc * sizeof(void *));
 
@@ -541,12 +528,9 @@ void *oroute_new(t_symbol *msg, short argc, t_atom *argv)
 		x->nbytes_selector = 0;
         
             int i;
-            //x->proxy = (void **)malloc((argc + 1) * sizeof(t_omax_pd_proxy *));
-            //x->proxy[0] = proxy_new((t_object *)x, 0, &(x->inlet), oroute_proxy_class);
         
             for(i = 0; i < argc; i++){
                 x->outlets[argc - i - 1] = outlet_new(&x->ob, NULL);
-                //x->proxy[i+1] = proxy_new((t_object *)x, i+1, &(x->inlet), oroute_proxy_class);
 
                 if(atom_gettype(argv + i) != A_SYM){
                     object_error((t_object *)x, "argument %d is not an OSC address", i);
@@ -591,19 +575,16 @@ int setup_o0x2eroute(void)
 {
 	t_symbol *name = gensym("o.route");
 #endif
-    omax_pd_class_new(oroute_class, name, (t_newmethod)oroute_new, (t_method)oroute_free, sizeof(t_oroute),  CLASS_NOINLET, A_GIMME, 0);
+    t_class *c = class_new(name, (t_newmethod)oroute_new, (t_method)oroute_free, sizeof(t_oroute), 0L, A_GIMME, 0);
     
-    t_omax_pd_proxy_class *c = NULL;
-    omax_pd_class_new(c, NULL, NULL, NULL, sizeof(t_omax_pd_proxy), CLASS_PD | CLASS_NOINLET, 0);
-    
-    omax_pd_class_addmethod(c, (t_method)odot_version, gensym("version"));
-	omax_pd_class_addmethod(c, (t_method)oroute_set, gensym("set"));
-	omax_pd_class_addmethod(c, (t_method)oroute_fullPacket, gensym("FullPacket"));
-	omax_pd_class_addanything(c, (t_method)oroute_anything);
+    class_addmethod(c, (t_method)odot_version, gensym("version"), 0);
+	class_addmethod(c, (t_method)oroute_set, gensym("set"), A_GIMME, 0);
+	class_addmethod(c, (t_method)oroute_fullPacket, gensym("FullPacket"), A_GIMME, 0);
+	class_addmethod(c, (t_method)oroute_anything, gensym("anything"), A_GIMME, 0);
 
-    omax_pd_class_addmethod(c, (t_method)oroute_doc, gensym("doc"));
+    class_addmethod(c, (t_method)oroute_doc, gensym("doc"), 0);
     
-    oroute_proxy_class = c;
+    oroute_class = c;
     
 	ps_FullPacket = gensym("FullPacket");
 	ps_oscschemalist = gensym("/osc/schema/list");

@@ -574,19 +574,19 @@ void ocompose_int(t_ocompose *x, long n) {
     if(proxy_getinlet((t_object *)x) == 1) {
         return;
     }
-    object_error((t_object *)x, "o.compose doesn't accept Max atoms");
+    object_error((t_object *)x, "o.compose doesn't accept integers");
 }
 
 void ocompose_float(t_ocompose *x, double f) {
     if(proxy_getinlet((t_object *)x) == 1) {
         return;
     }
-    object_error((t_object *)x, "o.compose doesn't accept Max atoms");
+    object_error((t_object *)x, "o.compose doesn't accept floats");
 }
 
 void ocompose_list(t_ocompose *x, t_symbol *list_sym, short argc, t_atom *argv)
 {
-    object_error((t_object *)x, "o.compose doesn't accept Max lists");
+    object_error((t_object *)x, "o.compose doesn't accept lists");
     /*
     if(proxy_getinlet((t_object *)x) == 1){
         object_error((t_object *)x, "o.compose doesn't accept non-OSC lists in its right inlet");
@@ -1152,10 +1152,10 @@ void setup_o0x2ecompose(void) {
     omax_pd_class_addmethod(c, (t_method)ocompose_doc, gensym("doc"));
     omax_pd_class_addmethod(c, (t_method)ocompose_fullPacket, gensym("FullPacket"));
     
-// now that we're not supporting $ substitution I think we can take these out:
-//    omax_pd_class_addfloat(c, (t_method)ocompose_float);
-//    omax_pd_class_addmethod(c, (t_method)ocompose_list, gensym("list"));
-//    omax_pd_class_addanything(c, (t_method)ocompose_anything);
+// error messages:
+    omax_pd_class_addfloat(c, (t_method)ocompose_float);
+    omax_pd_class_addmethod(c, (t_method)ocompose_list, gensym("list"));
+    omax_pd_class_addanything(c, (t_method)ocompose_anything);
     
     ps_newline = gensym("\n");
     ps_FullPacket = gensym("FullPacket");
