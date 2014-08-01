@@ -354,6 +354,7 @@ void omessage_output_bundle(t_omessage *x)
 		memcpy(buf, ptr, len);
 		critical_exit(x->lock);
 		omax_util_outletOSC(x->outlet, len, buf);
+        OSC_MEM_INVALIDATE(buf);
 		return;
 	}
 	critical_exit(x->lock);
@@ -362,6 +363,7 @@ void omessage_output_bundle(t_omessage *x)
 	memset(buf, '\0', OSC_HEADER_SIZE);
 	osc_bundle_s_setBundleID(buf);
 	omax_util_outletOSC(x->outlet, OSC_HEADER_SIZE, buf);
+    OSC_MEM_INVALIDATE(buf);
 }
 
 void omessage_bundle2text(t_omessage *x)
@@ -645,6 +647,7 @@ void omessage_list(t_omessage *x, t_symbol *list_sym, short argc, t_atom *argv)
 		memcpy(copy, ptr, len);
 		critical_exit(x->lock);
 		omax_util_outletOSC(x->outlet, len, copy);
+        OSC_MEM_INVALIDATE(copy);
 	} else {
 		if(!x->bndl_u){
 			if(x->bndl_s){
@@ -659,6 +662,7 @@ void omessage_list(t_omessage *x, t_symbol *list_sym, short argc, t_atom *argv)
                 memset(buf, '\0', OSC_HEADER_SIZE);
                 osc_bundle_s_setBundleID(buf);
                 omax_util_outletOSC(x->outlet, OSC_HEADER_SIZE, buf);
+                OSC_MEM_INVALIDATE(buf);
                 jbox_redraw((t_jbox *)x);
 				return;
 			}

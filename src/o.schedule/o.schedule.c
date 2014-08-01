@@ -336,6 +336,7 @@ void osched_tick(t_osched *x)
 			}
 			*/
 			omax_util_outletOSC(outlet, len, buf);
+            OSC_MEM_INVALIDATE(buf);
 			critical_enter(x->lock);
 
 			while(x->soft_lock == 1){

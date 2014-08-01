@@ -198,6 +198,7 @@ void oroute_dispatch_rset(t_oroute *x, t_osc_rset *rset, int num_selectors, char
 							  osc_bundle_s_getPtr(complete_matches),
 							  concat);
 				omax_util_outletOSC(x->outlets[i], len, concat);
+                OSC_MEM_INVALIDATE(concat);
 			}
 #else
 			if(partial_matches){

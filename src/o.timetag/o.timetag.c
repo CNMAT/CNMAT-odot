@@ -110,6 +110,7 @@ void otimetag_doFullPacket(t_otimetag *x,
 		t_osc_timetag t = osc_timetag_now();
 		osc_bundle_s_setTimetag(len, copy, t);
 		omax_util_outletOSC(x->outlet, len, copy);
+        OSC_MEM_INVALIDATE(copy);
 	}
 }
 

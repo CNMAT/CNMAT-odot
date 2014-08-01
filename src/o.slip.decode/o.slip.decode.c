@@ -129,6 +129,7 @@ int oslip_decode(t_oslip *x, unsigned char c)
 						memcpy(buf, x->slipibuf, t);
 	critical_exit(x->lock);
 						omax_util_outletOSC(x->outlet, t, buf);
+                        OSC_MEM_INVALIDATE(buf);
 						//oslip_sendData(x, t, x->slipibuf);
 						return 0;
 					}else{
