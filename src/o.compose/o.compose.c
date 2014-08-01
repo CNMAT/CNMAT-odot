@@ -24,7 +24,7 @@
   NAME: o.compose
   DESCRIPTION: Message box for OSC bundles
   AUTHORS: John MacCallum
-  COPYRIGHT_YEARS: 2009-11
+  COPYRIGHT_YEARS: 2009-ll
   SVN_REVISION: $LastChangedRevision: 587 $
   VERSION 0.0: First try
   VERSION 1.0: using updated lib
@@ -152,7 +152,7 @@ typedef struct _ocompose{
     int bndl_has_been_checked_for_subs;
     long textlen;
     char *text;
-    t_jrgba frame_color, background_color, text_color, flash_color;
+    t_jrgba frame_color, background_color, text_color, flash_color, error_color, default_color;
     void *qelem;
     int mouse_down;
     int have_new_data;
@@ -518,7 +518,20 @@ void ocompose_gettext(t_ocompose *x)
     t_osc_err e = osc_parser_parseString(size, buf, &bndl_u);
     if(e){
         object_error((t_object *)x, "error parsing bundle\n");
+#ifndef OMAX_PD_VERSION
+        x->frame_color.red = x->error_color.red;
+        x->frame_color.green = x->error_color.green;
+        x->frame_color.blue = x->error_color.blue;
+        x->frame_color.alpha = x->error_color.alpha;
+#endif
         return;
+    } else {
+#ifndef OMAX_PD_VERSION
+        x->frame_color.red = x->default_color.red;
+        x->frame_color.green = x->default_color.green;
+        x->frame_color.blue = x->default_color.blue;
+        x->frame_color.alpha = x->default_color.alpha;
+#endif
     }
     long bndl_s_len = 0;
     char *bndl_s_ptr = NULL;
@@ -1240,12 +1253,19 @@ void *ocompose_new(t_symbol *msg, short argc, t_atom *argv){
         x->have_new_data = 1;
         x->draw_new_data_indicator = 0;
         attr_dictionary_process(x, d);
-        
+        x->frame_color.red = 0.216;
+        x->frame_color.green = 0.435;
+        x->frame_color.blue = 0.7137;
+        x->frame_color.alpha = 1.0;
         t_object *textfield = jbox_get_textfield((t_object *)x);
         if(textfield){
             object_attr_setchar(textfield, gensym("editwhenunlocked"), 1);
             textfield_set_editonclick(textfield, 0);
             textfield_set_textmargins(textfield, 5, 5, 15, 5);
+            x->text_color.red = 0.0;
+            x->text_color.green = 0.0;
+            x->text_color.blue = 0.0;
+            x->text_color.alpha = 1.0;
             textfield_set_textcolor(textfield, &(x->text_color));
         }
         
@@ -1311,19 +1331,30 @@ int main(void){
     CLASS_ATTR_STYLE_LABEL(c, "background_color", 0, "rgba", "Background Color");
     CLASS_ATTR_CATEGORY_KLUDGE(c, "background_color", 0, "Color");
     
-    CLASS_ATTR_RGBA(c, "frame_color", 0, t_ocompose, frame_color);
-    CLASS_ATTR_DEFAULT_SAVE_PAINT(c, "frame_color", 0, ".216 .435 .7137 1.");
-    CLASS_ATTR_STYLE_LABEL(c, "frame_color", 0, "rgba", "Frame Color");
-    CLASS_ATTR_CATEGORY_KLUDGE(c, "frame_color", 0, "Color");
+    //CLASS_ATTR_RGBA(c, "frame_color", 0, t_ocompose, frame_color);
+    //CLASS_ATTR_DEFAULT_SAVE_PAINT(c, "frame_color", 0, ".216 .435 .7137 1.");
+    //CLASS_ATTR_STYLE_LABEL(c, "frame_color", 0, "rgba", "Frame Color");
+    //CLASS_ATTR_CATEGORY_KLUDGE(c, "frame_color", 0, "Color");
     
     CLASS_ATTR_RGBA(c, "flash_color", 0, t_ocompose, flash_color);
     CLASS_ATTR_DEFAULT_SAVE_PAINT(c, "flash_color", 0, ".216 .435 .7137 1."); // by default, it's the same as frame colour, but user-settable nonetheless
     CLASS_ATTR_STYLE_LABEL(c, "flash_color", 0, "rgba", "Flash Color");
     CLASS_ATTR_CATEGORY_KLUDGE(c, "flash_color", 0, "Color");
+    
+    CLASS_ATTR_RGBA(c, "error_color", 0, t_ocompose, error_color);
+    CLASS_ATTR_DEFAULT_SAVE_PAINT(c, "error_color", 0, ".7647 .23137 .2392 1.");
+    CLASS_ATTR_STYLE_LABEL(c, "error_color", 0, "rgba", "Error Color");
+    CLASS_ATTR_CATEGORY_KLUDGE(c, "error_color", 0, "Color");
+    
+    CLASS_ATTR_RGBA(c, "default_color", 0, t_ocompose, default_color);
+    CLASS_ATTR_DEFAULT_SAVE_PAINT(c, "default_color", 0, ".216 .435 .7137 1.");
+    CLASS_ATTR_STYLE_LABEL(c, "default_color", 0, "rgba", "Default Color");
+    CLASS_ATTR_CATEGORY_KLUDGE(c, "default_color", 0, "Color");
 
-    CLASS_ATTR_RGBA(c, "text_color", 0, t_ocompose, text_color);
-    CLASS_ATTR_DEFAULT_SAVE_PAINT(c, "text_color", 0, "0. 0. 0. 1.");
     CLASS_ATTR_DEFAULT(c, "fontname", 0, "\"Courier New\"");
+
+    //CLASS_ATTR_RGBA(c, "text_color", 0, t_ocompose, text_color);
+    //CLASS_ATTR_DEFAULT_SAVE_PAINT(c, "text_color", 0, "0. 0. 0. 1.");
     //CLASS_ATTR_STYLE_LABEL(c, "text_color", 0, "rgba", "Text Color");
     //CLASS_ATTR_CATEGORY_KLUDGE(c, "text_color", 0, "Color");
     

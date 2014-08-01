@@ -96,7 +96,7 @@ void *oppnd_class;
 
 void oppnd_doFullPacket(t_oppnd *x, long len, char *ptr, t_symbol *sym_to_prepend, int sym_to_prepend_len);
 
-t_symbol *ps_FullPacket;
+t_symbol *ps_FullPacket, *_ps_deprecated_set;
 
 void oppnd_fullPacket(t_oppnd *x, t_symbol *msg, int argc, t_atom *argv)
 {
@@ -144,6 +144,10 @@ void oppnd_doFullPacket(t_oppnd *x, long len, char *ptr, t_symbol *sym_to_prepen
 
 void oppnd_set(t_oppnd *x, t_symbol *msg, int argc, t_atom *argv)
 {
+	if(!_ps_deprecated_set->s_thing){
+		object_error((t_object *)x, "The set message to %s has been deprecated and will be removed in the future", OMAX_DOC_NAME);
+		_ps_deprecated_set->s_thing = (void *)1;
+	}
 	if(argc != 1){
 		object_error((t_object *)x, "expected 1 argument but got %d", argc);
 		return;
@@ -372,6 +376,8 @@ int main(void)
 	oppnd_class = c;
 
 	ps_FullPacket = gensym("FullPacket");
+	_ps_deprecated_set = gensym(OMAX_DOC_NAME"_deprecated_set");
+
 	common_symbols_init();
 	ODOT_PRINT_VERSION;
 	return 0;

@@ -40,6 +40,7 @@ VERSION 0.1: Addresses to match can now have patterns
 
 #endif
 
+#define OMAX_DOC_INLETS_DESC (char *[]){"OSC packet"}
 
 
 
@@ -86,9 +87,9 @@ typedef struct _oroute{
 	int max_message; // set this to note that the event originated as a max message and not a FullPacket
 	char *schema;
 	long schemalen;
-	void **proxy;
-	long inlet;
-	char **inlet_assist_strings;
+//void **proxy;
+//long inlet;
+//char **inlet_assist_strings;
 	char **outlet_assist_strings;
 } t_oroute;
 
@@ -111,13 +112,17 @@ void oroute_makeUniqueSelectors(int nselectors,
 				char ***unique_selectors);
 void *oroute_new(t_symbol *msg, short argc, t_atom *argv);
 
-t_symbol *ps_oscschemalist, *ps_FullPacket;
+t_symbol *ps_oscschemalist, *ps_FullPacket, *_ps_deprecated_set;
 
 //void oroute_fullPacket(t_oroute *x, long len, long ptr)
 void oroute_fullPacket(t_oroute *x, t_symbol *msg, int argc, t_atom *argv)
 {
 	OMAX_UTIL_GET_LEN_AND_PTR
 	osc_bundle_s_wrap_naked_message(len, ptr);
+	if(len == OSC_HEADER_SIZE){
+		omax_util_outletOSC(x->delegation_outlet, len, ptr);
+		return;
+	}
 	if(x->num_selectors > 0){
 		t_osc_rset *rset = NULL;
 		int strip_matched_portion_of_address = 1;
@@ -168,6 +173,8 @@ void oroute_dispatch_rset(t_oroute *x, t_osc_rset *rset, int num_selectors, char
 				    osc_bundle_s_getLen(unmatched),
 				    osc_bundle_s_getPtr(unmatched));
 #else
+		printf("%s: %d: %ld, %ld\n", __func__, __LINE__, osc_bundle_s_getLen(unmatched),
+				    osc_bundle_s_getPtr(unmatched));
 		omax_util_outletOSC(x->delegation_outlet,
 				    osc_bundle_s_getLen(unmatched),
 				    osc_bundle_s_getPtr(unmatched));
@@ -245,11 +252,13 @@ void oroute_anything(t_oroute *x, t_symbol *msg, short argc, t_atom *argv)
 		outlet_anything(x->delegation_outlet, msg, argc, argv);
 		return;
 	}
+	/*
 	long inlet = proxy_getinlet((t_object *)x);
 	if(inlet > 0){
 		oroute_doSet(x, inlet, msg);
 		return;
 	}
+	*/
 	if(!msg){
 		object_error((t_object *)x, "doesn't look like an OSC message");
 		return;
@@ -309,6 +318,10 @@ void oroute_anything(t_oroute *x, t_symbol *msg, short argc, t_atom *argv)
 //void oroute_set(t_oroute *x, long index, t_symbol *sym)
 void oroute_set(t_oroute *x, t_symbol *msg, int argc, t_atom *argv)
 {
+	if(!_ps_deprecated_set->s_thing){
+		object_error((t_object *)x, "The set message to %s has been deprecated and will be removed in the future", OMAX_DOC_NAME);
+		_ps_deprecated_set->s_thing = (void *)1;
+	}
 	if(argc != 2){
 		object_error((t_object *)x, "%s: expected 2 arguments (index and address), but got %d", __func__, argc);
 		return;
@@ -355,7 +368,8 @@ void oroute_assist(t_oroute *x, void *b, long io, long num, char *buf)
                      num,
                      buf,
                      x->num_selectors + 1,
-                     x->inlet_assist_strings,
+			 //x->inlet_assist_strings,
+			 OMAX_DOC_INLETS_DESC,
                      x->num_selectors + 1,
                      x->outlet_assist_strings);
 }
@@ -376,7 +390,8 @@ void oroute_doc(t_oroute *x)
 			    OMAX_DOC_SHORT_DESC,	
 			    OMAX_DOC_LONG_DESC,		
 			    x->num_selectors + 1,
-			    x->inlet_assist_strings,
+			    //x->inlet_assist_strings,
+			    OMAX_DOC_INLETS_DESC,
 			    x->num_selectors + 1,
 			    x->outlet_assist_strings,
 			    OMAX_DOC_NUM_SEE_ALSO_REFS,	
@@ -392,6 +407,7 @@ void oroute_free(t_oroute *x)
 	if(x->outlets){
 		free(x->outlets);
 	}
+	/*
 	if(x->proxy){
 		for(int i = 0; i < x->num_selectors; i++){
 			if(x->proxy[i]){
@@ -407,6 +423,7 @@ void oroute_free(t_oroute *x)
         free(x->proxy);
 #endif
 	}
+	*/
     
 	if(x->selectors){
 		free(x->selectors);
@@ -419,16 +436,20 @@ void oroute_free(t_oroute *x)
 	}
 #ifndef OMAX_PD_VERSION
 	for(int i = 0; i < x->num_selectors + 1; i++){
+		/*
 		if(x->inlet_assist_strings[i]){
 			osc_mem_free(x->inlet_assist_strings[i]);
 		}
+		*/
 		if(x->outlet_assist_strings[i]){
 			osc_mem_free(x->outlet_assist_strings[i]);
 		}
 	}
+	/*
 	if(x->inlet_assist_strings){
 		osc_mem_free(x->inlet_assist_strings);
 	}
+	*/
 	if(x->outlet_assist_strings){
 		osc_mem_free(x->outlet_assist_strings);
 	}
@@ -520,12 +541,12 @@ void *oroute_new(t_symbol *msg, short argc, t_atom *argv)
 		x->nbytes_selector = 0;
         
             int i;
-            x->proxy = (void **)malloc((argc + 1) * sizeof(t_omax_pd_proxy *));
-            x->proxy[0] = proxy_new((t_object *)x, 0, &(x->inlet), oroute_proxy_class);
+            //x->proxy = (void **)malloc((argc + 1) * sizeof(t_omax_pd_proxy *));
+            //x->proxy[0] = proxy_new((t_object *)x, 0, &(x->inlet), oroute_proxy_class);
         
             for(i = 0; i < argc; i++){
                 x->outlets[argc - i - 1] = outlet_new(&x->ob, NULL);
-                x->proxy[i+1] = proxy_new((t_object *)x, i+1, &(x->inlet), oroute_proxy_class);
+                //x->proxy[i+1] = proxy_new((t_object *)x, i+1, &(x->inlet), oroute_proxy_class);
 
                 if(atom_gettype(argv + i) != A_SYM){
                     object_error((t_object *)x, "argument %d is not an OSC address", i);
@@ -573,7 +594,7 @@ int setup_o0x2eroute(void)
     omax_pd_class_new(oroute_class, name, (t_newmethod)oroute_new, (t_method)oroute_free, sizeof(t_oroute),  CLASS_NOINLET, A_GIMME, 0);
     
     t_omax_pd_proxy_class *c = NULL;
-	omax_pd_class_new(c, NULL, NULL, NULL, sizeof(t_omax_pd_proxy), CLASS_PD | CLASS_NOINLET, 0);
+    omax_pd_class_new(c, NULL, NULL, NULL, sizeof(t_omax_pd_proxy), CLASS_PD | CLASS_NOINLET, 0);
     
     omax_pd_class_addmethod(c, (t_method)odot_version, gensym("version"));
 	omax_pd_class_addmethod(c, (t_method)oroute_set, gensym("set"));
@@ -582,10 +603,11 @@ int setup_o0x2eroute(void)
 
     omax_pd_class_addmethod(c, (t_method)oroute_doc, gensym("doc"));
     
-	oroute_proxy_class = c;
+    oroute_proxy_class = c;
     
 	ps_FullPacket = gensym("FullPacket");
 	ps_oscschemalist = gensym("/osc/schema/list");
+	_ps_deprecated_set = gensym(OMAX_DOC_NAME"_deprecated_set");
     
 	ODOT_PRINT_VERSION;
 	return 0;
@@ -599,23 +621,23 @@ void *oroute_new(t_symbol *msg, short argc, t_atom *argv)
 		critical_new(&(x->lock));
 		x->delegation_outlet = outlet_new(x, "FullPacket");
 		x->outlets = (void **)malloc(argc * sizeof(void *));
-		x->proxy = (void **)malloc(argc * sizeof(void *));
+		//x->proxy = (void **)malloc(argc * sizeof(void *));
 		x->selectors = (char **)malloc(argc * sizeof(char *));
 		x->num_selectors = argc;
 		x->unique_selectors = (char **)malloc(x->num_selectors * sizeof(char *));
 
-		x->inlet_assist_strings = (char **)osc_mem_alloc((argc + 1) * sizeof(char *));
+		//x->inlet_assist_strings = (char **)osc_mem_alloc((argc + 1) * sizeof(char *));
 		x->outlet_assist_strings = (char **)osc_mem_alloc((argc + 1) * sizeof(char *));
 
-		char *left_inlet_assist_str = "OSC bundle or Max message";
-		long left_inlet_assist_str_len = strlen(left_inlet_assist_str);
-		x->inlet_assist_strings[0] = osc_mem_alloc(left_inlet_assist_str_len + 1);
-		snprintf(x->inlet_assist_strings[0], left_inlet_assist_str_len + 1, "%s", left_inlet_assist_str);
+		//char *left_inlet_assist_str = "OSC bundle or Max message";
+		//long left_inlet_assist_str_len = strlen(left_inlet_assist_str);
+		//x->inlet_assist_strings[0] = osc_mem_alloc(left_inlet_assist_str_len + 1);
+		//snprintf(x->inlet_assist_strings[0], left_inlet_assist_str_len + 1, "%s", left_inlet_assist_str);
 		x->nbytes_selector = 0;
 		int i;
 		for(i = 0; i < argc; i++){
 			x->outlets[i] = outlet_new(x, NULL);
-			x->proxy[i] = proxy_new((t_object *)x, argc - i, &(x->inlet));
+			//x->proxy[i] = proxy_new((t_object *)x, argc - i, &(x->inlet));
 			if(atom_gettype(argv + i) != A_SYM){
 				object_error((t_object *)x, "argument %d is not an OSC address", i);
 				return NULL;
@@ -630,9 +652,9 @@ void *oroute_new(t_symbol *msg, short argc, t_atom *argv)
 
 			long ilen = snprintf(NULL, 0, "Change the selector %s", selector);
 			long olen = snprintf(NULL, 0, "Messages that match %s", selector);
-			x->inlet_assist_strings[i + 1] = osc_mem_alloc(ilen + 1);
+			//x->inlet_assist_strings[i + 1] = osc_mem_alloc(ilen + 1);
 			x->outlet_assist_strings[i] = osc_mem_alloc(olen + 1);
-			snprintf(x->inlet_assist_strings[i + 1], ilen + 1, "Change the selector %s", selector);
+			//snprintf(x->inlet_assist_strings[i + 1], ilen + 1, "Change the selector %s", selector);
 			snprintf(x->outlet_assist_strings[i], olen + 1, "Messages that match %s", selector);
 		}
 		char *delegation_assist_str = "Unmatched messages (delegation)";
@@ -686,6 +708,7 @@ int main(void)
 
 	ps_FullPacket = gensym("FullPacket");
 	ps_oscschemalist = gensym("/osc/schema/list");
+	_ps_deprecated_set = gensym(OMAX_DOC_NAME"_deprecated_set");
 
 	common_symbols_init();
 	ODOT_PRINT_VERSION;
