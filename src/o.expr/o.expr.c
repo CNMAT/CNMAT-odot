@@ -401,9 +401,7 @@ void oexpr_doc_func(t_oexpr *x, t_symbol *msg, int argc, t_atom *argv)
 void oexpr_doc(t_oexpr *x)
 {
 #ifdef OCOND
-#ifdef OMAX_PD_VERSION
-    omax_doc_outletDoc(x->outlets[0]);
-#else
+
 	_omax_doc_outletDoc(x->outlets[0],
 			    OMAX_DOC_NAME,		
 			    OMAX_DOC_SHORT_DESC,	
@@ -414,7 +412,6 @@ void oexpr_doc(t_oexpr *x)
 			    x->outlets_desc,
 			    OMAX_DOC_NUM_SEE_ALSO_REFS,	
 			    OMAX_DOC_SEEALSO);
-#endif
 #else
 #ifdef OIF
 	omax_doc_outletDoc(x->outlets[0]);
@@ -432,7 +429,6 @@ void oexpr_assist(t_oexpr *x, void *b, long io, long num, char *buf){
 	omax_doc_assist(io, num, buf);
 #endif
 }
-
 #endif
 
 void oexpr_free(t_oexpr *x){
@@ -444,7 +440,7 @@ void oexpr_free(t_oexpr *x){
 		free(x->outlets);
 	}
 #endif
-#if defined (OCOND) && !defined (OMAX_PD_VERSION)
+#if defined (OCOND)
 	int i;
 	for(i = 0; i < x->num_exprs; i++){
 		if(x->outlets_desc[i]){
@@ -569,7 +565,6 @@ void *oexpr_new(t_symbol *msg, short argc, t_atom *argv){
 		for(i = 0; i <= n; i++){ 
 			x->outlets[i] = outlet_new(&x->ob, gensym("FullPacket"));;
 		}
-        /*
 		x->outlets_desc = (char **)osc_mem_alloc((x->num_exprs + 1) * sizeof(char *));
 		for(i = 0; i < x->num_exprs; i++){
 			x->outlets_desc[i] = (char *)osc_mem_alloc(128);
@@ -577,7 +572,6 @@ void *oexpr_new(t_symbol *msg, short argc, t_atom *argv){
 		}
 		x->outlets_desc[x->num_exprs] = (char *)osc_mem_alloc(128);
 		sprintf(x->outlets_desc[x->num_exprs], "Input OSC packet if all expressions return false or zero");
-         */
 #else
 		x->outlet = outlet_new(&x->ob, gensym("FullPacket"));
 #endif
