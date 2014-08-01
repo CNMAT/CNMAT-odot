@@ -112,7 +112,7 @@ void oroute_makeUniqueSelectors(int nselectors,
 				char ***unique_selectors);
 void *oroute_new(t_symbol *msg, short argc, t_atom *argv);
 
-t_symbol *ps_oscschemalist, *ps_FullPacket;
+t_symbol *ps_oscschemalist, *ps_FullPacket, *_ps_deprecated_set;
 
 //void oroute_fullPacket(t_oroute *x, long len, long ptr)
 void oroute_fullPacket(t_oroute *x, t_symbol *msg, int argc, t_atom *argv)
@@ -318,6 +318,10 @@ void oroute_anything(t_oroute *x, t_symbol *msg, short argc, t_atom *argv)
 //void oroute_set(t_oroute *x, long index, t_symbol *sym)
 void oroute_set(t_oroute *x, t_symbol *msg, int argc, t_atom *argv)
 {
+	if(!_ps_deprecated_set->s_thing){
+		object_error((t_object *)x, "The set message to %s has been deprecated and will be removed in the future", OMAX_DOC_NAME);
+		_ps_deprecated_set->s_thing = (void *)1;
+	}
 	if(argc != 2){
 		object_error((t_object *)x, "%s: expected 2 arguments (index and address), but got %d", __func__, argc);
 		return;
@@ -603,6 +607,7 @@ int setup_o0x2eroute(void)
     
 	ps_FullPacket = gensym("FullPacket");
 	ps_oscschemalist = gensym("/osc/schema/list");
+	_ps_deprecated_set = gensym(OMAX_DOC_NAME"_deprecated_set");
     
 	ODOT_PRINT_VERSION;
 	return 0;
@@ -703,6 +708,7 @@ int main(void)
 
 	ps_FullPacket = gensym("FullPacket");
 	ps_oscschemalist = gensym("/osc/schema/list");
+	_ps_deprecated_set = gensym(OMAX_DOC_NAME"_deprecated_set");
 
 	common_symbols_init();
 	ODOT_PRINT_VERSION;

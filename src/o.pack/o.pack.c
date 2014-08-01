@@ -87,6 +87,8 @@ t_omax_pd_proxy_class *opack_proxy_class;
 void *opack_class;
 #endif
 
+t_symbol *_ps_deprecated_set;
+
 void opack_outputBundle(t_opack *x);
 int opack_checkPosAndResize(char *buf, int len, char *pos);
 void opack_anything(t_opack *x, t_symbol *msg, short argc, t_atom *argv);
@@ -192,6 +194,10 @@ void opack_symbol(t_opack *x, t_symbol *msg)
 
 void opack_set(t_opack *x, t_symbol *msg, int argc, t_atom *argv)
 {
+	if(!_ps_deprecated_set->s_thing){
+		object_error((t_object *)x, "The set message to %s has been deprecated and will be removed in the future", OMAX_DOC_NAME);
+		_ps_deprecated_set->s_thing = (void *)1;
+	}
 	if(argc < 1){
 		object_error((t_object *)x, "expected an argument to message set");
 		return;
@@ -401,6 +407,8 @@ int setup_o0x2epack(void)
 	omax_pd_class_addmethod(c, (t_method)opack_doc, gensym("doc"));
 
 	opack_proxy_class = c;
+
+	_ps_deprecated_set = gensym(OMAX_DOC_NAME"_deprecated_set");
     
 	ODOT_PRINT_VERSION;
 	return 0;
@@ -517,12 +525,7 @@ int main(void)
 	class_register(CLASS_BOX, c);
 	opack_class = c;
 
-
-#ifdef PAK
-	class_alias(c, gensym("o.bild"));
-#else
-	class_alias(c, gensym("o.build"));
-#endif
+	_ps_deprecated_set = gensym(OMAX_DOC_NAME"_deprecated_set");
 
 	common_symbols_init();
 	ODOT_PRINT_VERSION;
