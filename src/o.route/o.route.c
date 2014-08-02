@@ -173,8 +173,8 @@ void oroute_dispatch_rset(t_oroute *x, t_osc_rset *rset, int num_selectors, char
 				    osc_bundle_s_getLen(unmatched),
 				    osc_bundle_s_getPtr(unmatched));
 #else
-		printf("%s: %d: %ld, %ld\n", __func__, __LINE__, osc_bundle_s_getLen(unmatched),
-				    osc_bundle_s_getPtr(unmatched));
+		//printf("%s: %d: %ld, %ld\n", __func__, __LINE__, osc_bundle_s_getLen(unmatched),
+		//		    osc_bundle_s_getPtr(unmatched));
 		omax_util_outletOSC(x->delegation_outlet,
 				    osc_bundle_s_getLen(unmatched),
 				    osc_bundle_s_getPtr(unmatched));
