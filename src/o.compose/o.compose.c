@@ -130,6 +130,8 @@ typedef struct _ocompose {
     int draw_new_data_indicator;
     t_clock *new_data_indicator_clock;
     
+    char* stored_bundle_data;
+    long stored_bundle_length;
 } t_ocompose;
 
 t_omax_pd_proxy_class *ocompose_class;
@@ -257,17 +259,18 @@ void ocompose_newBundle(t_ocompose *x, t_osc_bndl_u *bu, t_osc_bndl_s *bs)
     
     
     if (x->stored_bundle_data) {
-        osc_mem_free( x->stored_bundle_data );
+        sysmem_freeptr( x->stored_bundle_data );
         x->stored_bundle_data = NULL;
         x->stored_bundle_length = 0;
     }
     t_osc_bndl_s *b = x->bndl_s;
     long len = osc_bundle_s_getLen(b);
     char *ptr = osc_bundle_s_getPtr(b);
-    x->stored_bundle_data = osc_mem_alloc( len );
+    x->stored_bundle_data = sysmem_newptr( 1024 );
     x->stored_bundle_length = len;
     memcpy(x->stored_bundle_data, ptr, len);
-    
+
+    /*    
     for ( long i = 0; i < len; ++i ) {
         if ( ptr[ i ] == x->stored_bundle_data[ i ] ) {
             post( "compared byte #%d, success", i );
@@ -275,6 +278,7 @@ void ocompose_newBundle(t_ocompose *x, t_osc_bndl_u *bu, t_osc_bndl_s *bs)
             post( "compared byte #%d, failure", i );
         }
     }
+    */
     
     critical_exit(x->lock);
 }
@@ -291,9 +295,9 @@ void ocompose_clearBundles(t_ocompose *x)
         x->bndl_s = NULL;
     }
     if(x->stored_bundle_length != 0) {
-        osc_mem_free(x->stored_bundle_data);
-        x->stored_bundle_data = NULL;
-        x->stored_bundle_length = 0;
+	    //sysmem_freeptr(x->stored_bundle_data);
+	    //x->stored_bundle_data = NULL;
+	    //x->stored_bundle_length = 0;
     }
 #ifndef OMAX_PD_VERSION
     if(x->text){
@@ -1304,10 +1308,19 @@ void *ocompose_new(t_symbol *msg, short argc, t_atom *argv){
         jbox_ready((t_jbox *)x);
         
         if( x->stored_bundle_length != 0 ) {
-            post( "binary read bundle from storage..." );
-            post( "bundle length: %d", x->stored_bundle_length );
-            t_osc_bndl_s* bundle = osc_bundle_s_alloc( x->stored_bundle_length, x->stored_bundle_data );
+		/*
+		post( "binary read bundle from storage..." );
+		post( "bundle length: %d", x->stored_bundle_length );
+
+		for(int i = 0; i < x->stored_bundle_length; i++){
+			printf("%d: %d\n", i, x->stored_bundle_data[i]);
+		}
+		*/
+		char *ptr = osc_mem_alloc(x->stored_bundle_length);
+		memcpy(ptr, x->stored_bundle_data, x->stored_bundle_length);
+		t_osc_bndl_s* bundle = osc_bundle_s_alloc(x->stored_bundle_length, ptr);
             x->bndl_s = bundle;
+
         } else {
             ocompose_gettext(x);
         }
