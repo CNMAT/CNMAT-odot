@@ -158,6 +158,9 @@ typedef struct _ocompose{
     int have_new_data;
     int draw_new_data_indicator;
     void *new_data_indicator_clock;
+    
+    char* stored_bundle_data;
+    long stored_bundle_length;
 } t_ocompose;
 
 static t_class *ocompose_class;
@@ -251,6 +254,28 @@ void ocompose_newBundle(t_ocompose *x, t_osc_bndl_u *bu, t_osc_bndl_s *bs)
     x->draw_new_data_indicator = 1;
     x->have_new_data = 1;
     x->bndl_has_been_checked_for_subs = 0;
+    
+    
+    if (x->stored_bundle_data) {
+        osc_mem_free( x->stored_bundle_data );
+        x->stored_bundle_data = NULL;
+        x->stored_bundle_length = 0;
+    }
+    t_osc_bndl_s *b = x->bndl_s;
+    long len = osc_bundle_s_getLen(b);
+    char *ptr = osc_bundle_s_getPtr(b);
+    x->stored_bundle_data = osc_mem_alloc( len );
+    x->stored_bundle_length = len;
+    memcpy(x->stored_bundle_data, ptr, len);
+    
+    for ( long i = 0; i < len; ++i ) {
+        if ( ptr[ i ] == x->stored_bundle_data[ i ] ) {
+            post( "compared byte #%d, success", i );
+        } else {
+            post( "compared byte #%d, failure", i );
+        }
+    }
+    
     critical_exit(x->lock);
 }
 
@@ -264,6 +289,11 @@ void ocompose_clearBundles(t_ocompose *x)
     if(x->bndl_s){
         osc_bundle_s_deepFree(x->bndl_s);
         x->bndl_s = NULL;
+    }
+    if(x->stored_bundle_length != 0) {
+        osc_mem_free(x->stored_bundle_data);
+        x->stored_bundle_data = NULL;
+        x->stored_bundle_length = 0;
     }
 #ifndef OMAX_PD_VERSION
     if(x->text){
@@ -1255,10 +1285,10 @@ void *ocompose_new(t_symbol *msg, short argc, t_atom *argv){
         x->have_new_data = 1;
         x->draw_new_data_indicator = 0;
         attr_dictionary_process(x, d);
-        x->frame_color.red = 0.216;
-        x->frame_color.green = 0.435;
-        x->frame_color.blue = 0.7137;
-        x->frame_color.alpha = 1.0;
+        x->frame_color.red = x->default_color.red;
+        x->frame_color.green = x->default_color.green;
+        x->frame_color.blue = x->default_color.blue;
+        x->frame_color.alpha = x->default_color.alpha;
         t_object *textfield = jbox_get_textfield((t_object *)x);
         if(textfield){
             object_attr_setchar(textfield, gensym("editwhenunlocked"), 1);
@@ -1273,7 +1303,15 @@ void *ocompose_new(t_symbol *msg, short argc, t_atom *argv){
         
         jbox_ready((t_jbox *)x);
         
-        ocompose_gettext(x);
+        if( x->stored_bundle_length != 0 ) {
+            post( "binary read bundle from storage..." );
+            post( "bundle length: %d", x->stored_bundle_length );
+            t_osc_bndl_s* bundle = osc_bundle_s_alloc( x->stored_bundle_length, x->stored_bundle_data );
+            x->bndl_s = bundle;
+        } else {
+            ocompose_gettext(x);
+        }
+        
         return x;
     }
     return NULL;
@@ -1354,6 +1392,9 @@ int main(void){
     CLASS_ATTR_CATEGORY_KLUDGE(c, "default_color", 0, "Color");
 
     CLASS_ATTR_DEFAULT(c, "fontname", 0, "\"Courier New\"");
+    
+    CLASS_ATTR_CHAR_VARSIZE( c, "data", 0, t_ocompose, stored_bundle_data, stored_bundle_length, 1024 );
+    CLASS_ATTR_SAVE(c, "data", 0 );
 
     //CLASS_ATTR_RGBA(c, "text_color", 0, t_ocompose, text_color);
     //CLASS_ATTR_DEFAULT_SAVE_PAINT(c, "text_color", 0, "0. 0. 0. 1.");
