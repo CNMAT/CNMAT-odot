@@ -249,37 +249,26 @@ void ocompose_doFullPacket(t_ocompose *x, long len, char *ptr)
 void ocompose_newBundle(t_ocompose *x, t_osc_bndl_u *bu, t_osc_bndl_s *bs)
 {
     critical_enter(x->lock);
-    ocompose_clearBundles(x);
-    x->bndl_u = bu;
-    x->bndl_s = bs;
-    x->newbndl = 1;
-    x->draw_new_data_indicator = 1;
-    x->have_new_data = 1;
-    x->bndl_has_been_checked_for_subs = 0;
+        ocompose_clearBundles(x);
+        x->bndl_u = bu;
+        x->bndl_s = bs;
+        x->newbndl = 1;
+        x->draw_new_data_indicator = 1;
+        x->have_new_data = 1;
+        x->bndl_has_been_checked_for_subs = 0;
     
-    
-    if (x->stored_bundle_data) {
-        sysmem_freeptr( x->stored_bundle_data );
-        x->stored_bundle_data = NULL;
-        x->stored_bundle_length = 0;
-    }
-    t_osc_bndl_s *b = x->bndl_s;
-    long len = osc_bundle_s_getLen(b);
-    char *ptr = osc_bundle_s_getPtr(b);
-    x->stored_bundle_data = sysmem_newptr( 1024 );
-    x->stored_bundle_length = len;
-    memcpy(x->stored_bundle_data, ptr, len);
-
-    /*    
-    for ( long i = 0; i < len; ++i ) {
-        if ( ptr[ i ] == x->stored_bundle_data[ i ] ) {
-            post( "compared byte #%d, success", i );
-        } else {
-            post( "compared byte #%d, failure", i );
+        if (x->stored_bundle_data) {
+            sysmem_freeptr( x->stored_bundle_data );
+            x->stored_bundle_data = NULL;
+            x->stored_bundle_length = 0;
         }
-    }
-    */
     
+        t_osc_bndl_s *b = x->bndl_s;
+        long len = osc_bundle_s_getLen(b);
+        char *ptr = osc_bundle_s_getPtr(b);
+        x->stored_bundle_data = sysmem_newptr( 1024 );
+        x->stored_bundle_length = len;
+        memcpy(x->stored_bundle_data, ptr, len);
     critical_exit(x->lock);
 }
 
@@ -294,11 +283,9 @@ void ocompose_clearBundles(t_ocompose *x)
         osc_bundle_s_deepFree(x->bndl_s);
         x->bndl_s = NULL;
     }
-    if(x->stored_bundle_length != 0) {
-	    //sysmem_freeptr(x->stored_bundle_data);
-	    //x->stored_bundle_data = NULL;
-	    //x->stored_bundle_length = 0;
-    }
+    
+    /// Note that the stored_bundle_data pointer will be freed by Max and does not require manual freeing
+    
 #ifndef OMAX_PD_VERSION
     if(x->text){
         x->textlen = 0;
@@ -311,70 +298,59 @@ void ocompose_clearBundles(t_ocompose *x)
 
 void ocompose_output_bundle(t_ocompose *x)
 {
-    // the use of critical sections is a little weird here, but correct.
-    critical_enter(x->lock);
+    critical_enter(x->lock);                                /// lock
     if(x->bndl_s){
         t_osc_bndl_s *b = x->bndl_s;
         long len = osc_bundle_s_getLen(b);
         char *ptr = osc_bundle_s_getPtr(b);
         char buf[len];
         memcpy(buf, ptr, len);
-        critical_exit(x->lock);
+        critical_exit(x->lock);                             /// unlock
         omax_util_outletOSC(x->outlet, len, buf);
-        OSC_MEM_INVALIDATE(buf);
-        return;
+        //OSC_MEM_INVALIDATE(buf);
+        return;                                             /// ( return )
     }
-    critical_exit(x->lock);
+    critical_exit(x->lock);                                 /// unlock ( if the above code block is skipped )
 
     char buf[OSC_HEADER_SIZE];
     memset(buf, '\0', OSC_HEADER_SIZE);
     osc_bundle_s_setBundleID(buf);
     omax_util_outletOSC(x->outlet, OSC_HEADER_SIZE, buf);
-    OSC_MEM_INVALIDATE(buf);
+    //OSC_MEM_INVALIDATE(buf);
 }
 
 void ocompose_bundle2text(t_ocompose *x)
 {
-    critical_enter(x->lock);
     if(x->newbndl && x->bndl_s){
+        critical_enter(x->lock);                            /// 1st lock in the if block
         long len = osc_bundle_s_getLen(x->bndl_s);
         char ptr[len];
         memcpy(ptr, osc_bundle_s_getPtr(x->bndl_s), len);
-        critical_exit(x->lock);
+        critical_exit(x->lock);                             /// unlock in the if block
+        
         long bufpos = osc_bundle_s_nformat(NULL, 0, len, (char *)ptr, 0);
         char *buf = osc_mem_alloc(bufpos + 1);
         osc_bundle_s_nformat(buf, bufpos + 1, len, (char *)ptr, 0);
-        if (bufpos != 0) {
-		/*
-            if(buf[bufpos - 2] == '\n'){
-                buf[bufpos - 2] = '\0';
-            }
-		*/
-        } else {
+        if (bufpos == 0) {
             *buf = '\0';
         }
         
 #ifndef OMAX_PD_VERSION
-        critical_enter(x->lock);
+        critical_enter(x->lock);                            /// 2nd lock ( after unlock ) in the max version
+        
         if(x->text){
             osc_mem_free(x->text);
         }
+        
         x->textlen = bufpos;
         x->text = buf;
-        critical_exit(x->lock);
+        critical_exit(x->lock);                             /// 2nd unlock in the max version
         object_method(jbox_get_textfield((t_object *)x), gensym("settext"), buf);
 #else
         opd_textbox_resetText(x->textbox, buf);
-
 #endif
-/*
-        if(buf){
-            osc_mem_free(buf);
-        }
-*/
         x->newbndl = 0;
     }
-    critical_exit(x->lock);
 }
 
 #ifndef OMAX_PD_VERSION
@@ -383,8 +359,8 @@ void ocompose_paint(t_ocompose *x, t_object *patcherview)
     int have_new_data = 0;
     int draw_new_data_indicator = 0;
     critical_enter(x->lock);
-    have_new_data = x->have_new_data;
-    draw_new_data_indicator = x->draw_new_data_indicator;
+        have_new_data = x->have_new_data;
+        draw_new_data_indicator = x->draw_new_data_indicator;
     critical_exit(x->lock);
     if(have_new_data){  
         ocompose_bundle2text(x);
@@ -498,8 +474,8 @@ long ocompose_keyfilter(t_ocompose *x, t_object *patcherview, long *keycode, lon
 void ocompose_mousedown(t_ocompose *x, t_object *patcherview, t_pt pt, long modifiers){
     textfield_set_textmargins(jbox_get_textfield((t_object *)x), 6, 6, 14, 4);
     critical_enter(x->lock);
-    x->draw_new_data_indicator = 1;
-    x->mouse_down = 1;
+        x->draw_new_data_indicator = 1;
+        x->mouse_down = 1;
     critical_exit(x->lock);
     jbox_redraw((t_jbox *)x);
 }
@@ -507,7 +483,7 @@ void ocompose_mousedown(t_ocompose *x, t_object *patcherview, t_pt pt, long modi
 void ocompose_mouseup(t_ocompose *x, t_object *patcherview, t_pt pt, long modifiers){
     textfield_set_textmargins(jbox_get_textfield((t_object *)x), 5, 5, 15, 5);
     critical_enter(x->lock);
-    x->mouse_down = 0;
+        x->mouse_down = 0;
     critical_exit(x->lock);
     jbox_redraw((t_jbox *)x);
     ocompose_output_bundle(x);
@@ -581,22 +557,6 @@ void ocompose_gettext(t_ocompose *x)
     x->have_new_data = 1;
     qelem_set(x->qelem);
 #endif
-    /*
-    if(size > 2){
-        int i;
-        char *r = text + 1;
-        char *w = text + 1;
-        char *rm1 = text;
-        for(i = 0; i <= size; i++){
-            if(*rm1 == ' ' && *r == ' '){
-                r++;
-            }else{
-                *w++ = *r++;
-            }
-            rm1++;
-        }
-    }
-    */
 }
 
 void ocompose_bang(t_ocompose *x) {
@@ -623,78 +583,6 @@ void ocompose_float(t_ocompose *x, double f) {
 void ocompose_list(t_ocompose *x, t_symbol *list_sym, short argc, t_atom *argv)
 {
     object_error((t_object *)x, "o.compose doesn't accept lists");
-    /*
-    if(proxy_getinlet((t_object *)x) == 1){
-        object_error((t_object *)x, "o.compose doesn't accept non-OSC lists in its right inlet");
-        return;
-    }
-    if(x->bndl_has_been_checked_for_subs && !x->bndl_has_subs){
-        if(!x->bndl_s){
-            if(x->bndl_u){
-                long len = 0;
-                char *ptr = NULL;
-                critical_enter(x->lock);
-                osc_bundle_u_serialize(x->bndl_u, &len, &ptr);
-                critical_exit(x->lock);
-                x->bndl_s = osc_bundle_s_alloc(len, ptr);
-            }else if(x->text){
-                // pretty sure this can't happen...
-                post("%d\n", __LINE__);
-            }else{
-                return;
-            }
-        }
-        critical_enter(x->lock);
-        long len = osc_bundle_s_getLen(x->bndl_s);
-        char *ptr = osc_bundle_s_getPtr(x->bndl_s);
-        char copy[len];
-        memcpy(copy, ptr, len);
-        critical_exit(x->lock);
-        omax_util_outletOSC(x->outlet, len, copy);
-    } else {
-        if(!x->bndl_u){
-            if(x->bndl_s){
-                critical_enter(x->lock);
-                osc_bundle_s_deserialize(osc_bundle_s_getLen(x->bndl_s), osc_bundle_s_getPtr(x->bndl_s), &(x->bndl_u));
-                critical_exit(x->lock);
-            }else if(x->text){
-                // pretty sure this can't happen...
-                post("%d\n", __LINE__);
-            } else {
-                char buf[OSC_HEADER_SIZE];
-                memset(buf, '\0', OSC_HEADER_SIZE);
-                osc_bundle_s_setBundleID(buf);
-                omax_util_outletOSC(x->outlet, OSC_HEADER_SIZE, buf);
-                jbox_redraw((t_jbox *)x);
-                return;
-            }
-        }
-        critical_enter(x->lock);
-        t_osc_bndl_u *copy = NULL;
-        t_osc_err e = omax_util_copyBundleWithSubs_u(&copy, x->bndl_u, argc, argv, &(x->bndl_has_subs));
-        if(e){
-            return;
-        }
-        if(!copy){
-            return;
-        }
-        x->bndl_has_been_checked_for_subs = 1;
-        critical_exit(x->lock);
-        long len = 0;
-        char *copy_s = NULL;
-        e = osc_bundle_u_serialize(copy, &len, &copy_s);
-        if(e){
-            object_error((t_object *)x, "%s\n", osc_error_string(e));
-            osc_bundle_u_free(copy);
-            return;
-        }
-        if(copy_s){
-            omax_util_outletOSC(x->outlet, len, copy_s);
-            osc_mem_free(copy_s);
-        }
-        osc_bundle_u_free(copy);
-    }
-    */
 }
 
 void ocompose_anything(t_ocompose *x, t_symbol *msg, short argc, t_atom *argv)
@@ -730,7 +618,6 @@ void ocompose_anything(t_ocompose *x, t_symbol *msg, short argc, t_atom *argv)
             t_osc_bndl_s *bs = osc_bundle_s_alloc(len, ptr);
             ocompose_newBundle(x, b, bs);
         }
-        //ocompose_processAtoms(x, ac, av);
         break;
     }
     critical_enter(x->lock);
@@ -756,7 +643,6 @@ void ocompose_set(t_ocompose *x, t_symbol *s, long ac, t_atom *av)
                 ocompose_doFullPacket(x, atom_getlong(av + 1), (char *)atom_getlong(av + 2));
                 return;
             }
-            //ocompose_processAtoms(x, ac, av);
         }
     }else{
         ocompose_clear(x);
@@ -1307,6 +1193,11 @@ void *ocompose_new(t_symbol *msg, short argc, t_atom *argv){
         
         jbox_ready((t_jbox *)x);
         
+        post( "color check : %g, %g, %g, %g", x->text_color.red, x->text_color.green, x->text_color.blue, x->text_color.alpha );
+        
+        post( "stored bundle length check : %d", x->stored_bundle_length );
+        post( "stored bundle data check : %s", x->stored_bundle_data );
+        
         if( x->stored_bundle_length != 0 ) {
 		/*
 		post( "binary read bundle from storage..." );
@@ -1320,7 +1211,6 @@ void *ocompose_new(t_symbol *msg, short argc, t_atom *argv){
 		memcpy(ptr, x->stored_bundle_data, x->stored_bundle_length);
 		t_osc_bndl_s* bundle = osc_bundle_s_alloc(x->stored_bundle_length, ptr);
             x->bndl_s = bundle;
-
         } else {
             ocompose_gettext(x);
         }
@@ -1384,11 +1274,6 @@ int main(void){
     CLASS_ATTR_STYLE_LABEL(c, "background_color", 0, "rgba", "Background Color");
     CLASS_ATTR_CATEGORY_KLUDGE(c, "background_color", 0, "Color");
     
-    //CLASS_ATTR_RGBA(c, "frame_color", 0, t_ocompose, frame_color);
-    //CLASS_ATTR_DEFAULT_SAVE_PAINT(c, "frame_color", 0, ".216 .435 .7137 1.");
-    //CLASS_ATTR_STYLE_LABEL(c, "frame_color", 0, "rgba", "Frame Color");
-    //CLASS_ATTR_CATEGORY_KLUDGE(c, "frame_color", 0, "Color");
-    
     CLASS_ATTR_RGBA(c, "flash_color", 0, t_ocompose, flash_color);
     CLASS_ATTR_DEFAULT_SAVE_PAINT(c, "flash_color", 0, ".216 .435 .7137 1."); // by default, it's the same as frame colour, but user-settable nonetheless
     CLASS_ATTR_STYLE_LABEL(c, "flash_color", 0, "rgba", "Flash Color");
@@ -1406,7 +1291,7 @@ int main(void){
 
     CLASS_ATTR_DEFAULT(c, "fontname", 0, "\"Courier New\"");
     
-    CLASS_ATTR_CHAR_VARSIZE( c, "data", 0, t_ocompose, stored_bundle_data, stored_bundle_length, 1024 );
+    CLASS_ATTR_CHAR_VARSIZE( c, "data", ATTR_SET_OPAQUE_USER | ATTR_GET_OPAQUE_USER, t_ocompose, stored_bundle_data, stored_bundle_length, 1024 );
     CLASS_ATTR_SAVE(c, "data", 0 );
 
     //CLASS_ATTR_RGBA(c, "text_color", 0, t_ocompose, text_color);
