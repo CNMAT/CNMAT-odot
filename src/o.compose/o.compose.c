@@ -1184,10 +1184,10 @@ void *ocompose_new(t_symbol *msg, short argc, t_atom *argv){
             object_attr_setchar(textfield, gensym("editwhenunlocked"), 1);
             textfield_set_editonclick(textfield, 0);
             textfield_set_textmargins(textfield, 5, 5, 15, 5);
-            x->text_color.red = 0.0;
-            x->text_color.green = 0.0;
-            x->text_color.blue = 0.0;
-            x->text_color.alpha = 1.0;
+            //x->text_color.red = 0.0;
+            //x->text_color.green = 0.0;
+            //x->text_color.blue = 0.0;
+            //x->text_color.alpha = 1.0;
             textfield_set_textcolor(textfield, &(x->text_color));
         }
         
@@ -1199,17 +1199,9 @@ void *ocompose_new(t_symbol *msg, short argc, t_atom *argv){
         post( "stored bundle data check : %s", x->stored_bundle_data );
         
         if( x->stored_bundle_length != 0 ) {
-		/*
-		post( "binary read bundle from storage..." );
-		post( "bundle length: %d", x->stored_bundle_length );
-
-		for(int i = 0; i < x->stored_bundle_length; i++){
-			printf("%d: %d\n", i, x->stored_bundle_data[i]);
-		}
-		*/
-		char *ptr = osc_mem_alloc(x->stored_bundle_length);
-		memcpy(ptr, x->stored_bundle_data, x->stored_bundle_length);
-		t_osc_bndl_s* bundle = osc_bundle_s_alloc(x->stored_bundle_length, ptr);
+            char *ptr = osc_mem_alloc(x->stored_bundle_length);
+            memcpy(ptr, x->stored_bundle_data, x->stored_bundle_length);
+            t_osc_bndl_s* bundle = osc_bundle_s_alloc(x->stored_bundle_length, ptr);
             x->bndl_s = bundle;
         } else {
             ocompose_gettext(x);
@@ -1294,10 +1286,10 @@ int main(void){
     CLASS_ATTR_CHAR_VARSIZE( c, "data", ATTR_SET_OPAQUE_USER | ATTR_GET_OPAQUE_USER, t_ocompose, stored_bundle_data, stored_bundle_length, 1024 );
     CLASS_ATTR_SAVE(c, "data", 0 );
 
-    //CLASS_ATTR_RGBA(c, "text_color", 0, t_ocompose, text_color);
-    //CLASS_ATTR_DEFAULT_SAVE_PAINT(c, "text_color", 0, "0. 0. 0. 1.");
-    //CLASS_ATTR_STYLE_LABEL(c, "text_color", 0, "rgba", "Text Color");
-    //CLASS_ATTR_CATEGORY_KLUDGE(c, "text_color", 0, "Color");
+    CLASS_ATTR_RGBA(c, "text_color", 0, t_ocompose, text_color);
+    CLASS_ATTR_DEFAULT_SAVE_PAINT(c, "text_color", 0, "0. 0. 0. 1.");
+    CLASS_ATTR_STYLE_LABEL(c, "text_color", 0, "rgba", "Text Color");
+    CLASS_ATTR_CATEGORY_KLUDGE(c, "text_color", 0, "Color");
     
     CLASS_ATTR_DEFAULT(c, "rect", 0, "0. 0. 150. 20.");
     
