@@ -261,14 +261,15 @@ void ocompose_newBundle(t_ocompose *x, t_osc_bndl_u *bu, t_osc_bndl_s *bs)
             //sysmem_freeptr( x->stored_bundle_data );
             //x->stored_bundle_data = NULL;
             //x->stored_bundle_length = 0;
-            x->stored_bundle_data = sysmem_newptr( 1024 );
+            x->stored_bundle_data = sysmem_newptrclear( 1024 );
         }
         x->stored_bundle_length = 0;
         t_osc_bndl_s *b = x->bndl_s;
         long len = osc_bundle_s_getLen(b);
         char *ptr = osc_bundle_s_getPtr(b);
+        sysmem_copyptr(ptr, x->stored_bundle_data, len);
         x->stored_bundle_length = len;
-        memcpy(x->stored_bundle_data, ptr, len);
+        //memcpy(x->stored_bundle_data, ptr, len);
     critical_exit(x->lock);
 }
 
@@ -285,6 +286,10 @@ void ocompose_clearBundles(t_ocompose *x)
     }
     
     /// Note that the stored_bundle_data pointer will be freed by Max and does not require manual freeing
+    /// trying it anyway...
+    if ( x->stored_bundle_data ) {
+        sysmem_freeptr( x->stored_bundle_data );
+    }
     
 #ifndef OMAX_PD_VERSION
     if(x->text){
