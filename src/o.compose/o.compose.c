@@ -161,7 +161,8 @@ typedef struct _ocompose{
     int draw_new_data_indicator;
     void *new_data_indicator_clock;
     
-    char* stored_bundle_data;
+	//char* stored_bundle_data;
+	char stored_bundle_data[1024];
     long stored_bundle_length;
 } t_ocompose;
 
@@ -256,20 +257,23 @@ void ocompose_newBundle(t_ocompose *x, t_osc_bndl_u *bu, t_osc_bndl_s *bs)
         x->draw_new_data_indicator = 1;
         x->have_new_data = 1;
         x->bndl_has_been_checked_for_subs = 0;
-    
+
+
         if (!x->stored_bundle_data) {
             //sysmem_freeptr( x->stored_bundle_data );
             //x->stored_bundle_data = NULL;
             //x->stored_bundle_length = 0;
-            x->stored_bundle_data = sysmem_newptrclear( 1024 );
+            //x->stored_bundle_data = sysmem_newptrclear( 1024 );
         }
         x->stored_bundle_length = 0;
         t_osc_bndl_s *b = x->bndl_s;
         long len = osc_bundle_s_getLen(b);
         char *ptr = osc_bundle_s_getPtr(b);
-        sysmem_copyptr(ptr, x->stored_bundle_data, len);
+        //sysmem_copyptr(ptr, x->stored_bundle_data, len);
         x->stored_bundle_length = len;
-        //memcpy(x->stored_bundle_data, ptr, len);
+	printf("%s: copying %ld bytes from %p to %p\n", __func__, len, ptr, x->stored_bundle_data);
+        memcpy(x->stored_bundle_data, ptr, len);
+
     critical_exit(x->lock);
 }
 
@@ -288,7 +292,8 @@ void ocompose_clearBundles(t_ocompose *x)
     /// Note that the stored_bundle_data pointer will be freed by Max and does not require manual freeing
     /// trying it anyway...
     if ( x->stored_bundle_data ) {
-        sysmem_freeptr( x->stored_bundle_data );
+	    //sysmem_freeptr( x->stored_bundle_data );
+	    //memset(x->stored_bundle_data, '\0', 1024);
     }
     
 #ifndef OMAX_PD_VERSION
@@ -355,6 +360,7 @@ void ocompose_bundle2text(t_ocompose *x)
         opd_textbox_resetText(x->textbox, buf);
 #endif
         x->newbndl = 0;
+    }else{
     }
 }
 
@@ -1179,6 +1185,8 @@ void *ocompose_new(t_symbol *msg, short argc, t_atom *argv){
         x->mouse_down = 0;
         x->have_new_data = 1;
         x->draw_new_data_indicator = 0;
+	x->stored_bundle_length = 0;
+	//x->stored_bundle_data = NULL;
         attr_dictionary_process(x, d);
         x->frame_color.red = x->default_color.red;
         x->frame_color.green = x->default_color.green;
@@ -1198,20 +1206,20 @@ void *ocompose_new(t_symbol *msg, short argc, t_atom *argv){
         
         jbox_ready((t_jbox *)x);
         
-        post( "color check : %g, %g, %g, %g", x->text_color.red, x->text_color.green, x->text_color.blue, x->text_color.alpha );
+        //post( "color check : %g, %g, %g, %g", x->text_color.red, x->text_color.green, x->text_color.blue, x->text_color.alpha );
         
-        post( "stored bundle length check : %d", x->stored_bundle_length );
-        post( "stored bundle data check : %s", x->stored_bundle_data );
-        
+        //post( "stored bundle length check : %d", x->stored_bundle_length );
+        //post( "stored bundle data check : %s", x->stored_bundle_data );
         if( x->stored_bundle_length != 0 ) {
-            char *ptr = osc_mem_alloc(x->stored_bundle_length);
+		char *ptr = osc_mem_alloc(x->stored_bundle_length);
             memcpy(ptr, x->stored_bundle_data, x->stored_bundle_length);
             t_osc_bndl_s* bundle = osc_bundle_s_alloc(x->stored_bundle_length, ptr);
-            x->bndl_s = bundle;
+            //x->bndl_s = bundle;
+	    ocompose_newBundle(x, NULL, bundle);
+            //ocompose_gettext(x);
         } else {
             ocompose_gettext(x);
-        }
-        
+	}
         return x;
     }
     return NULL;
@@ -1228,6 +1236,7 @@ CLASS_ATTR_ATTR_PARSE(c,attrname,"category",USESYM(symbol),flags,parsestr)
 
 
 int main(void){
+	printf("%s: %d\n", __func__, __LINE__);
     common_symbols_init();
     t_class *c = class_new("o.compose", (method)ocompose_new, (method)ocompose_free, sizeof(t_ocompose), 0L, A_GIMME, 0);
     alias("o.c");
@@ -1303,7 +1312,7 @@ int main(void){
     
     ps_newline = gensym("\n");
     ps_FullPacket = gensym("FullPacket");
-    
+
     ODOT_PRINT_VERSION;
     
     return 0;
