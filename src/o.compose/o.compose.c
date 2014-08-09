@@ -102,8 +102,6 @@ enum {
 #ifdef OMAX_PD_VERSION
 typedef struct _ocompose {
     t_object ob;
-    t_glist *glist; //the canvas heirarchy
-    
     t_opd_textbox *textbox;
     
     long textlen;
@@ -185,7 +183,7 @@ void ocompose_int(t_ocompose *x, long n);
 void ocompose_float(t_ocompose *x, double xx);
 void ocompose_list(t_ocompose *x, t_symbol *msg, short argc, t_atom *argv);
 void ocompose_anything(t_ocompose *x, t_symbol *msg, short argc, t_atom *argv);
-void omax_util_outletOSC(void *outlet, long len, char *ptr);
+//void omax_util_outletOSC(void *outlet, long len, char *ptr);
 void ocompose_free(t_ocompose *x);
 void ocompose_inletinfo(t_ocompose *x, void *b, long index, char *t);
 void *ocompose_new(t_symbol *msg, short argc, t_atom *argv);
@@ -764,6 +762,7 @@ static void ocompose_getrect(t_gobj *z, t_glist *glist,int *xp1, int *yp1, int *
     *xp2 = x2;
     *yp2 = y2;
     //post("%s %d %d %d %d", __func__, x1, y1, x2, y2);
+    opd_textbox_motion(x->textbox);
 
 }
 
@@ -820,7 +819,7 @@ void ocompose_drawElements(t_object *ob, int firsttime)
         }
         else
         {
-            post("%x %s REDRAW height %d y1 %d y2 %d \n", x, __func__, t->height, y1, y2);
+            //post("%x %s REDRAW height %d y1 %d y2 %d \n", x, __func__, t->height, y1, y2);
 
             sys_vgui(".x%lx.c coords %s %d %d %d %d\n", canvas, x->border_tag, x1, y1, x2, y2);
             sys_vgui(".x%lx.c coords %sBorder %d %d %d %d %d %d %d %d %d %d %d %d \n",canvas, x->border_tag, cx1, cy1, cx2, cy1, cx2, cy2-10, cx2-10, cy2-10, cx2-10, cy2, cx1, cy2);
@@ -864,23 +863,25 @@ static void ocompose_displace(t_gobj *z, t_glist *glist,int dx, int dy)
 {
     
     t_ocompose *x = (t_ocompose *)z;
-    x->ob.te_xpix += dx;
-    x->ob.te_ypix += dy;
     
-    t_canvas *canvas = glist_getcanvas(glist);
-    
-    sys_vgui(".x%lx.c move %s %d %d\n", canvas, x->border_tag, dx, dy);
-    sys_vgui(".x%lx.c move %sBorder %d %d\n", canvas, x->border_tag, dx, dy);
-    sys_vgui(".x%lx.c move %s %d %d\n", canvas, x->corner_tag, dx, dy);
-    sys_vgui(".x%lx.c move text%lx %d %d\n", canvas, (long)x, dx, dy);
-
-    opd_textbox_displace(x->textbox, glist, dx, dy);
-
+    if(!x->textbox->mouseDown)
+    {
+        x->ob.te_xpix += dx;
+        x->ob.te_ypix += dy;
+        
+        t_canvas *canvas = glist_getcanvas(glist);
+        
+        sys_vgui(".x%lx.c move %s %d %d\n", canvas, x->border_tag, dx, dy);
+        sys_vgui(".x%lx.c move %sBorder %d %d\n", canvas, x->border_tag, dx, dy);
+        sys_vgui(".x%lx.c move %s %d %d\n", canvas, x->corner_tag, dx, dy);
+        
+        opd_textbox_displace(x->textbox, glist, dx, dy);
+    }
 }
 
 static void ocompose_select(t_gobj *z, t_glist *glist, int state)
 {
-    post("%s %d", __func__, state);
+    //post("%s %d", __func__, state);
     t_ocompose *x = (t_ocompose *)z;
     t_canvas *canvas = glist_getcanvas(glist);
 
@@ -897,7 +898,7 @@ static void ocompose_select(t_gobj *z, t_glist *glist, int state)
 
 static void ocompose_activate(t_gobj *z, t_glist *glist, int state)
 {
-    post("%s %d", __func__, state);
+    //post("%s %d", __func__, state);
     
     t_ocompose *x = (t_ocompose *)z;
     t_canvas *canvas = glist_getcanvas(glist);
@@ -917,7 +918,7 @@ static void ocompose_activate(t_gobj *z, t_glist *glist, int state)
 
 static void ocompose_delete(t_gobj *z, t_glist *glist)
 {
-     post("%s", __func__);
+    //post("%s", __func__);
     t_ocompose *x = (t_ocompose *)z;
     t_opd_textbox *t = x->textbox;
     t_canvas *canvas = glist_getcanvas(glist);
@@ -985,7 +986,7 @@ static void ocompose_save(t_gobj *z, t_binbuf *b)
 {
     t_ocompose *x = (t_ocompose *)z;
     t_opd_textbox *t = x->textbox;
-    post("%x %s", x, __func__);
+    //post("%x %s", x, __func__);
     
     opd_textbox_setHexFromText(t, t->text);
     
@@ -1022,7 +1023,7 @@ static void ocompose_save(t_gobj *z, t_binbuf *b)
 
 void ocompose_free(t_ocompose *x)
 {
-    post("%x %s", x, __func__);
+    //post("%x %s", x, __func__);
     free(x->border_tag);
     free(x->corner_tag);
     
@@ -1065,6 +1066,11 @@ void *ocompose_new(t_symbol *msg, short argc, t_atom *argv)
         t->editmode = glist_getcanvas(t->glist)->gl_edit;
         t->textediting = 0;
         
+        t->resizebox_x_offset = 2;
+        t->resizebox_y_offset = 2;
+        t->resizebox_height = 10;
+        t->resizebox_width = 10;
+        
         x->textbox = t;
         
        // post("%s %p glist %x canvas %x\n", __func__, x, t->glist, glist_getcanvas(t->glist));
@@ -1088,10 +1094,8 @@ void *ocompose_new(t_symbol *msg, short argc, t_atom *argv)
         x->have_new_data = 1;
         x->draw_new_data_indicator = 0;
         
-        
         x->border_tag = NULL;
         x->corner_tag = NULL;
-
         
         //object name heirarchy:
         char buf[MAXPDSTRING];
@@ -1114,24 +1118,8 @@ void *ocompose_new(t_symbol *msg, short argc, t_atom *argv)
         }
         strcpy(x->corner_tag, buf);
         
+        opd_textbox_atoms(t, argc, argv);
 
-        if(argc > 3)
-        {
-            t->width = atom_getfloat(argv);
-            t->height = atom_getfloat(argv+1);
-            if(((argv+2)->a_type == A_SYMBOL ) && (atom_getsymbol(argv+2) == gensym("binhex")))
-            {
-              
-                opd_textbox_textbuf(t, NULL, argc-2, (argv+2));
-                t_atom done[2];
-                atom_setsym(done, gensym("binhex"));
-                atom_setsym(done+1, gensym(t->receive_name));
-                opd_textbox_textbuf(t, NULL, 2, done);
-              
-            }
-        }
-        
-//        post("%x %s height %d", x, __func__, x->height);
         t->in_new_flag = 0;
         t->softlock = 0;
 
