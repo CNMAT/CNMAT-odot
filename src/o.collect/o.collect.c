@@ -161,6 +161,8 @@ void ocoll_bang(t_ocoll *x){
     x->buffer_pos = OSC_HEADER_SIZE;
     critical_exit(x->lock);
     omax_util_outletOSC(x->outlet, len, outbuf);
+    // invalidate outbuf:
+    OSC_MEM_INVALIDATE(outbuf);
 }
 
 

@@ -111,6 +111,7 @@ void olistenumerate_doFullPacket(t_olistenumerate *x,
         osc_bundle_s_getMsgCount(dlen, delegate, &message_count);
         if (message_count > 0) {
             omax_util_outletOSC(x->outlets[0], dlen, delegate);
+            OSC_MEM_INVALIDATE(delegate);
         }
         
         // left outlet:
@@ -132,7 +133,7 @@ void olistenumerate_doFullPacket(t_olistenumerate *x,
                     if (atom_copy)
                     {
                         t_osc_bundle_u* unserialized_result = NULL;
-                        char type = osc_atom_u_getTypetag(atom_copy);
+                        //char type = osc_atom_u_getTypetag(atom_copy);
                         unserialized_result = osc_bundle_u_alloc();
                         t_osc_message_u* value = osc_message_u_allocWithAddress("/value");
                         osc_message_u_appendAtom(value, atom_copy);

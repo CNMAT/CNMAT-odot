@@ -5,6 +5,8 @@
 extern "C" {
 #endif
 
+#include "osc.h"
+
 #include <stdint.h>
 #include "osc_mem.h" // for the OSC_MEM_VALIDATE(ptr) macro
 

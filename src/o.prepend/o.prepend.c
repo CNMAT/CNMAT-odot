@@ -140,6 +140,7 @@ void oppnd_doFullPacket(t_oppnd *x, long len, char *ptr, t_symbol *sym_to_prepen
 	osc_bndl_it_s_destroy(it);
 
 	omax_util_outletOSC(x->outlet, bufptr - buf, buf);
+    OSC_MEM_INVALIDATE(buf);
 }
 
 void oppnd_set(t_oppnd *x, t_symbol *msg, int argc, t_atom *argv)
@@ -247,6 +248,7 @@ void oppnd_anything(t_oppnd *x, t_symbol *msg, short argc, t_atom *argv)
 		osc_bundle_u_free(bndl_u);
 	}
 	omax_util_outletOSC(x->outlet, len, oscbuf);
+    osc_mem_free(oscbuf);
 }
 
 

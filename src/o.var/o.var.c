@@ -232,6 +232,7 @@ void ovar_bang(t_ovar *x)
 		memcpy(bndl, x->bndl, len);
 		critical_exit(x->lock);
 		omax_util_outletOSC(x->outlet, len, bndl);
+        OSC_MEM_INVALIDATE(bndl);
 	}else{
 		omax_util_outletOSC(x->outlet, OSC_HEADER_SIZE, x->emptybndl);
 	}

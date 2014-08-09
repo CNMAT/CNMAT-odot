@@ -87,7 +87,7 @@ void ochange_fullPacket(t_ochange *x, t_symbol *msg, int argc, t_atom *argv)
 	OMAX_UTIL_GET_LEN_AND_PTR
 	critical_enter(x->lock);
 	long buflen = x->buflen;
-	if(proxy_getinlet(x) == 1){
+	if(proxy_getinlet((t_object *)x) == 1){
 		critical_exit(x->lock);
 		ochange_copybundle(x, len, ptr);
 		return;

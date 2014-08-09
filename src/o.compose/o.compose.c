@@ -285,6 +285,7 @@ void ocompose_output_bundle(t_ocompose *x)
         memcpy(buf, ptr, len);
         critical_exit(x->lock);
         omax_util_outletOSC(x->outlet, len, buf);
+        OSC_MEM_INVALIDATE(buf);
         return;
     }
     critical_exit(x->lock);
@@ -293,6 +294,7 @@ void ocompose_output_bundle(t_ocompose *x)
     memset(buf, '\0', OSC_HEADER_SIZE);
     osc_bundle_s_setBundleID(buf);
     omax_util_outletOSC(x->outlet, OSC_HEADER_SIZE, buf);
+    OSC_MEM_INVALIDATE(buf);
 }
 
 void ocompose_bundle2text(t_ocompose *x)
