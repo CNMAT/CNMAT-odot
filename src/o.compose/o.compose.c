@@ -792,10 +792,8 @@ void ocompose_drawElements(t_object *ob, int firsttime)
     
     int x1, y1, x2, y2;
     ocompose_getrect((t_gobj *)x, t->glist, &x1, &y1, &x2, &y2);
-    int cx1 = x1;// - 2;
-    int cy1 = y1;// - 2;
-    int cx2 = x2;// + 2;
-    int cy2 = y2;// + 2;
+    int cx2 = x2 - t->margin_r;
+    int cy2 = y2 - 10; //<< folds into right margin
 
     t_glist *glist = t->glist;
     t_canvas *canvas = glist_getcanvas(glist);
@@ -809,30 +807,28 @@ void ocompose_drawElements(t_object *ob, int firsttime)
 
         if (firsttime)
         {
-            //post("%x %s FIRST VIS height %d y1 %d y2 %d \n", x, __func__, t->height, y1, y2);
+          //  post("%x %s FIRST VIS height %d y1 %d y2 %d \n", x, __func__, t->height, y1, y2);
             
             //border
-            sys_vgui(".x%lx.c create rectangle %d %d %d %d -outline \"\" -fill \"\" -tags [list %s msg]\n",canvas, x1, y1, x2, y2, x->border_tag);
             
-            sys_vgui(".x%lx.c create polygon %d %d %d %d %d %d %d %d %d %d %d %d  -outline #0066CC -fill \"\" -tags %sBorder -width 2 \n",canvas, cx1, cy1, cx2, cy1, cx2, cy2-10, cx2-10, cy2-10, cx2-10, cy2, cx1, cy2, x->border_tag);
+            sys_vgui(".x%lx.c create polygon %d %d %d %d %d %d %d %d %d %d %d %d  -outline #0066CC -fill \"white\" -tags %s -width 2 \n",canvas, x1, y1, x2, y1, x2, cy2, cx2, cy2, cx2, cy2, x1, cy2, x->border_tag);
             
-            sys_vgui(".x%lx.c create polygon %d %d %d %d %d %d -outline #0066CC -fill \"white\" -tags %s \n",canvas, cx2-10, cy2-10, cx2-10, cy2, cx2, cy2-10, x->corner_tag);
+            sys_vgui(".x%lx.c create polygon %d %d %d %d %d %d -outline #0066CC -fill \"white\" -tags %s \n",canvas, cx2, cy2, cx2, y2, x2, cy2, x->corner_tag);
             
         }
         else
         {
-            //post("%x %s REDRAW height %d y1 %d y2 %d \n", x, __func__, t->height, y1, y2);
+          //  post("%x %s REDRAW height %d y1 %d y2 %d \n", x, __func__, t->height, y1, y2);
 
-            sys_vgui(".x%lx.c coords %s %d %d %d %d\n", canvas, x->border_tag, x1, y1, x2, y2);
-            sys_vgui(".x%lx.c coords %sBorder %d %d %d %d %d %d %d %d %d %d %d %d \n",canvas, x->border_tag, cx1, cy1, cx2, cy1, cx2, cy2-10, cx2-10, cy2-10, cx2-10, cy2, cx1, cy2);
-            sys_vgui(".x%lx.c coords %s %d %d %d %d %d %d \n",canvas, x->corner_tag, cx2-10, cy2-10, cx2-10, cy2, cx2, cy2-10);
+            sys_vgui(".x%lx.c coords %s %d %d %d %d %d %d %d %d %d %d %d %d \n",canvas, x->border_tag, x1, y1, x2, y1, x2, cy2, cx2, cy2, cx2, y2, x1, y2);
+            sys_vgui(".x%lx.c coords %s %d %d %d %d %d %d \n",canvas, x->corner_tag, cx2, cy2, cx2, y2, x2, cy2);
             
             
         }
         
         opd_textbox_drawElements(x->textbox, x1,  y1,  x2,  y2,  firsttime);
         
-        //sys_vgui(".x%lx.c itemconfigure %sBorder -outline %s\n", canvas, x->border_tag, (x->parse_error?  "red" : "#0066CC" ));
+        //sys_vgui(".x%lx.c itemconfigure %s -outline %s\n", canvas, x->border_tag, (x->parse_error?  "red" : "#0066CC" ));
         //sys_vgui(".x%lx.c itemconfigure %s -outline %s\n", canvas, x->corner_tag, (x->parse_error? "red" : "blue" ));
         
         sys_vgui(".x%lx.c itemconfigure %s -fill %s \n", canvas, x->corner_tag, (x->draw_new_data_indicator? "#0066CC" : "white"));
@@ -874,7 +870,6 @@ static void ocompose_displace(t_gobj *z, t_glist *glist,int dx, int dy)
         t_canvas *canvas = glist_getcanvas(glist);
         
         sys_vgui(".x%lx.c move %s %d %d\n", canvas, x->border_tag, dx, dy);
-        sys_vgui(".x%lx.c move %sBorder %d %d\n", canvas, x->border_tag, dx, dy);
         sys_vgui(".x%lx.c move %s %d %d\n", canvas, x->corner_tag, dx, dy);
         
         opd_textbox_displace(x->textbox, glist, dx, dy);
@@ -891,7 +886,7 @@ static void ocompose_select(t_gobj *z, t_glist *glist, int state)
 
     if (glist_isvisible(glist) && gobj_shouldvis(&x->ob.te_g, glist)){
 
-         sys_vgui(".x%lx.c itemconfigure %sBorder -outline %s\n", canvas, x->border_tag, (state? "#006699" : "#0066CC"));
+         sys_vgui(".x%lx.c itemconfigure %s -outline %s\n", canvas, x->border_tag, (state? "#006699" : "#0066CC"));
          sys_vgui(".x%lx.c itemconfigure %s -outline %s\n", canvas, x->corner_tag, (state? "#006699" : "#0066CC"));
          
          sys_vgui(".x%lx.c itemconfigure %s -fill %s\n", canvas, x->corner_tag, (x->draw_new_data_indicator? (state? "#006699" : "#0066CC") : "white"));
@@ -910,8 +905,7 @@ static void ocompose_activate(t_gobj *z, t_glist *glist, int state)
     
     opd_textbox_activate(x->textbox, glist, state);
     
-    //    sys_vgui(".x%lx.c itemconfigure %s -outline %s\n", glist, x->border_tag, (state? "$select_color" : "$msg_box_fill"));//was "$box_outline"
-    sys_vgui(".x%lx.c itemconfigure %sBorder -outline %s\n", canvas, x->border_tag, (state? "#006699" : "#0066CC"));
+    sys_vgui(".x%lx.c itemconfigure %s -outline %s\n", canvas, x->border_tag, (state? "#006699" : "#0066CC"));
     sys_vgui(".x%lx.c itemconfigure %s -outline %s\n", canvas, x->corner_tag, (state? "#006699" : "#0066CC"));
     
     sys_vgui(".x%lx.c itemconfigure %s -fill %s\n", canvas, x->corner_tag, (x->draw_new_data_indicator? (state? "#006699" : "#0066CC") : "white"));
@@ -932,7 +926,6 @@ static void ocompose_delete(t_gobj *z, t_glist *glist)
 //        opd_textbox_nofocus_callback(t);
 
         sys_vgui(".x%lx.c delete %s\n", canvas, x->border_tag);
-        sys_vgui(".x%lx.c delete %sBorder\n", canvas, x->border_tag);
         sys_vgui(".x%lx.c delete %s\n", canvas, x->corner_tag);
         
         opd_textbox_delete(t, glist);
@@ -1067,6 +1060,11 @@ void *ocompose_new(t_symbol *msg, short argc, t_atom *argv)
         t->selected = 0;
         t->editmode = glist_getcanvas(t->glist)->gl_edit;
         t->textediting = 0;
+        
+        t->margin_t = 1;
+        t->margin_l = 1;
+        t->margin_b = 1;
+        t->margin_r = 10;
         
         t->resizebox_x_offset = 2;
         t->resizebox_y_offset = 2;

@@ -58,7 +58,6 @@
 			buildPhases = (
 			);
 			dependencies = (
-				11893E601986F4C7008303DD /* PBXTargetDependency */,
 				5224CA061958C21600E37AED /* PBXTargetDependency */,
 				1110757A195786660090D286 /* PBXTargetDependency */,
 				1110757C195786660090D286 /* PBXTargetDependency */,
@@ -69,10 +68,12 @@
 				52183DE519218CF200F61786 /* PBXTargetDependency */,
 				52183DE719218CF200F61786 /* PBXTargetDependency */,
 				52183DE919218CF200F61786 /* PBXTargetDependency */,
+				11893E601986F4C7008303DD /* PBXTargetDependency */,
 				52183DEB19218CF200F61786 /* PBXTargetDependency */,
 				112643F7194E3BA500726422 /* PBXTargetDependency */,
 				52183DED19218CF200F61786 /* PBXTargetDependency */,
 				52183DEF19218CF200F61786 /* PBXTargetDependency */,
+				11B7FFBA19997FF0000F9EBF /* PBXTargetDependency */,
 				52183DF119218CF200F61786 /* PBXTargetDependency */,
 				52183DF319218CF200F61786 /* PBXTargetDependency */,
 				52183DF519218CF200F61786 /* PBXTargetDependency */,
@@ -558,6 +559,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 11893E531986F436008303DD;
 			remoteInfo = o.compose.pd;
+		};
+		11B7FFB919997FF0000F9EBF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 115D7402198FD23F00F42B88;
+			remoteInfo = o.expr.codebox.pd;
 		};
 		520D542F195B8200007CE02D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -2175,7 +2183,7 @@
 		08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
 		112AC85F19394255003244E9 /* o.menu.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = o.menu.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
 		112AC8601939427D003244E9 /* o.menu.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.menu.c; path = omenu/o.menu.c; sourceTree = "<group>"; };
-		115D740C198FD23F00F42B88 /* o.expr.codebox.pd.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = o.expr.codebox.pd.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
+		115D740C198FD23F00F42B88 /* o.expr.codebox.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = o.expr.codebox.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
 		11893E5D1986F436008303DD /* o.compose.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = o.compose.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
 		11893E6119881E34008303DD /* opd_textbox.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = opd_textbox.h; path = o.compose/opd_textbox.h; sourceTree = "<group>"; };
 		119FA031191D5814001C3325 /* o.append.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = o.append.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -3174,7 +3182,7 @@
 				9B3930D3195A286D002EDAE5 /* o.compose.mxo */,
 				9B3930E3195A2898002EDAE5 /* o.display.mxo */,
 				11893E5D1986F436008303DD /* o.compose.pd_darwin */,
-				115D740C198FD23F00F42B88 /* o.expr.codebox.pd.pd_darwin */,
+				115D740C198FD23F00F42B88 /* o.expr.codebox.pd_darwin */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -3811,7 +3819,7 @@
 			);
 			name = o.expr.codebox.pd;
 			productName = o.print.pd;
-			productReference = 115D740C198FD23F00F42B88 /* o.expr.codebox.pd.pd_darwin */;
+			productReference = 115D740C198FD23F00F42B88 /* o.expr.codebox.pd_darwin */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
 		11893E531986F436008303DD /* o.compose.pd */ = {
@@ -6415,6 +6423,11 @@
 			isa = PBXTargetDependency;
 			target = 11893E531986F436008303DD /* o.compose.pd */;
 			targetProxy = 11893E5F1986F4C7008303DD /* PBXContainerItemProxy */;
+		};
+		11B7FFBA19997FF0000F9EBF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 115D7402198FD23F00F42B88 /* o.expr.codebox.pd */;
+			targetProxy = 11B7FFB919997FF0000F9EBF /* PBXContainerItemProxy */;
 		};
 		520D5430195B8200007CE02D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;

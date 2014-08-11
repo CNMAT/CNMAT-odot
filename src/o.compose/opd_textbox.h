@@ -50,7 +50,10 @@ typedef struct _opd_textbox
     int resizebox_width;
     int resizebox_x_offset;
     int resizebox_y_offset;
-    uint16_t    resize_hit;
+    
+    int margin_t, margin_b, margin_l, margin_r;
+    
+    uint16_t    _hit;
     
     t_gotfn     draw_fn;
     t_gotfn     gettext_fn;
@@ -83,14 +86,14 @@ void opd_textbox_unbindCanvasEvents(t_opd_textbox *x)
     if(x->c_bind)
     {
         t_canvas *canvas = glist_getcanvas(x->glist);
-     //   sys_vgui("::opd_textbox::unbind .x%lx.c <Motion> {::opd_textbox::sendto %s resize_mousemove %%x %%y} \n", canvas, x->receive_name);
+     //   sys_vgui("::opd_textbox::unbind .x%lx.c <Motion> {::opd_textbox::sendto %s mousemove %%x %%y} \n", canvas, x->receive_name);
         
 #ifdef OPD_TEXTBOX_DEBUG
         post("%x %s ...", x, __func__);
 #endif
         
-        sys_vgui("::opd_textbox::unbind .x%lx <Button-1> {::opd_textbox::sendto %s resize_mousedown %%x %%y} \n", canvas, x->receive_name);
-        sys_vgui("::opd_textbox::unbind .x%lx <ButtonRelease-1> {::opd_textbox::sendto %s resize_mouseup} \n", canvas, x->receive_name);
+        sys_vgui("::opd_textbox::unbind .x%lx <Button-1> {::opd_textbox::sendto %s mousedown %%x %%y} \n", canvas, x->receive_name);
+        sys_vgui("::opd_textbox::unbind .x%lx <ButtonRelease-1> {::opd_textbox::sendto %s mouseup} \n", canvas, x->receive_name);
         
         //sys_vgui("focus .x%lx\n", canvas, (long)x);
 
@@ -113,9 +116,9 @@ void opd_textbox_bindCanvasEvents(t_opd_textbox *x)
 #endif
         
         t_canvas *canvas = glist_getcanvas(x->glist);
-        sys_vgui("bind .x%lx <Button-1> {+::opd_textbox::sendto %s resize_mousedown %%x %%y} \n", canvas, x->receive_name);
-        sys_vgui("bind .x%lx <ButtonRelease-1> {+::opd_textbox::sendto %s resize_mouseup} \n", canvas, x->receive_name);
-     //   sys_vgui("bind .x%lx.c <Motion> {+::opd_textbox::sendto %s resize_mousemove %%x %%y} \n", canvas, x->receive_name);
+        sys_vgui("bind .x%lx <Button-1> {+::opd_textbox::sendto %s mousedown %%x %%y} \n", canvas, x->receive_name);
+        sys_vgui("bind .x%lx <ButtonRelease-1> {+::opd_textbox::sendto %s mouseup} \n", canvas, x->receive_name);
+     //   sys_vgui("bind .x%lx.c <Motion> {+::opd_textbox::sendto %s mousemove %%x %%y} \n", canvas, x->receive_name);
       //  sys_vgui("::pdwindow::post \"check [bind .x%lx.c <Button-1>] \n\" \n", canvas);
 
         x->c_bind = 1;
@@ -136,10 +139,11 @@ void opd_textbox_drawParent(t_opd_textbox *t, int firstime)
 
 void opd_textbox_setHeight(t_opd_textbox *t, float y)
 {
-    int h = ((int)y - text_ypix(t->parent, t->glist) + 5);
+    int h = ((int)y - text_ypix(t->parent, t->glist)) + t->margin_t;
     h = (h > 23) ? h : 23;
     
-    //post("%x %s y %f te_ypix %d h %d", t, __func__, y, text_ypix(t->parent, t->glist), h);
+//    post("y %d ypix %d t->margin_b %d t->margin_t %d", (int)y, text_ypix(t->parent, t->glist), t->margin_b, t->margin_t);
+//    post("%x %s h %d", t, __func__, h);
     t->softlock = 0;
     
     if((h != t->height) || t->forceredraw)
@@ -173,7 +177,7 @@ void opd_textbox_getRectAndDraw(t_opd_textbox *t, int forceredraw)
 
 }
 
-void opd_textbox_resize_mousedown(t_opd_textbox *t)
+void opd_textbox_mousedown(t_opd_textbox *t)
 {
 #ifdef OPD_TEXTBOX_DEBUG
     post("%x %s", t, __func__);
@@ -186,13 +190,11 @@ void opd_textbox_resize_mousedown(t_opd_textbox *t)
     {
         if(!t->selected)
             gobj_select(&t->parent->te_g, t->glist, 1);
-//            gobj_select((t_gobj *)t->parent, t->glist, 1);
-        
 
         t->mouseDown = 1;
         t->xref = mx;
         t->wref = t->width;
-        sys_vgui("bind .x%lx.c <Motion> {+::opd_textbox::sendto %s resize_mousemove %%x %%y} \n", glist_getcanvas(t->glist), t->receive_name);
+        sys_vgui("bind .x%lx.c <Motion> {+::opd_textbox::sendto %s mousemove %%x %%y} \n", glist_getcanvas(t->glist), t->receive_name);
     }
     else if ((t->textediting || t->selected) && (mx < x1 || mx > x2 || my < y1 || my > y2))
     {
@@ -200,10 +202,10 @@ void opd_textbox_resize_mousedown(t_opd_textbox *t)
     }
 }
 
-void opd_textbox_resize_mousemove(t_opd_textbox *t, float x, float y)
+void opd_textbox_mousemove(t_opd_textbox *t, float x, float y)
 {
 #ifdef OPD_TEXTBOX_DEBUG
-    post("%x %s", t, __func__);
+   // post("%x %s", t, __func__);
 #endif
     
     if(t->mouseDown && glist_getcanvas(t->glist)->gl_edit)
@@ -221,19 +223,18 @@ void opd_textbox_resize_mousemove(t_opd_textbox *t, float x, float y)
         ;//post("mdown %d edit %d", t->mouseDown, glist_getcanvas(t->glist)->gl_edit);
 }
 
-void opd_textbox_resize_mouseup(t_opd_textbox *t)
+void opd_textbox_mouseup(t_opd_textbox *t)
 {
 #ifdef OPD_TEXTBOX_DEBUG
     post("%x %s", t, __func__);
 #endif
-    
     if(t->mouseDown)
     {
-        gobj_select(&t->parent->te_g, t->glist, 0);
-//        gobj_select((t_gobj *)t->parent, t->glist, 0);
-        sys_vgui("::opd_textbox::unbind .x%lx.c <Motion> {::opd_textbox::sendto %s resize_mousemove %%x %%y} \n", glist_getcanvas(t->glist), t->receive_name);
-
         t->mouseDown = 0;
+        gobj_select(&t->parent->te_g, t->glist, 0);
+//        gobj_select((t_gobj *)t->parent, t->glist, 0); //<< same as ->te_g
+        sys_vgui("::opd_textbox::unbind .x%lx.c <Motion> {::opd_textbox::sendto %s mousemove %%x %%y} \n", glist_getcanvas(t->glist), t->receive_name);
+
         opd_textbox_drawParent(t, 0);
 
     }
@@ -262,7 +263,7 @@ int opd_textbox_resizeHitTest(t_opd_textbox *x, int mx, int my)
         
         test = (mx > rx1 && mx < rx2 && my > ry1 && my < ry2);
     
-        if(test != x->resize_hit)
+        if(test != x->_hit)
         {
             if(c->gl_edit)
             {
@@ -275,7 +276,7 @@ int opd_textbox_resizeHitTest(t_opd_textbox *x, int mx, int my)
                 sys_vgui(".x%lx configure -cursor %s\n", c, cursormode);
             }
             
-            x->resize_hit = test;
+            x->_hit = test;
         }
     }
     return test;
@@ -292,7 +293,7 @@ int opd_textbox_motion(t_opd_textbox *x)
         int mx,my;
         glist_getnextxy(c, &mx, &my); //<< mouse position
         test = opd_textbox_resizeHitTest(x, mx, my);
-        opd_textbox_resize_mousemove(x, (float)mx, (float)my);
+        opd_textbox_mousemove(x, (float)mx, (float)my);
     }
     else
         ;//post("gl_edit %d isvis %d istop %d", c->gl_edit, glist_isvisible(c), glist_istoplevel(c));
@@ -307,7 +308,8 @@ void opd_textbox_bind_text_events(t_opd_textbox *t)
     sys_vgui("bind .x%lx.t%lxTEXT <KeyRelease> {+pdsend {%s keyup %%N }}\n",  canvas, (long)t, t->receive_name);
     
     //focusout for clicking to other windows other than the main canvas
-    //sys_vgui("bind .x%lx.t%lxTEXT <FocusOut> {+pdsend {%s nofocus }}\n", canvas, (long)t, t->receive_name);
+    sys_vgui("bind .x%lx.t%lxTEXT <FocusOut> {+pdsend {%s nofocus }}\n", canvas, (long)t, t->receive_name);
+    sys_vgui("bind .x%lx.t%lxTEXT <1> {+pdsend {%s mousedown }}\n", canvas, (long)t, t->receive_name);
     
 }
 
@@ -321,9 +323,11 @@ void opd_textbox_getTextAndCreateEditor(t_opd_textbox *t, int firsttime)
     if(firsttime)
     {
         t->new_texteditor = 1;
-        
-        int x1 = text_xpix(t->parent, t->glist);
-        int y1 = text_ypix(t->parent, t->glist);
+        int pix_buffer = 2;
+        int x1 = text_xpix(t->parent, t->glist) + t->margin_l - pix_buffer - 1;
+        int y1 = text_ypix(t->parent, t->glist) + t->margin_t - pix_buffer - 1;
+        int width = t->width - t->margin_l - t->margin_r - pix_buffer - 6;
+        int height = t->height - t->margin_t - t->margin_b - pix_buffer - 6;
         
         // post("%x %s %d x1 %d y1 %d x2 %d y2 %d", t, __func__, firsttime, x1, y1, x1+t->width, y1+t->height);
         t_canvas *canvas = glist_getcanvas(t->glist);
@@ -331,15 +335,17 @@ void opd_textbox_getTextAndCreateEditor(t_opd_textbox *t, int firsttime)
 //        gobj_select(&t->parent->te_g, t->glist, 0); // << deselect to disable PD key motions etc.
         glist_noselect(t->glist);
         sys_vgui(".x%lx.c itemconfigure text%lx -fill white \n", canvas, (long)t);
+        
         sys_vgui("text .x%lx.t%lxTEXT -font {{%s} %d %s} -undo true -fg \"black\" -bg \"white\" -takefocus 1 -state normal -highlightthickness 0 -wrap word -spacing3 0 \n", canvas, (long)t, sys_font, glist_getfont(t->glist), sys_fontweight ); //-tabs {%d left} , glist_getfont(t->glist) * ?
         
-        sys_vgui("place .x%lx.t%lxTEXT -x [expr %d - [.x%lx.c canvasx 0]] -y [expr %d - [.x%lx.c canvasy 0]] -width %d -height %d\n", canvas, (long)t, x1+4, canvas, y1+4, canvas, t->width-15, t->height-6);
+        sys_vgui("place .x%lx.t%lxTEXT -x [expr %d - [.x%lx.c canvasx 0]] -y [expr %d - [.x%lx.c canvasy 0]] -width %d -height %d\n", canvas, (long)t, x1, canvas, y1, canvas, width, height);
         
         if(t->text)
             sys_vgui(".x%lx.t%lxTEXT insert 1.0 [subst -nobackslash -nocommands -novariables {%s} ] \n", canvas, (long)t, t->text);
         
-        sys_vgui("event generate .x%lx.t%lxTEXT <1> -x %d -y %d \n", canvas, (long)t, x1 + 10, y1 + 5);
-        sys_vgui("event generate .x%lx.t%lxTEXT <ButtonRelease-1> -x %d -y %d \n", canvas, (long)t, x1 + 10, y1 + 5);
+        
+        sys_vgui("event generate .x%lx.t%lxTEXT <1> -x %d -y %d \n", canvas, (long)t, x1 + 5, y1 + 5);
+        sys_vgui("event generate .x%lx.t%lxTEXT <ButtonRelease-1> -x %d -y %d \n", canvas, (long)t, x1 + 5, y1 + 5);
         sys_vgui(".x%lx.t%lxTEXT tag add sel 0.0 end\n", canvas, (long)t);
         
         opd_textbox_bind_text_events(t);
@@ -370,7 +376,7 @@ void opd_textbox_storeTextAndExitEditorTick(t_opd_textbox *t)
     t->textediting = 0;
 //    opd_textbox_nofocus_callback(t);
     
-    sys_vgui(".x%lx.c itemconfigure text%lx -fill black -width %d -text [subst -nobackslash -nocommands -novariables [string trimright {%s} ]] \n", canvas, (long)t, t->width-15, t->text);
+    sys_vgui(".x%lx.c itemconfigure text%lx -fill black -width %d -text [subst -nobackslash -nocommands -novariables [string trimright {%s} ]] \n", canvas, (long)t, t->width - t->margin_l - t->margin_r, t->text);
     
     sys_vgui("destroy .x%lx.t%lxTEXT\n", canvas, (long)t);
     gobj_select(&t->parent->te_g, t->glist, 0);
@@ -443,6 +449,7 @@ void opd_textbox_outsideclick_callback(t_opd_textbox *t)
     sys_vgui("focus .x%lx.c\n", canvas);
     gobj_select(&t->parent->te_g, t->glist, 0); //<<    opd_textbox_storeTextAndExitEditor(x); called from select function
     */
+    t->mouseDown = 0;
     opd_textbox_nofocus_callback(t);
     
     //same for <Key>
@@ -526,7 +533,7 @@ void opd_textbox_key_callback(t_opd_textbox *t, t_symbol *s, int argc, t_atom *a
                     }
                 }
             } else {
-                sys_vgui(".x%lx.c itemconfigure text%lx -width %d -text [subst -nobackslash -nocommands -novariables [.x%lx.t%lxTEXT get 0.0 end-1c] ] \n", glist_getcanvas(t->glist), (long)t, t->width-15, glist_getcanvas(t->glist), (long)t);
+                sys_vgui(".x%lx.c itemconfigure text%lx -width %d -text [subst -nobackslash -nocommands -novariables [.x%lx.t%lxTEXT get 0.0 end-1c] ] \n", glist_getcanvas(t->glist), (long)t, t->width - t->margin_l - t->margin_r, glist_getcanvas(t->glist), (long)t);
                 opd_textbox_getRectAndDraw(t, 0);
             }
             
@@ -713,7 +720,7 @@ void opd_textbox_resetText(t_opd_textbox *t, char *s)
     else if(glist_isvisible(t->glist))
     {
         //post("%s %d", __func__, glist_isvisible(t->glist));
-        sys_vgui(".x%lx.c itemconfigure text%lx -width %d -text [subst -nobackslash -nocommands -novariables [string trimright {%s} ]] \n", glist_getcanvas(t->glist), (long)t, t->width-15, t->text);
+        sys_vgui(".x%lx.c itemconfigure text%lx -width %d -text [subst -nobackslash -nocommands -novariables [string trimright {%s} ]] \n", glist_getcanvas(t->glist), (long)t, t->width - t->margin_l - t->margin_r , t->text);
         
         opd_textbox_getRectAndDraw(t, 1);
     }
@@ -732,6 +739,13 @@ int opd_textbox_drawElements(t_opd_textbox *x, int x1, int y1, int x2, int y2, i
     t_canvas *canvas = glist_getcanvas(glist);
     
    // post("%x %s isvisible %d isgraph %d gl_editor %d", x, __func__, glist_isvisible(glist), glist_isgraph(glist), canvas->gl_editor);
+    
+    int pix_buffer = 2;
+    
+    int tx1 = x1 + x->margin_l + pix_buffer;
+    int ty1 = y1 + x->margin_t + pix_buffer;
+    int tw = x->width - x->margin_l - x->margin_r - pix_buffer;
+    int th = x->height - x->margin_b - x->margin_t - pix_buffer; //height maybe needs to be added to text height...
     
     int rw = x->resizebox_width / 2;
     int rh = x->resizebox_height / 2;
@@ -753,7 +767,7 @@ int opd_textbox_drawElements(t_opd_textbox *x, int x1, int y1, int x2, int y2, i
         //sys_vgui("::pdwindow::post \"canvas motion after? [bind .x%lx.c <Motion>] // search for: $::%s::canvas%lxMOTION // result [regsub -all $::%s::canvas%lxMOTION \"[bind .x%lx.c <Motion>]\" \"FOO\" ] // \n\" \n", canvas, x->tcl_namespace, canvas, x->tcl_namespace, canvas, canvas);
 
         //create text display
-        sys_vgui(".x%lx.c create text %d %d -anchor nw -width %d -font {{%s} %d %s} -tags text%lx -text [subst -nobackslash -nocommands -novariables [string trimright {%s} ]] -fill \"black\" \n", canvas, x1+5, y1+5, x->width-15, sys_font, glist_getfont(glist), sys_fontweight, (long)x, x->text);
+        sys_vgui(".x%lx.c create text %d %d -anchor nw -width %d -font {{%s} %d %s} -tags text%lx -text [subst -nobackslash -nocommands -novariables [string trimright {%s} ]] -fill \"black\" \n", canvas, tx1, ty1, tw, sys_font, glist_getfont(glist), sys_fontweight, (long)x, x->text);
         
         // get height of text bbox, send to "setheight" to set height and redraw in the case of cmd-d duplicate, this gets called first, and then is displaced, so the bbox value is actually pre-displacement, see setheight function above
         opd_textbox_getRectAndDraw(x, 1);
@@ -771,11 +785,13 @@ int opd_textbox_drawElements(t_opd_textbox *x, int x1, int y1, int x2, int y2, i
 
         if (x->textediting)
         {
-            sys_vgui("place .x%lx.t%lxTEXT -x [expr %d - [.x%lx.c canvasx 0]] -y [expr %d - [.x%lx.c canvasy 0]] -width %d -height %d\n", canvas, (long)x, x1+4, canvas, y1+4, canvas, x->width-16, x->height-6);
+            sys_vgui("place .x%lx.t%lxTEXT -x [expr %d - [.x%lx.c canvasx 0]] -y [expr %d - [.x%lx.c canvasy 0]] -width %d -height %d\n", canvas, (long)x, tx1-1, canvas, ty1-1, canvas, tw, th);
+            
+            //sys_vgui("place .x%lx.t%lxTEXT -x [expr %d - [.x%lx.c canvasx 0]] -y [expr %d - [.x%lx.c canvasy 0]] -width %d -height %d\n", canvas, (long)x, x1+4, canvas, y1+4, canvas, x->width-16, x->height-6);
         }
         else if (x->text[0] != '\0')
         {
-            sys_vgui(".x%lx.c itemconfigure text%lx -fill \"black\" -width %d -text [subst -nobackslash -nocommands -novariables [string trimright {%s} ]] \n", canvas, (long)x, x->width-16, x->text);
+            sys_vgui(".x%lx.c itemconfigure text%lx -fill \"black\" -width %d -text [subst -nobackslash -nocommands -novariables [string trimright {%s} ]] \n", canvas, (long)x, tw, x->text);
             
             //[regsub -all -line {^[\t]+} {%s} \"    \" ] << replace \t with spaces
             
@@ -792,7 +808,7 @@ int opd_textbox_drawElements(t_opd_textbox *x, int x1, int y1, int x2, int y2, i
 static void opd_textbox_delete(t_opd_textbox *x, t_glist *glist)
 {
 #ifdef OPD_TEXTBOX_DEBUG
-    post("%x %s", t, __func__);
+    post("%x %s", x, __func__);
 #endif
     
     t_canvas *canvas = glist_getcanvas(glist);
@@ -811,7 +827,11 @@ void opd_textbox_unbind_tick(t_opd_textbox *x)
     pd_unbind(&x->ob.ob_pd, gensym(x->receive_name));
     x->send_bind = 0;
     opd_textbox_unbindCanvasEvents(x);
+    
+#ifdef OPD_TEXTBOX_DEBUG
     post("unbind c_bind? %d", x->c_bind);
+#endif
+    
 }
 
 
@@ -869,8 +889,9 @@ static void opd_textbox_vis(t_opd_textbox *x, t_glist *glist, int vis)
     }
     else
     {
+        int delay = glist_isgraph(glist) ? 100 : 0;
         if(x->send_bind)
-            clock_delay(x->unbind_delay, 0);
+            clock_delay(x->unbind_delay, delay);
         
         //if(!x->firsttime)
         {
@@ -882,10 +903,16 @@ static void opd_textbox_vis(t_opd_textbox *x, t_glist *glist, int vis)
 
 static void opd_textbox_displace(t_opd_textbox *x, t_glist *glist, int dx, int dy)
 {
-    //post("%x %s mousedown %d dx %d dy %d", x, __func__, x->mouseDown, dx, dy);
+#ifdef OPD_TEXTBOX_DEBUG
+    post("%x %s mousedown %d dx %d dy %d", x, __func__, x->mouseDown, dx, dy);
+#endif
     
-    int x2 = x->parent->te_xpix + x->width;
-    int y2 = x->parent->te_ypix + x->height;
+
+    int x1 = text_xpix(x->parent, glist);
+    int y1 = text_ypix(x->parent, glist);
+    int x2 = x1 + x->width;
+    int y2 = y1 + x->height;
+
     
     t_canvas *canvas = glist_getcanvas(glist);
 
@@ -897,8 +924,14 @@ static void opd_textbox_displace(t_opd_textbox *x, t_glist *glist, int dx, int d
     
     if(x->textediting)
     {
-        sys_vgui("place .x%lx.t%lxTEXT -x [expr %d - [.x%lx.c canvasx 0]] -y [expr %d - [.x%lx.c canvasy 0]] -width %d -height %d\n", canvas, (long)x, x->ob.te_xpix+4, canvas, x->ob.te_ypix+4, canvas, x->width-10, x->height-10);
+        int pix_buffer = 2;
         
+        int tx1 = x1 + x->margin_l + pix_buffer;
+        int ty1 = y1 + x->margin_t + pix_buffer;
+        int tw = x->width - x->margin_l - x->margin_r - pix_buffer;
+        int th = x->height - x->margin_b - x->margin_t - pix_buffer; //height maybe needs to be added to text height...
+        
+        sys_vgui("place .x%lx.t%lxTEXT -x [expr %d - [.x%lx.c canvasx 0]] -y [expr %d - [.x%lx.c canvasy 0]] -width %d -height %d\n", canvas, (long)x, tx1-1, canvas, ty1-1, canvas, tw, th);
     }
     
     t_object *ob = pd_checkobject(&x->parent->te_pd);
@@ -942,7 +975,7 @@ void opd_textbox_select(t_opd_textbox *x, t_glist *glist, int state)
     
     if(opd_textbox_motion(x))
     {
-        opd_textbox_resize_mousedown(x);
+        opd_textbox_mousedown(x);
     }
     
     opd_textbox_drawParent(x, 0);
@@ -957,8 +990,11 @@ static void opd_textbox_activate(t_opd_textbox *x, t_glist *glist, int state)
     
     x->mouseDown = 0;
     
-    if(state)
+    if(state && !x->textediting)
+    {
+        x->selected = 1;
         opd_textbox_getTextAndCreateEditor(x, 1);
+    }
     else
         opd_textbox_storeTextAndExitEditor(x);
     
@@ -1033,11 +1069,16 @@ t_opd_textbox *opd_textbox_new(t_class *c)
         t->streamflag = 0;
         t->yscroll = 0;
         
-        t->resize_hit = 0;
+        t->_hit = 0;
         t->resizebox_x_offset = 0;
         t->resizebox_y_offset = 0;
         t->resizebox_height = 10;
         t->resizebox_width = 10;
+        
+        t->margin_t = 0;
+        t->margin_l = 0;
+        t->margin_b = 0;
+        t->margin_r = 0;
         
         char buf[MAXPDSTRING];
         
@@ -1117,9 +1158,9 @@ t_class *opd_textbox_classnew(void)
     class_addmethod(c, (t_method)opd_textbox_nofocus_callback, gensym("nofocus"), 0);
     class_addmethod(c, (t_method)opd_textbox_key_callback, gensym("key"), A_GIMME, 0);
     class_addmethod(c, (t_method)opd_textbox_keyup_callback, gensym("keyup"), A_GIMME, 0);
-    class_addmethod(c, (t_method)opd_textbox_resize_mousedown, gensym("resize_mousedown"), 0);
-    class_addmethod(c, (t_method)opd_textbox_resize_mousemove, gensym("resize_mousemove"), A_DEFFLOAT, A_DEFFLOAT, 0);
-    class_addmethod(c, (t_method)opd_textbox_resize_mouseup, gensym("resize_mouseup"), 0);
+    class_addmethod(c, (t_method)opd_textbox_mousedown, gensym("mousedown"), 0);
+    class_addmethod(c, (t_method)opd_textbox_mousemove, gensym("mousemove"), A_DEFFLOAT, A_DEFFLOAT, 0);
+    class_addmethod(c, (t_method)opd_textbox_mouseup, gensym("mouseup"), 0);
     class_addmethod(c, (t_method)opd_textbox_mousewheel_callback, gensym("mousewheel"), 0);
     class_addmethod(c, (t_method)opd_textbox_setHeight, gensym("setheight"), A_DEFFLOAT, 0);
 

@@ -498,10 +498,10 @@ void oexprcodebox_drawElements(t_object *ob, int firsttime)
     
     int x1, y1, x2, y2;
     oexprcodebox_getrect((t_gobj *)x, t->glist, &x1, &y1, &x2, &y2);
-    int cx1 = x1;// - 2;
-    int cy1 = y1;// - 2;
-    int cx2 = x2;// + 2;
-    int cy2 = y2;// + 2;
+    int rx1 = x1 + t->margin_l;
+    int ry1 = y1 + t->margin_t;
+    int rx2 = x2 - t->margin_r;
+    int ry2 = y2 - t->margin_b;
     
     t_glist *glist = t->glist;
     t_canvas *canvas = glist_getcanvas(glist);
@@ -512,20 +512,26 @@ void oexprcodebox_drawElements(t_object *ob, int firsttime)
     {
         if (firsttime)
         {
-            //post("%x %s FIRST VIS height %d y1 %d y2 %d \n", x, __func__, t->height, y1, y2);
+           // post("%x %s FIRST VIS height %d y1 %d y2 %d \n", x, __func__, t->height, y1, y2);
             
             //border
             sys_vgui(".x%lx.c create rectangle %d %d %d %d -outline \"#0066CC\" -fill \"#0066CC\" -tags %s \n", canvas, x1, y1, x2, y2, x->border_tag);
             
-            sys_vgui(".x%lx.c create rectangle %d %d %d %d -outline #0066CC -fill \"white\" -tags %sBorder -width 2 \n",canvas, cx1+1, cy1+4, cx2 - 1, cy2, x->border_tag);
+            sys_vgui(".x%lx.c create rectangle %d %d %d %d -outline \"\" -fill \"white\" -tags %sBorder -width 1 \n",canvas, rx1, ry1, rx2, ry2, x->border_tag);
             
         }
         else
         {
-            //post("%x %s REDRAW height %d y1 %d y2 %d \n", x, __func__, t->height, y1, y2);
+            //post("%x %s REDRAW height %d width %d \n", x, __func__, t->height, t->width );
             sys_vgui(".x%lx.c coords %s %d %d %d %d\n", canvas, x->border_tag, x1, y1, x2, y2);
-            sys_vgui(".x%lx.c coords %sBorder %d %d %d %d \n",canvas, x->border_tag, cx1+1, cy1+4, cx2 - 1, cy2 - 2);
+            sys_vgui(".x%lx.c coords %sBorder %d %d %d %d \n",canvas, x->border_tag, rx1, ry1, rx2, ry2);
         }
+        
+        
+        char *color = (x->textbox->selected? "#006699" : "#0066CC");
+        sys_vgui(".x%lx.c itemconfigure %s -outline %s -fill %s \n", canvas, x->border_tag, color, color);
+        sys_vgui(".x%lx.c itemconfigure %sBorder -outline %s\n", canvas, x->border_tag, color);
+
         
         opd_textbox_drawElements(x->textbox, x1,  y1,  x2,  y2,  firsttime);
         
@@ -579,7 +585,9 @@ static void oexprcodebox_select(t_gobj *z, t_glist *glist, int state)
     
     if (glist_isvisible(glist) && gobj_shouldvis(&x->ob.te_g, glist))
     {
-        sys_vgui(".x%lx.c itemconfigure %sBorder -outline %s\n", canvas, x->border_tag, (state? "#006699" : "#0066CC"));
+        char *color = (state? "#006699" : "#0066CC");
+        sys_vgui(".x%lx.c itemconfigure %s -outline %s -fill %s \n", canvas, x->border_tag, color, color);
+        sys_vgui(".x%lx.c itemconfigure %sBorder -outline %s\n", canvas, x->border_tag, color);
     }
 }
 
@@ -596,7 +604,9 @@ static void oexprcodebox_activate(t_gobj *z, t_glist *glist, int state)
     opd_textbox_activate(x->textbox, glist, state);
     
     //    sys_vgui(".x%lx.c itemconfigure %s -outline %s\n", glist, x->border_tag, (state? "$select_color" : "$msg_box_fill"));//was "$box_outline"
-    sys_vgui(".x%lx.c itemconfigure %sBorder -outline %s\n", canvas, x->border_tag, (state? "#006699" : "#0066CC"));
+    char *color = (state? "#006699" : "#0066CC");
+    sys_vgui(".x%lx.c itemconfigure %s -outline %s -fill %s \n", canvas, x->border_tag, color, color);
+    sys_vgui(".x%lx.c itemconfigure %sBorder -outline %s\n", canvas, x->border_tag, color);
     
 }
 
@@ -703,7 +713,12 @@ void *oexprcodebox_new(t_symbol *msg, short argc, t_atom *argv)
         t->selected = 0;
         t->editmode = glist_getcanvas(t->glist)->gl_edit;
         t->textediting = 0;
-    
+
+        t->margin_t = 10;
+        t->margin_l = 1;
+        t->margin_b = 1;
+        t->margin_r = 1;
+        
         t->resizebox_x_offset = 7;
         t->resizebox_y_offset = 5;
         t->resizebox_height = 10;
@@ -773,7 +788,7 @@ int setup_o0x2eexpr0x2ecodebox(void)
     oexprcodebox_widgetbehavior.w_displacefn = oexprcodebox_displace;
     oexprcodebox_widgetbehavior.w_selectfn = oexprcodebox_select;
     oexprcodebox_widgetbehavior.w_deletefn = oexprcodebox_delete;
-    oexprcodebox_widgetbehavior.w_clickfn = oexprcodebox_click;
+    oexprcodebox_widgetbehavior.w_clickfn = NULL;
     oexprcodebox_widgetbehavior.w_activatefn = oexprcodebox_activate;
     oexprcodebox_widgetbehavior.w_visfn = oexprcodebox_vis;
     class_setsavefn(oexprcodebox_class, oexprcodebox_save);
