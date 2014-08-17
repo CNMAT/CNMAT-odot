@@ -54,15 +54,18 @@
 
 #ifdef OMAX_PD_VERSION
 #include "m_pd.h"
+//#include "m_imp.h"
+#include "g_canvas.h"
+//#include "g_all_guis.h"
 #else
 #include "ext.h"
 #include "ext_obex.h"
 #include "ext_obex_util.h"
 #include "ext_critical.h"
-#endif
-
 #include "jpatcher_api.h"
 #include "jgraphics.h"
+#endif
+
 #include "osc.h"
 #include "osc_expr.h"
 #include "osc_expr_parser.h"
@@ -79,7 +82,39 @@
 
 #include "o.h"
 
-typedef struct _oexprcodebox{
+#ifdef OMAX_PD_VERSION
+#define OMAX_PD_MAXSTRINGSIZE (1<<16)
+#include "opd_textbox.h"
+
+typedef struct _jrgba {
+	double red;				///< Red component in the range [0.0, 1.0]
+	double green;			///< Green component in the range [0.0, 1.0]
+	double blue;
+	double alpha;			///< Alpha (transparency) component in the range [0.0, 1.0]
+} t_jrgba;
+
+typedef struct _oexprcodebox
+{
+    t_object ob;
+    t_opd_textbox *textbox;
+    char *border_tag;
+    char *update_tag;
+    t_critical lock;
+    long textlen;
+    char *text;
+    t_jrgba frame_color, background_color, text_color, default_color, error_color;
+    void *outlets[2];
+    t_osc_expr *expr;
+} t_oexprcodebox;
+
+t_class *oexprcodebox_class;
+t_class *oexprcodebox_textbox_class;
+
+t_widgetbehavior oexprcodebox_widgetbehavior;
+
+#else
+typedef struct _oexprcodebox
+{
     t_jbox ob;
     t_critical lock;
     long textlen;
@@ -90,6 +125,8 @@ typedef struct _oexprcodebox{
 } t_oexprcodebox;
 
 void *oexprcodebox_class;
+#endif
+
 void oexprcodebox_bang(t_oexprcodebox *x);
 
 
@@ -141,6 +178,7 @@ void oexprcodebox_fullPacket(t_oexprcodebox *x, t_symbol *msg, int argc, t_atom 
 	}
 }
 
+#ifndef OMAX_PD_VERSION
 void oexprcodebox_paint(t_oexprcodebox *x, t_object *patcherview)
 {
     critical_enter(x->lock);
@@ -217,12 +255,31 @@ void oexprcodebox_mouseup(t_oexprcodebox *x, t_object *patcherview, t_pt pt, lon
     oexprcodebox_bang(x);
 }
 
+OMAX_DICT_DICTIONARY(t_oexprcodebox, x, oexprcodebox_fullPacket);
+
+void oexprcodebox_assist(t_oexprcodebox *x, void *b, long io, long num, char *buf)
+{
+    omax_doc_assist(io, num, buf);
+}
+
+t_max_err oexprcodebox_notify(t_oexprcodebox *x, t_symbol *s, t_symbol *msg, void *sender, void *data)
+{
+    return MAX_ERR_NONE;
+    t_symbol *attrname;
+    
+    if(msg == gensym("attr_modified")){
+        attrname = (t_symbol *)object_method((t_object *)data, gensym("getname"));
+    }
+    return MAX_ERR_NONE;
+}
+#endif
+
 void oexprcodebox_gettext(t_oexprcodebox *x)
 {
     long size        = 0;
     char *text       = NULL;
 #ifdef OMAX_PD_VERSION
-    text = x->text;
+    text = x->textbox->text;
 #else
     t_object *textfield = jbox_get_textfield((t_object *)x);
     object_method(textfield, gensym("gettextptr"), &text, &size);
@@ -332,10 +389,6 @@ void oexprcodebox_bang(t_oexprcodebox *x)
 #endif
 }
 
-#ifndef OMAX_PD_VERSION
-OMAX_DICT_DICTIONARY(t_oexprcodebox, x, oexprcodebox_fullPacket);
-#endif
-
 void oexprcodebox_doc_cat(t_oexprcodebox *x, t_symbol *msg, int argc, t_atom *argv)
 {
         if(argc == 0){
@@ -391,174 +444,332 @@ void oexprcodebox_doc(t_oexprcodebox *x)
     omax_doc_outletDoc(x->outlets[0]);
 }
 
-#ifndef OMAX_PD_VERSION
-void oexprcodebox_assist(t_oexprcodebox *x, void *b, long io, long num, char *buf)
-{
-    omax_doc_assist(io, num, buf);
-}
-#endif
-
 void oexprcodebox_free(t_oexprcodebox *x)
 {
     if(x->expr){
         osc_expr_free(x->expr);
     }
+    
+#ifdef OMAX_PD_VERSION
+    free(x->border_tag);
+    opd_textbox_free(x->textbox);
+#else
     jbox_free((t_jbox *)x);
+#endif
+    
     critical_free(x->lock);
 }
 
-#ifndef OMAX_PD_VERSION
-t_max_err oexprcodebox_notify(t_oexprcodebox *x, t_symbol *s, t_symbol *msg, void *sender, void *data)
-{
-    return MAX_ERR_NONE;
-    t_symbol *attrname;
-
-    if(msg == gensym("attr_modified")){
-            attrname = (t_symbol *)object_method((t_object *)data, gensym("getname"));
-    }
-    return MAX_ERR_NONE;
-}
-#endif
+//::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+//::::::::::::::::::::::: PD VERSION :::::::::::::::::::::::
+//::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 #ifdef OMAX_PD_VERSION
+static void oexprcodebox_getrect(t_gobj *z, t_glist *glist,int *xp1, int *yp1, int *xp2, int *yp2)
+{
+    t_oexprcodebox *x = (t_oexprcodebox *)z;
+    int x1, y1, x2, y2;
+    
+    x1 = text_xpix(&x->ob, glist);
+    y1 = text_ypix(&x->ob, glist);
+    x2 = x1 + x->textbox->width;
+    y2 = y1 + x->textbox->height;
+    *xp1 = x1;
+    *yp1 = y1;
+    *xp2 = x2;
+    *yp2 = y2;
+    
+    opd_textbox_motion(x->textbox);
+    
+   // post("%s %d %d %d %d", __func__, x1, y1, x2, y2);
+    
+}
+
+void oexprcodebox_drawElements(t_object *ob, int firsttime)
+{
+    
+    t_oexprcodebox *x = (t_oexprcodebox *)ob;
+    t_opd_textbox *t = x->textbox;
+    
+    if(!opd_textbox_shouldDraw(t))
+        return;
+    
+    oexprcodebox_gettext(x);
+    
+    int x1, y1, x2, y2;
+    oexprcodebox_getrect((t_gobj *)x, t->glist, &x1, &y1, &x2, &y2);
+    int rx1 = x1 + t->margin_l;
+    int ry1 = y1 + t->margin_t;
+    int rx2 = x2 - t->margin_r;
+    int ry2 = y2 - t->margin_b;
+    
+    t_glist *glist = t->glist;
+    t_canvas *canvas = glist_getcanvas(glist);
+    
+    //    post("%x %s %d %d\n", x, __func__, firsttime, t->firsttime);
+    
+    if (glist_isvisible(glist) && canvas->gl_editor)
+    {
+        if (firsttime)
+        {
+           // post("%x %s FIRST VIS height %d y1 %d y2 %d \n", x, __func__, t->height, y1, y2);
+            
+            //border
+            sys_vgui(".x%lx.c create rectangle %d %d %d %d -outline \"#0066CC\" -fill \"#0066CC\" -tags %s \n", canvas, x1, y1, x2, y2, x->border_tag);
+            
+            sys_vgui(".x%lx.c create rectangle %d %d %d %d -outline \"\" -fill \"white\" -tags %sBorder -width 1 \n",canvas, rx1, ry1, rx2, ry2, x->border_tag);
+            
+        }
+        else
+        {
+            //post("%x %s REDRAW height %d width %d \n", x, __func__, t->height, t->width );
+            sys_vgui(".x%lx.c coords %s %d %d %d %d\n", canvas, x->border_tag, x1, y1, x2, y2);
+            sys_vgui(".x%lx.c coords %sBorder %d %d %d %d \n",canvas, x->border_tag, rx1, ry1, rx2, ry2);
+        }
+        
+        
+        char *color = (x->textbox->selected? "#006699" : "#0066CC");
+        sys_vgui(".x%lx.c itemconfigure %s -outline %s -fill %s \n", canvas, x->border_tag, color, color);
+        sys_vgui(".x%lx.c itemconfigure %sBorder -outline %s\n", canvas, x->border_tag, color);
+
+        
+        opd_textbox_drawElements(x->textbox, x1,  y1,  x2,  y2,  firsttime);
+        
+    //draw IO
+     t_object *ob = pd_checkobject(&x->ob.te_pd);
+        if (ob){
+            glist_drawiofor(glist, ob, firsttime, t->iolets_tag, x1, y1, x2, y2);
+            canvas_fixlinesfor(glist, ob);
+        }
+        
+        if (firsttime) // raise cords over everything else
+            sys_vgui(".x%lx.c raise cord\n", canvas);
+
+    }
+}
+
+
+static void oexprcodebox_vis(t_gobj *z, t_glist *glist, int vis)
+{
+    t_oexprcodebox *x = (t_oexprcodebox *)z;
+    opd_textbox_vis(x->textbox, glist, vis);
+}
+
+static void oexprcodebox_displace(t_gobj *z, t_glist *glist,int dx, int dy)
+{
+    
+    t_oexprcodebox *x = (t_oexprcodebox *)z;
+    
+    if(!x->textbox->mouseDown)
+    {
+        x->ob.te_xpix += dx;
+        x->ob.te_ypix += dy;
+        
+        t_canvas *canvas = glist_getcanvas(glist);
+        
+        sys_vgui(".x%lx.c move %s %d %d\n", canvas, x->border_tag, dx, dy);
+        sys_vgui(".x%lx.c move %sBorder %d %d\n", canvas, x->border_tag, dx, dy);
+        
+        opd_textbox_displace(x->textbox, glist, dx, dy);
+    }
+
+}
+
+static void oexprcodebox_select(t_gobj *z, t_glist *glist, int state)
+{
+    //post("%s %d", __func__, state);
+    t_oexprcodebox *x = (t_oexprcodebox *)z;
+    t_canvas *canvas = glist_getcanvas(glist);
+    
+    opd_textbox_select(x->textbox, glist, state);
+    
+    if (glist_isvisible(glist) && gobj_shouldvis(&x->ob.te_g, glist))
+    {
+        char *color = (state? "#006699" : "#0066CC");
+        sys_vgui(".x%lx.c itemconfigure %s -outline %s -fill %s \n", canvas, x->border_tag, color, color);
+        sys_vgui(".x%lx.c itemconfigure %sBorder -outline %s\n", canvas, x->border_tag, color);
+    }
+}
+
+static void oexprcodebox_activate(t_gobj *z, t_glist *glist, int state)
+{
+    //post("%s %d", __func__, state);
+    
+    t_oexprcodebox *x = (t_oexprcodebox *)z;
+    t_canvas *canvas = glist_getcanvas(glist);
+    
+    if(!state)
+        oexprcodebox_gettext(x);
+    
+    opd_textbox_activate(x->textbox, glist, state);
+    
+    //    sys_vgui(".x%lx.c itemconfigure %s -outline %s\n", glist, x->border_tag, (state? "$select_color" : "$msg_box_fill"));//was "$box_outline"
+    char *color = (state? "#006699" : "#0066CC");
+    sys_vgui(".x%lx.c itemconfigure %s -outline %s -fill %s \n", canvas, x->border_tag, color, color);
+    sys_vgui(".x%lx.c itemconfigure %sBorder -outline %s\n", canvas, x->border_tag, color);
+    
+}
+
+static void oexprcodebox_delete(t_gobj *z, t_glist *glist)
+{
+    //post("%s", __func__);
+    t_oexprcodebox *x = (t_oexprcodebox *)z;
+    t_opd_textbox *t = x->textbox;
+    t_canvas *canvas = glist_getcanvas(glist);
+    
+    //post("%x %s %d", x, __func__, canvas->gl_editor);
+    
+    if(!t->firsttime && canvas->gl_editor)
+    {
+        //        opd_textbox_nofocus_callback(t);
+        
+        sys_vgui(".x%lx.c delete %s\n", canvas, x->border_tag);
+        sys_vgui(".x%lx.c delete %sBorder\n", canvas, x->border_tag);
+        
+        opd_textbox_delete(t, glist);
+        
+        t_object *ob = pd_checkobject(&x->ob.te_pd);
+        if(ob && !t->firsttime && glist_isvisible(glist))
+        {
+            glist_eraseiofor(glist, ob, t->iolets_tag);
+            canvas_deletelinesfor(canvas, ob);
+        }
+    }
+    
+}
+
+
+static int oexprcodebox_click(t_gobj *z, struct _glist *glist,
+                          int xpix, int ypix, int shift, int alt, int dbl, int doit)
+{
+    /*t_oexprcodebox *x = (t_oexprcodebox *)z;
+    {
+        if(doit && x->textbox->resize_hit)
+        {
+            oexprcodebox_doClick(x, (t_floatarg)xpix, (t_floatarg)ypix, (t_floatarg)shift, (t_floatarg)0, (t_floatarg)alt);
+        }
+        return (1);
+    }*/
+    return 1;
+}
+
+static void oexprcodebox_save(t_gobj *z, t_binbuf *b)
+{
+    t_oexprcodebox *x = (t_oexprcodebox *)z;
+    t_opd_textbox *t = x->textbox;
+    //post("%x %s", x, __func__);
+    
+    opd_textbox_setHexFromText(t, t->text);
+    
+    binbuf_addv(b, "ssiisiis", gensym("#X"),gensym("obj"),(t_int)x->ob.te_xpix, (t_int)x->ob.te_ypix, gensym("o.expr.codebox"), t->width, t->height, gensym("binhex"));
+    
+    long chunksize = 32;
+    char buf[chunksize+3];
+    long len = strlen(t->hex);
+    long chunks = len / chunksize;
+    long chad = len % chunksize;
+    long i,k;
+    for (k = 0; k < chunks; k++) {
+        memset(buf, '\0', chunksize+3 );
+        buf[0] = 'b';
+        buf[1] = '#';
+        for (i = 0; i < chunksize; i++) {
+            buf[i+2] = t->hex[i + (k*chunksize) ];
+        }
+        binbuf_addv(b, "s", gensym(buf));
+    }
+    memset(buf, '\0', chunksize+3 );
+    buf[0] = 'b';
+    buf[1] = '#';
+    
+    for (i = 0; i < chad; i++) {
+        buf[i+2] = t->hex[i + (k*chunksize) ];
+    }
+    binbuf_addv(b, "s", gensym(buf));
+    
+    binbuf_addsemi(b);
+    
+}
+
 void *oexprcodebox_new(t_symbol *msg, short argc, t_atom *argv)
 {
     t_oexprcodebox *x;
-    if((x = (t_oexprcodebox *)object_alloc(oexprcodebox_class))){
-        t_osc_expr *f = NULL;
-    char symbuf[argc][65536];
-        if(argc){
-            char buf[65536];
-            memset(buf, '\0', sizeof(buf));
-            char *ptr = buf;
-            int i;
-            for(i = 0; i < argc; i++){
-                switch(atom_gettype(argv + i)){
-                    case A_LONG:
-                        ptr += sprintf(ptr, "%ld ", atom_getlong(argv + i));
-                        break;
-                    case A_FLOAT:
-                        ptr += sprintf(ptr, "%f ", atom_getfloat(argv + i));
-                        break;
-                    case A_SYM:
-                    {
-                        strcpy(symbuf[i], atom_getsymbol(argv + i)->s_name);
-                        omax_util_hashBrackets2Curlies(symbuf[i]);
-                                                
-                        char *s = symbuf[i];
-                        int len = strlen(s); // null byte
-                        int j;
-                        for(j = 0; j < len; j++) {
-//<< check this for pd version
-                            if(s[j] == '$'){
-                                if((j + 1) < len){
-                                    if((s[j + 1] <= 47 || s[j + 1] >= 58)){
-                                        object_error((t_object *)x, "address can't contain a $");
-                                        return NULL;
-                                    }
-                                    ptr += sprintf(ptr, "/_%d_", s[j + 1] - 48);
-                                    j++;
-                                } else {
-                                    object_error((t_object *)x, "address can't contain a $");
-                                    return NULL;
-                                }
-                            } else {
-                                *ptr++ = s[j];
-                            }
-                        }
-                        
-                        *ptr++ = ' ';
-                    }
-                        break;
-                }
-            }
-            
-            if(1){//if(!haspound){
-                OSC_PROFILE_TIMER_START(foo);
-                int ret = osc_expr_parser_parseExpr(buf, &f);
-                OSC_PROFILE_TIMER_STOP(foo);
-                OSC_PROFILE_TIMER_PRINTF(foo);
-                OSC_PROFILE_TIMER_SNPRINTF(foo, buff);
-#ifdef __OSC_PROFILE__
-                post("%s\n", buff);
-#endif
-                if(!f || ret) {
-                    object_error((t_object *)x, "error parsing %s\n", buf);
-//                              return NULL;  //<< avioding bogus object
-                    x->expr = NULL;
-                } else {
-                    x->expr = f;
-                }
-            } else {
-                x->expr = NULL;
-            }
-            
-        }
-    
-        int n = 0;
-        while(f){
-            n++;
-            f = osc_expr_next(f);
-        }
+    if((x = (t_oexprcodebox *)object_alloc(oexprcodebox_class)))
+    {        
+        t_opd_textbox *t = opd_textbox_new(oexprcodebox_textbox_class);
         
-#if defined (OIF)
-        if(n == 0 || n > 1){
-            object_error((t_object *)x, "invalid number of expressions: %d", n);
-            return NULL;
-        }
-        x->outlets = osc_mem_alloc(2 * sizeof(void *));
+        t->glist = (t_glist *)canvas_getcurrent();
+        //post("%s %x: glist %x", __func__, x, t->glist);
+        t->in_new_flag = 1;
+        t->firsttime = 1;
+        t->parent = (t_object *)x;
+        
+        t->draw_fn = (t_gotfn)oexprcodebox_drawElements;
+        t->gettext_fn = (t_gotfn)oexprcodebox_gettext;
+        t->click_fn = NULL;
+        t->delete_fn = (t_gotfn)oexprcodebox_delete;
+        
+        t->mouseDown = 0;
+        t->selected = 0;
+        t->editmode = glist_getcanvas(t->glist)->gl_edit;
+        t->textediting = 0;
+
+        t->margin_t = 10;
+        t->margin_l = 1;
+        t->margin_b = 1;
+        t->margin_r = 1;
+        
+        t->resizebox_x_offset = 7;
+        t->resizebox_y_offset = 5;
+        t->resizebox_height = 10;
+        t->resizebox_width = 10;
+
+        
+        x->textbox = t;
+    
+		critical_new(&(x->lock));
+		//t_osc_expr *f = NULL;
 		x->outlets[0] = outlet_new(&x->ob, gensym("FullPacket"));
-        x->outlets[1] = outlet_new(&x->ob, gensym("FullPacket"));
-#elif defined (OUNLESS) || defined (OWHEN)
-        if(n == 0 || n > 1){
-            object_error((t_object *)x, "invalid number of expressions: %d", n);
+		x->outlets[1] = outlet_new(&x->ob, gensym("FullPacket"));
+        
+        x->border_tag = NULL;
+    
+        //object name heirarchy:
+        char buf[MAXPDSTRING];
+        
+        sprintf(buf, "%lxBORDER", (long unsigned int)x);
+        x->border_tag = (char *)malloc(sizeof(char) * (strlen(buf)+1));
+        if(x->border_tag == NULL)
+        {
+            printf("out of memory %d\n", __LINE__);
             return NULL;
         }
-        x->outlet = outlet_new(&x->ob, gensym("FullPacket"));
-#elif defined (OCOND)
-        x->num_exprs = n;
-        // implicit 't' as the last condition
-        x->outlets = osc_mem_alloc((n + 1) * sizeof(void *));
-        int i;
-        for(i = 0; i <= n; i++) {
-            x->outlets[i] = outlet_new(&x->ob, gensym("FullPacket"));;
-        }
-		/*
-		  x->outlets_desc = (char **)osc_mem_alloc((x->num_exprs + 1) * sizeof(char *));
-		  for(i = 0; i < x->num_exprs; i++){
-		  x->outlets_desc[i] = (char *)osc_mem_alloc(128);
-		  sprintf(x->outlets_desc[i], "Input OSC packet if expression %d returns true or non-zero", i+1);
-		  }
-		  x->outlets_desc[x->num_exprs] = (char *)osc_mem_alloc(128);
-		  sprintf(x->outlets_desc[x->num_exprs], "Input OSC packet if all expressions return false or zero");
-		*/
-#else
-        x->outlet = outlet_new(&x->ob, gensym("FullPacket"));
-#endif
-        }
-        return x;
+        strcpy(x->border_tag, buf);
+        
+        opd_textbox_atoms(t, argc, argv);
+        
+        oexprcodebox_gettext(x);
+        
+        t->in_new_flag = 0;
+        t->softlock = 0;
+        
+        t->height = 23;
+
+ 
+    }
+    return x;
 }
 
-#if defined (OIF)
-int oif_setup(void)
-#elif defined (OUNLESS)
-int ounless_setup(void)
-#elif defined (OWHEN)
-int owhen_setup(void)
-#elif defined (OCOND)
-int ocond_setup(void)
-#else
-int oexprcodebox_setup(void)
-#endif
-{
-    t_class *c = class_new(gensym(NAME), (t_newmethod)oexprcodebox_new, (t_method)oexprcodebox_free, sizeof(t_oexprcodebox), 0L, A_GIMME, 0);
 
+int setup_o0x2eexpr0x2ecodebox(void)
+{
+    t_class *c = class_new(gensym("o.expr.codebox"), (t_newmethod)oexprcodebox_new, (t_method)oexprcodebox_free, sizeof(t_oexprcodebox), 0L, A_GIMME, 0);
 
     class_addmethod(c, (t_method)oexprcodebox_fullPacket, gensym("FullPacket"), A_GIMME, 0);
 //  class_addmethod(c, (t_method)oexprcodebox_assist, gensym("assist"), A_CANT, 0);
     class_addmethod(c, (t_method)oexprcodebox_bang, gensym("bang"), 0);
 
-    class_addmethod(c, (t_method)oexprcodebox_postExprIR, gensym("post-expr-ir"), 0);
+    class_addmethod(c, (t_method)oexprcodebox_postExprAST, gensym("post-ast"), 0);
 
     class_addmethod(c, (t_method)oexprcodebox_doc, gensym("doc"), 0);
     class_addmethod(c, (t_method)oexprcodebox_doc_func, gensym("doc-func"), A_GIMME, 0);
@@ -573,6 +784,19 @@ int oexprcodebox_setup(void)
 //  common_symbols_init();
 //  osc_error_setHandler(omax_util_liboErrorHandler);
 
+    oexprcodebox_widgetbehavior.w_getrectfn = oexprcodebox_getrect;
+    oexprcodebox_widgetbehavior.w_displacefn = oexprcodebox_displace;
+    oexprcodebox_widgetbehavior.w_selectfn = oexprcodebox_select;
+    oexprcodebox_widgetbehavior.w_deletefn = oexprcodebox_delete;
+    oexprcodebox_widgetbehavior.w_clickfn = NULL;
+    oexprcodebox_widgetbehavior.w_activatefn = oexprcodebox_activate;
+    oexprcodebox_widgetbehavior.w_visfn = oexprcodebox_vis;
+    class_setsavefn(oexprcodebox_class, oexprcodebox_save);
+    class_setwidget(oexprcodebox_class, &oexprcodebox_widgetbehavior);
+    
+    oexprcodebox_textbox_class = opd_textbox_classnew();
+
+    
     ODOT_PRINT_VERSION;
 
     return 0;
