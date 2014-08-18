@@ -86,7 +86,6 @@
 #include "o.h"
 
 #ifdef OMAX_PD_VERSION
-#define OMAX_PD_MAXSTRINGSIZE (1<<16)
 #include "opd_textbox.h"
 #endif
 
@@ -1118,7 +1117,7 @@ void *ocompose_new(t_symbol *msg, short argc, t_atom *argv)
         }
         strcpy(x->corner_tag, buf);
         
-        opd_textbox_atoms(t, argc, argv);
+        opd_textbox_processArgs(t, argc, argv);
 
         t->in_new_flag = 0;
         t->softlock = 0;

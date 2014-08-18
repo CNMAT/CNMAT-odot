@@ -3,7 +3,14 @@
 
 #include "m_imp.h"
 
+#define OMAX_PD_MAXSTRINGSIZE (1<<16)
+
 //#define OPD_TEXTBOX_DEBUG
+
+typedef struct _jrgb {
+    char r, g, b;
+    char hex[7];
+} t_opd_rgb;
 
 typedef struct _opd_textbox
 {
@@ -139,7 +146,7 @@ void opd_textbox_drawParent(t_opd_textbox *t, int firstime)
 
 void opd_textbox_setHeight(t_opd_textbox *t, float y)
 {
-    int h = ((int)y - text_ypix(t->parent, t->glist)) + t->margin_t;
+    int h = ((int)y - text_ypix(t->parent, t->glist)) + t->margin_t + t->margin_b;
     h = (h > 23) ? h : 23;
     
 //    post("y %d ypix %d t->margin_b %d t->margin_t %d", (int)y, text_ypix(t->parent, t->glist), t->margin_b, t->margin_t);
@@ -274,6 +281,7 @@ int opd_textbox_resizeHitTest(t_opd_textbox *x, int mx, int my)
                 char *cursormode = (test && (x->textediting || x->selected || x->mouseDown)) ? "$cursor_editmode_resize" : "$cursor_runmode_nothing";
                 //canvas_setcursor((t_canvas *)x->glist, cursormode); //<< not sure why this doesn't work
                 sys_vgui(".x%lx configure -cursor %s\n", c, cursormode);
+                
             }
             
             x->_hit = test;
@@ -604,6 +612,29 @@ void opd_textbox_setTextFromString(t_opd_textbox *t, char *str)
     //post("%x %s %s", t, __func__, t->text);
 
     //n.b. convertion to hex done on save
+}
+
+unsigned long createRGB(int r, int g, int b)
+{
+    return ((r & 0xff) << 16) + ((g & 0xff) << 8) + (b & 0xff);
+}
+
+void opd_textbox_setRGB(t_opd_rgb *rgb, char r, char b, char g)
+{
+    rgb->r = r;
+    rgb->g = g;
+    rgb->b = b;
+    sprintf(rgb->hex, "#%02X%02X%02X", r, g, b);
+}
+
+void opd_textbox_fsetRGB(t_opd_rgb *rgb, float r, float g, float b)
+{
+    unsigned long h = createRGB((int)(r * 256), (int)(g * 256), (int)(b * 256));
+    rgb->r = (char)(r * 256); //<< pretty sure this is wrong, but not really using it right now
+    rgb->g = (char)(g * 256);
+    rgb->b = (char)(b * 256);
+    
+    sprintf(rgb->hex, "#%lx", h);
 }
 
 void opd_textbox_setHexFromText(t_opd_textbox *t, char *str)
@@ -1000,7 +1031,7 @@ static void opd_textbox_activate(t_opd_textbox *x, t_glist *glist, int state)
     
 }
 
-void opd_textbox_atoms(t_opd_textbox *t, short argc, t_atom *argv)
+void opd_textbox_processArgs(t_opd_textbox *t, short argc, t_atom *argv)
 {
     if(argc > 3)
     {
@@ -1214,6 +1245,24 @@ t_class *opd_textbox_classnew(void)
     sys_vgui("       pdsend \"$sendto textbuf hex $sendto \"\n");
     sys_vgui("}\n");//, x->receive_name, x->receive_name, x->receive_name, x->receive_name);
 
+//from http://wiki.tcl.tk/1416
+    sys_vgui("proc ::opd_textbox::createRoundRect {w L T Rad width height colour tag} {\n");
+    sys_vgui("        $w create oval $L $T [expr $L + $Rad] [expr $T + $Rad] -fill $colour -outline $colour -tag [append $tag TL]\n");
+    sys_vgui("        $w create oval [expr $width-$Rad] $T $width [expr $T + $Rad] -fill $colour -outline $colour -tag [append $tag TR]\n");
+    sys_vgui("        $w create oval $L [expr $height-$Rad] [expr $L+$Rad] $height -fill $colour -outline $colour -tag [append $tag BL]\n");
+    sys_vgui("        $w create oval [expr $width-$Rad] [expr $height-$Rad] [expr $width] $height -fill $colour -outline $colour -tag [append $tag BR]\n");
+    sys_vgui("        $w create rectangle [expr $L + ($Rad/2.0)] $T [expr $width-($Rad/2.0)] $height -fill $colour -outline $colour -tag [append $tag r1]\n");
+    sys_vgui("        $w create rectangle $L [expr $T + ($Rad/2.0)] $width [expr $height-($Rad/2.0)] -fill $colour -outline $colour -tag [append $tag r2]\n");
+    sys_vgui("}\n");
+    
+    sys_vgui("proc ::opd_textbox::redrawRoundRect {w L T Rad width height colour tag} {\n");
+    sys_vgui("        $w create oval $L $T [expr $L + $Rad] [expr $T + $Rad] -fill $colour -outline $colour -tag $tag\n");
+    sys_vgui("        $w create oval [expr $width-$Rad] $T $width [expr $T + $Rad] -fill $colour -outline $colour -tag $tag\n");
+    sys_vgui("        $w create oval $L [expr $height-$Rad] [expr $L+$Rad] $height -fill $colour -outline $colour -tag $tag\n");
+    sys_vgui("        $w create oval [expr $width-$Rad] [expr $height-$Rad] [expr $width] $height -fill $colour -outline $colour -tag $tag\n");
+    sys_vgui("        $w create rectangle [expr $L + ($Rad/2.0)] $T [expr $width-($Rad/2.0)] $height -fill $colour -outline $colour -tag $tag\n");
+    sys_vgui("        $w create rectangle $L [expr $T + ($Rad/2.0)] $width [expr $height-($Rad/2.0)] -fill $colour -outline $colour -tag $tag\n");
+    sys_vgui("}\n");
     //sys_vgui("eval [read [open {%s/%s.tcl}]]\n", c->c_externdir->s_name,c->c_name->s_name);
     
     return c;
