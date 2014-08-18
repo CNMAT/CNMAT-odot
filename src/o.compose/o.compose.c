@@ -494,7 +494,7 @@ void ocompose_mouseup(t_ocompose *x, t_object *patcherview, t_pt pt, long modifi
 
 void ocompose_jsave(t_ocompose *x, t_dictionary *d)
 {
-    post( "jsave ACTIVATE!!!" );
+    //post( "jsave ACTIVATE!!!" );
     t_osc_bundle_s* bundle = x->bndl_s;
     long len = osc_bundle_s_getLen(bundle);
     char *ptr = osc_bundle_s_getPtr(bundle);
@@ -1209,6 +1209,8 @@ void *ocompose_new(t_symbol *msg, short argc, t_atom *argv){
             textfield_set_textcolor(textfield, &(x->text_color));
         }
         
+        jbox_ready((t_jbox *)x);
+        
         long ac = 0;
         t_atom *av = NULL;
         dictionary_getatoms( d, gensym( "saved_bundle_data" ), &ac, &av );
@@ -1217,13 +1219,13 @@ void *ocompose_new(t_symbol *msg, short argc, t_atom *argv){
             for ( long i = 0; i < ac; ++i ) {
                 saved_bundle[ i ] = (char *)atom_getlong( &av[ i ] );
             }
-            post( "bundle : %s", saved_bundle );
+            //post( "bundle : %s", saved_bundle );
             x->bndl_s = osc_bundle_s_alloc( ac, saved_bundle );
         } else {
-            post( "no dictionary data" );
+            //post( "no dictionary data" );
+            ocompose_gettext(x);
         }
         
-        jbox_ready((t_jbox *)x);
         //ocompose_gettext(x);
         return x;
     }
