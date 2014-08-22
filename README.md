@@ -7,6 +7,10 @@ The odot system augments dataflow languages like Max/MSP, PD and Node Red with t
 functional, declarative, imperative, dynamic, delegation-based objects, dynamic class-based objects, aspect-oriented
 3. Timing and scheduling primitives to support sequencing and synchronization aspects of media and network programming.
 
+Benefits
+====
+For users of Max/MSP or PD, the most obvious benefit is the ability to label data with human readable text.
+
 Roadmap
 ====
 odot has been used in various experimental incarnations for many years at CNMAT. The public release roadmap is:
