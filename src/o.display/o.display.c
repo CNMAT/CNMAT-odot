@@ -908,7 +908,7 @@ void *odisplay_new(t_symbol *msg, short argc, t_atom *argv)
         strcpy(x->tk_tag, buf);
         
         opd_textbox_processArgs(t, argc, argv);
-        
+
         t->in_new_flag = 0;
         t->softlock = 0;
         
