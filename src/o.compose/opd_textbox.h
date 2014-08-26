@@ -3,7 +3,14 @@
 
 #include "m_imp.h"
 
+#define OMAX_PD_MAXSTRINGSIZE (1<<16)
+
 //#define OPD_TEXTBOX_DEBUG
+
+typedef struct _jrgb {
+    char r, g, b;
+    char hex[7];
+} t_opd_rgb;
 
 typedef struct _opd_textbox
 {
@@ -75,6 +82,8 @@ typedef struct _opd_textbox
 } t_opd_textbox;
 
 
+uint16_t opd_textbox_defined = 0;
+
 void opd_textbox_nofocus_callback(t_opd_textbox *t);
 void opd_textbox_outsideclick_callback(t_opd_textbox *t);
 int opd_textbox_resizeHitTest(t_opd_textbox *x, int mx, int my);
@@ -139,7 +148,7 @@ void opd_textbox_drawParent(t_opd_textbox *t, int firstime)
 
 void opd_textbox_setHeight(t_opd_textbox *t, float y)
 {
-    int h = ((int)y - text_ypix(t->parent, t->glist)) + t->margin_t;
+    int h = ((int)y - text_ypix(t->parent, t->glist)) + t->margin_t + t->margin_b;
     h = (h > 23) ? h : 23;
     
 //    post("y %d ypix %d t->margin_b %d t->margin_t %d", (int)y, text_ypix(t->parent, t->glist), t->margin_b, t->margin_t);
@@ -174,7 +183,29 @@ void opd_textbox_getRectAndDraw(t_opd_textbox *t, int forceredraw)
     t->forceredraw = forceredraw;
     t->softlock = 1;
     sys_vgui("pdsend \"%s setheight [lindex [.x%lx.c bbox text%lx] 3]\" \n", t->receive_name, glist_getcanvas(t->glist), (long)t);
+  //  sys_vgui("::pdwindow::post \"%s setheight [lindex [.x%lx.c bbox text%lx] 3]\n\" \n", t->receive_name, glist_getcanvas(t->glist), (long)t);
 
+}
+
+void opd_textbox_setSize(t_opd_textbox *t, float x, float y)
+{
+    int w = (int)x + t->margin_l + t->margin_r;
+    //    int h = (int)y + t->margin_t + t->margin_b;
+    w = (w > 50) ? w : 50;
+    //    h = (h > 23) ? h : 23;
+    //    post("%x %s x %f y %f w %d h %d ------ width %d height %d", t, __func__, x, y, w, h, t->width, t->height);
+    
+    t->width = w;
+    //  t->height = h;
+    
+    // sys_vgui(".x%lx.c itemconfigure text%lx -width %d\n", glist_getcanvas(t->glist), (long)t, w);
+    
+    opd_textbox_getRectAndDraw(t, 1);
+    // t->softlock = 0;
+    
+    // if(t->send_bind)
+    //      opd_textbox_drawParent(t, t->firsttime);
+    
 }
 
 void opd_textbox_mousedown(t_opd_textbox *t)
@@ -274,6 +305,7 @@ int opd_textbox_resizeHitTest(t_opd_textbox *x, int mx, int my)
                 char *cursormode = (test && (x->textediting || x->selected || x->mouseDown)) ? "$cursor_editmode_resize" : "$cursor_runmode_nothing";
                 //canvas_setcursor((t_canvas *)x->glist, cursormode); //<< not sure why this doesn't work
                 sys_vgui(".x%lx configure -cursor %s\n", c, cursormode);
+                
             }
             
             x->_hit = test;
@@ -313,7 +345,6 @@ void opd_textbox_bind_text_events(t_opd_textbox *t)
     
 }
 
-
 void opd_textbox_getTextAndCreateEditor(t_opd_textbox *t, int firsttime)
 {
 #ifdef OPD_TEXTBOX_DEBUG
@@ -342,7 +373,6 @@ void opd_textbox_getTextAndCreateEditor(t_opd_textbox *t, int firsttime)
         
         if(t->text)
             sys_vgui(".x%lx.t%lxTEXT insert 1.0 [subst -nobackslash -nocommands -novariables {%s} ] \n", canvas, (long)t, t->text);
-        
         
         sys_vgui("event generate .x%lx.t%lxTEXT <1> -x %d -y %d \n", canvas, (long)t, x1 + 5, y1 + 5);
         sys_vgui("event generate .x%lx.t%lxTEXT <ButtonRelease-1> -x %d -y %d \n", canvas, (long)t, x1 + 5, y1 + 5);
@@ -377,7 +407,7 @@ void opd_textbox_storeTextAndExitEditorTick(t_opd_textbox *t)
 //    opd_textbox_nofocus_callback(t);
     
     sys_vgui(".x%lx.c itemconfigure text%lx -fill black -width %d -text [subst -nobackslash -nocommands -novariables [string trimright {%s} ]] \n", canvas, (long)t, t->width - t->margin_l - t->margin_r, t->text);
-    
+
     sys_vgui("destroy .x%lx.t%lxTEXT\n", canvas, (long)t);
     gobj_select(&t->parent->te_g, t->glist, 0);
 
@@ -389,7 +419,7 @@ void opd_textbox_storeTextAndExitEditor(t_opd_textbox *t)
 {
     
     if(t->textediting){
-        sys_vgui("::opd_textbox::sendchunks [.x%lx.t%lxTEXT get 0.0 end] %s \n", glist_getcanvas(t->glist), (long)t, t->receive_name); //sendchunks
+        sys_vgui("::opd_textbox::sendchunks [.x%lx.t%lxTEXT get 0.0 end-1c] %s \n", glist_getcanvas(t->glist), (long)t, t->receive_name); //sendchunks
         //receive happens on next tick
     }
     
@@ -492,8 +522,8 @@ void opd_textbox_key_callback(t_opd_textbox *t, t_symbol *s, int argc, t_atom *a
     {
         if(argv->a_type == A_FLOAT)
         {
-            //post("%x %s %d", x,  __func__, (int)atom_getfloat(argv));
             int k = (int)atom_getfloat(argv);
+            //post("%x %s %d", t,  __func__, k);
             switch (k) {
                 case 65307: //esc
                     opd_textbox_outsideclick_callback(t);
@@ -509,7 +539,15 @@ void opd_textbox_key_callback(t_opd_textbox *t, t_symbol *s, int argc, t_atom *a
             }
             
             if(t->cmdDown){
-                if(k >= 49 && k <= 53)
+                
+                if(t->cmdDown && k == 'j')
+                {
+                    t->softlock = 1;
+                  //  post("%s width %d height %d", __func__, t->width, t->height);
+                    sys_vgui("::opd_textbox::maximizeWidth .x%lx.t%lxTEXT %s %d \n", glist_getcanvas(t->glist), (long)t, t->receive_name, t->width );
+                    return;
+                }
+                else if(k >= 49 && k <= 53)
                 {
                     opd_textbox_outsideclick_callback(t);
                     return;
@@ -564,9 +602,8 @@ int opd_textbox_hex_to_ascii(char c, char d){
 void opd_textbox_setTextFromHex(t_opd_textbox *t, char *hex)
 {
     // called when text comes in from TCL/TK or from the saved PD file
-    int hexlen = strlen(hex);
-    int length = hexlen / 2;
-    
+    unsigned long hexlen = strlen(hex);
+    unsigned long length = hexlen / 2;
     if(length >= OMAX_PD_MAXSTRINGSIZE){
         post("max o_message string size = %d", OMAX_PD_MAXSTRINGSIZE);
         return;
@@ -583,8 +620,9 @@ void opd_textbox_setTextFromHex(t_opd_textbox *t, char *hex)
         buf[j] = (char)c;
         
     }
+
     buf[length] = '\0'; //<< not sure if this is necessary
-    
+
     memset(t->text, '\0', OMAX_PD_MAXSTRINGSIZE);
     strcpy(t->text, buf);
     
@@ -604,6 +642,29 @@ void opd_textbox_setTextFromString(t_opd_textbox *t, char *str)
     //post("%x %s %s", t, __func__, t->text);
 
     //n.b. convertion to hex done on save
+}
+
+unsigned long createRGB(int r, int g, int b)
+{
+    return ((r & 0xff) << 16) + ((g & 0xff) << 8) + (b & 0xff);
+}
+
+void opd_textbox_setRGB(t_opd_rgb *rgb, char r, char b, char g)
+{
+    rgb->r = r;
+    rgb->g = g;
+    rgb->b = b;
+    sprintf(rgb->hex, "#%02X%02X%02X", r, g, b);
+}
+
+void opd_textbox_fsetRGB(t_opd_rgb *rgb, float r, float g, float b)
+{
+    unsigned long h = createRGB((int)(r * 256), (int)(g * 256), (int)(b * 256));
+    rgb->r = (char)(r * 256); //<< pretty sure this is wrong, but not really using it right now
+    rgb->g = (char)(g * 256);
+    rgb->b = (char)(b * 256);
+    
+    sprintf(rgb->hex, "#%lx", h);
 }
 
 void opd_textbox_setHexFromText(t_opd_textbox *t, char *str)
@@ -644,7 +705,7 @@ void opd_textbox_textbuf(t_opd_textbox *t, t_symbol *msg, int argc, t_atom *argv
             if(s == gensym("hex") || s == gensym("binhex"))
             {
                 
-                int i, charcount = 0;
+                unsigned long i, charcount = 0;
                 if(!t->streamflag)
                 {
                     t->streamflag = 1;
@@ -681,7 +742,7 @@ void opd_textbox_textbuf(t_opd_textbox *t, t_symbol *msg, int argc, t_atom *argv
                             opd_textbox_storeTextAndExitEditorTick(t);
                         
                         opd_textbox_setTextFromHex(t, t->hex);
-                        
+
                         if(t->gettext_fn)
                             t->gettext_fn(t->parent); //converts to text to bundle, reformats after parsing
 
@@ -978,7 +1039,7 @@ void opd_textbox_select(t_opd_textbox *x, t_glist *glist, int state)
         opd_textbox_mousedown(x);
     }
     
-    opd_textbox_drawParent(x, 0);
+    opd_textbox_getRectAndDraw(x, 0);
     
 }
 
@@ -1000,13 +1061,13 @@ static void opd_textbox_activate(t_opd_textbox *x, t_glist *glist, int state)
     
 }
 
-void opd_textbox_atoms(t_opd_textbox *t, short argc, t_atom *argv)
+void opd_textbox_processArgs(t_opd_textbox *t, short argc, t_atom *argv)
 {
-    if(argc > 3)
+    if(argc >= 2)
     {
         t->width = atom_getfloat(argv);
         t->height = atom_getfloat(argv+1);
-        if(((argv+2)->a_type == A_SYMBOL ) && (atom_getsymbol(argv+2) == gensym("binhex")))
+        if(argc > 2 && ((argv+2)->a_type == A_SYMBOL ) && (atom_getsymbol(argv+2) == gensym("binhex")))
         {
             
             opd_textbox_textbuf(t, NULL, argc-2, (argv+2));
@@ -1163,6 +1224,7 @@ t_class *opd_textbox_classnew(void)
     class_addmethod(c, (t_method)opd_textbox_mouseup, gensym("mouseup"), 0);
     class_addmethod(c, (t_method)opd_textbox_mousewheel_callback, gensym("mousewheel"), 0);
     class_addmethod(c, (t_method)opd_textbox_setHeight, gensym("setheight"), A_DEFFLOAT, 0);
+    class_addmethod(c, (t_method)opd_textbox_setSize, gensym("setsize"), A_DEFFLOAT, A_DEFFLOAT, 0);
 
     /*
     c->opd_textbox_widget.w_getrectfn = opd_textbox_getrect;
@@ -1176,45 +1238,95 @@ t_class *opd_textbox_classnew(void)
 //    class_setwidget(c, &c->opd_textbox_widget);
      */
     
-    sys_vgui("namespace eval ::opd_textbox:: {}\n");
-    
-    sys_vgui("proc ::opd_textbox::unbind {tag event script} {\n");
-    sys_vgui("         set bind {}\n");
-    sys_vgui("         foreach x [split [bind $tag $event] \"\n\"] {\n");
-    sys_vgui("              if {$x != $script} {\n");
-    sys_vgui("                  lappend bind $x\n");
-    sys_vgui("              }\n");
-    sys_vgui("         }\n");
-    sys_vgui("         bind $tag $event {}\n");
-    sys_vgui("         foreach x $bind {bind $tag $event $x}\n");
-    sys_vgui("}\n");
-    
-    sys_vgui("proc ::opd_textbox::sendto {sendto args} {\n");
-    sys_vgui("      pdsend \"$sendto $args\"\n");
-    sys_vgui("}\n");
+    if(!opd_textbox_defined)
+    {
+        sys_vgui("namespace eval ::opd_textbox:: {}\n");
+        
+        sys_vgui("proc ::opd_textbox::unbind {tag event script} {\n");
+        sys_vgui("         set bind {}\n");
+        sys_vgui("         foreach x [split [bind $tag $event] \"\n\"] {\n");
+        sys_vgui("              if {$x != $script} {\n");
+        sys_vgui("                  lappend bind $x\n");
+        sys_vgui("              }\n");
+        sys_vgui("         }\n");
+        sys_vgui("         bind $tag $event {}\n");
+        sys_vgui("         foreach x $bind {bind $tag $event $x}\n");
+        sys_vgui("}\n");
+        
+        sys_vgui("proc ::opd_textbox::sendto {sendto args} {\n");
+        sys_vgui("      pdsend \"$sendto $args\"\n");
+        sys_vgui("}\n");
 
-    
-    sys_vgui("proc ::opd_textbox::sendchunks {str sendto} {\n");
-    sys_vgui("      binary scan $str H* hex\n");
-    sys_vgui("      set k 0 ; set chunksize 512 ; set len [string length $hex] ; set nchunks [expr $len / $chunksize] ; set chad [expr $len %% $chunksize] \n");
-    sys_vgui("         if { $nchunks > 0 } { \n");
-    sys_vgui("            for {set k 0} {$k < $nchunks} {incr k} {\n");
-    sys_vgui("                set hexchunk \"\" \n");
-    sys_vgui("               for {set i 0} {$i < $chunksize} {incr i} {\n");
-    sys_vgui("                   append hexchunk [string index $hex [expr $i + [expr $k * $chunksize]]]\n");
-    sys_vgui("               }\n");
-    sys_vgui("               pdsend \"$sendto textbuf hex $hexchunk \"\n");
-    sys_vgui("           }\n");
-    sys_vgui("       }\n");
-    sys_vgui("       set hexchunk \"\" \n");
-    sys_vgui("       for {set i 0} {$i < $chad} {incr i} {\n");
-    sys_vgui("            append hexchunk [string index $hex [expr $i + [expr $k * $chunksize]]]\n");
-    sys_vgui("       }\n");
-    sys_vgui("       pdsend \"$sendto textbuf hex $hexchunk \"\n");
-    sys_vgui("       pdsend \"$sendto textbuf hex $sendto \"\n");
-    sys_vgui("}\n");//, x->receive_name, x->receive_name, x->receive_name, x->receive_name);
+        
+        sys_vgui("proc ::opd_textbox::sendchunks {str sendto} {\n");
+        sys_vgui("      binary scan $str H* hex\n");
+        sys_vgui("      set k 0 ; set chunksize 512 ; set len [string length $hex] ; set nchunks [expr $len / $chunksize] ; set chad [expr $len %% $chunksize] \n");
+        sys_vgui("         if { $nchunks > 0 } { \n");
+        sys_vgui("            for {set k 0} {$k < $nchunks} {incr k} {\n");
+        sys_vgui("                set hexchunk \"\" \n");
+        sys_vgui("               for {set i 0} {$i < $chunksize} {incr i} {\n");
+        sys_vgui("                   append hexchunk [string index $hex [expr $i + [expr $k * $chunksize]]]\n");
+        sys_vgui("               }\n");
+        sys_vgui("               pdsend \"$sendto textbuf hex $hexchunk \"\n");
+        sys_vgui("           }\n");
+        sys_vgui("       }\n");
+        sys_vgui("       set hexchunk \"\" \n");
+        sys_vgui("       for {set i 0} {$i < $chad} {incr i} {\n");
+        sys_vgui("            append hexchunk [string index $hex [expr $i + [expr $k * $chunksize]]]\n");
+        sys_vgui("       }\n");
+        sys_vgui("       pdsend \"$sendto textbuf hex $hexchunk \"\n");
+        sys_vgui("       pdsend \"$sendto textbuf hex $sendto \"\n");
+        sys_vgui("}\n");//, x->receive_name, x->receive_name, x->receive_name, x->receive_name);
 
-    //sys_vgui("eval [read [open {%s/%s.tcl}]]\n", c->c_externdir->s_name,c->c_name->s_name);
+    //from http://wiki.tcl.tk/1416
+        sys_vgui("proc ::opd_textbox::createRoundRect {w L T Rad width height colour tag} {\n");
+        sys_vgui("        $w create oval $L $T [expr $L + $Rad] [expr $T + $Rad] -fill $colour -outline $colour -tag [append $tag TL]\n");
+        sys_vgui("        $w create oval [expr $width-$Rad] $T $width [expr $T + $Rad] -fill $colour -outline $colour -tag [append $tag TR]\n");
+        sys_vgui("        $w create oval $L [expr $height-$Rad] [expr $L+$Rad] $height -fill $colour -outline $colour -tag [append $tag BL]\n");
+        sys_vgui("        $w create oval [expr $width-$Rad] [expr $height-$Rad] [expr $width] $height -fill $colour -outline $colour -tag [append $tag BR]\n");
+        sys_vgui("        $w create rectangle [expr $L + ($Rad/2.0)] $T [expr $width-($Rad/2.0)] $height -fill $colour -outline $colour -tag [append $tag r1]\n");
+        sys_vgui("        $w create rectangle $L [expr $T + ($Rad/2.0)] $width [expr $height-($Rad/2.0)] -fill $colour -outline $colour -tag [append $tag r2]\n");
+        sys_vgui("}\n");
+        
+        sys_vgui("proc ::opd_textbox::redrawRoundRect {w L T Rad width height colour tag} {\n");
+        sys_vgui("        $w create oval $L $T [expr $L + $Rad] [expr $T + $Rad] -fill $colour -outline $colour -tag $tag\n");
+        sys_vgui("        $w create oval [expr $width-$Rad] $T $width [expr $T + $Rad] -fill $colour -outline $colour -tag $tag\n");
+        sys_vgui("        $w create oval $L [expr $height-$Rad] [expr $L+$Rad] $height -fill $colour -outline $colour -tag $tag\n");
+        sys_vgui("        $w create oval [expr $width-$Rad] [expr $height-$Rad] [expr $width] $height -fill $colour -outline $colour -tag $tag\n");
+        sys_vgui("        $w create rectangle [expr $L + ($Rad/2.0)] $T [expr $width-($Rad/2.0)] $height -fill $colour -outline $colour -tag $tag\n");
+        sys_vgui("        $w create rectangle $L [expr $T + ($Rad/2.0)] $width [expr $height-($Rad/2.0)] -fill $colour -outline $colour -tag $tag\n");
+        sys_vgui("}\n");
+        
+        
+        sys_vgui("proc ::opd_textbox::maximizeWidth {textbox sendto currentW} {\n");
+        sys_vgui("      $textbox configure -wrap none \n");
+        sys_vgui("      set font [$textbox cget -font] \n");
+        sys_vgui("      set fx [lindex [$textbox xview] 1] \n");
+        sys_vgui("      set fy [lindex [$textbox yview] 1] \n");
+        sys_vgui("      set w [expr floor($currentW / $fx) ] \n");
+     //   sys_vgui("::pdwindow::post \"test $fx $fy w $w \n\"\n");
+
+        //probably can delete this stuff below, or maybe get height from resized canvas text?
+        
+    /*
+        sys_vgui("      set cw [$textbox cget -width] \n");
+        sys_vgui("      set ch [$textbox cget -height] \n");
+        sys_vgui("      set w [expr round($cw / $fx) + 2 ] \n");
+        sys_vgui("      set h [expr round($ch / $fy) ] \n");
+        
+        sys_vgui("      set wpix [expr ($w-10) * [font measure $font \"n\"]] \n");
+        sys_vgui("      set hpix [expr ($h-10) * [font metric $font -linespace]] \n");
+        
+        sys_vgui("::pdwindow::post \"test $fx $fy $cw $ch w $w h $h wpix $wpix hpix $hpix\n\"\n");
+*/
+        sys_vgui("      pdsend \"$sendto setsize $w 0\" \n");
+        sys_vgui("      $textbox configure -wrap word \n");
+        sys_vgui("}\n");
+
+        //sys_vgui("eval [read [open {%s/%s.tcl}]]\n", c->c_externdir->s_name,c->c_name->s_name);
+        
+        opd_textbox_defined = 1;
+    }
     
     return c;
 }

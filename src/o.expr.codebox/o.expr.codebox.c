@@ -746,7 +746,7 @@ void *oexprcodebox_new(t_symbol *msg, short argc, t_atom *argv)
         }
         strcpy(x->border_tag, buf);
         
-        opd_textbox_atoms(t, argc, argv);
+        opd_textbox_processArgs(t, argc, argv);
         
         oexprcodebox_gettext(x);
         
