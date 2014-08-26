@@ -164,6 +164,11 @@
 			<key>orderHint</key>
 			<integer>25</integer>
 		</dict>
+		<key>o.expr.codebox.pd.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>89</integer>
+		</dict>
 		<key>o.expr.codebox.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -453,6 +458,11 @@
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>112AC85719394255003244E9</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>115D7402198FD23F00F42B88</key>
 		<dict>
 			<key>primary</key>
 			<true/>
