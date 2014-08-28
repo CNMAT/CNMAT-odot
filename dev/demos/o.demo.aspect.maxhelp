@@ -38,7 +38,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 111.0, 160.0, 361.0, 88.0 ],
-					"text" : "/foo : 20,\n/_aspect/profile,\n/o.demo.aspect/inlet/time : 2014-07-21T01:55:39.186494Z,\n/o.demo.aspect/outlet/time : 2014-07-21T01:55:39.187387Z,\n/o.demo.aspect/elapsed : 0.000892007",
+					"text" : "/foo  : 20,\n/_aspect/profile,\n/assertions  : \"lambda([], /foo == 20)\",\n/o_port/type : \"inlet\",\n/o.demo.aspect/inlet/time : 2014-08-29T00:52:12.384953Z",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -105,8 +105,10 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 111.0, 56.0, 214.0, 51.0 ],
-					"text" : "/foo : 20,\n/_aspect/profile,\n/assertions : \"lambda([], /foo == 20)\"",
+					"patching_rect" : [ 111.0, 56.0, 217.0, 51.0 ],
+					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 47, 102, 111, 111, 32, 0, 0, 0, 44, 105, 0, 0, 0, 0, 0, 20, 0, 0, 0, 24, 47, 95, 97, 115, 112, 101, 99, 116, 47, 112, 114, 111, 102, 105, 108, 101, 0, 0, 0, 0, 44, 0, 0, 0, 0, 0, 0, 44, 47, 97, 115, 115, 101, 114, 116, 105, 111, 110, 115, 32, 0, 0, 0, 0, 44, 115, 0, 0, 108, 97, 109, 98, 100, 97, 40, 91, 93, 44, 32, 47, 102, 111, 111, 32, 61, 61, 32, 50, 48, 41, 0, 0 ],
+					"saved_bundle_length" : 112,
+					"text" : "/foo  : 20,\n/_aspect/profile,\n/assertions  : \"lambda([], /foo == 20)\"",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -203,8 +205,8 @@
 			}
 , 			{
 				"name" : "o.aspect.print.maxpat",
-				"bootpath" : "/Users/john/Development/CNMAT/CNMAT/CNMAT-odot/dev/aspect",
-				"patcherrelativepath" : "../aspect",
+				"bootpath" : "/Users/john/Development/CNMAT/CNMAT-MMJSS/patchers/evening/Wednesday",
+				"patcherrelativepath" : "../../../../CNMAT-MMJSS/patchers/evening/Wednesday",
 				"type" : "JSON",
 				"implicit" : 1
 			}
@@ -276,10 +278,6 @@
 			}
 , 			{
 				"name" : "o.timetag.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.print.mxo",
 				"type" : "iLaX"
 			}
 , 			{

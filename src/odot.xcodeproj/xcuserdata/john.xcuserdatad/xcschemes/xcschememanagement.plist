@@ -134,6 +134,11 @@
 			<key>orderHint</key>
 			<integer>19</integer>
 		</dict>
+		<key>o.display.pd.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>90</integer>
+		</dict>
 		<key>o.display.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -399,6 +404,16 @@
 			<key>orderHint</key>
 			<integer>71</integer>
 		</dict>
+		<key>o.udp.receive.pd.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>91</integer>
+		</dict>
+		<key>o.udp.send.pd.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>92</integer>
+		</dict>
 		<key>o.uniform.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -618,6 +633,21 @@
 			<true/>
 		</dict>
 		<key>11EF2AC618AFEBB900156403</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>11F20C3E19A260B300BA2487</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>11F20C4D19A5647200BA2487</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>11F20C5A19A57AC400BA2487</key>
 		<dict>
 			<key>primary</key>
 			<true/>
