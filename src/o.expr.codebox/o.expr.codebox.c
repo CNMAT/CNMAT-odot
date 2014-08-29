@@ -156,7 +156,6 @@ void oexprcodebox_fullPacket(t_oexprcodebox *x, t_symbol *msg, int argc, t_atom 
 		//osc_expr_evalLexExprsInBndl(&copylen, &copy, &av);
 	}else{
 		while(f){
-			//int argc = 0;
 			t_osc_atom_ar_u *av = NULL;
 			ret = osc_expr_eval(f, &copylen, &copy, &av);
 			if(av){
