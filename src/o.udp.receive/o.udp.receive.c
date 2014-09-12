@@ -1,3 +1,5 @@
+//TODO: fix decoding, using slip here is wrong, there is no 192 start/end byte in normal UDP!
+
 /* x_net_oudpreceive.c 20060424. Martin Peach did it based on x_net.c. x_net.c header follows: */
 /* Copyright (c) 1997-1999 Miller Puckette.
  * For information on usage and redistribution, and for a DISCLAIMER OF ALL
@@ -119,7 +121,7 @@ void oudp_sendData(t_oudpreceive *x, short size, char *data);
   
 int oudp_decode(t_oudpreceive *x, unsigned char c)
 {
-//    post("%s %x", __func__, c);
+    post("%s %x %c", __func__, c, c);
 	critical_enter(x->lock);
 	int t; 
 	switch(x->istate)
@@ -284,6 +286,20 @@ static void udpreceive_read(t_oudpreceive *x, int sockfd)
         sys_closesocket(x->x_connectsocket);
         return;
     }
+    
+    if((read % 4) == 0){
+        char buf[read];
+        memcpy(buf, x->x_msginbuf, read);
+        critical_exit(x->lock);
+        omax_util_outletOSC(x->outlet, read, buf);
+        OSC_MEM_INVALIDATE(buf);
+        //oudp_sendData(x, t, x->slipibuf);
+    }else{
+        critical_exit(x->lock);
+        //object_error((t_object *)x, "bad packet: not a multiple of 4 length");
+    }
+    
+    /*
     if (read > 0)
     {
         for (i = 0; i < read; ++i)
@@ -296,7 +312,7 @@ static void udpreceive_read(t_oudpreceive *x, int sockfd)
         x->x_total_received += read;
         SETFLOAT(&output_atom, read);
         outlet_anything(x->x_addrout, gensym("received"), 1, &output_atom);
-    }
+    }*/
 }
 
 static int udpreceive_new_socket(t_oudpreceive *x, char *address, int port)
