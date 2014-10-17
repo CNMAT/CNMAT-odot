@@ -2,10 +2,11 @@
 	"patcher" : 	{
 		"fileversion" : 1,
 		"appversion" : 		{
-			"major" : 6,
-			"minor" : 1,
-			"revision" : 4,
-			"architecture" : "x86"
+			"major" : 7,
+			"minor" : 0,
+			"revision" : 0,
+			"architecture" : "x64",
+			"modernui" : 1
 		}
 ,
 		"rect" : [ 736.0, 44.0, 890.0, 767.0 ],
@@ -19,14 +20,20 @@
 		"gridsnaponopen" : 0,
 		"statusbarvisible" : 2,
 		"toolbarvisible" : 1,
+		"lefttoolbarpinned" : 0,
+		"toptoolbarpinned" : 0,
+		"righttoolbarpinned" : 0,
+		"bottomtoolbarpinned" : 0,
+		"toolbars_unpinned_last_save" : 0,
+		"tallnewobj" : 0,
 		"boxanimatetime" : 200,
-		"imprint" : 0,
 		"enablehscroll" : 1,
 		"enablevscroll" : 1,
 		"devicewidth" : 0.0,
 		"description" : "",
 		"digest" : "",
 		"tags" : "",
+		"style" : "",
 		"boxes" : [ 			{
 				"box" : 				{
 					"fontname" : "Arial",
@@ -36,6 +43,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 432.0, 248.0, 355.0, 20.0 ],
+					"style" : "",
 					"text" : "print \"ERROR: you must supply the @name attribute for o.outlet\""
 				}
 
@@ -50,6 +58,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
 					"patching_rect" : [ 432.0, 216.0, 128.0, 20.0 ],
+					"style" : "",
 					"text" : "o.cond !bound(/name)"
 				}
 
@@ -64,6 +73,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
 					"patching_rect" : [ 432.0, 184.0, 83.0, 20.0 ],
+					"style" : "",
 					"text" : "o.pack /name"
 				}
 
@@ -78,6 +88,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
 					"patching_rect" : [ 432.0, 152.0, 107.0, 20.0 ],
+					"style" : "",
 					"text" : "patcherargs name"
 				}
 
@@ -92,6 +103,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
 					"patching_rect" : [ 100.0, 112.0, 112.0, 20.0 ],
+					"style" : "",
 					"text" : "o.port @type outlet"
 				}
 
@@ -103,7 +115,8 @@
 					"maxclass" : "outlet",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 100.0, 152.0, 25.0, 25.0 ]
+					"patching_rect" : [ 100.0, 152.0, 25.0, 25.0 ],
+					"style" : ""
 				}
 
 			}
@@ -115,7 +128,8 @@
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 100.0, 64.0, 25.0, 25.0 ]
+					"patching_rect" : [ 100.0, 64.0, 25.0, 25.0 ],
+					"style" : ""
 				}
 
 			}
@@ -168,14 +182,14 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "o.port.maxpat",
-				"bootpath" : "/Users/john/Development/CNMAT/CNMAT/CNMAT-odot/abstractions",
+				"bootpath" : "~/Documents/dev-lib/CNMAT-odot/dev",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.aspect.joinpoint.maxpat",
-				"bootpath" : "/Users/john/Development/CNMAT/CNMAT/CNMAT-odot/abstractions/aspect",
+				"bootpath" : "~/Documents/dev-lib/CNMAT-odot/dev/aspect",
 				"patcherrelativepath" : "./aspect",
 				"type" : "JSON",
 				"implicit" : 1
@@ -213,10 +227,6 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "o.pak.mxo",
-				"type" : "iLaX"
-			}
-, 			{
 				"name" : "o.prepend.mxo",
 				"type" : "iLaX"
 			}
@@ -224,7 +234,8 @@
 				"name" : "o.cond.mxo",
 				"type" : "iLaX"
 			}
- ]
+ ],
+		"embedsnapshot" : 0
 	}
 
 }
