@@ -71,6 +71,8 @@ VERSINO 0.1: added autowatch
 #include <libxml/xmlreader.h>
 #include "string.h"
 
+#define OSVG_MAX_STRINGSIZE 1024
+
 typedef struct _oxml
 {
     const xmlChar    *type;
@@ -79,143 +81,37 @@ typedef struct _oxml
 } t_oxml_node;
 
 
-typedef struct _osvg{
-	t_object ob;
-	void *outlet;
-	char *buffer;
-	long buffer_len;
-	long buffer_pos;
-	t_critical lock;
-    
+typedef struct _osvg
+{
+	t_object        ob;
+	void            *outlet;
+	t_critical      lock;
     xmlTextReader   *reader;
     short           f_open;
     long            pdepth;
     
-    t_oxml_node *head;
+    t_oxml_node     *head;
     
 #ifndef OMAX_PD_VERSION
     long autowatch;
     void *filewatcher;
 #endif
-    
 } t_osvg;
 
 void *osvg_class;
 t_symbol *ps_nothing;
 
-void osvg_fullPacket_impl(t_osvg *x, long len, char *ptr)
-{
-	osc_bundle_s_wrap_naked_message(len, ptr);
-	if(len == OSC_HEADER_SIZE){
-		// empty bundle
-		return;
-	}
-	critical_enter(x->lock);
-	if(x->buffer_pos + len > x->buffer_len){
-		char *tmp = (char *)osc_mem_resize(x->buffer, x->buffer_pos + len);
-		if(!tmp){
-			object_error((t_object *)x, "Out of memory...sayonara max...");
-			critical_exit(x->lock);
-			return;
-		}
-		x->buffer = tmp;
-		memset(x->buffer + x->buffer_pos, '\0', len);
-		x->buffer_len = x->buffer_pos + len;
-	}
-	t_osc_bndl_it_s *it = osc_bndl_it_s_get(len, ptr);
-	while(osc_bndl_it_s_hasNext(it)){
-		t_osc_msg_s *m = osc_bndl_it_s_next(it);
-		t_osc_msg_ar_s *match = NULL;
-		osc_bundle_s_lookupAddress(x->buffer_pos, x->buffer, osc_message_s_getAddress(m), &match, 1);
-		if(!match){
-			long l = osc_message_s_getSize(m) + 4;
-			memcpy(x->buffer + x->buffer_pos, osc_message_s_getPtr(m), l);
-			x->buffer_pos += l;
-		}else{
-			// this function can resize its buffer, but we don't have to worry about that
-			// since we already resized it above to accommidate the entire bundle
-			int i;
-			for(i = 0; i < osc_message_array_s_getLen(match); i++){
-				t_osc_msg_s *mm = osc_message_array_s_get(match, i);
-				osc_bundle_s_replaceMessage(&(x->buffer_len),
-                                            &(x->buffer_pos),
-                                            &(x->buffer),
-                                            mm,
-                                            m);
-			}
-			osc_message_array_s_free(match);
-		}
-	}
-	osc_bndl_it_s_destroy(it);
-	critical_exit(x->lock);
-}
 
-void osvg_fullPacket(t_osvg *x, t_symbol *msg, int argc, t_atom *argv)
-{
-	OMAX_UTIL_GET_LEN_AND_PTR
-    osvg_fullPacket_impl(x, len, ptr);
-}
-
-/*
-void osvg_anything(t_osvg *x, t_symbol *msg, int argc, t_atom *argv)
-{
-	t_osc_bndl_u *bndl_u = osc_bundle_u_alloc();
-	t_osc_msg_u *msg_u = NULL;
-	t_osc_err e = omax_util_maxAtomsToOSCMsg_u(&msg_u, msg, argc, argv);
-	if(e){
-		object_error((t_object *)x, "%s", osc_error_string(e));
-		if(bndl_u){
-			osc_bundle_u_free(bndl_u);
-		}
-		return;
-	}
-	osc_bundle_u_addMsg(bndl_u, msg_u);
-	long len = 0;
-	char *buf = NULL;
-	osc_bundle_u_serialize(bndl_u, &len, &buf);
-	if(bndl_u){
-		osc_bundle_u_free(bndl_u);
-	}
-    
-	osvg_fullPacket_impl(x, len, buf);
-	if(buf){
-		osc_mem_free(buf);
-	}
-
-}
-*/
-
-void osvg_bang(t_osvg *x){
-    critical_enter(x->lock);
-    int len = x->buffer_pos;
-    char outbuf[len];
-    memcpy(outbuf, x->buffer, len);
-    memset(x->buffer + OSC_HEADER_SIZE, '\0', len - OSC_HEADER_SIZE);
-    x->buffer_pos = OSC_HEADER_SIZE;
-    critical_exit(x->lock);
-    omax_util_outletOSC(x->outlet, len, outbuf);
-}
-
-void osvg_parsePath(t_osvg *x, char *pathstr, char *prefix, t_osc_bndl_u *bndl)
+void osvg_parsePath(t_osvg *x, char *pathstr, t_osc_bndl_u *bndl)
 {
     // NOTE: current S and C parsing is not SVG complient, it should allow for an unknown number of segments
     // there should always be a prefix!
-    if(!prefix)
-        return;
     
     //post("%s", prefix);
     t_osc_msg_u *msg = NULL;
+    if(strlen(pathstr) < 1)
+        return;
     
-    int prefixLen = strlen(prefix);
-    char address[prefixLen+1025];
-    
-    char type, prev_type;
-    char postfix[4];
-    postfix[0] = '/';
-    postfix[2] = '/';
-    
-    //post("d = %s", pathstr);
-    if(strlen(pathstr) < 1) return;
     // start of path writing
     
     double totalpathlength = 0;
@@ -228,25 +124,35 @@ void osvg_parsePath(t_osvg *x, char *pathstr, char *prefix, t_osc_bndl_u *bndl)
     
     double pt[2], prev_pt[2], prev_ctl_pt[2], origin_pt[2];
     long pcount = 0;
-    for(q = 0; q < pathstrLen; q++){
+    char type, prev_type;
+    char address[OSVG_MAX_STRINGSIZE];
+    
+    for(q = 0; q < pathstrLen; q++)
+    {
         char ch = pathstr[q];
         
-        switch (ch) {
-            case 'M': case 'm':{
+        switch (ch)
+        {
+            case 'M': case 'm':
+            {
                 //                pathstarted = true;
                 type = ch;
                 double moveto[2];
                 ch = pathstr[++q];
                 long lcount = 0;
                 while(ch_idx < pathstrLen  && q < pathstrLen &&
-                      (isdigit(ch) || isspace(ch) || ch == ',' || ch == '.' || ch == '-' || ch == '\n')){
-                    if(ch == ','){
+                      (isdigit(ch) || isspace(ch) || ch == ',' || ch == '.' || ch == '-' || ch == '\n'))
+                {
+                    if(ch == ',')
+                    {
                         moveto[lcount++] = strtod(chunk, NULL);
                         //                        post("float before , %f", t_moveto.x);
                         memset(chunk, '\0', sizeof(char) * pathstrLen);
                         ch_idx = 0;
                         ch = pathstr[++q];
-                    } else if(ch == '-'){
+                    }
+                    else if(ch == '-')
+                    {
                         moveto[lcount++] = strtod(chunk, NULL);
                         //                       post("float before - %f", t_moveto.x);
                         memset(chunk, '\0', sizeof(char) * pathstrLen);
@@ -254,15 +160,22 @@ void osvg_parsePath(t_osvg *x, char *pathstr, char *prefix, t_osc_bndl_u *bndl)
                         chunk[ch_idx] = ch;
                         chunk[++ch_idx] = '\0';
                         ch = pathstr[++q];
-                    } else if(ch == ' ' || ch == '\n'){ //this newline handling is not right somehow
-                        if(chunk[0] == '\0'){
+                    }
+                    else if(ch == ' ' || ch == '\n')
+                    { //this newline handling is not right somehow
+                        if(chunk[0] == '\0')
+                        {
                             ch = pathstr[++q];
-                        } else {
+                        }
+                        else
+                        {
                             ch = ',';
                             //post("jump %s", chunk);
                         }
                         
-                    } else {
+                    }
+                    else
+                    {
                         chunk[ch_idx] = ch;
                         chunk[++ch_idx] = '\0';
                         ch = pathstr[++q];
@@ -287,7 +200,7 @@ void osvg_parsePath(t_osvg *x, char *pathstr, char *prefix, t_osc_bndl_u *bndl)
                     type = toupper(type);
                 }
                 
-                snprintf(address, prefixLen+1024, "%s/d/%ld/%c", prefix, pcount, type);
+                snprintf(address, OSVG_MAX_STRINGSIZE, "/%ld/%c", pcount, type);
                 
                 
                 msg = osc_message_u_allocWithAddress(address);
@@ -362,7 +275,7 @@ void osvg_parsePath(t_osvg *x, char *pathstr, char *prefix, t_osc_bndl_u *bndl)
                     type = toupper(type);
                 }
                 
-                snprintf(address, prefixLen+1024, "%s/d/%ld/%c", prefix, pcount, type);
+                snprintf(address, OSVG_MAX_STRINGSIZE, "/%ld/%c", pcount, type);
                 msg = osc_message_u_allocWithAddress(address);
                 osc_message_u_appendDouble(msg, lineto[0]);
                 osc_message_u_appendDouble(msg, lineto[1]);
@@ -449,7 +362,7 @@ void osvg_parsePath(t_osvg *x, char *pathstr, char *prefix, t_osc_bndl_u *bndl)
                     type = toupper(type);
                 }
                 
-                snprintf(address, prefixLen+1024, "%s/d/%ld/%c", prefix, pcount, type);
+                snprintf(address, OSVG_MAX_STRINGSIZE, "/%ld/%c", pcount, type);
                 msg = osc_message_u_allocWithAddress(address);
                 osc_message_u_appendDouble(msg, pt[0]);
                 osc_message_u_appendDouble(msg, pt[1]);
@@ -528,7 +441,7 @@ void osvg_parsePath(t_osvg *x, char *pathstr, char *prefix, t_osc_bndl_u *bndl)
                 
                 
                 if(ccount == 6){
-                    snprintf(address, prefixLen+1024, "%s/d/%ld/%c", prefix, pcount, type);
+                    snprintf(address, OSVG_MAX_STRINGSIZE, "/%ld/%c", pcount, type);
                     msg = osc_message_u_allocWithAddress(address);
                     
                     int bidx;
@@ -638,7 +551,7 @@ void osvg_parsePath(t_osvg *x, char *pathstr, char *prefix, t_osc_bndl_u *bndl)
                         prev_ctrl_Ptr[1] = prev_pt[1];
                     }
                     
-                    snprintf(address, prefixLen+1024, "%s/d/%ld/%c", prefix, pcount, type);
+                    snprintf(address, OSVG_MAX_STRINGSIZE, "/%ld/%c", pcount, type);
                     msg = osc_message_u_allocWithAddress(address);
                     osc_message_u_appendDouble(msg, prev_ctrl_Ptr[0]);
                     osc_message_u_appendDouble(msg, prev_ctrl_Ptr[1]);
@@ -695,7 +608,7 @@ void osvg_parsePath(t_osvg *x, char *pathstr, char *prefix, t_osc_bndl_u *bndl)
             case 'Z':
                 type = (islower(ch)) ? toupper(ch) : ch;
                 
-                snprintf(address, prefixLen+1024, "%s/d/%ld/%c", prefix, pcount, type);
+                snprintf(address, OSVG_MAX_STRINGSIZE, "/%ld/%c", pcount, type);
                 msg = osc_message_u_allocWithAddress(address);
                 osc_message_u_appendDouble(msg, origin_pt[0]);
                 osc_message_u_appendDouble(msg, origin_pt[1]);
@@ -797,6 +710,8 @@ static void oxml_generate_missing_ids(xmlNode *a_node)
         bool has_id = false;
         if (cur_node->type == XML_ELEMENT_NODE)
         {
+            char *name = (char *)cur_node->name;
+            
             if (cur_node->properties)
             {
                 xmlAttr *attr = cur_node->properties;
@@ -819,8 +734,8 @@ static void oxml_generate_missing_ids(xmlNode *a_node)
                             test /= 10;
                             digits++;
                         }
-                        char genID[digits + 1];
-                        sprintf(genID, "_%ld", count);
+                        char genID[strlen(name) + digits + 1];
+                        sprintf(genID, "%s/%ld", name, count);
                         xmlChar tag[] = "id";
                         xmlNewProp(cur_node, tag, (const xmlChar *)genID);
                     }
@@ -833,91 +748,35 @@ static void oxml_generate_missing_ids(xmlNode *a_node)
     oxml_free_nodes(head);
 }
 
-/*
-exit:
-if(canvas->gl_owner)
-{
-    t_osc_bndl_u *parent_bndl = ocontext_processCanvas(canvas->gl_owner);
-    t_osc_msg_u *pmsg = osc_message_u_allocWithAddress("/parent");
-    osc_message_u_appendBndl_u(pmsg, parent_bndl);
-    osc_bundle_u_addMsg(canvas_bndl, pmsg);
-}
 
-return canvas_bndl;
-}
-
-void ocontext_doFullPacket(t_ocontext *x, long len, char *ptr)
+static void oxml_process_branch(t_osvg *x, xmlNode *a_node, t_osc_bndl_u *bndl)
 {
-	t_canvas *patcher = NULL;
-    
-    patcher = x->canvas;
-    
-	t_osc_bndl_u *mypatcher_bndl = ocontext_processCanvas(patcher);
-	t_osc_msg_u *context_msg = osc_message_u_allocWithAddress("/context");
-	osc_message_u_appendBndl_u(context_msg, mypatcher_bndl);
-	t_osc_bndl_u *bu = NULL;
-	osc_bundle_s_deserialize(len, ptr, &bu);
-	if(bu){
-		osc_bundle_u_addMsgWithoutDups(bu, context_msg);
-		long l = 0;
-		char *buf = NULL;
-		osc_bundle_u_serialize(bu, &l, &buf);
-		if(buf){
-			omax_util_outletOSC(x->outlet, l, buf);
-			osc_mem_free(buf);
-		}
-	}
-	osc_bundle_u_free(mypatcher_bndl);
-}
- 
- 
- 
-*/
 
-/*
-static void oxml_process_branch(t_osvg *x, xmlNode *a_node, char *parent_prefix, t_osc_bndl_u *bndl)
-{
-    
     oxml_generate_missing_ids(a_node);
-    
+
     xmlNode *cur_node = NULL;
     xmlChar *val = NULL;
-    char *prefixPtr = NULL;
     
     t_osc_msg_u *msg = NULL;
+    xmlChar *id = NULL;
+
     
     //then parse for data:
     for (cur_node = a_node; cur_node; cur_node = cur_node->next)
     {
         if (cur_node->type == XML_ELEMENT_NODE)
         {
+            //get children first to retreive the sub bundle
+            id = NULL;
             
-            //create address names
+            t_osc_bndl_u *n_bndl = osc_bundle_u_alloc();
+
             char *name = (char *)cur_node->name;
-            int parentlen = (parent_prefix != NULL) ? strlen(parent_prefix) : 0;
+            msg = osc_message_u_allocWithAddress("/type");
+            osc_message_u_appendString(msg, name);
+            osc_bundle_u_addMsg(n_bndl, msg);
             
-            int namelen = strlen(name);
-            int prefixlen = namelen + parentlen + 1;
-            
-            char prefix[prefixlen];
-            
-            if(parent_prefix != NULL)
-                strcpy(prefix, parent_prefix);
-            
-            prefix[parentlen] = '/';
-            strcpy(prefix + (parentlen+1), name);
-            
-            prefixPtr = prefix;
-            //            post("parentprefix %s", parent_prefix);
-            //            post("prefix %s", prefixPtr);
-            
-            //            char *attrname = NULL;
-            char *prefix_w_id = NULL;
-            
-            //     t_atom out_val;
-            //     t_symbol *msg;
-            
-            //            post("Element, name: %s\n", cur_node->name);
+
             if (cur_node->properties)
             {
                 xmlAttr *attr = cur_node->properties;
@@ -928,207 +787,21 @@ static void oxml_process_branch(t_osvg *x, xmlNode *a_node, char *parent_prefix,
                 
                 while (attr)
                 {
-                    val = xmlGetProp(cur_node, attr->name);
-                    
-                    if(!xmlStrcmp(attr->name, (const xmlChar *)"id") && val != NULL)
+                    id = xmlGetProp(cur_node, attr->name);
+
+                    if(!xmlStrcmp(attr->name, (const xmlChar *)"id") && id != NULL)
                     {
-                        //post("id %s %s", attrname, val);
-                        
-                        int idlen = strlen((char *)val);
-                        prefix_w_id = (char *)malloc((idlen + prefixlen + 2) * sizeof(char));
-                        memset(prefix_w_id, '\0', ((idlen + prefixlen + 2) * sizeof(char)));
-                        
-                        strcpy(prefix_w_id, prefix);
-                        prefix_w_id[prefixlen] = '/';
-                        
-                        strcpy(prefix_w_id+prefixlen+1, (const char *)val);
-                        
-                        prefixlen = strlen(prefix_w_id);
-                        prefixPtr = prefix_w_id;
-                        
-                        // also send id to o.collect
-                        char namePrefix[prefixlen+5];
-                        strcpy(namePrefix, prefix_w_id);
-                        strcpy(namePrefix+prefixlen, "/type");
-                        
-                        msg = osc_message_u_allocWithAddress(namePrefix);
-                        osc_message_u_appendString(msg, name);
-                        osc_bundle_u_addMsg(bndl, msg);
-                        
-                        // also send id to o.collect
-                        char idPrefix[prefixlen+3];
-                        strcpy(idPrefix, prefix_w_id);
-                        strcpy(idPrefix+prefixlen, "/id");
-                        
-                        msg = osc_message_u_allocWithAddress(idPrefix);
-                        osc_message_u_appendString(msg, (char *)val);
-                        osc_bundle_u_addMsg(bndl, msg);
-                        
-                        xmlFree(val);
-                        val = NULL;
+                        msg = osc_message_u_allocWithAddress("/id");
+                        osc_message_u_appendString(msg, (char *)id);
+                        osc_bundle_u_addMsg(n_bndl, msg);
                         break;
+
                     }
-                    xmlFree(val);
-                    val = NULL;
+                    xmlFree(id);
+                    id = NULL;
                     attr = attr->next;
                 }
-                
-                attr = attr_head;
-                
-                while (attr)
-                {
-                    val = xmlGetProp(cur_node, attr->name);
-                    
-                    //                    post("attr: %s %s", attr->name, val);
-                    
-                    if(!xmlStrcmp(attr->name, (const xmlChar *)"path") || !xmlStrcmp(attr->name, (const xmlChar *)"d"))
-                    {
-                        osvg_parsePath(x, (char *)val, prefixPtr, bndl);
-                    }
-                    else
-                    {
-                        //un-labeled svg elements, line, rects, anything really
-                        //                        post("*** prefixPtr %s", prefixPtr);
-                        char address[prefixlen + 2 + xmlStrlen(attr->name)];
-                        strcpy(address, prefixPtr);
-                        address[prefixlen] = '/';
-                        strcpy(address+(prefixlen+1), (char *)attr->name);
-                        // send to o.collect here
-                        
-                        msg = osc_message_u_allocWithAddress(address);
-                        
-                        char *v = (char *)val;
-                        char *p = (char *)val;
-                        errno = 0;
-                        double d = strtod(v, &p);
-                        if(errno == 0 && p != v )
-                            osc_message_u_appendDouble(msg, d);
-                        else
-                            osc_message_u_appendString(msg, (char *)val);
-                        
-                        osc_bundle_u_addMsg(bndl, msg);
-                        
-                    }
-                    
-                    xmlFree(val);
-                    val = NULL;
-                    attr = attr->next;
-                }
-                
-            }
-            
-            val = xmlNodeGetContent(cur_node);
-            if(!xmlStrcmp(cur_node->name, (const xmlChar *)"text") && strlen((const char *)val))
-                post("%s content %s %x %d", cur_node->name, val, val);
-            
-            xmlFree(val);
-            val = NULL;
-        }
-        oxml_process_branch(x, cur_node->children, prefixPtr, bndl);
-        
-    }
-}
-*/
 
-
-static void oxml_process_branch(t_osvg *x, xmlNode *a_node, char *parent_prefix, t_osc_bndl_u *bndl)
-{
-
-    oxml_generate_missing_ids(a_node);
-
-    xmlNode *cur_node = NULL;
-    xmlChar *val = NULL;
-    char *prefixPtr = NULL;
-    
-    t_osc_msg_u *msg = NULL;
-    
-    //then parse for data:
-    for (cur_node = a_node; cur_node; cur_node = cur_node->next)
-    {
-        if (cur_node->type == XML_ELEMENT_NODE)
-        {
-
-            //create address names
-            char *name = (char *)cur_node->name;
-            int parentlen = (parent_prefix != NULL) ? strlen(parent_prefix) : 0;
-
-            int namelen = strlen(name);
-            int prefixlen = namelen + parentlen + 1;
-
-            char prefix[prefixlen];
-
-            if(parent_prefix != NULL)
-                strcpy(prefix, parent_prefix);
-
-            prefix[parentlen] = '/';
-            strcpy(prefix + (parentlen+1), name);
-
-            prefixPtr = prefix;
-//            post("parentprefix %s", parent_prefix);
-//            post("prefix %s", prefixPtr);
-
-//            char *attrname = NULL;
-            char *prefix_w_id = NULL;
-
-       //     t_atom out_val;
-       //     t_symbol *msg;
-
-//            post("Element, name: %s\n", cur_node->name);
-            if (cur_node->properties)
-            {
-                xmlAttr *attr = cur_node->properties;
-                
-                //get id first, have to iterate again unfortunately
-                
-                xmlAttr *attr_head = attr;
-                
-                while (attr)
-                {
-                    val = xmlGetProp(cur_node, attr->name);
-
-                    if(!xmlStrcmp(attr->name, (const xmlChar *)"id") && val != NULL)
-                    {
-                        //post("id %s %s", attrname, val);
-                        
-                        int idlen = strlen((char *)val);
-                        prefix_w_id = (char *)malloc((idlen + prefixlen + 2) * sizeof(char));
-                        memset(prefix_w_id, '\0', ((idlen + prefixlen + 2) * sizeof(char)));
-                        
-                        strcpy(prefix_w_id, prefix);
-                        prefix_w_id[prefixlen] = '/';
-                        
-                        strcpy(prefix_w_id+prefixlen+1, (const char *)val);
-                        
-                        prefixlen = strlen(prefix_w_id);
-                        prefixPtr = prefix_w_id;
-                        
-                        // also send id to o.collect
-                        char namePrefix[prefixlen+5];
-                        strcpy(namePrefix, prefix_w_id);
-                        strcpy(namePrefix+prefixlen, "/type");
-                        
-                        msg = osc_message_u_allocWithAddress(namePrefix);
-                        osc_message_u_appendString(msg, name);
-                        osc_bundle_u_addMsg(bndl, msg);
-                        
-                        // also send id to o.collect
-                        char idPrefix[prefixlen+3];
-                        strcpy(idPrefix, prefix_w_id);
-                        strcpy(idPrefix+prefixlen, "/id");
-                        
-                        msg = osc_message_u_allocWithAddress(idPrefix);
-                        osc_message_u_appendString(msg, (char *)val);
-                        osc_bundle_u_addMsg(bndl, msg);
-                        
-                        xmlFree(val);
-                        val = NULL;
-                        break;
-                    }
-                    xmlFree(val);
-                    val = NULL;
-                    attr = attr->next;
-                }
-                
                 attr = attr_head;
                 
                 while (attr)
@@ -1139,19 +812,23 @@ static void oxml_process_branch(t_osvg *x, xmlNode *a_node, char *parent_prefix,
 
                     if(!xmlStrcmp(attr->name, (const xmlChar *)"path") || !xmlStrcmp(attr->name, (const xmlChar *)"d"))
                     {
-                        osvg_parsePath(x, (char *)val, prefixPtr, bndl);
+                        t_osc_bndl_u *path_bndl = osc_bundle_u_alloc();
+                        osvg_parsePath(x, (char *)val, path_bndl);
+                        
+                        char buf[strlen((char *)attr->name)+1];
+                        sprintf(buf, "/%s", attr->name);
+                        msg = osc_message_u_allocWithAddress(buf);
+                        osc_message_u_appendBndl_u(msg, path_bndl);
+                        osc_bundle_u_addMsg(n_bndl, msg);
+                        
                     }
-                    else
+                    else if(xmlStrcmp(attr->name, (const xmlChar *)"id"))
                     {
                         //un-labeled svg elements, line, rects, anything really
-//                        post("*** prefixPtr %s", prefixPtr);
-                        char address[prefixlen + 2 + xmlStrlen(attr->name)];
-                        strcpy(address, prefixPtr);
-                        address[prefixlen] = '/';
-                        strcpy(address+(prefixlen+1), (char *)attr->name);
-                        // send to o.collect here
-                        
-                        msg = osc_message_u_allocWithAddress(address);
+
+                        char buf[strlen((char *)attr->name)+1];
+                        sprintf(buf, "/%s", attr->name);
+                        msg = osc_message_u_allocWithAddress(buf);
                         
                         char *v = (char *)val;
                         char *p = (char *)val;
@@ -1162,7 +839,7 @@ static void oxml_process_branch(t_osvg *x, xmlNode *a_node, char *parent_prefix,
                         else
                             osc_message_u_appendString(msg, (char *)val);
                         
-                        osc_bundle_u_addMsg(bndl, msg);
+                        osc_bundle_u_addMsg(n_bndl, msg);
                         
                     }
 
@@ -1170,88 +847,8 @@ static void oxml_process_branch(t_osvg *x, xmlNode *a_node, char *parent_prefix,
                     val = NULL;
                     attr = attr->next;
                 }
-                
             }
-        
-            val = xmlNodeGetContent(cur_node);
-            if(!xmlStrcmp(cur_node->name, (const xmlChar *)"text") && strlen((const char *)val))
-                post("%s content %s %x %d", cur_node->name, val, val);
-            
-            xmlFree(val);
-            val = NULL;
-        }
-        oxml_process_branch(x, cur_node->children, prefixPtr, bndl);
 
-    }
-}
-
-
-static void print_element_names(xmlNode * a_node)
-{
-    xmlNode *cur_node = NULL;
-    t_oxml_node *head = NULL;
-    
-    //first iterate and count each type, store count in
-    for (cur_node = a_node; cur_node; cur_node = cur_node->next)
-    {
-        bool has_id = false;
-        if (cur_node->type == XML_ELEMENT_NODE)
-        {
-            if (cur_node->properties)
-            {
-                xmlAttr *attr = cur_node->properties;
-                while (attr)
-                {
-                    if(!xmlStrcmp(attr->name, (const xmlChar *)"id"))
-                        has_id = true;
-                    
-                    attr = attr->next;
-                }
-                
-                if(!has_id)
-                {
-                    long count = oxml_addNode(&head, cur_node->name);
-                    if(count > 0)
-                    {
-                        long test = count, digits = 0;
-                        while (test)
-                        {
-                            test /= 10;
-                            digits++;
-                        }
-                        char genID[digits + 1];
-                        sprintf(genID, "_%ld", count);
-                        xmlChar tag[] = "id";
-                        xmlNewProp(cur_node, tag, (const xmlChar *)genID);
-                    }
-                    
-                }
-            }
-            
-        }
-    }
-    oxml_free_nodes(head);
-    
-    //then parse for data:
-    for (cur_node = a_node; cur_node; cur_node = cur_node->next)
-    {
-        if (cur_node->type == XML_ELEMENT_NODE)
-        {
-            post("Element, name: %s\n", cur_node->name);
-            xmlChar *val = NULL;
-            if (cur_node->properties)
-            {
-                xmlAttr *attr = cur_node->properties;
-                while (attr)
-                {
-                    val = xmlGetProp(cur_node, attr->name);
-                    post("attr: %s %s", attr->name, val);
-                    xmlFree(val);
-                    val = NULL;
-                    attr = attr->next;
-                }
-                
-            }
             
             val = xmlNodeGetContent(cur_node);
             if(!xmlStrcmp(cur_node->name, (const xmlChar *)"text") && strlen((const char *)val))
@@ -1259,11 +856,32 @@ static void print_element_names(xmlNode * a_node)
             
             xmlFree(val);
             val = NULL;
+            
+            
+            if(cur_node->children)
+            {
+                oxml_process_branch(x, cur_node->children, n_bndl);
+            }
+            
+        //we know there is always an id, because we made sure in the pre-processing loop, but just for safety:
+            if(id)
+            {
+                char idbuf[strlen((char *)id)+1];
+                sprintf(idbuf, "/%s", id);
+                msg = osc_message_u_allocWithAddress(idbuf);
+                xmlFree(id);
+                id = NULL;
+            }
+            else
+            {
+                msg = osc_message_u_allocWithAddress("/noid");
+            }
+            
+            osc_message_u_appendBndl_u(msg, n_bndl);
+            osc_bundle_u_addMsg(bndl, msg);
         }
-        print_element_names(cur_node->children);
+
     }
-    
-    
 }
 
 void oxml_parse_tree(t_osvg *x, const char *file)
@@ -1291,7 +909,6 @@ void oxml_parse_tree(t_osvg *x, const char *file)
         object_error((t_object *)x, "%s: failed to parse file",file);
         return;
     }
-    //print_element_names(root_element);
     
     t_osc_bndl_u *bndl = osc_bundle_u_alloc();
     
@@ -1299,28 +916,26 @@ void oxml_parse_tree(t_osvg *x, const char *file)
     osc_message_u_appendString(msg, file);
     osc_bundle_u_addMsg(bndl, msg);
     
-    oxml_process_branch(x, root_element, NULL, bndl);
-
+    oxml_process_branch(x, root_element, bndl);
+    
     long len = 0;
 	char *buf = NULL;
 	osc_bundle_u_serialize(bndl, &len, &buf);
 	if(bndl){
 		osc_bundle_u_free(bndl);
 	}
-    
-    osvg_fullPacket_impl(x, len, buf);
+  
+    omax_util_outletOSC(x->outlet, len, buf);
+
     if(buf){
 		osc_mem_free(buf);
 	}
     
-    osvg_bang(x);
-
     xmlFreeDoc(doc);
     xmlCleanupParser();
     critical_exit(x->lock);
 }
 
-//<< end new version
 
 void svglookup_doopen(t_osvg *x, t_symbol *s)
 {
@@ -1351,7 +966,6 @@ void svglookup_doopen(t_osvg *x, t_symbol *s)
     if(x->autowatch && x->filewatcher)
         filewatcher_start(x->filewatcher);
     
-//    osvg_do_parse(x, file);
     oxml_parse_tree(x, file);
 
 }
@@ -1362,16 +976,6 @@ void osvg_open(t_osvg *x, t_symbol *s)
 }
 
 #ifndef OMAX_PD_VERSION
-
-OMAX_DICT_DICTIONARY(t_osvg, x, osvg_fullPacket);
-
-void osvg_clear(t_osvg *x)
-{
-	critical_enter(x->lock);
-	x->buffer_pos = OSC_HEADER_SIZE;
-	memset(x->buffer + OSC_HEADER_SIZE, '\0', x->buffer_len - OSC_HEADER_SIZE);
-	critical_exit(x->lock);
-}
 
 void osvg_doc(t_osvg *x)
 {
@@ -1384,9 +988,6 @@ void osvg_assist(t_osvg *x, void *b, long io, long num, char *buf){
 #endif
 
 void osvg_free(t_osvg *x){
-	if(x->buffer){
-		free(x->buffer);
-	}
 #ifndef OMAX_PD_VERSION
 	critical_free(x->lock);
     
@@ -1492,18 +1093,6 @@ void *osvg_new(t_symbol *msg, short argc, t_atom *argv){
 	t_osvg *x;
 	if((x = (t_osvg *)object_alloc(osvg_class))){
 		x->outlet = outlet_new((t_object *)x, NULL);
-		x->buffer_len = 1024;
-		if(argc){
-			if(atom_gettype(argv) == A_LONG){
-				//x->buffer_len = atom_getlong(argv);
-				object_error((t_object *)x, "o.svg no longer takes an argument to specify its internal buffer size.");
-				object_error((t_object *)x, "The buffer will expand as necessary.");
-			}
-		}
-		x->buffer = (char *)osc_mem_alloc(x->buffer_len * sizeof(char));
-		memset(x->buffer, '\0', x->buffer_len);
-		x->buffer_pos = OSC_HEADER_SIZE;
-		osc_bundle_s_setBundleID(x->buffer);
 		critical_new(&(x->lock));
         x->autowatch = 0;
         x->filewatcher = NULL;
@@ -1518,18 +1107,11 @@ void *osvg_new(t_symbol *msg, short argc, t_atom *argv){
 int main(void){
 	t_class *c = class_new("o.svg", (method)osvg_new, (method)osvg_free, sizeof(t_osvg), 0L, A_GIMME, 0);
 	//class_addmethod(c, (method)osvg_fullPacket, "FullPacket", A_LONG, A_LONG, 0);
-	class_addmethod(c, (method)osvg_fullPacket, "FullPacket", A_GIMME, 0);
 	class_addmethod(c, (method)osvg_doc, "doc", 0);
 	class_addmethod(c, (method)osvg_assist, "assist", A_CANT, 0);
 //	class_addmethod(c, (method)osvg_anything, "anything", A_GIMME, 0);
-	class_addmethod(c, (method)osvg_bang, "bang", 0);
     class_addmethod(c, (method)osvg_open, "open", A_DEFSYM, 0);
     class_addmethod(c, (method)osvg_filechanged, "filechanged", A_CANT, 0);
-    
-	// remove this if statement when we stop supporting Max 5
-	if(omax_dict_resolveDictStubs()){
-		class_addmethod(c, (method)omax_dict_dictionary, "dictionary", A_GIMME, 0);
-	}
 
 	class_addmethod(c, (method)odot_version, "version", 0);
 
