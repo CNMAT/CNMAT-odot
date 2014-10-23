@@ -27,8 +27,13 @@ AUTHORS: Rama Gottfried
 COPYRIGHT_YEARS: 2013
 SVN_REVISION: $LastChangedRevision: 587 $
 VERSION 0.0: First try
+VERSINO 0.1: added autowatch
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-*/
+ 
+ to do: change bundling process to be odot directly instead of using atoms to collection
+ 
+ */
+
 
 #define OMAX_DOC_NAME "o.svg"
 #define OMAX_DOC_SHORT_DESC "Collect OSC messages to be bundled together"
@@ -66,6 +71,14 @@ VERSION 0.0: First try
 #include <libxml/xmlreader.h>
 #include "string.h"
 
+typedef struct _oxml
+{
+    const xmlChar    *type;
+    long        count;
+    struct _oxml *next;
+} t_oxml_node;
+
+
 typedef struct _osvg{
 	t_object ob;
 	void *outlet;
@@ -76,165 +89,19 @@ typedef struct _osvg{
     
     xmlTextReader   *reader;
     short           f_open;
+    long            pdepth;
+    
+    t_oxml_node *head;
+    
+#ifndef OMAX_PD_VERSION
+    long autowatch;
+    void *filewatcher;
+#endif
     
 } t_osvg;
 
 void *osvg_class;
 t_symbol *ps_nothing;
-
-void osvg_fullPacket_(t_osvg *x, long len, long ptr);
-
-/*
-int iterateXML(t_osvg *x, xmlTextReader *reader)
-{
-    
-    while(xmlTextReaderRead(reader)){
-        
-        switch (xmlTextReaderNodeType(reader)) {
-            case XML_READER_TYPE_ELEMENT:
-                
-                xmlTypeRouting(x, reader, NULL);
-                
-                continue;
-                
-                
-            case XML_READER_TYPE_TEXT:{ //actually svg's don't really use the text part
-                char *val = (char *)xmlTextReaderConstValue(reader);
-                post("      text value:  %s", val);
-            } continue;
-        }
-    }
-    xmlFreeTextReader(reader);
-    xmlCleanupParser();
-    return 1;
-}
-
- 
- 
- */
-/*
-void processNode(t_osvg *x, xmlTextReaderPtr reader, char **parent_prefixPtr)
-{
-    char *name = NULL;
-    
-    name = (char *)xmlTextReaderConstName(reader);
-    if (name == NULL)
-        name = (char *)xmlStrdup(BAD_CAST "--");
-    
-    char *parent_prefix = NULL;
-    if(parent_prefixPtr != NULL)
-        parent_prefix = *parent_prefixPtr;
-    
-    int parentlen = (parent_prefix != NULL) ? strlen(parent_prefix) : 0;
-    
-    int namelen = strlen(name);
-    int prefixlen = namelen + parentlen + 1;
-    
-    char *prefix = (char *)malloc(prefixlen * sizeof(char));
-    
-    if(parent_prefix != NULL)
-        strcpy(prefix, parent_prefix);
-    
-    prefix[parentlen] = '/';
-    strcpy(prefix + (parentlen+1), (char *)name);
-    
-    //    post("prefix %s", prefix);
-    
-    char *attrname = NULL;
-    char *val = NULL;
-    
-    char tmp[prefixlen];
-    strcpy(tmp, prefix);
-    int node_type = xmlTextReaderNodeType(reader);
-    switch (node_type) {
-        case XML_READER_TYPE_ELEMENT:
-        {
-            while (xmlTextReaderMoveToNextAttribute(reader))
-            {
-                attrname = (char *)xmlTextReaderConstName(reader);
-                val = (char *)xmlTextReaderConstValue(reader);
-                
-                if(!strcmp(attrname, "id") && val != NULL)
-                {
-                    post("pre realloc prefix %s", prefix);
-                    
-                    prefix = (char *)realloc(prefix, sizeof(char) * (strlen(val) + prefixlen + 2));
-                    if(!prefix)
-                    {
-                        object_error((t_object *)x, "failed to realloc prefix!");
-                        return;
-                    }
-                    memset(prefix, '\0', sizeof(char) * (strlen(val) + prefixlen + 2));
-                    strcpy(prefix, tmp);
-                    
-                    prefix[prefixlen] = '/';
-                    
-                    strcpy(prefix+prefixlen+1, val);
-                    prefixlen = strlen(prefix);
-                    
-                }
-                else
-                {
-                    char address[prefixlen + 2 + strlen(attrname)];
-                    
-                    strcpy(address, prefix);
-                    address[prefixlen] = '/';
-                    strcpy(address+(prefixlen+1), attrname);
-                    // send to o.collect here
-                    
-                    post("............................ %s %s", address, val);
-                    
-                }
-                
-            }
-        } break;
-        case XML_READER_TYPE_TEXT:
-        {
-            val = (char *)xmlTextReaderConstValue(reader);
-            post(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>> TEXT %s num value:  %s", prefix, val);
-        } break;
-            
-    }
-    
-    xmlTextReaderMoveToElement(reader);
-    
-    long pdepth = xmlTextReaderDepth(reader);//log depth
-    xmlTextReaderRead(reader);
-    
-    //while(xmlTextReaderNodeType(reader) != XML_READER_TYPE_ELEMENT) xmlTextReaderRead(reader);
-    if(parent_prefix)
-    {
-        post("parent %s pdepth %d this depth %d", prefix, pdepth, xmlTextReaderDepth(reader));
-        //goto freeThese;
-    }
-    
-    int count = 0;
-    
-    while(xmlTextReaderDepth(reader) > pdepth && count < 2)
-    {
-        if(xmlTextReaderNodeType(reader) == XML_READER_TYPE_ELEMENT)
-        {
-            post("system - checking layer %d", xmlTextReaderDepth(reader));
-            critical_enter(x->lock);
-            processNode(x, reader, &prefix);
-            critical_exit(x->lock);
-            //xmlTextReaderMoveToElement(reader);
-        }
-        xmlTextReaderRead(reader);
-        count++;
-    }
-    
-freeThese:
-    if(prefix)
-    {
-        free(prefix);
-        prefix = NULL;
-    }
-    
-    
-    
-}
-*/
 
 void osvg_fullPacket_impl(t_osvg *x, long len, char *ptr)
 {
@@ -289,6 +156,7 @@ void osvg_fullPacket(t_osvg *x, t_symbol *msg, int argc, t_atom *argv)
     osvg_fullPacket_impl(x, len, ptr);
 }
 
+/*
 void osvg_anything(t_osvg *x, t_symbol *msg, int argc, t_atom *argv)
 {
 	t_osc_bndl_u *bndl_u = osc_bundle_u_alloc();
@@ -315,6 +183,7 @@ void osvg_anything(t_osvg *x, t_symbol *msg, int argc, t_atom *argv)
 	}
 
 }
+*/
 
 void osvg_bang(t_osvg *x){
     critical_enter(x->lock);
@@ -327,7 +196,7 @@ void osvg_bang(t_osvg *x){
     omax_util_outletOSC(x->outlet, len, outbuf);
 }
 
-void osvg_parsePath(t_osvg *x, char *pathstr, char *prefix)
+void osvg_parsePath(t_osvg *x, char *pathstr, char *prefix, t_osc_bndl_u *bndl)
 {
     // NOTE: current S and C parsing is not SVG complient, it should allow for an unknown number of segments
     // there should always be a prefix!
@@ -335,12 +204,10 @@ void osvg_parsePath(t_osvg *x, char *pathstr, char *prefix)
         return;
     
     //post("%s", prefix);
+    t_osc_msg_u *msg = NULL;
     
     int prefixLen = strlen(prefix);
     char address[prefixLen+1025];
-
-    t_symbol *msg;
-    t_atom out[6];
     
     char type, prev_type;
     char postfix[4];
@@ -421,12 +288,13 @@ void osvg_parsePath(t_osvg *x, char *pathstr, char *prefix)
                 }
                 
                 snprintf(address, prefixLen+1024, "%s/d/%ld/%c", prefix, pcount, type);
-                msg = gensym(address);
                 
+                
+                msg = osc_message_u_allocWithAddress(address);
+                osc_message_u_appendDouble(msg, moveto[0]);
+                osc_message_u_appendDouble(msg, moveto[1]);
+                osc_bundle_u_addMsg(bndl, msg);
 
-                atom_setfloat(out, moveto[0]);
-                atom_setfloat(out+1, moveto[1]);
-                osvg_anything(x, msg, 2, out);
                 pcount++;
                 
                 prev_pt[0] = moveto[0];
@@ -495,10 +363,11 @@ void osvg_parsePath(t_osvg *x, char *pathstr, char *prefix)
                 }
                 
                 snprintf(address, prefixLen+1024, "%s/d/%ld/%c", prefix, pcount, type);
-                msg = gensym(address);
-                atom_setfloat(out, lineto[0]);
-                atom_setfloat(out+1, lineto[1]);
-                osvg_anything(x, msg, 2, out);
+                msg = osc_message_u_allocWithAddress(address);
+                osc_message_u_appendDouble(msg, lineto[0]);
+                osc_message_u_appendDouble(msg, lineto[1]);
+                osc_bundle_u_addMsg(bndl, msg);
+                
                 pcount++;
                 
                 //post("L x %f y %f", lineto[0], lineto[1]);
@@ -581,10 +450,11 @@ void osvg_parsePath(t_osvg *x, char *pathstr, char *prefix)
                 }
                 
                 snprintf(address, prefixLen+1024, "%s/d/%ld/%c", prefix, pcount, type);
-                msg = gensym(address);
-                atom_setfloat(out, pt[0]);
-                atom_setfloat(out+1, pt[1]);
-                osvg_anything(x, msg, 2, out);
+                msg = osc_message_u_allocWithAddress(address);
+                osc_message_u_appendDouble(msg, pt[0]);
+                osc_message_u_appendDouble(msg, pt[1]);
+                osc_bundle_u_addMsg(bndl, msg);
+                
                 pcount++;
                 
                 prev_pt[0] = pt[0];
@@ -654,8 +524,13 @@ void osvg_parsePath(t_osvg *x, char *pathstr, char *prefix)
                 
                 //three bspline points (6 doubles)
                 // should probably make everything absolute so it can be scaled easier
+                
+                
+                
                 if(ccount == 6){
-
+                    snprintf(address, prefixLen+1024, "%s/d/%ld/%c", prefix, pcount, type);
+                    msg = osc_message_u_allocWithAddress(address);
+                    
                     int bidx;
                     if(islower(type))
                     {
@@ -665,8 +540,8 @@ void osvg_parsePath(t_osvg *x, char *pathstr, char *prefix)
                             bpts[bidx * 2] += prev_pt[0];
                             bpts[(bidx * 2)+1] += prev_pt[1];
                             
-                            atom_setfloat(out+(bidx*2), bpts[bidx*2]);
-                            atom_setfloat(out+1+(bidx*2), bpts[(bidx*2)+1]);
+                            osc_message_u_appendDouble(msg, bpts[bidx*2]);
+                            osc_message_u_appendDouble(msg, bpts[(bidx*2)+1]);
                         }
                         type = toupper(type);
                     }
@@ -674,13 +549,13 @@ void osvg_parsePath(t_osvg *x, char *pathstr, char *prefix)
                     {
                         //post("upper? %c", type);
                         for (bidx = 0; bidx < 6; bidx++)
-                            atom_setfloat(out+bidx, bpts[bidx]);
+                            osc_message_u_appendDouble(msg, bpts[bidx]);
+
                     }
                     
-                    snprintf(address, prefixLen+1024, "%s/d/%ld/%c", prefix, pcount, type);
-                    msg = gensym(address);
-
-                    osvg_anything(x, msg, 6, out);
+                    osc_bundle_u_addMsg(bndl, msg);
+                    
+                    
                     pcount++;
                     prev_ctl_pt[0] = bpts[2];
                     prev_ctl_pt[1] = bpts[3];
@@ -763,9 +638,10 @@ void osvg_parsePath(t_osvg *x, char *pathstr, char *prefix)
                         prev_ctrl_Ptr[1] = prev_pt[1];
                     }
                     
-
-                    atom_setfloat(out, prev_ctrl_Ptr[0]);
-                    atom_setfloat(out+1, prev_ctrl_Ptr[1]);
+                    snprintf(address, prefixLen+1024, "%s/d/%ld/%c", prefix, pcount, type);
+                    msg = osc_message_u_allocWithAddress(address);
+                    osc_message_u_appendDouble(msg, prev_ctrl_Ptr[0]);
+                    osc_message_u_appendDouble(msg, prev_ctrl_Ptr[1]);
                     
                     int bidx;
 
@@ -776,24 +652,24 @@ void osvg_parsePath(t_osvg *x, char *pathstr, char *prefix)
                             spts[bidx * 2] += prev_pt[0];
                             spts[(bidx * 2)+1] += prev_pt[1];
                             
-                            atom_setfloat(out+2+(bidx*2), spts[bidx*2]);
-                            atom_setfloat(out+2+1+(bidx*2), spts[(bidx*2)+1]);
+                            osc_message_u_appendDouble(msg, spts[bidx*2]);
+                            osc_message_u_appendDouble(msg, spts[(bidx*2)+1]);
                         }
                         type = toupper(type);
                     }
                     else
                     {
                         for (bidx = 0; bidx < 4; bidx++)
-                            atom_setfloat(out+2+bidx, spts[bidx]);
+                            osc_message_u_appendDouble(msg, spts[bidx]);
+
                     }
                     
                     
                     // NOTE: S is converted to type C for easy of parsing later
-
-                    snprintf(address, prefixLen+1024, "%s/d/%ld/%c", prefix, pcount, type);
-                    msg = gensym(address);
                     
-                    osvg_anything(x, msg, 6, out);
+                    osc_bundle_u_addMsg(bndl, msg);
+
+                    
                     pcount++;
                     prev_ctl_pt[0] = spts[0];
                     prev_ctl_pt[1] = spts[1];
@@ -820,11 +696,11 @@ void osvg_parsePath(t_osvg *x, char *pathstr, char *prefix)
                 type = (islower(ch)) ? toupper(ch) : ch;
                 
                 snprintf(address, prefixLen+1024, "%s/d/%ld/%c", prefix, pcount, type);
-                msg = gensym(address);
-                atom_setfloat(out, origin_pt[0]);
-                atom_setfloat(out+1, origin_pt[1]);
-                osvg_anything(x, msg, 2, out);
-
+                msg = osc_message_u_allocWithAddress(address);
+                osc_message_u_appendDouble(msg, origin_pt[0]);
+                osc_message_u_appendDouble(msg, origin_pt[1]);
+                osc_bundle_u_addMsg(bndl, msg);
+                
             break;
                 
             case ' ': case '\n':{
@@ -839,220 +715,644 @@ void osvg_parsePath(t_osvg *x, char *pathstr, char *prefix)
     
 }
 
-
-void processNode(t_osvg *x, xmlTextReaderPtr reader, char *parent_prefix);
-void processNode(t_osvg *x, xmlTextReaderPtr reader, char *parent_prefix)
+long oxml_addNode(t_oxml_node **head, const xmlChar *type)
 {
-    char *name = NULL;
+    t_oxml_node *p = *head;
+
+    if(!p)
+    {
+        p = (t_oxml_node *)calloc(1, sizeof(t_oxml_node));
+        if(!p)
+        {
+            post("could not allocate memory (%d)", __LINE__  );
+            return 0;
+        }
+        p->type = type;
+        p->count = 1;
+        p->next = NULL;
+        *head = p;
+//        post("new head");
+        return 1;
+    }
+    else
+    {
+        while(p->next && p->type != type)
+            p = p->next;
+        
+        if(!xmlStrcmp(p->type, type))
+        {
+//            post("found type %s", p->type);
+            return (++p->count);
+        }
+        else
+        {
+//            post("new type");
+
+            t_oxml_node *pn = (t_oxml_node *)calloc(1, sizeof(t_oxml_node));
+            if(!pn)
+            {
+                post("could not allocate memory (%d)", __LINE__  );
+                return 0;
+            }
+            pn->count = 1;
+            pn->type = type;
+            
+            p->next = pn;
+            return 1;
+        }
+    }
+    post("error in type checking");
+    return -1;
+}
+
+void oxml_free_nodes(t_oxml_node *head)
+{
+    t_oxml_node *temp;
+
+    while(head != NULL)
+    {
+        temp = head;
+        head = head->next;
+        free(temp);
+        temp = NULL;
+    }
     
-    name = (char *)xmlTextReaderConstName(reader);
-    if (name == NULL)
-        name = (char *)xmlStrdup(BAD_CAST "--");
+}
+
+/* new version using xmlNode tree method, 
+ this is better because we can do a fast run through a level to count duplicate names first, then go through a second time to parse children
+ 
+ http://hamburgsteak.sandwich.net/writ/libxml2.txt
+ 
+ */
+
+static void oxml_generate_missing_ids(xmlNode *a_node)
+{
+    xmlNode *cur_node = NULL;
+    t_oxml_node *head = NULL;
     
-    int parentlen = (parent_prefix != NULL) ? strlen(parent_prefix) : 0;
+    //first iterate and count each type, store count in
+    for (cur_node = a_node; cur_node; cur_node = cur_node->next)
+    {
+        bool has_id = false;
+        if (cur_node->type == XML_ELEMENT_NODE)
+        {
+            if (cur_node->properties)
+            {
+                xmlAttr *attr = cur_node->properties;
+                while (attr)
+                {
+                    if(!xmlStrcmp(attr->name, (const xmlChar *)"id"))
+                        has_id = true;
+                    
+                    attr = attr->next;
+                }
+                
+                if(!has_id)
+                {
+                    long count = oxml_addNode(&head, cur_node->name);
+                    if(count > 0)
+                    {
+                        long test = count, digits = 0;
+                        while (test)
+                        {
+                            test /= 10;
+                            digits++;
+                        }
+                        char genID[digits + 1];
+                        sprintf(genID, "_%ld", count);
+                        xmlChar tag[] = "id";
+                        xmlNewProp(cur_node, tag, (const xmlChar *)genID);
+                    }
+                    
+                }
+            }
+            
+        }
+    }
+    oxml_free_nodes(head);
+}
+
+/*
+exit:
+if(canvas->gl_owner)
+{
+    t_osc_bndl_u *parent_bndl = ocontext_processCanvas(canvas->gl_owner);
+    t_osc_msg_u *pmsg = osc_message_u_allocWithAddress("/parent");
+    osc_message_u_appendBndl_u(pmsg, parent_bndl);
+    osc_bundle_u_addMsg(canvas_bndl, pmsg);
+}
+
+return canvas_bndl;
+}
+
+void ocontext_doFullPacket(t_ocontext *x, long len, char *ptr)
+{
+	t_canvas *patcher = NULL;
     
-    int namelen = strlen(name);
-    int prefixlen = namelen + parentlen + 1;
+    patcher = x->canvas;
     
-    //char *prefix = (char *)malloc(prefixlen * sizeof(char));
+	t_osc_bndl_u *mypatcher_bndl = ocontext_processCanvas(patcher);
+	t_osc_msg_u *context_msg = osc_message_u_allocWithAddress("/context");
+	osc_message_u_appendBndl_u(context_msg, mypatcher_bndl);
+	t_osc_bndl_u *bu = NULL;
+	osc_bundle_s_deserialize(len, ptr, &bu);
+	if(bu){
+		osc_bundle_u_addMsgWithoutDups(bu, context_msg);
+		long l = 0;
+		char *buf = NULL;
+		osc_bundle_u_serialize(bu, &l, &buf);
+		if(buf){
+			omax_util_outletOSC(x->outlet, l, buf);
+			osc_mem_free(buf);
+		}
+	}
+	osc_bundle_u_free(mypatcher_bndl);
+}
+ 
+ 
+ 
+*/
+
+/*
+static void oxml_process_branch(t_osvg *x, xmlNode *a_node, char *parent_prefix, t_osc_bndl_u *bndl)
+{
     
-    char prefix[prefixlen];
+    oxml_generate_missing_ids(a_node);
+    
+    xmlNode *cur_node = NULL;
+    xmlChar *val = NULL;
     char *prefixPtr = NULL;
     
-    if(parent_prefix != NULL)
-        strcpy(prefix, parent_prefix);
+    t_osc_msg_u *msg = NULL;
     
-    prefix[parentlen] = '/';
-    strcpy(prefix + (parentlen+1), (char *)name);
-    
-    prefixPtr = prefix;
-//    post("parentprefix %s", parent_prefix);
-    
-//    post("prefix %s", prefixPtr);
-    
-    char *attrname = NULL;
-    char *val = NULL;
-    char *prefix_w_id = NULL;
-    
-    int node_type = xmlTextReaderNodeType(reader);
-    t_symbol *msg;
-    t_atom out_val;
-    
-    
-    switch (node_type) {
-        case XML_READER_TYPE_ELEMENT:
+    //then parse for data:
+    for (cur_node = a_node; cur_node; cur_node = cur_node->next)
+    {
+        if (cur_node->type == XML_ELEMENT_NODE)
         {
-            while (xmlTextReaderMoveToNextAttribute(reader))
+            
+            //create address names
+            char *name = (char *)cur_node->name;
+            int parentlen = (parent_prefix != NULL) ? strlen(parent_prefix) : 0;
+            
+            int namelen = strlen(name);
+            int prefixlen = namelen + parentlen + 1;
+            
+            char prefix[prefixlen];
+            
+            if(parent_prefix != NULL)
+                strcpy(prefix, parent_prefix);
+            
+            prefix[parentlen] = '/';
+            strcpy(prefix + (parentlen+1), name);
+            
+            prefixPtr = prefix;
+            //            post("parentprefix %s", parent_prefix);
+            //            post("prefix %s", prefixPtr);
+            
+            //            char *attrname = NULL;
+            char *prefix_w_id = NULL;
+            
+            //     t_atom out_val;
+            //     t_symbol *msg;
+            
+            //            post("Element, name: %s\n", cur_node->name);
+            if (cur_node->properties)
             {
-                attrname = (char *)xmlTextReaderConstName(reader);
-                val = (char *)xmlTextReaderConstValue(reader);
+                xmlAttr *attr = cur_node->properties;
                 
-                if(!strcmp(attrname, "id") && val != NULL)
+                //get id first, have to iterate again unfortunately
+                
+                xmlAttr *attr_head = attr;
+                
+                while (attr)
                 {
-                    //post("id %s %s", attrname, val);
-
-                    int idlen = strlen(val);
-                    prefix_w_id = (char *)malloc((idlen + prefixlen + 2) * sizeof(char));
-                    memset(prefix_w_id, '\0', ((idlen + prefixlen + 2) * sizeof(char)));
+                    val = xmlGetProp(cur_node, attr->name);
                     
-                    strcpy(prefix_w_id, prefix);
-                    prefix_w_id[prefixlen] = '/';
-                    
-                    strcpy(prefix_w_id+prefixlen+1, val);
-                    
-                    prefixlen = strlen(prefix_w_id);
-                    prefixPtr = prefix_w_id;
-
-                                            // also send id to o.collect
+                    if(!xmlStrcmp(attr->name, (const xmlChar *)"id") && val != NULL)
+                    {
+                        //post("id %s %s", attrname, val);
+                        
+                        int idlen = strlen((char *)val);
+                        prefix_w_id = (char *)malloc((idlen + prefixlen + 2) * sizeof(char));
+                        memset(prefix_w_id, '\0', ((idlen + prefixlen + 2) * sizeof(char)));
+                        
+                        strcpy(prefix_w_id, prefix);
+                        prefix_w_id[prefixlen] = '/';
+                        
+                        strcpy(prefix_w_id+prefixlen+1, (const char *)val);
+                        
+                        prefixlen = strlen(prefix_w_id);
+                        prefixPtr = prefix_w_id;
+                        
+                        // also send id to o.collect
                         char namePrefix[prefixlen+5];
                         strcpy(namePrefix, prefix_w_id);
                         strcpy(namePrefix+prefixlen, "/type");
                         
-                        msg = gensym(namePrefix);
-                        atom_setsym(&out_val, gensym(name));
+                        msg = osc_message_u_allocWithAddress(namePrefix);
+                        osc_message_u_appendString(msg, name);
+                        osc_bundle_u_addMsg(bndl, msg);
                         
-                        //post("test %s %s", msg->s_name, name);
-                        osvg_anything(x, msg, 1, &out_val);
-
-                    
-                    // also send id to o.collect
-                    char idPrefix[prefixlen+3];
-                    strcpy(idPrefix, prefix_w_id);
-                    strcpy(idPrefix+prefixlen, "/id");
-                    
-                    msg = gensym(idPrefix);
-                    atom_setsym(&out_val, gensym(val));
-                    
-                    osvg_anything(x, msg, 1, &out_val);
-
-
+                        // also send id to o.collect
+                        char idPrefix[prefixlen+3];
+                        strcpy(idPrefix, prefix_w_id);
+                        strcpy(idPrefix+prefixlen, "/id");
+                        
+                        msg = osc_message_u_allocWithAddress(idPrefix);
+                        osc_message_u_appendString(msg, (char *)val);
+                        osc_bundle_u_addMsg(bndl, msg);
+                        
+                        xmlFree(val);
+                        val = NULL;
+                        break;
+                    }
+                    xmlFree(val);
+                    val = NULL;
+                    attr = attr->next;
                 }
-                else if(!strcmp(name, "path") && !strcmp(attrname, "d"))
+                
+                attr = attr_head;
+                
+                while (attr)
                 {
-                    osvg_parsePath(x, val, prefixPtr);
-                }
-                else
-                {
-                    char address[prefixlen + 2 + strlen(attrname)];
-                    strcpy(address, prefixPtr);
-                    address[prefixlen] = '/';
-                    strcpy(address+(prefixlen+1), attrname);
-                    // send to o.collect here
-                    msg = gensym(address);
+                    val = xmlGetProp(cur_node, attr->name);
                     
-                    char *p = val;
-                    errno = 0;
-                    double d = strtod(val, &p);
-                    if(errno == 0 && p != val )
-                        atom_setfloat(&out_val, d);
+                    //                    post("attr: %s %s", attr->name, val);
+                    
+                    if(!xmlStrcmp(attr->name, (const xmlChar *)"path") || !xmlStrcmp(attr->name, (const xmlChar *)"d"))
+                    {
+                        osvg_parsePath(x, (char *)val, prefixPtr, bndl);
+                    }
                     else
-                        atom_setsym(&out_val, gensym(val));
+                    {
+                        //un-labeled svg elements, line, rects, anything really
+                        //                        post("*** prefixPtr %s", prefixPtr);
+                        char address[prefixlen + 2 + xmlStrlen(attr->name)];
+                        strcpy(address, prefixPtr);
+                        address[prefixlen] = '/';
+                        strcpy(address+(prefixlen+1), (char *)attr->name);
+                        // send to o.collect here
+                        
+                        msg = osc_message_u_allocWithAddress(address);
+                        
+                        char *v = (char *)val;
+                        char *p = (char *)val;
+                        errno = 0;
+                        double d = strtod(v, &p);
+                        if(errno == 0 && p != v )
+                            osc_message_u_appendDouble(msg, d);
+                        else
+                            osc_message_u_appendString(msg, (char *)val);
+                        
+                        osc_bundle_u_addMsg(bndl, msg);
+                        
+                    }
                     
-                    osvg_anything(x, msg, 1, &out_val);
-                    
-                    //post("............................ %s %s", address, val);
-                    
+                    xmlFree(val);
+                    val = NULL;
+                    attr = attr->next;
                 }
                 
             }
-        } break;
-        case XML_READER_TYPE_TEXT:
-        {
-            val = (char *)xmlTextReaderConstValue(reader);
-            msg = gensym(prefixPtr);
-            atom_setsym(&out_val, gensym(val));
-            osvg_anything(x, msg, 1, &out_val);
             
-            //attrname = (char *)xmlTextReaderConstName(reader);
-            //post(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>> TEXT %s attr %s num value:  %s", prefixPtr, attrname, val);
-        } break;
+            val = xmlNodeGetContent(cur_node);
+            if(!xmlStrcmp(cur_node->name, (const xmlChar *)"text") && strlen((const char *)val))
+                post("%s content %s %x %d", cur_node->name, val, val);
             
-    }
-    
-    xmlTextReaderMoveToElement(reader);
-    
-    long pdepth = xmlTextReaderDepth(reader);//log depth
-    xmlTextReaderRead(reader);
-    
-    /*
-     //while(xmlTextReaderNodeType(reader) != XML_READER_TYPE_ELEMENT) xmlTextReaderRead(reader);
-     if(parent_prefix)
-     {
-     post("parent %s pdepth %d this depth %d", prefixPtr, pdepth, xmlTextReaderDepth(reader));
-     //return;
-     }
-     
-     //int count = 0;
-     */
-    
-    while(xmlTextReaderDepth(reader) > pdepth )
-    {
-        if(xmlTextReaderNodeType(reader) == XML_READER_TYPE_ELEMENT || xmlTextReaderNodeType(reader) == XML_READER_TYPE_TEXT)
-        {
-            //post("system - checking layer %d", xmlTextReaderDepth(reader));
-            critical_enter(x->lock);
-            processNode(x, reader, prefixPtr);
-            critical_exit(x->lock);
+            xmlFree(val);
+            val = NULL;
         }
-        xmlTextReaderRead(reader);
+        oxml_process_branch(x, cur_node->children, prefixPtr, bndl);
+        
+    }
+}
+*/
+
+
+static void oxml_process_branch(t_osvg *x, xmlNode *a_node, char *parent_prefix, t_osc_bndl_u *bndl)
+{
+
+    oxml_generate_missing_ids(a_node);
+
+    xmlNode *cur_node = NULL;
+    xmlChar *val = NULL;
+    char *prefixPtr = NULL;
+    
+    t_osc_msg_u *msg = NULL;
+    
+    //then parse for data:
+    for (cur_node = a_node; cur_node; cur_node = cur_node->next)
+    {
+        if (cur_node->type == XML_ELEMENT_NODE)
+        {
+
+            //create address names
+            char *name = (char *)cur_node->name;
+            int parentlen = (parent_prefix != NULL) ? strlen(parent_prefix) : 0;
+
+            int namelen = strlen(name);
+            int prefixlen = namelen + parentlen + 1;
+
+            char prefix[prefixlen];
+
+            if(parent_prefix != NULL)
+                strcpy(prefix, parent_prefix);
+
+            prefix[parentlen] = '/';
+            strcpy(prefix + (parentlen+1), name);
+
+            prefixPtr = prefix;
+//            post("parentprefix %s", parent_prefix);
+//            post("prefix %s", prefixPtr);
+
+//            char *attrname = NULL;
+            char *prefix_w_id = NULL;
+
+       //     t_atom out_val;
+       //     t_symbol *msg;
+
+//            post("Element, name: %s\n", cur_node->name);
+            if (cur_node->properties)
+            {
+                xmlAttr *attr = cur_node->properties;
+                
+                //get id first, have to iterate again unfortunately
+                
+                xmlAttr *attr_head = attr;
+                
+                while (attr)
+                {
+                    val = xmlGetProp(cur_node, attr->name);
+
+                    if(!xmlStrcmp(attr->name, (const xmlChar *)"id") && val != NULL)
+                    {
+                        //post("id %s %s", attrname, val);
+                        
+                        int idlen = strlen((char *)val);
+                        prefix_w_id = (char *)malloc((idlen + prefixlen + 2) * sizeof(char));
+                        memset(prefix_w_id, '\0', ((idlen + prefixlen + 2) * sizeof(char)));
+                        
+                        strcpy(prefix_w_id, prefix);
+                        prefix_w_id[prefixlen] = '/';
+                        
+                        strcpy(prefix_w_id+prefixlen+1, (const char *)val);
+                        
+                        prefixlen = strlen(prefix_w_id);
+                        prefixPtr = prefix_w_id;
+                        
+                        // also send id to o.collect
+                        char namePrefix[prefixlen+5];
+                        strcpy(namePrefix, prefix_w_id);
+                        strcpy(namePrefix+prefixlen, "/type");
+                        
+                        msg = osc_message_u_allocWithAddress(namePrefix);
+                        osc_message_u_appendString(msg, name);
+                        osc_bundle_u_addMsg(bndl, msg);
+                        
+                        // also send id to o.collect
+                        char idPrefix[prefixlen+3];
+                        strcpy(idPrefix, prefix_w_id);
+                        strcpy(idPrefix+prefixlen, "/id");
+                        
+                        msg = osc_message_u_allocWithAddress(idPrefix);
+                        osc_message_u_appendString(msg, (char *)val);
+                        osc_bundle_u_addMsg(bndl, msg);
+                        
+                        xmlFree(val);
+                        val = NULL;
+                        break;
+                    }
+                    xmlFree(val);
+                    val = NULL;
+                    attr = attr->next;
+                }
+                
+                attr = attr_head;
+                
+                while (attr)
+                {
+                    val = xmlGetProp(cur_node, attr->name);
+
+//                    post("attr: %s %s", attr->name, val);
+
+                    if(!xmlStrcmp(attr->name, (const xmlChar *)"path") || !xmlStrcmp(attr->name, (const xmlChar *)"d"))
+                    {
+                        osvg_parsePath(x, (char *)val, prefixPtr, bndl);
+                    }
+                    else
+                    {
+                        //un-labeled svg elements, line, rects, anything really
+//                        post("*** prefixPtr %s", prefixPtr);
+                        char address[prefixlen + 2 + xmlStrlen(attr->name)];
+                        strcpy(address, prefixPtr);
+                        address[prefixlen] = '/';
+                        strcpy(address+(prefixlen+1), (char *)attr->name);
+                        // send to o.collect here
+                        
+                        msg = osc_message_u_allocWithAddress(address);
+                        
+                        char *v = (char *)val;
+                        char *p = (char *)val;
+                        errno = 0;
+                        double d = strtod(v, &p);
+                        if(errno == 0 && p != v )
+                            osc_message_u_appendDouble(msg, d);
+                        else
+                            osc_message_u_appendString(msg, (char *)val);
+                        
+                        osc_bundle_u_addMsg(bndl, msg);
+                        
+                    }
+
+                    xmlFree(val);
+                    val = NULL;
+                    attr = attr->next;
+                }
+                
+            }
+        
+            val = xmlNodeGetContent(cur_node);
+            if(!xmlStrcmp(cur_node->name, (const xmlChar *)"text") && strlen((const char *)val))
+                post("%s content %s %x %d", cur_node->name, val, val);
+            
+            xmlFree(val);
+            val = NULL;
+        }
+        oxml_process_branch(x, cur_node->children, prefixPtr, bndl);
+
+    }
+}
+
+
+static void print_element_names(xmlNode * a_node)
+{
+    xmlNode *cur_node = NULL;
+    t_oxml_node *head = NULL;
+    
+    //first iterate and count each type, store count in
+    for (cur_node = a_node; cur_node; cur_node = cur_node->next)
+    {
+        bool has_id = false;
+        if (cur_node->type == XML_ELEMENT_NODE)
+        {
+            if (cur_node->properties)
+            {
+                xmlAttr *attr = cur_node->properties;
+                while (attr)
+                {
+                    if(!xmlStrcmp(attr->name, (const xmlChar *)"id"))
+                        has_id = true;
+                    
+                    attr = attr->next;
+                }
+                
+                if(!has_id)
+                {
+                    long count = oxml_addNode(&head, cur_node->name);
+                    if(count > 0)
+                    {
+                        long test = count, digits = 0;
+                        while (test)
+                        {
+                            test /= 10;
+                            digits++;
+                        }
+                        char genID[digits + 1];
+                        sprintf(genID, "_%ld", count);
+                        xmlChar tag[] = "id";
+                        xmlNewProp(cur_node, tag, (const xmlChar *)genID);
+                    }
+                    
+                }
+            }
+            
+        }
+    }
+    oxml_free_nodes(head);
+    
+    //then parse for data:
+    for (cur_node = a_node; cur_node; cur_node = cur_node->next)
+    {
+        if (cur_node->type == XML_ELEMENT_NODE)
+        {
+            post("Element, name: %s\n", cur_node->name);
+            xmlChar *val = NULL;
+            if (cur_node->properties)
+            {
+                xmlAttr *attr = cur_node->properties;
+                while (attr)
+                {
+                    val = xmlGetProp(cur_node, attr->name);
+                    post("attr: %s %s", attr->name, val);
+                    xmlFree(val);
+                    val = NULL;
+                    attr = attr->next;
+                }
+                
+            }
+            
+            val = xmlNodeGetContent(cur_node);
+            if(!xmlStrcmp(cur_node->name, (const xmlChar *)"text") && strlen((const char *)val))
+                post("%s content %s %x %d", cur_node->name, val, val);
+            
+            xmlFree(val);
+            val = NULL;
+        }
+        print_element_names(cur_node->children);
     }
     
-    if(prefix_w_id)
-        free(prefix_w_id);
     
 }
 
+void oxml_parse_tree(t_osvg *x, const char *file)
+{
+    if(!file)
+        return;
+    
+    xmlDoc *doc = NULL;
+    xmlNode *root_element = NULL;
+
+    critical_enter(x->lock);
+
+    doc = xmlReadFile(file, NULL, 0);
+    
+    if (doc == NULL)
+    {
+        object_error((t_object *)x, "%s: failed to read file",file);
+        return;
+    }
+    
+    root_element = xmlDocGetRootElement(doc);
+    if (root_element == NULL)
+    {
+        xmlFreeDoc(doc);
+        object_error((t_object *)x, "%s: failed to parse file",file);
+        return;
+    }
+    //print_element_names(root_element);
+    
+    t_osc_bndl_u *bndl = osc_bundle_u_alloc();
+    
+    t_osc_msg_u *msg = osc_message_u_allocWithAddress("/file");
+    osc_message_u_appendString(msg, file);
+    osc_bundle_u_addMsg(bndl, msg);
+    
+    oxml_process_branch(x, root_element, NULL, bndl);
+
+    long len = 0;
+	char *buf = NULL;
+	osc_bundle_u_serialize(bndl, &len, &buf);
+	if(bndl){
+		osc_bundle_u_free(bndl);
+	}
+    
+    osvg_fullPacket_impl(x, len, buf);
+    if(buf){
+		osc_mem_free(buf);
+	}
+    
+    osvg_bang(x);
+
+    xmlFreeDoc(doc);
+    xmlCleanupParser();
+    critical_exit(x->lock);
+}
+
+//<< end new version
 
 void svglookup_doopen(t_osvg *x, t_symbol *s)
 {
 	short path;
 	char filename[MAX_PATH_CHARS];
 	u_int32_t type;
-	
+    char file[MAX_PATH_CHARS];
+    
 	if (s==ps_nothing) {
 		if (open_dialog(filename,&path,&type,0L,0))
 			return;
+        path_toabsolutesystempath(path, filename, file);
+
 	} else {
 		strcpy(filename,s->s_name);
 		if (locatefile_extended(filename,&path,&type,&type,-1)) {
 			object_error((t_object *)x, "%s: can't find file",filename);
 			return;
 		}
+        strcpy(file,s->s_name);
         post("%s %s", filename, s->s_name);
 	}
     
-    const char *file = s->s_name;
-
-    critical_enter(x->lock);
-    xmlTextReaderPtr reader;
-    int ret;
-    reader = xmlNewTextReaderFilename(file);
+    post("%s, %s", filename, file);
     
-    if(reader == NULL){
-		object_error((t_object *)x, "%s: error opening file",file);
-		return;
-	}
     
-    x->reader = reader;
-	x->f_open = TRUE;
+    x->filewatcher = filewatcher_new((t_object *)x, path, filename);
+    if(x->autowatch && x->filewatcher)
+        filewatcher_start(x->filewatcher);
     
-    ret = xmlTextReaderRead(reader);
-    while (ret == 1)
-    {
-        processNode(x, reader, NULL);
-        ret = xmlTextReaderRead(reader);
-    }
-    
-    xmlTextReaderRead(reader);
-    if (ret != 0) {
-        object_error((t_object *)x, "%s: failed to parse file",file);
-    } else {
-        osvg_bang(x);
-    }
-    
-    xmlFreeTextReader(reader);
-    x->f_open = FALSE;
-    critical_exit(x->lock);
+//    osvg_do_parse(x, file);
+    oxml_parse_tree(x, file);
 
 }
 
@@ -1087,8 +1387,14 @@ void osvg_free(t_osvg *x){
 	if(x->buffer){
 		free(x->buffer);
 	}
+#ifndef OMAX_PD_VERSION
 	critical_free(x->lock);
     
+    if(x->filewatcher)
+        object_free(x->filewatcher);
+#endif
+    oxml_free_nodes(x->head);
+
     //need to free proxy?
 }
 
@@ -1136,6 +1442,52 @@ int setup_o0x2ecollect(void){
 }
 #else
 
+void osvg_filechanged(t_osvg *x, char *filename, short path)
+{
+    char file[MAX_PATH_CHARS];
+    path_toabsolutesystempath(path, filename, file);
+
+    //note I'm pretty sure this is always in main thread, otherwise better to defer probably
+//    osvg_do_parse(x, file);
+    oxml_parse_tree(x, file);
+
+}
+
+t_max_err osvg_autowatch_get(t_osvg *x, t_object *attr, long *argc, t_atom **argv)
+{
+    
+    char alloc;
+    atom_alloc(argc, argv, &alloc);
+    atom_setfloat(*argv, x->autowatch);
+    
+    return 0;
+}
+
+
+t_max_err osvg_autowatch_set(t_osvg *x, t_object *attr, long argc, t_atom *argv)
+{
+    long prev = x->autowatch;
+    
+    if(atom_gettype(argv) == A_LONG)
+        x->autowatch = atom_getlong(argv) != 0;
+    
+    if(x->autowatch != prev)
+    {
+        if(x->autowatch && x->filewatcher)
+        {
+            filewatcher_start(x->filewatcher);
+        }
+        else if(x->filewatcher)
+        {
+            filewatcher_stop(x->filewatcher);
+        }
+    
+    }
+    post("autowatch %d", x->autowatch);
+    
+    return 0;
+}
+
 void *osvg_new(t_symbol *msg, short argc, t_atom *argv){
 	t_osvg *x;
 	if((x = (t_osvg *)object_alloc(osvg_class))){
@@ -1153,6 +1505,12 @@ void *osvg_new(t_symbol *msg, short argc, t_atom *argv){
 		x->buffer_pos = OSC_HEADER_SIZE;
 		osc_bundle_s_setBundleID(x->buffer);
 		critical_new(&(x->lock));
+        x->autowatch = 0;
+        x->filewatcher = NULL;
+        x->pdepth = 0;
+        x->head = NULL;
+        attr_args_process(x, argc, argv);
+        
 	}
     
 	return(x);
@@ -1163,11 +1521,11 @@ int main(void){
 	class_addmethod(c, (method)osvg_fullPacket, "FullPacket", A_GIMME, 0);
 	class_addmethod(c, (method)osvg_doc, "doc", 0);
 	class_addmethod(c, (method)osvg_assist, "assist", A_CANT, 0);
-	class_addmethod(c, (method)osvg_anything, "anything", A_GIMME, 0);
+//	class_addmethod(c, (method)osvg_anything, "anything", A_GIMME, 0);
 	class_addmethod(c, (method)osvg_bang, "bang", 0);
-    
     class_addmethod(c, (method)osvg_open, "open", A_DEFSYM, 0);
-
+    class_addmethod(c, (method)osvg_filechanged, "filechanged", A_CANT, 0);
+    
 	// remove this if statement when we stop supporting Max 5
 	if(omax_dict_resolveDictStubs()){
 		class_addmethod(c, (method)omax_dict_dictionary, "dictionary", A_GIMME, 0);
@@ -1175,6 +1533,9 @@ int main(void){
 
 	class_addmethod(c, (method)odot_version, "version", 0);
 
+    CLASS_ATTR_ATOM_LONG(c, "autowatch", 0L, t_osvg, autowatch);
+    CLASS_ATTR_ACCESSORS(c, "autowatch", osvg_autowatch_get, osvg_autowatch_set)
+    
 	class_register(CLASS_BOX, c);
 	osvg_class = c;
 
