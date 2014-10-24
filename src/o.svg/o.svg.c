@@ -91,6 +91,7 @@ typedef struct _osvg
     long            pdepth;
     
     t_oxml_node     *head;
+    t_symbol        *sepattr;
     
 #ifndef OMAX_PD_VERSION
     long autowatch;
@@ -822,7 +823,7 @@ static void oxml_process_branch(t_osvg *x, xmlNode *a_node, t_osc_bndl_u *bndl)
                         osc_bundle_u_addMsg(n_bndl, msg);
                         
                     }
-                    else if(xmlStrcmp(attr->name, (const xmlChar *)"id"))
+                    else if(xmlStrcmp(attr->name, (const xmlChar *)"id")) //(not id)
                     {
                         //un-labeled svg elements, line, rects, anything really
 
@@ -866,9 +867,46 @@ static void oxml_process_branch(t_osvg *x, xmlNode *a_node, t_osc_bndl_u *bndl)
         //we know there is always an id, because we made sure in the pre-processing loop, but just for safety:
             if(id)
             {
-                char idbuf[strlen((char *)id)+1];
-                sprintf(idbuf, "/%s", id);
-                msg = osc_message_u_allocWithAddress(idbuf);
+                
+                if (x->sepattr != NULL)
+                {
+                    char *delim = x->sepattr->s_name;
+                    int n_delims = strlen(delim);
+                    int idlen = xmlStrlen(id);
+                    
+                    char idbuf[idlen+2];
+                    idbuf[0] = '/';
+                    idbuf[idlen+1] = '\0';
+
+                    int i, j;
+                    for (i = 0; i < idlen; i++)
+                    {
+                        for (j = 0; j < n_delims; j++)
+                        {
+                            if(id[i] == delim[j])
+                            {
+                                idbuf[i+1] = '/';
+                                break;
+                            }
+                            else
+                            {
+                                idbuf[i+1] = id[i];
+                            }
+                        }
+                    }
+                    
+                    if(idbuf[idlen] == '/')
+                        idbuf[idlen] = '\0';
+                    
+                    msg = osc_message_u_allocWithAddress(idbuf);
+                }
+                else
+                {
+                    char idbuf[strlen((char *)id)+2];
+                    idbuf[0] = '/';
+                    strcpy(idbuf+1, (char *)id);
+                    msg = osc_message_u_allocWithAddress(idbuf);
+                }
                 xmlFree(id);
                 id = NULL;
             }
@@ -1054,6 +1092,28 @@ void osvg_filechanged(t_osvg *x, char *filename, short path)
 
 }
 
+t_max_err osvg_separator_get(t_osvg *x, t_object *attr, long *argc, t_atom **argv)
+{
+    
+    char alloc;
+    atom_alloc(argc, argv, &alloc);
+    if (x->sepattr != NULL)
+        atom_setsym(*argv, x->sepattr);
+    else
+        atom_setsym(*argv, gensym("<none>"));
+    
+    return 0;
+}
+
+
+t_max_err osvg_separator_set(t_osvg *x, t_object *attr, long argc, t_atom *argv)
+{
+    
+    x->sepattr = atom_getsym(argv);
+    post("separators %s", x->sepattr->s_name);
+    return 0;
+}
+
 t_max_err osvg_autowatch_get(t_osvg *x, t_object *attr, long *argc, t_atom **argv)
 {
     
@@ -1098,6 +1158,7 @@ void *osvg_new(t_symbol *msg, short argc, t_atom *argv){
         x->filewatcher = NULL;
         x->pdepth = 0;
         x->head = NULL;
+        x->sepattr = NULL;
         attr_args_process(x, argc, argv);
         
 	}
@@ -1117,6 +1178,10 @@ int main(void){
 
     CLASS_ATTR_ATOM_LONG(c, "autowatch", 0L, t_osvg, autowatch);
     CLASS_ATTR_ACCESSORS(c, "autowatch", osvg_autowatch_get, osvg_autowatch_set)
+    
+    CLASS_ATTR_SYM(c, "separator", 0L, t_osvg, sepattr);
+    CLASS_ATTR_ACCESSORS(c, "separator", osvg_separator_get, osvg_separator_set);
+    
     
 	class_register(CLASS_BOX, c);
 	osvg_class = c;
