@@ -92,6 +92,7 @@ typedef struct _osvg
     
     t_oxml_node     *head;
     t_symbol        *sepattr;
+    t_symbol        *f_name;
     
 #ifndef OMAX_PD_VERSION
     long autowatch;
@@ -101,6 +102,11 @@ typedef struct _osvg
 
 void *osvg_class;
 t_symbol *ps_nothing;
+
+
+// to do: add segment and total length approximation, and bounding box
+// http://pomax.github.io/bezierinfo/
+
 
 
 void osvg_parsePath(t_osvg *x, char *pathstr, t_osc_bndl_u *bndl)
@@ -974,6 +980,12 @@ void oxml_parse_tree(t_osvg *x, const char *file)
     critical_exit(x->lock);
 }
 
+void osvg_bang(t_osvg *x)
+{
+    if(x->f_name)
+        oxml_parse_tree(x, x->f_name->s_name);
+}
+
 
 void svglookup_doopen(t_osvg *x, t_symbol *s)
 {
@@ -1004,6 +1016,7 @@ void svglookup_doopen(t_osvg *x, t_symbol *s)
     if(x->autowatch && x->filewatcher)
         filewatcher_start(x->filewatcher);
     
+    x->f_name = gensym(file);
     oxml_parse_tree(x, file);
 
 }
@@ -1159,6 +1172,7 @@ void *osvg_new(t_symbol *msg, short argc, t_atom *argv){
         x->pdepth = 0;
         x->head = NULL;
         x->sepattr = NULL;
+        x->f_name = NULL;
         attr_args_process(x, argc, argv);
         
 	}
@@ -1173,6 +1187,7 @@ int main(void){
 //	class_addmethod(c, (method)osvg_anything, "anything", A_GIMME, 0);
     class_addmethod(c, (method)osvg_open, "open", A_DEFSYM, 0);
     class_addmethod(c, (method)osvg_filechanged, "filechanged", A_CANT, 0);
+    class_addmethod(c, (method)osvg_bang, "bang", 0);
 
 	class_addmethod(c, (method)odot_version, "version", 0);
 

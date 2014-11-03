@@ -64,6 +64,20 @@ VERSION 0.1: porting to pd, note: the name and key attributes are only setable o
 
 #define OTABLE_MANGLE_PFX "__CNMAT_otable_name_"
 
+#ifndef _osc_linkedlist_elem
+struct _osc_linkedlist_elem{
+	void *data;
+	struct _osc_linkedlist_elem *next, *prev;
+};
+
+struct _osc_linkedlist{
+	t_osc_linkedlist_elem *e;
+	unsigned long count;
+	t_osc_linkedlist_elem *head, *tail;
+	void (*dtor)(void *data);
+};
+#endif
+
 typedef struct _otable_db{
 	t_osc_hashtab *ht;
 	t_osc_linkedlist *ll;
@@ -78,6 +92,11 @@ typedef struct _otable{
 	t_otable_db *db;
 	t_symbol *name;
 	t_critical lock;
+
+    t_symbol *selector;
+    t_osc_linkedlist *llookup;
+    t_osc_linkedlist_elem *curr;
+    char *typetags;
 } t_otable;
 
 void *otable_class;
@@ -92,6 +111,7 @@ void *otable_new(t_symbol *msg, short argc, t_atom *argv);
 t_max_err otable_setName(t_otable *x, void *attr, long ac, t_atom *av);
 t_max_err otable_getKey(t_otable *x, void *attr, long *ac, t_atom **av);
 t_max_err otable_setKey(t_otable *x, void *attr, long ac, t_atom *av);
+void otable_clear(t_otable *x);
 
 
 t_symbol *ps_FullPacket;
@@ -192,6 +212,17 @@ void otable_processFullPacket(t_otable *x, long len, char *ptr)
 		len = copylen;
 		ptr = copy;
 	}
+    
+    critical_enter(x->lock);
+    if(x->llookup)
+    {
+        osc_linkedlist_destroy(x->llookup);
+        x->llookup = NULL;
+        x->curr = NULL;
+    }
+    critical_exit(x->lock);
+    //possibly do check for @key value here, if no key present allow for other commands, i.e. /lookup value
+    
 	otable_insert(x, len, ptr, osc_linkedlist_append);
 	if(alloc && copy){
 		osc_mem_free(copy);
@@ -262,15 +293,15 @@ void otable_poplast(t_otable *x)
 }
 
 #ifdef OMAX_PD_VERSION
-void otable_peeknth(t_otable *x, float f)
+void otable_peek(t_otable *x, float f)
 {
     int n = (int)f;
 #else
-void otable_peeknth(t_otable *x, int n)
+void otable_peek(t_otable *x, t_osc_linkedlist *ll, int n)
 {
 #endif
 	critical_enter(x->lock);
-	t_osc_bndl_s *bndl = (t_osc_bndl_s *)osc_linkedlist_peekNth(x->db->ll, n);
+	t_osc_bndl_s *bndl = (t_osc_bndl_s *)osc_linkedlist_peekNth(ll, n);
 	critical_exit(x->lock);
 	if(bndl){
 		long len = osc_bundle_s_getLen(bndl);
@@ -281,14 +312,40 @@ void otable_peeknth(t_otable *x, int n)
 	}
 }
 
-void otable_peekfirst(t_otable *x)
+void otable_peeknth(t_otable *x, t_symbol *msg, short ac, t_atom *av)
 {
-	otable_peeknth(x, 0);
+    if(ac == 1 && atom_gettype(av) == A_LONG)
+    {
+        otable_peek(x, x->db->ll, atom_getlong(av));
+    }
+    else if(ac == 2 && atom_gettype(av) == A_SYM && atom_getsym(av) == x->selector && atom_gettype(av+1) == A_LONG)
+    {
+        otable_peek(x, x->llookup, atom_getlong(av));
+    }
+}
+    
+void otable_peekfirst(t_otable *x, t_symbol *msg, short ac, t_atom *av)
+{
+    if(ac == 0)
+    {
+        otable_peek(x, x->db->ll, 0);
+    }
+    else if(atom_gettype(av) == A_SYM && atom_getsym(av) == x->selector)
+    {
+        otable_peek(x, x->llookup, 0);
+    }
 }
 
-void otable_peeklast(t_otable *x)
+void otable_peeklast(t_otable *x, t_symbol *msg, short ac, t_atom *av)
 {
-	otable_peeknth(x, -1);
+    if(ac == 0)
+    {
+        otable_peek(x, x->db->ll, -1);
+    }
+    else if(atom_gettype(av) == A_SYM && atom_getsym(av) == x->selector)
+    {
+        otable_peek(x, x->llookup, -1);
+    }
 }
 
 #ifdef OMAX_PD_VERSION
@@ -348,20 +405,791 @@ void otable_cloneCallback(void **dest, void *src)
 		*dest = (void *)copy;
 	}
 }
-
-#define OTABLE_COPY_BEFORE_DUMP
-void otable_dump(t_otable *x)
+    
+    
+void otable_linkedlist_printElem(t_otable *x)
 {
-	t_osc_linkedlist *ll = x->db->ll;
-#ifdef OTABLE_COPY_BEFORE_DUMP
-	critical_enter(x->lock);
-	ll = osc_linkedlist_clone(x->db->ll, otable_cloneCallback);
-	critical_exit(x->lock);
+    if(!x->selector)
+        return;
+    
+    critical_enter(x->lock);
+    const char *lookupaddr = x->selector->s_name; //<< pretty sure this is safe
+    t_osc_linkedlist *ll = x->db->ll;
+    critical_exit(x->lock);
+    
+    if(ll)
+    {
+        t_osc_linkedlist_elem *e = ll->head;
+        t_osc_linkedlist_elem *next = NULL;
+        post("list has %d elements", ll->count);
+        
+        while(e)
+        {
+            next = e->next;
+            t_osc_bndl_s *bndl = (t_osc_bndl_s *)e->data;
+            //            long len = osc_bundle_s_getLen(bndl);
+            
+            
+            //probably separate this part to a different function, and return just the requested value
+            //also do a check to amke sure the type is the same for all lookup arguments, otherwise fail
+            
+            t_osc_msg_ar_s *ar = NULL;
+            osc_bundle_s_lookupAddress_b(bndl, lookupaddr, &ar, 1);
+            
+            if(ar)
+            {
+                t_osc_msg_s *m = osc_message_array_s_get(ar, 0);
+                if(osc_message_s_getArgCount(m) > 0)
+                {
+                    t_osc_atom_s *a = NULL;
+                    osc_message_s_getArg(osc_message_array_s_get(ar, 0), 0, &a);
+                    char type = osc_atom_s_getTypetag(a);
+                    if(type)
+                    {
+                        switch (osc_message_s_getTypetag(m, 0))
+                        {
+                            case 'd':
+                                post("double %f", osc_atom_s_getDouble(a));
+                                break;
+                            case 'f':
+                                post("float %f", osc_atom_s_getFloat(a));
+                                break;
+                            case 'i':
+                                post("int %d", osc_atom_s_getInt(a));
+                                break;
+                            case 't':
+                            {
+                                t_osc_timetag tt = osc_atom_s_getTimetag(a);
+                                post("timetag %d %d %f", tt.sec, tt.frac_sec, osc_timetag_timetagToFloat(tt));
+                                break;
+                            }
+                            case 's':
+                            {
+                                char *str = NULL;
+                                int slen = osc_atom_s_getStringLen(a);
+                                osc_atom_s_getString(a, slen, &str);
+                                post("%s", str);
+                                break;
+                            }
+                            default:
+                                post("no sort implemented for type %c", type);
+                                break;
+                        }
+                        
+                        osc_atom_s_free(a);
+                        
+                    }
+                }
+            }
+            
+            osc_message_array_s_free(ar);
+            
+            e = next;
+        }
+    }
+    
+}
+
+
+int otable_compare_value(   t_osc_linkedlist_elem *a,
+                            t_osc_atom_s *b_at,
+                            const char *lookupaddr)
+{
+    t_osc_bndl_s *a_bndl = (t_osc_bndl_s *)a->data;
+    t_osc_msg_ar_s *a_ar = NULL;
+    
+    osc_bundle_s_lookupAddress_b(a_bndl, lookupaddr, &a_ar, 1);
+    
+    int ret = -2; //-2 means error (probably type tags don't match)
+    if(a_ar)
+    {
+        t_osc_msg_s *a_m = osc_message_array_s_get(a_ar, 0);
+        
+        int a_m_count = osc_message_s_getArgCount(a_m);
+        if( a_m_count > 0)
+        {
+            t_osc_atom_s *a_at = NULL;
+            
+            osc_message_s_getArg(osc_message_array_s_get(a_ar, 0), 0, &a_at);
+            
+            char type = osc_atom_s_getTypetag(a_at);
+            if(type == osc_atom_s_getTypetag(b_at)) //<< probably the whole sort should fail if these don't match
+            {
+                switch (type)
+                {
+                    case 'd':
+                    {
+                        double a_val = osc_atom_s_getDouble(a_at);
+                        double b_val = osc_atom_s_getDouble(b_at);
+                        ret = (a_val > b_val) ? 1 : ((a_val < b_val) ? -1 : 0);
+                        break;
+                    }
+                    case 'f':
+                    {
+                        float a_val = osc_atom_s_getFloat(a_at);
+                        float b_val = osc_atom_s_getFloat(b_at);
+                        ret = (a_val > b_val) ? 1 : ((a_val < b_val) ? -1 : 0);
+                        break;
+                    }
+                    case 'i':
+                    {
+                        float a_val = osc_atom_s_getInt(a_at);
+                        float b_val = osc_atom_s_getInt(b_at);
+                        ret = (a_val > b_val) ? 1 : ((a_val < b_val) ? -1 : 0);
+                        break;
+                    }
+                    case 't':
+                    {
+                        t_osc_timetag a_tt = osc_atom_s_getTimetag(a_at);
+                        t_osc_timetag b_tt = osc_atom_s_getTimetag(b_at);
+                        ret = osc_timetag_compare(a_tt, b_tt);
+                        break;
+                    }
+                    default:
+                        post("no sort implemented for type %c", type);
+                        break;
+                }
+                
+                osc_atom_s_free(a_at);
+                a_at = NULL;
+            }
+            else
+            {
+                error("typetag mismatch %c %c", type, osc_atom_s_getTypetag(b_at));
+            }
+        }
+    }
+    
+    osc_message_array_s_free(a_ar);
+    a_ar = NULL;
+    
+    return ret;
+}
+ 
+    
+int otable_compare_oscatoms(t_osc_atom_s *a, t_osc_atom_s *b, double *distance)
+{
+    // no mem alloc here
+    int ret = -2;
+    char type = osc_atom_s_getTypetag(a);
+    if(type == osc_atom_s_getTypetag(b)) //<< probably the whole sort should fail if these don't match
+    {
+        switch (type)
+        {
+            case 'd':
+            {
+                double a_val = osc_atom_s_getDouble(a);
+                double b_val = osc_atom_s_getDouble(b);
+                ret = (a_val > b_val) ? 1 : ((a_val < b_val) ? -1 : 0);
+                *distance = a_val - b_val;
+                break;
+            }
+            case 'f':
+            {
+                float a_val = osc_atom_s_getFloat(a);
+                float b_val = osc_atom_s_getFloat(b);
+                ret = (a_val > b_val) ? 1 : ((a_val < b_val) ? -1 : 0);
+                *distance = a_val - b_val;
+                break;
+            }
+            case 'l':
+            {
+                long a_val = osc_atom_s_getInt64(a);
+                long b_val = osc_atom_s_getInt64(b);
+                ret = (a_val > b_val) ? 1 : ((a_val < b_val) ? -1 : 0);
+                *distance = a_val - b_val;
+                break;
+            }
+            case 'i':
+            {
+                int a_val = osc_atom_s_getInt(a);
+                int b_val = osc_atom_s_getInt(b);
+                ret = (a_val > b_val) ? 1 : ((a_val < b_val) ? -1 : 0);
+                *distance = a_val - b_val;
+//                post("a %d ~ %d %d", a_val, b_val, ret);
+                break;
+            }
+            case 't':
+            {
+                t_osc_timetag a_tt = osc_atom_s_getTimetag(a);
+                t_osc_timetag b_tt = osc_atom_s_getTimetag(b);
+                ret = osc_timetag_compare(a_tt, b_tt);
+                *distance = osc_timetag_timetagToFloat( osc_timetag_subtract(a_tt, b_tt) );
+                break;
+            }
+            default:
+                post("no sort implemented for type %c", type);
+                break;
+        }
+    }
+    else
+    {
+        error("type tag mismatch %c b %c", type, osc_atom_s_getTypetag(b));
+    }
+    return ret;
+}
+    //to do: make o.expr style expressions for making comparisons
+    // and allow for comparing element-wise on lists
+
+void otable_get_atom(t_osc_bndl_s *bndl, char *lookupaddr, long nth, t_osc_msg_ar_s **arPtr, t_osc_atom_s **atPtr)
+{
+    if(bndl && lookupaddr)
+    {
+//        printf("%s %d %p 1\n", __func__, __LINE__, bndl);
+        if(osc_bundle_s_getPtr(bndl))
+            osc_bundle_s_lookupAddress_b(bndl, (const char *)lookupaddr, arPtr, 1);
+        else
+            *arPtr = NULL;
+        
+//        printf("%s %d %p 2\n", __func__, __LINE__, bndl);
+
+        t_osc_msg_s *m = NULL;
+
+        if(*arPtr) {
+            m = osc_message_array_s_get(*arPtr, 0);
+            if( osc_message_s_getArgCount(m) > 0 )
+            {
+                osc_message_s_getArg(osc_message_array_s_get(*arPtr, 0), nth, atPtr);
+            }
+        }
+    }
+}
+    
+    
+void otable_do_lookup(t_otable *x, t_osc_atom_s *target_at, long *len, char **ptr)
+{
+    //x-selector and x->llookup prechecked
+    
+//    critical_enter(x->lock); //<< now locked before call
+    t_osc_linkedlist_elem *cur = NULL;
+    
+    char *lookupaddr = x->selector->s_name;
+    
+    if(x->curr)
+        cur = x->curr;
+    else
+        cur = x->llookup->head;
+    
+    if(cur == NULL)
+    {
+        return;
+    }
+    
+    t_osc_msg_ar_s *ar = NULL;
+    t_osc_atom_s *at = NULL;
+    t_osc_bndl_s *bndl = NULL;
+    t_osc_message_u *msg = NULL;
+    
+    int res;
+    double distance = 0;
+    
+//    t_osc_msg_s *m = NULL;
+ //   int m_count = 0;
+
+    int dir = 0;
+    
+    while(cur)
+    {
+        bndl = (t_osc_bndl_s *)cur->data;
+        
+        if(!bndl)
+        {
+            post("bundle pointer error");
+            otable_clear(x);
+            if(at)
+                osc_atom_s_free(at);
+            if(ar)
+                osc_message_array_s_free(ar);
+            return;
+        }
+        otable_get_atom(bndl, lookupaddr, 0, &ar, &at);
+        res = otable_compare_oscatoms(target_at, at, &distance);
+        
+        if(res == 0) // match
+        {
+            *len = osc_bundle_s_getLen(bndl);
+            *ptr = osc_mem_alloc(*len);
+            memcpy(*ptr, osc_bundle_s_getPtr(bndl), *len);
+            break;
+        }
+        else if(res == 1) // target is greater
+        {
+            
+            if(dir < 0) // if we're moving backwards, then the last attempt may have been greater than tagarget
+            {
+                
+                if(cur->next)
+                {
+                    t_osc_bndl_u *two_bndls = osc_bundle_u_alloc();
+                    msg = osc_message_u_allocWithAddress("/lower");
+                    
+                    osc_message_u_appendBndl_s(msg,  osc_bundle_s_getLen(bndl), osc_bundle_s_getPtr(bndl));
+                    osc_bundle_u_addMsg(two_bndls, msg);
+                
+                    msg = osc_message_u_allocWithAddress("/upper");
+                    t_osc_bndl_s *next_bndl = (t_osc_bndl_s *)cur->next->data;
+                    osc_message_u_appendBndl_s(msg,  osc_bundle_s_getLen(next_bndl), osc_bundle_s_getPtr(next_bndl));
+                    osc_bundle_u_addMsg(two_bndls, msg);
+                    
+                    msg = osc_message_u_allocWithAddress("/delta");
+                    osc_message_u_appendDouble(msg, distance);
+                    osc_bundle_u_addMsg(two_bndls, msg);
+                
+                    osc_bundle_u_serialize(two_bndls, len, ptr);
+                    osc_bundle_u_free(two_bndls);
+                    two_bndls = NULL;
+                }
+                else
+                {
+                    *len = osc_bundle_s_getLen(bndl);
+                    *ptr = osc_mem_alloc(*len);
+                    memcpy(*ptr, osc_bundle_s_getPtr(bndl), *len);
+                }
+                
+                break;
+            }
+            
+            dir = 1;
+            cur = cur->next;
+        }
+        else if(res == -1) // target is less, move backwards
+        {
+            if(dir > 0) // if we're currently moving forward, then this is an inbetween value
+            {
+                if(cur->prev)
+                {
+                    t_osc_bndl_u *two_bndls = osc_bundle_u_alloc();
+               
+                    msg = osc_message_u_allocWithAddress("/lower");
+                    t_osc_bndl_s *next_bndl = (t_osc_bndl_s *)cur->prev->data;
+                    osc_message_u_appendBndl_s(msg,  osc_bundle_s_getLen(next_bndl), osc_bundle_s_getPtr(next_bndl));
+                    osc_bundle_u_addMsg(two_bndls, msg);
+                    
+                    msg = osc_message_u_allocWithAddress("/upper");
+                    osc_message_u_appendBndl_s(msg,  osc_bundle_s_getLen(bndl), osc_bundle_s_getPtr(bndl));
+                    osc_bundle_u_addMsg(two_bndls, msg);
+                    
+                    msg = osc_message_u_allocWithAddress("/delta");
+                    osc_message_u_appendDouble(msg, 1 + distance);
+                    osc_bundle_u_addMsg(two_bndls, msg);
+                    
+                    osc_bundle_u_serialize(two_bndls, len, ptr);
+                    osc_bundle_u_free(two_bndls);
+                    two_bndls = NULL;
+                }
+                else
+                {
+                    *len = osc_bundle_s_getLen(bndl);
+                    *ptr = osc_mem_alloc(*len);
+                    memcpy(*ptr, osc_bundle_s_getPtr(bndl), *len);
+                }
+                break;
+            }
+            
+            dir = -1;
+            cur = cur->prev;
+        }
+        else if(res == -2)
+        {
+            break;
+        }
+        
+    }
+    
+    x->curr = cur;
+    if(at)
+        osc_atom_s_free(at);
+    if(ar)
+        osc_message_array_s_free(ar);
+    ar = NULL;
+    at = NULL;
+    
+    //critical_exit(x->lock);
+    
+}
+ 
+    
+    //make generic t_osc_s_atom comparison
+    
+void otable_lookup(t_otable *x, t_symbol *s, short argc, t_atom *argv)
+{
+/*      1) check that type tags match (do this eventually)
+        2) check if x-llookup exsists (this function should not trigger sort)
+        3) use precision setting to decide what range to output? maybe not, or yes, if a bunch of them match
+ */
+    critical_enter(x->lock);
+    if(argc && x->selector && x->llookup && strlen(x->typetags) > 1)
+    {
+        t_osc_atom_s *target_at = NULL;
+        
+        switch (atom_gettype(argv)) {
+            case A_LONG:
+                target_at = osc_atom_s_alloc('i', NULL);
+                osc_atom_s_setInt32(target_at, atom_getlong(argv));
+                break;
+            case A_FLOAT:
+                target_at = osc_atom_s_alloc('d', NULL);
+                osc_atom_s_setDouble(target_at, atom_getfloat(argv));
+                break;
+            case A_SYM:
+                break;
+            default:
+                post("unsupported lookup type");
+                break;
+        }
+        
+        long len = 0;
+        char *ptr = NULL;
+        otable_do_lookup(x, target_at, &len, &ptr);
+        
+        if(ptr)
+        {
+            omax_util_outletOSC(x->outlet, len, ptr);
+            osc_mem_free(ptr);
+        }
+        if(target_at)
+            osc_atom_s_free(target_at);
+        
+        target_at = NULL;
+        ptr = NULL;
+    }
+    critical_exit(x->lock);
+
+}
+    
+int otable_compare_elements(t_osc_linkedlist_elem *a,
+                            t_osc_linkedlist_elem *b,
+                            const char *lookupaddr)
+{
+    // could move mem alloc and free to parent patcher
+    t_osc_bndl_s *a_bndl = (t_osc_bndl_s *)a->data;
+    t_osc_bndl_s *b_bndl = (t_osc_bndl_s *)b->data;
+    t_osc_msg_ar_s *a_ar = NULL;
+    t_osc_msg_ar_s *b_ar = NULL;
+    
+    osc_bundle_s_lookupAddress_b(a_bndl, lookupaddr, &a_ar, 1);
+    osc_bundle_s_lookupAddress_b(b_bndl, lookupaddr, &b_ar, 1);
+
+    int ret = -1;
+    if(a_ar && b_ar)
+    {
+        t_osc_msg_s *a_m = osc_message_array_s_get(a_ar, 0);
+        t_osc_msg_s *b_m = osc_message_array_s_get(b_ar, 0);
+
+        int a_m_count = osc_message_s_getArgCount(a_m);
+        if( a_m_count > 0 && a_m_count == osc_message_s_getArgCount(b_m))
+        {
+            t_osc_atom_s *a_at = NULL;
+            t_osc_atom_s *b_at = NULL;
+            osc_message_s_getArg(osc_message_array_s_get(a_ar, 0), 0, &a_at);//note: one value of array at at time, for now just index 0
+
+            osc_message_s_getArg(osc_message_array_s_get(b_ar, 0), 0, &b_at);
+
+            char type = osc_atom_s_getTypetag(a_at);
+            if(type && type == osc_atom_s_getTypetag(b_at)) //<< probably the whole sort should fail if these don't match
+            {
+                switch (type)
+                {
+                    case 'd':
+                    {
+                        double a_val = osc_atom_s_getDouble(a_at);
+                        double b_val = osc_atom_s_getDouble(b_at);
+                        ret = (int)(a_val >= b_val);
+                        break;
+                    }
+                    case 'f':
+                    {
+                        float a_val = osc_atom_s_getFloat(a_at);
+                        float b_val = osc_atom_s_getFloat(b_at);
+                        ret = (int)(a_val >= b_val);
+                        break;
+                    }
+                    case 'i':
+                    {
+                        float a_val = osc_atom_s_getInt(a_at);
+                        float b_val = osc_atom_s_getInt(b_at);
+                        ret = (int)(a_val >= b_val);
+                        break;
+                    }
+                    case 't':
+                    {
+                        t_osc_timetag a_tt = osc_atom_s_getTimetag(a_at);
+                        t_osc_timetag b_tt = osc_atom_s_getTimetag(b_at);
+                        ret = (int)(osc_timetag_compare(a_tt, b_tt) > 0);
+                        break;
+                    }
+                    default:
+                        post("no sort implemented for type %c", type);
+                        break;
+                }
+                
+                osc_atom_s_free(a_at);
+                osc_atom_s_free(b_at);
+                a_at = NULL;
+                b_at = NULL;
+            }
+        }
+    }
+    
+    osc_message_array_s_free(a_ar);
+    osc_message_array_s_free(b_ar);
+    a_ar = NULL;
+    b_ar = NULL;
+    return ret;
+}
+
+void temp_print_list(t_osc_linkedlist_elem *e)
+{
+    int count = 0;
+    post("----------------------------");
+    while (e) {
+        post("%d %x",count++, e);
+        e = e->next;
+    }
+}
+
+    
+void otable_move_node(t_osc_linkedlist_elem **dst, t_osc_linkedlist_elem **src)
+{
+    t_osc_linkedlist_elem *new = *src;
+    if(new != NULL)
+    {
+        *src = new->next;
+        new->next = *dst;
+        *dst = new;
+    }
+}
+    
+t_osc_linkedlist_elem *otable_sortedMerge(t_osc_linkedlist_elem *a, t_osc_linkedlist_elem *b, const char *lookupaddr)
+{
+    t_osc_linkedlist_elem dummy; // a dummy first node to hang the result on
+    t_osc_linkedlist_elem* tail = &dummy; // Points to the last result node --
+    // so tail->next is the place to add
+    // new nodes to the result.
+    dummy.next = NULL;
+    while (1) {
+        if (a == NULL) { // if either list runs out, use the other list
+            tail->next = b;
+            break;
+        }
+        else if (b == NULL) {
+            tail->next = a;
+            break;
+        }
+        
+        if (otable_compare_elements(a,b, lookupaddr)==0) {
+            otable_move_node(&(tail->next), &a);
+        }
+        else {
+            otable_move_node(&(tail->next), &b);
+        }
+        tail = tail->next;
+    }
+    return(dummy.next);
+}
+ 
+void FrontBackSplit(t_osc_linkedlist_elem* source,
+                     t_osc_linkedlist_elem** frontRef, t_osc_linkedlist_elem** backRef) {
+    t_osc_linkedlist_elem* fast;
+    t_osc_linkedlist_elem* slow;
+    if (source==NULL || source->next==NULL) { // length < 2 cases
+        *frontRef = source;
+        *backRef = NULL;
+    }
+    else {
+        slow = source;
+        fast = source->next;
+        // Advance 'fast' two nodes, and advance 'slow' one node
+        while (fast != NULL) {
+            fast = fast->next;
+            if (fast != NULL) {
+                slow = slow->next;
+                fast = fast->next;
+            }
+        }
+        // 'slow' is before the midpoint in the list, so split it in two
+        // at that point.
+        *frontRef = source;
+        *backRef = slow->next;
+        slow->next = NULL;
+    }
+}
+    
+void otable_mergeSort(t_osc_linkedlist_elem **headRef, char *lookupaddr)
+{
+    t_osc_linkedlist_elem* head = *headRef;
+    t_osc_linkedlist_elem* a;
+    t_osc_linkedlist_elem* b;
+    // Base case -- length 0 or 1
+    if ((head == NULL) || (head->next == NULL)) {
+        return;
+    }
+    FrontBackSplit(head, &a, &b); // Split head into 'a' and 'b' sublists
+    // We could just as well use AlternatingSplit()
+    otable_mergeSort(&a, lookupaddr); // Recursively sort the sublists
+    otable_mergeSort(&b, lookupaddr);
+    *headRef = otable_sortedMerge(a, b, lookupaddr); // answer = merge the two sorted lists together
+
+}
+
+void otable_sort(t_otable *x)
+{
+    if(!x->selector || !x->db->bytecount)
+        return;
+    
+    critical_enter(x->lock);
+    
+    char *lookupaddr = x->selector->s_name;
+    if(x->llookup)
+        osc_linkedlist_destroy(x->llookup);
+    x->curr = NULL;
+    
+    x->llookup = osc_linkedlist_clone(x->db->ll, otable_cloneCallback);
+    
+    if(!x->llookup)
+        return;
+    
+    t_osc_linkedlist_elem *next = NULL;
+    t_osc_linkedlist_elem *e = x->llookup->head;
+    t_osc_msg_ar_s *ar = NULL;
+    t_osc_atom_s *at = NULL;
+    t_osc_bndl_s *bndl = NULL;
+
+
+    while (e)
+    {
+        bndl =  (t_osc_bndl_s *)e->data;
+        otable_get_atom(bndl, lookupaddr, 0, &ar, &at);
+        if(at)
+            e = e->next;
+        else
+        {// no atom returned to we need to skip this node
+            
+            next = e->next;
+            
+            //detach and free
+            if(e == x->llookup->head)
+            {
+//                post("none at head, reassigning to next");
+                x->llookup->head = e->next;
+            }
+            
+            if(e == x->llookup->tail)
+            {
+//                post("none at tail, reassigning to prev");
+                x->llookup->tail = e->prev;
+            }
+            
+            if(e->next)
+            {
+//                post("there is a next so e->next->prev = e->prev");
+                e->next->prev = e->prev;
+            }
+            if(e->prev)
+            {
+//                post("there is a prev so e->prev->next = e->next");
+                e->prev->next = e->next;
+            }
+            
+            e->next = e->prev = NULL;
+            if(e->data)
+                osc_mem_free(e->data);
+            osc_mem_free(e);
+            
+            e = next;
+            
+            x->llookup->count--;
+        }
+        
+    }
+//    post("prevcount %d count %d head %x tail %x", x->db->ll->count, x->llookup->count, x->llookup->head, x->llookup->tail);
+
+    otable_mergeSort(&x->llookup->head, lookupaddr);
+
+    //log typetags
+    bndl =  (t_osc_bndl_s *)x->llookup->head->data;
+    osc_bundle_s_lookupAddress_b(bndl, x->selector->s_name, &ar, 1);
+    
+    if(ar)
+    {
+        t_osc_msg_s *m = osc_message_array_s_get(ar, 0);
+        char *ttags = osc_message_s_getTypetags(m);
+        int taglen = strlen(ttags);
+        
+        if(x->typetags == NULL)
+            x->typetags = osc_mem_alloc((taglen + 1) * sizeof(char));
+        else
+            x->typetags = osc_mem_resize(x->typetags, (taglen + 1) * sizeof(char));
+        
+        memcpy(x->typetags, ttags, sizeof(char) * strlen(ttags));
+    }
+
+    osc_atom_s_free(at);
+    osc_message_array_s_free(ar);
+    
+    critical_exit(x->lock);
+
+}
+    
+t_max_err otable_setLookup(t_otable *x, void *attr, long ac, t_atom *av)
+{
+
+    critical_enter(x->lock);
+    x->selector = atom_getsym(av);
+    critical_exit(x->lock);
+
+    return MAX_ERR_NONE;
+}
+
+#ifndef OMAX_PD_VERSION
+t_max_err otable_getLookup(t_otable *x, void *attr, long *ac, t_atom **av)
+{
+    critical_enter(x->lock);
+    t_symbol *s = x->selector;
+    critical_exit(x->lock);
+
+    if(ac && av){
+        char alloc;
+        if(atom_alloc(ac, av, &alloc)){
+            return MAX_ERR_GENERIC;
+        }
+        if(s){
+            atom_setsym(*av, s);
+        }else{
+            atom_setsym(*av, _sym_emptytext);
+        }
+    }
+    return MAX_ERR_NONE;
+}
 #endif
-	osc_linkedlist_iterate(ll, otable_dumpCallback, (void *)x);
+    
+    
+#define OTABLE_COPY_BEFORE_DUMP
+void otable_dump(t_otable *x, t_symbol *msg, short argc, t_atom *argv)
+{
+    if (argc == 0)
+    {
+        t_osc_linkedlist *ll = x->db->ll;
 #ifdef OTABLE_COPY_BEFORE_DUMP
-	osc_linkedlist_destroy(ll);
+        critical_enter(x->lock);
+        ll = osc_linkedlist_clone(x->db->ll, otable_cloneCallback);
+        critical_exit(x->lock);
 #endif
+        osc_linkedlist_iterate(ll, otable_dumpCallback, (void *)x);
+#ifdef OTABLE_COPY_BEFORE_DUMP
+        osc_linkedlist_destroy(ll);
+#endif
+    }
+    else
+    {
+        if(atom_gettype(argv) == A_SYM && atom_getsym(argv) == x->selector)
+        {
+            t_osc_linkedlist *ll = x->llookup;
+            osc_linkedlist_iterate(ll, otable_dumpCallback, (void *)x);
+        }
+            
+    }
+	
 }
 
 void otable_getkeys(t_otable *x, t_symbol *msg, int argc, t_atom *argv)
@@ -379,7 +1207,18 @@ void otable_clear(t_otable *x)
 	critical_enter(x->lock);
 	osc_hashtab_clear(x->db->ht);
 	osc_linkedlist_clear(x->db->ll);
-	critical_exit(x->lock);
+    
+    osc_linkedlist_destroy(x->llookup);
+    x->llookup = NULL;
+    x->curr = NULL;
+    
+    if(x->typetags)
+    {
+        osc_mem_free(x->typetags);
+        x->typetags = NULL;
+    }
+	
+    critical_exit(x->lock);
 	x->db->bytecount = 0;
 }
 
@@ -532,7 +1371,10 @@ void otable_write(t_otable *x, t_symbol *msg, int argc, t_atom *argv)
 void otable_free(t_otable *x)
 {
 	otable_destroydb(x, x->db);
+    osc_linkedlist_destroy(x->llookup);
 	critical_free(x->lock);
+    if(x->typetags)
+        osc_mem_free(x->typetags);
 }
 
 void otable_doc(t_otable *x)
@@ -603,9 +1445,23 @@ t_max_err otable_setName(t_otable *x, void *attr, long ac, t_atom *av)
 	return MAX_ERR_NONE;
 }
 
+t_max_err otable_setKey(t_otable *x, void *attr, long ac, t_atom *av)
+{
+    if(x->db){
+        critical_enter(x->lock);
+        x->db->keyaddress = atom_getsym(av)->s_name;
+        // wtf are we supposed to do here?  go through every bundle already stored and
+        // rehash the whole fucking thing using this new key??
+        critical_exit(x->lock);
+    }
+    return MAX_ERR_NONE;
+}
+    
 #ifndef OMAX_PD_VERSION
 t_max_err otable_getKey(t_otable *x, void *attr, long *ac, t_atom **av)
 {
+    //for some reason this isn't working for me - Rama
+    
 	t_symbol *key = NULL;
 	if(x->db){
 		critical_enter(x->lock);
@@ -663,18 +1519,6 @@ void otable_outputinfo(t_otable *x)
 		osc_mem_free(buf);
 	}
 	osc_bundle_u_free(b);
-}
-
-t_max_err otable_setKey(t_otable *x, void *attr, long ac, t_atom *av)
-{
-	if(x->db){
-		critical_enter(x->lock);
-		x->db->keyaddress = atom_getsym(av)->s_name;
-		// wtf are we supposed to do here?  go through every bundle already stored and
-		// rehash the whole fucking thing using this new key??
-		critical_exit(x->lock);
-	}
-	return MAX_ERR_NONE;
 }
 
 
@@ -785,6 +1629,11 @@ void *otable_new(t_symbol *msg, short argc, t_atom *argv)
 		critical_new(&x->lock);
 		x->name = NULL;
 		x->db = NULL;
+        
+        x->selector = NULL;
+        x->llookup = NULL;
+        x->typetags = NULL;
+        x->curr = NULL;
 
 		attr_args_process(x, argc, argv);
 		if(!x->name){
@@ -810,7 +1659,7 @@ int main(void)
 	class_addmethod(c, (method)otable_getkeys, "getkeys", A_GIMME, 0);
 	class_addmethod(c, (method)otable_refer, "refer", A_GIMME, 0);
 	class_addmethod(c, (method)otable_clear, "clear", 0);
-	class_addmethod(c, (method)otable_dump, "dump", 0);
+	class_addmethod(c, (method)otable_dump, "dump", A_GIMME, 0);
 	class_addmethod(c, (method)otable_read, "read", A_GIMME, 0);
 	class_addmethod(c, (method)otable_write, "write", A_GIMME, 0);
 	class_addmethod(c, (method)odot_version, "version", 0);
@@ -820,9 +1669,9 @@ int main(void)
 	class_addmethod(c, (method)otable_popfirst, "popfirst", 0);
 	class_addmethod(c, (method)otable_poplast, "poplast", 0);
 	class_addmethod(c, (method)otable_popnth, "popnth", A_LONG, 0);
-	class_addmethod(c, (method)otable_peekfirst, "peekfirst", 0);
-	class_addmethod(c, (method)otable_peeklast, "peeklast", 0);
-	class_addmethod(c, (method)otable_peeknth, "peeknth", A_LONG, 0);
+	class_addmethod(c, (method)otable_peekfirst, "peekfirst", A_GIMME, 0);
+	class_addmethod(c, (method)otable_peeklast, "peeklast", A_GIMME, 0);
+	class_addmethod(c, (method)otable_peeknth, "peeknth", A_GIMME, 0);
 	class_addmethod(c, (method)otable_delfirst, "delfirst", 0);
 	class_addmethod(c, (method)otable_dellast, "dellast", 0);
 	class_addmethod(c, (method)otable_delnth, "delnth", A_LONG, 0);
@@ -831,6 +1680,10 @@ int main(void)
 
 	class_addmethod(c, (method)otable_doc, "doc", 0);
 
+    class_addmethod(c, (method)otable_linkedlist_printElem, "printElem", 0);
+    class_addmethod(c, (method)otable_sort, "dosort", 0);
+    class_addmethod(c, (method)otable_lookup, "lookup", A_GIMME, 0);
+    
 	if(omax_dict_resolveDictStubs()){
 		class_addmethod(c, (method)omax_dict_dictionary, "dictionary", A_GIMME, 0);
 	}
@@ -841,6 +1694,9 @@ int main(void)
 	CLASS_ATTR_SYM(c, "key", 0, t_otable, name); // name is a dummy
 	CLASS_ATTR_ACCESSORS(c, "key", otable_getKey, otable_setKey);
 
+    CLASS_ATTR_SYM(c, "sort", 0, t_otable, selector); // name is a dummy
+	CLASS_ATTR_ACCESSORS(c, "sort", otable_getLookup, otable_setLookup);
+    
 	class_register(CLASS_BOX, c);
 	otable_class = c;
 
