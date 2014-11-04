@@ -213,14 +213,6 @@ void otable_processFullPacket(t_otable *x, long len, char *ptr)
 		ptr = copy;
 	}
     
-    critical_enter(x->lock);
-    if(x->llookup)
-    {
-        osc_linkedlist_destroy(x->llookup);
-        x->llookup = NULL;
-        x->curr = NULL;
-    }
-    critical_exit(x->lock);
     //possibly do check for @key value here, if no key present allow for other commands, i.e. /lookup value
     
 	otable_insert(x, len, ptr, osc_linkedlist_append);
@@ -818,7 +810,7 @@ void otable_lookup(t_otable *x, t_symbol *s, short argc, t_atom *argv)
         3) use precision setting to decide what range to output? maybe not, or yes, if a bunch of them match
  */
     critical_enter(x->lock);
-    if(argc && x->selector && x->llookup && strlen(x->typetags) > 1)
+    if(argc && x->selector && x->llookup->head && strlen(x->typetags) > 1)
     {
         t_osc_atom_s *target_at = NULL;
         
@@ -1032,80 +1024,100 @@ void otable_mergeSort(t_osc_linkedlist_elem **headRef, char *lookupaddr)
 
 }
 
+void otable_sortlist_init(t_osc_linkedlist *ll)
+{
+	ll->e = NULL;
+	ll->count = 0;
+	ll->head = NULL;
+	ll->tail = NULL;
+	ll->dtor = NULL;
+
+}
+    
+void otable_sortlist_free_elems(t_osc_linkedlist *ll)
+{
+    if(ll)
+    {
+        t_osc_linkedlist_elem *next, *e = ll->head;
+
+            while(e != NULL)
+            {
+                next = e->next;
+                osc_mem_free(e);
+                e = NULL;
+                e = next;
+            }
+        
+        otable_sortlist_init(ll);
+    }
+
+}
+    
+
+    
+void otable_sortlist_append(t_osc_linkedlist *ll, t_osc_linkedlist_elem *new)
+{
+    if(ll)
+    {
+		t_osc_linkedlist_elem *e = (t_osc_linkedlist_elem *)osc_mem_alloc(sizeof(t_osc_linkedlist_elem));
+        e->data = new->data;
+        e->next = NULL;
+        e->prev = NULL;
+        
+		if(ll->tail)
+        {
+			ll->tail->next = e;
+			e->next = NULL;
+			e->prev = ll->tail;
+			ll->tail = e;
+		}
+        else
+        {
+			ll->head = e;
+			ll->tail = e;
+		}
+		ll->count++;
+	}
+}
+    
 void otable_sort(t_otable *x)
 {
-    if(!x->selector || !x->db->bytecount)
+    
+    if(!x->selector || !x->llookup || !x->db->ll->head)
         return;
     
     critical_enter(x->lock);
     
     char *lookupaddr = x->selector->s_name;
-    if(x->llookup)
-        osc_linkedlist_destroy(x->llookup);
+    
     x->curr = NULL;
     
-    x->llookup = osc_linkedlist_clone(x->db->ll, otable_cloneCallback);
-    
-    if(!x->llookup)
-        return;
-    
-    t_osc_linkedlist_elem *next = NULL;
-    t_osc_linkedlist_elem *e = x->llookup->head;
+    t_osc_linkedlist_elem *next, *e = x->db->ll->head;
+    next = NULL;
     t_osc_msg_ar_s *ar = NULL;
     t_osc_atom_s *at = NULL;
     t_osc_bndl_s *bndl = NULL;
-
-
+    
     while (e)
     {
-        bndl =  (t_osc_bndl_s *)e->data;
-        otable_get_atom(bndl, lookupaddr, 0, &ar, &at);
-        if(at)
-            e = e->next;
-        else
-        {// no atom returned to we need to skip this node
-            
-            next = e->next;
-            
-            //detach and free
-            if(e == x->llookup->head)
-            {
-//                post("none at head, reassigning to next");
-                x->llookup->head = e->next;
-            }
-            
-            if(e == x->llookup->tail)
-            {
-//                post("none at tail, reassigning to prev");
-                x->llookup->tail = e->prev;
-            }
-            
-            if(e->next)
-            {
-//                post("there is a next so e->next->prev = e->prev");
-                e->next->prev = e->prev;
-            }
-            if(e->prev)
-            {
-//                post("there is a prev so e->prev->next = e->next");
-                e->prev->next = e->next;
-            }
-            
-            e->next = e->prev = NULL;
-            if(e->data)
-                osc_mem_free(e->data);
-            osc_mem_free(e);
-            
-            e = next;
-            
-            x->llookup->count--;
-        }
+        next = e->next;
+
+        bndl = (t_osc_bndl_s *)e->data;
         
+        otable_get_atom(bndl, lookupaddr, 0, &ar, &at);
+        
+        if(at)
+            otable_sortlist_append(x->llookup, e);
+
+        e = next;
     }
+    
 //    post("prevcount %d count %d head %x tail %x", x->db->ll->count, x->llookup->count, x->llookup->head, x->llookup->tail);
 
     otable_mergeSort(&x->llookup->head, lookupaddr);
 
+//    post("postcount %d count %d head %x tail %x", x->db->ll->count, x->llookup->count, x->llookup->head, x->llookup->tail);
+    
     //log typetags
     bndl =  (t_osc_bndl_s *)x->llookup->head->data;
     osc_bundle_s_lookupAddress_b(bndl, x->selector->s_name, &ar, 1);
@@ -1136,6 +1148,11 @@ t_max_err otable_setLookup(t_otable *x, void *attr, long ac, t_atom *av)
 
     critical_enter(x->lock);
     x->selector = atom_getsym(av);
+    
+    // add possibility for list of lookups here
+    x->llookup = (t_osc_linkedlist *)osc_mem_alloc(sizeof(t_osc_linkedlist));
+    otable_sortlist_init(x->llookup);
+    
     critical_exit(x->lock);
 
     return MAX_ERR_NONE;
@@ -1208,8 +1225,7 @@ void otable_clear(t_otable *x)
 	osc_hashtab_clear(x->db->ht);
 	osc_linkedlist_clear(x->db->ll);
     
-    osc_linkedlist_destroy(x->llookup);
-    x->llookup = NULL;
+    otable_sortlist_free_elems(x->llookup);
     x->curr = NULL;
     
     if(x->typetags)
@@ -1371,7 +1387,10 @@ void otable_write(t_otable *x, t_symbol *msg, int argc, t_atom *argv)
 void otable_free(t_otable *x)
 {
 	otable_destroydb(x, x->db);
-    osc_linkedlist_destroy(x->llookup);
+    otable_sortlist_free_elems(x->llookup); //saftey checks inside
+    if(x->llookup)
+        osc_mem_free(x->llookup);
+    
 	critical_free(x->lock);
     if(x->typetags)
         osc_mem_free(x->typetags);

@@ -5,7 +5,7 @@
 			"major" : 6,
 			"minor" : 1,
 			"revision" : 9,
-			"architecture" : "x64"
+			"architecture" : "x86"
 		}
 ,
 		"rect" : [ 0.0, 87.0, 844.0, 728.0 ],
@@ -229,7 +229,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 7.0, 256.5, 150.0, 108.0 ],
-					"text" : "/key : \"19\",\n/data : 0.403922,\n/other : \"bob\",\n/steve : \"bb\",\n/time : 2014-10-30T06:01:40.814820Z",
+					"text" : "/key : \"48\",\n/data : 0.00784314,\n/other : \"bob\",\n/steve : \"bb\",\n/time : 2014-11-04T06:21:43.678673Z",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -438,7 +438,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 362.0, 128.0, 50.0, 17.0 ],
-					"text" : "19"
+					"text" : "48"
 				}
 
 			}
@@ -657,7 +657,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 170.0, 326.0, 72.0, 43.0 ],
+					"patching_rect" : [ 170.0, 325.0, 72.0, 43.0 ],
 					"text" : "o.table @sort /data @key /key"
 				}
 
