@@ -1112,6 +1112,13 @@ void otable_sort(t_otable *x)
         e = next;
     }
     
+    if (x->llookup->count == 0)
+    {
+        critical_exit(x->lock);
+        post("no data found for the address %s", lookupaddr);
+        return;
+    }
+    
 //    post("prevcount %d count %d head %x tail %x", x->db->ll->count, x->llookup->count, x->llookup->head, x->llookup->tail);
 
     otable_mergeSort(&x->llookup->head, lookupaddr);

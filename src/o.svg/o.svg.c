@@ -965,13 +965,15 @@ void oxml_parse_tree(t_osvg *x, const char *file)
     long len = 0;
 	char *buf = NULL;
 	osc_bundle_u_serialize(bndl, &len, &buf);
-	if(bndl){
+	if(bndl)
+    {
 		osc_bundle_u_free(bndl);
 	}
   
     omax_util_outletOSC(x->outlet, len, buf);
 
-    if(buf){
+    if(buf)
+    {
 		osc_mem_free(buf);
 	}
     
@@ -989,19 +991,25 @@ void osvg_bang(t_osvg *x)
 
 void svglookup_doopen(t_osvg *x, t_symbol *s)
 {
-	short path;
-	char filename[MAX_PATH_CHARS];
-	u_int32_t type;
+	short path = 0;
+	char filename[MAX_PATH_CHARS] = "";
+    t_fourcc type = FOUR_CHAR_CODE('svg ');
+	t_fourcc types[2] = { FOUR_CHAR_CODE('svg '), FOUR_CHAR_CODE('TEXT') };
     char file[MAX_PATH_CHARS];
     
-	if (s==ps_nothing) {
-		if (open_dialog(filename,&path,&type,0L,0))
+	if (s == ps_nothing)
+    {
+		if (open_dialog(filename, &path, &type, types, 2))
 			return;
+        
         path_toabsolutesystempath(path, filename, file);
 
-	} else {
+	}
+    else
+    {
 		strcpy(filename,s->s_name);
-		if (locatefile_extended(filename,&path,&type,&type,-1)) {
+		if (locatefile_extended(filename, &path, &type, types, 2))
+        {
 			object_error((t_object *)x, "%s: can't find file",filename);
 			return;
 		}
@@ -1010,7 +1018,7 @@ void svglookup_doopen(t_osvg *x, t_symbol *s)
 	}
     
     post("%s, %s", filename, file);
-    
+
     
     x->filewatcher = filewatcher_new((t_object *)x, path, filename);
     if(x->autowatch && x->filewatcher)
@@ -1023,7 +1031,7 @@ void svglookup_doopen(t_osvg *x, t_symbol *s)
 
 void osvg_open(t_osvg *x, t_symbol *s)
 {
-	defer_low(x,(method)svglookup_doopen,s,0,0L);
+	defer(x,(method)svglookup_doopen,s,0,0L);
 }
 
 #ifndef OMAX_PD_VERSION
