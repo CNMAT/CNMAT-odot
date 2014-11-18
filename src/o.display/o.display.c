@@ -959,9 +959,11 @@ void setup_o0x2edisplay(void) {
 
 void odisplay_free(t_odisplay *x)
 {
-	jbox_free((t_jbox *)x);
+    qelem_free(x->qelem);
+    object_free(x->new_data_indicator_clock);
     odisplay_clearBundles(x);
 	critical_free(x->lock);
+    jbox_free((t_jbox *)x);
 }
 
 OMAX_DICT_DICTIONARY(t_odisplay, x, odisplay_fullPacket);

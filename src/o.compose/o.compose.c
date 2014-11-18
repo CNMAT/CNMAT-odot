@@ -1111,12 +1111,16 @@ void setup_o0x2ecompose(void) {
 
 void ocompose_free(t_ocompose *x)
 {
-    jbox_free((t_jbox *)x);
+    qelem_free(x->qelem);
+    object_free(x->new_data_indicator_clock);
+    
     if(x->proxy){
         object_free(x->proxy);
     }
     ocompose_clearBundles(x);   
     critical_free(x->lock);
+    
+    jbox_free((t_jbox *)x);
 }
 
 OMAX_DICT_DICTIONARY(t_ocompose, x, ocompose_fullPacket);
