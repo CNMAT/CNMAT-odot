@@ -2177,6 +2177,8 @@ void setup_o0x2emessage(void) {
 
 void omessage_free(t_omessage *x)
 {
+    
+    
     jbox_free((t_jbox *)x);
     if(x->proxy){
 		object_free(x->proxy);

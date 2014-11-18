@@ -696,6 +696,7 @@ void otable_do_lookup(t_otable *x, t_osc_atom_s *target_at, long *len, char **pt
         }
         otable_get_atom(bndl, lookupaddr, 0, &ar, &at);
         res = otable_compare_oscatoms(target_at, at, &distance);
+//        post("res = %d", res);
         
         if(res == 0) // match
         {
@@ -707,37 +708,47 @@ void otable_do_lookup(t_otable *x, t_osc_atom_s *target_at, long *len, char **pt
         else if(res == 1) // target is greater
         {
             
-            if(dir < 0) // if we're moving backwards, then the last attempt may have been greater than tagarget
+            
+            if(cur->next && dir < 0) // if we're moving backwards, then the last attempt may have been greater than target
             {
+                t_osc_bndl_u *two_bndls = osc_bundle_u_alloc();
+                msg = osc_message_u_allocWithAddress("/lower");
                 
-                if(cur->next)
-                {
-                    t_osc_bndl_u *two_bndls = osc_bundle_u_alloc();
-                    msg = osc_message_u_allocWithAddress("/lower");
-                    
-                    osc_message_u_appendBndl_s(msg,  osc_bundle_s_getLen(bndl), osc_bundle_s_getPtr(bndl));
-                    osc_bundle_u_addMsg(two_bndls, msg);
+                osc_message_u_appendBndl_s(msg,  osc_bundle_s_getLen(bndl), osc_bundle_s_getPtr(bndl));
+                osc_bundle_u_addMsg(two_bndls, msg);
+            
+                msg = osc_message_u_allocWithAddress("/upper");
+                t_osc_bndl_s *next_bndl = (t_osc_bndl_s *)cur->next->data;
+                osc_message_u_appendBndl_s(msg,  osc_bundle_s_getLen(next_bndl), osc_bundle_s_getPtr(next_bndl));
+                osc_bundle_u_addMsg(two_bndls, msg);
                 
-                    msg = osc_message_u_allocWithAddress("/upper");
-                    t_osc_bndl_s *next_bndl = (t_osc_bndl_s *)cur->next->data;
-                    osc_message_u_appendBndl_s(msg,  osc_bundle_s_getLen(next_bndl), osc_bundle_s_getPtr(next_bndl));
-                    osc_bundle_u_addMsg(two_bndls, msg);
-                    
-                    msg = osc_message_u_allocWithAddress("/delta");
-                    osc_message_u_appendDouble(msg, distance);
-                    osc_bundle_u_addMsg(two_bndls, msg);
+                t_osc_atom_u *lookup_val = NULL;
+                osc_atom_s_deserialize(target_at, &lookup_val);
+                msg = osc_message_u_allocWithAddress("/lookup");
+                osc_message_u_appendAtom(msg, lookup_val);
+                osc_bundle_u_addMsg(two_bndls, msg);
                 
-                    osc_bundle_u_serialize(two_bndls, len, ptr);
-                    osc_bundle_u_free(two_bndls);
-                    two_bndls = NULL;
-                }
-                else
-                {
-                    *len = osc_bundle_s_getLen(bndl);
-                    *ptr = osc_mem_alloc(*len);
-                    memcpy(*ptr, osc_bundle_s_getPtr(bndl), *len);
-                }
+                osc_bundle_u_serialize(two_bndls, len, ptr);
+                osc_bundle_u_free(two_bndls);
+                two_bndls = NULL;
+                break;
+            }
+            else if(!cur->next) // target is greater, but no higher possible value
+            {
+                t_osc_bndl_u *one_bndl = osc_bundle_u_alloc();
+                msg = osc_message_u_allocWithAddress("/lower");
+                osc_message_u_appendBndl_s(msg,  osc_bundle_s_getLen(bndl), osc_bundle_s_getPtr(bndl));
+                osc_bundle_u_addMsg(one_bndl, msg);
                 
+                t_osc_atom_u *lookup_val = NULL;
+                osc_atom_s_deserialize(target_at, &lookup_val);
+                msg = osc_message_u_allocWithAddress("/lookup");
+                osc_message_u_appendAtom(msg, lookup_val);
+                osc_bundle_u_addMsg(one_bndl, msg);
+                
+                osc_bundle_u_serialize(one_bndl, len, ptr);
+                osc_bundle_u_free(one_bndl);
+                one_bndl = NULL;
                 break;
             }
             
@@ -746,35 +757,47 @@ void otable_do_lookup(t_otable *x, t_osc_atom_s *target_at, long *len, char **pt
         }
         else if(res == -1) // target is less, move backwards
         {
-            if(dir > 0) // if we're currently moving forward, then this is an inbetween value
+            
+            if(cur->prev && dir > 0) // if we're currently moving forward, then this is an inbetween value
             {
-                if(cur->prev)
-                {
-                    t_osc_bndl_u *two_bndls = osc_bundle_u_alloc();
-               
-                    msg = osc_message_u_allocWithAddress("/lower");
-                    t_osc_bndl_s *next_bndl = (t_osc_bndl_s *)cur->prev->data;
-                    osc_message_u_appendBndl_s(msg,  osc_bundle_s_getLen(next_bndl), osc_bundle_s_getPtr(next_bndl));
-                    osc_bundle_u_addMsg(two_bndls, msg);
-                    
-                    msg = osc_message_u_allocWithAddress("/upper");
-                    osc_message_u_appendBndl_s(msg,  osc_bundle_s_getLen(bndl), osc_bundle_s_getPtr(bndl));
-                    osc_bundle_u_addMsg(two_bndls, msg);
-                    
-                    msg = osc_message_u_allocWithAddress("/delta");
-                    osc_message_u_appendDouble(msg, 1 + distance);
-                    osc_bundle_u_addMsg(two_bndls, msg);
-                    
-                    osc_bundle_u_serialize(two_bndls, len, ptr);
-                    osc_bundle_u_free(two_bndls);
-                    two_bndls = NULL;
-                }
-                else
-                {
-                    *len = osc_bundle_s_getLen(bndl);
-                    *ptr = osc_mem_alloc(*len);
-                    memcpy(*ptr, osc_bundle_s_getPtr(bndl), *len);
-                }
+                t_osc_bndl_u *two_bndls = osc_bundle_u_alloc();
+           
+                msg = osc_message_u_allocWithAddress("/lower");
+                t_osc_bndl_s *next_bndl = (t_osc_bndl_s *)cur->prev->data;
+                osc_message_u_appendBndl_s(msg,  osc_bundle_s_getLen(next_bndl), osc_bundle_s_getPtr(next_bndl));
+                osc_bundle_u_addMsg(two_bndls, msg);
+                
+                msg = osc_message_u_allocWithAddress("/upper");
+                osc_message_u_appendBndl_s(msg,  osc_bundle_s_getLen(bndl), osc_bundle_s_getPtr(bndl));
+                osc_bundle_u_addMsg(two_bndls, msg);
+                
+                t_osc_atom_u *lookup_val = NULL;
+                osc_atom_s_deserialize(target_at, &lookup_val);
+                msg = osc_message_u_allocWithAddress("/lookup");
+                osc_message_u_appendAtom(msg, lookup_val);
+                osc_bundle_u_addMsg(two_bndls, msg);
+                
+                osc_bundle_u_serialize(two_bndls, len, ptr);
+                osc_bundle_u_free(two_bndls);
+                two_bndls = NULL;
+                break;
+            }
+            else if(!cur->prev) // value is too small, but there is nothing smaller
+            {
+                t_osc_bndl_u *one_bndl = osc_bundle_u_alloc();
+                msg = osc_message_u_allocWithAddress("/upper");
+                osc_message_u_appendBndl_s(msg,  osc_bundle_s_getLen(bndl), osc_bundle_s_getPtr(bndl));
+                osc_bundle_u_addMsg(one_bndl, msg);
+                
+                t_osc_atom_u *lookup_val = NULL;
+                osc_atom_s_deserialize(target_at, &lookup_val);
+                msg = osc_message_u_allocWithAddress("/lookup");
+                osc_message_u_appendAtom(msg, lookup_val);
+                osc_bundle_u_addMsg(one_bndl, msg);
+                
+                osc_bundle_u_serialize(one_bndl, len, ptr);
+                osc_bundle_u_free(one_bndl);
+                one_bndl = NULL;
                 break;
             }
             
@@ -1123,6 +1146,16 @@ void otable_sort(t_otable *x)
 
     otable_mergeSort(&x->llookup->head, lookupaddr);
 
+    e = x->llookup->head;
+    t_osc_linkedlist_elem *prev = NULL;
+    while (e)
+    {
+        next = e->next;
+        e->prev = prev;
+        prev = e;
+        e = next;
+    }
+    
 //    post("postcount %d count %d head %x tail %x", x->db->ll->count, x->llookup->count, x->llookup->head, x->llookup->tail);
     
     //log typetags
