@@ -285,7 +285,7 @@ void otable_poplast(t_otable *x)
 }
 
 #ifdef OMAX_PD_VERSION
-void otable_peek(t_otable *x, float f)
+void otable_peek(t_otable *x, t_osc_linkedlist *ll, float f)
 {
     int n = (int)f;
 #else

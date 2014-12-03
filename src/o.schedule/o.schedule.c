@@ -75,8 +75,8 @@
 #include "o.h"
 
 // default options
-#define DEFAULT_PACKET_SIZE 10000
-#define DEFAULT_QUEUE_SIZE 15000
+#define DEFAULT_PACKET_SIZE 2<<16
+#define DEFAULT_QUEUE_SIZE 2<<16
 
 #define OSCHEDULE_OUTLET_MAIN x->outlets[0]
 #define OSCHEDULE_OUTLET_MISSED x->outlets[1]
@@ -162,7 +162,7 @@ void osched_fullPacket(t_osched *x, t_symbol *s, int argc, t_atom *argv)
         
 	// check for length condition
 	if(n.length >= x->packet_size) {
-		object_error((t_object *)x, "packet length %d exceeds maximum", n.length);
+		object_error((t_object *)x, "packet length %d exceeds maximum (%d)", n.length, x->packet_size);
 		omax_util_outletOSC(OSCHEDULE_OUTLET_DELEGATE, len, ptr);
 		return;
 	}
@@ -650,15 +650,13 @@ int main(void)
 	if(omax_dict_resolveDictStubs()){
 		class_addmethod(c, (method)omax_dict_dictionary, "dictionary", A_GIMME, 0);
 	}
-
-	/*
+/*
 	CLASS_ATTR_FLOAT(c, "precision", 0, t_osched, precision);
 	CLASS_ATTR_ACCESSORS(c, "precision", osched_getPrecision, osched_setPrecision);
 
 	CLASS_ATTR_LONG(c, "queuesize", 0, t_osched, packets_max);
 	CLASS_ATTR_LONG(c, "packetsize", 0, t_osched, packet_size);
-	*/
-
+*/
 	osched_class = c;
 	ps_FullPacket = gensym("FullPacket");
 	class_register(CLASS_BOX, osched_class);
