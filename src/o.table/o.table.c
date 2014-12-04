@@ -648,6 +648,231 @@ void otable_get_atom(t_osc_bndl_s *bndl, char *lookupaddr, long nth, t_osc_msg_a
 }
     
     
+void otable_do_lookupRange(t_otable *x, t_osc_atom_s *target_at1, t_osc_atom_s *target_at2, long *len, char **ptr)
+{
+    //x-selector and x->llookup prechecked, and thread locked
+    
+    //make sure at1 is < at2 above
+    
+    t_osc_linkedlist_elem *cur = NULL;
+    
+    char *lookupaddr = x->selector->s_name;
+    
+    if(x->curr)
+        cur = x->curr;
+    else
+        cur = x->llookup->head;
+    
+    if(cur == NULL)
+    {
+        return;
+    }
+    
+    t_osc_msg_ar_s *ar = NULL;
+    t_osc_atom_s *at = NULL;
+    t_osc_bndl_s *bndl = NULL;
+    
+    int res;
+    double distance = 0;
+    
+    //    t_osc_msg_s *m = NULL;
+    //   int m_count = 0;
+    
+    int dir = 0;
+    
+    // if at is >= target_at1 and <= target_at2 then add to bundle, preferencing higher number entries (for now)
+    // first find lowest bundle, then add until at highest
+    
+    t_osc_bndl_s *startbndl = NULL;
+    
+    while(cur)
+    {
+        bndl = (t_osc_bndl_s *)cur->data;
+        
+        if(!bndl)
+        {
+            post("bundle pointer error");
+            otable_clear(x);
+            if(at)
+                osc_atom_s_free(at);
+            if(ar)
+                osc_message_array_s_free(ar);
+            return;
+        }
+        otable_get_atom(bndl, lookupaddr, 0, &ar, &at);
+        res = otable_compare_oscatoms(target_at1, at, &distance);
+        
+        if(res == 0) // match
+        {
+            startbndl = bndl;
+            break;
+        }
+        else if(res == 1) // target is greater, move forwards
+        {
+            if(cur->next && dir < 0) // but if we're moving backwards, then the last attempt was greater than target
+            {
+                startbndl = bndl;
+                break;
+            }
+            else if(!cur->next) // target is greater, but no higher possible value
+            {
+                break;
+            }
+            
+            dir = 1;
+            cur = cur->next;
+        }
+        else if(res == -1) // target is less, move backwards
+        {
+            
+            if(cur->prev && dir > 0) // if we're currently moving forward, then this is an inbetween value
+            {
+                startbndl = bndl;
+                break;
+            }
+            else if(!cur->prev) // value is too small, but there is nothing smaller
+            {
+                break;
+            }
+            
+            dir = -1;
+            cur = cur->prev;
+        }
+        else if(res == -2)
+        {
+            break;
+        }
+        
+    }
+
+    long prevlen = 0;
+    char *prevbndl = NULL;
+    
+    if(startbndl)
+    {
+        prevlen = osc_bundle_s_getLen(startbndl);
+        prevbndl = osc_mem_alloc(prevlen);
+        memcpy(prevbndl, osc_bundle_s_getPtr(startbndl), prevlen);
+    }
+    
+    long unionlen = 0;
+    char *unionbndl = NULL;
+    
+   
+    while(cur)
+    {
+        bndl = (t_osc_bndl_s *)cur->data;
+        
+        if(!bndl)
+        {
+            post("bundle pointer error");
+            otable_clear(x);
+            if(at)
+                osc_atom_s_free(at);
+            if(ar)
+                osc_message_array_s_free(ar);
+            return;
+        }
+        otable_get_atom(bndl, lookupaddr, 0, &ar, &at);
+        res = otable_compare_oscatoms(target_at2, at, &distance);
+        
+        if(res == 0) // match
+        {
+            if(unionbndl && prevbndl)
+            {
+                prevbndl = osc_mem_resize(prevbndl, unionlen);
+                memcpy(prevbndl, unionbndl, unionlen);
+                prevlen = unionlen;
+                osc_mem_free(unionbndl);
+            }
+            
+            unionlen = 0;
+            unionbndl = NULL;
+            osc_bundle_s_union(osc_bundle_s_getLen(bndl), osc_bundle_s_getPtr(bndl), prevlen, prevbndl, &unionlen, &unionbndl);
+
+            break;
+        }
+        else if(res == 1) // target is greater, move forwards
+        {
+            if(cur->next && dir < 0) // but if we're moving backwards, then the last attempt was greater than target
+            {
+                break;
+            }
+            else if(!cur->next && dir == 0)
+            {
+                break;
+            }
+            
+            if(unionbndl)
+            {
+                prevbndl = osc_mem_resize(prevbndl, unionlen);
+                memcpy(prevbndl, unionbndl, unionlen);
+                prevlen = unionlen;
+                osc_mem_free(unionbndl);
+            }
+            unionlen = 0;
+            unionbndl = NULL;
+            osc_bundle_s_union(osc_bundle_s_getLen(bndl), osc_bundle_s_getPtr(bndl), prevlen, prevbndl, &unionlen, &unionbndl);
+            
+            dir = 1;
+            cur = cur->next;
+        }
+        else if(res == -1) // target is less, move backwards
+        {
+            
+            if(cur->prev && dir > 0) // if we're currently moving forward, then this is an inbetween value
+            {
+                break;
+            }
+            else if(!cur->prev && dir == 0)
+            {
+                break;
+            }
+            
+            // else we are already moving backwards, and should accumulate the bundle
+            if(unionbndl)
+            {
+                prevbndl = osc_mem_resize(prevbndl, unionlen);
+                memcpy(prevbndl, unionbndl, unionlen);
+                prevlen = unionlen;
+                osc_mem_free(unionbndl);
+            }
+            unionlen = 0;
+            unionbndl = NULL;
+            osc_bundle_s_union(osc_bundle_s_getLen(bndl), osc_bundle_s_getPtr(bndl), prevlen, prevbndl, &unionlen, &unionbndl);
+
+            dir = -1;
+            cur = cur->prev;
+        }
+        else if(res == -2)
+        {
+            break;
+        }
+        
+    }
+    
+    *len = unionlen;
+    *ptr = unionbndl;
+    
+    x->curr = cur;
+    if(at)
+        osc_atom_s_free(at);
+    if(ar)
+        osc_message_array_s_free(ar);
+    ar = NULL;
+    at = NULL;
+    
+    
+    if(prevbndl)
+        osc_mem_free(prevbndl);
+    prevbndl = NULL;
+    
+    //critical_exit(x->lock);
+    
+}
+
+    
+    
 void otable_do_lookup(t_otable *x, t_osc_atom_s *target_at, long *len, char **ptr)
 {
     //x-selector and x->llookup prechecked
@@ -825,7 +1050,66 @@ void otable_do_lookup(t_otable *x, t_osc_atom_s *target_at, long *len, char **pt
  
     
     //make generic t_osc_s_atom comparison
+void otable_lookupRange(t_otable *x, t_symbol *s, short argc, t_atom *argv)
+{
+    /*      1) check that type tags match (do this eventually)
+     2) check if x-llookup exsists (this function should not trigger sort)
+     3) use precision setting to decide what range to output? maybe not, or yes, if a bunch of them match
+     */
+    critical_enter(x->lock);
+    if(argc == 2 && x->selector && x->llookup->head && strlen(x->typetags) > 1)
+    {
+        t_osc_atom_s *target_at1 = NULL;
+        t_osc_atom_s *target_at2 = NULL;
+        
+        if (atom_gettype(argv) != atom_gettype(argv+1)) {
+            post("lookup data types must match");
+            critical_exit(x->lock);
+            return;
+        }
+        switch (atom_gettype(argv)) {
+            case A_LONG:
+                target_at1 = osc_atom_s_alloc('i', NULL);
+                osc_atom_s_setInt32(target_at1, atom_getlong(argv));
+                target_at2 = osc_atom_s_alloc('i', NULL);
+                osc_atom_s_setInt32(target_at2, atom_getlong(argv+1));
+
+                break;
+            case A_FLOAT:
+                target_at1 = osc_atom_s_alloc('d', NULL);
+                osc_atom_s_setDouble(target_at1, atom_getfloat(argv));
+                target_at2 = osc_atom_s_alloc('d', NULL);
+                osc_atom_s_setDouble(target_at2, atom_getfloat(argv+1));
+                break;
+            case A_SYM:
+                break;
+            default:
+                post("unsupported lookup type");
+                break;
+        }
+        
+        long len = 0;
+        char *ptr = NULL;
+        otable_do_lookupRange(x, target_at1, target_at2, &len, &ptr);
+        
+        if(ptr)
+        {
+            omax_util_outletOSC(x->outlet, len, ptr);
+            osc_mem_free(ptr);
+        }
+        
+        if(target_at1)
+            osc_atom_s_free(target_at1);
+        if(target_at2)
+            osc_atom_s_free(target_at2);
+        
+        target_at1 = NULL;
+        target_at2 = NULL;
+        ptr = NULL;
+    }
+    critical_exit(x->lock);
     
+}
 void otable_lookup(t_otable *x, t_symbol *s, short argc, t_atom *argv)
 {
 /*      1) check that type tags match (do this eventually)
@@ -1742,6 +2026,7 @@ int main(void)
     class_addmethod(c, (method)otable_linkedlist_printElem, "printElem", 0);
     class_addmethod(c, (method)otable_sort, "dosort", 0);
     class_addmethod(c, (method)otable_lookup, "lookup", A_GIMME, 0);
+    class_addmethod(c, (method)otable_lookupRange, "lookuprange", A_GIMME, 0);
     
 	if(omax_dict_resolveDictStubs()){
 		class_addmethod(c, (method)omax_dict_dictionary, "dictionary", A_GIMME, 0);
