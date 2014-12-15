@@ -319,6 +319,11 @@
 			<key>orderHint</key>
 			<integer>54</integer>
 		</dict>
+		<key>o.queue.fifo.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>93</integer>
+		</dict>
 		<key>o.random.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -808,6 +813,11 @@
 			<true/>
 		</dict>
 		<key>527294B817EDE93B00AA15E1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>528026DD19E028C30037FD4E</key>
 		<dict>
 			<key>primary</key>
 			<true/>

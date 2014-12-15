@@ -68,16 +68,16 @@ void opbytes_fullPacket(t_opbytes *x, t_symbol *msg, int argc, t_atom *argv)
 	OMAX_UTIL_GET_LEN_AND_PTR
 	unsigned char *buf = (unsigned char *)ptr;
 	int i;
-	post("%-12s%-12s%-12s%s", "Byte #", "ASCII", "Decimal", "Hex");
+	post("%-12s%-12s%-12s%s", "Byte #", "ASCII", "Decimal", "Hex\n");
 	for(i = 0; i < len; i++){
 		if(buf[i] == '\0'){
-			post("%05d       %-14s%-14d0x%x", i, "'\\0'", buf[i], buf[i]);
+			post("%05d       %-14s%-14d0x%x\n", i, "'\\0'", buf[i], buf[i]);
 		}else if(buf[i] < 32 || buf[i] > 126){
-			post("%05d       %-14s%-14d0x%x", i, "''", buf[i], buf[i]);
+			post("%05d       %-14s%-14d0x%x\n", i, "''", buf[i], buf[i]);
 		}else{
 			char b[32];
 			sprintf(b, "'%c'", buf[i]);
-			post("%05d       %-14s%-14d0x%x", i, b, buf[i], buf[i]);
+			post("%05d       %-14s%-14d0x%x\n", i, b, buf[i], buf[i]);
 		}
 	}
 	omax_util_outletOSC(x->outlet, len, (char *)ptr);
