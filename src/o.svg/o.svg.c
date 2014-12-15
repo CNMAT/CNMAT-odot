@@ -27,8 +27,13 @@ AUTHORS: Rama Gottfried
 COPYRIGHT_YEARS: 2013
 SVN_REVISION: $LastChangedRevision: 587 $
 VERSION 0.0: First try
+VERSINO 0.1: added autowatch
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-*/
+ 
+ to do: change bundling process to be odot directly instead of using atoms to collection
+ 
+ */
+
 
 #define OMAX_DOC_NAME "o.svg"
 #define OMAX_DOC_SHORT_DESC "Collect OSC messages to be bundled together"
@@ -66,289 +71,48 @@ VERSION 0.0: First try
 #include <libxml/xmlreader.h>
 #include "string.h"
 
-typedef struct _osvg{
-	t_object ob;
-	void *outlet;
-	char *buffer;
-	long buffer_len;
-	long buffer_pos;
-	t_critical lock;
-    
+#define OSVG_MAX_STRINGSIZE 1024
+
+typedef struct _oxml
+{
+    const xmlChar    *type;
+    long        count;
+    struct _oxml *next;
+} t_oxml_node;
+
+
+typedef struct _osvg
+{
+	t_object        ob;
+	void            *outlet;
+	t_critical      lock;
     xmlTextReader   *reader;
     short           f_open;
+    long            pdepth;
     
+    t_oxml_node     *head;
+    t_symbol        *sepattr;
+    
+#ifndef OMAX_PD_VERSION
+    long autowatch;
+    void *filewatcher;
+#endif
 } t_osvg;
 
 void *osvg_class;
 t_symbol *ps_nothing;
 
-void osvg_fullPacket_(t_osvg *x, long len, long ptr);
 
-/*
-int iterateXML(t_osvg *x, xmlTextReader *reader)
-{
-    
-    while(xmlTextReaderRead(reader)){
-        
-        switch (xmlTextReaderNodeType(reader)) {
-            case XML_READER_TYPE_ELEMENT:
-                
-                xmlTypeRouting(x, reader, NULL);
-                
-                continue;
-                
-                
-            case XML_READER_TYPE_TEXT:{ //actually svg's don't really use the text part
-                char *val = (char *)xmlTextReaderConstValue(reader);
-                post("      text value:  %s", val);
-            } continue;
-        }
-    }
-    xmlFreeTextReader(reader);
-    xmlCleanupParser();
-    return 1;
-}
-
- 
- 
- */
-/*
-void processNode(t_osvg *x, xmlTextReaderPtr reader, char **parent_prefixPtr)
-{
-    char *name = NULL;
-    
-    name = (char *)xmlTextReaderConstName(reader);
-    if (name == NULL)
-        name = (char *)xmlStrdup(BAD_CAST "--");
-    
-    char *parent_prefix = NULL;
-    if(parent_prefixPtr != NULL)
-        parent_prefix = *parent_prefixPtr;
-    
-    int parentlen = (parent_prefix != NULL) ? strlen(parent_prefix) : 0;
-    
-    int namelen = strlen(name);
-    int prefixlen = namelen + parentlen + 1;
-    
-    char *prefix = (char *)malloc(prefixlen * sizeof(char));
-    
-    if(parent_prefix != NULL)
-        strcpy(prefix, parent_prefix);
-    
-    prefix[parentlen] = '/';
-    strcpy(prefix + (parentlen+1), (char *)name);
-    
-    //    post("prefix %s", prefix);
-    
-    char *attrname = NULL;
-    char *val = NULL;
-    
-    char tmp[prefixlen];
-    strcpy(tmp, prefix);
-    int node_type = xmlTextReaderNodeType(reader);
-    switch (node_type) {
-        case XML_READER_TYPE_ELEMENT:
-        {
-            while (xmlTextReaderMoveToNextAttribute(reader))
-            {
-                attrname = (char *)xmlTextReaderConstName(reader);
-                val = (char *)xmlTextReaderConstValue(reader);
-                
-                if(!strcmp(attrname, "id") && val != NULL)
-                {
-                    post("pre realloc prefix %s", prefix);
-                    
-                    prefix = (char *)realloc(prefix, sizeof(char) * (strlen(val) + prefixlen + 2));
-                    if(!prefix)
-                    {
-                        object_error((t_object *)x, "failed to realloc prefix!");
-                        return;
-                    }
-                    memset(prefix, '\0', sizeof(char) * (strlen(val) + prefixlen + 2));
-                    strcpy(prefix, tmp);
-                    
-                    prefix[prefixlen] = '/';
-                    
-                    strcpy(prefix+prefixlen+1, val);
-                    prefixlen = strlen(prefix);
-                    
-                }
-                else
-                {
-                    char address[prefixlen + 2 + strlen(attrname)];
-                    
-                    strcpy(address, prefix);
-                    address[prefixlen] = '/';
-                    strcpy(address+(prefixlen+1), attrname);
-                    // send to o.collect here
-                    
-                    post("............................ %s %s", address, val);
-                    
-                }
-                
-            }
-        } break;
-        case XML_READER_TYPE_TEXT:
-        {
-            val = (char *)xmlTextReaderConstValue(reader);
-            post(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>> TEXT %s num value:  %s", prefix, val);
-        } break;
-            
-    }
-    
-    xmlTextReaderMoveToElement(reader);
-    
-    long pdepth = xmlTextReaderDepth(reader);//log depth
-    xmlTextReaderRead(reader);
-    
-    //while(xmlTextReaderNodeType(reader) != XML_READER_TYPE_ELEMENT) xmlTextReaderRead(reader);
-    if(parent_prefix)
-    {
-        post("parent %s pdepth %d this depth %d", prefix, pdepth, xmlTextReaderDepth(reader));
-        //goto freeThese;
-    }
-    
-    int count = 0;
-    
-    while(xmlTextReaderDepth(reader) > pdepth && count < 2)
-    {
-        if(xmlTextReaderNodeType(reader) == XML_READER_TYPE_ELEMENT)
-        {
-            post("system - checking layer %d", xmlTextReaderDepth(reader));
-            critical_enter(x->lock);
-            processNode(x, reader, &prefix);
-            critical_exit(x->lock);
-            //xmlTextReaderMoveToElement(reader);
-        }
-        xmlTextReaderRead(reader);
-        count++;
-    }
-    
-freeThese:
-    if(prefix)
-    {
-        free(prefix);
-        prefix = NULL;
-    }
-    
-    
-    
-}
-*/
-
-void osvg_fullPacket_impl(t_osvg *x, long len, char *ptr)
-{
-	osc_bundle_s_wrap_naked_message(len, ptr);
-	if(len == OSC_HEADER_SIZE){
-		// empty bundle
-		return;
-	}
-	critical_enter(x->lock);
-	if(x->buffer_pos + len > x->buffer_len){
-		char *tmp = (char *)osc_mem_resize(x->buffer, x->buffer_pos + len);
-		if(!tmp){
-			object_error((t_object *)x, "Out of memory...sayonara max...");
-			critical_exit(x->lock);
-			return;
-		}
-		x->buffer = tmp;
-		memset(x->buffer + x->buffer_pos, '\0', len);
-		x->buffer_len = x->buffer_pos + len;
-	}
-	t_osc_bndl_it_s *it = osc_bndl_it_s_get(len, ptr);
-	while(osc_bndl_it_s_hasNext(it)){
-		t_osc_msg_s *m = osc_bndl_it_s_next(it);
-		t_osc_msg_ar_s *match = NULL;
-		osc_bundle_s_lookupAddress(x->buffer_pos, x->buffer, osc_message_s_getAddress(m), &match, 1);
-		if(!match){
-			long l = osc_message_s_getSize(m) + 4;
-			memcpy(x->buffer + x->buffer_pos, osc_message_s_getPtr(m), l);
-			x->buffer_pos += l;
-		}else{
-			// this function can resize its buffer, but we don't have to worry about that
-			// since we already resized it above to accommidate the entire bundle
-			int i;
-			for(i = 0; i < osc_message_array_s_getLen(match); i++){
-				t_osc_msg_s *mm = osc_message_array_s_get(match, i);
-				osc_bundle_s_replaceMessage(&(x->buffer_len),
-                                            &(x->buffer_pos),
-                                            &(x->buffer),
-                                            mm,
-                                            m);
-			}
-			osc_message_array_s_free(match);
-		}
-	}
-	osc_bndl_it_s_destroy(it);
-	critical_exit(x->lock);
-}
-
-void osvg_fullPacket(t_osvg *x, t_symbol *msg, int argc, t_atom *argv)
-{
-	OMAX_UTIL_GET_LEN_AND_PTR
-    osvg_fullPacket_impl(x, len, ptr);
-}
-
-void osvg_anything(t_osvg *x, t_symbol *msg, int argc, t_atom *argv)
-{
-	t_osc_bndl_u *bndl_u = osc_bundle_u_alloc();
-	t_osc_msg_u *msg_u = NULL;
-	t_osc_err e = omax_util_maxAtomsToOSCMsg_u(&msg_u, msg, argc, argv);
-	if(e){
-		object_error((t_object *)x, "%s", osc_error_string(e));
-		if(bndl_u){
-			osc_bundle_u_free(bndl_u);
-		}
-		return;
-	}
-	osc_bundle_u_addMsg(bndl_u, msg_u);
-	long len = 0;
-	char *buf = NULL;
-	osc_bundle_u_serialize(bndl_u, &len, &buf);
-	if(bndl_u){
-		osc_bundle_u_free(bndl_u);
-	}
-    
-	osvg_fullPacket_impl(x, len, buf);
-	if(buf){
-		osc_mem_free(buf);
-	}
-
-}
-
-void osvg_bang(t_osvg *x){
-    critical_enter(x->lock);
-    int len = x->buffer_pos;
-    char outbuf[len];
-    memcpy(outbuf, x->buffer, len);
-    memset(x->buffer + OSC_HEADER_SIZE, '\0', len - OSC_HEADER_SIZE);
-    x->buffer_pos = OSC_HEADER_SIZE;
-    critical_exit(x->lock);
-    omax_util_outletOSC(x->outlet, len, outbuf);
-}
-
-void osvg_parsePath(t_osvg *x, char *pathstr, char *prefix)
+void osvg_parsePath(t_osvg *x, char *pathstr, t_osc_bndl_u *bndl)
 {
     // NOTE: current S and C parsing is not SVG complient, it should allow for an unknown number of segments
     // there should always be a prefix!
-    if(!prefix)
-        return;
     
     //post("%s", prefix);
+    t_osc_msg_u *msg = NULL;
+    if(strlen(pathstr) < 1)
+        return;
     
-    int prefixLen = strlen(prefix);
-    char address[prefixLen+1025];
-
-    t_symbol *msg;
-    t_atom out[6];
-    
-    char type, prev_type;
-    char postfix[4];
-    postfix[0] = '/';
-    postfix[2] = '/';
-    
-    //post("d = %s", pathstr);
-    if(strlen(pathstr) < 1) return;
     // start of path writing
     
     double totalpathlength = 0;
@@ -361,25 +125,35 @@ void osvg_parsePath(t_osvg *x, char *pathstr, char *prefix)
     
     double pt[2], prev_pt[2], prev_ctl_pt[2], origin_pt[2];
     long pcount = 0;
-    for(q = 0; q < pathstrLen; q++){
+    char type, prev_type;
+    char address[OSVG_MAX_STRINGSIZE];
+    
+    for(q = 0; q < pathstrLen; q++)
+    {
         char ch = pathstr[q];
         
-        switch (ch) {
-            case 'M': case 'm':{
+        switch (ch)
+        {
+            case 'M': case 'm':
+            {
                 //                pathstarted = true;
                 type = ch;
                 double moveto[2];
                 ch = pathstr[++q];
                 long lcount = 0;
                 while(ch_idx < pathstrLen  && q < pathstrLen &&
-                      (isdigit(ch) || isspace(ch) || ch == ',' || ch == '.' || ch == '-' || ch == '\n')){
-                    if(ch == ','){
+                      (isdigit(ch) || isspace(ch) || ch == ',' || ch == '.' || ch == '-' || ch == '\n'))
+                {
+                    if(ch == ',')
+                    {
                         moveto[lcount++] = strtod(chunk, NULL);
                         //                        post("float before , %f", t_moveto.x);
                         memset(chunk, '\0', sizeof(char) * pathstrLen);
                         ch_idx = 0;
                         ch = pathstr[++q];
-                    } else if(ch == '-'){
+                    }
+                    else if(ch == '-')
+                    {
                         moveto[lcount++] = strtod(chunk, NULL);
                         //                       post("float before - %f", t_moveto.x);
                         memset(chunk, '\0', sizeof(char) * pathstrLen);
@@ -387,15 +161,22 @@ void osvg_parsePath(t_osvg *x, char *pathstr, char *prefix)
                         chunk[ch_idx] = ch;
                         chunk[++ch_idx] = '\0';
                         ch = pathstr[++q];
-                    } else if(ch == ' ' || ch == '\n'){ //this newline handling is not right somehow
-                        if(chunk[0] == '\0'){
+                    }
+                    else if(ch == ' ' || ch == '\n')
+                    { //this newline handling is not right somehow
+                        if(chunk[0] == '\0')
+                        {
                             ch = pathstr[++q];
-                        } else {
+                        }
+                        else
+                        {
                             ch = ',';
                             //post("jump %s", chunk);
                         }
                         
-                    } else {
+                    }
+                    else
+                    {
                         chunk[ch_idx] = ch;
                         chunk[++ch_idx] = '\0';
                         ch = pathstr[++q];
@@ -420,13 +201,14 @@ void osvg_parsePath(t_osvg *x, char *pathstr, char *prefix)
                     type = toupper(type);
                 }
                 
-                snprintf(address, prefixLen+1024, "%s/d/%ld/%c", prefix, pcount, type);
-                msg = gensym(address);
+                snprintf(address, OSVG_MAX_STRINGSIZE, "/%ld/%c", pcount, type);
                 
+                
+                msg = osc_message_u_allocWithAddress(address);
+                osc_message_u_appendDouble(msg, moveto[0]);
+                osc_message_u_appendDouble(msg, moveto[1]);
+                osc_bundle_u_addMsg(bndl, msg);
 
-                atom_setfloat(out, moveto[0]);
-                atom_setfloat(out+1, moveto[1]);
-                osvg_anything(x, msg, 2, out);
                 pcount++;
                 
                 prev_pt[0] = moveto[0];
@@ -494,11 +276,12 @@ void osvg_parsePath(t_osvg *x, char *pathstr, char *prefix)
                     type = toupper(type);
                 }
                 
-                snprintf(address, prefixLen+1024, "%s/d/%ld/%c", prefix, pcount, type);
-                msg = gensym(address);
-                atom_setfloat(out, lineto[0]);
-                atom_setfloat(out+1, lineto[1]);
-                osvg_anything(x, msg, 2, out);
+                snprintf(address, OSVG_MAX_STRINGSIZE, "/%ld/%c", pcount, type);
+                msg = osc_message_u_allocWithAddress(address);
+                osc_message_u_appendDouble(msg, lineto[0]);
+                osc_message_u_appendDouble(msg, lineto[1]);
+                osc_bundle_u_addMsg(bndl, msg);
+                
                 pcount++;
                 
                 //post("L x %f y %f", lineto[0], lineto[1]);
@@ -580,11 +363,12 @@ void osvg_parsePath(t_osvg *x, char *pathstr, char *prefix)
                     type = toupper(type);
                 }
                 
-                snprintf(address, prefixLen+1024, "%s/d/%ld/%c", prefix, pcount, type);
-                msg = gensym(address);
-                atom_setfloat(out, pt[0]);
-                atom_setfloat(out+1, pt[1]);
-                osvg_anything(x, msg, 2, out);
+                snprintf(address, OSVG_MAX_STRINGSIZE, "/%ld/%c", pcount, type);
+                msg = osc_message_u_allocWithAddress(address);
+                osc_message_u_appendDouble(msg, pt[0]);
+                osc_message_u_appendDouble(msg, pt[1]);
+                osc_bundle_u_addMsg(bndl, msg);
+                
                 pcount++;
                 
                 prev_pt[0] = pt[0];
@@ -654,8 +438,13 @@ void osvg_parsePath(t_osvg *x, char *pathstr, char *prefix)
                 
                 //three bspline points (6 doubles)
                 // should probably make everything absolute so it can be scaled easier
+                
+                
+                
                 if(ccount == 6){
-
+                    snprintf(address, OSVG_MAX_STRINGSIZE, "/%ld/%c", pcount, type);
+                    msg = osc_message_u_allocWithAddress(address);
+                    
                     int bidx;
                     if(islower(type))
                     {
@@ -665,8 +454,8 @@ void osvg_parsePath(t_osvg *x, char *pathstr, char *prefix)
                             bpts[bidx * 2] += prev_pt[0];
                             bpts[(bidx * 2)+1] += prev_pt[1];
                             
-                            atom_setfloat(out+(bidx*2), bpts[bidx*2]);
-                            atom_setfloat(out+1+(bidx*2), bpts[(bidx*2)+1]);
+                            osc_message_u_appendDouble(msg, bpts[bidx*2]);
+                            osc_message_u_appendDouble(msg, bpts[(bidx*2)+1]);
                         }
                         type = toupper(type);
                     }
@@ -674,13 +463,13 @@ void osvg_parsePath(t_osvg *x, char *pathstr, char *prefix)
                     {
                         //post("upper? %c", type);
                         for (bidx = 0; bidx < 6; bidx++)
-                            atom_setfloat(out+bidx, bpts[bidx]);
+                            osc_message_u_appendDouble(msg, bpts[bidx]);
+
                     }
                     
-                    snprintf(address, prefixLen+1024, "%s/d/%ld/%c", prefix, pcount, type);
-                    msg = gensym(address);
-
-                    osvg_anything(x, msg, 6, out);
+                    osc_bundle_u_addMsg(bndl, msg);
+                    
+                    
                     pcount++;
                     prev_ctl_pt[0] = bpts[2];
                     prev_ctl_pt[1] = bpts[3];
@@ -763,9 +552,10 @@ void osvg_parsePath(t_osvg *x, char *pathstr, char *prefix)
                         prev_ctrl_Ptr[1] = prev_pt[1];
                     }
                     
-
-                    atom_setfloat(out, prev_ctrl_Ptr[0]);
-                    atom_setfloat(out+1, prev_ctrl_Ptr[1]);
+                    snprintf(address, OSVG_MAX_STRINGSIZE, "/%ld/%c", pcount, type);
+                    msg = osc_message_u_allocWithAddress(address);
+                    osc_message_u_appendDouble(msg, prev_ctrl_Ptr[0]);
+                    osc_message_u_appendDouble(msg, prev_ctrl_Ptr[1]);
                     
                     int bidx;
 
@@ -776,24 +566,24 @@ void osvg_parsePath(t_osvg *x, char *pathstr, char *prefix)
                             spts[bidx * 2] += prev_pt[0];
                             spts[(bidx * 2)+1] += prev_pt[1];
                             
-                            atom_setfloat(out+2+(bidx*2), spts[bidx*2]);
-                            atom_setfloat(out+2+1+(bidx*2), spts[(bidx*2)+1]);
+                            osc_message_u_appendDouble(msg, spts[bidx*2]);
+                            osc_message_u_appendDouble(msg, spts[(bidx*2)+1]);
                         }
                         type = toupper(type);
                     }
                     else
                     {
                         for (bidx = 0; bidx < 4; bidx++)
-                            atom_setfloat(out+2+bidx, spts[bidx]);
+                            osc_message_u_appendDouble(msg, spts[bidx]);
+
                     }
                     
                     
                     // NOTE: S is converted to type C for easy of parsing later
-
-                    snprintf(address, prefixLen+1024, "%s/d/%ld/%c", prefix, pcount, type);
-                    msg = gensym(address);
                     
-                    osvg_anything(x, msg, 6, out);
+                    osc_bundle_u_addMsg(bndl, msg);
+
+                    
                     pcount++;
                     prev_ctl_pt[0] = spts[0];
                     prev_ctl_pt[1] = spts[1];
@@ -819,12 +609,12 @@ void osvg_parsePath(t_osvg *x, char *pathstr, char *prefix)
             case 'Z':
                 type = (islower(ch)) ? toupper(ch) : ch;
                 
-                snprintf(address, prefixLen+1024, "%s/d/%ld/%c", prefix, pcount, type);
-                msg = gensym(address);
-                atom_setfloat(out, origin_pt[0]);
-                atom_setfloat(out+1, origin_pt[1]);
-                osvg_anything(x, msg, 2, out);
-
+                snprintf(address, OSVG_MAX_STRINGSIZE, "/%ld/%c", pcount, type);
+                msg = osc_message_u_allocWithAddress(address);
+                osc_message_u_appendDouble(msg, origin_pt[0]);
+                osc_message_u_appendDouble(msg, origin_pt[1]);
+                osc_bundle_u_addMsg(bndl, msg);
+                
             break;
                 
             case ' ': case '\n':{
@@ -839,167 +629,349 @@ void osvg_parsePath(t_osvg *x, char *pathstr, char *prefix)
     
 }
 
-
-void processNode(t_osvg *x, xmlTextReaderPtr reader, char *parent_prefix);
-void processNode(t_osvg *x, xmlTextReaderPtr reader, char *parent_prefix)
+long oxml_addNode(t_oxml_node **head, const xmlChar *type)
 {
-    char *name = NULL;
-    
-    name = (char *)xmlTextReaderConstName(reader);
-    if (name == NULL)
-        name = (char *)xmlStrdup(BAD_CAST "--");
-    
-    int parentlen = (parent_prefix != NULL) ? strlen(parent_prefix) : 0;
-    
-    int namelen = strlen(name);
-    int prefixlen = namelen + parentlen + 1;
-    
-    //char *prefix = (char *)malloc(prefixlen * sizeof(char));
-    
-    char prefix[prefixlen];
-    char *prefixPtr = NULL;
-    
-    if(parent_prefix != NULL)
-        strcpy(prefix, parent_prefix);
-    
-    prefix[parentlen] = '/';
-    strcpy(prefix + (parentlen+1), (char *)name);
-    
-    prefixPtr = prefix;
-//    post("parentprefix %s", parent_prefix);
-    
-//    post("prefix %s", prefixPtr);
-    
-    char *attrname = NULL;
-    char *val = NULL;
-    char *prefix_w_id = NULL;
-    
-    int node_type = xmlTextReaderNodeType(reader);
-    t_symbol *msg;
-    t_atom out_val;
-    
-    
-    switch (node_type) {
-        case XML_READER_TYPE_ELEMENT:
+    t_oxml_node *p = *head;
+
+    if(!p)
+    {
+        p = (t_oxml_node *)calloc(1, sizeof(t_oxml_node));
+        if(!p)
         {
-            while (xmlTextReaderMoveToNextAttribute(reader))
+            post("could not allocate memory (%d)", __LINE__  );
+            return 0;
+        }
+        p->type = type;
+        p->count = 1;
+        p->next = NULL;
+        *head = p;
+//        post("new head");
+        return 1;
+    }
+    else
+    {
+        while(p->next && p->type != type)
+            p = p->next;
+        
+        if(!xmlStrcmp(p->type, type))
+        {
+//            post("found type %s", p->type);
+            return (++p->count);
+        }
+        else
+        {
+//            post("new type");
+
+            t_oxml_node *pn = (t_oxml_node *)calloc(1, sizeof(t_oxml_node));
+            if(!pn)
             {
-                attrname = (char *)xmlTextReaderConstName(reader);
-                val = (char *)xmlTextReaderConstValue(reader);
-                
-                if(!strcmp(attrname, "id") && val != NULL)
+                post("could not allocate memory (%d)", __LINE__  );
+                return 0;
+            }
+            pn->count = 1;
+            pn->type = type;
+            
+            p->next = pn;
+            return 1;
+        }
+    }
+    post("error in type checking");
+    return -1;
+}
+
+void oxml_free_nodes(t_oxml_node *head)
+{
+    t_oxml_node *temp;
+
+    while(head != NULL)
+    {
+        temp = head;
+        head = head->next;
+        free(temp);
+        temp = NULL;
+    }
+    
+}
+
+/* new version using xmlNode tree method, 
+ this is better because we can do a fast run through a level to count duplicate names first, then go through a second time to parse children
+ 
+ http://hamburgsteak.sandwich.net/writ/libxml2.txt
+ 
+ */
+
+static void oxml_generate_missing_ids(xmlNode *a_node)
+{
+    xmlNode *cur_node = NULL;
+    t_oxml_node *head = NULL;
+    
+    //first iterate and count each type, store count in
+    for (cur_node = a_node; cur_node; cur_node = cur_node->next)
+    {
+        bool has_id = false;
+        if (cur_node->type == XML_ELEMENT_NODE)
+        {
+            char *name = (char *)cur_node->name;
+            
+            if (cur_node->properties)
+            {
+                xmlAttr *attr = cur_node->properties;
+                while (attr)
                 {
-                    //post("id %s %s", attrname, val);
-
-                    int idlen = strlen(val);
-                    prefix_w_id = (char *)malloc((idlen + prefixlen + 2) * sizeof(char));
-                    memset(prefix_w_id, '\0', ((idlen + prefixlen + 2) * sizeof(char)));
+                    if(!xmlStrcmp(attr->name, (const xmlChar *)"id"))
+                        has_id = true;
                     
-                    strcpy(prefix_w_id, prefix);
-                    prefix_w_id[prefixlen] = '/';
-                    
-                    strcpy(prefix_w_id+prefixlen+1, val);
-                    
-                    prefixlen = strlen(prefix_w_id);
-                    prefixPtr = prefix_w_id;
-
-                                            // also send id to o.collect
-                        char namePrefix[prefixlen+5];
-                        strcpy(namePrefix, prefix_w_id);
-                        strcpy(namePrefix+prefixlen, "/type");
-                        
-                        msg = gensym(namePrefix);
-                        atom_setsym(&out_val, gensym(name));
-                        
-                        //post("test %s %s", msg->s_name, name);
-                        osvg_anything(x, msg, 1, &out_val);
-
-                    
-                    // also send id to o.collect
-                    char idPrefix[prefixlen+3];
-                    strcpy(idPrefix, prefix_w_id);
-                    strcpy(idPrefix+prefixlen, "/id");
-                    
-                    msg = gensym(idPrefix);
-                    atom_setsym(&out_val, gensym(val));
-                    
-                    osvg_anything(x, msg, 1, &out_val);
-
-
+                    attr = attr->next;
                 }
-                else if(!strcmp(name, "path") && !strcmp(attrname, "d"))
+                
+                if(!has_id)
                 {
-                    osvg_parsePath(x, val, prefixPtr);
+                    long count = oxml_addNode(&head, cur_node->name);
+                    if(count > 0)
+                    {
+                        long test = count, digits = 0;
+                        while (test)
+                        {
+                            test /= 10;
+                            digits++;
+                        }
+                        char genID[strlen(name) + digits + 1];
+                        sprintf(genID, "%s/%ld", name, count);
+                        xmlChar tag[] = "id";
+                        xmlNewProp(cur_node, tag, (const xmlChar *)genID);
+                    }
+                    
+                }
+            }
+            
+        }
+    }
+    oxml_free_nodes(head);
+}
+
+
+static void oxml_process_branch(t_osvg *x, xmlNode *a_node, t_osc_bndl_u *bndl)
+{
+
+    oxml_generate_missing_ids(a_node);
+
+    xmlNode *cur_node = NULL;
+    xmlChar *val = NULL;
+    
+    t_osc_msg_u *msg = NULL;
+    xmlChar *id = NULL;
+
+    
+    //then parse for data:
+    for (cur_node = a_node; cur_node; cur_node = cur_node->next)
+    {
+        if (cur_node->type == XML_ELEMENT_NODE)
+        {
+            //get children first to retreive the sub bundle
+            id = NULL;
+            
+            t_osc_bndl_u *n_bndl = osc_bundle_u_alloc();
+
+            char *name = (char *)cur_node->name;
+            msg = osc_message_u_allocWithAddress("/type");
+            osc_message_u_appendString(msg, name);
+            osc_bundle_u_addMsg(n_bndl, msg);
+            
+
+            if (cur_node->properties)
+            {
+                xmlAttr *attr = cur_node->properties;
+                
+                //get id first, have to iterate again unfortunately
+                
+                xmlAttr *attr_head = attr;
+                
+                while (attr)
+                {
+                    id = xmlGetProp(cur_node, attr->name);
+
+                    if(!xmlStrcmp(attr->name, (const xmlChar *)"id") && id != NULL)
+                    {
+                        msg = osc_message_u_allocWithAddress("/id");
+                        osc_message_u_appendString(msg, (char *)id);
+                        osc_bundle_u_addMsg(n_bndl, msg);
+                        break;
+
+                    }
+                    xmlFree(id);
+                    id = NULL;
+                    attr = attr->next;
+                }
+
+                attr = attr_head;
+                
+                while (attr)
+                {
+                    val = xmlGetProp(cur_node, attr->name);
+
+//                    post("attr: %s %s", attr->name, val);
+
+                    if(!xmlStrcmp(attr->name, (const xmlChar *)"path") || !xmlStrcmp(attr->name, (const xmlChar *)"d"))
+                    {
+                        t_osc_bndl_u *path_bndl = osc_bundle_u_alloc();
+                        osvg_parsePath(x, (char *)val, path_bndl);
+                        
+                        char buf[strlen((char *)attr->name)+1];
+                        sprintf(buf, "/%s", attr->name);
+                        msg = osc_message_u_allocWithAddress(buf);
+                        osc_message_u_appendBndl_u(msg, path_bndl);
+                        osc_bundle_u_addMsg(n_bndl, msg);
+                        
+                    }
+                    else if(xmlStrcmp(attr->name, (const xmlChar *)"id")) //(not id)
+                    {
+                        //un-labeled svg elements, line, rects, anything really
+
+                        char buf[strlen((char *)attr->name)+1];
+                        sprintf(buf, "/%s", attr->name);
+                        msg = osc_message_u_allocWithAddress(buf);
+                        
+                        char *v = (char *)val;
+                        char *p = (char *)val;
+                        errno = 0;
+                        double d = strtod(v, &p);
+                        if(errno == 0 && p != v )
+                            osc_message_u_appendDouble(msg, d);
+                        else
+                            osc_message_u_appendString(msg, (char *)val);
+                        
+                        osc_bundle_u_addMsg(n_bndl, msg);
+                        
+                    }
+
+                    xmlFree(val);
+                    val = NULL;
+                    attr = attr->next;
+                }
+            }
+
+            
+            val = xmlNodeGetContent(cur_node);
+            if(!xmlStrcmp(cur_node->name, (const xmlChar *)"text") && strlen((const char *)val))
+                post("%s content %s %x %d", cur_node->name, val, val);
+            
+            xmlFree(val);
+            val = NULL;
+            
+            
+            if(cur_node->children)
+            {
+                oxml_process_branch(x, cur_node->children, n_bndl);
+            }
+            
+        //we know there is always an id, because we made sure in the pre-processing loop, but just for safety:
+            if(id)
+            {
+                
+                if (x->sepattr != NULL)
+                {
+                    char *delim = x->sepattr->s_name;
+                    int n_delims = strlen(delim);
+                    int idlen = xmlStrlen(id);
+                    
+                    char idbuf[idlen+2];
+                    idbuf[0] = '/';
+                    idbuf[idlen+1] = '\0';
+
+                    int i, j;
+                    for (i = 0; i < idlen; i++)
+                    {
+                        for (j = 0; j < n_delims; j++)
+                        {
+                            if(id[i] == delim[j])
+                            {
+                                idbuf[i+1] = '/';
+                                break;
+                            }
+                            else
+                            {
+                                idbuf[i+1] = id[i];
+                            }
+                        }
+                    }
+                    
+                    if(idbuf[idlen] == '/')
+                        idbuf[idlen] = '\0';
+                    
+                    msg = osc_message_u_allocWithAddress(idbuf);
                 }
                 else
                 {
-                    char address[prefixlen + 2 + strlen(attrname)];
-                    strcpy(address, prefixPtr);
-                    address[prefixlen] = '/';
-                    strcpy(address+(prefixlen+1), attrname);
-                    // send to o.collect here
-                    msg = gensym(address);
-                    
-                    char *p = val;
-                    errno = 0;
-                    double d = strtod(val, &p);
-                    if(errno == 0 && p != val )
-                        atom_setfloat(&out_val, d);
-                    else
-                        atom_setsym(&out_val, gensym(val));
-                    
-                    osvg_anything(x, msg, 1, &out_val);
-                    
-                    //post("............................ %s %s", address, val);
-                    
+                    char idbuf[strlen((char *)id)+2];
+                    idbuf[0] = '/';
+                    strcpy(idbuf+1, (char *)id);
+                    msg = osc_message_u_allocWithAddress(idbuf);
                 }
-                
+                xmlFree(id);
+                id = NULL;
             }
-        } break;
-        case XML_READER_TYPE_TEXT:
-        {
-            val = (char *)xmlTextReaderConstValue(reader);
-            msg = gensym(prefixPtr);
-            atom_setsym(&out_val, gensym(val));
-            osvg_anything(x, msg, 1, &out_val);
+            else
+            {
+                msg = osc_message_u_allocWithAddress("/noid");
+            }
             
-            //attrname = (char *)xmlTextReaderConstName(reader);
-            //post(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>> TEXT %s attr %s num value:  %s", prefixPtr, attrname, val);
-        } break;
-            
-    }
-    
-    xmlTextReaderMoveToElement(reader);
-    
-    long pdepth = xmlTextReaderDepth(reader);//log depth
-    xmlTextReaderRead(reader);
-    
-    /*
-     //while(xmlTextReaderNodeType(reader) != XML_READER_TYPE_ELEMENT) xmlTextReaderRead(reader);
-     if(parent_prefix)
-     {
-     post("parent %s pdepth %d this depth %d", prefixPtr, pdepth, xmlTextReaderDepth(reader));
-     //return;
-     }
-     
-     //int count = 0;
-     */
-    
-    while(xmlTextReaderDepth(reader) > pdepth )
-    {
-        if(xmlTextReaderNodeType(reader) == XML_READER_TYPE_ELEMENT || xmlTextReaderNodeType(reader) == XML_READER_TYPE_TEXT)
-        {
-            //post("system - checking layer %d", xmlTextReaderDepth(reader));
-            critical_enter(x->lock);
-            processNode(x, reader, prefixPtr);
-            critical_exit(x->lock);
+            osc_message_u_appendBndl_u(msg, n_bndl);
+            osc_bundle_u_addMsg(bndl, msg);
         }
-        xmlTextReaderRead(reader);
+
+    }
+}
+
+void oxml_parse_tree(t_osvg *x, const char *file)
+{
+    if(!file)
+        return;
+    
+    xmlDoc *doc = NULL;
+    xmlNode *root_element = NULL;
+
+    critical_enter(x->lock);
+
+    doc = xmlReadFile(file, NULL, 0);
+    
+    if (doc == NULL)
+    {
+        object_error((t_object *)x, "%s: failed to read file",file);
+        return;
     }
     
-    if(prefix_w_id)
-        free(prefix_w_id);
+    root_element = xmlDocGetRootElement(doc);
+    if (root_element == NULL)
+    {
+        xmlFreeDoc(doc);
+        object_error((t_object *)x, "%s: failed to parse file",file);
+        return;
+    }
     
+    t_osc_bndl_u *bndl = osc_bundle_u_alloc();
+    
+    t_osc_msg_u *msg = osc_message_u_allocWithAddress("/file");
+    osc_message_u_appendString(msg, file);
+    osc_bundle_u_addMsg(bndl, msg);
+    
+    oxml_process_branch(x, root_element, bndl);
+    
+    long len = 0;
+	char *buf = NULL;
+	osc_bundle_u_serialize(bndl, &len, &buf);
+	if(bndl){
+		osc_bundle_u_free(bndl);
+	}
+  
+    omax_util_outletOSC(x->outlet, len, buf);
+
+    if(buf){
+		osc_mem_free(buf);
+	}
+    
+    xmlFreeDoc(doc);
+    xmlCleanupParser();
+    critical_exit(x->lock);
 }
 
 
@@ -1008,51 +980,31 @@ void svglookup_doopen(t_osvg *x, t_symbol *s)
 	short path;
 	char filename[MAX_PATH_CHARS];
 	u_int32_t type;
-	
+    char file[MAX_PATH_CHARS];
+    
 	if (s==ps_nothing) {
 		if (open_dialog(filename,&path,&type,0L,0))
 			return;
+        path_toabsolutesystempath(path, filename, file);
+
 	} else {
 		strcpy(filename,s->s_name);
 		if (locatefile_extended(filename,&path,&type,&type,-1)) {
 			object_error((t_object *)x, "%s: can't find file",filename);
 			return;
 		}
+        strcpy(file,s->s_name);
         post("%s %s", filename, s->s_name);
 	}
     
-    const char *file = s->s_name;
-
-    critical_enter(x->lock);
-    xmlTextReaderPtr reader;
-    int ret;
-    reader = xmlNewTextReaderFilename(file);
+    post("%s, %s", filename, file);
     
-    if(reader == NULL){
-		object_error((t_object *)x, "%s: error opening file",file);
-		return;
-	}
     
-    x->reader = reader;
-	x->f_open = TRUE;
+    x->filewatcher = filewatcher_new((t_object *)x, path, filename);
+    if(x->autowatch && x->filewatcher)
+        filewatcher_start(x->filewatcher);
     
-    ret = xmlTextReaderRead(reader);
-    while (ret == 1)
-    {
-        processNode(x, reader, NULL);
-        ret = xmlTextReaderRead(reader);
-    }
-    
-    xmlTextReaderRead(reader);
-    if (ret != 0) {
-        object_error((t_object *)x, "%s: failed to parse file",file);
-    } else {
-        osvg_bang(x);
-    }
-    
-    xmlFreeTextReader(reader);
-    x->f_open = FALSE;
-    critical_exit(x->lock);
+    oxml_parse_tree(x, file);
 
 }
 
@@ -1062,16 +1014,6 @@ void osvg_open(t_osvg *x, t_symbol *s)
 }
 
 #ifndef OMAX_PD_VERSION
-
-OMAX_DICT_DICTIONARY(t_osvg, x, osvg_fullPacket);
-
-void osvg_clear(t_osvg *x)
-{
-	critical_enter(x->lock);
-	x->buffer_pos = OSC_HEADER_SIZE;
-	memset(x->buffer + OSC_HEADER_SIZE, '\0', x->buffer_len - OSC_HEADER_SIZE);
-	critical_exit(x->lock);
-}
 
 void osvg_doc(t_osvg *x)
 {
@@ -1084,11 +1026,14 @@ void osvg_assist(t_osvg *x, void *b, long io, long num, char *buf){
 #endif
 
 void osvg_free(t_osvg *x){
-	if(x->buffer){
-		free(x->buffer);
-	}
+#ifndef OMAX_PD_VERSION
 	critical_free(x->lock);
     
+    if(x->filewatcher)
+        object_free(x->filewatcher);
+#endif
+    oxml_free_nodes(x->head);
+
     //need to free proxy?
 }
 
@@ -1136,23 +1081,86 @@ int setup_o0x2ecollect(void){
 }
 #else
 
+void osvg_filechanged(t_osvg *x, char *filename, short path)
+{
+    char file[MAX_PATH_CHARS];
+    path_toabsolutesystempath(path, filename, file);
+
+    //note I'm pretty sure this is always in main thread, otherwise better to defer probably
+//    osvg_do_parse(x, file);
+    oxml_parse_tree(x, file);
+
+}
+
+t_max_err osvg_separator_get(t_osvg *x, t_object *attr, long *argc, t_atom **argv)
+{
+    
+    char alloc;
+    atom_alloc(argc, argv, &alloc);
+    if (x->sepattr != NULL)
+        atom_setsym(*argv, x->sepattr);
+    else
+        atom_setsym(*argv, gensym("<none>"));
+    
+    return 0;
+}
+
+
+t_max_err osvg_separator_set(t_osvg *x, t_object *attr, long argc, t_atom *argv)
+{
+    
+    x->sepattr = atom_getsym(argv);
+    post("separators %s", x->sepattr->s_name);
+    return 0;
+}
+
+t_max_err osvg_autowatch_get(t_osvg *x, t_object *attr, long *argc, t_atom **argv)
+{
+    
+    char alloc;
+    atom_alloc(argc, argv, &alloc);
+    atom_setfloat(*argv, x->autowatch);
+    
+    return 0;
+}
+
+
+t_max_err osvg_autowatch_set(t_osvg *x, t_object *attr, long argc, t_atom *argv)
+{
+    long prev = x->autowatch;
+    
+    if(atom_gettype(argv) == A_LONG)
+        x->autowatch = atom_getlong(argv) != 0;
+    
+    if(x->autowatch != prev)
+    {
+        if(x->autowatch && x->filewatcher)
+        {
+            filewatcher_start(x->filewatcher);
+        }
+        else if(x->filewatcher)
+        {
+            filewatcher_stop(x->filewatcher);
+        }
+    
+    }
+    post("autowatch %d", x->autowatch);
+    
+    return 0;
+}
+
 void *osvg_new(t_symbol *msg, short argc, t_atom *argv){
 	t_osvg *x;
 	if((x = (t_osvg *)object_alloc(osvg_class))){
 		x->outlet = outlet_new((t_object *)x, NULL);
-		x->buffer_len = 1024;
-		if(argc){
-			if(atom_gettype(argv) == A_LONG){
-				//x->buffer_len = atom_getlong(argv);
-				object_error((t_object *)x, "o.svg no longer takes an argument to specify its internal buffer size.");
-				object_error((t_object *)x, "The buffer will expand as necessary.");
-			}
-		}
-		x->buffer = (char *)osc_mem_alloc(x->buffer_len * sizeof(char));
-		memset(x->buffer, '\0', x->buffer_len);
-		x->buffer_pos = OSC_HEADER_SIZE;
-		osc_bundle_s_setBundleID(x->buffer);
 		critical_new(&(x->lock));
+        x->autowatch = 0;
+        x->filewatcher = NULL;
+        x->pdepth = 0;
+        x->head = NULL;
+        x->sepattr = NULL;
+        attr_args_process(x, argc, argv);
+        
 	}
     
 	return(x);
@@ -1160,21 +1168,21 @@ void *osvg_new(t_symbol *msg, short argc, t_atom *argv){
 int main(void){
 	t_class *c = class_new("o.svg", (method)osvg_new, (method)osvg_free, sizeof(t_osvg), 0L, A_GIMME, 0);
 	//class_addmethod(c, (method)osvg_fullPacket, "FullPacket", A_LONG, A_LONG, 0);
-	class_addmethod(c, (method)osvg_fullPacket, "FullPacket", A_GIMME, 0);
 	class_addmethod(c, (method)osvg_doc, "doc", 0);
 	class_addmethod(c, (method)osvg_assist, "assist", A_CANT, 0);
-	class_addmethod(c, (method)osvg_anything, "anything", A_GIMME, 0);
-	class_addmethod(c, (method)osvg_bang, "bang", 0);
-    
+//	class_addmethod(c, (method)osvg_anything, "anything", A_GIMME, 0);
     class_addmethod(c, (method)osvg_open, "open", A_DEFSYM, 0);
-
-	// remove this if statement when we stop supporting Max 5
-	if(omax_dict_resolveDictStubs()){
-		class_addmethod(c, (method)omax_dict_dictionary, "dictionary", A_GIMME, 0);
-	}
+    class_addmethod(c, (method)osvg_filechanged, "filechanged", A_CANT, 0);
 
 	class_addmethod(c, (method)odot_version, "version", 0);
 
+    CLASS_ATTR_ATOM_LONG(c, "autowatch", 0L, t_osvg, autowatch);
+    CLASS_ATTR_ACCESSORS(c, "autowatch", osvg_autowatch_get, osvg_autowatch_set)
+    
+    CLASS_ATTR_SYM(c, "separator", 0L, t_osvg, sepattr);
+    CLASS_ATTR_ACCESSORS(c, "separator", osvg_separator_get, osvg_separator_set);
+    
+    
 	class_register(CLASS_BOX, c);
 	osvg_class = c;
 
