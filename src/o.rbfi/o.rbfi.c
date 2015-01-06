@@ -791,7 +791,7 @@ static void rbfi_outputWeights(   t_rbfi *x,
 	int i = 0;
 	double sum = 0;
     double weights[x->nweights];
-    
+    double mult[x->nweights], exponent[x->nweights];
 	t_osc_bndl_it_u *bit = osc_bndl_it_u_get(x->bndl);
     
 	while( osc_bndl_it_u_hasNext(bit) )
@@ -847,10 +847,10 @@ static void rbfi_outputWeights(   t_rbfi *x,
 				}
                 else
                 {
-					double mult = rbfi_computeWeightFromDistances(ir, or);
-					double exponent = rbfi_computeExponentFromDistances(ir, or);
+					mult[i] = rbfi_computeWeightFromDistances(ir, or);
+					exponent[i] = rbfi_computeExponentFromDistances(ir, or);
 					double d = sqrt(pow(xxx - xx, 2.) + pow(yyy - yy, 2.));
-					weights[i] = pow(1. / d, exponent) * mult;
+					weights[i] = pow(1. / d, exponent[i]) * mult[i];
 					if(isinf(weights[i])){
 						weights[i] = 1.;
 						critical_exit(x->lock);
@@ -865,6 +865,12 @@ static void rbfi_outputWeights(   t_rbfi *x,
     
     t_osc_bndl_u *outb = osc_bundle_u_alloc();
     char buf[512];
+    t_osc_msg_u *xy = osc_message_u_allocWithAddress("/xy");
+    osc_message_u_appendDouble(xy, xx);
+    osc_message_u_appendDouble(xy, yy);
+    osc_bundle_u_addMsg(outb, xy);
+
+    
     
 	for(i = 0; i < x->nweights; i++)
     {
@@ -873,6 +879,15 @@ static void rbfi_outputWeights(   t_rbfi *x,
         sprintf(buf, "/p/%i/weight", i);
         t_osc_msg_u *ww = osc_message_u_allocWithFloat(buf, weights[i]);
         osc_bundle_u_addMsg(outb, ww);
+        
+        sprintf(buf, "/p/%i/mult", i);
+        t_osc_msg_u *m = osc_message_u_allocWithFloat(buf, mult[i]);
+        osc_bundle_u_addMsg(outb, m);
+        
+        sprintf(buf, "/p/%i/exp", i);
+        m = osc_message_u_allocWithFloat(buf, exponent[i]);
+        osc_bundle_u_addMsg(outb, m);
+
         
 	}
     critical_exit(x->lock);
