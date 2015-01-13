@@ -53,10 +53,10 @@
 #define LEFTOUTLET x->outlet
 #endif
 
-//#ifndef WIN_VERSION
-//#include <mach/mach.h>
-//#include <mach/mach_time.h>
-//#endif
+#ifndef WIN_VERSION
+#include <mach/mach.h>
+#include <mach/mach_time.h>
+#endif
 
 #ifdef OMAX_PD_VERSION
 #include "m_pd.h"

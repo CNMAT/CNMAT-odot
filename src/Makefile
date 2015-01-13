@@ -5,6 +5,8 @@ UNAME = $(shell uname)
 
 ifeq ($(UNAME), Darwin)
 MAKEFILE = Makefile.mac.mk
+else ifeq ($(UNAME), Linux)
+MAKEFILE = Makefile.linux.mk
 else
 MAKEFILE = Makefile.win.mk
 endif

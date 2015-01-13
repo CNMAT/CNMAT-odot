@@ -1,0 +1,56 @@
+current: all
+
+PD_DEFINES = -DPD -DUNIX
+
+#################################
+# path to private Pd-headers 
+PDSOURCE ?= /home/rama/pd-src/src
+
+# path to ODOTlib.h
+ODOTLIB_INCLUDE = -I/home/rama/CNMAT-odot/src/include -I../../../libo -I../../../libomax
+
+#define to true if private Pd-header g_canvas.h is in out search-path
+PD_DEFINES += -DHAVE_G_CANVAS_H -DOMAX_PD_VERSION
+#################################
+
+
+.SUFFIXES: .pd_linux
+
+EXT = pd_linux
+
+STRIP = strip
+
+PD_LDFLAGS = --export-dynamic -shared $(LD_FLAGS)
+PD_LIB = -lm -lc $(LIB)
+
+#select either the DBG and OPT compiler flags below:
+
+DBG_CFLAGS=-W -Wno-parentheses -Wno-switch -Wno-unused
+CFLAGS=-O6 -funroll-loops -fomit-frame-pointer -fno-strict-aliasing -std=c99
+PD_CFLAGS = $(PD_DEFINES) -fPIC -fno-stack-protector $(DBG_CFLAGS) $(CFLAGS)
+
+PD_INCLUDES = -I. $(ODOTLIB_INCLUDE) -I$(PDSOURCE) -I../../../../pd/src
+
+# the sources
+#SRC = $(sort $(filter %.c, $(wildcard *.c)))
+	
+OBJ = $(SRC:.c=.o) 
+
+#
+#  ------------------ targets ------------------------------------
+#
+
+clean:
+	-rm -f ../../lib/$(TARGET).$(EXT) $(TARGET).$(EXT)
+	-rm -f *.o
+
+all: $(OBJ)
+	@echo :: $(OBJ)
+	$(LD) $(PD_LDFLAGS) -o $(TARGET).$(EXT) *.o $(PD_LIB)
+	$(STRIP) --strip-unneeded $(TARGET).$(EXT)
+	-cp $(TARGET).$(EXT) ../../lib/
+
+$(OBJ) : %.o : %.c
+	touch $*.c
+	$(CC) $(PD_CFLAGS) $(PD_INCLUDES) -c -o $*.o $*.c
+
