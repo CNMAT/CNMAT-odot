@@ -7,3 +7,5 @@ do
 	cp ../$f/*.c . 
 	cp ../$f/*.h . 
 done
+
+cp ../include/odot.c .

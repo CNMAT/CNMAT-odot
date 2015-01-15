@@ -47,7 +47,7 @@
 
 #define NAME OMAX_DOC_NAME
 
-#ifndef WIN_VERSION
+#if !defined(WIN_VERSION) && !defined(LINUX_VERSION)
 #include <mach/mach.h>
 #include <mach/mach_time.h>
 #endif

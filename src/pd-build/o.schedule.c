@@ -46,7 +46,7 @@
 #define OMAX_DOC_OUTLETS_DESC (char *[]){"OSC packet", "OSC packet which has missed the scheduling deadline", "OSC packet which has an immediate timetag", "OSC packet output if the queue is full"}
 #define OMAX_DOC_SEEALSO (char *[]){"o.timetag"}
 
-#ifndef WIN_VERSION
+#if !defined(WIN_VERSION) && !defined(LINUX_VERSION)
 #include <CoreServices/CoreServices.h>
 #endif
 #ifdef OMAX_PD_VERSION
