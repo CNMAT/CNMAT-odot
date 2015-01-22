@@ -43,6 +43,7 @@ VERSION 1.1: renamed o.pack (from o.build)
 #endif
 
 #include "odot_version.h"
+
 #ifdef OMAX_PD_VERSION
 #include "m_pd.h"
 #include "omax_pd_proxy.h"

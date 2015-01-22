@@ -58,6 +58,11 @@
 //#include <mach/mach_time.h>
 //#endif
 
+//#define DEBUG_PD
+#ifdef DEBUG_PD
+#define OMAX_PD_VERSION
+#endif
+
 #ifdef OMAX_PD_VERSION
 #include "m_pd.h"
 #else
@@ -85,7 +90,7 @@
 
 
 //#define __OSC_PROFILE__
-#include "osc_profile.h"
+//#include "osc_profile.h"
 
 #include "o.h"
 
@@ -516,13 +521,15 @@ void *oexpr_new(t_symbol *msg, short argc, t_atom *argv){
 				}
 			}
 			if(1){//if(!haspound){
-				OSC_PROFILE_TIMER_START(foo);
+#ifdef __OSC_PROFILE__
+                OSC_PROFILE_TIMER_START(foo);
+#endif
 				t_osc_err ret = osc_expr_parser_parseExpr(buf, &f);
-				OSC_PROFILE_TIMER_STOP(foo);
+#ifdef __OSC_PROFILE__
+                OSC_PROFILE_TIMER_STOP(foo);
 				OSC_PROFILE_TIMER_PRINTF(foo);
 				OSC_PROFILE_TIMER_SNPRINTF(foo, buff);
  
-#ifdef __OSC_PROFILE__
 				post("%s\n", buff);
 #endif
 				if(!f || ret){

@@ -81,7 +81,7 @@ void odot_setup(void)
  setup_o0x2eprint();
  setup_o0x2eprintbytes();
  setup_o0x2eroute();
- setup_o0x2eschedule();
+ //setup_o0x2eschedule();
  setup_o0x2eselect();
  setup_o0x2eslip0x2edecode();
  setup_o0x2eslip0x2eencode();

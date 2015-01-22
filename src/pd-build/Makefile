@@ -37,7 +37,7 @@ UNITTESTS =
 #
 #------------------------------------------------------------------------------#
 PD_SOURCE = ../../../pure-data/src
-ALL_CFLAGS = -I"$(PD_INCLUDE)" -I. -I../../../libo -I../../../libomax -I../include -std=c99 -fPIC
+ALL_CFLAGS = -I"$(PD_INCLUDE)" -I. -I../../../libo -I../../../libomax -I../include -std=c99 -Wall -W -fno-strict-aliasing -g -DLINUX_VERSION -DOMAX_PD_VERSION
 #ALL_CFLAGS = -I"$(PD_INCLUDE)" -I. -I../max2pd -I../../libuv/include -I../../libuv/src
 ALL_LDFLAGS = 
 SHARED_LDFLAGS = 
@@ -51,7 +51,7 @@ ALL_LIBS = -L../../../libo -L../../../libomax -lo -lopd
 #------------------------------------------------------------------------------#
 
 # these can be set from outside without (usually) breaking the build
-CFLAGS = -Wall -W -g -DLINUX_VERSION -DOMAX_PD_VERSION
+CFLAGS =
 LDFLAGS =
 LIBS = 
 
@@ -176,7 +176,7 @@ ifeq ($(UNAME),Linux)
   SHARED_EXTENSION = so
   OS = linux
   PD_PATH = /usr
-  OPT_CFLAGS = -O6 -funroll-loops -fomit-frame-pointer
+  OPT_CFLAGS = -O0 -funroll-loops -fomit-frame-pointer
   ALL_CFLAGS += -fPIC
   ALL_LDFLAGS += -rdynamic -shared -fPIC -Wl,-rpath,"\$$ORIGIN",--enable-new-dtags
   SHARED_LDFLAGS += -Wl,-soname,$(SHARED_LIB) -shared
@@ -192,7 +192,7 @@ ifeq ($(UNAME),GNU)
   SHARED_EXTENSION = so
   OS = linux
   PD_PATH = /usr
-  OPT_CFLAGS = -O6 -funroll-loops -fomit-frame-pointer
+  OPT_CFLAGS = -O0 -funroll-loops -fomit-frame-pointer
   ALL_CFLAGS += -fPIC
   ALL_LDFLAGS += -rdynamic -shared -fPIC -Wl,-rpath,"\$$ORIGIN",--enable-new-dtags
   SHARED_LDFLAGS += -shared -Wl,-soname,$(SHARED_LIB)
