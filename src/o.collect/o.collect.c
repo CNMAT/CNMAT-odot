@@ -138,16 +138,14 @@ void ocoll_anything(t_ocoll *x, t_symbol *msg, int argc, t_atom *argv)
 		return;
 	}
 	osc_bundle_u_addMsg(bndl_u, msg_u);
-	long len = 0;
-	char *buf = NULL;
-	osc_bundle_u_serialize(bndl_u, &len, &buf);
+	t_osc_bndl_s *bs = osc_bundle_u_serialize(bndl_u);
 	if(bndl_u){
 		osc_bundle_u_free(bndl_u);
 	}
     
-	ocoll_fullPacket_impl(x, len, buf);
-	if(buf){
-		osc_mem_free(buf);
+	ocoll_fullPacket_impl(x, osc_bundle_s_getLen(bs), osc_bundle_s_getPtr(bs));
+	if(bs){
+		osc_bundle_s_deepFree(bs);
 	}
 
 }

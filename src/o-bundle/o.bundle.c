@@ -93,11 +93,9 @@ void obundle_validate(t_obundle *x, long len, char *ptr)
 		osc_message_u_appendString(merr, errstr);
 		osc_bundle_u_addMsg(b, merr);
         
-		long l = 0;
-		char *buf = NULL;
-		osc_bundle_u_serialize(b, &l, &buf);
-		if(buf){
-			omax_util_outletOSC(x->outletErr, l, buf);
+		t_osc_bndl_s *bs = osc_bundle_u_serialize(b);
+		if(bs){
+			omax_util_outletOSC(x->outletErr, osc_bundle_s_getLen(bs), osc_bundle_s_getPtr(bs));
 			omax_util_outletOSC(x->outletInval, len, ptr);
 			osc_mem_free(buf);
 		}
@@ -113,11 +111,9 @@ void obundle_validate(t_obundle *x, long len, char *ptr)
 		osc_message_u_appendString(merr, errstr);
 		osc_bundle_u_addMsg(b, merr);
         
-		long l = 0;
-		char *buf = NULL;
-		osc_bundle_u_serialize(b, &l, &buf);
-		if(buf){
-			omax_util_outletOSC(x->outletErr, l, buf);
+		t_osc_bndl_s *bs = osc_bundle_u_serialize(b);
+		if(bs){
+			omax_util_outletOSC(x->outletErr, osc_bundle_s_getLen(bs), osc_bundle_s_getPtr(bs));
 			omax_util_outletOSC(x->outletInval, len, ptr);
 			osc_mem_free(buf);
 		}
@@ -142,16 +138,14 @@ void obundle_validate(t_obundle *x, long len, char *ptr)
 			osc_message_u_setAddress(merr, "/error/str");
 			osc_message_u_appendString(merr, errstr);
 			osc_bundle_u_addMsg(b, merr);
-            
-			long l = 0;
-			char *buf = NULL;
-			osc_bundle_u_serialize(b, &l, &buf);
-			if(buf){
-				omax_util_outletOSC(x->outletErr, l, buf);
+
+			t_osc_bndl_s *bs = osc_bundle_u_serialize(b);
+			if(bs){
+				omax_util_outletOSC(x->outletErr, osc_bundle_s_getLen(bs), osc_bundle_s_getPtr(bs));
 				omax_util_outletOSC(x->outletInval, len, ptr);
 				osc_mem_free(buf);
 			}
-			return;
+			return;            
 		}
 	}
 	uint64_t state = OSC_SERIAL_INIT;
@@ -177,16 +171,14 @@ void obundle_validate(t_obundle *x, long len, char *ptr)
 				osc_message_u_appendInt32(mbyteval, ptr[i]);
 				osc_bundle_u_addMsg(b, mbyteval);
 			}
-            
-			long l = 0;
-			char *buf = NULL;
-			osc_bundle_u_serialize(b, &l, &buf);
-			if(buf){
-				omax_util_outletOSC(x->outletErr, l, buf);
+
+			t_osc_bndl_s *bs = osc_bundle_u_serialize(b);
+			if(bs){
+				omax_util_outletOSC(x->outletErr, osc_bundle_s_getLen(bs), osc_bundle_s_getPtr(bs));
 				omax_util_outletOSC(x->outletInval, len, ptr);
 				osc_mem_free(buf);
 			}
-			return;
+			return;            
 		}
 	}
 	omax_util_outletOSC(x->outletVal, len, ptr);

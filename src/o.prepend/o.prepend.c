@@ -241,14 +241,12 @@ void oppnd_anything(t_oppnd *x, t_symbol *msg, short argc, t_atom *argv)
 		return;
 	}
 	osc_bundle_u_addMsg(bndl_u, msg_u);
-	long len = 0;
-	char *oscbuf = NULL;
-	osc_bundle_u_serialize(bndl_u, &len, &oscbuf);
+	t_osc_bndl_s *bs = osc_bundle_u_serialize(bndl_u);
 	if(bndl_u){
 		osc_bundle_u_free(bndl_u);
 	}
-	omax_util_outletOSC(x->outlet, len, oscbuf);
-    osc_mem_free(oscbuf);
+	omax_util_outletOSC(x->outlet, osc_bundle_s_getLen(bs), osc_bundle_s_getPtr(bs));
+	osc_bundle_s_deepFree(bs);
 }
 
 

@@ -655,12 +655,10 @@ void otable_outputinfo(t_otable *x)
 	osc_message_u_appendUInt64(msgmem, bytecount);
 	osc_bundle_u_addMsg(b, msgmem);
 
-	long len = 0;
-	char *buf = NULL;
-	osc_bundle_u_serialize(b, &len, &buf);
-	if(buf){
-		omax_util_outletOSC(x->outlet, len, buf);
-		osc_mem_free(buf);
+	t_osc_bndl_s *bs = osc_bundle_u_serialize(b);
+	if(bs){
+		omax_util_outletOSC(x->outlet, osc_bundle_s_getLen(bs), osc_bundle_s_getPtr(bs));
+		osc_bundle_s_deepFree(bs);
 	}
 	osc_bundle_u_free(b);
 }

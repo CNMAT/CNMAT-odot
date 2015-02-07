@@ -425,10 +425,9 @@ void odisplay_gettext(t_odisplay *x)
 		object_error((t_object *)x, "error parsing bundle\n");
 		return;
 	}
-	long bndl_s_len = 0;
-	char *bndl_s_ptr = NULL;
-	osc_bundle_u_serialize(bndl_u, &bndl_s_len, &bndl_s_ptr);
-	t_osc_bndl_s *bndl_s = osc_bundle_s_alloc(bndl_s_len, bndl_s_ptr);
+	t_osc_bndl_s *bs = osc_bundle_u_serialize(bndl_u);
+	t_osc_bndl_s *bndl_s = NULL;
+	osc_bundle_s_deepCopy(&bndl_s, bs);
 	odisplay_newBundle(x, bndl_u, bndl_s);
 #ifdef OMAX_PD_VERSION
     x->have_new_data = 1;
@@ -498,10 +497,7 @@ void odisplay_anything(t_odisplay *x, t_symbol *msg, short argc, t_atom *argv)
     }
     t_osc_bndl_u *b = osc_bundle_u_alloc();
     osc_bundle_u_addMsg(b, m);
-    long len = 0;
-    char *ptr = NULL;
-    osc_bundle_u_serialize(b, &len, &ptr);
-    t_osc_bndl_s *bs = osc_bundle_s_alloc(len, ptr);
+    t_osc_bndl_s *bs = osc_bundle_u_serialize(b);
     odisplay_newBundle(x, b, bs);
 
 #ifdef OMAX_PD_VERSION

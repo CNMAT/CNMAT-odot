@@ -387,12 +387,10 @@ void oexpr_doc_func(t_oexpr *x, t_symbol *msg, int argc, t_atom *argv)
 		return;
 	}
 	if(bndl){
-		char *buf = NULL;
-		long len = 0;
-		osc_bundle_u_serialize(bndl, &len, &buf);
-		if(buf){
-			omax_util_outletOSC(LEFTOUTLET, len, buf);
-			osc_mem_free(buf);
+		t_osc_bndl_s *bs = osc_bundle_u_serialize(bndl);
+		if(bs){
+			omax_util_outletOSC(LEFTOUTLET, osc_bundle_s_getLen(bs), osc_bundle_s_getPtr(bs));
+			osc_bundle_s_deepFree(bs);
 		}
 		osc_bundle_u_free(bndl);
 	}

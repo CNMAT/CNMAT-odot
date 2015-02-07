@@ -571,10 +571,7 @@ void omessage_gettext(t_omessage *x)
 		object_error((t_object *)x, "error parsing bundle\n");
 		return;
 	}
-	long bndl_s_len = 0;
-	char *bndl_s_ptr = NULL;
-	osc_bundle_u_serialize(bndl_u, &bndl_s_len, &bndl_s_ptr);
-	t_osc_bndl_s *bndl_s = osc_bundle_s_alloc(bndl_s_len, bndl_s_ptr);
+	t_osc_bndl_s *bndl_s = osc_bundle_u_serialize(bndl_u);
 	omessage_newBundle(x, bndl_u, bndl_s);
 #ifdef OMAX_PD_VERSION
 	x->have_new_data = 1;
@@ -627,12 +624,9 @@ void omessage_list(t_omessage *x, t_symbol *list_sym, short argc, t_atom *argv)
 	if(x->bndl_has_been_checked_for_subs && !x->bndl_has_subs){
 		if(!x->bndl_s){
 			if(x->bndl_u){
-				long len = 0;
-				char *ptr = NULL;
 				critical_enter(x->lock);
-				osc_bundle_u_serialize(x->bndl_u, &len, &ptr);
+				x->bndl_s = osc_bundle_u_serialize(x->bndl_u);
 				critical_exit(x->lock);
-				x->bndl_s = osc_bundle_s_alloc(len, ptr);
 			}else if(x->text){
 				// pretty sure this can't happen...
 				post("%d\n", __LINE__);
@@ -678,17 +672,17 @@ void omessage_list(t_omessage *x, t_symbol *list_sym, short argc, t_atom *argv)
 		}
 		x->bndl_has_been_checked_for_subs = 1;
 		critical_exit(x->lock);
-		long len = 0;
-		char *copy_s = NULL;
-		e = osc_bundle_u_serialize(copy, &len, &copy_s);
+		t_osc_bndl_s *bs = osc_bundle_u_serialize(copy);
+		/*
 		if(e){
 			object_error((t_object *)x, "%s\n", osc_error_string(e));
 			osc_bundle_u_free(copy);
 			return;
 		}
-		if(copy_s){
-			omax_util_outletOSC(x->outlet, len, copy_s);
-			osc_mem_free(copy_s);
+		*/
+		if(bs){
+			omax_util_outletOSC(x->outlet, osc_bundle_s_getLen(bs), osc_bundle_s_getPtr(bs));
+			osc_bundle_s_deepFree(bs);
 		}
 		osc_bundle_u_free(copy);
 	}
@@ -721,10 +715,7 @@ void omessage_anything(t_omessage *x, t_symbol *msg, short argc, t_atom *argv)
 			}
 			t_osc_bndl_u *b = osc_bundle_u_alloc();
 			osc_bundle_u_addMsg(b, m);
-			long len = 0;
-			char *ptr = NULL;
-			osc_bundle_u_serialize(b, &len, &ptr);
-			t_osc_bndl_s *bs = osc_bundle_s_alloc(len, ptr);
+			t_osc_bndl_s *bs = osc_bundle_u_serialize(b);
 			omessage_newBundle(x, b, bs);
 		}
 		//omessage_processAtoms(x, ac, av);

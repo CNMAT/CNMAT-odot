@@ -113,14 +113,12 @@ void opack_fullPacket(t_opack *x, t_symbol *msg, int argc, t_atom *argv)
 
 void opack_outputBundle(t_opack *x)
 {
-	char *bndl = NULL;
-	long len = 0;
 	critical_enter(x->lock);
-	osc_bundle_u_serialize(x->bndl, &len, &bndl);
+	t_osc_bndl_s *bs = osc_bundle_u_serialize(x->bndl);
 	critical_exit(x->lock);
-	omax_util_outletOSC(x->outlet, len, bndl);
-	if(bndl){
-		osc_mem_free(bndl);
+	omax_util_outletOSC(x->outlet, osc_bundle_s_getLen(bs), osc_bundle_s_getPtr(bs));
+	if(bs){
+		osc_bundle_s_deepFree(bs);
 	}
 }
 

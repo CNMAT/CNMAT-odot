@@ -107,12 +107,10 @@ void oedge_callback(t_oedge *x, t_symbol *msg, int argc, t_atom *argv)
 	}
 	x->lastx = lastx;
 	if(shouldoutput){
-		long len = 0;
-		char *buf = NULL;
-		osc_bundle_u_serialize(x->bundle, &len, &buf);
-		if(buf && len){
-			omax_util_outletOSC(x->outlet, len, buf);
-			osc_mem_free(buf);
+		t_osc_bndl_s *bs = osc_bundle_u_serialize(x->bundle);
+		if(bs){
+			omax_util_outletOSC(x->outlet, osc_bundle_s_getLen(bs), osc_bundle_s_getPtr(bs));
+			osc_bundle_s_deepFree(bs);
 		}
 	}
 	osc_message_u_clearArgs(x->time_onset);

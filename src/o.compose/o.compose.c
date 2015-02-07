@@ -560,10 +560,9 @@ void ocompose_gettext(t_ocompose *x)
         x->frame_color.alpha = x->default_color.alpha;
 #endif
     }
-    long bndl_s_len = 0;
-    char *bndl_s_ptr = NULL;
-    osc_bundle_u_serialize(bndl_u, &bndl_s_len, &bndl_s_ptr);
-    t_osc_bndl_s *bndl_s = osc_bundle_s_alloc(bndl_s_len, bndl_s_ptr);
+    t_osc_bndl_s *bs = osc_bundle_u_serialize(bndl_u);
+    t_osc_bndl_s *bndl_s = NULL;
+    osc_bundle_s_deepCopy(&bndl_s, bs);
     ocompose_newBundle(x, bndl_u, bndl_s);
 #ifdef OMAX_PD_VERSION
     x->have_new_data = 1;
@@ -627,10 +626,7 @@ void ocompose_anything(t_ocompose *x, t_symbol *msg, short argc, t_atom *argv)
             }
             t_osc_bndl_u *b = osc_bundle_u_alloc();
             osc_bundle_u_addMsg(b, m);
-            long len = 0;
-            char *ptr = NULL;
-            osc_bundle_u_serialize(b, &len, &ptr);
-            t_osc_bndl_s *bs = osc_bundle_s_alloc(len, ptr);
+            t_osc_bndl_s *bs = osc_bundle_u_serialize(b);
             ocompose_newBundle(x, b, bs);
         }
         break;

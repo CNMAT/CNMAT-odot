@@ -69,6 +69,11 @@
 			<key>orderHint</key>
 			<integer>7</integer>
 		</dict>
+		<key>o.bundle.pd.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>94</integer>
+		</dict>
 		<key>o.change.pd.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -173,6 +178,11 @@
 		<dict>
 			<key>orderHint</key>
 			<integer>89</integer>
+		</dict>
+		<key>o.expr.codebox.set.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>95</integer>
 		</dict>
 		<key>o.expr.codebox.xcscheme</key>
 		<dict>
@@ -492,6 +502,11 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>1191799E19C25F4700F76066</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>119FA028191D5814001C3325</key>
 		<dict>
 			<key>primary</key>
@@ -618,6 +633,11 @@
 			<true/>
 		</dict>
 		<key>119FA133191D6052001C3325</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>11A20DA919F0B428002A98B5</key>
 		<dict>
 			<key>primary</key>
 			<true/>

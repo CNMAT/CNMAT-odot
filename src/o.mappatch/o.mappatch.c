@@ -158,14 +158,12 @@ void omap_fullPacket(t_omap *x, t_symbol *msg, int argc, t_atom *argv)
 	osc_bndl_it_s_destroy(it);
 
 	// I don't think we need a lock here since we're still busy
-	char *buffer = NULL;
-	long buflen = 0;
 	critical_enter(x->lock);
-	osc_bundle_u_serialize(x->bndl, &buflen, &buffer);
+	t_osc_bndl_s *bs = osc_bundle_u_serialize(x->bndl);
 	critical_exit(x->lock);
-	omax_util_outletOSC(x->outlets[0], buflen, buffer);
-	if(buffer){
-		osc_mem_free(buffer);
+	if(bs){
+		omax_util_outletOSC(x->outlets[0], osc_bundle_s_getLen(bs), osc_bundle_s_getPtr(bs));
+		osc_bundle_s_deepFree(bs);
 	}
 	critical_enter(x->lock);
 	if(x->bndl){

@@ -149,20 +149,20 @@ void odowncast_fullPacket(t_odowncast *x, t_symbol *msg, int argc, t_atom *argv)
 		osc_msg_it_u_destroy(mit);
 	}
 	osc_bndl_it_u_destroy(bit);
-	long l = 0;
-	char *p = NULL;
-	osc_bundle_u_serialize(b, &l, &p);
-	if(l && p){
+	t_osc_bndl_s *bs1 = osc_bundle_u_serialize(b);
+	if(bs1){
+		long l = osc_bundle_s_getLen(bs1);
+		char *p = osc_bundle_s_getPtr(bs1);
 		memcpy(p + OSC_ID_SIZE, &timetag, sizeof(t_osc_timetag));
 		for(int i = 0; i < nnestedbundles; i++){
-			long ll = 0;
-			char *pp = NULL;
-			osc_bundle_u_serialize(nestedbundles[i], &ll, &pp);
-			if(pp){
+			t_osc_bndl_s *bs2 = osc_bundle_u_serialize(nestedbundles[i]);
+			if(bs2){
+				long ll = osc_bundle_s_getLen(bs2);
+				char *pp = osc_bundle_s_getPtr(bs2);
 				p = osc_mem_resize(p, l + ll);
 				memcpy(p + l, pp, ll);
 				l += ll;
-				osc_mem_free(pp);
+				osc_bundle_s_deepFree(bs2);
 			}
 		}
 		//if(x->bundle){
@@ -179,7 +179,7 @@ void odowncast_fullPacket(t_odowncast *x, t_symbol *msg, int argc, t_atom *argv)
 			osc_bndl_it_s_destroy(bit);
 		}
 			*/
-		osc_mem_free(p);
+		osc_bundle_s_deepFree(bs1);
 	}
 	osc_bundle_u_free(b);
 }

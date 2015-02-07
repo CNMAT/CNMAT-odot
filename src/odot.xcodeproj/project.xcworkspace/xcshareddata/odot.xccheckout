@@ -10,37 +10,53 @@
 	<string>odot</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>33C825AD-5C20-4452-8E3E-B1F64047E2B2</key>
+		<key>43DDD4A1012A81E5C2F5DA96FCA0DABF5263B8FC</key>
+		<string>https://github.com/Cycling74/max6-sdk.git</string>
+		<key>73CD3912FF7E5D839C8BDA43B346354BE088DDE8</key>
 		<string>https://github.com/CNMAT/libo.git</string>
-		<key>5DC92571-CC31-4D3D-9A69-656ECF80CE62</key>
+		<key>B26B9CAFBF9E1C2E2CA45220D163A2372E2095E0</key>
+		<string>https://github.com/CNMAT/CNMAT.git</string>
+		<key>BFE38AA7F3B3EE5D839CDF960E9B1411A92C41B2</key>
 		<string>https://github.com/CNMAT/libomax.git</string>
-		<key>CA1C694D-FBFC-49EB-95BF-C10CA7DC131D</key>
+		<key>F288EB3F860EB37FE32803469C923EC7E08714D7</key>
 		<string>https://github.com/CNMAT/CNMAT-odot.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>odot.xcodeproj/project.xcworkspace</string>
+	<string>src/odot.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>33C825AD-5C20-4452-8E3E-B1F64047E2B2</key>
-		<string>../../../libo</string>
-		<key>5DC92571-CC31-4D3D-9A69-656ECF80CE62</key>
-		<string>../../../libomax</string>
-		<key>CA1C694D-FBFC-49EB-95BF-C10CA7DC131D</key>
-		<string>../..</string>
+		<key>43DDD4A1012A81E5C2F5DA96FCA0DABF5263B8FC</key>
+		<string>../../../../max6-sdk</string>
+		<key>73CD3912FF7E5D839C8BDA43B346354BE088DDE8</key>
+		<string>../../../../libo</string>
+		<key>B26B9CAFBF9E1C2E2CA45220D163A2372E2095E0</key>
+		<string>../../../..</string>
+		<key>BFE38AA7F3B3EE5D839CDF960E9B1411A92C41B2</key>
+		<string>../../../../libomax</string>
+		<key>F288EB3F860EB37FE32803469C923EC7E08714D7</key>
+		<string>../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/CNMAT/CNMAT-odot.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>CA1C694D-FBFC-49EB-95BF-C10CA7DC131D</string>
+	<string>F288EB3F860EB37FE32803469C923EC7E08714D7</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>CA1C694D-FBFC-49EB-95BF-C10CA7DC131D</string>
+			<string>B26B9CAFBF9E1C2E2CA45220D163A2372E2095E0</string>
+			<key>IDESourceControlWCCName</key>
+			<string></string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>F288EB3F860EB37FE32803469C923EC7E08714D7</string>
 			<key>IDESourceControlWCCName</key>
 			<string>CNMAT-odot</string>
 		</dict>
@@ -48,7 +64,7 @@
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>33C825AD-5C20-4452-8E3E-B1F64047E2B2</string>
+			<string>73CD3912FF7E5D839C8BDA43B346354BE088DDE8</string>
 			<key>IDESourceControlWCCName</key>
 			<string>libo</string>
 		</dict>
@@ -56,9 +72,17 @@
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>5DC92571-CC31-4D3D-9A69-656ECF80CE62</string>
+			<string>BFE38AA7F3B3EE5D839CDF960E9B1411A92C41B2</string>
 			<key>IDESourceControlWCCName</key>
 			<string>libomax</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>43DDD4A1012A81E5C2F5DA96FCA0DABF5263B8FC</string>
+			<key>IDESourceControlWCCName</key>
+			<string>max6-sdk</string>
 		</dict>
 	</array>
 </dict>

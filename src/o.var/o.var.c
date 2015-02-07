@@ -199,15 +199,14 @@ void ovar_doAnything(t_ovar *x, t_symbol *msg, int argc, t_atom *argv, long inle
 		return;
 	}
 	osc_bundle_u_addMsg(bndl_u, msg_u);
-	long len = 0;
-	char *buf = NULL;
-	osc_bundle_u_serialize(bndl_u, &len, &buf);
+
+	t_osc_bndl_s *bs = osc_bundle_u_serialize(bndl_u);
 	if(bndl_u){
 		osc_bundle_u_free(bndl_u);
 	}
-	if(buf){
-		ovar_doFullPacket(x, len, buf, inlet);
-		osc_mem_free(buf);
+	if(bs){
+		ovar_doFullPacket(x, osc_bundle_s_getLen(bs), osc_bundle_s_getPtr(bs), inlet);
+		osc_bundle_s_deepFree(bs);
 	}
 }
 
@@ -401,7 +400,12 @@ void *ovar_new(t_symbol *msg, short argc, t_atom *argv)
 				osc_bundle_u_addMsg(bndl_u, msg_u);
 				x->buflen = 0;
 				x->bndl = NULL;
-				osc_bundle_u_serialize(bndl_u, &(x->buflen), &(x->bndl));
+				t_osc_bndl_s *bs = osc_bundle_u_serialize(bndl_u);
+				if(bs){
+					x->buflen = osc_bundle_s_getLen(bs);
+					x->bndl = osc_bundle_s_getPtr(bs);
+					osc_bundle_s_free(bs);
+				}
 				x->len = x->buflen;
 				if(bndl_u){
 					osc_bundle_u_free(bndl_u);

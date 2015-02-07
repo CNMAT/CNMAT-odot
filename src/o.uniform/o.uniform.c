@@ -140,12 +140,10 @@ void ouniform_doFullPacket(t_ouniform *x,
     
     ++x->state;
     
-    long copylen = 0;
-    char *copyptr = NULL;
-    osc_bundle_u_serialize(copy, &copylen, &copyptr);
-    if(copyptr){
-        omax_util_outletOSC(x->outlet, copylen, copyptr);
-        osc_mem_free(copyptr);
+    t_osc_bndl_s *bs = osc_bundle_u_serialize(copy);
+    if(bs){
+	    omax_util_outletOSC(x->outlet, osc_bundle_s_getLen(bs), osc_bundle_s_getPtr(bs));
+	    osc_bundle_s_deepFree(bs);
     }
     osc_bundle_u_free(copy);
 }
@@ -189,12 +187,10 @@ void ouniform_anything(t_ouniform *x, t_symbol *selector, short argc, t_atom *ar
 	}
 	t_osc_bndl_u *bndl = osc_bundle_u_alloc();
 	osc_bundle_u_addMsg(bndl, msg);
-	long len = 0;
-	char *buf = NULL;
-	osc_bundle_u_serialize(bndl, &len, &buf);
-	if(buf){
-		ouniform_doFullPacket(x, len, buf);
-		osc_mem_free(buf);
+	t_osc_bndl_s *bs = osc_bundle_u_serialize(bndl);
+	if(bs){
+		ouniform_doFullPacket(x, osc_bundle_s_getLen(bs), osc_bundle_s_getPtr(bs));
+		osc_bundle_s_deepFree(bs);
 	}
 	osc_bundle_u_free(bndl);
 }

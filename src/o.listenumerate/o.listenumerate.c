@@ -147,18 +147,16 @@ void olistenumerate_doFullPacket(t_olistenumerate *x,
                         osc_bundle_u_addMsg(unserialized_result, address);
                         osc_bundle_u_addMsg(unserialized_result, index);
                         osc_bundle_u_addMsg(unserialized_result, length);
-                        long serialized_result_length = 0;
-                        char* serialized_result = NULL;
-                        osc_bundle_u_serialize(unserialized_result, &serialized_result_length, &serialized_result);
+                        t_osc_bndl_s *bs = osc_bundle_u_serialize(unserialized_result);
                         osc_bundle_u_free(unserialized_result); // frees value, count, length and atom_copy
                         unserialized_result = NULL;
                         atom_copy = NULL;
                         
-                        if (serialized_result)
+                        if (bs)
                         {
-                            omax_util_outletOSC(x->outlets[1], serialized_result_length, serialized_result);
-                            osc_mem_free(serialized_result);
-                            serialized_result = NULL;
+				omax_util_outletOSC(x->outlets[1], osc_bundle_s_getLen(bs), osc_bundle_s_getPtr(bs));
+				osc_bundle_s_deepFree(bs);
+                            bs = NULL;
                         }
                     }
                 }
@@ -192,16 +190,14 @@ void olistenumerate_noMatchesOrData(t_olistenumerate *x)
     osc_bundle_u_addMsg(unserialized_result, address);
     osc_bundle_u_addMsg(unserialized_result, length);
     
-    long serialized_result_length = 0;
-    char* serialized_result = NULL;
-    osc_bundle_u_serialize(unserialized_result, &serialized_result_length, &serialized_result);
+    t_osc_bndl_s *bs = osc_bundle_u_serialize(unserialized_result);
     osc_bundle_u_free(unserialized_result);
     unserialized_result = NULL;
     
-    if (serialized_result) {
-        omax_util_outletOSC(x->outlets[1], serialized_result_length, serialized_result);
-        osc_mem_free(serialized_result);
-        serialized_result = NULL;
+    if (bs) {
+	    omax_util_outletOSC(x->outlets[1], osc_bundle_s_getLen(bs), osc_bundle_s_getPtr(bs));
+	    osc_bundle_s_deepFree(bs);
+        bs = NULL;
     }
 }
 
@@ -221,12 +217,10 @@ void olistenumerate_anything(t_olistenumerate *x, t_symbol *selector, short argc
 	}
 	t_osc_bndl_u *bndl = osc_bundle_u_alloc();
 	osc_bundle_u_addMsg(bndl, msg);
-	long len = 0;
-	char *buf = NULL;
-	osc_bundle_u_serialize(bndl, &len, &buf);
-	if(buf){
-		olistenumerate_doFullPacket(x, len, buf);
-		osc_mem_free(buf);
+	t_osc_bndl_s *bs = osc_bundle_u_serialize(bndl);
+	if(bs){
+		olistenumerate_doFullPacket(x, osc_bundle_s_getLen(bs), osc_bundle_s_getPtr(bs));
+		osc_bundle_s_deepFree(bs);
 	}
 	osc_bundle_u_free(bndl);
 }

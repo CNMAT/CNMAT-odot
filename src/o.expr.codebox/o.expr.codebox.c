@@ -427,12 +427,10 @@ void oexprcodebox_doc_func(t_oexprcodebox *x, t_symbol *msg, int argc, t_atom *a
                 return;
         }
         if(bndl){
-                char *buf = NULL;
-                long len = 0;
-                osc_bundle_u_serialize(bndl, &len, &buf);
-                if(buf){
-                        omax_util_outletOSC(x->outlets[0], len, buf);
-                        osc_mem_free(buf);
+                t_osc_bndl_s *bs = osc_bundle_u_serialize(bndl);
+                if(bs){
+                        omax_util_outletOSC(x->outlets[0], osc_bundle_s_getLen(bs), osc_bundle_s_getPtr(bs));
+                        osc_bundle_s_deepFree(bs);
                 }
                 osc_bundle_u_free(bndl);
         }

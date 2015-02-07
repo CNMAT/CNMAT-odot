@@ -89,25 +89,23 @@ void otimetag_doFullPacket(t_otimetag *x,
 			   long len,
 			   char *ptr)
 {
+	t_osc_timetag t = osc_timetag_now();
 	if(x->address){
 		t_osc_bndl_u *copy = NULL;
 		osc_bundle_s_deserialize(len, ptr, &copy);
 
-		t_osc_msg_u *m = osc_message_u_allocWithTimetag(x->address->s_name, osc_timetag_now());
+		t_osc_msg_u *m = osc_message_u_allocWithTimetag(x->address->s_name, t);
 		osc_bundle_u_addMsgWithoutDups(copy, m);
 
-		long copylen = 0;
-		char *copyptr = NULL;
-		osc_bundle_u_serialize(copy, &copylen, &copyptr);
-		if(copyptr){
-			omax_util_outletOSC(x->outlet, copylen, copyptr);
-			osc_mem_free(copyptr);
+		t_osc_bndl_s *bs = osc_bundle_u_serialize(copy);
+		if(bs){
+			omax_util_outletOSC(x->outlet, osc_bundle_s_getLen(bs), osc_bundle_s_getPtr(bs));
+			osc_bundle_s_deepFree(bs);
 		}
 		osc_bundle_u_free(copy);
 	}else{
 		char copy[len];
 		memcpy(copy, ptr, len);
-		t_osc_timetag t = osc_timetag_now();
 		osc_bundle_s_setTimetag(len, copy, t);
 		omax_util_outletOSC(x->outlet, len, copy);
         OSC_MEM_INVALIDATE(copy);
@@ -129,12 +127,10 @@ void otimetag_anything(t_otimetag *x, t_symbol *selector, short argc, t_atom *ar
 	}
 	t_osc_bndl_u *bndl = osc_bundle_u_alloc();
 	osc_bundle_u_addMsg(bndl, msg);
-	long len = 0;
-	char *buf = NULL;
-	osc_bundle_u_serialize(bndl, &len, &buf);
-	if(buf){
-		otimetag_doFullPacket(x, len, buf);
-		osc_mem_free(buf);
+	t_osc_bndl_s *bs = osc_bundle_u_serialize(bndl);
+	if(bs){
+		otimetag_doFullPacket(x, osc_bundle_s_getLen(bs), osc_bundle_s_getPtr(bs));
+		osc_bundle_s_deepFree(bs);
 	}
 	osc_bundle_u_free(bndl);
 	/*

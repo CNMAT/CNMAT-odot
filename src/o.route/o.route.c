@@ -455,7 +455,10 @@ void oroute_makeSchema(t_oroute *x)
 		osc_message_u_appendString(msg, x->selectors[i]);
 	}
 	osc_bundle_u_addMsg(bndl, msg);
-	osc_bundle_u_serialize(bndl, &(x->schemalen), &(x->schema));
+	t_osc_bndl_s *bs = osc_bundle_u_serialize(bndl);
+	x->schemalen = osc_bundle_s_getLen(bs);
+	x->schema = osc_bundle_s_getPtr(bs);
+	osc_bundle_s_free(bs);
 	osc_bundle_u_free(bndl);
 }
 

@@ -956,17 +956,15 @@ void oxml_parse_tree(t_osvg *x, const char *file)
     
     oxml_process_branch(x, root_element, bndl);
     
-    long len = 0;
-	char *buf = NULL;
-	osc_bundle_u_serialize(bndl, &len, &buf);
+	t_osc_bndl_s *bs = osc_bundle_u_serialize(bndl);
 	if(bndl){
 		osc_bundle_u_free(bndl);
 	}
   
-    omax_util_outletOSC(x->outlet, len, buf);
+	omax_util_outletOSC(x->outlet, osc_bundle_s_getLen(bs), osc_bundle_s_getPtr(bs));
 
-    if(buf){
-		osc_mem_free(buf);
+    if(bs){
+	    osc_bundle_s_deepFree(bs);
 	}
     
     xmlFreeDoc(doc);
