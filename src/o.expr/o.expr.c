@@ -53,7 +53,7 @@
 #define LEFTOUTLET x->outlet
 #endif
 
-#ifndef WIN_VERSION
+#ifdef __APPLE__
 #include <mach/mach.h>
 #include <mach/mach_time.h>
 #endif
