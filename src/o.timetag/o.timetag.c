@@ -91,8 +91,7 @@ void otimetag_doFullPacket(t_otimetag *x,
 {
 	t_osc_timetag t = osc_timetag_now();
 	if(x->address){
-		t_osc_bndl_u *copy = NULL;
-		osc_bundle_s_deserialize(len, ptr, &copy);
+		t_osc_bndl_u *copy = osc_bundle_s_deserialize(len, ptr);
 
 		t_osc_msg_u *m = osc_message_u_allocWithTimetag(x->address->s_name, t);
 		osc_bundle_u_addMsgWithoutDups(copy, m);

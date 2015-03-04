@@ -646,7 +646,7 @@ void omessage_list(t_omessage *x, t_symbol *list_sym, short argc, t_atom *argv)
 		if(!x->bndl_u){
 			if(x->bndl_s){
 				critical_enter(x->lock);
-				osc_bundle_s_deserialize(osc_bundle_s_getLen(x->bndl_s), osc_bundle_s_getPtr(x->bndl_s), &(x->bndl_u));
+				x->bndl_u = osc_bundle_s_deserialize(osc_bundle_s_getLen(x->bndl_s), osc_bundle_s_getPtr(x->bndl_s));
 				critical_exit(x->lock);
 			}else if(x->text){
 				// pretty sure this can't happen...

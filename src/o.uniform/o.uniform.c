@@ -122,8 +122,7 @@ void ouniform_doFullPacket(t_ouniform *x,
         osc_bundle_s_removeMessage("/uniform/set/state", &len, ptr, 1);
     }
     
-    t_osc_bndl_u *copy = NULL;
-    osc_bundle_s_deserialize(len, ptr, &copy);
+    t_osc_bndl_u *copy = osc_bundle_s_deserialize(len, ptr);
     t_osc_message_u *result = NULL;
     if(x->address) {
         result = osc_message_u_allocWithFloat(x->address->s_name, (1.0f * rand() / RAND_MAX));

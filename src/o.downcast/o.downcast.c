@@ -68,10 +68,9 @@ void *odowncast_class;
 void odowncast_fullPacket(t_odowncast *x, t_symbol *msg, int argc, t_atom *argv)
 {
 	OMAX_UTIL_GET_LEN_AND_PTR;
-	t_osc_bndl_u *b = NULL;
-	t_osc_err e = osc_bundle_s_deserialize(len, ptr, &b);
-	if(e){
-		object_error((t_object *)x, "%s", osc_error_string(e));
+	t_osc_bndl_u *b = osc_bundle_s_deserialize(len, ptr);
+	if(!b){
+		object_error((t_object *)x, "invalid OSC packet");
 		return;
 	}
 	/*

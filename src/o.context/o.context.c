@@ -231,8 +231,7 @@ void ocontext_doFullPacket(t_ocontext *x, long len, char *ptr)
 	t_osc_bndl_u *mypatcher_bndl = ocontext_processCanvas(patcher);
 	t_osc_msg_u *context_msg = osc_message_u_allocWithAddress("/context");
 	osc_message_u_appendBndl_u(context_msg, mypatcher_bndl);
-	t_osc_bndl_u *bu = NULL;
-	osc_bundle_s_deserialize(len, ptr, &bu);
+	t_osc_bndl_u *bu = osc_bundle_s_deserialize(len, ptr);
 	if(bu){
 		osc_bundle_u_addMsgWithoutDups(bu, context_msg);
 		t_osc_bndl_s *bs = osc_bundle_u_serialize(bu);
@@ -307,8 +306,7 @@ void ocontext_doFullPacket(t_ocontext *x, long len, char *ptr)
 	t_osc_bndl_u *mypatcher_bndl = ocontext_processPatcher(patcher);
 	t_osc_msg_u *context_msg = osc_message_u_allocWithAddress("/context");
 	osc_message_u_appendBndl_u(context_msg, mypatcher_bndl);
-	t_osc_bndl_u *bu = NULL;
-	osc_bundle_s_deserialize(len, ptr, &bu);
+	t_osc_bndl_u *bu = osc_bundle_s_deserialize(len, ptr);
 	if(bu){
 		osc_bundle_u_addMsgWithoutDups(bu, context_msg);
 		t_osc_bndl_s *bs = osc_bundle_u_serialize(bu);
