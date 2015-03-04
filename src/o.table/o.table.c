@@ -106,8 +106,7 @@ void otable_getKeyOutOfBundle(t_otable *x, t_osc_bndl_s *bndl, int *keylen, char
 	critical_exit(x->lock);
 
 	if(keyaddress){
-		t_osc_msg_ar_s *ar = NULL;
-		osc_bundle_s_lookupAddress_b(bndl, keyaddress, &ar, 1);
+		t_osc_msg_ar_s *ar = osc_bundle_s_lookupAddress_b(bndl, keyaddress, 1);
 		if(ar){
 			t_osc_msg_s *m = osc_message_array_s_get(ar, 0);
 			if(osc_message_s_getArgCount(m) > 0){

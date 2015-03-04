@@ -150,8 +150,7 @@ void ouniform_doFullPacket(t_ouniform *x,
 
 long ouniform_getNumber(long len, char *ptr, char *address)
 {
-    t_osc_array* matches = NULL;
-    osc_bundle_s_lookupAddress(len, ptr, address, &matches, 1);
+    t_osc_msg_ar_s *matches = osc_bundle_s_lookupAddress(len, ptr, address, 1);
     //long matches_length = osc_array_getLen( matches );
     long change_to = -1;
     t_osc_message_s* msg = ( t_osc_message_s* )osc_array_get( matches, 0 );

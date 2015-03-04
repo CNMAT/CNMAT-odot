@@ -377,8 +377,7 @@ t_osc_timetag osched_getTimetag(t_osched *x, long len, char *ptr)
 {
 	if(x->address){
 		t_symbol *address = x->address;
-		t_osc_msg_ar_s *ar = NULL;
-		osc_bundle_s_lookupAddress(len, ptr, address->s_name, &ar, 1);
+		t_osc_msg_ar_s *ar = osc_bundle_s_lookupAddress(len, ptr, address->s_name, 1);
 		if(ar){
 			if(osc_message_array_s_getLen(ar) > 0){
 				t_osc_msg_s *msg = osc_message_array_s_get(ar, 0);

@@ -97,8 +97,7 @@ void olistenumerate_doFullPacket(t_olistenumerate *x,
     char* address_name = x->address->s_name;
     critical_exit(x->lock);
     
-    t_osc_array* matches = NULL;
-    osc_bundle_s_lookupAddress(len, ptr, address_name, &matches, 1);
+    t_osc_msg_ar_s *matches = osc_bundle_s_lookupAddress(len, ptr, address_name, 1);
     
     char delegate[len];
     long dlen = len;

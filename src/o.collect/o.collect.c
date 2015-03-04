@@ -94,8 +94,7 @@ void ocoll_fullPacket_impl(t_ocoll *x, long len, char *ptr)
 	t_osc_bndl_it_s *it = osc_bndl_it_s_get(len, ptr);
 	while(osc_bndl_it_s_hasNext(it)){
 		t_osc_msg_s *m = osc_bndl_it_s_next(it);
-		t_osc_msg_ar_s *match = NULL;
-		osc_bundle_s_lookupAddress(x->buffer_pos, x->buffer, osc_message_s_getAddress(m), &match, 1);
+		t_osc_msg_ar_s *match = osc_bundle_s_lookupAddress(x->buffer_pos, x->buffer, osc_message_s_getAddress(m), 1);
 		if(!match){
 			long l = osc_message_s_getSize(m) + 4;
 			memcpy(x->buffer + x->buffer_pos, osc_message_s_getPtr(m), l);
