@@ -125,8 +125,7 @@ void olistenumerate_doFullPacket(t_olistenumerate *x,
             {
                 for (int j = 0; j < array_length; ++j)
                 {
-                    t_osc_atom_u* iter_atom = NULL;
-                    osc_message_u_getArg(unserialized_msg, j, &iter_atom);
+			t_osc_atom_u* iter_atom = osc_message_u_getArg(unserialized_msg, j);
                     t_osc_atom_u* atom_copy = NULL;
                     osc_atom_u_copy(&atom_copy, iter_atom);
                     if (atom_copy)
