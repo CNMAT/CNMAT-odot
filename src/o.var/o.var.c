@@ -56,6 +56,7 @@
 #include "omax_util.h"
 #include "omax_doc.h"
 #include "omax_dict.h"
+#include "osc_bundle_s.r"
 
 #include "o.h"
 
@@ -116,8 +117,15 @@ void ovar_doFullPacket(t_ovar *x, long len, char *ptr, long inlet)
 		long bndllen = 0;
 		char *bndl = NULL;
 #ifdef ODOT_UNION
-		osc_bundle_s_union(len, ptr, copylen, copy, &bndllen, &bndl);
-#elif defined ODOT_INTERSECTION
+		t_osc_bndl_s *lhs = osc_bundle_s_alloc(len, ptr);
+		t_osc_bndl_s *rhs = osc_bundle_s_alloc(copylen, copy);
+		t_osc_bndl_s *res = osc_bundle_s_union(lhs, rhs);
+		omax_util_outletOSC(x->outlet, osc_bundle_s_getLen(res), osc_bundle_s_getPtr(bndl));
+		osc_bundle_s_free(rhs);
+		osc_bundle_s_free(res);
+		//osc_bundle_s_union(len, ptr, copylen, copy, &bndllen, &bndl);
+#else
+#if defined ODOT_INTERSECTION
 		osc_bundle_s_intersection(len, ptr, copylen, copy, &bndllen, &bndl);
 #elif defined ODOT_DIFFERENCE
 		osc_bundle_s_difference(len, ptr, copylen, copy, &bndllen, &bndl);
@@ -129,6 +137,7 @@ void ovar_doFullPacket(t_ovar *x, long len, char *ptr, long inlet)
 		if(copy){
 			osc_mem_free(copy);
 		}
+#endif
 #else // o.var
 		if(len > 0){
 			critical_enter(x->lock);
