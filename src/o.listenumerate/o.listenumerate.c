@@ -117,8 +117,7 @@ void olistenumerate_doFullPacket(t_olistenumerate *x,
         for (int i = 0; i < osc_array_getLen(matches); ++i)
         {
             t_osc_message_s* message_match = (t_osc_message_s*)osc_array_get(matches, i);
-            t_osc_message_u* unserialized_msg = NULL;
-            osc_message_s_deserialize(message_match, &unserialized_msg);
+            t_osc_message_u* unserialized_msg = osc_message_s_deserialize(message_match);
             
             int array_length = osc_message_u_getArgCount(unserialized_msg);
             if (array_length > 0)
