@@ -120,7 +120,7 @@ void ovar_doFullPacket(t_ovar *x, long len, char *ptr, long inlet)
 		t_osc_bndl_s *lhs = osc_bundle_s_alloc(len, ptr);
 		t_osc_bndl_s *rhs = osc_bundle_s_alloc(copylen, copy);
 		t_osc_bndl_s *res = osc_bundle_s_union(lhs, rhs);
-		omax_util_outletOSC(x->outlet, osc_bundle_s_getLen(res), osc_bundle_s_getPtr(bndl));
+		omax_util_outletOSC(x->outlet, osc_bundle_s_getLen(res), osc_bundle_s_getPtr(res));
 		osc_bundle_s_free(rhs);
 		osc_bundle_s_free(res);
 		//osc_bundle_s_union(len, ptr, copylen, copy, &bndllen, &bndl);
