@@ -1,10 +1,21 @@
-#N canvas 15 511 450 300 10;
-#X floatatom 161 56 5 0 0 0 - - -;
-#X msg 219 55 testo;
-#X msg 52 15 1 2 3 foo 5 6;
-#X obj 162 103 o.pack /foo;
-#X obj 162 144 o.printbytes pack_monitor;
-#X connect 0 0 3 0;
-#X connect 1 0 3 0;
-#X connect 2 0 3 0;
-#X connect 3 0 4 0;
+#N canvas 545 188 764 466 10;
+#X obj 29 42 o.display 642 131;
+#N canvas 750 23 450 300 doc-text 0;
+#X obj 36 139 o.helpfilehelper;
+#X obj 36 101 o.compose 217 23 binhex b#2F6F626A203A20226F2E7072696E7462
+b#7974657322;
+#X obj 36 179 outlet;
+#X obj 36 68 loadbang;
+#X obj 57 344 o.messageiterate;
+#X connect 0 0 2 0;
+#X connect 1 0 0 0;
+#X connect 3 0 1 0;
+#X restore 29 15 pd doc-text;
+#X obj 73 271 o.printbytes;
+#X obj 73 228 o.compose 279 23 binhex b#2F666F6F203A205B31322C2022626172
+b#222C2038392E3333332C20222F626172 b#222C2032355D;
+#X obj 73 310 o.display 237 27;
+#X text 67 368 input is passed through to the outlet;
+#X connect 1 0 0 0;
+#X connect 2 0 4 0;
+#X connect 3 0 2 0;

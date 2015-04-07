@@ -165,7 +165,7 @@ void ochange_assist(t_ochange *x, void *b, long io, long num, char *buf)
 
 void ochange_doc(t_ochange *x)
 {
-	omax_doc_outletDoc(x->outlet_same);
+	omax_doc_outletDoc(x->outlet_different);
 }
 
 void ochange_free(t_ochange *x)
