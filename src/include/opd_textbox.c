@@ -1011,7 +1011,6 @@ void opd_textbox_processArgs(t_opd_textbox *t, short argc, t_atom *argv)
 
 void opd_textbox_free(t_opd_textbox *t)
 {
-//    post("%s", __func__);
     
     free(t->text);
     free(t->hex);
@@ -1021,6 +1020,11 @@ void opd_textbox_free(t_opd_textbox *t)
     free(t->receive_name);
     
     clock_free(t->unbind_delay);
+    
+#ifdef OPD_TEXTBOX_DEBUG
+    printf("%s glist %p\n", __func__, t->glist);
+#endif
+    
 }
 
 t_opd_textbox *opd_textbox_new(t_class *c)

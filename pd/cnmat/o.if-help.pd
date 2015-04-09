@@ -3,14 +3,15 @@
 #X obj 53 270 o.pack /foo;
 #X obj 29 42 o.display 642 144;
 #N canvas 750 23 450 300 doc-text 0;
-#X obj 36 139 o.helpfilehelper;
-#X obj 36 101 o.compose 217 23 binhex b#2F6F626A203A205B226F2E6966222C20
-b#222F666F6F222C20223D3D222C20305D b#;
 #X obj 36 179 outlet;
-#X obj 36 68 loadbang;
-#X connect 0 0 2 0;
-#X connect 1 0 0 0;
-#X connect 3 0 1 0;
+#X obj 36 58 loadbang;
+#X msg 36 85 doc;
+#X obj 36 149 o.route /doc;
+#X obj 36 110 o.if /foo == 0;
+#X connect 1 0 2 0;
+#X connect 2 0 4 0;
+#X connect 3 0 0 0;
+#X connect 4 0 3 0;
 #X restore 29 15 pd doc-text;
 #X obj 53 300 o.display 100 27;
 #X obj 53 387 o.display 100 27;

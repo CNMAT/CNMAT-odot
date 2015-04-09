@@ -1,15 +1,16 @@
 #N canvas 545 188 764 466 10;
 #X obj 29 42 o.display 642 131;
 #N canvas 750 23 450 300 doc-text 0;
-#X obj 36 139 o.helpfilehelper;
-#X obj 36 101 o.compose 217 23 binhex b#2F6F626A203A20226F2E7072696E7462
-b#7974657322;
 #X obj 36 179 outlet;
-#X obj 36 68 loadbang;
+#X obj 36 58 loadbang;
 #X obj 57 344 o.messageiterate;
-#X connect 0 0 2 0;
-#X connect 1 0 0 0;
-#X connect 3 0 1 0;
+#X msg 36 85 doc;
+#X obj 36 149 o.route /doc;
+#X obj 36 110 o.printbytes;
+#X connect 1 0 3 0;
+#X connect 3 0 5 0;
+#X connect 4 0 0 0;
+#X connect 5 0 4 0;
 #X restore 29 15 pd doc-text;
 #X obj 73 271 o.printbytes;
 #X obj 73 228 o.compose 279 23 binhex b#2F666F6F203A205B31322C2022626172

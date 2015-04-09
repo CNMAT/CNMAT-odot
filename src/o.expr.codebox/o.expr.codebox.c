@@ -613,7 +613,8 @@ static void oexprcodebox_delete(t_gobj *z, t_glist *glist)
     t_oexprcodebox *x = (t_oexprcodebox *)z;
     t_opd_textbox *t = x->textbox;
     t_canvas *canvas = glist_getcanvas(glist);
-    
+    t_object *ob = pd_checkobject(&x->ob.te_pd);
+
     //post("%x %s %d", x, __func__, canvas->gl_editor);
     
     if(!t->firsttime && canvas->gl_editor)
@@ -624,14 +625,14 @@ static void oexprcodebox_delete(t_gobj *z, t_glist *glist)
         sys_vgui(".x%lx.c delete %sBorder\n", canvas, x->border_tag);
         
         opd_textbox_delete(t, glist);
-        
-        t_object *ob = pd_checkobject(&x->ob.te_pd);
-        if(ob && !t->firsttime && glist_isvisible(glist))
-        {
-            glist_eraseiofor(glist, ob, t->iolets_tag);
-            canvas_deletelinesfor(canvas, ob);
-        }
     }
+    
+    if(ob && !t->firsttime && glist_isvisible(glist))
+    {
+        glist_eraseiofor(glist, ob, t->iolets_tag);
+    }
+
+    canvas_deletelinesfor(canvas, ob);
     
 }
 

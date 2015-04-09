@@ -1,14 +1,15 @@
 #N canvas 534 23 796 718 10;
 #X obj 32 40 o.display 642 144;
 #N canvas 750 23 450 300 doc-text 0;
-#X obj 36 139 o.helpfilehelper;
-#X obj 36 99 o.compose 177 23 binhex b#2F6F626A203A205B226F2E7061636B22
-b#2C20222F666F6F225D;
 #X obj 36 179 outlet;
-#X obj 36 68 loadbang;
-#X connect 0 0 2 0;
-#X connect 1 0 0 0;
-#X connect 3 0 1 0;
+#X obj 36 58 loadbang;
+#X msg 36 85 doc;
+#X obj 36 149 o.route /doc;
+#X obj 36 110 o.pack /foo;
+#X connect 1 0 2 0;
+#X connect 2 0 4 0;
+#X connect 3 0 0 0;
+#X connect 4 0 3 0;
 #X restore 32 13 pd doc-text;
 #X obj 66 302 o.pack /foo /bar /boom 0;
 #X floatatom 66 274 5 0 0 0 - - -, f 5;
@@ -16,8 +17,8 @@ b#2C20222F666F6F225D;
 #X text 57 229 left inlet triggers output;
 #X text 229 303 default arguments can be placed after OSC addresses
 ;
-#X obj 66 339 o.display 149 53;
-#X obj 69 519 o.display 185 79;
+#X obj 66 339 o.display 149 27;
+#X obj 69 519 o.display 185 27;
 #X obj 69 482 o.pack /foo /bar a b c;
 #X obj 69 433 o.compose 123 31 binhex b#2F626C6F6F203A205B312C20322C2033
 b#5D2C0A2F626C6F62203A205B342C2035 b#2C20365D;

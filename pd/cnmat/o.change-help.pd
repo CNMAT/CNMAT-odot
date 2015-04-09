@@ -3,14 +3,15 @@
 #X obj 63 404 o.change;
 #X obj 23 65 o.display 642 157;
 #N canvas 750 23 450 300 doc-text 0;
-#X obj 36 139 o.helpfilehelper;
-#X obj 36 99 o.compose 123 23 binhex b#2F6F626A203A20226F2E6368616E6765
-b#22;
 #X obj 36 179 outlet;
 #X obj 36 68 loadbang;
-#X connect 0 0 2 0;
-#X connect 1 0 0 0;
-#X connect 3 0 1 0;
+#X msg 36 92 doc;
+#X obj 36 156 o.route /doc;
+#X obj 36 117 o.change;
+#X connect 1 0 2 0;
+#X connect 2 0 4 0;
+#X connect 3 0 0 0;
+#X connect 4 0 3 0;
 #X restore 23 38 pd doc-text;
 #X obj 37 270 o.compose 131 31 binhex b#2F626172203A205B342C20352C20365D
 b#2C0A2F666F6F203A205B312C20322C20 b#335D;
@@ -20,8 +21,8 @@ b#2C0A2F626172203A205B342C20352C20 b#365D;
 b#;
 #X obj 477 268 o.compose 131 31 binhex b#2F666F6F203A205B312C20322C20335D
 b#2C0A2F626172203A205B342C20352C20 b#375D;
-#X obj 63 463 o.display 126 40;
-#X obj 222 465 o.display 136 40;
+#X obj 63 463 o.display 126 27;
+#X obj 222 465 o.display 136 27;
 #X text 92 514 different;
 #X text 266 514 same;
 #X connect 1 0 8 0;

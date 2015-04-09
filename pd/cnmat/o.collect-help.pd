@@ -14,16 +14,17 @@
 #X obj 594 311 o.pack /steve;
 #X obj 30 39 o.display 642 131;
 #N canvas 750 23 450 300 doc-text 0;
-#X obj 36 139 o.helpfilehelper;
-#X obj 36 100 o.compose 123 23 binhex b#2F6F626A203A20226F2E636F6C6C6563
-b#7422;
 #X obj 36 179 outlet;
-#X obj 36 68 loadbang;
-#X connect 0 0 2 0;
-#X connect 1 0 0 0;
-#X connect 3 0 1 0;
+#X obj 36 58 loadbang;
+#X msg 36 85 doc;
+#X obj 36 149 o.route /doc;
+#X obj 36 110 o.collect;
+#X connect 1 0 2 0;
+#X connect 2 0 4 0;
+#X connect 3 0 0 0;
+#X connect 4 0 3 0;
 #X restore 30 12 pd doc-text;
-#X obj 264 401 o.display 153 40;
+#X obj 264 401 o.display 153 27;
 #X obj 417 236 t b f f;
 #X floatatom 417 193 5 0 0 0 - - -, f 5;
 #X text 73 230 bang triggers output and clears the internal buffer

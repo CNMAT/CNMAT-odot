@@ -734,7 +734,8 @@ static void odisplay_delete(t_gobj *z, t_glist *glist)
     t_odisplay *x = (t_odisplay *)z;
     t_opd_textbox *t = x->textbox;
     t_canvas *canvas = glist_getcanvas(glist);
-    
+    t_object *ob = pd_checkobject(&x->ob.te_pd);
+
     //post("%x %s %d", x, __func__, canvas->gl_editor);
     
     if(!t->firsttime && canvas->gl_editor)
@@ -746,17 +747,17 @@ static void odisplay_delete(t_gobj *z, t_glist *glist)
         sys_vgui(".x%lx.c delete %sBOTTOM\n", canvas, x->tk_tag);
         
         opd_textbox_delete(t, glist);
-        
-        t_object *ob = pd_checkobject(&x->ob.te_pd);
-        if(ob && !t->firsttime && glist_isvisible(glist))
-        {
-            glist_eraseiofor(glist, ob, t->iolets_tag);
-            canvas_deletelinesfor(canvas, ob);
-        }
     }
     
+    if(ob && !t->firsttime && glist_isvisible(glist))
+    {
+        glist_eraseiofor(glist, ob, t->iolets_tag);
+    }
+
+    canvas_deletelinesfor(canvas, ob);
 }
 
+/*
 static void odisplay_doClick(t_odisplay *x,
                              t_floatarg xpos, t_floatarg ypos, t_floatarg shift,
                              t_floatarg ctrl, t_floatarg alt)
@@ -769,7 +770,7 @@ static void odisplay_doClick(t_odisplay *x,
         clock_delay(x->m_clock, 120);
     }
 }
-
+*/
 
 static int odisplay_click(t_gobj *z, struct _glist *glist,
                           int xpix, int ypix, int shift, int alt, int dbl, int doit)

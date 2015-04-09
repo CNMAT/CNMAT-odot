@@ -1,27 +1,28 @@
 #N canvas 368 23 961 587 10;
-#X obj 24 35 o.display 858 144;
+#X obj 24 35 o.display 858 157;
 #N canvas 216 32 450 300 doc-text 0;
-#X obj 36 139 o.helpfilehelper;
-#X obj 36 99 o.compose 123 23 binhex b#2F6F626A203A20226F2E726F75746522
-b#;
-#X obj 36 68 loadbang;
+#X obj 36 58 loadbang;
 #X obj 36 179 outlet;
-#X connect 0 0 3 0;
-#X connect 1 0 0 0;
-#X connect 2 0 1 0;
+#X msg 36 85 doc;
+#X obj 36 149 o.route /doc;
+#X obj 36 110 o.route /foo;
+#X connect 0 0 2 0;
+#X connect 2 0 4 0;
+#X connect 3 0 1 0;
+#X connect 4 0 3 0;
 #X restore 24 8 pd doc-text;
 #X floatatom 62 229 5 0 0 0 - - -, f 5;
 #X obj 62 248 o.pack /mysynth/2/gain /mysynth/2/freq 440 /nada rien
 ;
 #X obj 173 304 o.route /mysynth;
-#X obj 56 342 o.display 100 40;
+#X obj 56 342 o.display 100 27;
 #X obj 266 349 o.display 100 27;
 #X obj 173 390 o.route /1 /2, f 54;
 #X floatatom 411 229 5 0 0 0 - - -, f 5;
 #X obj 411 248 o.pack /mysynth/*/freq /mysynth/*/gain 0.5 /nada rien
 ;
-#X obj 207 431 o.display 100 40;
-#X obj 362 431 o.display 100 40;
+#X obj 207 431 o.display 100 27;
+#X obj 362 431 o.display 100 27;
 #X obj 174 489 o.route /freq /gain;
 #X floatatom 174 520 5 0 0 0 - - -, f 5;
 #X floatatom 229 520 5 0 0 0 - - -, f 5;

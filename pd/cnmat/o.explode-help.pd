@@ -1,23 +1,25 @@
 #N canvas 473 80 743 668 10;
-#X obj 195 268 o.explode;
-#X obj 246 293 o.flatten;
-#X obj 195 189 o.compose 159 57 binhex b#2F73796E74682F312F66726571203A20
+#X obj 195 338 o.explode;
+#X obj 246 363 o.flatten;
+#X obj 195 259 o.compose 159 57 binhex b#2F73796E74682F312F66726571203A20
 b#3434302E2C0A2F73796E74682F312F61 b#6D70203A20312E2C0A2F73796E74682F
 b#322F66726571203A203434372E2C0A2F b#73796E74682F322F616D70203A20302E
 b#35;
-#X obj 27 21 o.display 642 131;
+#X obj 27 91 o.display 642 131;
 #N canvas 750 23 450 300 doc-text 0;
-#X obj 36 139 o.helpfilehelper;
-#X obj 36 99 o.compose 154 23 binhex b#2F6F626A203A20226F2E6578706C6F64
-b#6522;
-#X obj 36 179 outlet;
-#X obj 36 68 loadbang;
-#X connect 0 0 2 0;
-#X connect 1 0 0 0;
-#X connect 3 0 1 0;
-#X restore 27 -6 pd doc-text;
-#X obj 195 415 o.display 237 144;
-#X obj 246 329 o.display 150 66;
+#X obj 36 213 outlet;
+#X obj 36 44 loadbang;
+#X msg 36 85 doc;
+#X obj 36 149 o.route /doc;
+#X obj 36 110 o.explode;
+#X connect 1 0 2 0;
+#X connect 2 0 4 0;
+#X connect 3 0 0 0;
+#X connect 4 0 3 0;
+#X restore 27 64 pd doc-text;
+#X obj 195 485 o.display 237 144;
+#X obj 246 399 o.display 150 66;
+#X text 3 10 -;
 #X connect 0 0 1 0;
 #X connect 0 0 5 0;
 #X connect 1 0 6 0;
