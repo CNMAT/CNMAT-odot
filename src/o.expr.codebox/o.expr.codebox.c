@@ -632,7 +632,7 @@ static void oexprcodebox_delete(t_gobj *z, t_glist *glist)
         glist_eraseiofor(glist, ob, t->iolets_tag);
     }
 
-    canvas_deletelinesfor(canvas, ob);
+    canvas_deletelinesfor(glist, (t_text *)z);
     
 }
 
