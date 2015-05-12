@@ -33,12 +33,11 @@ extern "C" {
 	}								\
 	float ff = atom_getfloat(&argv[0]);				\
 	long len = (long)*((uint32_t *)&ff);				\
-	ff = atom_getfloat(&argv[1]);					\
-	uint64_t l1 = *((uint64_t *)&ff);				\
-	l1 <<= 32;							\
-	ff = atom_getfloat(&argv[2]);					\
-	uint64_t l2 = *((uint64_t *)&ff);				\
-	char *ptr = (char *)(l1 | l2);\
+    ff = atom_getfloat(&argv[1]);\
+    uint64_t l1 = (uint64_t)(*((uint32_t *)&ff));\
+    ff = atom_getfloat(&argv[2]);\
+    uint64_t l2 = (uint64_t)(*((uint32_t *)&ff));\
+    char *ptr = (char *)((l1<<32) | l2);\
 	if(OSC_MEM_VALIDATE(ptr)){\
 		error("received something that is neither an OSC bundle nor a message");\
 		return;\
