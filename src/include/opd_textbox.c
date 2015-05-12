@@ -1,88 +1,13 @@
-#ifndef odot_opd_textbox_h
-#define odot_opd_textbox_h
 
-#include "m_imp.h"
+#include "opd_textbox.h"
+#include "g_canvas.h"
+#include "stdlib.h"
 
-#define OMAX_PD_MAXSTRINGSIZE (1<<16)
 
 //#define OPD_TEXTBOX_DEBUG
 
-typedef struct _jrgb {
-    char r, g, b;
-    char hex[7];
-} t_opd_rgb;
-
-typedef struct _opd_textbox
-{
-    t_object ob;
-    t_object *parent;
-    
-    t_glist *glist;
-    
-    char *text;
-    char *hex;
-    char *tcl_namespace;
-    char *receive_name;
-    char *iolets_tag;
-    
-    uint16_t    textediting;
-    uint16_t    new_texteditor;
-
-    uint16_t    c_bind;
-    uint16_t    send_bind;
-
-    
-    uint16_t    editmode;
-    uint16_t    selected;
-    uint16_t    firsttime;
-    uint16_t    firstdisplace;
-    
-    uint16_t    forceredraw;
-    
-    uint16_t    parse_error;
-    uint16_t    cmdDown;
-    
-    uint16_t    mouseDown;
-    int         yscroll;
-    
-    int softlock;
-    int streamflag;
-    int in_new_flag;
-
-    int height;
-    int width;
-    int xref, yref, wref;
-    
-    int resizebox_height;
-    int resizebox_width;
-    int resizebox_x_offset;
-    int resizebox_y_offset;
-    
-    int margin_t, margin_b, margin_l, margin_r;
-    
-    uint16_t    _hit;
-    
-    t_gotfn     draw_fn;
-    t_gotfn     gettext_fn;
-    
-    t_gotfn     delete_fn;
-    t_gotfn     click_fn;
-
-    t_clock     *unbind_delay;
-    
-    /*
-    t_gotfn     p_getrect;
-    t_gotfn     p_displace;
-    t_gotfn     p_select;
-
-    t_gotfn     p_activate;
-    t_gotfn     p_vis;
-    t_gotfn     p_save;
-   */
-} t_opd_textbox;
-
-
 uint16_t opd_textbox_defined = 0;
+
 
 void opd_textbox_nofocus_callback(t_opd_textbox *t);
 void opd_textbox_outsideclick_callback(t_opd_textbox *t);
@@ -177,7 +102,7 @@ void opd_textbox_setHeight(t_opd_textbox *t, float y)
 void opd_textbox_getRectAndDraw(t_opd_textbox *t, int forceredraw)
 {
 #ifdef OPD_TEXTBOX_DEBUG
-    post("%x %s", t, __func__);
+    post("%x %s name %s force %d", t, __func__, t->receive_name, forceredraw);
 #endif
     
     t->forceredraw = forceredraw;
@@ -404,7 +329,7 @@ void opd_textbox_storeTextAndExitEditorTick(t_opd_textbox *t)
     t_canvas *canvas = glist_getcanvas(t->glist);
     
     t->textediting = 0;
-//    opd_textbox_nofocus_callback(t);
+//    opd_textbox_nofocus_callback(t); //this is handled in the select now
     
     sys_vgui(".x%lx.c itemconfigure text%lx -fill black -width %d -text [subst -nobackslash -nocommands -novariables [string trimright {%s} ]] \n", canvas, (long)t, t->width - t->margin_l - t->margin_r, t->text);
 
@@ -417,9 +342,11 @@ void opd_textbox_storeTextAndExitEditorTick(t_opd_textbox *t)
 
 void opd_textbox_storeTextAndExitEditor(t_opd_textbox *t)
 {
-    
+#ifdef OPD_TEXTBOX_DEBUG
+    post("%x %s", t, __func__);
+#endif
     if(t->textediting){
-        sys_vgui("::opd_textbox::sendchunks [.x%lx.t%lxTEXT get 0.0 end-1c] %s \n", glist_getcanvas(t->glist), (long)t, t->receive_name); //sendchunks
+        sys_vgui("::opd_textbox::sendchunks [.x%lx.t%lxTEXT get 0.0 end-1c] {%s} \n", glist_getcanvas(t->glist), (long)t, t->receive_name); //sendchunks
         //receive happens on next tick
     }
     
@@ -866,7 +793,7 @@ int opd_textbox_drawElements(t_opd_textbox *x, int x1, int y1, int x2, int y2, i
     return 1;
 }
 
-static void opd_textbox_delete(t_opd_textbox *x, t_glist *glist)
+void opd_textbox_delete(t_opd_textbox *x, t_glist *glist)
 {
 #ifdef OPD_TEXTBOX_DEBUG
     post("%x %s", x, __func__);
@@ -896,7 +823,7 @@ void opd_textbox_unbind_tick(t_opd_textbox *x)
 }
 
 
-static void opd_textbox_vis(t_opd_textbox *x, t_glist *glist, int vis)
+void opd_textbox_vis(t_opd_textbox *x, t_glist *glist, int vis)
 {
 
     t_canvas *canvas = glist_getcanvas(glist);
@@ -962,7 +889,7 @@ static void opd_textbox_vis(t_opd_textbox *x, t_glist *glist, int vis)
     }
 }
 
-static void opd_textbox_displace(t_opd_textbox *x, t_glist *glist, int dx, int dy)
+void opd_textbox_displace(t_opd_textbox *x, t_glist *glist, int dx, int dy)
 {
 #ifdef OPD_TEXTBOX_DEBUG
     post("%x %s mousedown %d dx %d dy %d", x, __func__, x->mouseDown, dx, dy);
@@ -1043,7 +970,7 @@ void opd_textbox_select(t_opd_textbox *x, t_glist *glist, int state)
     
 }
 
-static void opd_textbox_activate(t_opd_textbox *x, t_glist *glist, int state)
+void opd_textbox_activate(t_opd_textbox *x, t_glist *glist, int state)
 {
 #ifdef OPD_TEXTBOX_DEBUG
     post("%x %s %d", x, __func__, state);
@@ -1072,8 +999,8 @@ void opd_textbox_processArgs(t_opd_textbox *t, short argc, t_atom *argv)
             
             opd_textbox_textbuf(t, NULL, argc-2, (argv+2));
             t_atom done[2];
-            atom_setsym(done, gensym("binhex"));
-            atom_setsym(done+1, gensym(t->receive_name));
+            SETSYMBOL(done, gensym("binhex"));
+            SETSYMBOL(done+1, gensym(t->receive_name));
             opd_textbox_textbuf(t, NULL, 2, done);
             
         }
@@ -1084,7 +1011,6 @@ void opd_textbox_processArgs(t_opd_textbox *t, short argc, t_atom *argv)
 
 void opd_textbox_free(t_opd_textbox *t)
 {
-//    post("%s", __func__);
     
     free(t->text);
     free(t->hex);
@@ -1094,6 +1020,11 @@ void opd_textbox_free(t_opd_textbox *t)
     free(t->receive_name);
     
     clock_free(t->unbind_delay);
+    
+#ifdef OPD_TEXTBOX_DEBUG
+    printf("%s glist %p\n", __func__, t->glist);
+#endif
+    
 }
 
 t_opd_textbox *opd_textbox_new(t_class *c)
@@ -1330,7 +1261,3 @@ t_class *opd_textbox_classnew(void)
     
     return c;
 }
-
-
-
-#endif

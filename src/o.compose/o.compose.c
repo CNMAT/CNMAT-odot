@@ -52,8 +52,10 @@
 #include "g_canvas.h"
 #include "g_all_guis.h"
 
-#include "omax_pd_proxy.h"
-#define proxy_getinlet(x) (((t_ocompose *)(x))->inlet)
+//#include "omax_pd_proxy.h"
+//#define proxy_getinlet(x) (((t_ocompose *)(x))->inlet)
+
+#define proxy_getinlet(x) 0
 
 #else
 #include "ext.h"
@@ -131,10 +133,11 @@ typedef struct _ocompose {
     //long stored_bundle_length;
 } t_ocompose;
 
-t_omax_pd_proxy_class *ocompose_class;
-t_omax_pd_proxy_class *ocompose_proxy_class;
+//t_omax_pd_proxy_class *ocompose_class;
+//t_omax_pd_proxy_class *ocompose_proxy_class;
 t_widgetbehavior ocompose_widgetbehavior;
 
+t_class *ocompose_class;
 t_class *ocompose_textbox_class;
 
 #else
@@ -229,6 +232,14 @@ void ocompose_fullPacket(t_ocompose *x, t_symbol *msg, int argc, t_atom *argv)
     }
     ocompose_doFullPacket(x, len, ptr);
 }
+
+#ifdef OMAX_PD_VERSION
+void ocompose_fullPacket2(t_ocompose *x, t_symbol *msg, int argc, t_atom *argv)
+{
+    OMAX_UTIL_GET_LEN_AND_PTR
+    ocompose_doFullPacket(x, len, ptr);
+}
+#endif
 
 void ocompose_doFullPacket(t_ocompose *x, long len, char *ptr)
 {
@@ -847,30 +858,33 @@ static void ocompose_activate(t_gobj *z, t_glist *glist, int state)
 
 static void ocompose_delete(t_gobj *z, t_glist *glist)
 {
-    //post("%s", __func__);
+//    printf("%s glist %p\n", __func__, glist);
     t_ocompose *x = (t_ocompose *)z;
     t_opd_textbox *t = x->textbox;
     t_canvas *canvas = glist_getcanvas(glist);
+    t_object *ob = pd_checkobject(&x->ob.te_pd);
+
     
     //post("%x %s %d", x, __func__, canvas->gl_editor);
     
     if(!t->firsttime && canvas->gl_editor)
     {
 //        opd_textbox_nofocus_callback(t);
-
+        
         sys_vgui(".x%lx.c delete %s\n", canvas, x->border_tag);
         sys_vgui(".x%lx.c delete %s\n", canvas, x->corner_tag);
         
         opd_textbox_delete(t, glist);
         
-        t_object *ob = pd_checkobject(&x->ob.te_pd);
-        if(ob && !t->firsttime && glist_isvisible(glist))
-        {
-            glist_eraseiofor(glist, ob, t->iolets_tag);
-            canvas_deletelinesfor(canvas, ob);
-        }
+    }
+
+    if(ob && !t->firsttime && glist_isvisible(glist))
+    {
+        glist_eraseiofor(glist, ob, t->iolets_tag);
     }
     
+    canvas_deletelinesfor(glist, (t_text *)z);
+
 }
 
 static void ocompose_doClick(t_ocompose *x,
@@ -951,7 +965,6 @@ static void ocompose_save(t_gobj *z, t_binbuf *b)
 
 void ocompose_free(t_ocompose *x)
 {
-    //post("%x %s", x, __func__);
     free(x->border_tag);
     free(x->corner_tag);
     
@@ -959,21 +972,24 @@ void ocompose_free(t_ocompose *x)
     clock_free(x->new_data_indicator_clock);
     
     critical_free(x->lock);
+    /*
     if(x->proxy){
         pd_free(x->proxy[0]);
         pd_free(x->proxy[1]);
         free(x->proxy);
     }
-    
+    */
     ocompose_clearBundles(x);
     
     opd_textbox_free(x->textbox);
+    printf("%s %p \n", __func__, x);
+
 }
 
 
 void *ocompose_new(t_symbol *msg, short argc, t_atom *argv)
 {
-    t_ocompose *x = (t_ocompose *)pd_new(ocompose_class->class);
+    t_ocompose *x = (t_ocompose *)pd_new(ocompose_class);
     if(x)
     {
         
@@ -1009,10 +1025,8 @@ void *ocompose_new(t_symbol *msg, short argc, t_atom *argv)
        // post("%s %p glist %x canvas %x\n", __func__, x, t->glist, glist_getcanvas(t->glist));
         
         x->outlet = outlet_new(&x->ob, NULL);
-        
-        x->proxy = (void **)malloc(argc * sizeof(t_omax_pd_proxy *));
-        x->proxy[0] = proxy_new((t_object *)x, 0, &(x->inlet), ocompose_proxy_class);
-        x->proxy[1] = proxy_new((t_object *)x, 1, &(x->inlet), ocompose_proxy_class);
+     
+        inlet_new(&x->ob, &x->ob.ob_pd, gensym("FullPacket"), gensym("f2"));
         
         x->bndl_u = NULL;
         x->bndl_s = NULL;
@@ -1062,29 +1076,24 @@ void *ocompose_new(t_symbol *msg, short argc, t_atom *argv)
 
 void setup_o0x2ecompose(void) {
     
-    omax_pd_class_new(ocompose_class, gensym("o.compose"), (t_newmethod)ocompose_new, (t_method)ocompose_free, sizeof(t_ocompose),  CLASS_NOINLET, A_GIMME, 0);
+    t_class *c = class_new(gensym("o.compose"), (t_newmethod)ocompose_new, (t_method)ocompose_free, sizeof(t_ocompose),  0L, A_GIMME, 0);
 
-    t_omax_pd_proxy_class *c = NULL;
-    omax_pd_class_new(c, NULL, NULL, NULL, sizeof(t_omax_pd_proxy), CLASS_PD | CLASS_NOINLET, 0);
     
-    omax_pd_class_addmethod(c, (t_method)odot_version, gensym("version"));
-    omax_pd_class_addbang(c, (t_method)ocompose_bang);
-    omax_pd_class_addmethod(c, (t_method)ocompose_set, gensym("set"));
-    omax_pd_class_addmethod(c, (t_method)ocompose_doc, gensym("doc"));
-    omax_pd_class_addmethod(c, (t_method)ocompose_fullPacket, gensym("FullPacket"));
+    class_addmethod(c, (t_method)odot_version, gensym("version"), 0);
+    class_addbang(c, (t_method)ocompose_bang);
+    class_addmethod(c, (t_method)ocompose_set, gensym("set"), A_GIMME, 0);
+    class_addmethod(c, (t_method)ocompose_doc, gensym("doc"), 0);
+    class_addmethod(c, (t_method)ocompose_fullPacket, gensym("FullPacket"), A_GIMME, 0);
+    class_addmethod(c, (t_method)ocompose_fullPacket2, gensym("f2"), A_GIMME, 0);
     
-// error messages:
-    omax_pd_class_addfloat(c, (t_method)ocompose_float);
-    omax_pd_class_addmethod(c, (t_method)ocompose_list, gensym("list"));
-    omax_pd_class_addanything(c, (t_method)ocompose_anything);
+    // error messages:
+    class_addfloat(c, (t_method)ocompose_float);
+    class_addlist(c, (t_method)ocompose_list);
+    class_addanything(c, (t_method)ocompose_anything);
     
     ps_newline = gensym("\n");
     ps_FullPacket = gensym("FullPacket");
     
-    ocompose_proxy_class = c;
-    
-    ODOT_PRINT_VERSION;
-
     ocompose_widgetbehavior.w_getrectfn = ocompose_getrect;
     ocompose_widgetbehavior.w_displacefn = ocompose_displace;
     ocompose_widgetbehavior.w_selectfn = ocompose_select;
@@ -1094,11 +1103,14 @@ void setup_o0x2ecompose(void) {
     ocompose_widgetbehavior.w_visfn = ocompose_vis;
     
     
-    class_setsavefn(ocompose_class->class, ocompose_save);
-    class_setwidget(ocompose_class->class, &ocompose_widgetbehavior);
+    class_setsavefn(c, ocompose_save);
+    class_setwidget(c, &ocompose_widgetbehavior);
     
+    ocompose_class = c;
     ocompose_textbox_class = opd_textbox_classnew();
     
+    ODOT_PRINT_VERSION;
+
     //return 0;
     
 }

@@ -243,9 +243,11 @@
 /* Begin PBXBuildFile section */
 		110A81E4194C4938002358E3 /* o.downcast.c in Sources */ = {isa = PBXBuildFile; fileRef = 52B53CEC17480CFC00237A19 /* o.downcast.c */; };
 		112AC8611939427D003244E9 /* o.menu.c in Sources */ = {isa = PBXBuildFile; fileRef = 112AC8601939427D003244E9 /* o.menu.c */; };
+		115058E71AD48E5300CFA262 /* opd_textbox.c in Sources */ = {isa = PBXBuildFile; fileRef = 115058E51AD48E4D00CFA262 /* opd_textbox.c */; };
+		115058E81AD48E5700CFA262 /* opd_textbox.c in Sources */ = {isa = PBXBuildFile; fileRef = 115058E51AD48E4D00CFA262 /* opd_textbox.c */; };
+		115058E91AD48E5900CFA262 /* opd_textbox.c in Sources */ = {isa = PBXBuildFile; fileRef = 115058E51AD48E4D00CFA262 /* opd_textbox.c */; };
 		115D740D198FD26B00F42B88 /* o.expr.codebox.c in Sources */ = {isa = PBXBuildFile; fileRef = 5223ADDB1923EB9000C8FBB5 /* o.expr.codebox.c */; };
 		11893E5E1986F462008303DD /* o.compose.c in Sources */ = {isa = PBXBuildFile; fileRef = 9B3930F4195A296C002EDAE5 /* o.compose.c */; };
-		11893E6219883506008303DD /* opd_textbox.h in Headers */ = {isa = PBXBuildFile; fileRef = 11893E6119881E34008303DD /* opd_textbox.h */; };
 		118D280019394C9500739CB3 /* pqops.c in Sources */ = {isa = PBXBuildFile; fileRef = 52A8396C16F3F893002E273C /* pqops.c */; };
 		118D280119394C9800739CB3 /* pqops.h in Headers */ = {isa = PBXBuildFile; fileRef = 52A8396D16F3F893002E273C /* pqops.h */; };
 		119179AA19C25FF700F76066 /* o.bundle.c in Sources */ = {isa = PBXBuildFile; fileRef = 119179A919C25FF700F76066 /* o.bundle.c */; };
@@ -286,7 +288,6 @@
 		11EF2ACF18AFEBB900156403 /* libomax.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5C6163763CF0016EC39 /* libomax.a */; };
 		11EF2AD518AFEBFC00156403 /* o.svg.c in Sources */ = {isa = PBXBuildFile; fileRef = 11EF2AD418AFEBFC00156403 /* o.svg.c */; };
 		11EF2AD718AFF7A900156403 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 11EF2AD618AFF7A900156403 /* libxml2.dylib */; };
-		11F20C4519A260B300BA2487 /* opd_textbox.h in Headers */ = {isa = PBXBuildFile; fileRef = 11893E6119881E34008303DD /* opd_textbox.h */; };
 		11F20C4A19A2611600BA2487 /* o.display.c in Sources */ = {isa = PBXBuildFile; fileRef = 9B3930F6195A299A002EDAE5 /* o.display.c */; };
 		11FC8B0B194C41C000635118 /* o.validate.c in Sources */ = {isa = PBXBuildFile; fileRef = 52B53CFE174828C700237A19 /* o.validate.c */; };
 		5203467C1555BF17001EA532 /* o.flatten.c in Sources */ = {isa = PBXBuildFile; fileRef = 5203467B1555BF16001EA532 /* o.flatten.c */; };
@@ -2240,9 +2241,10 @@
 		08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
 		112AC85F19394255003244E9 /* o.menu.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = o.menu.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
 		112AC8601939427D003244E9 /* o.menu.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.menu.c; path = omenu/o.menu.c; sourceTree = "<group>"; };
+		115058E51AD48E4D00CFA262 /* opd_textbox.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = opd_textbox.c; path = include/opd_textbox.c; sourceTree = "<group>"; };
+		115058E61AD48E4D00CFA262 /* opd_textbox.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = opd_textbox.h; path = include/opd_textbox.h; sourceTree = "<group>"; };
 		115D740C198FD23F00F42B88 /* o.expr.codebox.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = o.expr.codebox.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
 		11893E5D1986F436008303DD /* o.compose.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = o.compose.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
-		11893E6119881E34008303DD /* opd_textbox.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = opd_textbox.h; path = o.compose/opd_textbox.h; sourceTree = "<group>"; };
 		119179A819C25F4700F76066 /* o.bundle.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = o.bundle.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
 		119179A919C25FF700F76066 /* o.bundle.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.bundle.c; path = "o-bundle/o.bundle.c"; sourceTree = "<group>"; };
 		119FA031191D5814001C3325 /* o.append.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = o.append.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -2336,7 +2338,7 @@
 		527294B717EDE93100AA15E1 /* o.context.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = o.context.c; path = o.context/o.context.c; sourceTree = "<group>"; };
 		527294C517EDE93B00AA15E1 /* o.context.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.context.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
 		527C363D1A33229300E08D94 /* o.queue.fifo.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.queue.fifo.c; path = o.queue.fifo/o.queue.fifo.c; sourceTree = "<group>"; };
-		528026EC19E028C30037FD4E /* o.firbank.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.firbank.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
+		528026EC19E028C30037FD4E /* o.queue.fifo.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.queue.fifo.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
 		529781601555B6FD0018A44D /* o.flatten.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.flatten.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
 		52A8393A16E978CD002E273C /* o.append.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = o.append.c; path = o.append/o.append.c; sourceTree = "<group>"; };
 		52A8394916E978D7002E273C /* o.append.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.append.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -3140,7 +3142,6 @@
 				525523D81504CC6000A10E5D /* o.change.c */,
 				525525271504D21500A10E5D /* o.collect.c */,
 				9B3930F4195A296C002EDAE5 /* o.compose.c */,
-				11893E6119881E34008303DD /* opd_textbox.h */,
 				525525291504D22A00A10E5D /* o.cond.c */,
 				527294B717EDE93100AA15E1 /* o.context.c */,
 				520C0E2A158469F4005F2955 /* o.dict.c */,
@@ -3285,9 +3286,7 @@
 				11893E5D1986F436008303DD /* o.compose.pd_darwin */,
 				115D740C198FD23F00F42B88 /* o.expr.codebox.pd_darwin */,
 				11F20C4919A260B300BA2487 /* o.display.pd_darwin */,
-				11F20C5719A5647200BA2487 /* o.udp.receive.pd_darwin */,
-				11F20C6419A57AC400BA2487 /* o.udp.send.pd_darwin */,
-				528026EC19E028C30037FD4E /* o.firbank.mxo */,
+				528026EC19E028C30037FD4E /* o.queue.fifo.mxo */,
 				119179A819C25F4700F76066 /* o.bundle.pd_darwin */,
 				11A20DB819F0B428002A98B5 /* o.expr.codebox.set.mxo */,
 			);
@@ -3297,6 +3296,8 @@
 		52C839E1167A5BB8000AA688 /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
+				115058E51AD48E4D00CFA262 /* opd_textbox.c */,
+				115058E61AD48E4D00CFA262 /* opd_textbox.h */,
 				52A8396C16F3F893002E273C /* pqops.c */,
 				52A8396D16F3F893002E273C /* pqops.h */,
 				52C839EA167A5BF1000AA688 /* maxdb.c */,
@@ -3328,7 +3329,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				11893E6219883506008303DD /* opd_textbox.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3561,7 +3561,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				11F20C4519A260B300BA2487 /* opd_textbox.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5116,7 +5115,7 @@
 			);
 			name = o.queue.fifo;
 			productName = cv.jit.dilate;
-			productReference = 528026EC19E028C30037FD4E /* o.firbank.mxo */;
+			productReference = 528026EC19E028C30037FD4E /* o.queue.fifo.mxo */;
 			productType = "com.apple.product-type.bundle";
 		};
 		529781521555B6FD0018A44D /* o.flatten */ = {
@@ -5937,6 +5936,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				115058E91AD48E5900CFA262 /* opd_textbox.c in Sources */,
 				115D740D198FD26B00F42B88 /* o.expr.codebox.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -5945,6 +5945,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				115058E71AD48E5300CFA262 /* opd_textbox.c in Sources */,
 				11893E5E1986F462008303DD /* o.compose.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -6212,6 +6213,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				115058E81AD48E5700CFA262 /* opd_textbox.c in Sources */,
 				11F20C4A19A2611600BA2487 /* o.display.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -11762,7 +11764,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ONLY_ACTIVE_ARCH_PRE_XCODE_3_1)";
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -11806,7 +11808,7 @@
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../../libo\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../../libomax\"";
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
-				ONLY_ACTIVE_ARCH_PRE_XCODE_3_1 = "$(NATIVE_ARCH_ACTUAL)";
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = (
 					"-DOMAX_PD_VERSION",
 					"-DNO_TRANSLATION_SUPPORT",
@@ -11827,8 +11829,7 @@
 			baseConfigurationReference = 52CA34451976FF7A008C36B9 /* PD-unstable.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1)";
-				ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1 = "x86_64 i386 ppc";
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -11887,7 +11888,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ONLY_ACTIVE_ARCH_PRE_XCODE_3_1)";
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -11931,7 +11932,7 @@
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../../libo\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../../libomax\"";
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
-				ONLY_ACTIVE_ARCH_PRE_XCODE_3_1 = "$(NATIVE_ARCH_ACTUAL)";
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = (
 					"-DOMAX_PD_VERSION",
 					"-DNO_TRANSLATION_SUPPORT",
@@ -11952,8 +11953,7 @@
 			baseConfigurationReference = 52CA34451976FF7A008C36B9 /* PD-unstable.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1)";
-				ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1 = "x86_64 i386 ppc";
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -12113,7 +12113,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ONLY_ACTIVE_ARCH_PRE_XCODE_3_1)";
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -12157,7 +12157,7 @@
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../../libo\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../../libomax\"";
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
-				ONLY_ACTIVE_ARCH_PRE_XCODE_3_1 = "$(NATIVE_ARCH_ACTUAL)";
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = (
 					"-DOMAX_PD_VERSION",
 					"-DNO_TRANSLATION_SUPPORT",
@@ -12177,8 +12177,7 @@
 			baseConfigurationReference = 52AA372F19575C01009A1920 /* PD-config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1)";
-				ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1 = "x86_64 i386 ppc";
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
