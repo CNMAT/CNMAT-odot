@@ -56,33 +56,11 @@ typedef struct _obundle{
 
 void *obundle_class;
 
-
-
+void obundle_bang(t_obundle *x){}
 
 void obundle_validate(t_obundle *x, long len, char *ptr)
 {
-	//OMAX_UTIL_GET_LEN_AND_PTR;
-	/*
-     t_osc_err e = osc_error_bundleSanityCheck(len, ptr);
-     if(e){
-     t_osc_bndl_u *b = osc_bundle_u_alloc();
-     
-     t_osc_msg_u *merr = osc_message_u_alloc();
-     osc_message_u_setAddress(merr, "/error/str");
-     osc_message_u_appendString(merr, osc_error_string(e));
-     osc_bundle_u_addMsg(b, merr);
-     
-     long l = 0;
-     char *buf = NULL;
-     osc_bundle_u_serialize(b, &l, &buf);
-     if(buf){
-     omax_util_outletOSC(x->outletErr, l, buf);
-     omax_util_outletOSC(x->outletInval, len, ptr);
-     osc_mem_free(buf);
-     }
-     return;
-     }
-     */
+
 	if(*ptr != '#' && *ptr != '/'){
 		char errstr[128];
 		snprintf(errstr, 128, "invalid packet: packet does not begin with a # or a /");
@@ -97,7 +75,7 @@ void obundle_validate(t_obundle *x, long len, char *ptr)
 		if(bs){
 			omax_util_outletOSC(x->outletErr, osc_bundle_s_getLen(bs), osc_bundle_s_getPtr(bs));
 			omax_util_outletOSC(x->outletInval, len, ptr);
-			osc_mem_free(buf);
+			osc_mem_free(bs);
 		}
 		return;
 	}
@@ -115,7 +93,7 @@ void obundle_validate(t_obundle *x, long len, char *ptr)
 		if(bs){
 			omax_util_outletOSC(x->outletErr, osc_bundle_s_getLen(bs), osc_bundle_s_getPtr(bs));
 			omax_util_outletOSC(x->outletInval, len, ptr);
-			osc_mem_free(buf);
+			osc_mem_free(bs);
 		}
 		return;
 	}
@@ -143,7 +121,7 @@ void obundle_validate(t_obundle *x, long len, char *ptr)
 			if(bs){
 				omax_util_outletOSC(x->outletErr, osc_bundle_s_getLen(bs), osc_bundle_s_getPtr(bs));
 				omax_util_outletOSC(x->outletInval, len, ptr);
-				osc_mem_free(buf);
+				osc_mem_free(bs);
 			}
 			return;            
 		}
@@ -176,7 +154,7 @@ void obundle_validate(t_obundle *x, long len, char *ptr)
 			if(bs){
 				omax_util_outletOSC(x->outletErr, osc_bundle_s_getLen(bs), osc_bundle_s_getPtr(bs));
 				omax_util_outletOSC(x->outletInval, len, ptr);
-				osc_mem_free(buf);
+				osc_mem_free(bs);
 			}
 			return;            
 		}
@@ -184,8 +162,37 @@ void obundle_validate(t_obundle *x, long len, char *ptr)
 	omax_util_outletOSC(x->outletVal, len, ptr);
 }
 
+void obundle_fullPacket(t_obundle *x, t_symbol *msg, int argc, t_atom *argv)
+{
+	OMAX_UTIL_GET_LEN_AND_PTR
+	unsigned char *buf = (unsigned char *)ptr;
+	int i;
+	t_osc_bndl_u *b = osc_bundle_u_alloc();
+        
+	t_osc_msg_u *bytes = osc_message_u_alloc();
+	osc_message_u_setAddress(bytes, "/bytes");
+
+    for(i = 0; i < len; i++)
+    {
+		osc_message_u_appendInt32(bytes, (int)buf[i]);
+	}
+	
+	osc_bundle_u_addMsg(b, bytes);
+	t_osc_bundle_s *s_bndl = osc_bundle_u_serialize(b);
+	omax_util_outletOSC(x->outletVal, osc_bundle_s_getLen(s_bndl), osc_bundle_s_getPtr(s_bndl));
+	osc_bundle_s_deepFree(s_bndl);
+	osc_bundle_u_free(b);
+}
+
 void obundle_anything(t_obundle *x, t_symbol *msg, int argc, t_atom *argv)
 {
+
+    if(msg->s_name == gensym("FullPacket"))
+    {
+        obundle_fullPacket(x,msg,argc,argv);
+        return;
+    }
+
     if(argc)
     {
         char buf[argc];
@@ -240,9 +247,10 @@ int setup_o0x2ebundle(void)
 {
 	t_class *c = class_new(gensym("o.bundle"), (t_newmethod)obundle_new, (t_method)obundle_free, sizeof(t_obundle), 0L, A_GIMME, 0);
 	class_addmethod(c, (t_method)obundle_doc, gensym("doc"), 0);
-	//class_addmethod(c, (method)obundle_bang, "bang", 0);
-	class_addmethod(c, (t_method)obundle_anything, gensym("anything"), A_GIMME, 0);
+    class_addmethod(c, (t_method)obundle_fullPacket, gensym("FullPacket"), A_GIMME, 0);
+    class_addmethod(c, (t_method)obundle_anything, gensym("anything"), A_GIMME, 0);
     class_addmethod(c, (t_method)obundle_anything, gensym("list"), A_GIMME, 0);
+    class_addbang(c, (t_method)obundle_bang);
 
     class_addmethod(c, (t_method)odot_version, gensym("version"), 0);
     

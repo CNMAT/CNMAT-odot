@@ -3,7 +3,7 @@
 #  http://puredata.info/docs/developer/MakefileTemplate
 LIBRARY_NAME = odot
 
-BASENAMES = o.compose o.display o.append o.atomize o.change o.collect o.cond o.context  o.difference odot o.downcast o.explode o.expr o.expr.codebox o.flatten o.if o.intersection o.listenumerate o.mappatch o.message o.messageiterate o.pack o.pak o.prepend o.printbytes o.print o.route o.schedule o.select o.slip.decode o.slip.encode o.table o.timetag o.union o.unless o.validate o.var o.when 
+BASENAMES = o.compose o.display o.append o.atomize o.bundle o.change o.collect o.cond o.context  o.difference odot o.downcast o.explode o.expr o.expr.codebox o.flatten o.if o.intersection o.listenumerate o.mappatch o.message o.messageiterate o.pack o.pak o.prepend o.printbytes o.print o.route o.schedule o.select o.slip.decode o.slip.encode o.table o.timetag o.union o.unless o.validate o.var o.when 
 
 # add your .c source files, one object per file, to the SOURCES
 # variable, help files will be included automatically, and for GUI
