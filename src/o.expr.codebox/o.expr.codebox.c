@@ -268,6 +268,7 @@ t_max_err oexprcodebox_notify(t_oexprcodebox *x, t_symbol *s, t_symbol *msg, voi
     
     if(msg == gensym("attr_modified")){
         attrname = (t_symbol *)object_method((t_object *)data, gensym("getname"));
+        jbox_redraw((t_jbox *)x);
     }
     return MAX_ERR_NONE;
 }
@@ -835,9 +836,9 @@ void *oexprcodebox_new(t_symbol *msg, short argc, t_atom *argv)
 		//t_osc_expr *f = NULL;
 		x->outlets[1] = outlet_new((t_object *)x, "FullPacket");
 		x->outlets[0] = outlet_new((t_object *)x, "FullPacket");
-        x->frame_color.red = 0.216;
-        x->frame_color.green = 0.435;
-        x->frame_color.blue = 0.7137;
+        x->frame_color.red = 0.29; //0.216;
+        x->frame_color.green = 0.31; //0.435;
+        x->frame_color.blue = 0.302; //0.7137;
         x->frame_color.alpha = 1.0;
 		attr_dictionary_process(x, d);
 		t_object *textfield = jbox_get_textfield((t_object *)x);
@@ -845,9 +846,9 @@ void *oexprcodebox_new(t_symbol *msg, short argc, t_atom *argv)
 			object_attr_setchar(textfield, gensym("editwhenunlocked"), 1);
 			textfield_set_editonclick(textfield, 0);
 			textfield_set_textmargins(textfield, 5, 13, 5, 5);
-            x->text_color.red = 0.0;
-            x->text_color.blue = 0.0;
-            x->text_color.green = 0.0;
+            x->text_color.red = 0.188;
+            x->text_color.blue = 0.188;
+            x->text_color.green = 0.188;
             x->text_color.alpha = 1.0;
 			textfield_set_textcolor(textfield, &(x->text_color));
 		}
@@ -912,7 +913,7 @@ int main(void)
     //CLASS_ATTR_CATEGORY_KLUDGE(c, "frame_color", 0, "Color");
     
     CLASS_ATTR_RGBA(c, "default_color", 0, t_oexprcodebox, default_color);
-	CLASS_ATTR_DEFAULT_SAVE_PAINT(c, "default_color", 0, ".216 .435 .7137 1.");
+	CLASS_ATTR_DEFAULT_SAVE_PAINT(c, "default_color", 0, ".29 .31 .302 1.");
 	CLASS_ATTR_STYLE_LABEL(c, "default_color", 0, "rgba", "Default Color");
     CLASS_ATTR_CATEGORY_KLUDGE(c, "default_color", 0, "Color");
     

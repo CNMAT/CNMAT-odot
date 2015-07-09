@@ -1287,7 +1287,7 @@ int main(void){
     CLASS_ATTR_CATEGORY_KLUDGE(c, "background_color", 0, "Color");
     
     CLASS_ATTR_RGBA(c, "flash_color", 0, t_ocompose, flash_color);
-    CLASS_ATTR_DEFAULT_SAVE_PAINT(c, "flash_color", 0, ".216 .435 .7137 1."); // by default, it's the same as frame colour, but user-settable nonetheless
+    CLASS_ATTR_DEFAULT_SAVE_PAINT(c, "flash_color", 0, ".29 .31 .302 1."); // by default, it's the same as frame colour, but user-settable nonetheless
     CLASS_ATTR_STYLE_LABEL(c, "flash_color", 0, "rgba", "Flash Color");
     CLASS_ATTR_CATEGORY_KLUDGE(c, "flash_color", 0, "Color");
     
@@ -1297,7 +1297,7 @@ int main(void){
     CLASS_ATTR_CATEGORY_KLUDGE(c, "error_color", 0, "Color");
     
     CLASS_ATTR_RGBA(c, "default_color", 0, t_ocompose, default_color);
-    CLASS_ATTR_DEFAULT_SAVE_PAINT(c, "default_color", 0, ".216 .435 .7137 1.");
+    CLASS_ATTR_DEFAULT_SAVE_PAINT(c, "default_color", 0, ".29 .31 .302 1.");
     CLASS_ATTR_STYLE_LABEL(c, "default_color", 0, "rgba", "Default Color");
     CLASS_ATTR_CATEGORY_KLUDGE(c, "default_color", 0, "Color");
 
@@ -1307,7 +1307,7 @@ int main(void){
     //CLASS_ATTR_SAVE(c, "data", 0 );
 
     CLASS_ATTR_RGBA(c, "text_color", 0, t_ocompose, text_color);
-    CLASS_ATTR_DEFAULT_SAVE_PAINT(c, "text_color", 0, "0. 0. 0. 1.");
+    CLASS_ATTR_DEFAULT_SAVE_PAINT(c, "text_color", 0, "0.188 0.188 0.188 1.");
     CLASS_ATTR_STYLE_LABEL(c, "text_color", 0, "rgba", "Text Color");
     CLASS_ATTR_CATEGORY_KLUDGE(c, "text_color", 0, "Color");
     
