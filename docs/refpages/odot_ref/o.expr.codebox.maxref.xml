@@ -42,12 +42,10 @@
 
 	<!--ARGUMENTS-->
 	<objarglist>
-		<objarg name="right_operand" optional="1" type="llll">
+		<objarg name="argument" optional="1" type="OSC">
 			<digest>
-				OSC address to append
 			</digest>
 			<description>
-				This address will be appended to every address in the incoming bundle.
 			</description>
 		</objarg>
 	</objarglist>
