@@ -20,29 +20,31 @@
 
 	<!--INLETS-->
 	<inletlist>
-		<inlet id="0" type="INLET_TYPE">
+		<inlet id="0" type="FullPacket">
 			<digest>
-				OSC packet
+				odot bundle
 			</digest>
 			<description>
+				An odot bundle whose addresses are in need of appending
 			</description>
 		</inlet>
 	</inletlist>
 
 	<!--OUTLETS-->
 	<outletlist>
-		<outlet id="0" type="INLET_TYPE">
+		<outlet id="0" type="FullPacket">
 			<digest>
-				OSC packet with argument appended
+				odot bundle with updated addresses
 			</digest>
 			<description>
+				The resulting bundle with updated addresses
 			</description>
 		</outlet>
 	</outletlist>
 
 	<!--ARGUMENTS-->
 	<objarglist>
-		<objarg name="address to append" optional="1" type="symbol">
+		<objarg name="address" optional="1" type="symbol">
 			<digest>
 				OSC address to append
 			</digest>
@@ -66,7 +68,7 @@
 		<method name="anything [variable]">
 			<arglist />
 			<digest>
-				A Max message containing a valid OSC address
+				A Max message containing OSC addresses and values to be transcoded to an odot bundle
 			</digest>
 			<description>
 				Converts the incoming Max message to an odot bundle, and performs the FullPacket operation of the object.
@@ -75,7 +77,7 @@
 		<method name="dictionary [variable]">
 			<arglist />
 			<digest>
-				A Max dictionary
+				A Max dictionary to be transcoded to an odot bundle
 			</digest>
 			<description>
 				Converts the incoming Max dictionary to an odot bundle, and performs the FullPacket operation of the object.
@@ -112,7 +114,7 @@
 
 	<!--DISCUSSION-->
 	<discussion>
-		This object is similar to the Max built-in object "append", except that it operates on the addresses of the odot variables. That is, o.append /foo will append /foo to all addresses of an incoming bundle. For example, given { /bar : 1, /boo : 2 }, the result of passing that bundle to o.append will be { /bar/foo : 1, /boo/foo : 2 }.
+		This object is similar to the Max built-in object "append", except that it operates on the addresses of the odot variables. That is, an instance of o.append /foo will append /foo to every address of an incoming bundle. For example, given { /bar : 1, /boo : 2 }, the result of passing that bundle to the o.append example above will be { /bar/foo : 1, /boo/foo : 2 }.
 	</discussion>
 
 	<!--SEEALSO-->

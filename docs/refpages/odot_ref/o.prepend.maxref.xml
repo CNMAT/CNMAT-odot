@@ -20,32 +20,36 @@
 
 	<!--INLETS-->
 	<inletlist>
-		<inlet id="0" type="INLET_TYPE">
+		<inlet id="0" type="FullPacket">
 			<digest>
 				OSC packet
 			</digest>
 			<description>
+				An odot bundle containing addresses that are in need of prepending
 			</description>
 		</inlet>
 	</inletlist>
 
 	<!--OUTLETS-->
 	<outletlist>
-		<outlet id="0" type="INLET_TYPE">
+		<outlet id="0" type="FullPacket">
 			<digest>
-				OSC packet WITH WHATEVER
+				OSC packet with updated addresses
 			</digest>
 			<description>
+				An odot bundle with updated addresses.
 			</description>
 		</outlet>
 	</outletlist>
 
 	<!--ARGUMENTS-->
 	<objarglist>
-		<objarg name="argument" optional="1" type="OSC">
+		<objarg name="address to prepend" optional="1" type="symbol">
 			<digest>
+				OSC address to prepend
 			</digest>
 			<description>
+				This address will be prepended to every address in the incoming bundle.
 			</description>
 		</objarg>
 	</objarglist>
@@ -55,19 +59,69 @@
 		<method name="FullPacket [variable]">
 			<arglist />
 			<digest>
+				The OSC packet that the object's address argument will be prepended to.
 			</digest>
 			<description>
+				Performs and outputs the prepend operation on each of the addresses in the incoming odot bundle.
+			</description>
+		</method>
+		<method name="anything [variable]">
+			<arglist />
+			<digest>
+				A Max message containing OSC addresses and values to be transcoded to an odot bundle
+			</digest>
+			<description>
+				Converts the incoming Max message to an odot bundle, and performs the FullPacket operation of the object.
+			</description>
+		</method>
+		<method name="dictionary [variable]">
+			<arglist />
+			<digest>
+				A Max dictionary to be transcoded to an odot bundle
+			</digest>
+			<description>
+				Converts the incoming Max dictionary to an odot bundle, and performs the FullPacket operation of the object.
+			</description>
+		</method>
+		<method name="doc">
+			<arglist />
+			<digest>
+				Output an odot bundle containing the documentation of the object
+			</digest>
+			<description>
+				Outputs an odot bundle containing object name, short and long descriptions of object operation, inlet and outlet information, and see also (where available).
+			</description>
+		</method>
+		<method name="set [variable]">
+			<arglist />
+			<digest>
+				Set the address to be prepended.
+			</digest>
+			<description>
+				Sets the address to be prepended to incoming odot bundles's addresses.
+			</description>
+		</method>
+		<method name="version">
+			<arglist />
+			<digest>
+				Get current version information.
+			</digest>
+			<description>
+				Prints the current odot build version to the Max Window.
 			</description>
 		</method>
 	</methodlist>
 
 	<!--DISCUSSION-->
 	<discussion>
+		This object is similar to the Max built-in object "prepend", except that it operates on the addresses of the odot variables. That is, an instance of o.prepend /foo will prepend /foo to every address of an incoming bundle. For example, given { /bar : 1, /boo : 2 }, the result of passing that bundle to the o.prepend example above will be { /foo/bar : 1, /foo/boo : 2 }.
 	</discussion>
 
 	<!--SEEALSO-->
 	<seealsolist>
-		<seealso name="o.overview" />
+		<seealso name="o.append" />
+		<seealso name="append" />
+		<seealso name="prepend" />
 	</seealsolist>
 
 	<misc name = "Input">
@@ -89,11 +143,12 @@
 	<misc name = "Discussion">
 		<entry name ="More details">
 			<description>
+				This object is similar to the Max built-in object "prepend", except that it operates on the addresses of the odot variables. That is, an instance of o.prepend /foo will prepend /foo to every address of an incoming bundle. For example, given { /bar : 1, /boo : 2 }, the result of passing that bundle to the o.prepend example above will be { /foo/bar : 1, /foo/boo : 2 }.
 			</description>
 		</entry>
 		<entry name ="Keywords">
 			<description>
-				odot, address, bundle
+				odot, append, address, bundle
 			</description>
 		</entry>
 	</misc>

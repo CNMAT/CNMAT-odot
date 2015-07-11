@@ -4,11 +4,11 @@
 <c74object name="o.display" module="odot">
 
 	<digest>
-		Display incoming OSC bundles
+		Display incoming odot bundles
 	</digest>
 
 	<description>
-		o.display displays OSC in text form and passes them through to its outlet.
+		o.display displays odot bundles in text form and passes them through to its outlet.
 	</description>
 
 	<!--METADATA-->
