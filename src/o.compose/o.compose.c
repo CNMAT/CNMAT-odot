@@ -154,8 +154,9 @@ typedef struct _ocompose{
     int bndl_has_been_checked_for_subs;
     long textlen;
     char *text;
-    t_jrgba frame_color, background_color, text_color, flash_color, error_color, default_color;
+    t_jrgba frame_color, background_color, text_color, flash_color, error_color;
     void *qelem;
+    int has_errors;
     int mouse_down;
     int have_new_data;
     int draw_new_data_indicator;
@@ -301,6 +302,7 @@ void ocompose_clearBundles(t_ocompose *x)
         x->textlen = 0;
         osc_mem_free(x->text);
         x->text = NULL;
+        x->has_errors = 0;
     }
 #endif
     critical_exit(x->lock);
@@ -408,7 +410,11 @@ void ocompose_paint(t_ocompose *x, t_object *patcherview)
     }
     
     // outline
-    jgraphics_set_source_jrgba(g, &(x->frame_color));
+    if (x->has_errors == 1) {
+        jgraphics_set_source_jrgba(g, &(x->error_color));
+    } else {
+        jgraphics_set_source_jrgba(g, &(x->frame_color));
+    }
     jgraphics_set_line_width(g, 2.);
     jgraphics_move_to(g, rect.width - 10, rect.height - 1);
     jgraphics_line_to(g, 1, rect.height - 1);
@@ -483,6 +489,7 @@ long ocompose_keyfilter(t_ocompose *x, t_object *patcherview, long *keycode, lon
 
 
 void ocompose_mousedown(t_ocompose *x, t_object *patcherview, t_pt pt, long modifiers){
+    if (x->has_errors != 0) return;
     textfield_set_textmargins(jbox_get_textfield((t_object *)x), 6, 6, 14, 4);
     critical_enter(x->lock);
         x->draw_new_data_indicator = 1;
@@ -492,6 +499,7 @@ void ocompose_mousedown(t_ocompose *x, t_object *patcherview, t_pt pt, long modi
 }
 
 void ocompose_mouseup(t_ocompose *x, t_object *patcherview, t_pt pt, long modifiers){
+    if (x->has_errors != 0) return;
     textfield_set_textmargins(jbox_get_textfield((t_object *)x), 5, 5, 15, 5);
     critical_enter(x->lock);
         x->mouse_down = 0;
@@ -557,18 +565,20 @@ void ocompose_gettext(t_ocompose *x)
     if(e){
         object_error((t_object *)x, "error parsing bundle\n");
 #ifndef OMAX_PD_VERSION
-        x->frame_color.red = x->error_color.red;
-        x->frame_color.green = x->error_color.green;
-        x->frame_color.blue = x->error_color.blue;
-        x->frame_color.alpha = x->error_color.alpha;
+        x->has_errors = 1;
+//        x->frame_color.red = x->error_color.red;
+//        x->frame_color.green = x->error_color.green;
+//        x->frame_color.blue = x->error_color.blue;
+//        x->frame_color.alpha = x->error_color.alpha;
 #endif
         return;
     } else {
 #ifndef OMAX_PD_VERSION
-        x->frame_color.red = x->default_color.red;
-        x->frame_color.green = x->default_color.green;
-        x->frame_color.blue = x->default_color.blue;
-        x->frame_color.alpha = x->default_color.alpha;
+        x->has_errors = 0;
+//        x->frame_color.red = x->default_color.red;
+//        x->frame_color.green = x->default_color.green;
+//        x->frame_color.blue = x->default_color.blue;
+//        x->frame_color.alpha = x->default_color.alpha;
 #endif
     }
     t_osc_bndl_s *bs = osc_bundle_u_serialize(bndl_u);
@@ -1183,6 +1193,7 @@ void *ocompose_new(t_symbol *msg, short argc, t_atom *argv){
         x->text = NULL;
         x->bndl_has_been_checked_for_subs = 0;
         x->bndl_has_subs = 0;
+        x->has_errors = 0;
         critical_new(&(x->lock));
         x->qelem = qelem_new((t_object *)x, (method)ocompose_refresh);
         x->new_data_indicator_clock = clock_new((t_object *)x, (method)ocompose_refresh);
@@ -1190,19 +1201,15 @@ void *ocompose_new(t_symbol *msg, short argc, t_atom *argv){
         x->have_new_data = 1;
         x->draw_new_data_indicator = 0;
         attr_dictionary_process(x, d);
-        x->frame_color.red = x->default_color.red;
-        x->frame_color.green = x->default_color.green;
-        x->frame_color.blue = x->default_color.blue;
-        x->frame_color.alpha = x->default_color.alpha;
+//        x->frame_color.red = x->default_color.red;
+//        x->frame_color.green = x->default_color.green;
+//        x->frame_color.blue = x->default_color.blue;
+//        x->frame_color.alpha = x->default_color.alpha;
         t_object *textfield = jbox_get_textfield((t_object *)x);
         if(textfield){
             object_attr_setchar(textfield, gensym("editwhenunlocked"), 1);
             textfield_set_editonclick(textfield, 0);
             textfield_set_textmargins(textfield, 5, 5, 15, 5);
-            //x->text_color.red = 0.0;
-            //x->text_color.green = 0.0;
-            //x->text_color.blue = 0.0;
-            //x->text_color.alpha = 1.0;
             textfield_set_textcolor(textfield, &(x->text_color));
         }
         
@@ -1296,10 +1303,10 @@ int main(void){
     CLASS_ATTR_STYLE_LABEL(c, "error_color", 0, "rgba", "Error Color");
     CLASS_ATTR_CATEGORY_KLUDGE(c, "error_color", 0, "Color");
     
-    CLASS_ATTR_RGBA(c, "default_color", 0, t_ocompose, default_color);
-    CLASS_ATTR_DEFAULT_SAVE_PAINT(c, "default_color", 0, ".29 .31 .302 1.");
-    CLASS_ATTR_STYLE_LABEL(c, "default_color", 0, "rgba", "Default Color");
-    CLASS_ATTR_CATEGORY_KLUDGE(c, "default_color", 0, "Color");
+    CLASS_ATTR_RGBA(c, "frame_color", 0, t_ocompose, frame_color);
+    CLASS_ATTR_DEFAULT_SAVE_PAINT(c, "frame_color", 0, ".29 .31 .302 1.");
+    CLASS_ATTR_STYLE_LABEL(c, "frame_color", 0, "rgba", "Frame Color");
+    CLASS_ATTR_CATEGORY_KLUDGE(c, "frame_color", 0, "Color");
 
     CLASS_ATTR_DEFAULT(c, "fontname", 0, "\"Courier New\"");
     
@@ -1308,8 +1315,8 @@ int main(void){
 
     CLASS_ATTR_RGBA(c, "text_color", 0, t_ocompose, text_color);
     CLASS_ATTR_DEFAULT_SAVE_PAINT(c, "text_color", 0, "0.188 0.188 0.188 1.");
-    CLASS_ATTR_STYLE_LABEL(c, "text_color", 0, "rgba", "Text Color");
-    CLASS_ATTR_CATEGORY_KLUDGE(c, "text_color", 0, "Color");
+    //CLASS_ATTR_STYLE_LABEL(c, "text_color", 0, "rgba", "Text Color");
+    //CLASS_ATTR_CATEGORY_KLUDGE(c, "text_color", 0, "Color");
     
     CLASS_ATTR_DEFAULT(c, "rect", 0, "0. 0. 150. 20.");
     
