@@ -119,7 +119,7 @@
 				<li>numerical values require no additional symbols: /foo : 1 or /foo : 3.14159</li>
 				<li>lists are enclosed in square brackets, items are separated by commas: /foo : [1, 2, 3]</li>
 				<li>strings must be enclosed in double quotes</li>
-				<li>sub-bundles must be enclosed in curly brackets: /foo : { /bar : "one", /boo : [1, "two", 3.14] }
+				<li>sub-bundles must be enclosed in curly brackets: /foo : { /bar : "one", /boo : [1, "two", 3.14] }</li>
 			</ul>
 		</ul>
 
