@@ -44,7 +44,7 @@
 
 	<!--ARGUMENTS-->
 	<objarglist>
-		<objarg name="address to prepend" optional="1" type="symbol">
+		<objarg name="address" optional="1" type="symbol">
 			<digest>
 				OSC address to prepend
 			</digest>

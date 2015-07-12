@@ -4,11 +4,11 @@
 <c74object name="o.append" module="odot">
 
 	<digest>
-		Append an OSC address to every OSC address in a bundle
+		Append an OSC address to every OSC address in an odot bundle
 	</digest>
 
 	<description>
-		o.append takes an OSC address as an argument and appends it to every address in the bundle.
+		o.append takes an OSC address as an argument and appends it to every address in an incoming odot bundle.
 	</description>
 
 	<!--METADATA-->
@@ -95,7 +95,7 @@
 		<method name="set [variable]">
 			<arglist />
 			<digest>
-				Set the address to be appended.
+				Set the address to be appended
 			</digest>
 			<description>
 				Sets the address to be appended to incoming odot bundles.
@@ -104,7 +104,7 @@
 		<method name="version">
 			<arglist />
 			<digest>
-				Get current version information.
+				Get current version information
 			</digest>
 			<description>
 				Prints the current odot build version to the Max Window.

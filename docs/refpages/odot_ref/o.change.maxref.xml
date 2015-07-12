@@ -25,6 +25,7 @@
 				odot bundle
 			</digest>
 			<description>
+				An odot bundle to evaluate for changes.
 			</description>
 		</inlet>
 		<inlet id="0" type="FullPacket">
@@ -32,6 +33,7 @@
 				odot bundle to compare against
 			</digest>
 			<description>
+				Set an odot bundle without evaluating it against the previously received bundle.
 			</description>
 		</inlet>
 	</inletlist>

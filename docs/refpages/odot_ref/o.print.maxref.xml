@@ -22,7 +22,7 @@
 	<inletlist>
 		<inlet id="0" type="FullPacket">
 			<digest>
-				OSC packet
+				odot bundle
 			</digest>
 			<description>
 				The odot bundle to be printed.
@@ -34,13 +34,25 @@
 	<outletlist>
 		<outlet id="0" type="FullPacket">
 			<digest>
-				OSC packet
+				odot bundle
 			</digest>
 			<description>
 				The incoming odot bundle, untouched.
 			</description>
 		</outlet>
 	</outletlist>
+
+	<!--ARGUMENTS-->
+	<objarglist>
+		<objarg name="label" optional="1" type="symbol">
+			<digest>
+				A label to use
+			</digest>
+			<description>
+				Similar to the "print" object in Max, o.print allows the user to customize its output with a label. An instance of "o.print yo" will display "yo:" in the Max window next to its print-out.
+			</description>
+		</objarg>
+	</objarglist>
 
 	<!--MESSAGES-->
 	<methodlist>
