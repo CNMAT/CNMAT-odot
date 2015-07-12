@@ -311,12 +311,14 @@ void oexprcodebox_gettext(t_oexprcodebox *x)
     critical_enter(x->lock);
 
         t_osc_err error = osc_expr_parser_parseExpr(text, &(x->expr));
-        
+    
+#ifndef OMAX_PD_VERSION
         if (error == OSC_ERR_NONE) {
             x->has_errors = 0;
         } else {
             x->has_errors = 1;
         }
+#endif
     
     critical_exit(x->lock);
 }
