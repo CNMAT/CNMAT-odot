@@ -20,60 +20,123 @@
 
 	<!--INLETS-->
 	<inletlist>
-		<inlet id="0" type="INLET_TYPE">
+		<inlet id="0" type="FullPacket">
 			<digest>
-				OSC packet
+				odot bundle
 			</digest>
 			<description>
+				The left hand side odot bundle for difference operation.
+			</description>
+		</inlet>
+		<inlet id="1" type="FullPacket">
+			<digest>
+				odot bundle
+			</digest>
+			<description>
+				The right hand side odot bundle for difference operation (does not produce output).
 			</description>
 		</inlet>
 	</inletlist>
 
 	<!--OUTLETS-->
 	<outletlist>
-		<outlet id="0" type="INLET_TYPE">
+		<outlet id="0" type="FullPacket">
 			<digest>
-				OSC packet WITH WHATEVER
+				Difference of the odot bundles
 			</digest>
 			<description>
+				o.difference takes the addresses of the bundles passed to its right and left outlets and produces a bundle containing addresses that are not present in both of them. That is, if an address "/foo" is present in both the left-hand bundle and the right-hand bundle, it will not be included in the resulting bundle. If "/foo" is present in either the left or the right hand bundle but not in the other, it will be included in the result.
 			</description>
 		</outlet>
 	</outletlist>
-
-	<!--ARGUMENTS-->
-	<objarglist>
-		<objarg name="argument" optional="1" type="OSC">
-			<digest>
-			</digest>
-			<description>
-			</description>
-		</objarg>
-	</objarglist>
 
 	<!--MESSAGES-->
 	<methodlist>
 		<method name="FullPacket [variable]">
 			<arglist />
 			<digest>
+				Provide a bundle for difference
 			</digest>
 			<description>
+				odot bundles sent to the right inlet set the bundle to perform the difference operation without output. Bundles set to the left inlet are differenced with the last bundle sent to the right inlet.
+			</description>
+		</method>
+		<method name="anything [variable]">
+			<arglist />
+			<digest>
+				Max OSC message
+			</digest>
+			<description>
+				A Max OSC message is converted into an odot bundle and is processed as a FullPacket.
+			</description>
+		</method>
+		<method name="bang">
+			<arglist />
+			<digest>
+				Output the right hand bundle
+			</digest>
+			<description>
+				A bang message outputs the last bundle sent to the right inlet.
+			</description>
+		</method>
+		<method name="clear">
+			<arglist />
+			<digest>
+				Clear the right hand bundle
+			</digest>
+			<description>
+				Clear the right hand bundle.
+			</description>
+		</method>
+		<method name="dictionary">
+			<arglist />
+			<digest>
+				Max dictionary
+			</digest>
+			<description>
+				o.difference converts a Max dictionary into an odot bundle and processes it as a FullPacket.
+			</description>
+		</method>
+		<method name="doc">
+			<arglist />
+			<digest>
+				Output an odot bundle containing the documentation of the object
+			</digest>
+			<description>
+				Outputs an odot bundle containing object name, short and long descriptions of object operation, inlet and outlet information, and see also (where available).
+			</description>
+		</method>
+		<method name="version">
+			<arglist />
+			<digest>
+				Get current version information.
+			</digest>
+			<description>
+				Prints the current odot build version to the Max Window.
 			</description>
 		</method>
 	</methodlist>
 
 	<!--DISCUSSION-->
 	<discussion>
+		o.difference takes the addresses of the bundles passed to its right and left outlets and produces a bundle containing addresses that are not present in both of them. That is, if an address "/foo" is present in both the left-hand bundle and the right-hand bundle, it will not be included in the resulting bundle. If "/foo" is present in either the left or the right hand bundle but not in the other, it will be included in the result.
 	</discussion>
 
 	<!--SEEALSO-->
 	<seealsolist>
-		<seealso name="o.overview" />
+		<seealso name="o.intersection" />
+		<seealso name="o.union" />
 	</seealsolist>
 
 	<misc name = "Input">
 		<entry name ="Inlet 1 (FullPacket)">
 			<description>
-				An odot bundle to operate on.
+				The left hand side of the difference.
+			</description>
+		</entry>
+		<entry name ="Inlet 2 (FullPacket)">
+			<description>
+				The right hand side of the difference.
 			</description>
 		</entry>
 	</misc>
@@ -81,7 +144,7 @@
 	<misc name = "Output">
 		<entry name ="Outlet 1 (FullPacket)">
 			<description>
-				The resulting odot bundle (FullPacket).
+				The result of the difference (FullPacket).
 			</description>
 		</entry>
 	</misc>
@@ -89,6 +152,7 @@
 	<misc name = "Discussion">
 		<entry name ="More details">
 			<description>
+				o.difference takes the addresses of the bundles passed to its right and left outlets and produces a bundle containing addresses that are not present in both of them. That is, if an address "/foo" is present in both the left-hand bundle and the right-hand bundle, it will not be included in the resulting bundle. If "/foo" is present in either the left or the right hand bundle but not in the other, it will be included in the result.
 			</description>
 		</entry>
 		<entry name ="Keywords">

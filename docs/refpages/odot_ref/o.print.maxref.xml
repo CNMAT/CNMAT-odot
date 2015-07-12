@@ -122,7 +122,7 @@
 		<method name="version">
 			<arglist />
 			<digest>
-				Get current version information.
+				Get current version information
 			</digest>
 			<description>
 				Prints the current odot build version to the Max Window.

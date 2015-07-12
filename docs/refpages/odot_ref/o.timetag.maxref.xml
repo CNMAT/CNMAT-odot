@@ -20,11 +20,12 @@
 
 	<!--INLETS-->
 	<inletlist>
-		<inlet id="0" type="INLET_TYPE">
+		<inlet id="0" type="FullPacket">
 			<digest>
-				OSC packet
+				odot bundle
 			</digest>
 			<description>
+				o.timetag binds the current time to the address of its argument
 			</description>
 		</inlet>
 	</inletlist>
@@ -33,19 +34,22 @@
 	<outletlist>
 		<outlet id="0" type="INLET_TYPE">
 			<digest>
-				OSC packet WITH WHATEVER
+				odot bundle with a timetag
 			</digest>
 			<description>
+				If an instance of o.timetag includes an address as an argument, the timetag will be bound to the address, otherwise the timetag will be included in the OSC header of the bundle.
 			</description>
 		</outlet>
 	</outletlist>
 
 	<!--ARGUMENTS-->
 	<objarglist>
-		<objarg name="argument" optional="1" type="OSC">
+		<objarg name="address" optional="1" type="symbol">
 			<digest>
+				An odot address to bind the timetag to
 			</digest>
 			<description>
+				An odot address to bind the timetag to
 			</description>
 		</objarg>
 	</objarglist>
@@ -55,25 +59,73 @@
 		<method name="FullPacket [variable]">
 			<arglist />
 			<digest>
+				Process an odot bundle
 			</digest>
 			<description>
+				o.timetag includes the current time in an incoming odot bundle. If no address is specified as an argument, the timetag will be added to the OSC header of the bundle (note that the timetag will be invisible in o.display and o.print in this case -- o.printbytes can be used to verify that the timetag has been set). Otherwise, the timetag will be bound to the user-specified address. If the address specified in an instance of o.timetag already exists in the incoming bundle, it will be overwritten by the timetag data.
+			</description>
+		</method>
+		<method name="anything [variable]">
+			<arglist />
+			<digest>
+				Process an OSC Max message
+			</digest>
+			<description>
+				o.timetag transcodes Max messages containing OSC (e.g. "/foo 1 2. three") and processes them as it would a FullPacket.
+			</description>
+		</method>
+		<method name="bang">
+			<arglist />
+			<digest>
+				Generate a timetag
+			</digest>
+			<description>
+				Identical to passing in an empty odot bundle. If no argument is present, the timetag will be bound to the bundle header and will be invisible in o.display and o.print. o.printbytes will have the data visible in a machine-readable format.
+			</description>
+		</method>
+		<method name="dictionary [variable]">
+			<arglist />
+			<digest>
+				Process a Max dictionary
+			</digest>
+			<description>
+				o.timetag transcodes a Max dictionary into an odot bundle and processes the bundle as it would a FullPacket.
+			</description>
+		</method>
+		<method name="doc">
+			<arglist />
+			<digest>
+				Output an odot bundle containing the documentation of the object
+			</digest>
+			<description>
+				Outputs an odot bundle containing object name, short and long descriptions of object operation, inlet and outlet information, and see also (where available).
+			</description>
+		</method>
+		<method name="version">
+			<arglist />
+			<digest>
+				Get current version information
+			</digest>
+			<description>
+				Prints the current odot build version to the Max Window.
 			</description>
 		</method>
 	</methodlist>
 
 	<!--DISCUSSION-->
 	<discussion>
+		o.timetag is used to generate time stamps for odot events in a patcher. Time tags bound to addresses can be operated on using o.expr.codebox. Future events can be scheduled for execution using o.schedule. Coupled with scheduling, time tags afford accurate playback of gestures and control data.
 	</discussion>
 
 	<!--SEEALSO-->
 	<seealsolist>
-		<seealso name="o.overview" />
+		<seealso name="o.schedule" />
 	</seealsolist>
 
 	<misc name = "Input">
 		<entry name ="Inlet 1 (FullPacket)">
 			<description>
-				An odot bundle to operate on.
+				An odot bundle to append the timetag to.
 			</description>
 		</entry>
 	</misc>
@@ -81,7 +133,7 @@
 	<misc name = "Output">
 		<entry name ="Outlet 1 (FullPacket)">
 			<description>
-				The resulting odot bundle (FullPacket).
+				A copy of the odot bundle with timetag data applied (FullPacket).
 			</description>
 		</entry>
 	</misc>
@@ -89,11 +141,12 @@
 	<misc name = "Discussion">
 		<entry name ="More details">
 			<description>
+				o.timetag is used to generate time stamps for odot events in a patcher. Time tags bound to addresses can be operated on using o.expr.codebox. Future events can be scheduled for execution using o.schedule. Coupled with scheduling, time tags afford accurate playback of gestures and control data.
 			</description>
 		</entry>
 		<entry name ="Keywords">
 			<description>
-				odot, address, bundle
+				odot, address, bundle, timetag, schedule
 			</description>
 		</entry>
 	</misc>

@@ -20,60 +20,79 @@
 
 	<!--INLETS-->
 	<inletlist>
-		<inlet id="0" type="INLET_TYPE">
+		<inlet id="0" type="signal">
 			<digest>
-				OSC packet
+				signal
 			</digest>
 			<description>
+				Audio signal
 			</description>
 		</inlet>
 	</inletlist>
 
 	<!--OUTLETS-->
 	<outletlist>
-		<outlet id="0" type="INLET_TYPE">
+		<outlet id="0" type="FullPacket">
 			<digest>
-				OSC packet WITH WHATEVER
+				odot bundle report of transitions
 			</digest>
 			<description>
+				An odot bundle containing report of all zero to non-zero and non-zero to zero transitions occurred in a signal vector.
 			</description>
 		</outlet>
 	</outletlist>
 
-	<!--ARGUMENTS-->
-	<objarglist>
-		<objarg name="argument" optional="1" type="OSC">
-			<digest>
-			</digest>
-			<description>
-			</description>
-		</objarg>
-	</objarglist>
-
 	<!--MESSAGES-->
 	<methodlist>
-		<method name="FullPacket [variable]">
+		<method name="signal">
 			<arglist />
 			<digest>
+				signal
 			</digest>
 			<description>
+				Audio signal input will be processed, resulting in an odot bundle containing the report of zero-to-non-zero transitions.
+			</description>
+		</method>
+		<method name="doc">
+			<arglist />
+			<digest>
+				Output an odot bundle containing the documentation of the object
+			</digest>
+			<description>
+				Outputs an odot bundle containing object name, short and long descriptions of object operation, inlet and outlet information, and see also (where available).
+			</description>
+		</method>
+		<method name="version">
+			<arglist />
+			<digest>
+				Get current version information.
+			</digest>
+			<description>
+				Prints the current odot build version to the Max Window.
 			</description>
 		</method>
 	</methodlist>
 
 	<!--DISCUSSION-->
 	<discussion>
+		o.edge~ produces reports containing:
+		<ul>
+			<li>/zerotononzero/time : time tag when zero to non zero transition occurred</li>
+			<li>/zerotononzero/sample/withinblock : the sample number in a signal vector block when transition occurred</li>
+			<li>/zerotononzero/sample/sincedspstart : the sample number in the signal since the beginning of the DSP computation</li>
+		</ul>
+		Identical reports are produced for /nonzerotozero for monitoring non-zero to zero transitions.
 	</discussion>
 
 	<!--SEEALSO-->
 	<seealsolist>
-		<seealso name="o.overview" />
+		<seealso name="edge~" />
 	</seealsolist>
 
 	<misc name = "Input">
-		<entry name ="Inlet 1 (FullPacket)">
+		<entry name ="Inlet 1 (signal)">
 			<description>
-				An odot bundle to operate on.
+				Audio signal.
 			</description>
 		</entry>
 	</misc>
@@ -81,7 +100,7 @@
 	<misc name = "Output">
 		<entry name ="Outlet 1 (FullPacket)">
 			<description>
-				The resulting odot bundle (FullPacket).
+				An odot bundle containing report of all zero to non-zero and non-zero to zero transitions occurred in a signal vector. (FullPacket)
 			</description>
 		</entry>
 	</misc>
@@ -89,6 +108,13 @@
 	<misc name = "Discussion">
 		<entry name ="More details">
 			<description>
+				o.edge~ produces reports containing:
+				<ul>
+					<li>/zerotononzero/time : time tag when zero to non zero transition occurred</li>
+					<li>/zerotononzero/sample/withinblock : the sample number in a signal vector block when transition occurred</li>
+					<li>/zerotononzero/sample/sincedspstart : the sample number in the signal since the beginning of the DSP computation</li>
+				</ul>
+				Identical reports are produced for /nonzerotozero for monitoring non-zero to zero transitions.
 			</description>
 		</entry>
 		<entry name ="Keywords">
