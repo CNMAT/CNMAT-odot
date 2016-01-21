@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml-stylesheet href="./_c74_ref.xsl" type="text/xsl"?>
+
+<c74object name="o.expr.codebox" module="odot">
+
+	<digest>
+		Evaluate a C-like expression containing OSC addresses
+	</digest>
+
+	<description>
+		When it reveives a packet, o.expr substitutes any OSC addresses contained in the expression for the values to which they are bound in the incoming packet.  The expression is then evaluated and the resulting bundle, containing any side effects of the expression, is output.
+	</description>
+
+	<!--METADATA-->
+	<metadatalist>
+		<metadata name="author">CNMAT</metadata>
+		<metadata name="tag">odot</metadata>
+		<metadata name="tag">odot objects</metadata>
+	</metadatalist>
+
+	<!--INLETS-->
+	<inletlist>
+		<inlet id="0" type="FullPacket">
+			<digest>
+				odot bundle
+			</digest>
+			<description>
+				An odot bundle to perform an expression on.
+			</description>
+		</inlet>
+	</inletlist>
+
+	<!--OUTLETS-->
+	<outletlist>
+		<outlet id="0" type="FullPacket">
+			<digest>
+				Results of an expression
+			</digest>
+			<description>
+				Results of an odot expression.
+			</description>
+		</outlet>
+		<outlet id="1" type="NULL">
+			<digest>
+				NULL
+			</digest>
+			<description>
+				NULL - does nothing.
+			</description>
+		</outlet>
+	</outletlist>
+
+	<!--MESSAGES-->
+	<methodlist>
+		<method name="FullPacket [variable]">
+			<arglist />
+			<digest>
+				odot bundle to perform expression on
+			</digest>
+			<description>
+				An odot bundle to perform expression on. Expression results are unioned together into a new odot bundle and passed out of the left outlet.
+			</description>
+		</method>
+		<method name="bang">
+			<arglist />
+			<digest>
+				Perform the expression using an empty bundle as input
+			</digest>
+			<description>
+				Perform the expression using an empty bundle as input.
+			</description>
+		</method>
+		<method name="dictionary [variable]">
+			<arglist />
+			<digest>
+				A Max dictionary to be evaluated
+			</digest>
+			<description>
+				o.if converts a Max dictionary to an odot bundle and processes it as a FullPacket.
+			</description>
+		</method>
+		<method name="doc">
+			<arglist />
+			<digest>
+				Output an odot bundle containing the documentation of the object
+			</digest>
+			<description>
+				Outputs an odot bundle containing object name, short and long descriptions of object operation, inlet and outlet information, and see also (where available).
+			</description>
+		</method>
+		<method name="doc-cat">
+			<arglist />
+			<digest>
+				Output an odot bundle containing documentation categories
+			</digest>
+			<description>
+				Outputs an odot bundle containing all of the categories of the odot expression language. An optional argument for the particular category will output sub-categories of available documentation (e.g. "doc-cat /math/power").
+			</description>
+		</method>
+		<method name="doc-category">
+			<arglist />
+			<digest>
+				Output an odot bundle containing documentation categories
+			</digest>
+			<description>
+				Outputs an odot bundle containing all of the categories of the odot expression language. An optional argument for the particular category will output sub-categories of available documentation (e.g. "doc-category /math/power").
+			</description>
+		</method>
+		<method name="doc-func">
+			<arglist />
+			<digest>
+				Output an odot bundle containing documentation for a particular function
+			</digest>
+			<description>
+				Outputs an odot bundle containing the detailed information about a particular function in the odot expression language. For a list of functions in a category, use "doc-cat [category]", for a list of categories, use "doc-cat" without arguments. For example, "doc-func exp" will output detailed information about the "exp" function in /math/power category.
+			</description>
+		</method>
+		<method name="doc-function">
+			<arglist />
+			<digest>
+				Output an odot bundle containing documentation for functions
+			</digest>
+			<description>
+				Outputs an odot bundle containing the detailed information about a particular function in the odot expression language. For a list of functions in a category, use "doc-category [category]", for a list of categories, use "doc-category" without arguments. For example, "doc-function exp" will output detailed information about the "exp" function in /math/power category.
+			</description>
+		</method>
+		<method name="post-ast">
+			<arglist />
+			<digest>
+				Print Abstract Syntax Tree to the Max window
+			</digest>
+			<description>
+				Prints a LISP-like expression of the abstract syntax tree of the expression to the Max window.
+			</description>
+		</method>
+		<method name="select">
+			<arglist />
+			<digest>
+				Select all contents
+			</digest>
+			<description>
+				Selects all textual content within the o.expr.codebox. May be used to copy/paste the o.expr.codebox contents from a locked patcher.
+			</description>
+		</method>
+		<method name="version">
+			<arglist />
+			<digest>
+				Get current version information
+			</digest>
+			<description>
+				Prints the current odot build version to the Max Window.
+			</description>
+		</method>
+	</methodlist>
+
+	<!--DISCUSSION-->
+	<discussion>
+		o.expr.codebox is the primary mechanism for data transformations in an odot system. When it reveives a bundle, o.expr substitutes any addresses contained in the expression for the values to which they are bound in the incoming bundle. The expression is then evaluated and the resulting bundle, containing any side effects of the expression, is output.
+	</discussion>
+
+	<!--SEEALSO-->
+	<seealsolist>
+		<seealso name="o.if" />
+		<seealso name="o.cond" />
+		<seealso name="expr" />
+	</seealsolist>
+
+	<misc name = "Input">
+		<entry name ="Inlet 1 (FullPacket)">
+			<description>
+				An odot bundle to perform expressions on.
+			</description>
+		</entry>
+	</misc>
+
+	<misc name = "Output">
+		<entry name ="Outlet 1 (FullPacket)">
+			<description>
+				The results of an expression (FullPacket).
+			</description>
+		</entry>
+	</misc>
+
+	<misc name = "Discussion">
+		<entry name ="More details">
+			<description>
+				o.expr.codebox is the primary mechanism for data transformations in an odot system. When it reveives a bundle, o.expr substitutes any addresses contained in the expression for the values to which they are bound in the incoming bundle. The expression is then evaluated and the resulting bundle, containing any side effects of the expression, is output.
+			</description>
+		</entry>
+		<entry name ="Keywords">
+			<description>
+				odot, address, bundle
+			</description>
+		</entry>
+	</misc>
+
+</c74object>

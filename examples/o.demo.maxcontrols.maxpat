@@ -400,7 +400,7 @@
 ,
 					"style" : "",
 					"text" : "autopattr",
-					"varname" : "u318001735"
+					"varname" : "u239004537"
 				}
 
 			}
@@ -453,7 +453,7 @@
 ,
 					"style" : "",
 					"text" : "pattrstorage",
-					"varname" : "u552001733"
+					"varname" : "u720004535"
 				}
 
 			}
