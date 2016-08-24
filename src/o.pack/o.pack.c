@@ -141,7 +141,11 @@ void opack_doAnything(t_opack *x, t_symbol *msg, short argc, t_atom *argv, int s
 	for(i = 0; i < argc; i++){
 		t_osc_atom_u *a = NULL;
 		omax_util_maxAtomToOSCAtom_u(&a, argv + i);
-		osc_message_u_appendAtom(x->messages[messagenum], a);
+		if(a){
+			osc_message_u_appendAtom(x->messages[messagenum], a);
+		}else{
+			object_error((t_object *)x, "error converting max atom of type %d to string! skipping...\n", atom_gettype(argv + i));
+		}
 	}
 	critical_exit(x->lock);
 	if(shouldOutput){
