@@ -2,41 +2,50 @@
 	"patcher" : 	{
 		"fileversion" : 1,
 		"appversion" : 		{
-			"major" : 6,
-			"minor" : 1,
-			"revision" : 6,
-			"architecture" : "x86"
+			"major" : 7,
+			"minor" : 2,
+			"revision" : 3,
+			"architecture" : "x86",
+			"modernui" : 1
 		}
 ,
-		"rect" : [ 432.0, 120.0, 664.0, 703.0 ],
+		"rect" : [ 432.0, 120.0, 664.0, 635.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
 		"default_fontface" : 0,
 		"default_fontname" : "Arial",
-		"gridonopen" : 0,
+		"gridonopen" : 1,
 		"gridsize" : [ 8.0, 8.0 ],
-		"gridsnaponopen" : 0,
+		"gridsnaponopen" : 1,
+		"objectsnaponopen" : 1,
 		"statusbarvisible" : 2,
 		"toolbarvisible" : 1,
+		"lefttoolbarpinned" : 0,
+		"toptoolbarpinned" : 0,
+		"righttoolbarpinned" : 0,
+		"bottomtoolbarpinned" : 0,
+		"toolbars_unpinned_last_save" : 0,
+		"tallnewobj" : 0,
 		"boxanimatetime" : 200,
-		"imprint" : 0,
 		"enablehscroll" : 1,
 		"enablevscroll" : 1,
 		"devicewidth" : 0.0,
 		"description" : "",
 		"digest" : "",
 		"tags" : "",
+		"style" : "",
+		"subpatcher_template" : "",
 		"boxes" : [ 			{
 				"box" : 				{
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
-					"frgb" : 0.0,
 					"id" : "obj-7",
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 492.0, 626.0, 150.0, 20.0 ],
+					"patching_rect" : [ 492.0, 514.0, 150.0, 18.0 ],
+					"style" : "",
 					"text" : "see also:"
 				}
 
@@ -48,10 +57,11 @@
 					"hidden" : 1,
 					"id" : "obj-10",
 					"maxclass" : "newobj",
-					"numinlets" : 1,
+					"numinlets" : 0,
 					"numoutlets" : 4,
-					"outlettype" : [ "", "", "", "clear" ],
+					"outlettype" : [ "", "", "", "" ],
 					"patching_rect" : [ 477.5, 257.0, 170.0, 20.0 ],
+					"style" : "",
 					"text" : "o.helpfilehelper @obj o.edge~"
 				}
 
@@ -60,13 +70,13 @@
 				"box" : 				{
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
-					"frgb" : 0.0,
 					"id" : "obj-9",
 					"linecount" : 2,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 24.0, 161.0, 600.0, 33.0 ],
+					"patching_rect" : [ 24.0, 161.0, 602.0, 30.0 ],
+					"style" : "",
 					"text" : "o.edge~ is similar to edge~. It reports all zero to non-zero and non-zero to zero transitions that occur in a signal vector."
 				}
 
@@ -75,12 +85,12 @@
 				"box" : 				{
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
-					"frgb" : 0.0,
 					"id" : "obj-14",
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 24.0, 113.0, 600.0, 20.0 ],
+					"patching_rect" : [ 24.0, 113.0, 600.0, 18.0 ],
+					"style" : "",
 					"text" : "Report transitions between 0 and non-zero"
 				}
 
@@ -89,20 +99,19 @@
 				"box" : 				{
 					"fontname" : "Arial",
 					"fontsize" : 72.0,
-					"frgb" : 0.0,
 					"id" : "obj-16",
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 24.0, 24.0, 600.0, 87.0 ],
+					"patching_rect" : [ 24.0, 24.0, 600.0, 78.0 ],
+					"style" : "",
 					"text" : "o.edge~"
 				}
 
 			}
 , 			{
 				"box" : 				{
-					"fontname" : "Arial",
-					"fontsize" : 12.0,
+					"allowdrag" : 0,
 					"id" : "obj-17",
 					"items" : "edge~",
 					"maxclass" : "umenu",
@@ -110,7 +119,8 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "int", "", "" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 492.0, 648.0, 132.0, 20.0 ]
+					"patching_rect" : [ 492.0, 536.0, 132.0, 20.0 ],
+					"style" : ""
 				}
 
 			}
@@ -124,7 +134,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 492.0, 707.0, 53.0, 20.0 ],
+					"patching_rect" : [ 492.0, 595.0, 53.0, 20.0 ],
+					"style" : "",
 					"text" : "pcontrol"
 				}
 
@@ -139,24 +150,26 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 492.0, 683.0, 138.0, 20.0 ],
+					"patching_rect" : [ 492.0, 571.0, 138.0, 20.0 ],
+					"style" : "",
 					"text" : "sprintf load %s.maxhelp"
 				}
 
 			}
 , 			{
 				"box" : 				{
+					"fontface" : 0,
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"id" : "obj-3",
-					"linecount" : 13,
+					"linecount" : 7,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 280.0, 417.0, 192.0, 195.0 ],
-					"text" : "/zerotononzero/time : 2014-07-20T20:08:44.919446Z,\n/zerotononzero/sample/withinblock : 130,\n/zerotononzero/sample/sincedspstart : 1.08045e+06.,\n/zerotononzero/value : 1.,\n/nonzerotozero/time : 2014-07-20T20:08:44.919468Z,\n/nonzerotozero/sample/withinblock : 131,\n/nonzerotozero/sample/sincedspstart : 1.08045e+06.",
-					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
+					"patching_rect" : [ 208.0, 399.0, 315.0, 104.0 ],
+					"text" : "/zerotononzero/time : 2016-08-24T17:57:22.077066Z,\n/zerotononzero/sample/withinblock : 748,\n/zerotononzero/sample/sincedspstart : 236268.,\n/zerotononzero/value : 1.,\n/nonzerotozero/time : 2016-08-24T17:57:22.077088Z,\n/nonzerotozero/sample/withinblock : 749,\n/nonzerotozero/sample/sincedspstart : 236269.",
+					"textcolor" : [ 1.0, 1.0, 1.0, 1.0 ]
 				}
 
 			}
@@ -168,7 +181,8 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 184.0, 648.0, 73.0, 20.0 ],
+					"patching_rect" : [ 184.0, 571.0, 73.0, 20.0 ],
+					"style" : "",
 					"text" : "print middle"
 				}
 
@@ -181,7 +195,8 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 128.0, 648.0, 53.0, 20.0 ],
+					"patching_rect" : [ 128.0, 571.0, 53.0, 20.0 ],
+					"style" : "",
 					"text" : "print left"
 				}
 
@@ -192,67 +207,12 @@
 					"fontsize" : 12.0,
 					"id" : "obj-22",
 					"maxclass" : "newobj",
-					"numinlets" : 1,
+					"numinlets" : 2,
 					"numoutlets" : 4,
 					"outlettype" : [ "FullPacket", "FullPacket", "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 128.0, 592.0, 98.0, 20.0 ],
-					"text" : "o.schedule /time"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontname" : "Arial",
-					"fontsize" : 12.0,
-					"id" : "obj-21",
-					"maxclass" : "newobj",
-					"numinlets" : 2,
-					"numoutlets" : 2,
-					"outlettype" : [ "", "FullPacket" ],
-					"patching_rect" : [ 128.0, 560.0, 59.0, 20.0 ],
-					"text" : "o.route /*"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontname" : "Arial",
-					"fontsize" : 12.0,
-					"id" : "obj-20",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 128.0, 528.0, 90.0, 20.0 ],
-					"text" : "o.append /time"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontname" : "Arial",
-					"fontsize" : 12.0,
-					"id" : "obj-19",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 128.0, 496.0, 103.0, 20.0 ],
-					"text" : "o.messageiterate"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontname" : "Arial",
-					"fontsize" : 12.0,
-					"id" : "obj-18",
-					"maxclass" : "newobj",
-					"numinlets" : 2,
-					"numoutlets" : 2,
-					"outlettype" : [ "", "FullPacket" ],
-					"patching_rect" : [ 128.0, 464.0, 131.0, 20.0 ],
-					"text" : "o.route /zerotononzero"
+					"patching_rect" : [ 128.0, 515.0, 178.0, 20.0 ],
+					"style" : "",
+					"text" : "o.schedule /zerotononzero/time"
 				}
 
 			}
@@ -264,9 +224,10 @@
 					"maxclass" : "number",
 					"numinlets" : 1,
 					"numoutlets" : 2,
-					"outlettype" : [ "int", "bang" ],
+					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 264.0, 208.0, 50.0, 20.0 ]
+					"patching_rect" : [ 264.0, 208.0, 50.0, 20.0 ],
+					"style" : ""
 				}
 
 			}
@@ -280,6 +241,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "signal" ],
 					"patching_rect" : [ 264.0, 312.0, 32.5, 20.0 ],
+					"style" : "",
 					"text" : "<~"
 				}
 
@@ -294,6 +256,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "signal" ],
 					"patching_rect" : [ 280.0, 280.0, 66.0, 20.0 ],
+					"style" : "",
 					"text" : "delay~ 1 1"
 				}
 
@@ -308,21 +271,8 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "signal" ],
 					"patching_rect" : [ 264.0, 248.0, 68.0, 20.0 ],
-					"text" : "phasor~ 2."
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontname" : "Arial",
-					"fontsize" : 12.0,
-					"id" : "obj-4",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 2,
-					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 128.0, 376.0, 171.0, 20.0 ],
-					"text" : "o.if emptybundle()"
+					"style" : "",
+					"text" : "phasor~ 1."
 				}
 
 			}
@@ -333,7 +283,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 128.0, 248.0, 20.0, 20.0 ]
+					"patching_rect" : [ 128.0, 248.0, 20.0, 20.0 ],
+					"style" : ""
 				}
 
 			}
@@ -343,7 +294,8 @@
 					"maxclass" : "ezdac~",
 					"numinlets" : 2,
 					"numoutlets" : 0,
-					"patching_rect" : [ 64.0, 511.0, 45.0, 45.0 ]
+					"patching_rect" : [ 64.0, 511.0, 45.0, 45.0 ],
+					"style" : ""
 				}
 
 			}
@@ -354,7 +306,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 96.0, 376.0, 20.0, 20.0 ]
+					"patching_rect" : [ 96.0, 376.0, 20.0, 20.0 ],
+					"style" : ""
 				}
 
 			}
@@ -368,6 +321,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "signal" ],
 					"patching_rect" : [ 128.0, 288.0, 41.0, 20.0 ],
+					"style" : "",
 					"text" : "click~"
 				}
 
@@ -382,6 +336,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
 					"patching_rect" : [ 128.0, 344.0, 54.0, 20.0 ],
+					"style" : "",
 					"text" : "o.edge~"
 				}
 
@@ -389,7 +344,16 @@
  ],
 		"lines" : [ 			{
 				"patchline" : 				{
-					"destination" : [ "obj-4", 0 ],
+					"destination" : [ "obj-22", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-1", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-3", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-1", 0 ]
@@ -497,46 +461,10 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-19", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"source" : [ "obj-18", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-20", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"source" : [ "obj-19", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
 					"destination" : [ "obj-1", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-2", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-21", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"source" : [ "obj-20", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-22", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"source" : [ "obj-21", 0 ]
 				}
 
 			}
@@ -569,24 +497,6 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-18", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"source" : [ "obj-4", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-3", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"source" : [ "obj-4", 1 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
 					"destination" : [ "obj-2", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
@@ -596,30 +506,7 @@
 			}
  ],
 		"dependency_cache" : [ 			{
-				"name" : "o.helpfilehelper.maxpat",
-				"bootpath" : "/Users/ilyarostovtsev/Documents/Creative Coding/odot/_full_build_trunk/CNMAT-odot/misc",
-				"patcherrelativepath" : "../misc",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
 				"name" : "o.edge~.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.if.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.route.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.messageiterate.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.append.mxo",
 				"type" : "iLaX"
 			}
 , 			{
@@ -630,7 +517,8 @@
 				"name" : "o.display.mxo",
 				"type" : "iLaX"
 			}
- ]
+ ],
+		"autosave" : 0
 	}
 
 }

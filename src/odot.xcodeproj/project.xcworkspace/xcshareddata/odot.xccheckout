@@ -14,6 +14,8 @@
 		<string>https://github.com/Cycling74/max6-sdk.git</string>
 		<key>73CD3912FF7E5D839C8BDA43B346354BE088DDE8</key>
 		<string>https://github.com/CNMAT/libo.git</string>
+		<key>B26B9CAFBF9E1C2E2CA45220D163A2372E2095E0</key>
+		<string>https://github.com/CNMAT/CNMAT.git</string>
 		<key>BFE38AA7F3B3EE5D839CDF960E9B1411A92C41B2</key>
 		<string>https://github.com/CNMAT/libomax.git</string>
 		<key>F288EB3F860EB37FE32803469C923EC7E08714D7</key>
@@ -27,6 +29,8 @@
 		<string>../../../../max6-sdk</string>
 		<key>73CD3912FF7E5D839C8BDA43B346354BE088DDE8</key>
 		<string>../../../../libo</string>
+		<key>B26B9CAFBF9E1C2E2CA45220D163A2372E2095E0</key>
+		<string>../../../..</string>
 		<key>BFE38AA7F3B3EE5D839CDF960E9B1411A92C41B2</key>
 		<string>../../../../libomax</string>
 		<key>F288EB3F860EB37FE32803469C923EC7E08714D7</key>
@@ -40,6 +44,14 @@
 	<string>F288EB3F860EB37FE32803469C923EC7E08714D7</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>B26B9CAFBF9E1C2E2CA45220D163A2372E2095E0</string>
+			<key>IDESourceControlWCCName</key>
+			<string></string>
+		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
