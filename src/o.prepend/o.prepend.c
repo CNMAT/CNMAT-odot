@@ -146,7 +146,7 @@ void oppnd_doFullPacket(t_oppnd *x, long len, char *ptr, t_symbol *sym_to_prepen
 void oppnd_set(t_oppnd *x, t_symbol *msg, int argc, t_atom *argv)
 {
 	if(!_ps_deprecated_set->s_thing){
-		object_error((t_object *)x, "The set message to %s has been deprecated and will be removed in the future", OMAX_DOC_NAME);
+		//object_error((t_object *)x, "The set message to %s has been deprecated and will be removed in the future", OMAX_DOC_NAME);
 		_ps_deprecated_set->s_thing = (void *)1;
 	}
 	if(argc != 1){
