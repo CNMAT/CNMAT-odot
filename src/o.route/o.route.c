@@ -610,7 +610,11 @@ void *oroute_new(t_symbol *msg, short argc, t_atom *argv)
 	t_oroute *x;
 	if((x = (t_oroute *)object_alloc(oroute_class))){
 		critical_new(&(x->lock));
+#ifdef ATOMIZE
+		x->delegation_outlet = outlet_new(x, NULL);
+#else
 		x->delegation_outlet = outlet_new(x, "FullPacket");
+#endif
 		x->outlets = (void **)malloc(argc * sizeof(void *));
 		//x->proxy = (void **)malloc(argc * sizeof(void *));
 		x->selectors = (char **)malloc(argc * sizeof(char *));
