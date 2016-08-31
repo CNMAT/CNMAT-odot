@@ -2,33 +2,43 @@
 	"patcher" : 	{
 		"fileversion" : 1,
 		"appversion" : 		{
-			"major" : 6,
+			"major" : 7,
 			"minor" : 1,
-			"revision" : 6,
-			"architecture" : "x86"
+			"revision" : 0,
+			"architecture" : "x64",
+			"modernui" : 1
 		}
 ,
-		"rect" : [ 23.0, 44.0, 1417.0, 592.0 ],
+		"rect" : [ 34.0, 79.0, 1417.0, 592.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
 		"default_fontface" : 0,
 		"default_fontname" : "Arial",
-		"gridonopen" : 0,
+		"gridonopen" : 1,
 		"gridsize" : [ 15.0, 15.0 ],
-		"gridsnaponopen" : 0,
+		"gridsnaponopen" : 1,
+		"objectsnaponopen" : 1,
 		"statusbarvisible" : 2,
 		"toolbarvisible" : 1,
+		"lefttoolbarpinned" : 0,
+		"toptoolbarpinned" : 0,
+		"righttoolbarpinned" : 0,
+		"bottomtoolbarpinned" : 0,
+		"toolbars_unpinned_last_save" : 0,
+		"tallnewobj" : 0,
 		"boxanimatetime" : 200,
-		"imprint" : 0,
 		"enablehscroll" : 1,
 		"enablevscroll" : 1,
 		"devicewidth" : 0.0,
 		"description" : "",
 		"digest" : "",
 		"tags" : "",
+		"style" : "",
+		"subpatcher_template" : "",
 		"boxes" : [ 			{
 				"box" : 				{
+					"fontface" : 0,
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"id" : "obj-20",
@@ -38,8 +48,10 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 499.0, 178.0, 944.0, 145.0 ],
-					"text" : "/doc/name : \"o.gather\",\n/doc/desc/short : \"Group messages that match a list of arguments.\",\n/doc/desc/long : [\"o.gather divides OSC message into two bundles gathering the named items into the one coming out of the left outlet and the remaining out the\", \"right\", \"outlet.\"],\n/doc/ninlets : 1,\n/doc/noutlets : 2,\n/doc/desc/inlet/1 : \"OSC FullPacket.\",\n/doc/desc/outlet/1 : \"Messages with addresses that matched one of the arguments.\",\n/doc/desc/outlet/2 : \"Messages with addresses that did not match any of the arguments.\",\n/doc/seealso : \"o.route o.select o.atomize\"",
-					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
+					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 28, 47, 100, 111, 99, 47, 110, 97, 109, 101, 0, 0, 0, 44, 115, 0, 0, 111, 46, 103, 97, 116, 104, 101, 114, 0, 0, 0, 0, 0, 0, 0, 68, 47, 100, 111, 99, 47, 100, 101, 115, 99, 47, 115, 104, 111, 114, 116, 0, 44, 115, 0, 0, 71, 114, 111, 117, 112, 32, 109, 101, 115, 115, 97, 103, 101, 115, 32, 116, 104, 97, 116, 32, 109, 97, 116, 99, 104, 32, 97, 32, 108, 105, 115, 116, 32, 111, 102, 32, 97, 114, 103, 117, 109, 101, 110, 116, 115, 46, 0, 0, 0, 0, 0, -72, 47, 100, 111, 99, 47, 100, 101, 115, 99, 47, 108, 111, 110, 103, 0, 0, 44, 115, 115, 115, 0, 0, 0, 0, 111, 46, 103, 97, 116, 104, 101, 114, 32, 100, 105, 118, 105, 100, 101, 115, 32, 79, 83, 67, 32, 109, 101, 115, 115, 97, 103, 101, 32, 105, 110, 116, 111, 32, 116, 119, 111, 32, 98, 117, 110, 100, 108, 101, 115, 32, 103, 97, 116, 104, 101, 114, 105, 110, 103, 32, 116, 104, 101, 32, 110, 97, 109, 101, 100, 32, 105, 116, 101, 109, 115, 32, 105, 110, 116, 111, 32, 116, 104, 101, 32, 111, 110, 101, 32, 99, 111, 109, 105, 110, 103, 32, 111, 117, 116, 32, 111, 102, 32, 116, 104, 101, 32, 108, 101, 102, 116, 32, 111, 117, 116, 108, 101, 116, 32, 97, 110, 100, 32, 116, 104, 101, 32, 114, 101, 109, 97, 105, 110, 105, 110, 103, 32, 111, 117, 116, 32, 116, 104, 101, 0, 0, 0, 0, 114, 105, 103, 104, 116, 0, 0, 0, 111, 117, 116, 108, 101, 116, 46, 0, 0, 0, 0, 24, 47, 100, 111, 99, 47, 110, 105, 110, 108, 101, 116, 115, 0, 0, 0, 0, 44, 105, 0, 0, 0, 0, 0, 1, 0, 0, 0, 24, 47, 100, 111, 99, 47, 110, 111, 117, 116, 108, 101, 116, 115, 0, 0, 0, 44, 105, 0, 0, 0, 0, 0, 2, 0, 0, 0, 40, 47, 100, 111, 99, 47, 100, 101, 115, 99, 47, 105, 110, 108, 101, 116, 47, 49, 0, 0, 0, 44, 115, 0, 0, 79, 83, 67, 32, 70, 117, 108, 108, 80, 97, 99, 107, 101, 116, 46, 0, 0, 0, 0, 84, 47, 100, 111, 99, 47, 100, 101, 115, 99, 47, 111, 117, 116, 108, 101, 116, 47, 49, 0, 0, 44, 115, 0, 0, 77, 101, 115, 115, 97, 103, 101, 115, 32, 119, 105, 116, 104, 32, 97, 100, 100, 114, 101, 115, 115, 101, 115, 32, 116, 104, 97, 116, 32, 109, 97, 116, 99, 104, 101, 100, 32, 111, 110, 101, 32, 111, 102, 32, 116, 104, 101, 32, 97, 114, 103, 117, 109, 101, 110, 116, 115, 46, 0, 0, 0, 0, 0, 92, 47, 100, 111, 99, 47, 100, 101, 115, 99, 47, 111, 117, 116, 108, 101, 116, 47, 50, 0, 0, 44, 115, 0, 0, 77, 101, 115, 115, 97, 103, 101, 115, 32, 119, 105, 116, 104, 32, 97, 100, 100, 114, 101, 115, 115, 101, 115, 32, 116, 104, 97, 116, 32, 100, 105, 100, 32, 110, 111, 116, 32, 109, 97, 116, 99, 104, 32, 97, 110, 121, 32, 111, 102, 32, 116, 104, 101, 32, 97, 114, 103, 117, 109, 101, 110, 116, 115, 46, 0, 0, 0, 0, 0, 0, 0, 56, 47, 100, 111, 99, 47, 115, 101, 101, 97, 108, 115, 111, 0, 0, 0, 0, 44, 115, 115, 115, 0, 0, 0, 0, 111, 46, 114, 111, 117, 116, 101, 0, 111, 46, 115, 101, 108, 101, 99, 116, 0, 0, 0, 0, 111, 46, 97, 116, 111, 109, 105, 122, 101, 0, 0, 0 ],
+					"saved_bundle_length" : 652,
+					"text" : "/doc/name : \"o.gather\",\n/doc/desc/short : \"Group messages that match a list of arguments.\",\n/doc/desc/long : [\"o.gather divides OSC message into two bundles gathering the named items into the one coming out of the left outlet and the remaining out the\", \"right\", \"outlet.\"],\n/doc/ninlets : 1,\n/doc/noutlets : 2,\n/doc/desc/inlet/1 : \"OSC FullPacket.\",\n/doc/desc/outlet/1 : \"Messages with addresses that matched one of the arguments.\",\n/doc/desc/outlet/2 : \"Messages with addresses that did not match any of the arguments.\",\n/doc/seealso : [\"o.route\", \"o.select\", \"o.atomize\"]",
+					"textcolor" : [ 0.188, 0.188, 0.188, 1.0 ]
 				}
 
 			}
@@ -52,7 +64,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "bang", "" ],
-					"patching_rect" : [ 301.5, 104.0, 32.5, 20.0 ],
+					"patching_rect" : [ 301.5, 104.0, 32.5, 22.0 ],
+					"style" : "",
 					"text" : "t b l"
 				}
 
@@ -66,7 +79,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 301.5, 149.0, 49.0, 20.0 ],
+					"patching_rect" : [ 301.5, 149.0, 49.0, 22.0 ],
+					"style" : "",
 					"text" : "zl iter 1"
 				}
 
@@ -80,7 +94,8 @@
 					"numinlets" : 3,
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "" ],
-					"patching_rect" : [ 271.0, 74.0, 80.0, 20.0 ],
+					"patching_rect" : [ 271.0, 74.0, 80.0, 22.0 ],
+					"style" : "",
 					"text" : "route doc set"
 				}
 
@@ -94,7 +109,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 384.0, 134.0, 49.0, 20.0 ],
+					"patching_rect" : [ 384.0, 134.0, 49.0, 22.0 ],
+					"style" : "",
 					"text" : "route 0"
 				}
 
@@ -107,8 +123,9 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 8,
-					"outlettype" : [ "FullPacket", "FullPacket", "FullPacket", "FullPacket", "FullPacket", "FullPacket", "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 248.0, 306.0, 113.5, 20.0 ],
+					"outlettype" : [ "", "", "", "", "", "", "", "" ],
+					"patching_rect" : [ 248.0, 306.0, 113.5, 22.0 ],
+					"style" : "",
 					"text" : "o.righttoleft"
 				}
 
@@ -122,7 +139,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 248.0, 218.0, 32.5, 20.0 ],
+					"patching_rect" : [ 248.0, 218.0, 32.5, 22.0 ],
+					"style" : "",
 					"text" : "t l l"
 				}
 
@@ -136,7 +154,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 353.0, 350.0, 73.0, 20.0 ],
+					"patching_rect" : [ 353.0, 350.0, 73.0, 22.0 ],
+					"style" : "",
 					"text" : "o.difference"
 				}
 
@@ -148,7 +167,8 @@
 					"maxclass" : "outlet",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 353.0, 438.0, 25.0, 25.0 ]
+					"patching_rect" : [ 353.0, 438.0, 25.0, 25.0 ],
+					"style" : ""
 				}
 
 			}
@@ -161,7 +181,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "bang", "" ],
-					"patching_rect" : [ 360.0, 74.0, 32.5, 20.0 ],
+					"patching_rect" : [ 360.0, 74.0, 32.5, 22.0 ],
+					"style" : "",
 					"text" : "t b l"
 				}
 
@@ -175,7 +196,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 360.0, 178.0, 82.0, 20.0 ],
+					"patching_rect" : [ 360.0, 178.0, 82.0, 22.0 ],
+					"style" : "",
 					"text" : "o.collect"
 				}
 
@@ -189,7 +211,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 384.0, 106.0, 27.0, 20.0 ],
+					"patching_rect" : [ 384.0, 106.0, 27.0, 22.0 ],
+					"style" : "",
 					"text" : "iter"
 				}
 
@@ -201,7 +224,8 @@
 					"maxclass" : "outlet",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 248.0, 546.0, 25.0, 25.0 ]
+					"patching_rect" : [ 248.0, 546.0, 25.0, 25.0 ],
+					"style" : ""
 				}
 
 			}
@@ -214,7 +238,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 248.0, 258.0, 82.0, 20.0 ],
+					"patching_rect" : [ 248.0, 258.0, 82.0, 22.0 ],
+					"style" : "",
 					"text" : "o.intersection"
 				}
 
@@ -228,7 +253,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 360.0, 44.0, 74.0, 20.0 ],
+					"patching_rect" : [ 360.0, 44.0, 74.0, 22.0 ],
+					"style" : "",
 					"text" : "patcherargs"
 				}
 
@@ -241,7 +267,8 @@
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 188.0, 7.0, 25.0, 25.0 ]
+					"patching_rect" : [ 188.0, 7.0, 25.0, 25.0 ],
+					"style" : ""
 				}
 
 			}
@@ -439,36 +466,7 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "o.righttoleft.maxpat",
-				"bootpath" : "/Users/adrian2013/Documents/Max/Packages/CNMAT-odot/patchers/core",
-				"patcherrelativepath" : "../core",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "o.in.maxpat",
-				"bootpath" : "/Users/adrian2013/Documents/Max/Packages/CNMAT-odot/patchers/core",
-				"patcherrelativepath" : "../core",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "o.port.maxpat",
-				"bootpath" : "/Users/adrian2013/Documents/Max/Packages/CNMAT-odot/patchers/core",
-				"patcherrelativepath" : "../core",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "o.aspect.joinpoint.maxpat",
-				"bootpath" : "/Users/adrian2013/Documents/Max/Packages/CNMAT-odot/patchers/aspect",
-				"patcherrelativepath" : "../aspect",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "o.out.maxpat",
-				"bootpath" : "/Users/adrian2013/Documents/Max/Packages/CNMAT-odot/patchers/core",
-				"patcherrelativepath" : "../core",
+				"bootpath" : "~/Documents/Max 7/Packages/odot/patchers/ordering",
 				"type" : "JSON",
 				"implicit" : 1
 			}
@@ -485,46 +483,11 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "o.pack.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.if.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.union.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.select.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.context.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.route.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.var.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.prepend.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.cond.mxo",
-				"type" : "iLaX"
-			}
-, 			{
 				"name" : "o.compose.mxo",
 				"type" : "iLaX"
 			}
- ]
+ ],
+		"autosave" : 0
 	}
 
 }
