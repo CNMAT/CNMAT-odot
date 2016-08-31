@@ -828,9 +828,9 @@ int main(void)
 
 	class_addmethod(c, (method)otable_doc, "doc", 0);
 
-	if(omax_dict_resolveDictStubs()){
+	//if(omax_dict_resolveDictStubs()){
 		class_addmethod(c, (method)omax_dict_dictionary, "dictionary", A_GIMME, 0);
-	}
+	//}
 
 	CLASS_ATTR_SYM(c, "name", 0, t_otable, name);
 	CLASS_ATTR_ACCESSORS(c, "name", NULL, otable_setName);

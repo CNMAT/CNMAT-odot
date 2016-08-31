@@ -253,9 +253,9 @@ int main(void)
 	//class_addmethod(c, (method)ochange_anything, "anything", A_GIMME, 0);
 	//class_addmethod(c, (method)ochange_clear, "clear", 0);
 	// remove this if statement when we stop supporting Max 5
-	if(omax_dict_resolveDictStubs()){
+	//if(omax_dict_resolveDictStubs()){
 		class_addmethod(c, (method)omax_dict_dictionary, "dictionary", A_GIMME, 0);
-	}
+	//}
 	class_addmethod(c, (method)odot_version, "version", 0);
 	
 	class_register(CLASS_BOX, c);

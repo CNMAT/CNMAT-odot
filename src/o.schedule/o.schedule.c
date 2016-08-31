@@ -646,9 +646,9 @@ int main(void)
 	class_addmethod(c, (method)osched_assist, "assist", A_CANT, 0);
 	class_addmethod(c, (method)odot_version, "version", 0);
 	class_addmethod(c, (method)osched_doc, "doc", 0);
-	if(omax_dict_resolveDictStubs()){
+	//if(omax_dict_resolveDictStubs()){
 		class_addmethod(c, (method)omax_dict_dictionary, "dictionary", A_GIMME, 0);
-	}
+	//}
 
 	/*
 	CLASS_ATTR_FLOAT(c, "precision", 0, t_osched, precision);

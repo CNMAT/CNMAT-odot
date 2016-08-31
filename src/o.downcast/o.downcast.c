@@ -322,9 +322,9 @@ int main(void)
 	class_addmethod(c, (method)odowncast_assist, "assist", A_CANT, 0);
 	class_addmethod(c, (method)odowncast_doc, "doc", 0);
 	// remove this if statement when we stop supporting Max 5
-	if(omax_dict_resolveDictStubs()){
+	//if(omax_dict_resolveDictStubs()){
 		class_addmethod(c, (method)omax_dict_dictionary, "dictionary", A_GIMME, 0);
-	}
+	//}
 	class_addmethod(c, (method)odot_version, "version", 0);
 
 	CLASS_ATTR_SYM(c, "headertimetag", 0, t_odowncast, timetag_address);
