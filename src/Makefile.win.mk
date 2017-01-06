@@ -59,9 +59,9 @@ CC = i686-w64-mingw32-gcc
 #LD = i686-w64-mingw32-ld
 #LD = gcc
 LD = $(CC)
-CFLAGS += -mno-cygwin -DWIN_VERSION -DWIN_EXT_VERSION -U__STRICT_ANSI__ -U__ANSI_SOURCE -std=c99 -O3 -DNO_TRANSLATION_SUPPORT
+CFLAGS += -DWIN_VERSION -DWIN_EXT_VERSION -U__STRICT_ANSI__ -U__ANSI_SOURCE -std=c99 -O3 -DNO_TRANSLATION_SUPPORT -DWIN32_LEAN_AND_MEAN
 INCLUDES = -I$(MAX_INCLUDES) -I$(MSP_INCLUDES) -I../../libo -I../../libomax -Iinclude
-LDFLAGS = -mno-cygwin -shared #-static-libgcc
+LDFLAGS = -shared -static-libgcc
 #LIBS = -L"/cygdrive/c/Program Files (x86)/Microsoft Visual Studio 10.0/VC/lib" -lmsvcrt -L../../libomax -lomax -L$(MAX_INCLUDES) -lMaxAPI -L../../libo -lo 
 LIBS = -L../../libomax -lomax -L$(MAX_INCLUDES) -L$(MSP_INCLUDES) -lMaxAPI -lMaxAudio -L../../libo -lo 
 
