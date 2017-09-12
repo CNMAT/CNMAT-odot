@@ -12487,7 +12487,7 @@
 				DEPLOYMENT_LOCATION = NO;
 				DSTROOT = "$(PROJECT_DIR)/build";
 				FRAMEWORK_SEARCH_PATHS = /Library/Frameworks;
-				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_PROJECT_1 = "\"$(SRCROOT)/../../max6-sdk/c74support/max-includes\"";
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_PROJECT_1 = "\"$(SRCROOT)/../../max-sdk/source/c74support/max-includes\"";
 				GCC_ALTIVEC_EXTENSIONS = YES;
 				GCC_DEBUGGING_SYMBOLS = full;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
@@ -12497,7 +12497,7 @@
 				GCC_OPTIMIZATION_LEVEL = 3;
 				GCC_PFE_FILE_C_DIALECTS = "c objective-c c++ objective-c++";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "../../max6-sdk/c74support/max-includes/macho-prefix.pch";
+				GCC_PREFIX_HEADER = "../../max-sdk/source/c74support/max-includes/macho-prefix.pch";
 				GCC_USE_GCC3_PFE_SUPPORT = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = NO;
@@ -12512,11 +12512,11 @@
 					"$(HEADER_SEARCH_PATHS_QUOTED_FOR_PROJECT_4)",
 					"$(HEADER_SEARCH_PATHS_QUOTED_FOR_PROJECT_5)",
 				);
-				HEADER_SEARCH_PATHS_QUOTED_FOR_PROJECT_1 = "\"$(SRCROOT)/../../max6-sdk/c74support/max-includes\"";
+				HEADER_SEARCH_PATHS_QUOTED_FOR_PROJECT_1 = "\"$(SRCROOT)/../../max-sdk/source/c74support/max-includes\"";
 				HEADER_SEARCH_PATHS_QUOTED_FOR_PROJECT_2 = "\"$(SRCROOT)/../../libo\"";
 				HEADER_SEARCH_PATHS_QUOTED_FOR_PROJECT_3 = "\"$(SRCROOT)/../../libomax\"";
 				HEADER_SEARCH_PATHS_QUOTED_FOR_PROJECT_4 = "\"$(SRCROOT)/include\"";
-				HEADER_SEARCH_PATHS_QUOTED_FOR_PROJECT_5 = "\"$(SRCROOT)/../../max6-sdk/c74support/msp-includes\"";
+				HEADER_SEARCH_PATHS_QUOTED_FOR_PROJECT_5 = "\"$(SRCROOT)/../../max-sdk/source/c74support/msp-includes\"";
 				INFOPLIST_FILE = "$(TARGET_NAME)/Info.plist";
 				INSTALL_OWNER = "$(USER)";
 				INSTALL_PATH = "$(PROJECT_DIR)/../externals";
@@ -12533,7 +12533,7 @@
 					"-g",
 					"-DNO_TRANSLATION_SUPPORT",
 				);
-				OTHER_LDFLAGS = "@../../max6-sdk/c74support/max-includes/c74_linker_flags.txt";
+				OTHER_LDFLAGS = "@../../max-sdk/source/c74support/max-includes/c74_linker_flags.txt";
 				PREBINDING = YES;
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libomax.a\"";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -12563,7 +12563,7 @@
 				DEPLOYMENT_LOCATION = NO;
 				DSTROOT = "$(PROJECT_DIR)/build";
 				FRAMEWORK_SEARCH_PATHS = /Library/Frameworks;
-				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_PROJECT_1 = "\"$(SRCROOT)/../../max6-sdk/c74support/max-includes\"";
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_PROJECT_1 = "\"$(SRCROOT)/../../max-sdk/source/c74support/max-includes\"";
 				GCC_ALTIVEC_EXTENSIONS = YES;
 				GCC_AUTO_VECTORIZATION = YES;
 				GCC_C_LANGUAGE_STANDARD = c99;
@@ -12576,7 +12576,7 @@
 				GCC_OPTIMIZATION_LEVEL = 3;
 				GCC_PFE_FILE_C_DIALECTS = "c objective-c c++ objective-c++";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "../../max6-sdk/c74support/max-includes/macho-prefix.pch";
+				GCC_PREFIX_HEADER = "../../max-sdk/source/c74support/max-includes/macho-prefix.pch";
 				GCC_UNROLL_LOOPS = YES;
 				GCC_USE_GCC3_PFE_SUPPORT = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
@@ -12592,11 +12592,11 @@
 					"$(HEADER_SEARCH_PATHS_QUOTED_FOR_PROJECT_4)",
 					"$(HEADER_SEARCH_PATHS_QUOTED_FOR_PROJECT_5)",
 				);
-				HEADER_SEARCH_PATHS_QUOTED_FOR_PROJECT_1 = "\"$(SRCROOT)/../../max6-sdk/c74support/max-includes\"";
+				HEADER_SEARCH_PATHS_QUOTED_FOR_PROJECT_1 = "\"$(SRCROOT)/../../max-sdk/source/c74support/max-includes\"";
 				HEADER_SEARCH_PATHS_QUOTED_FOR_PROJECT_2 = "\"$(SRCROOT)/../../libo\"";
 				HEADER_SEARCH_PATHS_QUOTED_FOR_PROJECT_3 = "\"$(SRCROOT)/../../libomax\"";
 				HEADER_SEARCH_PATHS_QUOTED_FOR_PROJECT_4 = "\"$(SRCROOT)/include\"";
-				HEADER_SEARCH_PATHS_QUOTED_FOR_PROJECT_5 = "\"$(SRCROOT)/../../max6-sdk/c74support/msp-includes\"";
+				HEADER_SEARCH_PATHS_QUOTED_FOR_PROJECT_5 = "\"$(SRCROOT)/../../max-sdk/source/c74support/msp-includes\"";
 				INFOPLIST_FILE = "$(TARGET_NAME)/Info.plist";
 				INSTALL_OWNER = "$(USER)";
 				INSTALL_PATH = "$(PROJECT_DIR)/../externals";
@@ -12613,7 +12613,7 @@
 					"-g",
 					"-DNO_TRANSLATION_SUPPORT",
 				);
-				OTHER_LDFLAGS = "@../../max6-sdk/c74support/max-includes/c74_linker_flags.txt";
+				OTHER_LDFLAGS = "@../../max-sdk/source/c74support/max-includes/c74_linker_flags.txt";
 				PREBINDING = YES;
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libomax.a\"";
 				PRODUCT_NAME = "$(TARGET_NAME)";
