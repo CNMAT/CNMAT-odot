@@ -298,6 +298,7 @@ void odisplay_bundle2text(t_odisplay *x)
 			//osc_mem_free(buf);
 		}
 		x->newbndl = 0;
+		return;
 	}
 	critical_exit(x->lock);
 }
