@@ -1,5 +1,5 @@
 BUILDTARGETS = mac all
-OTHERTARGETS = clean install archive win win64 clean-obj win-release
+OTHERTARGETS = clean install archive win win64
 
 UNAME = $(shell uname)
 
