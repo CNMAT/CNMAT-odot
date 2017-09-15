@@ -31,4 +31,8 @@ do
 	cp src/build/Release/$f.mxe odot/deprecated/externals
 done
 
+python make-package-info.py
+
+cp package-info.json odot
+
 zip -r $archive_name odot && rm -r odot
