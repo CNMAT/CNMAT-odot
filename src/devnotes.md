@@ -135,7 +135,7 @@ make clean
 make win64
 ```
 
-To build for Windows 32bit, while in the `CNMAT-odot/src` directory and do:
+To build for Windows 32bit, while in the `CNMAT-odot/src` directory do:
 ```
 make win
 ```
