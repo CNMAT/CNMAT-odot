@@ -13,15 +13,12 @@
    * Follow the instructions that come with the source code---it should be the usual `./configure; make; sudo make install`.
    * Be aware that Apple's versions of flex and bison are installed in `/usr/bin` and that the ones you install will likely end up in `/usr/local/bin`, so you will either have to remove Apple's, or adjust your path accordingly.
 3. Build `libo`
-   * Mac:
      1. Add the following lines to your .profile, changing 8 to match the version of your OS
    	    * `MAC_SYSROOT = MacOSX10.8.sdk`      
    	    * `export MAC_SYSROOT`
      2. Execute the following commands at the command line:
    	    * `$ cd <path/to/libo>`
    	    * `$ make`
-   * Windows:
-     1. **Coming soon** - we use `cygwin` for the GCC - use `make win` to compile windows libraries.
 4. Build libomax
    * `$ cd <path/to/libomax>`
    * `$ make`
