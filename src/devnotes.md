@@ -6,7 +6,7 @@
    * [https://github.com/CNMAT/CNMAT-odot](https://github.com/CNMAT/CNMAT-odot)
    * [https://github.com/CNMAT/libo](https://github.com/CNMAT/libo)
    * [https://github.com/CNMAT/libomax](https://github.com/CNMAT/libomax)
-   * [https://github.com/Cycling74/max6-sdk](https://github.com/Cycling74/max6-sdk)
+   * [https://github.com/Cycling74/max-sdk](https://github.com/Cycling74/max-sdk)
    * all of the above should be in the same folder
 2. Install flex and bison
    Compiling libo requires flex >2.5 and bison >2.4 to be installed. The OS X developer tools come with older versions of flex and bison which will not work. 
