@@ -1,0 +1,46 @@
+{
+	"author" : "CNMAT",
+	"authors" : [  ],
+	"categories" : [  ],
+	"description" : "A collection of OSC tools created by researchers at CNMAT in Berkeley, CA.",
+	"displayname" : "",
+	"extends" : "",
+	"extensible" : 0,
+	"homepatcher" : null,
+	"max_version_max" : "none",
+	"max_version_min" : "none",
+	"name" : "CNMAT Odot",
+	"os" : 	{
+		"macintosh" : 		{
+			"platform" : [ "ia32", "x64" ],
+			"min_version" : "10.7.x"
+		}
+,
+		"windows" : 		{
+			"platform" : [ "ia32", "x64" ],
+			"min_version" : "7"
+		}
+
+	}
+,
+	"readme" : "",
+	"tags" : [  ],
+	"version" : "1.0.1....",
+	"versions" : null,
+	"website" : "http://cnmat.berkeley.edu",
+	"filelist" : 	{
+		"externals" : [],
+		"help" : [],
+		"media" : [],
+		"misc" : [],
+		"clippings" : [],
+		"extras" : [],
+		"init" : [],
+		"interfaces" : [],
+		"patchers" : [],
+		"clippings" : []
+	}
+,
+	"c74install" : 1,
+	"installdate" : 3536015897
+}
