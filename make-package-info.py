@@ -1,24 +1,31 @@
-import json, os, subprocess
+import json, os, subprocess, platform
 
 print "************************************************"
 
 #packagedirs=(clippings code default-definitions default-settings docs examples extensions externals extras help init interfaces java-classes java-doc javascript jsextensions jsui license.txt media misc patchers object-prototypes queries readme.txt source support templates)
 
 
+def filesinfolder(n):
+    return [f for f in os.listdir(n) if not f.startswith('.')]
+
 with open('default-package-info.json', 'r') as f:
     pinfo = json.load(f)
 
     # update the package listings
-    pinfo['filelist']['externals'] = os.listdir("src/build/Release")
-    pinfo['filelist']['help'] = os.listdir("help")
-    pinfo['filelist']['misc'] = os.listdir("misc")
-    pinfo['filelist']['default-definitions'] = os.listdir("default-definitions")
-    pinfo['filelist']['docs'] = os.listdir("docs")
-    pinfo['filelist']['examples'] = os.listdir("examples")
-    pinfo['filelist']['init'] = os.listdir("init")
-    pinfo['filelist']['interfaces'] = os.listdir("interfaces")
-    pinfo['filelist']['clippings'] = os.listdir("clippings")
-    pinfo['filelist']['patchers'] = os.listdir("patchers")
+    if (platform.system() == 'Darwin'):
+        pinfo['filelist']['externals'] = filesinfolder("externals")
+    else:
+        pinfo['filelist']['externals'] = os.listdir("src/build/Release")
+
+    pinfo['filelist']['help'] = filesinfolder("help")
+    pinfo['filelist']['misc'] = filesinfolder("misc")
+    pinfo['filelist']['default-definitions'] = filesinfolder("default-definitions")
+    pinfo['filelist']['docs'] = filesinfolder("docs")
+    pinfo['filelist']['examples'] = filesinfolder("examples")
+    pinfo['filelist']['init'] = filesinfolder("init")
+    pinfo['filelist']['interfaces'] = filesinfolder("interfaces")
+    pinfo['filelist']['clippings'] = filesinfolder("clippings")
+    pinfo['filelist']['patchers'] = filesinfolder("patchers")
 
     version = subprocess.check_output("git describe --tags --long", shell=True).strip()
     branch = subprocess.check_output("git branch | egrep '^\*' | awk '{print $2}'", shell=True).strip()
