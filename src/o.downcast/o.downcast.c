@@ -68,12 +68,12 @@ void *odowncast_class;
 void odowncast_fullPacket(t_odowncast *x, t_symbol *msg, int argc, t_atom *argv)
 {
 	OMAX_UTIL_GET_LEN_AND_PTR;
-    t_osc_bndl_u *b_src = osc_bundle_s_deserialize(len, ptr);
-	if(!b_src){
+    t_osc_bndl_u *b = osc_bundle_s_deserialize(len, ptr);
+	if(!b){
 		object_error((t_object *)x, "invalid OSC packet");
 		return;
 	}
-    
+    /*
     t_osc_bndl_u *b = NULL;
 
     t_osc_err e = osc_bundle_u_flatten(&b, b_src, 0, NULL, 1);
@@ -81,7 +81,7 @@ void odowncast_fullPacket(t_odowncast *x, t_symbol *msg, int argc, t_atom *argv)
         object_error((t_object *)x, "%s", osc_error_string(e));
         return;
     }
-	
+	*/
     
 	//t_osc_bndl_u **nestedbundles = NULL;
 	//int nnestedbundles = 0, nestedbundles_buflen = 0;
@@ -115,15 +115,23 @@ void odowncast_fullPacket(t_odowncast *x, t_symbol *msg, int argc, t_atom *argv)
 				}
 				break;
 			case OSC_BUNDLE_TYPETAG:
-				/*
-                    if(x->bundles){
+                if(x->bundles){
+                    /*
 					if(!nestedbundles || nnestedbundles == nestedbundles_buflen){
 						nestedbundles = (t_osc_bndl_u **)osc_mem_resize(nestedbundles, (nestedbundles_buflen + 16) * sizeof(char *));
 					}
 					nestedbundles[nnestedbundles++] = osc_atom_u_getBndl(a);
-					osc_message_u_removeAtom(m, a);
-				}*/
-                    object_error((t_object*)x, "flattening failed");
+                     */
+
+                    char *blob = NULL;
+                    int32_t blob_l;
+                    osc_atom_u_getBlobCopy(a, &blob_l, &blob);
+                    osc_message_u_removeAtom(m, a);
+                    if( blob )
+                    {
+                        osc_message_u_appendBlob(m, blob);
+                    }
+				}
 				break;
 			case OSC_TIMETAG_TYPETAG:
 #if OSC_TIMETAG_FORMAT == OSC_TIMETAG_NTP
@@ -141,8 +149,8 @@ void odowncast_fullPacket(t_odowncast *x, t_symbol *msg, int argc, t_atom *argv)
 					//tt2 = tt & 0xffffffff;
 					tt1 = osc_timetag_ntp_getSeconds(tt);
 					tt2 = osc_timetag_ntp_getFraction(tt);
-					osc_atom_u_setInt32(aa, ntoh32(tt1));
-					osc_atom_u_setInt32(a, ntoh32(tt2));
+					osc_atom_u_setInt32(a, ntoh32(tt1));
+					osc_atom_u_setInt32(aa, ntoh32(tt2));
 					osc_message_u_insertAtom(m, aa, ++i);
 				}
 #else
@@ -160,10 +168,10 @@ void odowncast_fullPacket(t_odowncast *x, t_symbol *msg, int argc, t_atom *argv)
 	if(bs1){
 		long l = osc_bundle_s_getLen(bs1);
 		char *p = osc_bundle_s_getPtr(bs1);
+
 		memcpy(p + OSC_ID_SIZE, &timetag, sizeof(t_osc_timetag));
         
         /*
-         // pre flattening now.. but leaving this here in case we need it later
 		for(int i = 0; i < nnestedbundles; i++){
 			t_osc_bndl_s *bs2 = osc_bundle_u_serialize(nestedbundles[i]);
 			if(bs2){
@@ -172,9 +180,11 @@ void odowncast_fullPacket(t_odowncast *x, t_symbol *msg, int argc, t_atom *argv)
 				p = osc_mem_resize(p, l + ll);
 				memcpy(p + l, pp, ll);
 				l += ll;
+         
 				osc_bundle_s_deepFree(bs2);
 			}
-		}*/
+		}
+         */
         
 		//if(x->bundle){
 		omax_util_outletOSC(x->outlet, l, p);
