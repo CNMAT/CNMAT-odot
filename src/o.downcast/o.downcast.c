@@ -64,7 +64,109 @@ typedef struct _odowncast{
 void *odowncast_class;
 
 
-//void odowncast_fullPacket(t_odowncast *x, long len, long ptr)
+t_osc_bundle_u *odowncast_iterBundle(t_odowncast *x, t_osc_bundle_u *b, t_osc_timetag *timetag)
+{
+    t_osc_bndl_it_u *bit = osc_bndl_it_u_get(b);
+    while(osc_bndl_it_u_hasNext(bit))
+    {
+        t_osc_msg_u *m = osc_bndl_it_u_next(bit);
+        t_osc_msg_it_u *mit = osc_msg_it_u_get(m);
+        while(osc_msg_it_u_hasNext(mit)){
+            t_osc_atom_u *a = osc_msg_it_u_next(mit);
+            int i = 0;
+            switch(osc_atom_u_getTypetag(a)){
+                case 'c':
+                case 'C':
+                case 'I':
+                case 'h':
+                case 'H':
+                case 'u':
+                case 'U':
+                case 'N':
+                case 'T':
+                case 'F':
+                    if(x->ints){
+                        osc_atom_u_setInt32(a, osc_atom_u_getInt32(a));
+                    }
+                    break;
+                case 'd':
+                    if(x->doubles){
+                        osc_atom_u_setFloat(a, osc_atom_u_getFloat(a));
+                    }
+                    break;
+                case OSC_BUNDLE_TYPETAG:
+                {
+                    // get pointer to bundle (not a copy)
+                    t_osc_bundle_u *sub_b_u = osc_atom_u_getBndl(a);
+
+                    sub_b_u = odowncast_iterBundle(x, sub_b_u, timetag);
+                    
+                    // after downcasting, and blobbing subbundles, serialize and convert to blob
+                    t_osc_bundle_s *sub_b_s = osc_bundle_u_serialize(sub_b_u);
+                    if( sub_b_s )
+                    {
+                        // temp atom for conversion
+                        t_osc_atom_u *tmp_atom_s_bnd = osc_atom_u_alloc();
+                        osc_atom_u_setBndl_s(tmp_atom_s_bnd, osc_bundle_s_getLen(sub_b_s), osc_bundle_s_getPtr(sub_b_s));
+                        
+                        // make the blob
+                        char *blob = NULL;
+                        int32_t blob_l;
+                        osc_atom_u_getBlobCopy(tmp_atom_s_bnd, &blob_l, &blob); //<< internally checks for and copies bundle into blob format
+
+                        if( blob )
+                        {
+                            // transfer to the current atom (a)
+                            // internally calls atom_u_clear/free which frees our sub_b_u pointer, so we don't have to do that
+                            osc_atom_u_setBlob(a, blob);
+                            
+                            // release the blob
+                            osc_mem_free(blob);
+                            blob = NULL;
+                        }
+                        
+                        // release temp bundle atom
+                        osc_atom_u_free(tmp_atom_s_bnd);
+                        osc_bundle_s_deepFree(sub_b_s);
+                    }
+                    
+                    
+                }
+                    break;
+                case OSC_TIMETAG_TYPETAG:
+#if OSC_TIMETAG_FORMAT == OSC_TIMETAG_NTP
+                    if(x->timetags){
+                        t_osc_timetag tt = osc_atom_u_getTimetag(a);
+                        if(x->timetag_address){
+                            char *address = osc_message_u_getAddress(m);
+                            if(!strcmp(address, x->timetag_address->s_name)){
+                                *timetag = tt;
+                            }
+                        }
+                        t_osc_atom_u *aa = osc_atom_u_alloc();
+                        int32_t tt1, tt2;
+                        //tt1 = (tt & 0xffffffff00000000) >> 32;
+                        //tt2 = tt & 0xffffffff;
+                        tt1 = osc_timetag_ntp_getSeconds(tt);
+                        tt2 = osc_timetag_ntp_getFraction(tt);
+                        osc_atom_u_setInt32(a, (int32_t)tt1);
+                        osc_atom_u_setInt32(aa, (int32_t)tt2);
+                        osc_message_u_insertAtom(m, aa, ++i);
+                    }
+#else
+                    object_error((t_object *)x, "o.downcast only supports NTP timetags");
+#endif
+                    break;
+            }
+            i++;
+        }
+        osc_msg_it_u_destroy(mit);
+    }
+    osc_bndl_it_u_destroy(bit);
+    return b;
+}
+
+
 void odowncast_fullPacket(t_odowncast *x, t_symbol *msg, int argc, t_atom *argv)
 {
 	OMAX_UTIL_GET_LEN_AND_PTR;
@@ -73,136 +175,38 @@ void odowncast_fullPacket(t_odowncast *x, t_symbol *msg, int argc, t_atom *argv)
 		object_error((t_object *)x, "invalid OSC packet");
 		return;
 	}
-    /*
-    t_osc_bndl_u *b = NULL;
 
-    t_osc_err e = osc_bundle_u_flatten(&b, b_src, 0, NULL, 1);
-    if(e){
-        object_error((t_object *)x, "%s", osc_error_string(e));
+    t_osc_timetag timetag = OSC_TIMETAG_NULL;
+
+    t_osc_bundle_u *blobbed_b = odowncast_iterBundle(x, b, &timetag);
+    if( !blobbed_b )
+    {
+        object_error((t_object *)x, "invalid OSC packet");
+        osc_bundle_u_free(b);
         return;
     }
-	*/
     
-	//t_osc_bndl_u **nestedbundles = NULL;
-	//int nnestedbundles = 0, nestedbundles_buflen = 0;
-	
-    t_osc_bndl_it_u *bit = osc_bndl_it_u_get(b);
-	t_osc_timetag timetag = OSC_TIMETAG_NULL;
-	while(osc_bndl_it_u_hasNext(bit)){
-		t_osc_msg_u *m = osc_bndl_it_u_next(bit);
-		t_osc_msg_it_u *mit = osc_msg_it_u_get(m);
-		while(osc_msg_it_u_hasNext(mit)){
-			t_osc_atom_u *a = osc_msg_it_u_next(mit);
-			int i = 0;
-			switch(osc_atom_u_getTypetag(a)){
-			case 'c':
-			case 'C':
-			case 'I':
-			case 'h':
-			case 'H':
-			case 'u':
-			case 'U':
-			case 'N':
-			case 'T':
-			case 'F':
-				if(x->ints){
-					osc_atom_u_setInt32(a, osc_atom_u_getInt32(a));
-				}
-				break;
-			case 'd':
-				if(x->doubles){
-					osc_atom_u_setFloat(a, osc_atom_u_getFloat(a));
-				}
-				break;
-			case OSC_BUNDLE_TYPETAG:
-                if(x->bundles){
-                    /*
-					if(!nestedbundles || nnestedbundles == nestedbundles_buflen){
-						nestedbundles = (t_osc_bndl_u **)osc_mem_resize(nestedbundles, (nestedbundles_buflen + 16) * sizeof(char *));
-					}
-					nestedbundles[nnestedbundles++] = osc_atom_u_getBndl(a);
-                     */
-
-                    char *blob = NULL;
-                    int32_t blob_l;
-                    osc_atom_u_getBlobCopy(a, &blob_l, &blob);
-                    osc_message_u_removeAtom(m, a);
-                    if( blob )
-                    {
-                        osc_message_u_appendBlob(m, blob);
-                    }
-				}
-				break;
-			case OSC_TIMETAG_TYPETAG:
-#if OSC_TIMETAG_FORMAT == OSC_TIMETAG_NTP
-				if(x->timetags){
-					t_osc_timetag tt = osc_atom_u_getTimetag(a);
-					if(x->timetag_address){
-						char *address = osc_message_u_getAddress(m);
-						if(!strcmp(address, x->timetag_address->s_name)){
-							timetag = tt;
-						}
-					}
-					t_osc_atom_u *aa = osc_atom_u_alloc();
-					int32_t tt1, tt2;
-					//tt1 = (tt & 0xffffffff00000000) >> 32;
-					//tt2 = tt & 0xffffffff;
-					tt1 = osc_timetag_ntp_getSeconds(tt);
-					tt2 = osc_timetag_ntp_getFraction(tt);
-					osc_atom_u_setInt32(a, ntoh32(tt1));
-					osc_atom_u_setInt32(aa, ntoh32(tt2));
-					osc_message_u_insertAtom(m, aa, ++i);
-				}
-#else
-				object_error((t_object *)x, "o.downcast only supports NTP timetags");
-#endif
-				break;
-			}
-			i++;
-		}
-		osc_msg_it_u_destroy(mit);
-	}
-	osc_bndl_it_u_destroy(bit);
-	t_osc_bndl_s *bs1 = osc_bundle_u_serialize(b);
+    t_osc_bndl_s *bs1 = osc_bundle_u_serialize(blobbed_b);
     
 	if(bs1){
+        
 		long l = osc_bundle_s_getLen(bs1);
 		char *p = osc_bundle_s_getPtr(bs1);
 
-		memcpy(p + OSC_ID_SIZE, &timetag, sizeof(t_osc_timetag));
-        
+		memcpy(p + OSC_ID_SIZE, &timetag, sizeof(t_osc_timetag)); // add timetag to header if found @headertimetag address
+
         /*
-		for(int i = 0; i < nnestedbundles; i++){
-			t_osc_bndl_s *bs2 = osc_bundle_u_serialize(nestedbundles[i]);
-			if(bs2){
-				long ll = osc_bundle_s_getLen(bs2);
-				char *pp = osc_bundle_s_getPtr(bs2);
-				p = osc_mem_resize(p, l + ll);
-				memcpy(p + l, pp, ll);
-				l += ll;
-         
-				osc_bundle_s_deepFree(bs2);
-			}
-		}
-         */
-        
-		//if(x->bundle){
+        for(int i = 0; i < sizeof(t_osc_timetag); i++ )
+        {
+            printf("%d [ %c ]\n", i, p[i+OSC_ID_SIZE]);
+        }
+        */
 		omax_util_outletOSC(x->outlet, l, p);
-			/*
-		}else{
-			t_osc_bndl_it_s *bit = osc_bndl_it_s_get(l, p);
-			while(osc_bndl_it_s_hasNext(bit)){
-				t_osc_msg_s *m = osc_bndl_it_s_next(bit);
-				long ml = osc_message_s_getSize(m);
-				char *mp = osc_message_s_getAddress(m);
-				omax_util_outletOSC(x->outlet, ml, mp);
-			}
-			osc_bndl_it_s_destroy(bit);
-		}
-			*/
+    
 		osc_bundle_s_deepFree(bs1);
 	}
 	osc_bundle_u_free(b);
+
 }
 
 
