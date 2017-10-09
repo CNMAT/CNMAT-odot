@@ -193,14 +193,12 @@ void odowncast_fullPacket(t_odowncast *x, t_symbol *msg, int argc, t_atom *argv)
 		long l = osc_bundle_s_getLen(bs1);
 		char *p = osc_bundle_s_getPtr(bs1);
 
-		memcpy(p + OSC_ID_SIZE, &timetag, sizeof(t_osc_timetag)); // add timetag to header if found @headertimetag address
-
-        /*
-        for(int i = 0; i < sizeof(t_osc_timetag); i++ )
-        {
-            printf("%d [ %c ]\n", i, p[i+OSC_ID_SIZE]);
-        }
-        */
+        t_osc_timetag tt_n;
+        tt_n.sec = htonl(timetag.sec);
+        tt_n.frac_sec = htonl(timetag.frac_sec);
+        
+		memcpy(p + OSC_ID_SIZE, &tt_n, sizeof(t_osc_timetag)); // add timetag to header if found @headertimetag address
+        
 		omax_util_outletOSC(x->outlet, l, p);
     
 		osc_bundle_s_deepFree(bs1);

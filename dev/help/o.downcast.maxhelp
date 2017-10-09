@@ -9,7 +9,7 @@
 			"modernui" : 1
 		}
 ,
-		"rect" : [ 100.0, 100.0, 670.0, 748.0 ],
+		"rect" : [ 143.0, 79.0, 1045.0, 730.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -79,7 +79,6 @@
 						"tags" : "",
 						"style" : "",
 						"subpatcher_template" : "",
-						"visible" : 1,
 						"boxes" : [ 							{
 								"box" : 								{
 									"id" : "obj-51",
@@ -131,7 +130,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 421.5, 59.0, 89.0, 22.0 ],
-									"presentation_rect" : [ 424.0, 136.0, 0.0, 0.0 ],
 									"style" : "",
 									"text" : "o.timetag /time"
 								}
@@ -148,7 +146,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "FullPacket" ],
 									"patching_rect" : [ 421.5, 133.0, 193.0, 22.0 ],
-									"presentation_rect" : [ 420.0, 169.0, 0.0, 0.0 ],
 									"style" : "",
 									"text" : "o.downcast @headertimetag /time"
 								}
@@ -162,7 +159,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 440.0, 267.0, 73.0, 22.0 ],
-									"presentation_rect" : [ 440.0, 274.0, 0.0, 0.0 ],
 									"style" : "",
 									"text" : "o.printbytes"
 								}
@@ -188,7 +184,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 709.0, 449.5, 37.0, 20.0 ],
-									"presentation_rect" : [ 709.0, 450.5, 0.0, 0.0 ],
 									"style" : "",
 									"text" : "GMT"
 								}
@@ -202,9 +197,8 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 576.0, 383.5, 221.0, 22.0 ],
-									"presentation_rect" : [ 576.0, 384.5, 0.0, 0.0 ],
 									"style" : "",
-									"text" : "OSCTimeTag 1140819421 4128834630"
+									"text" : "OSCTimeTag 3716549302 4001758875"
 								}
 
 							}
@@ -217,7 +211,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "iso8601" ],
 									"patching_rect" : [ 476.0, 387.0, 84.0, 35.0 ],
-									"presentation_rect" : [ 476.0, 388.0, 0.0, 0.0 ],
 									"style" : "",
 									"text" : "OSC-timetag @to iso8601"
 								}
@@ -231,9 +224,8 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 476.0, 449.5, 222.0, 22.0 ],
-									"presentation_rect" : [ 476.0, 450.5, 0.0, 0.0 ],
 									"style" : "",
-									"text" : "iso8601 1936-02-24T22:17:01.961319Z"
+									"text" : "iso8601 2017-10-09T14:48:22.931732Z"
 								}
 
 							}
@@ -245,7 +237,6 @@
 									"numoutlets" : 3,
 									"outlettype" : [ "", "", "OSCTimeTag" ],
 									"patching_rect" : [ 382.0, 343.0, 113.0, 22.0 ],
-									"presentation_rect" : [ 382.0, 344.0, 0.0, 0.0 ],
 									"style" : "",
 									"text" : "OpenSoundControl"
 								}
@@ -271,9 +262,8 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 952.0, 239.5, 221.0, 22.0 ],
-									"presentation_rect" : [ 477.0, 624.0, 0.0, 0.0 ],
 									"style" : "",
-									"text" : "OSCTimeTag 3716546369 1451460890"
+									"text" : "OSCTimeTag 3716549305 1794949220"
 								}
 
 							}
@@ -299,9 +289,8 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 852.0, 305.5, 222.0, 22.0 ],
-									"presentation_rect" : [ 414.0, 689.0, 0.0, 0.0 ],
 									"style" : "",
-									"text" : "iso8601 2017-10-09T13:59:29.337945Z"
+									"text" : "iso8601 2017-10-09T14:48:25.417919Z"
 								}
 
 							}
@@ -313,9 +302,8 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 907.0, 184.0, 222.0, 22.0 ],
-									"presentation_rect" : [ 478.0, 577.0, 0.0, 0.0 ],
 									"style" : "",
-									"text" : "OSCTimeTag 3716546369 1451460890"
+									"text" : "OSCTimeTag 3716549305 1794949220"
 								}
 
 							}
@@ -327,7 +315,6 @@
 									"numoutlets" : 3,
 									"outlettype" : [ "", "", "OSCTimeTag" ],
 									"patching_rect" : [ 758.0, 199.0, 113.0, 22.0 ],
-									"presentation_rect" : [ 347.0, 679.0, 0.0, 0.0 ],
 									"style" : "",
 									"text" : "OpenSoundControl"
 								}
@@ -379,7 +366,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 850.0, 93.0, 50.0, 22.0 ],
-									"presentation_rect" : [ 413.0, 539.0, 0.0, 0.0 ],
 									"style" : "",
 									"text" : "now"
 								}
@@ -393,7 +379,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "OSCTimeTag" ],
 									"patching_rect" : [ 850.0, 122.5, 80.0, 22.0 ],
-									"presentation_rect" : [ 413.0, 568.5, 0.0, 0.0 ],
 									"style" : "",
 									"text" : "OSC-timetag"
 								}
@@ -407,7 +392,6 @@
 									"numoutlets" : 3,
 									"outlettype" : [ "", "", "OSCTimeTag" ],
 									"patching_rect" : [ 758.0, 166.0, 113.0, 22.0 ],
-									"presentation_rect" : [ 417.0, 629.0, 0.0, 0.0 ],
 									"style" : "",
 									"text" : "OpenSoundControl"
 								}
@@ -422,7 +406,7 @@
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 54.0, 557.0, 221.0, 22.0 ],
 									"style" : "",
-									"text" : "iso8601 2017-10-09T13:59:31.273500Z"
+									"text" : "iso8601 2017-10-09T14:48:22.931732Z"
 								}
 
 							}
@@ -438,7 +422,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 61.0, 237.0, 286.0, 47.0 ],
-									"text" : "/osc1time : [-578420925, 1174622370],\n/time : 2017-10-09T13:59:31.273500Z",
+									"text" : "/osc1time : [-578417994, -293247076],\n/time : 2017-10-09T14:48:22.931732Z",
 									"textcolor" : [ 1.0, 1.0, 1.0, 1.0 ]
 								}
 
@@ -547,7 +531,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 61.0, 343.0, 286.0, 47.0 ],
-									"text" : "/osc1time : [-578420925, 1174622370],\n/time : [-578420925, 1174673910]",
+									"text" : "/osc1time : [-578417994, -293247076],\n/time : [-578417994, -293208421]",
 									"textcolor" : [ 1.0, 1.0, 1.0, 1.0 ]
 								}
 
