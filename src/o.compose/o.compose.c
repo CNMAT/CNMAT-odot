@@ -1258,9 +1258,9 @@ int main(void){
     class_addmethod(c, (method)ocompose_paint, "paint", A_CANT, 0);
     
     class_addmethod(c, (method)ocompose_bang, "bang", 0);
-    class_addmethod(c, (method)ocompose_int, "int", A_LONG, 0);
-    class_addmethod(c, (method)ocompose_float, "float", A_FLOAT, 0);
-    class_addmethod(c, (method)ocompose_list, "list", A_GIMME, 0);
+    //class_addmethod(c, (method)ocompose_int, "int", A_LONG, 0);
+    //class_addmethod(c, (method)ocompose_float, "float", A_FLOAT, 0);
+    //class_addmethod(c, (method)ocompose_list, "list", A_GIMME, 0);
     class_addmethod(c, (method)ocompose_anything, "anything", A_GIMME, 0);
     class_addmethod(c, (method)ocompose_set, "set", A_GIMME, 0);
     class_addmethod(c, (method)ocompose_assist, "assist", A_CANT, 0);
