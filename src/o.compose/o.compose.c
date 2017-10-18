@@ -521,6 +521,7 @@ void ocompose_jsave(t_ocompose *x, t_dictionary *d)
         atom_setlong(av+i, ptr[i]);
     }
     dictionary_appendatoms(d, gensym("saved_bundle_data"), len, av);
+    
 }
 #endif
 
@@ -1205,6 +1206,7 @@ void *ocompose_new(t_symbol *msg, short argc, t_atom *argv){
 //        x->frame_color.green = x->default_color.green;
 //        x->frame_color.blue = x->default_color.blue;
 //        x->frame_color.alpha = x->default_color.alpha;
+                
         t_object *textfield = jbox_get_textfield((t_object *)x);
         if(textfield){
             object_attr_setchar(textfield, gensym("editwhenunlocked"), 1);
@@ -1313,10 +1315,11 @@ int main(void){
     //CLASS_ATTR_CHAR_VARSIZE( c, "data", ATTR_SET_OPAQUE_USER | ATTR_GET_OPAQUE_USER, t_ocompose, stored_bundle_data, stored_bundle_length, 1024 );
     //CLASS_ATTR_SAVE(c, "data", 0 );
 
-    CLASS_ATTR_RGBA(c, "text_color", 0, t_ocompose, text_color);
-    CLASS_ATTR_DEFAULT_SAVE_PAINT(c, "text_color", 0, "0.188 0.188 0.188 1.");
-    //CLASS_ATTR_STYLE_LABEL(c, "text_color", 0, "rgba", "Text Color");
-    //CLASS_ATTR_CATEGORY_KLUDGE(c, "text_color", 0, "Color");
+    CLASS_ATTR_RGBA(c, "textcolor", 0, t_ocompose, text_color);
+    CLASS_ATTR_DEFAULT_SAVE_PAINT(c, "textcolor", 0, "0.188 0.188 0.188 1.");
+    CLASS_ATTR_STYLE_LABEL(c, "textcolor", 0, "rgba", "Text Color");
+    CLASS_ATTR_CATEGORY_KLUDGE(c, "textcolor", 0, "Color");
+    
     
     CLASS_ATTR_DEFAULT(c, "rect", 0, "0. 0. 150. 20.");
     
