@@ -9,7 +9,7 @@
 			"modernui" : 1
 		}
 ,
-		"rect" : [ 541.0, 145.0, 674.0, 616.0 ],
+		"rect" : [ 208.0, 130.0, 959.0, 618.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -37,6 +37,95 @@
 		"style" : "",
 		"subpatcher_template" : "",
 		"boxes" : [ 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-6",
+					"linecount" : 3,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 687.0, 113.5, 154.0, 47.0 ],
+					"presentation_rect" : [ 627.0, 122.0, 0.0, 0.0 ],
+					"style" : "",
+					"text" : "recusion can also be used with lambda functions stored as strings."
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontface" : 0,
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-5",
+					"linecount" : 2,
+					"maxclass" : "o.display",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 513.0, 237.5, 150.0, 47.0 ],
+					"presentation_rect" : [ 415.0, 271.0, 0.0, 0.0 ],
+					"text" : "/v : 9,\n/results : 362880",
+					"textcolor" : [ 1.0, 1.0, 1.0, 1.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontface" : 0,
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-3",
+					"maxclass" : "o.compose",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 513.0, 136.5, 49.0, 24.0 ],
+					"presentation_rect" : [ 434.0, 143.0, 0.0, 0.0 ],
+					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 12, 47, 118, 0, 0, 44, 105, 0, 0, 0, 0, 0, 9 ],
+					"saved_bundle_length" : 32,
+					"text" : "/v : 9",
+					"textcolor" : [ 0.188, 0.188, 0.188, 1.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontface" : 0,
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-4",
+					"maxclass" : "o.compose",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 609.0, 136.5, 49.0, 24.0 ],
+					"presentation_rect" : [ 530.0, 143.0, 0.0, 0.0 ],
+					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 12, 47, 118, 0, 0, 44, 105, 0, 0, 0, 0, 0, 5 ],
+					"saved_bundle_length" : 32,
+					"text" : "/v : 5",
+					"textcolor" : [ 0.188, 0.188, 0.188, 1.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontface" : 0,
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-2",
+					"linecount" : 2,
+					"maxclass" : "o.expr.codebox",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "FullPacket", "FullPacket" ],
+					"patching_rect" : [ 513.0, 182.5, 336.0, 45.0 ],
+					"text" : "/factorial = \"lambda(j, (j > 1)? j * /factorial(j - 1) : 1)\",\n/results = map(readstring(/factorial), /v), delete(/factorial)",
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"fontface" : 0,
 					"fontname" : "Arial",
@@ -73,13 +162,11 @@
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"id" : "obj-33",
-					"linecount" : 3,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 237.0, 550.0, 150.0, 61.0 ],
-					"text" : "/a : 6,\n/b : 0,\n/t : 6",
+					"patching_rect" : [ 237.0, 550.0, 150.0, 34.0 ],
 					"textcolor" : [ 1.0, 1.0, 1.0, 1.0 ]
 				}
 
@@ -232,7 +319,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 68.0, 550.0, 150.0, 34.0 ],
-					"text" : "/a : 6",
 					"textcolor" : [ 1.0, 1.0, 1.0, 1.0 ]
 				}
 
@@ -389,6 +475,13 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-5", 0 ],
+					"source" : [ "obj-2", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"color" : [ 1.0, 0.8, 0.4, 1.0 ],
 					"destination" : [ "obj-13", 0 ],
 					"midpoints" : [ 106.5, 169.0, 226.5, 169.0 ],
@@ -439,6 +532,13 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-2", 0 ],
+					"source" : [ "obj-3", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"color" : [ 1.0, 0.8, 0.4, 1.0 ],
 					"destination" : [ "obj-12", 0 ],
 					"source" : [ "obj-32", 0 ]
@@ -467,6 +567,13 @@
 					"color" : [ 1.0, 0.8, 0.4, 1.0 ],
 					"destination" : [ "obj-32", 0 ],
 					"source" : [ "obj-39", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-2", 0 ],
+					"source" : [ "obj-4", 0 ]
 				}
 
 			}
