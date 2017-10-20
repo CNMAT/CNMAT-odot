@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 42;
+	objectVersion = 48;
 	objects = {
 
 /* Begin PBXAggregateTarget section */
@@ -247,6 +247,7 @@
 		115058E81AD48E5700CFA262 /* opd_textbox.c in Sources */ = {isa = PBXBuildFile; fileRef = 115058E51AD48E4D00CFA262 /* opd_textbox.c */; };
 		115058E91AD48E5900CFA262 /* opd_textbox.c in Sources */ = {isa = PBXBuildFile; fileRef = 115058E51AD48E4D00CFA262 /* opd_textbox.c */; };
 		115D740D198FD26B00F42B88 /* o.expr.codebox.c in Sources */ = {isa = PBXBuildFile; fileRef = 5223ADDB1923EB9000C8FBB5 /* o.expr.codebox.c */; };
+		116F874B1F9A16450062EE91 /* o.gui.attach.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 116F874A1F9A16450062EE91 /* o.gui.attach.cpp */; };
 		11893E5E1986F462008303DD /* o.compose.c in Sources */ = {isa = PBXBuildFile; fileRef = 9B3930F4195A296C002EDAE5 /* o.compose.c */; };
 		118D280019394C9500739CB3 /* pqops.c in Sources */ = {isa = PBXBuildFile; fileRef = 52A8396C16F3F893002E273C /* pqops.c */; };
 		118D280119394C9800739CB3 /* pqops.h in Headers */ = {isa = PBXBuildFile; fileRef = 52A8396D16F3F893002E273C /* pqops.h */; };
@@ -281,6 +282,10 @@
 		11A20DB319F0B428002A98B5 /* libo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5AD163763BD0016EC39 /* libo.a */; };
 		11A20DB419F0B428002A98B5 /* libomax.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5C6163763CF0016EC39 /* libomax.a */; };
 		11A20DBA19F0B49D002A98B5 /* o.expr.codebox.set.c in Sources */ = {isa = PBXBuildFile; fileRef = 11A20DB919F0B49D002A98B5 /* o.expr.codebox.set.c */; };
+		11A394111F98D02600D2AC3D /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52CEF59416375BFB0016EC39 /* commonsyms.c */; };
+		11A394131F98D02600D2AC3D /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */; };
+		11A394141F98D02600D2AC3D /* libo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5AD163763BD0016EC39 /* libo.a */; };
+		11A394151F98D02600D2AC3D /* libomax.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5C6163763CF0016EC39 /* libomax.a */; };
 		11A5D9E719574A5100333C1F /* o.context.c in Sources */ = {isa = PBXBuildFile; fileRef = 527294B717EDE93100AA15E1 /* o.context.c */; };
 		11EF2ACB18AFEBB900156403 /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52CEF59416375BFB0016EC39 /* commonsyms.c */; };
 		11EF2ACD18AFEBB900156403 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */; };
@@ -591,6 +596,13 @@
 			remoteInfo = o.bundle.pd;
 		};
 		11A20DAB19F0B428002A98B5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5224C9FB1958BFDF00E37AED;
+			remoteInfo = "Current Version";
+		};
+		11A3940C1F98D02600D2AC3D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
 			proxyType = 1;
@@ -2244,6 +2256,7 @@
 		115058E51AD48E4D00CFA262 /* opd_textbox.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = opd_textbox.c; path = include/opd_textbox.c; sourceTree = "<group>"; };
 		115058E61AD48E4D00CFA262 /* opd_textbox.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = opd_textbox.h; path = include/opd_textbox.h; sourceTree = "<group>"; };
 		115D740C198FD23F00F42B88 /* o.expr.codebox.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = o.expr.codebox.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
+		116F874A1F9A16450062EE91 /* o.gui.attach.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = o.gui.attach.cpp; path = o.gui.attach/o.gui.attach.cpp; sourceTree = "<group>"; };
 		11893E5D1986F436008303DD /* o.compose.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = o.compose.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
 		119179A819C25F4700F76066 /* o.bundle.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = o.bundle.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
 		119179A919C25FF700F76066 /* o.bundle.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.bundle.c; path = "o-bundle/o.bundle.c"; sourceTree = "<group>"; };
@@ -2275,6 +2288,7 @@
 		119FA13C191D6052001C3325 /* o.when.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = o.when.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
 		11A20DB819F0B428002A98B5 /* o.expr.codebox.set.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.expr.codebox.set.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
 		11A20DB919F0B49D002A98B5 /* o.expr.codebox.set.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.expr.codebox.set.c; path = o.expr.codebox.set/o.expr.codebox.set.c; sourceTree = "<group>"; };
+		11A394191F98D02600D2AC3D /* o.gui.attach.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.gui.attach.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
 		11A5D9D219571A8300333C1F /* o.slip.decode.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = o.slip.decode.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
 		11A5D9DB19571AC400333C1F /* o.slip.encode.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = o.slip.encode.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
 		11A5D9E619574A1B00333C1F /* o.context.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = o.context.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -2610,6 +2624,16 @@
 				11A20DB219F0B428002A98B5 /* Carbon.framework in Frameworks */,
 				11A20DB319F0B428002A98B5 /* libo.a in Frameworks */,
 				11A20DB419F0B428002A98B5 /* libomax.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		11A394121F98D02600D2AC3D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				11A394131F98D02600D2AC3D /* Carbon.framework in Frameworks */,
+				11A394141F98D02600D2AC3D /* libo.a in Frameworks */,
+				11A394151F98D02600D2AC3D /* libomax.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3154,6 +3178,7 @@
 				5223ADDB1923EB9000C8FBB5 /* o.expr.codebox.c */,
 				11A20DB919F0B49D002A98B5 /* o.expr.codebox.set.c */,
 				5203467B1555BF16001EA532 /* o.flatten.c */,
+				116F874A1F9A16450062EE91 /* o.gui.attach.cpp */,
 				5255252F1504D24500A10E5D /* o.if.c */,
 				525525311504D24D00A10E5D /* o.intersection.c */,
 				9BB5E9DF1952585C00932005 /* o.listenumerate.c */,
@@ -3289,6 +3314,7 @@
 				528026EC19E028C30037FD4E /* o.queue.fifo.mxo */,
 				119179A819C25F4700F76066 /* o.bundle.pd_darwin */,
 				11A20DB819F0B428002A98B5 /* o.expr.codebox.set.mxo */,
+				11A394191F98D02600D2AC3D /* o.gui.attach.mxo */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -3523,6 +3549,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		11A20DAC19F0B428002A98B5 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		11A3940D1F98D02600D2AC3D /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -4478,6 +4511,25 @@
 			name = o.expr.codebox.set;
 			productName = cv.jit.dilate;
 			productReference = 11A20DB819F0B428002A98B5 /* o.expr.codebox.set.mxo */;
+			productType = "com.apple.product-type.bundle";
+		};
+		11A3940A1F98D02600D2AC3D /* o.gui.attach */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 11A394161F98D02600D2AC3D /* Build configuration list for PBXNativeTarget "o.gui.attach" */;
+			buildPhases = (
+				11A3940D1F98D02600D2AC3D /* Headers */,
+				11A3940E1F98D02600D2AC3D /* Resources */,
+				11A3940F1F98D02600D2AC3D /* Sources */,
+				11A394121F98D02600D2AC3D /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				11A3940B1F98D02600D2AC3D /* PBXTargetDependency */,
+			);
+			name = o.gui.attach;
+			productName = cv.jit.dilate;
+			productReference = 11A394191F98D02600D2AC3D /* o.gui.attach.mxo */;
 			productType = "com.apple.product-type.bundle";
 		};
 		11A5D9CA19571A8300333C1F /* o.slip.decode.pd */ = {
@@ -5489,7 +5541,7 @@
 				ORGANIZATIONNAME = edu.berkeley.cnmat;
 			};
 			buildConfigurationList = 4FADC23708B4156C00ABE55E /* Build configuration list for PBXProject "odot" */;
-			compatibilityVersion = "Xcode 2.4";
+			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = English;
 			hasScannedForEncodings = 1;
 			knownRegions = (
@@ -5594,12 +5646,20 @@
 				525524EE1504D16600A10E5D /* o.when */,
 				119FA133191D6052001C3325 /* o.when.pd */,
 				52F0C47817B581CC009FBD24 /* o.O */,
+				11A3940A1F98D02600D2AC3D /* o.gui.attach */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		11A20DAD19F0B428002A98B5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		11A3940E1F98D02600D2AC3D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -6176,6 +6236,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		11A3940F1F98D02600D2AC3D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				116F874B1F9A16450062EE91 /* o.gui.attach.cpp in Sources */,
+				11A394111F98D02600D2AC3D /* commonsyms.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		11A5D9CB19571A8300333C1F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -6702,6 +6771,11 @@
 			isa = PBXTargetDependency;
 			target = 5224C9FB1958BFDF00E37AED /* Current Version */;
 			targetProxy = 11A20DAB19F0B428002A98B5 /* PBXContainerItemProxy */;
+		};
+		11A3940B1F98D02600D2AC3D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5224C9FB1958BFDF00E37AED /* Current Version */;
+			targetProxy = 11A3940C1F98D02600D2AC3D /* PBXContainerItemProxy */;
 		};
 		11B7FFBA19997FF0000F9EBF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -11626,6 +11700,108 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PREBINDING = YES;
 				PRODUCT_NAME = o.expr.codebox.set;
+				SDKROOT = macosx;
+				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SYMROOT = "$(inherited)";
+				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
+				WARNING_CFLAGS = "$(inherited)";
+				WRAPPER_EXTENSION = "$(inherited)";
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+		11A394171F98D02600D2AC3D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(inherited)";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++11";
+				CLANG_CXX_LIBRARY = "libc++";
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(inherited)";
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+				);
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../../max6-sdk/c74support/max-includes\"";
+				GCC_ALTIVEC_EXTENSIONS = YES;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INPUT_FILETYPE = automatic;
+				GCC_MODEL_TUNING = G4;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(inherited)";
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = "$(inherited)";
+				INSTALL_PATH = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
+				);
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../../libo\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../../libomax\"";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				OBJROOT = "$(inherited)";
+				OTHER_LDFLAGS = "$(inherited)";
+				PREBINDING = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SYMROOT = "$(inherited)";
+				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
+				WARNING_CFLAGS = "$(inherited)";
+				WRAPPER_EXTENSION = "$(inherited)";
+				ZERO_LINK = YES;
+			};
+			name = Debug;
+		};
+		11A394181F98D02600D2AC3D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 52AA372D19575120009A1920 /* Max-config.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(inherited)";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++11";
+				CLANG_CXX_LIBRARY = "libc++";
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(inherited)";
+				COPY_PHASE_STRIP = YES;
+				DSTROOT = "$(PROJECT_DIR)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+				);
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../../max6-sdk/c74support/max-includes\"";
+				GCC_ALTIVEC_EXTENSIONS = YES;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INPUT_FILETYPE = automatic;
+				GCC_MODEL_TUNING = G4;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(inherited)";
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = "$(inherited)";
+				INSTALL_PATH = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
+				);
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../../libo\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../../libomax\"";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				OBJROOT = "$(inherited)";
+				OTHER_LDFLAGS = "$(inherited)";
+				PREBINDING = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
 				SYMROOT = "$(inherited)";
@@ -17989,6 +18165,15 @@
 			buildConfigurations = (
 				11A20DB619F0B428002A98B5 /* Debug */,
 				11A20DB719F0B428002A98B5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		11A394161F98D02600D2AC3D /* Build configuration list for PBXNativeTarget "o.gui.attach" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				11A394171F98D02600D2AC3D /* Debug */,
+				11A394181F98D02600D2AC3D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
