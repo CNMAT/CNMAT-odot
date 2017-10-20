@@ -316,6 +316,134 @@ void o_gui_attach_bang(t_o_gui_attach *x)
     o_gui_attach_output_bundle(x);
 }
 
+void o_gui_attach_patcher_test(t_o_gui_attach *x)
+{
+    
+    t_object *jp;
+    t_object *jbx;
+    t_object *o;
+    t_max_err err;
+    
+    err = object_obex_lookup(x, gensym("#P"), (t_object **)&jp);
+    if (err != MAX_ERR_NONE)
+        return;
+    
+    // some kind of patcher in a box
+    if ((jbx = jpatcher_get_box(jp)))
+    {
+        t_object *textfield = jbox_get_textfield(jbx);
+        
+        char *text = NULL;
+        long textlen;
+        object_method(textfield, gensym("gettextptr"), &text, &textlen);
+        
+        long size;
+        t_atom *pargv;
+        atom_setparse(&size, &pargv, text);
+        t_atom *argv = pargv;
+        
+        for(int i = 0; i < size; i++ )
+        {
+            int type = atom_gettype(argv+i);
+
+            if( type == A_SYM )
+            {
+                t_symbol *sym = atom_getsym(argv+i);
+                post("got a %s", sym );
+                if( sym->s_name[0] == '@' )
+                    break;
+            }
+            else if(type == A_LONG )
+            {
+                post("got a %ld", atom_getlong(argv+i) );
+            }
+            else if(type == A_FLOAT )
+            {
+                post("got a %f", atom_getfloat(argv+i) );
+            }
+            
+        }
+        
+        t_dictionary *dict = dictionary_new();
+        attr_args_dictionary(dict, size, pargv);
+        
+        t_symbol	**keys = NULL;
+        long		numkeys = 0;
+        long		i;
+        t_object	*anItem;
+        
+        dictionary_getkeys(dict, &numkeys, &keys);
+        for(i=0; i<numkeys; i++)
+        {
+            post("key %s", keys[i]->s_name);
+        }
+        if(keys)
+            dictionary_freekeys(dict, numkeys, keys);
+        
+        
+        object_free(dict);
+        
+        return;
+
+        t_symbol *filepath = object_attr_getsym((t_object *)jp, gensym("filepath"));
+        
+        post("object_classname(jbx): %s, object_classname(o): %s, filepath: %s", object_classname(jbx)->s_name, object_classname(jbox_get_object(jbx))->s_name, filepath->s_name);
+        if (object_classname(jbx) == gensym("bpatcher")) {
+            post("bpatcher");
+        } else {
+            if (filepath && filepath != gensym("")) {
+                post("abstraction");
+            } else {
+                post("subpatcher");
+            }
+        }
+    }
+    else
+    {
+        // might be in a poly~
+        
+        t_object *p2 = NULL;
+        t_object *target = NULL;
+        t_object *nextbox;
+        method m;
+        
+        object_method(jp, gensym("getassoc"), &target);
+        if (target) {
+            if ((m = zgetfn(target, gensym("parentpatcher"))))
+                (*m)(target, &p2);
+            if (p2) {
+                nextbox = jpatcher_get_firstobject(p2);
+                while (nextbox) {
+                    o = jbox_get_object(nextbox);
+                    if (o == target) {
+                        post("%s", object_classname(o)->s_name);
+                        return;
+                    }
+                    nextbox = jbox_get_nextobject(nextbox);
+                }
+            }
+        }
+    }
+
+    /*
+    box = object_attr_getobj(x->parent, _sym_box); // x->parent is the parent patcher
+    if (!box)
+        object_method(x->parent, _sym_getassoc, &box);	// this how we get a poly~ (as opposed to bpatcher or patcher)
+    box_classname = object_classname(box);
+    
+    if(box_classname == gensym("bpatcher") || box_classname == gensym("poly~")) {
+        object_attr_getvalueof(box, gensym("args"), &size, &pargv);
+        argv = pargv; // save real pointer since newobj case increments argv -jkc
+    } else if(box_classname == gensym("newobj")){
+        textfield = object_attr_getobj(box, gensym("textfield"));			// bpatcher -- textfield is null
+        object_method(textfield, gensym("gettextptr"), &text, &textlen);
+        atom_setparse(&size, &pargv, text);
+        argv = pargv; // save real pointer since newobj case increments argv -jkc
+        argv++;
+        size--;
+    }
+    */
+}
 
 t_max_err o_gui_attach_notify(t_o_gui_attach *x, t_symbol *s, t_symbol *msg, void *sender, void *data)
 {
@@ -377,8 +505,10 @@ t_max_err o_gui_attach_notify(t_o_gui_attach *x, t_symbol *s, t_symbol *msg, voi
 
         }
         //else if( msg == gensym("aftersnapshotrestore"))
-        else if( msg == gensym("loadbang_end"))
+        else if( msg == gensym("loadbang_internal"))
         {
+            //o_gui_attach_patcher_test(x);
+
 //            qelem_set(x->qelem_output);
             //post("aftersnapshotrestore");
             //clock_delay(x->clock, 0);
@@ -394,7 +524,7 @@ void o_gui_attach_loadbang(t_o_gui_attach *x)
     // post("loadbang");
     clock_unset(x->clock);
     o_gui_attach_do_iter(x);
-    o_gui_attach_output_bundle(x);
+    //o_gui_attach_output_bundle(x);
 
 }
 
@@ -426,9 +556,12 @@ void *o_gui_attach_new(t_symbol *msg, short argc, t_atom *argv)
 		x->outlet = outlet_new((t_object *)x, "FullPacket");
 		critical_new(&(x->lock));
         
-        x->qelem_output = qelem_new((t_object *)x, (method)o_gui_attach_iter_and_out);
-        x->clock = clock_new((t_object *)x, (method)o_gui_attach_iter_and_out);
+        x->qelem_output = qelem_new((t_object *)x, (method)o_gui_attach_do_iter);
+        x->clock = clock_new((t_object *)x, (method)o_gui_attach_do_iter);
 
+        x->bndl = osc_bundle_u_alloc();
+
+        
         // attach to this patcher and all other patchers
         t_patcher *patcher;
         t_max_err err = object_obex_lookup(x, gensym("#P"), &patcher);
@@ -437,17 +570,14 @@ void *o_gui_attach_new(t_symbol *msg, short argc, t_atom *argv)
             object_error((t_object*)x, "error type %d", err );
             return 0;
         }
-        
-        x->bndl = osc_bundle_u_alloc();
-        
-        
+    
        
-/*         later add attr to attach to parent
-        t_patcher *parent;
-        parent = jpatcher_get_parentpatcher(patcher);
-        if( parent )
-            object_attach_byptr(x, parent);
-*/
+       //  later add attr to attach to parent
+        //t_patcher *parent;
+        //parent = jpatcher_get_parentpatcher(patcher);
+       // if( parent )
+        
+        
         
         x->base_patch = patcher;
         object_attach_byptr(x, x->base_patch);
@@ -459,7 +589,6 @@ void *o_gui_attach_new(t_symbol *msg, short argc, t_atom *argv)
         // maybe someday if we wanted to get more notifications
         // jpatcher_get_dirty(patcher)
         
-
 
     }
 	return x;

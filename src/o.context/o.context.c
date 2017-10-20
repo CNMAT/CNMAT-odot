@@ -49,6 +49,7 @@
 #include "omax_doc.h"
 #include "omax_dict.h"
 
+
 #ifdef OMAX_PD_VERSION
 struct _canvasenvironment
 {
@@ -244,6 +245,126 @@ void ocontext_doFullPacket(t_ocontext *x, long len, char *ptr)
 }
 
 #else
+
+void ocontext_get_textfield_attrs(t_object *jp,  t_osc_bndl_u *bndl)
+{
+    t_object *jbx;
+    
+    if ((jbx = jpatcher_get_box(jp)))
+    {
+        t_object *textfield = jbox_get_textfield(jbx);
+        
+        char *text = NULL;
+        long textlen;
+        object_method(textfield, gensym("gettextptr"), &text, &textlen);
+        
+        //post("text %s", text);
+        
+        long size;
+        t_atom *pargv = NULL;
+        atom_setparse(&size, &pargv, text);
+        
+        t_osc_msg_u *arg_msg = osc_message_u_allocWithAddress("/textfield/arguments");
+        
+        for(int i = 1; i < size; i++ )
+        {
+            int type = atom_gettype(pargv+i);
+            
+            if( type == A_SYM )
+            {
+                t_symbol *sym = atom_getsym(pargv+i);
+                if( sym->s_name[0] == '@' )
+                    break;
+                
+                t_osc_atom_u *at = osc_atom_u_alloc();
+                osc_atom_u_setString(at, sym->s_name );
+                osc_message_u_appendAtom(arg_msg, at);
+                
+                //post("got a %s", sym->s_name );
+        
+            }
+            else if(type == A_LONG )
+            {
+                //post("got a %ld", atom_getlong(pargv+i) );
+                t_osc_atom_u *at = osc_atom_u_alloc();
+                osc_atom_u_setInt32(at, atom_getlong(pargv+i) );
+                osc_message_u_appendAtom(arg_msg, at);
+            }
+            else if(type == A_FLOAT )
+            {
+                //post("got a %f", atom_getfloat(pargv+i) );
+                t_osc_atom_u *at = osc_atom_u_alloc();
+                osc_atom_u_setDouble(at, atom_getfloat(pargv+i) );
+                osc_message_u_appendAtom(arg_msg, at);
+            }
+            
+        }
+
+        osc_bundle_u_addMsg(bndl, arg_msg);
+        
+        
+
+        t_dictionary *dict = dictionary_new();
+        t_osc_bndl_u *attr_bndl = osc_bundle_u_alloc();
+        
+        attr_args_dictionary(dict, size, pargv);
+        
+        t_symbol	**keys = NULL;
+        long		numkeys = 0;
+        
+        dictionary_getkeys(dict, &numkeys, &keys);
+        for(int j=0; j<numkeys; j++)
+        {
+            //            post("key %s", keys[i]->s_name);
+            char buf[strlen(keys[j]->s_name)+2];
+            sprintf(buf, "/%s", keys[j]->s_name );
+            t_osc_msg_u *key_msg = osc_message_u_allocWithAddress(buf);
+            
+            long attr_atom_len;
+            t_atom *attr_atoms = NULL;
+            dictionary_getatoms(dict, keys[j], &attr_atom_len, &attr_atoms);
+
+            for(int i = 0; i < attr_atom_len; i++ )
+            {
+                int type = atom_gettype(attr_atoms+i);
+                t_osc_atom_u *at = osc_atom_u_alloc();
+                
+                if( type == A_SYM )
+                {
+                    osc_atom_u_setString(at, atom_getsym(attr_atoms+i)->s_name );
+                    osc_message_u_appendAtom(key_msg, at);
+                    //post("got a %s", sym->s_name );
+                    
+                }
+                else if(type == A_LONG )
+                {
+                    //post("got a %ld", atom_getlong(pargv+i) );
+                    osc_atom_u_setInt32(at, atom_getlong(attr_atoms+i) );
+                    osc_message_u_appendAtom(key_msg, at);
+                }
+                else if(type == A_FLOAT )
+                {
+                    //post("got a %f", atom_getfloat(pargv+i) );
+                    osc_atom_u_setDouble(at, atom_getfloat(attr_atoms+i) );
+                    osc_message_u_appendAtom(key_msg, at);
+                }
+                
+            }
+            osc_bundle_u_addMsg(attr_bndl, key_msg);
+        }
+        
+        t_osc_msg_u *attr_msg = osc_message_u_allocWithAddress("/textfield/attributes");
+        osc_message_u_appendBndl_u(attr_msg, attr_bndl);
+        osc_bundle_u_addMsg(bndl, attr_msg);
+        
+        if(keys)
+            dictionary_freekeys(dict, numkeys, keys);
+        
+        
+        object_free(dict);
+    }
+}
+
 t_osc_bndl_u *ocontext_processPatcher(t_object *patcher)
 {
 	t_osc_bndl_u *patcher_bndl = osc_bundle_u_alloc();
@@ -283,7 +404,10 @@ t_osc_bndl_u *ocontext_processPatcher(t_object *patcher)
 	sysmem_freeptr(attrs);
 
 	t_symbol *maxclass = object_attr_getsym(patcher, gensym("maxclass"));
-	if(maxclass && maxclass == gensym("jpatcher")){
+	if(maxclass && maxclass == gensym("jpatcher"))
+    {
+        ocontext_get_textfield_attrs(patcher, patcher_bndl);
+        
 		patcher = jpatcher_get_parentpatcher(patcher);
 		t_osc_bndl_u *parent_bndl = ocontext_processPatcher(patcher);
 
@@ -298,7 +422,7 @@ t_osc_bndl_u *ocontext_processPatcher(t_object *patcher)
 void ocontext_doFullPacket(t_ocontext *x, long len, char *ptr)
 {
 	t_object *parent = NULL, *patcher = NULL;
-        object_obex_lookup(x, gensym("#P"), &patcher);
+    object_obex_lookup(x, gensym("#P"), &patcher);
 
 	//t_jbox *box = NULL;
         //object_obex_lookup(x, gensym("#B"), &box);
