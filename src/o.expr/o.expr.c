@@ -133,7 +133,7 @@ void oexpr_fullPacket(t_oexpr *x, t_symbol *msg, int argc, t_atom *argv)
 	}
 
 #if defined (OIF)
-	int ret = osc_expr_eval(x->expr, &len, &copy, &av);
+	int ret = osc_expr_eval(x->expr, &len, &copy, &av, x);
 	if(ret || !av || osc_atom_array_u_getLen(av) == 0){
 		omax_util_outletOSC(x->outlets[1], len, ptr);
 	}else{
@@ -154,7 +154,7 @@ void oexpr_fullPacket(t_oexpr *x, t_symbol *msg, int argc, t_atom *argv)
 		osc_mem_free(copy);
 	}
 #elif defined (OUNLESS)
-	int ret = osc_expr_eval(x->expr, &len, &copy, &av);
+	int ret = osc_expr_eval(x->expr, &len, &copy, &av, x);
 	if(ret || !av || osc_atom_array_u_getLen(av) == 0){
 		omax_util_outletOSC(x->outlet, len, ptr);
 	}else{
@@ -174,7 +174,7 @@ void oexpr_fullPacket(t_oexpr *x, t_symbol *msg, int argc, t_atom *argv)
 		osc_mem_free(copy);
 	}
 #elif defined (OWHEN)
-	int ret = osc_expr_eval(x->expr, &len, &copy, &av);
+	int ret = osc_expr_eval(x->expr, &len, &copy, &av, x);
 	if(ret || !av || osc_atom_array_u_getLen(av) == 0){
 	}else{
 		int i;
@@ -197,7 +197,7 @@ void oexpr_fullPacket(t_oexpr *x, t_symbol *msg, int argc, t_atom *argv)
 	int j = 0;
 	int success = 0;
 	while(f){
-		int ret = osc_expr_eval(f, &len, &copy, &av);
+		int ret = osc_expr_eval(f, &len, &copy, &av, x);
 		if(!ret){
 			int i;
 			int fail = 0;
@@ -258,7 +258,7 @@ void oexpr_fullPacket(t_oexpr *x, t_symbol *msg, int argc, t_atom *argv)
 		while(f){
 			//int argc = 0;
 			t_osc_atom_ar_u *av = NULL;
-			ret = osc_expr_eval(f, &copylen, &copy, &av);
+			ret = osc_expr_eval(f, &copylen, &copy, &av, x);
 			if(av){
 				osc_atom_array_u_free(av);
 			}
@@ -515,7 +515,7 @@ void *oexpr_new(t_symbol *msg, short argc, t_atom *argv){
 			}
 			if(1){//if(!haspound){
 				OSC_PROFILE_TIMER_START(foo);
-				t_osc_err ret = osc_expr_parser_parseExpr(buf, &f);
+				t_osc_err ret = osc_expr_parser_parseExpr(buf, &f, x);
 				OSC_PROFILE_TIMER_STOP(foo);
 				OSC_PROFILE_TIMER_PRINTF(foo);
 				OSC_PROFILE_TIMER_SNPRINTF(foo, buff);
@@ -669,7 +669,7 @@ void *oexpr_new(t_symbol *msg, short argc, t_atom *argv){
 			}
 			if(1){//if(!haspound){
 				OSC_PROFILE_TIMER_START(foo);
-				int ret = osc_expr_parser_parseExpr(buf, &f);
+				int ret = osc_expr_parser_parseExpr(buf, &f, x);
 				OSC_PROFILE_TIMER_STOP(foo);
 				OSC_PROFILE_TIMER_PRINTF(foo);
 				OSC_PROFILE_TIMER_SNPRINTF(foo, buff);

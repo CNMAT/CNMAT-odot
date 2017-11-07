@@ -158,7 +158,7 @@ void oexprcodebox_fullPacket(t_oexprcodebox *x, t_symbol *msg, int argc, t_atom 
 	}else{
 		while(f){
 			t_osc_atom_ar_u *av = NULL;
-			ret = osc_expr_eval(f, &copylen, &copy, &av);
+			ret = osc_expr_eval(f, &copylen, &copy, &av, x);
 			if(av){
 				osc_atom_array_u_free(av);
 			}
@@ -307,11 +307,12 @@ void oexprcodebox_gettext(t_oexprcodebox *x)
     if(size == 0){
         return;
     }  
-    
+
+    //post("x is %p", x);
     critical_enter(x->lock);
 
-        t_osc_err error = osc_expr_parser_parseExpr(text, &(x->expr));
-    
+        t_osc_err error = osc_expr_parser_parseExpr(text, &(x->expr), x);
+
 #ifndef OMAX_PD_VERSION
         if (error == OSC_ERR_NONE) {
             x->has_errors = 0;
@@ -837,6 +838,7 @@ void *oexprcodebox_new(t_symbol *msg, short argc, t_atom *argv)
 		jbox_new((t_jbox *)x, boxflags, argc, argv);
 		x->ob.b_firstin = (void *)x;
         x->text = "\n";
+
 		critical_new(&(x->lock));
 		//t_osc_expr *f = NULL;
 		x->outlets[1] = outlet_new((t_object *)x, "FullPacket");
@@ -938,7 +940,6 @@ int main(void)
 
     class_register(CLASS_BOX, c);
     oexprcodebox_class = c;
-
     osc_error_setHandler(omax_util_liboErrorHandler);
 
     ODOT_PRINT_VERSION;
