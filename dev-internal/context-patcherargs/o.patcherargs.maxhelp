@@ -38,10 +38,23 @@
 		"subpatcher_template" : "Default Max 7",
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-2",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "bang" ],
+					"patching_rect" : [ 204.0, 110.0, 60.0, 22.0 ],
+					"style" : "",
+					"text" : "loadbang"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-1",
 					"linecount" : 2,
 					"maxclass" : "newobj",
-					"numinlets" : 0,
+					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 204.0, 167.0, 342.0, 35.0 ],
 					"style" : "",
@@ -50,7 +63,14 @@
 
 			}
  ],
-		"lines" : [  ],
+		"lines" : [ 			{
+				"patchline" : 				{
+					"destination" : [ "obj-1", 0 ],
+					"source" : [ "obj-2", 0 ]
+				}
+
+			}
+ ],
 		"dependency_cache" : [ 			{
 				"name" : "o.patcherargs-inner.maxpat",
 				"bootpath" : "~/Documents/dev-lib/CNMAT-odot/dev-internal/context-patcherargs",

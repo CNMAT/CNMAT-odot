@@ -38,6 +38,32 @@
 		"subpatcher_template" : "Default Max 7",
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-15",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 34.0, 159.0, 63.0, 22.0 ],
+					"style" : "",
+					"text" : "print input"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"comment" : "",
+					"id" : "obj-11",
+					"index" : 1,
+					"maxclass" : "inlet",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "bang" ],
+					"patching_rect" : [ 34.0, 50.0, 30.0, 30.0 ],
+					"style" : ""
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-14",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
@@ -55,9 +81,9 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 516.0, 170.0, 34.0, 22.0 ],
+					"patching_rect" : [ 516.0, 170.0, 140.0, 22.0 ],
 					"style" : "",
-					"text" : "print"
+					"text" : "print **********************"
 				}
 
 			}
@@ -82,7 +108,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 34.0, 205.0, 95.0, 24.0 ],
+					"patching_rect" : [ 131.5, 283.0, 95.0, 24.0 ],
 					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 12, 47, 111, 107, 0, 44, 115, 0, 0, 103, 111, 0, 0 ],
 					"saved_bundle_length" : 32,
 					"text" : "/ok : \"go\""
@@ -96,7 +122,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 34.0, 279.0, 123.0, 22.0 ],
+					"patching_rect" : [ 131.5, 331.0, 123.0, 22.0 ],
 					"style" : "",
 					"text" : "o.print do_something"
 				}
@@ -223,6 +249,13 @@
 				"patchline" : 				{
 					"destination" : [ "obj-9", 0 ],
 					"source" : [ "obj-10", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-15", 0 ],
+					"source" : [ "obj-11", 0 ]
 				}
 
 			}
