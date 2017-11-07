@@ -1,3 +1,42 @@
+/*
+ Written by Rama Gottfried, The Center for New Music and Audio Technologies,
+ University of California, Berkeley.  Copyright (c) 2011, The Regents of
+ the University of California (Regents).
+ Permission to use, copy, modify, distribute, and distribute modified versions
+ of this software and its documentation without fee and without a signed
+ licensing agreement, is hereby granted, provided that the above copyright
+ notice, this paragraph and the following two paragraphs appear in all copies,
+ modifications, and distributions.
+ 
+ IN NO EVENT SHALL REGENTS BE LIABLE TO ANY PARTY FOR DIRECT, INDIRECT,
+ SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES, INCLUDING LOST PROFITS, ARISING
+ OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN IF REGENTS HAS
+ BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ 
+ REGENTS SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+ THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+ PURPOSE. THE SOFTWARE AND ACCOMPANYING DOCUMENTATION, IF ANY, PROVIDED
+ HEREUNDER IS PROVIDED "AS IS". REGENTS HAS NO OBLIGATION TO PROVIDE
+ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
+ 
+ 
+ @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+ NAME: o.gui.attach
+ DESCRIPTION: Attaches to GUI objects with OSC varnames
+ AUTHORS: Rama Gottfried
+ COPYRIGHT_YEARS: 2017
+ SVN_REVISION: $LastChangedRevision: 587 $
+ VERSION 0.0: First try
+ @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+ */
+
+
+#define OMAX_DOC_NAME "o.gui.attach"
+#define OMAX_DOC_SHORT_DESC "Attaches to GUI objects with OSC varnames"
+#define OMAX_DOC_LONG_DESC "o.gui.attach attaches to GUI objects in it finds in the patch with OSC scripting names (aka varname). Anytime a value changes, the value is updated and sent out in bundle form. Note that o.gui.attach does not search subpatches."
+#define OMAX_DOC_INLETS_DESC (char *[]){"OSC packet to set values (or pass through), bang outputs current state of attached objects"}
+#define OMAX_DOC_OUTLETS_DESC (char *[]){"OSC packet containing state of attached GUI objects"}
+#define OMAX_DOC_SEEALSO (char *[]){"cnmat.o.gui.function", "cnmat.o.gui.table", "pattrstorage"}
 
 
 #include "ext.h"
@@ -13,6 +52,7 @@
 #include "omax_doc.h"
 #include "omax_dict.h"
 
+#include "odot_version.h"
 
 #include <unordered_map>
 
@@ -528,9 +568,15 @@ void o_gui_attach_loadbang(t_o_gui_attach *x)
 
 }
 
-void o_gui_attach_doc(t_o_gui_attach *x){}
+void o_gui_attach_doc(t_o_gui_attach *x)
+{
+    omax_doc_outletDoc(x->outlet);
+}
 
-void o_gui_attach_assist(t_o_gui_attach *x, void *b, long io, long num, char *buf){}
+void o_gui_attach_assist(t_o_gui_attach *x, void *b, long io, long num, char *buf)
+{
+    omax_doc_assist(io, num, buf);
+}
 
 void o_gui_attach_free(t_o_gui_attach *x)
 {
@@ -614,7 +660,7 @@ int main(void)
 
 	common_symbols_init();
 
-	//ODOT_PRINT_VERSION;
+	ODOT_PRINT_VERSION;
 
 	srandomdev();
 	return 0;
