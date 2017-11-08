@@ -167,7 +167,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 510.0, 283.0, 73.0, 22.0 ],
-					"presentation_rect" : [ 501.0, 306.0, 0.0, 0.0 ],
 					"style" : "",
 					"text" : "+"
 				}
@@ -181,7 +180,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 488.0, 258.0, 73.0, 22.0 ],
-					"presentation_rect" : [ 504.0, 283.0, 0.0, 0.0 ],
 					"style" : "",
 					"text" : "match"
 				}
@@ -221,7 +219,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 390.0, 249.0, 63.0, 22.0 ],
-					"presentation_rect" : [ 390.0, 426.0, 0.0, 0.0 ],
 					"style" : "",
 					"text" : "o.atomize"
 				}
@@ -261,7 +258,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 293.0, 326.0, 67.0, 22.0 ],
-					"presentation_rect" : [ 274.0, 231.0, 0.0, 0.0 ],
 					"style" : "",
 					"text" : "doc-cat $1"
 				}
@@ -390,7 +386,6 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "FullPacket", "FullPacket" ],
 									"patching_rect" : [ 970.0, 34.0, 773.0, 716.0 ],
-									"presentation_rect" : [ 970.0, 34.0, 0.0, 0.0 ],
 									"text" : "#generate variables\n\n/arglist/int = aseq(1, /num_required_args),\n/arglist/float = float32(aseq(1, /num_required_args)),\n/arglist/str = string(aseq(1, /num_required_args)),\n/arglist/osc/bound = map( lambda(i, assign(\"/eval/oscaddr/\"+i, i),\"/oscaddr/\"+i), /arglist/int ),\n/arglist/osc/unbound = map( lambda(i, \"/oscaddr/\"+(i+10)), /arglist/int ),\n\n/arglist/types = [\"/arglist/int\", \"/arglist/float\", \"/arglist/str\", \"/arglist/osc/bound\", \"/arglist/osc/unbound\"],\n\n/func = /signature,\n\n/delimiters = \"$\",\nmap( lambda(a, /delimiters += a), /arglist/int), \n/tok = split(/delimiters, /func),\n\n\n# test 1\n# functions with correct number of variables, with matching types\n/count = 0,\nmap(\n  lambda(a,\n    /apply = /tok[[0]],\n    /testargs = value(a),\n    map( \n      lambda(i,\n        if( typetags(/testargs[[i]]) == 's',\n          /apply += \"quote(\"+/testargs[[i]]+\")\" + /tok[[i+1]],\n          /apply += /testargs[[i]] + /tok[[i+1]]\n        )\n      ), aseq(0, /num_required_args - 1)\n    ),\n    assign(\"/eval/func/\"+(/count++), /apply)\n  ), /arglist/types\n),\n\n# test 2\n# functions with correct number of variables, with mis-matching types\n/typeidx = 0,\nmap(\n  lambda(idx,\n    /apply = /tok[[0]],\n    map( \n      lambda(i,\n        /testarg = value( /arglist/types[[ (/typeidx++) % length(/arglist/types) ]] ),\n        if( typetags(/testarg[[i]]) == 's',\n          /apply += \"quote(\"+/testarg[[i]]+\")\" + /tok[[i+1]],\n          /apply += /testarg[[i]] + /tok[[i+1]]\n        )\n      ), aseq(0, /num_required_args - 1)\n    ),\n    assign(\"/eval/func/\"+(/count++), /apply)\n  ), aseq(0, length(/arglist/types)-1)\n)\n\n#missing a variable"
 								}
 
