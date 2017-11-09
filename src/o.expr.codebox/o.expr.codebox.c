@@ -308,7 +308,9 @@ void oexprcodebox_gettext(t_oexprcodebox *x)
         return;
     }  
 
-    printf("size %ld text %s x is %p\n", size, text, x);
+    printf("x is %p object ptrsize: %ld void ptrsize %ld \n", x, sizeof(t_object*), sizeof(void*));
+    
+    
     critical_enter(x->lock);
 
         t_osc_err error = osc_expr_parser_parseExpr(text, &(x->expr), x);
