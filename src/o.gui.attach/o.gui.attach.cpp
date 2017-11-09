@@ -495,7 +495,7 @@ t_max_err o_gui_attach_notify(t_o_gui_attach *x, t_symbol *s, t_symbol *msg, voi
     }
     else
     {
-        // post("%s %s %p %p ", s->s_name, msg->s_name, sender, data);
+       // post("%s %s %p %p -- patcher: %p", s->s_name, msg->s_name, sender, data, x->base_patch);
 
         if( msg == gensym("modified"))
         {
@@ -541,7 +541,9 @@ t_max_err o_gui_attach_notify(t_o_gui_attach *x, t_symbol *s, t_symbol *msg, voi
             
             // called on delete from the object
             o_gui_attach_unattach(x, (t_object*)sender);
-            o_gui_attach_output_bundle(x);
+            
+            if( sender != x->base_patch )
+                o_gui_attach_output_bundle(x);
 
         }
         //else if( msg == gensym("aftersnapshotrestore"))
