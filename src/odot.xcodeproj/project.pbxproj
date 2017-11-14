@@ -17565,7 +17565,7 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 3;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "../../max6-sdk/c74support/max-includes/macho-prefix.pch";
+				GCC_PREFIX_HEADER = "../../max-sdk/source/c74support/max-includes/macho-prefix.pch";
 				GENERATE_PKGINFO_FILE = yes;
 				GENERATE_PROFILING_CODE = NO;
 				HEADER_SEARCH_PATHS_QUOTED_FOR_PROJECT_1 = "\"$(SRCROOT)/../../max6-sdk/c74support/max-includes\"";
@@ -17587,7 +17587,7 @@
 				PRODUCT_NAME = "$(inherited)";
 				PUBLIC_HEADERS_FOLDER_PATH = "";
 				RUN_CLANG_STATIC_ANALYZER = NO;
-				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.7.sdk";
+				SDKROOT = macosx10.13;
 				SYMROOT = "$(SYMROOT)";
 				WRAPPER_EXTENSION = "";
 			};
@@ -17609,7 +17609,7 @@
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_OPTIMIZATION_LEVEL = 3;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "../../max6-sdk/c74support/max-includes/macho-prefix.pch";
+				GCC_PREFIX_HEADER = "../../max-sdk/source/c74support/max-includes/macho-prefix.pch";
 				GENERATE_PKGINFO_FILE = yes;
 				GENERATE_PROFILING_CODE = NO;
 				HEADER_SEARCH_PATHS_QUOTED_FOR_PROJECT_1 = "\"$(SRCROOT)/../../max6-sdk/c74support/max-includes\"";
@@ -17631,7 +17631,7 @@
 				PRODUCT_NAME = "$(inherited)";
 				PUBLIC_HEADERS_FOLDER_PATH = "";
 				RUN_CLANG_STATIC_ANALYZER = NO;
-				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.7.sdk";
+				SDKROOT = macosx10.13;
 				SYMROOT = "$(SYMROOT)";
 				WRAPPER_EXTENSION = "";
 				ZERO_LINK = NO;
