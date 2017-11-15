@@ -1,7 +1,7 @@
 /*
   Written by John MacCallum, The Center for New Music and Audio Technologies,
   University of California, Berkeley.  Copyright (c) 2013, The Regents of
-  the University of California (Regents). 
+  the University of California (Regents).
   Permission to use, copy, modify, distribute, and distribute modified versions
   of this software and its documentation without fee and without a signed
   licensing agreement, is hereby granted, provided that the above copyright
@@ -28,6 +28,11 @@
 #define OMAX_DOC_INLETS_DESC (char *[]){"OSC bundle", "Inactive (reserved for future use)"}
 #define OMAX_DOC_OUTLETS_DESC (char *[]){"Downcasted OSC bundle"}
 #define OMAX_DOC_SEEALSO  (char *[]){}
+
+// need htonl
+#ifdef WIN_VERSION
+#include <Winsock.h>
+#endif
 
 #include "o.h"
 #include "odot_version.h"
@@ -100,7 +105,7 @@ t_osc_bundle_u *odowncast_iterBundle(t_odowncast *x, t_osc_bundle_u *b, t_osc_ti
                     t_osc_bundle_u *sub_b_u = osc_atom_u_getBndl(a);
 
                     sub_b_u = odowncast_iterBundle(x, sub_b_u, timetag);
-                    
+
                     // after downcasting, and blobbing subbundles, serialize and convert to blob
                     t_osc_bundle_s *sub_b_s = osc_bundle_u_serialize(sub_b_u);
                     if( sub_b_s )
@@ -108,7 +113,7 @@ t_osc_bundle_u *odowncast_iterBundle(t_odowncast *x, t_osc_bundle_u *b, t_osc_ti
                         // temp atom for conversion
                         t_osc_atom_u *tmp_atom_s_bnd = osc_atom_u_alloc();
                         osc_atom_u_setBndl_s(tmp_atom_s_bnd, osc_bundle_s_getLen(sub_b_s), osc_bundle_s_getPtr(sub_b_s));
-                        
+
                         // make the blob
                         char *blob = NULL;
                         int32_t blob_l;
@@ -119,18 +124,18 @@ t_osc_bundle_u *odowncast_iterBundle(t_odowncast *x, t_osc_bundle_u *b, t_osc_ti
                             // transfer to the current atom (a)
                             // internally calls atom_u_clear/free which frees our sub_b_u pointer, so we don't have to do that
                             osc_atom_u_setBlob(a, blob);
-                            
+
                             // release the blob
                             osc_mem_free(blob);
                             blob = NULL;
                         }
-                        
+
                         // release temp bundle atom
                         osc_atom_u_free(tmp_atom_s_bnd);
                         osc_bundle_s_deepFree(sub_b_s);
                     }
-                    
-                    
+
+
                 }
                     break;
                 case OSC_TIMETAG_TYPETAG:
@@ -185,22 +190,22 @@ void odowncast_fullPacket(t_odowncast *x, t_symbol *msg, int argc, t_atom *argv)
         osc_bundle_u_free(b);
         return;
     }
-    
+
     t_osc_bndl_s *bs1 = osc_bundle_u_serialize(blobbed_b);
-    
+
 	if(bs1){
-        
+
 		long l = osc_bundle_s_getLen(bs1);
 		char *p = osc_bundle_s_getPtr(bs1);
 
         t_osc_timetag tt_n;
         tt_n.sec = htonl(timetag.sec);
         tt_n.frac_sec = htonl(timetag.frac_sec);
-        
+
 		memcpy(p + OSC_ID_SIZE, &tt_n, sizeof(t_osc_timetag)); // add timetag to header if found @headertimetag address
-        
+
 		omax_util_outletOSC(x->outlet, l, p);
-    
+
 		osc_bundle_s_deepFree(bs1);
 	}
 	osc_bundle_u_free(b);
@@ -227,8 +232,8 @@ void *odowncast_new(t_symbol *msg, short argc, t_atom *argv)
 		x->outlet = outlet_new((t_object *)x, gensym("FullPacket"));
 		x->timetag_address = NULL;
 		x->doubles = x->ints = x->bundles = x->timetags = 1;
-        
-        
+
+
         /*
          CLASS_ATTR_SYM(c, "headertimetag", 0, t_odowncast, timetag_address);
          CLASS_ATTR_LONG(c, "doubles", 0, t_odowncast, doubles);
@@ -236,7 +241,7 @@ void *odowncast_new(t_symbol *msg, short argc, t_atom *argv)
          CLASS_ATTR_LONG(c, "bundles", 0, t_odowncast, bundles);
          CLASS_ATTR_LONG(c, "timetags", 0, t_odowncast, timetags);
          */
-        
+
 
         int i;
         for(i = 0; i < argc; i++)
@@ -289,13 +294,13 @@ void *odowncast_new(t_symbol *msg, short argc, t_atom *argv)
                 }  else {
                     post("o.downcast optional attributes are: @headertimetag, @doubles, @ints, @bundles, and @timetags");
                 }
-                
+
             } else {
                 post("o.downcast optional attributes are: @headertimetag, @doubles, @ints, @bundles, and @timetags");
                 return 0;
             }
-            
-            
+
+
         }
 
 	}
@@ -304,15 +309,15 @@ void *odowncast_new(t_symbol *msg, short argc, t_atom *argv)
 
 int setup_o0x2edowncast(void)
 {
-    
+
 	t_class *c = class_new(gensym("o.downcast"), (t_newmethod)odowncast_new, (t_method)odowncast_free, sizeof(t_odowncast), 0L, A_GIMME, 0);
 	class_addmethod(c, (t_method)odowncast_fullPacket, gensym("FullPacket"), A_GIMME, 0);
 //	class_addmethod(c, (t_method)odowncast_assist, gensym("assist"), A_CANT, 0);
 	class_addmethod(c, (t_method)odowncast_doc, gensym("doc"), 0);
 	class_addmethod(c, (t_method)odot_version, gensym("version"), 0);
-    
+
 	odowncast_class = c;
-    
+
 	ODOT_PRINT_VERSION;
 	return 0;
 }
@@ -356,7 +361,7 @@ int main(void)
 	CLASS_ATTR_LONG(c, "ints", 0, t_odowncast, ints);
 	CLASS_ATTR_LONG(c, "bundles", 0, t_odowncast, bundles);
 	CLASS_ATTR_LONG(c, "timetags", 0, t_odowncast, timetags);
-	
+
 	class_register(CLASS_BOX, c);
 	odowncast_class = c;
 
