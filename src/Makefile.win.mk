@@ -14,6 +14,7 @@ o.explode \
 o.expr \
 o.expr.codebox \
 o.flatten \
+o.gui.attach \
 o.if \
 o.intersection \
 o.listenumerate \
