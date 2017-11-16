@@ -249,7 +249,7 @@
 		115058E81AD48E5700CFA262 /* opd_textbox.c in Sources */ = {isa = PBXBuildFile; fileRef = 115058E51AD48E4D00CFA262 /* opd_textbox.c */; };
 		115058E91AD48E5900CFA262 /* opd_textbox.c in Sources */ = {isa = PBXBuildFile; fileRef = 115058E51AD48E4D00CFA262 /* opd_textbox.c */; };
 		115D740D198FD26B00F42B88 /* o.expr.codebox.c in Sources */ = {isa = PBXBuildFile; fileRef = 5223ADDB1923EB9000C8FBB5 /* o.expr.codebox.c */; };
-		116F874B1F9A16450062EE91 /* o.gui.attach.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 116F874A1F9A16450062EE91 /* o.gui.attach.cpp */; };
+		116F874B1F9A16450062EE91 /* o.gui.attach.c in Sources */ = {isa = PBXBuildFile; fileRef = 116F874A1F9A16450062EE91 /* o.gui.attach.c */; };
 		11893E5E1986F462008303DD /* o.compose.c in Sources */ = {isa = PBXBuildFile; fileRef = 9B3930F4195A296C002EDAE5 /* o.compose.c */; };
 		118D280019394C9500739CB3 /* pqops.c in Sources */ = {isa = PBXBuildFile; fileRef = 52A8396C16F3F893002E273C /* pqops.c */; };
 		118D280119394C9800739CB3 /* pqops.h in Headers */ = {isa = PBXBuildFile; fileRef = 52A8396D16F3F893002E273C /* pqops.h */; };
@@ -2259,7 +2259,7 @@
 		115058E51AD48E4D00CFA262 /* opd_textbox.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = opd_textbox.c; path = include/opd_textbox.c; sourceTree = "<group>"; };
 		115058E61AD48E4D00CFA262 /* opd_textbox.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = opd_textbox.h; path = include/opd_textbox.h; sourceTree = "<group>"; };
 		115D740C198FD23F00F42B88 /* o.expr.codebox.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = o.expr.codebox.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
-		116F874A1F9A16450062EE91 /* o.gui.attach.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = o.gui.attach.cpp; path = o.gui.attach/o.gui.attach.cpp; sourceTree = "<group>"; };
+		116F874A1F9A16450062EE91 /* o.gui.attach.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.gui.attach.c; path = o.gui.attach/o.gui.attach.c; sourceTree = "<group>"; };
 		11893E5D1986F436008303DD /* o.compose.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = o.compose.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
 		119179A819C25F4700F76066 /* o.bundle.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = o.bundle.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
 		119179A919C25FF700F76066 /* o.bundle.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.bundle.c; path = "o-bundle/o.bundle.c"; sourceTree = "<group>"; };
@@ -3166,7 +3166,7 @@
 				5223ADDB1923EB9000C8FBB5 /* o.expr.codebox.c */,
 				11A20DB919F0B49D002A98B5 /* o.expr.codebox.set.c */,
 				5203467B1555BF16001EA532 /* o.flatten.c */,
-				116F874A1F9A16450062EE91 /* o.gui.attach.cpp */,
+				116F874A1F9A16450062EE91 /* o.gui.attach.c */,
 				5255252F1504D24500A10E5D /* o.if.c */,
 				525525311504D24D00A10E5D /* o.intersection.c */,
 				9BB5E9DF1952585C00932005 /* o.listenumerate.c */,
@@ -6192,7 +6192,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				116F874B1F9A16450062EE91 /* o.gui.attach.cpp in Sources */,
+				116F874B1F9A16450062EE91 /* o.gui.attach.c in Sources */,
 				11A394111F98D02600D2AC3D /* commonsyms.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -11711,7 +11711,7 @@
 		};
 		11A394181F98D02600D2AC3D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 52CA34301971AB2E008C36B9 /* Max-unstable.xcconfig */;
+			baseConfigurationReference = 52AA372D19575120009A1920 /* Max-config.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(inherited)";
 				CLANG_CXX_LANGUAGE_STANDARD = "c++11";
@@ -17587,7 +17587,7 @@
 				PRODUCT_NAME = "$(inherited)";
 				PUBLIC_HEADERS_FOLDER_PATH = "";
 				RUN_CLANG_STATIC_ANALYZER = NO;
-				SDKROOT = macosx10.13;
+				SDKROOT = macosx;
 				SYMROOT = "$(SYMROOT)";
 				WRAPPER_EXTENSION = "";
 			};
@@ -17631,7 +17631,7 @@
 				PRODUCT_NAME = "$(inherited)";
 				PUBLIC_HEADERS_FOLDER_PATH = "";
 				RUN_CLANG_STATIC_ANALYZER = NO;
-				SDKROOT = macosx10.13;
+				SDKROOT = macosx;
 				SYMROOT = "$(SYMROOT)";
 				WRAPPER_EXTENSION = "";
 				ZERO_LINK = NO;

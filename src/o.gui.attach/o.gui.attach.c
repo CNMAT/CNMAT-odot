@@ -54,17 +54,17 @@
 
 #include "odot_version.h"
 
-#include <unordered_map>
-
-using namespace std;
-
-typedef unordered_map<t_object*, t_symbol*> ObjMap;
+typedef struct _objmap
+{
+    t_object *ob;
+    t_symbol *name;
+    struct _objmap *next, *prev;
+} t_objmap;
 
 typedef struct _o_gui_attach
 {
 	t_object        ob;
 	void            *outlet;
-    ObjMap          obj_map;
     t_patcher       *base_patch;
     
     t_osc_bndl_u    *bndl;
@@ -72,9 +72,128 @@ typedef struct _o_gui_attach
     void            *qelem_output;
     void            *clock;
 	t_critical      lock;
+    
+    t_objmap        *head, *tail;
 } t_o_gui_attach;
 
 t_class *o_gui_attach_class;
+
+
+t_objmap *o_gui_attach_new_objnode(t_object *o, t_symbol *s)
+{
+    t_objmap *node = (t_objmap*)malloc(sizeof(t_objmap));
+    if( node )
+    {
+        node->ob = o;
+        node->name = s;
+        node->next = NULL;
+        node->prev = NULL;
+        return node;
+    }
+    return NULL;
+}
+
+void o_gui_attach_insert_objmap(t_o_gui_attach *x, t_object *o, t_symbol *s)
+{
+    critical_enter(x->lock);
+    t_objmap *newobj = o_gui_attach_new_objnode(o, s);
+    if( newobj )
+    {
+        t_objmap *tail = x->tail;
+        
+        if( !tail )
+        {
+            x->head = newobj;
+            x->tail = newobj;
+        }
+        else
+        {
+            // for now just adding to end of list
+            x->tail->next = newobj;
+            newobj->prev = x->tail;
+            x->tail = newobj;
+        }
+    }
+    critical_exit(x->lock);
+}
+
+void o_gui_attach_remove_objmap(t_o_gui_attach *x, t_object *o)
+{
+    critical_enter(x->lock);
+    t_objmap *node = x->head;
+    while( node )
+    {
+        if( node->ob == o )
+        {
+            if( node == x->head )
+                x->head = node->next;
+            if( node == x->tail )
+                x->tail = node->prev;
+                
+            if( node->prev )
+                node->prev->next = node->next;
+            if( node->next )
+                node->next->prev = node->prev;
+
+            free(node);
+            node = NULL;
+            critical_exit(x->lock);
+            return;
+        }
+        node = node->next;
+    }
+    critical_exit(x->lock);
+}
+
+t_symbol *o_gui_attach_get_obj_name(t_o_gui_attach *x, t_object *o)
+{
+    critical_enter(x->lock);
+    t_objmap *node = x->head;
+    while( node )
+    {
+        if( node->ob == o )
+        {
+            critical_exit(x->lock);
+            return node->name;
+        }
+        node = node->next;
+    }
+    critical_exit(x->lock);
+    return NULL;
+}
+
+bool o_gui_attach_objmap_exists(t_o_gui_attach *x, t_object *o)
+{
+    critical_enter(x->lock);
+    t_objmap *node = x->head;
+    while( node )
+    {
+        if( node->ob == o )
+        {
+            critical_exit(x->lock);
+            return true;
+        }
+        node = node->next;
+    }
+    critical_exit(x->lock);
+    return false;
+}
+
+void o_gui_attach_clear_objmap(t_o_gui_attach *x)
+{
+    critical_enter(x->lock);
+    t_objmap *tmp = NULL;
+    t_objmap *node = x->head;
+    while( node )
+    {
+        object_detach_byptr(x, node->ob);
+        tmp = node;
+        node = node->next;
+        free(tmp);
+        tmp = NULL;
+    }
+    critical_exit(x->lock);
+}
 
 void o_gui_attach_setValue(t_o_gui_attach *x, t_object *ob, long argc, t_atom *argv)
 {
@@ -113,7 +232,7 @@ void o_gui_attach_output_bundle(t_o_gui_attach *x)
 
 int o_gui_attach_checkNameAndType(t_o_gui_attach *x, t_object *b, t_symbol *name)
 {
-    if( !name )
+    if( !name || !b)
         return 0;
     
     char *str = name->s_name;
@@ -167,29 +286,19 @@ int o_gui_attach_checkNameAndType(t_o_gui_attach *x, t_object *b, t_symbol *name
 
 void o_gui_attach_attach(t_o_gui_attach *x, t_object *b, t_symbol *name)
 {
-    if( b && name )
+    if( o_gui_attach_checkNameAndType(x, b, name) && !o_gui_attach_objmap_exists(x, b) )
     {
-
-        if( !o_gui_attach_checkNameAndType(x, b, name) )
-            return;
-            
-        if( !x->obj_map.count(b) )
-        {
-//            object_post((t_object* )x, "%p attaching %p", x, b );
-            
-            /*
-             // Subscribe could be useful in case of specifying a namespace before creating the objects...
-             // but in the iterator, we are only looking at objects that already exist
-            t_symbol *name_space, *s, *classname;
-            object_findregisteredbyptr(&name_space, &s, b);
-            object_subscribe(name_space, s, object_classname(b), s);
-            */
-            
-            object_attach_byptr(x, b);
-        }
-        
-        x->obj_map.insert( pair<t_object*, t_symbol*>(b, name));
+        object_attach_byptr(x, b);
+        o_gui_attach_insert_objmap(x, b, name);
         o_gui_attach_getValue( x, b );
+        
+        /*
+         // Subscribe could be useful in case of specifying a namespace before creating the objects...
+         // but in the iterator, we are only looking at objects that already exist
+         t_symbol *name_space, *s, *classname;
+         object_findregisteredbyptr(&name_space, &s, b);
+         object_subscribe(name_space, s, object_classname(b), s);
+         */
     }
 }
 
@@ -221,15 +330,15 @@ void o_gui_attach_iter_and_out(t_o_gui_attach *x)
 void o_gui_attach_unattach(t_o_gui_attach *x, t_object *b)
 {
     // post("o_gui_attach_unattach %p", b);
-    
-    if( !x->obj_map.count(b) )
+    t_symbol *name = o_gui_attach_get_obj_name(x, b);
+    if( !name )
         return;
     
     // post("removing %p %s", b, x->obj_map.at(b)->s_name );
     
     object_detach_byptr(x, b);
     
-    const char *address = x->obj_map.at(b)->s_name;
+    const char *address = name->s_name;
     t_osc_bndl_it_u *it = osc_bndl_it_u_get(x->bndl);
     while(osc_bndl_it_u_hasNext(it))
     {
@@ -243,16 +352,8 @@ void o_gui_attach_unattach(t_o_gui_attach *x, t_object *b)
     }
     osc_bndl_it_u_destroy(it);
     
-    x->obj_map.erase(b);
-}
+    o_gui_attach_remove_objmap(x, b);
 
-void o_gui_attach_unattach_all(t_o_gui_attach *x)
-{
-    for(auto it = x->obj_map.begin(); it != x->obj_map.end(); it++ )
-    {
-        object_detach_byptr(x, it->first);
-    }
-    x->obj_map.clear();
 }
 
 
@@ -267,12 +368,16 @@ void o_gui_attach_fullPacket(t_o_gui_attach *x, t_symbol *msg, int argc, t_atom 
     if( in_bnd )
     {
         t_osc_bndl_u *bnd_match = NULL;
-        osc_bundle_u_intersection(in_bnd, x->bndl, &bnd_match);
-        
         t_osc_bndl_u *new_internal_bndl = NULL;
+
+        critical_enter(x->lock);
+        
+        osc_bundle_u_intersection(in_bnd, x->bndl, &bnd_match);
         osc_bundle_u_union(bnd_match, x->bndl, &new_internal_bndl );
         osc_bundle_u_free(x->bndl);
         x->bndl = new_internal_bndl;
+        
+        critical_exit(x->lock);
         
         if( bnd_match )
         {
@@ -281,14 +386,16 @@ void o_gui_attach_fullPacket(t_o_gui_attach *x, t_symbol *msg, int argc, t_atom 
             while(osc_bndl_it_u_hasNext(it))
             {
                 t_osc_msg_u *msg = osc_bndl_it_u_next(it);
-                
                 t_symbol *addr  = gensym(osc_message_u_getAddress(msg));
                 
-                for( auto it = x->obj_map.begin(); it != x->obj_map.end(); it++ )
+                critical_enter(x->lock);
+                t_objmap *node = x->head;
+                while( node )
                 {
-                    if( it->second == addr )
+
+                    if( node->name == addr )
                     {
-                        // post("matched %s", addr->s_name);
+                 //       post("matched %s", addr->s_name);
                         long nargs = osc_message_u_getArgCount(msg);
                         t_atom at[nargs];
                         
@@ -319,19 +426,22 @@ void o_gui_attach_fullPacket(t_o_gui_attach *x, t_symbol *msg, int argc, t_atom 
                         }
                         
                         // post("setting %d args", nargs);
-                        t_max_err err = object_setvalueof(it->first, nargs, at);
+                        t_max_err err = object_setvalueof(node->ob, nargs, at);
                         if( err )
                         {
                             object_error((t_object*)x, "unable to set values");
                         }
                     }
+                    node = node->next;
                 }
+                critical_exit(x->lock);
+
             }
             
             osc_bndl_it_u_destroy(it);
 
             t_osc_bndl_u *union_bndl = NULL;
-            osc_bundle_u_union(in_bnd, x->bndl, &union_bndl );
+            osc_bundle_u_union(in_bnd, new_internal_bndl, &union_bndl );
             
             t_osc_bndl_s *outbndl = osc_bundle_u_serialize(union_bndl);
             
@@ -410,7 +520,7 @@ void o_gui_attach_patcher_test(t_o_gui_attach *x)
         t_symbol	**keys = NULL;
         long		numkeys = 0;
         long		i;
-        t_object	*anItem;
+   //     t_object	*anItem;
         
         dictionary_getkeys(dict, &numkeys, &keys);
         for(i=0; i<numkeys; i++)
@@ -587,7 +697,9 @@ void o_gui_attach_free(t_o_gui_attach *x)
     //object_free(x->clock);
     qelem_free(x->qelem_output);
     
-    o_gui_attach_unattach_all(x);
+    o_gui_attach_clear_objmap(x);
+    
+    object_detach_byptr(x, x->base_patch);
     
     if( x->bndl )
         osc_bundle_u_free(x->bndl);
@@ -609,6 +721,8 @@ void *o_gui_attach_new(t_symbol *msg, short argc, t_atom *argv)
 
         x->bndl = osc_bundle_u_alloc();
 
+        x->head = NULL;
+        x->tail = NULL;
         
         // attach to this patcher and all other patchers
         t_patcher *patcher;
@@ -618,18 +732,19 @@ void *o_gui_attach_new(t_symbol *msg, short argc, t_atom *argv)
             object_error((t_object*)x, "error type %d", err );
             return 0;
         }
-    
-       
-       //  later add attr to attach to parent
+        
+       //  later add attr option to attach to parent to allow hiding in bpatcher
         //t_patcher *parent;
         //parent = jpatcher_get_parentpatcher(patcher);
        // if( parent )
         
         
-        
         x->base_patch = patcher;
         object_attach_byptr(x, x->base_patch);
-        x->obj_map.insert( pair<t_object*, t_symbol*>(patcher, gensym("#P")));
+    
+        // >> probably don't need the patcher in the obj list
+//        x->obj_map.insert( pair<t_object*, t_symbol*>(patcher, gensym("#P")));
+    
         
         //qelem_set(x->qelem_output);
         clock_delay(x->clock, 1);
@@ -664,7 +779,6 @@ int main(void)
 
 	ODOT_PRINT_VERSION;
 
-	srandomdev();
 	return 0;
 }
 END_USING_C_LINKAGE
