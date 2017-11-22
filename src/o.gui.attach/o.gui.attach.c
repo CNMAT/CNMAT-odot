@@ -63,14 +63,14 @@ typedef struct _objmap
 
 typedef struct _o_gui_attach
 {
-  t_object        ob;
-	void            *outlet;
-  t_patcher       *base_patch;
+    t_object        ob;
+    void            *outlet;
+    t_patcher       *base_patch;
 
-  t_osc_bndl_u    *bndl;
+    t_osc_bndl_u    *bndl;
 
-  void            *qelem_output;
-  void            *clock;
+    void            *qelem_output;
+    void            *clock;
 	t_critical      lock;
 
   t_objmap        *head, *tail;
