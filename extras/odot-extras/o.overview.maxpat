@@ -38,32 +38,6 @@
 		"subpatcher_template" : "",
 		"boxes" : [ 			{
 				"box" : 				{
-					"id" : "obj-18",
-					"maxclass" : "message",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 1082.0, 91.0, 33.0, 22.0 ],
-					"style" : "",
-					"text" : "help"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-6",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 2,
-					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 1082.0, 135.0, 120.0, 22.0 ],
-					"style" : "",
-					"text" : "o.if /example == true"
-				}
-
-			}
-, 			{
-				"box" : 				{
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"hidden" : 1,
@@ -1525,13 +1499,6 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-6", 0 ],
-					"source" : [ "obj-18", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
 					"destination" : [ "obj-28", 0 ],
 					"hidden" : 1,
 					"source" : [ "obj-19", 0 ]
@@ -2053,8 +2020,8 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "o.autodoc_overview.maxpat",
-				"bootpath" : "~/Documents/dev-lib/CNMAT-odot/misc",
-				"patcherrelativepath" : "../../misc",
+				"bootpath" : "~/Documents/dev-lib/CNMAT-odot/patchers/utils",
+				"patcherrelativepath" : "../../patchers/utils",
 				"type" : "JSON",
 				"implicit" : 1
 			}

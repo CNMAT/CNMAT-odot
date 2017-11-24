@@ -38,13 +38,47 @@
 		"subpatcher_template" : "Default Max 7",
 		"boxes" : [ 			{
 				"box" : 				{
+					"bubble" : 1,
+					"bubbleside" : 3,
+					"fontname" : "Helvetica Neue",
+					"fontsize" : 12.0,
+					"id" : "obj-10",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 169.347656, 83.0, 178.0, 24.0 ],
+					"presentation_rect" : [ 180.0, 84.5, 0.0, 0.0 ],
+					"style" : "",
+					"text" : "press to start/stop playback"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"bubble" : 1,
+					"bubbleside" : 2,
+					"fontname" : "Helvetica Neue",
+					"fontsize" : 12.0,
+					"id" : "obj-9",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 700.0, 37.5, 197.0, 39.0 ],
+					"presentation_rect" : [ 625.0, 33.0, 0.0, 0.0 ],
+					"style" : "",
+					"text" : "press to start/stop recording slider"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"fontface" : 3,
 					"fontsize" : 14.0,
 					"id" : "obj-17",
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 72.0, 105.0, 123.0, 22.0 ],
+					"patching_rect" : [ 78.0, 192.0, 123.0, 22.0 ],
 					"style" : "",
 					"text" : "Basic Sequencer"
 				}
@@ -57,7 +91,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 72.0, 139.0, 248.0, 60.0 ],
+					"patching_rect" : [ 78.0, 226.0, 248.0, 60.0 ],
 					"style" : "",
 					"text" : "1) press the /record button to start recording\n2) move the slider around\n3) press /record again to stop recording\n4) pres the /playing button to start playback"
 				}
@@ -112,14 +146,13 @@
 									"fontface" : 0,
 									"fontsize" : 12.0,
 									"id" : "obj-10",
-									"linecount" : 346,
+									"linecount" : 906,
 									"maxclass" : "o.display",
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 50.0, 100.0, 150.0, 4722.0 ],
-									"text" : "/recording : 0,\n/rec/time : 2017-10-18T08:58:00.042140Z,\n/rec/end/time : 2017-10-18T08:58:00.042140Z,\n/rec/start/time : 2017-10-18T08:57:57.769830Z,\n/sequence : [{\n\t/event/value : 8,\n\t/event/time : 2017-10-18T08:57:58.398823Z\n}, {\n\t/event/value : 9,\n\t/event/time : 2017-10-18T08:57:58.432145Z\n}, {\n\t/event/value : 10,\n\t/event/time : 2017-10-18T08:57:58.443440Z\n}, {\n\t/event/value : 11,\n\t/event/time : 2017-10-18T08:57:58.454468Z\n}, {\n\t/event/value : 12,\n\t/event/time : 2017-10-18T08:57:58.465867Z\n}, {\n\t/event/value : 14,\n\t/event/time : 2017-10-18T08:57:58.477081Z\n}, {\n\t/event/value : 16,\n\t/event/time : 2017-10-18T08:57:58.488125Z\n}, {\n\t/event/value : 18,\n\t/event/time : 2017-10-18T08:57:58.499760Z\n}, {\n\t/event/value : 20,\n\t/event/time : 2017-10-18T08:57:58.510790Z\n}, {\n\t/event/value : 22,\n\t/event/time : 2017-10-18T08:57:58.521978Z\n}, {\n\t/event/value : 24,\n\t/event/time : 2017-10-18T08:57:58.533270Z\n}, {\n\t/event/value : 26,\n\t/event/time : 2017-10-18T08:57:58.552597Z\n}, {\n\t/event/value : 30,\n\t/event/time : 2017-10-18T08:57:58.555868Z\n}, {\n\t/event/value : 33,\n\t/event/time : 2017-10-18T08:57:58.571202Z\n}, {\n\t/event/value : 36,\n\t/event/time : 2017-10-18T08:57:58.578279Z\n}, {\n\t/event/value : 40,\n\t/event/time : 2017-10-18T08:57:58.589539Z\n}, {\n\t/event/value : 44,\n\t/event/time : 2017-10-18T08:57:58.604566Z\n}, {\n\t/event/value : 47,\n\t/event/time : 2017-10-18T08:57:58.612517Z\n}, {\n\t/event/value : 49,\n\t/event/time : 2017-10-18T08:57:58.623187Z\n}, {\n\t/event/value : 50,\n\t/event/time : 2017-10-18T08:57:58.639773Z\n}, {\n\t/event/value : 51,\n\t/event/time : 2017-10-18T08:57:58.646304Z\n}, {\n\t/event/value : 51,\n\t/event/time : 2017-10-18T08:57:58.657367Z\n}, {\n\t/event/value : 52,\n\t/event/time : 2017-10-18T08:57:58.670531Z\n}, {\n\t/event/value : 53,\n\t/event/time : 2017-10-18T08:57:58.679751Z\n}, {\n\t/event/value : 54,\n\t/event/time : 2017-10-18T08:57:58.690672Z\n}, {\n\t/event/value : 55,\n\t/event/time : 2017-10-18T08:57:58.705685Z\n}, {\n\t/event/value : 56,\n\t/event/time : 2017-10-18T08:57:58.713306Z\n}, {\n\t/event/value : 57,\n\t/event/time : 2017-10-18T08:57:58.724537Z\n}, {\n\t/event/value : 59,\n\t/event/time : 2017-10-18T08:57:58.741049Z\n}, {\n\t/event/value : 60,\n\t/event/time : 2017-10-18T08:57:58.746942Z\n}, {\n\t/event/value : 61,\n\t/event/time : 2017-10-18T08:57:58.758226Z\n}, {\n\t/event/value : 62,\n\t/event/time : 2017-10-18T08:57:58.773370Z\n}, {\n\t/event/value : 61,\n\t/event/time : 2017-10-18T08:57:58.807533Z\n}, {\n\t/event/value : 61,\n\t/event/time : 2017-10-18T08:57:58.821812Z\n}, {\n\t/event/value : 59,\n\t/event/time : 2017-10-18T08:57:58.825764Z\n}, {\n\t/event/value : 57,\n\t/event/time : 2017-10-18T08:57:58.845341Z\n}, {\n\t/event/value : 56,\n\t/event/time : 2017-10-18T08:57:58.848278Z\n}, {\n\t/event/value : 54,\n\t/event/time : 2017-10-18T08:57:58.859440Z\n}, {\n\t/event/value : 52,\n\t/event/time : 2017-10-18T08:57:58.870708Z\n}, {\n\t/event/value : 47,\n\t/event/time : 2017-10-18T08:57:58.895924Z\n}, {\n\t/event/value : 45,\n\t/event/time : 2017-10-18T08:57:58.904592Z\n}, {\n\t/event/value : 39,\n\t/event/time : 2017-10-18T08:57:58.930434Z\n}, {\n\t/event/value : 37,\n\t/event/time : 2017-10-18T08:57:58.938185Z\n}, {\n\t/event/value : 35,\n\t/event/time : 2017-10-18T08:57:58.961005Z\n}, {\n\t/event/value : 35,\n\t/event/time : 2017-10-18T08:57:58.977339Z\n}, {\n\t/event/value : 35,\n\t/event/time : 2017-10-18T08:57:59.028331Z\n}, {\n\t/event/value : 37,\n\t/event/time : 2017-10-18T08:57:59.048381Z\n}, {\n\t/event/value : 39,\n\t/event/time : 2017-10-18T08:57:59.050680Z\n}, {\n\t/event/value : 43,\n\t/event/time : 2017-10-18T08:57:59.063151Z\n}, {\n\t/event/value : 46,\n\t/event/time : 2017-10-18T08:57:59.073339Z\n}, {\n\t/event/value : 50,\n\t/event/time : 2017-10-18T08:57:59.095507Z\n}, {\n\t/event/value : 55,\n\t/event/time : 2017-10-18T08:57:59.096658Z\n}, {\n\t/event/value : 58,\n\t/event/time : 2017-10-18T08:57:59.107038Z\n}, {\n\t/event/value : 60,\n\t/event/time : 2017-10-18T08:57:59.129688Z\n}, {\n\t/event/value : 62,\n\t/event/time : 2017-10-18T08:57:59.130475Z\n}, {\n\t/event/value : 63,\n\t/event/time : 2017-10-18T08:57:59.140785Z\n}, {\n\t/event/value : 61,\n\t/event/time : 2017-10-18T08:57:59.197763Z\n}, {\n\t/event/value : 59,\n\t/event/time : 2017-10-18T08:57:59.208373Z\n}, {\n\t/event/value : 58,\n\t/event/time : 2017-10-18T08:57:59.230259Z\n}, {\n\t/event/value : 55,\n\t/event/time : 2017-10-18T08:57:59.231199Z\n}, {\n\t/event/value : 52,\n\t/event/time : 2017-10-18T08:57:59.242029Z\n}, {\n\t/event/value : 45,\n\t/event/time : 2017-10-18T08:57:59.267263Z\n}, {\n\t/event/value : 41,\n\t/event/time : 2017-10-18T08:57:59.276013Z\n}, {\n\t/event/value : 36,\n\t/event/time : 2017-10-18T08:57:59.305047Z\n}, {\n\t/event/value : 35,\n\t/event/time : 2017-10-18T08:57:59.309748Z\n}, {\n\t/event/value : 35,\n\t/event/time : 2017-10-18T08:57:59.338516Z\n}, {\n\t/endplayback : 0,\n\t/event/time : 2017-10-18T08:58:00.042171Z\n}]",
-									"textcolor" : [ 1.0, 1.0, 1.0, 1.0 ]
+									"patching_rect" : [ 50.0, 100.0, 150.0, 12331.0 ],
+									"text" : "/recording : 0,\n/rec/time : 2017-11-24T08:49:00.665535Z,\n/rec/end/time : 2017-11-24T08:49:00.665535Z,\n/rec/start/time : 2017-11-24T08:48:56.919649Z,\n/sequence : [{\n\t/event/value : 0,\n\t/event/time : 2017-11-24T08:48:26.431239Z\n}, {\n\t/event/value : 1,\n\t/event/time : 2017-11-24T08:48:26.441648Z\n}, {\n\t/event/value : 1,\n\t/event/time : 2017-11-24T08:48:26.452724Z\n}, {\n\t/event/value : 3,\n\t/event/time : 2017-11-24T08:48:26.475303Z\n}, {\n\t/event/value : 5,\n\t/event/time : 2017-11-24T08:48:26.486530Z\n}, {\n\t/event/value : 7,\n\t/event/time : 2017-11-24T08:48:26.497692Z\n}, {\n\t/event/value : 10,\n\t/event/time : 2017-11-24T08:48:26.512805Z\n}, {\n\t/event/value : 15,\n\t/event/time : 2017-11-24T08:48:26.520082Z\n}, {\n\t/event/value : 20,\n\t/event/time : 2017-11-24T08:48:26.531622Z\n}, {\n\t/event/value : 24,\n\t/event/time : 2017-11-24T08:48:26.549162Z\n}, {\n\t/event/value : 28,\n\t/event/time : 2017-11-24T08:48:26.553767Z\n}, {\n\t/event/value : 31,\n\t/event/time : 2017-11-24T08:48:26.565016Z\n}, {\n\t/event/value : 34,\n\t/event/time : 2017-11-24T08:48:26.584095Z\n}, {\n\t/event/value : 36,\n\t/event/time : 2017-11-24T08:48:26.587510Z\n}, {\n\t/event/value : 38,\n\t/event/time : 2017-11-24T08:48:26.599030Z\n}, {\n\t/event/value : 40,\n\t/event/time : 2017-11-24T08:48:26.617112Z\n}, {\n\t/event/value : 41,\n\t/event/time : 2017-11-24T08:48:26.621347Z\n}, {\n\t/event/value : 42,\n\t/event/time : 2017-11-24T08:48:26.638679Z\n}, {\n\t/event/value : 43,\n\t/event/time : 2017-11-24T08:48:26.644309Z\n}, {\n\t/event/value : 45,\n\t/event/time : 2017-11-24T08:48:26.654964Z\n}, {\n\t/event/value : 46,\n\t/event/time : 2017-11-24T08:48:26.672819Z\n}, {\n\t/event/value : 48,\n\t/event/time : 2017-11-24T08:48:26.677392Z\n}, {\n\t/event/value : 50,\n\t/event/time : 2017-11-24T08:48:26.688648Z\n}, {\n\t/event/value : 52,\n\t/event/time : 2017-11-24T08:48:26.702613Z\n}, {\n\t/event/value : 56,\n\t/event/time : 2017-11-24T08:48:26.711165Z\n}, {\n\t/event/value : 59,\n\t/event/time : 2017-11-24T08:48:26.722713Z\n}, {\n\t/event/value : 63,\n\t/event/time : 2017-11-24T08:48:26.737926Z\n}, {\n\t/event/value : 66,\n\t/event/time : 2017-11-24T08:48:26.744980Z\n}, {\n\t/event/value : 68,\n\t/event/time : 2017-11-24T08:48:26.756591Z\n}, {\n\t/event/value : 70,\n\t/event/time : 2017-11-24T08:48:26.770042Z\n}, {\n\t/event/value : 71,\n\t/event/time : 2017-11-24T08:48:26.778677Z\n}, {\n\t/event/value : 72,\n\t/event/time : 2017-11-24T08:48:26.790231Z\n}, {\n\t/event/value : 72,\n\t/event/time : 2017-11-24T08:48:26.806178Z\n}, {\n\t/event/value : 73,\n\t/event/time : 2017-11-24T08:48:26.882580Z\n}, {\n\t/event/value : 73,\n\t/event/time : 2017-11-24T08:48:26.902807Z\n}, {\n\t/event/value : 74,\n\t/event/time : 2017-11-24T08:48:26.919122Z\n}, {\n\t/event/value : 74,\n\t/event/time : 2017-11-24T08:48:26.970104Z\n}, {\n\t/event/value : 73,\n\t/event/time : 2017-11-24T08:48:26.992333Z\n}, {\n\t/event/value : 71,\n\t/event/time : 2017-11-24T08:48:26.994430Z\n}, {\n\t/event/value : 66,\n\t/event/time : 2017-11-24T08:48:27.004047Z\n}, {\n\t/event/value : 61,\n\t/event/time : 2017-11-24T08:48:27.024037Z\n}, {\n\t/event/value : 53,\n\t/event/time : 2017-11-24T08:48:27.027048Z\n}, {\n\t/event/value : 46,\n\t/event/time : 2017-11-24T08:48:27.037798Z\n}, {\n\t/event/value : 40,\n\t/event/time : 2017-11-24T08:48:27.058200Z\n}, {\n\t/event/value : 32,\n\t/event/time : 2017-11-24T08:48:27.074411Z\n}, {\n\t/event/value : 28,\n\t/event/time : 2017-11-24T08:48:27.082484Z\n}, {\n\t/event/value : 26,\n\t/event/time : 2017-11-24T08:48:27.109375Z\n}, {\n\t/event/value : 26,\n\t/event/time : 2017-11-24T08:48:27.144454Z\n}, {\n\t/event/value : 27,\n\t/event/time : 2017-11-24T08:48:27.149995Z\n}, {\n\t/event/value : 30,\n\t/event/time : 2017-11-24T08:48:27.178571Z\n}, {\n\t/event/value : 33,\n\t/event/time : 2017-11-24T08:48:27.183762Z\n}, {\n\t/event/value : 38,\n\t/event/time : 2017-11-24T08:48:27.211888Z\n}, {\n\t/event/value : 41,\n\t/event/time : 2017-11-24T08:48:27.217484Z\n}, {\n\t/event/value : 47,\n\t/event/time : 2017-11-24T08:48:27.248351Z\n}, {\n\t/event/value : 49,\n\t/event/time : 2017-11-24T08:48:27.251200Z\n}, {\n\t/event/value : 51,\n\t/event/time : 2017-11-24T08:48:27.283556Z\n}, {\n\t/event/value : 51,\n\t/event/time : 2017-11-24T08:48:27.285004Z\n}, {\n\t/event/value : 45,\n\t/event/time : 2017-11-24T08:48:27.317461Z\n}, {\n\t/event/value : 39,\n\t/event/time : 2017-11-24T08:48:27.318770Z\n}, {\n\t/event/value : 30,\n\t/event/time : 2017-11-24T08:48:27.351036Z\n}, {\n\t/event/value : 25,\n\t/event/time : 2017-11-24T08:48:27.352613Z\n}, {\n\t/event/value : 22,\n\t/event/time : 2017-11-24T08:48:27.384440Z\n}, {\n\t/event/value : 23,\n\t/event/time : 2017-11-24T08:48:27.418596Z\n}, {\n\t/event/value : 26,\n\t/event/time : 2017-11-24T08:48:27.420108Z\n}, {\n\t/event/value : 36,\n\t/event/time : 2017-11-24T08:48:27.451447Z\n}, {\n\t/event/value : 42,\n\t/event/time : 2017-11-24T08:48:27.454116Z\n}, {\n\t/event/value : 49,\n\t/event/time : 2017-11-24T08:48:27.487316Z\n}, {\n\t/event/value : 50,\n\t/event/time : 2017-11-24T08:48:27.488308Z\n}, {\n\t/event/value : 50,\n\t/event/time : 2017-11-24T08:48:27.517472Z\n}, {\n\t/event/value : 49,\n\t/event/time : 2017-11-24T08:48:27.521268Z\n}, {\n\t/event/value : 42,\n\t/event/time : 2017-11-24T08:48:27.552678Z\n}, {\n\t/event/value : 40,\n\t/event/time : 2017-11-24T08:48:27.555159Z\n}, {\n\t/event/value : 34,\n\t/event/time : 2017-11-24T08:48:27.584259Z\n}, {\n\t/event/value : 33,\n\t/event/time : 2017-11-24T08:48:27.588734Z\n}, {\n\t/event/value : 34,\n\t/event/time : 2017-11-24T08:48:27.649750Z\n}, {\n\t/event/value : 35,\n\t/event/time : 2017-11-24T08:48:27.656496Z\n}, {\n\t/event/value : 36,\n\t/event/time : 2017-11-24T08:48:27.684607Z\n}, {\n\t/event/value : 36,\n\t/event/time : 2017-11-24T08:48:27.689983Z\n}, {\n\t/event/value : 37,\n\t/event/time : 2017-11-24T08:48:27.721357Z\n}, {\n\t/event/value : 40,\n\t/event/time : 2017-11-24T08:48:29.625980Z\n}, {\n\t/event/value : 39,\n\t/event/time : 2017-11-24T08:48:29.627726Z\n}, {\n\t/event/value : 36,\n\t/event/time : 2017-11-24T08:48:29.654216Z\n}, {\n\t/event/value : 34,\n\t/event/time : 2017-11-24T08:48:29.659135Z\n}, {\n\t/event/value : 27,\n\t/event/time : 2017-11-24T08:48:29.681703Z\n}, {\n\t/event/value : 24,\n\t/event/time : 2017-11-24T08:48:29.692570Z\n}, {\n\t/event/value : 17,\n\t/event/time : 2017-11-24T08:48:29.717514Z\n}, {\n\t/event/value : 14,\n\t/event/time : 2017-11-24T08:48:29.752847Z\n}, {\n\t/event/value : 14,\n\t/event/time : 2017-11-24T08:48:29.784812Z\n}, {\n\t/event/value : 23,\n\t/event/time : 2017-11-24T08:48:29.822569Z\n}, {\n\t/event/value : 39,\n\t/event/time : 2017-11-24T08:48:29.850533Z\n}, {\n\t/event/value : 46,\n\t/event/time : 2017-11-24T08:48:29.886650Z\n}, {\n\t/event/value : 39,\n\t/event/time : 2017-11-24T08:48:29.921763Z\n}, {\n\t/event/value : 24,\n\t/event/time : 2017-11-24T08:48:29.953386Z\n}, {\n\t/event/value : 16,\n\t/event/time : 2017-11-24T08:48:29.986287Z\n}, {\n\t/event/value : 22,\n\t/event/time : 2017-11-24T08:48:30.047073Z\n}, {\n\t/event/value : 28,\n\t/event/time : 2017-11-24T08:48:30.052516Z\n}, {\n\t/event/value : 36,\n\t/event/time : 2017-11-24T08:48:30.085623Z\n}, {\n\t/event/value : 37,\n\t/event/time : 2017-11-24T08:48:30.086935Z\n}, {\n\t/event/value : 37,\n\t/event/time : 2017-11-24T08:48:30.124945Z\n}, {\n\t/event/value : 33,\n\t/event/time : 2017-11-24T08:48:30.156758Z\n}, {\n\t/event/value : 31,\n\t/event/time : 2017-11-24T08:48:30.192317Z\n}, {\n\t/event/value : 29,\n\t/event/time : 2017-11-24T08:48:42.631646Z\n}, {\n\t/event/value : 28,\n\t/event/time : 2017-11-24T08:48:42.633712Z\n}, {\n\t/event/value : 24,\n\t/event/time : 2017-11-24T08:48:42.662201Z\n}, {\n\t/event/value : 21,\n\t/event/time : 2017-11-24T08:48:42.664134Z\n}, {\n\t/event/value : 19,\n\t/event/time : 2017-11-24T08:48:42.675657Z\n}, {\n\t/event/value : 16,\n\t/event/time : 2017-11-24T08:48:42.710917Z\n}, {\n\t/event/value : 18,\n\t/event/time : 2017-11-24T08:48:42.746280Z\n}, {\n\t/event/value : 19,\n\t/event/time : 2017-11-24T08:48:42.754190Z\n}, {\n\t/event/value : 28,\n\t/event/time : 2017-11-24T08:48:42.798296Z\n}, {\n\t/event/value : 31,\n\t/event/time : 2017-11-24T08:48:42.799762Z\n}, {\n\t/event/value : 32,\n\t/event/time : 2017-11-24T08:48:42.810257Z\n}, {\n\t/event/value : 33,\n\t/event/time : 2017-11-24T08:48:42.844830Z\n}, {\n\t/event/value : 32,\n\t/event/time : 2017-11-24T08:48:42.880126Z\n}, {\n\t/event/value : 32,\n\t/event/time : 2017-11-24T08:48:42.932281Z\n}, {\n\t/event/value : 29,\n\t/event/time : 2017-11-24T08:48:57.830570Z\n}, {\n\t/event/value : 31,\n\t/event/time : 2017-11-24T08:48:57.862476Z\n}, {\n\t/event/value : 33,\n\t/event/time : 2017-11-24T08:48:57.897111Z\n}, {\n\t/event/value : 46,\n\t/event/time : 2017-11-24T08:48:57.898834Z\n}, {\n\t/event/value : 66,\n\t/event/time : 2017-11-24T08:48:57.937326Z\n}, {\n\t/event/value : 73,\n\t/event/time : 2017-11-24T08:48:57.942279Z\n}, {\n\t/event/value : 81,\n\t/event/time : 2017-11-24T08:48:57.986820Z\n}, {\n\t/event/value : 66,\n\t/event/time : 2017-11-24T08:48:58.035872Z\n}, {\n\t/event/value : 58,\n\t/event/time : 2017-11-24T08:48:58.043238Z\n}, {\n\t/event/value : 36,\n\t/event/time : 2017-11-24T08:48:58.088706Z\n}, {\n\t/event/value : 37,\n\t/event/time : 2017-11-24T08:48:58.135462Z\n}, {\n\t/event/value : 40,\n\t/event/time : 2017-11-24T08:48:58.144842Z\n}, {\n\t/event/value : 57,\n\t/event/time : 2017-11-24T08:48:58.192486Z\n}, {\n\t/event/value : 68,\n\t/event/time : 2017-11-24T08:48:58.237861Z\n}, {\n\t/event/value : 69,\n\t/event/time : 2017-11-24T08:48:58.245759Z\n}, {\n\t/event/value : 67,\n\t/event/time : 2017-11-24T08:48:58.290617Z\n}, {\n\t/event/value : 47,\n\t/event/time : 2017-11-24T08:48:58.336309Z\n}, {\n\t/event/value : 42,\n\t/event/time : 2017-11-24T08:48:58.346842Z\n}, {\n\t/event/value : 38,\n\t/event/time : 2017-11-24T08:48:58.390224Z\n}, {\n\t/event/value : 39,\n\t/event/time : 2017-11-24T08:48:58.392016Z\n}, {\n\t/event/value : 50,\n\t/event/time : 2017-11-24T08:48:58.443502Z\n}, {\n\t/event/value : 63,\n\t/event/time : 2017-11-24T08:48:58.487520Z\n}, {\n\t/event/value : 64,\n\t/event/time : 2017-11-24T08:48:58.493427Z\n}, {\n\t/event/value : 58,\n\t/event/time : 2017-11-24T08:48:58.541913Z\n}, {\n\t/event/value : 45,\n\t/event/time : 2017-11-24T08:48:58.592404Z\n}, {\n\t/event/value : 44,\n\t/event/time : 2017-11-24T08:48:58.594476Z\n}, {\n\t/event/value : 46,\n\t/event/time : 2017-11-24T08:48:58.688357Z\n}, {\n\t/event/value : 68,\n\t/event/time : 2017-11-24T08:48:58.690103Z\n}, {\n\t/event/value : 76,\n\t/event/time : 2017-11-24T08:48:58.695642Z\n}, {\n\t/event/value : 89,\n\t/event/time : 2017-11-24T08:48:58.739904Z\n}, {\n\t/event/value : 73,\n\t/event/time : 2017-11-24T08:48:58.797020Z\n}, {\n\t/event/value : 66,\n\t/event/time : 2017-11-24T08:48:58.846478Z\n}, {\n\t/event/value : 49,\n\t/event/time : 2017-11-24T08:48:58.893417Z\n}, {\n\t/event/value : 48,\n\t/event/time : 2017-11-24T08:48:58.895191Z\n}, {\n\t/event/value : 50,\n\t/event/time : 2017-11-24T08:48:59.016634Z\n}, {\n\t/event/value : 52,\n\t/event/time : 2017-11-24T08:48:59.022198Z\n}, {\n\t/event/value : 72,\n\t/event/time : 2017-11-24T08:48:59.076941Z\n}, {\n\t/event/value : 77,\n\t/event/time : 2017-11-24T08:48:59.079110Z\n}, {\n\t/event/value : 82,\n\t/event/time : 2017-11-24T08:48:59.130377Z\n}, {\n\t/event/value : 78,\n\t/event/time : 2017-11-24T08:48:59.180942Z\n}, {\n\t/event/value : 73,\n\t/event/time : 2017-11-24T08:48:59.190691Z\n}, {\n\t/event/value : 45,\n\t/event/time : 2017-11-24T08:48:59.248368Z\n}, {\n\t/event/value : 42,\n\t/event/time : 2017-11-24T08:48:59.258309Z\n}, {\n\t/event/value : 38,\n\t/event/time : 2017-11-24T08:48:59.316572Z\n}, {\n\t/event/value : 39,\n\t/event/time : 2017-11-24T08:48:59.393325Z\n}, {\n\t/event/value : 48,\n\t/event/time : 2017-11-24T08:48:59.451735Z\n}, {\n\t/event/value : 51,\n\t/event/time : 2017-11-24T08:48:59.460694Z\n}, {\n\t/event/value : 64,\n\t/event/time : 2017-11-24T08:48:59.515268Z\n}, {\n\t/event/value : 67,\n\t/event/time : 2017-11-24T08:48:59.517264Z\n}, {\n\t/event/value : 70,\n\t/event/time : 2017-11-24T08:48:59.528095Z\n}, {\n\t/event/value : 75,\n\t/event/time : 2017-11-24T08:48:59.590298Z\n}, {\n\t/event/value : 75,\n\t/event/time : 2017-11-24T08:48:59.595726Z\n}, {\n\t/event/value : 81,\n\t/event/time : 2017-11-24T08:48:59.651046Z\n}, {\n\t/event/value : 84,\n\t/event/time : 2017-11-24T08:48:59.653197Z\n}, {\n\t/event/value : 86,\n\t/event/time : 2017-11-24T08:48:59.663178Z\n}, {\n\t/event/value : 96,\n\t/event/time : 2017-11-24T08:48:59.722205Z\n}, {\n\t/event/value : 99,\n\t/event/time : 2017-11-24T08:48:59.785648Z\n}, {\n\t/event/value : 99,\n\t/event/time : 2017-11-24T08:48:59.787832Z\n}, {\n\t/event/value : 94,\n\t/event/time : 2017-11-24T08:48:59.919737Z\n}, {\n\t/event/value : 89,\n\t/event/time : 2017-11-24T08:48:59.921987Z\n}, {\n\t/event/value : 75,\n\t/event/time : 2017-11-24T08:48:59.979709Z\n}, {\n\t/event/value : 75,\n\t/event/time : 2017-11-24T08:49:00.104497Z\n}, {\n\t/event/value : 76,\n\t/event/time : 2017-11-24T08:49:00.237293Z\n}, {\n\t/endplayback : 0,\n\t/event/time : 2017-11-24T08:49:00.665576Z\n}]"
 								}
 
 							}
@@ -276,8 +309,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
 					"patching_rect" : [ 878.0, 337.5, 357.0, 56.0 ],
-					"text" : "if( bound(/rec/end/time),\n  progn( delete(/sequence), delete(/rec/end/time) )\n)",
-					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
+					"text" : "if( bound(/rec/end/time),\n  progn( delete(/sequence), delete(/rec/end/time) )\n)"
 				}
 
 			}
@@ -333,8 +365,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
 					"patching_rect" : [ 396.347656, 615.5, 521.0, 43.0 ],
-					"text" : "/play/event/time = /play/start/time + (/event/time - /rec/start/time) + 0.1,\nif( /playing == false, /sched_clear = \"clear\" )",
-					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
+					"text" : "/play/event/time = /play/start/time + (/event/time - /rec/start/time) + 0.1,\nif( /playing == false, /sched_clear = \"clear\" )"
 				}
 
 			}
@@ -362,8 +393,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
 					"patching_rect" : [ 780.0, 139.0, 217.0, 106.0 ],
-					"text" : "if( /recording == true,\n  /rec/start/time = /rec/time,\n  progn(\n    /rec/end/time = /rec/time,\n    /event/endplayback = 0\n  )\n)",
-					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
+					"text" : "if( /recording == true,\n  /rec/start/time = /rec/time,\n  progn(\n    /rec/end/time = /rec/time,\n    /event/endplayback = 0\n  )\n)"
 				}
 
 			}
@@ -427,6 +457,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.960784, 0.827451, 0.156863, 1.0 ],
 					"fontsize" : 13.0,
 					"id" : "obj-50",
 					"legacytextcolor" : 1,
@@ -482,7 +513,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 72.0, 226.0, 113.0, 34.0 ],
+					"patching_rect" : [ 78.0, 313.0, 113.0, 34.0 ],
 					"style" : "",
 					"text" : "Ilya Adrian 2014\nrama 2017"
 				}
@@ -505,6 +536,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.960784, 0.827451, 0.156863, 1.0 ],
 					"fontlink" : 1,
 					"fontsize" : 13.0,
 					"id" : "obj-38",
@@ -632,8 +664,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
 					"patching_rect" : [ 648.0, 431.0, 336.0, 43.0 ],
-					"text" : "/sequence ??= [],\n/sequence = [ /sequence, /event ], delete(/event)",
-					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
+					"text" : "/sequence ??= [],\n/sequence = [ /sequence, /event ], delete(/event)"
 				}
 
 			}
@@ -669,7 +700,9 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.309495, 0.299387, 0.299789, 1.0 ],
 					"id" : "obj-5",
+					"knobcolor" : [ 0.960784, 0.827451, 0.156863, 1.0 ],
 					"maxclass" : "slider",
 					"numinlets" : 1,
 					"numoutlets" : 1,
@@ -925,8 +958,8 @@
 			}
  ],
 		"parameters" : 		{
-			"obj-50" : [ "textbutton[1]", "textbutton", 0 ],
-			"obj-38" : [ "textbutton[4]", "textbutton", 0 ]
+			"obj-38" : [ "textbutton[4]", "textbutton", 0 ],
+			"obj-50" : [ "textbutton[1]", "textbutton", 0 ]
 		}
 ,
 		"dependency_cache" : [ 			{
