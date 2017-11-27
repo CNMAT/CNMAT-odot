@@ -53,7 +53,7 @@
 							"modernui" : 1
 						}
 ,
-						"rect" : [ 0.0, 26.0, 1000.0, 759.0 ],
+						"rect" : [ 238.0, 105.0, 1000.0, 759.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -166,11 +166,13 @@
 									"fontface" : 0,
 									"fontsize" : 12.0,
 									"id" : "obj-5",
+									"linecount" : 3,
 									"maxclass" : "o.display",
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 131.0, 163.0, 252.0, 34.0 ]
+									"patching_rect" : [ 131.0, 163.0, 252.0, 61.0 ],
+									"text" : "/countFunc : \"lambda([i], i + 1 )\",\n/result : 1"
 								}
 
 							}
@@ -378,7 +380,7 @@
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 125.0, 616.0, 221.0, 22.0 ],
 									"style" : "",
-									"text" : "FullPacket 72 140734799796624"
+									"text" : "FullPacket 72 140734742409232"
 								}
 
 							}
@@ -391,7 +393,8 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 360.0, 539.0, 366.0, 34.0 ]
+									"patching_rect" : [ 360.0, 539.0, 366.0, 34.0 ],
+									"text" : "/hello : \"I'm in a sub-bundle and I like it here\""
 								}
 
 							}
@@ -430,7 +433,7 @@
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 85.5, 350.0, 259.0, 22.0 ],
 									"style" : "",
-									"text" : "/subbundle/1 FullPacket 72 106652716937900"
+									"text" : "/subbundle/1 FullPacket 72 105553226336428"
 								}
 
 							}
@@ -468,7 +471,7 @@
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 138.0, 241.0, 221.0, 22.0 ],
 									"style" : "",
-									"text" : "FullPacket 212 140734799798624"
+									"text" : "FullPacket 212 140734742411232"
 								}
 
 							}
@@ -651,7 +654,7 @@
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 125.0, 557.0, 221.0, 22.0 ],
 									"style" : "",
-									"text" : "FullPacket 72 140734799797072"
+									"text" : "FullPacket 72 140734742409680"
 								}
 
 							}
@@ -664,7 +667,8 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 360.0, 480.0, 366.0, 34.0 ]
+									"patching_rect" : [ 360.0, 480.0, 366.0, 34.0 ],
+									"text" : "/hello : \"I'm in a sub-bundle and I like it here\""
 								}
 
 							}
@@ -703,7 +707,7 @@
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 138.0, 345.0, 221.0, 22.0 ],
 									"style" : "",
-									"text" : "FullPacket 72 107202489493932"
+									"text" : "FullPacket 72 107202420406188"
 								}
 
 							}
@@ -741,7 +745,7 @@
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 138.0, 241.0, 221.0, 22.0 ],
 									"style" : "",
-									"text" : "FullPacket 212 140734799798624"
+									"text" : "FullPacket 212 140734742411232"
 								}
 
 							}
@@ -887,6 +891,7 @@
 							}
 , 							{
 								"box" : 								{
+									"fontface" : 1,
 									"fontname" : "Arial",
 									"fontsize" : 12.0,
 									"id" : "obj-26",
@@ -894,9 +899,10 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 331.0, 555.0, 399.0, 47.0 ],
+									"patching_rect" : [ 331.0, 555.0, 427.0, 47.0 ],
 									"style" : "",
-									"text" : "for, example: here is a garbage FullPacket message I just made up.\nclicking on it will send it to o.route who will try to look up the bundle, \nBUT IT WILL CRASH MAX (don't click on it unless you're ready for that!)"
+									"text" : "for, example: here is a garbage FullPacket message I just made up.\nclicking on it will send it to o.route who will try to look up the bundle, \nBUT IT WILL CRASH MAX (don't click on it unless you're ready for that!)",
+									"textcolor" : [ 0.784314, 0.145098, 0.023529, 1.0 ]
 								}
 
 							}
@@ -936,7 +942,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 154.0, 693.0, 661.0, 33.0 ],
+									"patching_rect" : [ 154.0, 693.0, 557.0, 33.0 ],
 									"style" : "",
 									"text" : "Don't create your own FullPacket messages. \nOnly send and receive FullPacket messages with objects that know how to read and write them!",
 									"textcolor" : [ 0.011765, 0.396078, 0.752941, 1.0 ]
