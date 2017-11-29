@@ -308,7 +308,7 @@ void oexprcodebox_gettext(t_oexprcodebox *x)
         return;
     }  
 
-    printf("x is %p object ptrsize: %ld void ptrsize %ld \n", x, sizeof(t_object*), sizeof(void*));
+   // printf("x is %p object ptrsize: %ld void ptrsize %ld \n", x, sizeof(t_object*), sizeof(void*));
     
     
     critical_enter(x->lock);
