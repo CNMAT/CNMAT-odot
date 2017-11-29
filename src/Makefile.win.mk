@@ -14,6 +14,7 @@ o.explode \
 o.expr \
 o.expr.codebox \
 o.flatten \
+o.gui.attach \
 o.if \
 o.intersection \
 o.listenumerate \
@@ -56,12 +57,12 @@ PLATFORM = Windows
 win: EXT = .mxe
 win: CC = i686-w64-mingw32-gcc
 win: LD = $(CC)
-win: LIBS = -L../../libomax/libs/i686 -lomax -L$(MAX_INCLUDES) -L$(MSP_INCLUDES) -lMaxAPI -lMaxAudio -L../../libo/libs/i686 -lo
+win: LIBS = -L../../libomax/libs/i686 -lomax -L$(MAX_INCLUDES) -L$(MSP_INCLUDES) -lMaxAPI -lMaxAudio -L../../libo/libs/i686 -lo -lws2_32
 
 win64: EXT = .mxe64
 win64: CC = x86_64-w64-mingw32-gcc
 win64: LD = $(CC)
-win64: LIBS = -L../../libomax/libs/x86_64 -lomax -L$(MAX_INCLUDES) -L$(MSP_INCLUDES) -lx64/MaxAPI -lx64/MaxAudio -L../../libo/libs/x86_64 -lo
+win64: LIBS = -L../../libomax/libs/x86_64 -lomax -L$(MAX_INCLUDES) -L$(MSP_INCLUDES) -lx64/MaxAPI -lx64/MaxAudio -L../../libo/libs/x86_64 -lo -lws2_32
 
 INCLUDES = -I$(MAX_INCLUDES) -I$(MSP_INCLUDES) -I../../libo -I../../libomax -Iinclude
 CFLAGS += -DWIN_VERSION -DWIN_EXT_VERSION -U__STRICT_ANSI__ -U__ANSI_SOURCE -std=c99 -O3 -DNO_TRANSLATION_SUPPORT -DWIN32_LEAN_AND_MEAN

@@ -5,6 +5,7 @@
 *.class
 *.objinfo.txt
 *.tar.gz
+*.tgz
 *.zip
 *.def
 #*#
