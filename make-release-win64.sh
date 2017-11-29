@@ -1,4 +1,4 @@
-archive_name=odot-Max-Win32-`git describe --tags --long`-`git branch | egrep '^\*' | awk '{print $2}'`.zip
+archive_name=odot-Max-Win64-`git describe --tags --long`-`git branch | egrep '^\*' | awk '{print $2}'`.zip
 
 deprecated_externs=(o.expr o.message o.pak o.unless o.when)
 dev_externs=(o.atomize o.context o.downcast o.mappatch o.messageiterate o.slip.decode o.slip.encode o.table o.validate)
@@ -18,17 +18,17 @@ mkdir odot/dev/externals && mkdir odot/deprecated/externals
 
 for f in ${legit_externs[*]}
 do
-	cp src/build/Release/$f.mxe odot/externals
+	cp src/build/Release/$f.mxe64 odot/externals
 done
 
 for f in ${dev_externs[*]}
 do
-	cp src/build/Release/$f.mxe odot/dev/externals
+	cp src/build/Release/$f.mxe64 odot/dev/externals
 done
 
 for f in ${deprecated_externs[*]}
 do
-	cp src/build/Release/$f.mxe odot/deprecated/externals
+	cp src/build/Release/$f.mxe64 odot/deprecated/externals
 done
 
 python make-package-info.py

@@ -1,7 +1,7 @@
 /*
   Written by John MacCallum, The Center for New Music and Audio Technologies,
   University of California, Berkeley.  Copyright (c) 2013, The Regents of
-  the University of California (Regents). 
+  the University of California (Regents).
   Permission to use, copy, modify, distribute, and distribute modified versions
   of this software and its documentation without fee and without a signed
   licensing agreement, is hereby granted, provided that the above copyright
@@ -28,6 +28,11 @@
 #define OMAX_DOC_INLETS_DESC (char *[]){"OSC bundle", "Inactive (reserved for future use)"}
 #define OMAX_DOC_OUTLETS_DESC (char *[]){"Downcasted OSC bundle"}
 #define OMAX_DOC_SEEALSO  (char *[]){}
+
+// need htonl
+#ifdef WIN_VERSION
+#include <Winsock.h>
+#endif
 
 #include "o.h"
 #include "odot_version.h"
@@ -64,123 +69,147 @@ typedef struct _odowncast{
 void *odowncast_class;
 
 
-//void odowncast_fullPacket(t_odowncast *x, long len, long ptr)
+t_osc_bundle_u *odowncast_iterBundle(t_odowncast *x, t_osc_bundle_u *b, t_osc_timetag *timetag)
+{
+    t_osc_bndl_it_u *bit = osc_bndl_it_u_get(b);
+    while(osc_bndl_it_u_hasNext(bit))
+    {
+        t_osc_msg_u *m = osc_bndl_it_u_next(bit);
+        t_osc_msg_it_u *mit = osc_msg_it_u_get(m);
+        while(osc_msg_it_u_hasNext(mit)){
+            t_osc_atom_u *a = osc_msg_it_u_next(mit);
+            int i = 0;
+            switch(osc_atom_u_getTypetag(a)){
+                case 'c':
+                case 'C':
+                case 'I':
+                case 'h':
+                case 'H':
+                case 'u':
+                case 'U':
+                case 'N':
+                case 'T':
+                case 'F':
+                    if(x->ints){
+                        osc_atom_u_setInt32(a, osc_atom_u_getInt32(a));
+                    }
+                    break;
+                case 'd':
+                    if(x->doubles){
+                        osc_atom_u_setFloat(a, osc_atom_u_getFloat(a));
+                    }
+                    break;
+                case OSC_BUNDLE_TYPETAG:
+                {
+                    // get pointer to bundle (not a copy)
+                    t_osc_bundle_u *sub_b_u = osc_atom_u_getBndl(a);
+
+                    sub_b_u = odowncast_iterBundle(x, sub_b_u, timetag);
+
+                    // after downcasting, and blobbing subbundles, serialize and convert to blob
+                    t_osc_bundle_s *sub_b_s = osc_bundle_u_serialize(sub_b_u);
+                    if( sub_b_s )
+                    {
+                        // temp atom for conversion
+                        t_osc_atom_u *tmp_atom_s_bnd = osc_atom_u_alloc();
+                        osc_atom_u_setBndl_s(tmp_atom_s_bnd, osc_bundle_s_getLen(sub_b_s), osc_bundle_s_getPtr(sub_b_s));
+
+                        // make the blob
+                        char *blob = NULL;
+                        int32_t blob_l;
+                        osc_atom_u_getBlobCopy(tmp_atom_s_bnd, &blob_l, &blob); //<< internally checks for and copies bundle into blob format
+
+                        if( blob )
+                        {
+                            // transfer to the current atom (a)
+                            // internally calls atom_u_clear/free which frees our sub_b_u pointer, so we don't have to do that
+                            osc_atom_u_setBlob(a, blob);
+
+                            // release the blob
+                            osc_mem_free(blob);
+                            blob = NULL;
+                        }
+
+                        // release temp bundle atom
+                        osc_atom_u_free(tmp_atom_s_bnd);
+                        osc_bundle_s_deepFree(sub_b_s);
+                    }
+
+
+                }
+                    break;
+                case OSC_TIMETAG_TYPETAG:
+#if OSC_TIMETAG_FORMAT == OSC_TIMETAG_NTP
+                    if(x->timetags){
+                        t_osc_timetag tt = osc_atom_u_getTimetag(a);
+                        if(x->timetag_address){
+                            char *address = osc_message_u_getAddress(m);
+                            if(!strcmp(address, x->timetag_address->s_name)){
+                                *timetag = tt;
+                            }
+                        }
+                        t_osc_atom_u *aa = osc_atom_u_alloc();
+                        int32_t tt1, tt2;
+                        //tt1 = (tt & 0xffffffff00000000) >> 32;
+                        //tt2 = tt & 0xffffffff;
+                        tt1 = osc_timetag_ntp_getSeconds(tt);
+                        tt2 = osc_timetag_ntp_getFraction(tt);
+                        osc_atom_u_setInt32(a, (int32_t)tt1);
+                        osc_atom_u_setInt32(aa, (int32_t)tt2);
+                        osc_message_u_insertAtom(m, aa, ++i);
+                    }
+#else
+                    object_error((t_object *)x, "o.downcast only supports NTP timetags");
+#endif
+                    break;
+            }
+            i++;
+        }
+        osc_msg_it_u_destroy(mit);
+    }
+    osc_bndl_it_u_destroy(bit);
+    return b;
+}
+
+
 void odowncast_fullPacket(t_odowncast *x, t_symbol *msg, int argc, t_atom *argv)
 {
 	OMAX_UTIL_GET_LEN_AND_PTR;
-	t_osc_bndl_u *b = osc_bundle_s_deserialize(len, ptr);
+    t_osc_bndl_u *b = osc_bundle_s_deserialize(len, ptr);
 	if(!b){
 		object_error((t_object *)x, "invalid OSC packet");
 		return;
 	}
-	/*
-	if(x->flatten_nested_bundles){
-		t_osc_bndl_u *bf = NULL;
-		e = osc_bundle_u_flatten(&bf, b
-	}
-	*/
-	t_osc_bndl_u **nestedbundles = NULL;
-	int nnestedbundles = 0, nestedbundles_buflen = 0;
-	t_osc_bndl_it_u *bit = osc_bndl_it_u_get(b);
-	t_osc_timetag timetag = OSC_TIMETAG_NULL;
-	while(osc_bndl_it_u_hasNext(bit)){
-		t_osc_msg_u *m = osc_bndl_it_u_next(bit);
-		t_osc_msg_it_u *mit = osc_msg_it_u_get(m);
-		while(osc_msg_it_u_hasNext(mit)){
-			t_osc_atom_u *a = osc_msg_it_u_next(mit);
-			int i = 0;
-			switch(osc_atom_u_getTypetag(a)){
-			case 'c':
-			case 'C':
-			case 'I':
-			case 'h':
-			case 'H':
-			case 'u':
-			case 'U':
-			case 'N':
-			case 'T':
-			case 'F':
-				if(x->ints){
-					osc_atom_u_setInt32(a, osc_atom_u_getInt32(a));
-				}
-				break;
-			case 'd':
-				if(x->doubles){
-					osc_atom_u_setFloat(a, osc_atom_u_getFloat(a));
-				}
-				break;
-			case OSC_BUNDLE_TYPETAG:
-				if(x->bundles){
-					if(!nestedbundles || nnestedbundles == nestedbundles_buflen){
-						nestedbundles = (t_osc_bndl_u **)osc_mem_resize(nestedbundles, (nestedbundles_buflen + 16) * sizeof(char *));
-					}
-					nestedbundles[nnestedbundles++] = osc_atom_u_getBndl(a);
-					osc_message_u_removeAtom(m, a);
-				}
-				break;
-			case OSC_TIMETAG_TYPETAG:
-#if OSC_TIMETAG_FORMAT == OSC_TIMETAG_NTP
-				if(x->timetags){
-					t_osc_timetag tt = osc_atom_u_getTimetag(a);
-					if(x->timetag_address){
-						char *address = osc_message_u_getAddress(m);
-						if(!strcmp(address, x->timetag_address->s_name)){
-							timetag = tt;
-						}
-					}
-					t_osc_atom_u *aa = osc_atom_u_alloc();
-					int32_t tt1, tt2;
-					//tt1 = (tt & 0xffffffff00000000) >> 32;
-					//tt2 = tt & 0xffffffff;
-					tt1 = osc_timetag_ntp_getSeconds(tt);
-					tt2 = osc_timetag_ntp_getFraction(tt);
-					osc_atom_u_setInt32(aa, ntoh32(tt1));
-					osc_atom_u_setInt32(a, ntoh32(tt2));
-					osc_message_u_insertAtom(m, aa, ++i);
-				}
-#else
-				object_error((t_object *)x, "o.downcast only supports NTP timetags");
-#endif
-				break;
-			}
-			i++;
-		}
-		osc_msg_it_u_destroy(mit);
-	}
-	osc_bndl_it_u_destroy(bit);
-	t_osc_bndl_s *bs1 = osc_bundle_u_serialize(b);
+
+    t_osc_timetag timetag = OSC_TIMETAG_NULL;
+
+    t_osc_bundle_u *blobbed_b = odowncast_iterBundle(x, b, &timetag);
+    if( !blobbed_b )
+    {
+        object_error((t_object *)x, "invalid OSC packet");
+        osc_bundle_u_free(b);
+        return;
+    }
+
+    t_osc_bndl_s *bs1 = osc_bundle_u_serialize(blobbed_b);
+
 	if(bs1){
+
 		long l = osc_bundle_s_getLen(bs1);
 		char *p = osc_bundle_s_getPtr(bs1);
-		memcpy(p + OSC_ID_SIZE, &timetag, sizeof(t_osc_timetag));
-		for(int i = 0; i < nnestedbundles; i++){
-			t_osc_bndl_s *bs2 = osc_bundle_u_serialize(nestedbundles[i]);
-			if(bs2){
-				long ll = osc_bundle_s_getLen(bs2);
-				char *pp = osc_bundle_s_getPtr(bs2);
-				p = osc_mem_resize(p, l + ll);
-				memcpy(p + l, pp, ll);
-				l += ll;
-				osc_bundle_s_deepFree(bs2);
-			}
-		}
-		//if(x->bundle){
+
+        t_osc_timetag tt_n;
+        tt_n.sec = htonl(timetag.sec);
+        tt_n.frac_sec = htonl(timetag.frac_sec);
+
+		memcpy(p + OSC_ID_SIZE, &tt_n, sizeof(t_osc_timetag)); // add timetag to header if found @headertimetag address
+
 		omax_util_outletOSC(x->outlet, l, p);
-			/*
-		}else{
-			t_osc_bndl_it_s *bit = osc_bndl_it_s_get(l, p);
-			while(osc_bndl_it_s_hasNext(bit)){
-				t_osc_msg_s *m = osc_bndl_it_s_next(bit);
-				long ml = osc_message_s_getSize(m);
-				char *mp = osc_message_s_getAddress(m);
-				omax_util_outletOSC(x->outlet, ml, mp);
-			}
-			osc_bndl_it_s_destroy(bit);
-		}
-			*/
+
 		osc_bundle_s_deepFree(bs1);
 	}
 	osc_bundle_u_free(b);
+
 }
 
 
@@ -203,8 +232,8 @@ void *odowncast_new(t_symbol *msg, short argc, t_atom *argv)
 		x->outlet = outlet_new((t_object *)x, gensym("FullPacket"));
 		x->timetag_address = NULL;
 		x->doubles = x->ints = x->bundles = x->timetags = 1;
-        
-        
+
+
         /*
          CLASS_ATTR_SYM(c, "headertimetag", 0, t_odowncast, timetag_address);
          CLASS_ATTR_LONG(c, "doubles", 0, t_odowncast, doubles);
@@ -212,7 +241,7 @@ void *odowncast_new(t_symbol *msg, short argc, t_atom *argv)
          CLASS_ATTR_LONG(c, "bundles", 0, t_odowncast, bundles);
          CLASS_ATTR_LONG(c, "timetags", 0, t_odowncast, timetags);
          */
-        
+
 
         int i;
         for(i = 0; i < argc; i++)
@@ -265,13 +294,13 @@ void *odowncast_new(t_symbol *msg, short argc, t_atom *argv)
                 }  else {
                     post("o.downcast optional attributes are: @headertimetag, @doubles, @ints, @bundles, and @timetags");
                 }
-                
+
             } else {
                 post("o.downcast optional attributes are: @headertimetag, @doubles, @ints, @bundles, and @timetags");
                 return 0;
             }
-            
-            
+
+
         }
 
 	}
@@ -280,15 +309,15 @@ void *odowncast_new(t_symbol *msg, short argc, t_atom *argv)
 
 int setup_o0x2edowncast(void)
 {
-    
+
 	t_class *c = class_new(gensym("o.downcast"), (t_newmethod)odowncast_new, (t_method)odowncast_free, sizeof(t_odowncast), 0L, A_GIMME, 0);
 	class_addmethod(c, (t_method)odowncast_fullPacket, gensym("FullPacket"), A_GIMME, 0);
 //	class_addmethod(c, (t_method)odowncast_assist, gensym("assist"), A_CANT, 0);
 	class_addmethod(c, (t_method)odowncast_doc, gensym("doc"), 0);
 	class_addmethod(c, (t_method)odot_version, gensym("version"), 0);
-    
+
 	odowncast_class = c;
-    
+
 	ODOT_PRINT_VERSION;
 	return 0;
 }
@@ -332,7 +361,7 @@ int main(void)
 	CLASS_ATTR_LONG(c, "ints", 0, t_odowncast, ints);
 	CLASS_ATTR_LONG(c, "bundles", 0, t_odowncast, bundles);
 	CLASS_ATTR_LONG(c, "timetags", 0, t_odowncast, timetags);
-	
+
 	class_register(CLASS_BOX, c);
 	odowncast_class = c;
 

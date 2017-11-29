@@ -1,5 +1,5 @@
-BUILDTARGETS = mac all win 
-OTHERTARGETS = clean install archive
+BUILDTARGETS = mac all
+OTHERTARGETS = clean install archive win win64
 
 UNAME = $(shell uname)
 

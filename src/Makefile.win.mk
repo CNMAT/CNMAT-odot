@@ -14,6 +14,7 @@ o.explode \
 o.expr \
 o.expr.codebox \
 o.flatten \
+o.gui.attach \
 o.if \
 o.intersection \
 o.listenumerate \
@@ -47,23 +48,25 @@ VPATH = $(OBJECT_LIST)
 
 CFILES = $(foreach f, $(OBJECT_LIST), $(f)/$(f).c)
 
-C74SUPPORT = ../../max6-sdk/c74support
+C74SUPPORT = ../../max-sdk/source/c74support
 MAX_INCLUDES = $(C74SUPPORT)/max-includes
 MSP_INCLUDES = $(C74SUPPORT)/msp-includes
 
 PLATFORM = Windows
 
-EXT = .mxe
-CC = i686-w64-mingw32-gcc
-#CC = gcc
-#LD = i686-w64-mingw32-ld
-#LD = gcc
-LD = $(CC)
-CFLAGS += -mno-cygwin -DWIN_VERSION -DWIN_EXT_VERSION -U__STRICT_ANSI__ -U__ANSI_SOURCE -std=c99 -O3 -DNO_TRANSLATION_SUPPORT
+win: EXT = .mxe
+win: CC = i686-w64-mingw32-gcc
+win: LD = $(CC)
+win: LIBS = -L../../libomax/libs/i686 -lomax -L$(MAX_INCLUDES) -L$(MSP_INCLUDES) -lMaxAPI -lMaxAudio -L../../libo/libs/i686 -lo -lws2_32
+
+win64: EXT = .mxe64
+win64: CC = x86_64-w64-mingw32-gcc
+win64: LD = $(CC)
+win64: LIBS = -L../../libomax/libs/x86_64 -lomax -L$(MAX_INCLUDES) -L$(MSP_INCLUDES) -lx64/MaxAPI -lx64/MaxAudio -L../../libo/libs/x86_64 -lo -lws2_32
+
 INCLUDES = -I$(MAX_INCLUDES) -I$(MSP_INCLUDES) -I../../libo -I../../libomax -Iinclude
-LDFLAGS = -mno-cygwin -shared #-static-libgcc
-#LIBS = -L"/cygdrive/c/Program Files (x86)/Microsoft Visual Studio 10.0/VC/lib" -lmsvcrt -L../../libomax -lomax -L$(MAX_INCLUDES) -lMaxAPI -L../../libo -lo 
-LIBS = -L../../libomax -lomax -L$(MAX_INCLUDES) -L$(MSP_INCLUDES) -lMaxAPI -lMaxAudio -L../../libo -lo 
+CFLAGS += -DWIN_VERSION -DWIN_EXT_VERSION -U__STRICT_ANSI__ -U__ANSI_SOURCE -std=c99 -O3 -DNO_TRANSLATION_SUPPORT -DWIN32_LEAN_AND_MEAN
+LDFLAGS = -shared -static-libgcc
 
 BUILDDIR = $(CURDIR)/build/Release
 STAGINGDIR = odot-$(PLATFORM)
@@ -93,6 +96,13 @@ SERVER_PATH = /home/www-data/berkeley.edu-cnmat.www/maxdl/files/odot
 ##################################################
 ## Windows specific
 ##################################################
+
+clean-obj:
+	rm -f $(BUILDDIR)/*.o
+
+win64: $(BUILDDIR)/commonsyms.o $(OBJECTS) clean-obj
+win: $(BUILDDIR)/commonsyms.o $(OBJECTS) clean-obj
+
 all: $(BUILDDIR)/commonsyms.o $(OBJECTS)
 
 $(BUILDDIR)/commonsyms.o: $(BUILDDIR)
@@ -101,17 +111,19 @@ $(BUILDDIR)/commonsyms.o: $(BUILDDIR)
 $(BUILDDIR)/pqops.o: $(BUILDDIR)
 	$(CC) $(CFLAGS) $(INCLUDES) -Io.schedule -c -o $(BUILDDIR)/pqops.o o.schedule/pqops.c
 
-$(BUILDDIR)/%.mxe: %.c $(BUILDDIR) $(BUILDDIR)/commonsyms.o $(BUILDDIR)/pqops.o $(CURRENT_VERSION_FILE)
+$(BUILDDIR)/%$(EXT): %.c $(BUILDDIR) $(BUILDDIR)/commonsyms.o $(BUILDDIR)/pqops.o $(CURRENT_VERSION_FILE)
 	$(CC) $(CFLAGS) $(INCLUDES) -c -o $(BUILDDIR)/$*.o $<
-	$(LD) $(LDFLAGS) -o $(BUILDDIR)/$*.mxe $(BUILDDIR)/$*.o $(BUILDDIR)/commonsyms.o $(BUILDDIR)/pqops.o $(LIBS)
+	$(LD) $(LDFLAGS) -o $(BUILDDIR)/$*$(EXT) $(BUILDDIR)/$*.o $(BUILDDIR)/commonsyms.o $(BUILDDIR)/pqops.o $(LIBS)
+
+
 
 # $(BUILDDIR)/o.append.mxe: o.append.c $(BUILDDIR) $(BUILDDIR)/commonsyms.o $(CURRENT_VERSION_FILE)
 # 	$(CC) $(CFLAGS) $(INCLUDES) -c -o $(BUILDDIR)/o.append.o $<
-# 	$(LD) $(LDFLAGS) -o $(BUILDDIR)/o.append.mxe $(BUILDDIR)/o.append.o $(BUILDDIR)/commonsyms.o $(LIBS) 
+# 	$(LD) $(LDFLAGS) -o $(BUILDDIR)/o.append.mxe $(BUILDDIR)/o.append.o $(BUILDDIR)/commonsyms.o $(LIBS)
 
 # $(BUILDDIR)/o.message.mxe: o.message.c $(BUILDDIR) $(BUILDDIR)/commonsyms.o $(CURRENT_VERSION_FILE)
 # 	$(CC) $(CFLAGS) $(INCLUDES) -c -o $(BUILDDIR)/o.message.o $<
-# 	$(LD) $(LDFLAGS) -o $(BUILDDIR)/o.message.mxe $(BUILDDIR)/o.message.o $(BUILDDIR)/commonsyms.o $(LIBS) 
+# 	$(LD) $(LDFLAGS) -o $(BUILDDIR)/o.message.mxe $(BUILDDIR)/o.message.o $(BUILDDIR)/commonsyms.o $(LIBS)
 
 ##################################################
 ## platform agnostic targets
@@ -140,12 +152,13 @@ $(ARCHIVE): $(STAGED_PRODUCTS)
 	tar zvcf $(ARCHIVE) $(STAGINGDIR)
 
 .PHONY: clean
-clean: 
+clean:
 	rm -rf build
 	rm -rf $(STAGINGDIR)
 	rm -rf $(ARCHIVE)
 	rm -rf $(LOCAL_INSTALL_PATH)
 	rm -f $(CURRENT_VERSION_FILE)
+
 
 ##################################################
 ## create directories

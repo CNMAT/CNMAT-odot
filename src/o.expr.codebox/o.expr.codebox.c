@@ -927,10 +927,10 @@ int main(void)
 	CLASS_ATTR_STYLE_LABEL(c, "error_color", 0, "rgba", "Error Color");
     CLASS_ATTR_CATEGORY_KLUDGE(c, "error_color", 0, "Color");
     
-	CLASS_ATTR_RGBA(c, "text_color", 0, t_oexprcodebox, text_color);
-	CLASS_ATTR_DEFAULT_SAVE_PAINT(c, "text_color", 0, "0. 0. 0. 1.");
-	//CLASS_ATTR_STYLE_LABEL(c, "text_color", 0, "rgba", "Text Color");
-    //CLASS_ATTR_CATEGORY_KLUDGE(c, "text_color", 0, "Color");
+	CLASS_ATTR_RGBA(c, "textcolor", 0, t_oexprcodebox, text_color);
+	CLASS_ATTR_DEFAULT_SAVE_PAINT(c, "textcolor", 0, "0. 0. 0. 1.");
+	CLASS_ATTR_STYLE_LABEL(c, "textcolor", 0, "rgba", "Text Color");
+    CLASS_ATTR_CATEGORY_KLUDGE(c, "textcolor", 0, "Color");
     
     CLASS_ATTR_DEFAULT(c, "fontname", 0, "\"Courier New\"");
 

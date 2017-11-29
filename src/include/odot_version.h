@@ -11,13 +11,15 @@
 #include "report_compiler.h"
 //#define ODOT_VERSION "1.2.11" 
 //#define ODOT_RELEASE_DATE "[2012-12-21 Fri]"
-#define ODOT_COPYRIGHT_YEARS "2008-14"
+#define ODOT_COPYRIGHT_YEARS "2008-17"
 #define ODOT_AUTHORS "John MacCallum, Adrian Freed, Rama Gottfried, Ilya Rostovtsev"
 #define ODOT_COPYRIGHT_STRING "Regents of the University of California. All rights reserved."
 
 void __odot_version(void)
 {
-	post("odot version %s (compiled %s), by %s\n", ODOT_VERSION, ODOT_COMPILE_DATE, ODOT_AUTHORS);
+	post("odot version %s (compiled %s)", ODOT_VERSION, ODOT_COMPILE_DATE);
+    post("by %s\n", ODOT_AUTHORS);
+
 #ifdef OMAX_PD_VERSION
     post("alpha pd version");
 #endif
@@ -30,7 +32,7 @@ void odot_version(void *x)
 		// called from main()--post only once
 		if(!(gensym("odot_version_has_been_posted")->s_thing)){
 			__odot_version();
-			gensym("odot_version_has_been_posted")->s_thing = (void *)1;
+			gensym("odot_version_has_been_posted")->s_thing = (t_object *)1;
 		}
 	}else{
 		// called in response to the version message

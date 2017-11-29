@@ -1,0 +1,51 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "F288EB3F860EB37FE32803469C923EC7E08714D7",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "BFE38AA7F3B3EE5D839CDF960E9B1411A92C41B2" : 0,
+    "73CD3912FF7E5D839C8BDA43B346354BE088DDE8" : 0,
+    "43DDD4A1012A81E5C2F5DA96FCA0DABF5263B8FC" : 0,
+    "B26B9CAFBF9E1C2E2CA45220D163A2372E2095E0" : 0,
+    "F288EB3F860EB37FE32803469C923EC7E08714D7" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "16143F64-14C0-4BB9-AF05-5475F3AC108A",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "BFE38AA7F3B3EE5D839CDF960E9B1411A92C41B2" : "libomax\/",
+    "73CD3912FF7E5D839C8BDA43B346354BE088DDE8" : "libo\/",
+    "43DDD4A1012A81E5C2F5DA96FCA0DABF5263B8FC" : "max6-sdk\/",
+    "B26B9CAFBF9E1C2E2CA45220D163A2372E2095E0" : "",
+    "F288EB3F860EB37FE32803469C923EC7E08714D7" : "CNMAT-odot\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "odot",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "src\/odot.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/Cycling74\/max6-sdk.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "43DDD4A1012A81E5C2F5DA96FCA0DABF5263B8FC"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/CNMAT\/libo.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "73CD3912FF7E5D839C8BDA43B346354BE088DDE8"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/CNMAT\/CNMAT.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "B26B9CAFBF9E1C2E2CA45220D163A2372E2095E0"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/CNMAT\/libomax.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "BFE38AA7F3B3EE5D839CDF960E9B1411A92C41B2"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/CNMAT\/CNMAT-odot.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "F288EB3F860EB37FE32803469C923EC7E08714D7"
+    }
+  ]
+}

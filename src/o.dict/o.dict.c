@@ -95,10 +95,15 @@ void *odict_new(t_symbol *msg, short argc, t_atom *argv)
 	if((x = (t_odict *)object_alloc(odict_class))){
 		x->outlet = outlet_new((t_object *)x, NULL);
 		x->dict = dictionary_new();
-		x->name = NULL;
-		if(omax_dict_resolveDictStubs()){
-			omax_dict_dictobj_register(x->dict, &(x->name));
-		}
+		//previously set name to NULL
+		//x->name = NULL;
+		x->name = symbol_unique();
+		dictobj_register(x->dict, &(x->name));
+
+		//previously attempted to resolve dict stubs before registering
+		//if(omax_dict_resolveDictStubs()){
+		//omax_dict_dictobj_register(x->dict, &(x->name));
+		//}
 	}
 		   	
 	return x;

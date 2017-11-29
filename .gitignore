@@ -5,6 +5,7 @@
 *.class
 *.objinfo.txt
 *.tar.gz
+*.tgz
 *.zip
 *.def
 #*#
@@ -22,3 +23,4 @@ build-gcc
 !default.perspectivev3
 !xcshareddata
 odot_current_version.h
+package-info.json
