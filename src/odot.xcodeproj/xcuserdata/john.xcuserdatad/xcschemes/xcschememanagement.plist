@@ -224,6 +224,11 @@
 			<key>orderHint</key>
 			<integer>39</integer>
 		</dict>
+		<key>o.gui.attach.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>92</integer>
+		</dict>
 		<key>o.if.pd.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
