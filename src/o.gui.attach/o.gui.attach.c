@@ -605,9 +605,9 @@ t_max_err o_gui_attach_notify(t_o_gui_attach *x, t_symbol *s, t_symbol *msg, voi
     }
     else
     {
-       // post("%s %s %p %p -- patcher: %p", s->s_name, msg->s_name, sender, data, x->base_patch);
+      // post("%s %s %p %p -- patcher: %p", s->s_name, msg->s_name, sender, data, x->base_patch);
 
-        if( msg == gensym("modified"))
+        if( msg == gensym("modified") ||  msg == gensym("setvalueof"))
         {
             o_gui_attach_getValue(x, (t_object*)sender );
             o_gui_attach_output_bundle(x);
