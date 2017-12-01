@@ -1,6 +1,6 @@
 /*
   Written by John MacCallum, The Center for New Music and Audio Technologies,
-  University of California, Berkeley.  Copyright (c) 2013, The Regents of
+  University of California, Berkeley.  Copyright (c) 2017, The Regents of
   the University of California (Regents). 
   Permission to use, copy, modify, distribute, and distribute modified versions
   of this software and its documentation without fee and without a signed
@@ -21,12 +21,11 @@
 */
 
 
-#define OMAX_DOC_NAME "o.edge~"
-#define OMAX_DOC_SHORT_DESC "Report transitions between 0 and non-zero"
-#define OMAX_DOC_LONG_DESC "o.edge~ is similar to edge~. It reports all zero to non-zero and non-zero to zero transitions that occur in a signal vector."
-#define OMAX_DOC_INLETS_DESC (char *[]){"Signal"}
-#define OMAX_DOC_OUTLETS_DESC (char *[]){"OSC bundle"}
-#define OMAX_DOC_SEEALSO (char *[]){"edge~"}
+#define OMAX_DOC_NAME "o.schedule~"
+#define OMAX_DOC_SHORT_DESC "Insert values into one or more audio channels"
+#define OMAX_DOC_LONG_DESC "o.schedule~ takes an OSC bundle with time tags and values and puts the values in the audio stream at the closest sample."
+#define OMAX_DOC_INLETS_DESC (char *[]){"OSC bundle"}
+#define OMAX_DOC_SEEALSO (char *[]){"sched~"}
 
 #include "odot_version.h"
 #include "ext.h"
@@ -46,216 +45,97 @@
 #include "omax_dict.h"
 #include "omax_realtime.h"
 
-typedef struct _oedge{
+typedef struct _osched{
 	t_pxobject ob;
 	void *outlet;
 	t_critical lock;
-	int ac;
-	t_atom *av;
-	double lastx;
-	int gettime;
-	t_osc_timetag dspstarttime;
 	double blockcount;
-	t_osc_bndl_u *bundle;
-	t_osc_msg_u *time_onset, *block_sample_onset, *global_sample_onset, *value_onset;
-	t_osc_msg_u *time_zero, *block_sample_zero, *global_sample_zero;
-} t_oedge;
+	long samplerate;
+	t_symbol **addresses;
+	double **buffers;
+	int bufptr;
+} t_osched;
 
-void *oedge_class;
+void *osched_class;
 
-t_osc_timetag oedge_computeTime(t_osc_timetag now, t_osc_timetag dspstarttime, double samplerate, double blocksize, double blockcount, double samplenum)
+void osched_fullPacket(t_osched *x, long len, long lptr)
 {
-	//t_osc_timetag now;
-	//omax_realtime_clock_now(&now);
-	//char buf[1024];
- 	//osc_strfmt_timetag(buf, sizeof(buf), now);
-	//printf("%s\n", buf);
-	return osc_timetag_add(now, osc_timetag_floatToTimetag(samplenum / samplerate));
-	t_osc_timetag t = osc_timetag_floatToTimetag(((blockcount * blocksize) + samplenum) / samplerate);
-	return osc_timetag_add(dspstarttime, t);
+	char *ptr = (char *)lptr;
+	t_osc_timetag now;
+	omax_realtime_clock_now(&now);
+	
 }
 
-void oedge_callback(t_oedge *x, t_symbol *msg, int argc, t_atom *argv)
+void osched_perform64(t_osched *x, t_object *dsp64, double **ins, long numins, double **outs, long numouts, long vectorsize, long flags, void *userparam)
 {
-	double lastx = x->lastx;
-	//t_osc_bndl_u *b = osc_bundle_u_alloc();
-	double sr = atom_getfloat(argv);
-	double blockcount = atom_getlong(argv + 1);
-	t_osc_timetag dspstarttime = x->dspstarttime;
-	t_osc_timetag now = (t_osc_timetag){atom_getlong(argv + 2), atom_getlong(argv + 3)};//(((uint64_t)atom_getlong(argv + 2)) << 32) | ((uint64_t)atom_getlong(argv + 3));
-	int shouldoutput = 0;
-
-	for(int i = 0; i < argc - 4; i++){
-		double xx = atom_getfloat(argv + i + 4);
-		if(lastx == 0 && xx != 0){
-			shouldoutput = 1;
-			t_osc_timetag t = oedge_computeTime(now, dspstarttime, sr, argc - 4, blockcount, i);
-			osc_message_u_appendTimetag(x->time_onset, t);
-			osc_message_u_appendUInt32(x->block_sample_onset, (i));
-			osc_message_u_appendDouble(x->global_sample_onset, ((argc - 4) * blockcount) + (i));
-			osc_message_u_appendDouble(x->value_onset, xx);
-			//oedge_addMessageToBundle(b, "/zerotononzero", i, blockcount, argc, t);
-		}else if(lastx != 0 && xx == 0){
-			shouldoutput = 1;
-			t_osc_timetag t = oedge_computeTime(now, dspstarttime, sr, argc - 4, blockcount, (i));
-			osc_message_u_appendTimetag(x->time_zero, t);
-			osc_message_u_appendUInt32(x->block_sample_zero, (i));
-			osc_message_u_appendDouble(x->global_sample_zero, ((argc - 4) * blockcount) + (i));
-			//oedge_addMessageToBundle(b, "/nonzerotozero", i, blockcount, argc, t);
-		}
-		lastx = xx;
-	}
-	x->lastx = lastx;
-	if(shouldoutput){
-		t_osc_bndl_s *bs = osc_bundle_u_serialize(x->bundle);
-		if(bs){
-			omax_util_outletOSC(x->outlet, osc_bundle_s_getLen(bs), osc_bundle_s_getPtr(bs));
-			osc_bundle_s_deepFree(bs);
-		}
-	}
-	osc_message_u_clearArgs(x->time_onset);
-	osc_message_u_clearArgs(x->block_sample_onset);
-	osc_message_u_clearArgs(x->global_sample_onset);
-	osc_message_u_clearArgs(x->value_onset);
-
-	osc_message_u_clearArgs(x->time_zero);
-	osc_message_u_clearArgs(x->block_sample_zero);
-	osc_message_u_clearArgs(x->global_sample_zero);
-}
-
-void oedge_perform64(t_oedge *x, t_object *dsp64, double **ins, long numins, double **outs, long numouts, long vectorsize, long flags, void *userparam)
-{
+	critical_enter(&(x->lock));
 	omax_realtime_clock_tick(x);
+	critical_exit(&(x->lock));
 	t_osc_timetag now;
 	omax_realtime_clock_now(&now);
 
-	atom_setlong(x->av + 1, x->blockcount++);
-	atom_setlong(x->av + 2, osc_timetag_ntp_getSeconds(now));//(((uint64_t)now) & 0xffffffff00000000) >> 32);
-	atom_setlong(x->av + 3, osc_timetag_ntp_getFraction(now));//(((uint64_t)now) & 0xffffffff));
-	atom_setdouble_array(x->ac, x->av + 4, vectorsize, ins[0]);
-	schedule_delay(x, (method)oedge_callback, 0, NULL, vectorsize + 4, x->av);
+	
+	x->blockcount++;
 }
 
-t_int *oedge_perform(t_int *w) 
+void osched_dsp64(t_osched *x, t_object *dsp64, short *count, double samplerate, long maxvectorsize, long flags)
 {
-	t_oedge *x = (t_oedge *)(w[1]);
-	t_float *in = (t_float *)(w[2]);
-	t_int n = (t_float *)(w[3]);
-
-	omax_realtime_clock_tick(x);
-	t_osc_timetag now;
-	omax_realtime_clock_now(&now);
-
-	atom_setlong(x->av + 1, x->blockcount++);
-	atom_setlong(x->av + 2, osc_timetag_ntp_getSeconds(now));//(((uint64_t)now) & 0xffffffff00000000) >> 32);
-	atom_setlong(x->av + 3, osc_timetag_ntp_getFraction(now));//(((uint64_t)now) & 0xffffffff));
-	atom_setdouble_array(x->ac, x->av + 4, n, in);
-	schedule_delay(x, (method)oedge_callback, 0, NULL, n + 4, x->av);
-	return w + 4;
-}
-
-void oedge_alloc_atom_array(t_oedge *x, int n)
-{
-	if(n + 4 != x->ac){
-		x->ac = n + 4;
-		x->av = (t_atom *)sysmem_resizeptr(x->av, (n + 4) * sizeof(t_atom));
-	}
-}
-
-void oedge_dsp64(t_oedge *x, t_object *dsp64, short *count, double samplerate, long maxvectorsize, long flags)
-{
-	x->gettime = 1;
 	omax_realtime_clock_register(x);
 	x->blockcount = 0;
-	oedge_alloc_atom_array(x, maxvectorsize);
-	atom_setlong(x->av, samplerate);
-	object_method(dsp64, gensym("dsp_add64"), x, oedge_perform64, 0, NULL);
+	x->samplerate = samplerate;
+	object_method(dsp64, gensym("dsp_add64"), x, osched_perform64, 0, NULL);
 }
 
-void oedge_dsp(t_oedge *x, t_signal **sp, short *count)
-{
-	x->gettime = 1;
-	omax_realtime_clock_register(x);
-	x->blockcount = 0;
-	oedge_alloc_atom_array(x, sp[0]->s_n);
-	atom_setlong(x->av, sp[0]->s_sr);
-	dsp_add(oedge_perform, 3, x, sp[0]->s_vec, sp[0]->s_n);
-}
+OMAX_DICT_DICTIONARY(t_osched, x, osched_fullPacket);
 
-//OMAX_DICT_DICTIONARY(t_oedge, x, oedge_fullPacket);
-
-void oedge_doc(t_oedge *x)
+void osched_doc(t_osched *x)
 {
 	omax_doc_outletDoc(x->outlet);
 }
 
-void oedge_assist(t_oedge *x, void *b, long io, long num, char *buf)
+void osched_assist(t_osched *x, void *b, long io, long num, char *buf)
 {
 	omax_doc_assist(io, num, buf);
 }
 
-void oedge_free(t_oedge *x)
+void osched_free(t_osched *x)
 {
 	dsp_free((t_pxobject *)x);
 	critical_free(x->lock);
-	if(x->av){
-		sysmem_freeptr(x->av);
-	}
-	osc_bundle_u_free(x->bundle);
 }
 
-void *oedge_new(t_symbol *msg, short argc, t_atom *argv)
+void *osched_new(t_symbol *msg, short argc, t_atom *argv)
 {
-	t_oedge *x = NULL;
-	if((x = (t_oedge *)object_alloc(oedge_class))){
-  		dsp_setup((t_pxobject *)x, 1); 
+	t_osched *x = NULL;
+	if((x = (t_osched *)object_alloc(osched_class))){
+		if(argc % 2 != 0){
+			object_error((t_object *)x, "even number of arguments required");
+		}
+  		dsp_setup((t_pxobject *)x, 0); 
 		x->outlet = outlet_new((t_object *)x, "FullPacket");
-		critical_new(&(x->lock));
-		x->ac = 0;
-		x->av = NULL;
-		x->lastx = 0;
-		x->gettime = 0;
-
-		x->time_onset = osc_message_u_alloc();
-		osc_message_u_setAddress(x->time_onset, "/zerotononzero/time");
-		x->block_sample_onset = osc_message_u_alloc();
-		osc_message_u_setAddress(x->block_sample_onset, "/zerotononzero/sample/withinblock");
-		x->global_sample_onset = osc_message_u_alloc();
-		osc_message_u_setAddress(x->global_sample_onset, "/zerotononzero/sample/sincedspstart");
-		x->value_onset = osc_message_u_alloc();
-		osc_message_u_setAddress(x->value_onset, "/zerotononzero/value");
-
-		x->time_zero = osc_message_u_alloc();
-		osc_message_u_setAddress(x->time_zero, "/nonzerotozero/time");
-		x->block_sample_zero = osc_message_u_alloc();
-		osc_message_u_setAddress(x->block_sample_zero, "/nonzerotozero/sample/withinblock");
-		x->global_sample_zero = osc_message_u_alloc();
-		osc_message_u_setAddress(x->global_sample_zero, "/nonzerotozero/sample/sincedspstart");
-
-		x->bundle = osc_bundle_u_alloc();
-
-		osc_bundle_u_addMsg(x->bundle, x->time_onset);
-		osc_bundle_u_addMsg(x->bundle, x->block_sample_onset);
-		osc_bundle_u_addMsg(x->bundle, x->global_sample_onset);
-		osc_bundle_u_addMsg(x->bundle, x->value_onset);
-		osc_bundle_u_addMsg(x->bundle, x->time_zero);
-		osc_bundle_u_addMsg(x->bundle, x->block_sample_zero);
-		osc_bundle_u_addMsg(x->bundle, x->global_sample_zero);
+		x->addresses = (t_symbol **)malloc(argc * sizeof(t_symbol*));
+		x->buffers = (double **)malloc((argc / 2) * sizeof(double *));
+		for(int i = 0; i < argc / 2; i++){
+			outlet_new((t_object *)x, "signal");
+			x->addresses[i * 2] = atom_getsym(argv + (i * 2));
+			x->addresses[i * 2 + 1] = atom_getsym(argv + (i * 2 + 1));
+			x->buffers[i] = (double *)calloc(44100, sizeof(double));
+		}
+		x->bufptr = 0;
 	}
 	return x;
 }
 
 int main(void)
 {
-	t_class *c = class_new("o.edge~", (method)oedge_new, (method)oedge_free, sizeof(t_oedge), 0L, A_GIMME, 0);
-	//class_addmethod(c, (method)oedge_fullPacket, "FullPacket", A_LONG, A_LONG, 0);
-	//class_addmethod(c, (method)oedge_fullPacket, "FullPacket", A_GIMME, 0);
-	class_addmethod(c, (method)oedge_assist, "assist", A_CANT, 0);
-	class_addmethod(c, (method)oedge_doc, "doc", 0);
-    	class_addmethod(c, (method)oedge_dsp, "dsp", A_CANT, 0);
-    	class_addmethod(c, (method)oedge_dsp64, "dsp64", A_CANT, 0);
-	//class_addmethod(c, (method)oedge_bang, "bang", 0);
-	//class_addmethod(c, (method)oedge_anything, "anything", A_GIMME, 0);
+	t_class *c = class_new("o.schedule~", (method)osched_new, (method)osched_free, sizeof(t_osched), 0L, A_GIMME, 0);
+	class_addmethod(c, (method)osched_fullPacket, "FullPacket", A_LONG, A_LONG, 0);
+	//class_addmethod(c, (method)osched_fullPacket, "FullPacket", A_GIMME, 0);
+	class_addmethod(c, (method)osched_assist, "assist", A_CANT, 0);
+	class_addmethod(c, (method)osched_doc, "doc", 0);
+    	class_addmethod(c, (method)osched_dsp64, "dsp64", A_CANT, 0);
+	//class_addmethod(c, (method)osched_bang, "bang", 0);
+	//class_addmethod(c, (method)osched_anything, "anything", A_GIMME, 0);
 	// remove this if statement when we stop supporting Max 5
 	//if(omax_dict_resolveDictStubs()){
 	//class_addmethod(c, (method)omax_dict_dictionary, "dictionary", A_GIMME, 0);
@@ -265,7 +145,7 @@ int main(void)
     	class_dspinit(c);
 
 	class_register(CLASS_BOX, c);
-	oedge_class = c;
+	osched_class = c;
 
 	common_symbols_init();
 
@@ -274,13 +154,3 @@ int main(void)
 	omax_realtime_clock_init();
 	return 0;
 }
-/*
-t_max_err oedge_notify(t_oedge *x, t_symbol *s, t_symbol *msg, void *sender, void *data){
-	t_symbol *attrname;
-
-        if(msg == gensym("attr_modified")){
-		attrname = (t_symbol *)object_method((t_object *)data, gensym("getname"));
-	}
-	return MAX_ERR_NONE;
-}
-*/
