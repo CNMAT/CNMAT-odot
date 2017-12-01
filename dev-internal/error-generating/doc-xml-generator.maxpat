@@ -9,7 +9,7 @@
 			"modernui" : 1
 		}
 ,
-		"rect" : [ 38.0, 79.0, 909.0, 787.0 ],
+		"rect" : [ 57.0, 79.0, 1072.0, 787.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -37,6 +37,178 @@
 		"style" : "",
 		"subpatcher_template" : "Default Max 7",
 		"boxes" : [ 			{
+				"box" : 				{
+					"id" : "obj-29",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "FullPacket" ],
+					"patcher" : 					{
+						"fileversion" : 1,
+						"appversion" : 						{
+							"major" : 7,
+							"minor" : 3,
+							"revision" : 4,
+							"architecture" : "x64",
+							"modernui" : 1
+						}
+,
+						"rect" : [ 63.0, 104.0, 840.0, 762.0 ],
+						"bglocked" : 0,
+						"openinpresentation" : 0,
+						"default_fontsize" : 12.0,
+						"default_fontface" : 0,
+						"default_fontname" : "Arial",
+						"gridonopen" : 1,
+						"gridsize" : [ 15.0, 15.0 ],
+						"gridsnaponopen" : 1,
+						"objectsnaponopen" : 1,
+						"statusbarvisible" : 2,
+						"toolbarvisible" : 1,
+						"lefttoolbarpinned" : 0,
+						"toptoolbarpinned" : 0,
+						"righttoolbarpinned" : 0,
+						"bottomtoolbarpinned" : 0,
+						"toolbars_unpinned_last_save" : 0,
+						"tallnewobj" : 0,
+						"boxanimatetime" : 200,
+						"enablehscroll" : 1,
+						"enablevscroll" : 1,
+						"devicewidth" : 0.0,
+						"description" : "",
+						"digest" : "",
+						"tags" : "",
+						"style" : "",
+						"subpatcher_template" : "Default Max 7",
+						"boxes" : [ 							{
+								"box" : 								{
+									"fontface" : 0,
+									"fontsize" : 12.0,
+									"id" : "obj-36",
+									"linecount" : 36,
+									"maxclass" : "o.expr.codebox",
+									"numinlets" : 1,
+									"numoutlets" : 2,
+									"outlettype" : [ "FullPacket", "FullPacket" ],
+									"patching_rect" : [ 50.0, 100.0, 907.0, 508.0 ],
+									"text" : " if( /name == \"&\", /name = \"&amp;\"),\n  if( /name == \"&&\", /name = \"&amp;&amp;\"),\n  if( /name == \"<\", /name = \"&lt;\"),\n  if( /name == \">\", /name = \"&gt;\"),\n  if( /name == \"<=\", /name = \"&lt;=\"),\n  if( /name == \">=\", /name = \"&gt;=\"),\n\n/docstring = join(\"&lt;\", split(\"<\", /docstring)),\n/docstring = join(\"&gt;\", split(\">\", /docstring)),\n\n/desc = \"<m>\"+/name+\"</m><tab></tab>\" + /docstring + \"<br />\",\n\n# example function\n/signature = join(\"&amp;\", split(\"&\", /signature)),\n/signature = join(\"&amp;&amp;\", split(\"&&\", /signature)),\n/signature = join(\"&lt;\", split(\"<\", /signature)),\n/signature = join(\"&gt;\", split(\">\", /signature)),\n\n# need to deal with function names that get tokenized unintentionally\n\nif( /num_required_args > 0,\n  progn(\n    /arglist = aseq(1, /num_required_args),\n    /delimiters = \"$\",\n    map( lambda(a, /delimiters += a), /arglist), \n    /tok = split(/delimiters, /signature),\n    /arglist = \"/arg\" + /arglist,\n    if( length(/arglist) < length(/tok), /arglist = [/arglist, \"\"] ),\n    /ex = \"<tab></tab><tab></tab><codeexample>\" + join( \"\", interleave(/tok, /arglist) ) + \"</codeexample><br /><br />\"\n  ),\n  /ex = \"<tab></tab><tab></tab><codeexample>\" + /signature + \"</codeexample><br /><br />\"\n),\n\n\n\n/desc += /ex"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"comment" : "",
+									"id" : "obj-27",
+									"index" : 1,
+									"maxclass" : "inlet",
+									"numinlets" : 0,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 50.0, 40.0, 30.0, 30.0 ],
+									"style" : ""
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"comment" : "",
+									"id" : "obj-28",
+									"index" : 1,
+									"maxclass" : "outlet",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 50.0, 670.0, 30.0, 30.0 ],
+									"style" : ""
+								}
+
+							}
+ ],
+						"lines" : [ 							{
+								"patchline" : 								{
+									"destination" : [ "obj-36", 0 ],
+									"source" : [ "obj-27", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-28", 0 ],
+									"source" : [ "obj-36", 0 ]
+								}
+
+							}
+ ]
+					}
+,
+					"patching_rect" : [ 371.5, 206.0, 55.0, 22.0 ],
+					"saved_object_attributes" : 					{
+						"description" : "",
+						"digest" : "",
+						"globalpatchername" : "",
+						"style" : "",
+						"tags" : ""
+					}
+,
+					"style" : "",
+					"text" : "p format"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-22",
+					"linecount" : 2,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 53.0, 620.0, 150.0, 33.0 ],
+					"style" : "",
+					"text" : "<misc name=\\\"Functions\\\">,"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontface" : 0,
+					"fontsize" : 12.0,
+					"id" : "obj-16",
+					"linecount" : 16,
+					"maxclass" : "o.expr.codebox",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "FullPacket", "FullPacket" ],
+					"patching_rect" : [ 988.0, 652.0, 423.0, 236.0 ],
+					"text" : "/~/safe = quote( lambda(str,\n  join(\"\", map( \n    lambda(c, \n      if(c == '&', \"&amp;\",\n        if(c == '<', \"&lt;\",\n          if(c == '>', \"&gt;\", string(c) )\n        )\n      )\n     ), split(\"\", str)\n  ))\n)),\n\n/name = /~/safe( /name ),\n/docstring = /~/safe( /docstring ),\n\n/desc = \"<m>\"+/name+\"</m> : \" + /docstring + \"<br /> \""
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-9",
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 57.5, 662.0, 53.0, 22.0 ],
+					"style" : "",
+					"text" : "</misc>"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-1",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "bang", "" ],
+					"patching_rect" : [ 53.0, 36.0, 30.0, 22.0 ],
+					"style" : "",
+					"text" : "t b l"
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"id" : "obj-15",
 					"maxclass" : "newobj",
@@ -342,7 +514,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 224.0, 52.0, 196.0, 22.0 ],
-					"presentation_rect" : [ 209.5, 53.0, 0.0, 0.0 ],
 					"style" : "",
 					"text" : "doc-cat /math/operator/assignment"
 				}
@@ -355,7 +526,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 198.0, 668.0, 24.0, 24.0 ],
+					"patching_rect" : [ 571.0, 636.0, 24.0, 24.0 ],
 					"style" : ""
 				}
 
@@ -377,53 +548,14 @@
 			}
 , 			{
 				"box" : 				{
-					"id" : "obj-52",
-					"maxclass" : "message",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 446.666656, 603.0, 87.0, 22.0 ],
-					"style" : "",
-					"text" : "tab, tab, $1, cr"
-				}
-
-			}
-, 			{
-				"box" : 				{
 					"id" : "obj-51",
 					"maxclass" : "message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 357.0, 610.0, 64.0, 22.0 ],
+					"patching_rect" : [ 389.5, 478.0, 64.0, 22.0 ],
 					"style" : "",
 					"text" : "tab, $1, cr"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-46",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 431.0, 492.0, 63.0, 22.0 ],
-					"style" : "",
-					"text" : "o.explode"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-45",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 4,
-					"outlettype" : [ "", "", "", "FullPacket" ],
-					"patching_rect" : [ 394.0, 561.0, 177.0, 22.0 ],
-					"style" : "",
-					"text" : "o.route /end /description/* /start"
 				}
 
 			}
@@ -434,9 +566,9 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "FullPacket" ],
-					"patching_rect" : [ 394.0, 527.0, 81.0, 22.0 ],
+					"patching_rect" : [ 389.5, 451.0, 81.0, 22.0 ],
 					"style" : "",
-					"text" : "o.route /entry"
+					"text" : "o.route /desc"
 				}
 
 			}
@@ -446,7 +578,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 638.0, 561.0, 150.0, 20.0 ],
+					"patching_rect" : [ 757.0, 750.0, 150.0, 20.0 ],
 					"style" : "",
 					"text" : "maybe try using arglist -- "
 				}
@@ -459,39 +591,9 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 667.0, 594.0, 338.0, 47.0 ],
+					"patching_rect" : [ 590.5, 629.0, 338.0, 47.0 ],
 					"style" : "",
 					"text" : "<arglist>\n\t\t\t\t<arg name=\"file path\" type=\"symbol\" optional=\"0\" id=\"0\" />\n\t\t\t</arglist>"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontface" : 0,
-					"fontsize" : 12.0,
-					"id" : "obj-36",
-					"linecount" : 5,
-					"maxclass" : "o.expr.codebox",
-					"numinlets" : 1,
-					"numoutlets" : 2,
-					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 394.0, 383.0, 423.0, 86.0 ],
-					"text" : "/entry/start = quote(<entry name=\") + /name + quote(\">),\n/entry/description/0 = \"<description>\",\n/entry/description/1 = /docstring,\n/entry/description/2 = \"</description>\",\n/entry/end = \"</entry>\""
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontface" : 0,
-					"fontsize" : 12.0,
-					"id" : "obj-35",
-					"linecount" : 10,
-					"maxclass" : "o.display",
-					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 653.0, 199.0, 589.0, 156.0 ],
-					"text" : "/name : \"match\",\n/signature : \"/result = match($1, $2)\",\n/docstring : \"matches the pattern(s) in arg 1 against the string(s) in arg 2.\",\n/num_required_args : 2,\n/num_optional_args : 0,\n/arg/required/name/1 : \"String\",\n/arg/required/types/1 : \"list, string\",\n/arg/required/name/2 : \"String\",\n/arg/required/types/2 : \"list, string\",\n/categories : \"/core\""
 				}
 
 			}
@@ -503,7 +605,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 465.166656, 696.0, 291.0, 35.0 ],
+					"patching_rect" : [ 418.5, 529.0, 297.0, 35.0 ],
 					"style" : "",
 					"text" : "clear, \"<?xml version=\\\"1.0\\\" encoding=\\\"UTF-8\\\"?>\", cr"
 				}
@@ -542,7 +644,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 3,
 					"outlettype" : [ "", "bang", "int" ],
-					"patching_rect" : [ 357.0, 740.0, 40.0, 22.0 ],
+					"patching_rect" : [ 222.0, 733.0, 40.0, 22.0 ],
 					"style" : "",
 					"text" : "text"
 				}
@@ -604,7 +706,7 @@
 							"modernui" : 1
 						}
 ,
-						"rect" : [ 316.0, 81.0, 871.0, 422.0 ],
+						"rect" : [ 535.0, 211.0, 871.0, 422.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -641,8 +743,8 @@
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "FullPacket", "FullPacket" ],
-									"patching_rect" : [ 50.0, 101.0, 756.0, 222.0 ],
-									"text" : "/addrs = getaddresses(),\n/count = 0,\n/prev_a = \"\",\nmap(\n  lambda([a],\n    if( /count > 0,\n      assign(\"/out/\"+ /count + \"/endcat\", \"</misc>\" )\n    ),\n    assign(\"/out/\"+ /count + \"/lookup\", [\"doc-cat\", a] ),\n    /strname = join(\" \", split(\"/\", a)),\n    assign(\"/out/\"+ /count + \"/startcat\", quote(<misc name =\"Functions: )+/strname+quote(\">) ),\n    /count++\n  ), /addrs\n),\nassign(\"/out/\"+ /count + \"/endcat\", \"</misc>\" )"
+									"patching_rect" : [ 50.0, 101.0, 806.0, 222.0 ],
+									"text" : "/addrs = getaddresses(),\n/count = 0,\n/prev_a = \"\",\nmap(\n  lambda([a],\n    if( /count > 0,\n      assign(\"/out/\"+ /count + \"/endcat\", \"</description></entry>\" )\n    ),\n    assign(\"/out/\"+ /count + \"/lookup\", [\"doc-cat\", a] ),\n    /strname = join(\" \", split(\"/\", a)),\n    assign(\"/out/\"+ /count + \"/startcat\", quote(<entry name =\")+/strname+quote(\"><description>) ),\n    /count++\n  ), /addrs\n),\nassign(\"/out/\"+ /count + \"/endcat\", \"</description></entry>\" )"
 								}
 
 							}
@@ -803,7 +905,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "FullPacket" ],
-					"patching_rect" : [ 127.0, 159.0, 400.0, 22.0 ],
+					"patching_rect" : [ 127.0, 159.0, 508.0, 22.0 ],
 					"style" : "",
 					"text" : "o.route /doc/category /doc/function"
 				}
@@ -818,7 +920,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 127.0, 41.0, 50.0, 22.0 ],
+					"patching_rect" : [ 53.0, 2.0, 50.0, 22.0 ],
 					"style" : "",
 					"text" : "doc-cat"
 				}
@@ -840,6 +942,13 @@
 			}
  ],
 		"lines" : [ 			{
+				"patchline" : 				{
+					"destination" : [ "obj-6", 0 ],
+					"source" : [ "obj-1", 1 ]
+				}
+
+			}
+, 			{
 				"patchline" : 				{
 					"destination" : [ "obj-6", 0 ],
 					"midpoints" : [ 136.5, 494.0, 90.5, 494.0, 90.5, 77.0, 136.5, 77.0 ],
@@ -891,16 +1000,7 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-35", 0 ],
-					"order" : 0,
-					"source" : [ "obj-19", 1 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-36", 0 ],
-					"order" : 1,
+					"destination" : [ "obj-29", 0 ],
 					"source" : [ "obj-19", 1 ]
 				}
 
@@ -942,6 +1042,13 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-44", 0 ],
+					"source" : [ "obj-29", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-10", 0 ],
 					"source" : [ "obj-3", 0 ]
 				}
@@ -977,13 +1084,6 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-44", 0 ],
-					"source" : [ "obj-36", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
 					"destination" : [ "obj-6", 0 ],
 					"source" : [ "obj-4", 0 ]
 				}
@@ -991,35 +1091,14 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-45", 0 ],
+					"destination" : [ "obj-51", 0 ],
 					"source" : [ "obj-44", 0 ]
 				}
 
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-51", 0 ],
-					"source" : [ "obj-45", 2 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-51", 0 ],
-					"source" : [ "obj-45", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-52", 0 ],
-					"source" : [ "obj-45", 1 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-6", 0 ],
+					"destination" : [ "obj-1", 0 ],
 					"source" : [ "obj-5", 0 ]
 				}
 
@@ -1028,13 +1107,6 @@
 				"patchline" : 				{
 					"destination" : [ "obj-24", 0 ],
 					"source" : [ "obj-51", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-24", 0 ],
-					"source" : [ "obj-52", 0 ]
 				}
 
 			}
@@ -1059,6 +1131,13 @@
 				}
 
 			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-24", 0 ],
+					"source" : [ "obj-9", 0 ]
+				}
+
+			}
  ],
 		"dependency_cache" : [ 			{
 				"name" : "o.expr.codebox.mxo",
@@ -1074,10 +1153,6 @@
 			}
 , 			{
 				"name" : "o.explode.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.display.mxo",
 				"type" : "iLaX"
 			}
 , 			{
