@@ -1,0 +1,1075 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<misc name ="Functions: math operator arithmetic">
+	<entry name="+">
+		<description>
+		Add
+		</description>
+	</entry>
+	<entry name="-">
+		<description>
+		Subtract
+		</description>
+	</entry>
+	<entry name="*">
+		<description>
+		Multiply
+		</description>
+	</entry>
+	<entry name="/">
+		<description>
+		Divide
+		</description>
+	</entry>
+	<entry name="%">
+		<description>
+		Modulo
+		</description>
+	</entry>
+	<entry name="++">
+		<description>
+		Increment
+		</description>
+	</entry>
+	<entry name="--">
+		<description>
+		Decrement
+		</description>
+	</entry>
+	<entry name="+=">
+		<description>
+		Add and assign
+		</description>
+	</entry>
+	<entry name="-=">
+		<description>
+		Subtract and assign
+		</description>
+	</entry>
+	<entry name="*=">
+		<description>
+		Multiply and assign
+		</description>
+	</entry>
+	<entry name="/=">
+		<description>
+		Divide and assign
+		</description>
+	</entry>
+	<entry name="%=">
+		<description>
+		Modulo and assign
+		</description>
+	</entry>
+</misc>
+<misc name ="Functions: math operator relational">
+	<entry name="<">
+		<description>
+		Less than
+		</description>
+	</entry>
+	<entry name="<=">
+		<description>
+		Less than or equal to
+		</description>
+	</entry>
+	<entry name=">">
+		<description>
+		Greater than
+		</description>
+	</entry>
+	<entry name=">=">
+		<description>
+		Greater than or equal to
+		</description>
+	</entry>
+	<entry name="==">
+		<description>
+		Equal
+		</description>
+	</entry>
+	<entry name="!=">
+		<description>
+		Not equal
+		</description>
+	</entry>
+	<entry name="??">
+		<description>
+		Null coalescing operator, returns the left operand if it exists, otherwise it returns the right.
+		</description>
+	</entry>
+</misc>
+<misc name ="Functions: math operator logical">
+	<entry name="&">
+		<description>
+		Logical and
+		</description>
+	</entry>
+	<entry name="|">
+		<description>
+		Logical or
+		</description>
+	</entry>
+	<entry name="&&">
+		<description>
+		Logical short-circuit and
+		</description>
+	</entry>
+	<entry name="||">
+		<description>
+		Logical short-circuit or
+		</description>
+	</entry>
+	<entry name="!">
+		<description>
+		Logical not
+		</description>
+	</entry>
+</misc>
+<misc name ="Functions: math operator assignment">
+	<entry name="=">
+		<description>
+		Assignment
+		</description>
+	</entry>
+	<entry name="++">
+		<description>
+		Increment
+		</description>
+	</entry>
+	<entry name="--">
+		<description>
+		Decrement
+		</description>
+	</entry>
+	<entry name="+=">
+		<description>
+		Add and assign
+		</description>
+	</entry>
+	<entry name="-=">
+		<description>
+		Subtract and assign
+		</description>
+	</entry>
+	<entry name="*=">
+		<description>
+		Multiply and assign
+		</description>
+	</entry>
+	<entry name="/=">
+		<description>
+		Divide and assign
+		</description>
+	</entry>
+	<entry name="%=">
+		<description>
+		Modulo and assign
+		</description>
+	</entry>
+</misc>
+<misc name ="Functions: math arithmetic">
+	<entry name="add">
+		<description>
+		Add
+		</description>
+	</entry>
+	<entry name="sub">
+		<description>
+		Subtract
+		</description>
+	</entry>
+	<entry name="mul">
+		<description>
+		Multiply
+		</description>
+	</entry>
+	<entry name="div">
+		<description>
+		Add
+		</description>
+	</entry>
+	<entry name="lt">
+		<description>
+		Less than
+		</description>
+	</entry>
+	<entry name="le">
+		<description>
+		Less than or equal
+		</description>
+	</entry>
+	<entry name="gt">
+		<description>
+		Greater than
+		</description>
+	</entry>
+	<entry name="ge">
+		<description>
+		Greater than or equal
+		</description>
+	</entry>
+	<entry name="eq">
+		<description>
+		Equality
+		</description>
+	</entry>
+	<entry name="ne">
+		<description>
+		Not equal
+		</description>
+	</entry>
+	<entry name="and">
+		<description>
+		Logical and
+		</description>
+	</entry>
+	<entry name="or">
+		<description>
+		Logical or
+		</description>
+	</entry>
+	<entry name="andalso">
+		<description>
+		Logical short-circuit and
+		</description>
+	</entry>
+	<entry name="orelse">
+		<description>
+		Logical short-circuit or
+		</description>
+	</entry>
+	<entry name="mod">
+		<description>
+		Modulo
+		</description>
+	</entry>
+	<entry name="plus1">
+		<description>
+		Add one and return the result without altering the argument
+		</description>
+	</entry>
+	<entry name="minus1">
+		<description>
+		Subtract one and return the result without altering the argument.
+		</description>
+	</entry>
+	<entry name="abs">
+		<description>
+		Absolute value
+		</description>
+	</entry>
+	<entry name="ceil">
+		<description>
+		Ceiling--round up to the nearest integer
+		</description>
+	</entry>
+	<entry name="floor">
+		<description>
+		Round down to the nearest integer
+		</description>
+	</entry>
+	<entry name="fmod">
+		<description>
+		Floating-point remainder
+		</description>
+	</entry>
+	<entry name="remainder">
+		<description>
+		Remainder function (r = x - ny where y is non-zero and n is the integral value nearest x/y)
+		</description>
+	</entry>
+	<entry name="round">
+		<description>
+		Round to nearest integral value
+		</description>
+	</entry>
+	<entry name="mod">
+		<description>
+		Modulo
+		</description>
+	</entry>
+	<entry name="product">
+		<description>
+		Product of all the elements of a list
+		</description>
+	</entry>
+	<entry name="sum">
+		<description>
+		Sum all the elements of a list
+		</description>
+	</entry>
+	<entry name="cumsum">
+		<description>
+		Cumulative sum
+		</description>
+	</entry>
+	<entry name="dot">
+		<description>
+		Dot product of arg1 and arg2
+		</description>
+	</entry>
+	<entry name="cross">
+		<description>
+		Cross product of arg1 and arg2
+		</description>
+	</entry>
+	<entry name="det">
+		<description>
+		Determinant of a square matrix represented as a list of rows (det(row1, row2, ..., rowN))
+		</description>
+	</entry>
+	<entry name="sign">
+		<description>
+		Sign function--returns -1 if <arg1> < 0, 0 if <arg1> == 0, and 1 if <arg1> > 1
+		</description>
+	</entry>
+</misc>
+<misc name ="Functions: math trigonometric">
+	<entry name="acos">
+		<description>
+		Arc cosine
+		</description>
+	</entry>
+	<entry name="asin">
+		<description>
+		Arc sine
+		</description>
+	</entry>
+	<entry name="atan">
+		<description>
+		Arc tangent
+		</description>
+	</entry>
+	<entry name="atan2">
+		<description>
+		Arc tangent of y/x (arg1/arg2)
+		</description>
+	</entry>
+	<entry name="cos">
+		<description>
+		Cosine
+		</description>
+	</entry>
+	<entry name="cosh">
+		<description>
+		Hyperbolic cosine
+		</description>
+	</entry>
+	<entry name="sin">
+		<description>
+		Sine
+		</description>
+	</entry>
+	<entry name="sinh">
+		<description>
+		Hyperbolic sine
+		</description>
+	</entry>
+	<entry name="tan">
+		<description>
+		Tangent
+		</description>
+	</entry>
+	<entry name="tanh">
+		<description>
+		Hyperbolic tangent
+		</description>
+	</entry>
+	<entry name="acosh">
+		<description>
+		Inverse hyperbolic cosine
+		</description>
+	</entry>
+	<entry name="asinh">
+		<description>
+		Inverse hyperbolic sine
+		</description>
+	</entry>
+	<entry name="atanh">
+		<description>
+		Inverse hyperbolic tangent
+		</description>
+	</entry>
+</misc>
+<misc name ="Functions: math power">
+	<entry name="exp">
+		<description>
+		Exponential function
+		</description>
+	</entry>
+	<entry name="log">
+		<description>
+		Natural logarithm
+		</description>
+	</entry>
+	<entry name="log10">
+		<description>
+		Base 10 logarithm
+		</description>
+	</entry>
+	<entry name="pow">
+		<description>
+		Power
+		</description>
+	</entry>
+	<entry name="sqrt">
+		<description>
+		Square root
+		</description>
+	</entry>
+	<entry name="cbrt">
+		<description>
+		Cube root
+		</description>
+	</entry>
+	<entry name="expm1">
+		<description>
+		Exponential function (e^x - 1)
+		</description>
+	</entry>
+	<entry name="ilogb">
+		<description>
+		Unbiased exponent
+		</description>
+	</entry>
+	<entry name="logb">
+		<description>
+		Radix-independent exponent
+		</description>
+	</entry>
+</misc>
+<misc name ="Functions: math conversion">
+	<entry name="clip">
+		<description>
+		Clip the data between arg2 and arg3
+		</description>
+	</entry>
+	<entry name="scale">
+		<description>
+		Scale arg1 from arg1:arg2 to arg3:arg4
+		</description>
+	</entry>
+	<entry name="mtof">
+		<description>
+		MIDI note number to frequency.  Optional arg2 sets base.
+		</description>
+	</entry>
+	<entry name="ftom">
+		<description>
+		Frequency to MIDI. Optional arg2 sets base.
+		</description>
+	</entry>
+</misc>
+<misc name ="Functions: math specialfunction">
+	<entry name="erf">
+		<description>
+		Error function (see http://pubs.opengroup.org/onlinepubs/007908799/xsh/erf.html)
+		</description>
+	</entry>
+	<entry name="erfc">
+		<description>
+		Complementary error function (see http://pubs.opengroup.org/onlinepubs/007908799/xsh/erf.html)
+		</description>
+	</entry>
+	<entry name="gamma">
+		<description>
+		Log gamma function (same as "lgamma")
+		</description>
+	</entry>
+	<entry name="hypot">
+		<description>
+		Euclidean distance
+		</description>
+	</entry>
+	<entry name="j0">
+		<description>
+		0th Bessel function of the first kind
+		</description>
+	</entry>
+	<entry name="j1">
+		<description>
+		1st Bessel function of the first kind
+		</description>
+	</entry>
+	<entry name="jn">
+		<description>
+		nth Bessel function of the first kind
+		</description>
+	</entry>
+	<entry name="lgamma">
+		<description>
+		Log gamma function (same as "gamma")
+		</description>
+	</entry>
+	<entry name="y0">
+		<description>
+		0th Bessel function of the second kind
+		</description>
+	</entry>
+	<entry name="y1">
+		<description>
+		1st Bessel function of the second kind
+		</description>
+	</entry>
+	<entry name="yn">
+		<description>
+		nth Bessel function of the second kind
+		</description>
+	</entry>
+	<entry name="identity">
+		<description>
+		Returns its argument
+		</description>
+	</entry>
+</misc>
+<misc name ="Functions: math constant">
+	<entry name="nextafter">
+		<description>
+		Next representable double-precision floating-point number
+		</description>
+	</entry>
+	<entry name="pi">
+		<description>
+		pi: 3.14159...
+		</description>
+	</entry>
+	<entry name="twopi">
+		<description>
+		2 * pi: 6.28318...
+		</description>
+	</entry>
+	<entry name="halfpi">
+		<description>
+		pi / 2: 1.57079...
+		</description>
+	</entry>
+	<entry name="quarterpi">
+		<description>
+		pi / 4: 0.78539...
+		</description>
+	</entry>
+	<entry name="oneoverpi">
+		<description>
+		1 / pi: 0.31830...
+		</description>
+	</entry>
+	<entry name="twooverpi">
+		<description>
+		2 / pi: 0.63661...
+		</description>
+	</entry>
+	<entry name="degtorad">
+		<description>
+		Multiply by angle to get radians (0.017453...)
+		</description>
+	</entry>
+	<entry name="radtodeg">
+		<description>
+		Multiply by angle in radians to get degrees (57.29578...)
+		</description>
+	</entry>
+	<entry name="e">
+		<description>
+		e: 2.718282...
+		</description>
+	</entry>
+	<entry name="lntwo">
+		<description>
+		ln 2: 0.69314...
+		</description>
+	</entry>
+	<entry name="lnten">
+		<description>
+		ln 10: 2.30258...
+		</description>
+	</entry>
+	<entry name="logtwoe">
+		<description>
+		log(2 * e): 1.44269...
+		</description>
+	</entry>
+	<entry name="logtene">
+		<description>
+		log(10 * e): 0.43420...
+		</description>
+	</entry>
+	<entry name="sqrttwo">
+		<description>
+		sqrt(2): 1.41421...
+		</description>
+	</entry>
+	<entry name="sqrthalf">
+		<description>
+		sqrt(0.5): 0.70710...
+		</description>
+	</entry>
+</misc>
+<misc name ="Functions: vector">
+	<entry name="nth">
+		<description>
+		Get an element of a list (same as [[ ]])
+		</description>
+	</entry>
+	<entry name="assign_to_index">
+		<description>
+		Assign <arg3> to the indexes <arg2> of the address <arg1>
+		</description>
+	</entry>
+	<entry name="reverse">
+		<description>
+		Reverse the order of the elements of a list
+		</description>
+	</entry>
+	<entry name="rev">
+		<description>
+		Reverse the order of the elements of a list
+		</description>
+	</entry>
+	<entry name="sort">
+		<description>
+		Sort the elements of a list
+		</description>
+	</entry>
+	<entry name="sortidx">
+		<description>
+		Sort the elements of a list and return the indexes corresponding to the original list
+		</description>
+	</entry>
+	<entry name="list">
+		<description>
+		Assemble the arguments into a list.
+		</description>
+	</entry>
+	<entry name="nfill">
+		<description>
+		Make a list of <arg1> copies of <arg2>.  <arg2> is optional and defaults to 0
+		</description>
+	</entry>
+	<entry name="aseq">
+		<description>
+		Arithmetic progression from <arg1> to <arg2> in <arg3> steps.  <arg3> is optional and defaults to 1
+		</description>
+	</entry>
+	<entry name="interleave">
+		<description>
+		Interleave two or more lists
+		</description>
+	</entry>
+	<entry name="first">
+		<description>
+		Get the first element of a list.
+		</description>
+	</entry>
+	<entry name="last">
+		<description>
+		Get the last element of a list.
+		</description>
+	</entry>
+	<entry name="rest">
+		<description>
+		Get everything after the first element of a list.
+		</description>
+	</entry>
+	<entry name="butlast">
+		<description>
+		Get everything but the last element of a list.
+		</description>
+	</entry>
+	<entry name="map">
+		<description>
+		Map arguments onto a function and return the result as a list.
+		</description>
+	</entry>
+	<entry name="lreduce">
+		<description>
+		Combine the elements of a list using a left-associative binary operation.
+		</description>
+	</entry>
+	<entry name="rreduce">
+		<description>
+		Combine the elements of a list using a right-associative binary operation.
+		</description>
+	</entry>
+</misc>
+<misc name ="Functions: statistics">
+	<entry name="length">
+		<description>
+		Get the length of a list
+		</description>
+	</entry>
+	<entry name="avg">
+		<description>
+		The average of a list (same as mean)
+		</description>
+	</entry>
+	<entry name="mean">
+		<description>
+		The average of a list (same as avg)
+		</description>
+	</entry>
+	<entry name="median">
+		<description>
+		Median of a list of values
+		</description>
+	</entry>
+	<entry name="l2norm">
+		<description>
+		Norm of the argument
+		</description>
+	</entry>
+	<entry name="min">
+		<description>
+		Minimum value of the arguments
+		</description>
+	</entry>
+	<entry name="max">
+		<description>
+		Maximum value of the arguments
+		</description>
+	</entry>
+	<entry name="range">
+		<description>
+		Range of the arguments
+		</description>
+	</entry>
+	<entry name="extrema">
+		<description>
+		Min and max of the arguments
+		</description>
+	</entry>
+</misc>
+<misc name ="Functions: string function">
+	<entry name="add">
+		<description>
+		Add
+		</description>
+	</entry>
+	<entry name="sub">
+		<description>
+		Subtract
+		</description>
+	</entry>
+	<entry name="lt">
+		<description>
+		Less than
+		</description>
+	</entry>
+	<entry name="le">
+		<description>
+		Less than or equal
+		</description>
+	</entry>
+	<entry name="gt">
+		<description>
+		Greater than
+		</description>
+	</entry>
+	<entry name="ge">
+		<description>
+		Greater than or equal
+		</description>
+	</entry>
+	<entry name="eq">
+		<description>
+		Equality
+		</description>
+	</entry>
+	<entry name="ne">
+		<description>
+		Not equal
+		</description>
+	</entry>
+	<entry name="strcmp">
+		<description>
+		Compare two strings.
+		</description>
+	</entry>
+	<entry name="split">
+		<description>
+		Split a string at a separator.
+		</description>
+	</entry>
+	<entry name="join">
+		<description>
+		Join multiple strings with a separator.
+		</description>
+	</entry>
+</misc>
+<misc name ="Functions: string operator">
+	<entry name="+">
+		<description>
+		Add
+		</description>
+	</entry>
+	<entry name="-">
+		<description>
+		Subtract
+		</description>
+	</entry>
+	<entry name="<">
+		<description>
+		Less than
+		</description>
+	</entry>
+	<entry name="<=">
+		<description>
+		Less than or equal to
+		</description>
+	</entry>
+	<entry name=">">
+		<description>
+		Greater than
+		</description>
+	</entry>
+	<entry name=">=">
+		<description>
+		Greater than or equal to
+		</description>
+	</entry>
+	<entry name="==">
+		<description>
+		Equal
+		</description>
+	</entry>
+	<entry name="!=">
+		<description>
+		Not equal
+		</description>
+	</entry>
+</misc>
+<misc name ="Functions: predicate">
+	<entry name="bound">
+		<description>
+		True if the address exists and has data bound to it, false otherwise.
+		</description>
+	</entry>
+	<entry name="exists">
+		<description>
+		True if the address exists (regardless of whether it has data bound to it.
+		</description>
+	</entry>
+	<entry name="emptybundle">
+		<description>
+		True if the bundle is empty, false otherwise.
+		</description>
+	</entry>
+</misc>
+<misc name ="Functions: conditional">
+	<entry name="if">
+		<description>
+		Conditionally execute <arg2> or optional <arg3> based on the result of <arg1>
+		</description>
+	</entry>
+</misc>
+<misc name ="Functions: core">
+	<entry name=".">
+		<description>
+		Extract a message from a nested bundle.
+		</description>
+	</entry>
+	<entry name="assign">
+		<description>
+		Assignment
+		</description>
+	</entry>
+	<entry name="getaddresses">
+		<description>
+		Returns a list of all addresses in the bundle.
+		</description>
+	</entry>
+	<entry name="delete">
+		<description>
+		Remove the message with the corresponding address from the bundle.
+		</description>
+	</entry>
+	<entry name="getmsgcount">
+		<description>
+		Returns the number of messages in the bundle.
+		</description>
+	</entry>
+	<entry name="eval">
+		<description>
+		Evaluate an expression bound to an OSC address.
+		</description>
+	</entry>
+	<entry name="tokenize">
+		<description>
+		Tokenize an expression
+		</description>
+	</entry>
+	<entry name="prog1">
+		<description>
+		Execute a sequence of expressions and return the first one.
+		</description>
+	</entry>
+	<entry name="prog2">
+		<description>
+		Execute a sequence of expressions and return the second one.
+		</description>
+	</entry>
+	<entry name="progn">
+		<description>
+		Execute a sequence of expressions and return the last one.
+		</description>
+	</entry>
+	<entry name="apply">
+		<description>
+		Apply a function to arguments.
+		</description>
+	</entry>
+	<entry name="quote">
+		<description>
+		Prevent the evaluation of <arg1>.
+		</description>
+	</entry>
+	<entry name="value">
+		<description>
+		Return the value associated with the argument.
+		</description>
+	</entry>
+	<entry name="lambda">
+		<description>
+		Anonymous function
+		</description>
+	</entry>
+	<entry name="gettimetag">
+		<description>
+		Get the timetag from the OSC bundle header.
+		</description>
+	</entry>
+	<entry name="settimetag">
+		<description>
+		Put a timetag in the header of the OSC bundle.
+		</description>
+	</entry>
+	<entry name="getbundlemember">
+		<description>
+		Extract a message from a nested bundle.
+		</description>
+	</entry>
+	<entry name="assigntobundlemember">
+		<description>
+		Assign a value to an address contained in a named nested bundle.
+		</description>
+	</entry>
+	<entry name="imu">
+		<description>
+		Sensor fusion....
+		</description>
+	</entry>
+	<entry name="float32">
+		<description>
+		Cast to float32
+		</description>
+	</entry>
+	<entry name="float64">
+		<description>
+		Cast to float64
+		</description>
+	</entry>
+	<entry name="int8">
+		<description>
+		Cast to int8
+		</description>
+	</entry>
+	<entry name="char">
+		<description>
+		Cast to char (int8)
+		</description>
+	</entry>
+	<entry name="int16">
+		<description>
+		Cast to int16
+		</description>
+	</entry>
+	<entry name="int32">
+		<description>
+		Cast to int32
+		</description>
+	</entry>
+	<entry name="int64">
+		<description>
+		Cast to int64
+		</description>
+	</entry>
+	<entry name="uint8">
+		<description>
+		Cast to uint8
+		</description>
+	</entry>
+	<entry name="uint16">
+		<description>
+		Cast to uint16
+		</description>
+	</entry>
+	<entry name="uint32">
+		<description>
+		Cast to uint32
+		</description>
+	</entry>
+	<entry name="uint64">
+		<description>
+		Cast to uint64
+		</description>
+	</entry>
+	<entry name="bool">
+		<description>
+		Cast to bool
+		</description>
+	</entry>
+	<entry name="string">
+		<description>
+		Cast to string
+		</description>
+	</entry>
+	<entry name="blob">
+		<description>
+		Cast to blob
+		</description>
+	</entry>
+	<entry name="cast">
+		<description>
+		Cast
+		</description>
+	</entry>
+	<entry name="typetags">
+		<description>
+		Get the typetags associated with <arg1> as a list of int8s
+		</description>
+	</entry>
+	<entry name="hton32">
+		<description>
+		convert a 32-bit integer from host to network byte order.
+		</description>
+	</entry>
+	<entry name="ntoh32">
+		<description>
+		convert a 32-bit integer from network to host byte order.
+		</description>
+	</entry>
+	<entry name="hton64">
+		<description>
+		convert a 64-bit integer from host to network byte order.
+		</description>
+	</entry>
+	<entry name="ntoh64">
+		<description>
+		convert a 64-bit integer from network to host byte order.
+		</description>
+	</entry>
+	<entry name="readstring">
+		<description>
+		Converts the contents of a string to an expression.
+		</description>
+	</entry>
+	<entry name="strtotime">
+		<description>
+		Converts the contents of a string to a timetag.
+		</description>
+	</entry>
+	<entry name="match">
+		<description>
+		matches the pattern(s) in arg 1 against the string(s) in arg 2.
+		</description>
+	</entry>
+</misc>
