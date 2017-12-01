@@ -35,7 +35,7 @@
 #define OMAX_DOC_SHORT_DESC "Attaches to GUI objects with OSC varnames"
 #define OMAX_DOC_LONG_DESC "o.gui.attach attaches to GUI objects in it finds in the patch with OSC scripting names (aka varname). Anytime a value changes, the value is updated and sent out in bundle form. Note that o.gui.attach does not search subpatches."
 #define OMAX_DOC_INLETS_DESC (char *[]){"OSC packet to set values (or pass through), bang outputs current state of attached objects"}
-#define OMAX_DOC_OUTLETS_DESC (char *[]){"OSC packet containing state of attached GUI objects"}
+#define OMAX_DOC_OUTLETS_DESC (char *[]){"OSC packet containing state of attached GUI objects", "OSC messages not matching attached GUI objects."}
 #define OMAX_DOC_SEEALSO (char *[]){"cnmat.o.gui.function", "cnmat.o.gui.table", "pattrstorage"}
 
 
@@ -65,6 +65,8 @@ typedef struct _o_gui_attach
 {
     t_object        ob;
     void            *outlet;
+    void            *unmatched_outlet;
+    
     t_patcher       *base_patch;
 
     t_osc_bndl_u    *bndl;
@@ -225,9 +227,15 @@ void o_gui_attach_getValue(t_o_gui_attach *x, t_object *ob)
 void o_gui_attach_output_bundle(t_o_gui_attach *x)
 {
     t_osc_bndl_s *s_bnd = osc_bundle_u_serialize(x->bndl);
+    t_osc_bndl_s *empty = osc_bundle_s_allocEmptyBundle();
+
+    omax_util_outletOSC(x->unmatched_outlet, osc_bundle_s_getLen(empty), osc_bundle_s_getPtr(empty));
     omax_util_outletOSC(x->outlet, osc_bundle_s_getLen(s_bnd), osc_bundle_s_getPtr(s_bnd));
+    
     if( s_bnd )
         osc_bundle_s_deepFree(s_bnd);
+    if( empty )
+        osc_bundle_s_deepFree(empty);
 }
 
 int o_gui_attach_checkNameAndType(t_o_gui_attach *x, t_object *b, t_symbol *name)
@@ -440,16 +448,27 @@ void o_gui_attach_fullPacket(t_o_gui_attach *x, t_symbol *msg, int argc, t_atom 
 
             osc_bndl_it_u_destroy(it);
 
-            t_osc_bndl_u *union_bndl = NULL;
-            osc_bundle_u_union(in_bnd, new_internal_bndl, &union_bndl );
+            
+            long del_len;
+            char *del_ptr = NULL;
+            
+            t_osc_bndl_s *s_internal_bndl = osc_bundle_u_serialize(new_internal_bndl);
+            osc_bundle_s_difference( len, ptr,
+                                    osc_bundle_s_getLen(s_internal_bndl), osc_bundle_s_getPtr(s_internal_bndl),
+                                    &del_len, &del_ptr);
 
-            t_osc_bndl_s *outbndl = osc_bundle_u_serialize(union_bndl);
+            t_osc_bndl_s *del_bndl = NULL;
+            if( del_ptr )
+                del_bndl = osc_bundle_s_alloc(del_len, del_ptr);
+            else
+                del_bndl = osc_bundle_s_allocEmptyBundle();
+                
+            omax_util_outletOSC(x->unmatched_outlet, osc_bundle_s_getLen(del_bndl), osc_bundle_s_getPtr(del_bndl) );
+            omax_util_outletOSC(x->outlet, osc_bundle_s_getLen(s_internal_bndl), osc_bundle_s_getPtr(s_internal_bndl) );
 
-            omax_util_outletOSC(x->outlet, osc_bundle_s_getLen(outbndl), osc_bundle_s_getPtr(outbndl) );
-
-            osc_bundle_s_deepFree(outbndl);
-
-            osc_bundle_u_free(union_bndl);
+            osc_bundle_s_deepFree(s_internal_bndl);
+            osc_bundle_s_deepFree(del_bndl);
+            
             osc_bundle_u_free(bnd_match);
         }
         osc_bundle_u_free(in_bnd);
@@ -605,9 +624,9 @@ t_max_err o_gui_attach_notify(t_o_gui_attach *x, t_symbol *s, t_symbol *msg, voi
     }
     else
     {
-       // post("%s %s %p %p -- patcher: %p", s->s_name, msg->s_name, sender, data, x->base_patch);
+      // post("%s %s %p %p -- patcher: %p", s->s_name, msg->s_name, sender, data, x->base_patch);
 
-        if( msg == gensym("modified"))
+        if( msg == gensym("modified") ||  msg == gensym("setvalueof"))
         {
             o_gui_attach_getValue(x, (t_object*)sender );
             o_gui_attach_output_bundle(x);
@@ -713,7 +732,9 @@ void *o_gui_attach_new(t_symbol *msg, short argc, t_atom *argv)
     x = (t_o_gui_attach *)object_alloc(o_gui_attach_class);
 	if(x)
     {
-		x->outlet = outlet_new((t_object *)x, "FullPacket");
+        x->unmatched_outlet = outlet_new((t_object *)x, "FullPacket");;
+        x->outlet = outlet_new((t_object *)x, "FullPacket");
+
 		critical_new(&(x->lock));
 
         x->qelem_output = qelem_new((t_object *)x, (method)o_gui_attach_do_iter);
