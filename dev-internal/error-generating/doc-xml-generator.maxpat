@@ -9,7 +9,7 @@
 			"modernui" : 1
 		}
 ,
-		"rect" : [ 57.0, 79.0, 1072.0, 787.0 ],
+		"rect" : [ 57.0, 79.0, 965.0, 787.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -38,6 +38,21 @@
 		"subpatcher_template" : "Default Max 7",
 		"boxes" : [ 			{
 				"box" : 				{
+					"fontface" : 0,
+					"fontsize" : 12.0,
+					"id" : "obj-30",
+					"linecount" : 9,
+					"maxclass" : "o.display",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 460.5, 226.0, 387.0, 143.0 ],
+					"text" : "/name : \"eval\",\n/signature : \"/result = eval($1)\",\n/docstring : \"Evaluate an expression bound to an OSC address.\",\n/num_required_args : 1,\n/num_optional_args : 0,\n/arg/required/name/1 : \"OSC address or expression\",\n/arg/required/types/1 : \"string, OSC address\",\n/categories : \"/core\""
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-29",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
@@ -53,7 +68,7 @@
 							"modernui" : 1
 						}
 ,
-						"rect" : [ 63.0, 104.0, 840.0, 762.0 ],
+						"rect" : [ 63.0, 104.0, 993.0, 762.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -140,7 +155,7 @@
  ]
 					}
 ,
-					"patching_rect" : [ 371.5, 206.0, 55.0, 22.0 ],
+					"patching_rect" : [ 365.0, 215.0, 55.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
@@ -553,7 +568,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 389.5, 478.0, 64.0, 22.0 ],
+					"patching_rect" : [ 365.0, 478.0, 64.0, 22.0 ],
 					"style" : "",
 					"text" : "tab, $1, cr"
 				}
@@ -566,7 +581,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "FullPacket" ],
-					"patching_rect" : [ 389.5, 451.0, 81.0, 22.0 ],
+					"patching_rect" : [ 365.0, 451.0, 81.0, 22.0 ],
 					"style" : "",
 					"text" : "o.route /desc"
 				}
@@ -1001,6 +1016,15 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-29", 0 ],
+					"order" : 1,
+					"source" : [ "obj-19", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-30", 0 ],
+					"order" : 0,
 					"source" : [ "obj-19", 1 ]
 				}
 
@@ -1169,6 +1193,10 @@
 			}
 , 			{
 				"name" : "o.select.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.display.mxo",
 				"type" : "iLaX"
 			}
  ],
