@@ -34,8 +34,8 @@
 #define OMAX_DOC_NAME "o.gui.attach"
 #define OMAX_DOC_SHORT_DESC "Attaches to GUI objects with OSC varnames"
 #define OMAX_DOC_LONG_DESC "o.gui.attach attaches to GUI objects in it finds in the patch with OSC scripting names (aka varname). Anytime a value changes, the value is updated and sent out in bundle form. Note that o.gui.attach does not search subpatches."
-#define OMAX_DOC_INLETS_DESC (char *[]){"OSC packet to set values (or pass through), bang outputs current state of attached objects"}
-#define OMAX_DOC_OUTLETS_DESC (char *[]){"OSC packet containing state of attached GUI objects", "OSC messages not matching attached GUI objects."}
+#define OMAX_DOC_INLETS_DESC (char *[]){"OSC packet to set values, bang or empty bundle causes output of current state of attached objects"}
+#define OMAX_DOC_OUTLETS_DESC (char *[]){"OSC packet containing state of attached GUI objects", "OSC error message outlet.", "OSC messages not matching attached GUI objects."}
 #define OMAX_DOC_SEEALSO (char *[]){"cnmat.o.gui.function", "cnmat.o.gui.table", "pattrstorage"}
 
 
