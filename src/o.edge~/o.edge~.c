@@ -70,7 +70,7 @@ t_osc_timetag oedge_computeTime(t_osc_timetag now, t_osc_timetag dspstarttime, d
 	//char buf[1024];
  	//osc_strfmt_timetag(buf, sizeof(buf), now);
 	//printf("%s\n", buf);
-	return osc_timetag_add(now, osc_timetag_floatToTimetag(samplenum / samplerate));
+	return osc_timetag_add(now, osc_timetag_floatToTimetag(samplenum / blocksize));
 	t_osc_timetag t = osc_timetag_floatToTimetag(((blockcount * blocksize) + samplenum) / samplerate);
 	return osc_timetag_add(dspstarttime, t);
 }
@@ -129,6 +129,9 @@ void oedge_perform64(t_oedge *x, t_object *dsp64, double **ins, long numins, dou
 	t_osc_timetag now;
 	omax_realtime_clock_now(&now);
 
+	//double nowf = osc_timetag_timetagToFloat(now);
+	//printf("%s: %.50f\n", __func__, nowf);
+
 	atom_setlong(x->av + 1, x->blockcount++);
 	atom_setlong(x->av + 2, osc_timetag_ntp_getSeconds(now));//(((uint64_t)now) & 0xffffffff00000000) >> 32);
 	atom_setlong(x->av + 3, osc_timetag_ntp_getFraction(now));//(((uint64_t)now) & 0xffffffff));
@@ -145,6 +148,9 @@ t_int *oedge_perform(t_int *w)
 	omax_realtime_clock_tick(x);
 	t_osc_timetag now;
 	omax_realtime_clock_now(&now);
+
+	//double nowf = osc_timetag_timetagToFloat(now);
+	//printf("%s: %.50f\n", __func__, nowf);
 
 	atom_setlong(x->av + 1, x->blockcount++);
 	atom_setlong(x->av + 2, osc_timetag_ntp_getSeconds(now));//(((uint64_t)now) & 0xffffffff00000000) >> 32);
