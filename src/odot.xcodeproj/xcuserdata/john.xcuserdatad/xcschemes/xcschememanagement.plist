@@ -227,7 +227,7 @@
 		<key>o.gui.attach.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>92</integer>
+			<integer>94</integer>
 		</dict>
 		<key>o.if.pd.xcscheme</key>
 		<dict>
@@ -424,6 +424,11 @@
 			<key>orderHint</key>
 			<integer>73</integer>
 		</dict>
+		<key>o.snapshot~.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>93</integer>
+		</dict>
 		<key>o.svg.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -452,7 +457,7 @@
 		<key>o.timetag~.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>93</integer>
+			<integer>92</integer>
 		</dict>
 		<key>o.udp.receive.pd.xcscheme</key>
 		<dict>
