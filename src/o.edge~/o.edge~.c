@@ -70,7 +70,7 @@ t_osc_timetag oedge_computeTime(t_osc_timetag now, t_osc_timetag dspstarttime, d
 	//char buf[1024];
  	//osc_strfmt_timetag(buf, sizeof(buf), now);
 	//printf("%s\n", buf);
-	return osc_timetag_add(now, osc_timetag_floatToTimetag(samplenum / blocksize));
+	return osc_timetag_add(now, osc_timetag_floatToTimetag((samplenum / blocksize) * (blocksize / samplerate)));
 	t_osc_timetag t = osc_timetag_floatToTimetag(((blockcount * blocksize) + samplenum) / samplerate);
 	return osc_timetag_add(dspstarttime, t);
 }
