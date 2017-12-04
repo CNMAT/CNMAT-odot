@@ -194,4 +194,69 @@
 		</entry>
 	</misc>
 
+	<misc name ="Functions: math operator arithmetic">
+		<entry name="+">
+			<description>
+			Add
+			</description>
+		</entry>
+		<entry name="-">
+			<description>
+			Subtract
+			</description>
+		</entry>
+		<entry name="*">
+			<description>
+			Multiply
+			</description>
+		</entry>
+		<entry name="/">
+			<description>
+			Divide
+			</description>
+		</entry>
+		<entry name="%">
+			<description>
+			Modulo
+			</description>
+		</entry>
+		<entry name="++">
+			<description>
+			Increment
+			</description>
+		</entry>
+		<entry name="--">
+			<description>
+			Decrement
+			</description>
+		</entry>
+		<entry name="+=">
+			<description>
+			Add and assign
+			</description>
+		</entry>
+		<entry name="-=">
+			<description>
+			Subtract and assign
+			</description>
+		</entry>
+		<entry name="*=">
+			<description>
+			Multiply and assign
+			</description>
+		</entry>
+		<entry name="/=">
+			<description>
+			Divide and assign
+			</description>
+		</entry>
+		<entry name="%=">
+			<description>
+			Modulo and assign
+			</description>
+		</entry>
+	</misc>
+
+
+
 </c74object>

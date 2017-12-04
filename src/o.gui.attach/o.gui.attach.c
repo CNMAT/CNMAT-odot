@@ -34,8 +34,8 @@
 #define OMAX_DOC_NAME "o.gui.attach"
 #define OMAX_DOC_SHORT_DESC "Attaches to GUI objects with OSC varnames"
 #define OMAX_DOC_LONG_DESC "o.gui.attach attaches to GUI objects in it finds in the patch with OSC scripting names (aka varname). Anytime a value changes, the value is updated and sent out in bundle form. Note that o.gui.attach does not search subpatches."
-#define OMAX_DOC_INLETS_DESC (char *[]){"OSC packet to set values (or pass through), bang outputs current state of attached objects"}
-#define OMAX_DOC_OUTLETS_DESC (char *[]){"OSC packet containing state of attached GUI objects", "OSC messages not matching attached GUI objects."}
+#define OMAX_DOC_INLETS_DESC (char *[]){"OSC packet to set values, bang or empty bundle causes output of current state of attached objects"}
+#define OMAX_DOC_OUTLETS_DESC (char *[]){"OSC packet containing state of attached GUI objects", "OSC error message outlet.", "OSC messages not matching attached GUI objects."}
 #define OMAX_DOC_SEEALSO (char *[]){"cnmat.o.gui.function", "cnmat.o.gui.table", "pattrstorage"}
 
 
@@ -65,12 +65,14 @@ typedef struct _o_gui_attach
 {
     t_object        ob;
     void            *outlet;
+    void            *error_outlet;
     void            *unmatched_outlet;
     
     t_patcher       *base_patch;
 
     t_osc_bndl_u    *bndl;
-
+    t_osc_bndl_u    *error_bndl;
+    
     void            *qelem_output;
     void            *clock;
 	t_critical      lock;
@@ -227,15 +229,44 @@ void o_gui_attach_getValue(t_o_gui_attach *x, t_object *ob)
 void o_gui_attach_output_bundle(t_o_gui_attach *x)
 {
     t_osc_bndl_s *s_bnd = osc_bundle_u_serialize(x->bndl);
-    t_osc_bndl_s *empty = osc_bundle_s_allocEmptyBundle();
+    t_osc_bndl_s *s_err_bnd = osc_bundle_u_serialize(x->error_bndl);
+    
+    if( s_err_bnd && osc_bundle_s_getLen(s_err_bnd) > OSC_HEADER_SIZE )
+    {
+        omax_util_outletOSC(x->error_outlet, osc_bundle_s_getLen(s_err_bnd), osc_bundle_s_getPtr(s_err_bnd));
+    }
 
-    omax_util_outletOSC(x->unmatched_outlet, osc_bundle_s_getLen(empty), osc_bundle_s_getPtr(empty));
+    // outputs empty bundle when nothing is attached
     omax_util_outletOSC(x->outlet, osc_bundle_s_getLen(s_bnd), osc_bundle_s_getPtr(s_bnd));
+    
+    osc_bundle_u_clear(x->error_bndl);
     
     if( s_bnd )
         osc_bundle_s_deepFree(s_bnd);
-    if( empty )
-        osc_bundle_s_deepFree(empty);
+    
+    if( s_err_bnd )
+        osc_bundle_s_deepFree(s_err_bnd);
+}
+
+void o_gui_attach_addErr(t_o_gui_attach *x, char *err_buf, char *name, char *varname)
+{
+    char addr_buf[256];
+    snprintf(addr_buf, 256, "/err/%d", osc_bundle_u_getMsgCount(x->error_bndl) );
+    
+    t_osc_bndl_u *sub = osc_bundle_u_alloc();
+    
+    if( err_buf )
+        osc_bundle_u_addMsg(sub, osc_message_u_allocWithString("/error", err_buf ));
+    
+    if( name )
+        osc_bundle_u_addMsg(sub, osc_message_u_allocWithString("/object", name ) );
+    
+    if( varname )
+        osc_bundle_u_addMsg(sub, osc_message_u_allocWithString("/varname", varname ));
+    
+    t_osc_msg_u *error_sub_msg = osc_message_u_allocWithAddress(addr_buf);
+    osc_message_u_appendBndl_u(error_sub_msg, sub);
+    osc_bundle_u_addMsg(x->error_bndl, error_sub_msg);
 }
 
 int o_gui_attach_checkNameAndType(t_o_gui_attach *x, t_object *b, t_symbol *name)
@@ -247,7 +278,6 @@ int o_gui_attach_checkNameAndType(t_o_gui_attach *x, t_object *b, t_symbol *name
 
     if( str[0] == '/' )
     {
-
 
         long len = strlen(str);
         char buf[len];
@@ -264,7 +294,13 @@ int o_gui_attach_checkNameAndType(t_o_gui_attach *x, t_object *b, t_symbol *name
 
         if( buf[0] != '\0' )
         {
-            object_warn((t_object* )b, "varname uses characters ( %s ), o.gui.attach could not attach", buf );
+            // 256 should hopfully be enough
+            char err_buf[256];
+            snprintf(err_buf, 256, "varname uses characters ( %s ), o.gui.attach could not attach", buf );
+
+            o_gui_attach_addErr(x, err_buf, object_classname(b)->s_name, str);
+            
+            object_warn((t_object* )b, "%s", err_buf );
             return 0;
         }
 
@@ -276,7 +312,12 @@ int o_gui_attach_checkNameAndType(t_o_gui_attach *x, t_object *b, t_symbol *name
         {
             if( !strncmp(atom_getsym(at)->s_name, "object", 6) )
             {
-                object_warn((t_object* )b, "varname (%s) looks like an OSC address but o.gui.attach cannot link to non-GUI objects", str );
+                char err_buf[256];
+                snprintf(err_buf, 256, "varname (%s) looks like an OSC address but o.gui.attach cannot link to non-GUI objects", str );
+
+                o_gui_attach_addErr(x, err_buf, object_classname(b)->s_name, str);
+                
+                object_warn((t_object* )b, "%s", err_buf );
                 return 0;
             }
         }
@@ -325,12 +366,28 @@ long o_gui_attach_attach_iterator(t_o_gui_attach *x, t_object *b)
 void o_gui_attach_do_iter(t_o_gui_attach *x)
 {
     long result = 0;
-    object_method(x->base_patch, gensym("iterate"), o_gui_attach_attach_iterator, (void *)x, PI_WANTBOX, &result); // | PI_DEEP
+    if( x->base_patch )
+        object_method(x->base_patch, gensym("iterate"), o_gui_attach_attach_iterator, (void *)x, PI_WANTBOX, &result); // | PI_DEEP
+    else
+    {
+        o_gui_attach_addErr(x, "could not attach to parent patcher", NULL, NULL );
+        object_error((t_object*)x, "could not attach to parent patcher" );
+        
+        t_osc_bndl_s *s_err_bnd = osc_bundle_u_serialize(x->error_bndl);
+        omax_util_outletOSC(x->error_outlet, osc_bundle_s_getLen(s_err_bnd), osc_bundle_s_getPtr(s_err_bnd));
+        osc_bundle_u_clear(x->error_bndl);
+        
+        if( s_err_bnd )
+            osc_bundle_s_deepFree(s_err_bnd);
+
+    }
 }
 
 void o_gui_attach_iter_and_out(t_o_gui_attach *x)
 {
     // post("o_gui_attach_iter_and_out");
+    
+    if( x->base_patch )
     o_gui_attach_do_iter(x);
     o_gui_attach_output_bundle(x);
 }
@@ -364,6 +421,58 @@ void o_gui_attach_unattach(t_o_gui_attach *x, t_object *b)
 
 }
 
+void o_gui_attach_bang(t_o_gui_attach *x)
+{
+    o_gui_attach_do_iter(x);
+    o_gui_attach_output_bundle(x);
+}
+
+void o_gui_attach_checkSet(t_o_gui_attach *x, t_object *b, char *addr, long argc, t_atom *argv )
+{
+    long test_argc = 0;
+    t_atom *test_argv = NULL;
+    object_getvalueof(b, &test_argc, &test_argv );
+    
+    if( argc != test_argc )
+    {
+        o_gui_attach_addErr(x, "failed to set values",  object_classname(b)->s_name, addr );
+        object_error((t_object*)x, "failed to set values");
+        return;
+    }
+    
+    int i ;
+    for( i = 0; i < argc; i++ )
+    {
+        int set_a_type = atom_gettype(argv + i);
+        int test_b_type = atom_gettype(test_argv + i);
+        
+        if( test_b_type != set_a_type )
+        {
+            if( test_b_type == A_LONG && set_a_type == A_FLOAT ) // truncation case
+            {
+                double test_int = (double)atom_getlong(test_argv + i);
+                double set_double = atom_getfloat(argv + i);
+                
+                if( test_int != set_double )
+                {
+                    o_gui_attach_addErr(x, "failed to set value (truncation)",  object_classname(b)->s_name, addr );
+                }
+            }
+            else if( (test_b_type == A_LONG || test_b_type == A_FLOAT) && set_a_type == A_SYM ) // setting float with symbol
+            {
+                o_gui_attach_addErr(x, "failed to set value (attempting to set number with symbol)",  object_classname(b)->s_name, addr );
+            }
+            else if( test_b_type == A_SYM && (set_a_type == A_FLOAT || set_a_type == A_LONG ) ) // setting symbol with number (probably ok?)
+            {
+                // I think this is never actaully called
+                o_gui_attach_addErr(x, "warning: set symbol with number",  object_classname(b)->s_name, addr );
+            }
+            // (ok if long sets a float)
+            
+        }
+        
+    }
+}
 
 void o_gui_attach_fullPacket(t_o_gui_attach *x, t_symbol *msg, int argc, t_atom *argv)
 {
@@ -373,8 +482,13 @@ void o_gui_attach_fullPacket(t_o_gui_attach *x, t_symbol *msg, int argc, t_atom 
     OMAX_UTIL_GET_LEN_AND_PTR
     t_osc_bndl_u *in_bnd = osc_bundle_s_deserialize(len, ptr);
 
-    if( in_bnd )
+    if( len == OSC_HEADER_SIZE )
     {
+        o_gui_attach_bang(x);
+    }
+    else if( in_bnd )
+    {
+
         t_osc_bndl_u *bnd_match = NULL;
         t_osc_bndl_u *new_internal_bndl = NULL;
 
@@ -428,6 +542,7 @@ void o_gui_attach_fullPacket(t_o_gui_attach *x, t_symbol *msg, int argc, t_atom 
                                     atom_setsym(&at[i], gensym(osc_atom_u_getStringPtr(a)));
                                     break;
                                 default:
+                                    o_gui_attach_addErr(x, "unsupported type", osc_atom_u_getTypetag(a), addr->s_name);
                                     object_error((t_object*)x, "unsupported type %c", osc_atom_u_getTypetag(a) );
                                     break;
                             }
@@ -437,8 +552,14 @@ void o_gui_attach_fullPacket(t_o_gui_attach *x, t_symbol *msg, int argc, t_atom 
                         t_max_err err = object_setvalueof(node->ob, nargs, at);
                         if( err )
                         {
+                            o_gui_attach_addErr(x, "unable to set values", object_classname(node->ob)->s_name, addr->s_name);
                             object_error((t_object*)x, "unable to set values");
                         }
+                        else
+                        {
+                            o_gui_attach_checkSet(x, node->ob, addr->s_name, nargs, at );
+                        }
+                        
                     }
                     node = node->next;
                 }
@@ -451,23 +572,41 @@ void o_gui_attach_fullPacket(t_o_gui_attach *x, t_symbol *msg, int argc, t_atom 
             
             long del_len;
             char *del_ptr = NULL;
+            t_osc_bndl_s *del_bndl = NULL;
             
             t_osc_bndl_s *s_internal_bndl = osc_bundle_u_serialize(new_internal_bndl);
+            
+            t_osc_bndl_s *s_match_bndl = osc_bundle_u_serialize(bnd_match);
             osc_bundle_s_difference( len, ptr,
-                                    osc_bundle_s_getLen(s_internal_bndl), osc_bundle_s_getPtr(s_internal_bndl),
+                                    osc_bundle_s_getLen(s_match_bndl), osc_bundle_s_getPtr(s_match_bndl),
                                     &del_len, &del_ptr);
 
-            t_osc_bndl_s *del_bndl = NULL;
-            if( del_ptr )
-                del_bndl = osc_bundle_s_alloc(del_len, del_ptr);
-            else
-                del_bndl = osc_bundle_s_allocEmptyBundle();
-                
-            omax_util_outletOSC(x->unmatched_outlet, osc_bundle_s_getLen(del_bndl), osc_bundle_s_getPtr(del_bndl) );
+            
+            del_bndl = osc_bundle_s_alloc(del_len, del_ptr);
+            if( osc_bundle_s_getLen(del_bndl) > OSC_HEADER_SIZE )
+            {
+                omax_util_outletOSC(x->unmatched_outlet, osc_bundle_s_getLen(del_bndl), osc_bundle_s_getPtr(del_bndl) );
+            }
+            
+            t_osc_bndl_s *s_err_bndl = osc_bundle_u_serialize(x->error_bndl);
+            if( osc_bundle_s_getLen(s_err_bndl) > OSC_HEADER_SIZE )
+            {
+                omax_util_outletOSC(x->error_outlet, osc_bundle_s_getLen(s_err_bndl), osc_bundle_s_getPtr(s_err_bndl) );
+            }
+            
             omax_util_outletOSC(x->outlet, osc_bundle_s_getLen(s_internal_bndl), osc_bundle_s_getPtr(s_internal_bndl) );
 
-            osc_bundle_s_deepFree(s_internal_bndl);
-            osc_bundle_s_deepFree(del_bndl);
+            if( s_internal_bndl )
+                osc_bundle_s_deepFree(s_internal_bndl);
+            
+            if( del_bndl )
+                osc_bundle_s_deepFree(del_bndl);
+            
+            if( s_err_bndl )
+                osc_bundle_s_deepFree(s_err_bndl);
+            
+            if( s_match_bndl )
+                osc_bundle_s_deepFree(s_match_bndl);
             
             osc_bundle_u_free(bnd_match);
         }
@@ -477,13 +616,6 @@ void o_gui_attach_fullPacket(t_o_gui_attach *x, t_symbol *msg, int argc, t_atom 
 }
 
 OMAX_DICT_DICTIONARY(t_o_gui_attach, x, o_gui_attach_fullPacket);
-
-
-void o_gui_attach_bang(t_o_gui_attach *x)
-{
-    o_gui_attach_do_iter(x);
-    o_gui_attach_output_bundle(x);
-}
 
 void o_gui_attach_patcher_test(t_o_gui_attach *x)
 {
@@ -624,7 +756,7 @@ t_max_err o_gui_attach_notify(t_o_gui_attach *x, t_symbol *s, t_symbol *msg, voi
     }
     else
     {
-      // post("%s %s %p %p -- patcher: %p", s->s_name, msg->s_name, sender, data, x->base_patch);
+    //   post("%s %s %p %p -- patcher: %p", s->s_name, msg->s_name, sender, data, x->base_patch);
 
         if( msg == gensym("modified") ||  msg == gensym("setvalueof"))
         {
@@ -715,12 +847,15 @@ void o_gui_attach_free(t_o_gui_attach *x)
     qelem_free(x->qelem_output);
 
     o_gui_attach_clear_objmap(x);
-
+    
     object_detach_byptr(x, x->base_patch);
 
     if( x->bndl )
         osc_bundle_u_free(x->bndl);
+    if( x->error_bndl )
+        osc_bundle_u_free(x->error_bndl);
 
+    
     critical_free(x->lock);
     
 }
@@ -733,6 +868,7 @@ void *o_gui_attach_new(t_symbol *msg, short argc, t_atom *argv)
 	if(x)
     {
         x->unmatched_outlet = outlet_new((t_object *)x, "FullPacket");;
+        x->error_outlet = outlet_new((t_object *)x, "FullPacket");
         x->outlet = outlet_new((t_object *)x, "FullPacket");
 
 		critical_new(&(x->lock));
@@ -741,12 +877,13 @@ void *o_gui_attach_new(t_symbol *msg, short argc, t_atom *argv)
         x->clock = clock_new((t_object *)x, (method)o_gui_attach_do_iter);
 
         x->bndl = osc_bundle_u_alloc();
+        x->error_bndl = osc_bundle_u_alloc();
 
         x->head = NULL;
         x->tail = NULL;
 
         // attach to this patcher and all other patchers
-        t_patcher *patcher;
+        t_patcher *patcher = NULL;
         t_max_err err = object_obex_lookup(x, gensym("#P"), &patcher);
         if( err )
         {
@@ -754,14 +891,29 @@ void *o_gui_attach_new(t_symbol *msg, short argc, t_atom *argv)
             return 0;
         }
 
-       //  later add attr option to attach to parent to allow hiding in bpatcher
-        //t_patcher *parent;
-        //parent = jpatcher_get_parentpatcher(patcher);
-       // if( parent )
+        
+        if( argc == 1 && argv && atom_gettype(argv) == A_SYM )
+        {
+            if( atom_getsym(argv) == gensym("attachtoparent") )
+            {
+                t_patcher *parent = jpatcher_get_parentpatcher(patcher);
+                if( parent )
+                    patcher = parent;
+                else
+                {
+//                    object_error((t_object*)x, "could not attach to parent patcher" );
+//                    return 0;
+                    
+                    // allowing object to exist but will be unattached in order to communicate error to server if used remotely
+                    patcher = NULL;
 
-
+                }
+            }
+        }
+        
         x->base_patch = patcher;
-        object_attach_byptr(x, x->base_patch);
+        if( patcher )
+            object_attach_byptr(x, x->base_patch);
 
         // >> probably don't need the patcher in the obj list
 //        x->obj_map.insert( pair<t_object*, t_symbol*>(patcher, gensym("#P")));
