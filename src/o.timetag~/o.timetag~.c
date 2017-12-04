@@ -62,7 +62,7 @@ void otimetagt_perform64(t_otimetagt *x, t_object *dsp64, double **ins, long num
 	double samplerate = x->samplerate;
 	for(int i = 0; i < vectorsize; i++){
 		//outs[0][i] = osc_timetag_timetagToFloat(osc_timetag_add(now, osc_timetag_floatToTimetag((double)i / (double)vectorsize)));
-		t_osc_timetag tt = osc_timetag_add(now, osc_timetag_floatToTimetag((double)i / (double)vectorsize));
+		t_osc_timetag tt = osc_timetag_add(now, osc_timetag_floatToTimetag(((double)i / (double)vectorsize) * ((double)vectorsize / x->samplerate)));
 		outs[0][i] = *((double *)&tt);
 	}
 	//printf("%s: %.50f\n", __func__, outs[0][0]);
