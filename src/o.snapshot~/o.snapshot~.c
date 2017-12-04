@@ -1,6 +1,6 @@
 /*
   Written by John MacCallum, The Center for New Music and Audio Technologies,
-  University of California, Berkeley.  Copyright (c) 2013, The Regents of
+  University of California, Berkeley.  Copyright (c) 2017, The Regents of
   the University of California (Regents). 
   Permission to use, copy, modify, distribute, and distribute modified versions
   of this software and its documentation without fee and without a signed
@@ -56,6 +56,8 @@
 typedef struct _osshot{
 	t_pxobject ob;
 	void *outlet;
+	t_symbol **addresses;
+	char **inlet_assist_strings;
 	int nmsgs;
 	int ac;
 	t_atom *av;
@@ -148,17 +150,54 @@ void osshot_otypetag(t_osshot *x, t_symbol *msg, short argc, t_atom *argv)
 
 void osshot_doc(t_osshot *x)
 {
-	omax_doc_outletDoc(x->outlet);
+	//omax_doc_outletDoc(x->outlet);
+	_omax_doc_outletDoc(x->outlet,
+			    OMAX_DOC_NAME,
+			    OMAX_DOC_SHORT_DESC,
+			    OMAX_DOC_LONG_DESC,
+			    x->nmsgs,
+			    x->inlet_assist_strings,
+			    1,
+			    OMAX_DOC_OUTLETS_DESC,
+			    OMAX_DOC_NUM_SEE_ALSO_REFS,
+			    OMAX_DOC_SEEALSO);
 }
 
 void osshot_assist(t_osshot *x, void *b, long io, long num, char *buf)
 {
 	//omax_doc_assist(io, num, buf);
+	_omax_doc_assist(io,
+			 num,
+			 buf,
+			 x->nmsgs,
+			 x->inlet_assist_strings,
+			 1,
+			 OMAX_DOC_OUTLETS_DESC);
 }
 
 void osshot_free(t_osshot *x)
 {
 	dsp_free((t_pxobject *)x);
+	if(x->addresses){
+		free(x->addresses);
+	}
+	if(x->av){
+		free(x->av);
+	}
+	if(x->bndl){
+		osc_bundle_u_free(x->bndl);
+	}
+	if(x->msgs){
+		osc_mem_free(x->msgs);
+	}
+	if(x->inlet_assist_strings){
+		for(int i = 0; i < x->nmsgs; i++){
+			if(x->inlet_assist_strings[i]){
+				free(x->inlet_assist_strings[i]);
+			}
+		}
+		free(x->inlet_assist_strings);
+	}
 }
 
 void *osshot_new(t_symbol *msg, short argc, t_atom *argv)
@@ -169,7 +208,13 @@ void *osshot_new(t_symbol *msg, short argc, t_atom *argv)
 		x->outlet = outlet_new((t_object *)x, "FullPacket");
 		x->bndl = osc_bundle_u_alloc();
 		x->msgs = (t_osc_msg_u **)osc_mem_alloc(argc * sizeof(t_osc_msg_u *));
+		x->addresses = (t_symbol **)malloc(argc * sizeof(t_symbol *));
+		x->inlet_assist_strings = (char **)malloc(argc * sizeof(char *));
 		for(int i = 0; i < argc; i++){
+			x->addresses[i] = atom_getsym(argv + i);
+			long ilen = snprintf(NULL, 0, "Signal that will be bound to %s", x->addresses[i]->s_name);
+			x->inlet_assist_strings[i] = malloc(ilen + 1);
+			snprintf(x->inlet_assist_strings[i], ilen + 1, "Signal that will be bound to %s", x->addresses[i]->s_name);
 			x->msgs[i] = osc_message_u_allocWithAddress(atom_getsym(argv + i)->s_name);
 			osc_bundle_u_addMsg(x->bndl, x->msgs[i]);
 		}

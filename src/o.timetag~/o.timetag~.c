@@ -24,7 +24,7 @@
 #define OMAX_DOC_NAME "o.timetag~"
 #define OMAX_DOC_SHORT_DESC "Outputs timetags as an audio signal."
 #define OMAX_DOC_LONG_DESC "o.timetag~ outputs a signal containing the time of each sample."
-#define OMAX_DOC_INLETS_DESC (char *[]){""}
+#define OMAX_DOC_INLETS_DESC (char *[]){"(inactive)"}
 #define OMAX_DOC_OUTLETS_DESC (char *[]){"OSC timetags (signal)"}
 #define OMAX_DOC_SEEALSO (char *[]){"timetag~"}
 
