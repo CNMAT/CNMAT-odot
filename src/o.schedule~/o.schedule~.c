@@ -25,7 +25,7 @@
 #define OMAX_DOC_SHORT_DESC "Insert values into one or more audio channels"
 #define OMAX_DOC_LONG_DESC "o.schedule~ takes an OSC bundle with time tags and values and puts the values in the audio stream at the closest sample."
 #define OMAX_DOC_INLETS_DESC (char *[]){"OSC bundle"}
-#define OMAX_DOC_SEEALSO (char *[]){"sched~"}
+#define OMAX_DOC_SEEALSO (char *[]){"o.schedule", "o.timetag~", "o.snapshot~"}
 
 #include "odot_version.h"
 #include "ext.h"
@@ -67,6 +67,7 @@ typedef struct _oschedt{
 	binary_heap qs;
 	t_oschedt_tv *tvs;
 	int *tvs_free_slots;
+	char **outlet_assist_strings;
 } t_oschedt;
 
 #define OSCHEDT_QMAX 4096
@@ -201,17 +202,58 @@ OMAX_DICT_DICTIONARY(t_oschedt, x, oschedt_fullPacket);
 
 void oschedt_doc(t_oschedt *x)
 {
-	omax_doc_outletDoc(x->outlet);
+	//omax_doc_outletDoc(x->outlet);
+	_omax_doc_outletDoc(x->outlet,
+			    OMAX_DOC_NAME,
+			    OMAX_DOC_SHORT_DESC,
+			    OMAX_DOC_LONG_DESC,
+			    1,
+			    OMAX_DOC_INLETS_DESC,
+			    x->nsignals + 1,
+			    x->outlet_assist_strings,
+			    OMAX_DOC_NUM_SEE_ALSO_REFS,
+			    OMAX_DOC_SEEALSO);
+			    
 }
 
 void oschedt_assist(t_oschedt *x, void *b, long io, long num, char *buf)
 {
-	omax_doc_assist(io, num, buf);
+	//omax_doc_assist(io, num, buf);
+	_omax_doc_assist(io,
+			 num,
+			 buf,
+			 1,
+			 OMAX_DOC_INLETS_DESC,
+			 x->nsignals + 1,
+			 x->outlet_assist_strings);
 }
 
 void oschedt_free(t_oschedt *x)
 {
 	dsp_free((t_pxobject *)x);
+	if(x->addresses){
+		free(x->addresses);
+	}
+	for(int i = 0; i < 3; i++){
+		if(x->tmp_tvs[i]){
+			free(x->tmp_tvs[i]);
+		}
+	}
+	heap_finalize(&(x->qs));
+	if(x->tvs){
+		free(x->tvs);
+	}
+	if(x->tvs_free_slots){
+		free(x->tvs_free_slots);
+	}
+	if(x->outlet_assist_strings){
+		for(int i = 0; i < x->nsignals + 1; i++){
+			if(x->outlet_assist_strings[i]){
+				free(x->outlet_assist_strings[i]);
+			}
+		}
+		free(x->outlet_assist_strings);
+	}
 }
 
 void *oschedt_new(t_symbol *msg, short argc, t_atom *argv)
@@ -233,14 +275,20 @@ void *oschedt_new(t_symbol *msg, short argc, t_atom *argv)
 		heap_initialize(&(x->qs), OSCHEDT_QMAX);
 		x->tvs = (t_oschedt_tv *)calloc(OSCHEDT_QMAX, sizeof(t_oschedt_tv));
 		x->tvs_free_slots = (int *)calloc(OSCHEDT_QMAX, sizeof(int));
+		x->nsignals = argc / 2;
+		x->outlet_assist_strings = (char **)malloc((x->nsignals + 1) * sizeof(char *));
 		for(int i = 0; i < argc / 2; i++){
 			outlet_new((t_object *)x, "signal");
 			x->addresses[i * 2] = atom_getsym(argv + (i * 2));
 			x->addresses[i * 2 + 1] = atom_getsym(argv + (i * 2 + 1));
 			//x->buffers[i] = (double *)calloc(44100, sizeof(double));
+			long len = snprintf(NULL, 0, "Signal containing contents of %s and %s", x->addresses[i * 2]->s_name, x->addresses[(i * 2) + 1]->s_name) + 1;
+			x->outlet_assist_strings[i] = (char *)malloc(len * sizeof(char));
+			snprintf(x->outlet_assist_strings[i], len, "Signal containing contents of %s and %s", x->addresses[i * 2]->s_name, x->addresses[(i * 2) + 1]->s_name);
 		}
-		x->nsignals = argc / 2;
-		//x->bufptr = 0;
+		long len = snprintf(NULL, 0, "OSC bundle containing data that missed their deadlines");
+		x->outlet_assist_strings[x->nsignals] = (char *)malloc(len * sizeof(char));
+		snprintf(x->outlet_assist_strings[x->nsignals], len, "OSC bundle containing data that missed their deadlines");
 	}
 	return x;
 }
