@@ -497,6 +497,7 @@
 		52CEF5DC163763D10016EC39 /* libomax.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5C6163763CF0016EC39 /* libomax.a */; };
 		52CEF5DD163763D10016EC39 /* libomax.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5C6163763CF0016EC39 /* libomax.a */; };
 		52CEF5DE163763D10016EC39 /* libomax.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5C6163763CF0016EC39 /* libomax.a */; };
+		52D3BF9B1FD5B35F0069C42C /* pqops.c in Sources */ = {isa = PBXBuildFile; fileRef = 52A8396C16F3F893002E273C /* pqops.c */; };
 		52F0C47C17B581CC009FBD24 /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52CEF59416375BFB0016EC39 /* commonsyms.c */; };
 		52F0C47F17B581CC009FBD24 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */; };
 		52F0C48017B581CC009FBD24 /* libo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5AD163763BD0016EC39 /* libo.a */; };
@@ -6703,6 +6704,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52D3BF9B1FD5B35F0069C42C /* pqops.c in Sources */,
 				529318B71FCFF1FD00089B00 /* o.schedule~.c in Sources */,
 				52B6550717D68D7C004FD84E /* commonsyms.c in Sources */,
 			);

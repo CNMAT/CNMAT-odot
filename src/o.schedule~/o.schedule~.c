@@ -37,6 +37,7 @@
 #include "osc.h"
 #include "osc_mem.h"
 #include "osc_bundle_iterator_s.h"
+#include "osc_message_iterator_s.h"
 #include "osc_timetag.h"
 #include "osc_strfmt.h"
 #include "o.h"
@@ -45,97 +46,215 @@
 #include "omax_dict.h"
 #include "omax_realtime.h"
 
-typedef struct _osched{
+#include "pqops.h"
+
+typedef struct _oschedt_tv{
+	t_osc_timetag t;
+	double v;
+	int channel;
+} t_oschedt_tv;
+
+typedef struct _oschedt{
 	t_pxobject ob;
 	void *outlet;
-	t_critical lock;
 	double blockcount;
 	long samplerate;
+	int nsignals;
 	t_symbol **addresses;
-	double **buffers;
-	int bufptr;
-} t_osched;
+	t_oschedt_tv *tmp_tvs[3];
+	char tmp_tvs_bufnum;
+	int tmp_tvs_n[3];
+	binary_heap qs;
+	t_oschedt_tv *tvs;
+	int *tvs_free_slots;
+} t_oschedt;
 
-void *osched_class;
+#define OSCHEDT_QMAX 4096
 
-void osched_fullPacket(t_osched *x, long len, long lptr)
+void *oschedt_class;
+
+void oschedt_fullPacket(t_oschedt *x, long len, long lptr)
 {
+	char tmp_tvs_bufnum = x->tmp_tvs_bufnum;
+	tmp_tvs_bufnum = (tmp_tvs_bufnum + 2) % 3;
+	printf("%s:%d: tmp_tvs_bufnum = %d\n", __func__, __LINE__, tmp_tvs_bufnum);
 	char *ptr = (char *)lptr;
-	t_osc_timetag now;
-	omax_realtime_clock_now(&now);
-	
+	for(int i = 0; i < x->nsignals; i++){
+		char *ta = x->addresses[(i * 2)]->s_name;
+		char *va = x->addresses[(i * 2) + 1]->s_name;
+		t_osc_msg_ar_s *tmas = osc_bundle_s_lookupAddress(len, ptr, ta, 1);
+		if(!tmas || osc_message_array_s_getLen(tmas) == 0){
+			return;
+		}
+		t_osc_msg_ar_s *vmas = osc_bundle_s_lookupAddress(len, ptr, va, 1);
+		if(!vmas || osc_message_array_s_getLen(vmas) == 0){
+			return;
+		}
+		t_osc_msg_it_s *tmis = osc_message_iterator_s_getIterator(osc_message_array_s_get(tmas, 0));
+		t_osc_msg_it_s *vmis = osc_message_iterator_s_getIterator(osc_message_array_s_get(vmas, 0));
+		while(osc_message_iterator_s_hasNext(tmis) && osc_message_iterator_s_hasNext(vmis)){
+			printf("%s:%d: while\n", __func__, __LINE__);
+			t_osc_atom_s *ts = osc_message_iterator_s_next(tmis);
+			t_osc_atom_s *vs = osc_message_iterator_s_next(vmis);
+			if(osc_atom_s_getTypetag(ts) != 't'){
+				printf("%s:%d: bail\n",  __func__, __LINE__);
+				osc_message_iterator_s_destroyIterator(tmis);
+				osc_message_iterator_s_destroyIterator(vmis);
+				return;
+			}
+			t_oschedt_tv tv = (t_oschedt_tv){osc_atom_s_getTimetag(ts), osc_atom_s_getDouble(vs), i};
+			x->tmp_tvs[tmp_tvs_bufnum][x->tmp_tvs_n[tmp_tvs_bufnum]++] = tv;
+			// node n;
+			// n.length = sizeof(tv);
+			// n.timestamp = tv.t;
+			// for(int j = 0; j < OSCHEDT_QMAX; j++){
+			// 	if(x->tvs_free_slots[bufnum][j] == 0){
+			// 		x->tvs_free_slots[bufnum][j] = 1;
+			// 		n.id = j;
+			// 		x->tvs[bufnum][j] = tv;
+			// 		break;
+			// 	}
+			// 	// queue overflow
+			// }
+			// printf("%s:%d: insert %d", __func__, __LINE__, n.id);
+			// heap_insert(&(x->qs[bufnum]), n);
+		}
+		osc_message_iterator_s_destroyIterator(tmis);
+		osc_message_iterator_s_destroyIterator(vmis);
+	}
 }
 
-void osched_perform64(t_osched *x, t_object *dsp64, double **ins, long numins, double **outs, long numouts, long vectorsize, long flags, void *userparam)
+void oschedt_perform64(t_oschedt *x, t_object *dsp64, double **ins, long numins, double **outs, long numouts, long vectorsize, long flags, void *userparam)
 {
-	critical_enter(&(x->lock));
 	omax_realtime_clock_tick(x);
-	critical_exit(&(x->lock));
-	t_osc_timetag now;
+	t_osc_timetag now, next;
 	omax_realtime_clock_now(&now);
-
+	omax_realtime_clock_next(&next);
+	
+	char tmp_tvs_bufnum = x->tmp_tvs_bufnum;
+	int tmp_tvs_n = x->tmp_tvs_n[tmp_tvs_bufnum];
+	t_oschedt_tv tvs[tmp_tvs_n];
+	memcpy(tvs, x->tmp_tvs[tmp_tvs_bufnum], tmp_tvs_n * sizeof(t_oschedt_tv));
+	memset(x->tmp_tvs[tmp_tvs_bufnum], 0, tmp_tvs_n * sizeof(t_oschedt_tv));
+	x->tmp_tvs_n[tmp_tvs_bufnum] = 0;
+	printf("%s:%d: tmp_tvs_bufnum = %d\n", __func__, __LINE__, tmp_tvs_bufnum);
+	for(int i = 0; i < tmp_tvs_n; i++){
+		node n;
+		t_oschedt_tv tv = tvs[i];
+		n.length = sizeof(tv);
+		n.timestamp = tv.t;
+		for(int j = 0; j < OSCHEDT_QMAX; j++){
+			if(x->tvs_free_slots[j] == 0){
+				x->tvs_free_slots[j] = 1;
+				n.id = j;
+				x->tvs[j] = tv;
+				break;
+			}
+			// queue overflow
+		}
+		printf("%s:%d: insert %d\n", __func__, __LINE__, n.id);
+		heap_insert(&(x->qs), n);
+	}
+	
+	node_ptr np = heap_max(&(x->qs));
+	printf("%s:%d: np = %p\n", __func__, __LINE__, np);
+	for(int i = 0; i < numouts; i++){
+		memset(outs[i], 0, vectorsize * sizeof(double));
+	}
+	while(np != NULL){
+		printf("%s:%d: %s %s %s\n", __func__, __LINE__, osc_timetag_format(now), osc_timetag_format(np->timestamp), osc_timetag_format(next));
+		printf("%s:%d: tt compare: %d %d\n", __func__, __LINE__, osc_timetag_compare(now, np->timestamp), osc_timetag_compare(np->timestamp, next));
+		if(osc_timetag_compare(now, np->timestamp) <= 0 && osc_timetag_compare(np->timestamp, next) <= 0){
+			node n = heap_extract_max(&(x->qs));
+			x->tvs_free_slots[n.id] = 0;
+			printf("%s:%d: EXTRACT n.id = %d\n", __func__, __LINE__, n.id);
+			t_oschedt_tv tv = x->tvs[n.id];
+			double d = osc_timetag_timetagToFloat(osc_timetag_subtract(tv.t, now));
+			long s = (long)round(d * x->samplerate);
+			printf("%s:%d: d = %f, s = %d\n", __func__, __LINE__, d, s);
+			outs[tv.channel][s] += tv.v;
+		}else if(osc_timetag_compare(np->timestamp, now) < 0){
+			node n = heap_extract_max(&(x->qs));
+			x->tvs_free_slots[n.id] = 0;
+			printf("%s:%d: MISSED n.id = %d\n", __func__, __LINE__, n.id);
+		}else{
+			// must be too early
+			printf("%s:%d: WAITING n.id = %d\n", __func__, __LINE__, np->id);
+			break;
+		}
+		np = heap_max(&(x->qs));
+	}
 	
 	x->blockcount++;
+	x->tmp_tvs_bufnum = (x->tmp_tvs_bufnum + 1) % 3;
 }
 
-void osched_dsp64(t_osched *x, t_object *dsp64, short *count, double samplerate, long maxvectorsize, long flags)
+void oschedt_dsp64(t_oschedt *x, t_object *dsp64, short *count, double samplerate, long maxvectorsize, long flags)
 {
 	omax_realtime_clock_register(x);
 	x->blockcount = 0;
 	x->samplerate = samplerate;
-	object_method(dsp64, gensym("dsp_add64"), x, osched_perform64, 0, NULL);
+	object_method(dsp64, gensym("dsp_add64"), x, oschedt_perform64, 0, NULL);
 }
 
-OMAX_DICT_DICTIONARY(t_osched, x, osched_fullPacket);
+OMAX_DICT_DICTIONARY(t_oschedt, x, oschedt_fullPacket);
 
-void osched_doc(t_osched *x)
+void oschedt_doc(t_oschedt *x)
 {
 	omax_doc_outletDoc(x->outlet);
 }
 
-void osched_assist(t_osched *x, void *b, long io, long num, char *buf)
+void oschedt_assist(t_oschedt *x, void *b, long io, long num, char *buf)
 {
 	omax_doc_assist(io, num, buf);
 }
 
-void osched_free(t_osched *x)
+void oschedt_free(t_oschedt *x)
 {
 	dsp_free((t_pxobject *)x);
-	critical_free(x->lock);
 }
 
-void *osched_new(t_symbol *msg, short argc, t_atom *argv)
+void *oschedt_new(t_symbol *msg, short argc, t_atom *argv)
 {
-	t_osched *x = NULL;
-	if((x = (t_osched *)object_alloc(osched_class))){
+	t_oschedt *x = NULL;
+	if((x = (t_oschedt *)object_alloc(oschedt_class))){
 		if(argc % 2 != 0){
 			object_error((t_object *)x, "even number of arguments required");
 		}
   		dsp_setup((t_pxobject *)x, 0); 
 		x->outlet = outlet_new((t_object *)x, "FullPacket");
 		x->addresses = (t_symbol **)malloc(argc * sizeof(t_symbol*));
-		x->buffers = (double **)malloc((argc / 2) * sizeof(double *));
+		//x->buffers = (double **)malloc((argc / 2) * sizeof(double *));
+		for(int i = 0; i < 3; i++){
+			x->tmp_tvs[i] = (t_oschedt_tv *)calloc(OSCHEDT_QMAX, sizeof(t_oschedt));
+			x->tmp_tvs_n[i] = 0;
+		}
+		x->tmp_tvs_bufnum = 0;
+		heap_initialize(&(x->qs), OSCHEDT_QMAX);
+		x->tvs = (t_oschedt_tv *)calloc(OSCHEDT_QMAX, sizeof(t_oschedt_tv));
+		x->tvs_free_slots = (int *)calloc(OSCHEDT_QMAX, sizeof(int));
 		for(int i = 0; i < argc / 2; i++){
 			outlet_new((t_object *)x, "signal");
 			x->addresses[i * 2] = atom_getsym(argv + (i * 2));
 			x->addresses[i * 2 + 1] = atom_getsym(argv + (i * 2 + 1));
-			x->buffers[i] = (double *)calloc(44100, sizeof(double));
+			//x->buffers[i] = (double *)calloc(44100, sizeof(double));
 		}
-		x->bufptr = 0;
+		x->nsignals = argc / 2;
+		//x->bufptr = 0;
 	}
 	return x;
 }
 
 int main(void)
 {
-	t_class *c = class_new("o.schedule~", (method)osched_new, (method)osched_free, sizeof(t_osched), 0L, A_GIMME, 0);
-	class_addmethod(c, (method)osched_fullPacket, "FullPacket", A_LONG, A_LONG, 0);
-	//class_addmethod(c, (method)osched_fullPacket, "FullPacket", A_GIMME, 0);
-	class_addmethod(c, (method)osched_assist, "assist", A_CANT, 0);
-	class_addmethod(c, (method)osched_doc, "doc", 0);
-    	class_addmethod(c, (method)osched_dsp64, "dsp64", A_CANT, 0);
-	//class_addmethod(c, (method)osched_bang, "bang", 0);
-	//class_addmethod(c, (method)osched_anything, "anything", A_GIMME, 0);
+	t_class *c = class_new("o.schedule~", (method)oschedt_new, (method)oschedt_free, sizeof(t_oschedt), 0L, A_GIMME, 0);
+	class_addmethod(c, (method)oschedt_fullPacket, "FullPacket", A_LONG, A_LONG, 0);
+	//class_addmethod(c, (method)oschedt_fullPacket, "FullPacket", A_GIMME, 0);
+	class_addmethod(c, (method)oschedt_assist, "assist", A_CANT, 0);
+	class_addmethod(c, (method)oschedt_doc, "doc", 0);
+    	class_addmethod(c, (method)oschedt_dsp64, "dsp64", A_CANT, 0);
+	//class_addmethod(c, (method)oschedt_bang, "bang", 0);
+	//class_addmethod(c, (method)oschedt_anything, "anything", A_GIMME, 0);
 	// remove this if statement when we stop supporting Max 5
 	//if(omax_dict_resolveDictStubs()){
 	//class_addmethod(c, (method)omax_dict_dictionary, "dictionary", A_GIMME, 0);
@@ -145,7 +264,7 @@ int main(void)
     	class_dspinit(c);
 
 	class_register(CLASS_BOX, c);
-	osched_class = c;
+	oschedt_class = c;
 
 	common_symbols_init();
 
