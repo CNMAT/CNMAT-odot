@@ -182,7 +182,7 @@ void osshot_free(t_osshot *x)
 		free(x->addresses);
 	}
 	if(x->av){
-		free(x->av);
+		sysmem_freeptr(x->av);
 	}
 	if(x->bndl){
 		osc_bundle_u_free(x->bndl);

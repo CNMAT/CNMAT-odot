@@ -125,6 +125,24 @@ void oschedt_fullPacket(t_oschedt *x, long len, long lptr)
 	}
 }
 
+void oschedt_outletMissed(t_oschedt *x, t_symbol *msg, int argc, t_atom *argv)
+{
+	t_osc_bndl_u *bndl_u = osc_bundle_u_alloc();
+	for(int i = 0; i < argc / 4; i++){
+		t_osc_timetag t = (t_osc_timetag){atom_getlong(argv), atom_getlong(argv + 1)};
+		double v = atom_getfloat(argv + 2);
+		long channel = atom_getlong(argv + 3);
+		t_osc_msg_u *mt = osc_message_u_allocWithTimetag(x->addresses[channel * 2]->s_name, t);
+		t_osc_msg_u *mv = osc_message_u_allocWithDouble(x->addresses[channel * 2 + 1]->s_name, v);
+		osc_bundle_u_addMsg(bndl_u, mt);
+		osc_bundle_u_addMsg(bndl_u, mv);
+	}
+	t_osc_bndl_s *bndl_s = osc_bundle_u_serialize(bndl_u);
+	omax_util_outletOSC(x->outlet, osc_bundle_s_getLen(bndl_s), osc_bundle_s_getPtr(bndl_s));
+	osc_bundle_u_free(bndl_u);
+	osc_bundle_s_deepFree(bndl_s);
+}
+
 void oschedt_perform64(t_oschedt *x, t_object *dsp64, double **ins, long numins, double **outs, long numouts, long vectorsize, long flags, void *userparam)
 {
 	omax_realtime_clock_tick(x);
@@ -162,6 +180,8 @@ void oschedt_perform64(t_oschedt *x, t_object *dsp64, double **ins, long numins,
 	for(int i = 0; i < numouts; i++){
 		memset(outs[i], 0, vectorsize * sizeof(double));
 	}
+	t_atom missed[OSCHEDT_QMAX * 4];
+	int missedn = 0;
 	while(np != NULL){
 		printf("%s:%d: %s %s %s\n", __func__, __LINE__, osc_timetag_format(now), osc_timetag_format(np->timestamp), osc_timetag_format(next));
 		printf("%s:%d: tt compare: %d %d\n", __func__, __LINE__, osc_timetag_compare(now, np->timestamp), osc_timetag_compare(np->timestamp, next));
@@ -178,6 +198,11 @@ void oschedt_perform64(t_oschedt *x, t_object *dsp64, double **ins, long numins,
 			node n = heap_extract_max(&(x->qs));
 			x->tvs_free_slots[n.id] = 0;
 			printf("%s:%d: MISSED n.id = %d\n", __func__, __LINE__, n.id);
+			t_oschedt_tv tv = x->tvs[n.id];
+			atom_setlong(missed + missedn++, osc_timetag_ntp_getSeconds(tv.t));
+			atom_setlong(missed + missedn++, osc_timetag_ntp_getFraction(tv.t));
+			atom_setfloat(missed + missedn++, tv.v);
+			atom_setlong(missed + missedn++, tv.channel);
 		}else{
 			// must be too early
 			printf("%s:%d: WAITING n.id = %d\n", __func__, __LINE__, np->id);
@@ -185,7 +210,9 @@ void oschedt_perform64(t_oschedt *x, t_object *dsp64, double **ins, long numins,
 		}
 		np = heap_max(&(x->qs));
 	}
-	
+	if(missedn){
+		schedule_delay(x, (method)oschedt_outletMissed, 0, NULL, missedn, missed);
+	}
 	x->blockcount++;
 	x->tmp_tvs_bufnum = (x->tmp_tvs_bufnum + 1) % 3;
 }
