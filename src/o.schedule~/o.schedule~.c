@@ -78,7 +78,7 @@ void oschedt_fullPacket(t_oschedt *x, long len, long lptr)
 {
 	char tmp_tvs_bufnum = x->tmp_tvs_bufnum;
 	tmp_tvs_bufnum = (tmp_tvs_bufnum + 2) % 3;
-	printf("%s:%d: tmp_tvs_bufnum = %d\n", __func__, __LINE__, tmp_tvs_bufnum);
+	//printf("%s:%d: tmp_tvs_bufnum = %d\n", __func__, __LINE__, tmp_tvs_bufnum);
 	char *ptr = (char *)lptr;
 	for(int i = 0; i < x->nsignals; i++){
 		char *ta = x->addresses[(i * 2)]->s_name;
@@ -94,31 +94,17 @@ void oschedt_fullPacket(t_oschedt *x, long len, long lptr)
 		t_osc_msg_it_s *tmis = osc_message_iterator_s_getIterator(osc_message_array_s_get(tmas, 0));
 		t_osc_msg_it_s *vmis = osc_message_iterator_s_getIterator(osc_message_array_s_get(vmas, 0));
 		while(osc_message_iterator_s_hasNext(tmis) && osc_message_iterator_s_hasNext(vmis)){
-			printf("%s:%d: while\n", __func__, __LINE__);
+			//printf("%s:%d: while\n", __func__, __LINE__);
 			t_osc_atom_s *ts = osc_message_iterator_s_next(tmis);
 			t_osc_atom_s *vs = osc_message_iterator_s_next(vmis);
 			if(osc_atom_s_getTypetag(ts) != 't'){
-				printf("%s:%d: bail\n",  __func__, __LINE__);
+				//printf("%s:%d: bail\n",  __func__, __LINE__);
 				osc_message_iterator_s_destroyIterator(tmis);
 				osc_message_iterator_s_destroyIterator(vmis);
 				return;
 			}
 			t_oschedt_tv tv = (t_oschedt_tv){osc_atom_s_getTimetag(ts), osc_atom_s_getDouble(vs), i};
 			x->tmp_tvs[tmp_tvs_bufnum][x->tmp_tvs_n[tmp_tvs_bufnum]++] = tv;
-			// node n;
-			// n.length = sizeof(tv);
-			// n.timestamp = tv.t;
-			// for(int j = 0; j < OSCHEDT_QMAX; j++){
-			// 	if(x->tvs_free_slots[bufnum][j] == 0){
-			// 		x->tvs_free_slots[bufnum][j] = 1;
-			// 		n.id = j;
-			// 		x->tvs[bufnum][j] = tv;
-			// 		break;
-			// 	}
-			// 	// queue overflow
-			// }
-			// printf("%s:%d: insert %d", __func__, __LINE__, n.id);
-			// heap_insert(&(x->qs[bufnum]), n);
 		}
 		osc_message_iterator_s_destroyIterator(tmis);
 		osc_message_iterator_s_destroyIterator(vmis);
@@ -149,6 +135,8 @@ void oschedt_perform64(t_oschedt *x, t_object *dsp64, double **ins, long numins,
 	t_osc_timetag now, next;
 	omax_realtime_clock_now(&now);
 	omax_realtime_clock_next(&next);
+	t_osc_timetag t = osc_timetag_now();
+	printf("%f\n", osc_timetag_timetagToFloat(osc_timetag_subtract(t, now)));
 	
 	char tmp_tvs_bufnum = x->tmp_tvs_bufnum;
 	int tmp_tvs_n = x->tmp_tvs_n[tmp_tvs_bufnum];
@@ -156,7 +144,7 @@ void oschedt_perform64(t_oschedt *x, t_object *dsp64, double **ins, long numins,
 	memcpy(tvs, x->tmp_tvs[tmp_tvs_bufnum], tmp_tvs_n * sizeof(t_oschedt_tv));
 	memset(x->tmp_tvs[tmp_tvs_bufnum], 0, tmp_tvs_n * sizeof(t_oschedt_tv));
 	x->tmp_tvs_n[tmp_tvs_bufnum] = 0;
-	printf("%s:%d: tmp_tvs_bufnum = %d\n", __func__, __LINE__, tmp_tvs_bufnum);
+	//printf("%s:%d: tmp_tvs_bufnum = %d\n", __func__, __LINE__, tmp_tvs_bufnum);
 	for(int i = 0; i < tmp_tvs_n; i++){
 		node n;
 		t_oschedt_tv tv = tvs[i];
@@ -171,33 +159,33 @@ void oschedt_perform64(t_oschedt *x, t_object *dsp64, double **ins, long numins,
 			}
 			// queue overflow
 		}
-		printf("%s:%d: insert %d\n", __func__, __LINE__, n.id);
+		//printf("%s:%d: insert %d\n", __func__, __LINE__, n.id);
 		heap_insert(&(x->qs), n);
 	}
 	
 	node_ptr np = heap_max(&(x->qs));
-	printf("%s:%d: np = %p\n", __func__, __LINE__, np);
+	//printf("%s:%d: np = %p\n", __func__, __LINE__, np);
 	for(int i = 0; i < numouts; i++){
 		memset(outs[i], 0, vectorsize * sizeof(double));
 	}
 	t_atom missed[OSCHEDT_QMAX * 4];
 	int missedn = 0;
 	while(np != NULL){
-		printf("%s:%d: %s %s %s\n", __func__, __LINE__, osc_timetag_format(now), osc_timetag_format(np->timestamp), osc_timetag_format(next));
-		printf("%s:%d: tt compare: %d %d\n", __func__, __LINE__, osc_timetag_compare(now, np->timestamp), osc_timetag_compare(np->timestamp, next));
+		//printf("%s:%d: %s %s %s\n", __func__, __LINE__, osc_timetag_format(now), osc_timetag_format(np->timestamp), osc_timetag_format(next));
+		//printf("%s:%d: tt compare: %d %d\n", __func__, __LINE__, osc_timetag_compare(now, np->timestamp), osc_timetag_compare(np->timestamp, next));
 		if(osc_timetag_compare(now, np->timestamp) <= 0 && osc_timetag_compare(np->timestamp, next) <= 0){
 			node n = heap_extract_max(&(x->qs));
 			x->tvs_free_slots[n.id] = 0;
-			printf("%s:%d: EXTRACT n.id = %d\n", __func__, __LINE__, n.id);
+			//printf("%s:%d: EXTRACT n.id = %d\n", __func__, __LINE__, n.id);
 			t_oschedt_tv tv = x->tvs[n.id];
 			double d = osc_timetag_timetagToFloat(osc_timetag_subtract(tv.t, now));
 			long s = (long)round(d * x->samplerate);
-			printf("%s:%d: d = %f, s = %d\n", __func__, __LINE__, d, s);
+			//printf("%s:%d: d = %f, s = %d\n", __func__, __LINE__, d, s);
 			outs[tv.channel][s] += tv.v;
 		}else if(osc_timetag_compare(np->timestamp, now) < 0){
 			node n = heap_extract_max(&(x->qs));
 			x->tvs_free_slots[n.id] = 0;
-			printf("%s:%d: MISSED n.id = %d\n", __func__, __LINE__, n.id);
+			//printf("%s:%d: MISSED n.id = %d\n", __func__, __LINE__, n.id);
 			t_oschedt_tv tv = x->tvs[n.id];
 			atom_setlong(missed + missedn++, osc_timetag_ntp_getSeconds(tv.t));
 			atom_setlong(missed + missedn++, osc_timetag_ntp_getFraction(tv.t));
@@ -205,7 +193,7 @@ void oschedt_perform64(t_oschedt *x, t_object *dsp64, double **ins, long numins,
 			atom_setlong(missed + missedn++, tv.channel);
 		}else{
 			// must be too early
-			printf("%s:%d: WAITING n.id = %d\n", __func__, __LINE__, np->id);
+			//printf("%s:%d: WAITING n.id = %d\n", __func__, __LINE__, np->id);
 			break;
 		}
 		np = heap_max(&(x->qs));
