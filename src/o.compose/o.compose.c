@@ -583,9 +583,9 @@ void ocompose_gettext(t_ocompose *x)
 #endif
     }
     t_osc_bndl_s *bs = osc_bundle_u_serialize(bndl_u);
-    t_osc_bndl_s *bndl_s = NULL;
-    osc_bundle_s_deepCopy(&bndl_s, bs);
-    ocompose_newBundle(x, bndl_u, bndl_s);
+    //t_osc_bndl_s *bndl_s = NULL;
+    //osc_bundle_s_deepCopy(&bndl_s, bs);
+    ocompose_newBundle(x, bndl_u, bs);
 #ifdef OMAX_PD_VERSION
     x->have_new_data = 1;
     jbox_redraw((t_jbox *)x);

@@ -440,7 +440,7 @@ void oexpr_free(t_oexpr *x){
 #endif
 #if defined (OCOND)
 	int i;
-	for(i = 0; i < x->num_exprs; i++){
+	for(i = 0; i < x->num_exprs + 1; i++){
 		if(x->outlets_desc[i]){
 			osc_mem_free(x->outlets_desc[i]);
 		}
