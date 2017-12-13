@@ -9,7 +9,7 @@
 			"modernui" : 1
 		}
 ,
-		"rect" : [ 100.0, 100.0, 875.0, 746.0 ],
+		"rect" : [ 100.0, 100.0, 925.0, 746.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -40,7 +40,7 @@
 		"showontab" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
-					"id" : "obj-2",
+					"id" : "obj-5",
 					"maxclass" : "newobj",
 					"numinlets" : 0,
 					"numoutlets" : 0,
@@ -54,7 +54,318 @@
 							"modernui" : 1
 						}
 ,
-						"rect" : [ 0.0, 26.0, 875.0, 720.0 ],
+						"rect" : [ 4.0, 45.0, 875.0, 720.0 ],
+						"bglocked" : 0,
+						"openinpresentation" : 0,
+						"default_fontsize" : 12.0,
+						"default_fontface" : 0,
+						"default_fontname" : "Arial",
+						"gridonopen" : 1,
+						"gridsize" : [ 15.0, 15.0 ],
+						"gridsnaponopen" : 1,
+						"objectsnaponopen" : 1,
+						"statusbarvisible" : 2,
+						"toolbarvisible" : 1,
+						"lefttoolbarpinned" : 0,
+						"toptoolbarpinned" : 0,
+						"righttoolbarpinned" : 0,
+						"bottomtoolbarpinned" : 0,
+						"toolbars_unpinned_last_save" : 15,
+						"tallnewobj" : 0,
+						"boxanimatetime" : 200,
+						"enablehscroll" : 1,
+						"enablevscroll" : 1,
+						"devicewidth" : 0.0,
+						"description" : "",
+						"digest" : "",
+						"tags" : "",
+						"style" : "",
+						"subpatcher_template" : "no-menus",
+						"showontab" : 1,
+						"visible" : 1,
+						"boxes" : [ 							{
+								"box" : 								{
+									"fontface" : 0,
+									"fontsize" : 12.0,
+									"id" : "obj-5",
+									"linecount" : 2,
+									"maxclass" : "o.display",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 269.0, 359.0, 150.0, 48.0 ],
+									"text" : "/matrixcntrl : [1, 0, 1, 2, 3, 1]"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"fontface" : 0,
+									"fontsize" : 12.0,
+									"id" : "obj-4",
+									"maxclass" : "o.compose",
+									"numinlets" : 2,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 309.0, 120.0, 260.0, 24.0 ],
+									"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 48, 47, 109, 97, 116, 114, 105, 120, 99, 110, 116, 114, 108, 0, 0, 0, 0, 44, 105, 105, 105, 105, 105, 105, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 2, 0, 0, 0, 3, 0, 0, 0, 1 ],
+									"saved_bundle_length" : 68,
+									"text" : "/matrixcntrl : [1, 0, 1, 2, 3, 1]"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"fontface" : 0,
+									"fontsize" : 12.0,
+									"id" : "obj-3",
+									"maxclass" : "o.compose",
+									"numinlets" : 2,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 269.0, 86.0, 260.0, 24.0 ],
+									"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 48, 47, 109, 97, 116, 114, 105, 120, 99, 110, 116, 114, 108, 0, 0, 0, 0, 44, 105, 105, 105, 105, 105, 105, 0, 0, 0, 0, 1, 0, 0, 0, 2, 0, 0, 0, 1, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 1 ],
+									"saved_bundle_length" : 68,
+									"text" : "/matrixcntrl : [1, 2, 1, 2, 0, 1]"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"bubble" : 1,
+									"id" : "obj-9",
+									"linecount" : 2,
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 366.0, 185.5, 324.0, 37.0 ],
+									"style" : "",
+									"text" : "inside the subpatcher there is an o.gui.attach using the \"attachtoparent\" argument."
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-7",
+									"maxclass" : "message",
+									"numinlets" : 2,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 78.0, 145.0, 117.0, 22.0 ],
+									"style" : "",
+									"text" : "varname /matrixcntrl"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-2",
+									"maxclass" : "matrixctrl",
+									"numinlets" : 1,
+									"numoutlets" : 2,
+									"outlettype" : [ "list", "list" ],
+									"parameter_enable" : 0,
+									"patching_rect" : [ 78.0, 177.0, 130.0, 66.0 ],
+									"style" : "",
+									"varname" : "/matrixcntrl"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"fontsize" : 12.0,
+									"id" : "obj-16",
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "FullPacket" ],
+									"patcher" : 									{
+										"fileversion" : 1,
+										"appversion" : 										{
+											"major" : 7,
+											"minor" : 3,
+											"revision" : 4,
+											"architecture" : "x64",
+											"modernui" : 1
+										}
+,
+										"rect" : [ 604.0, 94.0, 509.0, 617.0 ],
+										"bglocked" : 0,
+										"openinpresentation" : 0,
+										"default_fontsize" : 12.0,
+										"default_fontface" : 0,
+										"default_fontname" : "Arial",
+										"gridonopen" : 1,
+										"gridsize" : [ 15.0, 15.0 ],
+										"gridsnaponopen" : 1,
+										"objectsnaponopen" : 1,
+										"statusbarvisible" : 2,
+										"toolbarvisible" : 1,
+										"lefttoolbarpinned" : 0,
+										"toptoolbarpinned" : 0,
+										"righttoolbarpinned" : 0,
+										"bottomtoolbarpinned" : 0,
+										"toolbars_unpinned_last_save" : 15,
+										"tallnewobj" : 0,
+										"boxanimatetime" : 200,
+										"enablehscroll" : 1,
+										"enablevscroll" : 1,
+										"devicewidth" : 0.0,
+										"description" : "",
+										"digest" : "",
+										"tags" : "",
+										"style" : "",
+										"subpatcher_template" : "no-menus",
+										"boxes" : [ 											{
+												"box" : 												{
+													"id" : "obj-3",
+													"linecount" : 3,
+													"maxclass" : "comment",
+													"numinlets" : 1,
+													"numoutlets" : 0,
+													"patching_rect" : [ 142.0, 107.5, 263.0, 47.0 ],
+													"style" : "",
+													"text" : "the \"attachtoparent\" argument allows o.gui.attach to sit in an abstraction, subpatcher or bpatcher and attach to its parent patcher."
+												}
+
+											}
+, 											{
+												"box" : 												{
+													"comment" : "",
+													"id" : "obj-5",
+													"index" : 1,
+													"maxclass" : "inlet",
+													"numinlets" : 0,
+													"numoutlets" : 1,
+													"outlettype" : [ "" ],
+													"patching_rect" : [ 79.0, 107.5, 30.0, 30.0 ],
+													"style" : ""
+												}
+
+											}
+, 											{
+												"box" : 												{
+													"id" : "obj-4",
+													"maxclass" : "newobj",
+													"numinlets" : 1,
+													"numoutlets" : 3,
+													"outlettype" : [ "FullPacket", "FullPacket", "FullPacket" ],
+													"patching_rect" : [ 79.0, 198.5, 153.0, 22.0 ],
+													"style" : "",
+													"text" : "o.gui.attach attachtoparent"
+												}
+
+											}
+, 											{
+												"box" : 												{
+													"comment" : "",
+													"id" : "obj-1",
+													"index" : 1,
+													"maxclass" : "outlet",
+													"numinlets" : 1,
+													"numoutlets" : 0,
+													"patching_rect" : [ 79.0, 274.5, 30.0, 30.0 ],
+													"style" : ""
+												}
+
+											}
+ ],
+										"lines" : [ 											{
+												"patchline" : 												{
+													"destination" : [ "obj-1", 0 ],
+													"source" : [ "obj-4", 0 ]
+												}
+
+											}
+, 											{
+												"patchline" : 												{
+													"destination" : [ "obj-4", 0 ],
+													"source" : [ "obj-5", 0 ]
+												}
+
+											}
+ ]
+									}
+,
+									"patching_rect" : [ 269.0, 193.0, 80.0, 22.0 ],
+									"saved_object_attributes" : 									{
+										"description" : "",
+										"digest" : "",
+										"globalpatchername" : "",
+										"style" : "",
+										"tags" : ""
+									}
+,
+									"style" : "",
+									"text" : "p subpatcher",
+									"varname" : "patcher"
+								}
+
+							}
+ ],
+						"lines" : [ 							{
+								"patchline" : 								{
+									"destination" : [ "obj-5", 0 ],
+									"source" : [ "obj-16", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-16", 0 ],
+									"source" : [ "obj-3", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-16", 0 ],
+									"source" : [ "obj-4", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-2", 0 ],
+									"source" : [ "obj-7", 0 ]
+								}
+
+							}
+ ]
+					}
+,
+					"patching_rect" : [ 237.5, 372.0, 97.0, 22.0 ],
+					"saved_object_attributes" : 					{
+						"description" : "",
+						"digest" : "",
+						"globalpatchername" : "",
+						"style" : "",
+						"tags" : ""
+					}
+,
+					"style" : "",
+					"text" : "p attachtoparent",
+					"varname" : "patcher[7]"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-4",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 0,
+					"patcher" : 					{
+						"fileversion" : 1,
+						"appversion" : 						{
+							"major" : 7,
+							"minor" : 3,
+							"revision" : 4,
+							"architecture" : "x64",
+							"modernui" : 1
+						}
+,
+						"rect" : [ 0.0, 26.0, 925.0, 720.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -85,6 +396,213 @@
 						"boxes" : [ 							{
 								"box" : 								{
 									"fontface" : 1,
+									"id" : "obj-18",
+									"linecount" : 6,
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 52.0, 174.0, 566.0, 87.0 ],
+									"style" : "",
+									"text" : "If you copy/paste the float number below which has been set with the varname /foo, Max will give the new float the name /foo[1]. \n\nNote that ***this will not be visible in the patch!***  \n\nThe actual varname (aka scriptingname) is only visible in the object inspector (cmd-i)",
+									"textcolor" : [ 0.011765, 0.396078, 0.752941, 1.0 ]
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"fontname" : "Arial Bold Italic",
+									"fontsize" : 18.0,
+									"id" : "obj-17",
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 52.0, 22.0, 226.0, 27.0 ],
+									"style" : "",
+									"text" : "OSC Naming Convention"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-16",
+									"linecount" : 7,
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 52.0, 54.0, 546.0, 100.0 ],
+									"style" : "",
+									"text" : "OSC varnames used with o.gui.attach must not contain special OSC characters, if they are found an warning will be printed to Max console informing you that it found an object with a varname that looked like an OSC address but has reserved characters.\n\nThis can come up becuase if two objects have the same name, Max will append a number in square brackets [ ] to differentiate them. [ ] are special symbols used by OSC route so this can cause problems."
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"fontface" : 0,
+									"fontsize" : 12.0,
+									"id" : "obj-9",
+									"maxclass" : "o.display",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 149.0, 534.0, 334.0, 34.0 ],
+									"text" : "/foo : 0."
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"fontface" : 0,
+									"fontsize" : 12.0,
+									"id" : "obj-8",
+									"maxclass" : "o.display",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 176.0, 422.0, 596.0, 34.0 ]
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-6",
+									"maxclass" : "message",
+									"numinlets" : 2,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 149.0, 293.0, 81.0, 22.0 ],
+									"style" : "",
+									"text" : "varname /foo"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"format" : 6,
+									"id" : "obj-4",
+									"maxclass" : "flonum",
+									"numinlets" : 1,
+									"numoutlets" : 2,
+									"outlettype" : [ "", "bang" ],
+									"parameter_enable" : 0,
+									"patching_rect" : [ 149.0, 322.0, 50.0, 22.0 ],
+									"style" : "",
+									"varname" : "/foo"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-7",
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 3,
+									"outlettype" : [ "FullPacket", "FullPacket", "FullPacket" ],
+									"patching_rect" : [ 149.0, 376.0, 73.0, 22.0 ],
+									"style" : "",
+									"text" : "o.gui.attach"
+								}
+
+							}
+ ],
+						"lines" : [ 							{
+								"patchline" : 								{
+									"destination" : [ "obj-4", 0 ],
+									"source" : [ "obj-6", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-8", 0 ],
+									"source" : [ "obj-7", 1 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-9", 0 ],
+									"source" : [ "obj-7", 0 ]
+								}
+
+							}
+ ]
+					}
+,
+					"patching_rect" : [ 119.5, 216.0, 122.0, 22.0 ],
+					"saved_object_attributes" : 					{
+						"description" : "",
+						"digest" : "",
+						"globalpatchername" : "",
+						"style" : "",
+						"tags" : ""
+					}
+,
+					"style" : "",
+					"text" : "p \"OSC names\"",
+					"varname" : "patcher[6]"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-2",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 0,
+					"patcher" : 					{
+						"fileversion" : 1,
+						"appversion" : 						{
+							"major" : 7,
+							"minor" : 3,
+							"revision" : 4,
+							"architecture" : "x64",
+							"modernui" : 1
+						}
+,
+						"rect" : [ 0.0, 26.0, 925.0, 720.0 ],
+						"bglocked" : 0,
+						"openinpresentation" : 0,
+						"default_fontsize" : 12.0,
+						"default_fontface" : 0,
+						"default_fontname" : "Arial",
+						"gridonopen" : 1,
+						"gridsize" : [ 15.0, 15.0 ],
+						"gridsnaponopen" : 1,
+						"objectsnaponopen" : 1,
+						"statusbarvisible" : 2,
+						"toolbarvisible" : 1,
+						"lefttoolbarpinned" : 0,
+						"toptoolbarpinned" : 0,
+						"righttoolbarpinned" : 0,
+						"bottomtoolbarpinned" : 0,
+						"toolbars_unpinned_last_save" : 15,
+						"tallnewobj" : 0,
+						"boxanimatetime" : 200,
+						"enablehscroll" : 1,
+						"enablevscroll" : 1,
+						"devicewidth" : 0.0,
+						"description" : "",
+						"digest" : "",
+						"tags" : "",
+						"style" : "",
+						"subpatcher_template" : "no-menus",
+						"showontab" : 1,
+						"boxes" : [ 							{
+								"box" : 								{
+									"fontface" : 0,
+									"fontsize" : 12.0,
+									"id" : "obj-4",
+									"maxclass" : "o.display",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 385.25, 384.0, 272.0, 34.0 ]
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"fontface" : 1,
 									"id" : "obj-5",
 									"linecount" : 4,
 									"maxclass" : "comment",
@@ -102,13 +620,11 @@
 									"fontface" : 0,
 									"fontsize" : 12.0,
 									"id" : "obj-3",
-									"linecount" : 10,
 									"maxclass" : "o.display",
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 358.75, 477.0, 502.0, 156.0 ],
-									"text" : "/table/1 : [23, 36, 48, 48, 48, 48, 48, 15, 36, 42, 25, 16, 25, 25, 84, 86, 88, 91, 93, 95, 97, 100, 102, 103, 105, 106, 108, 109, 110, 111, 112, 113, 108, 102, 99, 96, 91, 87, 80, 73, 67, 62, 56, 49, 42, 36, 30, 17, 12, 7, 7, 9, 10, 12, 13, 15, 16, 14, 7, 4, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],\n/table/2 : [-0.131579, 0., 0., 0.473684, 0.763158, 0.868421, 0.789474, 0.263158, 0.184211, 0.184211, 0., -0.184211, -0.210526, -0.210526, -0.236842],\n/table/1/size : 71,\n/table/2/size : 15"
+									"patching_rect" : [ 358.75, 530.0, 502.0, 34.0 ]
 								}
 
 							}
@@ -122,7 +638,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "FullPacket", "FullPacket" ],
-									"patching_rect" : [ 358.75, 414.0, 258.0, 46.0 ],
+									"patching_rect" : [ 358.75, 477.0, 258.0, 46.0 ],
 									"text" : "/table/1/size = length(/table/1),\n/table/2/size = length(/table/2)"
 								}
 
@@ -252,9 +768,9 @@
 									"id" : "obj-103",
 									"maxclass" : "newobj",
 									"numinlets" : 1,
-									"numoutlets" : 1,
-									"outlettype" : [ "FullPacket" ],
-									"patching_rect" : [ 358.75, 375.5, 72.0, 22.0 ],
+									"numoutlets" : 3,
+									"outlettype" : [ "FullPacket", "FullPacket", "FullPacket" ],
+									"patching_rect" : [ 358.75, 350.5, 72.0, 22.0 ],
 									"style" : "",
 									"text" : "o.gui.attach"
 								}
@@ -291,6 +807,13 @@
 								"patchline" : 								{
 									"destination" : [ "obj-2", 0 ],
 									"source" : [ "obj-103", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-4", 0 ],
+									"source" : [ "obj-103", 1 ]
 								}
 
 							}
@@ -346,8 +869,7 @@
  ]
 					}
 ,
-					"patching_rect" : [ 131.0, 259.0, 121.0, 22.0 ],
-					"presentation_rect" : [ 88.0, 274.0, 0.0, 0.0 ],
+					"patching_rect" : [ 158.0, 297.0, 121.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
@@ -378,7 +900,7 @@
 							"modernui" : 1
 						}
 ,
-						"rect" : [ 0.0, 26.0, 875.0, 720.0 ],
+						"rect" : [ 0.0, 26.0, 925.0, 720.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -410,7 +932,7 @@
 						"lines" : [  ]
 					}
 ,
-					"patching_rect" : [ 177.5, 347.0, 27.0, 22.0 ],
+					"patching_rect" : [ 282.5, 421.0, 27.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
@@ -468,7 +990,7 @@
 							"modernui" : 1
 						}
 ,
-						"rect" : [ 0.0, 26.0, 875.0, 720.0 ],
+						"rect" : [ 100.0, 126.0, 925.0, 720.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -736,11 +1258,13 @@
 									"fontface" : 0,
 									"fontsize" : 12.0,
 									"id" : "obj-8",
+									"linecount" : 4,
 									"maxclass" : "o.display",
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 320.0, 316.0, 308.0, 34.0 ]
+									"patching_rect" : [ 320.0, 316.0, 308.0, 75.0 ],
+									"text" : "/amp : 0.291339,\n/kslider : 69,\n/midi : 69,\n/hz : 440."
 								}
 
 							}
@@ -750,8 +1274,8 @@
 									"id" : "obj-103",
 									"maxclass" : "newobj",
 									"numinlets" : 1,
-									"numoutlets" : 1,
-									"outlettype" : [ "FullPacket" ],
+									"numoutlets" : 3,
+									"outlettype" : [ "FullPacket", "FullPacket", "FullPacket" ],
 									"patching_rect" : [ 164.5, 194.0, 72.0, 22.0 ],
 									"style" : "",
 									"text" : "o.gui.attach"
@@ -911,7 +1435,7 @@
 							"modernui" : 1
 						}
 ,
-						"rect" : [ 0.0, 26.0, 875.0, 720.0 ],
+						"rect" : [ 0.0, 26.0, 925.0, 720.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -941,13 +1465,26 @@
 						"showontab" : 1,
 						"boxes" : [ 							{
 								"box" : 								{
+									"id" : "obj-8",
+									"maxclass" : "newobj",
+									"numinlets" : 2,
+									"numoutlets" : 1,
+									"outlettype" : [ "FullPacket" ],
+									"patching_rect" : [ 259.0, 269.0, 72.0, 22.0 ],
+									"style" : "",
+									"text" : "o.union"
+								}
+
+							}
+, 							{
+								"box" : 								{
 									"bubble" : 1,
 									"id" : "obj-9",
 									"linecount" : 4,
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 366.0, 301.0, 320.0, 64.0 ],
+									"patching_rect" : [ 351.0, 316.0, 320.0, 64.0 ],
 									"style" : "",
 									"text" : "o.gui.attach only attaches to GUI objects in its own patch -- in this example, there is a second o.gui.attach in the subpatcher that combines its values with the incoming vaues from the parent patch."
 								}
@@ -958,15 +1495,15 @@
 									"fontface" : 0,
 									"fontsize" : 12.0,
 									"id" : "obj-6",
-									"linecount" : 6,
+									"linecount" : 7,
 									"maxclass" : "o.compose",
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 281.0, 122.0, 504.0, 92.0 ],
-									"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -24, 47, 115, 117, 98, 112, 97, 116, 99, 104, 101, 114, 0, 44, 46, 0, 0, 0, 0, 0, -44, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -64, 47, 109, 117, 108, 116, 105, 0, 0, 44, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 0, 0, 0, -65, -16, 0, 0, 0, 0, 0, 0, -65, -18, -109, -23, 64, 0, 0, 0, -65, -22, 79, -91, 0, 0, 0, 0, -65, -26, -63, 108, 32, 0, 0, 0, -65, -30, 125, 39, -32, 0, 0, 0, -65, -33, 73, -12, -96, 0, 0, 0, -65, -40, 45, -126, -32, 0, 0, 0, -65, -47, 17, 17, 32, 0, 0, 0, -65, -58, -63, 108, 32, 0, 0, 0, 63, -90, -63, 108, 32, 0, 0, 0, 63, -55, -103, -103, -96, 0, 0, 0, 63, -55, -103, -103, -96, 0, 0, 0, 63, -52, 113, -57, 32, 0, 0, 0, 63, -46, 125, 39, -32, 0, 0, 0, 63, -42, -63, 108, 32, 0, 0, 0, 63, -31, 17, 17, 32, 0, 0, 0, 63, -28, -97, 74, 0, 0, 0, 0, 63, -29, -23, 62, -96, 0, 0, 0, 63, -29, -23, 62, -96, 0, 0, 0, 63, -19, 39, -46, -128, 0, 0, 0 ],
-									"saved_bundle_length" : 252,
-									"text" : "/subpatcher : {\n\t/multi : [-1., -0.955556, -0.822222, -0.711111, -0.577778, -0.488889, -0.377778, -0.266667, -0.177778, 0.0444444, 0.2, 0.2, 0.222222, 0.288889, 0.355556, 0.533333, 0.644444, 0.622222, 0.622222, 0.911111]\n}"
+									"patching_rect" : [ 282.0, 122.0, 504.0, 106.0 ],
+									"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -24, 47, 115, 117, 98, 112, 97, 116, 99, 104, 101, 114, 0, 44, 46, 0, 0, 0, 0, 0, -44, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -64, 47, 109, 117, 108, 116, 105, 0, 0, 44, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 0, 0, 0, -65, -16, 0, 0, 0, 0, 0, 0, -65, -18, -109, -22, 45, 47, -29, -13, -65, -22, 79, -92, -125, 1, -89, -96, -65, -26, -63, 107, -37, 26, 109, 106, -65, -30, 125, 40, 73, -53, 37, 45, -65, -33, 73, -11, 22, -105, -15, -6, -65, -40, 45, -125, -58, -55, 125, -115, -65, -47, 17, 18, 118, -5, 9, 32, -65, -58, -63, 109, -13, -7, 97, -128, 63, -90, -63, 106, -104, -5, 14, 41, 63, -55, -103, -103, -103, -103, -103, -102, 63, -55, -103, -103, -103, -103, -103, -102, 63, -52, 113, -59, 63, 57, -47, -77, 63, -46, 125, 40, 73, -53, 37, 45, 63, -42, -63, 109, -13, -7, 97, -128, 63, -31, 17, 16, 94, 28, 21, 9, 63, -28, -97, 73, 6, 3, 79, 64, 63, -29, -23, 62, 28, -101, 65, 58, 63, -29, -23, 62, 28, -101, 65, 58, 63, -19, 39, -46, 65, -128, -45, -48, 0, 0, 0, 36, 47, 109, 97, 116, 114, 105, 120, 99, 110, 116, 114, 108, 0, 0, 0, 0, 44, 105, 105, 105, 0, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 1 ],
+									"saved_bundle_length" : 292,
+									"text" : "/subpatcher : {\n\t/multi : [-1., -0.955556, -0.822222, -0.711111, -0.577778, -0.488889, -0.377778, -0.266667, -0.177778, 0.0444444, 0.2, 0.2, 0.222222, 0.288889, 0.355556, 0.533333, 0.644444, 0.622222, 0.622222, 0.911111]\n},\n/matrixcntrl : [7, 0, 1]"
 								}
 
 							}
@@ -975,15 +1512,15 @@
 									"fontface" : 0,
 									"fontsize" : 12.0,
 									"id" : "obj-5",
-									"linecount" : 5,
+									"linecount" : 6,
 									"maxclass" : "o.compose",
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 259.0, 36.0, 504.0, 78.0 ],
-									"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -24, 47, 115, 117, 98, 112, 97, 116, 99, 104, 101, 114, 0, 44, 46, 0, 0, 0, 0, 0, -44, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -64, 47, 109, 117, 108, 116, 105, 0, 0, 44, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 63, -74, -63, 108, 32, 0, 0, 0, 63, -49, 73, -12, -96, 0, 0, 0, -65, -90, -63, 108, 32, 0, 0, 0, -65, -43, 85, 85, 96, 0, 0, 0, -65, -61, -23, 62, -96, 0, 0, 0, 63, -90, -63, 108, 32, 0, 0, 0, -65, -90, -63, 108, 32, 0, 0, 0, -65, -45, -23, 62, -96, 0, 0, 0, -65, -49, 73, -12, -96, 0, 0, 0, -65, -79, 17, 17, 32, 0, 0, 0, -65, -68, 113, -57, 32, 0, 0, 0, -65, -39, -103, -103, -96, 0, 0, 0, -65, -35, -35, -35, -32, 0, 0, 0, -65, -58, -63, 108, 32, 0, 0, 0, -65, -55, -103, -103, -96, 0, 0, 0, 63, -74, -63, 108, 32, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
-									"saved_bundle_length" : 252,
-									"text" : "/subpatcher : {\n\t/multi : [0., 0., 0., 0.0888889, 0.244444, -0.0444444, -0.333333, -0.155556, 0.0444444, -0.0444444, -0.311111, -0.244444, -0.0666667, -0.111111, -0.4, -0.466667, -0.177778, -0.2, 0.0888889, 0.]\n}"
+									"patching_rect" : [ 259.0, 10.0, 513.0, 92.0 ],
+									"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -24, 47, 115, 117, 98, 112, 97, 116, 99, 104, 101, 114, 0, 44, 46, 0, 0, 0, 0, 0, -44, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -64, 47, 109, 117, 108, 116, 105, 0, 0, 44, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 63, -74, -63, 108, 70, 122, 55, -43, 63, -49, 73, -16, -28, -38, 9, -52, -65, -90, -63, 106, -104, -5, 14, 41, -65, -43, 85, 83, -17, 107, 93, 70, -65, -61, -23, 66, 78, 89, 41, 103, 63, -90, -63, 106, -104, -5, 14, 41, -65, -90, -63, 106, -104, -5, 14, 41, -65, -45, -23, 62, 28, -101, 65, 58, -65, -49, 73, -16, -28, -38, 9, -52, -65, -79, 17, 17, -96, 59, 116, 74, -65, -68, 113, -59, 63, 57, -47, -77, -65, -39, -103, -103, -103, -103, -103, -102, -65, -35, -35, -33, 67, -57, -43, -19, -65, -58, -63, 109, -13, -7, 97, -128, -65, -55, -103, -103, -103, -103, -103, -102, 63, -74, -63, 108, 70, 122, 55, -43, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 36, 47, 109, 97, 116, 114, 105, 120, 99, 110, 116, 114, 108, 0, 0, 0, 0, 44, 105, 105, 105, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 1 ],
+									"saved_bundle_length" : 292,
+									"text" : "/subpatcher : {\n\t/multi : [0., 0., 0., 0.0888889, 0.244444, -0.0444444, -0.333333, -0.155556, 0.0444444, -0.0444444, -0.311111, -0.244444, -0.0666667, -0.111111, -0.4, -0.466667, -0.177778, -0.2, 0.0888889, 0.]\n},\n/matrixcntrl : [0, 3, 1]"
 								}
 
 							}
@@ -1024,10 +1561,10 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 117.0, 502.0, 593.0, 92.0 ],
-									"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -24, 47, 115, 117, 98, 112, 97, 116, 99, 104, 101, 114, 0, 44, 46, 0, 0, 0, 0, 0, -44, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -64, 47, 109, 117, 108, 116, 105, 0, 0, 44, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 0, 0, 0, -65, -16, 0, 0, 0, 0, 0, 0, -65, -18, -109, -23, 64, 0, 0, 0, -65, -22, 79, -91, 0, 0, 0, 0, -65, -26, -63, 108, 32, 0, 0, 0, -65, -30, 125, 39, -32, 0, 0, 0, -65, -33, 73, -12, -96, 0, 0, 0, -65, -40, 45, -126, -32, 0, 0, 0, -65, -47, 17, 17, 32, 0, 0, 0, -65, -58, -63, 108, 32, 0, 0, 0, 63, -90, -63, 108, 32, 0, 0, 0, 63, -55, -103, -103, -96, 0, 0, 0, 63, -55, -103, -103, -96, 0, 0, 0, 63, -52, 113, -57, 32, 0, 0, 0, 63, -46, 125, 39, -32, 0, 0, 0, 63, -42, -63, 108, 32, 0, 0, 0, 63, -31, 17, 17, 32, 0, 0, 0, 63, -28, -97, 74, 0, 0, 0, 0, 63, -29, -23, 62, -96, 0, 0, 0, 63, -29, -23, 62, -96, 0, 0, 0, 63, -19, 39, -46, -128, 0, 0, 0, 0, 0, 0, 36, 47, 109, 97, 116, 114, 105, 120, 99, 110, 116, 114, 108, 0, 0, 0, 0, 44, 105, 105, 105, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
+									"patching_rect" : [ 116.0, 502.0, 593.0, 92.0 ],
+									"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -24, 47, 115, 117, 98, 112, 97, 116, 99, 104, 101, 114, 0, 44, 46, 0, 0, 0, 0, 0, -44, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -64, 47, 109, 117, 108, 116, 105, 0, 0, 44, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 0, 0, 0, -65, -16, 0, 0, 0, 0, 0, 0, -65, -18, -109, -22, 32, 0, 0, 0, -65, -22, 79, -92, -128, 0, 0, 0, -65, -26, -63, 107, -32, 0, 0, 0, -65, -30, 125, 40, 64, 0, 0, 0, -65, -33, 73, -11, 32, 0, 0, 0, -65, -40, 45, -125, -64, 0, 0, 0, -65, -47, 17, 18, -128, 0, 0, 0, -65, -58, -63, 110, 0, 0, 0, 0, 63, -90, -63, 106, -96, 0, 0, 0, 63, -55, -103, -103, -96, 0, 0, 0, 63, -55, -103, -103, -96, 0, 0, 0, 63, -52, 113, -59, 64, 0, 0, 0, 63, -46, 125, 40, 64, 0, 0, 0, 63, -42, -63, 110, 0, 0, 0, 0, 63, -31, 17, 16, 96, 0, 0, 0, 63, -28, -97, 73, 0, 0, 0, 0, 63, -29, -23, 62, 32, 0, 0, 0, 63, -29, -23, 62, 32, 0, 0, 0, 63, -19, 39, -46, 64, 0, 0, 0, 0, 0, 0, 36, 47, 109, 97, 116, 114, 105, 120, 99, 110, 116, 114, 108, 0, 0, 0, 0, 44, 105, 105, 105, 0, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 1 ],
 									"saved_bundle_length" : 292,
-									"text" : "/subpatcher : {\n\t/multi : [-1., -0.955556, -0.822222, -0.711111, -0.577778, -0.488889, -0.377778, -0.266667, -0.177778, 0.0444444, 0.2, 0.2, 0.222222, 0.288889, 0.355556, 0.533333, 0.644444, 0.622222, 0.622222, 0.911111]\n},\n/matrixcntrl : [0, 0, 0]"
+									"text" : "/subpatcher : {\n\t/multi : [-1., -0.955556, -0.822222, -0.711111, -0.577778, -0.488889, -0.377778, -0.266667, -0.177778, 0.0444444, 0.2, 0.2, 0.222222, 0.288889, 0.355556, 0.533333, 0.644444, 0.622222, 0.622222, 0.911111]\n},\n/matrixcntrl : [7, 0, 1]"
 								}
 
 							}
@@ -1038,7 +1575,7 @@
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 1,
-									"outlettype" : [ "" ],
+									"outlettype" : [ "FullPacket" ],
 									"patcher" : 									{
 										"fileversion" : 1,
 										"appversion" : 										{
@@ -1049,7 +1586,7 @@
 											"modernui" : 1
 										}
 ,
-										"rect" : [ 936.0, 70.0, 483.0, 416.0 ],
+										"rect" : [ 879.0, 90.0, 521.0, 503.0 ],
 										"bglocked" : 0,
 										"openinpresentation" : 0,
 										"default_fontsize" : 12.0,
@@ -1080,12 +1617,12 @@
 												"box" : 												{
 													"id" : "obj-8",
 													"maxclass" : "newobj",
-													"numinlets" : 1,
+													"numinlets" : 2,
 													"numoutlets" : 1,
-													"outlettype" : [ "" ],
-													"patching_rect" : [ 279.0, 242.5, 56.0, 22.0 ],
+													"outlettype" : [ "FullPacket" ],
+													"patching_rect" : [ 279.0, 286.0, 153.0, 22.0 ],
 													"style" : "",
-													"text" : "o.accum"
+													"text" : "o.union"
 												}
 
 											}
@@ -1096,7 +1633,7 @@
 													"numinlets" : 1,
 													"numoutlets" : 2,
 													"outlettype" : [ "", "FullPacket" ],
-													"patching_rect" : [ 279.0, 104.5, 140.0, 22.0 ],
+													"patching_rect" : [ 279.0, 104.5, 153.0, 22.0 ],
 													"style" : "",
 													"text" : "o.route /subpatcher"
 												}
@@ -1134,9 +1671,9 @@
 													"id" : "obj-4",
 													"maxclass" : "newobj",
 													"numinlets" : 1,
-													"numoutlets" : 1,
-													"outlettype" : [ "FullPacket" ],
-													"patching_rect" : [ 279.0, 145.5, 73.0, 22.0 ],
+													"numoutlets" : 3,
+													"outlettype" : [ "FullPacket", "FullPacket", "FullPacket" ],
+													"patching_rect" : [ 279.0, 137.5, 73.0, 22.0 ],
 													"style" : "",
 													"text" : "o.gui.attach"
 												}
@@ -1150,7 +1687,7 @@
 													"maxclass" : "outlet",
 													"numinlets" : 1,
 													"numoutlets" : 0,
-													"patching_rect" : [ 279.0, 288.5, 30.0, 30.0 ],
+													"patching_rect" : [ 279.0, 332.5, 30.0, 30.0 ],
 													"style" : ""
 												}
 
@@ -1234,8 +1771,7 @@
 											}
 , 											{
 												"patchline" : 												{
-													"destination" : [ "obj-8", 0 ],
-													"midpoints" : [ 409.5, 223.5, 288.5, 223.5 ],
+													"destination" : [ "obj-8", 1 ],
 													"source" : [ "obj-7", 1 ]
 												}
 
@@ -1250,7 +1786,7 @@
  ]
 									}
 ,
-									"patching_rect" : [ 259.0, 340.0, 80.0, 22.0 ],
+									"patching_rect" : [ 259.0, 337.0, 80.0, 22.0 ],
 									"saved_object_attributes" : 									{
 										"description" : "",
 										"digest" : "",
@@ -1271,9 +1807,9 @@
 									"id" : "obj-103",
 									"maxclass" : "newobj",
 									"numinlets" : 1,
-									"numoutlets" : 1,
-									"outlettype" : [ "FullPacket" ],
-									"patching_rect" : [ 259.0, 301.0, 72.0, 22.0 ],
+									"numoutlets" : 3,
+									"outlettype" : [ "FullPacket", "FullPacket", "FullPacket" ],
+									"patching_rect" : [ 259.0, 241.0, 72.0, 22.0 ],
 									"style" : "",
 									"text" : "o.gui.attach",
 									"varname" : "cnmat.o.gui"
@@ -1283,7 +1819,14 @@
  ],
 						"lines" : [ 							{
 								"patchline" : 								{
-									"destination" : [ "obj-16", 0 ],
+									"destination" : [ "obj-8", 1 ],
+									"source" : [ "obj-103", 2 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-8", 0 ],
 									"source" : [ "obj-103", 0 ]
 								}
 
@@ -1291,7 +1834,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-1", 1 ],
-									"midpoints" : [ 268.5, 465.5, 700.5, 465.5 ],
+									"midpoints" : [ 268.5, 432.5, 699.5, 432.5 ],
 									"source" : [ "obj-16", 0 ]
 								}
 
@@ -1317,10 +1860,17 @@
 								}
 
 							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-16", 0 ],
+									"source" : [ "obj-8", 0 ]
+								}
+
+							}
  ]
 					}
 ,
-					"patching_rect" : [ 150.0, 312.0, 82.0, 22.0 ],
+					"patching_rect" : [ 187.5, 340.0, 82.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
@@ -1351,7 +1901,7 @@
 							"modernui" : 1
 						}
 ,
-						"rect" : [ 0.0, 26.0, 875.0, 720.0 ],
+						"rect" : [ 0.0, 26.0, 925.0, 720.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -1462,15 +2012,15 @@
 									"fontface" : 0,
 									"fontsize" : 10.0,
 									"id" : "obj-6",
-									"linecount" : 15,
+									"linecount" : 13,
 									"maxclass" : "o.compose",
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 443.0, 267.0, 314.0, 180.0 ],
-									"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 32, 47, 116, 101, 120, 116, 101, 100, 105, 116, 0, 0, 0, 44, 115, 115, 0, 104, 101, 108, 108, 111, 0, 0, 0, 115, 116, 101, 118, 101, 0, 0, 0, 0, 0, 0, -64, 47, 109, 117, 108, 116, 105, 0, 0, 44, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 0, 0, 0, 63, -20, 113, -57, 32, 0, 0, 0, 63, -20, 113, -57, 32, 0, 0, 0, 63, -21, -69, -69, -64, 0, 0, 0, 63, -22, 79, -91, 0, 0, 0, 0, 63, -24, -29, -114, 64, 0, 0, 0, 63, -26, 11, 96, -64, 0, 0, 0, 63, -31, 17, 17, 32, 0, 0, 0, 63, -39, -103, -103, -96, 0, 0, 0, 63, -49, 73, -12, -96, 0, 0, 0, 63, -58, -63, 108, 32, 0, 0, 0, 63, -68, 113, -57, 32, 0, 0, 0, -65, -106, -63, 108, 32, 0, 0, 0, -65, -63, 17, 17, 32, 0, 0, 0, -65, -40, 45, -126, -32, 0, 0, 0, -65, -34, -48, -105, -64, 0, 0, 0, -65, -30, -71, -42, 64, 0, 0, 0, -65, -26, 11, 96, -64, 0, 0, 0, -65, -24, 45, -126, -32, 0, 0, 0, -65, -23, -103, -103, -96, 0, 0, 0, -65, -20, 113, -57, 32, 0, 0, 0, 0, 0, 1, -44, 47, 102, 117, 110, 99, 116, 105, 111, 110, 0, 0, 0, 44, 100, 100, 100, 100, 100, 105, 100, 100, 100, 105, 100, 100, 100, 105, 100, 100, 100, 105, 100, 100, 100, 105, 100, 100, 100, 105, 100, 100, 100, 105, 100, 100, 100, 105, 100, 100, 100, 105, 100, 100, 100, 105, 100, 100, 100, 105, 100, 100, 100, 105, 100, 100, 100, 105, 100, 115, 0, 0, 0, 64, -113, 64, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 63, -16, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 64, 71, -17, -88, -32, 0, 0, 0, 63, -16, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -65, -28, -93, -41, 0, 0, 0, 0, 64, 94, -107, -55, -128, 0, 0, 0, 63, -22, 6, -46, -32, 0, 0, 0, 0, 0, 0, 0, -65, -39, 71, -82, 32, 0, 0, 0, 64, 105, 68, 24, -96, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 63, -18, 102, 102, 96, 0, 0, 0, 64, 114, -13, 16, 96, 0, 0, 0, 63, -28, -24, 26, -96, 0, 0, 0, 0, 0, 0, 0, 63, -24, 0, 0, 0, 0, 0, 0, 64, 123, -105, -44, 96, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 63, -23, -103, -103, -96, 0, 0, 0, 64, 126, -107, -54, -64, 0, 0, 0, 63, -16, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 63, -17, -41, 10, 61, 112, -93, -41, 64, -128, -55, -33, 64, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 63, -23, 112, -93, -32, 0, 0, 0, 64, -125, 114, -71, 64, 0, 0, 0, 63, -38, 116, 12, 64, 0, 0, 0, 0, 0, 0, 0, 63, -21, 51, 51, 64, 0, 0, 0, 64, -122, -16, 88, 32, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 63, -24, 0, 0, 0, 0, 0, 0, 64, -117, 109, 71, -96, 0, 0, 0, 63, -41, 10, 61, -128, 0, 0, 0, 0, 0, 0, 0, 63, -36, -52, -52, -64, 0, 0, 0, 64, -115, -63, 6, 32, 0, 0, 0, 63, -16, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -65, -23, -103, -103, -96, 0, 0, 0, 64, -113, 64, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 99, 117, 114, 118, 101, 0, 0, 0, 0, 0, 0, 20, 47, 116, 105, 109, 101, 0, 0, 0, 44, 116, 0, 0, -37, 74, 28, -55, 77, -95, -99, -101 ],
-									"saved_bundle_length" : 744,
-									"text" : "/textedit : [\"hello\", \"steve\"],\n/multi : [0.888889, 0.888889, 0.866667, 0.822222, 0.777778, 0.688889, 0.533333, 0.4, 0.244444, 0.177778, 0.111111, -0.0222222, -0.133333, -0.377778, -0.481481, -0.585185, -0.688889, -0.755556, -0.8, -0.888889],\n/function : [1000., 0., 1., 0., 0., 0, 0., 47.8723, 1., 0, -0.645, 122.34, 0.813333, 0, -0.395, 202.128, 0., 0, 0.95, 303.191, 0.653333, 0, 0.75, 441.489, 0., 0, 0.8, 489.362, 1., 0, 0.995, 537.234, 0., 0, 0.795, 622.34, 0.413333, 0, 0.85, 734.043, 0., 0, 0.75, 877.66, 0.36, 0, 0.45, 952.128, 1., 0, -0.8, 1000., 0., 0, 0., \"curve\"],\n/time : 2016-08-01T19:08:57.303247Z"
+									"patching_rect" : [ 443.0, 267.0, 330.0, 158.0 ],
+									"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 32, 47, 116, 101, 120, 116, 101, 100, 105, 116, 0, 0, 0, 44, 115, 115, 0, 104, 101, 108, 108, 111, 0, 0, 0, 115, 116, 101, 118, 101, 0, 0, 0, 0, 0, 0, -64, 47, 109, 117, 108, 116, 105, 0, 0, 44, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 0, 0, 0, 63, -20, 113, -57, 88, 24, -59, -54, 63, -20, 113, -57, 88, 24, -59, -54, 63, -21, -69, -68, 110, -80, -73, -61, 63, -22, 79, -92, -125, 1, -89, -96, 63, -24, -29, -114, -80, 49, -117, -109, 63, -26, 11, 96, -15, -78, 95, 99, 63, -31, 17, 16, 94, 28, 21, 9, 63, -39, -103, -103, -103, -103, -103, -102, 63, -49, 73, -16, -28, -38, 9, -52, 63, -58, -63, 109, -13, -7, 97, -128, 63, -68, 113, -59, 63, 57, -47, -77, -65, -106, -63, 106, -104, -5, 14, 41, -65, -63, 17, 14, 69, 61, 32, -13, -65, -40, 45, -125, -58, -55, 125, -115, -65, -34, -48, -107, -81, 41, 77, -41, -65, -30, -71, -43, -28, -93, -125, 39, -65, -26, 11, 96, -15, -78, 95, 99, -65, -24, 45, -125, -58, -55, 125, -115, -65, -23, -103, -103, -103, -103, -103, -102, -65, -20, 113, -57, 88, 24, -59, -54, 0, 0, 1, -44, 47, 102, 117, 110, 99, 116, 105, 111, 110, 0, 0, 0, 44, 100, 100, 100, 100, 100, 105, 100, 100, 100, 105, 100, 100, 100, 105, 100, 100, 100, 105, 100, 100, 100, 105, 100, 100, 100, 105, 100, 100, 100, 105, 100, 100, 100, 105, 100, 100, 100, 105, 100, 100, 100, 105, 100, 100, 100, 105, 100, 100, 100, 105, 100, 100, 100, 105, 100, 115, 0, 0, 0, 64, -113, 64, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 63, -16, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 64, 71, -17, -89, -122, -62, 38, -127, 63, -16, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -65, -28, -93, -41, 10, 61, 112, -92, 64, 94, -107, -62, -113, 92, 40, -10, 63, -22, 6, -46, -19, 120, 61, -1, 0, 0, 0, 0, -65, -39, 71, -82, 20, 122, -31, 72, 64, 105, 68, 24, -109, 116, -68, 106, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 63, -18, 102, 102, 102, 102, 102, 102, 64, 114, -13, 14, 86, 4, 24, -109, 63, -28, -24, 26, -101, -116, -72, -31, 0, 0, 0, 0, 63, -24, 0, 0, 0, 0, 0, 0, 64, 123, -105, -46, -15, -87, -5, -25, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 63, -23, -103, -103, -103, -103, -103, -102, 64, 126, -107, -54, -64, -125, 18, 111, 63, -16, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 63, -17, -41, 10, 61, 112, -93, -41, 64, -128, -55, -33, 59, 100, 90, 29, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 63, -23, 112, -93, -41, 10, 61, 113, 64, -125, 114, -72, 81, -21, -123, 31, 63, -38, 116, 12, 65, 86, -30, 101, 0, 0, 0, 0, 63, -21, 51, 51, 51, 51, 51, 51, 64, -122, -16, 88, 16, 98, 77, -45, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 63, -24, 0, 0, 0, 0, 0, 0, 64, -117, 109, 71, -82, 20, 122, -31, 63, -41, 10, 61, 112, -93, -41, 10, 0, 0, 0, 0, 63, -36, -52, -52, -52, -52, -52, -51, 64, -115, -63, 6, 36, -35, 47, 27, 63, -16, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -65, -23, -103, -103, -103, -103, -103, -102, 64, -113, 64, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 99, 117, 114, 118, 101, 0, 0, 0 ],
+									"saved_bundle_length" : 720,
+									"text" : "/textedit : [\"hello\", \"steve\"],\n/multi : [0.888889, 0.888889, 0.866667, 0.822222, 0.777778, 0.688889, 0.533333, 0.4, 0.244444, 0.177778, 0.111111, -0.0222222, -0.133333, -0.377778, -0.481481, -0.585185, -0.688889, -0.755556, -0.8, -0.888889],\n/function : [1000., 0., 1., 0., 0., 0, 0., 47.8723, 1., 0, -0.645, 122.34, 0.813333, 0, -0.395, 202.128, 0., 0, 0.95, 303.191, 0.653333, 0, 0.75, 441.489, 0., 0, 0.8, 489.362, 1., 0, 0.995, 537.234, 0., 0, 0.795, 622.34, 0.413333, 0, 0.85, 734.043, 0., 0, 0.75, 877.66, 0.36, 0, 0.45, 952.128, 1., 0, -0.8, 1000., 0., 0, 0., \"curve\"]"
 								}
 
 							}
@@ -1479,15 +2029,15 @@
 									"fontface" : 0,
 									"fontsize" : 10.0,
 									"id" : "obj-5",
-									"linecount" : 14,
+									"linecount" : 13,
 									"maxclass" : "o.compose",
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 418.0, 82.5, 317.0, 169.0 ],
-									"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 28, 47, 116, 101, 120, 116, 101, 100, 105, 116, 0, 0, 0, 44, 115, 115, 0, 104, 101, 108, 108, 111, 0, 0, 0, 98, 111, 98, 0, 0, 0, 0, -64, 47, 109, 117, 108, 116, 105, 0, 0, 44, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 0, 0, 0, -65, -24, -29, -114, -64, 0, 0, 0, -65, -26, -63, 107, -32, 0, 0, 0, -65, -29, -23, 62, 32, 0, 0, 0, -65, -32, 91, 5, -128, 0, 0, 0, -65, -35, 39, -44, 96, 0, 0, 0, -65, -39, -103, -103, -96, 0, 0, 0, -65, -43, 85, 83, -32, 0, 0, 0, -65, -47, 17, 18, -128, 0, 0, 0, -65, -55, -103, -103, -96, 0, 0, 0, -65, -79, 17, 22, -96, 0, 0, 0, 63, -74, -63, 110, 0, 0, 0, 0, 63, -52, 113, -59, 64, 0, 0, 0, 63, -43, 85, 83, -32, 0, 0, 0, 63, -36, 113, -59, 64, 0, 0, 0, 63, -31, 17, 16, 96, 0, 0, 0, 63, -28, -97, 73, 0, 0, 0, 0, 63, -24, 45, -125, -64, 0, 0, 0, 63, -18, -109, -22, 32, 0, 0, 0, 63, -16, 0, 0, 0, 0, 0, 0, -65, -46, 125, 40, 64, 0, 0, 0, 0, 0, 1, -92, 47, 102, 117, 110, 99, 116, 105, 111, 110, 0, 0, 0, 44, 100, 100, 100, 100, 100, 105, 100, 100, 105, 100, 100, 105, 100, 100, 105, 100, 100, 105, 100, 100, 105, 100, 100, 105, 100, 100, 105, 100, 100, 105, 100, 100, 105, 100, 100, 105, 100, 100, 105, 100, 100, 105, 100, 100, 105, 100, 100, 105, 100, 100, 105, 115, 0, 0, 0, 64, -113, 64, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 63, -16, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 64, 90, -104, -126, -64, 0, 0, 0, 63, -48, 54, -101, -96, 0, 0, 0, 0, 0, 0, 0, 64, 94, -107, -55, -128, 0, 0, 0, 63, -22, 6, -46, -32, 0, 0, 0, 0, 0, 0, 0, 64, 105, 68, 24, -96, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 64, 113, 73, -119, 64, 0, 0, 0, 63, -76, 122, -31, 64, 0, 0, 0, 0, 0, 0, 0, 64, 114, -13, 16, 96, 0, 0, 0, 63, -28, -24, 26, -96, 0, 0, 0, 0, 0, 0, 0, 64, 118, 70, 32, -64, 0, 0, 0, 63, -57, -28, -76, 64, 0, 0, 0, 0, 0, 0, 0, 64, 123, -20, -15, -96, 0, 0, 0, 63, -85, 78, 118, -128, 0, 0, 0, 0, 0, 0, 0, 64, 126, -107, -54, -64, 0, 0, 0, 63, -16, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 64, -128, -55, -33, 64, 0, 0, 0, 63, -31, -21, -123, 32, 0, 0, 0, 0, 0, 0, 0, 64, -128, -55, -33, 64, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 64, -125, 114, -71, 64, 0, 0, 0, 63, -38, 116, 12, 64, 0, 0, 0, 0, 0, 0, 0, 64, -122, -16, 88, 32, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 64, -117, 109, 71, -96, 0, 0, 0, 63, -41, 10, 61, -128, 0, 0, 0, 0, 0, 0, 0, 64, -115, -63, 6, 32, 0, 0, 0, 63, -16, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 64, -113, 64, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 108, 105, 110, 101, 97, 114, 0, 0, 0, 0, 0, 20, 47, 116, 105, 109, 101, 0, 0, 0, 44, 116, 0, 0, -37, 74, 28, -51, -126, -43, 21, 76 ],
-									"saved_bundle_length" : 692,
-									"text" : "/textedit : [\"hello\", \"bob\"],\n/multi : [-0.777778, -0.711111, -0.622222, -0.511111, -0.455556, -0.4, -0.333333, -0.266667, -0.2, -0.066667, 0.088889, 0.222222, 0.333333, 0.444444, 0.533333, 0.644444, 0.755556, 0.955556, 1., -0.288889],\n/function : [1000., 0., 1., 0., 0., 0, 106.383, 0.253333, 0, 122.34, 0.813333, 0, 202.128, 0., 0, 276.596, 0.08, 0, 303.191, 0.653333, 0, 356.383, 0.186667, 0, 446.809, 0.053333, 0, 489.362, 1., 0, 537.234, 0.56, 0, 537.234, 0., 0, 622.34, 0.413333, 0, 734.043, 0., 0, 877.66, 0.36, 0, 952.128, 1., 0, 1000., 0., 0, \"linear\"],\n/time : 2016-08-01T19:09:01.511064Z"
+									"patching_rect" : [ 418.0, 82.5, 324.0, 158.0 ],
+									"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 28, 47, 116, 101, 120, 116, 101, 100, 105, 116, 0, 0, 0, 44, 115, 115, 0, 104, 101, 108, 108, 111, 0, 0, 0, 98, 111, 98, 0, 0, 0, 0, -64, 47, 109, 117, 108, 116, 105, 0, 0, 44, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 0, 0, 0, -65, -24, -29, -114, -80, 49, -117, -109, -65, -26, -63, 107, -37, 26, 109, 106, -65, -29, -23, 62, 28, -101, 65, 58, -65, -32, 91, 5, 116, -76, 7, 3, -65, -35, 39, -44, 90, 95, -57, -25, -65, -39, -103, -103, -103, -103, -103, -102, -65, -43, 85, 83, -17, 107, 93, 70, -65, -47, 17, 18, 118, -5, 9, 32, -65, -55, -103, -103, -103, -103, -103, -102, -65, -79, 17, 22, -88, -72, -15, 78, 63, -74, -63, 109, -13, -7, 97, -128, 63, -52, 113, -59, 63, 57, -47, -77, 63, -43, 85, 83, -17, 107, 93, 70, 63, -36, 113, -59, 63, 57, -47, -77, 63, -31, 17, 16, 94, 28, 21, 9, 63, -28, -97, 73, 6, 3, 79, 64, 63, -24, 45, -125, -58, -55, 125, -115, 63, -18, -109, -22, 45, 47, -29, -13, 63, -16, 0, 0, 0, 0, 0, 0, -65, -46, 125, 40, 73, -53, 37, 45, 0, 0, 1, -92, 47, 102, 117, 110, 99, 116, 105, 111, 110, 0, 0, 0, 44, 100, 100, 100, 100, 100, 105, 100, 100, 105, 100, 100, 105, 100, 100, 105, 100, 100, 105, 100, 100, 105, 100, 100, 105, 100, 100, 105, 100, 100, 105, 100, 100, 105, 100, 100, 105, 100, 100, 105, 100, 100, 105, 100, 100, 105, 100, 100, 105, 100, 100, 105, 115, 0, 0, 0, 64, -113, 64, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 63, -16, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 64, 90, -104, -125, 18, 110, -105, -115, 63, -48, 54, -101, -99, 127, -40, 39, 0, 0, 0, 0, 64, 94, -107, -62, -113, 92, 40, -10, 63, -22, 6, -46, -19, 120, 61, -1, 0, 0, 0, 0, 64, 105, 68, 24, -109, 116, -68, 106, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 64, 113, 73, -119, 55, 75, -58, -88, 63, -76, 122, -31, 71, -82, 20, 123, 0, 0, 0, 0, 64, 114, -13, 14, 86, 4, 24, -109, 63, -28, -24, 26, -101, -116, -72, -31, 0, 0, 0, 0, 64, 118, 70, 32, -60, -101, -91, -29, 63, -57, -28, -76, 74, 31, 8, 3, 0, 0, 0, 0, 64, 123, -20, -15, -87, -5, -25, 109, 63, -85, 78, 118, -123, -104, 90, -43, 0, 0, 0, 0, 64, 126, -107, -54, -64, -125, 18, 111, 63, -16, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 64, -128, -55, -33, 59, 100, 90, 29, 63, -31, -21, -123, 30, -72, 81, -20, 0, 0, 0, 0, 64, -128, -55, -33, 59, 100, 90, 29, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 64, -125, 114, -72, 81, -21, -123, 31, 63, -38, 116, 12, 65, 86, -30, 101, 0, 0, 0, 0, 64, -122, -16, 88, 16, 98, 77, -45, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 64, -117, 109, 71, -82, 20, 122, -31, 63, -41, 10, 61, 112, -93, -41, 10, 0, 0, 0, 0, 64, -115, -63, 6, 36, -35, 47, 27, 63, -16, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 64, -113, 64, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 108, 105, 110, 101, 97, 114, 0, 0 ],
+									"saved_bundle_length" : 668,
+									"text" : "/textedit : [\"hello\", \"bob\"],\n/multi : [-0.777778, -0.711111, -0.622222, -0.511111, -0.455556, -0.4, -0.333333, -0.266667, -0.2, -0.066667, 0.088889, 0.222222, 0.333333, 0.444444, 0.533333, 0.644444, 0.755556, 0.955556, 1., -0.288889],\n/function : [1000., 0., 1., 0., 0., 0, 106.383, 0.253333, 0, 122.34, 0.813333, 0, 202.128, 0., 0, 276.596, 0.08, 0, 303.191, 0.653333, 0, 356.383, 0.186667, 0, 446.809, 0.053333, 0, 489.362, 1., 0, 537.234, 0.56, 0, 537.234, 0., 0, 622.34, 0.413333, 0, 734.043, 0., 0, 877.66, 0.36, 0, 952.128, 1., 0, 1000., 0., 0, \"linear\"]"
 								}
 
 							}
@@ -1496,15 +2046,15 @@
 									"fontface" : 0,
 									"fontsize" : 10.0,
 									"id" : "obj-2",
-									"linecount" : 14,
+									"linecount" : 12,
 									"maxclass" : "o.compose",
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 92.0, 514.5, 345.0, 169.0 ],
-									"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 28, 47, 116, 101, 120, 116, 101, 100, 105, 116, 0, 0, 0, 44, 115, 115, 0, 104, 101, 108, 108, 111, 0, 0, 0, 98, 111, 98, 0, 0, 0, 0, -64, 47, 109, 117, 108, 116, 105, 0, 0, 44, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 0, 0, 0, -65, -24, -29, -114, -64, 0, 0, 0, -65, -26, -63, 107, -32, 0, 0, 0, -65, -29, -23, 62, 32, 0, 0, 0, -65, -32, 91, 5, -128, 0, 0, 0, -65, -35, 39, -44, 96, 0, 0, 0, -65, -39, -103, -103, -96, 0, 0, 0, -65, -43, 85, 83, -32, 0, 0, 0, -65, -47, 17, 18, -128, 0, 0, 0, -65, -55, -103, -103, -96, 0, 0, 0, -65, -79, 17, 22, -96, 0, 0, 0, 63, -74, -63, 110, 0, 0, 0, 0, 63, -52, 113, -59, 64, 0, 0, 0, 63, -43, 85, 83, -32, 0, 0, 0, 63, -36, 113, -59, 64, 0, 0, 0, 63, -31, 17, 16, 96, 0, 0, 0, 63, -28, -97, 73, 0, 0, 0, 0, 63, -24, 45, -125, -64, 0, 0, 0, 63, -18, -109, -22, 32, 0, 0, 0, 63, -16, 0, 0, 0, 0, 0, 0, -65, -46, 125, 40, 64, 0, 0, 0, 0, 0, 1, -92, 47, 102, 117, 110, 99, 116, 105, 111, 110, 0, 0, 0, 44, 100, 100, 100, 100, 100, 105, 100, 100, 105, 100, 100, 105, 100, 100, 105, 100, 100, 105, 100, 100, 105, 100, 100, 105, 100, 100, 105, 100, 100, 105, 100, 100, 105, 100, 100, 105, 100, 100, 105, 100, 100, 105, 100, 100, 105, 100, 100, 105, 100, 100, 105, 115, 0, 0, 0, 64, -113, 64, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 63, -16, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 64, 90, -104, -126, -64, 0, 0, 0, 63, -48, 54, -101, -96, 0, 0, 0, 0, 0, 0, 0, 64, 94, -107, -55, -128, 0, 0, 0, 63, -22, 6, -46, -32, 0, 0, 0, 0, 0, 0, 0, 64, 105, 68, 24, -96, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 64, 113, 73, -119, 64, 0, 0, 0, 63, -76, 122, -31, 64, 0, 0, 0, 0, 0, 0, 0, 64, 114, -13, 16, 96, 0, 0, 0, 63, -28, -24, 26, -96, 0, 0, 0, 0, 0, 0, 0, 64, 118, 70, 32, -64, 0, 0, 0, 63, -57, -28, -76, 64, 0, 0, 0, 0, 0, 0, 0, 64, 123, -20, -15, -96, 0, 0, 0, 63, -85, 78, 118, -128, 0, 0, 0, 0, 0, 0, 0, 64, 126, -107, -54, -64, 0, 0, 0, 63, -16, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 64, -128, -55, -33, 64, 0, 0, 0, 63, -31, -21, -123, 32, 0, 0, 0, 0, 0, 0, 0, 64, -128, -55, -33, 64, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 64, -125, 114, -71, 64, 0, 0, 0, 63, -38, 116, 12, 64, 0, 0, 0, 0, 0, 0, 0, 64, -122, -16, 88, 32, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 64, -117, 109, 71, -96, 0, 0, 0, 63, -41, 10, 61, -128, 0, 0, 0, 0, 0, 0, 0, 64, -115, -63, 6, 32, 0, 0, 0, 63, -16, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 64, -113, 64, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 108, 105, 110, 101, 97, 114, 0, 0, 0, 0, 0, 20, 47, 116, 105, 109, 101, 0, 0, 0, 44, 116, 0, 0, -37, 74, 28, -51, -126, -43, 21, 76 ],
-									"saved_bundle_length" : 692,
-									"text" : "/textedit : [\"hello\", \"bob\"],\n/multi : [-0.777778, -0.711111, -0.622222, -0.511111, -0.455556, -0.4, -0.333333, -0.266667, -0.2, -0.066667, 0.088889, 0.222222, 0.333333, 0.444444, 0.533333, 0.644444, 0.755556, 0.955556, 1., -0.288889],\n/function : [1000., 0., 1., 0., 0., 0, 106.383, 0.253333, 0, 122.34, 0.813333, 0, 202.128, 0., 0, 276.596, 0.08, 0, 303.191, 0.653333, 0, 356.383, 0.186667, 0, 446.809, 0.053333, 0, 489.362, 1., 0, 537.234, 0.56, 0, 537.234, 0., 0, 622.34, 0.413333, 0, 734.043, 0., 0, 877.66, 0.36, 0, 952.128, 1., 0, 1000., 0., 0, \"linear\"],\n/time : 2016-08-01T19:09:01.511064Z"
+									"patching_rect" : [ 92.0, 514.5, 345.0, 146.0 ],
+									"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 32, 47, 116, 101, 120, 116, 101, 100, 105, 116, 0, 0, 0, 44, 115, 115, 0, 104, 101, 108, 108, 111, 0, 0, 0, 115, 116, 101, 118, 101, 0, 0, 0, 0, 0, 0, -64, 47, 109, 117, 108, 116, 105, 0, 0, 44, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 0, 0, 0, 63, -20, 113, -57, 96, 0, 0, 0, 63, -20, 113, -57, 96, 0, 0, 0, 63, -21, -69, -68, 96, 0, 0, 0, 63, -22, 79, -92, -128, 0, 0, 0, 63, -24, -29, -114, -64, 0, 0, 0, 63, -26, 11, 97, 0, 0, 0, 0, 63, -31, 17, 16, 96, 0, 0, 0, 63, -39, -103, -103, -96, 0, 0, 0, 63, -49, 73, -16, -32, 0, 0, 0, 63, -58, -63, 110, 0, 0, 0, 0, 63, -68, 113, -59, 64, 0, 0, 0, -65, -106, -63, 106, -96, 0, 0, 0, -65, -63, 17, 14, 64, 0, 0, 0, -65, -40, 45, -125, -64, 0, 0, 0, -65, -34, -48, -107, -96, 0, 0, 0, -65, -30, -71, -43, -32, 0, 0, 0, -65, -26, 11, 97, 0, 0, 0, 0, -65, -24, 45, -125, -64, 0, 0, 0, -65, -23, -103, -103, -96, 0, 0, 0, -65, -20, 113, -57, 96, 0, 0, 0, 0, 0, 1, -44, 47, 102, 117, 110, 99, 116, 105, 111, 110, 0, 0, 0, 44, 100, 100, 100, 100, 100, 105, 100, 100, 100, 105, 100, 100, 100, 105, 100, 100, 100, 105, 100, 100, 100, 105, 100, 100, 100, 105, 100, 100, 100, 105, 100, 100, 100, 105, 100, 100, 100, 105, 100, 100, 100, 105, 100, 100, 100, 105, 100, 100, 100, 105, 100, 100, 100, 105, 100, 115, 0, 0, 0, 64, -113, 64, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 63, -16, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 64, 71, -17, -89, -122, -62, 38, -127, 63, -16, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -65, -28, -93, -41, 10, 61, 112, -92, 64, 94, -107, -62, -113, 92, 40, -10, 63, -22, 6, -46, -19, 120, 61, -1, 0, 0, 0, 0, -65, -39, 71, -82, 20, 122, -31, 72, 64, 105, 68, 24, -109, 116, -68, 106, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 63, -18, 102, 102, 102, 102, 102, 102, 64, 114, -13, 14, 86, 4, 24, -109, 63, -28, -24, 26, -101, -116, -72, -31, 0, 0, 0, 0, 63, -24, 0, 0, 0, 0, 0, 0, 64, 123, -105, -46, -15, -87, -5, -25, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 63, -23, -103, -103, -103, -103, -103, -102, 64, 126, -107, -54, -64, -125, 18, 111, 63, -16, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 63, -17, -41, 10, 61, 112, -93, -41, 64, -128, -55, -33, 59, 100, 90, 29, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 63, -23, 112, -93, -41, 10, 61, 113, 64, -125, 114, -72, 81, -21, -123, 31, 63, -38, 116, 12, 65, 86, -30, 101, 0, 0, 0, 0, 63, -21, 51, 51, 51, 51, 51, 51, 64, -122, -16, 88, 16, 98, 77, -45, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 63, -24, 0, 0, 0, 0, 0, 0, 64, -117, 109, 71, -82, 20, 122, -31, 63, -41, 10, 61, 112, -93, -41, 10, 0, 0, 0, 0, 63, -36, -52, -52, -52, -52, -52, -51, 64, -115, -63, 6, 36, -35, 47, 27, 63, -16, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -65, -23, -103, -103, -103, -103, -103, -102, 64, -113, 64, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 99, 117, 114, 118, 101, 0, 0, 0 ],
+									"saved_bundle_length" : 720,
+									"text" : "/textedit : [\"hello\", \"steve\"],\n/multi : [0.888889, 0.888889, 0.866667, 0.822222, 0.777778, 0.688889, 0.533333, 0.4, 0.244444, 0.177778, 0.111111, -0.0222222, -0.133333, -0.377778, -0.481481, -0.585185, -0.688889, -0.755556, -0.8, -0.888889],\n/function : [1000., 0., 1., 0., 0., 0, 0., 47.8723, 1., 0, -0.645, 122.34, 0.813333, 0, -0.395, 202.128, 0., 0, 0.95, 303.191, 0.653333, 0, 0.75, 441.489, 0., 0, 0.8, 489.362, 1., 0, 0.995, 537.234, 0., 0, 0.795, 622.34, 0.413333, 0, 0.85, 734.043, 0., 0, 0.75, 877.66, 0.36, 0, 0.45, 952.128, 1., 0, -0.8, 1000., 0., 0, 0., \"curve\"]"
 								}
 
 							}
@@ -1518,7 +2068,7 @@
 									"parameter_enable" : 0,
 									"patching_rect" : [ 75.0, 122.5, 75.0, 36.0 ],
 									"style" : "",
-									"text" : "hello bob",
+									"text" : "hello steve",
 									"varname" : "/textedit"
 								}
 
@@ -1529,8 +2079,8 @@
 									"id" : "obj-103",
 									"maxclass" : "newobj",
 									"numinlets" : 1,
-									"numoutlets" : 1,
-									"outlettype" : [ "FullPacket" ],
+									"numoutlets" : 3,
+									"outlettype" : [ "FullPacket", "FullPacket", "FullPacket" ],
 									"patching_rect" : [ 418.0, 467.5, 72.0, 22.0 ],
 									"style" : "",
 									"text" : "o.gui.attach"
@@ -1554,9 +2104,10 @@
 							}
 , 							{
 								"box" : 								{
-									"addpoints" : [ 0.0, 0.0, 0, 106.38298, 0.253333, 0, 122.340424, 0.813333, 0, 202.128006, 0.0, 0, 276.596008, 0.08, 0, 303.191498, 0.653333, 0, 356.382996, 0.186667, 0, 446.80899, 0.053333, 0, 489.362, 1.0, 0, 537.234009, 0.56, 0, 537.234009, 0.0, 0, 622.340454, 0.413333, 0, 734.04303, 0.0, 0, 877.659973, 0.36, 0, 952.127991, 1.0, 0, 1000.0, 0.0, 0 ],
+									"addpoints_with_curve" : [ 0.0, 0.0, 0, 0.0, 47.8723, 1.0, 0, -0.645, 122.34, 0.813333, 0, -0.395, 202.128, 0.0, 0, 0.95, 303.191, 0.653333, 0, 0.75, 441.489, 0.0, 0, 0.8, 489.362, 1.0, 0, 0.995, 537.234, 0.0, 0, 0.795, 622.34, 0.413333, 0, 0.85, 734.043, 0.0, 0, 0.75, 877.66, 0.36, 0, 0.45, 952.128, 1.0, 0, -0.8, 1000.0, 0.0, 0, 0.0 ],
 									"id" : "obj-135",
 									"maxclass" : "function",
+									"mode" : 1,
 									"numinlets" : 1,
 									"numoutlets" : 4,
 									"outlettype" : [ "float", "", "", "bang" ],
@@ -1634,7 +2185,7 @@
  ]
 					}
 ,
-					"patching_rect" : [ 114.0, 215.0, 71.0, 22.0 ],
+					"patching_rect" : [ 141.0, 253.0, 71.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
@@ -1665,7 +2216,7 @@
 							"modernui" : 1
 						}
 ,
-						"rect" : [ 100.0, 126.0, 875.0, 720.0 ],
+						"rect" : [ 0.0, 26.0, 925.0, 720.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -1695,6 +2246,87 @@
 						"showontab" : 1,
 						"boxes" : [ 							{
 								"box" : 								{
+									"id" : "obj-23",
+									"linecount" : 2,
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 194.5, 277.0, 484.5, 33.0 ],
+									"style" : "",
+									"text" : "attachtoparent --- the \"attachtoparent\" argument tells o.gui.attach to attach to objects in the parent patch rather than its own (for use in subpatchers and bpatchers)."
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"fontface" : 1,
+									"id" : "obj-22",
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 79.5, 277.0, 119.0, 20.0 ],
+									"style" : "",
+									"text" : "optional argument:"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"fontface" : 1,
+									"id" : "obj-2",
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 144.5, 215.0, 54.0, 20.0 ],
+									"style" : "",
+									"text" : "outlets:"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-3",
+									"linecount" : 3,
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 194.5, 215.0, 529.0, 47.0 ],
+									"style" : "",
+									"text" : "left: OSC bundle containing current state of attached GUI objects\nmidde: OSC bundle containing status information and errors (also printed to the Max window)\nright: OSC bundle containing messages from the input bundle not matching attached GUI objects."
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"fontface" : 0,
+									"fontsize" : 12.0,
+									"id" : "obj-21",
+									"maxclass" : "o.compose",
+									"numinlets" : 2,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 111.25, 520.0, 49.5, 24.0 ],
+									"saved_bundle_data" : [  ],
+									"saved_bundle_length" : 0
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"fontface" : 0,
+									"fontsize" : 12.0,
+									"id" : "obj-20",
+									"maxclass" : "o.display",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 140.0, 583.0, 193.0, 34.0 ],
+									"text" : "/someother/data : \"stuff\""
+								}
+
+							}
+, 							{
+								"box" : 								{
 									"fontname" : "Arial",
 									"fontsize" : 12.0,
 									"id" : "obj-11",
@@ -1718,7 +2350,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 4,
 									"outlettype" : [ "", "", "", "clear" ],
-									"patching_rect" : [ 542.5, 35.5, 172.0, 35.0 ],
+									"patching_rect" : [ 542.5, 20.5, 172.0, 35.0 ],
 									"style" : "",
 									"text" : "o.helpfilehelper @obj o.gui.attach"
 								}
@@ -1733,7 +2365,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 79.0, 126.0, 600.0, 47.0 ],
+									"patching_rect" : [ 79.0, 104.0, 600.0, 47.0 ],
 									"style" : "",
 									"text" : "o.gui.attach attaches to GUI objects in it finds in the patch with OSC scripting names (aka varname). Anytime a value changes, the value is updated and sent out in bundle form. Note that o.gui.attach does not search subpatches."
 								}
@@ -1747,7 +2379,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 74.0, 35.5, 453.5, 87.0 ],
+									"patching_rect" : [ 79.0, 16.5, 453.5, 87.0 ],
 									"style" : "",
 									"text" : "o.gui.attach"
 								}
@@ -1773,24 +2405,11 @@
 									"id" : "obj-7",
 									"maxclass" : "newobj",
 									"numinlets" : 1,
-									"numoutlets" : 1,
-									"outlettype" : [ "FullPacket" ],
-									"patching_rect" : [ 86.0, 497.0, 73.0, 22.0 ],
+									"numoutlets" : 3,
+									"outlettype" : [ "FullPacket", "FullPacket", "FullPacket" ],
+									"patching_rect" : [ 86.0, 553.0, 73.0, 22.0 ],
 									"style" : "",
 									"text" : "o.gui.attach"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"id" : "obj-2",
-									"maxclass" : "newobj",
-									"numinlets" : 1,
-									"numoutlets" : 1,
-									"outlettype" : [ "bang" ],
-									"patching_rect" : [ 86.0, 361.0, 60.0, 22.0 ],
-									"style" : "",
-									"text" : "loadbang"
 								}
 
 							}
@@ -1804,7 +2423,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 86.0, 390.0, 203.0, 78.0 ],
+									"patching_rect" : [ 86.0, 438.0, 203.0, 78.0 ],
 									"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 47, 97, 110, 47, 105, 110, 116, 0, 44, 105, 0, 0, 0, 0, 0, 10, 0, 0, 0, 24, 47, 97, 47, 102, 108, 111, 97, 116, 0, 0, 0, 0, 44, 100, 0, 0, 63, -52, 40, -11, -62, -113, 92, 41, 0, 0, 0, 20, 47, 115, 108, 105, 100, 101, 114, 47, 49, 0, 0, 0, 44, 105, 0, 0, 0, 0, 0, 50, 0, 0, 0, 20, 47, 115, 108, 105, 100, 101, 114, 47, 50, 0, 0, 0, 44, 105, 0, 0, 0, 0, 0, 100, 0, 0, 0, 28, 47, 115, 111, 109, 101, 111, 116, 104, 101, 114, 47, 100, 97, 116, 97, 0, 44, 115, 0, 0, 115, 116, 117, 102, 102, 0, 0, 0 ],
 									"saved_bundle_length" : 144,
 									"text" : "/an/int : 10,\n/a/float : 0.22,\n/slider/1 : 50,\n/slider/2 : 100,\n/someother/data : \"stuff\""
@@ -1818,7 +2437,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 507.5, 435.0, 103.0, 22.0 ],
+									"patching_rect" : [ 531.0, 534.5, 103.0, 22.0 ],
 									"style" : "",
 									"text" : "varname /slider/2"
 								}
@@ -1831,7 +2450,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 368.5, 437.0, 103.0, 22.0 ],
+									"patching_rect" : [ 392.0, 536.5, 103.0, 22.0 ],
 									"style" : "",
 									"text" : "varname /slider/1"
 								}
@@ -1844,7 +2463,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 507.5, 349.0, 97.0, 22.0 ],
+									"patching_rect" : [ 531.0, 448.5, 97.0, 22.0 ],
 									"style" : "",
 									"text" : "varname /a/float"
 								}
@@ -1852,11 +2471,12 @@
 							}
 , 							{
 								"box" : 								{
+									"fontface" : 1,
 									"id" : "obj-49",
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 79.5, 182.5, 113.0, 20.0 ],
+									"patching_rect" : [ 76.5, 153.0, 122.0, 20.0 ],
 									"style" : "",
 									"text" : "left inlet messages:"
 								}
@@ -1864,12 +2484,13 @@
 							}
 , 							{
 								"box" : 								{
+									"fontname" : "Arial Italic",
 									"id" : "obj-33",
 									"linecount" : 6,
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 79.5, 220.5, 621.0, 87.0 ],
+									"patching_rect" : [ 86.0, 332.0, 596.5, 87.0 ],
 									"style" : "",
 									"text" : "Basic use:\n0) add o.gui.attach to your patch\n1) create a GUI object you would like to use\n2) set a OSC address varname for your GUI object, either with a varname message or in the inspector.\n3) when o.gui.attach sees the new OSC address varname it will attach to it and output the values to the patch. You may also send in values to set the attached GUI objects."
 								}
@@ -1878,13 +2499,13 @@
 , 							{
 								"box" : 								{
 									"id" : "obj-27",
-									"linecount" : 2,
+									"linecount" : 4,
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 194.5, 182.5, 521.0, 33.0 ],
+									"patching_rect" : [ 194.5, 153.0, 484.5, 60.0 ],
 									"style" : "",
-									"text" : "bang: initiatlize bundle\nFullPacket: addresses set values and uptdate output, others addresses are passed through."
+									"text" : "FullPacket: addresses in the received bundle cooresponding to attached GUI objects will be used to set the value for those objects. Unmatched addresses are passed through the right outlet. Any OSC input (included an empty bundle) will trigger output of the current values of the attached objects."
 								}
 
 							}
@@ -1896,7 +2517,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 507.5, 471.5, 116.0, 18.0 ],
+									"patching_rect" : [ 531.0, 571.0, 116.0, 18.0 ],
 									"style" : "",
 									"varname" : "/slider/2"
 								}
@@ -1910,7 +2531,7 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 368.5, 380.5, 50.0, 22.0 ],
+									"patching_rect" : [ 392.0, 480.0, 50.0, 22.0 ],
 									"style" : "",
 									"varname" : "/an/int"
 								}
@@ -1923,7 +2544,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 368.5, 349.0, 93.0, 22.0 ],
+									"patching_rect" : [ 392.0, 448.5, 93.0, 22.0 ],
 									"style" : "",
 									"text" : "varname /an/int"
 								}
@@ -1934,13 +2555,13 @@
 									"fontface" : 0,
 									"fontsize" : 12.0,
 									"id" : "obj-8",
-									"linecount" : 5,
+									"linecount" : 4,
 									"maxclass" : "o.display",
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 86.0, 554.5, 293.0, 88.0 ],
-									"text" : "/an/int : 10,\n/a/float : 0.22,\n/slider/1 : 50,\n/slider/2 : 100,\n/someother/data : \"stuff\""
+									"patching_rect" : [ 86.0, 626.0, 293.0, 75.0 ],
+									"text" : "/an/int : 10,\n/a/float : 0.22,\n/slider/1 : 50,\n/slider/2 : 100"
 								}
 
 							}
@@ -1952,7 +2573,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 368.5, 471.5, 116.0, 18.0 ],
+									"patching_rect" : [ 392.0, 571.0, 116.0, 18.0 ],
 									"style" : "",
 									"varname" : "/slider/1"
 								}
@@ -1967,7 +2588,7 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 507.5, 380.5, 50.0, 22.0 ],
+									"patching_rect" : [ 531.0, 480.0, 50.0, 22.0 ],
 									"style" : "",
 									"varname" : "/a/float"
 								}
@@ -2023,8 +2644,8 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-1", 0 ],
-									"source" : [ "obj-2", 0 ]
+									"destination" : [ "obj-7", 0 ],
+									"source" : [ "obj-21", 0 ]
 								}
 
 							}
@@ -2051,8 +2672,22 @@
 							}
 , 							{
 								"patchline" : 								{
+									"destination" : [ "obj-20", 0 ],
+									"source" : [ "obj-7", 2 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
 									"destination" : [ "obj-8", 0 ],
 									"source" : [ "obj-7", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-7", 0 ],
+									"source" : [ "", 0 ]
 								}
 
 							}
@@ -2079,14 +2714,7 @@
 		"dependency_cache" : [ 			{
 				"name" : "o.helpfilehelper.maxpat",
 				"bootpath" : "~/Documents/dev-lib/CNMAT-odot/patchers/utils",
-				"patcherrelativepath" : "../../patchers/utils",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "o.accum.maxpat",
-				"bootpath" : "~/Documents/dev-lib/CNMAT-odot/patchers/namespace",
-				"patcherrelativepath" : "../../patchers/namespace",
+				"patcherrelativepath" : "../patchers/utils",
 				"type" : "JSON",
 				"implicit" : 1
 			}
