@@ -54,6 +54,13 @@
 
 #include "odot_version.h"
 
+
+typedef enum o_gui_attach_err {
+    O_ATTACH_NOERROR = 0,
+    O_ATTACH_NOPARENT,
+    O_ATTACH_DUPLICATE
+} t_o_attach_err;
+
 typedef struct _objmap
 {
     t_object *ob;
@@ -77,7 +84,9 @@ typedef struct _o_gui_attach
     void            *clock;
 	t_critical      lock;
 
-  t_objmap        *head, *tail;
+    int             attach_err;
+    
+    t_objmap        *head, *tail;
 } t_o_gui_attach;
 
 t_class *o_gui_attach_class;
@@ -251,12 +260,12 @@ void o_gui_attach_output_bundle(t_o_gui_attach *x)
 void o_gui_attach_addErr(t_o_gui_attach *x, char *err_buf, char *name, char *varname)
 {
     char addr_buf[256];
-    snprintf(addr_buf, 256, "/err/%d", osc_bundle_u_getMsgCount(x->error_bndl) );
+    snprintf(addr_buf, 256, "/status/%d", osc_bundle_u_getMsgCount(x->error_bndl) );
     
     t_osc_bndl_u *sub = osc_bundle_u_alloc();
     
     if( err_buf )
-        osc_bundle_u_addMsg(sub, osc_message_u_allocWithString("/error", err_buf ));
+        osc_bundle_u_addMsg(sub, osc_message_u_allocWithString("/message", err_buf ));
     
     if( name )
         osc_bundle_u_addMsg(sub, osc_message_u_allocWithString("/object", name ) );
@@ -370,8 +379,19 @@ void o_gui_attach_do_iter(t_o_gui_attach *x)
         object_method(x->base_patch, gensym("iterate"), o_gui_attach_attach_iterator, (void *)x, PI_WANTBOX, &result); // | PI_DEEP
     else
     {
-        o_gui_attach_addErr(x, "could not attach to parent patcher", NULL, NULL );
-        object_error((t_object*)x, "could not attach to parent patcher" );
+        
+        switch( x->attach_err )
+        {
+            case O_ATTACH_DUPLICATE:
+                o_gui_attach_addErr(x, "only one active o.gui.attach is allowed per patcher, this instance will be disabled", NULL, NULL );
+                object_error((t_object*)x, "only one active o.gui.attach is allowed per patcher, this instance will be disabled" );
+                break;
+            case O_ATTACH_NOPARENT:
+                o_gui_attach_addErr(x, "could not attach to parent patcher", NULL, NULL );
+                object_error((t_object*)x, "could not attach to parent patcher" );
+                break;
+            
+        }
         
         t_osc_bndl_s *s_err_bnd = osc_bundle_u_serialize(x->error_bndl);
         omax_util_outletOSC(x->error_outlet, osc_bundle_s_getLen(s_err_bnd), osc_bundle_s_getPtr(s_err_bnd));
@@ -436,7 +456,7 @@ void o_gui_attach_checkSet(t_o_gui_attach *x, t_object *b, char *addr, long argc
     if( argc != test_argc )
     {
         o_gui_attach_addErr(x, "failed to set values",  object_classname(b)->s_name, addr );
-        object_error((t_object*)x, "failed to set values");
+        object_error((t_object*)x, "failed to set values for %s %s", object_classname(b)->s_name, addr );
         return;
     }
     
@@ -480,6 +500,9 @@ void o_gui_attach_fullPacket(t_o_gui_attach *x, t_symbol *msg, int argc, t_atom 
     // post("o_gui_attach_fullPacket");
 
     OMAX_UTIL_GET_LEN_AND_PTR
+    
+    // printf("x %p len %ld ptr %p\n", x, len, ptr);
+    
     t_osc_bndl_u *in_bnd = osc_bundle_s_deserialize(len, ptr);
 
     if( len == OSC_HEADER_SIZE )
@@ -543,7 +566,7 @@ void o_gui_attach_fullPacket(t_o_gui_attach *x, t_symbol *msg, int argc, t_atom 
                                     break;
                                 default:
                                     o_gui_attach_addErr(x, "unsupported type", osc_atom_u_getTypetag(a), addr->s_name);
-                                    object_error((t_object*)x, "unsupported type %c", osc_atom_u_getTypetag(a) );
+                                    object_error((t_object*)x, "unsupported type %c for %s %s", osc_atom_u_getTypetag(a), object_classname(node->ob)->s_name, addr->s_name );
                                     break;
                             }
                         }
@@ -553,7 +576,7 @@ void o_gui_attach_fullPacket(t_o_gui_attach *x, t_symbol *msg, int argc, t_atom 
                         if( err )
                         {
                             o_gui_attach_addErr(x, "unable to set values", object_classname(node->ob)->s_name, addr->s_name);
-                            object_error((t_object*)x, "unable to set values");
+                            object_error((t_object*)x, "unable to set values for %s %s", object_classname(node->ob)->s_name, addr->s_name );
                         }
                         else
                         {
@@ -756,7 +779,7 @@ t_max_err o_gui_attach_notify(t_o_gui_attach *x, t_symbol *s, t_symbol *msg, voi
     }
     else
     {
-    //   post("%s %s %p %p -- patcher: %p", s->s_name, msg->s_name, sender, data, x->base_patch);
+       // printf("%s %s %p %p -- patcher: %p\n", s->s_name, msg->s_name, sender, data, x->base_patch);
 
         if( msg == gensym("modified") ||  msg == gensym("setvalueof"))
         {
@@ -860,7 +883,65 @@ void o_gui_attach_free(t_o_gui_attach *x)
     
 }
 
-BEGIN_USING_C_LINKAGE
+long o_gui_attach_check_sub_for_other(t_o_gui_attach *x, t_object *b)
+{
+    
+    t_box *box = NULL;
+    object_obex_lookup(x, gensym("#B"), (t_object **)&box);
+    // ignore if it's our box
+    if( b == box )
+        return 0;
+    
+    t_object *obj = jbox_get_object(b);
+    t_symbol *name = object_classname(obj);
+
+//    post("in subpatch name %s", name->s_name);
+    
+    if( name == gensym("o.gui.attach") )
+    {
+        t_object *textfield = jbox_get_textfield(b);
+        
+        char *text = NULL;
+        long textlen = 0;
+        object_method(textfield, gensym("gettextptr"), &text, &textlen);
+        // post("obj text %s", text);
+        
+        if( text && !strcmp(text, "o.gui.attach attachtoparent") )
+        {
+//            post("found o.gui.attach attachtoparent");
+            x->attach_err = O_ATTACH_DUPLICATE;
+            x->base_patch = NULL;
+        }
+    }
+    return 0;
+}
+
+long o_gui_attach_check_for_other(t_o_gui_attach *x, t_object *b)
+{
+    t_box *box = NULL;
+    object_obex_lookup(x, gensym("#B"), (t_object **)&box);
+    // ignore if it's our box
+    if( b == box )
+        return 0;
+ 
+    t_object *obj = jbox_get_object(b);
+    t_symbol *name = object_classname(obj);
+//    post("name %s", name->s_name );
+
+    if( name == gensym("o.gui.attach") )
+    {
+        x->attach_err = O_ATTACH_DUPLICATE;
+        x->base_patch = NULL;
+    }
+    else if( jpatcher_is_patcher(obj) )
+    {
+        long result = 0;
+        object_method(obj, gensym("iterate"), o_gui_attach_check_sub_for_other, (void *)x, PI_WANTBOX, &result);
+    }
+    
+    return 0;
+}
+
 void *o_gui_attach_new(t_symbol *msg, short argc, t_atom *argv)
 {
     t_o_gui_attach *x = NULL;
@@ -891,6 +972,7 @@ void *o_gui_attach_new(t_symbol *msg, short argc, t_atom *argv)
             return 0;
         }
 
+        x->attach_err = O_ATTACH_NOERROR;
         
         if( argc == 1 && argv && atom_gettype(argv) == A_SYM )
         {
@@ -903,7 +985,7 @@ void *o_gui_attach_new(t_symbol *msg, short argc, t_atom *argv)
                 {
 //                    object_error((t_object*)x, "could not attach to parent patcher" );
 //                    return 0;
-                    
+                    x->attach_err = O_ATTACH_NOPARENT;
                     // allowing object to exist but will be unattached in order to communicate error to server if used remotely
                     patcher = NULL;
 
@@ -912,9 +994,17 @@ void *o_gui_attach_new(t_symbol *msg, short argc, t_atom *argv)
         }
         
         x->base_patch = patcher;
-        if( patcher )
+        if( x->base_patch )
+        {
+            // check for other o.gui.attach and sets x->base_patch to null if we are a duplicate
+            long result = 0;
+            object_method(patcher, gensym("iterate"), o_gui_attach_check_for_other, (void *)x, PI_WANTBOX, &result);
+        }
+        
+        if( x->base_patch )
+        {
             object_attach_byptr(x, x->base_patch);
-
+        }
         // >> probably don't need the patcher in the obj list
 //        x->obj_map.insert( pair<t_object*, t_symbol*>(patcher, gensym("#P")));
 
@@ -954,4 +1044,3 @@ int main(void)
 
 	return 0;
 }
-END_USING_C_LINKAGE
