@@ -22,7 +22,7 @@ with open('default-package-info.json', 'r') as f:
     pinfo['filelist']['default-definitions'] = filesinfolder("default-definitions")
     pinfo['filelist']['docs'] = filesinfolder("docs")
     pinfo['filelist']['examples'] = filesinfolder("examples")
-    pinfo['filelist']['extras'] = filesinfolder("extras")
+    pinfo['filelist']['extras'] = filesinfolder("extras/odot-extras")
     pinfo['filelist']['init'] = filesinfolder("init")
     pinfo['filelist']['interfaces'] = filesinfolder("interfaces")
     pinfo['filelist']['clippings'] = filesinfolder("clippings")
