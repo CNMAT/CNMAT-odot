@@ -18,15 +18,19 @@ with open('default-package-info.json', 'r') as f:
         pinfo['filelist']['externals'] = os.listdir("src/build/Release")
 
     pinfo['filelist']['help'] = filesinfolder("help")
-    pinfo['filelist']['misc'] = filesinfolder("misc")
     pinfo['filelist']['default-definitions'] = filesinfolder("default-definitions")
-    pinfo['filelist']['docs'] = filesinfolder("docs")
+    pinfo['filelist']['docs'] = filesinfolder("docs/refpages/odot_ref")
     pinfo['filelist']['examples'] = filesinfolder("examples")
     pinfo['filelist']['extras'] = filesinfolder("extras/odot-extras")
     pinfo['filelist']['init'] = filesinfolder("init")
     pinfo['filelist']['interfaces'] = filesinfolder("interfaces")
-    pinfo['filelist']['clippings'] = filesinfolder("clippings")
     pinfo['filelist']['patchers'] = filesinfolder("patchers")
+
+    pinfo['filelist']['dev'] = filesinfolder("dev")
+
+
+#pinfo['filelist']['clippings'] = filesinfolder("clippings")
+#pinfo['filelist']['misc'] = filesinfolder("misc")
 
     version = subprocess.check_output("git describe --tags --long", shell=True).strip()
     branch = subprocess.check_output("git branch | egrep '^\*' | awk '{print $2}'", shell=True).strip()
