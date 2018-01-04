@@ -86,6 +86,7 @@ done
 python make-package-info.py
 
 cp package-info.json $maxstagingdir
+cp icon.png $maxstagingdir
 
 maxtarballname=odot-Max-$platform-`git describe --tags --long`-`git branch | egrep '^\*' | awk '{print $2}'`.tgz
 #externstarballname=Max-externals-$platform-`git describe --tags --long`-`git branch | egrep '^\*' | awk '{print $2}'`.tgz
