@@ -81,7 +81,7 @@
 							"modernui" : 1
 						}
 ,
-						"rect" : [ 206.0, 79.0, 1004.0, 787.0 ],
+						"rect" : [ 206.0, 79.0, 657.0, 787.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -112,6 +112,37 @@
 								"box" : 								{
 									"fontface" : 0,
 									"fontsize" : 12.0,
+									"id" : "obj-3",
+									"linecount" : 53,
+									"maxclass" : "o.display",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 60.0, 1329.0, 531.0, 741.0 ],
+									"presentation_rect" : [ 192.0, 863.0, 0.0, 0.0 ],
+									"text" : "/name : \"match\",\n/signature : \"/result = match(/arg1, /arg2)\",\n/docstring : \"matches the pattern(s) in arg 1 against the string(s) in arg 2.\",\n/num_required_args : 2,\n/num_optional_args : 0,\n/arg/required/name/1 : \"String\",\n/arg/required/types/1 : \"list, string\",\n/arg/required/name/2 : \"String\",\n/arg/required/types/2 : \"list, string\",\n/categories : \"/core\",\n/~/strreplace : \"lambda([str, tok, newtok],\n  /_t = strfind(tok, str),\n  if( !bound(/_t),\n    /_new = str,\n    progn(\n      /_new = \\\"\\\",\n      /_count = 0,\n      /_maxidx = strlen(str)-1,\n      map(\n        lambda(i,\n          if( i == /_count,\n            /_new += newtok,\n            /_new += strchar(aseq(/_count, i-1), str) + newtok\n          ),\n          /_count = i+1\n        ), /_t\n      ),\n      if( /_count <= /_maxidx, /_new += strchar(aseq(/_count, /_maxidx), str) )\n    )\n  ),\n  prog1( /_new )\n)\",\n/_t : [16, 20],\n/_new : \"/result = match(/arg1, /arg2)\",\n/tab : \"<tab></tab>\",\n/desc : \"<m>match</m><tab></tab>matches the pattern(s) in arg 1 against the string(s) in arg 2.<br /><tab></tab><codeexample>/result = match(/arg1, /arg2)</codeexample><br /><tab></tab>Arguments:<ol>Required:<br /><li>String: list, string</li><li>String: list, string</li></ol><br />\",\n/_count : 21,\n/_maxidx : 22,\n/ex : \"<tab></tab><codeexample>/result = match(/arg1, /arg2)</codeexample><br />\",\n/argsheader : \"<tab></tab>Arguments:<ol>\",\n/argsfooter : \"</ol>\",\n/reqargs : \"Required:<br /><li>String: list, string</li><li>String: list, string</li>\",\n/arg_name : \"String\",\n/arg_types : \"list, string\",\n/optargs : \"\""
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"fontface" : 0,
+									"fontsize" : 12.0,
+									"id" : "obj-2",
+									"linecount" : 11,
+									"maxclass" : "o.display",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 665.0, 173.0, 531.0, 170.0 ],
+									"text" : "/name : \"match\",\n/signature : \"/result = match($1, $2)\",\n/docstring : \"matches the pattern(s) in arg 1 against the string(s) in arg 2.\",\n/num_required_args : 2,\n/num_optional_args : 0,\n/arg/required/name/1 : \"String\",\n/arg/required/types/1 : \"list, string\",\n/arg/required/name/2 : \"String\",\n/arg/required/types/2 : \"list, string\",\n/categories : \"/core\""
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"fontface" : 0,
+									"fontsize" : 12.0,
 									"id" : "obj-1",
 									"linecount" : 64,
 									"maxclass" : "o.expr.codebox",
@@ -128,13 +159,13 @@
 									"fontface" : 0,
 									"fontsize" : 12.0,
 									"id" : "obj-36",
-									"linecount" : 45,
+									"linecount" : 89,
 									"maxclass" : "o.expr.codebox",
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "FullPacket", "FullPacket" ],
-									"patching_rect" : [ 106.0, 35.0, 907.0, 630.0 ],
-									"text" : "/~/strreplace = quote(lambda([str, tok, newtok],\n  /_t = strfind(tok, str),\n  if( !bound(/_t),\n    /_new = str,\n    progn(\n      /_new = \"\",\n      /_count = 0,\n      /_maxidx = strlen(str)-1,\n      map(\n        lambda(i,\n          if( i == /_count,\n            /_new += newtok,\n            /_new += strchar(aseq(/_count, i-1), str) + newtok\n          ),\n          /_count = i+1\n        ), /_t\n      ),\n      if( /_count <= /_maxidx, /_new += strchar(aseq(/_count, /_maxidx), str) )\n    )\n  ),\n  prog1( /_new )\n)),\n\n# don't forget to replace & first! (it's also used by html symbols)\n/name = /~/strreplace(/name, \"&\", \"&amp;\"),\n/name = /~/strreplace(/name, \"<\", \"&lt;\"),\n/name = /~/strreplace(/name, \">\", \"&gt;\"),\n\n/docstring = /~/strreplace(/docstring, \"&\", \"&amp;\"),\n/docstring = /~/strreplace(/docstring, \"<\", \"&lt;\"),\n/docstring = /~/strreplace(/docstring, \">\", \"&gt;\"),\n\n\n/desc = \"<m>\"+/name+\"</m><tab></tab>\" + /docstring + \"<br />\",\n\n# example function\n/signature = /~/strreplace(/signature, \"&\", \"&amp;\"),\n/signature = /~/strreplace(/signature, \"<\", \"&lt;\"),\n/signature = /~/strreplace(/signature, \">\", \"&gt;\"),\n/signature = /~/strreplace(/signature, \"$\", \"/arg\"),\n\n# need to deal with function names that get tokenized unintentionally\n/ex = \"<tab></tab><tab></tab><codeexample>\" + /signature + \"</codeexample><br /><br />\",\n\n/desc += /ex"
+									"patching_rect" : [ 104.0, 78.0, 907.0, 1228.0 ],
+									"text" : "/~/strreplace = quote(lambda([str, tok, newtok],\n  /_t = strfind(tok, str),\n  if( !bound(/_t),\n    /_new = str,\n    progn(\n      /_new = \"\",\n      /_count = 0,\n      /_maxidx = strlen(str)-1,\n      map(\n        lambda(i,\n          if( i == /_count,\n            /_new += newtok,\n            /_new += strchar(aseq(/_count, i-1), str) + newtok\n          ),\n          /_count = i+1\n        ), /_t\n      ),\n      if( /_count <= /_maxidx, /_new += strchar(aseq(/_count, /_maxidx), str) )\n    )\n  ),\n  prog1( /_new )\n)),\n\n# don't forget to replace & first! (it's also used by html symbols)\n/name = /~/strreplace(/name, \"&\", \"&amp;\"),\n/name = /~/strreplace(/name, \"<\", \"&lt;\"),\n/name = /~/strreplace(/name, \">\", \"&gt;\"),\n\n/docstring = /~/strreplace(/docstring, \"&\", \"&amp;\"),\n/docstring = /~/strreplace(/docstring, \"<\", \"&lt;\"),\n/docstring = /~/strreplace(/docstring, \">\", \"&gt;\"),\n\n/tab = \"<tab></tab>\",\n\n/desc = \"<m>\"+/name+\"</m>\" + /tab + /docstring + \"<br />\",\n\n# example function\n/signature = /~/strreplace(/signature, \"&\", \"&amp;\"),\n/signature = /~/strreplace(/signature, \"<\", \"&lt;\"),\n/signature = /~/strreplace(/signature, \">\", \"&gt;\"),\n/signature = /~/strreplace(/signature, \"$\", \"/arg\"),\n\n\n\n# need to deal with function names that get tokenized unintentionally\n/ex = /tab+\"<codeexample>\" + /signature + \"</codeexample><br />\",\n\n# argument details\n\n/argsheader = \"\",\n/argsfooter = \"\",\nif( (/num_required_args + /num_optional_args) > 0,\n  progn(\n    /argsheader = /tab+quote(Arguments:<br /><ol type=\"1\">),\n    /argsfooter = \"</ol>\"\n  )\n),\n\n/reqargs = \"\",\nif( /num_required_args > 0,\n  progn(\n#    /reqargs = \"Required:<br />\",\n    map(\n      lambda(i,\n        /arg_name = value(\"/arg/required/name/\"+i),\n        /arg_types = value(\"/arg/required/types/\"+i),\n        /reqargs += \"<li>\"+/arg_name+\": \"+/arg_types +\" (required)</li>\"\n      ), aseq(1, /num_required_args)\n    )\n  )\n),\n\n\n/optargs = \"\",\nif( /num_optional_args > 0,\n  progn(\n#    /optargs = \"Optional:<br />\",\n    map(\n      lambda(i,\n        /arg_name = value(\"/arg/optional/name/\"+i),\n        /arg_types = value(\"/arg/optional/types/\"+i),\n        /optargs += \"<li>\"+/arg_name+\": \"+/arg_types +\" (optional)</li>\"\n      ), aseq(1, /num_optional_args)\n    )\n  )\n),\n\n\n/desc += /ex + /argsheader + /reqargs + /optargs + /argsfooter + \"<br />\""
 								}
 
 							}
@@ -160,7 +191,7 @@
 									"maxclass" : "outlet",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 49.0, 891.0, 30.0, 30.0 ],
+									"patching_rect" : [ 1.0, 1062.0, 30.0, 30.0 ],
 									"style" : ""
 								}
 
@@ -168,7 +199,16 @@
  ],
 						"lines" : [ 							{
 								"patchline" : 								{
+									"destination" : [ "obj-2", 0 ],
+									"order" : 0,
+									"source" : [ "obj-27", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
 									"destination" : [ "obj-36", 0 ],
+									"order" : 1,
 									"source" : [ "obj-27", 0 ]
 								}
 
@@ -176,6 +216,15 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-28", 0 ],
+									"order" : 1,
+									"source" : [ "obj-36", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-3", 0 ],
+									"order" : 0,
 									"source" : [ "obj-36", 0 ]
 								}
 
@@ -909,9 +958,9 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 460.5, 65.0, 82.0, 22.0 ],
+					"patching_rect" : [ 460.5, 65.0, 99.0, 22.0 ],
 					"style" : "",
-					"text" : "doc-func eval"
+					"text" : "doc-func lambda"
 				}
 
 			}
