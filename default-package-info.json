@@ -1,7 +1,7 @@
 {
 	"author" : "CNMAT",
 	"authors" : ["John MacCallum", "Adrian Freed", "Rama Gottfried", "Ilya Rostovtsev"  ],
-	"categories" : [  ],
+	"categories" : [ "Utilities" ],
 	"description" : "A library for OSC processing created by researchers at CNMAT in Berkeley, CA.",
 	"displayname" : "",
 	"extends" : "",
@@ -22,6 +22,11 @@
 		}
 
 	}
+,
+"package_extra" : 	{
+	"reverse_domain" : "edu.berkeley.cnmat",
+	"copyright" : "Copyright (c) 2017 UC Berkeley"
+}
 ,
 	"readme" : "",
 	"tags" : ["Open Sound Control (OSC)", "Dynamic Expression Language", "CNMAT" ],
