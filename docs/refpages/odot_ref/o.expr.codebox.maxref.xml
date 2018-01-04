@@ -194,67 +194,254 @@
 		</entry>
 	</misc>
 
-	<misc name ="Functions: math operator arithmetic">
-		<entry name="+">
-			<description>
-			Add
-			</description>
-		</entry>
-		<entry name="-">
-			<description>
-			Subtract
-			</description>
-		</entry>
-		<entry name="*">
-			<description>
-			Multiply
-			</description>
-		</entry>
-		<entry name="/">
-			<description>
-			Divide
-			</description>
-		</entry>
-		<entry name="%">
-			<description>
-			Modulo
-			</description>
-		</entry>
-		<entry name="++">
-			<description>
-			Increment
-			</description>
-		</entry>
-		<entry name="--">
-			<description>
-			Decrement
-			</description>
-		</entry>
-		<entry name="+=">
-			<description>
-			Add and assign
-			</description>
-		</entry>
-		<entry name="-=">
-			<description>
-			Subtract and assign
-			</description>
-		</entry>
-		<entry name="*=">
-			<description>
-			Multiply and assign
-			</description>
-		</entry>
-		<entry name="/=">
-			<description>
-			Divide and assign
-			</description>
-		</entry>
-		<entry name="%=">
-			<description>
-			Modulo and assign
-			</description>
-		</entry>
+	<misc name ="Functions">
+		<!-- note: these function docs are pasted in from doc generator patch -->
+		<entry name ="math operator arithmetic"><description>
+	<m>+</m><tab></tab>Add<br /><tab></tab><tab></tab><codeexample>/result = /arg1 + /arg2</codeexample><br /><br />
+	<m>-</m><tab></tab>Subtract<br /><tab></tab><tab></tab><codeexample>/result = /arg1 - /arg2</codeexample><br /><br />
+	<m>*</m><tab></tab>Multiply<br /><tab></tab><tab></tab><codeexample>/result = /arg1 * /arg2</codeexample><br /><br />
+	<m>/</m><tab></tab>Divide<br /><tab></tab><tab></tab><codeexample>/result = /arg1 / /arg2</codeexample><br /><br />
+	<m>%</m><tab></tab>Modulo<br /><tab></tab><tab></tab><codeexample>/result = /arg1 % /arg2</codeexample><br /><br />
+	<m>++</m><tab></tab>Increment<br /><tab></tab><tab></tab><codeexample>/result = /arg1++</codeexample><br /><br />
+	<m>--</m><tab></tab>Decrement<br /><tab></tab><tab></tab><codeexample>/result = /arg1--</codeexample><br /><br />
+	<m>+=</m><tab></tab>Add and assign<br /><tab></tab><tab></tab><codeexample>/result = /arg1 += /arg2</codeexample><br /><br />
+	<m>-=</m><tab></tab>Subtract and assign<br /><tab></tab><tab></tab><codeexample>/result = /arg1 -= /arg2</codeexample><br /><br />
+	<m>*=</m><tab></tab>Multiply and assign<br /><tab></tab><tab></tab><codeexample>/result = /arg1 *= /arg2</codeexample><br /><br />
+	<m>/=</m><tab></tab>Divide and assign<br /><tab></tab><tab></tab><codeexample>/result = /arg1 /= /arg2</codeexample><br /><br />
+	<m>%=</m><tab></tab>Modulo and assign<br /><tab></tab><tab></tab><codeexample>/result = /arg1 %= /arg2</codeexample><br /><br />
+</description></entry>
+<entry name ="math operator relational"><description>
+	<m>&lt;</m><tab></tab>Less than<br /><tab></tab><tab></tab><codeexample>/result = /arg1 &lt; /arg2</codeexample><br /><br />
+	<m>&lt;=</m><tab></tab>Less than or equal to<br /><tab></tab><tab></tab><codeexample>/result = /arg1 &lt;= /arg2</codeexample><br /><br />
+	<m>&gt;</m><tab></tab>Greater than<br /><tab></tab><tab></tab><codeexample>/result = /arg1 &gt; /arg2</codeexample><br /><br />
+	<m>&gt;=</m><tab></tab>Greater than or equal to<br /><tab></tab><tab></tab><codeexample>/result = /arg1 &gt;= /arg2</codeexample><br /><br />
+	<m>==</m><tab></tab>Equal<br /><tab></tab><tab></tab><codeexample>/result = /arg1 == /arg2</codeexample><br /><br />
+	<m>!=</m><tab></tab>Not equal<br /><tab></tab><tab></tab><codeexample>/result = /arg1 != /arg2</codeexample><br /><br />
+	<m>??</m><tab></tab>Null coalescing operator, returns the left operand if it exists, otherwise it returns the right.<br /><tab></tab><tab></tab><codeexample>/result = /arg1 ?? /arg2</codeexample><br /><br />
+</description></entry>
+<entry name ="math operator logical"><description>
+	<m>&amp;</m><tab></tab>Logical and<br /><tab></tab><tab></tab><codeexample>/result = /arg1 &amp; /arg2</codeexample><br /><br />
+	<m>|</m><tab></tab>Logical or<br /><tab></tab><tab></tab><codeexample>/result = /arg1 | /arg2</codeexample><br /><br />
+	<m>&amp;&amp;</m><tab></tab>Logical short-circuit and<br /><tab></tab><tab></tab><codeexample>/result = /arg1 &amp;&amp; /arg2</codeexample><br /><br />
+	<m>||</m><tab></tab>Logical short-circuit or<br /><tab></tab><tab></tab><codeexample>/result = /arg1 || /arg2</codeexample><br /><br />
+	<m>!</m><tab></tab>Logical not<br /><tab></tab><tab></tab><codeexample>/result = !/arg1</codeexample><br /><br />
+</description></entry>
+<entry name ="math operator assignment"><description>
+	<m>=</m><tab></tab>Assignment<br /><tab></tab><tab></tab><codeexample>/result = /arg1</codeexample><br /><br />
+	<m>++</m><tab></tab>Increment<br /><tab></tab><tab></tab><codeexample>/result = /arg1++</codeexample><br /><br />
+	<m>--</m><tab></tab>Decrement<br /><tab></tab><tab></tab><codeexample>/result = /arg1--</codeexample><br /><br />
+	<m>+=</m><tab></tab>Add and assign<br /><tab></tab><tab></tab><codeexample>/result = /arg1 += /arg2</codeexample><br /><br />
+	<m>-=</m><tab></tab>Subtract and assign<br /><tab></tab><tab></tab><codeexample>/result = /arg1 -= /arg2</codeexample><br /><br />
+	<m>*=</m><tab></tab>Multiply and assign<br /><tab></tab><tab></tab><codeexample>/result = /arg1 *= /arg2</codeexample><br /><br />
+	<m>/=</m><tab></tab>Divide and assign<br /><tab></tab><tab></tab><codeexample>/result = /arg1 /= /arg2</codeexample><br /><br />
+	<m>%=</m><tab></tab>Modulo and assign<br /><tab></tab><tab></tab><codeexample>/result = /arg1 %= /arg2</codeexample><br /><br />
+</description></entry>
+<entry name ="math arithmetic"><description>
+	<m>add</m><tab></tab>Add<br /><tab></tab><tab></tab><codeexample>/result = add(/arg1, /arg2)</codeexample><br /><br />
+	<m>sub</m><tab></tab>Subtract<br /><tab></tab><tab></tab><codeexample>/result = sub(/arg1, /arg2)</codeexample><br /><br />
+	<m>mul</m><tab></tab>Multiply<br /><tab></tab><tab></tab><codeexample>/result = mul(/arg1, /arg2)</codeexample><br /><br />
+	<m>div</m><tab></tab>Add<br /><tab></tab><tab></tab><codeexample>/result = div(/arg1, /arg2)</codeexample><br /><br />
+	<m>lt</m><tab></tab>Less than<br /><tab></tab><tab></tab><codeexample>/result = lt(/arg1, /arg2)</codeexample><br /><br />
+	<m>le</m><tab></tab>Less than or equal<br /><tab></tab><tab></tab><codeexample>/result = lte(/arg1, /arg2)</codeexample><br /><br />
+	<m>gt</m><tab></tab>Greater than<br /><tab></tab><tab></tab><codeexample>/result = gt(/arg1, /arg2)</codeexample><br /><br />
+	<m>ge</m><tab></tab>Greater than or equal<br /><tab></tab><tab></tab><codeexample>/result = ge(/arg1, /arg2)</codeexample><br /><br />
+	<m>eq</m><tab></tab>Equality<br /><tab></tab><tab></tab><codeexample>/result = eq(/arg1, /arg2)</codeexample><br /><br />
+	<m>ne</m><tab></tab>Not equal<br /><tab></tab><tab></tab><codeexample>/result = ne(/arg1, /arg2)</codeexample><br /><br />
+	<m>and</m><tab></tab>Logical and<br /><tab></tab><tab></tab><codeexample>/result = and(/arg1, /arg2)</codeexample><br /><br />
+	<m>or</m><tab></tab>Logical or<br /><tab></tab><tab></tab><codeexample>/result = or(/arg1, /arg2)</codeexample><br /><br />
+	<m>andalso</m><tab></tab>Logical short-circuit and<br /><tab></tab><tab></tab><codeexample>/result = andalso(/arg1, /arg2)</codeexample><br /><br />
+	<m>orelse</m><tab></tab>Logical short-circuit or<br /><tab></tab><tab></tab><codeexample>/result = orelse(/arg1, /arg2)</codeexample><br /><br />
+	<m>mod</m><tab></tab>Modulo<br /><tab></tab><tab></tab><codeexample>/result = mod(/arg1, /arg2)</codeexample><br /><br />
+	<m>plus1</m><tab></tab>Add one and return the result without altering the argument<br /><tab></tab><tab></tab><codeexample>/result = plus1(/arg1)</codeexample><br /><br />
+	<m>minus1</m><tab></tab>Subtract one and return the result without altering the argument.<br /><tab></tab><tab></tab><codeexample>/result = minus1(/arg1)</codeexample><br /><br />
+	<m>abs</m><tab></tab>Absolute value<br /><tab></tab><tab></tab><codeexample>/result = abs(/arg1)</codeexample><br /><br />
+	<m>ceil</m><tab></tab>Ceiling--round up to the nearest integer<br /><tab></tab><tab></tab><codeexample>/result = ceil(/arg1)</codeexample><br /><br />
+	<m>floor</m><tab></tab>Round down to the nearest integer<br /><tab></tab><tab></tab><codeexample>/result = floor(/arg1)</codeexample><br /><br />
+	<m>fmod</m><tab></tab>Floating-point remainder<br /><tab></tab><tab></tab><codeexample>/result = fmod(/arg1, /arg2)</codeexample><br /><br />
+	<m>remainder</m><tab></tab>Remainder function (r = x - ny where y is non-zero and n is the integral value nearest x/y)<br /><tab></tab><tab></tab><codeexample>/result = remainder(/arg1, /arg2)</codeexample><br /><br />
+	<m>round</m><tab></tab>Round to nearest integral value<br /><tab></tab><tab></tab><codeexample>/result = round(/arg1)</codeexample><br /><br />
+	<m>mod</m><tab></tab>Modulo<br /><tab></tab><tab></tab><codeexample>/result = mod(/arg1, /arg2)</codeexample><br /><br />
+	<m>product</m><tab></tab>Product of all the elements of a list<br /><tab></tab><tab></tab><codeexample>/result = product(/arg1)</codeexample><br /><br />
+	<m>sum</m><tab></tab>Sum all the elements of a list<br /><tab></tab><tab></tab><codeexample>/result = sum(/arg1)</codeexample><br /><br />
+	<m>cumsum</m><tab></tab>Cumulative sum<br /><tab></tab><tab></tab><codeexample>/result = cumsum(/arg1)</codeexample><br /><br />
+	<m>dot</m><tab></tab>Dot product of arg1 and arg2<br /><tab></tab><tab></tab><codeexample>/result = dot(/arg1, /arg2)</codeexample><br /><br />
+	<m>cross</m><tab></tab>Cross product of arg1 and arg2<br /><tab></tab><tab></tab><codeexample>/result = cross(/arg1, /arg2)</codeexample><br /><br />
+	<m>det</m><tab></tab>Determinant of a square matrix represented as a list of rows (det(row1, row2, ..., rowN))<br /><tab></tab><tab></tab><codeexample>/result = det(/arg1, /arg2)</codeexample><br /><br />
+	<m>sign</m><tab></tab>Sign function--returns -1 if &lt;arg1&gt; &lt; 0, 0 if &lt;arg1&gt; == 0, and 1 if &lt;arg1&gt; &gt; 1<br /><tab></tab><tab></tab><codeexample>/result = sign(/arg1)</codeexample><br /><br />
+</description></entry>
+<entry name ="math trigonometric"><description>
+	<m>acos</m><tab></tab>Arc cosine<br /><tab></tab><tab></tab><codeexample>/result = acos(/arg1)</codeexample><br /><br />
+	<m>asin</m><tab></tab>Arc sine<br /><tab></tab><tab></tab><codeexample>/result = asin(/arg1)</codeexample><br /><br />
+	<m>atan</m><tab></tab>Arc tangent<br /><tab></tab><tab></tab><codeexample>/result = atan(/arg1)</codeexample><br /><br />
+	<m>atan2</m><tab></tab>Arc tangent of y/x (arg1/arg2)<br /><tab></tab><tab></tab><codeexample>/result = atan2(/arg1, /arg2)</codeexample><br /><br />
+	<m>cos</m><tab></tab>Cosine<br /><tab></tab><tab></tab><codeexample>/result = cos(/arg1)</codeexample><br /><br />
+	<m>cosh</m><tab></tab>Hyperbolic cosine<br /><tab></tab><tab></tab><codeexample>/result = cosh(/arg1)</codeexample><br /><br />
+	<m>sin</m><tab></tab>Sine<br /><tab></tab><tab></tab><codeexample>/result = sin(/arg1)</codeexample><br /><br />
+	<m>sinh</m><tab></tab>Hyperbolic sine<br /><tab></tab><tab></tab><codeexample>/result = sinh(/arg1)</codeexample><br /><br />
+	<m>tan</m><tab></tab>Tangent<br /><tab></tab><tab></tab><codeexample>/result = tan(/arg1)</codeexample><br /><br />
+	<m>tanh</m><tab></tab>Hyperbolic tangent<br /><tab></tab><tab></tab><codeexample>/result = tanh(/arg1)</codeexample><br /><br />
+	<m>acosh</m><tab></tab>Inverse hyperbolic cosine<br /><tab></tab><tab></tab><codeexample>/result = acosh(/arg1)</codeexample><br /><br />
+	<m>asinh</m><tab></tab>Inverse hyperbolic sine<br /><tab></tab><tab></tab><codeexample>/result = asinh(/arg1)</codeexample><br /><br />
+	<m>atanh</m><tab></tab>Inverse hyperbolic tangent<br /><tab></tab><tab></tab><codeexample>/result = atanh(/arg1)</codeexample><br /><br />
+</description></entry>
+<entry name ="math power"><description>
+	<m>exp</m><tab></tab>Exponential function<br /><tab></tab><tab></tab><codeexample>/result = exp(/arg1)</codeexample><br /><br />
+	<m>log</m><tab></tab>Natural logarithm<br /><tab></tab><tab></tab><codeexample>/result = log(/arg1)</codeexample><br /><br />
+	<m>log10</m><tab></tab>Base 10 logarithm<br /><tab></tab><tab></tab><codeexample>/result = log10(/arg1)</codeexample><br /><br />
+	<m>pow</m><tab></tab>Power<br /><tab></tab><tab></tab><codeexample>/result = pow(/arg1, /arg2)</codeexample><br /><br />
+	<m>sqrt</m><tab></tab>Square root<br /><tab></tab><tab></tab><codeexample>/result = sqrt(/arg1)</codeexample><br /><br />
+	<m>cbrt</m><tab></tab>Cube root<br /><tab></tab><tab></tab><codeexample>/result = cbrt(/arg1)</codeexample><br /><br />
+	<m>expm1</m><tab></tab>Exponential function (e^x - 1)<br /><tab></tab><tab></tab><codeexample>/result = expm1(/arg1)</codeexample><br /><br />
+	<m>ilogb</m><tab></tab>Unbiased exponent<br /><tab></tab><tab></tab><codeexample>/result = ilogb(/arg1)</codeexample><br /><br />
+	<m>logb</m><tab></tab>Radix-independent exponent<br /><tab></tab><tab></tab><codeexample>/result = logb(/arg1)</codeexample><br /><br />
+</description></entry>
+<entry name ="math conversion"><description>
+	<m>clip</m><tab></tab>Clip the data between arg2 and arg3<br /><tab></tab><tab></tab><codeexample>/result = clip(/arg1, /arg2, /arg3)</codeexample><br /><br />
+	<m>scale</m><tab></tab>Scale arg1 from arg2:arg3 to arg4:arg5<br /><tab></tab><tab></tab><codeexample>/result = scale(/arg1, /arg2, /arg3, /arg4, /arg5)</codeexample><br /><br />
+	<m>mtof</m><tab></tab>MIDI note number to frequency.  Optional arg2 sets base.<br /><tab></tab><tab></tab><codeexample>/result = mtof(/arg1)</codeexample><br /><br />
+	<m>ftom</m><tab></tab>Frequency to MIDI. Optional arg2 sets base.<br /><tab></tab><tab></tab><codeexample>/result = ftom(/arg1)</codeexample><br /><br />
+</description></entry>
+<entry name ="math specialfunction"><description>
+	<m>erf</m><tab></tab>Error function (see http://pubs.opengroup.org/onlinepubs/007908799/xsh/erf.html)<br /><tab></tab><tab></tab><codeexample>/result = erf(/arg1)</codeexample><br /><br />
+	<m>erfc</m><tab></tab>Complementary error function (see http://pubs.opengroup.org/onlinepubs/007908799/xsh/erf.html)<br /><tab></tab><tab></tab><codeexample>/result = erfc(/arg1)</codeexample><br /><br />
+	<m>gamma</m><tab></tab>Log gamma function (same as "lgamma")<br /><tab></tab><tab></tab><codeexample>/result = gamma(/arg1)</codeexample><br /><br />
+	<m>hypot</m><tab></tab>Euclidean distance<br /><tab></tab><tab></tab><codeexample>/result = hypot(/arg1, /arg2)</codeexample><br /><br />
+	<m>j0</m><tab></tab>0th Bessel function of the first kind<br /><tab></tab><tab></tab><codeexample>/result = j0(/arg1)</codeexample><br /><br />
+	<m>j1</m><tab></tab>1st Bessel function of the first kind<br /><tab></tab><tab></tab><codeexample>/result = j1(/arg1)</codeexample><br /><br />
+	<m>jn</m><tab></tab>nth Bessel function of the first kind<br /><tab></tab><tab></tab><codeexample>/result = jn(/arg1, /arg2)</codeexample><br /><br />
+	<m>lgamma</m><tab></tab>Log gamma function (same as "gamma")<br /><tab></tab><tab></tab><codeexample>/result = lgamma(/arg1)</codeexample><br /><br />
+	<m>y0</m><tab></tab>0th Bessel function of the second kind<br /><tab></tab><tab></tab><codeexample>/result = y0(/arg1)</codeexample><br /><br />
+	<m>y1</m><tab></tab>1st Bessel function of the second kind<br /><tab></tab><tab></tab><codeexample>/result = y1(/arg1)</codeexample><br /><br />
+	<m>yn</m><tab></tab>nth Bessel function of the second kind<br /><tab></tab><tab></tab><codeexample>/result = yn(/arg1, /arg2)</codeexample><br /><br />
+	<m>identity</m><tab></tab>Returns its argument<br /><tab></tab><tab></tab><codeexample>/result = identity(/arg1)</codeexample><br /><br />
+</description></entry>
+<entry name ="math constant"><description>
+	<m>nextafter</m><tab></tab>Next representable double-precision floating-point number<br /><tab></tab><tab></tab><codeexample>/result = nextafter(/arg1)</codeexample><br /><br />
+	<m>pi</m><tab></tab>pi: 3.14159...<br /><tab></tab><tab></tab><codeexample>/result = pi()</codeexample><br /><br />
+	<m>twopi</m><tab></tab>2 * pi: 6.28318...<br /><tab></tab><tab></tab><codeexample>/result = twopi()</codeexample><br /><br />
+	<m>halfpi</m><tab></tab>pi / 2: 1.57079...<br /><tab></tab><tab></tab><codeexample>/result = halfpi()</codeexample><br /><br />
+	<m>quarterpi</m><tab></tab>pi / 4: 0.78539...<br /><tab></tab><tab></tab><codeexample>/result = quarterpi()</codeexample><br /><br />
+	<m>oneoverpi</m><tab></tab>1 / pi: 0.31830...<br /><tab></tab><tab></tab><codeexample>/result = oneoverpi()</codeexample><br /><br />
+	<m>twooverpi</m><tab></tab>2 / pi: 0.63661...<br /><tab></tab><tab></tab><codeexample>/result = twooverpi()</codeexample><br /><br />
+	<m>degtorad</m><tab></tab>Multiply by angle to get radians (0.017453...)<br /><tab></tab><tab></tab><codeexample>/result = degtorad()</codeexample><br /><br />
+	<m>radtodeg</m><tab></tab>Multiply by angle in radians to get degrees (57.29578...)<br /><tab></tab><tab></tab><codeexample>/result = radtodeg()</codeexample><br /><br />
+	<m>e</m><tab></tab>e: 2.718282...<br /><tab></tab><tab></tab><codeexample>/result = e()</codeexample><br /><br />
+	<m>lntwo</m><tab></tab>ln 2: 0.69314...<br /><tab></tab><tab></tab><codeexample>/result = lntwo()</codeexample><br /><br />
+	<m>lnten</m><tab></tab>ln 10: 2.30258...<br /><tab></tab><tab></tab><codeexample>/result = lnten()</codeexample><br /><br />
+	<m>logtwoe</m><tab></tab>log(2 * e): 1.44269...<br /><tab></tab><tab></tab><codeexample>/result = logtwoe()</codeexample><br /><br />
+	<m>logtene</m><tab></tab>log(10 * e): 0.43420...<br /><tab></tab><tab></tab><codeexample>/result = logtene()</codeexample><br /><br />
+	<m>sqrttwo</m><tab></tab>sqrt(2): 1.41421...<br /><tab></tab><tab></tab><codeexample>/result = sqrttwo()</codeexample><br /><br />
+	<m>sqrthalf</m><tab></tab>sqrt(0.5): 0.70710...<br /><tab></tab><tab></tab><codeexample>/result = sqrthalf()</codeexample><br /><br />
+</description></entry>
+<entry name ="vector"><description>
+	<m>nth</m><tab></tab>Get an element of a list (same as [[ ]])<br /><tab></tab><tab></tab><codeexample>/result = nth(/arg1, /arg2)</codeexample><br /><br />
+	<m>assign_to_index</m><tab></tab>Assign &lt;arg3&gt; to the indexes &lt;arg2&gt; of the address &lt;arg1&gt;<br /><tab></tab><tab></tab><codeexample>/result = assign_to_index(/arg1, /arg2, /arg3)</codeexample><br /><br />
+	<m>reverse</m><tab></tab>Reverse the order of the elements of a list<br /><tab></tab><tab></tab><codeexample>/result = reverse(/arg1)</codeexample><br /><br />
+	<m>rev</m><tab></tab>Reverse the order of the elements of a list<br /><tab></tab><tab></tab><codeexample>/result = rev(/arg1)</codeexample><br /><br />
+	<m>sort</m><tab></tab>Sort the elements of a list<br /><tab></tab><tab></tab><codeexample>/result = sort(/arg1)</codeexample><br /><br />
+	<m>sortidx</m><tab></tab>Sort the elements of a list and return the indexes corresponding to the original list<br /><tab></tab><tab></tab><codeexample>/result = sortIndex(/arg1)</codeexample><br /><br />
+	<m>list</m><tab></tab>Assemble the arguments into a list.<br /><tab></tab><tab></tab><codeexample>/result = list(/arg1, /arg2)</codeexample><br /><br />
+	<m>nfill</m><tab></tab>Make a list of &lt;arg1&gt; copies of &lt;arg2&gt;.  &lt;arg2&gt; is optional and defaults to 0<br /><tab></tab><tab></tab><codeexample>/result = nfill(/arg1, /arg2)</codeexample><br /><br />
+	<m>aseq</m><tab></tab>Arithmetic progression from &lt;arg1&gt; to &lt;arg2&gt; in &lt;arg3&gt; steps.  &lt;arg3&gt; is optional and defaults to 1<br /><tab></tab><tab></tab><codeexample>/result = aseq(/arg1, /arg2, /arg3)</codeexample><br /><br />
+	<m>interleave</m><tab></tab>Interleave two or more lists<br /><tab></tab><tab></tab><codeexample>/result = interleave(/arg1, /arg2)</codeexample><br /><br />
+	<m>first</m><tab></tab>Get the first element of a list.<br /><tab></tab><tab></tab><codeexample>/result = first(/arg1)</codeexample><br /><br />
+	<m>last</m><tab></tab>Get the last element of a list.<br /><tab></tab><tab></tab><codeexample>/result = last(/arg1)</codeexample><br /><br />
+	<m>rest</m><tab></tab>Get everything after the first element of a list.<br /><tab></tab><tab></tab><codeexample>/result = rest(/arg1)</codeexample><br /><br />
+	<m>butlast</m><tab></tab>Get everything but the last element of a list.<br /><tab></tab><tab></tab><codeexample>/result = butlast(/arg1)</codeexample><br /><br />
+	<m>map</m><tab></tab>Map arguments onto a function and return the result as a list.<br /><tab></tab><tab></tab><codeexample>/result = map(/arg1, /arg2)</codeexample><br /><br />
+	<m>lreduce</m><tab></tab>Combine the elements of a list using a left-associative binary operation.<br /><tab></tab><tab></tab><codeexample>/result = reduce(/arg1, /arg2)</codeexample><br /><br />
+	<m>rreduce</m><tab></tab>Combine the elements of a list using a right-associative binary operation.<br /><tab></tab><tab></tab><codeexample>/result = reduce(/arg1, /arg2)</codeexample><br /><br />
+</description></entry>
+<entry name ="statistics"><description>
+	<m>length</m><tab></tab>Get the length of a list<br /><tab></tab><tab></tab><codeexample>/result = length(/arg1)</codeexample><br /><br />
+	<m>avg</m><tab></tab>The average of a list (same as mean)<br /><tab></tab><tab></tab><codeexample>/result = avg(/arg1)</codeexample><br /><br />
+	<m>mean</m><tab></tab>The average of a list (same as avg)<br /><tab></tab><tab></tab><codeexample>/result = mean(/arg1)</codeexample><br /><br />
+	<m>median</m><tab></tab>Median of a list of values<br /><tab></tab><tab></tab><codeexample>/result = median(/arg1)</codeexample><br /><br />
+	<m>l2norm</m><tab></tab>Norm of the argument<br /><tab></tab><tab></tab><codeexample>/result = l2norm(/arg1)</codeexample><br /><br />
+	<m>min</m><tab></tab>Minimum value of the arguments<br /><tab></tab><tab></tab><codeexample>/result = min(/arg1)</codeexample><br /><br />
+	<m>max</m><tab></tab>Maximum value of the arguments<br /><tab></tab><tab></tab><codeexample>/result = max(/arg1)</codeexample><br /><br />
+	<m>range</m><tab></tab>Range of the arguments<br /><tab></tab><tab></tab><codeexample>/result = range(/arg1)</codeexample><br /><br />
+	<m>extrema</m><tab></tab>Min and max of the arguments<br /><tab></tab><tab></tab><codeexample>/result = extrema(/arg1)</codeexample><br /><br />
+</description></entry>
+<entry name ="string function"><description>
+	<m>add</m><tab></tab>Add<br /><tab></tab><tab></tab><codeexample>/result = add(/arg1, /arg2)</codeexample><br /><br />
+	<m>sub</m><tab></tab>Subtract<br /><tab></tab><tab></tab><codeexample>/result = sub(/arg1, /arg2)</codeexample><br /><br />
+	<m>lt</m><tab></tab>Less than<br /><tab></tab><tab></tab><codeexample>/result = lt(/arg1, /arg2)</codeexample><br /><br />
+	<m>le</m><tab></tab>Less than or equal<br /><tab></tab><tab></tab><codeexample>/result = lte(/arg1, /arg2)</codeexample><br /><br />
+	<m>gt</m><tab></tab>Greater than<br /><tab></tab><tab></tab><codeexample>/result = gt(/arg1, /arg2)</codeexample><br /><br />
+	<m>ge</m><tab></tab>Greater than or equal<br /><tab></tab><tab></tab><codeexample>/result = ge(/arg1, /arg2)</codeexample><br /><br />
+	<m>eq</m><tab></tab>Equality<br /><tab></tab><tab></tab><codeexample>/result = eq(/arg1, /arg2)</codeexample><br /><br />
+	<m>ne</m><tab></tab>Not equal<br /><tab></tab><tab></tab><codeexample>/result = ne(/arg1, /arg2)</codeexample><br /><br />
+	<m>strlen</m><tab></tab>Get length of string(s).<br /><tab></tab><tab></tab><codeexample>/result = strlen(/arg1)</codeexample><br /><br />
+	<m>strchar</m><tab></tab>Get one or more characters from string as new string.<br /><tab></tab><tab></tab><codeexample>/result = strchar(/arg1, /arg2)</codeexample><br /><br />
+	<m>strfind</m><tab></tab>Get first index corresponding to each instance of the sub-string found in the source string.<br /><tab></tab><tab></tab><codeexample>/result = strfind(/arg1, /arg2)</codeexample><br /><br />
+	<m>strcmp</m><tab></tab>Compare two strings.<br /><tab></tab><tab></tab><codeexample>/result = strcmp(/arg1, /arg2)</codeexample><br /><br />
+	<m>split</m><tab></tab>Split a string at a separator.<br /><tab></tab><tab></tab><codeexample>/result = split("/", /arg1)</codeexample><br /><br />
+	<m>join</m><tab></tab>Join multiple strings with a separator.<br /><tab></tab><tab></tab><codeexample>/result = join("/", /arg1)</codeexample><br /><br />
+</description></entry>
+<entry name ="string operator"><description>
+	<m>+</m><tab></tab>Add<br /><tab></tab><tab></tab><codeexample>/result = /arg1 + /arg2</codeexample><br /><br />
+	<m>-</m><tab></tab>Subtract<br /><tab></tab><tab></tab><codeexample>/result = /arg1 - /arg2</codeexample><br /><br />
+	<m>&lt;</m><tab></tab>Less than<br /><tab></tab><tab></tab><codeexample>/result = /arg1 &lt; /arg2</codeexample><br /><br />
+	<m>&lt;=</m><tab></tab>Less than or equal to<br /><tab></tab><tab></tab><codeexample>/result = /arg1 &lt;= /arg2</codeexample><br /><br />
+	<m>&gt;</m><tab></tab>Greater than<br /><tab></tab><tab></tab><codeexample>/result = /arg1 &gt; /arg2</codeexample><br /><br />
+	<m>&gt;=</m><tab></tab>Greater than or equal to<br /><tab></tab><tab></tab><codeexample>/result = /arg1 &gt;= /arg2</codeexample><br /><br />
+	<m>==</m><tab></tab>Equal<br /><tab></tab><tab></tab><codeexample>/result = /arg1 == /arg2</codeexample><br /><br />
+	<m>!=</m><tab></tab>Not equal<br /><tab></tab><tab></tab><codeexample>/result = /arg1 != /arg2</codeexample><br /><br />
+</description></entry>
+<entry name ="predicate"><description>
+	<m>bound</m><tab></tab>True if the address exists and has data bound to it, false otherwise.<br /><tab></tab><tab></tab><codeexample>/result = bound(/arg1)</codeexample><br /><br />
+	<m>exists</m><tab></tab>True if the address exists (regardless of whether it has data bound to it.<br /><tab></tab><tab></tab><codeexample>/result = exists(/arg1)</codeexample><br /><br />
+	<m>emptybundle</m><tab></tab>True if the bundle is empty, false otherwise.<br /><tab></tab><tab></tab><codeexample>/result = emptybundle()</codeexample><br /><br />
+</description></entry>
+<entry name ="conditional"><description>
+	<m>if</m><tab></tab>Conditionally execute &lt;arg2&gt; or optional &lt;arg3&gt; based on the result of &lt;arg1&gt;<br /><tab></tab><tab></tab><codeexample>/result = if(/arg1, /arg2, /arg3)</codeexample><br /><br />
+</description></entry>
+<entry name ="core"><description>
+	<m>.</m><tab></tab>Extract a message from a nested bundle.<br /><tab></tab><tab></tab><codeexample>/bundle./member</codeexample><br /><br />
+	<m>assign</m><tab></tab>Assignment<br /><tab></tab><tab></tab><codeexample>assign(/result, /arg2)</codeexample><br /><br />
+	<m>getaddresses</m><tab></tab>Returns a list of all addresses in the bundle.<br /><tab></tab><tab></tab><codeexample>/result = getaddresses()</codeexample><br /><br />
+	<m>delete</m><tab></tab>Remove the message with the corresponding address from the bundle.<br /><tab></tab><tab></tab><codeexample>/result = delete(/arg1)</codeexample><br /><br />
+	<m>getmsgcount</m><tab></tab>Returns the number of messages in the bundle.<br /><tab></tab><tab></tab><codeexample>/result = getmsgcount()</codeexample><br /><br />
+	<m>eval</m><tab></tab>Evaluate an expression bound to an OSC address.<br /><tab></tab><tab></tab><codeexample>/result = eval(/arg1)</codeexample><br /><br />
+	<m>tokenize</m><tab></tab>Tokenize an expression<br /><tab></tab><tab></tab><codeexample>/result = tokenize(/arg1)</codeexample><br /><br />
+	<m>prog1</m><tab></tab>Execute a sequence of expressions and return the first one.<br /><tab></tab><tab></tab><codeexample>/result = prog1(/arg1)</codeexample><br /><br />
+	<m>prog2</m><tab></tab>Execute a sequence of expressions and return the second one.<br /><tab></tab><tab></tab><codeexample>/result = prog2(/arg1)</codeexample><br /><br />
+	<m>progn</m><tab></tab>Execute a sequence of expressions and return the last one.<br /><tab></tab><tab></tab><codeexample>/result = progn(/arg1)</codeexample><br /><br />
+	<m>apply</m><tab></tab>Apply a function to arguments.<br /><tab></tab><tab></tab><codeexample>/result = apply(/arg1, /arg2)</codeexample><br /><br />
+	<m>quote</m><tab></tab>Prevent the evaluation of &lt;arg1&gt;.<br /><tab></tab><tab></tab><codeexample>/result = quote(/arg1)</codeexample><br /><br />
+	<m>value</m><tab></tab>Return the value associated with the argument.<br /><tab></tab><tab></tab><codeexample>/result = value(/arg1)</codeexample><br /><br />
+	<m>lambda</m><tab></tab>Anonymous function<br /><tab></tab><tab></tab><codeexample></codeexample><br /><br />
+	<m>gettimetag</m><tab></tab>Get the timetag from the OSC bundle header.<br /><tab></tab><tab></tab><codeexample>/timetag = gettimetag()</codeexample><br /><br />
+	<m>settimetag</m><tab></tab>Put a timetag in the header of the OSC bundle.<br /><tab></tab><tab></tab><codeexample>settimetag(/time)</codeexample><br /><br />
+	<m>getbundlemember</m><tab></tab>Extract a message from a nested bundle.<br /><tab></tab><tab></tab><codeexample>getbundlemember(/bundle, /member)</codeexample><br /><br />
+	<m>assigntobundlemember</m><tab></tab>Assign a value to an address contained in a named nested bundle.<br /><tab></tab><tab></tab><codeexample>assigntobundlemember(/bundle, /member, /val)</codeexample><br /><br />
+	<m>imu</m><tab></tab>Sensor fusion....<br /><tab></tab><tab></tab><codeexample>imu(/imu_values, /quaternion)</codeexample><br /><br />
+	<m>float32</m><tab></tab>Cast to float32<br /><tab></tab><tab></tab><codeexample>/result = float32(/arg1)</codeexample><br /><br />
+	<m>float64</m><tab></tab>Cast to float64<br /><tab></tab><tab></tab><codeexample>/result = float64(/arg1)</codeexample><br /><br />
+	<m>int8</m><tab></tab>Cast to int8<br /><tab></tab><tab></tab><codeexample>/result = int8(/arg1)</codeexample><br /><br />
+	<m>char</m><tab></tab>Cast to char (int8)<br /><tab></tab><tab></tab><codeexample>/result = char(/arg1)</codeexample><br /><br />
+	<m>int16</m><tab></tab>Cast to int16<br /><tab></tab><tab></tab><codeexample>/result = int16(/arg1)</codeexample><br /><br />
+	<m>int32</m><tab></tab>Cast to int32<br /><tab></tab><tab></tab><codeexample>/result = int32(/arg1)</codeexample><br /><br />
+	<m>int64</m><tab></tab>Cast to int64<br /><tab></tab><tab></tab><codeexample>/result = int64(/arg1)</codeexample><br /><br />
+	<m>uint8</m><tab></tab>Cast to uint8<br /><tab></tab><tab></tab><codeexample>/result = uint8(/arg1)</codeexample><br /><br />
+	<m>uint16</m><tab></tab>Cast to uint16<br /><tab></tab><tab></tab><codeexample>/result = uint16(/arg1)</codeexample><br /><br />
+	<m>uint32</m><tab></tab>Cast to uint32<br /><tab></tab><tab></tab><codeexample>/result = uint32(/arg1)</codeexample><br /><br />
+	<m>uint64</m><tab></tab>Cast to uint64<br /><tab></tab><tab></tab><codeexample>/result = uint64(/arg1)</codeexample><br /><br />
+	<m>bool</m><tab></tab>Cast to bool<br /><tab></tab><tab></tab><codeexample>/result = bool(/arg1)</codeexample><br /><br />
+	<m>string</m><tab></tab>Cast to string<br /><tab></tab><tab></tab><codeexample>/result = string(/arg1)</codeexample><br /><br />
+	<m>blob</m><tab></tab>Cast to blob<br /><tab></tab><tab></tab><codeexample>/result = blob(/arg1)</codeexample><br /><br />
+	<m>cast</m><tab></tab>Cast<br /><tab></tab><tab></tab><codeexample>/result = cast(/arg1, /arg2)</codeexample><br /><br />
+	<m>typetags</m><tab></tab>Get the typetags associated with &lt;arg1&gt; as a list of int8s<br /><tab></tab><tab></tab><codeexample>/result = typetags(/arg1)</codeexample><br /><br />
+	<m>hton32</m><tab></tab>convert a 32-bit integer from host to network byte order.<br /><tab></tab><tab></tab><codeexample>/result = hton32(/arg1)</codeexample><br /><br />
+	<m>ntoh32</m><tab></tab>convert a 32-bit integer from network to host byte order.<br /><tab></tab><tab></tab><codeexample>/result = ntoh32(/arg1)</codeexample><br /><br />
+	<m>hton64</m><tab></tab>convert a 64-bit integer from host to network byte order.<br /><tab></tab><tab></tab><codeexample>/result = hton64(/arg1)</codeexample><br /><br />
+	<m>ntoh64</m><tab></tab>convert a 64-bit integer from network to host byte order.<br /><tab></tab><tab></tab><codeexample>/result = ntoh64(/arg1)</codeexample><br /><br />
+	<m>readstring</m><tab></tab>Converts the contents of a string to an expression.<br /><tab></tab><tab></tab><codeexample>/result = readstring(/arg1)</codeexample><br /><br />
+	<m>strtotime</m><tab></tab>Converts the contents of a string to a timetag.<br /><tab></tab><tab></tab><codeexample>/result = strtotime(/arg1)</codeexample><br /><br />
+	<m>match</m><tab></tab>matches the pattern(s) in arg 1 against the string(s) in arg 2.<br /><tab></tab><tab></tab><codeexample>/result = match(/arg1, /arg2)</codeexample><br /><br />
+</description></entry>
+
 	</misc>
 
 
