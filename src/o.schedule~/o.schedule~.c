@@ -82,6 +82,11 @@ void oschedt_fullPacket(t_oschedt *x, long len, long lptr)
 	char tmp_tvs_bufnum = x->tmp_tvs_bufnum;
 	tmp_tvs_bufnum = (tmp_tvs_bufnum + 2) % 3;
 	char *ptr = (char *)lptr;
+	if(x->tmp_tvs_n[tmp_tvs_bufnum] + 1 == OSCHEDT_QMAX){
+		// this should output the packet out a max outlet
+		object_post((t_object *)x, "queue is full, dropping packet");
+		return;
+	}
 	for(int i = 0; i < x->nsignals; i++){
 		char *ta = x->addresses[(i * 2)]->s_name;
 		char *va = x->addresses[(i * 2) + 1]->s_name;
@@ -113,11 +118,12 @@ void oschedt_fullPacket(t_oschedt *x, long len, long lptr)
 
 void oschedt_outletMissed(t_oschedt *x, t_symbol *msg, int argc, t_atom *argv)
 {
+#define STRIDE 4
 	t_osc_bndl_u *bndl_u = osc_bundle_u_alloc();
-	for(int i = 0; i < argc / 4; i++){
-		t_osc_timetag t = (t_osc_timetag){atom_getlong(argv), atom_getlong(argv + 1)};
-		double v = atom_getfloat(argv + 2);
-		long channel = atom_getlong(argv + 3);
+	for(int i = 0; i < argc / STRIDE; i++){
+		t_osc_timetag t = (t_osc_timetag){atom_getlong(argv + (i * STRIDE)), atom_getlong(argv + (i * STRIDE + 1))};
+		double v = atom_getfloat(argv + (i * STRIDE + 2));
+		long channel = atom_getlong(argv + (i * STRIDE + 3));
 		t_osc_msg_u *mt = osc_message_u_allocWithTimetag(x->addresses[channel * 2]->s_name, t);
 		t_osc_msg_u *mv = osc_message_u_allocWithDouble(x->addresses[channel * 2 + 1]->s_name, v);
 		osc_bundle_u_addMsg(bndl_u, mt);
@@ -127,6 +133,7 @@ void oschedt_outletMissed(t_oschedt *x, t_symbol *msg, int argc, t_atom *argv)
 	omax_util_outletOSC(x->outlet, osc_bundle_s_getLen(bndl_s), osc_bundle_s_getPtr(bndl_s));
 	osc_bundle_u_free(bndl_u);
 	osc_bundle_s_deepFree(bndl_s);
+#undef STRIDE
 }
 
 void oschedt_perform64(t_oschedt *x, t_object *dsp64, double **ins, long numins, double **outs, long numouts, long vectorsize, long flags, void *userparam)
