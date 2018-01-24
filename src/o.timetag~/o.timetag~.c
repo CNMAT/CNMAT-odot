@@ -100,7 +100,6 @@ void *otimetagt_new(t_symbol *msg, short argc, t_atom *argv)
 	t_otimetagt *x = NULL;
 	if((x = (t_otimetagt *)object_alloc(otimetagt_class))){
   		dsp_setup((t_pxobject *)x, 0);
-		x->outlet = outlet_new((t_object *)x, "FullPacket");
 		outlet_new((t_object *)x, "signal");
 	}
 	return x;
