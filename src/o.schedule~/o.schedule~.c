@@ -93,7 +93,6 @@ void oschedt_fullPacket(t_oschedt *x, long len, long lptr)
 		if(!vmas || osc_message_array_s_getLen(vmas) == 0){
 			continue;
 		}
-		printf("%s:%d: have both %s %s\n", __func__, __LINE__, ta, va);
 		t_osc_msg_it_s *tmis = osc_message_iterator_s_getIterator(osc_message_array_s_get(tmas, 0));
 		t_osc_msg_it_s *vmis = osc_message_iterator_s_getIterator(osc_message_array_s_get(vmas, 0));
 		while(osc_message_iterator_s_hasNext(tmis) && osc_message_iterator_s_hasNext(vmis)){
@@ -104,7 +103,6 @@ void oschedt_fullPacket(t_oschedt *x, long len, long lptr)
 				osc_message_iterator_s_destroyIterator(vmis);
 				return;
 			}
-			printf("%s:%d\n", __func__, __LINE__);
 			t_oschedt_tv tv = (t_oschedt_tv){osc_atom_s_getTimetag(ts), osc_atom_s_getDouble(vs), i};
 			x->tmp_tvs[tmp_tvs_bufnum][x->tmp_tvs_n[tmp_tvs_bufnum]++] = tv;
 		}
@@ -170,7 +168,6 @@ void oschedt_perform64(t_oschedt *x, t_object *dsp64, double **ins, long numins,
 	t_atom missed[OSCHEDT_QMAX * 4];
 	int missedn = 0;
 	while(np != NULL){
-		printf("%s:%d: while\n", __func__, __LINE__);
 		if(osc_timetag_compare(now, np->timestamp) <= 0 && osc_timetag_compare(np->timestamp, next) <= 0){
 			node n = heap_extract_max(&(x->qs));
 			x->tvs_free_slots[n.id] = 0;
