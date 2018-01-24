@@ -88,13 +88,11 @@
 									"fontface" : 0,
 									"fontsize" : 12.0,
 									"id" : "obj-5",
-									"linecount" : 2,
 									"maxclass" : "o.display",
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 269.0, 359.0, 150.0, 48.0 ],
-									"text" : "/matrixcntrl : [1, 0, 1, 2, 3, 1]"
+									"patching_rect" : [ 269.0, 359.0, 150.0, 34.0 ]
 								}
 
 							}
@@ -178,7 +176,7 @@
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 1,
-									"outlettype" : [ "FullPacket" ],
+									"outlettype" : [ "" ],
 									"patcher" : 									{
 										"fileversion" : 1,
 										"appversion" : 										{
@@ -248,8 +246,8 @@
 													"id" : "obj-4",
 													"maxclass" : "newobj",
 													"numinlets" : 1,
-													"numoutlets" : 3,
-													"outlettype" : [ "FullPacket", "FullPacket", "FullPacket" ],
+													"numoutlets" : 1,
+													"outlettype" : [ "" ],
 													"patching_rect" : [ 79.0, 198.5, 153.0, 22.0 ],
 													"style" : "",
 													"text" : "o.gui.attach attachtoparent"
@@ -494,9 +492,9 @@
 								"box" : 								{
 									"id" : "obj-7",
 									"maxclass" : "newobj",
-									"numinlets" : 1,
-									"numoutlets" : 3,
-									"outlettype" : [ "FullPacket", "FullPacket", "FullPacket" ],
+									"numinlets" : 0,
+									"numoutlets" : 2,
+									"outlettype" : [ "", "" ],
 									"patching_rect" : [ 149.0, 376.0, 73.0, 22.0 ],
 									"style" : "",
 									"text" : "o.gui.attach"
@@ -768,8 +766,8 @@
 									"id" : "obj-103",
 									"maxclass" : "newobj",
 									"numinlets" : 1,
-									"numoutlets" : 3,
-									"outlettype" : [ "FullPacket", "FullPacket", "FullPacket" ],
+									"numoutlets" : 2,
+									"outlettype" : [ "", "" ],
 									"patching_rect" : [ 358.75, 350.5, 72.0, 22.0 ],
 									"style" : "",
 									"text" : "o.gui.attach"
@@ -990,7 +988,7 @@
 							"modernui" : 1
 						}
 ,
-						"rect" : [ 100.0, 126.0, 925.0, 720.0 ],
+						"rect" : [ 0.0, 26.0, 925.0, 720.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -1273,9 +1271,9 @@
 									"color" : [ 0.849573, 1.0, 0.926902, 1.0 ],
 									"id" : "obj-103",
 									"maxclass" : "newobj",
-									"numinlets" : 1,
-									"numoutlets" : 3,
-									"outlettype" : [ "FullPacket", "FullPacket", "FullPacket" ],
+									"numinlets" : 0,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
 									"patching_rect" : [ 164.5, 194.0, 72.0, 22.0 ],
 									"style" : "",
 									"text" : "o.gui.attach"
@@ -1671,8 +1669,8 @@
 													"id" : "obj-4",
 													"maxclass" : "newobj",
 													"numinlets" : 1,
-													"numoutlets" : 3,
-													"outlettype" : [ "FullPacket", "FullPacket", "FullPacket" ],
+													"numoutlets" : 1,
+													"outlettype" : [ "" ],
 													"patching_rect" : [ 279.0, 137.5, 73.0, 22.0 ],
 													"style" : "",
 													"text" : "o.gui.attach"
@@ -1808,7 +1806,7 @@
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 3,
-									"outlettype" : [ "FullPacket", "FullPacket", "FullPacket" ],
+									"outlettype" : [ "", "", "" ],
 									"patching_rect" : [ 259.0, 241.0, 72.0, 22.0 ],
 									"style" : "",
 									"text" : "o.gui.attach",
@@ -2079,8 +2077,8 @@
 									"id" : "obj-103",
 									"maxclass" : "newobj",
 									"numinlets" : 1,
-									"numoutlets" : 3,
-									"outlettype" : [ "FullPacket", "FullPacket", "FullPacket" ],
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
 									"patching_rect" : [ 418.0, 467.5, 72.0, 22.0 ],
 									"style" : "",
 									"text" : "o.gui.attach"
@@ -2216,7 +2214,7 @@
 							"modernui" : 1
 						}
 ,
-						"rect" : [ 0.0, 26.0, 925.0, 720.0 ],
+						"rect" : [ 100.0, 126.0, 925.0, 720.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -2245,6 +2243,34 @@
 						"subpatcher_template" : "<none>",
 						"showontab" : 1,
 						"boxes" : [ 							{
+								"box" : 								{
+									"fontface" : 1,
+									"fontsize" : 13.0,
+									"id" : "obj-19",
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 42.5, 683.0, 848.0, 21.0 ],
+									"style" : "",
+									"text" : "note: o.gui.attach is located in the CNMAT-odot/dev folder, to use ths object you need to manually add this path to your file preferences",
+									"textcolor" : [ 0.011765, 0.396078, 0.752941, 1.0 ]
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"data" : [ 593, "", "IBkSG0fBZn....PCIgDQRA...zF....LHX....vFnS+e....DLmPIQEBHf.B7g.YHB..BfPRDEDU3wY6bEsiCCBCKLc+++xbOwItcqkVHN1oGVZZRSCWZbLgNfUp0Z01HU3K1cfMLqTJC+N8dqOJZ2kjQs0Cy7Sk2qDqaeuV6esBIWssWky6bs9Oy6qO8gH.RtmAn5O2k2Yb0SWSalKVuE2KffyYwrIBm0++DmmJZpDLx.NpFFBG8epo4IVovKR7deHaImPEMTPsfLpYfdDfKZQ31Tv8FIBwoolyvSDsKyLhCOxxcftdVDIngIZnCNLRBXk3QchHOsZQQUFHTQSsZaqzeXlvQeJ+Qdyi7ZEYBY3hlm2brpqwdXc5NMy3GDVEQOrOEQSgZay1GTHASBmlY3CFn3mQBHMQyqa1HqqofKyLxNMEd.4U.qg4kY3wHwrKfqJftn4gaajHfHfybxTzEMD3ouzORHZYq1F6GYQBQKRb2.thaMAYDsUcaG0d0csy.YDMEghtLyDSzxVsMVPJQyLeEtUbJp5xLavlUMaY5n1bndBO5e+xogbsthpsHfJ2KGdpY73hfjiQbGc6tB7lix9jflOH2DQ1XL1hVBwVzRH1hVBwVzRH1hVBws+KoX0mPXzuH.5spcV4um2ScZ0Z8mWdidNQehZP0+QFaNi6gCOVJkTtmAabiLgqEWP7O1P+6uC5G0ITBWi6mxgtnGCEMTCAzPV2bosQfXrpBzVZldtQu6oxF+i3b+CFmP7MQ+TMlEbQ3RG.....IUjSD4pPfIH" ],
+									"embed" : 1,
+									"id" : "obj-16",
+									"maxclass" : "fpic",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "jit_matrix" ],
+									"patching_rect" : [ 707.0, 42.0, 109.0, 48.0 ]
+								}
+
+							}
+, 							{
 								"box" : 								{
 									"id" : "obj-23",
 									"linecount" : 2,
@@ -2320,8 +2346,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 140.0, 583.0, 193.0, 34.0 ],
-									"text" : "/someother/data : \"stuff\""
+									"patching_rect" : [ 140.0, 583.0, 193.0, 34.0 ]
 								}
 
 							}
@@ -2406,7 +2431,7 @@
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 3,
-									"outlettype" : [ "FullPacket", "FullPacket", "FullPacket" ],
+									"outlettype" : [ "", "", "" ],
 									"patching_rect" : [ 86.0, 553.0, 73.0, 22.0 ],
 									"style" : "",
 									"text" : "o.gui.attach"
@@ -2555,13 +2580,11 @@
 									"fontface" : 0,
 									"fontsize" : 12.0,
 									"id" : "obj-8",
-									"linecount" : 4,
 									"maxclass" : "o.display",
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 86.0, 626.0, 293.0, 75.0 ],
-									"text" : "/an/int : 10,\n/a/float : 0.22,\n/slider/1 : 50,\n/slider/2 : 100"
+									"patching_rect" : [ 86.0, 626.0, 293.0, 34.0 ]
 								}
 
 							}
@@ -2637,7 +2660,7 @@
 								"patchline" : 								{
 									"destination" : [ "obj-13", 0 ],
 									"hidden" : 1,
-									"midpoints" : [ 761.5, 687.5, 840.75, 687.5, 840.75, 8.5, 552.0, 8.5 ],
+									"midpoints" : [ 761.5, 663.5, 840.75, 663.5, 840.75, 8.5, 552.0, 8.5 ],
 									"source" : [ "obj-18", 1 ]
 								}
 
@@ -2713,8 +2736,8 @@
 		"lines" : [  ],
 		"dependency_cache" : [ 			{
 				"name" : "o.helpfilehelper.maxpat",
-				"bootpath" : "~/Documents/dev-lib/CNMAT-odot/patchers/utils",
-				"patcherrelativepath" : "../patchers/utils",
+				"bootpath" : "~/Documents/Max 7/Packages/CNMAT-odot/patchers/utils",
+				"patcherrelativepath" : "../../../Max 7/Packages/CNMAT-odot/patchers/utils",
 				"type" : "JSON",
 				"implicit" : 1
 			}
@@ -2724,10 +2747,6 @@
 			}
 , 			{
 				"name" : "o.compose.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.gui.attach.mxo",
 				"type" : "iLaX"
 			}
 , 			{
