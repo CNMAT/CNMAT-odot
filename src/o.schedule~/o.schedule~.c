@@ -79,33 +79,49 @@ void *oschedt_class;
 
 void oschedt_fullPacket(t_oschedt *x, long len, long lptr)
 {
+	// the triple buffering makes locks unnecessary
+	
+	// this variable is modified by the perform routine,
+	// but it is a char which is read/written atomically.
 	char tmp_tvs_bufnum = x->tmp_tvs_bufnum;
 	tmp_tvs_bufnum = (tmp_tvs_bufnum + 2) % 3;
 	char *ptr = (char *)lptr;
+
+	// tmp_tvs_n is triple buffered
 	if(x->tmp_tvs_n[tmp_tvs_bufnum] + 1 == OSCHEDT_QMAX){
 		// this should output the packet out a max outlet
 		object_post((t_object *)x, "queue is full, dropping packet");
 		return;
 	}
+	// signals and addresses don't change after the object has been initialized
 	for(int i = 0; i < x->nsignals; i++){
 		char *ta = x->addresses[(i * 2)]->s_name;
 		char *va = x->addresses[(i * 2) + 1]->s_name;
 		t_osc_msg_ar_s *tmas = osc_bundle_s_lookupAddress(len, ptr, ta, 1);
 		if(!tmas || osc_message_array_s_getLen(tmas) == 0){
+			osc_message_array_s_free(tmas);
 			continue;
 		}
 		t_osc_msg_ar_s *vmas = osc_bundle_s_lookupAddress(len, ptr, va, 1);
 		if(!vmas || osc_message_array_s_getLen(vmas) == 0){
+			osc_message_array_s_free(tmas);
+			osc_message_array_s_free(vmas);
 			continue;
 		}
 		t_osc_msg_it_s *tmis = osc_message_iterator_s_getIterator(osc_message_array_s_get(tmas, 0));
 		t_osc_msg_it_s *vmis = osc_message_iterator_s_getIterator(osc_message_array_s_get(vmas, 0));
+		// iterate stopping at the end of the shortest list
 		while(osc_message_iterator_s_hasNext(tmis) && osc_message_iterator_s_hasNext(vmis)){
 			t_osc_atom_s *ts = osc_message_iterator_s_next(tmis);
 			t_osc_atom_s *vs = osc_message_iterator_s_next(vmis);
 			if(osc_atom_s_getTypetag(ts) != 't'){
+				// support other typetags than time?
+				// ints = x samples in the future? <--this doesn't really make sense as we don't know what sample we're currently on
+				// floats = x seconds in the future? <--smae with this...
 				osc_message_iterator_s_destroyIterator(tmis);
 				osc_message_iterator_s_destroyIterator(vmis);
+				osc_message_array_s_free(tmas);
+				osc_message_array_s_free(vmas);
 				return;
 			}
 			t_oschedt_tv tv = (t_oschedt_tv){osc_atom_s_getTimetag(ts), osc_atom_s_getDouble(vs), i};
@@ -113,6 +129,8 @@ void oschedt_fullPacket(t_oschedt *x, long len, long lptr)
 		}
 		osc_message_iterator_s_destroyIterator(tmis);
 		osc_message_iterator_s_destroyIterator(vmis);
+		osc_message_array_s_free(tmas);
+		osc_message_array_s_free(vmas);
 	}
 }
 
@@ -154,17 +172,23 @@ void oschedt_perform64(t_oschedt *x, t_object *dsp64, double **ins, long numins,
 		t_oschedt_tv tv = tvs[i];
 		n.length = sizeof(tv);
 		n.timestamp = tv.t;
+		int overflow = 1;
 		for(int j = 0; j < OSCHEDT_QMAX; j++){
 			if(x->tvs_free_slots[j] == 0){
 				x->tvs_free_slots[j] = 1;
 				n.id = j;
 				x->tvs[j] = tv;
+				overflow = 0;
 				break;
 			}
-			// queue overflow
 		}
-		if(heap_insert(&(x->qs), n) == -1){
-			// bad
+		if(overflow){
+			// handle overflow case:
+			// chuck data onto scheduler and outlet in Max
+		}else{
+			if(heap_insert(&(x->qs), n) == -1){
+				// chuck data onto scheduler and outlet in Max
+			}
 		}
 	}
 	
@@ -285,7 +309,7 @@ void *oschedt_new(t_symbol *msg, short argc, t_atom *argv)
 			x->tmp_tvs_n[i] = 0;
 		}
 		x->tmp_tvs_bufnum = 0;
-		heap_initialize(&(x->qs), OSCHEDT_QMAX);
+		heap_initialize(&(x->qs), OSCHEDT_QMAX * 3);
 		x->tvs = (t_oschedt_tv *)calloc(OSCHEDT_QMAX, sizeof(t_oschedt_tv));
 		x->tvs_free_slots = (int *)calloc(OSCHEDT_QMAX, sizeof(int));
 		x->nsignals = argc / 2;
