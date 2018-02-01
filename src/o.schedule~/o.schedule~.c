@@ -57,6 +57,7 @@ typedef struct _oschedt_tv{
 typedef struct _oschedt{
 	t_pxobject ob;
 	void *outlet;
+	t_critical lock;
 	double blockcount;
 	long samplerate;
 	int nsignals;
@@ -79,6 +80,10 @@ void *oschedt_class;
 
 void oschedt_fullPacket(t_oschedt *x, long len, long lptr)
 {
+	// this critical enter is called to manage synchronization between
+        // the audio and timer threads only when DSP is turned on.
+	// the perform routine should never attempt to acquire this lock
+	//critical_enter(x->lock);
 	// the triple buffering makes locks unnecessary
 	
 	// this variable is modified by the perform routine,
@@ -132,10 +137,12 @@ void oschedt_fullPacket(t_oschedt *x, long len, long lptr)
 		osc_message_array_s_free(tmas);
 		osc_message_array_s_free(vmas);
 	}
+	//critical_exit(x->lock);
 }
 
 void oschedt_outletMissed(t_oschedt *x, t_symbol *msg, int argc, t_atom *argv)
 {
+	/*
 #define STRIDE 4
 	t_osc_bndl_u *bndl_u = osc_bundle_u_alloc();
 	for(int i = 0; i < argc / STRIDE; i++){
@@ -152,14 +159,26 @@ void oschedt_outletMissed(t_oschedt *x, t_symbol *msg, int argc, t_atom *argv)
 	osc_bundle_u_free(bndl_u);
 	osc_bundle_s_deepFree(bndl_s);
 #undef STRIDE
+	*/
 }
 
 void oschedt_perform64(t_oschedt *x, t_object *dsp64, double **ins, long numins, double **outs, long numouts, long vectorsize, long flags, void *userparam)
 {
-	omax_realtime_clock_tick(x);
+	//static t_osc_timetag foo;
+	//static int bar;
+	//t_osc_timetag nn = osc_timetag_now();
 	t_osc_timetag now, next;
+	//printf("**************************************************\n");
+	omax_realtime_clock_tick(x);
 	omax_realtime_clock_now(&now);
 	omax_realtime_clock_next(&next);
+
+	// if(bar > 0){
+	// 	printf("%s:%d: interrupt delta = %f, %d\n", __func__, __LINE__, osc_timetag_timetagToFloat(osc_timetag_subtract(nn, foo)), (int)round(x->samplerate * osc_timetag_timetagToFloat(osc_timetag_subtract(nn, foo))));
+	// 	printf("%s:%d: next - now = %f (%d)\n", __func__, __LINE__, osc_timetag_timetagToFloat(osc_timetag_subtract(next, now)), (int)round(osc_timetag_timetagToFloat(osc_timetag_subtract(next, now)) * x->samplerate));
+	// }
+	// bar++;
+	// foo = nn;
 	
 	char tmp_tvs_bufnum = x->tmp_tvs_bufnum;
 	int tmp_tvs_n = x->tmp_tvs_n[tmp_tvs_bufnum];
@@ -191,20 +210,30 @@ void oschedt_perform64(t_oschedt *x, t_object *dsp64, double **ins, long numins,
 			}
 		}
 	}
-	
 	node_ptr np = heap_max(&(x->qs));
 	for(int i = 0; i < numouts; i++){
 		memset(outs[i], 0, vectorsize * sizeof(double));
 	}
 	t_atom missed[OSCHEDT_QMAX * 4];
 	int missedn = 0;
+	//printf("%s:%d: %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n", __func__, __LINE__);
 	while(np != NULL){
-		if(osc_timetag_compare(now, np->timestamp) <= 0 && osc_timetag_compare(np->timestamp, next) <= 0){
+		if(osc_timetag_compare(now, np->timestamp) <= 0 && osc_timetag_compare(np->timestamp, next) < 0){
 			node n = heap_extract_max(&(x->qs));
 			x->tvs_free_slots[n.id] = 0;
 			t_oschedt_tv tv = x->tvs[n.id];
+			double sw = osc_timetag_timetagToFloat(osc_timetag_subtract(next, now)) / (double)vectorsize;
 			double d = osc_timetag_timetagToFloat(osc_timetag_subtract(tv.t, now));
-			long s = (long)round(d * x->samplerate);
+			//long s = (long)round(d * x->samplerate);
+			// next - now might not be equal to vectorsize / x->samplerate
+			//long s = (long)round((d / osc_timetag_timetagToFloat(osc_timetag_subtract(next, now))) * vectorsize);
+			long s = (long)round(d / sw);
+			//printf("%s:%d: sw = %f, d = %f, s = %ld\n", __func__, __LINE__, sw, d, s);
+			//printf("%s:%d: **************************************************\n", __func__, __LINE__);
+			//printf("%s:%d: next - now = %f (%d)\n", __func__, __LINE__, osc_timetag_timetagToFloat(osc_timetag_subtract(next, now)), (int)round(osc_timetag_timetagToFloat(osc_timetag_subtract(next, now)) * x->samplerate));
+			//printf("%s:%d: now = %f, np->timestamp = %f, next = %f, d = %f\n", __func__, __LINE__, osc_timetag_timetagToFloat(now), osc_timetag_timetagToFloat(np->timestamp), osc_timetag_timetagToFloat(next), d);
+			//printf("%s:%d: outs[%d][%d] += %f, d = %f\n", __func__, __LINE__, tv.channel, s, tv.v, d);
+			//printf("%s:%d: **************************************************\n", __func__, __LINE__);
 			outs[tv.channel][s] += tv.v;
 		}else if(osc_timetag_compare(np->timestamp, now) < 0){
 			node n = heap_extract_max(&(x->qs));
@@ -221,7 +250,7 @@ void oschedt_perform64(t_oschedt *x, t_object *dsp64, double **ins, long numins,
 		np = heap_max(&(x->qs));
 	}
 	if(missedn){
-		schedule_delay(x, (method)oschedt_outletMissed, 0, NULL, missedn, missed);
+		//schedule_delay(x, (method)oschedt_outletMissed, 0, NULL, missedn, missed);
 	}
 	x->blockcount++;
 	x->tmp_tvs_bufnum = (x->tmp_tvs_bufnum + 1) % 3;
@@ -229,10 +258,13 @@ void oschedt_perform64(t_oschedt *x, t_object *dsp64, double **ins, long numins,
 
 void oschedt_dsp64(t_oschedt *x, t_object *dsp64, short *count, double samplerate, long maxvectorsize, long flags)
 {
-	omax_realtime_clock_register(x);
+	//critical_enter(x->lock);
+	x->tmp_tvs_bufnum = 0;
+	//critical_exit(x->lock);
 	x->blockcount = 0;
 	x->samplerate = samplerate;
 	object_method(dsp64, gensym("dsp_add64"), x, oschedt_perform64, 0, NULL);
+	omax_realtime_clock_register(x);
 }
 
 OMAX_DICT_DICTIONARY(t_oschedt, x, oschedt_fullPacket);
@@ -302,14 +334,15 @@ void *oschedt_new(t_symbol *msg, short argc, t_atom *argv)
 		}
   		dsp_setup((t_pxobject *)x, 0); 
 		x->outlet = outlet_new((t_object *)x, "FullPacket");
+		critical_new(&(x->lock));
 		x->addresses = (t_symbol **)malloc(argc * sizeof(t_symbol*));
 		//x->buffers = (double **)malloc((argc / 2) * sizeof(double *));
 		for(int i = 0; i < 3; i++){
-			x->tmp_tvs[i] = (t_oschedt_tv *)calloc(OSCHEDT_QMAX, sizeof(t_oschedt));
+			x->tmp_tvs[i] = (t_oschedt_tv *)calloc(OSCHEDT_QMAX, sizeof(t_oschedt_tv));
 			x->tmp_tvs_n[i] = 0;
 		}
 		x->tmp_tvs_bufnum = 0;
-		heap_initialize(&(x->qs), OSCHEDT_QMAX * 3);
+		heap_initialize(&(x->qs), OSCHEDT_QMAX);
 		x->tvs = (t_oschedt_tv *)calloc(OSCHEDT_QMAX, sizeof(t_oschedt_tv));
 		x->tvs_free_slots = (int *)calloc(OSCHEDT_QMAX, sizeof(int));
 		x->nsignals = argc / 2;
