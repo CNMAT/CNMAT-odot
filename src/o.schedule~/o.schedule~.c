@@ -52,12 +52,13 @@ typedef struct _oschedt_tv{
 	t_osc_timetag t;
 	double v;
 	int channel;
+	long len;
+	char *bundle;
 } t_oschedt_tv;
 
 typedef struct _oschedt{
 	t_pxobject ob;
 	void *outlet;
-	t_critical lock;
 	double blockcount;
 	long samplerate;
 	int nsignals;
@@ -80,10 +81,6 @@ void *oschedt_class;
 
 void oschedt_fullPacket(t_oschedt *x, long len, long lptr)
 {
-	// this critical enter is called to manage synchronization between
-        // the audio and timer threads only when DSP is turned on.
-	// the perform routine should never attempt to acquire this lock
-	//critical_enter(x->lock);
 	// the triple buffering makes locks unnecessary
 	
 	// this variable is modified by the perform routine,
@@ -129,7 +126,9 @@ void oschedt_fullPacket(t_oschedt *x, long len, long lptr)
 				osc_message_array_s_free(vmas);
 				return;
 			}
-			t_oschedt_tv tv = (t_oschedt_tv){osc_atom_s_getTimetag(ts), osc_atom_s_getDouble(vs), i};
+			char *copy = osc_mem_alloc(len * sizeof(char));
+			memcpy(copy, ptr, len);
+			t_oschedt_tv tv = (t_oschedt_tv){osc_atom_s_getTimetag(ts), osc_atom_s_getDouble(vs), i, len, copy};
 			x->tmp_tvs[tmp_tvs_bufnum][x->tmp_tvs_n[tmp_tvs_bufnum]++] = tv;
 		}
 		osc_message_iterator_s_destroyIterator(tmis);
@@ -137,29 +136,25 @@ void oschedt_fullPacket(t_oschedt *x, long len, long lptr)
 		osc_message_array_s_free(tmas);
 		osc_message_array_s_free(vmas);
 	}
-	//critical_exit(x->lock);
+}
+
+void oschedt_freeBundle(t_oschedt *x, t_symbol *msg, int argc, t_atom *argv)
+{
+	uint64_t lptr = atom_getlong(argv + 1);
+	lptr <<= 32;
+	lptr |= atom_getlong(argv + 2);
+	if(lptr){
+		osc_mem_free((char *)lptr);
+	}
 }
 
 void oschedt_outletMissed(t_oschedt *x, t_symbol *msg, int argc, t_atom *argv)
 {
-	/*
-#define STRIDE 4
-	t_osc_bndl_u *bndl_u = osc_bundle_u_alloc();
-	for(int i = 0; i < argc / STRIDE; i++){
-		t_osc_timetag t = (t_osc_timetag){atom_getlong(argv + (i * STRIDE)), atom_getlong(argv + (i * STRIDE + 1))};
-		double v = atom_getfloat(argv + (i * STRIDE + 2));
-		long channel = atom_getlong(argv + (i * STRIDE + 3));
-		t_osc_msg_u *mt = osc_message_u_allocWithTimetag(x->addresses[channel * 2]->s_name, t);
-		t_osc_msg_u *mv = osc_message_u_allocWithDouble(x->addresses[channel * 2 + 1]->s_name, v);
-		osc_bundle_u_addMsg(bndl_u, mt);
-		osc_bundle_u_addMsg(bndl_u, mv);
-	}
-	t_osc_bndl_s *bndl_s = osc_bundle_u_serialize(bndl_u);
-	omax_util_outletOSC(x->outlet, osc_bundle_s_getLen(bndl_s), osc_bundle_s_getPtr(bndl_s));
-	osc_bundle_u_free(bndl_u);
-	osc_bundle_s_deepFree(bndl_s);
-#undef STRIDE
-	*/
+	long len = atom_getlong(argv);
+	uint64_t lptr = atom_getlong(argv + 1);
+	lptr <<= 32;
+	lptr |= atom_getlong(argv + 2);
+	omax_util_outletOSC(x->outlet, len, (char *)lptr);
 }
 
 void oschedt_perform64(t_oschedt *x, t_object *dsp64, double **ins, long numins, double **outs, long numouts, long vectorsize, long flags, void *userparam)
@@ -214,43 +209,31 @@ void oschedt_perform64(t_oschedt *x, t_object *dsp64, double **ins, long numins,
 	for(int i = 0; i < numouts; i++){
 		memset(outs[i], 0, vectorsize * sizeof(double));
 	}
-	t_atom missed[OSCHEDT_QMAX * 4];
-	int missedn = 0;
-	//printf("%s:%d: %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n", __func__, __LINE__);
 	while(np != NULL){
+		// dequeue
+		node n = heap_extract_max(&(x->qs));
+		x->tvs_free_slots[n.id] = 0;
+		t_oschedt_tv tv = x->tvs[n.id];
+		// encode pointer as max atoms
+		// do it this way in case we're in 32-bit
+		t_atom a[3];
+		atom_setlong(a, tv.len);
+		atom_setlong(a + 1, (((uint64_t)tv.bundle) & 0xffffffff00000000) >> 32);
+		atom_setlong(a + 2, ((uint64_t)tv.bundle) & 0xffffffff);
 		if(osc_timetag_compare(now, np->timestamp) <= 0 && osc_timetag_compare(np->timestamp, next) < 0){
-			node n = heap_extract_max(&(x->qs));
-			x->tvs_free_slots[n.id] = 0;
-			t_oschedt_tv tv = x->tvs[n.id];
 			double sw = osc_timetag_timetagToFloat(osc_timetag_subtract(next, now)) / (double)vectorsize;
 			double d = osc_timetag_timetagToFloat(osc_timetag_subtract(tv.t, now));
-			//long s = (long)round(d * x->samplerate);
-			// next - now might not be equal to vectorsize / x->samplerate
-			//long s = (long)round((d / osc_timetag_timetagToFloat(osc_timetag_subtract(next, now))) * vectorsize);
 			long s = (long)round(d / sw);
-			//printf("%s:%d: sw = %f, d = %f, s = %ld\n", __func__, __LINE__, sw, d, s);
-			//printf("%s:%d: **************************************************\n", __func__, __LINE__);
-			//printf("%s:%d: next - now = %f (%d)\n", __func__, __LINE__, osc_timetag_timetagToFloat(osc_timetag_subtract(next, now)), (int)round(osc_timetag_timetagToFloat(osc_timetag_subtract(next, now)) * x->samplerate));
-			//printf("%s:%d: now = %f, np->timestamp = %f, next = %f, d = %f\n", __func__, __LINE__, osc_timetag_timetagToFloat(now), osc_timetag_timetagToFloat(np->timestamp), osc_timetag_timetagToFloat(next), d);
-			//printf("%s:%d: outs[%d][%d] += %f, d = %f\n", __func__, __LINE__, tv.channel, s, tv.v, d);
-			//printf("%s:%d: **************************************************\n", __func__, __LINE__);
 			outs[tv.channel][s] += tv.v;
+			// can probably just call osc_mem_free here, but better to do it in the timer thread
+			schedule_delay(x, (method)oschedt_freeBundle, 0, NULL, 3, a);
 		}else if(osc_timetag_compare(np->timestamp, now) < 0){
-			node n = heap_extract_max(&(x->qs));
-			x->tvs_free_slots[n.id] = 0;
-			t_oschedt_tv tv = x->tvs[n.id];
-			atom_setlong(missed + missedn++, osc_timetag_ntp_getSeconds(tv.t));
-			atom_setlong(missed + missedn++, osc_timetag_ntp_getFraction(tv.t));
-			atom_setfloat(missed + missedn++, tv.v);
-			atom_setlong(missed + missedn++, tv.channel);
+			schedule_delay(x, (method)oschedt_outletMissed, 0, NULL, 3, a);
 		}else{
-			// must be too early
+			// this should never happen
 			break;
 		}
 		np = heap_max(&(x->qs));
-	}
-	if(missedn){
-		//schedule_delay(x, (method)oschedt_outletMissed, 0, NULL, missedn, missed);
 	}
 	x->blockcount++;
 	x->tmp_tvs_bufnum = (x->tmp_tvs_bufnum + 1) % 3;
@@ -258,9 +241,7 @@ void oschedt_perform64(t_oschedt *x, t_object *dsp64, double **ins, long numins,
 
 void oschedt_dsp64(t_oschedt *x, t_object *dsp64, short *count, double samplerate, long maxvectorsize, long flags)
 {
-	//critical_enter(x->lock);
 	x->tmp_tvs_bufnum = 0;
-	//critical_exit(x->lock);
 	x->blockcount = 0;
 	x->samplerate = samplerate;
 	object_method(dsp64, gensym("dsp_add64"), x, oschedt_perform64, 0, NULL);
@@ -334,7 +315,6 @@ void *oschedt_new(t_symbol *msg, short argc, t_atom *argv)
 		}
   		dsp_setup((t_pxobject *)x, 0); 
 		x->outlet = outlet_new((t_object *)x, "FullPacket");
-		critical_new(&(x->lock));
 		x->addresses = (t_symbol **)malloc(argc * sizeof(t_symbol*));
 		//x->buffers = (double **)malloc((argc / 2) * sizeof(double *));
 		for(int i = 0; i < 3; i++){
