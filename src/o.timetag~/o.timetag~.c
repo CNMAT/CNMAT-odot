@@ -55,17 +55,15 @@ void *otimetagt_class;
 
 void otimetagt_perform64(t_otimetagt *x, t_object *dsp64, double **ins, long numins, double **outs, long numouts, long vectorsize, long flags, void *userparam)
 {
+	t_osc_timetag now, next;
 	omax_realtime_clock_tick(x);
-	t_osc_timetag now;
 	omax_realtime_clock_now(&now);
-	//double nowf = osc_timetag_timetagToFloat(now);
-	double samplerate = x->samplerate;
+	omax_realtime_clock_next(&next);
+	double sw = osc_timetag_timetagToFloat(osc_timetag_subtract(next, now)) / (double)vectorsize;
 	for(int i = 0; i < vectorsize; i++){
-		//outs[0][i] = osc_timetag_timetagToFloat(osc_timetag_add(now, osc_timetag_floatToTimetag((double)i / (double)vectorsize)));
-		t_osc_timetag tt = osc_timetag_add(now, osc_timetag_floatToTimetag(((double)i / (double)vectorsize) * ((double)vectorsize / x->samplerate)));
+		t_osc_timetag tt = osc_timetag_add(now, osc_timetag_floatToTimetag(sw * i));
 		outs[0][i] = *((double *)&tt);
 	}
-	//printf("%s: %.50f\n", __func__, outs[0][0]);
 }
 
 void otimetagt_dsp64(t_otimetagt *x, t_object *dsp64, short *count, double samplerate, long maxvectorsize, long flags)
