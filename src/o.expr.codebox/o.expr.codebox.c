@@ -42,7 +42,7 @@
 #define OMAX_DOC_SHORT_DESC "Evaluate a C-like expression containing OSC addresses"
 #define OMAX_DOC_LONG_DESC "When it reveives a packet, o.expr substitutes any OSC addresses contained in the expression for the values to which they are bound in the incoming packet.  The expression is then evaluated and the resulting bundle, containing any side effects of the expression, is output."
 #define OMAX_DOC_INLETS_DESC (char *[]){"OSC packet containing addresses that the expression will be applied to"}
-#define OMAX_DOC_OUTLETS_DESC (char *[]){"The OSC packet containing the results of the expression"}
+#define OMAX_DOC_OUTLETS_DESC (char *[]){"The OSC packet containing the results of the expression", "inactive"}
 #define OMAX_DOC_SEEALSO (char *[]){"o.if", "o.cond", "o.when", "o.unless", "expr", "jit.expr"}
 
 #define NAME OMAX_DOC_NAME
