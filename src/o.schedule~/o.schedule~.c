@@ -155,6 +155,9 @@ void oschedt_outletMissed(t_oschedt *x, t_symbol *msg, int argc, t_atom *argv)
 	lptr <<= 32;
 	lptr |= atom_getlong(argv + 2);
 	omax_util_outletOSC(x->outlet, len, (char *)lptr);
+	if(lptr){
+		osc_mem_free((char *)lptr);
+	}
 }
 
 void oschedt_perform64(t_oschedt *x, t_object *dsp64, double **ins, long numins, double **outs, long numouts, long vectorsize, long flags, void *userparam)
@@ -192,6 +195,7 @@ void oschedt_perform64(t_oschedt *x, t_object *dsp64, double **ins, long numins,
 				x->tvs_free_slots[j] = 1;
 				n.id = j;
 				x->tvs[j] = tv;
+				//printf("tv.bundle = %p, n.id = %d\n", tv.bundle, n.id);
 				overflow = 0;
 				break;
 			}
@@ -205,34 +209,50 @@ void oschedt_perform64(t_oschedt *x, t_object *dsp64, double **ins, long numins,
 			}
 		}
 	}
-	node_ptr np = heap_max(&(x->qs));
 	for(int i = 0; i < numouts; i++){
+		//printf("%p: memset %p\n", x, outs[i]);
 		memset(outs[i], 0, vectorsize * sizeof(double));
 	}
+	double sw = osc_timetag_timetagToFloat(osc_timetag_subtract(next, now)) / (double)vectorsize;
+	node_ptr np = heap_max(&(x->qs));
 	while(np != NULL){
-		// dequeue
-		node n = heap_extract_max(&(x->qs));
-		x->tvs_free_slots[n.id] = 0;
-		t_oschedt_tv tv = x->tvs[n.id];
+		t_oschedt_tv tv = x->tvs[np->id];
+		//printf("np->id = %d\n", np->id);
 		// encode pointer as max atoms
 		// do it this way in case we're in 32-bit
 		t_atom a[3];
 		atom_setlong(a, tv.len);
 		atom_setlong(a + 1, (((uint64_t)tv.bundle) & 0xffffffff00000000) >> 32);
 		atom_setlong(a + 2, ((uint64_t)tv.bundle) & 0xffffffff);
-		if(osc_timetag_compare(now, np->timestamp) <= 0 && osc_timetag_compare(np->timestamp, next) < 0){
-			double sw = osc_timetag_timetagToFloat(osc_timetag_subtract(next, now)) / (double)vectorsize;
-			double d = osc_timetag_timetagToFloat(osc_timetag_subtract(tv.t, now));
-			long s = (long)round(d / sw);
-			outs[tv.channel][s] += tv.v;
+
+		double d;
+		if(osc_timetag_compare(tv.t, now) < 1){
+			d = osc_timetag_timetagToFloat(osc_timetag_subtract(tv.t, now)) * -1.;
+		}else{
+			d = osc_timetag_timetagToFloat(osc_timetag_subtract(tv.t, now));
+		}
+		long s = (long)round(d / sw);
+		//printf("sw = %f, d = %f, s = %ld\n", sw, d, s);
+		//if(osc_timetag_compare(now, np->timestamp) <= 0 && osc_timetag_compare(np->timestamp, next) < 0){
+		if(s >= 0 && s < vectorsize){
+			//printf("schedule %p\n", tv.bundle);
+			//printf("sw = %f, d = %f, s = %ld\n", sw, d, s);
+			//printf("schedule: x = %p, outs[%d] = %p, s = %d, v = %f, ind = %f++\n", x, tv.channel * 2, outs[tv.channel * 2], s, tv.v, outs[tv.channel * 2 + 1][s]);
+			outs[tv.channel * 2][s] += tv.v;
+			outs[tv.channel * 2 + 1][s]++;
 			// can probably just call osc_mem_free here, but better to do it in the timer thread
 			schedule_delay(x, (method)oschedt_freeBundle, 0, NULL, 3, a);
-		}else if(osc_timetag_compare(np->timestamp, now) < 0){
+			//}else if(osc_timetag_compare(np->timestamp, now) < 0){
+		}else if(s < 0){
+			//printf("missed %p\n", tv.bundle);
 			schedule_delay(x, (method)oschedt_outletMissed, 0, NULL, 3, a);
 		}else{
-			// this should never happen
+			//printf("break %p\n", tv.bundle);
 			break;
 		}
+		// dequeue
+		node n = heap_extract_max(&(x->qs));
+		x->tvs_free_slots[n.id] = 0;
 		np = heap_max(&(x->qs));
 	}
 	x->blockcount++;
@@ -326,19 +346,23 @@ void *oschedt_new(t_symbol *msg, short argc, t_atom *argv)
 		x->tvs = (t_oschedt_tv *)calloc(OSCHEDT_QMAX, sizeof(t_oschedt_tv));
 		x->tvs_free_slots = (int *)calloc(OSCHEDT_QMAX, sizeof(int));
 		x->nsignals = argc / 2;
-		x->outlet_assist_strings = (char **)malloc((x->nsignals + 1) * sizeof(char *));
+		x->outlet_assist_strings = (char **)malloc(((x->nsignals * 2) + 1) * sizeof(char *));
 		for(int i = 0; i < argc / 2; i++){
+			outlet_new((t_object *)x, "signal");
 			outlet_new((t_object *)x, "signal");
 			x->addresses[i * 2] = atom_getsym(argv + (i * 2));
 			x->addresses[i * 2 + 1] = atom_getsym(argv + (i * 2 + 1));
 			//x->buffers[i] = (double *)calloc(44100, sizeof(double));
 			long len = snprintf(NULL, 0, "Signal containing contents of %s and %s", x->addresses[i * 2]->s_name, x->addresses[(i * 2) + 1]->s_name) + 1;
-			x->outlet_assist_strings[i] = (char *)malloc(len * sizeof(char));
-			snprintf(x->outlet_assist_strings[i], len, "Signal containing contents of %s and %s", x->addresses[i * 2]->s_name, x->addresses[(i * 2) + 1]->s_name);
+			x->outlet_assist_strings[i * 2] = (char *)malloc(len * sizeof(char));
+			snprintf(x->outlet_assist_strings[i * 2], len, "Signal containing contents of %s and %s", x->addresses[i * 2]->s_name, x->addresses[(i * 2) + 1]->s_name);
+			len = snprintf(NULL, 0, "Signal indicating the number of values summed on each sample of %s and %s", x->addresses[i * 2]->s_name, x->addresses[(i * 2) + 1]->s_name) + 1;
+			x->outlet_assist_strings[i * 2 + 1] = (char *)malloc(len * sizeof(char));
+			snprintf(x->outlet_assist_strings[i * 2 + 1], len, "Signal indicating the number of values summed on each sample of %s and %s", x->addresses[i * 2]->s_name, x->addresses[(i * 2) + 1]->s_name);
 		}
 		long len = snprintf(NULL, 0, "OSC bundle containing data that missed their deadlines");
-		x->outlet_assist_strings[x->nsignals] = (char *)malloc(len * sizeof(char));
-		snprintf(x->outlet_assist_strings[x->nsignals], len, "OSC bundle containing data that missed their deadlines");
+		x->outlet_assist_strings[x->nsignals * 2] = (char *)malloc(len * sizeof(char));
+		snprintf(x->outlet_assist_strings[x->nsignals * 2], len, "OSC bundle containing data that missed their deadlines");
 	}
 	return x;
 }
