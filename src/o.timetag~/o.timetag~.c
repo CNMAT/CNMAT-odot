@@ -25,7 +25,7 @@
 #define OMAX_DOC_SHORT_DESC "Outputs timetags as an audio signal."
 #define OMAX_DOC_LONG_DESC "o.timetag~ outputs a signal containing the time of each sample."
 #define OMAX_DOC_INLETS_DESC (char *[]){"(inactive)"}
-#define OMAX_DOC_OUTLETS_DESC (char *[]){"OSC timetags (signal)"}
+#define OMAX_DOC_OUTLETS_DESC (char *[]){"OSC timetags synced with timer thread (signal)", "OSC timetag representing the system time when perform routine was called (signal)", "Sample index", "Block count since DSP was turned on", "Info / doc (OSC)"}
 #define OMAX_DOC_SEEALSO (char *[]){"timetag~"}
 
 #include "odot_version.h"
@@ -47,32 +47,41 @@
 
 typedef struct _otimetagt{
 	t_pxobject ob;
-	void *outlet;
+	void *out0, *out1, *docout;
 	double samplerate;
+	double blockcount;
 } t_otimetagt;
 
 void *otimetagt_class;
 
 void otimetagt_perform64(t_otimetagt *x, t_object *dsp64, double **ins, long numins, double **outs, long numouts, long vectorsize, long flags, void *userparam)
 {
-	t_osc_timetag now, next;
+	t_osc_timetag now, next, gtod;
 	omax_realtime_clock_tick(x);
 	omax_realtime_clock_now(&now);
 	omax_realtime_clock_next(&next);
+	gtod = osc_timetag_now();
 	double sw = osc_timetag_timetagToFloat(osc_timetag_subtract(next, now)) / (double)vectorsize;
+	double blockcount = (x->blockcount)++;
 	for(int i = 0; i < vectorsize; i++){
 		t_osc_timetag tt = osc_timetag_add(now, osc_timetag_floatToTimetag(sw * i));
 		outs[0][i] = *((double *)&tt);
+		outs[1][i] = *((double *)&gtod);
+		outs[2][i] = i;
+		outs[3][i] = blockcount;
 	}
 }
 
 void otimetagt_dsp64(t_otimetagt *x, t_object *dsp64, short *count, double samplerate, long maxvectorsize, long flags)
 {
 	x->samplerate = samplerate;
+	x->blockcount = 0;
 	omax_realtime_clock_register(x);
 	t_atom tt;
 	atom_setlong(&tt, 't');
-	outlet_anything((void *)(((t_object *)x)->o_outlet), gensym("o.typetag"), 1, &tt);
+	//outlet_anything((void *)(((t_object *)x)->o_outlet), gensym("o.typetag"), 1, &tt);
+	outlet_anything(x->out1, gensym("o.typetag"), 1, &tt);
+	outlet_anything(x->out0, gensym("o.typetag"), 1, &tt);
 	object_method(dsp64, gensym("dsp_add64"), x, otimetagt_perform64, 0, NULL);
 }
 
@@ -80,7 +89,7 @@ void otimetagt_dsp64(t_otimetagt *x, t_object *dsp64, short *count, double sampl
 
 void otimetagt_doc(t_otimetagt *x)
 {
-	omax_doc_outletDoc(x->outlet);
+	omax_doc_outletDoc(x->docout);
 }
 
 void otimetagt_assist(t_otimetagt *x, void *b, long io, long num, char *buf)
@@ -98,7 +107,11 @@ void *otimetagt_new(t_symbol *msg, short argc, t_atom *argv)
 	t_otimetagt *x = NULL;
 	if((x = (t_otimetagt *)object_alloc(otimetagt_class))){
   		dsp_setup((t_pxobject *)x, 0);
+		x->docout = outlet_new((t_object *)x, "FullPacket");
 		outlet_new((t_object *)x, "signal");
+		outlet_new((t_object *)x, "signal");
+		x->out1 = outlet_new((t_object *)x, "signal");
+		x->out0 = outlet_new((t_object *)x, "signal");
 	}
 	return x;
 }
