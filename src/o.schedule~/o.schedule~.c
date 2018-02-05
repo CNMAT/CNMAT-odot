@@ -79,6 +79,34 @@ typedef struct _oschedt{
 
 void *oschedt_class;
 
+t_symbol *ps_FullPacket;
+
+t_osc_bndl_s *oschedt_prependAndOutput(t_oschedt *x, long prefixlen, char *prefix, long len, char *ptr)
+{
+	int num_messages = 0;
+	osc_bundle_s_getMsgCount(len, ptr, &num_messages);
+	char buf[len + (num_messages * (prefixlen + 4))]; // not exact, but more than enough
+	char *bufptr = buf;
+	memcpy(bufptr, ptr, OSC_HEADER_SIZE);
+	bufptr += OSC_HEADER_SIZE;
+	t_osc_bndl_it_s *it = osc_bndl_it_s_get(len, ptr);
+	while(osc_bndl_it_s_hasNext(it)){
+		t_osc_msg_s *msg = osc_bndl_it_s_next(it);
+		int msg_address_len = strlen(osc_message_s_getAddress(msg));
+		char *msg_address = osc_message_s_getAddress(msg);
+		char new_address[prefixlen + msg_address_len + 1];
+
+		memcpy(new_address, prefix, prefixlen);
+		memcpy(new_address + prefixlen, msg_address, msg_address_len);
+
+		new_address[prefixlen + msg_address_len] = '\0';
+		bufptr += osc_message_s_renameCopy(bufptr, msg, prefixlen + msg_address_len, new_address);
+		bufptr += 4;
+	}
+	osc_bndl_it_s_destroy(it);
+	omax_util_outletOSC(x->outlet, bufptr - buf, buf);
+}
+
 void oschedt_fullPacket(t_oschedt *x, long len, long lptr)
 {
 	// the triple buffering makes locks unnecessary
@@ -92,7 +120,8 @@ void oschedt_fullPacket(t_oschedt *x, long len, long lptr)
 	// tmp_tvs_n is triple buffered
 	if(x->tmp_tvs_n[tmp_tvs_bufnum] + 1 == OSCHEDT_QMAX){
 		// this should output the packet out a max outlet
-		object_post((t_object *)x, "queue is full, dropping packet");
+		//object_post((t_object *)x, "queue is full, dropping packet");
+		oschedt_prependAndOutput(x, 14, "/queueoverflow", len, ptr);
 		return;
 	}
 	// signals and addresses don't change after the object has been initialized
@@ -119,7 +148,7 @@ void oschedt_fullPacket(t_oschedt *x, long len, long lptr)
 			if(osc_atom_s_getTypetag(ts) != 't'){
 				// support other typetags than time?
 				// ints = x samples in the future? <--this doesn't really make sense as we don't know what sample we're currently on
-				// floats = x seconds in the future? <--smae with this...
+				// floats = x seconds in the future? <--same with this...
 				osc_message_iterator_s_destroyIterator(tmis);
 				osc_message_iterator_s_destroyIterator(vmis);
 				osc_message_array_s_free(tmas);
@@ -154,7 +183,8 @@ void oschedt_outletMissed(t_oschedt *x, t_symbol *msg, int argc, t_atom *argv)
 	uint64_t lptr = atom_getlong(argv + 1);
 	lptr <<= 32;
 	lptr |= atom_getlong(argv + 2);
-	omax_util_outletOSC(x->outlet, len, (char *)lptr);
+	//omax_util_outletOSC(x->outlet, len, (char *)lptr);
+	oschedt_prependAndOutput(x, 15, "/deadlinemissed", len, (char *)lptr);
 	if(lptr){
 		osc_mem_free((char *)lptr);
 	}
@@ -389,6 +419,8 @@ int main(void)
 	oschedt_class = c;
 
 	common_symbols_init();
+	ps_FullPacket = gensym("FullPacket");
+	
 
 	ODOT_PRINT_VERSION;
 
