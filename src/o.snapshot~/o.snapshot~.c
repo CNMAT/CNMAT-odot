@@ -271,6 +271,9 @@ void osshot_free(t_osshot *x)
 		}
 		free(x->inlet_assist_strings);
 	}
+	if(x->typetags){
+		free(x->typetags);
+	}
 }
 
 void *osshot_new(t_symbol *msg, short argc, t_atom *argv)

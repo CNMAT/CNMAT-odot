@@ -276,6 +276,10 @@ void oschedt_perform64(t_oschedt *x, t_object *dsp64, double **ins, long numins,
 		}else if(s < 0){
 			//printf("missed %p\n", tv.bundle);
 			schedule_delay(x, (method)oschedt_outletMissed, 0, NULL, 3, a);
+		}else if(osc_timetag_isImmediate(tv.t)){
+			outs[tv.channel][0] += tv.v;
+			outs[tv.channel * 2 + 1][0]++;
+			schedule_delay(x, (method)oschedt_freeBundle, 0, NULL, 3, a);
 		}else{
 			//printf("break %p\n", tv.bundle);
 			break;
