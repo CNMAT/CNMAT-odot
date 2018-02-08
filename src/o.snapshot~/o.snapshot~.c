@@ -47,6 +47,7 @@
 #include "omax_dict.h"
 #include "omax_realtime.h"
 
+#define OSSHOT_AC 9
 #define OSSHOT_HEADER_SIZE 5
 #define OSSHOT_HEADER_SRATE 0
 #define OSSHOT_HEADER_BSIZE 1
@@ -56,7 +57,8 @@
 
 #define OSSHOT_AV_BNDLLEN 5
 #define OSSHOT_AV_BNDLPTRL 6
-#define OSSHOT_AV_BNDLPTRR 7 
+#define OSSHOT_AV_BNDLPTRR 7
+#define OSSHOT_AV_SHOULDFREE 8
 
 typedef struct _osshot{
 	t_pxobject ob;
@@ -67,7 +69,8 @@ typedef struct _osshot{
 	int ac;
 	t_atom *av;
 	long bndllen;
-	char *bndlptr;
+	char *bndls;
+	int bufnum;
 	int32_t *dataptrs;
 	t_osc_timetag dspstarttime;
 	long blockcount;
@@ -100,8 +103,12 @@ void osshot_callback(t_osshot *x, t_symbol *msg, int argc, t_atom *argv)
 	struct osshot_header h = osshot_decodeHeader(x, argc, argv);
 	long len = atom_getlong(argv + OSSHOT_AV_BNDLLEN);
 	uint64_t lptr = ((uint64_t)atom_getlong(argv + OSSHOT_AV_BNDLPTRL) << 32) | ((uint64_t)atom_getlong(argv + OSSHOT_AV_BNDLPTRR));
-	omax_util_outletOSC(x->outlet, len, (char *)lptr);
-	osc_mem_free((char *)lptr);
+	char *ptr = (char *)lptr;
+	omax_util_outletOSC(x->outlet, len, ptr);
+	ptr[0] = 0;
+	if(atom_getlong(argv + OSSHOT_AV_SHOULDFREE)){
+		osc_mem_free(ptr);
+	}
 }
 
 void osshot_perform64(t_osshot *x, t_object *dsp64, double **ins, long numins, double **outs, long numouts, long vectorsize, long flags, void *userparam)
@@ -115,8 +122,14 @@ void osshot_perform64(t_osshot *x, t_object *dsp64, double **ins, long numins, d
 	atom_setlong(x->av + OSSHOT_HEADER_TTL, osc_timetag_ntp_getSeconds(now));//(((uint64_t)now) & 0xffffffff00000000) >> 32);
 	atom_setlong(x->av + OSSHOT_HEADER_TTR, osc_timetag_ntp_getFraction(now));//(((uint64_t)now) & 0xffffffff));
 	
-	char *bndlcpy = osc_mem_alloc(x->bndllen);
-	memcpy(bndlcpy, x->bndlptr, x->bndllen);
+	char *bndlptr = x->bndls + (x->bufnum * x->bndllen);
+	int shouldfree = 0;
+	if(bndlptr[0]){
+		bndlptr = (char *)osc_mem_alloc(x->bndllen);
+		memcpy(bndlptr, x->bndls, x->bndllen);
+		shouldfree = 1;
+	}
+	bndlptr[0] = '#';
 	int tvec[numins], dvec[numins];
 	int ntvec = 0, ndvec = 0;
 	for(int i = 0; i < numins; i++){
@@ -128,16 +141,18 @@ void osshot_perform64(t_osshot *x, t_object *dsp64, double **ins, long numins, d
 	}
 	for(int i = 0; i < vectorsize; i++){
 		for(int j = 0; j < ntvec; j++){
-			osc_timetag_encodeForHeader(*((t_osc_timetag *)&(ins[tvec[j]][i])), bndlcpy + x->dataptrs[tvec[j]] + (i * 8));
+			osc_timetag_encodeForHeader(*((t_osc_timetag *)&(ins[tvec[j]][i])), bndlptr + x->dataptrs[tvec[j]] + (i * 8));
 		}
 		for(int j = 0; j < ndvec; j++){
-			*((uint64_t *)(bndlcpy + x->dataptrs[dvec[j]] + (i * 8))) = hton64(*((uint64_t *)&(ins[dvec[j]][i])));
+			*((uint64_t *)(bndlptr + x->dataptrs[dvec[j]] + (i * 8))) = hton64(*((uint64_t *)&(ins[dvec[j]][i])));
 		}
 	}
 	atom_setlong(x->av + OSSHOT_AV_BNDLLEN, x->bndllen);
-	atom_setlong(x->av + OSSHOT_AV_BNDLPTRL, (((uint64_t)bndlcpy) & 0xffffffff00000000) >> 32);
-	atom_setlong(x->av + OSSHOT_AV_BNDLPTRR, (((uint64_t)bndlcpy) & 0xffffffff));
-	schedule_delay(x, (method)osshot_callback, 0, NULL, OSSHOT_HEADER_SIZE + 3, x->av);
+	atom_setlong(x->av + OSSHOT_AV_BNDLPTRL, (((uint64_t)bndlptr) & 0xffffffff00000000) >> 32);
+	atom_setlong(x->av + OSSHOT_AV_BNDLPTRR, (((uint64_t)bndlptr) & 0xffffffff));
+	atom_setlong(x->av + OSSHOT_AV_SHOULDFREE, shouldfree);
+	schedule_delay(x, (method)osshot_callback, 0, NULL, OSSHOT_AC, x->av);
+	x->bufnum = (x->bufnum + 1) % 3;
 }
 
 void osshot_dsp64(t_osshot *x, t_object *dsp64, short *count, double samplerate, long maxvectorsize, long flags)
@@ -147,8 +162,8 @@ void osshot_dsp64(t_osshot *x, t_object *dsp64, short *count, double samplerate,
 	atom_setlong(x->av + OSSHOT_HEADER_SRATE, samplerate);
 	object_method(dsp64, gensym("dsp_add64"), x, osshot_perform64, 0, NULL);
 	if(x->prevblocksize != maxvectorsize){
-		if(x->bndlptr){
-			osc_mem_free(x->bndlptr);
+		if(x->bndls){
+			osc_mem_free(x->bndls);
 			x->bndllen = 0;
 		}
 		t_osc_bndl_u *b = osc_bundle_u_alloc();
@@ -172,7 +187,12 @@ void osshot_dsp64(t_osshot *x, t_object *dsp64, short *count, double samplerate,
 		t_osc_bndl_s *bs = osc_bundle_u_serialize(b);
 		osc_bundle_u_free(b);
 		long bndllen = x->bndllen = osc_bundle_s_getLen(bs);
-		char *bndlptr = x->bndlptr = osc_bundle_s_getPtr(bs);
+		char *bndlptr = osc_bundle_s_getPtr(bs);
+		x->bndls = (char *)osc_mem_alloc(bndllen * 3);
+		for(int i = 0; i < 3; i++){
+			memcpy(x->bndls + (i * bndllen), bndlptr, bndllen);
+			x->bndls[i * bndllen] = 0;
+		}
 		int32_t p = OSC_HEADER_SIZE;
 		int i = 0;
 		while(p  < bndllen && i < x->nmsgs){
@@ -183,6 +203,8 @@ void osshot_dsp64(t_osshot *x, t_object *dsp64, short *count, double samplerate,
 			p += size + 4;
 			i++;
 		}
+		x->bufnum = 0;
+		osc_bundle_s_deepFree(bs);
 	}
 }
 
@@ -235,8 +257,8 @@ void osshot_free(t_osshot *x)
 	if(x->dataptrs){
 		free(x->dataptrs);
 	}
-	if(x->bndlptr){
-		osc_mem_free(x->bndlptr);
+	if(x->bndls){
+		osc_mem_free(x->bndls);
 	}
 	if(x->inlet_assist_strings){
 		for(int i = 0; i < x->nmsgs; i++){
@@ -271,7 +293,7 @@ void *osshot_new(t_symbol *msg, short argc, t_atom *argv)
 	        x->nmsgs = argc;
 		x->dataptrs = (int32_t *)calloc(x->nmsgs, sizeof(int32_t));
 		x->typetags = (char *)calloc(argc, sizeof(char));
-		x->ac = OSSHOT_HEADER_SIZE + 3;
+		x->ac = OSSHOT_AC;
 		x->av = (t_atom *)malloc(x->ac * sizeof(t_atom));
 		x->dspstarttime = OSC_TIMETAG_NULL;
 		x->blockcount = 0;
