@@ -41,6 +41,7 @@
 #include "osc_timetag.h"
 #include "osc_strfmt.h"
 #include "o.h"
+#include "osc_util.h"
 #include "omax_util.h"
 #include "omax_doc.h"
 #include "omax_dict.h"
@@ -53,6 +54,10 @@
 #define OSSHOT_HEADER_TTL 3
 #define OSSHOT_HEADER_TTR 4
 
+#define OSSHOT_AV_BNDLLEN 5
+#define OSSHOT_AV_BNDLPTRL 6
+#define OSSHOT_AV_BNDLPTRR 7 
+
 typedef struct _osshot{
 	t_pxobject ob;
 	void *outlet;
@@ -61,27 +66,16 @@ typedef struct _osshot{
 	int nmsgs;
 	int ac;
 	t_atom *av;
-	t_osc_bndl_u *bndl;
-	t_osc_msg_u **msgs;
+	long bndllen;
+	char *bndlptr;
+	int32_t *dataptrs;
 	t_osc_timetag dspstarttime;
 	long blockcount;
+	long prevblocksize;
 	char *typetags;
 } t_osshot;
 
 void *osshot_class;
-
-void osshot_emitAndFree(t_osshot *x)
-{
-	t_osc_bndl_s *bs = osc_bundle_u_serialize(x->bndl);
-	if(bs){
-		omax_util_outletOSC(x->outlet, osc_bundle_s_getLen(bs), osc_bundle_s_getPtr(bs));
-		osc_bundle_s_deepFree(bs);
-	}
-
-	for(int i = 0; i < x->nmsgs; i++){
-		osc_message_u_clearArgs(x->msgs[i]);
-	}
-}
 
 struct osshot_header
 {
@@ -104,48 +98,10 @@ struct osshot_header
 void osshot_callback(t_osshot *x, t_symbol *msg, int argc, t_atom *argv)
 {
 	struct osshot_header h = osshot_decodeHeader(x, argc, argv);
-	for(int i = 0; i < x->nmsgs; i++){
-		switch(x->typetags[i]){
-		case 't':
-			for(int j = 0; j < h.blocksize; j++){
-				double d = atom_getfloat(argv + OSSHOT_HEADER_SIZE + (i * h.blocksize + j));
-				osc_message_u_appendTimetag(x->msgs[i], *((t_osc_timetag *)(&d)));
-			}
-			break;
-		default:
-			for(int j = 0; j < h.blocksize; j++){
-				osc_message_u_appendDouble(x->msgs[i], atom_getfloat(argv + OSSHOT_HEADER_SIZE + (i * h.blocksize + j)));
-			}
-		}
- 	}
-	osshot_emitAndFree(x);
-}
-
-void osshot_callback_a32(t_osshot *x, t_symbol *msg, int argc, t_atom *argv)
-{
-	struct osshot_header h = osshot_decodeHeader(x, argc, argv);
-	for(int i = 0; i < x->nmsgs; i++){
-		switch(x->typetags[i]){
-		case 't':
-			for(int j = 0; j < h.blocksize; j++){
-				uint64_t f1 = (uint64_t)atom_getlong(argv + OSSHOT_HEADER_SIZE + (i * (h.blocksize * 2)) + (j * 2));
-				uint64_t f2 = (uint64_t)atom_getlong(argv + OSSHOT_HEADER_SIZE + (i * (h.blocksize * 2)) + (j * 2 + 1));
-				uint64_t f = ((f1 & 0xffffffff) << 32) | (f2 & 0xffffffff);
-				//printf("%s:%d: channel = %d, sample = %d, f1idx = %d, f2idx = %d, f1val = 0x%llX, f2val = 0x%llX, f = 0x%llX\n", __func__, __LINE__, i, j, OSSHOT_HEADER_SIZE + (i * (h.blocksize * 2)) + (j * 2), OSSHOT_HEADER_SIZE + (i * (h.blocksize * 2)) + (j * 2 + 1), f1, f2, f);
-				osc_message_u_appendTimetag(x->msgs[i], *((t_osc_timetag *)(&f)));
-			}
-			break;
-		default:
-			for(int j = 0; j < h.blocksize; j++){
-				uint64_t f1 = (uint64_t)atom_getlong(argv + OSSHOT_HEADER_SIZE + (i * (h.blocksize * 2)) + (j * 2));
-				uint64_t f2 = (uint64_t)atom_getlong(argv + OSSHOT_HEADER_SIZE + (i * (h.blocksize * 2)) + (j * 2 + 1));
-				uint64_t f = ((f1 & 0xffffffff) << 32) | (f2 & 0xffffffff);
-				//printf("%s:%d: channel = %d, sample = %d, f1idx = %d, f2idx = %d, f1val = 0x%llX, f2val = 0x%llX, f = 0x%llX\n", __func__, __LINE__, i, j, OSSHOT_HEADER_SIZE + (i * (h.blocksize * 2)) + (j * 2), OSSHOT_HEADER_SIZE + (i * (h.blocksize * 2)) + (j * 2 + 1), f1, f2, f);
-				osc_message_u_appendDouble(x->msgs[i], *((double *)&f));
-			}
-		}
- 	}
-	osshot_emitAndFree(x);
+	long len = atom_getlong(argv + OSSHOT_AV_BNDLLEN);
+	uint64_t lptr = ((uint64_t)atom_getlong(argv + OSSHOT_AV_BNDLPTRL) << 32) | ((uint64_t)atom_getlong(argv + OSSHOT_AV_BNDLPTRR));
+	omax_util_outletOSC(x->outlet, len, (char *)lptr);
+	osc_mem_free((char *)lptr);
 }
 
 void osshot_perform64(t_osshot *x, t_object *dsp64, double **ins, long numins, double **outs, long numouts, long vectorsize, long flags, void *userparam)
@@ -158,56 +114,75 @@ void osshot_perform64(t_osshot *x, t_object *dsp64, double **ins, long numins, d
 	atom_setlong(x->av + OSSHOT_HEADER_BCOUNT, x->blockcount++);
 	atom_setlong(x->av + OSSHOT_HEADER_TTL, osc_timetag_ntp_getSeconds(now));//(((uint64_t)now) & 0xffffffff00000000) >> 32);
 	atom_setlong(x->av + OSSHOT_HEADER_TTR, osc_timetag_ntp_getFraction(now));//(((uint64_t)now) & 0xffffffff));
+	
+	char *bndlcpy = osc_mem_alloc(x->bndllen);
+	memcpy(bndlcpy, x->bndlptr, x->bndllen);
+	int tvec[numins], dvec[numins];
+	int ntvec = 0, ndvec = 0;
 	for(int i = 0; i < numins; i++){
-		atom_setdouble_array(vectorsize, x->av + (i * vectorsize) + OSSHOT_HEADER_SIZE, vectorsize, ins[i]);
-	}
-	schedule_delay(x, (method)osshot_callback, 0, NULL, numins * vectorsize + OSSHOT_HEADER_SIZE, x->av);
-}
-
-// perform routine if we're running in an environment with a 32 bit atom
-void osshot_perform64_a32(t_osshot *x, t_object *dsp64, double **ins, long numins, double **outs, long numouts, long vectorsize, long flags, void *userparam)
-{
-	omax_realtime_clock_tick(x);
-	t_osc_timetag now;
-	omax_realtime_clock_now(&now);
-
-	atom_setlong(x->av + OSSHOT_HEADER_BSIZE, vectorsize);
-	atom_setlong(x->av + OSSHOT_HEADER_BCOUNT, x->blockcount++);
-	atom_setlong(x->av + OSSHOT_HEADER_TTL, osc_timetag_ntp_getSeconds(now));//(((uint64_t)now) & 0xffffffff00000000) >> 32);
-	atom_setlong(x->av + OSSHOT_HEADER_TTR, osc_timetag_ntp_getFraction(now));//(((uint64_t)now) & 0xffffffff));
-	for(int i = 0; i < vectorsize; i++){
-		for(int j = 0; j < numins; j++){
-			uint64_t f = *((uint64_t *)&(ins[j][i]));
-			//printf("%s:%d: channel = %d, sample = %d, f1idx = %d, f2idx = %d, f1val = 0x%llX, f2val = 0x%llX, f = 0x%llX\n", __func__, __LINE__, j, i, OSSHOT_HEADER_SIZE + (i * 2) + (j * (vectorsize * 2)), OSSHOT_HEADER_SIZE + (i * 2 + 1) + (j * (vectorsize * 2)), (f & 0xffffffff00000000) >> 32, f & 0x00000000ffffffff, f);
-			atom_setlong(x->av + OSSHOT_HEADER_SIZE + (i * 2) + (j * (vectorsize * 2)), (f & 0xffffffff00000000) >> 32);
-			atom_setlong(x->av + OSSHOT_HEADER_SIZE + (i * 2 + 1) + (j * (vectorsize * 2)), f & 0x00000000ffffffff);
+		if(x->typetags[i] == 't'){
+			tvec[ntvec++] = i;
+		}else{
+			dvec[ndvec++] = i;
 		}
-
 	}
-	schedule_delay(x, (method)osshot_callback_a32, 0, NULL, numins * (vectorsize * 2) + OSSHOT_HEADER_SIZE, x->av);
-}
-
-void osshot_alloc_atom_array(t_osshot *x, int n)
-{
-	if(sizeof(t_atom_long) == 4){
-		n *= 2;
+	for(int i = 0; i < vectorsize; i++){
+		for(int j = 0; j < ntvec; j++){
+			osc_timetag_encodeForHeader(*((t_osc_timetag *)&(ins[tvec[j]][i])), bndlcpy + x->dataptrs[tvec[j]] + (i * 8));
+		}
+		for(int j = 0; j < ndvec; j++){
+			*((uint64_t *)(bndlcpy + x->dataptrs[dvec[j]] + (i * 8))) = hton64(*((uint64_t *)&(ins[dvec[j]][i])));
+		}
 	}
-	if(n * x->nmsgs + OSSHOT_HEADER_SIZE != x->ac){
-		x->ac = n * x->nmsgs + OSSHOT_HEADER_SIZE;
-		x->av = (t_atom *)sysmem_resizeptr(x->av, (n * x->nmsgs + OSSHOT_HEADER_SIZE) * sizeof(t_atom));
-	}
+	atom_setlong(x->av + OSSHOT_AV_BNDLLEN, x->bndllen);
+	atom_setlong(x->av + OSSHOT_AV_BNDLPTRL, (((uint64_t)bndlcpy) & 0xffffffff00000000) >> 32);
+	atom_setlong(x->av + OSSHOT_AV_BNDLPTRR, (((uint64_t)bndlcpy) & 0xffffffff));
+	schedule_delay(x, (method)osshot_callback, 0, NULL, OSSHOT_HEADER_SIZE + 3, x->av);
 }
 
 void osshot_dsp64(t_osshot *x, t_object *dsp64, short *count, double samplerate, long maxvectorsize, long flags)
 {
 	omax_realtime_clock_register(x);
 	x->blockcount = 0;
-	osshot_alloc_atom_array(x, maxvectorsize);
-	atom_setlong(x->av, samplerate);
-	if(sizeof(t_atom_long) == 8){
-		object_method(dsp64, gensym("dsp_add64"), x, osshot_perform64, 0, NULL);
-	}else{
-		object_method(dsp64, gensym("dsp_add64"), x, osshot_perform64_a32, 0, NULL);
+	atom_setlong(x->av + OSSHOT_HEADER_SRATE, samplerate);
+	object_method(dsp64, gensym("dsp_add64"), x, osshot_perform64, 0, NULL);
+	if(x->prevblocksize != maxvectorsize){
+		if(x->bndlptr){
+			osc_mem_free(x->bndlptr);
+			x->bndllen = 0;
+		}
+		t_osc_bndl_u *b = osc_bundle_u_alloc();
+		t_osc_msg_u *m[x->nmsgs];
+		for(int i = 0; i < x->nmsgs; i++){
+			m[i] = osc_message_u_allocWithAddress(x->addresses[i]->s_name);
+			osc_bundle_u_addMsg(b, m[i]);
+		}
+		for(int i = 0; i < maxvectorsize; i++){
+			for(int j = 0; j < x->nmsgs; j++){
+				switch(x->typetags[j]){
+				case 't':
+					osc_message_u_appendTimetag(m[j], OSC_TIMETAG_NULL);
+					break;
+				default:
+					osc_message_u_appendDouble(m[j], 0.);
+					break;
+				}
+			}
+		}
+		t_osc_bndl_s *bs = osc_bundle_u_serialize(b);
+		osc_bundle_u_free(b);
+		long bndllen = x->bndllen = osc_bundle_s_getLen(bs);
+		char *bndlptr = x->bndlptr = osc_bundle_s_getPtr(bs);
+		int32_t p = OSC_HEADER_SIZE;
+		int i = 0;
+		while(p  < bndllen && i < x->nmsgs){
+			long size = ntoh32(*((int32_t *)(bndlptr + p)));
+			size_t palen = osc_util_getPaddedStringLen(bndlptr + p + 4);
+			size_t pttlen = osc_util_getPaddedStringLen(bndlptr + p + 4 + palen);
+			x->dataptrs[i] = p + 4 + palen + pttlen;
+			p += size + 4;
+			i++;
+		}
 	}
 }
 
@@ -255,13 +230,13 @@ void osshot_free(t_osshot *x)
 		free(x->addresses);
 	}
 	if(x->av){
-		sysmem_freeptr(x->av);
+		free(x->av);
 	}
-	if(x->bndl){
-		osc_bundle_u_free(x->bndl);
+	if(x->dataptrs){
+		free(x->dataptrs);
 	}
-	if(x->msgs){
-		osc_mem_free(x->msgs);
+	if(x->bndlptr){
+		osc_mem_free(x->bndlptr);
 	}
 	if(x->inlet_assist_strings){
 		for(int i = 0; i < x->nmsgs; i++){
@@ -279,11 +254,12 @@ void osshot_free(t_osshot *x)
 void *osshot_new(t_symbol *msg, short argc, t_atom *argv)
 {
 	t_osshot *x = NULL;
+	if(argc == 0){
+		return NULL;
+	}
 	if((x = (t_osshot *)object_alloc(osshot_class))){
   		dsp_setup((t_pxobject *)x, argc); 
 		x->outlet = outlet_new((t_object *)x, "FullPacket");
-		x->bndl = osc_bundle_u_alloc();
-		x->msgs = (t_osc_msg_u **)osc_mem_alloc(argc * sizeof(t_osc_msg_u *));
 		x->addresses = (t_symbol **)malloc(argc * sizeof(t_symbol *));
 		x->inlet_assist_strings = (char **)malloc(argc * sizeof(char *));
 		for(int i = 0; i < argc; i++){
@@ -291,15 +267,15 @@ void *osshot_new(t_symbol *msg, short argc, t_atom *argv)
 			long ilen = snprintf(NULL, 0, "Signal that will be bound to %s", x->addresses[i]->s_name);
 			x->inlet_assist_strings[i] = malloc(ilen + 1);
 			snprintf(x->inlet_assist_strings[i], ilen + 1, "Signal that will be bound to %s", x->addresses[i]->s_name);
-			x->msgs[i] = osc_message_u_allocWithAddress(atom_getsym(argv + i)->s_name);
-			osc_bundle_u_addMsg(x->bndl, x->msgs[i]);
 		}
+	        x->nmsgs = argc;
+		x->dataptrs = (int32_t *)calloc(x->nmsgs, sizeof(int32_t));
 		x->typetags = (char *)calloc(argc, sizeof(char));
-		x->nmsgs = argc;
-		x->ac = 0;
-		x->av = NULL;
+		x->ac = OSSHOT_HEADER_SIZE + 3;
+		x->av = (t_atom *)malloc(x->ac * sizeof(t_atom));
 		x->dspstarttime = OSC_TIMETAG_NULL;
 		x->blockcount = 0;
+		x->prevblocksize = 0;
 	}
 	return x;
 }
