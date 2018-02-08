@@ -169,6 +169,8 @@ void oschedt_fullPacket(t_oschedt *x, long len, long lptr)
 				return;
 			}
 			t_oschedt_tv tv = (t_oschedt_tv){OSCHEDT_TV_STATUS_ACTIVE, osc_atom_s_getTimetag(ts), osc_atom_s_getDouble(vs), i};
+			// in case the perform routine swapped buffers
+			bufnum = (x->bufnum + 2) % 3;
 			if(x->buftoperform_n[bufnum] + 1 == OSCHEDT_QMAX){
 				oschedt_outputMissed(x, tv);
 			}else{
