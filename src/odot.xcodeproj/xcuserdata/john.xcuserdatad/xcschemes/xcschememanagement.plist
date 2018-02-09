@@ -227,7 +227,7 @@
 		<key>o.gui.attach.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>94</integer>
+			<integer>95</integer>
 		</dict>
 		<key>o.if.pd.xcscheme</key>
 		<dict>
@@ -444,10 +444,20 @@
 			<key>orderHint</key>
 			<integer>76</integer>
 		</dict>
+		<key>o.timetag.join~.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>96</integer>
+		</dict>
 		<key>o.timetag.pd.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>79</integer>
+		</dict>
+		<key>o.timetag.split~.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>94</integer>
 		</dict>
 		<key>o.timetag.xcscheme</key>
 		<dict>
@@ -973,6 +983,16 @@
 			<true/>
 		</dict>
 		<key>52CA3490197C6A79008C36B9</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>52D5C1F7202DA7E400E74BF9</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>52D5C209202DA7F400E74BF9</key>
 		<dict>
 			<key>primary</key>
 			<true/>
