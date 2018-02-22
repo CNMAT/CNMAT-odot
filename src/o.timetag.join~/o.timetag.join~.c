@@ -24,7 +24,7 @@
 #define OMAX_DOC_NAME "o.timetag.join~"
 #define OMAX_DOC_SHORT_DESC "Combines the output of o.timetag.split~ into an o.timetag."
 #define OMAX_DOC_LONG_DESC "o.timetag.join~ takes the two signals from o.timetag.split~, the seconds since 1/1/1900, and the fractions of a second, and joins them into an o.timetag"
-#define OMAX_DOC_OUTLETS_DESC (char *[]){"o.timetag (signal)"}
+#define OMAX_DOC_OUTLETS_DESC (char *[]){"o.timetag (signal)", "Info / Doc (FullPacket)"}
 #define OMAX_DOC_INLETS_DESC (char *[]){"Seconds since 1/1/1900 (signal)", "Fractions of a second (signal)"}
 #define OMAX_DOC_SEEALSO (char *[]){"o.timetag~", "o.timetag.split~"}
 

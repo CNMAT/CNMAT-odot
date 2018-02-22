@@ -25,7 +25,7 @@
 #define OMAX_DOC_SHORT_DESC "Outputs the seconds and fractions of a second on different channels."
 #define OMAX_DOC_LONG_DESC "o.timetag.split~ takes a signal from o.timetag~ and outputs the seconds since 1/1/1900 out the left outlet, and the fractions of a second out the right."
 #define OMAX_DOC_INLETS_DESC (char *[]){"o.timetag (signal)"}
-#define OMAX_DOC_OUTLETS_DESC (char *[]){"Seconds since 1/1/1900 (signal)", "Fractions of a second (signal)"}
+#define OMAX_DOC_OUTLETS_DESC (char *[]){"Seconds since 1/1/1900 (signal)", "Fractions of a second (signal)", "Info / Doc (FullPacket)"}
 #define OMAX_DOC_SEEALSO (char *[]){"o.timetag~", "o.timetag.join~"}
 
 #include "odot_version.h"
