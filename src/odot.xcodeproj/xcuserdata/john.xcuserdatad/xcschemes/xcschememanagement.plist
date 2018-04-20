@@ -227,7 +227,7 @@
 		<key>o.gui.attach.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>95</integer>
+			<integer>96</integer>
 		</dict>
 		<key>o.if.pd.xcscheme</key>
 		<dict>
@@ -447,7 +447,7 @@
 		<key>o.timetag.join~.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>96</integer>
+			<integer>95</integer>
 		</dict>
 		<key>o.timetag.pd.xcscheme</key>
 		<dict>

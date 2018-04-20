@@ -49,16 +49,29 @@ typedef struct _otimetagsplit{
 	t_pxobject ob;
 	void *docout;
 	int timetag_connected;
+	int reinterpret;
 } t_otimetagsplit;
 
 void *otimetagsplit_class;
 
 void otimetagsplit_perform64(t_otimetagsplit *x, t_object *dsp64, double **ins, long numins, double **outs, long numouts, long vectorsize, long flags, void *userparam)
 {
-	for(int i = 0; i < vectorsize; i++){
-		t_osc_timetag tt = *((t_osc_timetag *)&(ins[0][i]));
-		outs[0][i] = (double)tt.sec;
-		outs[1][i] = (double)tt.frac_sec;
+	if(x->reinterpret == 0){
+		for(int i = 0; i < vectorsize; i++){
+			t_osc_timetag tt = *((t_osc_timetag *)&(ins[0][i]));
+			outs[0][i] = (double)tt.sec;
+			outs[1][i] = (double)tt.frac_sec;
+		}
+	}else{
+		for(int i = 0; i < vectorsize; i++){
+			t_osc_timetag tt = *((t_osc_timetag *)&(ins[0][i]));
+			uint32_t tt_sec = tt.sec;
+			uint32_t tt_frac_sec = tt.frac_sec;
+			float tt_sec_f = *((float *)&tt_sec);
+			float tt_frac_sec_f = *((float *)&tt_frac_sec);
+			outs[0][i] = (double)tt_sec_f;
+			outs[1][i] = (double)tt_frac_sec_f;
+		}
 	}
 }
 
@@ -101,6 +114,10 @@ void *otimetagsplit_new(t_symbol *msg, short argc, t_atom *argv)
 		outlet_new((t_object *)x, "signal");
 		outlet_new((t_object *)x, "signal");
 		x->timetag_connected = 0;
+		x->reinterpret = 0;
+		if(argc == 1 && atom_gettype(argv) == A_SYM && atom_getsym(argv) == gensym("reinterpret-bytes")){
+			x->reinterpret = 1;
+		}
 	}
 	return x;
 }

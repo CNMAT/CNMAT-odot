@@ -48,15 +48,28 @@
 typedef struct _otimetagjoin{
 	t_pxobject ob;
 	void *out0, *docout;
+	int reinterpret;
 } t_otimetagjoin;
 
 void *otimetagjoin_class;
 
 void otimetagjoin_perform64(t_otimetagjoin *x, t_object *dsp64, double **ins, long numins, double **outs, long numouts, long vectorsize, long flags, void *userparam)
 {
-	for(int i = 0; i < vectorsize; i++){
-		t_osc_timetag tt = (t_osc_timetag){(uint32_t)ins[0][i], (uint32_t)ins[1][i]};
-		outs[0][i] = *((double *)&tt);
+	if(x->reinterpret == 0){
+		for(int i = 0; i < vectorsize; i++){
+			t_osc_timetag tt = (t_osc_timetag){(uint32_t)ins[0][i], (uint32_t)ins[1][i]};
+			outs[0][i] = *((double *)&tt);
+		}
+	}else{
+		for(int i = 0; i < vectorsize; i++){
+			float tt_sec_f = (float)ins[0][i];
+			float tt_frac_sec_f = (float)ins[1][i];
+			uint32_t tt_sec = *((uint32_t *)&tt_sec_f);
+			uint32_t tt_frac_sec = *((uint32_t *)&tt_frac_sec_f);
+			t_osc_timetag tt = (t_osc_timetag){tt_sec, tt_frac_sec};
+			//t_osc_timetag tt = (t_osc_timetag){*((uint32_t *)&(ins[0][i])), *((uint32_t *)&(ins[1][i]))};
+			outs[0][i] = *((double *)&tt);
+		}
 	}
 }
 
@@ -92,6 +105,10 @@ void *otimetagjoin_new(t_symbol *msg, short argc, t_atom *argv)
   		dsp_setup((t_pxobject *)x, 2);
 		x->docout = outlet_new((t_object *)x, "FullPacket");
 		x->out0 = outlet_new((t_object *)x, "signal");
+		x->reinterpret = 0;
+		if(argc == 1 && atom_gettype(argv) == A_SYM && atom_getsym(argv) == gensym("reinterpret-bytes")){
+			x->reinterpret = 1;
+		}
 	}
 	return x;
 }
