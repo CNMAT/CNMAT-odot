@@ -1545,7 +1545,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
 					"patching_rect" : [ 41.0, 3404.0, 1137.0, 145.0 ],
-					"text" : "/octave/ratio = 3,      # the frequency ratio  of the tritave:\n/concert/pitch = 440.0, # concert pitch (the frequency of the A above middle C)\n/MIDI/A440 = 69,        # MIDI  note numbers  count semitones with 69 for A440\n/intervals = 13,        # the octave is divided into 12 intervals\n# the power function pow() satisfies the requirement that successive intervals be equal ratios\n# 32-bit IEEE floating point numbers provide acceptable resolution for the approximation that pow() provides \n\n/equal/tempered/frequencies/Bohlen/Pierce = /concert/pitch * pow(/octave/ratio , float32(/pitch/numbers - /MIDI/A440 )  / /intervals)"
+					"text" : "/octave/ratio = 3,      # the frequency ratio  of the tritave:\n/concert/pitch = 440.0, # concert pitch (the frequency of the A above middle C)\n/MIDI/A440 = 69,        # MIDI  note numbers  count semitones with 69 for A440\n/intervals = 13,        # the octave is divided into 13 intervals\n# the power function pow() satisfies the requirement that successive intervals be equal ratios\n# 32-bit IEEE floating point numbers provide acceptable resolution for the approximation that pow() provides \n\n/equal/tempered/frequencies/Bohlen/Pierce = /concert/pitch * pow(/octave/ratio , float32(/pitch/numbers - /MIDI/A440 )  / /intervals)"
 				}
 
 			}
