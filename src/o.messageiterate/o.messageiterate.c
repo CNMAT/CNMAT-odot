@@ -60,6 +60,7 @@ void *omiterate_class;
 void omiterate_fullPacket(t_omiterate *x, t_symbol *msg, int argc, t_atom *argv)
 {
 	OMAX_UTIL_GET_LEN_AND_PTR;
+	osc_bundle_s_wrap_naked_message(len, ptr);
 	t_osc_bndl_it_s *it = osc_bndl_it_s_get(len, ptr);
 	while(osc_bndl_it_s_hasNext(it)){
 		t_osc_msg_s *m = osc_bndl_it_s_next(it);

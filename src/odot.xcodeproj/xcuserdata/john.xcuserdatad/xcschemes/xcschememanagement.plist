@@ -139,6 +139,11 @@
 			<key>orderHint</key>
 			<integer>21</integer>
 		</dict>
+		<key>o.daemon.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>97</integer>
+		</dict>
 		<key>o.dict.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
