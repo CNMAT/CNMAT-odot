@@ -306,7 +306,6 @@
 		5217D90D158EEBEB005B5238 /* o.explode.c in Sources */ = {isa = PBXBuildFile; fileRef = 5217D90C158EEBEB005B5238 /* o.explode.c */; };
 		5223ADD21923EB5700C8FBB5 /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52CEF59416375BFB0016EC39 /* commonsyms.c */; };
 		5223ADD41923EB5700C8FBB5 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */; };
-		5223ADD51923EB5700C8FBB5 /* libo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5AD163763BD0016EC39 /* libo.a */; };
 		5223ADD61923EB5700C8FBB5 /* libomax.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5C6163763CF0016EC39 /* libomax.a */; };
 		5223ADDC1923EB9000C8FBB5 /* o.expr.codebox.c in Sources */ = {isa = PBXBuildFile; fileRef = 5223ADDB1923EB9000C8FBB5 /* o.expr.codebox.c */; };
 		525523D01504CB9E00A10E5D /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */; };
@@ -2807,7 +2806,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				5223ADD41923EB5700C8FBB5 /* Carbon.framework in Frameworks */,
-				5223ADD51923EB5700C8FBB5 /* libo.a in Frameworks */,
 				5223ADD61923EB5700C8FBB5 /* libomax.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3338,6 +3336,7 @@
 				19C28FB4FE9D528D11CA2CBB /* Products */,
 				52D5C208202DA7E500E74BF9 /* o.timetag~ copy-Info.plist */,
 				52D5C21A202DA7F400E74BF9 /* o.timetag.split~ copy-Info.plist */,
+				2194B26521124F9E00CACD2D /* Frameworks */,
 			);
 			name = cv_jit;
 			sourceTree = "<group>";
@@ -3449,6 +3448,13 @@
 				11C890B320447A9D002BED1E /* o.daemon.mxo */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		2194B26521124F9E00CACD2D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		52C839E1167A5BB8000AA688 /* Other Sources */ = {

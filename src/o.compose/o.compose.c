@@ -1249,7 +1249,7 @@ CLASS_ATTR_ATTR_PARSE(c,attrname,"category",USESYM(symbol),flags,parsestr)
 
 
 int main(void){
-	printf("%s: %d\n", __func__, __LINE__);
+	//printf("%s: %d\n", __func__, __LINE__);
     common_symbols_init();
     t_class *c = class_new("o.compose", (method)ocompose_new, (method)ocompose_free, sizeof(t_ocompose), 0L, A_GIMME, 0);
     alias("o.c");
