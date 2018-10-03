@@ -10,7 +10,10 @@
 
 /* global character array for debug & error messages */
 char messages[MSGSIZE];
+
+
 node tmp;
+#define SWAP(t,x,y) tmp = x ; x = y ; y = tmp  /* swap to variables */
 
 /* Function which takes a heap rooted at the given index and make sure
  * that is confroms to the heap critera. Adapted from Introduction to

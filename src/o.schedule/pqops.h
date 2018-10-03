@@ -25,7 +25,6 @@
 #define LEFT(x)  (2*x)                         /* left child of a node */
 #define RIGHT(x) ((2*x)+1)                     /* right child of a node */
 #define PARENT(x) (x/2)                        /* parent of a node */
-#define SWAP(t,x,y) tmp = x ; x = y ; y = tmp  /* swap to variables */
 
 typedef unsigned long long int priority;
 
