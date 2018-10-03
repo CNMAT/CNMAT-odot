@@ -4,6 +4,9 @@
  * Revision: $Id: pqops.h 434 2005-06-16 23:24:22Z ranga $
  */
 
+#ifndef pqops_h
+#define pqops_h
+
 /* define some constants,  */
 
 #define MSGSIZE 128       /* max size of a debug message */
@@ -24,10 +27,6 @@
 #define PARENT(x) (x/2)                        /* parent of a node */
 #define SWAP(t,x,y) tmp = x ; x = y ; y = tmp  /* swap to variables */
 
-/* global character array for debug & error messages */
-
-char messages[MSGSIZE];
-
 typedef unsigned long long int priority;
 
 /* define a structure representing an individual node in the heap, and
@@ -45,7 +44,6 @@ typedef struct _node
   t_osc_timetag timestamp;
 } node;
 
-node tmp;
 
 /* for convience in function declarations, typedef a pointer to a node
  * as its own type, node_ptr */
@@ -81,3 +79,5 @@ extern int         node_find(binary_heap a,unsigned int id);
 
 extern int         compare_priority(node i, node j);
 extern void        print_error(char *msg);
+
+#endif

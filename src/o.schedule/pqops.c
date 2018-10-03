@@ -8,6 +8,10 @@
 #include <stdlib.h>
 #include "pqops.h"
 
+/* global character array for debug & error messages */
+char messages[MSGSIZE];
+node tmp;
+
 /* Function which takes a heap rooted at the given index and make sure
  * that is confroms to the heap critera. Adapted from Introduction to
  * Algorithms (Cormen, Leiserson, Rivest 1990) page 143 */
