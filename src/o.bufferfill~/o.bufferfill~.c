@@ -163,7 +163,17 @@ void obuffill_fullPacket(t_obuffill *x, t_symbol *msg, int argc, t_atom *argv)
             osc_message_s_getArg(msg, i, &at);
             if( at )
             {
-                sample_arrays[count][i] = osc_atom_s_getFloat(at);
+                switch(osc_atom_s_getTypetag(at)){
+                    case 'i':
+                        sample_arrays[count][i] = (float)osc_atom_s_getInt32(at);
+                        break;
+                    case 'd':
+                        sample_arrays[count][i] = (float)osc_atom_s_getDouble(at);
+                        break;
+                    default:
+                        sample_arrays[count][i] = (float)osc_atom_s_getFloat(at);
+                        break;
+                }
                 osc_atom_s_free(at);
                 at = NULL;
             }
@@ -171,7 +181,7 @@ void obuffill_fullPacket(t_obuffill *x, t_symbol *msg, int argc, t_atom *argv)
         }
         count++;
     }
-
+    osc_bndl_it_s_destroy(it);
     
     // I'm assuming that buffer locks the samples, for sure it must
     object_method(buffer, gensym("sizeinsamps"), max_len, n_msg);

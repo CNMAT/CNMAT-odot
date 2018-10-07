@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 59.0, 104.0, 1130.0, 574.0 ],
+		"rect" : [ 59.0, 100.0, 755.0, 574.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -44,8 +44,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 604.0, 75.0, 428.0, 208.0 ],
-					"presentation_linecount" : 21,
+					"patching_rect" : [ 604.0, 75.0, 429.0, 208.0 ],
 					"text" : "arguments:\n1 - name of buffer to fill (required)\n\n2 - name of second buffer for double buffering \n(suggested for cases where you don't want to write to the buffer while it's playing)\n\ninput:\nbundle containing one or more lists to write into the buffer, all addresses in the bundle will be used, and inserted as separate channels, based on the address order in the bundle.\n\noutput:\nbundle detailing which buffer has been just written to, and the channel address order"
 				}
 
@@ -125,9 +124,9 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 298.5, 281.0, 265.0, 38.0 ],
-					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 28, 47, 117, 112, 100, 97, 116, 101, 100, 98, 117, 102, 102, 101, 114, 0, 0, 44, 115, 0, 0, 102, 111, 111, 48, 0, 0, 0, 0, 0, 0, 0, 32, 47, 99, 104, 97, 110, 110, 101, 108, 97, 100, 100, 114, 101, 115, 115, 101, 115, 0, 0, 0, 44, 115, 115, 0, 47, 49, 0, 0, 47, 51, 0, 0 ],
+					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 28, 47, 117, 112, 100, 97, 116, 101, 100, 98, 117, 102, 102, 101, 114, 0, 0, 44, 115, 0, 0, 102, 111, 111, 50, 0, 0, 0, 0, 0, 0, 0, 32, 47, 99, 104, 97, 110, 110, 101, 108, 97, 100, 100, 114, 101, 115, 115, 101, 115, 0, 0, 0, 44, 115, 115, 0, 47, 49, 49, 0, 47, 52, 0, 0 ],
 					"saved_bundle_length" : 84,
-					"text" : "/updatedbuffer : \"foo0\",\n/channeladdresses : [\"/1\", \"/3\"]"
+					"text" : "/updatedbuffer : \"foo2\",\n/channeladdresses : [\"/11\", \"/4\"]"
 				}
 
 			}
@@ -139,7 +138,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 198.0, 449.0, 59.0, 22.0 ],
-					"text" : "11."
+					"text" : "103."
 				}
 
 			}
@@ -163,7 +162,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 76.0, 446.0, 59.0, 22.0 ],
-					"text" : "11."
+					"text" : "-3.1"
 				}
 
 			}
@@ -232,15 +231,15 @@
 					"fontface" : 0,
 					"fontsize" : 12.0,
 					"id" : "obj-3",
-					"linecount" : 3,
+					"linecount" : 2,
 					"maxclass" : "o.compose",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 95.0, 75.0, 265.0, 51.0 ],
-					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 36, 47, 49, 49, 0, 44, 105, 105, 105, 105, 105, 105, 0, 0, 0, 0, 1, 0, 0, 0, 2, 0, 0, 0, 3, 0, 0, 0, 4, 0, 0, 0, 10, 0, 0, 0, 11, 0, 0, 0, 48, 47, 52, 0, 0, 44, 105, 105, 105, 100, 105, 105, 105, 0, 0, 0, 0, 0, 0, 0, 101, 0, 0, 0, 102, 0, 0, 0, 103, 63, -16, -93, -41, 10, 61, 112, -92, 0, 0, 0, 10, 0, 0, 0, 11, 0, 0, 0, 33 ],
-					"saved_bundle_length" : 108,
-					"text" : "/11 : [1, 2, 3, 4, 10, 11],\n/4 : [101, 102, 103, 1.04, 10, 11, 33]"
+					"patching_rect" : [ 95.0, 75.0, 294.0, 38.0 ],
+					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 40, 47, 49, 49, 0, 44, 105, 105, 100, 105, 105, 105, 0, -1, -1, -1, -1, -1, -1, -1, -2, -64, 8, -52, -52, -52, -52, -52, -51, -1, -1, -1, -4, -1, -1, -1, -10, -1, -1, -1, -11, 0, 0, 0, 48, 47, 52, 0, 0, 44, 105, 105, 105, 100, 105, 105, 105, 0, 0, 0, 0, 0, 0, 0, 101, 0, 0, 0, 102, 0, 0, 0, 103, 63, -16, -93, -41, 10, 61, 112, -92, 0, 0, 0, 10, 0, 0, 0, 11, 0, 0, 0, 33 ],
+					"saved_bundle_length" : 112,
+					"text" : "/11 : [-1, -2, -3.1, -4, -10, -11],\n/4 : [101, 102, 103, 1.04, 10, 11, 33]"
 				}
 
 			}
