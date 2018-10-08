@@ -128,28 +128,6 @@ typedef struct _olookup {
     
 } t_olookup;
 
-
-void olookup_subbundle_phrases(t_olookup *x, vector<t_osc_msg_u*>& _x, vector<t_osc_msg_u*>& _y, vector<t_osc_msg_u*>& _c, vector<t_osc_msg_u*>& _dur)
-{
-    // when the subbunle is /y /x /c or /dur, sub bundle addresses are ignored, and used in bundle order
-    // or?
-    
-    
-    
-/*
- 
- 
- 
-    auto it = osc_bndl_it_s_get(len, ptr);
-    while(osc_bndl_it_s_hasNext(it))
-    {
-        //                    t_osc_msg_s *m = osc_bndl_it_s_next(it);
-    }
-    osc_bndl_it_s_destroy(it);
- */
-}
-
-
 void olookup_single_phrase(t_olookup *x, vector<t_osc_msg_u*>& _x, vector<t_osc_msg_u*>& _y, vector<t_osc_msg_u*>& _c, vector<t_osc_msg_u*>& _dur)
 {
     // we know that /y exists
@@ -159,6 +137,7 @@ void olookup_single_phrase(t_olookup *x, vector<t_osc_msg_u*>& _x, vector<t_osc_
     t_osc_msg_u* m_c = _c.size() ? _c[0] : NULL;
     t_osc_msg_u* m_dur = _dur.size() ? _dur[0] : NULL;
     
+    // /x overrides /dur
     PhasePoints new_phrase( m_x, m_y, m_c, m_dur, (t_object *)x );
     if(  new_phrase.init(x->normal_x) )
     {
@@ -170,10 +149,141 @@ void olookup_single_phrase(t_olookup *x, vector<t_osc_msg_u*>& _x, vector<t_osc_
             x->phrase[0] = new_phrase;
         
         x->update = true;
+        
         critical_exit(x->lock);
     }
+    
+}
+
+void olookup_add_phrase(t_olookup *x, int index, t_osc_msg_u *  m_x, t_osc_msg_u * m_y, t_osc_msg_u * m_c, t_osc_msg_u * m_dur)
+{
+    
+    // /x overrides /dur
+    PhasePoints new_phrase( m_x, m_y, m_c, m_dur, (t_object *)x );
+    if(  new_phrase.init(x->normal_x) )
+    {
+        critical_enter(x->lock);
+        
+        if( x->phrase.size() == 0 )
+            x->phrase.emplace_back( new_phrase );
+        else
+            x->phrase[0] = new_phrase;
+        
+        x->update = true;
+        
+        critical_exit(x->lock);
+    }
+    
+}
+
+
+bool olookup_parse_messages(t_olookup *x, vector<t_osc_msg_u*>& _x, vector<t_osc_msg_u*>& _y, vector<t_osc_msg_u*>& _c, vector<t_osc_msg_u*>& _dur)
+{
+    /*
+     when the subbundle is /y /x /c or /dur, sub bundle addresses are ignored, and used in bundle order
+    {
+        /x : {
+            /11 : [1, 2, 3],
+            /111 : [0., 0.1, 1]
+        },
+        /y : {
+            /0 : [1, 2, 3],
+            /1 : [10., 10.1, 11]
+        }
+    }
+    */
+    
+    size_t nx = _x.size();
+    size_t ny = _y.size();
+    
+    if( !nx && !ny )
+        return false;
+    
+    
+    bool genX = false;
+    
+    if( nx )
+    {
+        if( nx != ny )
+        {
+            if( nx > ny )
+            {
+                // duplicate y to match x
+                for( int i = ny-1; i < nx; ++i)
+                {
+                    _y.emplace_back( _y[ny-1] );
+                }
+                
+            }
+            else
+            {
+                // duplicate x to match y
+                for( int i = nx-1; i < ny; ++i)
+                {
+                    _x.emplace_back( _x[nx-1] );
+                }
+            }
+        }
+        
+    }
+    else
+    {
+        if( _dur.size() )
+        {
+            // gen x from duration?
+        }
+        else
+        {
+            genX = true;
+        }
+    }
+    
+    
+    if( !_y.size() )
+        return false;
+    
+    for( int i = 0; i < _y.size(); ++i)
+    {
+        
+        PhasePoints new_phrase;
+        
+        new_phrase.parseMsg((char *)"/y", _y[i], (t_object *)x );
+        
+        if( nx )
+            new_phrase.parseMsg((char *)"/x", _x[i], (t_object *)x );
+        else if( _dur.size() )
+            new_phrase.parseMsg((char *)"/dur", _dur[i], (t_object *)x );
+        else
+            new_phrase.generateXfromY();
+        
+        
+        if( i < _c.size() )
+        {
+            new_phrase.parseMsg((char *)"/c", _c[i], (t_object *)x );
+        }
+        
+        
+        if( new_phrase.init(x->normal_x) )
+        {
+            critical_enter(x->lock);
+            
+            if( i < x->phrase.size() )
+                x->phrase[i] = new_phrase;
+            else
+                x->phrase.emplace_back( new_phrase );
+            
+            x->update = true;
+            
+            critical_exit(x->lock);
+        }
+        
+    }
+    
+    return true;
 
 }
+
+
 
 
 void olookup_indexed_phrase(t_olookup *x, vector<t_osc_msg_u*>& _other)
@@ -188,6 +298,38 @@ void olookup_indexed_phrase(t_olookup *x, vector<t_osc_msg_u*>& _other)
      }
      osc_bndl_it_s_destroy(it);
      */
+}
+
+bool olookup_process_msg(t_osc_msg_s *m, vector<t_osc_msg_u*>& vec)
+{
+    bool isBundle = false; // maybe I don't care if it's a bundle or not?
+    t_osc_atom_s *at = NULL;
+    osc_message_s_getArg(m, 0, &at);
+    if( at )
+    {
+        if(  osc_atom_s_getTypetag( at ) == OSC_BUNDLE_TYPETAG )
+        {
+            int count = 0;
+            t_osc_bndl_s *sub = osc_atom_s_getBndl(at);
+            auto itsub = osc_bndl_it_s_get(osc_bundle_s_getLen(sub), osc_bundle_s_getPtr(sub));
+            while(osc_bndl_it_s_hasNext(itsub))
+            {
+                vec.emplace_back(osc_message_s_deserialize(osc_bndl_it_s_next(itsub)));
+                
+            }
+            osc_bndl_it_s_destroy(itsub);
+            
+            osc_bundle_s_free(sub);
+            isBundle = true;
+        }
+        else
+        {
+            vec.emplace_back(osc_message_s_deserialize(m));
+        }
+        osc_mem_free(at);
+    }
+    
+    return isBundle;
 }
 
 
@@ -224,19 +366,19 @@ void olookup_FullPacket(t_olookup *x, t_symbol *s, long argc, t_atom *argv)
         
         if( addr == "/x" )
         {
-            _x.emplace_back(osc_message_s_deserialize(m));
+            olookup_process_msg(m, _x);
         }
         else if (  addr == "/y" )
         {
-            _y.emplace_back(osc_message_s_deserialize(m));
+            olookup_process_msg(m, _y);
         }
         else if ( addr == "/c" )
         {
-            _c.emplace_back(osc_message_s_deserialize(m));
+            olookup_process_msg(m, _c);
         }
         else if ( addr == "/dur" )
         {
-            _dur.emplace_back(osc_message_s_deserialize(m));
+            olookup_process_msg(m, _dur);
         }
         else
         {
@@ -244,7 +386,7 @@ void olookup_FullPacket(t_olookup *x, t_symbol *s, long argc, t_atom *argv)
             osc_message_s_getArg(m, 0, &at);
             if( at )
             {
-                if(  osc_atom_s_getTypetag( at ) == 'b' )
+                if(  osc_atom_s_getTypetag( at ) == OSC_BUNDLE_TYPETAG )
                     _other.emplace_back( osc_message_s_deserialize(m) );
                 
                 osc_mem_free(at);
@@ -255,54 +397,48 @@ void olookup_FullPacket(t_olookup *x, t_symbol *s, long argc, t_atom *argv)
     }
     osc_bndl_it_s_destroy(it);
 
-    if( _y.size() ) // found /y so we can create phrases for them
-    {
-        
-        t_osc_atom_u *at = osc_message_u_getArg(_y[0], 0);
-        if( at )
-        {
-            if(  osc_atom_u_getTypetag( at ) == 'b' ) // /y is a subbundle, make subphrases
-            {
-                olookup_subbundle_phrases(x, _x, _y, _c, _dur);
-            }
-            else // not a subbundle, so treat as index 0
-            {
-                olookup_single_phrase(x, _x, _y, _c, _dur);
-            }
-
-            // the u atom is a reference stored in the message, not a copy, so we don't free it here
-        }
-        
-    }
-    else if( _other.size() )
-    {
-        olookup_indexed_phrase(x, _other);
-    }
-    else
-    {
-        object_error((t_object *)x, "did not find any usable values in the received bundle");
-        return;
-    }
+    // new version accumlates x/y/c/dur messages into vectors (splitting up subbundles)
+    // so now, below needs to be re-written to parse the values --
+    // olookup_subbundle_phrases is probably the thing to use for /x /y and /x{} /y{} options
     
+    
+    if( !olookup_parse_messages(x, _x, _y, _c, _dur) )
+    {
+        if( _other.size() )
+        {
+            olookup_indexed_phrase(x, _other);
+        }
+        else
+        {
+            object_error((t_object *)x, "did not find any usable values in the received bundle");
+            return;
+        }
+    }
+   
     
 //    post("interp %i norm %i", x->interp, x->normal_x);
     
     omax_util_outletOSC(x->osc_outlet, len, ptr);
     
     for( int i = 0; i < _x.size(); ++i )
-        osc_message_u_free(_x[i]);
+        if( _x[i] )
+            osc_message_u_free(_x[i]);
 
     for( int i = 0; i < _y.size(); ++i )
-        osc_message_u_free(_y[i]);
+        if( _y[i] )
+            osc_message_u_free(_y[i]);
     
     for( int i = 0; i < _c.size(); ++i )
-        osc_message_u_free(_c[i]);
+        if( _c[i] )
+            osc_message_u_free(_c[i]);
     
     for( int i = 0; i < _dur.size(); ++i )
-        osc_message_u_free(_dur[i]);
+        if( _dur[i] )
+            osc_message_u_free(_dur[i]);
     
     for( int i = 0; i < _other.size(); ++i )
-        osc_message_u_free(_other[i]);
+        if( _other[i] )
+            osc_message_u_free(_other[i]);
 }
 
 
@@ -322,7 +458,7 @@ void olookup_perform64(t_olookup *x, t_object *dsp64, double **ins, long numins,
     critical_exit(x->lock);
 
     long max_phr_idx = x_phrase.size() - 1;
-
+    
     t_int in_idx, points_len, max_idx0, max_idx1;
     double  in_phase, max_phase, x0 = 0, x1 = 0, y0 = 0, y1 = 0, range = 0, fp = 0;
 
@@ -356,9 +492,11 @@ void olookup_perform64(t_olookup *x, t_object *dsp64, double **ins, long numins,
                 {
                     critical_enter(x->lock);
                     x_phrase = x->phrase;
-                    max_phr_idx = x_phrase.size() - 1;
                     x->update = false;
                     critical_exit(x->lock);
+                    
+                    max_phr_idx = x_phrase.size() - 1;
+
                 }
 
                 phrase_index = (t_int)CLAMP( in_idx, 0, max_phr_idx );

@@ -82,7 +82,7 @@ struct PhasePoints
 
 bool PhasePoints::set(t_osc_msg_u* _x, t_osc_msg_u* _y, t_osc_msg_u* _c, t_osc_msg_u* _dur, t_object *context )
 {
-    
+
     if(!_y)
         return false;
     
@@ -245,14 +245,13 @@ void PhasePoints::parseMsg(char *addr_selector, t_osc_msg_u *m, t_object *contex
     //                post("%s %f", addr_selector, dd);
             }
                 break;
-            case 't':
             case 's':
                 object_error(context, "found unusable type for point");
                 break;
-            case 'b':
+            case OSC_BUNDLE_TYPETAG:
                 object_error(context, "no subbundle support yet");
                 break;
-            case OSC_BUNDLE_TYPETAG:
+            case OSC_TIMETAG_TYPETAG:
                 object_error(context, "no timetag support yet");
                 break;
             default:
