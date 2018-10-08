@@ -33,30 +33,8 @@
 
 using namespace std;
 
-struct OdotPtrDeleter
-{
-    void operator()(t_osc_msg_s*  ptr)
-    {
-        if (ptr)
-            osc_message_s_deepFree(ptr);
-    }
-};
-
-using OdotMessagePtr = std::unique_ptr<t_osc_msg_s, OdotPtrDeleter>;
-
-static inline OdotMessagePtr newOdotMessagePtr( t_osc_msg_s * src ) {
-    return OdotMessagePtr( src, OdotPtrDeleter() );
-}
-
-
 struct PhasePoints
 {
-    PhasePoints(){}
-    PhasePoints(t_osc_msg_u* _x, t_osc_msg_u* _y, t_osc_msg_u* _c, t_osc_msg_u* _dur, t_object *context ) {
-        set(_x, _y, _c, _dur, context);
-    }
-    
-    
     vector< double > x, y, c, dur;
     long len = 0;
     
@@ -76,10 +54,9 @@ struct PhasePoints
     
     void print();
     
-    bool set(t_osc_msg_u* _x, t_osc_msg_u* _y, t_osc_msg_u* _c, t_osc_msg_u* _dur, t_object *context );
     
 };
-
+/*
 bool PhasePoints::set(t_osc_msg_u* _x, t_osc_msg_u* _y, t_osc_msg_u* _c, t_osc_msg_u* _dur, t_object *context )
 {
 
@@ -108,7 +85,7 @@ bool PhasePoints::set(t_osc_msg_u* _x, t_osc_msg_u* _y, t_osc_msg_u* _c, t_osc_m
     return valid();
 }
 
-
+*/
 
 void PhasePoints::reserve( char *addr, long len )
 {

@@ -75,12 +75,9 @@ In this format, the names of the bundles are converted to integers and used for 
 #define NAME "o.lookup~"
 #define DESCRIPTION ""
 #define AUTHORS "Rama Gottfried"
-#define COPYRIGHT_YEARS "2016-7"
+#define COPYRIGHT_YEARS "2018"
 
 #include "o.lookup~.hpp"
-
-
-
 
 using namespace std;
 
@@ -90,9 +87,6 @@ typedef struct _olookup {
     t_pxobject  ob;
     
     vector< PhasePoints > phrase;
-    
-    // chache with phrase update to avoid size() lookup
-    t_int       num_phrases;
     
     // sample and hold values if phase doesn't change
     double      cur_phase;
@@ -110,16 +104,6 @@ typedef struct _olookup {
     bool        phasewrap;
     bool        normal_x;
     bool        interp;
-
-    const string select_addrs[4] = {"/x", "/y", "/c", "/dur"};
-    
-    char **     selectors;
-    t_symbol*   base_address;
-    size_t      base_address_len;
-    size_t      nbytes_selector;
-    
-    int         num_selectors;
-    char *      selectors_ptrs[8];
     
     void*       osc_outlet;
     long        osc_inlet;
@@ -128,6 +112,7 @@ typedef struct _olookup {
     
 } t_olookup;
 
+/*
 void olookup_single_phrase(t_olookup *x, vector<t_osc_msg_u*>& _x, vector<t_osc_msg_u*>& _y, vector<t_osc_msg_u*>& _c, vector<t_osc_msg_u*>& _dur)
 {
     // we know that /y exists
@@ -175,7 +160,7 @@ void olookup_add_phrase(t_olookup *x, int index, t_osc_msg_u *  m_x, t_osc_msg_u
     }
     
 }
-
+*/
 
 bool olookup_parse_messages(t_olookup *x, vector<t_osc_msg_u*>& _x, vector<t_osc_msg_u*>& _y, vector<t_osc_msg_u*>& _c, vector<t_osc_msg_u*>& _dur)
 {
@@ -300,16 +285,15 @@ void olookup_indexed_phrase(t_olookup *x, vector<t_osc_msg_u*>& _other)
      */
 }
 
-bool olookup_process_msg(t_osc_msg_s *m, vector<t_osc_msg_u*>& vec)
+void olookup_process_msg(t_osc_msg_s *m, vector<t_osc_msg_u*>& vec)
 {
-    bool isBundle = false; // maybe I don't care if it's a bundle or not?
     t_osc_atom_s *at = NULL;
     osc_message_s_getArg(m, 0, &at);
     if( at )
     {
         if(  osc_atom_s_getTypetag( at ) == OSC_BUNDLE_TYPETAG )
         {
-            int count = 0;
+//            int count = 0;
             t_osc_bndl_s *sub = osc_atom_s_getBndl(at);
             auto itsub = osc_bndl_it_s_get(osc_bundle_s_getLen(sub), osc_bundle_s_getPtr(sub));
             while(osc_bndl_it_s_hasNext(itsub))
@@ -320,7 +304,6 @@ bool olookup_process_msg(t_osc_msg_s *m, vector<t_osc_msg_u*>& vec)
             osc_bndl_it_s_destroy(itsub);
             
             osc_bundle_s_free(sub);
-            isBundle = true;
         }
         else
         {
@@ -328,8 +311,6 @@ bool olookup_process_msg(t_osc_msg_s *m, vector<t_osc_msg_u*>& vec)
         }
         osc_mem_free(at);
     }
-    
-    return isBundle;
 }
 
 
@@ -357,6 +338,7 @@ void olookup_FullPacket(t_olookup *x, t_symbol *s, long argc, t_atom *argv)
     
     
     vector<t_osc_msg_u *> _x, _y, _c, _dur, _other;
+    int x_free = 0, y_free = 0, c_free = 0, d_free = 0, o_free = 0;
     
     auto it = osc_bndl_it_s_get(len, ptr);
     while(osc_bndl_it_s_hasNext(it))
@@ -367,18 +349,23 @@ void olookup_FullPacket(t_olookup *x, t_symbol *s, long argc, t_atom *argv)
         if( addr == "/x" )
         {
             olookup_process_msg(m, _x);
+            x_free = _x.size();
         }
         else if (  addr == "/y" )
         {
             olookup_process_msg(m, _y);
+            y_free = _y.size();
         }
         else if ( addr == "/c" )
         {
             olookup_process_msg(m, _c);
+            c_free = _c.size();
         }
         else if ( addr == "/dur" )
         {
             olookup_process_msg(m, _dur);
+            d_free = _dur.size();
+
         }
         else
         {
@@ -391,17 +378,13 @@ void olookup_FullPacket(t_olookup *x, t_symbol *s, long argc, t_atom *argv)
                 
                 osc_mem_free(at);
             }
-            
         }
         
     }
     osc_bndl_it_s_destroy(it);
 
-    // new version accumlates x/y/c/dur messages into vectors (splitting up subbundles)
-    // so now, below needs to be re-written to parse the values --
-    // olookup_subbundle_phrases is probably the thing to use for /x /y and /x{} /y{} options
-    
-    
+    o_free = _other.size();
+   
     if( !olookup_parse_messages(x, _x, _y, _c, _dur) )
     {
         if( _other.size() )
@@ -420,25 +403,21 @@ void olookup_FullPacket(t_olookup *x, t_symbol *s, long argc, t_atom *argv)
     
     omax_util_outletOSC(x->osc_outlet, len, ptr);
     
-    for( int i = 0; i < _x.size(); ++i )
-        if( _x[i] )
-            osc_message_u_free(_x[i]);
+    for( int i = 0; i < x_free; ++i )
+        osc_message_u_free(_x[i]);
 
-    for( int i = 0; i < _y.size(); ++i )
-        if( _y[i] )
-            osc_message_u_free(_y[i]);
+    for( int i = 0; i < y_free; ++i )
+        osc_message_u_free(_y[i]);
     
-    for( int i = 0; i < _c.size(); ++i )
-        if( _c[i] )
-            osc_message_u_free(_c[i]);
+    for( int i = 0; i < c_free; ++i )
+        osc_message_u_free(_c[i]);
     
-    for( int i = 0; i < _dur.size(); ++i )
-        if( _dur[i] )
-            osc_message_u_free(_dur[i]);
+    for( int i = 0; i < d_free; ++i )
+        osc_message_u_free(_dur[i]);
     
-    for( int i = 0; i < _other.size(); ++i )
-        if( _other[i] )
-            osc_message_u_free(_other[i]);
+    for( int i = 0; i < o_free; ++i )
+        osc_message_u_free(_other[i]);
+    
 }
 
 
@@ -689,6 +668,6 @@ int C74_EXPORT main(void)
     olookup_class = c;
     
     post("%s by %s.", NAME, AUTHORS);
-    post("Copyright (c) " COPYRIGHT_YEARS " Regents of the University of California.  All rights reserved.");
+    post("Copyright (c) " COPYRIGHT_YEARS " Regents of the University of California & Unversity of Music and Theater Hamburg.  All rights reserved.");
 }
 END_USING_C_LINKAGE
