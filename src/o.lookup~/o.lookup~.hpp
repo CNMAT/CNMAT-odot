@@ -56,36 +56,7 @@ struct PhasePoints
     
     
 };
-/*
-bool PhasePoints::set(t_osc_msg_u* _x, t_osc_msg_u* _y, t_osc_msg_u* _c, t_osc_msg_u* _dur, t_object *context )
-{
 
-    if(!_y)
-        return false;
-    
-    parseMsg((char *)"/y", _y, context);
-    
-    if( !_x )
-    {
-        // check for duration, otherwise we need to generate x indexes
-        if( _dur )
-            parseMsg((char *)"/dur", _dur, context);
-        else
-            generateXfromY();
-        
-    }
-    else
-    {
-        parseMsg((char *)"/x", _x, context);
-    }
-    
-    if( _c)
-       parseMsg((char *)"/c", _c, context);
-    
-    return valid();
-}
-
-*/
 
 void PhasePoints::reserve( char *addr, long len )
 {

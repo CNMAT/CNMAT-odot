@@ -112,55 +112,6 @@ typedef struct _olookup {
     
 } t_olookup;
 
-/*
-void olookup_single_phrase(t_olookup *x, vector<t_osc_msg_u*>& _x, vector<t_osc_msg_u*>& _y, vector<t_osc_msg_u*>& _c, vector<t_osc_msg_u*>& _dur)
-{
-    // we know that /y exists
-    
-    t_osc_msg_u* m_x = _x.size() ? _x[0] : NULL;
-    t_osc_msg_u* m_y = _y.size() ? _y[0] : NULL;
-    t_osc_msg_u* m_c = _c.size() ? _c[0] : NULL;
-    t_osc_msg_u* m_dur = _dur.size() ? _dur[0] : NULL;
-    
-    // /x overrides /dur
-    PhasePoints new_phrase( m_x, m_y, m_c, m_dur, (t_object *)x );
-    if(  new_phrase.init(x->normal_x) )
-    {
-        critical_enter(x->lock);
-        
-        if( x->phrase.size() == 0 )
-            x->phrase.emplace_back( new_phrase );
-        else
-            x->phrase[0] = new_phrase;
-        
-        x->update = true;
-        
-        critical_exit(x->lock);
-    }
-    
-}
-
-void olookup_add_phrase(t_olookup *x, int index, t_osc_msg_u *  m_x, t_osc_msg_u * m_y, t_osc_msg_u * m_c, t_osc_msg_u * m_dur)
-{
-    
-    // /x overrides /dur
-    PhasePoints new_phrase( m_x, m_y, m_c, m_dur, (t_object *)x );
-    if(  new_phrase.init(x->normal_x) )
-    {
-        critical_enter(x->lock);
-        
-        if( x->phrase.size() == 0 )
-            x->phrase.emplace_back( new_phrase );
-        else
-            x->phrase[0] = new_phrase;
-        
-        x->update = true;
-        
-        critical_exit(x->lock);
-    }
-    
-}
-*/
 
 bool olookup_parse_messages(t_olookup *x, vector<t_osc_msg_u*>& _x, vector<t_osc_msg_u*>& _y, vector<t_osc_msg_u*>& _c, vector<t_osc_msg_u*>& _dur)
 {
