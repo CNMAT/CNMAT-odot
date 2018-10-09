@@ -38,7 +38,6 @@ using namespace std;
 struct PhasePoints
 {
     vector< double > x, y, c;
-    vector< double > norm_x, tied_x, tied_y, tied_c;
     
     long len = 0;
     
@@ -49,18 +48,11 @@ struct PhasePoints
     void parseDurMsg(t_osc_msg_u *m, t_object *context);
 
     bool init();
-
-    bool init(  bool normalize_x, bool tie_repeats  );
     
     void sortByX();
     void sortAndTie();
 
     vector<size_t> getSortedIDX();
-
-    
-    void do_normalize();
-
-    void generateXfromY();
     
     inline bool valid(){ return len > 0; }
     
@@ -161,126 +153,13 @@ void PhasePoints::sortByX()
     
 }
 
-void PhasePoints::sortAndTie()
-{
-    auto idx = getSortedIDX();
-   
-    idx.erase( remove_if(idx.begin(), idx.end(), [&](size_t i) { return (i > 0) && ( y[i] == y[i-1] ) ; } ),
-              idx.end() );
-
-    vector<double> new_x, new_y, new_c;
-    size_t new_size = idx.size();
-    new_x.reserve(new_size);
-    new_y.reserve(new_size);
-    
-    bool iscurved = c.size();
-    
-    if( iscurved )
-        new_c.reserve(new_size);
-    
-    for( auto& i : idx )
-    {
-        new_x.emplace_back( x[i] );
-        new_y.emplace_back( y[i] );
-        if( iscurved )
-            new_c.emplace_back( c[i] );
-    }
-    
-    x = new_x;
-    y = new_y;
-    
-    if( iscurved )
-        c = new_c;
-}
-
-
-void PhasePoints::do_normalize()
-{
-    double min = x[0];
-    double max = x.back();
-    
-    for(int i=0; i < x.size(); i++ )
-    {
-        x[i] = (x[i] - min) / max;
-    }
-}
-
 bool PhasePoints::init()
 {
     if( x.size() > 0 && x.size() == y.size() )
     {
-        
-        // sort by x
-        auto idx = getSortedIDX();
-        apply_permutation_in_place(x, idx);
-        apply_permutation_in_place(y, idx);
-        
-        if( c.size() )
-        {
-            apply_permutation_in_place(c, idx);
-        }
-        
-        // normalize x
-        double min = x[0];
-        double max = x.back();
-        norm_x.reserve( x.size() );
-        
-        for(int i=0; i < x.size(); i++ )
-        {
-            norm_x.emplace_back( (x[i] - min) / max );
-        }
-        
-        // tie repeats (only really used in duration mode, but to keep the dsp chain fast we pre compute it everytime)
-        idx.erase( remove_if(idx.begin(), idx.end(), [&](size_t i) { return (i > 0) && ( y[i] == y[i-1] ) ; } ),
-                  idx.end() );
-        
-        size_t new_size = idx.size();
-        tied_x.reserve(new_size);
-        tied_y.reserve(new_size);
-        
-        bool iscurved = c.size();
-        
-        if( iscurved )
-            tied_c.reserve(new_size);
-        
-        for( auto& i : idx )
-        {
-            tied_x.emplace_back( x[i] );
-            tied_y.emplace_back( y[i] );
-            if( iscurved )
-                tied_c.emplace_back( c[i] );
-        }
-        
+        sortByX();
+       
         len = x.size();
-        
-        return true;
-        
-    }
-    
-    return false;
-}
-
-
-bool PhasePoints::init( bool normalize_x, bool tie_repeats )
-{
-    
- //   std::cout << x.size() << " " << y.size() << std::endl;
-    
-    if( x.size() > 0 && x.size() == y.size() )
-    {
-        
-       if( tie_repeats )
-            sortAndTie();
-        else
-            sortByX();
-        
-        if( normalize_x )
-        {
-            do_normalize();
-        }
-        
-        len = x.size();
-        
         return true;
         
     }
@@ -343,11 +222,12 @@ void PhasePoints::parseMsg(char *addr_selector, t_osc_msg_u *m, t_object *contex
 
 void PhasePoints::parseDurMsg(t_osc_msg_u *m, t_object *context)
 {
-
     x.reserve( osc_message_u_getArgCount(m) + 1 );
 
     x.emplace_back( 0 );
-    c.emplace_back( 0 );
+    
+    if( c.size() )
+        c.emplace_back( 0 );
 
     t_osc_msg_it_u *it = osc_msg_it_u_get(m);
     while(osc_msg_it_u_hasNext(it)){
@@ -393,29 +273,21 @@ void PhasePoints::parseDurMsg(t_osc_msg_u *m, t_object *context)
 }
 
 
-void PhasePoints::generateXfromY()
-{
-    for( int i = 0; i < y.size(); i++ )
-    {
-        x.emplace_back(i);
-    }
-}
-
 void PhasePoints::print()
 {
-    post("x(%i): ", x.size() );
+    printf("x(%ld): ", x.size() );
     for(int i = 0; i < x.size(); i++ )
     {
-        post("%f ", x[i] );
+        printf("%f ", x[i] );
     }
-//    post("\n");
+    printf("\n");
     
-    post("y(%i): ", y.size() );
+    printf("y(%ld): ", y.size() );
     for(int i = 0; i < y.size(); i++ )
     {
-        post("%f ", y[i] );
+        printf("%f ", y[i] );
     }
-//    post("\n");
+    printf("\n");
 }
 
 

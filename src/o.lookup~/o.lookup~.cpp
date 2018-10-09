@@ -217,30 +217,20 @@ bool olookup_parse_messages(t_olookup *x, vector<t_osc_msg_u*>& _x, vector<t_osc
     size_t ny = _y.size();
     size_t ndur = _dur.size();
 
-    if( !nx && !ny )
+    if( !ny || (!nx && !ndur) )
         return false;
     
-    int genX = 0;
+    bool genX = !nx && ndur ;
     
-    if( !nx && ndur )
+    if( genX )
     {
-        // gen x from duration?
-        genX = 1;
+        // gen x from duration
 
         if( !_c.size() )
             olookup_expandToMatch2(_dur, _y);
         else
             olookup_expandToMatch3(_dur, _y, _c);
         
-    }
-    else if ( !nx )
-    {
-        // gen x from Y
-        genX = 2;
-        
-        if( _c.size() )
-            olookup_expandToMatch2(_c, _y);
-       
     }
     else
     {
@@ -251,34 +241,20 @@ bool olookup_parse_messages(t_olookup *x, vector<t_osc_msg_u*>& _x, vector<t_osc
     }
     
     
-    
-    
-    if( !_y.size() )
-        return false;
-    
     vector<PhasePoints> new_vec;
     
     for( int i = 0; i < _y.size(); ++i)
     {
-        
         PhasePoints new_phrase;
         
         new_phrase.parseMsg((char *)"/y", _y[i], (t_object *)x );
         
-        if( nx ) // x overrides duration
-        {
-            new_phrase.parseMsg((char *)"/x", _x[i], (t_object *)x );
-        }
-        else if( genX == 1 )
-        {
+        if( genX )
             new_phrase.parseDurMsg( _dur[i], (t_object *)x );
-        }
-        else  // genX == 2;
-        {
-            new_phrase.generateXfromY();
-        }
+        else
+            new_phrase.parseMsg((char *)"/x", _x[i], (t_object *)x );
         
-        // c needs to be after x in case we are in duration mode
+        // note: c needs to be after x in case we are in duration mode, which adds a zero as the first curve
         if( i < _c.size() )
         {
             new_phrase.parseMsg((char *)"/c", _c[i], (t_object *)x );
@@ -433,7 +409,7 @@ void olookup_FullPacket(t_olookup *x, t_symbol *s, long argc, t_atom *argv)
         }
         else
         {
-            object_error((t_object *)x, "did not find any usable values in the received bundle");
+            object_error((t_object *)x, "parse error");
             return;
         }
     }
@@ -471,7 +447,9 @@ void olookup_perform64(t_olookup *x, t_object *dsp64, double **ins, long numins,
     t_double *rel_phase_out = outs[1];
     t_double *index_out = outs[2];
     t_double *delta_out = outs[3];
+    t_double *npoints_out = outs[4];
 
+    
     critical_enter(x->lock);
     vector<PhasePoints> x_phrase = x->phrase;
     critical_exit(x->lock);
@@ -480,8 +458,6 @@ void olookup_perform64(t_olookup *x, t_object *dsp64, double **ins, long numins,
     
     t_int in_idx, points_len, max_idx0, max_idx1;
     double  in_phase, max_phase, x0 = 0, x1 = 0, y0 = 0, y1 = 0, range = 0, fp = 0, gp = 0;
-    
-    vector<double> _x;
     
     double y_val = x->val;
     double phase = x->cur_phase;
@@ -503,6 +479,7 @@ void olookup_perform64(t_olookup *x, t_object *dsp64, double **ins, long numins,
             *rel_phase_out++ = 0;
             *index_out++ = 0;
             *delta_out++ = 0;
+            *npoints_out++ = 0;
         }
         else
         {
@@ -532,10 +509,9 @@ void olookup_perform64(t_olookup *x, t_object *dsp64, double **ins, long numins,
                 // later: remove some of these clamps
                 
                 // current segment start/end
-                _x = ( x->normal_x ) ? phr.norm_x : phr.x;
                 
-                x0 = _x[ CLAMP(idx, 0, max_idx0) ];
-                x1 = _x[ CLAMP(idx+1, 1, max_idx1) ];
+                x0 = phr.x[ CLAMP(idx, 0, max_idx0) ];
+                x1 = phr.x[ CLAMP(idx+1, 1, max_idx1) ];
             
                 
                 if( x->phaseincr == 1 )
@@ -555,26 +531,26 @@ void olookup_perform64(t_olookup *x, t_object *dsp64, double **ins, long numins,
                 {
                     while( in_phase < x0 && idx-- > 0 )
                     {
-                        x0 = _x[ CLAMP(idx, 0, max_idx0) ];
+                        x0 = phr.x[ CLAMP(idx, 0, max_idx0) ];
                     }
                     
                     if( in_phase < x0 && idx <= 0 )
                         x1 = x0;
                     else
-                        x1 = _x[  CLAMP(idx+1, 1, max_idx1) ];
+                        x1 = phr.x[  CLAMP(idx+1, 1, max_idx1) ];
                     
                 }
                 else if( in_phase >= x1 )
                 {
                     while( in_phase >= x1 && idx++ < points_len )
                     {
-                        x1 = _x[ CLAMP(idx+1, 1, max_idx1) ];
+                        x1 = phr.x[ CLAMP(idx+1, 1, max_idx1) ];
                     }
                     
                     if( in_phase > x1 && idx >= points_len )
                         x0 = x1;
                     else
-                        x0 = _x[  CLAMP(idx, 0, max_idx0) ];
+                        x0 = phr.x[  CLAMP(idx, 0, max_idx0) ];
                 }
                 
                 delta = x1 - x0;
@@ -627,6 +603,7 @@ void olookup_perform64(t_olookup *x, t_object *dsp64, double **ins, long numins,
             *rel_phase_out++ = phase;
             *index_out++ = idx;
             *delta_out++ = delta;
+            *npoints_out++ = points_len;
         }
         
     }
@@ -665,52 +642,24 @@ void olookup_assist(t_olookup *x, void *b, long m, long a, char *s)
             case 1:
                 sprintf(s, "(signal) relative phase");
                 break;
+            case 2:
+                sprintf(s, "(signal) step index");
+                break;
+            case 3:
+                sprintf(s, "(signal) step delta (duration)");
+                break;
+            case 4:
+                sprintf(s, "(signal) total steps in phrase");
+                break;
+            case 5:
+                sprintf(s, "(FullPacket) OSC output");
+                break;
             default:
                 sprintf(s, "outlet %ld", a);
                 break;
         }
     }
     
-}
-
-
-t_max_err olookup_normalize_x_set(t_olookup *x, t_object *attr, long argc, t_atom *argv)
-{
-    
-    if(argc == 1 && argv)
-    {
-        long prev = x->normal_x;
-        
-        if(atom_gettype(argv) == A_FLOAT)
-             x->normal_x = (long)atom_getfloat(argv) > 0;
-        else if(atom_gettype(argv) == A_LONG)
-             x->normal_x = (long)atom_getfloat(argv) > 0;
-        else if (atom_gettype(argv) == A_SYM )
-        {
-            object_error((t_object *)x, "unknown dilation size value");
-            return -1;
-        }
-        
-        if( prev != x->normal_x )
-        {
-            // do what here?
-            // should we store a unnormalized copy? or automatically normalize and do ties everytime?
-            // vector<PhasePoints> new_vec = x->phrase;
-        }
-        
-        return 0;
-    }
-    
-    return -1;
-}
-
-t_max_err olookup_normalize_x_get(t_olookup *x, t_object *attr, long *argc, t_atom **argv)
-{
-    char alloc;
-    atom_alloc(argc, argv, &alloc);
-    atom_setlong(*argv, x->normal_x > 0 );
-    
-    return 0;
 }
 
 void olookup_free(t_olookup *x)
@@ -731,9 +680,6 @@ void *olookup_new(t_symbol* s, short argc, t_atom* argv)
         x->phrase.reserve(1);
         
         x->interp = 1;
-        x->normal_x = 1;
-        x->tie_repeats = 0;
-        
         x->phaseincr = 0;
         x->phasewrap = 0;
         
@@ -746,7 +692,8 @@ void *olookup_new(t_symbol* s, short argc, t_atom* argv)
         outlet_new((t_object *)x, "signal");
         outlet_new((t_object *)x, "signal");
         outlet_new((t_object *)x, "signal");
-        
+        outlet_new((t_object *)x, "signal");
+
         x->proxy = proxy_new((t_object *)x, 1, &(x->osc_inlet));
         
 
@@ -766,23 +713,16 @@ int C74_EXPORT main(void)
     class_addmethod(c, (method)olookup_assist,      "assist",       A_CANT,     0);
     class_addmethod(c, (method)olookup_FullPacket,  "FullPacket",	A_GIMME,    0);
 
-    // some addrs will need custom setter since we need to reprocess the phrase vector
     
     CLASS_ATTR_LONG(c, "interpolation", 0, t_olookup, interp);
     CLASS_ATTR_STYLE_LABEL(c, "interpolation", 0, "onoff", "interpolation");
-    
-    CLASS_ATTR_LONG(c, "normalize_x", 0, t_olookup, normal_x);
-    CLASS_ATTR_STYLE_LABEL(c, "normalize_x", 0, "onoff", "normalize_x");
     
     CLASS_ATTR_LONG(c, "phase_wrap", 0, t_olookup, phasewrap);
     CLASS_ATTR_STYLE_LABEL(c, "phase_wrap", 0, "onoff", "phase_wrap");
     
     CLASS_ATTR_LONG(c, "phase_incr", 0, t_olookup, phaseincr);
     CLASS_ATTR_STYLE_LABEL(c, "phase_incr", 0, "onoff", "phase_incr");
-    
-    CLASS_ATTR_LONG(c, "tie_repeats", 0, t_olookup, tie_repeats);
-    CLASS_ATTR_STYLE_LABEL(c, "tie_repeats", 0, "onoff", "tie_repeats");
-    
+
     
     class_dspinit(c);
     class_register(CLASS_BOX, c);
