@@ -538,7 +538,7 @@ void olookup_perform64(t_olookup *x, t_object *dsp64, double **ins, long numins,
                     
                     if( x->phasewrap == 1 )
                     {
-                        in_phase = fmod(in_phase, max_idx1);
+                        in_phase = ( in_phase >= 0 ) ? fmod(in_phase, max_idx1) : fmod(in_phase + max_idx1, max_idx1);
                     }
                     
                     prev_inphase = in_phase;
