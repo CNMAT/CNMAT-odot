@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 100.0, 79.0, 1097.0, 684.0 ],
+		"rect" : [ 100.0, 79.0, 1059.0, 715.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -39,6 +39,36 @@
 		"subpatcher_template" : "",
 		"boxes" : [ 			{
 				"box" : 				{
+					"fontface" : 0,
+					"fontsize" : 12.0,
+					"id" : "obj-26",
+					"linecount" : 4,
+					"maxclass" : "o.compose",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 823.0, 60.5, 172.0, 65.0 ],
+					"presentation_linecount" : 4,
+					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 96, 47, 49, 49, 0, 44, 46, 0, 0, 0, 0, 0, 84, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 24, 47, 120, 0, 0, 44, 105, 105, 105, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 2, 0, 0, 0, 36, 47, 121, 0, 0, 44, 100, 100, 100, 0, 0, 0, 0, 63, -32, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 63, -16, 0, 0, 0, 0, 0, 0 ],
+					"saved_bundle_length" : 116,
+					"text" : "/11 : {\n\t/x : [0, 1, 2],\n\t/y : [0.5, 0., 1.]\n}"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-32",
+					"linecount" : 3,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 61.25, 593.0, 302.0, 47.0 ],
+					"text" : "@interp 0 turns off interpolation between points, and instead holds the starting point of each line/curve segment for the duration of the segment."
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-29",
 					"maxclass" : "scope~",
 					"numinlets" : 2,
@@ -66,32 +96,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "signal" ],
-					"patching_rect" : [ 108.25, 251.0, 39.0, 22.0 ],
+					"patching_rect" : [ 98.25, 238.0, 39.0, 22.0 ],
 					"text" : "click~"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-27",
-					"maxclass" : "newobj",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "signal" ],
-					"patching_rect" : [ 29.25, 233.0, 29.5, 22.0 ],
-					"text" : "*~"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-26",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "signal" ],
-					"patching_rect" : [ 40.75, 193.0, 111.0, 22.0 ],
-					"text" : "cnmat.phase.click~"
 				}
 
 			}
@@ -546,15 +552,15 @@
 					"fontface" : 0,
 					"fontsize" : 12.0,
 					"id" : "obj-56",
-					"linecount" : 2,
+					"linecount" : 9,
 					"maxclass" : "o.compose",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 564.0, 426.5, 244.0, 38.0 ],
-					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 32, 47, 120, 0, 0, 44, 105, 105, 105, 105, 105, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 2, 0, 0, 0, 3, 0, 0, 0, 4, 0, 0, 0, 40, 47, 121, 0, 0, 44, 100, 105, 105, 100, 105, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 63, -32, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 ],
-					"saved_bundle_length" : 96,
-					"text" : "/x : [0, 1, 2, 3, 4],\n/y : [0., 1, 1, 0.5, 1]"
+					"patching_rect" : [ 564.0, 426.5, 244.0, 133.0 ],
+					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 108, 47, 120, 0, 0, 44, 46, 0, 0, 0, 0, 0, 96, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 36, 47, 49, 48, 0, 44, 100, 100, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 63, -43, 85, 85, 85, 85, 85, 85, 63, -16, 0, 0, 0, 0, 0, 0, 0, 0, 0, 36, 47, 49, 49, 0, 44, 100, 100, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 63, -27, 85, 85, 85, 85, 85, 85, 63, -16, 0, 0, 0, 0, 0, 0, 0, 0, 0, 104, 47, 121, 0, 0, 44, 46, 0, 0, 0, 0, 0, 92, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 32, 47, 48, 0, 0, 44, 100, 100, 105, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 63, -71, -103, -103, -103, -103, -103, -102, 0, 0, 0, 1, 0, 0, 0, 36, 47, 49, 0, 0, 44, 100, 100, 100, 0, 0, 0, 0, 63, -71, -103, -103, -103, -103, -103, -102, 63, -32, 0, 0, 0, 0, 0, 0, 63, -71, -103, -103, -103, -103, -103, -102, 0, 0, 0, 28, 47, 115, 117, 98, 120, 0, 0, 0, 44, 105, 105, 105, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 3 ],
+					"saved_bundle_length" : 268,
+					"text" : "/x : {\n\t/10 : [0., 0.333333, 1.],\n\t/11 : [0., 0.666667, 1.]\n},\n/y : {\n\t/0 : [0., 0.1, 1],\n\t/1 : [0.1, 0.5, 0.1]\n},\n/subx : [0, 2, 3]"
 				}
 
 			}
@@ -1761,6 +1767,14 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-29", 0 ],
+					"order" : 0,
+					"source" : [ "obj-1", 4 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-5", 0 ],
 					"order" : 1,
 					"source" : [ "obj-1", 1 ]
@@ -1800,13 +1814,6 @@
 				"patchline" : 				{
 					"destination" : [ "obj-1", 0 ],
 					"source" : [ "obj-10", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-26", 0 ],
-					"source" : [ "obj-11", 0 ]
 				}
 
 			}
@@ -1875,8 +1882,8 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-27", 1 ],
-					"source" : [ "obj-26", 0 ]
+					"destination" : [ "obj-1", 2 ],
+					"source" : [ "obj-3", 0 ]
 				}
 
 			}
@@ -1924,23 +1931,8 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-29", 0 ],
-					"order" : 0,
-					"source" : [ "obj-1", 4 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-1", 0 ],
-					"source" : [ "obj-28", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
 					"destination" : [ "obj-1", 2 ],
-					"source" : [ "obj-3", 0 ]
+					"source" : [ "obj-26", 0 ]
 				}
 
 			}
@@ -1982,20 +1974,6 @@
 			}
 , 			{
 				"name" : "phase.points2.gendsp",
-				"bootpath" : "~/Documents/Max 8/Packages/Music-and-Computing/code",
-				"patcherrelativepath" : "../../../../Max 8/Packages/Music-and-Computing/code",
-				"type" : "gDSP",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "cnmat.phase.click~.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/Music-and-Computing/patchers/signal",
-				"patcherrelativepath" : "../../../../Max 8/Packages/Music-and-Computing/patchers/signal",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "delta.click3.gendsp",
 				"bootpath" : "~/Documents/Max 8/Packages/Music-and-Computing/code",
 				"patcherrelativepath" : "../../../../Max 8/Packages/Music-and-Computing/code",
 				"type" : "gDSP",
