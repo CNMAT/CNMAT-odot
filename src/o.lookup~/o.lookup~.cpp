@@ -94,6 +94,7 @@ typedef struct _olookup {
     double      rel_phase;
     t_int       index;
     double      delta_between_points;
+    t_int       phrase_len;
     
     int         phrase_index;
     
@@ -106,6 +107,9 @@ typedef struct _olookup {
     long        interp;
     long        tie_repeats;
 
+    
+    short       connected[2];
+    
     void*       osc_outlet;
     long        osc_inlet;
     t_proxy     proxy;
@@ -265,6 +269,10 @@ bool olookup_parse_messages(t_olookup *x, vector<t_osc_msg_u*>& _x, vector<t_osc
         {
             new_vec.emplace_back( new_phrase );
         }
+        else
+        {
+            return false;
+        }
         
     }
     
@@ -281,7 +289,7 @@ bool olookup_parse_messages(t_olookup *x, vector<t_osc_msg_u*>& _x, vector<t_osc
 
 
 
-void olookup_indexed_phrase(t_olookup *x, vector<t_osc_msg_u*>& _other)
+bool olookup_indexed_phrase(t_olookup *x, vector<t_osc_msg_u*>& _other)
 {
     
     
@@ -297,7 +305,7 @@ void olookup_indexed_phrase(t_olookup *x, vector<t_osc_msg_u*>& _other)
      
      critical_exit(x->lock);
      */
-    
+    return false;
     
 }
 
@@ -401,19 +409,22 @@ void olookup_FullPacket(t_olookup *x, t_symbol *s, long argc, t_atom *argv)
 
     o_free = _other.size();
    
-    if( !olookup_parse_messages(x, _x, _y, _c, _dur) )
+    bool parsed = olookup_parse_messages(x, _x, _y, _c, _dur);
+    
+    if( !parsed && _other.size() )
     {
-        if( _other.size() )
-        {
-            olookup_indexed_phrase(x, _other);
-        }
-        else
-        {
-            object_error((t_object *)x, "parse error");
-            return;
-        }
+        parsed = olookup_indexed_phrase(x, _other);
     }
-   
+    else
+    {
+        
+    }
+
+    if( !parsed )
+    {
+        object_error((t_object *)x, "parse error -- found %ld x, %ld dur, %ld y", _x.size(), _dur.size(), _y.size() );
+        return;
+    }
     
 //    post("interp %i norm %i", x->interp, x->normal_x);
     
@@ -456,18 +467,20 @@ void olookup_perform64(t_olookup *x, t_object *dsp64, double **ins, long numins,
 
     long max_phr_idx = x_phrase.size() - 1;
     
-    t_int in_idx, points_len, max_idx0, max_idx1;
-    double  in_phase, max_phase, x0 = 0, x1 = 0, y0 = 0, y1 = 0, range = 0, fp = 0, gp = 0;
+    t_int in_idx, max_idx0, max_idx1;
+    double phase = x->rel_phase, x0 = 0, x1 = 0, y0 = 0, y1 = 0, range = 0, fp = 0, gp = 0;
     
     double y_val = x->val;
-    double phase = x->cur_phase;
+    double in_phase = x->cur_phase;
+    double prev_inphase = in_phase;
     t_int idx = x->index;
-    t_int idx0 = 0, idx1 = 0;
+    t_int idx1 = x->index;
     
     double delta = x->delta_between_points;
     
-    double prev_inphase = phase;
     t_int phrase_index = x->phrase_index;
+    
+    t_int points_len = x->phrase_len;
     
     long n = sampleframes;
     
@@ -483,10 +496,11 @@ void olookup_perform64(t_olookup *x, t_object *dsp64, double **ins, long numins,
         }
         else
         {
-            in_phase = *phase_in++;
-            in_idx = (t_int)*index_in++;
+
+            in_phase = x->connected[0] ?      *phase_in++   : 0;
+            in_idx = x->connected[1] ? (t_int)*index_in++   : 0;
             
-            if( in_phase != phase || in_idx != phrase_index || x->update )
+            if( in_phase != prev_inphase || in_idx != phrase_index || x->update || x->phaseincr > 0  )
             {
                 if( x->update )
                 {
@@ -503,98 +517,108 @@ void olookup_perform64(t_olookup *x, t_object *dsp64, double **ins, long numins,
                 PhasePoints& phr = x_phrase[phrase_index];
                 
                 points_len = phr.len;
-                max_idx1 = points_len;
-                max_idx0 = points_len-1;
                 
-                // later: remove some of these clamps
-                
-                // current segment start/end
-                
-                x0 = phr.x[ CLAMP(idx, 0, max_idx0) ];
-                x1 = phr.x[ CLAMP(idx+1, 1, max_idx1) ];
-            
-                
-                if( x->phaseincr == 1 )
+                if( points_len > 1 )
                 {
-                    in_phase = prev_inphase + in_phase;
-                }
-                
-                if( x->phasewrap == 1 )
-                {
-                    max_phase = x->normal_x == 1 ? 1 : max_idx0;
-                    in_phase = fmod(in_phase, max_phase);
-                }
-                
-                prev_inphase = in_phase;
-                
-                if( in_phase < x0 )
-                {
-                    while( in_phase < x0 && idx-- > 0 )
+                    max_idx1 = points_len - 1;
+                    max_idx0 = points_len - 2;
+                    
+                    // later: remove some of these clamps
+                    
+                    // current segment start/end
+                    
+                    x0 = phr.x[ CLAMP(idx, 0, max_idx0) ];
+                    x1 = phr.x[ CLAMP(idx+1, 1, max_idx1) ];
+                    
+                    
+                    if( x->phaseincr == 1 )
                     {
-                        x0 = phr.x[ CLAMP(idx, 0, max_idx0) ];
+                        in_phase = prev_inphase + in_phase;
                     }
                     
-                    if( in_phase < x0 && idx <= 0 )
-                        x1 = x0;
-                    else
-                        x1 = phr.x[  CLAMP(idx+1, 1, max_idx1) ];
-                    
-                }
-                else if( in_phase >= x1 )
-                {
-                    while( in_phase >= x1 && idx++ < points_len )
+                    if( x->phasewrap == 1 )
                     {
-                        x1 = phr.x[ CLAMP(idx+1, 1, max_idx1) ];
+                        in_phase = fmod(in_phase, max_idx1);
                     }
                     
-                    if( in_phase > x1 && idx >= points_len )
-                        x0 = x1;
-                    else
-                        x0 = phr.x[  CLAMP(idx, 0, max_idx0) ];
-                }
-                
-                delta = x1 - x0;
-
-                if( idx >= max_idx1 && x0 == x1 )
-                {
-                    phase = 1;
-                }
-                else if( delta > 0 )
-                {
-                    phase = (in_phase - x0) / delta;
-                }
-                else
-                    phase = 0;
-                
-                idx0 = CLAMP(idx, 0, max_idx0);
-                idx1 = CLAMP(idx+1, 1, max_idx1);
-                
-                if( !x->interp )
-                {
-                    y_val = phr.y[idx0];
-                }
-                else
-                {
-                    // get y positions and interpolate a la curve~
-                    y0 = phr.y[idx0];
-                    y1 = phr.y[idx1];
-                    range = y1-y0;
+                    prev_inphase = in_phase;
                     
-                    if( !phr.c.size() )
-                        y_val = y0 + phase*range;
+                    if( in_phase < x0 )
+                    {
+                        while( in_phase < x0 && idx-- > 0 )
+                        {
+                            x0 = phr.x[ CLAMP(idx, 0, max_idx0) ];
+                        }
+                        
+                        if( in_phase < x0 && idx <= 0 )
+                            x1 = x0;
+                        else
+                            x1 = phr.x[  CLAMP(idx+1, 1, max_idx1) ];
+                        
+                    }
+                    else if( in_phase >= x1 )
+                    {
+                        while( in_phase >= x1 && idx++ < max_idx1 )
+                        {
+                            x1 = phr.x[ CLAMP(idx+1, 1, max_idx1) ];
+                        }
+                        
+                        if( in_phase > x1 && idx >= points_len )
+                            x0 = x1;
+                        else
+                            x0 = phr.x[  CLAMP(idx, 0, max_idx0) ];
+                    }
+                    
+                    delta = x1 - x0;
+                    
+                    if( idx >= max_idx1 && x0 == x1 )
+                    {
+                        phase = 1;
+                    }
+                    else if( delta > 0 )
+                    {
+                        phase = (in_phase - x0) / delta;
+                    }
+                    else
+                        phase = 0;
+                    
+                    idx = CLAMP(idx, 0, max_idx0);
+                    idx1 = CLAMP(idx+1, 1, max_idx1);
+                    
+                    if( !x->interp )
+                    {
+                        y_val = phr.y[idx];
+                    }
                     else
                     {
-                        fp = phr.c[idx1];
-                        if( fp == 0 )
+                        // get y positions and interpolate a la curve~
+                        y0 = phr.y[idx];
+                        y1 = phr.y[idx1];
+                        range = y1-y0;
+                        
+                        if( !phr.c.size() )
                             y_val = y0 + phase*range;
                         else
                         {
-                            // note: first half of equation is precalculated in the PhasePoints setter
-                            gp = ( exp(fp * phase) - 1.) / ( exp(fp) - 1. ) ;
-                            y_val = y0 + gp * range;
+                            fp = phr.c[idx1];
+                            if( fp == 0 )
+                                y_val = y0 + phase*range;
+                            else
+                            {
+                                // note: first half of equation is precalculated in the PhasePoints setter
+                                gp = ( exp(fp * phase) - 1.) / ( exp(fp) - 1. ) ;
+                                y_val = y0 + gp * range;
+                            }
                         }
+                        
                     }
-                    
+                }
+                else // one point case
+                {
+                    y_val = phr.y[0];
+                    phase = 0;
+                    idx = 0;
+                    delta = 0;
                 }
                 
             }
@@ -604,17 +628,34 @@ void olookup_perform64(t_olookup *x, t_object *dsp64, double **ins, long numins,
             *index_out++ = idx;
             *delta_out++ = delta;
             *npoints_out++ = points_len;
+            
         }
         
     }
 
     x->val = y_val;
-    x->cur_phase = phase;
+    x->cur_phase = in_phase;
+    x->rel_phase = phase;
     x->index = idx;
+    x->phrase_len = points_len;
+    x->delta_between_points = delta;
+
+    
 }
 
 void olookup_dsp64(t_olookup *x, t_object *dsp64, short *count, double samplerate, long maxvectorsize, long flags)
 {
+    x->connected[0] = count[0];
+    x->connected[1] = count[1];
+    x->update = true;
+    
+    x->val = 0;
+    x->rel_phase = 0;
+    x->delta_between_points = 0;
+    x->index = 0;
+    x->phrase_len = 0;
+    x->cur_phase = 0;
+    
     object_method(dsp64, gensym("dsp_add64"), x, olookup_perform64, 0, NULL);
 }
 
@@ -662,6 +703,8 @@ void olookup_assist(t_olookup *x, void *b, long m, long a, char *s)
     
 }
 
+
+
 void olookup_free(t_olookup *x)
 {
     dsp_free(&(x->ob));
@@ -678,10 +721,20 @@ void *olookup_new(t_symbol* s, short argc, t_atom* argv)
     if(x)
     {
         x->phrase.reserve(1);
-        
+
+        x->val = 0;
+        x->rel_phase = 0;
+        x->delta_between_points = 0;
+        x->index = 0;
+        x->phrase_len = 0;
+        x->cur_phase = 0;
+
         x->interp = 1;
         x->phaseincr = 0;
         x->phasewrap = 0;
+        
+        x->connected[0] = 0;
+        x->connected[1] = 0;
         
         attr_args_process(x, argc, argv);
         
@@ -714,9 +767,9 @@ int C74_EXPORT main(void)
     class_addmethod(c, (method)olookup_FullPacket,  "FullPacket",	A_GIMME,    0);
 
     
-    CLASS_ATTR_LONG(c, "interpolation", 0, t_olookup, interp);
-    CLASS_ATTR_STYLE_LABEL(c, "interpolation", 0, "onoff", "interpolation");
-    
+    CLASS_ATTR_LONG(c, "interp", 0, t_olookup, interp);
+    CLASS_ATTR_STYLE_LABEL(c, "interp", 0, "onoff", "interpolation");
+
     CLASS_ATTR_LONG(c, "phase_wrap", 0, t_olookup, phasewrap);
     CLASS_ATTR_STYLE_LABEL(c, "phase_wrap", 0, "onoff", "phase_wrap");
     

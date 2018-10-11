@@ -58,6 +58,7 @@ struct PhasePoints
     
     void print();
     
+    void crop();
 };
 
 
@@ -153,10 +154,39 @@ void PhasePoints::sortByX()
     
 }
 
+void PhasePoints::crop()
+{
+    size_t nx = x.size(), ny = y.size(), nc = c.size();
+    
+    if( nx != ny )
+    {
+        if( nx > ny )
+            x.resize( ny );
+        else
+            y.resize( nx );
+    }
+    
+    if( nc > 0 && nc != nx )
+    {
+        if( nc > nx )
+            c.resize( nx );
+        else
+        {
+            x.resize( nc );
+            y.resize( nc );
+        }
+    }
+    
+    cout << x.size() << " " << y.size() << endl;
+}
+
 bool PhasePoints::init()
 {
-    if( x.size() > 0 && x.size() == y.size() )
+    
+    if( x.size() && y.size() )
     {
+        crop();
+
         sortByX();
        
         len = x.size();
