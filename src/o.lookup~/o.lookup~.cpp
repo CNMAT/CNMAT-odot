@@ -139,8 +139,30 @@ struct oPointSet {
         for( int i = 0; i < o_free; ++i )
             osc_message_u_free(_other[i]);
         
+        x_free = 0; y_free = 0; c_free = 0; d_free = 0; o_free = 0;
+        _x.clear(); _y.clear(); _c.clear(); _dur.clear(); _other.clear();
+    }
+    
+    void release_xycd()
+    {
+        for( int i = 0; i < x_free; ++i )
+            osc_message_u_free(_x[i]);
+        
+        for( int i = 0; i < y_free; ++i )
+            osc_message_u_free(_y[i]);
+        
+        for( int i = 0; i < c_free; ++i )
+            osc_message_u_free(_c[i]);
+        
+        for( int i = 0; i < d_free; ++i )
+            osc_message_u_free(_dur[i]);
+        
+        x_free = 0; y_free = 0; c_free = 0; d_free = 0;
+        _x.clear(); _y.clear(); _c.clear(); _dur.clear();
+        
     }
 };
+
 
 
 void olookup_expandToMatch2(vector<t_osc_msg_u*>& _x, vector<t_osc_msg_u*>& _y)
@@ -226,7 +248,7 @@ void olookup_expandToMatch3(vector<t_osc_msg_u*>& _x, vector<t_osc_msg_u*>& _y, 
     }
 }
 
-bool olookup_parse_messages(t_olookup *x, oPointSet& p, int index = -1)
+bool olookup_parse_messages(t_olookup *x, vector<PhasePoints>& new_vec, oPointSet& p, int index = -1)
 {
     /*
      when the subbundle is /y /x /c or /dur, sub bundle addresses are ignored, and used in bundle order
@@ -270,8 +292,6 @@ bool olookup_parse_messages(t_olookup *x, oPointSet& p, int index = -1)
     }
     
     
-    vector<PhasePoints> new_vec;
-    
     for( int i = 0; i < p._y.size(); ++i)
     {
         PhasePoints new_phrase;
@@ -300,27 +320,22 @@ bool olookup_parse_messages(t_olookup *x, oPointSet& p, int index = -1)
         }
         
     }
-    
-    critical_enter(x->lock);
-    x->phrase = new_vec;
-    x->update = true;
-    critical_exit(x->lock);
-    
+  
 
     return true;
 
 }
 
-bool olookup_indexed_phrase(t_olookup *x, oPointSet& p)
+bool olookup_indexed_phrase(t_olookup *x, vector<PhasePoints>& new_vec, oPointSet& p)
 {
-    
+    int index = -1;
+ 
     for( auto& m : p._other )
     {
         
         string bundle_addr = osc_message_u_getAddress(m);
         bundle_addr = bundle_addr.substr(1);
 
-        int index;
         
         try
         {
@@ -342,28 +357,28 @@ bool olookup_indexed_phrase(t_olookup *x, oPointSet& p)
             
             if( addr == "/x" )
             {
-                t_osc_msg_u * copy;
+                t_osc_msg_u * copy = NULL;
                 osc_message_u_deepCopy(&copy, m);
                 p._x.emplace_back( copy );
                 p.x_free = p._x.size();
             }
             else if (  addr == "/y" )
             {
-                t_osc_msg_u * copy;
+                t_osc_msg_u * copy = NULL;
                 osc_message_u_deepCopy(&copy, m);
                 p._y.emplace_back( copy );
                 p.y_free = p._y.size();
             }
             else if ( addr == "/c" || addr == "/curve" )
             {
-                t_osc_msg_u * copy;
+                t_osc_msg_u * copy = NULL;
                 osc_message_u_deepCopy(&copy, m);
                 p._c.emplace_back( copy );
                 p.c_free = p._c.size();
             }
             else if ( addr == "/dur" )
             {
-                t_osc_msg_u * copy;
+                t_osc_msg_u * copy = NULL;
                 osc_message_u_deepCopy(&copy, m);
                 p._dur.emplace_back( copy );
                 p.d_free = p._dur.size();
@@ -381,7 +396,7 @@ bool olookup_indexed_phrase(t_olookup *x, oPointSet& p)
     
     if( p._y.size() && (p._dur.size() || p._x.size()) )
     {
-        
+        return olookup_parse_messages( x, new_vec, p, index );
     }
     
     /*
@@ -487,8 +502,10 @@ void olookup_FullPacket(t_olookup *x, t_symbol *s, long argc, t_atom *argv)
             osc_message_s_getArg(m, 0, &at);
             if( at )
             {
-                if(  osc_atom_s_getTypetag( at ) == OSC_BUNDLE_TYPETAG )
+                if( osc_atom_s_getTypetag( at ) == OSC_BUNDLE_TYPETAG )
+                {
                     p._other.emplace_back( osc_message_s_deserialize(m) );
+                }
                 
                 osc_mem_free(at);
             }
@@ -499,11 +516,14 @@ void olookup_FullPacket(t_olookup *x, t_symbol *s, long argc, t_atom *argv)
 
     p.o_free = p._other.size();
    
-    bool parsed = olookup_parse_messages(x, p);
+    vector<PhasePoints> new_vec;
+    
+    bool parsed = olookup_parse_messages(x, new_vec, p);
     
     if( !parsed && p._other.size() )
     {
-        parsed = olookup_indexed_phrase(x, p);
+        p.release_xycd();
+        parsed = olookup_indexed_phrase(x, new_vec, p);
         //if( !parsed ) // error?
     }
     else
@@ -516,6 +536,12 @@ void olookup_FullPacket(t_olookup *x, t_symbol *s, long argc, t_atom *argv)
         object_error((t_object *)x, "parse error -- found %ld x, %ld dur, %ld y", p._x.size(), p._dur.size(), p._y.size() );
         return;
     }
+    
+    critical_enter(x->lock);
+    x->phrase = new_vec;
+    x->update = true;
+    critical_exit(x->lock);
+    
     
 //    post("interp %i norm %i", x->interp, x->normal_x);
     

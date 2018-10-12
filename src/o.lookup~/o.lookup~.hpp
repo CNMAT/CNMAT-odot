@@ -177,7 +177,7 @@ void PhasePoints::crop()
         }
     }
     
-    cout << x.size() << " " << y.size() << endl;
+  //  cout << x.size() << " " << y.size() << endl;
 }
 
 bool PhasePoints::init()
