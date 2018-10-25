@@ -297,7 +297,7 @@ int o_gui_attach_checkNameAndType(t_o_gui_attach *x, t_object *b, t_symbol *name
         for(int i = 0; i < len; i++)
         {
             char c = str[i];
-            if( (c == '-' || c == '.' || !isalnum( c )) && c != '/' && c != '_' )
+            if( ( c == '.' || !isalnum( c )) && c != '/' && c != '_' && c != '-' )
             {
                 sprintf(buf, "%s %c ", buf, c);
             }
