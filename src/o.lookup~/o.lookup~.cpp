@@ -248,7 +248,7 @@ void olookup_expandToMatch3(vector<t_osc_msg_u*>& _x, vector<t_osc_msg_u*>& _y, 
     }
 }
 
-bool olookup_parse_messages(t_olookup *x, vector<PhasePoints>& new_vec, oPointSet& p, int index = -1)
+bool olookup_parse_messages(t_olookup *x, vector<PhasePoints>& out_vec, oPointSet& p, int index = -1)
 {
     /*
      when the subbundle is /y /x /c or /dur, sub bundle addresses are ignored, and used in bundle order
@@ -312,7 +312,17 @@ bool olookup_parse_messages(t_olookup *x, vector<PhasePoints>& new_vec, oPointSe
         
         if( new_phrase.init() )
         {
-            new_vec.emplace_back( new_phrase );
+            if( index == -1 )
+                out_vec.emplace_back( new_phrase );
+            else
+            {
+                if( index >= out_vec.size() ){
+                    out_vec.resize(index+1);
+                }
+                
+                out_vec[index] = new_phrase;
+                
+            }
         }
         else
         {
@@ -329,13 +339,13 @@ bool olookup_parse_messages(t_olookup *x, vector<PhasePoints>& new_vec, oPointSe
 bool olookup_indexed_phrase(t_olookup *x, vector<PhasePoints>& new_vec, oPointSet& p)
 {
     int index = -1;
- 
+    
     for( auto& m : p._other )
     {
         
+        oPointSet op;
         string bundle_addr = osc_message_u_getAddress(m);
         bundle_addr = bundle_addr.substr(1);
-
         
         try
         {
@@ -359,29 +369,29 @@ bool olookup_indexed_phrase(t_olookup *x, vector<PhasePoints>& new_vec, oPointSe
             {
                 t_osc_msg_u * copy = NULL;
                 osc_message_u_deepCopy(&copy, m);
-                p._x.emplace_back( copy );
-                p.x_free = p._x.size();
+                op._x.emplace_back( copy );
+                op.x_free = op._x.size();
             }
             else if (  addr == "/y" )
             {
                 t_osc_msg_u * copy = NULL;
                 osc_message_u_deepCopy(&copy, m);
-                p._y.emplace_back( copy );
-                p.y_free = p._y.size();
+                op._y.emplace_back( copy );
+                op.y_free = op._y.size();
             }
             else if ( addr == "/c" || addr == "/curve" )
             {
                 t_osc_msg_u * copy = NULL;
                 osc_message_u_deepCopy(&copy, m);
-                p._c.emplace_back( copy );
-                p.c_free = p._c.size();
+                op._c.emplace_back( copy );
+                op.c_free = op._c.size();
             }
             else if ( addr == "/dur" )
             {
                 t_osc_msg_u * copy = NULL;
                 osc_message_u_deepCopy(&copy, m);
-                p._dur.emplace_back( copy );
-                p.d_free = p._dur.size();
+                op._dur.emplace_back( copy );
+                op.d_free = op._dur.size();
                 
             }
             else
@@ -391,13 +401,16 @@ bool olookup_indexed_phrase(t_olookup *x, vector<PhasePoints>& new_vec, oPointSe
             
         }
         osc_bndl_it_u_destroy(it);
+    
+        if( op._y.size() && (op._dur.size() || op._x.size()) )
+        {
+            olookup_parse_messages( x, new_vec, op, index );
+        }
         
+        op.release();
     }
     
-    if( p._y.size() && (p._dur.size() || p._x.size()) )
-    {
-        return olookup_parse_messages( x, new_vec, p, index );
-    }
+    
     
     /*
      critical_enter(x->lock);
@@ -411,7 +424,7 @@ bool olookup_indexed_phrase(t_olookup *x, vector<PhasePoints>& new_vec, oPointSe
      
      critical_exit(x->lock);
      */
-    return false;
+    return new_vec.size() > 0;
     
 }
 
@@ -518,11 +531,10 @@ void olookup_FullPacket(t_olookup *x, t_symbol *s, long argc, t_atom *argv)
    
     vector<PhasePoints> new_vec;
     
-    bool parsed = olookup_parse_messages(x, new_vec, p);
+    bool parsed = olookup_parse_messages(x, new_vec, p, -1);
     
     if( !parsed && p._other.size() )
     {
-        p.release_xycd();
         parsed = olookup_indexed_phrase(x, new_vec, p);
         //if( !parsed ) // error?
     }
@@ -714,9 +726,13 @@ void olookup_perform64(t_olookup *x, t_object *dsp64, double **ins, long numins,
                         
                     }
                 }
-                else // one point case
+                else
                 {
-                    y_val = phr.y[0];
+                    if( points_len == 1 )// one point case
+                        y_val = phr.y[0];
+                    else
+                        y_val = 0;
+                    
                     phase = 0;
                     idx = 0;
                     delta = 0;
