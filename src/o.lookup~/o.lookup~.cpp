@@ -651,7 +651,8 @@ void olookup_perform64(t_olookup *x, t_object *dsp64, double **ins, long numins,
                     
                     if( x->phasewrap == 1 )
                     {
-                        in_phase = ( in_phase >= 0 ) ? fmod(in_phase, max_idx1) : fmod(in_phase + max_idx1, max_idx1);
+                        double maxph = phr.x[max_idx1];
+                        in_phase = ( in_phase >= 0 ) ? fmod(in_phase, maxph) : fmod(in_phase + maxph, maxph);
                     }
                     
                     prev_inphase = in_phase;
@@ -886,11 +887,11 @@ int C74_EXPORT main(void)
     CLASS_ATTR_LONG(c, "interp", 0, t_olookup, interp);
     CLASS_ATTR_STYLE_LABEL(c, "interp", 0, "onoff", "interpolation");
 
-    CLASS_ATTR_LONG(c, "phase_wrap", 0, t_olookup, phasewrap);
-    CLASS_ATTR_STYLE_LABEL(c, "phase_wrap", 0, "onoff", "phase_wrap");
+    CLASS_ATTR_LONG(c, "phasewrap", 0, t_olookup, phasewrap);
+    CLASS_ATTR_STYLE_LABEL(c, "phasewrap", 0, "onoff", "phasewrap");
     
-    CLASS_ATTR_LONG(c, "phase_incr", 0, t_olookup, phaseincr);
-    CLASS_ATTR_STYLE_LABEL(c, "phase_incr", 0, "onoff", "phase_incr");
+    CLASS_ATTR_LONG(c, "phaseincr", 0, t_olookup, phaseincr);
+    CLASS_ATTR_STYLE_LABEL(c, "phaseincr", 0, "onoff", "phaseincr");
 
     
     class_dspinit(c);
