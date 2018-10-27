@@ -258,7 +258,7 @@ long oexprcodebox_keyfilter(t_oexprcodebox *x, t_object *patcherview, long *keyc
 
 
 void oexprcodebox_mousedown(t_oexprcodebox *x, t_object *patcherview, t_pt pt, long modifiers){
-	textfield_set_textmargins(jbox_get_textfield((t_object *)x), 6, 14, 6, 6);
+    textfield_set_textmargins(jbox_get_textfield((t_object *)x), 6, 14, 6, 6);
     jbox_redraw((t_jbox *)x);
 }
 
