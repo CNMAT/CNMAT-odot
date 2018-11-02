@@ -262,12 +262,13 @@ void odisplay_output_bundle(t_odisplay *x)
 
 void odisplay_bundle2text(t_odisplay *x)
 {
-    critical_enter(x->lock);
 	if(x->newbndl && x->bndl_s){
+        critical_enter(x->lock);
 		long len = osc_bundle_s_getLen(x->bndl_s);
 		char ptr[len];
 		memcpy(ptr, osc_bundle_s_getPtr(x->bndl_s), len);
 		critical_exit(x->lock);
+        
 		long bufpos = osc_bundle_s_nformat(NULL, 0, len, (char *)ptr, 0);
 		char *buf = osc_mem_alloc(bufpos + 1);
         osc_bundle_s_nformat(buf, bufpos + 1, len, (char *)ptr, 0);
@@ -290,6 +291,7 @@ void odisplay_bundle2text(t_odisplay *x)
         x->text = buf;
 		critical_exit(x->lock);
         object_method(jbox_get_textfield((t_object *)x), gensym("settext"), buf);
+
 #else
         opd_textbox_resetText(x->textbox, buf);
 
@@ -300,7 +302,6 @@ void odisplay_bundle2text(t_odisplay *x)
 		x->newbndl = 0;
 		return;
 	}
-	critical_exit(x->lock);
 }
 
 #ifndef OMAX_PD_VERSION
@@ -319,8 +320,8 @@ void odisplay_paint(t_odisplay *x, t_object *patcherview)
 	t_rect rect;
 	t_jgraphics *g = (t_jgraphics *)patcherview_get_jgraphics(patcherview);
 	jbox_get_rect_for_view((t_object *)x, patcherview, &rect);
-
-	jgraphics_set_source_jrgba(g, &(x->background_color));
+    
+    jgraphics_set_source_jrgba(g, &(x->background_color));
     jgraphics_rectangle_rounded(g, 0, 0, rect.width, rect.height - 10, 8, 8);
     jgraphics_rectangle(g, 0, rect.height - 14, 4, 4);
     jgraphics_rectangle(g, rect.width - 4, rect.height - 14, 4, 4);
@@ -427,9 +428,9 @@ void odisplay_gettext(t_odisplay *x)
 		return;
 	}
 	t_osc_bndl_s *bs = osc_bundle_u_serialize(bndl_u);
-	t_osc_bndl_s *bndl_s = NULL;
-	osc_bundle_s_deepCopy(&bndl_s, bs);
-	odisplay_newBundle(x, bndl_u, bndl_s);
+	//t_osc_bndl_s *bndl_s = NULL;
+	//osc_bundle_s_deepCopy(&bndl_s, bs);
+	odisplay_newBundle(x, bndl_u, bs);
 #ifdef OMAX_PD_VERSION
     x->have_new_data = 1;
 	jbox_redraw((t_jbox *)x);
@@ -1025,9 +1026,9 @@ void *odisplay_new(t_symbol *msg, short argc, t_atom *argv){
         
 		t_object *textfield = jbox_get_textfield((t_object *)x);
 		if(textfield){
-			object_attr_setchar(textfield, gensym("editwhenunlocked"), 0);
-            textfield_set_readonly(textfield, '1');
-            textfield_set_selectallonedit(textfield, '1');
+			object_attr_setchar(textfield, gensym("editwhenunlocked"), 1);
+            textfield_set_readonly(textfield, 1);
+            textfield_set_selectallonedit(textfield, 1);
 			textfield_set_textmargins(textfield, 5, 5, 5, 15);
 			textfield_set_textcolor(textfield, &(x->text_color));
 		}

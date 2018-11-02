@@ -85,7 +85,7 @@ typedef struct _o_daemon
     t_symbol        *sem_name;
     
     char            *mem_ptr;
-    int             new_mem_flag;
+    int             new_mem_flag; // 0 = already read, 1 = new from max, 2 = new from daemon
 
     long            len_offset, ptr_offset;
     
@@ -110,6 +110,36 @@ char *getPtr(t_o_daemon *x)
 
 void o_daemon_checkmem( t_o_daemon *x)
 {
+    /*
+    // long t = gettime();
+    double ftime = systimer_gettime();
+    
+    t_osc_bundle_s *out_bndl = NULL;
+    
+    while( x->new_mem_flag > 0 && (systimer_gettime() - ftime) < 0.05 )
+    {
+        sem_wait(x->m_sem);
+        
+        x->new_mem_flag = getMemFlag(x);
+        
+        if( x->new_mem_flag == 2 )
+        {
+            out_bndl = osc_bundle_s_alloc( getLen(x), getPtr(x) );
+        }
+        
+        sem_post(x->m_sem);
+    }
+    // post("t %ld %f", gettime() - t, systimer_gettime() - ftime );
+    
+    if( out_bndl )
+    {
+        omax_util_outletOSC(x->outlet, osc_bundle_s_getLen(out_bndl), osc_bundle_s_getPtr(out_bndl) );
+        
+        osc_bundle_s_free( out_bndl );
+    }
+    */
+    
+    
     sem_wait( x->m_sem );
  
     post("is new %i", getMemFlag(x) );
@@ -132,14 +162,24 @@ void o_daemon_checkmem( t_o_daemon *x)
     
     sem_post( x->m_sem );
     
+    
 }
 
 void o_daemon_setNewBundle(t_o_daemon *x, long len, char *ptr)
 {
+    
     x->new_mem_flag = 1;
-    *x->mem_ptr = (short)1;
-    *(x->mem_ptr + x->len_offset) = len;
+    (*(short *)x->mem_ptr) = (short)1;
+    (*(long *)(x->mem_ptr + x->len_offset)) = len;
     memcpy(x->mem_ptr + x->ptr_offset, ptr, len);
+    
+
+}
+
+void o_daemon_setBundleRead(t_o_daemon *x)
+{
+    x->new_mem_flag = 0;
+    (*(short *)x->mem_ptr) = (short)0;
 }
 
 void o_daemon_fullPacket(t_o_daemon *x, t_symbol *msg, int argc, t_atom *argv)
@@ -151,16 +191,18 @@ void o_daemon_fullPacket(t_o_daemon *x, t_symbol *msg, int argc, t_atom *argv)
     
     //or sem_timedwait?
     
+    
     sem_wait( x->m_sem );
     o_daemon_setNewBundle(x, len, ptr); // sets flag to 1
     sem_post( x->m_sem );
     
-    // long t = gettime();
+    
+    //long t = gettime();
     double ftime = systimer_gettime();
     
     t_osc_bundle_s *out_bndl = NULL;
     
-    while( x->new_mem_flag == 1 && (systimer_gettime() - ftime) < 0.05 )
+    while( x->new_mem_flag == 1 && (systimer_gettime() - ftime) < 100 ) //0.05
     {
         sem_wait(x->m_sem);
         
@@ -169,11 +211,13 @@ void o_daemon_fullPacket(t_o_daemon *x, t_symbol *msg, int argc, t_atom *argv)
         if( x->new_mem_flag == 2 )
         {
             out_bndl = osc_bundle_s_alloc( getLen(x), getPtr(x) );
+            
+            o_daemon_setBundleRead(x);
         }
         
         sem_post(x->m_sem);
     }
-    // post("t %ld %f", gettime() - t, systimer_gettime() - ftime );
+    //post("t %ld %f", gettime()-1, systimer_gettime() - ftime );
 
     if( out_bndl )
     {
@@ -239,6 +283,7 @@ void *o_daemon_new(t_symbol *msg, short argc, t_atom *argv)
         x->len_offset = sizeof(short);
         x->ptr_offset = sizeof(short) + sizeof(long);
         
+        printf("len offset %ld ptr offset %ld\n", x->len_offset, x->ptr_offset );
         if( argc != 1 && atom_gettype(argv) != A_LONG )
         {
             object_error((t_object*)x, "missing required argument: reference ID integer");

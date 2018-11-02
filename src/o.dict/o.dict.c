@@ -57,6 +57,7 @@ typedef struct _odict{
 	void *outlet;
 	t_dictionary *dict;
 	t_symbol *name;
+    bool stripLeadingSlash;
 } t_odict;
 
 void *odict_class;
@@ -67,7 +68,7 @@ void odict_fullPacket(t_odict *x, t_symbol *msg, int argc, t_atom *argv)
 	OMAX_UTIL_GET_LEN_AND_PTR
 	t_osc_bndl_s *bndl = osc_bundle_s_alloc(len, ptr);	
 	dictionary_clear(x->dict);
-	omax_dict_bundleToDictionary(bndl, x->dict);
+	omax_dict_bundleToDictionary(bndl, x->dict, x->stripLeadingSlash);
 	t_atom a;
 	atom_setsym(&a, x->name);
 	outlet_anything(x->outlet, _sym_dictionary, 1, &a);
@@ -95,6 +96,8 @@ void *odict_new(t_symbol *msg, short argc, t_atom *argv)
 	if((x = (t_odict *)object_alloc(odict_class))){
 		x->outlet = outlet_new((t_object *)x, NULL);
 		x->dict = dictionary_new();
+        
+        x->stripLeadingSlash = !( argc == 1 && atom_gettype(argv) == A_SYM && !strcmp(atom_getsym(argv)->s_name, "/") );
 		//previously set name to NULL
 		//x->name = NULL;
 		x->name = symbol_unique();

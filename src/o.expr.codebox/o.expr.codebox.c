@@ -119,8 +119,9 @@ typedef struct _oexprcodebox
     t_critical lock;
     long textlen;
     char *text;
-    t_jrgba frame_color, background_color, text_color, error_color;
+    t_jrgba frame_color, background_color, text_color, error_color, mousedown_color;
     int has_errors;
+    bool mousedown;
     void *outlets[2];
     t_osc_expr *expr;
 } t_oexprcodebox;
@@ -192,12 +193,20 @@ void oexprcodebox_paint(t_oexprcodebox *x, t_object *patcherview)
     } else {
         jgraphics_set_source_jrgba(g, &(x->frame_color));
     }
+    
 	jgraphics_rectangle(g, 0, 0, rect.width, rect.height);
 	jgraphics_fill(g);
-
+    
+    if (x->mousedown) {
+        jgraphics_set_source_jrgba(g, &(x->mousedown_color));
+        jgraphics_rectangle(g, 2, 2, rect.width - 4, 6 );
+        jgraphics_fill(g);
+    }
+    
     jgraphics_set_source_jrgba(g, &(x->background_color));
     jgraphics_rectangle(g, 2, 10, rect.width - 4, rect.height - 12);
 	jgraphics_fill(g);
+    
 }
 
 void oexprcodebox_doselect(t_oexprcodebox *x){
@@ -253,12 +262,15 @@ long oexprcodebox_keyfilter(t_oexprcodebox *x, t_object *patcherview, long *keyc
 
 
 void oexprcodebox_mousedown(t_oexprcodebox *x, t_object *patcherview, t_pt pt, long modifiers){
-	textfield_set_textmargins(jbox_get_textfield((t_object *)x), 6, 14, 6, 6);
+	//textfield_set_textmargins(jbox_get_textfield((t_object *)x), 6, 13, 6, 5);
+    x->mousedown = true;
+
     jbox_redraw((t_jbox *)x);
 }
 
 void oexprcodebox_mouseup(t_oexprcodebox *x, t_object *patcherview, t_pt pt, long modifiers){
-	textfield_set_textmargins(jbox_get_textfield((t_object *)x), 5, 13, 5, 5);
+	//textfield_set_textmargins(jbox_get_textfield((t_object *)x), 5, 13, 5, 5);
+    x->mousedown = false;
     jbox_redraw((t_jbox *)x);
     oexprcodebox_bang(x);
 }
@@ -862,6 +874,8 @@ void *oexprcodebox_new(t_symbol *msg, short argc, t_atom *argv)
             //x->text_color.alpha = 1.0;
 			textfield_set_textcolor(textfield, &(x->text_color));
 		}
+        x->mousedown = false;
+        
 		jbox_ready((t_jbox *)x);
 		oexprcodebox_gettext(x);
 	}
@@ -935,6 +949,11 @@ int main(void)
 	CLASS_ATTR_DEFAULT_SAVE_PAINT(c, "textcolor", 0, "0. 0. 0. 1.");
 	CLASS_ATTR_STYLE_LABEL(c, "textcolor", 0, "rgba", "Text Color");
     CLASS_ATTR_CATEGORY_KLUDGE(c, "textcolor", 0, "Color");
+    
+    CLASS_ATTR_RGBA(c, "mousedown_color", 0, t_oexprcodebox, mousedown_color);
+    CLASS_ATTR_DEFAULT_SAVE_PAINT(c, "mousedown_color", 0, "0.81 0.9 0.91 1.");
+    CLASS_ATTR_STYLE_LABEL(c, "mousedown_color", 0, "rgba", "Mousedown Color");
+    CLASS_ATTR_CATEGORY_KLUDGE(c, "mousedown_color", 0, "Color");
     
     CLASS_ATTR_DEFAULT(c, "fontname", 0, "\"Courier New\"");
 

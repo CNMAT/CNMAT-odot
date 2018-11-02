@@ -297,7 +297,7 @@ int o_gui_attach_checkNameAndType(t_o_gui_attach *x, t_object *b, t_symbol *name
         for(int i = 0; i < len; i++)
         {
             char c = str[i];
-            if( (c == '-' || c == '.' || !isalnum( c )) && c != '/' && c != '_' )
+            if( ( c == '.' || !isalnum( c )) && c != '/' && c != '_' && c != '-' )
             {
                 sprintf(buf, "%s %c ", buf, c);
             }
@@ -410,7 +410,8 @@ void o_gui_attach_iter_and_out(t_o_gui_attach *x)
     // post("o_gui_attach_iter_and_out");
     
     if( x->base_patch )
-    o_gui_attach_do_iter(x);
+        o_gui_attach_do_iter(x);
+    
     o_gui_attach_output_bundle(x);
 }
 
@@ -523,7 +524,10 @@ void o_gui_attach_fullPacket(t_o_gui_attach *x, t_symbol *msg, int argc, t_atom 
         osc_bundle_u_union(bnd_match, x->bndl, &new_internal_bndl );
         osc_bundle_u_free(x->bndl);
         x->bndl = new_internal_bndl;
-
+        
+        t_osc_bndl_s *s_internal_bndl = NULL;
+        s_internal_bndl = osc_bundle_u_serialize(new_internal_bndl);
+        
         critical_exit(x->lock);
         
         x->softlock = 1;
@@ -600,9 +604,8 @@ void o_gui_attach_fullPacket(t_o_gui_attach *x, t_symbol *msg, int argc, t_atom 
             char *del_ptr = NULL;
             t_osc_bndl_s *del_bndl = NULL;
             
-            t_osc_bndl_s *s_internal_bndl = osc_bundle_u_serialize(new_internal_bndl);
-            
-            t_osc_bndl_s *s_match_bndl = osc_bundle_u_serialize(bnd_match);
+            t_osc_bndl_s *s_match_bndl = NULL;
+            s_match_bndl = osc_bundle_u_serialize(bnd_match);
             osc_bundle_s_difference( len, ptr,
                                     osc_bundle_s_getLen(s_match_bndl), osc_bundle_s_getPtr(s_match_bndl),
                                     &del_len, &del_ptr);
