@@ -45,7 +45,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 56.0, 686.0, 326.0, 54.0 ],
-					"presentation_linecount" : 4,
 					"text" : "For each time, value pair of addresses, o.schedule~ creates two outlets. The left one is the audio stream into which the events have been scheduled, and the right one contains the number of events scheduled per sample."
 				}
 
@@ -58,7 +57,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 344.0, 425.0, 326.0, 30.0 ],
-					"presentation_linecount" : 3,
 					"text" : "Events must be scheduled at least three signal vectors in the future in order to guarantee that the deadline will be met"
 				}
 
@@ -70,7 +68,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 375.5, 473.0, 289.0, 30.0 ],
+					"patching_rect" : [ 375.5, 473.0, 290.0, 30.0 ],
 					"text" : "args 1 and 2 specify the times respectively the times and values to be scheduled in the audio stream"
 				}
 
@@ -111,8 +109,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 4,
 					"outlettype" : [ "", "", "", "clear" ],
-					"patching_rect" : [ 530.0, 15.5, 237.0, 20.0 ],
-					"text" : "o.helpfilehelper @obj o.schedule~ /foo /bar"
+					"patching_rect" : [ 530.0, 15.5, 299.0, 20.0 ],
+					"text" : "o.helpfilehelper @obj o.schedule~ /foo /bar @docout 2"
 				}
 
 			}
@@ -187,13 +185,11 @@
 					"fontface" : 0,
 					"fontsize" : 12.0,
 					"id" : "obj-13",
-					"linecount" : 2,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 344.0, 538.0, 397.0, 48.0 ],
-					"text" : "/misseddeadline/time : 2018-11-02T10:32:05.424375Z,\n/misseddeadline/value : 9."
+					"patching_rect" : [ 344.0, 538.0, 397.0, 48.0 ]
 				}
 
 			}
@@ -508,6 +504,10 @@
 			}
 , 			{
 				"name" : "o.route.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.collect.mxo",
 				"type" : "iLaX"
 			}
  ],

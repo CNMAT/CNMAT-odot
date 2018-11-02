@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 381.0, 79.0, 766.0, 655.0 ],
+		"rect" : [ 381.0, 79.0, 840.0, 655.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -167,7 +167,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "jit_matrix" ],
-					"patching_rect" : [ 530.0, 57.9306640625, 109.0, 48.0 ]
+					"patching_rect" : [ 573.0, 57.9306640625, 109.0, 48.0 ]
 				}
 
 			}
@@ -179,7 +179,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 530.0, 161.0, 150.0, 18.0 ],
+					"patching_rect" : [ 573.0, 161.0, 150.0, 18.0 ],
 					"text" : "see also:"
 				}
 
@@ -190,12 +190,13 @@
 					"fontsize" : 12.0,
 					"hidden" : 1,
 					"id" : "obj-24",
+					"linecount" : 2,
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 4,
 					"outlettype" : [ "", "", "", "clear" ],
-					"patching_rect" : [ 530.0, 15.5, 206.0, 20.0 ],
-					"text" : "o.helpfilehelper @obj o.timetag.split~"
+					"patching_rect" : [ 573.0, 15.5, 209.0, 32.0 ],
+					"text" : "o.helpfilehelper @obj o.timetag.split~ @docout 2"
 				}
 
 			}
@@ -208,8 +209,8 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 56.0, 168.5, 399.0, 30.0 ],
-					"text" : "o.schedule~ takes an OSC bundle with time tags and values and puts the values in the audio stream at the closest sample."
+					"patching_rect" : [ 56.0, 168.5, 417.0, 30.0 ],
+					"text" : "o.timetag.split~ takes a signal from o.timetag~ and outputs the seconds since 1/1/1900 out the left outlet, and the fractions of a second out the right."
 				}
 
 			}
@@ -221,8 +222,8 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 56.0, 120.5, 251.0, 18.0 ],
-					"text" : "Insert values into one or more audio channels"
+					"patching_rect" : [ 56.0, 120.5, 392.0, 18.0 ],
+					"text" : "Outputs the seconds and fractions of a second on different channels."
 				}
 
 			}
@@ -234,8 +235,8 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 56.0, 31.5, 399.0, 78.0 ],
-					"text" : "o.schedule~"
+					"patching_rect" : [ 56.0, 31.5, 495.0, 78.0 ],
+					"text" : "o.timetag.split~"
 				}
 
 			}
@@ -243,13 +244,13 @@
 				"box" : 				{
 					"allowdrag" : 0,
 					"id" : "obj-28",
-					"items" : [ "o.schedule", ",", "o.timetag~", ",", "o.snapshot~" ],
+					"items" : [ "o.timetag~", ",", "o.timetag.join~" ],
 					"maxclass" : "umenu",
 					"numinlets" : 1,
 					"numoutlets" : 3,
 					"outlettype" : [ "int", "", "" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 530.0, 183.0, 132.0, 20.0 ]
+					"patching_rect" : [ 573.0, 183.0, 132.0, 20.0 ]
 				}
 
 			}
@@ -345,7 +346,7 @@
 				"patchline" : 				{
 					"destination" : [ "obj-24", 0 ],
 					"hidden" : 1,
-					"midpoints" : [ 596.0, 145.5, 497.0, 145.5, 497.0, 10.5, 539.5, 10.5 ],
+					"midpoints" : [ 639.0, 145.5, 540.0, 145.5, 540.0, 10.5, 582.5, 10.5 ],
 					"source" : [ "obj-28", 1 ]
 				}
 
@@ -385,6 +386,10 @@
 			}
 , 			{
 				"name" : "o.route.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.collect.mxo",
 				"type" : "iLaX"
 			}
 , 			{
