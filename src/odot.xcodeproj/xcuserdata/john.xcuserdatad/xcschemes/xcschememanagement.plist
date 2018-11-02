@@ -84,6 +84,11 @@
 			<key>orderHint</key>
 			<integer>10</integer>
 		</dict>
+		<key>o.bufferfill~.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>98</integer>
+		</dict>
 		<key>o.bundle.pd.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -142,7 +147,7 @@
 		<key>o.daemon.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>97</integer>
+			<integer>96</integer>
 		</dict>
 		<key>o.dict.xcscheme</key>
 		<dict>
@@ -232,7 +237,7 @@
 		<key>o.gui.attach.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>96</integer>
+			<integer>97</integer>
 		</dict>
 		<key>o.if.pd.xcscheme</key>
 		<dict>
@@ -278,6 +283,11 @@
 		<dict>
 			<key>orderHint</key>
 			<integer>46</integer>
+		</dict>
+		<key>o.lookup~.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>99</integer>
 		</dict>
 		<key>o.mappatch.pd.xcscheme</key>
 		<dict>
