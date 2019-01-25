@@ -49,7 +49,7 @@ MFILES = $(foreach f, $(MOBJECT_LIST), $(f)/$(f).m)
 
 CODE_FILES = $(CFILES) $(MFILES)
 
-C74SUPPORT = ../../max6-sdk/c74support
+C74SUPPORT = ../../max-sdk/source/c74support
 MAX_INCLUDES = $(C74SUPPORT)/max-includes
 
 PLATFORM = MacOSX
