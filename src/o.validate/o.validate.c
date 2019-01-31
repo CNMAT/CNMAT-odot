@@ -61,7 +61,7 @@ void *ovalidate_class;
 
 void ovalidate_fullPacket(t_ovalidate *x, t_symbol *msg, int argc, t_atom *argv)
 {
-	OMAX_UTIL_GET_LEN_AND_PTR;
+	//OMAX_UTIL_GET_LEN_AND_PTR;
 	/*
 	t_osc_err e = osc_error_bundleSanityCheck(len, ptr);
 	if(e){
@@ -83,6 +83,25 @@ void ovalidate_fullPacket(t_ovalidate *x, t_symbol *msg, int argc, t_atom *argv)
 		return;
 	}
 	*/
+	{
+		// get len and ptr. can't use macro because it validates the contents and
+		// bails if anything's wrong, but we want to process a bad packet in this obj
+		if(argc != 2){
+			object_error((t_object *)x, "expected 2 arguments but got %d", argc);
+			return;
+		}
+		if(atom_gettype(argv) != A_LONG){
+			object_error((t_object *)x, "argument 1 should be an int");
+			return;
+		}
+		if(atom_gettype(argv + 1) != A_LONG){
+			object_error((t_object *)x, "argument 2 should be an int");
+			return;
+		}
+	}
+	long len = atom_getlong(argv);
+	char *ptr = (char *)atom_getlong(argv + 1);
+	
 	if(*ptr != '#' && *ptr != '/'){
 		char errstr[128];
 		snprintf(errstr, 128, "invalid packet: packet does not begin with a # or a /");
