@@ -5896,18 +5896,19 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = NO;
-				LastUpgradeCheck = 1010;
+				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = edu.berkeley.cnmat;
 			};
 			buildConfigurationList = 4FADC23708B4156C00ABE55E /* Build configuration list for PBXProject "odot" */;
 			compatibilityVersion = "Xcode 8.0";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 1;
 			knownRegions = (
-				English,
-				Japanese,
-				French,
-				German,
+				de,
+				Base,
+				en,
+				ja,
+				fr,
 			);
 			mainGroup = 089C166AFE841209C02AAC07 /* cv_jit */;
 			projectDirPath = "";
@@ -8510,6 +8511,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
 				PRODUCT_NAME = o.menu;
 				WRAPPER_EXTENSION = "";
 			};
@@ -8568,6 +8570,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
 				PRODUCT_NAME = o.menu;
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
@@ -8632,6 +8635,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
 				PRODUCT_NAME = o.expr.codebox;
 				WRAPPER_EXTENSION = "";
 			};
@@ -8690,6 +8694,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
 				PRODUCT_NAME = o.expr.codebox;
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
@@ -8754,6 +8759,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
 				PRODUCT_NAME = o.compose;
 				WRAPPER_EXTENSION = "";
 			};
@@ -8812,6 +8818,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
 				PRODUCT_NAME = o.compose;
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
@@ -8877,6 +8884,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
 				PRODUCT_NAME = o.bundle;
 				WRAPPER_EXTENSION = "";
 			};
@@ -8936,6 +8944,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
 				PRODUCT_NAME = o.bundle;
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
@@ -9000,6 +9009,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
 				PRODUCT_NAME = o.append;
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
@@ -9059,6 +9069,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
 				PRODUCT_NAME = o.append;
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
@@ -9123,6 +9134,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
 				PRODUCT_NAME = o.atomize;
 				WRAPPER_EXTENSION = "";
 			};
@@ -9181,6 +9193,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
 				PRODUCT_NAME = o.atomize;
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
@@ -9245,6 +9258,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
 				PRODUCT_NAME = o.change;
 				WRAPPER_EXTENSION = "";
 			};
@@ -9303,6 +9317,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
 				PRODUCT_NAME = o.change;
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
@@ -9367,6 +9382,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
 				PRODUCT_NAME = o.collect;
 				WRAPPER_EXTENSION = "";
 			};
@@ -9425,6 +9441,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
 				PRODUCT_NAME = o.collect;
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
@@ -9489,6 +9506,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
 				PRODUCT_NAME = o.cond;
 				WRAPPER_EXTENSION = "";
 			};
@@ -9547,6 +9565,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
 				PRODUCT_NAME = o.cond;
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
@@ -9611,6 +9630,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
 				PRODUCT_NAME = o.difference;
 				WRAPPER_EXTENSION = "";
 			};
@@ -9669,6 +9689,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
 				PRODUCT_NAME = o.difference;
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
@@ -9733,6 +9754,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
 				PRODUCT_NAME = o.explode;
 				WRAPPER_EXTENSION = "";
 			};
@@ -9791,6 +9813,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
 				PRODUCT_NAME = o.explode;
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
@@ -9855,6 +9878,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
 				PRODUCT_NAME = o.expr;
 				WRAPPER_EXTENSION = "";
 			};
@@ -9913,6 +9937,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
 				PRODUCT_NAME = o.expr;
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
@@ -9977,6 +10002,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
 				PRODUCT_NAME = o.flatten;
 				WRAPPER_EXTENSION = "";
 			};
@@ -10035,6 +10061,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
 				PRODUCT_NAME = o.flatten;
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
@@ -10099,6 +10126,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
 				PRODUCT_NAME = o.if;
 				WRAPPER_EXTENSION = "";
 			};
@@ -10157,6 +10185,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
 				PRODUCT_NAME = o.if;
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
@@ -10221,6 +10250,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
 				PRODUCT_NAME = o.intersection;
 				WRAPPER_EXTENSION = "";
 			};
@@ -10279,6 +10309,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
 				PRODUCT_NAME = o.intersection;
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
@@ -10343,6 +10374,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
 				PRODUCT_NAME = o.messageiterate;
 				WRAPPER_EXTENSION = "";
 			};
@@ -10401,6 +10433,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
 				PRODUCT_NAME = o.messageiterate;
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
@@ -10465,6 +10498,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
 				PRODUCT_NAME = o.mappatch;
 				WRAPPER_EXTENSION = "";
 			};
@@ -10523,6 +10557,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
 				PRODUCT_NAME = o.mappatch;
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
@@ -10587,6 +10622,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
 				PRODUCT_NAME = o.message;
 				WRAPPER_EXTENSION = "";
 			};
@@ -10645,6 +10681,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
 				PRODUCT_NAME = o.message;
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
@@ -10709,6 +10746,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
 				PRODUCT_NAME = o.pack;
 				WRAPPER_EXTENSION = "";
 			};
@@ -10767,6 +10805,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
 				PRODUCT_NAME = o.pack;
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
@@ -10831,6 +10870,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
 				PRODUCT_NAME = o.pak;
 				WRAPPER_EXTENSION = "";
 			};
@@ -10889,6 +10929,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
 				PRODUCT_NAME = o.pak;
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
@@ -10953,6 +10994,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
 				PRODUCT_NAME = o.prepend;
 				WRAPPER_EXTENSION = "";
 			};
@@ -11011,6 +11053,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
 				PRODUCT_NAME = o.prepend;
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
@@ -11075,6 +11118,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
 				PRODUCT_NAME = o.route;
 				WRAPPER_EXTENSION = "";
 			};
@@ -11133,6 +11177,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
 				PRODUCT_NAME = o.route;
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
@@ -11197,6 +11242,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
 				PRODUCT_NAME = o.schedule;
 				WRAPPER_EXTENSION = "";
 			};
@@ -11255,6 +11301,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
 				PRODUCT_NAME = o.schedule;
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
@@ -11319,6 +11366,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
 				PRODUCT_NAME = o.select;
 				WRAPPER_EXTENSION = "";
 			};
@@ -11377,6 +11425,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
 				PRODUCT_NAME = o.select;
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
@@ -11441,6 +11490,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
 				PRODUCT_NAME = o.table;
 				WRAPPER_EXTENSION = "";
 			};
@@ -11499,6 +11549,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
 				PRODUCT_NAME = o.table;
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
@@ -11563,6 +11614,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
 				PRODUCT_NAME = o.timetag;
 				WRAPPER_EXTENSION = "";
 			};
@@ -11621,6 +11673,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
 				PRODUCT_NAME = o.timetag;
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
@@ -11685,6 +11738,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
 				PRODUCT_NAME = o.union;
 				WRAPPER_EXTENSION = "";
 			};
@@ -11743,6 +11797,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
 				PRODUCT_NAME = o.union;
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
@@ -11807,6 +11862,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
 				PRODUCT_NAME = o.unless;
 				WRAPPER_EXTENSION = "";
 			};
@@ -11865,6 +11921,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
 				PRODUCT_NAME = o.unless;
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
@@ -11929,6 +11986,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
 				PRODUCT_NAME = o.var;
 				WRAPPER_EXTENSION = "";
 			};
@@ -11987,6 +12045,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
 				PRODUCT_NAME = o.var;
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
@@ -12051,6 +12110,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
 				PRODUCT_NAME = o.when;
 				WRAPPER_EXTENSION = "";
 			};
@@ -12109,6 +12169,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
 				PRODUCT_NAME = o.when;
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
@@ -12357,6 +12418,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
 				PRODUCT_NAME = o.slip.decode;
 				WRAPPER_EXTENSION = "";
 			};
@@ -12416,6 +12478,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
 				PRODUCT_NAME = o.slip.decode;
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
@@ -12481,6 +12544,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
 				PRODUCT_NAME = o.slip.encode;
 				WRAPPER_EXTENSION = "";
 			};
@@ -12540,6 +12604,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
 				PRODUCT_NAME = o.slip.encode;
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
@@ -12604,6 +12669,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
 				PRODUCT_NAME = o.context;
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
@@ -12663,6 +12729,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
 				PRODUCT_NAME = o.context;
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
@@ -12823,6 +12890,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
 				PRODUCT_NAME = o.display;
 				WRAPPER_EXTENSION = "";
 			};
@@ -12881,6 +12949,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
 				PRODUCT_NAME = o.display;
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
@@ -12945,6 +13014,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
 				PRODUCT_NAME = o.downcast;
 				WRAPPER_EXTENSION = "";
 			};
@@ -13003,6 +13073,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
 				PRODUCT_NAME = o.downcast;
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
@@ -13067,6 +13138,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
 				PRODUCT_NAME = o.validate;
 				WRAPPER_EXTENSION = "";
 			};
@@ -13125,6 +13197,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
 				PRODUCT_NAME = o.validate;
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
@@ -13655,6 +13728,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
 				PRODUCT_NAME = o.print;
 				WRAPPER_EXTENSION = "";
 			};
@@ -13713,6 +13787,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
 				PRODUCT_NAME = o.print;
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
@@ -13777,6 +13852,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
 				PRODUCT_NAME = o.printbytes;
 				WRAPPER_EXTENSION = "";
 			};
@@ -13835,6 +13911,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
 				PRODUCT_NAME = o.printbytes;
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
@@ -13948,6 +14025,7 @@
 				INSTALL_PATH = "$(inherited)";
 				OBJROOT = build;
 				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
 				PRODUCT_NAME = "Build all copy";
 				PUBLIC_HEADERS_FOLDER_PATH = "";
 				SDKROOT = macosx;
@@ -13976,6 +14054,7 @@
 				INSTALL_PATH = "$(inherited)";
 				OBJROOT = build;
 				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
 				PRODUCT_NAME = "Build all copy";
 				PUBLIC_HEADERS_FOLDER_PATH = "";
 				SDKROOT = macosx;
@@ -14003,6 +14082,7 @@
 				INFOPLIST_PREPROCESSOR_DEFINITIONS = "";
 				INSTALL_PATH = "$(inherited)";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
 				PRODUCT_NAME = "Build all copy";
 				PUBLIC_HEADERS_FOLDER_PATH = "";
 				SDKROOT = macosx;
@@ -14030,6 +14110,7 @@
 				INFOPLIST_PREPROCESSOR_DEFINITIONS = "";
 				INSTALL_PATH = "$(inherited)";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
 				PRODUCT_NAME = "Build all copy";
 				PUBLIC_HEADERS_FOLDER_PATH = "";
 				SDKROOT = macosx;
@@ -16045,6 +16126,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
@@ -16086,6 +16168,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
@@ -17123,6 +17206,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
@@ -17165,6 +17249,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
@@ -17467,6 +17552,7 @@
 				OBJROOT = build;
 				OTHER_CFLAGS = "-DODOT_DEPRECATED";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
 				PRODUCT_NAME = "Build all Max copy";
 				PUBLIC_HEADERS_FOLDER_PATH = "";
 				SDKROOT = macosx;
@@ -17496,6 +17582,7 @@
 				OBJROOT = build;
 				OTHER_CFLAGS = "-DODOT_DEPRECATED";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
 				PRODUCT_NAME = "Build all Max copy";
 				PUBLIC_HEADERS_FOLDER_PATH = "";
 				SDKROOT = macosx;
@@ -17525,6 +17612,7 @@
 				OBJROOT = build;
 				OTHER_CFLAGS = "-DODOT_DEPRECATED";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
 				PRODUCT_NAME = "Build all Max Deprecated copy";
 				PUBLIC_HEADERS_FOLDER_PATH = "";
 				SDKROOT = macosx;
@@ -17554,6 +17642,7 @@
 				OBJROOT = build;
 				OTHER_CFLAGS = "-DODOT_DEPRECATED";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
 				PRODUCT_NAME = "Build all Max Deprecated copy";
 				PUBLIC_HEADERS_FOLDER_PATH = "";
 				SDKROOT = macosx;
@@ -17581,6 +17670,7 @@
 				INFOPLIST_PREPROCESSOR_DEFINITIONS = "";
 				INSTALL_PATH = "$(inherited)";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
 				PRODUCT_NAME = "Build all PD copy";
 				PUBLIC_HEADERS_FOLDER_PATH = "";
 				SDKROOT = macosx;
@@ -17608,6 +17698,7 @@
 				INFOPLIST_PREPROCESSOR_DEFINITIONS = "";
 				INSTALL_PATH = "$(inherited)";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
 				PRODUCT_NAME = "Build all PD copy";
 				PUBLIC_HEADERS_FOLDER_PATH = "";
 				SDKROOT = macosx;
@@ -17635,6 +17726,7 @@
 				INFOPLIST_PREPROCESSOR_DEFINITIONS = "";
 				INSTALL_PATH = "$(inherited)";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
 				PRODUCT_NAME = "Build all PD Deprecated copy";
 				PUBLIC_HEADERS_FOLDER_PATH = "";
 				SDKROOT = macosx;
@@ -17662,6 +17754,7 @@
 				INFOPLIST_PREPROCESSOR_DEFINITIONS = "";
 				INSTALL_PATH = "$(inherited)";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
 				PRODUCT_NAME = "Build all PD Deprecated copy";
 				PUBLIC_HEADERS_FOLDER_PATH = "";
 				SDKROOT = macosx;
@@ -18321,6 +18414,7 @@
 				PRECOMPS_INCLUDE_HEADERS_FROM_BUILT_PRODUCTS_DIR = YES;
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libomax.a\"";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
 				PRODUCT_NAME = "$(inherited)";
 				PUBLIC_HEADERS_FOLDER_PATH = "";
 				RUN_CLANG_STATIC_ANALYZER = NO;
@@ -18361,6 +18455,7 @@
 				PRECOMPS_INCLUDE_HEADERS_FROM_BUILT_PRODUCTS_DIR = YES;
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libomax.a\"";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
 				PRODUCT_NAME = "$(inherited)";
 				PUBLIC_HEADERS_FOLDER_PATH = "";
 				RUN_CLANG_STATIC_ANALYZER = NO;
