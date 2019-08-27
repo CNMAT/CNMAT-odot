@@ -23,7 +23,7 @@
    * `$ cd <path/to/libomax>`
    * `$ make`
 5. Build the odot objects
-   * `$ cd <path/to/CNMAT-odot>`
+   * `$ cd <path/to/CNMAT-odot/src>`
    * `$ make`
    * (Xcode is required to build on Mac OS X)
 
