@@ -124,6 +124,7 @@ typedef struct _oexprcodebox
     bool mousedown;
     void *outlets[2];
     t_osc_expr *expr;
+    int post_errors;
 } t_oexprcodebox;
 
 void *oexprcodebox_class;
@@ -170,7 +171,7 @@ void oexprcodebox_fullPacket(t_oexprcodebox *x, t_symbol *msg, int argc, t_atom 
 		}
 	}
 	if(ret){
-		omax_util_outletOSC(x->outlets[1], len, ptr);
+		//omax_util_outletOSC(x->outlets[1], len, ptr);
 	}else{
 		omax_util_outletOSC(x->outlets[0], copylen, copy);
 	}
@@ -822,6 +823,23 @@ int setup_o0x2eexpr0x2ecodebox(void)
 }
 
 #else
+
+int oexprcodebox_error_handler(void *context, t_osc_err errorcode, const char * const errorstring)
+{
+	t_oexprcodebox *x = (t_oexprcodebox *)context;
+	//object_post((t_object *)context, "%d %s", errorcode, errorstring);
+	t_osc_bundle_u *b = osc_bundle_u_alloc();
+	t_osc_message_u *m = osc_message_u_allocWithString("/error/string", errorstring);
+	osc_bundle_u_addMsg(b, m);
+	m = osc_message_u_allocWithString("/error/type", osc_error_type(errorcode));
+	osc_bundle_u_addMsg(b, m);
+	omax_util_outletOSC_u(x->outlets[1], b);
+	if(x->post_errors){
+		omax_util_liboErrorHandler(context, errorcode, errorstring);
+	}
+	osc_bundle_u_free(b);
+}
+
 void *oexprcodebox_new(t_symbol *msg, short argc, t_atom *argv)
 {
 	t_oexprcodebox *x;
@@ -875,6 +893,7 @@ void *oexprcodebox_new(t_symbol *msg, short argc, t_atom *argv)
 			textfield_set_textcolor(textfield, &(x->text_color));
 		}
         x->mousedown = false;
+	x->post_errors = 1;
         
 		jbox_ready((t_jbox *)x);
 		oexprcodebox_gettext(x);
@@ -954,6 +973,9 @@ int main(void)
     CLASS_ATTR_DEFAULT_SAVE_PAINT(c, "mousedown_color", 0, "0.81 0.9 0.91 1.");
     CLASS_ATTR_STYLE_LABEL(c, "mousedown_color", 0, "rgba", "Mousedown Color");
     CLASS_ATTR_CATEGORY_KLUDGE(c, "mousedown_color", 0, "Color");
+
+    CLASS_ATTR_LONG(c, "post_errors", 0, t_oexprcodebox, post_errors);
+    CLASS_ATTR_STYLE_LABEL(c, "post_errors", 0, "onoff", "Post Errors");
     
     CLASS_ATTR_DEFAULT(c, "fontname", 0, "\"Courier New\"");
 
@@ -961,7 +983,8 @@ int main(void)
 
     class_register(CLASS_BOX, c);
     oexprcodebox_class = c;
-    osc_error_setHandler(omax_util_liboErrorHandler);
+    //osc_error_setHandler(omax_util_liboErrorHandler);
+    osc_error_setHandler(oexprcodebox_error_handler);
 
     ODOT_PRINT_VERSION;
     return 0;
