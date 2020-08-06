@@ -8,7 +8,7 @@
 	</digest>
 
 	<description>
-		o.if routs the incoming bundle out the left outlet if the result of the expression is true or non-zero, and out the right outlet otherwise.
+		o.if routes the incoming bundle out the left outlet if the result of the expression is true or non-zero, and out the right outlet otherwise.
 	</description>
 
 	<!--METADATA-->
@@ -76,7 +76,7 @@
 		<method name="bang">
 			<arglist />
 			<digest>
-				Perform the expression using an empty bundle as input
+				Perform the expression using an empty bundle as input.
 			</digest>
 			<description>
 				Perform the expression using an empty bundle as input.

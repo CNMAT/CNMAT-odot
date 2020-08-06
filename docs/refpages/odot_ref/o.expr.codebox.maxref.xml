@@ -4,7 +4,7 @@
 <c74object name="o.expr.codebox" module="odot">
 
 	<digest>
-		Evaluate a C-like expression containing OSC addresses
+		Evaluate C-like expressions containing OSC addresses
 	</digest>
 
 	<description>
