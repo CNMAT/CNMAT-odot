@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <?xml-stylesheet href="./_c74_ref.xsl" type="text/xsl"?>
 
-<c74object name="o.whatever" module="odot">
+<c74object name="o.schedule" module="odot">
 
 	<digest>
-		Dedline Scheduler for odot bundles using odot timetags
+		Deadline Scheduler for odot bundles using odot timetags
 	</digest>
 
 	<description>
