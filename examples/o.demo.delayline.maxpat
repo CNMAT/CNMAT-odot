@@ -2,14 +2,15 @@
 	"patcher" : 	{
 		"fileversion" : 1,
 		"appversion" : 		{
-			"major" : 7,
-			"minor" : 3,
-			"revision" : 4,
+			"major" : 8,
+			"minor" : 1,
+			"revision" : 5,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
-		"rect" : [ 38.0, 79.0, 982.0, 787.0 ],
+		"classnamespace" : "box",
+		"rect" : [ 38.0, 79.0, 533.0, 590.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -38,6 +39,7 @@
 		"subpatcher_template" : "",
 		"showrootpatcherontab" : 0,
 		"showontab" : 0,
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
 					"id" : "obj-54",
@@ -47,14 +49,15 @@
 					"patcher" : 					{
 						"fileversion" : 1,
 						"appversion" : 						{
-							"major" : 7,
-							"minor" : 3,
-							"revision" : 4,
+							"major" : 8,
+							"minor" : 1,
+							"revision" : 5,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
 ,
-						"rect" : [ 0.0, 26.0, 982.0, 761.0 ],
+						"classnamespace" : "box",
+						"rect" : [ 0.0, 26.0, 533.0, 564.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -82,6 +85,7 @@
 						"style" : "",
 						"subpatcher_template" : "",
 						"showontab" : 1,
+						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
 									"fontface" : 0,
@@ -92,8 +96,7 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "FullPacket", "FullPacket" ],
 									"patching_rect" : [ 176.0, 306.0, 250.0, 32.0 ],
-									"text" : "/output/time = /time + /delaytime",
-									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
+									"text" : "/output/time = /time + /delaytime"
 								}
 
 							}
@@ -105,7 +108,6 @@
 									"numoutlets" : 4,
 									"outlettype" : [ "FullPacket", "FullPacket", "FullPacket", "FullPacket" ],
 									"patching_rect" : [ 176.0, 351.0, 135.0, 22.0 ],
-									"style" : "",
 									"text" : "o.schedule /output/time"
 								}
 
@@ -118,7 +120,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 176.0, 272.5, 89.0, 22.0 ],
-									"style" : "",
 									"text" : "o.timetag /time"
 								}
 
@@ -131,7 +132,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 348.25, 196.0, 140.0, 33.0 ],
-									"style" : "",
 									"text" : "length of delay in number of input events"
 								}
 
@@ -143,7 +143,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 266.25, 122.5, 53.0, 20.0 ],
-									"style" : "",
 									"text" : "delayed"
 								}
 
@@ -155,7 +154,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 135.5, 122.5, 37.0, 20.0 ],
-									"style" : "",
 									"text" : "input"
 								}
 
@@ -168,7 +166,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 289.0, 156.5, 100.0, 22.0 ],
-									"style" : "",
 									"text" : "loadmess 0.5"
 								}
 
@@ -182,8 +179,7 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 289.0, 196.0, 50.0, 22.0 ],
-									"style" : ""
+									"patching_rect" : [ 289.0, 196.0, 50.0, 22.0 ]
 								}
 
 							}
@@ -197,7 +193,6 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "", "FullPacket" ],
 									"patching_rect" : [ 176.0, 400.5, 61.0, 22.0 ],
-									"style" : "",
 									"text" : "o.route /v"
 								}
 
@@ -211,8 +206,7 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "", "" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 244.25, 113.5, 14.0, 97.0 ],
-									"style" : ""
+									"patching_rect" : [ 244.25, 113.5, 14.0, 97.0 ]
 								}
 
 							}
@@ -226,7 +220,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "FullPacket" ],
 									"patching_rect" : [ 176.0, 230.5, 132.0, 22.0 ],
-									"style" : "",
 									"text" : "o.pack /v /delaytime"
 								}
 
@@ -240,8 +233,7 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "", "" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 180.5, 113.5, 14.0, 97.0 ],
-									"style" : ""
+									"patching_rect" : [ 180.5, 113.5, 14.0, 97.0 ]
 								}
 
 							}
@@ -307,16 +299,13 @@
 					}
 ,
 					"patching_rect" : [ 52.5, 97.5, 83.0, 22.0 ],
-					"presentation_rect" : [ 52.5, 97.5, 0.0, 0.0 ],
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
 						"globalpatchername" : "",
-						"style" : "",
 						"tags" : ""
 					}
 ,
-					"style" : "",
 					"text" : "p time-delay"
 				}
 
@@ -330,13 +319,14 @@
 					"patcher" : 					{
 						"fileversion" : 1,
 						"appversion" : 						{
-							"major" : 7,
-							"minor" : 3,
-							"revision" : 4,
+							"major" : 8,
+							"minor" : 1,
+							"revision" : 5,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
 ,
+						"classnamespace" : "box",
 						"rect" : [ 63.0, 104.0, 640.0, 480.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
@@ -365,81 +355,81 @@
 						"style" : "",
 						"subpatcher_template" : "",
 						"showontab" : 1,
+						"assistshowspatchername" : 0,
 						"visible" : 1,
 						"boxes" : [ 							{
 								"box" : 								{
+									"fontsize" : 11.0,
 									"id" : "obj-52",
-									"linecount" : 2,
+									"linecount" : 3,
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 348.25, 196.0, 140.0, 33.0 ],
-									"style" : "",
+									"patching_rect" : [ 245.25, 125.0, 92.0, 43.0 ],
 									"text" : "length of delay in number of input events"
 								}
 
 							}
 , 							{
 								"box" : 								{
+									"fontsize" : 11.0,
 									"id" : "obj-51",
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 266.25, 122.5, 53.0, 20.0 ],
-									"style" : "",
+									"patching_rect" : [ 173.25, 52.5, 49.0, 19.0 ],
 									"text" : "delayed"
 								}
 
 							}
 , 							{
 								"box" : 								{
+									"fontsize" : 11.0,
 									"id" : "obj-50",
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 135.5, 122.5, 37.0, 20.0 ],
-									"style" : "",
+									"patching_rect" : [ 42.5, 52.5, 34.0, 19.0 ],
 									"text" : "input"
 								}
 
 							}
 , 							{
 								"box" : 								{
+									"fontsize" : 11.0,
 									"id" : "obj-48",
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 289.0, 157.5, 100.0, 22.0 ],
-									"style" : "",
+									"patching_rect" : [ 186.0, 98.5, 93.0, 21.0 ],
 									"text" : "loadmess 20"
 								}
 
 							}
 , 							{
 								"box" : 								{
+									"fontsize" : 11.0,
 									"id" : "obj-47",
 									"maxclass" : "number",
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 289.0, 196.0, 50.0, 22.0 ],
-									"style" : ""
+									"patching_rect" : [ 186.0, 125.0, 49.0, 21.0 ]
 								}
 
 							}
 , 							{
 								"box" : 								{
 									"fontname" : "Arial",
-									"fontsize" : 12.0,
+									"fontsize" : 11.0,
 									"id" : "obj-42",
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "FullPacket" ],
-									"patching_rect" : [ 176.5, 605.5, 106.0, 22.0 ],
-									"style" : "",
+									"patching_rect" : [ 83.0, 444.5, 98.0, 21.0 ],
 									"text" : "o.route /delayed/v"
 								}
 
@@ -453,8 +443,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 537.5, 122.5, 136.0, 47.0 ],
-									"style" : "",
+									"patching_rect" : [ 295.5, 28.5, 136.0, 47.0 ],
 									"text" : "delayline for o. objects \nAdrian Freed 2014,\nrama gottfried, 2017"
 								}
 
@@ -468,22 +457,20 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "", "" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 244.25, 113.5, 14.0, 97.0 ],
-									"style" : ""
+									"patching_rect" : [ 151.25, 43.5, 14.0, 97.0 ]
 								}
 
 							}
 , 							{
 								"box" : 								{
 									"fontname" : "Arial",
-									"fontsize" : 12.0,
+									"fontsize" : 11.0,
 									"id" : "obj-3",
 									"maxclass" : "newobj",
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "FullPacket" ],
-									"patching_rect" : [ 176.0, 230.5, 132.0, 22.0 ],
-									"style" : "",
+									"patching_rect" : [ 83.0, 163.5, 122.0, 21.0 ],
 									"text" : "o.pack /v /delaysize"
 								}
 
@@ -497,59 +484,58 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "", "" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 180.5, 113.5, 14.0, 97.0 ],
-									"style" : ""
+									"patching_rect" : [ 87.5, 43.5, 14.0, 97.0 ]
 								}
 
 							}
 , 							{
 								"box" : 								{
+									"fontsize" : 11.0,
 									"id" : "obj-26",
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "" ],
-									"patching_rect" : [ 176.5, 260.5, 29.5, 22.0 ],
-									"style" : "",
+									"patching_rect" : [ 83.0, 195.5, 47.0, 21.0 ],
 									"text" : "t l l"
 								}
 
 							}
 , 							{
 								"box" : 								{
+									"fontsize" : 11.0,
 									"id" : "obj-27",
 									"maxclass" : "newobj",
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "FullPacket" ],
-									"patching_rect" : [ 176.5, 558.5, 50.0, 22.0 ],
-									"style" : "",
+									"patching_rect" : [ 83.0, 415.5, 47.0, 21.0 ],
 									"text" : "o.union"
 								}
 
 							}
 , 							{
 								"box" : 								{
+									"fontsize" : 11.0,
 									"id" : "obj-31",
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "" ],
-									"patching_rect" : [ 236.5, 503.5, 29.5, 22.0 ],
-									"style" : "",
+									"patching_rect" : [ 111.0, 372.5, 29.0, 21.0 ],
 									"text" : "t l l"
 								}
 
 							}
 , 							{
 								"box" : 								{
+									"fontsize" : 11.0,
 									"id" : "obj-32",
 									"maxclass" : "newobj",
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "FullPacket" ],
-									"patching_rect" : [ 236.5, 304.5, 72.0, 22.0 ],
-									"style" : "",
+									"patching_rect" : [ 111.0, 229.5, 68.0, 21.0 ],
 									"text" : "o.union"
 								}
 
@@ -557,16 +543,15 @@
 , 							{
 								"box" : 								{
 									"fontface" : 0,
-									"fontsize" : 12.0,
+									"fontsize" : 11.0,
 									"id" : "obj-34",
-									"linecount" : 10,
+									"linecount" : 7,
 									"maxclass" : "o.expr.codebox",
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "FullPacket", "FullPacket" ],
-									"patching_rect" : [ 236.5, 338.5, 351.0, 154.0 ],
-									"text" : "/delaysize ??= 5,\n/queue ??= [],\n\n/queue = [/v, /queue],\n\nif( length(/queue) > /delaysize,\n  /queue = /queue[[ aseq(0, /delaysize - 1) ]]\n),\n\n/delayed/v = last(/queue)",
-									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
+									"patching_rect" : [ 111.0, 259.5, 314.0, 106.0 ],
+									"text" : "/delaysize ??= 5,\n/queue ??= [],\n/queue = [/v, /queue],\nif( length(/queue) > /delaysize,\n  /queue = /queue[[ aseq(0, /delaysize - 1) ]]\n),\n/delayed/v = last(/queue)"
 								}
 
 							}
@@ -616,7 +601,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-32", 1 ],
-									"midpoints" : [ 256.5, 548.5, 740.5, 548.5, 740.5, 283.5, 299.0, 283.5 ],
+									"midpoints" : [ 130.5, 407.5, 454.0, 407.5, 454.0, 221.5, 169.5, 221.5 ],
 									"source" : [ "obj-31", 1 ]
 								}
 
@@ -638,7 +623,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-11", 0 ],
-									"midpoints" : [ 186.0, 653.5, 51.5, 653.5, 51.5, 101.5, 252.25, 101.5 ],
+									"midpoints" : [ 92.5, 483.5, 30.5, 483.5, 30.5, 31.5, 159.25, 31.5 ],
 									"source" : [ "obj-42", 0 ]
 								}
 
@@ -665,11 +650,9 @@
 						"description" : "",
 						"digest" : "",
 						"globalpatchername" : "",
-						"style" : "",
 						"tags" : ""
 					}
 ,
-					"style" : "",
 					"text" : "p event-delay"
 				}
 
