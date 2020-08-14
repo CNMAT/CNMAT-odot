@@ -2,19 +2,20 @@
 	"patcher" : 	{
 		"fileversion" : 1,
 		"appversion" : 		{
-			"major" : 7,
-			"minor" : 3,
-			"revision" : 4,
+			"major" : 8,
+			"minor" : 1,
+			"revision" : 5,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
-		"rect" : [ 214.0, 79.0, 984.0, 787.0 ],
+		"classnamespace" : "box",
+		"rect" : [ 59.0, 94.0, 806.0, 751.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
-		"default_fontsize" : 12.0,
-		"default_fontface" : 1,
-		"default_fontname" : "Helvetica Neue",
+		"default_fontsize" : 11.0,
+		"default_fontface" : 0,
+		"default_fontname" : "Arial",
 		"gridonopen" : 1,
 		"gridsize" : [ 15.0, 15.0 ],
 		"gridsnaponopen" : 1,
@@ -36,77 +37,157 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "",
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
-					"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
-					"fontface" : 3,
-					"fontname" : "Helvetica Neue",
-					"fontsize" : 13.0,
-					"id" : "obj-13",
+					"id" : "obj-52",
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 144.0, 581.5, 40.0, 21.0 ],
+					"text" : "zlclear"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-50",
+					"maxclass" : "newobj",
+					"numinlets" : 2,
+					"numoutlets" : 2,
+					"outlettype" : [ "jit_matrix", "" ],
+					"patching_rect" : [ 44.0, 693.5, 128.0, 21.0 ],
+					"text" : "jit.op @op > 0 @adapt 1"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-45",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "" ],
+					"patching_rect" : [ 44.0, 637.5, 64.0, 21.0 ],
+					"text" : "jit.fill celly 0"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-44",
+					"maxclass" : "newobj",
+					"numinlets" : 2,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "" ],
+					"patching_rect" : [ 44.0, 609.5, 177.0, 21.0 ],
+					"text" : "zl.group 15555 @zlmaxsize 15555"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-32",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "" ],
+					"patching_rect" : [ 44.0, 458.0, 29.5, 21.0 ],
+					"text" : "t l l"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-29",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "FullPacket" ],
+					"patching_rect" : [ 44.0, 581.5, 67.0, 21.0 ],
+					"text" : "o.route /row"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-19",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "jit_matrix", "" ],
+					"patching_rect" : [ 44.0, 665.5, 145.0, 21.0 ],
+					"text" : "jit.matrix celly 1 char 61 255"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-12",
+					"maxclass" : "jit.pwindow",
+					"name" : "u066005985",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "jit_matrix", "" ],
+					"patching_rect" : [ 340.0, 473.5, 61.0, 255.0 ],
+					"usesrcrect" : 1
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"bubble" : 1,
+					"fontface" : 0,
+					"fontname" : "Arial",
+					"fontsize" : 11.0,
+					"id" : "obj-11",
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 101.0, 24.0, 89.0, 22.0 ],
-					"presentation_rect" : [ 655.0, 75.5, 0.0, 0.0 ],
-					"style" : "",
-					"text" : "<< click here",
-					"textcolor" : [ 0.701961, 0.415686, 0.886275, 1.0 ]
+					"patching_rect" : [ 76.0, 38.0, 72.0, 23.0 ],
+					"text" : "click here"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"autofit" : 1,
+					"forceaspect" : 1,
+					"id" : "obj-5",
+					"maxclass" : "fpic",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "jit_matrix" ],
+					"patching_rect" : [ 531.0, 38.0, 100.0, 100.0 ],
+					"pic" : "/Users/jml/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/icon.png"
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontname" : "Helvetica Neue",
-					"fontsize" : 12.0,
+					"fontsize" : 11.0,
 					"id" : "obj-10",
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 69.0, 590.5, 234.0, 32.0 ],
-					"presentation_rect" : [ 115.0, 648.0, 0.0, 0.0 ],
-					"text" : "/print = map( lambda(t, t ? \"*\" : \"_\"), /cell)",
-					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
+					"patching_rect" : [ 44.0, 510.5, 268.0, 31.0 ],
+					"text" : "/row = map(lambda(t, t ? 1 : 0), /cell)"
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"id" : "obj-1",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 0,
-					"patching_rect" : [ 69.0, 662.5, 93.0, 22.0 ],
-					"style" : "",
-					"text" : "print @popup 1"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontface" : 0,
-					"id" : "obj-2",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 2,
-					"outlettype" : [ "", "FullPacket" ],
-					"patching_rect" : [ 69.0, 632.5, 80.0, 22.0 ],
-					"style" : "",
-					"text" : "o.route /print"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontface" : 0,
+					"fontname" : "Arial",
+					"fontsize" : 11.0,
 					"id" : "obj-16",
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 444.0, 157.5, 130.0, 20.0 ],
-					"style" : "",
+					"patching_rect" : [ 332.0, 156.5, 117.0, 19.0 ],
 					"text" : "print out the initial /cell"
 				}
 
@@ -118,121 +199,97 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 69.0, 28.0, 20.0, 20.0 ],
-					"style" : ""
+					"parameter_enable" : 0,
+					"patching_rect" : [ 44.0, 42.0, 20.0, 20.0 ]
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontname" : "Helvetica Neue",
-					"fontsize" : 12.0,
+					"fontsize" : 11.0,
 					"id" : "obj-4",
 					"linecount" : 3,
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 69.0, 73.0, 306.0, 60.0 ],
-					"text" : "/cell = list( nfill( 30, 0 ), 1, nfill( 30, 0) ),\n/ruleset = list( 0, 1, 0, 1, 1, 0, 0, 0 ),\n/max_generations = 255",
-					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
+					"patching_rect" : [ 44.0, 94.0, 308.0, 56.0 ],
+					"text" : "/cell = list( nfill(30, 0), 1, nfill(30, 0)),\n/ruleset = list(0, 1, 0, 1, 1, 0, 0, 0),\n/max_generations = 255"
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontname" : "Helvetica Neue",
-					"fontsize" : 12.0,
+					"fontsize" : 11.0,
 					"id" : "obj-9",
 					"linecount" : 3,
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 69.0, 476.0, 113.0, 60.0 ],
-					"text" : "/cell = /new,\n/currentPoint = 1, \n/generation++",
-					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
+					"patching_rect" : [ 44.0, 391.0, 136.0, 56.0 ],
+					"text" : "/cell = /new,\n/currentPoint = 1, \n/generation++"
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontname" : "Helvetica Neue",
-					"fontsize" : 12.0,
+					"fontsize" : 11.0,
 					"id" : "obj-8",
 					"linecount" : 5,
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 69.0, 307.5, 326.0, 90.0 ],
-					"text" : "/triad = /cell[[ aseq( /currentPoint - 1, /currentPoint + 1 ) ]],\n/index = /triad[[ 2 ]] + ( 2 * /triad[[ 1 ]] ) + ( 4 * /triad[[ 0 ]] ),\nassign_to_index( /new, /currentPoint, /ruleset[[ /index ]] ),\n\n/currentPoint += 1",
-					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
+					"patching_rect" : [ 44.0, 265.5, 413.0, 81.0 ],
+					"text" : "/triad = /cell[[aseq(/currentPoint - 1, /currentPoint + 1)]],\n/index = /triad[[2]] + (2 * /triad[[1]]) + (4 * /triad[[0]]),\nassign_to_index(/new, /currentPoint, /ruleset[[/index]]),\n\n/currentPoint += 1"
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontname" : "Helvetica Neue",
-					"fontsize" : 12.0,
+					"fontsize" : 11.0,
 					"id" : "obj-7",
 					"linecount" : 3,
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 69.0, 225.5, 175.0, 61.0 ],
-					"text" : "/new = nfill( length( /cell ), 0 ), \n/generation = 0, \n/currentPoint = 1",
-					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontface" : 1,
-					"fontname" : "Helvetica Neue",
-					"fontsize" : 24.0,
-					"id" : "obj-6",
-					"maxclass" : "comment",
-					"numinlets" : 1,
-					"numoutlets" : 0,
-					"patching_rect" : [ 438.0, 28.0, 275.0, 35.0 ],
-					"style" : "",
-					"text" : "Cellular Automata in O."
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
-					"fontface" : 3,
-					"fontname" : "Helvetica Neue",
-					"fontsize" : 24.0,
-					"id" : "obj-3",
-					"maxclass" : "comment",
-					"numinlets" : 1,
-					"numoutlets" : 0,
-					"patching_rect" : [ 191.0, 662.5, 268.0, 35.0 ],
-					"style" : "",
-					"text" : "See your Max Window",
-					"textcolor" : [ 0.701961, 0.415686, 0.886275, 1.0 ]
+					"patching_rect" : [ 44.0, 183.5, 222.0, 56.0 ],
+					"text" : "/new = nfill(length(/cell), 0), \n/generation = 0, \n/currentPoint = 1"
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"id" : "obj-64",
-					"linecount" : 2,
+					"fontname" : "Arial",
+					"fontsize" : 11.0,
+					"id" : "obj-6",
+					"linecount" : 3,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 428.0, 559.0, 384.0, 34.0 ],
-					"style" : "",
+					"patching_rect" : [ 659.0, 38.0, 123.0, 43.0 ],
+					"text" : "Cellular Automata in O.\nIlya Rostovstev 2014\nJeff Lubow 2020"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontface" : 0,
+					"fontname" : "Arial",
+					"fontsize" : 11.0,
+					"id" : "obj-64",
+					"linecount" : 3,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 458.5, 429.5, 228.0, 43.0 ],
 					"text" : "as long as the row is not all zeros, and we haven't exceeded max_generations... we loop back to top. (otherwise, do nothing...)"
 				}
 
@@ -240,13 +297,14 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
+					"fontname" : "Arial",
+					"fontsize" : 11.0,
 					"id" : "obj-63",
 					"linecount" : 3,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 444.0, 467.0, 137.0, 48.0 ],
-					"style" : "",
+					"patching_rect" : [ 188.0, 397.5, 125.0, 43.0 ],
 					"text" : ".../cell becomes /new, \n   reset /currentPoint, \n   increment /generation"
 				}
 
@@ -254,26 +312,28 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
+					"fontname" : "Arial",
+					"fontsize" : 11.0,
 					"id" : "obj-62",
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 444.0, 427.5, 243.0, 20.0 ],
-					"style" : "",
-					"text" : "if currentPoint reaches the end of the /cell..."
+					"patching_rect" : [ 470.0, 359.5, 224.0, 19.0 ],
+					"text" : "if /currentPoint reaches the end of the /cell..."
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"fontface" : 0,
+					"fontname" : "Arial",
+					"fontsize" : 11.0,
 					"id" : "obj-58",
-					"linecount" : 5,
+					"linecount" : 6,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 444.0, 314.0, 420.0, 76.0 ],
-					"style" : "",
+					"patching_rect" : [ 470.0, 265.5, 303.0, 80.0 ],
 					"text" : "look at three consecutive elements of /cell\ntreat those elements as a binary number\ngrab the /ruleset at the index computed in previous step, and put it into /new\n\nincrement the /currentPoint"
 				}
 
@@ -281,13 +341,14 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
+					"fontname" : "Arial",
+					"fontsize" : 11.0,
 					"id" : "obj-57",
 					"linecount" : 2,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 444.0, 238.5, 186.0, 34.0 ],
-					"style" : "",
+					"patching_rect" : [ 313.0, 196.0, 171.0, 31.0 ],
 					"text" : "an empty /new is instantiated,\nadditional variables are created..."
 				}
 
@@ -295,13 +356,14 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
+					"fontname" : "Arial",
+					"fontsize" : 11.0,
 					"id" : "obj-54",
 					"linecount" : 2,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 444.0, 86.5, 168.0, 34.0 ],
-					"style" : "",
+					"patching_rect" : [ 359.0, 94.0, 152.0, 31.0 ],
 					"text" : "/cell defines the starting point\n/ruleset defines the rule"
 				}
 
@@ -309,13 +371,14 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
+					"fontname" : "Arial",
+					"fontsize" : 11.0,
 					"id" : "obj-49",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 69.0, 157.5, 29.5, 22.0 ],
-					"style" : "",
+					"patching_rect" : [ 44.0, 155.5, 282.0, 21.0 ],
 					"text" : "t l l"
 				}
 
@@ -323,13 +386,14 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
+					"fontname" : "Arial",
+					"fontsize" : 11.0,
 					"id" : "obj-48",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 348.0, 526.0, 329.0, 22.0 ],
-					"style" : "",
+					"patching_rect" : [ 436.0, 397.5, 306.0, 21.0 ],
 					"text" : "o.if ( max( /cell ) != 0 ) && ( /generation < /max_generations )"
 				}
 
@@ -337,13 +401,14 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
+					"fontname" : "Arial",
+					"fontsize" : 11.0,
 					"id" : "obj-31",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 69.0, 427.5, 298.0, 22.0 ],
-					"style" : "",
+					"patching_rect" : [ 44.0, 359.5, 411.0, 21.0 ],
 					"text" : "o.if ( /currentPoint == ( length( /cell ) - 1 ) )"
 				}
 
@@ -351,13 +416,14 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
+					"fontname" : "Arial",
+					"fontsize" : 11.0,
 					"id" : "obj-28",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 348.0, 571.0, 59.0, 22.0 ],
-					"style" : "",
+					"patching_rect" : [ 436.0, 510.5, 54.0, 21.0 ],
 					"text" : "o.recurse"
 				}
 
@@ -365,7 +431,8 @@
  ],
 		"lines" : [ 			{
 				"patchline" : 				{
-					"destination" : [ "obj-2", 0 ],
+					"color" : [ 1.0, 0.8, 0.4, 1.0 ],
+					"destination" : [ "obj-29", 0 ],
 					"source" : [ "obj-10", 0 ]
 				}
 
@@ -379,8 +446,8 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-1", 0 ],
-					"source" : [ "obj-2", 0 ]
+					"destination" : [ "obj-50", 0 ],
+					"source" : [ "obj-19", 0 ]
 				}
 
 			}
@@ -388,8 +455,15 @@
 				"patchline" : 				{
 					"color" : [ 1.0, 0.8, 0.4, 1.0 ],
 					"destination" : [ "obj-8", 0 ],
-					"midpoints" : [ 357.5, 631.0, 911.0, 631.0, 911.0, 296.5, 78.5, 296.5 ],
+					"midpoints" : [ 445.5, 537.0, 762.0, 537.0, 762.0, 254.5, 53.5, 254.5 ],
 					"source" : [ "obj-28", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-44", 0 ],
+					"source" : [ "obj-29", 0 ]
 				}
 
 			}
@@ -412,8 +486,38 @@
 , 			{
 				"patchline" : 				{
 					"color" : [ 1.0, 0.8, 0.4, 1.0 ],
+					"destination" : [ "obj-10", 0 ],
+					"source" : [ "obj-32", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"color" : [ 1.0, 0.8, 0.4, 1.0 ],
+					"destination" : [ "obj-28", 0 ],
+					"source" : [ "obj-32", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"color" : [ 1.0, 0.8, 0.4, 1.0 ],
 					"destination" : [ "obj-49", 0 ],
 					"source" : [ "obj-4", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-45", 0 ],
+					"source" : [ "obj-44", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-19", 0 ],
+					"source" : [ "obj-45", 0 ]
 				}
 
 			}
@@ -427,9 +531,8 @@
 			}
 , 			{
 				"patchline" : 				{
-					"color" : [ 0.966981, 0.749856, 0.54108, 1.0 ],
-					"destination" : [ "obj-10", 0 ],
-					"midpoints" : [ 89.0, 202.0, 35.0, 202.0, 35.0, 580.0, 78.5, 580.0 ],
+					"color" : [ 0.701960784313725, 0.701960784313725, 0.701960784313725, 1.0 ],
+					"destination" : [ "obj-29", 0 ],
 					"source" : [ "obj-49", 1 ]
 				}
 
@@ -439,6 +542,21 @@
 					"color" : [ 1.0, 0.8, 0.4, 1.0 ],
 					"destination" : [ "obj-7", 0 ],
 					"source" : [ "obj-49", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-12", 0 ],
+					"hidden" : 1,
+					"source" : [ "obj-50", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-44", 0 ],
+					"source" : [ "obj-52", 0 ]
 				}
 
 			}
@@ -461,17 +579,7 @@
 , 			{
 				"patchline" : 				{
 					"color" : [ 1.0, 0.8, 0.4, 1.0 ],
-					"destination" : [ "obj-10", 0 ],
-					"order" : 1,
-					"source" : [ "obj-9", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"color" : [ 1.0, 0.8, 0.4, 1.0 ],
-					"destination" : [ "obj-28", 0 ],
-					"order" : 0,
+					"destination" : [ "obj-32", 0 ],
 					"source" : [ "obj-9", 0 ]
 				}
 
@@ -479,9 +587,16 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "o.recurse.maxpat",
-				"bootpath" : "~/Documents/dev-lib/CNMAT-odot/patchers",
-				"patcherrelativepath" : "../patchers",
+				"bootpath" : "~/Documents/Max 8/Packages/CNMAT-odot/patchers/recursion",
+				"patcherrelativepath" : "../../../../../Max 8/Packages/CNMAT-odot/patchers/recursion",
 				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "icon.png",
+				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot",
+				"patcherrelativepath" : "..",
+				"type" : "PNG",
 				"implicit" : 1
 			}
 , 			{
