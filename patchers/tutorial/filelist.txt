@@ -1,0 +1,9 @@
+1, 01_max_and_odot.maxpat "Max & ODOT";
+2, 02_data_manipulation.maxpat "How to manipulate data";
+3, 03_packing_processes.maxpat "Packing data together and setting a process in motion";
+4, 04_build_merge_sep.maxpat "Building, merging, and separating data";
+5, 05_hierarchies.maxpat "Hierarchies and persistence";
+6, 06_expr1.maxpat "Expressions 1: functions, operators, addresses, types";
+7, 07_expr2.maxpat "Expressions 2: more on lists";
+8, 08_expr3.maxpat "Expressions 3: apply(), map(), and lambda()";
+9, 09_expr4.maxpat "Expressions 4";
