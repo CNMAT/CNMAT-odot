@@ -4,13 +4,13 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 1,
+			"revision" : 5,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 11.0, 54.0, 1474.0, 839.0 ],
+		"rect" : [ 11.0, 54.0, 1474.0, 626.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 11.0,
@@ -37,6 +37,7 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "gridded",
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
 					"fontface" : 1,
@@ -47,7 +48,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 1066.0, 450.0, 99.0, 24.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 1067.0, 453.0, 99.0, 24.0 ],
+					"presentation_rect" : [ 1066.0, 373.0, 99.0, 24.0 ],
 					"text" : "Constants",
 					"textcolor" : [ 0.996078431372549, 0.996078431372549, 0.996078431372549, 1.0 ],
 					"underline" : 1
@@ -59,13 +60,14 @@
 					"fontface" : 1,
 					"fontsize" : 18.0,
 					"id" : "obj-318",
+					"linecount" : 2,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 10.0, 50.0, 99.0, 24.0 ],
+					"patching_rect" : [ 10.0, 50.0, 99.0, 42.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 10.0, 50.0, 99.0, 24.0 ],
-					"text" : "Functions",
+					"presentation_rect" : [ 9.0, 9.0, 124.0, 24.0 ],
+					"text" : "Functions a-z",
 					"textcolor" : [ 0.996078431372549, 0.996078431372549, 0.996078431372549, 1.0 ],
 					"underline" : 1
 				}
@@ -81,7 +83,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 10.0, 450.0, 99.0, 24.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 10.0, 450.0, 99.0, 24.0 ],
+					"presentation_rect" : [ 9.0, 370.0, 99.0, 24.0 ],
 					"text" : "Operators",
 					"textcolor" : [ 0.996078431372549, 0.996078431372549, 0.996078431372549, 1.0 ],
 					"underline" : 1
@@ -96,7 +98,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 330.0, 559.0, 122.0, 17.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 802.0, 479.0, 122.0, 17.0 ],
+					"presentation_rect" : [ 801.0, 399.0, 122.0, 17.0 ],
 					"text" : "Aggregate construction",
 					"textcolor" : [ 0.996078431372549, 0.996078431372549, 0.996078431372549, 1.0 ]
 				}
@@ -113,7 +115,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 330.0, 600.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 802.0, 522.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 801.0, 442.0, 130.0, 20.0 ],
 					"text" : "{}",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[246]"
@@ -128,7 +130,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 330.0, 481.0, 45.0, 17.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 274.0, 481.0, 45.0, 17.0 ],
+					"presentation_rect" : [ 273.0, 401.0, 45.0, 17.0 ],
 					"text" : "Lookup",
 					"textcolor" : [ 0.996078431372549, 0.996078431372549, 0.996078431372549, 1.0 ]
 				}
@@ -142,7 +144,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 810.0, 481.0, 69.0, 17.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 670.0, 481.0, 69.0, 17.0 ],
+					"presentation_rect" : [ 669.0, 401.0, 69.0, 17.0 ],
 					"text" : "Conditionals",
 					"textcolor" : [ 0.996078431372549, 0.996078431372549, 0.996078431372549, 1.0 ]
 				}
@@ -156,7 +158,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 650.0, 480.0, 35.0, 17.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 538.0, 480.0, 35.0, 17.0 ],
+					"presentation_rect" : [ 537.0, 400.0, 35.0, 17.0 ],
 					"text" : "Logic",
 					"textcolor" : [ 0.996078431372549, 0.996078431372549, 0.996078431372549, 1.0 ]
 				}
@@ -170,7 +172,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 490.0, 481.0, 68.0, 17.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 406.0, 481.0, 68.0, 17.0 ],
+					"presentation_rect" : [ 405.0, 401.0, 68.0, 17.0 ],
 					"text" : "Comparison",
 					"textcolor" : [ 0.996078431372549, 0.996078431372549, 0.996078431372549, 1.0 ]
 				}
@@ -184,7 +186,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 170.0, 480.0, 66.0, 17.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 142.0, 480.0, 66.0, 17.0 ],
+					"presentation_rect" : [ 141.0, 400.0, 66.0, 17.0 ],
 					"text" : "Assignment",
 					"textcolor" : [ 0.996078431372549, 0.996078431372549, 0.996078431372549, 1.0 ]
 				}
@@ -198,7 +200,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 10.0, 479.5, 57.0, 17.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 10.0, 479.5, 57.0, 17.0 ],
+					"presentation_rect" : [ 9.0, 399.5, 57.0, 17.0 ],
 					"text" : "Arithmetic",
 					"textcolor" : [ 0.996078431372549, 0.996078431372549, 0.996078431372549, 1.0 ]
 				}
@@ -215,7 +217,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 170.0, 610.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 142.0, 610.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 141.0, 530.0, 130.0, 20.0 ],
 					"text" : "-=",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[208]"
@@ -233,7 +235,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 10.0, 522.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 10.0, 522.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 9.0, 442.0, 130.0, 20.0 ],
 					"text" : "-",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[213]"
@@ -251,7 +253,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 650.0, 564.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 538.0, 566.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 537.0, 486.0, 130.0, 20.0 ],
 					"text" : "||",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[217]"
@@ -269,7 +271,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 650.0, 544.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 538.0, 544.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 537.0, 464.0, 130.0, 20.0 ],
 					"text" : "|",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[218]"
@@ -287,7 +289,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 810.0, 522.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 670.0, 522.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 669.0, 442.0, 130.0, 20.0 ],
 					"text" : "??",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[219]"
@@ -305,7 +307,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 810.0, 500.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 670.0, 500.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 669.0, 420.0, 130.0, 20.0 ],
 					"text" : "??=",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[220]"
@@ -323,7 +325,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 330.0, 500.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 274.0, 500.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 273.0, 420.0, 130.0, 20.0 ],
 					"text" : "[[]]",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[221]"
@@ -341,7 +343,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 10.0, 610.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 10.0, 610.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 9.0, 530.0, 130.0, 20.0 ],
 					"text" : "!",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[222]"
@@ -359,7 +361,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 490.0, 522.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 406.0, 522.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 405.0, 442.0, 130.0, 20.0 ],
 					"text" : "!=",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[223]"
@@ -377,7 +379,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 170.0, 632.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 142.0, 632.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 141.0, 552.0, 130.0, 20.0 ],
 					"text" : "*=",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[224]"
@@ -395,7 +397,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 10.0, 544.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 10.0, 544.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 9.0, 464.0, 130.0, 20.0 ],
 					"text" : "*",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[225]"
@@ -413,7 +415,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 170.0, 676.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 142.0, 676.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 141.0, 596.0, 130.0, 20.0 ],
 					"text" : "%=",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[226]"
@@ -431,7 +433,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 10.0, 588.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 10.0, 588.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 9.0, 508.0, 130.0, 20.0 ],
 					"text" : "%",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[227]"
@@ -449,7 +451,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 490.0, 566.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 406.0, 566.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 405.0, 486.0, 130.0, 20.0 ],
 					"text" : "<",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[228]"
@@ -467,7 +469,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 330.0, 580.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 802.0, 500.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 801.0, 420.0, 130.0, 20.0 ],
 					"text" : "[]",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[229]"
@@ -485,7 +487,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 490.0, 610.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 406.0, 610.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 405.0, 530.0, 130.0, 20.0 ],
 					"text" : "<=",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[230]"
@@ -503,7 +505,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 170.0, 544.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 142.0, 544.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 141.0, 464.0, 130.0, 20.0 ],
 					"text" : "++",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[231]"
@@ -521,7 +523,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 810.0, 544.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 670.0, 544.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 669.0, 464.0, 130.0, 20.0 ],
 					"text" : "?:",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[232]"
@@ -539,7 +541,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 490.0, 544.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 406.0, 544.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 405.0, 464.0, 130.0, 20.0 ],
 					"text" : ">",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[233]"
@@ -557,7 +559,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 330.0, 520.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 274.0, 522.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 273.0, 442.0, 130.0, 20.0 ],
 					"text" : ".",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[234]"
@@ -575,7 +577,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 490.0, 588.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 406.0, 588.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 405.0, 508.0, 130.0, 20.0 ],
 					"text" : ">=",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[235]"
@@ -593,7 +595,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 490.0, 500.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 406.0, 500.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 405.0, 420.0, 130.0, 20.0 ],
 					"text" : "==",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[236]"
@@ -611,7 +613,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 170.0, 654.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 142.0, 654.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 141.0, 574.0, 130.0, 20.0 ],
 					"text" : "/=",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[237]"
@@ -629,7 +631,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 10.0, 566.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 10.0, 566.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 9.0, 486.0, 130.0, 20.0 ],
 					"text" : "/",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[238]"
@@ -647,7 +649,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 170.0, 566.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 142.0, 566.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 141.0, 486.0, 130.0, 20.0 ],
 					"text" : "—",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[239]"
@@ -665,7 +667,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 170.0, 522.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 142.0, 522.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 141.0, 442.0, 130.0, 20.0 ],
 					"text" : "[[]]=",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[240]"
@@ -683,7 +685,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 170.0, 500.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 142.0, 500.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 141.0, 420.0, 130.0, 20.0 ],
 					"text" : "=",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[241]"
@@ -701,7 +703,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 650.0, 522.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 538.0, 522.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 537.0, 442.0, 130.0, 20.0 ],
 					"text" : "&&",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[242]"
@@ -719,7 +721,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 650.0, 500.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 538.0, 500.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 537.0, 420.0, 130.0, 20.0 ],
 					"text" : "&",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[243]"
@@ -737,7 +739,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 170.0, 588.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 142.0, 588.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 141.0, 508.0, 130.0, 20.0 ],
 					"text" : "+=",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[244]"
@@ -755,7 +757,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 10.0, 500.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 10.0, 500.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 9.0, 420.0, 130.0, 20.0 ],
 					"text" : "+",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[245]"
@@ -773,7 +775,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 1066.0, 808.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 1066.0, 808.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 1197.0, 574.0, 130.0, 20.0 ],
 					"text" : "twopi",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[200]"
@@ -791,7 +793,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 1066.0, 786.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 1066.0, 786.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 1197.0, 552.0, 130.0, 20.0 ],
 					"text" : "twooverpi",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[201]"
@@ -809,7 +811,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 1066.0, 764.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 1066.0, 764.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 1197.0, 530.0, 130.0, 20.0 ],
 					"text" : "sqrttwo",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[202]"
@@ -827,7 +829,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 1066.0, 742.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 1066.0, 742.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 1197.0, 508.0, 130.0, 20.0 ],
 					"text" : "sqrthalf",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[203]"
@@ -845,7 +847,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 1066.0, 720.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 1066.0, 720.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 1197.0, 486.0, 130.0, 20.0 ],
 					"text" : "radtodeg",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[204]"
@@ -863,7 +865,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 1066.0, 698.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 1066.0, 698.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 1197.0, 464.0, 130.0, 20.0 ],
 					"text" : "quarterpi",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[205]"
@@ -881,7 +883,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 1066.0, 676.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 1066.0, 676.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 1197.0, 442.0, 130.0, 20.0 ],
 					"text" : "pi",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[206]"
@@ -899,7 +901,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 1066.0, 654.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 1066.0, 654.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 1197.0, 420.0, 130.0, 20.0 ],
 					"text" : "oneoverpi",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[207]"
@@ -917,7 +919,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 1066.0, 632.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 1066.0, 632.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 1065.0, 552.0, 130.0, 20.0 ],
 					"text" : "logtwoe",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[209]"
@@ -935,7 +937,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 1066.0, 610.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 1066.0, 610.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 1065.0, 530.0, 130.0, 20.0 ],
 					"text" : "logtene",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[210]"
@@ -953,7 +955,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 1066.0, 588.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 1066.0, 588.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 1065.0, 508.0, 130.0, 20.0 ],
 					"text" : "lntwo",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[211]"
@@ -971,7 +973,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 1066.0, 566.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 1066.0, 566.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 1065.0, 486.0, 130.0, 20.0 ],
 					"text" : "lnten",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[212]"
@@ -989,7 +991,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 1066.0, 544.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 1066.0, 544.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 1065.0, 464.0, 130.0, 20.0 ],
 					"text" : "halfpi",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[214]"
@@ -1007,7 +1009,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 1066.0, 522.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 1066.0, 522.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 1065.0, 442.0, 130.0, 20.0 ],
 					"text" : "e",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[215]"
@@ -1025,7 +1027,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 1066.0, 500.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 1066.0, 500.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 1065.0, 420.0, 130.0, 20.0 ],
 					"text" : "degtorad",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[216]"
@@ -1053,7 +1055,8 @@
 					"outlettype" : [ "", "", "", "" ],
 					"patching_rect" : [ 500.0, 780.0, 50.5, 19.0 ],
 					"saved_object_attributes" : 					{
-						"embed" : 0
+						"embed" : 0,
+						"precision" : 6
 					}
 ,
 					"text" : "coll"
@@ -1071,7 +1074,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 1,
-							"revision" : 1,
+							"revision" : 5,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -1104,6 +1107,7 @@
 						"tags" : "",
 						"style" : "",
 						"subpatcher_template" : "gridded",
+						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
 									"id" : "obj-41",
@@ -1125,7 +1129,8 @@
 									"outlettype" : [ "", "", "", "" ],
 									"patching_rect" : [ 1330.0, 251.0, 50.5, 20.0 ],
 									"saved_object_attributes" : 									{
-										"embed" : 0
+										"embed" : 0,
+										"precision" : 6
 									}
 ,
 									"text" : "coll"
@@ -2411,7 +2416,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 1462.0, 376.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 1330.0, 310.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 1329.0, 269.0, 130.0, 20.0 ],
 					"text" : "yn",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[169]"
@@ -2429,7 +2434,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 1462.0, 354.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 1330.0, 288.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 1329.0, 247.0, 130.0, 20.0 ],
 					"text" : "y1",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[170]"
@@ -2447,7 +2452,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 1462.0, 332.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 1330.0, 266.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 1329.0, 225.0, 130.0, 20.0 ],
 					"text" : "y0",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[171]"
@@ -2465,7 +2470,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 1462.0, 310.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 1330.0, 244.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 1329.0, 203.0, 130.0, 20.0 ],
 					"text" : "value",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[172]"
@@ -2483,7 +2488,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 1462.0, 288.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 1330.0, 222.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 1329.0, 181.0, 130.0, 20.0 ],
 					"text" : "uint8",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[173]"
@@ -2501,7 +2506,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 1462.0, 266.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 1330.0, 200.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 1329.0, 159.0, 130.0, 20.0 ],
 					"text" : "uint64",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[174]"
@@ -2519,7 +2524,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 1462.0, 244.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 1330.0, 178.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 1329.0, 137.0, 130.0, 20.0 ],
 					"text" : "uint32",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[175]"
@@ -2537,7 +2542,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 1462.0, 222.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 1330.0, 156.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 1329.0, 115.0, 130.0, 20.0 ],
 					"text" : "uint16",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[176]"
@@ -2555,7 +2560,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 1462.0, 200.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 1330.0, 134.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 1329.0, 93.0, 130.0, 20.0 ],
 					"text" : "typetags",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[177]"
@@ -2573,7 +2578,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 1462.0, 134.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 1330.0, 112.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 1329.0, 71.0, 130.0, 20.0 ],
 					"text" : "tokenize",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[180]"
@@ -2591,7 +2596,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 1462.0, 112.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 1330.0, 90.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 1329.0, 49.0, 130.0, 20.0 ],
 					"text" : "tanh",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[181]"
@@ -2609,7 +2614,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 1462.0, 90.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 1198.0, 376.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 1197.0, 335.0, 130.0, 20.0 ],
 					"text" : "tan",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[182]"
@@ -2627,7 +2632,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 1330.0, 376.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 1198.0, 354.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 1197.0, 313.0, 130.0, 20.0 ],
 					"text" : "sum",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[155]"
@@ -2645,7 +2650,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 1330.0, 354.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 1198.0, 332.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 1197.0, 291.0, 130.0, 20.0 ],
 					"text" : "sub",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[156]"
@@ -2663,7 +2668,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 1330.0, 332.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 1198.0, 310.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 1197.0, 269.0, 130.0, 20.0 ],
 					"text" : "strtotime",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[157]"
@@ -2681,7 +2686,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 1330.0, 310.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 1198.0, 288.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 1197.0, 247.0, 130.0, 20.0 ],
 					"text" : "strlen",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[158]"
@@ -2699,7 +2704,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 1330.0, 288.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 1198.0, 266.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 1197.0, 225.0, 130.0, 20.0 ],
 					"text" : "string",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[159]"
@@ -2717,7 +2722,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 1330.0, 266.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 1198.0, 244.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 1197.0, 203.0, 130.0, 20.0 ],
 					"text" : "strfind",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[160]"
@@ -2735,7 +2740,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 1330.0, 244.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 1198.0, 222.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 1197.0, 181.0, 130.0, 20.0 ],
 					"text" : "strcmp",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[161]"
@@ -2753,7 +2758,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 1330.0, 222.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 1198.0, 200.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 1197.0, 159.0, 130.0, 20.0 ],
 					"text" : "strchar",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[162]"
@@ -2771,7 +2776,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 1330.0, 156.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 1198.0, 178.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 1197.0, 137.0, 130.0, 20.0 ],
 					"text" : "sqrt",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[165]"
@@ -2789,7 +2794,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 1330.0, 134.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 1198.0, 156.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 1197.0, 115.0, 130.0, 20.0 ],
 					"text" : "split",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[166]"
@@ -2807,7 +2812,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 1330.0, 112.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 1198.0, 134.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 1197.0, 93.0, 130.0, 20.0 ],
 					"text" : "sortidx",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[167]"
@@ -2825,7 +2830,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 1330.0, 90.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 1198.0, 112.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 1197.0, 71.0, 130.0, 20.0 ],
 					"text" : "sort",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[168]"
@@ -2843,7 +2848,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 1198.0, 376.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 1198.0, 90.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 1197.0, 49.0, 130.0, 20.0 ],
 					"text" : "sinh",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[141]"
@@ -2861,7 +2866,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 1198.0, 354.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 1066.0, 376.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 1065.0, 335.0, 130.0, 20.0 ],
 					"text" : "sin",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[142]"
@@ -2879,7 +2884,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 1198.0, 332.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 1066.0, 354.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 1065.0, 313.0, 130.0, 20.0 ],
 					"text" : "sign",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[143]"
@@ -2897,7 +2902,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 1198.0, 310.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 1066.0, 332.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 1065.0, 291.0, 130.0, 20.0 ],
 					"text" : "settimetag",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[144]"
@@ -2915,7 +2920,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 1198.0, 288.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 1066.0, 310.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 1065.0, 269.0, 130.0, 20.0 ],
 					"text" : "scale",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[145]"
@@ -2933,7 +2938,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 1198.0, 266.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 1066.0, 288.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 1065.0, 247.0, 130.0, 20.0 ],
 					"text" : "rreduce",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[146]"
@@ -2951,7 +2956,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 1198.0, 244.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 1066.0, 266.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 1065.0, 225.0, 130.0, 20.0 ],
 					"text" : "round",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[147]"
@@ -2969,7 +2974,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 1198.0, 222.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 1066.0, 244.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 1065.0, 203.0, 130.0, 20.0 ],
 					"text" : "reverse",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[148]"
@@ -2987,7 +2992,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 1198.0, 200.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 1066.0, 222.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 1065.0, 181.0, 130.0, 20.0 ],
 					"text" : "rev",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[149]"
@@ -3005,7 +3010,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 1198.0, 178.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 1066.0, 200.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 1065.0, 159.0, 130.0, 20.0 ],
 					"text" : "rest",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[150]"
@@ -3023,7 +3028,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 1198.0, 156.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 1066.0, 178.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 1065.0, 137.0, 130.0, 20.0 ],
 					"text" : "remainder",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[151]"
@@ -3041,7 +3046,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 1198.0, 134.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 1066.0, 156.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 1065.0, 115.0, 130.0, 20.0 ],
 					"text" : "readstring",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[152]"
@@ -3059,7 +3064,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 1198.0, 112.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 1066.0, 134.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 1065.0, 93.0, 130.0, 20.0 ],
 					"text" : "range",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[153]"
@@ -3077,7 +3082,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 1066.0, 376.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 1066.0, 112.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 1065.0, 71.0, 130.0, 20.0 ],
 					"text" : "quote",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[127]"
@@ -3095,7 +3100,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 1066.0, 354.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 1066.0, 90.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 1065.0, 49.0, 130.0, 20.0 ],
 					"text" : "quickhull",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[128]"
@@ -3113,7 +3118,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 1066.0, 310.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 934.0, 376.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 933.0, 335.0, 130.0, 20.0 ],
 					"text" : "progn",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[130]"
@@ -3131,7 +3136,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 1066.0, 288.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 934.0, 354.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 933.0, 313.0, 130.0, 20.0 ],
 					"text" : "prog2",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[131]"
@@ -3149,7 +3154,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 1066.0, 266.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 934.0, 332.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 933.0, 291.0, 130.0, 20.0 ],
 					"text" : "prog1",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[132]"
@@ -3167,7 +3172,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 1066.0, 244.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 934.0, 310.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 933.0, 269.0, 130.0, 20.0 ],
 					"text" : "product",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[133]"
@@ -3185,7 +3190,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 1066.0, 222.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 934.0, 288.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 933.0, 247.0, 130.0, 20.0 ],
 					"text" : "pow",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[134]"
@@ -3203,7 +3208,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 1066.0, 200.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 934.0, 266.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 933.0, 225.0, 130.0, 20.0 ],
 					"text" : "plus1",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[135]"
@@ -3221,7 +3226,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 1066.0, 156.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 934.0, 244.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 933.0, 203.0, 130.0, 20.0 ],
 					"text" : "orelse",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[137]"
@@ -3239,7 +3244,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 1066.0, 134.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 934.0, 222.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 933.0, 181.0, 130.0, 20.0 ],
 					"text" : "or",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[138]"
@@ -3257,7 +3262,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 1066.0, 90.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 934.0, 200.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 933.0, 159.0, 130.0, 20.0 ],
 					"text" : "ntoh64",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[140]"
@@ -3275,7 +3280,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 934.0, 376.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 934.0, 178.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 933.0, 137.0, 130.0, 20.0 ],
 					"text" : "ntoh32",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[113]"
@@ -3293,7 +3298,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 934.0, 354.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 934.0, 156.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 933.0, 115.0, 130.0, 20.0 ],
 					"text" : "nth",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[114]"
@@ -3311,7 +3316,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 934.0, 332.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 934.0, 134.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 933.0, 93.0, 130.0, 20.0 ],
 					"text" : "not",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[115]"
@@ -3329,7 +3334,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 934.0, 310.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 934.0, 112.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 933.0, 71.0, 130.0, 20.0 ],
 					"text" : "nfill",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[116]"
@@ -3347,7 +3352,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 934.0, 288.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 934.0, 90.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 933.0, 49.0, 130.0, 20.0 ],
 					"text" : "nextafter",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[117]"
@@ -3365,7 +3370,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 934.0, 266.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 802.0, 376.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 801.0, 335.0, 130.0, 20.0 ],
 					"text" : "ne",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[118]"
@@ -3383,7 +3388,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 934.0, 244.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 802.0, 354.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 801.0, 313.0, 130.0, 20.0 ],
 					"text" : "mul",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[119]"
@@ -3401,7 +3406,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 934.0, 222.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 802.0, 332.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 801.0, 291.0, 130.0, 20.0 ],
 					"text" : "mtof",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[120]"
@@ -3419,7 +3424,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 934.0, 178.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 802.0, 310.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 801.0, 269.0, 130.0, 20.0 ],
 					"text" : "mod",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[122]"
@@ -3437,7 +3442,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 934.0, 156.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 802.0, 288.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 801.0, 247.0, 130.0, 20.0 ],
 					"text" : "minus1",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[123]"
@@ -3455,7 +3460,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 934.0, 134.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 802.0, 266.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 801.0, 225.0, 130.0, 20.0 ],
 					"text" : "min",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[124]"
@@ -3473,7 +3478,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 934.0, 112.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 802.0, 244.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 801.0, 203.0, 130.0, 20.0 ],
 					"text" : "median",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[125]"
@@ -3491,7 +3496,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 934.0, 90.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 802.0, 222.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 801.0, 181.0, 130.0, 20.0 ],
 					"text" : "mean",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[126]"
@@ -3509,7 +3514,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 802.0, 376.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 802.0, 200.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 801.0, 159.0, 130.0, 20.0 ],
 					"text" : "max",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[99]"
@@ -3527,7 +3532,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 802.0, 354.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 802.0, 178.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 801.0, 137.0, 130.0, 20.0 ],
 					"text" : "match",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[100]"
@@ -3545,7 +3550,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 802.0, 332.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 802.0, 156.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 801.0, 115.0, 130.0, 20.0 ],
 					"text" : "map",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[101]"
@@ -3563,7 +3568,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 802.0, 310.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 802.0, 134.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 801.0, 93.0, 130.0, 20.0 ],
 					"text" : "lt",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[102]"
@@ -3581,7 +3586,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 802.0, 288.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 802.0, 112.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 801.0, 71.0, 130.0, 20.0 ],
 					"text" : "lreduce",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[103]"
@@ -3599,7 +3604,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 802.0, 222.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 802.0, 90.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 801.0, 49.0, 130.0, 20.0 ],
 					"text" : "logb",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[106]"
@@ -3617,7 +3622,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 802.0, 200.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 670.0, 376.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 669.0, 335.0, 130.0, 20.0 ],
 					"text" : "log10",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[107]"
@@ -3635,7 +3640,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 802.0, 178.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 670.0, 354.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 669.0, 313.0, 130.0, 20.0 ],
 					"text" : "log",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[108]"
@@ -3653,7 +3658,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 802.0, 112.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 670.0, 332.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 669.0, 291.0, 130.0, 20.0 ],
 					"text" : "int32",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[111]"
@@ -3671,7 +3676,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 802.0, 90.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 670.0, 310.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 669.0, 269.0, 130.0, 20.0 ],
 					"text" : "lgamma",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[112]"
@@ -3689,7 +3694,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 670.0, 376.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 670.0, 288.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 669.0, 247.0, 130.0, 20.0 ],
 					"text" : "length",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[85]"
@@ -3707,7 +3712,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 670.0, 354.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 670.0, 266.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 669.0, 225.0, 130.0, 20.0 ],
 					"text" : "le",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[86]"
@@ -3725,7 +3730,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 670.0, 332.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 670.0, 244.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 669.0, 203.0, 130.0, 20.0 ],
 					"text" : "last",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[87]"
@@ -3743,7 +3748,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 670.0, 310.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 670.0, 222.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 669.0, 181.0, 130.0, 20.0 ],
 					"text" : "lambda",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[88]"
@@ -3761,7 +3766,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 670.0, 288.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 670.0, 200.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 669.0, 159.0, 130.0, 20.0 ],
 					"text" : "l2norm",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[89]"
@@ -3779,7 +3784,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 670.0, 266.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 670.0, 178.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 669.0, 137.0, 130.0, 20.0 ],
 					"text" : "join",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[90]"
@@ -3797,7 +3802,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 670.0, 244.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 670.0, 156.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 669.0, 115.0, 130.0, 20.0 ],
 					"text" : "jn",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[91]"
@@ -3815,7 +3820,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 670.0, 222.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 670.0, 134.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 669.0, 93.0, 130.0, 20.0 ],
 					"text" : "j1",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[92]"
@@ -3833,7 +3838,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 670.0, 200.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 670.0, 112.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 669.0, 71.0, 130.0, 20.0 ],
 					"text" : "j0",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[93]"
@@ -3851,7 +3856,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 670.0, 178.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 670.0, 90.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 669.0, 49.0, 130.0, 20.0 ],
 					"text" : "interleave",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[94]"
@@ -3869,7 +3874,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 670.0, 156.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 538.0, 376.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 537.0, 335.0, 130.0, 20.0 ],
 					"text" : "int8",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[95]"
@@ -3887,7 +3892,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 670.0, 134.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 538.0, 354.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 537.0, 313.0, 130.0, 20.0 ],
 					"text" : "int64",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[96]"
@@ -3905,7 +3910,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 670.0, 112.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 538.0, 332.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 537.0, 291.0, 130.0, 20.0 ],
 					"text" : "int32",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[97]"
@@ -3923,7 +3928,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 670.0, 90.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 538.0, 310.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 537.0, 269.0, 130.0, 20.0 ],
 					"text" : "int16",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[98]"
@@ -3941,7 +3946,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 538.0, 354.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 538.0, 288.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 537.0, 247.0, 130.0, 20.0 ],
 					"text" : "ilogb",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[72]"
@@ -3959,7 +3964,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 538.0, 332.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 538.0, 266.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 537.0, 225.0, 130.0, 20.0 ],
 					"text" : "if",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[73]"
@@ -3977,7 +3982,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 538.0, 310.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 538.0, 244.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 537.0, 203.0, 130.0, 20.0 ],
 					"text" : "identity",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[74]"
@@ -3995,7 +4000,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 538.0, 288.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 538.0, 222.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 537.0, 181.0, 130.0, 20.0 ],
 					"text" : "hypot",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[75]"
@@ -4013,7 +4018,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 538.0, 266.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 538.0, 200.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 537.0, 159.0, 130.0, 20.0 ],
 					"text" : "hton64",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[76]"
@@ -4031,7 +4036,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 538.0, 244.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 538.0, 178.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 537.0, 137.0, 130.0, 20.0 ],
 					"text" : "hton32",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[77]"
@@ -4049,7 +4054,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 538.0, 200.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 538.0, 156.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 537.0, 115.0, 130.0, 20.0 ],
 					"text" : "gt",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[79]"
@@ -4067,7 +4072,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 538.0, 178.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 538.0, 134.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 537.0, 93.0, 130.0, 20.0 ],
 					"text" : "gettimetag",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[80]"
@@ -4085,7 +4090,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 538.0, 156.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 538.0, 112.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 537.0, 71.0, 130.0, 20.0 ],
 					"text" : "getmsgcount",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[81]"
@@ -4103,7 +4108,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 538.0, 134.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 538.0, 90.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 537.0, 49.0, 130.0, 20.0 ],
 					"text" : "getbundlemember",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[82]"
@@ -4121,7 +4126,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 538.0, 112.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 406.0, 376.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 405.0, 335.0, 130.0, 20.0 ],
 					"text" : "getaddresses",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[83]"
@@ -4139,7 +4144,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 538.0, 90.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 406.0, 354.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 405.0, 313.0, 130.0, 20.0 ],
 					"text" : "ge",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[84]"
@@ -4157,7 +4162,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 406.0, 376.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 406.0, 332.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 405.0, 291.0, 130.0, 20.0 ],
 					"text" : "gamma",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[57]"
@@ -4175,7 +4180,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 406.0, 354.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 406.0, 310.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 405.0, 269.0, 130.0, 20.0 ],
 					"text" : "ftom",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[58]"
@@ -4193,7 +4198,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 406.0, 332.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 406.0, 288.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 405.0, 247.0, 130.0, 20.0 ],
 					"text" : "fmod",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[59]"
@@ -4211,7 +4216,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 406.0, 310.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 406.0, 266.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 405.0, 225.0, 130.0, 20.0 ],
 					"text" : "floor",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[60]"
@@ -4229,7 +4234,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 406.0, 288.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 406.0, 244.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 405.0, 203.0, 130.0, 20.0 ],
 					"text" : "floattotime",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[61]"
@@ -4247,7 +4252,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 406.0, 266.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 406.0, 222.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 405.0, 181.0, 130.0, 20.0 ],
 					"text" : "float64",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[62]"
@@ -4265,7 +4270,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 406.0, 244.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 406.0, 200.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 405.0, 159.0, 130.0, 20.0 ],
 					"text" : "float32",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[63]"
@@ -4283,7 +4288,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 406.0, 222.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 406.0, 178.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 405.0, 137.0, 130.0, 20.0 ],
 					"text" : "first",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[64]"
@@ -4301,7 +4306,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 406.0, 200.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 406.0, 156.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 405.0, 115.0, 130.0, 20.0 ],
 					"text" : "extrema",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[65]"
@@ -4319,7 +4324,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 406.0, 178.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 406.0, 134.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 405.0, 93.0, 130.0, 20.0 ],
 					"text" : "expm1",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[66]"
@@ -4337,7 +4342,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 406.0, 156.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 406.0, 112.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 405.0, 71.0, 130.0, 20.0 ],
 					"text" : "exp",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[67]"
@@ -4355,7 +4360,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 406.0, 134.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 406.0, 90.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 405.0, 49.0, 130.0, 20.0 ],
 					"text" : "exists",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[68]"
@@ -4373,7 +4378,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 406.0, 112.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 274.0, 376.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 273.0, 335.0, 130.0, 20.0 ],
 					"text" : "eval",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[69]"
@@ -4391,7 +4396,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 406.0, 90.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 274.0, 354.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 273.0, 313.0, 130.0, 20.0 ],
 					"text" : "erfc",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[70]"
@@ -4409,7 +4414,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 274.0, 376.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 274.0, 332.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 273.0, 291.0, 130.0, 20.0 ],
 					"text" : "erf",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[43]"
@@ -4427,7 +4432,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 274.0, 354.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 274.0, 310.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 273.0, 269.0, 130.0, 20.0 ],
 					"text" : "eq",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[42]"
@@ -4445,7 +4450,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 274.0, 332.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 274.0, 288.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 273.0, 247.0, 130.0, 20.0 ],
 					"text" : "emptybundle",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[41]"
@@ -4463,7 +4468,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 274.0, 288.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 274.0, 266.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 273.0, 225.0, 130.0, 20.0 ],
 					"text" : "dot",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[39]"
@@ -4481,7 +4486,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 274.0, 266.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 274.0, 244.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 273.0, 203.0, 130.0, 20.0 ],
 					"text" : "div",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[38]"
@@ -4499,7 +4504,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 274.0, 244.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 274.0, 222.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 273.0, 181.0, 130.0, 20.0 ],
 					"text" : "det",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[37]"
@@ -4517,7 +4522,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 274.0, 222.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 274.0, 200.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 273.0, 159.0, 130.0, 20.0 ],
 					"text" : "delete",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[36]"
@@ -4535,7 +4540,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 274.0, 178.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 274.0, 178.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 273.0, 137.0, 130.0, 20.0 ],
 					"text" : "cumsum",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[34]"
@@ -4553,7 +4558,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 274.0, 156.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 274.0, 156.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 273.0, 115.0, 130.0, 20.0 ],
 					"text" : "cross",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[33]"
@@ -4571,7 +4576,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 274.0, 134.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 274.0, 134.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 273.0, 93.0, 130.0, 20.0 ],
 					"text" : "cosh",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[32]"
@@ -4589,7 +4594,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 274.0, 112.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 274.0, 112.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 273.0, 71.0, 130.0, 20.0 ],
 					"text" : "cos",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[31]"
@@ -4607,7 +4612,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 274.0, 90.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 274.0, 90.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 273.0, 49.0, 130.0, 20.0 ],
 					"text" : "clip",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[30]"
@@ -4625,7 +4630,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 142.0, 376.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 142.0, 376.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 141.0, 335.0, 130.0, 20.0 ],
 					"text" : "char",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[15]"
@@ -4643,7 +4648,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 142.0, 354.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 142.0, 354.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 141.0, 313.0, 130.0, 20.0 ],
 					"text" : "ceil",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[14]"
@@ -4661,7 +4666,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 142.0, 332.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 142.0, 332.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 141.0, 291.0, 130.0, 20.0 ],
 					"text" : "cbrt",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[13]"
@@ -4679,7 +4684,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 142.0, 310.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 142.0, 310.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 141.0, 269.0, 130.0, 20.0 ],
 					"text" : "cast",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[12]"
@@ -4697,7 +4702,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 142.0, 288.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 142.0, 288.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 141.0, 247.0, 130.0, 20.0 ],
 					"text" : "butlast",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[11]"
@@ -4715,7 +4720,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 142.0, 266.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 142.0, 266.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 141.0, 225.0, 130.0, 20.0 ],
 					"text" : "bundle",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[10]"
@@ -4733,7 +4738,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 142.0, 244.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 142.0, 244.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 141.0, 203.0, 130.0, 20.0 ],
 					"text" : "bound",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[9]"
@@ -4751,7 +4756,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 142.0, 222.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 142.0, 222.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 141.0, 181.0, 130.0, 20.0 ],
 					"text" : "bool",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[8]"
@@ -4769,7 +4774,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 142.0, 200.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 142.0, 200.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 141.0, 159.0, 130.0, 20.0 ],
 					"text" : "blob",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[7]"
@@ -4787,7 +4792,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 142.0, 178.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 142.0, 178.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 141.0, 137.0, 130.0, 20.0 ],
 					"text" : "bitor",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[6]"
@@ -4805,7 +4810,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 142.0, 156.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 142.0, 156.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 141.0, 115.0, 130.0, 20.0 ],
 					"text" : "bitand",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[5]"
@@ -4823,7 +4828,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 142.0, 134.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 142.0, 134.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 141.0, 93.0, 130.0, 20.0 ],
 					"text" : "avg",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[4]"
@@ -4841,7 +4846,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 142.0, 112.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 142.0, 112.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 141.0, 71.0, 130.0, 20.0 ],
 					"text" : "atanh",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[3]"
@@ -4859,7 +4864,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 142.0, 90.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 142.0, 90.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 141.0, 49.0, 130.0, 20.0 ],
 					"text" : "atan2",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[2]"
@@ -4877,7 +4882,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 10.0, 376.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 10.0, 376.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 9.0, 335.0, 130.0, 20.0 ],
 					"text" : "atan",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[16]"
@@ -4895,7 +4900,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 10.0, 354.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 10.0, 354.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 9.0, 313.0, 130.0, 20.0 ],
 					"text" : "assigntobundlemember",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[17]"
@@ -4913,7 +4918,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 10.0, 332.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 10.0, 332.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 9.0, 291.0, 130.0, 20.0 ],
 					"text" : "assign_to_index",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[18]"
@@ -4931,7 +4936,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 10.0, 310.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 10.0, 310.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 9.0, 269.0, 130.0, 20.0 ],
 					"text" : "assign",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[19]"
@@ -4949,7 +4954,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 10.0, 288.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 10.0, 288.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 9.0, 247.0, 130.0, 20.0 ],
 					"text" : "asinh",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[20]"
@@ -4967,7 +4972,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 10.0, 266.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 10.0, 266.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 9.0, 225.0, 130.0, 20.0 ],
 					"text" : "asin",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[21]"
@@ -4985,7 +4990,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 10.0, 244.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 10.0, 244.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 9.0, 203.0, 130.0, 20.0 ],
 					"text" : "aseq",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[22]"
@@ -5003,7 +5008,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 10.0, 222.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 10.0, 222.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 9.0, 181.0, 130.0, 20.0 ],
 					"text" : "apply",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[23]"
@@ -5021,7 +5026,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 10.0, 200.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 10.0, 200.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 9.0, 159.0, 130.0, 20.0 ],
 					"text" : "andalso",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[24]"
@@ -5039,7 +5044,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 10.0, 178.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 10.0, 178.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 9.0, 137.0, 130.0, 20.0 ],
 					"text" : "and",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[25]"
@@ -5057,7 +5062,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 10.0, 156.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 10.0, 156.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 9.0, 115.0, 130.0, 20.0 ],
 					"text" : "add",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[26]"
@@ -5075,7 +5080,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 10.0, 134.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 10.0, 134.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 9.0, 93.0, 130.0, 20.0 ],
 					"text" : "acosh",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[27]"
@@ -5093,7 +5098,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 10.0, 112.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 10.0, 112.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 9.0, 71.0, 130.0, 20.0 ],
 					"text" : "acos",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[28]"
@@ -5111,7 +5116,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 10.0, 90.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 10.0, 90.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 9.0, 49.0, 130.0, 20.0 ],
 					"text" : "abs",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[29]"
@@ -5129,7 +5134,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 1,
-							"revision" : 1,
+							"revision" : 5,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -5162,6 +5167,7 @@
 						"tags" : "",
 						"style" : "",
 						"subpatcher_template" : "gridded",
+						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
 									"id" : "obj-16",
@@ -5174,7 +5180,7 @@
 										"appversion" : 										{
 											"major" : 8,
 											"minor" : 1,
-											"revision" : 1,
+											"revision" : 5,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -5207,6 +5213,7 @@
 										"tags" : "",
 										"style" : "",
 										"subpatcher_template" : "gridded",
+										"assistshowspatchername" : 0,
 										"boxes" : [ 											{
 												"box" : 												{
 													"id" : "obj-6",
@@ -5377,7 +5384,8 @@
 													"outlettype" : [ "", "", "", "" ],
 													"patching_rect" : [ 585.0, 229.0, 89.0, 20.0 ],
 													"saved_object_attributes" : 													{
-														"embed" : 1
+														"embed" : 1,
+														"precision" : 6
 													}
 ,
 													"text" : "coll @embed 1"
@@ -5549,7 +5557,7 @@
 										"appversion" : 										{
 											"major" : 8,
 											"minor" : 1,
-											"revision" : 1,
+											"revision" : 5,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -5582,6 +5590,7 @@
 										"tags" : "",
 										"style" : "",
 										"subpatcher_template" : "gridded",
+										"assistshowspatchername" : 0,
 										"boxes" : [ 											{
 												"box" : 												{
 													"id" : "obj-25",
@@ -5593,7 +5602,7 @@
 														"appversion" : 														{
 															"major" : 8,
 															"minor" : 1,
-															"revision" : 1,
+															"revision" : 5,
 															"architecture" : "x64",
 															"modernui" : 1
 														}
@@ -5626,6 +5635,7 @@
 														"tags" : "",
 														"style" : "",
 														"subpatcher_template" : "gridded",
+														"assistshowspatchername" : 0,
 														"boxes" : [ 															{
 																"box" : 																{
 																	"id" : "obj-3",
@@ -7077,7 +7087,7 @@
 										"appversion" : 										{
 											"major" : 8,
 											"minor" : 1,
-											"revision" : 1,
+											"revision" : 5,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -7110,6 +7120,7 @@
 										"tags" : "",
 										"style" : "",
 										"subpatcher_template" : "gridded",
+										"assistshowspatchername" : 0,
 										"boxes" : [ 											{
 												"box" : 												{
 													"id" : "obj-24",
@@ -7245,7 +7256,7 @@
 														"appversion" : 														{
 															"major" : 8,
 															"minor" : 1,
-															"revision" : 1,
+															"revision" : 5,
 															"architecture" : "x64",
 															"modernui" : 1
 														}
@@ -7278,6 +7289,7 @@
 														"tags" : "",
 														"style" : "",
 														"subpatcher_template" : "gridded",
+														"assistshowspatchername" : 0,
 														"boxes" : [ 															{
 																"box" : 																{
 																	"id" : "obj-17",
@@ -7388,7 +7400,7 @@
 														"appversion" : 														{
 															"major" : 8,
 															"minor" : 1,
-															"revision" : 1,
+															"revision" : 5,
 															"architecture" : "x64",
 															"modernui" : 1
 														}
@@ -7421,6 +7433,7 @@
 														"tags" : "",
 														"style" : "",
 														"subpatcher_template" : "gridded",
+														"assistshowspatchername" : 0,
 														"boxes" : [ 															{
 																"box" : 																{
 																	"id" : "obj-17",
@@ -7519,7 +7532,7 @@
 														"appversion" : 														{
 															"major" : 8,
 															"minor" : 1,
-															"revision" : 1,
+															"revision" : 5,
 															"architecture" : "x64",
 															"modernui" : 1
 														}
@@ -7552,6 +7565,7 @@
 														"tags" : "",
 														"style" : "",
 														"subpatcher_template" : "gridded",
+														"assistshowspatchername" : 0,
 														"boxes" : [ 															{
 																"box" : 																{
 																	"id" : "obj-12",
@@ -7564,7 +7578,7 @@
 																		"appversion" : 																		{
 																			"major" : 8,
 																			"minor" : 1,
-																			"revision" : 1,
+																			"revision" : 5,
 																			"architecture" : "x64",
 																			"modernui" : 1
 																		}
@@ -7597,6 +7611,7 @@
 																		"tags" : "",
 																		"style" : "",
 																		"subpatcher_template" : "gridded",
+																		"assistshowspatchername" : 0,
 																		"boxes" : [ 																			{
 																				"box" : 																				{
 																					"id" : "obj-35",
@@ -7773,7 +7788,7 @@
 																					"maxclass" : "inlet",
 																					"numinlets" : 0,
 																					"numoutlets" : 1,
-																					"outlettype" : [ "" ],
+																					"outlettype" : [ "bang" ],
 																					"patching_rect" : [ 62.0, 40.0, 30.0, 30.0 ]
 																				}
 
@@ -7981,7 +7996,7 @@
 																	"maxclass" : "inlet",
 																	"numinlets" : 0,
 																	"numoutlets" : 1,
-																	"outlettype" : [ "" ],
+																	"outlettype" : [ "bang" ],
 																	"patching_rect" : [ 41.0, 40.0, 30.0, 30.0 ]
 																}
 
@@ -8351,7 +8366,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 1585.0, 1040.0, 183.0, 19.0 ],
-					"text" : "load odot-e.maxhelp"
+					"text" : "load odot-rreduce.maxhelp"
 				}
 
 			}
@@ -9492,7 +9507,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-610", 1 ],
-					"order" : 1,
+					"order" : 0,
 					"source" : [ "obj-511", 0 ]
 				}
 
@@ -9500,7 +9515,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-611", 0 ],
-					"order" : 0,
+					"order" : 1,
 					"source" : [ "obj-511", 0 ]
 				}
 
