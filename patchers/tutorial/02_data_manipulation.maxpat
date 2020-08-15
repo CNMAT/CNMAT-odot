@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 5,
+			"revision" : 1,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -37,8 +37,33 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "Untitled5_template",
-		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
+				"box" : 				{
+					"fontsize" : 13.0,
+					"id" : "obj-57",
+					"linecount" : 2,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 538.0, 2325.0, 250.0, 32.0 ],
+					"presentation_linecount" : 2,
+					"text" : "<--Open for more info on safe handling of the FullPacket message in Maxi."
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-56",
+					"maxclass" : "button",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "bang" ],
+					"parameter_enable" : 0,
+					"patching_rect" : [ 132.0, 1679.0, 24.0, 24.0 ]
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"id" : "obj-63",
 					"maxclass" : "button",
@@ -70,286 +95,8 @@
 					"maxclass" : "newobj",
 					"numinlets" : 0,
 					"numoutlets" : 0,
-					"patcher" : 					{
-						"fileversion" : 1,
-						"appversion" : 						{
-							"major" : 8,
-							"minor" : 1,
-							"revision" : 5,
-							"architecture" : "x64",
-							"modernui" : 1
-						}
-,
-						"classnamespace" : "box",
-						"rect" : [ 474.0, 102.0, 663.0, 540.0 ],
-						"bglocked" : 0,
-						"openinpresentation" : 0,
-						"default_fontsize" : 14.0,
-						"default_fontface" : 0,
-						"default_fontname" : "Arial",
-						"gridonopen" : 1,
-						"gridsize" : [ 15.0, 15.0 ],
-						"gridsnaponopen" : 1,
-						"objectsnaponopen" : 1,
-						"statusbarvisible" : 2,
-						"toolbarvisible" : 1,
-						"lefttoolbarpinned" : 0,
-						"toptoolbarpinned" : 0,
-						"righttoolbarpinned" : 0,
-						"bottomtoolbarpinned" : 0,
-						"toolbars_unpinned_last_save" : 0,
-						"tallnewobj" : 0,
-						"boxanimatetime" : 200,
-						"enablehscroll" : 1,
-						"enablevscroll" : 1,
-						"devicewidth" : 0.0,
-						"description" : "",
-						"digest" : "",
-						"tags" : "",
-						"style" : "",
-						"subpatcher_template" : "Untitled5_template",
-						"assistshowspatchername" : 0,
-						"boxes" : [ 							{
-								"box" : 								{
-									"fontface" : 2,
-									"fontsize" : 11.0,
-									"id" : "obj-15",
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 486.0, 405.0, 77.0, 19.0 ],
-									"text" : "don't do this :)"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"fontface" : 0,
-									"fontsize" : 12.0,
-									"id" : "obj-10",
-									"maxclass" : "o.compose",
-									"numinlets" : 2,
-									"numoutlets" : 1,
-									"outlettype" : [ "" ],
-									"patching_rect" : [ 326.0, 449.0, 93.0, 24.0 ],
-									"saved_bundle_data" : [  ],
-									"saved_bundle_length" : 0
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"id" : "obj-11",
-									"maxclass" : "button",
-									"numinlets" : 1,
-									"numoutlets" : 1,
-									"outlettype" : [ "bang" ],
-									"parameter_enable" : 0,
-									"patching_rect" : [ 400.0, 332.0, 24.0, 24.0 ]
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"id" : "obj-12",
-									"maxclass" : "newobj",
-									"numinlets" : 2,
-									"numoutlets" : 2,
-									"outlettype" : [ "", "" ],
-									"patching_rect" : [ 400.0, 405.0, 68.0, 24.0 ],
-									"text" : "zl.reg"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"fontface" : 0,
-									"fontsize" : 12.0,
-									"id" : "obj-13",
-									"linecount" : 2,
-									"maxclass" : "o.compose",
-									"numinlets" : 2,
-									"numoutlets" : 1,
-									"outlettype" : [ "" ],
-									"patching_rect" : [ 449.0, 332.0, 93.0, 38.0 ],
-									"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 47, 102, 111, 111, 0, 0, 0, 0, 44, 105, 0, 0, 0, 0, 0, 10, 0, 0, 0, 16, 47, 98, 97, 114, 0, 0, 0, 0, 44, 105, 0, 0, 0, 0, 0, 20 ],
-									"saved_bundle_length" : 56,
-									"text" : "/foo : 10,\n/bar : 20"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"fontface" : 0,
-									"fontsize" : 12.0,
-									"id" : "obj-9",
-									"maxclass" : "o.compose",
-									"numinlets" : 2,
-									"numoutlets" : 1,
-									"outlettype" : [ "" ],
-									"patching_rect" : [ 62.0, 449.0, 93.0, 24.0 ],
-									"saved_bundle_data" : [  ],
-									"saved_bundle_length" : 0
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"id" : "obj-8",
-									"maxclass" : "button",
-									"numinlets" : 1,
-									"numoutlets" : 1,
-									"outlettype" : [ "bang" ],
-									"parameter_enable" : 0,
-									"patching_rect" : [ 136.0, 332.0, 24.0, 24.0 ]
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"id" : "obj-6",
-									"maxclass" : "newobj",
-									"numinlets" : 2,
-									"numoutlets" : 1,
-									"outlettype" : [ "FullPacket" ],
-									"patching_rect" : [ 136.0, 405.0, 65.0, 24.0 ],
-									"text" : "o.var"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"fontface" : 0,
-									"fontsize" : 12.0,
-									"id" : "obj-5",
-									"linecount" : 2,
-									"maxclass" : "o.compose",
-									"numinlets" : 2,
-									"numoutlets" : 1,
-									"outlettype" : [ "" ],
-									"patching_rect" : [ 182.0, 332.0, 93.0, 38.0 ],
-									"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 47, 102, 111, 111, 0, 0, 0, 0, 44, 105, 0, 0, 0, 0, 0, 10, 0, 0, 0, 16, 47, 98, 97, 114, 0, 0, 0, 0, 44, 105, 0, 0, 0, 0, 0, 20 ],
-									"saved_bundle_length" : 56,
-									"text" : "/foo : 10,\n/bar : 20"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"fontsize" : 12.0,
-									"id" : "obj-4",
-									"linecount" : 3,
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 125.0, 223.0, 389.0, 47.0 ],
-									"text" : "If you need to store a packet safely for future use, use o.compose, which will also save your packet in the patch between Max sessions, or o.var, which behaves much like zl.reg, but for FullPackets.",
-									"textjustification" : 1
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"fontsize" : 12.0,
-									"id" : "obj-3",
-									"linecount" : 7,
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 138.0, 101.0, 363.0, 100.0 ],
-									"text" : "This means that if you store a FullPacket message in, say a Max message box, or with zl.reg, the next time you access it, the memory that it points to will no longer contain the bundle it originally had. If you're lucky, you'll get an error in the Max window that says that an odot object received something that's not a bundle, but from time to time, using a stale bundle like this will cause Max to crash.",
-									"textjustification" : 1
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"fontsize" : 12.0,
-									"id" : "obj-2",
-									"linecount" : 3,
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 102.0, 32.0, 435.0, 47.0 ],
-									"text" : "The memory that the FullPacket message refers to is only temporarily available, and once an odot object has finished with it, it is released and can no longer be accessed safely.",
-									"textjustification" : 1
-								}
-
-							}
- ],
-						"lines" : [ 							{
-								"patchline" : 								{
-									"destination" : [ "obj-12", 0 ],
-									"source" : [ "obj-11", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-10", 1 ],
-									"source" : [ "obj-12", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-12", 1 ],
-									"source" : [ "obj-13", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-6", 1 ],
-									"source" : [ "obj-5", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-9", 1 ],
-									"source" : [ "obj-6", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-6", 0 ],
-									"source" : [ "obj-8", 0 ]
-								}
-
-							}
- ]
-					}
-,
-					"patching_rect" : [ 553.0, 2383.0, 142.0, 22.0 ],
-					"saved_object_attributes" : 					{
-						"description" : "",
-						"digest" : "",
-						"fontsize" : 14.0,
-						"globalpatchername" : "",
-						"tags" : ""
-					}
-,
-					"text" : "p FullPacket_and_Safety"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"bubble" : 1,
-					"bubblepoint" : 0.07,
-					"bubbletextmargin" : 10,
-					"bubbleusescolors" : 1,
-					"fontsize" : 11.0,
-					"id" : "obj-57",
-					"linecount" : 4,
-					"maxclass" : "comment",
-					"numinlets" : 1,
-					"numoutlets" : 0,
-					"patching_rect" : [ 209.0, 2360.0, 221.0, 70.0 ],
-					"text" : "If we route off the FulllPacket identifier, this list is meaningless for ODOT (i.e., we cannot prepend the FullPacket msg later)",
-					"textjustification" : 1
+					"patching_rect" : [ 404.5, 2325.0, 129.0, 20.0 ],
+					"text" : "odot-max-compatibility"
 				}
 
 			}
@@ -360,7 +107,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 488.0, 1613.0, 207.0, 21.0 ],
+					"patching_rect" : [ 488.0, 1613.0, 207.0, 19.0 ],
 					"text" : "an empty message box",
 					"textjustification" : 1
 				}
@@ -373,7 +120,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 519.0, 1646.5, 145.0, 24.0 ]
+					"patching_rect" : [ 519.0, 1646.5, 145.0, 22.0 ]
 				}
 
 			}
@@ -385,7 +132,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 56.0, 1751.5, 696.0, 166.0 ],
+					"patching_rect" : [ 56.0, 1751.5, 696.0, 149.0 ],
 					"text" : "An [o.compose] box can contain no user information and still be processed in ODOT.  \nWe can even check on whether or not the bundle contains data when we process it, and after it has been sent from the compose box.  \n\nTry clicking both the [o.compose] and [message] above.  An empty [o.compose] is different than an empty [message] in a couple ways:\n\n1. \"nothing\" can signify something\n2. this \"nothing\" has a distinct property that we can inspect (more on this later)\n\n[o.compose] is similar in that an empty message box might be used to clear another message box, [zl.reg], etc."
 				}
 
@@ -397,7 +144,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 126.0, 1613.0, 207.0, 21.0 ],
+					"patching_rect" : [ 126.0, 1613.0, 207.0, 19.0 ],
 					"text" : "an empty compose box.",
 					"textjustification" : 1
 				}
@@ -425,7 +172,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 356.25, 1548.0, 107.0, 22.0 ],
+					"patching_rect" : [ 356.25, 1548.0, 107.0, 20.0 ],
 					"text" : "Sweet Nothings"
 				}
 
@@ -447,7 +194,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 328.25, 1963.0, 163.0, 22.0 ],
+					"patching_rect" : [ 328.25, 1963.0, 163.0, 20.0 ],
 					"text" : "The FullPacket message"
 				}
 
@@ -464,36 +211,14 @@
 			}
 , 			{
 				"box" : 				{
-					"id" : "obj-37",
-					"maxclass" : "comment",
-					"numinlets" : 1,
-					"numoutlets" : 0,
-					"patching_rect" : [ 97.0, 2038.5, 621.0, 22.0 ],
-					"text" : "Next, let's take a look at how to pack ODOT data together and generate an audio process from it."
-				}
-
-			}
-, 			{
-				"box" : 				{
 					"fontsize" : 13.0,
 					"id" : "obj-70",
 					"linecount" : 14,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 498.5, 2128.0, 253.0, 210.0 ],
-					"text" : "In Max everything is a message.  \n\nIn [o.compose], we can view and modify our data, but when it's sent over a patch cord, it's sent as a message with arguments.  Our internal message that is used for this type of data is called \"FullPacket\".  There are two arguments to FullPacket, the size in bytes and a pointer to a memory address.\n\nClick on the [o.compose] box to the left to see what an ODOT bundle looks like as it's passed around Max."
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-44",
-					"maxclass" : "message",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 46.0, 2358.0, 135.0, 24.0 ]
+					"patching_rect" : [ 404.5, 2099.0, 253.0, 188.0 ],
+					"text" : "In Max everything is a message.  \n\nIn [o.compose], we can view and modify our data, but when it's sent over a patch cord, it's sent as a Max message with arguments.  Our internal message that is used for this type of data is called \"FullPacket\".  There are two arguments to FullPacket, the size in bytes and a pointer to a memory address.\n\nClick on the [o.compose] box to the left to see what an ODOT bundle looks like as it's passed around Max."
 				}
 
 			}
@@ -504,7 +229,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 306.0, 2273.0, 135.0, 24.0 ]
+					"patching_rect" : [ 166.0, 2214.0, 135.0, 22.0 ]
 				}
 
 			}
@@ -518,22 +243,10 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 162.0, 2147.0, 116.0, 51.0 ],
+					"patching_rect" : [ 166.0, 2117.0, 116.0, 51.0 ],
 					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 47, 97, 100, 100, 121, 47, 49, 0, 44, 105, 0, 0, 0, 0, 0, 1, 0, 0, 0, 16, 47, 97, 100, 100, 121, 47, 50, 0, 44, 105, 0, 0, 0, 0, 0, 50, 0, 0, 0, 20, 47, 97, 100, 100, 121, 47, 51, 0, 44, 100, 0, 0, 64, 2, 102, 102, 102, 102, 102, 102 ],
 					"saved_bundle_length" : 80,
 					"text" : "/addy/1 : 1,\n/addy/2 : 50,\n/addy/3 : 2.3"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-47",
-					"maxclass" : "newobj",
-					"numinlets" : 2,
-					"numoutlets" : 2,
-					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 162.0, 2273.0, 110.0, 24.0 ],
-					"text" : "route FullPacket"
 				}
 
 			}
@@ -544,8 +257,8 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 97.0, 2068.5, 250.0, 21.0 ],
-					"text" : "...but first:  What is a FullPacket, anyway?"
+					"patching_rect" : [ 95.0, 2040.5, 250.0, 19.0 ],
+					"text" : "What is a FullPacket, anyway?"
 				}
 
 			}
@@ -559,18 +272,8 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 339.0, 1283.0, 69.0, 24.0 ],
+					"patching_rect" : [ 339.0, 1283.0, 69.0, 22.0 ],
 					"text" : "click me"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-39",
-					"maxclass" : "comment",
-					"numinlets" : 1,
-					"numoutlets" : 0,
-					"patching_rect" : [ 313.5, 2435.0, 150.0, 22.0 ]
 				}
 
 			}
@@ -581,7 +284,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 351.75, 826.0, 88.0, 22.0 ],
+					"patching_rect" : [ 351.75, 826.0, 88.0, 20.0 ],
 					"text" : "More on lists"
 				}
 
@@ -603,7 +306,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 695.5, 711.5, 88.0, 22.0 ],
+					"patching_rect" : [ 695.5, 711.5, 88.0, 20.0 ],
 					"style" : "default",
 					"text" : "(scroll down)"
 				}
@@ -616,7 +319,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 444.0, 1157.0, 50.0, 24.0 ]
+					"patching_rect" : [ 444.0, 1157.0, 50.0, 22.0 ]
 				}
 
 			}
@@ -641,7 +344,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "FullPacket" ],
-					"patching_rect" : [ 475.0, 1075.0, 109.0, 22.0 ],
+					"patching_rect" : [ 475.0, 1075.0, 109.0, 20.0 ],
 					"text" : "o.route /list/1 /list/2"
 				}
 
@@ -654,7 +357,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 483.0, 1299.5, 217.0, 127.0 ],
+					"patching_rect" : [ 483.0, 1299.5, 221.0, 114.0 ],
 					"text" : "a closer look at generating a list like /list/2 in the example above, but in [o.expr.codebox] (which we'll cover in detail later).  \n\nNote that we can delete an address with delete(), which can take a list of addresses to remove from the outgoing bundle."
 				}
 
@@ -679,13 +382,11 @@
 					"fontface" : 0,
 					"fontsize" : 12.0,
 					"id" : "obj-26",
-					"linecount" : 5,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 135.75, 1378.0, 165.0, 88.0 ],
-					"text" : "/list/2 : [1, {\n\t/a : 57,\n\t/b : 43,\n\t/c : 98\n}, 3]"
+					"patching_rect" : [ 135.75, 1378.0, 165.0, 34.0 ]
 				}
 
 			}
@@ -715,7 +416,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 50.0, 943.0, 377.0, 141.0 ],
+					"patching_rect" : [ 50.0, 943.0, 377.0, 126.0 ],
 					"text" : "As seen above, the ODOT list is similar to a Max list, albeit a few key differences.  Here are some elaborations:\n\n1. lists can be flattened into other lists\n2. lists can contain bundles\n3. strings are surrounded in quotes\n4. booleans (true, false) are valid data types\n5. lists can be accessed by index with o.expr.codebox\n6. we have a host of tools for generating, manipulating, and parsing lists in o.expr.codebox"
 				}
 
@@ -727,7 +428,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 697.0, 56.0, 61.0, 24.0 ],
+					"patching_rect" : [ 697.0, 56.0, 61.0, 22.0 ],
 					"text" : "onecopy"
 				}
 
@@ -739,7 +440,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 214.0, 480.0, 354.0, 21.0 ],
+					"patching_rect" : [ 214.0, 480.0, 354.0, 19.0 ],
 					"style" : "default",
 					"text" : "...we might want to keep those elements together, however. ",
 					"textjustification" : 1
@@ -754,7 +455,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 87.0, 362.0, 341.0, 33.0 ],
+					"patching_rect" : [ 87.0, 362.0, 341.0, 30.0 ],
 					"style" : "default",
 					"text" : "A number within double square brackets [[n]] means \n\"get the nth item from the list bound to the address on the left\""
 				}
@@ -768,7 +469,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 490.5, 215.5, 244.0, 33.0 ],
+					"patching_rect" : [ 490.5, 215.5, 244.0, 30.0 ],
 					"style" : "default",
 					"text" : "In Max, if we want these items separated from each other, we can use zl.mth"
 				}
@@ -782,7 +483,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 18.0, 125.0, 765.5, 36.0 ],
+					"patching_rect" : [ 18.0, 125.0, 765.5, 32.0 ],
 					"style" : "default",
 					"text" : "Let's say we have a list, and we'd like to do something with the third and forth elements of it. \nIn both Max and ODOT, we have a couple of different options, depending on what we want to do with these elements. ",
 					"textjustification" : 1
@@ -797,7 +498,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 546.5, 613.0, 196.0, 33.0 ],
+					"patching_rect" : [ 546.5, 613.0, 196.0, 30.0 ],
 					"style" : "default",
 					"text" : "...In Max we can \"slice\" up a list to get the subset we're interested in."
 				}
@@ -851,7 +552,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 483.5, 711.0, 50.0, 24.0 ]
+					"patching_rect" : [ 483.5, 711.0, 50.0, 22.0 ]
 				}
 
 			}
@@ -862,7 +563,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 514.5, 663.0, 62.0, 24.0 ],
+					"patching_rect" : [ 514.5, 663.0, 62.0, 22.0 ],
 					"text" : "zl.slice 2"
 				}
 
@@ -875,7 +576,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 70.0, 531.5, 340.0, 33.0 ],
+					"patching_rect" : [ 70.0, 531.5, 340.0, 30.0 ],
 					"style" : "default",
 					"text" : "In ODOT, we can put more than one index between double square brackets, if we want to retreive more than one item:"
 				}
@@ -888,7 +589,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 471.5, 613.0, 62.0, 24.0 ],
+					"patching_rect" : [ 471.5, 613.0, 62.0, 22.0 ],
 					"text" : "zl.slice 2"
 				}
 
@@ -927,7 +628,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 471.5, 560.0, 126.0, 24.0 ],
+					"patching_rect" : [ 471.5, 560.0, 126.0, 22.0 ],
 					"text" : "/mylist 1 2 a b 3.14"
 				}
 
@@ -956,7 +657,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 579.0, 417.5, 91.0, 24.0 ],
+					"patching_rect" : [ 579.0, 417.5, 91.0, 22.0 ],
 					"text" : "loadmess set"
 				}
 
@@ -969,7 +670,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 66.5, 208.5, 325.0, 47.0 ],
+					"patching_rect" : [ 66.5, 208.5, 325.0, 42.0 ],
 					"style" : "default",
 					"text" : "In ODOT, remember that we can't have a value by itself, as we can in Max, so if we want to have them separately, we have to assign them to their own addresses. "
 				}
@@ -982,7 +683,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 631.5, 387.0, 50.0, 24.0 ]
+					"patching_rect" : [ 631.5, 387.0, 50.0, 22.0 ]
 				}
 
 			}
@@ -993,7 +694,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 498.0, 387.0, 50.0, 24.0 ]
+					"patching_rect" : [ 498.0, 387.0, 50.0, 22.0 ]
 				}
 
 			}
@@ -1004,7 +705,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 529.0, 350.0, 65.0, 24.0 ],
+					"patching_rect" : [ 529.0, 350.0, 65.0, 22.0 ],
 					"text" : "zl.mth 2"
 				}
 
@@ -1016,7 +717,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 662.5, 350.0, 58.0, 24.0 ],
+					"patching_rect" : [ 662.5, 350.0, 58.0, 22.0 ],
 					"text" : "zl.mth 3"
 				}
 
@@ -1056,7 +757,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 490.5, 267.0, 126.0, 24.0 ],
+					"patching_rect" : [ 490.5, 267.0, 126.0, 22.0 ],
 					"text" : "/mylist 1 2 a b 3.14"
 				}
 
@@ -1199,29 +900,22 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-45", 1 ],
-					"order" : 0,
 					"source" : [ "obj-46", 0 ]
 				}
 
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-47", 0 ],
+					"destination" : [ "obj-56", 0 ],
 					"order" : 1,
-					"source" : [ "obj-46", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-44", 1 ],
-					"source" : [ "obj-47", 0 ]
+					"source" : [ "obj-49", 0 ]
 				}
 
 			}
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-59", 0 ],
+					"order" : 0,
 					"source" : [ "obj-49", 0 ]
 				}
 
@@ -1252,29 +946,36 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "advance.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/ODOT-tutorials/patchers/tutorial",
+				"bootpath" : "~/Development/CNMAT/CNMAT/CNMAT-odot/patchers/tutorial",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "filelist.txt",
-				"bootpath" : "~/Documents/Max 8/Packages/ODOT-tutorials/patchers/tutorial",
+				"bootpath" : "~/Development/CNMAT/CNMAT/CNMAT-odot/patchers/tutorial",
 				"patcherrelativepath" : ".",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "close_parent.js",
-				"bootpath" : "~/Documents/Max 8/Packages/ODOT-tutorials/patchers/tutorial",
+				"bootpath" : "~/Development/CNMAT/CNMAT/CNMAT-odot/patchers/tutorial",
 				"patcherrelativepath" : ".",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "banner.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/ODOT-tutorials/patchers/tutorial",
+				"bootpath" : "~/Development/CNMAT/CNMAT/CNMAT-odot/patchers/tutorial",
 				"patcherrelativepath" : ".",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "odot-max-compatibility.maxpat",
+				"bootpath" : "~/Development/CNMAT/CNMAT/CNMAT-odot/extras/odot/compatibility",
+				"patcherrelativepath" : "../../extras/odot/compatibility",
 				"type" : "JSON",
 				"implicit" : 1
 			}
@@ -1296,6 +997,10 @@
 			}
 , 			{
 				"name" : "o.var.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.pack.mxo",
 				"type" : "iLaX"
 			}
  ],
