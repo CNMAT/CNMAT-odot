@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<?xml-stylesheet href="./_c74_tut.xsl" type="text/xsl"?>
+
+<chapter name="ODOT Tutorial 1: Max and ODOT">
+
+<openfile name="Max and ODOT" patch="01_max_and_odot.maxpat"/>
+
+<header>ODOT tutorial 1: Max and ODOT</header>
+
+<subhead>Learn about how Max and ODOT work together</subhead>
+<body>In this ODOT tutorial, we will learn about how Max and ODOT work together.  This involves taking what we know about Max and extending it to the suite of externals included in the ODOT package.</body>
+<body><openpatchlink>Open the tutorial</openpatchlink>.</body>
+
+<seealsolist>
+	<seealso name="o.compose"></seealso>
+	<seealso name="o.expr.codebox"></seealso>
+	<seealso name="o.display"></seealso>
+</seealsolist>
+
+</chapter>
