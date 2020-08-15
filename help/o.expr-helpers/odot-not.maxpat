@@ -110,7 +110,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 208.0, 30.0, 72.0, 18.0 ],
-					"text" : "!"
+					"text" : "!, not()"
 				}
 
 			}
@@ -132,13 +132,13 @@
 					"fontface" : 0,
 					"fontsize" : 11.0,
 					"id" : "obj-28",
-					"linecount" : 2,
+					"linecount" : 3,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 31.0, 279.5, 288.0, 45.0 ],
-					"text" : "/test : nil,\n/not/test : true"
+					"patching_rect" : [ 31.0, 279.5, 288.0, 58.0 ],
+					"text" : "/test : 1,\n/op/not/test : 0,\n/fn/not/test : 0"
 				}
 
 			}
@@ -147,12 +147,13 @@
 					"fontface" : 0,
 					"fontsize" : 11.0,
 					"id" : "obj-27",
+					"linecount" : 2,
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 31.0, 196.5, 288.0, 31.0 ],
-					"text" : "/not/test = !/test"
+					"patching_rect" : [ 31.0, 196.5, 288.0, 43.0 ],
+					"text" : "/op/not/test = !/test,\n/fn/not/test = not(/test)"
 				}
 
 			}

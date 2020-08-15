@@ -69,7 +69,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 233.0, 30.0, 73.0, 18.0 ],
-					"text" : "--, minus1()"
+					"text" : "--"
 				}
 
 			}

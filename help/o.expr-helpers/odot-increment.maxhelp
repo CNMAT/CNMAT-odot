@@ -39,6 +39,52 @@
 		"subpatcher_template" : "Default Max 7",
 		"boxes" : [ 			{
 				"box" : 				{
+					"fontface" : 0,
+					"fontsize" : 11.0,
+					"id" : "obj-16",
+					"maxclass" : "o.compose",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 31.0, 69.0, 82.0, 23.0 ],
+					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 47, 110, 117, 109, 0, 0, 0, 0, 44, 105, 0, 0, 0, 0, 0, 1 ],
+					"saved_bundle_length" : 36,
+					"text" : "/num : 1"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontface" : 0,
+					"fontsize" : 11.0,
+					"id" : "obj-14",
+					"linecount" : 4,
+					"maxclass" : "o.display",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 31.0, 185.0, 92.0, 70.0 ],
+					"text" : "/num : 3,\n/a : 2,\n/b : 2,\n/c : 3"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontface" : 0,
+					"fontsize" : 11.0,
+					"id" : "obj-15",
+					"linecount" : 3,
+					"maxclass" : "o.expr.codebox",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "FullPacket", "FullPacket" ],
+					"patching_rect" : [ 31.0, 105.0, 156.0, 56.0 ],
+					"text" : "/a = ++/num,\n/b = /num++,\n/c = /num"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-4",
 					"linecount" : 4,
 					"maxclass" : "comment",
@@ -81,7 +127,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 233.0, 30.0, 69.0, 18.0 ],
-					"text" : "++, plus1()"
+					"text" : "++"
 				}
 
 			}
@@ -95,52 +141,6 @@
 					"outlettype" : [ "bang" ],
 					"patching_rect" : [ 31.0, 30.0, 56.0, 19.0 ],
 					"text" : "loadbang"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontface" : 0,
-					"fontsize" : 11.0,
-					"id" : "obj-16",
-					"maxclass" : "o.compose",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 31.0, 77.0, 82.0, 23.0 ],
-					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 47, 110, 117, 109, 0, 0, 0, 0, 44, 105, 0, 0, 0, 0, 0, 1 ],
-					"saved_bundle_length" : 36,
-					"text" : "/num : 1"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontface" : 0,
-					"fontsize" : 11.0,
-					"id" : "obj-14",
-					"linecount" : 3,
-					"maxclass" : "o.display",
-					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 31.0, 179.0, 92.0, 58.0 ],
-					"text" : "/num : 2,\n/prev : 1,\n/plus1 : 3"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontface" : 0,
-					"fontsize" : 11.0,
-					"id" : "obj-15",
-					"linecount" : 2,
-					"maxclass" : "o.expr.codebox",
-					"numinlets" : 1,
-					"numoutlets" : 2,
-					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 31.0, 123.0, 143.0, 43.0 ],
-					"text" : "/prev = /num++, \n/plus1 = plus1(/num)"
 				}
 
 			}

@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 3,
+			"revision" : 1,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -44,8 +44,8 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 190.0, 22.5, 121.0, 20.0 ],
-					"text" : "getbundlemember()"
+					"patching_rect" : [ 190.0, 22.5, 251.0, 18.0 ],
+					"text" : "<bundle> . <member>, getbundlemember()"
 				}
 
 			}
@@ -56,7 +56,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 190.0, 57.5, 241.0, 87.0 ],
+					"patching_rect" : [ 190.0, 57.5, 241.0, 78.0 ],
 					"text" : "return the specified member of a bundle.\n\narguments: \n\n1. subbundle to access \n2. member name"
 				}
 
@@ -69,7 +69,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 29.0, 22.5, 56.0, 21.0 ],
+					"patching_rect" : [ 29.0, 22.5, 56.0, 19.0 ],
 					"text" : "loadbang"
 				}
 
@@ -96,13 +96,13 @@
 					"fontface" : 0,
 					"fontsize" : 11.0,
 					"id" : "obj-23",
-					"linecount" : 7,
+					"linecount" : 8,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 29.0, 220.0, 137.0, 108.0 ],
-					"text" : "/a : [1, 3, 5],\n/b : [222, 2, 3],\n/bndl : {\n\t/one : 10110,\n\t/two : 2\n},\n/fetched : 10110"
+					"patching_rect" : [ 29.0, 244.0, 137.0, 120.0 ],
+					"text" : "/a : [1, 3, 5],\n/b : [222, 2, 3],\n/bndl : {\n\t/one : 10110,\n\t/two : 2\n},\n/fetched/1 : 10110,\n/fetched/2 : 2"
 				}
 
 			}
@@ -111,12 +111,13 @@
 					"fontface" : 0,
 					"fontsize" : 11.0,
 					"id" : "obj-21",
+					"linecount" : 2,
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 29.0, 164.0, 268.0, 31.0 ],
-					"text" : "/fetched = getbundlemember(/bndl, /one)"
+					"patching_rect" : [ 29.0, 165.0, 288.0, 43.0 ],
+					"text" : "/fetched/1 = getbundlemember(/bndl, /one),\n/fetched/2 = /bndl./two"
 				}
 
 			}
