@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 1,
+			"revision" : 5,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -37,6 +37,7 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "Untitled5_template",
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
 					"fontsize" : 12.0,
@@ -45,7 +46,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 18.0, 351.5, 878.0, 90.0 ],
+					"patching_rect" : [ 18.0, 351.5, 878.0, 100.0 ],
 					"text" : "Assignment only happens in the codebox.  We'll see it crop up with the assign() function, and the equals sign (=).  Assignment overwrites memory.  When we do it, we are sticking some data into a location in memory, which is represented by a name. In our case, OSC addresses are used for this name.\n\nBinding happens in the [o.compose] object.  When we use the colon (:) operator, we create a binding from scratch, whether it existed previously or not.  Binding doesn't overwrite memory, because each bundle is unique.\n\nFinally, most ODOT objects won't let you use more than one address of a particular name.",
 					"textjustification" : 1
 				}
@@ -57,7 +58,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 165.0, 317.5, 582.0, 20.0 ],
+					"patching_rect" : [ 165.0, 317.5, 582.0, 22.0 ],
 					"text" : "Foreword:  Assigning vs. Binding",
 					"textjustification" : 1
 				}
@@ -72,7 +73,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 107.0, 7683.0, 326.0, 126.0 ],
+					"patching_rect" : [ 107.0, 7683.0, 326.0, 141.0 ],
 					"text" : "Let's look at aggregation with multiple bundles.  \n\nSince [o.union] stores it's contents in the right inlet, we frequently use patching feedback with [trigger] to loop around and consequentially aggregate subsequent bundles.  \n\nClick above on the bundles to see how that changes the output in [o.display].  Click on the clear message to start over and try a different combination."
 				}
 
@@ -84,7 +85,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 212.166666666666515, 7605.0, 77.0, 22.0 ],
+					"patching_rect" : [ 212.166666666666515, 7605.0, 77.0, 24.0 ],
 					"text" : "clear, bang"
 				}
 
@@ -178,7 +179,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 496.166666666666515, 7662.776536312849203, 29.5, 20.0 ],
+					"patching_rect" : [ 496.166666666666515, 7662.776536312849203, 29.5, 22.0 ],
 					"text" : "t l l"
 				}
 
@@ -191,7 +192,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 496.166666666666515, 7635.776536312849203, 48.0, 20.0 ],
+					"patching_rect" : [ 496.166666666666515, 7635.776536312849203, 48.0, 22.0 ],
 					"text" : "o.union"
 				}
 
@@ -203,7 +204,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 346.666666666666515, 8234.0, 40.0, 22.0 ],
+					"patching_rect" : [ 346.666666666666515, 8234.0, 40.0, 24.0 ],
 					"text" : "5000"
 				}
 
@@ -215,7 +216,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 181.333333333333258, 8234.0, 51.0, 22.0 ],
+					"patching_rect" : [ 181.333333333333258, 8234.0, 51.0, 24.0 ],
 					"text" : "a b c d"
 				}
 
@@ -227,7 +228,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 259.999999999999886, 8234.0, 59.0, 22.0 ],
+					"patching_rect" : [ 259.999999999999886, 8234.0, 59.0, 24.0 ],
 					"text" : "2.31231"
 				}
 
@@ -239,7 +240,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 102.666666666666515, 8234.0, 51.0, 22.0 ],
+					"patching_rect" : [ 102.666666666666515, 8234.0, 51.0, 24.0 ],
 					"text" : "1 2 3 4"
 				}
 
@@ -253,7 +254,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 424.166666666666515, 8308.0, 216.0, 66.0 ],
+					"patching_rect" : [ 424.166666666666515, 8308.0, 216.0, 74.0 ],
 					"text" : "[o.pack] can pack separate addresses or bundles together into one.\nIt works similarly to the [pack] object.  Note that the only hot inlet is on the left, just like [pack]."
 				}
 
@@ -279,7 +280,7 @@
 					"numinlets" : 4,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 183.666666666666515, 8284.0, 97.0, 20.0 ],
+					"patching_rect" : [ 183.666666666666515, 8284.0, 97.0, 22.0 ],
 					"text" : "o.pack /a /b /c /d"
 				}
 
@@ -293,7 +294,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 173.666666666666515, 8034.0, 221.0, 54.0 ],
+					"patching_rect" : [ 173.666666666666515, 8034.0, 221.0, 60.0 ],
 					"text" : "[o.collect] can collect separate bundles and output them as one.  \nTry clicking the two [o.compose] boxes, then click the button to output"
 				}
 
@@ -306,7 +307,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 584.0, 8496.0, 196.0, 18.0 ]
+					"patching_rect" : [ 584.0, 8496.0, 196.0, 20.0 ]
 				}
 
 			}
@@ -360,7 +361,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 452.666666666666515, 8007.0, 53.0, 20.0 ],
+					"patching_rect" : [ 452.666666666666515, 8007.0, 53.0, 22.0 ],
 					"text" : "o.collect"
 				}
 
@@ -390,7 +391,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 432.5, 6075.0, 222.0, 138.0 ],
+					"patching_rect" : [ 432.5, 6075.0, 222.0, 154.0 ],
 					"text" : "Finally, the question mark character (?) will match a single character within an address.  Here, the word of interest is pi?, with the question mark being the character in the address of the 2nd slot that matches.  \n\nClick the box - what do you notice?\nThe last address does not match because it contains a 'p' but not an 'i' as the next character"
 				}
 
@@ -403,7 +404,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 633.5, 5666.0, 207.0, 54.0 ],
+					"patching_rect" : [ 633.5, 5666.0, 207.0, 60.0 ],
 					"text" : "Similarly, square brackets define a range of slots to match.  Here, everything between \"/2\" and \"/4\" will match."
 				}
 
@@ -416,7 +417,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 240.0, 5666.0, 207.0, 54.0 ],
+					"patching_rect" : [ 240.0, 5666.0, 207.0, 60.0 ],
 					"text" : "Curly braces can define a list of slots to match.  So here, instead of everything being matched, only /1 and /3 will be."
 				}
 
@@ -429,7 +430,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 98.0, 5336.0, 172.0, 66.0 ],
+					"patching_rect" : [ 98.0, 5336.0, 172.0, 74.0 ],
 					"text" : "Try clicking on the [o.compose] boxes above to see the difference is between the two patterns.  Click \"clear displays\" to clear the results."
 				}
 
@@ -442,7 +443,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 513.75, 5267.0, 370.0, 54.0 ],
+					"patching_rect" : [ 513.75, 5267.0, 370.0, 60.0 ],
 					"text" : "In example 2, anything in the address slot after \"/1\" is matched, so \"/2\" and \"/3\" do not output anything.  Instead, both \"/bndl\" and \"/param\" are matched after \"/1\", since they come after this specified address."
 				}
 
@@ -455,7 +456,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 483.75, 5080.0, 369.0, 126.0 ],
+					"patching_rect" : [ 483.75, 5080.0, 369.0, 141.0 ],
 					"text" : "In example 1, anything in the address slot after \"/synth\" and before \"/bndl\" is matched.  \n\nThe first match is \"/3\", because [o.route] outputs in right to left order.  \nThe second match is \"/2\", which also matches similarly\nThe third match is \"/1\", which matches the same, although you may notice that \"/param\" is not matched.  This is because \"/bndl\" was present in the pattern's address space, not \"/param\".  This is true for any other address name that is not \"/bndl\"."
 				}
 
@@ -467,7 +468,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 345.0, 5267.0, 19.0, 18.0 ],
+					"patching_rect" : [ 345.0, 5267.0, 19.0, 20.0 ],
 					"text" : "2"
 				}
 
@@ -479,7 +480,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 290.5, 5080.0, 19.0, 18.0 ],
+					"patching_rect" : [ 290.5, 5080.0, 19.0, 20.0 ],
 					"text" : "1"
 				}
 
@@ -491,7 +492,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 483.75, 5031.0, 323.0, 18.0 ],
+					"patching_rect" : [ 483.75, 5031.0, 323.0, 20.0 ],
 					"text" : "Let's take a look at the star (*) pattern matching character.  "
 				}
 
@@ -503,7 +504,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 120.0, 5525.0, 75.0, 17.0 ],
+					"patching_rect" : [ 120.0, 5525.0, 75.0, 19.0 ],
 					"text" : "clear displays"
 				}
 
@@ -516,7 +517,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 179.0, 4938.0, 555.0, 32.0 ],
+					"patching_rect" : [ 179.0, 4938.0, 555.0, 36.0 ],
 					"text" : "Entering in certain types of patterns into [o.compose] when creating addresses will dictate how those addresses are interpreted by objects lower in the chain of events.",
 					"textjustification" : 1
 				}
@@ -529,7 +530,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 399.0, 4875.25, 114.0, 20.0 ],
+					"patching_rect" : [ 399.0, 4875.25, 114.0, 22.0 ],
 					"text" : "Pattern Matching"
 				}
 
@@ -552,7 +553,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 122.5, 4129.0, 59.0, 18.0 ],
+					"patching_rect" : [ 122.5, 4129.0, 59.0, 20.0 ],
 					"text" : "click here"
 				}
 
@@ -565,7 +566,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 221.0, 4621.0, 113.0, 54.0 ],
+					"patching_rect" : [ 221.0, 4621.0, 113.0, 60.0 ],
 					"text" : "the unmatched input gets sent out the delegation outlet"
 				}
 
@@ -578,7 +579,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 181.0, 4478.0, 175.0, 66.0 ],
+					"patching_rect" : [ 181.0, 4478.0, 175.0, 74.0 ],
 					"text" : "we use [o.select] to select addresses to be sent out of their corresponding outlets.  This is similar to the [routepass] object."
 				}
 
@@ -595,7 +596,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 325.0, 3901.5, 153.0, 79.0 ],
+					"patching_rect" : [ 325.0, 3901.5, 153.0, 85.0 ],
 					"text" : "/bar goes nowhere, which can be useful as an alternative to deleting an address in the codebox."
 				}
 
@@ -608,7 +609,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 379.5, 4028.0, 116.0, 54.0 ],
+					"patching_rect" : [ 379.5, 4028.0, 116.0, 60.0 ],
 					"text" : "here, /foo has been stripped off since we routed on it above."
 				}
 
@@ -621,7 +622,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 668.5, 4283.0, 175.0, 42.0 ],
+					"patching_rect" : [ 668.5, 4283.0, 175.0, 47.0 ],
 					"text" : "we use [o.gather] to gather multiple addresses together to send out the leftmost outlet."
 				}
 
@@ -634,7 +635,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 211.0, 3633.0, 490.0, 54.0 ],
+					"patching_rect" : [ 211.0, 3633.0, 490.0, 60.0 ],
 					"text" : "Let's look at some ways to separate a portion of a bundle into separate components.\n\nThe objects we choose will depend on what we're after.  We'll enumerate some use cases below that are common.",
 					"textjustification" : 1
 				}
@@ -647,7 +648,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 357.5, 3559.25, 197.0, 20.0 ],
+					"patching_rect" : [ 357.5, 3559.25, 197.0, 22.0 ],
 					"text" : "Separating ODOT from ODOT"
 				}
 
@@ -670,7 +671,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 493.0, 3159.0, 280.0, 90.0 ],
+					"patching_rect" : [ 493.0, 3159.0, 280.0, 100.0 ],
 					"text" : "Yet another would be a situation where we need to use MSP signals in our patch.  In this case, the clearest method might be to use the [typeroute~] object to route out MSP signals separately from everything else, then allow the list output to delegate our non-standard messaging to [routepass]"
 				}
 
@@ -683,7 +684,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 445.0, 2846.0, 386.0, 42.0 ],
+					"patching_rect" : [ 445.0, 2846.0, 386.0, 47.0 ],
 					"text" : "Another situation might be to use [routepass] for all dispatch.\nThis may be simpler, depending on what type of messages we need to use for the input to [routepass]."
 				}
 
@@ -696,7 +697,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 61.0, 2366.0, 381.0, 138.0 ],
+					"patching_rect" : [ 61.0, 2366.0, 381.0, 154.0 ],
 					"text" : "Let's take a look at a few ways that ODOT signals can be kept separate from Max.  This is particularly useful when we want to implement an abstraction or subpatcher in which ODOT data gets dispatched to some area and vanilla Max messages travel elsewhere.\n\nThe first example might be the most common.  [routepass] retains the prefix \"FullPacket\" so that we don't separate the data references from the message itself.\n\nAny message other than \"FullPacket\" gets sent out the delegation outlet, which feeds into [route].",
 					"textjustification" : 2
 				}
@@ -762,7 +763,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 5,
 					"outlettype" : [ "", "", "", "", "FullPacket" ],
-					"patching_rect" : [ 477.5, 5813.0, 275.0, 20.0 ],
+					"patching_rect" : [ 477.5, 5813.0, 275.0, 22.0 ],
 					"text" : "o.route /1 /2 /3 /4"
 				}
 
@@ -792,7 +793,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "FullPacket" ],
-					"patching_rect" : [ 477.5, 5771.0, 81.0, 20.0 ],
+					"patching_rect" : [ 477.5, 5771.0, 81.0, 22.0 ],
 					"text" : "o.route /synth"
 				}
 
@@ -872,7 +873,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 5,
 					"outlettype" : [ "", "", "", "", "FullPacket" ],
-					"patching_rect" : [ 85.0, 5813.0, 275.0, 20.0 ],
+					"patching_rect" : [ 85.0, 5813.0, 275.0, 22.0 ],
 					"text" : "o.route /1 /2 /3 /4"
 				}
 
@@ -902,7 +903,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "FullPacket" ],
-					"patching_rect" : [ 85.0, 5771.0, 81.0, 20.0 ],
+					"patching_rect" : [ 85.0, 5771.0, 81.0, 22.0 ],
 					"text" : "o.route /synth"
 				}
 
@@ -984,7 +985,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 4,
 					"outlettype" : [ "", "", "", "FullPacket" ],
-					"patching_rect" : [ 239.0, 6235.0, 117.0, 20.0 ],
+					"patching_rect" : [ 239.0, 6235.0, 117.0, 22.0 ],
 					"text" : "o.route /pin /pit /pew"
 				}
 
@@ -1014,7 +1015,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "FullPacket" ],
-					"patching_rect" : [ 239.0, 6193.0, 85.0, 20.0 ],
+					"patching_rect" : [ 239.0, 6193.0, 85.0, 22.0 ],
 					"text" : "o.route /rolling"
 				}
 
@@ -1066,7 +1067,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "FullPacket" ],
-					"patching_rect" : [ 562.0, 5469.0, 75.0, 20.0 ],
+					"patching_rect" : [ 562.0, 5469.0, 75.0, 22.0 ],
 					"text" : "o.route /bndl"
 				}
 
@@ -1079,7 +1080,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "FullPacket" ],
-					"patching_rect" : [ 437.0, 5469.0, 75.0, 20.0 ],
+					"patching_rect" : [ 437.0, 5469.0, 75.0, 22.0 ],
 					"text" : "o.route /bndl"
 				}
 
@@ -1092,7 +1093,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "FullPacket" ],
-					"patching_rect" : [ 312.0, 5469.0, 116.0, 20.0 ],
+					"patching_rect" : [ 312.0, 5469.0, 116.0, 22.0 ],
 					"text" : "o.route /bndl /param"
 				}
 
@@ -1105,7 +1106,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 4,
 					"outlettype" : [ "", "", "", "FullPacket" ],
-					"patching_rect" : [ 312.0, 5418.0, 394.0, 20.0 ],
+					"patching_rect" : [ 312.0, 5418.0, 394.0, 22.0 ],
 					"text" : "o.route /1 /2 /3"
 				}
 
@@ -1135,7 +1136,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "FullPacket" ],
-					"patching_rect" : [ 312.0, 5385.0, 81.0, 20.0 ],
+					"patching_rect" : [ 312.0, 5385.0, 81.0, 22.0 ],
 					"text" : "o.route /synth"
 				}
 
@@ -1148,7 +1149,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 429.0, 4762.0, 88.0, 20.0 ]
+					"patching_rect" : [ 429.0, 4762.0, 88.0, 22.0 ]
 				}
 
 			}
@@ -1160,7 +1161,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 321.0, 4762.0, 88.0, 20.0 ]
+					"patching_rect" : [ 321.0, 4762.0, 88.0, 22.0 ]
 				}
 
 			}
@@ -1172,7 +1173,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 418.5, 4639.5, 227.0, 42.0 ],
+					"patching_rect" : [ 418.5, 4639.5, 227.0, 47.0 ],
 					"text" : "[o.atomize] can function like [o.select], but generates max message equivalents of the addresses typed in as arguments"
 				}
 
@@ -1185,7 +1186,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "" ],
-					"patching_rect" : [ 390.0, 4709.0, 235.0, 20.0 ],
+					"patching_rect" : [ 390.0, 4709.0, 235.0, 22.0 ],
 					"text" : "o.atomize /foo /bar"
 				}
 
@@ -1198,7 +1199,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 485.5, 3795.0, 175.0, 30.0 ],
+					"patching_rect" : [ 485.5, 3795.0, 175.0, 33.0 ],
 					"text" : "We use [o.route] as a way to remove addresses"
 				}
 
@@ -1237,7 +1238,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "FullPacket" ],
-					"patching_rect" : [ 298.5, 3867.0, 206.0, 20.0 ],
+					"patching_rect" : [ 298.5, 3867.0, 206.0, 22.0 ],
 					"text" : "o.route /foo /bar"
 				}
 
@@ -1332,7 +1333,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "FullPacket" ],
-					"patching_rect" : [ 69.5, 4523.0, 97.0, 20.0 ],
+					"patching_rect" : [ 69.5, 4523.0, 97.0, 22.0 ],
 					"text" : "o.select /foo /bar"
 				}
 
@@ -1345,7 +1346,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "FullPacket" ],
-					"patching_rect" : [ 466.5, 4308.0, 191.0, 20.0 ],
+					"patching_rect" : [ 466.5, 4308.0, 191.0, 22.0 ],
 					"text" : "o.gather /foo /bar"
 				}
 
@@ -1375,7 +1376,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 526.000000000000114, 3391.0, 149.0, 20.0 ]
+					"patching_rect" : [ 526.000000000000114, 3391.0, 149.0, 22.0 ]
 				}
 
 			}
@@ -1387,7 +1388,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 357.0, 3267.0, 70.0, 20.0 ],
+					"patching_rect" : [ 357.0, 3267.0, 70.0, 22.0 ],
 					"text" : "insect moth"
 				}
 
@@ -1400,7 +1401,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 276.0, 3266.0, 71.0, 20.0 ],
+					"patching_rect" : [ 276.0, 3266.0, 71.0, 22.0 ],
 					"text" : "insect wasp"
 				}
 
@@ -1413,7 +1414,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 378.600000000000136, 3369.0, 70.0, 20.0 ]
+					"patching_rect" : [ 378.600000000000136, 3369.0, 70.0, 22.0 ]
 				}
 
 			}
@@ -1426,7 +1427,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 270.800000000000068, 3415.0, 49.0, 20.0 ]
+					"patching_rect" : [ 270.800000000000068, 3415.0, 49.0, 22.0 ]
 				}
 
 			}
@@ -1440,7 +1441,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 350.0, 3415.0, 49.0, 20.0 ]
+					"patching_rect" : [ 350.0, 3415.0, 49.0, 22.0 ]
 				}
 
 			}
@@ -1453,7 +1454,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 298.0, 3218.0, 49.0, 20.0 ]
+					"patching_rect" : [ 298.0, 3218.0, 49.0, 22.0 ]
 				}
 
 			}
@@ -1477,7 +1478,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 231.0, 3266.0, 35.0, 20.0 ],
+					"patching_rect" : [ 231.0, 3266.0, 35.0, 22.0 ],
 					"text" : "moth"
 				}
 
@@ -1490,7 +1491,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 184.0, 3266.0, 37.0, 20.0 ],
+					"patching_rect" : [ 184.0, 3266.0, 37.0, 22.0 ],
 					"text" : "wasp"
 				}
 
@@ -1517,7 +1518,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 358.0, 3218.0, 49.0, 20.0 ]
+					"patching_rect" : [ 358.0, 3218.0, 49.0, 22.0 ]
 				}
 
 			}
@@ -1549,7 +1550,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "signal", "float" ],
-					"patching_rect" : [ 112.0, 3415.0, 56.0, 22.0 ],
+					"patching_rect" : [ 112.0, 3415.0, 56.0, 24.0 ],
 					"sig" : 0.0
 				}
 
@@ -1561,7 +1562,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "signal" ],
-					"patching_rect" : [ 112.0, 3202.0, 46.0, 22.0 ],
+					"patching_rect" : [ 112.0, 3202.0, 46.0, 24.0 ],
 					"text" : "sig~ 1"
 				}
 
@@ -1574,7 +1575,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 6,
 					"outlettype" : [ "signal", "bang", "int", "float", "", "list" ],
-					"patching_rect" : [ 112.0, 3314.0, 416.000000000000114, 20.0 ],
+					"patching_rect" : [ 112.0, 3314.0, 416.000000000000114, 22.0 ],
 					"text" : "typeroute~"
 				}
 
@@ -1600,7 +1601,7 @@
 					"numinlets" : 3,
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "" ],
-					"patching_rect" : [ 509.000000000000114, 3354.0, 313.0, 20.0 ],
+					"patching_rect" : [ 509.000000000000114, 3354.0, 313.0, 22.0 ],
 					"text" : "routepass FullPacket insect"
 				}
 
@@ -1627,7 +1628,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 637.0, 2527.0, 49.0, 20.0 ]
+					"patching_rect" : [ 637.0, 2527.0, 49.0, 22.0 ]
 				}
 
 			}
@@ -1639,7 +1640,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 720.0, 2527.0, 99.0, 20.0 ]
+					"patching_rect" : [ 720.0, 2527.0, 99.0, 22.0 ]
 				}
 
 			}
@@ -1651,7 +1652,7 @@
 					"numinlets" : 4,
 					"numoutlets" : 4,
 					"outlettype" : [ "", "", "", "" ],
-					"patching_rect" : [ 601.0, 2485.0, 127.0, 20.0 ],
+					"patching_rect" : [ 601.0, 2485.0, 127.0, 22.0 ],
 					"text" : "route bang float insect"
 				}
 
@@ -1676,7 +1677,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 711.0, 2366.0, 70.0, 20.0 ],
+					"patching_rect" : [ 711.0, 2366.0, 70.0, 22.0 ],
 					"text" : "insect moth"
 				}
 
@@ -1702,7 +1703,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 673.0, 2328.0, 71.0, 20.0 ],
+					"patching_rect" : [ 673.0, 2328.0, 71.0, 22.0 ],
 					"text" : "insect wasp"
 				}
 
@@ -1717,7 +1718,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 614.0, 2328.0, 49.0, 20.0 ]
+					"patching_rect" : [ 614.0, 2328.0, 49.0, 22.0 ]
 				}
 
 			}
@@ -1746,7 +1747,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 499.0, 2449.0, 121.0, 20.0 ],
+					"patching_rect" : [ 499.0, 2449.0, 121.0, 22.0 ],
 					"text" : "routepass FullPacket"
 				}
 
@@ -1771,7 +1772,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 329.0, 2763.0, 70.0, 20.0 ],
+					"patching_rect" : [ 329.0, 2763.0, 70.0, 22.0 ],
 					"text" : "insect moth"
 				}
 
@@ -1796,7 +1797,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 411.0, 6435.25, 90.0, 20.0 ],
+					"patching_rect" : [ 411.0, 6435.25, 90.0, 22.0 ],
 					"text" : "Merging data"
 				}
 
@@ -1818,7 +1819,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 364.5, 2186.25, 183.0, 20.0 ],
+					"patching_rect" : [ 364.5, 2186.25, 183.0, 22.0 ],
 					"text" : "Separating ODOT from Max"
 				}
 
@@ -1841,7 +1842,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 186.0, 1340.0, 263.0, 42.0 ],
+					"patching_rect" : [ 186.0, 1340.0, 263.0, 47.0 ],
 					"text" : "The data in the [message] inistance below was saved with the patch - it was here when we arrived..."
 				}
 
@@ -1854,7 +1855,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 391.0, 744.0, 211.0, 18.0 ],
+					"patching_rect" : [ 391.0, 744.0, 211.0, 20.0 ],
 					"text" : "The value of /myaddress is a string."
 				}
 
@@ -1884,7 +1885,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 395.0, 1013.0, 74.0, 54.0 ],
+					"patching_rect" : [ 395.0, 1013.0, 74.0, 60.0 ],
 					"text" : "'s' - string\n'T' - boolean\n'i' - int\n'd' - double"
 				}
 
@@ -1894,11 +1895,13 @@
 					"fontface" : 0,
 					"fontsize" : 12.0,
 					"id" : "obj-74",
+					"linecount" : 2,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 217.0, 1019.0, 155.0, 34.0 ]
+					"patching_rect" : [ 217.0, 1019.0, 155.0, 48.0 ],
+					"text" : "/myaddress : 1.,\n/type : 'd'"
 				}
 
 			}
@@ -1924,7 +1927,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 165.0, 502.5, 516.0, 32.0 ],
+					"patching_rect" : [ 165.0, 502.5, 516.0, 36.0 ],
 					"text" : "The [o.compose] box can be edited by unlocking a patch, clicking inside it, and typing.  Copy/Paste/Select work as expected.",
 					"textjustification" : 1
 				}
@@ -1938,7 +1941,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 648.0, 668.0, 234.0, 18.0 ],
+					"patching_rect" : [ 648.0, 668.0, 234.0, 20.0 ],
 					"text" : "The boolean type is not quoted (true/false)"
 				}
 
@@ -1968,7 +1971,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 648.0, 592.0, 228.0, 54.0 ],
+					"patching_rect" : [ 648.0, 592.0, 228.0, 60.0 ],
 					"text" : "Construct addresses without quotes, \nand the data that is bound to those addresses WITH quotes (when that data is a string)"
 				}
 
@@ -1997,7 +2000,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 214.0, 631.0, 228.0, 18.0 ],
+					"patching_rect" : [ 214.0, 631.0, 228.0, 20.0 ],
 					"text" : "Construct bundles with curly braces {}"
 				}
 
@@ -2027,7 +2030,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 214.0, 592.0, 226.0, 18.0 ],
+					"patching_rect" : [ 214.0, 592.0, 226.0, 20.0 ],
 					"text" : "Construct lists with square brackets []"
 				}
 
@@ -2055,7 +2058,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 400.5, 256.25, 111.0, 20.0 ],
+					"patching_rect" : [ 400.5, 256.25, 111.0, 22.0 ],
 					"text" : "Building bundles"
 				}
 
@@ -2077,7 +2080,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 37.666666666666515, 6962.0, 840.0, 34.0 ],
+					"patching_rect" : [ 37.666666666666515, 6962.0, 840.0, 38.0 ],
 					"text" : "Let's look at a situation where we may need [o.union] for another reason.  In this case, we might like to generate an address with something outside of ODOT.",
 					"textjustification" : 1
 				}
@@ -2092,7 +2095,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 568.0, 7359.0, 196.0, 66.0 ],
+					"patching_rect" : [ 568.0, 7359.0, 196.0, 74.0 ],
 					"text" : "note: ODOT aims at being stateless by design.  There are no such things are random number generators, prodecural basis functions, etc."
 				}
 
@@ -2104,7 +2107,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 18.0, 152.5, 876.0, 34.0 ],
+					"patching_rect" : [ 18.0, 152.5, 876.0, 38.0 ],
 					"text" : "Let's take a minute to back up and look at some basic, yet essential information on ODOT bundles and how to patch with them.  \nWe'll start with building, merging, and separating data, as well as some examples on storing it.",
 					"textjustification" : 1
 				}
@@ -2137,7 +2140,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 253.833333333333371, 6519.0, 412.0, 34.0 ],
+					"patching_rect" : [ 253.833333333333371, 6519.0, 412.0, 38.0 ],
 					"text" : "We just looked at a number of ways to route and distribute data.  \nWhat about combining data with bundles that already exist?  "
 				}
 
@@ -2150,7 +2153,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 559.0, 1360.0, 192.0, 42.0 ],
+					"patching_rect" : [ 559.0, 1360.0, 192.0, 47.0 ],
 					"text" : "...similarly, we know that when we click this box, we overwrite the contents of [message]"
 				}
 
@@ -2168,7 +2171,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 94.916666666666515, 6618.0, 430.0, 234.0 ],
+					"patching_rect" : [ 94.916666666666515, 6618.0, 430.0, 258.0 ],
 					"text" : "Let's see at how we might supply a default value for an expression being applied in the codebox to the right (more on this object in a bit).\n\n[o.union] works a lot like a number of Max objects where the right inlet stores data and the left updates this data.  The union update includes BOTH the bundle sent to the right and the left (once sent).\n\nTake a look at the order of operations:  \n\n1. A bundle (containing the address \"/default\") gets sent to the right (cold) inlet of [o.union].  \nThis bundle contains our default address, and is expected to be sent ONCE, when the patch loads, or maybe upon initialization.\n\n2. Then, each time we bind a value to \"/myval\", we blend the bundle containing our default with our newly bound \"/myval\" address.  A single bundle is produced from this union and the result is sent to the codebox."
 				}
 
@@ -2180,7 +2183,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 412.0, 1134.25, 104.0, 20.0 ],
+					"patching_rect" : [ 412.0, 1134.25, 104.0, 22.0 ],
 					"text" : "Saving bundles"
 				}
 
@@ -2203,7 +2206,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 291.0, 2725.0, 71.0, 20.0 ],
+					"patching_rect" : [ 291.0, 2725.0, 71.0, 22.0 ],
 					"text" : "insect wasp"
 				}
 
@@ -2218,7 +2221,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 232.0, 2725.0, 49.0, 20.0 ]
+					"patching_rect" : [ 232.0, 2725.0, 49.0, 22.0 ]
 				}
 
 			}
@@ -2235,7 +2238,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 342.0, 1913.0, 200.0, 69.0 ],
+					"patching_rect" : [ 342.0, 1913.0, 200.0, 74.0 ],
 					"text" : "next time this patch is loaded, it sends the embedded data, which gets sent to the multislider"
 				}
 
@@ -2247,7 +2250,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 315.666666666666515, 7079.0, 75.0, 18.0 ],
+					"patching_rect" : [ 315.666666666666515, 7079.0, 75.0, 20.0 ],
 					"text" : "initial bundle"
 				}
 
@@ -2263,7 +2266,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 456.0, 7162.888268156424601, 308.0, 162.0 ],
+					"patching_rect" : [ 456.0, 7162.888268156424601, 308.0, 178.0 ],
 					"text" : "There are certain elements that we cannot generate in ODOT, like random numbers.  Max and ODOT can work together to bridge this gap.  \n\nLet's generate a random number in Max and blend it with our previously existing bundle.  This highlights another situation in which [o.union] might be used.\n\nNote that the rightmost inlet of [o.union] stores data that will be updated, just as before.  "
 				}
 
@@ -2290,7 +2293,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 653.0, 6626.0, 58.0, 20.0 ],
+					"patching_rect" : [ 653.0, 6626.0, 58.0, 22.0 ],
 					"text" : "loadbang"
 				}
 
@@ -2305,7 +2308,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 556.0, 6626.0, 46.0, 20.0 ]
+					"patching_rect" : [ 556.0, 6626.0, 46.0, 22.0 ]
 				}
 
 			}
@@ -2317,7 +2320,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 556.0, 6716.0, 116.0, 20.0 ],
+					"patching_rect" : [ 556.0, 6716.0, 116.0, 22.0 ],
 					"text" : "o.union"
 				}
 
@@ -2359,7 +2362,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 556.0, 6656.0, 82.0, 20.0 ],
+					"patching_rect" : [ 556.0, 6656.0, 82.0, 22.0 ],
 					"text" : "o.pack /myval"
 				}
 
@@ -2372,7 +2375,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 391.0, 1516.0, 187.0, 20.0 ]
+					"patching_rect" : [ 391.0, 1516.0, 187.0, 22.0 ]
 				}
 
 			}
@@ -2384,8 +2387,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "FullPacket" ],
-					"patching_rect" : [ 559.0, 1478.0, 110.0, 20.0 ],
-					"text" : "o.route /this/data/is"
+					"patching_rect" : [ 559.0, 1478.0, 111.0, 22.0 ],
+					"text" : "o.route /myaddress"
 				}
 
 			}
@@ -2411,7 +2414,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 213.0, 2891.0, 49.0, 20.0 ]
+					"patching_rect" : [ 213.0, 2891.0, 49.0, 22.0 ]
 				}
 
 			}
@@ -2423,7 +2426,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 181.0, 2931.0, 99.0, 20.0 ]
+					"patching_rect" : [ 181.0, 2931.0, 99.0, 22.0 ]
 				}
 
 			}
@@ -2452,7 +2455,7 @@
 					"numinlets" : 5,
 					"numoutlets" : 5,
 					"outlettype" : [ "", "", "", "", "" ],
-					"patching_rect" : [ 117.0, 2846.0, 211.0, 20.0 ],
+					"patching_rect" : [ 117.0, 2846.0, 211.0, 22.0 ],
 					"text" : "routepass FullPacket bang float insect"
 				}
 
@@ -2466,7 +2469,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 161.0, 7230.888268156424601, 79.0, 42.0 ],
+					"patching_rect" : [ 161.0, 7230.888268156424601, 79.0, 47.0 ],
 					"text" : "injecting an address via a union."
 				}
 
@@ -2509,7 +2512,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 276.666666666666515, 7268.582402234636902, 91.0, 20.0 ],
+					"patching_rect" : [ 276.666666666666515, 7268.582402234636902, 91.0, 22.0 ],
 					"text" : "o.pack /random"
 				}
 
@@ -2522,7 +2525,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "bang", "" ],
-					"patching_rect" : [ 276.666666666666515, 7190.0, 115.0, 20.0 ],
+					"patching_rect" : [ 276.666666666666515, 7190.0, 115.0, 22.0 ],
 					"text" : "t b l"
 				}
 
@@ -2535,7 +2538,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 276.666666666666515, 7294.776536312849203, 115.0, 20.0 ],
+					"patching_rect" : [ 276.666666666666515, 7294.776536312849203, 115.0, 22.0 ],
 					"text" : "o.union"
 				}
 
@@ -2548,7 +2551,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "float" ],
-					"patching_rect" : [ 276.666666666666515, 7242.388268156424601, 45.0, 20.0 ],
+					"patching_rect" : [ 276.666666666666515, 7242.388268156424601, 45.0, 22.0 ],
 					"text" : "/ 9999."
 				}
 
@@ -2561,7 +2564,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "int" ],
-					"patching_rect" : [ 276.666666666666515, 7216.194134078212301, 86.0, 20.0 ],
+					"patching_rect" : [ 276.666666666666515, 7216.194134078212301, 86.0, 22.0 ],
 					"text" : "random 10000"
 				}
 
@@ -2572,7 +2575,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 36.0, 1804.0, 377.0, 20.0 ],
+					"patching_rect" : [ 36.0, 1804.0, 377.0, 22.0 ],
 					"text" : "Here is a possible solution to the aforementioned example:"
 				}
 
@@ -2586,7 +2589,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 595.0, 2042.0, 162.0, 22.0 ],
+					"patching_rect" : [ 595.0, 2042.0, 162.0, 24.0 ],
 					"text" : "result is stored upon save"
 				}
 
@@ -2600,7 +2603,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 717.0, 1935.0, 147.0, 22.0 ],
+					"patching_rect" : [ 717.0, 1935.0, 147.0, 24.0 ],
 					"text" : "interact with multislider"
 				}
 
@@ -2613,7 +2616,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 23.0, 901.0, 90.0, 18.0 ],
+					"patching_rect" : [ 23.0, 901.0, 90.0, 20.0 ],
 					"text" : "(  scroll down  )",
 					"textjustification" : 1
 				}
@@ -2627,7 +2630,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 502.0, 1653.0, 58.0, 22.0 ],
+					"patching_rect" : [ 502.0, 1653.0, 58.0, 24.0 ],
 					"text" : "pcontrol"
 				}
 
@@ -2640,7 +2643,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 502.0, 1620.0, 139.0, 22.0 ],
+					"patching_rect" : [ 502.0, 1620.0, 139.0, 24.0 ],
 					"text" : "load o.route.maxhelp"
 				}
 
@@ -2663,7 +2666,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 502.0, 1697.0, 79.0, 18.0 ],
+					"patching_rect" : [ 502.0, 1697.0, 79.0, 20.0 ],
 					"text" : "more on o.route"
 				}
 
@@ -2675,7 +2678,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 104.0, 1653.0, 728.0, 48.0 ],
+					"patching_rect" : [ 104.0, 1653.0, 728.0, 53.0 ],
 					"text" : "We can use the loadbang object to recall our data the next time the patch is opened.  Note that the bang is used to recall the state inside of the compose box, and that the raw list values are sent to the multislider via the o.route object.  ",
 					"textjustification" : 1
 				}
@@ -2706,7 +2709,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 222.0, 1397.0, 179.0, 20.0 ],
+					"patching_rect" : [ 222.0, 1397.0, 179.0, 22.0 ],
 					"text" : "this data is saved with the patch"
 				}
 
@@ -2718,7 +2721,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 699.0, 42.0, 61.0, 22.0 ],
+					"patching_rect" : [ 699.0, 42.0, 61.0, 24.0 ],
 					"text" : "onecopy"
 				}
 
@@ -2750,7 +2753,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 100.0, 1221.0, 728.0, 48.0 ],
+					"patching_rect" : [ 100.0, 1221.0, 728.0, 53.0 ],
 					"text" : "In addition to serving as the object that we type data into, [o.compose] can be leveraged as a method to allow this data to persist.  A simple example of this might be to use it both as an interface for our patch data and as a recall mechanism.  Let's look at how this might be implemented.",
 					"textjustification" : 1
 				}
@@ -2764,7 +2767,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 391.0, 838.0, 369.0, 18.0 ],
+					"patching_rect" : [ 391.0, 838.0, 369.0, 20.0 ],
 					"text" : "The value of /myaddress is a double-precision floating point number"
 				}
 
@@ -2793,7 +2796,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 391.0, 806.0, 238.0, 18.0 ],
+					"patching_rect" : [ 391.0, 806.0, 238.0, 20.0 ],
 					"text" : "The value of /myaddress is a 32-bit integer"
 				}
 
@@ -2822,7 +2825,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 391.0, 774.0, 211.0, 18.0 ],
+					"patching_rect" : [ 391.0, 774.0, 211.0, 20.0 ],
 					"text" : "The value of /myaddress is a boolean."
 				}
 
@@ -2835,7 +2838,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 524.0, 940.0, 304.0, 84.0 ],
+					"patching_rect" : [ 524.0, 940.0, 304.0, 94.0 ],
 					"text" : "Let's review the information above by looking at various data formats.  We'll assign the value of the type of data to an address '/type' so that we can see which type it is.  Click on each of the [o.compose] boxes below to view which type is bound to /myaddress"
 				}
 
@@ -2848,7 +2851,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "FullPacket" ],
-					"patching_rect" : [ 570.0, 1883.0, 107.0, 20.0 ],
+					"patching_rect" : [ 570.0, 1883.0, 107.0, 22.0 ],
 					"text" : "o.route /multislider"
 				}
 
@@ -2861,7 +2864,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 295.0, 1986.0, 58.0, 20.0 ],
+					"patching_rect" : [ 295.0, 1986.0, 58.0, 22.0 ],
 					"text" : "loadbang"
 				}
 
@@ -2891,7 +2894,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 570.0, 1986.0, 105.0, 20.0 ],
+					"patching_rect" : [ 570.0, 1986.0, 105.0, 22.0 ],
 					"text" : "o.pack /multislider"
 				}
 
@@ -2934,7 +2937,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 240.0, 1863.0, 122.0, 18.0 ],
+					"patching_rect" : [ 240.0, 1863.0, 122.0, 20.0 ],
 					"text" : "edit, save patch, load"
 				}
 
@@ -3844,42 +3847,42 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "advance.maxpat",
-				"bootpath" : "~/Development/CNMAT/CNMAT/CNMAT-odot/patchers/tutorial",
+				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/patchers/tutorial",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "filelist.txt",
-				"bootpath" : "~/Development/CNMAT/CNMAT/CNMAT-odot/patchers/tutorial",
+				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/patchers/tutorial",
 				"patcherrelativepath" : ".",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "close_parent.js",
-				"bootpath" : "~/Development/CNMAT/CNMAT/CNMAT-odot/patchers/tutorial",
+				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/patchers/tutorial",
 				"patcherrelativepath" : ".",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "banner.maxpat",
-				"bootpath" : "~/Development/CNMAT/CNMAT/CNMAT-odot/patchers/tutorial",
+				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/patchers/tutorial",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.gather.maxpat",
-				"bootpath" : "~/Development/CNMAT/CNMAT/CNMAT-odot/patchers/namespace",
+				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/patchers/namespace",
 				"patcherrelativepath" : "../namespace",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.righttoleft.maxpat",
-				"bootpath" : "~/Development/CNMAT/CNMAT/CNMAT-odot/patchers/ordering",
+				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/patchers/ordering",
 				"patcherrelativepath" : "../ordering",
 				"type" : "JSON",
 				"implicit" : 1
