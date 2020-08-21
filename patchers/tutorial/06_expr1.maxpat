@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 1,
+			"revision" : 5,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -37,6 +37,7 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "Untitled5_template",
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
 					"fontsize" : 12.0,
@@ -45,7 +46,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 138.0, 1412.0, 58.0, 20.0 ],
+					"patching_rect" : [ 138.0, 1412.0, 58.0, 22.0 ],
 					"text" : "loadbang"
 				}
 
@@ -58,7 +59,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 394.666666666666742, 1453.0, 483.0, 126.0 ],
+					"patching_rect" : [ 394.666666666666742, 1453.0, 483.0, 141.0 ],
 					"text" : "While we're here:  \n\nThere are no lists of lists.  There are lists of bundles - each of those bundles may contain a number of lists, but this is not the same thing.  \n\nTake a look at the example on the left.  You might expect that /c takes on the ability to be indexed based on two lists that it contains, but the truth is that /a and /b were flattened and /c has no way of differentiating between the two things at this point.  \n\n/c is simply a list of 6 elements.",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -102,7 +103,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 563.0, 1204.0, 58.0, 20.0 ],
+					"patching_rect" : [ 563.0, 1204.0, 58.0, 22.0 ],
 					"text" : "loadbang"
 				}
 
@@ -115,7 +116,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 147.0, 1245.0, 328.0, 90.0 ],
+					"patching_rect" : [ 147.0, 1245.0, 328.0, 100.0 ],
 					"text" : "Let's take a look at another example that's similar.  Here, we're assigning two calculations with a direct function call.  \n\nsin() accepts any list, so it will do the operation on one or more elements.  /p1 gives us a single float, whereas /p2 is assigned a list of floats.  But sin() doesn't care about the length of the list.",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -129,7 +130,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 148.0, 964.0, 58.0, 20.0 ],
+					"patching_rect" : [ 148.0, 964.0, 58.0, 22.0 ],
 					"text" : "loadbang"
 				}
 
@@ -142,7 +143,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 382.0, 964.0, 495.0, 150.0 ],
+					"patching_rect" : [ 382.0, 964.0, 495.0, 167.0 ],
 					"text" : "Something you may have noticed is that ODOT does auto-expansion of single element lists when used with lists of a larger size.  Let's examine the example to the left. \n\nHere we see what we might take as an int (1) being added to the list [1, 2, 3].  This results in [2, 3, 4].  So what happened here? \n\nThe truth of this is that the int (1) is simply a one-element list.  In fact, everything is a list in ODOT.  Understanding this can help clear up confusion when diving into more complex expressions.  \n\nSo ODOT internally converted the single element list [1] to a three-element list of [1, 1, 1], and then performed the calculation.",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -218,7 +219,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 1,
-							"revision" : 1,
+							"revision" : 5,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -251,6 +252,7 @@
 						"tags" : "",
 						"style" : "",
 						"subpatcher_template" : "Untitled5_template",
+						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
 									"fontsize" : 11.0,
@@ -311,7 +313,7 @@
  ]
 					}
 ,
-					"patching_rect" : [ 138.333333333333258, 6476.0, 110.0, 22.0 ],
+					"patching_rect" : [ 138.333333333333258, 6476.0, 110.0, 24.0 ],
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
@@ -332,7 +334,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 764.333333333333258, 6360.0, 150.0, 54.0 ],
+					"patching_rect" : [ 764.333333333333258, 6360.0, 150.0, 60.0 ],
 					"text" : "we also create a bundle address here, FWIW.  we simply don't send it anywhere.",
 					"textjustification" : 1
 				}
@@ -361,7 +363,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 454.833333333333258, 5856.0, 89.0, 20.0 ],
+					"patching_rect" : [ 454.833333333333258, 5856.0, 89.0, 22.0 ],
 					"text" : "Introspection"
 				}
 
@@ -394,7 +396,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 349.833333333333258, 6447.0, 33.0, 16.0 ],
+					"patching_rect" : [ 349.833333333333258, 6447.0, 33.0, 17.0 ],
 					"text" : "o.cond"
 				}
 
@@ -407,7 +409,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 293.833333333333258, 6445.0, 108.0, 39.0 ],
+					"patching_rect" : [ 293.833333333333258, 6445.0, 108.0, 43.0 ],
 					"text" : "see also: [            ] for multiple expressions"
 				}
 
@@ -420,7 +422,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 790.333333333333258, 6149.0, 110.0, 30.0 ],
+					"patching_rect" : [ 790.333333333333258, 6149.0, 110.0, 33.0 ],
 					"text" : "if() function inside of the codebox"
 				}
 
@@ -432,7 +434,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 247.833333333333258, 6151.0, 64.0, 18.0 ],
+					"patching_rect" : [ 247.833333333333258, 6151.0, 64.0, 20.0 ],
 					"text" : "delegation"
 				}
 
@@ -449,7 +451,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 504.833333333333258, 6316.0, 225.0, 153.0 ],
+					"patching_rect" : [ 504.833333333333258, 6316.0, 225.0, 166.0 ],
 					"text" : "This example demonstrates an important concept with expressions in odot, vs. address definitions in [o.compose].  We bind data to an address in [o.compose] with the colon, whereas in the codebox, we do so with the = operator.  This actually calls the assign() function, which assigns values to addresses."
 				}
 
@@ -494,7 +496,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 118.833333333333258, 6273.0, 283.0, 136.0 ],
+					"patching_rect" : [ 118.833333333333258, 6273.0, 283.0, 152.0 ],
 					"text" : "...although these two cases are similar, they could have very different applications in a patch, depending on user needs.  In the delgation model, we might conditionally route the bundle to one location or another based on the result.  \n\nIn the codebox things are more local, so we've gained new information that tells us something we may need further down the chain."
 				}
 
@@ -589,7 +591,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 129.333333333333258, 6151.0, 105.0, 20.0 ],
+					"patching_rect" : [ 129.333333333333258, 6151.0, 105.0, 22.0 ],
 					"text" : "o.if emptybundle()"
 				}
 
@@ -601,7 +603,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 114.333333333333258, 5947.0, 752.0, 34.0 ],
+					"patching_rect" : [ 114.333333333333258, 5947.0, 752.0, 38.0 ],
 					"text" : "we can check to see if a bundle has anything in it with the [o.if] object, or by checking directly in [o.expr.codebox].\nBoth objects access the libo library.  In fact, any object that allows you to type an expression does...",
 					"textjustification" : 1
 				}
@@ -615,7 +617,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 282.5, 4374.0, 50.0, 22.0 ]
+					"patching_rect" : [ 282.5, 4374.0, 50.0, 24.0 ]
 				}
 
 			}
@@ -626,7 +628,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 282.5, 4414.0, 107.0, 22.0 ],
+					"patching_rect" : [ 282.5, 4414.0, 107.0, 24.0 ],
 					"text" : "o.pack /int /x 15"
 				}
 
@@ -639,7 +641,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 439.0, 4414.0, 435.0, 126.0 ],
+					"patching_rect" : [ 439.0, 4414.0, 435.0, 141.0 ],
 					"text" : "Let's pause on this example for a minute.  \n\nThe null coalescing assignment operator (??=) basically states that if /x is unbound, assign the value 0 (zero) to it and move forward with the next lines of the expression.\n\nThis removes the need to use the method in #1, and is quite different than #2.  It's different because if we want to pass in a value in the beginning of our patch running, we can - the default value is ONLY supplied if /x is missing from the incoming bundle."
 				}
 
@@ -650,7 +652,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 168.5, 4345.0, 24.0, 20.0 ],
+					"patching_rect" : [ 168.5, 4345.0, 24.0, 22.0 ],
 					"text" : "#5"
 				}
 
@@ -662,7 +664,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 194.5, 4414.0, 72.0, 22.0 ],
+					"patching_rect" : [ 194.5, 4414.0, 72.0, 24.0 ],
 					"text" : "o.pack /int"
 				}
 
@@ -675,7 +677,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 194.5, 4369.0, 50.0, 22.0 ]
+					"patching_rect" : [ 194.5, 4369.0, 50.0, 24.0 ]
 				}
 
 			}
@@ -714,7 +716,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 459.666666666666742, 2534.0, 71.0, 20.0 ],
+					"patching_rect" : [ 459.666666666666742, 2534.0, 71.0, 22.0 ],
 					"text" : "Operators"
 				}
 
@@ -741,7 +743,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 180.0, 750.034482758620697, 378.0, 54.0 ],
+					"patching_rect" : [ 180.0, 750.034482758620697, 378.0, 57.0 ],
 					"text" : "The codebox can process a bundle passed to it.  Inside, we refer to addresses and write expressions that operate on data."
 				}
 
@@ -774,7 +776,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 166.25, 5402.0, 299.0, 76.0 ],
+					"patching_rect" : [ 166.25, 5402.0, 299.0, 85.0 ],
 					"text" : "Finally, here we convert a list of integers to a string.  This can be very useful if we wanted to manipulate the digits found in a list.  Here we use this function to first transform the data to string format, then join it together."
 				}
 
@@ -786,7 +788,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 691.0, 6755.0, 111.0, 20.0 ]
+					"patching_rect" : [ 691.0, 6755.0, 111.0, 22.0 ]
 				}
 
 			}
@@ -798,7 +800,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 500.5, 5129.0, 296.5, 62.0 ],
+					"patching_rect" : [ 500.5, 5129.0, 296.5, 69.0 ],
 					"text" : "Another situation might require that we convert a list of integers to booleans, or a list of booleans to a list of binary integers.\nBoth examples of this are illustrated to the left."
 				}
 
@@ -810,7 +812,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 756.0, 4780.0, 44.0, 22.0 ],
+					"patching_rect" : [ 756.0, 4780.0, 44.0, 24.0 ],
 					"text" : "5.321"
 				}
 
@@ -822,7 +824,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 696.0, 4780.0, 44.0, 22.0 ],
+					"patching_rect" : [ 696.0, 4780.0, 44.0, 24.0 ],
 					"text" : "0.123"
 				}
 
@@ -835,7 +837,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 415.333333333333314, 5705.0, 47.0, 62.0 ],
+					"patching_rect" : [ 415.333333333333314, 5705.0, 47.0, 69.0 ],
 					"text" : "uint8\nuint16\nuint32\nuint64"
 				}
 
@@ -848,7 +850,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 576.0, 5705.0, 43.0, 62.0 ],
+					"patching_rect" : [ 576.0, 5705.0, 43.0, 69.0 ],
 					"text" : "char\nbool\nstring\nblob"
 				}
 
@@ -861,7 +863,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 493.666666666666629, 5705.0, 51.0, 34.0 ],
+					"patching_rect" : [ 493.666666666666629, 5705.0, 51.0, 38.0 ],
 					"text" : "float32\nfloat64"
 				}
 
@@ -873,7 +875,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 76.0, 5625.0, 819.0, 34.0 ],
+					"patching_rect" : [ 76.0, 5625.0, 819.0, 38.0 ],
 					"text" : "Here is a full list of data types that can be used for type coercion in ODOT.  As illustrated above, your mileage may vary depending on what exactly it is that you are trying to do.",
 					"textjustification" : 1
 				}
@@ -932,7 +934,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 630.0, 4883.0, 50.0, 22.0 ]
+					"patching_rect" : [ 630.0, 4883.0, 50.0, 24.0 ]
 				}
 
 			}
@@ -943,7 +945,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "int" ],
-					"patching_rect" : [ 630.0, 4853.0, 20.0, 22.0 ],
+					"patching_rect" : [ 630.0, 4853.0, 20.0, 24.0 ],
 					"text" : "t i"
 				}
 
@@ -1012,7 +1014,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 696.0, 4853.0, 84.0, 22.0 ],
+					"patching_rect" : [ 696.0, 4853.0, 84.0, 24.0 ],
 					"text" : "o.pack /float"
 				}
 
@@ -1026,7 +1028,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 696.0, 4817.0, 92.0, 22.0 ]
+					"patching_rect" : [ 696.0, 4817.0, 92.0, 24.0 ]
 				}
 
 			}
@@ -1052,7 +1054,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 104.0, 4796.0, 460.0, 132.0 ],
+					"patching_rect" : [ 104.0, 4796.0, 460.0, 147.0 ],
 					"text" : "Before we move on to the next tutorial, let's take a minute to look at data types and casting.  \nLet's say we have a float, which we'd like to represent as an int.  We can do that by calling one of the int functions.  In this case, we'll convert to a 16-bit integer, which requires int16().\n\nYou'll notice that this truncates the float down, as the decimal point representation cannot be represented iwth an integer as such.  This is the same as what happens when we run something through [trigger]."
 				}
 
@@ -1064,7 +1066,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 408.166666666666742, 4665.0, 174.0, 20.0 ],
+					"patching_rect" : [ 408.166666666666742, 4665.0, 174.0, 22.0 ],
 					"text" : "Typecasting, type coercion"
 				}
 
@@ -1085,7 +1087,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 432.5, 3514.0, 24.0, 20.0 ],
+					"patching_rect" : [ 432.5, 3514.0, 24.0, 22.0 ],
 					"text" : "#1"
 				}
 
@@ -1096,7 +1098,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 700.5, 4024.0, 24.0, 20.0 ],
+					"patching_rect" : [ 700.5, 4024.0, 24.0, 22.0 ],
 					"text" : "#4"
 				}
 
@@ -1107,7 +1109,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 402.5, 4024.0, 24.0, 20.0 ],
+					"patching_rect" : [ 402.5, 4024.0, 24.0, 22.0 ],
 					"text" : "#3"
 				}
 
@@ -1118,7 +1120,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 103.0, 4020.0, 24.0, 20.0 ],
+					"patching_rect" : [ 103.0, 4020.0, 24.0, 22.0 ],
 					"text" : "#2"
 				}
 
@@ -1130,7 +1132,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 717.5, 4093.0, 114.0, 22.0 ],
+					"patching_rect" : [ 717.5, 4093.0, 114.0, 24.0 ],
 					"text" : "o.pack /int /x 500"
 				}
 
@@ -1143,7 +1145,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 717.5, 4048.0, 50.0, 22.0 ]
+					"patching_rect" : [ 717.5, 4048.0, 50.0, 24.0 ]
 				}
 
 			}
@@ -1181,7 +1183,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 428.5, 4093.0, 72.0, 22.0 ],
+					"patching_rect" : [ 428.5, 4093.0, 72.0, 24.0 ],
 					"text" : "o.pack /int"
 				}
 
@@ -1194,7 +1196,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 428.5, 4048.0, 50.0, 22.0 ]
+					"patching_rect" : [ 428.5, 4048.0, 50.0, 24.0 ]
 				}
 
 			}
@@ -1233,7 +1235,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 226.5, 4048.0, 66.0, 22.0 ],
+					"patching_rect" : [ 226.5, 4048.0, 66.0, 24.0 ],
 					"text" : "loadbang"
 				}
 
@@ -1261,7 +1263,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 121.5, 4141.0, 124.0, 22.0 ],
+					"patching_rect" : [ 121.5, 4141.0, 124.0, 24.0 ],
 					"text" : "o.union"
 				}
 
@@ -1273,7 +1275,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 121.5, 4093.0, 72.0, 22.0 ],
+					"patching_rect" : [ 121.5, 4093.0, 72.0, 24.0 ],
 					"text" : "o.pack /int"
 				}
 
@@ -1286,7 +1288,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 121.5, 4048.0, 50.0, 22.0 ]
+					"patching_rect" : [ 121.5, 4048.0, 50.0, 24.0 ]
 				}
 
 			}
@@ -1325,7 +1327,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 138.0, 3824.0, 731.0, 132.0 ],
+					"patching_rect" : [ 138.0, 3824.0, 731.0, 147.0 ],
 					"text" : "There are a few solutions to address this problem, all of which fall under the hood of \"defensive programming\":\n\n1. click on the [o.compose] box above (containing the /x), to blend it in to our input bundle before we send our bundle\n2. use [loadbang] to send the bundle into [o.union] before we use the patch\n3. create /x in [o.expr.codebox]\n4. use o.pack\n5. use the null coalescing operator\n\nLook below at each approach and examine them for differences."
 				}
 
@@ -1334,12 +1336,13 @@
 				"box" : 				{
 					"fontsize" : 13.0,
 					"id" : "obj-106",
-					"linecount" : 14,
+					"linecount" : 13,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 486.5, 3483.0, 313.0, 188.0 ],
-					"text" : "In the example to the left, we cannot rely on /x being present in the bundle until we click the compose box that contains it.\n\nTry putting a value into the /int value and hitting enter.  Note that this produces an error in the Max console, since we attempt to use the value of /x before we actually union /x with the incoming bundle containing /int.  \n\nThe error \"+: address /x is unbound\" tells us that there was an operation attempted in which /x was supposed to be added to something, and it failed because libo found no such /x."
+					"patching_rect" : [ 486.5, 3500.0, 396.5, 195.0 ],
+					"presentation_linecount" : 17,
+					"text" : "In the example to the left, we cannot rely on /x being present in the bundle until we click the compose box that contains it.\n\nLet's generate an error!  Open your Max console for this one...\n\nTry entering in a value to the number box connected to [o.pack /int] and hit enter.  Note that this generates an error because we attempt to use the value of /x before we actually union /x with the incoming bundle containing the address /int.  \n\nThe error \"+: address /x is unbound\" tells us that there was an operation attempted in which /x was supposed to be added to something, and it failed because libo found no such /x."
 				}
 
 			}
@@ -1350,7 +1353,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 235.666666666666742, 3337.0, 521.0, 48.0 ],
+					"patching_rect" : [ 235.666666666666742, 3337.0, 521.0, 53.0 ],
 					"text" : "Many times we may have an operation we'd like to perform but the address is missing from a bundle that is input.  Let's look at a few cases in which initialization can help us, and how we might employ it to our advantage.",
 					"textjustification" : 1
 				}
@@ -1363,7 +1366,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 428.166666666666742, 3253.0, 134.0, 20.0 ],
+					"patching_rect" : [ 428.166666666666742, 3253.0, 134.0, 22.0 ],
 					"text" : "Unbound addresses"
 				}
 
@@ -1385,7 +1388,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 439.666666666666742, 1655.0, 111.0, 20.0 ],
+					"patching_rect" : [ 439.666666666666742, 1655.0, 111.0, 22.0 ],
 					"text" : "Calling functions"
 				}
 
@@ -1407,7 +1410,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 445.666666666666742, 2886.0, 99.0, 20.0 ],
+					"patching_rect" : [ 445.666666666666742, 2886.0, 99.0, 22.0 ],
 					"text" : "Address reuse"
 				}
 
@@ -1430,7 +1433,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 815.0, 2431.0, 150.0, 22.0 ],
+					"patching_rect" : [ 815.0, 2431.0, 150.0, 24.0 ],
 					"text" : "sprintf load %s.maxpat"
 				}
 
@@ -1443,7 +1446,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 815.0, 2465.0, 58.0, 22.0 ],
+					"patching_rect" : [ 815.0, 2465.0, 58.0, 24.0 ],
 					"text" : "pcontrol"
 				}
 
@@ -1466,7 +1469,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 815.0, 2392.5, 92.0, 20.0 ],
+					"patching_rect" : [ 815.0, 2392.5, 92.0, 22.0 ],
 					"text" : "o.expr.overview"
 				}
 
@@ -1478,7 +1481,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 743.0, 3168.0, 151.0, 18.0 ],
+					"patching_rect" : [ 743.0, 3168.0, 151.0, 20.0 ],
 					"text" : "redefinition + consolidation",
 					"textjustification" : 1
 				}
@@ -1491,7 +1494,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 593.5, 3168.0, 67.0, 18.0 ],
+					"patching_rect" : [ 593.5, 3168.0, 67.0, 20.0 ],
 					"text" : "redefinition"
 				}
 
@@ -1503,7 +1506,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 385.0, 3168.0, 94.0, 18.0 ],
+					"patching_rect" : [ 385.0, 3168.0, 94.0, 20.0 ],
 					"text" : "extra addresses"
 				}
 
@@ -1608,7 +1611,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 185.0, 2647.5, 364.0, 126.0 ],
+					"patching_rect" : [ 185.0, 2647.5, 364.0, 138.0 ],
 					"text" : "Many of the operators common to other languages are available in ODOT's expression language.\n\nHere, the address /int is sent in to the codebox from the outside.  Note how we use the object [o.pack] here to get from Max to ODOT.  We looked at this previously with multislider, and the same ideas apply here.  As soon as we've bound data to an address, we're ready to process it."
 				}
 
@@ -1620,7 +1623,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 591.0, 653.0, 67.0, 18.0 ],
+					"patching_rect" : [ 591.0, 653.0, 67.0, 20.0 ],
 					"text" : "o.compose",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -1650,7 +1653,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 345.0, 5705.0, 39.0, 62.0 ],
+					"patching_rect" : [ 345.0, 5705.0, 39.0, 69.0 ],
 					"text" : "int8\nint16\nint32\nint64"
 				}
 
@@ -1690,7 +1693,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 72.0, 2998.5, 235.0, 110.0 ],
+					"patching_rect" : [ 72.0, 2998.5, 235.0, 123.0 ],
 					"text" : "Let's say we have an address which we'd like to use to calculate a new version of itself.  This type of data transformation can lend to both shorter expressions and unnecessary time spent with newlines.  Look at the differences between the two examples to the right."
 				}
 
@@ -1701,7 +1704,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 295.5, 3469.0, 121.0, 20.0 ],
+					"patching_rect" : [ 295.5, 3469.0, 121.0, 22.0 ],
 					"text" : "< put a value here"
 				}
 
@@ -1729,7 +1732,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 240.5, 3562.0, 54.0, 22.0 ],
+					"patching_rect" : [ 240.5, 3562.0, 54.0, 24.0 ],
 					"text" : "o.union"
 				}
 
@@ -1741,7 +1744,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 240.5, 3514.0, 72.0, 22.0 ],
+					"patching_rect" : [ 240.5, 3514.0, 72.0, 24.0 ],
 					"text" : "o.pack /int"
 				}
 
@@ -1754,7 +1757,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 240.5, 3469.0, 50.0, 22.0 ]
+					"patching_rect" : [ 240.5, 3469.0, 50.0, 24.0 ]
 				}
 
 			}
@@ -1792,7 +1795,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 568.0, 2657.0, 72.0, 22.0 ],
+					"patching_rect" : [ 568.0, 2657.0, 72.0, 24.0 ],
 					"text" : "o.pack /int"
 				}
 
@@ -1805,7 +1808,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 568.0, 2612.0, 50.0, 22.0 ]
+					"patching_rect" : [ 568.0, 2612.0, 50.0, 24.0 ]
 				}
 
 			}
@@ -1814,13 +1817,11 @@
 					"fontface" : 0,
 					"fontsize" : 12.0,
 					"id" : "obj-69",
-					"linecount" : 4,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 568.0, 2762.0, 150.0, 75.0 ],
-					"text" : "/int : 52,\n/add : 552,\n/mult : 26000,\n/mything : 123"
+					"patching_rect" : [ 568.0, 2762.0, 150.0, 34.0 ]
 				}
 
 			}
@@ -1846,7 +1847,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 650.0, 2659.0, 157.0, 18.0 ],
+					"patching_rect" : [ 650.0, 2659.0, 157.0, 20.0 ],
 					"text" : "commas, colon, equals sign"
 				}
 
@@ -1858,7 +1859,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 567.0, 2188.0, 127.0, 18.0 ],
+					"patching_rect" : [ 567.0, 2188.0, 127.0, 20.0 ],
 					"text" : "an in-place calculation"
 				}
 
@@ -1885,7 +1886,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 560.5, 1885.0, 152.0, 22.0 ],
+					"patching_rect" : [ 560.5, 1885.0, 152.0, 24.0 ],
 					"text" : "load odot-pow.maxhelp"
 				}
 
@@ -1898,7 +1899,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 560.5, 1930.0, 58.0, 22.0 ],
+					"patching_rect" : [ 560.5, 1930.0, 58.0, 24.0 ],
 					"text" : "pcontrol"
 				}
 
@@ -1921,7 +1922,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 509.5, 1989.0, 36.0, 18.0 ],
+					"patching_rect" : [ 509.5, 1989.0, 36.0, 20.0 ],
 					"text" : "power",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -1934,7 +1935,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 591.0, 815.965517241379303, 56.0, 18.0 ],
+					"patching_rect" : [ 591.0, 815.965517241379303, 56.0, 20.0 ],
 					"text" : "o.display",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -1947,7 +1948,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 591.0, 736.534482758620697, 90.0, 18.0 ],
+					"patching_rect" : [ 591.0, 736.534482758620697, 90.0, 20.0 ],
 					"text" : "o.expr.codebox"
 				}
 
@@ -2030,7 +2031,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 451.0, 2235.5, 408.0, 160.0 ],
+					"patching_rect" : [ 451.0, 2235.5, 408.0, 179.0 ],
 					"text" : "Let's say that we want to check on whether an address has been bound to a value.  This is a type of introspection, which allows us to know whether or not something happened previously.\n\nWe can check on this value state with the bound() function, and check on whether or not an address exists with exists().  Click on the [o.compose] box containing /c or /d and note that there is no data associated with the address.  \n\nFor a complete list of functions alongside examples, see:"
 				}
 
@@ -2043,7 +2044,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 110.0, 1968.0, 197.0, 18.0 ],
+					"patching_rect" : [ 110.0, 1968.0, 197.0, 20.0 ],
 					"text" : "assignment: functions return values"
 				}
 
@@ -2084,7 +2085,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 190.0, 1741.0, 182.0, 18.0 ],
+					"patching_rect" : [ 190.0, 1741.0, 182.0, 20.0 ],
 					"text" : "assignment: function vs operator"
 				}
 
@@ -2101,7 +2102,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 416.0, 1771.0, 424.0, 78.0 ],
+					"patching_rect" : [ 416.0, 1771.0, 424.0, 84.0 ],
 					"text" : "Here we illustrate the difference between using an operator and calling a function.  In most situations the two are identical.  Click the codebox to see the result of both assignments.  When calling the function assign(), two arguments are required:  1. address name 2. data to bind"
 				}
 
@@ -2140,7 +2141,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 887.0, 613.0, 96.0, 20.0 ],
+					"patching_rect" : [ 887.0, 613.0, 96.0, 22.0 ],
 					"text" : "( scroll down )"
 				}
 
@@ -2154,7 +2155,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 216.0, 475.0, 148.0, 66.0 ],
+					"patching_rect" : [ 216.0, 475.0, 148.0, 74.0 ],
 					"text" : "note that [o.display] illuminates when it receives something, even if that something is full of nothing."
 				}
 
@@ -2171,7 +2172,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 418.0, 289.0, 369.0, 173.0 ],
+					"patching_rect" : [ 418.0, 289.0, 369.0, 190.0 ],
 					"text" : "This is [o.expr.codebox].\n\nWe can write expressions in it to operate on any portion of a bundle that it has been passed in.  It allows us to generate addresses, call libo functions, utilize operators and define addresses (variables).  This particular instance of [o.expr.codebox] has no expression in it, so it will simply output an empty bundle if given a bang or upon being clicked.\n\n(the box is a button)"
 				}
 
@@ -2183,7 +2184,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 122.0, 172.0, 760.0, 20.0 ],
+					"patching_rect" : [ 122.0, 172.0, 760.0, 22.0 ],
 					"text" : "This section of the tutorial covers some preliminary information and use cases surrounding the odot expression language.",
 					"textjustification" : 1
 				}
@@ -2234,7 +2235,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 781.0, 46.5, 61.0, 22.0 ],
+					"patching_rect" : [ 781.0, 46.5, 61.0, 24.0 ],
 					"text" : "onecopy"
 				}
 
@@ -2266,7 +2267,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 405.0, 1956.0, 485.0, 146.0 ],
+					"patching_rect" : [ 405.0, 1956.0, 485.0, 163.0 ],
 					"text" : "The expression language is similar to many other languages you may have come into contact with.  For those unfamiliar, a function like pow() is an abbreviation of [          ].  This particular function is the same as the max object [pow].  Similarly, '=' is shorthand for assign().\n\nClick on the [o.expr.codebox] to the left.  Note that the pow() function takes two arguments - the base and the power, and returns the result of this calculation.  We can perform the calculation inplace, but unless we assign it to an address (a variable), we cannot use it somewhere else in our code (or down the chain in a patch)."
 				}
 
@@ -2775,28 +2776,28 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "advance.maxpat",
-				"bootpath" : "~/Development/CNMAT/CNMAT/CNMAT-odot/patchers/tutorial",
+				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/patchers/tutorial",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "filelist.txt",
-				"bootpath" : "~/Development/CNMAT/CNMAT/CNMAT-odot/patchers/tutorial",
+				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/patchers/tutorial",
 				"patcherrelativepath" : ".",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "close_parent.js",
-				"bootpath" : "~/Development/CNMAT/CNMAT/CNMAT-odot/patchers/tutorial",
+				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/patchers/tutorial",
 				"patcherrelativepath" : ".",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "banner.maxpat",
-				"bootpath" : "~/Development/CNMAT/CNMAT/CNMAT-odot/patchers/tutorial",
+				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/patchers/tutorial",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
