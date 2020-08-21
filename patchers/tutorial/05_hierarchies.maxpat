@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 4,
+			"revision" : 5,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -41,14 +41,96 @@
 		"boxes" : [ 			{
 				"box" : 				{
 					"fontsize" : 12.0,
-					"id" : "obj-20",
-					"linecount" : 2,
+					"id" : "obj-11",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "FullPacket" ],
+					"patching_rect" : [ 384.0, 2373.5, 91.0, 22.0 ],
+					"text" : "o.route /voice/1"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-60",
+					"maxclass" : "button",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "bang" ],
+					"parameter_enable" : 0,
+					"patching_rect" : [ 125.0, 1647.0, 24.0, 24.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"bubble" : 1,
+					"bubbletextmargin" : 7,
+					"bubbleusescolors" : 1,
+					"fontsize" : 11.0,
+					"id" : "obj-57",
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 261.0, 2041.0, 513.0, 33.0 ],
+					"patching_rect" : [ 290.0, 1604.5, 106.0, 27.0 ],
 					"style" : "default",
-					"text" : "Click this button to see what is contained in another dictionary (with a different reference name)\nIt's empty!  Let's try to remedy that..."
+					"text" : "name out data"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"bubble" : 1,
+					"bubbletextmargin" : 7,
+					"bubbleusescolors" : 1,
+					"fontsize" : 11.0,
+					"id" : "obj-56",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 227.0, 1551.0, 148.0, 27.0 ],
+					"style" : "default",
+					"text" : "aggregate each bundle"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontsize" : 12.0,
+					"id" : "obj-52",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "FullPacket" ],
+					"patching_rect" : [ 162.0, 1607.0, 111.0, 22.0 ],
+					"text" : "o.pack /synthesizer"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontsize" : 12.0,
+					"id" : "obj-51",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "" ],
+					"patching_rect" : [ 162.0, 1567.0, 28.0, 22.0 ],
+					"text" : "t l l"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontsize" : 12.0,
+					"id" : "obj-50",
+					"maxclass" : "newobj",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "FullPacket" ],
+					"patching_rect" : [ 162.0, 1544.0, 48.0, 22.0 ],
+					"text" : "o.union"
 				}
 
 			}
@@ -62,10 +144,41 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 162.0, 1343.0, 193.0, 187.0 ],
-					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 24, 47, 115, 121, 110, 116, 104, 47, 49, 0, 0, 0, 0, 44, 46, 0, 0, 0, 0, 1, 4, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 102, 114, 101, 113, 0, 0, 0, 44, 100, 0, 0, 64, 111, -64, 0, 0, 0, 0, 0, 0, 0, 0, 24, 47, 119, 97, 118, 101, 102, 111, 114, 109, 0, 0, 0, 44, 115, 0, 0, 114, 101, 99, 116, 0, 0, 0, 0, 0, 0, 0, 100, 47, 102, 105, 108, 116, 101, 114, 0, 44, 46, 0, 0, 0, 0, 0, 84, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 116, 121, 112, 101, 0, 0, 0, 44, 115, 0, 0, 108, 111, 119, 112, 97, 115, 115, 0, 0, 0, 0, 20, 47, 102, 114, 101, 113, 0, 0, 0, 44, 100, 0, 0, 64, -102, -112, 0, 0, 0, 0, 0, 0, 0, 0, 16, 47, 113, 0, 0, 44, 100, 0, 0, 64, 1, -103, -103, -103, -103, -103, -102, 0, 0, 0, 84, 47, 101, 110, 118, 0, 0, 0, 0, 44, 46, 0, 0, 0, 0, 0, 68, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 97, 109, 112, 0, 0, 0, 0, 44, 100, 0, 0, 63, -20, -52, -52, -52, -52, -52, -51, 0, 0, 0, 24, 47, 100, 117, 114, 47, 115, 101, 99, 0, 0, 0, 0, 44, 100, 0, 0, 63, -45, 51, 51, 51, 51, 51, 51 ],
+					"patching_rect" : [ 45.5, 1306.0, 193.0, 187.0 ],
+					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 24, 47, 118, 111, 105, 99, 101, 47, 49, 0, 0, 0, 0, 44, 46, 0, 0, 0, 0, 1, 4, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 102, 114, 101, 113, 0, 0, 0, 44, 100, 0, 0, 64, 111, -64, 0, 0, 0, 0, 0, 0, 0, 0, 24, 47, 119, 97, 118, 101, 102, 111, 114, 109, 0, 0, 0, 44, 115, 0, 0, 114, 101, 99, 116, 0, 0, 0, 0, 0, 0, 0, 100, 47, 102, 105, 108, 116, 101, 114, 0, 44, 46, 0, 0, 0, 0, 0, 84, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 116, 121, 112, 101, 0, 0, 0, 44, 115, 0, 0, 108, 111, 119, 112, 97, 115, 115, 0, 0, 0, 0, 20, 47, 102, 114, 101, 113, 0, 0, 0, 44, 100, 0, 0, 64, -102, -112, 0, 0, 0, 0, 0, 0, 0, 0, 16, 47, 113, 0, 0, 44, 100, 0, 0, 64, 1, -103, -103, -103, -103, -103, -102, 0, 0, 0, 84, 47, 101, 110, 118, 0, 0, 0, 0, 44, 46, 0, 0, 0, 0, 0, 68, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 97, 109, 112, 0, 0, 0, 0, 44, 100, 0, 0, 63, -20, -52, -52, -52, -52, -52, -51, 0, 0, 0, 24, 47, 100, 117, 114, 47, 115, 101, 99, 0, 0, 0, 0, 44, 100, 0, 0, 63, -45, 51, 51, 51, 51, 51, 51 ],
 					"saved_bundle_length" : 300,
-					"text" : "/synth/1 : {\n\t/freq : 254.,\n\t/waveform : \"rect\",\n\t/filter : {\n\t\t/type : \"lowpass\",\n\t\t/freq : 1700.,\n\t\t/q : 2.2\n\t},\n\t/env : {\n\t\t/amp : 0.9,\n\t\t/dur/sec : 0.3\n\t}\n}"
+					"text" : "/voice/1 : {\n\t/freq : 254.,\n\t/waveform : \"rect\",\n\t/filter : {\n\t\t/type : \"lowpass\",\n\t\t/freq : 1700.,\n\t\t/q : 2.2\n\t},\n\t/env : {\n\t\t/amp : 0.9,\n\t\t/dur/sec : 0.3\n\t}\n}"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontface" : 0,
+					"fontsize" : 12.0,
+					"id" : "obj-44",
+					"linecount" : 13,
+					"maxclass" : "o.compose",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 268.333333333333258, 1306.0, 193.0, 187.0 ],
+					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 24, 47, 118, 111, 105, 99, 101, 47, 50, 0, 0, 0, 0, 44, 46, 0, 0, 0, 0, 1, 4, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 102, 114, 101, 113, 0, 0, 0, 44, 100, 0, 0, 64, -124, 112, 0, 0, 0, 0, 0, 0, 0, 0, 24, 47, 119, 97, 118, 101, 102, 111, 114, 109, 0, 0, 0, 44, 115, 0, 0, 115, 105, 110, 101, 0, 0, 0, 0, 0, 0, 0, 100, 47, 102, 105, 108, 116, 101, 114, 0, 44, 46, 0, 0, 0, 0, 0, 84, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 116, 121, 112, 101, 0, 0, 0, 44, 115, 0, 0, 108, 111, 119, 112, 97, 115, 115, 0, 0, 0, 0, 20, 47, 102, 114, 101, 113, 0, 0, 0, 44, 100, 0, 0, 64, 114, -64, 0, 0, 0, 0, 0, 0, 0, 0, 16, 47, 113, 0, 0, 44, 100, 0, 0, 63, -13, 51, 51, 51, 51, 51, 51, 0, 0, 0, 84, 47, 101, 110, 118, 0, 0, 0, 0, 44, 46, 0, 0, 0, 0, 0, 68, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 97, 109, 112, 0, 0, 0, 0, 44, 100, 0, 0, 63, -20, -52, -52, -52, -52, -52, -51, 0, 0, 0, 24, 47, 100, 117, 114, 47, 115, 101, 99, 0, 0, 0, 0, 44, 100, 0, 0, 63, -32, 0, 0, 0, 0, 0, 0 ],
+					"saved_bundle_length" : 300,
+					"text" : "/voice/2 : {\n\t/freq : 654.,\n\t/waveform : \"sine\",\n\t/filter : {\n\t\t/type : \"lowpass\",\n\t\t/freq : 300.,\n\t\t/q : 1.2\n\t},\n\t/env : {\n\t\t/amp : 0.9,\n\t\t/dur/sec : 0.5\n\t}\n}"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontsize" : 12.0,
+					"id" : "obj-20",
+					"linecount" : 2,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 261.0, 2071.0, 513.0, 33.0 ],
+					"style" : "default",
+					"text" : "Click this button to see what is contained in another dictionary (with a different reference name)\nIt's empty!  Let's try to remedy that..."
 				}
 
 			}
@@ -95,13 +208,13 @@
 				"box" : 				{
 					"fontsize" : 13.0,
 					"id" : "obj-46",
-					"linecount" : 10,
+					"linecount" : 23,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 444.5, 1343.0, 424.0, 152.0 ],
+					"patching_rect" : [ 508.5, 1378.5, 431.0, 341.0 ],
 					"style" : "default",
-					"text" : "Let's take a look at how we might store a bundle like this outside of Max.\n\nClick the [o.compose] object to the left.\nWe might be interested in storing the same bundle that we just used to generate sound on disk, so that we can recall it later, or maybe use it in a different patch in the future.\n\nWe can see this in action by clicking on the [o.compose] box on the left.\nNote that the button illuminates to reflect to us that something happened..."
+					"text" : "Let's take a look at how we might store a bundle like this outside of Max.\n\nWe could decide to store the same bundle – that we just used to generate sound – on disk, so that we can recall it later, or maybe use it in a different patch in the future.  Click the [o.compose] objects to the left, in sequence, and note that both [button]s illuminate each time an [o.compose] box is clicked.  \n\nWhat's happening here?\n\nFirst, let's review the flow of using [o.union] to store a bundle that just got output with an incoming bundle:  Each time we click on one of the [o.compose] boxes, we fold that result in to the pre-existing bundle.  If there was already data in the right inlet of [o.union], that data is updated with the incoming bundle's contents.  \n\nSo unioning data does two critical things to a previously existing bundle:\n\n1. updates pre-existing addresses, if present\n2. adds new addresses, if present\n\nAfter the data is unioned, we use [o.pack] name it as \"/synthesizer\".  Now the address \"/synthesizer\" contains the entirety of our bundle."
 				}
 
 			}
@@ -163,9 +276,9 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 613.0, 684.0, 193.0, 364.0 ],
-					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 24, 47, 115, 121, 110, 116, 104, 47, 50, 0, 0, 0, 0, 44, 46, 0, 0, 0, 0, 1, 4, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 102, 114, 101, 113, 0, 0, 0, 44, 100, 0, 0, 64, -124, 112, 0, 0, 0, 0, 0, 0, 0, 0, 24, 47, 119, 97, 118, 101, 102, 111, 114, 109, 0, 0, 0, 44, 115, 0, 0, 115, 105, 110, 101, 0, 0, 0, 0, 0, 0, 0, 100, 47, 102, 105, 108, 116, 101, 114, 0, 44, 46, 0, 0, 0, 0, 0, 84, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 116, 121, 112, 101, 0, 0, 0, 44, 115, 0, 0, 108, 111, 119, 112, 97, 115, 115, 0, 0, 0, 0, 20, 47, 102, 114, 101, 113, 0, 0, 0, 44, 100, 0, 0, 64, 114, -64, 0, 0, 0, 0, 0, 0, 0, 0, 16, 47, 113, 0, 0, 44, 100, 0, 0, 63, -13, 51, 51, 51, 51, 51, 51, 0, 0, 0, 84, 47, 101, 110, 118, 0, 0, 0, 0, 44, 46, 0, 0, 0, 0, 0, 68, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 97, 109, 112, 0, 0, 0, 0, 44, 100, 0, 0, 63, -20, -52, -52, -52, -52, -52, -51, 0, 0, 0, 24, 47, 100, 117, 114, 47, 115, 101, 99, 0, 0, 0, 0, 44, 100, 0, 0, 63, -32, 0, 0, 0, 0, 0, 0, 0, 0, 1, 24, 47, 115, 121, 110, 116, 104, 47, 49, 0, 0, 0, 0, 44, 46, 0, 0, 0, 0, 1, 4, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 102, 114, 101, 113, 0, 0, 0, 44, 100, 0, 0, 64, 111, -64, 0, 0, 0, 0, 0, 0, 0, 0, 24, 47, 119, 97, 118, 101, 102, 111, 114, 109, 0, 0, 0, 44, 115, 0, 0, 114, 101, 99, 116, 0, 0, 0, 0, 0, 0, 0, 100, 47, 102, 105, 108, 116, 101, 114, 0, 44, 46, 0, 0, 0, 0, 0, 84, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 116, 121, 112, 101, 0, 0, 0, 44, 115, 0, 0, 108, 111, 119, 112, 97, 115, 115, 0, 0, 0, 0, 20, 47, 102, 114, 101, 113, 0, 0, 0, 44, 100, 0, 0, 64, -102, -112, 0, 0, 0, 0, 0, 0, 0, 0, 16, 47, 113, 0, 0, 44, 100, 0, 0, 64, 1, -103, -103, -103, -103, -103, -102, 0, 0, 0, 84, 47, 101, 110, 118, 0, 0, 0, 0, 44, 46, 0, 0, 0, 0, 0, 68, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 97, 109, 112, 0, 0, 0, 0, 44, 100, 0, 0, 63, -20, -52, -52, -52, -52, -52, -51, 0, 0, 0, 24, 47, 100, 117, 114, 47, 115, 101, 99, 0, 0, 0, 0, 44, 100, 0, 0, 63, -45, 51, 51, 51, 51, 51, 51 ],
+					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 24, 47, 118, 111, 105, 99, 101, 47, 50, 0, 0, 0, 0, 44, 46, 0, 0, 0, 0, 1, 4, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 102, 114, 101, 113, 0, 0, 0, 44, 100, 0, 0, 64, -124, 112, 0, 0, 0, 0, 0, 0, 0, 0, 24, 47, 119, 97, 118, 101, 102, 111, 114, 109, 0, 0, 0, 44, 115, 0, 0, 115, 105, 110, 101, 0, 0, 0, 0, 0, 0, 0, 100, 47, 102, 105, 108, 116, 101, 114, 0, 44, 46, 0, 0, 0, 0, 0, 84, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 116, 121, 112, 101, 0, 0, 0, 44, 115, 0, 0, 108, 111, 119, 112, 97, 115, 115, 0, 0, 0, 0, 20, 47, 102, 114, 101, 113, 0, 0, 0, 44, 100, 0, 0, 64, 114, -64, 0, 0, 0, 0, 0, 0, 0, 0, 16, 47, 113, 0, 0, 44, 100, 0, 0, 63, -13, 51, 51, 51, 51, 51, 51, 0, 0, 0, 84, 47, 101, 110, 118, 0, 0, 0, 0, 44, 46, 0, 0, 0, 0, 0, 68, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 97, 109, 112, 0, 0, 0, 0, 44, 100, 0, 0, 63, -20, -52, -52, -52, -52, -52, -51, 0, 0, 0, 24, 47, 100, 117, 114, 47, 115, 101, 99, 0, 0, 0, 0, 44, 100, 0, 0, 63, -32, 0, 0, 0, 0, 0, 0, 0, 0, 1, 24, 47, 118, 111, 105, 99, 101, 47, 49, 0, 0, 0, 0, 44, 46, 0, 0, 0, 0, 1, 4, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 102, 114, 101, 113, 0, 0, 0, 44, 100, 0, 0, 64, 111, -64, 0, 0, 0, 0, 0, 0, 0, 0, 24, 47, 119, 97, 118, 101, 102, 111, 114, 109, 0, 0, 0, 44, 115, 0, 0, 114, 101, 99, 116, 0, 0, 0, 0, 0, 0, 0, 100, 47, 102, 105, 108, 116, 101, 114, 0, 44, 46, 0, 0, 0, 0, 0, 84, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 116, 121, 112, 101, 0, 0, 0, 44, 115, 0, 0, 108, 111, 119, 112, 97, 115, 115, 0, 0, 0, 0, 20, 47, 102, 114, 101, 113, 0, 0, 0, 44, 100, 0, 0, 64, -102, -112, 0, 0, 0, 0, 0, 0, 0, 0, 16, 47, 113, 0, 0, 44, 100, 0, 0, 64, 1, -103, -103, -103, -103, -103, -102, 0, 0, 0, 84, 47, 101, 110, 118, 0, 0, 0, 0, 44, 46, 0, 0, 0, 0, 0, 68, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 97, 109, 112, 0, 0, 0, 0, 44, 100, 0, 0, 63, -20, -52, -52, -52, -52, -52, -51, 0, 0, 0, 24, 47, 100, 117, 114, 47, 115, 101, 99, 0, 0, 0, 0, 44, 100, 0, 0, 63, -45, 51, 51, 51, 51, 51, 51 ],
 					"saved_bundle_length" : 584,
-					"text" : "/synth/2 : {\n\t/freq : 654.,\n\t/waveform : \"sine\",\n\t/filter : {\n\t\t/type : \"lowpass\",\n\t\t/freq : 300.,\n\t\t/q : 1.2\n\t},\n\t/env : {\n\t\t/amp : 0.9,\n\t\t/dur/sec : 0.5\n\t}\n},\n/synth/1 : {\n\t/freq : 254.,\n\t/waveform : \"rect\",\n\t/filter : {\n\t\t/type : \"lowpass\",\n\t\t/freq : 1700.,\n\t\t/q : 2.2\n\t},\n\t/env : {\n\t\t/amp : 0.9,\n\t\t/dur/sec : 0.3\n\t}\n}"
+					"text" : "/voice/2 : {\n\t/freq : 654.,\n\t/waveform : \"sine\",\n\t/filter : {\n\t\t/type : \"lowpass\",\n\t\t/freq : 300.,\n\t\t/q : 1.2\n\t},\n\t/env : {\n\t\t/amp : 0.9,\n\t\t/dur/sec : 0.5\n\t}\n},\n/voice/1 : {\n\t/freq : 254.,\n\t/waveform : \"rect\",\n\t/filter : {\n\t\t/type : \"lowpass\",\n\t\t/freq : 1700.,\n\t\t/q : 2.2\n\t},\n\t/env : {\n\t\t/amp : 0.9,\n\t\t/dur/sec : 0.3\n\t}\n}"
 				}
 
 			}
@@ -180,9 +293,9 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 523.0, 404.5, 193.0, 187.0 ],
-					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 24, 47, 115, 121, 110, 116, 104, 47, 50, 0, 0, 0, 0, 44, 46, 0, 0, 0, 0, 1, 4, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 102, 114, 101, 113, 0, 0, 0, 44, 100, 0, 0, 64, 118, 32, 0, 0, 0, 0, 0, 0, 0, 0, 24, 47, 119, 97, 118, 101, 102, 111, 114, 109, 0, 0, 0, 44, 115, 0, 0, 115, 105, 110, 101, 0, 0, 0, 0, 0, 0, 0, 100, 47, 102, 105, 108, 116, 101, 114, 0, 44, 46, 0, 0, 0, 0, 0, 84, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 116, 121, 112, 101, 0, 0, 0, 44, 115, 0, 0, 108, 111, 119, 112, 97, 115, 115, 0, 0, 0, 0, 20, 47, 102, 114, 101, 113, 0, 0, 0, 44, 100, 0, 0, 64, 114, -64, 0, 0, 0, 0, 0, 0, 0, 0, 16, 47, 113, 0, 0, 44, 100, 0, 0, 63, -13, 51, 51, 51, 51, 51, 51, 0, 0, 0, 84, 47, 101, 110, 118, 0, 0, 0, 0, 44, 46, 0, 0, 0, 0, 0, 68, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 97, 109, 112, 0, 0, 0, 0, 44, 100, 0, 0, 63, -20, -52, -52, -52, -52, -52, -51, 0, 0, 0, 24, 47, 100, 117, 114, 47, 115, 101, 99, 0, 0, 0, 0, 44, 100, 0, 0, 63, -12, -52, -52, -52, -52, -52, -51 ],
+					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 24, 47, 118, 111, 105, 99, 101, 47, 50, 0, 0, 0, 0, 44, 46, 0, 0, 0, 0, 1, 4, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 102, 114, 101, 113, 0, 0, 0, 44, 100, 0, 0, 64, 118, 32, 0, 0, 0, 0, 0, 0, 0, 0, 24, 47, 119, 97, 118, 101, 102, 111, 114, 109, 0, 0, 0, 44, 115, 0, 0, 115, 105, 110, 101, 0, 0, 0, 0, 0, 0, 0, 100, 47, 102, 105, 108, 116, 101, 114, 0, 44, 46, 0, 0, 0, 0, 0, 84, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 116, 121, 112, 101, 0, 0, 0, 44, 115, 0, 0, 108, 111, 119, 112, 97, 115, 115, 0, 0, 0, 0, 20, 47, 102, 114, 101, 113, 0, 0, 0, 44, 100, 0, 0, 64, 114, -64, 0, 0, 0, 0, 0, 0, 0, 0, 16, 47, 113, 0, 0, 44, 100, 0, 0, 63, -13, 51, 51, 51, 51, 51, 51, 0, 0, 0, 84, 47, 101, 110, 118, 0, 0, 0, 0, 44, 46, 0, 0, 0, 0, 0, 68, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 97, 109, 112, 0, 0, 0, 0, 44, 100, 0, 0, 63, -20, -52, -52, -52, -52, -52, -51, 0, 0, 0, 24, 47, 100, 117, 114, 47, 115, 101, 99, 0, 0, 0, 0, 44, 100, 0, 0, 63, -12, -52, -52, -52, -52, -52, -51 ],
 					"saved_bundle_length" : 300,
-					"text" : "/synth/2 : {\n\t/freq : 354.,\n\t/waveform : \"sine\",\n\t/filter : {\n\t\t/type : \"lowpass\",\n\t\t/freq : 300.,\n\t\t/q : 1.2\n\t},\n\t/env : {\n\t\t/amp : 0.9,\n\t\t/dur/sec : 1.3\n\t}\n}"
+					"text" : "/voice/2 : {\n\t/freq : 354.,\n\t/waveform : \"sine\",\n\t/filter : {\n\t\t/type : \"lowpass\",\n\t\t/freq : 300.,\n\t\t/q : 1.2\n\t},\n\t/env : {\n\t\t/amp : 0.9,\n\t\t/dur/sec : 1.3\n\t}\n}"
 				}
 
 			}
@@ -208,7 +321,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "FullPacket" ],
 					"patching_rect" : [ 162.0, 691.0, 215.0, 22.0 ],
-					"text" : "o.route /synth/1 /synth/2"
+					"text" : "o.route /voice/1 /voice/2"
 				}
 
 			}
@@ -319,7 +432,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 346.0, 2590.0, 477.0, 36.0 ],
+					"patching_rect" : [ 290.0, 2928.0, 477.0, 36.0 ],
 					"text" : "assigntobundlemember() allows us to create or update a member of a subbundle.\nA shortcut for this functionality is to use the dot (.) notation for indexing."
 				}
 
@@ -330,7 +443,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 500.0, 2907.5, 184.0, 22.0 ]
+					"patching_rect" : [ 478.0, 3214.5, 184.0, 22.0 ]
 				}
 
 			}
@@ -342,7 +455,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 704.0, 2764.5, 200.0, 33.0 ],
+					"patching_rect" : [ 704.0, 3094.5, 200.0, 33.0 ],
 					"text" : "if the address exists it can be updated (independent of data type)"
 				}
 
@@ -356,7 +469,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 88.0, 2762.5, 205.0, 34.0 ]
+					"patching_rect" : [ 88.0, 3092.5, 205.0, 34.0 ]
 				}
 
 			}
@@ -370,7 +483,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 88.0, 2698.5, 385.0, 46.0 ],
+					"patching_rect" : [ 88.0, 3028.5, 385.0, 46.0 ],
 					"text" : "assigntobundlemember(/container, /new, \"mystring\"), \n/container./list = list(/container./list, [44, 45])"
 				}
 
@@ -407,7 +520,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 88.0, 2590.0, 160.0, 65.0 ],
+					"patching_rect" : [ 88.0, 2920.0, 160.0, 65.0 ],
 					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 88, 47, 99, 111, 110, 116, 97, 105, 110, 101, 114, 0, 0, 44, 46, 0, 0, 0, 0, 0, 68, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 47, 110, 117, 109, 0, 0, 0, 0, 44, 105, 0, 0, 0, 0, 0, 12, 0, 0, 0, 28, 47, 108, 105, 115, 116, 0, 0, 0, 44, 105, 105, 105, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 2, 0, 0, 0, 3 ],
 					"saved_bundle_length" : 108,
 					"text" : "/container : {\n\t/num : 12,\n\t/list : [1, 2, 3]\n}"
@@ -423,7 +536,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 544.0, 2762.5, 150.0, 34.0 ]
+					"patching_rect" : [ 544.0, 3092.5, 150.0, 34.0 ]
 				}
 
 			}
@@ -436,7 +549,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 544.0, 2698.5, 356.0, 32.0 ],
+					"patching_rect" : [ 544.0, 3028.5, 356.0, 32.0 ],
 					"text" : "assigntobundlemember(/container, /num, \"twelve\")"
 				}
 
@@ -449,7 +562,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 600.0, 2419.0, 319.0, 65.0 ],
+					"patching_rect" : [ 600.0, 2659.0, 319.0, 65.0 ],
 					"text" : "note also that we can strip off subbundles by routing them with [o.route].  Here, we isolate the contents of the /env envelope from the rest of the synthesizer's address space."
 				}
 
@@ -462,7 +575,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 302.0, 2762.5, 133.0, 60.0 ],
+					"patching_rect" : [ 302.0, 3092.5, 133.0, 60.0 ],
 					"text" : "assigntobundlemember() will generate an address if there was none prior."
 				}
 
@@ -470,13 +583,15 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 14.0,
+					"fontsize" : 11.0,
 					"id" : "obj-17",
+					"linecount" : 2,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 414.0, 2407.0, 150.0, 36.0 ]
+					"patching_rect" : [ 384.0, 2669.0, 122.0, 45.0 ],
+					"text" : "/dur/sec : 0.3,\n/amp : 0.9"
 				}
 
 			}
@@ -488,7 +603,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "FullPacket" ],
-					"patching_rect" : [ 414.0, 2346.0, 72.0, 22.0 ],
+					"patching_rect" : [ 384.0, 2402.0, 72.0, 22.0 ],
 					"text" : "o.route /env"
 				}
 
@@ -501,7 +616,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "FullPacket" ],
-					"patching_rect" : [ 414.0, 2315.0, 113.0, 22.0 ],
+					"patching_rect" : [ 384.0, 2345.0, 113.0, 22.0 ],
 					"text" : "o.route /synthesizer"
 				}
 
@@ -509,13 +624,15 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 14.0,
+					"fontsize" : 11.0,
 					"id" : "obj-8",
+					"linecount" : 28,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 162.0, 2315.0, 212.0, 36.0 ]
+					"patching_rect" : [ 162.0, 2345.0, 171.0, 369.0 ],
+					"text" : "/synthesizer : {\n\t/voice/2 : {\n\t\t/waveform : \"sine\",\n\t\t/filter : {\n\t\t\t/type : \"lowpass\",\n\t\t\t/q : 1.2,\n\t\t\t/freq : 300.\n\t\t},\n\t\t/env : {\n\t\t\t/dur/sec : 0.5,\n\t\t\t/amp : 0.9\n\t\t},\n\t\t/freq : 654.\n\t},\n\t/voice/1 : {\n\t\t/waveform : \"rect\",\n\t\t/filter : {\n\t\t\t/type : \"lowpass\",\n\t\t\t/q : 2.2,\n\t\t\t/freq : 1700.\n\t\t},\n\t\t/env : {\n\t\t\t/dur/sec : 0.3,\n\t\t\t/amp : 0.9\n\t\t},\n\t\t/freq : 254.\n\t}\n}"
 				}
 
 			}
@@ -527,7 +644,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 130.0, 1617.0, 24.0, 24.0 ]
+					"patching_rect" : [ 125.0, 1720.0, 24.0, 24.0 ]
 				}
 
 			}
@@ -539,7 +656,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 227.0, 2041.0, 24.0, 24.0 ]
+					"patching_rect" : [ 227.0, 2071.0, 24.0, 24.0 ]
 				}
 
 			}
@@ -551,7 +668,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 600.0, 2303.0, 334.0, 65.0 ],
+					"patching_rect" : [ 600.0, 2333.0, 334.0, 65.0 ],
 					"text" : "What is interesting here is that the o.display object understands the Max dictionary and knows how read it into its contents.  In fact, nearly all of the ODOT objects know how to process dictionaries."
 				}
 
@@ -564,7 +681,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 288.0, 2151.0, 592.0, 65.0 ],
+					"patching_rect" : [ 288.0, 2181.0, 592.0, 65.0 ],
 					"style" : "default",
 					"text" : "This loads the data file that we just saved onto disk, into a separate dictionary.  Locate the file you just saved and load it in here.  Note that we can route the data back to the synth engine, as it's identical.  Try opening this dictionary up, changing some of the parameters, closing, and then clicking on the button.  Then scroll back up to the original compose box, and click it to hear the difference."
 				}
@@ -577,7 +694,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 245.0, 2120.0, 354.0, 21.0 ],
+					"patching_rect" : [ 245.0, 2150.0, 354.0, 21.0 ],
 					"style" : "default",
 					"text" : "...now, click to read data back in, and click the button again."
 				}
@@ -591,7 +708,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 162.0, 2120.0, 66.0, 22.0 ],
+					"patching_rect" : [ 162.0, 2150.0, 66.0, 22.0 ],
 					"text" : "read, bang"
 				}
 
@@ -604,7 +721,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 4,
 					"outlettype" : [ "dictionary", "", "", "" ],
-					"patching_rect" : [ 162.0, 2171.5, 100.0, 22.0 ],
+					"patching_rect" : [ 162.0, 2201.5, 100.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"embed" : 0,
 						"parameter_enable" : 0,
@@ -623,7 +740,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 208.0, 1890.0, 373.0, 36.0 ],
+					"patching_rect" : [ 208.0, 1920.0, 373.0, 36.0 ],
 					"style" : "default",
 					"text" : "OK - we've now transcoded our bundle into a dictionary.  \nLet's click the [write] message to save our descriptor to disk."
 				}
@@ -637,7 +754,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 162.0, 1890.0, 34.0, 22.0 ],
+					"patching_rect" : [ 162.0, 1920.0, 34.0, 22.0 ],
 					"text" : "write"
 				}
 
@@ -651,7 +768,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 263.0, 1946.0, 297.0, 47.0 ],
+					"patching_rect" : [ 263.0, 1976.0, 297.0, 47.0 ],
 					"style" : "default",
 					"text" : "because the dictionary \"mysynth\" contains our data in ODOT, we can use object reference name to allow us to write our bundles to disk, as well as read them in."
 				}
@@ -665,7 +782,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 4,
 					"outlettype" : [ "dictionary", "", "", "" ],
-					"patching_rect" : [ 162.0, 1957.0, 75.0, 22.0 ],
+					"patching_rect" : [ 162.0, 1987.0, 75.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"embed" : 0,
 						"parameter_enable" : 0,
@@ -696,7 +813,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 251.0, 1766.0, 523.0, 36.0 ],
+					"patching_rect" : [ 251.0, 1796.0, 523.0, 36.0 ],
 					"style" : "default",
 					"text" : "...now, double-click the dictionary to open its contents.  The structure of the JSON format that we see is the same as ODOT."
 				}
@@ -710,7 +827,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 162.0, 1577.5, 41.0, 22.0 ],
+					"patching_rect" : [ 162.0, 1674.5, 41.0, 22.0 ],
 					"text" : "o.dict"
 				}
 
@@ -722,10 +839,11 @@
 					"bubbleusescolors" : 1,
 					"fontsize" : 11.0,
 					"id" : "obj-4",
+					"linecount" : 3,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 221.0, 1572.0, 382.0, 33.0 ],
+					"patching_rect" : [ 213.0, 1659.0, 157.0, 57.0 ],
 					"style" : "default",
 					"text" : "This is the o.dict object.  It transforms the odot bundle into a dictionary. "
 				}
@@ -756,9 +874,9 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 162.0, 404.5, 193.0, 187.0 ],
-					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 24, 47, 115, 121, 110, 116, 104, 47, 49, 0, 0, 0, 0, 44, 46, 0, 0, 0, 0, 1, 4, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 102, 114, 101, 113, 0, 0, 0, 44, 100, 0, 0, 64, 118, 32, 0, 0, 0, 0, 0, 0, 0, 0, 24, 47, 119, 97, 118, 101, 102, 111, 114, 109, 0, 0, 0, 44, 115, 0, 0, 114, 101, 99, 116, 0, 0, 0, 0, 0, 0, 0, 100, 47, 102, 105, 108, 116, 101, 114, 0, 44, 46, 0, 0, 0, 0, 0, 84, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 116, 121, 112, 101, 0, 0, 0, 44, 115, 0, 0, 108, 111, 119, 112, 97, 115, 115, 0, 0, 0, 0, 20, 47, 102, 114, 101, 113, 0, 0, 0, 44, 100, 0, 0, 64, -102, -112, 0, 0, 0, 0, 0, 0, 0, 0, 16, 47, 113, 0, 0, 44, 100, 0, 0, 64, 1, -103, -103, -103, -103, -103, -102, 0, 0, 0, 84, 47, 101, 110, 118, 0, 0, 0, 0, 44, 46, 0, 0, 0, 0, 0, 68, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 97, 109, 112, 0, 0, 0, 0, 44, 100, 0, 0, 63, -20, -52, -52, -52, -52, -52, -51, 0, 0, 0, 24, 47, 100, 117, 114, 47, 115, 101, 99, 0, 0, 0, 0, 44, 100, 0, 0, 63, -45, 51, 51, 51, 51, 51, 51 ],
+					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 24, 47, 118, 111, 105, 99, 101, 47, 49, 0, 0, 0, 0, 44, 46, 0, 0, 0, 0, 1, 4, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 102, 114, 101, 113, 0, 0, 0, 44, 100, 0, 0, 64, 118, 32, 0, 0, 0, 0, 0, 0, 0, 0, 24, 47, 119, 97, 118, 101, 102, 111, 114, 109, 0, 0, 0, 44, 115, 0, 0, 114, 101, 99, 116, 0, 0, 0, 0, 0, 0, 0, 100, 47, 102, 105, 108, 116, 101, 114, 0, 44, 46, 0, 0, 0, 0, 0, 84, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 116, 121, 112, 101, 0, 0, 0, 44, 115, 0, 0, 108, 111, 119, 112, 97, 115, 115, 0, 0, 0, 0, 20, 47, 102, 114, 101, 113, 0, 0, 0, 44, 100, 0, 0, 64, -102, -112, 0, 0, 0, 0, 0, 0, 0, 0, 16, 47, 113, 0, 0, 44, 100, 0, 0, 64, 1, -103, -103, -103, -103, -103, -102, 0, 0, 0, 84, 47, 101, 110, 118, 0, 0, 0, 0, 44, 46, 0, 0, 0, 0, 0, 68, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 97, 109, 112, 0, 0, 0, 0, 44, 100, 0, 0, 63, -20, -52, -52, -52, -52, -52, -51, 0, 0, 0, 24, 47, 100, 117, 114, 47, 115, 101, 99, 0, 0, 0, 0, 44, 100, 0, 0, 63, -45, 51, 51, 51, 51, 51, 51 ],
 					"saved_bundle_length" : 300,
-					"text" : "/synth/1 : {\n\t/freq : 354.,\n\t/waveform : \"rect\",\n\t/filter : {\n\t\t/type : \"lowpass\",\n\t\t/freq : 1700.,\n\t\t/q : 2.2\n\t},\n\t/env : {\n\t\t/amp : 0.9,\n\t\t/dur/sec : 0.3\n\t}\n}"
+					"text" : "/voice/1 : {\n\t/freq : 354.,\n\t/waveform : \"rect\",\n\t/filter : {\n\t\t/type : \"lowpass\",\n\t\t/freq : 1700.,\n\t\t/q : 2.2\n\t},\n\t/env : {\n\t\t/amp : 0.9,\n\t\t/dur/sec : 0.3\n\t}\n}"
 				}
 
 			}
@@ -770,7 +888,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 4,
 					"outlettype" : [ "dictionary", "", "", "" ],
-					"patching_rect" : [ 162.0, 1773.0, 75.0, 22.0 ],
+					"patching_rect" : [ 162.0, 1803.0, 75.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"embed" : 0,
 						"parameter_enable" : 0,
@@ -816,8 +934,15 @@
  ],
 		"lines" : [ 			{
 				"patchline" : 				{
-					"destination" : [ "obj-15", 0 ],
+					"destination" : [ "obj-11", 0 ],
 					"source" : [ "obj-10", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-15", 0 ],
+					"source" : [ "obj-11", 0 ]
 				}
 
 			}
@@ -939,6 +1064,13 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-50", 0 ],
+					"source" : [ "obj-44", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-35", 0 ],
 					"hidden" : 1,
 					"source" : [ "obj-45", 0 ]
@@ -947,8 +1079,46 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-6", 0 ],
+					"destination" : [ "obj-50", 0 ],
 					"source" : [ "obj-49", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-51", 0 ],
+					"source" : [ "obj-50", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-50", 1 ],
+					"midpoints" : [ 180.5, 1593.0, 216.5, 1593.0, 216.5, 1539.0, 200.5, 1539.0 ],
+					"source" : [ "obj-51", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-52", 0 ],
+					"source" : [ "obj-51", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-6", 0 ],
+					"order" : 0,
+					"source" : [ "obj-52", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-60", 0 ],
+					"order" : 1,
+					"source" : [ "obj-52", 0 ]
 				}
 
 			}
@@ -978,7 +1148,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-10", 0 ],
-					"midpoints" : [ 171.5, 2284.25, 423.5, 2284.25 ],
+					"midpoints" : [ 171.5, 2314.25, 393.5, 2314.25 ],
 					"order" : 0,
 					"source" : [ "obj-83", 0 ]
 				}
@@ -1009,7 +1179,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-83", 0 ],
-					"midpoints" : [ 236.5, 2154.75, 171.5, 2154.75 ],
+					"midpoints" : [ 236.5, 2184.75, 171.5, 2184.75 ],
 					"source" : [ "obj-91", 0 ]
 				}
 
@@ -1017,50 +1187,50 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "advance.maxpat",
-				"bootpath" : "~/Documents/programming/git_repositories/ODOT-tutorials/introduction/_patchers",
+				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/patchers/tutorial",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "filelist.txt",
-				"bootpath" : "~/Documents/programming/git_repositories/ODOT-tutorials/introduction/_patchers",
+				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/patchers/tutorial",
 				"patcherrelativepath" : ".",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "close_parent.js",
-				"bootpath" : "~/Documents/programming/git_repositories/ODOT-tutorials/introduction/_patchers",
+				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/patchers/tutorial",
 				"patcherrelativepath" : ".",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "banner.maxpat",
-				"bootpath" : "~/Documents/programming/git_repositories/ODOT-tutorials/introduction/_patchers",
+				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/patchers/tutorial",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.synthbasic.maxpat",
-				"bootpath" : "~/Documents/programming/git_repositories/ODOT-tutorials/introduction/_patchers",
+				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/patchers/tutorial",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.gather.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/CNMAT-odot/patchers/namespace",
-				"patcherrelativepath" : "../../../../../Max 8/Packages/CNMAT-odot/patchers/namespace",
+				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/patchers/namespace",
+				"patcherrelativepath" : "../namespace",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.righttoleft.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/CNMAT-odot/patchers/ordering",
-				"patcherrelativepath" : "../../../../../Max 8/Packages/CNMAT-odot/patchers/ordering",
+				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/patchers/ordering",
+				"patcherrelativepath" : "../ordering",
 				"type" : "JSON",
 				"implicit" : 1
 			}
@@ -1098,6 +1268,10 @@
 			}
 , 			{
 				"name" : "o.difference.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.pack.mxo",
 				"type" : "iLaX"
 			}
  ],
