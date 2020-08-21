@@ -1895,13 +1895,11 @@
 					"fontface" : 0,
 					"fontsize" : 12.0,
 					"id" : "obj-74",
-					"linecount" : 2,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 217.0, 1019.0, 155.0, 48.0 ],
-					"text" : "/myaddress : 1.,\n/type : 'd'"
+					"patching_rect" : [ 217.0, 1019.0, 155.0, 34.0 ]
 				}
 
 			}
@@ -2096,7 +2094,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 568.0, 7359.0, 196.0, 74.0 ],
-					"text" : "note: ODOT aims at being stateless by design.  There are no such things are random number generators, prodecural basis functions, etc."
+					"text" : "note: ODOT aims at being stateless by design.  There are no such things are random number generators, procedural basis functions, etc."
 				}
 
 			}
