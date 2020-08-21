@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 1,
+			"revision" : 5,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -37,6 +37,7 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "Untitled5_template",
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
 					"fontface" : 2,
@@ -46,7 +47,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 421.0, 562.0, 259.0, 30.0 ],
+					"patching_rect" : [ 421.0, 562.0, 259.0, 33.0 ],
 					"style" : "default",
 					"text" : "<--double click to see how odot data is converted to Max / MSP values"
 				}
@@ -60,7 +61,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 56.0, 184.5, 763.0, 84.0 ],
+					"patching_rect" : [ 56.0, 184.5, 763.0, 94.0 ],
 					"style" : "default",
 					"text" : "The text we type into an o.compose box typically contains one or more address and values associated with those addresses.  You can think of an ODOT bundle as a dictionary that contains words and their definitions (or variables, if you're familiar with programming).  If you make a new compose box and type in your own data, you'll note that data cannot be entered without giving it an address (name).  OSC addresses resemble URLs.  \n\nThis collection of data gets sent when you click on the compose box (or give it a bang), and is called a \"bundle\".",
 					"textjustification" : 1
@@ -75,7 +76,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 323.0, 411.5, 115.0, 18.0 ],
+					"patching_rect" : [ 323.0, 411.5, 115.0, 20.0 ],
 					"style" : "default",
 					"text" : "...now, try this one..."
 				}
@@ -108,7 +109,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 802.0, 41.5, 61.0, 22.0 ],
+					"patching_rect" : [ 802.0, 41.5, 61.0, 24.0 ],
 					"text" : "onecopy"
 				}
 
@@ -141,7 +142,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 277.0, 658.5, 71.0, 18.0 ],
+					"patching_rect" : [ 277.0, 658.5, 71.0, 20.0 ],
 					"style" : "default",
 					"text" : "audio on/off"
 				}
@@ -197,7 +198,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 1,
-							"revision" : 1,
+							"revision" : 5,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -230,6 +231,7 @@
 						"tags" : "",
 						"style" : "",
 						"subpatcher_template" : "Untitled5_template",
+						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
 									"id" : "obj-28",
@@ -237,7 +239,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "float" ],
-									"patching_rect" : [ 398.722222222222115, 164.0, 53.0, 22.0 ],
+									"patching_rect" : [ 398.722222222222115, 164.0, 53.0, 24.0 ],
 									"text" : "* 1000."
 								}
 
@@ -249,7 +251,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 398.722222222222115, 194.0, 93.0, 22.0 ],
+									"patching_rect" : [ 398.722222222222115, 194.0, 93.0, 24.0 ],
 									"text" : "setdomain $1"
 								}
 
@@ -261,7 +263,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 3,
 									"outlettype" : [ "", "", "FullPacket" ],
-									"patching_rect" : [ 318.722222222222115, 128.0, 205.0, 22.0 ],
+									"patching_rect" : [ 318.722222222222115, 128.0, 205.0, 24.0 ],
 									"text" : "o.route /amplitude /duration/sec"
 								}
 
@@ -273,7 +275,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "signal" ],
-									"patching_rect" : [ 56.0, 377.0, 38.0, 22.0 ],
+									"patching_rect" : [ 56.0, 377.0, 38.0, 24.0 ],
 									"text" : "*~ 0."
 								}
 
@@ -290,7 +292,7 @@
 										"appversion" : 										{
 											"major" : 8,
 											"minor" : 1,
-											"revision" : 1,
+											"revision" : 5,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -323,7 +325,7 @@
 										"tags" : "",
 										"style" : "",
 										"subpatcher_template" : "Untitled5_template",
-										"visible" : 1,
+										"assistshowspatchername" : 0,
 										"boxes" : [ 											{
 												"box" : 												{
 													"id" : "obj-1",
@@ -331,7 +333,7 @@
 													"numinlets" : 2,
 													"numoutlets" : 1,
 													"outlettype" : [ "" ],
-													"patching_rect" : [ 142.666666666666686, 134.0, 29.5, 22.0 ],
+													"patching_rect" : [ 142.666666666666686, 134.0, 29.5, 24.0 ],
 													"text" : "0"
 												}
 
@@ -343,7 +345,7 @@
 													"numinlets" : 2,
 													"numoutlets" : 1,
 													"outlettype" : [ "" ],
-													"patching_rect" : [ 96.333333333333343, 134.0, 29.5, 22.0 ],
+													"patching_rect" : [ 96.333333333333343, 134.0, 29.5, 24.0 ],
 													"text" : "2"
 												}
 
@@ -355,7 +357,7 @@
 													"numinlets" : 2,
 													"numoutlets" : 1,
 													"outlettype" : [ "" ],
-													"patching_rect" : [ 50.0, 134.0, 29.5, 22.0 ],
+													"patching_rect" : [ 50.0, 134.0, 29.5, 24.0 ],
 													"text" : "1"
 												}
 
@@ -367,7 +369,7 @@
 													"numinlets" : 4,
 													"numoutlets" : 4,
 													"outlettype" : [ "bang", "bang", "bang", "" ],
-													"patching_rect" : [ 50.0, 100.0, 158.0, 22.0 ],
+													"patching_rect" : [ 50.0, 100.0, 158.0, 24.0 ],
 													"text" : "sel sine triangle none"
 												}
 
@@ -450,7 +452,7 @@
  ]
 									}
 ,
-									"patching_rect" : [ 56.0, 207.0, 95.0, 22.0 ],
+									"patching_rect" : [ 56.0, 207.0, 95.0, 24.0 ],
 									"saved_object_attributes" : 									{
 										"description" : "",
 										"digest" : "",
@@ -470,7 +472,7 @@
 									"numinlets" : 3,
 									"numoutlets" : 1,
 									"outlettype" : [ "signal" ],
-									"patching_rect" : [ 56.0, 287.0, 77.0, 22.0 ],
+									"patching_rect" : [ 56.0, 287.0, 77.0, 24.0 ],
 									"text" : "selector~ 2"
 								}
 
@@ -494,7 +496,7 @@
 									"numinlets" : 3,
 									"numoutlets" : 1,
 									"outlettype" : [ "signal" ],
-									"patching_rect" : [ 202.0, 247.0, 83.0, 22.0 ],
+									"patching_rect" : [ 202.0, 247.0, 83.0, 24.0 ],
 									"text" : "tri~ 220. 0.5"
 								}
 
@@ -506,7 +508,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "signal" ],
-									"patching_rect" : [ 85.0, 247.0, 95.0, 22.0 ],
+									"patching_rect" : [ 85.0, 247.0, 95.0, 24.0 ],
 									"text" : "cycle~ 220"
 								}
 
@@ -518,7 +520,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "bang", "" ],
-									"patching_rect" : [ 139.0, 48.0, 31.0, 22.0 ],
+									"patching_rect" : [ 139.0, 48.0, 31.0, 24.0 ],
 									"text" : "t b l"
 								}
 
@@ -530,15 +532,15 @@
 									"numinlets" : 2,
 									"numoutlets" : 2,
 									"outlettype" : [ "signal", "bang" ],
-									"patching_rect" : [ 318.722222222222115, 336.0, 54.0, 22.0 ],
+									"patching_rect" : [ 318.722222222222115, 336.0, 54.0, 24.0 ],
 									"text" : "line~ 0."
 								}
 
 							}
 , 							{
 								"box" : 								{
-									"addpoints" : [ 0.0, 0.0, 0, 7.964624638083524, 1.0, 0, 27.876186233292334, 0.224489795918367, 0, 45.796591668980255, 0.081632653061224, 0, 300.000861367812661, 0.0, 0 ],
-									"domain" : 300.0,
+									"addpoints" : [ 0.0, 0.0, 0, 31.858502350163231, 1.0, 0, 111.504758225571308, 0.224489795918367, 0, 183.186388513438544, 0.081632653061224, 0, 1200.00358852281488, 0.0, 0 ],
+									"domain" : 1200.0,
 									"id" : "obj-8",
 									"maxclass" : "function",
 									"numinlets" : 1,
@@ -557,7 +559,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "signal" ],
-									"patching_rect" : [ 56.0, 421.0, 38.0, 22.0 ],
+									"patching_rect" : [ 56.0, 421.0, 38.0, 24.0 ],
 									"text" : "*~ 0."
 								}
 
@@ -569,7 +571,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 3,
 									"outlettype" : [ "", "", "FullPacket" ],
-									"patching_rect" : [ 574.0, 173.0, 137.0, 22.0 ],
+									"patching_rect" : [ 574.0, 173.0, 137.0, 24.0 ],
 									"text" : "o.route /frequency /q"
 								}
 
@@ -581,7 +583,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 5,
 									"outlettype" : [ "", "", "", "", "FullPacket" ],
-									"patching_rect" : [ 318.722222222222115, 48.0, 317.0, 22.0 ],
+									"patching_rect" : [ 318.722222222222115, 48.0, 317.0, 24.0 ],
 									"text" : "o.route /env /frequency /lowpass /waveform"
 								}
 
@@ -600,7 +602,7 @@
 									"outlettype" : [ "list", "float", "float", "float", "float", "list", "int" ],
 									"parameter_enable" : 0,
 									"patching_rect" : [ 574.0, 219.0, 223.0, 92.0 ],
-									"setfilter" : [ 0, 1, 1, 0, 0, 1700.0, 0.95195198059082, 2.200000047683716, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 ]
+									"setfilter" : [ 0, 1, 1, 0, 0, 2400.0, 0.95195198059082, 7.199999809265137, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 ]
 								}
 
 							}
@@ -611,7 +613,7 @@
 									"numinlets" : 6,
 									"numoutlets" : 1,
 									"outlettype" : [ "signal" ],
-									"patching_rect" : [ 56.0, 336.0, 71.5, 22.0 ],
+									"patching_rect" : [ 56.0, 336.0, 71.5, 24.0 ],
 									"text" : "biquad~"
 								}
 
@@ -803,7 +805,7 @@
  ]
 					}
 ,
-					"patching_rect" : [ 277.0, 562.0, 136.0, 22.0 ],
+					"patching_rect" : [ 277.0, 562.0, 136.0, 24.0 ],
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
@@ -825,7 +827,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 18.0, 434.5, 259.0, 90.0 ],
+					"patching_rect" : [ 18.0, 434.5, 259.0, 100.0 ],
 					"style" : "default",
 					"text" : "Let's try turning the audio on and listening to what a bundle might cause MSP to do.\n\nGo ahead and click the compose box above after turning the audio in this patch on.  \n\nYou should hear a sound..."
 				}
@@ -843,7 +845,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 511.0, 294.5, 250.0, 126.0 ],
+					"patching_rect" : [ 511.0, 294.5, 250.0, 138.0 ],
 					"style" : "default",
 					"text" : "Here is a bundle that contains the values of a synthesizer.  \n\nNote that all values will be received at the same time, that is, \"atomically\". Also, note that the addresses provide a human-readable description of what the data is and how it might be used. "
 				}
@@ -855,7 +857,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 207.5, 137.5, 435.0, 20.0 ],
+					"patching_rect" : [ 207.5, 137.5, 435.0, 22.0 ],
 					"style" : "default",
 					"text" : "Let's look more closely at some of the features of the compose box.  "
 				}
@@ -921,28 +923,28 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "advance.maxpat",
-				"bootpath" : "~/Development/CNMAT/CNMAT/CNMAT-odot/patchers/tutorial",
+				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/patchers/tutorial",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "filelist.txt",
-				"bootpath" : "~/Development/CNMAT/CNMAT/CNMAT-odot/patchers/tutorial",
+				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/patchers/tutorial",
 				"patcherrelativepath" : ".",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "close_parent.js",
-				"bootpath" : "~/Development/CNMAT/CNMAT/CNMAT-odot/patchers/tutorial",
+				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/patchers/tutorial",
 				"patcherrelativepath" : ".",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "banner.maxpat",
-				"bootpath" : "~/Development/CNMAT/CNMAT/CNMAT-odot/patchers/tutorial",
+				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/patchers/tutorial",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
