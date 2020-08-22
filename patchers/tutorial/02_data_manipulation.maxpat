@@ -519,7 +519,7 @@
 					"ignoreclick" : 1,
 					"lockeddragscroll" : 0,
 					"maxclass" : "bpatcher",
-					"name" : "banner.maxpat",
+					"name" : "o.t.banner.maxpat",
 					"numinlets" : 0,
 					"numoutlets" : 0,
 					"offset" : [ -4.0, -5.0 ],
@@ -969,7 +969,7 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "banner.maxpat",
+				"name" : "o.t.banner.maxpat",
 				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/patchers/tutorial",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
