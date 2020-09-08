@@ -4,13 +4,13 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 1,
+			"revision" : 5,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 23.0, 60.0, 590.0, 632.0 ],
+		"rect" : [ 26.0, 65.0, 590.0, 632.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -37,6 +37,7 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "Default Max 7",
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
 					"autofit" : 1,
@@ -72,7 +73,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 405.0, 100.5, 151.0, 20.0 ],
+					"patching_rect" : [ 405.0, 100.5, 151.0, 22.0 ],
 					"text" : "o.expr reference",
 					"textcolor" : [ 0.2, 0.137254901960784, 0.137254901960784, 1.0 ],
 					"textjustification" : 1
@@ -91,7 +92,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 1,
-							"revision" : 1,
+							"revision" : 5,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -124,6 +125,7 @@
 						"tags" : "",
 						"style" : "",
 						"subpatcher_template" : "Default Max 7",
+						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
 									"id" : "obj-8",
@@ -146,7 +148,7 @@
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 421.0, 558.0, 51.0, 22.0 ],
 									"presentation" : 1,
-									"presentation_rect" : [ 374.0, 616.0, 51.0, 22.0 ],
+									"presentation_rect" : [ 371.0, 629.0, 51.0, 22.0 ],
 									"text" : "[ email ]"
 								}
 
@@ -216,7 +218,7 @@
 									"presentation" : 1,
 									"presentation_linecount" : 45,
 									"presentation_rect" : [ 7.0, 41.0, 703.0, 610.0 ],
-									"text" : "ODOT is a set of externals and language developed by Adrian Freed and John MacCallum, with support from Andy Schmeder, Ilya Rostovtsev, Rama Gottfried, Jeff Lubow, and many others at the Center for New Music and Audio Technologies (CNMAT) between 2007 and 2016.\n\nODOT emerged out of a need for an aggregate data type that could be operated upon as it is passed around around over patch cords.  This aggregation describes a synthesis of control-rate computation in the past, present, and future.  ODOT requires a host environment (Max/MSP), within which a shim layer (libomax) can operate as middleware between libo and the host itself.  The libo library – the current manifestation of Open Sound Control – is utilized at the core, whereby all lower-level OSC calls are made.\n\nAlt text:  Open Sound Control (OSC) is an open, network-friendly encoding for named data. \nOpen Sound Control (OSC) is a protocol for communication among computers, sound synthesizers, and other multimedia devices that is optimized for modern networking technology. Bringing the benefits of modern networking technology to the world of electronic musical instruments, OSC's advantages include interoperability, accuracy, flexibility, and enhanced organization and documentation.\nODOT/OSC were inspired by many of the ideas that David Wessel had about inter-device communication and Human-Computer-Interaction.  \n\nODOT extends OSC in the following ways:\n-\tallows for a simultaneity in the ability to process multiple data streams within a single bundle context\n-\toffers novel ways for the Max programmer to enforce order of operations\n-\tincludes an expression language, allowing users to evaluate expressions, calculate recursively, dynamically generate addresses, and utilize higher-order functions.  It includes a rich library of functions and a syntax loosely resembling LISP.\n-\temploys a name/data schema in which values are bound to addresses.  This allows for variables to be referenced by name (labeled data)\n-\tincludes a bespoke scheduling system, both for control and audio rate threads\n-\tallows for introspection and unification so that OSC can be operated on (amongst the objects in the library)\n-\ttools for manipulating, accumulating, selecting, and formatting sets of addresses\n-\tconditional flow\n-\thierarchical data formatting\n-\tdictionary support \n\nKeywords/phrases:  composability, interoperability, aggregation, integration, bundle, introspection, history of data\n\nKey ideas:  \n-\tgetting rid of the model with which we write to file, poll file for changes.\n-\tglue between various software and hardware environments/systems\nrequires a host environment\n\nResources:\n•\todot glossary\n•\t<>readme in CNMAT-odot repository\n•\t<>dynamic message-oriented middleware paper \n•\t<>Ilya: https://medium.com/@ilzxc/odot-part-1-what-the-eff-is-odot-3da170c4dfc4\n\nTutorial written by Jeffrey Lubow, Music Systems Designer in 2020   "
+									"text" : "ODOT is a set of externals and language developed by Adrian Freed and John MacCallum, with support from Andy Schmeder, Ilya Rostovtsev, Rama Gottfried, Jeff Lubow, and many others at the Center for New Music and Audio Technologies (CNMAT) between 2007 and 2016.\n\nODOT emerged out of a need for an aggregate data type that could be operated upon as it is passed around over patch cords.  This aggregation describes a synthesis of control-rate computation in the past, present, and future.  ODOT requires a host environment (Max/MSP), within which a shim layer (libomax) can operate as middleware between libo and the host itself.  The libo library – the current manifestation of Open Sound Control – is utilized at the core, whereby all lower-level OSC calls are made.\n\nAlt text:  Open Sound Control (OSC) is an open, network-friendly encoding for named data. \nOpen Sound Control (OSC) is a protocol for communication among computers, sound synthesizers, and other multimedia devices that is optimized for modern networking technology. Bringing the benefits of modern networking technology to the world of electronic musical instruments, OSC's advantages include interoperability, accuracy, flexibility, and enhanced organization and documentation.\nODOT/OSC were inspired by many of the ideas that David Wessel had about inter-device communication and Human-Computer-Interaction.  \n\nODOT extends OSC in the following ways:\n-\tallows for a simultaneity in the ability to process multiple data streams within a single bundle context\n-\toffers novel ways for the Max programmer to enforce order of operations\n-\tincludes an expression language, allowing users to evaluate expressions, calculate recursively, dynamically generate addresses, and utilize higher-order functions.  It includes a rich library of functions and a syntax loosely resembling LISP.\n-\temploys a name/data schema in which values are bound to addresses.  This allows for variables to be referenced by name (labeled data)\n-\tincludes a bespoke scheduling system, both for control and audio rate threads\n-\tallows for introspection and unification so that OSC can be operated on (amongst the objects in the library)\n-\ttools for manipulating, accumulating, selecting, and formatting sets of addresses\n-\tconditional flow\n-\thierarchical data formatting\n-\tdictionary support \n\nKeywords/phrases:  composability, interoperability, aggregation, integration, bundle, introspection, history of data\n\nKey ideas:  \n-\tgetting rid of the model with which we write to file, poll file for changes.\n-\tglue between various software and hardware environments/systems\nrequires a host environment\n\nResources:\n•\todot glossary\n•\t<>readme in CNMAT-odot repository\n•\t<>dynamic message-oriented middleware paper \n•\t<>Ilya: https://medium.com/@ilzxc/odot-part-1-what-the-eff-is-odot-3da170c4dfc4\n\nTutorial written by Jeffrey Lubow, Music Systems Designer in 2020   "
 								}
 
 							}
@@ -245,7 +247,7 @@
  ]
 					}
 ,
-					"patching_rect" : [ 310.0, 164.0, 68.0, 20.0 ],
+					"patching_rect" : [ 310.0, 164.0, 68.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
@@ -269,7 +271,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 1,
-							"revision" : 1,
+							"revision" : 5,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -302,6 +304,7 @@
 						"tags" : "",
 						"style" : "",
 						"subpatcher_template" : "Default Max 7",
+						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
 									"id" : "obj-6",
@@ -435,7 +438,7 @@
  ]
 					}
 ,
-					"patching_rect" : [ 430.5, 168.0, 48.0, 20.0 ],
+					"patching_rect" : [ 430.5, 168.0, 48.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
@@ -454,7 +457,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 30.0, 62.0, 308.0, 78.0 ],
+					"patching_rect" : [ 30.0, 62.0, 308.0, 87.0 ],
 					"text" : "In this set of tutorials, we'll familiarize ourselves with the odot programming environment, a library of externals which operate on Open Sound Control data. Topics will include: event scheduling, design for distributed computation, data management and persistence, and the odot expression language."
 				}
 
@@ -476,7 +479,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 405.0, 51.0, 151.0, 20.0 ],
+					"patching_rect" : [ 405.0, 51.0, 151.0, 22.0 ],
 					"text" : "[[ tutorial ]]",
 					"textcolor" : [ 0.996078431372549, 0.976470588235294, 0.329411764705882, 1.0 ],
 					"textjustification" : 1
@@ -502,7 +505,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 405.0, 125.5, 151.0, 20.0 ],
+					"patching_rect" : [ 405.0, 125.5, 151.0, 22.0 ],
 					"text" : "introduction and history",
 					"textcolor" : [ 0.2, 0.137254901960784, 0.137254901960784, 1.0 ],
 					"textjustification" : 1
@@ -517,7 +520,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 30.0, 25.0, 215.0, 30.0 ],
+					"patching_rect" : [ 30.0, 25.0, 215.0, 33.0 ],
 					"text" : "odot"
 				}
 
@@ -533,7 +536,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 30.0, 217.0, 288.0, 320.0 ],
-					"text" : "/horizontal : 1066,\n/vertical : 296,\n/delta/horizontal : 0,\n/delta/vertical : 0,\n/screenDim : [1920, 1200],\n/middle : [960., 600.],\n/button/is : \"up\",\n/x : 106.,\n/y : 304.,\n/distance : 321.95,\n/angle : 70.7771,\n/delta/distance : 0.,\n/delta/angle : 0.,\n/shift : \"up\",\n/capslock : \"up\",\n/option : \"up\",\n/control : \"up\",\n/command : \"down\",\n/time : 2020-08-15T21:18:11.012970Z,\n/state : \"moving\",\n/pixPerSec : 0.,\n/relative/pixPerSec : 0."
+					"text" : "/horizontal : 489,\n/vertical : 479,\n/delta/horizontal : 0,\n/delta/vertical : 0,\n/screenDim : [1920, 1080],\n/middle : [960., 540.],\n/button/is : \"up\",\n/x : -471.,\n/y : 61.,\n/distance : 474.934,\n/angle : 172.621,\n/delta/distance : 0.,\n/delta/angle : 0.,\n/shift : \"up\",\n/capslock : \"up\",\n/option : \"up\",\n/control : \"up\",\n/command : \"down\",\n/time : 2020-09-02T18:06:50.319236Z,\n/state : \"moving\",\n/pixPerSec : 0.,\n/relative/pixPerSec : 0."
 				}
 
 			}
@@ -544,7 +547,7 @@
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 30.0, 172.0, 107.0, 20.0 ],
+					"patching_rect" : [ 30.0, 172.0, 107.0, 22.0 ],
 					"text" : "o.io.mouse.tutorial"
 				}
 
@@ -568,7 +571,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 405.0, 75.5, 151.0, 20.0 ],
+					"patching_rect" : [ 405.0, 75.5, 151.0, 22.0 ],
 					"text" : "o.overview",
 					"textcolor" : [ 0.2, 0.137254901960784, 0.137254901960784, 1.0 ],
 					"textjustification" : 1
@@ -618,7 +621,7 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "o.io.mouse.tutorial.maxpat",
-				"bootpath" : "~/Development/CNMAT/CNMAT/CNMAT-odot/patchers/tutorial",
+				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/patchers/tutorial",
 				"patcherrelativepath" : "../../patchers/tutorial",
 				"type" : "JSON",
 				"implicit" : 1
