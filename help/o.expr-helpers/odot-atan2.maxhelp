@@ -4,13 +4,13 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 1,
+			"revision" : 5,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 115.0, 123.0, 485.0, 354.0 ],
+		"rect" : [ 64.0, 114.0, 567.0, 475.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 14.0,
@@ -37,6 +37,7 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "Untitled5_template",
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
 					"id" : "obj-5",
@@ -69,7 +70,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 242.0, 24.0, 55.0, 18.0 ],
+					"patching_rect" : [ 234.0, 24.0, 55.0, 20.0 ],
 					"text" : "atan2()"
 				}
 
@@ -82,7 +83,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 234.0, 59.0, 224.0, 114.0 ],
+					"patching_rect" : [ 234.0, 59.0, 224.0, 127.0 ],
 					"text" : "takes the coordinates of a point (x, y) and computes the angle of the ray from that point to the origin with respect to the x-axis. output is [-pi, pi]\n\narguments:\n\n1. y\n2. x"
 				}
 
@@ -97,8 +98,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 20.0, 263.0, 461.0, 88.0 ],
-					"text" : "/x : 1.,\n/y : 1.,\n/tsize : 1000.,\n/angle/rad : 0.785398,\n/angle/deg : 45."
+					"patching_rect" : [ 20.0, 338.0, 245.0, 88.0 ],
+					"text" : "/x : -0.864,\n/y : 0.422,\n/tsize : 1000.,\n/angle/rad : 2.68725,\n/angle/deg : 153.968"
 				}
 
 			}
@@ -110,7 +111,7 @@
 					"numinlets" : 3,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 20.0, 146.0, 134.0, 20.0 ],
+					"patching_rect" : [ 20.0, 146.0, 134.0, 22.0 ],
 					"text" : "o.pack /x /y /tsize 1000."
 				}
 
@@ -139,8 +140,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 20.0, 175.0, 457.0, 86.0 ],
-					"presentation_linecount" : 6,
+					"patching_rect" : [ 20.0, 218.0, 457.0, 86.0 ],
 					"text" : "/x = scale(/x, 0, /tsize, -1., 1.),\n/y = scale(/y, 0, /tsize, -1., 1.),\n/angle/rad = atan2(/y, /x),\n/angle/deg = if(/angle/rad >= 0, scale(/angle/rad, 0., pi(), 0., 180.), scale(/angle/rad * -1., pi(), 0., 180., 360.))"
 				}
 
