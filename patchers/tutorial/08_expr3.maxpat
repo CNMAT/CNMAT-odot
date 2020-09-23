@@ -40,23 +40,27 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
-					"id" : "obj-111",
+					"fontface" : 2,
+					"fontsize" : 13.0,
+					"id" : "obj-2",
+					"linecount" : 4,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 367.0, 5426.0, 150.0, 22.0 ]
+					"patching_rect" : [ 65.0, 2095.0, 868.0, 65.0 ],
+					"presentation_linecount" : 7,
+					"text" : "A quick word on [a] vs /a:\nIf you have defined a variable 'a' for your lambda function, its scope is private to that function block and cannot exist anywhere outside of it.  Conversely, if you have defined an address '/a' somewhere in your expression, passed it in, etc., that address is global to the codebox instance.  It can be redefined and mutated, but it does not have the same private scope that 'a' does.",
+					"textjustification" : 1
 				}
 
 			}
 , 			{
 				"box" : 				{
-					"fontsize" : 10.0,
-					"id" : "obj-109",
+					"id" : "obj-111",
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 54.5, 4007.0, 64.0, 18.0 ],
-					"text" : "blue number"
+					"patching_rect" : [ 367.0, 5636.0, 150.0, 22.0 ]
 				}
 
 			}
@@ -66,7 +70,7 @@
 					"maxclass" : "live.line",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 143.0, 4491.5, 177.0, 5.0 ]
+					"patching_rect" : [ 143.0, 4701.5, 177.0, 5.0 ]
 				}
 
 			}
@@ -76,7 +80,7 @@
 					"maxclass" : "live.line",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 257.0, 4196.5, 63.0, 5.0 ]
+					"patching_rect" : [ 257.0, 4406.5, 63.0, 5.0 ]
 				}
 
 			}
@@ -88,7 +92,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 129.0, 3988.0, 58.0, 22.0 ],
+					"patching_rect" : [ 129.0, 4198.0, 58.0, 22.0 ],
 					"text" : "loadbang"
 				}
 
@@ -102,7 +106,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 61.0, 4510.5, 131.0, 34.0 ]
+					"patching_rect" : [ 61.0, 4720.5, 131.0, 34.0 ]
 				}
 
 			}
@@ -114,7 +118,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "FullPacket" ],
-					"patching_rect" : [ 61.0, 4480.0, 63.0, 22.0 ],
+					"patching_rect" : [ 61.0, 4690.0, 63.0, 22.0 ],
 					"text" : "o.select /x"
 				}
 
@@ -129,7 +133,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "int", "", "" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 129.0, 4027.0, 89.0, 22.0 ]
+					"patching_rect" : [ 129.0, 4237.0, 89.0, 22.0 ]
 				}
 
 			}
@@ -141,7 +145,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 231.0, 3868.0, 58.0, 22.0 ],
+					"patching_rect" : [ 231.0, 4078.0, 58.0, 22.0 ],
 					"text" : "loadbang"
 				}
 
@@ -154,14 +158,13 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 61.0, 4067.0, 122.0, 22.0 ],
+					"patching_rect" : [ 61.0, 4277.0, 122.0, 22.0 ],
 					"text" : "o.pack /input /func"
 				}
 
 			}
 , 			{
 				"box" : 				{
-					"bgcolor" : [ 0.286274509803922, 0.596078431372549, 0.756862745098039, 1.0 ],
 					"fontsize" : 12.0,
 					"format" : 6,
 					"id" : "obj-87",
@@ -170,7 +173,8 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 61.0, 4027.0, 51.0, 22.0 ]
+					"patching_rect" : [ 61.0, 4237.0, 52.0, 22.0 ],
+					"style" : "default"
 				}
 
 			}
@@ -182,7 +186,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 61.0, 4188.0, 189.0, 22.0 ],
+					"patching_rect" : [ 61.0, 4398.0, 189.0, 22.0 ],
 					"text" : "o.union"
 				}
 
@@ -195,8 +199,8 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 325.0, 3973.0, 521.0, 529.0 ],
-					"text" : "Let's look at a final example involving apply() where we integrate some of the ideas seen above into a small library of user functions.\n\nWe'll give our library a specific address \"/return\", which we can use to name the generated address that we get back from the functions being applied.  \n\nYou can see what is happening in each of the functions by reading the lambda definitions in the [o.compose] box carefully.  Note that when the function runs, it will make an assignment with assign().  The result of the lambda function's calculation is then assigned to this argument's value.  Each quoted lambda definition has two arguments:  \"c\" and \"i\".  \"c\" represents the value that we want to transform, and \"i\" represents the name we use for the returned value.  This works because we are using the value of \"i\" as the first argument to assign() in the body of the lambda function definition.  It's worth noting here that we could just as easily have implemented this lambda() in the [o.expr.codebox], but that would not allow for the selection we are interested in here.\n\nNote that the two critical components are already in place:\n\n1. definitions for our functions (in the [o.compose] box above, and \n2. an initial function for selection (seen in the [umenu])\n\nLet's review what happens when we make a selection with [umenu] and input a value from the blue number box.\n\n- the pre-formatted bundle containing /input and /func are blended with the pre-formatted bundle containing our function definitions, and these are sent to [o.expr.codebox]\n\n- we define /return as \"/x\"\n\n- we call apply() with 3 arguments:  \n\n     1. the value of the function name\n     2. the /input, and \n     3. the return name to use\n\n- apply() applies the function we have chosen with the arguments given.  The input is processed according to which function we chose in the [umenu], and the result is assigned to the name \"/x\".\n\n- at the bottom, we select only \"/x\" with [o.select]"
+					"patching_rect" : [ 325.0, 4183.0, 521.0, 529.0 ],
+					"text" : "Let's look at a final example involving apply() where we integrate some of the ideas seen above into a small library of user functions.\n\nWe'll give our library a specific address \"/return\", which we can use to name the generated address that we get back from the functions being applied.  \n\nYou can see what is happening in each of the functions by reading the lambda definitions in the [o.compose] box carefully.  Note that when the function runs, it will make an assignment with assign().  The result of the lambda function's calculation is then assigned to this argument's value.  Each quoted lambda definition has two arguments:  \"c\" and \"i\".  \"c\" represents the value that we want to transform, and \"i\" represents the name we use for the returned value.  This works because we are using the value of \"i\" as the first argument to assign() in the body of the lambda function definition.  It's worth noting here that we could just as easily have implemented this lambda() in the [o.expr.codebox], but that would not allow for the selection we are interested in here.\n\nNote that the two critical components are already in place:\n\n1. definitions for our functions (in the [o.compose] box above, and \n2. an initial function for selection (seen in the [umenu])\n\nLet's review what happens when we make a selection with [umenu] and input a value from the number box.\n\n- the pre-formatted bundle containing /input and /func are blended with the pre-formatted bundle containing our function definitions, and these are sent to [o.expr.codebox]\n\n- we define /return as \"/x\"\n\n- we call apply() with 3 arguments:  \n\n     1. the value of the function name\n     2. the /input, and \n     3. the return name to use\n\n- apply() applies the function we have chosen with the arguments given.  The input is processed according to which function we chose in the [umenu], and the result is assigned to the name \"/x\".\n\n- at the bottom, we select only \"/x\" with [o.select]"
 				}
 
 			}
@@ -210,7 +214,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 231.0, 3894.0, 403.0, 48.0 ],
+					"patching_rect" : [ 231.0, 4104.0, 403.0, 48.0 ],
 					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 64, 47, 115, 99, 97, 108, 101, 111, 102, 102, 115, 101, 116, 0, 0, 0, 0, 44, 115, 0, 0, 108, 97, 109, 98, 100, 97, 40, 91, 99, 44, 32, 105, 93, 44, 32, 97, 115, 115, 105, 103, 110, 40, 105, 44, 32, 99, 32, 42, 32, 48, 46, 53, 32, 43, 32, 48, 46, 53, 41, 41, 0, 0, 0, 0, 0, 0, 0, 48, 47, 105, 110, 118, 101, 114, 116, 0, 44, 115, 0, 0, 108, 97, 109, 98, 100, 97, 40, 91, 99, 44, 32, 105, 93, 44, 32, 97, 115, 115, 105, 103, 110, 40, 105, 44, 32, 32, 99, 32, 42, 32, 45, 49, 46, 41, 41, 0, 0, 0, 0, 60, 47, 115, 99, 97, 108, 101, 112, 105, 0, 0, 0, 0, 44, 115, 0, 0, 108, 97, 109, 98, 100, 97, 40, 91, 99, 44, 32, 105, 93, 44, 32, 97, 115, 115, 105, 103, 110, 40, 105, 44, 32, 32, 50, 32, 42, 32, 112, 105, 40, 41, 32, 42, 32, 99, 41, 41, 0, 0, 0, 0 ],
 					"saved_bundle_length" : 200,
 					"text" : "/scaleoffset : \"lambda([c, i], assign(i, c * 0.5 + 0.5))\",\n/invert : \"lambda([c, i], assign(i,  c * -1.))\",\n/scalepi : \"lambda([c, i], assign(i,  2 * pi() * c))\""
@@ -227,7 +231,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 61.0, 4339.0, 248.0, 43.0 ],
+					"patching_rect" : [ 61.0, 4549.0, 248.0, 43.0 ],
 					"text" : "/return = \"/x\",\napply(value(/func), /input, /return)"
 				}
 
@@ -240,7 +244,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 546.0, 3463.0, 58.0, 22.0 ],
+					"patching_rect" : [ 546.0, 3673.0, 58.0, 22.0 ],
 					"text" : "loadbang"
 				}
 
@@ -253,7 +257,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 470.0, 3545.0, 54.0, 22.0 ],
+					"patching_rect" : [ 470.0, 3755.0, 54.0, 22.0 ],
 					"text" : "o.union"
 				}
 
@@ -266,7 +270,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 470.0, 3383.0, 95.0, 22.0 ],
+					"patching_rect" : [ 470.0, 3593.0, 95.0, 22.0 ],
 					"text" : "o.linear_ramp /c"
 				}
 
@@ -280,7 +284,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 546.0, 3500.0, 252.0, 23.0 ],
+					"patching_rect" : [ 546.0, 3710.0, 252.0, 23.0 ],
 					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 36, 47, 109, 121, 102, 117, 110, 99, 0, 44, 115, 0, 0, 108, 97, 109, 98, 100, 97, 40, 91, 99, 93, 44, 32, 47, 105, 32, 61, 32, 99, 32, 42, 32, 50, 41, 0 ],
 					"saved_bundle_length" : 56,
 					"text" : "/myfunc : \"lambda([c], /i = c * 2)\""
@@ -295,7 +299,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 519.0, 5288.0, 297.0, 33.0 ],
+					"patching_rect" : [ 519.0, 5498.0, 297.0, 33.0 ],
 					"text" : "Here is one last example illustrating the div operator.\nCan you figure out what is happening?"
 				}
 
@@ -308,7 +312,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 500.0, 4850.0, 348.0, 127.0 ],
+					"patching_rect" : [ 500.0, 5060.0, 348.0, 127.0 ],
 					"text" : "rreduce() is precisely the opposite.  It will reduce a list of values starting from the right side of the list and working to the left.  \n\nIn the example below, the operation is again subtraction.  \n\nWe start with the first two values on the right:\n3 is subtracted from 4, resulting in 1.\n2 is then subtracted from 1, resulting in -1.  \n1 is then subtracted from -1, resulting in -2 (the final result)",
 					"textjustification" : 1
 				}
@@ -322,7 +326,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 61.0, 4842.5, 367.0, 141.0 ],
+					"patching_rect" : [ 61.0, 5052.5, 367.0, 141.0 ],
 					"text" : "lreduce() will reduce a list of values starting from the left side of the list and working to the right.  The accumulated result is calculated until there is nothing remaining in the list.\n\nIn the example below, the operation is defined as subtraction.  \n\nWe start with the first two values on the left:\n2 is subtracted from 1, resulting in -1.\n-3 is then subtracted from -1, resulting in -4.  \n4 is then subtracted from -4, resulting in -8 (the final result)",
 					"textjustification" : 1
 				}
@@ -336,7 +340,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 258.0, 4663.0, 495.0, 137.0 ],
+					"patching_rect" : [ 258.0, 4873.0, 495.0, 137.0 ],
 					"text" : "map() and apply() are higher order functions: functions that take other functions as arguments.  \nLet's look at two other higher order functions included in the expression language, specifically lreduce(), rreduce().\n\nBoth functions require an operation to be specified as the first argument.  \nThis operation will most commonly be one of the following:  sub (subtraction), add (addition), div (division), or mul (multiplication).\nThat being said, we can reduce() a list with any operation which requires two args.",
 					"textjustification" : 1
 				}
@@ -350,7 +354,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 72.0, 3456.0, 348.0, 234.0 ],
+					"patching_rect" : [ 72.0, 3666.0, 351.0, 234.0 ],
 					"text" : "Here's a similar example, but with a slight change to expand the options in the output bundle.  \n\nInstead of defining the function within the [o.expr.codebox], we define it in [o.compose].  This allows the user to specify exactly what the function does before it ever reaches the codebox.  We might want to change the function from calculating celsius from an input fahrenheit, to doing something completely different.\n\nIt might also be advantageous to have a list of functions that get called upon, depending on what we send in.  This idea of sending data to be evaluated along with a description of the function itself is a powerful way to make a patch more dynamic and less subject to user editing.\n\nTry clicking the two [o.compose] boxes to see the difference in the way the input gets processed."
 				}
 
@@ -363,7 +367,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 508.0, 2999.0, 340.0, 253.0 ],
+					"patching_rect" : [ 508.0, 3209.0, 340.0, 253.0 ],
 					"text" : "Let's try taking this same function and wrapping it with our own name.  We'll call the function /f2c in this example, since we're converting fahrenheit to celsius.  \n\nThe first step is assigning a string to the address \"/f2c\".\nThis string is literally everything we would do with the function if we called it in-place, except one detail:  We surround it in quotes.  You can think of this as a function definition, although technically it's only a string until it gets applied.\n\nWe apply this function by using the address in-place – as in /f2c(<our input>) – which calls apply() behind the scenes.  \n\nIn this case, we'll use the input of /c that we pass in from a float in Max."
 				}
 
@@ -377,7 +381,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 505.0, 3427.0, 337.0, 23.0 ],
+					"patching_rect" : [ 505.0, 3637.0, 337.0, 23.0 ],
 					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 52, 47, 109, 121, 102, 117, 110, 99, 0, 44, 115, 0, 0, 108, 97, 109, 98, 100, 97, 40, 91, 99, 93, 44, 32, 47, 102, 32, 61, 32, 40, 57, 46, 48, 32, 47, 32, 53, 41, 32, 42, 32, 99, 32, 43, 32, 51, 50, 41, 0, 0, 0, 0 ],
 					"saved_bundle_length" : 72,
 					"text" : "/myfunc : \"lambda([c], /f = (9.0 / 5) * c + 32)\""
@@ -394,8 +398,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 470.0, 3700.0, 348.0, 58.0 ],
-					"text" : "/c : -0.12,\n/myfunc : \"lambda([c], /i = c * 2)\",\n/i : -0.24"
+					"patching_rect" : [ 470.0, 3910.0, 348.0, 58.0 ],
+					"text" : "/c : 0.7,\n/myfunc : \"lambda([c], /i = c * 2)\",\n/i : 1.4"
 				}
 
 			}
@@ -408,7 +412,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 470.0, 3586.0, 83.0, 32.0 ],
+					"patching_rect" : [ 470.0, 3796.0, 83.0, 32.0 ],
 					"text" : "/myfunc(/c)"
 				}
 
@@ -421,7 +425,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 69.0, 2606.0, 367.0, 239.0 ],
+					"patching_rect" : [ 69.0, 2816.0, 367.0, 239.0 ],
 					"text" : "aseq() and map():\n\nNote the use of aseq() here to generate a list of indices to be used in function mapping.\n\nThe first calculation is done with index 0 from the arithmetic sequence we generate, which is zero (0).\nIt translates to:  /c[[0]] = (5.0 / 9) * (/f[[0]] - 32)\nThe value from /f that is used is 100\n\nThe second calculation is done with index 1 from the arithmetic sequence, which is one (1).\nIt translates to: /c[[1]] = (5.0 / 9) * (/f[[1]] - 32)\nthe value from /f that is used is 92.4\n\n...and so on..."
 				}
 
@@ -434,7 +438,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 69.0, 2409.0, 374.0, 181.0 ],
+					"patching_rect" : [ 69.0, 2619.0, 374.0, 181.0 ],
 					"text" : "Let's modify this same function to accept and operate on list of values.  So this time, we'll call map() instead of apply()\n\nWe'll call nfill() to generate a list that is the same size as /f, and similarly to the example above, we'll call map() inplace rather than assigning it to anything.  This form may read more like a traditional for() loop.\n\nJust to review, when we call map, we do so as:\n\nmap( function( [arg1, arg2, arg3, ...], function-expression ), mapArg1, mapArg2"
 				}
 
@@ -448,7 +452,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 501.0, 2465.0, 195.0, 24.0 ],
+					"patching_rect" : [ 501.0, 2675.0, 195.0, 24.0 ],
 					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 32, 47, 102, 0, 0, 44, 105, 100, 105, 105, 0, 0, 0, 0, 0, 0, 100, 64, 87, 25, -103, -103, -103, -103, -102, 0, 0, 0, 68, 0, 0, 0, 99 ],
 					"saved_bundle_length" : 52,
 					"text" : "/f : [100, 92.4, 68, 99]"
@@ -464,7 +468,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 501.0, 2711.0, 330.0, 34.0 ]
+					"patching_rect" : [ 501.0, 2921.0, 330.0, 34.0 ]
 				}
 
 			}
@@ -478,7 +482,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 501.0, 2546.0, 244.0, 106.0 ],
+					"patching_rect" : [ 501.0, 2756.0, 244.0, 106.0 ],
 					"text" : "/c = nfill(length(/f), 0),\nmap(\n  lambda([f, i], \n    /c[[i]] = (5.0 / 9) * (f - 32)\n  ), \n  /f, aseq(0, length(/f) - 1)\n)"
 				}
 
@@ -491,7 +495,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 501.0, 2140.0, 402.0, 108.0 ],
+					"patching_rect" : [ 501.0, 2350.0, 402.0, 108.0 ],
 					"text" : "Here's slightly different example.  \n\nIn this case we'll calculate the celsius value from a value input in fahrenheit.  \n\nNotice that we don't have to use the return value if we perform assignment from within the function body."
 				}
 
@@ -533,11 +537,13 @@
 					"fontface" : 0,
 					"fontsize" : 11.0,
 					"id" : "obj-72",
+					"linecount" : 3,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 458.0, 1917.5, 369.0, 33.0 ]
+					"patching_rect" : [ 458.0, 1917.5, 369.0, 58.0 ],
+					"text" : "/shapes : [\"/sphere\", \"/cylinder\", \"/square\"],\n/properties : [\"round\", \"tubular\", \"proportional\"],\n/result : false"
 				}
 
 			}
@@ -575,11 +581,13 @@
 					"fontface" : 0,
 					"fontsize" : 11.0,
 					"id" : "obj-54",
+					"linecount" : 2,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 458.0, 1710.5, 369.0, 33.0 ]
+					"patching_rect" : [ 458.0, 1710.5, 369.0, 45.0 ],
+					"text" : "/shapes : [\"/sphere\", \"/cylinder\", \"/square\"],\n/properties : [\"round\", \"tubular\", \"proportional\"]"
 				}
 
 			}
@@ -804,7 +812,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 269.0, 2982.0, 125.0, 60.0 ],
+					"patching_rect" : [ 269.0, 3192.0, 125.0, 60.0 ],
 					"text" : "pre-defining a function, then using it"
 				}
 
@@ -818,7 +826,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 164.0, 2988.0, 86.0, 24.0 ]
+					"patching_rect" : [ 164.0, 3198.0, 86.0, 24.0 ]
 				}
 
 			}
@@ -829,7 +837,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 164.0, 3025.0, 65.0, 24.0 ],
+					"patching_rect" : [ 164.0, 3235.0, 65.0, 24.0 ],
 					"text" : "o.pack /c"
 				}
 
@@ -843,7 +851,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 164.0, 3194.0, 229.0, 34.0 ]
+					"patching_rect" : [ 164.0, 3404.0, 229.0, 34.0 ]
 				}
 
 			}
@@ -857,7 +865,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 164.0, 3066.0, 192.0, 69.0 ],
+					"patching_rect" : [ 164.0, 3276.0, 192.0, 69.0 ],
 					"text" : "/f2c = \"lambda([c], \n    /f = (9.0 / 5) * c + 32\n  )\",\n/f2c(/c)"
 				}
 
@@ -872,7 +880,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 183.0, 2062.0, 112.0, 22.0 ]
+					"patching_rect" : [ 183.0, 2272.0, 112.0, 22.0 ]
 				}
 
 			}
@@ -884,7 +892,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 183.0, 2099.0, 58.0, 22.0 ],
+					"patching_rect" : [ 183.0, 2309.0, 58.0, 22.0 ],
 					"text" : "o.pack /f"
 				}
 
@@ -898,7 +906,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 183.0, 2279.0, 147.0, 34.0 ]
+					"patching_rect" : [ 183.0, 2489.0, 147.0, 34.0 ]
 				}
 
 			}
@@ -912,7 +920,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 183.0, 2151.0, 234.0, 86.0 ],
+					"patching_rect" : [ 183.0, 2361.0, 234.0, 86.0 ],
 					"text" : "apply(\n  lambda([f], \n    /c = (5.0 / 9.) * (f - 32.)\n  ), /f\n)"
 				}
 
@@ -926,7 +934,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 270.0, 5333.0, 164.0, 34.0 ]
+					"patching_rect" : [ 270.0, 5543.0, 164.0, 34.0 ]
 				}
 
 			}
@@ -939,7 +947,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 270.0, 5258.0, 167.0, 24.0 ],
+					"patching_rect" : [ 270.0, 5468.0, 167.0, 24.0 ],
 					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 32, 47, 118, 101, 99, 0, 0, 0, 0, 44, 105, 105, 105, 105, 0, 0, 0, 0, 0, 0, 20, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0, 2 ],
 					"saved_bundle_length" : 52,
 					"text" : "/vec : [20, 2, 2, 2]"
@@ -955,7 +963,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 270.0, 5288.0, 214.0, 32.0 ],
+					"patching_rect" : [ 270.0, 5498.0, 214.0, 32.0 ],
 					"text" : "/result = lreduce(div, /vec)"
 				}
 
@@ -968,7 +976,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 359.0, 5083.5, 56.0, 43.0 ],
+					"patching_rect" : [ 359.0, 5293.5, 56.0, 43.0 ],
 					"text" : "1 - 2 = -1\n-1 - 3 = -4\n-4 - 4 = -8",
 					"textjustification" : 1
 				}
@@ -982,7 +990,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 813.0, 5083.5, 56.0, 43.0 ],
+					"patching_rect" : [ 813.0, 5293.5, 56.0, 43.0 ],
 					"text" : "4 - 3 = 1\n1 - 2 = -1\n-1 - 1 = -2",
 					"textjustification" : 1
 				}
@@ -997,7 +1005,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 582.0, 5134.0, 164.0, 34.0 ]
+					"patching_rect" : [ 582.0, 5344.0, 164.0, 34.0 ]
 				}
 
 			}
@@ -1010,7 +1018,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 582.0, 5034.0, 159.0, 24.0 ],
+					"patching_rect" : [ 582.0, 5244.0, 159.0, 24.0 ],
 					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 32, 47, 118, 101, 99, 0, 0, 0, 0, 44, 105, 105, 105, 105, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 2, 0, 0, 0, 3, 0, 0, 0, 4 ],
 					"saved_bundle_length" : 52,
 					"text" : "/vec : [1, 2, 3, 4]"
@@ -1026,7 +1034,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 582.0, 5089.0, 214.0, 32.0 ],
+					"patching_rect" : [ 582.0, 5299.0, 214.0, 32.0 ],
 					"text" : "/result = rreduce(sub, /vec)"
 				}
 
@@ -1040,7 +1048,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 128.0, 5134.0, 164.0, 34.0 ]
+					"patching_rect" : [ 128.0, 5344.0, 164.0, 34.0 ]
 				}
 
 			}
@@ -1053,7 +1061,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 128.0, 5034.0, 159.0, 24.0 ],
+					"patching_rect" : [ 128.0, 5244.0, 159.0, 24.0 ],
 					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 32, 47, 118, 101, 99, 0, 0, 0, 0, 44, 105, 105, 105, 105, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 2, 0, 0, 0, 3, 0, 0, 0, 4 ],
 					"saved_bundle_length" : 52,
 					"text" : "/vec : [1, 2, 3, 4]"
@@ -1069,7 +1077,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 128.0, 5089.0, 214.0, 32.0 ],
+					"patching_rect" : [ 128.0, 5299.0, 214.0, 32.0 ],
 					"text" : "/result = lreduce(sub, /vec)"
 				}
 
