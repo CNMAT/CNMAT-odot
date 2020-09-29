@@ -106,7 +106,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 74.0, 642.5, 840.0, 22.0 ],
+					"patching_rect" : [ 74.0, 657.5, 840.0, 22.0 ],
 					"style" : "default",
 					"text" : "Further details on subbundles",
 					"textjustification" : 1
@@ -120,7 +120,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 735.5, 439.0, 199.0, 114.0 ],
+					"patching_rect" : [ 735.5, 457.0, 199.0, 114.0 ],
 					"presentation_linecount" : 8,
 					"text" : "Finally, in this example above, the subbundle is created as a result of the './a' address being requested.\nSince the subbundle didn't exist prior, it is generated and then '/a' is assigned.  When we request '/b', '/bndl' already exists, so only the address is generated."
 				}
@@ -141,7 +141,7 @@
 					"numinlets" : 0,
 					"numoutlets" : 0,
 					"offset" : [ 0.0, 0.0 ],
-					"patching_rect" : [ 168.25, 456.25, 90.25, 14.75 ],
+					"patching_rect" : [ 168.25, 474.25, 90.25, 14.75 ],
 					"viewvisibility" : 1
 				}
 
@@ -161,7 +161,7 @@
 					"numinlets" : 0,
 					"numoutlets" : 0,
 					"offset" : [ 0.0, 0.0 ],
-					"patching_rect" : [ 406.0, 523.25, 90.25, 14.75 ],
+					"patching_rect" : [ 406.0, 541.25, 90.25, 14.75 ],
 					"viewvisibility" : 1
 				}
 
@@ -174,7 +174,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 522.0, 271.0, 58.0, 22.0 ],
+					"patching_rect" : [ 522.0, 289.0, 58.0, 22.0 ],
 					"text" : "loadbang"
 				}
 
@@ -186,7 +186,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 401.0, 439.0, 197.0, 100.0 ],
+					"patching_rect" : [ 401.0, 457.0, 197.0, 100.0 ],
 					"presentation_linecount" : 7,
 					"text" : "Here, we generate the subbundle manually by using the bundle literal notation.  This generates an empty bundle which we can fill by name.  The subbundle's addresses can be dynamically generated within [o.expr.codebox]"
 				}
@@ -199,7 +199,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 96.0, 439.0, 187.0, 114.0 ],
+					"patching_rect" : [ 96.0, 457.0, 187.0, 114.0 ],
 					"text" : "...if the subbundle /bndl exists before it hits [o.expr.codebox], it can be operated on.  \nThis might be the most familiar to you so far.\nIn this example, the subbundle already contains addreses from the [o.compose] object."
 				}
 
@@ -304,7 +304,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 763.5, 322.0, 143.0, 75.0 ],
+					"patching_rect" : [ 763.5, 340.0, 143.0, 75.0 ],
 					"text" : "/bndl : {\n\t/a : \"foo\",\n\t/b : \"bar\"\n}"
 				}
 
@@ -319,7 +319,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 763.5, 196.0, 140.0, 46.0 ],
+					"patching_rect" : [ 763.5, 214.0, 140.0, 46.0 ],
 					"text" : "/bndl./a = \"foo\", \n/bndl./b = \"bar\""
 				}
 
@@ -334,7 +334,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 424.0, 322.0, 143.0, 75.0 ],
+					"patching_rect" : [ 424.0, 340.0, 143.0, 75.0 ],
 					"text" : "/bndl : {\n\t/a : \"foo\",\n\t/b : \"bar\"\n}"
 				}
 
@@ -349,7 +349,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 424.0, 196.0, 140.0, 59.0 ],
+					"patching_rect" : [ 424.0, 214.0, 140.0, 59.0 ],
 					"text" : "/bndl = {},\n/bndl./a = \"foo\", \n/bndl./b = \"bar\""
 				}
 
@@ -364,7 +364,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 113.5, 322.0, 143.0, 88.0 ],
+					"patching_rect" : [ 113.5, 340.0, 143.0, 88.0 ],
 					"text" : "/bndl : {\n\t/a : \"a\",\n\t/b : 43,\n\t/c : 98\n}"
 				}
 
@@ -379,7 +379,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 113.5, 184.0, 85.0, 78.0 ],
+					"patching_rect" : [ 113.5, 202.0, 85.0, 78.0 ],
 					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 80, 47, 98, 110, 100, 108, 0, 0, 0, 44, 46, 0, 0, 0, 0, 0, 64, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 12, 47, 97, 0, 0, 44, 105, 0, 0, 0, 0, 0, 57, 0, 0, 0, 12, 47, 98, 0, 0, 44, 105, 0, 0, 0, 0, 0, 43, 0, 0, 0, 12, 47, 99, 0, 0, 44, 105, 0, 0, 0, 0, 0, 98 ],
 					"saved_bundle_length" : 100,
 					"text" : "/bndl : {\n\t/a : 57,\n\t/b : 43,\n\t/c : 98\n}"
@@ -395,7 +395,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 113.5, 277.0, 111.0, 32.0 ],
+					"patching_rect" : [ 113.5, 295.0, 111.0, 32.0 ],
 					"text" : "/bndl./a = \"a\""
 				}
 
@@ -407,7 +407,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 74.0, 127.5, 840.0, 22.0 ],
+					"patching_rect" : [ 74.0, 139.5, 840.0, 22.0 ],
 					"style" : "default",
 					"text" : "There are three ways to create a subbundle in ODOT.  Let's look at each below, and then get into some finer details.",
 					"textjustification" : 1
@@ -450,7 +450,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 883.0, 604.0, 96.0, 20.0 ],
+					"patching_rect" : [ 883.0, 621.0, 83.0, 20.0 ],
 					"text" : "( scroll down )"
 				}
 
