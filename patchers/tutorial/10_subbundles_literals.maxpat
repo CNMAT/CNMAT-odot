@@ -40,13 +40,18 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"bubble" : 1,
+					"bubblepoint" : 0.17,
+					"bubbleside" : 3,
+					"bubbletextmargin" : 15,
+					"bubbleusescolors" : 1,
 					"id" : "obj-38",
-					"linecount" : 14,
+					"linecount" : 17,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 198.0, 1388.0, 252.0, 194.0 ],
-					"presentation_linecount" : 14,
+					"patching_rect" : [ 198.0, 1388.0, 252.0, 258.0 ],
+					"presentation_linecount" : 17,
 					"text" : "We may want to investigate further, to figure out what values \"/a\" and \"/b\" hold.\n\ngetbundlemember() was designed for such a task.  It returns the value of the subbundle's address given as it's second argument.  The first argument is the subbundle to interrogate.\n\nNote that in the case of \"/get/1\", we are using the return value of the initial call to getaddresses().  Since this returns a list, we can access the first element \"/a\", and pass this element to the second argument to getbundlemember()."
 				}
 
@@ -65,13 +70,18 @@
 			}
 , 			{
 				"box" : 				{
+					"bubble" : 1,
+					"bubblepoint" : 0.36,
+					"bubbleside" : 3,
+					"bubbletextmargin" : 15,
+					"bubbleusescolors" : 1,
 					"id" : "obj-36",
-					"linecount" : 5,
+					"linecount" : 6,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 198.0, 1141.0, 249.0, 74.0 ],
-					"presentation_linecount" : 5,
+					"patching_rect" : [ 198.0, 1141.0, 249.0, 111.0 ],
+					"presentation_linecount" : 6,
 					"text" : "If we want to get the addresses of a subbundle, we can pass that as an argument to getaddresses().  Here, we do just that, and we see that the resultant list yields the list of addresses belonging to \"/bndl\".  "
 				}
 
