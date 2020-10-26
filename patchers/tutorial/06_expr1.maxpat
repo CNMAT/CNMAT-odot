@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 5,
+			"revision" : 7,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -39,6 +39,26 @@
 		"subpatcher_template" : "Untitled5_template",
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
+				"box" : 				{
+					"args" : [ 6 ],
+					"bgmode" : 0,
+					"border" : 0,
+					"clickthrough" : 0,
+					"enablehscroll" : 0,
+					"enablevscroll" : 0,
+					"id" : "obj-115",
+					"lockeddragscroll" : 0,
+					"maxclass" : "bpatcher",
+					"name" : "advance.maxpat",
+					"numinlets" : 0,
+					"numoutlets" : 0,
+					"offset" : [ -1.0, -2.0 ],
+					"patching_rect" : [ 764.333333333333258, 6755.0, 195.0, 28.0 ],
+					"viewvisibility" : 1
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"fontsize" : 12.0,
 					"id" : "obj-111",
@@ -219,7 +239,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 1,
-							"revision" : 5,
+							"revision" : 7,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -788,7 +808,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 691.0, 6755.0, 111.0, 22.0 ]
+					"patching_rect" : [ 692.0, 6771.0, 111.0, 22.0 ]
 				}
 
 			}
@@ -1340,8 +1360,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 486.5, 3500.0, 396.5, 195.0 ],
-					"presentation_linecount" : 17,
+					"patching_rect" : [ 486.5, 3500.0, 397.0, 195.0 ],
 					"text" : "In the example to the left, we cannot rely on /x being present in the bundle until we click the compose box that contains it.\n\nLet's generate an error!  Open your Max console for this one...\n\nTry entering in a value to the number box connected to [o.pack /int] and hit enter.  Note that this generates an error because we attempt to use the value of /x before we actually union /x with the incoming bundle containing the address /int.  \n\nThe error \"+: address /x is unbound\" tells us that there was an operation attempted in which /x was supposed to be added to something, and it failed because libo found no such /x."
 				}
 

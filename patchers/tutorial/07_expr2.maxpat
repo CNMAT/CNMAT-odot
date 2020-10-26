@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 5,
+			"revision" : 7,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -39,6 +39,26 @@
 		"subpatcher_template" : "Untitled5_template",
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
+				"box" : 				{
+					"args" : [ 7 ],
+					"bgmode" : 0,
+					"border" : 0,
+					"clickthrough" : 0,
+					"enablehscroll" : 0,
+					"enablevscroll" : 0,
+					"id" : "obj-13",
+					"lockeddragscroll" : 0,
+					"maxclass" : "bpatcher",
+					"name" : "advance.maxpat",
+					"numinlets" : 0,
+					"numoutlets" : 0,
+					"offset" : [ -1.0, -2.0 ],
+					"patching_rect" : [ 765.0, 6069.0, 195.0, 28.0 ],
+					"viewvisibility" : 1
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"fontsize" : 12.0,
 					"id" : "obj-9",
@@ -527,13 +547,11 @@
 					"fontface" : 0,
 					"fontsize" : 12.0,
 					"id" : "obj-59",
-					"linecount" : 3,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 223.5, 5986.0, 223.0, 61.0 ],
-					"text" : "/list/1 : [\"r\", \"g\", \"b\"],\n/list/2 : [\"a\", \"b\", \"c\"],\n/newlist : [\"ra\", \"gb\", \"bc\"]"
+					"patching_rect" : [ 223.5, 5986.0, 223.0, 34.0 ]
 				}
 
 			}
@@ -600,13 +618,11 @@
 					"fontface" : 0,
 					"fontsize" : 12.0,
 					"id" : "obj-75",
-					"linecount" : 3,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 545.5, 5986.0, 259.0, 61.0 ],
-					"text" : "/list1 : [1, 2, 3],\n/list2 : [\"a\", \"b\", \"c\"],\n/pushed : [1, 2, 3, \"a\", \"b\", \"c\"]"
+					"patching_rect" : [ 545.5, 5986.0, 259.0, 34.0 ]
 				}
 
 			}
@@ -1650,13 +1666,11 @@
 					"fontface" : 0,
 					"fontsize" : 12.0,
 					"id" : "obj-19",
-					"linecount" : 5,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 622.0, 407.0, 143.0, 88.0 ],
-					"text" : "/list/2 : [1, {\n\t/a : 57,\n\t/b : 43,\n\t/c : 98\n}, 3]"
+					"patching_rect" : [ 622.0, 407.0, 143.0, 34.0 ]
 				}
 
 			}

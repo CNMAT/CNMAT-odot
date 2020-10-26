@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 5,
+			"revision" : 7,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -40,6 +40,26 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"args" : [ 10 ],
+					"bgmode" : 0,
+					"border" : 0,
+					"clickthrough" : 0,
+					"enablehscroll" : 0,
+					"enablevscroll" : 0,
+					"id" : "obj-2",
+					"lockeddragscroll" : 0,
+					"maxclass" : "bpatcher",
+					"name" : "advance.maxpat",
+					"numinlets" : 0,
+					"numoutlets" : 0,
+					"offset" : [ -1.0, -2.0 ],
+					"patching_rect" : [ 776.0, 2237.0, 195.0, 28.0 ],
+					"viewvisibility" : 1
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"bubble" : 1,
 					"bubblepoint" : 0.17,
 					"bubbleside" : 3,
@@ -51,7 +71,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 198.0, 1388.0, 252.0, 258.0 ],
-					"presentation_linecount" : 17,
 					"text" : "We may want to investigate further, to figure out what values \"/a\" and \"/b\" hold.\n\ngetbundlemember() was designed for such a task.  It returns the value of the subbundle's address given as it's second argument.  The first argument is the subbundle to interrogate.\n\nNote that in the case of \"/get/1\", we are using the return value of the initial call to getaddresses().  Since this returns a list, we can access the first element \"/a\", and pass this element to the second argument to getbundlemember()."
 				}
 
@@ -81,7 +100,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 198.0, 1141.0, 249.0, 111.0 ],
-					"presentation_linecount" : 6,
 					"text" : "If we want to get the addresses of a subbundle, we can pass that as an argument to getaddresses().  Here, we do just that, and we see that the resultant list yields the list of addresses belonging to \"/bndl\".  "
 				}
 
@@ -94,7 +112,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 534.0, 813.0, 249.0, 167.0 ],
-					"presentation_linecount" : 15,
 					"text" : "Let's take a look at some details regarding introspection with subbundles.\n\nWhen we query the names of all addresses in a bundle via getaddresses(), we might expect to see more than one element in the resultant list.\n\nInstead, we see \"/bndl\" as the only name detected.\nThis is because getaddresses, by default, only evaluates the top-level address space."
 				}
 
@@ -121,7 +138,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 735.5, 457.0, 199.0, 114.0 ],
-					"presentation_linecount" : 8,
 					"text" : "Finally, in this example above, the subbundle is created as a result of the './a' address being requested.\nSince the subbundle didn't exist prior, it is generated and then '/a' is assigned.  When we request '/b', '/bndl' already exists, so only the address is generated."
 				}
 
@@ -186,8 +202,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 401.0, 457.0, 197.0, 100.0 ],
-					"presentation_linecount" : 7,
+					"patching_rect" : [ 401.0, 457.0, 199.0, 100.0 ],
 					"text" : "Here, we generate the subbundle manually by using the bundle literal notation.  This generates an empty bundle which we can fill by name.  The subbundle's addresses can be dynamically generated within [o.expr.codebox]"
 				}
 
@@ -199,7 +214,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 96.0, 457.0, 187.0, 114.0 ],
+					"patching_rect" : [ 96.0, 457.0, 189.0, 114.0 ],
 					"text" : "...if the subbundle /bndl exists before it hits [o.expr.codebox], it can be operated on.  \nThis might be the most familiar to you so far.\nIn this example, the subbundle already contains addreses from the [o.compose] object."
 				}
 
@@ -239,13 +254,11 @@
 					"fontface" : 0,
 					"fontsize" : 12.0,
 					"id" : "obj-12",
-					"linecount" : 5,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 257.0, 903.0, 209.0, 88.0 ],
-					"text" : "/bndl : {\n\t/a : \"foo\",\n\t/b : \"bar\"\n},\n/get : \"/bndl\""
+					"patching_rect" : [ 257.0, 903.0, 209.0, 34.0 ]
 				}
 
 			}

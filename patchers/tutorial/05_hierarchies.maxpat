@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 5,
+			"revision" : 7,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -39,6 +39,26 @@
 		"subpatcher_template" : "Untitled5_template",
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
+				"box" : 				{
+					"args" : [ 5 ],
+					"bgmode" : 0,
+					"border" : 0,
+					"clickthrough" : 0,
+					"enablehscroll" : 0,
+					"enablevscroll" : 0,
+					"id" : "obj-25",
+					"lockeddragscroll" : 0,
+					"maxclass" : "bpatcher",
+					"name" : "advance.maxpat",
+					"numinlets" : 0,
+					"numoutlets" : 0,
+					"offset" : [ -1.0, -2.0 ],
+					"patching_rect" : [ 724.0, 3194.0, 195.0, 28.0 ],
+					"viewvisibility" : 1
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"fontsize" : 12.0,
 					"id" : "obj-11",
@@ -212,7 +232,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 508.5, 1378.5, 431.0, 341.0 ],
+					"patching_rect" : [ 508.5, 1378.5, 433.0, 341.0 ],
 					"style" : "default",
 					"text" : "Let's take a look at how we might store a bundle like this outside of Max.\n\nWe could decide to store the same bundle – that we just used to generate sound – on disk, so that we can recall it later, or maybe use it in a different patch in the future.  Click the [o.compose] objects to the left, in sequence, and note that both [button]s illuminate each time an [o.compose] box is clicked.  \n\nWhat's happening here?\n\nFirst, let's review the flow of using [o.union] to store a bundle that just got output with an incoming bundle:  Each time we click on one of the [o.compose] boxes, we fold that result in to the pre-existing bundle.  If there was already data in the right inlet of [o.union], that data is updated with the incoming bundle's contents.  \n\nSo unioning data does two critical things to a previously existing bundle:\n\n1. updates pre-existing addresses, if present\n2. adds new addresses, if present\n\nAfter the data is unioned, we use [o.pack] name it as \"/synthesizer\".  Now the address \"/synthesizer\" contains the entirety of our bundle."
 				}
@@ -585,13 +605,11 @@
 					"fontface" : 0,
 					"fontsize" : 11.0,
 					"id" : "obj-17",
-					"linecount" : 2,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 384.0, 2669.0, 122.0, 45.0 ],
-					"text" : "/dur/sec : 0.3,\n/amp : 0.9"
+					"patching_rect" : [ 384.0, 2669.0, 122.0, 33.0 ]
 				}
 
 			}
@@ -626,13 +644,11 @@
 					"fontface" : 0,
 					"fontsize" : 11.0,
 					"id" : "obj-8",
-					"linecount" : 28,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 162.0, 2345.0, 171.0, 369.0 ],
-					"text" : "/synthesizer : {\n\t/voice/2 : {\n\t\t/waveform : \"sine\",\n\t\t/filter : {\n\t\t\t/type : \"lowpass\",\n\t\t\t/q : 1.2,\n\t\t\t/freq : 300.\n\t\t},\n\t\t/env : {\n\t\t\t/dur/sec : 0.5,\n\t\t\t/amp : 0.9\n\t\t},\n\t\t/freq : 654.\n\t},\n\t/voice/1 : {\n\t\t/waveform : \"rect\",\n\t\t/filter : {\n\t\t\t/type : \"lowpass\",\n\t\t\t/q : 2.2,\n\t\t\t/freq : 1700.\n\t\t},\n\t\t/env : {\n\t\t\t/dur/sec : 0.3,\n\t\t\t/amp : 0.9\n\t\t},\n\t\t/freq : 254.\n\t}\n}"
+					"patching_rect" : [ 162.0, 2345.0, 171.0, 33.0 ]
 				}
 
 			}

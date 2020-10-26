@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 1,
+			"revision" : 7,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -37,7 +37,28 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "Untitled5_template",
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
+				"box" : 				{
+					"args" : [ 1 ],
+					"bgmode" : 0,
+					"border" : 0,
+					"clickthrough" : 0,
+					"enablehscroll" : 0,
+					"enablevscroll" : 0,
+					"id" : "obj-6",
+					"lockeddragscroll" : 0,
+					"maxclass" : "bpatcher",
+					"name" : "advance.maxpat",
+					"numinlets" : 0,
+					"numoutlets" : 0,
+					"offset" : [ -1.0, -2.0 ],
+					"patching_rect" : [ 643.5, 1722.0, 195.0, 28.0 ],
+					"viewvisibility" : 1
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"fontface" : 2,
 					"fontsize" : 12.0,
@@ -46,8 +67,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 142.0, 365.5, 592.0, 30.0 ],
-					"presentation_linecount" : 2,
+					"patching_rect" : [ 142.0, 365.5, 592.0, 33.0 ],
 					"style" : "default",
 					"text" : "Note the curly braces that surround the message printed by o.print. Those denote the beginning and end of a collection, or \"bundle\" of messages.",
 					"textjustification" : 1
@@ -63,8 +83,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 142.0, 231.5, 592.0, 30.0 ],
-					"presentation_linecount" : 2,
+					"patching_rect" : [ 142.0, 231.5, 592.0, 33.0 ],
 					"style" : "default",
 					"text" : "Odot data can only be operated on and displayed by odot objects. To print the contents of an o.compose box to the Max window, use o.print. Try clicking on each box below and look at the result in the Max console.",
 					"textjustification" : 1
@@ -78,7 +97,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 355.5, 319.038461538461547, 91.0, 20.0 ],
+					"patching_rect" : [ 355.5, 319.038461538461547, 91.0, 22.0 ],
 					"text" : "print not-helpful"
 				}
 
@@ -94,7 +113,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 445.5, 284.0, 74.0, 22.0 ],
+					"patching_rect" : [ 445.5, 284.0, 74.0, 24.0 ],
 					"text" : "message"
 				}
 
@@ -110,7 +129,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 182.0, 284.0, 84.0, 22.0 ],
+					"patching_rect" : [ 182.0, 284.0, 84.0, 24.0 ],
 					"text" : "o.compose"
 				}
 
@@ -126,7 +145,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 190.0, 1346.0, 73.0, 22.0 ],
+					"patching_rect" : [ 190.0, 1346.0, 73.0, 24.0 ],
 					"text" : "o.display"
 				}
 
@@ -142,7 +161,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 179.0, 1254.0, 84.0, 22.0 ],
+					"patching_rect" : [ 179.0, 1254.0, 84.0, 24.0 ],
 					"text" : "o.compose"
 				}
 
@@ -158,7 +177,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 156.0, 1296.0, 107.0, 22.0 ],
+					"patching_rect" : [ 156.0, 1296.0, 107.0, 24.0 ],
 					"text" : "o.expr.codebox"
 				}
 
@@ -170,7 +189,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 25.5, 1679.0, 813.0, 34.0 ],
+					"patching_rect" : [ 25.5, 1679.0, 813.0, 38.0 ],
 					"text" : "o.expr.codebox has a number of built-in functions and some nice features that simplify common tasks like list manipulation, which we'll encounter as we go",
 					"textjustification" : 1
 				}
@@ -182,7 +201,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 25.5, 1427.0, 813.0, 20.0 ],
+					"patching_rect" : [ 25.5, 1427.0, 813.0, 22.0 ],
 					"text" : "o.expr.codebox operates on a copy of the input and produces that copy, containing any changes to it that its program produced.",
 					"textjustification" : 1
 				}
@@ -197,7 +216,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 367.0, 1547.0, 302.0, 42.0 ],
+					"patching_rect" : [ 367.0, 1547.0, 302.0, 47.0 ],
 					"text" : "You can assign a value to an address using the \"=\" operator. This creates a new message and appends it to the copy of our input"
 				}
 
@@ -207,13 +226,11 @@
 					"fontface" : 0,
 					"fontsize" : 12.0,
 					"id" : "obj-26",
-					"linecount" : 2,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 278.0, 1603.0, 251.0, 48.0 ],
-					"text" : "/mylist : [1, 2, \"a\", \"b\", 3.14],\n/foo : 10"
+					"patching_rect" : [ 278.0, 1603.0, 251.0, 34.0 ]
 				}
 
 			}
@@ -269,7 +286,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 450.0, 1292.0, 297.0, 30.0 ],
+					"patching_rect" : [ 450.0, 1292.0, 297.0, 33.0 ],
 					"text" : "Sending a bundle through an empty o.expr.compose simply produces a copy of the bundle"
 				}
 
@@ -310,7 +327,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 25.5, 1163.0, 813.0, 34.0 ],
+					"patching_rect" : [ 25.5, 1163.0, 813.0, 38.0 ],
 					"text" : "Before continuing with our tutorial, let's introduce o.expr.codebox, which allows you to write expressions that manipulate OSC data in a Javascript-like language.",
 					"textjustification" : 1
 				}
@@ -324,7 +341,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 19.5, 1024.5, 834.0, 30.0 ],
+					"patching_rect" : [ 19.5, 1024.5, 834.0, 33.0 ],
 					"style" : "default",
 					"text" : "The Max message box serves two functions: creation and display. \nWhile o.compose can also be used to accomplish both of those tasks, its primary purpose is creation, with display being handled by o.display.",
 					"textjustification" : 1
@@ -355,7 +372,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 521.5, 319.038461538461547, 84.0, 20.0 ],
+					"patching_rect" : [ 521.5, 319.038461538461547, 84.0, 22.0 ],
 					"text" : "print message"
 				}
 
@@ -368,7 +385,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 269.0, 319.038461538461547, 81.0, 20.0 ],
+					"patching_rect" : [ 269.0, 319.038461538461547, 81.0, 22.0 ],
 					"text" : "o.print helpful"
 				}
 
@@ -381,7 +398,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 521.5, 284.0, 65.0, 20.0 ],
+					"patching_rect" : [ 521.5, 284.0, 65.0, 22.0 ],
 					"text" : "name data"
 				}
 
@@ -409,7 +426,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 763.5, 714.5, 88.0, 20.0 ],
+					"patching_rect" : [ 763.5, 714.5, 88.0, 22.0 ],
 					"style" : "default",
 					"text" : "(scroll down)"
 				}
@@ -424,7 +441,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 51.0, 448.5, 774.0, 30.0 ],
+					"patching_rect" : [ 51.0, 448.5, 774.0, 33.0 ],
 					"style" : "default",
 					"text" : "Unlike Max messages which can only be sent in sequence, odot can \"bundle\" messages together. When you click on the message box on the right, the message \"mylist1\" is sent, followed by \"mylist2\". On the left, both messages are sent \"atomically\", that is, together as a single unit."
 				}
@@ -457,7 +474,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 790.5, 47.5, 61.0, 22.0 ],
+					"patching_rect" : [ 790.5, 47.5, 61.0, 24.0 ],
 					"text" : "onecopy"
 				}
 
@@ -489,7 +506,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 552.5, 621.076923076923094, 65.0, 20.0 ],
+					"patching_rect" : [ 552.5, 621.076923076923094, 65.0, 22.0 ],
 					"text" : "print max2"
 				}
 
@@ -501,7 +518,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 475.5, 621.076923076923094, 65.0, 20.0 ],
+					"patching_rect" : [ 475.5, 621.076923076923094, 65.0, 22.0 ],
 					"text" : "print max1"
 				}
 
@@ -514,7 +531,7 @@
 					"numinlets" : 3,
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "" ],
-					"patching_rect" : [ 475.5, 578.038461538461547, 173.0, 20.0 ],
+					"patching_rect" : [ 475.5, 578.038461538461547, 173.0, 22.0 ],
 					"text" : "route mylist1 mylist2"
 				}
 
@@ -526,7 +543,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 19.5, 714.5, 489.0, 20.0 ],
+					"patching_rect" : [ 19.5, 714.5, 489.0, 22.0 ],
 					"style" : "default",
 					"text" : "Let's look closer at the similarities and differences between these two objects:"
 				}
@@ -540,7 +557,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "FullPacket" ],
-					"patching_rect" : [ 115.0, 578.038461538461547, 83.0, 20.0 ],
+					"patching_rect" : [ 115.0, 578.038461538461547, 83.0, 22.0 ],
 					"text" : "o.route /mylist"
 				}
 
@@ -553,7 +570,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 115.0, 621.076923076923094, 105.0, 20.0 ],
+					"patching_rect" : [ 115.0, 621.076923076923094, 105.0, 22.0 ],
 					"text" : "o.print one_&_two"
 				}
 
@@ -566,7 +583,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 19.5, 754.5, 834.0, 201.0 ],
+					"patching_rect" : [ 19.5, 754.5, 834.0, 224.0 ],
 					"style" : "default",
 					"text" : "1. In the Max message box, the comma separates two messages, which will be output separately when the button is clicked. In o.compose, the comma also separates messages, but when clicked, o.compose outputs a single \"bundle\" which contains all of the messages. The comma also serves a second purpose in o.compose as a list item separator.\n\n2. Strings in o.compose, o.display, and o.expr.codebox, are surrounded by double-quotes.\n\n3. Lists are contained within brackets: [ to start a list, and ] to end one.  list items are separated by commas.  You can write lists inside of lists, for example [1, 2, [3, 4], 5], however, the list will be flattened to a single level: [1, 2, 3, 4, 5].\n\n4. All data (single values or a list of values) has an address (name), that is, you can't have a list or a value by itself without an address.\n\n5. We bind data to an address with the colon (:) operator.  Addresses go on the left hand side of the colon operator, and must begin with a forward-slash; values go on the right.\n\n6. o.compose and o.expr.codebox do not support argument substitutions of the form $1, $2, etc, nor do they support #0, #1, #2, etc."
 				}
@@ -580,7 +597,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 475.5, 519.0, 264.0, 20.0 ],
+					"patching_rect" : [ 475.5, 519.0, 264.0, 22.0 ],
 					"text" : "mylist1 1 2 a b 3.14, mylist2 apple orange grape"
 				}
 
@@ -610,8 +627,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 18.0, 153.5, 840.0, 34.0 ],
-					"presentation_linecount" : 2,
+					"patching_rect" : [ 18.0, 153.5, 840.0, 38.0 ],
 					"style" : "default",
 					"text" : "Odot provides a number of objects that are variations on standard Max objects that you're probably familiar with. The odot equivalent of the Max message box is called o.compose.",
 					"textjustification" : 1
@@ -708,28 +724,28 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "advance.maxpat",
-				"bootpath" : "~/Development/CNMAT/CNMAT/CNMAT-odot/patchers/tutorial",
+				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/patchers/tutorial",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "filelist.txt",
-				"bootpath" : "~/Development/CNMAT/CNMAT/CNMAT-odot/patchers/tutorial",
+				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/patchers/tutorial",
 				"patcherrelativepath" : ".",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "close_parent.js",
-				"bootpath" : "~/Development/CNMAT/CNMAT/CNMAT-odot/patchers/tutorial",
+				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/patchers/tutorial",
 				"patcherrelativepath" : ".",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.t.banner.maxpat",
-				"bootpath" : "~/Development/CNMAT/CNMAT/CNMAT-odot/patchers/tutorial",
+				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/patchers/tutorial",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1

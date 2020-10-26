@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 5,
+			"revision" : 7,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -40,6 +40,26 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"args" : [ 8 ],
+					"bgmode" : 0,
+					"border" : 0,
+					"clickthrough" : 0,
+					"enablehscroll" : 0,
+					"enablevscroll" : 0,
+					"id" : "obj-3",
+					"lockeddragscroll" : 0,
+					"maxclass" : "bpatcher",
+					"name" : "advance.maxpat",
+					"numinlets" : 0,
+					"numoutlets" : 0,
+					"offset" : [ -1.0, -2.0 ],
+					"patching_rect" : [ 784.0, 5622.0, 195.0, 28.0 ],
+					"viewvisibility" : 1
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"fontface" : 2,
 					"fontsize" : 13.0,
 					"id" : "obj-2",
@@ -48,7 +68,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 65.0, 2095.0, 868.0, 65.0 ],
-					"presentation_linecount" : 7,
 					"text" : "A quick word on [a] vs /a:\nIf you have defined a variable 'a' for your lambda function, its scope is private to that function block and cannot exist anywhere outside of it.  Conversely, if you have defined an address '/a' somewhere in your expression, passed it in, etc., that address is global to the codebox instance.  It can be redefined and mutated, but it does not have the same private scope that 'a' does.",
 					"textjustification" : 1
 				}
@@ -399,7 +418,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 470.0, 3910.0, 348.0, 58.0 ],
-					"text" : "/c : 0.7,\n/myfunc : \"lambda([c], /i = c * 2)\",\n/i : 1.4"
+					"text" : "/c : 0.04,\n/myfunc : \"lambda([c], /i = c * 2)\",\n/i : 0.08"
 				}
 
 			}
@@ -537,13 +556,11 @@
 					"fontface" : 0,
 					"fontsize" : 11.0,
 					"id" : "obj-72",
-					"linecount" : 3,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 458.0, 1917.5, 369.0, 58.0 ],
-					"text" : "/shapes : [\"/sphere\", \"/cylinder\", \"/square\"],\n/properties : [\"round\", \"tubular\", \"proportional\"],\n/result : false"
+					"patching_rect" : [ 458.0, 1917.5, 369.0, 33.0 ]
 				}
 
 			}
@@ -581,13 +598,11 @@
 					"fontface" : 0,
 					"fontsize" : 11.0,
 					"id" : "obj-54",
-					"linecount" : 2,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 458.0, 1710.5, 369.0, 45.0 ],
-					"text" : "/shapes : [\"/sphere\", \"/cylinder\", \"/square\"],\n/properties : [\"round\", \"tubular\", \"proportional\"]"
+					"patching_rect" : [ 458.0, 1710.5, 369.0, 33.0 ]
 				}
 
 			}
