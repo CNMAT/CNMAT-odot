@@ -4,13 +4,13 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 7,
+			"revision" : 8,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 67.0, 89.0, 992.0, 640.0 ],
+		"rect" : [ 15.0, 61.0, 992.0, 640.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 14.0,
@@ -21,15 +21,15 @@
 		"gridsnaponopen" : 1,
 		"objectsnaponopen" : 1,
 		"statusbarvisible" : 2,
-		"toolbarvisible" : 1,
-		"lefttoolbarpinned" : 0,
-		"toptoolbarpinned" : 0,
-		"righttoolbarpinned" : 0,
-		"bottomtoolbarpinned" : 0,
-		"toolbars_unpinned_last_save" : 0,
+		"toolbarvisible" : 0,
+		"lefttoolbarpinned" : 2,
+		"toptoolbarpinned" : 2,
+		"righttoolbarpinned" : 2,
+		"bottomtoolbarpinned" : 2,
+		"toolbars_unpinned_last_save" : 15,
 		"tallnewobj" : 0,
 		"boxanimatetime" : 200,
-		"enablehscroll" : 1,
+		"enablehscroll" : 0,
 		"enablevscroll" : 1,
 		"devicewidth" : 0.0,
 		"description" : "",
@@ -39,6 +39,18 @@
 		"subpatcher_template" : "Untitled5_template",
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
+				"box" : 				{
+					"id" : "obj-31",
+					"maxclass" : "button",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "bang" ],
+					"parameter_enable" : 0,
+					"patching_rect" : [ 602.0, 983.0, 24.0, 24.0 ]
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"args" : [ 9 ],
 					"bgmode" : 0,
@@ -185,14 +197,14 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 13.0,
+					"fontsize" : 12.0,
 					"id" : "obj-86",
 					"linecount" : 2,
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 648.0, 2708.0, 120.0, 48.0 ],
+					"patching_rect" : [ 648.0, 2708.0, 111.0, 46.0 ],
 					"text" : "/count ??= 0, \n/count++"
 				}
 
@@ -226,14 +238,14 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 13.0,
+					"fontsize" : 12.0,
 					"id" : "obj-79",
 					"linecount" : 2,
 					"maxclass" : "o.compose",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 648.0, 2622.0, 83.0, 40.0 ],
+					"patching_rect" : [ 648.0, 2622.0, 78.0, 38.0 ],
 					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 12, 47, 97, 0, 0, 44, 105, 0, 0, 0, 0, 0, 44, 0, 0, 0, 12, 47, 98, 0, 0, 44, 105, 0, 0, 0, 0, 0, 88 ],
 					"saved_bundle_length" : 48,
 					"text" : "/a : 44,\n/b : 88"
@@ -243,13 +255,13 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 13.0,
+					"fontsize" : 12.0,
 					"id" : "obj-80",
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 648.0, 2817.0, 111.0, 35.0 ]
+					"patching_rect" : [ 648.0, 2817.0, 111.0, 34.0 ]
 				}
 
 			}
@@ -392,9 +404,9 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 340.5, 3749.0, 423.0, 31.0 ],
-					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 28, 47, 105, 110, 108, 105, 115, 116, 0, 44, 105, 105, 105, 0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 4, 0, 0, 0, 2, 0, 0, 0, 20, 47, 115, 116, 97, 114, 116, 118, 97, 108, 0, 0, 0, 44, 105, 0, 0, 0, 0, 0, 0 ],
+					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 28, 47, 105, 110, 108, 105, 115, 116, 0, 44, 105, 105, 105, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 6, 0, 0, 0, 9, 0, 0, 0, 20, 47, 115, 116, 97, 114, 116, 118, 97, 108, 0, 0, 0, 44, 105, 0, 0, 0, 0, 0, 0 ],
 					"saved_bundle_length" : 72,
-					"text" : "/inlist : [5, 4, 2],\n/startval : 0"
+					"text" : "/inlist : [3, 9, 9],\n/startval : 0"
 				}
 
 			}
@@ -450,7 +462,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 1,
-							"revision" : 7,
+							"revision" : 8,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -755,7 +767,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 109.5, 1675.0, 346.0, 239.0 ],
+					"patching_rect" : [ 109.5, 1630.0, 346.0, 239.0 ],
 					"text" : "Let's look at a particular type of dynamic assignment:  the assignment of a bundle.\n\nThis particular bundle has three addresses:  /x, /y, and /z\nWe might like to label it so that we can recall it later, effectively creating a preset.\n\nWe do this by passing the bundle in as the data argument to assign.  The name can be concatenated, as in the previous examples, and we can use the value of /n to act as a preset identifier.  \n\nChoose a number in the number box, then click on the bundle containing our three values.  Note that in the output, we only get our preset, since we delete the /bndl and /n addresses before leaving the codebox."
 				}
 
@@ -768,7 +780,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 558.0, 1223.0, 346.0, 282.0 ],
+					"patching_rect" : [ 558.0, 1183.0, 346.0, 282.0 ],
 					"text" : "Here we simplify the expression a bit, and instead of generating an arithmetic sequence to pass in as our second argument, we pass a second list.  This example illustrates how we can use assign() within map() in dynamic ways, not only for the name of an address, but the value as well.\n\nThere is an 'a' in each one of the fruits listed.\nWhat we do in map() is to find the 'a' and replace it with a character that we pass in (in this case, *).  The address generated for each iteration in map() is a concatenation of the current letter and the current fruit name.  Note that we are required to use a slash (/) when we format the string.\n\nNote the use of split() within join().  split() returns an array of the characters split by the separator 'a', which we use as the 2nd argument to join().  The first argument to split() is a string we intend to use between each array element that we join."
 				}
 
@@ -782,7 +794,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 85.0, 724.0, 411.0, 326.0 ],
-					"text" : "Here's a similar example to the last, but this time, we'll try to expose the nature of the way map() works as it relates to the Max system.  \n\nWhen we call map(), we are essentially running a for() loop.  Inside of the codebox, the number of iterations of the mapping is dictated by the size of the lists we send as arguments (note here that it's critical that the lengths are the same).  But in the world of Max, only one event has occurred.  We can prove this by transforming the output bundle to a [bang] and counting the number of events generated.  \n\nClick on the [o.compose] box to send the /input list in to [o.expr.codebox] and note the value output by the counter.  Technically, each time that map() runs, there are 5 iterations.  But the counter will only increment by 1.  \n\nTake a look at the value of /last.  When we reach the end of our loop, this value will be set to the last thing that was passed in as \"a\", which is the character \"s\".  The FIRST thing we pass in is the character \"t\", but note that the value of /last upon the first iteration in the loop is actually \"-\", since we have set it at the beginning of the expression.  Because we assign before we modify /last, we see that there is an off-by-one aspect of our code.  "
+					"text" : "Here's a similar example to the last, but this time, we'll expose the nature of the way map() works as it relates to the Max system.  \n\nWhen we call map(), we are essentially running a for() loop.  Inside of the codebox, the number of iterations of the mapping is dictated by the size of the lists we send as arguments (note here that it's critical that the lengths are the same).  But in the world of Max, only one event has occurred.  We can prove this by transforming the output bundle to a [bang] and counting the number of events generated.  \n\nClick on the [o.compose] box to send the /input list in to [o.expr.codebox] and note the value output by the counter.  Technically, each time that map() runs, there are 5 iterations.  But the counter will only increment by 1.  \n\nTake a look at the value of /last.  When we reach the end of our loop, this value will be set to the last thing that was passed in as \"a\", which is the character \"s\".  The FIRST thing we pass in is the character \"t\", but note that the value of /last upon the first iteration in the loop is actually \"-\", since we have set it at the beginning of the expression.  Because we assign before we modify /last, we see that there is an off-by-one aspect of our code.  "
 				}
 
 			}
@@ -852,23 +864,26 @@
 					"fontface" : 0,
 					"fontsize" : 12.0,
 					"id" : "obj-45",
+					"linecount" : 5,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 558.0, 1890.0, 145.0, 34.0 ]
+					"patching_rect" : [ 558.0, 1845.0, 145.0, 88.0 ],
+					"text" : "/preset/0 : {\n\t/x : 10,\n\t/y : 90,\n\t/z : 16\n}"
 				}
 
 			}
 , 			{
 				"box" : 				{
+					"fontsize" : 12.0,
 					"id" : "obj-38",
 					"maxclass" : "number",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 650.0, 1707.0, 50.0, 24.0 ]
+					"patching_rect" : [ 636.0, 1661.0, 47.0, 22.0 ]
 				}
 
 			}
@@ -882,19 +897,20 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 558.0, 1796.0, 234.0, 59.0 ],
+					"patching_rect" : [ 558.0, 1751.0, 234.0, 59.0 ],
 					"text" : "assign(\"/preset/\" + /n, /bndl),\ndelete(/bndl),\ndelete(/n)"
 				}
 
 			}
 , 			{
 				"box" : 				{
+					"fontsize" : 12.0,
 					"id" : "obj-41",
 					"maxclass" : "newobj",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 558.0, 1747.0, 111.0, 24.0 ],
+					"patching_rect" : [ 558.0, 1702.0, 97.0, 22.0 ],
 					"text" : "o.pack /bndl /n 0"
 				}
 
@@ -909,7 +925,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 558.0, 1644.0, 78.0, 51.0 ],
+					"patching_rect" : [ 558.0, 1574.0, 78.0, 51.0 ],
 					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 12, 47, 120, 0, 0, 44, 105, 0, 0, 0, 0, 0, 10, 0, 0, 0, 12, 47, 121, 0, 0, 44, 105, 0, 0, 0, 0, 0, 90, 0, 0, 0, 12, 47, 122, 0, 0, 44, 105, 0, 0, 0, 0, 0, 16 ],
 					"saved_bundle_length" : 64,
 					"text" : "/x : 10,\n/y : 90,\n/z : 16"
@@ -970,7 +986,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 558.0, 994.0, 311.0, 34.0 ]
+					"patching_rect" : [ 558.0, 1018.0, 311.0, 34.0 ]
 				}
 
 			}
@@ -1553,6 +1569,13 @@
 				"patchline" : 				{
 					"destination" : [ "obj-72", 0 ],
 					"source" : [ "obj-70", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-31", 0 ],
+					"source" : [ "obj-72", 0 ]
 				}
 
 			}
