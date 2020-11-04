@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 7,
+			"revision" : 8,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -39,6 +39,47 @@
 		"subpatcher_template" : "Untitled5_template",
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
+				"box" : 				{
+					"id" : "obj-40",
+					"linecount" : 3,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 300.0, 1775.5, 150.0, 47.0 ],
+					"text" : "we can modify a subbundle's address after it's been generated."
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontface" : 0,
+					"fontsize" : 12.0,
+					"id" : "obj-20",
+					"linecount" : 7,
+					"maxclass" : "o.display",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 504.0, 1851.0, 155.0, 116.0 ],
+					"text" : "/bndl : {\n\t/a : 1000,\n\t/b : \"bar\"\n},\n/get : [\"/a\", \"/b\"],\n/get/1 : \"foo\",\n/get/2 : \"bar\""
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontface" : 0,
+					"fontsize" : 12.0,
+					"id" : "obj-18",
+					"maxclass" : "o.expr.codebox",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "FullPacket", "FullPacket" ],
+					"patching_rect" : [ 504.0, 1783.0, 126.0, 32.0 ],
+					"text" : "/bndl./a = 1000"
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"args" : [ 10 ],
 					"bgmode" : 0,
@@ -229,7 +270,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 504.0, 1466.0, 165.0, 116.0 ],
+					"patching_rect" : [ 504.0, 1530.0, 165.0, 116.0 ],
 					"text" : "/bndl : {\n\t/a : \"foo\",\n\t/b : \"bar\"\n},\n/get : [\"/a\", \"/b\"],\n/get/1 : \"foo\",\n/get/2 : \"bar\""
 				}
 
@@ -254,11 +295,13 @@
 					"fontface" : 0,
 					"fontsize" : 12.0,
 					"id" : "obj-12",
+					"linecount" : 5,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 257.0, 903.0, 209.0, 34.0 ]
+					"patching_rect" : [ 257.0, 903.0, 209.0, 88.0 ],
+					"text" : "/bndl : {\n\t/a : \"foo\",\n\t/b : \"bar\"\n},\n/get : \"/bndl\""
 				}
 
 			}
@@ -538,6 +581,13 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-18", 0 ],
+					"source" : [ "obj-16", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-28", 0 ],
 					"hidden" : 1,
 					"order" : 2,
@@ -560,6 +610,13 @@
 					"hidden" : 1,
 					"order" : 0,
 					"source" : [ "obj-17", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-20", 0 ],
+					"source" : [ "obj-18", 0 ]
 				}
 
 			}
