@@ -4,13 +4,13 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 7,
+			"revision" : 8,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 60.0, 90.0, 1000.0, 647.0 ],
+		"rect" : [ 52.0, 85.0, 998.0, 627.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 14.0,
@@ -22,11 +22,11 @@
 		"objectsnaponopen" : 1,
 		"statusbarvisible" : 2,
 		"toolbarvisible" : 1,
-		"lefttoolbarpinned" : 0,
-		"toptoolbarpinned" : 0,
-		"righttoolbarpinned" : 0,
-		"bottomtoolbarpinned" : 0,
-		"toolbars_unpinned_last_save" : 0,
+		"lefttoolbarpinned" : 2,
+		"toptoolbarpinned" : 2,
+		"righttoolbarpinned" : 2,
+		"bottomtoolbarpinned" : 2,
+		"toolbars_unpinned_last_save" : 15,
 		"tallnewobj" : 0,
 		"boxanimatetime" : 200,
 		"enablehscroll" : 1,
@@ -39,6 +39,104 @@
 		"subpatcher_template" : "Untitled5_template",
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
+				"box" : 				{
+					"id" : "obj-57",
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 98.0, 4018.0, 29.5, 24.0 ],
+					"text" : "11"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontsize" : 13.0,
+					"id" : "obj-78",
+					"maxclass" : "number",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "bang" ],
+					"parameter_enable" : 0,
+					"patching_rect" : [ 98.0, 4051.0, 49.0, 23.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontsize" : 13.0,
+					"id" : "obj-31",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "FullPacket" ],
+					"patching_rect" : [ 98.0, 4080.0, 79.0, 23.0 ],
+					"text" : "o.pack /num"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontface" : 0,
+					"fontsize" : 11.0,
+					"id" : "obj-6",
+					"linecount" : 2,
+					"maxclass" : "o.compose",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 98.0, 3963.0, 271.0, 35.0 ],
+					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 56, 47, 109, 121, 108, 105, 115, 116, 0, 44, 105, 105, 105, 105, 105, 105, 105, 105, 105, 0, 0, 0, 0, 0, 1, 0, 0, 0, 2, 0, 0, 0, 3, 0, 0, 0, 4, 0, 0, 0, 5, 0, 0, 0, 6, 0, 0, 0, 7, 0, 0, 0, 8, 0, 0, 0, 9, 0, 0, 0, 12, 47, 118, 0, 0, 44, 105, 0, 0, 0, 0, 0, 4 ],
+					"saved_bundle_length" : 92,
+					"text" : "/mylist : [1, 2, 3, 4, 5, 6, 7, 8, 9],\n/v : 4"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontface" : 0,
+					"fontsize" : 11.0,
+					"id" : "obj-9",
+					"linecount" : 5,
+					"maxclass" : "o.display",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 98.0, 4289.0, 265.0, 83.0 ],
+					"text" : "/num : 12,\n/loop : [2, 3, 4, 5, 6, 7, 8, 9, 10, 11],\n/prime : [0, 0, 0, 1, 0, 1, 1, 1, 1, 1]"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontface" : 0,
+					"fontsize" : 11.0,
+					"id" : "obj-20",
+					"linecount" : 9,
+					"maxclass" : "o.expr.codebox",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "FullPacket", "FullPacket" ],
+					"patching_rect" : [ 98.0, 4130.0, 367.0, 131.0 ],
+					"presentation_linecount" : 9,
+					"text" : "/loop = aseq(2, /num - 1),\n/prime = 1,  \nmap(\n  lambda([l], \n    progn(\n      if((/num % l) == 0, /prime = 0)\n    )\n  ), /loop\n)"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontsize" : 12.0,
+					"id" : "obj-4",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 529.0, 4109.0, 351.0, 20.0 ],
+					"text" : "filter a list"
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"args" : [ 8 ],
 					"bgmode" : 0,
@@ -53,7 +151,7 @@
 					"numinlets" : 0,
 					"numoutlets" : 0,
 					"offset" : [ -1.0, -2.0 ],
-					"patching_rect" : [ 784.0, 5622.0, 195.0, 28.0 ],
+					"patching_rect" : [ 784.0, 5967.0, 195.0, 28.0 ],
 					"viewvisibility" : 1
 				}
 
@@ -79,7 +177,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 367.0, 5636.0, 150.0, 22.0 ]
+					"patching_rect" : [ 367.0, 5981.0, 150.0, 22.0 ]
 				}
 
 			}
@@ -89,7 +187,7 @@
 					"maxclass" : "live.line",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 143.0, 4701.5, 177.0, 5.0 ]
+					"patching_rect" : [ 143.0, 5046.5, 177.0, 5.0 ]
 				}
 
 			}
@@ -99,7 +197,7 @@
 					"maxclass" : "live.line",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 257.0, 4406.5, 63.0, 5.0 ]
+					"patching_rect" : [ 257.0, 4751.5, 63.0, 5.0 ]
 				}
 
 			}
@@ -111,7 +209,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 129.0, 4198.0, 58.0, 22.0 ],
+					"patching_rect" : [ 129.0, 4543.0, 58.0, 22.0 ],
 					"text" : "loadbang"
 				}
 
@@ -125,7 +223,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 61.0, 4720.5, 131.0, 34.0 ]
+					"patching_rect" : [ 61.0, 5065.5, 131.0, 34.0 ]
 				}
 
 			}
@@ -137,7 +235,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "FullPacket" ],
-					"patching_rect" : [ 61.0, 4690.0, 63.0, 22.0 ],
+					"patching_rect" : [ 61.0, 5035.0, 63.0, 22.0 ],
 					"text" : "o.select /x"
 				}
 
@@ -152,7 +250,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "int", "", "" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 129.0, 4237.0, 89.0, 22.0 ]
+					"patching_rect" : [ 129.0, 4582.0, 89.0, 22.0 ]
 				}
 
 			}
@@ -164,7 +262,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 231.0, 4078.0, 58.0, 22.0 ],
+					"patching_rect" : [ 231.0, 4423.0, 58.0, 22.0 ],
 					"text" : "loadbang"
 				}
 
@@ -177,7 +275,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 61.0, 4277.0, 122.0, 22.0 ],
+					"patching_rect" : [ 61.0, 4622.0, 122.0, 22.0 ],
 					"text" : "o.pack /input /func"
 				}
 
@@ -192,7 +290,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 61.0, 4237.0, 52.0, 22.0 ],
+					"patching_rect" : [ 61.0, 4582.0, 52.0, 22.0 ],
 					"style" : "default"
 				}
 
@@ -205,7 +303,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 61.0, 4398.0, 189.0, 22.0 ],
+					"patching_rect" : [ 61.0, 4743.0, 189.0, 22.0 ],
 					"text" : "o.union"
 				}
 
@@ -218,7 +316,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 325.0, 4183.0, 521.0, 529.0 ],
+					"patching_rect" : [ 325.0, 4528.0, 521.0, 529.0 ],
 					"text" : "Let's look at a final example involving apply() where we integrate some of the ideas seen above into a small library of user functions.\n\nWe'll give our library a specific address \"/return\", which we can use to name the generated address that we get back from the functions being applied.  \n\nYou can see what is happening in each of the functions by reading the lambda definitions in the [o.compose] box carefully.  Note that when the function runs, it will make an assignment with assign().  The result of the lambda function's calculation is then assigned to this argument's value.  Each quoted lambda definition has two arguments:  \"c\" and \"i\".  \"c\" represents the value that we want to transform, and \"i\" represents the name we use for the returned value.  This works because we are using the value of \"i\" as the first argument to assign() in the body of the lambda function definition.  It's worth noting here that we could just as easily have implemented this lambda() in the [o.expr.codebox], but that would not allow for the selection we are interested in here.\n\nNote that the two critical components are already in place:\n\n1. definitions for our functions (in the [o.compose] box above, and \n2. an initial function for selection (seen in the [umenu])\n\nLet's review what happens when we make a selection with [umenu] and input a value from the number box.\n\n- the pre-formatted bundle containing /input and /func are blended with the pre-formatted bundle containing our function definitions, and these are sent to [o.expr.codebox]\n\n- we define /return as \"/x\"\n\n- we call apply() with 3 arguments:  \n\n     1. the value of the function name\n     2. the /input, and \n     3. the return name to use\n\n- apply() applies the function we have chosen with the arguments given.  The input is processed according to which function we chose in the [umenu], and the result is assigned to the name \"/x\".\n\n- at the bottom, we select only \"/x\" with [o.select]"
 				}
 
@@ -233,7 +331,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 231.0, 4104.0, 403.0, 48.0 ],
+					"patching_rect" : [ 231.0, 4449.0, 403.0, 48.0 ],
 					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 64, 47, 115, 99, 97, 108, 101, 111, 102, 102, 115, 101, 116, 0, 0, 0, 0, 44, 115, 0, 0, 108, 97, 109, 98, 100, 97, 40, 91, 99, 44, 32, 105, 93, 44, 32, 97, 115, 115, 105, 103, 110, 40, 105, 44, 32, 99, 32, 42, 32, 48, 46, 53, 32, 43, 32, 48, 46, 53, 41, 41, 0, 0, 0, 0, 0, 0, 0, 48, 47, 105, 110, 118, 101, 114, 116, 0, 44, 115, 0, 0, 108, 97, 109, 98, 100, 97, 40, 91, 99, 44, 32, 105, 93, 44, 32, 97, 115, 115, 105, 103, 110, 40, 105, 44, 32, 32, 99, 32, 42, 32, 45, 49, 46, 41, 41, 0, 0, 0, 0, 60, 47, 115, 99, 97, 108, 101, 112, 105, 0, 0, 0, 0, 44, 115, 0, 0, 108, 97, 109, 98, 100, 97, 40, 91, 99, 44, 32, 105, 93, 44, 32, 97, 115, 115, 105, 103, 110, 40, 105, 44, 32, 32, 50, 32, 42, 32, 112, 105, 40, 41, 32, 42, 32, 99, 41, 41, 0, 0, 0, 0 ],
 					"saved_bundle_length" : 200,
 					"text" : "/scaleoffset : \"lambda([c, i], assign(i, c * 0.5 + 0.5))\",\n/invert : \"lambda([c, i], assign(i,  c * -1.))\",\n/scalepi : \"lambda([c, i], assign(i,  2 * pi() * c))\""
@@ -250,7 +348,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 61.0, 4549.0, 248.0, 43.0 ],
+					"patching_rect" : [ 61.0, 4894.0, 248.0, 43.0 ],
 					"text" : "/return = \"/x\",\napply(value(/func), /input, /return)"
 				}
 
@@ -318,7 +416,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 519.0, 5498.0, 297.0, 33.0 ],
+					"patching_rect" : [ 519.0, 5843.0, 297.0, 33.0 ],
 					"text" : "Here is one last example illustrating the div operator.\nCan you figure out what is happening?"
 				}
 
@@ -331,7 +429,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 500.0, 5060.0, 348.0, 127.0 ],
+					"patching_rect" : [ 500.0, 5405.0, 348.0, 127.0 ],
 					"text" : "rreduce() is precisely the opposite.  It will reduce a list of values starting from the right side of the list and working to the left.  \n\nIn the example below, the operation is again subtraction.  \n\nWe start with the first two values on the right:\n3 is subtracted from 4, resulting in 1.\n2 is then subtracted from 1, resulting in -1.  \n1 is then subtracted from -1, resulting in -2 (the final result)",
 					"textjustification" : 1
 				}
@@ -345,7 +443,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 61.0, 5052.5, 367.0, 141.0 ],
+					"patching_rect" : [ 61.0, 5397.5, 367.0, 141.0 ],
 					"text" : "lreduce() will reduce a list of values starting from the left side of the list and working to the right.  The accumulated result is calculated until there is nothing remaining in the list.\n\nIn the example below, the operation is defined as subtraction.  \n\nWe start with the first two values on the left:\n2 is subtracted from 1, resulting in -1.\n-3 is then subtracted from -1, resulting in -4.  \n4 is then subtracted from -4, resulting in -8 (the final result)",
 					"textjustification" : 1
 				}
@@ -359,7 +457,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 258.0, 4873.0, 495.0, 137.0 ],
+					"patching_rect" : [ 258.0, 5218.0, 495.0, 137.0 ],
 					"text" : "map() and apply() are higher order functions: functions that take other functions as arguments.  \nLet's look at two other higher order functions included in the expression language, specifically lreduce(), rreduce().\n\nBoth functions require an operation to be specified as the first argument.  \nThis operation will most commonly be one of the following:  sub (subtraction), add (addition), div (division), or mul (multiplication).\nThat being said, we can reduce() a list with any operation which requires two args.",
 					"textjustification" : 1
 				}
@@ -418,7 +516,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 470.0, 3910.0, 348.0, 58.0 ],
-					"text" : "/c : 0.04,\n/myfunc : \"lambda([c], /i = c * 2)\",\n/i : 0.08"
+					"text" : "/c : -0.88,\n/myfunc : \"lambda([c], /i = c * 2)\",\n/i : -1.76"
 				}
 
 			}
@@ -949,7 +1047,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 270.0, 5543.0, 164.0, 34.0 ]
+					"patching_rect" : [ 270.0, 5888.0, 164.0, 34.0 ]
 				}
 
 			}
@@ -962,7 +1060,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 270.0, 5468.0, 167.0, 24.0 ],
+					"patching_rect" : [ 270.0, 5813.0, 167.0, 24.0 ],
 					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 32, 47, 118, 101, 99, 0, 0, 0, 0, 44, 105, 105, 105, 105, 0, 0, 0, 0, 0, 0, 20, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0, 2 ],
 					"saved_bundle_length" : 52,
 					"text" : "/vec : [20, 2, 2, 2]"
@@ -978,7 +1076,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 270.0, 5498.0, 214.0, 32.0 ],
+					"patching_rect" : [ 270.0, 5843.0, 214.0, 32.0 ],
 					"text" : "/result = lreduce(div, /vec)"
 				}
 
@@ -991,7 +1089,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 359.0, 5293.5, 56.0, 43.0 ],
+					"patching_rect" : [ 359.0, 5638.5, 56.0, 43.0 ],
 					"text" : "1 - 2 = -1\n-1 - 3 = -4\n-4 - 4 = -8",
 					"textjustification" : 1
 				}
@@ -1005,7 +1103,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 813.0, 5293.5, 56.0, 43.0 ],
+					"patching_rect" : [ 813.0, 5638.5, 56.0, 43.0 ],
 					"text" : "4 - 3 = 1\n1 - 2 = -1\n-1 - 1 = -2",
 					"textjustification" : 1
 				}
@@ -1020,7 +1118,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 582.0, 5344.0, 164.0, 34.0 ]
+					"patching_rect" : [ 582.0, 5689.0, 164.0, 34.0 ]
 				}
 
 			}
@@ -1033,7 +1131,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 582.0, 5244.0, 159.0, 24.0 ],
+					"patching_rect" : [ 582.0, 5589.0, 159.0, 24.0 ],
 					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 32, 47, 118, 101, 99, 0, 0, 0, 0, 44, 105, 105, 105, 105, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 2, 0, 0, 0, 3, 0, 0, 0, 4 ],
 					"saved_bundle_length" : 52,
 					"text" : "/vec : [1, 2, 3, 4]"
@@ -1049,7 +1147,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 582.0, 5299.0, 214.0, 32.0 ],
+					"patching_rect" : [ 582.0, 5644.0, 214.0, 32.0 ],
 					"text" : "/result = rreduce(sub, /vec)"
 				}
 
@@ -1063,7 +1161,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 128.0, 5344.0, 164.0, 34.0 ]
+					"patching_rect" : [ 128.0, 5689.0, 164.0, 34.0 ]
 				}
 
 			}
@@ -1076,7 +1174,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 128.0, 5244.0, 159.0, 24.0 ],
+					"patching_rect" : [ 128.0, 5589.0, 159.0, 24.0 ],
 					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 32, 47, 118, 101, 99, 0, 0, 0, 0, 44, 105, 105, 105, 105, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 2, 0, 0, 0, 3, 0, 0, 0, 4 ],
 					"saved_bundle_length" : 52,
 					"text" : "/vec : [1, 2, 3, 4]"
@@ -1092,7 +1190,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 128.0, 5299.0, 214.0, 32.0 ],
+					"patching_rect" : [ 128.0, 5644.0, 214.0, 32.0 ],
 					"text" : "/result = lreduce(sub, /vec)"
 				}
 
@@ -1180,6 +1278,13 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-9", 0 ],
+					"source" : [ "obj-20", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-24", 0 ],
 					"source" : [ "obj-21", 0 ]
 				}
@@ -1203,6 +1308,13 @@
 				"patchline" : 				{
 					"destination" : [ "obj-51", 0 ],
 					"source" : [ "obj-28", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-20", 0 ],
+					"source" : [ "obj-31", 0 ]
 				}
 
 			}
@@ -1306,6 +1418,13 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-78", 0 ],
+					"source" : [ "obj-57", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-56", 1 ],
 					"source" : [ "obj-60", 0 ]
 				}
@@ -1357,6 +1476,13 @@
 				"patchline" : 				{
 					"destination" : [ "obj-70", 0 ],
 					"source" : [ "obj-71", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-31", 0 ],
+					"source" : [ "obj-78", 0 ]
 				}
 
 			}
