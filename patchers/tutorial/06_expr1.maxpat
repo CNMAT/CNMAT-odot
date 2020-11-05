@@ -53,7 +53,7 @@
 					"numinlets" : 0,
 					"numoutlets" : 0,
 					"offset" : [ -1.0, -2.0 ],
-					"patching_rect" : [ 764.333333333333258, 6755.0, 195.0, 28.0 ],
+					"patching_rect" : [ 764.333333333333258, 6530.0, 195.0, 28.0 ],
 					"viewvisibility" : 1
 				}
 
@@ -808,7 +808,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 692.0, 6771.0, 111.0, 22.0 ]
+					"patching_rect" : [ 692.0, 6546.0, 111.0, 22.0 ]
 				}
 
 			}
