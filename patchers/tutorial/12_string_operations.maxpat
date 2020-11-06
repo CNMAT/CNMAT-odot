@@ -4,13 +4,13 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 5,
+			"revision" : 8,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 742.0, 191.0, 902.0, 691.0 ],
+		"rect" : [ 17.0, 60.0, 992.0, 691.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 14.0,
@@ -21,15 +21,15 @@
 		"gridsnaponopen" : 1,
 		"objectsnaponopen" : 1,
 		"statusbarvisible" : 2,
-		"toolbarvisible" : 1,
-		"lefttoolbarpinned" : 0,
-		"toptoolbarpinned" : 0,
-		"righttoolbarpinned" : 0,
-		"bottomtoolbarpinned" : 0,
-		"toolbars_unpinned_last_save" : 0,
+		"toolbarvisible" : 0,
+		"lefttoolbarpinned" : 2,
+		"toptoolbarpinned" : 2,
+		"righttoolbarpinned" : 2,
+		"bottomtoolbarpinned" : 2,
+		"toolbars_unpinned_last_save" : 15,
 		"tallnewobj" : 0,
 		"boxanimatetime" : 200,
-		"enablehscroll" : 1,
+		"enablehscroll" : 0,
 		"enablevscroll" : 1,
 		"devicewidth" : 0.0,
 		"description" : "",
@@ -42,333 +42,108 @@
 				"box" : 				{
 					"fontface" : 0,
 					"fontsize" : 12.0,
-					"id" : "obj-26",
-					"linecount" : 5,
-					"maxclass" : "o.display",
-					"numinlets" : 1,
+					"id" : "obj-25",
+					"linecount" : 3,
+					"maxclass" : "o.compose",
+					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 576.0, 585.0, 178.0, 88.0 ],
-					"presentation_linecount" : 5,
-					"text" : "/rlist : [0.872875, 0.457639, 0.183248, 0.0557711, 0.964935, 0.100843, 0.445663, 0.039436, 0.138665]"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-23",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 576.0, 548.0, 129.0, 24.0 ],
-					"text" : "o.uniform.list /rlist 9"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-19",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "FullPacket" ],
-					"patcher" : 					{
-						"fileversion" : 1,
-						"appversion" : 						{
-							"major" : 8,
-							"minor" : 1,
-							"revision" : 5,
-							"architecture" : "x64",
-							"modernui" : 1
-						}
-,
-						"classnamespace" : "box",
-						"rect" : [ 239.0, 302.0, 640.0, 480.0 ],
-						"bglocked" : 0,
-						"openinpresentation" : 0,
-						"default_fontsize" : 14.0,
-						"default_fontface" : 0,
-						"default_fontname" : "Arial",
-						"gridonopen" : 1,
-						"gridsize" : [ 15.0, 15.0 ],
-						"gridsnaponopen" : 1,
-						"objectsnaponopen" : 1,
-						"statusbarvisible" : 2,
-						"toolbarvisible" : 1,
-						"lefttoolbarpinned" : 0,
-						"toptoolbarpinned" : 0,
-						"righttoolbarpinned" : 0,
-						"bottomtoolbarpinned" : 0,
-						"toolbars_unpinned_last_save" : 0,
-						"tallnewobj" : 0,
-						"boxanimatetime" : 200,
-						"enablehscroll" : 1,
-						"enablevscroll" : 1,
-						"devicewidth" : 0.0,
-						"description" : "",
-						"digest" : "",
-						"tags" : "",
-						"style" : "",
-						"subpatcher_template" : "Untitled5_template",
-						"assistshowspatchername" : 0,
-						"boxes" : [ 							{
-								"box" : 								{
-									"comment" : "",
-									"id" : "obj-18",
-									"index" : 1,
-									"maxclass" : "outlet",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 209.21428499999999, 399.0, 30.0, 30.0 ]
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"id" : "obj-16",
-									"maxclass" : "newobj",
-									"numinlets" : 1,
-									"numoutlets" : 1,
-									"outlettype" : [ "" ],
-									"patching_rect" : [ 341.0, 50.0, 88.0, 24.0 ],
-									"text" : "loadmess #2"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"fontname" : "Helvetica Neue",
-									"fontsize" : 12.0,
-									"id" : "obj-12",
-									"maxclass" : "newobj",
-									"numinlets" : 1,
-									"numoutlets" : 2,
-									"outlettype" : [ "bang", "" ],
-									"patching_rect" : [ 230.0, 119.0, 29.5, 22.0 ],
-									"text" : "t b l"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"id" : "obj-11",
-									"linecount" : 4,
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 463.0, 132.0, 150.0, 69.0 ],
-									"text" : "name of address for random list\n\n/rlist 8"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"fontname" : "Helvetica Neue",
-									"fontsize" : 12.0,
-									"id" : "obj-4",
-									"maxclass" : "newobj",
-									"numinlets" : 2,
-									"numoutlets" : 2,
-									"outlettype" : [ "", "" ],
-									"patching_rect" : [ 209.21428499999999, 263.0, 52.0, 22.0 ],
-									"text" : "zl.group"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"fontname" : "Helvetica Neue",
-									"fontsize" : 12.0,
-									"id" : "obj-10",
-									"maxclass" : "newobj",
-									"numinlets" : 2,
-									"numoutlets" : 1,
-									"outlettype" : [ "float" ],
-									"patching_rect" : [ 209.21428499999999, 230.0, 61.0, 22.0 ],
-									"text" : "/ 999999."
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"fontname" : "Helvetica Neue",
-									"fontsize" : 12.0,
-									"id" : "obj-9",
-									"maxclass" : "newobj",
-									"numinlets" : 2,
-									"numoutlets" : 1,
-									"outlettype" : [ "int" ],
-									"patching_rect" : [ 209.21428499999999, 200.0, 102.0, 22.0 ],
-									"text" : "random 1000000"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"fontname" : "Helvetica Neue",
-									"fontsize" : 12.0,
-									"id" : "obj-15",
-									"maxclass" : "newobj",
-									"numinlets" : 2,
-									"numoutlets" : 1,
-									"outlettype" : [ "FullPacket" ],
-									"patching_rect" : [ 209.21428499999999, 324.0, 219.571429999999992, 22.0 ],
-									"text" : "o.union"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"fontname" : "Helvetica Neue",
-									"fontsize" : 12.0,
-									"id" : "obj-14",
-									"maxclass" : "newobj",
-									"numinlets" : 1,
-									"numoutlets" : 1,
-									"outlettype" : [ "FullPacket" ],
-									"patching_rect" : [ 209.21428499999999, 294.0, 62.0, 22.0 ],
-									"text" : "o.pack #1"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"fontname" : "Helvetica Neue",
-									"fontsize" : 12.0,
-									"id" : "obj-13",
-									"maxclass" : "newobj",
-									"numinlets" : 2,
-									"numoutlets" : 3,
-									"outlettype" : [ "bang", "bang", "int" ],
-									"patching_rect" : [ 209.21428499999999, 168.0, 40.0, 22.0 ],
-									"text" : "uzi"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"comment" : "",
-									"id" : "obj-1",
-									"index" : 1,
-									"maxclass" : "inlet",
-									"numinlets" : 0,
-									"numoutlets" : 1,
-									"outlettype" : [ "" ],
-									"patching_rect" : [ 225.0, 25.0, 30.0, 30.0 ]
-								}
-
-							}
- ],
-						"lines" : [ 							{
-								"patchline" : 								{
-									"destination" : [ "obj-12", 0 ],
-									"source" : [ "obj-1", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-4", 0 ],
-									"source" : [ "obj-10", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-13", 0 ],
-									"source" : [ "obj-12", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-15", 1 ],
-									"source" : [ "obj-12", 1 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-9", 0 ],
-									"source" : [ "obj-13", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"color" : [ 1.0, 0.8, 0.4, 1.0 ],
-									"destination" : [ "obj-15", 0 ],
-									"source" : [ "obj-14", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-18", 0 ],
-									"source" : [ "obj-15", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-13", 1 ],
-									"order" : 1,
-									"source" : [ "obj-16", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-4", 1 ],
-									"order" : 0,
-									"source" : [ "obj-16", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-14", 0 ],
-									"source" : [ "obj-4", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-10", 0 ],
-									"source" : [ "obj-9", 0 ]
-								}
-
-							}
- ]
-					}
-,
-					"patching_rect" : [ 329.0, 921.5, 128.0, 24.0 ],
-					"saved_object_attributes" : 					{
-						"description" : "",
-						"digest" : "",
-						"fontsize" : 14.0,
-						"globalpatchername" : "",
-						"tags" : ""
-					}
-,
-					"text" : "p random_list_of_n"
+					"patching_rect" : [ 124.0, 1462.5, 165.0, 51.0 ],
+					"presentation_linecount" : 3,
+					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 119, 111, 114, 100, 0, 0, 0, 44, 115, 0, 0, 99, 111, 97, 116, 0, 0, 0, 0, 0, 0, 0, 20, 47, 114, 101, 112, 108, 97, 99, 101, 0, 0, 0, 0, 44, 115, 0, 0, 115, 0, 0, 0, 0, 0, 0, 16, 47, 108, 111, 99, 0, 0, 0, 0, 44, 105, 0, 0, 0, 0, 0, 2 ],
+					"saved_bundle_length" : 84,
+					"text" : "/word : \"coat\",\n/replace : \"s\",\n/loc : 2"
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 13.0,
-					"id" : "obj-17",
+					"fontsize" : 12.0,
+					"id" : "obj-27",
 					"linecount" : 9,
+					"maxclass" : "o.expr.codebox",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "FullPacket", "FullPacket" ],
+					"patching_rect" : [ 124.0, 1546.0, 198.0, 141.0 ],
+					"presentation_linecount" : 9,
+					"text" : "/w = split(\"\", /word), \nmap(\n  lambda([i], \n    if(i == /loc,\n      /w[[i]] = /replace\n    )\n  ), aseq(0, length(/w)-1)\n), \n/word/new = join(\"\", /w)"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontface" : 0,
+					"fontsize" : 12.0,
+					"id" : "obj-28",
+					"linecount" : 5,
+					"maxclass" : "o.display",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 124.0, 1722.0, 198.0, 88.0 ],
+					"presentation_linecount" : 5,
+					"text" : "/word : \"coat\",\n/replace : \"s\",\n/loc : 2,\n/w : ['c', 'o', \"s\", 't'],\n/word/new : \"cost\""
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-24",
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 370.0, 717.0, 495.0, 137.0 ],
-					"presentation_linecount" : 9,
-					"style" : "default",
-					"text" : "We've already seen string concatenation earlier in the tutorial (dynamic assignment).\n\nLet's take a look at a simple example.  We might take a number of syllables and construct a word from that.  Here, the various addresses representing our syllables are concatenated (adding strings) together to form a word.  We assign this result to the address \"/state\".\n\nClick on the box to see evidence of this.\nWhat other words can we construct with this set?"
+					"patching_rect" : [ 726.0, 1413.0, 150.0, 22.0 ],
+					"text" : "review"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontface" : 0,
+					"fontsize" : 12.0,
+					"id" : "obj-13",
+					"linecount" : 3,
+					"maxclass" : "o.compose",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 471.0, 1403.5, 165.0, 51.0 ],
+					"presentation_linecount" : 3,
+					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 24, 47, 102, 105, 114, 115, 116, 0, 0, 44, 115, 0, 0, 97, 115, 115, 105, 103, 110, 101, 100, 0, 0, 0, 0, 0, 0, 0, 20, 47, 115, 101, 99, 111, 110, 100, 0, 44, 115, 0, 0, 100, 97, 116, 97, 0, 0, 0, 0, 0, 0, 0, 16, 47, 100, 97, 116, 97, 0, 0, 0, 44, 105, 0, 0, 0, 0, 0, 100 ],
+					"saved_bundle_length" : 88,
+					"text" : "/first : \"assigned\",\n/second : \"data\",\n/data : 100"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontface" : 0,
+					"fontsize" : 12.0,
+					"id" : "obj-14",
+					"maxclass" : "o.expr.codebox",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "FullPacket", "FullPacket" ],
+					"patching_rect" : [ 471.0, 1472.0, 330.0, 32.0 ],
+					"text" : "assign(\"/\" + /first + \"/\" + /second, /data)"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontface" : 0,
+					"fontsize" : 12.0,
+					"id" : "obj-16",
+					"linecount" : 4,
+					"maxclass" : "o.display",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 471.0, 1513.0, 265.0, 75.0 ],
+					"presentation_linecount" : 4,
+					"text" : "/first : \"assigned\",\n/second : \"data\",\n/data : 100,\n/assigned/data : 100"
 				}
 
 			}
@@ -383,7 +158,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 90.0, 717.0, 187.0, 170.0 ],
-					"presentation_linecount" : 11,
 					"text" : "/a : \"n\",\n/b : \"cal\",\n/c : \"i\",\n/d : \"for\",\n/e : \"a\",\n/f : \"me\",\n/g : \"t\",\n/h : \"o\",\n/i : \"ed\",\n/state : \"california\",\n/w : \"aformentioned\""
 				}
 
@@ -398,7 +172,6 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
 					"patching_rect" : [ 90.0, 646.0, 349.0, 32.0 ],
-					"presentation_linecount" : 2,
 					"text" : "/w = /e + /d + /f + /a + /g + /c + /h + /a + /i"
 				}
 
@@ -454,14 +227,13 @@
 					"fontface" : 0,
 					"fontsize" : 13.0,
 					"id" : "obj-43",
-					"linecount" : 9,
+					"linecount" : 10,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 425.0, 357.0, 495.0, 137.0 ],
+					"patching_rect" : [ 425.0, 357.0, 495.0, 152.0 ],
 					"style" : "default",
-					"text" : "We've already seen string concatenation earlier in the tutorial (dynamic assignment).\n\nLet's take a look at a simple example.  We might take a number of syllables and construct a word from that.  Here, the various addresses representing our syllables are concatenated (adding strings) together to form a word.  We assign this result to the address \"/state\".\n\nClick on the box to see evidence of this.\nWhat other words can we construct with this set?",
-					"textjustification" : 0
+					"text" : "We've already seen string concatenation earlier in the tutorial (dynamic assignment).\n\nLet's take a look at a simple example.  We might take a number of syllables and construct a word from that.  Here, the various addresses representing our syllables are concatenated (adding strings) together to form a word.  We assign this result to the address \"/state\".\n\nClick on the box to see evidence of this.\n\nWhat other words can we construct with this set?"
 				}
 
 			}
@@ -505,13 +277,11 @@
 					"fontface" : 0,
 					"fontsize" : 12.0,
 					"id" : "obj-22",
-					"linecount" : 2,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 556.0, 1053.0, 279.0, 48.0 ],
-					"text" : "/string : [\"a\", \"bcd\", \"e\", \"dogs\"],\n/string/new : \"a--bcd--e--dogs\""
+					"patching_rect" : [ 556.0, 1053.0, 279.0, 34.0 ]
 				}
 
 			}
@@ -555,10 +325,10 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 138.0, 947.5, 231.0, 38.0 ],
-					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 47, 101, 108, 101, 109, 0, 0, 0, 44, 105, 0, 0, 0, 0, 0, 3, 0, 0, 0, 20, 47, 108, 105, 115, 116, 0, 0, 0, 44, 115, 0, 0, 102, 111, 111, 98, 97, 114, 0, 0 ],
+					"patching_rect" : [ 534.0, 1137.5, 231.0, 38.0 ],
+					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 47, 101, 108, 101, 109, 0, 0, 0, 44, 105, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 108, 105, 115, 116, 0, 0, 0, 44, 115, 0, 0, 102, 111, 111, 98, 97, 114, 0, 0 ],
 					"saved_bundle_length" : 60,
-					"text" : "/elem : 3,\n/list : \"foobar\""
+					"text" : "/elem : 0,\n/list : \"foobar\""
 				}
 
 			}
@@ -572,8 +342,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 138.0, 994.0, 330.0, 46.0 ],
-					"text" : "/list/filtered = split(\"\", /list)[[/elem]],\n/list/elem/michelle = split(\"\", /list)[[2]]"
+					"patching_rect" : [ 534.0, 1184.0, 330.0, 46.0 ],
+					"text" : "/character/elem = split(\"\", /list)[[/elem]],\n/character/4 = split(\"\", /list)[[3]]"
 				}
 
 			}
@@ -587,8 +357,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 138.0, 1054.0, 265.0, 75.0 ],
-					"text" : "/elem : 3,\n/list : \"foobar\",\n/list/filtered : 'b',\n/list/elem/michelle : 'o'"
+					"patching_rect" : [ 534.0, 1244.0, 265.0, 75.0 ],
+					"text" : "/elem : 0,\n/list : \"foobar\",\n/character/elem : 'f',\n/character/4 : 'b'"
 				}
 
 			}
@@ -597,11 +367,13 @@
 					"fontface" : 0,
 					"fontsize" : 12.0,
 					"id" : "obj-6",
+					"linecount" : 2,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 138.0, 1252.0, 229.0, 34.0 ]
+					"patching_rect" : [ 132.5, 1364.0, 248.0, 48.0 ],
+					"text" : "/mystring : \"/point/of/interest\",\n/point : \"point\""
 				}
 
 			}
@@ -614,10 +386,10 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 138.0, 1132.0, 224.0, 24.0 ],
-					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 32, 47, 109, 121, 115, 116, 114, 105, 110, 103, 0, 0, 0, 44, 115, 0, 0, 47, 97, 115, 100, 102, 47, 102, 100, 115, 97, 47, 100, 115, 97, 0, 0 ],
-					"saved_bundle_length" : 52,
-					"text" : "/mystring : \"/asdf/fdsa/dsa\""
+					"patching_rect" : [ 132.5, 1244.0, 251.0, 24.0 ],
+					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 36, 47, 109, 121, 115, 116, 114, 105, 110, 103, 0, 0, 0, 44, 115, 0, 0, 47, 112, 111, 105, 110, 116, 47, 111, 102, 47, 105, 110, 116, 101, 114, 101, 115, 116, 0, 0 ],
+					"saved_bundle_length" : 56,
+					"text" : "/mystring : \"/point/of/interest\""
 				}
 
 			}
@@ -630,8 +402,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 138.0, 1177.0, 214.0, 32.0 ],
-					"text" : "/res = split('/', /mystring)"
+					"patching_rect" : [ 132.5, 1289.0, 263.0, 32.0 ],
+					"text" : "/point = split(\"/\", /mystring)[[0]]"
 				}
 
 			}
@@ -698,6 +470,20 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-14", 0 ],
+					"source" : [ "obj-13", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-16", 0 ],
+					"source" : [ "obj-14", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-22", 0 ],
 					"source" : [ "obj-2", 0 ]
 				}
@@ -719,8 +505,15 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-26", 0 ],
-					"source" : [ "obj-23", 0 ]
+					"destination" : [ "obj-27", 0 ],
+					"source" : [ "obj-25", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-28", 0 ],
+					"source" : [ "obj-27", 0 ]
 				}
 
 			}
@@ -796,13 +589,6 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "o.uniform.list.maxpat",
-				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/patchers",
-				"patcherrelativepath" : "..",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
 				"name" : "o.expr.codebox.mxo",
 				"type" : "iLaX"
 			}
@@ -812,14 +598,6 @@
 			}
 , 			{
 				"name" : "o.display.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.pack.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.union.mxo",
 				"type" : "iLaX"
 			}
  ],
