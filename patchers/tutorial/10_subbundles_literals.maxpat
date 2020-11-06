@@ -40,6 +40,18 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-19",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 48.0, 2060.5, 895.0, 20.0 ],
+					"text" : "< summary text here >",
+					"textjustification" : 1
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-40",
 					"linecount" : 3,
 					"maxclass" : "comment",
@@ -295,13 +307,11 @@
 					"fontface" : 0,
 					"fontsize" : 12.0,
 					"id" : "obj-12",
-					"linecount" : 5,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 257.0, 903.0, 209.0, 88.0 ],
-					"text" : "/bndl : {\n\t/a : \"foo\",\n\t/b : \"bar\"\n},\n/get : \"/bndl\""
+					"patching_rect" : [ 257.0, 903.0, 209.0, 34.0 ]
 				}
 
 			}
