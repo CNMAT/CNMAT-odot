@@ -49,7 +49,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 124.0, 1462.5, 165.0, 51.0 ],
-					"presentation_linecount" : 3,
 					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 119, 111, 114, 100, 0, 0, 0, 44, 115, 0, 0, 99, 111, 97, 116, 0, 0, 0, 0, 0, 0, 0, 20, 47, 114, 101, 112, 108, 97, 99, 101, 0, 0, 0, 0, 44, 115, 0, 0, 115, 0, 0, 0, 0, 0, 0, 16, 47, 108, 111, 99, 0, 0, 0, 0, 44, 105, 0, 0, 0, 0, 0, 2 ],
 					"saved_bundle_length" : 84,
 					"text" : "/word : \"coat\",\n/replace : \"s\",\n/loc : 2"
@@ -67,7 +66,6 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
 					"patching_rect" : [ 124.0, 1546.0, 198.0, 141.0 ],
-					"presentation_linecount" : 9,
 					"text" : "/w = split(\"\", /word), \nmap(\n  lambda([i], \n    if(i == /loc,\n      /w[[i]] = /replace\n    )\n  ), aseq(0, length(/w)-1)\n), \n/word/new = join(\"\", /w)"
 				}
 
@@ -77,14 +75,11 @@
 					"fontface" : 0,
 					"fontsize" : 12.0,
 					"id" : "obj-28",
-					"linecount" : 5,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 124.0, 1722.0, 198.0, 88.0 ],
-					"presentation_linecount" : 5,
-					"text" : "/word : \"coat\",\n/replace : \"s\",\n/loc : 2,\n/w : ['c', 'o', \"s\", 't'],\n/word/new : \"cost\""
+					"patching_rect" : [ 124.0, 1722.0, 198.0, 34.0 ]
 				}
 
 			}
@@ -110,7 +105,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 471.0, 1403.5, 165.0, 51.0 ],
-					"presentation_linecount" : 3,
 					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 24, 47, 102, 105, 114, 115, 116, 0, 0, 44, 115, 0, 0, 97, 115, 115, 105, 103, 110, 101, 100, 0, 0, 0, 0, 0, 0, 0, 20, 47, 115, 101, 99, 111, 110, 100, 0, 44, 115, 0, 0, 100, 97, 116, 97, 0, 0, 0, 0, 0, 0, 0, 16, 47, 100, 97, 116, 97, 0, 0, 0, 44, 105, 0, 0, 0, 0, 0, 100 ],
 					"saved_bundle_length" : 88,
 					"text" : "/first : \"assigned\",\n/second : \"data\",\n/data : 100"
@@ -136,14 +130,11 @@
 					"fontface" : 0,
 					"fontsize" : 12.0,
 					"id" : "obj-16",
-					"linecount" : 4,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 471.0, 1513.0, 265.0, 75.0 ],
-					"presentation_linecount" : 4,
-					"text" : "/first : \"assigned\",\n/second : \"data\",\n/data : 100,\n/assigned/data : 100"
+					"patching_rect" : [ 471.0, 1513.0, 265.0, 34.0 ]
 				}
 
 			}
@@ -152,13 +143,11 @@
 					"fontface" : 0,
 					"fontsize" : 12.0,
 					"id" : "obj-15",
-					"linecount" : 11,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 90.0, 717.0, 187.0, 170.0 ],
-					"text" : "/a : \"n\",\n/b : \"cal\",\n/c : \"i\",\n/d : \"for\",\n/e : \"a\",\n/f : \"me\",\n/g : \"t\",\n/h : \"o\",\n/i : \"ed\",\n/state : \"california\",\n/w : \"aformentioned\""
+					"patching_rect" : [ 90.0, 717.0, 187.0, 34.0 ]
 				}
 
 			}
@@ -181,13 +170,11 @@
 					"fontface" : 0,
 					"fontsize" : 12.0,
 					"id" : "obj-74",
-					"linecount" : 10,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 90.0, 448.0, 178.0, 156.0 ],
-					"text" : "/a : \"n\",\n/b : \"cal\",\n/c : \"i\",\n/d : \"for\",\n/e : \"a\",\n/f : \"me\",\n/g : \"t\",\n/h : \"o\",\n/i : \"ed\",\n/state : \"california\""
+					"patching_rect" : [ 90.0, 448.0, 178.0, 34.0 ]
 				}
 
 			}
@@ -352,13 +339,11 @@
 					"fontface" : 0,
 					"fontsize" : 12.0,
 					"id" : "obj-32",
-					"linecount" : 4,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 534.0, 1244.0, 265.0, 75.0 ],
-					"text" : "/elem : 0,\n/list : \"foobar\",\n/character/elem : 'f',\n/character/4 : 'b'"
+					"patching_rect" : [ 534.0, 1244.0, 265.0, 34.0 ]
 				}
 
 			}
@@ -367,13 +352,11 @@
 					"fontface" : 0,
 					"fontsize" : 12.0,
 					"id" : "obj-6",
-					"linecount" : 2,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 132.5, 1364.0, 248.0, 48.0 ],
-					"text" : "/mystring : \"/point/of/interest\",\n/point : \"point\""
+					"patching_rect" : [ 132.5, 1364.0, 248.0, 34.0 ]
 				}
 
 			}
