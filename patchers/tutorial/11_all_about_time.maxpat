@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 8,
+			"revision" : 1,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -37,8 +37,179 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "Untitled5_template",
-		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
+				"box" : 				{
+					"bgcolor" : [ 0.0, 0.996078431372549, 0.258823529411765, 1.0 ],
+					"bubbletextmargin" : 6,
+					"bubbleusescolors" : 1,
+					"id" : "obj-100",
+					"linecount" : 3,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 638.5, 3301.0, 259.0, 42.0 ],
+					"presentation_linecount" : 6,
+					"text" : "let's make sure to do all the operations so that we can see that + produces a timetag, and - produces a double"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"bgcolor" : [ 0.0, 0.996078431372549, 0.258823529411765, 1.0 ],
+					"bubbletextmargin" : 6,
+					"bubbleusescolors" : 1,
+					"id" : "obj-99",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 328.5, 3221.5, 135.0, 18.0 ],
+					"text" : "what's this here for?"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"bgcolor" : [ 0.0, 0.996078431372549, 0.258823529411765, 1.0 ],
+					"bubbletextmargin" : 6,
+					"bubbleusescolors" : 1,
+					"id" : "obj-90",
+					"linecount" : 3,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 131.0, 2987.0, 135.0, 42.0 ],
+					"presentation_linecount" : 3,
+					"text" : "fix language here---index / event vs time value"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"bgcolor" : [ 0.0, 0.996078431372549, 0.258823529411765, 1.0 ],
+					"bubbletextmargin" : 6,
+					"bubbleusescolors" : 1,
+					"id" : "obj-65",
+					"linecount" : 5,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 525.0, 2501.0, 133.0, 66.0 ],
+					"presentation_linecount" : 5,
+					"text" : "this is great---let's see how we can integrate it with the above examples and my comments."
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"bgcolor" : [ 0.0, 0.996078431372549, 0.258823529411765, 1.0 ],
+					"bubbletextmargin" : 6,
+					"bubbleusescolors" : 1,
+					"id" : "obj-64",
+					"linecount" : 2,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 523.0, 1964.0, 133.0, 30.0 ],
+					"presentation_linecount" : 2,
+					"text" : "let's discuss how to introduce o.change"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"bgcolor" : [ 0.0, 0.996078431372549, 0.258823529411765, 1.0 ],
+					"bubbletextmargin" : 6,
+					"bubbleusescolors" : 1,
+					"id" : "obj-62",
+					"linecount" : 3,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 717.0, 1702.0, 131.0, 42.0 ],
+					"presentation_linecount" : 3,
+					"text" : "let's do something with these values to show why it's useful"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"bgcolor" : [ 0.0, 0.996078431372549, 0.258823529411765, 1.0 ],
+					"bubbletextmargin" : 6,
+					"bubbleusescolors" : 1,
+					"id" : "obj-52",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 674.0, 1547.0, 131.0, 18.0 ],
+					"text" : "what's this doing here?"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"bgcolor" : [ 0.0, 0.996078431372549, 0.258823529411765, 1.0 ],
+					"bubbletextmargin" : 6,
+					"bubbleusescolors" : 1,
+					"id" : "obj-51",
+					"linecount" : 3,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 435.5, 1363.0, 325.0, 42.0 ],
+					"presentation_linecount" : 3,
+					"text" : "multislider is in int mode, so you don't need change, but i see that change is a way to introduce o.change, so maybe just put multislider back into float mode?"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"bgcolor" : [ 0.0, 0.996078431372549, 0.258823529411765, 1.0 ],
+					"bubbletextmargin" : 6,
+					"bubbleusescolors" : 1,
+					"id" : "obj-35",
+					"linecount" : 2,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 382.5, 1252.0, 325.0, 30.0 ],
+					"presentation_linecount" : 2,
+					"text" : "why not compute a 3 or 4 point average here before moving on?"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"bgcolor" : [ 0.0, 0.996078431372549, 0.258823529411765, 1.0 ],
+					"bubbletextmargin" : 6,
+					"bubbleusescolors" : 1,
+					"id" : "obj-32",
+					"linecount" : 3,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 301.5, 621.0, 325.0, 42.0 ],
+					"presentation_linecount" : 5,
+					"text" : "if we change counter to random, we could compute the difference here before discarding everything (/val - /was/val)"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"bgcolor" : [ 0.0, 0.996078431372549, 0.258823529411765, 1.0 ],
+					"bubbletextmargin" : 6,
+					"bubbleusescolors" : 1,
+					"id" : "obj-20",
+					"linecount" : 2,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 250.0, 339.159367396593666, 154.0, 30.0 ],
+					"presentation_linecount" : 2,
+					"text" : "consider changing counter to random"
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"bubbletextmargin" : 15,
 					"bubbleusescolors" : 1,
@@ -46,7 +217,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 66.0, 3038.0, 321.0, 20.0 ],
+					"patching_rect" : [ 66.0, 3038.0, 321.0, 18.0 ],
 					"text" : "Let's look at some objects that deal with time more directly."
 				}
 
@@ -60,7 +231,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 219.0, 380.159367396593666, 154.0, 26.0 ],
+					"patching_rect" : [ 219.0, 380.159367396593666, 154.0, 24.0 ],
 					"text" : "bind the integers as /val"
 				}
 
@@ -90,7 +261,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 334.0, 4133.25, 560.0, 100.0 ],
+					"patching_rect" : [ 334.0, 4133.25, 560.0, 90.0 ],
 					"text" : "But what is /sched?  \nWe know that /sched has been assigned the sum of /activate and /diff/sec.  We then use this timestamp to schedule an event in the future, by adding the current time (/activate) to the difference in seconds of the start and stop.  [o.schedule] schedules the timestamp based on the data found at the address given as it's argument.  It assumes this value will be specified at a time in the future.\n\nLook below for the result, and watch the relationship between your input and what happens in time."
 				}
 
@@ -116,7 +287,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 238.5, 3882.0, 211.0, 20.0 ],
+					"patching_rect" : [ 238.5, 3882.0, 211.0, 18.0 ],
 					"text" : "...this bundle is then stored in [o.var].  "
 				}
 
@@ -130,7 +301,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 297.5, 3770.0, 482.0, 33.0 ],
+					"patching_rect" : [ 297.5, 3770.0, 482.0, 30.0 ],
 					"text" : "When we click on /stop, [o.union] sends the resultant bundle containing both addresses, the difference between each of the times (in seconds) is calculated, and bound to /diff..."
 				}
 
@@ -168,7 +339,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 501.0, 3653.0, 436.0, 74.0 ],
+					"patching_rect" : [ 501.0, 3653.0, 436.0, 66.0 ],
 					"text" : "Try clicking on /start, then on /stop.\n\n\nWhen we click on either, [o.timetag] generates a timestamp for this event and binds that timetag to either the /start or /stop address."
 				}
 
@@ -182,7 +353,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 431.0, 3939.0, 366.0, 100.0 ],
+					"patching_rect" : [ 431.0, 3939.0, 366.0, 90.0 ],
 					"text" : "Now, try clicking on the [button] to replay what you captured.\n\nThe moment we do this, we capture a timetag that we call /activate – this represents the exact time we clicked the button.  You'll note that the first bundle from [trigger] comes out immediately.  The second is sent to [o.schedule], which looks for a timetag in an address /sched.  "
 				}
 
@@ -195,7 +366,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 248.5, 3433.0, 215.0, 20.0 ],
+					"patching_rect" : [ 248.5, 3433.0, 215.0, 18.0 ],
 					"text" : "...and 1.5 seconds later, we get output."
 				}
 
@@ -211,7 +382,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 516.0, 3221.5, 338.0, 43.0 ],
+					"patching_rect" : [ 516.0, 3221.5, 338.0, 40.0 ],
 					"text" : "[o.var] stores a bundle that can be output later.  Click the button to output the bundle we generated previously."
 				}
 
@@ -235,7 +406,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 475.5, 3250.5, 35.0, 22.0 ],
+					"patching_rect" : [ 475.5, 3250.5, 35.0, 20.0 ],
 					"text" : "o.var"
 				}
 
@@ -249,7 +420,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 169.0, 3105.0, 292.0, 100.0 ],
+					"patching_rect" : [ 169.0, 3105.0, 292.0, 90.0 ],
 					"text" : "[o.timetag] generates an address containing a timetag each time that a bundle (or bang) passes through it.  The address this timetag is bound to is given as it's argument.\n\nNote that the bundle does not need to contain anything when it enters [o.timetag]."
 				}
 
@@ -263,7 +434,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 48.5, 3301.0, 415.0, 33.0 ],
+					"patching_rect" : [ 48.5, 3301.0, 415.0, 30.0 ],
 					"text" : "Here, we've done some math on a timetag, which is simply a new datatype.  When we add a number like 1.5 to /now, it's designated in seconds."
 				}
 
@@ -277,7 +448,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 114.5, 3365.0, 351.0, 33.0 ],
+					"patching_rect" : [ 114.5, 3365.0, 351.0, 30.0 ],
 					"text" : "[o.schedule] looks at a timetag and assuming it is set to occur in the future, it schedules the bundle to be output at that time."
 				}
 
@@ -357,7 +528,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 4,
 					"outlettype" : [ "FullPacket", "FullPacket", "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 475.5, 3365.0, 104.0, 22.0 ],
+					"patching_rect" : [ 475.5, 3365.0, 104.0, 20.0 ],
 					"text" : "o.schedule /future"
 				}
 
@@ -384,7 +555,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 491.5, 3105.0, 87.0, 22.0 ],
+					"patching_rect" : [ 491.5, 3105.0, 87.0, 20.0 ],
 					"text" : "o.timetag /now"
 				}
 
@@ -398,7 +569,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 66.0, 2919.0, 863.0, 21.0 ],
+					"patching_rect" : [ 66.0, 2919.0, 863.0, 19.0 ],
 					"text" : "o.timetag, o.schedule, o.var",
 					"textjustification" : 1
 				}
@@ -411,7 +582,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 181.0, 4133.25, 129.0, 22.0 ],
+					"patching_rect" : [ 181.0, 4133.25, 129.0, 20.0 ],
 					"text" : "t l l"
 				}
 
@@ -423,7 +594,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 181.0, 3989.25, 106.0, 22.0 ],
+					"patching_rect" : [ 181.0, 3989.25, 106.0, 20.0 ],
 					"text" : "o.timetag /activate"
 				}
 
@@ -449,7 +620,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 4,
 					"outlettype" : [ "FullPacket", "FullPacket", "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 181.0, 4168.0, 105.0, 22.0 ],
+					"patching_rect" : [ 181.0, 4168.0, 105.0, 20.0 ],
 					"text" : "o.schedule /sched"
 				}
 
@@ -486,7 +657,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 181.0, 3911.0, 65.0, 22.0 ],
+					"patching_rect" : [ 181.0, 3911.0, 65.0, 20.0 ],
 					"text" : "o.var"
 				}
 
@@ -512,7 +683,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 227.0, 3765.0, 48.0, 22.0 ],
+					"patching_rect" : [ 227.0, 3765.0, 48.0, 20.0 ],
 					"text" : "o.union"
 				}
 
@@ -524,7 +695,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 388.0, 3708.0, 87.0, 22.0 ],
+					"patching_rect" : [ 388.0, 3708.0, 87.0, 20.0 ],
 					"text" : "o.timetag /stop"
 				}
 
@@ -536,7 +707,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 256.0, 3708.0, 88.0, 22.0 ],
+					"patching_rect" : [ 256.0, 3708.0, 88.0, 20.0 ],
 					"text" : "o.timetag /start"
 				}
 
@@ -549,7 +720,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 33.0, 3557.0, 922.0, 20.0 ],
+					"patching_rect" : [ 33.0, 3557.0, 922.0, 18.0 ],
 					"text" : "Based on what we introduced above, let's model a simple example of the [metro] example above, but with mouse-based, user-input.",
 					"textjustification" : 1
 				}
@@ -561,7 +732,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 813.0, 4414.0, 150.0, 20.0 ]
+					"patching_rect" : [ 813.0, 4414.0, 150.0, 18.0 ]
 				}
 
 			}
@@ -572,7 +743,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "int" ],
-					"patching_rect" : [ 167.0, 2421.0, 29.5, 22.0 ],
+					"patching_rect" : [ 167.0, 2421.0, 29.5, 20.0 ],
 					"text" : "+ 1"
 				}
 
@@ -584,7 +755,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "int" ],
-					"patching_rect" : [ 167.0, 2393.0, 66.0, 22.0 ],
+					"patching_rect" : [ 167.0, 2393.0, 66.0, 20.0 ],
 					"text" : "random 20"
 				}
 
@@ -596,7 +767,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 167.0, 2367.0, 119.0, 22.0 ],
+					"patching_rect" : [ 167.0, 2367.0, 119.0, 20.0 ],
 					"text" : "metro 321 @active 1"
 				}
 
@@ -608,7 +779,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "int" ],
-					"patching_rect" : [ 430.5, 2421.0, 29.5, 22.0 ],
+					"patching_rect" : [ 430.5, 2421.0, 29.5, 20.0 ],
 					"text" : "+ 1"
 				}
 
@@ -620,7 +791,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "int" ],
-					"patching_rect" : [ 430.5, 2393.0, 66.0, 22.0 ],
+					"patching_rect" : [ 430.5, 2393.0, 66.0, 20.0 ],
 					"text" : "random 20"
 				}
 
@@ -632,7 +803,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 430.5, 2367.0, 119.0, 22.0 ],
+					"patching_rect" : [ 430.5, 2367.0, 119.0, 20.0 ],
 					"text" : "metro 262 @active 1"
 				}
 
@@ -644,7 +815,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 273.0, 2607.5, 48.0, 22.0 ],
+					"patching_rect" : [ 273.0, 2607.5, 48.0, 20.0 ],
 					"text" : "t l l"
 				}
 
@@ -656,7 +827,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 273.0, 2575.0, 48.0, 22.0 ],
+					"patching_rect" : [ 273.0, 2575.0, 48.0, 20.0 ],
 					"text" : "o.union"
 				}
 
@@ -669,7 +840,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 167.0, 2484.0, 63.0, 22.0 ],
+					"patching_rect" : [ 167.0, 2484.0, 63.0, 20.0 ],
 					"text" : "o.pack /v1"
 				}
 
@@ -682,7 +853,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 430.5, 2484.0, 63.0, 22.0 ],
+					"patching_rect" : [ 430.5, 2484.0, 63.0, 20.0 ],
 					"text" : "o.pack /v2"
 				}
 
@@ -728,7 +899,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 544.0, 2575.0, 252.0, 234.0 ],
+					"patching_rect" : [ 544.0, 2575.0, 252.0, 210.0 ],
 					"text" : "Now we have two discrete data streams with unique timing structures.  These are decoupled in time from each other.  Our goal might be to have one of them send the last value from the other each time it outputs an update.\n\nWe can use [o.union] for this again, but that we use two instances of the object for separate tasks:\n\n1. blend the two addresses together, allowing each to update the bundle and output upon change.\n\n2. keep track of the previous value for both addresses, each time there is an update."
 				}
 
@@ -741,7 +912,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "FullPacket" ],
-					"patching_rect" : [ 349.5, 2648.0, 105.0, 22.0 ],
+					"patching_rect" : [ 349.5, 2648.0, 105.0, 20.0 ],
 					"text" : "o.gather /v1 /v2"
 				}
 
@@ -757,7 +928,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 273.0, 2741.0, 130.0, 75.0 ],
-					"text" : "/v1 : 3,\n/v2 : 9,\n/was/v2 : 9,\n/was/v1 : 9"
+					"text" : "/v2 : 6,\n/v1 : 15,\n/was/v1 : 15,\n/was/v2 : 14"
 				}
 
 			}
@@ -769,7 +940,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 273.0, 2682.0, 54.0, 22.0 ],
+					"patching_rect" : [ 273.0, 2682.0, 54.0, 20.0 ],
 					"text" : "t l l"
 				}
 
@@ -782,7 +953,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 273.0, 2648.0, 54.0, 22.0 ],
+					"patching_rect" : [ 273.0, 2648.0, 54.0, 20.0 ],
 					"text" : "o.union"
 				}
 
@@ -795,7 +966,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 349.5, 2681.0, 104.0, 22.0 ],
+					"patching_rect" : [ 349.5, 2681.0, 104.0, 20.0 ],
 					"text" : "o.prepend /was"
 				}
 
@@ -808,7 +979,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 243.0, 2063.0, 58.0, 22.0 ],
+					"patching_rect" : [ 243.0, 2063.0, 58.0, 20.0 ],
 					"text" : "o.change"
 				}
 
@@ -838,7 +1009,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 494.0, 2010.5, 327.0, 167.0 ],
+					"patching_rect" : [ 494.0, 2010.5, 327.0, 150.0 ],
 					"text" : "[o.change] passes a bundle when it differs from the last bundle received. \n\nWe should put it somewhere in the chain where we want to monitor bundles over time.  Since we're sending the int to two places and only one of them outputs a bundle from [o.pack], we can insert [o.change] just after. \n\nPlay around with the slider and note that we only get a bundle when the two values change.\n\nLet's look at a similar example but add another process..."
 				}
 
@@ -851,7 +1022,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "int" ],
-					"patching_rect" : [ 336.0, 2002.0, 33.0, 22.0 ],
+					"patching_rect" : [ 336.0, 2002.0, 33.0, 20.0 ],
 					"text" : "!- 21"
 				}
 
@@ -864,7 +1035,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 243.0, 2034.0, 112.0, 22.0 ],
+					"patching_rect" : [ 243.0, 2034.0, 112.0, 20.0 ],
 					"text" : "o.pack /v1 /v2"
 				}
 
@@ -877,7 +1048,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "int", "int" ],
-					"patching_rect" : [ 243.0, 1956.0, 30.0, 22.0 ],
+					"patching_rect" : [ 243.0, 1956.0, 30.0, 20.0 ],
 					"text" : "t i i"
 				}
 
@@ -890,7 +1061,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "FullPacket" ],
-					"patching_rect" : [ 319.5, 2095.0, 105.0, 22.0 ],
+					"patching_rect" : [ 319.5, 2095.0, 105.0, 20.0 ],
 					"text" : "o.gather /v1 /v2"
 				}
 
@@ -906,7 +1077,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 243.0, 2188.0, 130.0, 75.0 ],
-					"text" : "/v1 : 6,\n/v2 : 15,\n/was/v1 : 7,\n/was/v2 : 14"
+					"text" : "/v1 : 13,\n/v2 : 8,\n/was/v1 : 14,\n/was/v2 : 7"
 				}
 
 			}
@@ -918,7 +1089,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 243.0, 2129.0, 54.0, 22.0 ],
+					"patching_rect" : [ 243.0, 2129.0, 54.0, 20.0 ],
 					"text" : "t l l"
 				}
 
@@ -931,7 +1102,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 243.0, 2095.0, 54.0, 22.0 ],
+					"patching_rect" : [ 243.0, 2095.0, 54.0, 20.0 ],
 					"text" : "o.union"
 				}
 
@@ -944,7 +1115,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 319.5, 2128.0, 104.0, 22.0 ],
+					"patching_rect" : [ 319.5, 2128.0, 104.0, 20.0 ],
 					"text" : "o.prepend /was"
 				}
 
@@ -956,7 +1127,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 3,
 					"outlettype" : [ "", "int", "int" ],
-					"patching_rect" : [ 542.0, 1462.0, 48.0, 22.0 ],
+					"patching_rect" : [ 542.0, 1462.0, 48.0, 20.0 ],
 					"text" : "change"
 				}
 
@@ -986,7 +1157,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 122.5, 1466.0, 288.0, 248.0 ],
+					"patching_rect" : [ 122.5, 1466.0, 288.0, 222.0 ],
 					"text" : "Let's take a look at an example illustrating how we might use more than one value in max to track history.  \n\nWe could of course use [o.accum] for this, but this model helps us illustrate two values generated from a single value.  \n\nWe can cather the relevant addresses to label, and use [o.prepend] to tag them as /was.  In this particular case, we use [change] to only send a value if it crossed the integer boundary, rather than each time a pixel is crossed with our mouse.  \n\nThis might be a good time to bring up another object, [o.change] which does something similar for bundles...  Scroll down for an expansion of this topic."
 				}
 
@@ -1000,7 +1171,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 397.5, 1196.0, 288.0, 60.0 ],
+					"patching_rect" : [ 397.5, 1196.0, 288.0, 54.0 ],
 					"text" : "Passing a bundle around as such, we can trace the stream's history of where it is patched in Max.\nWe might calculate an average window, debug issues in a particular sub-routine up the chain, etc."
 				}
 
@@ -1014,7 +1185,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 430.5, 1093.5, 229.0, 19.0 ],
+					"patching_rect" : [ 430.5, 1093.5, 229.0, 17.0 ],
 					"text" : "...and so on."
 				}
 
@@ -1029,7 +1200,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 430.5, 974.500000000000114, 228.0, 31.0 ],
+					"patching_rect" : [ 430.5, 974.500000000000114, 228.0, 28.0 ],
 					"text" : "The next step backwards in history might be called /h2, "
 				}
 
@@ -1042,7 +1213,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 202.5, 1103.0, 48.5, 22.0 ],
+					"patching_rect" : [ 202.5, 1103.0, 48.5, 20.0 ],
 					"text" : "t l l"
 				}
 
@@ -1055,7 +1226,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 202.5, 1077.0, 48.0, 22.0 ],
+					"patching_rect" : [ 202.5, 1077.0, 48.0, 20.0 ],
 					"text" : "o.union"
 				}
 
@@ -1082,7 +1253,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "FullPacket" ],
-					"patching_rect" : [ 287.0, 1077.0, 70.0, 22.0 ],
+					"patching_rect" : [ 287.0, 1077.0, 70.0, 20.0 ],
 					"text" : "o.select /h2"
 				}
 
@@ -1096,7 +1267,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 49.0, 1011.0, 103.5, 33.0 ],
+					"patching_rect" : [ 49.0, 1011.0, 103.5, 30.0 ],
 					"text" : "click this box to clear the history."
 				}
 
@@ -1124,7 +1295,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 202.5, 985.5, 48.5, 22.0 ],
+					"patching_rect" : [ 202.5, 985.5, 48.5, 20.0 ],
 					"text" : "t l l"
 				}
 
@@ -1137,7 +1308,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 202.5, 961.0, 48.0, 22.0 ],
+					"patching_rect" : [ 202.5, 961.0, 48.0, 20.0 ],
 					"text" : "o.union"
 				}
 
@@ -1153,7 +1324,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 202.5, 1196.0, 130.0, 75.0 ],
-					"text" : "/val : 94,\n/h1 : 93,\n/h2 : 92,\n/h3 : 91"
+					"text" : "/val : 73,\n/h1 : 72,\n/h2 : 71,\n/h3 : 70"
 				}
 
 			}
@@ -1179,7 +1350,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "FullPacket" ],
-					"patching_rect" : [ 287.0, 961.0, 70.0, 22.0 ],
+					"patching_rect" : [ 287.0, 961.0, 70.0, 20.0 ],
 					"text" : "o.select /h1"
 				}
 
@@ -1194,7 +1365,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 430.5, 855.499999999999886, 229.0, 31.0 ],
+					"patching_rect" : [ 430.5, 855.499999999999886, 229.0, 28.0 ],
 					"text" : "Here is our history one step in the past.\nWe might call it /h1"
 				}
 
@@ -1207,7 +1378,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "FullPacket" ],
-					"patching_rect" : [ 278.0, 845.0, 72.0, 22.0 ],
+					"patching_rect" : [ 278.0, 845.0, 72.0, 20.0 ],
 					"text" : "o.select /val"
 				}
 
@@ -1220,7 +1391,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 202.5, 871.0, 48.5, 22.0 ],
+					"patching_rect" : [ 202.5, 871.0, 48.5, 20.0 ],
 					"text" : "t l l"
 				}
 
@@ -1233,7 +1404,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 202.5, 845.0, 48.0, 22.0 ],
+					"patching_rect" : [ 202.5, 845.0, 48.0, 20.0 ],
 					"text" : "o.union"
 				}
 
@@ -1262,7 +1433,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 202.5, 739.0, 130.0, 34.0 ],
-					"text" : "/val : 94"
+					"text" : "/val : 53"
 				}
 
 			}
@@ -1275,7 +1446,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 379.5, 725.999999999999886, 223.0, 60.0 ],
+					"patching_rect" : [ 379.5, 725.999999999999886, 223.0, 54.0 ],
 					"text" : "Okay, but let's back up for a second.\nWe can use [o.route] to discard the parts of the bundle we're not interested in, and just look at /val again."
 				}
 
@@ -1288,7 +1459,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "FullPacket" ],
-					"patching_rect" : [ 128.5, 673.0, 93.0, 22.0 ],
+					"patching_rect" : [ 128.5, 673.0, 93.0, 20.0 ],
 					"text" : "o.route /was/val"
 				}
 
@@ -1303,7 +1474,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 341.5, 442.659367396593666, 535.0, 124.0 ],
+					"patching_rect" : [ 341.5, 442.659367396593666, 535.0, 114.0 ],
 					"text" : "What about this bit?\nSimilarly to how we've used [trigger] in the past with [o.union], we can use it here to process our data before we pass it into [o.union].  Here we simply \"tag\" the last value of the /val address by passing it through [o.prepend].  The output address becomes /was/val.  \n\nThe /was/val address now represents the state of our value one step behind the present.  We can start to see the history of the number.  "
 				}
 
@@ -1317,7 +1488,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 170.5, 233.0, 340.0, 26.0 ],
+					"patching_rect" : [ 170.5, 233.0, 340.0, 24.0 ],
 					"text" : "click the toggle on to send integers to the [o.union] below."
 				}
 
@@ -1330,7 +1501,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 74.0, 139.5, 840.0, 38.0 ],
+					"patching_rect" : [ 74.0, 139.5, 840.0, 34.0 ],
 					"style" : "default",
 					"text" : "Let's look at a few time-oriented concepts.  \nUp until now in the tutorial, we've looked mainly at the present tense.  What about the past and future?",
 					"textjustification" : 1
@@ -1357,7 +1528,7 @@
 					"numinlets" : 5,
 					"numoutlets" : 4,
 					"outlettype" : [ "int", "", "", "int" ],
-					"patching_rect" : [ 128.5, 351.659367396593666, 92.0, 22.0 ],
+					"patching_rect" : [ 128.5, 351.659367396593666, 92.0, 20.0 ],
 					"text" : "counter 0 1 100"
 				}
 
@@ -1370,7 +1541,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 128.5, 322.0, 63.0, 22.0 ],
+					"patching_rect" : [ 128.5, 322.0, 63.0, 20.0 ],
 					"text" : "metro 300"
 				}
 
@@ -1383,7 +1554,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "int" ],
-					"patching_rect" : [ 635.0, 1547.0, 33.0, 22.0 ],
+					"patching_rect" : [ 635.0, 1547.0, 33.0, 20.0 ],
 					"text" : "!- 21"
 				}
 
@@ -1396,7 +1567,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "FullPacket" ],
-					"patching_rect" : [ 204.0, 482.0, 72.0, 22.0 ],
+					"patching_rect" : [ 204.0, 482.0, 72.0, 20.0 ],
 					"text" : "o.select /val"
 				}
 
@@ -1412,7 +1583,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 128.5, 590.0, 130.0, 48.0 ],
-					"text" : "/val : 94,\n/was/val : 93"
+					"text" : "/val : 53,\n/was/val : 52"
 				}
 
 			}
@@ -1424,7 +1595,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 128.5, 382.159367396593666, 66.0, 22.0 ],
+					"patching_rect" : [ 128.5, 382.159367396593666, 66.0, 20.0 ],
 					"text" : "o.pack /val"
 				}
 
@@ -1437,7 +1608,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 128.5, 508.0, 48.5, 22.0 ],
+					"patching_rect" : [ 128.5, 508.0, 48.5, 20.0 ],
 					"text" : "t l l"
 				}
 
@@ -1450,7 +1621,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 128.5, 482.0, 48.0, 22.0 ],
+					"patching_rect" : [ 128.5, 482.0, 48.0, 20.0 ],
 					"text" : "o.union"
 				}
 
@@ -1463,7 +1634,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 204.0, 508.0, 91.0, 22.0 ],
+					"patching_rect" : [ 204.0, 508.0, 91.0, 20.0 ],
 					"text" : "o.prepend /was"
 				}
 
@@ -1476,7 +1647,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 542.0, 1579.0, 112.0, 22.0 ],
+					"patching_rect" : [ 542.0, 1579.0, 112.0, 20.0 ],
 					"text" : "o.pack /v1 /v2"
 				}
 
@@ -1489,7 +1660,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "int", "int" ],
-					"patching_rect" : [ 542.0, 1501.0, 30.0, 22.0 ],
+					"patching_rect" : [ 542.0, 1501.0, 30.0, 20.0 ],
 					"text" : "t i i"
 				}
 
@@ -1502,7 +1673,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "FullPacket" ],
-					"patching_rect" : [ 618.5, 1625.0, 105.0, 22.0 ],
+					"patching_rect" : [ 618.5, 1625.0, 105.0, 20.0 ],
 					"text" : "o.gather /v1 /v2"
 				}
 
@@ -1518,7 +1689,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 542.0, 1718.0, 130.0, 75.0 ],
-					"text" : "/v1 : 5,\n/v2 : 16,\n/was/v1 : 5,\n/was/v2 : 16"
+					"text" : "/v1 : 11,\n/v2 : 10,\n/was/v1 : 10,\n/was/v2 : 11"
 				}
 
 			}
@@ -1530,7 +1701,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 542.0, 1659.0, 54.0, 22.0 ],
+					"patching_rect" : [ 542.0, 1659.0, 54.0, 20.0 ],
 					"text" : "t l l"
 				}
 
@@ -1543,7 +1714,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 542.0, 1625.0, 54.0, 22.0 ],
+					"patching_rect" : [ 542.0, 1625.0, 54.0, 20.0 ],
 					"text" : "o.union"
 				}
 
@@ -1556,7 +1727,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 618.5, 1658.0, 104.0, 22.0 ],
+					"patching_rect" : [ 618.5, 1658.0, 104.0, 20.0 ],
 					"text" : "o.prepend /was"
 				}
 
@@ -1607,7 +1778,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 883.0, 621.0, 83.0, 20.0 ],
+					"patching_rect" : [ 883.0, 621.0, 83.0, 18.0 ],
 					"text" : "( scroll down )"
 				}
 
@@ -1619,7 +1790,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 781.0, 42.0, 61.0, 22.0 ],
+					"patching_rect" : [ 781.0, 42.0, 61.0, 20.0 ],
 					"text" : "onecopy"
 				}
 
@@ -2322,42 +2493,42 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "advance.maxpat",
-				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/patchers/tutorial",
+				"bootpath" : "~/Development/CNMAT/CNMAT/CNMAT-odot/patchers/tutorial",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "filelist.txt",
-				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/patchers/tutorial",
+				"bootpath" : "~/Development/CNMAT/CNMAT/CNMAT-odot/patchers/tutorial",
 				"patcherrelativepath" : ".",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "close_parent.js",
-				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/patchers/tutorial",
+				"bootpath" : "~/Development/CNMAT/CNMAT/CNMAT-odot/patchers/tutorial",
 				"patcherrelativepath" : ".",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.t.banner.maxpat",
-				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/patchers/tutorial",
+				"bootpath" : "~/Development/CNMAT/CNMAT/CNMAT-odot/patchers/tutorial",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.gather.maxpat",
-				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/patchers/namespace",
+				"bootpath" : "~/Development/CNMAT/CNMAT/CNMAT-odot/patchers/namespace",
 				"patcherrelativepath" : "../namespace",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.righttoleft.maxpat",
-				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/patchers/ordering",
+				"bootpath" : "~/Development/CNMAT/CNMAT/CNMAT-odot/patchers/ordering",
 				"patcherrelativepath" : "../ordering",
 				"type" : "JSON",
 				"implicit" : 1

@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 8,
+			"revision" : 1,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -37,14 +37,112 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "Untitled5_template",
-		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
+				"box" : 				{
+					"id" : "obj-32",
+					"linecount" : 3,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 541.0, 451.0, 199.0, 42.0 ],
+					"presentation_linecount" : 3,
+					"text" : "Method 3: Create an empty subbundle in o.expr.codebox, and populate it with values."
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-27",
+					"linecount" : 5,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 321.5, 451.0, 189.0, 66.0 ],
+					"presentation_linecount" : 5,
+					"text" : "Method 2: Send a bundle into an inlet of o.pack, and the input bundle will be assigned to the address that corresponds to the inlet."
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontface" : 0,
+					"fontsize" : 12.0,
+					"id" : "obj-24",
+					"linecount" : 5,
+					"maxclass" : "o.display",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 321.5, 340.0, 143.0, 88.0 ],
+					"presentation_linecount" : 5,
+					"text" : "/bndl : {\n\t/a : \"a\",\n\t/b : 20,\n\t/c : 30\n}"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontface" : 0,
+					"fontsize" : 12.0,
+					"id" : "obj-26",
+					"maxclass" : "o.expr.codebox",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "FullPacket", "FullPacket" ],
+					"patching_rect" : [ 321.5, 295.0, 111.0, 32.0 ],
+					"text" : "/bndl./a = \"a\""
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-23",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "FullPacket" ],
+					"patching_rect" : [ 321.5, 264.0, 73.0, 20.0 ],
+					"text" : "o.pack /bndl"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontface" : 0,
+					"fontsize" : 12.0,
+					"id" : "obj-22",
+					"linecount" : 3,
+					"maxclass" : "o.compose",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 321.5, 202.0, 85.0, 51.0 ],
+					"presentation_linecount" : 3,
+					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 12, 47, 97, 0, 0, 44, 105, 0, 0, 0, 0, 0, 10, 0, 0, 0, 12, 47, 98, 0, 0, 44, 105, 0, 0, 0, 0, 0, 20, 0, 0, 0, 12, 47, 99, 0, 0, 44, 105, 0, 0, 0, 0, 0, 30 ],
+					"saved_bundle_length" : 64,
+					"text" : "/a : 10,\n/b : 20,\n/c : 30"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-21",
+					"linecount" : 3,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 113.5, 451.0, 189.0, 42.0 ],
+					"presentation_linecount" : 3,
+					"text" : "Method 1: Create the subbundle as a literal by typing it into o.compose."
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"id" : "obj-19",
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 48.0, 2060.5, 895.0, 20.0 ],
+					"patching_rect" : [ 48.0, 2060.5, 895.0, 18.0 ],
 					"text" : "< summary text here >",
 					"textjustification" : 1
 				}
@@ -57,8 +155,8 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 300.0, 1775.5, 150.0, 47.0 ],
-					"text" : "we can modify a subbundle's address after it's been generated."
+					"patching_rect" : [ 300.0, 1775.5, 150.0, 42.0 ],
+					"text" : "we can modify a subbundle's value after it's been generated."
 				}
 
 			}
@@ -119,12 +217,12 @@
 					"bubbletextmargin" : 15,
 					"bubbleusescolors" : 1,
 					"id" : "obj-38",
-					"linecount" : 17,
+					"linecount" : 13,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 198.0, 1388.0, 252.0, 258.0 ],
-					"text" : "We may want to investigate further, to figure out what values \"/a\" and \"/b\" hold.\n\ngetbundlemember() was designed for such a task.  It returns the value of the subbundle's address given as it's second argument.  The first argument is the subbundle to interrogate.\n\nNote that in the case of \"/get/1\", we are using the return value of the initial call to getaddresses().  Since this returns a list, we can access the first element \"/a\", and pass this element to the second argument to getbundlemember()."
+					"patching_rect" : [ 198.0, 1388.0, 252.0, 186.0 ],
+					"text" : "We may want to investigate further, to figure out what values \"/a\" and \"/b\" hold.\n\ngetbundlemember() was designed for such a task.  It takes two addresses: a subbundle, and an address to lookup, and produces the value of that address.\n\nNote that in the case of \"/get/1\", we are looking up an address that was returned by getaddresses()."
 				}
 
 			}
@@ -135,7 +233,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 504.0, 1104.0, 58.0, 22.0 ],
+					"patching_rect" : [ 504.0, 1104.0, 58.0, 20.0 ],
 					"text" : "loadbang"
 				}
 
@@ -148,24 +246,24 @@
 					"bubbletextmargin" : 15,
 					"bubbleusescolors" : 1,
 					"id" : "obj-36",
-					"linecount" : 6,
+					"linecount" : 3,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 198.0, 1141.0, 249.0, 111.0 ],
-					"text" : "If we want to get the addresses of a subbundle, we can pass that as an argument to getaddresses().  Here, we do just that, and we see that the resultant list yields the list of addresses belonging to \"/bndl\".  "
+					"patching_rect" : [ 198.0, 1141.0, 249.0, 66.0 ],
+					"text" : "If we want to get the addresses of a subbundle, we can pass that as an argument to getaddresses(). "
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"id" : "obj-35",
-					"linecount" : 12,
+					"linecount" : 6,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 534.0, 813.0, 249.0, 167.0 ],
-					"text" : "Let's take a look at some details regarding introspection with subbundles.\n\nWhen we query the names of all addresses in a bundle via getaddresses(), we might expect to see more than one element in the resultant list.\n\nInstead, we see \"/bndl\" as the only name detected.\nThis is because getaddresses, by default, only evaluates the top-level address space."
+					"patching_rect" : [ 522.0, 828.0, 249.0, 78.0 ],
+					"text" : "Let's take a look at some details regarding introspection with subbundles.\n\nWhen we call getaddresses() without any arguments, it returns a list the addresses in the top-level bundle."
 				}
 
 			}
@@ -176,7 +274,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 74.0, 657.5, 840.0, 22.0 ],
+					"patching_rect" : [ 74.0, 657.5, 840.0, 20.0 ],
 					"style" : "default",
 					"text" : "Further details on subbundles",
 					"textjustification" : 1
@@ -186,32 +284,12 @@
 , 			{
 				"box" : 				{
 					"id" : "obj-31",
-					"linecount" : 8,
+					"linecount" : 5,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 735.5, 457.0, 199.0, 114.0 ],
-					"text" : "Finally, in this example above, the subbundle is created as a result of the './a' address being requested.\nSince the subbundle didn't exist prior, it is generated and then '/a' is assigned.  When we request '/b', '/bndl' already exists, so only the address is generated."
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"args" : [ "o.expr.codebox" ],
-					"bgmode" : 0,
-					"border" : 0,
-					"clickthrough" : 0,
-					"enablehscroll" : 0,
-					"enablevscroll" : 0,
-					"id" : "obj-26",
-					"lockeddragscroll" : 0,
-					"maxclass" : "bpatcher",
-					"name" : "o.t.linkpatch.maxpat",
-					"numinlets" : 0,
-					"numoutlets" : 0,
-					"offset" : [ 0.0, 0.0 ],
-					"patching_rect" : [ 168.25, 474.25, 90.25, 14.75 ],
-					"viewvisibility" : 1
+					"patching_rect" : [ 763.5, 451.0, 199.0, 66.0 ],
+					"text" : "Method 4: You can leave out the explicit creation of the bundle. If you assign to a member of a bundle that doesn't exist yet, it will be created for you."
 				}
 
 			}
@@ -230,7 +308,7 @@
 					"numinlets" : 0,
 					"numoutlets" : 0,
 					"offset" : [ 0.0, 0.0 ],
-					"patching_rect" : [ 406.0, 541.25, 90.25, 14.75 ],
+					"patching_rect" : [ 613.0, 464.625, 90.25, 14.75 ],
 					"viewvisibility" : 1
 				}
 
@@ -243,32 +321,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 522.0, 289.0, 58.0, 22.0 ],
+					"patching_rect" : [ 639.0, 289.0, 58.0, 20.0 ],
 					"text" : "loadbang"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-15",
-					"linecount" : 7,
-					"maxclass" : "comment",
-					"numinlets" : 1,
-					"numoutlets" : 0,
-					"patching_rect" : [ 401.0, 457.0, 199.0, 100.0 ],
-					"text" : "Here, we generate the subbundle manually by using the bundle literal notation.  This generates an empty bundle which we can fill by name.  The subbundle's addresses can be dynamically generated within [o.expr.codebox]"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-5",
-					"linecount" : 8,
-					"maxclass" : "comment",
-					"numinlets" : 1,
-					"numoutlets" : 0,
-					"patching_rect" : [ 96.0, 457.0, 189.0, 114.0 ],
-					"text" : "...if the subbundle /bndl exists before it hits [o.expr.codebox], it can be operated on.  \nThis might be the most familiar to you so far.\nIn this example, the subbundle already contains addreses from the [o.compose] object."
 				}
 
 			}
@@ -307,11 +361,13 @@
 					"fontface" : 0,
 					"fontsize" : 12.0,
 					"id" : "obj-12",
+					"linecount" : 5,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 257.0, 903.0, 209.0, 34.0 ]
+					"patching_rect" : [ 257.0, 903.0, 209.0, 88.0 ],
+					"text" : "/bndl : {\n\t/a : \"foo\",\n\t/b : \"bar\"\n},\n/get : \"/bndl\""
 				}
 
 			}
@@ -400,7 +456,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 424.0, 340.0, 143.0, 75.0 ],
+					"patching_rect" : [ 541.0, 340.0, 143.0, 75.0 ],
 					"text" : "/bndl : {\n\t/a : \"foo\",\n\t/b : \"bar\"\n}"
 				}
 
@@ -415,7 +471,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 424.0, 214.0, 140.0, 59.0 ],
+					"patching_rect" : [ 541.0, 214.0, 140.0, 59.0 ],
 					"text" : "/bndl = {},\n/bndl./a = \"foo\", \n/bndl./b = \"bar\""
 				}
 
@@ -473,9 +529,9 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 74.0, 139.5, 840.0, 22.0 ],
+					"patching_rect" : [ 74.0, 139.5, 840.0, 20.0 ],
 					"style" : "default",
-					"text" : "There are three ways to create a subbundle in ODOT.  Let's look at each below, and then get into some finer details.",
+					"text" : "There are four ways to create a subbundle in ODOT.  Let's look at each below, and then get into some finer details.",
 					"textjustification" : 1
 				}
 
@@ -506,7 +562,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 471.0, 2245.0, 150.0, 20.0 ]
+					"patching_rect" : [ 471.0, 2245.0, 150.0, 18.0 ]
 				}
 
 			}
@@ -516,7 +572,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 883.0, 621.0, 83.0, 20.0 ],
+					"patching_rect" : [ 883.0, 621.0, 83.0, 18.0 ],
 					"text" : "( scroll down )"
 				}
 
@@ -528,7 +584,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 781.0, 42.0, 61.0, 22.0 ],
+					"patching_rect" : [ 781.0, 42.0, 61.0, 20.0 ],
 					"text" : "onecopy"
 				}
 
@@ -598,9 +654,17 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-22", 0 ],
+					"order" : 2,
+					"source" : [ "obj-17", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-28", 0 ],
 					"hidden" : 1,
-					"order" : 2,
+					"order" : 3,
 					"source" : [ "obj-17", 0 ]
 				}
 
@@ -627,6 +691,27 @@
 				"patchline" : 				{
 					"destination" : [ "obj-20", 0 ],
 					"source" : [ "obj-18", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-23", 0 ],
+					"source" : [ "obj-22", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-26", 0 ],
+					"source" : [ "obj-23", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-24", 0 ],
+					"source" : [ "obj-26", 0 ]
 				}
 
 			}
@@ -661,35 +746,35 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "advance.maxpat",
-				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/patchers/tutorial",
+				"bootpath" : "~/Development/CNMAT/CNMAT/CNMAT-odot/patchers/tutorial",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "filelist.txt",
-				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/patchers/tutorial",
+				"bootpath" : "~/Development/CNMAT/CNMAT/CNMAT-odot/patchers/tutorial",
 				"patcherrelativepath" : ".",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "close_parent.js",
-				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/patchers/tutorial",
+				"bootpath" : "~/Development/CNMAT/CNMAT/CNMAT-odot/patchers/tutorial",
 				"patcherrelativepath" : ".",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.t.banner.maxpat",
-				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/patchers/tutorial",
+				"bootpath" : "~/Development/CNMAT/CNMAT/CNMAT-odot/patchers/tutorial",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.t.linkpatch.maxpat",
-				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/patchers/tutorial",
+				"bootpath" : "~/Development/CNMAT/CNMAT/CNMAT-odot/patchers/tutorial",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
@@ -704,6 +789,10 @@
 			}
 , 			{
 				"name" : "o.display.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.pack.mxo",
 				"type" : "iLaX"
 			}
  ],
