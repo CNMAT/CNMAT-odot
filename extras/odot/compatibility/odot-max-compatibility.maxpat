@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 1,
+			"revision" : 8,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -22,11 +22,11 @@
 		"objectsnaponopen" : 1,
 		"statusbarvisible" : 2,
 		"toolbarvisible" : 1,
-		"lefttoolbarpinned" : 0,
-		"toptoolbarpinned" : 0,
-		"righttoolbarpinned" : 0,
-		"bottomtoolbarpinned" : 0,
-		"toolbars_unpinned_last_save" : 0,
+		"lefttoolbarpinned" : 2,
+		"toptoolbarpinned" : 2,
+		"righttoolbarpinned" : 2,
+		"bottomtoolbarpinned" : 2,
+		"toolbars_unpinned_last_save" : 15,
 		"tallnewobj" : 0,
 		"boxanimatetime" : 200,
 		"enablehscroll" : 1,
@@ -37,6 +37,7 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "",
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
 					"fontface" : 1,
@@ -45,7 +46,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 43.0, 37.0, 285.0, 24.0 ],
+					"patching_rect" : [ 43.0, 37.0, 285.0, 27.0 ],
 					"text" : "FullPacket messages and safety"
 				}
 
@@ -56,7 +57,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 43.0, 819.0, 150.0, 18.0 ],
+					"patching_rect" : [ 43.0, 819.0, 150.0, 20.0 ],
 					"text" : "just right :)"
 				}
 
@@ -67,7 +68,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 261.5, 819.0, 150.0, 18.0 ],
+					"patching_rect" : [ 261.5, 819.0, 150.0, 20.0 ],
 					"text" : "too fast!"
 				}
 
@@ -81,7 +82,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 261.5, 788.0, 50.0, 20.0 ]
+					"patching_rect" : [ 261.5, 788.0, 50.0, 22.0 ]
 				}
 
 			}
@@ -92,7 +93,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "float", "" ],
-					"patching_rect" : [ 261.5, 759.0, 35.0, 20.0 ],
+					"patching_rect" : [ 261.5, 759.0, 35.0, 22.0 ],
 					"text" : "timer"
 				}
 
@@ -104,7 +105,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "bang", "bang" ],
-					"patching_rect" : [ 261.5, 725.0, 29.5, 20.0 ],
+					"patching_rect" : [ 261.5, 725.0, 29.5, 22.0 ],
 					"text" : "b 2"
 				}
 
@@ -118,7 +119,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 43.0, 788.0, 50.0, 20.0 ]
+					"patching_rect" : [ 43.0, 788.0, 50.0, 22.0 ]
 				}
 
 			}
@@ -129,7 +130,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "float", "" ],
-					"patching_rect" : [ 43.0, 759.0, 35.0, 20.0 ],
+					"patching_rect" : [ 43.0, 759.0, 35.0, 22.0 ],
 					"text" : "timer"
 				}
 
@@ -141,7 +142,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "bang", "bang" ],
-					"patching_rect" : [ 43.0, 725.0, 29.5, 20.0 ],
+					"patching_rect" : [ 43.0, 725.0, 29.5, 22.0 ],
 					"text" : "b 2"
 				}
 
@@ -156,7 +157,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 102.0, 774.0, 150.0, 34.0 ],
-					"text" : "/rand : 246"
+					"text" : "/rand : 930"
 				}
 
 			}
@@ -167,7 +168,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 102.0, 696.0, 80.0, 20.0 ],
+					"patching_rect" : [ 102.0, 696.0, 80.0, 22.0 ],
 					"text" : "speedlim 100"
 				}
 
@@ -179,7 +180,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 102.0, 725.0, 98.75, 20.0 ],
+					"patching_rect" : [ 102.0, 725.0, 98.75, 22.0 ],
 					"text" : "o.var"
 				}
 
@@ -191,7 +192,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 3,
 					"outlettype" : [ "bang", "", "bang" ],
-					"patching_rect" : [ 102.0, 670.0, 178.5, 20.0 ],
+					"patching_rect" : [ 102.0, 670.0, 178.5, 22.0 ],
 					"text" : "t b l b"
 				}
 
@@ -208,7 +209,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 1,
-							"revision" : 1,
+							"revision" : 8,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -241,6 +242,7 @@
 						"tags" : "",
 						"style" : "",
 						"subpatcher_template" : "",
+						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
 									"id" : "obj-4",
@@ -314,7 +316,7 @@
  ]
 					}
 ,
-					"patching_rect" : [ 102.0, 643.0, 189.0, 20.0 ],
+					"patching_rect" : [ 102.0, 643.0, 189.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
@@ -334,7 +336,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 43.0, 588.0, 438.0, 30.0 ],
+					"patching_rect" : [ 43.0, 588.0, 438.0, 33.0 ],
 					"text" : "speedlim, pipe, defer, and deferlow can never safely be used directly. They must be used in conjunction with o.var or o.compose:"
 				}
 
@@ -345,7 +347,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 262.0, 530.0, 150.0, 18.0 ],
+					"patching_rect" : [ 262.0, 530.0, 150.0, 20.0 ],
 					"text" : "o.var"
 				}
 
@@ -356,7 +358,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 43.0, 530.0, 150.0, 18.0 ],
+					"patching_rect" : [ 43.0, 530.0, 150.0, 20.0 ],
 					"text" : "zl.reg"
 				}
 
@@ -380,7 +382,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 262.0, 497.0, 35.0, 20.0 ],
+					"patching_rect" : [ 262.0, 497.0, 35.0, 22.0 ],
 					"text" : "o.var"
 				}
 
@@ -404,7 +406,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 43.0, 497.0, 38.0, 20.0 ],
+					"patching_rect" : [ 43.0, 497.0, 38.0, 22.0 ],
 					"text" : "zl.reg"
 				}
 
@@ -416,7 +418,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 90.0, 462.0, 42.0, 20.0 ],
+					"patching_rect" : [ 90.0, 462.0, 42.0, 22.0 ],
 					"text" : "foo 10"
 				}
 
@@ -443,7 +445,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 262.0, 419.0, 150.0, 18.0 ],
+					"patching_rect" : [ 262.0, 419.0, 150.0, 20.0 ],
 					"text" : "o.compose"
 				}
 
@@ -454,7 +456,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 43.0, 419.0, 150.0, 18.0 ],
+					"patching_rect" : [ 43.0, 419.0, 150.0, 20.0 ],
 					"text" : "message box"
 				}
 
@@ -505,7 +507,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 43.0, 386.0, 42.0, 20.0 ],
+					"patching_rect" : [ 43.0, 386.0, 42.0, 22.0 ],
 					"text" : "foo 10"
 				}
 
@@ -517,7 +519,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 90.0, 351.0, 42.0, 20.0 ],
+					"patching_rect" : [ 90.0, 351.0, 42.0, 22.0 ],
 					"text" : "foo 10"
 				}
 
@@ -546,7 +548,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 43.0, 311.0, 435.0, 30.0 ],
+					"patching_rect" : [ 43.0, 311.0, 435.0, 33.0 ],
 					"text" : "In order to store a bundle for future use, substitute the Max message box for o.compose, and zl.reg for o.var."
 				}
 
@@ -559,7 +561,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 43.0, 169.0, 438.0, 114.0 ],
+					"patching_rect" : [ 43.0, 169.0, 438.0, 127.0 ],
 					"text" : "This means that if you store a FullPacket message in, say a Max message box, or with zl.reg, the next time you access it, the memory that it points to will no longer contain the bundle it originally had. This also applies to any Max object that needs to make a copy not just of its message for future use, such as defer, deferlow, speedlim, etc.\n\nIf you're lucky, you'll get an error in the Max window that says that an odot object received something that's not a bundle, but from time to time, using a stale bundle like this will cause Max to crash."
 				}
 
@@ -572,7 +574,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 43.0, 107.0, 435.0, 54.0 ],
+					"patching_rect" : [ 43.0, 107.0, 435.0, 60.0 ],
 					"text" : "The memory that the FullPacket message refers to is only temporarily available, and once an odot object has finished with it, it is released and can no longer be accessed safely (this is true of any object that generates or uses the FullPacket message, including OpenSoundControl, udpsend/receive, etc)."
 				}
 
@@ -727,7 +729,25 @@
 				}
 
 			}
- ]
+ ],
+		"dependency_cache" : [ 			{
+				"name" : "o.compose.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.var.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.pack.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.display.mxo",
+				"type" : "iLaX"
+			}
+ ],
+		"autosave" : 0
 	}
 
 }
