@@ -60,14 +60,14 @@
 			}
 , 			{
 				"box" : 				{
+					"bubble" : 1,
 					"fontsize" : 13.0,
 					"id" : "obj-57",
-					"linecount" : 2,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 538.0, 2325.0, 250.0, 36.0 ],
-					"text" : "<--Open for more info on safe handling of the FullPacket message in Maxi."
+					"patching_rect" : [ 274.5, 2320.0, 429.0, 25.0 ],
+					"text" : "open for more info on safe handling of the FullPacket message in Max"
 				}
 
 			}
@@ -115,7 +115,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 0,
 					"numoutlets" : 0,
-					"patching_rect" : [ 404.5, 2325.0, 129.0, 22.0 ],
+					"patching_rect" : [ 132.0, 2320.0, 129.0, 22.0 ],
 					"text" : "odot-max-compatibility"
 				}
 
@@ -237,7 +237,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 404.5, 2099.0, 253.0, 210.0 ],
+					"patching_rect" : [ 404.5, 2038.0, 253.0, 210.0 ],
 					"text" : "In Max everything is a message.  \n\nIn [o.compose], we can view and modify our data, but when it's sent over a patch cord, it's sent as a Max message with arguments.  Our internal message that is used for this type of data is called \"FullPacket\".  There are two arguments to FullPacket, the size in bytes and a pointer to a memory address.\n\nClick on the [o.compose] box to the left to see what an ODOT bundle looks like as it's passed around Max."
 				}
 
@@ -277,7 +277,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 124.0, 2084.5, 250.0, 21.0 ],
+					"patching_rect" : [ 124.0, 2084.5, 186.0, 21.0 ],
 					"text" : "What is a FullPacket, anyway?"
 				}
 
