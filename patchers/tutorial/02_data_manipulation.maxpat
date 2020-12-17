@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 7,
+			"revision" : 8,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -277,7 +277,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 95.0, 2040.5, 250.0, 21.0 ],
+					"patching_rect" : [ 124.0, 2084.5, 250.0, 21.0 ],
 					"text" : "What is a FullPacket, anyway?"
 				}
 
