@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 5,
+			"revision" : 8,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -53,7 +53,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 1,
-							"revision" : 5,
+							"revision" : 8,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -507,7 +507,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 1,
-							"revision" : 5,
+							"revision" : 8,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -876,7 +876,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 1,
-							"revision" : 5,
+							"revision" : 8,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -1254,7 +1254,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 1,
-							"revision" : 5,
+							"revision" : 8,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -1512,7 +1512,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 1,
-							"revision" : 5,
+							"revision" : 8,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -1848,7 +1848,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 1,
-							"revision" : 5,
+							"revision" : 8,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -2491,7 +2491,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 1,
-							"revision" : 5,
+							"revision" : 8,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -2927,7 +2927,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 1,
-							"revision" : 5,
+							"revision" : 8,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -3305,7 +3305,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 1,
-							"revision" : 5,
+							"revision" : 8,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -3383,7 +3383,7 @@
 										"appversion" : 										{
 											"major" : 8,
 											"minor" : 1,
-											"revision" : 5,
+											"revision" : 8,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -3526,7 +3526,7 @@
 														"appversion" : 														{
 															"major" : 8,
 															"minor" : 1,
-															"revision" : 5,
+															"revision" : 8,
 															"architecture" : "x64",
 															"modernui" : 1
 														}
@@ -3895,7 +3895,7 @@
 														"appversion" : 														{
 															"major" : 8,
 															"minor" : 1,
-															"revision" : 5,
+															"revision" : 8,
 															"architecture" : "x64",
 															"modernui" : 1
 														}
@@ -4834,7 +4834,7 @@
 										"appversion" : 										{
 											"major" : 8,
 											"minor" : 1,
-											"revision" : 5,
+											"revision" : 8,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -5934,7 +5934,7 @@
 , 							{
 								"box" : 								{
 									"id" : "obj-15",
-									"items" : [ "&", ",", "|", ",", "&&", ",", "||", ",", "!" ],
+									"items" : [ "&", ",", "|", ",", "&&", ",", "||", ",", "!", ",", "not" ],
 									"maxclass" : "umenu",
 									"numinlets" : 1,
 									"numoutlets" : 3,
@@ -5986,7 +5986,7 @@
 , 							{
 								"box" : 								{
 									"id" : "obj-25",
-									"items" : [ "add", ",", "sub", ",", "mul", ",", "div", ",", "lt", ",", "le", ",", "gt", ",", "ge", ",", "eq", ",", "ne", ",", "and", ",", "or", ",", "andalso", ",", "orelse", ",", "mod", ",", "plus1", ",", "minus1", ",", "abs", ",", "ceil", ",", "floor", ",", "fmod", ",", "remainder", ",", "round", ",", "mod", ",", "product", ",", "sum", ",", "cumsum", ",", "dot", ",", "cross", ",", "det", ",", "sign" ],
+									"items" : [ "add", ",", "sub", ",", "mul", ",", "div", ",", "lt", ",", "le", ",", "gt", ",", "ge", ",", "eq", ",", "ne", ",", "and", ",", "or", ",", "andalso", ",", "orelse", ",", "mod", ",", "plus1", ",", "minus1", ",", "abs", ",", "ceil", ",", "floor", ",", "fmod", ",", "remainder", ",", "round", ",", "product", ",", "sum", ",", "cumsum", ",", "dot", ",", "cross", ",", "det", ",", "sign" ],
 									"maxclass" : "umenu",
 									"numinlets" : 1,
 									"numoutlets" : 3,
@@ -6298,7 +6298,7 @@
 , 							{
 								"box" : 								{
 									"id" : "obj-87",
-									"items" : [ ".", ",", "assign", ",", "getaddresses", ",", "delete", ",", "getmsgcount", ",", "eval", ",", "tokenize", ",", "prog1", ",", "prog2", ",", "progn", ",", "apply", ",", "quote", ",", "value", ",", "lambda", ",", "gettimetag", ",", "settimetag", ",", "getbundlemember", ",", "assigntobundlemember", ",", "imu", ",", "float32", ",", "float64", ",", "int8", ",", "char", ",", "int16", ",", "int32", ",", "int64", ",", "uint8", ",", "uint16", ",", "uint32", ",", "uint64", ",", "bool", ",", "string", ",", "blob", ",", "cast", ",", "typetags", ",", "hton32", ",", "ntoh32", ",", "hton64", ",", "ntoh64", ",", "readstring", ",", "strtotime", ",", "floattotime", ",", "match" ],
+									"items" : [ ".", ",", "assign", ",", "getaddresses", ",", "delete", ",", "getmsgcount", ",", "eval", ",", "tokenize", ",", "prog1", ",", "prog2", ",", "progn", ",", "apply", ",", "quote", ",", "value", ",", "lambda", ",", "gettimetag", ",", "settimetag", ",", "getbundlemember", ",", "assigntobundlemember", ",", "float32", ",", "float64", ",", "int8", ",", "char", ",", "int16", ",", "int32", ",", "int64", ",", "uint8", ",", "uint16", ",", "uint32", ",", "uint64", ",", "bool", ",", "string", ",", "blob", ",", "cast", ",", "typetags", ",", "hton32", ",", "ntoh32", ",", "hton64", ",", "ntoh64", ",", "readstring", ",", "strtotime", ",", "floattotime", ",", "match" ],
 									"maxclass" : "umenu",
 									"numinlets" : 1,
 									"numoutlets" : 3,
@@ -6556,7 +6556,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 1,
-							"revision" : 5,
+							"revision" : 8,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -6894,7 +6894,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 1,
-							"revision" : 5,
+							"revision" : 8,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -7239,7 +7239,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 1,
-							"revision" : 5,
+							"revision" : 8,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -7448,7 +7448,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 296.0, 570.0, 172.0, 88.0 ],
-									"text" : "/samplerate : 10,\n/freq : 0.5,\n/phase : 2.24257,\n/incr : 0.05,\n/y : -0.812846"
+									"text" : "/samplerate : 10,\n/freq : 0.5,\n/phase : 2.71992,\n/incr : 0.05,\n/y : -0.454374"
 								}
 
 							}
@@ -7559,8 +7559,8 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 857.0, 663.0, 136.0, 22.0 ],
-									"text" : "sprintf load %s.maxhelp"
+									"patching_rect" : [ 857.0, 663.0, 130.0, 22.0 ],
+									"text" : "sprintf load %s.maxpat"
 								}
 
 							}
