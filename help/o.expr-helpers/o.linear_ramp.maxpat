@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 5,
+			"revision" : 8,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -61,7 +61,6 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
 					"patching_rect" : [ 23.0, 63.0, 299.0, 100.0 ],
-					"presentation_linecount" : 10,
 					"text" : "if( bound(/ramp) && /ramp == \"increase\",\n  /metro = 1, \n  if( bound(/ramp) && /ramp == \"stop\", \n    /metro = 0\n  )\n)"
 				}
 
@@ -162,7 +161,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
 					"patching_rect" : [ 23.0, 203.0, 130.0, 24.0 ],
-					"text" : "metro 50 @active 1"
+					"text" : "metro 75 @active 1"
 				}
 
 			}
