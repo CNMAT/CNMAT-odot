@@ -404,7 +404,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 340.5, 3749.0, 423.0, 31.0 ],
-					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 28, 47, 105, 110, 108, 105, 115, 116, 0, 44, 105, 105, 105, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 6, 0, 0, 0, 9, 0, 0, 0, 20, 47, 115, 116, 97, 114, 116, 118, 97, 108, 0, 0, 0, 44, 105, 0, 0, 0, 0, 0, 0 ],
+					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 28, 47, 105, 110, 108, 105, 115, 116, 0, 44, 105, 105, 105, 0, 0, 0, 0, 0, 0, 0, 9, 0, 0, 0, 5, 0, 0, 0, 1, 0, 0, 0, 20, 47, 115, 116, 97, 114, 116, 118, 97, 108, 0, 0, 0, 44, 105, 0, 0, 0, 0, 0, 0 ],
 					"saved_bundle_length" : 72,
 					"text" : "/inlist : [3, 9, 9],\n/startval : 0"
 				}
@@ -763,12 +763,12 @@
 				"box" : 				{
 					"fontsize" : 13.0,
 					"id" : "obj-81",
-					"linecount" : 16,
+					"linecount" : 15,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 109.5, 1630.0, 346.0, 239.0 ],
-					"text" : "Let's look at a particular type of dynamic assignment:  the assignment of a bundle.\n\nThis particular bundle has three addresses:  /x, /y, and /z\nWe might like to label it so that we can recall it later, effectively creating a preset.\n\nWe do this by passing the bundle in as the data argument to assign.  The name can be concatenated, as in the previous examples, and we can use the value of /n to act as a preset identifier.  \n\nChoose a number in the number box, then click on the bundle containing our three values.  Note that in the output, we only get our preset, since we delete the /bndl and /n addresses before leaving the codebox."
+					"patching_rect" : [ 109.5, 1684.0, 346.0, 224.0 ],
+					"text" : "Let's look at a particular type of dynamic assignment:  the assignment of a bundle.\n\nThis particular bundle has three addresses:  /x, /y, and /z\nWe might label it so that we can recall it later.\n\nWe do this by passing the bundle in as the data argument to assign.  The name can be concatenated, as in the previous examples, and we can use the value of /n to act as a bundle identifier.  \n\nChoose a number in the number box, then click on the bundle containing our three values.  Note that in the output, we only get our named bundle, since we delete the /bndl and /n addresses before leaving the codebox."
 				}
 
 			}
@@ -869,8 +869,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 558.0, 1845.0, 145.0, 88.0 ],
-					"text" : "/preset/0 : {\n\t/x : 10,\n\t/y : 90,\n\t/z : 16\n}"
+					"patching_rect" : [ 558.0, 1875.0, 145.0, 88.0 ],
+					"text" : "/ourname/7 : {\n\t/x : 10,\n\t/y : 90,\n\t/z : 16\n}"
 				}
 
 			}
@@ -883,7 +883,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 636.0, 1661.0, 47.0, 22.0 ]
+					"patching_rect" : [ 644.0, 1671.0, 47.0, 22.0 ]
 				}
 
 			}
@@ -897,8 +897,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 558.0, 1751.0, 234.0, 59.0 ],
-					"text" : "assign(\"/preset/\" + /n, /bndl),\ndelete(/bndl),\ndelete(/n)"
+					"patching_rect" : [ 558.0, 1781.0, 241.0, 59.0 ],
+					"text" : "assign(\"/ourname/\" + /n, /bndl),\ndelete(/bndl),\ndelete(/n)"
 				}
 
 			}
@@ -910,7 +910,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 558.0, 1702.0, 97.0, 22.0 ],
+					"patching_rect" : [ 558.0, 1717.0, 105.0, 22.0 ],
 					"text" : "o.pack /bndl /n 0"
 				}
 
@@ -925,7 +925,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 558.0, 1574.0, 78.0, 51.0 ],
+					"patching_rect" : [ 558.0, 1642.0, 78.0, 51.0 ],
 					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 12, 47, 120, 0, 0, 44, 105, 0, 0, 0, 0, 0, 10, 0, 0, 0, 12, 47, 121, 0, 0, 44, 105, 0, 0, 0, 0, 0, 90, 0, 0, 0, 12, 47, 122, 0, 0, 44, 105, 0, 0, 0, 0, 0, 16 ],
 					"saved_bundle_length" : 64,
 					"text" : "/x : 10,\n/y : 90,\n/z : 16"
@@ -937,11 +937,13 @@
 					"fontface" : 0,
 					"fontsize" : 12.0,
 					"id" : "obj-26",
+					"linecount" : 8,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 59.0, 1407.0, 447.0, 34.0 ]
+					"patching_rect" : [ 59.0, 1407.0, 447.0, 129.0 ],
+					"text" : "/letters : [\"a\", \"b\", \"c\", \"d\", \"e\"],\n/fruits : [\"cranberry\", \"pear\", \"durian\", \"peach\", \"grape\"],\n/replace : \"*\",\n/a/cranberry : \"cr*nberry\",\n/b/pear : \"pe*r\",\n/c/durian : \"duri*n\",\n/d/peach : \"pe*ch\",\n/e/grape : \"gr*pe\""
 				}
 
 			}
@@ -982,11 +984,13 @@
 					"fontface" : 0,
 					"fontsize" : 12.0,
 					"id" : "obj-35",
+					"linecount" : 7,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 558.0, 1018.0, 311.0, 34.0 ]
+					"patching_rect" : [ 558.0, 1018.0, 311.0, 116.0 ],
+					"text" : "/input : [\"t\", \"i\", \"m\", \"e\", \"s\"],\n/last : \"s\",\n/0/- : \"t\",\n/1/t : \"i\",\n/2/i : \"m\",\n/3/m : \"e\",\n/4/e : \"s\""
 				}
 
 			}
@@ -1026,11 +1030,13 @@
 					"fontface" : 0,
 					"fontsize" : 12.0,
 					"id" : "obj-27",
+					"linecount" : 6,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 97.0, 429.0, 270.0, 34.0 ]
+					"patching_rect" : [ 97.0, 429.0, 270.0, 102.0 ],
+					"text" : "/input : [\"a\", \"b\", \"c\", \"d\", \"e\"],\n/0 : \"a\",\n/1 : \"b\",\n/2 : \"c\",\n/3 : \"d\",\n/4 : \"e\""
 				}
 
 			}
