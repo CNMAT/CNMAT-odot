@@ -10,3 +10,4 @@
 10, 10_subbundles_literals.maxpat "usage of subbundles and bundle literals in expressions";
 11, 11_all_about_time.maxpat "dealing with time: history, o.schedule and o.timetag";
 12, 12_string_operations.maxpat "String Operations";
+13, 13_abstractions.maxpat "Abstractions & Objects";
