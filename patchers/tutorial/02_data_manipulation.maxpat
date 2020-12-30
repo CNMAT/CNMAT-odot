@@ -374,12 +374,12 @@
 				"box" : 				{
 					"fontsize" : 12.0,
 					"id" : "obj-23",
-					"linecount" : 9,
+					"linecount" : 10,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 483.0, 1299.5, 221.0, 127.0 ],
-					"text" : "a closer look at generating a list like /list/2 in the example above, but in [o.expr.codebox] (which we'll cover in detail later).  \n\nNote that we can delete an address with delete(), which can take a list of addresses to remove from the outgoing bundle."
+					"patching_rect" : [ 483.0, 1299.5, 221.0, 141.0 ],
+					"text" : "a closer look at generating a list like /list/2 in the example above, but in [o.expr.codebox] (which we'll cover in detail later).  \n\nNote that we can delete an address with delete(), which can take multiple addresses as its arguments to remove from the outgoing bundle.  The number of arguments are variable."
 				}
 
 			}
@@ -403,11 +403,13 @@
 					"fontface" : 0,
 					"fontsize" : 12.0,
 					"id" : "obj-26",
+					"linecount" : 5,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 135.75, 1378.0, 165.0, 34.0 ]
+					"patching_rect" : [ 135.75, 1378.0, 165.0, 88.0 ],
+					"text" : "/list/2 : [1, {\n\t/a : 57,\n\t/b : 43,\n\t/c : 98\n}, 3]"
 				}
 
 			}
