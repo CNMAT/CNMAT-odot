@@ -211,7 +211,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 297.0, 4037.0, 578.0, 100.0 ],
+					"patching_rect" : [ 295.0, 4035.0, 578.0, 100.0 ],
 					"text" : "This is a bit cleaner.  We've grouped the input to be two lists (consolidating addresses), and use list indexing to pull out the x and the y values per point, internally to the function.  The function is also defined as string, then called later, allowing us to give it a name.\n\nThere is something missing though.  What if we wanted to send in a group of points, but we didn't know how many in advance?  Right now, our function only accepts two (there's another problem as well, since we're sending our data in pairs rather than as single addreses)."
 				}
 
@@ -271,7 +271,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "int", "", "" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 691.5, 3858.0, 57.75, 17.5 ],
+					"patching_rect" : [ 691.5, 3873.0, 57.75, 17.5 ],
 					"rounded" : 0.0,
 					"tabcolor" : [ 0.349019607843137, 0.349019607843137, 0.349019607843137, 0.19 ],
 					"tabs" : [ " " ]
@@ -361,7 +361,7 @@
  ]
 					}
 ,
-					"patching_rect" : [ 691.5, 3885.0, 41.0, 24.0 ],
+					"patching_rect" : [ 691.5, 3900.0, 41.0, 24.0 ],
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
@@ -382,7 +382,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 451.0, 3748.5, 410.0, 127.0 ],
+					"patching_rect" : [ 451.0, 3763.5, 410.0, 127.0 ],
 					"text" : "The expression for calculating the distance between two points is the square root of the sum of the difference of the disparate x's and y's squared.  \n\nWe express that as [ sqrt(pow(x1 - x2, 2.) + pow(y1 - y2, 2.)) ]\n\nThis works well, but doesn't give us a quick way to refer to our function.  We've only tested that the input is yielding the correct output.  If we want to check our work, we could go to a website like this one."
 				}
 
@@ -395,7 +395,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 451.0, 3584.0, 377.0, 74.0 ],
+					"patching_rect" : [ 451.0, 3569.0, 377.0, 74.0 ],
 					"text" : "An example task might be to compute the euclidean distance between two points.  We may expect an input with two sets of points to test our function.  Let's call our points \"/p1\" and \"/p2\".  Each point has an x and a y, so we'll pass a bundle with the two points, and get to work."
 				}
 
@@ -405,11 +405,13 @@
 					"fontface" : 0,
 					"fontsize" : 12.0,
 					"id" : "obj-58",
+					"linecount" : 5,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 273.0, 3765.5, 139.0, 34.0 ]
+					"patching_rect" : [ 258.0, 3778.5, 139.0, 88.0 ],
+					"text" : "/p1/x : 0.1,\n/p1/y : 0.2,\n/p2/x : 0.2,\n/p2/y : 0.1,\n/dist : 0.141421"
 				}
 
 			}
@@ -423,7 +425,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 273.0, 3583.0, 107.0, 65.0 ],
+					"patching_rect" : [ 258.0, 3583.0, 107.0, 65.0 ],
 					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 112, 49, 47, 120, 0, 0, 0, 44, 100, 0, 0, 63, -71, -103, -103, -103, -103, -103, -102, 0, 0, 0, 20, 47, 112, 49, 47, 121, 0, 0, 0, 44, 100, 0, 0, 63, -55, -103, -103, -103, -103, -103, -102, 0, 0, 0, 20, 47, 112, 50, 47, 120, 0, 0, 0, 44, 100, 0, 0, 63, -55, -103, -103, -103, -103, -103, -102, 0, 0, 0, 20, 47, 112, 50, 47, 121, 0, 0, 0, 44, 100, 0, 0, 63, -71, -103, -103, -103, -103, -103, -102 ],
 					"saved_bundle_length" : 112,
 					"text" : "/p1/x : 0.1,\n/p1/y : 0.2,\n/p2/x : 0.2,\n/p2/y : 0.1"
@@ -439,7 +441,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 273.0, 3687.0, 450.0, 32.0 ],
+					"patching_rect" : [ 258.0, 3689.0, 450.0, 32.0 ],
 					"text" : "/dist = sqrt(pow(/p1/x - /p2/x, 2.) + pow(/p1/y - /p2/y, 2.))"
 				}
 
