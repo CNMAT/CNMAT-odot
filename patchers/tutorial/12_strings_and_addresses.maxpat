@@ -40,6 +40,63 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"fontsize" : 12.0,
+					"id" : "obj-55",
+					"linecount" : 9,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 465.0, 3243.0, 199.0, 127.0 ],
+					"text" : "Here's a situation from tutorial 8 that we might be careful about.  The address \"/p\" has a list of bundle literals bound to it.  Because these bundle literals do not have particular addresses associated with them, all but the last literal are discarded when the bundle is flattened."
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontface" : 0,
+					"fontsize" : 12.0,
+					"id" : "obj-56",
+					"linecount" : 2,
+					"maxclass" : "o.display",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 308.0, 3375.0, 107.0, 48.0 ],
+					"text" : "/p/x : -0.3,\n/p/y : 0.4"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-58",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "FullPacket" ],
+					"patching_rect" : [ 308.0, 3332.0, 58.0, 24.0 ],
+					"text" : "o.flatten"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontface" : 0,
+					"fontsize" : 12.0,
+					"id" : "obj-59",
+					"linecount" : 7,
+					"maxclass" : "o.compose",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 308.0, 3199.0, 93.0, 106.0 ],
+					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -128, 47, 112, 0, 0, 44, 46, 46, 0, 0, 0, 0, 56, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 47, 120, 0, 0, 44, 100, 0, 0, 63, -71, -103, -103, -103, -103, -103, -102, 0, 0, 0, 16, 47, 121, 0, 0, 44, 100, 0, 0, 63, -55, -103, -103, -103, -103, -103, -102, 0, 0, 0, 56, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 47, 120, 0, 0, 44, 100, 0, 0, -65, -45, 51, 51, 51, 51, 51, 51, 0, 0, 0, 16, 47, 121, 0, 0, 44, 100, 0, 0, 63, -39, -103, -103, -103, -103, -103, -102 ],
+					"saved_bundle_length" : 148,
+					"text" : "/p : [{\n\t/x : 0.1,\n\t/y : 0.2\n}, {\n\t/x : -0.3,\n\t/y : 0.4\n}]"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"bubble" : 1,
 					"bubbleside" : 3,
 					"bubbletextmargin" : 15,
@@ -50,7 +107,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 215.0, 2581.5, 205.0, 191.0 ],
+					"patching_rect" : [ 215.0, 2581.5, 207.0, 191.0 ],
 					"text" : "[o.explode] looks at all redundancies as potential hierarchies in a bundle and formats a nested bundles from it.  For every redundancy found, it attempts to group the items falling into that redundacy under a single address (category).  In this example, the groups found are \"/body\", \"/arm\", \"/neck\", \"/hand\", and \"/head\"."
 				}
 
@@ -63,11 +120,11 @@
 					"bubbleusescolors" : 1,
 					"fontsize" : 12.0,
 					"id" : "obj-23",
-					"linecount" : 17,
+					"linecount" : 16,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 215.0, 2830.0, 204.0, 258.0 ],
+					"patching_rect" : [ 215.0, 2830.0, 208.0, 245.0 ],
 					"text" : "[o.flatten] takes an odot with hierarchy in place and flattens it into an address space, complete with all redundancies.  In other words, if \"/hand\" has two members \"/finger\" and \"/thumb\", there will be two addresses generated with \"/hand/finger\" and \"/hand/thumb\".  Note that in our example, since we have a subbundle with the name \"/body\", this also gets prepended to the address space for each of the addresses."
 				}
 
@@ -77,13 +134,11 @@
 					"fontface" : 0,
 					"fontsize" : 12.0,
 					"id" : "obj-44",
-					"linecount" : 4,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 465.0, 3000.5, 250.0, 75.0 ],
-					"text" : "/body/arm/hand/finger : \"point\",\n/body/arm/hand/thumb : \"press\",\n/body/neck/head/ears : \"hear\",\n/body/neck/head/eyes : \"see\""
+					"patching_rect" : [ 465.0, 3000.5, 250.0, 34.0 ]
 				}
 
 			}
@@ -92,13 +147,11 @@
 					"fontface" : 0,
 					"fontsize" : 12.0,
 					"id" : "obj-45",
-					"linecount" : 14,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 465.0, 2704.0, 156.0, 211.0 ],
-					"text" : "/body : {\n\t/arm : {\n\t\t/hand : {\n\t\t\t/finger : \"point\",\n\t\t\t/thumb : \"press\"\n\t\t}\n\t},\n\t/neck : {\n\t\t/head : {\n\t\t\t/ears : \"hear\",\n\t\t\t/eyes : \"see\"\n\t\t}\n\t}\n}"
+					"patching_rect" : [ 465.0, 2704.0, 156.0, 34.0 ]
 				}
 
 			}
@@ -186,7 +239,7 @@
 					"numinlets" : 0,
 					"numoutlets" : 0,
 					"offset" : [ -1.0, -2.0 ],
-					"patching_rect" : [ 770.0, 5033.0, 195.0, 28.0 ],
+					"patching_rect" : [ 770.0, 5393.0, 195.0, 28.0 ],
 					"viewvisibility" : 1
 				}
 
@@ -199,7 +252,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 172.0, 4468.5, 269.5, 167.0 ],
+					"patching_rect" : [ 172.0, 4828.5, 272.0, 167.0 ],
 					"text" : "Here's the solution.\nAgain, when we break a list up into a character array, those elements are technically not strings – they are signed utf-8 bytes.  We can see that in the return of split() with both these cases.\n\nBecause of this, we need to be cognizant of which type we are using when programming when dealing with straings.\n\nWe use map to look for the characters in a split string, as there is no built-in function for this."
 				}
 
@@ -213,7 +266,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 511.0, 4604.0, 306.0, 34.0 ]
+					"patching_rect" : [ 511.0, 4964.0, 306.0, 34.0 ]
 				}
 
 			}
@@ -227,7 +280,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 511.0, 4406.5, 165.0, 51.0 ],
+					"patching_rect" : [ 511.0, 4766.5, 165.0, 51.0 ],
 					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 119, 111, 114, 100, 0, 0, 0, 44, 115, 0, 0, 98, 101, 114, 114, 105, 101, 115, 0, 0, 0, 0, 20, 47, 114, 101, 112, 108, 97, 99, 101, 0, 0, 0, 0, 44, 99, 0, 0, 0, 0, 0, 110, 0, 0, 0, 20, 47, 108, 111, 111, 107, 102, 111, 114, 0, 0, 0, 0, 44, 99, 0, 0, 0, 0, 0, 114 ],
 					"saved_bundle_length" : 88,
 					"text" : "/word : \"berries\",\n/replace : 'n',\n/lookfor : 'r'"
@@ -244,7 +297,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 511.0, 4473.0, 349.0, 114.0 ],
+					"patching_rect" : [ 511.0, 4833.0, 349.0, 114.0 ],
 					"text" : "/w = split(\"\", /word), \nmap(\n  lambda([i], \n    if(/w[[i]] == /lookfor, /w[[i]] = /replace)\n  ), aseq(0, length(/w)-1)\n), \n/word/new = join(\"\", /w)"
 				}
 
@@ -257,7 +310,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 543.0, 4070.5, 279.0, 167.0 ],
+					"patching_rect" : [ 543.0, 4430.5, 281.0, 167.0 ],
 					"text" : "Let's replace a character in a string.  We'll turn \"coat\" into \"cost\".  We could write an expression to find the 'a' but since we already know where it is, we try a simple replacement first.  \n\nThe zero-based location of 'a' is 2.  We can note this in our input bundle, as well as the replacement character.  Note the single quotes in the character vs the double quotes when defining a string.\n\nWe split the word with /w to get a list, then use list access to do the replacement."
 				}
 
@@ -270,7 +323,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 504.0, 4828.0, 282.0, 108.0 ],
+					"patching_rect" : [ 504.0, 5188.0, 285.0, 108.0 ],
 					"text" : "match() returns a bundle describing the match state of a bundle that it interrogates\n\nThe basic idea is that if you have a full match, it will be bound to the address \"/full\". so accessing that will involve the dot slash notation."
 				}
 
@@ -283,7 +336,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 504.0, 4768.0, 293.0, 50.0 ],
+					"patching_rect" : [ 504.0, 5128.0, 293.0, 50.0 ],
 					"text" : "Another function that deals with strings is match().  We'll touch on this briefly here, and will see more of it in a future tutorial."
 				}
 
@@ -649,7 +702,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 125.5, 3827.5, 355.0, 100.0 ],
+					"patching_rect" : [ 125.5, 4187.5, 355.0, 100.0 ],
 					"text" : "The opposite of split() is join().\njoin() will generate a string from a list, with a defined separator.\n\nThe separator we define for the address \"/string/new\" is two dashes: \"--\".  This is what will be used in between each list element.  Again, the int is coerced into a string before the operation is executed.  "
 				}
 
@@ -662,7 +715,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 533.5, 3560.5, 315.0, 154.0 ],
+					"patching_rect" : [ 533.5, 3920.5, 315.0, 154.0 ],
 					"text" : "Note that we can also split with an empty string \"\".  What this translates to in ODOT is that we'd like to break the character list (string) up into a list of individual character components.  Because this returns a list, we can access a particular element and extract a single character from it.\n\nThis is precisely what \"/character/1\" and \"/character/4\" return.\nThe address \"/elem\" here simply gives us a way to be more explicit in the bundle about which element we're interested in."
 				}
 
@@ -675,7 +728,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 143.5, 3269.0, 324.0, 181.0 ],
+					"patching_rect" : [ 143.5, 3629.0, 327.0, 181.0 ],
 					"text" : "split() splits a string based on a separator.\nThe first argument is the separator character you would like to match to do the splitting.  In the address \"/mystring\", the string is delineated with slash characters.\n\nIn generating the address \"/broken\", we split using this slash, and pass our address name in as the second argument.\n\nRegarding the address \"/first\":  Similarly to the example we saw above with getaddresses(), we can use list indexing notation to grab the first element that is returned from the split."
 				}
 
@@ -728,7 +781,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 46.0, 3173.0, 900.0, 21.0 ],
+					"patching_rect" : [ 46.0, 3533.0, 900.0, 21.0 ],
 					"text" : "Let's look at two codebox functions that deal with strings in ODOT:  split() and join()",
 					"textjustification" : 1
 				}
@@ -742,7 +795,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 86.5, 1806.0, 365.0, 275.0 ],
+					"patching_rect" : [ 86.5, 1806.0, 368.0, 275.0 ],
 					"text" : "We can think about this from the needs pertaining to the innermost parenthesis and work outwards:\n\n1. we need a list of names representing what is in the bundle, so we call getaddresses()\n2. we need to know the number of items in our bundle.  For this, we calculate the length of the return value of getaddresses()\n3. we need an arithmetic sequence moving from 1 to the number of elements, accomplished with aseq().\n4. we can use this arithmetic sequence, by coercing the int to a string with string concatenation.  \n5. for min(), we'd like pass in a list of values, but we don't want to do this by hand:  Instead, we can employ map()\n6. we pass the value function name to the first argument of map().  \n7. value() takes one argument, requiring a valid address name.  We pass in our concatenated string for each element we've built up in the map()\n8. the return of map is a list of all values in our bundle, in sequence, based on the return of getaddresses()\n9. we take the minimum of this list and assign it to \"/min\"."
 				}
 
@@ -811,7 +864,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 180.0, 4754.5, 136.0, 38.0 ],
+					"patching_rect" : [ 180.0, 5114.5, 136.0, 38.0 ],
 					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 47, 101, 108, 101, 109, 0, 0, 0, 44, 105, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 108, 105, 115, 116, 0, 0, 0, 44, 115, 0, 0, 47, 102, 111, 111, 47, 98, 0, 0 ],
 					"saved_bundle_length" : 60,
 					"text" : "/elem : 0,\n/list : \"/foo/b\""
@@ -828,7 +881,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 180.0, 4830.0, 291.0, 46.0 ],
+					"patching_rect" : [ 180.0, 5190.0, 291.0, 46.0 ],
 					"text" : "/matched = match(\"/foo/*a\", \"/foo/a\"), \n/full = /matched./full"
 				}
 
@@ -842,7 +895,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 180.0, 4899.0, 162.0, 34.0 ]
+					"patching_rect" : [ 180.0, 5259.0, 162.0, 34.0 ]
 				}
 
 			}
@@ -1179,7 +1232,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 533.5, 3905.5, 279.0, 34.0 ]
+					"patching_rect" : [ 533.5, 4265.5, 279.0, 34.0 ]
 				}
 
 			}
@@ -1192,7 +1245,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 533.5, 3861.5, 250.0, 32.0 ],
+					"patching_rect" : [ 533.5, 4221.5, 250.0, 32.0 ],
 					"text" : "/string/new = join(\"--\", /string)"
 				}
 
@@ -1206,7 +1259,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 533.5, 3821.5, 275.0, 24.0 ],
+					"patching_rect" : [ 533.5, 4181.5, 275.0, 24.0 ],
 					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 32, 47, 115, 116, 114, 105, 110, 103, 0, 44, 115, 115, 105, 115, 0, 0, 0, 97, 98, 99, 0, 100, 101, 102, 0, 0, 0, 0, 11, 103, 104, 105, 0 ],
 					"saved_bundle_length" : 52,
 					"text" : "/string : [\"abc\", \"def\", 11, \"ghi\"]"
@@ -1223,7 +1276,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 134.0, 3548.5, 136.0, 38.0 ],
+					"patching_rect" : [ 134.0, 3908.5, 136.0, 38.0 ],
 					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 47, 101, 108, 101, 109, 0, 0, 0, 44, 105, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 108, 105, 115, 116, 0, 0, 0, 44, 115, 0, 0, 102, 111, 111, 98, 97, 114, 0, 0 ],
 					"saved_bundle_length" : 60,
 					"text" : "/elem : 0,\n/list : \"foobar\""
@@ -1240,7 +1293,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 134.0, 3595.0, 306.0, 46.0 ],
+					"patching_rect" : [ 134.0, 3955.0, 306.0, 46.0 ],
 					"text" : "/character/1 = split(\"\", /list)[[/elem]],\n/character/4 = split(\"\", /list)[[3]]"
 				}
 
@@ -1254,7 +1307,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 134.0, 3655.0, 157.0, 34.0 ]
+					"patching_rect" : [ 134.0, 4015.0, 157.0, 34.0 ]
 				}
 
 			}
@@ -1263,13 +1316,11 @@
 					"fontface" : 0,
 					"fontsize" : 12.0,
 					"id" : "obj-6",
-					"linecount" : 3,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 560.5, 3388.5, 284.0, 61.0 ],
-					"text" : "/mystring : \"/point/of/interest\",\n/broken : [\"point\", \"of\", \"interest\"],\n/first : \"point\""
+					"patching_rect" : [ 560.5, 3748.5, 284.0, 34.0 ]
 				}
 
 			}
@@ -1282,7 +1333,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 560.5, 3268.5, 251.0, 24.0 ],
+					"patching_rect" : [ 560.5, 3628.5, 251.0, 24.0 ],
 					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 36, 47, 109, 121, 115, 116, 114, 105, 110, 103, 0, 0, 0, 44, 115, 0, 0, 47, 112, 111, 105, 110, 116, 47, 111, 102, 47, 105, 110, 116, 101, 114, 101, 115, 116, 0, 0 ],
 					"saved_bundle_length" : 56,
 					"text" : "/mystring : \"/point/of/interest\""
@@ -1299,7 +1350,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 560.5, 3313.5, 263.0, 46.0 ],
+					"patching_rect" : [ 560.5, 3673.5, 263.0, 46.0 ],
 					"text" : "/broken = split(\"/\", /mystring),\n/first = split(\"/\", /mystring)[[0]]"
 				}
 
@@ -1310,7 +1361,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 469.0, 5049.0, 150.0, 22.0 ]
+					"patching_rect" : [ 469.0, 5409.0, 150.0, 22.0 ]
 				}
 
 			}
@@ -1367,7 +1418,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 277.0, 4028.5, 129.0, 51.0 ],
+					"patching_rect" : [ 277.0, 4388.5, 129.0, 51.0 ],
 					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 119, 111, 114, 100, 0, 0, 0, 44, 115, 0, 0, 99, 111, 97, 116, 0, 0, 0, 0, 0, 0, 0, 20, 47, 114, 101, 112, 108, 97, 99, 101, 0, 0, 0, 0, 44, 99, 0, 0, 0, 0, 0, 115, 0, 0, 0, 16, 47, 108, 111, 99, 0, 0, 0, 0, 44, 105, 0, 0, 0, 0, 0, 2 ],
 					"saved_bundle_length" : 84,
 					"text" : "/word : \"coat\",\n/replace : 's',\n/loc : 2"
@@ -1384,7 +1435,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 277.0, 4118.0, 183.0, 59.0 ],
+					"patching_rect" : [ 277.0, 4478.0, 183.0, 59.0 ],
 					"text" : "/w = split(\"\", /word), \n/w[[/loc]] = /replace,\n/word/new = join(\"\", /w)"
 				}
 
@@ -1394,13 +1445,11 @@
 					"fontface" : 0,
 					"fontsize" : 12.0,
 					"id" : "obj-28",
-					"linecount" : 5,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 277.0, 4218.0, 198.0, 88.0 ],
-					"text" : "/word : \"coat\",\n/replace : 's',\n/loc : 2,\n/w : ['c', 'o', 's', 't'],\n/word/new : \"cost\""
+					"patching_rect" : [ 277.0, 4578.0, 198.0, 34.0 ]
 				}
 
 			}
@@ -1570,6 +1619,20 @@
 				"patchline" : 				{
 					"destination" : [ "obj-57", 0 ],
 					"source" : [ "obj-54", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-56", 0 ],
+					"source" : [ "obj-58", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-58", 0 ],
+					"source" : [ "obj-59", 0 ]
 				}
 
 			}
