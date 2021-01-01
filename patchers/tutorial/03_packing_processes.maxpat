@@ -84,7 +84,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 226.5, 1029.5, 165.0, 60.0 ],
+					"patching_rect" : [ 226.5, 1014.5, 165.0, 60.0 ],
 					"style" : "default",
 					"text" : "When you find combinations of parameters you like, simply copy this bundle for future use."
 				}
@@ -101,7 +101,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 480.0, 1251.5, 225.0, 98.0 ],
+					"patching_rect" : [ 480.0, 1281.5, 225.0, 98.0 ],
 					"style" : "default",
 					"text" : "Here, this bundle contains all of the necessary information for both synths in one place, to be separated out by the cascading o.route objects below."
 				}
@@ -115,7 +115,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 67.0, 1141.5, 764.0, 36.0 ],
+					"patching_rect" : [ 67.0, 1149.5, 764.0, 36.0 ],
 					"style" : "default",
 					"text" : "When we have multiple synths, or multiple voices of the same synth, we can leverage the heirarchical nature of odot addresses to specify which synth / voice the different parts of a message should go to.",
 					"textjustification" : 1
@@ -132,7 +132,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 412.0, 1013.5, 215.0, 92.0 ],
+					"patching_rect" : [ 412.0, 998.5, 215.0, 92.0 ],
 					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 24, 47, 102, 114, 101, 113, 117, 101, 110, 99, 121, 0, 0, 44, 100, 0, 0, 64, 127, -96, 0, 0, 0, 0, 0, 0, 0, 0, 24, 47, 119, 97, 118, 101, 102, 111, 114, 109, 0, 0, 0, 44, 115, 0, 0, 115, 105, 110, 101, 0, 0, 0, 0, 0, 0, 0, 32, 47, 108, 111, 119, 112, 97, 115, 115, 47, 102, 114, 101, 113, 117, 101, 110, 99, 121, 0, 0, 44, 100, 0, 0, 64, 87, 0, 0, 0, 0, 0, 0, 0, 0, 0, 24, 47, 108, 111, 119, 112, 97, 115, 115, 47, 113, 0, 0, 44, 100, 0, 0, 64, 59, 0, 0, 0, 0, 0, 0, 0, 0, 0, 28, 47, 101, 110, 118, 47, 97, 109, 112, 108, 105, 116, 117, 100, 101, 0, 0, 44, 100, 0, 0, 64, 38, 51, 51, 64, 0, 0, 0, 0, 0, 0, 32, 47, 101, 110, 118, 47, 100, 117, 114, 97, 116, 105, 111, 110, 47, 115, 101, 99, 0, 0, 0, 44, 100, 0, 0, 63, -61, 51, 51, 64, 0, 0, 0 ],
 					"saved_bundle_length" : 204,
 					"text" : "/frequency : 506.,\n/waveform : \"sine\",\n/lowpass/frequency : 92.,\n/lowpass/q : 27.,\n/env/amplitude : 11.1,\n/env/duration/sec : 0.15"
@@ -147,7 +147,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 134.0, 875.5, 24.0, 24.0 ]
+					"patching_rect" : [ 134.0, 860.5, 24.0, 24.0 ]
 				}
 
 			}
@@ -159,7 +159,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 205.0, 865.0, 555.0, 20.0 ],
+					"patching_rect" : [ 205.0, 850.0, 555.0, 20.0 ],
 					"style" : "default",
 					"text" : "We can also experiment with the value of the different parameters by building the bundle using o.pack."
 				}
@@ -175,7 +175,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 787.0, 903.5, 49.0, 22.0 ]
+					"patching_rect" : [ 787.0, 888.5, 49.0, 22.0 ]
 				}
 
 			}
@@ -189,7 +189,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 656.399999999999977, 903.5, 49.0, 22.0 ]
+					"patching_rect" : [ 656.399999999999977, 888.5, 49.0, 22.0 ]
 				}
 
 			}
@@ -203,7 +203,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 525.799999999999955, 903.5, 49.0, 22.0 ]
+					"patching_rect" : [ 525.799999999999955, 888.5, 49.0, 22.0 ]
 				}
 
 			}
@@ -217,7 +217,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 395.199999999999989, 903.5, 49.0, 22.0 ]
+					"patching_rect" : [ 395.199999999999989, 888.5, 49.0, 22.0 ]
 				}
 
 			}
@@ -229,7 +229,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 300.200000000000045, 903.5, 48.0, 22.0 ],
+					"patching_rect" : [ 300.200000000000045, 888.5, 48.0, 22.0 ],
 					"text" : "triangle"
 				}
 
@@ -242,7 +242,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 264.600000000000023, 903.5, 31.0, 22.0 ],
+					"patching_rect" : [ 264.600000000000023, 888.5, 31.0, 22.0 ],
 					"text" : "sine"
 				}
 
@@ -257,7 +257,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 134.0, 907.5, 49.0, 22.0 ]
+					"patching_rect" : [ 134.0, 892.5, 49.0, 22.0 ]
 				}
 
 			}
@@ -269,7 +269,7 @@
 					"numinlets" : 6,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 134.0, 951.5, 672.0, 22.0 ],
+					"patching_rect" : [ 134.0, 936.5, 672.0, 22.0 ],
 					"text" : "o.pack /frequency 440. /waveform triangle /lowpass/frequency 1700. /lowpass/q 2.2 /env/amplitude 0.9 /env/duration/sec 0.3"
 				}
 
@@ -441,7 +441,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 189.0, 1680.5, 71.0, 20.0 ],
+					"patching_rect" : [ 189.0, 1710.5, 71.0, 20.0 ],
 					"style" : "default",
 					"text" : "audio on/off"
 				}
@@ -453,7 +453,7 @@
 					"maxclass" : "ezdac~",
 					"numinlets" : 2,
 					"numoutlets" : 0,
-					"patching_rect" : [ 189.0, 1632.0, 41.0, 41.0 ]
+					"patching_rect" : [ 189.0, 1662.0, 41.0, 41.0 ]
 				}
 
 			}
@@ -464,7 +464,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 420.0, 1600.5, 305.0, 85.0 ]
+					"patching_rect" : [ 420.0, 1630.5, 305.0, 85.0 ]
 				}
 
 			}
@@ -476,7 +476,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "FullPacket" ],
-					"patching_rect" : [ 189.0, 1503.0, 389.0, 22.0 ],
+					"patching_rect" : [ 189.0, 1533.0, 389.0, 22.0 ],
 					"text" : "o.route /1 /2"
 				}
 
@@ -489,7 +489,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "FullPacket" ],
-					"patching_rect" : [ 189.0, 1470.0, 81.0, 22.0 ],
+					"patching_rect" : [ 189.0, 1500.0, 81.0, 22.0 ],
 					"text" : "o.route /voice"
 				}
 
@@ -504,7 +504,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 189.0, 1213.5, 273.0, 174.0 ],
+					"patching_rect" : [ 189.0, 1243.5, 273.0, 174.0 ],
 					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 32, 47, 118, 111, 105, 99, 101, 47, 49, 47, 102, 114, 101, 113, 117, 101, 110, 99, 121, 0, 0, 44, 100, 0, 0, 64, 123, -128, 0, 0, 0, 0, 0, 0, 0, 0, 32, 47, 118, 111, 105, 99, 101, 47, 49, 47, 119, 97, 118, 101, 102, 111, 114, 109, 0, 0, 0, 44, 115, 0, 0, 115, 105, 110, 101, 0, 0, 0, 0, 0, 0, 0, 40, 47, 118, 111, 105, 99, 101, 47, 49, 47, 108, 111, 119, 112, 97, 115, 115, 47, 102, 114, 101, 113, 117, 101, 110, 99, 121, 0, 0, 44, 100, 0, 0, 64, -94, -64, 0, 0, 0, 0, 0, 0, 0, 0, 32, 47, 118, 111, 105, 99, 101, 47, 49, 47, 108, 111, 119, 112, 97, 115, 115, 47, 113, 0, 0, 44, 100, 0, 0, 64, 28, -52, -52, -52, -52, -52, -51, 0, 0, 0, 36, 47, 118, 111, 105, 99, 101, 47, 49, 47, 101, 110, 118, 47, 97, 109, 112, 108, 105, 116, 117, 100, 101, 0, 0, 44, 100, 0, 0, 63, -39, -103, -103, -103, -103, -103, -102, 0, 0, 0, 40, 47, 118, 111, 105, 99, 101, 47, 49, 47, 101, 110, 118, 47, 100, 117, 114, 97, 116, 105, 111, 110, 47, 115, 101, 99, 0, 0, 0, 44, 100, 0, 0, 63, -13, 51, 51, 51, 51, 51, 51, 0, 0, 0, 32, 47, 118, 111, 105, 99, 101, 47, 50, 47, 102, 114, 101, 113, 117, 101, 110, 99, 121, 0, 0, 44, 100, 0, 0, 64, 118, 32, 0, 0, 0, 0, 0, 0, 0, 0, 36, 47, 118, 111, 105, 99, 101, 47, 50, 47, 119, 97, 118, 101, 102, 111, 114, 109, 0, 0, 0, 44, 115, 0, 0, 116, 114, 105, 97, 110, 103, 108, 101, 0, 0, 0, 0, 0, 0, 0, 40, 47, 118, 111, 105, 99, 101, 47, 50, 47, 108, 111, 119, 112, 97, 115, 115, 47, 102, 114, 101, 113, 117, 101, 110, 99, 121, 0, 0, 44, 100, 0, 0, 64, -102, -112, 0, 0, 0, 0, 0, 0, 0, 0, 32, 47, 118, 111, 105, 99, 101, 47, 50, 47, 108, 111, 119, 112, 97, 115, 115, 47, 113, 0, 0, 44, 100, 0, 0, 64, 1, -103, -103, -103, -103, -103, -102, 0, 0, 0, 36, 47, 118, 111, 105, 99, 101, 47, 50, 47, 101, 110, 118, 47, 97, 109, 112, 108, 105, 116, 117, 100, 101, 0, 0, 44, 100, 0, 0, 63, -20, -52, -52, -52, -52, -52, -51, 0, 0, 0, 40, 47, 118, 111, 105, 99, 101, 47, 50, 47, 101, 110, 118, 47, 100, 117, 114, 97, 116, 105, 111, 110, 47, 115, 101, 99, 0, 0, 0, 44, 100, 0, 0, 63, -45, 51, 51, 51, 51, 51, 51 ],
 					"saved_bundle_length" : 492,
 					"text" : "/voice/1/frequency : 440.,\n/voice/1/waveform : \"sine\",\n/voice/1/lowpass/frequency : 2400.,\n/voice/1/lowpass/q : 7.2,\n/voice/1/env/amplitude : 0.4,\n/voice/1/env/duration/sec : 1.2,\n/voice/2/frequency : 354.,\n/voice/2/waveform : \"triangle\",\n/voice/2/lowpass/frequency : 1700.,\n/voice/2/lowpass/q : 2.2,\n/voice/2/env/amplitude : 0.9,\n/voice/2/env/duration/sec : 0.3"
@@ -519,7 +519,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "signal" ],
-					"patching_rect" : [ 374.0, 1538.0, 117.0, 22.0 ],
+					"patching_rect" : [ 374.0, 1568.0, 117.0, 22.0 ],
 					"text" : "o.synthesizer.basic~"
 				}
 
@@ -532,7 +532,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "signal" ],
-					"patching_rect" : [ 189.0, 1538.0, 117.0, 22.0 ],
+					"patching_rect" : [ 189.0, 1568.0, 117.0, 22.0 ],
 					"text" : "o.synthesizer.basic~"
 				}
 
@@ -600,7 +600,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-33", 1 ],
-					"midpoints" : [ 143.5, 1006.0, 617.5, 1006.0 ],
+					"midpoints" : [ 143.5, 991.0, 617.5, 991.0 ],
 					"order" : 0,
 					"source" : [ "obj-19", 0 ]
 				}
