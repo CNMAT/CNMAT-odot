@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 8,
+			"revision" : 1,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -37,7 +37,6 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "Untitled5_template",
-		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
 					"id" : "obj-4",
@@ -45,7 +44,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "FullPacket" ],
-					"patching_rect" : [ 23.0, 171.0, 96.0, 24.0 ],
+					"patching_rect" : [ 23.0, 171.0, 96.0, 22.0 ],
 					"text" : "o.route /metro"
 				}
 
@@ -85,7 +84,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 23.0, 354.0, 29.5, 24.0 ],
+					"patching_rect" : [ 23.0, 354.0, 29.5, 22.0 ],
 					"text" : "t l l"
 				}
 
@@ -112,7 +111,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 382.0, 135.0, 100.0, 24.0 ],
+					"patching_rect" : [ 382.0, 135.0, 100.0, 22.0 ],
 					"text" : "loadmess #1"
 				}
 
@@ -124,7 +123,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 382.0, 171.0, 93.0, 24.0 ],
+					"patching_rect" : [ 382.0, 171.0, 93.0, 22.0 ],
 					"text" : "o.pack /name"
 				}
 
@@ -148,7 +147,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 23.0, 232.0, 158.0, 24.0 ],
+					"patching_rect" : [ 23.0, 232.0, 158.0, 22.0 ],
 					"text" : "o.union"
 				}
 
@@ -160,8 +159,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 23.0, 203.0, 130.0, 24.0 ],
-					"text" : "metro 75 @active 1"
+					"patching_rect" : [ 23.0, 203.0, 130.0, 22.0 ],
+					"text" : "metro 25 @active 1"
 				}
 
 			}

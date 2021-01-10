@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 3,
+			"revision" : 1,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -44,7 +44,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 28.0, 27.0, 66.0, 24.0 ],
+					"patching_rect" : [ 28.0, 27.0, 66.0, 22.0 ],
 					"text" : "loadbang"
 				}
 
@@ -57,7 +57,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 196.0, 23.0, 42.0, 20.0 ],
+					"patching_rect" : [ 196.0, 23.0, 42.0, 18.0 ],
 					"text" : "logb()"
 				}
 
@@ -66,12 +66,12 @@
 				"box" : 				{
 					"fontsize" : 12.0,
 					"id" : "obj-3",
-					"linecount" : 8,
+					"linecount" : 9,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 196.0, 58.0, 211.0, 114.0 ],
-					"text" : "Compute floating-point base logarithm.   Returns the logarithm of |x|, using FLT_RADIX as base for the logarithm.\n\narguments:\n\n1. x"
+					"text" : "computes the integral part of the exponent of the absolute value of x. the base of the logarathm is the radix of the machine's floating-point arithmetic (usually 2).\n\narguments:\n\n1. x"
 				}
 
 			}
@@ -80,13 +80,13 @@
 					"fontface" : 0,
 					"fontsize" : 12.0,
 					"id" : "obj-8",
-					"linecount" : 3,
+					"linecount" : 2,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 28.0, 158.0, 116.0, 61.0 ],
-					"text" : "/t/1 : 3.,\n/t/2 : 3.,\n/t/3 : -inf"
+					"patching_rect" : [ 28.0, 158.0, 116.0, 48.0 ],
+					"text" : "/t/1 : 3.,\n/t/2 : 3."
 				}
 
 			}
@@ -95,13 +95,13 @@
 					"fontface" : 0,
 					"fontsize" : 12.0,
 					"id" : "obj-24",
-					"linecount" : 3,
+					"linecount" : 2,
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 28.0, 58.0, 140.0, 59.0 ],
-					"text" : "/t/1 = logb(10.),\n/t/2 = logb(-10.), \n/t/3 = logb(0.)"
+					"patching_rect" : [ 28.0, 58.0, 140.0, 46.0 ],
+					"text" : "/t/1 = logb(10.),\n/t/2 = logb(-10.)"
 				}
 
 			}
