@@ -2,14 +2,15 @@
 	"patcher" : 	{
 		"fileversion" : 1,
 		"appversion" : 		{
-			"major" : 7,
-			"minor" : 3,
-			"revision" : 4,
+			"major" : 8,
+			"minor" : 1,
+			"revision" : 1,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
-		"rect" : [ 432.0, 120.0, 664.0, 635.0 ],
+		"classnamespace" : "box",
+		"rect" : [ 432.0, 120.0, 664.0, 691.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -47,14 +48,15 @@
 					"patcher" : 					{
 						"fileversion" : 1,
 						"appversion" : 						{
-							"major" : 7,
-							"minor" : 3,
-							"revision" : 4,
+							"major" : 8,
+							"minor" : 1,
+							"revision" : 1,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
 ,
-						"rect" : [ 0.0, 26.0, 664.0, 609.0 ],
+						"classnamespace" : "box",
+						"rect" : [ 0.0, 26.0, 664.0, 665.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -91,7 +93,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "jit_matrix" ],
-									"patching_rect" : [ 503.5, 127.430664, 109.0, 48.0 ]
+									"patching_rect" : [ 503.5, 127.430663999999993, 109.0, 48.0 ]
 								}
 
 							}
@@ -103,8 +105,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 518.0, 597.930664, 150.0, 20.0 ],
-									"style" : "",
+									"patching_rect" : [ 518.0, 597.930663999999979, 150.0, 18.0 ],
 									"text" : "see also:"
 								}
 
@@ -119,8 +120,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 4,
 									"outlettype" : [ "", "", "", "clear" ],
-									"patching_rect" : [ 503.5, 340.930664, 170.0, 22.0 ],
-									"style" : "",
+									"patching_rect" : [ 503.5, 340.930663999999979, 170.0, 20.0 ],
 									"text" : "o.helpfilehelper @obj o.edge~"
 								}
 
@@ -130,13 +130,11 @@
 									"fontname" : "Arial",
 									"fontsize" : 12.0,
 									"id" : "obj-9",
-									"linecount" : 2,
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 50.0, 244.930664, 602.0, 33.0 ],
-									"style" : "",
-									"text" : "o.edge~ is similar to edge~. It reports all zero to non-zero and non-zero to zero transitions that occur in a signal vector."
+									"patching_rect" : [ 50.0, 244.930664000000007, 602.0, 18.0 ],
+									"text" : "o.edge~ outputs a bundle containing every transition from zero to nonzero and nonzero to zero."
 								}
 
 							}
@@ -148,9 +146,8 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 50.0, 196.930664, 600.0, 20.0 ],
-									"style" : "",
-									"text" : "Report transitions between 0 and non-zero"
+									"patching_rect" : [ 50.0, 196.930664000000007, 600.0, 18.0 ],
+									"text" : "Mark transitions in a signal from zero to nonzero, and nonzero to zero."
 								}
 
 							}
@@ -162,8 +159,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 50.0, 107.930664, 600.0, 87.0 ],
-									"style" : "",
+									"patching_rect" : [ 50.0, 107.930663999999993, 600.0, 78.0 ],
 									"text" : "o.edge~"
 								}
 
@@ -178,8 +174,7 @@
 									"numoutlets" : 3,
 									"outlettype" : [ "int", "", "" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 518.0, 619.930664, 132.0, 22.0 ],
-									"style" : ""
+									"patching_rect" : [ 518.0, 619.930663999999979, 132.0, 20.0 ]
 								}
 
 							}
@@ -193,8 +188,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 518.0, 678.930664, 53.0, 22.0 ],
-									"style" : "",
+									"patching_rect" : [ 518.0, 678.930663999999979, 53.0, 20.0 ],
 									"text" : "pcontrol"
 								}
 
@@ -209,8 +203,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 518.0, 654.930664, 138.0, 22.0 ],
-									"style" : "",
+									"patching_rect" : [ 518.0, 654.930663999999979, 138.0, 20.0 ],
 									"text" : "sprintf load %s.maxhelp"
 								}
 
@@ -225,7 +218,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 234.0, 482.930664, 315.0, 34.0 ]
+									"patching_rect" : [ 234.0, 482.930663999999979, 315.0, 32.0 ]
 								}
 
 							}
@@ -237,8 +230,7 @@
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 210.0, 654.930664, 73.0, 22.0 ],
-									"style" : "",
+									"patching_rect" : [ 210.0, 654.930663999999979, 73.0, 20.0 ],
 									"text" : "print middle"
 								}
 
@@ -251,8 +243,7 @@
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 154.0, 654.930664, 53.0, 22.0 ],
-									"style" : "",
+									"patching_rect" : [ 154.0, 654.930663999999979, 53.0, 20.0 ],
 									"text" : "print left"
 								}
 
@@ -266,8 +257,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 4,
 									"outlettype" : [ "FullPacket", "FullPacket", "FullPacket", "FullPacket" ],
-									"patching_rect" : [ 154.0, 598.930664, 178.0, 22.0 ],
-									"style" : "",
+									"patching_rect" : [ 154.0, 598.930663999999979, 178.0, 20.0 ],
 									"text" : "o.schedule /zerotononzero/time"
 								}
 
@@ -282,8 +272,7 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 290.0, 291.930664, 50.0, 22.0 ],
-									"style" : ""
+									"patching_rect" : [ 290.0, 291.930663999999979, 50.0, 20.0 ]
 								}
 
 							}
@@ -296,8 +285,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "signal" ],
-									"patching_rect" : [ 290.0, 395.930664, 32.5, 22.0 ],
-									"style" : "",
+									"patching_rect" : [ 290.0, 395.930663999999979, 32.5, 20.0 ],
 									"text" : "<~"
 								}
 
@@ -311,8 +299,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "signal" ],
-									"patching_rect" : [ 306.0, 363.930664, 66.0, 22.0 ],
-									"style" : "",
+									"patching_rect" : [ 306.0, 363.930663999999979, 66.0, 20.0 ],
 									"text" : "delay~ 1 1"
 								}
 
@@ -326,8 +313,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "signal" ],
-									"patching_rect" : [ 290.0, 331.930664, 68.0, 22.0 ],
-									"style" : "",
+									"patching_rect" : [ 290.0, 331.930663999999979, 68.0, 20.0 ],
 									"text" : "phasor~ 1."
 								}
 
@@ -339,8 +325,8 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "bang" ],
-									"patching_rect" : [ 154.0, 331.930664, 20.0, 20.0 ],
-									"style" : ""
+									"parameter_enable" : 0,
+									"patching_rect" : [ 154.0, 331.930663999999979, 20.0, 20.0 ]
 								}
 
 							}
@@ -350,8 +336,7 @@
 									"maxclass" : "ezdac~",
 									"numinlets" : 2,
 									"numoutlets" : 0,
-									"patching_rect" : [ 90.0, 594.930664, 45.0, 45.0 ],
-									"style" : ""
+									"patching_rect" : [ 90.0, 594.930663999999979, 45.0, 45.0 ]
 								}
 
 							}
@@ -362,8 +347,8 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "bang" ],
-									"patching_rect" : [ 122.0, 459.930664, 20.0, 20.0 ],
-									"style" : ""
+									"parameter_enable" : 0,
+									"patching_rect" : [ 122.0, 459.930663999999979, 20.0, 20.0 ]
 								}
 
 							}
@@ -376,8 +361,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "signal" ],
-									"patching_rect" : [ 154.0, 371.930664, 41.0, 22.0 ],
-									"style" : "",
+									"patching_rect" : [ 154.0, 371.930663999999979, 41.0, 20.0 ],
 									"text" : "click~"
 								}
 
@@ -391,8 +375,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "FullPacket" ],
-									"patching_rect" : [ 154.0, 427.930664, 54.0, 22.0 ],
-									"style" : "",
+									"patching_rect" : [ 154.0, 427.930663999999979, 54.0, 20.0 ],
 									"text" : "o.edge~"
 								}
 
@@ -538,16 +521,14 @@
  ]
 					}
 ,
-					"patching_rect" : [ 40.0, 49.069336, 49.0, 22.0 ],
+					"patching_rect" : [ 40.0, 49.069336, 49.0, 20.0 ],
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
 						"globalpatchername" : "",
-						"style" : "",
 						"tags" : ""
 					}
 ,
-					"style" : "",
 					"text" : "p ?"
 				}
 
@@ -561,14 +542,15 @@
 					"patcher" : 					{
 						"fileversion" : 1,
 						"appversion" : 						{
-							"major" : 7,
-							"minor" : 3,
-							"revision" : 4,
+							"major" : 8,
+							"minor" : 1,
+							"revision" : 1,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
 ,
-						"rect" : [ 432.0, 146.0, 664.0, 609.0 ],
+						"classnamespace" : "box",
+						"rect" : [ 432.0, 146.0, 664.0, 665.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -597,6 +579,21 @@
 						"subpatcher_template" : "",
 						"showontab" : 1,
 						"boxes" : [ 							{
+								"box" : 								{
+									"fontname" : "Arial",
+									"fontsize" : 12.0,
+									"id" : "obj-18",
+									"linecount" : 3,
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 28.0, 601.930663999999979, 432.0, 42.0 ],
+									"presentation_linecount" : 3,
+									"text" : "Note: there is also a Max external (written in C) that has been deprecated in favor of the patch that this helpfile loads. Please consider the abstraction o.edge~ found in the /dev folder to be the more stable and supported of the two."
+								}
+
+							}
+, 							{
 								"box" : 								{
 									"data" : [ 593, "", "IBkSG0fBZn....PCIgDQRA...zF....LHX....vFnS+e....DLmPIQEBHf.B7g.YHB..BfPRDEDU3wY6bEsiCCBCKLc+++xbOwItcqkVHN1oGVZZRSCWZbLgNfUp0Z01HU3K1cfMLqTJC+N8dqOJZ2kjQs0Cy7Sk2qDqaeuV6esBIWssWky6bs9Oy6qO8gH.RtmAn5O2k2Yb0SWSalKVuE2KffyYwrIBm0++DmmJZpDLx.NpFFBG8epo4IVovKR7deHaImPEMTPsfLpYfdDfKZQ31Tv8FIBwoolyvSDsKyLhCOxxcftdVDIngIZnCNLRBXk3QchHOsZQQUFHTQSsZaqzeXlvQeJ+Qdyi7ZEYBY3hlm2brpqwdXc5NMy3GDVEQOrOEQSgZay1GTHASBmlY3CFn3mQBHMQyqa1HqqofKyLxNMEd.4U.qg4kY3wHwrKfqJftn4gaajHfHfybxTzEMD3ouzORHZYq1F6GYQBQKRb2.thaMAYDsUcaG0d0csy.YDMEghtLyDSzxVsMVPJQyLeEtUbJp5xLavlUMaY5n1bndBO5e+xogbsthpsHfJ2KGdpY73hfjiQbGc6tB7lix9jflOH2DQ1XL1hVBwVzRH1hVBwVzRH1hVBws+KoX0mPXzuH.5spcV4um2ScZ0Z8mWdidNQehZP0+QFaNi6gCOVJkTtmAabiLgqEWP7O1P+6uC5G0ITBWi6mxgtnGCEMTCAzPV2bosQfXrpBzVZldtQu6oxF+i3b+CFmP7MQ+TMlEbQ3RG.....IUjSD4pPfIH" ],
 									"embed" : 1,
@@ -617,8 +614,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 480.0, 498.930664, 150.0, 20.0 ],
-									"style" : "",
+									"patching_rect" : [ 480.0, 498.930663999999979, 150.0, 18.0 ],
 									"text" : "see also:"
 								}
 
@@ -633,8 +629,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 4,
 									"outlettype" : [ "", "", "", "clear" ],
-									"patching_rect" : [ 465.5, 241.930664, 170.0, 22.0 ],
-									"style" : "",
+									"patching_rect" : [ 465.5, 241.930664000000007, 168.0, 20.0 ],
 									"text" : "o.helpfilehelper @obj o.edge~"
 								}
 
@@ -644,13 +639,11 @@
 									"fontname" : "Arial",
 									"fontsize" : 12.0,
 									"id" : "obj-9",
-									"linecount" : 2,
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 12.0, 145.930664, 602.0, 33.0 ],
-									"style" : "",
-									"text" : "o.edge~ is similar to edge~. It reports all zero to non-zero and non-zero to zero transitions that occur in a signal vector."
+									"patching_rect" : [ 12.0, 145.930664000000007, 602.0, 18.0 ],
+									"text" : "o.edge~ outputs a bundle containing every transition from zero to nonzero and nonzero to zero."
 								}
 
 							}
@@ -662,9 +655,8 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 12.0, 97.930664, 600.0, 20.0 ],
-									"style" : "",
-									"text" : "Report transitions between 0 and non-zero"
+									"patching_rect" : [ 12.0, 97.930663999999993, 600.0, 18.0 ],
+									"text" : "Mark transitions in a signal from zero to nonzero, and nonzero to zero."
 								}
 
 							}
@@ -676,8 +668,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 12.0, 8.930664, 600.0, 87.0 ],
-									"style" : "",
+									"patching_rect" : [ 12.0, 8.930664, 600.0, 78.0 ],
 									"text" : "o.edge~"
 								}
 
@@ -692,8 +683,7 @@
 									"numoutlets" : 3,
 									"outlettype" : [ "int", "", "" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 480.0, 520.930664, 132.0, 22.0 ],
-									"style" : ""
+									"patching_rect" : [ 480.0, 520.930663999999979, 132.0, 20.0 ]
 								}
 
 							}
@@ -707,8 +697,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 480.0, 579.930664, 53.0, 22.0 ],
-									"style" : "",
+									"patching_rect" : [ 480.0, 579.930663999999979, 53.0, 20.0 ],
 									"text" : "pcontrol"
 								}
 
@@ -723,8 +712,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 480.0, 555.930664, 138.0, 22.0 ],
-									"style" : "",
+									"patching_rect" : [ 480.0, 555.930663999999979, 138.0, 20.0 ],
 									"text" : "sprintf load %s.maxhelp"
 								}
 
@@ -734,13 +722,11 @@
 									"fontface" : 0,
 									"fontsize" : 12.0,
 									"id" : "obj-3",
-									"linecount" : 7,
 									"maxclass" : "o.display",
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 163.0, 371.930664, 380.0, 116.0 ],
-									"text" : "/zerotononzero/time : 2018-01-04T14:57:39.201301Z,\n/zerotononzero/sample/withinblock : 29,\n/zerotononzero/sample/sincedspstart : 397277.,\n/zerotononzero/value : 1.,\n/nonzerotozero/time : 2018-01-04T14:57:39.201322Z,\n/nonzerotozero/sample/withinblock : 30,\n/nonzerotozero/sample/sincedspstart : 397278."
+									"patching_rect" : [ 163.0, 371.930663999999979, 380.0, 34.0 ]
 								}
 
 							}
@@ -752,8 +738,7 @@
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 172.0, 555.930664, 73.0, 22.0 ],
-									"style" : "",
+									"patching_rect" : [ 172.0, 555.930663999999979, 73.0, 20.0 ],
 									"text" : "print middle"
 								}
 
@@ -766,8 +751,7 @@
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 116.0, 555.930664, 53.0, 22.0 ],
-									"style" : "",
+									"patching_rect" : [ 116.0, 555.930663999999979, 53.0, 20.0 ],
 									"text" : "print left"
 								}
 
@@ -781,8 +765,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 4,
 									"outlettype" : [ "FullPacket", "FullPacket", "FullPacket", "FullPacket" ],
-									"patching_rect" : [ 116.0, 499.930664, 178.0, 22.0 ],
-									"style" : "",
+									"patching_rect" : [ 116.0, 499.930663999999979, 178.0, 20.0 ],
 									"text" : "o.schedule /zerotononzero/time"
 								}
 
@@ -797,8 +780,7 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 252.0, 192.930664, 50.0, 22.0 ],
-									"style" : ""
+									"patching_rect" : [ 252.0, 192.930664000000007, 50.0, 20.0 ]
 								}
 
 							}
@@ -811,8 +793,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "signal" ],
-									"patching_rect" : [ 252.0, 296.930664, 32.5, 22.0 ],
-									"style" : "",
+									"patching_rect" : [ 252.0, 296.930663999999979, 32.5, 20.0 ],
 									"text" : "<~"
 								}
 
@@ -826,8 +807,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "signal" ],
-									"patching_rect" : [ 268.0, 264.930664, 66.0, 22.0 ],
-									"style" : "",
+									"patching_rect" : [ 268.0, 264.930663999999979, 66.0, 20.0 ],
 									"text" : "delay~ 1 1"
 								}
 
@@ -841,8 +821,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "signal" ],
-									"patching_rect" : [ 252.0, 232.930664, 68.0, 22.0 ],
-									"style" : "",
+									"patching_rect" : [ 252.0, 232.930664000000007, 68.0, 20.0 ],
 									"text" : "phasor~ 1."
 								}
 
@@ -854,8 +833,8 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "bang" ],
-									"patching_rect" : [ 116.0, 232.930664, 20.0, 20.0 ],
-									"style" : ""
+									"parameter_enable" : 0,
+									"patching_rect" : [ 116.0, 232.930664000000007, 20.0, 20.0 ]
 								}
 
 							}
@@ -865,8 +844,7 @@
 									"maxclass" : "ezdac~",
 									"numinlets" : 2,
 									"numoutlets" : 0,
-									"patching_rect" : [ 52.0, 495.930664, 45.0, 45.0 ],
-									"style" : ""
+									"patching_rect" : [ 52.0, 495.930663999999979, 45.0, 45.0 ]
 								}
 
 							}
@@ -877,8 +855,8 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "bang" ],
-									"patching_rect" : [ 84.0, 360.930664, 20.0, 20.0 ],
-									"style" : ""
+									"parameter_enable" : 0,
+									"patching_rect" : [ 84.0, 360.930663999999979, 20.0, 20.0 ]
 								}
 
 							}
@@ -891,8 +869,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "signal" ],
-									"patching_rect" : [ 116.0, 272.930664, 41.0, 22.0 ],
-									"style" : "",
+									"patching_rect" : [ 116.0, 272.930663999999979, 41.0, 20.0 ],
 									"text" : "click~"
 								}
 
@@ -906,9 +883,8 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "FullPacket" ],
-									"patching_rect" : [ 116.0, 328.930664, 54.0, 22.0 ],
-									"style" : "",
-									"text" : "o.edge~"
+									"patching_rect" : [ 116.0, 328.930663999999979, 95.0, 20.0 ],
+									"text" : "o.edge~.maxpat"
 								}
 
 							}
@@ -1053,16 +1029,14 @@
  ]
 					}
 ,
-					"patching_rect" : [ 24.0, 16.069336, 49.0, 22.0 ],
+					"patching_rect" : [ 24.0, 16.069336, 49.0, 20.0 ],
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
 						"globalpatchername" : "",
-						"style" : "",
 						"tags" : ""
 					}
 ,
-					"style" : "",
 					"text" : "p basic"
 				}
 
@@ -1070,14 +1044,37 @@
  ],
 		"lines" : [  ],
 		"dependency_cache" : [ 			{
-				"name" : "o.helpfilehelper.maxpat",
-				"bootpath" : "~/Documents/Max 7/Packages/CNMAT-odot/patchers/utils",
-				"patcherrelativepath" : "../../../Max 7/Packages/CNMAT-odot/patchers/utils",
+				"name" : "o.edge~.maxpat",
+				"bootpath" : "~/Development/CNMAT/CNMAT/CNMAT-odot/dev",
+				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "o.edge~.mxo",
+				"name" : "o.helpfilehelper.maxpat",
+				"bootpath" : "~/Development/CNMAT/CNMAT/CNMAT-odot/patchers/utils",
+				"patcherrelativepath" : "../patchers/utils",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "o.timetag~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.snapshot~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.expr.codebox.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.if.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.compose.mxo",
 				"type" : "iLaX"
 			}
 , 			{
@@ -1090,6 +1087,10 @@
 			}
 , 			{
 				"name" : "o.route.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.collect.mxo",
 				"type" : "iLaX"
 			}
  ],

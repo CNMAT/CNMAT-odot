@@ -157,7 +157,7 @@
 		<key>o.daemon.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>97</integer>
+			<integer>96</integer>
 		</dict>
 		<key>o.dict.xcscheme</key>
 		<dict>
@@ -252,7 +252,7 @@
 		<key>o.gui.attach.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>96</integer>
+			<integer>97</integer>
 		</dict>
 		<key>o.if.pd.xcscheme</key>
 		<dict>
