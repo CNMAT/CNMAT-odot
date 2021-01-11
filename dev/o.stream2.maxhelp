@@ -39,16 +39,29 @@
 		"subpatcher_template" : "",
 		"boxes" : [ 			{
 				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-10",
+					"linecount" : 3,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 104.0, 395.0, 399.0, 42.0 ],
+					"presentation_linecount" : 6,
+					"text" : "o.stream2 implements the same basic functionality as o.stream, but relies internally on o.expr.codebox instead of o.let for managing temporary variables and state. o.stream2 should be used in practice over o.stream."
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"fontface" : 0,
 					"fontsize" : 12.0,
 					"id" : "obj-8",
-					"linecount" : 3,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 536.0, 305.0, 320.0, 61.0 ],
-					"text" : "/foo : 0,\n/thing : [9, 9, 5, 3, 0, 6, 8, 2, 8, 5, 2, 2, 0, 7, 8, 0]"
+					"patching_rect" : [ 536.0, 305.0, 320.0, 34.0 ]
 				}
 
 			}
@@ -57,13 +70,11 @@
 					"fontface" : 0,
 					"fontsize" : 12.0,
 					"id" : "obj-5",
-					"linecount" : 5,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 104.0, 313.0, 335.0, 88.0 ],
-					"text" : "/foo : 0,\n/n : 10,\n/stream/foo : [1, 9, 9, 5, 3, 0, 6, 8, 2, 8, 5, 2, 2, 0, 7, 8, 0],\n/avg : 4.41176"
+					"patching_rect" : [ 104.0, 313.0, 335.0, 34.0 ]
 				}
 
 			}

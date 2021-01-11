@@ -2,13 +2,14 @@
 	"patcher" : 	{
 		"fileversion" : 1,
 		"appversion" : 		{
-			"major" : 7,
-			"minor" : 3,
-			"revision" : 4,
+			"major" : 8,
+			"minor" : 1,
+			"revision" : 1,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
+		"classnamespace" : "box",
 		"rect" : [ 243.0, 193.0, 640.0, 480.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
@@ -38,13 +39,23 @@
 		"subpatcher_template" : "",
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-2",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 264.0, 140.0, 324.0, 18.0 ],
+					"text" : "see o.oscbundle for a different implementation"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-13",
 					"linecount" : 4,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 264.0, 36.0, 324.0, 60.0 ],
-					"style" : "",
+					"patching_rect" : [ 264.0, 36.0, 324.0, 54.0 ],
 					"text" : "o.osc-p\n\nsorts osc bundles and osc messages out of the left outlet,\nnon-osc values are passed out of the right outlet."
 				}
 
@@ -59,11 +70,10 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 48.0, 32.0, 155.0, 24.0 ],
+					"patching_rect" : [ 48.0, 32.0, 155.0, 22.0 ],
 					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 40, 47, 102, 111, 111, 0, 0, 0, 0, 44, 105, 105, 105, 115, 115, 115, 0, 0, 0, 0, 1, 0, 0, 0, 2, 0, 0, 0, 3, 97, 0, 0, 0, 114, 0, 0, 0, 115, 0, 0, 0 ],
 					"saved_bundle_length" : 60,
-					"text" : "/foo : [1, 2, 3, \"a\", \"r\", \"s\"]",
-					"textcolor" : [ 0.188, 0.188, 0.188, 1.0 ]
+					"text" : "/foo : [1, 2, 3, \"a\", \"r\", \"s\"]"
 				}
 
 			}
@@ -76,8 +86,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 71.0, 74.0, 87.0, 22.0 ],
-					"style" : "",
+					"patching_rect" : [ 71.0, 74.0, 87.0, 20.0 ],
 					"text" : "/foo a r s 1 2 3"
 				}
 
@@ -93,8 +102,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 172.0, 103.0, 50.0, 22.0 ],
-					"style" : ""
+					"patching_rect" : [ 172.0, 103.0, 50.0, 20.0 ]
 				}
 
 			}
@@ -107,8 +115,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 79.0, 182.0, 91.0, 35.0 ],
-					"style" : "",
+					"patching_rect" : [ 79.0, 182.0, 91.0, 32.0 ],
 					"text" : "print not_OSC @popup 1"
 				}
 
@@ -122,8 +129,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 48.0, 246.0, 68.0, 35.0 ],
-					"style" : "",
+					"patching_rect" : [ 48.0, 246.0, 68.0, 32.0 ],
 					"text" : "print OSC @popup 1"
 				}
 
@@ -137,8 +143,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 48.0, 144.0, 50.0, 22.0 ],
-					"style" : "",
+					"patching_rect" : [ 48.0, 144.0, 50.0, 20.0 ],
 					"text" : "o.osc-p"
 				}
 
@@ -182,7 +187,7 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "o.osc-p.maxpat",
-				"bootpath" : "~/Documents/dev-lib/CNMAT-odot/dev",
+				"bootpath" : "~/Development/CNMAT/CNMAT/CNMAT-odot/dev",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1

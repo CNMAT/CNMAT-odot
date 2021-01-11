@@ -39,16 +39,28 @@
 		"subpatcher_template" : "",
 		"boxes" : [ 			{
 				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-10",
+					"linecount" : 6,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 104.0, 417.0, 407.0, 78.0 ],
+					"text" : "o.stream makes use of o.let internally to create temporary variables in the incoming bundle. see o.stream2 for a different implementation of the same basic functionality that makes use of o.expr.codebox, rather than o.let.\n\no.stream2 should be used in practice over o.stream. o.stream remains for historical and pedagogical reasons."
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"fontface" : 0,
 					"fontsize" : 12.0,
 					"id" : "obj-8",
-					"linecount" : 3,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 536.0, 305.0, 320.0, 61.0 ],
-					"text" : "/thing : [2, 2, 5, 2, 4, 7, 2, 7, 9, 6, 6, 9, 8, 3, 6, 5],\n/foo : 5"
+					"patching_rect" : [ 536.0, 305.0, 320.0, 34.0 ]
 				}
 
 			}
@@ -57,13 +69,11 @@
 					"fontface" : 0,
 					"fontsize" : 12.0,
 					"id" : "obj-5",
-					"linecount" : 4,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 104.0, 313.0, 335.0, 75.0 ],
-					"text" : "/stream/foo : [2, 7, 9, 6, 6, 9, 8, 3, 6, 5],\n/foo : 5,\n/n : 10,\n/avg : 6.1"
+					"patching_rect" : [ 104.0, 313.0, 335.0, 34.0 ]
 				}
 
 			}
@@ -144,7 +154,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 1,
-					"outlettype" : [ "FullPacket" ],
+					"outlettype" : [ "" ],
 					"patching_rect" : [ 536.0, 202.0, 130.0, 20.0 ],
 					"text" : "o.stream /foo /thing 16"
 				}
@@ -238,7 +248,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 1,
-					"outlettype" : [ "FullPacket" ],
+					"outlettype" : [ "" ],
 					"patching_rect" : [ 104.0, 202.0, 157.0, 20.0 ],
 					"text" : "o.stream /foo /stream/foo /n"
 				}
