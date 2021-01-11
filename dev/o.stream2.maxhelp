@@ -48,7 +48,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 536.0, 305.0, 320.0, 61.0 ],
-					"text" : "/thing : [2, 2, 5, 2, 4, 7, 2, 7, 9, 6, 6, 9, 8, 3, 6, 5],\n/foo : 5"
+					"text" : "/foo : 0,\n/thing : [9, 9, 5, 3, 0, 6, 8, 2, 8, 5, 2, 2, 0, 7, 8, 0]"
 				}
 
 			}
@@ -57,13 +57,13 @@
 					"fontface" : 0,
 					"fontsize" : 12.0,
 					"id" : "obj-5",
-					"linecount" : 4,
+					"linecount" : 5,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 104.0, 313.0, 335.0, 75.0 ],
-					"text" : "/stream/foo : [2, 7, 9, 6, 6, 9, 8, 3, 6, 5],\n/foo : 5,\n/n : 10,\n/avg : 6.1"
+					"patching_rect" : [ 104.0, 313.0, 335.0, 88.0 ],
+					"text" : "/foo : 0,\n/n : 10,\n/stream/foo : [1, 9, 9, 5, 3, 0, 6, 8, 2, 8, 5, 2, 2, 0, 7, 8, 0],\n/avg : 4.41176"
 				}
 
 			}
@@ -145,8 +145,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 536.0, 202.0, 130.0, 20.0 ],
-					"text" : "o.stream /foo /thing 16"
+					"patching_rect" : [ 536.0, 202.0, 135.0, 20.0 ],
+					"text" : "o.stream2 /foo /thing 16"
 				}
 
 			}
@@ -239,8 +239,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 104.0, 202.0, 157.0, 20.0 ],
-					"text" : "o.stream /foo /stream/foo /n"
+					"patching_rect" : [ 104.0, 202.0, 162.0, 20.0 ],
+					"text" : "o.stream2 /foo /stream/foo /n"
 				}
 
 			}
@@ -333,21 +333,14 @@
 			}
  ],
 		"dependency_cache" : [ 			{
-				"name" : "o.stream.maxpat",
+				"name" : "o.stream2.maxpat",
 				"bootpath" : "~/Development/CNMAT/CNMAT/CNMAT-odot/dev",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "o.let.maxpat",
-				"bootpath" : "~/Development/CNMAT/CNMAT/CNMAT-odot/dev",
-				"patcherrelativepath" : ".",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "o.expr.mxo",
+				"name" : "o.pack.mxo",
 				"type" : "iLaX"
 			}
 , 			{
@@ -355,27 +348,19 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "o.route.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.var.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.pack.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.collect.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.difference.mxo",
+				"name" : "o.expr.codebox.mxo",
 				"type" : "iLaX"
 			}
 , 			{
 				"name" : "o.compose.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.route.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.expr.mxo",
 				"type" : "iLaX"
 			}
 , 			{
