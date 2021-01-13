@@ -2,13 +2,14 @@
 	"patcher" : 	{
 		"fileversion" : 1,
 		"appversion" : 		{
-			"major" : 7,
-			"minor" : 3,
-			"revision" : 4,
+			"major" : 8,
+			"minor" : 1,
+			"revision" : 1,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
+		"classnamespace" : "box",
 		"rect" : [ 38.0, 79.0, 753.0, 531.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
@@ -38,13 +39,25 @@
 		"subpatcher_template" : "Default Max 7",
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-1",
+					"linecount" : 2,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 427.0, 228.0, 214.0, 30.0 ],
+					"presentation_linecount" : 2,
+					"text" : "see o.osc-p for a different implementation"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-13",
 					"linecount" : 7,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 427.0, 77.0, 214.0, 100.0 ],
-					"style" : "",
+					"patching_rect" : [ 427.0, 77.0, 214.0, 90.0 ],
 					"text" : "o.oscbundle\n\noutputs an osc bundle if an osc message or bundle is recieved.\n\nnon-osc values are passed out of the right outlet."
 				}
 
@@ -56,9 +69,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 321.0, 150.0, 31.0, 22.0 ],
-					"presentation_rect" : [ 497.0, 144.0, 0.0, 0.0 ],
-					"style" : "",
+					"patching_rect" : [ 321.0, 150.0, 31.0, 20.0 ],
 					"text" : "bob"
 				}
 
@@ -69,8 +80,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 152.0, 228.0, 135.0, 22.0 ],
-					"style" : "",
+					"patching_rect" : [ 152.0, 228.0, 135.0, 20.0 ],
 					"text" : "print not-osc @popup 1"
 				}
 
@@ -82,8 +92,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 269.0, 150.0, 33.0, 22.0 ],
-					"style" : "",
+					"patching_rect" : [ 269.0, 150.0, 33.0, 20.0 ],
 					"text" : "1.11"
 				}
 
@@ -100,8 +109,7 @@
 					"patching_rect" : [ 161.0, 143.0, 80.0, 24.0 ],
 					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 47, 98, 97, 114, 0, 0, 0, 0, 44, 105, 0, 0, 0, 0, 0, 2 ],
 					"saved_bundle_length" : 36,
-					"text" : "/bar : 2",
-					"textcolor" : [ 0.188, 0.188, 0.188, 1.0 ]
+					"text" : "/bar : 2"
 				}
 
 			}
@@ -114,9 +122,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 96.0, 295.0, 150.0, 34.0 ],
-					"text" : "/bar : 2",
-					"textcolor" : [ 1.0, 1.0, 1.0, 1.0 ]
+					"patching_rect" : [ 96.0, 295.0, 150.0, 34.0 ]
 				}
 
 			}
@@ -127,8 +133,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 96.0, 143.0, 50.0, 22.0 ],
-					"style" : "",
+					"patching_rect" : [ 96.0, 143.0, 50.0, 20.0 ],
 					"text" : "/foo 1"
 				}
 
@@ -140,8 +145,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 96.0, 190.0, 75.0, 22.0 ],
-					"style" : "",
+					"patching_rect" : [ 96.0, 190.0, 75.0, 20.0 ],
 					"text" : "o.oscbundle"
 				}
 
@@ -192,7 +196,7 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "o.oscbundle.maxpat",
-				"bootpath" : "~/Documents/dev-lib/CNMAT-odot/dev",
+				"bootpath" : "~/Development/CNMAT/CNMAT/CNMAT-odot/dev",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
@@ -202,21 +206,15 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "o.display.mxo",
-				"type" : "iLaX"
-			}
-, 			{
 				"name" : "o.compose.mxo",
 				"type" : "iLaX"
 			}
+, 			{
+				"name" : "o.display.mxo",
+				"type" : "iLaX"
+			}
  ],
-		"autosave" : 0,
-		"bgfillcolor_type" : "gradient",
-		"bgfillcolor_color1" : [ 0.376471, 0.384314, 0.4, 1.0 ],
-		"bgfillcolor_color2" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
-		"bgfillcolor_color" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
-		"bgfillcolor_angle" : 270.0,
-		"bgfillcolor_proportion" : 0.39
+		"autosave" : 0
 	}
 
 }

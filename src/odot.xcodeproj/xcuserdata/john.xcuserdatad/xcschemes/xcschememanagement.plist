@@ -89,6 +89,11 @@
 			<key>orderHint</key>
 			<integer>98</integer>
 		</dict>
+		<key>o.bufferfill~.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>98</integer>
+		</dict>
 		<key>o.bundle.pd.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -145,6 +150,11 @@
 			<integer>21</integer>
 		</dict>
 		<key>o.daemon.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>96</integer>
+		</dict>
+		<key>o.daemon.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>96</integer>
@@ -239,6 +249,11 @@
 			<key>orderHint</key>
 			<integer>97</integer>
 		</dict>
+		<key>o.gui.attach.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>97</integer>
+		</dict>
 		<key>o.if.pd.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -285,6 +300,11 @@
 			<integer>46</integer>
 		</dict>
 		<key>o.lookup~.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>99</integer>
+		</dict>
+		<key>o.lookup~.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>99</integer>

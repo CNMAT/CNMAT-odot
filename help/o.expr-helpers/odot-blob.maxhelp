@@ -44,8 +44,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 335.0, 152.0, 410.0, 54.0 ],
-					"presentation_linecount" : 4,
+					"patching_rect" : [ 34.0, 136.0, 410.0, 54.0 ],
 					"text" : "A blob is typically used to encode binary data that will be used by some system, say the controller for an LED array or a DMX controller, etc. This example encodes an OSC bundle inside a blob---useful for working with custom data types not explicitly supported by odot."
 				}
 
@@ -84,9 +83,9 @@
 					"id" : "obj-2",
 					"linecount" : 13,
 					"maxclass" : "o.expr.codebox",
-					"numinlets" : 2,
-					"numoutlets" : 3,
-					"outlettype" : [ "FullPacket", "FullPacket", "FullPacket" ],
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "FullPacket", "FullPacket" ],
 					"patching_rect" : [ 34.0, 261.0, 997.0, 195.0 ],
 					"text" : "/size = 12,\n/address = \"/foo\",\n/typetags = \",i\",\n/val = 7474,\n\n/bundle = blob([\n  '#', 'b', 'u', 'n', 'd', 'l', 'e', 0,                                                                                  ### header\n  0, 0, 0, 0, 0, 0, 0, 0,                                                                                                ### timetag\n  bitand(/size, 4278190080) / 16777216, bitand(/size, 16711680) / 65536, bitand(/size, 65280) / 256, bitand(/size, 255), ### message size\n  split(\"\", /address), 0, 0, 0, 0,                                                                                       ### address\n  split(\"\", /typetags), 0, 0,                                                                                            ### typetags\n  bitand(/val, 4278190080) / 16777216, bitand(/val, 16711680) / 65536, bitand(/val, 65280) / 256, bitand(/val, 255)      ### value\n])"
 				}
@@ -99,7 +98,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 335.0, 23.0, 57.0, 18.0 ],
+					"patching_rect" : [ 34.0, 21.0, 57.0, 18.0 ],
 					"text" : "blob()"
 				}
 
@@ -111,8 +110,8 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 335.0, 71.0, 410.0, 42.0 ],
-					"text" : "An OSC blob is an array of 8-bit bytes. The blob() function takes a single list that should contain integer values between 0 and 511 (ASCII char values of the form of 'a', 'b', 'c' also work)."
+					"patching_rect" : [ 34.0, 69.0, 410.0, 42.0 ],
+					"text" : "An OSC blob is an array of 8-bit bytes. The blob() function takes a single list that should contain integer values between 0 and 255 (ASCII char values of the form of 'a', 'b', 'c' also work)."
 				}
 
 			}

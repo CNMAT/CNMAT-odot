@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 53.0, 96.0, 1363.0, 603.0 ],
+		"rect" : [ 331.0, 88.0, 1012.0, 635.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -39,50 +39,12 @@
 		"subpatcher_template" : "Default Max 7",
 		"boxes" : [ 			{
 				"box" : 				{
-					"id" : "obj-1",
+					"id" : "obj-20",
 					"maxclass" : "message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 161.0, 459.0, 67.0, 20.0 ],
-					"text" : "odot-prog2"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"hidden" : 1,
-					"id" : "obj-2",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 78.0, 486.0, 79.0, 20.0 ],
-					"text" : "prepend help"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"hidden" : 1,
-					"id" : "obj-17",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 78.0, 512.0, 51.0, 20.0 ],
-					"text" : "pcontrol"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-21",
-					"maxclass" : "message",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 78.0, 459.0, 67.0, 20.0 ],
+					"patching_rect" : [ 146.0, 360.5, 67.0, 20.0 ],
 					"text" : "odot-prog1"
 				}
 
@@ -90,13 +52,38 @@
 , 			{
 				"box" : 				{
 					"hidden" : 1,
-					"id" : "obj-3",
+					"id" : "obj-14",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 1,
-					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 8.0, 90.0, 58.0, 20.0 ],
-					"text" : "loadbang"
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 63.0, 387.5, 79.0, 20.0 ],
+					"text" : "prepend help"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"hidden" : 1,
+					"id" : "obj-13",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 63.0, 413.5, 51.0, 20.0 ],
+					"text" : "pcontrol"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-12",
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 63.0, 360.5, 67.0, 20.0 ],
+					"text" : "odot-progn"
 				}
 
 			}
@@ -107,7 +94,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 963.0, 347.0, 342.0, 30.0 ],
+					"patching_rect" : [ 624.0, 335.0, 342.0, 30.0 ],
 					"text" : "a common use of the prog functions is to evaluate a sequence of expressions in the \"then\" and \"else\" fields of an if() function."
 				}
 
@@ -119,7 +106,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 861.0, 369.0, 66.0, 20.0 ],
+					"patching_rect" : [ 522.0, 357.0, 66.0, 20.0 ],
 					"text" : "o.pack /val"
 				}
 
@@ -131,7 +118,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 861.0, 312.0, 119.0, 20.0 ],
+					"patching_rect" : [ 522.0, 300.0, 119.0, 20.0 ],
 					"text" : "metro 500 @active 1"
 				}
 
@@ -143,7 +130,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "int" ],
-					"patching_rect" : [ 861.0, 340.0, 59.0, 20.0 ],
+					"patching_rect" : [ 522.0, 328.0, 59.0, 20.0 ],
 					"text" : "random 2"
 				}
 
@@ -158,8 +145,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 861.0, 486.0, 83.0, 61.0 ],
-					"text" : "/val : 1,\n/x : 0,\n/y : 1"
+					"patching_rect" : [ 522.0, 474.0, 83.0, 61.0 ],
+					"text" : "/val : 0,\n/x : 1,\n/y : 0"
 				}
 
 			}
@@ -173,7 +160,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 861.0, 397.0, 327.0, 73.0 ],
+					"patching_rect" : [ 522.0, 385.0, 327.0, 73.0 ],
 					"text" : "if(/val == 0,\n   progn(/x = 1, /y = 0),\n   progn(/x = 0, /y = 1)\n)"
 				}
 
@@ -185,7 +172,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 861.0, 53.0, 146.0, 18.0 ],
+					"patching_rect" : [ 522.0, 41.0, 146.0, 18.0 ],
 					"text" : "prog1(), prog2(), progn()"
 				}
 
@@ -197,87 +184,20 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 861.0, 84.0, 348.0, 186.0 ],
+					"patching_rect" : [ 522.0, 72.0, 348.0, 186.0 ],
 					"text" : "Perfrom a series of comma separated expressions and return the value of the first, second, or last expression respectively.\n\nprogn(<expr1>, ..., <exprn>)\n\narguments:\n\n<expr1>, ..., <exprn>:  comma separated expressions to evaluate\n\nreturns:\n\nprog1: the result of the evaluation of the first expression\nprog2: the result of the evaluation of the second expression\nprogn: the result of the evaluation of the last expression"
 				}
 
 			}
 , 			{
 				"box" : 				{
-					"id" : "obj-20",
+					"id" : "obj-26",
+					"linecount" : 4,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 370.0, 334.0, 23.0, 18.0 ],
-					"text" : "=="
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontface" : 0,
-					"fontsize" : 12.0,
-					"id" : "obj-18",
-					"maxclass" : "o.display",
-					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 406.0, 373.0, 83.0, 34.0 ],
-					"text" : "/l : \"n\""
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontface" : 0,
-					"fontsize" : 12.0,
-					"id" : "obj-19",
-					"maxclass" : "o.expr.codebox",
-					"numinlets" : 1,
-					"numoutlets" : 2,
-					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 406.0, 327.0, 327.0, 32.0 ],
-					"text" : "/l = apply(lambda([], progn(1, 2, \"n\")), [])"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontface" : 0,
-					"fontsize" : 12.0,
-					"id" : "obj-13",
-					"maxclass" : "o.display",
-					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 78.0, 373.0, 83.0, 34.0 ],
-					"text" : "/l : \"n\""
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontface" : 0,
-					"fontsize" : 12.0,
-					"id" : "obj-14",
-					"maxclass" : "o.expr.codebox",
-					"numinlets" : 1,
-					"numoutlets" : 2,
-					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 78.0, 327.0, 277.0, 32.0 ],
-					"text" : "/l = apply(lambda([], 1, 2, \"n\"), [])"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-12",
-					"linecount" : 3,
-					"maxclass" : "comment",
-					"numinlets" : 1,
-					"numoutlets" : 0,
-					"patching_rect" : [ 78.0, 275.0, 379.0, 42.0 ],
-					"text" : "progn is by far the most commonly used, in fact, it's behavior is implicitly built into some functions such as lambda(), which evaluates a sequence of expressions and returns the result of the last one."
+					"patching_rect" : [ 63.0, 259.0, 383.0, 54.0 ],
+					"text" : "prog2 is rarely used and is mainly available for compatibility with lisp. There are some cases where you may need to perform a single operation with side effects, produce a result, and then clean up in one or more steps"
 				}
 
 			}
@@ -286,13 +206,11 @@
 					"fontface" : 0,
 					"fontsize" : 12.0,
 					"id" : "obj-11",
-					"linecount" : 3,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 78.0, 192.0, 83.0, 61.0 ],
-					"text" : "/p1 : 1,\n/p2 : 2,\n/pn : \"n\""
+					"patching_rect" : [ 63.0, 177.0, 83.0, 34.0 ]
 				}
 
 			}
@@ -306,7 +224,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 78.0, 121.0, 205.0, 59.0 ],
+					"patching_rect" : [ 63.0, 106.0, 205.0, 59.0 ],
 					"text" : "/p1 = prog1(1, 2, \"n\"),\n/p2 = prog2(1, 2, \"n\"),\n/pn = progn(1, 2, \"n\")"
 				}
 
@@ -318,21 +236,13 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 78.0, 56.0, 379.0, 54.0 ],
+					"patching_rect" : [ 63.0, 41.0, 379.0, 54.0 ],
 					"text" : "prog1, prog2, and progn are all very similar--they each evaluate a sequence of expressions. The only difference between the three of them is that prog1 returns the result of the first expression, prog2 the second, and progn the last."
 				}
 
 			}
  ],
 		"lines" : [ 			{
-				"patchline" : 				{
-					"destination" : [ "obj-2", 0 ],
-					"hidden" : 1,
-					"source" : [ "obj-1", 0 ]
-				}
-
-			}
-, 			{
 				"patchline" : 				{
 					"destination" : [ "obj-11", 0 ],
 					"source" : [ "obj-10", 0 ]
@@ -341,7 +251,16 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-14", 0 ],
+					"hidden" : 1,
+					"source" : [ "obj-12", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-13", 0 ],
+					"hidden" : 1,
 					"source" : [ "obj-14", 0 ]
 				}
 
@@ -362,51 +281,9 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-18", 0 ],
-					"source" : [ "obj-19", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-17", 0 ],
-					"hidden" : 1,
-					"source" : [ "obj-2", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-2", 0 ],
-					"hidden" : 1,
-					"source" : [ "obj-21", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-10", 0 ],
-					"hidden" : 1,
-					"order" : 2,
-					"source" : [ "obj-3", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
 					"destination" : [ "obj-14", 0 ],
 					"hidden" : 1,
-					"order" : 1,
-					"source" : [ "obj-3", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-19", 0 ],
-					"hidden" : 1,
-					"order" : 0,
-					"source" : [ "obj-3", 0 ]
+					"source" : [ "obj-20", 0 ]
 				}
 
 			}

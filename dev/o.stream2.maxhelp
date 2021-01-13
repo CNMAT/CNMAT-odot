@@ -42,12 +42,13 @@
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"id" : "obj-10",
-					"linecount" : 6,
+					"linecount" : 3,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 104.0, 417.0, 407.0, 78.0 ],
-					"text" : "o.stream makes use of o.let internally to create temporary variables in the incoming bundle. see o.stream2 for a different implementation of the same basic functionality that makes use of o.expr.codebox, rather than o.let.\n\no.stream2 should be used in practice over o.stream. o.stream remains for historical and pedagogical reasons."
+					"patching_rect" : [ 104.0, 395.0, 399.0, 42.0 ],
+					"presentation_linecount" : 6,
+					"text" : "o.stream2 implements the same basic functionality as o.stream, but relies internally on o.expr.codebox instead of o.let for managing temporary variables and state. o.stream2 should be used in practice over o.stream."
 				}
 
 			}
@@ -154,9 +155,9 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 536.0, 202.0, 130.0, 20.0 ],
-					"text" : "o.stream /foo /thing 16"
+					"outlettype" : [ "FullPacket" ],
+					"patching_rect" : [ 536.0, 202.0, 135.0, 20.0 ],
+					"text" : "o.stream2 /foo /thing 16"
 				}
 
 			}
@@ -248,9 +249,9 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 104.0, 202.0, 157.0, 20.0 ],
-					"text" : "o.stream /foo /stream/foo /n"
+					"outlettype" : [ "FullPacket" ],
+					"patching_rect" : [ 104.0, 202.0, 162.0, 20.0 ],
+					"text" : "o.stream2 /foo /stream/foo /n"
 				}
 
 			}
@@ -343,21 +344,14 @@
 			}
  ],
 		"dependency_cache" : [ 			{
-				"name" : "o.stream.maxpat",
+				"name" : "o.stream2.maxpat",
 				"bootpath" : "~/Development/CNMAT/CNMAT/CNMAT-odot/dev",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "o.let.maxpat",
-				"bootpath" : "~/Development/CNMAT/CNMAT/CNMAT-odot/dev",
-				"patcherrelativepath" : ".",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "o.expr.mxo",
+				"name" : "o.pack.mxo",
 				"type" : "iLaX"
 			}
 , 			{
@@ -365,27 +359,19 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "o.route.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.var.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.pack.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.collect.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.difference.mxo",
+				"name" : "o.expr.codebox.mxo",
 				"type" : "iLaX"
 			}
 , 			{
 				"name" : "o.compose.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.route.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.expr.mxo",
 				"type" : "iLaX"
 			}
 , 			{

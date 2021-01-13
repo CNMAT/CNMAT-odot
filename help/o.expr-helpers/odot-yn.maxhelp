@@ -81,7 +81,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 245.0, 63.0, 182.0, 150.0 ],
-					"text" : "Bessel function of the first kind, nth order.\n\narguments: \n\n1. n\n2. x \n\nreturns:\n\nBessel function of first kind, nth order, evaluated at x."
+					"text" : "Bessel function of the second kind, nth order.\n\narguments: \n\n1. n\n2. x \n\nreturns:\n\nBessel function of second kind, nth order, evaluated at x."
 				}
 
 			}
@@ -120,8 +120,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "FullPacket" ],
-					"patching_rect" : [ 86.0, 191.0, 62.0, 20.0 ],
-					"text" : "o.route /jn"
+					"patching_rect" : [ 86.0, 191.0, 65.0, 20.0 ],
+					"text" : "o.route /yn"
 				}
 
 			}
@@ -136,7 +136,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 35.0, 329.0, 158.0, 48.0 ],
-					"text" : "/ramp : 0.17,\n/jn : 0.0717854"
+					"text" : "/ramp : 0.25,\n/yn : -0.453695"
 				}
 
 			}
@@ -151,7 +151,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
 					"patching_rect" : [ 35.0, 63.0, 198.0, 46.0 ],
-					"text" : "/ramp = /ramp * 0.5 + 0.5,\n/jn = jn(5, /ramp * 20)"
+					"text" : "/ramp = /ramp * 0.5 + 0.5,\n/yn = yn(5, /ramp * 20)"
 				}
 
 			}

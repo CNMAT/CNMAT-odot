@@ -176,7 +176,7 @@ void opack_int(t_opack *x, long l)
 void opack_float(t_opack *x, double f)
 {
 	t_atom a;
-	atom_setfloat(&a, (float)f);
+	atom_setfloat(&a, f);
 	opack_anything(x, NULL, 1, &a);
 }
 
