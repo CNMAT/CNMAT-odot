@@ -40,11 +40,51 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"args" : [ 3 ],
+					"bgmode" : 0,
+					"border" : 0,
+					"clickthrough" : 0,
+					"enablehscroll" : 0,
+					"enablevscroll" : 0,
+					"id" : "obj-41",
+					"lockeddragscroll" : 0,
+					"maxclass" : "bpatcher",
+					"name" : "advance.maxpat",
+					"numinlets" : 0,
+					"numoutlets" : 0,
+					"offset" : [ -1.0, -2.0 ],
+					"patching_rect" : [ 654.5, 1835.0, 195.0, 28.0 ],
+					"viewvisibility" : 1
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"args" : [ "o.compose", "o.pack", "o.route" ],
+					"bgmode" : 0,
+					"border" : 0,
+					"clickthrough" : 0,
+					"enablehscroll" : 0,
+					"enablevscroll" : 0,
+					"id" : "obj-39",
+					"lockeddragscroll" : 0,
+					"maxclass" : "bpatcher",
+					"name" : "o.t.objects-covered.maxpat",
+					"numinlets" : 0,
+					"numoutlets" : 0,
+					"offset" : [ -5.5, -1.0 ],
+					"patching_rect" : [ 15.5, 1786.0, 834.0, 45.75 ],
+					"viewvisibility" : 1
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-40",
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 106.0, 1760.0, 150.0, 22.0 ]
+					"patching_rect" : [ 627.0, 1852.0, 150.0, 22.0 ]
 				}
 
 			}
@@ -410,7 +450,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 528.0, 247.0, 294.0, 165.0 ],
+					"patching_rect" : [ 528.0, 247.0, 296.0, 165.0 ],
 					"style" : "default",
 					"text" : "Here is a bundle that contains the values of a synthesizer.  \n\nNote that since the values are received atomically, that is, all at the same time, the order that they appear in the bundle doesn't necessarily matter--the implementation of the synthesizer should extract the values from the bundle in the order that makes the most sense given its implementation."
 				}
@@ -812,6 +852,13 @@
 			}
 , 			{
 				"name" : "o.synthesizer.basic~.maxpat",
+				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/patchers/tutorial",
+				"patcherrelativepath" : ".",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "o.t.objects-covered.maxpat",
 				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/patchers/tutorial",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",

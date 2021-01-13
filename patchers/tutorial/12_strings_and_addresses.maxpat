@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 40.0, 74.0, 992.0, 645.0 ],
+		"rect" : [ 17.0, 57.0, 992.0, 645.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 14.0,
@@ -40,13 +40,33 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"args" : [ "o.compose", "o.expr.codebox", "o.display", "o.select", "o.explode", "o.flatten" ],
+					"bgmode" : 0,
+					"border" : 0,
+					"clickthrough" : 0,
+					"enablehscroll" : 0,
+					"enablevscroll" : 0,
+					"id" : "obj-60",
+					"lockeddragscroll" : 0,
+					"maxclass" : "bpatcher",
+					"name" : "o.t.objects-covered.maxpat",
+					"numinlets" : 0,
+					"numoutlets" : 0,
+					"offset" : [ -5.5, -1.0 ],
+					"patching_rect" : [ 78.0, 5393.0, 834.0, 45.75 ],
+					"viewvisibility" : 1
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"fontsize" : 12.0,
 					"id" : "obj-55",
-					"linecount" : 9,
+					"linecount" : 8,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 465.0, 3243.0, 199.0, 127.0 ],
+					"patching_rect" : [ 465.0, 3243.0, 202.0, 114.0 ],
 					"text" : "Here's a situation from tutorial 8 that we might be careful about.  The address \"/p\" has a list of bundle literals bound to it.  Because these bundle literals do not have particular addresses associated with them, all but the last literal are discarded when the bundle is flattened."
 				}
 
@@ -56,13 +76,11 @@
 					"fontface" : 0,
 					"fontsize" : 12.0,
 					"id" : "obj-56",
-					"linecount" : 2,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 308.0, 3375.0, 107.0, 48.0 ],
-					"text" : "/p/x : -0.3,\n/p/y : 0.4"
+					"patching_rect" : [ 308.0, 3375.0, 107.0, 34.0 ]
 				}
 
 			}
@@ -107,7 +125,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 215.0, 2581.5, 207.0, 191.0 ],
+					"patching_rect" : [ 215.0, 2581.5, 209.0, 191.0 ],
 					"text" : "[o.explode] looks at all redundancies as potential hierarchies in a bundle and formats a nested bundles from it.  For every redundancy found, it attempts to group the items falling into that redundacy under a single address (category).  In this example, the groups found are \"/body\", \"/arm\", \"/neck\", \"/hand\", and \"/head\"."
 				}
 
@@ -124,7 +142,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 215.0, 2830.0, 208.0, 245.0 ],
+					"patching_rect" : [ 215.0, 2830.0, 210.0, 245.0 ],
 					"text" : "[o.flatten] takes an odot with hierarchy in place and flattens it into an address space, complete with all redundancies.  In other words, if \"/hand\" has two members \"/finger\" and \"/thumb\", there will be two addresses generated with \"/hand/finger\" and \"/hand/thumb\".  Note that in our example, since we have a subbundle with the name \"/body\", this also gets prepended to the address space for each of the addresses."
 				}
 
@@ -239,7 +257,7 @@
 					"numinlets" : 0,
 					"numoutlets" : 0,
 					"offset" : [ -1.0, -2.0 ],
-					"patching_rect" : [ 770.0, 5393.0, 195.0, 28.0 ],
+					"patching_rect" : [ 717.0, 5440.75, 195.0, 28.0 ],
 					"viewvisibility" : 1
 				}
 
@@ -252,7 +270,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 172.0, 4828.5, 272.0, 167.0 ],
+					"patching_rect" : [ 172.0, 4828.5, 275.0, 167.0 ],
 					"text" : "Here's the solution.\nAgain, when we break a list up into a character array, those elements are technically not strings – they are signed utf-8 bytes.  We can see that in the return of split() with both these cases.\n\nBecause of this, we need to be cognizant of which type we are using when programming when dealing with straings.\n\nWe use map to look for the characters in a split string, as there is no built-in function for this."
 				}
 
@@ -795,7 +813,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 86.5, 1806.0, 368.0, 275.0 ],
+					"patching_rect" : [ 86.5, 1806.0, 371.0, 275.0 ],
 					"text" : "We can think about this from the needs pertaining to the innermost parenthesis and work outwards:\n\n1. we need a list of names representing what is in the bundle, so we call getaddresses()\n2. we need to know the number of items in our bundle.  For this, we calculate the length of the return value of getaddresses()\n3. we need an arithmetic sequence moving from 1 to the number of elements, accomplished with aseq().\n4. we can use this arithmetic sequence, by coercing the int to a string with string concatenation.  \n5. for min(), we'd like pass in a list of values, but we don't want to do this by hand:  Instead, we can employ map()\n6. we pass the value function name to the first argument of map().  \n7. value() takes one argument, requiring a valid address name.  We pass in our concatenated string for each element we've built up in the map()\n8. the return of map is a list of all values in our bundle, in sequence, based on the return of getaddresses()\n9. we take the minimum of this list and assign it to \"/min\"."
 				}
 
@@ -1361,7 +1379,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 469.0, 5409.0, 150.0, 22.0 ]
+					"patching_rect" : [ 416.0, 5456.75, 150.0, 22.0 ]
 				}
 
 			}
@@ -1695,6 +1713,13 @@
 			}
 , 			{
 				"name" : "o.t.banner.maxpat",
+				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/patchers/tutorial",
+				"patcherrelativepath" : ".",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "o.t.objects-covered.maxpat",
 				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/patchers/tutorial",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",

@@ -40,6 +40,26 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"args" : [ "o.compose", "o.expr.codebox", "o.display" ],
+					"bgmode" : 0,
+					"border" : 0,
+					"clickthrough" : 0,
+					"enablehscroll" : 0,
+					"enablevscroll" : 0,
+					"id" : "obj-5",
+					"lockeddragscroll" : 0,
+					"maxclass" : "bpatcher",
+					"name" : "o.t.objects-covered.maxpat",
+					"numinlets" : 0,
+					"numoutlets" : 0,
+					"offset" : [ -5.5, -1.0 ],
+					"patching_rect" : [ 86.0, 2294.0, 834.0, 45.75 ],
+					"viewvisibility" : 1
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-32",
 					"linecount" : 6,
 					"maxclass" : "comment",
@@ -57,7 +77,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 309.5, 451.0, 111.0, 141.0 ],
+					"patching_rect" : [ 309.5, 451.0, 112.0, 141.0 ],
 					"text" : "Method 2: \n\nSend a bundle into an inlet of o.pack, and the input bundle will be assigned to the address that corresponds to the inlet."
 				}
 
@@ -202,7 +222,7 @@
 					"numinlets" : 0,
 					"numoutlets" : 0,
 					"offset" : [ -1.0, -2.0 ],
-					"patching_rect" : [ 776.0, 2237.0, 195.0, 28.0 ],
+					"patching_rect" : [ 725.0, 2341.75, 195.0, 28.0 ],
 					"viewvisibility" : 1
 				}
 
@@ -558,7 +578,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 471.0, 2245.0, 150.0, 20.0 ]
+					"patching_rect" : [ 420.0, 2349.75, 150.0, 20.0 ]
 				}
 
 			}
@@ -771,6 +791,13 @@
 			}
 , 			{
 				"name" : "o.t.linkpatch.maxpat",
+				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/patchers/tutorial",
+				"patcherrelativepath" : ".",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "o.t.objects-covered.maxpat",
 				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/patchers/tutorial",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",

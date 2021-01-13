@@ -4,13 +4,13 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 1,
+			"revision" : 8,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 920.0, 45.0, 1000.0, 647.0 ],
+		"rect" : [ 13.0, 55.0, 1000.0, 647.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 14.0,
@@ -37,19 +37,37 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "Untitled5_template",
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
+				"box" : 				{
+					"args" : [ "o.compose", "o.expr.codebox", "o.display", "o.pack", "o.union", "o.if" ],
+					"bgmode" : 0,
+					"border" : 0,
+					"clickthrough" : 0,
+					"enablehscroll" : 0,
+					"enablevscroll" : 0,
+					"id" : "obj-2",
+					"lockeddragscroll" : 0,
+					"maxclass" : "bpatcher",
+					"name" : "o.t.objects-covered.maxpat",
+					"numinlets" : 0,
+					"numoutlets" : 0,
+					"offset" : [ -5.5, -1.0 ],
+					"patching_rect" : [ 76.333333333333258, 7727.25, 834.0, 45.75 ],
+					"viewvisibility" : 1
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"fontface" : 0,
 					"fontsize" : 14.0,
 					"id" : "obj-233",
-					"linecount" : 6,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 392.0, 7593.5, 565.0, 116.0 ],
-					"presentation_linecount" : 9,
-					"text" : "/list : ['e', 'f', 3, 4, 5, 6, 7, 8, 9.9, 10.1, \"eleven\", true, false, nil, blob(1, 2, 3), {\n\n}],\n/types : ['c', 'C', 'u', 'U', 'i', 'I', 'h', 'H', 'f', 'd', 's', 'T', 'F', 'N', 'b', '.']"
+					"patching_rect" : [ 392.0, 7593.5, 565.0, 36.0 ]
 				}
 
 			}
@@ -64,7 +82,6 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
 					"patching_rect" : [ 392.0, 7490.0, 588.0, 82.0 ],
-					"presentation_linecount" : 8,
 					"text" : "/list = [int8(101), uint8(102), int16(3), uint16(4), 5, uint32(6), int64(7), uint64(8), float32(9.9), 10.1, \"eleven\", true, false, nil, blob([1, 2, 3]), {}],\n/types = typetags(/list)"
 				}
 
@@ -77,8 +94,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 392.0, 7435.5, 479.0, 34.0 ],
-					"presentation_linecount" : 4,
+					"patching_rect" : [ 392.0, 7435.5, 479.0, 38.0 ],
 					"text" : "Most of these types cannot be expressed directly in the text representation of the language, but must be converted from other types when necessary. "
 				}
 
@@ -91,8 +107,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 558.0, 7324.5, 313.0, 48.0 ],
-					"presentation_linecount" : 3,
+					"patching_rect" : [ 558.0, 7324.5, 313.0, 53.0 ],
 					"text" : "Structured:\n-- blob\n-- bundle"
 				}
 
@@ -105,8 +120,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 558.0, 7211.5, 313.0, 34.0 ],
-					"presentation_linecount" : 2,
+					"patching_rect" : [ 558.0, 7211.5, 313.0, 38.0 ],
 					"text" : "String:\n-- string"
 				}
 
@@ -119,8 +133,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 558.0, 7255.5, 332.0, 62.0 ],
-					"presentation_linecount" : 5,
+					"patching_rect" : [ 558.0, 7255.5, 332.0, 69.0 ],
 					"text" : "Unit types (types that only have one possible value):\n-- true\n-- false\n-- nil"
 				}
 
@@ -133,8 +146,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 558.0, 7151.5, 313.0, 48.0 ],
-					"presentation_linecount" : 3,
+					"patching_rect" : [ 558.0, 7151.5, 313.0, 53.0 ],
 					"text" : "Numerical:\n-- signed / unsigned 8, 16, 32, and 64 bit integers\n-- 32 and 64 bit floats"
 				}
 
@@ -146,7 +158,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 558.0, 7115.5, 325.0, 20.0 ],
+					"patching_rect" : [ 558.0, 7115.5, 325.0, 22.0 ],
 					"text" : "Odot supports the following types:"
 				}
 
@@ -156,14 +168,11 @@
 					"fontface" : 0,
 					"fontsize" : 14.0,
 					"id" : "obj-225",
-					"linecount" : 9,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 81.0, 7443.5, 254.0, 163.0 ],
-					"presentation_linecount" : 9,
-					"text" : "/int : 1,\n/float : 2.1,\n/string : \"three\",\n/x/value : 3.1,\n/x/type : 'd',\n/y/value : \"1three\",\n/y/type : 's',\n/z/value : \"2.1string\",\n/z/type : 's'"
+					"patching_rect" : [ 81.0, 7443.5, 254.0, 36.0 ]
 				}
 
 			}
@@ -178,7 +187,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 81.0, 7249.5, 231.0, 58.0 ],
-					"presentation_linecount" : 3,
 					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 47, 105, 110, 116, 0, 0, 0, 0, 44, 105, 0, 0, 0, 0, 0, 1, 0, 0, 0, 20, 47, 102, 108, 111, 97, 116, 0, 0, 44, 100, 0, 0, 64, 0, -52, -52, -52, -52, -52, -51, 0, 0, 0, 20, 47, 115, 116, 114, 105, 110, 103, 0, 44, 115, 0, 0, 116, 104, 114, 101, 101, 0, 0, 0 ],
 					"saved_bundle_length" : 84,
 					"text" : "/int : 1,\n/float : 2.1,\n/string : \"three\""
@@ -196,7 +204,6 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
 					"patching_rect" : [ 81.0, 7318.5, 254.0, 114.0 ],
-					"presentation_linecount" : 12,
 					"text" : "/x/value = /int + /float,\n/x/type = typetags(/x/value),\n/y/value = /int + /string,\n/y/type = typetags(/y/value),\n/z/value = /float + string,\n/z/type = typetags(/z/value)"
 				}
 
@@ -209,8 +216,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 81.0, 7179.5, 325.0, 62.0 ],
-					"presentation_linecount" : 3,
+					"patching_rect" : [ 81.0, 7179.5, 325.0, 69.0 ],
 					"text" : "Many operators and functions can only be applied to arguments of the same type. In cases where mixed types are supplied, odot will reconcile the types by promoting smaller types. "
 				}
 
@@ -223,7 +229,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 119.0, 7121.5, 150.0, 22.0 ],
+					"patching_rect" : [ 119.0, 7121.5, 150.0, 24.0 ],
 					"text" : "sprintf load %s.maxpat"
 				}
 
@@ -236,7 +242,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 119.0, 7155.5, 58.0, 22.0 ],
+					"patching_rect" : [ 119.0, 7155.5, 58.0, 24.0 ],
 					"text" : "pcontrol"
 				}
 
@@ -259,8 +265,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 119.0, 7083.0, 125.0, 20.0 ],
-					"presentation_linecount" : 2,
+					"patching_rect" : [ 119.0, 7083.0, 125.0, 22.0 ],
 					"text" : "odot-osc-compatibility"
 				}
 
@@ -274,8 +279,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 81.0, 7027.0, 337.0, 76.0 ],
-					"presentation_linecount" : 5,
+					"patching_rect" : [ 81.0, 7027.0, 337.0, 85.0 ],
 					"text" : "Note: odot's default floating point type is \"double-precision\", rather than the 32-bit floats required by the OSC 1.0 spec. \n\nSee                                    for more info."
 				}
 
@@ -288,8 +292,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 336.0, 6957.0, 460.0, 48.0 ],
-					"presentation_linecount" : 3,
+					"patching_rect" : [ 336.0, 6957.0, 460.0, 53.0 ],
 					"text" : "i : 32-bit signed integer\nd : 64-bit floating point number\ns : string"
 				}
 
@@ -303,8 +306,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 336.0, 6862.0, 337.0, 34.0 ],
-					"presentation_linecount" : 2,
+					"patching_rect" : [ 336.0, 6862.0, 337.0, 38.0 ],
 					"text" : "Note: unlike Max, \"list\" isn't a type, since everything in odot can be considered a list, even a single item."
 				}
 
@@ -314,13 +316,11 @@
 					"fontface" : 0,
 					"fontsize" : 14.0,
 					"id" : "obj-211",
-					"linecount" : 2,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 81.0, 6957.0, 229.0, 52.0 ],
-					"text" : "/list : [1, 2.1, \"three\"],\n/types : ['i', 'd', 's']"
+					"patching_rect" : [ 81.0, 6957.0, 229.0, 36.0 ]
 				}
 
 			}
@@ -362,8 +362,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 81.0, 6799.0, 460.0, 48.0 ],
-					"presentation_linecount" : 3,
+					"patching_rect" : [ 81.0, 6799.0, 460.0, 53.0 ],
 					"text" : "As we saw above, data can take the form of different types. The most commonly used types are the numerical integer and float types, and the string type."
 				}
 
@@ -376,8 +375,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 393.666666666666742, 6491.5, 353.0, 71.0 ],
-					"presentation_linecount" : 5,
+					"patching_rect" : [ 393.666666666666742, 6491.5, 353.0, 79.0 ],
 					"text" : "getaddresses() produces a list of all the addresses in the working bundle at the moment that the function is envoked.\n\ntypetags() returns a list of characters that represent the types of each item bound to an address"
 				}
 
@@ -387,13 +385,11 @@
 					"fontface" : 0,
 					"fontsize" : 14.0,
 					"id" : "obj-206",
-					"linecount" : 3,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 117.666666666666742, 6570.0, 254.0, 68.0 ],
-					"text" : "/a : [1, 2.1, \"three\"],\n/addresses : \"/a\",\n/typetags/a : ['i', 'd', 's']"
+					"patching_rect" : [ 117.666666666666742, 6570.0, 254.0, 36.0 ]
 				}
 
 			}
@@ -407,7 +403,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 117.666666666666742, 6460.0, 179.0, 24.0 ],
-					"presentation_linecount" : 2,
 					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 32, 47, 97, 0, 0, 44, 105, 100, 115, 0, 0, 0, 0, 0, 0, 0, 1, 64, 0, -52, -52, -52, -52, -52, -51, 116, 104, 114, 101, 101, 0, 0, 0 ],
 					"saved_bundle_length" : 52,
 					"text" : "/a : [1, 2.1, \"three\"]"
@@ -437,8 +432,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 117.666666666666742, 6405.0, 521.0, 32.0 ],
-					"presentation_linecount" : 4,
+					"patching_rect" : [ 117.666666666666742, 6405.0, 521.0, 36.0 ],
 					"text" : "Aside from introspective functions that help make decisions, there are a number of functions that produce descriptions of the contents of a bundle that can be operated on:"
 				}
 
@@ -474,7 +468,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 117.666666666666742, 6283.0, 121.0, 22.0 ],
+					"patching_rect" : [ 117.666666666666742, 6283.0, 121.0, 24.0 ],
 					"text" : "o.if emptybundle()"
 				}
 
@@ -486,7 +480,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 117.666666666666742, 6170.0, 349.0, 19.0 ],
+					"patching_rect" : [ 117.666666666666742, 6170.0, 349.0, 21.0 ],
 					"text" : "Other times, you may want to check for an empty bundle:"
 				}
 
@@ -553,7 +547,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 537.666666666666742, 6070.0, 169.0, 22.0 ],
+					"patching_rect" : [ 537.666666666666742, 6070.0, 169.0, 24.0 ],
 					"text" : "o.if exists(/buttonpressed)"
 				}
 
@@ -566,8 +560,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 537.666666666666742, 5936.0, 349.0, 45.0 ],
-					"presentation_linecount" : 2,
+					"patching_rect" : [ 537.666666666666742, 5936.0, 349.0, 50.0 ],
 					"text" : "Often, you may want to route a bundle depending on whether it contains an address, regardless if that address has a value. For that, you can use the exists() function."
 				}
 
@@ -611,8 +604,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 117.666666666666742, 5809.0, 458.0, 45.0 ],
-					"presentation_linecount" : 2,
+					"patching_rect" : [ 117.666666666666742, 5809.0, 458.0, 50.0 ],
 					"text" : "Internally, the null-coalescing operators make use of the bound() function to check whether an address has a value or not. Below is a slightly more verbose version of the functionality that the null-coalescing operators provide:"
 				}
 
@@ -622,14 +614,11 @@
 					"fontface" : 0,
 					"fontsize" : 12.0,
 					"id" : "obj-186",
-					"linecount" : 2,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 117.666666666666742, 5990.0, 68.0, 48.0 ],
-					"presentation_linecount" : 2,
-					"text" : "/a : 10,\n/y : 20"
+					"patching_rect" : [ 117.666666666666742, 5990.0, 68.0, 34.0 ]
 				}
 
 			}
@@ -686,8 +675,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 154.666666666666742, 5697.0, 681.0, 71.0 ],
-					"presentation_linecount" : 10,
+					"patching_rect" : [ 154.666666666666742, 5697.0, 681.0, 79.0 ],
 					"text" : "The \"??\" and \"??=\" (null-coalescing) operators we saw above are operators that do a type of introspection---they ask questions about the structure or contents of a bundle and then operate accordingly.\n\no.expr has a number of other functions that perform introspection that can be used to make decisions based on the contentents of the working bundle."
 				}
 
@@ -699,7 +687,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 450.666666666666742, 5636.0, 89.0, 20.0 ],
+					"patching_rect" : [ 450.666666666666742, 5636.0, 89.0, 22.0 ],
 					"text" : "Introspection"
 				}
 
@@ -721,7 +709,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 408.166666666666742, 6691.0, 174.0, 20.0 ],
+					"patching_rect" : [ 408.166666666666742, 6691.0, 174.0, 22.0 ],
 					"text" : "Typecasting, type coercion"
 				}
 
@@ -744,8 +732,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 238.666666666666742, 5436.0, 263.0, 97.0 ],
-					"presentation_linecount" : 6,
+					"patching_rect" : [ 238.666666666666742, 5436.0, 263.0, 108.0 ],
 					"text" : "?? produces the value on the right only if the address on the left doesn't already exist and have a binding.\n\n??= is a compound version of ?? that also performs assignment if the address on the left doesn't already exist and have a binding"
 				}
 
@@ -755,14 +742,11 @@
 					"fontface" : 0,
 					"fontsize" : 12.0,
 					"id" : "obj-156",
-					"linecount" : 2,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 512.666666666666742, 5498.0, 150.0, 48.0 ],
-					"presentation_linecount" : 2,
-					"text" : "/x,\n/y : 36"
+					"patching_rect" : [ 512.666666666666742, 5498.0, 150.0, 34.0 ]
 				}
 
 			}
@@ -776,7 +760,6 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
 					"patching_rect" : [ 512.666666666666742, 5436.0, 133.0, 32.0 ],
-					"presentation_linecount" : 2,
 					"text" : "/y = /x ?? 33 + 3"
 				}
 
@@ -789,7 +772,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 707.666666666666742, 5383.0, 235.0, 24.0 ],
+					"patching_rect" : [ 707.666666666666742, 5383.0, 235.0, 26.0 ],
 					"text" : "/x exists, but doesn't have a value"
 				}
 
@@ -802,7 +785,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 707.666666666666742, 5348.0, 196.0, 24.0 ],
+					"patching_rect" : [ 707.666666666666742, 5348.0, 196.0, 26.0 ],
 					"text" : "/x doesn't exist at all"
 				}
 
@@ -815,7 +798,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 707.666666666666742, 5316.0, 196.0, 24.0 ],
+					"patching_rect" : [ 707.666666666666742, 5316.0, 196.0, 26.0 ],
 					"text" : "/x is bound and has a value"
 				}
 
@@ -875,8 +858,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 81.666666666666742, 5300.0, 352.0, 45.0 ],
-					"presentation_linecount" : 3,
+					"patching_rect" : [ 81.666666666666742, 5300.0, 352.0, 50.0 ],
 					"text" : "The special operators \"??\" and \"??=\" are called \"null-coalescing\" operators. They basically say \"if the address on the left doesn't exist, use the value on the right\"."
 				}
 
@@ -886,14 +868,11 @@
 					"fontface" : 0,
 					"fontsize" : 12.0,
 					"id" : "obj-154",
-					"linecount" : 2,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 81.666666666666742, 5498.0, 150.0, 48.0 ],
-					"presentation_linecount" : 2,
-					"text" : "/x : 33,\n/y : 36"
+					"patching_rect" : [ 81.666666666666742, 5498.0, 150.0, 34.0 ]
 				}
 
 			}
@@ -908,7 +887,6 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
 					"patching_rect" : [ 81.666666666666742, 5436.0, 126.0, 46.0 ],
-					"presentation_linecount" : 2,
 					"text" : "/x ??= 33,\n/y = /x + 3"
 				}
 
@@ -921,8 +899,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 81.666666666666742, 5235.0, 464.0, 32.0 ],
-					"presentation_linecount" : 2,
+					"patching_rect" : [ 81.666666666666742, 5235.0, 464.0, 36.0 ],
 					"text" : "In order to be absolutely certain we have a value, we need to make sure that the address not only exists, but has a value bound to it."
 				}
 
@@ -935,8 +912,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 441.666666666666742, 5042.0, 328.0, 84.0 ],
-					"presentation_linecount" : 6,
+					"patching_rect" : [ 441.666666666666742, 5042.0, 328.0, 94.0 ],
 					"text" : "Since o.union prefers the bundle in its left inlet, the contents of the right inlet (our defaults) will only be used if they aren't present in the left (our input bundle).\n\nHowever, this solution doesn't protect us against an address that exists, but doesn't have a value."
 				}
 
@@ -948,7 +924,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 343.166666666666742, 4967.0, 66.0, 22.0 ],
+					"patching_rect" : [ 343.166666666666742, 4967.0, 66.0, 24.0 ],
 					"text" : "loadbang"
 				}
 
@@ -976,7 +952,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 276.166666666666742, 5042.0, 86.0, 22.0 ],
+					"patching_rect" : [ 276.166666666666742, 5042.0, 86.0, 24.0 ],
 					"text" : "o.union"
 				}
 
@@ -989,7 +965,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 482.0, 4931.0, 235.0, 24.0 ],
+					"patching_rect" : [ 482.0, 4931.0, 235.0, 26.0 ],
 					"text" : "/x exists, but doesn't have a value"
 				}
 
@@ -1002,7 +978,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 482.0, 4896.0, 196.0, 24.0 ],
+					"patching_rect" : [ 482.0, 4896.0, 196.0, 26.0 ],
 					"text" : "/x doesn't exist at all"
 				}
 
@@ -1015,7 +991,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 482.0, 4864.0, 196.0, 24.0 ],
+					"patching_rect" : [ 482.0, 4864.0, 196.0, 26.0 ],
 					"text" : "/x is bound and has a value"
 				}
 
@@ -1072,14 +1048,11 @@
 					"fontface" : 0,
 					"fontsize" : 12.0,
 					"id" : "obj-128",
-					"linecount" : 2,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 276.166666666666742, 5123.0, 150.0, 48.0 ],
-					"presentation_linecount" : 2,
-					"text" : "/x,\n/y : 3"
+					"patching_rect" : [ 276.166666666666742, 5123.0, 150.0, 34.0 ]
 				}
 
 			}
@@ -1105,8 +1078,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 82.666666666666742, 4811.0, 464.0, 32.0 ],
-					"presentation_linecount" : 2,
+					"patching_rect" : [ 82.666666666666742, 4811.0, 464.0, 36.0 ],
 					"text" : "A common way to make sure that every address used by o.expr has a value is to \"blend\" in a bundle of default values using o.union:"
 				}
 
@@ -1119,8 +1091,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 482.0, 4619.0, 235.0, 24.0 ],
-					"presentation_linecount" : 2,
+					"patching_rect" : [ 482.0, 4619.0, 235.0, 26.0 ],
 					"text" : "/x exists, but doesn't have a value"
 				}
 
@@ -1133,7 +1104,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 482.0, 4584.0, 196.0, 24.0 ],
+					"patching_rect" : [ 482.0, 4584.0, 196.0, 26.0 ],
 					"text" : "/x doesn't exist at all"
 				}
 
@@ -1146,7 +1117,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 482.0, 4552.0, 196.0, 24.0 ],
+					"patching_rect" : [ 482.0, 4552.0, 196.0, 26.0 ],
 					"text" : "/x is bound and has a value"
 				}
 
@@ -1206,8 +1177,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 445.833333333333485, 4661.0, 404.0, 110.0 ],
-					"presentation_linecount" : 7,
+					"patching_rect" : [ 445.833333333333485, 4661.0, 404.0, 123.0 ],
 					"text" : "The expression to the right of the assignment operator requires /x to exist and have a value in the working bundle in order for that expression to produce a value that can be assigned to /y.\n\nWhen o.expr can't evaluate an expression due to a missing value, writes an error into the Max console. If you haven't done it yet, enter a number in the number box, and check the console which will say that /x is unbound."
 				}
 
@@ -1220,8 +1190,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 82.666666666666742, 4495.0, 461.0, 32.0 ],
-					"presentation_linecount" : 2,
+					"patching_rect" : [ 82.666666666666742, 4495.0, 464.0, 36.0 ],
 					"text" : "First, let's take a look at what happens when an address in an expression can't be found or doesn't have a value in the working bundle:"
 				}
 
@@ -1231,14 +1200,11 @@
 					"fontface" : 0,
 					"fontsize" : 12.0,
 					"id" : "obj-94",
-					"linecount" : 2,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 276.166666666666742, 4723.0, 150.0, 48.0 ],
-					"presentation_linecount" : 2,
-					"text" : "/x,\n/y : 3"
+					"patching_rect" : [ 276.166666666666742, 4723.0, 150.0, 34.0 ]
 				}
 
 			}
@@ -1264,8 +1230,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 228.666666666666742, 4348.0, 533.0, 84.0 ],
-					"presentation_linecount" : 8,
+					"patching_rect" : [ 228.666666666666742, 4348.0, 533.0, 94.0 ],
 					"text" : "It often happens that we write an expression that refers to addresses that we expect to find in the input bundle, but when the bundle arrives, it is missing some of those addresses for one reason or another. \n\nHere, we'll show some strategies for defensive programming designed to keep things working when the unexpected occurs."
 				}
 
@@ -1277,7 +1242,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 428.166666666666742, 4290.0, 134.0, 20.0 ],
+					"patching_rect" : [ 428.166666666666742, 4290.0, 134.0, 22.0 ],
 					"text" : "Unbound addresses"
 				}
 
@@ -1300,8 +1265,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 360.0, 4130.0, 336.0, 32.0 ],
-					"presentation_linecount" : 2,
+					"patching_rect" : [ 360.0, 4130.0, 336.0, 36.0 ],
 					"text" : "o.expr has a number of \"compound operators\" that combine an operation with assignment."
 				}
 
@@ -1315,8 +1279,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 217.0, 4188.0, 153.0, 36.0 ],
-					"text" : "/a : 12.5664"
+					"patching_rect" : [ 217.0, 4188.0, 153.0, 36.0 ]
 				}
 
 			}
@@ -1358,8 +1321,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 188.0, 3927.0, 336.0, 84.0 ],
-					"presentation_linecount" : 6,
+					"patching_rect" : [ 188.0, 3927.0, 336.0, 94.0 ],
 					"text" : "The assignment operator also produces a value, which is the same as the value that was assigned, meaning that an assignment expression can be used as part of another expression. Here, we combine the two lines in the previous example. Although more compact, this is more difficult to read..."
 				}
 
@@ -1369,14 +1331,11 @@
 					"fontface" : 0,
 					"fontsize" : 14.0,
 					"id" : "obj-73",
-					"linecount" : 2,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 543.0, 3985.0, 153.0, 52.0 ],
-					"presentation_linecount" : 2,
-					"text" : "/a : 12.5664,\n/b : 25.1327"
+					"patching_rect" : [ 543.0, 3985.0, 153.0, 36.0 ]
 				}
 
 			}
@@ -1390,7 +1349,6 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
 					"patching_rect" : [ 543.0, 3927.0, 221.0, 34.0 ],
-					"presentation_linecount" : 2,
 					"text" : "/b = (/a = /a * pi()) * 2"
 				}
 
@@ -1419,8 +1377,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 407.0, 3750.0, 336.0, 32.0 ],
-					"presentation_linecount" : 2,
+					"patching_rect" : [ 407.0, 3750.0, 336.0, 36.0 ],
 					"text" : "Here we see that the second time we use /a, it's value has been changed by the first expression."
 				}
 
@@ -1430,14 +1387,11 @@
 					"fontface" : 0,
 					"fontsize" : 14.0,
 					"id" : "obj-63",
-					"linecount" : 2,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 245.0, 3782.0, 153.0, 52.0 ],
-					"presentation_linecount" : 2,
-					"text" : "/a : 12.5664,\n/b : 25.1327"
+					"patching_rect" : [ 245.0, 3782.0, 153.0, 36.0 ]
 				}
 
 			}
@@ -1452,7 +1406,6 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
 					"patching_rect" : [ 245.0, 3724.0, 153.0, 50.0 ],
-					"presentation_linecount" : 2,
 					"text" : "/a = /a * pi(),\n/b = /a * 2"
 				}
 
@@ -1482,8 +1435,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 625.666666666666742, 3581.0, 336.0, 84.0 ],
-					"presentation_linecount" : 6,
+					"patching_rect" : [ 625.666666666666742, 3581.0, 336.0, 94.0 ],
 					"text" : "Note: in this example, we use /a on both sides of the assignment operator. Since everything on the right hand side of the assignment operator must be fully evaluated before assignment can take place, the value of /a on the right will be the old value, that is, the value in the incoming bundle."
 				}
 
@@ -1499,8 +1451,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 534.666666666666742, 3491.0, 349.0, 49.0 ],
-					"presentation_linecount" : 4,
+					"patching_rect" : [ 534.666666666666742, 3491.0, 349.0, 54.0 ],
 					"text" : "Note: the contents of this bundle here in this box never change due to o.expr, since o.expr always operates on a copy of the bundle it receives, never on the original."
 				}
 
@@ -1513,8 +1464,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 107.666666666666742, 3561.0, 336.0, 58.0 ],
-					"presentation_linecount" : 4,
+					"patching_rect" : [ 107.666666666666742, 3561.0, 336.0, 65.0 ],
 					"text" : "It's perfectly fine to assign to an address that already exists. In this case, the old value is overwritten, and each subsequent expression in o.expr will use the new value (unless it is overwritten again)."
 				}
 
@@ -1528,8 +1478,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 460.0, 3609.0, 153.0, 36.0 ],
-					"text" : "/a : 12.5664"
+					"patching_rect" : [ 460.0, 3609.0, 153.0, 36.0 ]
 				}
 
 			}
@@ -1571,8 +1520,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 283.666666666666742, 3346.5, 332.0, 84.0 ],
-					"presentation_linecount" : 4,
+					"patching_rect" : [ 283.666666666666742, 3346.5, 336.0, 94.0 ],
 					"text" : "Here, we use the value of /a in an expression and assign the result to a new address: /a/pi. Although /a/pi has a prefix that is the same as /a, these two addresses are entirely unrelated---they occupy different locations in the bundle, and have no references to each other. They simply bear some textual similarity."
 				}
 
@@ -1582,13 +1530,11 @@
 					"fontface" : 0,
 					"fontsize" : 14.0,
 					"id" : "obj-55",
-					"linecount" : 2,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 120.0, 3397.0, 153.0, 52.0 ],
-					"text" : "/a : 4,\n/a/pi : 12.5664"
+					"patching_rect" : [ 120.0, 3397.0, 153.0, 36.0 ]
 				}
 
 			}
@@ -1613,8 +1559,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 163.666666666666742, 3232.0, 519.0, 19.0 ],
-					"presentation_linecount" : 3,
+					"patching_rect" : [ 163.666666666666742, 3232.0, 519.0, 21.0 ],
 					"text" : "Let's take a moment to clarify some aspects of the way addresses work with assignment."
 				}
 
@@ -1626,8 +1571,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 406.666666666666742, 3180.5, 177.0, 20.0 ],
-					"presentation_linecount" : 3,
+					"patching_rect" : [ 406.666666666666742, 3180.5, 177.0, 22.0 ],
 					"text" : "Addresses and assignmet"
 				}
 
@@ -1666,7 +1610,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 101.0, 2957.0, 58.0, 20.0 ],
+					"patching_rect" : [ 101.0, 2957.0, 58.0, 22.0 ],
 					"text" : "loadbang"
 				}
 
@@ -1679,8 +1623,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 357.666666666666742, 2998.0, 487.0, 102.0 ],
-					"presentation_linecount" : 8,
+					"patching_rect" : [ 357.666666666666742, 2998.0, 487.0, 114.0 ],
 					"text" : "While we're here:  \n\nOdot does not support lists of lists. Take a look at the example to the left. /a and /b are both lists, but when they themselves appear inside a list, odot simply takes their elements and puts them where they appear in the list, expanding it where necessary.\n\nOdot does allow for lists of bundles for cases where a flat list is not sufficiently structured. We will see lists of bundles later.",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -1691,11 +1634,13 @@
 					"fontface" : 0,
 					"fontsize" : 12.0,
 					"id" : "obj-113",
+					"linecount" : 3,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 101.0, 3073.0, 178.0, 34.0 ]
+					"patching_rect" : [ 101.0, 3073.0, 178.0, 61.0 ],
+					"text" : "/a : [1, 2, 3],\n/b : [4, 5, 6],\n/c : [1, 2, 3, 4, 5, 6]"
 				}
 
 			}
@@ -1710,7 +1655,6 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
 					"patching_rect" : [ 101.0, 2998.0, 126.0, 59.0 ],
-					"presentation_linecount" : 3,
 					"text" : "/a = [1, 2, 3], \n/b = [4, 5, 6], \n/c = [/a, /b]"
 				}
 
@@ -1723,7 +1667,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 563.0, 2531.0, 58.0, 20.0 ],
+					"patching_rect" : [ 563.0, 2531.0, 58.0, 22.0 ],
 					"text" : "loadbang"
 				}
 
@@ -1736,7 +1680,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 151.0, 2233.0, 58.0, 20.0 ],
+					"patching_rect" : [ 151.0, 2233.0, 58.0, 22.0 ],
 					"text" : "loadbang"
 				}
 
@@ -1749,8 +1693,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 187.0, 2682.5, 361.0, 30.0 ],
-					"presentation_linecount" : 2,
+					"patching_rect" : [ 187.0, 2682.5, 365.0, 33.0 ],
 					"text" : "The same applies to most functions of scalars. If lists are supplied, o.expr will usually apply the function every element of the list:",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -1767,7 +1710,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 563.0, 2564.0, 150.0, 58.0 ],
-					"presentation_linecount" : 3,
 					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 24, 47, 97, 0, 0, 44, 105, 105, 105, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 2, 0, 0, 0, 3, 0, 0, 0, 16, 47, 98, 0, 0, 44, 105, 105, 0, 0, 0, 0, 4, 0, 0, 0, 5, 0, 0, 0, 12, 47, 99, 0, 0, 44, 105, 0, 0, 0, 0, 0, 6 ],
 					"saved_bundle_length" : 80,
 					"text" : "/a : [1, 2, 3],\n/b : [4, 5],\n/c : 6"
@@ -1785,7 +1727,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 563.0, 2773.0, 234.0, 170.0 ],
-					"presentation_linecount" : 14,
 					"text" : "/a : [1, 2, 3],\n/b : [4, 5],\n/c : 6,\n/sin/a : [0.841471, 0.909297, 0.14112],\n/cos/b : [-0.653644, 0.283662],\n/tan/c : -0.291006,\n/a/pow/b : [1., 32.],\n/b/pow/a : [4., 25.],\n/a/pow/c : [1., 64., 729.],\n/c/pow/a : [6., 36., 216.]"
 				}
 
@@ -1801,7 +1742,6 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
 					"patching_rect" : [ 563.0, 2634.0, 183.0, 127.0 ],
-					"presentation_linecount" : 12,
 					"text" : "/sin/a = sin(/a),\n/cos/b = cos(/b),\n/tan/c = tan(/c),\n\n/a/pow/b = pow(/a, /b),\n/b/pow/a = pow(/b, /a),\n/a/pow/c = pow(/a, /c), \n/c/pow/a = pow(/c, /a)"
 				}
 
@@ -1814,8 +1754,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 246.166666666666742, 2190.0, 498.0, 42.0 ],
-					"presentation_linecount" : 3,
+					"patching_rect" : [ 246.166666666666742, 2190.0, 498.0, 47.0 ],
 					"text" : "When o.expr encounters an expression in which one or both of the operands to an operator are lists, it modifies the lists, expanding or truncating as necessary, to make them the same lengths.",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -1829,8 +1768,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 355.0, 2294.0, 498.0, 114.0 ],
-					"presentation_linecount" : 9,
+					"patching_rect" : [ 355.0, 2294.0, 498.0, 127.0 ],
 					"text" : "As you can see to the left, before applying an operator its operands, o.expr will modify the operands if necessary to make them the same length according to these rules:\n\n1. if both args are scalars, simply apply the operator\n2. if one arg is a scalar and the other is a list, apply the operator to every member of the list, with the scalar as the other argument (another way to say this: expand the scalar into a list of n copies of the scalar, where n is equal to the length of the other operand)\n3. if both args are lists of the same length, apply the operator elementwise\n4. if both args are lists of different length, truncate the longer list to the length of the shorter",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -1847,7 +1785,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 151.0, 2269.0, 150.0, 58.0 ],
-					"presentation_linecount" : 3,
 					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 24, 47, 97, 0, 0, 44, 105, 105, 105, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 2, 0, 0, 0, 3, 0, 0, 0, 16, 47, 98, 0, 0, 44, 105, 105, 0, 0, 0, 0, 4, 0, 0, 0, 5, 0, 0, 0, 12, 47, 99, 0, 0, 44, 105, 0, 0, 0, 0, 0, 6 ],
 					"saved_bundle_length" : 80,
 					"text" : "/a : [1, 2, 3],\n/b : [4, 5],\n/c : 6"
@@ -1865,7 +1802,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 151.0, 2414.0, 169.0, 102.0 ],
-					"presentation_linecount" : 6,
 					"text" : "/a : [1, 2, 3],\n/b : [4, 5],\n/c : 6,\n/a/plus/a : [2, 4, 6],\n/a/plus/b : [5, 7],\n/a/plus/c : [7, 8, 9]"
 				}
 
@@ -1881,7 +1817,6 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
 					"patching_rect" : [ 151.0, 2339.0, 155.0, 59.0 ],
-					"presentation_linecount" : 3,
 					"text" : "/a/plus/a = /a + /a,\n/a/plus/b = /a + /b,\n/a/plus/c = /a + /c"
 				}
 
@@ -1893,8 +1828,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 436.666666666666742, 2137.5, 117.0, 20.0 ],
-					"presentation_linecount" : 2,
+					"patching_rect" : [ 436.666666666666742, 2137.5, 117.0, 22.0 ],
 					"text" : "Scalar expansion"
 				}
 
@@ -1916,7 +1850,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 202.0, 1975.0, 403.0, 18.0 ],
+					"patching_rect" : [ 202.0, 1975.0, 403.0, 20.0 ],
 					"text" : "For a complete list of functions, operators, and constants, see:",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -1930,7 +1864,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 542.0, 2013.5, 150.0, 22.0 ],
+					"patching_rect" : [ 542.0, 2013.5, 150.0, 24.0 ],
 					"text" : "sprintf load %s.maxpat"
 				}
 
@@ -1943,7 +1877,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 542.0, 2047.5, 58.0, 22.0 ],
+					"patching_rect" : [ 542.0, 2047.5, 58.0, 24.0 ],
 					"text" : "pcontrol"
 				}
 
@@ -1966,7 +1900,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 542.0, 1975.0, 92.0, 20.0 ],
+					"patching_rect" : [ 542.0, 1975.0, 92.0, 22.0 ],
 					"text" : "o.expr.overview"
 				}
 
@@ -1978,7 +1912,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 196.0, 1748.96551724137953, 58.0, 22.0 ],
+					"patching_rect" : [ 196.0, 1748.96551724137953, 58.0, 24.0 ],
 					"text" : "post-ast"
 				}
 
@@ -1991,8 +1925,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 311.0, 1778.534482758620925, 400.0, 90.0 ],
-					"presentation_linecount" : 7,
+					"patching_rect" : [ 311.0, 1778.534482758620925, 403.0, 100.0 ],
 					"text" : "As you can see, the sub() function does the same thing as the '-' operator. In fact, internally, o.expr translates operator expressions into function calls. Try sending the \"post-ast\" message and looking in the Max window.\n\nEven assignment has a functional form.\n\nThese are all equaly valid ways of writing the same thing.",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -2005,7 +1938,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 128.0, 1748.96551724137953, 65.0, 22.0 ],
+					"patching_rect" : [ 128.0, 1748.96551724137953, 65.0, 24.0 ],
 					"text" : "o.pack /a"
 				}
 
@@ -2018,7 +1951,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 128.0, 1715.96551724137953, 50.0, 22.0 ]
+					"patching_rect" : [ 128.0, 1715.96551724137953, 50.0, 24.0 ]
 				}
 
 			}
@@ -2027,14 +1960,11 @@
 					"fontface" : 0,
 					"fontsize" : 12.0,
 					"id" : "obj-21",
-					"linecount" : 4,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 128.0, 1860.96551724137953, 126.0, 75.0 ],
-					"presentation_linecount" : 4,
-					"text" : "/a : 34,\n/x : 32,\n/y : 32,\n/z : 32"
+					"patching_rect" : [ 128.0, 1860.96551724137953, 126.0, 34.0 ]
 				}
 
 			}
@@ -2049,7 +1979,6 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
 					"patching_rect" : [ 128.0, 1778.534482758620925, 169.0, 59.0 ],
-					"presentation_linecount" : 5,
 					"text" : "/x = sub(/a, 2),\n/y = /a - 2,\nassign(/z, sub(/a, 2))"
 				}
 
@@ -2062,8 +1991,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 128.0, 1628.0, 534.0, 66.0 ],
-					"presentation_linecount" : 5,
+					"patching_rect" : [ 128.0, 1628.0, 534.0, 74.0 ],
 					"text" : "o.expr supports many functions, some of which correspond to the operators we discussed above (in fact, all operators have some functional equivalent, although, the opposite is not true).\n\nA function call always begins with the name of the function, followed by a list of arguments enclosed in parantheses, like so:",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -2076,7 +2004,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 439.666666666666742, 1581.0, 111.0, 20.0 ],
+					"patching_rect" : [ 439.666666666666742, 1581.0, 111.0, 22.0 ],
 					"text" : "Calling functions"
 				}
 
@@ -2098,7 +2026,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 685.5, 1339.0, 65.0, 22.0 ],
+					"patching_rect" : [ 685.5, 1339.0, 65.0, 24.0 ],
 					"text" : "o.pack /a"
 				}
 
@@ -2111,7 +2039,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 685.5, 1306.0, 50.0, 22.0 ]
+					"patching_rect" : [ 685.5, 1306.0, 50.0, 24.0 ]
 				}
 
 			}
@@ -2123,8 +2051,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 128.0, 1294.0, 534.0, 222.0 ],
-					"presentation_linecount" : 18,
+					"patching_rect" : [ 128.0, 1294.0, 534.0, 248.0 ],
 					"text" : "o.expr.codebox evaluates its expressions when it receives a bundle. It never alters the contents of that input bundle, but rather makes a copy that we can call the \"working bundle\". \n\nHere, we have an input bundle with a single message with address \"/a\", and an expression that refers to that message twice: first as part of an addition operation, and second as part of an assignment. When the addition expression is evaluated, o.expr searches the working bundle for a message that has the address \"/a\", and when it finds it, it replaces the \"/a\" address operand with the contents of the \"/a\" message, resulting in the expression \"1 + 1\", which is then reduced to \"2\".\n\nThe \"/a\" on the left hand side of the assignment operator \"=\" is treated differently. o.expr again searches the working bundle for a message that begins with \"/a\", and since it finds one, it replaces that messages data with the value on the right hand side of the assignment operator. \n\nIn the second expression, there is no message in the working bundle that has the address \"/b\" (yet), so o.expr creates a new message with that address and the value that's on the right hand side of the assignment operator.\n\nFinally, when all of the expressions have been evaluated, the working bundle is output.",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -2137,8 +2064,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 128.0, 1245.0, 593.0, 18.0 ],
-					"presentation_linecount" : 3,
+					"patching_rect" : [ 128.0, 1245.0, 593.0, 20.0 ],
 					"text" : "Before moving on, let's deconstruct what o.expr does when it receives a bundle and performs its computations",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -2149,14 +2075,11 @@
 					"fontface" : 0,
 					"fontsize" : 12.0,
 					"id" : "obj-51",
-					"linecount" : 2,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 685.5, 1456.965517241379303, 97.0, 48.0 ],
-					"presentation_linecount" : 2,
-					"text" : "/a : 17,\n/b : 3"
+					"patching_rect" : [ 685.5, 1456.965517241379303, 97.0, 34.0 ]
 				}
 
 			}
@@ -2171,7 +2094,6 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
 					"patching_rect" : [ 685.5, 1377.534482758620697, 97.0, 46.0 ],
-					"presentation_linecount" : 2,
 					"text" : "/a = /a + 1,\n/b = 3"
 				}
 
@@ -2187,8 +2109,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 382.0, 1027.0, 366.0, 102.0 ],
-					"presentation_linecount" : 6,
+					"patching_rect" : [ 382.0, 1027.0, 369.0, 111.0 ],
 					"text" : "All operators have a \"precedence\" associated with them that determines the order in which they are performed. Just like you were taught in school, multiplication is performed before division, even if it's not the first operation reading from left to right. You can use parentheses to change the order of operations, as they have the highest precedence."
 				}
 
@@ -2200,7 +2121,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 185.0, 1025.0, 65.0, 22.0 ],
+					"patching_rect" : [ 185.0, 1025.0, 65.0, 24.0 ],
 					"text" : "o.pack /a"
 				}
 
@@ -2213,7 +2134,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 185.0, 992.0, 50.0, 22.0 ]
+					"patching_rect" : [ 185.0, 992.0, 50.0, 24.0 ]
 				}
 
 			}
@@ -2222,14 +2143,11 @@
 					"fontface" : 0,
 					"fontsize" : 12.0,
 					"id" : "obj-13",
-					"linecount" : 3,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 185.0, 1115.0, 150.0, 61.0 ],
-					"presentation_linecount" : 3,
-					"text" : "/a : 22,\n/x : 11022,\n/y : 11484"
+					"patching_rect" : [ 185.0, 1115.0, 150.0, 34.0 ]
 				}
 
 			}
@@ -2244,7 +2162,6 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
 					"patching_rect" : [ 185.0, 1055.0, 183.0, 46.0 ],
-					"presentation_linecount" : 2,
 					"text" : "/x = /a + 500 * /a,\n/y = (/a + 500) * /a"
 				}
 
@@ -2256,7 +2173,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 459.666666666666742, 674.0, 71.0, 20.0 ],
+					"patching_rect" : [ 459.666666666666742, 674.0, 71.0, 22.0 ],
 					"text" : "Operators"
 				}
 
@@ -2283,8 +2200,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 185.0, 787.5, 365.0, 138.0 ],
-					"presentation_linecount" : 9,
+					"patching_rect" : [ 185.0, 787.5, 365.0, 151.0 ],
 					"text" : "The expression language supports a number of operators that you may be familiar with from other languages, as well as some more exotic ones. \n\nMostly, they behave the way you might expect: \n\nthe '+' operator adds the thing on its left to the thing on its right, the '=' operator assigns the result of an expression on its right to the name (address) on its left, etc."
 				}
 
@@ -2296,7 +2212,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 568.0, 797.0, 65.0, 22.0 ],
+					"patching_rect" : [ 568.0, 797.0, 65.0, 24.0 ],
 					"text" : "o.pack /a"
 				}
 
@@ -2309,7 +2225,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 568.0, 764.0, 50.0, 22.0 ]
+					"patching_rect" : [ 568.0, 764.0, 50.0, 24.0 ]
 				}
 
 			}
@@ -2318,14 +2234,11 @@
 					"fontface" : 0,
 					"fontsize" : 12.0,
 					"id" : "obj-69",
-					"linecount" : 4,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 568.0, 902.0, 150.0, 75.0 ],
-					"presentation_linecount" : 4,
-					"text" : "/a : 26,\n/add : 526,\n/mult : 13000,\n/mything : 123"
+					"patching_rect" : [ 568.0, 902.0, 150.0, 34.0 ]
 				}
 
 			}
@@ -2340,7 +2253,6 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
 					"patching_rect" : [ 568.0, 827.0, 165.0, 59.0 ],
-					"presentation_linecount" : 3,
 					"text" : "/add = /a + 500,\n/mult = /a * 500, \n/mything = 123"
 				}
 
@@ -2352,7 +2264,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 122.0, 176.0, 760.0, 20.0 ],
+					"patching_rect" : [ 122.0, 176.0, 760.0, 22.0 ],
 					"text" : "In this section, we introduce the odot expression language and discuss some common uses of it.",
 					"textjustification" : 1
 				}
@@ -2373,7 +2285,7 @@
 					"numinlets" : 0,
 					"numoutlets" : 0,
 					"offset" : [ -1.0, -2.0 ],
-					"patching_rect" : [ 764.333333333333258, 7760.0, 195.0, 28.0 ],
+					"patching_rect" : [ 715.333333333333258, 7775.0, 195.0, 28.0 ],
 					"viewvisibility" : 1
 				}
 
@@ -2405,7 +2317,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 692.0, 7776.0, 111.0, 20.0 ]
+					"patching_rect" : [ 643.0, 7791.0, 111.0, 22.0 ]
 				}
 
 			}
@@ -2416,7 +2328,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 129.0, 293.0, 67.0, 18.0 ],
+					"patching_rect" : [ 129.0, 293.0, 67.0, 20.0 ],
 					"text" : "o.compose",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -2429,7 +2341,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 140.0, 424.0, 56.0, 18.0 ],
+					"patching_rect" : [ 140.0, 424.0, 56.0, 20.0 ],
 					"text" : "o.display",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -2442,7 +2354,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 106.0, 351.0, 90.0, 18.0 ],
+					"patching_rect" : [ 106.0, 351.0, 90.0, 20.0 ],
 					"text" : "o.expr.codebox"
 				}
 
@@ -2453,7 +2365,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 887.0, 613.0, 96.0, 20.0 ],
+					"patching_rect" : [ 887.0, 613.0, 96.0, 22.0 ],
 					"text" : "( scroll down )"
 				}
 
@@ -2467,7 +2379,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 216.0, 475.0, 148.0, 66.0 ],
+					"patching_rect" : [ 216.0, 475.0, 148.0, 74.0 ],
 					"text" : "note that [o.display] illuminates when it receives something, even if that something is full of nothing."
 				}
 
@@ -2484,7 +2396,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 418.0, 289.0, 369.0, 186.0 ],
+					"patching_rect" : [ 418.0, 289.0, 369.0, 205.0 ],
 					"text" : "This is [o.expr.codebox].\n\nWe can write expressions in it to operate on any portion of a bundle that it has been passed in. It allows us to manipulate the contents of a bundle by referring to the messages it contains by their addresses, and applying functions and operations to their data.  This particular instance of [o.expr.codebox] has no expression in it, so it simply outputs a copy of its input.\n\n(The o.expr.codebox is also a button that behaves as if it received an empty bundle.)"
 				}
 
@@ -2537,7 +2449,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 781.0, 46.5, 61.0, 22.0 ],
+					"patching_rect" : [ 781.0, 46.5, 61.0, 24.0 ],
 					"text" : "onecopy"
 				}
 
@@ -3094,28 +3006,35 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "advance.maxpat",
-				"bootpath" : "~/Development/CNMAT/CNMAT/CNMAT-odot/patchers/tutorial",
+				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/patchers/tutorial",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "filelist.txt",
-				"bootpath" : "~/Development/CNMAT/CNMAT/CNMAT-odot/patchers/tutorial",
+				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/patchers/tutorial",
 				"patcherrelativepath" : ".",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "close_parent.js",
-				"bootpath" : "~/Development/CNMAT/CNMAT/CNMAT-odot/patchers/tutorial",
+				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/patchers/tutorial",
 				"patcherrelativepath" : ".",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.t.banner.maxpat",
-				"bootpath" : "~/Development/CNMAT/CNMAT/CNMAT-odot/patchers/tutorial",
+				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/patchers/tutorial",
+				"patcherrelativepath" : ".",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "o.t.objects-covered.maxpat",
+				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/patchers/tutorial",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1

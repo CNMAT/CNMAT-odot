@@ -40,14 +40,33 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"args" : [ "o.compose", "o.expr.codebox", "o.display", "o.pack", "o.select", "o.union" ],
+					"bgmode" : 0,
+					"border" : 0,
+					"clickthrough" : 0,
+					"enablehscroll" : 0,
+					"enablevscroll" : 0,
+					"id" : "obj-4",
+					"lockeddragscroll" : 0,
+					"maxclass" : "bpatcher",
+					"name" : "o.t.objects-covered.maxpat",
+					"numinlets" : 0,
+					"numoutlets" : 0,
+					"offset" : [ -5.5, -1.0 ],
+					"patching_rect" : [ 86.0, 7846.0, 834.0, 45.75 ],
+					"viewvisibility" : 1
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"fontsize" : 12.0,
 					"id" : "obj-90",
 					"linecount" : 13,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 517.0, 5925.0, 351.0, 181.0 ],
-					"presentation_linecount" : 13,
+					"patching_rect" : [ 517.0, 5925.0, 355.0, 181.0 ],
 					"text" : "Many of the map() examples so far have assumed that the size of the list being mapped over will not change after the operation occurs.\n\nThis does not have to be the case.\nHere we take an input list, with a piece of criteria to search for.  If the value bound to \"/omit\" is not present, we present that in the \"then\" portion of the if statement.  When we bind the result of this operation to an address, this feature of function mapping acts as a filter for our list.\n\nThe resultant list is smaller than the input, since map finds six instances of '5' in \"/mylist\"."
 				}
 
@@ -74,13 +93,11 @@
 					"fontface" : 0,
 					"fontsize" : 12.0,
 					"id" : "obj-22",
-					"linecount" : 3,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 114.0, 6077.0, 359.0, 61.0 ],
-					"text" : "/mylist : [5, 2, 5, 4, 5, 6, 5, 8, 9, 5, 11, 5],\n/omit : 5,\n/l : [2, 4, 6, 8, 9, 11]"
+					"patching_rect" : [ 114.0, 6077.0, 359.0, 34.0 ]
 				}
 
 			}
@@ -157,8 +174,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 442.0, 4707.5, 156.0, 34.0 ],
-					"text" : "/result : 0.141421"
+					"patching_rect" : [ 442.0, 4707.5, 156.0, 34.0 ]
 				}
 
 			}
@@ -405,13 +421,11 @@
 					"fontface" : 0,
 					"fontsize" : 12.0,
 					"id" : "obj-58",
-					"linecount" : 5,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 258.0, 3778.5, 139.0, 88.0 ],
-					"text" : "/p1/x : 0.1,\n/p1/y : 0.2,\n/p2/x : 0.2,\n/p2/y : 0.1,\n/dist : 0.141421"
+					"patching_rect" : [ 258.0, 3778.5, 139.0, 34.0 ]
 				}
 
 			}
@@ -517,8 +531,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 248.0, 5297.5, 152.0, 34.0 ],
-					"text" : "/result : 1.13137"
+					"patching_rect" : [ 248.0, 5297.5, 152.0, 34.0 ]
 				}
 
 			}
@@ -569,7 +582,7 @@
 					"numinlets" : 0,
 					"numoutlets" : 0,
 					"offset" : [ -1.0, -2.0 ],
-					"patching_rect" : [ 784.0, 7812.0, 195.0, 28.0 ],
+					"patching_rect" : [ 725.0, 7893.75, 195.0, 28.0 ],
 					"viewvisibility" : 1
 				}
 
@@ -595,7 +608,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 367.0, 7826.0, 150.0, 22.0 ]
+					"patching_rect" : [ 363.0, 7906.0, 150.0, 22.0 ]
 				}
 
 			}
@@ -934,7 +947,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 470.0, 5725.0, 256.0, 58.0 ],
-					"text" : "/c : 0.84,\n/myfunc : \"lambda([c], /i = c * 2)\",\n/i : 1.68"
+					"text" : "/c : 0.54,\n/myfunc : \"lambda([c], /i = c * 2)\",\n/i : 1.08"
 				}
 
 			}
@@ -2057,6 +2070,13 @@
 				"name" : "o.linear_ramp.maxpat",
 				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/help/o.expr-helpers",
 				"patcherrelativepath" : "../../help/o.expr-helpers",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "o.t.objects-covered.maxpat",
+				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/patchers/tutorial",
+				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}

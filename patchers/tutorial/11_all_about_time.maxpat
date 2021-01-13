@@ -40,6 +40,26 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"args" : [ "o.pack", "o.union", "o.select", "o.prepend", "o.expr.codebox", "o.route", "o.display", "o.if", "o.was", "o.change", "o.gather", "o.timetag", "o.schedule", "o.compose", "o.var" ],
+					"bgmode" : 0,
+					"border" : 0,
+					"clickthrough" : 0,
+					"enablehscroll" : 0,
+					"enablevscroll" : 0,
+					"id" : "obj-43",
+					"lockeddragscroll" : 0,
+					"maxclass" : "bpatcher",
+					"name" : "o.t.objects-covered.maxpat",
+					"numinlets" : 0,
+					"numoutlets" : 0,
+					"offset" : [ -5.5, -1.0 ],
+					"patching_rect" : [ 74.5, 6020.25, 834.0, 45.75 ],
+					"viewvisibility" : 1
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"fontsize" : 12.0,
 					"id" : "obj-38",
 					"maxclass" : "newobj",
@@ -192,13 +212,11 @@
 					"fontface" : 0,
 					"fontsize" : 12.0,
 					"id" : "obj-40",
-					"linecount" : 7,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 451.0, 2150.0, 153.0, 116.0 ],
-					"text" : "/was/v/1 : 9,\n/was/v/2 : 5,\n/was/v/3 : 5,\n/v/1 : 0,\n/v/2 : 6,\n/v/3 : 4,\n/sum/absdiff : 11."
+					"patching_rect" : [ 451.0, 2150.0, 153.0, 34.0 ]
 				}
 
 			}
@@ -458,13 +476,11 @@
 					"fontface" : 0,
 					"fontsize" : 12.0,
 					"id" : "obj-205",
-					"linecount" : 3,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 233.0, 5670.0, 291.0, 61.0 ],
-					"text" : "/t/start : 2020-12-30T07:36:50.528991Z,\n/t/end : 2020-12-30T07:36:50.530724Z,\n/t/diff : 0.00173301"
+					"patching_rect" : [ 233.0, 5670.0, 291.0, 34.0 ]
 				}
 
 			}
@@ -560,13 +576,11 @@
 					"fontface" : 0,
 					"fontsize" : 12.0,
 					"id" : "obj-213",
-					"linecount" : 3,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 591.0, 5670.0, 291.0, 61.0 ],
-					"text" : "/t/start : 2020-12-30T07:36:50.527698Z,\n/t/end : 2020-12-30T07:36:50.528956Z,\n/t/diff : 0.00125801"
+					"patching_rect" : [ 591.0, 5670.0, 291.0, 34.0 ]
 				}
 
 			}
@@ -1475,7 +1489,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 813.0, 6034.0, 150.0, 20.0 ]
+					"patching_rect" : [ 750.5, 6093.0, 150.0, 20.0 ]
 				}
 
 			}
@@ -1647,7 +1661,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 122.0, 3141.0, 150.0, 48.0 ],
-					"text" : "/diff : [5, 13],\n/sum/diff : 18"
+					"text" : "/diff : [2, -12],\n/sum/diff : -10"
 				}
 
 			}
@@ -2179,7 +2193,7 @@
 					"numinlets" : 0,
 					"numoutlets" : 0,
 					"offset" : [ -1.0, -2.0 ],
-					"patching_rect" : [ 776.0, 6009.0, 195.0, 28.0 ],
+					"patching_rect" : [ 713.5, 6068.0, 195.0, 28.0 ],
 					"viewvisibility" : 1
 				}
 
@@ -3218,6 +3232,13 @@
 				"name" : "o.gather.maxpat",
 				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/patchers/namespace",
 				"patcherrelativepath" : "../namespace",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "o.t.objects-covered.maxpat",
+				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/patchers/tutorial",
+				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}

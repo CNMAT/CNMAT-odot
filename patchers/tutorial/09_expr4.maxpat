@@ -40,6 +40,26 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"args" : [ "o.compose", "o.expr.codebox", "o.display", "o.pack", "o.union", "o.route" ],
+					"bgmode" : 0,
+					"border" : 0,
+					"clickthrough" : 0,
+					"enablehscroll" : 0,
+					"enablevscroll" : 0,
+					"id" : "obj-14",
+					"lockeddragscroll" : 0,
+					"maxclass" : "bpatcher",
+					"name" : "o.t.objects-covered.maxpat",
+					"numinlets" : 0,
+					"numoutlets" : 0,
+					"offset" : [ -5.5, -1.0 ],
+					"patching_rect" : [ 71.0, 4614.0, 834.0, 45.75 ],
+					"viewvisibility" : 1
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-31",
 					"maxclass" : "button",
 					"numinlets" : 1,
@@ -65,7 +85,7 @@
 					"numinlets" : 0,
 					"numoutlets" : 0,
 					"offset" : [ -1.0, -2.0 ],
-					"patching_rect" : [ 774.0, 4523.0, 195.0, 28.0 ],
+					"patching_rect" : [ 710.0, 4661.75, 195.0, 28.0 ],
 					"viewvisibility" : 1
 				}
 
@@ -98,7 +118,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 743.0, 4538.0, 150.0, 22.0 ]
+					"patching_rect" : [ 679.0, 4676.75, 150.0, 22.0 ]
 				}
 
 			}
@@ -349,7 +369,7 @@
 					"patching_rect" : [ 482.5, 4344.5, 187.0, 75.0 ],
 					"setminmax" : [ 0.0, 10.0 ],
 					"settype" : 0,
-					"size" : 10,
+					"size" : 20,
 					"spacing" : 1
 				}
 
@@ -404,9 +424,9 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 340.5, 3749.0, 423.0, 31.0 ],
-					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 28, 47, 105, 110, 108, 105, 115, 116, 0, 44, 105, 105, 105, 0, 0, 0, 0, 0, 0, 0, 9, 0, 0, 0, 5, 0, 0, 0, 1, 0, 0, 0, 20, 47, 115, 116, 97, 114, 116, 118, 97, 108, 0, 0, 0, 44, 105, 0, 0, 0, 0, 0, 0 ],
-					"saved_bundle_length" : 72,
-					"text" : "/inlist : [3, 9, 9],\n/startval : 0"
+					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 112, 47, 105, 110, 108, 105, 115, 116, 0, 44, 105, 105, 105, 105, 105, 105, 105, 105, 105, 105, 105, 105, 105, 105, 105, 105, 105, 105, 105, 105, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 7, 0, 0, 0, 9, 0, 0, 0, 6, 0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 8, 0, 0, 0, 4, 0, 0, 0, 8, 0, 0, 0, 2, 0, 0, 0, 6, 0, 0, 0, 2, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 5, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 3, 0, 0, 0, 4, 0, 0, 0, 1, 0, 0, 0, 20, 47, 115, 116, 97, 114, 116, 118, 97, 108, 0, 0, 0, 44, 105, 0, 0, 0, 0, 0, 0 ],
+					"saved_bundle_length" : 156,
+					"text" : "/inlist : [1, 7, 9, 6, 0, 5, 8, 4, 8, 2, 6, 2, 1, 1, 5, 1, 1, 3, 4, 1],\n/startval : 0"
 				}
 
 			}
@@ -650,9 +670,9 @@
 					"outlettype" : [ "", "" ],
 					"parameter_enable" : 0,
 					"patching_rect" : [ 266.5, 4344.5, 187.0, 75.0 ],
-					"setminmax" : [ 0.0, 10.0 ],
+					"setminmax" : [ 0.0, 20.0 ],
 					"settype" : 0,
-					"size" : 10,
+					"size" : 20,
 					"spacing" : 1
 				}
 
@@ -736,11 +756,13 @@
 					"fontface" : 0,
 					"fontsize" : 10.0,
 					"id" : "obj-46",
+					"linecount" : 5,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 130.0, 4454.0, 509.0, 32.0 ]
+					"patching_rect" : [ 130.0, 4454.0, 509.0, 77.0 ],
+					"text" : "/inlist : [1, 7, 9, 6, 0, 5, 8, 4, 8, 2, 6, 2, 1, 1, 5, 1, 1, 3, 4, 1],\n/startval : 0,\n/list : [1, 3, 4, 1, 1, 7, 9, 6, 0, 5, 8, 4, 8, 2, 6, 2, 1, 1, 5, 1],\n/idx : [16, 17, 18, 19, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],\n/size : 20"
 				}
 
 			}
@@ -767,7 +789,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 109.5, 1684.0, 346.0, 224.0 ],
+					"patching_rect" : [ 109.5, 1684.0, 348.0, 224.0 ],
 					"text" : "Let's look at a particular type of dynamic assignment:  the assignment of a bundle.\n\nThis particular bundle has three addresses:  /x, /y, and /z\nWe might label it so that we can recall it later.\n\nWe do this by passing the bundle in as the data argument to assign.  The name can be concatenated, as in the previous examples, and we can use the value of /n to act as a bundle identifier.  \n\nChoose a number in the number box, then click on the bundle containing our three values.  Note that in the output, we only get our named bundle, since we delete the /bndl and /n addresses before leaving the codebox."
 				}
 
@@ -864,13 +886,11 @@
 					"fontface" : 0,
 					"fontsize" : 12.0,
 					"id" : "obj-45",
-					"linecount" : 5,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 558.0, 1875.0, 145.0, 88.0 ],
-					"text" : "/ourname/7 : {\n\t/x : 10,\n\t/y : 90,\n\t/z : 16\n}"
+					"patching_rect" : [ 558.0, 1875.0, 145.0, 34.0 ]
 				}
 
 			}
@@ -937,13 +957,11 @@
 					"fontface" : 0,
 					"fontsize" : 12.0,
 					"id" : "obj-26",
-					"linecount" : 8,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 59.0, 1407.0, 447.0, 129.0 ],
-					"text" : "/letters : [\"a\", \"b\", \"c\", \"d\", \"e\"],\n/fruits : [\"cranberry\", \"pear\", \"durian\", \"peach\", \"grape\"],\n/replace : \"*\",\n/a/cranberry : \"cr*nberry\",\n/b/pear : \"pe*r\",\n/c/durian : \"duri*n\",\n/d/peach : \"pe*ch\",\n/e/grape : \"gr*pe\""
+					"patching_rect" : [ 59.0, 1407.0, 447.0, 34.0 ]
 				}
 
 			}
@@ -984,13 +1002,11 @@
 					"fontface" : 0,
 					"fontsize" : 12.0,
 					"id" : "obj-35",
-					"linecount" : 7,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 558.0, 1018.0, 311.0, 116.0 ],
-					"text" : "/input : [\"t\", \"i\", \"m\", \"e\", \"s\"],\n/last : \"s\",\n/0/- : \"t\",\n/1/t : \"i\",\n/2/i : \"m\",\n/3/m : \"e\",\n/4/e : \"s\""
+					"patching_rect" : [ 558.0, 1018.0, 311.0, 34.0 ]
 				}
 
 			}
@@ -1030,13 +1046,11 @@
 					"fontface" : 0,
 					"fontsize" : 12.0,
 					"id" : "obj-27",
-					"linecount" : 6,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 97.0, 429.0, 270.0, 102.0 ],
-					"text" : "/input : [\"a\", \"b\", \"c\", \"d\", \"e\"],\n/0 : \"a\",\n/1 : \"b\",\n/2 : \"c\",\n/3 : \"d\",\n/4 : \"e\""
+					"patching_rect" : [ 97.0, 429.0, 270.0, 34.0 ]
 				}
 
 			}
@@ -1666,6 +1680,13 @@
 			}
 , 			{
 				"name" : "o.t.banner.maxpat",
+				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/patchers/tutorial",
+				"patcherrelativepath" : ".",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "o.t.objects-covered.maxpat",
 				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/patchers/tutorial",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
