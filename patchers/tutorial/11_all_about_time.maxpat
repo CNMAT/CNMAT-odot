@@ -40,17 +40,27 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"fontsize" : 12.0,
+					"id" : "obj-38",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "FullPacket", "FullPacket" ],
+					"patching_rect" : [ 122.0, 3006.0, 111.0, 22.0 ],
+					"text" : "o.if exists(/was/v/1)"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"fontface" : 0,
 					"fontsize" : 12.0,
 					"id" : "obj-35",
-					"linecount" : 6,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 451.0, 1967.0, 153.0, 102.0 ],
-					"presentation_linecount" : 6,
-					"text" : "/was/v/1 : 4,\n/was/v/2 : 0,\n/was/v/3 : 6,\n/v/1 : 5,\n/v/2 : 5,\n/v/3 : 8"
+					"patching_rect" : [ 451.0, 1967.0, 153.0, 34.0 ]
 				}
 
 			}
@@ -1637,7 +1647,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 122.0, 3141.0, 150.0, 48.0 ],
-					"text" : "/diff : [3, 3],\n/sum/diff : 6"
+					"text" : "/diff : [5, 13],\n/sum/diff : 18"
 				}
 
 			}
@@ -1690,7 +1700,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 149.5, 1845.0, 194.0, 328.0 ],
+					"patching_rect" : [ 149.5, 1845.0, 196.0, 328.0 ],
 					"text" : "Let's take a look at an example illustrating how we might use more than one value in max to track history.  \n\nWe could of course use [o.accum] for this, but this model helps us illustrate two values generated from a single value.  \n\nWe can cather the relevant addresses to label, and use [o.prepend] to tag them as /was.  In this particular case, we use [change] to only send a value if it crossed the integer boundary, rather than each time a pixel is crossed with our mouse.  \n\nThis might be a good time to bring up another object, [o.change] which does something similar for bundles...  Scroll down for an expansion of this topic."
 				}
 
@@ -2883,6 +2893,13 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-48", 0 ],
+					"source" : [ "obj-38", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-16", 0 ],
 					"source" : [ "obj-39", 0 ]
 				}
@@ -3072,7 +3089,7 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-48", 0 ],
+					"destination" : [ "obj-38", 0 ],
 					"source" : [ "obj-85", 0 ]
 				}
 
