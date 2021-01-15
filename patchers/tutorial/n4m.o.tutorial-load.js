@@ -24,8 +24,7 @@ function printvalues(o){
 //printvalues(tobjects);
 
 Max.addHandler("file", (msg) => {
-	let filename = msg.toString();
-	let rawdata = fs.readFileSync(filename);
+	let rawdata = fs.readFileSync(msg);
 	let tute = JSON.parse(rawdata);
 	let tobjects = tute['patcher']['boxes'];
 	printvalues(tobjects)
