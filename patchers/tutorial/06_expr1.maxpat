@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 13.0, 55.0, 1000.0, 647.0 ],
+		"rect" : [ 11.0, 53.0, 1000.0, 647.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 14.0,
@@ -40,6 +40,32 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"fontsize" : 13.0,
+					"id" : "obj-6",
+					"linecount" : 4,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 720.166666666666742, 5625.0, 219.0, 65.0 ],
+					"presentation_linecount" : 4,
+					"text" : "?? produces the value on the right only if the address on the left doesn't already exist and have a binding."
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-4",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 557.666666666666742, 5537.0, 33.0, 24.0 ],
+					"text" : "thru"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"args" : [ "o.compose", "o.expr.codebox", "o.display", "o.pack", "o.union", "o.if" ],
 					"bgmode" : 0,
 					"border" : 0,
@@ -53,7 +79,7 @@
 					"numinlets" : 0,
 					"numoutlets" : 0,
 					"offset" : [ -5.5, -1.0 ],
-					"patching_rect" : [ 76.333333333333258, 7727.25, 834.0, 45.75 ],
+					"patching_rect" : [ 76.333333333333258, 7922.25, 834.0, 45.75 ],
 					"viewvisibility" : 1
 				}
 
@@ -61,132 +87,136 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 14.0,
+					"fontsize" : 12.0,
 					"id" : "obj-233",
+					"linecount" : 4,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 392.0, 7593.5, 565.0, 36.0 ]
+					"patching_rect" : [ 142.0, 7761.5, 683.0, 75.0 ],
+					"text" : "/list : ['e', 'f', 3, 4, 5, 6, 7, 8, 9.9, 10.1, \"eleven\", true, false, nil, blob(1, 2, 3), {\n\n}],\n/types : ['c', 'C', 'u', 'U', 'i', 'I', 'h', 'H', 'f', 'd', 's', 'T', 'F', 'N', 'b', '.']"
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 14.0,
+					"fontsize" : 12.0,
 					"id" : "obj-232",
-					"linecount" : 4,
+					"linecount" : 6,
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 392.0, 7490.0, 588.0, 82.0 ],
-					"text" : "/list = [int8(101), uint8(102), int16(3), uint16(4), 5, uint32(6), int64(7), uint64(8), float32(9.9), 10.1, \"eleven\", true, false, nil, blob([1, 2, 3]), {}],\n/types = typetags(/list)"
+					"patching_rect" : [ 142.0, 7631.0, 470.0, 100.0 ],
+					"text" : "/list = [\nint8(101), uint8(102), int16(3), uint16(4), 5, uint32(6), int64(7), uint64(8), float32(9.9), 10.1, \"eleven\", true, false, nil, blob([1, 2, 3]), {}\n],\n/types = typetags(/list)"
 				}
 
 			}
 , 			{
 				"box" : 				{
-					"fontsize" : 14.0,
+					"fontsize" : 12.0,
 					"id" : "obj-231",
-					"linecount" : 2,
+					"linecount" : 5,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 392.0, 7435.5, 479.0, 38.0 ],
+					"patching_rect" : [ 640.333333333333258, 7631.0, 218.0, 74.0 ],
 					"text" : "Most of these types cannot be expressed directly in the text representation of the language, but must be converted from other types when necessary. "
 				}
 
 			}
 , 			{
 				"box" : 				{
-					"fontsize" : 14.0,
+					"fontsize" : 13.0,
 					"id" : "obj-230",
 					"linecount" : 3,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 558.0, 7324.5, 313.0, 53.0 ],
+					"patching_rect" : [ 609.0, 7325.0, 72.0, 50.0 ],
 					"text" : "Structured:\n-- blob\n-- bundle"
 				}
 
 			}
 , 			{
 				"box" : 				{
-					"fontsize" : 14.0,
+					"fontsize" : 13.0,
 					"id" : "obj-229",
 					"linecount" : 2,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 558.0, 7211.5, 313.0, 38.0 ],
+					"patching_rect" : [ 609.0, 7190.0, 53.0, 36.0 ],
 					"text" : "String:\n-- string"
 				}
 
 			}
 , 			{
 				"box" : 				{
-					"fontsize" : 14.0,
+					"fontsize" : 13.0,
 					"id" : "obj-228",
 					"linecount" : 4,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 558.0, 7255.5, 332.0, 69.0 ],
+					"patching_rect" : [ 609.0, 7243.0, 309.0, 65.0 ],
 					"text" : "Unit types (types that only have one possible value):\n-- true\n-- false\n-- nil"
 				}
 
 			}
 , 			{
 				"box" : 				{
-					"fontsize" : 14.0,
+					"fontsize" : 13.0,
 					"id" : "obj-227",
 					"linecount" : 3,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 558.0, 7151.5, 313.0, 53.0 ],
+					"patching_rect" : [ 609.0, 7123.0, 291.0, 50.0 ],
 					"text" : "Numerical:\n-- signed / unsigned 8, 16, 32, and 64 bit integers\n-- 32 and 64 bit floats"
 				}
 
 			}
 , 			{
 				"box" : 				{
-					"fontsize" : 14.0,
+					"fontsize" : 13.0,
 					"id" : "obj-226",
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 558.0, 7115.5, 325.0, 22.0 ],
-					"text" : "Odot supports the following types:"
+					"patching_rect" : [ 609.0, 7087.0, 213.0, 21.0 ],
+					"text" : "ODOT supports the following types:"
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 14.0,
+					"fontsize" : 12.0,
 					"id" : "obj-225",
+					"linecount" : 9,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 81.0, 7443.5, 254.0, 36.0 ]
+					"patching_rect" : [ 97.0, 7423.5, 176.0, 143.0 ],
+					"text" : "/int : 1,\n/float : 2.1,\n/string : \"three\",\n/x/value : 3.1,\n/x/type : 'd',\n/y/value : \"1three\",\n/y/type : 's',\n/z/value : \"2.1string\",\n/z/type : 's'"
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 14.0,
+					"fontsize" : 12.0,
 					"id" : "obj-224",
 					"linecount" : 3,
 					"maxclass" : "o.compose",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 81.0, 7249.5, 231.0, 58.0 ],
+					"patching_rect" : [ 97.0, 7229.5, 143.0, 51.0 ],
 					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 47, 105, 110, 116, 0, 0, 0, 0, 44, 105, 0, 0, 0, 0, 0, 1, 0, 0, 0, 20, 47, 102, 108, 111, 97, 116, 0, 0, 44, 100, 0, 0, 64, 0, -52, -52, -52, -52, -52, -51, 0, 0, 0, 20, 47, 115, 116, 114, 105, 110, 103, 0, 44, 115, 0, 0, 116, 104, 114, 101, 101, 0, 0, 0 ],
 					"saved_bundle_length" : 84,
 					"text" : "/int : 1,\n/float : 2.1,\n/string : \"three\""
@@ -196,53 +226,55 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 14.0,
+					"fontsize" : 12.0,
 					"id" : "obj-223",
 					"linecount" : 6,
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 81.0, 7318.5, 254.0, 114.0 ],
+					"patching_rect" : [ 97.0, 7298.5, 219.0, 100.0 ],
 					"text" : "/x/value = /int + /float,\n/x/type = typetags(/x/value),\n/y/value = /int + /string,\n/y/type = typetags(/y/value),\n/z/value = /float + string,\n/z/type = typetags(/z/value)"
 				}
 
 			}
 , 			{
 				"box" : 				{
-					"fontsize" : 14.0,
+					"fontsize" : 12.0,
 					"id" : "obj-222",
-					"linecount" : 4,
+					"linecount" : 7,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 81.0, 7179.5, 325.0, 69.0 ],
+					"patching_rect" : [ 338.0, 7298.5, 180.0, 100.0 ],
 					"text" : "Many operators and functions can only be applied to arguments of the same type. In cases where mixed types are supplied, odot will reconcile the types by promoting smaller types. "
 				}
 
 			}
 , 			{
 				"box" : 				{
+					"fontsize" : 12.0,
 					"hidden" : 1,
 					"id" : "obj-219",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 119.0, 7121.5, 150.0, 24.0 ],
+					"patching_rect" : [ 111.0, 7151.0, 130.0, 22.0 ],
 					"text" : "sprintf load %s.maxpat"
 				}
 
 			}
 , 			{
 				"box" : 				{
+					"fontsize" : 12.0,
 					"hidden" : 1,
 					"id" : "obj-220",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 119.0, 7155.5, 58.0, 24.0 ],
+					"patching_rect" : [ 111.0, 7172.5, 51.0, 22.0 ],
 					"text" : "pcontrol"
 				}
 
@@ -265,7 +297,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 119.0, 7083.0, 125.0, 22.0 ],
+					"patching_rect" : [ 111.0, 7130.0, 125.0, 22.0 ],
 					"text" : "odot-osc-compatibility"
 				}
 
@@ -273,26 +305,26 @@
 , 			{
 				"box" : 				{
 					"fontface" : 2,
-					"fontsize" : 14.0,
+					"fontsize" : 13.0,
 					"id" : "obj-215",
-					"linecount" : 5,
+					"linecount" : 4,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 81.0, 7027.0, 337.0, 85.0 ],
+					"patching_rect" : [ 81.0, 7087.0, 372.0, 65.0 ],
 					"text" : "Note: odot's default floating point type is \"double-precision\", rather than the 32-bit floats required by the OSC 1.0 spec. \n\nSee                                    for more info."
 				}
 
 			}
 , 			{
 				"box" : 				{
-					"fontsize" : 14.0,
+					"fontsize" : 12.0,
 					"id" : "obj-214",
 					"linecount" : 3,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 336.0, 6957.0, 460.0, 53.0 ],
+					"patching_rect" : [ 528.166666666666742, 6992.0, 171.0, 47.0 ],
 					"text" : "i : 32-bit signed integer\nd : 64-bit floating point number\ns : string"
 				}
 
@@ -300,40 +332,42 @@
 , 			{
 				"box" : 				{
 					"fontface" : 2,
-					"fontsize" : 14.0,
+					"fontsize" : 12.0,
 					"id" : "obj-212",
-					"linecount" : 2,
+					"linecount" : 4,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 336.0, 6862.0, 337.0, 38.0 ],
-					"text" : "Note: unlike Max, \"list\" isn't a type, since everything in odot can be considered a list, even a single item."
+					"patching_rect" : [ 516.0, 6897.0, 173.0, 60.0 ],
+					"text" : "unlike in Max, a \"list\" isn't a type, since everything in odot can be considered a list, even a single item."
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 14.0,
+					"fontsize" : 12.0,
 					"id" : "obj-211",
+					"linecount" : 2,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 81.0, 6957.0, 229.0, 36.0 ]
+					"patching_rect" : [ 288.0, 6992.0, 217.0, 48.0 ],
+					"text" : "/list : [1, 2.1, \"three\"],\n/types : ['i', 'd', 's']"
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 14.0,
+					"fontsize" : 12.0,
 					"id" : "obj-210",
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 81.0, 6903.0, 212.0, 34.0 ],
+					"patching_rect" : [ 288.0, 6938.0, 183.0, 34.0 ],
 					"text" : "/types = typetags(/list)"
 				}
 
@@ -341,13 +375,13 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 14.0,
+					"fontsize" : 12.0,
 					"id" : "obj-209",
 					"maxclass" : "o.compose",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 81.0, 6862.0, 231.0, 26.0 ],
+					"patching_rect" : [ 288.0, 6897.0, 201.0, 24.0 ],
 					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 36, 47, 108, 105, 115, 116, 0, 0, 0, 44, 105, 100, 115, 0, 0, 0, 0, 0, 0, 0, 1, 64, 0, -52, -52, -52, -52, -52, -51, 116, 104, 114, 101, 101, 0, 0, 0 ],
 					"saved_bundle_length" : 56,
 					"text" : "/list : [1, 2.1, \"three\"]"
@@ -356,26 +390,25 @@
 			}
 , 			{
 				"box" : 				{
-					"fontsize" : 14.0,
+					"fontsize" : 13.0,
 					"id" : "obj-208",
-					"linecount" : 3,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 81.0, 6799.0, 460.0, 53.0 ],
+					"patching_rect" : [ 50.166666666666742, 6824.0, 890.0, 21.0 ],
 					"text" : "As we saw above, data can take the form of different types. The most commonly used types are the numerical integer and float types, and the string type."
 				}
 
 			}
 , 			{
 				"box" : 				{
-					"fontsize" : 13.0,
+					"fontsize" : 12.0,
 					"id" : "obj-207",
-					"linecount" : 5,
+					"linecount" : 8,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 393.666666666666742, 6491.5, 353.0, 79.0 ],
+					"patching_rect" : [ 520.166666666666742, 6543.0, 211.0, 114.0 ],
 					"text" : "getaddresses() produces a list of all the addresses in the working bundle at the moment that the function is envoked.\n\ntypetags() returns a list of characters that represent the types of each item bound to an address"
 				}
 
@@ -383,13 +416,15 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 14.0,
+					"fontsize" : 12.0,
 					"id" : "obj-206",
+					"linecount" : 3,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 117.666666666666742, 6570.0, 254.0, 36.0 ]
+					"patching_rect" : [ 238.666666666666742, 6643.0, 241.0, 61.0 ],
+					"text" : "/a : [1, 2.1, \"three\"],\n/addresses : \"/a\",\n/typetags/a : ['i', 'd', 's']"
 				}
 
 			}
@@ -402,7 +437,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 117.666666666666742, 6460.0, 179.0, 24.0 ],
+					"patching_rect" : [ 238.666666666666742, 6533.0, 179.0, 24.0 ],
 					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 32, 47, 97, 0, 0, 44, 105, 100, 115, 0, 0, 0, 0, 0, 0, 0, 1, 64, 0, -52, -52, -52, -52, -52, -51, 116, 104, 114, 101, 101, 0, 0, 0 ],
 					"saved_bundle_length" : 52,
 					"text" : "/a : [1, 2.1, \"three\"]"
@@ -412,14 +447,14 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 14.0,
+					"fontsize" : 12.0,
 					"id" : "obj-204",
 					"linecount" : 2,
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 117.666666666666742, 6502.0, 246.0, 50.0 ],
+					"patching_rect" : [ 238.666666666666742, 6575.0, 212.0, 50.0 ],
 					"text" : "/addresses = getaddresses(),\n/typetags/a = typetags(/a)"
 				}
 
@@ -432,7 +467,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 117.666666666666742, 6405.0, 521.0, 36.0 ],
+					"patching_rect" : [ 238.666666666666742, 6478.0, 521.0, 36.0 ],
 					"text" : "Aside from introspective functions that help make decisions, there are a number of functions that produce descriptions of the contents of a bundle that can be operated on:"
 				}
 
@@ -445,7 +480,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 267.666666666666742, 6319.0, 24.0, 24.0 ]
+					"patching_rect" : [ 739.666666666666742, 6398.0, 24.0, 24.0 ]
 				}
 
 			}
@@ -457,18 +492,19 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 117.666666666666742, 6319.0, 24.0, 24.0 ]
+					"patching_rect" : [ 653.666666666666742, 6398.0, 24.0, 24.0 ]
 				}
 
 			}
 , 			{
 				"box" : 				{
+					"fontsize" : 12.0,
 					"id" : "obj-199",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 117.666666666666742, 6283.0, 121.0, 24.0 ],
+					"patching_rect" : [ 653.666666666666742, 6362.0, 105.0, 22.0 ],
 					"text" : "o.if emptybundle()"
 				}
 
@@ -477,10 +513,11 @@
 				"box" : 				{
 					"fontsize" : 13.0,
 					"id" : "obj-200",
+					"linecount" : 2,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 117.666666666666742, 6170.0, 349.0, 21.0 ],
+					"patching_rect" : [ 718.666666666666742, 6264.0, 200.0, 36.0 ],
 					"text" : "Other times, you may want to check for an empty bundle:"
 				}
 
@@ -494,7 +531,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 143.166666666666742, 6235.0, 145.0, 24.0 ],
+					"patching_rect" : [ 679.166666666666742, 6314.0, 145.0, 24.0 ],
 					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 98, 117, 116, 116, 111, 110, 112, 114, 101, 115, 115, 101, 100, 0, 0, 44, 0, 0, 0 ],
 					"saved_bundle_length" : 40,
 					"text" : "/buttonpressed"
@@ -510,7 +547,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 117.666666666666742, 6204.0, 145.0, 24.0 ],
+					"patching_rect" : [ 653.666666666666742, 6283.0, 39.0, 24.0 ],
 					"saved_bundle_data" : [  ],
 					"saved_bundle_length" : 0
 				}
@@ -524,7 +561,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 687.666666666666742, 6106.0, 24.0, 24.0 ]
+					"patching_rect" : [ 526.166666666666742, 6291.0, 24.0, 24.0 ]
 				}
 
 			}
@@ -536,18 +573,19 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 537.666666666666742, 6106.0, 24.0, 24.0 ]
+					"patching_rect" : [ 399.166666666666742, 6291.0, 24.0, 24.0 ]
 				}
 
 			}
 , 			{
 				"box" : 				{
+					"fontsize" : 12.0,
 					"id" : "obj-191",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 537.666666666666742, 6070.0, 169.0, 24.0 ],
+					"patching_rect" : [ 399.166666666666742, 6255.0, 146.0, 22.0 ],
 					"text" : "o.if exists(/buttonpressed)"
 				}
 
@@ -560,7 +598,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 537.666666666666742, 5936.0, 349.0, 50.0 ],
+					"patching_rect" : [ 452.166666666666742, 6141.0, 349.0, 50.0 ],
 					"text" : "Often, you may want to route a bundle depending on whether it contains an address, regardless if that address has a value. For that, you can use the exists() function."
 				}
 
@@ -574,7 +612,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 563.166666666666742, 6022.0, 145.0, 24.0 ],
+					"patching_rect" : [ 424.666666666666742, 6207.0, 121.0, 24.0 ],
 					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 98, 117, 116, 116, 111, 110, 112, 114, 101, 115, 115, 101, 100, 0, 0, 44, 0, 0, 0 ],
 					"saved_bundle_length" : 40,
 					"text" : "/buttonpressed"
@@ -590,7 +628,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 537.666666666666742, 5991.0, 145.0, 24.0 ],
+					"patching_rect" : [ 399.166666666666742, 6176.0, 38.0, 24.0 ],
 					"saved_bundle_data" : [  ],
 					"saved_bundle_length" : 0
 				}
@@ -600,11 +638,11 @@
 				"box" : 				{
 					"fontsize" : 13.0,
 					"id" : "obj-187",
-					"linecount" : 3,
+					"linecount" : 4,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 117.666666666666742, 5809.0, 458.0, 50.0 ],
+					"patching_rect" : [ 236.666666666666742, 5999.0, 431.0, 65.0 ],
 					"text" : "Internally, the null-coalescing operators make use of the bound() function to check whether an address has a value or not. Below is a slightly more verbose version of the functionality that the null-coalescing operators provide:"
 				}
 
@@ -618,7 +656,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 117.666666666666742, 5990.0, 68.0, 34.0 ]
+					"patching_rect" : [ 117.666666666666742, 6136.0, 68.0, 34.0 ]
 				}
 
 			}
@@ -631,7 +669,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 143.166666666666742, 5894.0, 145.0, 24.0 ],
+					"patching_rect" : [ 143.166666666666742, 6040.0, 71.0, 24.0 ],
 					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 12, 47, 97, 0, 0, 44, 105, 0, 0, 0, 0, 0, 10 ],
 					"saved_bundle_length" : 32,
 					"text" : "/a : 10"
@@ -647,7 +685,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 117.666666666666742, 5863.0, 145.0, 24.0 ],
+					"patching_rect" : [ 117.666666666666742, 6009.0, 44.0, 24.0 ],
 					"saved_bundle_data" : [  ],
 					"saved_bundle_length" : 0
 				}
@@ -662,7 +700,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 117.666666666666742, 5936.0, 270.0, 32.0 ],
+					"patching_rect" : [ 117.666666666666742, 6082.0, 270.0, 32.0 ],
 					"text" : "if(bound(/a), /y = /a + 10, /y = 10)"
 				}
 
@@ -671,11 +709,11 @@
 				"box" : 				{
 					"fontsize" : 13.0,
 					"id" : "obj-167",
-					"linecount" : 5,
+					"linecount" : 4,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 154.666666666666742, 5697.0, 681.0, 79.0 ],
+					"patching_rect" : [ 53.666666666666742, 5869.0, 885.5, 65.0 ],
 					"text" : "The \"??\" and \"??=\" (null-coalescing) operators we saw above are operators that do a type of introspection---they ask questions about the structure or contents of a bundle and then operate accordingly.\n\no.expr has a number of other functions that perform introspection that can be used to make decisions based on the contentents of the working bundle."
 				}
 
@@ -687,7 +725,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 450.666666666666742, 5636.0, 89.0, 22.0 ],
+					"patching_rect" : [ 450.666666666666742, 5801.0, 89.0, 22.0 ],
 					"text" : "Introspection"
 				}
 
@@ -698,7 +736,7 @@
 					"maxclass" : "live.line",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 15.0, 5644.5, 960.333333333333485, 5.0 ]
+					"patching_rect" : [ 15.0, 5809.5, 960.333333333333485, 5.0 ]
 				}
 
 			}
@@ -709,8 +747,8 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 408.166666666666742, 6691.0, 174.0, 22.0 ],
-					"text" : "Typecasting, type coercion"
+					"patching_rect" : [ 346.666666666666742, 6751.0, 297.0, 22.0 ],
+					"text" : "Typecasting, type inference, and type coercion"
 				}
 
 			}
@@ -720,7 +758,7 @@
 					"maxclass" : "live.line",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 15.0, 6699.5, 960.333333333333485, 5.0 ]
+					"patching_rect" : [ 15.0, 6759.5, 960.333333333333485, 5.0 ]
 				}
 
 			}
@@ -728,12 +766,12 @@
 				"box" : 				{
 					"fontsize" : 13.0,
 					"id" : "obj-162",
-					"linecount" : 7,
+					"linecount" : 4,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 238.666666666666742, 5436.0, 263.0, 108.0 ],
-					"text" : "?? produces the value on the right only if the address on the left doesn't already exist and have a binding.\n\n??= is a compound version of ?? that also performs assignment if the address on the left doesn't already exist and have a binding"
+					"patching_rect" : [ 278.166666666666742, 5625.0, 219.0, 65.0 ],
+					"text" : "??= is a compound version of ?? that also performs assignment if the address on the left doesn't already exist and have a binding"
 				}
 
 			}
@@ -746,7 +784,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 512.666666666666742, 5498.0, 150.0, 34.0 ]
+					"patching_rect" : [ 557.666666666666742, 5707.0, 82.0, 34.0 ],
+					"text" : "/y : 36"
 				}
 
 			}
@@ -759,7 +798,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 512.666666666666742, 5436.0, 133.0, 32.0 ],
+					"patching_rect" : [ 557.666666666666742, 5631.0, 133.0, 32.0 ],
 					"text" : "/y = /x ?? 33 + 3"
 				}
 
@@ -768,11 +807,12 @@
 				"box" : 				{
 					"bubble" : 1,
 					"bubbleusescolors" : 1,
+					"fontsize" : 12.0,
 					"id" : "obj-147",
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 707.666666666666742, 5383.0, 235.0, 26.0 ],
+					"patching_rect" : [ 675.666666666666742, 5504.0, 205.0, 24.0 ],
 					"text" : "/x exists, but doesn't have a value"
 				}
 
@@ -781,11 +821,12 @@
 				"box" : 				{
 					"bubble" : 1,
 					"bubbleusescolors" : 1,
+					"fontsize" : 12.0,
 					"id" : "obj-148",
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 707.666666666666742, 5348.0, 196.0, 26.0 ],
+					"patching_rect" : [ 675.666666666666742, 5470.0, 133.0, 24.0 ],
 					"text" : "/x doesn't exist at all"
 				}
 
@@ -794,11 +835,12 @@
 				"box" : 				{
 					"bubble" : 1,
 					"bubbleusescolors" : 1,
+					"fontsize" : 12.0,
 					"id" : "obj-149",
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 707.666666666666742, 5316.0, 196.0, 26.0 ],
+					"patching_rect" : [ 675.666666666666742, 5435.0, 172.0, 24.0 ],
 					"text" : "/x is bound and has a value"
 				}
 
@@ -806,13 +848,13 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 14.0,
+					"fontsize" : 12.0,
 					"id" : "obj-150",
 					"maxclass" : "o.compose",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 551.5, 5383.0, 150.0, 26.0 ],
+					"patching_rect" : [ 618.5, 5504.0, 35.0, 24.0 ],
 					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8, 47, 120, 0, 0, 44, 0, 0, 0 ],
 					"saved_bundle_length" : 28,
 					"text" : "/x"
@@ -822,13 +864,13 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 14.0,
+					"fontsize" : 12.0,
 					"id" : "obj-151",
 					"maxclass" : "o.compose",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 532.666666666666742, 5348.0, 150.0, 26.0 ],
+					"patching_rect" : [ 585.5, 5470.0, 34.0, 24.0 ],
 					"saved_bundle_data" : [  ],
 					"saved_bundle_length" : 0
 				}
@@ -837,13 +879,13 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 14.0,
+					"fontsize" : 12.0,
 					"id" : "obj-152",
 					"maxclass" : "o.compose",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 512.666666666666742, 5316.0, 150.0, 26.0 ],
+					"patching_rect" : [ 557.666666666666742, 5435.0, 71.0, 24.0 ],
 					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 12, 47, 120, 0, 0, 44, 105, 0, 0, 0, 0, 0, 10 ],
 					"saved_bundle_length" : 32,
 					"text" : "/x : 10"
@@ -854,11 +896,11 @@
 				"box" : 				{
 					"fontsize" : 13.0,
 					"id" : "obj-153",
-					"linecount" : 3,
+					"linecount" : 5,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 81.666666666666742, 5300.0, 352.0, 50.0 ],
+					"patching_rect" : [ 90.666666666666742, 5424.0, 228.0, 79.0 ],
 					"text" : "The special operators \"??\" and \"??=\" are called \"null-coalescing\" operators. They basically say \"if the address on the left doesn't exist, use the value on the right\"."
 				}
 
@@ -868,11 +910,13 @@
 					"fontface" : 0,
 					"fontsize" : 12.0,
 					"id" : "obj-154",
+					"linecount" : 2,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 81.666666666666742, 5498.0, 150.0, 34.0 ]
+					"patching_rect" : [ 111.666666666666742, 5707.0, 82.0, 48.0 ],
+					"text" : "/x : 33,\n/y : 36"
 				}
 
 			}
@@ -886,7 +930,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 81.666666666666742, 5436.0, 126.0, 46.0 ],
+					"patching_rect" : [ 111.666666666666742, 5631.0, 126.0, 46.0 ],
 					"text" : "/x ??= 33,\n/y = /x + 3"
 				}
 
@@ -899,32 +943,33 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 81.666666666666742, 5235.0, 464.0, 36.0 ],
+					"patching_rect" : [ 90.666666666666742, 5368.0, 425.0, 36.0 ],
 					"text" : "In order to be absolutely certain we have a value, we need to make sure that the address not only exists, but has a value bound to it."
 				}
 
 			}
 , 			{
 				"box" : 				{
-					"fontsize" : 13.0,
+					"fontsize" : 12.0,
 					"id" : "obj-133",
-					"linecount" : 6,
+					"linecount" : 8,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 441.666666666666742, 5042.0, 328.0, 94.0 ],
+					"patching_rect" : [ 453.0, 5170.0, 263.0, 114.0 ],
 					"text" : "Since o.union prefers the bundle in its left inlet, the contents of the right inlet (our defaults) will only be used if they aren't present in the left (our input bundle).\n\nHowever, this solution doesn't protect us against an address that exists, but doesn't have a value."
 				}
 
 			}
 , 			{
 				"box" : 				{
+					"fontsize" : 12.0,
 					"id" : "obj-132",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 343.166666666666742, 4967.0, 66.0, 24.0 ],
+					"patching_rect" : [ 381.666666666666742, 5091.0, 58.0, 22.0 ],
 					"text" : "loadbang"
 				}
 
@@ -932,13 +977,13 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 14.0,
+					"fontsize" : 12.0,
 					"id" : "obj-131",
 					"maxclass" : "o.compose",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 343.166666666666742, 4996.0, 150.0, 26.0 ],
+					"patching_rect" : [ 381.666666666666742, 5120.0, 71.0, 24.0 ],
 					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 12, 47, 120, 0, 0, 44, 105, 0, 0, 0, 0, 0, 33 ],
 					"saved_bundle_length" : 32,
 					"text" : "/x : 33"
@@ -947,65 +992,27 @@
 			}
 , 			{
 				"box" : 				{
+					"fontsize" : 12.0,
 					"id" : "obj-130",
 					"maxclass" : "newobj",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 276.166666666666742, 5042.0, 86.0, 24.0 ],
+					"patching_rect" : [ 276.166666666666742, 5166.0, 124.5, 22.0 ],
 					"text" : "o.union"
 				}
 
 			}
 , 			{
 				"box" : 				{
-					"bubble" : 1,
-					"bubbleusescolors" : 1,
-					"id" : "obj-120",
-					"maxclass" : "comment",
-					"numinlets" : 1,
-					"numoutlets" : 0,
-					"patching_rect" : [ 482.0, 4931.0, 235.0, 26.0 ],
-					"text" : "/x exists, but doesn't have a value"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"bubble" : 1,
-					"bubbleusescolors" : 1,
-					"id" : "obj-121",
-					"maxclass" : "comment",
-					"numinlets" : 1,
-					"numoutlets" : 0,
-					"patching_rect" : [ 482.0, 4896.0, 196.0, 26.0 ],
-					"text" : "/x doesn't exist at all"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"bubble" : 1,
-					"bubbleusescolors" : 1,
-					"id" : "obj-122",
-					"maxclass" : "comment",
-					"numinlets" : 1,
-					"numoutlets" : 0,
-					"patching_rect" : [ 482.0, 4864.0, 196.0, 26.0 ],
-					"text" : "/x is bound and has a value"
-				}
-
-			}
-, 			{
-				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 14.0,
+					"fontsize" : 12.0,
 					"id" : "obj-123",
 					"maxclass" : "o.compose",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 315.0, 4931.0, 150.0, 26.0 ],
+					"patching_rect" : [ 315.0, 5096.0, 35.0, 24.0 ],
 					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8, 47, 120, 0, 0, 44, 0, 0, 0 ],
 					"saved_bundle_length" : 28,
 					"text" : "/x"
@@ -1015,13 +1022,13 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 14.0,
+					"fontsize" : 12.0,
 					"id" : "obj-124",
 					"maxclass" : "o.compose",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 296.166666666666742, 4896.0, 150.0, 26.0 ],
+					"patching_rect" : [ 296.166666666666742, 5061.0, 34.0, 24.0 ],
 					"saved_bundle_data" : [  ],
 					"saved_bundle_length" : 0
 				}
@@ -1030,13 +1037,13 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 14.0,
+					"fontsize" : 12.0,
 					"id" : "obj-125",
 					"maxclass" : "o.compose",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 276.166666666666742, 4864.0, 150.0, 26.0 ],
+					"patching_rect" : [ 276.166666666666742, 5029.0, 71.0, 24.0 ],
 					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 12, 47, 120, 0, 0, 44, 105, 0, 0, 0, 0, 0, 10 ],
 					"saved_bundle_length" : 32,
 					"text" : "/x : 10"
@@ -1052,7 +1059,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 276.166666666666742, 5123.0, 150.0, 34.0 ]
+					"patching_rect" : [ 276.166666666666742, 5278.0, 150.0, 34.0 ]
 				}
 
 			}
@@ -1065,20 +1072,20 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 276.166666666666742, 5076.0, 126.0, 32.0 ],
+					"patching_rect" : [ 276.166666666666742, 5221.0, 126.0, 32.0 ],
 					"text" : "/y = /x + 3"
 				}
 
 			}
 , 			{
 				"box" : 				{
-					"fontsize" : 13.0,
+					"fontsize" : 12.0,
 					"id" : "obj-119",
 					"linecount" : 2,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 82.666666666666742, 4811.0, 464.0, 36.0 ],
+					"patching_rect" : [ 381.666666666666742, 5029.0, 442.0, 33.0 ],
 					"text" : "A common way to make sure that every address used by o.expr has a value is to \"blend\" in a bundle of default values using o.union:"
 				}
 
@@ -1087,11 +1094,12 @@
 				"box" : 				{
 					"bubble" : 1,
 					"bubbleusescolors" : 1,
+					"fontsize" : 12.0,
 					"id" : "obj-118",
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 482.0, 4619.0, 235.0, 26.0 ],
+					"patching_rect" : [ 391.0, 4754.0, 205.0, 24.0 ],
 					"text" : "/x exists, but doesn't have a value"
 				}
 
@@ -1100,11 +1108,12 @@
 				"box" : 				{
 					"bubble" : 1,
 					"bubbleusescolors" : 1,
+					"fontsize" : 12.0,
 					"id" : "obj-117",
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 482.0, 4584.0, 196.0, 26.0 ],
+					"patching_rect" : [ 391.0, 4719.0, 133.0, 24.0 ],
 					"text" : "/x doesn't exist at all"
 				}
 
@@ -1113,11 +1122,12 @@
 				"box" : 				{
 					"bubble" : 1,
 					"bubbleusescolors" : 1,
+					"fontsize" : 12.0,
 					"id" : "obj-110",
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 482.0, 4552.0, 196.0, 26.0 ],
+					"patching_rect" : [ 391.0, 4687.0, 172.0, 24.0 ],
 					"text" : "/x is bound and has a value"
 				}
 
@@ -1125,13 +1135,13 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 14.0,
+					"fontsize" : 12.0,
 					"id" : "obj-106",
 					"maxclass" : "o.compose",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 315.0, 4619.0, 150.0, 26.0 ],
+					"patching_rect" : [ 315.0, 4754.0, 56.166666666666742, 24.0 ],
 					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8, 47, 120, 0, 0, 44, 0, 0, 0 ],
 					"saved_bundle_length" : 28,
 					"text" : "/x"
@@ -1141,13 +1151,13 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 14.0,
+					"fontsize" : 12.0,
 					"id" : "obj-105",
 					"maxclass" : "o.compose",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 296.166666666666742, 4584.0, 150.0, 26.0 ],
+					"patching_rect" : [ 296.166666666666742, 4719.0, 75.0, 24.0 ],
 					"saved_bundle_data" : [  ],
 					"saved_bundle_length" : 0
 				}
@@ -1156,13 +1166,13 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 14.0,
+					"fontsize" : 12.0,
 					"id" : "obj-100",
 					"maxclass" : "o.compose",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 276.166666666666742, 4552.0, 150.0, 26.0 ],
+					"patching_rect" : [ 276.166666666666742, 4687.0, 95.0, 24.0 ],
 					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 12, 47, 120, 0, 0, 44, 105, 0, 0, 0, 0, 0, 10 ],
 					"saved_bundle_length" : 32,
 					"text" : "/x : 10"
@@ -1171,26 +1181,26 @@
 			}
 , 			{
 				"box" : 				{
-					"fontsize" : 13.0,
+					"fontsize" : 12.0,
 					"id" : "obj-99",
-					"linecount" : 8,
+					"linecount" : 10,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 445.833333333333485, 4661.0, 404.0, 123.0 ],
+					"patching_rect" : [ 445.833333333333485, 4804.5, 293.0, 141.0 ],
 					"text" : "The expression to the right of the assignment operator requires /x to exist and have a value in the working bundle in order for that expression to produce a value that can be assigned to /y.\n\nWhen o.expr can't evaluate an expression due to a missing value, writes an error into the Max console. If you haven't done it yet, enter a number in the number box, and check the console which will say that /x is unbound."
 				}
 
 			}
 , 			{
 				"box" : 				{
-					"fontsize" : 13.0,
+					"fontsize" : 12.0,
 					"id" : "obj-97",
-					"linecount" : 2,
+					"linecount" : 3,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 82.666666666666742, 4495.0, 464.0, 36.0 ],
+					"patching_rect" : [ 185.166666666666742, 4614.0, 280.0, 47.0 ],
 					"text" : "First, let's take a look at what happens when an address in an expression can't be found or doesn't have a value in the working bundle:"
 				}
 
@@ -1200,11 +1210,13 @@
 					"fontface" : 0,
 					"fontsize" : 12.0,
 					"id" : "obj-94",
+					"linecount" : 2,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 276.166666666666742, 4723.0, 150.0, 34.0 ]
+					"patching_rect" : [ 276.166666666666742, 4875.0, 86.0, 48.0 ],
+					"text" : "/x,\n/y : 3"
 				}
 
 			}
@@ -1217,7 +1229,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 276.166666666666742, 4661.0, 126.0, 32.0 ],
+					"patching_rect" : [ 276.166666666666742, 4796.0, 90.0, 32.0 ],
 					"text" : "/y = /x + 3"
 				}
 
@@ -1226,11 +1238,11 @@
 				"box" : 				{
 					"fontsize" : 13.0,
 					"id" : "obj-88",
-					"linecount" : 6,
+					"linecount" : 5,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 228.666666666666742, 4348.0, 533.0, 94.0 ],
+					"patching_rect" : [ 185.166666666666742, 4497.0, 620.0, 79.0 ],
 					"text" : "It often happens that we write an expression that refers to addresses that we expect to find in the input bundle, but when the bundle arrives, it is missing some of those addresses for one reason or another. \n\nHere, we'll show some strategies for defensive programming designed to keep things working when the unexpected occurs."
 				}
 
@@ -1242,7 +1254,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 428.166666666666742, 4290.0, 134.0, 22.0 ],
+					"patching_rect" : [ 428.166666666666742, 4425.0, 134.0, 22.0 ],
 					"text" : "Unbound addresses"
 				}
 
@@ -1253,19 +1265,19 @@
 					"maxclass" : "live.line",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 15.0, 4298.5, 960.333333333333485, 5.0 ]
+					"patching_rect" : [ 15.0, 4433.5, 960.333333333333485, 5.0 ]
 				}
 
 			}
 , 			{
 				"box" : 				{
-					"fontsize" : 13.0,
+					"fontsize" : 12.0,
 					"id" : "obj-82",
-					"linecount" : 2,
+					"linecount" : 3,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 360.0, 4130.0, 336.0, 36.0 ],
+					"patching_rect" : [ 513.5, 4277.0, 198.0, 47.0 ],
 					"text" : "o.expr has a number of \"compound operators\" that combine an operation with assignment."
 				}
 
@@ -1273,26 +1285,26 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 14.0,
+					"fontsize" : 12.0,
 					"id" : "obj-77",
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 217.0, 4188.0, 153.0, 36.0 ]
+					"patching_rect" : [ 300.5, 4320.0, 145.0, 34.0 ]
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 14.0,
+					"fontsize" : 12.0,
 					"id" : "obj-79",
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 217.0, 4130.0, 95.0, 34.0 ],
+					"patching_rect" : [ 300.5, 4269.0, 83.0, 34.0 ],
 					"text" : "/a *= pi()"
 				}
 
@@ -1306,7 +1318,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 217.0, 4082.5, 64.0, 24.0 ],
+					"patching_rect" : [ 300.5, 4232.5, 64.0, 24.0 ],
 					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 12, 47, 97, 0, 0, 44, 105, 0, 0, 0, 0, 0, 4 ],
 					"saved_bundle_length" : 32,
 					"text" : "/a : 4"
@@ -1315,13 +1327,13 @@
 			}
 , 			{
 				"box" : 				{
-					"fontsize" : 13.0,
+					"fontsize" : 12.0,
 					"id" : "obj-76",
-					"linecount" : 6,
+					"linecount" : 8,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 188.0, 3927.0, 336.0, 94.0 ],
+					"patching_rect" : [ 253.5, 4043.0, 239.0, 114.0 ],
 					"text" : "The assignment operator also produces a value, which is the same as the value that was assigned, meaning that an assignment expression can be used as part of another expression. Here, we combine the two lines in the previous example. Although more compact, this is more difficult to read..."
 				}
 
@@ -1329,26 +1341,28 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 14.0,
+					"fontsize" : 12.0,
 					"id" : "obj-73",
+					"linecount" : 2,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 543.0, 3985.0, 153.0, 36.0 ]
+					"patching_rect" : [ 556.0, 4126.0, 145.0, 48.0 ],
+					"text" : "/a : 12.5664,\n/b : 25.1327"
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 14.0,
+					"fontsize" : 12.0,
 					"id" : "obj-74",
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 543.0, 3927.0, 221.0, 34.0 ],
+					"patching_rect" : [ 556.0, 4070.0, 191.0, 34.0 ],
 					"text" : "/b = (/a = /a * pi()) * 2"
 				}
 
@@ -1362,7 +1376,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 543.0, 3879.5, 64.0, 24.0 ],
+					"patching_rect" : [ 558.0, 4014.5, 64.0, 24.0 ],
 					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 12, 47, 97, 0, 0, 44, 105, 0, 0, 0, 0, 0, 4 ],
 					"saved_bundle_length" : 32,
 					"text" : "/a : 4"
@@ -1371,13 +1385,13 @@
 			}
 , 			{
 				"box" : 				{
-					"fontsize" : 13.0,
+					"fontsize" : 12.0,
 					"id" : "obj-71",
-					"linecount" : 2,
+					"linecount" : 4,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 407.0, 3750.0, 336.0, 36.0 ],
+					"patching_rect" : [ 501.5, 3867.0, 177.0, 60.0 ],
 					"text" : "Here we see that the second time we use /a, it's value has been changed by the first expression."
 				}
 
@@ -1385,27 +1399,29 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 14.0,
+					"fontsize" : 12.0,
 					"id" : "obj-63",
+					"linecount" : 2,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 245.0, 3782.0, 153.0, 36.0 ]
+					"patching_rect" : [ 300.5, 3925.0, 145.0, 48.0 ],
+					"text" : "/a : 12.5664,\n/b : 25.1327"
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 14.0,
+					"fontsize" : 12.0,
 					"id" : "obj-65",
 					"linecount" : 2,
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 245.0, 3724.0, 153.0, 50.0 ],
+					"patching_rect" : [ 300.5, 3867.0, 119.0, 46.0 ],
 					"text" : "/a = /a * pi(),\n/b = /a * 2"
 				}
 
@@ -1419,7 +1435,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 245.0, 3676.5, 64.0, 24.0 ],
+					"patching_rect" : [ 300.5, 3819.5, 64.0, 24.0 ],
 					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 12, 47, 97, 0, 0, 44, 105, 0, 0, 0, 0, 0, 4 ],
 					"saved_bundle_length" : 32,
 					"text" : "/a : 4"
@@ -1429,13 +1445,13 @@
 , 			{
 				"box" : 				{
 					"fontface" : 2,
-					"fontsize" : 13.0,
+					"fontsize" : 12.0,
 					"id" : "obj-62",
-					"linecount" : 6,
+					"linecount" : 9,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 625.666666666666742, 3581.0, 336.0, 94.0 ],
+					"patching_rect" : [ 222.166666666666742, 3619.0, 206.0, 127.0 ],
 					"text" : "Note: in this example, we use /a on both sides of the assignment operator. Since everything on the right hand side of the assignment operator must be fully evaluated before assignment can take place, the value of /a on the right will be the old value, that is, the value in the incoming bundle."
 				}
 
@@ -1443,28 +1459,30 @@
 , 			{
 				"box" : 				{
 					"bubble" : 1,
+					"bubblepoint" : 0.8,
+					"bubbletextmargin" : 15,
 					"bubbleusescolors" : 1,
 					"fontface" : 2,
-					"fontsize" : 13.0,
+					"fontsize" : 12.0,
 					"id" : "obj-61",
-					"linecount" : 3,
+					"linecount" : 6,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 534.666666666666742, 3491.0, 349.0, 54.0 ],
-					"text" : "Note: the contents of this bundle here in this box never change due to o.expr, since o.expr always operates on a copy of the bundle it receives, never on the original."
+					"patching_rect" : [ 583.5, 3505.0, 207.0, 111.0 ],
+					"text" : "the contents of this bundle here in this box never change, since o.expr always operates on a copy of the bundle it receives (never on the original)."
 				}
 
 			}
 , 			{
 				"box" : 				{
-					"fontsize" : 13.0,
+					"fontsize" : 12.0,
 					"id" : "obj-60",
-					"linecount" : 4,
+					"linecount" : 6,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 107.666666666666742, 3561.0, 336.0, 65.0 ],
+					"patching_rect" : [ 222.166666666666742, 3522.5, 209.0, 87.0 ],
 					"text" : "It's perfectly fine to assign to an address that already exists. In this case, the old value is overwritten, and each subsequent expression in o.expr will use the new value (unless it is overwritten again)."
 				}
 
@@ -1472,26 +1490,27 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 14.0,
+					"fontsize" : 12.0,
 					"id" : "obj-57",
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 460.0, 3609.0, 153.0, 36.0 ]
+					"patching_rect" : [ 485.5, 3702.0, 145.0, 34.0 ],
+					"text" : "/a : 12.5664"
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 14.0,
+					"fontsize" : 12.0,
 					"id" : "obj-58",
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 460.0, 3551.0, 153.0, 34.0 ],
+					"patching_rect" : [ 485.5, 3633.0, 111.0, 32.0 ],
 					"text" : "/a = /a * pi()"
 				}
 
@@ -1505,7 +1524,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 460.0, 3503.5, 64.0, 24.0 ],
+					"patching_rect" : [ 485.5, 3580.0, 64.0, 24.0 ],
 					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 12, 47, 97, 0, 0, 44, 105, 0, 0, 0, 0, 0, 4 ],
 					"saved_bundle_length" : 32,
 					"text" : "/a : 4"
@@ -1514,13 +1533,13 @@
 			}
 , 			{
 				"box" : 				{
-					"fontsize" : 13.0,
+					"fontsize" : 12.0,
 					"id" : "obj-56",
-					"linecount" : 6,
+					"linecount" : 8,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 283.666666666666742, 3346.5, 336.0, 94.0 ],
+					"patching_rect" : [ 460.0, 3299.0, 252.0, 114.0 ],
 					"text" : "Here, we use the value of /a in an expression and assign the result to a new address: /a/pi. Although /a/pi has a prefix that is the same as /a, these two addresses are entirely unrelated---they occupy different locations in the bundle, and have no references to each other. They simply bear some textual similarity."
 				}
 
@@ -1528,26 +1547,26 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 14.0,
+					"fontsize" : 12.0,
 					"id" : "obj-55",
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 120.0, 3397.0, 153.0, 36.0 ]
+					"patching_rect" : [ 274.0, 3397.0, 145.0, 34.0 ]
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 14.0,
+					"fontsize" : 12.0,
 					"id" : "obj-54",
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 120.0, 3339.0, 153.0, 34.0 ],
+					"patching_rect" : [ 274.0, 3339.0, 133.0, 34.0 ],
 					"text" : "/a/pi = /a * pi()"
 				}
 
@@ -1559,7 +1578,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 163.666666666666742, 3232.0, 519.0, 21.0 ],
+					"patching_rect" : [ 209.666666666666742, 3232.0, 519.0, 21.0 ],
 					"text" : "Let's take a moment to clarify some aspects of the way addresses work with assignment."
 				}
 
@@ -1572,7 +1591,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 406.666666666666742, 3180.5, 177.0, 22.0 ],
-					"text" : "Addresses and assignmet"
+					"text" : "Addresses and assignment"
 				}
 
 			}
@@ -1595,7 +1614,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 120.0, 3291.5, 64.0, 24.0 ],
+					"patching_rect" : [ 274.0, 3291.5, 64.0, 24.0 ],
 					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 12, 47, 97, 0, 0, 44, 105, 0, 0, 0, 0, 0, 4 ],
 					"saved_bundle_length" : 32,
 					"text" : "/a : 4"
@@ -1702,14 +1721,14 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 14.0,
+					"fontsize" : 12.0,
 					"id" : "obj-41",
 					"linecount" : 3,
 					"maxclass" : "o.compose",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 563.0, 2564.0, 150.0, 58.0 ],
+					"patching_rect" : [ 563.0, 2564.0, 132.0, 51.0 ],
 					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 24, 47, 97, 0, 0, 44, 105, 105, 105, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 2, 0, 0, 0, 3, 0, 0, 0, 16, 47, 98, 0, 0, 44, 105, 105, 0, 0, 0, 0, 4, 0, 0, 0, 5, 0, 0, 0, 12, 47, 99, 0, 0, 44, 105, 0, 0, 0, 0, 0, 6 ],
 					"saved_bundle_length" : 80,
 					"text" : "/a : [1, 2, 3],\n/b : [4, 5],\n/c : 6"
@@ -1777,14 +1796,14 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 14.0,
+					"fontsize" : 12.0,
 					"id" : "obj-98",
 					"linecount" : 3,
 					"maxclass" : "o.compose",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 151.0, 2269.0, 150.0, 58.0 ],
+					"patching_rect" : [ 151.0, 2269.0, 129.0, 51.0 ],
 					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 24, 47, 97, 0, 0, 44, 105, 105, 105, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 2, 0, 0, 0, 3, 0, 0, 0, 16, 47, 98, 0, 0, 44, 105, 105, 0, 0, 0, 0, 4, 0, 0, 0, 5, 0, 0, 0, 12, 47, 99, 0, 0, 44, 105, 0, 0, 0, 0, 0, 6 ],
 					"saved_bundle_length" : 80,
 					"text" : "/a : [1, 2, 3],\n/b : [4, 5],\n/c : 6"
@@ -1858,26 +1877,28 @@
 			}
 , 			{
 				"box" : 				{
+					"fontsize" : 12.0,
 					"hidden" : 1,
 					"id" : "obj-108",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 542.0, 2013.5, 150.0, 24.0 ],
+					"patching_rect" : [ 542.0, 2013.5, 130.0, 22.0 ],
 					"text" : "sprintf load %s.maxpat"
 				}
 
 			}
 , 			{
 				"box" : 				{
+					"fontsize" : 12.0,
 					"hidden" : 1,
 					"id" : "obj-107",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 542.0, 2047.5, 58.0, 24.0 ],
+					"patching_rect" : [ 542.0, 2047.5, 51.0, 22.0 ],
 					"text" : "pcontrol"
 				}
 
@@ -1907,12 +1928,13 @@
 			}
 , 			{
 				"box" : 				{
+					"fontsize" : 12.0,
 					"id" : "obj-32",
 					"maxclass" : "message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 196.0, 1748.96551724137953, 58.0, 24.0 ],
+					"patching_rect" : [ 196.0, 1748.96551724137953, 51.0, 22.0 ],
 					"text" : "post-ast"
 				}
 
@@ -1933,25 +1955,27 @@
 			}
 , 			{
 				"box" : 				{
+					"fontsize" : 12.0,
 					"id" : "obj-22",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 128.0, 1748.96551724137953, 65.0, 24.0 ],
+					"patching_rect" : [ 128.0, 1748.96551724137953, 57.0, 22.0 ],
 					"text" : "o.pack /a"
 				}
 
 			}
 , 			{
 				"box" : 				{
+					"fontsize" : 12.0,
 					"id" : "obj-25",
 					"maxclass" : "number",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 128.0, 1715.96551724137953, 50.0, 24.0 ]
+					"patching_rect" : [ 128.0, 1715.96551724137953, 47.0, 22.0 ]
 				}
 
 			}
@@ -2021,25 +2045,27 @@
 			}
 , 			{
 				"box" : 				{
+					"fontsize" : 12.0,
 					"id" : "obj-16",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 685.5, 1339.0, 65.0, 24.0 ],
+					"patching_rect" : [ 685.5, 1339.0, 57.0, 22.0 ],
 					"text" : "o.pack /a"
 				}
 
 			}
 , 			{
 				"box" : 				{
+					"fontsize" : 12.0,
 					"id" : "obj-17",
 					"maxclass" : "number",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 685.5, 1306.0, 50.0, 24.0 ]
+					"patching_rect" : [ 685.5, 1306.0, 47.0, 22.0 ]
 				}
 
 			}
@@ -2116,25 +2142,27 @@
 			}
 , 			{
 				"box" : 				{
+					"fontsize" : 12.0,
 					"id" : "obj-11",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 185.0, 1025.0, 65.0, 24.0 ],
+					"patching_rect" : [ 185.0, 1025.0, 57.0, 22.0 ],
 					"text" : "o.pack /a"
 				}
 
 			}
 , 			{
 				"box" : 				{
+					"fontsize" : 12.0,
 					"id" : "obj-12",
 					"maxclass" : "number",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 185.0, 992.0, 50.0, 24.0 ]
+					"patching_rect" : [ 185.0, 992.0, 47.0, 22.0 ]
 				}
 
 			}
@@ -2207,25 +2235,27 @@
 			}
 , 			{
 				"box" : 				{
+					"fontsize" : 12.0,
 					"id" : "obj-67",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 568.0, 797.0, 65.0, 24.0 ],
+					"patching_rect" : [ 568.0, 797.0, 57.0, 22.0 ],
 					"text" : "o.pack /a"
 				}
 
 			}
 , 			{
 				"box" : 				{
+					"fontsize" : 12.0,
 					"id" : "obj-68",
 					"maxclass" : "number",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 568.0, 764.0, 50.0, 24.0 ]
+					"patching_rect" : [ 568.0, 764.0, 47.0, 22.0 ]
 				}
 
 			}
@@ -2285,7 +2315,7 @@
 					"numinlets" : 0,
 					"numoutlets" : 0,
 					"offset" : [ -1.0, -2.0 ],
-					"patching_rect" : [ 715.333333333333258, 7775.0, 195.0, 28.0 ],
+					"patching_rect" : [ 715.333333333333258, 7970.0, 195.0, 28.0 ],
 					"viewvisibility" : 1
 				}
 
@@ -2317,7 +2347,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 643.0, 7791.0, 111.0, 22.0 ]
+					"patching_rect" : [ 643.0, 7986.0, 111.0, 22.0 ]
 				}
 
 			}
@@ -2605,48 +2635,21 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-155", 0 ],
-					"order" : 1,
+					"destination" : [ "obj-4", 0 ],
 					"source" : [ "obj-150", 0 ]
 				}
 
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-157", 0 ],
-					"order" : 0,
-					"source" : [ "obj-150", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-155", 0 ],
-					"order" : 1,
+					"destination" : [ "obj-4", 0 ],
 					"source" : [ "obj-151", 0 ]
 				}
 
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-157", 0 ],
-					"order" : 0,
-					"source" : [ "obj-151", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-155", 0 ],
-					"order" : 1,
-					"source" : [ "obj-152", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-157", 0 ],
-					"order" : 0,
+					"destination" : [ "obj-4", 0 ],
 					"source" : [ "obj-152", 0 ]
 				}
 
@@ -2858,6 +2861,22 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-155", 0 ],
+					"order" : 1,
+					"source" : [ "obj-4", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-157", 0 ],
+					"order" : 0,
+					"source" : [ "obj-4", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-43", 0 ],
 					"source" : [ "obj-41", 0 ]
 				}
@@ -3036,6 +3055,12 @@
 				"name" : "o.t.objects-covered.maxpat",
 				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/patchers/tutorial",
 				"patcherrelativepath" : ".",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "thru.maxpat",
+				"bootpath" : "C74:/patchers/m4l/Pluggo for Live resources/patches",
 				"type" : "JSON",
 				"implicit" : 1
 			}
