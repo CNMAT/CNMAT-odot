@@ -4,13 +4,13 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 1,
+			"revision" : 8,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 474.0, 79.0, 1236.0, 1058.0 ],
+		"rect" : [ 18.0, 54.0, 1069.0, 946.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -21,15 +21,15 @@
 		"gridsnaponopen" : 1,
 		"objectsnaponopen" : 1,
 		"statusbarvisible" : 2,
-		"toolbarvisible" : 1,
-		"lefttoolbarpinned" : 0,
-		"toptoolbarpinned" : 0,
-		"righttoolbarpinned" : 0,
-		"bottomtoolbarpinned" : 0,
-		"toolbars_unpinned_last_save" : 0,
+		"toolbarvisible" : 0,
+		"lefttoolbarpinned" : 2,
+		"toptoolbarpinned" : 2,
+		"righttoolbarpinned" : 2,
+		"bottomtoolbarpinned" : 2,
+		"toolbars_unpinned_last_save" : 15,
 		"tallnewobj" : 0,
 		"boxanimatetime" : 200,
-		"enablehscroll" : 1,
+		"enablehscroll" : 0,
 		"enablevscroll" : 1,
 		"devicewidth" : 0.0,
 		"description" : "",
@@ -37,15 +37,27 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "",
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
+				"box" : 				{
+					"fontface" : 2,
+					"id" : "obj-2",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 966.0, 912.0, 69.0, 20.0 ],
+					"text" : "scroll down"
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"id" : "obj-39",
 					"linecount" : 3,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 492.0, 1033.0, 380.0, 42.0 ],
-					"presentation_linecount" : 3,
+					"patching_rect" : [ 447.0, 1033.0, 380.0, 47.0 ],
 					"text" : "In these two subpatches, we compute the derivatives of some of the values, and then use that derivative to determine what action, if any, the button may have undergone."
 				}
 
@@ -56,13 +68,13 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 1,
-					"outlettype" : [ "" ],
+					"outlettype" : [ "FullPacket" ],
 					"patcher" : 					{
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 1,
-							"revision" : 1,
+							"revision" : 8,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -95,6 +107,7 @@
 						"tags" : "",
 						"style" : "",
 						"subpatcher_template" : "",
+						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
 									"id" : "obj-13",
@@ -128,7 +141,7 @@
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 1,
-									"outlettype" : [ "" ],
+									"outlettype" : [ "FullPacket" ],
 									"patching_rect" : [ 50.0, 183.0, 81.0, 20.0 ],
 									"text" : "o.prependself"
 								}
@@ -154,7 +167,7 @@
 									"maxclass" : "inlet",
 									"numinlets" : 0,
 									"numoutlets" : 1,
-									"outlettype" : [ "" ],
+									"outlettype" : [ "FullPacket" ],
 									"patching_rect" : [ 50.0, 40.0, 30.0, 30.0 ]
 								}
 
@@ -203,7 +216,7 @@
  ]
 					}
 ,
-					"patching_rect" : [ 64.0, 1068.0, 82.0, 20.0 ],
+					"patching_rect" : [ 19.0, 1068.0, 82.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
@@ -221,13 +234,13 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 1,
-					"outlettype" : [ "" ],
+					"outlettype" : [ "FullPacket" ],
 					"patcher" : 					{
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 1,
-							"revision" : 1,
+							"revision" : 8,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -260,6 +273,7 @@
 						"tags" : "",
 						"style" : "",
 						"subpatcher_template" : "",
+						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
 									"id" : "obj-38",
@@ -293,7 +307,7 @@
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 1,
-									"outlettype" : [ "" ],
+									"outlettype" : [ "FullPacket" ],
 									"patching_rect" : [ 50.0, 197.0, 81.0, 20.0 ],
 									"text" : "o.prependself"
 								}
@@ -368,7 +382,7 @@
  ]
 					}
 ,
-					"patching_rect" : [ 64.0, 1033.0, 126.0, 20.0 ],
+					"patching_rect" : [ 19.0, 1033.0, 126.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
@@ -387,8 +401,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 579.0, 466.0, 281.0, 78.0 ],
-					"presentation_linecount" : 6,
+					"patching_rect" : [ 534.0, 466.0, 281.0, 87.0 ],
 					"text" : "Note that the only address in the bundle that doesn't have a prefix is \"/self\". Every bundle will have a message with the address \"/self\" that we can use to dynamically operate on the addresses inside without needing to know the prefix beforehand."
 				}
 
@@ -400,7 +413,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 492.0, 837.0, 380.0, 126.0 ],
+					"patching_rect" : [ 447.0, 837.0, 380.0, 141.0 ],
 					"text" : "Here's the current state of our bundle. We've \n-- recorded our prefix so that we can easily determine what it is when we need to,\n-- bound together the previous values received from the remote device with the current ones, and\n-- given everything a descriptive name so that we can see at a glance what everything is.\n\n\nNow it's time to start processing the data in the bundle."
 				}
 
@@ -415,8 +428,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 64.0, 837.0, 421.0, 170.0 ],
-					"text" : "/self : \"/a\",\n/a/time/local : 2021-01-11T13:33:12.704252Z,\n/a/input : -0.933308,\n/a/was/input : -0.933308,\n/a/button : 0,\n/a/was/button : 0,\n/a/counter : 2507451,\n/a/was/counter : 2507450,\n/a/time/remote : 2021-01-11T13:33:12.704229Z,\n/a/was/time/remote : 2021-01-11T13:33:12.699522Z,\n/a/was/time/local : 2021-01-11T13:33:12.699546Z"
+					"patching_rect" : [ 19.0, 837.0, 421.0, 170.0 ],
+					"text" : "/self : \"/a\",\n/a/time/local : 2021-01-16T09:49:11.976442Z,\n/a/input : 0.108518,\n/a/was/input : 0.204745,\n/a/button : 0,\n/a/was/button : 1,\n/a/counter : 4875,\n/a/was/counter : 4874,\n/a/time/remote : 2021-01-16T09:49:11.976426Z,\n/a/was/time/remote : 2021-01-16T09:49:11.971488Z,\n/a/was/time/local : 2021-01-16T09:49:11.971510Z"
 				}
 
 			}
@@ -427,7 +440,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 702.0, 677.0, 378.0, 114.0 ],
+					"patching_rect" : [ 657.0, 677.0, 378.0, 127.0 ],
 					"text" : "Finally, we assign each value of the list that the device produced to a descriptive address, and we do the same for the previous values. \n\nIdeally, it would be nice if the remote devices produced not only human-readable data, but data that is self-documenting. Given that many devices are resource constrained, this isn't always possible, so we do that work here, on a more powerful machine. We refer to this process as \"leaf-node caching\" of descriptive data that documents the contents of a bundle."
 				}
 
@@ -439,7 +452,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 393.0, 622.0, 344.0, 30.0 ],
+					"patching_rect" : [ 348.0, 622.0, 345.0, 33.0 ],
 					"text" : "The very first time o.was receives a bundle, it has nothing in its history, so here we make sure that it actually produced a value"
 				}
 
@@ -451,7 +464,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 236.5, 622.0, 127.0, 20.0 ],
+					"patching_rect" : [ 191.5, 622.0, 127.0, 22.0 ],
 					"text" : "o.if bound(/was/b/dev)"
 				}
 
@@ -463,7 +476,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 64.0, 622.0, 127.0, 20.0 ],
+					"patching_rect" : [ 19.0, 622.0, 127.0, 22.0 ],
 					"text" : "o.if bound(/was/a/dev)"
 				}
 
@@ -475,7 +488,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 393.0, 573.0, 344.0, 30.0 ],
+					"patching_rect" : [ 348.0, 573.0, 345.0, 33.0 ],
 					"text" : "Now, we record the previous values from the sensor, which will allow us to compare the current state to what came before."
 				}
 
@@ -490,8 +503,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 64.0, 466.0, 506.0, 61.0 ],
-					"text" : "/a/dev : [-0.933308, 0, 2507450, 2021-01-11T13:33:12.699522Z],\n/self : \"/a\",\n/a/time/local : 2021-01-11T13:33:12.699546Z"
+					"patching_rect" : [ 19.0, 466.0, 506.0, 61.0 ],
+					"text" : "/a/dev : [0.108518, 0, 4875, 2021-01-16T09:49:11.976426Z],\n/self : \"/a\",\n/a/time/local : 2021-01-16T09:49:11.976442Z"
 				}
 
 			}
@@ -502,7 +515,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 579.0, 402.0, 281.0, 30.0 ],
+					"patching_rect" : [ 534.0, 402.0, 281.0, 33.0 ],
 					"text" : "Here, we prepend the prefix to the /time/local address, and delete the original."
 				}
 
@@ -517,8 +530,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 64.0, 332.0, 506.0, 61.0 ],
-					"text" : "/a/dev : [-0.933308, 0, 2507450, 2021-01-11T13:33:12.699522Z],\n/time/local : 2021-01-11T13:33:12.699546Z,\n/self : \"/a\""
+					"patching_rect" : [ 19.0, 332.0, 506.0, 61.0 ],
+					"text" : "/b/dev : [0.83394, 0, 4875, 2021-01-16T09:49:11.976090Z],\n/time/local : 2021-01-16T09:49:11.976135Z,\n/self : \"/b\""
 				}
 
 			}
@@ -531,8 +544,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 64.0, 182.0, 506.0, 34.0 ],
-					"text" : "/a/dev : [-0.963116, 0, 2507449, 2021-01-11T13:33:12.694386Z]"
+					"patching_rect" : [ 19.0, 182.0, 506.0, 34.0 ],
+					"text" : "/a/dev : [0.204745, 1, 4874, 2021-01-16T09:49:11.971488Z]"
 				}
 
 			}
@@ -543,7 +556,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 579.0, 270.0, 281.0, 54.0 ],
+					"patching_rect" : [ 534.0, 270.0, 281.0, 60.0 ],
 					"text" : "Here, we take the unique prefix part of the address and assign it as a string to an address called /self. This allows us to programmatically introspect the bundle to find out what its prefix is."
 				}
 
@@ -555,7 +568,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 579.0, 231.0, 266.0, 30.0 ],
+					"patching_rect" : [ 534.0, 231.0, 266.0, 33.0 ],
 					"text" : "Before doing anything else, we record the time that we received the bundle from the device"
 				}
 
@@ -567,7 +580,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 579.0, 182.0, 397.0, 30.0 ],
+					"patching_rect" : [ 534.0, 182.0, 397.0, 33.0 ],
 					"text" : "The goal is to organize the information in the bundle such that it is easier to understand, and easier to manipulate using reusable abstractions."
 				}
 
@@ -579,7 +592,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 131.0, 35.0, 766.0, 138.0 ],
+					"patching_rect" : [ 86.0, 18.0, 766.0, 154.0 ],
 					"text" : "Let's imagine we have a few devices sending data to us over a network asynchronously. The devices each send a single message of the form: \n\n/<prefix>/dev : [<input value>, <button value>, <counter>, <time>]\n\nwhere\n\n<prefix> is a single letter prefix, unique to each device so that we can identify which is which,\n<input value> is the value of some sensor we're reading\n<button value> is the value of some button that can be either 0 for \"not pressed\" or 1 for \"pressed\"\n<counter> is an integer that increments by 1 each time a packet is set--that way we can tell if any packets were dropped\n<time> is the time on the device as reported by some realtime clock"
 				}
 
@@ -594,7 +607,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 64.0, 402.0, 399.0, 46.0 ],
+					"patching_rect" : [ 19.0, 402.0, 399.0, 46.0 ],
 					"text" : "assign(/self + \"/time/local\", /time/local),\ndelete(/time/local)"
 				}
 
@@ -606,7 +619,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 236.5, 573.0, 143.0, 20.0 ],
+					"patching_rect" : [ 191.5, 573.0, 143.0, 22.0 ],
 					"text" : "o.was /b/dev /b/time/local"
 				}
 
@@ -618,7 +631,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 64.0, 573.0, 143.0, 20.0 ],
+					"patching_rect" : [ 19.0, 573.0, 143.0, 22.0 ],
 					"text" : "o.was /a/dev /a/time/local"
 				}
 
@@ -630,7 +643,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 3,
 					"outlettype" : [ "FullPacket", "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 64.0, 542.0, 364.0, 20.0 ],
+					"patching_rect" : [ 19.0, 542.0, 364.0, 22.0 ],
 					"text" : "o.cond /self == \\\"/a\\\"\\, /self == \\\"/b\\\""
 				}
 
@@ -645,7 +658,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 64.0, 677.0, 630.0, 127.0 ],
+					"patching_rect" : [ 19.0, 677.0, 630.0, 127.0 ],
 					"text" : "map(lambda([address, value, was_value], \n           assign(/self + address, value),\n           assign(/self + \"/was\" + address, was_value)), \n    [\"/input\", \"/button\", \"/counter\", \"/time/remote\"],\n    value(/self + \"/dev\"),\n    value(\"/was\" + /self + \"/dev\")),\nassign(/self + \"/was/time/local\", value(\"/was\" + /self + \"/time/local\")),\nmap(delete, [\"/was\" + /self + \"/dev\", \"/was\" + /self + \"/time/local\", /self + \"/dev\"])"
 				}
 
@@ -657,7 +670,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 64.0, 236.0, 115.0, 20.0 ],
+					"patching_rect" : [ 19.0, 236.0, 115.0, 22.0 ],
 					"text" : "o.timetag /time/local"
 				}
 
@@ -672,8 +685,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 64.0, 1144.0, 421.0, 224.0 ],
-					"text" : "/a/time/local : 2021-01-11T11:54:34.993544Z,\n/a/input : 0.753773,\n/a/was/input : 0.753773,\n/a/button : 0,\n/a/was/button : 0,\n/a/counter : 1323880,\n/a/was/counter : 1323879,\n/a/time/remote : 2021-01-11T11:54:34.993517Z,\n/a/was/time/remote : 2021-01-11T11:54:34.988668Z,\n/a/was/time/local : 2021-01-11T11:54:34.988700Z,\n/a/d/input : 0.,\n/a/d/button : 0,\n/a/d/counter : 1,\n/a/button/action : \"none\",\n/self : \"/a\""
+					"patching_rect" : [ 19.0, 1144.0, 421.0, 224.0 ],
+					"text" : "/b/time/local : 2021-01-16T09:49:08.596144Z,\n/b/input : 0.995892,\n/b/was/input : 0.995892,\n/b/button : 0,\n/b/was/button : 0,\n/b/counter : 4199,\n/b/was/counter : 4198,\n/b/time/remote : 2021-01-16T09:49:08.596090Z,\n/b/was/time/remote : 2021-01-16T09:49:08.591154Z,\n/b/was/time/local : 2021-01-16T09:49:08.591204Z,\n/b/d/input : 0.,\n/b/d/button : 0,\n/b/d/counter : 1,\n/b/button/action : \"none\",\n/self : \"/b\""
 				}
 
 			}
@@ -687,7 +700,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 64.0, 274.0, 506.0, 45.0 ],
+					"patching_rect" : [ 19.0, 274.0, 506.0, 45.0 ],
 					"text" : "/self = \"/\" + split(\"/\", getbundlemember(match(\"/*/dev\", getaddresses()), /full))[[0]]"
 				}
 
@@ -704,7 +717,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 1,
-							"revision" : 1,
+							"revision" : 8,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -737,6 +750,7 @@
 						"tags" : "",
 						"style" : "",
 						"subpatcher_template" : "",
+						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
 									"id" : "obj-35",
@@ -1543,7 +1557,7 @@
  ]
 					}
 ,
-					"patching_rect" : [ 64.0, 35.0, 45.0, 20.0 ],
+					"patching_rect" : [ 19.0, 35.0, 45.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
@@ -1678,28 +1692,28 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "o.was.maxpat",
-				"bootpath" : "~/Development/CNMAT/CNMAT/CNMAT-odot/dev",
+				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/dev",
 				"patcherrelativepath" : "../dev",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.righttoleft.maxpat",
-				"bootpath" : "~/Development/CNMAT/CNMAT/CNMAT-odot/patchers/ordering",
+				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/patchers/ordering",
 				"patcherrelativepath" : "../patchers/ordering",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.routeself.maxpat",
-				"bootpath" : "~/Development/CNMAT/CNMAT/CNMAT-odot/dev",
+				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/dev",
 				"patcherrelativepath" : "../dev",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.prependself.maxpat",
-				"bootpath" : "~/Development/CNMAT/CNMAT/CNMAT-odot/dev",
+				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/dev",
 				"patcherrelativepath" : "../dev",
 				"type" : "JSON",
 				"implicit" : 1
