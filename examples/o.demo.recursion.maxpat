@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 5,
+			"revision" : 8,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -62,7 +62,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 466.0, 525.0, 251.0, 56.0 ],
+					"patching_rect" : [ 466.0, 525.0, 254.0, 56.0 ],
 					"text" : "NOTE: currently odot does not protect against stack overflow caused by unchecked recursion... use with care as this can quickly cause max to crash!",
 					"textcolor" : [ 0.784314, 0.145098, 0.023529, 1.0 ]
 				}
@@ -85,13 +85,11 @@
 					"fontface" : 0,
 					"fontsize" : 11.0,
 					"id" : "obj-8",
-					"linecount" : 2,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 466.0, 456.0, 436.0, 45.0 ],
-					"text" : "/whileloop : \"lambda(j, j < 6 ? apply( /whileloop, j+1 ) : j)\",\n/r : 6"
+					"patching_rect" : [ 466.0, 456.0, 436.0, 33.0 ]
 				}
 
 			}
@@ -640,8 +638,8 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "o.recurse.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/CNMAT-odot/patchers/recursion",
-				"patcherrelativepath" : "../../../../../Max 8/Packages/CNMAT-odot/patchers/recursion",
+				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/patchers/recursion",
+				"patcherrelativepath" : "../patchers/recursion",
 				"type" : "JSON",
 				"implicit" : 1
 			}
@@ -677,7 +675,8 @@
 				"type" : "iLaX"
 			}
  ],
-		"autosave" : 0
+		"autosave" : 0,
+		"bgcolor" : [ 0.996078, 0.996078, 0.996078, 1.0 ]
 	}
 
 }
