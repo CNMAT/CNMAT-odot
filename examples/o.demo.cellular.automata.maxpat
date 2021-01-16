@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 5,
+			"revision" : 8,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -126,7 +126,6 @@
 				"box" : 				{
 					"id" : "obj-12",
 					"maxclass" : "jit.pwindow",
-					"name" : "u066005985",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "jit_matrix", "" ],
@@ -159,7 +158,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "jit_matrix" ],
-					"patching_rect" : [ 531.0, 38.0, 100.0, 100.0 ],
+					"patching_rect" : [ 642.0, 25.0, 100.0, 100.0 ],
 					"pic" : "/Users/jml/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/icon.png"
 				}
 
@@ -274,7 +273,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 659.0, 38.0, 123.0, 43.0 ],
+					"patching_rect" : [ 642.0, 127.0, 123.0, 43.0 ],
 					"text" : "Cellular Automata in O.\nIlya Rostovstev 2014\nJeff Lubow 2020"
 				}
 
@@ -587,8 +586,8 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "o.recurse.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/CNMAT-odot/patchers/recursion",
-				"patcherrelativepath" : "../../../../../Max 8/Packages/CNMAT-odot/patchers/recursion",
+				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/patchers/recursion",
+				"patcherrelativepath" : "../patchers/recursion",
 				"type" : "JSON",
 				"implicit" : 1
 			}
@@ -616,7 +615,8 @@
 				"type" : "iLaX"
 			}
  ],
-		"autosave" : 0
+		"autosave" : 0,
+		"bgcolor" : [ 0.996078, 0.996078, 0.996078, 1.0 ]
 	}
 
 }
