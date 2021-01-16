@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 5,
+			"revision" : 8,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -64,7 +64,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 1,
-							"revision" : 5,
+							"revision" : 8,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -398,8 +398,8 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "o.recurse.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/CNMAT-odot/patchers/recursion",
-				"patcherrelativepath" : "../../../../../Max 8/Packages/CNMAT-odot/patchers/recursion",
+				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/patchers/recursion",
+				"patcherrelativepath" : "../patchers/recursion",
 				"type" : "JSON",
 				"implicit" : 1
 			}
@@ -423,7 +423,8 @@
 				"type" : "iLaX"
 			}
  ],
-		"autosave" : 0
+		"autosave" : 0,
+		"bgcolor" : [ 0.996078, 0.996078, 0.996078, 1.0 ]
 	}
 
 }
