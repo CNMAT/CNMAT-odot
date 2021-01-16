@@ -4,13 +4,13 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 1,
+			"revision" : 8,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 50.0, 89.0, 398.0, 345.0 ],
+		"rect" : [ 50.0, 89.0, 477.0, 344.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 14.0,
@@ -37,7 +37,22 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "Untitled5_template",
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
+				"box" : 				{
+					"fontsize" : 12.0,
+					"id" : "obj-6",
+					"linecount" : 8,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 208.0, 50.5, 245.0, 114.0 ],
+					"presentation_linecount" : 8,
+					"text" : "logical not operator \n\nProduces true or 1 if the operand is false or zero, and false or 0 if it is true or non-zero.\n\narguments:\n\n1. input address"
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"fontface" : 0,
 					"fontsize" : 11.0,
@@ -109,21 +124,8 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 208.0, 30.0, 72.0, 18.0 ],
+					"patching_rect" : [ 208.0, 18.0, 72.0, 20.0 ],
 					"text" : "!, not()"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontsize" : 12.0,
-					"id" : "obj-3",
-					"linecount" : 6,
-					"maxclass" : "comment",
-					"numinlets" : 1,
-					"numoutlets" : 0,
-					"patching_rect" : [ 208.0, 65.0, 179.0, 78.0 ],
-					"text" : "logical not operator \n\nProduces true or 1 if the operand is false or zero, and false or 0 if it is true or non-zero."
 				}
 
 			}
@@ -132,13 +134,11 @@
 					"fontface" : 0,
 					"fontsize" : 11.0,
 					"id" : "obj-28",
-					"linecount" : 3,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 31.0, 279.5, 288.0, 58.0 ],
-					"text" : "/test : 1,\n/op/not/test : 0,\n/fn/not/test : 0"
+					"patching_rect" : [ 31.0, 279.5, 288.0, 33.0 ]
 				}
 
 			}
