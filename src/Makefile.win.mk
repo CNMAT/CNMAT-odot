@@ -68,7 +68,7 @@ INCLUDES = -I$(MAX_INCLUDES) -I$(MSP_INCLUDES) -I../../libo -I../../libomax -Iin
 CFLAGS += -DWIN_VERSION -DWIN_EXT_VERSION -U__STRICT_ANSI__ -U__ANSI_SOURCE -std=c99 -O3 -DNO_TRANSLATION_SUPPORT -DWIN32_LEAN_AND_MEAN
 LDFLAGS = -shared -static-libgcc
 
-BUILDDIR = $(CURDIR)/build/Release
+BUILDDIR = build/Release
 STAGINGDIR = odot-$(PLATFORM)
 
 OBJECTS = $(addsuffix $(EXT), $(addprefix $(BUILDDIR)/, $(OBJECT_LIST)))
