@@ -282,7 +282,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 10.0, 330.666666666666572, 144.0, 21.0 ],
-					"presentation_linecount" : 2,
 					"text" : "o.demo.euclidean_distance"
 				}
 
@@ -367,7 +366,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 520.0, 215.833333333333314, 134.0, 21.0 ],
-					"presentation_linecount" : 2,
 					"text" : "o.demo.substituteaddress"
 				}
 
@@ -382,7 +380,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 520.0, 187.125, 93.0, 21.0 ],
-					"presentation_linecount" : 2,
 					"text" : "o.demo.recursion"
 				}
 
@@ -467,7 +464,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 10.0, 273.249999999999943, 169.0, 21.0 ],
-					"presentation_linecount" : 2,
 					"text" : "o.demo.datarecorder.subbundles"
 				}
 
@@ -509,7 +505,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 10.0, 215.833333333333314, 85.0, 21.0 ],
-					"presentation_linecount" : 3,
 					"text" : "o.demo.counter"
 				}
 
@@ -537,7 +532,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 10.0, 187.125, 131.0, 21.0 ],
-					"presentation_linecount" : 2,
 					"text" : "o.demo.cellular.automata"
 				}
 
@@ -621,8 +615,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 10.0, 129.708333333333314, 44.0, 21.0 ],
-					"text" : "o.delay"
+					"patching_rect" : [ 10.0, 129.708333333333314, 75.0, 21.0 ],
+					"text" : "o.demo.delay"
 				}
 
 			}
@@ -648,8 +642,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 10.0, 101.0, 86.0, 21.0 ],
-					"text" : "o.betweentimes"
+					"patching_rect" : [ 10.0, 101.0, 116.0, 21.0 ],
+					"text" : "o.demo.betweentimes"
 				}
 
 			}
@@ -698,7 +692,7 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-39", 0 ],
+					"destination" : [ "obj-40", 0 ],
 					"hidden" : 1,
 					"source" : [ "obj-12", 0 ]
 				}
@@ -858,7 +852,7 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-39", 0 ],
+					"destination" : [ "obj-40", 0 ],
 					"hidden" : 1,
 					"source" : [ "obj-8", 0 ]
 				}
@@ -867,8 +861,7 @@
  ],
 		"dependency_cache" : [  ],
 		"autosave" : 0,
-		"bgcolor" : [ 0.996078, 0.996078, 0.996078, 1.0 ],
-		"editing_bgcolor" : [ 0.898039, 0.898039, 0.898039, 1.0 ]
+		"bgcolor" : [ 0.996078, 0.996078, 0.996078, 1.0 ]
 	}
 
 }
