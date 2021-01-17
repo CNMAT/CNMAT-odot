@@ -40,6 +40,49 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-42",
+					"linecount" : 6,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 764.5, 448.5, 122.0, 87.0 ],
+					"presentation_linecount" : 6,
+					"text" : "Method 5: \n\nDefine subbundle members directly within a bundle literal."
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontface" : 0,
+					"fontsize" : 12.0,
+					"id" : "obj-15",
+					"linecount" : 4,
+					"maxclass" : "o.display",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 753.0, 337.5, 107.0, 75.0 ],
+					"presentation_linecount" : 4,
+					"text" : "/bndl : {\n\t/a : \"foo\",\n\t/b : \"bar\"\n}"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontface" : 0,
+					"fontsize" : 12.0,
+					"id" : "obj-39",
+					"maxclass" : "o.expr.codebox",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "FullPacket", "FullPacket" ],
+					"patching_rect" : [ 753.0, 211.5, 212.0, 32.0 ],
+					"text" : "/bndl = {/a:\"foo\", /b:\"bar\"}"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"args" : [ "o.compose", "o.expr.codebox", "o.display" ],
 					"bgmode" : 0,
 					"border" : 0,
@@ -65,7 +108,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 529.0, 451.0, 140.0, 87.0 ],
+					"patching_rect" : [ 381.0, 448.5, 140.0, 87.0 ],
 					"text" : "Method 3: \n\nCreate an empty subbundle in o.expr.codebox, and populate it with values."
 				}
 
@@ -77,7 +120,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 309.5, 451.0, 112.0, 141.0 ],
+					"patching_rect" : [ 219.5, 451.0, 112.0, 141.0 ],
 					"text" : "Method 2: \n\nSend a bundle into an inlet of o.pack, and the input bundle will be assigned to the address that corresponds to the inlet."
 				}
 
@@ -92,7 +135,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 309.5, 340.0, 85.0, 88.0 ],
+					"patching_rect" : [ 219.5, 340.0, 85.0, 88.0 ],
 					"text" : "/bndl : {\n\t/a : \"a\",\n\t/b : 20,\n\t/c : 30\n}"
 				}
 
@@ -106,7 +149,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 309.5, 295.0, 111.0, 32.0 ],
+					"patching_rect" : [ 219.5, 295.0, 111.0, 32.0 ],
 					"text" : "/bndl./a = \"a\""
 				}
 
@@ -118,7 +161,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 309.5, 264.0, 73.0, 22.0 ],
+					"patching_rect" : [ 219.5, 264.0, 73.0, 22.0 ],
 					"text" : "o.pack /bndl"
 				}
 
@@ -133,7 +176,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 309.5, 202.0, 85.0, 51.0 ],
+					"patching_rect" : [ 219.5, 202.0, 85.0, 51.0 ],
 					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 12, 47, 97, 0, 0, 44, 105, 0, 0, 0, 0, 0, 10, 0, 0, 0, 12, 47, 98, 0, 0, 44, 105, 0, 0, 0, 0, 0, 20, 0, 0, 0, 12, 47, 99, 0, 0, 44, 105, 0, 0, 0, 0, 0, 30 ],
 					"saved_bundle_length" : 64,
 					"text" : "/a : 10,\n/b : 20,\n/c : 30"
@@ -147,7 +190,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 101.5, 451.0, 111.0, 87.0 ],
+					"patching_rect" : [ 59.5, 451.0, 111.0, 87.0 ],
 					"text" : "Method 1: \n\nCreate the subbundle as a literal by typing it into o.compose."
 				}
 
@@ -306,7 +349,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 751.5, 451.0, 122.0, 141.0 ],
+					"patching_rect" : [ 575.5, 448.5, 122.0, 141.0 ],
 					"text" : "Method 4: \n\nYou can leave out the explicit creation of the bundle. If you assign to a member of a bundle that doesn't exist yet, it will be created for you."
 				}
 
@@ -326,7 +369,7 @@
 					"numinlets" : 0,
 					"numoutlets" : 0,
 					"offset" : [ 0.0, 0.0 ],
-					"patching_rect" : [ 530.75, 507.875, 86.25, 14.75 ],
+					"patching_rect" : [ 382.75, 505.375, 86.25, 14.75 ],
 					"viewvisibility" : 1
 				}
 
@@ -339,7 +382,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 627.0, 289.0, 58.0, 22.0 ],
+					"patching_rect" : [ 479.0, 286.5, 58.0, 22.0 ],
 					"text" : "loadbang"
 				}
 
@@ -442,7 +485,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 751.5, 340.0, 97.0, 75.0 ],
+					"patching_rect" : [ 575.5, 337.5, 97.0, 75.0 ],
 					"text" : "/bndl : {\n\t/a : \"foo\",\n\t/b : \"bar\"\n}"
 				}
 
@@ -457,7 +500,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 751.5, 214.0, 140.0, 46.0 ],
+					"patching_rect" : [ 575.5, 211.5, 140.0, 46.0 ],
 					"text" : "/bndl./a = \"foo\", \n/bndl./b = \"bar\""
 				}
 
@@ -472,7 +515,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 529.0, 340.0, 98.0, 75.0 ],
+					"patching_rect" : [ 381.0, 337.5, 98.0, 75.0 ],
 					"text" : "/bndl : {\n\t/a : \"foo\",\n\t/b : \"bar\"\n}"
 				}
 
@@ -487,7 +530,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 529.0, 214.0, 140.0, 59.0 ],
+					"patching_rect" : [ 381.0, 211.5, 140.0, 59.0 ],
 					"text" : "/bndl = {},\n/bndl./a = \"foo\", \n/bndl./b = \"bar\""
 				}
 
@@ -502,7 +545,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 101.5, 340.0, 85.0, 88.0 ],
+					"patching_rect" : [ 59.5, 340.0, 85.0, 88.0 ],
 					"text" : "/bndl : {\n\t/a : \"a\",\n\t/b : 43,\n\t/c : 98\n}"
 				}
 
@@ -517,7 +560,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 101.5, 202.0, 85.0, 78.0 ],
+					"patching_rect" : [ 59.5, 202.0, 85.0, 78.0 ],
 					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 80, 47, 98, 110, 100, 108, 0, 0, 0, 44, 46, 0, 0, 0, 0, 0, 64, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 12, 47, 97, 0, 0, 44, 105, 0, 0, 0, 0, 0, 57, 0, 0, 0, 12, 47, 98, 0, 0, 44, 105, 0, 0, 0, 0, 0, 43, 0, 0, 0, 12, 47, 99, 0, 0, 44, 105, 0, 0, 0, 0, 0, 98 ],
 					"saved_bundle_length" : 100,
 					"text" : "/bndl : {\n\t/a : 57,\n\t/b : 43,\n\t/c : 98\n}"
@@ -533,7 +576,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 101.5, 295.0, 111.0, 32.0 ],
+					"patching_rect" : [ 59.5, 295.0, 111.0, 32.0 ],
 					"text" : "/bndl./a = \"a\""
 				}
 
@@ -672,7 +715,7 @@
 				"patchline" : 				{
 					"destination" : [ "obj-22", 0 ],
 					"hidden" : 1,
-					"order" : 2,
+					"order" : 3,
 					"source" : [ "obj-17", 0 ]
 				}
 
@@ -681,7 +724,16 @@
 				"patchline" : 				{
 					"destination" : [ "obj-28", 0 ],
 					"hidden" : 1,
-					"order" : 3,
+					"order" : 4,
+					"source" : [ "obj-17", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-39", 0 ],
+					"hidden" : 1,
+					"order" : 0,
 					"source" : [ "obj-17", 0 ]
 				}
 
@@ -690,7 +742,7 @@
 				"patchline" : 				{
 					"destination" : [ "obj-6", 0 ],
 					"hidden" : 1,
-					"order" : 1,
+					"order" : 2,
 					"source" : [ "obj-17", 0 ]
 				}
 
@@ -699,7 +751,7 @@
 				"patchline" : 				{
 					"destination" : [ "obj-9", 0 ],
 					"hidden" : 1,
-					"order" : 0,
+					"order" : 1,
 					"source" : [ "obj-17", 0 ]
 				}
 
@@ -743,6 +795,13 @@
 				"patchline" : 				{
 					"destination" : [ "obj-11", 0 ],
 					"source" : [ "obj-37", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-15", 0 ],
+					"source" : [ "obj-39", 0 ]
 				}
 
 			}
