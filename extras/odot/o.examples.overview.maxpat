@@ -46,34 +46,8 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 667.0, 359.374999999999886, 291.0, 19.0 ],
-					"text" : "ODOT-based sample player with shaping functions"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontname" : "Arial",
-					"fontsize" : 11.0,
-					"id" : "obj-42",
-					"maxclass" : "comment",
-					"numinlets" : 1,
-					"numoutlets" : 0,
-					"patching_rect" : [ 667.0, 330.666666666666572, 291.0, 19.0 ],
-					"text" : "Produce OSC packets at the given average rate"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontname" : "Arial",
-					"fontsize" : 11.0,
-					"id" : "obj-43",
-					"maxclass" : "comment",
-					"numinlets" : 1,
-					"numoutlets" : 0,
 					"patching_rect" : [ 667.0, 301.958333333333258, 291.0, 19.0 ],
-					"text" : "ODOT-style metronome"
+					"text" : "ODOT-based sample player with shaping functions"
 				}
 
 			}
@@ -295,36 +269,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 520.0, 359.374999999999886, 87.0, 21.0 ],
+					"patching_rect" : [ 520.0, 301.958333333333258, 87.0, 21.0 ],
 					"text" : "o.demo.sfplayer"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontname" : "Arial",
-					"fontsize" : 11.0,
-					"id" : "obj-24",
-					"maxclass" : "message",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 520.0, 330.666666666666572, 94.0, 21.0 ],
-					"text" : "o.poissonprocess"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontname" : "Arial",
-					"fontsize" : 11.0,
-					"id" : "obj-25",
-					"maxclass" : "message",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 520.0, 301.958333333333258, 46.0, 21.0 ],
-					"text" : "o.metro"
 				}
 
 			}
@@ -743,22 +689,6 @@
 					"destination" : [ "obj-39", 0 ],
 					"hidden" : 1,
 					"source" : [ "obj-22", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-39", 0 ],
-					"hidden" : 1,
-					"source" : [ "obj-24", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-39", 0 ],
-					"hidden" : 1,
-					"source" : [ "obj-25", 0 ]
 				}
 
 			}
