@@ -61,7 +61,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 520.0, 330.666666666666572, 95.0, 21.0 ],
-					"presentation_linecount" : 2,
 					"text" : "o.demo.sfplayer.2"
 				}
 
@@ -297,8 +296,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 520.0, 301.958333333333258, 87.0, 21.0 ],
-					"text" : "o.demo.sfplayer"
+					"patching_rect" : [ 520.0, 301.958333333333258, 95.0, 21.0 ],
+					"text" : "o.demo.sfplayer.1"
 				}
 
 			}
