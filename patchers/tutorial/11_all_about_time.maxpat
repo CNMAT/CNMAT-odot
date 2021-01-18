@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 9.0, 60.0, 994.0, 659.0 ],
+		"rect" : [ 59.0, 86.0, 994.0, 659.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -40,6 +40,191 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"bubbletextmargin" : 15,
+					"bubbleusescolors" : 1,
+					"id" : "obj-108",
+					"linecount" : 4,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 483.0, 2511.0, 431.0, 60.0 ],
+					"presentation_linecount" : 4,
+					"text" : "The patching on the left describes a typical scenario where we might want to monitor a bundle over time, and poll it for output.\n\n[o.change] will not "
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"bubbleside" : 3,
+					"bubbleusescolors" : 1,
+					"id" : "obj-107",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 109.0, 2717.5, 69.0, 20.0 ],
+					"presentation_linecount" : 2,
+					"text" : "not blinking"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"bubbleside" : 3,
+					"bubbleusescolors" : 1,
+					"id" : "obj-102",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 129.0, 2544.5, 49.0, 20.0 ],
+					"text" : "blinking"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontface" : 0,
+					"fontsize" : 12.0,
+					"id" : "obj-100",
+					"linecount" : 7,
+					"maxclass" : "o.display",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 190.0, 2496.5, 143.0, 116.0 ],
+					"presentation_linecount" : 7,
+					"text" : "/was/v/1 : 7,\n/was/v/2 : 0,\n/was/v/3 : 0,\n/v/1 : 9,\n/v/2 : 0,\n/v/3 : 4,\n/sum/absdiff : 6."
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontface" : 2,
+					"id" : "obj-99",
+					"linecount" : 2,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 258.0, 2628.0, 193.0, 33.0 ],
+					"text" : "note that no bundle is passed when it's the same as the previous"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"bubble" : 1,
+					"bubbleusescolors" : 1,
+					"id" : "obj-87",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 219.5, 2337.0, 100.0, 24.0 ],
+					"text" : "enable polling"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"bubble" : 1,
+					"bubbleusescolors" : 1,
+					"id" : "obj-77",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 393.0, 2337.0, 234.0, 24.0 ],
+					"text" : "enable bundle to pass through the gate"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"bgcolor" : [ 0.396078431372549, 0.945098039215686, 0.894117647058824, 1.0 ],
+					"bubbletextmargin" : 6,
+					"bubbleusescolors" : 1,
+					"id" : "obj-75",
+					"linecount" : 5,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 686.0, 2235.0, 239.0, 74.0 ],
+					"presentation_linecount" : 9,
+					"text" : "jml: maybe this new approach would make more sense, since we can trace the path of the (familiar) bundle over time and introduce a polling technique as well.  A twofer, if you like."
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-150",
+					"maxclass" : "toggle",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "int" ],
+					"parameter_enable" : 0,
+					"patching_rect" : [ 190.0, 2335.0, 24.0, 24.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-151",
+					"maxclass" : "newobj",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "bang" ],
+					"patching_rect" : [ 190.0, 2398.5, 63.0, 22.0 ],
+					"text" : "metro 500"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-74",
+					"maxclass" : "button",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "bang" ],
+					"parameter_enable" : 0,
+					"patching_rect" : [ 190.0, 2428.5, 24.0, 24.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-72",
+					"maxclass" : "newobj",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "FullPacket" ],
+					"patching_rect" : [ 190.0, 2463.5, 184.0, 22.0 ],
+					"text" : "o.var"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-68",
+					"maxclass" : "toggle",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "int" ],
+					"parameter_enable" : 0,
+					"patching_rect" : [ 354.5, 2335.0, 24.0, 24.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-49",
+					"maxclass" : "newobj",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 354.5, 2398.5, 41.5, 22.0 ],
+					"text" : "gate"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"args" : [ "o.pack", "o.union", "o.select", "o.prepend", "o.expr.codebox", "o.route", "o.display", "o.if", "o.was", "o.change", "o.gather", "o.timetag", "o.schedule", "o.compose", "o.var" ],
 					"bgmode" : 0,
 					"border" : 0,
@@ -66,7 +251,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 122.0, 3006.0, 111.0, 22.0 ],
+					"patching_rect" : [ 122.0, 3291.0, 111.0, 22.0 ],
 					"text" : "o.if exists(/was/v/1)"
 				}
 
@@ -76,11 +261,13 @@
 					"fontface" : 0,
 					"fontsize" : 12.0,
 					"id" : "obj-35",
+					"linecount" : 6,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 451.0, 1967.0, 153.0, 34.0 ]
+					"patching_rect" : [ 377.0, 1967.0, 153.0, 102.0 ],
+					"text" : "/was/v/1 : 5,\n/was/v/2 : 8,\n/was/v/3 : 3,\n/v/1 : 5,\n/v/2 : 5,\n/v/3 : 4"
 				}
 
 			}
@@ -110,7 +297,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 48.5, 3757.0, 424.0, 71.0 ],
+					"patching_rect" : [ 48.5, 4042.0, 424.0, 71.0 ],
 					"text" : "Here, we've done some math on a timetag.  \nWhen we add a number like 1. to /now, the result generates a timetag.  \nWhen we subtract two timetags the result is a float value in seconds."
 				}
 
@@ -134,7 +321,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 483.5, 3710.0, 85.0, 22.0 ],
+					"patching_rect" : [ 483.5, 3995.0, 85.0, 22.0 ],
 					"text" : "o.if exists(/val)"
 				}
 
@@ -148,7 +335,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 624.5, 3544.0, 37.0, 24.0 ],
+					"patching_rect" : [ 624.5, 3829.0, 37.0, 24.0 ],
 					"saved_bundle_data" : [  ],
 					"saved_bundle_length" : 0
 				}
@@ -161,7 +348,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 579.5, 3469.0, 70.0, 22.0 ],
+					"patching_rect" : [ 579.5, 3754.0, 70.0, 22.0 ],
 					"text" : "loadmess 1"
 				}
 
@@ -175,7 +362,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 320.5, 3101.0, 528.0, 87.0 ],
+					"patching_rect" : [ 320.5, 3386.0, 528.0, 87.0 ],
 					"text" : "We can use [o.union] for this again, but that we use two instances of the object for separate tasks:\n\n1. blend the two addresses together, allowing each to update the bundle and output upon change.\n2. keep track of the previous value for both addresses, each time there is an update.\n3. (expr) calculate the difference\n4. (expr) calculate the sum of that difference"
 				}
 
@@ -187,7 +374,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "FullPacket" ],
-					"patching_rect" : [ 122.0, 3101.0, 123.0, 22.0 ],
+					"patching_rect" : [ 122.0, 3386.0, 123.0, 22.0 ],
 					"text" : "o.gather /diff /sum/diff"
 				}
 
@@ -202,7 +389,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 122.0, 3041.0, 327.0, 46.0 ],
+					"patching_rect" : [ 122.0, 3326.0, 327.0, 46.0 ],
 					"text" : "/diff = [/v/1, /v/2] - [/was/v/1, /was/v/2],\n/sum/diff = sum(/diff)"
 				}
 
@@ -212,11 +399,13 @@
 					"fontface" : 0,
 					"fontsize" : 12.0,
 					"id" : "obj-40",
+					"linecount" : 7,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 451.0, 2150.0, 153.0, 34.0 ]
+					"patching_rect" : [ 377.0, 2163.0, 153.0, 116.0 ],
+					"text" : "/was/v/1 : 1,\n/was/v/2 : 1,\n/was/v/3 : 9,\n/v/1 : 8,\n/v/2 : 2,\n/v/3 : 1,\n/sum/absdiff : 16."
 				}
 
 			}
@@ -225,12 +414,11 @@
 					"fontface" : 0,
 					"fontsize" : 12.0,
 					"id" : "obj-37",
-					"linecount" : 2,
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 451.0, 2086.0, 479.0, 46.0 ],
+					"patching_rect" : [ 377.0, 2099.0, 558.0, 32.0 ],
 					"text" : "/sum/absdiff = sum(abs([/v/1, /v/2, /v/3] - [/was/v/1, /was/v/2, /was/v/3]))"
 				}
 
@@ -646,7 +834,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 483.5, 3503.0, 54.0, 22.0 ]
+					"patching_rect" : [ 483.5, 3788.0, 54.0, 22.0 ]
 				}
 
 			}
@@ -661,7 +849,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 579.5, 3503.0, 50.0, 22.0 ]
+					"patching_rect" : [ 579.5, 3788.0, 50.0, 22.0 ]
 				}
 
 			}
@@ -672,7 +860,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "FullPacket" ],
-					"patching_rect" : [ 155.5, 3926.0, 68.0, 22.0 ],
+					"patching_rect" : [ 155.5, 4211.0, 68.0, 22.0 ],
 					"text" : "o.route /val"
 				}
 
@@ -685,7 +873,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 155.5, 3955.0, 215.0, 85.0 ],
+					"patching_rect" : [ 155.5, 4240.0, 215.0, 85.0 ],
 					"setminmax" : [ 0.0, 5.0 ],
 					"setstyle" : 5
 				}
@@ -699,7 +887,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 155.5, 3582.0, 215.0, 85.0 ],
+					"patching_rect" : [ 155.5, 3867.0, 215.0, 85.0 ],
 					"setminmax" : [ 0.0, 5.0 ],
 					"setstyle" : 5
 				}
@@ -712,7 +900,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 483.5, 3544.0, 115.0, 22.0 ],
+					"patching_rect" : [ 483.5, 3829.0, 115.0, 22.0 ],
 					"text" : "o.pack /val /delay 1."
 				}
 
@@ -722,11 +910,13 @@
 					"fontface" : 0,
 					"fontsize" : 12.0,
 					"id" : "obj-189",
+					"linecount" : 5,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 483.5, 3955.0, 291.0, 34.0 ]
+					"patching_rect" : [ 483.5, 4240.0, 291.0, 88.0 ],
+					"text" : "/val : 0.17,\n/delay : 1.,\n/now : 2021-01-18T04:06:48.918890Z,\n/future : 2021-01-18T04:06:49.918890Z,\n/diff : 1."
 				}
 
 			}
@@ -740,7 +930,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 483.5, 3757.0, 191.0, 46.0 ],
+					"patching_rect" : [ 483.5, 4042.0, 191.0, 46.0 ],
 					"text" : "/future = /now + /delay, \n/diff = /now - /future"
 				}
 
@@ -754,7 +944,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 483.5, 3623.0, 291.0, 34.0 ]
+					"patching_rect" : [ 483.5, 3908.0, 291.0, 34.0 ],
+					"text" : "/now : 2021-01-18T04:06:50.536393Z"
 				}
 
 			}
@@ -765,7 +956,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 4,
 					"outlettype" : [ "FullPacket", "FullPacket", "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 483.5, 3845.0, 104.0, 22.0 ],
+					"patching_rect" : [ 483.5, 4130.0, 104.0, 22.0 ],
 					"text" : "o.schedule /future"
 				}
 
@@ -777,7 +968,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 483.5, 3582.0, 87.0, 22.0 ],
+					"patching_rect" : [ 483.5, 3867.0, 87.0, 22.0 ],
 					"text" : "o.timetag /now"
 				}
 
@@ -787,11 +978,11 @@
 					"bubbletextmargin" : 15,
 					"bubbleusescolors" : 1,
 					"id" : "obj-171",
-					"linecount" : 9,
+					"linecount" : 8,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 555.0, 2557.5, 327.0, 127.0 ],
+					"patching_rect" : [ 483.0, 2674.5, 431.0, 114.0 ],
 					"text" : "We should put it somewhere in the chain where we want to monitor bundles over time.  Since we're sending the int to two places and only one of them outputs a bundle from [o.pack], we can insert [o.change] just after. \n\nPlay around with the slider and note that we only get a bundle when the two values change.\n\nLet's look at a similar example but add another process..."
 				}
 
@@ -804,44 +995,8 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 528.0, 2535.5, 88.0, 20.0 ],
+					"patching_rect" : [ 483.0, 2652.5, 88.0, 20.0 ],
 					"text" : "update the text"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-157",
-					"linecount" : 4,
-					"maxclass" : "comment",
-					"numinlets" : 1,
-					"numoutlets" : 0,
-					"patching_rect" : [ 313.0, 2507.0, 150.0, 60.0 ],
-					"text" : "xy sent all the time, along w/ buton state\ndata is only sent when button state changes"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-130",
-					"maxclass" : "number",
-					"numinlets" : 1,
-					"numoutlets" : 2,
-					"outlettype" : [ "", "bang" ],
-					"parameter_enable" : 0,
-					"patching_rect" : [ 310.0, 2344.0, 50.0, 22.0 ]
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-127",
-					"maxclass" : "button",
-					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "bang" ],
-					"parameter_enable" : 0,
-					"patching_rect" : [ 310.0, 2316.0, 24.0, 24.0 ]
 				}
 
 			}
@@ -850,11 +1005,13 @@
 					"fontface" : 0,
 					"fontsize" : 12.0,
 					"id" : "obj-144",
+					"linecount" : 7,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 226.0, 2422.0, 150.0, 34.0 ]
+					"patching_rect" : [ 190.0, 2674.5, 143.0, 116.0 ],
+					"text" : "/was/v/1 : 7,\n/was/v/2 : 0,\n/was/v/3 : 0,\n/v/1 : 9,\n/v/2 : 0,\n/v/3 : 4,\n/sum/absdiff : 6."
 				}
 
 			}
@@ -865,56 +1022,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 226.0, 2381.0, 58.0, 22.0 ],
+					"patching_rect" : [ 190.0, 2633.5, 58.0, 22.0 ],
 					"text" : "o.change"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-149",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 226.0, 2344.0, 67.0, 22.0 ],
-					"text" : "o.pack /v/1"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-150",
-					"maxclass" : "toggle",
-					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "int" ],
-					"parameter_enable" : 0,
-					"patching_rect" : [ 226.0, 2231.0, 24.0, 24.0 ]
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-151",
-					"maxclass" : "newobj",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 226.0, 2275.0, 63.0, 22.0 ],
-					"text" : "metro 500"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-152",
-					"maxclass" : "newobj",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "int" ],
-					"patching_rect" : [ 226.0, 2316.0, 59.0, 22.0 ],
-					"text" : "random 2"
 				}
 
 			}
@@ -925,7 +1034,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 3,
 					"outlettype" : [ "bang", "bang", "bang" ],
-					"patching_rect" : [ 451.0, 1801.0, 162.0, 22.0 ],
+					"patching_rect" : [ 377.0, 1801.0, 162.0, 22.0 ],
 					"text" : "t b b b"
 				}
 
@@ -938,7 +1047,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "int" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 451.0, 1728.5, 24.0, 24.0 ]
+					"patching_rect" : [ 377.0, 1728.5, 24.0, 24.0 ]
 				}
 
 			}
@@ -950,7 +1059,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 451.0, 1772.0, 63.0, 22.0 ],
+					"patching_rect" : [ 377.0, 1772.0, 63.0, 22.0 ],
 					"text" : "metro 300"
 				}
 
@@ -963,7 +1072,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 451.0, 1890.0, 75.0, 22.0 ],
+					"patching_rect" : [ 377.0, 1890.0, 75.0, 22.0 ],
 					"text" : "o.prepend /v"
 				}
 
@@ -976,7 +1085,7 @@
 					"numinlets" : 3,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 451.0, 1862.0, 162.0, 22.0 ],
+					"patching_rect" : [ 377.0, 1862.0, 162.0, 22.0 ],
 					"text" : "o.pack /1 /2 /3"
 				}
 
@@ -988,7 +1097,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "int" ],
-					"patching_rect" : [ 594.0, 1830.0, 66.0, 22.0 ],
+					"patching_rect" : [ 520.0, 1830.0, 66.0, 22.0 ],
 					"text" : "random 10"
 				}
 
@@ -1000,7 +1109,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "int" ],
-					"patching_rect" : [ 522.5, 1830.0, 66.0, 22.0 ],
+					"patching_rect" : [ 448.5, 1830.0, 66.0, 22.0 ],
 					"text" : "random 10"
 				}
 
@@ -1012,7 +1121,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "int" ],
-					"patching_rect" : [ 451.0, 1830.0, 66.0, 22.0 ],
+					"patching_rect" : [ 377.0, 1830.0, 66.0, 22.0 ],
 					"text" : "random 10"
 				}
 
@@ -1025,7 +1134,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 451.0, 1924.0, 108.0, 22.0 ],
+					"patching_rect" : [ 377.0, 1924.0, 108.0, 22.0 ],
 					"text" : "o.was /v/1 /v/2 /v/3"
 				}
 
@@ -1035,12 +1144,12 @@
 					"bubbletextmargin" : 15,
 					"bubbleusescolors" : 1,
 					"id" : "obj-101",
-					"linecount" : 5,
+					"linecount" : 4,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 700.0, 1123.0, 288.0, 74.0 ],
-					"text" : "notes:\n- count from 1\n- value()\n- string concat\n- var"
+					"patching_rect" : [ 689.0, 1894.0, 288.0, 60.0 ],
+					"text" : "notes:\n- count from 1\n- value()\n- var"
 				}
 
 			}
@@ -1049,11 +1158,13 @@
 					"fontface" : 0,
 					"fontsize" : 12.0,
 					"id" : "obj-82",
+					"linecount" : 7,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 202.5, 1524.0, 130.0, 34.0 ]
+					"patching_rect" : [ 202.5, 1524.0, 130.0, 116.0 ],
+					"text" : "/val : 92,\n/diff : 9,\n/h1 : 83,\n/h2 : 74,\n/h3 : 65,\n/numitems : 3,\n/avg : 74."
 				}
 
 			}
@@ -1110,7 +1221,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 399.0, 3326.0, 135.0, 47.0 ],
+					"patching_rect" : [ 399.0, 3611.0, 135.0, 47.0 ],
 					"text" : "fix language here---index / event vs time value"
 				}
 
@@ -1121,11 +1232,10 @@
 					"bubbletextmargin" : 6,
 					"bubbleusescolors" : 1,
 					"id" : "obj-64",
-					"linecount" : 2,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 523.0, 2309.0, 133.0, 33.0 ],
+					"patching_rect" : [ 686.0, 2210.0, 218.0, 20.0 ],
 					"text" : "let's discuss how to introduce o.change"
 				}
 
@@ -1138,7 +1248,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 334.0, 3377.0, 321.0, 20.0 ],
+					"patching_rect" : [ 334.0, 3662.0, 321.0, 20.0 ],
 					"text" : "Let's look at some objects that deal with time more directly."
 				}
 
@@ -1271,7 +1381,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 230.5, 3926.0, 171.0, 20.0 ],
+					"patching_rect" : [ 230.5, 4211.0, 171.0, 20.0 ],
 					"text" : "...note the delayed output here"
 				}
 
@@ -1285,7 +1395,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 92.5, 3438.0, 377.0, 87.0 ],
+					"patching_rect" : [ 92.5, 3723.0, 377.0, 87.0 ],
 					"text" : "[o.timetag] generates an address containing a timetag each time that a bundle (or bang) passes through it.  The address this timetag is bound to is given as it's argument.\n\nNote that the bundle does not need to contain anything when it enters [o.timetag]."
 				}
 
@@ -1298,7 +1408,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 59.0, 3710.0, 398.0, 20.0 ],
+					"patching_rect" : [ 59.0, 3995.0, 398.0, 20.0 ],
 					"text" : "Try dragging the value of the [number] patched to [o.pack] up and down.  "
 				}
 
@@ -1312,7 +1422,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 511.5, 3887.5, 256.0, 47.0 ],
+					"patching_rect" : [ 511.5, 4172.5, 256.0, 47.0 ],
 					"text" : "[o.schedule] looks at a timetag and assuming it is set to occur in the future, it schedules the bundle to be output at that time."
 				}
 
@@ -1326,7 +1436,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 66.0, 3264.0, 863.0, 21.0 ],
+					"patching_rect" : [ 66.0, 3549.0, 863.0, 21.0 ],
 					"text" : "o.timetag, o.schedule, o.var",
 					"textjustification" : 1
 				}
@@ -1500,7 +1610,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "int" ],
-					"patching_rect" : [ 122.0, 2766.0, 29.5, 22.0 ],
+					"patching_rect" : [ 122.0, 3051.0, 29.5, 22.0 ],
 					"text" : "+ 1"
 				}
 
@@ -1512,7 +1622,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "int" ],
-					"patching_rect" : [ 122.0, 2738.0, 66.0, 22.0 ],
+					"patching_rect" : [ 122.0, 3023.0, 66.0, 22.0 ],
 					"text" : "random 20"
 				}
 
@@ -1524,7 +1634,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 122.0, 2712.0, 119.0, 22.0 ],
+					"patching_rect" : [ 122.0, 2997.0, 119.0, 22.0 ],
 					"text" : "metro 321 @active 1"
 				}
 
@@ -1536,7 +1646,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "int" ],
-					"patching_rect" : [ 355.5, 2766.0, 29.5, 22.0 ],
+					"patching_rect" : [ 355.5, 3051.0, 29.5, 22.0 ],
 					"text" : "+ 1"
 				}
 
@@ -1548,7 +1658,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "int" ],
-					"patching_rect" : [ 355.5, 2738.0, 66.0, 22.0 ],
+					"patching_rect" : [ 355.5, 3023.0, 66.0, 22.0 ],
 					"text" : "random 20"
 				}
 
@@ -1560,7 +1670,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 355.5, 2712.0, 119.0, 22.0 ],
+					"patching_rect" : [ 355.5, 2997.0, 119.0, 22.0 ],
 					"text" : "metro 262 @active 1"
 				}
 
@@ -1573,7 +1683,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 122.0, 2829.0, 67.0, 22.0 ],
+					"patching_rect" : [ 122.0, 3114.0, 67.0, 22.0 ],
 					"text" : "o.pack /v/1"
 				}
 
@@ -1586,7 +1696,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 355.5, 2829.0, 67.0, 22.0 ],
+					"patching_rect" : [ 355.5, 3114.0, 67.0, 22.0 ],
 					"text" : "o.pack /v/2"
 				}
 
@@ -1601,7 +1711,7 @@
 					"orientation" : 0,
 					"outlettype" : [ "", "" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 355.5, 2799.0, 198.0, 21.0 ],
+					"patching_rect" : [ 355.5, 3084.0, 198.0, 21.0 ],
 					"setminmax" : [ 1.0, 20.0 ],
 					"settype" : 0
 				}
@@ -1617,7 +1727,7 @@
 					"orientation" : 0,
 					"outlettype" : [ "", "" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 122.0, 2799.0, 198.0, 21.0 ],
+					"patching_rect" : [ 122.0, 3084.0, 198.0, 21.0 ],
 					"setminmax" : [ 1.0, 20.0 ],
 					"settype" : 0
 				}
@@ -1632,7 +1742,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 349.0, 2887.0, 310.0, 100.0 ],
+					"patching_rect" : [ 349.0, 3172.0, 310.0, 100.0 ],
 					"text" : "Now we have two discrete data streams with unique timing structures.  These are decoupled in time from each other.  Since we may not know exactly what the differences in time are between these two, or how the differences are changing over time, we can do a similar calculation to what we saw earlier, giving us some insight."
 				}
 
@@ -1645,7 +1755,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 198.5, 2933.0, 85.0, 22.0 ],
+					"patching_rect" : [ 198.5, 3218.0, 85.0, 22.0 ],
 					"text" : "o.was /v/1 /v/2"
 				}
 
@@ -1660,8 +1770,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 122.0, 3141.0, 150.0, 48.0 ],
-					"text" : "/diff : [2, -12],\n/sum/diff : -10"
+					"patching_rect" : [ 122.0, 3426.0, 150.0, 48.0 ],
+					"text" : "/diff : [11, 0],\n/sum/diff : 11"
 				}
 
 			}
@@ -1673,7 +1783,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 122.0, 2967.0, 54.0, 22.0 ],
+					"patching_rect" : [ 122.0, 3252.0, 54.0, 22.0 ],
 					"text" : "t l l"
 				}
 
@@ -1686,7 +1796,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 122.0, 2933.0, 54.0, 22.0 ],
+					"patching_rect" : [ 122.0, 3218.0, 54.0, 22.0 ],
 					"text" : "o.union"
 				}
 
@@ -1696,12 +1806,12 @@
 					"bubbletextmargin" : 15,
 					"bubbleusescolors" : 1,
 					"id" : "obj-67",
-					"linecount" : 8,
+					"linecount" : 6,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 494.0, 2355.5, 327.0, 127.0 ],
-					"text" : "[o.change] compares a bundle with the previous one it received and passes it through if the two are different, or throws it away if the two are the same.\nFor a bundle to be considered the same as the previous one, every bit has to be the same, meaning that even if the content is the same, but the order or types are different, o.change will reject the bundle.\n\n"
+					"patching_rect" : [ 483.0, 2398.5, 431.0, 87.0 ],
+					"text" : "[o.change] compares the currently input bundle with a bundle received previously, and passes that bundle through if the two are different.   or throws it away if the two are the same.\nFor a bundle to be considered the same as the previous one, every bit has to be the same, meaning that even if the content is the same, but the order or types are different, o.change will reject the bundle."
 				}
 
 			}
@@ -1710,11 +1820,11 @@
 					"bubbletextmargin" : 15,
 					"bubbleusescolors" : 1,
 					"id" : "obj-61",
-					"linecount" : 24,
+					"linecount" : 19,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 149.5, 1845.0, 196.0, 328.0 ],
+					"patching_rect" : [ 72.5, 1845.0, 230.0, 261.0 ],
 					"text" : "Let's take a look at an example illustrating how we might use more than one value in max to track history.  \n\nWe could of course use [o.accum] for this, but this model helps us illustrate two values generated from a single value.  \n\nWe can cather the relevant addresses to label, and use [o.prepend] to tag them as /was.  In this particular case, we use [change] to only send a value if it crossed the integer boundary, rather than each time a pixel is crossed with our mouse.  \n\nThis might be a good time to bring up another object, [o.change] which does something similar for bundles...  Scroll down for an expansion of this topic."
 				}
 
@@ -1875,11 +1985,13 @@
 					"fontface" : 0,
 					"fontsize" : 12.0,
 					"id" : "obj-44",
+					"linecount" : 6,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 258.0, 1292.0, 130.0, 34.0 ]
+					"patching_rect" : [ 258.0, 1292.0, 130.0, 102.0 ],
+					"text" : "/val : 27,\n/diff : 7,\n/h1 : 20,\n/h2 : 13,\n/h3 : 10,\n/avg : 14.3333"
 				}
 
 			}
@@ -1983,11 +2095,13 @@
 					"fontface" : 0,
 					"fontsize" : 12.0,
 					"id" : "obj-10",
+					"linecount" : 2,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 202.5, 739.0, 130.0, 34.0 ]
+					"patching_rect" : [ 202.5, 739.0, 130.0, 48.0 ],
+					"text" : "/val : 84,\n/diff : 4"
 				}
 
 			}
@@ -2029,7 +2143,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 341.5, 442.659367396593666, 535.0, 124.0 ],
-					"text" : "What about this bit?\nSimilarly to how we've used [trigger] in the past with [o.union], we can use it here to process our data before we pass it into [o.union].  Here we simply \"tag\" the last value of the /val address by passing it through [o.prepend].  The output address becomes /was/val.  \n\nThe /was/val address now represents the state of our value one step behind the present.  We can start to see the history of the number.  "
+					"text" : "What's going on here?\nSimilarly to how we've used [trigger] in the past with [o.union], we can use it here to process our data before we pass it into [o.union].  Here we simply \"tag\" the last value of the /val address by passing it through [o.prepend].  The output address becomes /was/val.  \n\nThe /was/val address now represents the state of our value one step behind the present.  We can start to see the history of the number.  "
 				}
 
 			}
@@ -2057,7 +2171,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 74.0, 139.5, 840.0, 38.0 ],
 					"style" : "default",
-					"text" : "Let's look at a few time-oriented concepts.  \nUp until now in the tutorial, we've looked mainly at the present tense.  What about the past and future?",
+					"text" : "Let's look at a few time-oriented concepts.  \nUp until now in the tutorial, we've programmed mainly in the present tense.  What about the past and future?",
 					"textjustification" : 1
 				}
 
@@ -2118,11 +2232,13 @@
 					"fontface" : 0,
 					"fontsize" : 12.0,
 					"id" : "obj-18",
+					"linecount" : 2,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 128.5, 590.0, 130.0, 34.0 ]
+					"patching_rect" : [ 128.5, 590.0, 130.0, 48.0 ],
+					"text" : "/val : 84,\n/was/val : 80"
 				}
 
 			}
@@ -2266,6 +2382,13 @@
 				"patchline" : 				{
 					"destination" : [ "obj-13", 0 ],
 					"source" : [ "obj-10", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-148", 0 ],
+					"source" : [ "obj-100", 0 ]
 				}
 
 			}
@@ -2508,13 +2631,6 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-148", 0 ],
-					"source" : [ "obj-149", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
 					"destination" : [ "obj-151", 0 ],
 					"source" : [ "obj-150", 0 ]
 				}
@@ -2522,33 +2638,8 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-127", 0 ],
-					"order" : 0,
+					"destination" : [ "obj-74", 0 ],
 					"source" : [ "obj-151", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-152", 0 ],
-					"order" : 1,
-					"source" : [ "obj-151", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-130", 0 ],
-					"order" : 0,
-					"source" : [ "obj-152", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-149", 0 ],
-					"order" : 1,
-					"source" : [ "obj-152", 0 ]
 				}
 
 			}
@@ -2937,6 +3028,13 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-49", 1 ],
+					"source" : [ "obj-40", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-39", 0 ],
 					"source" : [ "obj-41", 0 ]
 				}
@@ -2977,6 +3075,13 @@
 				"patchline" : 				{
 					"destination" : [ "obj-51", 0 ],
 					"source" : [ "obj-48", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-72", 1 ],
+					"source" : [ "obj-49", 0 ]
 				}
 
 			}
@@ -3070,6 +3175,27 @@
 				"patchline" : 				{
 					"destination" : [ "obj-190", 0 ],
 					"source" : [ "obj-65", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-49", 0 ],
+					"source" : [ "obj-68", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-100", 0 ],
+					"source" : [ "obj-72", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-72", 0 ],
+					"source" : [ "obj-74", 0 ]
 				}
 
 			}
