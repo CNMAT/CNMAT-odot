@@ -4,13 +4,13 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 1,
+			"revision" : 8,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 59.0, 104.0, 697.0, 973.0 ],
+		"rect" : [ 34.0, 79.0, 657.0, 679.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -37,14 +37,54 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "",
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
+				"box" : 				{
+					"fontface" : 0,
+					"fontname" : "Arial",
+					"fontsize" : 11.0,
+					"id" : "obj-10",
+					"linecount" : 2,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 456.0, 503.0, 107.0, 31.0 ],
+					"text" : "Sample player with shaping functions"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"autofit" : 1,
+					"forceaspect" : 1,
+					"id" : "obj-11",
+					"maxclass" : "fpic",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "jit_matrix" ],
+					"patching_rect" : [ 456.0, 401.0, 100.0, 100.0 ],
+					"pic" : "/Users/jml/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/icon.png"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-3",
+					"maxclass" : "ezdac~",
+					"numinlets" : 2,
+					"numoutlets" : 0,
+					"patching_rect" : [ 83.0, 460.0, 45.0, 45.0 ]
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"id" : "obj-9",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 153.0, 264.0, 54.0, 20.0 ],
+					"patching_rect" : [ 153.0, 264.0, 54.0, 22.0 ],
 					"text" : "o.accum"
 				}
 
@@ -57,7 +97,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 397.0, 301.0, 175.0, 77.0 ],
+					"patching_rect" : [ 456.0, 301.0, 175.0, 77.0 ],
 					"setminmax" : [ 0.0, 1.0 ],
 					"setstyle" : 1,
 					"size" : 6,
@@ -72,7 +112,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 195.5, 138.0, 67.0, 20.0 ],
+					"patching_rect" : [ 195.5, 138.0, 67.0, 22.0 ],
 					"text" : "busymap 2"
 				}
 
@@ -84,7 +124,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 195.5, 109.0, 113.0, 20.0 ],
+					"patching_rect" : [ 195.5, 109.0, 113.0, 22.0 ],
 					"text" : "metro 50 @active 1"
 				}
 
@@ -92,15 +132,15 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
+					"fontsize" : 10.0,
 					"id" : "obj-5",
-					"linecount" : 51,
+					"linecount" : 29,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 153.0, 301.0, 231.0, 714.0 ],
-					"text" : "/6/time/relative : 0.,\n/6/sfdur/ms,\n/6/voice : 6,\n/6/time/absolute : 0.,\n/5/time/relative : 0.,\n/5/sfdur/ms,\n/5/voice : 5,\n/5/time/absolute : 0.,\n/4/time/relative : 0.,\n/4/sfdur/ms : 2729.55,\n/4/voice : 4,\n/4/bufname : \"buf\",\n/4/transport/play : \"bang\",\n/4/func : \"lambda(t, /cos =  cos(t * pi()))\",\n/4/time/absolute : 0.,\n/4/cos : 1.,\n/3/time/relative : 0.,\n/3/sfdur/ms : 2729.55,\n/3/voice : 3,\n/3/bufname : \"buf\",\n/3/transport/play : \"bang\",\n/3/func : \"lambda(t, /cos =  cos(t * pi()))\",\n/3/time/absolute : 0.,\n/3/cos : 1.,\n/2/time/relative : 0.,\n/2/sfdur/ms : 2729.55,\n/2/voice : 2,\n/2/bufname : \"buf\",\n/2/transport/play : \"bang\",\n/2/func : \"lambda(t, /cos =  cos(t * pi()))\",\n/2/time/absolute : 0.,\n/2/cos : 1.,\n/1/time/relative : 0.,\n/1/sfdur/ms,\n/1/voice : 1,\n/1/time/absolute : 0.,\n/6/bufname : \"buf\",\n/6/transport/play : \"bang\",\n/6/xx : 10,\n/5/bufname : \"buf\",\n/5/transport/play : \"bang\",\n/5/xx : 10,\n/4/xx : 10,\n/3/xx : 10,\n/2/xx : 10,\n/1/bufname : \"buf\",\n/1/transport/play : \"bang\",\n/1/xx : 10"
+					"patching_rect" : [ 153.0, 301.0, 246.0, 349.0 ],
+					"text" : "/6/time/relative : 0.,\n/6/sfdur/ms,\n/6/voice : 6,\n/6/time/absolute : 0.,\n/5/time/relative : 0.,\n/5/sfdur/ms,\n/5/voice : 5,\n/5/time/absolute : 0.,\n/4/time/relative : 0.,\n/4/sfdur/ms,\n/4/voice : 4,\n/4/time/absolute : 0.,\n/3/time/relative : 0.,\n/3/sfdur/ms,\n/3/voice : 3,\n/3/time/absolute : 0.,\n/2/time/relative : 0.,\n/2/sfdur/ms,\n/2/voice : 2,\n/2/time/absolute : 0.,\n/1/time/relative : 0.,\n/1/sfdur/ms,\n/1/voice : 1,\n/1/time/absolute : 0.,\n/1/bufname : \"buf\",\n/1/transport/play : \"bang\",\n/1/func : \"lambda(t, /cos =  cos(t * 2. * pi()))\",\n/1/cos : 1."
 				}
 
 			}
@@ -117,12 +157,12 @@
 					"patching_rect" : [ 39.0, 301.0, 48.0, 136.0 ],
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
+							"parameter_longname" : "live.gain~",
 							"parameter_mmax" : 6.0,
+							"parameter_mmin" : -70.0,
 							"parameter_shortname" : "live.gain~",
 							"parameter_type" : 0,
-							"parameter_unitstyle" : 4,
-							"parameter_mmin" : -70.0,
-							"parameter_longname" : "live.gain~"
+							"parameter_unitstyle" : 4
 						}
 
 					}
@@ -138,7 +178,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 39.0, 109.0, 79.0, 20.0 ],
+					"patching_rect" : [ 39.0, 109.0, 79.0, 22.0 ],
 					"text" : "prepend note"
 				}
 
@@ -154,7 +194,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 39.0, 22.0, 359.0, 51.0 ],
-					"presentation_linecount" : 6,
 					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 98, 117, 102, 110, 97, 109, 101, 0, 0, 0, 0, 44, 115, 0, 0, 98, 117, 102, 0, 0, 0, 0, 28, 47, 116, 114, 97, 110, 115, 112, 111, 114, 116, 47, 112, 108, 97, 121, 0, 44, 115, 0, 0, 98, 97, 110, 103, 0, 0, 0, 0, 0, 0, 0, 52, 47, 102, 117, 110, 99, 0, 0, 0, 44, 115, 0, 0, 108, 97, 109, 98, 100, 97, 40, 116, 44, 32, 47, 99, 111, 115, 32, 61, 32, 32, 99, 111, 115, 40, 116, 32, 42, 32, 50, 46, 32, 42, 32, 112, 105, 40, 41, 41, 41, 0, 0, 0 ],
 					"saved_bundle_length" : 128,
 					"text" : "/bufname : \"buf\",\n/transport/play : \"bang\",\n/func : \"lambda(t, /cos =  cos(t * 2. * pi()))\""
@@ -168,7 +207,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 506.0, 70.0, 48.0, 20.0 ],
+					"patching_rect" : [ 506.0, 70.0, 48.0, 22.0 ],
 					"text" : "replace"
 				}
 
@@ -180,7 +219,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "float", "bang" ],
-					"patching_rect" : [ 506.0, 109.0, 66.0, 20.0 ],
+					"patching_rect" : [ 506.0, 109.0, 66.0, 22.0 ],
 					"text" : "buffer~ buf"
 				}
 
@@ -192,7 +231,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 4,
 					"outlettype" : [ "signal", "", "", "" ],
-					"patching_rect" : [ 39.0, 194.0, 103.0, 20.0 ],
+					"patching_rect" : [ 39.0, 194.0, 112.0, 22.0 ],
 					"text" : "poly~ o.sfplayer.1 6"
 				}
 
@@ -267,21 +306,29 @@
 			"parameterbanks" : 			{
 
 			}
-
+,
+			"inherited_shortname" : 1
 		}
 ,
 		"dependency_cache" : [ 			{
 				"name" : "o.sfplayer.1.maxpat",
-				"bootpath" : "~/Development/CNMAT/ODOT-tutorials/john_testing",
+				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/examples",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.accum.maxpat",
-				"bootpath" : "~/Development/CNMAT/CNMAT/CNMAT-odot/patchers/namespace",
-				"patcherrelativepath" : "../../CNMAT/CNMAT-odot/patchers/namespace",
+				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/patchers/namespace",
+				"patcherrelativepath" : "../patchers/namespace",
 				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "icon.png",
+				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot",
+				"patcherrelativepath" : "..",
+				"type" : "PNG",
 				"implicit" : 1
 			}
 , 			{
@@ -317,7 +364,8 @@
 				"type" : "iLaX"
 			}
  ],
-		"autosave" : 0
+		"autosave" : 0,
+		"bgcolor" : [ 0.996078, 0.996078, 0.996078, 1.0 ]
 	}
 
 }

@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 70.0, 115.0, 995.0, 505.0 ],
+		"rect" : [ 70.0, 100.0, 995.0, 505.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -115,6 +115,7 @@
 			}
 , 			{
 				"box" : 				{
+					"fontsize" : 12.0,
 					"id" : "obj-20",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
@@ -169,19 +170,20 @@
 , 			{
 				"box" : 				{
 					"fontname" : "Arial",
-					"fontsize" : 13.0,
+					"fontsize" : 12.0,
 					"id" : "obj-40",
 					"maxclass" : "message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 785.0, 221.905944999999974, 167.0, 23.0 ],
+					"patching_rect" : [ 785.0, 221.905944999999974, 155.0, 22.0 ],
 					"text" : "readfolder C74:/media/msp"
 				}
 
 			}
 , 			{
 				"box" : 				{
+					"fontsize" : 12.0,
 					"id" : "obj-7",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
@@ -412,8 +414,7 @@
 			}
  ],
 		"autosave" : 0,
-		"bgcolor" : [ 0.996078, 0.996078, 0.996078, 1.0 ],
-		"editing_bgcolor" : [ 0.898039, 0.898039, 0.898039, 1.0 ]
+		"bgcolor" : [ 0.996078, 0.996078, 0.996078, 1.0 ]
 	}
 
 }
