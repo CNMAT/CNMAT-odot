@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 8,
+			"revision" : 1,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -37,8 +37,1221 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "Untitled5_template",
-		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
+				"box" : 				{
+					"id" : "obj-113",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "signal" ],
+					"patching_rect" : [ 545.0, 5284.0, 135.0, 22.0 ],
+					"text" : "o.synthesizer.basic~"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-112",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "signal" ],
+					"patching_rect" : [ 492.0, 5311.0, 135.0, 22.0 ],
+					"text" : "o.synthesizer.basic~"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-111",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "signal" ],
+					"patching_rect" : [ 439.0, 5338.0, 135.0, 22.0 ],
+					"text" : "o.synthesizer.basic~"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-104",
+					"maxclass" : "ezdac~",
+					"numinlets" : 2,
+					"numoutlets" : 0,
+					"patching_rect" : [ 386.0, 5449.0, 45.0, 45.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-105",
+					"maxclass" : "gain~",
+					"multichannelvariant" : 0,
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "signal", "" ],
+					"parameter_enable" : 0,
+					"patching_rect" : [ 386.0, 5391.0, 45.0, 47.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-84",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 5,
+					"outlettype" : [ "", "", "", "", "FullPacket" ],
+					"patching_rect" : [ 386.0, 5236.0, 231.0, 22.0 ],
+					"text" : "o.route /0 /1 /2 /3"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-109",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "FullPacket" ],
+					"patching_rect" : [ 386.0, 5206.0, 93.0, 22.0 ],
+					"text" : "o.route /synth"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-110",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "signal" ],
+					"patching_rect" : [ 386.0, 5365.0, 135.0, 22.0 ],
+					"text" : "o.synthesizer.basic~"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontface" : 0,
+					"fontsize" : 14.0,
+					"id" : "obj-102",
+					"linecount" : 4,
+					"maxclass" : "o.compose",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 65.0, 4785.0, 390.0, 74.0 ],
+					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 56, 47, 115, 121, 110, 116, 104, 47, 48, 47, 112, 108, 97, 121, 0, 0, 0, 44, 100, 100, 100, 115, 0, 0, 0, 64, 123, -128, 0, 0, 0, 0, 0, 63, -16, 0, 0, 0, 0, 0, 0, 64, 8, 0, 0, 0, 0, 0, 0, 115, 105, 110, 101, 0, 0, 0, 0, 0, 0, 0, 56, 47, 115, 121, 110, 116, 104, 47, 49, 47, 112, 108, 97, 121, 0, 0, 0, 44, 100, 100, 100, 115, 0, 0, 0, 64, 124, 16, 0, 0, 0, 0, 0, 63, -26, 102, 102, 102, 102, 102, 102, 64, 24, 0, 0, 0, 0, 0, 0, 115, 105, 110, 101, 0, 0, 0, 0, 0, 0, 0, 60, 47, 115, 121, 110, 116, 104, 47, 50, 47, 112, 108, 97, 121, 0, 0, 0, 44, 100, 100, 100, 115, 0, 0, 0, 64, -119, 0, 0, 0, 0, 0, 0, 63, -29, 51, 51, 51, 51, 51, 51, 64, 16, 0, 0, 0, 0, 0, 0, 116, 114, 105, 97, 110, 103, 108, 101, 0, 0, 0, 0, 0, 0, 0, 60, 47, 115, 121, 110, 116, 104, 47, 51, 47, 112, 108, 97, 121, 0, 0, 0, 44, 100, 100, 100, 115, 0, 0, 0, 64, -119, 72, 0, 0, 0, 0, 0, 63, -32, 0, 0, 0, 0, 0, 0, 64, 20, 0, 0, 0, 0, 0, 0, 116, 114, 105, 97, 110, 103, 108, 101, 0, 0, 0, 0 ],
+					"saved_bundle_length" : 264,
+					"text" : "/synth/0/play : [440., 1., 3., \"sine\"],\n/synth/1/play : [449., 0.7, 6., \"sine\"],\n/synth/2/play : [800., 0.6, 4., \"triangle\"],\n/synth/3/play : [809., 0.5, 5., \"triangle\"]"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontface" : 0,
+					"fontsize" : 14.0,
+					"id" : "obj-99",
+					"linecount" : 16,
+					"maxclass" : "o.display",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 65.0, 5206.0, 271.0, 274.0 ],
+					"text" : "/synth/0/frequency : 440.,\n/synth/0/env/amplitude : 1.,\n/synth/0/env/duration/sec : 3.,\n/synth/0/waveform : \"sine\",\n/synth/1/frequency : 449.,\n/synth/1/env/amplitude : 0.7,\n/synth/1/env/duration/sec : 6.,\n/synth/1/waveform : \"sine\",\n/synth/2/frequency : 800.,\n/synth/2/env/amplitude : 0.6,\n/synth/2/env/duration/sec : 4.,\n/synth/2/waveform : \"triangle\",\n/synth/3/frequency : 809.,\n/synth/3/env/amplitude : 0.5,\n/synth/3/env/duration/sec : 5.,\n/synth/3/waveform : \"triangle\""
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontface" : 0,
+					"fontsize" : 14.0,
+					"id" : "obj-100",
+					"linecount" : 19,
+					"maxclass" : "o.expr.codebox",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "FullPacket", "FullPacket" ],
+					"patching_rect" : [ 65.0, 4873.0, 708.0, 320.0 ],
+					"text" : "# This time, we assume that getaddresses() will produce a list\n/addrs = getaddresses(), \n\n# The outer map iterates over the list of addresses\nmap(lambda(addr,\n           # get the voice number and values for the current address (addr).\n           /tmp/voice = split(\"/\", addr)[[1]],\n           /tmp/vals = value(addr),\n\n           # Now, just like in the example above, iterate over each value.\n           # and name, constructing addresses and assigning to them for each one.\n           map(lambda([val, name],\n                      assign(\"/synth/\" + /tmp/voice + name,\n                             val)),\n               /tmp/vals,\n               [\"/frequency\", \"/env/amplitude\", \"/env/duration/sec\", \"/waveform\"]),\n           map(delete, [addr, \"/tmp/voice\", \"/tmp/vals\"])),\n    /addrs),\ndelete(/addrs)"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-98",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 65.0, 4752.0, 771.0, 20.0 ],
+					"text" : "Now, let's revise the code above so that it will work on any number of addresses, as long as they are all the same structure."
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontface" : 2,
+					"id" : "obj-97",
+					"linecount" : 5,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 750.0, 4161.5, 222.0, 76.0 ],
+					"text" : "Note that we assume here that there's one, and only address! (In the next example, we'll generalize a step further to support more than one address...)."
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontface" : 0,
+					"fontsize" : 14.0,
+					"id" : "obj-95",
+					"maxclass" : "o.display",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 130.0, 4587.0, 271.0, 36.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontface" : 0,
+					"fontsize" : 14.0,
+					"id" : "obj-94",
+					"linecount" : 28,
+					"maxclass" : "o.expr.codebox",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "FullPacket", "FullPacket" ],
+					"patching_rect" : [ 130.0, 4116.0, 615.0, 463.0 ],
+					"text" : "# Get a list of the addresses in the bundle (assume there's only one)\n/addr = getaddresses(), \n\n# Split the address into its component parts and store the voice num\n/voice = split(\"/\", /addr)[[1]], \n\n# Store a copy of the values associated with the address\n/vals = value(/addr), \n\n# Now, we map over the values, and a list of names that corresponds\n# to each element in the values list. For each pass, [val, name] \n# will take on the following values:\n# Pass 1: [440, \"/frequency\"]\n# Pass 2: [1, \"/env/amplitude\"]\n# Pass 3: [3, \"/env/duration/sec\"]\n# Pass 4: [\"sine\", \"/waveform\"]\nmap(lambda([val, name],\n           assign(\"/synth/\" + /voice + name,\n                  val)),\n    /vals,\n    [\"/frequency\", \"/env/amplitude\", \"/env/duration/sec\", \"/waveform\"]),\n\n# Finally, delete any unwanted messages. Note the first two \n# elements of the list: /addr and \"/addr\". Because the first one is\n# an address and not a string, it will be looked up, and will\n# produce the value of /addr, which itself is an address, and that\n# will be deleted. Then, we delete /addr itself.\nmap(delete, [/addr, \"/addr\", \"/voice\", \"/vals\"])"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-93",
+					"linecount" : 3,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 152.0, 4064.0, 546.0, 48.0 ],
+					"text" : "However, this only does the job for voice 0. If we want a more general solution, we'll need to actually get a hold of the address, find out which voice it is, and then use that information to construct new addresses. Here's a more general solution:"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontface" : 0,
+					"fontsize" : 14.0,
+					"id" : "obj-92",
+					"maxclass" : "o.display",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 209.0, 3975.0, 271.0, 36.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontface" : 0,
+					"fontsize" : 14.0,
+					"id" : "obj-91",
+					"linecount" : 5,
+					"maxclass" : "o.expr.codebox",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "FullPacket", "FullPacket" ],
+					"patching_rect" : [ 209.0, 3867.0, 405.0, 98.0 ],
+					"text" : "/synth/0/frequency = /synth/0/play[[0]],\n/synth/0/env/amplitude = /synth/0/play[[1]],\n/synth/0/env/duration/sec = /synth/0/play[[2]],\n/synth/0/waveform = /synth/0/play[[3]],\ndelete(/synth/0/play)"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontface" : 0,
+					"fontsize" : 14.0,
+					"id" : "obj-90",
+					"maxclass" : "o.compose",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 130.0, 3794.0, 331.0, 26.0 ],
+					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 52, 47, 115, 121, 110, 116, 104, 47, 48, 47, 112, 108, 97, 121, 0, 0, 0, 44, 105, 100, 100, 115, 0, 0, 0, 0, 0, 1, -72, 63, -16, 0, 0, 0, 0, 0, 0, 64, 8, 0, 0, 0, 0, 0, 0, 115, 105, 110, 101, 0, 0, 0, 0 ],
+					"saved_bundle_length" : 72,
+					"text" : "/synth/0/play : [440, 1., 3., \"sine\"]"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-89",
+					"linecount" : 2,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 226.0, 3831.0, 388.0, 34.0 ],
+					"text" : "If we know exactly what's in the original bundle, it's easy enough to produce the structure we want:"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontface" : 0,
+					"fontsize" : 14.0,
+					"id" : "obj-88",
+					"linecount" : 4,
+					"maxclass" : "o.compose",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 130.0, 3697.0, 281.0, 74.0 ],
+					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 28, 47, 115, 121, 110, 116, 104, 47, 48, 47, 102, 114, 101, 113, 117, 101, 110, 99, 121, 0, 0, 44, 105, 0, 0, 0, 0, 1, -72, 0, 0, 0, 36, 47, 115, 121, 110, 116, 104, 47, 48, 47, 101, 110, 118, 47, 97, 109, 112, 108, 105, 116, 117, 100, 101, 0, 0, 44, 100, 0, 0, 63, -16, 0, 0, 0, 0, 0, 0, 0, 0, 0, 40, 47, 115, 121, 110, 116, 104, 47, 48, 47, 101, 110, 118, 47, 100, 117, 114, 97, 116, 105, 111, 110, 47, 115, 101, 99, 0, 0, 0, 44, 100, 0, 0, 64, 8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 32, 47, 115, 121, 110, 116, 104, 47, 48, 47, 119, 97, 118, 101, 102, 111, 114, 109, 0, 0, 0, 44, 115, 0, 0, 115, 105, 110, 101, 0, 0, 0, 0 ],
+					"saved_bundle_length" : 168,
+					"text" : "/synth/0/frequency : 440,\n/synth/0/env/amplitude : 1.,\n/synth/0/env/duration/sec : 3.,\n/synth/0/waveform : \"sine\""
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-87",
+					"linecount" : 2,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 130.0, 3655.0, 740.0, 34.0 ],
+					"text" : "and we want to send it to our multivoice o.synthesizer.basic~ module that we've used in the past, which expects each item of data to have its own address, like this:"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontface" : 0,
+					"fontsize" : 14.0,
+					"id" : "obj-86",
+					"maxclass" : "o.compose",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 130.0, 3621.0, 331.0, 26.0 ],
+					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 52, 47, 115, 121, 110, 116, 104, 47, 48, 47, 112, 108, 97, 121, 0, 0, 0, 44, 105, 100, 100, 115, 0, 0, 0, 0, 0, 1, -72, 63, -16, 0, 0, 0, 0, 0, 0, 64, 8, 0, 0, 0, 0, 0, 0, 115, 105, 110, 101, 0, 0, 0, 0 ],
+					"saved_bundle_length" : 72,
+					"text" : "/synth/0/play : [440, 1., 3., \"sine\"]"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-85",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 130.0, 3592.0, 740.0, 20.0 ],
+					"text" : "Let's imagine that we have a bundle with a single message like this:"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-83",
+					"linecount" : 6,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 130.0, 3484.0, 740.0, 90.0 ],
+					"text" : "All of the examples above worked because we knew what was in the incoming bundle, however, in practice this is not always the case. Often, we want to get a list of addresses and operate on that using the techniques described above. There are two functions for this: getaddresses(), which returns a list of all addresses in the bundle as strings, and the more powerful match(), which behaves similarly to o.select. \n\nIn this final section, we'll introduce getaddresses() and use it to dynamically rearrange the structure of a bundle."
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.996078431372549, 0.996078431372549, 1.0 ],
+					"id" : "obj-81",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 439.0, 3445.0, 122.0, 20.0 ],
+					"text" : "Getting addresses"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-82",
+					"maxclass" : "live.line",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 62.0, 3452.25, 876.0, 5.5 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontface" : 0,
+					"fontsize" : 14.0,
+					"id" : "obj-77",
+					"linecount" : 4,
+					"maxclass" : "o.display",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 514.0, 3258.0, 221.0, 84.0 ],
+					"text" : "/synth/0/freq : 440,\n/synth/1/freq : 448,\n/synth/2/freq : 550,\n/freqs : [440, 448, 550]"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontface" : 0,
+					"fontsize" : 14.0,
+					"id" : "obj-78",
+					"linecount" : 3,
+					"maxclass" : "o.compose",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 514.0, 3109.0, 189.0, 58.0 ],
+					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 24, 47, 115, 121, 110, 116, 104, 47, 48, 47, 102, 114, 101, 113, 0, 0, 0, 44, 105, 0, 0, 0, 0, 1, -72, 0, 0, 0, 24, 47, 115, 121, 110, 116, 104, 47, 49, 47, 102, 114, 101, 113, 0, 0, 0, 44, 105, 0, 0, 0, 0, 1, -64, 0, 0, 0, 24, 47, 115, 121, 110, 116, 104, 47, 50, 47, 102, 114, 101, 113, 0, 0, 0, 44, 105, 0, 0, 0, 0, 2, 38 ],
+					"saved_bundle_length" : 100,
+					"text" : "/synth/0/freq : 440,\n/synth/1/freq : 448,\n/synth/2/freq : 550"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontface" : 0,
+					"fontsize" : 14.0,
+					"id" : "obj-79",
+					"linecount" : 3,
+					"maxclass" : "o.expr.codebox",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "FullPacket", "FullPacket" ],
+					"patching_rect" : [ 514.0, 3179.0, 447.0, 66.0 ],
+					"text" : "/freqs = map(lambda(i, \n                    value(\"/synth/\" + i + \"/freq\")),\n             aseq(0, 2))"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-80",
+					"linecount" : 3,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 514.0, 3047.0, 358.0, 48.0 ],
+					"text" : "And this use of value is particularly useful when you know what the addresses in a bundle are and you want to access them programmatically:"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontface" : 0,
+					"fontsize" : 14.0,
+					"id" : "obj-76",
+					"maxclass" : "o.display",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 57.0, 3258.0, 221.0, 36.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontface" : 0,
+					"fontsize" : 14.0,
+					"id" : "obj-75",
+					"maxclass" : "o.compose",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 57.0, 3109.0, 222.0, 26.0 ],
+					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 28, 47, 102, 114, 101, 113, 115, 0, 0, 44, 105, 105, 105, 0, 0, 0, 0, 0, 0, 1, -72, 0, 0, 1, -64, 0, 0, 2, 38 ],
+					"saved_bundle_length" : 48,
+					"text" : "/freqs : [440, 448, 550]"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontface" : 0,
+					"fontsize" : 14.0,
+					"id" : "obj-74",
+					"linecount" : 4,
+					"maxclass" : "o.expr.codebox",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "FullPacket", "FullPacket" ],
+					"patching_rect" : [ 57.0, 3158.0, 414.0, 82.0 ],
+					"text" : "map(lambda([f, i], \n           assign(\"/synth/\" + i + \"/freq\", f)), \n    /freqs, # f\n    aseq(0, length(/freqs) - 1)) # i"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-73",
+					"linecount" : 3,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 57.0, 3047.0, 358.0, 48.0 ],
+					"text" : "This use of assign is particularly useful if you want to loop over a series of values and construct addresses to assign them to as part of the process:"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontface" : 0,
+					"fontsize" : 14.0,
+					"id" : "obj-69",
+					"linecount" : 3,
+					"maxclass" : "o.compose",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 466.0, 2696.0, 189.0, 58.0 ],
+					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 24, 47, 115, 121, 110, 116, 104, 47, 48, 47, 102, 114, 101, 113, 0, 0, 0, 44, 105, 0, 0, 0, 0, 1, -72, 0, 0, 0, 24, 47, 115, 121, 110, 116, 104, 47, 49, 47, 102, 114, 101, 113, 0, 0, 0, 44, 105, 0, 0, 0, 0, 1, -64, 0, 0, 0, 24, 47, 115, 121, 110, 116, 104, 47, 50, 47, 102, 114, 101, 113, 0, 0, 0, 44, 105, 0, 0, 0, 0, 2, 38 ],
+					"saved_bundle_length" : 100,
+					"text" : "/synth/0/freq : 440,\n/synth/1/freq : 448,\n/synth/2/freq : 550"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontface" : 0,
+					"fontsize" : 14.0,
+					"id" : "obj-70",
+					"linecount" : 6,
+					"maxclass" : "o.display",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 466.0, 2849.0, 179.0, 116.0 ],
+					"text" : "/synth/0/freq : 440,\n/synth/1/freq : 448,\n/synth/2/freq : 550,\n/freq1 : 440,\n/freq2 : 448,\n/freq3 : 550"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-71",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "bang" ],
+					"patching_rect" : [ 466.0, 2662.0, 66.0, 22.0 ],
+					"text" : "loadbang"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontface" : 0,
+					"fontsize" : 14.0,
+					"id" : "obj-72",
+					"linecount" : 3,
+					"maxclass" : "o.expr.codebox",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "FullPacket", "FullPacket" ],
+					"patching_rect" : [ 466.0, 2769.0, 439.0, 66.0 ],
+					"text" : "/freq1 = /synth/0/freq,\n/freq2 = value(\"/synth/1/freq\"),\n/freq3 = value(\"/\" + join(\"/\", \"synth\", 2, \"freq\"))"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-68",
+					"linecount" : 6,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 466.0, 2557.0, 471.0, 90.0 ],
+					"text" : "Similarly, when you write an address in an odot expression, it will be automatically looked up in the working bundle (unless it's on the lefthand side of an assignment or as part of a handful of special functions that suppress lookup like the first argument of assign()). There are times, however, when you want to be able to assemble a string programmatically and look it up, which you can do with the value() function:"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontface" : 0,
+					"fontsize" : 14.0,
+					"id" : "obj-67",
+					"maxclass" : "o.compose",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 57.0, 2662.0, 150.0, 26.0 ],
+					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 47, 112, 102, 120, 0, 0, 0, 0, 44, 115, 0, 0, 47, 97, 0, 0 ],
+					"saved_bundle_length" : 36,
+					"text" : "/pfx : \"/a\""
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontface" : 0,
+					"fontsize" : 14.0,
+					"id" : "obj-66",
+					"linecount" : 4,
+					"maxclass" : "o.display",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 57.0, 2781.0, 137.0, 84.0 ],
+					"text" : "/pfx : \"/a\",\n/foo : 10,\n/bar : 3.14159,\n/a/bloo : true"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-65",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "bang" ],
+					"patching_rect" : [ 57.0, 2628.0, 66.0, 22.0 ],
+					"text" : "loadbang"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontface" : 0,
+					"fontsize" : 14.0,
+					"id" : "obj-64",
+					"linecount" : 3,
+					"maxclass" : "o.expr.codebox",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "FullPacket", "FullPacket" ],
+					"patching_rect" : [ 57.0, 2701.0, 246.0, 66.0 ],
+					"text" : "assign(/foo, 10),\nassign(\"/bar\", pi()),\nassign(/pfx + \"/bloo\", true)"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-63",
+					"linecount" : 4,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 57.0, 2557.0, 345.0, 62.0 ],
+					"text" : "While the lefthand side of the assignment operator '=' must be an address, the first argument to the assign() function may be a string, or even an expression that constructs a string:"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-61",
+					"linecount" : 2,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 187.5, 2497.0, 615.0, 34.0 ],
+					"text" : "One reason we want to be able to put together and take apart strings in a structured way is that we can use them to lookup up and assign values dynamically. "
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.996078431372549, 0.996078431372549, 1.0 ],
+					"id" : "obj-59",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 389.5, 2433.0, 211.0, 20.0 ],
+					"text" : "Dynamic assignment and lookup"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-60",
+					"maxclass" : "live.line",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 57.0, 2440.25, 876.0, 5.5 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-58",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "bang" ],
+					"patching_rect" : [ 532.5, 2184.0, 66.0, 22.0 ],
+					"text" : "loadbang"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontface" : 0,
+					"fontsize" : 14.0,
+					"id" : "obj-57",
+					"linecount" : 3,
+					"maxclass" : "o.display",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 532.5, 2292.0, 338.0, 68.0 ],
+					"text" : "/list : [127, 0, 0, 1],\n/bignum : \"127001\",\n/chars : ['1', '2', '7', '0', '0', '1']"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontface" : 0,
+					"fontsize" : 14.0,
+					"id" : "obj-56",
+					"linecount" : 3,
+					"maxclass" : "o.expr.codebox",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "FullPacket", "FullPacket" ],
+					"patching_rect" : [ 532.5, 2217.0, 237.0, 66.0 ],
+					"text" : "/list = [127, 0, 0, 1],\n/bignum = join(\"\", /list),\n/chars = split(\"\", /bignum)"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-55",
+					"linecount" : 4,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 74.0, 2219.0, 453.0, 62.0 ],
+					"text" : "When we omit the separator from the join() function by passing the empty string \"\", it simply concatenates the substrings together, while when we omit it from split, it will return a list of each individual character:"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontface" : 0,
+					"fontsize" : 14.0,
+					"id" : "obj-51",
+					"maxclass" : "o.display",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 599.5, 1958.0, 271.0, 36.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontface" : 0,
+					"fontsize" : 14.0,
+					"id" : "obj-52",
+					"maxclass" : "o.expr.codebox",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "FullPacket", "FullPacket" ],
+					"patching_rect" : [ 599.5, 1913.0, 229.0, 34.0 ],
+					"text" : "/parts = split(\"/\", /addr)"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontface" : 0,
+					"fontsize" : 14.0,
+					"id" : "obj-53",
+					"linecount" : 3,
+					"maxclass" : "o.display",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 74.0, 2036.0, 279.0, 68.0 ],
+					"text" : "/addr : [192, 168, 0, 1],\n/str : \"192.168.0.1\",\n/strs : [\"192\", \"168\", \"0\", \"1\"]"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontface" : 0,
+					"fontsize" : 14.0,
+					"id" : "obj-54",
+					"maxclass" : "o.expr.codebox",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "FullPacket", "FullPacket" ],
+					"patching_rect" : [ 74.0, 1991.0, 221.0, 34.0 ],
+					"text" : "/strs = split(\".\", /str)"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-50",
+					"linecount" : 4,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 113.0, 1913.0, 453.0, 62.0 ],
+					"text" : "The split() function does the opposite of join(): it takes a separator and splits a string into substrings wherever that separator is found.\n\nHere are some examples:"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.996078431372549, 0.996078431372549, 1.0 ],
+					"id" : "obj-48",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 438.5, 1457.0, 105.0, 20.0 ],
+					"text" : "join() and split()"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-49",
+					"maxclass" : "live.line",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 58.0, 1464.25, 876.0, 5.5 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-47",
+					"linecount" : 2,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 449.0, 1172.0, 447.0, 34.0 ],
+					"text" : "When applied to address strings, this is a powerful way to dynamically design an address space."
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontface" : 0,
+					"fontsize" : 14.0,
+					"id" : "obj-45",
+					"linecount" : 2,
+					"maxclass" : "o.compose",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 432.0, 1211.0, 449.0, 42.0 ],
+					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 52, 47, 97, 100, 100, 114, 115, 0, 0, 44, 115, 115, 115, 0, 0, 0, 0, 47, 102, 114, 101, 113, 117, 101, 110, 99, 121, 0, 0, 47, 97, 109, 112, 108, 105, 116, 117, 100, 101, 0, 0, 47, 100, 117, 114, 97, 116, 105, 111, 110, 0, 0, 0, 0, 0, 0, 24, 47, 112, 102, 120, 0, 0, 0, 0, 44, 115, 0, 0, 47, 115, 121, 110, 116, 104, 47, 49, 0, 0, 0, 0 ],
+					"saved_bundle_length" : 100,
+					"text" : "/addrs : [\"/frequency\", \"/amplitude\", \"/duration\"],\n/pfx : \"/synth/1\""
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontface" : 0,
+					"fontsize" : 14.0,
+					"id" : "obj-43",
+					"maxclass" : "o.display",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 432.0, 1326.0, 464.0, 36.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontface" : 0,
+					"fontsize" : 14.0,
+					"id" : "obj-44",
+					"maxclass" : "o.expr.codebox",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "FullPacket", "FullPacket" ],
+					"patching_rect" : [ 432.0, 1273.0, 128.0, 34.0 ],
+					"text" : "/addrs += /pfx"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-40",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "bang" ],
+					"patching_rect" : [ 432.0, 1017.0, 66.0, 22.0 ],
+					"text" : "loadbang"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontface" : 0,
+					"fontsize" : 14.0,
+					"id" : "obj-39",
+					"maxclass" : "o.display",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 449.0, 1098.0, 518.0, 36.0 ],
+					"text" : "/things : [\"Fruit: apples\", \"Fruit: oranges\", \"Fruit: fish\"]"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontface" : 0,
+					"fontsize" : 14.0,
+					"id" : "obj-38",
+					"maxclass" : "o.expr.codebox",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "FullPacket", "FullPacket" ],
+					"patching_rect" : [ 449.0, 1051.0, 447.0, 34.0 ],
+					"text" : "/things = \"Fruit: \" + [\"apples\", \"oranges\", \"fish\"]"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-36",
+					"linecount" : 3,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 432.0, 963.0, 447.0, 48.0 ],
+					"text" : "The addition operator's scalar expansion behavior that we've seen earlier also applies here and can be leveraged in interesting ways, for example, to apply a prefix to a list of strings:"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontface" : 2,
+					"id" : "obj-28",
+					"linecount" : 3,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 556.0, 1775.0, 381.0, 48.0 ],
+					"text" : "Note: join only puts the separator (first arg) *between* each substring, not at the beginning or end of the resulting string, so if you want it there, you have to put it there yourself."
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontface" : 0,
+					"fontsize" : 14.0,
+					"id" : "obj-25",
+					"linecount" : 3,
+					"maxclass" : "o.compose",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 341.5, 1661.0, 155.0, 58.0 ],
+					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 100, 101, 115, 116, 0, 0, 0, 44, 115, 0, 0, 115, 121, 110, 116, 104, 0, 0, 0, 0, 0, 0, 16, 47, 118, 111, 105, 99, 101, 0, 0, 44, 105, 0, 0, 0, 0, 0, 3, 0, 0, 0, 20, 47, 99, 109, 100, 0, 0, 0, 0, 44, 115, 0, 0, 112, 108, 97, 121, 0, 0, 0, 0 ],
+					"saved_bundle_length" : 84,
+					"text" : "/dest : \"synth\",\n/voice : 3,\n/cmd : \"play\""
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontface" : 0,
+					"fontsize" : 14.0,
+					"id" : "obj-26",
+					"maxclass" : "o.display",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 341.5, 1775.0, 204.0, 36.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontface" : 0,
+					"fontsize" : 14.0,
+					"id" : "obj-27",
+					"maxclass" : "o.expr.codebox",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "FullPacket", "FullPacket" ],
+					"patching_rect" : [ 341.5, 1730.0, 380.0, 34.0 ],
+					"text" : "/addr = \"/\" + join(\"/\", /dest, /voice, /cmd)"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontface" : 0,
+					"fontsize" : 14.0,
+					"id" : "obj-24",
+					"maxclass" : "o.compose",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 74.0, 1661.0, 222.0, 26.0 ],
+					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 32, 47, 97, 100, 100, 114, 0, 0, 0, 44, 105, 105, 105, 105, 0, 0, 0, 0, 0, 0, -64, 0, 0, 0, -88, 0, 0, 0, 0, 0, 0, 0, 1 ],
+					"saved_bundle_length" : 52,
+					"text" : "/addr : [192, 168, 0, 1]"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontface" : 0,
+					"fontsize" : 14.0,
+					"id" : "obj-19",
+					"maxclass" : "o.display",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 74.0, 1775.0, 221.0, 36.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-22",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "bang" ],
+					"patching_rect" : [ 74.0, 1627.0, 66.0, 22.0 ],
+					"text" : "loadbang"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontface" : 0,
+					"fontsize" : 14.0,
+					"id" : "obj-23",
+					"maxclass" : "o.expr.codebox",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "FullPacket", "FullPacket" ],
+					"patching_rect" : [ 74.0, 1730.0, 204.0, 34.0 ],
+					"text" : "/str = join(\".\", /addr)"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-6",
+					"linecount" : 4,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 139.0, 1542.0, 714.0, 62.0 ],
+					"text" : "The addition operator isn't the only way to concatenate strings; the join() function also performs that operation, and takes a separator as its first argument that will be placed between every substring. \n\nHere are some examples:"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontface" : 0,
+					"fontsize" : 14.0,
+					"id" : "obj-21",
+					"linecount" : 2,
+					"maxclass" : "o.display",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 66.0, 1080.0, 288.0, 52.0 ],
+					"text" : "/strings : [\"one 1\", \"two 2.3\", \"true true\", \"fake news false\"]"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-16",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "bang" ],
+					"patching_rect" : [ 66.0, 932.0, 66.0, 22.0 ],
+					"text" : "loadbang"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontface" : 0,
+					"fontsize" : 14.0,
+					"id" : "obj-17",
+					"linecount" : 4,
+					"maxclass" : "o.expr.codebox",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "FullPacket", "FullPacket" ],
+					"patching_rect" : [ 66.0, 973.0, 288.0, 82.0 ],
+					"text" : "/strings = [\"one \" + 1,\n            \"two \" + 2.3,\n            \"true \" + true,\n            \"fake news \" + false]"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-18",
+					"linecount" : 2,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 66.0, 889.0, 543.0, 34.0 ],
+					"text" : "The rules of type promotion apply to the '+' operator even when a string is involved--in fact, strings are at the top of the ladder, and everything else gets promoted to them."
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"bubble" : 1,
+					"bubbleusescolors" : 1,
+					"id" : "obj-15",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 303.0, 766.0, 470.0, 24.0 ],
+					"text" : "'+' is overloaded to mean concatenation when its arguments are strings."
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"bubble" : 1,
+					"bubbleusescolors" : 1,
+					"id" : "obj-13",
+					"linecount" : 2,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 562.0, 812.0, 400.0, 38.0 ],
+					"text" : "'+' is the only operator that's overloaded for use with strings. This use of muitiplication will produce an error"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontface" : 0,
+					"fontsize" : 14.0,
+					"id" : "obj-12",
+					"maxclass" : "o.expr.codebox",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "FullPacket", "FullPacket" ],
+					"patching_rect" : [ 329.0, 814.0, 229.0, 34.0 ],
+					"text" : "/res = \"Hello \" * \"world!\""
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-11",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "bang" ],
+					"patching_rect" : [ 66.0, 730.0, 66.0, 22.0 ],
+					"text" : "loadbang"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-10",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "bang" ],
+					"patching_rect" : [ 66.0, 358.0, 66.0, 22.0 ],
+					"text" : "loadbang"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontface" : 0,
+					"fontsize" : 14.0,
+					"id" : "obj-8",
+					"maxclass" : "o.expr.codebox",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "FullPacket", "FullPacket" ],
+					"patching_rect" : [ 66.0, 761.0, 229.0, 34.0 ],
+					"text" : "/res = \"Hello \" + \"world!\""
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-1",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 66.0, 702.0, 729.0, 20.0 ],
+					"text" : "The addition operator is special because it also works on strings, while the other mathematical operators do not. "
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontface" : 0,
+					"fontsize" : 14.0,
+					"id" : "obj-5",
+					"maxclass" : "o.display",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 66.0, 552.0, 347.0, 36.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontface" : 0,
+					"fontsize" : 14.0,
+					"id" : "obj-4",
+					"linecount" : 7,
+					"maxclass" : "o.expr.codebox",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "FullPacket", "FullPacket" ],
+					"patching_rect" : [ 66.0, 395.0, 725.0, 130.0 ],
+					"text" : "/numbers = [10 + 1,             # int32 + int32 => int32 ('i')\n            3.14 * 2,           # float64 * int32 => float64 ('d')\n            float32(2.0) + .5,  # float32 + float64 => float64 ('d')\n            true * 2,           # true * int32 => int32 ('i') (true becomes 1)\n            false + 2.],        # false + float64 => float64 ('f') (false becomes 0)\n\n/types = typetags(/numbers)"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-3",
+					"linecount" : 5,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 66.0, 266.0, 729.0, 76.0 ],
+					"text" : "Throughout these tutorials, we've seen that the arithmetic operators have the ability to do \"type reconcilliation\" when their operands are of different types. They do this by \"promoting\" the type of one of the operands to the type of the other in a way that minimizes loss of information. For example, since double-precision floats can represent all the 32-bit signed and unsigned integers, the latter are promoted to the former, and an operation that mixes doubles and 32-bit ints will produce a double. Here are some examples:"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-2",
+					"linecount" : 2,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 156.0, 161.0, 659.0, 34.0 ],
+					"text" : "In this tutorial, we'll look at odot's support for string manipulation, and discuss techniques for dynamically inspecting and altering the structure of a bundle by working with its addresses programatically."
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"args" : [ "o.compose", "o.expr.codebox", "o.display", "o.pack", "o.union", "o.route" ],
 					"bgmode" : 0,
@@ -53,20 +1266,8 @@
 					"numinlets" : 0,
 					"numoutlets" : 0,
 					"offset" : [ -5.5, -1.0 ],
-					"patching_rect" : [ 71.0, 4614.0, 834.0, 45.75 ],
+					"patching_rect" : [ 71.0, 5529.0, 834.0, 45.75 ],
 					"viewvisibility" : 1
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-31",
-					"maxclass" : "button",
-					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "bang" ],
-					"parameter_enable" : 0,
-					"patching_rect" : [ 602.0, 983.0, 24.0, 24.0 ]
 				}
 
 			}
@@ -85,30 +1286,8 @@
 					"numinlets" : 0,
 					"numoutlets" : 0,
 					"offset" : [ -1.0, -2.0 ],
-					"patching_rect" : [ 710.0, 4661.75, 195.0, 28.0 ],
+					"patching_rect" : [ 710.0, 5576.75, 195.0, 28.0 ],
 					"viewvisibility" : 1
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"bgcolor" : [ 0.996078431372549, 0.996078431372549, 0.996078431372549, 1.0 ],
-					"id" : "obj-22",
-					"maxclass" : "comment",
-					"numinlets" : 1,
-					"numoutlets" : 0,
-					"patching_rect" : [ 423.166666666666742, 3285.0, 144.0, 22.0 ],
-					"text" : "Bringing it all together"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-23",
-					"maxclass" : "live.line",
-					"numinlets" : 1,
-					"numoutlets" : 0,
-					"patching_rect" : [ 15.0, 3293.5, 960.333333333333485, 5.0 ]
 				}
 
 			}
@@ -118,970 +1297,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 679.0, 4676.75, 150.0, 22.0 ]
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontface" : 0,
-					"fontsize" : 11.0,
-					"id" : "obj-13",
-					"maxclass" : "o.expr.codebox",
-					"numinlets" : 1,
-					"numoutlets" : 2,
-					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 130.0, 4078.0, 103.0, 31.0 ],
-					"text" : "/startval += 1"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-6",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 2,
-					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 130.25, 4026.0, 155.25, 24.0 ],
-					"text" : "t l l"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"bubble" : 1,
-					"bubblepoint" : 0.26,
-					"bubbletextmargin" : 15,
-					"bubbleusescolors" : 1,
-					"fontsize" : 12.0,
-					"id" : "obj-4",
-					"linecount" : 28,
-					"maxclass" : "comment",
-					"numinlets" : 1,
-					"numoutlets" : 0,
-					"patching_rect" : [ 460.5, 3816.0, 483.0, 406.0 ],
-					"text" : "Inside of [o.expr.codebox], we do some calculations to set up the rotation.  Note that these expressions rely on the fact that the output of [o.expr.codebox] is sent back to the right inlet of [o.union] as soon as it leaves the codeboxes.  This allows us to utilize a history of data.  \n\nSo we:\n\n-- check to see if \"/list\" is already present.  If not, we set it equal to \"/inlist\".  If so, we leave it be.\n\n-- check to see if \"/idx\" is present.  If not, we set it so an arithmetic sequence from zero to the list length minus one.  If so, leave it be.\n\n-- Set the \"/startval\" to the modulo of itself by the lenght of \"/list\" minus one.  This is what moves the starting index around to cause the rotation.\n\n-- set \"/idx\" to the result of a function application.  This lambda function performs a modulo operation on the previously existing copy of \"/idx\".\n\n-- set \"/size\" to the length of the list we're interested in - this gets used to set the size of the [multisliders] in our display.\n\n-- use [trigger] for two operations.  1) send out the display info for our display components (two [multislider]s) routed via [o.route] and some messaging.  2) add one to the /startval, and store the result in the right inlet of [o.union]\n\n...then we loop around with feedback and begin the process again when the next bang happens."
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-3",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 392.75, 3610.0, 66.0, 24.0 ],
-					"text" : "loadbang"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-2",
-					"linecount" : 8,
-					"maxclass" : "comment",
-					"numinlets" : 1,
-					"numoutlets" : 0,
-					"patching_rect" : [ 54.0, 3392.5, 899.0, 132.0 ],
-					"text" : "Now that we've covered the essentials of writing expressions, let's look at some practical applications of what we've learned, incorporating the previous materials we know about patching with ODOT.  The example below generates a list and rotates it according to a list of indices that is based on the first.  The list of indices is then used as a lookup to appropriately rotate the input.\n\nClick on a list length.  This sends the generated list along with a \"/startval\" to reset the process.  [o.pack] is used to join the two addressess \"/inlist\" and \"/startval\", and this resultant bundle is passed to the right inlet of [o.union].  We have now set up initialization for this process.\n\nTurn on the [metro] with [toggle].  Each time a bang is sent to the left inlet of [o.union], the object's bundle is sent to [o.expr.codebox].  "
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-5",
-					"linecount" : 14,
-					"maxclass" : "comment",
-					"numinlets" : 1,
-					"numoutlets" : 0,
-					"patching_rect" : [ 400.0, 2961.5, 507.0, 225.0 ],
-					"text" : "This might look like a familiar example.  You saw it in tutorial 6! \nInstead of the original expression ( /add = /int + /x ), we've updated it to include a null coalescing operator.\n\nThis avoids the need to inject something into a bundle via [o.union].  There are times when either method is advantageous, so just be aware that both are there.\n\nSo what's happening here?\nIf x is not present, we set it to 100, and pass the result to the rest of the expression (add that result to /int, and assign this result to /add).  \n\nNote that there is a difference between using the null coalescing assignment operator and the null coalescing operator, and how the latter allows us to build up a more complex expression involving this sort of \"safe default\"."
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontsize" : 13.0,
-					"id" : "obj-87",
-					"linecount" : 14,
-					"maxclass" : "comment",
-					"numinlets" : 1,
-					"numoutlets" : 0,
-					"patching_rect" : [ 74.0, 2627.0, 470.0, 210.0 ],
-					"text" : "Here's a practical situation in which we might want to provide one of these safe defaults.  \n\nWe have an incoming bundle, containing /a and /b.\nWe might like to count the number of times this bundle passes through [o.expr.codebox].\n\nThe first time that this bundle goes through [o.union], /count does not exist, so it gets generated and set to a value of 0.\n\nThen, every subsequent time, /count is incremented by one (/count++).  This accumulative process can happen because after we leave [o.expr.codebox], we store the result in the right inlet of [o.union].  The old bundle containing /count is then blended in with the new incoming bundle - "
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontface" : 0,
-					"fontsize" : 12.0,
-					"id" : "obj-86",
-					"linecount" : 2,
-					"maxclass" : "o.expr.codebox",
-					"numinlets" : 1,
-					"numoutlets" : 2,
-					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 648.0, 2708.0, 111.0, 46.0 ],
-					"text" : "/count ??= 0, \n/count++"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontsize" : 13.0,
-					"id" : "obj-85",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 2,
-					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 648.0, 2763.0, 29.5, 23.0 ],
-					"text" : "t l l"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontsize" : 13.0,
-					"id" : "obj-84",
-					"maxclass" : "newobj",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 648.0, 2680.0, 51.0, 23.0 ],
-					"text" : "o.union"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontface" : 0,
-					"fontsize" : 12.0,
-					"id" : "obj-79",
-					"linecount" : 2,
-					"maxclass" : "o.compose",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 648.0, 2622.0, 78.0, 38.0 ],
-					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 12, 47, 97, 0, 0, 44, 105, 0, 0, 0, 0, 0, 44, 0, 0, 0, 12, 47, 98, 0, 0, 44, 105, 0, 0, 0, 0, 0, 88 ],
-					"saved_bundle_length" : 48,
-					"text" : "/a : 44,\n/b : 88"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontface" : 0,
-					"fontsize" : 12.0,
-					"id" : "obj-80",
-					"maxclass" : "o.display",
-					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 648.0, 2817.0, 111.0, 34.0 ]
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontsize" : 13.0,
-					"id" : "obj-74",
-					"linecount" : 21,
-					"maxclass" : "comment",
-					"numinlets" : 1,
-					"numoutlets" : 0,
-					"patching_rect" : [ 488.5, 2186.0, 368.0, 311.0 ],
-					"text" : "There are situations in which we might want to initialize an address to a specific value if it is not present in the incoming bundle.\n\nLe'ts take a look a three cases that fall into this category.\n\nIn the first (to the left), we are concerned with two addresses:  /a and /result.\nIf /a has not been assigned when a bundle comes in, we set it to 100, otherwise, we leave it alone and continue to the next line.\n\nSimilarly, if /result has been assigned, it's the same:  we leave it alone.  If not, we add 1500 to /a and assign this result to /result.  \n\nClick on the two [o.compose] boxes to the left and see the results in [o.display].  Note that if we sent in a [bang], we still get some reasonable output, since we have provided \"safe\" defaults.  This sort of defensive programming allows us some protection against bundles we might not be anticipating. "
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"bgcolor" : [ 0.996078431372549, 0.996078431372549, 0.996078431372549, 1.0 ],
-					"id" : "obj-51",
-					"maxclass" : "comment",
-					"numinlets" : 1,
-					"numoutlets" : 0,
-					"patching_rect" : [ 403.166666666666742, 2092.0, 182.0, 22.0 ],
-					"text" : "Null Coalescing Assignment"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-52",
-					"maxclass" : "live.line",
-					"numinlets" : 1,
-					"numoutlets" : 0,
-					"patching_rect" : [ 14.0, 2100.5, 960.333333333333485, 5.0 ]
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-47",
-					"maxclass" : "comment",
-					"numinlets" : 1,
-					"numoutlets" : 0,
-					"patching_rect" : [ 96.0, 3682.0, 107.0, 22.0 ],
-					"text" : "2. turn on metro"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontsize" : 12.0,
-					"id" : "obj-40",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 2,
-					"outlettype" : [ "", "FullPacket" ],
-					"patching_rect" : [ 482.5, 4318.0, 67.0, 22.0 ],
-					"text" : "o.route /list"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontsize" : 12.0,
-					"id" : "obj-53",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 2,
-					"outlettype" : [ "", "FullPacket" ],
-					"patching_rect" : [ 482.5, 4291.0, 71.0, 22.0 ],
-					"text" : "o.select /list"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"ghostbar" : 41,
-					"id" : "obj-54",
-					"maxclass" : "multislider",
-					"numinlets" : 1,
-					"numoutlets" : 2,
-					"outlettype" : [ "", "" ],
-					"parameter_enable" : 0,
-					"patching_rect" : [ 482.5, 4344.5, 187.0, 75.0 ],
-					"setminmax" : [ 0.0, 10.0 ],
-					"settype" : 0,
-					"size" : 20,
-					"spacing" : 1
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontsize" : 12.0,
-					"id" : "obj-55",
-					"maxclass" : "message",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 394.75, 3649.0, 19.0, 22.0 ],
-					"text" : "3"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontsize" : 12.0,
-					"id" : "obj-56",
-					"maxclass" : "message",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 374.5, 4291.0, 66.0, 22.0 ],
-					"text" : "range 0 $1"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontsize" : 12.0,
-					"id" : "obj-57",
-					"maxclass" : "message",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 288.0, 3649.0, 28.0, 22.0 ],
-					"text" : "20"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontface" : 0,
-					"fontsize" : 9.0,
-					"id" : "obj-58",
-					"linecount" : 2,
-					"maxclass" : "o.compose",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 340.5, 3749.0, 423.0, 31.0 ],
-					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 112, 47, 105, 110, 108, 105, 115, 116, 0, 44, 105, 105, 105, 105, 105, 105, 105, 105, 105, 105, 105, 105, 105, 105, 105, 105, 105, 105, 105, 105, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 7, 0, 0, 0, 9, 0, 0, 0, 6, 0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 8, 0, 0, 0, 4, 0, 0, 0, 8, 0, 0, 0, 2, 0, 0, 0, 6, 0, 0, 0, 2, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 5, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 3, 0, 0, 0, 4, 0, 0, 0, 1, 0, 0, 0, 20, 47, 115, 116, 97, 114, 116, 118, 97, 108, 0, 0, 0, 44, 105, 0, 0, 0, 0, 0, 0 ],
-					"saved_bundle_length" : 156,
-					"text" : "/inlist : [1, 7, 9, 6, 0, 5, 8, 4, 8, 2, 6, 2, 1, 1, 5, 1, 1, 3, 4, 1],\n/startval : 0"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontsize" : 12.0,
-					"id" : "obj-59",
-					"maxclass" : "message",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 364.75, 3649.0, 19.0, 22.0 ],
-					"text" : "5"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontsize" : 12.0,
-					"id" : "obj-60",
-					"maxclass" : "message",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 327.0, 3649.0, 28.0, 22.0 ],
-					"text" : "10"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontsize" : 12.0,
-					"id" : "obj-61",
-					"maxclass" : "newobj",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 288.0, 3711.0, 130.0, 22.0 ],
-					"text" : "o.pack /inlist /startval 0"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontsize" : 12.0,
-					"id" : "obj-62",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patcher" : 					{
-						"fileversion" : 1,
-						"appversion" : 						{
-							"major" : 8,
-							"minor" : 1,
-							"revision" : 8,
-							"architecture" : "x64",
-							"modernui" : 1
-						}
-,
-						"classnamespace" : "box",
-						"rect" : [ 59.0, 104.0, 640.0, 480.0 ],
-						"bglocked" : 0,
-						"openinpresentation" : 0,
-						"default_fontsize" : 14.0,
-						"default_fontface" : 0,
-						"default_fontname" : "Arial",
-						"gridonopen" : 1,
-						"gridsize" : [ 15.0, 15.0 ],
-						"gridsnaponopen" : 1,
-						"objectsnaponopen" : 1,
-						"statusbarvisible" : 2,
-						"toolbarvisible" : 1,
-						"lefttoolbarpinned" : 0,
-						"toptoolbarpinned" : 0,
-						"righttoolbarpinned" : 0,
-						"bottomtoolbarpinned" : 0,
-						"toolbars_unpinned_last_save" : 0,
-						"tallnewobj" : 0,
-						"boxanimatetime" : 200,
-						"enablehscroll" : 1,
-						"enablevscroll" : 1,
-						"devicewidth" : 0.0,
-						"description" : "",
-						"digest" : "",
-						"tags" : "",
-						"style" : "",
-						"subpatcher_template" : "Untitled5_template",
-						"assistshowspatchername" : 0,
-						"boxes" : [ 							{
-								"box" : 								{
-									"comment" : "",
-									"id" : "obj-9",
-									"index" : 1,
-									"maxclass" : "outlet",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 326.0, 366.0, 30.0, 30.0 ]
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"id" : "obj-8",
-									"maxclass" : "newobj",
-									"numinlets" : 1,
-									"numoutlets" : 2,
-									"outlettype" : [ "int", "int" ],
-									"patching_rect" : [ 358.0, 93.0, 29.5, 24.0 ],
-									"text" : "t i i"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"comment" : "",
-									"id" : "obj-7",
-									"index" : 1,
-									"maxclass" : "inlet",
-									"numinlets" : 0,
-									"numoutlets" : 1,
-									"outlettype" : [ "" ],
-									"patching_rect" : [ 356.0, 23.0, 30.0, 30.0 ]
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"id" : "obj-6",
-									"maxclass" : "newobj",
-									"numinlets" : 2,
-									"numoutlets" : 2,
-									"outlettype" : [ "", "" ],
-									"patching_rect" : [ 312.5, 300.0, 173.0, 24.0 ],
-									"text" : "zl.group @zlmaxsize 1024"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"id" : "obj-5",
-									"maxclass" : "number",
-									"numinlets" : 1,
-									"numoutlets" : 2,
-									"outlettype" : [ "", "bang" ],
-									"parameter_enable" : 0,
-									"patching_rect" : [ 436.0, 45.0, 50.0, 24.0 ]
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"id" : "obj-2",
-									"maxclass" : "newobj",
-									"numinlets" : 2,
-									"numoutlets" : 3,
-									"outlettype" : [ "bang", "bang", "int" ],
-									"patching_rect" : [ 312.5, 183.0, 40.0, 24.0 ],
-									"text" : "uzi"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"id" : "obj-1",
-									"maxclass" : "newobj",
-									"numinlets" : 2,
-									"numoutlets" : 1,
-									"outlettype" : [ "int" ],
-									"patching_rect" : [ 312.5, 222.0, 75.0, 24.0 ],
-									"text" : "random 10"
-								}
-
-							}
- ],
-						"lines" : [ 							{
-								"patchline" : 								{
-									"destination" : [ "obj-6", 0 ],
-									"source" : [ "obj-1", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-1", 0 ],
-									"source" : [ "obj-2", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-9", 0 ],
-									"source" : [ "obj-6", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-8", 0 ],
-									"source" : [ "obj-7", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-2", 0 ],
-									"source" : [ "obj-8", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-6", 1 ],
-									"source" : [ "obj-8", 1 ]
-								}
-
-							}
- ]
-					}
-,
-					"patching_rect" : [ 288.0, 3682.0, 39.0, 22.0 ],
-					"saved_object_attributes" : 					{
-						"description" : "",
-						"digest" : "",
-						"fontsize" : 14.0,
-						"globalpatchername" : "",
-						"tags" : ""
-					}
-,
-					"text" : "p gen"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"ghostbar" : 41,
-					"id" : "obj-63",
-					"maxclass" : "multislider",
-					"numinlets" : 1,
-					"numoutlets" : 2,
-					"outlettype" : [ "", "" ],
-					"parameter_enable" : 0,
-					"patching_rect" : [ 266.5, 4344.5, 187.0, 75.0 ],
-					"setminmax" : [ 0.0, 20.0 ],
-					"settype" : 0,
-					"size" : 20,
-					"spacing" : 1
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontsize" : 12.0,
-					"id" : "obj-64",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 3,
-					"outlettype" : [ "", "", "FullPacket" ],
-					"patching_rect" : [ 266.5, 4260.0, 235.0, 22.0 ],
-					"text" : "o.route /idx /size"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-65",
-					"maxclass" : "button",
-					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "bang" ],
-					"parameter_enable" : 0,
-					"patching_rect" : [ 130.0, 3778.0, 24.0, 24.0 ]
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-66",
-					"maxclass" : "toggle",
-					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "int" ],
-					"parameter_enable" : 0,
-					"patching_rect" : [ 130.0, 3711.0, 24.0, 24.0 ]
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontsize" : 12.0,
-					"id" : "obj-67",
-					"maxclass" : "newobj",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 130.0, 3816.0, 177.0, 22.0 ],
-					"text" : "o.union"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontsize" : 12.0,
-					"id" : "obj-68",
-					"maxclass" : "newobj",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 130.0, 3749.0, 63.0, 22.0 ],
-					"text" : "metro 100"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-69",
-					"maxclass" : "comment",
-					"numinlets" : 1,
-					"numoutlets" : 0,
-					"patching_rect" : [ 421.0, 3649.0, 126.0, 22.0 ],
-					"text" : "1. click a list length"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontface" : 0,
-					"fontsize" : 10.0,
-					"id" : "obj-46",
-					"linecount" : 5,
-					"maxclass" : "o.display",
-					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 130.0, 4454.0, 509.0, 77.0 ],
-					"text" : "/inlist : [1, 7, 9, 6, 0, 5, 8, 4, 8, 2, 6, 2, 1, 1, 5, 1, 1, 3, 4, 1],\n/startval : 0,\n/list : [1, 3, 4, 1, 1, 7, 9, 6, 0, 5, 8, 4, 8, 2, 6, 2, 1, 1, 5, 1],\n/idx : [16, 17, 18, 19, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],\n/size : 20"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontface" : 0,
-					"fontsize" : 11.0,
-					"id" : "obj-49",
-					"linecount" : 10,
-					"maxclass" : "o.expr.codebox",
-					"numinlets" : 1,
-					"numoutlets" : 2,
-					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 130.0, 3858.0, 294.0, 143.0 ],
-					"text" : "/list ??= /inlist,\n/idx ??= aseq(0, length(/list) - 1), \n/startval = /startval % length(/list) - 1, \n/idx = apply(\n  lambda([l],\n    (l + /startval) % length(/list)\n  ), /idx\n),\n/size = length(/list), \n/list = /inlist[[/idx]]"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontsize" : 13.0,
-					"id" : "obj-81",
-					"linecount" : 15,
-					"maxclass" : "comment",
-					"numinlets" : 1,
-					"numoutlets" : 0,
-					"patching_rect" : [ 109.5, 1684.0, 348.0, 224.0 ],
-					"text" : "Let's look at a particular type of dynamic assignment:  the assignment of a bundle.\n\nThis particular bundle has three addresses:  /x, /y, and /z\nWe might label it so that we can recall it later.\n\nWe do this by passing the bundle in as the data argument to assign.  The name can be concatenated, as in the previous examples, and we can use the value of /n to act as a bundle identifier.  \n\nChoose a number in the number box, then click on the bundle containing our three values.  Note that in the output, we only get our named bundle, since we delete the /bndl and /n addresses before leaving the codebox."
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontsize" : 13.0,
-					"id" : "obj-44",
-					"linecount" : 19,
-					"maxclass" : "comment",
-					"numinlets" : 1,
-					"numoutlets" : 0,
-					"patching_rect" : [ 558.0, 1183.0, 346.0, 282.0 ],
-					"text" : "Here we simplify the expression a bit, and instead of generating an arithmetic sequence to pass in as our second argument, we pass a second list.  This example illustrates how we can use assign() within map() in dynamic ways, not only for the name of an address, but the value as well.\n\nThere is an 'a' in each one of the fruits listed.\nWhat we do in map() is to find the 'a' and replace it with a character that we pass in (in this case, *).  The address generated for each iteration in map() is a concatenation of the current letter and the current fruit name.  Note that we are required to use a slash (/) when we format the string.\n\nNote the use of split() within join().  split() returns an array of the characters split by the separator 'a', which we use as the 2nd argument to join().  The first argument to split() is a string we intend to use between each array element that we join."
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontsize" : 13.0,
-					"id" : "obj-50",
-					"linecount" : 22,
-					"maxclass" : "comment",
-					"numinlets" : 1,
-					"numoutlets" : 0,
-					"patching_rect" : [ 85.0, 724.0, 411.0, 326.0 ],
-					"text" : "Here's a similar example to the last, but this time, we'll expose the nature of the way map() works as it relates to the Max system.  \n\nWhen we call map(), we are essentially running a for() loop.  Inside of the codebox, the number of iterations of the mapping is dictated by the size of the lists we send as arguments (note here that it's critical that the lengths are the same).  But in the world of Max, only one event has occurred.  We can prove this by transforming the output bundle to a [bang] and counting the number of events generated.  \n\nClick on the [o.compose] box to send the /input list in to [o.expr.codebox] and note the value output by the counter.  Technically, each time that map() runs, there are 5 iterations.  But the counter will only increment by 1.  \n\nTake a look at the value of /last.  When we reach the end of our loop, this value will be set to the last thing that was passed in as \"a\", which is the character \"s\".  The FIRST thing we pass in is the character \"t\", but note that the value of /last upon the first iteration in the loop is actually \"-\", since we have set it at the beginning of the expression.  Because we assign before we modify /last, we see that there is an off-by-one aspect of our code.  "
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontsize" : 12.0,
-					"id" : "obj-48",
-					"linecount" : 25,
-					"maxclass" : "comment",
-					"numinlets" : 1,
-					"numoutlets" : 0,
-					"patching_rect" : [ 437.0, 189.0, 459.0, 342.0 ],
-					"text" : "Let's look at dynamically assigning addresses.  \n\nThis is generally done with the assign() function, as assign() allows us to pass a concatenated string as the the name of the address to be generated (first argument).\n\nThis example is similar to what we saw on page 8 where we generate a handful of addresses based on information held in a list, except for this time, we construct the names within the loop.\n\nTake a look at the steps involved:\n\n- We pass in our /input list as the 2nd argument to map().  We use this input as the data to be assigned to addresses.\n\n- We pass in an aseq() to generate a list which is passed as the 3rd argument to map (the list to map over).  This is an incrementing list of values starting with zero.  Note that the length() of the /input list dictates the size of the arithmetic sequence generated.  \n\n- Inside lambda():  Upon each iteration of map(), the string \"/\" + <id> is constructed.  Each address will be unique because we are using the aseq() as a group of incrementing values.\n\nClick the [o.compose] box to the left and try to locate how the /input list relates to the addresses generated."
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-75",
-					"maxclass" : "button",
-					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "bang" ],
-					"parameter_enable" : 0,
-					"patching_rect" : [ 623.0, 893.0, 24.0, 24.0 ]
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-73",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 2,
-					"outlettype" : [ "", "bang" ],
-					"patching_rect" : [ 558.0, 893.0, 31.0, 24.0 ],
-					"text" : "t l b"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-72",
-					"maxclass" : "number",
-					"numinlets" : 1,
-					"numoutlets" : 2,
-					"outlettype" : [ "", "bang" ],
-					"parameter_enable" : 0,
-					"patching_rect" : [ 602.0, 952.0, 50.0, 24.0 ]
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-70",
-					"maxclass" : "newobj",
-					"numinlets" : 5,
-					"numoutlets" : 4,
-					"outlettype" : [ "int", "", "", "int" ],
-					"patching_rect" : [ 602.0, 922.0, 61.0, 24.0 ],
-					"text" : "counter"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontface" : 0,
-					"fontsize" : 12.0,
-					"id" : "obj-45",
-					"maxclass" : "o.display",
-					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 558.0, 1875.0, 145.0, 34.0 ]
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontsize" : 12.0,
-					"id" : "obj-38",
-					"maxclass" : "number",
-					"numinlets" : 1,
-					"numoutlets" : 2,
-					"outlettype" : [ "", "bang" ],
-					"parameter_enable" : 0,
-					"patching_rect" : [ 644.0, 1671.0, 47.0, 22.0 ]
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontface" : 0,
-					"fontsize" : 12.0,
-					"id" : "obj-39",
-					"linecount" : 3,
-					"maxclass" : "o.expr.codebox",
-					"numinlets" : 1,
-					"numoutlets" : 2,
-					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 558.0, 1781.0, 241.0, 59.0 ],
-					"text" : "assign(\"/ourname/\" + /n, /bndl),\ndelete(/bndl),\ndelete(/n)"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontsize" : 12.0,
-					"id" : "obj-41",
-					"maxclass" : "newobj",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 558.0, 1717.0, 105.0, 22.0 ],
-					"text" : "o.pack /bndl /n 0"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontface" : 0,
-					"fontsize" : 12.0,
-					"id" : "obj-42",
-					"linecount" : 3,
-					"maxclass" : "o.compose",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 558.0, 1642.0, 78.0, 51.0 ],
-					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 12, 47, 120, 0, 0, 44, 105, 0, 0, 0, 0, 0, 10, 0, 0, 0, 12, 47, 121, 0, 0, 44, 105, 0, 0, 0, 0, 0, 90, 0, 0, 0, 12, 47, 122, 0, 0, 44, 105, 0, 0, 0, 0, 0, 16 ],
-					"saved_bundle_length" : 64,
-					"text" : "/x : 10,\n/y : 90,\n/z : 16"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontface" : 0,
-					"fontsize" : 12.0,
-					"id" : "obj-26",
-					"maxclass" : "o.display",
-					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 59.0, 1407.0, 447.0, 34.0 ]
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontface" : 0,
-					"fontsize" : 12.0,
-					"id" : "obj-28",
-					"linecount" : 3,
-					"maxclass" : "o.compose",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 59.0, 1194.0, 453.0, 51.0 ],
-					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 40, 47, 108, 101, 116, 116, 101, 114, 115, 0, 0, 0, 0, 44, 115, 115, 115, 115, 115, 0, 0, 97, 0, 0, 0, 98, 0, 0, 0, 99, 0, 0, 0, 100, 0, 0, 0, 101, 0, 0, 0, 0, 0, 0, 60, 47, 102, 114, 117, 105, 116, 115, 0, 44, 115, 115, 115, 115, 115, 0, 0, 99, 114, 97, 110, 98, 101, 114, 114, 121, 0, 0, 0, 112, 101, 97, 114, 0, 0, 0, 0, 100, 117, 114, 105, 97, 110, 0, 0, 112, 101, 97, 99, 104, 0, 0, 0, 103, 114, 97, 112, 101, 0, 0, 0, 0, 0, 0, 20, 47, 114, 101, 112, 108, 97, 99, 101, 0, 0, 0, 0, 44, 115, 0, 0, 42, 0, 0, 0 ],
-					"saved_bundle_length" : 148,
-					"text" : "/letters : [\"a\", \"b\", \"c\", \"d\", \"e\"],\n/fruits : [\"cranberry\", \"pear\", \"durian\", \"peach\", \"grape\"],\n/replace : \"*\""
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontface" : 0,
-					"fontsize" : 12.0,
-					"id" : "obj-33",
-					"linecount" : 5,
-					"maxclass" : "o.expr.codebox",
-					"numinlets" : 1,
-					"numoutlets" : 2,
-					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 59.0, 1284.0, 457.0, 86.0 ],
-					"text" : "map(\n  lambda([l, f],\n      assign(\"/\" + l + \"/\" + f, join(/replace, split(\"a\", f)))\n  ), /letters, /fruits\n)"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontface" : 0,
-					"fontsize" : 12.0,
-					"id" : "obj-35",
-					"maxclass" : "o.display",
-					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 558.0, 1018.0, 311.0, 34.0 ]
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontface" : 0,
-					"fontsize" : 12.0,
-					"id" : "obj-36",
-					"maxclass" : "o.compose",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 558.0, 679.0, 265.0, 24.0 ],
-					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 36, 47, 105, 110, 112, 117, 116, 0, 0, 44, 115, 115, 115, 115, 115, 0, 0, 116, 0, 0, 0, 105, 0, 0, 0, 109, 0, 0, 0, 101, 0, 0, 0, 115, 0, 0, 0 ],
-					"saved_bundle_length" : 56,
-					"text" : "/input : [\"t\", \"i\", \"m\", \"e\", \"s\"]"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontface" : 0,
-					"fontsize" : 12.0,
-					"id" : "obj-37",
-					"linecount" : 9,
-					"maxclass" : "o.expr.codebox",
-					"numinlets" : 1,
-					"numoutlets" : 2,
-					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 558.0, 743.0, 299.0, 141.0 ],
-					"text" : "/last = \"-\",\nmap(\n  lambda([a, i],\n    progn(\n      assign(\"/\" + i + \"/\" + /last, a), \n      /last = a\n    )\n  ), /input, aseq(0, length(/input) - 1)\n)"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontface" : 0,
-					"fontsize" : 12.0,
-					"id" : "obj-27",
-					"maxclass" : "o.display",
-					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 97.0, 429.0, 270.0, 34.0 ]
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontface" : 0,
-					"fontsize" : 12.0,
-					"id" : "obj-25",
-					"maxclass" : "o.compose",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 97.0, 207.0, 265.0, 24.0 ],
-					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 36, 47, 105, 110, 112, 117, 116, 0, 0, 44, 115, 115, 115, 115, 115, 0, 0, 97, 0, 0, 0, 98, 0, 0, 0, 99, 0, 0, 0, 100, 0, 0, 0, 101, 0, 0, 0 ],
-					"saved_bundle_length" : 56,
-					"text" : "/input : [\"a\", \"b\", \"c\", \"d\", \"e\"]"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontface" : 0,
-					"fontsize" : 12.0,
-					"id" : "obj-24",
-					"linecount" : 5,
-					"maxclass" : "o.expr.codebox",
-					"numinlets" : 1,
-					"numoutlets" : 2,
-					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 97.0, 289.0, 299.0, 86.0 ],
-					"text" : "map(\n  lambda([a, i],\n    assign(\"/\" + i, a) \n  ), /input, aseq(0, length(/input) - 1)\n)"
+					"patching_rect" : [ 679.0, 5591.75, 150.0, 20.0 ]
 				}
 
 			}
@@ -1107,161 +1323,12 @@
 			}
 , 			{
 				"box" : 				{
-					"id" : "obj-17",
-					"maxclass" : "comment",
-					"numinlets" : 1,
-					"numoutlets" : 0,
-					"patching_rect" : [ 161.5, 3094.0, 156.0, 22.0 ],
-					"text" : "null coalescing operator"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontsize" : 12.0,
-					"id" : "obj-16",
-					"linecount" : 4,
-					"maxclass" : "comment",
-					"numinlets" : 1,
-					"numoutlets" : 0,
-					"patching_rect" : [ 278.0, 2345.0, 92.0, 60.0 ],
-					"text" : "??= \nnull coalescing assignment operator"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-12",
-					"maxclass" : "button",
-					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "bang" ],
-					"parameter_enable" : 0,
-					"patching_rect" : [ 373.0, 2257.0, 24.0, 24.0 ]
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontface" : 0,
-					"fontsize" : 12.0,
-					"id" : "obj-10",
-					"linecount" : 3,
-					"maxclass" : "o.compose",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 223.0, 2230.0, 109.0, 51.0 ],
-					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 12, 47, 98, 0, 0, 44, 105, 0, 0, 0, 0, 0, 44, 0, 0, 0, 12, 47, 97, 0, 0, 44, 105, 0, 0, 0, 0, 0, 88, 0, 0, 0, 16, 47, 114, 101, 115, 117, 108, 116, 0, 44, 105, 0, 0, 0, 0, 0, 12 ],
-					"saved_bundle_length" : 68,
-					"text" : "/b : 44,\n/a : 88,\n/result : 12"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontface" : 0,
-					"fontsize" : 12.0,
-					"id" : "obj-1",
-					"linecount" : 2,
-					"maxclass" : "o.compose",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 103.0, 2197.0, 87.0, 38.0 ],
-					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 12, 47, 97, 0, 0, 44, 105, 0, 0, 0, 0, 0, 44, 0, 0, 0, 12, 47, 98, 0, 0, 44, 105, 0, 0, 0, 0, 0, 88 ],
-					"saved_bundle_length" : 48,
-					"text" : "/a : 44,\n/b : 88"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontface" : 0,
-					"fontsize" : 12.0,
-					"id" : "obj-8",
-					"maxclass" : "o.display",
-					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 103.0, 2427.0, 150.0, 34.0 ]
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontface" : 0,
-					"fontsize" : 12.0,
-					"id" : "obj-11",
-					"linecount" : 2,
-					"maxclass" : "o.expr.codebox",
-					"numinlets" : 1,
-					"numoutlets" : 2,
-					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 103.0, 2352.0, 164.0, 46.0 ],
-					"text" : "/a ??= 100,\n/result ??= 1500 + /a"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-15",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 147.0, 3014.0, 72.0, 24.0 ],
-					"text" : "o.pack /int"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-18",
-					"maxclass" : "number",
-					"numinlets" : 1,
-					"numoutlets" : 2,
-					"outlettype" : [ "", "bang" ],
-					"parameter_enable" : 0,
-					"patching_rect" : [ 147.0, 2969.0, 50.0, 24.0 ]
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontface" : 0,
-					"fontsize" : 12.0,
-					"id" : "obj-19",
-					"maxclass" : "o.display",
-					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 147.0, 3132.0, 125.0, 34.0 ]
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontface" : 0,
-					"fontsize" : 12.0,
-					"id" : "obj-21",
-					"maxclass" : "o.expr.codebox",
-					"numinlets" : 1,
-					"numoutlets" : 2,
-					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 147.0, 3057.0, 176.0, 32.0 ],
-					"text" : "/add = /int + /x ?? 100"
-				}
-
-			}
-, 			{
-				"box" : 				{
 					"fontsize" : 14.0,
 					"id" : "obj-34",
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 873.0, 604.0, 96.0, 22.0 ],
+					"patching_rect" : [ 873.0, 604.0, 96.0, 20.0 ],
 					"text" : "( scroll down )"
 				}
 
@@ -1273,7 +1340,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 781.0, 42.0, 61.0, 24.0 ],
+					"patching_rect" : [ 781.0, 42.0, 61.0, 22.0 ],
 					"text" : "onecopy"
 				}
 
@@ -1301,15 +1368,54 @@
  ],
 		"lines" : [ 			{
 				"patchline" : 				{
-					"destination" : [ "obj-11", 0 ],
-					"source" : [ "obj-1", 0 ]
+					"destination" : [ "obj-4", 0 ],
+					"source" : [ "obj-10", 0 ]
 				}
 
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-11", 0 ],
-					"source" : [ "obj-10", 0 ]
+					"destination" : [ "obj-109", 0 ],
+					"order" : 0,
+					"source" : [ "obj-100", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-99", 0 ],
+					"order" : 1,
+					"source" : [ "obj-100", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-100", 0 ],
+					"source" : [ "obj-102", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-104", 1 ],
+					"order" : 0,
+					"source" : [ "obj-105", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-104", 0 ],
+					"order" : 1,
+					"source" : [ "obj-105", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-84", 0 ],
+					"source" : [ "obj-109", 0 ]
 				}
 
 			}
@@ -1322,237 +1428,179 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-11", 0 ],
-					"source" : [ "obj-12", 0 ]
+					"destination" : [ "obj-105", 0 ],
+					"source" : [ "obj-110", 0 ]
 				}
 
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-46", 0 ],
-					"order" : 1,
-					"source" : [ "obj-13", 0 ]
+					"destination" : [ "obj-105", 0 ],
+					"source" : [ "obj-111", 0 ]
 				}
 
 			}
 , 			{
 				"patchline" : 				{
-					"color" : [ 0.14230015873909, 0.533874869346619, 0.619952797889709, 1.0 ],
-					"destination" : [ "obj-67", 1 ],
-					"midpoints" : [ 139.5, 4117.0, 116.0, 4117.0, 116.0, 3809.0, 297.5, 3809.0 ],
-					"order" : 0,
-					"source" : [ "obj-13", 0 ]
+					"destination" : [ "obj-105", 0 ],
+					"source" : [ "obj-112", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-105", 0 ],
+					"source" : [ "obj-113", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-17", 0 ],
+					"source" : [ "obj-16", 0 ]
 				}
 
 			}
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-21", 0 ],
-					"source" : [ "obj-15", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-15", 0 ],
-					"source" : [ "obj-18", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-19", 0 ],
-					"source" : [ "obj-21", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-27", 0 ],
-					"source" : [ "obj-24", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-24", 0 ],
-					"source" : [ "obj-25", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-33", 0 ],
-					"source" : [ "obj-28", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-55", 0 ],
-					"source" : [ "obj-3", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-26", 0 ],
-					"source" : [ "obj-33", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-37", 0 ],
-					"source" : [ "obj-36", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-73", 0 ],
-					"source" : [ "obj-37", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-41", 1 ],
-					"source" : [ "obj-38", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-45", 0 ],
-					"source" : [ "obj-39", 0 ]
+					"source" : [ "obj-17", 0 ]
 				}
 
 			}
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-54", 0 ],
-					"source" : [ "obj-40", 0 ]
+					"source" : [ "obj-19", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-24", 0 ],
+					"order" : 1,
+					"source" : [ "obj-22", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-25", 0 ],
+					"order" : 0,
+					"source" : [ "obj-22", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-19", 0 ],
+					"source" : [ "obj-23", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-23", 0 ],
+					"source" : [ "obj-24", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-27", 0 ],
+					"source" : [ "obj-25", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-52", 0 ],
+					"source" : [ "obj-26", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-26", 0 ],
+					"source" : [ "obj-27", 0 ]
 				}
 
 			}
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-39", 0 ],
-					"source" : [ "obj-41", 0 ]
+					"source" : [ "obj-38", 0 ]
 				}
 
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-41", 0 ],
-					"source" : [ "obj-42", 0 ]
+					"destination" : [ "obj-5", 0 ],
+					"source" : [ "obj-4", 0 ]
 				}
 
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-6", 0 ],
-					"source" : [ "obj-49", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-40", 0 ],
-					"source" : [ "obj-53", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-62", 0 ],
-					"source" : [ "obj-55", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-63", 0 ],
-					"source" : [ "obj-56", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-62", 0 ],
-					"source" : [ "obj-57", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-62", 0 ],
-					"source" : [ "obj-59", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-13", 0 ],
-					"source" : [ "obj-6", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-64", 0 ],
-					"source" : [ "obj-6", 1 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-62", 0 ],
-					"source" : [ "obj-60", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-58", 1 ],
+					"destination" : [ "obj-38", 0 ],
 					"order" : 0,
-					"source" : [ "obj-61", 0 ]
+					"source" : [ "obj-40", 0 ]
 				}
 
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-67", 1 ],
+					"destination" : [ "obj-45", 0 ],
 					"order" : 1,
-					"source" : [ "obj-61", 0 ]
+					"source" : [ "obj-40", 0 ]
 				}
 
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-61", 0 ],
-					"source" : [ "obj-62", 0 ]
+					"destination" : [ "obj-43", 0 ],
+					"source" : [ "obj-44", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-44", 0 ],
+					"source" : [ "obj-45", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-51", 0 ],
+					"source" : [ "obj-52", 0 ]
 				}
 
 			}
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-53", 0 ],
-					"source" : [ "obj-64", 2 ]
+					"source" : [ "obj-54", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-57", 0 ],
+					"source" : [ "obj-56", 0 ]
 				}
 
 			}
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-56", 0 ],
-					"source" : [ "obj-64", 1 ]
+					"source" : [ "obj-58", 0 ]
 				}
 
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-63", 0 ],
+					"destination" : [ "obj-66", 0 ],
 					"source" : [ "obj-64", 0 ]
 				}
 
@@ -1566,128 +1614,157 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-68", 0 ],
-					"source" : [ "obj-66", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-49", 0 ],
+					"destination" : [ "obj-64", 0 ],
 					"source" : [ "obj-67", 0 ]
 				}
 
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-65", 0 ],
-					"source" : [ "obj-68", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
 					"destination" : [ "obj-72", 0 ],
-					"source" : [ "obj-70", 0 ]
+					"source" : [ "obj-69", 0 ]
 				}
 
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-31", 0 ],
-					"source" : [ "obj-72", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-35", 0 ],
-					"source" : [ "obj-73", 0 ]
+					"destination" : [ "obj-69", 0 ],
+					"source" : [ "obj-71", 0 ]
 				}
 
 			}
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-70", 0 ],
-					"source" : [ "obj-73", 1 ]
+					"source" : [ "obj-72", 0 ]
 				}
 
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-70", 2 ],
+					"destination" : [ "obj-76", 0 ],
+					"source" : [ "obj-74", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-74", 0 ],
 					"source" : [ "obj-75", 0 ]
 				}
 
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-84", 0 ],
+					"destination" : [ "obj-79", 0 ],
+					"source" : [ "obj-78", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-77", 0 ],
 					"source" : [ "obj-79", 0 ]
 				}
 
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-86", 0 ],
+					"destination" : [ "obj-110", 0 ],
 					"source" : [ "obj-84", 0 ]
 				}
 
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-80", 0 ],
-					"source" : [ "obj-85", 0 ]
+					"destination" : [ "obj-111", 0 ],
+					"source" : [ "obj-84", 1 ]
 				}
 
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-84", 1 ],
-					"midpoints" : [ 668.0, 2796.0, 788.25, 2796.0, 788.25, 2674.0, 689.5, 2674.0 ],
-					"source" : [ "obj-85", 1 ]
+					"destination" : [ "obj-112", 0 ],
+					"source" : [ "obj-84", 2 ]
 				}
 
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-85", 0 ],
-					"source" : [ "obj-86", 0 ]
+					"destination" : [ "obj-113", 0 ],
+					"source" : [ "obj-84", 3 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-91", 0 ],
+					"order" : 0,
+					"source" : [ "obj-90", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-94", 0 ],
+					"order" : 1,
+					"source" : [ "obj-90", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-92", 0 ],
+					"source" : [ "obj-91", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-95", 0 ],
+					"source" : [ "obj-94", 0 ]
 				}
 
 			}
  ],
 		"dependency_cache" : [ 			{
 				"name" : "advance.maxpat",
-				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/patchers/tutorial",
+				"bootpath" : "~/Development/CNMAT/CNMAT/CNMAT-odot/patchers/tutorial",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "filelist.txt",
-				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/patchers/tutorial",
+				"bootpath" : "~/Development/CNMAT/CNMAT/CNMAT-odot/patchers/tutorial",
 				"patcherrelativepath" : ".",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "close_parent.js",
-				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/patchers/tutorial",
+				"bootpath" : "~/Development/CNMAT/CNMAT/CNMAT-odot/patchers/tutorial",
 				"patcherrelativepath" : ".",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.t.banner.maxpat",
-				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/patchers/tutorial",
+				"bootpath" : "~/Development/CNMAT/CNMAT/CNMAT-odot/patchers/tutorial",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.t.objects-covered.maxpat",
-				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/patchers/tutorial",
+				"bootpath" : "~/Development/CNMAT/CNMAT/CNMAT-odot/patchers/tutorial",
+				"patcherrelativepath" : ".",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "o.synthesizer.basic~.maxpat",
+				"bootpath" : "~/Development/CNMAT/CNMAT/CNMAT-odot/patchers/tutorial",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
@@ -1701,23 +1778,11 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "o.pack.mxo",
-				"type" : "iLaX"
-			}
-, 			{
 				"name" : "o.compose.mxo",
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "o.union.mxo",
-				"type" : "iLaX"
-			}
-, 			{
 				"name" : "o.route.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.select.mxo",
 				"type" : "iLaX"
 			}
  ],
