@@ -22,5 +22,6 @@ build-gcc
 !default.mode2v3
 !default.perspectivev3
 !xcshareddata
+xcuserdata
 odot_current_version.h
 package-info.json
