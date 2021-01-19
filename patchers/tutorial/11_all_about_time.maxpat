@@ -369,7 +369,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 377.0, 1975.0, 153.0, 102.0 ],
-					"text" : "/was/v/1 : 4,\n/was/v/2 : 6,\n/was/v/3 : 4,\n/v/1 : 7,\n/v/2 : 1,\n/v/3 : 9"
+					"text" : "/was/v/1 : 5,\n/was/v/2 : 9,\n/was/v/3 : 0,\n/v/1 : 9,\n/v/2 : 7,\n/v/3 : 8"
 				}
 
 			}
@@ -400,7 +400,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 48.5, 4042.0, 424.0, 71.0 ],
-					"text" : "Here, we've done some math on a timetag.  \nWhen we add a number like 1. to /now, the result generates a timetag.  \nWhen we subtract two timetags the result is a float value in seconds."
+					"text" : "Here, we've done some math on timetags.  \nWhen we add a number like 1. to /now, the result generates a timetag.  \nWhen we subtract two timetags the result is a float value in seconds."
 				}
 
 			}
@@ -507,7 +507,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 377.0, 2163.0, 153.0, 116.0 ],
-					"text" : "/was/v/1 : 9,\n/was/v/2 : 6,\n/was/v/3 : 1,\n/v/1 : 8,\n/v/2 : 9,\n/v/3 : 7,\n/sum/absdiff : 10."
+					"text" : "/was/v/1 : 2,\n/was/v/2 : 2,\n/was/v/3 : 4,\n/v/1 : 5,\n/v/2 : 3,\n/v/3 : 9,\n/sum/absdiff : 9."
 				}
 
 			}
@@ -1776,7 +1776,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 122.0, 3426.0, 150.0, 48.0 ],
-					"text" : "/diff : [7, 3],\n/sum/diff : 10"
+					"text" : "/diff : [-4, -3],\n/sum/diff : -7"
 				}
 
 			}
