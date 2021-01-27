@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 7,
+			"revision" : 1,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -37,8 +37,20 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "Default Max 7",
-		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
+				"box" : 				{
+					"id" : "obj-13",
+					"linecount" : 2,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 30.0, 562.0, 308.0, 30.0 ],
+					"presentation_linecount" : 2,
+					"text" : "This tutorial written by Jeff Lubow, with contributions from John MacCallum, 2020."
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"bgcolor" : [ 0.764705882352941, 0.811764705882353, 0.811764705882353, 1.0 ],
 					"bgcolor2" : [ 0.764705882352941, 0.811764705882353, 0.811764705882353, 1.0 ],
@@ -57,7 +69,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 409.0, 25.0, 151.0, 22.0 ],
+					"patching_rect" : [ 409.0, 25.0, 151.0, 20.0 ],
 					"text" : "quickstart / glossary",
 					"textcolor" : [ 0.2, 0.137254901960784, 0.137254901960784, 1.0 ],
 					"textjustification" : 1
@@ -99,7 +111,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 409.0, 100.375, 151.0, 22.0 ],
+					"patching_rect" : [ 409.0, 100.375, 151.0, 20.0 ],
 					"text" : "o.expr reference",
 					"textcolor" : [ 0.2, 0.137254901960784, 0.137254901960784, 1.0 ],
 					"textjustification" : 1
@@ -118,7 +130,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 1,
-							"revision" : 7,
+							"revision" : 1,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -151,7 +163,6 @@
 						"tags" : "",
 						"style" : "",
 						"subpatcher_template" : "Default Max 7",
-						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
 									"id" : "obj-8",
@@ -160,7 +171,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 421.0, 594.0, 324.0, 35.0 ],
+									"patching_rect" : [ 421.0, 594.0, 324.0, 32.0 ],
 									"text" : ";\rmax launchbrowser <mailto:admin@berkeley.edu>"
 								}
 
@@ -172,9 +183,9 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 421.0, 558.0, 51.0, 22.0 ],
+									"patching_rect" : [ 421.0, 558.0, 51.0, 20.0 ],
 									"presentation" : 1,
-									"presentation_rect" : [ 371.0, 629.0, 51.0, 22.0 ],
+									"presentation_rect" : [ 371.0, 629.0, 51.0, 20.0 ],
 									"text" : "[ email ]"
 								}
 
@@ -186,7 +197,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 350.0, 18.0, 33.0, 22.0 ],
+									"patching_rect" : [ 350.0, 18.0, 33.0, 20.0 ],
 									"text" : "front"
 								}
 
@@ -198,7 +209,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "" ],
-									"patching_rect" : [ 350.0, 47.0, 67.0, 22.0 ],
+									"patching_rect" : [ 350.0, 47.0, 67.0, 20.0 ],
 									"save" : [ "#N", "thispatcher", ";", "#Q", "end", ";" ],
 									"text" : "thispatcher"
 								}
@@ -212,9 +223,9 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 13.0, 76.0, 981.0, 24.0 ],
+									"patching_rect" : [ 13.0, 76.0, 981.0, 22.0 ],
 									"presentation" : 1,
-									"presentation_rect" : [ 7.0, 8.0, 296.0, 24.0 ],
+									"presentation_rect" : [ 7.0, 8.0, 296.0, 22.0 ],
 									"text" : "The ODOT programming environment"
 								}
 
@@ -236,15 +247,15 @@
 								"box" : 								{
 									"background" : 1,
 									"id" : "obj-7",
-									"linecount" : 45,
+									"linecount" : 38,
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 13.0, 105.0, 703.0, 610.0 ],
+									"patching_rect" : [ 13.0, 105.0, 703.0, 462.0 ],
 									"presentation" : 1,
-									"presentation_linecount" : 45,
-									"presentation_rect" : [ 7.0, 41.0, 703.0, 610.0 ],
-									"text" : "ODOT is a set of externals and language developed by Adrian Freed and John MacCallum, with support from Andy Schmeder, Ilya Rostovtsev, Rama Gottfried, Jeff Lubow, and many others at the Center for New Music and Audio Technologies (CNMAT) between 2007 and 2016.\n\nODOT emerged out of a need for an aggregate data type that could be operated upon as it is passed around over patch cords.  This aggregation describes a synthesis of control-rate computation in the past, present, and future.  ODOT requires a host environment (Max/MSP), within which a shim layer (libomax) can operate as middleware between libo and the host itself.  The libo library – the current manifestation of Open Sound Control – is utilized at the core, whereby all lower-level OSC calls are made.\n\nAlt text:  Open Sound Control (OSC) is an open, network-friendly encoding for named data. \nOpen Sound Control (OSC) is a protocol for communication among computers, sound synthesizers, and other multimedia devices that is optimized for modern networking technology. Bringing the benefits of modern networking technology to the world of electronic musical instruments, OSC's advantages include interoperability, accuracy, flexibility, and enhanced organization and documentation.\nODOT/OSC were inspired by many of the ideas that David Wessel had about inter-device communication and Human-Computer-Interaction.  \n\nODOT extends OSC in the following ways:\n-\tallows for a simultaneity in the ability to process multiple data streams within a single bundle context\n-\toffers novel ways for the Max programmer to enforce order of operations\n-\tincludes an expression language, allowing users to evaluate expressions, calculate recursively, dynamically generate addresses, and utilize higher-order functions.  It includes a rich library of functions and a syntax loosely resembling LISP.\n-\temploys a name/data schema in which values are bound to addresses.  This allows for variables to be referenced by name (labeled data)\n-\tincludes a bespoke scheduling system, both for control and audio rate threads\n-\tallows for introspection and unification so that OSC can be operated on (amongst the objects in the library)\n-\ttools for manipulating, accumulating, selecting, and formatting sets of addresses\n-\tconditional flow\n-\thierarchical data formatting\n-\tdictionary support \n\nKeywords/phrases:  composability, interoperability, aggregation, integration, bundle, introspection, history of data\n\nKey ideas:  \n-\tgetting rid of the model with which we write to file, poll file for changes.\n-\tglue between various software and hardware environments/systems\nrequires a host environment\n\nResources:\n•\todot glossary\n•\t<>readme in CNMAT-odot repository\n•\t<>dynamic message-oriented middleware paper \n•\t<>Ilya: https://medium.com/@ilzxc/odot-part-1-what-the-eff-is-odot-3da170c4dfc4\n\nTutorial written by Jeffrey Lubow, Music Systems Designer in 2020   "
+									"presentation_linecount" : 38,
+									"presentation_rect" : [ 7.0, 41.0, 703.0, 462.0 ],
+									"text" : "Odot is a dynamic programming environment that operates on Open Sound Control (opensoundcontrol.org) data as its fundamental data type. It was developed at the Center for New Music and Audio Technologies (CNMAT) by Adrian Freed, John MacCallum, Ilya Rostovtsev, Rama Gottfried, Andy Schmeder, Jeff Lubow, Jules Espiau, with contributions from numerous other researchers and graduate students between 2007 and 2016. \n\nCNMAT maintains the official release of odot, with development of new features being done at the Hochschule für Musik und Theater Hamburg by John MacCallum, Rama Gottfried, and others.\n\nAt its core, odot is simply an implementation of OSC that contains many high-level functions, including an expression language, for manipulating the contents of OSC bundles dynamically. Much of this functionality is exposed to Max/MSP via the externals included in this package, providing Max/MSP with a powerful dynamic programming environment for working with structured data.\n\nOdot 1.x largely conforms to the OSC 1.0 specification, with a few notable exceptions (see odot-osc-compatibility.maxpat).\n\nOdot offers a number of features to the Max/MSP programmer, including:\n\n• an (atomic) aggregate data structure (multiple messages delivered as a single atomic unit, similar do Max dictionaries),\n• a rich set of data types including 32-bit and 64-bit floats, a variety of signed and unsigned integer types, time (NTP time stamps), and booleans,\n• a scheduling system (o.schedule, o.schedule~, o.snapshot~, ...) that operates on time stamps,\n• interoperability with Max's dictionary objects,\n• a lightweight but powerful expression language for operating on bundles, which includes\n    • operators that perform arithmitic on time tags,\n    • functions for dynamically constructing addresses,\n    • higher-order and anonymous functions (apply(), map(), etc),\n    * functions for performing introspection,\n    • a large collection of mathematical and music-related functions,\n    • minimal syntax.\n\nResources:\n• this tutorial\n• o.overview\n• o.expr reference\n• README\n• github repos\n• glossary\n• https://medium.com/@ilzxc/odot-part-1-what-the-eff-is-odot-3da170c4dfc4\n• papers"
 								}
 
 							}
@@ -273,7 +284,7 @@
  ]
 					}
 ,
-					"patching_rect" : [ 314.0, 164.0, 68.0, 22.0 ],
+					"patching_rect" : [ 314.0, 164.0, 68.0, 20.0 ],
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
@@ -297,7 +308,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 1,
-							"revision" : 7,
+							"revision" : 1,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -330,7 +341,6 @@
 						"tags" : "",
 						"style" : "",
 						"subpatcher_template" : "Default Max 7",
-						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
 									"id" : "obj-10",
@@ -522,7 +532,7 @@
  ]
 					}
 ,
-					"patching_rect" : [ 434.5, 168.0, 48.0, 22.0 ],
+					"patching_rect" : [ 434.5, 168.0, 48.0, 20.0 ],
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
@@ -541,7 +551,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 30.0, 62.0, 308.0, 87.0 ],
+					"patching_rect" : [ 30.0, 62.0, 308.0, 78.0 ],
 					"text" : "In this set of tutorials, we'll familiarize ourselves with the odot programming environment, a library of externals which operate on Open Sound Control data. Topics will include: event scheduling, design for distributed computation, data management and persistence, and the odot expression language."
 				}
 
@@ -563,7 +573,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 409.0, 50.125, 151.0, 22.0 ],
+					"patching_rect" : [ 409.0, 50.125, 151.0, 20.0 ],
 					"text" : "[[ tutorial ]]",
 					"textcolor" : [ 0.996078431372549, 0.976470588235294, 0.329411764705882, 1.0 ],
 					"textjustification" : 1
@@ -589,7 +599,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 409.0, 125.5, 151.0, 22.0 ],
+					"patching_rect" : [ 409.0, 125.5, 151.0, 20.0 ],
 					"text" : "introduction and history",
 					"textcolor" : [ 0.2, 0.137254901960784, 0.137254901960784, 1.0 ],
 					"textjustification" : 1
@@ -604,7 +614,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 30.0, 25.0, 215.0, 33.0 ],
+					"patching_rect" : [ 30.0, 25.0, 215.0, 30.0 ],
 					"text" : "odot"
 				}
 
@@ -620,7 +630,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 30.0, 217.0, 288.0, 320.0 ],
-					"text" : "/horizontal : 386,\n/vertical : 79,\n/delta/horizontal : -7,\n/delta/vertical : 1,\n/screenDim : [1920, 1080],\n/middle : [960., 540.],\n/button/is : \"up\",\n/x : -574.,\n/y : 461.,\n/distance : 736.204,\n/angle : 141.231,\n/delta/distance : 7.07107,\n/delta/angle : -171.87,\n/shift : \"up\",\n/capslock : \"up\",\n/option : \"up\",\n/control : \"up\",\n/command : \"down\",\n/time : 2020-10-27T23:02:26.511574Z,\n/state : \"moving\",\n/pixPerSec : 361.098,\n/relative/pixPerSec : 0.188072"
+					"text" : "/horizontal : 415,\n/vertical : 503,\n/delta/horizontal : 0,\n/delta/vertical : 0,\n/screenDim : [1920, 1200],\n/middle : [960., 600.],\n/button/is : \"up\",\n/x : -545.,\n/y : 97.,\n/distance : 553.565,\n/angle : 169.908,\n/delta/distance : 0.,\n/delta/angle : 0.,\n/shift : \"up\",\n/capslock : \"up\",\n/option : \"up\",\n/control : \"up\",\n/command : \"down\",\n/time : 2021-01-27T10:41:52.083121Z,\n/state : \"moving\",\n/pixPerSec : 0.,\n/relative/pixPerSec : 0."
 				}
 
 			}
@@ -631,7 +641,7 @@
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 30.0, 172.0, 107.0, 22.0 ],
+					"patching_rect" : [ 30.0, 172.0, 107.0, 20.0 ],
 					"text" : "o.io.mouse.tutorial"
 				}
 
@@ -655,7 +665,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 409.0, 75.25, 151.0, 22.0 ],
+					"patching_rect" : [ 409.0, 75.25, 151.0, 20.0 ],
 					"text" : "o.overview",
 					"textcolor" : [ 0.2, 0.137254901960784, 0.137254901960784, 1.0 ],
 					"textjustification" : 1
@@ -713,7 +723,7 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "o.io.mouse.tutorial.maxpat",
-				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/patchers/tutorial",
+				"bootpath" : "~/Development/CNMAT/CNMAT/CNMAT-odot/patchers/tutorial",
 				"patcherrelativepath" : "../../patchers/tutorial",
 				"type" : "JSON",
 				"implicit" : 1
