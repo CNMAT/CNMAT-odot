@@ -9,5 +9,4 @@
 9, 09_expr4.maxpat "Expressions 4: dynamic assignment";
 10, 10_subbundles_literals.maxpat "usage of subbundles and bundle literals in expressions";
 11, 11_all_about_time.maxpat "dealing with time: history, o.schedule and o.timetag";
-12, 12_strings_and_addresses.maxpat "String Operations & Addresses";
-13, 13_abstractions.maxpat "Abstractions & Objects";
+12, 13_abstractions.maxpat "Abstractions & Objects";
