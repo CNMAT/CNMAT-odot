@@ -4,13 +4,13 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 3,
+			"revision" : 8,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 62.0, 103.0, 524.0, 232.0 ],
+		"rect" : [ 54.0, 98.0, 528.0, 311.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -37,6 +37,7 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "Default Max 7",
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
 					"fontface" : 1,
@@ -44,8 +45,8 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 248.0, 28.0, 57.0, 20.0 ],
-					"text" : "butlast()"
+					"patching_rect" : [ 294.0, 31.0, 64.0, 20.0 ],
+					"text" : "{}"
 				}
 
 			}
@@ -56,8 +57,8 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 248.0, 63.0, 239.0, 74.0 ],
-					"text" : "return all but the last element in a list\n\narguments:\n\n1. list"
+					"patching_rect" : [ 294.0, 66.0, 210.0, 74.0 ],
+					"text" : "create a bundle within o.expr.codebox\n\narguments: \n\nnone"
 				}
 
 			}
@@ -78,13 +79,13 @@
 					"fontface" : 0,
 					"fontsize" : 11.0,
 					"id" : "obj-19",
-					"linecount" : 2,
+					"linecount" : 5,
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 28.0, 94.0, 189.0, 43.0 ],
-					"text" : "/list = [3000, 10, 2, 44], \n/butlast = butlast(/list)"
+					"patching_rect" : [ 28.0, 62.5, 235.0, 81.0 ],
+					"text" : "/bndl/1 = {},\n/list/1 = [3000, 10, 2, 44], \n/list/2 = [2, 2],\n/bndl/1./a = /list/1, \n/bndl/1./b = /list/2"
 				}
 
 			}
@@ -93,13 +94,13 @@
 					"fontface" : 0,
 					"fontsize" : 11.0,
 					"id" : "obj-20",
-					"linecount" : 2,
+					"linecount" : 6,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 28.0, 162.0, 218.0, 45.0 ],
-					"text" : "/list : [3000, 10, 2, 44],\n/butlast : [3000, 10, 2]"
+					"patching_rect" : [ 28.0, 165.0, 219.0, 95.0 ],
+					"text" : "/bndl/1 : {\n\t/a : [3000, 10, 2, 44],\n\t/b : [2, 2]\n},\n/list/1 : [3000, 10, 2, 44],\n/list/2 : [2, 2]"
 				}
 
 			}
