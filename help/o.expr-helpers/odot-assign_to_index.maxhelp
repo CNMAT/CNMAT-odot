@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 3,
+			"revision" : 8,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -37,6 +37,7 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "Default Max 7",
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
 					"id" : "obj-2",
@@ -83,8 +84,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 28.0, 164.0, 215.0, 58.0 ],
-					"text" : "/list : [\"-\", 2, \"-\", 4, 5],\n/val : \"-\",\n/assigned : [\"-\", 2, \"-\", 4, 5]"
+					"patching_rect" : [ 28.0, 164.0, 259.0, 58.0 ],
+					"text" : "/list : [\"-\", 2, \"-\", 4, \"hello\"],\n/list/copy : [1, 2, 3, 4, 5],\n/val : \"-\""
 				}
 
 			}
@@ -93,13 +94,13 @@
 					"fontface" : 0,
 					"fontsize" : 11.0,
 					"id" : "obj-10",
-					"linecount" : 3,
+					"linecount" : 5,
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 28.0, 73.0, 327.0, 56.0 ],
-					"text" : "/list = [1, 2, 3, 4, 5],\n/val = \"-\",\n/assigned = assign_to_index(/list, [0, 2], /val)"
+					"patching_rect" : [ 28.0, 64.0, 261.0, 81.0 ],
+					"text" : "/list = [1, 2, 3, 4, 5],\n/list/copy = /list,\n/val = \"-\",\nassign_to_index(/list, [0, 2], /val), \n/list[[4]] = \"hello\""
 				}
 
 			}
