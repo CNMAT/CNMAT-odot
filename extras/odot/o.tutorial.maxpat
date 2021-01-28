@@ -45,9 +45,8 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 30.0, 547.0, 166.0, 33.0 ],
-					"presentation_linecount" : 2,
-					"text" : "Tutorial written by Jeff Lubow and John MacCallum, 2020."
+					"patching_rect" : [ 30.0, 547.0, 288.0, 33.0 ],
+					"text" : "Tutorial written by Jeff Lubow and John MacCallum, 2020/2021."
 				}
 
 			}
@@ -612,7 +611,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 30.0, 217.0, 288.0, 320.0 ],
-					"text" : "/horizontal : 335,\n/vertical : 645,\n/delta/horizontal : 0,\n/delta/vertical : 0,\n/screenDim : [1920, 1080],\n/middle : [960., 540.],\n/button/is : \"up\",\n/x : -625.,\n/y : -105.,\n/distance : 633.759,\n/angle : -170.463,\n/delta/distance : 0.,\n/delta/angle : 0.,\n/shift : \"up\",\n/capslock : \"up\",\n/option : \"up\",\n/control : \"up\",\n/command : \"down\",\n/time : 2021-01-28T00:12:06.222503Z,\n/state : \"moving\",\n/pixPerSec : 0.,\n/relative/pixPerSec : 0."
+					"text" : "/horizontal : 433,\n/vertical : 976,\n/delta/horizontal : 0,\n/delta/vertical : 0,\n/screenDim : [1920, 1080],\n/middle : [960., 540.],\n/button/is : \"up\",\n/x : -527.,\n/y : -436.,\n/distance : 683.977,\n/angle : -140.398,\n/delta/distance : 0.,\n/delta/angle : 0.,\n/shift : \"up\",\n/capslock : \"up\",\n/option : \"up\",\n/control : \"up\",\n/command : \"down\",\n/time : 2021-01-28T00:15:09.668911Z,\n/state : \"stopped\",\n/pixPerSec : 0.,\n/relative/pixPerSec : 0."
 				}
 
 			}
