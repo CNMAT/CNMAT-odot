@@ -53,12 +53,12 @@
 , 			{
 				"box" : 				{
 					"id" : "obj-3",
-					"linecount" : 5,
+					"linecount" : 6,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 294.0, 66.0, 210.0, 74.0 ],
-					"text" : "create a bundle within o.expr.codebox\n\narguments: \n\nnone"
+					"patching_rect" : [ 294.0, 66.0, 210.0, 87.0 ],
+					"text" : "create a sub-bundle within o.expr.codebox\n\narguments: \n\nnone"
 				}
 
 			}
@@ -84,8 +84,9 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 28.0, 62.5, 235.0, 81.0 ],
-					"text" : "/bndl/1 = {},\n/list/1 = [3000, 10, 2, 44], \n/list/2 = [2, 2],\n/bndl/1./a = /list/1, \n/bndl/1./b = /list/2"
+					"patching_rect" : [ 28.0, 62.5, 202.0, 81.0 ],
+					"presentation_linecount" : 5,
+					"text" : "/bndl = {},\n/list/1 = [3000, 10, 2, 44], \n/list/2 = [2, 2],\n/bndl./a = /list/1, \n/bndl./b = /list/2"
 				}
 
 			}
@@ -100,7 +101,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 28.0, 165.0, 219.0, 95.0 ],
-					"text" : "/bndl/1 : {\n\t/a : [3000, 10, 2, 44],\n\t/b : [2, 2]\n},\n/list/1 : [3000, 10, 2, 44],\n/list/2 : [2, 2]"
+					"text" : "/bndl : {\n\t/a : [3000, 10, 2, 44],\n\t/b : [2, 2]\n},\n/list/1 : [3000, 10, 2, 44],\n/list/2 : [2, 2]"
 				}
 
 			}
