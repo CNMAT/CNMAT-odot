@@ -4,13 +4,13 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 1,
+			"revision" : 8,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 62.0, 98.0, 453.0, 378.0 ],
+		"rect" : [ 62.0, 98.0, 529.0, 405.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 14.0,
@@ -37,13 +37,14 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "Untitled5_template",
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
 					"id" : "obj-4",
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 271.0, 220.0, 24.0, 20.0 ],
+					"patching_rect" : [ 271.0, 220.0, 24.0, 22.0 ],
 					"text" : "1"
 				}
 
@@ -54,7 +55,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 271.0, 290.0, 33.0, 20.0 ],
+					"patching_rect" : [ 271.0, 290.0, 33.0, 22.0 ],
 					"text" : "-0.4"
 				}
 
@@ -67,7 +68,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 245.0, 28.0, 37.0, 18.0 ],
+					"patching_rect" : [ 329.0, 28.0, 37.0, 20.0 ],
 					"text" : "jn()"
 				}
 
@@ -80,7 +81,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 245.0, 63.0, 182.0, 150.0 ],
+					"patching_rect" : [ 329.0, 63.0, 171.0, 167.0 ],
 					"text" : "Bessel function of the second kind, nth order.\n\narguments: \n\n1. n\n2. x \n\nreturns:\n\nBessel function of second kind, nth order, evaluated at x."
 				}
 
@@ -107,7 +108,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 35.0, 28.0, 116.0, 20.0 ],
+					"patching_rect" : [ 35.0, 28.0, 116.0, 22.0 ],
 					"text" : "o.linear_ramp /ramp"
 				}
 
@@ -120,7 +121,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "FullPacket" ],
-					"patching_rect" : [ 86.0, 191.0, 65.0, 20.0 ],
+					"patching_rect" : [ 86.0, 191.0, 65.0, 22.0 ],
 					"text" : "o.route /yn"
 				}
 
@@ -136,7 +137,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 35.0, 329.0, 158.0, 48.0 ],
-					"text" : "/ramp : 0.25,\n/yn : -0.453695"
+					"text" : "/ramp : 0.47,\n/yn : 0.243262"
 				}
 
 			}
@@ -189,7 +190,7 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "o.linear_ramp.maxpat",
-				"bootpath" : "~/Development/CNMAT/CNMAT/CNMAT-odot/help/o.expr-helpers",
+				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/help/o.expr-helpers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
