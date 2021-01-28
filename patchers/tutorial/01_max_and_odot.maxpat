@@ -40,6 +40,21 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"fontface" : 2,
+					"fontsize" : 12.0,
+					"id" : "obj-44",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 138.0, 95.5, 404.0, 20.0 ],
+					"style" : "default",
+					"text" : "written by Jeff Lubow and John MacCallum, 2020.",
+					"textcolor" : [ 0.129411764705882, 0.129411764705882, 0.129411764705882, 0.36 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-40",
 					"maxclass" : "comment",
 					"numinlets" : 1,
