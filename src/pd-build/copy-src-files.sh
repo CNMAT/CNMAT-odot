@@ -4,8 +4,9 @@ COBJECT_LIST=(o.compose o.display o.append o.atomize o.bundle o.change o.collect
 
 for f in ${COBJECT_LIST[*]}
 do
-	cp ../$f/*.c . 
-	cp ../$f/*.h . 
+    cp ../$f/*.c .
+    cp ../$f/*.h . 2> /dev/null
 done
 
 cp ../include/odot.c .
+cp ../include/opd_textbox.[ch] .
