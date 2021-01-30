@@ -266,7 +266,7 @@ SHARED_HEADER ?= $(shell test ! -e $(LIBRARY_NAME).h || echo $(LIBRARY_NAME).h)
 SHARED_LIB ?= $(SHARED_SOURCE:.c=.$(SHARED_EXTENSION))
 SHARED_TCL_LIB = $(wildcard lib$(LIBRARY_NAME).tcl)
 
-.PHONY = install libdir_install single_install install-doc install-examples install-manual install-unittests clean distclean dist etags $(LIBRARY_NAME)
+.PHONY = install libdir_install single_install install-doc install-examples install-manual install-unittests clean distclean dist etags $(LIBRARY_NAME) source-clean
 
 all: $(SOURCES:.c=.$(EXTENSION)) $(SHARED_LIB)
 
@@ -363,6 +363,10 @@ distclean: clean
 	-rm -rf -- $(DISTDIR)
 	-rm -f -- $(ORIGDIR).tar.gz
 	-rm -rf -- $(ORIGDIR)
+
+# we copy the source files from other locations into this one for building
+source-clean:
+	-rm -f *.[ch]
 
 
 $(DISTBINDIR):
