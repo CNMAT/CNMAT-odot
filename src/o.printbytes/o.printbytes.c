@@ -1,33 +1,33 @@
 /*
-Written by John MacCallum, The Center for New Music and Audio Technologies,
-University of California, Berkeley.  Copyright (c) 2010, The Regents of
-the University of California (Regents). 
-Permission to use, copy, modify, distribute, and distribute modified versions
-of this software and its documentation without fee and without a signed
-licensing agreement, is hereby granted, provided that the above copyright
-notice, this paragraph and the following two paragraphs appear in all copies,
-modifications, and distributions.
+  Written by John MacCallum, The Center for New Music and Audio Technologies,
+  University of California, Berkeley.  Copyright (c) 2010, The Regents of
+  the University of California (Regents). 
+  Permission to use, copy, modify, distribute, and distribute modified versions
+  of this software and its documentation without fee and without a signed
+  licensing agreement, is hereby granted, provided that the above copyright
+  notice, this paragraph and the following two paragraphs appear in all copies,
+  modifications, and distributions.
 
-IN NO EVENT SHALL REGENTS BE LIABLE TO ANY PARTY FOR DIRECT, INDIRECT,
-SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES, INCLUDING LOST PROFITS, ARISING
-OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN IF REGENTS HAS
-BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  IN NO EVENT SHALL REGENTS BE LIABLE TO ANY PARTY FOR DIRECT, INDIRECT,
+  SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES, INCLUDING LOST PROFITS, ARISING
+  OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN IF REGENTS HAS
+  BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-REGENTS SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
-THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
-PURPOSE. THE SOFTWARE AND ACCOMPANYING DOCUMENTATION, IF ANY, PROVIDED
-HEREUNDER IS PROVIDED "AS IS". REGENTS HAS NO OBLIGATION TO PROVIDE
-MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
+  REGENTS SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+  THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+  PURPOSE. THE SOFTWARE AND ACCOMPANYING DOCUMENTATION, IF ANY, PROVIDED
+  HEREUNDER IS PROVIDED "AS IS". REGENTS HAS NO OBLIGATION TO PROVIDE
+  MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-NAME: o.printbytes
-DESCRIPTION: Post each byte of an OSC bundle to the Max window
-AUTHORS: John MacCallum
-COPYRIGHT_YEARS: 2010
-SVN_REVISION: $LastChangedRevision: 587 $
-VERSION 0.0: First try
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+  @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+  NAME: o.printbytes
+  DESCRIPTION: Post each byte of an OSC bundle to the Max window
+  AUTHORS: John MacCallum
+  COPYRIGHT_YEARS: 2010
+  SVN_REVISION: $LastChangedRevision: 587 $
+  VERSION 0.0: First try
+  @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 */
 
 #define OMAX_DOC_NAME "o.printbytes"
@@ -66,24 +66,50 @@ void *opbytes_new(t_symbol *msg, short argc, t_atom *argv);
 void opbytes_fullPacket(t_opbytes *x, t_symbol *msg, int argc, t_atom *argv)
 {
 	//OMAX_UTIL_GET_LEN_AND_PTR
-	{
-		// get len and ptr. can't use macro because it validates the contents and
-		// bails if anything's wrong, but we want to process a bad packet in this obj
-		if(argc != 2){
-			object_error((t_object *)x, "expected 2 arguments but got %d", argc);
-			return;
-		}
-		if(atom_gettype(argv) != A_LONG){
-			object_error((t_object *)x, "argument 1 should be an int");
-			return;
-		}
-		if(atom_gettype(argv + 1) != A_LONG){
-			object_error((t_object *)x, "argument 2 should be an int");
-			return;
-		}
+
+	// get len and ptr. can't use macro because it validates the contents and
+	// bails if anything's wrong, but we want to process a bad packet in this obj
+#ifdef OMAX_PD_VERSION
+	if(argc != 3){
+		object_error((t_object *)x, "expected 3 arguments but got %d", argc);
+		return;
+	}
+	if(atom_gettype(argv) != A_FLOAT){
+		object_error((t_object *)x, "argument 1 should be an float");
+		return;
+	}
+	if(atom_gettype(argv + 1) != A_FLOAT){
+		object_error((t_object *)x, "argument 2 should be an float");
+		return;
+	}
+	if(atom_gettype(argv + 2) != A_FLOAT){
+		object_error((t_object *)x, "argument 3 should be an float");
+		return;
+	}
+	float ff = atom_getfloat(&argv[0]);
+	long len = (long)*((uint32_t *)&ff);
+	ff = atom_getfloat(&argv[1]);
+	uint64_t l1 = (uint64_t)(*((uint32_t *)&ff));
+	ff = atom_getfloat(&argv[2]);
+	uint64_t l2 = (uint64_t)(*((uint32_t *)&ff));
+	char *ptr = (char *)((l1<<32) | l2);
+#else
+	if(argc != 2){
+		object_error((t_object *)x, "expected 2 arguments but got %d", argc);
+		return;
+	}
+	if(atom_gettype(argv) != A_LONG){
+		object_error((t_object *)x, "argument 1 should be an int");
+		return;
+	}
+	if(atom_gettype(argv + 1) != A_LONG){
+		object_error((t_object *)x, "argument 2 should be an int");
+		return;
 	}
 	long len = atom_getlong(argv);
 	char *ptr = (char *)atom_getlong(argv + 1);
+#endif
+	
 	
 	unsigned char *buf = (unsigned char *)ptr;
 	int i;

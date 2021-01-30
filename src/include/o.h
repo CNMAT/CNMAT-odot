@@ -24,11 +24,11 @@ extern "C" {
 		return;							\
 	}								\
 	if(argv[1].a_type != A_FLOAT){					\
-		error("%s: argument 2 should be a symbol", __func__);	\
+		error("%s: argument 2 should be a float", __func__);	\
 		return;							\
 	}								\
 	if(argv[2].a_type != A_FLOAT){					\
-		error("%s: argument 2 should be a symbol", __func__);	\
+		error("%s: argument 2 should be a float", __func__);	\
 		return;							\
 	}								\
 	float ff = atom_getfloat(&argv[0]);				\
