@@ -505,7 +505,6 @@ static void oexprcodebox_getrect(t_gobj *z, t_glist *glist,int *xp1, int *yp1, i
 
 void oexprcodebox_drawElements(t_object *ob, int firsttime)
 {
-    
     t_oexprcodebox *x = (t_oexprcodebox *)ob;
     t_opd_textbox *t = x->textbox;
     

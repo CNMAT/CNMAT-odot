@@ -174,7 +174,6 @@ static int odisplay_click(t_gobj *z, struct _glist *glist,
 void odisplay_drawElements(t_object *ob, int firsttime);
 
 typedef t_odisplay t_jbox;
-void jbox_redraw(t_jbox *x){ odisplay_drawElements((t_object *)x, 0);}
 
 #endif
 
@@ -196,7 +195,7 @@ void odisplay_doFullPacket(t_odisplay *x, long len, char *ptr)
 	t_osc_bndl_s *b = osc_bundle_s_alloc(copylen, copyptr);
 	odisplay_newBundle(x, NULL, b);
 #ifdef OMAX_PD_VERSION
-    jbox_redraw((t_jbox *)x);
+	odisplay_drawElements((t_object *)x, 0);
 #else
 	qelem_set(x->qelem);
 #endif
@@ -355,8 +354,10 @@ void odisplay_refresh(t_odisplay *x)
 {
 #ifdef OMAX_PD_VERSION
     x->draw_new_data_indicator = 0;
+    odisplay_drawElements((t_object *)x, 0);
+#else
+    jbox_redraw((t_jbox *)x);
 #endif
-	jbox_redraw((t_jbox *)x);
 }
 
 #ifndef OMAX_PD_VERSION
@@ -433,7 +434,7 @@ void odisplay_gettext(t_odisplay *x)
 	odisplay_newBundle(x, bndl_u, bs);
 #ifdef OMAX_PD_VERSION
     x->have_new_data = 1;
-	jbox_redraw((t_jbox *)x);
+    odisplay_drawElements((t_object *)x, 0);
 #else
 	x->have_new_data = 1;
 	qelem_set(x->qelem);
@@ -505,7 +506,7 @@ void odisplay_anything(t_odisplay *x, t_symbol *msg, short argc, t_atom *argv)
 #ifdef OMAX_PD_VERSION
     x->draw_new_data_indicator = 1;
     x->have_new_data = 1;
-    jbox_redraw((t_jbox *)x);
+    odisplay_drawElements((t_object *)x, 0);
 #else
     x->draw_new_data_indicator = 1;
     x->have_new_data = 1;
@@ -559,7 +560,6 @@ static void odisplay_getrect(t_gobj *z, t_glist *glist,int *xp1, int *yp1, int *
 
 void odisplay_drawElements(t_object *ob, int firsttime)
 {
-    
     t_odisplay *x = (t_odisplay *)ob;
     t_opd_textbox *t = x->textbox;
     
@@ -645,7 +645,7 @@ void odisplay_drawElements(t_object *ob, int firsttime)
         }
         
         opd_textbox_drawElements(x->textbox, x1,  y1,  x2,  y2,  firsttime);
-        
+
         sys_vgui(".x%lx.c itemconfigure %sUPDATE -fill %s \n", canvas, x->tk_tag, (draw_new_data_indicator?  x->flash_color->hex : x->background_color->hex ));
         
         if(draw_new_data_indicator)

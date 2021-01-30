@@ -217,7 +217,6 @@ static void ocompose_delete(t_gobj *z, t_glist *glist);
 
 
 typedef t_ocompose t_jbox;
-void jbox_redraw(t_jbox *x){ ocompose_drawElements((t_object *)x, 0);}
 
 #endif
 
@@ -251,7 +250,7 @@ void ocompose_doFullPacket(t_ocompose *x, long len, char *ptr)
     t_osc_bndl_s *b = osc_bundle_s_alloc(copylen, copyptr);
     ocompose_newBundle(x, NULL, b);
 #ifdef OMAX_PD_VERSION
-    jbox_redraw((t_jbox *)x);
+    ocompose_drawElements((t_object *)x, 0);
 #else
     qelem_set(x->qelem);
 #endif
@@ -443,8 +442,10 @@ void ocompose_refresh(t_ocompose *x)
 {
 #ifdef OMAX_PD_VERSION
     x->draw_new_data_indicator = 0;
-#endif
+    ocompose_drawElements((t_object *)x, 0);
+#else
     jbox_redraw((t_jbox *)x);
+#endif
 }
 
 #ifndef OMAX_PD_VERSION
@@ -588,7 +589,7 @@ void ocompose_gettext(t_ocompose *x)
     ocompose_newBundle(x, bndl_u, bs);
 #ifdef OMAX_PD_VERSION
     x->have_new_data = 1;
-    jbox_redraw((t_jbox *)x);
+    ocompose_drawElements((t_object *)x, 0);
 #else
     x->have_new_data = 1;
     qelem_set(x->qelem);
@@ -658,7 +659,7 @@ void ocompose_anything(t_ocompose *x, t_symbol *msg, short argc, t_atom *argv)
     x->have_new_data = 1;
     critical_exit(x->lock);
 #ifdef OMAX_PD_VERSION
-    jbox_redraw((t_jbox *)x);
+    ocompose_drawElements((t_object *)x, 0);
 #else
     qelem_set(x->qelem);
 #endif
@@ -666,21 +667,25 @@ void ocompose_anything(t_ocompose *x, t_symbol *msg, short argc, t_atom *argv)
 
 void ocompose_set(t_ocompose *x, t_symbol *s, long ac, t_atom *av)
 {
-    if(proxy_getinlet((t_object *)x)){
-        return;
-    }
-    if(ac){
-        if(atom_gettype(av) == A_SYM){
-            t_symbol *sym = atom_getsym(av);
-            if(sym == ps_FullPacket && ac == 3){
-                ocompose_doFullPacket(x, atom_getlong(av + 1), (char *)atom_getlong(av + 2));
-                return;
-            }
-        }
-    }else{
-        ocompose_clear(x);
-    }
-    jbox_redraw((t_jbox *)x);
+	if(proxy_getinlet((t_object *)x)){
+		return;
+	}
+	if(ac){
+		if(atom_gettype(av) == A_SYM){
+			t_symbol *sym = atom_getsym(av);
+			if(sym == ps_FullPacket && ac == 3){
+				ocompose_doFullPacket(x, atom_getlong(av + 1), (char *)atom_getlong(av + 2));
+				return;
+			}
+		}
+	}else{
+		ocompose_clear(x);
+	}
+#ifdef OMAX_PD_VERSION
+	ocompose_drawElements((t_object *)x, 0);
+#else
+	jbox_redraw((t_jbox *)x);
+#endif
 }
 
 void ocompose_clear(t_ocompose *x)
@@ -725,7 +730,6 @@ static void ocompose_getrect(t_gobj *z, t_glist *glist,int *xp1, int *yp1, int *
 
 void ocompose_drawElements(t_object *ob, int firsttime)
 {
-
     t_ocompose *x = (t_ocompose *)ob;
     t_opd_textbox *t = x->textbox;
 
@@ -993,7 +997,6 @@ void ocompose_free(t_ocompose *x)
     ocompose_clearBundles(x);
     
     opd_textbox_free(x->textbox);
-    printf("%s %p \n", __func__, x);
 
 }
 
