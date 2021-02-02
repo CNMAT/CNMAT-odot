@@ -5,6 +5,9 @@ LIBRARY_NAME = odot
 
 BASENAMES = o.compose o.display o.append o.atomize o.bundle o.change o.collect o.cond o.context  o.difference odot o.downcast o.explode o.expr o.expr.codebox o.flatten o.if o.intersection o.listenumerate o.mappatch o.message o.messageiterate o.pack o.pak o.prepend o.printbytes o.print o.route o.schedule o.select o.slip.decode o.slip.encode o.table o.timetag o.union o.unless o.validate o.var o.when
 
+UNSTABLE = o.atomize o.context o.downcast o.mappatch o.messageiterate o.slip.decode o.slip.encode o.table o.validate
+DEPRECATED = o.expr o.message o.pak o.unless o.when
+
 EXTRA_BASENAMES = opd_textbox pqops 
 EXTRA_SOURCES = $(foreach bn, $(EXTRA_BASENAMES), $(bn).c)
 EXTRA_OBJECTS = $(foreach bn, $(EXTRA_BASENAMES), $(bn).o)
@@ -268,7 +271,7 @@ SHARED_TCL_LIB = $(wildcard lib$(LIBRARY_NAME).tcl)
 
 .PHONY = install libdir_install single_install install-doc install-examples install-manual install-unittests clean distclean dist etags $(LIBRARY_NAME) source-clean
 
-all: $(SOURCES:.c=.$(EXTENSION)) $(SHARED_LIB)
+all: $(SOURCES:.c=.$(EXTENSION)) $(SHARED_LIB) dev deprecated
 
 ../include/odot_current_version.h:
 	cd ../ && ./odot_current_version.sh
@@ -279,6 +282,14 @@ all: $(SOURCES:.c=.$(EXTENSION)) $(SHARED_LIB)
 %.$(EXTENSION): %.o $(SHARED_LIB) $(EXTRA_OBJECTS)
 	$(CC) $(ALL_LDFLAGS) -o "$*.$(EXTENSION)" "$*.o"  $(ALL_LIBS) $(SHARED_LIB) $(EXTRA_OBJECTS)
 	chmod a-x "$*.$(EXTENSION)"
+
+dev: $(SOURCES:.c=.$(EXTENSION))
+	mkdir dev
+	mv $(foreach f, $(UNSTABLE), $(f).$(EXTENSION)) dev
+
+deprecated: $(SOURCES:.c=.$(EXTENSION))
+	mkdir deprecated
+	mv $(foreach f, $(DEPRECATED), $(f).$(EXTENSION)) deprecated
 
 # this links everything into a single binary file
 $(LIBRARY_NAME): $(SOURCES:.c=.o) $(LIBRARY_NAME).o lib$(LIBRARY_NAME).o
@@ -355,6 +366,7 @@ clean:
 	-rm -f -- $(LIBRARY_NAME).$(EXTENSION)
 	-rm -f -- $(SHARED_LIB)
 	-rm -f ../include/odot_current_version.h
+	-rm -rf dev deprecated
 
 distclean: clean
 	-rm -f -- $(DISTBINDIR).tar.gz
