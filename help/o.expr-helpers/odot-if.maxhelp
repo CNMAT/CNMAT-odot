@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 1,
+			"revision" : 8,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -37,6 +37,7 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "Default Max 7",
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
 					"id" : "obj-11",
@@ -44,8 +45,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 278.0, 210.0, 359.0, 42.0 ],
-					"presentation_linecount" : 3,
+					"patching_rect" : [ 278.0, 210.0, 359.0, 47.0 ],
 					"text" : "The if() function can also be written as a ternary operator ?:\n<test> ? <then> : <else>\nThis is equivalent to if()."
 				}
 
@@ -116,8 +116,8 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 278.0, 19.0, 51.0, 18.0 ],
-					"text" : "if()"
+					"patching_rect" : [ 278.0, 19.0, 51.0, 20.0 ],
+					"text" : "if(), ?:"
 				}
 
 			}
@@ -128,7 +128,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 278.0, 53.0, 359.0, 138.0 ],
+					"patching_rect" : [ 278.0, 53.0, 359.0, 154.0 ],
 					"text" : "Evaluates the second argument if the first argument is true or non-zero, and the third argument if the first is false or 0. \n\narguments:\n\n1. test\n2. eval if test is true or non-zero\n3. <optional> eval if test is false or 0\n\nnote: to evaluate multiple expressions in either of the true or false cases, see the prog1(), prog2(), and progn() functions."
 				}
 
@@ -145,7 +145,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 25.0, 19.0, 73.0, 19.0 ]
+					"patching_rect" : [ 25.0, 19.0, 73.0, 21.0 ]
 				}
 
 			}
@@ -157,7 +157,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 25.0, 53.0, 73.0, 19.0 ],
+					"patching_rect" : [ 25.0, 53.0, 73.0, 21.0 ],
 					"text" : "o.pack /input"
 				}
 
