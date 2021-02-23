@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 27.0, 51.0, 916.0, 769.0 ],
+		"rect" : [ 8.0, 54.0, 916.0, 739.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 14.0,
@@ -40,6 +40,18 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-31",
+					"maxclass" : "button",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "bang" ],
+					"parameter_enable" : 0,
+					"patching_rect" : [ 591.0, 1516.0, 24.0, 24.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"args" : [ "o.compose", "o.expr.codebox", "o.display", "o.route", "o.pack", "o.gather", "o.select", "o.atomize", "o.union", "o.collect" ],
 					"bgmode" : 0,
 					"border" : 0,
@@ -60,8 +72,8 @@
 			}
 , 			{
 				"box" : 				{
+					"fontsize" : 13.0,
 					"id" : "obj-230",
-					"linecount" : 2,
 					"maxclass" : "newobj",
 					"numinlets" : 0,
 					"numoutlets" : 0,
@@ -76,7 +88,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 349.0, 93.0, 854.0, 616.0 ],
+						"rect" : [ 57.0, 106.0, 854.0, 616.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -111,7 +123,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 55.0, 22.0, 745.0, 126.0 ],
+									"patching_rect" : [ 55.0, 22.0, 749.0, 141.0 ],
 									"text" : "o.route compares each of its arguments with every address in a bundle; what it outputs out each of its outlets depends on whether the comparison resulted in a full match or a partial match. \n\nIn the case of a full match, the data associated with the address in the bundle is output as Max data.\n\nFor partial matches, the part of the address that matched is stripped off of the incoming message, and all messages that correspond to that argument are collected in a bundle and output out the corresponding outlet.\n\nAny messages in the incoming bundle that have addresses that didn't match any of o.route's arguments are collected into a single bundle and output out the right outlet before any of the other outlets produce output."
 								}
 
@@ -123,7 +135,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 359.0, 512.0, 303.0, 54.0 ],
+									"patching_rect" : [ 359.0, 512.0, 303.0, 60.0 ],
 									"text" : "/a matched both /a fully, and /a/b/c partially, so o.route outputs the partial match first, as a message in a bundle, followed by the result of the full match as a Max list"
 								}
 
@@ -135,7 +147,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 359.0, 444.0, 303.0, 30.0 ],
+									"patching_rect" : [ 359.0, 444.0, 303.0, 33.0 ],
 									"text" : "/a/b partially matched /a/b/c, so o.route outputs /c : [1, 2, 3] as a single message in a bundle"
 								}
 
@@ -146,7 +158,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 359.0, 409.0, 303.0, 18.0 ],
+									"patching_rect" : [ 359.0, 409.0, 303.0, 20.0 ],
 									"text" : "/a/b/c was also a full match"
 								}
 
@@ -158,7 +170,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 359.0, 369.0, 303.0, 30.0 ],
+									"patching_rect" : [ 359.0, 369.0, 303.0, 33.0 ],
 									"text" : "/xyz was a full match, so o.route outputs the data associated with /xyz as a Max list"
 								}
 
@@ -170,7 +182,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 359.0, 321.0, 303.0, 42.0 ],
+									"patching_rect" : [ 359.0, 321.0, 303.0, 47.0 ],
 									"text" : "any messages in the incoming bundle with unmatched addresses come out the rightmost outlet first as a bundle"
 								}
 
@@ -182,7 +194,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 175.75, 320.0, 171.0, 20.0 ],
+									"patching_rect" : [ 175.75, 320.0, 171.0, 22.0 ],
 									"text" : "o.print \"o.print: 5 (unmatched)\""
 								}
 
@@ -193,7 +205,7 @@
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 145.75, 368.0, 168.0, 20.0 ],
+									"patching_rect" : [ 145.75, 368.0, 168.0, 22.0 ],
 									"text" : "print \"print: 4 (/xyz full match)\""
 								}
 
@@ -204,7 +216,7 @@
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 115.5, 409.0, 176.0, 20.0 ],
+									"patching_rect" : [ 115.5, 409.0, 176.0, 22.0 ],
 									"text" : "print \"print: 3 (/a/b/c full match)\""
 								}
 
@@ -216,7 +228,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 85.25, 444.0, 253.0, 20.0 ],
+									"patching_rect" : [ 85.25, 444.0, 253.0, 22.0 ],
 									"text" : "o.print \"o.print: 2 (/a/b partial match on /a/b/c)\""
 								}
 
@@ -227,7 +239,7 @@
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 157.0, 512.0, 186.0, 20.0 ],
+									"patching_rect" : [ 157.0, 512.0, 186.0, 22.0 ],
 									"text" : "print \"print: 1 (/a full match on /a)\""
 								}
 
@@ -239,7 +251,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 55.0, 538.0, 243.0, 20.0 ],
+									"patching_rect" : [ 55.0, 538.0, 243.0, 22.0 ],
 									"text" : "o.print \"o.print: 1 (/a partial match on /a/b/c)\""
 								}
 
@@ -251,7 +263,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "" ],
-									"patching_rect" : [ 55.0, 483.0, 121.0, 20.0 ],
+									"patching_rect" : [ 55.0, 483.0, 121.0, 22.0 ],
 									"text" : "routepass FullPacket"
 								}
 
@@ -263,7 +275,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 5,
 									"outlettype" : [ "", "", "", "", "FullPacket" ],
-									"patching_rect" : [ 55.0, 289.0, 140.0, 20.0 ],
+									"patching_rect" : [ 55.0, 289.0, 140.0, 22.0 ],
 									"text" : "o.route /a /a/b /a/b/c /xyz"
 								}
 
@@ -345,7 +357,7 @@
  ]
 					}
 ,
-					"patching_rect" : [ 626.0, 3875.0, 121.0, 40.0 ],
+					"patching_rect" : [ 518.0, 3875.0, 221.0, 23.0 ],
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
@@ -497,7 +509,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 18.0, 351.5, 878.0, 100.0 ],
+					"patching_rect" : [ 18.0, 276.5, 878.0, 100.0 ],
 					"text" : "Assignment only happens in the codebox.  We'll see it crop up with the assign() function, and the equals sign (=).  Assignment overwrites memory.  When we do it, we are sticking some data into a location in memory, which is represented by a name. In our case, OSC addresses are used for this name.\n\nBinding happens in the [o.compose] object.  When we use the colon (:) operator, we create a binding from scratch, whether it existed previously or not.  Binding doesn't overwrite memory or replace anything, it simply creates a new message at that location in the bundle.\n\nFinally, most odot objects won't let you use more than one address of a particular name.",
 					"textjustification" : 1
 				}
@@ -509,7 +521,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 165.0, 317.5, 582.0, 22.0 ],
+					"patching_rect" : [ 165.0, 242.5, 582.0, 22.0 ],
 					"text" : "Foreword:  Assigning vs. Binding",
 					"textjustification" : 1
 				}
@@ -968,7 +980,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 161.0, 4788.0, 736.0, 50.0 ],
+					"patching_rect" : [ 83.0, 4788.0, 736.0, 50.0 ],
 					"text" : "There are many times when you may want to send a message to more than one destination. o.route can process patterns that contain special \"wildcards\" that can produce more than one match. Below is a quick introduction to pattern matching--see the o.route help file for more info.",
 					"textjustification" : 1
 				}
@@ -2278,7 +2290,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 165.0, 502.5, 516.0, 36.0 ],
+					"patching_rect" : [ 165.0, 498.5, 516.0, 36.0 ],
 					"text" : "The [o.compose] box can be edited by unlocking a patch, clicking inside it, and typing.  Copy/Paste/Select work as expected.",
 					"textjustification" : 1
 				}
@@ -2409,7 +2421,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 400.5, 256.25, 111.0, 22.0 ],
+					"patching_rect" : [ 400.5, 429.25, 111.0, 22.0 ],
 					"text" : "Building bundles"
 				}
 
@@ -2420,18 +2432,19 @@
 					"maxclass" : "live.line",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 18.0, 264.5, 876.0, 5.5 ]
+					"patching_rect" : [ 18.0, 437.5, 876.0, 5.5 ]
 				}
 
 			}
 , 			{
 				"box" : 				{
+					"fontsize" : 13.0,
 					"id" : "obj-26",
 					"linecount" : 2,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 37.666666666666515, 6812.0, 840.0, 38.0 ],
+					"patching_rect" : [ 37.666666666666515, 6812.0, 848.0, 36.0 ],
 					"text" : "Let's look at a situation where we may need [o.union] for another reason.  In this case, we might like to generate an address with something outside of ODOT.",
 					"textjustification" : 1
 				}
@@ -2472,12 +2485,13 @@
 			}
 , 			{
 				"box" : 				{
+					"fontsize" : 13.0,
 					"id" : "obj-93",
 					"linecount" : 2,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 253.833333333333371, 6369.0, 412.0, 38.0 ],
+					"patching_rect" : [ 265.833333333333371, 6368.0, 380.0, 36.0 ],
 					"text" : "We just looked at a number of ways to route and distribute data.  \nWhat about combining data with bundles that already exist?  "
 				}
 
@@ -2943,7 +2957,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 23.0, 901.0, 90.0, 20.0 ],
+					"patching_rect" : [ 23.0, 712.0, 90.0, 20.0 ],
 					"text" : "(  scroll down  )",
 					"textjustification" : 1
 				}
@@ -4060,7 +4074,16 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-31", 0 ],
+					"order" : 0,
+					"source" : [ "obj-66", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-67", 1 ],
+					"order" : 1,
 					"source" : [ "obj-66", 0 ]
 				}
 
