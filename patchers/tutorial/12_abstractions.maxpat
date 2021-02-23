@@ -893,7 +893,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 601.0, 2111.0, 309.0, 137.0 ],
+					"patching_rect" : [ 601.0, 2111.0, 312.0, 137.0 ],
 					"text" : "First, let's look at how ODOT might be used to manage UI elements in a preset-oriented structure.  We'll take a handful of Max objects that we'd like to capture, and patch them up with ODOT to create a powerful engine.\n\nClick on the various objects to enter in some values, or hit the \"generate\" button (below) to make some up.  "
 				}
 
@@ -1168,7 +1168,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 95.0, 3218.0, 268.0, 195.0 ],
+					"patching_rect" : [ 95.0, 3218.0, 270.0, 195.0 ],
 					"text" : "OK, let's capture some presets. \n\nWe'll build up some presets and store them, then recall them after.  We'll use a setter to filter out everything but what we're interested in.  Click first on \"generate\", then enter in a preset number with the [number] box, which will store the collection of data as a preset with the int as the preset ID.\n\nRepeat the process a few times to generate a handlful of presets.\n"
 				}
 
@@ -1561,7 +1561,7 @@
 			}
 , 			{
 				"box" : 				{
-					"args" : [ 13 ],
+					"args" : [ 12 ],
 					"bgmode" : 0,
 					"border" : 0,
 					"clickthrough" : 0,
