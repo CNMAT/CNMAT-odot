@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 26.0, 64.0, 590.0, 632.0 ],
+		"rect" : [ 12.0, 54.0, 590.0, 632.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -533,7 +533,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 30.0, 62.0, 308.0, 87.0 ],
-					"text" : "In this set of tutorials, we'll familiarize ourselves with the odot programming environment, a library of externals which operate on Open Sound Control data. Topics will include: event scheduling, design for distributed computation, data management and persistence, and the odot expression language."
+					"text" : "In this tutorial, we'll familiarize ourselves with the odot programming environment, a library of externals which operate on Open Sound Control data. Topics will include: event scheduling, design for distributed computation, data management and persistence, and the odot expression language."
 				}
 
 			}
@@ -555,7 +555,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 409.0, 50.125, 151.0, 22.0 ],
-					"text" : "[[ tutorial ]]",
+					"text" : "[[ tutorial start ]]",
 					"textcolor" : [ 0.996078431372549, 0.976470588235294, 0.329411764705882, 1.0 ],
 					"textjustification" : 1
 				}
@@ -611,7 +611,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 30.0, 217.0, 288.0, 320.0 ],
-					"text" : "/horizontal : 433,\n/vertical : 976,\n/delta/horizontal : 0,\n/delta/vertical : 0,\n/screenDim : [1920, 1080],\n/middle : [960., 540.],\n/button/is : \"up\",\n/x : -527.,\n/y : -436.,\n/distance : 683.977,\n/angle : -140.398,\n/delta/distance : 0.,\n/delta/angle : 0.,\n/shift : \"up\",\n/capslock : \"up\",\n/option : \"up\",\n/control : \"up\",\n/command : \"down\",\n/time : 2021-01-28T00:15:09.668911Z,\n/state : \"stopped\",\n/pixPerSec : 0.,\n/relative/pixPerSec : 0."
+					"text" : "/horizontal : 132,\n/vertical : 47,\n/delta/horizontal : 0,\n/delta/vertical : 0,\n/screenDim : [1080, 1920],\n/middle : [540., 960.],\n/button/is : \"up\",\n/x : -408.,\n/y : 913.,\n/distance : 1000.02,\n/angle : 114.079,\n/delta/distance : 0.,\n/delta/angle : 0.,\n/shift : \"up\",\n/capslock : \"up\",\n/option : \"up\",\n/control : \"up\",\n/command : \"down\",\n/time : 2021-02-23T08:12:46.205349Z,\n/state : \"moving\",\n/pixPerSec : 0.,\n/relative/pixPerSec : 0."
 				}
 
 			}
