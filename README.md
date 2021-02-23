@@ -1,4 +1,4 @@
-CNMAT-odot v1.3
+CNMAT-odot
 ==========
 ODOT is a set of externals and language developed by Adrian Freed and John MacCallum, with support from Andy Schmeder, Ilya Rostovtsev, Rama Gottfried, Jeff Lubow, and many others at the Center for New Music and Audio Technologies (CNMAT) between 2007 and 2016.
 
