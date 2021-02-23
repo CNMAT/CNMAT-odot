@@ -67,7 +67,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 50.0, 1783.0, 696.0, 79.0 ],
-					"text" : "Even when [o.compose] contains no messages, it still outputs something when clicked -- an empty bundle. The bundle that's output is not different than any other bundle, it just simply contains 0 messages. This behavior is different from the Max message box, which when empty, does not output anything when clicked.\n\nAn empty bundle is useful in a number of scenarios, for example, to clear or reinitialize a stateful object."
+					"text" : "Even when [o.compose] contains no messages, it still outputs something when clicked -- an empty bundle. The bundle that's output is no different than any other bundle, it simply contains 0 messages. This behavior is different from the Max message box, which when empty, does not output anything when clicked.\n\nAn empty bundle is useful in a number of scenarios, for example, to clear or reinitialize a stateful object."
 				}
 
 			}
