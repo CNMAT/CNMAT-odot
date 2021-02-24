@@ -40,6 +40,33 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"hidden" : 1,
+					"id" : "obj-18",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 409.0, 254.0, 92.0, 22.0 ],
+					"text" : "loadmess clean"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"hidden" : 1,
+					"id" : "obj-16",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "" ],
+					"patching_rect" : [ 409.0, 286.0, 67.0, 22.0 ],
+					"save" : [ "#N", "thispatcher", ";", "#Q", "end", ";" ],
+					"text" : "thispatcher"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-17",
 					"maxclass" : "comment",
 					"numinlets" : 1,
@@ -1072,7 +1099,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 30.0, 217.0, 288.0, 320.0 ],
-					"text" : "/horizontal : 573,\n/vertical : 270,\n/delta/horizontal : 0,\n/delta/vertical : 0,\n/screenDim : [1080, 1920],\n/middle : [540., 960.],\n/button/is : \"up\",\n/x : 33.,\n/y : 690.,\n/distance : 690.789,\n/angle : 87.2619,\n/delta/distance : 0.,\n/delta/angle : 0.,\n/shift : \"up\",\n/capslock : \"up\",\n/option : \"up\",\n/control : \"up\",\n/command : \"down\",\n/time : 2021-02-23T17:39:10.341320Z,\n/state : \"moving\",\n/pixPerSec : 0.,\n/relative/pixPerSec : 0."
+					"text" : "/horizontal : 491,\n/vertical : 399,\n/delta/horizontal : 0,\n/delta/vertical : 0,\n/screenDim : [1920, 1080],\n/middle : [960., 540.],\n/button/is : \"up\",\n/x : -469.,\n/y : 141.,\n/distance : 489.737,\n/angle : 163.267,\n/delta/distance : 0.,\n/delta/angle : 0.,\n/shift : \"up\",\n/capslock : \"up\",\n/option : \"up\",\n/control : \"up\",\n/command : \"down\",\n/time : 2021-02-24T19:51:46.608655Z,\n/state : \"stopped\",\n/pixPerSec : 0.,\n/relative/pixPerSec : 0."
 				}
 
 			}
@@ -1143,6 +1170,14 @@
 					"destination" : [ "obj-13", 0 ],
 					"hidden" : 1,
 					"source" : [ "obj-15", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-16", 0 ],
+					"hidden" : 1,
+					"source" : [ "obj-18", 0 ]
 				}
 
 			}
