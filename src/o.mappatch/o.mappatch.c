@@ -381,6 +381,7 @@ int main(void){
 	class_addmethod(c, (method)omap_fullPacket, "FullPacket", A_GIMME, 0);
 	class_addmethod(c, (method)omap_doc, "doc", 0);
 	class_addmethod(c, (method)omap_assist, "assist", A_CANT, 0);
+	class_addmethod(c, (method)stdinletinfo, "inletinfo", A_CANT, 0);
 	class_addmethod(c, (method)omap_int, "int", A_LONG, 0);
 	class_addmethod(c, (method)omap_float, "float", A_FLOAT, 0);
 	class_addmethod(c, (method)omap_anything, "anything", A_GIMME, 0);

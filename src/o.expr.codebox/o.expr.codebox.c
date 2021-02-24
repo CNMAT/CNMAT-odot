@@ -897,6 +897,7 @@ int main(void)
     //class_addmethod(c, (method)oexprcodebox_fullPacket, "FullPacket", A_LONG, A_LONG, 0);
     class_addmethod(c, (method)oexprcodebox_fullPacket, "FullPacket", A_GIMME, 0);
     class_addmethod(c, (method)oexprcodebox_assist, "assist", A_CANT, 0);
+    class_addmethod(c, (method)stdinletinfo, "inletinfo", A_CANT, 0);
     class_addmethod(c, (method)oexprcodebox_bang, "bang", 0);
 
     class_addmethod(c, (method)oexprcodebox_postExprAST, "post-ast", 0);
