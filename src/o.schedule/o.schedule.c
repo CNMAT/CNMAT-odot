@@ -644,6 +644,7 @@ int main(void)
 	class_addmethod(c, (method)osched_fullPacket, "FullPacket", A_GIMME, 0);    
 	class_addmethod(c, (method)osched_reset, "clear", 0);
 	class_addmethod(c, (method)osched_assist, "assist", A_CANT, 0);
+	class_addmethod(c, (method)stdinletinfo, "inletinfo", A_CANT, 0);
 	class_addmethod(c, (method)odot_version, "version", 0);
 	class_addmethod(c, (method)osched_doc, "doc", 0);
 	//if(omax_dict_resolveDictStubs()){

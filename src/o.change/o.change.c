@@ -248,6 +248,7 @@ int main(void)
 	//class_addmethod(c, (method)ochange_fullPacket, "FullPacket", A_LONG, A_LONG, 0);
 	class_addmethod(c, (method)ochange_fullPacket, "FullPacket", A_GIMME, 0);
 	class_addmethod(c, (method)ochange_assist, "assist", A_CANT, 0);
+	class_addmethod(c, (method)stdinletinfo, "inletinfo", A_CANT, 0);
 	class_addmethod(c, (method)ochange_doc, "doc", 0);
 	//class_addmethod(c, (method)ochange_bang, "bang", 0);
 	//class_addmethod(c, (method)ochange_anything, "anything", A_GIMME, 0);

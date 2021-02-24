@@ -444,6 +444,7 @@ int main(void){
 	//class_addmethod(c, (method)ovar_fullPacket, "FullPacket", A_LONG, A_LONG, 0);
 	class_addmethod(c, (method)ovar_fullPacket, "FullPacket", A_GIMME, 0);
 	class_addmethod(c, (method)ovar_assist, "assist", A_CANT, 0);
+	class_addmethod(c, (method)stdinletinfo, "inletinfo", A_CANT, 0);
 	class_addmethod(c, (method)ovar_doc, "doc", 0);
 	class_addmethod(c, (method)ovar_bang, "bang", 0);
 	class_addmethod(c, (method)ovar_anything, "anything", A_GIMME, 0);
