@@ -882,7 +882,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 1034.0, 761.0 ],
+						"rect" : [ 38.0, 105.0, 1034.0, 761.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -913,12 +913,50 @@
 						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
+									"hidden" : 1,
+									"id" : "obj-6",
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 857.0, 720.0, 130.0, 22.0 ],
+									"text" : "sprintf load %s.maxpat"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-5",
+									"maxclass" : "message",
+									"numinlets" : 2,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 857.0, 695.0, 101.0, 22.0 ],
+									"text" : "o.demo.recursion"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"hidden" : 1,
+									"id" : "obj-4",
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 857.0, 744.0, 51.0, 22.0 ],
+									"text" : "pcontrol"
+								}
+
+							}
+, 							{
+								"box" : 								{
 									"id" : "obj-1",
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 762.0, 706.0, 141.0, 20.0 ],
-									"text" : "see also recursion demo"
+									"patching_rect" : [ 793.0, 695.0, 57.0, 20.0 ],
+									"text" : "see also:"
 								}
 
 							}
@@ -952,13 +990,11 @@
 									"fontface" : 0,
 									"fontsize" : 12.0,
 									"id" : "obj-37",
-									"linecount" : 5,
 									"maxclass" : "o.display",
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 38.5, 648.0, 661.0, 88.0 ],
-									"text" : "/foo : 2,\n/bar : 3,\n/myfunc/add : \" lambda( [a, b], /internalAssignment = \\\"added an OSC message\\\", a + b) \",\n/internalAssignment : \"added an OSC message\",\n/result : 5"
+									"patching_rect" : [ 38.5, 648.0, 661.0, 34.0 ]
 								}
 
 							}
@@ -1016,13 +1052,11 @@
 									"fontface" : 0,
 									"fontsize" : 12.0,
 									"id" : "obj-27",
-									"linecount" : 6,
 									"maxclass" : "o.display",
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 408.0, 381.0, 164.0, 102.0 ],
-									"text" : "/foo : 2,\n/bar : 3,\n/sum : 5,\n/product : 6,\n/added : 5,\n/subtracted : -1"
+									"patching_rect" : [ 408.0, 381.0, 164.0, 34.0 ]
 								}
 
 							}
@@ -1094,13 +1128,11 @@
 									"fontface" : 0,
 									"fontsize" : 12.0,
 									"id" : "obj-25",
-									"linecount" : 4,
 									"maxclass" : "o.display",
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 408.0, 161.0, 251.0, 75.0 ],
-									"text" : "/func : \"sin\",\n/arg : 3.14159,\n/result1 : 2.65359e-06,\n/result2 : 2.65359e-06"
+									"patching_rect" : [ 408.0, 161.0, 251.0, 34.0 ]
 								}
 
 							}
@@ -1223,6 +1255,22 @@
 								"patchline" : 								{
 									"destination" : [ "obj-30", 0 ],
 									"source" : [ "obj-31", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-6", 0 ],
+									"hidden" : 1,
+									"source" : [ "obj-5", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-4", 0 ],
+									"hidden" : 1,
+									"source" : [ "obj-6", 0 ]
 								}
 
 							}
@@ -7245,7 +7293,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 38.0, 105.0, 1034.0, 761.0 ],
+						"rect" : [ 0.0, 26.0, 1034.0, 761.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -7448,7 +7496,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 296.0, 570.0, 172.0, 88.0 ],
-									"text" : "/samplerate : 10,\n/freq : 0.5,\n/phase : 2.71992,\n/incr : 0.05,\n/y : -0.454374"
+									"text" : "/samplerate : 10,\n/freq : 0.5,\n/phase : 0.550444,\n/incr : 0.05,\n/y : -0.479815"
 								}
 
 							}
