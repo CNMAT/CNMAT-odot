@@ -131,6 +131,7 @@ typedef struct _ocompose {
     
     //char* stored_bundle_data;
     //long stored_bundle_length;
+	int has_errors;
 } t_ocompose;
 
 //t_omax_pd_proxy_class *ocompose_class;
@@ -267,7 +268,7 @@ void ocompose_newBundle(t_ocompose *x, t_osc_bndl_u *bu, t_osc_bndl_s *bs)
         x->draw_new_data_indicator = 1;
         x->have_new_data = 1;
         x->bndl_has_been_checked_for_subs = 0;
-
+	x->has_errors = 0;
         /*
         if (!x->stored_bundle_data) {
             sysmem_freeptr( x->stored_bundle_data );
