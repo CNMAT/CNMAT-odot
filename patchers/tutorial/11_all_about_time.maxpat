@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 10,
+			"revision" : 8,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -159,7 +159,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 351.0, 3988.0, 361.0, 87.0 ],
-					"presentation_linecount" : 6,
 					"text" : "The '+' and '-' operators are able to operate on timetags: addition always produces a timetag, and subtraction always produces a double-precision float.\n\nHere, we create a time in the future by adding an offset, the value of /delay, in seconds."
 				}
 
@@ -224,7 +223,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 1,
-							"revision" : 10,
+							"revision" : 8,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -467,7 +466,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 1,
-							"revision" : 10,
+							"revision" : 8,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -949,7 +948,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 122.0, 3046.0, 101.0, 102.0 ],
-					"text" : "/a/x : 76,\n/a/z : 100,\n/b/z : 38,\n/b/y : 48,\n/a/y : 39,\n/b/x : 32"
+					"text" : "/b/x : 111,\n/a/x : 74,\n/b/y : 57,\n/a/z : 122,\n/a/y : 124,\n/b/z : 98"
 				}
 
 			}
@@ -1337,7 +1336,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 308.0, 2386.0, 150.0, 34.0 ]
+					"patching_rect" : [ 308.0, 2386.0, 150.0, 34.0 ],
+					"text" : "/x : 7"
 				}
 
 			}
@@ -1410,7 +1410,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 88.0, 2190.0, 224.0, 60.0 ],
-					"text" : "If we have a process that generates data at to hight of a rate, and we can afford to lose some of it, we can simply resample it using o.var and a metro:"
+					"text" : "If we have a process that generates data at too high of a rate, and we can afford to lose some of it, we can simply resample it using o.var and a metro:"
 				}
 
 			}
@@ -1419,11 +1419,13 @@
 					"fontface" : 0,
 					"fontsize" : 12.0,
 					"id" : "obj-74",
+					"linecount" : 2,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 432.0, 2064.0, 150.0, 34.0 ]
+					"patching_rect" : [ 432.0, 2064.0, 150.0, 48.0 ],
+					"text" : "/x : 10,\n/y : 20"
 				}
 
 			}
@@ -1604,7 +1606,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 140.0, 2082.0, 150.0, 34.0 ]
+					"patching_rect" : [ 140.0, 2082.0, 150.0, 34.0 ],
+					"text" : "/x : 0"
 				}
 
 			}
@@ -1680,7 +1683,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 767.0, 1512.0, 135.0, 140.0 ],
 					"setminmax" : [ 0.0, 10.0 ],
-					"size" : 6
+					"size" : 7
 				}
 
 			}
@@ -1703,11 +1706,13 @@
 					"fontface" : 0,
 					"fontsize" : 12.0,
 					"id" : "obj-167",
+					"linecount" : 14,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 102.0, 1441.0, 356.0, 34.0 ]
+					"patching_rect" : [ 102.0, 1441.0, 356.0, 211.0 ],
+					"text" : "/val : 66,\n/nvals : 3,\n/vals : [66, 70, 79],\n/steps : [4., 9.],\n/mean : 6.5,\n/median : 6.5,\n/range : 5.,\n/min : 4.,\n/max : 9.,\n/freqs : [1, 0, 0, 0, 0, 1],\n/idxs : [1, 2, 3, 4, 0, 5],\n/modality : 2,\n/mode : [4., 9.],\n/stats : [6.5, 6.5, 4., 9., 5., 4., 9.]"
 				}
 
 			}
@@ -1848,11 +1853,13 @@
 					"fontface" : 0,
 					"fontsize" : 12.0,
 					"id" : "obj-140",
+					"linecount" : 3,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 102.0, 1179.0, 356.0, 34.0 ]
+					"patching_rect" : [ 102.0, 1179.0, 356.0, 61.0 ],
+					"text" : "/val : 63,\n/nvals : 3,\n/vals : [63, 68, 67]"
 				}
 
 			}
@@ -1953,7 +1960,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 244.5625, 4426.0, 495.625, 60.0 ],
+					"patching_rect" : [ 244.5625, 4426.0, 496.0, 60.0 ],
 					"text" : "One useful thing we can do with timetags is use them to measure the time it takes for part of our patch to do its work. We can do this by generating a timetag just before the part of the patch we want to measure, and then getting another at the end and subtracting the two. It's not as accurate as other methods, but it can be useful nonetheless."
 				}
 
@@ -2685,11 +2692,13 @@
 					"fontface" : 0,
 					"fontsize" : 12.0,
 					"id" : "obj-18",
+					"linecount" : 2,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 128.5, 590.0, 130.0, 34.0 ]
+					"patching_rect" : [ 128.5, 590.0, 130.0, 48.0 ],
+					"text" : "/val : 57,\n/was/val : 57"
 				}
 
 			}
@@ -3933,49 +3942,49 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "advance.maxpat",
-				"bootpath" : "~/Development/CNMAT/CNMAT/CNMAT-odot/patchers/tutorial",
+				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/patchers/tutorial",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "filelist.txt",
-				"bootpath" : "~/Development/CNMAT/CNMAT/CNMAT-odot/patchers/tutorial",
+				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/patchers/tutorial",
 				"patcherrelativepath" : ".",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "close_parent.js",
-				"bootpath" : "~/Development/CNMAT/CNMAT/CNMAT-odot/patchers/tutorial",
+				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/patchers/tutorial",
 				"patcherrelativepath" : ".",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.t.banner.maxpat",
-				"bootpath" : "~/Development/CNMAT/CNMAT/CNMAT-odot/patchers/tutorial",
+				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/patchers/tutorial",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.t.objects-covered.maxpat",
-				"bootpath" : "~/Development/CNMAT/CNMAT/CNMAT-odot/patchers/tutorial",
+				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/patchers/tutorial",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.was.maxpat",
-				"bootpath" : "~/Development/CNMAT/CNMAT/CNMAT-odot/dev",
+				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/dev",
 				"patcherrelativepath" : "../../dev",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.righttoleft.maxpat",
-				"bootpath" : "~/Development/CNMAT/CNMAT/CNMAT-odot/patchers/ordering",
+				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/patchers/ordering",
 				"patcherrelativepath" : "../ordering",
 				"type" : "JSON",
 				"implicit" : 1
