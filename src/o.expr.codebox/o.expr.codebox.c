@@ -814,6 +814,7 @@ int setup_o0x2eexpr0x2ecodebox(void)
     class_setwidget(oexprcodebox_class, &oexprcodebox_widgetbehavior);
     
     oexprcodebox_textbox_class = opd_textbox_classnew();
+    osc_error_setHandler(omax_util_liboErrorHandler);
 
     
     ODOT_PRINT_VERSION;
