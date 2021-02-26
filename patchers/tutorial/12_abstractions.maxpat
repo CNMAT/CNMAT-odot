@@ -87,12 +87,12 @@
 								"box" : 								{
 									"fontsize" : 13.0,
 									"id" : "obj-148",
-									"linecount" : 7,
+									"linecount" : 4,
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 419.0, 420.0, 333.0, 108.0 ],
-									"text" : "Let's try the same thing with [o.prepend] and [o.append].\nWe set the argument with a symbol, and then send in a bundle containing addresses which we'd like prepended or appended with the arguments specified.\n\nThis can be particularly powerful when working within the context of an abstraction, which we'll look at next."
+									"patching_rect" : [ 419.0, 420.0, 333.0, 65.0 ],
+									"text" : "Let's try the same thing with [o.prepend] and [o.append].\nWe set the argument with a symbol, and then send in a bundle containing addresses which we'd like prepended or appended with the arguments specified."
 								}
 
 							}
