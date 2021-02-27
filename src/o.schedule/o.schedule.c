@@ -82,12 +82,13 @@
 #define OSCHEDULE_OUTLET_MISSED x->outlets[1]
 #define OSCHEDULE_OUTLET_DELEGATE x->outlets[3]
 #define OSCHEDULE_OUTLET_IMMEDIATE x->outlets[2]
+#define OSCHEDULE_OUTLET_N x->outlets[4]
 
 /* structure definition of your object */
 typedef struct _osched
 {
 	t_object ob; // required header
-	void *outlets[4];
+	void *outlets[5];
 #ifdef OMAX_PD_VERSION
 	void **proxy;
 #else
@@ -260,6 +261,7 @@ void osched_fullPacket(t_osched *x, t_symbol *s, int argc, t_atom *argv)
 		clock_fdelay(x->clock, dt * 1000.);
 		x->soft_lock = 0;
 	}
+	outlet_int(OSCHEDULE_OUTLET_N, x->q.heap_size);
 }
 
 void osched_reset(t_osched *x)
@@ -370,7 +372,8 @@ void osched_tick(t_osched *x)
         
 	} else {
 		x->soft_lock = 0;
-	}    
+	}
+	outlet_int(OSCHEDULE_OUTLET_N, x->q.heap_size);
 }
 
 t_osc_timetag osched_getTimetag(t_osched *x, long len, char *ptr)
@@ -615,7 +618,8 @@ void *osched_new(t_symbol *s, short argc, t_atom *argv)
 	}
 
 	//attr_args_process(x, argc, argv);
-    
+
+	OSCHEDULE_OUTLET_N = intout(x);
 	OSCHEDULE_OUTLET_IMMEDIATE = outlet_new(x, "FullPacket");
 	OSCHEDULE_OUTLET_DELEGATE = outlet_new(x, "FullPacket");
 	OSCHEDULE_OUTLET_MISSED = outlet_new(x, "FullPacket");
