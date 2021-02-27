@@ -3,7 +3,7 @@
 #  http://puredata.info/docs/developer/MakefileTemplate
 LIBRARY_NAME = odot
 
-BASENAMES = o.compose o.display o.append o.atomize o.bundle o.change o.collect o.cond o.context  o.difference odot o.downcast o.explode o.expr o.expr.codebox o.flatten o.if o.intersection o.listenumerate o.mappatch o.message o.messageiterate o.pack o.pak o.prepend o.printbytes o.print o.route o.schedule o.select o.slip.decode o.slip.encode o.table o.timetag o.union o.unless o.validate o.var o.when
+BASENAMES = o.compose o.display o.append o.atomize o.bundle o.change o.collect o.cond o.context  o.difference o.downcast o.explode o.expr o.expr.codebox o.flatten o.if o.intersection o.listenumerate o.mappatch o.message o.messageiterate o.pack o.pak o.prepend o.printbytes o.print o.route o.schedule o.select o.slip.decode o.slip.encode o.table o.timetag o.union o.unless o.validate o.var o.when
 
 UNSTABLE = o.atomize o.context o.downcast o.mappatch o.messageiterate o.slip.decode o.slip.encode o.table o.validate
 DEPRECATED = o.expr o.message o.pak o.unless o.when
@@ -11,6 +11,8 @@ DEPRECATED = o.expr o.message o.pak o.unless o.when
 EXTRA_BASENAMES = opd_textbox pqops 
 EXTRA_SOURCES = $(foreach bn, $(EXTRA_BASENAMES), $(bn).c)
 EXTRA_OBJECTS = $(foreach bn, $(EXTRA_BASENAMES), $(bn).o)
+
+# .SECONDARY: $(EXTRA_OBJECTS)
 
 # add your .c source files, one object per file, to the SOURCES
 # variable, help files will be included automatically, and for GUI
@@ -44,11 +46,11 @@ UNITTESTS =
 #
 #------------------------------------------------------------------------------#
 PD_SOURCE = ../../../pure-data/src
-ALL_CFLAGS = -I"$(PD_INCLUDE)" -I. -I../../../libo -I../../../libomax -I../include -std=c99 -Wall -W -fno-strict-aliasing -g -DLINUX_VERSION -DOMAX_PD_VERSION
+ALL_CFLAGS = -I"$(PD_INCLUDE)" -I. -I../../../libomax -I../../../libo -I../include -std=c99 -Wall -W -fno-strict-aliasing -g -DOMAX_PD_VERSION
 #ALL_CFLAGS = -I"$(PD_INCLUDE)" -I. -I../max2pd -I../../libuv/include -I../../libuv/src
 ALL_LDFLAGS = 
 SHARED_LDFLAGS = 
-ALL_LIBS = -L../../../libo -L../../../libomax -lo -lopd
+ALL_LIBS = -L../../../libo -L../../../libomax -lopd -lo
 #ALL_LIBS = /usr/local/lib/libuv.a
 
 #------------------------------------------------------------------------------#
@@ -244,15 +246,20 @@ ifeq (MINGW,$(findstring MINGW,$(UNAME)))
   EXTENSION = dll
   SHARED_EXTENSION = dll
   OS = windows
-  PD_PATH = $(shell cd "$$PROGRAMFILES/pd" && pwd)
+  # PD_PATH = $(shell cd "$$PROGRAMFILES/pd" && pwd)
+  PD_PATH = ../../../pure-data
   # MinGW doesn't seem to include cc so force gcc
-  CC=gcc
+  # CC=gcc
+  CC=x86_64-w64-mingw32-gcc
   OPT_CFLAGS = -O3 -funroll-loops -fomit-frame-pointer
   ALL_CFLAGS += -mms-bitfields
   ALL_LDFLAGS += -s -shared -Wl,--enable-auto-import
   SHARED_LDFLAGS += -shared
   ALL_LIBS += -L"$(PD_PATH)/src" -L"$(PD_PATH)/bin" -L"$(PD_PATH)/obj" \
+        -L"/mingw64/lib/binutils"\
 	-lpd -lwsock32 -lkernel32 -luser32 -lgdi32 -liberty $(LIBS_windows)
+  # ALL_LIBS += -L"$(PD_PATH)/src" -L"$(PD_PATH)/bin" -L"$(PD_PATH)/obj" \
+  #       -lpd -lwsock32 -lkernel32 -luser32 -lgdi32 $(LIBS_windows)
   STRIP = strip --strip-unneeded -R .note -R .comment
   DISTBINDIR=$(DISTDIR)-$(OS)
 endif
@@ -263,6 +270,13 @@ HELPPATCHES ?= $(SOURCES:.c=-help.pd) $(PDOBJECTS:.pd=-help.pd)
 ALL_CFLAGS := $(ALL_CFLAGS) $(CFLAGS) $(OPT_CFLAGS)
 ALL_LDFLAGS := $(LDFLAGS) $(ALL_LDFLAGS)
 ALL_LIBS := $(LIBS) $(ALL_LIBS)
+
+ifeq (windows,$(OS))
+ALL_CFLAGS += -DWIN_VERSION
+endif
+ifeq (linux,$(OS))
+ALL_CFLAGS += -DLINUX_VERSION
+endif
 
 SHARED_SOURCE ?= $(wildcard lib$(LIBRARY_NAME).c)
 SHARED_HEADER ?= $(shell test ! -e $(LIBRARY_NAME).h || echo $(LIBRARY_NAME).h)
@@ -280,7 +294,7 @@ all: $(SOURCES:.c=.$(EXTENSION)) $(SHARED_LIB) dev deprecated
 	$(CC) $(ALL_CFLAGS) -o "$*.o" -c "$*.c"
 
 %.$(EXTENSION): %.o $(SHARED_LIB) $(EXTRA_OBJECTS)
-	$(CC) $(ALL_LDFLAGS) -o "$*.$(EXTENSION)" "$*.o"  $(ALL_LIBS) $(SHARED_LIB) $(EXTRA_OBJECTS)
+	$(CC) $(ALL_LDFLAGS) -o "$*.$(EXTENSION)" $(EXTRA_OBJECTS) "$*.o"  $(ALL_LIBS) $(SHARED_LIB) 
 	chmod a-x "$*.$(EXTENSION)"
 
 dev: $(SOURCES:.c=.$(EXTENSION))
