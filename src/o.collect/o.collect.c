@@ -162,6 +162,14 @@ void ocoll_bang(t_ocoll *x){
     OSC_MEM_INVALIDATE(outbuf);
 }
 
+void ocoll_reset(t_ocoll *x)
+{
+	critical_enter(x->lock);
+	memset(x->buffer + OSC_HEADER_SIZE, 0, x->buffer_pos - OSC_HEADER_SIZE);
+	x->buffer_pos = OSC_HEADER_SIZE;
+	critical_exit(x->lock);
+}
+
 
 #ifndef OMAX_PD_VERSION
 
@@ -267,6 +275,7 @@ int main(void){
 	class_addmethod(c, (method)ocoll_assist, "assist", A_CANT, 0);
 	class_addmethod(c, (method)ocoll_anything, "anything", A_GIMME, 0);
 	class_addmethod(c, (method)ocoll_bang, "bang", 0);
+	class_addmethod(c, (method)ocoll_reset, "reset", 0);
 	// remove this if statement when we stop supporting Max 5
 	//if(omax_dict_resolveDictStubs()){
 		class_addmethod(c, (method)omax_dict_dictionary, "dictionary", A_GIMME, 0);
