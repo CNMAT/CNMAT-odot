@@ -232,7 +232,19 @@ void *otimetag_new(t_symbol *msg, short argc, t_atom *argv)
 		}
 		x->outlet = outlet_new((t_object *)x, NULL);
 		critical_new(&(x->lock));
-	}    
+	}
+
+	/* t_osc_timetag t1 = osc_timetag_now(); */
+	/* for(int i = 0; i < 100; i++){ */
+	  
+	/*   t_osc_timetag t2 = osc_timetag_now(); */
+	/*   while(osc_timetag_compare(t1, t2) == 0){ */
+	/*     t2 = osc_timetag_now(); */
+	/*   } */
+	/*   t_osc_timetag tdiff = osc_timetag_subtract(t2, t1); */
+	/*   object_post((t_object *)x, "%u %u", tdiff.sec, tdiff.frac_sec); */
+	/*   t1 = t2; */
+	/* } */
 	return x;
 }
 #ifdef OMAX_PD_VERSION
