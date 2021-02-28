@@ -1227,7 +1227,8 @@ void *ocompose_new(t_symbol *msg, short argc, t_atom *argv){
                 saved_bundle[ i ] = (char *)atom_getlong( &av[ i ] );
             }
             //post( "bundle : %s", saved_bundle );
-            x->bndl_s = osc_bundle_s_alloc( ac, saved_bundle );
+            /* x->bndl_s = osc_bundle_s_alloc( ac, saved_bundle ); */
+	    ocompose_doFullPacket(x, ac, saved_bundle);
         } else {
             //post( "no dictionary data" );
             ocompose_gettext(x);
