@@ -60,13 +60,15 @@ win: LD = $(CC)
 win: LIBS = -L../../libomax/libs/i686 -lomax -L$(MAX_INCLUDES) -L$(MSP_INCLUDES) -lMaxAPI -lMaxAudio -L../../libo/libs/i686 -lo -lws2_32
 
 win64: EXT = .mxe64
-win64: CC = x86_64-w64-mingw32-gcc
+# win64: CC = x86_64-w64-mingw32-gcc
+# win64: CC = gcc
+win64: CC = /mingw64/bin/x86_64-w64-mingw32-gcc
 win64: LD = $(CC)
-win64: LIBS = -L../../libomax/libs/x86_64 -lomax -L$(MAX_INCLUDES) -L$(MSP_INCLUDES) -lx64/MaxAPI -lx64/MaxAudio -L../../libo/libs/x86_64 -lo -lws2_32
+win64: LIBS = -L../../libomax -lomax -L$(MAX_INCLUDES) -L$(MSP_INCLUDES) -lx64/MaxAPI -lx64/MaxAudio -L../../libo -lo -lws2_32 $(C74SUPPORT)/max-includes/x64/MaxAPI.lib
 
 INCLUDES = -I$(MAX_INCLUDES) -I$(MSP_INCLUDES) -I../../libo -I../../libomax -Iinclude
 CFLAGS += -DWIN_VERSION -DWIN_EXT_VERSION -U__STRICT_ANSI__ -U__ANSI_SOURCE -std=c99 -O3 -DNO_TRANSLATION_SUPPORT -DWIN32_LEAN_AND_MEAN
-LDFLAGS = -shared -static-libgcc
+LDFLAGS = -shared -static -static-libgcc
 
 BUILDDIR = build/Release
 STAGINGDIR = odot-$(PLATFORM)
