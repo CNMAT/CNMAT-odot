@@ -4,13 +4,13 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 8,
+			"revision" : 10,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 38.0, 79.0, 1034.0, 787.0 ],
+		"rect" : [ 38.0, 87.0, 1034.0, 787.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -53,7 +53,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 1,
-							"revision" : 8,
+							"revision" : 10,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -507,7 +507,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 1,
-							"revision" : 8,
+							"revision" : 10,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -876,13 +876,13 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 1,
-							"revision" : 8,
+							"revision" : 10,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 38.0, 105.0, 1034.0, 761.0 ],
+						"rect" : [ 0.0, 26.0, 1034.0, 761.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -1302,7 +1302,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 1,
-							"revision" : 8,
+							"revision" : 10,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -1560,7 +1560,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 1,
-							"revision" : 8,
+							"revision" : 10,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -1896,7 +1896,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 1,
-							"revision" : 8,
+							"revision" : 10,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -2539,7 +2539,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 1,
-							"revision" : 8,
+							"revision" : 10,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -2975,7 +2975,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 1,
-							"revision" : 8,
+							"revision" : 10,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -3353,13 +3353,13 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 1,
-							"revision" : 8,
+							"revision" : 10,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 1034.0, 761.0 ],
+						"rect" : [ 38.0, 113.0, 1034.0, 761.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -3431,13 +3431,13 @@
 										"appversion" : 										{
 											"major" : 8,
 											"minor" : 1,
-											"revision" : 8,
+											"revision" : 10,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
 ,
 										"classnamespace" : "box",
-										"rect" : [ 38.0, 79.0, 1047.0, 883.0 ],
+										"rect" : [ 38.0, 87.0, 1047.0, 883.0 ],
 										"bglocked" : 0,
 										"openinpresentation" : 0,
 										"default_fontsize" : 12.0,
@@ -3466,6 +3466,21 @@
 										"subpatcher_template" : "",
 										"assistshowspatchername" : 0,
 										"boxes" : [ 											{
+												"box" : 												{
+													"fontname" : "Arial",
+													"fontsize" : 12.0,
+													"id" : "obj-2",
+													"maxclass" : "newobj",
+													"numinlets" : 1,
+													"numoutlets" : 1,
+													"outlettype" : [ "-" ],
+													"patching_rect" : [ 209.0, 136.0, 19.0, 22.0 ],
+													"text" : "t -",
+													"varname" : "route/list[2]"
+												}
+
+											}
+, 											{
 												"box" : 												{
 													"fontname" : "Arial",
 													"fontsize" : 12.0,
@@ -3574,7 +3589,7 @@
 														"appversion" : 														{
 															"major" : 8,
 															"minor" : 1,
-															"revision" : 8,
+															"revision" : 10,
 															"architecture" : "x64",
 															"modernui" : 1
 														}
@@ -3943,7 +3958,7 @@
 														"appversion" : 														{
 															"major" : 8,
 															"minor" : 1,
-															"revision" : 8,
+															"revision" : 10,
 															"architecture" : "x64",
 															"modernui" : 1
 														}
@@ -4436,11 +4451,11 @@
 													"fontsize" : 12.0,
 													"id" : "obj-449",
 													"maxclass" : "newobj",
-													"numinlets" : 2,
-													"numoutlets" : 2,
-													"outlettype" : [ "", "" ],
-													"patching_rect" : [ 168.0, 103.0, 59.0, 22.0 ],
-													"text" : "route /list",
+													"numinlets" : 3,
+													"numoutlets" : 3,
+													"outlettype" : [ "", "", "" ],
+													"patching_rect" : [ 168.0, 103.0, 67.0, 22.0 ],
+													"text" : "route /list –",
 													"varname" : "route/list"
 												}
 
@@ -4597,6 +4612,13 @@
 											}
 , 											{
 												"patchline" : 												{
+													"destination" : [ "obj-372", 0 ],
+													"source" : [ "obj-2", 0 ]
+												}
+
+											}
+, 											{
+												"patchline" : 												{
 													"destination" : [ "obj-5", 0 ],
 													"source" : [ "obj-3", 0 ]
 												}
@@ -4625,8 +4647,15 @@
 											}
 , 											{
 												"patchline" : 												{
-													"destination" : [ "obj-372", 0 ],
+													"destination" : [ "obj-2", 0 ],
 													"source" : [ "obj-449", 1 ]
+												}
+
+											}
+, 											{
+												"patchline" : 												{
+													"destination" : [ "obj-372", 0 ],
+													"source" : [ "obj-449", 2 ]
 												}
 
 											}
@@ -4882,13 +4911,13 @@
 										"appversion" : 										{
 											"major" : 8,
 											"minor" : 1,
-											"revision" : 8,
+											"revision" : 10,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
 ,
 										"classnamespace" : "box",
-										"rect" : [ 649.0, 79.0, 1366.0, 787.0 ],
+										"rect" : [ 648.0, 87.0, 1366.0, 787.0 ],
 										"bglocked" : 0,
 										"openinpresentation" : 0,
 										"default_fontsize" : 12.0,
@@ -4917,6 +4946,32 @@
 										"subpatcher_template" : "",
 										"assistshowspatchername" : 0,
 										"boxes" : [ 											{
+												"box" : 												{
+													"fontname" : "Arial",
+													"fontsize" : 12.0,
+													"id" : "obj-4",
+													"maxclass" : "message",
+													"numinlets" : 2,
+													"numoutlets" : 1,
+													"outlettype" : [ "" ],
+													"patching_rect" : [ 280.0, 717.0, 29.5, 22.0 ],
+													"text" : "–"
+												}
+
+											}
+, 											{
+												"box" : 												{
+													"id" : "obj-21",
+													"maxclass" : "button",
+													"numinlets" : 1,
+													"numoutlets" : 1,
+													"outlettype" : [ "bang" ],
+													"parameter_enable" : 0,
+													"patching_rect" : [ 280.0, 611.0, 20.0, 20.0 ]
+												}
+
+											}
+, 											{
 												"box" : 												{
 													"id" : "obj-24",
 													"maxclass" : "newobj",
@@ -5120,7 +5175,7 @@
 													"numinlets" : 2,
 													"numoutlets" : 2,
 													"outlettype" : [ "", "" ],
-													"patching_rect" : [ 309.0, 717.0, 57.0, 22.0 ],
+													"patching_rect" : [ 360.666687000000024, 717.0, 57.0, 22.0 ],
 													"text" : "zl ecils 1"
 												}
 
@@ -5169,11 +5224,11 @@
 													"fontsize" : 12.0,
 													"id" : "obj-1339",
 													"maxclass" : "newobj",
-													"numinlets" : 3,
-													"numoutlets" : 3,
-													"outlettype" : [ "", "", "" ],
-													"patching_rect" : [ 49.0, 580.0, 295.0, 22.0 ],
-													"text" : "route /doc/category/vector/list /doc/category/core/eval",
+													"numinlets" : 4,
+													"numoutlets" : 4,
+													"outlettype" : [ "", "", "", "" ],
+													"patching_rect" : [ 49.0, 580.0, 524.0, 22.0 ],
+													"text" : "route /doc/category/vector/list /doc/category/core/eval /doc/category/math/operator/arithmetic/sub",
 													"varname" : "atomize[1]"
 												}
 
@@ -5509,8 +5564,15 @@
 											}
 , 											{
 												"patchline" : 												{
-													"destination" : [ "obj-268", 0 ],
+													"destination" : [ "obj-21", 0 ],
 													"source" : [ "obj-1339", 2 ]
+												}
+
+											}
+, 											{
+												"patchline" : 												{
+													"destination" : [ "obj-268", 0 ],
+													"source" : [ "obj-1339", 3 ]
 												}
 
 											}
@@ -5738,6 +5800,13 @@
 											}
 , 											{
 												"patchline" : 												{
+													"destination" : [ "obj-4", 0 ],
+													"source" : [ "obj-21", 0 ]
+												}
+
+											}
+, 											{
+												"patchline" : 												{
 													"destination" : [ "obj-534", 0 ],
 													"source" : [ "obj-218", 0 ]
 												}
@@ -5782,6 +5851,13 @@
 												"patchline" : 												{
 													"destination" : [ "obj-534", 0 ],
 													"source" : [ "obj-321", 0 ]
+												}
+
+											}
+, 											{
+												"patchline" : 												{
+													"destination" : [ "obj-532", 0 ],
+													"source" : [ "obj-4", 0 ]
 												}
 
 											}
@@ -5930,7 +6006,7 @@
 , 							{
 								"box" : 								{
 									"id" : "obj-4",
-									"items" : [ "+", ",", "-", ",", "+", ",", "/", ",", "*", ",", "*", ",", "*", ",", "*", ",", "*", ",", "*", ",", "/=", ",", "*" ],
+									"items" : [ "+", ",", "–", ",", "*", ",", "/", ",", "%", ",", "++", ",", "--", ",", "+=", ",", "-=", ",", "*=", ",", "/=", ",", "%=" ],
 									"maxclass" : "umenu",
 									"numinlets" : 1,
 									"numoutlets" : 3,
@@ -6008,7 +6084,7 @@
 , 							{
 								"box" : 								{
 									"id" : "obj-20",
-									"items" : [ "=", ",", "++", ",", "--", ",", "+=", ",", "-=", ",", "=", ",", "/=", ",", "%=" ],
+									"items" : [ "=", ",", "++", ",", "--", ",", "+=", ",", "-=", ",", "*=", ",", "/=", ",", "%=" ],
 									"maxclass" : "umenu",
 									"numinlets" : 1,
 									"numoutlets" : 3,
@@ -6242,7 +6318,7 @@
 , 							{
 								"box" : 								{
 									"id" : "obj-65",
-									"items" : [ "add", ",", "sub", ",", "lt", ",", "le", ",", "gt", ",", "ge", ",", "eq", ",", "ne", ",", "strlen", ",", "strchar", ",", "strfind", ",", "strcmp", ",", "split", ",", "join" ],
+									"items" : [ "add", ",", "lt", ",", "le", ",", "gt", ",", "ge", ",", "eq", ",", "ne", ",", "strlen", ",", "strchar", ",", "strfind", ",", "strcmp", ",", "split", ",", "join" ],
 									"maxclass" : "umenu",
 									"numinlets" : 1,
 									"numoutlets" : 3,
@@ -6268,7 +6344,7 @@
 , 							{
 								"box" : 								{
 									"id" : "obj-70",
-									"items" : [ "+", ",", "-", ",", "<", ",", "<=", ",", ">", ",", ">=", ",", "==", ",", "!=" ],
+									"items" : [ "+", ",", "<", ",", "<=", ",", ">", ",", ">=", ",", "==", ",", "!=" ],
 									"maxclass" : "umenu",
 									"numinlets" : 1,
 									"numoutlets" : 3,
@@ -6604,7 +6680,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 1,
-							"revision" : 8,
+							"revision" : 10,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -6942,7 +7018,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 1,
-							"revision" : 8,
+							"revision" : 10,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -7287,7 +7363,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 1,
-							"revision" : 8,
+							"revision" : 10,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -7496,7 +7572,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 296.0, 570.0, 172.0, 88.0 ],
-									"text" : "/samplerate : 10,\n/freq : 0.5,\n/phase : 0.550444,\n/incr : 0.05,\n/y : -0.479815"
+									"text" : "/samplerate : 10,\n/freq : 0.5,\n/phase : 1.3677,\n/incr : 0.05,\n/y : -0.968142"
 								}
 
 							}
@@ -7831,7 +7907,7 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "o.helpfilehelper.maxpat",
-				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/patchers/utils",
+				"bootpath" : "~/Development/CNMAT/CNMAT/CNMAT-odot/patchers/utils",
 				"patcherrelativepath" : "../patchers/utils",
 				"type" : "JSON",
 				"implicit" : 1
