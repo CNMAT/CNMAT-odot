@@ -42,6 +42,24 @@
 				"box" : 				{
 					"fontface" : 0,
 					"fontsize" : 13.0,
+					"id" : "obj-73",
+					"linecount" : 2,
+					"maxclass" : "o.compose",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 842.0, 647.0, 161.0, 40.0 ],
+					"presentation_linecount" : 2,
+					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 47, 55, 47, 103, 114, 97, 98, 0, 44, 105, 0, 0, 0, 0, 0, 3, 0, 0, 0, 16, 47, 55, 47, 110, 97, 109, 101, 0, 44, 115, 0, 0, 97, 100, 97, 0 ],
+					"saved_bundle_length" : 56,
+					"text" : "/7/grab : 3,\n/7/name : \"ada\""
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontface" : 0,
+					"fontsize" : 13.0,
 					"id" : "obj-72",
 					"linecount" : 2,
 					"maxclass" : "o.compose",
@@ -67,7 +85,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 402.0, 765.0, 678.0, 116.0 ],
-					"text" : "/7/rval : 31.9839,\n/7/grab : 3,\n/7/range/min : 3,\n/7/name : \"voice 7\",\n/7/range/max : 92,\n/7/rvals : [50.2542, 26.1318, 31.9839]"
+					"text" : "/7/rval : 76.9756,\n/7/grab : 3,\n/7/range/min : 3,\n/7/name : \"ada\",\n/7/range/max : 92,\n/7/rvals : [45.6839, 48.0117, 76.9756]"
 				}
 
 			}
@@ -2230,6 +2248,13 @@
 				"patchline" : 				{
 					"destination" : [ "obj-41", 0 ],
 					"source" : [ "obj-72", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-41", 0 ],
+					"source" : [ "obj-73", 0 ]
 				}
 
 			}
