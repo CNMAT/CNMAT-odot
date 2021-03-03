@@ -1312,7 +1312,11 @@ int main(void){
     CLASS_ATTR_STYLE_LABEL(c, "frame_color", 0, "rgba", "Frame Color");
     CLASS_ATTR_CATEGORY_KLUDGE(c, "frame_color", 0, "Color");
 
-    CLASS_ATTR_DEFAULT(c, "fontname", 0, "\"Courier New\"");
+#ifdef WIN_VERSION
+    CLASS_ATTR_DEFAULT(c, "fontname", 0, "\"Lucida Console\"");
+#else
+    CLASS_ATTR_DEFAULT(c, "fontname", 0, "\"Menlo\"");
+#endif
     
     //CLASS_ATTR_CHAR_VARSIZE( c, "data", ATTR_SET_OPAQUE_USER | ATTR_GET_OPAQUE_USER, t_ocompose, stored_bundle_data, stored_bundle_length, 1024 );
     //CLASS_ATTR_SAVE(c, "data", 0 );

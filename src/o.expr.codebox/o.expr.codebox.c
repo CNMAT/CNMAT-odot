@@ -957,7 +957,11 @@ int main(void)
     CLASS_ATTR_STYLE_LABEL(c, "mousedown_color", 0, "rgba", "Mousedown Color");
     CLASS_ATTR_CATEGORY_KLUDGE(c, "mousedown_color", 0, "Color");
     
-    CLASS_ATTR_DEFAULT(c, "fontname", 0, "\"Courier New\"");
+#ifdef WIN_VERSION
+    CLASS_ATTR_DEFAULT(c, "fontname", 0, "\"Lucida Console\"");
+#else
+    CLASS_ATTR_DEFAULT(c, "fontname", 0, "\"Menlo\"");
+#endif
 
     CLASS_ATTR_DEFAULT(c, "rect", 0, "0. 0. 150. 30.");
 

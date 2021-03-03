@@ -1102,8 +1102,13 @@ int main(void){
  	CLASS_ATTR_DEFAULT_SAVE_PAINT(c, "textcolor", 0, "1. 1. 1. 1.");
     CLASS_ATTR_STYLE_LABEL(c, "textcolor", 0, "rgba", "Text Color");
     CLASS_ATTR_CATEGORY_KLUDGE(c, "textcolor", 0, "Color");
-    
-    CLASS_ATTR_DEFAULT(c, "fontname", 0, "\"Courier New\"");
+
+#ifdef WIN_VERSION
+    CLASS_ATTR_DEFAULT(c, "fontname", 0, "\"Lucida Console\"");
+#else
+    CLASS_ATTR_DEFAULT(c, "fontname", 0, "\"Menlo\"");
+#endif
+
  	//CLASS_ATTR_STYLE_LABEL(c, "text_color", 0, "rgba", "Text Color"); /* this line & next make two Text Color fields in the inspector - remove them for justice */
 	
     
