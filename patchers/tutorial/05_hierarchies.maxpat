@@ -40,6 +40,25 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"bubbletextmargin" : 15,
+					"bubbleusescolors" : 1,
+					"fontface" : 2,
+					"fontsize" : 11.0,
+					"id" : "obj-1",
+					"linecount" : 2,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 403.0, 889.0, 159.0, 31.0 ],
+					"presentation_linecount" : 3,
+					"style" : "default",
+					"text" : "this tutorial page requires audio - please turn on [ezdac]",
+					"textjustification" : 1
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"args" : [ "o.compose", "o.route", "o.union", "o.pack", "o.dict", "o.display" ],
 					"bgmode" : 0,
 					"border" : 0,
@@ -276,11 +295,11 @@
 				"box" : 				{
 					"fontsize" : 13.0,
 					"id" : "obj-43",
-					"linecount" : 2,
+					"linecount" : 4,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 100.0, 1103.5, 461.0, 36.0 ],
+					"patching_rect" : [ 568.0, 1101.5, 283.0, 65.0 ],
 					"style" : "default",
 					"text" : "With this last example, we leverage [o.route] to distribute the data in a single [o.compose] instance, which generates both notes at the same time."
 				}
@@ -784,7 +803,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 37.0, 234.5, 923.0, 108.0 ],
 					"style" : "default",
-					"text" : "Let's take a look at nesting bundles inside of others to create hierarchies. \nBelow we have described our synth's topology slightly differently than in tutorial 3, by adding some structure to the way that addresses are organized.\n\nSo what did we change?  \nWe've encapsulated /amp and /dur, as well as the filter addresses.  \n\nThis can make the bundle easier to read, as well as to access."
+					"text" : "Let's take a look at nesting bundles inside of others to create hierarchies. \nBelow we have described our synth's topology slightly differently than in tutorial 3, by adding some structure to the way that addresses are organized.\n\nSo what did we change?  \nWe've encapsulated /amp and /dur, as well as the filter addresses.  \n\nThis can make the bundle easier to read and access."
 				}
 
 			}
