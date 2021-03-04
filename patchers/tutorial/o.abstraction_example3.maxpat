@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 34.0, 79.0, 1060.0, 660.0 ],
+		"rect" : [ 134.0, 157.0, 1060.0, 660.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 14.0,
@@ -45,7 +45,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 597.0, 80.0, 316.0, 116.0 ],
+					"patching_rect" : [ 666.0, 121.5, 316.0, 116.0 ],
 					"text" : "here we have the same idea, but implemented in the context of the [poly~] object.  We can tag our bundles with numerical identifiers for the address names and send to every instance.  [o.route] is set dynamically from the inside of [poly~], which then routes to the appropriate voice number, based on the voice settings."
 				}
 
@@ -84,7 +84,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "FullPacket" ],
-					"patching_rect" : [ 77.5, 270.5, 169.0, 22.0 ],
+					"patching_rect" : [ 77.5, 296.5, 169.0, 22.0 ],
 					"text" : "o.gather /freq /dur /amp"
 				}
 
@@ -141,7 +141,7 @@
 									"fontface" : 0,
 									"fontsize" : 12.0,
 									"id" : "obj-33",
-									"linecount" : 7,
+									"linecount" : 8,
 									"maxclass" : "o.expr.codebox",
 									"numinlets" : 1,
 									"numoutlets" : 2,
@@ -403,7 +403,7 @@
  ]
 					}
 ,
-					"patching_rect" : [ 77.5, 244.0, 119.0, 22.0 ],
+					"patching_rect" : [ 77.5, 270.0, 119.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
@@ -419,15 +419,15 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
+					"fontsize" : 11.0,
 					"id" : "obj-28",
-					"linecount" : 2,
+					"linecount" : 4,
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 77.5, 164.5, 205.0, 46.0 ],
-					"text" : "/addys = getaddresses(),\n/b = map(bound, /addys)"
+					"patching_rect" : [ 77.5, 155.5, 375.0, 70.0 ],
+					"text" : "/addys = getaddresses(),\n/b = map(bound, /addys), \n/ls = [],\nmap(lambda([a], /ls = [/ls, length(value(a))]), /addys)"
 				}
 
 			}
@@ -437,10 +437,10 @@
 					"id" : "obj-27",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
-					"numoutlets" : 2,
-					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 77.5, 214.5, 309.0, 22.0 ],
-					"text" : "o.if sum(/b) < 3"
+					"numoutlets" : 3,
+					"outlettype" : [ "FullPacket", "FullPacket", "FullPacket" ],
+					"patching_rect" : [ 77.5, 240.5, 309.0, 22.0 ],
+					"text" : "o.cond sum(/b) < 3\\, sum(/ls) > 3"
 				}
 
 			}
@@ -801,7 +801,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-20", 0 ],
-					"source" : [ "obj-27", 1 ]
+					"source" : [ "obj-27", 2 ]
 				}
 
 			}
@@ -918,7 +918,7 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "o.if.mxo",
+				"name" : "o.cond.mxo",
 				"type" : "iLaX"
 			}
 , 			{
