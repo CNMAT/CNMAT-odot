@@ -7639,7 +7639,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
-				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.menu;
 				WRAPPER_EXTENSION = "";
 			};
@@ -7698,7 +7698,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
-				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.menu;
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
@@ -7763,7 +7763,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
-				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.expr.codebox;
 				WRAPPER_EXTENSION = "";
 			};
@@ -7822,7 +7822,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
-				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.expr.codebox;
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
@@ -7887,7 +7887,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
-				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.compose;
 				WRAPPER_EXTENSION = "";
 			};
@@ -7946,7 +7946,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
-				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.compose;
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
@@ -8012,7 +8012,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
-				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.bundle;
 				WRAPPER_EXTENSION = "";
 			};
@@ -8072,7 +8072,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
-				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.bundle;
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
@@ -8137,7 +8137,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
-				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.append;
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
@@ -8197,7 +8197,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
-				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.append;
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
@@ -8262,7 +8262,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
-				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.atomize;
 				WRAPPER_EXTENSION = "";
 			};
@@ -8321,7 +8321,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
-				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.atomize;
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
@@ -8386,7 +8386,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
-				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.change;
 				WRAPPER_EXTENSION = "";
 			};
@@ -8445,7 +8445,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
-				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.change;
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
@@ -8510,7 +8510,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
-				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.collect;
 				WRAPPER_EXTENSION = "";
 			};
@@ -8569,7 +8569,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
-				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.collect;
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
@@ -8634,7 +8634,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
-				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.cond;
 				WRAPPER_EXTENSION = "";
 			};
@@ -8693,7 +8693,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
-				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.cond;
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
@@ -8758,7 +8758,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
-				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.difference;
 				WRAPPER_EXTENSION = "";
 			};
@@ -8817,7 +8817,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
-				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.difference;
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
@@ -8882,7 +8882,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
-				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.explode;
 				WRAPPER_EXTENSION = "";
 			};
@@ -8941,7 +8941,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
-				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.explode;
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
@@ -9006,7 +9006,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
-				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.expr;
 				WRAPPER_EXTENSION = "";
 			};
@@ -9065,7 +9065,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
-				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.expr;
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
@@ -9130,7 +9130,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
-				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.flatten;
 				WRAPPER_EXTENSION = "";
 			};
@@ -9189,7 +9189,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
-				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.flatten;
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
@@ -9254,7 +9254,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
-				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.if;
 				WRAPPER_EXTENSION = "";
 			};
@@ -9313,7 +9313,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
-				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.if;
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
@@ -9378,7 +9378,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
-				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.intersection;
 				WRAPPER_EXTENSION = "";
 			};
@@ -9437,7 +9437,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
-				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.intersection;
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
@@ -9502,7 +9502,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
-				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.messageiterate;
 				WRAPPER_EXTENSION = "";
 			};
@@ -9561,7 +9561,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
-				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.messageiterate;
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
@@ -9626,7 +9626,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
-				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.mappatch;
 				WRAPPER_EXTENSION = "";
 			};
@@ -9685,7 +9685,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
-				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.mappatch;
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
@@ -9750,7 +9750,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
-				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.message;
 				WRAPPER_EXTENSION = "";
 			};
@@ -9809,7 +9809,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
-				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.message;
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
@@ -9874,7 +9874,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
-				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.pack;
 				WRAPPER_EXTENSION = "";
 			};
@@ -9933,7 +9933,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
-				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.pack;
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
@@ -9998,7 +9998,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
-				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.pak;
 				WRAPPER_EXTENSION = "";
 			};
@@ -10057,7 +10057,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
-				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.pak;
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
@@ -10122,7 +10122,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
-				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.prepend;
 				WRAPPER_EXTENSION = "";
 			};
@@ -10181,7 +10181,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
-				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.prepend;
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
@@ -10246,7 +10246,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
-				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.route;
 				WRAPPER_EXTENSION = "";
 			};
@@ -10305,7 +10305,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
-				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.route;
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
@@ -10370,7 +10370,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
-				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.schedule;
 				WRAPPER_EXTENSION = "";
 			};
@@ -10429,7 +10429,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
-				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.schedule;
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
@@ -10494,7 +10494,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
-				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.select;
 				WRAPPER_EXTENSION = "";
 			};
@@ -10553,7 +10553,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
-				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.select;
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
@@ -10618,7 +10618,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
-				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.table;
 				WRAPPER_EXTENSION = "";
 			};
@@ -10677,7 +10677,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
-				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.table;
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
@@ -10742,7 +10742,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
-				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.timetag;
 				WRAPPER_EXTENSION = "";
 			};
@@ -10801,7 +10801,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
-				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.timetag;
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
@@ -10866,7 +10866,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
-				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.union;
 				WRAPPER_EXTENSION = "";
 			};
@@ -10925,7 +10925,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
-				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.union;
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
@@ -10990,7 +10990,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
-				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.unless;
 				WRAPPER_EXTENSION = "";
 			};
@@ -11049,7 +11049,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
-				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.unless;
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
@@ -11114,7 +11114,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
-				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.var;
 				WRAPPER_EXTENSION = "";
 			};
@@ -11173,7 +11173,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
-				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.var;
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
@@ -11238,7 +11238,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
-				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.when;
 				WRAPPER_EXTENSION = "";
 			};
@@ -11297,7 +11297,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
-				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.when;
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
@@ -11338,7 +11338,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.cnmat.berkeley.o.expr.codebox.set;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.expr.codebox.set;
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
@@ -11383,7 +11383,7 @@
 				MACOSX_DEPLOYMENT_TARGET = "$(inherited)";
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.cnmat.berkeley.o.expr.codebox.set;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.expr.codebox.set;
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
@@ -11431,7 +11431,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.cnmat.berkeley.o.gui.attach;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
@@ -11483,7 +11483,7 @@
 					"-DODOT_UNSTABLE",
 				);
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.cnmat.berkeley.o.gui.attach;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
@@ -11554,7 +11554,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
-				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.slip.decode;
 				WRAPPER_EXTENSION = "";
 			};
@@ -11614,7 +11614,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
-				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.slip.decode;
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
@@ -11680,7 +11680,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
-				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.slip.encode;
 				WRAPPER_EXTENSION = "";
 			};
@@ -11740,7 +11740,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
-				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.slip.encode;
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
@@ -11805,7 +11805,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
-				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.context;
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
@@ -11865,7 +11865,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
-				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.context;
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
@@ -11908,7 +11908,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.cnmat.berkeley.o.daemon;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
@@ -11960,7 +11960,7 @@
 					"-DODOT_UNSTABLE",
 				);
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.cnmat.berkeley.o.daemon;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
@@ -12030,7 +12030,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
-				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.display;
 				WRAPPER_EXTENSION = "";
 			};
@@ -12089,7 +12089,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
-				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.display;
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
@@ -12154,7 +12154,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
-				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.downcast;
 				WRAPPER_EXTENSION = "";
 			};
@@ -12213,7 +12213,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
-				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.downcast;
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
@@ -12278,7 +12278,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
-				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.validate;
 				WRAPPER_EXTENSION = "";
 			};
@@ -12337,7 +12337,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
-				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.validate;
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
@@ -12378,7 +12378,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.o.bufferfill~";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
@@ -12423,7 +12423,7 @@
 				MACOSX_DEPLOYMENT_TARGET = "$(inherited)";
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.o.bufferfill~";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
@@ -12471,7 +12471,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.o.lookup~";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
@@ -12518,7 +12518,7 @@
 				MACOSX_DEPLOYMENT_TARGET = "$(inherited)";
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.o.lookup~";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
@@ -12614,6 +12614,7 @@
 				);
 				OTHER_LDFLAGS = "@../../max-sdk/source/c74support/max-includes/c74_linker_flags.txt";
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libomax.a\"";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.berkeley.cnmat.$(PRODUCT_MODULE_NAME)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(PROJECT_TEMP_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
@@ -12718,6 +12719,7 @@
 				);
 				OTHER_LDFLAGS = "@../../max-sdk/source/c74support/max-includes/c74_linker_flags.txt";
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libomax.a\"";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.berkeley.cnmat.$(PRODUCT_MODULE_NAME)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(PROJECT_TEMP_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
@@ -12768,7 +12770,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.cnmat.berkeley.o.dict;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
@@ -12814,7 +12816,7 @@
 				MACOSX_DEPLOYMENT_TARGET = "$(inherited)";
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.cnmat.berkeley.o.dict;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
@@ -12884,7 +12886,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
-				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.print;
 				WRAPPER_EXTENSION = "";
 			};
@@ -12943,7 +12945,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
-				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.print;
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
@@ -13008,7 +13010,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
-				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.printbytes;
 				WRAPPER_EXTENSION = "";
 			};
@@ -13067,7 +13069,7 @@
 					dynamic_lookup,
 				);
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
-				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.printbytes;
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
@@ -13108,7 +13110,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.cnmat.berkeley.o.explode;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
@@ -13154,7 +13156,7 @@
 				MACOSX_DEPLOYMENT_TARGET = "$(inherited)";
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.cnmat.berkeley.o.explode;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
@@ -13316,7 +13318,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.cnmat.berkeley.o.expr.codebox;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
@@ -13361,7 +13363,7 @@
 				MACOSX_DEPLOYMENT_TARGET = "$(inherited)";
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.cnmat.berkeley.o.expr.codebox;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
@@ -13472,7 +13474,7 @@
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libomax.a\"";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.cnmat.berkeley.o.change;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
@@ -13518,7 +13520,7 @@
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libomax.a\"";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.cnmat.berkeley.o.change;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
@@ -13565,7 +13567,7 @@
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libomax.a\"";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.cnmat.berkeley.o.collect;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
@@ -13611,7 +13613,7 @@
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libomax.a\"";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.cnmat.berkeley.o.collect;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
@@ -13658,7 +13660,7 @@
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libomax.a\"";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.cnmat.berkeley.o.cond;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
@@ -13704,7 +13706,7 @@
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libomax.a\"";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.cnmat.berkeley.o.cond;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
@@ -13750,7 +13752,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.cnmat.berkeley.o.difference;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
@@ -13795,7 +13797,7 @@
 				MACOSX_DEPLOYMENT_TARGET = "$(inherited)";
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.cnmat.berkeley.o.difference;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
@@ -13841,7 +13843,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.cnmat.berkeley.o.expr;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
@@ -13886,7 +13888,7 @@
 				MACOSX_DEPLOYMENT_TARGET = "$(inherited)";
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.cnmat.berkeley.o.expr;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
@@ -13932,7 +13934,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.cnmat.berkeley.o.if;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
@@ -13977,7 +13979,7 @@
 				MACOSX_DEPLOYMENT_TARGET = "$(inherited)";
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.cnmat.berkeley.o.if;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
@@ -14023,7 +14025,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.cnmat.berkeley.o.intersection;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
@@ -14068,7 +14070,7 @@
 				MACOSX_DEPLOYMENT_TARGET = "$(inherited)";
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.cnmat.berkeley.o.intersection;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
@@ -14114,7 +14116,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.cnmat.berkeley.o.mappatch;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
@@ -14159,7 +14161,7 @@
 				MACOSX_DEPLOYMENT_TARGET = "$(inherited)";
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.cnmat.berkeley.o.mappatch;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
@@ -14205,7 +14207,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.cnmat.berkeley.o.message;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
@@ -14250,7 +14252,7 @@
 				MACOSX_DEPLOYMENT_TARGET = "$(inherited)";
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.cnmat.berkeley.o.message;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
@@ -14296,7 +14298,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.cnmat.berkeley.o.pack;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
@@ -14341,7 +14343,7 @@
 				MACOSX_DEPLOYMENT_TARGET = "$(inherited)";
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.cnmat.berkeley.o.pack;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
@@ -14387,7 +14389,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.cnmat.berkeley.o.pak;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
@@ -14432,7 +14434,7 @@
 				MACOSX_DEPLOYMENT_TARGET = "$(inherited)";
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.cnmat.berkeley.o.pak;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
@@ -14478,7 +14480,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.cnmat.berkeley.o.prepend;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
@@ -14523,7 +14525,7 @@
 				MACOSX_DEPLOYMENT_TARGET = "$(inherited)";
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.cnmat.berkeley.o.prepend;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
@@ -14569,7 +14571,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.cnmat.berkeley.o.print;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
@@ -14614,7 +14616,7 @@
 				MACOSX_DEPLOYMENT_TARGET = "$(inherited)";
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.cnmat.berkeley.o.print;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
@@ -14660,7 +14662,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.cnmat.berkeley.o.printbytes;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
@@ -14705,7 +14707,7 @@
 				MACOSX_DEPLOYMENT_TARGET = "$(inherited)";
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.cnmat.berkeley.o.printbytes;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
@@ -14751,7 +14753,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.cnmat.berkeley.o.route;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
@@ -14796,7 +14798,7 @@
 				MACOSX_DEPLOYMENT_TARGET = "$(inherited)";
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.cnmat.berkeley.o.route;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
@@ -14842,7 +14844,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.cnmat.berkeley.o.select;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
@@ -14887,7 +14889,7 @@
 				MACOSX_DEPLOYMENT_TARGET = "$(inherited)";
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.cnmat.berkeley.o.select;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
@@ -14933,7 +14935,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.cnmat.berkeley.o.union;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
@@ -14978,7 +14980,7 @@
 				MACOSX_DEPLOYMENT_TARGET = "$(inherited)";
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.cnmat.berkeley.o.union;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
@@ -15024,7 +15026,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.cnmat.berkeley.o.unless;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
@@ -15069,7 +15071,7 @@
 				MACOSX_DEPLOYMENT_TARGET = "$(inherited)";
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.cnmat.berkeley.o.unless;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
@@ -15115,7 +15117,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.cnmat.berkeley.o.var;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
@@ -15160,7 +15162,7 @@
 				MACOSX_DEPLOYMENT_TARGET = "$(inherited)";
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.cnmat.berkeley.o.var;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
@@ -15206,7 +15208,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.cnmat.berkeley.o.when;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
@@ -15251,7 +15253,7 @@
 				MACOSX_DEPLOYMENT_TARGET = "$(inherited)";
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.cnmat.berkeley.o.when;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
@@ -15292,7 +15294,7 @@
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libomax.a\"";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.cnmat.berkeley.o.context;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
@@ -15332,7 +15334,7 @@
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libomax.a\"";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.cnmat.berkeley.o.context;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
@@ -15378,7 +15380,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
@@ -15422,7 +15424,7 @@
 				MACOSX_DEPLOYMENT_TARGET = "$(inherited)";
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
@@ -15473,7 +15475,7 @@
 					"-DODOT_UNSTABLE",
 				);
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.o.timetag~";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
@@ -15523,7 +15525,7 @@
 					"-DODOT_UNSTABLE",
 				);
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.o.timetag~";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
@@ -15569,7 +15571,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.o.snapshot~";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
@@ -15614,7 +15616,7 @@
 				MACOSX_DEPLOYMENT_TARGET = "$(inherited)";
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.o.snapshot~";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
@@ -15660,7 +15662,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.cnmat.berkeley.o.flatten;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
@@ -15706,7 +15708,7 @@
 				MACOSX_DEPLOYMENT_TARGET = "$(inherited)";
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.cnmat.berkeley.o.flatten;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
@@ -15754,7 +15756,7 @@
 				OBJROOT = build;
 				OTHER_LDFLAGS = "$(inherited)";
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libomax.a\"";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.cnmat.berkeley.o.append;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
@@ -15802,7 +15804,7 @@
 				OBJROOT = build;
 				OTHER_LDFLAGS = "$(inherited)";
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libomax.a\"";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.cnmat.berkeley.o.append;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
@@ -15849,7 +15851,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.cnmat.berkeley.o.timetag;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
@@ -15894,7 +15896,7 @@
 				MACOSX_DEPLOYMENT_TARGET = "$(inherited)";
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.cnmat.berkeley.o.timetag;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
@@ -15940,7 +15942,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.cnmat.berkeley.o.schedule;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
@@ -15985,7 +15987,7 @@
 				MACOSX_DEPLOYMENT_TARGET = "$(inherited)";
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.cnmat.berkeley.o.schedule;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
@@ -16036,7 +16038,7 @@
 					"-DOSLIP_ENCODE",
 				);
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.cnmat.berkeley.o.slip.encode;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
@@ -16086,7 +16088,7 @@
 					"-DOSLIP_ENCODE",
 				);
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.cnmat.berkeley.o.slip.encode;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
@@ -16137,7 +16139,7 @@
 					"-DOSLIP_DECODE",
 				);
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.cnmat.berkeley.o.slip.decode;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
@@ -16187,7 +16189,7 @@
 					"-DOSLIP_DECODE",
 				);
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.cnmat.berkeley.o.slip.decode;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
@@ -16233,7 +16235,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.cnmat.berkeley.o.downcast;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
@@ -16278,7 +16280,7 @@
 				MACOSX_DEPLOYMENT_TARGET = "$(inherited)";
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.cnmat.berkeley.o.downcast;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
@@ -16324,7 +16326,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.cnmat.berkeley.o.validate;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
@@ -16369,7 +16371,7 @@
 				MACOSX_DEPLOYMENT_TARGET = "$(inherited)";
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.cnmat.berkeley.o.validate;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
@@ -16415,7 +16417,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.cnmat.berkeley.o.messageiterate;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
@@ -16460,7 +16462,7 @@
 				MACOSX_DEPLOYMENT_TARGET = "$(inherited)";
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.cnmat.berkeley.o.messageiterate;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
@@ -16506,7 +16508,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
@@ -16551,7 +16553,7 @@
 				MACOSX_DEPLOYMENT_TARGET = "$(inherited)";
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
@@ -16602,7 +16604,7 @@
 					"-DODOT_DEPRECATED",
 				);
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.o.edge~";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
@@ -16652,7 +16654,7 @@
 					"-DODOT_DEPRECATED",
 				);
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.o.edge~";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
@@ -16703,7 +16705,7 @@
 					"-DODOT_UNSTABLE",
 				);
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.o.schedule~";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
@@ -16753,7 +16755,7 @@
 					"-DODOT_UNSTABLE",
 				);
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.o.schedule~";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
@@ -16799,7 +16801,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.cnmat.berkeley.o.table;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
@@ -16844,7 +16846,7 @@
 				MACOSX_DEPLOYMENT_TARGET = "$(inherited)";
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.cnmat.berkeley.o.table;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
@@ -17127,7 +17129,7 @@
 					"-DODOT_UNSTABLE",
 				);
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.o.timetag.split~";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
@@ -17177,7 +17179,7 @@
 					"-DODOT_UNSTABLE",
 				);
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.o.timetag.split~";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
@@ -17228,7 +17230,7 @@
 					"-DODOT_UNSTABLE",
 				);
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.o.timetag.join~";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
@@ -17278,7 +17280,7 @@
 					"-DODOT_UNSTABLE",
 				);
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.o.timetag.join~";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
@@ -17318,7 +17320,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.cnmat.berkeley.o.O;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
@@ -17357,7 +17359,7 @@
 				MACOSX_DEPLOYMENT_TARGET = "$(inherited)";
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.cnmat.berkeley.o.O;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
@@ -17404,7 +17406,7 @@
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libomax.a\"";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.cnmat.berkeley.o.compose;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.compose;
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
@@ -17451,7 +17453,7 @@
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libomax.a\"";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.cnmat.berkeley.o.compose;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.compose;
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
@@ -17497,7 +17499,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.cnmat.berkeley.o.display;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.display;
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
@@ -17542,7 +17544,7 @@
 				MACOSX_DEPLOYMENT_TARGET = "$(inherited)";
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.cnmat.berkeley.o.display;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.display;
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
@@ -17588,7 +17590,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.cnmat.berkeley.o.uniform;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.uniform;
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
@@ -17633,7 +17635,7 @@
 				MACOSX_DEPLOYMENT_TARGET = "$(inherited)";
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.cnmat.berkeley.o.uniform;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.uniform;
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
@@ -17679,7 +17681,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.cnmat.berkeley.o.listenumerate;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.listenumerate;
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
@@ -17724,7 +17726,7 @@
 				MACOSX_DEPLOYMENT_TARGET = "$(inherited)";
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.cnmat.berkeley.o.listenumerate;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.listenumerate;
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
@@ -17853,7 +17855,7 @@
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libomax.a\"";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.cnmat.berkeley.o.atomize;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
@@ -17899,7 +17901,7 @@
 				OBJROOT = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libomax.a\"";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.cnmat.berkeley.o.atomize;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
