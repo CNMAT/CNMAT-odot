@@ -962,6 +962,7 @@ int main(void)
 #else
     CLASS_ATTR_DEFAULT(c, "fontname", 0, "\"Menlo\"");
 #endif
+    CLASS_ATTR_DEFAULT(c, "fontsize", 0, "11");
 
     CLASS_ATTR_DEFAULT(c, "rect", 0, "0. 0. 150. 30.");
 

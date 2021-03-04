@@ -1108,6 +1108,7 @@ int main(void){
 #else
     CLASS_ATTR_DEFAULT(c, "fontname", 0, "\"Menlo\"");
 #endif
+    CLASS_ATTR_DEFAULT(c, "fontsize", 0, "11");
 
  	//CLASS_ATTR_STYLE_LABEL(c, "text_color", 0, "rgba", "Text Color"); /* this line & next make two Text Color fields in the inspector - remove them for justice */
 	
