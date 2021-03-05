@@ -229,7 +229,7 @@
 					"numoutlets" : 5,
 					"outlettype" : [ "", "", "", "", "FullPacket" ],
 					"patching_rect" : [ 62.0, 106.0, 588.555555555555657, 22.0 ],
-					"text" : "o.route /env /frequency /lowpass /waveform"
+					"text" : "o.route /env /frequency /filter /waveform"
 				}
 
 			}
