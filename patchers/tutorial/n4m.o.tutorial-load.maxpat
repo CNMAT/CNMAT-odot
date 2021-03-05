@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 57.0, 101.0, 905.0, 469.0 ],
+		"rect" : [ 1977.0, 79.0, 962.0, 593.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -39,6 +39,18 @@
 		"subpatcher_template" : "Untitled5_template",
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
+				"box" : 				{
+					"id" : "obj-8",
+					"maxclass" : "button",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "bang" ],
+					"parameter_enable" : 0,
+					"patching_rect" : [ 337.0, 48.0, 24.0, 24.0 ]
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"id" : "obj-33",
 					"maxclass" : "newobj",
@@ -246,7 +258,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 50.0, 100.0, 87.0, 22.0 ],
+									"patching_rect" : [ 50.0, 100.0, 87.0, 40.0 ],
 									"text" : "loadmess path"
 								}
 
@@ -259,7 +271,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 124.0, 153.5, 85.0, 22.0 ],
+									"patching_rect" : [ 124.0, 153.5, 85.0, 40.0 ],
 									"text" : "prepend prefix"
 								}
 
@@ -272,7 +284,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "" ],
-									"patching_rect" : [ 124.0, 124.0, 67.0, 22.0 ],
+									"patching_rect" : [ 124.0, 124.0, 67.0, 40.0 ],
 									"save" : [ "#N", "thispatcher", ";", "#Q", "end", ";" ],
 									"text" : "thispatcher"
 								}
@@ -332,7 +344,7 @@
 				"box" : 				{
 					"autopopulate" : 1,
 					"id" : "obj-12",
-					"items" : [ "01_max_and_odot.maxpat", ",", "02_data_manipulation.maxpat", ",", "03_packing_processes.maxpat", ",", "04_build_merge_sep.maxpat", ",", "05_hierarchies.maxpat", ",", "06_expr1.maxpat", ",", "07_expr2.maxpat", ",", "08_expr3.maxpat", ",", "09_expr4.maxpat", ",", "10_subbundles_literals.maxpat", ",", "11_all_about_time.maxpat", ",", "12_strings_and_addresses.maxpat", ",", "13_abstractions.maxpat", ",", "advance.maxpat", ",", "categories.maxpat", ",", "close_parent.js", ",", "design_patterns.maxpat", ",", "filelist.txt", ",", "n4m.o.tutorial-load.js", ",", "n4m.o.tutorial-load.maxpat", ",", "o.io.mouse.tutorial.maxpat", ",", "o.preset-ui.maxpat", ",", "o.synthbasic.maxpat", ",", "o.synthesizer.basic~.maxpat", ",", "o.t.banner.maxpat", ",", "o.t.linkpatch.maxpat", ",", "o.t.objects-covered.maxpat" ],
+					"items" : [ "01_max_and_odot.maxpat", ",", "02_data_manipulation.maxpat", ",", "03_packing_processes.maxpat", ",", "04_build_merge_sep.maxpat", ",", "05_hierarchies.maxpat", ",", "06_expr1.maxpat", ",", "07_expr2.maxpat", ",", "08_expr3.maxpat", ",", "09_expr4.maxpat", ",", "10_subbundles_literals.maxpat", ",", "11_all_about_time.maxpat", ",", "12_abstractions.maxpat", ",", "advance.maxpat", ",", "categories.maxpat", ",", "close_parent.js", ",", "design_patterns.maxpat", ",", "filelist.txt", ",", "n4m.o.tutorial-load.js", ",", "n4m.o.tutorial-load.maxpat", ",", "o.io.mouse.tutorial.maxpat", ",", "o.preset-ui.maxpat", ",", "o.synthbasic.maxpat", ",", "o.synthesizer.basic~.maxpat", ",", "o.t.banner.maxpat", ",", "o.t.linkpatch.maxpat", ",", "o.t.objects-covered.maxpat" ],
 					"maxclass" : "umenu",
 					"numinlets" : 1,
 					"numoutlets" : 3,
@@ -350,7 +362,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 29.0, 44.5, 195.0, 181.0 ],
+					"patching_rect" : [ 19.0, 18.5, 195.0, 181.0 ],
 					"text" : "01_max_and_odot.maxpat\r02_data_manipulation.maxpat\r03_packing_processes.maxpat\r04_build_merge_sep.maxpat\r05_hierarchies.maxpat\r06_expr1.maxpat\r07_expr2.maxpat\r08_expr3.maxpat\r09_expr4.maxpat\r10_subbundles_literals.maxpat\r11_all_about_time.maxpat\r12_strings_and_addresses.maxpat\r13_abstractions.maxpat"
 				}
 
@@ -394,7 +406,7 @@
 					"numoutlets" : 1,
 					"offset" : [ 0.0, 0.0 ],
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 446.0, 198.5, 400.0, 220.0 ],
+					"patching_rect" : [ 174.0, 201.5, 743.0, 372.0 ],
 					"viewvisibility" : 1
 				}
 
@@ -434,6 +446,8 @@
 					"saved_object_attributes" : 					{
 						"autostart" : 0,
 						"defer" : 0,
+						"node_bin_path" : "",
+						"npm_bin_path" : "",
 						"watch" : 0
 					}
 ,
@@ -488,6 +502,13 @@
 				"patchline" : 				{
 					"destination" : [ "obj-1", 0 ],
 					"source" : [ "obj-7", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-12", 0 ],
+					"source" : [ "obj-8", 0 ]
 				}
 
 			}
