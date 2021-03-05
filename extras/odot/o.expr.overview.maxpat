@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 8,
+			"revision" : 10,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -39,6 +39,60 @@
 		"subpatcher_template" : "gridded",
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
+				"box" : 				{
+					"bgcolor" : [ 0.562441, 0.591367, 0.533516, 1.0 ],
+					"id" : "obj-2",
+					"maxclass" : "textbutton",
+					"numinlets" : 1,
+					"numoutlets" : 3,
+					"outlettype" : [ "", "", "int" ],
+					"parameter_enable" : 0,
+					"patching_rect" : [ 1066.0, 874.0, 130.0, 20.0 ],
+					"presentation" : 1,
+					"presentation_rect" : [ 1197.0, 530.0, 130.0, 20.0 ],
+					"text" : "thirteenth_root_of_3",
+					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
+					"varname" : "150-button[40]"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"bgcolor" : [ 0.562441, 0.591367, 0.533516, 1.0 ],
+					"id" : "obj-3",
+					"maxclass" : "textbutton",
+					"numinlets" : 1,
+					"numoutlets" : 3,
+					"outlettype" : [ "", "", "int" ],
+					"parameter_enable" : 0,
+					"patching_rect" : [ 1066.0, 852.0, 130.0, 20.0 ],
+					"presentation" : 1,
+					"presentation_rect" : [ 1197.0, 552.0, 130.0, 20.0 ],
+					"text" : "twelfth_root_of_2",
+					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
+					"varname" : "150-button[44]"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"bgcolor" : [ 0.562441, 0.591367, 0.533516, 1.0 ],
+					"id" : "obj-5",
+					"maxclass" : "textbutton",
+					"numinlets" : 1,
+					"numoutlets" : 3,
+					"outlettype" : [ "", "", "int" ],
+					"parameter_enable" : 0,
+					"patching_rect" : [ 1066.0, 830.0, 130.0, 20.0 ],
+					"presentation" : 1,
+					"presentation_rect" : [ 1065.0, 596.0, 130.0, 20.0 ],
+					"text" : "phi",
+					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
+					"varname" : "150-button[45]"
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"bgcolor" : [ 0.562441, 0.591367, 0.533516, 1.0 ],
 					"id" : "obj-1",
@@ -848,7 +902,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 1066.0, 808.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 1197.0, 574.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 1197.0, 596.0, 130.0, 20.0 ],
 					"text" : "twopi",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[200]"
@@ -866,7 +920,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 1066.0, 786.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 1197.0, 552.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 1197.0, 574.0, 130.0, 20.0 ],
 					"text" : "twooverpi",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[201]"
@@ -884,7 +938,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 1066.0, 764.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 1197.0, 530.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 1197.0, 508.0, 130.0, 20.0 ],
 					"text" : "sqrttwo",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[202]"
@@ -902,7 +956,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 1066.0, 742.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 1197.0, 508.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 1197.0, 486.0, 130.0, 20.0 ],
 					"text" : "sqrthalf",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[203]"
@@ -920,7 +974,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 1066.0, 720.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 1197.0, 486.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 1197.0, 464.0, 130.0, 20.0 ],
 					"text" : "radtodeg",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[204]"
@@ -938,7 +992,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 1066.0, 698.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 1197.0, 464.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 1197.0, 442.0, 130.0, 20.0 ],
 					"text" : "quarterpi",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[205]"
@@ -956,7 +1010,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 1066.0, 676.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 1197.0, 442.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 1197.0, 420.0, 130.0, 20.0 ],
 					"text" : "pi",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[206]"
@@ -974,7 +1028,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 1066.0, 654.0, 130.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 1197.0, 420.0, 130.0, 20.0 ],
+					"presentation_rect" : [ 1065.0, 574.0, 130.0, 20.0 ],
 					"text" : "oneoverpi",
 					"textoncolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"varname" : "150-button[207]"
@@ -1284,7 +1338,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 1,
-							"revision" : 8,
+							"revision" : 10,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -5326,7 +5380,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 1,
-							"revision" : 8,
+							"revision" : 10,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -5372,7 +5426,7 @@
 										"appversion" : 										{
 											"major" : 8,
 											"minor" : 1,
-											"revision" : 8,
+											"revision" : 10,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -5749,7 +5803,7 @@
 										"appversion" : 										{
 											"major" : 8,
 											"minor" : 1,
-											"revision" : 8,
+											"revision" : 10,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -5794,7 +5848,7 @@
 														"appversion" : 														{
 															"major" : 8,
 															"minor" : 1,
-															"revision" : 8,
+															"revision" : 10,
 															"architecture" : "x64",
 															"modernui" : 1
 														}
@@ -7279,7 +7333,7 @@
 										"appversion" : 										{
 											"major" : 8,
 											"minor" : 1,
-											"revision" : 8,
+											"revision" : 10,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -7448,7 +7502,7 @@
 														"appversion" : 														{
 															"major" : 8,
 															"minor" : 1,
-															"revision" : 8,
+															"revision" : 10,
 															"architecture" : "x64",
 															"modernui" : 1
 														}
@@ -7592,7 +7646,7 @@
 														"appversion" : 														{
 															"major" : 8,
 															"minor" : 1,
-															"revision" : 8,
+															"revision" : 10,
 															"architecture" : "x64",
 															"modernui" : 1
 														}
@@ -7724,7 +7778,7 @@
 														"appversion" : 														{
 															"major" : 8,
 															"minor" : 1,
-															"revision" : 8,
+															"revision" : 10,
 															"architecture" : "x64",
 															"modernui" : 1
 														}
@@ -7770,7 +7824,7 @@
 																		"appversion" : 																		{
 																			"major" : 8,
 																			"minor" : 1,
-																			"revision" : 8,
+																			"revision" : 10,
 																			"architecture" : "x64",
 																			"modernui" : 1
 																		}
@@ -9093,6 +9147,13 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-511", 1 ],
+					"source" : [ "obj-2", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-511", 1 ],
 					"source" : [ "obj-200", 1 ]
 				}
 
@@ -9631,6 +9692,13 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-511", 1 ],
+					"source" : [ "obj-3", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-38", 0 ],
 					"source" : [ "obj-300", 1 ]
 				}
@@ -9710,6 +9778,13 @@
 				"patchline" : 				{
 					"destination" : [ "obj-511", 1 ],
 					"source" : [ "obj-44", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-511", 1 ],
+					"source" : [ "obj-5", 1 ]
 				}
 
 			}
