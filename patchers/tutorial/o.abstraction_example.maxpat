@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 8,
+			"revision" : 10,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -40,14 +40,26 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"fontsize" : 12.0,
+					"id" : "obj-14",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "" ],
+					"patching_rect" : [ 351.5, 357.0, 29.5, 22.0 ],
+					"text" : "t l l"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"fontsize" : 13.0,
 					"id" : "obj-13",
 					"linecount" : 22,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 34.5, 101.5, 279.0, 326.0 ],
-					"presentation_linecount" : 18,
+					"patching_rect" : [ 34.5, 101.5, 286.0, 326.0 ],
 					"text" : "We've defined a custom function /gen here so as to provide a safe default behavior if the user either doesn't provide enough information (no data bound to an address), or provides two numbers (indicating that a choice can be made between a given range.\n\nThe ternary assignment operator generates the default range to choose from if no user input is specified.  For example, if we receive /amp without a value, the default behavior will be to choose a value between 0.25 and 0.75.\n\nIf the user provides a single value for /amp, we leave it alone (see the else case in the if() statement).\n\nIf the user provides two values, we use them as the output min/max range for scale().\n\nIn either the case of /amp having 1 or 2 values, we bypass the ternary assignment."
 				}
 
@@ -65,7 +77,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 1,
-							"revision" : 8,
+							"revision" : 10,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -289,7 +301,6 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-4",
 					"linecount" : 8,
 					"maxclass" : "o.expr.codebox",
@@ -606,6 +617,20 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-20", 0 ],
+					"source" : [ "obj-14", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-3", 0 ],
+					"source" : [ "obj-14", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-10", 0 ],
 					"source" : [ "obj-15", 0 ]
 				}
@@ -622,13 +647,6 @@
 				"patchline" : 				{
 					"destination" : [ "obj-18", 0 ],
 					"source" : [ "obj-19", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-11", 0 ],
-					"source" : [ "obj-2", 1 ]
 				}
 
 			}
@@ -657,13 +675,6 @@
 				"patchline" : 				{
 					"destination" : [ "obj-26", 0 ],
 					"source" : [ "obj-20", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-3", 0 ],
-					"source" : [ "obj-20", 3 ]
 				}
 
 			}
@@ -722,7 +733,7 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-20", 0 ],
+					"destination" : [ "obj-14", 0 ],
 					"source" : [ "obj-4", 0 ]
 				}
 
