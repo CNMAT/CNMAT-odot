@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 8,
+			"revision" : 10,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -87,14 +87,13 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-25",
 					"linecount" : 18,
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 50.0, 1185.0, 428.0, 263.0 ],
+					"patching_rect" : [ 50.0, 1185.0, 395.0, 249.0 ],
 					"text" : "# make our list with a placeholder in the second position.\n/list/2 = [1, \"\", 3], \n\n# now, we build up our bundle that will go in that \n# second position.\n/bundle/a = {}, \n/bundle/a./a = 57, \n/bundle/a./b = 43, \n/bundle/a./c = 98, \n\n# assign a copy of our bundle to the second item \n# of the list\n/list/2[[1]] = /bundle/a, \n\n# since the assignment made a copy of our bundle, \n# we can safely delete the message that was used as\n# temporary storage for us to build up our bundle.\ndelete(/bundle/a)"
 				}
 
@@ -102,13 +101,14 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-26",
+					"linecount" : 5,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 50.0, 1456.0, 165.0, 34.0 ]
+					"patching_rect" : [ 50.0, 1456.0, 156.0, 85.0 ],
+					"text" : "/list/2 : [1, {\n  /a : 57,\n  /b : 43,\n  /c : 98\n}, 3]"
 				}
 
 			}
@@ -172,13 +172,12 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 14.0,
 					"id" : "obj-59",
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 162.0, 1679.0, 150.0, 36.0 ]
+					"patching_rect" : [ 162.0, 1679.0, 135.0, 33.0 ]
 				}
 
 			}
@@ -234,13 +233,12 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-49",
 					"maxclass" : "o.compose",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 162.0, 1646.5, 145.0, 24.0 ],
+					"patching_rect" : [ 162.0, 1646.5, 140.0, 23.0 ],
 					"saved_bundle_data" : [  ],
 					"saved_bundle_length" : 0
 				}
@@ -317,14 +315,13 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-46",
 					"linecount" : 3,
 					"maxclass" : "o.compose",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 166.0, 2117.0, 116.0, 51.0 ],
+					"patching_rect" : [ 166.0, 2117.0, 107.0, 49.0 ],
 					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 47, 97, 100, 100, 121, 47, 49, 0, 44, 105, 0, 0, 0, 0, 0, 1, 0, 0, 0, 16, 47, 97, 100, 100, 121, 47, 50, 0, 44, 105, 0, 0, 0, 0, 0, 50, 0, 0, 0, 20, 47, 97, 100, 100, 121, 47, 51, 0, 44, 100, 0, 0, 64, 2, 102, 102, 102, 102, 102, 102 ],
 					"saved_bundle_length" : 80,
 					"text" : "/addy/1 : 1,\n/addy/2 : 50,\n/addy/3 : 2.3"
@@ -400,7 +397,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 444.0, 1157.0, 50.0, 24.0 ],
+					"patching_rect" : [ 444.0, 1127.0, 50.0, 24.0 ],
 					"text" : "0 1 2"
 				}
 
@@ -408,13 +405,14 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-19",
+					"linecount" : 3,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 520.0, 1147.0, 143.0, 34.0 ]
+					"patching_rect" : [ 520.0, 1117.0, 81.0, 59.0 ],
+					"text" : "/a : 57,\n/b : 43,\n/c : 98"
 				}
 
 			}
@@ -434,17 +432,16 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-28",
 					"linecount" : 7,
 					"maxclass" : "o.compose",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 475.0, 928.0, 294.0, 106.0 ],
+					"patching_rect" : [ 475.0, 952.0, 272.0, 100.0 ],
 					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 40, 47, 108, 105, 115, 116, 47, 48, 0, 44, 105, 105, 115, 115, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 2, 97, 112, 112, 108, 101, 115, 0, 0, 111, 114, 97, 110, 103, 101, 115, 0, 0, 0, 0, 28, 47, 108, 105, 115, 116, 47, 49, 0, 44, 105, 105, 105, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 2, 0, 0, 0, 80, 47, 108, 105, 115, 116, 47, 50, 0, 44, 46, 0, 0, 0, 0, 0, 64, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 12, 47, 97, 0, 0, 44, 105, 0, 0, 0, 0, 0, 57, 0, 0, 0, 12, 47, 98, 0, 0, 44, 105, 0, 0, 0, 0, 0, 43, 0, 0, 0, 12, 47, 99, 0, 0, 44, 105, 0, 0, 0, 0, 0, 98 ],
 					"saved_bundle_length" : 176,
-					"text" : "/list/0 : [1, 2, \"apples\", \"oranges\"],\n/list/1 : [0, 1, 2],\n/list/2 : {\n\t/a : 57,\n\t/b : 43,\n\t/c : 98\n}"
+					"text" : "/list/0 : [1, 2, \"apples\", \"oranges\"],\n/list/1 : [0, 1, 2],\n/list/2 : {\n  /a : 57,\n  /b : 43,\n  /c : 98\n}"
 				}
 
 			}
@@ -638,26 +635,24 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-24",
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 81.0, 663.0, 289.0, 34.0 ]
+					"patching_rect" : [ 81.0, 663.0, 273.0, 33.0 ]
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-29",
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 81.0, 617.0, 191.0, 34.0 ],
+					"patching_rect" : [ 81.0, 617.0, 176.0, 31.0 ],
 					"text" : "/subset = /mylist[[2, 3]]"
 				}
 
@@ -677,13 +672,12 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-31",
 					"maxclass" : "o.compose",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 81.0, 581.0, 251.0, 24.0 ],
+					"patching_rect" : [ 81.0, 581.0, 232.0, 23.0 ],
 					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 40, 47, 109, 121, 108, 105, 115, 116, 0, 44, 105, 105, 115, 115, 100, 0, 0, 0, 0, 0, 1, 0, 0, 0, 2, 97, 0, 0, 0, 98, 0, 0, 0, 64, 9, 30, -72, 81, -21, -123, 31 ],
 					"saved_bundle_length" : 60,
 					"text" : "/mylist : [1, 2, \"a\", \"b\", 3.14]"
@@ -766,27 +760,25 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-7",
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 70.0, 406.0, 289.0, 34.0 ]
+					"patching_rect" : [ 70.0, 406.0, 273.0, 33.0 ]
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-21",
 					"linecount" : 2,
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 70.0, 302.0, 155.0, 50.0 ],
+					"patching_rect" : [ 70.0, 302.0, 130.0, 44.0 ],
 					"text" : "/a = /mylist[[2]],\n/b = /mylist[[3]]"
 				}
 
@@ -806,13 +798,12 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-3",
 					"maxclass" : "o.compose",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 70.0, 267.0, 274.0, 24.0 ],
+					"patching_rect" : [ 70.0, 267.0, 232.0, 23.0 ],
 					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 40, 47, 109, 121, 108, 105, 115, 116, 0, 44, 105, 105, 115, 115, 100, 0, 0, 0, 0, 0, 1, 0, 0, 0, 2, 97, 0, 0, 0, 98, 0, 0, 0, 64, 9, 30, -72, 81, -21, -123, 31 ],
 					"saved_bundle_length" : 60,
 					"text" : "/mylist : [1, 2, \"a\", \"b\", 3.14]"

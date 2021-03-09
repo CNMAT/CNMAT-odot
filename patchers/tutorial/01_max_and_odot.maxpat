@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 8,
+			"revision" : 10,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -269,26 +269,24 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-26",
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 278.0, 1603.0, 251.0, 34.0 ]
+					"patching_rect" : [ 278.0, 1603.0, 238.0, 33.0 ]
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-28",
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 278.0, 1554.0, 80.0, 33.0 ],
+					"patching_rect" : [ 278.0, 1554.0, 70.0, 31.0 ],
 					"text" : "/foo = 10"
 				}
 
@@ -296,13 +294,12 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-29",
 					"maxclass" : "o.compose",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 278.0, 1516.0, 251.0, 24.0 ],
+					"patching_rect" : [ 278.0, 1516.0, 232.0, 23.0 ],
 					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 40, 47, 109, 121, 108, 105, 115, 116, 0, 44, 105, 105, 115, 115, 100, 0, 0, 0, 0, 0, 1, 0, 0, 0, 2, 97, 0, 0, 0, 98, 0, 0, 0, 64, 9, 30, -72, 81, -21, -123, 31 ],
 					"saved_bundle_length" : 60,
 					"text" : "/mylist : [1, 2, \"a\", \"b\", 3.14]"
@@ -312,13 +309,12 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-30",
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 278.0, 1341.0, 251.0, 34.0 ]
+					"patching_rect" : [ 278.0, 1341.0, 238.0, 33.0 ]
 				}
 
 			}
@@ -339,26 +335,24 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-32",
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 278.0, 1292.0, 150.0, 32.0 ]
+					"patching_rect" : [ 278.0, 1292.0, 142.0, 31.0 ]
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-33",
 					"maxclass" : "o.compose",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 278.0, 1254.0, 251.0, 24.0 ],
+					"patching_rect" : [ 278.0, 1254.0, 232.0, 23.0 ],
 					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 40, 47, 109, 121, 108, 105, 115, 116, 0, 44, 105, 105, 115, 115, 100, 0, 0, 0, 0, 0, 1, 0, 0, 0, 2, 97, 0, 0, 0, 98, 0, 0, 0, 64, 9, 30, -72, 81, -21, -123, 31 ],
 					"saved_bundle_length" : 60,
 					"text" : "/mylist : [1, 2, \"a\", \"b\", 3.14]"
@@ -396,14 +390,13 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-8",
 					"linecount" : 2,
 					"maxclass" : "o.compose",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 278.0, 1082.0, 309.0, 38.0 ],
+					"patching_rect" : [ 278.0, 1082.0, 285.0, 36.0 ],
 					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 44, 47, 109, 121, 108, 105, 115, 116, 47, 49, 0, 0, 0, 44, 105, 105, 115, 115, 100, 0, 0, 0, 0, 0, 1, 0, 0, 0, 2, 97, 0, 0, 0, 98, 0, 0, 0, 64, 9, 30, -72, 81, -21, -123, 31, 0, 0, 0, 44, 47, 109, 121, 108, 105, 115, 116, 47, 50, 0, 0, 0, 44, 115, 115, 115, 0, 0, 0, 0, 97, 112, 112, 108, 101, 0, 0, 0, 111, 114, 97, 110, 103, 101, 0, 0, 103, 114, 97, 112, 101, 0, 0, 0 ],
 					"saved_bundle_length" : 112,
 					"text" : "/mylist/1 : [1, 2, \"a\", \"b\", 3.14],\n/mylist/2 : [\"apple\", \"orange\", \"grape\"]"
@@ -451,13 +444,12 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-25",
 					"maxclass" : "o.compose",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 269.0, 284.0, 121.0, 24.0 ],
+					"patching_rect" : [ 269.0, 284.0, 113.0, 23.0 ],
 					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 110, 97, 109, 101, 0, 0, 0, 44, 115, 0, 0, 100, 97, 116, 97, 0, 0, 0, 0 ],
 					"saved_bundle_length" : 40,
 					"text" : "/name : \"data\""
@@ -650,14 +642,13 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-3",
 					"linecount" : 2,
 					"maxclass" : "o.compose",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 115.0, 519.0, 309.0, 38.0 ],
+					"patching_rect" : [ 115.0, 519.0, 285.0, 36.0 ],
 					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 44, 47, 109, 121, 108, 105, 115, 116, 47, 49, 0, 0, 0, 44, 105, 105, 115, 115, 100, 0, 0, 0, 0, 0, 1, 0, 0, 0, 2, 97, 0, 0, 0, 98, 0, 0, 0, 64, 9, 30, -72, 81, -21, -123, 31, 0, 0, 0, 44, 47, 109, 121, 108, 105, 115, 116, 47, 50, 0, 0, 0, 44, 115, 115, 115, 0, 0, 0, 0, 97, 112, 112, 108, 101, 0, 0, 0, 111, 114, 97, 110, 103, 101, 0, 0, 103, 114, 97, 112, 101, 0, 0, 0 ],
 					"saved_bundle_length" : 112,
 					"text" : "/mylist/1 : [1, 2, \"a\", \"b\", 3.14],\n/mylist/2 : [\"apple\", \"orange\", \"grape\"]"

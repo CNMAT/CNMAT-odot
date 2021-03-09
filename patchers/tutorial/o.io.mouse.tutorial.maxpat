@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 3,
+			"revision" : 10,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -37,6 +37,7 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "",
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
 					"id" : "obj-54",
@@ -48,13 +49,13 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 1,
-							"revision" : 3,
+							"revision" : 10,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 0.0, 640.0, 480.0 ],
+						"rect" : [ 59.0, 104.0, 640.0, 480.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -81,6 +82,7 @@
 						"tags" : "",
 						"style" : "",
 						"subpatcher_template" : "",
+						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
 									"fontname" : "Arial",
@@ -137,13 +139,13 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 1,
-							"revision" : 3,
+							"revision" : 10,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 0.0, 640.0, 480.0 ],
+						"rect" : [ 59.0, 104.0, 640.0, 480.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -170,6 +172,7 @@
 						"tags" : "",
 						"style" : "",
 						"subpatcher_template" : "",
+						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
 									"id" : "obj-39",
@@ -842,7 +845,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 1,
-							"revision" : 3,
+							"revision" : 10,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -875,6 +878,7 @@
 						"tags" : "",
 						"style" : "",
 						"subpatcher_template" : "",
+						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
 									"id" : "obj-2",
@@ -914,14 +918,13 @@
 , 							{
 								"box" : 								{
 									"fontface" : 0,
-									"fontsize" : 11.0,
 									"id" : "obj-25",
 									"linecount" : 18,
 									"maxclass" : "o.expr.codebox",
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "FullPacket", "FullPacket" ],
-									"patching_rect" : [ 50.0, 151.5, 535.0, 243.0 ],
+									"patching_rect" : [ 50.0, 151.5, 527.0, 249.0 ],
 									"text" : "/is/moving ??= false,\n/was/moving = /is/moving,\n\n/is/moving = /delta/distance != 0.,\nif( /is/moving && !/was/moving, \n  /state = \"started\", \n  if( !/is/moving && /was/moving, \n    /state = \"stopped\", \n    /state = \"moving\"\n  )\n),\n\n/prev/time ??= /time,\n/elapsedTime = /time - /prev/time,\n/pixPerSec = ( /elapsedTime > 0 ) ? /delta/distance / /elapsedTime : 0,\n/relative/pixPerSec = ( /elapsedTime > 0 ) ? /pixPerSec / /screenDim[[0]] : 0,\n\n/prev/time = /time"
 								}
 
@@ -1046,13 +1049,13 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 1,
-							"revision" : 3,
+							"revision" : 10,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 0.0, 640.0, 480.0 ],
+						"rect" : [ 59.0, 104.0, 640.0, 480.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -1079,6 +1082,7 @@
 						"tags" : "",
 						"style" : "",
 						"subpatcher_template" : "",
+						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
 									"fontface" : 0,
@@ -1238,14 +1242,13 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-50",
 					"linecount" : 7,
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 270.0, 464.0, 740.0, 114.0 ],
+					"patching_rect" : [ 270.0, 464.0, 673.0, 108.0 ],
 					"text" : "/button/is ??= \"up\",\n/x = /horizontal - /middle[[0]],\n/y = /screenDim[[1]] - /vertical - /middle[[1]],\n/distance = sqrt( /x * /x + /y * /y ),\n/angle = ( atan2( /y, /x ) / pi() ) * 180.,\n/delta/distance = sqrt( /delta/horizontal * /delta/horizontal + /delta/vertical * /delta/vertical ),\n/delta/angle = ( atan2( -1 * /delta/vertical, /delta/horizontal ) / pi() ) * 180."
 				}
 

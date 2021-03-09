@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 8,
+			"revision" : 10,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -172,7 +172,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 1,
-							"revision" : 8,
+							"revision" : 10,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -209,13 +209,14 @@
 						"boxes" : [ 							{
 								"box" : 								{
 									"fontface" : 0,
-									"fontsize" : 12.0,
 									"id" : "obj-47",
+									"linecount" : 65,
 									"maxclass" : "o.display",
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 50.0, 100.0, 555.0, 34.0 ]
+									"patching_rect" : [ 50.0, 100.0, 525.0, 853.0 ],
+									"text" : "/makefreqs : \"lambda([fundamental, partialnumbers], fundamental * partialnumbers)\",\n/makeamps : \"lambda(partialnumbers, 1. / partialnumbers)\",\n/makedurations : \"lambda([totalduration, partialnumbers], totalduration * (1. / partialnumbers))\",\n/fundamental/hz : 440.,\n/partialnumbers : [1, 3, 6, 7, 8],\n/totalduration/sec : 3.,\n/waveform : \"sine\",\n/notes : [{\n  /frequency : 440.,\n  /env/amplitude : 1.,\n  /env/duration/sec : 3.,\n  /waveform : \"sine\"\n}, {\n  /frequency : 1320.,\n  /env/amplitude : 0.333333,\n  /env/duration/sec : 1.,\n  /waveform : \"sine\"\n}, {\n  /frequency : 2640.,\n  /env/amplitude : 0.166667,\n  /env/duration/sec : 0.5,\n  /waveform : \"sine\"\n}, {\n  /frequency : 3080.,\n  /env/amplitude : 0.142857,\n  /env/duration/sec : 0.428571,\n  /waveform : \"sine\"\n}, {\n  /frequency : 3520.,\n  /env/amplitude : 0.125,\n  /env/duration/sec : 0.375,\n  /waveform : \"sine\"\n}],\n/basicsynth/1 : {\n  /frequency : 440.,\n  /env/amplitude : 1.,\n  /env/duration/sec : 3.,\n  /waveform : \"sine\"\n},\n/basicsynth/2 : {\n  /frequency : 1320.,\n  /env/amplitude : 0.333333,\n  /env/duration/sec : 1.,\n  /waveform : \"sine\"\n},\n/basicsynth/3 : {\n  /frequency : 2640.,\n  /env/amplitude : 0.166667,\n  /env/duration/sec : 0.5,\n  /waveform : \"sine\"\n},\n/basicsynth/4 : {\n  /frequency : 3080.,\n  /env/amplitude : 0.142857,\n  /env/duration/sec : 0.428571,\n  /waveform : \"sine\"\n},\n/basicsynth/5 : {\n  /frequency : 3520.,\n  /env/amplitude : 0.125,\n  /env/duration/sec : 0.375,\n  /waveform : \"sine\"\n}"
 								}
 
 							}
@@ -311,14 +312,13 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-48",
 					"linecount" : 23,
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 66.0, 6902.0, 719.0, 340.0 ],
+					"patching_rect" : [ 66.0, 6902.0, 660.0, 313.0 ],
 					"text" : "/makefreqs = \"lambda([fundamental, partialnumbers], fundamental * partialnumbers)\",\n/makeamps = \"lambda(partialnumbers, 1. / partialnumbers)\",\n/makedurations = \"lambda([totalduration, partialnumbers], totalduration * (1. / partialnumbers))\",\n\n/fundamental/hz ??= 440.,\n/partialnumbers ??= [1, 3, 6, 7, 8],\n/totalduration/sec ??= 3.,\n/waveform ??= \"sine\",\n\n/notes = map(lambda([freq, amp, dur],\n                    {\n                        /frequency : freq,\n                        /env/amplitude : amp,\n                        /env/duration/sec : dur,\n                        /waveform : /waveform\n                    }\n             ),\n             /makefreqs(/fundamental/hz, /partialnumbers),\n             /makeamps(/partialnumbers),\n             /makedurations(/totalduration/sec, /partialnumbers)\n         ),\n\nmap(lambda([note, voice], assign(\"/basicsynth/\" + voice, note)), /notes, aseq(1, length(/notes)))"
 				}
 
@@ -326,27 +326,25 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-45",
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 66.0, 6226.0, 758.0, 34.0 ]
+					"patching_rect" : [ 66.0, 6226.0, 716.0, 33.0 ]
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-46",
 					"linecount" : 25,
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 66.0, 5800.0, 719.0, 368.0 ],
+					"patching_rect" : [ 66.0, 5800.0, 660.0, 339.0 ],
 					"text" : "/makefreqs = \"lambda([fundamental, partialnumbers],\n                   fundamental * partialnumbers)\",\n/makeamps = \"lambda(partialnumbers, 1. / partialnumbers)\",\n/makedurations = \"lambda([totalduration, partialnumbers], totalduration * (1. / partialnumbers))\",\n\n/fundamental/hz ??= 440.,\n/partialnumbers ??= [1, 3, 6, 7, 8],\n/totalduration/sec ??= 3.,\n/waveform ??= \"sine\",\n\n/notes = map(lambda([freq, amp, dur],\n                    {\n                        /frequency : freq,\n                        /env/amplitude : amp,\n                        /env/duration/sec : dur,\n                        /waveform : /waveform     # note the use of the same address!\n                                                  # on the left of the colon, it's a target,\n                                                  # and on the right, its value will be\n                                                  # looked up in the working bundle.\n                    }\n             ),\n             /makefreqs(/fundamental/hz, /partialnumbers),\n             /makeamps(/partialnumbers),\n             /makedurations(/totalduration/sec, /partialnumbers)\n         )"
 				}
 
@@ -363,7 +361,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 1,
-							"revision" : 8,
+							"revision" : 10,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -772,27 +770,25 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-24",
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 77.0, 4329.0, 758.0, 34.0 ]
+					"patching_rect" : [ 77.0, 4329.0, 716.0, 33.0 ]
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-25",
 					"linecount" : 6,
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 77.0, 4202.0, 690.0, 102.0 ],
+					"patching_rect" : [ 77.0, 4202.0, 633.0, 95.0 ],
 					"text" : "/makehs = \"lambda([fundamental, startingpartial, npartials], \n                  prog2(if(npartials < 1, /npartials = 1, /npartials = npartials),\n                        fundamental * aseq(startingpartial, startingpartial + /npartials - 1),\n                        delete(/npartials)))\",\n/hs/a1 = /makehs(55, 1, 8),\n/hs/as1 = /makehs(58.27047, 9, 3)"
 				}
 
@@ -800,27 +796,25 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-4",
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 66.0, 5472.0, 791.0, 34.0 ]
+					"patching_rect" : [ 66.0, 5472.0, 748.0, 33.0 ]
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-6",
 					"linecount" : 13,
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 66.0, 5237.0, 719.0, 200.0 ],
+					"patching_rect" : [ 66.0, 5237.0, 660.0, 185.0 ],
 					"text" : "/makefreqs = \"lambda([fundamental, partialnumbers],\n                   fundamental * partialnumbers)\",\n/makeamps = \"lambda(partialnumbers, 1. / partialnumbers)\",\n/makedurations = \"lambda([totalduration, partialnumbers], totalduration * (1. / partialnumbers))\",\n\n/fundamental/hz ??= 440.,\n/partialnumbers ??= [1, 3, 6, 7, 8],\n/totalduration/sec ??= 3.,\n/waveform ??= \"sine\",\n\n/freqs = /makefreqs(/fundamental/hz, /partialnumbers),\n/amps = /makeamps(/partialnumbers),\n/durations = /makedurations(/totalduration/sec, /partialnumbers)"
 				}
 
@@ -840,14 +834,13 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-95",
 					"linecount" : 2,
 					"maxclass" : "o.compose",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 455.0, 4705.0, 129.0, 38.0 ],
+					"patching_rect" : [ 455.0, 4705.0, 120.0, 36.0 ],
 					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 24, 47, 97, 0, 0, 44, 105, 105, 105, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 2, 0, 0, 0, 3, 0, 0, 0, 24, 47, 98, 0, 0, 44, 105, 105, 105, 0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 7, 0, 0, 0, 9 ],
 					"saved_bundle_length" : 72,
 					"text" : "/a : [1, 2, 3],\n/b : [5, 7, 9]"
@@ -857,14 +850,13 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-94",
 					"linecount" : 2,
 					"maxclass" : "o.compose",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 66.0, 4705.0, 71.0, 38.0 ],
+					"patching_rect" : [ 66.0, 4705.0, 67.0, 36.0 ],
 					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 12, 47, 97, 0, 0, 44, 105, 0, 0, 0, 0, 0, 1, 0, 0, 0, 12, 47, 98, 0, 0, 44, 105, 0, 0, 0, 0, 0, 2 ],
 					"saved_bundle_length" : 48,
 					"text" : "/a : 1,\n/b : 2"
@@ -933,39 +925,36 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-80",
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 455.0, 4862.0, 145.0, 34.0 ]
+					"patching_rect" : [ 455.0, 4862.0, 137.0, 33.0 ]
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-79",
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 66.0, 4862.0, 143.0, 34.0 ]
+					"patching_rect" : [ 66.0, 4862.0, 136.0, 33.0 ]
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-78",
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 455.0, 4760.0, 307.0, 32.0 ],
+					"patching_rect" : [ 455.0, 4760.0, 282.0, 31.0 ],
 					"text" : "/res = map(lambda([a, b], a + b), /a, /b)"
 				}
 
@@ -973,13 +962,12 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-77",
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 66.0, 4760.0, 321.0, 32.0 ],
+					"patching_rect" : [ 66.0, 4760.0, 295.0, 31.0 ],
 					"text" : "/res = apply(lambda([a, b], a + b), /a, /b)"
 				}
 
@@ -1033,27 +1021,25 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-74",
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 77.0, 3955.0, 758.0, 34.0 ]
+					"patching_rect" : [ 77.0, 3955.0, 716.0, 33.0 ]
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-75",
 					"linecount" : 6,
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 77.0, 3828.0, 690.0, 102.0 ],
+					"patching_rect" : [ 77.0, 3828.0, 633.0, 95.0 ],
 					"text" : "/makehs = \"lambda([fundamental, startingpartial, npartials], \n                  prog2(if(npartials < 1, /npartials = 1, /npartials = npartials),\n                        fundamental * aseq(startingpartial, startingpartial + /npartials - 1),\n                        delete(/npartials)))\",\n/hs/a1 = apply(/makehs, 55, 1, 8),\n/hs/as1 = apply(/makehs, 58.27047, 9, 3)"
 				}
 
@@ -1073,27 +1059,25 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-71",
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 77.0, 3599.0, 727.0, 34.0 ]
+					"patching_rect" : [ 77.0, 3599.0, 687.0, 33.0 ]
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-72",
 					"linecount" : 6,
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 77.0, 3472.0, 646.0, 102.0 ],
+					"patching_rect" : [ 77.0, 3472.0, 593.0, 95.0 ],
 					"text" : "/makehs = \"lambda([fundamental, startingpartial, npartials], \n                  if(npartials < 1, /npartials = 1, /npartials = npartials),\n                  fundamental * aseq(startingpartial, startingpartial + /npartials - 1),\n                  delete(/npartials))\",\n/hs/a1 = apply(/makehs, 55, 1, 8),\n/hs/as1 = apply(/makehs, 58.27047, 9, 3)"
 				}
 
@@ -1138,27 +1122,25 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-66",
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 77.0, 3270.0, 727.0, 34.0 ]
+					"patching_rect" : [ 77.0, 3270.0, 687.0, 33.0 ]
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-67",
 					"linecount" : 5,
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 77.0, 3159.0, 661.0, 88.0 ],
+					"patching_rect" : [ 77.0, 3159.0, 607.0, 83.0 ],
 					"text" : "/makehs = \"lambda([fundamental, startingpartial, npartials], \n                  if(npartials < 1, /npartials = 1, /npartials = npartials),\n                  fundamental * aseq(startingpartial, startingpartial + /npartials - 1))\",\n/hs/a1 = apply(/makehs, 55, 1, 8),\n/hs/as1 = apply(/makehs, 58.27047, 9, 3)"
 				}
 
@@ -1190,27 +1172,25 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-63",
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 77.0, 2653.0, 719.0, 34.0 ]
+					"patching_rect" : [ 77.0, 2653.0, 680.0, 33.0 ]
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-64",
 					"linecount" : 4,
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 77.0, 2556.0, 653.0, 74.0 ],
+					"patching_rect" : [ 77.0, 2556.0, 600.0, 70.0 ],
 					"text" : "/makehs = \"lambda([fundamental, startingpartial, npartials], \n                  fundamental * aseq(startingpartial, startingpartial + npartials - 1))\",\n/hs/a1 = apply(/makehs, 55, 1, 8),\n/hs/as1 = apply(/makehs, 58.27047, 9, 3)"
 				}
 
@@ -1243,27 +1223,25 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-58",
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 77.0, 2405.0, 639.0, 34.0 ]
+					"patching_rect" : [ 77.0, 2405.0, 604.0, 33.0 ]
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-59",
 					"linecount" : 3,
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 77.0, 2329.0, 581.0, 60.0 ],
+					"patching_rect" : [ 77.0, 2329.0, 534.0, 57.0 ],
 					"text" : "/makehs = \"lambda([fundamental, npartials], fundamental * aseq(1, npartials))\",\n/hs/a1 = apply(/makehs, 55, 8),\n/hs/as1 = apply(/makehs, 58.27047, 12)"
 				}
 
@@ -1296,27 +1274,25 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-54",
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 77.0, 2169.0, 663.0, 34.0 ]
+					"patching_rect" : [ 77.0, 2169.0, 627.0, 33.0 ]
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-55",
 					"linecount" : 3,
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 77.0, 2093.0, 430.0, 60.0 ],
+					"patching_rect" : [ 77.0, 2093.0, 395.0, 57.0 ],
 					"text" : "/makehs = \"lambda(fundamental, fundamental * aseq(1, 8))\",\n/hs/a1 = apply(/makehs, 55),\n/hs/as1 = apply(/makehs, 58.27047)"
 				}
 
@@ -1336,27 +1312,25 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-51",
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 77.0, 1947.0, 663.0, 34.0 ]
+					"patching_rect" : [ 77.0, 1947.0, 627.0, 33.0 ]
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-52",
 					"linecount" : 2,
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 77.0, 1884.0, 531.0, 46.0 ],
+					"patching_rect" : [ 77.0, 1884.0, 487.0, 44.0 ],
 					"text" : "/hs/a1 = apply(lambda(fundamental, fundamental * aseq(1, 8)), 55),\n/hs/as1 = apply(lambda(fundamental, fundamental * aseq(1, 8)), 58.27047)"
 				}
 
@@ -1376,27 +1350,25 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-41",
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 77.0, 1735.0, 663.0, 34.0 ]
+					"patching_rect" : [ 77.0, 1735.0, 627.0, 33.0 ]
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-42",
 					"linecount" : 2,
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 77.0, 1672.0, 234.0, 46.0 ],
+					"patching_rect" : [ 77.0, 1672.0, 216.0, 44.0 ],
 					"text" : "/hs/a1 = 55 * aseq(1, 8),\n/hs/as1 = 58.27047 * aseq(1, 8)"
 				}
 
@@ -1416,26 +1388,24 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-38",
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 77.0, 1544.0, 369.0, 34.0 ]
+					"patching_rect" : [ 77.0, 1544.0, 349.0, 33.0 ]
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-39",
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 77.0, 1496.0, 162.0, 32.0 ],
+					"patching_rect" : [ 77.0, 1496.0, 150.0, 31.0 ],
 					"text" : "/hs = 55 * aseq(1, 8)"
 				}
 
@@ -1527,29 +1497,27 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-13",
 					"linecount" : 5,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 274.0, 1178.0, 112.0, 90.0 ],
-					"text" : "/r : 1,\n/func : \"sub\",\n/val : 9,\n/min : -20,\n/max : 20"
+					"patching_rect" : [ 274.0, 1178.0, 103.0, 85.0 ],
+					"text" : "/r : 3,\n/func : \"add\",\n/val : -2,\n/min : -20,\n/max : 20"
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-14",
 					"linecount" : 6,
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 274.0, 991.0, 610.0, 102.0 ],
+					"patching_rect" : [ 274.0, 991.0, 560.0, 95.0 ],
 					"text" : "/func ??= \"add\",\n/val ??= 0,\n/min ??= -20, \n/max ??= 20,\n/func = if(/val > /max, \"sub\", if(/val < /min, \"add\", if(/val % 2, \"add\", \"sub\"))),\n/val = apply(/func, /val, /r)"
 				}
 
@@ -1568,26 +1536,24 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-12",
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 274.0, 530.0, 143.0, 34.0 ]
+					"patching_rect" : [ 274.0, 530.0, 136.0, 33.0 ]
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-11",
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 274.0, 484.0, 177.0, 32.0 ],
+					"patching_rect" : [ 274.0, 484.0, 163.0, 31.0 ],
 					"text" : "/a = apply(add, 10, 13)"
 				}
 
@@ -1607,14 +1573,13 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-8",
 					"linecount" : 4,
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 477.0, 331.0, 177.0, 74.0 ],
+					"patching_rect" : [ 477.0, 331.0, 163.0, 70.0 ],
 					"text" : "add(10, 33),\nprog1(/x, /x = /x + 1),\nif(bound(/y), /y, 33),\neq(/x, /y)"
 				}
 
@@ -1622,14 +1587,13 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-7",
 					"linecount" : 4,
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 274.0, 331.0, 83.0, 74.0 ],
+					"patching_rect" : [ 274.0, 331.0, 77.0, 70.0 ],
 					"text" : "10 + 33,\n/x++,\n/y ?? 33, \n/x == /y"
 				}
 
