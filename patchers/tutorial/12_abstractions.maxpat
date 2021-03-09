@@ -768,9 +768,9 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 390.0, 3908.0, 218.0, 62.0 ],
-					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 28, 47, 102, 114, 101, 113, 0, 0, 0, 44, 100, 100, 0, 63, -41, 16, 36, -26, -95, 113, 2, 63, -23, -14, 41, -125, 117, -97, 35, 0, 0, 0, 28, 47, 97, 109, 112, 0, 0, 0, 0, 44, 100, 100, 0, 63, -45, -102, -123, -60, 9, 57, -88, 63, -29, -28, 83, 6, -21, 62, 69, 0, 0, 0, 28, 47, 100, 117, 114, 0, 0, 0, 0, 44, 100, 100, 0, 63, -62, 115, 80, -72, -127, 39, 53, 63, -35, 103, -56, -90, 13, -42, 125, 0, 0, 0, 16, 47, 109, 111, 100, 101, 0, 0, 0, 44, 105, 0, 0, 0, 0, 0, 1 ],
-					"saved_bundle_length" : 132,
-					"text" : "/freq : [0.36036, 0.810811],\n/amp : [0.306306, 0.621622],\n/dur : [0.144144, 0.459459],\n/mode : 1"
+					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 102, 114, 101, 113, 0, 0, 0, 44, 100, 0, 0, 63, -35, -30, -104, 88, 17, 35, -5, 0, 0, 0, 20, 47, 97, 109, 112, 0, 0, 0, 0, 44, 100, 0, 0, 63, -29, 112, -85, 103, -51, -62, -82, 0, 0, 0, 20, 47, 100, 117, 114, 0, 0, 0, 0, 44, 100, 0, 0, 63, -56, -45, 1, -115, 48, 24, -48, 0, 0, 0, 16, 47, 109, 111, 100, 101, 0, 0, 0, 44, 105, 0, 0, 0, 0, 0, 0 ],
+					"saved_bundle_length" : 108,
+					"text" : "/freq : 0.466955,\n/amp : 0.607504,\n/dur : 0.193939,\n/mode : 0"
 				}
 
 			}
@@ -844,13 +844,11 @@
 				"box" : 				{
 					"fontface" : 0,
 					"id" : "obj-100",
-					"linecount" : 3,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 803.5, 2198.0, 203.0, 59.0 ],
-					"text" : "/freq : [0.447349, 0.525338],\n/amp : [0.266011, 0.864393],\n/dur : [0.656245, 0.538949]"
+					"patching_rect" : [ 803.5, 2198.0, 203.0, 33.0 ]
 				}
 
 			}
@@ -1559,11 +1557,13 @@
 					"fontface" : 0,
 					"fontsize" : 12.0,
 					"id" : "obj-47",
+					"linecount" : 2,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 392.0, 1038.0, 320.0, 34.0 ]
+					"patching_rect" : [ 389.0, 1061.0, 320.0, 48.0 ],
+					"text" : "/1/other/stuff : 222,\n/voice : 1"
 				}
 
 			}
@@ -1572,9 +1572,10 @@
 					"id" : "obj-43",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
-					"numoutlets" : 0,
-					"patching_rect" : [ 349.0, 988.0, 274.0, 24.0 ],
-					"text" : "poly~ o.abstraction_example3 1 @steal 1"
+					"numoutlets" : 3,
+					"outlettype" : [ "signal", "", "" ],
+					"patching_rect" : [ 349.0, 953.0, 324.0, 24.0 ],
+					"text" : "poly~ o.abstraction_example 1 @steal 1 @target 0"
 				}
 
 			}
@@ -1582,11 +1583,13 @@
 				"box" : 				{
 					"fontface" : 0,
 					"id" : "obj-27",
+					"linecount" : 4,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 667.0, 3903.0, 260.0, 33.0 ]
+					"patching_rect" : [ 667.0, 3903.0, 260.0, 72.0 ],
+					"text" : "/freq : 0.466955,\n/amp : 0.607504,\n/dur : 0.193939,\n/mode : 0"
 				}
 
 			}
@@ -2845,6 +2848,29 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-36", 0 ],
+					"order" : 0,
+					"source" : [ "obj-43", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-37", 0 ],
+					"order" : 1,
+					"source" : [ "obj-43", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-47", 0 ],
+					"source" : [ "obj-43", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-49", 0 ],
 					"order" : 1,
 					"source" : [ "obj-45", 0 ]
@@ -3153,6 +3179,13 @@
 				"implicit" : 1
 			}
 , 			{
+				"name" : "o.abstraction_example.maxpat",
+				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/patchers/tutorial",
+				"patcherrelativepath" : ".",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
 				"name" : "o.display.mxo",
 				"type" : "iLaX"
 			}
@@ -3182,6 +3215,10 @@
 			}
 , 			{
 				"name" : "o.var.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.prepend.mxo",
 				"type" : "iLaX"
 			}
 , 			{
