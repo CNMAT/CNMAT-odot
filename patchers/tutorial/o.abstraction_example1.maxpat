@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 62.0, 91.0, 941.0, 706.0 ],
+		"rect" : [ 62.0, 91.0, 1176.0, 968.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 14.0,
@@ -40,27 +40,93 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-29",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 518.0, 505.5, 527.0, 22.0 ],
+					"text" : "Cleanup our temporary messages"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-27",
+					"linecount" : 3,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 518.0, 268.666666666666742, 527.0, 53.0 ],
+					"presentation_linecount" : 3,
+					"text" : "Here, we pick up three random numbers between [0, 1]. If any of our /amp, /dur, or /freq messages are pairs instead of single values, we'll use the /gen function, defined in the next codebox, to scale a random value to that range."
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontface" : 0,
+					"id" : "obj-24",
+					"linecount" : 4,
+					"maxclass" : "o.expr.codebox",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "FullPacket", "FullPacket" ],
+					"patching_rect" : [ 351.5, 358.5, 547.0, 70.0 ],
+					"presentation_linecount" : 4,
+					"text" : "/gen = \"lambda([v, r], if(length(v) == 2, scale(r, 0., 1., v[[0]], v[[1]]), v))\",\n/amp = /gen(/amp, /rs[[0]]),\n/dur = /gen(/dur, /rs[[1]]),\n/freq = /gen(/freq, /rs[[2]])"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-21",
+					"linecount" : 4,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 518.0, 167.5, 527.0, 69.0 ],
+					"text" : "If any of the messages we expect are not present, we assign a pair of values to them that represents a range from which we will will take a random value. (Recall that ??= means \"assign the thing on the right to the address on the left, only if the address on the left doesn't already have a value\".)"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontface" : 0,
+					"id" : "obj-9",
+					"maxclass" : "o.expr.codebox",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "FullPacket", "FullPacket" ],
+					"patching_rect" : [ 351.5, 501.0, 123.0, 31.0 ],
+					"text" : "delete(/rs, /gen)"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontface" : 0,
+					"id" : "obj-2",
+					"linecount" : 3,
+					"maxclass" : "o.expr.codebox",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "FullPacket", "FullPacket" ],
+					"patching_rect" : [ 351.5, 173.5, 156.0, 57.0 ],
+					"presentation_linecount" : 3,
+					"text" : "/amp ??= [0.25, 0.75],\n/dur ??= [200, 500],\n/freq ??= [440, 880]"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"fontsize" : 12.0,
 					"id" : "obj-14",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 351.5, 357.0, 29.5, 22.0 ],
+					"patching_rect" : [ 351.5, 610.0, 233.0, 22.0 ],
 					"text" : "t l l"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontsize" : 13.0,
-					"id" : "obj-13",
-					"linecount" : 22,
-					"maxclass" : "comment",
-					"numinlets" : 1,
-					"numoutlets" : 0,
-					"patching_rect" : [ 34.5, 101.5, 286.0, 326.0 ],
-					"text" : "We've defined a custom function /gen here so as to provide a safe default behavior if the user either doesn't provide enough information (no data bound to an address), or provides two numbers (indicating that the user wants a random value within this range.\n\nThe ternary assignment operator generates the default range to choose from if no user input is specified.  For example, if we receive /amp without a value, the default behavior will be to choose a value between 0.25 and 0.75.\n\nIf the user provides a single value for /amp, we leave it alone (see the else case in the if() statement).\n\nIf the user provides two values, we use them as the output min/max range for scale().\n\nIn either the case of /amp having 1 or 2 values, we bypass the ternary assignment."
 				}
 
 			}
@@ -259,7 +325,7 @@
  ]
 					}
 ,
-					"patching_rect" : [ 351.5, 162.833333333333314, 73.0, 22.0 ],
+					"patching_rect" : [ 351.5, 284.166666666666686, 73.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
@@ -280,7 +346,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "bang", "" ],
-					"patching_rect" : [ 351.5, 132.166666666666657, 88.0, 22.0 ],
+					"patching_rect" : [ 351.5, 253.5, 88.0, 22.0 ],
 					"text" : "t b l"
 				}
 
@@ -293,22 +359,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 351.5, 193.499999999999972, 88.0, 22.0 ],
+					"patching_rect" : [ 351.5, 314.833333333333371, 88.0, 22.0 ],
 					"text" : "o.union"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontface" : 0,
-					"id" : "obj-4",
-					"linecount" : 8,
-					"maxclass" : "o.expr.codebox",
-					"numinlets" : 1,
-					"numoutlets" : 2,
-					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 351.5, 223.5, 547.0, 121.0 ],
-					"text" : "/amp ??= [0.25, 0.75],\n/dur ??= [200, 500],\n/freq ??= [440, 880],\n/gen = \"lambda([v, r], if(length(v) == 2, scale(r, 0., 1., v[[0]], v[[1]]), v))\",\n/amp = /gen(/amp, /rs[[0]]),\n/dur = /gen(/dur, /rs[[1]]),\n/freq = /gen(/freq, /rs[[2]]),\ndelete(/rs, /gen)"
 				}
 
 			}
@@ -320,7 +372,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 565.5, 382.0, 58.0, 22.0 ],
+					"patching_rect" : [ 635.5, 630.0, 58.0, 22.0 ],
 					"text" : "loadbang"
 				}
 
@@ -333,7 +385,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 565.5, 409.0, 79.0, 22.0 ],
+					"patching_rect" : [ 635.5, 657.0, 79.0, 22.0 ],
 					"text" : "mute 1, bang"
 				}
 
@@ -346,7 +398,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 387.5, 473.0, 29.0, 22.0 ],
+					"patching_rect" : [ 387.5, 718.0, 29.0, 22.0 ],
 					"text" : "0."
 				}
 
@@ -359,7 +411,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 387.5, 449.0, 57.0, 22.0 ],
+					"patching_rect" : [ 387.5, 694.0, 57.0, 22.0 ],
 					"text" : "delay 10."
 				}
 
@@ -372,7 +424,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 4,
 					"outlettype" : [ "", "", "", "FullPacket" ],
-					"patching_rect" : [ 351.5, 412.0, 127.0, 22.0 ],
+					"patching_rect" : [ 351.5, 657.0, 127.0, 22.0 ],
 					"text" : "o.route /amp /dur /freq"
 				}
 
@@ -385,7 +437,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "signal" ],
-					"patching_rect" : [ 203.5, 533.0, 66.0, 22.0 ],
+					"patching_rect" : [ 203.5, 778.0, 66.0, 22.0 ],
 					"text" : "cycle~ 440"
 				}
 
@@ -398,7 +450,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "signal" ],
-					"patching_rect" : [ 203.5, 563.0, 144.0, 22.0 ],
+					"patching_rect" : [ 203.5, 808.0, 144.0, 22.0 ],
 					"text" : "*~ 0."
 				}
 
@@ -410,11 +462,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 203.5, 655.0, 42.0, 22.0 ],
-					"saved_object_attributes" : 					{
-						"attr_comment" : ""
-					}
-,
+					"patching_rect" : [ 203.5, 900.0, 42.0, 22.0 ],
 					"text" : "out~ 1"
 				}
 
@@ -427,7 +475,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 565.5, 492.0, 79.0, 22.0 ],
+					"patching_rect" : [ 635.5, 740.0, 79.0, 22.0 ],
 					"text" : "o.pack /voice"
 				}
 
@@ -440,7 +488,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 565.5, 555.0, 89.0, 22.0 ],
+					"patching_rect" : [ 565.5, 800.0, 89.0, 22.0 ],
 					"text" : "o.union"
 				}
 
@@ -466,7 +514,7 @@
 					"numinlets" : 5,
 					"numoutlets" : 4,
 					"outlettype" : [ "signal", "signal", "", "" ],
-					"patching_rect" : [ 351.5, 515.0, 99.0, 22.0 ],
+					"patching_rect" : [ 351.5, 760.0, 99.0, 22.0 ],
 					"text" : "adsr~ 10 0. 1. 10"
 				}
 
@@ -478,7 +526,11 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 565.5, 655.0, 35.0, 22.0 ],
+					"patching_rect" : [ 565.5, 835.0, 35.0, 22.0 ],
+					"saved_object_attributes" : 					{
+						"attr_comment" : ""
+					}
+,
 					"text" : "out 1"
 				}
 
@@ -492,6 +544,10 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 351.5, 20.0, 28.0, 22.0 ],
+					"saved_object_attributes" : 					{
+						"attr_comment" : ""
+					}
+,
 					"text" : "in 1"
 				}
 
@@ -504,7 +560,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 3,
 					"outlettype" : [ "int", "int", "int" ],
-					"patching_rect" : [ 565.5, 451.0, 56.0, 22.0 ],
+					"patching_rect" : [ 635.5, 699.0, 56.0, 22.0 ],
 					"text" : "thispoly~"
 				}
 
@@ -519,7 +575,7 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-4", 0 ],
+					"destination" : [ "obj-24", 0 ],
 					"source" : [ "obj-10", 0 ]
 				}
 
@@ -582,6 +638,13 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-11", 0 ],
+					"source" : [ "obj-2", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-19", 0 ],
 					"source" : [ "obj-20", 2 ]
 				}
@@ -610,6 +673,13 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-9", 0 ],
+					"source" : [ "obj-24", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-26", 0 ],
 					"source" : [ "obj-25", 0 ]
 				}
@@ -626,7 +696,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-5", 0 ],
-					"midpoints" : [ 414.333333333333314, 595.0, 730.166666666666515, 595.0, 730.166666666666515, 447.0, 575.0, 447.0 ],
+					"midpoints" : [ 414.333333333333314, 871.0, 730.166666666666515, 871.0, 730.166666666666515, 692.0, 645.0, 692.0 ],
 					"source" : [ "obj-26", 2 ]
 				}
 
@@ -634,7 +704,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-5", 0 ],
-					"midpoints" : [ 361.0, 611.0, 739.5, 611.0, 739.5, 443.0, 575.0, 443.0 ],
+					"midpoints" : [ 361.0, 888.0, 739.5, 888.0, 739.5, 688.0, 645.0, 688.0 ],
 					"order" : 0,
 					"source" : [ "obj-26", 0 ]
 				}
@@ -644,13 +714,6 @@
 				"patchline" : 				{
 					"destination" : [ "obj-5", 0 ],
 					"source" : [ "obj-30", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-14", 0 ],
-					"source" : [ "obj-4", 0 ]
 				}
 
 			}
@@ -677,8 +740,15 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-11", 0 ],
+					"destination" : [ "obj-2", 0 ],
 					"source" : [ "obj-8", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-14", 0 ],
+					"source" : [ "obj-9", 0 ]
 				}
 
 			}
