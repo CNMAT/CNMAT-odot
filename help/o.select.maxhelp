@@ -2,14 +2,15 @@
 	"patcher" : 	{
 		"fileversion" : 1,
 		"appversion" : 		{
-			"major" : 7,
-			"minor" : 3,
-			"revision" : 4,
+			"major" : 8,
+			"minor" : 1,
+			"revision" : 10,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
-		"rect" : [ 140.0, 85.0, 688.0, 613.0 ],
+		"classnamespace" : "box",
+		"rect" : [ 60.0, 98.0, 688.0, 613.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -38,6 +39,7 @@
 		"subpatcher_template" : "",
 		"showrootpatcherontab" : 0,
 		"showontab" : 0,
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
 					"id" : "obj-13",
@@ -47,13 +49,14 @@
 					"patcher" : 					{
 						"fileversion" : 1,
 						"appversion" : 						{
-							"major" : 7,
-							"minor" : 3,
-							"revision" : 4,
+							"major" : 8,
+							"minor" : 1,
+							"revision" : 10,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
 ,
+						"classnamespace" : "box",
 						"rect" : [ 0.0, 26.0, 688.0, 587.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
@@ -82,6 +85,7 @@
 						"style" : "",
 						"subpatcher_template" : "",
 						"showontab" : 1,
+						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
 									"data" : [ 593, "", "IBkSG0fBZn....PCIgDQRA...zF....LHX....vFnS+e....DLmPIQEBHf.B7g.YHB..BfPRDEDU3wY6bEsiCCBCKLc+++xbOwItcqkVHN1oGVZZRSCWZbLgNfUp0Z01HU3K1cfMLqTJC+N8dqOJZ2kjQs0Cy7Sk2qDqaeuV6esBIWssWky6bs9Oy6qO8gH.RtmAn5O2k2Yb0SWSalKVuE2KffyYwrIBm0++DmmJZpDLx.NpFFBG8epo4IVovKR7deHaImPEMTPsfLpYfdDfKZQ31Tv8FIBwoolyvSDsKyLhCOxxcftdVDIngIZnCNLRBXk3QchHOsZQQUFHTQSsZaqzeXlvQeJ+Qdyi7ZEYBY3hlm2brpqwdXc5NMy3GDVEQOrOEQSgZay1GTHASBmlY3CFn3mQBHMQyqa1HqqofKyLxNMEd.4U.qg4kY3wHwrKfqJftn4gaajHfHfybxTzEMD3ouzORHZYq1F6GYQBQKRb2.thaMAYDsUcaG0d0csy.YDMEghtLyDSzxVsMVPJQyLeEtUbJp5xLavlUMaY5n1bndBO5e+xogbsthpsHfJ2KGdpY73hfjiQbGc6tB7lix9jflOH2DQ1XL1hVBwVzRH1hVBwVzRH1hVBws+KoX0mPXzuH.5spcV4um2ScZ0Z8mWdidNQehZP0+QFaNi6gCOVJkTtmAabiLgqEWP7O1P+6uC5G0ITBWi6mxgtnGCEMTCAzPV2bosQfXrpBzVZldtQu6oxF+i3b+CFmP7MQ+TMlEbQ3RG.....IUjSD4pPfIH" ],
@@ -91,7 +95,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "jit_matrix" ],
-									"patching_rect" : [ 497.0, 127.430664, 109.0, 48.0 ]
+									"patching_rect" : [ 497.0, 127.430663999999993, 109.0, 48.0 ]
 								}
 
 							}
@@ -106,7 +110,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "FullPacket", "FullPacket" ],
-									"patching_rect" : [ 56.0, 429.930664, 150.0, 45.0 ],
+									"patching_rect" : [ 56.0, 429.930663999999979, 150.0, 45.0 ],
 									"text" : "/mysynth/2/gain =  0.5,\n/nada = \"rien\""
 								}
 
@@ -120,7 +124,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 262.0, 617.930664, 113.0, 34.0 ],
+									"patching_rect" : [ 262.0, 617.930663999999979, 113.0, 34.0 ],
 									"text" : "/nada : \"rien\""
 								}
 
@@ -134,7 +138,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 159.0, 569.930664, 164.0, 34.0 ],
+									"patching_rect" : [ 159.0, 569.930663999999979, 164.0, 34.0 ],
 									"text" : "/mysynth/2/gain : 0.5"
 								}
 
@@ -148,7 +152,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 56.0, 516.930664, 178.0, 34.0 ],
+									"patching_rect" : [ 56.0, 516.930663999999979, 178.0, 34.0 ],
 									"text" : "/mysynth/2/freq : 301."
 								}
 
@@ -162,8 +166,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "FullPacket" ],
-									"patching_rect" : [ 56.0, 401.930664, 131.0, 22.0 ],
-									"style" : "",
+									"patching_rect" : [ 56.0, 401.930663999999979, 131.0, 22.0 ],
 									"text" : "o.pack /mysynth/2/freq"
 								}
 
@@ -177,8 +180,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 3,
 									"outlettype" : [ "", "", "FullPacket" ],
-									"patching_rect" : [ 56.0, 483.930664, 225.0, 22.0 ],
-									"style" : "",
+									"patching_rect" : [ 56.0, 483.930663999999979, 225.0, 22.0 ],
 									"text" : "o.select /mysynth/2/freq /mysynth/2/gain"
 								}
 
@@ -194,8 +196,7 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 56.0, 340.930664, 50.0, 22.0 ],
-									"style" : ""
+									"patching_rect" : [ 56.0, 340.930663999999979, 50.0, 22.0 ]
 								}
 
 							}
@@ -207,8 +208,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 518.0, 609.930664, 150.0, 20.0 ],
-									"style" : "",
+									"patching_rect" : [ 518.0, 609.930663999999979, 150.0, 20.0 ],
 									"text" : "see also:"
 								}
 
@@ -223,8 +223,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 4,
 									"outlettype" : [ "", "", "", "clear" ],
-									"patching_rect" : [ 503.5, 340.930664, 168.0, 22.0 ],
-									"style" : "",
+									"patching_rect" : [ 503.5, 340.930663999999979, 168.0, 22.0 ],
 									"text" : "o.helpfilehelper @obj o.select"
 								}
 
@@ -238,8 +237,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 50.0, 244.930664, 600.0, 47.0 ],
-									"style" : "",
+									"patching_rect" : [ 50.0, 244.930664000000007, 600.0, 47.0 ],
 									"text" : "o.select does pattern matching on addresses contained in OSC packets.  All messages in a bundle with addresses that match an address specified as an argument to o.select are bundled together and sent out the corresponding outlet with their addresses kept intact."
 								}
 
@@ -252,8 +250,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 50.0, 196.930664, 600.0, 20.0 ],
-									"style" : "",
+									"patching_rect" : [ 50.0, 196.930664000000007, 600.0, 20.0 ],
 									"text" : "Dispatch OSC messages according to an address hierarchy preserving the address"
 								}
 
@@ -266,8 +263,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 50.0, 107.930664, 600.0, 87.0 ],
-									"style" : "",
+									"patching_rect" : [ 50.0, 107.930663999999993, 600.0, 87.0 ],
 									"text" : "o.select"
 								}
 
@@ -282,8 +278,7 @@
 									"numoutlets" : 3,
 									"outlettype" : [ "int", "", "" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 518.0, 631.930664, 132.0, 22.0 ],
-									"style" : ""
+									"patching_rect" : [ 518.0, 631.930663999999979, 132.0, 22.0 ]
 								}
 
 							}
@@ -297,8 +292,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 518.0, 690.930664, 53.0, 22.0 ],
-									"style" : "",
+									"patching_rect" : [ 518.0, 690.930663999999979, 53.0, 22.0 ],
 									"text" : "pcontrol"
 								}
 
@@ -313,8 +307,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 518.0, 666.930664, 138.0, 22.0 ],
-									"style" : "",
+									"patching_rect" : [ 518.0, 666.930663999999979, 138.0, 22.0 ],
 									"text" : "sprintf load %s.maxhelp"
 								}
 
@@ -418,17 +411,14 @@
  ]
 					}
 ,
-					"patching_rect" : [ 56.0, 71.069336, 49.0, 22.0 ],
-					"presentation_rect" : [ 56.0, 71.069336, 0.0, 0.0 ],
+					"patching_rect" : [ 56.0, 71.069336000000007, 49.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
 						"globalpatchername" : "",
-						"style" : "",
 						"tags" : ""
 					}
 ,
-					"style" : "",
 					"text" : "p ?"
 				}
 
@@ -442,14 +432,15 @@
 					"patcher" : 					{
 						"fileversion" : 1,
 						"appversion" : 						{
-							"major" : 7,
-							"minor" : 3,
-							"revision" : 4,
+							"major" : 8,
+							"minor" : 1,
+							"revision" : 10,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
 ,
-						"rect" : [ 140.0, 111.0, 688.0, 587.0 ],
+						"classnamespace" : "box",
+						"rect" : [ 60.0, 124.0, 688.0, 587.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -477,6 +468,7 @@
 						"style" : "",
 						"subpatcher_template" : "",
 						"showontab" : 1,
+						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
 									"data" : [ 593, "", "IBkSG0fBZn....PCIgDQRA...zF....LHX....vFnS+e....DLmPIQEBHf.B7g.YHB..BfPRDEDU3wY6bEsiCCBCKLc+++xbOwItcqkVHN1oGVZZRSCWZbLgNfUp0Z01HU3K1cfMLqTJC+N8dqOJZ2kjQs0Cy7Sk2qDqaeuV6esBIWssWky6bs9Oy6qO8gH.RtmAn5O2k2Yb0SWSalKVuE2KffyYwrIBm0++DmmJZpDLx.NpFFBG8epo4IVovKR7deHaImPEMTPsfLpYfdDfKZQ31Tv8FIBwoolyvSDsKyLhCOxxcftdVDIngIZnCNLRBXk3QchHOsZQQUFHTQSsZaqzeXlvQeJ+Qdyi7ZEYBY3hlm2brpqwdXc5NMy3GDVEQOrOEQSgZay1GTHASBmlY3CFn3mQBHMQyqa1HqqofKyLxNMEd.4U.qg4kY3wHwrKfqJftn4gaajHfHfybxTzEMD3ouzORHZYq1F6GYQBQKRb2.thaMAYDsUcaG0d0csy.YDMEghtLyDSzxVsMVPJQyLeEtUbJp5xLavlUMaY5n1bndBO5e+xogbsthpsHfJ2KGdpY73hfjiQbGc6tB7lix9jflOH2DQ1XL1hVBwVzRH1hVBwVzRH1hVBws+KoX0mPXzuH.5spcV4um2ScZ0Z8mWdidNQehZP0+QFaNi6gCOVJkTtmAabiLgqEWP7O1P+6uC5G0ITBWi6mxgtnGCEMTCAzPV2bosQfXrpBzVZldtQu6oxF+i3b+CFmP7MQ+TMlEbQ3RG.....IUjSD4pPfIH" ],
@@ -493,15 +485,13 @@
 , 							{
 								"box" : 								{
 									"fontface" : 0,
-									"fontname" : "Arial",
-									"fontsize" : 12.0,
 									"id" : "obj-5",
 									"linecount" : 2,
 									"maxclass" : "o.expr.codebox",
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "FullPacket", "FullPacket" ],
-									"patching_rect" : [ 24.0, 334.930664, 150.0, 45.0 ],
+									"patching_rect" : [ 24.0, 334.930663999999979, 163.0, 44.0 ],
 									"text" : "/mysynth/2/gain =  0.5,\n/nada = \"rien\""
 								}
 
@@ -509,42 +499,36 @@
 , 							{
 								"box" : 								{
 									"fontface" : 0,
-									"fontsize" : 12.0,
 									"id" : "obj-18",
 									"maxclass" : "o.display",
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 230.0, 522.930664, 113.0, 34.0 ],
-									"text" : "/nada : \"rien\""
+									"patching_rect" : [ 230.0, 522.930663999999979, 107.0, 33.0 ]
 								}
 
 							}
 , 							{
 								"box" : 								{
 									"fontface" : 0,
-									"fontsize" : 12.0,
 									"id" : "obj-17",
 									"maxclass" : "o.display",
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 127.0, 474.930664, 164.0, 34.0 ],
-									"text" : "/mysynth/2/gain : 0.5"
+									"patching_rect" : [ 127.0, 474.930663999999979, 155.0, 33.0 ]
 								}
 
 							}
 , 							{
 								"box" : 								{
 									"fontface" : 0,
-									"fontsize" : 12.0,
 									"id" : "obj-16",
 									"maxclass" : "o.display",
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 24.0, 421.930664, 178.0, 34.0 ],
-									"text" : "/mysynth/2/freq : 3.2"
+									"patching_rect" : [ 24.0, 421.930663999999979, 169.0, 33.0 ]
 								}
 
 							}
@@ -557,8 +541,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "FullPacket" ],
-									"patching_rect" : [ 24.0, 306.930664, 131.0, 22.0 ],
-									"style" : "",
+									"patching_rect" : [ 24.0, 306.930663999999979, 131.0, 22.0 ],
 									"text" : "o.pack /mysynth/2/freq"
 								}
 
@@ -572,8 +555,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 3,
 									"outlettype" : [ "", "", "FullPacket" ],
-									"patching_rect" : [ 24.0, 388.930664, 225.0, 22.0 ],
-									"style" : "",
+									"patching_rect" : [ 24.0, 388.930663999999979, 225.0, 22.0 ],
 									"text" : "o.select /mysynth/2/freq /mysynth/2/gain"
 								}
 
@@ -589,8 +571,7 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 24.0, 245.930664, 50.0, 22.0 ],
-									"style" : ""
+									"patching_rect" : [ 24.0, 245.930664000000007, 50.0, 22.0 ]
 								}
 
 							}
@@ -602,8 +583,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 486.0, 514.930664, 150.0, 20.0 ],
-									"style" : "",
+									"patching_rect" : [ 486.0, 514.930663999999979, 150.0, 20.0 ],
 									"text" : "see also:"
 								}
 
@@ -618,8 +598,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 4,
 									"outlettype" : [ "", "", "", "clear" ],
-									"patching_rect" : [ 471.5, 245.930664, 168.0, 22.0 ],
-									"style" : "",
+									"patching_rect" : [ 471.5, 245.930664000000007, 168.0, 22.0 ],
 									"text" : "o.helpfilehelper @obj o.select"
 								}
 
@@ -633,8 +612,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 18.0, 149.930664, 600.0, 47.0 ],
-									"style" : "",
+									"patching_rect" : [ 18.0, 149.930664000000007, 600.0, 47.0 ],
 									"text" : "o.select does pattern matching on addresses contained in OSC packets.  All messages in a bundle with addresses that match an address specified as an argument to o.select are bundled together and sent out the corresponding outlet with their addresses kept intact."
 								}
 
@@ -647,8 +625,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 18.0, 101.930664, 600.0, 20.0 ],
-									"style" : "",
+									"patching_rect" : [ 18.0, 101.930663999999993, 600.0, 20.0 ],
 									"text" : "Dispatch OSC messages according to an address hierarchy preserving the address"
 								}
 
@@ -662,7 +639,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 18.0, 12.930664, 600.0, 87.0 ],
-									"style" : "",
 									"text" : "o.select"
 								}
 
@@ -677,8 +653,7 @@
 									"numoutlets" : 3,
 									"outlettype" : [ "int", "", "" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 486.0, 536.930664, 132.0, 22.0 ],
-									"style" : ""
+									"patching_rect" : [ 486.0, 536.930663999999979, 132.0, 22.0 ]
 								}
 
 							}
@@ -692,8 +667,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 486.0, 595.930664, 53.0, 22.0 ],
-									"style" : "",
+									"patching_rect" : [ 486.0, 595.930663999999979, 53.0, 22.0 ],
 									"text" : "pcontrol"
 								}
 
@@ -708,8 +682,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 486.0, 571.930664, 138.0, 22.0 ],
-									"style" : "",
+									"patching_rect" : [ 486.0, 571.930663999999979, 138.0, 22.0 ],
 									"text" : "sprintf load %s.maxhelp"
 								}
 
@@ -818,11 +791,9 @@
 						"description" : "",
 						"digest" : "",
 						"globalpatchername" : "",
-						"style" : "",
 						"tags" : ""
 					}
 ,
-					"style" : "",
 					"text" : "p basic"
 				}
 
@@ -831,8 +802,8 @@
 		"lines" : [  ],
 		"dependency_cache" : [ 			{
 				"name" : "o.helpfilehelper.maxpat",
-				"bootpath" : "~/Documents/Max 7/Packages/CNMAT-odot/patchers/utils",
-				"patcherrelativepath" : "../../../Max 7/Packages/CNMAT-odot/patchers/utils",
+				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/patchers/utils",
+				"patcherrelativepath" : "../patchers/utils",
 				"type" : "JSON",
 				"implicit" : 1
 			}
@@ -842,6 +813,10 @@
 			}
 , 			{
 				"name" : "o.route.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.collect.mxo",
 				"type" : "iLaX"
 			}
 , 			{

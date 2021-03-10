@@ -2,14 +2,15 @@
 	"patcher" : 	{
 		"fileversion" : 1,
 		"appversion" : 		{
-			"major" : 7,
-			"minor" : 3,
-			"revision" : 4,
+			"major" : 8,
+			"minor" : 1,
+			"revision" : 10,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
-		"rect" : [ 153.0, 158.0, 965.0, 517.0 ],
+		"classnamespace" : "box",
+		"rect" : [ 52.0, 95.0, 965.0, 517.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -38,6 +39,7 @@
 		"subpatcher_template" : "",
 		"showrootpatcherontab" : 0,
 		"showontab" : 0,
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
 					"id" : "obj-38",
@@ -47,13 +49,14 @@
 					"patcher" : 					{
 						"fileversion" : 1,
 						"appversion" : 						{
-							"major" : 7,
-							"minor" : 3,
-							"revision" : 4,
+							"major" : 8,
+							"minor" : 1,
+							"revision" : 10,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
 ,
+						"classnamespace" : "box",
 						"rect" : [ 0.0, 26.0, 965.0, 491.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
@@ -82,6 +85,7 @@
 						"style" : "",
 						"subpatcher_template" : "",
 						"showontab" : 1,
+						"assistshowspatchername" : 0,
 						"boxes" : [  ],
 						"lines" : [  ]
 					}
@@ -91,11 +95,9 @@
 						"description" : "",
 						"digest" : "",
 						"globalpatchername" : "",
-						"style" : "",
 						"tags" : ""
 					}
 ,
-					"style" : "",
 					"text" : "p ?"
 				}
 
@@ -109,14 +111,15 @@
 					"patcher" : 					{
 						"fileversion" : 1,
 						"appversion" : 						{
-							"major" : 7,
-							"minor" : 3,
-							"revision" : 4,
+							"major" : 8,
+							"minor" : 1,
+							"revision" : 10,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
 ,
-						"rect" : [ 153.0, 184.0, 965.0, 491.0 ],
+						"classnamespace" : "box",
+						"rect" : [ 52.0, 121.0, 965.0, 491.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -144,6 +147,7 @@
 						"style" : "",
 						"subpatcher_template" : "",
 						"showontab" : 1,
+						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
 									"data" : [ 593, "", "IBkSG0fBZn....PCIgDQRA...zF....LHX....vFnS+e....DLmPIQEBHf.B7g.YHB..BfPRDEDU3wY6bEsiCCBCKLc+++xbOwItcqkVHN1oGVZZRSCWZbLgNfUp0Z01HU3K1cfMLqTJC+N8dqOJZ2kjQs0Cy7Sk2qDqaeuV6esBIWssWky6bs9Oy6qO8gH.RtmAn5O2k2Yb0SWSalKVuE2KffyYwrIBm0++DmmJZpDLx.NpFFBG8epo4IVovKR7deHaImPEMTPsfLpYfdDfKZQ31Tv8FIBwoolyvSDsKyLhCOxxcftdVDIngIZnCNLRBXk3QchHOsZQQUFHTQSsZaqzeXlvQeJ+Qdyi7ZEYBY3hlm2brpqwdXc5NMy3GDVEQOrOEQSgZay1GTHASBmlY3CFn3mQBHMQyqa1HqqofKyLxNMEd.4U.qg4kY3wHwrKfqJftn4gaajHfHfybxTzEMD3ouzORHZYq1F6GYQBQKRb2.thaMAYDsUcaG0d0csy.YDMEghtLyDSzxVsMVPJQyLeEtUbJp5xLavlUMaY5n1bndBO5e+xogbsthpsHfJ2KGdpY73hfjiQbGc6tB7lix9jflOH2DQ1XL1hVBwVzRH1hVBwVzRH1hVBws+KoX0mPXzuH.5spcV4um2ScZ0Z8mWdidNQehZP0+QFaNi6gCOVJkTtmAabiLgqEWP7O1P+6uC5G0ITBWi6mxgtnGCEMTCAzPV2bosQfXrpBzVZldtQu6oxF+i3b+CFmP7MQ+TMlEbQ3RG.....IUjSD4pPfIH" ],
@@ -164,67 +168,58 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "bang" ],
-									"patching_rect" : [ 30.0, 359.0, 20.0, 20.0 ],
-									"style" : ""
+									"parameter_enable" : 0,
+									"patching_rect" : [ 30.0, 359.0, 20.0, 20.0 ]
 								}
 
 							}
 , 							{
 								"box" : 								{
 									"fontface" : 0,
-									"fontsize" : 12.0,
 									"id" : "obj-2",
 									"maxclass" : "o.display",
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 30.0, 442.0, 150.0, 34.0 ],
-									"text" : "/foo : 6.7"
+									"patching_rect" : [ 30.0, 442.0, 142.0, 33.0 ]
 								}
 
 							}
 , 							{
 								"box" : 								{
 									"fontface" : 0,
-									"fontsize" : 12.0,
 									"id" : "obj-32",
 									"maxclass" : "o.display",
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 612.5, 406.0, 178.0, 34.0 ],
-									"text" : "/bloo : [\"a\", \"r\", \"s\"]"
+									"patching_rect" : [ 612.5, 406.0, 169.0, 33.0 ]
 								}
 
 							}
 , 							{
 								"box" : 								{
 									"fontface" : 0,
-									"fontsize" : 12.0,
 									"id" : "obj-31",
 									"maxclass" : "o.display",
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 474.0, 406.0, 128.0, 34.0 ],
-									"text" : "/bar : [1, 2, 3]"
+									"patching_rect" : [ 474.0, 406.0, 121.0, 33.0 ]
 								}
 
 							}
 , 							{
 								"box" : 								{
 									"fontface" : 0,
-									"fontname" : "Arial",
-									"fontsize" : 12.0,
 									"id" : "obj-25",
 									"maxclass" : "o.compose",
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 30.0, 396.0, 71.0, 24.0 ],
-									"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 102, 111, 111, 0, 0, 0, 0, 44, 100, 0, 0, 64, 26, -52, -52, -52, -52, -52, -51 ],
-									"saved_bundle_length" : 40,
-									"text" : "/foo : 6.7",
+									"patching_rect" : [ 30.0, 396.0, 100.0, 23.0 ],
+									"saved_bundle_data" : [  ],
+									"saved_bundle_length" : 0,
 									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 
@@ -232,14 +227,12 @@
 , 							{
 								"box" : 								{
 									"fontface" : 0,
-									"fontname" : "Arial",
-									"fontsize" : 12.0,
 									"id" : "obj-20",
 									"maxclass" : "o.compose",
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 30.0, 216.5, 91.0, 24.0 ],
+									"patching_rect" : [ 30.0, 216.5, 126.0, 23.0 ],
 									"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 28, 47, 102, 111, 111, 0, 0, 0, 0, 44, 105, 105, 105, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 2, 0, 0, 0, 3 ],
 									"saved_bundle_length" : 48,
 									"text" : "/foo : [1, 2, 3]",
@@ -258,8 +251,7 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 82.0, 323.0, 50.0, 22.0 ],
-									"style" : ""
+									"patching_rect" : [ 111.0, 323.0, 50.0, 22.0 ]
 								}
 
 							}
@@ -272,8 +264,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "FullPacket" ],
-									"patching_rect" : [ 82.0, 359.0, 83.0, 22.0 ],
-									"style" : "",
+									"patching_rect" : [ 111.0, 359.0, 83.0, 22.0 ],
 									"text" : "o.pack /foo 0."
 								}
 
@@ -283,12 +274,11 @@
 									"fontname" : "Arial",
 									"fontsize" : 12.0,
 									"id" : "obj-17",
-									"linecount" : 4,
+									"linecount" : 8,
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 133.0, 386.0, 229.0, 60.0 ],
-									"style" : "",
+									"patching_rect" : [ 213.0, 336.0, 138.0, 114.0 ],
 									"text" : "o.compose can be used to display and store contents of an OSC bundle sent to its right inlet (the bundle won't come out until the object is clicked or banged)"
 								}
 
@@ -303,7 +293,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 30.0, 257.5, 44.0, 22.0 ],
-									"style" : "",
 									"text" : "o.print"
 								}
 
@@ -313,11 +302,11 @@
 									"fontname" : "Arial",
 									"fontsize" : 12.0,
 									"id" : "obj-16",
+									"linecount" : 2,
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 133.0, 218.5, 310.0, 20.0 ],
-									"style" : "",
+									"patching_rect" : [ 162.0, 216.5, 159.0, 33.0 ],
 									"text" : "o.compose: edit the text by unlocking the patch"
 								}
 
@@ -331,7 +320,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 800.0, 434.0, 150.0, 20.0 ],
-									"style" : "",
 									"text" : "see also:"
 								}
 
@@ -347,7 +335,6 @@
 									"numoutlets" : 4,
 									"outlettype" : [ "", "", "", "clear" ],
 									"patching_rect" : [ 427.0, 7.0, 185.0, 22.0 ],
-									"style" : "",
 									"text" : "o.helpfilehelper @obj o.compose"
 								}
 
@@ -361,7 +348,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 12.0, 144.0, 600.0, 20.0 ],
-									"style" : "",
 									"text" : "o.compose converts its textual contents to OSC packets."
 								}
 
@@ -375,7 +361,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 12.0, 96.0, 600.0, 20.0 ],
-									"style" : "",
 									"text" : "Create OSC bundles from text"
 								}
 
@@ -389,7 +374,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 12.0, 7.0, 453.5, 87.0 ],
-									"style" : "",
 									"text" : "o.compose"
 								}
 
@@ -404,26 +388,23 @@
 									"numoutlets" : 3,
 									"outlettype" : [ "int", "", "" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 800.0, 456.0, 132.0, 22.0 ],
-									"style" : ""
+									"patching_rect" : [ 800.0, 456.0, 132.0, 22.0 ]
 								}
 
 							}
 , 							{
 								"box" : 								{
 									"fontface" : 0,
-									"fontname" : "Arial",
-									"fontsize" : 12.0,
 									"id" : "obj-3",
 									"linecount" : 4,
 									"maxclass" : "o.compose",
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 474.0, 216.5, 150.0, 64.0 ],
+									"patching_rect" : [ 474.0, 216.5, 186.0, 62.0 ],
 									"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 96, 47, 102, 111, 111, 0, 0, 0, 0, 44, 46, 0, 0, 0, 0, 0, 80, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 28, 47, 98, 97, 114, 0, 0, 0, 0, 44, 105, 105, 105, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 2, 0, 0, 0, 3, 0, 0, 0, 28, 47, 98, 108, 111, 111, 0, 0, 0, 44, 115, 115, 115, 0, 0, 0, 0, 97, 0, 0, 0, 114, 0, 0, 0, 115, 0, 0, 0 ],
 									"saved_bundle_length" : 116,
-									"text" : "/foo : {\n\t/bar : [1, 2, 3],\n\t/bloo : [\"a\", \"r\", \"s\"]\n}",
+									"text" : "/foo : {\n  /bar : [1, 2, 3],\n  /bloo : [\"a\", \"r\", \"s\"]\n}",
 									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 								}
 
@@ -431,6 +412,8 @@
 , 							{
 								"box" : 								{
 									"bubble" : 1,
+									"bubblepoint" : 0.06,
+									"bubbleside" : 0,
 									"fontname" : "Arial",
 									"fontsize" : 12.0,
 									"id" : "obj-26",
@@ -438,8 +421,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 630.0, 223.5, 288.0, 37.0 ],
-									"style" : "",
+									"patching_rect" : [ 578.5, 282.5, 288.0, 52.0 ],
 									"text" : "nested bundles can be constructed using square brackets in the arguments of an OSC message."
 								}
 
@@ -454,7 +436,6 @@
 									"numoutlets" : 3,
 									"outlettype" : [ "", "", "FullPacket" ],
 									"patching_rect" : [ 474.0, 359.0, 232.0, 22.0 ],
-									"style" : "",
 									"text" : "o.select /bar /bloo"
 								}
 
@@ -469,7 +450,6 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "", "FullPacket" ],
 									"patching_rect" : [ 474.0, 323.0, 71.0, 22.0 ],
-									"style" : "",
 									"text" : "o.route /foo"
 								}
 
@@ -594,11 +574,9 @@
 						"description" : "",
 						"digest" : "",
 						"globalpatchername" : "",
-						"style" : "",
 						"tags" : ""
 					}
 ,
-					"style" : "",
 					"text" : "p basic"
 				}
 
@@ -607,8 +585,8 @@
 		"lines" : [  ],
 		"dependency_cache" : [ 			{
 				"name" : "o.helpfilehelper.maxpat",
-				"bootpath" : "~/Documents/Max 7/Packages/CNMAT-odot/patchers/utils",
-				"patcherrelativepath" : "../../../Max 7/Packages/CNMAT-odot/patchers/utils",
+				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/patchers/utils",
+				"patcherrelativepath" : "../patchers/utils",
 				"type" : "JSON",
 				"implicit" : 1
 			}
@@ -622,6 +600,10 @@
 			}
 , 			{
 				"name" : "o.compose.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.collect.mxo",
 				"type" : "iLaX"
 			}
 , 			{

@@ -2,14 +2,15 @@
 	"patcher" : 	{
 		"fileversion" : 1,
 		"appversion" : 		{
-			"major" : 7,
-			"minor" : 3,
-			"revision" : 4,
+			"major" : 8,
+			"minor" : 1,
+			"revision" : 10,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
-		"rect" : [ 188.0, 152.0, 703.0, 471.0 ],
+		"classnamespace" : "box",
+		"rect" : [ 65.0, 101.0, 703.0, 471.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -38,6 +39,7 @@
 		"subpatcher_template" : "",
 		"showrootpatcherontab" : 0,
 		"showontab" : 0,
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
 					"id" : "obj-2",
@@ -47,13 +49,14 @@
 					"patcher" : 					{
 						"fileversion" : 1,
 						"appversion" : 						{
-							"major" : 7,
-							"minor" : 3,
-							"revision" : 4,
+							"major" : 8,
+							"minor" : 1,
+							"revision" : 10,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
 ,
+						"classnamespace" : "box",
 						"rect" : [ 0.0, 26.0, 703.0, 445.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
@@ -82,6 +85,7 @@
 						"style" : "",
 						"subpatcher_template" : "",
 						"showontab" : 1,
+						"assistshowspatchername" : 0,
 						"boxes" : [  ],
 						"lines" : [  ]
 					}
@@ -91,11 +95,9 @@
 						"description" : "",
 						"digest" : "",
 						"globalpatchername" : "",
-						"style" : "",
 						"tags" : ""
 					}
 ,
-					"style" : "",
 					"text" : "p ?"
 				}
 
@@ -109,14 +111,15 @@
 					"patcher" : 					{
 						"fileversion" : 1,
 						"appversion" : 						{
-							"major" : 7,
-							"minor" : 3,
-							"revision" : 4,
+							"major" : 8,
+							"minor" : 1,
+							"revision" : 10,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
 ,
-						"rect" : [ 188.0, 178.0, 703.0, 445.0 ],
+						"classnamespace" : "box",
+						"rect" : [ 65.0, 127.0, 703.0, 445.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -144,6 +147,7 @@
 						"style" : "",
 						"subpatcher_template" : "",
 						"showontab" : 1,
+						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
 									"data" : [ 593, "", "IBkSG0fBZn....PCIgDQRA...zF....LHX....vFnS+e....DLmPIQEBHf.B7g.YHB..BfPRDEDU3wY6bEsiCCBCKLc+++xbOwItcqkVHN1oGVZZRSCWZbLgNfUp0Z01HU3K1cfMLqTJC+N8dqOJZ2kjQs0Cy7Sk2qDqaeuV6esBIWssWky6bs9Oy6qO8gH.RtmAn5O2k2Yb0SWSalKVuE2KffyYwrIBm0++DmmJZpDLx.NpFFBG8epo4IVovKR7deHaImPEMTPsfLpYfdDfKZQ31Tv8FIBwoolyvSDsKyLhCOxxcftdVDIngIZnCNLRBXk3QchHOsZQQUFHTQSsZaqzeXlvQeJ+Qdyi7ZEYBY3hlm2brpqwdXc5NMy3GDVEQOrOEQSgZay1GTHASBmlY3CFn3mQBHMQyqa1HqqofKyLxNMEd.4U.qg4kY3wHwrKfqJftn4gaajHfHfybxTzEMD3ouzORHZYq1F6GYQBQKRb2.thaMAYDsUcaG0d0csy.YDMEghtLyDSzxVsMVPJQyLeEtUbJp5xLavlUMaY5n1bndBO5e+xogbsthpsHfJ2KGdpY73hfjiQbGc6tB7lix9jflOH2DQ1XL1hVBwVzRH1hVBwVzRH1hVBws+KoX0mPXzuH.5spcV4um2ScZ0Z8mWdidNQehZP0+QFaNi6gCOVJkTtmAabiLgqEWP7O1P+6uC5G0ITBWi6mxgtnGCEMTCAzPV2bosQfXrpBzVZldtQu6oxF+i3b+CFmP7MQ+TMlEbQ3RG.....IUjSD4pPfIH" ],
@@ -160,15 +164,13 @@
 , 							{
 								"box" : 								{
 									"fontface" : 0,
-									"fontname" : "Arial",
-									"fontsize" : 12.0,
 									"id" : "obj-11",
 									"linecount" : 2,
 									"maxclass" : "o.compose",
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 44.0, 245.930664, 99.0, 37.0 ],
+									"patching_rect" : [ 44.0, 245.930664000000007, 133.0, 36.0 ],
 									"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 28, 47, 98, 97, 114, 0, 0, 0, 0, 44, 105, 105, 105, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 2, 0, 0, 0, 3, 0, 0, 0, 28, 47, 98, 108, 111, 111, 0, 0, 0, 44, 105, 105, 105, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 5, 0, 0, 0, 6 ],
 									"saved_bundle_length" : 80,
 									"text" : "/bar : [1, 2, 3],\n/bloo : [4, 5, 6]",
@@ -179,15 +181,12 @@
 , 							{
 								"box" : 								{
 									"fontface" : 0,
-									"fontsize" : 12.0,
 									"id" : "obj-7",
-									"linecount" : 2,
 									"maxclass" : "o.display",
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 44.0, 342.930664, 171.0, 48.0 ],
-									"text" : "/bar/foo : [1, 2, 3],\n/bloo/foo : [4, 5, 6]"
+									"patching_rect" : [ 44.0, 342.930663999999979, 162.0, 33.0 ]
 								}
 
 							}
@@ -200,8 +199,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 151.0, 238.430664, 124.0, 47.0 ],
-									"style" : "",
+									"patching_rect" : [ 193.0, 245.930664000000007, 124.0, 47.0 ],
 									"text" : "append /foo to every address in the incoming bundle"
 								}
 
@@ -215,8 +213,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "FullPacket" ],
-									"patching_rect" : [ 44.0, 299.430664, 84.0, 22.0 ],
-									"style" : "",
+									"patching_rect" : [ 44.0, 299.430663999999979, 84.0, 22.0 ],
 									"text" : "o.append /foo"
 								}
 
@@ -229,8 +226,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 506.0, 380.930664, 150.0, 20.0 ],
-									"style" : "",
+									"patching_rect" : [ 506.0, 380.930663999999979, 150.0, 20.0 ],
 									"text" : "see also:"
 								}
 
@@ -245,8 +241,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 4,
 									"outlettype" : [ "", "", "", "clear" ],
-									"patching_rect" : [ 474.5, 245.930664, 177.0, 22.0 ],
-									"style" : "",
+									"patching_rect" : [ 474.5, 245.930664000000007, 177.0, 22.0 ],
 									"text" : "o.helpfilehelper @obj o.append"
 								}
 
@@ -259,8 +254,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 21.0, 149.930664, 600.0, 20.0 ],
-									"style" : "",
+									"patching_rect" : [ 21.0, 149.930664000000007, 600.0, 20.0 ],
 									"text" : "o.append takes an OSC address as an argument and appends it to every address in the bundle."
 								}
 
@@ -273,8 +267,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 21.0, 101.930664, 600.0, 20.0 ],
-									"style" : "",
+									"patching_rect" : [ 21.0, 101.930663999999993, 600.0, 20.0 ],
 									"text" : "Append an OSC address to every OSC address in a bundle"
 								}
 
@@ -288,7 +281,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 21.0, 12.930664, 600.0, 87.0 ],
-									"style" : "",
 									"text" : "o.append"
 								}
 
@@ -303,8 +295,7 @@
 									"numoutlets" : 3,
 									"outlettype" : [ "int", "", "" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 506.0, 402.930664, 132.0, 22.0 ],
-									"style" : ""
+									"patching_rect" : [ 506.0, 402.930663999999979, 132.0, 22.0 ]
 								}
 
 							}
@@ -318,8 +309,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 506.0, 466.930664, 53.0, 22.0 ],
-									"style" : "",
+									"patching_rect" : [ 506.0, 466.930663999999979, 53.0, 22.0 ],
 									"text" : "pcontrol"
 								}
 
@@ -334,8 +324,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 506.0, 442.930664, 138.0, 22.0 ],
-									"style" : "",
+									"patching_rect" : [ 506.0, 442.930663999999979, 138.0, 22.0 ],
 									"text" : "sprintf load %s.maxhelp"
 								}
 
@@ -413,11 +402,9 @@
 						"description" : "",
 						"digest" : "",
 						"globalpatchername" : "",
-						"style" : "",
 						"tags" : ""
 					}
 ,
-					"style" : "",
 					"text" : "p basic"
 				}
 
@@ -426,8 +413,8 @@
 		"lines" : [  ],
 		"dependency_cache" : [ 			{
 				"name" : "o.helpfilehelper.maxpat",
-				"bootpath" : "~/Documents/Max 7/Packages/CNMAT-odot/patchers/utils",
-				"patcherrelativepath" : "../../../Max 7/Packages/CNMAT-odot/patchers/utils",
+				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/patchers/utils",
+				"patcherrelativepath" : "../patchers/utils",
 				"type" : "JSON",
 				"implicit" : 1
 			}
@@ -437,6 +424,10 @@
 			}
 , 			{
 				"name" : "o.route.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.collect.mxo",
 				"type" : "iLaX"
 			}
 , 			{

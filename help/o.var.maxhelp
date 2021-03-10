@@ -2,13 +2,14 @@
 	"patcher" : 	{
 		"fileversion" : 1,
 		"appversion" : 		{
-			"major" : 7,
-			"minor" : 3,
-			"revision" : 4,
+			"major" : 8,
+			"minor" : 1,
+			"revision" : 10,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
+		"classnamespace" : "box",
 		"rect" : [ 100.0, 100.0, 690.0, 500.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
@@ -38,6 +39,7 @@
 		"subpatcher_template" : "",
 		"showrootpatcherontab" : 0,
 		"showontab" : 0,
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
 					"id" : "obj-19",
@@ -47,13 +49,14 @@
 					"patcher" : 					{
 						"fileversion" : 1,
 						"appversion" : 						{
-							"major" : 7,
-							"minor" : 3,
-							"revision" : 4,
+							"major" : 8,
+							"minor" : 1,
+							"revision" : 10,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
 ,
+						"classnamespace" : "box",
 						"rect" : [ 0.0, 26.0, 690.0, 474.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
@@ -82,6 +85,7 @@
 						"style" : "",
 						"subpatcher_template" : "",
 						"showontab" : 1,
+						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
 									"data" : [ 593, "", "IBkSG0fBZn....PCIgDQRA...zF....LHX....vFnS+e....DLmPIQEBHf.B7g.YHB..BfPRDEDU3wY6bEsiCCBCKLc+++xbOwItcqkVHN1oGVZZRSCWZbLgNfUp0Z01HU3K1cfMLqTJC+N8dqOJZ2kjQs0Cy7Sk2qDqaeuV6esBIWssWky6bs9Oy6qO8gH.RtmAn5O2k2Yb0SWSalKVuE2KffyYwrIBm0++DmmJZpDLx.NpFFBG8epo4IVovKR7deHaImPEMTPsfLpYfdDfKZQ31Tv8FIBwoolyvSDsKyLhCOxxcftdVDIngIZnCNLRBXk3QchHOsZQQUFHTQSsZaqzeXlvQeJ+Qdyi7ZEYBY3hlm2brpqwdXc5NMy3GDVEQOrOEQSgZay1GTHASBmlY3CFn3mQBHMQyqa1HqqofKyLxNMEd.4U.qg4kY3wHwrKfqJftn4gaajHfHfybxTzEMD3ouzORHZYq1F6GYQBQKRb2.thaMAYDsUcaG0d0csy.YDMEghtLyDSzxVsMVPJQyLeEtUbJp5xLavlUMaY5n1bndBO5e+xogbsthpsHfJ2KGdpY73hfjiQbGc6tB7lix9jflOH2DQ1XL1hVBwVzRH1hVBwVzRH1hVBws+KoX0mPXzuH.5spcV4um2ScZ0Z8mWdidNQehZP0+QFaNi6gCOVJkTtmAabiLgqEWP7O1P+6uC5G0ITBWi6mxgtnGCEMTCAzPV2bosQfXrpBzVZldtQu6oxF+i3b+CFmP7MQ+TMlEbQ3RG.....IUjSD4pPfIH" ],
@@ -91,7 +95,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "jit_matrix" ],
-									"patching_rect" : [ 509.5, 122.791992, 109.0, 48.0 ]
+									"patching_rect" : [ 509.5, 122.791991999999993, 109.0, 48.0 ]
 								}
 
 							}
@@ -105,7 +109,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 217.0, 417.930664, 97.0, 24.0 ],
+									"patching_rect" : [ 217.0, 417.930663999999979, 97.0, 24.0 ],
 									"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 28, 47, 102, 111, 111, 0, 0, 0, 0, 44, 105, 105, 105, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 2, 0, 0, 0, 3 ],
 									"saved_bundle_length" : 48,
 									"text" : "/foo : [1, 2, 3]",
@@ -123,7 +127,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 199.0, 373.930664, 97.0, 24.0 ],
+									"patching_rect" : [ 199.0, 373.930663999999979, 97.0, 24.0 ],
 									"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 28, 47, 98, 97, 114, 0, 0, 0, 0, 44, 105, 105, 105, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 5, 0, 0, 0, 6 ],
 									"saved_bundle_length" : 48,
 									"text" : "/bar : [4, 5, 6]",
@@ -140,7 +144,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 199.0, 512.930664, 150.0, 34.0 ],
+									"patching_rect" : [ 199.0, 512.930663999999979, 150.0, 34.0 ],
 									"text" : "/bar : [4, 5, 6]"
 								}
 
@@ -153,8 +157,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 50.0, 373.930664, 115.0, 20.0 ],
-									"style" : "",
+									"patching_rect" : [ 50.0, 373.930663999999979, 115.0, 20.0 ],
 									"text" : "bang causes output"
 								}
 
@@ -167,8 +170,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 322.0, 417.930664, 233.0, 20.0 ],
-									"style" : "",
+									"patching_rect" : [ 322.0, 417.930663999999979, 233.0, 20.0 ],
 									"text" : "right inlet stores the bundle without output"
 								}
 
@@ -181,8 +183,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 322.0, 373.930664, 248.0, 20.0 ],
-									"style" : "",
+									"patching_rect" : [ 322.0, 373.930663999999979, 248.0, 20.0 ],
 									"text" : "left inlet stores and causes immediate output"
 								}
 
@@ -194,8 +195,8 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "bang" ],
-									"patching_rect" : [ 163.0, 373.930664, 20.0, 20.0 ],
-									"style" : ""
+									"parameter_enable" : 0,
+									"patching_rect" : [ 163.0, 373.930663999999979, 20.0, 20.0 ]
 								}
 
 							}
@@ -208,8 +209,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "FullPacket" ],
-									"patching_rect" : [ 199.0, 464.930664, 37.0, 22.0 ],
-									"style" : "",
+									"patching_rect" : [ 199.0, 464.930663999999979, 37.0, 22.0 ],
 									"text" : "o.var"
 								}
 
@@ -222,8 +222,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 530.5, 504.930664, 150.0, 20.0 ],
-									"style" : "",
+									"patching_rect" : [ 530.5, 504.930663999999979, 150.0, 20.0 ],
 									"text" : "see also:"
 								}
 
@@ -238,8 +237,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 4,
 									"outlettype" : [ "", "", "", "clear" ],
-									"patching_rect" : [ 509.5, 340.930664, 153.0, 22.0 ],
-									"style" : "",
+									"patching_rect" : [ 509.5, 340.930663999999979, 153.0, 22.0 ],
 									"text" : "o.helpfilehelper @obj o.var"
 								}
 
@@ -253,8 +251,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 56.0, 244.930664, 600.0, 47.0 ],
-									"style" : "",
+									"patching_rect" : [ 56.0, 244.930664000000007, 600.0, 47.0 ],
 									"text" : "o.var copies an OSC packet and stores it for later use.  Since FullPacket messages are references to data stored in memory, objects wishing to store a packet must make a copy of it rather than just save the FullPacket message.  Use o.var or o.message to store a packet, not zl reg or any other normal Max object."
 								}
 
@@ -267,8 +264,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 56.0, 196.930664, 600.0, 20.0 ],
-									"style" : "",
+									"patching_rect" : [ 56.0, 196.930664000000007, 600.0, 20.0 ],
 									"text" : "Store a bundle and bang it out later"
 								}
 
@@ -281,8 +277,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 56.0, 107.930664, 600.0, 87.0 ],
-									"style" : "",
+									"patching_rect" : [ 56.0, 107.930663999999993, 600.0, 87.0 ],
 									"text" : "o.var"
 								}
 
@@ -297,8 +292,7 @@
 									"numoutlets" : 3,
 									"outlettype" : [ "int", "", "" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 530.5, 526.930664, 132.0, 22.0 ],
-									"style" : ""
+									"patching_rect" : [ 530.5, 526.930663999999979, 132.0, 22.0 ]
 								}
 
 							}
@@ -312,8 +306,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 530.5, 585.930664, 53.0, 22.0 ],
-									"style" : "",
+									"patching_rect" : [ 530.5, 585.930663999999979, 53.0, 22.0 ],
 									"text" : "pcontrol"
 								}
 
@@ -328,8 +321,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 530.5, 561.930664, 138.0, 22.0 ],
-									"style" : "",
+									"patching_rect" : [ 530.5, 561.930663999999979, 138.0, 22.0 ],
 									"text" : "sprintf load %s.maxhelp"
 								}
 
@@ -345,13 +337,14 @@
 									"patcher" : 									{
 										"fileversion" : 1,
 										"appversion" : 										{
-											"major" : 7,
-											"minor" : 3,
-											"revision" : 4,
+											"major" : 8,
+											"minor" : 1,
+											"revision" : 10,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
 ,
+										"classnamespace" : "box",
 										"rect" : [ 0.0, 26.0, 690.0, 519.0 ],
 										"bglocked" : 0,
 										"openinpresentation" : 0,
@@ -380,6 +373,7 @@
 										"style" : "",
 										"subpatcher_template" : "",
 										"showontab" : 0,
+										"assistshowspatchername" : 0,
 										"boxes" : [ 											{
 												"box" : 												{
 													"fontface" : 0,
@@ -409,7 +403,6 @@
 													"numinlets" : 1,
 													"numoutlets" : 0,
 													"patching_rect" : [ 110.0, 227.0, 426.0, 47.0 ],
-													"style" : "",
 													"text" : "This will work fine, but any object below zl reg that tries to access the data stored at the address contained in the FullPacket message will find junk there and could possibly cause Max to crash!"
 												}
 
@@ -424,7 +417,6 @@
 													"numinlets" : 1,
 													"numoutlets" : 0,
 													"patching_rect" : [ 110.0, 152.0, 416.0, 60.0 ],
-													"style" : "",
 													"text" : "The FullPacket message that o.message and the other odot objects send around is a reference to data stored in memory.  Any object wishing to store that OSC bundle for later use must make a copy of the data at that memory location, not just store the FullPacket message.  "
 												}
 
@@ -436,8 +428,8 @@
 													"numinlets" : 1,
 													"numoutlets" : 1,
 													"outlettype" : [ "bang" ],
-													"patching_rect" : [ 45.0, 163.0, 20.0, 20.0 ],
-													"style" : ""
+													"parameter_enable" : 0,
+													"patching_rect" : [ 45.0, 163.0, 20.0, 20.0 ]
 												}
 
 											}
@@ -451,7 +443,6 @@
 													"numoutlets" : 2,
 													"outlettype" : [ "", "" ],
 													"patching_rect" : [ 45.0, 215.0, 40.0, 20.0 ],
-													"style" : "",
 													"text" : "zl reg"
 												}
 
@@ -474,16 +465,14 @@
  ]
 									}
 ,
-									"patching_rect" : [ 530.5, 477.930664, 154.0, 22.0 ],
+									"patching_rect" : [ 530.5, 477.930663999999979, 154.0, 22.0 ],
 									"saved_object_attributes" : 									{
 										"description" : "",
 										"digest" : "",
 										"globalpatchername" : "",
-										"style" : "",
 										"tags" : ""
 									}
 ,
-									"style" : "",
 									"text" : "p \"why can't I use [zl reg]?\""
 								}
 
@@ -571,17 +560,14 @@
  ]
 					}
 ,
-					"patching_rect" : [ 73.0, 64.069336, 49.0, 22.0 ],
-					"presentation_rect" : [ 73.0, 64.069336, 0.0, 0.0 ],
+					"patching_rect" : [ 73.0, 64.069336000000007, 49.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
 						"globalpatchername" : "",
-						"style" : "",
 						"tags" : ""
 					}
 ,
-					"style" : "",
 					"text" : "p ?"
 				}
 
@@ -595,13 +581,14 @@
 					"patcher" : 					{
 						"fileversion" : 1,
 						"appversion" : 						{
-							"major" : 7,
-							"minor" : 3,
-							"revision" : 4,
+							"major" : 8,
+							"minor" : 1,
+							"revision" : 10,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
 ,
+						"classnamespace" : "box",
 						"rect" : [ 100.0, 126.0, 690.0, 474.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
@@ -630,6 +617,7 @@
 						"style" : "",
 						"subpatcher_template" : "",
 						"showontab" : 1,
+						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
 									"data" : [ 593, "", "IBkSG0fBZn....PCIgDQRA...zF....LHX....vFnS+e....DLmPIQEBHf.B7g.YHB..BfPRDEDU3wY6bEsiCCBCKLc+++xbOwItcqkVHN1oGVZZRSCWZbLgNfUp0Z01HU3K1cfMLqTJC+N8dqOJZ2kjQs0Cy7Sk2qDqaeuV6esBIWssWky6bs9Oy6qO8gH.RtmAn5O2k2Yb0SWSalKVuE2KffyYwrIBm0++DmmJZpDLx.NpFFBG8epo4IVovKR7deHaImPEMTPsfLpYfdDfKZQ31Tv8FIBwoolyvSDsKyLhCOxxcftdVDIngIZnCNLRBXk3QchHOsZQQUFHTQSsZaqzeXlvQeJ+Qdyi7ZEYBY3hlm2brpqwdXc5NMy3GDVEQOrOEQSgZay1GTHASBmlY3CFn3mQBHMQyqa1HqqofKyLxNMEd.4U.qg4kY3wHwrKfqJftn4gaajHfHfybxTzEMD3ouzORHZYq1F6GYQBQKRb2.thaMAYDsUcaG0d0csy.YDMEghtLyDSzxVsMVPJQyLeEtUbJp5xLavlUMaY5n1bndBO5e+xogbsthpsHfJ2KGdpY73hfjiQbGc6tB7lix9jflOH2DQ1XL1hVBwVzRH1hVBwVzRH1hVBws+KoX0mPXzuH.5spcV4um2ScZ0Z8mWdidNQehZP0+QFaNi6gCOVJkTtmAabiLgqEWP7O1P+6uC5G0ITBWi6mxgtnGCEMTCAzPV2bosQfXrpBzVZldtQu6oxF+i3b+CFmP7MQ+TMlEbQ3RG.....IUjSD4pPfIH" ],
@@ -646,14 +634,12 @@
 , 							{
 								"box" : 								{
 									"fontface" : 0,
-									"fontname" : "Arial",
-									"fontsize" : 12.0,
 									"id" : "obj-15",
 									"maxclass" : "o.compose",
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 193.0, 317.930664, 97.0, 24.0 ],
+									"patching_rect" : [ 193.0, 317.930663999999979, 126.0, 23.0 ],
 									"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 28, 47, 102, 111, 111, 0, 0, 0, 0, 44, 105, 105, 105, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 2, 0, 0, 0, 3 ],
 									"saved_bundle_length" : 48,
 									"text" : "/foo : [1, 2, 3]",
@@ -664,14 +650,12 @@
 , 							{
 								"box" : 								{
 									"fontface" : 0,
-									"fontname" : "Arial",
-									"fontsize" : 12.0,
 									"id" : "obj-13",
 									"maxclass" : "o.compose",
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 175.0, 273.930664, 97.0, 24.0 ],
+									"patching_rect" : [ 175.0, 273.930663999999979, 126.0, 23.0 ],
 									"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 28, 47, 98, 97, 114, 0, 0, 0, 0, 44, 105, 105, 105, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 5, 0, 0, 0, 6 ],
 									"saved_bundle_length" : 48,
 									"text" : "/bar : [4, 5, 6]",
@@ -682,13 +666,12 @@
 , 							{
 								"box" : 								{
 									"fontface" : 0,
-									"fontsize" : 12.0,
 									"id" : "obj-11",
 									"maxclass" : "o.display",
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 175.0, 412.930664, 150.0, 34.0 ]
+									"patching_rect" : [ 175.0, 412.930663999999979, 142.0, 33.0 ]
 								}
 
 							}
@@ -700,8 +683,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 26.0, 273.930664, 115.0, 20.0 ],
-									"style" : "",
+									"patching_rect" : [ 26.0, 273.930663999999979, 115.0, 20.0 ],
 									"text" : "bang causes output"
 								}
 
@@ -714,8 +696,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 298.0, 317.930664, 233.0, 20.0 ],
-									"style" : "",
+									"patching_rect" : [ 328.0, 317.930663999999979, 233.0, 20.0 ],
 									"text" : "right inlet stores the bundle without output"
 								}
 
@@ -728,8 +709,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 298.0, 273.930664, 248.0, 20.0 ],
-									"style" : "",
+									"patching_rect" : [ 310.5, 273.930663999999979, 248.0, 20.0 ],
 									"text" : "left inlet stores and causes immediate output"
 								}
 
@@ -741,8 +721,8 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "bang" ],
-									"patching_rect" : [ 139.0, 273.930664, 20.0, 20.0 ],
-									"style" : ""
+									"parameter_enable" : 0,
+									"patching_rect" : [ 139.0, 273.930663999999979, 20.0, 20.0 ]
 								}
 
 							}
@@ -755,8 +735,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "FullPacket" ],
-									"patching_rect" : [ 175.0, 364.930664, 37.0, 22.0 ],
-									"style" : "",
+									"patching_rect" : [ 175.0, 364.930663999999979, 37.0, 22.0 ],
 									"text" : "o.var"
 								}
 
@@ -769,8 +748,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 514.5, 390.930664, 150.0, 20.0 ],
-									"style" : "",
+									"patching_rect" : [ 514.5, 390.930663999999979, 150.0, 20.0 ],
 									"text" : "see also:"
 								}
 
@@ -785,8 +763,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 4,
 									"outlettype" : [ "", "", "", "clear" ],
-									"patching_rect" : [ 485.5, 240.930664, 153.0, 22.0 ],
-									"style" : "",
+									"patching_rect" : [ 485.5, 240.930664000000007, 153.0, 22.0 ],
 									"text" : "o.helpfilehelper @obj o.var"
 								}
 
@@ -800,8 +777,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 32.0, 144.930664, 600.0, 47.0 ],
-									"style" : "",
+									"patching_rect" : [ 32.0, 144.930664000000007, 600.0, 47.0 ],
 									"text" : "o.var copies an OSC packet and stores it for later use.  Since FullPacket messages are references to data stored in memory, objects wishing to store a packet must make a copy of it rather than just save the FullPacket message.  Use o.var or o.message to store a packet, not zl reg or any other normal Max object."
 								}
 
@@ -814,8 +790,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 32.0, 96.930664, 600.0, 20.0 ],
-									"style" : "",
+									"patching_rect" : [ 32.0, 96.930663999999993, 600.0, 20.0 ],
 									"text" : "Store a bundle and bang it out later"
 								}
 
@@ -829,7 +804,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 32.0, 7.930664, 600.0, 87.0 ],
-									"style" : "",
 									"text" : "o.var"
 								}
 
@@ -844,8 +818,7 @@
 									"numoutlets" : 3,
 									"outlettype" : [ "int", "", "" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 514.5, 412.930664, 132.0, 22.0 ],
-									"style" : ""
+									"patching_rect" : [ 514.5, 412.930663999999979, 132.0, 22.0 ]
 								}
 
 							}
@@ -859,8 +832,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 514.5, 471.930664, 53.0, 22.0 ],
-									"style" : "",
+									"patching_rect" : [ 514.5, 471.930663999999979, 53.0, 22.0 ],
 									"text" : "pcontrol"
 								}
 
@@ -875,8 +847,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 514.5, 447.930664, 138.0, 22.0 ],
-									"style" : "",
+									"patching_rect" : [ 514.5, 447.930663999999979, 138.0, 22.0 ],
 									"text" : "sprintf load %s.maxhelp"
 								}
 
@@ -892,14 +863,15 @@
 									"patcher" : 									{
 										"fileversion" : 1,
 										"appversion" : 										{
-											"major" : 7,
-											"minor" : 3,
-											"revision" : 4,
+											"major" : 8,
+											"minor" : 1,
+											"revision" : 10,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
 ,
-										"rect" : [ 0.0, 26.0, 690.0, 519.0 ],
+										"classnamespace" : "box",
+										"rect" : [ 34.0, 79.0, 567.0, 336.0 ],
 										"bglocked" : 0,
 										"openinpresentation" : 0,
 										"default_fontsize" : 12.0,
@@ -927,18 +899,17 @@
 										"style" : "",
 										"subpatcher_template" : "",
 										"showontab" : 0,
+										"assistshowspatchername" : 0,
 										"boxes" : [ 											{
 												"box" : 												{
 													"fontface" : 0,
-													"fontname" : "Arial",
-													"fontsize" : 12.0,
 													"id" : "obj-3",
 													"linecount" : 2,
 													"maxclass" : "o.compose",
 													"numinlets" : 2,
 													"numoutlets" : 1,
 													"outlettype" : [ "" ],
-													"patching_rect" : [ 66.0, 104.0, 150.0, 37.0 ],
+													"patching_rect" : [ 66.0, 104.0, 199.0, 36.0 ],
 													"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 28, 47, 102, 111, 111, 0, 0, 0, 0, 44, 105, 105, 105, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 2, 0, 0, 0, 3, 0, 0, 0, 32, 47, 98, 97, 114, 0, 0, 0, 0, 44, 115, 115, 115, 115, 0, 0, 0, 97, 0, 0, 0, 114, 0, 0, 0, 115, 0, 0, 0, 116, 0, 0, 0 ],
 													"saved_bundle_length" : 84,
 													"text" : "/foo : [1, 2, 3],\n/bar : [\"a\", \"r\", \"s\", \"t\"]",
@@ -956,7 +927,6 @@
 													"numinlets" : 1,
 													"numoutlets" : 0,
 													"patching_rect" : [ 110.0, 227.0, 426.0, 47.0 ],
-													"style" : "",
 													"text" : "This will work fine, but any object below zl reg that tries to access the data stored at the address contained in the FullPacket message will find junk there and could possibly cause Max to crash!"
 												}
 
@@ -971,7 +941,6 @@
 													"numinlets" : 1,
 													"numoutlets" : 0,
 													"patching_rect" : [ 110.0, 152.0, 416.0, 60.0 ],
-													"style" : "",
 													"text" : "The FullPacket message that o.message and the other odot objects send around is a reference to data stored in memory.  Any object wishing to store that OSC bundle for later use must make a copy of the data at that memory location, not just store the FullPacket message.  "
 												}
 
@@ -983,8 +952,8 @@
 													"numinlets" : 1,
 													"numoutlets" : 1,
 													"outlettype" : [ "bang" ],
-													"patching_rect" : [ 45.0, 163.0, 20.0, 20.0 ],
-													"style" : ""
+													"parameter_enable" : 0,
+													"patching_rect" : [ 45.0, 163.0, 20.0, 20.0 ]
 												}
 
 											}
@@ -997,8 +966,7 @@
 													"numinlets" : 2,
 													"numoutlets" : 2,
 													"outlettype" : [ "", "" ],
-													"patching_rect" : [ 45.0, 215.0, 40.0, 20.0 ],
-													"style" : "",
+													"patching_rect" : [ 45.0, 215.0, 40.0, 22.0 ],
 													"text" : "zl reg"
 												}
 
@@ -1021,16 +989,14 @@
  ]
 									}
 ,
-									"patching_rect" : [ 357.5, 349.930664, 154.0, 22.0 ],
+									"patching_rect" : [ 357.5, 349.930663999999979, 154.0, 22.0 ],
 									"saved_object_attributes" : 									{
 										"description" : "",
 										"digest" : "",
 										"globalpatchername" : "",
-										"style" : "",
 										"tags" : ""
 									}
 ,
-									"style" : "",
 									"text" : "p \"why can't I use [zl reg]?\""
 								}
 
@@ -1123,11 +1089,9 @@
 						"description" : "",
 						"digest" : "",
 						"globalpatchername" : "",
-						"style" : "",
 						"tags" : ""
 					}
 ,
-					"style" : "",
 					"text" : "p basic"
 				}
 
@@ -1136,8 +1100,8 @@
 		"lines" : [  ],
 		"dependency_cache" : [ 			{
 				"name" : "o.helpfilehelper.maxpat",
-				"bootpath" : "~/Documents/Max 7/Packages/CNMAT-odot/patchers/utils",
-				"patcherrelativepath" : "../../../Max 7/Packages/CNMAT-odot/patchers/utils",
+				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/patchers/utils",
+				"patcherrelativepath" : "../patchers/utils",
 				"type" : "JSON",
 				"implicit" : 1
 			}
@@ -1151,6 +1115,10 @@
 			}
 , 			{
 				"name" : "o.route.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.collect.mxo",
 				"type" : "iLaX"
 			}
 , 			{
