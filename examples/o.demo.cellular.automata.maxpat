@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 8,
+			"revision" : 10,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -166,13 +166,12 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-10",
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 44.0, 510.5, 268.0, 31.0 ],
+					"patching_rect" : [ 44.0, 510.5, 269.0, 31.0 ],
 					"text" : "/row = map(lambda(t, t ? 1 : 0), /cell)"
 				}
 
@@ -206,14 +205,13 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-4",
 					"linecount" : 3,
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 44.0, 94.0, 308.0, 56.0 ],
+					"patching_rect" : [ 44.0, 94.0, 309.0, 57.0 ],
 					"text" : "/cell = list( nfill(30, 0), 1, nfill(30, 0)),\n/ruleset = list(0, 1, 0, 1, 1, 0, 0, 0),\n/max_generations = 255"
 				}
 
@@ -221,14 +219,13 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-9",
 					"linecount" : 3,
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 44.0, 391.0, 136.0, 56.0 ],
+					"patching_rect" : [ 44.0, 391.0, 136.0, 57.0 ],
 					"text" : "/cell = /new,\n/currentPoint = 1, \n/generation++"
 				}
 
@@ -236,14 +233,13 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-8",
 					"linecount" : 5,
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 44.0, 265.5, 413.0, 81.0 ],
+					"patching_rect" : [ 44.0, 265.5, 414.0, 83.0 ],
 					"text" : "/triad = /cell[[aseq(/currentPoint - 1, /currentPoint + 1)]],\n/index = /triad[[2]] + (2 * /triad[[1]]) + (4 * /triad[[0]]),\nassign_to_index(/new, /currentPoint, /ruleset[[/index]]),\n\n/currentPoint += 1"
 				}
 
@@ -251,14 +247,13 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-7",
 					"linecount" : 3,
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 44.0, 183.5, 222.0, 56.0 ],
+					"patching_rect" : [ 44.0, 183.5, 222.0, 57.0 ],
 					"text" : "/new = nfill(length(/cell), 0), \n/generation = 0, \n/currentPoint = 1"
 				}
 

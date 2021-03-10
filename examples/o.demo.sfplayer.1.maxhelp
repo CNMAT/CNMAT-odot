@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 8,
+			"revision" : 10,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -132,15 +132,14 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 10.0,
 					"id" : "obj-5",
-					"linecount" : 29,
+					"linecount" : 9,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 153.0, 301.0, 246.0, 349.0 ],
-					"text" : "/6/time/relative : 0.,\n/6/sfdur/ms,\n/6/voice : 6,\n/6/time/absolute : 0.,\n/5/time/relative : 0.,\n/5/sfdur/ms,\n/5/voice : 5,\n/5/time/absolute : 0.,\n/4/time/relative : 0.,\n/4/sfdur/ms,\n/4/voice : 4,\n/4/time/absolute : 0.,\n/3/time/relative : 0.,\n/3/sfdur/ms,\n/3/voice : 3,\n/3/time/absolute : 0.,\n/2/time/relative : 0.,\n/2/sfdur/ms,\n/2/voice : 2,\n/2/time/absolute : 0.,\n/1/time/relative : 0.,\n/1/sfdur/ms,\n/1/voice : 1,\n/1/time/absolute : 0.,\n/1/bufname : \"buf\",\n/1/transport/play : \"bang\",\n/1/func : \"lambda(t, /cos =  cos(t * 2. * pi()))\",\n/1/cos : 1."
+					"patching_rect" : [ 153.0, 301.0, 246.0, 136.0 ],
+					"text" : "/1/time/relative : 0.,\n/1/sfdur/ms : 0.,\n/1/voice : 1,\n/1/bufname : \"buf\",\n/1/transport/play : \"bang\",\n/1/func : \"lambda(t, /cos =  cos(t * 2. * pi()))\",\n/1/time/absolute : 0.,\n/1/cos : 1."
 				}
 
 			}
@@ -186,14 +185,13 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-42",
 					"linecount" : 3,
 					"maxclass" : "o.compose",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 39.0, 22.0, 359.0, 51.0 ],
+					"patching_rect" : [ 39.0, 22.0, 332.0, 49.0 ],
 					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 98, 117, 102, 110, 97, 109, 101, 0, 0, 0, 0, 44, 115, 0, 0, 98, 117, 102, 0, 0, 0, 0, 28, 47, 116, 114, 97, 110, 115, 112, 111, 114, 116, 47, 112, 108, 97, 121, 0, 44, 115, 0, 0, 98, 97, 110, 103, 0, 0, 0, 0, 0, 0, 0, 52, 47, 102, 117, 110, 99, 0, 0, 0, 44, 115, 0, 0, 108, 97, 109, 98, 100, 97, 40, 116, 44, 32, 47, 99, 111, 115, 32, 61, 32, 32, 99, 111, 115, 40, 116, 32, 42, 32, 50, 46, 32, 42, 32, 112, 105, 40, 41, 41, 41, 0, 0, 0 ],
 					"saved_bundle_length" : 128,
 					"text" : "/bufname : \"buf\",\n/transport/play : \"bang\",\n/func : \"lambda(t, /cos =  cos(t * 2. * pi()))\""
@@ -219,8 +217,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "float", "bang" ],
-					"patching_rect" : [ 506.0, 109.0, 66.0, 22.0 ],
-					"text" : "buffer~ buf"
+					"patching_rect" : [ 506.0, 109.0, 135.0, 22.0 ],
+					"text" : "buffer~ buf cherokee.aif"
 				}
 
 			}

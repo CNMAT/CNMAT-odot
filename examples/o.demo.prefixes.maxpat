@@ -4,13 +4,13 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 8,
+			"revision" : 10,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 18.0, 54.0, 1069.0, 946.0 ],
+		"rect" : [ 24.0, 70.0, 1069.0, 674.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -45,7 +45,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 966.0, 912.0, 69.0, 20.0 ],
+					"patching_rect" : [ 966.0, 642.0, 69.0, 20.0 ],
 					"text" : "scroll down"
 				}
 
@@ -57,7 +57,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 447.0, 1033.0, 380.0, 47.0 ],
+					"patching_rect" : [ 166.0, 1015.0, 380.0, 47.0 ],
 					"text" : "In these two subpatches, we compute the derivatives of some of the values, and then use that derivative to determine what action, if any, the button may have undergone."
 				}
 
@@ -74,7 +74,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 1,
-							"revision" : 8,
+							"revision" : 10,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -216,7 +216,7 @@
  ]
 					}
 ,
-					"patching_rect" : [ 19.0, 1068.0, 82.0, 22.0 ],
+					"patching_rect" : [ 19.0, 1044.0, 82.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
@@ -240,7 +240,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 1,
-							"revision" : 8,
+							"revision" : 10,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -291,7 +291,7 @@
 									"fontface" : 0,
 									"fontsize" : 12.0,
 									"id" : "obj-10",
-									"linecount" : 3,
+									"linecount" : 4,
 									"maxclass" : "o.expr.codebox",
 									"numinlets" : 1,
 									"numoutlets" : 2,
@@ -382,7 +382,7 @@
  ]
 					}
 ,
-					"patching_rect" : [ 19.0, 1033.0, 126.0, 22.0 ],
+					"patching_rect" : [ 19.0, 1015.0, 126.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
@@ -421,15 +421,14 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-35",
 					"linecount" : 11,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 19.0, 837.0, 421.0, 170.0 ],
-					"text" : "/self : \"/a\",\n/a/time/local : 2021-01-16T09:49:11.976442Z,\n/a/input : 0.108518,\n/a/was/input : 0.204745,\n/a/button : 0,\n/a/was/button : 1,\n/a/counter : 4875,\n/a/was/counter : 4874,\n/a/time/remote : 2021-01-16T09:49:11.976426Z,\n/a/was/time/remote : 2021-01-16T09:49:11.971488Z,\n/a/was/time/local : 2021-01-16T09:49:11.971510Z"
+					"patching_rect" : [ 19.0, 837.0, 416.0, 161.0 ],
+					"text" : "/self : \"/a\",\n/a/time/local : 2021-03-10T04:30:26.142977Z,\n/a/input : -0.576459,\n/a/was/input : -0.576459,\n/a/button : 0,\n/a/was/button : 0,\n/a/counter : 133629,\n/a/was/counter : 133628,\n/a/time/remote : 2021-03-10T04:30:26.142939Z,\n/a/was/time/remote : 2021-03-10T04:30:26.137914Z,\n/a/was/time/local : 2021-03-10T04:30:26.137954Z"
 				}
 
 			}
@@ -496,15 +495,14 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-29",
 					"linecount" : 3,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 19.0, 466.0, 506.0, 61.0 ],
-					"text" : "/a/dev : [0.108518, 0, 4875, 2021-01-16T09:49:11.976426Z],\n/self : \"/a\",\n/a/time/local : 2021-01-16T09:49:11.976442Z"
+					"patching_rect" : [ 19.0, 466.0, 465.0, 59.0 ],
+					"text" : "/a/dev : [-0.854918, 0, 134007, 2021-03-10T04:30:28.032842Z],\n/self : \"/a\",\n/a/time/local : 2021-03-10T04:30:28.032882Z"
 				}
 
 			}
@@ -523,29 +521,27 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-27",
 					"linecount" : 3,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 19.0, 332.0, 506.0, 61.0 ],
-					"text" : "/b/dev : [0.83394, 0, 4875, 2021-01-16T09:49:11.976090Z],\n/time/local : 2021-01-16T09:49:11.976135Z,\n/self : \"/b\""
+					"patching_rect" : [ 19.0, 332.0, 465.0, 59.0 ],
+					"text" : "/a/dev : [-0.854918, 0, 134007, 2021-03-10T04:30:28.032842Z],\n/time/local : 2021-03-10T04:30:28.032882Z,\n/self : \"/a\""
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-26",
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 19.0, 182.0, 506.0, 34.0 ],
-					"text" : "/a/dev : [0.204745, 1, 4874, 2021-01-16T09:49:11.971488Z]"
+					"patching_rect" : [ 19.0, 182.0, 465.0, 33.0 ],
+					"text" : "/a/dev : [-0.854918, 0, 134007, 2021-03-10T04:30:28.032842Z]"
 				}
 
 			}
@@ -556,7 +552,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 534.0, 270.0, 281.0, 60.0 ],
+					"patching_rect" : [ 605.0, 270.0, 281.0, 60.0 ],
 					"text" : "Here, we take the unique prefix part of the address and assign it as a string to an address called /self. This allows us to programmatically introspect the bundle to find out what its prefix is."
 				}
 
@@ -600,14 +596,13 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-20",
 					"linecount" : 2,
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 19.0, 402.0, 399.0, 46.0 ],
+					"patching_rect" : [ 19.0, 402.0, 295.0, 44.0 ],
 					"text" : "assign(/self + \"/time/local\", /time/local),\ndelete(/time/local)"
 				}
 
@@ -651,14 +646,13 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-8",
 					"linecount" : 8,
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 19.0, 677.0, 630.0, 127.0 ],
+					"patching_rect" : [ 19.0, 677.0, 580.0, 121.0 ],
 					"text" : "map(lambda([address, value, was_value], \n           assign(/self + address, value),\n           assign(/self + \"/was\" + address, was_value)), \n    [\"/input\", \"/button\", \"/counter\", \"/time/remote\"],\n    value(/self + \"/dev\"),\n    value(\"/was\" + /self + \"/dev\")),\nassign(/self + \"/was/time/local\", value(\"/was\" + /self + \"/time/local\")),\nmap(delete, [\"/was\" + /self + \"/dev\", \"/was\" + /self + \"/time/local\", /self + \"/dev\"])"
 				}
 
@@ -678,29 +672,26 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-4",
 					"linecount" : 15,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 19.0, 1144.0, 421.0, 224.0 ],
-					"text" : "/b/time/local : 2021-01-16T09:49:08.596144Z,\n/b/input : 0.995892,\n/b/was/input : 0.995892,\n/b/button : 0,\n/b/was/button : 0,\n/b/counter : 4199,\n/b/was/counter : 4198,\n/b/time/remote : 2021-01-16T09:49:08.596090Z,\n/b/was/time/remote : 2021-01-16T09:49:08.591154Z,\n/b/was/time/local : 2021-01-16T09:49:08.591204Z,\n/b/d/input : 0.,\n/b/d/button : 0,\n/b/d/counter : 1,\n/b/button/action : \"none\",\n/self : \"/b\""
+					"patching_rect" : [ 19.0, 1074.0, 387.0, 213.0 ],
+					"text" : "/a/time/local : 2021-03-10T04:30:06.108204Z,\n/a/input : 0.336263,\n/a/was/input : 0.336263,\n/a/button : 1,\n/a/was/button : 0,\n/a/counter : 129622,\n/a/was/counter : 129621,\n/a/time/remote : 2021-03-10T04:30:06.108168Z,\n/a/was/time/remote : 2021-03-10T04:30:06.103005Z,\n/a/was/time/local : 2021-03-10T04:30:06.103044Z,\n/a/d/input : 0.,\n/a/d/button : 1,\n/a/d/counter : 1,\n/a/button/action : \"pressed\",\n/self : \"/a\""
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-3",
-					"linecount" : 2,
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 19.0, 274.0, 506.0, 45.0 ],
+					"patching_rect" : [ 19.0, 274.0, 580.0, 31.0 ],
 					"text" : "/self = \"/\" + split(\"/\", getbundlemember(match(\"/*/dev\", getaddresses()), /full))[[0]]"
 				}
 
@@ -717,7 +708,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 1,
-							"revision" : 8,
+							"revision" : 10,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -768,7 +759,7 @@
 									"fontface" : 0,
 									"fontsize" : 12.0,
 									"id" : "obj-36",
-									"linecount" : 2,
+									"linecount" : 3,
 									"maxclass" : "o.expr.codebox",
 									"numinlets" : 1,
 									"numoutlets" : 2,
@@ -987,7 +978,7 @@
 									"fontface" : 0,
 									"fontsize" : 12.0,
 									"id" : "obj-32",
-									"linecount" : 2,
+									"linecount" : 3,
 									"maxclass" : "o.expr.codebox",
 									"numinlets" : 1,
 									"numoutlets" : 2,

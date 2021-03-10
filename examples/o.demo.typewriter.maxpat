@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 4,
+			"revision" : 10,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -46,7 +46,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 393.0, 65.0, 58.0, 22.0 ],
+					"patching_rect" : [ 317.0, 51.0, 58.0, 22.0 ],
 					"text" : "loadbang"
 				}
 
@@ -54,14 +54,13 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-12",
 					"linecount" : 2,
 					"maxclass" : "o.compose",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 393.0, 106.0, 114.0, 38.0 ],
+					"patching_rect" : [ 317.0, 92.0, 107.0, 36.0 ],
 					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 108, 105, 110, 101, 47, 105, 100, 0, 0, 0, 0, 44, 105, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 47, 109, 97, 120, 108, 101, 110, 0, 44, 105, 0, 0, 0, 0, 0, 12 ],
 					"saved_bundle_length" : 60,
 					"text" : "/line/id : 0,\n/maxlen : 12"
@@ -76,7 +75,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 146.0, 447.0, 29.5, 22.0 ],
+					"patching_rect" : [ 70.0, 347.0, 29.5, 22.0 ],
 					"text" : "t l l"
 				}
 
@@ -89,7 +88,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 146.0, 178.0, 48.0, 22.0 ],
+					"patching_rect" : [ 70.0, 164.0, 48.0, 22.0 ],
 					"text" : "o.union"
 				}
 
@@ -103,21 +102,20 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 146.0, 497.0, 321.0, 34.0 ]
+					"patching_rect" : [ 70.0, 483.0, 321.0, 34.0 ]
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-7",
 					"linecount" : 9,
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 146.0, 250.0, 407.0, 141.0 ],
+					"patching_rect" : [ 70.0, 202.0, 375.0, 134.0 ],
 					"text" : "/linecache ??= [], \n/linecache = [/linecache, /char], \nif(length(/linecache) > /maxlen - 1, \n  progn(\n    /line/id++,\n    assign(\"/line/\" + /line/id, join(\"\", /linecache)), \n    /linecache = []\n  )\n)"
 				}
 
@@ -130,7 +128,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 146.0, 124.0, 74.0, 22.0 ],
+					"patching_rect" : [ 70.0, 110.0, 74.0, 22.0 ],
 					"text" : "o.pack /char"
 				}
 
@@ -143,7 +141,7 @@
 					"numinlets" : 3,
 					"numoutlets" : 1,
 					"outlettype" : [ "int" ],
-					"patching_rect" : [ 146.0, 89.0, 40.0, 22.0 ],
+					"patching_rect" : [ 70.0, 75.0, 40.0, 22.0 ],
 					"text" : "itoa"
 				}
 
@@ -156,7 +154,7 @@
 					"numinlets" : 0,
 					"numoutlets" : 4,
 					"outlettype" : [ "int", "int", "int", "int" ],
-					"patching_rect" : [ 146.0, 55.0, 50.5, 22.0 ],
+					"patching_rect" : [ 70.0, 41.0, 50.5, 22.0 ],
 					"text" : "key"
 				}
 
@@ -179,7 +177,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-10", 1 ],
-					"midpoints" : [ 166.0, 480.0, 453.25, 480.0, 453.25, 175.0, 184.5, 175.0 ],
+					"midpoints" : [ 90.0, 387.0, 466.25, 387.0, 466.25, 161.0, 108.5, 161.0 ],
 					"source" : [ "obj-11", 1 ]
 				}
 

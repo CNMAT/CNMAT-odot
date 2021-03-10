@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 5,
+			"revision" : 10,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -127,16 +127,14 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontname" : "Arial",
-					"fontsize" : 11.0,
 					"id" : "obj-1",
 					"linecount" : 8,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 49.0, 412.606628000000001, 167.0, 119.0 ],
-					"text" : "/was/angle : 0.,\n/was/horizontal : 437,\n/was/vertical : 593,\n/horizontal : 437,\n/vertical : 593,\n/angle : 0.,\n/angle/difference : 0.,\n/direction : \"still\"",
+					"patching_rect" : [ 49.0, 412.606628000000001, 163.0, 123.0 ],
+					"text" : "/was/angle : 0.,\n/was/horizontal : 660,\n/was/vertical : 507,\n/horizontal : 660,\n/vertical : 507,\n/angle : 0.,\n/angle/difference : 0.,\n/direction : \"still\"",
 					"textcolor" : [ 0.996078431372549, 0.996078431372549, 0.996078431372549, 1.0 ]
 				}
 
@@ -158,14 +156,13 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-9",
 					"linecount" : 2,
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 49.0, 351.276978000000042, 624.0, 43.0 ],
+					"patching_rect" : [ 49.0, 351.276978000000042, 626.0, 44.0 ],
 					"text" : "/angle/difference = /angle - /was/angle, \n/direction = /angle/difference == 0 ? still:(/angle/difference > 0 ? clockwise:anticlockwise)"
 				}
 
@@ -187,13 +184,12 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-6",
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 49.0, 227.638488999999993, 498.0, 31.0 ],
+					"patching_rect" : [ 49.0, 227.638488999999993, 481.0, 31.0 ],
 					"text" : " /angle=atan2(/vertical - /was/vertical,/horizontal - /was/horizontal )"
 				}
 
@@ -293,15 +289,15 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "o.was.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/CNMAT-odot/dev",
-				"patcherrelativepath" : "../../../../../Max 8/Packages/CNMAT-odot/dev",
+				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/dev",
+				"patcherrelativepath" : "../dev",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.righttoleft.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/CNMAT-odot/patchers/ordering",
-				"patcherrelativepath" : "../../../../../Max 8/Packages/CNMAT-odot/patchers/ordering",
+				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/patchers/ordering",
+				"patcherrelativepath" : "../patchers/ordering",
 				"type" : "JSON",
 				"implicit" : 1
 			}
@@ -334,6 +330,10 @@
 			}
 , 			{
 				"name" : "o.collect.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.compose.mxo",
 				"type" : "iLaX"
 			}
 , 			{

@@ -4,13 +4,13 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 4,
+			"revision" : 10,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 217.0, 79.0, 926.0, 787.0 ],
+		"rect" : [ 4.0, 53.0, 926.0, 787.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 14.0,
@@ -26,7 +26,7 @@
 		"toptoolbarpinned" : 0,
 		"righttoolbarpinned" : 0,
 		"bottomtoolbarpinned" : 0,
-		"toolbars_unpinned_last_save" : 0,
+		"toolbars_unpinned_last_save" : 15,
 		"tallnewobj" : 0,
 		"boxanimatetime" : 200,
 		"enablehscroll" : 1,
@@ -45,7 +45,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 573.0, 51.0, 92.0, 22.0 ],
-					"presentation_linecount" : 2,
 					"text" : "2 move slider"
 				}
 
@@ -93,15 +92,12 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-44",
-					"linecount" : 2,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 67.666666666666629, 667.999999999999886, 263.0, 48.0 ],
-					"text" : "/data : -0.153439,\n/time : 2020-07-22T01:40:08.608296Z"
+					"patching_rect" : [ 67.666666666666629, 667.999999999999886, 249.0, 33.0 ]
 				}
 
 			}
@@ -121,11 +117,11 @@
 , 			{
 				"box" : 				{
 					"id" : "obj-39",
-					"linecount" : 3,
+					"linecount" : 2,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 225.0, 31.0, 150.0, 53.0 ],
+					"patching_rect" : [ 189.0, 51.0, 213.0, 38.0 ],
 					"text" : "record and playback data with times and values integrated"
 				}
 
@@ -248,7 +244,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "FullPacket" ],
-					"patching_rect" : [ 67.666666666666629, 632.0, 81.0, 22.0 ],
+					"patching_rect" : [ 67.666666666666629, 580.0, 81.0, 22.0 ],
 					"text" : "o.route /value"
 				}
 
@@ -256,14 +252,13 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-38",
 					"linecount" : 2,
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 67.666666666666629, 529.333333333333144, 335.0, 46.0 ],
+					"patching_rect" : [ 67.666666666666629, 498.333333333333144, 309.0, 44.0 ],
 					"text" : "/time/diff = (/value./time - /time/recstart),\n/time/play = /time/play + /time/diff"
 				}
 
@@ -274,9 +269,9 @@
 					"id" : "obj-35",
 					"maxclass" : "newobj",
 					"numinlets" : 2,
-					"numoutlets" : 4,
-					"outlettype" : [ "FullPacket", "FullPacket", "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 67.666666666666629, 594.333333333333144, 130.0, 22.0 ],
+					"numoutlets" : 5,
+					"outlettype" : [ "FullPacket", "FullPacket", "FullPacket", "FullPacket", "int" ],
+					"patching_rect" : [ 67.666666666666629, 555.333333333333144, 130.0, 22.0 ],
 					"text" : "o.schedule /time/play"
 				}
 
@@ -353,7 +348,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 528.0, 403.000000000000114, 28.0, 22.0 ],
+					"patching_rect" : [ 528.0, 348.000000000000114, 28.0, 22.0 ],
 					"text" : "t l l"
 				}
 
@@ -361,14 +356,13 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-28",
 					"linecount" : 2,
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 528.0, 296.333333333333258, 277.0, 46.0 ],
+					"patching_rect" : [ 528.0, 296.333333333333258, 216.0, 44.0 ],
 					"text" : "/sequence ??= [],\n/sequence = [/sequence, /event]"
 				}
 
@@ -549,7 +543,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-27", 1 ],
-					"midpoints" : [ 546.5, 437.0, 813.25, 437.0, 813.25, 268.666666666666629, 566.5, 268.666666666666629 ],
+					"midpoints" : [ 546.5, 383.0, 813.25, 383.0, 813.25, 268.666666666666629, 566.5, 268.666666666666629 ],
 					"source" : [ "obj-40", 1 ]
 				}
 
@@ -601,15 +595,15 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "o.gather.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/CNMAT-odot/patchers/namespace",
-				"patcherrelativepath" : "../../../../../Max 8/Packages/CNMAT-odot/patchers/namespace",
+				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/patchers/namespace",
+				"patcherrelativepath" : "../patchers/namespace",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.righttoleft.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/CNMAT-odot/patchers/ordering",
-				"patcherrelativepath" : "../../../../../Max 8/Packages/CNMAT-odot/patchers/ordering",
+				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/patchers/ordering",
+				"patcherrelativepath" : "../patchers/ordering",
 				"type" : "JSON",
 				"implicit" : 1
 			}

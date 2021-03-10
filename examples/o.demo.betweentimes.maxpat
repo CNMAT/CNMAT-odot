@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 8,
+			"revision" : 10,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -72,26 +72,23 @@
 					"fontface" : 0,
 					"fontsize" : 12.0,
 					"id" : "obj-4",
-					"linecount" : 3,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 43.0, 373.0, 253.0, 61.0 ],
-					"text" : "/a : 1,\n/betweentime : 0.159891,\n/units/betweentime : \"seconds\""
+					"patching_rect" : [ 43.0, 373.0, 253.0, 34.0 ]
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-2",
 					"maxclass" : "o.compose",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 43.0, 59.0, 64.0, 24.0 ],
+					"patching_rect" : [ 43.0, 59.0, 60.0, 23.0 ],
 					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 12, 47, 97, 0, 0, 44, 105, 0, 0, 0, 0, 0, 1 ],
 					"saved_bundle_length" : 32,
 					"text" : "/a : 1"
@@ -101,15 +98,13 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontname" : "Arial",
-					"fontsize" : 12.0,
 					"id" : "obj-3",
 					"linecount" : 2,
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 43.0, 252.0, 529.0, 45.0 ],
+					"patching_rect" : [ 43.0, 252.0, 507.0, 44.0 ],
 					"text" : "/betweentime = /timestamp - /was/timestamp , /units/betweentime = seconds, delete(/was/timestamp), delete(/timestamp)"
 				}
 

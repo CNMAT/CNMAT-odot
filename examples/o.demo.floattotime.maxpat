@@ -4,13 +4,13 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 4,
+			"revision" : 10,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 71.0, 79.0, 1109.0, 713.0 ],
+		"rect" : [ 17.0, 61.0, 1040.0, 726.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 14.0,
@@ -26,7 +26,7 @@
 		"toptoolbarpinned" : 0,
 		"righttoolbarpinned" : 0,
 		"bottomtoolbarpinned" : 0,
-		"toolbars_unpinned_last_save" : 0,
+		"toolbars_unpinned_last_save" : 15,
 		"tallnewobj" : 0,
 		"boxanimatetime" : 200,
 		"enablehscroll" : 1,
@@ -46,7 +46,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 380.0, 679.0, 419.0, 47.0 ],
+					"patching_rect" : [ 362.0, 671.0, 419.0, 47.0 ],
 					"text" : "Note: NTP (OSC) time cannot be represented as a 64-bit double-precision floating point number without loss of information, so you can expect an imperfect round-trip conversion."
 				}
 
@@ -54,27 +54,25 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 14.0,
 					"id" : "obj-32",
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 49.0, 679.0, 313.0, 36.0 ],
-					"text" : "/now : 2020-07-23T20:30:56.000000Z"
+					"patching_rect" : [ 31.0, 671.0, 281.0, 33.0 ],
+					"text" : "/now : 2021-03-10T04:31:01.245216Z"
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 14.0,
 					"id" : "obj-31",
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 49.0, 628.0, 313.0, 34.0 ],
+					"patching_rect" : [ 31.0, 620.0, 169.0, 31.0 ],
 					"text" : "/now = floattotime(/now)"
 				}
 
@@ -86,7 +84,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 380.0, 628.0, 419.0, 20.0 ],
+					"patching_rect" : [ 362.0, 620.0, 419.0, 20.0 ],
 					"text" : "To convert it back to a timetag, use floattotime()"
 				}
 
@@ -98,7 +96,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 380.0, 529.0, 419.0, 20.0 ],
+					"patching_rect" : [ 362.0, 521.0, 419.0, 20.0 ],
 					"text" : "Now you can do math on that value in Max."
 				}
 
@@ -106,14 +104,13 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 14.0,
 					"id" : "obj-26",
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 49.0, 572.0, 313.0, 36.0 ],
-					"text" : "/now : 3.80453e+09"
+					"patching_rect" : [ 31.0, 564.0, 281.0, 33.0 ],
+					"text" : "/now : 3.82434e+09"
 				}
 
 			}
@@ -124,7 +121,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 49.0, 529.0, 83.0, 24.0 ],
+					"patching_rect" : [ 31.0, 521.0, 83.0, 24.0 ],
 					"text" : "o.pack /now"
 				}
 
@@ -136,8 +133,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 160.0, 529.0, 202.0, 24.0 ],
-					"text" : "3804525056."
+					"patching_rect" : [ 142.0, 521.0, 202.0, 24.0 ],
+					"text" : "3824339461.245216"
 				}
 
 			}
@@ -148,7 +145,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "FullPacket" ],
-					"patching_rect" : [ 49.0, 479.0, 86.0, 24.0 ],
+					"patching_rect" : [ 31.0, 471.0, 86.0, 24.0 ],
 					"text" : "o.route /now"
 				}
 
@@ -161,7 +158,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 380.0, 424.0, 419.0, 33.0 ],
+					"patching_rect" : [ 362.0, 416.0, 419.0, 33.0 ],
 					"text" : "If you would prefer a float when you convert a timetag to a Max value, you have to convert it explicitly to the type you want in odot."
 				}
 
@@ -169,13 +166,12 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 14.0,
 					"id" : "obj-21",
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 49.0, 424.0, 313.0, 34.0 ],
+					"patching_rect" : [ 31.0, 416.0, 143.0, 31.0 ],
 					"text" : "/now = float64(/now)"
 				}
 
@@ -187,7 +183,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 380.0, 365.0, 419.0, 20.0 ],
+					"patching_rect" : [ 362.0, 357.0, 419.0, 20.0 ],
 					"text" : "Note that the quotes are gone now."
 				}
 
@@ -199,7 +195,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 380.0, 308.0, 419.0, 20.0 ],
+					"patching_rect" : [ 362.0, 300.0, 419.0, 20.0 ],
 					"text" : "That string can be converted back to a timetag using strtotime()"
 				}
 
@@ -212,7 +208,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 380.0, 249.0, 419.0, 47.0 ],
+					"patching_rect" : [ 362.0, 241.0, 419.0, 47.0 ],
 					"text" : "o.pack only operates on the types of the values it receives, and since we converted our timetag to a symbol, o.pack treats it simply as a symbol and converts it to an OSC string. (note the quotes around the string)"
 				}
 
@@ -224,7 +220,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 380.0, 209.0, 419.0, 20.0 ],
+					"patching_rect" : [ 362.0, 201.0, 419.0, 20.0 ],
 					"text" : "When an OSC timetag is converted into a Max value, it becomes a \"symbol\". "
 				}
 
@@ -232,27 +228,25 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 14.0,
 					"id" : "obj-13",
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 49.0, 365.0, 313.0, 36.0 ],
-					"text" : "/now : 2020-07-23T20:29:04.571315Z"
+					"patching_rect" : [ 31.0, 357.0, 281.0, 33.0 ],
+					"text" : "/now : 2021-03-10T04:31:01.245216Z"
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 14.0,
 					"id" : "obj-12",
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 49.0, 308.0, 313.0, 34.0 ],
+					"patching_rect" : [ 31.0, 300.0, 156.0, 31.0 ],
 					"text" : "/now = strtotime(/now)"
 				}
 
@@ -260,14 +254,13 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 14.0,
 					"id" : "obj-11",
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 49.0, 249.0, 313.0, 36.0 ],
-					"text" : "/now : \"2020-07-22T20:29:04.571315Z\""
+					"patching_rect" : [ 31.0, 241.0, 281.0, 33.0 ],
+					"text" : "/now : \"2021-03-10T04:31:01.245216Z\""
 				}
 
 			}
@@ -278,7 +271,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 49.0, 207.0, 83.0, 24.0 ],
+					"patching_rect" : [ 31.0, 199.0, 83.0, 24.0 ],
 					"text" : "o.pack /now"
 				}
 
@@ -290,8 +283,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 160.0, 207.0, 202.0, 24.0 ],
-					"text" : "2020-07-22T20:29:04.571315Z"
+					"patching_rect" : [ 142.0, 199.0, 202.0, 24.0 ],
+					"text" : "2021-03-10T04:31:01.245216Z"
 				}
 
 			}
@@ -302,7 +295,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "FullPacket" ],
-					"patching_rect" : [ 49.0, 157.0, 86.0, 24.0 ],
+					"patching_rect" : [ 31.0, 149.0, 86.0, 24.0 ],
 					"text" : "o.route /now"
 				}
 
@@ -315,7 +308,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 882.0, 120.0, 197.0, 60.0 ],
+					"patching_rect" : [ 816.0, 122.0, 197.0, 60.0 ],
 					"text" : "Although timestamps look like dates and times when displayed, they need not be thought of in that way. "
 				}
 
@@ -328,7 +321,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 380.0, 28.0, 420.0, 100.0 ],
+					"patching_rect" : [ 362.0, 20.0, 420.0, 100.0 ],
 					"text" : "The value bound to /now is an OSC timetag. \n\nOSC timetags use the NTP format internally. They are composed of two 32-bit integers that represent the number of seconds that have elapsed since January 1, 1900 at midnight, and a fraction of a second. \n\nFor display, odot renders timetags using the format specified by ISO 8601."
 				}
 
@@ -336,15 +329,14 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 14.0,
 					"id" : "obj-2",
 					"linecount" : 2,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 49.0, 89.0, 252.0, 52.0 ],
-					"text" : "/now : 2020-07-22T20:29:04.571315Z"
+					"patching_rect" : [ 31.0, 81.0, 226.0, 46.0 ],
+					"text" : "/now : 2021-03-10T04:31:01.245216Z"
 				}
 
 			}
@@ -356,7 +348,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 49.0, 28.0, 24.0, 24.0 ]
+					"patching_rect" : [ 31.0, 20.0, 24.0, 24.0 ]
 				}
 
 			}
@@ -368,7 +360,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 49.0, 59.0, 80.0, 21.0 ],
+					"patching_rect" : [ 31.0, 51.0, 80.0, 21.0 ],
 					"text" : "o.timetag /now"
 				}
 

@@ -4,13 +4,13 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 5,
+			"revision" : 10,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 447.0, 145.0, 906.0, 709.0 ],
+		"rect" : [ 74.0, 109.0, 906.0, 709.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -138,13 +138,12 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-8",
 					"maxclass" : "o.compose",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 444.0, 150.0, 273.0, 24.0 ],
+					"patching_rect" : [ 444.0, 150.0, 179.0, 23.0 ],
 					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 28, 47, 110, 97, 109, 101, 115, 0, 0, 44, 115, 115, 115, 0, 0, 0, 0, 43, 0, 0, 0, 61, 0, 0, 0, 126, 0, 0, 0 ],
 					"saved_bundle_length" : 48,
 					"text" : "/names : [\"+\", \"=\", \"~\"]"
@@ -166,13 +165,12 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 10.0,
 					"id" : "obj-6",
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 92.0, 167.0, 167.0, 34.0 ],
+					"patching_rect" : [ 92.0, 167.0, 163.0, 31.0 ],
 					"text" : "/addys = getaddresses()"
 				}
 
@@ -182,28 +180,24 @@
 					"fontface" : 0,
 					"fontsize" : 12.0,
 					"id" : "obj-5",
-					"linecount" : 3,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 92.0, 534.0, 192.0, 61.0 ],
-					"text" : "/---/+/AA : 0.,\n/---/=/BB : 0.,\n/---/~/CC : 1."
+					"patching_rect" : [ 92.0, 534.0, 192.0, 34.0 ]
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 10.0,
 					"id" : "obj-3",
 					"linecount" : 14,
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 92.0, 336.0, 275.0, 183.0 ],
-					"presentation_linecount" : 14,
+					"patching_rect" : [ 92.0, 312.0, 295.0, 198.0 ],
 					"text" : "map(\n  lambda([a, i], \n      /c = split(\"/\", a),  #  --- * AA\n      /n = /names[[i]],\n      map(\n        lambda([c, i],\n          if(i == /r/at, /c[[i]] = /n)\n        ), /c, aseq(0, length(/names) - 1)\n      ),\n      assign(\"/\" + join(\"/\", /c), value(a))\n  ), /addys, aseq(0, length(/addys)-1)\n), \nmap(delete, /addys), \ndelete(/c, /t, /names, /r/at, /n, /addys)"
 				}
 
@@ -212,14 +206,13 @@
 				"box" : 				{
 					"background_color" : [ 0.847058823529412, 0.847058823529412, 0.847058823529412, 1.0 ],
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-2",
 					"linecount" : 3,
 					"maxclass" : "o.compose",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 92.0, 100.5, 133.0, 51.0 ],
+					"patching_rect" : [ 92.0, 100.5, 120.0, 49.0 ],
 					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 24, 47, 45, 45, 45, 47, 42, 47, 65, 65, 0, 0, 0, 44, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 24, 47, 45, 45, 45, 47, 42, 47, 66, 66, 0, 0, 0, 44, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 24, 47, 45, 45, 45, 47, 42, 47, 67, 67, 0, 0, 0, 44, 100, 0, 0, 63, -16, 0, 0, 0, 0, 0, 0 ],
 					"saved_bundle_length" : 100,
 					"text" : "/---/*/AA : 0.,\n/---/*/BB : 0.,\n/---/*/CC : 1."

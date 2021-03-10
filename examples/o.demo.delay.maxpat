@@ -4,13 +4,13 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 8,
+			"revision" : 10,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 69.0, 98.0, 500.0, 498.0 ],
+		"rect" : [ 41.0, 84.0, 500.0, 498.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -26,7 +26,7 @@
 		"toptoolbarpinned" : 0,
 		"righttoolbarpinned" : 0,
 		"bottomtoolbarpinned" : 0,
-		"toolbars_unpinned_last_save" : 0,
+		"toolbars_unpinned_last_save" : 15,
 		"tallnewobj" : 0,
 		"boxanimatetime" : 200,
 		"enablehscroll" : 1,
@@ -41,28 +41,26 @@
 		"boxes" : [ 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-7",
 					"linecount" : 2,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 39.0, 136.0, 181.0, 48.0 ],
-					"text" : "/r : 0.428482,\n/delay/interval : 1."
+					"patching_rect" : [ 39.0, 136.0, 143.0, 46.0 ],
+					"text" : "/r : 0.819838,\n/delay/interval : 1."
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-2",
 					"maxclass" : "o.compose",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 39.0, 56.0, 169.0, 24.0 ],
+					"patching_rect" : [ 39.0, 56.0, 153.0, 23.0 ],
 					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 28, 47, 100, 101, 108, 97, 121, 47, 105, 110, 116, 101, 114, 118, 97, 108, 0, 44, 100, 0, 0, 63, -16, 0, 0, 0, 0, 0, 0 ],
 					"saved_bundle_length" : 48,
 					"text" : "/delay/interval : 1."
@@ -114,29 +112,26 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-4",
 					"linecount" : 2,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 163.0, 403.0, 164.0, 48.0 ],
-					"text" : "/r : 0.428482,\n/delay/interval : 1."
+					"patching_rect" : [ 163.0, 403.0, 143.0, 46.0 ],
+					"text" : "/r : 0.819838,\n/delay/interval : 1."
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontname" : "Arial",
-					"fontsize" : 12.0,
 					"id" : "obj-19",
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 39.0, 198.0, 150.0, 32.0 ],
+					"patching_rect" : [ 39.0, 198.0, 163.0, 31.0 ],
 					"text" : "/delay/interval ??= 0.0"
 				}
 
@@ -158,14 +153,12 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontname" : "Arial",
-					"fontsize" : 12.0,
 					"id" : "obj-14",
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 39.0, 272.0, 202.0, 32.0 ],
+					"patching_rect" : [ 39.0, 272.0, 249.0, 31.0 ],
 					"text" : "/__sched = /__time + /delay/interval"
 				}
 
@@ -191,8 +184,8 @@
 					"id" : "obj-11",
 					"maxclass" : "newobj",
 					"numinlets" : 2,
-					"numoutlets" : 4,
-					"outlettype" : [ "FullPacket", "FullPacket", "FullPacket", "FullPacket" ],
+					"numoutlets" : 5,
+					"outlettype" : [ "FullPacket", "FullPacket", "FullPacket", "FullPacket", "int" ],
 					"patching_rect" : [ 39.0, 322.0, 121.0, 22.0 ],
 					"text" : "o.schedule /__sched"
 				}
