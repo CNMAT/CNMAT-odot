@@ -314,20 +314,6 @@
 			}
 , 			{
 				"box" : 				{
-					"fontface" : 2,
-					"fontsize" : 12.0,
-					"id" : "obj-32",
-					"linecount" : 4,
-					"maxclass" : "comment",
-					"numinlets" : 1,
-					"numoutlets" : 0,
-					"patching_rect" : [ 467.5, 118.5, 415.0, 60.0 ],
-					"text" : "We can tag our bundles with numerical identifiers for the address names and send to specific instances, or we can opt for the note msg, in whiich we use the delegation outlet of [o.route].  [o.route] is set dynamically via [thispoly~]."
-				}
-
-			}
-, 			{
-				"box" : 				{
 					"fontsize" : 12.0,
 					"id" : "obj-6",
 					"maxclass" : "newobj",
@@ -425,6 +411,10 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 203.5, 655.0, 42.0, 22.0 ],
+					"saved_object_attributes" : 					{
+						"attr_comment" : ""
+					}
+,
 					"text" : "out~ 1"
 				}
 
@@ -489,10 +479,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 565.5, 655.0, 35.0, 22.0 ],
-					"saved_object_attributes" : 					{
-						"attr_comment" : ""
-					}
-,
 					"text" : "out 1"
 				}
 
@@ -506,10 +492,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 351.5, 20.0, 28.0, 22.0 ],
-					"saved_object_attributes" : 					{
-						"attr_comment" : ""
-					}
-,
 					"text" : "in 1"
 				}
 
