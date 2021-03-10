@@ -66,14 +66,11 @@
 				"box" : 				{
 					"fontface" : 0,
 					"id" : "obj-86",
-					"linecount" : 4,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 385.5, 2157.0, 154.0, 72.0 ],
-					"presentation_linecount" : 4,
-					"text" : "/midifreq : 61.4461,\n/amp : 0.488179,\n/dur : 1519.23,\n/voice : 5"
+					"patching_rect" : [ 385.5, 2157.0, 154.0, 33.0 ]
 				}
 
 			}
@@ -85,7 +82,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "signal", "", "" ],
 					"patching_rect" : [ 262.0, 2112.0, 266.0, 24.0 ],
-					"text" : "poly~ o.abstraction_example1 8 @steal 1"
+					"text" : "poly~ o.abstraction_example2 8 @steal 1"
 				}
 
 			}
@@ -140,13 +137,11 @@
 				"box" : 				{
 					"fontface" : 0,
 					"id" : "obj-9",
-					"linecount" : 4,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 365.5, 2729.0, 203.0, 72.0 ],
-					"text" : "/midifreq : 56.5821,\n/amp : 0.018018,\n/dur : 463.694,\n/voice : 7"
+					"patching_rect" : [ 365.5, 2729.0, 203.0, 33.0 ]
 				}
 
 			}
@@ -170,7 +165,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "signal", "", "" ],
 					"patching_rect" : [ 242.0, 2684.0, 266.0, 24.0 ],
-					"text" : "poly~ o.abstraction_example1 8 @steal 1"
+					"text" : "poly~ o.abstraction_example2 8 @steal 1"
 				}
 
 			}
@@ -178,13 +173,11 @@
 				"box" : 				{
 					"fontface" : 0,
 					"id" : "obj-81",
-					"linecount" : 4,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 242.0, 2540.0, 203.0, 72.0 ],
-					"text" : "/midifreq : [27.6757, 93.4054],\n/amp : [0.0630631, 0.63964],\n/dur : [274.82, 1408.06]"
+					"patching_rect" : [ 242.0, 2540.0, 203.0, 33.0 ]
 				}
 
 			}
@@ -392,13 +385,11 @@
 				"box" : 				{
 					"fontface" : 0,
 					"id" : "obj-47",
-					"linecount" : 4,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 629.5, 1257.0, 152.5, 72.0 ],
-					"text" : "/midifreq : 47.2959,\n/amp : 0.909358,\n/dur : 1000,\n/voice : 6"
+					"patching_rect" : [ 629.5, 1257.0, 152.5, 33.0 ]
 				}
 
 			}
@@ -410,7 +401,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "signal", "", "" ],
 					"patching_rect" : [ 506.0, 1213.0, 266.0, 24.0 ],
-					"text" : "poly~ o.abstraction_example1 8 @steal 1"
+					"text" : "poly~ o.abstraction_example2 8 @steal 1"
 				}
 
 			}
@@ -418,13 +409,11 @@
 				"box" : 				{
 					"fontface" : 0,
 					"id" : "obj-118",
-					"linecount" : 19,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 219.0, 771.0, 168.0, 264.0 ],
-					"text" : "/1/freq : 417.732,\n/1/amp : 0.229918,\n/1/dur : 1000,\n/voice : 6,\n/2/freq : 437.474,\n/2/amp : 0.135706,\n/2/dur : 1000,\n/3/freq : 433.094,\n/3/amp : 0.232308,\n/3/dur : 1000,\n/4/freq : 418.903,\n/4/amp : 0.293292,\n/4/dur : 1000,\n/5/freq : 418.74,\n/5/amp : 0.113211,\n/5/dur : 1000,\n/6/freq : 429.257,\n/6/amp : 0.219637,\n/6/dur : 1000"
+					"patching_rect" : [ 219.0, 771.0, 168.0, 33.0 ]
 				}
 
 			}
@@ -491,7 +480,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 43.5, 523.0, 411.0, 195.0 ],
+					"patching_rect" : [ 43.5, 523.0, 414.0, 195.0 ],
 					"text" : "There are a number of situations in which we might want to have control over the voice over time.  Consequentially, we may prefer to directly address voices, to explicitly define behaviors as the voice plays.\n\nLet's make a way to stop our synth from playing from the outside of [poly~].  We simply add an address /stop to the available parameters.  Try clicking on the particularly long note (10 seconds), then stopping it manually.\n\nNote that because we are now addressing voices directly, when we input new bundles to voice /1, new notes are generated and the previously note gets overriden."
 				}
 
@@ -553,7 +542,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "signal", "", "" ],
 					"patching_rect" : [ 498.0, 704.0, 272.0, 24.0 ],
-					"text" : "poly~ o.abstraction_example2 6 @target 0"
+					"text" : "poly~ o.abstraction_example1 6 @target 0"
 				}
 
 			}
@@ -2380,14 +2369,14 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "o.abstraction_example2.maxpat",
+				"name" : "o.abstraction_example1.maxpat",
 				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/patchers/tutorial",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "o.abstraction_example1.maxpat",
+				"name" : "o.abstraction_example2.maxpat",
 				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/patchers/tutorial",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
