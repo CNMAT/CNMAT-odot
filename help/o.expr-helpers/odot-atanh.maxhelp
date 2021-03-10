@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 3,
+			"revision" : 10,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -37,6 +37,7 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "Untitled5_template",
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
 					"fontface" : 1,
@@ -82,7 +83,7 @@
 					"fontsize" : 12.0,
 					"id" : "obj-46",
 					"maxclass" : "newobj",
-					"numinlets" : 0,
+					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
 					"patching_rect" : [ 35.0, 28.0, 116.0, 22.0 ],
@@ -106,28 +107,26 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-8",
 					"linecount" : 2,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 35.0, 288.0, 158.0, 48.0 ],
-					"text" : "/ramp : -0.48,\n/atanh : -0.522984"
+					"patching_rect" : [ 35.0, 288.0, 146.0, 46.0 ],
+					"text" : "/ramp : -0.1,\n/atanh : -0.100335"
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-24",
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 35.0, 63.0, 162.0, 32.0 ],
+					"patching_rect" : [ 35.0, 63.0, 150.0, 31.0 ],
 					"text" : "/atanh = atanh(/ramp)"
 				}
 
@@ -166,7 +165,7 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "o.linear_ramp.maxpat",
-				"bootpath" : "~/Documents/programming/git_repositories/ODOT-tutorials/reference_list/o.expr-helpers",
+				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/help/o.expr-helpers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1

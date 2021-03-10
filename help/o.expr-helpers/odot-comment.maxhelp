@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 4,
+			"revision" : 10,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -91,13 +91,12 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-3",
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 25.0, 138.5, 65.0, 33.0 ],
+					"patching_rect" : [ 25.0, 138.5, 70.0, 33.0 ],
 					"text" : "/foo : 4"
 				}
 
@@ -105,14 +104,13 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-1",
 					"linecount" : 4,
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 25.0, 59.5, 329.0, 68.0 ],
+					"patching_rect" : [ 25.0, 59.5, 322.0, 70.0 ],
 					"text" : "# this is a comment which does not execute, \n# as opposed to this expression which executes \n# and creates the address \"/foo\":\n/foo = 2 + 2"
 				}
 

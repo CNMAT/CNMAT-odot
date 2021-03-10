@@ -57,7 +57,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 242.0, 79.0, 153.0, 74.0 ],
+					"patching_rect" : [ 242.0, 79.0, 156.0, 74.0 ],
 					"text" : "Return the 13th root of 3 (basis of the Bohlen-Pierce scale)\n\narguments:  n/a"
 				}
 

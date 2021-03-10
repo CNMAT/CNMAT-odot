@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 8,
+			"revision" : 10,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -53,26 +53,24 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-10",
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 278.0, 378.0, 150.0, 34.0 ]
+					"patching_rect" : [ 278.0, 378.0, 142.0, 33.0 ]
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-4",
 					"maxclass" : "o.compose",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 390.0, 262.0, 95.0, 24.0 ],
+					"patching_rect" : [ 390.0, 262.0, 87.0, 23.0 ],
 					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 47, 109, 121, 110, 117, 109, 0, 0, 44, 105, 0, 0, 0, 0, 0, 1 ],
 					"saved_bundle_length" : 36,
 					"text" : "/mynum : 1"
@@ -82,13 +80,12 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-7",
 					"maxclass" : "o.compose",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 278.0, 262.0, 95.0, 24.0 ],
+					"patching_rect" : [ 278.0, 262.0, 87.0, 23.0 ],
 					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 47, 109, 121, 110, 117, 109, 0, 0, 44, 105, 0, 0, 0, 0, 0, 0 ],
 					"saved_bundle_length" : 36,
 					"text" : "/mynum : 0"
@@ -98,13 +95,12 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-9",
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 278.0, 318.0, 293.0, 32.0 ],
+					"patching_rect" : [ 278.0, 318.0, 269.0, 31.0 ],
 					"text" : "/mynum > 0 ? /test = 0.5 : /test = 8000"
 				}
 
@@ -165,7 +161,6 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-5",
 					"maxclass" : "o.display",
 					"numinlets" : 1,
@@ -178,14 +173,13 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-3",
 					"linecount" : 17,
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 25.0, 120.0, 217.0, 230.0 ],
+					"patching_rect" : [ 25.0, 120.0, 203.0, 236.0 ],
 					"text" : "if( /input > 0.5, \n  /trigger = true, \n  /thru/input = /input\n),\n\n/result = if( /input < 0.25, \n  \"yes\", \n  \"no\"\n),\n\nif( /input > 0.75,\n  progn(\n    /foo = 1,\n    /bar = 2,\n    /steve = 3\n  )\n)"
 				}
 

@@ -83,8 +83,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 40.0, 152.0, 118.0, 33.0 ],
-					"text" : "/s2 : 1.41421"
+					"patching_rect" : [ 40.0, 152.0, 90.0, 33.0 ],
+					"text" : "/x : 1.05946"
 				}
 
 			}
@@ -96,7 +96,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 40.0, 79.0, 183.0, 31.0 ],
+					"patching_rect" : [ 40.0, 79.0, 176.0, 31.0 ],
 					"text" : "/x =  twelfth_root_of_2()"
 				}
 

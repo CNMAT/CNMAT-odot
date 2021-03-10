@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 8,
+			"revision" : 10,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -77,14 +77,13 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-7",
 					"linecount" : 3,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 28.0, 164.0, 259.0, 58.0 ],
+					"patching_rect" : [ 28.0, 164.0, 236.0, 59.0 ],
 					"text" : "/list : [\"-\", 2, \"-\", 4, \"hello\"],\n/list/copy : [1, 2, 3, 4, 5],\n/val : \"-\""
 				}
 
@@ -92,14 +91,13 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-10",
 					"linecount" : 5,
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 28.0, 64.0, 261.0, 81.0 ],
+					"patching_rect" : [ 28.0, 64.0, 262.0, 83.0 ],
 					"text" : "/list = [1, 2, 3, 4, 5],\n/list/copy = /list,\n/val = \"-\",\nassign_to_index(/list, [0, 2], /val), \n/list[[4]] = \"hello\""
 				}
 

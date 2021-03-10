@@ -4,13 +4,13 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 1,
+			"revision" : 10,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 331.0, 88.0, 1012.0, 635.0 ],
+		"rect" : [ 57.0, 91.0, 1012.0, 635.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -37,6 +37,7 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "Default Max 7",
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
 					"id" : "obj-20",
@@ -44,7 +45,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 146.0, 360.5, 67.0, 20.0 ],
+					"patching_rect" : [ 146.0, 360.5, 67.0, 22.0 ],
 					"text" : "odot-prog1"
 				}
 
@@ -57,7 +58,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 63.0, 387.5, 79.0, 20.0 ],
+					"patching_rect" : [ 63.0, 387.5, 79.0, 22.0 ],
 					"text" : "prepend help"
 				}
 
@@ -70,7 +71,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 63.0, 413.5, 51.0, 20.0 ],
+					"patching_rect" : [ 63.0, 413.5, 51.0, 22.0 ],
 					"text" : "pcontrol"
 				}
 
@@ -82,7 +83,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 63.0, 360.5, 67.0, 20.0 ],
+					"patching_rect" : [ 63.0, 360.5, 67.0, 22.0 ],
 					"text" : "odot-progn"
 				}
 
@@ -94,7 +95,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 624.0, 335.0, 342.0, 30.0 ],
+					"patching_rect" : [ 624.0, 335.0, 342.0, 33.0 ],
 					"text" : "a common use of the prog functions is to evaluate a sequence of expressions in the \"then\" and \"else\" fields of an if() function."
 				}
 
@@ -106,7 +107,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 522.0, 357.0, 66.0, 20.0 ],
+					"patching_rect" : [ 522.0, 357.0, 66.0, 22.0 ],
 					"text" : "o.pack /val"
 				}
 
@@ -118,7 +119,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 522.0, 300.0, 119.0, 20.0 ],
+					"patching_rect" : [ 522.0, 300.0, 119.0, 22.0 ],
 					"text" : "metro 500 @active 1"
 				}
 
@@ -130,7 +131,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "int" ],
-					"patching_rect" : [ 522.0, 328.0, 59.0, 20.0 ],
+					"patching_rect" : [ 522.0, 328.0, 59.0, 22.0 ],
 					"text" : "random 2"
 				}
 
@@ -138,14 +139,13 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-5",
 					"linecount" : 3,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 522.0, 474.0, 83.0, 61.0 ],
+					"patching_rect" : [ 522.0, 474.0, 90.0, 59.0 ],
 					"text" : "/val : 0,\n/x : 1,\n/y : 0"
 				}
 
@@ -153,14 +153,13 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-6",
 					"linecount" : 4,
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 522.0, 385.0, 327.0, 73.0 ],
+					"patching_rect" : [ 522.0, 385.0, 176.0, 70.0 ],
 					"text" : "if(/val == 0,\n   progn(/x = 1, /y = 0),\n   progn(/x = 0, /y = 1)\n)"
 				}
 
@@ -172,7 +171,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 522.0, 41.0, 146.0, 18.0 ],
+					"patching_rect" : [ 522.0, 41.0, 146.0, 20.0 ],
 					"text" : "prog1(), prog2(), progn()"
 				}
 
@@ -184,7 +183,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 522.0, 72.0, 348.0, 186.0 ],
+					"patching_rect" : [ 522.0, 72.0, 348.0, 208.0 ],
 					"text" : "Perfrom a series of comma separated expressions and return the value of the first, second, or last expression respectively.\n\nprogn(<expr1>, ..., <exprn>)\n\narguments:\n\n<expr1>, ..., <exprn>:  comma separated expressions to evaluate\n\nreturns:\n\nprog1: the result of the evaluation of the first expression\nprog2: the result of the evaluation of the second expression\nprogn: the result of the evaluation of the last expression"
 				}
 
@@ -196,7 +195,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 63.0, 259.0, 383.0, 54.0 ],
+					"patching_rect" : [ 63.0, 259.0, 383.0, 60.0 ],
 					"text" : "prog2 is rarely used and is mainly available for compatibility with lisp. There are some cases where you may need to perform a single operation with side effects, produce a result, and then clean up in one or more steps"
 				}
 
@@ -204,27 +203,25 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-11",
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 63.0, 177.0, 83.0, 34.0 ]
+					"patching_rect" : [ 63.0, 177.0, 79.0, 33.0 ]
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-10",
 					"linecount" : 3,
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 63.0, 106.0, 205.0, 59.0 ],
+					"patching_rect" : [ 63.0, 106.0, 163.0, 57.0 ],
 					"text" : "/p1 = prog1(1, 2, \"n\"),\n/p2 = prog2(1, 2, \"n\"),\n/pn = progn(1, 2, \"n\")"
 				}
 
@@ -236,7 +233,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 63.0, 41.0, 379.0, 54.0 ],
+					"patching_rect" : [ 63.0, 41.0, 379.0, 60.0 ],
 					"text" : "prog1, prog2, and progn are all very similar--they each evaluate a sequence of expressions. The only difference between the three of them is that prog1 returns the result of the first expression, prog2 the second, and progn the last."
 				}
 

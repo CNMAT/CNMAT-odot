@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 1,
+			"revision" : 10,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -37,6 +37,7 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "Default Max 7",
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
 					"fontface" : 1,
@@ -44,7 +45,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 221.0, 27.0, 67.0, 18.0 ],
+					"patching_rect" : [ 221.0, 27.0, 67.0, 20.0 ],
 					"text" : "nextafter()"
 				}
 
@@ -56,7 +57,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 221.0, 62.0, 227.0, 78.0 ],
+					"patching_rect" : [ 221.0, 62.0, 227.0, 87.0 ],
 					"text" : "return the next representable double-precision floating-point number\n\narguments:\n\n1. value (float)"
 				}
 
@@ -68,7 +69,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 32.0, 27.0, 60.0, 20.0 ],
+					"patching_rect" : [ 32.0, 27.0, 60.0, 22.0 ],
 					"text" : "loadbang"
 				}
 
@@ -76,13 +77,12 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-19",
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 32.0, 62.0, 149.0, 31.0 ],
+					"patching_rect" : [ 32.0, 62.0, 150.0, 31.0 ],
 					"text" : "/next = nextafter(0.)"
 				}
 
@@ -90,7 +90,6 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-20",
 					"maxclass" : "o.display",
 					"numinlets" : 1,

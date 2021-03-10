@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 1,
+			"revision" : 10,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -37,6 +37,7 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "Untitled5_template",
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
 					"fontsize" : 11.0,
@@ -44,7 +45,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 102.0, 24.5, 36.0, 17.0 ],
+					"patching_rect" : [ 102.0, 24.5, 36.0, 19.0 ],
 					"text" : "reset "
 				}
 
@@ -69,7 +70,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 32.0, 56.5, 74.0, 19.0 ],
+					"patching_rect" : [ 32.0, 56.5, 74.0, 21.0 ],
 					"text" : "o.pack /count"
 				}
 
@@ -87,7 +88,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 1,
-							"revision" : 1,
+							"revision" : 10,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -120,6 +121,7 @@
 						"tags" : "",
 						"style" : "",
 						"subpatcher_template" : "Untitled5_template",
+						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
 									"comment" : "",
@@ -194,7 +196,7 @@
  ]
 					}
 ,
-					"patching_rect" : [ 32.0, 26.0, 32.0, 19.0 ],
+					"patching_rect" : [ 32.0, 26.0, 32.0, 21.0 ],
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
@@ -215,7 +217,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 277.0, 26.0, 75.0, 18.0 ],
+					"patching_rect" : [ 277.0, 26.0, 75.0, 20.0 ],
 					"text" : "remainder()"
 				}
 
@@ -228,7 +230,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 277.0, 61.0, 234.0, 126.0 ],
+					"patching_rect" : [ 277.0, 61.0, 236.0, 141.0 ],
 					"text" : "return the remainder of an input fraction (r = x - ny where y is non-zero and n is the integral value nearest x/y).  The difference between remainder() and % (mod()) is that the result may be negative.\n\narguments: \n\n1. this number will get divided\n2. by this number or list"
 				}
 
@@ -236,29 +238,27 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-4",
 					"linecount" : 3,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 32.0, 138.0, 111.0, 58.0 ],
-					"text" : "/count : 0,\n/rem : 0.,\n/mod : 0"
+					"patching_rect" : [ 32.0, 138.0, 90.0, 59.0 ],
+					"text" : "/count : 20,\n/rem : -1.,\n/mod : 2"
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-5",
 					"linecount" : 2,
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 32.0, 89.0, 209.0, 43.0 ],
+					"patching_rect" : [ 32.0, 89.0, 196.0, 44.0 ],
 					"text" : "/rem = remainder(/count, 3),\n/mod = mod(/count, 3)"
 				}
 

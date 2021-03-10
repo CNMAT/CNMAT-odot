@@ -4,13 +4,13 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 1,
+			"revision" : 10,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 80.0, 118.0, 408.0, 258.0 ],
+		"rect" : [ 80.0, 118.0, 335.0, 259.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -37,16 +37,16 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "Default Max 7",
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-16",
 					"maxclass" : "o.compose",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 31.0, 69.0, 82.0, 23.0 ],
+					"patching_rect" : [ 30.0, 64.0, 73.0, 23.0 ],
 					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 47, 110, 117, 109, 0, 0, 0, 0, 44, 105, 0, 0, 0, 0, 0, 1 ],
 					"saved_bundle_length" : 36,
 					"text" : "/num : 1"
@@ -56,14 +56,13 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-14",
 					"linecount" : 4,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 31.0, 185.0, 92.0, 70.0 ],
+					"patching_rect" : [ 30.0, 165.0, 70.0, 72.0 ],
 					"text" : "/num : 3,\n/a : 2,\n/b : 2,\n/c : 3"
 				}
 
@@ -71,14 +70,13 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-15",
 					"linecount" : 3,
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 31.0, 105.0, 156.0, 56.0 ],
+					"patching_rect" : [ 30.0, 98.0, 90.0, 57.0 ],
 					"text" : "/a = ++/num,\n/b = /num++,\n/c = /num"
 				}
 
@@ -90,7 +88,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 233.0, 156.0, 139.0, 54.0 ],
+					"patching_rect" : [ 158.0, 156.0, 139.0, 60.0 ],
 					"text" : "when placed after the address, the value is accessed first and then incremented"
 				}
 
@@ -102,7 +100,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 233.0, 105.0, 139.0, 42.0 ],
+					"patching_rect" : [ 158.0, 105.0, 139.0, 47.0 ],
 					"text" : "when placed before the address, the increment happens before access"
 				}
 
@@ -114,7 +112,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 233.0, 65.0, 139.0, 30.0 ],
+					"patching_rect" : [ 158.0, 65.0, 139.0, 33.0 ],
 					"text" : "prefix / postfix increment. "
 				}
 
@@ -126,7 +124,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 233.0, 30.0, 69.0, 18.0 ],
+					"patching_rect" : [ 158.0, 30.0, 69.0, 20.0 ],
 					"text" : "++"
 				}
 
@@ -139,7 +137,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 31.0, 30.0, 56.0, 19.0 ],
+					"patching_rect" : [ 30.0, 25.0, 56.0, 21.0 ],
 					"text" : "loadbang"
 				}
 

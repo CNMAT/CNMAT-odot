@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 1,
+			"revision" : 10,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -37,16 +37,16 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "Default Max 7",
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-1",
 					"maxclass" : "o.compose",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 106.0, 61.0, 159.0, 24.0 ],
+					"patching_rect" : [ 106.0, 61.0, 146.0, 23.0 ],
 					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 28, 47, 105, 110, 112, 117, 116, 0, 0, 44, 100, 100, 0, 63, -39, -103, -103, -103, -103, -103, -102, 63, -13, 51, 51, 51, 51, 51, 51 ],
 					"saved_bundle_length" : 48,
 					"text" : "/input : [0.4, 1.2]"
@@ -60,7 +60,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 292.0, 26.0, 51.0, 18.0 ],
+					"patching_rect" : [ 292.0, 26.0, 51.0, 20.0 ],
 					"text" : "round()"
 				}
 
@@ -72,7 +72,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 292.0, 61.0, 226.0, 114.0 ],
+					"patching_rect" : [ 292.0, 61.0, 229.0, 127.0 ],
 					"text" : "round floating point values to the nearest whole numbers (returns floats).\n\nif the fractional part of a number is >= 0.5, round up, otherwise round down.\n\narguments:\n\n1. value(s) to round"
 				}
 
@@ -80,28 +80,24 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-20",
-					"linecount" : 2,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 28.0, 174.0, 191.0, 45.0 ],
-					"text" : "/input : 0.004,\n/rounded : 0."
+					"patching_rect" : [ 28.0, 174.0, 191.0, 33.0 ]
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-21",
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 28.0, 117.0, 171.0, 31.0 ],
+					"patching_rect" : [ 28.0, 117.0, 169.0, 31.0 ],
 					"text" : "/rounded = round(/input)"
 				}
 
@@ -117,7 +113,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 28.0, 28.0, 47.0, 19.0 ]
+					"patching_rect" : [ 28.0, 28.0, 47.0, 21.0 ]
 				}
 
 			}
@@ -129,7 +125,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 28.0, 61.0, 73.0, 19.0 ],
+					"patching_rect" : [ 28.0, 61.0, 73.0, 21.0 ],
 					"text" : "o.pack /input"
 				}
 

@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 1,
+			"revision" : 10,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -37,6 +37,7 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "Default Max 7",
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
 					"fontface" : 1,
@@ -44,7 +45,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 346.0, 28.0, 51.0, 18.0 ],
+					"patching_rect" : [ 346.0, 28.0, 51.0, 20.0 ],
 					"text" : "scale()"
 				}
 
@@ -56,7 +57,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 346.0, 63.0, 267.0, 174.0 ],
+					"patching_rect" : [ 346.0, 63.0, 267.0, 194.0 ],
 					"text" : "scale an input.\nthis function takes a single input (can be a list of one or more elements), and scales it from an input domain to an output range.\n\narguments:  \n\n1. input to be scaled\n2. input min\n3. input max\n4. output min\n5. output max\n\n"
 				}
 
@@ -72,7 +73,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 27.0, 28.0, 47.0, 19.0 ]
+					"patching_rect" : [ 27.0, 28.0, 47.0, 21.0 ]
 				}
 
 			}
@@ -84,7 +85,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 27.0, 61.0, 73.0, 19.0 ],
+					"patching_rect" : [ 27.0, 61.0, 73.0, 21.0 ],
 					"text" : "o.pack /input"
 				}
 
@@ -92,26 +93,26 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-7",
+					"linecount" : 2,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 27.0, 159.0, 118.0, 33.0 ]
+					"patching_rect" : [ 27.0, 159.0, 145.0, 46.0 ],
+					"text" : "/input : 0.057,\n/scaled : 59.184"
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-3",
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 27.0, 102.0, 290.0, 31.0 ],
+					"patching_rect" : [ 27.0, 102.0, 289.0, 31.0 ],
 					"text" : "/scaled = scale(/input, 0., 1., 30., 542.)"
 				}
 

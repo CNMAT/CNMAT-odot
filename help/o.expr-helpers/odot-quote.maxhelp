@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 1,
+			"revision" : 10,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -37,6 +37,7 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "Default Max 7",
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
 					"fontface" : 1,
@@ -44,7 +45,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 212.0, 36.0, 73.0, 18.0 ],
+					"patching_rect" : [ 227.0, 36.0, 73.0, 20.0 ],
 					"text" : "quote()"
 				}
 
@@ -56,7 +57,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 212.0, 71.0, 258.0, 90.0 ],
+					"patching_rect" : [ 227.0, 71.0, 258.0, 100.0 ],
 					"text" : "quasi-quote function. this function is used to suppress evaluation of its argument, by treating it as a string.\n\narguments: \n\n1. data to quote"
 				}
 
@@ -68,7 +69,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 40.0, 36.0, 60.0, 20.0 ],
+					"patching_rect" : [ 40.0, 36.0, 60.0, 22.0 ],
 					"text" : "loadbang"
 				}
 
@@ -76,14 +77,13 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-25",
 					"linecount" : 3,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 40.0, 134.0, 129.0, 58.0 ],
+					"patching_rect" : [ 40.0, 134.0, 130.0, 59.0 ],
 					"text" : "/int : 4,\n/string/1 : \"4\",\n/string/2 : \"/int\""
 				}
 
@@ -91,14 +91,13 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-26",
 					"linecount" : 3,
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 40.0, 71.0, 162.0, 56.0 ],
+					"patching_rect" : [ 40.0, 71.0, 163.0, 57.0 ],
 					"text" : "/int = 4,\n/string/1 = quote(4),\n/string/2 = quote(/int)"
 				}
 

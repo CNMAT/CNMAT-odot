@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 1,
+			"revision" : 10,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -37,6 +37,7 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "Default Max 7",
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
 					"fontface" : 0,
@@ -47,15 +48,14 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 33.0, 268.0, 314.0, 48.0 ],
-					"text" : "/a : \"foo\",\n/bundletag : 2020-08-05T20:25:26.449325Z"
+					"patching_rect" : [ 33.0, 268.0, 299.0, 48.0 ],
+					"text" : "/a : \"foo\",\n/bundletag : 2021-03-10T05:06:23.316643Z"
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-2",
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
@@ -73,7 +73,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 33.0, 98.0, 87.0, 20.0 ],
+					"patching_rect" : [ 33.0, 98.0, 87.0, 22.0 ],
 					"text" : "o.timetag /time"
 				}
 
@@ -86,7 +86,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 33.0, 32.5, 116.0, 19.0 ],
+					"patching_rect" : [ 33.0, 32.5, 116.0, 21.0 ],
 					"text" : "metro 1000 @active 1"
 				}
 
@@ -94,7 +94,6 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-19",
 					"maxclass" : "o.compose",
 					"numinlets" : 2,
@@ -114,7 +113,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 251.0, 32.5, 96.0, 18.0 ],
+					"patching_rect" : [ 251.0, 32.5, 96.0, 20.0 ],
 					"text" : "settimetag()"
 				}
 
@@ -126,7 +125,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 251.0, 67.5, 158.0, 78.0 ],
+					"patching_rect" : [ 251.0, 67.5, 161.0, 87.0 ],
 					"text" : "Copy a timetag into the timetag field of the OSC bundle.\n\narguments: timetag to put in the header"
 				}
 
@@ -134,13 +133,12 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-23",
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 33.0, 183.0, 96.0, 33.0 ],
+					"patching_rect" : [ 33.0, 183.0, 77.0, 33.0 ],
 					"text" : "/a : \"foo\""
 				}
 
@@ -148,14 +146,13 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-21",
 					"linecount" : 2,
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 33.0, 130.0, 136.0, 43.0 ],
+					"patching_rect" : [ 33.0, 130.0, 136.0, 44.0 ],
 					"text" : "settimetag(/time), \ndelete(/time)"
 				}
 

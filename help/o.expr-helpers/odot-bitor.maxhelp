@@ -4,13 +4,13 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 1,
+			"revision" : 10,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 54.0, 101.0, 481.0, 231.0 ],
+		"rect" : [ 54.0, 101.0, 411.0, 231.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -37,6 +37,7 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "Default Max 7",
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
 					"fontsize" : 11.0,
@@ -47,7 +48,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 104.0, 25.0, 50.0, 19.0 ]
+					"patching_rect" : [ 104.0, 25.0, 50.0, 21.0 ]
 				}
 
 			}
@@ -58,7 +59,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 240.0, 25.0, 72.0, 18.0 ],
+					"patching_rect" : [ 240.0, 25.0, 72.0, 20.0 ],
 					"text" : "bitor()"
 				}
 
@@ -69,7 +70,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 240.0, 60.0, 211.0, 18.0 ],
+					"patching_rect" : [ 240.0, 60.0, 211.0, 20.0 ],
 					"text" : "bitwise OR operation. "
 				}
 
@@ -77,15 +78,14 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-13",
 					"linecount" : 3,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 34.0, 142.0, 103.0, 58.0 ],
-					"text" : "/one : 10,\n/two : 33,\n/comp : 43"
+					"patching_rect" : [ 34.0, 142.0, 103.0, 59.0 ],
+					"text" : "/one : 67,\n/two : 27,\n/comp : 91"
 				}
 
 			}
@@ -99,7 +99,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 34.0, 25.0, 50.0, 19.0 ]
+					"patching_rect" : [ 34.0, 25.0, 50.0, 21.0 ]
 				}
 
 			}
@@ -111,7 +111,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 34.0, 55.0, 89.0, 19.0 ],
+					"patching_rect" : [ 34.0, 55.0, 89.0, 21.0 ],
 					"text" : "o.pack /one /two"
 				}
 
@@ -119,7 +119,6 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-16",
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,

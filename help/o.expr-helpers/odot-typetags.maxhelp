@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 1,
+			"revision" : 10,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -37,6 +37,7 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "Default Max 7",
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
 					"fontface" : 1,
@@ -44,7 +45,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 534.0, 17.0, 68.0, 18.0 ],
+					"patching_rect" : [ 534.0, 17.0, 68.0, 20.0 ],
 					"text" : "typetags()"
 				}
 
@@ -56,7 +57,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 534.0, 52.0, 202.0, 42.0 ],
+					"patching_rect" : [ 534.0, 52.0, 202.0, 47.0 ],
 					"text" : "Takes one or more values and returns a list containing the types of each."
 				}
 
@@ -68,7 +69,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 27.0, 17.0, 60.0, 20.0 ],
+					"patching_rect" : [ 27.0, 17.0, 60.0, 22.0 ],
 					"text" : "loadbang"
 				}
 
@@ -76,46 +77,43 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-14",
 					"linecount" : 4,
 					"maxclass" : "o.compose",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 27.0, 48.5, 82.0, 60.0 ],
+					"patching_rect" : [ 27.0, 48.5, 80.0, 62.0 ],
 					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 64, 47, 102, 111, 111, 0, 0, 0, 0, 44, 46, 0, 0, 0, 0, 0, 48, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 12, 47, 97, 0, 0, 44, 105, 0, 0, 0, 0, 0, 1, 0, 0, 0, 12, 47, 98, 0, 0, 44, 105, 0, 0, 0, 0, 0, 2 ],
 					"saved_bundle_length" : 84,
-					"text" : "/foo : {\n\t/a : 1,\n\t/b : 2\n}"
+					"text" : "/foo : {\n  /a : 1,\n  /b : 2\n}"
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-8",
-					"linecount" : 12,
+					"linecount" : 11,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 27.0, 210.0, 310.0, 170.0 ],
-					"text" : "/foo : {\n\t/a : 1,\n\t/b : 2\n},\n/int : 300,\n/tags/int : 'i',\n/list : [\"ghost\", 0.31, 400, \"apple\", 'a', {\n\t/a : 1,\n\t/b : 2\n}, true, false, nil, \"infinitum\"],\n/tags/list : ['s', 'd', 'i', 's', 'c', '.', 'T', 'F', 'N', 's']"
+					"patching_rect" : [ 27.0, 210.0, 395.0, 161.0 ],
+					"text" : "/foo : {\n  /a : 1,\n  /b : 2\n},\n/int : 300,\n/tags/int : 'i',\n/list : [\"ghost\", 0.31, 400, \"apple\", 'a', {\n  /a : 1,\n  /b : 2\n}, true, false, nil],\n/tags/list : ['s', 'd', 'i', 's', 'c', '.', 'T', 'F', 'N']"
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-7",
-					"linecount" : 5,
+					"linecount" : 4,
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 27.0, 115.5, 344.0, 81.0 ],
+					"patching_rect" : [ 27.0, 115.5, 454.0, 70.0 ],
 					"text" : "/int = 300,\n/tags/int = typetags(/int),\n/list = [\"ghost\", 0.31, 400, \"apple\", 'a', /foo, true, false, nil],\n/tags/list = typetags(/list)"
 				}
 

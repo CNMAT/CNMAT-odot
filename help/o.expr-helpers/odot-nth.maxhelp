@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 1,
+			"revision" : 10,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -37,6 +37,7 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "Default Max 7",
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
 					"fontface" : 1,
@@ -44,7 +45,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 301.0, 31.0, 115.0, 18.0 ],
+					"patching_rect" : [ 301.0, 31.0, 115.0, 20.0 ],
 					"text" : "[[]], nth"
 				}
 
@@ -56,7 +57,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 301.0, 66.0, 223.0, 78.0 ],
+					"patching_rect" : [ 301.0, 66.0, 223.0, 87.0 ],
 					"text" : "access members of a list.\n\narguments:\n\n1. list\n2. index numbers to retreive from the list"
 				}
 
@@ -64,27 +65,27 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-28",
+					"linecount" : 4,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 29.0, 199.0, 190.0, 33.0 ]
+					"patching_rect" : [ 29.0, 181.0, 183.0, 72.0 ],
+					"text" : "/list : [6, 5, 4],\n/second : 5,\n/first/and/third : [6, 4],\n/second/and/first : [5, 6]"
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-29",
 					"linecount" : 4,
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 29.0, 90.0, 261.0, 68.0 ],
+					"patching_rect" : [ 29.0, 90.0, 262.0, 70.0 ],
 					"text" : "/list = [6, 5, 4],\n/second = /list[[1]],\n/first/and/third = /list[[0, 2]],\n/second/and/first = nth(/list, [1, 0])"
 				}
 
@@ -97,7 +98,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 29.0, 31.0, 56.0, 19.0 ],
+					"patching_rect" : [ 29.0, 31.0, 56.0, 21.0 ],
 					"text" : "loadbang"
 				}
 

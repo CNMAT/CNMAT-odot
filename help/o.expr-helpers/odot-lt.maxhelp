@@ -4,13 +4,13 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 1,
+			"revision" : 10,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 51.0, 97.0, 515.0, 241.0 ],
+		"rect" : [ 77.0, 94.0, 515.0, 241.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -37,6 +37,7 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "Default Max 7",
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
 					"id" : "obj-3",
@@ -44,7 +45,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 274.0, 57.0, 216.0, 42.0 ],
+					"patching_rect" : [ 274.0, 57.0, 216.0, 47.0 ],
 					"text" : "logical less-than operator. returns true if the left hand side is less than the right."
 				}
 
@@ -56,7 +57,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 274.0, 27.0, 94.0, 18.0 ],
+					"patching_rect" : [ 274.0, 27.0, 94.0, 20.0 ],
 					"text" : "<, lt, less than"
 				}
 
@@ -72,7 +73,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 34.0, 27.0, 50.0, 19.0 ]
+					"patching_rect" : [ 34.0, 27.0, 50.0, 21.0 ]
 				}
 
 			}
@@ -84,7 +85,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 34.0, 57.0, 73.0, 19.0 ],
+					"patching_rect" : [ 34.0, 57.0, 73.0, 21.0 ],
 					"text" : "o.pack /input"
 				}
 
@@ -92,29 +93,25 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-12",
-					"linecount" : 4,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 34.0, 159.0, 171.0, 70.0 ],
-					"text" : "/input : 1,\n/compare : 3,\n/less/than : true,\n/lt : true"
+					"patching_rect" : [ 34.0, 159.0, 171.0, 33.0 ]
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-4",
 					"linecount" : 3,
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 34.0, 91.0, 215.0, 56.0 ],
+					"patching_rect" : [ 34.0, 91.0, 216.0, 57.0 ],
 					"text" : "/compare = 3,\n/less/than = /input < /compare,\n/lt = lt(/input, /compare)"
 				}
 

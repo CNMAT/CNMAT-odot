@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 1,
+			"revision" : 10,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -37,6 +37,7 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "Default Max 7",
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
 					"id" : "obj-9",
@@ -44,7 +45,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 145.0, 19.0, 74.0, 20.0 ],
+					"patching_rect" : [ 145.0, 19.0, 74.0, 22.0 ],
 					"text" : "60 61 62 63"
 				}
 
@@ -56,7 +57,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 230.0, 19.0, 51.0, 18.0 ],
+					"patching_rect" : [ 230.0, 19.0, 51.0, 20.0 ],
 					"text" : "mtof()"
 				}
 
@@ -68,7 +69,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 230.0, 54.0, 315.0, 102.0 ],
+					"patching_rect" : [ 230.0, 54.0, 317.0, 114.0 ],
 					"text" : "Convert an input of one or more MIDI note values (0-127) into frequency.\n\narguments:\n\n1. input to convert\n\nexpression:  freq = 440 * exp(0.057762265 * (input - 69)))"
 				}
 
@@ -83,7 +84,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 89.0, 19.0, 50.0, 20.0 ]
+					"patching_rect" : [ 89.0, 19.0, 50.0, 22.0 ]
 				}
 
 			}
@@ -99,7 +100,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 25.0, 19.0, 57.0, 19.0 ]
+					"patching_rect" : [ 25.0, 19.0, 57.0, 21.0 ]
 				}
 
 			}
@@ -111,7 +112,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 25.0, 70.0, 69.0, 19.0 ],
+					"patching_rect" : [ 25.0, 70.0, 69.0, 21.0 ],
 					"text" : "o.pack /midi"
 				}
 
@@ -119,7 +120,6 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-5",
 					"maxclass" : "o.display",
 					"numinlets" : 1,
@@ -132,13 +132,12 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-3",
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 25.0, 107.0, 171.0, 31.0 ],
+					"patching_rect" : [ 25.0, 107.0, 169.0, 31.0 ],
 					"text" : "/frequency = mtof(/midi)"
 				}
 

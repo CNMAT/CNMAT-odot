@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 3,
+			"revision" : 10,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -37,6 +37,7 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "Default Max 7",
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
 					"fontface" : 0,
@@ -47,22 +48,20 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 33.0, 268.0, 314.0, 48.0 ],
-					"text" : "/a : \"foo\",\n/bundletag : 2020-05-19T01:25:51.291750Z"
+					"patching_rect" : [ 33.0, 268.0, 299.0, 48.0 ],
+					"text" : "/a : \"foo\",\n/bundletag : 2021-03-10T05:29:34.709024Z"
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-2",
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
 					"patching_rect" : [ 33.0, 225.0, 176.0, 31.0 ],
-					"presentation_linecount" : 2,
 					"text" : "/bundletag = gettimetag()"
 				}
 
@@ -95,7 +94,6 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-19",
 					"maxclass" : "o.compose",
 					"numinlets" : 2,
@@ -128,7 +126,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 251.0, 67.5, 158.0, 60.0 ],
-					"presentation_linecount" : 4,
 					"text" : "return a timetag previously set in a bundle's header \n\narguments: n/a"
 				}
 
@@ -136,7 +133,6 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-23",
 					"maxclass" : "o.display",
 					"numinlets" : 1,
@@ -150,14 +146,13 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-21",
 					"linecount" : 2,
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 33.0, 130.0, 136.0, 43.0 ],
+					"patching_rect" : [ 33.0, 130.0, 136.0, 44.0 ],
 					"text" : "settimetag(/time), \ndelete(/time)"
 				}
 

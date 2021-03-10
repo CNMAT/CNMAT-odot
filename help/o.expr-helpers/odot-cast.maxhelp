@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 1,
+			"revision" : 10,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -37,16 +37,16 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "Default Max 7",
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-2",
 					"maxclass" : "o.compose",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 30.0, 38.0, 244.0, 24.0 ],
+					"patching_rect" : [ 30.0, 38.0, 226.0, 23.0 ],
 					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 36, 47, 108, 105, 115, 116, 0, 0, 0, 44, 84, 105, 100, 115, 0, 0, 0, 0, 0, 0, 2, 64, 4, 0, 0, 0, 0, 0, 0, 104, 101, 108, 108, 111, 0, 0, 0 ],
 					"saved_bundle_length" : 56,
 					"text" : "/list : [true, 2, 2.5, \"hello\"]"
@@ -60,7 +60,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 312.0, 50.0, 148.0, 18.0 ],
+					"patching_rect" : [ 312.0, 50.0, 148.0, 20.0 ],
 					"text" : "cast"
 				}
 
@@ -72,7 +72,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 312.0, 85.0, 216.0, 90.0 ],
+					"patching_rect" : [ 312.0, 85.0, 216.0, 100.0 ],
 					"text" : "cast the 2nd argument based on the list given in the 1st argument.\n\ni - 32\nI - 64\nf - 32\nd - 64 (double)"
 				}
 
@@ -80,22 +80,18 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-12",
-					"linecount" : 2,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 30.0, 169.0, 229.0, 45.0 ],
-					"text" : "/list : [true, 2, 2.5, \"hello\"],\n/result : [1, 2., \"2.5\", 0]"
+					"patching_rect" : [ 30.0, 169.0, 229.0, 33.0 ]
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-4",
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,

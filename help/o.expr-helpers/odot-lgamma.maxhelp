@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 4,
+			"revision" : 10,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -107,7 +107,7 @@
 					"fontsize" : 12.0,
 					"id" : "obj-46",
 					"maxclass" : "newobj",
-					"numinlets" : 0,
+					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
 					"patching_rect" : [ 28.0, 23.0, 116.0, 22.0 ],
@@ -131,29 +131,27 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-8",
 					"linecount" : 2,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 28.0, 283.0, 191.0, 48.0 ],
-					"text" : "/ramp : 3.15,\n/lgamma : 0.835924"
+					"patching_rect" : [ 28.0, 283.0, 176.0, 46.0 ],
+					"text" : "/ramp : 1.05,\n/lgamma : -0.0268531"
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-24",
 					"linecount" : 3,
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 28.0, 58.0, 198.0, 59.0 ],
+					"patching_rect" : [ 28.0, 58.0, 183.0, 57.0 ],
 					"text" : "/ramp = /ramp * 0.5 + 0.5,\n/ramp *= 5,\n/lgamma = lgamma(/ramp)"
 				}
 
@@ -192,7 +190,7 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "o.linear_ramp.maxpat",
-				"bootpath" : "~/Documents/programming/git_repositories/ODOT-tutorials/reference_list/o.expr-helpers",
+				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/help/o.expr-helpers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1

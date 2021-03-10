@@ -4,13 +4,13 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 3,
+			"revision" : 10,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 70.0, 97.0, 349.0, 227.0 ],
+		"rect" : [ 70.0, 97.0, 337.0, 193.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -37,6 +37,7 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "Default Max 7",
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
 					"fontface" : 1,
@@ -44,7 +45,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 172.0, 44.0, 51.0, 20.0 ],
+					"patching_rect" : [ 157.0, 29.0, 51.0, 20.0 ],
 					"text" : "halfpi()"
 				}
 
@@ -56,7 +57,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 172.0, 79.0, 159.0, 47.0 ],
+					"patching_rect" : [ 157.0, 64.0, 159.0, 47.0 ],
 					"text" : "Return the constant HALFPI\n\narguments:  n/a"
 				}
 
@@ -69,7 +70,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 40.0, 39.0, 56.0, 21.0 ],
+					"patching_rect" : [ 25.0, 24.0, 56.0, 21.0 ],
 					"text" : "loadbang"
 				}
 
@@ -77,13 +78,12 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-4",
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 40.0, 152.0, 118.0, 33.0 ],
+					"patching_rect" : [ 25.0, 137.0, 118.0, 33.0 ],
 					"text" : "/hp : 1.5708"
 				}
 
@@ -91,13 +91,12 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-5",
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 40.0, 79.0, 103.0, 31.0 ],
+					"patching_rect" : [ 25.0, 64.0, 103.0, 31.0 ],
 					"text" : "/hp = halfpi()"
 				}
 

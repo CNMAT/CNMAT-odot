@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 3,
+			"revision" : 10,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -37,6 +37,7 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "Untitled5_template",
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
 					"fontsize" : 12.0,
@@ -45,7 +46,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 269.0, 167.0, 22.0, 20.0 ],
-					"presentation_linecount" : 2,
 					"text" : "+1"
 				}
 
@@ -106,7 +106,7 @@
 					"fontsize" : 12.0,
 					"id" : "obj-46",
 					"maxclass" : "newobj",
-					"numinlets" : 0,
+					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
 					"patching_rect" : [ 28.0, 23.0, 116.0, 22.0 ],
@@ -130,29 +130,27 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-8",
 					"linecount" : 2,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 28.0, 283.0, 158.0, 48.0 ],
-					"text" : "/ramp : 0.942478,\n/cos : 0.587785"
+					"patching_rect" : [ 28.0, 283.0, 167.0, 46.0 ],
+					"text" : "/ramp : 2.70177,\n/cos : -0.904827"
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-24",
 					"linecount" : 2,
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 28.0, 58.0, 299.0, 46.0 ],
+					"patching_rect" : [ 28.0, 58.0, 275.0, 44.0 ],
 					"text" : "/ramp = scale(/ramp, -1, 1, 0, twopi()),\n/cos = cos(/ramp)"
 				}
 
@@ -191,7 +189,7 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "o.linear_ramp.maxpat",
-				"bootpath" : "~/Documents/programming/git_repositories/ODOT-tutorials/reference_list/o.expr-helpers",
+				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/help/o.expr-helpers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1

@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 8,
+			"revision" : 10,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -47,7 +47,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 208.0, 50.5, 245.0, 114.0 ],
-					"presentation_linecount" : 8,
 					"text" : "logical not operator \n\nProduces true or 1 if the operand is false or zero, and false or 0 if it is true or non-zero.\n\narguments:\n\n1. input address"
 				}
 
@@ -55,13 +54,12 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-5",
 					"maxclass" : "o.compose",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 92.0, 143.5, 106.0, 23.0 ],
+					"patching_rect" : [ 92.0, 143.5, 107.0, 23.0 ],
 					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 12, 47, 116, 101, 115, 116, 0, 0, 0, 44, 70, 0, 0 ],
 					"saved_bundle_length" : 32,
 					"text" : "/test : false"
@@ -71,13 +69,12 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-4",
 					"maxclass" : "o.compose",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 79.674351585014406, 111.5, 100.0, 23.0 ],
+					"patching_rect" : [ 79.674351585014406, 111.5, 93.0, 23.0 ],
 					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 12, 47, 116, 101, 115, 116, 0, 0, 0, 44, 78, 0, 0 ],
 					"saved_bundle_length" : 32,
 					"text" : "/test : nil"
@@ -87,7 +84,6 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-2",
 					"maxclass" : "o.compose",
 					"numinlets" : 2,
@@ -103,7 +99,6 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-1",
 					"maxclass" : "o.compose",
 					"numinlets" : 2,
@@ -132,7 +127,6 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-28",
 					"maxclass" : "o.display",
 					"numinlets" : 1,
@@ -145,14 +139,13 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-27",
 					"linecount" : 2,
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 31.0, 196.5, 288.0, 43.0 ],
+					"patching_rect" : [ 31.0, 196.5, 176.0, 44.0 ],
 					"text" : "/op/not/test = !/test,\n/fn/not/test = not(/test)"
 				}
 
@@ -160,7 +153,6 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-26",
 					"maxclass" : "o.compose",
 					"numinlets" : 2,

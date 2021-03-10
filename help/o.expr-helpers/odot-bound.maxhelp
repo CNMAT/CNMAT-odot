@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 1,
+			"revision" : 10,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -37,6 +37,7 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "Default Max 7",
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
 					"id" : "obj-13",
@@ -44,8 +45,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 326.0, 162.5, 229.0, 102.0 ],
-					"presentation_linecount" : 8,
+					"patching_rect" : [ 326.0, 162.5, 229.0, 114.0 ],
 					"text" : "compare to\n |\n |\n |\n |\n |\n |\nV"
 				}
 
@@ -57,7 +57,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 326.0, 279.0, 55.0, 18.0 ],
+					"patching_rect" : [ 326.0, 279.0, 55.0, 20.0 ],
 					"text" : "exists()"
 				}
 
@@ -69,8 +69,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 326.0, 314.0, 229.0, 102.0 ],
-					"presentation_linecount" : 8,
+					"patching_rect" : [ 326.0, 314.0, 229.0, 114.0 ],
 					"text" : "Takes an address and returns true if the address is exists in the bundle, regardless whether it is bound to any data or not, and false otherwise.\n\narguments: \n\n1. address"
 				}
 
@@ -78,31 +77,25 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-5",
-					"linecount" : 2,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 20.0, 438.0, 275.0, 45.0 ],
-					"presentation_linecount" : 3,
-					"text" : "/foo : 300,\n/post : \"bundle member does not exist\""
+					"patching_rect" : [ 20.0, 438.0, 275.0, 33.0 ]
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-6",
 					"linecount" : 2,
 					"maxclass" : "o.compose",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 20.0, 279.0, 115.0, 35.0 ],
-					"presentation_linecount" : 2,
+					"patching_rect" : [ 20.0, 279.0, 113.0, 36.0 ],
 					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 47, 102, 111, 111, 0, 0, 0, 0, 44, 105, 0, 0, 0, 0, 1, 44, 0, 0, 0, 20, 47, 98, 117, 110, 100, 108, 101, 47, 109, 101, 109, 98, 101, 114, 0, 0, 44, 0, 0, 0 ],
 					"saved_bundle_length" : 60,
 					"text" : "/foo : 300,\n/bundle/member"
@@ -112,13 +105,12 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-11",
 					"maxclass" : "o.compose",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 145.0, 279.0, 146.0, 23.0 ],
+					"patching_rect" : [ 145.0, 279.0, 87.0, 23.0 ],
 					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 47, 102, 111, 111, 0, 0, 0, 0, 44, 105, 0, 0, 0, 0, 1, 44 ],
 					"saved_bundle_length" : 36,
 					"text" : "/foo : 300"
@@ -128,15 +120,13 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-12",
 					"linecount" : 5,
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 20.0, 335.0, 275.0, 81.0 ],
-					"presentation_linecount" : 6,
+					"patching_rect" : [ 20.0, 335.0, 275.0, 83.0 ],
 					"text" : "if(\n  exists(/bundle/member), \n  /post = \"bundle member exists\", \n  /post = \"bundle member does not exist\"\n)"
 				}
 
@@ -148,7 +138,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 326.0, 32.0, 55.0, 18.0 ],
+					"patching_rect" : [ 326.0, 32.0, 55.0, 20.0 ],
 					"text" : "bound()"
 				}
 
@@ -160,7 +150,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 326.0, 67.0, 229.0, 90.0 ],
+					"patching_rect" : [ 326.0, 67.0, 229.0, 100.0 ],
 					"text" : "Takes an address and returns true if the address is bound to some data in the bundle, and false otherwise.\n\narguments: \n\n1. address"
 				}
 
@@ -168,7 +158,6 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-7",
 					"maxclass" : "o.display",
 					"numinlets" : 1,
@@ -181,14 +170,13 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-8",
 					"linecount" : 2,
 					"maxclass" : "o.compose",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 20.0, 32.0, 115.0, 35.0 ],
+					"patching_rect" : [ 20.0, 32.0, 113.0, 36.0 ],
 					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 47, 102, 111, 111, 0, 0, 0, 0, 44, 105, 0, 0, 0, 0, 1, 44, 0, 0, 0, 20, 47, 98, 117, 110, 100, 108, 101, 47, 109, 101, 109, 98, 101, 114, 0, 0, 44, 0, 0, 0 ],
 					"saved_bundle_length" : 60,
 					"text" : "/foo : 300,\n/bundle/member"
@@ -198,14 +186,13 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-9",
 					"linecount" : 2,
 					"maxclass" : "o.compose",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 145.0, 32.0, 146.0, 35.0 ],
+					"patching_rect" : [ 145.0, 32.0, 146.0, 36.0 ],
 					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 24, 47, 98, 117, 110, 100, 108, 101, 47, 109, 101, 109, 98, 101, 114, 0, 0, 44, 105, 0, 0, 0, 0, 0, 1, 0, 0, 0, 16, 47, 102, 111, 111, 0, 0, 0, 0, 44, 105, 0, 0, 0, 0, 1, 44 ],
 					"saved_bundle_length" : 64,
 					"text" : "/bundle/member : 1,\n/foo : 300"
@@ -215,14 +202,13 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-10",
 					"linecount" : 5,
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 20.0, 88.0, 257.0, 81.0 ],
+					"patching_rect" : [ 20.0, 88.0, 249.0, 83.0 ],
 					"text" : "if(\n  bound(/bundle/member), \n  /post = \"bundle member is bound\", \n  /post = \"bundle member is unbound\"\n)"
 				}
 

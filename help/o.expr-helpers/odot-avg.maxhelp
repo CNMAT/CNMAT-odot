@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 3,
+			"revision" : 10,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -37,6 +37,7 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "Default Max 7",
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
 					"fontface" : 1,
@@ -56,7 +57,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 275.0, 74.0, 195.0, 87.0 ],
+					"patching_rect" : [ 275.0, 74.0, 202.0, 87.0 ],
 					"text" : "Return the average of the input list.  Same as mean()\n\narguments:  \n\n1. list to average"
 				}
 
@@ -77,14 +78,13 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-4",
 					"linecount" : 2,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 40.0, 152.0, 215.0, 45.0 ],
+					"patching_rect" : [ 40.0, 152.0, 176.0, 46.0 ],
 					"text" : "/list : [1, 2, 3, 4, 15],\n/avg : 5."
 				}
 
@@ -92,14 +92,13 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-5",
 					"linecount" : 2,
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 40.0, 79.0, 178.0, 43.0 ],
+					"patching_rect" : [ 40.0, 79.0, 176.0, 44.0 ],
 					"text" : "/list = [1, 2, 3, 4, 15],\n/avg = avg(/list)"
 				}
 

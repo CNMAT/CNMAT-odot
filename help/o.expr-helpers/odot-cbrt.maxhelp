@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 1,
+			"revision" : 10,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -37,6 +37,7 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "Untitled5_template",
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
 					"fontface" : 1,
@@ -45,7 +46,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 212.0, 28.0, 69.0, 18.0 ],
+					"patching_rect" : [ 212.0, 28.0, 69.0, 20.0 ],
 					"text" : "cbrt()"
 				}
 
@@ -58,7 +59,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 212.0, 63.0, 215.0, 66.0 ],
+					"patching_rect" : [ 212.0, 63.0, 215.0, 74.0 ],
 					"text" : "The cube root of x.\n\narguments: \n\n1. x input"
 				}
 
@@ -82,10 +83,10 @@
 					"fontsize" : 12.0,
 					"id" : "obj-46",
 					"maxclass" : "newobj",
-					"numinlets" : 0,
+					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 31.0, 28.0, 116.0, 20.0 ],
+					"patching_rect" : [ 31.0, 28.0, 116.0, 22.0 ],
 					"text" : "o.linear_ramp /ramp"
 				}
 
@@ -98,7 +99,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "FullPacket" ],
-					"patching_rect" : [ 82.0, 150.0, 73.0, 20.0 ],
+					"patching_rect" : [ 82.0, 150.0, 73.0, 22.0 ],
 					"text" : "o.route /cbrt"
 				}
 
@@ -106,29 +107,27 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-8",
 					"linecount" : 2,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 31.0, 288.0, 158.0, 48.0 ],
-					"text" : "/ramp : 4.77522,\n/cbrt : 1.68396"
+					"patching_rect" : [ 31.0, 288.0, 173.0, 46.0 ],
+					"text" : "/ramp : -0.251327,\n/cbrt : -0.631074"
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-24",
 					"linecount" : 2,
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 31.0, 63.0, 147.0, 46.0 ],
+					"patching_rect" : [ 31.0, 63.0, 136.0, 44.0 ],
 					"text" : "/ramp *= twopi(),\n/cbrt = cbrt(/ramp)"
 				}
 
@@ -167,7 +166,7 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "o.linear_ramp.maxpat",
-				"bootpath" : "~/Development/CNMAT/ODOT-tutorials/reference_list/o.expr-helpers",
+				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/help/o.expr-helpers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1

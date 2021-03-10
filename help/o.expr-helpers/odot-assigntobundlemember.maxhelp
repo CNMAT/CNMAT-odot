@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 1,
+			"revision" : 10,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -37,20 +37,20 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "Default Max 7",
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-8",
 					"linecount" : 4,
 					"maxclass" : "o.compose",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 28.0, 52.0, 140.0, 60.0 ],
+					"patching_rect" : [ 28.0, 52.0, 140.0, 62.0 ],
 					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 80, 47, 98, 110, 100, 108, 0, 0, 0, 44, 46, 0, 0, 0, 0, 0, 64, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 111, 110, 101, 0, 0, 0, 0, 44, 115, 0, 0, 104, 101, 108, 108, 111, 0, 0, 0, 0, 0, 0, 20, 47, 116, 119, 111, 0, 0, 0, 0, 44, 115, 0, 0, 103, 111, 111, 100, 98, 121, 101, 0 ],
 					"saved_bundle_length" : 100,
-					"text" : "/bndl : {\n\t/one : \"hello\",\n\t/two : \"goodbye\"\n}"
+					"text" : "/bndl : {\n  /one : \"hello\",\n  /two : \"goodbye\"\n}"
 				}
 
 			}
@@ -62,7 +62,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 28.0, 23.0, 54.0, 19.0 ],
+					"patching_rect" : [ 28.0, 23.0, 54.0, 21.0 ],
 					"text" : "loadbang"
 				}
 
@@ -74,7 +74,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 338.0, 37.0, 152.0, 18.0 ],
+					"patching_rect" : [ 338.0, 37.0, 152.0, 20.0 ],
 					"text" : "assigntobundlemember()"
 				}
 
@@ -86,7 +86,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 338.0, 72.0, 180.0, 114.0 ],
+					"patching_rect" : [ 338.0, 72.0, 180.0, 127.0 ],
 					"text" : "Assign <arg3>... \nto the bundle address <arg2> ...\nin the bundle <arg1>.\n\narguments:\n\n1. bundle to access\n2. the member name\n3. the value to assign"
 				}
 
@@ -94,29 +94,27 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-7",
 					"linecount" : 5,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 28.0, 185.0, 150.0, 83.0 ],
-					"text" : "/bndl : {\n\t/one : \"newval\",\n\t/two : \"goodbye\"\n},\n/val : \"newval\""
+					"patching_rect" : [ 28.0, 185.0, 130.0, 85.0 ],
+					"text" : "/bndl : {\n  /one : \"newval\",\n  /two : \"goodbye\"\n},\n/val : \"newval\""
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-10",
 					"linecount" : 2,
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 28.0, 125.0, 281.0, 43.0 ],
+					"patching_rect" : [ 28.0, 125.0, 269.0, 44.0 ],
 					"text" : "/val = \"newval\",\nassigntobundlemember(/bndl, /one, /val)"
 				}
 

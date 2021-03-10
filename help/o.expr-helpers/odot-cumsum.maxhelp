@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 1,
+			"revision" : 10,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -37,6 +37,7 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "Default Max 7",
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
 					"fontface" : 2,
@@ -46,7 +47,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 43.0, 111.0, 89.0, 56.0 ],
+					"patching_rect" : [ 43.0, 111.0, 89.0, 62.0 ],
 					"text" : "1 + (0) = 1\n2 + 1 = 3\n3 + 3 = 6\n6 + 4 = 10\n10 + 5 = 15"
 				}
 
@@ -58,7 +59,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 261.0, 22.0, 66.0, 18.0 ],
+					"patching_rect" : [ 261.0, 22.0, 66.0, 20.0 ],
 					"text" : "cumsum()"
 				}
 
@@ -70,7 +71,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 261.0, 57.0, 188.0, 66.0 ],
+					"patching_rect" : [ 261.0, 57.0, 188.0, 74.0 ],
 					"text" : "The cumulative sum of a list.\n\narguments:  \n\n1. list to input"
 				}
 
@@ -83,7 +84,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 26.0, 22.0, 56.0, 19.0 ],
+					"patching_rect" : [ 26.0, 22.0, 56.0, 21.0 ],
 					"text" : "loadbang"
 				}
 
@@ -91,14 +92,13 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-4",
 					"linecount" : 2,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 26.0, 180.0, 215.0, 45.0 ],
+					"patching_rect" : [ 26.0, 180.0, 189.0, 46.0 ],
 					"text" : "/list : [1, 2, 3, 4, 5],\n/cumsum : [1, 3, 6, 10, 15]"
 				}
 
@@ -106,14 +106,13 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-5",
 					"linecount" : 2,
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 26.0, 57.0, 178.0, 43.0 ],
+					"patching_rect" : [ 26.0, 57.0, 169.0, 44.0 ],
 					"text" : "/list = [1, 2, 3, 4, 5],\n/cumsum = cumsum(/list)"
 				}
 

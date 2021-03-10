@@ -4,13 +4,13 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 1,
+			"revision" : 10,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 62.0, 103.0, 524.0, 232.0 ],
+		"rect" : [ 62.0, 103.0, 510.0, 206.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -37,6 +37,7 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "Default Max 7",
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
 					"fontface" : 1,
@@ -44,7 +45,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 270.0, 27.0, 57.0, 18.0 ],
+					"patching_rect" : [ 269.0, 19.0, 57.0, 20.0 ],
 					"text" : "float32()"
 				}
 
@@ -56,7 +57,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 270.0, 62.0, 227.0, 66.0 ],
+					"patching_rect" : [ 269.0, 54.0, 227.0, 74.0 ],
 					"text" : "cast data to a 64-bit floating point value.\n\narguments:\n\n1. data to cast"
 				}
 
@@ -68,7 +69,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 28.0, 27.0, 60.0, 20.0 ],
+					"patching_rect" : [ 27.0, 19.0, 60.0, 22.0 ],
 					"text" : "loadbang"
 				}
 
@@ -76,14 +77,13 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-19",
 					"linecount" : 2,
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 28.0, 94.0, 204.0, 43.0 ],
+					"patching_rect" : [ 27.0, 69.0, 163.0, 44.0 ],
 					"text" : "/f = 50,\n/float/64 = float64(/f)"
 				}
 
@@ -91,14 +91,13 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-20",
 					"linecount" : 2,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 28.0, 162.0, 218.0, 45.0 ],
+					"patching_rect" : [ 27.0, 137.0, 120.0, 46.0 ],
 					"text" : "/f : 50,\n/float/64 : 50."
 				}
 

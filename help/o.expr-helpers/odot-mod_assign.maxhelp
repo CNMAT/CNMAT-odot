@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 1,
+			"revision" : 10,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -37,17 +37,17 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "Untitled5_template",
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-1",
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 38.0, 93.0, 101.0, 33.0 ],
-					"text" : "/count : 19"
+					"patching_rect" : [ 38.0, 93.0, 99.0, 33.0 ],
+					"text" : "/count : 6"
 				}
 
 			}
@@ -59,7 +59,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 38.0, 62.5, 74.0, 19.0 ],
+					"patching_rect" : [ 38.0, 62.5, 74.0, 21.0 ],
 					"text" : "o.pack /count"
 				}
 
@@ -77,7 +77,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 1,
-							"revision" : 1,
+							"revision" : 10,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -110,6 +110,7 @@
 						"tags" : "",
 						"style" : "",
 						"subpatcher_template" : "Untitled5_template",
+						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
 									"comment" : "",
@@ -164,7 +165,7 @@
  ]
 					}
 ,
-					"patching_rect" : [ 38.0, 32.0, 54.0, 19.0 ],
+					"patching_rect" : [ 38.0, 32.0, 54.0, 21.0 ],
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
@@ -185,7 +186,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 287.0, 38.0, 109.0, 18.0 ],
+					"patching_rect" : [ 287.0, 38.0, 109.0, 20.0 ],
 					"text" : "%="
 				}
 
@@ -198,7 +199,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 287.0, 73.0, 231.0, 42.0 ],
+					"patching_rect" : [ 287.0, 73.0, 234.0, 47.0 ],
 					"text" : "modulo and assign. compute the modulus and assign the result to the address on the left."
 				}
 
@@ -206,21 +207,19 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-4",
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 38.0, 171.0, 110.0, 33.0 ],
-					"text" : "/count : 5"
+					"patching_rect" : [ 38.0, 171.0, 93.0, 33.0 ],
+					"text" : "/count : 6"
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-5",
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,

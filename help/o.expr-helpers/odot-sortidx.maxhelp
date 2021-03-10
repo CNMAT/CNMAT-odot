@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 1,
+			"revision" : 10,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -37,6 +37,7 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "Default Max 7",
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
 					"fontface" : 1,
@@ -44,7 +45,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 312.0, 33.0, 59.0, 18.0 ],
+					"patching_rect" : [ 312.0, 33.0, 59.0, 20.0 ],
 					"text" : "sortidx()"
 				}
 
@@ -56,7 +57,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 312.0, 68.0, 230.0, 126.0 ],
+					"patching_rect" : [ 312.0, 68.0, 230.0, 141.0 ],
 					"text" : "Sort the elements of a list from low to high, and return a list of indices corresponding to the sorted order.\n\nThis function is useful for sorting one list by the sorted indices of another.\n\narguments: \n\n1. list "
 				}
 
@@ -69,7 +70,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 26.0, 28.0, 56.0, 19.0 ],
+					"patching_rect" : [ 26.0, 28.0, 56.0, 21.0 ],
 					"text" : "loadbang"
 				}
 
@@ -77,14 +78,13 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-4",
 					"linecount" : 4,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 26.0, 182.0, 235.0, 70.0 ],
+					"patching_rect" : [ 26.0, 182.0, 236.0, 72.0 ],
 					"text" : "/list/1 : [41, 3.14, 0.2, 4, 250],\n/list/2 : [0, 1, 2, 3, 4],\n/sorti : [2, 1, 3, 0, 4],\n/list/sorted : [2, 1, 3, 0, 4]"
 				}
 
@@ -92,14 +92,13 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-5",
 					"linecount" : 4,
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 26.0, 68.0, 242.0, 68.0 ],
+					"patching_rect" : [ 26.0, 68.0, 242.0, 70.0 ],
 					"text" : "/list/1 = [41, 3.14, 0.2, 4, 250], \n/list/2 = [0, 1, 2, 3, 4],\n/sorti = sortidx(/list/1), \n/list/sorted = /list/2[[/sorti]]"
 				}
 

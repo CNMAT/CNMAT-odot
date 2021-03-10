@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 1,
+			"revision" : 10,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -37,6 +37,7 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "Default Max 7",
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
 					"fontface" : 1,
@@ -44,7 +45,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 336.0, 26.0, 184.0, 18.0 ],
+					"patching_rect" : [ 336.0, 26.0, 184.0, 20.0 ],
 					"text" : "<=, ge, greater than or equal to"
 				}
 
@@ -56,7 +57,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 336.0, 61.0, 216.0, 42.0 ],
+					"patching_rect" : [ 336.0, 61.0, 216.0, 47.0 ],
 					"text" : "logical greater-than-or-equal operator. returns true if the left hand side is greater than, or equal to, the right."
 				}
 
@@ -72,7 +73,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 34.0, 26.0, 50.0, 19.0 ]
+					"patching_rect" : [ 34.0, 26.0, 50.0, 21.0 ]
 				}
 
 			}
@@ -84,7 +85,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 34.0, 56.0, 73.0, 19.0 ],
+					"patching_rect" : [ 34.0, 56.0, 73.0, 21.0 ],
 					"text" : "o.pack /input"
 				}
 
@@ -92,7 +93,6 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-12",
 					"maxclass" : "o.display",
 					"numinlets" : 1,
@@ -105,14 +105,13 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-4",
 					"linecount" : 4,
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 34.0, 92.0, 271.0, 68.0 ],
+					"patching_rect" : [ 34.0, 92.0, 275.0, 70.0 ],
 					"text" : "/compare = 3,\n/equal = /input == /compare,\n/greater/equal/to = /input >= /compare, \n/ge = ge(/input, /compare)"
 				}
 

@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 1,
+			"revision" : 10,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -37,6 +37,7 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "Untitled5_template",
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
 					"fontsize" : 11.0,
@@ -44,7 +45,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 102.0, 24.5, 36.0, 17.0 ],
+					"patching_rect" : [ 102.0, 24.5, 36.0, 19.0 ],
 					"text" : "reset "
 				}
 
@@ -69,7 +70,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 32.0, 56.5, 74.0, 19.0 ],
+					"patching_rect" : [ 32.0, 56.5, 74.0, 21.0 ],
 					"text" : "o.pack /count"
 				}
 
@@ -87,7 +88,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 1,
-							"revision" : 1,
+							"revision" : 10,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -120,6 +121,7 @@
 						"tags" : "",
 						"style" : "",
 						"subpatcher_template" : "Untitled5_template",
+						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
 									"comment" : "",
@@ -194,7 +196,7 @@
  ]
 					}
 ,
-					"patching_rect" : [ 32.0, 26.0, 32.0, 19.0 ],
+					"patching_rect" : [ 32.0, 26.0, 32.0, 21.0 ],
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
@@ -215,7 +217,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 287.0, 38.0, 109.0, 18.0 ],
+					"patching_rect" : [ 287.0, 38.0, 109.0, 20.0 ],
 					"text" : "modulo (%, mod) "
 				}
 
@@ -228,7 +230,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 287.0, 73.0, 231.0, 90.0 ],
+					"patching_rect" : [ 287.0, 73.0, 231.0, 100.0 ],
 					"text" : "return the modulo of the left hand side divided by the right.\n\narguments: \n\n1. dividend\n2. divisor"
 				}
 
@@ -236,29 +238,27 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-4",
 					"linecount" : 4,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 32.0, 153.0, 215.0, 70.0 ],
-					"text" : "/count : 1,\n/list : [1, 7, 0, 13, 5],\n/result : [0, 1, 1, 1, 1],\n/result/2 : 1"
+					"patching_rect" : [ 32.0, 153.0, 196.0, 72.0 ],
+					"text" : "/count : 13,\n/list : [1, 7, 0, 13, 5],\n/result : [0, 6, 13, 0, 3],\n/result/2 : 1"
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-5",
 					"linecount" : 3,
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 32.0, 87.0, 242.0, 56.0 ],
+					"patching_rect" : [ 32.0, 87.0, 183.0, 57.0 ],
 					"text" : "/list = [1, 7, 0, 13, 5], \n/result = /count % /list, \n/result/2 = mod(/count, 3)"
 				}
 

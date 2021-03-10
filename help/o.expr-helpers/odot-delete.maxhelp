@@ -4,13 +4,13 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 1,
+			"revision" : 10,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 62.0, 107.0, 499.0, 224.0 ],
+		"rect" : [ 62.0, 107.0, 499.0, 246.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -37,6 +37,7 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "Default Max 7",
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
 					"fontface" : 1,
@@ -44,7 +45,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 204.0, 12.5, 51.0, 18.0 ],
+					"patching_rect" : [ 188.0, 12.5, 51.0, 20.0 ],
 					"text" : "delete()"
 				}
 
@@ -56,7 +57,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 204.0, 43.5, 261.0, 78.0 ],
+					"patching_rect" : [ 188.0, 43.5, 264.0, 87.0 ],
 					"text" : "remove a bundle member \n\narguments:\n\n1. address to remove from the resultant bundle. arguments may be addresses or strings."
 				}
 
@@ -68,7 +69,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 23.0, 12.5, 61.0, 20.0 ],
+					"patching_rect" : [ 23.0, 12.5, 61.0, 22.0 ],
 					"text" : "loadbang"
 				}
 
@@ -76,13 +77,12 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-28",
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 23.0, 170.5, 136.0, 34.0 ],
+					"patching_rect" : [ 23.0, 189.5, 116.0, 33.0 ],
 					"text" : "/param/2 : \"two\""
 				}
 
@@ -90,13 +90,12 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-27",
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 23.0, 130.5, 212.0, 32.0 ],
+					"patching_rect" : [ 23.0, 149.5, 196.0, 31.0 ],
 					"text" : "delete(/param/1, \"/param/3\")"
 				}
 
@@ -104,14 +103,13 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-26",
 					"linecount" : 3,
 					"maxclass" : "o.compose",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 23.0, 57.0, 150.0, 51.0 ],
+					"patching_rect" : [ 23.0, 57.0, 133.0, 49.0 ],
 					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 112, 97, 114, 97, 109, 47, 49, 0, 0, 0, 0, 44, 115, 0, 0, 111, 110, 101, 0, 0, 0, 0, 20, 47, 112, 97, 114, 97, 109, 47, 50, 0, 0, 0, 0, 44, 115, 0, 0, 116, 119, 111, 0, 0, 0, 0, 20, 47, 112, 97, 114, 97, 109, 47, 51, 0, 0, 0, 0, 44, 105, 0, 0, 0, 0, 0, 3 ],
 					"saved_bundle_length" : 88,
 					"text" : "/param/1 : \"one\",\n/param/2 : \"two\",\n/param/3 : 3"

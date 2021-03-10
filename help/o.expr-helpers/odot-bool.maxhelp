@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 1,
+			"revision" : 10,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -37,6 +37,7 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "Default Max 7",
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
 					"fontface" : 1,
@@ -44,7 +45,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 200.0, 34.0, 64.0, 18.0 ],
+					"patching_rect" : [ 200.0, 34.0, 64.0, 20.0 ],
 					"text" : " bool()"
 				}
 
@@ -56,7 +57,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 200.0, 69.0, 170.0, 114.0 ],
+					"patching_rect" : [ 200.0, 69.0, 170.0, 127.0 ],
 					"text" : "Cast a value to a boolean type. For numbers: zero produces false, and nonzero produces true. Nonnumeric values always produce false.\n\narguments:  \n\n1. value"
 				}
 
@@ -69,7 +70,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 30.0, 29.0, 56.0, 19.0 ],
+					"patching_rect" : [ 30.0, 29.0, 56.0, 21.0 ],
 					"text" : "loadbang"
 				}
 
@@ -77,14 +78,13 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-4",
 					"linecount" : 2,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 30.0, 126.0, 162.0, 45.0 ],
+					"patching_rect" : [ 30.0, 126.0, 115.0, 46.0 ],
 					"text" : "/true : true,\n/false : false"
 				}
 
@@ -92,14 +92,13 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-5",
 					"linecount" : 2,
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 30.0, 69.0, 143.0, 43.0 ],
+					"patching_rect" : [ 30.0, 69.0, 143.0, 44.0 ],
 					"text" : "/true =  bool(1.5), \n/false = bool(0)"
 				}
 

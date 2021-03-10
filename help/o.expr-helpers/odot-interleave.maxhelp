@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 1,
+			"revision" : 10,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -37,6 +37,7 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "Default Max 7",
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
 					"fontface" : 1,
@@ -44,7 +45,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 341.0, 34.0, 73.0, 18.0 ],
+					"patching_rect" : [ 341.0, 34.0, 73.0, 20.0 ],
 					"text" : "interleave()"
 				}
 
@@ -56,7 +57,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 341.0, 69.0, 204.0, 126.0 ],
+					"patching_rect" : [ 341.0, 69.0, 204.0, 141.0 ],
 					"text" : "Interleave two or more lists. If the lists are not the same length, the length of the shortest list will be used.\n\narguments:\n\n1. list a\n2. list b\n..."
 				}
 
@@ -69,7 +70,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 31.0, 34.0, 56.0, 19.0 ],
+					"patching_rect" : [ 31.0, 34.0, 56.0, 21.0 ],
 					"text" : "loadbang"
 				}
 
@@ -77,14 +78,13 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-14",
 					"linecount" : 3,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 31.0, 164.0, 268.0, 58.0 ],
+					"patching_rect" : [ 31.0, 164.0, 269.0, 59.0 ],
 					"text" : "/even : [2, 4, 6, 8],\n/odd : [1, 3, 5, 7, 9],\n/interleaved : [1, 2, 3, 4, 5, 6, 7, 8]"
 				}
 
@@ -92,15 +92,13 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-15",
 					"linecount" : 3,
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 31.0, 69.0, 261.0, 56.0 ],
-					"presentation_linecount" : 3,
+					"patching_rect" : [ 31.0, 69.0, 262.0, 57.0 ],
 					"text" : "/even = [2, 4, 6, 8], \n/odd = [1, 3, 5, 7, 9], \n/interleaved = interleave(/odd, /even)"
 				}
 

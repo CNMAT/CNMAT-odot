@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 1,
+			"revision" : 10,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -37,6 +37,7 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "Default Max 7",
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
 					"fontface" : 1,
@@ -44,7 +45,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 155.0, 45.0, 51.0, 18.0 ],
+					"patching_rect" : [ 155.0, 45.0, 51.0, 20.0 ],
 					"text" : "*="
 				}
 
@@ -56,7 +57,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 155.0, 80.0, 242.0, 42.0 ],
+					"patching_rect" : [ 155.0, 80.0, 242.0, 47.0 ],
 					"text" : "multiply an address by a number and assign the result to the address.  also known as augmented assignment."
 				}
 
@@ -69,7 +70,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 40.0, 45.0, 56.0, 19.0 ],
+					"patching_rect" : [ 40.0, 45.0, 56.0, 21.0 ],
 					"text" : "loadbang"
 				}
 
@@ -77,13 +78,12 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-16",
 					"maxclass" : "o.compose",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 40.0, 87.0, 89.0, 23.0 ],
+					"patching_rect" : [ 40.0, 87.0, 87.0, 23.0 ],
 					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 47, 116, 105, 109, 101, 115, 0, 0, 44, 105, 0, 0, 0, 0, 0, 3 ],
 					"saved_bundle_length" : 36,
 					"text" : "/times : 3"
@@ -93,13 +93,12 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-14",
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 40.0, 157.0, 92.0, 33.0 ],
+					"patching_rect" : [ 40.0, 157.0, 77.0, 33.0 ],
 					"text" : "/times : 9"
 				}
 
@@ -107,13 +106,12 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-15",
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 40.0, 115.0, 85.0, 31.0 ],
+					"patching_rect" : [ 40.0, 115.0, 83.0, 31.0 ],
 					"text" : "/times *= 3"
 				}
 

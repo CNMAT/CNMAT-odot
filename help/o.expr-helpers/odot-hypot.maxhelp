@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 1,
+			"revision" : 10,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -37,6 +37,7 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "Untitled5_template",
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
 					"id" : "obj-2",
@@ -44,7 +45,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 27.0, 21.0, 66.0, 22.0 ],
+					"patching_rect" : [ 27.0, 21.0, 66.0, 24.0 ],
 					"text" : "loadbang"
 				}
 
@@ -57,7 +58,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 228.0, 21.0, 62.0, 18.0 ],
+					"patching_rect" : [ 228.0, 21.0, 62.0, 20.0 ],
 					"text" : "hypot()"
 				}
 
@@ -70,7 +71,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 228.0, 56.0, 193.0, 102.0 ],
+					"patching_rect" : [ 228.0, 56.0, 193.0, 114.0 ],
 					"text" : "calculate the length of the hypotenuse of a triangle (distance from the origin)\n\narguments: \n\n1. x input\n2. y input"
 				}
 
@@ -78,14 +79,13 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-8",
 					"linecount" : 3,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 27.0, 146.0, 162.0, 61.0 ],
+					"patching_rect" : [ 27.0, 146.0, 123.0, 59.0 ],
 					"text" : "/x : 0.5,\n/y : 0.7,\n/hypot : 0.860233"
 				}
 
@@ -93,14 +93,13 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-24",
 					"linecount" : 3,
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 27.0, 62.0, 169.0, 59.0 ],
+					"patching_rect" : [ 27.0, 62.0, 156.0, 57.0 ],
 					"text" : "/x = 0.5,\n/y = 0.7,\n/hypot = hypot(/x, /y)"
 				}
 

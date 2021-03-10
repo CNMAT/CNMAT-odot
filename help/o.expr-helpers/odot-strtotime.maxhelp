@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 1,
+			"revision" : 10,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -37,6 +37,7 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "Untitled5_template",
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
 					"id" : "obj-10",
@@ -48,7 +49,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 1,
-							"revision" : 1,
+							"revision" : 10,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -81,6 +82,7 @@
 						"tags" : "",
 						"style" : "",
 						"subpatcher_template" : "Untitled5_template",
+						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
 									"id" : "obj-8",
@@ -96,7 +98,6 @@
 , 							{
 								"box" : 								{
 									"fontface" : 0,
-									"fontsize" : 11.0,
 									"id" : "obj-2",
 									"linecount" : 4,
 									"maxclass" : "o.expr.codebox",
@@ -111,9 +112,8 @@
 , 							{
 								"box" : 								{
 									"fontface" : 0,
-									"fontsize" : 11.0,
 									"id" : "obj-5",
-									"linecount" : 5,
+									"linecount" : 6,
 									"maxclass" : "o.display",
 									"numinlets" : 1,
 									"numoutlets" : 1,
@@ -161,7 +161,7 @@
  ]
 					}
 ,
-					"patching_rect" : [ 81.0, 323.0, 76.0, 22.0 ],
+					"patching_rect" : [ 81.0, 323.0, 76.0, 24.0 ],
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
@@ -182,8 +182,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 32.0, 261.0, 174.0, 54.0 ],
-					"presentation_linecount" : 4,
+					"patching_rect" : [ 32.0, 261.0, 174.0, 60.0 ],
 					"text" : "note:  there can be some data loss involved in this conversion. See below for more info:",
 					"textjustification" : 1
 				}
@@ -197,7 +196,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 373.0, 44.5, 306.0, 30.0 ],
+					"patching_rect" : [ 373.0, 44.5, 306.0, 33.0 ],
 					"text" : "o.timetag assigns an OSC timetag to the address specified by its argument, in this case, \"/now\"."
 				}
 
@@ -209,7 +208,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 313.0, 368.5, 170.0, 18.0 ],
+					"patching_rect" : [ 313.0, 368.5, 170.0, 20.0 ],
 					"text" : "note that the string has quotes"
 				}
 
@@ -222,7 +221,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 25.0, 50.0, 197.0, 126.0 ],
+					"patching_rect" : [ 25.0, 50.0, 201.0, 141.0 ],
 					"text" : "Convert a string to a timetag\n\narguments:\n\n1. string representation of a timetag (ISO 8601 format)\n\nreturns:\n\nan OSC timetag"
 				}
 
@@ -235,7 +234,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 25.0, 19.0, 68.0, 18.0 ],
+					"patching_rect" : [ 25.0, 19.0, 68.0, 20.0 ],
 					"text" : "strtotime()"
 				}
 
@@ -243,22 +242,18 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-19",
-					"linecount" : 2,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 251.0, 318.0, 294.0, 45.0 ],
-					"text" : "/tt/string : \"2021-01-10T08:32:36.054485Z\",\n/tt/real : 2021-01-11T08:32:36.054485Z"
+					"patching_rect" : [ 251.0, 318.0, 294.0, 33.0 ]
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-17",
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
@@ -277,7 +272,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 251.0, 207.0, 83.0, 19.0 ],
+					"patching_rect" : [ 251.0, 207.0, 83.0, 21.0 ],
 					"text" : "o.pack /tt/string"
 				}
 
@@ -290,7 +285,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 475.0, 255.5, 212.0, 42.0 ],
+					"patching_rect" : [ 475.0, 255.5, 212.0, 47.0 ],
 					"text" : "in order to convert this string representation back to an actual OSC timetag, we use strtotime()"
 				}
 
@@ -303,7 +298,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 336.0, 143.5, 306.0, 30.0 ],
+					"patching_rect" : [ 336.0, 143.5, 306.0, 33.0 ],
 					"text" : "o.route implicitly converts timetags to strings when it outputs them into Max"
 				}
 
@@ -316,7 +311,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 32.0, 207.0, 182.0, 19.0 ],
+					"patching_rect" : [ 32.0, 207.0, 182.0, 21.0 ],
 					"text" : "2021-01-10T08:32:36.054485Z"
 				}
 
@@ -329,7 +324,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "FullPacket" ],
-					"patching_rect" : [ 251.0, 149.0, 69.0, 19.0 ],
+					"patching_rect" : [ 251.0, 149.0, 69.0, 21.0 ],
 					"text" : "o.route /now"
 				}
 
@@ -337,14 +332,12 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-5",
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 251.0, 87.0, 268.0, 33.0 ],
-					"text" : "/now : 2021-01-10T08:32:36.054485Z"
+					"patching_rect" : [ 251.0, 87.0, 268.0, 33.0 ]
 				}
 
 			}
@@ -368,7 +361,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 251.0, 50.0, 80.0, 19.0 ],
+					"patching_rect" : [ 251.0, 50.0, 80.0, 21.0 ],
 					"text" : "o.timetag /now"
 				}
 

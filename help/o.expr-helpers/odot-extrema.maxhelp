@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 1,
+			"revision" : 10,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -37,6 +37,7 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "Default Max 7",
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
 					"fontface" : 1,
@@ -44,7 +45,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 303.0, 27.0, 63.0, 18.0 ],
+					"patching_rect" : [ 303.0, 27.0, 63.0, 20.0 ],
 					"text" : "extrema()"
 				}
 
@@ -56,7 +57,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 303.0, 62.0, 228.0, 78.0 ],
+					"patching_rect" : [ 303.0, 62.0, 206.0, 87.0 ],
 					"text" : "return the min and max of an input as a list of two elements.\n\narguments: \n\n1. list "
 				}
 
@@ -69,7 +70,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 30.0, 27.0, 56.0, 19.0 ],
+					"patching_rect" : [ 30.0, 27.0, 56.0, 21.0 ],
 					"text" : "loadbang"
 				}
 
@@ -77,14 +78,13 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-4",
-					"linecount" : 3,
+					"linecount" : 2,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 30.0, 134.0, 215.0, 58.0 ],
+					"patching_rect" : [ 30.0, 134.0, 255.0, 46.0 ],
 					"text" : "/list : [34.5, 10, 200, 0.004, 545],\n/ext : [0.004, 545]"
 				}
 
@@ -92,7 +92,6 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-5",
 					"linecount" : 2,
 					"maxclass" : "o.expr.codebox",

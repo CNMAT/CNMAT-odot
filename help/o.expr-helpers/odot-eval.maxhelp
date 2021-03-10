@@ -4,13 +4,13 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 1,
+			"revision" : 10,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 57.0, 98.0, 663.0, 251.0 ],
+		"rect" : [ 57.0, 98.0, 599.0, 250.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -37,18 +37,17 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "Default Max 7",
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-1",
 					"linecount" : 2,
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 158.0, 101.0, 202.0, 43.0 ],
-					"presentation_linecount" : 3,
+					"patching_rect" : [ 158.0, 101.0, 203.0, 44.0 ],
 					"text" : "/x = 4,\neval(\"/r = (/x + 0.5) * 0.5\")"
 				}
 
@@ -56,14 +55,13 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-2",
 					"linecount" : 2,
 					"maxclass" : "o.compose",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 31.0, 28.0, 294.0, 38.0 ],
+					"patching_rect" : [ 31.0, 28.0, 272.0, 36.0 ],
 					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 40, 47, 97, 100, 100, 47, 111, 102, 102, 115, 101, 116, 0, 44, 115, 0, 0, 47, 114, 32, 61, 32, 40, 47, 120, 32, 43, 32, 48, 46, 53, 41, 32, 42, 32, 48, 46, 53, 0, 0, 0, 0, 0, 0, 12, 47, 120, 0, 0, 44, 105, 0, 0, 0, 0, 0, 4 ],
 					"saved_bundle_length" : 76,
 					"text" : "/add/offset : \"/r = (/x + 0.5) * 0.5\",\n/x : 4"
@@ -77,7 +75,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 367.0, 28.0, 51.0, 18.0 ],
+					"patching_rect" : [ 382.0, 28.0, 40.0, 20.0 ],
 					"text" : "eval()"
 				}
 
@@ -89,7 +87,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 367.0, 59.0, 279.0, 66.0 ],
+					"patching_rect" : [ 382.0, 59.0, 195.0, 74.0 ],
 					"text" : "Evaluate a string as an expression.\n\narguments:\n\n1. address or string"
 				}
 
@@ -97,22 +95,20 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-20",
-					"linecount" : 2,
+					"linecount" : 3,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 31.0, 160.0, 267.0, 45.0 ],
-					"text" : "/x : 4,\n/r : 2.25"
+					"patching_rect" : [ 31.0, 160.0, 267.0, 59.0 ],
+					"text" : "/add/offset : \"/r = (/x + 0.5) * 0.5\",\n/x : 4,\n/r : 2.25"
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-21",
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,

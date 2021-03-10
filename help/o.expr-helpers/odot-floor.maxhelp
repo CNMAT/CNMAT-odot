@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 1,
+			"revision" : 10,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -37,6 +37,7 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "Default Max 7",
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
 					"fontface" : 1,
@@ -44,7 +45,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 247.0, 28.0, 51.0, 18.0 ],
+					"patching_rect" : [ 247.0, 28.0, 51.0, 20.0 ],
 					"text" : "floor()"
 				}
 
@@ -56,7 +57,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 247.0, 63.0, 240.0, 66.0 ],
+					"patching_rect" : [ 247.0, 63.0, 240.0, 74.0 ],
 					"text" : "round a value down to the nearest integer.\n\narguments:\n\n1. value to round"
 				}
 
@@ -64,7 +65,6 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-20",
 					"maxclass" : "o.display",
 					"numinlets" : 1,
@@ -77,13 +77,12 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-21",
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 31.0, 101.0, 158.0, 31.0 ],
+					"patching_rect" : [ 31.0, 101.0, 156.0, 31.0 ],
 					"text" : "/floor = floor(/input)"
 				}
 
@@ -99,7 +98,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 31.0, 28.0, 73.0, 19.0 ]
+					"patching_rect" : [ 31.0, 28.0, 73.0, 21.0 ]
 				}
 
 			}
@@ -111,7 +110,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 31.0, 61.0, 73.0, 19.0 ],
+					"patching_rect" : [ 31.0, 61.0, 73.0, 21.0 ],
 					"text" : "o.pack /input"
 				}
 

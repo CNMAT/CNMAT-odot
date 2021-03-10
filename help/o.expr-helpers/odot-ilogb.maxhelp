@@ -4,13 +4,13 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 1,
+			"revision" : 10,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 581.0, 106.0, 436.0, 281.0 ],
+		"rect" : [ 78.0, 108.0, 436.0, 281.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 14.0,
@@ -37,6 +37,7 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "Untitled5_template",
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
 					"id" : "obj-1",
@@ -44,7 +45,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 28.0, 27.0, 66.0, 22.0 ],
+					"patching_rect" : [ 28.0, 27.0, 66.0, 24.0 ],
 					"text" : "loadbang"
 				}
 
@@ -57,7 +58,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 196.0, 23.0, 45.0, 18.0 ],
+					"patching_rect" : [ 196.0, 23.0, 45.0, 20.0 ],
 					"text" : "ilogb()"
 				}
 
@@ -70,7 +71,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 196.0, 58.0, 227.0, 114.0 ],
+					"patching_rect" : [ 196.0, 58.0, 227.0, 127.0 ],
 					"text" : "computes the integral part of the exponent of the absolute value of x. the base of the logarathm is the radix of the machine's floating-point arithmetic (usually 2).\n\narguments:\n\n1. x"
 				}
 
@@ -78,29 +79,27 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-8",
-					"linecount" : 4,
+					"linecount" : 2,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 28.0, 158.0, 116.0, 75.0 ],
-					"text" : "/t/1 : 3,\n/t/2 : 3,\n/t/3 : -2147483648"
+					"patching_rect" : [ 28.0, 158.0, 70.0, 46.0 ],
+					"text" : "/t/1 : 3,\n/t/2 : 3"
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-24",
 					"linecount" : 2,
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 28.0, 58.0, 155.0, 46.0 ],
+					"patching_rect" : [ 28.0, 58.0, 130.0, 44.0 ],
 					"text" : "/t/1 = ilogb(10.),\n/t/2 = ilogb(-10.)"
 				}
 

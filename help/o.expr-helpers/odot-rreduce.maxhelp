@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 1,
+			"revision" : 10,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -37,6 +37,7 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "Default Max 7",
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
 					"id" : "obj-6",
@@ -44,7 +45,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 458.0, 154.0, 58.0, 20.0 ],
+					"patching_rect" : [ 458.0, 154.0, 58.0, 22.0 ],
 					"text" : "loadbang"
 				}
 
@@ -80,7 +81,6 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-15",
 					"maxclass" : "o.display",
 					"numinlets" : 1,
@@ -93,7 +93,6 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-16",
 					"maxclass" : "o.compose",
 					"numinlets" : 2,
@@ -109,7 +108,6 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-17",
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
@@ -123,7 +121,6 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-1",
 					"maxclass" : "o.display",
 					"numinlets" : 1,
@@ -136,7 +133,6 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-2",
 					"maxclass" : "o.compose",
 					"numinlets" : 2,
@@ -152,7 +148,6 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-4",
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
@@ -173,7 +168,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 219.0, 269.0, 129.0, 74.0 ],
-					"presentation_linecount" : 6,
 					"text" : "equivalent to\n(20 / (2 / (4 / 2)))\nor\n4 / 2 => 2\n2 / 2 => 1\n20 / 1 => 20"
 				}
 
@@ -188,7 +182,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 615.0, 269.0, 123.0, 74.0 ],
-					"presentation_linecount" : 6,
 					"text" : "equivalent to\n(1 - (2 - (3 - 4)))\nor\n3 - 4  => -1\n2 - -1 => 3\n1 - 3  => -2"
 				}
 
@@ -200,8 +193,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 38.0, 374.0, 424.0, 78.0 ],
-					"presentation_linecount" : 6,
+					"patching_rect" : [ 38.0, 374.0, 424.0, 87.0 ],
 					"text" : " |\n | \n |\n |\n |\nV"
 				}
 
@@ -212,7 +204,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 38.0, 354.0, 424.0, 18.0 ],
+					"patching_rect" : [ 38.0, 354.0, 424.0, 20.0 ],
 					"text" : "compare with lreduce() which does the same thing, but with left association"
 				}
 
@@ -220,20 +212,20 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-10",
+					"linecount" : 2,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 38.0, 269.0, 179.0, 33.0 ]
+					"patching_rect" : [ 38.0, 269.0, 179.0, 46.0 ],
+					"text" : "/vec : [20., 2., 4., 2.],\n/result : 20."
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-12",
 					"maxclass" : "o.compose",
 					"numinlets" : 2,
@@ -249,7 +241,6 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-13",
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
@@ -263,20 +254,20 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-14",
+					"linecount" : 2,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 458.0, 269.0, 155.0, 33.0 ]
+					"patching_rect" : [ 458.0, 269.0, 155.0, 46.0 ],
+					"text" : "/vec : [1, 2, 3, 4],\n/result : -2"
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-18",
 					"maxclass" : "o.compose",
 					"numinlets" : 2,
@@ -292,7 +283,6 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-19",
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
@@ -310,8 +300,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 38.0, 29.0, 61.0, 18.0 ],
-					"presentation_linecount" : 2,
+					"patching_rect" : [ 38.0, 29.0, 61.0, 20.0 ],
 					"text" : "rreduce()"
 				}
 
@@ -323,8 +312,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 38.0, 74.0, 424.0, 78.0 ],
-					"presentation_linecount" : 6,
+					"patching_rect" : [ 38.0, 74.0, 424.0, 87.0 ],
 					"text" : "Recursively apply a function to a list using a left-associative binary operation.\n\narguments:\n\n1. any function that takes two arguments and returns one\n2. list of arguments"
 				}
 

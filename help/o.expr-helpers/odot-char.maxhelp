@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 5,
+			"revision" : 10,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -77,15 +77,13 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-19",
 					"linecount" : 2,
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 28.0, 94.0, 204.0, 43.0 ],
-					"presentation_linecount" : 2,
+					"patching_rect" : [ 28.0, 94.0, 156.0, 44.0 ],
 					"text" : "/i = 55,\n/i/to/ascii = char(/i)"
 				}
 
@@ -93,14 +91,13 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-20",
 					"linecount" : 2,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 28.0, 162.0, 218.0, 45.0 ],
+					"patching_rect" : [ 28.0, 162.0, 123.0, 46.0 ],
 					"text" : "/i : 55,\n/i/to/ascii : '7'"
 				}
 

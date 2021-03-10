@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 1,
+			"revision" : 10,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -37,6 +37,7 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "Untitled5_template",
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
 					"fontsize" : 12.0,
@@ -44,7 +45,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 269.0, 167.0, 27.0, 18.0 ],
+					"patching_rect" : [ 269.0, 167.0, 27.0, 20.0 ],
 					"text" : "4PI"
 				}
 
@@ -56,7 +57,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 269.0, 247.0, 31.0, 18.0 ],
+					"patching_rect" : [ 269.0, 247.0, 31.0, 20.0 ],
 					"text" : "-4PI"
 				}
 
@@ -69,7 +70,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 325.0, 23.0, 41.0, 18.0 ],
+					"patching_rect" : [ 325.0, 23.0, 41.0, 20.0 ],
 					"text" : "sinh()"
 				}
 
@@ -82,7 +83,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 325.0, 58.0, 113.0, 66.0 ],
+					"patching_rect" : [ 325.0, 58.0, 113.0, 74.0 ],
 					"text" : "Hyperbolic sine of x\n\narguments: \n\n1. x input"
 				}
 
@@ -106,10 +107,10 @@
 					"fontsize" : 12.0,
 					"id" : "obj-46",
 					"maxclass" : "newobj",
-					"numinlets" : 0,
+					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 28.0, 23.0, 116.0, 20.0 ],
+					"patching_rect" : [ 28.0, 23.0, 116.0, 22.0 ],
 					"text" : "o.linear_ramp /ramp"
 				}
 
@@ -122,7 +123,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "FullPacket" ],
-					"patching_rect" : [ 79.0, 145.0, 75.0, 20.0 ],
+					"patching_rect" : [ 79.0, 145.0, 75.0, 22.0 ],
 					"text" : "o.route /sinh"
 				}
 
@@ -130,29 +131,27 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-8",
 					"linecount" : 2,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 28.0, 283.0, 158.0, 48.0 ],
-					"text" : "/ramp : -2.63894,\n/sinh : -6.96344"
+					"patching_rect" : [ 28.0, 283.0, 146.0, 46.0 ],
+					"text" : "/ramp : -1.13097,\n/sinh : -1.38798"
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-24",
 					"linecount" : 2,
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 28.0, 58.0, 162.0, 46.0 ],
+					"patching_rect" : [ 28.0, 58.0, 149.0, 46.0 ],
 					"text" : "/ramp *= pi(),\n/sinh = sinh(/ramp)"
 				}
 
@@ -191,7 +190,7 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "o.linear_ramp.maxpat",
-				"bootpath" : "~/Development/CNMAT/ODOT-tutorials/patchers/o.expr-helpers",
+				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/help/o.expr-helpers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1

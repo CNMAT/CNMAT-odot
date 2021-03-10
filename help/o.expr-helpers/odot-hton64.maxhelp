@@ -4,13 +4,13 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 1,
+			"revision" : 10,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 70.0, 97.0, 1028.0, 571.0 ],
+		"rect" : [ 70.0, 97.0, 975.0, 571.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -37,6 +37,7 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "Default Max 7",
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
 					"id" : "obj-1",
@@ -44,7 +45,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 79.0, 189.0, 58.0, 20.0 ],
+					"patching_rect" : [ 19.0, 144.0, 58.0, 22.0 ],
 					"text" : "loadbang"
 				}
 
@@ -52,14 +53,13 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-4",
 					"linecount" : 11,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 79.0, 405.0, 915.0, 158.0 ],
+					"patching_rect" : [ 19.0, 390.0, 924.0, 161.0 ],
 					"text" : "/hexdigits : [\"0\", \"1\", \"2\", \"3\", \"4\", \"5\", \"6\", \"7\", \"8\", \"9\", \"a\", \"b\", \"c\", \"d\", \"e\", \"f\"],\n/int2bytes : \"lambda(i, [bitand(i, 0xFF00000000000000) / 0x100000000000000, bitand(i, 0xFF000000000000) / 0x1000000000000, bitand(i, 0xFF0000000000) / 0x10000000000, bitand(i, 0xFF00000000) / 0x100000000, bitand(i, 0xFF000000) / 0x1000000, bitand(i, 0xFF0000) / 0x10000, bitand(i, 0xFF00) / 0x100, bitand(i, 0xFF)])\",\n/byte2hex : \"lambda(b, /hexdigits[[bitand(b, 240) / 16]] + /hexdigits[[bitand(b, 15)]])\",\n/int2hex : \"lambda(i, \\\"0x\\\" + lreduce(add, map(/byte2hex, /int2bytes(i))))\",\n/num : 81985529216486895,\n/n : 17279655951921914625,\n/h : 81985529216486895,\n/bytes/h : \"0x0123456789abcdef\",\n/bytes/n : \"0xefcdab8967452301\""
 				}
 
@@ -67,14 +67,13 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-5",
 					"linecount" : 13,
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 79.0, 214.5, 915.0, 180.0 ],
+					"patching_rect" : [ 19.0, 184.5, 924.0, 185.0 ],
 					"text" : "# some functions to display an int as a hexadecimal string\n/hexdigits = [\"0\", \"1\", \"2\", \"3\", \"4\", \"5\", \"6\", \"7\", \"8\", \"9\", \"a\", \"b\", \"c\", \"d\", \"e\", \"f\"],\n/int2bytes = \"lambda(i, [bitand(i, 0xFF00000000000000) / 0x100000000000000, bitand(i, 0xFF000000000000) / 0x1000000000000, bitand(i, 0xFF0000000000) / 0x10000000000, bitand(i, 0xFF00000000) / 0x100000000, bitand(i, 0xFF000000) / 0x1000000, bitand(i, 0xFF0000) / 0x10000, bitand(i, 0xFF00) / 0x100, bitand(i, 0xFF)])\",\n/byte2hex = \"lambda(b, /hexdigits[[bitand(b, 240) / 16]] + /hexdigits[[bitand(b, 15)]])\",\n/int2hex = \"lambda(i, \\\"0x\\\" + lreduce(add, map(/byte2hex, /int2bytes(i))))\",\n\n/num = 0x0123456789ABCDEF, # hexadecimal representation of an int\n/n = ntoh64(/num), # swap from network order to host order\n/h = hton64(/n),   # swap from host order to network order\n/bytes/h = /int2hex(/h), # display the host ordered int in hexadecimal\n/bytes/n = /int2hex(/n)  # display the network ordered int in hexadecimal"
 				}
 
@@ -86,7 +85,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 79.0, 31.0, 144.0, 18.0 ],
+					"patching_rect" : [ 19.0, 16.0, 110.0, 20.0 ],
 					"text" : "hton64(), ntoh64()"
 				}
 
@@ -94,11 +93,11 @@
 , 			{
 				"box" : 				{
 					"id" : "obj-3",
-					"linecount" : 9,
+					"linecount" : 5,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 79.0, 66.0, 315.0, 114.0 ],
+					"patching_rect" : [ 19.0, 51.0, 669.0, 74.0 ],
 					"text" : "Host to network and network to host byte swapping. \n\nhton64 swaps a 64-bit integer from host to network order if host and network order are different, and does nothing otherwise.\n\nntoh64 swaps a 64-bit integer from network to host order, if host and network order are different, and does nothing otherwise"
 				}
 

@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 1,
+			"revision" : 10,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -37,6 +37,7 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "Default Max 7",
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
 					"fontface" : 1,
@@ -44,7 +45,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 190.0, 22.5, 251.0, 18.0 ],
+					"patching_rect" : [ 190.0, 22.5, 251.0, 20.0 ],
 					"text" : "<bundle> . <member>, getbundlemember()"
 				}
 
@@ -56,7 +57,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 190.0, 57.5, 241.0, 78.0 ],
+					"patching_rect" : [ 190.0, 57.5, 241.0, 87.0 ],
 					"text" : "return the specified member of a bundle.\n\narguments: \n\n1. subbundle to access \n2. member name"
 				}
 
@@ -69,7 +70,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 29.0, 22.5, 56.0, 19.0 ],
+					"patching_rect" : [ 29.0, 22.5, 56.0, 21.0 ],
 					"text" : "loadbang"
 				}
 
@@ -77,46 +78,43 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-19",
 					"linecount" : 6,
 					"maxclass" : "o.compose",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 29.0, 57.5, 133.0, 85.0 ],
+					"patching_rect" : [ 29.0, 57.5, 133.0, 87.0 ],
 					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 24, 47, 97, 0, 0, 44, 105, 105, 105, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 3, 0, 0, 0, 5, 0, 0, 0, 24, 47, 98, 0, 0, 44, 105, 105, 105, 0, 0, 0, 0, 0, 0, 0, -34, 0, 0, 0, 2, 0, 0, 0, 3, 0, 0, 0, 72, 47, 98, 110, 100, 108, 0, 0, 0, 44, 46, 0, 0, 0, 0, 0, 56, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 47, 111, 110, 101, 0, 0, 0, 0, 44, 105, 0, 0, 0, 0, 39, 126, 0, 0, 0, 16, 47, 116, 119, 111, 0, 0, 0, 0, 44, 105, 0, 0, 0, 0, 0, 2 ],
 					"saved_bundle_length" : 148,
-					"text" : "/a : [1, 3, 5],\n/b : [222, 2, 3],\n/bndl : {\n\t/one : 10110,\n\t/two : 2\n}"
+					"text" : "/a : [1, 3, 5],\n/b : [222, 2, 3],\n/bndl : {\n  /one : 10110,\n  /two : 2\n}"
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-23",
 					"linecount" : 8,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 29.0, 244.0, 137.0, 120.0 ],
-					"text" : "/a : [1, 3, 5],\n/b : [222, 2, 3],\n/bndl : {\n\t/one : 10110,\n\t/two : 2\n},\n/fetched/1 : 10110,\n/fetched/2 : 2"
+					"patching_rect" : [ 29.0, 244.0, 136.0, 123.0 ],
+					"text" : "/a : [1, 3, 5],\n/b : [222, 2, 3],\n/bndl : {\n  /one : 10110,\n  /two : 2\n},\n/fetched/1 : 10110,\n/fetched/2 : 2"
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-21",
 					"linecount" : 2,
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 29.0, 165.0, 288.0, 43.0 ],
+					"patching_rect" : [ 29.0, 165.0, 289.0, 44.0 ],
 					"text" : "/fetched/1 = getbundlemember(/bndl, /one),\n/fetched/2 = /bndl./two"
 				}
 

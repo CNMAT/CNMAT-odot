@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 1,
+			"revision" : 10,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -37,6 +37,7 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "Default Max 7",
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
 					"fontface" : 1,
@@ -44,7 +45,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 255.0, 33.0, 59.0, 18.0 ],
+					"patching_rect" : [ 255.0, 33.0, 59.0, 20.0 ],
 					"text" : "median()"
 				}
 
@@ -56,7 +57,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 255.0, 68.0, 189.0, 78.0 ],
+					"patching_rect" : [ 255.0, 68.0, 189.0, 87.0 ],
 					"text" : "Return the median (middle value, after sorting) of a list.\n\narguments: \n\n1. list "
 				}
 
@@ -69,7 +70,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 26.0, 28.0, 56.0, 19.0 ],
+					"patching_rect" : [ 26.0, 28.0, 56.0, 21.0 ],
 					"text" : "loadbang"
 				}
 
@@ -77,14 +78,13 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-4",
 					"linecount" : 2,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 26.0, 129.0, 215.0, 45.0 ],
+					"patching_rect" : [ 26.0, 129.0, 196.0, 46.0 ],
 					"text" : "/list : [41, 2, 3.14, 4, 5],\n/med : 4."
 				}
 
@@ -92,14 +92,13 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-5",
 					"linecount" : 2,
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 26.0, 68.0, 195.0, 43.0 ],
+					"patching_rect" : [ 26.0, 68.0, 203.0, 44.0 ],
 					"text" : "/list = [41, 2, 3.14, 4, 5], \n/med = median(/list)"
 				}
 

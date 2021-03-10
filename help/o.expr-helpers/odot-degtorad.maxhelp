@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 1,
+			"revision" : 10,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -37,18 +37,18 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "Untitled5_template",
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 14.0,
 					"id" : "obj-2",
 					"linecount" : 4,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 150.0, 161.0, 251.0, 84.0 ],
-					"text" : "/ramp : -0.92,\n/angle : -331.2,\n/rad : -5.78043,\n/sin : 0.481839"
+					"patching_rect" : [ 150.0, 161.0, 154.0, 72.0 ],
+					"text" : "/ramp : -0.82,\n/angle : -295.2,\n/rad : -5.15213,\n/sin : 0.904864"
 				}
 
 			}
@@ -60,7 +60,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 261.0, 18.0, 69.0, 18.0 ],
+					"patching_rect" : [ 261.0, 18.0, 69.0, 20.0 ],
 					"text" : "degtorad()"
 				}
 
@@ -73,7 +73,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 261.0, 53.0, 225.0, 78.0 ],
+					"patching_rect" : [ 261.0, 53.0, 229.0, 87.0 ],
 					"text" : "Convert degrees to radians.  This function returns a constant (0.017453...) that can be used to multiply by a value in degrees.\n\narguments: n/a"
 				}
 
@@ -83,10 +83,10 @@
 					"fontsize" : 12.0,
 					"id" : "obj-13",
 					"maxclass" : "newobj",
-					"numinlets" : 0,
+					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 22.0, 18.0, 116.0, 20.0 ],
+					"patching_rect" : [ 22.0, 18.0, 116.0, 22.0 ],
 					"text" : "o.linear_ramp /ramp"
 				}
 
@@ -112,7 +112,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "FullPacket" ],
-					"patching_rect" : [ 22.0, 125.0, 68.0, 20.0 ],
+					"patching_rect" : [ 22.0, 125.0, 68.0, 22.0 ],
 					"text" : "o.route /sin"
 				}
 
@@ -120,14 +120,13 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-1",
 					"linecount" : 3,
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 22.0, 53.0, 212.0, 59.0 ],
+					"patching_rect" : [ 22.0, 53.0, 196.0, 57.0 ],
 					"text" : "/angle = /ramp * 360.,\n/rad = /angle * degtorad(), \n/sin = sin(/rad)"
 				}
 
@@ -166,7 +165,7 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "o.linear_ramp.maxpat",
-				"bootpath" : "~/Development/CNMAT/ODOT-tutorials/patchers/o.expr-helpers",
+				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/help/o.expr-helpers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1

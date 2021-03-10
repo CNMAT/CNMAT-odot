@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 1,
+			"revision" : 10,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -37,6 +37,7 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "Default Max 7",
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
 					"id" : "obj-3",
@@ -44,7 +45,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 245.0, 59.0, 216.0, 42.0 ],
+					"patching_rect" : [ 245.0, 59.0, 216.0, 47.0 ],
 					"text" : "logical not-equal operator. returns true if the left hand side is not equal to the right."
 				}
 
@@ -68,7 +69,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 245.0, 29.0, 148.0, 18.0 ],
+					"patching_rect" : [ 245.0, 29.0, 148.0, 20.0 ],
 					"text" : "!=, ne(), not equal"
 				}
 
@@ -81,7 +82,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 30.0, 59.0, 73.0, 19.0 ],
+					"patching_rect" : [ 30.0, 59.0, 73.0, 21.0 ],
 					"text" : "o.pack /input"
 				}
 
@@ -89,7 +90,6 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-12",
 					"maxclass" : "o.display",
 					"numinlets" : 1,
@@ -102,14 +102,13 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-4",
 					"linecount" : 3,
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 30.0, 97.0, 202.0, 56.0 ],
+					"patching_rect" : [ 30.0, 97.0, 203.0, 57.0 ],
 					"text" : "/compare = 1,\n/equal = /input != /compare, \n/ne = ne(/input, /compare)"
 				}
 

@@ -4,13 +4,13 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 1,
+			"revision" : 10,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 100.0, 100.0, 617.0, 431.0 ],
+		"rect" : [ 100.0, 100.0, 658.0, 464.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -37,6 +37,7 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "Default Max 7",
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
 					"id" : "obj-11",
@@ -44,8 +45,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 204.0, 233.0, 389.0, 42.0 ],
-					"presentation_linecount" : 3,
+					"patching_rect" : [ 212.0, 224.0, 389.0, 47.0 ],
 					"text" : "If we find ourselves writing the same expression multiple times, we can define a function using lambda() that takes the arguments necessary to compute that expression, and call it wherever we need it."
 				}
 
@@ -53,28 +53,27 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-9",
+					"linecount" : 5,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 286.0, 362.0, 319.0, 33.0 ]
+					"patching_rect" : [ 286.0, 362.0, 315.0, 85.0 ],
+					"text" : "/list/1 : [3, 2, 4],\n/list/2 : [4, 8, 2],\n/mag : \"lambda(lst, sqrt(sum(pow(lst, 2.))))\",\n/mag/1 : 5.38516,\n/mag/2 : 9.16515"
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-7",
 					"linecount" : 3,
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 286.0, 285.0, 314.0, 56.0 ],
-					"presentation_linecount" : 3,
+					"patching_rect" : [ 286.0, 285.0, 315.0, 57.0 ],
 					"text" : "/mag = \"lambda(lst, sqrt(sum(pow(lst, 2.))))\",\n/mag/1 = /mag(/list/1),\n/mag/2 = /mag(/list/2)"
 				}
 
@@ -82,15 +81,13 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-6",
 					"linecount" : 2,
 					"maxclass" : "o.compose",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 15.0, 235.0, 165.0, 38.0 ],
-					"presentation_linecount" : 2,
+					"patching_rect" : [ 15.0, 235.0, 153.0, 36.0 ],
 					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 28, 47, 108, 105, 115, 116, 47, 49, 0, 44, 105, 105, 105, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 2, 0, 0, 0, 4, 0, 0, 0, 28, 47, 108, 105, 115, 116, 47, 50, 0, 44, 105, 105, 105, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 8, 0, 0, 0, 2 ],
 					"saved_bundle_length" : 80,
 					"text" : "/list/1 : [3, 2, 4],\n/list/2 : [4, 8, 2]"
@@ -104,7 +101,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 91.5, 35.0, 61.0, 18.0 ],
+					"patching_rect" : [ 91.5, 19.0, 61.0, 20.0 ],
 					"text" : "lambda()"
 				}
 
@@ -116,8 +113,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 91.5, 70.0, 485.0, 138.0 ],
-					"presentation_linecount" : 11,
+					"patching_rect" : [ 91.5, 54.0, 485.0, 154.0 ],
 					"text" : "lambda() creates an anonymous function that can be executed by passing it to one of the higher-order functions: apply(), map(), lreduce(), or rreduce().\n\nlambda(<params>, <expr1>, ..., <exprn>)\n\narguments:\n\n<params>: one or more parameter names (strings). To create a function of 0 arguments, pass an empty list here: [].\n\n<expr1>, ..., <exprn>: one or more expressions to be evaluated."
 				}
 
@@ -129,7 +125,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 15.0, 35.0, 60.0, 20.0 ],
+					"patching_rect" : [ 15.0, 35.0, 60.0, 22.0 ],
 					"text" : "loadbang"
 				}
 
@@ -137,28 +133,27 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-25",
+					"linecount" : 4,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 15.0, 362.0, 244.0, 33.0 ]
+					"patching_rect" : [ 15.0, 362.0, 143.0, 72.0 ],
+					"text" : "/list/1 : [3, 2, 4],\n/list/2 : [4, 8, 2],\n/mag/1 : 5.38516,\n/mag/2 : 9.16515"
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-26",
 					"linecount" : 2,
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 15.0, 285.0, 255.0, 43.0 ],
-					"presentation_linecount" : 2,
+					"patching_rect" : [ 15.0, 285.0, 256.0, 44.0 ],
 					"text" : "/mag/1 = sqrt(sum(pow(/list/1, 2.))),\n/mag/2 = sqrt(sum(pow(/list/2, 2.)))"
 				}
 

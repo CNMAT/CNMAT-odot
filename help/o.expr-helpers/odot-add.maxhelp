@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 1,
+			"revision" : 10,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -37,6 +37,7 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "Default Max 7",
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
 					"fontface" : 1,
@@ -45,7 +46,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 225.0, 32.0, 53.0, 17.0 ],
+					"patching_rect" : [ 225.0, 32.0, 53.0, 19.0 ],
 					"text" : "+, add()"
 				}
 
@@ -58,7 +59,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 225.0, 67.0, 228.0, 72.0 ],
+					"patching_rect" : [ 225.0, 67.0, 228.0, 80.0 ],
 					"text" : "add two values.\n\narguments:\n\n1. the left hand operand\n2. the right hand operand"
 				}
 
@@ -71,7 +72,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 28.0, 32.0, 56.0, 19.0 ],
+					"patching_rect" : [ 28.0, 32.0, 56.0, 21.0 ],
 					"text" : "loadbang"
 				}
 
@@ -79,14 +80,13 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-12",
 					"linecount" : 2,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 28.0, 140.0, 164.0, 45.0 ],
+					"patching_rect" : [ 28.0, 140.0, 130.0, 46.0 ],
 					"text" : "/two/plus/two : 4,\n/four : 4"
 				}
 
@@ -94,14 +94,13 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-13",
 					"linecount" : 2,
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 28.0, 77.0, 164.0, 43.0 ],
+					"patching_rect" : [ 28.0, 77.0, 156.0, 44.0 ],
 					"text" : "/two/plus/two = 2 + 2,\n/four = add(2, 2)"
 				}
 

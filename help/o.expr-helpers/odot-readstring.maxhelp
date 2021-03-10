@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 1,
+			"revision" : 10,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -37,16 +37,16 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "Default Max 7",
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-5",
 					"maxclass" : "o.compose",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 15.0, 178.0, 251.0, 24.0 ],
+					"patching_rect" : [ 15.0, 178.0, 232.0, 23.0 ],
 					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 36, 47, 115, 116, 114, 0, 0, 0, 0, 44, 115, 0, 0, 100, 111, 110, 39, 116, 32, 117, 115, 101, 32, 116, 104, 105, 115, 32, 102, 117, 110, 99, 116, 105, 111, 110, 0 ],
 					"saved_bundle_length" : 56,
 					"text" : "/str : \"don't use this function\""
@@ -56,14 +56,13 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-4",
 					"linecount" : 2,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 15.0, 263.0, 601.0, 48.0 ],
+					"patching_rect" : [ 15.0, 263.0, 229.0, 46.0 ],
 					"text" : "/str : \"don't use this function\",\n/copy : \"don't use this function\""
 				}
 
@@ -71,13 +70,12 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-3",
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 15.0, 216.0, 183.0, 32.0 ],
+					"patching_rect" : [ 15.0, 216.0, 169.0, 31.0 ],
 					"text" : "/copy = readstring(/str)"
 				}
 
@@ -89,7 +87,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 91.5, 35.0, 75.0, 18.0 ],
+					"patching_rect" : [ 91.5, 35.0, 75.0, 20.0 ],
 					"text" : "readstring()"
 				}
 
@@ -101,7 +99,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 91.5, 70.0, 485.0, 90.0 ],
+					"patching_rect" : [ 91.5, 70.0, 489.0, 100.0 ],
 					"text" : "readstring() does nothing :) Well, that's not exactly true... it produces a copy of a string given as an argument. But it's useless. It's just a placeholder that will be implemented in the future. Don't use it. Or use it, I don't care.\n\nOk, less cynically, readstring() is a placeholder for a critical function that's currently hidden in the blackbox of o.expr's machinery. The goal of future verisons of odot is to expose that machinery more fully to the host environment."
 				}
 
@@ -113,7 +111,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 15.0, 35.0, 60.0, 20.0 ],
+					"patching_rect" : [ 15.0, 35.0, 60.0, 22.0 ],
 					"text" : "loadbang"
 				}
 

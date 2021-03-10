@@ -4,13 +4,13 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 1,
+			"revision" : 10,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 139.0, 100.0, 704.0, 574.0 ],
+		"rect" : [ 139.0, 100.0, 496.0, 525.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 14.0,
@@ -37,14 +37,16 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "Untitled5_template",
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"fontsize" : 12.0,
 					"id" : "obj-4",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "FullPacket" ],
-					"patching_rect" : [ 23.0, 171.0, 96.0, 22.0 ],
+					"patching_rect" : [ 23.0, 171.0, 83.0, 22.0 ],
 					"text" : "o.route /metro"
 				}
 
@@ -52,14 +54,13 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-2",
 					"linecount" : 6,
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 23.0, 63.0, 299.0, 100.0 ],
+					"patching_rect" : [ 23.0, 63.0, 275.0, 95.0 ],
 					"text" : "if( bound(/ramp) && /ramp == \"increase\",\n  /metro = 1, \n  if( bound(/ramp) && /ramp == \"stop\", \n    /metro = 0\n  )\n)"
 				}
 
@@ -79,6 +80,7 @@
 			}
 , 			{
 				"box" : 				{
+					"fontsize" : 12.0,
 					"id" : "obj-3",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
@@ -92,38 +94,39 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-8",
 					"linecount" : 3,
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 33.5, 389.0, 219.0, 59.0 ],
+					"patching_rect" : [ 33.5, 389.0, 203.0, 57.0 ],
 					"text" : "assign(value(/name), /incr), \ndelete(/incr), \ndelete(/name)"
 				}
 
 			}
 , 			{
 				"box" : 				{
+					"fontsize" : 12.0,
 					"id" : "obj-6",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 382.0, 135.0, 100.0, 22.0 ],
+					"patching_rect" : [ 382.0, 135.0, 77.0, 22.0 ],
 					"text" : "loadmess #1"
 				}
 
 			}
 , 			{
 				"box" : 				{
+					"fontsize" : 12.0,
 					"id" : "obj-5",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 382.0, 171.0, 93.0, 22.0 ],
+					"patching_rect" : [ 382.0, 171.0, 81.0, 22.0 ],
 					"text" : "o.pack /name"
 				}
 
@@ -142,24 +145,26 @@
 			}
 , 			{
 				"box" : 				{
+					"fontsize" : 12.0,
 					"id" : "obj-31",
 					"maxclass" : "newobj",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 23.0, 232.0, 158.0, 22.0 ],
+					"patching_rect" : [ 23.0, 232.0, 160.0, 22.0 ],
 					"text" : "o.union"
 				}
 
 			}
 , 			{
 				"box" : 				{
+					"fontsize" : 12.0,
 					"id" : "obj-25",
 					"maxclass" : "newobj",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 23.0, 203.0, 130.0, 22.0 ],
+					"patching_rect" : [ 23.0, 203.0, 113.0, 22.0 ],
 					"text" : "metro 25 @active 1"
 				}
 
@@ -167,14 +172,13 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-24",
 					"linecount" : 5,
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 23.0, 263.0, 126.0, 86.0 ],
+					"patching_rect" : [ 23.0, 263.0, 110.0, 83.0 ],
 					"text" : "/incr ??= -1.,\nif(/incr > 1., \n  /incr = -1., \n  /incr += 0.02\n)"
 				}
 
@@ -204,7 +208,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-31", 1 ],
-					"midpoints" : [ 32.5, 383.0, 190.0, 383.0, 190.0, 223.0, 171.5, 223.0 ],
+					"midpoints" : [ 32.5, 383.0, 190.0, 383.0, 190.0, 223.0, 173.5, 223.0 ],
 					"source" : [ "obj-3", 0 ]
 				}
 

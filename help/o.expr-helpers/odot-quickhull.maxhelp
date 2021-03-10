@@ -4,13 +4,13 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 1,
+			"revision" : 10,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 426.0, 108.0, 886.0, 566.0 ],
+		"rect" : [ 57.0, 101.0, 707.0, 559.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 14.0,
@@ -37,14 +37,16 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "Untitled5_template",
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"fontsize" : 12.0,
 					"id" : "obj-140",
 					"linecount" : 13,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 443.0, 82.0, 409.0, 188.0 ],
+					"patching_rect" : [ 288.0, 71.0, 384.0, 181.0 ],
 					"text" : "compute the convex hull of a set of points -- that is, the smallest set of points that contains all the points of the set.\n\narguments:\n\nquickhull() takes a list of points in one of two forms:\n\nquickhull(x, y): x = x coordinates, y = y coordinates\nquickhull(xy): xy = x, y coordinates in one flat list\n\nreturns:\n\nthe list of points that forms the convex hull in one list of x, y pairs"
 				}
 
@@ -52,29 +54,32 @@
 , 			{
 				"box" : 				{
 					"fontface" : 1,
+					"fontsize" : 12.0,
 					"id" : "obj-138",
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 443.0, 43.5, 165.0, 20.0 ],
+					"patching_rect" : [ 288.0, 32.5, 145.0, 20.0 ],
 					"text" : "quickhull()"
 				}
 
 			}
 , 			{
 				"box" : 				{
+					"fontsize" : 12.0,
 					"id" : "obj-136",
 					"maxclass" : "newobj",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 63.0, 43.5, 146.0, 22.0 ],
+					"patching_rect" : [ 63.0, 43.5, 126.0, 22.0 ],
 					"text" : "metro 1000 @active 1"
 				}
 
 			}
 , 			{
 				"box" : 				{
+					"fontsize" : 12.0,
 					"id" : "obj-135",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
@@ -85,7 +90,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 1,
-							"revision" : 1,
+							"revision" : 10,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -118,6 +123,7 @@
 						"tags" : "",
 						"style" : "",
 						"subpatcher_template" : "Untitled5_template",
+						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
 									"id" : "obj-120",
@@ -858,7 +864,7 @@
  ]
 					}
 ,
-					"patching_rect" : [ 63.0, 363.0, 89.0, 22.0 ],
+					"patching_rect" : [ 63.0, 363.0, 78.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
@@ -872,6 +878,7 @@
 			}
 , 			{
 				"box" : 				{
+					"fontsize" : 12.0,
 					"id" : "obj-132",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
@@ -882,7 +889,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 1,
-							"revision" : 1,
+							"revision" : 10,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -915,6 +922,7 @@
 						"tags" : "",
 						"style" : "",
 						"subpatcher_template" : "Untitled5_template",
+						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
 									"id" : "obj-95",
@@ -1034,7 +1042,7 @@
  ]
 					}
 ,
-					"patching_rect" : [ 63.0, 139.5, 149.0, 22.0 ],
+					"patching_rect" : [ 63.0, 139.5, 129.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
@@ -1048,12 +1056,13 @@
 			}
 , 			{
 				"box" : 				{
+					"fontsize" : 12.0,
 					"id" : "obj-96",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "bang", "clear" ],
-					"patching_rect" : [ 63.0, 110.5, 58.0, 22.0 ],
+					"patching_rect" : [ 63.0, 110.5, 51.0, 22.0 ],
 					"text" : "t b clear"
 				}
 
@@ -1084,28 +1093,26 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 14.0,
 					"id" : "obj-6",
 					"linecount" : 2,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 63.0, 295.0, 762.0, 52.0 ],
-					"text" : "/points : [20, 103, 84, 125, 16, 1, 45, 103, 0, 107, 63, 38, 18, 34, 112, 118],\n/h : [84., 125., 16., 1., 0., 107., 63., 38., 112., 118.]"
+					"patching_rect" : [ 63.0, 287.0, 572.0, 46.0 ],
+					"text" : "/points : [125, 123, 122, 77, 121, 55, 62, 25, 62, 93, 101, 60, 33, 65, 80, 123],\n/h : [125., 123., 121., 55., 62., 25., 33., 65., 80., 123.]"
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 14.0,
 					"id" : "obj-5",
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 63.0, 175.0, 254.0, 34.0 ],
+					"patching_rect" : [ 63.0, 175.0, 163.0, 31.0 ],
 					"text" : "/h = quickhull(/points)"
 				}
 

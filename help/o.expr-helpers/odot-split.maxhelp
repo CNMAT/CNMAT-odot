@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 1,
+			"revision" : 10,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -37,6 +37,7 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "Default Max 7",
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
 					"fontface" : 1,
@@ -44,7 +45,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 271.0, 20.0, 57.0, 18.0 ],
+					"patching_rect" : [ 271.0, 20.0, 57.0, 20.0 ],
 					"text" : "split()"
 				}
 
@@ -56,7 +57,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 271.0, 63.0, 277.0, 90.0 ],
+					"patching_rect" : [ 271.0, 63.0, 277.0, 100.0 ],
 					"text" : "Split a string into substrings at every instance of a separator.\n\narguments: \n\n1. separator to use for the split\n2. string to assess"
 				}
 
@@ -68,7 +69,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 29.0, 28.0, 60.0, 20.0 ],
+					"patching_rect" : [ 29.0, 28.0, 60.0, 22.0 ],
 					"text" : "loadbang"
 				}
 
@@ -76,14 +77,13 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-25",
 					"linecount" : 2,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 29.0, 198.0, 267.0, 45.0 ],
+					"patching_rect" : [ 29.0, 198.0, 262.0, 46.0 ],
 					"text" : "/string : \"/my/dog/has/fleas\",\n/split : [\"my\", \"dog\", \"has\", \"fleas\"]"
 				}
 
@@ -91,14 +91,13 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-26",
 					"linecount" : 2,
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 29.0, 99.0, 209.0, 43.0 ],
+					"patching_rect" : [ 29.0, 99.0, 209.0, 44.0 ],
 					"text" : "/string = \"/my/dog/has/fleas\",\n/split = split(\"/\", /string)"
 				}
 

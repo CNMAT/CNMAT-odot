@@ -4,13 +4,13 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 1,
+			"revision" : 10,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 53.0, 96.0, 1363.0, 603.0 ],
+		"rect" : [ 43.0, 96.0, 1053.0, 585.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -37,6 +37,7 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "Default Max 7",
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
 					"id" : "obj-1",
@@ -44,7 +45,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 161.0, 459.0, 67.0, 20.0 ],
+					"patching_rect" : [ 161.0, 459.0, 67.0, 22.0 ],
 					"text" : "odot-prog2"
 				}
 
@@ -57,7 +58,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 78.0, 486.0, 79.0, 20.0 ],
+					"patching_rect" : [ 78.0, 486.0, 79.0, 22.0 ],
 					"text" : "prepend help"
 				}
 
@@ -70,7 +71,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 78.0, 512.0, 51.0, 20.0 ],
+					"patching_rect" : [ 78.0, 512.0, 51.0, 22.0 ],
 					"text" : "pcontrol"
 				}
 
@@ -82,7 +83,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 78.0, 459.0, 67.0, 20.0 ],
+					"patching_rect" : [ 78.0, 459.0, 67.0, 22.0 ],
 					"text" : "odot-prog1"
 				}
 
@@ -95,7 +96,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 8.0, 90.0, 58.0, 20.0 ],
+					"patching_rect" : [ 8.0, 90.0, 58.0, 22.0 ],
 					"text" : "loadbang"
 				}
 
@@ -103,11 +104,11 @@
 , 			{
 				"box" : 				{
 					"id" : "obj-27",
-					"linecount" : 2,
+					"linecount" : 5,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 963.0, 347.0, 342.0, 30.0 ],
+					"patching_rect" : [ 851.0, 459.0, 164.0, 74.0 ],
 					"text" : "a common use of the prog functions is to evaluate a sequence of expressions in the \"then\" and \"else\" fields of an if() function."
 				}
 
@@ -119,7 +120,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 861.0, 369.0, 66.0, 20.0 ],
+					"patching_rect" : [ 756.0, 357.0, 66.0, 22.0 ],
 					"text" : "o.pack /val"
 				}
 
@@ -131,7 +132,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 861.0, 312.0, 119.0, 20.0 ],
+					"patching_rect" : [ 756.0, 300.0, 119.0, 22.0 ],
 					"text" : "metro 500 @active 1"
 				}
 
@@ -143,7 +144,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "int" ],
-					"patching_rect" : [ 861.0, 340.0, 59.0, 20.0 ],
+					"patching_rect" : [ 756.0, 328.0, 59.0, 22.0 ],
 					"text" : "random 2"
 				}
 
@@ -151,14 +152,13 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-5",
 					"linecount" : 3,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 861.0, 486.0, 83.0, 61.0 ],
+					"patching_rect" : [ 756.0, 474.0, 70.0, 59.0 ],
 					"text" : "/val : 1,\n/x : 0,\n/y : 1"
 				}
 
@@ -166,14 +166,13 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-6",
 					"linecount" : 4,
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 861.0, 397.0, 327.0, 73.0 ],
+					"patching_rect" : [ 756.0, 385.0, 176.0, 70.0 ],
 					"text" : "if(/val == 0,\n   progn(/x = 1, /y = 0),\n   progn(/x = 0, /y = 1)\n)"
 				}
 
@@ -185,7 +184,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 861.0, 53.0, 146.0, 18.0 ],
+					"patching_rect" : [ 516.0, 38.0, 146.0, 20.0 ],
 					"text" : "prog1(), prog2(), progn()"
 				}
 
@@ -197,7 +196,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 861.0, 84.0, 348.0, 186.0 ],
+					"patching_rect" : [ 516.0, 69.0, 348.0, 208.0 ],
 					"text" : "Perfrom a series of comma separated expressions and return the value of the first, second, or last expression respectively.\n\nprogn(<expr1>, ..., <exprn>)\n\narguments:\n\n<expr1>, ..., <exprn>:  comma separated expressions to evaluate\n\nreturns:\n\nprog1: the result of the evaluation of the first expression\nprog2: the result of the evaluation of the second expression\nprogn: the result of the evaluation of the last expression"
 				}
 
@@ -208,7 +207,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 370.0, 334.0, 23.0, 18.0 ],
+					"patching_rect" : [ 370.0, 334.0, 23.0, 20.0 ],
 					"text" : "=="
 				}
 
@@ -216,13 +215,12 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-18",
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 406.0, 373.0, 83.0, 34.0 ],
+					"patching_rect" : [ 406.0, 373.0, 63.0, 33.0 ],
 					"text" : "/l : \"n\""
 				}
 
@@ -230,13 +228,12 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-19",
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 406.0, 327.0, 327.0, 32.0 ],
+					"patching_rect" : [ 406.0, 327.0, 302.0, 31.0 ],
 					"text" : "/l = apply(lambda([], progn(1, 2, \"n\")), [])"
 				}
 
@@ -244,13 +241,12 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-13",
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 78.0, 373.0, 83.0, 34.0 ],
+					"patching_rect" : [ 78.0, 373.0, 63.0, 33.0 ],
 					"text" : "/l : \"n\""
 				}
 
@@ -258,13 +254,12 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-14",
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 78.0, 327.0, 277.0, 32.0 ],
+					"patching_rect" : [ 78.0, 327.0, 256.0, 31.0 ],
 					"text" : "/l = apply(lambda([], 1, 2, \"n\"), [])"
 				}
 
@@ -276,7 +271,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 78.0, 275.0, 379.0, 42.0 ],
+					"patching_rect" : [ 78.0, 275.0, 379.0, 47.0 ],
 					"text" : "progn is by far the most commonly used, in fact, it's behavior is implicitly built into some functions such as lambda(), which evaluates a sequence of expressions and returns the result of the last one."
 				}
 
@@ -284,14 +279,13 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-11",
 					"linecount" : 3,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 78.0, 192.0, 83.0, 61.0 ],
+					"patching_rect" : [ 78.0, 192.0, 70.0, 59.0 ],
 					"text" : "/p1 : 1,\n/p2 : 2,\n/pn : \"n\""
 				}
 
@@ -299,14 +293,13 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-10",
 					"linecount" : 3,
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 78.0, 121.0, 205.0, 59.0 ],
+					"patching_rect" : [ 78.0, 121.0, 163.0, 57.0 ],
 					"text" : "/p1 = prog1(1, 2, \"n\"),\n/p2 = prog2(1, 2, \"n\"),\n/pn = progn(1, 2, \"n\")"
 				}
 
@@ -318,7 +311,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 78.0, 56.0, 379.0, 54.0 ],
+					"patching_rect" : [ 78.0, 38.0, 379.0, 60.0 ],
 					"text" : "prog1, prog2, and progn are all very similar--they each evaluate a sequence of expressions. The only difference between the three of them is that prog1 returns the result of the first expression, prog2 the second, and progn the last."
 				}
 

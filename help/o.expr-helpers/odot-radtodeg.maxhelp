@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 3,
+			"revision" : 10,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -37,18 +37,18 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "Untitled5_template",
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-23",
-					"linecount" : 3,
+					"linecount" : 4,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 32.0, 223.0, 162.0, 61.0 ],
-					"text" : "/ramp : 0.28,\n/radians : 4.02124,\n/deg : 230"
+					"patching_rect" : [ 32.0, 223.0, 136.0, 72.0 ],
+					"text" : "/ramp : -0.76,\n/radians : 0.753982,\n/deg : 43"
 				}
 
 			}
@@ -73,7 +73,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 178.0, 60.0, 293.0, 74.0 ],
+					"patching_rect" : [ 178.0, 60.0, 294.0, 74.0 ],
 					"text" : "Convert radians to degrees.  This function returns a constant (57.29578...) that can be used to multiply by a value in radians.\n\narguments: n/a"
 				}
 
@@ -83,7 +83,7 @@
 					"fontsize" : 12.0,
 					"id" : "obj-13",
 					"maxclass" : "newobj",
-					"numinlets" : 0,
+					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
 					"patching_rect" : [ 32.0, 25.0, 116.0, 22.0 ],
@@ -94,14 +94,13 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-1",
 					"linecount" : 2,
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 32.0, 162.0, 335.0, 46.0 ],
+					"patching_rect" : [ 32.0, 162.0, 309.0, 44.0 ],
 					"text" : "/radians = scale(/ramp, -1., 1., 0, twopi()),\n/deg = int32(/radians * radtodeg())"
 				}
 
@@ -124,7 +123,7 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "o.linear_ramp.maxpat",
-				"bootpath" : "~/Documents/programming/git_repositories/ODOT-tutorials/reference_list/o.expr-helpers",
+				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/help/o.expr-helpers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
@@ -139,6 +138,10 @@
 			}
 , 			{
 				"name" : "o.pack.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.route.mxo",
 				"type" : "iLaX"
 			}
 , 			{

@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 1,
+			"revision" : 10,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -37,6 +37,7 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "Default Max 7",
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
 					"id" : "obj-2",
@@ -44,7 +45,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 44.0, 37.0, 60.0, 20.0 ],
+					"patching_rect" : [ 44.0, 37.0, 60.0, 22.0 ],
 					"text" : "loadbang"
 				}
 
@@ -56,7 +57,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 321.5, 37.0, 48.0, 18.0 ],
+					"patching_rect" : [ 321.5, 37.0, 48.0, 20.0 ],
 					"text" : "apply()"
 				}
 
@@ -68,8 +69,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 321.5, 88.0, 266.0, 186.0 ],
-					"presentation_linecount" : 15,
+					"patching_rect" : [ 321.5, 88.0, 266.0, 208.0 ],
 					"text" : "Apply a function to arguments.  \n\napply(<function>, <arg1>, ..., <argn>)\n\nArguments:\n\n<function>: the function to apply, either a string, an address, or a lambda(),\n\n<arg1>, ... <argn>: the arguments to pass to <function>\n\nReturns:\n\nthe result of the application"
 				}
 
@@ -77,15 +77,13 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-25",
 					"linecount" : 7,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 44.0, 371.0, 207.0, 108.0 ],
-					"presentation_linecount" : 7,
+					"patching_rect" : [ 44.0, 355.0, 212.0, 110.0 ],
 					"text" : "/a : 3,\n/b : 3,\n/c : 3,\n/d : 11,\n/plus1 : \"lambda(x, x + 1)\",\n/e : 12,\n/f : 13"
 				}
 
@@ -93,15 +91,13 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-26",
 					"linecount" : 18,
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 44.0, 88.0, 263.0, 263.0 ],
-					"presentation_linecount" : 18,
+					"patching_rect" : [ 44.0, 88.0, 229.0, 249.0 ],
 					"text" : "# all operators such as\n/a = 1 + 2,\n# have a functional equivalent:\n/b = add(1, 2),\n# which may be called using the \n# higher-order apply() function:\n/c = apply(add, 1, 2),\n# we may also create our own \n# functions and use apply to \n# call them:\n/d = apply(lambda(x, x + 1), 10),\n# These functions may be stored\n# as messages and envoked with\n# apply:\n/plus1 = \"lambda(x, x + 1)\",\n/e = apply(/plus1, /d),\n# or called directly:\n/f = /plus1(/e)"
 				}
 

@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 1,
+			"revision" : 10,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -37,6 +37,7 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "Default Max 7",
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
 					"fontname" : "Courier New Italic",
@@ -47,7 +48,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 204.0, 517.0, 129.0, 74.0 ],
-					"presentation_linecount" : 7,
 					"text" : "equivalent to\n(20 / (2 / (4 / 2)))\nor\n4 / 2 => 2\n2 / 2 => 1\n20 / 1 => 20"
 				}
 
@@ -62,7 +62,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 600.0, 517.0, 123.0, 74.0 ],
-					"presentation_linecount" : 6,
 					"text" : "equivalent to\n(1 - (2 - (3 - 4)))\nor\n3 - 4  => -1\n2 - -1 => 3\n1 - 3  => -2"
 				}
 
@@ -77,7 +76,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 600.0, 269.0, 207.0, 52.0 ],
-					"presentation_linecount" : 8,
 					"text" : "equivalent to \n(((1 - 2) - 3) - 4)\nor\n(1 - 2) => -1 - 3 => -4 - 4 => -8"
 				}
 
@@ -89,8 +87,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 23.0, 359.0, 424.0, 78.0 ],
-					"presentation_linecount" : 6,
+					"patching_rect" : [ 23.0, 359.0, 424.0, 87.0 ],
 					"text" : " |\n | \n |\n |\n |\nV"
 				}
 
@@ -101,7 +98,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 23.0, 339.0, 424.0, 18.0 ],
+					"patching_rect" : [ 23.0, 339.0, 424.0, 20.0 ],
 					"text" : "compare with rreduce() which does the same thing, but with right association"
 				}
 
@@ -109,23 +106,18 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-10",
-					"linecount" : 2,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 23.0, 517.0, 179.0, 45.0 ],
-					"presentation_linecount" : 2,
-					"text" : "/vec : [20., 2., 4., 2.],\n/result : 20."
+					"patching_rect" : [ 23.0, 517.0, 179.0, 33.0 ]
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-12",
 					"maxclass" : "o.compose",
 					"numinlets" : 2,
@@ -141,13 +133,12 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-13",
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 23.0, 472.0, 197.0, 31.0 ],
+					"patching_rect" : [ 23.0, 472.0, 196.0, 31.0 ],
 					"text" : "/result = rreduce(div, /vec)"
 				}
 
@@ -155,29 +146,24 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-14",
-					"linecount" : 2,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 443.0, 517.0, 155.0, 45.0 ],
-					"presentation_linecount" : 2,
-					"text" : "/vec : [1, 2, 3, 4],\n/result : -2"
+					"patching_rect" : [ 443.0, 517.0, 155.0, 33.0 ]
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-18",
 					"maxclass" : "o.compose",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 443.0, 442.0, 148.0, 23.0 ],
+					"patching_rect" : [ 443.0, 442.0, 146.0, 23.0 ],
 					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 32, 47, 118, 101, 99, 0, 0, 0, 0, 44, 105, 105, 105, 105, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 2, 0, 0, 0, 3, 0, 0, 0, 4 ],
 					"saved_bundle_length" : 52,
 					"text" : "/vec : [1, 2, 3, 4]"
@@ -187,13 +173,12 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-19",
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 443.0, 472.0, 197.0, 31.0 ],
+					"patching_rect" : [ 443.0, 472.0, 196.0, 31.0 ],
 					"text" : "/result = rreduce(sub, /vec)"
 				}
 
@@ -219,7 +204,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 443.0, 151.0, 58.0, 20.0 ],
+					"patching_rect" : [ 443.0, 151.0, 58.0, 22.0 ],
 					"text" : "loadbang"
 				}
 
@@ -227,14 +212,13 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-15",
 					"linecount" : 2,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 23.0, 269.0, 179.0, 45.0 ],
+					"patching_rect" : [ 23.0, 269.0, 176.0, 46.0 ],
 					"text" : "/vec : [20., 2., 4., 2.],\n/result : 1.25"
 				}
 
@@ -242,7 +226,6 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-16",
 					"maxclass" : "o.compose",
 					"numinlets" : 2,
@@ -258,13 +241,12 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-17",
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 23.0, 224.0, 197.0, 32.0 ],
+					"patching_rect" : [ 23.0, 224.0, 196.0, 31.0 ],
 					"text" : "/result = lreduce(div, /vec)"
 				}
 
@@ -272,14 +254,13 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-1",
 					"linecount" : 2,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 443.0, 269.0, 155.0, 45.0 ],
+					"patching_rect" : [ 443.0, 269.0, 143.0, 46.0 ],
 					"text" : "/vec : [1, 2, 3, 4],\n/result : -8"
 				}
 
@@ -287,13 +268,12 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-2",
 					"maxclass" : "o.compose",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 443.0, 194.0, 148.0, 23.0 ],
+					"patching_rect" : [ 443.0, 194.0, 146.0, 23.0 ],
 					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 32, 47, 118, 101, 99, 0, 0, 0, 0, 44, 105, 105, 105, 105, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 2, 0, 0, 0, 3, 0, 0, 0, 4 ],
 					"saved_bundle_length" : 52,
 					"text" : "/vec : [1, 2, 3, 4]"
@@ -303,13 +283,12 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-4",
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 443.0, 224.0, 197.0, 32.0 ],
+					"patching_rect" : [ 443.0, 224.0, 196.0, 31.0 ],
 					"text" : "/result = lreduce(sub, /vec)"
 				}
 
@@ -321,7 +300,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 23.0, 14.0, 59.0, 18.0 ],
+					"patching_rect" : [ 23.0, 27.0, 59.0, 20.0 ],
 					"text" : "lreduce()"
 				}
 
@@ -333,7 +312,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 23.0, 59.0, 424.0, 78.0 ],
+					"patching_rect" : [ 23.0, 59.0, 424.0, 87.0 ],
 					"text" : "Recursively apply a function to a list using a left-associative binary operation.\n\narguments:\n\n1. any function that takes two arguments and returns one\n2. list of arguments"
 				}
 

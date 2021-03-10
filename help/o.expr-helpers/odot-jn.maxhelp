@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 1,
+			"revision" : 10,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -37,13 +37,14 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "Untitled5_template",
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
 					"id" : "obj-4",
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 271.0, 220.0, 24.0, 20.0 ],
+					"patching_rect" : [ 271.0, 220.0, 24.0, 22.0 ],
 					"text" : "1"
 				}
 
@@ -54,7 +55,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 271.0, 290.0, 33.0, 20.0 ],
+					"patching_rect" : [ 271.0, 290.0, 33.0, 22.0 ],
 					"text" : "-0.4"
 				}
 
@@ -67,7 +68,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 245.0, 28.0, 37.0, 18.0 ],
+					"patching_rect" : [ 245.0, 28.0, 37.0, 20.0 ],
 					"text" : "jn()"
 				}
 
@@ -80,7 +81,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 245.0, 63.0, 182.0, 150.0 ],
+					"patching_rect" : [ 245.0, 63.0, 182.0, 167.0 ],
 					"text" : "Bessel function of the first kind, nth order.\n\narguments: \n\n1. n\n2. x \n\nreturns:\n\nBessel function of first kind, nth order, evaluated at x."
 				}
 
@@ -107,7 +108,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 35.0, 28.0, 116.0, 20.0 ],
+					"patching_rect" : [ 35.0, 28.0, 116.0, 22.0 ],
 					"text" : "o.linear_ramp /ramp"
 				}
 
@@ -120,7 +121,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "FullPacket" ],
-					"patching_rect" : [ 86.0, 191.0, 62.0, 20.0 ],
+					"patching_rect" : [ 86.0, 191.0, 62.0, 22.0 ],
 					"text" : "o.route /jn"
 				}
 
@@ -128,29 +129,27 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-8",
 					"linecount" : 2,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 35.0, 329.0, 158.0, 48.0 ],
-					"text" : "/ramp : 0.17,\n/jn : 0.0717854"
+					"patching_rect" : [ 35.0, 329.0, 110.0, 46.0 ],
+					"text" : "/ramp : 0.33,\n/jn : 0.371551"
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-24",
 					"linecount" : 2,
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 35.0, 63.0, 198.0, 46.0 ],
+					"patching_rect" : [ 35.0, 63.0, 183.0, 44.0 ],
 					"text" : "/ramp = /ramp * 0.5 + 0.5,\n/jn = jn(5, /ramp * 20)"
 				}
 
@@ -189,7 +188,7 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "o.linear_ramp.maxpat",
-				"bootpath" : "~/Development/CNMAT/CNMAT/CNMAT-odot/help/o.expr-helpers",
+				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/help/o.expr-helpers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1

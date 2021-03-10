@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 1,
+			"revision" : 10,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -37,6 +37,7 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "Default Max 7",
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
 					"id" : "obj-1",
@@ -44,8 +45,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 187.5, 142.0, 133.5, 42.0 ],
-					"presentation_linecount" : 5,
+					"patching_rect" : [ 187.5, 142.0, 137.0, 47.0 ],
 					"text" : "Note: unlike quote(), the argument to string() is evaluated first."
 				}
 
@@ -57,7 +57,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 221.0, 34.0, 64.0, 18.0 ],
+					"patching_rect" : [ 221.0, 34.0, 64.0, 20.0 ],
 					"text" : " string()"
 				}
 
@@ -69,7 +69,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 221.0, 69.0, 100.0, 66.0 ],
+					"patching_rect" : [ 221.0, 69.0, 100.0, 74.0 ],
 					"text" : "Cast to a string\n\narguments:  \n\n1. value"
 				}
 
@@ -82,7 +82,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 30.0, 29.0, 56.0, 19.0 ],
+					"patching_rect" : [ 30.0, 29.0, 56.0, 21.0 ],
 					"text" : "loadbang"
 				}
 
@@ -90,14 +90,13 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-4",
 					"linecount" : 3,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 30.0, 142.0, 121.0, 58.0 ],
+					"patching_rect" : [ 30.0, 142.0, 116.0, 59.0 ],
 					"text" : "/str/b : \"true\",\n/str/i : \"55\",\n/str/x : \"true\""
 				}
 
@@ -105,14 +104,13 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-5",
 					"linecount" : 3,
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 30.0, 69.0, 162.0, 56.0 ],
+					"patching_rect" : [ 30.0, 69.0, 163.0, 57.0 ],
 					"text" : "/str/b = string(true), \n/str/i = string(55),\n/str/x = string(/str/b)"
 				}
 
