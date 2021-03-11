@@ -349,6 +349,7 @@ int main(void)
 	t_class *c = class_new("o.downcast", (method)odowncast_new, (method)odowncast_free, sizeof(t_odowncast), 0L, A_GIMME, 0);
 	class_addmethod(c, (method)odowncast_fullPacket, "FullPacket", A_GIMME, 0);
 	class_addmethod(c, (method)odowncast_assist, "assist", A_CANT, 0);
+	class_addmethod(c, (method)stdinletinfo, "inletinfo", A_CANT, 0);
 	class_addmethod(c, (method)odowncast_doc, "doc", 0);
 	// remove this if statement when we stop supporting Max 5
 	//if(omax_dict_resolveDictStubs()){

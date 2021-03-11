@@ -43,7 +43,7 @@ void odot_version(void *x)
 	if(x){
 		object_error((t_object *)x, "warning: %s is no longer supported and may be removed from the release at any time", OMAX_DOC_NAME);
 	}else{
-		error("warning: %s is no longer supported and may be removed from the release at any time", OMAX_DOC_NAME);
+		//error("warning: %s is no longer supported and may be removed from the release at any time", OMAX_DOC_NAME);
 	}
 #endif
 }

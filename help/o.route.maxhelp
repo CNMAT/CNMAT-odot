@@ -2,13 +2,14 @@
 	"patcher" : 	{
 		"fileversion" : 1,
 		"appversion" : 		{
-			"major" : 7,
-			"minor" : 3,
-			"revision" : 4,
+			"major" : 8,
+			"minor" : 1,
+			"revision" : 10,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
+		"classnamespace" : "box",
 		"rect" : [ 100.0, 100.0, 796.0, 704.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
@@ -38,6 +39,7 @@
 		"subpatcher_template" : "",
 		"showrootpatcherontab" : 0,
 		"showontab" : 0,
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
 					"id" : "obj-25",
@@ -47,13 +49,14 @@
 					"patcher" : 					{
 						"fileversion" : 1,
 						"appversion" : 						{
-							"major" : 7,
-							"minor" : 3,
-							"revision" : 4,
+							"major" : 8,
+							"minor" : 1,
+							"revision" : 10,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
 ,
+						"classnamespace" : "box",
 						"rect" : [ 0.0, 26.0, 796.0, 678.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
@@ -82,21 +85,19 @@
 						"style" : "",
 						"subpatcher_template" : "",
 						"showontab" : 1,
+						"assistshowspatchername" : 0,
 						"boxes" : [  ],
 						"lines" : [  ]
 					}
 ,
-					"patching_rect" : [ 30.0, 49.647217, 49.0, 22.0 ],
-					"presentation_rect" : [ 30.0, 49.647217, 0.0, 0.0 ],
+					"patching_rect" : [ 30.0, 49.647216999999998, 49.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
 						"globalpatchername" : "",
-						"style" : "",
 						"tags" : ""
 					}
 ,
-					"style" : "",
 					"text" : "p ?"
 				}
 
@@ -110,7 +111,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "jit_matrix" ],
-					"patching_rect" : [ 624.0, 102.852783, 109.0, 48.0 ]
+					"patching_rect" : [ 624.0, 102.852783000000002, 109.0, 48.0 ]
 				}
 
 			}
@@ -124,8 +125,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 567.5, 397.852783, 184.0, 37.0 ],
-					"style" : "",
+					"patching_rect" : [ 567.5, 397.852782999999988, 184.0, 37.0 ],
 					"text" : "o.route supports OSC-route style pattern matching"
 				}
 
@@ -139,13 +139,14 @@
 					"patcher" : 					{
 						"fileversion" : 1,
 						"appversion" : 						{
-							"major" : 7,
-							"minor" : 3,
-							"revision" : 4,
+							"major" : 8,
+							"minor" : 1,
+							"revision" : 10,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
 ,
+						"classnamespace" : "box",
 						"rect" : [ 63.0, 104.0, 1157.0, 702.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
@@ -173,6 +174,7 @@
 						"tags" : "",
 						"style" : "",
 						"subpatcher_template" : "",
+						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
 									"fontface" : 0,
@@ -182,7 +184,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 402.0, 247.464417, 231.0, 24.0 ],
+									"patching_rect" : [ 402.0, 247.464416999999997, 231.0, 24.0 ],
 									"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 36, 47, 98, 97, 110, 97, 110, 97, 47, 98, 117, 110, 99, 104, 47, 91, 50, 45, 52, 54, 93, 0, 0, 0, 0, 44, 115, 0, 0, 98, 97, 110, 103, 0, 0, 0, 0 ],
 									"saved_bundle_length" : 56,
 									"text" : "/banana/bunch/[2-46] : \"bang\""
@@ -198,7 +200,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 402.0, 207.464417, 239.0, 24.0 ],
+									"patching_rect" : [ 402.0, 207.464416999999997, 239.0, 24.0 ],
 									"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 36, 47, 98, 97, 110, 97, 110, 97, 47, 98, 117, 110, 99, 104, 47, 123, 49, 44, 51, 44, 53, 125, 0, 0, 0, 44, 115, 0, 0, 98, 97, 110, 103, 0, 0, 0, 0 ],
 									"saved_bundle_length" : 56,
 									"text" : "/banana/bunch/{1,3,5} : \"bang\""
@@ -214,7 +216,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 406.0, 169.464417, 102.0, 24.0 ],
+									"patching_rect" : [ 406.0, 169.464416999999997, 102.0, 24.0 ],
 									"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 47, 42, 101, 47, 42, 105, 42, 47, 102, 111, 111, 0, 44, 0, 0, 0 ],
 									"saved_bundle_length" : 36,
 									"text" : "/*e/*i*/foo"
@@ -230,7 +232,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 406.0, 130.464417, 131.0, 24.0 ],
+									"patching_rect" : [ 406.0, 130.464416999999997, 131.0, 24.0 ],
 									"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 42, 47, 42, 47, 42, 0, 0, 44, 115, 0, 0, 115, 116, 97, 114, 0, 0, 0, 0 ],
 									"saved_bundle_length" : 40,
 									"text" : "/*/*/* : \"star\""
@@ -246,7 +248,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 406.0, 101.464417, 332.0, 24.0 ],
+									"patching_rect" : [ 406.0, 101.464416999999997, 332.0, 24.0 ],
 									"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 48, 47, 42, 47, 106, 117, 105, 99, 101, 47, 115, 101, 101, 100, 115, 0, 0, 44, 115, 115, 115, 0, 0, 0, 0, 109, 117, 115, 116, 0, 0, 0, 0, 98, 101, 0, 0, 115, 116, 114, 97, 105, 110, 101, 100, 0, 0, 0, 0 ],
 									"saved_bundle_length" : 68,
 									"text" : "/*/juice/seeds : [\"must\", \"be\", \"strained\"]"
@@ -286,7 +288,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 647.0, 240.964417, 286.0, 47.0 ],
+									"patching_rect" : [ 647.0, 240.964416999999997, 286.0, 47.0 ],
 									"style" : "default",
 									"text" : "A string in square brackets matches any single character in the string; hyphen indicates a range of characters."
 								}
@@ -299,7 +301,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 647.0, 202.964417, 235.0, 33.0 ],
+									"patching_rect" : [ 647.0, 202.964416999999997, 235.0, 33.0 ],
 									"style" : "default",
 									"text" : "A comma-delineated list in curly brackets matches any element of the list"
 								}
@@ -311,7 +313,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 757.0, 130.464417, 121.0, 20.0 ],
+									"patching_rect" : [ 757.0, 130.464416999999997, 121.0, 20.0 ],
 									"style" : "default",
 									"text" : "\"*\" matches anything"
 								}
@@ -324,7 +326,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 406.0, 21.464417, 420.0, 33.0 ],
+									"patching_rect" : [ 406.0, 21.464417000000001, 420.0, 33.0 ],
 									"style" : "default",
 									"text" : "OSC pattern-matching: a Unix-shell-like pattern-matching syntax allows one message to go to multiple places in the address space hierarchy."
 								}
@@ -348,7 +350,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 589.0, 66.464417, 151.0, 20.0 ],
+									"patching_rect" : [ 589.0, 66.464416999999997, 151.0, 20.0 ],
 									"style" : "default",
 									"text" : "\"?\" matches one character"
 								}
@@ -374,7 +376,8 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "bang" ],
-									"patching_rect" : [ 442.666656, 409.0, 24.0, 24.0 ],
+									"parameter_enable" : 0,
+									"patching_rect" : [ 442.666655999999989, 409.0, 24.0, 24.0 ],
 									"style" : "default"
 								}
 
@@ -386,7 +389,8 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "bang" ],
-									"patching_rect" : [ 417.666656, 409.0, 24.0, 24.0 ],
+									"parameter_enable" : 0,
+									"patching_rect" : [ 417.666655999999989, 409.0, 24.0, 24.0 ],
 									"style" : "default"
 								}
 
@@ -398,7 +402,8 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "bang" ],
-									"patching_rect" : [ 392.666656, 409.0, 24.0, 24.0 ],
+									"parameter_enable" : 0,
+									"patching_rect" : [ 392.666655999999989, 409.0, 24.0, 24.0 ],
 									"style" : "default"
 								}
 
@@ -410,7 +415,8 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "bang" ],
-									"patching_rect" : [ 367.666656, 409.0, 24.0, 24.0 ],
+									"parameter_enable" : 0,
+									"patching_rect" : [ 367.666655999999989, 409.0, 24.0, 24.0 ],
 									"style" : "default"
 								}
 
@@ -422,7 +428,8 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "bang" ],
-									"patching_rect" : [ 342.666656, 409.0, 24.0, 24.0 ],
+									"parameter_enable" : 0,
+									"patching_rect" : [ 342.666655999999989, 409.0, 24.0, 24.0 ],
 									"style" : "default"
 								}
 
@@ -434,7 +441,8 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "bang" ],
-									"patching_rect" : [ 317.666656, 409.0, 24.0, 24.0 ],
+									"parameter_enable" : 0,
+									"patching_rect" : [ 317.666655999999989, 409.0, 24.0, 24.0 ],
 									"style" : "default"
 								}
 
@@ -446,7 +454,8 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "bang" ],
-									"patching_rect" : [ 292.666656, 409.0, 24.0, 24.0 ],
+									"parameter_enable" : 0,
+									"patching_rect" : [ 292.666655999999989, 409.0, 24.0, 24.0 ],
 									"style" : "default"
 								}
 
@@ -497,7 +506,7 @@
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 170.666656, 456.0, 124.0, 35.0 ],
+									"patching_rect" : [ 170.666655999999989, 456.0, 124.0, 35.0 ],
 									"style" : "default",
 									"text" : "print bananarepublic @popup 1"
 								}
@@ -523,7 +532,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 8,
 									"outlettype" : [ "", "", "", "", "", "", "", "FullPacket" ],
-									"patching_rect" : [ 292.666656, 379.0, 194.0, 22.0 ],
+									"patching_rect" : [ 292.666655999999989, 379.0, 194.0, 22.0 ],
 									"style" : "default",
 									"text" : "o.route /1 /2 /3 /4 /5 /6 /7"
 								}
@@ -562,7 +571,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 4,
 									"outlettype" : [ "", "", "", "FullPacket" ],
-									"patching_rect" : [ 170.666656, 350.0, 202.0, 22.0 ],
+									"patching_rect" : [ 170.666655999999989, 350.0, 202.0, 22.0 ],
 									"style" : "default",
 									"text" : "o.route /republic /melt /bunch"
 								}
@@ -813,16 +822,14 @@
  ]
 					}
 ,
-					"patching_rect" : [ 424.0, 405.352783, 140.0, 22.0 ],
+					"patching_rect" : [ 424.0, 405.352782999999988, 140.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
 						"globalpatchername" : "",
-						"style" : "",
 						"tags" : ""
 					}
 ,
-					"style" : "",
 					"text" : "p OSC pattern-matching"
 				}
 
@@ -837,7 +844,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 296.0, 542.352783, 89.0, 34.0 ]
+					"patching_rect" : [ 296.0, 542.352783000000045, 89.0, 34.0 ]
 				}
 
 			}
@@ -851,7 +858,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 152.0, 542.352783, 89.0, 34.0 ]
+					"patching_rect" : [ 152.0, 542.352783000000045, 89.0, 34.0 ]
 				}
 
 			}
@@ -865,7 +872,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 31.5, 448.352783, 89.0, 34.0 ]
+					"patching_rect" : [ 31.5, 448.352782999999988, 89.0, 34.0 ]
 				}
 
 			}
@@ -879,7 +886,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 211.5, 448.352783, 100.5, 34.0 ]
+					"patching_rect" : [ 211.5, 448.352782999999988, 100.5, 34.0 ]
 				}
 
 			}
@@ -892,8 +899,7 @@
 					"numinlets" : 3,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 31.5, 328.352783, 302.0, 22.0 ],
-					"style" : "",
+					"patching_rect" : [ 31.5, 328.352782999999988, 302.0, 22.0 ],
 					"text" : "o.pack /mysynth/2/gain /mysynth/2/freq 440. /nada rien"
 				}
 
@@ -907,8 +913,7 @@
 					"numinlets" : 3,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 348.5, 328.352783, 291.0, 22.0 ],
-					"style" : "",
+					"patching_rect" : [ 348.5, 328.352782999999988, 291.0, 22.0 ],
 					"text" : "o.pack /mysynth/*/freq /mysynth/*/gain 0.5 /nada rien"
 				}
 
@@ -922,8 +927,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 241.5, 398.352783, 161.0, 33.0 ],
-					"style" : "",
+					"patching_rect" : [ 241.5, 398.352782999999988, 161.0, 33.0 ],
 					"text" : "o.route strips off the portion of the address that matched"
 				}
 
@@ -939,8 +943,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 348.5, 288.352783, 50.0, 22.0 ],
-					"style" : ""
+					"patching_rect" : [ 348.5, 288.352782999999988, 50.0, 22.0 ]
 				}
 
 			}
@@ -955,8 +958,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 330.5, 631.352783, 50.0, 22.0 ],
-					"style" : ""
+					"patching_rect" : [ 330.5, 631.352783000000045, 50.0, 22.0 ]
 				}
 
 			}
@@ -971,8 +973,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 275.5, 631.352783, 50.0, 22.0 ],
-					"style" : ""
+					"patching_rect" : [ 275.5, 631.352783000000045, 50.0, 22.0 ]
 				}
 
 			}
@@ -987,8 +988,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 186.5, 631.352783, 50.0, 22.0 ],
-					"style" : ""
+					"patching_rect" : [ 186.5, 631.352783000000045, 50.0, 22.0 ]
 				}
 
 			}
@@ -1003,8 +1003,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 131.5, 631.352783, 50.0, 22.0 ],
-					"style" : ""
+					"patching_rect" : [ 131.5, 631.352783000000045, 50.0, 22.0 ]
 				}
 
 			}
@@ -1016,8 +1015,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 312.5, 455.352783, 137.0, 20.0 ],
-					"style" : "",
+					"patching_rect" : [ 312.5, 455.352782999999988, 137.0, 20.0 ],
 					"text" : "unmatched (delegation)"
 				}
 
@@ -1031,8 +1029,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "FullPacket" ],
-					"patching_rect" : [ 275.5, 601.352783, 129.0, 22.0 ],
-					"style" : "",
+					"patching_rect" : [ 275.5, 601.352783000000045, 129.0, 22.0 ],
 					"text" : "o.route /freq /gain"
 				}
 
@@ -1048,8 +1045,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 31.5, 288.352783, 50.0, 22.0 ],
-					"style" : ""
+					"patching_rect" : [ 31.5, 288.352782999999988, 50.0, 22.0 ]
 				}
 
 			}
@@ -1062,8 +1058,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "FullPacket" ],
-					"patching_rect" : [ 131.5, 601.352783, 129.0, 22.0 ],
-					"style" : "",
+					"patching_rect" : [ 131.5, 601.352783000000045, 129.0, 22.0 ],
 					"text" : "o.route /freq /gain"
 				}
 
@@ -1077,8 +1072,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "FullPacket" ],
-					"patching_rect" : [ 131.5, 503.352783, 307.0, 22.0 ],
-					"style" : "",
+					"patching_rect" : [ 131.5, 503.352782999999988, 307.0, 22.0 ],
 					"text" : "o.route /1 /2"
 				}
 
@@ -1092,8 +1086,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "FullPacket" ],
-					"patching_rect" : [ 131.5, 405.352783, 99.0, 22.0 ],
-					"style" : "",
+					"patching_rect" : [ 131.5, 405.352782999999988, 99.0, 22.0 ],
 					"text" : "o.route /mysynth"
 				}
 
@@ -1106,8 +1099,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 509.5, 617.352783, 150.0, 20.0 ],
-					"style" : "",
+					"patching_rect" : [ 509.5, 617.352783000000045, 150.0, 20.0 ],
 					"text" : "see also:"
 				}
 
@@ -1122,8 +1114,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 4,
 					"outlettype" : [ "", "", "", "clear" ],
-					"patching_rect" : [ 509.5, 288.352783, 164.0, 22.0 ],
-					"style" : "",
+					"patching_rect" : [ 509.5, 288.352782999999988, 164.0, 22.0 ],
 					"text" : "o.helpfilehelper @obj o.route"
 				}
 
@@ -1137,8 +1128,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 22.0, 216.352783, 600.0, 47.0 ],
-					"style" : "",
+					"patching_rect" : [ 22.0, 216.352782999999988, 600.0, 47.0 ],
 					"text" : "o.route does pattern matching on addresses contained in OSC packets.  All messages in a bundle with addresses that match an address specified as an argument to o.route are bundled together and sent out the corresponding outlet with the portion of the address that match removed."
 				}
 
@@ -1152,8 +1142,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 22.0, 168.352783, 600.0, 33.0 ],
-					"style" : "",
+					"patching_rect" : [ 22.0, 168.352782999999988, 600.0, 33.0 ],
 					"text" : "Dispatch OSC messages according to an address hierarchy stripping off the portion of the address that matched"
 				}
 
@@ -1166,8 +1155,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 22.0, 79.352783, 600.0, 87.0 ],
-					"style" : "",
+					"patching_rect" : [ 22.0, 79.352783000000002, 600.0, 87.0 ],
 					"text" : "o.route"
 				}
 
@@ -1182,8 +1170,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "int", "", "" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 509.5, 637.352783, 132.0, 22.0 ],
-					"style" : ""
+					"patching_rect" : [ 509.5, 637.352783000000045, 132.0, 22.0 ]
 				}
 
 			}
@@ -1197,8 +1184,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 509.5, 696.352783, 53.0, 22.0 ],
-					"style" : "",
+					"patching_rect" : [ 509.5, 696.352783000000045, 53.0, 22.0 ],
 					"text" : "pcontrol"
 				}
 
@@ -1213,8 +1199,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 509.5, 672.352783, 138.0, 22.0 ],
-					"style" : "",
+					"patching_rect" : [ 509.5, 672.352783000000045, 138.0, 22.0 ],
 					"text" : "sprintf load %s.maxhelp"
 				}
 
@@ -1228,13 +1213,14 @@
 					"patcher" : 					{
 						"fileversion" : 1,
 						"appversion" : 						{
-							"major" : 7,
-							"minor" : 3,
-							"revision" : 4,
+							"major" : 8,
+							"minor" : 1,
+							"revision" : 10,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
 ,
+						"classnamespace" : "box",
 						"rect" : [ 100.0, 126.0, 796.0, 678.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
@@ -1263,6 +1249,7 @@
 						"style" : "",
 						"subpatcher_template" : "",
 						"showontab" : 1,
+						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
 									"data" : [ 593, "", "IBkSG0fBZn....PCIgDQRA...zF....LHX....vFnS+e....DLmPIQEBHf.B7g.YHB..BfPRDEDU3wY6bEsiCCBCKLc+++xbOwItcqkVHN1oGVZZRSCWZbLgNfUp0Z01HU3K1cfMLqTJC+N8dqOJZ2kjQs0Cy7Sk2qDqaeuV6esBIWssWky6bs9Oy6qO8gH.RtmAn5O2k2Yb0SWSalKVuE2KffyYwrIBm0++DmmJZpDLx.NpFFBG8epo4IVovKR7deHaImPEMTPsfLpYfdDfKZQ31Tv8FIBwoolyvSDsKyLhCOxxcftdVDIngIZnCNLRBXk3QchHOsZQQUFHTQSsZaqzeXlvQeJ+Qdyi7ZEYBY3hlm2brpqwdXc5NMy3GDVEQOrOEQSgZay1GTHASBmlY3CFn3mQBHMQyqa1HqqofKyLxNMEd.4U.qg4kY3wHwrKfqJftn4gaajHfHfybxTzEMD3ouzORHZYq1F6GYQBQKRb2.thaMAYDsUcaG0d0csy.YDMEghtLyDSzxVsMVPJQyLeEtUbJp5xLavlUMaY5n1bndBO5e+xogbsthpsHfJ2KGdpY73hfjiQbGc6tB7lix9jflOH2DQ1XL1hVBwVzRH1hVBwVzRH1hVBws+KoX0mPXzuH.5spcV4um2ScZ0Z8mWdidNQehZP0+QFaNi6gCOVJkTtmAabiLgqEWP7O1P+6uC5G0ITBWi6mxgtnGCEMTCAzPV2bosQfXrpBzVZldtQu6oxF+i3b+CFmP7MQ+TMlEbQ3RG.....IUjSD4pPfIH" ],
@@ -1287,7 +1274,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 575.5, 348.5, 184.0, 37.0 ],
-									"style" : "",
 									"text" : "o.route supports OSC-route style pattern matching"
 								}
 
@@ -1301,13 +1287,14 @@
 									"patcher" : 									{
 										"fileversion" : 1,
 										"appversion" : 										{
-											"major" : 7,
-											"minor" : 3,
-											"revision" : 4,
+											"major" : 8,
+											"minor" : 1,
+											"revision" : 10,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
 ,
+										"classnamespace" : "box",
 										"rect" : [ 63.0, 104.0, 1157.0, 702.0 ],
 										"bglocked" : 0,
 										"openinpresentation" : 0,
@@ -1335,6 +1322,7 @@
 										"tags" : "",
 										"style" : "",
 										"subpatcher_template" : "",
+										"assistshowspatchername" : 0,
 										"boxes" : [ 											{
 												"box" : 												{
 													"fontface" : 0,
@@ -1344,7 +1332,7 @@
 													"numinlets" : 2,
 													"numoutlets" : 1,
 													"outlettype" : [ "" ],
-													"patching_rect" : [ 402.0, 247.464417, 231.0, 24.0 ],
+													"patching_rect" : [ 402.0, 247.464416999999997, 231.0, 24.0 ],
 													"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 36, 47, 98, 97, 110, 97, 110, 97, 47, 98, 117, 110, 99, 104, 47, 91, 50, 45, 52, 54, 93, 0, 0, 0, 0, 44, 115, 0, 0, 98, 97, 110, 103, 0, 0, 0, 0 ],
 													"saved_bundle_length" : 56,
 													"text" : "/banana/bunch/[2-46] : \"bang\""
@@ -1360,7 +1348,7 @@
 													"numinlets" : 2,
 													"numoutlets" : 1,
 													"outlettype" : [ "" ],
-													"patching_rect" : [ 402.0, 207.464417, 239.0, 24.0 ],
+													"patching_rect" : [ 402.0, 207.464416999999997, 239.0, 24.0 ],
 													"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 36, 47, 98, 97, 110, 97, 110, 97, 47, 98, 117, 110, 99, 104, 47, 123, 49, 44, 51, 44, 53, 125, 0, 0, 0, 44, 115, 0, 0, 98, 97, 110, 103, 0, 0, 0, 0 ],
 													"saved_bundle_length" : 56,
 													"text" : "/banana/bunch/{1,3,5} : \"bang\""
@@ -1376,7 +1364,7 @@
 													"numinlets" : 2,
 													"numoutlets" : 1,
 													"outlettype" : [ "" ],
-													"patching_rect" : [ 406.0, 169.464417, 102.0, 24.0 ],
+													"patching_rect" : [ 406.0, 169.464416999999997, 102.0, 24.0 ],
 													"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 47, 42, 101, 47, 42, 105, 42, 47, 102, 111, 111, 0, 44, 0, 0, 0 ],
 													"saved_bundle_length" : 36,
 													"text" : "/*e/*i*/foo"
@@ -1392,7 +1380,7 @@
 													"numinlets" : 2,
 													"numoutlets" : 1,
 													"outlettype" : [ "" ],
-													"patching_rect" : [ 406.0, 130.464417, 131.0, 24.0 ],
+													"patching_rect" : [ 406.0, 130.464416999999997, 131.0, 24.0 ],
 													"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 42, 47, 42, 47, 42, 0, 0, 44, 115, 0, 0, 115, 116, 97, 114, 0, 0, 0, 0 ],
 													"saved_bundle_length" : 40,
 													"text" : "/*/*/* : \"star\""
@@ -1408,7 +1396,7 @@
 													"numinlets" : 2,
 													"numoutlets" : 1,
 													"outlettype" : [ "" ],
-													"patching_rect" : [ 406.0, 101.464417, 332.0, 24.0 ],
+													"patching_rect" : [ 406.0, 101.464416999999997, 332.0, 24.0 ],
 													"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 48, 47, 42, 47, 106, 117, 105, 99, 101, 47, 115, 101, 101, 100, 115, 0, 0, 44, 115, 115, 115, 0, 0, 0, 0, 109, 117, 115, 116, 0, 0, 0, 0, 98, 101, 0, 0, 115, 116, 114, 97, 105, 110, 101, 100, 0, 0, 0, 0 ],
 													"saved_bundle_length" : 68,
 													"text" : "/*/juice/seeds : [\"must\", \"be\", \"strained\"]"
@@ -1448,7 +1436,7 @@
 													"maxclass" : "comment",
 													"numinlets" : 1,
 													"numoutlets" : 0,
-													"patching_rect" : [ 647.0, 240.964417, 286.0, 47.0 ],
+													"patching_rect" : [ 647.0, 240.964416999999997, 286.0, 47.0 ],
 													"style" : "default",
 													"text" : "A string in square brackets matches any single character in the string; hyphen indicates a range of characters."
 												}
@@ -1461,7 +1449,7 @@
 													"maxclass" : "comment",
 													"numinlets" : 1,
 													"numoutlets" : 0,
-													"patching_rect" : [ 647.0, 202.964417, 235.0, 33.0 ],
+													"patching_rect" : [ 647.0, 202.964416999999997, 235.0, 33.0 ],
 													"style" : "default",
 													"text" : "A comma-delineated list in curly brackets matches any element of the list"
 												}
@@ -1473,7 +1461,7 @@
 													"maxclass" : "comment",
 													"numinlets" : 1,
 													"numoutlets" : 0,
-													"patching_rect" : [ 757.0, 130.464417, 121.0, 20.0 ],
+													"patching_rect" : [ 757.0, 130.464416999999997, 121.0, 20.0 ],
 													"style" : "default",
 													"text" : "\"*\" matches anything"
 												}
@@ -1486,7 +1474,7 @@
 													"maxclass" : "comment",
 													"numinlets" : 1,
 													"numoutlets" : 0,
-													"patching_rect" : [ 406.0, 21.464417, 420.0, 33.0 ],
+													"patching_rect" : [ 406.0, 21.464417000000001, 420.0, 33.0 ],
 													"style" : "default",
 													"text" : "OSC pattern-matching: a Unix-shell-like pattern-matching syntax allows one message to go to multiple places in the address space hierarchy."
 												}
@@ -1510,7 +1498,7 @@
 													"maxclass" : "comment",
 													"numinlets" : 1,
 													"numoutlets" : 0,
-													"patching_rect" : [ 589.0, 66.464417, 151.0, 20.0 ],
+													"patching_rect" : [ 589.0, 66.464416999999997, 151.0, 20.0 ],
 													"style" : "default",
 													"text" : "\"?\" matches one character"
 												}
@@ -1536,7 +1524,8 @@
 													"numinlets" : 1,
 													"numoutlets" : 1,
 													"outlettype" : [ "bang" ],
-													"patching_rect" : [ 442.666656, 409.0, 24.0, 24.0 ],
+													"parameter_enable" : 0,
+													"patching_rect" : [ 442.666655999999989, 409.0, 24.0, 24.0 ],
 													"style" : "default"
 												}
 
@@ -1548,7 +1537,8 @@
 													"numinlets" : 1,
 													"numoutlets" : 1,
 													"outlettype" : [ "bang" ],
-													"patching_rect" : [ 417.666656, 409.0, 24.0, 24.0 ],
+													"parameter_enable" : 0,
+													"patching_rect" : [ 417.666655999999989, 409.0, 24.0, 24.0 ],
 													"style" : "default"
 												}
 
@@ -1560,7 +1550,8 @@
 													"numinlets" : 1,
 													"numoutlets" : 1,
 													"outlettype" : [ "bang" ],
-													"patching_rect" : [ 392.666656, 409.0, 24.0, 24.0 ],
+													"parameter_enable" : 0,
+													"patching_rect" : [ 392.666655999999989, 409.0, 24.0, 24.0 ],
 													"style" : "default"
 												}
 
@@ -1572,7 +1563,8 @@
 													"numinlets" : 1,
 													"numoutlets" : 1,
 													"outlettype" : [ "bang" ],
-													"patching_rect" : [ 367.666656, 409.0, 24.0, 24.0 ],
+													"parameter_enable" : 0,
+													"patching_rect" : [ 367.666655999999989, 409.0, 24.0, 24.0 ],
 													"style" : "default"
 												}
 
@@ -1584,7 +1576,8 @@
 													"numinlets" : 1,
 													"numoutlets" : 1,
 													"outlettype" : [ "bang" ],
-													"patching_rect" : [ 342.666656, 409.0, 24.0, 24.0 ],
+													"parameter_enable" : 0,
+													"patching_rect" : [ 342.666655999999989, 409.0, 24.0, 24.0 ],
 													"style" : "default"
 												}
 
@@ -1596,7 +1589,8 @@
 													"numinlets" : 1,
 													"numoutlets" : 1,
 													"outlettype" : [ "bang" ],
-													"patching_rect" : [ 317.666656, 409.0, 24.0, 24.0 ],
+													"parameter_enable" : 0,
+													"patching_rect" : [ 317.666655999999989, 409.0, 24.0, 24.0 ],
 													"style" : "default"
 												}
 
@@ -1608,7 +1602,8 @@
 													"numinlets" : 1,
 													"numoutlets" : 1,
 													"outlettype" : [ "bang" ],
-													"patching_rect" : [ 292.666656, 409.0, 24.0, 24.0 ],
+													"parameter_enable" : 0,
+													"patching_rect" : [ 292.666655999999989, 409.0, 24.0, 24.0 ],
 													"style" : "default"
 												}
 
@@ -1659,7 +1654,7 @@
 													"maxclass" : "newobj",
 													"numinlets" : 1,
 													"numoutlets" : 0,
-													"patching_rect" : [ 170.666656, 456.0, 124.0, 35.0 ],
+													"patching_rect" : [ 170.666655999999989, 456.0, 124.0, 35.0 ],
 													"style" : "default",
 													"text" : "print bananarepublic @popup 1"
 												}
@@ -1685,7 +1680,7 @@
 													"numinlets" : 1,
 													"numoutlets" : 8,
 													"outlettype" : [ "", "", "", "", "", "", "", "FullPacket" ],
-													"patching_rect" : [ 292.666656, 379.0, 194.0, 22.0 ],
+													"patching_rect" : [ 292.666655999999989, 379.0, 194.0, 22.0 ],
 													"style" : "default",
 													"text" : "o.route /1 /2 /3 /4 /5 /6 /7"
 												}
@@ -1724,7 +1719,7 @@
 													"numinlets" : 1,
 													"numoutlets" : 4,
 													"outlettype" : [ "", "", "", "FullPacket" ],
-													"patching_rect" : [ 170.666656, 350.0, 202.0, 22.0 ],
+													"patching_rect" : [ 170.666655999999989, 350.0, 202.0, 22.0 ],
 													"style" : "default",
 													"text" : "o.route /republic /melt /bunch"
 												}
@@ -1980,11 +1975,9 @@
 										"description" : "",
 										"digest" : "",
 										"globalpatchername" : "",
-										"style" : "",
 										"tags" : ""
 									}
 ,
-									"style" : "",
 									"text" : "p OSC pattern-matching"
 								}
 
@@ -1992,56 +1985,55 @@
 , 							{
 								"box" : 								{
 									"fontface" : 0,
-									"fontname" : "Arial",
-									"fontsize" : 12.0,
 									"id" : "obj-37",
+									"linecount" : 2,
 									"maxclass" : "o.display",
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 304.0, 493.0, 89.0, 34.0 ]
+									"patching_rect" : [ 304.0, 493.0, 119.0, 46.0 ],
+									"text" : "/freq : 52.,\n/gain : 0.5"
 								}
 
 							}
 , 							{
 								"box" : 								{
 									"fontface" : 0,
-									"fontname" : "Arial",
-									"fontsize" : 12.0,
 									"id" : "obj-36",
+									"linecount" : 2,
 									"maxclass" : "o.display",
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 160.0, 493.0, 89.0, 34.0 ]
+									"patching_rect" : [ 160.0, 493.0, 113.0, 46.0 ],
+									"text" : "/freq : 52.,\n/gain : 0.5"
 								}
 
 							}
 , 							{
 								"box" : 								{
 									"fontface" : 0,
-									"fontname" : "Arial",
-									"fontsize" : 12.0,
 									"id" : "obj-35",
+									"linecount" : 2,
 									"maxclass" : "o.display",
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 39.5, 399.0, 89.0, 34.0 ]
+									"patching_rect" : [ 18.5, 399.0, 119.0, 46.0 ],
+									"text" : "/*/freq : 52.,\n/*/gain : 0.5"
 								}
 
 							}
 , 							{
 								"box" : 								{
 									"fontface" : 0,
-									"fontname" : "Arial",
-									"fontsize" : 12.0,
 									"id" : "obj-34",
 									"maxclass" : "o.display",
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 219.5, 399.0, 100.5, 34.0 ]
+									"patching_rect" : [ 219.5, 399.0, 103.0, 33.0 ],
+									"text" : "/nada : \"rien\""
 								}
 
 							}
@@ -2055,7 +2047,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "FullPacket" ],
 									"patching_rect" : [ 39.5, 279.0, 302.0, 22.0 ],
-									"style" : "",
 									"text" : "o.pack /mysynth/2/gain /mysynth/2/freq 440. /nada rien"
 								}
 
@@ -2070,7 +2061,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "FullPacket" ],
 									"patching_rect" : [ 356.5, 279.0, 291.0, 22.0 ],
-									"style" : "",
 									"text" : "o.pack /mysynth/*/freq /mysynth/*/gain 0.5 /nada rien"
 								}
 
@@ -2085,7 +2075,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 249.5, 349.0, 161.0, 33.0 ],
-									"style" : "",
 									"text" : "o.route strips off the portion of the address that matched"
 								}
 
@@ -2101,8 +2090,7 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 356.5, 239.0, 50.0, 22.0 ],
-									"style" : ""
+									"patching_rect" : [ 356.5, 239.0, 50.0, 22.0 ]
 								}
 
 							}
@@ -2117,8 +2105,7 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 338.5, 582.0, 50.0, 22.0 ],
-									"style" : ""
+									"patching_rect" : [ 338.5, 582.0, 50.0, 22.0 ]
 								}
 
 							}
@@ -2133,8 +2120,7 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 283.5, 582.0, 50.0, 22.0 ],
-									"style" : ""
+									"patching_rect" : [ 283.5, 582.0, 50.0, 22.0 ]
 								}
 
 							}
@@ -2149,8 +2135,7 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 194.5, 582.0, 50.0, 22.0 ],
-									"style" : ""
+									"patching_rect" : [ 194.5, 582.0, 50.0, 22.0 ]
 								}
 
 							}
@@ -2165,8 +2150,7 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 139.5, 582.0, 50.0, 22.0 ],
-									"style" : ""
+									"patching_rect" : [ 139.5, 582.0, 50.0, 22.0 ]
 								}
 
 							}
@@ -2179,7 +2163,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 320.5, 406.0, 137.0, 20.0 ],
-									"style" : "",
 									"text" : "unmatched (delegation)"
 								}
 
@@ -2194,7 +2177,6 @@
 									"numoutlets" : 3,
 									"outlettype" : [ "", "", "FullPacket" ],
 									"patching_rect" : [ 283.5, 552.0, 129.0, 22.0 ],
-									"style" : "",
 									"text" : "o.route /freq /gain"
 								}
 
@@ -2210,8 +2192,7 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 39.5, 239.0, 50.0, 22.0 ],
-									"style" : ""
+									"patching_rect" : [ 39.5, 239.0, 50.0, 22.0 ]
 								}
 
 							}
@@ -2225,7 +2206,6 @@
 									"numoutlets" : 3,
 									"outlettype" : [ "", "", "FullPacket" ],
 									"patching_rect" : [ 139.5, 552.0, 129.0, 22.0 ],
-									"style" : "",
 									"text" : "o.route /freq /gain"
 								}
 
@@ -2240,7 +2220,6 @@
 									"numoutlets" : 3,
 									"outlettype" : [ "", "", "FullPacket" ],
 									"patching_rect" : [ 139.5, 454.0, 307.0, 22.0 ],
-									"style" : "",
 									"text" : "o.route /1 /2"
 								}
 
@@ -2255,7 +2234,6 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "", "FullPacket" ],
 									"patching_rect" : [ 139.5, 356.0, 99.0, 22.0 ],
-									"style" : "",
 									"text" : "o.route /mysynth"
 								}
 
@@ -2269,7 +2247,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 517.5, 568.0, 150.0, 20.0 ],
-									"style" : "",
 									"text" : "see also:"
 								}
 
@@ -2285,7 +2262,6 @@
 									"numoutlets" : 4,
 									"outlettype" : [ "", "", "", "clear" ],
 									"patching_rect" : [ 517.5, 239.0, 164.0, 22.0 ],
-									"style" : "",
 									"text" : "o.helpfilehelper @obj o.route"
 								}
 
@@ -2300,7 +2276,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 30.0, 167.0, 600.0, 47.0 ],
-									"style" : "",
 									"text" : "o.route does pattern matching on addresses contained in OSC packets.  All messages in a bundle with addresses that match an address specified as an argument to o.route are bundled together and sent out the corresponding outlet with the portion of the address that match removed."
 								}
 
@@ -2315,7 +2290,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 30.0, 119.0, 600.0, 33.0 ],
-									"style" : "",
 									"text" : "Dispatch OSC messages according to an address hierarchy stripping off the portion of the address that matched"
 								}
 
@@ -2329,7 +2303,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 30.0, 30.0, 600.0, 87.0 ],
-									"style" : "",
 									"text" : "o.route"
 								}
 
@@ -2344,8 +2317,7 @@
 									"numoutlets" : 3,
 									"outlettype" : [ "int", "", "" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 517.5, 588.0, 132.0, 22.0 ],
-									"style" : ""
+									"patching_rect" : [ 517.5, 588.0, 132.0, 22.0 ]
 								}
 
 							}
@@ -2360,7 +2332,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 517.5, 647.0, 53.0, 22.0 ],
-									"style" : "",
 									"text" : "pcontrol"
 								}
 
@@ -2376,7 +2347,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 517.5, 623.0, 138.0, 22.0 ],
-									"style" : "",
 									"text" : "sprintf load %s.maxhelp"
 								}
 
@@ -2551,16 +2521,14 @@
  ]
 					}
 ,
-					"patching_rect" : [ 30.0, 21.647217, 49.0, 22.0 ],
+					"patching_rect" : [ 30.0, 21.647217000000001, 49.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
 						"globalpatchername" : "",
-						"style" : "",
 						"tags" : ""
 					}
 ,
-					"style" : "",
 					"text" : "p basic"
 				}
 
@@ -2735,13 +2703,17 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "o.helpfilehelper.maxpat",
-				"bootpath" : "~/Documents/Max 7/Packages/CNMAT-odot/patchers/utils",
-				"patcherrelativepath" : "../../../Max 7/Packages/CNMAT-odot/patchers/utils",
+				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/patchers/utils",
+				"patcherrelativepath" : "../patchers/utils",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.route.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.collect.mxo",
 				"type" : "iLaX"
 			}
 , 			{

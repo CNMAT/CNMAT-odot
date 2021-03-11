@@ -176,7 +176,7 @@ void opack_int(t_opack *x, long l)
 void opack_float(t_opack *x, double f)
 {
 	t_atom a;
-	atom_setfloat(&a, (float)f);
+	atom_setfloat(&a, f);
 	opack_anything(x, NULL, 1, &a);
 }
 
@@ -236,6 +236,9 @@ void opack_assist(t_opack *x, void *b, long io, long num, char *buf)
 			 OMAX_DOC_NOUTLETS,
 			 OMAX_DOC_OUTLETS_DESC);
 }
+#ifdef PAK
+void opak_inletinfo(t_opack *x, void *b, long index, char *t){}
+#endif
 #endif
 
 void opack_doc(t_opack *x)
@@ -515,6 +518,11 @@ int main(void)
 	//}
 
 	class_addmethod(c, (method)opack_assist, "assist", A_CANT, 0);
+#ifdef PAK
+	class_addmethod(c, (method)opak_inletinfo, "inletinfo", A_CANT, 0);
+#else
+	class_addmethod(c, (method)stdinletinfo, "inletinfo", A_CANT, 0);
+#endif
 	class_addmethod(c, (method)opack_doc, "doc", 0);
 	class_addmethod(c, (method)opack_anything, "anything", A_GIMME, 0);
 	class_addmethod(c, (method)opack_list, "list", A_GIMME, 0);

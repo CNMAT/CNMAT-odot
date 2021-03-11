@@ -813,6 +813,7 @@ int setup_o0x2eexpr0x2ecodebox(void)
     class_setwidget(oexprcodebox_class, &oexprcodebox_widgetbehavior);
     
     oexprcodebox_textbox_class = opd_textbox_classnew();
+    osc_error_setHandler(omax_util_liboErrorHandler);
 
     
     ODOT_PRINT_VERSION;
@@ -896,6 +897,7 @@ int main(void)
     //class_addmethod(c, (method)oexprcodebox_fullPacket, "FullPacket", A_LONG, A_LONG, 0);
     class_addmethod(c, (method)oexprcodebox_fullPacket, "FullPacket", A_GIMME, 0);
     class_addmethod(c, (method)oexprcodebox_assist, "assist", A_CANT, 0);
+    class_addmethod(c, (method)stdinletinfo, "inletinfo", A_CANT, 0);
     class_addmethod(c, (method)oexprcodebox_bang, "bang", 0);
 
     class_addmethod(c, (method)oexprcodebox_postExprAST, "post-ast", 0);
@@ -954,7 +956,12 @@ int main(void)
     CLASS_ATTR_STYLE_LABEL(c, "mousedown_color", 0, "rgba", "Mousedown Color");
     CLASS_ATTR_CATEGORY_KLUDGE(c, "mousedown_color", 0, "Color");
     
-    CLASS_ATTR_DEFAULT(c, "fontname", 0, "\"Courier New\"");
+#ifdef WIN_VERSION
+    CLASS_ATTR_DEFAULT(c, "fontname", 0, "\"Lucida Console\"");
+#else
+    CLASS_ATTR_DEFAULT(c, "fontname", 0, "\"Menlo\"");
+#endif
+    CLASS_ATTR_DEFAULT(c, "fontsize", 0, "11");
 
     CLASS_ATTR_DEFAULT(c, "rect", 0, "0. 0. 150. 30.");
 

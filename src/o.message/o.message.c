@@ -2278,6 +2278,7 @@ int main(void){
 	class_addmethod(c, (method)omessage_anything, "anything", A_GIMME, 0);
 	class_addmethod(c, (method)omessage_set, "set", A_GIMME, 0);
 	class_addmethod(c, (method)omessage_assist, "assist", A_CANT, 0);
+	class_addmethod(c, (method)stdinletinfo, "inletinfo", A_CANT, 0);
 	class_addmethod(c, (method)omessage_doc, "doc", 0);
 	class_addmethod(c, (method)stdinletinfo, "inletinfo", A_CANT, 0);
 	//class_addmethod(c, (method)omessage_fullPacket, "FullPacket", A_LONG, A_LONG, 0);

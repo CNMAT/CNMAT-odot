@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 5,
+			"revision" : 10,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -262,14 +262,13 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-34",
 					"linecount" : 7,
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 131.0, 354.5, 314.0, 106.0 ],
+					"patching_rect" : [ 131.0, 354.5, 315.0, 108.0 ],
 					"text" : "/delaysize ??= 5,\n/queue ??= [],\n/queue = [/v, /queue],\nif( length(/queue) > /delaysize,\n  /queue = /queue[[ aseq(0, /delaysize - 1) ]]\n),\n/delayed/v = last(/queue)"
 				}
 
@@ -277,13 +276,12 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-8",
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 562.0, 325.113333333333344, 231.0, 31.0 ],
+					"patching_rect" : [ 562.0, 325.113333333333344, 229.0, 31.0 ],
 					"text" : "/output/time = /time + /delaytime"
 				}
 
@@ -295,8 +293,8 @@
 					"id" : "obj-7",
 					"maxclass" : "newobj",
 					"numinlets" : 2,
-					"numoutlets" : 4,
-					"outlettype" : [ "FullPacket", "FullPacket", "FullPacket", "FullPacket" ],
+					"numoutlets" : 5,
+					"outlettype" : [ "FullPacket", "FullPacket", "FullPacket", "FullPacket", "int" ],
 					"patching_rect" : [ 562.0, 368.526666666666642, 125.0, 21.0 ],
 					"text" : "o.schedule /output/time"
 				}

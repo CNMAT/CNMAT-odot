@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 5,
+			"revision" : 10,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -64,7 +64,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 1,
-							"revision" : 5,
+							"revision" : 10,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -208,14 +208,13 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-18",
 					"linecount" : 2,
 					"maxclass" : "o.compose",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 54.345000999999996, 207.0, 113.0, 35.0 ],
+					"patching_rect" : [ 54.345000999999996, 207.0, 113.0, 36.0 ],
 					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 47, 99, 111, 117, 110, 116, 0, 0, 44, 105, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 100, 111, 119, 110, 99, 111, 117, 110, 116, 0, 0, 44, 105, 0, 0, 0, 0, 0, 0 ],
 					"saved_bundle_length" : 60,
 					"text" : "/count : 0,\n/downcount : 0",
@@ -240,14 +239,13 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-16",
 					"linecount" : 2,
 					"maxclass" : "o.compose",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 54.345000999999996, 287.430969000000005, 139.0, 35.0 ],
+					"patching_rect" : [ 54.345000999999996, 287.430969000000005, 139.0, 36.0 ],
 					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 47, 99, 111, 117, 110, 116, 0, 0, 44, 105, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 100, 111, 119, 110, 99, 111, 117, 110, 116, 0, 0, 44, 105, 0, 0, 0, 0, 0, 0 ],
 					"saved_bundle_length" : 60,
 					"text" : "/count : 0,\n/downcount : 0",
@@ -272,7 +270,6 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-13",
 					"maxclass" : "o.compose",
 					"numinlets" : 2,
@@ -289,13 +286,12 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-11",
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 174.345000999999996, 246.675995, 235.0, 31.0 ],
+					"patching_rect" : [ 174.345000999999996, 246.675995, 236.0, 31.0 ],
 					"text" : " /downcount = (/downcount - 1) % 8"
 				}
 
@@ -303,13 +299,12 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-5",
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 174.345000999999996, 207.0, 182.0, 31.0 ],
+					"patching_rect" : [ 174.345000999999996, 207.0, 183.0, 31.0 ],
 					"text" : " /count = (/count + 1) % 8"
 				}
 
@@ -317,13 +312,12 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-1",
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 120.689896000000005, 41.0, 63.0, 31.0 ],
+					"patching_rect" : [ 139.689896000000005, 42.0, 63.0, 31.0 ],
 					"text" : "/count++"
 				}
 
@@ -346,7 +340,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-1", 0 ],
-					"midpoints" : [ 75.189896000000005, 145.0, 51.0, 145.0, 51.0, 35.0, 130.189896000000005, 35.0 ],
+					"midpoints" : [ 75.189896000000005, 145.0, 51.0, 145.0, 51.0, 35.0, 149.189896000000005, 35.0 ],
 					"source" : [ "obj-12", 0 ]
 				}
 
@@ -398,8 +392,8 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "o.recurse.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/CNMAT-odot/patchers/recursion",
-				"patcherrelativepath" : "../../../../../Max 8/Packages/CNMAT-odot/patchers/recursion",
+				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/patchers/recursion",
+				"patcherrelativepath" : "../patchers/recursion",
 				"type" : "JSON",
 				"implicit" : 1
 			}
@@ -423,7 +417,8 @@
 				"type" : "iLaX"
 			}
  ],
-		"autosave" : 0
+		"autosave" : 0,
+		"bgcolor" : [ 0.996078, 0.996078, 0.996078, 1.0 ]
 	}
 
 }

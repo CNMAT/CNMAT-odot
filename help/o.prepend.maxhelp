@@ -2,14 +2,15 @@
 	"patcher" : 	{
 		"fileversion" : 1,
 		"appversion" : 		{
-			"major" : 7,
-			"minor" : 3,
-			"revision" : 4,
+			"major" : 8,
+			"minor" : 1,
+			"revision" : 10,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
-		"rect" : [ 140.0, 85.0, 678.0, 494.0 ],
+		"classnamespace" : "box",
+		"rect" : [ 47.0, 91.0, 678.0, 494.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -38,6 +39,7 @@
 		"subpatcher_template" : "",
 		"showrootpatcherontab" : 0,
 		"showontab" : 0,
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
 					"id" : "obj-2",
@@ -47,13 +49,14 @@
 					"patcher" : 					{
 						"fileversion" : 1,
 						"appversion" : 						{
-							"major" : 7,
-							"minor" : 3,
-							"revision" : 4,
+							"major" : 8,
+							"minor" : 1,
+							"revision" : 10,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
 ,
+						"classnamespace" : "box",
 						"rect" : [ 0.0, 26.0, 678.0, 468.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
@@ -82,6 +85,7 @@
 						"style" : "",
 						"subpatcher_template" : "",
 						"showontab" : 1,
+						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
 									"data" : [ 593, "", "IBkSG0fBZn....PCIgDQRA...zF....LHX....vFnS+e....DLmPIQEBHf.B7g.YHB..BfPRDEDU3wY6bEsiCCBCKLc+++xbOwItcqkVHN1oGVZZRSCWZbLgNfUp0Z01HU3K1cfMLqTJC+N8dqOJZ2kjQs0Cy7Sk2qDqaeuV6esBIWssWky6bs9Oy6qO8gH.RtmAn5O2k2Yb0SWSalKVuE2KffyYwrIBm0++DmmJZpDLx.NpFFBG8epo4IVovKR7deHaImPEMTPsfLpYfdDfKZQ31Tv8FIBwoolyvSDsKyLhCOxxcftdVDIngIZnCNLRBXk3QchHOsZQQUFHTQSsZaqzeXlvQeJ+Qdyi7ZEYBY3hlm2brpqwdXc5NMy3GDVEQOrOEQSgZay1GTHASBmlY3CFn3mQBHMQyqa1HqqofKyLxNMEd.4U.qg4kY3wHwrKfqJftn4gaajHfHfybxTzEMD3ouzORHZYq1F6GYQBQKRb2.thaMAYDsUcaG0d0csy.YDMEghtLyDSzxVsMVPJQyLeEtUbJp5xLavlUMaY5n1bndBO5e+xogbsthpsHfJ2KGdpY73hfjiQbGc6tB7lix9jflOH2DQ1XL1hVBwVzRH1hVBwVzRH1hVBws+KoX0mPXzuH.5spcV4um2ScZ0Z8mWdidNQehZP0+QFaNi6gCOVJkTtmAabiLgqEWP7O1P+6uC5G0ITBWi6mxgtnGCEMTCAzPV2bosQfXrpBzVZldtQu6oxF+i3b+CFmP7MQ+TMlEbQ3RG.....IUjSD4pPfIH" ],
@@ -104,7 +108,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 53.0, 230.5, 127.0, 20.0 ],
-									"style" : "",
 									"text" : "prepend /foo to /bar.  "
 								}
 
@@ -152,7 +155,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 152.0, 303.0, 120.0, 47.0 ],
-									"style" : "",
 									"text" : "prepend /foo to every address in the incoming bundle"
 								}
 
@@ -167,7 +169,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "FullPacket" ],
 									"patching_rect" : [ 53.0, 316.5, 88.0, 22.0 ],
-									"style" : "",
 									"text" : "o.prepend /foo"
 								}
 
@@ -181,7 +182,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 484.0, 348.0, 150.0, 20.0 ],
-									"style" : "",
 									"text" : "see also:"
 								}
 
@@ -197,7 +197,6 @@
 									"numoutlets" : 4,
 									"outlettype" : [ "", "", "", "clear" ],
 									"patching_rect" : [ 484.0, 147.0, 181.0, 22.0 ],
-									"style" : "",
 									"text" : "o.helpfilehelper @obj o.prepend"
 								}
 
@@ -211,7 +210,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 30.0, 167.0, 600.0, 20.0 ],
-									"style" : "",
 									"text" : "o.prepend takes an OSC address as an argument and prepends it to every address in the bundle."
 								}
 
@@ -225,7 +223,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 30.0, 119.0, 600.0, 20.0 ],
-									"style" : "",
 									"text" : "Prepend an OSC address to every OSC address in a bundle"
 								}
 
@@ -239,7 +236,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 30.0, 30.0, 600.0, 87.0 ],
-									"style" : "",
 									"text" : "o.prepend"
 								}
 
@@ -254,8 +250,7 @@
 									"numoutlets" : 3,
 									"outlettype" : [ "int", "", "" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 484.0, 370.0, 132.0, 22.0 ],
-									"style" : ""
+									"patching_rect" : [ 484.0, 370.0, 132.0, 22.0 ]
 								}
 
 							}
@@ -270,7 +265,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 484.0, 429.0, 53.0, 22.0 ],
-									"style" : "",
 									"text" : "pcontrol"
 								}
 
@@ -286,7 +280,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 484.0, 405.0, 138.0, 22.0 ],
-									"style" : "",
 									"text" : "sprintf load %s.maxhelp"
 								}
 
@@ -359,17 +352,14 @@
  ]
 					}
 ,
-					"patching_rect" : [ 58.0, 54.587524, 49.0, 22.0 ],
-					"presentation_rect" : [ 58.0, 54.587524, 0.0, 0.0 ],
+					"patching_rect" : [ 58.0, 54.587524000000002, 49.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
 						"globalpatchername" : "",
-						"style" : "",
 						"tags" : ""
 					}
 ,
-					"style" : "",
 					"text" : "p ?"
 				}
 
@@ -383,14 +373,15 @@
 					"patcher" : 					{
 						"fileversion" : 1,
 						"appversion" : 						{
-							"major" : 7,
-							"minor" : 3,
-							"revision" : 4,
+							"major" : 8,
+							"minor" : 1,
+							"revision" : 10,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
 ,
-						"rect" : [ 140.0, 111.0, 678.0, 468.0 ],
+						"classnamespace" : "box",
+						"rect" : [ 47.0, 117.0, 678.0, 468.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -418,6 +409,7 @@
 						"style" : "",
 						"subpatcher_template" : "",
 						"showontab" : 1,
+						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
 									"data" : [ 593, "", "IBkSG0fBZn....PCIgDQRA...zF....LHX....vFnS+e....DLmPIQEBHf.B7g.YHB..BfPRDEDU3wY6bEsiCCBCKLc+++xbOwItcqkVHN1oGVZZRSCWZbLgNfUp0Z01HU3K1cfMLqTJC+N8dqOJZ2kjQs0Cy7Sk2qDqaeuV6esBIWssWky6bs9Oy6qO8gH.RtmAn5O2k2Yb0SWSalKVuE2KffyYwrIBm0++DmmJZpDLx.NpFFBG8epo4IVovKR7deHaImPEMTPsfLpYfdDfKZQ31Tv8FIBwoolyvSDsKyLhCOxxcftdVDIngIZnCNLRBXk3QchHOsZQQUFHTQSsZaqzeXlvQeJ+Qdyi7ZEYBY3hlm2brpqwdXc5NMy3GDVEQOrOEQSgZay1GTHASBmlY3CFn3mQBHMQyqa1HqqofKyLxNMEd.4U.qg4kY3wHwrKfqJftn4gaajHfHfybxTzEMD3ouzORHZYq1F6GYQBQKRb2.thaMAYDsUcaG0d0csy.YDMEghtLyDSzxVsMVPJQyLeEtUbJp5xLavlUMaY5n1bndBO5e+xogbsthpsHfJ2KGdpY73hfjiQbGc6tB7lix9jflOH2DQ1XL1hVBwVzRH1hVBwVzRH1hVBws+KoX0mPXzuH.5spcV4um2ScZ0Z8mWdidNQehZP0+QFaNi6gCOVJkTtmAabiLgqEWP7O1P+6uC5G0ITBWi6mxgtnGCEMTCAzPV2bosQfXrpBzVZldtQu6oxF+i3b+CFmP7MQ+TMlEbQ3RG.....IUjSD4pPfIH" ],
@@ -440,7 +432,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 53.0, 230.5, 127.0, 20.0 ],
-									"style" : "",
 									"text" : "prepend /foo to /bar.  "
 								}
 
@@ -448,15 +439,13 @@
 , 							{
 								"box" : 								{
 									"fontface" : 0,
-									"fontname" : "Arial",
-									"fontsize" : 12.0,
 									"id" : "obj-13",
 									"linecount" : 2,
 									"maxclass" : "o.compose",
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 53.0, 255.5, 100.0, 37.0 ],
+									"patching_rect" : [ 53.0, 255.5, 133.0, 36.0 ],
 									"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 28, 47, 98, 97, 114, 0, 0, 0, 0, 44, 105, 105, 105, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 2, 0, 0, 0, 3, 0, 0, 0, 28, 47, 98, 108, 111, 111, 0, 0, 0, 44, 105, 105, 105, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 5, 0, 0, 0, 6 ],
 									"saved_bundle_length" : 80,
 									"text" : "/bar : [1, 2, 3],\n/bloo : [4, 5, 6]",
@@ -467,14 +456,14 @@
 , 							{
 								"box" : 								{
 									"fontface" : 0,
-									"fontname" : "Arial",
-									"fontsize" : 12.0,
 									"id" : "obj-7",
+									"linecount" : 2,
 									"maxclass" : "o.display",
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 53.0, 380.0, 150.0, 34.0 ]
+									"patching_rect" : [ 53.0, 380.0, 172.0, 46.0 ],
+									"text" : "/foo/bar : [1, 2, 3],\n/foo/bloo : [4, 5, 6]"
 								}
 
 							}
@@ -488,7 +477,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 152.0, 303.0, 120.0, 47.0 ],
-									"style" : "",
 									"text" : "prepend /foo to every address in the incoming bundle"
 								}
 
@@ -503,7 +491,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "FullPacket" ],
 									"patching_rect" : [ 53.0, 316.5, 88.0, 22.0 ],
-									"style" : "",
 									"text" : "o.prepend /foo"
 								}
 
@@ -517,7 +504,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 484.0, 348.0, 150.0, 20.0 ],
-									"style" : "",
 									"text" : "see also:"
 								}
 
@@ -533,7 +519,6 @@
 									"numoutlets" : 4,
 									"outlettype" : [ "", "", "", "clear" ],
 									"patching_rect" : [ 484.0, 147.0, 181.0, 22.0 ],
-									"style" : "",
 									"text" : "o.helpfilehelper @obj o.prepend"
 								}
 
@@ -547,7 +532,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 30.0, 167.0, 600.0, 20.0 ],
-									"style" : "",
 									"text" : "o.prepend takes an OSC address as an argument and prepends it to every address in the bundle."
 								}
 
@@ -561,7 +545,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 30.0, 119.0, 600.0, 20.0 ],
-									"style" : "",
 									"text" : "Prepend an OSC address to every OSC address in a bundle"
 								}
 
@@ -575,7 +558,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 30.0, 30.0, 600.0, 87.0 ],
-									"style" : "",
 									"text" : "o.prepend"
 								}
 
@@ -590,8 +572,7 @@
 									"numoutlets" : 3,
 									"outlettype" : [ "int", "", "" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 484.0, 370.0, 132.0, 22.0 ],
-									"style" : ""
+									"patching_rect" : [ 484.0, 370.0, 132.0, 22.0 ]
 								}
 
 							}
@@ -606,7 +587,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 484.0, 429.0, 53.0, 22.0 ],
-									"style" : "",
 									"text" : "pcontrol"
 								}
 
@@ -622,7 +602,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 484.0, 405.0, 138.0, 22.0 ],
-									"style" : "",
 									"text" : "sprintf load %s.maxhelp"
 								}
 
@@ -695,16 +674,14 @@
  ]
 					}
 ,
-					"patching_rect" : [ 30.0, 21.587524, 49.0, 22.0 ],
+					"patching_rect" : [ 30.0, 21.587523999999998, 49.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
 						"globalpatchername" : "",
-						"style" : "",
 						"tags" : ""
 					}
 ,
-					"style" : "",
 					"text" : "p basic"
 				}
 
@@ -713,8 +690,8 @@
 		"lines" : [  ],
 		"dependency_cache" : [ 			{
 				"name" : "o.helpfilehelper.maxpat",
-				"bootpath" : "~/Documents/Max 7/Packages/CNMAT-odot/patchers/utils",
-				"patcherrelativepath" : "../../../Max 7/Packages/CNMAT-odot/patchers/utils",
+				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/patchers/utils",
+				"patcherrelativepath" : "../patchers/utils",
 				"type" : "JSON",
 				"implicit" : 1
 			}
@@ -724,6 +701,10 @@
 			}
 , 			{
 				"name" : "o.route.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.collect.mxo",
 				"type" : "iLaX"
 			}
 , 			{

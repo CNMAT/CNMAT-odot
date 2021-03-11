@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 5,
+			"revision" : 10,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -126,7 +126,6 @@
 				"box" : 				{
 					"id" : "obj-12",
 					"maxclass" : "jit.pwindow",
-					"name" : "u066005985",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "jit_matrix", "" ],
@@ -159,7 +158,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "jit_matrix" ],
-					"patching_rect" : [ 531.0, 38.0, 100.0, 100.0 ],
+					"patching_rect" : [ 642.0, 25.0, 100.0, 100.0 ],
 					"pic" : "/Users/jml/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/icon.png"
 				}
 
@@ -167,13 +166,12 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-10",
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 44.0, 510.5, 268.0, 31.0 ],
+					"patching_rect" : [ 44.0, 510.5, 269.0, 31.0 ],
 					"text" : "/row = map(lambda(t, t ? 1 : 0), /cell)"
 				}
 
@@ -207,14 +205,13 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-4",
 					"linecount" : 3,
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 44.0, 94.0, 308.0, 56.0 ],
+					"patching_rect" : [ 44.0, 94.0, 309.0, 57.0 ],
 					"text" : "/cell = list( nfill(30, 0), 1, nfill(30, 0)),\n/ruleset = list(0, 1, 0, 1, 1, 0, 0, 0),\n/max_generations = 255"
 				}
 
@@ -222,14 +219,13 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-9",
 					"linecount" : 3,
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 44.0, 391.0, 136.0, 56.0 ],
+					"patching_rect" : [ 44.0, 391.0, 136.0, 57.0 ],
 					"text" : "/cell = /new,\n/currentPoint = 1, \n/generation++"
 				}
 
@@ -237,14 +233,13 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-8",
 					"linecount" : 5,
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 44.0, 265.5, 413.0, 81.0 ],
+					"patching_rect" : [ 44.0, 265.5, 414.0, 83.0 ],
 					"text" : "/triad = /cell[[aseq(/currentPoint - 1, /currentPoint + 1)]],\n/index = /triad[[2]] + (2 * /triad[[1]]) + (4 * /triad[[0]]),\nassign_to_index(/new, /currentPoint, /ruleset[[/index]]),\n\n/currentPoint += 1"
 				}
 
@@ -252,14 +247,13 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-7",
 					"linecount" : 3,
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 44.0, 183.5, 222.0, 56.0 ],
+					"patching_rect" : [ 44.0, 183.5, 222.0, 57.0 ],
 					"text" : "/new = nfill(length(/cell), 0), \n/generation = 0, \n/currentPoint = 1"
 				}
 
@@ -274,7 +268,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 659.0, 38.0, 123.0, 43.0 ],
+					"patching_rect" : [ 642.0, 127.0, 123.0, 43.0 ],
 					"text" : "Cellular Automata in O.\nIlya Rostovstev 2014\nJeff Lubow 2020"
 				}
 
@@ -587,8 +581,8 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "o.recurse.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/CNMAT-odot/patchers/recursion",
-				"patcherrelativepath" : "../../../../../Max 8/Packages/CNMAT-odot/patchers/recursion",
+				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/patchers/recursion",
+				"patcherrelativepath" : "../patchers/recursion",
 				"type" : "JSON",
 				"implicit" : 1
 			}
@@ -616,7 +610,8 @@
 				"type" : "iLaX"
 			}
  ],
-		"autosave" : 0
+		"autosave" : 0,
+		"bgcolor" : [ 0.996078, 0.996078, 0.996078, 1.0 ]
 	}
 
 }

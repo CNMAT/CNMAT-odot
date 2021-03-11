@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 5,
+			"revision" : 10,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -62,7 +62,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 466.0, 525.0, 251.0, 56.0 ],
+					"patching_rect" : [ 466.0, 525.0, 254.0, 56.0 ],
 					"text" : "NOTE: currently odot does not protect against stack overflow caused by unchecked recursion... use with care as this can quickly cause max to crash!",
 					"textcolor" : [ 0.784314, 0.145098, 0.023529, 1.0 ]
 				}
@@ -83,29 +83,25 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-8",
-					"linecount" : 2,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 466.0, 456.0, 436.0, 45.0 ],
-					"text" : "/whileloop : \"lambda(j, j < 6 ? apply( /whileloop, j+1 ) : j)\",\n/r : 6"
+					"patching_rect" : [ 466.0, 456.0, 436.0, 33.0 ]
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-10",
 					"linecount" : 2,
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 466.0, 393.0, 426.0, 43.0 ],
+					"patching_rect" : [ 466.0, 393.0, 428.0, 44.0 ],
 					"text" : "/whileloop = \"lambda(j, j < 6 ? apply( /whileloop, j+1 ) : j)\",\n/r = apply(/whileloop, 0)"
 				}
 
@@ -127,28 +123,24 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontname" : "Arial",
-					"fontsize" : 11.0,
 					"id" : "obj-5",
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 466.0, 274.5, 150.0, 33.0 ]
+					"patching_rect" : [ 466.0, 274.5, 128.0, 33.0 ]
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontname" : "Arial",
-					"fontsize" : 11.0,
 					"id" : "obj-3",
 					"maxclass" : "o.compose",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 466.0, 173.5, 46.0, 23.0 ],
+					"patching_rect" : [ 466.0, 173.5, 60.0, 23.0 ],
 					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 12, 47, 118, 0, 0, 44, 105, 0, 0, 0, 0, 0, 9 ],
 					"saved_bundle_length" : 32,
 					"text" : "/v : 9"
@@ -158,14 +150,12 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontname" : "Arial",
-					"fontsize" : 11.0,
 					"id" : "obj-4",
 					"maxclass" : "o.compose",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 526.0, 173.5, 46.0, 23.0 ],
+					"patching_rect" : [ 534.0, 173.5, 60.0, 23.0 ],
 					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 12, 47, 118, 0, 0, 44, 105, 0, 0, 0, 0, 0, 5 ],
 					"saved_bundle_length" : 32,
 					"text" : "/v : 5"
@@ -175,14 +165,13 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-2",
 					"linecount" : 2,
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 466.0, 219.5, 420.0, 43.0 ],
+					"patching_rect" : [ 466.0, 219.5, 421.0, 44.0 ],
 					"text" : "/factorial = \"lambda(j, (j > 1)? j * /factorial(j - 1) : 1)\",\n/results = map(readstring(/factorial), /v), delete(/factorial)"
 				}
 
@@ -190,13 +179,12 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-1",
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 106.0, 403.0, 215.0, 31.0 ],
+					"patching_rect" : [ 106.0, 403.0, 216.0, 31.0 ],
 					"text" : " /t = /b, /b = /a % /b, /a = /t"
 				}
 
@@ -218,14 +206,12 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontname" : "Arial",
-					"fontsize" : 11.0,
 					"id" : "obj-33",
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 184.0, 452.0, 150.0, 33.0 ]
+					"patching_rect" : [ 184.0, 452.0, 128.0, 33.0 ]
 				}
 
 			}
@@ -246,14 +232,12 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontname" : "Arial",
-					"fontsize" : 11.0,
 					"id" : "obj-28",
 					"maxclass" : "o.compose",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 53.0, 34.0, 46.0, 23.0 ],
+					"patching_rect" : [ 53.0, 34.0, 60.0, 23.0 ],
 					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 12, 47, 118, 0, 0, 44, 105, 0, 0, 0, 0, 0, 9 ],
 					"saved_bundle_length" : 32,
 					"text" : "/v : 9"
@@ -263,14 +247,12 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontname" : "Arial",
-					"fontsize" : 11.0,
 					"id" : "obj-26",
 					"maxclass" : "o.compose",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 149.0, 34.0, 46.0, 23.0 ],
+					"patching_rect" : [ 149.0, 34.0, 60.0, 23.0 ],
 					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 12, 47, 118, 0, 0, 44, 105, 0, 0, 0, 0, 0, 5 ],
 					"saved_bundle_length" : 32,
 					"text" : "/v : 5"
@@ -294,14 +276,13 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 11.0,
 					"id" : "obj-24",
 					"linecount" : 2,
 					"maxclass" : "o.expr.codebox",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 53.0, 148.0, 116.0, 43.0 ],
+					"patching_rect" : [ 53.0, 148.0, 116.0, 44.0 ],
 					"text" : "/result ??= 1,\n /result *= /v--"
 				}
 
@@ -309,29 +290,25 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontname" : "Arial",
-					"fontsize" : 11.0,
 					"id" : "obj-21",
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 214.0, 196.0, 150.0, 33.0 ]
+					"patching_rect" : [ 214.0, 196.0, 128.0, 33.0 ]
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontname" : "Arial",
-					"fontsize" : 11.0,
 					"id" : "obj-17",
 					"linecount" : 2,
 					"maxclass" : "o.compose",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 235.0, 306.0, 65.0, 35.0 ],
+					"patching_rect" : [ 235.0, 306.0, 80.0, 36.0 ],
 					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 12, 47, 97, 0, 0, 44, 105, 0, 0, 0, 0, 0, -16, 0, 0, 0, 12, 47, 98, 0, 0, 44, 105, 0, 0, 0, 0, 0, 54 ],
 					"saved_bundle_length" : 48,
 					"text" : "/a : 240,\n/b : 54"
@@ -341,15 +318,13 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontname" : "Arial",
-					"fontsize" : 11.0,
 					"id" : "obj-14",
 					"linecount" : 2,
 					"maxclass" : "o.compose",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 150.0, 306.0, 60.0, 35.0 ],
+					"patching_rect" : [ 150.0, 306.0, 73.0, 36.0 ],
 					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 12, 47, 97, 0, 0, 44, 105, 0, 0, 0, 0, 0, 12, 0, 0, 0, 12, 47, 98, 0, 0, 44, 105, 0, 0, 0, 0, 0, 9 ],
 					"saved_bundle_length" : 48,
 					"text" : "/a : 12,\n/b : 9"
@@ -359,29 +334,25 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontname" : "Arial",
-					"fontsize" : 11.0,
 					"id" : "obj-12",
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 66.0, 553.0, 150.0, 33.0 ]
+					"patching_rect" : [ 66.0, 553.0, 128.0, 33.0 ]
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontname" : "Arial",
-					"fontsize" : 11.0,
 					"id" : "obj-7",
 					"linecount" : 2,
 					"maxclass" : "o.compose",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 66.0, 306.0, 60.0, 35.0 ],
+					"patching_rect" : [ 66.0, 306.0, 73.0, 36.0 ],
 					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 12, 47, 97, 0, 0, 44, 105, 0, 0, 0, 0, 0, 17, 0, 0, 0, 12, 47, 98, 0, 0, 44, 105, 0, 0, 0, 0, 0, 19 ],
 					"saved_bundle_length" : 48,
 					"text" : "/a : 17,\n/b : 19"
@@ -640,8 +611,8 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "o.recurse.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/CNMAT-odot/patchers/recursion",
-				"patcherrelativepath" : "../../../../../Max 8/Packages/CNMAT-odot/patchers/recursion",
+				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/patchers/recursion",
+				"patcherrelativepath" : "../patchers/recursion",
 				"type" : "JSON",
 				"implicit" : 1
 			}
@@ -677,7 +648,8 @@
 				"type" : "iLaX"
 			}
  ],
-		"autosave" : 0
+		"autosave" : 0,
+		"bgcolor" : [ 0.996078, 0.996078, 0.996078, 1.0 ]
 	}
 
 }
