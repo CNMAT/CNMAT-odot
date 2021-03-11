@@ -47,7 +47,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
 					"patching_rect" : [ 181.5, 425.0, 163.0, 31.0 ],
-					"text" : "/freq = mtof(/midifreq)"
+					"text" : "/freq = mtof(/midinote)"
 				}
 
 			}
@@ -85,8 +85,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
 					"patching_rect" : [ 181.5, 269.5, 547.0, 70.0 ],
-					"presentation_linecount" : 4,
-					"text" : "/gen = \"lambda([v, r], if(length(v) == 2, scale(r, 0., 1., v[[0]], v[[1]]), v))\",\n/amp = /gen(/amp, /rs[[0]]),\n/dur = /gen(/dur, /rs[[1]]),\n/midifreq = /gen(/midifreq, /rs[[2]])"
+					"text" : "/gen = \"lambda([v, r], if(length(v) == 2, scale(r, 0., 1., v[[0]], v[[1]]), v))\",\n/amp = /gen(/amp, /rs[[0]]),\n/dur = /gen(/dur, /rs[[1]]),\n/midinote = /gen(/midinote, /rs[[2]])"
 				}
 
 			}
@@ -126,7 +125,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
 					"patching_rect" : [ 181.5, 95.5, 156.0, 57.0 ],
-					"text" : "/amp ??= [0.25, 0.75],\n/dur ??= [200, 500],\n/midifreq ??= [0, 127]"
+					"text" : "/amp ??= [0.25, 0.75],\n/dur ??= [200, 500],\n/midinote ??= [36, 84]"
 				}
 
 			}

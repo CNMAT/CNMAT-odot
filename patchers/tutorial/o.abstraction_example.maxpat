@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 62.0, 91.0, 941.0, 706.0 ],
+		"rect" : [ 62.0, 91.0, 941.0, 806.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 14.0,
@@ -41,12 +41,38 @@
 		"boxes" : [ 			{
 				"box" : 				{
 					"fontsize" : 12.0,
+					"id" : "obj-24",
+					"maxclass" : "newobj",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "FullPacket" ],
+					"patching_rect" : [ 565.5, 640.0, 89.0, 22.0 ],
+					"text" : "o.union"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontsize" : 12.0,
+					"id" : "obj-21",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "FullPacket" ],
+					"patching_rect" : [ 351.5, 137.5, 134.0, 22.0 ],
+					"text" : "o.gather /amp /dur /freq"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontsize" : 12.0,
 					"id" : "obj-14",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 351.5, 357.0, 29.5, 22.0 ],
+					"patching_rect" : [ 351.5, 408.0, 29.5, 22.0 ],
 					"text" : "t l l"
 				}
 
@@ -259,7 +285,7 @@
  ]
 					}
 ,
-					"patching_rect" : [ 351.5, 162.833333333333314, 73.0, 22.0 ],
+					"patching_rect" : [ 351.5, 213.833333333333314, 73.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
@@ -280,7 +306,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "bang", "" ],
-					"patching_rect" : [ 351.5, 132.166666666666657, 88.0, 22.0 ],
+					"patching_rect" : [ 351.5, 183.166666666666657, 88.0, 22.0 ],
 					"text" : "t b l"
 				}
 
@@ -293,7 +319,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 351.5, 193.499999999999972, 88.0, 22.0 ],
+					"patching_rect" : [ 351.5, 244.499999999999972, 88.0, 22.0 ],
 					"text" : "o.union"
 				}
 
@@ -307,7 +333,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 351.5, 223.5, 547.0, 121.0 ],
+					"patching_rect" : [ 351.5, 274.5, 547.0, 121.0 ],
 					"text" : "/amp ??= [0.25, 0.75],\n/dur ??= [200, 500],\n/freq ??= [440, 880],\n/gen = \"lambda([v, r], if(length(v) == 2, scale(r, 0., 1., v[[0]], v[[1]]), v))\",\n/amp = /gen(/amp, /rs[[0]]),\n/dur = /gen(/dur, /rs[[1]]),\n/freq = /gen(/freq, /rs[[2]]),\ndelete(/rs, /gen)"
 				}
 
@@ -321,7 +347,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 467.5, 118.5, 415.0, 60.0 ],
+					"patching_rect" : [ 467.5, 169.5, 415.0, 60.0 ],
 					"text" : "We can tag our bundles with numerical identifiers for the address names and send to specific instances, or we can opt for the note msg, in whiich we use the delegation outlet of [o.route].  [o.route] is set dynamically via [thispoly~]."
 				}
 
@@ -360,7 +386,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 565.5, 382.0, 58.0, 22.0 ],
+					"patching_rect" : [ 565.5, 433.0, 58.0, 22.0 ],
 					"text" : "loadbang"
 				}
 
@@ -373,7 +399,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 565.5, 409.0, 79.0, 22.0 ],
+					"patching_rect" : [ 565.5, 460.0, 79.0, 22.0 ],
 					"text" : "mute 1, bang"
 				}
 
@@ -386,7 +412,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 387.5, 473.0, 29.0, 22.0 ],
+					"patching_rect" : [ 387.5, 524.0, 29.0, 22.0 ],
 					"text" : "0."
 				}
 
@@ -399,7 +425,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 387.5, 449.0, 57.0, 22.0 ],
+					"patching_rect" : [ 387.5, 500.0, 57.0, 22.0 ],
 					"text" : "delay 10."
 				}
 
@@ -412,7 +438,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 4,
 					"outlettype" : [ "", "", "", "FullPacket" ],
-					"patching_rect" : [ 351.5, 412.0, 127.0, 22.0 ],
+					"patching_rect" : [ 351.5, 463.0, 127.0, 22.0 ],
 					"text" : "o.route /amp /dur /freq"
 				}
 
@@ -425,7 +451,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "signal" ],
-					"patching_rect" : [ 203.5, 533.0, 66.0, 22.0 ],
+					"patching_rect" : [ 203.5, 584.0, 66.0, 22.0 ],
 					"text" : "cycle~ 440"
 				}
 
@@ -438,7 +464,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "signal" ],
-					"patching_rect" : [ 203.5, 563.0, 144.0, 22.0 ],
+					"patching_rect" : [ 203.5, 614.0, 144.0, 22.0 ],
 					"text" : "*~ 0."
 				}
 
@@ -450,7 +476,11 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 203.5, 655.0, 42.0, 22.0 ],
+					"patching_rect" : [ 203.5, 706.0, 42.0, 22.0 ],
+					"saved_object_attributes" : 					{
+						"attr_comment" : ""
+					}
+,
 					"text" : "out~ 1"
 				}
 
@@ -463,7 +493,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 635.5, 520.0, 79.0, 22.0 ],
+					"patching_rect" : [ 635.5, 571.0, 79.0, 22.0 ],
 					"text" : "o.pack /voice"
 				}
 
@@ -476,7 +506,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 565.5, 555.0, 89.0, 22.0 ],
+					"patching_rect" : [ 565.5, 606.0, 89.0, 22.0 ],
 					"text" : "o.union"
 				}
 
@@ -502,7 +532,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 565.5, 485.0, 85.0, 22.0 ],
+					"patching_rect" : [ 565.5, 536.0, 85.0, 22.0 ],
 					"text" : "sprintf set /%d"
 				}
 
@@ -515,7 +545,7 @@
 					"numinlets" : 5,
 					"numoutlets" : 4,
 					"outlettype" : [ "signal", "signal", "", "" ],
-					"patching_rect" : [ 351.5, 515.0, 99.0, 22.0 ],
+					"patching_rect" : [ 351.5, 566.0, 99.0, 22.0 ],
 					"text" : "adsr~ 10 0. 1. 10"
 				}
 
@@ -527,11 +557,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 565.5, 655.0, 35.0, 22.0 ],
-					"saved_object_attributes" : 					{
-						"attr_comment" : ""
-					}
-,
+					"patching_rect" : [ 565.5, 706.0, 35.0, 22.0 ],
 					"text" : "out 1"
 				}
 
@@ -544,7 +570,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 565.5, 520.0, 63.0, 22.0 ],
+					"patching_rect" : [ 565.5, 571.0, 63.0, 22.0 ],
 					"text" : "o.prepend"
 				}
 
@@ -558,10 +584,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 351.5, 20.0, 28.0, 22.0 ],
-					"saved_object_attributes" : 					{
-						"attr_comment" : ""
-					}
-,
 					"text" : "in 1"
 				}
 
@@ -574,7 +596,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 3,
 					"outlettype" : [ "int", "int", "int" ],
-					"patching_rect" : [ 565.5, 451.0, 56.0, 22.0 ],
+					"patching_rect" : [ 565.5, 502.0, 56.0, 22.0 ],
 					"text" : "thispoly~"
 				}
 
@@ -582,7 +604,7 @@
  ],
 		"lines" : [ 			{
 				"patchline" : 				{
-					"destination" : [ "obj-22", 0 ],
+					"destination" : [ "obj-24", 0 ],
 					"source" : [ "obj-1", 0 ]
 				}
 
@@ -652,7 +674,7 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-11", 0 ],
+					"destination" : [ "obj-21", 0 ],
 					"source" : [ "obj-2", 0 ]
 				}
 
@@ -680,8 +702,29 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-11", 0 ],
+					"source" : [ "obj-21", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-24", 1 ],
+					"source" : [ "obj-21", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-25", 0 ],
 					"source" : [ "obj-23", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-22", 0 ],
+					"source" : [ "obj-24", 0 ]
 				}
 
 			}
@@ -703,7 +746,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-5", 0 ],
-					"midpoints" : [ 414.333333333333314, 595.0, 730.166666666666515, 595.0, 730.166666666666515, 447.0, 575.0, 447.0 ],
+					"midpoints" : [ 414.333333333333314, 669.0, 730.166666666666515, 669.0, 730.166666666666515, 498.0, 575.0, 498.0 ],
 					"source" : [ "obj-26", 2 ]
 				}
 
@@ -711,7 +754,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-5", 0 ],
-					"midpoints" : [ 361.0, 611.0, 739.5, 611.0, 739.5, 443.0, 575.0, 443.0 ],
+					"midpoints" : [ 361.0, 680.0, 739.5, 680.0, 739.5, 494.0, 575.0, 494.0 ],
 					"order" : 0,
 					"source" : [ "obj-26", 0 ]
 				}
@@ -757,7 +800,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-9", 0 ],
-					"midpoints" : [ 575.0, 478.0, 911.5, 478.0, 911.5, 55.5, 490.0, 55.5 ],
+					"midpoints" : [ 575.0, 529.0, 911.5, 529.0, 911.5, 55.5, 490.0, 55.5 ],
 					"order" : 2,
 					"source" : [ "obj-5", 0 ]
 				}
@@ -800,6 +843,20 @@
 			}
  ],
 		"dependency_cache" : [ 			{
+				"name" : "o.gather.maxpat",
+				"bootpath" : "~/Development/CNMAT/CNMAT/CNMAT-odot/patchers/namespace",
+				"patcherrelativepath" : "../namespace",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "o.righttoleft.maxpat",
+				"bootpath" : "~/Development/CNMAT/CNMAT/CNMAT-odot/patchers/ordering",
+				"patcherrelativepath" : "../ordering",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
 				"name" : "o.prepend.mxo",
 				"type" : "iLaX"
 			}
@@ -817,6 +874,22 @@
 			}
 , 			{
 				"name" : "o.expr.codebox.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.intersection.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.collect.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.difference.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.compose.mxo",
 				"type" : "iLaX"
 			}
  ],
