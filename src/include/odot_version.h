@@ -11,7 +11,7 @@
 #include "report_compiler.h"
 //#define ODOT_VERSION "1.2.11" 
 //#define ODOT_RELEASE_DATE "[2012-12-21 Fri]"
-#define ODOT_COPYRIGHT_YEARS "2008-17"
+#define ODOT_COPYRIGHT_YEARS "2008-21"
 #define ODOT_AUTHORS "John MacCallum, Adrian Freed, Rama Gottfried, Ilya Rostovtsev"
 #define ODOT_COPYRIGHT_STRING "Regents of the University of California. All rights reserved."
 
