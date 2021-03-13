@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 34.0, 79.0, 657.0, 679.0 ],
+		"rect" : [ 34.0, 87.0, 657.0, 679.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -73,7 +73,7 @@
 					"maxclass" : "ezdac~",
 					"numinlets" : 2,
 					"numoutlets" : 0,
-					"patching_rect" : [ 83.0, 460.0, 45.0, 45.0 ]
+					"patching_rect" : [ 39.0, 460.0, 45.0, 45.0 ]
 				}
 
 			}
@@ -133,13 +133,13 @@
 				"box" : 				{
 					"fontface" : 0,
 					"id" : "obj-5",
-					"linecount" : 9,
+					"linecount" : 49,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 153.0, 301.0, 246.0, 136.0 ],
-					"text" : "/1/time/relative : 0.,\n/1/sfdur/ms : 0.,\n/1/voice : 1,\n/1/bufname : \"buf\",\n/1/transport/play : \"bang\",\n/1/func : \"lambda(t, /cos =  cos(t * 2. * pi()))\",\n/1/time/absolute : 0.,\n/1/cos : 1."
+					"patching_rect" : [ 153.0, 301.0, 246.0, 648.0 ],
+					"text" : "/4/time/relative : 0.,\n/4/sfdur/ms : 2844.76,\n/4/voice : 4,\n/4/bufname : \"buf\",\n/4/transport/play : \"bang\",\n/4/func : \"lambda(t, /cos =  cos(t * 2. * pi()))\",\n/4/time/absolute : 0.,\n/4/cos : 1.,\n/3/time/relative : 0.,\n/3/sfdur/ms : 2844.76,\n/3/voice : 3,\n/3/bufname : \"buf\",\n/3/transport/play : \"bang\",\n/3/func : \"lambda(t, /cos =  cos(t * 2. * pi()))\",\n/3/time/absolute : 0.,\n/3/cos : 1.,\n/2/time/relative : 0.,\n/2/sfdur/ms : 2844.76,\n/2/voice : 2,\n/2/bufname : \"buf\",\n/2/transport/play : \"bang\",\n/2/func : \"lambda(t, /cos =  cos(t * 2. * pi()))\",\n/2/time/absolute : 0.,\n/2/cos : 1.,\n/1/time/relative : 0.,\n/1/sfdur/ms : 2844.76,\n/1/voice : 1,\n/1/bufname : \"buf\",\n/1/transport/play : \"bang\",\n/1/func : \"lambda(t, /cos =  cos(t * 2. * pi()))\",\n/1/time/absolute : 0.,\n/1/cos : 1.,\n/6/time/relative : 0.,\n/6/sfdur/ms,\n/6/voice : 6,\n/6/time/absolute : 0.,\n/5/time/relative : 0.,\n/5/sfdur/ms : 2844.76,\n/5/voice : 5,\n/5/bufname : \"buf\",\n/5/transport/play : \"bang\",\n/5/func : \"lambda(t, /cos =  cos(t * 2. * pi()))\",\n/5/time/absolute : 0.,\n/5/cos : 1."
 				}
 
 			}
@@ -272,6 +272,22 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-3", 1 ],
+					"order" : 0,
+					"source" : [ "obj-4", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-3", 0 ],
+					"order" : 1,
+					"source" : [ "obj-4", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-2", 0 ],
 					"source" : [ "obj-42", 0 ]
 				}
@@ -310,23 +326,16 @@
 ,
 		"dependency_cache" : [ 			{
 				"name" : "o.sfplayer.1.maxpat",
-				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/examples",
+				"bootpath" : "~/Development/CNMAT/CNMAT/CNMAT-odot/examples",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.accum.maxpat",
-				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/patchers/namespace",
+				"bootpath" : "~/Development/CNMAT/CNMAT/CNMAT-odot/patchers/namespace",
 				"patcherrelativepath" : "../patchers/namespace",
 				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "icon.png",
-				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot",
-				"patcherrelativepath" : "..",
-				"type" : "PNG",
 				"implicit" : 1
 			}
 , 			{

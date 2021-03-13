@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 97.0, 79.0, 694.0, 760.0 ],
+		"rect" : [ 97.0, 87.0, 694.0, 760.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -70,6 +70,10 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 297.0, 707.0, 35.0, 22.0 ],
+					"saved_object_attributes" : 					{
+						"attr_comment" : ""
+					}
+,
 					"text" : "out 2"
 				}
 
@@ -81,7 +85,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 540.0, 525.0, 65.0, 22.0 ],
+					"patching_rect" : [ 553.0, 525.0, 65.0, 22.0 ],
 					"text" : "sprintf /%d"
 				}
 
@@ -93,7 +97,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 540.0, 555.0, 72.0, 22.0 ],
+					"patching_rect" : [ 553.0, 555.0, 72.0, 22.0 ],
 					"text" : "prepend set"
 				}
 
@@ -251,6 +255,10 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 207.0, 707.0, 35.0, 22.0 ],
+					"saved_object_attributes" : 					{
+						"attr_comment" : ""
+					}
+,
 					"text" : "out 1"
 				}
 
@@ -322,6 +330,10 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 61.0, 707.0, 42.0, 22.0 ],
+					"saved_object_attributes" : 					{
+						"attr_comment" : ""
+					}
+,
 					"text" : "out~ 1"
 				}
 
@@ -433,8 +445,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 207.0, 525.0, 295.0, 31.0 ],
-					"text" : "/time/absolute = /time/relative * /sfdur/ms"
+					"patching_rect" : [ 207.0, 525.0, 342.0, 31.0 ],
+					"text" : "/time/absolute = /time/relative * (/sfdur/ms ?? 0)"
 				}
 
 			}
@@ -483,6 +495,10 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 61.0, 33.0, 28.0, 22.0 ],
+					"saved_object_attributes" : 					{
+						"attr_comment" : ""
+					}
+,
 					"text" : "in 1"
 				}
 
