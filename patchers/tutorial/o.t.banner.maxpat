@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 1,
+			"revision" : 10,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -37,7 +37,23 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "Untitled5_template",
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
+				"box" : 				{
+					"fontface" : 2,
+					"fontsize" : 12.0,
+					"id" : "obj-44",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 123.0, 93.5, 404.0, 20.0 ],
+					"style" : "default",
+					"text" : "written by Jeff Lubow and John MacCallum, 2020.",
+					"textcolor" : [ 0.129411764705882, 0.129411764705882, 0.129411764705882, 0.36 ]
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"hidden" : 1,
 					"id" : "obj-9",
@@ -45,7 +61,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 556.0, 111.0, 66.0, 22.0 ],
+					"patching_rect" : [ 556.0, 111.0, 66.0, 24.0 ],
 					"text" : "loadbang"
 				}
 
@@ -58,7 +74,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 556.0, 148.0, 94.0, 22.0 ],
+					"patching_rect" : [ 556.0, 148.0, 94.0, 24.0 ],
 					"text" : "read filelist.txt"
 				}
 
@@ -71,7 +87,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "bang", "" ],
-					"patching_rect" : [ 390.0, 148.0, 38.0, 22.0 ],
+					"patching_rect" : [ 390.0, 148.0, 38.0, 24.0 ],
 					"text" : "sel 0"
 				}
 
@@ -84,7 +100,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 390.0, 120.0, 95.5, 22.0 ],
+					"patching_rect" : [ 390.0, 120.0, 95.5, 24.0 ],
 					"text" : "#1"
 				}
 
@@ -97,7 +113,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 409.0, 217.0, 89.0, 22.0 ],
+					"patching_rect" : [ 409.0, 217.0, 89.0, 24.0 ],
 					"text" : "route symbol"
 				}
 
@@ -110,7 +126,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 409.0, 293.0, 82.0, 22.0 ],
+					"patching_rect" : [ 409.0, 293.0, 82.0, 24.0 ],
 					"text" : "prepend set"
 				}
 
@@ -123,7 +139,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 409.0, 260.0, 54.0, 22.0 ],
+					"patching_rect" : [ 409.0, 260.0, 54.0, 24.0 ],
 					"text" : "zl.nth 2"
 				}
 
@@ -136,9 +152,10 @@
 					"numinlets" : 1,
 					"numoutlets" : 4,
 					"outlettype" : [ "", "", "", "" ],
-					"patching_rect" : [ 409.0, 182.0, 50.5, 22.0 ],
+					"patching_rect" : [ 409.0, 182.0, 50.5, 24.0 ],
 					"saved_object_attributes" : 					{
-						"embed" : 0
+						"embed" : 0,
+						"precision" : 6
 					}
 ,
 					"text" : "coll"
@@ -154,7 +171,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 123.0, 62.5, 404.0, 30.0 ],
+					"patching_rect" : [ 123.0, 62.5, 404.0, 33.0 ],
 					"style" : "default",
 					"text" : "This tutorial is an introduction to the ODOT programming library, a set of Max externals, patches, and abstractions.",
 					"textcolor" : [ 0.129411764705882, 0.129411764705882, 0.129411764705882, 0.36 ]
@@ -167,7 +184,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 123.0, 40.5, 527.0, 20.0 ],
+					"patching_rect" : [ 123.0, 40.5, 527.0, 22.0 ],
 					"style" : "default"
 				}
 
@@ -180,7 +197,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 123.0, 8.0, 390.0, 30.0 ],
+					"patching_rect" : [ 123.0, 8.0, 390.0, 33.0 ],
 					"text" : "ODOT programming tutorial"
 				}
 
@@ -283,7 +300,7 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "filelist.txt",
-				"bootpath" : "~/Development/CNMAT/CNMAT/CNMAT-odot/patchers/tutorial",
+				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/patchers/tutorial",
 				"patcherrelativepath" : ".",
 				"type" : "TEXT",
 				"implicit" : 1
