@@ -41,6 +41,19 @@
 		"boxes" : [ 			{
 				"box" : 				{
 					"hidden" : 1,
+					"id" : "obj-2",
+					"maxclass" : "newobj",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "bang" ],
+					"patching_rect" : [ 409.0, 281.0, 61.0, 22.0 ],
+					"text" : "delay 100"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"hidden" : 1,
 					"id" : "obj-18",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
@@ -59,7 +72,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 409.0, 286.0, 67.0, 22.0 ],
+					"patching_rect" : [ 409.0, 309.0, 67.0, 22.0 ],
 					"save" : [ "#N", "thispatcher", ";", "#Q", "end", ";" ],
 					"text" : "thispatcher"
 				}
@@ -1098,7 +1111,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 30.0, 217.0, 265.0, 302.0 ],
-					"text" : "/horizontal : 459,\n/vertical : 558,\n/delta/horizontal : 0,\n/delta/vertical : 0,\n/screenDim : [1440, 900],\n/middle : [720., 450.],\n/button/is : \"up\",\n/x : -261.,\n/y : -108.,\n/distance : 282.462,\n/angle : -157.521,\n/delta/distance : 0.,\n/delta/angle : 0.,\n/shift : \"up\",\n/capslock : \"up\",\n/option : \"up\",\n/control : \"up\",\n/command : \"down\",\n/time : 2021-03-13T04:20:24.923183Z,\n/state : \"moving\",\n/pixPerSec : 0.,\n/relative/pixPerSec : 0."
+					"text" : "/horizontal : 404,\n/vertical : 359,\n/delta/horizontal : 0,\n/delta/vertical : 0,\n/screenDim : [1440, 900],\n/middle : [720., 450.],\n/button/is : \"up\",\n/x : -316.,\n/y : 91.,\n/distance : 328.842,\n/angle : 163.935,\n/delta/distance : 0.,\n/delta/angle : 0.,\n/shift : \"up\",\n/capslock : \"up\",\n/option : \"up\",\n/control : \"up\",\n/command : \"down\",\n/time : 2021-03-13T09:11:52.668358Z,\n/state : \"moving\",\n/pixPerSec : 0.,\n/relative/pixPerSec : 0."
 				}
 
 			}
@@ -1174,9 +1187,17 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-16", 0 ],
+					"destination" : [ "obj-2", 0 ],
 					"hidden" : 1,
 					"source" : [ "obj-18", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-16", 0 ],
+					"hidden" : 1,
+					"source" : [ "obj-2", 0 ]
 				}
 
 			}
