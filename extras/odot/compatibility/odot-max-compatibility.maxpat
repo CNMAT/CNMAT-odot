@@ -4,13 +4,13 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 8,
+			"revision" : 10,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 117.0, 79.0, 533.0, 878.0 ],
+		"rect" : [ 39.0, 57.0, 470.0, 806.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -46,7 +46,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 43.0, 37.0, 285.0, 27.0 ],
+					"patching_rect" : [ 15.0, 13.0, 285.0, 27.0 ],
 					"text" : "FullPacket messages and safety"
 				}
 
@@ -57,7 +57,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 43.0, 819.0, 150.0, 20.0 ],
+					"patching_rect" : [ 15.0, 764.0, 150.0, 20.0 ],
 					"text" : "just right :)"
 				}
 
@@ -68,7 +68,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 261.5, 819.0, 150.0, 20.0 ],
+					"patching_rect" : [ 233.5, 764.0, 150.0, 20.0 ],
 					"text" : "too fast!"
 				}
 
@@ -82,7 +82,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 261.5, 788.0, 50.0, 22.0 ]
+					"patching_rect" : [ 233.5, 733.0, 50.0, 22.0 ]
 				}
 
 			}
@@ -93,7 +93,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "float", "" ],
-					"patching_rect" : [ 261.5, 759.0, 35.0, 22.0 ],
+					"patching_rect" : [ 233.5, 704.0, 35.0, 22.0 ],
 					"text" : "timer"
 				}
 
@@ -105,7 +105,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "bang", "bang" ],
-					"patching_rect" : [ 261.5, 725.0, 29.5, 22.0 ],
+					"patching_rect" : [ 233.5, 670.0, 29.5, 22.0 ],
 					"text" : "b 2"
 				}
 
@@ -119,7 +119,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 43.0, 788.0, 50.0, 22.0 ]
+					"patching_rect" : [ 15.0, 733.0, 50.0, 22.0 ]
 				}
 
 			}
@@ -130,7 +130,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "float", "" ],
-					"patching_rect" : [ 43.0, 759.0, 35.0, 22.0 ],
+					"patching_rect" : [ 15.0, 704.0, 35.0, 22.0 ],
 					"text" : "timer"
 				}
 
@@ -142,7 +142,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "bang", "bang" ],
-					"patching_rect" : [ 43.0, 725.0, 29.5, 22.0 ],
+					"patching_rect" : [ 15.0, 670.0, 29.5, 22.0 ],
 					"text" : "b 2"
 				}
 
@@ -156,8 +156,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 102.0, 774.0, 150.0, 34.0 ],
-					"text" : "/rand : 930"
+					"patching_rect" : [ 74.0, 719.0, 150.0, 34.0 ],
+					"text" : "/rand : 627"
 				}
 
 			}
@@ -168,7 +168,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 102.0, 696.0, 80.0, 22.0 ],
+					"patching_rect" : [ 74.0, 641.0, 80.0, 22.0 ],
 					"text" : "speedlim 100"
 				}
 
@@ -180,7 +180,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 102.0, 725.0, 98.75, 22.0 ],
+					"patching_rect" : [ 74.0, 670.0, 98.75, 22.0 ],
 					"text" : "o.var"
 				}
 
@@ -192,7 +192,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 3,
 					"outlettype" : [ "bang", "", "bang" ],
-					"patching_rect" : [ 102.0, 670.0, 178.5, 22.0 ],
+					"patching_rect" : [ 74.0, 615.0, 178.5, 22.0 ],
 					"text" : "t b l b"
 				}
 
@@ -209,7 +209,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 1,
-							"revision" : 8,
+							"revision" : 10,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -316,7 +316,7 @@
  ]
 					}
 ,
-					"patching_rect" : [ 102.0, 643.0, 189.0, 22.0 ],
+					"patching_rect" : [ 74.0, 588.0, 189.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
@@ -336,7 +336,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 43.0, 588.0, 438.0, 33.0 ],
+					"patching_rect" : [ 15.0, 533.0, 438.0, 33.0 ],
 					"text" : "speedlim, pipe, defer, and deferlow can never safely be used directly. They must be used in conjunction with o.var or o.compose:"
 				}
 
@@ -347,7 +347,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 262.0, 530.0, 150.0, 20.0 ],
+					"patching_rect" : [ 234.0, 483.0, 150.0, 20.0 ],
 					"text" : "o.var"
 				}
 
@@ -358,7 +358,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 43.0, 530.0, 150.0, 20.0 ],
+					"patching_rect" : [ 15.0, 483.0, 150.0, 20.0 ],
 					"text" : "zl.reg"
 				}
 
@@ -371,7 +371,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 262.0, 462.0, 24.0, 24.0 ]
+					"patching_rect" : [ 234.0, 415.0, 24.0, 24.0 ]
 				}
 
 			}
@@ -382,7 +382,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 262.0, 497.0, 35.0, 22.0 ],
+					"patching_rect" : [ 234.0, 450.0, 35.0, 22.0 ],
 					"text" : "o.var"
 				}
 
@@ -395,7 +395,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 43.0, 462.0, 24.0, 24.0 ]
+					"patching_rect" : [ 15.0, 415.0, 24.0, 24.0 ]
 				}
 
 			}
@@ -406,7 +406,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 43.0, 497.0, 38.0, 22.0 ],
+					"patching_rect" : [ 15.0, 450.0, 38.0, 22.0 ],
 					"text" : "zl.reg"
 				}
 
@@ -418,7 +418,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 90.0, 462.0, 42.0, 22.0 ],
+					"patching_rect" : [ 62.0, 415.0, 42.0, 22.0 ],
 					"text" : "foo 10"
 				}
 
@@ -432,7 +432,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 307.0, 462.0, 93.0, 24.0 ],
+					"patching_rect" : [ 279.0, 415.0, 93.0, 24.0 ],
 					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 47, 102, 111, 111, 0, 0, 0, 0, 44, 105, 0, 0, 0, 0, 0, 10 ],
 					"saved_bundle_length" : 36,
 					"text" : "/foo : 10"
@@ -445,7 +445,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 262.0, 419.0, 150.0, 20.0 ],
+					"patching_rect" : [ 234.0, 372.0, 150.0, 20.0 ],
 					"text" : "o.compose"
 				}
 
@@ -456,7 +456,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 43.0, 419.0, 150.0, 20.0 ],
+					"patching_rect" : [ 15.0, 372.0, 150.0, 20.0 ],
 					"text" : "message box"
 				}
 
@@ -469,7 +469,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 262.0, 351.0, 24.0, 24.0 ]
+					"patching_rect" : [ 234.0, 304.0, 24.0, 24.0 ]
 				}
 
 			}
@@ -482,7 +482,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 262.0, 386.0, 93.0, 24.0 ],
+					"patching_rect" : [ 234.0, 339.0, 93.0, 24.0 ],
 					"saved_bundle_data" : [  ],
 					"saved_bundle_length" : 0
 				}
@@ -496,7 +496,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 43.0, 351.0, 24.0, 24.0 ]
+					"patching_rect" : [ 15.0, 304.0, 24.0, 24.0 ]
 				}
 
 			}
@@ -507,7 +507,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 43.0, 386.0, 42.0, 22.0 ],
+					"patching_rect" : [ 15.0, 339.0, 42.0, 22.0 ],
 					"text" : "foo 10"
 				}
 
@@ -519,7 +519,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 90.0, 351.0, 42.0, 22.0 ],
+					"patching_rect" : [ 62.0, 304.0, 42.0, 22.0 ],
 					"text" : "foo 10"
 				}
 
@@ -533,7 +533,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 307.0, 351.0, 93.0, 24.0 ],
+					"patching_rect" : [ 279.0, 304.0, 93.0, 24.0 ],
 					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 47, 102, 111, 111, 0, 0, 0, 0, 44, 105, 0, 0, 0, 0, 0, 10 ],
 					"saved_bundle_length" : 36,
 					"text" : "/foo : 10"
@@ -548,7 +548,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 43.0, 311.0, 435.0, 33.0 ],
+					"patching_rect" : [ 15.0, 264.0, 435.0, 33.0 ],
 					"text" : "In order to store a bundle for future use, substitute the Max message box for o.compose, and zl.reg for o.var."
 				}
 
@@ -561,7 +561,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 43.0, 169.0, 438.0, 127.0 ],
+					"patching_rect" : [ 15.0, 122.0, 438.0, 127.0 ],
 					"text" : "This means that if you store a FullPacket message in, say a Max message box, or with zl.reg, the next time you access it, the memory that it points to will no longer contain the bundle it originally had. This also applies to any Max object that needs to make a copy not just of its message for future use, such as defer, deferlow, speedlim, etc.\n\nIf you're lucky, you'll get an error in the Max window that says that an odot object received something that's not a bundle, but from time to time, using a stale bundle like this will cause Max to crash."
 				}
 
@@ -574,7 +574,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 43.0, 107.0, 435.0, 60.0 ],
+					"patching_rect" : [ 15.0, 60.0, 435.0, 60.0 ],
 					"text" : "The memory that the FullPacket message refers to is only temporarily available, and once an odot object has finished with it, it is released and can no longer be accessed safely (this is true of any object that generates or uses the FullPacket message, including OpenSoundControl, udpsend/receive, etc)."
 				}
 
