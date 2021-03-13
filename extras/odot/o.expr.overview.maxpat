@@ -184,7 +184,7 @@
 					"patching_rect" : [ 1640.0, 32.0, 100.0, 100.0 ],
 					"pic" : "/Users/jml/Documents/programming/git_repositories/ODOT-tutorials/introduction/_patchers/icon.png",
 					"presentation" : 1,
-					"presentation_rect" : [ 1129.0, 508.0, 98.0, 98.0 ]
+					"presentation_rect" : [ 1141.0, 538.0, 78.0, 78.0 ]
 				}
 
 			}
