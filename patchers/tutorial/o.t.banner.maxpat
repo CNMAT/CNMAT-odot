@@ -48,7 +48,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 123.0, 93.5, 404.0, 20.0 ],
 					"style" : "default",
-					"text" : "written by Jeff Lubow and John MacCallum, 2020.",
+					"text" : "written by Jeff Lubow and John MacCallum, 2020-21",
 					"textcolor" : [ 0.129411764705882, 0.129411764705882, 0.129411764705882, 0.36 ]
 				}
 
