@@ -597,7 +597,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 30.0, 547.0, 288.0, 33.0 ],
-					"text" : "Tutorial written by Jeff Lubow and John MacCallum, 2020/2021"
+					"text" : "Tutorial written by Jeff Lubow and John MacCallum, 2020-21"
 				}
 
 			}
@@ -638,7 +638,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "jit_matrix" ],
-					"patching_rect" : [ 403.0, 357.0, 100.0, 100.0 ],
+					"patching_rect" : [ 434.5, 358.0, 100.0, 100.0 ],
 					"pic" : "/Users/jml/Documents/programming/git_repositories/ODOT-tutorials/introduction/_patchers/icon.png"
 				}
 
@@ -1098,7 +1098,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 30.0, 217.0, 265.0, 302.0 ],
-					"text" : "/horizontal : 311,\n/vertical : 216,\n/delta/horizontal : 0,\n/delta/vertical : 0,\n/screenDim : [1440, 900],\n/middle : [720., 450.],\n/button/is : \"up\",\n/x : -409.,\n/y : 234.,\n/distance : 471.208,\n/angle : 150.225,\n/delta/distance : 0.,\n/delta/angle : 0.,\n/shift : \"up\",\n/capslock : \"up\",\n/option : \"up\",\n/control : \"up\",\n/command : \"down\",\n/time : 2021-03-12T18:08:05.293189Z,\n/state : \"moving\",\n/pixPerSec : 0.,\n/relative/pixPerSec : 0."
+					"text" : "/horizontal : 459,\n/vertical : 558,\n/delta/horizontal : 0,\n/delta/vertical : 0,\n/screenDim : [1440, 900],\n/middle : [720., 450.],\n/button/is : \"up\",\n/x : -261.,\n/y : -108.,\n/distance : 282.462,\n/angle : -157.521,\n/delta/distance : 0.,\n/delta/angle : 0.,\n/shift : \"up\",\n/capslock : \"up\",\n/option : \"up\",\n/control : \"up\",\n/command : \"down\",\n/time : 2021-03-13T04:20:24.923183Z,\n/state : \"moving\",\n/pixPerSec : 0.,\n/relative/pixPerSec : 0."
 				}
 
 			}
@@ -1109,8 +1109,8 @@
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 30.0, 172.0, 107.0, 22.0 ],
-					"text" : "o.io.mouse.tutorial"
+					"patching_rect" : [ 30.0, 172.0, 74.0, 22.0 ],
+					"text" : "o.t.io.mouse"
 				}
 
 			}
@@ -1206,7 +1206,7 @@
 			}
  ],
 		"dependency_cache" : [ 			{
-				"name" : "o.io.mouse.tutorial.maxpat",
+				"name" : "o.t.io.mouse.maxpat",
 				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/patchers/tutorial",
 				"patcherrelativepath" : "../../patchers/tutorial",
 				"type" : "JSON",
