@@ -1,57 +1,60 @@
-OBJECT_LIST = o.append \
-o.atomize \
+EXTERNALS_BASENAMES = o.append \
 o.change \
 o.collect \
 o.cond \
-o.context \
 o.compose \
 o.dict \
 o.difference \
 o.display \
-o.downcast \
-o.edge~ \
 o.explode \
-o.expr \
 o.expr.codebox \
 o.flatten \
-o.gui.attach \
 o.if \
 o.intersection \
 o.listenumerate \
-o.mappatch \
-o.message \
-o.messageiterate \
 o.pack \
-o.pak \
 o.prepend \
 o.print \
 o.printbytes \
 o.route \
 o.schedule \
 o.select \
-o.slip.decode \
-o.slip.encode \
-o.table \
 o.timetag \
 o.union \
+o.var
+
+DEPRECATED_BASENAMES = o.edge~ \
+o.expr \
+o.message \
+o.pak \
 o.unless \
-o.validate \
-o.var \
-o.when \
-o.snapshot~\
-o.schedule~\
-o.timetag~\
-o.timetag.split~\
-o.timetag.join~
+o.when
 
-#OBJECT_LIST = o.append o.message
+DEV_BASENAMES = o.atomize \
+o.context \
+o.downcast \
+o.gui.attach \
+o.mappatch \
+o.messageiterate \
+o.schedule~ \
+o.slip.decode \
+o.slip.encode \
+o.snapshot~ \
+o.table \
+o.timetag.join~ \
+o.timetag.split~ \
+o.timetag~ \
+o.validate
 
-PATCHDIRS = help demos abstractions deprecated overview
-TEXTFILES = README_ODOT.txt
+EXTERNALS_MXE64 = $(foreach f, $(EXTERNALS_BASENAMES), $(f).mxe64)
+DEPRECATED_MXE64 = $(foreach f, $(DEPRECATED_BASENAMES), $(f).mxe64)
+DEV_MXE64 = $(foreach f, $(DEV_BASENAMES), $(f).mxe64)
 
-VPATH = $(OBJECT_LIST)
+ALL_OBJECTS_BASENAMES = $(EXTERNALS_BASENAMES) $(DEPRECATED_BASENAMES) $(DEV_BASENAMES)
+# ALL_OBJECTS_CFILES = $(foreach f, $(ALL_OBJECTS_BASENAMES), $(f)/$(f).c)
+ALL_OBJECTS_MXE64 = $(EXTERNALS_MXE64) $(DEPRECATED_MXE64) $(DEV_MXE64)
 
-CFILES = $(foreach f, $(OBJECT_LIST), $(f)/$(f).c)
+VPATH = $(ALL_OBJECTS_BASENAMES)
 
 C74SUPPORT = ../../max-sdk/source/c74support
 MAX_INCLUDES = $(C74SUPPORT)/max-includes
@@ -59,14 +62,7 @@ MSP_INCLUDES = $(C74SUPPORT)/msp-includes
 
 PLATFORM = Windows
 
-win: EXT = .mxe
-win: CC = i686-w64-mingw32-gcc
-win: LD = $(CC)
-win: LIBS = -L../../libomax/libs/i686 -lomax -L$(MAX_INCLUDES) -L$(MSP_INCLUDES) -lMaxAPI -lMaxAudio -L../../libo/libs/i686 -lo -lws2_32
-
 win64: EXT = .mxe64
-# win64: CC = x86_64-w64-mingw32-gcc
-# win64: CC = gcc
 win64: CC = /mingw64/bin/x86_64-w64-mingw32-gcc
 win64: LD = $(CC)
 win64: LIBS = -L../../libomax -lomax -L$(MAX_INCLUDES) -L$(MSP_INCLUDES) -lx64/MaxAPI -lx64/MaxAudio -L../../libo -lo -lws2_32 $(C74SUPPORT)/max-includes/x64/MaxAPI.lib
@@ -75,115 +71,33 @@ INCLUDES = -I$(MAX_INCLUDES) -I$(MSP_INCLUDES) -I../../libo -I../../libomax -Iin
 CFLAGS += -DWIN_VERSION -DWIN_EXT_VERSION -U__STRICT_ANSI__ -U__ANSI_SOURCE -std=c99 -O3 -DNO_TRANSLATION_SUPPORT -DWIN32_LEAN_AND_MEAN
 LDFLAGS = -shared -static -static-libgcc
 
-BUILDDIR = build/Release
-STAGINGDIR = odot-$(PLATFORM)
-
-OBJECTS = $(addsuffix $(EXT), $(addprefix $(BUILDDIR)/, $(OBJECT_LIST)))
-STAGED_OBJECTS = $(addprefix $(STAGINGDIR)/objects/, $(notdir $(OBJECTS)))
-STAGED_PATCHES = $(addprefix $(STAGINGDIR)/, $(PATCHDIRS))
-STAGED_TEXTFILES = $(addprefix $(STAGINGDIR)/, $(TEXTFILES))
-STAGED_PRODUCTS = $(STAGED_PATCHES) $(STAGED_OBJECTS) $(STAGED_TEXTFILES)
-
 CURRENT_VERSION_FILE = include/odot_current_version.h
 
-ARCHIVE = odot-$(strip $(PLATFORM)).tgz
+# clean-obj:
+# 	rm -f *.o
 
-ifeq ($(strip $(CNMAT_MAX_INSTALL_DIR)),)
-	LOCAL_INSTALL_PATH = ~/odot
-else
-	LOCAL_INSTALL_PATH = $(CNMAT_MAX_INSTALL_DIR)/odot
-endif
+win64: $(ALL_OBJECTS_MXE64)
 
-INSTALLED_PRODUCTS = $(addprefix $(LOCAL_INSTALL_PATH)/, $(PATCHDIRS) $(TEXTFILES) objects)
-DIRS = $(BUILDDIR) $(STAGINGDIR) $(LOCAL_INSTALL_PATH)
+commonsyms.o:
+	$(CC) $(CFLAGS) $(INCLUDES) -c -o commonsyms.o $(MAX_INCLUDES)/common/commonsyms.c
 
-SERVER = cnmat.berkeley.edu
-SERVER_PATH = /home/www-data/berkeley.edu-cnmat.www/maxdl/files/odot
+pqops.o:
+	$(CC) $(CFLAGS) $(INCLUDES) -Io.schedule -c -o pqops.o o.schedule/pqops.c
 
-##################################################
-## Windows specific
-##################################################
-
-clean-obj:
-	rm -f $(BUILDDIR)/*.o
-
-win64: $(BUILDDIR)/commonsyms.o $(OBJECTS) clean-obj
-win: $(BUILDDIR)/commonsyms.o $(OBJECTS) clean-obj
-
-all: $(BUILDDIR)/commonsyms.o $(OBJECTS)
-
-$(BUILDDIR)/commonsyms.o: $(BUILDDIR)
-	$(CC) $(CFLAGS) $(INCLUDES) -c -o $(BUILDDIR)/commonsyms.o $(MAX_INCLUDES)/common/commonsyms.c
-
-$(BUILDDIR)/pqops.o: $(BUILDDIR)
-	$(CC) $(CFLAGS) $(INCLUDES) -Io.schedule -c -o $(BUILDDIR)/pqops.o o.schedule/pqops.c
-
-$(BUILDDIR)/%$(EXT): %.c $(BUILDDIR) $(BUILDDIR)/commonsyms.o $(BUILDDIR)/pqops.o $(CURRENT_VERSION_FILE)
-	$(CC) $(CFLAGS) $(INCLUDES) -c -o $(BUILDDIR)/$*.o $<
-	$(LD) $(LDFLAGS) -o $(BUILDDIR)/$*$(EXT) $(BUILDDIR)/$*.o $(BUILDDIR)/commonsyms.o $(BUILDDIR)/pqops.o $(LIBS)
-
-
-
-# $(BUILDDIR)/o.append.mxe: o.append.c $(BUILDDIR) $(BUILDDIR)/commonsyms.o $(CURRENT_VERSION_FILE)
-# 	$(CC) $(CFLAGS) $(INCLUDES) -c -o $(BUILDDIR)/o.append.o $<
-# 	$(LD) $(LDFLAGS) -o $(BUILDDIR)/o.append.mxe $(BUILDDIR)/o.append.o $(BUILDDIR)/commonsyms.o $(LIBS)
-
-# $(BUILDDIR)/o.message.mxe: o.message.c $(BUILDDIR) $(BUILDDIR)/commonsyms.o $(CURRENT_VERSION_FILE)
-# 	$(CC) $(CFLAGS) $(INCLUDES) -c -o $(BUILDDIR)/o.message.o $<
-# 	$(LD) $(LDFLAGS) -o $(BUILDDIR)/o.message.mxe $(BUILDDIR)/o.message.o $(BUILDDIR)/commonsyms.o $(LIBS)
-
-##################################################
-## platform agnostic targets
-##################################################
-
-# executed to statisfy the $(STAGED_OBJECTS) dependancy
-$(STAGINGDIR)/objects/%$(EXT): $(OBJECTS) $(STAGINGDIR) $(STAGINGDIR)/objects
-	cp -r $(BUILDDIR)/$*$(EXT) $(STAGINGDIR)/objects
-
-# executed to statisfy the $(STAGED_PATCHES) and $(STAGED_TEXTFILES) dependancies
-$(STAGINGDIR)/%: $(STAGINGDIR)
-	rsync -avq --exclude=*/.* $* $(STAGINGDIR)
+%.mxe64: %.c commonsyms.o pqops.o $(CURRENT_VERSION_FILE)
+	$(CC) $(CFLAGS) $(INCLUDES) -c -o $*.o $<
+	$(LD) $(LDFLAGS) -o $*$(EXT) $*.o commonsyms.o pqops.o $(LIBS)
 
 .PHONY: install
-install: $(DIRS) $(OBJECTS) $(STAGED_PRODUCTS) $(INSTALLED_PRODUCTS)
-
-# executed to satisfy the $(INSTALLED_PRODUCTS) dependancy
-$(LOCAL_INSTALL_PATH)/%: $(LOCAL_INSTALL_DIR)
-	cp -r $(STAGINGDIR)/$* $(LOCAL_INSTALL_PATH)
-
-.PHONY: release
-release: $(DIRS) $(OBJECTS) $(ARCHIVE)
-	scp $(ARCHIVE) $(SERVER):$(SERVER_PATH)/$(ARCHIVE)
-
-$(ARCHIVE): $(STAGED_PRODUCTS)
-	tar zvcf $(ARCHIVE) $(STAGINGDIR)
+install:
+	[ ! -d "../externals" ] && mkdir ../externals; cp $(EXTERNALS_MXE64) ../externals
+	[ ! -d "../deprecated/externals" ] && mkdir ../deprecated/externals; cp $(DEPRECATED_MXE64) ../deprecated/externals
+	[ ! -d "../dev/externals" ] && mkdir ../dev/externals; cp $(DEV_MXE64) ../dev/externals
 
 .PHONY: clean
 clean:
-	rm -rf build
-	rm -rf $(STAGINGDIR)
-	rm -rf $(ARCHIVE)
-	rm -rf $(LOCAL_INSTALL_PATH)
-	rm -f $(CURRENT_VERSION_FILE)
-
-
-##################################################
-## create directories
-##################################################
-$(BUILDDIR):
-	[ -d $(BUILDDIR) ] || mkdir -p $(BUILDDIR)
-
-$(STAGINGDIR):
-	[ -d $(STAGINGDIR) ] || mkdir -p $(STAGINGDIR)
-
-$(STAGINGDIR)/objects: $(STAGINGDIR)
-	[ -d $(STAGINGDIR)/objects ] || mkdir -p $(STAGINGDIR)/objects
-
-$(LOCAL_INSTALL_PATH):
-	[ -d $(LOCAL_INSTALL_PATH) ] || mkdir -p $(LOCAL_INSTALL_PATH)
-
-$(INSTALLDIR)/objects: $(INSTALLDIR) $(RELEASEDIR)
-	cp -r $(RELEASEDIR)/* $(INSTALLDIR)
+	rm -rf *.mxe64 *.o
+	rm -rf ../externals ../deprecated/externals ../dev/externals
 
 $(CURRENT_VERSION_FILE):
 	echo "#define ODOT_VERSION \""`git describe --tags --long`"\"" > $(CURRENT_VERSION_FILE)
