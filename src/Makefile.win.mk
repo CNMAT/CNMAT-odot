@@ -37,7 +37,12 @@ o.union \
 o.unless \
 o.validate \
 o.var \
-o.when
+o.when \
+o.snapshot~\
+o.schedule~\
+o.timetag~\
+o.timetag.split~\
+o.timetag.join~
 
 #OBJECT_LIST = o.append o.message
 

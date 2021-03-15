@@ -1316,11 +1316,12 @@ int main(void){
     CLASS_ATTR_CATEGORY_KLUDGE(c, "frame_color", 0, "Color");
 
 #ifdef WIN_VERSION
-    CLASS_ATTR_DEFAULT(c, "fontname", 0, "\"Lucida Console\"");
+    CLASS_ATTR_DEFAULT(c, "fontname", 0, "\"Consolas\"");
 #else
     CLASS_ATTR_DEFAULT(c, "fontname", 0, "\"Menlo\"");
 #endif
-    CLASS_ATTR_DEFAULT(c, "fontsize", 0, "11");
+CLASS_ATTR_DEFAULT(c, "fontsize", 0, "11");
+    
     
     //CLASS_ATTR_CHAR_VARSIZE( c, "data", ATTR_SET_OPAQUE_USER | ATTR_GET_OPAQUE_USER, t_ocompose, stored_bundle_data, stored_bundle_length, 1024 );
     //CLASS_ATTR_SAVE(c, "data", 0 );

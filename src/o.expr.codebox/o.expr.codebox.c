@@ -957,7 +957,7 @@ int main(void)
     CLASS_ATTR_CATEGORY_KLUDGE(c, "mousedown_color", 0, "Color");
     
 #ifdef WIN_VERSION
-    CLASS_ATTR_DEFAULT(c, "fontname", 0, "\"Lucida Console\"");
+    CLASS_ATTR_DEFAULT(c, "fontname", 0, "\"Consolas\"");
 #else
     CLASS_ATTR_DEFAULT(c, "fontname", 0, "\"Menlo\"");
 #endif
