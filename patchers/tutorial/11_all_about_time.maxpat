@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 0.0, 53.0, 994.0, 659.0 ],
+		"rect" : [ 8.0, 52.0, 972.0, 748.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -939,13 +939,13 @@
 				"box" : 				{
 					"fontface" : 0,
 					"id" : "obj-114",
-					"linecount" : 6,
+					"linecount" : 8,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 122.0, 3046.0, 77.0, 97.0 ],
-					"text" : "/a/x : 91,\n/b/z : 10,\n/a/z : 92,\n/b/x : 87,\n/a/y : 79,\n/b/y : 18"
+					"patching_rect" : [ 122.0, 3046.0, 77.0, 123.0 ],
+					"text" : "/b/z : 111,\n/a/x : 115,\n/a/y : 71,\n/a/z : 10,\n/b/y : 33,\n/b/x : 93"
 				}
 
 			}
@@ -2457,11 +2457,10 @@
 					"bubble" : 1,
 					"bubbleusescolors" : 1,
 					"id" : "obj-5",
-					"linecount" : 2,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 217.5, 389.159367396593666, 191.0, 37.0 ],
+					"patching_rect" : [ 199.5, 396.159367396593666, 320.0, 24.0 ],
 					"text" : "enter into odot here by binding our random value to /val"
 				}
 
@@ -2472,7 +2471,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 750.5, 5223.0, 150.0, 20.0 ]
+					"patching_rect" : [ 745.0, 5215.0, 150.0, 20.0 ]
 				}
 
 			}
@@ -2728,7 +2727,7 @@
 					"numinlets" : 0,
 					"numoutlets" : 0,
 					"offset" : [ -1.0, -2.0 ],
-					"patching_rect" : [ 713.5, 5198.0, 195.0, 28.0 ],
+					"patching_rect" : [ 766.0, 5198.0, 195.0, 28.0 ],
 					"viewvisibility" : 1
 				}
 
@@ -2748,19 +2747,20 @@
 					"numinlets" : 0,
 					"numoutlets" : 0,
 					"offset" : [ -4.0, -5.0 ],
-					"patching_rect" : [ 18.0, 9.0, 645.0, 91.0 ],
+					"patching_rect" : [ 11.0, 9.0, 517.0, 111.0 ],
 					"viewvisibility" : 1
 				}
 
 			}
 , 			{
 				"box" : 				{
+					"fontface" : 2,
 					"id" : "obj-34",
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 883.0, 621.0, 83.0, 20.0 ],
-					"text" : "( scroll down )"
+					"patching_rect" : [ 884.0, 715.5, 77.0, 20.0 ],
+					"text" : "(scroll down)"
 				}
 
 			}
@@ -2791,7 +2791,7 @@
 					"numinlets" : 0,
 					"numoutlets" : 0,
 					"offset" : [ -1.0, -2.0 ],
-					"patching_rect" : [ 781.0, 14.0, 195.0, 28.0 ],
+					"patching_rect" : [ 766.0, 12.0, 195.0, 28.0 ],
 					"viewvisibility" : 1
 				}
 
