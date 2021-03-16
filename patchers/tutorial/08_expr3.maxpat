@@ -47,7 +47,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 172.0, 3508.0, 348.0, 36.0 ],
-					"presentation_linecount" : 3,
 					"text" : "Instead, we'll check the value and assign it to an address, and then use the address in our expression:"
 				}
 
@@ -97,8 +96,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 293.0, 311.969696969696997, 381.0, 50.0 ],
-					"presentation_linecount" : 2,
+					"patching_rect" : [ 293.0, 311.969696969696997, 383.0, 50.0 ],
 					"text" : "The arguments to an operator (its operands) go to the left and/or right of it, for example, while those of a function are wrapped in parentheses and written after the name of the function. ",
 					"textjustification" : 1
 				}
@@ -112,8 +110,8 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 431.0, 8348.0, 330.0, 50.0 ],
-					"text" : "Because we declared default values for all the variables we need in the code in o.expr.codebox, we can send bundles in that will override some, or all of them:"
+					"patching_rect" : [ 431.0, 8348.0, 333.0, 50.0 ],
+					"text" : "Because we declared default values for all the variables we need in the code in [o.expr.codebox], we can send bundles in that will override some, or all of them:"
 				}
 
 			}
@@ -168,11 +166,11 @@
 					"fontface" : 2,
 					"fontsize" : 12.0,
 					"id" : "obj-103",
-					"linecount" : 7,
+					"linecount" : 6,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 431.0, 8215.0, 330.0, 100.0 ],
+					"patching_rect" : [ 431.0, 8215.0, 333.0, 87.0 ],
 					"text" : "Note the use of the assign function to assign into the working bundle dynamically. The first argument to assign() is an expression that adds a string to an integer to create an address in the format we want. This works because the \"+\" will convert any of its arguments to strings when one of its arguments is a string, and then perform string concatenation."
 				}
 
@@ -186,7 +184,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 27.0, 7725.0, 917.0, 50.0 ],
-					"text" : "Down below, we've made a subpatch that contains 8 copies of o.synthesizer.basic~. The subpatch expects a message with the prefix /basicsynth/<voicenum>, where <voicenum> is an integer between 1-8. So, what we want to do is iterate over the list of bundles currently assigned to /notes, and assign each one to its own address, /basicsynth/1, /basicsynth/2, etc.",
+					"text" : "Down below, we've made a subpatch that contains 8 copies of [o.synthesizer.basic~]. The subpatch expects a message with the prefix /basicsynth/<voicenum>, where <voicenum> is an integer between 1-8. So, what we want to do is iterate over the list of bundles currently assigned to /notes, and assign each one to its own address, /basicsynth/1, /basicsynth/2, etc.",
 					"textjustification" : 1
 				}
 
@@ -211,7 +209,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 476.0, 6636.0, 340.0, 94.0 ],
+					"patching_rect" : [ 476.0, 6636.0, 344.0, 94.0 ],
 					"text" : "Here, we have all the information we need for each voice: frequencies, amplitudes, durations, and the waveform (that'll be the same for every voice, so we don't need to repeat it). But, it's not in the right form---we need a bundle for each voice that contains one frequency, one amplitude, etc."
 				}
 
@@ -764,7 +762,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 62.0, 6218.0, 123.0, 239.0 ],
+					"patching_rect" : [ 62.0, 6218.0, 124.0, 239.0 ],
 					"text" : "Let's make the duration and amplitude of the envelope inversely proportional to the partial number (the higher the partial number, the quieter and shorter it will be). While we're at it, let's rewrite our harmonic series function to take a list of partial numbers rather than a range."
 				}
 
@@ -777,7 +775,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 346.5, 5998.0, 272.0, 79.0 ],
+					"patching_rect" : [ 346.5, 5998.0, 275.0, 79.0 ],
 					"text" : "This synth takes a number of messages -- so far, we've written some code to generate frequencies that can be used with this, but we should also make envelopes for each partial, and set the waveform. ",
 					"textjustification" : 1
 				}
@@ -794,8 +792,8 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 556.0, 5900.0, 170.0, 71.0 ],
-					"text" : "Double click and check out the o.route objects at the top of the patch. "
+					"patching_rect" : [ 556.0, 5900.0, 172.0, 71.0 ],
+					"text" : "Double click and check out the [o.route] objects at the top of the patch. "
 				}
 
 			}
@@ -818,8 +816,8 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 133.0, 5838.0, 699.0, 21.0 ],
-					"text" : "Let's continue with our harmonic series... Our target will be the o.synthesizer.basic~ abstraction that we saw in tutorial 3:"
+					"patching_rect" : [ 133.0, 5838.0, 706.0, 21.0 ],
+					"text" : "Let's continue with our harmonic series... Our target will be the [o.synthesizer.basic~] abstraction that we saw in tutorial 3:"
 				}
 
 			}
@@ -833,7 +831,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 197.0, 4928.0, 378.0, 60.0 ],
-					"text" : "Note: if you send the post-ast message to the o.expr.codebox above, \nyou'll see that /makehs(55, 1, 8) \nis transformed by o.expr into apply(/makehs, 55, 1, 8), \n...so the two ways of writing that really are the same."
+					"text" : "Note: if you send the post-ast message to the o.expr.codebox above, \nyou'll see that /makehs(55, 1, 8) \nis transformed by [o.expr.codebox] into apply(/makehs, 55, 1, 8), \n...so the two ways of writing that really are the same."
 				}
 
 			}
@@ -854,13 +852,11 @@
 				"box" : 				{
 					"fontface" : 0,
 					"id" : "obj-24",
-					"linecount" : 6,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 166.0, 5017.0, 633.0, 97.0 ],
-					"text" : "/makehs : \"lambda([fundamental, startingpartial, npartials], \n                  prog2(if(npartials < 1, /npartials = 1, /npartials = npartials),\n                        fundamental * aseq(startingpartial, startingpartial + /npartials - 1),\n                        delete(/npartials)))\",\n/hs/a1 : [55, 110, 165, 220, 275, 330, 385, 440],\n/hs/as1 : [524.434, 582.705, 640.975]"
+					"patching_rect" : [ 166.0, 5017.0, 633.0, 33.0 ]
 				}
 
 			}
@@ -882,13 +878,11 @@
 				"box" : 				{
 					"fontface" : 0,
 					"id" : "obj-4",
-					"linecount" : 11,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 241.0, 6387.0, 666.0, 161.0 ],
-					"text" : "/makefreqs : \"lambda([fundamental, partialnumbers],\n                   fundamental * partialnumbers)\",\n/makeamps : \"lambda(partialnumbers, 1. / partialnumbers)\",\n/makedurations : \"lambda([totalduration, partialnumbers], totalduration * (1. / partialnumbers))\",\n/fundamental/hz : 440.,\n/partialnumbers : [1, 3, 6, 7, 8],\n/totalduration/sec : 3.,\n/waveform : \"sine\",\n/freqs : [440., 1320., 2640., 3080., 3520.],\n/amps : [1., 0.333333, 0.166667, 0.142857, 0.125],\n/durations : [3., 1., 0.5, 0.428571, 0.375]"
+					"patching_rect" : [ 241.0, 6387.0, 666.0, 33.0 ]
 				}
 
 			}
@@ -1005,14 +999,13 @@
 					"bubble" : 1,
 					"bubblepoint" : 0.22,
 					"bubbleside" : 2,
-					"bubbletextmargin" : 10,
 					"bubbleusescolors" : 1,
 					"fontsize" : 12.0,
 					"id" : "obj-81",
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 167.0, 5474.0, 244.0, 49.0 ],
+					"patching_rect" : [ 167.0, 5474.0, 234.0, 39.0 ],
 					"text" : "our function takes two arguments: a and b"
 				}
 
@@ -1021,13 +1014,11 @@
 				"box" : 				{
 					"fontface" : 0,
 					"id" : "obj-80",
-					"linecount" : 3,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 440.0, 5683.0, 137.0, 59.0 ],
-					"text" : "/a : [1, 2, 3],\n/b : [5, 7, 9],\n/res : [6, 9, 12]"
+					"patching_rect" : [ 440.0, 5683.0, 137.0, 33.0 ]
 				}
 
 			}
@@ -1035,13 +1026,11 @@
 				"box" : 				{
 					"fontface" : 0,
 					"id" : "obj-79",
-					"linecount" : 3,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 66.0, 5683.0, 77.0, 59.0 ],
-					"text" : "/a : 1,\n/b : 2,\n/res : 3"
+					"patching_rect" : [ 66.0, 5683.0, 77.0, 33.0 ]
 				}
 
 			}
@@ -1116,7 +1105,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 166.0, 4267.0, 633.0, 108.0 ],
+					"patching_rect" : [ 166.0, 4267.0, 635.0, 108.0 ],
 					"text" : "Now we've got another problem! \n\nWhere did our harmonic series go? lambda() returns the result of the very last expression, and we just changed that to delete(), which doesn't return anything. In this case, prog2() comes in handy -- it evaluates a sequence of expressions and returns the result of the *second* one (see also: prog1 and progn -- in fact, you can think of lambda() as having a builtin implicit progn around its arguments, since it returns the result of the last, or nth, one)."
 				}
 
@@ -1125,13 +1114,11 @@
 				"box" : 				{
 					"fontface" : 0,
 					"id" : "obj-74",
-					"linecount" : 6,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 166.0, 4538.0, 639.0, 97.0 ],
-					"text" : "/makehs : \"lambda([fundamental, startingpartial, npartials], \n                  prog2(if(npartials < 1, /npartials = 1, /npartials = npartials),\n                        fundamental * aseq(startingpartial, startingpartial + /npartials - 1),\n                        delete(/npartials)))\",\n/hs/a1 : [55, 110, 165, 220, 275, 330, 385, 440],\n/hs/as1 : [524.434, 582.705, 640.975]"
+					"patching_rect" : [ 166.0, 4538.0, 639.0, 33.0 ]
 				}
 
 			}
@@ -1167,13 +1154,11 @@
 				"box" : 				{
 					"fontface" : 0,
 					"id" : "obj-71",
-					"linecount" : 6,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 212.0, 4070.0, 593.0, 97.0 ],
-					"text" : "/makehs : \"lambda([fundamental, startingpartial, npartials], \n                  if(npartials < 1, /npartials = 1, /npartials = npartials),\n                  fundamental * aseq(startingpartial, startingpartial + /npartials - 1),\n                  delete(/npartials))\",\n/hs/a1,\n/hs/as1"
+					"patching_rect" : [ 212.0, 4070.0, 593.0, 33.0 ]
 				}
 
 			}
@@ -1238,13 +1223,11 @@
 				"box" : 				{
 					"fontface" : 0,
 					"id" : "obj-66",
-					"linecount" : 6,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 172.0, 3687.0, 613.0, 97.0 ],
-					"text" : "/makehs : \"lambda([fundamental, startingpartial, npartials], \n                  if(npartials < 1, /npartials = 1, /npartials = npartials),\n                  fundamental * aseq(startingpartial, startingpartial + /npartials - 1))\",\n/npartials : 3,\n/hs/a1 : [55, 110, 165, 220, 275, 330, 385, 440],\n/hs/as1 : [524.434, 582.705, 640.975]"
+					"patching_rect" : [ 172.0, 3687.0, 613.0, 33.0 ]
 				}
 
 			}
@@ -1284,7 +1267,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 711.0, 2763.0, 182.0, 50.0 ],
+					"patching_rect" : [ 711.0, 2763.0, 185.0, 50.0 ],
 					"text" : "While we're at it, we might as well add the starting harmonic as a parameter as well"
 				}
 
@@ -1293,13 +1276,11 @@
 				"box" : 				{
 					"fontface" : 0,
 					"id" : "obj-63",
-					"linecount" : 4,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 77.0, 2924.0, 680.0, 72.0 ],
-					"text" : "/makehs : \"lambda([fundamental, startingpartial, npartials], \n                  fundamental * aseq(startingpartial, startingpartial + npartials - 1))\",\n/hs/a1 : [55, 110, 165, 220, 275, 330, 385, 440],\n/hs/as1 : [524.434, 582.705, 640.975]"
+					"patching_rect" : [ 77.0, 2924.0, 680.0, 33.0 ]
 				}
 
 			}
@@ -1348,13 +1329,11 @@
 				"box" : 				{
 					"fontface" : 0,
 					"id" : "obj-58",
-					"linecount" : 4,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 311.0, 2588.0, 554.0, 72.0 ],
-					"text" : "/makehs : \"lambda([fundamental, npartials], fundamental * aseq(1, npartials))\",\n/hs/a1 : [55, 110, 165, 220, 275, 330, 385, 440],\n/hs/as1 : [58.2705, 116.541, 174.811, 233.082, 291.352, 349.623, 407.893, 466.164, 524.434, 582.705, 640.975, 699.246]"
+					"patching_rect" : [ 311.0, 2588.0, 554.0, 33.0 ]
 				}
 
 			}
@@ -1403,13 +1382,11 @@
 				"box" : 				{
 					"fontface" : 0,
 					"id" : "obj-54",
-					"linecount" : 3,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 175.0, 2269.0, 563.0, 59.0 ],
-					"text" : "/makehs : \"lambda(fundamental, fundamental * aseq(1, 8))\",\n/hs/a1 : [55, 110, 165, 220, 275, 330, 385, 440],\n/hs/as1 : [58.2705, 116.541, 174.811, 233.082, 291.352, 349.623, 407.893, 466.164]"
+					"patching_rect" : [ 175.0, 2269.0, 563.0, 33.0 ]
 				}
 
 			}
@@ -1444,13 +1421,11 @@
 				"box" : 				{
 					"fontface" : 0,
 					"id" : "obj-51",
-					"linecount" : 2,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 317.0, 1957.0, 562.0, 46.0 ],
-					"text" : "/hs/a1 : [55, 110, 165, 220, 275, 330, 385, 440],\n/hs/as1 : [58.2705, 116.541, 174.811, 233.082, 291.352, 349.623, 407.893, 466.164]"
+					"patching_rect" : [ 317.0, 1957.0, 562.0, 33.0 ]
 				}
 
 			}
@@ -1476,7 +1451,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 419.0, 1666.0, 267.0, 65.0 ],
+					"patching_rect" : [ 419.0, 1666.0, 268.0, 65.0 ],
 					"text" : "If we want to create a couple of these series built on different fundamentals, we could just repeat the expression and change the  fundamental..."
 				}
 
@@ -1485,13 +1460,11 @@
 				"box" : 				{
 					"fontface" : 0,
 					"id" : "obj-41",
-					"linecount" : 2,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 177.0, 1758.0, 577.0, 46.0 ],
-					"text" : "/hs/a1 : [55, 110, 165, 220, 275, 330, 385, 440],\n/hs/as1 : [58.2705, 116.541, 174.811, 233.082, 291.352, 349.623, 407.893, 466.164]"
+					"patching_rect" : [ 177.0, 1758.0, 577.0, 33.0 ]
 				}
 
 			}
@@ -1530,8 +1503,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 500.0, 1564.0, 338.0, 33.0 ],
-					"text" : "/hs : [55, 110, 165, 220, 275, 330, 385, 440]"
+					"patching_rect" : [ 500.0, 1564.0, 338.0, 33.0 ]
 				}
 
 			}
@@ -1649,7 +1621,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 214.0, 1178.0, 119.0, 85.0 ],
-					"text" : "/r : 3,\n/func : \"add\",\n/val : -4,\n/min : -20,\n/max : 20"
+					"text" : "/r : 1,\n/func : \"add\",\n/val : 20,\n/min : -20,\n/max : 20"
 				}
 
 			}
@@ -1688,8 +1660,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 412.0, 657.0, 87.0, 33.0 ],
-					"text" : "/a : 23"
+					"patching_rect" : [ 412.0, 657.0, 87.0, 33.0 ]
 				}
 
 			}

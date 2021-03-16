@@ -472,7 +472,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 520.166666666666742, 6543.0, 218.0, 123.0 ],
+					"patching_rect" : [ 520.166666666666742, 6543.0, 220.0, 123.0 ],
 					"text" : "getaddresses() produces a list of all the addresses in the working bundle at the moment that the function is envoked.\n\ntypetags() returns a list of characters that represent the types of each item bound to an address"
 				}
 
@@ -693,11 +693,11 @@
 				"box" : 				{
 					"fontsize" : 13.0,
 					"id" : "obj-187",
-					"linecount" : 4,
+					"linecount" : 3,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 236.666666666666742, 5999.0, 431.0, 65.0 ],
+					"patching_rect" : [ 235.666666666666742, 6006.0, 473.0, 50.0 ],
 					"text" : "Internally, the null-coalescing operators make use of the bound() function to check whether an address has a value or not. Below is a slightly more verbose version of the functionality that the null-coalescing operators provide:"
 				}
 
@@ -760,12 +760,13 @@
 				"box" : 				{
 					"fontsize" : 13.0,
 					"id" : "obj-167",
-					"linecount" : 4,
+					"linecount" : 5,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 53.666666666666742, 5869.0, 885.5, 65.0 ],
-					"text" : "The \"??\" and \"??=\" (null-coalescing) operators we saw above are operators that do a type of introspection---they ask questions about the structure or contents of a bundle and then operate accordingly.\n\no.expr has a number of other functions that perform introspection that can be used to make decisions based on the contentents of the working bundle."
+					"patching_rect" : [ 120.916666666666742, 5871.0, 729.5, 79.0 ],
+					"text" : "The \"??\" and \"??=\" (null-coalescing) operators we saw above are operators that do a type of introspection---they ask questions about the structure or contents of a bundle and then operate accordingly.\n\no.expr has a number of other functions that perform introspection that can be used to make decisions based on the contentents of the working bundle.",
+					"textjustification" : 1
 				}
 
 			}
@@ -777,7 +778,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 453.666666666666742, 5801.5, 83.0, 21.0 ],
+					"patching_rect" : [ 444.166666666666742, 5801.5, 83.0, 21.0 ],
 					"text" : "Introspection"
 				}
 
@@ -788,7 +789,7 @@
 					"maxclass" : "live.line",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 15.0, 5809.5, 960.333333333333485, 5.0 ]
+					"patching_rect" : [ 9.0, 5809.5, 953.333333333333485, 5.0 ]
 				}
 
 			}
@@ -999,8 +1000,8 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 453.0, 5170.0, 280.0, 123.0 ],
-					"text" : "Since o.union prefers the bundle in its left inlet, the contents of the right inlet (our defaults) will only be used if they aren't present in the left (our input bundle).\n\nHowever, this solution doesn't protect us against an address that exists, but doesn't have a value."
+					"patching_rect" : [ 453.0, 5170.0, 282.0, 123.0 ],
+					"text" : "Since [o.union] prefers the bundle in its left inlet, the contents of the right inlet (our defaults) will only be used if they aren't present in the left (our input bundle).\n\nHowever, this solution doesn't protect us against an address that exists, but doesn't have a value."
 				}
 
 			}
@@ -1122,8 +1123,8 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 381.666666666666742, 5029.0, 416.0, 36.0 ],
-					"text" : "A common way to make sure that every address used by o.expr has a value is to \"blend\" in a bundle of default values using o.union:"
+					"patching_rect" : [ 381.666666666666742, 5029.0, 438.0, 36.0 ],
+					"text" : "A common way to make sure that every address used by [o.expr.codebox] has a value is to \"blend\" in a bundle of default values using [o.union]:"
 				}
 
 			}
@@ -1221,8 +1222,8 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 445.833333333333485, 4804.5, 300.0, 152.0 ],
-					"text" : "The expression to the right of the assignment operator requires /x to exist and have a value in the working bundle in order for that expression to produce a value that can be assigned to /y.\n\nWhen o.expr can't evaluate an expression due to a missing value, writes an error into the Max console. If you haven't done it yet, enter a number in the number box, and check the console which will say that /x is unbound."
+					"patching_rect" : [ 406.833333333333485, 4804.5, 300.0, 152.0 ],
+					"text" : "The expression to the right of the assignment operator requires /x to exist and have a value in the working bundle in order for that expression to produce a value that can be assigned to /y.\n\nWhen [o.expr.codebox] can't evaluate an expression due to a missing value, writes an error into the Max console. If you haven't done it yet, enter a number in the number box, and check the console which will say that /x is unbound."
 				}
 
 			}
@@ -1234,7 +1235,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 185.166666666666742, 4614.0, 319.0, 50.0 ],
+					"patching_rect" : [ 174.166666666666742, 4601.0, 319.0, 50.0 ],
 					"text" : "First, let's take a look at what happens when an address in an expression can't be found or doesn't have a value in the working bundle:"
 				}
 
@@ -1243,11 +1244,13 @@
 				"box" : 				{
 					"fontface" : 0,
 					"id" : "obj-94",
+					"linecount" : 2,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 276.166666666666742, 4875.0, 82.0, 33.0 ]
+					"patching_rect" : [ 276.166666666666742, 4875.0, 82.0, 46.0 ],
+					"text" : "/x : 10,\n/y : 13"
 				}
 
 			}
@@ -1272,8 +1275,9 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 185.166666666666742, 4497.0, 620.0, 79.0 ],
-					"text" : "It often happens that we write an expression that refers to addresses that we expect to find in the input bundle, but when the bundle arrives, it is missing some of those addresses for one reason or another. \n\nHere, we'll show some strategies for defensive programming designed to keep things working when the unexpected occurs."
+					"patching_rect" : [ 174.166666666666742, 4495.0, 620.0, 79.0 ],
+					"text" : "It often happens that we write an expression that refers to addresses that we expect to find in the input bundle, but when the bundle arrives, it is missing some of those addresses for one reason or another. \n\nHere, we'll show some strategies for defensive programming designed to keep things working when the unexpected occurs.",
+					"textjustification" : 1
 				}
 
 			}
@@ -1285,7 +1289,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 432.666666666666742, 4425.5, 125.0, 21.0 ],
+					"patching_rect" : [ 421.666666666666742, 4425.5, 125.0, 21.0 ],
 					"text" : "Unbound addresses"
 				}
 
@@ -1296,7 +1300,7 @@
 					"maxclass" : "live.line",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 15.0, 4433.5, 960.333333333333485, 5.0 ]
+					"patching_rect" : [ 9.0, 4433.5, 950.333333333333485, 5.0 ]
 				}
 
 			}
@@ -1309,7 +1313,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 513.5, 4277.0, 215.0, 50.0 ],
-					"text" : "o.expr has a number of \"compound operators\" that combine an operation with assignment."
+					"text" : "[o.expr.codebox] has a number of \"compound operators\" that combine an operation with assignment."
 				}
 
 			}
@@ -1469,7 +1473,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 207.166666666666742, 3648.0, 240.0, 114.0 ],
+					"patching_rect" : [ 207.166666666666742, 3648.0, 243.0, 114.0 ],
 					"text" : "Note: in this example, we use /a on both sides of the assignment operator. Since everything on the right hand side of the assignment operator must be fully evaluated before assignment can take place, the value of /a on the right will be the old value, that is, the value in the incoming bundle."
 				}
 
@@ -1487,8 +1491,8 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 583.5, 3520.0, 218.0, 98.0 ],
-					"text" : "the contents of this bundle here in this box never change, since o.expr always operates on a copy of the bundle it receives (never on the original)."
+					"patching_rect" : [ 583.5, 3520.0, 233.0, 98.0 ],
+					"text" : "the contents of this bundle here in this box never change, since [o.expr.codebox] always operates on a copy of the bundle it receives (never on the original)."
 				}
 
 			}
@@ -1501,7 +1505,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 207.166666666666742, 3543.5, 261.0, 79.0 ],
-					"text" : "It's perfectly fine to assign to an address that already exists. In this case, the old value is overwritten, and each subsequent expression in o.expr will use the new value (unless it is overwritten again)."
+					"text" : "It's perfectly fine to assign to an address that already exists. In this case, the old value is overwritten, and each subsequent expression in [o.expr.codebox] will use the new value (unless it is overwritten again)."
 				}
 
 			}
@@ -1723,7 +1727,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 315.0, 2677.0, 226.0, 65.0 ],
-					"text" : "The same applies to most functions of scalars. If lists are supplied, o.expr will usually apply the function every element of the list.",
+					"text" : "The same applies to most functions of scalars. If lists are supplied, [o.expr.codebox] will usually apply the function every element of the list.",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -1776,12 +1780,12 @@
 				"box" : 				{
 					"fontsize" : 13.0,
 					"id" : "obj-39",
-					"linecount" : 2,
+					"linecount" : 3,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 188.750000000000114, 2211.0, 589.833333333333258, 36.0 ],
-					"text" : "When o.expr encounters an expression in which one or both of the operands to an operator are lists, it modifies the lists, expanding or truncating as necessary, to make them the same lengths.",
+					"patching_rect" : [ 188.750000000000114, 2211.0, 589.833333333333258, 50.0 ],
+					"text" : "When [o.expr.codebox] encounters an expression in which one or both of the operands to an operator are lists, it modifies the lists, expanding or truncating as necessary, to make them the same lengths.",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"textjustification" : 1
 				}
@@ -1795,8 +1799,8 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 355.0, 2316.0, 490.0, 181.0 ],
-					"text" : "As you can see to the left, before applying an operator its operands, o.expr will modify the operands if necessary to make them the same length according to these rules:\n\n1. if both args are scalars, simply apply the operator\n2. if one arg is a scalar and the other is a list, apply the operator to every member of the list, with the scalar as the other argument (another way to say this: expand the scalar into a list of n copies of the scalar, where n is equal to the length of the other operand)\n3. if both args are lists of the same length, apply the operator elementwise\n4. if both args are lists of different length, truncate the longer list to the length of the shorter",
+					"patching_rect" : [ 355.0, 2316.0, 494.0, 181.0 ],
+					"text" : "As you can see to the left, before applying an operator its operands, [o.expr.codebox] will modify the operands if necessary to make them the same length according to these rules:\n\n1. if both args are scalars, simply apply the operator\n2. if one arg is a scalar and the other is a list, apply the operator to every member of the list, with the scalar as the other argument (another way to say this: expand the scalar into a list of n copies of the scalar, where n is equal to the length of the other operand)\n3. if both args are lists of the same length, apply the operator elementwise\n4. if both args are lists of different length, truncate the longer list to the length of the shorter",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -2021,7 +2025,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 188.0, 1706.0, 618.0, 79.0 ],
-					"text" : "o.expr supports many functions, some of which correspond to the operators we discussed above (in fact, all operators have some functional equivalent, although, the opposite is not true).\n\nA function call always begins with the name of the function, followed by a list of arguments enclosed in parantheses, like so:",
+					"text" : "[o.expr.codebnox] supports many functions, some of which correspond to the operators we discussed above (in fact, all operators have some functional equivalent, although, the opposite is not true).\n\nA function call always begins with the name of the function, followed by a list of arguments enclosed in parantheses, like so:",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 
@@ -2079,12 +2083,12 @@
 				"box" : 				{
 					"fontsize" : 13.0,
 					"id" : "obj-126",
-					"linecount" : 17,
+					"linecount" : 18,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 95.0, 1295.0, 655.0, 253.0 ],
-					"text" : "o.expr.codebox evaluates its expressions when it receives a bundle. It never alters the contents of that input bundle, but rather makes a copy that we can call the \"working bundle\". \n\nHere, we have an input bundle with a single message with address \"/a\", and an expression that refers to that message twice: first as part of an addition operation, and second as part of an assignment. When the addition expression is evaluated, o.expr searches the working bundle for a message that has the address \"/a\", and when it finds it, it replaces the \"/a\" address operand with the contents of the \"/a\" message, resulting in the expression \"1 + 1\", which is then reduced to \"2\".\n\nThe \"/a\" on the left hand side of the assignment operator \"=\" is treated differently. o.expr again searches the working bundle for a message that begins with \"/a\", and since it finds one, it replaces that message's data with the value on the right hand side of the assignment operator. \n\nIn the second expression, there is no message in the working bundle that has the address \"/b\" (yet), so o.expr creates a new message with that address and the value that's on the right hand side of the assignment operator.\n\nFinally, when all of the expressions have been evaluated, the working bundle is output.",
+					"patching_rect" : [ 95.0, 1295.0, 655.0, 268.0 ],
+					"text" : "[o.expr.codebox] evaluates its expressions when it receives a bundle. It never alters the contents of that input bundle, but rather makes a copy that we can call the \"working bundle\". \n\nHere, we have an input bundle with a single message with address \"/a\", and an expression that refers to that message twice: first as part of an addition operation, and second as part of an assignment. When the addition expression is evaluated, o.expr searches the working bundle for a message that has the address \"/a\", and when it finds it, it replaces the \"/a\" address operand with the contents of the \"/a\" message, resulting in the expression \"1 + 1\", which is then reduced to \"2\".\n\nThe \"/a\" on the left hand side of the assignment operator \"=\" is treated differently. [o.expr.codebox] again searches the working bundle for a message that begins with \"/a\", and since it finds one, it replaces that message's data with the value on the right hand side of the assignment operator. \n\nIn the second expression, there is no message in the working bundle that has the address \"/b\" (yet), so [o.expr.codebox] creates a new message with that address and the value that's on the right hand side of the assignment operator.\n\nFinally, when all of the expressions have been evaluated, the working bundle is output.",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 

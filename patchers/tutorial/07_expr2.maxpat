@@ -66,8 +66,8 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 346.0, 5452.5, 401.0, 50.0 ],
-					"text" : "Here, we just added a variable to our input to set, and give a default value to, the length of the list we'll collect. This use of o.pack is also very common in odot programming. Try changing the value."
+					"patching_rect" : [ 346.0, 5452.5, 402.0, 50.0 ],
+					"text" : "Here, we just added a variable to our input to set, and give a default value to, the length of the list we'll collect. This use of [o.pack] is also very common in odot programming. Try changing the value."
 				}
 
 			}
@@ -88,11 +88,11 @@
 				"box" : 				{
 					"fontsize" : 13.0,
 					"id" : "obj-154",
-					"linecount" : 3,
+					"linecount" : 2,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 181.0, 5374.0, 507.0, 50.0 ],
+					"patching_rect" : [ 181.0, 5374.0, 513.0, 36.0 ],
 					"text" : "Let's redo our example, just to see what other versions might look like. Here, we'll make the list length changeable from the outside, and we'll collect the items in reverse order."
 				}
 
@@ -105,7 +105,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 557.0, 5567.0, 296.0, 152.0 ],
+					"patching_rect" : [ 557.0, 5567.0, 297.0, 152.0 ],
 					"text" : "Note that we added a check to make sure that /n isn't accidentally negative (or 0).\n\nWe also had to make the \"then\" field of our if() function slightly more complex---we couldn't just use rest() in place of butlast(), since we have to take into account that /n may have changed and may be smaller than it previously was, so we explictly take the values we want according to the current value of /n."
 				}
 
@@ -120,7 +120,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 181.0, 5720.0, 298.0, 59.0 ],
-					"text" : "/val : 24,\n/n : 8,\n/vals : [26, 25, 25, 24, 23, 23, 24, 24]"
+					"text" : "/val : 5,\n/n : 8,\n/vals : [5, 4, 4, 4, 4, 5, 5, 5]"
 				}
 
 			}
@@ -211,8 +211,8 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 440.0, 5101.0, 379.0, 181.0 ],
-					"text" : "There are a couple things to note about this example:\n\n-- the use of trigger and o.union to loop the results of computation around and store them for the next iteration is *very* common in odot programming,\n\n-- in this example, the length of our list is fixed at 8---that's fine, but we could make it dynamic,\n\n-- the list is constructed with newest items at the front, and oldest at the end---this is also fine, but it's a design decision and we could have chosen to put the newest items at the end."
+					"patching_rect" : [ 440.0, 5101.0, 380.0, 181.0 ],
+					"text" : "There are a couple things to note about this example:\n\n-- the use of [trigger] and [o.union] to loop the results of computation around and store them for the next iteration is *very* common in odot programming,\n\n-- in this example, the length of our list is fixed at 8---that's fine, but we could make it dynamic,\n\n-- the list is constructed with newest items at the front, and oldest at the end---this is also fine, but it's a design decision and we could have chosen to put the newest items at the end."
 				}
 
 			}
@@ -224,7 +224,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 440.0, 4892.0, 396.0, 166.0 ],
+					"patching_rect" : [ 440.0, 4892.0, 399.0, 166.0 ],
 					"text" : "We first make sure that we have an empty list at the address where we plan to store our running history---we do this with the null-coalescing operator.\n\nThen, we check to see if our list is already 8 elements long; if it is, we remove the last (oldest) element before pushing the element onto the front of the list.\n\nFinally, we have to keep the list we just created in order to use it next time, so we loop it back around and store it in [o.union] where it will be blended in with our next new value."
 				}
 
@@ -239,7 +239,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 121.0, 5183.0, 275.0, 46.0 ],
-					"text" : "/val : 20,\n/vals : [20, 20, 20, 20, 20, 21, 21, 20]"
+					"text" : "/val : 2,\n/vals : [2, 3, 2, 1, 1, 2, 3, 4]"
 				}
 
 			}
@@ -362,13 +362,11 @@
 				"box" : 				{
 					"fontface" : 0,
 					"id" : "obj-125",
-					"linecount" : 2,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 478.0, 4487.0, 199.0, 46.0 ],
-					"text" : "/list : [1, 2, 3],\n/d : [1, 1]"
+					"patching_rect" : [ 478.0, 4487.0, 199.0, 33.0 ]
 				}
 
 			}
@@ -471,13 +469,11 @@
 				"box" : 				{
 					"fontface" : 0,
 					"id" : "obj-120",
-					"linecount" : 3,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 293.0, 4149.0, 153.0, 59.0 ],
-					"text" : "/list : [1, 2, 3],\n/last : 3,\n/first : 1"
+					"patching_rect" : [ 293.0, 4149.0, 153.0, 33.0 ]
 				}
 
 			}
@@ -485,13 +481,11 @@
 				"box" : 				{
 					"fontface" : 0,
 					"id" : "obj-119",
-					"linecount" : 2,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 513.0, 3926.0, 266.0, 46.0 ],
-					"text" : "/list : [1, 2, 3],\n/last : 3"
+					"patching_rect" : [ 513.0, 3926.0, 266.0, 33.0 ]
 				}
 
 			}
@@ -637,7 +631,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 233.0, 2770.0, 324.0, 59.0 ],
-					"text" : "/list : [2, 5, 3, 8, 4, 7, 1, 6],\n/list/sorted : [1, 2, 3, 4, 5, 6, 7, 8],\n/list/sorted/desc : [6, 1, 7, 4, 8, 3, 5, 2]"
+					"text" : "/list : [7, 8, 5, 1, 4, 6, 3, 2],\n/list/sorted : [1, 2, 3, 4, 5, 6, 7, 8],\n/list/sorted/desc : [2, 3, 6, 4, 1, 5, 8, 7]"
 				}
 
 			}
@@ -664,7 +658,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 233.0, 2661.0, 244.0, 33.0 ],
-					"text" : "/list : [3, 2, 5, 1, 4, 7, 6, 8]"
+					"text" : "/list : [7, 3, 8, 4, 2, 1, 6, 5]"
 				}
 
 			}
@@ -861,13 +855,11 @@
 				"box" : 				{
 					"fontface" : 0,
 					"id" : "obj-94",
-					"linecount" : 7,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 59.0, 3529.0, 501.0, 110.0 ],
-					"text" : "/partials : [1760., 0.125, 440., 1., 1320., 0.25, 880., 0.5],\n/freqs : [1760., 440., 1320., 880.],\n/amps : [0.125, 1., 0.25, 0.5],\n/idxs/sorted : [1, 3, 2, 0],\n/freqs/sorted : [440., 880., 1320., 1760.],\n/amps/sorted : [1., 0.5, 0.25, 0.125],\n/partials/sorted/freq : [1760., 0.125, 440., 1., 1320., 0.25, 880., 0.5]"
+					"patching_rect" : [ 59.0, 3529.0, 501.0, 33.0 ]
 				}
 
 			}
@@ -888,13 +880,11 @@
 				"box" : 				{
 					"fontface" : 0,
 					"id" : "obj-92",
-					"linecount" : 6,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 59.0, 3352.0, 425.0, 97.0 ],
-					"text" : "/partials : [1760., 0.125, 440., 1., 1320., 0.25, 880., 0.5],\n/freqs : [1760., 440., 1320., 880.],\n/amps : [0.125, 1., 0.25, 0.5],\n/idxs/sorted : [1, 3, 2, 0],\n/freqs/sorted : [440., 880., 1320., 1760.],\n/amps/sorted : [1., 0.5, 0.25, 0.125]"
+					"patching_rect" : [ 59.0, 3352.0, 425.0, 33.0 ]
 				}
 
 			}
@@ -920,7 +910,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 544.0, 3270.0, 353.0, 65.0 ],
+					"patching_rect" : [ 544.0, 3270.0, 355.0, 65.0 ],
 					"text" : "Now that they're separated, we can sort the frequencies in ascending order using sortidx() which produces a list of indices that can be used to sort the original list in ascending order."
 				}
 
@@ -971,13 +961,11 @@
 				"box" : 				{
 					"fontface" : 0,
 					"id" : "obj-87",
-					"linecount" : 3,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 59.0, 3189.0, 425.0, 59.0 ],
-					"text" : "/partials : [1760., 0.125, 440., 1., 1320., 0.25, 880., 0.5],\n/freqs : [1760., 440., 1320., 880.],\n/amps : [0.125, 1., 0.25, 0.5]"
+					"patching_rect" : [ 59.0, 3189.0, 425.0, 33.0 ]
 				}
 
 			}
@@ -990,7 +978,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 560.0, 2202.0, 329.0, 33.0 ],
+					"patching_rect" : [ 560.0, 2202.0, 331.0, 33.0 ],
 					"text" : "Note: length() returns the length of a list, and is used here to write general code that will work on a list of any length."
 				}
 
@@ -1100,13 +1088,11 @@
 				"box" : 				{
 					"fontface" : 0,
 					"id" : "obj-71",
-					"linecount" : 3,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 512.0, 2122.0, 425.0, 59.0 ],
-					"text" : "/partials : [440., 1., 880., 0.5, 1320., 0.25, 1760., 0.125],\n/freqs : [440., 880., 1320., 1760.],\n/amps : [1., 0.5, 0.25, 0.125]"
+					"patching_rect" : [ 512.0, 2122.0, 425.0, 33.0 ]
 				}
 
 			}
@@ -1118,7 +1104,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 156.5, 2048.0, 178.0, 94.0 ],
+					"patching_rect" : [ 156.5, 2048.0, 181.0, 94.0 ],
 					"text" : "aseq(<start>, <end>, <step>) creates an arithmetic sequence starting at <start> and ending at <end>, counting by 1, or <step> if it's included."
 				}
 
@@ -1153,13 +1139,11 @@
 				"box" : 				{
 					"fontface" : 0,
 					"id" : "obj-111",
-					"linecount" : 3,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 125.5, 2160.0, 314.0, 59.0 ],
-					"text" : "/list1 : [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],\n/list2 : [1, 3, 5, 7, 9],\n/list3 : [1, 4, 7, 10]"
+					"patching_rect" : [ 125.5, 2160.0, 314.0, 33.0 ]
 				}
 
 			}
@@ -1382,7 +1366,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 418.5, 1243.0, 188.5, 65.0 ],
+					"patching_rect" : [ 418.5, 1243.0, 192.0, 65.0 ],
 					"text" : "Lists may be used inside double-square-bracket notation to access multiple locations at once."
 				}
 
@@ -1506,7 +1490,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 37.0, 850.0, 908.0, 36.0 ],
-					"presentation_linecount" : 2,
 					"text" : "Lists may also be used inside double-square-brackets on the lefthand side of an assignment, but the behavior depends on what's on the right side of the assignment and follows the same rules as described in the \"scalar expansion\" area of the previous tutorial:",
 					"textjustification" : 1
 				}

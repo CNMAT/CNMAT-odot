@@ -2557,7 +2557,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 18.0, 158.5, 933.0, 36.0 ],
-					"text" : "Let's take a minute to back up and look at some basic, yet essential information on ODOT bundles and how to patch with them.  \nWe'll start with building, merging, and separating data, as well as some examples on storing it.",
+					"text" : "Let's take a minute to back up and look at some basic, yet essential information on odot bundles and how to patch with them.  \nWe'll start with building, merging, and separating data, as well as some examples on storing it.",
 					"textjustification" : 1
 				}
 
