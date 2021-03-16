@@ -78,7 +78,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 132.75, 1819.0, 706.0, 79.0 ],
-					"text" : "Even when [o.compose] contains no messages, it still outputs something when clicked -- an empty bundle. The bundle that's output is no different than any other bundle, it simply contains 0 messages. This behavior is different from the Max message box, which when empty, does not output anything when clicked.\n\nAn empty bundle is useful in a number of scenarios, for example, to clear or reinitialize a stateful object.",
+					"text" : "Even when [o.compose] contains no messages, it still outputs something when clicked -- an empty bundle. The bundle that's output is no different than any other bundle, it simply contains 0 messages. This behavior is different from the Max [message] box, which when empty, does not output anything when clicked.\n\nAn empty bundle is useful in a number of scenarios, for example, to clear or reinitialize a stateful object.",
 					"textjustification" : 1
 				}
 
@@ -93,7 +93,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 563.0, 1358.0, 228.0, 108.0 ],
-					"text" : "We can also create a list like /list/2 above programatically using o.expr.codebox (which we'll cover in detail later). The lines that start with '#' are comments, and explain the different steps involved in building up our example."
+					"text" : "We can also create a list like /list/2 above programatically using [o.expr.codebox] (which we'll cover in detail later). The lines that start with '#' are comments, and explain the different steps involved in building up our example."
 				}
 
 			}
@@ -317,12 +317,12 @@
 					"fontname" : "Arial",
 					"fontsize" : 13.0,
 					"id" : "obj-70",
-					"linecount" : 12,
+					"linecount" : 11,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 479.5, 2052.0, 319.0, 181.0 ],
-					"text" : "In Max everything is a message.  \n\nIn [o.compose], we can view and modify our data, but when it's sent over a patch cord, it's sent as a Max message with arguments.  Our internal message that is used for this type of data is called \"FullPacket\".  There are two arguments to FullPacket, the size in bytes and a pointer to a memory address.\n\nClick on the [o.compose] box to the left to see what an ODOT bundle looks like as it's passed around Max."
+					"patching_rect" : [ 479.5, 2052.0, 319.0, 166.0 ],
+					"text" : "In Max everything is a message.  \n\nIn [o.compose], we can view and modify our data, but when it's sent over a patch cord, it's sent as a Max message with arguments.  Our internal message that is used for this type of data is called \"FullPacket\".  There are two arguments to FullPacket, the size in bytes and a pointer to a memory address.\n\nClick on the [o.compose] box to the left to see what an odot bundle looks like as it's passed around Max."
 				}
 
 			}
@@ -492,7 +492,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 125.0, 943.0, 360.0, 152.0 ],
-					"text" : "As seen above, the ODOT list is similar to a Max list, albeit a few key differences.  Here are some elaborations:\n\n1. lists can be flattened into other lists\n2. lists can contain bundles\n3. strings are surrounded in quotes\n4. booleans (true, false) are valid data types\n5. lists can be accessed by index with o.expr.codebox\n6. we have a host of tools for generating, manipulating, and parsing lists in o.expr.codebox"
+					"text" : "As seen above, the odot list is similar to a Max list, albeit a few key differences.  Here are some elaborations:\n\n1. lists can be flattened into other lists\n2. lists can contain bundles\n3. strings are surrounded in quotes\n4. booleans (true, false) are valid data types\n5. lists can be accessed by index with o.expr.codebox\n6. we have a host of tools for generating, manipulating, and parsing lists in [o.expr.codebox]"
 				}
 
 			}
@@ -552,7 +552,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 546.5, 219.5, 297.0, 36.0 ],
 					"style" : "default",
-					"text" : "In Max, if we want these items separated from each other, we can use zl.mth"
+					"text" : "In Max, if we want these items separated from each other, we can use [zl.mth]"
 				}
 
 			}
@@ -567,7 +567,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 11.0, 143.0, 950.0, 36.0 ],
 					"style" : "default",
-					"text" : "Let's say we have a list, and we'd like to do something with the third and fourth elements of it. \nIn both Max and ODOT, we have a couple of different options, depending on what we want to do with these elements. ",
+					"text" : "Let's say we have a list, and we'd like to do something with the third and fourth elements of it. \nIn both Max and odot, we have a couple of different options, depending on what we want to do with these elements. ",
 					"textjustification" : 1
 				}
 
@@ -669,7 +669,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 115.0, 532.5, 400.0, 36.0 ],
 					"style" : "default",
-					"text" : "In ODOT, we can put more than one index between double square brackets, if we want to retreive more than one item:"
+					"text" : "In odot, we can put more than one index between double square brackets, if we want to retreive more than one item:"
 				}
 
 			}
@@ -753,7 +753,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 114.5, 205.5, 356.0, 50.0 ],
 					"style" : "default",
-					"text" : "In ODOT, remember that we can't have a value by itself, as we can in Max, so if we want to have them separately, we have to assign them to their own addresses. "
+					"text" : "In odot, remember that we can't have a value by itself, as we can in Max, so if we want to have them separately, we have to assign them to their own addresses. "
 				}
 
 			}
