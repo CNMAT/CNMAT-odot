@@ -148,7 +148,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 480.0, 1281.5, 225.0, 98.0 ],
 					"style" : "default",
-					"text" : "Here, this bundle contains all of the necessary information for both synths in one place, to be separated out by the cascading o.route objects below."
+					"text" : "Here, this bundle contains all of the necessary information for both synths in one place, to be separated out by the cascading [o.route] objects below."
 				}
 
 			}
@@ -356,7 +356,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 11.0, 176.5, 950.0, 36.0 ],
 					"style" : "default",
-					"text" : "In the example below, we have a relatively simple synthesizer that takes a number of parameters to control its behavior. Using the o.compose box, we can encapsulate all the parameters together and send them atomically to the synth.",
+					"text" : "In the example below, we have a relatively simple synthesizer that takes a number of parameters to control its behavior. Using the [o.compose] box, we can encapsulate all the parameters together and send them atomically to the synth.",
 					"textjustification" : 1
 				}
 
