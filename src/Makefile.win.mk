@@ -90,9 +90,9 @@ pqops.o:
 
 .PHONY: install
 install:
-	[ ! -d "../externals" ] && mkdir ../externals; cp $(EXTERNALS_MXE64) ../externals
-	[ ! -d "../deprecated/externals" ] && mkdir ../deprecated/externals; cp $(DEPRECATED_MXE64) ../deprecated/externals
-	[ ! -d "../dev/externals" ] && mkdir ../dev/externals; cp $(DEV_MXE64) ../dev/externals
+	[ ! -d "../externals" ] && mkdir ../externals; mv $(EXTERNALS_MXE64) ../externals
+	[ ! -d "../deprecated/externals" ] && mkdir ../deprecated/externals; mv $(DEPRECATED_MXE64) ../deprecated/externals
+	[ ! -d "../dev/externals" ] && mkdir ../dev/externals; mv $(DEV_MXE64) ../dev/externals
 
 .PHONY: clean
 clean:
