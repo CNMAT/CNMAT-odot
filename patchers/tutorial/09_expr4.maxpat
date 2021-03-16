@@ -159,13 +159,11 @@
 				"box" : 				{
 					"fontface" : 0,
 					"id" : "obj-99",
-					"linecount" : 16,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 380.5, 6262.0, 243.0, 225.0 ],
-					"text" : "/synth/0/frequency : 440.,\n/synth/0/env/amplitude : 1.,\n/synth/0/env/duration/sec : 3.,\n/synth/0/waveform : \"sine\",\n/synth/1/frequency : 449.,\n/synth/1/env/amplitude : 0.7,\n/synth/1/env/duration/sec : 6.,\n/synth/1/waveform : \"sine\",\n/synth/2/frequency : 800.,\n/synth/2/env/amplitude : 0.6,\n/synth/2/env/duration/sec : 4.,\n/synth/2/waveform : \"triangle\",\n/synth/3/frequency : 809.,\n/synth/3/env/amplitude : 0.5,\n/synth/3/env/duration/sec : 5.,\n/synth/3/waveform : \"triangle\""
+					"patching_rect" : [ 380.5, 6262.0, 243.0, 33.0 ]
 				}
 
 			}
@@ -191,7 +189,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 543.0, 5854.0, 247.0, 50.0 ],
+					"patching_rect" : [ 543.0, 5854.0, 251.0, 50.0 ],
 					"text" : "Now, let's revise the code above so that it will work on any number of addresses, as long as they are all the same structure."
 				}
 
@@ -214,13 +212,11 @@
 				"box" : 				{
 					"fontface" : 0,
 					"id" : "obj-95",
-					"linecount" : 4,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 130.0, 5686.0, 243.0, 72.0 ],
-					"text" : "/synth/0/frequency : 440,\n/synth/0/env/amplitude : 1.,\n/synth/0/env/duration/sec : 3.,\n/synth/0/waveform : \"sine\""
+					"patching_rect" : [ 130.0, 5686.0, 243.0, 33.0 ]
 				}
 
 			}
@@ -246,7 +242,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 662.0, 5245.0, 219.0, 123.0 ],
+					"patching_rect" : [ 662.0, 5245.0, 222.0, 123.0 ],
 					"text" : "...However, this only does the job for voice 0. If we want a more general solution, we'll need to actually get a hold of the address, find out which voice it is, and then use that information to construct new addresses. To the left, we see a more general solution"
 				}
 
@@ -255,13 +251,11 @@
 				"box" : 				{
 					"fontface" : 0,
 					"id" : "obj-92",
-					"linecount" : 4,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 209.0, 5104.0, 227.0, 72.0 ],
-					"text" : "/synth/0/frequency : 440,\n/synth/0/env/amplitude : 1.,\n/synth/0/env/duration/sec : 3.,\n/synth/0/waveform : \"sine\""
+					"patching_rect" : [ 209.0, 5104.0, 227.0, 33.0 ]
 				}
 
 			}
@@ -332,7 +326,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 285.0, 4759.0, 253.0, 65.0 ],
-					"text" : "...and we want to send it to our multivoice o.synthesizer.basic~ module that we've used in the past, which expects each item of data to have its own address, like this:",
+					"text" : "...and we want to send it to our multivoice [o.synthesizer.basic~] module that we've used in the past, which expects each item of data to have its own address, like this:",
 					"textjustification" : 2
 				}
 
@@ -373,7 +367,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 116.5, 4557.0, 737.0, 94.0 ],
-					"text" : "All of the examples above worked because we knew what was in the incoming bundle, however, in practice this is not always the case. Often, we want to get a list of addresses and operate on that using the techniques described above. There are two functions for this: getaddresses(), which returns a list of all addresses in the bundle as strings, and the more powerful match(), which behaves similarly to o.select. \n\nIn this final section, we'll introduce getaddresses() and use it to dynamically rearrange the structure of a bundle.",
+					"text" : "All of the examples above worked because we knew what was in the incoming bundle, however, in practice this is not always the case. Often, we want to get a list of addresses and operate on that using the techniques described above. There are two functions for this: getaddresses(), which returns a list of all addresses in the bundle as strings, and the more powerful match(), which behaves similarly to [o.select]. \n\nIn this final section, we'll introduce getaddresses() and use it to dynamically rearrange the structure of a bundle.",
 					"textjustification" : 1
 				}
 
@@ -405,13 +399,11 @@
 				"box" : 				{
 					"fontface" : 0,
 					"id" : "obj-77",
-					"linecount" : 4,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 532.0, 4312.0, 198.0, 72.0 ],
-					"text" : "/synth/0/freq : 440,\n/synth/1/freq : 448,\n/synth/2/freq : 550,\n/freqs : [440, 448, 550]"
+					"patching_rect" : [ 532.0, 4312.0, 198.0, 33.0 ]
 				}
 
 			}
@@ -462,13 +454,11 @@
 				"box" : 				{
 					"fontface" : 0,
 					"id" : "obj-76",
-					"linecount" : 4,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 75.0, 4312.0, 198.0, 72.0 ],
-					"text" : "/freqs : [440, 448, 550],\n/synth/0/freq : 440,\n/synth/1/freq : 448,\n/synth/2/freq : 550"
+					"patching_rect" : [ 75.0, 4312.0, 198.0, 33.0 ]
 				}
 
 			}
@@ -579,7 +569,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 451.0, 3659.0, 300.0, 137.0 ],
+					"patching_rect" : [ 451.0, 3659.0, 303.0, 137.0 ],
 					"text" : "Similarly, when you write an address in an odot expression, it will be automatically looked up in the working bundle (unless it's on the lefthand side of an assignment or as part of a handful of special functions that suppress lookup like the first argument of assign()). There are times, however, when you want to be able to assemble a string programmatically and look it up, which you can do with the value() function"
 				}
 
