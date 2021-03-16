@@ -21,7 +21,7 @@
 		"gridsnaponopen" : 1,
 		"objectsnaponopen" : 1,
 		"statusbarvisible" : 2,
-		"toolbarvisible" : 0,
+		"toolbarvisible" : 1,
 		"lefttoolbarpinned" : 2,
 		"toptoolbarpinned" : 2,
 		"righttoolbarpinned" : 2,
@@ -40,6 +40,218 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"fontsize" : 12.0,
+					"id" : "obj-103",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 3,
+					"outlettype" : [ "", "", "" ],
+					"patcher" : 					{
+						"fileversion" : 1,
+						"appversion" : 						{
+							"major" : 8,
+							"minor" : 1,
+							"revision" : 10,
+							"architecture" : "x64",
+							"modernui" : 1
+						}
+,
+						"classnamespace" : "box",
+						"rect" : [ 59.0, 104.0, 640.0, 480.0 ],
+						"bglocked" : 0,
+						"openinpresentation" : 0,
+						"default_fontsize" : 14.0,
+						"default_fontface" : 0,
+						"default_fontname" : "Arial",
+						"gridonopen" : 1,
+						"gridsize" : [ 15.0, 15.0 ],
+						"gridsnaponopen" : 1,
+						"objectsnaponopen" : 1,
+						"statusbarvisible" : 2,
+						"toolbarvisible" : 1,
+						"lefttoolbarpinned" : 0,
+						"toptoolbarpinned" : 0,
+						"righttoolbarpinned" : 0,
+						"bottomtoolbarpinned" : 0,
+						"toolbars_unpinned_last_save" : 0,
+						"tallnewobj" : 0,
+						"boxanimatetime" : 200,
+						"enablehscroll" : 1,
+						"enablevscroll" : 1,
+						"devicewidth" : 0.0,
+						"description" : "",
+						"digest" : "",
+						"tags" : "",
+						"style" : "",
+						"subpatcher_template" : "Untitled5_template",
+						"assistshowspatchername" : 0,
+						"boxes" : [ 							{
+								"box" : 								{
+									"fontsize" : 12.0,
+									"id" : "obj-90",
+									"maxclass" : "message",
+									"numinlets" : 2,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 105.5, 157.0, 52.0, 22.0 ],
+									"text" : "300 600"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"fontsize" : 12.0,
+									"id" : "obj-88",
+									"maxclass" : "message",
+									"numinlets" : 2,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 77.75, 157.0, 45.0, 22.0 ],
+									"text" : "0.2 0.7"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"fontsize" : 12.0,
+									"id" : "obj-85",
+									"maxclass" : "message",
+									"numinlets" : 2,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 50.0, 157.0, 39.0, 22.0 ],
+									"text" : "60 67"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"fontsize" : 12.0,
+									"id" : "obj-84",
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "bang" ],
+									"patching_rect" : [ 50.0, 100.0, 58.0, 22.0 ],
+									"text" : "loadbang"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"comment" : "",
+									"id" : "obj-96",
+									"index" : 1,
+									"maxclass" : "outlet",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 50.0, 239.0, 30.0, 30.0 ]
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"comment" : "",
+									"id" : "obj-101",
+									"index" : 2,
+									"maxclass" : "outlet",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 85.0, 239.0, 30.0, 30.0 ]
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"comment" : "",
+									"id" : "obj-102",
+									"index" : 3,
+									"maxclass" : "outlet",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 120.0, 239.0, 30.0, 30.0 ]
+								}
+
+							}
+ ],
+						"lines" : [ 							{
+								"patchline" : 								{
+									"destination" : [ "obj-85", 0 ],
+									"order" : 2,
+									"source" : [ "obj-84", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-88", 0 ],
+									"order" : 1,
+									"source" : [ "obj-84", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-90", 0 ],
+									"order" : 0,
+									"source" : [ "obj-84", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-96", 0 ],
+									"source" : [ "obj-85", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-101", 0 ],
+									"source" : [ "obj-88", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-102", 0 ],
+									"source" : [ "obj-90", 0 ]
+								}
+
+							}
+ ]
+					}
+,
+					"patching_rect" : [ 572.0, 2232.0, 74.5, 22.0 ],
+					"saved_object_attributes" : 					{
+						"description" : "",
+						"digest" : "",
+						"fontsize" : 14.0,
+						"globalpatchername" : "",
+						"tags" : ""
+					}
+,
+					"text" : "p init"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontface" : 2,
+					"fontsize" : 12.0,
+					"id" : "obj-47",
+					"linecount" : 3,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 318.5, 4119.5, 129.0, 47.0 ],
+					"presentation_linecount" : 3,
+					"text" : "note that this can be written to a file and read back later"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"fontface" : 2,
 					"fontsize" : 12.0,
 					"id" : "obj-40",
@@ -55,14 +267,15 @@
 				"box" : 				{
 					"bubble" : 1,
 					"bubbleside" : 3,
+					"bubbletextmargin" : 15,
 					"bubbleusescolors" : 1,
-					"fontsize" : 13.0,
+					"fontsize" : 12.0,
 					"id" : "obj-106",
-					"linecount" : 4,
+					"linecount" : 5,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 74.75, 3627.5, 374.0, 69.0 ],
+					"patching_rect" : [ 74.75, 3627.5, 350.0, 98.0 ],
 					"text" : "In order to store the most recent bundle output by the synth, simply enter a number here, and it will be stored immediately. Entering a number that was already previously entered will cause the old bundle to be overwritten."
 				}
 
@@ -75,8 +288,9 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 171.0, 2894.5, 618.0, 79.0 ],
-					"text" : "In addition to having purely graphical control over the ranges we send into our synth, it's also nice to see, in the same graphical context, the values that the synth chose.\n\nHere, we've improved our GUI and made it into a bpatcher (make sure to look inside to see how it works). There is now an output slider underneath each input object that shows the value produced by the synth."
+					"patching_rect" : [ 73.0, 2895.5, 819.0, 79.0 ],
+					"text" : "In addition to having purely graphical control over the ranges we send into our synth, it's also nice to see, in the same graphical context, the values that the synth chose.\n\nHere, we've improved our GUI and made it into a bpatcher (make sure to look inside to see how it works). There is now an output slider underneath each input object that shows the value produced by the synth.",
+					"textjustification" : 1
 				}
 
 			}
@@ -84,12 +298,13 @@
 				"box" : 				{
 					"fontsize" : 13.0,
 					"id" : "obj-100",
-					"linecount" : 12,
+					"linecount" : 14,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 687.0, 2270.5, 252.5, 181.0 ],
-					"text" : "We can use these range sliders to create ranges for the three different parameters.\n\nNotice that we've separated visually the sliders from the numbers they produce--this is intentional. In an exploratory phase of working with a new synth, you may want to simply change parameters without really understanding the numerical values associated with them--a process of exploring the space of the instrument."
+					"patching_rect" : [ 697.0, 2270.5, 216.0, 210.0 ],
+					"presentation_linecount" : 14,
+					"text" : "We can use these range sliders to create ranges for the three different parameters.\n\nNotice that we've separated visually the sliders from the numbers they produce -- this is intentional. In an exploratory phase of working with a new synth, you may want to simply change parameters without really understanding the numerical values associated with them -- a process of exploring the space of the instrument."
 				}
 
 			}
@@ -99,7 +314,7 @@
 					"maxclass" : "ezdac~",
 					"numinlets" : 2,
 					"numoutlets" : 0,
-					"patching_rect" : [ 330.5, 2774.0, 45.0, 45.0 ]
+					"patching_rect" : [ 330.5, 2774.0, 40.0, 40.0 ]
 				}
 
 			}
@@ -112,7 +327,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "signal", "" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 330.5, 2609.0, 22.0, 140.0 ]
+					"patching_rect" : [ 330.5, 2667.0, 20.0, 85.0 ]
 				}
 
 			}
@@ -129,62 +344,14 @@
 			}
 , 			{
 				"box" : 				{
-					"id" : "obj-90",
-					"maxclass" : "message",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 679.0, 2236.0, 59.0, 24.0 ],
-					"text" : "300 600"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-88",
-					"maxclass" : "message",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 622.0, 2236.0, 51.0, 24.0 ],
-					"text" : "0.2 0.7"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-85",
-					"maxclass" : "message",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 572.0, 2236.0, 44.0, 24.0 ],
-					"text" : "60 67"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-84",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 572.0, 2204.0, 66.0, 24.0 ],
-					"text" : "loadbang"
-				}
-
-			}
-, 			{
-				"box" : 				{
 					"fontsize" : 13.0,
 					"id" : "obj-83",
 					"linecount" : 2,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 299.0, 2130.0, 637.0, 36.0 ],
-					"text" : "o.compose isn't great for dynamically exploring the behavior of our synth, so let's build up an interface that we can manipulate more intuitively."
+					"patching_rect" : [ 270.0, 2135.0, 441.0, 36.0 ],
+					"text" : "[o.compose] isn't great for dynamically exploring the behavior of our synth, so let's build up an interface that we can manipulate more intuitively:"
 				}
 
 			}
@@ -192,12 +359,13 @@
 				"box" : 				{
 					"fontsize" : 13.0,
 					"id" : "obj-81",
-					"linecount" : 5,
+					"linecount" : 6,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 29.0, 2019.0, 907.0, 79.0 ],
-					"text" : "This is a nice paradigm to consider when implementing complex behavior, as it allows the user to interact with the module before they know what it is, or how it works. \n\nSince you don't need to supply any arguments at all for the synth to work, sending in an empty bundle and getting feedback in the form of both sound and a bundle containing an example of what kinds of input the module takes, is a powerful form of self-documentation."
+					"patching_rect" : [ 47.0, 2019.0, 655.0, 94.0 ],
+					"text" : "This is a nice paradigm to consider when implementing complex behavior, as it allows the user to interact with the module before they know what it is, or how it works. \n\nSince you don't need to supply any arguments at all for the synth to work, sending in an empty bundle and getting feedback in the form of both sound and a bundle containing an example of what kinds of input the module takes, is a powerful form of self-documentation.",
+					"textjustification" : 0
 				}
 
 			}
@@ -205,15 +373,13 @@
 				"box" : 				{
 					"fontface" : 0,
 					"id" : "obj-72",
-					"linecount" : 4,
 					"maxclass" : "o.compose",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 507.0, 1694.0, 160.0, 62.0 ],
-					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 24, 47, 109, 105, 100, 105, 110, 111, 116, 101, 0, 0, 0, 44, 100, 0, 0, 64, 75, -44, -93, -44, -93, -44, -92, 0, 0, 0, 20, 47, 97, 109, 112, 0, 0, 0, 0, 44, 100, 0, 0, 63, -16, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 47, 100, 117, 114, 0, 0, 0, 0, 44, 105, 0, 0, 0, 0, 3, -24, 0, 0, 0, 16, 47, 118, 111, 105, 99, 101, 0, 0, 44, 105, 0, 0, 0, 0, 0, 6 ],
-					"saved_bundle_length" : 108,
-					"text" : "/midinote : 55.6612,\n/amp : 1.,\n/dur : 1000,\n/voice : 6"
+					"patching_rect" : [ 507.0, 1694.0, 160.0, 23.0 ],
+					"saved_bundle_data" : [  ],
+					"saved_bundle_length" : 0
 				}
 
 			}
@@ -234,11 +400,12 @@
 , 			{
 				"box" : 				{
 					"bgcolor" : [ 0.996078431372549, 0.996078431372549, 0.996078431372549, 1.0 ],
+					"fontsize" : 13.0,
 					"id" : "obj-42",
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 375.375, 1444.0, 220.0, 22.0 ],
+					"patching_rect" : [ 381.375, 1455.5, 205.0, 21.0 ],
 					"text" : "Polyphony and exploratory control"
 				}
 
@@ -249,7 +416,7 @@
 					"maxclass" : "live.line",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 23.0, 1452.5, 924.75, 5.0 ]
+					"patching_rect" : [ 17.0, 1463.5, 933.75, 5.0 ]
 				}
 
 			}
@@ -261,8 +428,10 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 89.0, 1356.5, 763.0, 36.0 ],
-					"text" : "In the next section, we'll let poly~'s \"note\" message to the heavy lifting for polyphony management, and we'll focus on building up a simple but rich control structure for our synth."
+					"patching_rect" : [ 102.375, 1370.5, 763.0, 36.0 ],
+					"presentation_linecount" : 2,
+					"text" : "In the next section, we'll let [poly~]'s \"note\" message do the heavy lifting for polyphony management, and we'll focus on building up a simple but rich control structure for our synth.",
+					"textjustification" : 1
 				}
 
 			}
@@ -274,8 +443,9 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 89.0, 1268.5, 761.0, 65.0 ],
-					"text" : "The examples above are two versions of the same paradigm: we get some information from the environment (from patcherargs and thispoly~), and use it to identify messages intended for us, and tag outgoing data with our identifying information. This paradigm is very common for managing polyphony in odot, and you'll often see the collection of patcherargs/thispoly~ + o.route at the top of a patch, and patcherargs/thispoly~ + o.pack/o.prepend at the bottom."
+					"patching_rect" : [ 82.875, 1271.5, 802.0, 65.0 ],
+					"text" : "The examples above are two versions of the same paradigm: we get some information from the environment (from patcherargs and [thispoly~]), and use it to identify messages intended for us, and tag outgoing data with our identifying information. This paradigm is very common for managing polyphony in odot, and you'll often see the collection of [patcherargs] / [thispoly~] + [o.route] at the top of a patch, and [patcherargs] / [thispoly~] + [o.pack] / [o.prepend] at the bottom.",
+					"textjustification" : 1
 				}
 
 			}
@@ -344,23 +514,25 @@
 			}
 , 			{
 				"box" : 				{
+					"fontsize" : 12.0,
 					"id" : "obj-15",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 387.5, 518.0, 104.0, 24.0 ],
+					"patching_rect" : [ 387.5, 518.0, 91.0, 22.0 ],
 					"text" : "print @popup 1"
 				}
 
 			}
 , 			{
 				"box" : 				{
+					"fontsize" : 12.0,
 					"id" : "obj-14",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 260.0, 419.0, 33.0, 24.0 ],
+					"patching_rect" : [ 260.0, 419.0, 29.0, 22.0 ],
 					"text" : "thru"
 				}
 
@@ -385,7 +557,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 327.5, 4609.0, 261.0, 72.0 ]
+					"patching_rect" : [ 327.5, 4609.0, 261.0, 85.0 ]
 				}
 
 			}
@@ -395,7 +567,7 @@
 					"maxclass" : "ezdac~",
 					"numinlets" : 2,
 					"numoutlets" : 0,
-					"patching_rect" : [ 304.0, 4695.0, 45.0, 45.0 ]
+					"patching_rect" : [ 302.5, 4705.0, 40.0, 40.0 ]
 				}
 
 			}
@@ -408,32 +580,32 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "signal", "" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 304.0, 4609.0, 21.5, 72.0 ]
+					"patching_rect" : [ 304.0, 4609.0, 20.0, 85.0 ]
 				}
 
 			}
 , 			{
 				"box" : 				{
-					"fontsize" : 13.0,
+					"fontsize" : 12.0,
 					"id" : "obj-65",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 304.0, 4530.0, 85.0, 23.0 ],
+					"patching_rect" : [ 304.0, 4530.0, 79.0, 22.0 ],
 					"text" : "prepend note"
 				}
 
 			}
 , 			{
 				"box" : 				{
-					"fontsize" : 13.0,
+					"fontsize" : 12.0,
 					"id" : "obj-82",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 3,
 					"outlettype" : [ "signal", "", "" ],
-					"patching_rect" : [ 304.0, 4564.0, 248.0, 23.0 ],
+					"patching_rect" : [ 304.0, 4564.0, 229.0, 22.0 ],
 					"text" : "poly~ o.abstraction_example2 8 @steal 1"
 				}
 
@@ -446,19 +618,19 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 281.5, 3340.0, 149.0, 40.0 ]
+					"patching_rect" : [ 281.5, 3340.0, 178.0, 54.0 ]
 				}
 
 			}
 , 			{
 				"box" : 				{
-					"fontsize" : 13.0,
+					"fontsize" : 12.0,
 					"id" : "obj-89",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 330.5, 2514.0, 85.0, 23.0 ],
+					"patching_rect" : [ 330.5, 2514.0, 79.0, 22.0 ],
 					"text" : "prepend note"
 				}
 
@@ -477,13 +649,13 @@
 			}
 , 			{
 				"box" : 				{
-					"fontsize" : 13.0,
+					"fontsize" : 12.0,
 					"id" : "obj-87",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 3,
 					"outlettype" : [ "signal", "", "" ],
-					"patching_rect" : [ 330.5, 2543.0, 248.0, 23.0 ],
+					"patching_rect" : [ 330.5, 2543.0, 229.0, 22.0 ],
 					"text" : "poly~ o.abstraction_example2 8 @steal 1"
 				}
 
@@ -494,7 +666,7 @@
 					"maxclass" : "ezdac~",
 					"numinlets" : 2,
 					"numoutlets" : 0,
-					"patching_rect" : [ 258.0, 3426.0, 45.0, 45.0 ]
+					"patching_rect" : [ 256.5, 3438.0, 40.0, 40.0 ]
 				}
 
 			}
@@ -507,7 +679,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "signal", "" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 258.0, 3340.0, 21.5, 72.0 ]
+					"patching_rect" : [ 258.0, 3340.0, 20.0, 85.0 ]
 				}
 
 			}
@@ -525,26 +697,26 @@
 			}
 , 			{
 				"box" : 				{
-					"fontsize" : 13.0,
+					"fontsize" : 12.0,
 					"id" : "obj-74",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 258.0, 3261.0, 85.0, 23.0 ],
+					"patching_rect" : [ 258.0, 3261.0, 79.0, 22.0 ],
 					"text" : "prepend note"
 				}
 
 			}
 , 			{
 				"box" : 				{
-					"fontsize" : 13.0,
+					"fontsize" : 12.0,
 					"id" : "obj-80",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 3,
 					"outlettype" : [ "signal", "", "" ],
-					"patching_rect" : [ 258.0, 3295.0, 248.0, 23.0 ],
+					"patching_rect" : [ 258.0, 3295.0, 229.0, 22.0 ],
 					"text" : "poly~ o.abstraction_example2 8 @steal 1"
 				}
 
@@ -571,14 +743,15 @@
 			}
 , 			{
 				"box" : 				{
+					"fontface" : 2,
 					"fontsize" : 12.0,
 					"id" : "obj-170",
-					"linecount" : 4,
+					"linecount" : 7,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 554.0, 3071.874999523162842, 323.0, 60.0 ],
-					"text" : "Note the toggle at the left of each slider--this toggles between \"range mode\" and \"single value mode\". That way, if you like something you heard, you can \"freeze\" one of the parameters."
+					"patching_rect" : [ 569.0, 3051.874999523162842, 177.0, 100.0 ],
+					"text" : "Note the toggle at the left of each slider -- this toggles between \"range mode\" and \"single value mode\". That way, if you like something you heard, you can \"freeze\" one of the parameters."
 				}
 
 			}
@@ -602,12 +775,12 @@
 				"box" : 				{
 					"fontsize" : 13.0,
 					"id" : "obj-55",
-					"linecount" : 25,
+					"linecount" : 26,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 29.0, 1605.0, 329.0, 370.0 ],
-					"text" : "We've simplified our abstraction a bit by taking out the need to supply a prefix to direct messages at specific instances. Instead, we use the \"note\" message, and let poly~ direct the bundle to any available instance.\n\nThis synth takes three messages (/midinote, /amp, and /dur), and each of them can have either zero, one, or two values, to be interpreted as follows:\n\n0 args: generate a random value for this message within an internally specifed default range.\n\n1 arg: use this value directly.\n\n2 args: generate a random value for this message within the supplied range.\n\nIn addition to setting the parameters of the synth inside, it also outputs a bundle containing all of the internal state including the voice number. In the case of missing values or ranges, both of which will cause a random number to be chosen, this behavior lets us see what the values were that created the sound. Since they're formatted the same as the input, we can even send them back in."
+					"patching_rect" : [ 47.0, 1611.0, 314.0, 384.0 ],
+					"text" : "We've simplified our abstraction a bit by taking out the need to supply a prefix to direct messages at specific instances. Instead, we use the \"note\" message, and let [poly~] direct the bundle to any available instance.\n\nThis synth takes three messages (/midinote, /amp, and /dur), and each of them can have either zero, one, or two values, to be interpreted as follows:\n\n0 args: generate a random value for this message within an internally specifed default range.\n\n1 arg: use this value directly.\n\n2 args: generate a random value for this message within the supplied range.\n\nIn addition to setting the parameters of the synth inside, it also outputs a bundle containing all of the internal state including the voice number. In the case of missing values or ranges, both of which will cause a random number to be chosen, this behavior lets us see what the values were that created the sound. Since they're formatted the same as the input, we can even send them back in."
 				}
 
 			}
@@ -665,7 +838,7 @@
 					"maxclass" : "ezdac~",
 					"numinlets" : 2,
 					"numoutlets" : 0,
-					"patching_rect" : [ 419.0, 1889.0, 45.0, 45.0 ]
+					"patching_rect" : [ 419.0, 1889.0, 40.0, 40.0 ]
 				}
 
 			}
@@ -678,7 +851,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "signal", "" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 419.0, 1724.0, 22.0, 140.0 ]
+					"patching_rect" : [ 419.0, 1782.0, 20.0, 85.0 ]
 				}
 
 			}
@@ -711,13 +884,13 @@
 			}
 , 			{
 				"box" : 				{
-					"fontsize" : 13.0,
+					"fontsize" : 12.0,
 					"id" : "obj-38",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 419.0, 1611.0, 85.0, 23.0 ],
+					"patching_rect" : [ 419.0, 1611.0, 79.0, 22.0 ],
 					"text" : "prepend note"
 				}
 
@@ -740,13 +913,13 @@
 			}
 , 			{
 				"box" : 				{
-					"fontsize" : 13.0,
+					"fontsize" : 12.0,
 					"id" : "obj-43",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 3,
 					"outlettype" : [ "signal", "", "" ],
-					"patching_rect" : [ 419.0, 1648.0, 248.0, 23.0 ],
+					"patching_rect" : [ 419.0, 1648.0, 229.0, 22.0 ],
 					"text" : "poly~ o.abstraction_example2 8 @steal 1"
 				}
 
@@ -755,11 +928,13 @@
 				"box" : 				{
 					"fontface" : 0,
 					"id" : "obj-118",
+					"linecount" : 4,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 655.0, 921.0, 168.0, 33.0 ]
+					"patching_rect" : [ 655.0, 921.0, 168.0, 72.0 ],
+					"text" : "/1/midinote : 60.9768,\n/1/amp : 1.,\n/1/dur : 10000,\n/voice : 1"
 				}
 
 			}
@@ -781,26 +956,26 @@
 			}
 , 			{
 				"box" : 				{
-					"fontsize" : 13.0,
+					"fontsize" : 12.0,
 					"id" : "obj-116",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "bang", "" ],
-					"patching_rect" : [ 317.0, 932.5, 82.0, 23.0 ],
+					"patching_rect" : [ 317.0, 932.5, 80.0, 22.0 ],
 					"text" : "t b l"
 				}
 
 			}
 , 			{
 				"box" : 				{
-					"fontsize" : 13.0,
+					"fontsize" : 12.0,
 					"id" : "obj-115",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 317.0, 1009.0, 56.0, 23.0 ],
+					"patching_rect" : [ 317.0, 1009.0, 53.0, 22.0 ],
 					"text" : "o.collect"
 				}
 
@@ -828,8 +1003,8 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 56.0, 951.5, 224.0, 152.0 ],
-					"text" : "Here, we use the same basic idea shown in the subpatchers above to let us direct messages at individual instances of a poly~. \n\nBe sure and open the poly~ to see the ways that thispoly~ is used to set the arguments to o.route and o.prepend based on their voice number."
+					"patching_rect" : [ 56.0, 979.5, 224.0, 152.0 ],
+					"text" : "Here, we use the same basic idea shown in the subpatchers above to let us direct messages at individual instances of a [poly~]. \n\nBe sure and open the [poly~] to see the ways that [thispoly~] is used to set the arguments to [o.route] and [o.prepend] based on their voice number."
 				}
 
 			}
@@ -854,7 +1029,7 @@
 					"maxclass" : "ezdac~",
 					"numinlets" : 2,
 					"numoutlets" : 0,
-					"patching_rect" : [ 380.0, 1171.0, 45.0, 45.0 ]
+					"patching_rect" : [ 380.0, 1171.0, 40.0, 40.0 ]
 				}
 
 			}
@@ -867,7 +1042,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "signal", "" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 380.0, 1009.0, 22.0, 140.0 ]
+					"patching_rect" : [ 380.0, 1072.0, 20.0, 85.0 ]
 				}
 
 			}
@@ -878,19 +1053,19 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 432.0, 1013.0, 204.0, 80.0 ]
+					"patching_rect" : [ 418.0, 1072.0, 204.0, 80.0 ]
 				}
 
 			}
 , 			{
 				"box" : 				{
-					"fontsize" : 13.0,
+					"fontsize" : 12.0,
 					"id" : "obj-44",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 3,
 					"outlettype" : [ "signal", "", "" ],
-					"patching_rect" : [ 380.0, 974.0, 253.0, 23.0 ],
+					"patching_rect" : [ 380.0, 974.0, 234.0, 22.0 ],
 					"text" : "poly~ o.abstraction_example1 6 @target 0"
 				}
 
@@ -913,6 +1088,7 @@
 			}
 , 			{
 				"box" : 				{
+					"fontsize" : 12.0,
 					"id" : "obj-58",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
@@ -929,7 +1105,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 59.0, 104.0, 656.0, 490.0 ],
+						"rect" : [ 59.0, 104.0, 554.0, 430.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 14.0,
@@ -959,62 +1135,70 @@
 						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
+									"bubble" : 1,
+									"bubblepoint" : 0.09,
+									"bubbleside" : 2,
+									"bubbletextmargin" : 15,
+									"bubbleusescolors" : 1,
+									"fontsize" : 12.0,
+									"id" : "obj-5",
+									"linecount" : 2,
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 74.0, 131.0, 186.0, 72.0 ],
+									"text" : "the argument \"/nothing\" will be replaced by this string:  "
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"fontsize" : 12.0,
 									"id" : "obj-10",
 									"maxclass" : "newobj",
 									"numinlets" : 2,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "" ],
-									"patching_rect" : [ 354.0, 208.0, 62.0, 24.0 ],
+									"patching_rect" : [ 329.0, 187.0, 55.0, 22.0 ],
 									"text" : "zl.ecils 1"
 								}
 
 							}
 , 							{
 								"box" : 								{
+									"fontsize" : 12.0,
 									"id" : "obj-9",
 									"maxclass" : "message",
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 366.0, 258.0, 50.0, 24.0 ],
+									"patching_rect" : [ 336.0, 236.0, 48.0, 22.0 ],
 									"text" : "/2"
 								}
 
 							}
 , 							{
 								"box" : 								{
-									"bubble" : 1,
-									"bubbleusescolors" : 1,
-									"id" : "obj-6",
-									"linecount" : 2,
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 165.0, 240.0, 204.0, 42.0 ],
-									"text" : "this argument \"/nothing\" will be replaced by this string:  "
-								}
-
-							}
-, 							{
-								"box" : 								{
+									"fontsize" : 12.0,
 									"id" : "obj-1",
 									"maxclass" : "newobj",
 									"numinlets" : 2,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "" ],
-									"patching_rect" : [ 530.0, 125.0, 77.0, 24.0 ],
+									"patching_rect" : [ 450.0, 111.0, 67.0, 22.0 ],
 									"text" : "route voice"
 								}
 
 							}
 , 							{
 								"box" : 								{
+									"fontsize" : 12.0,
 									"id" : "obj-14",
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "bang" ],
-									"patching_rect" : [ 467.0, 56.0, 66.0, 24.0 ],
+									"patching_rect" : [ 397.0, 42.0, 58.0, 22.0 ],
 									"text" : "loadbang"
 								}
 
@@ -1027,18 +1211,19 @@
 									"maxclass" : "outlet",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 65.0, 384.0, 30.0, 30.0 ]
+									"patching_rect" : [ 40.0, 363.0, 30.0, 30.0 ]
 								}
 
 							}
 , 							{
 								"box" : 								{
+									"fontsize" : 12.0,
 									"id" : "obj-7",
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "" ],
-									"patching_rect" : [ 467.0, 89.0, 82.0, 24.0 ],
+									"patching_rect" : [ 397.0, 75.0, 72.0, 22.0 ],
 									"text" : "patcherargs"
 								}
 
@@ -1052,42 +1237,45 @@
 									"numinlets" : 0,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 65.0, 72.0, 30.0, 30.0 ]
+									"patching_rect" : [ 40.0, 51.0, 30.0, 30.0 ]
 								}
 
 							}
 , 							{
 								"box" : 								{
+									"fontsize" : 12.0,
 									"id" : "obj-8",
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 354.0, 171.0, 109.0, 24.0 ],
+									"patching_rect" : [ 329.0, 150.0, 95.0, 22.0 ],
 									"text" : "sprintf set 1 /%d"
 								}
 
 							}
 , 							{
 								"box" : 								{
+									"fontsize" : 12.0,
 									"id" : "obj-4",
 									"maxclass" : "message",
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 65.0, 333.0, 88.0, 24.0 ],
+									"patching_rect" : [ 40.0, 312.0, 77.0, 22.0 ],
 									"text" : "voice $2 : $1"
 								}
 
 							}
 , 							{
 								"box" : 								{
+									"fontsize" : 12.0,
 									"id" : "obj-2",
 									"maxclass" : "newobj",
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 65.0, 292.0, 484.0, 24.0 ],
+									"patching_rect" : [ 40.0, 271.0, 429.0, 22.0 ],
 									"text" : "pack 0 0"
 								}
 
@@ -1100,7 +1288,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "FullPacket" ],
-									"patching_rect" : [ 65.0, 250.0, 92.0, 22.0 ],
+									"patching_rect" : [ 40.0, 229.0, 92.0, 22.0 ],
 									"text" : "o.route /nothing"
 								}
 
@@ -1190,7 +1378,7 @@
  ]
 					}
 ,
-					"patching_rect" : [ 387.5, 465.0, 113.0, 24.0 ],
+					"patching_rect" : [ 387.5, 465.0, 98.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
@@ -1205,11 +1393,12 @@
 			}
 , 			{
 				"box" : 				{
+					"fontsize" : 12.0,
 					"id" : "obj-57",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 260.0, 558.0, 104.0, 24.0 ],
+					"patching_rect" : [ 260.0, 558.0, 91.0, 22.0 ],
 					"text" : "print @popup 1"
 				}
 
@@ -1246,6 +1435,7 @@
 			}
 , 			{
 				"box" : 				{
+					"fontsize" : 12.0,
 					"id" : "obj-22",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
@@ -1262,7 +1452,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 59.0, 104.0, 656.0, 490.0 ],
+						"rect" : [ 59.0, 104.0, 546.0, 415.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 14.0,
@@ -1292,24 +1482,26 @@
 						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
+									"fontsize" : 12.0,
 									"id" : "obj-10",
 									"maxclass" : "newobj",
 									"numinlets" : 2,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "" ],
-									"patching_rect" : [ 354.0, 208.0, 62.0, 24.0 ],
+									"patching_rect" : [ 324.0, 170.0, 55.0, 22.0 ],
 									"text" : "zl.ecils 1"
 								}
 
 							}
 , 							{
 								"box" : 								{
+									"fontsize" : 12.0,
 									"id" : "obj-9",
 									"maxclass" : "message",
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 366.0, 258.0, 50.0, 24.0 ],
+									"patching_rect" : [ 331.0, 220.0, 48.0, 22.0 ],
 									"text" : "/1"
 								}
 
@@ -1317,37 +1509,43 @@
 , 							{
 								"box" : 								{
 									"bubble" : 1,
+									"bubblepoint" : 0.09,
+									"bubbleside" : 2,
+									"bubbletextmargin" : 15,
 									"bubbleusescolors" : 1,
+									"fontsize" : 12.0,
 									"id" : "obj-6",
 									"linecount" : 2,
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 165.0, 240.0, 204.0, 42.0 ],
-									"text" : "this argument \"/nothing\" will be replaced by this string:  "
+									"patching_rect" : [ 64.0, 114.0, 186.0, 72.0 ],
+									"text" : "the argument \"/nothing\" will be replaced by this string:  "
 								}
 
 							}
 , 							{
 								"box" : 								{
+									"fontsize" : 12.0,
 									"id" : "obj-1",
 									"maxclass" : "newobj",
 									"numinlets" : 2,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "" ],
-									"patching_rect" : [ 530.0, 125.0, 77.0, 24.0 ],
+									"patching_rect" : [ 440.0, 93.0, 67.0, 22.0 ],
 									"text" : "route voice"
 								}
 
 							}
 , 							{
 								"box" : 								{
+									"fontsize" : 12.0,
 									"id" : "obj-14",
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "bang" ],
-									"patching_rect" : [ 467.0, 56.0, 66.0, 24.0 ],
+									"patching_rect" : [ 387.0, 29.0, 58.0, 22.0 ],
 									"text" : "loadbang"
 								}
 
@@ -1360,18 +1558,19 @@
 									"maxclass" : "outlet",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 65.0, 384.0, 30.0, 30.0 ]
+									"patching_rect" : [ 30.0, 346.0, 30.0, 30.0 ]
 								}
 
 							}
 , 							{
 								"box" : 								{
+									"fontsize" : 12.0,
 									"id" : "obj-7",
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "" ],
-									"patching_rect" : [ 467.0, 89.0, 82.0, 24.0 ],
+									"patching_rect" : [ 387.0, 62.0, 72.0, 22.0 ],
 									"text" : "patcherargs"
 								}
 
@@ -1385,42 +1584,45 @@
 									"numinlets" : 0,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 65.0, 72.0, 30.0, 30.0 ]
+									"patching_rect" : [ 30.0, 34.0, 30.0, 30.0 ]
 								}
 
 							}
 , 							{
 								"box" : 								{
+									"fontsize" : 12.0,
 									"id" : "obj-8",
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 354.0, 171.0, 109.0, 24.0 ],
+									"patching_rect" : [ 324.0, 133.0, 95.0, 22.0 ],
 									"text" : "sprintf set 1 /%d"
 								}
 
 							}
 , 							{
 								"box" : 								{
+									"fontsize" : 12.0,
 									"id" : "obj-4",
 									"maxclass" : "message",
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 65.0, 333.0, 88.0, 24.0 ],
+									"patching_rect" : [ 30.0, 295.0, 77.0, 22.0 ],
 									"text" : "voice $2 : $1"
 								}
 
 							}
 , 							{
 								"box" : 								{
+									"fontsize" : 12.0,
 									"id" : "obj-2",
 									"maxclass" : "newobj",
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 65.0, 292.0, 484.0, 24.0 ],
+									"patching_rect" : [ 30.0, 254.0, 429.0, 22.0 ],
 									"text" : "pack 0 0"
 								}
 
@@ -1433,7 +1635,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "FullPacket" ],
-									"patching_rect" : [ 65.0, 250.0, 92.0, 22.0 ],
+									"patching_rect" : [ 30.0, 212.0, 92.0, 22.0 ],
 									"text" : "o.route /nothing"
 								}
 
@@ -1523,7 +1725,7 @@
  ]
 					}
 ,
-					"patching_rect" : [ 260.0, 465.0, 113.0, 24.0 ],
+					"patching_rect" : [ 260.0, 465.0, 98.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
@@ -1538,25 +1740,26 @@
 			}
 , 			{
 				"box" : 				{
+					"fontsize" : 12.0,
 					"id" : "obj-91",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 484.5, 2386.0, 28.0, 24.0 ],
+					"patching_rect" : [ 484.5, 2386.0, 25.0, 22.0 ],
 					"text" : "b 1"
 				}
 
 			}
 , 			{
 				"box" : 				{
-					"fontsize" : 13.0,
+					"fontsize" : 12.0,
 					"id" : "obj-92",
 					"maxclass" : "newobj",
 					"numinlets" : 3,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 484.5, 2414.0, 162.0, 23.0 ],
+					"patching_rect" : [ 484.5, 2414.0, 162.0, 22.0 ],
 					"text" : "o.pack /midinote /amp /dur"
 				}
 
@@ -1657,24 +1860,27 @@
 			}
 , 			{
 				"box" : 				{
-					"fontsize" : 13.0,
+					"fontsize" : 12.0,
 					"id" : "obj-168",
 					"maxclass" : "message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 487.5, 4048.0, 37.0, 23.0 ],
+					"patching_rect" : [ 487.5, 4048.0, 35.0, 22.0 ],
 					"text" : "clear"
 				}
 
 			}
 , 			{
 				"box" : 				{
+					"bubble" : 1,
+					"bubbleusescolors" : 1,
+					"fontsize" : 12.0,
 					"id" : "obj-166",
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 358.0, 4252.0, 42.0, 22.0 ],
+					"patching_rect" : [ 358.0, 4252.0, 54.0, 24.0 ],
 					"text" : "recall"
 				}
 
@@ -1687,46 +1893,51 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 558.5, 4247.0, 376.0, 123.0 ],
-					"text" : "Now we can recall our presets by number.\n\nWe use the same trick as in the poly~ patches to set the argument to o.route, and then simply pass the entire dictionary and let o.route filter out our preset.\n\n(Recall that all odot objects take dictionaries as input and automatically convert them into odot bundles.)"
+					"patching_rect" : [ 558.5, 4247.0, 317.0, 123.0 ],
+					"text" : "Now we can recall our presets by number.\n\nWe use the same trick as in the [poly~] patches to set the argument to [o.route], and then simply pass the entire dictionary and let [o.route] filter out our preset.\n\n(Recall that all odot objects take dictionaries as input and automatically convert them into odot bundles.)"
 				}
 
 			}
 , 			{
 				"box" : 				{
+					"bubble" : 1,
+					"bubbleside" : 3,
+					"bubbleusescolors" : 1,
 					"fontsize" : 12.0,
 					"id" : "obj-163",
-					"linecount" : 2,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 139.5, 4090.5, 311.0, 33.0 ],
-					"text" : "persistant storage \n(note that this can be written to a file and read back later)",
+					"patching_rect" : [ 321.0, 4090.5, 124.0, 24.0 ],
+					"text" : "persistant storage ",
 					"textjustification" : 2
 				}
 
 			}
 , 			{
 				"box" : 				{
+					"bubble" : 1,
+					"bubbleside" : 3,
+					"bubbleusescolors" : 1,
 					"fontsize" : 12.0,
 					"id" : "obj-162",
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 294.5, 3991.5, 156.0, 20.0 ],
+					"patching_rect" : [ 272.0, 3991.5, 173.0, 24.0 ],
 					"text" : "turn bundle into a dictionary"
 				}
 
 			}
 , 			{
 				"box" : 				{
-					"fontsize" : 14.0,
+					"fontsize" : 13.0,
 					"id" : "obj-132",
-					"linecount" : 3,
+					"linecount" : 4,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 47.5, 208.5, 875.0, 53.0 ],
+					"patching_rect" : [ 218.5, 199.5, 535.0, 65.0 ],
 					"text" : "In this tutorial, we will look at strategies for setting up abstractions to manage polyphony by dynamically setting their name when they are instantiated, and to report instance-specific information about their state as they operate. We'll also look at the persistent storage and management of odot bundles.",
 					"textjustification" : 1
 				}
@@ -1734,19 +1945,22 @@
 			}
 , 			{
 				"box" : 				{
+					"bubble" : 1,
+					"bubbleside" : 3,
+					"bubbleusescolors" : 1,
 					"fontsize" : 12.0,
 					"id" : "obj-76",
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 326.5, 3944.5, 124.0, 20.0 ],
+					"patching_rect" : [ 304.0, 3936.5, 141.0, 24.0 ],
 					"text" : "our preset aggregator"
 				}
 
 			}
 , 			{
 				"box" : 				{
-					"fontsize" : 13.0,
+					"fontsize" : 12.0,
 					"id" : "obj-75",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
@@ -1829,7 +2043,7 @@
  ]
 					}
 ,
-					"patching_rect" : [ 548.0, 4048.0, 110.0, 23.0 ],
+					"patching_rect" : [ 548.0, 4048.0, 102.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
@@ -1844,13 +2058,13 @@
 			}
 , 			{
 				"box" : 				{
-					"fontsize" : 13.0,
+					"fontsize" : 12.0,
 					"id" : "obj-49",
 					"maxclass" : "newobj",
 					"numinlets" : 2,
 					"numoutlets" : 4,
 					"outlettype" : [ "dictionary", "", "", "" ],
-					"patching_rect" : [ 461.0, 4090.5, 75.0, 23.0 ],
+					"patching_rect" : [ 461.0, 4090.5, 70.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"embed" : 0,
 						"parameter_enable" : 0,
@@ -1863,39 +2077,39 @@
 			}
 , 			{
 				"box" : 				{
-					"fontsize" : 13.0,
+					"fontsize" : 12.0,
 					"id" : "obj-46",
 					"maxclass" : "newobj",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 461.0, 3925.5, 51.0, 23.0 ],
+					"patching_rect" : [ 461.0, 3925.5, 48.0, 22.0 ],
 					"text" : "o.union"
 				}
 
 			}
 , 			{
 				"box" : 				{
-					"fontsize" : 13.0,
+					"fontsize" : 12.0,
 					"id" : "obj-48",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 461.0, 3954.5, 29.5, 23.0 ],
+					"patching_rect" : [ 461.0, 3954.5, 29.0, 22.0 ],
 					"text" : "t l l"
 				}
 
 			}
 , 			{
 				"box" : 				{
-					"fontsize" : 13.0,
+					"fontsize" : 12.0,
 					"id" : "obj-45",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 461.0, 3991.5, 40.0, 23.0 ],
+					"patching_rect" : [ 461.0, 3991.5, 37.0, 22.0 ],
 					"text" : "o.dict"
 				}
 
@@ -1908,71 +2122,72 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 670.0, 3836.5, 129.0, 20.0 ],
+					"patching_rect" : [ 670.0, 3810.5, 129.0, 20.0 ],
 					"text" : "our most recent preset"
 				}
 
 			}
 , 			{
 				"box" : 				{
-					"fontsize" : 13.0,
+					"fontsize" : 12.0,
 					"id" : "obj-69",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "bang", "int" ],
-					"patching_rect" : [ 304.0, 4282.0, 29.0, 23.0 ],
+					"patching_rect" : [ 304.0, 4282.0, 28.0, 22.0 ],
 					"text" : "t b i"
 				}
 
 			}
 , 			{
 				"box" : 				{
+					"fontsize" : 12.0,
 					"id" : "obj-66",
 					"maxclass" : "number",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 304.0, 4252.0, 50.0, 24.0 ]
+					"patching_rect" : [ 304.0, 4252.0, 47.0, 22.0 ]
 				}
 
 			}
 , 			{
 				"box" : 				{
-					"fontsize" : 13.0,
+					"fontsize" : 12.0,
 					"id" : "obj-64",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 385.0, 4319.0, 141.0, 23.0 ],
+					"patching_rect" : [ 385.0, 4319.0, 131.0, 22.0 ],
 					"text" : "sprintf set 1 /preset/%d"
 				}
 
 			}
 , 			{
 				"box" : 				{
-					"fontsize" : 13.0,
+					"fontsize" : 12.0,
 					"id" : "obj-62",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "FullPacket" ],
-					"patching_rect" : [ 304.0, 4358.0, 104.0, 23.0 ],
+					"patching_rect" : [ 304.0, 4358.0, 97.0, 22.0 ],
 					"text" : "o.route /nothing"
 				}
 
 			}
 , 			{
 				"box" : 				{
-					"fontsize" : 13.0,
+					"fontsize" : 12.0,
 					"id" : "obj-50",
 					"maxclass" : "newobj",
 					"numinlets" : 2,
 					"numoutlets" : 4,
 					"outlettype" : [ "dictionary", "", "", "" ],
-					"patching_rect" : [ 304.0, 4319.0, 75.0, 23.0 ],
+					"patching_rect" : [ 304.0, 4319.0, 70.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"embed" : 0,
 						"parameter_enable" : 0,
@@ -1987,11 +2202,11 @@
 				"box" : 				{
 					"fontsize" : 13.0,
 					"id" : "obj-35",
-					"linecount" : 5,
+					"linecount" : 9,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 62.0, 3505.0, 477.0, 79.0 ],
+					"patching_rect" : [ 572.0, 3522.0, 265.0, 137.0 ],
 					"text" : "If we hear an output from the synth that we like, we may want to store it and recall it later. Here, we have a very simple system for associating a bundle with a name, storing it, and recalling it by name later. This can of course be made much more complex (think categories, tags, etc), but we'll keep it simple in order to focus on the basic mechanism."
 				}
 
@@ -2010,13 +2225,13 @@
 			}
 , 			{
 				"box" : 				{
-					"fontsize" : 13.0,
+					"fontsize" : 12.0,
 					"id" : "obj-24",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 539.0, 3687.0, 79.0, 23.0 ],
+					"patching_rect" : [ 539.0, 3687.0, 73.0, 22.0 ],
 					"text" : "o.pack /bndl"
 				}
 
@@ -2062,26 +2277,26 @@
 			}
 , 			{
 				"box" : 				{
-					"fontsize" : 13.0,
+					"fontsize" : 12.0,
 					"id" : "obj-3",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 461.0, 3687.0, 61.0, 23.0 ],
+					"patching_rect" : [ 461.0, 3687.0, 57.0, 22.0 ],
 					"text" : "o.pack /n"
 				}
 
 			}
 , 			{
 				"box" : 				{
-					"fontsize" : 13.0,
+					"fontsize" : 12.0,
 					"id" : "obj-1",
 					"maxclass" : "newobj",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 461.0, 3715.0, 97.0, 23.0 ],
+					"patching_rect" : [ 461.0, 3715.0, 97.0, 22.0 ],
 					"text" : "o.union"
 				}
 
@@ -2146,8 +2361,8 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 573.5, 357.0, 187.0, 253.0 ],
-					"text" : "In this first example, we have two copies of the same subpatcher, each with its own voice number. Internally, we use that voice number to set o.route's argument so that it  will effectively filter out messages intended for it, and ignore those intended for other voices. Note that we can use wildcards in the addresses to direct messages to both voices.\n\nMake sure to open the subpatcher and take a look at the implementation."
+					"patching_rect" : [ 573.5, 357.0, 189.0, 253.0 ],
+					"text" : "In this first example, we have two copies of the same subpatcher, each with its own voice number. Internally, we use that voice number to set [o.route]'s argument so that it  will effectively filter out messages intended for it, and ignore those intended for other voices. Note that we can use wildcards in the addresses to direct messages to both voices.\n\nMake sure to open the subpatcher and take a look at the implementation."
 				}
 
 			}
@@ -2168,6 +2383,27 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-93", 0 ],
+					"source" : [ "obj-103", 2 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-94", 0 ],
+					"source" : [ "obj-103", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-95", 0 ],
+					"source" : [ "obj-103", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-14", 0 ],
 					"source" : [ "obj-11", 0 ]
 				}
@@ -2176,7 +2412,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-118", 0 ],
-					"midpoints" : [ 326.5, 1231.0, 648.0, 1231.0, 648.0, 915.0, 664.5, 915.0 ],
+					"midpoints" : [ 326.5, 1231.0, 833.0, 1231.0, 833.0, 915.0, 664.5, 915.0 ],
 					"source" : [ "obj-115", 0 ]
 				}
 
@@ -2427,7 +2663,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-46", 1 ],
-					"midpoints" : [ 481.0, 3982.5, 520.25, 3982.5, 520.25, 3920.5, 502.5, 3920.5 ],
+					"midpoints" : [ 480.5, 3982.5, 520.25, 3982.5, 520.25, 3920.5, 499.5, 3920.5 ],
 					"source" : [ "obj-48", 1 ]
 				}
 
@@ -2653,37 +2889,6 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-85", 0 ],
-					"order" : 2,
-					"source" : [ "obj-84", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-88", 0 ],
-					"order" : 1,
-					"source" : [ "obj-84", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-90", 0 ],
-					"order" : 0,
-					"source" : [ "obj-84", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-95", 0 ],
-					"source" : [ "obj-85", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
 					"destination" : [ "obj-86", 0 ],
 					"source" : [ "obj-87", 1 ]
 				}
@@ -2702,13 +2907,6 @@
 					"destination" : [ "obj-99", 0 ],
 					"order" : 0,
 					"source" : [ "obj-87", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-94", 0 ],
-					"source" : [ "obj-88", 0 ]
 				}
 
 			}
@@ -2733,13 +2931,6 @@
 					"midpoints" : [ 548.5, 3426.0, 528.0, 3426.0, 528.0, 3046.0, 267.5, 3046.0 ],
 					"order" : 1,
 					"source" : [ "obj-9", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-93", 0 ],
-					"source" : [ "obj-90", 0 ]
 				}
 
 			}
