@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 8.0, 52.0, 972.0, 748.0 ],
+		"rect" : [ 8.0, 53.0, 972.0, 748.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -751,7 +751,8 @@
 					"outlettype" : [ "", "" ],
 					"parameter_enable" : 0,
 					"patching_rect" : [ 493.0, 5048.0, 213.0, 94.0 ],
-					"setminmax" : [ 0.0, 0.003000000026077 ]
+					"setminmax" : [ 0.0, 0.003000000026077 ],
+					"setstyle" : 3
 				}
 
 			}
@@ -764,7 +765,8 @@
 					"outlettype" : [ "", "" ],
 					"parameter_enable" : 0,
 					"patching_rect" : [ 278.0, 5048.0, 213.0, 94.0 ],
-					"setminmax" : [ 0.0, 0.003000000026077 ]
+					"setminmax" : [ 0.0, 0.003000000026077 ],
+					"setstyle" : 5
 				}
 
 			}
@@ -1176,7 +1178,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 377.0, 3046.0, 110.06479481641469, 97.0 ],
-					"text" : "/b/y : 76,\n/a/z : 12,\n/a/y : 104,\n/b/x : 2,\n/b/z : 86,\n/a/x : 71"
+					"text" : "/b/x : 54,\n/a/x : 34,\n/a/y : 67,\n/b/y : 90,\n/b/z : 124,\n/a/z : 43"
 				}
 
 			}
@@ -2099,7 +2101,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 139.0, 749.0, 568.0, 65.0 ],
-					"presentation_linecount" : 4,
 					"text" : "If we wanted to collect more than just one value from the history, we could of course just chain together many of these [o.union] instances to collect as many as we want. However, that would lead to a messy patch, with a hard-coded history length. A cleaner, more dynamic solution might look like this:"
 				}
 
@@ -2360,7 +2361,8 @@
 					"outlettype" : [ "", "" ],
 					"parameter_enable" : 0,
 					"patching_rect" : [ 493.0, 4950.0, 213.0, 94.0 ],
-					"setminmax" : [ 0.0, 0.003000000026077 ]
+					"setminmax" : [ 0.0, 0.003000000026077 ],
+					"setstyle" : 3
 				}
 
 			}
@@ -2373,7 +2375,8 @@
 					"outlettype" : [ "", "" ],
 					"parameter_enable" : 0,
 					"patching_rect" : [ 278.0, 4950.0, 213.0, 94.0 ],
-					"setminmax" : [ 0.0, 0.003000000026077 ]
+					"setminmax" : [ 0.0, 0.003000000026077 ],
+					"setstyle" : 5
 				}
 
 			}
@@ -2421,11 +2424,13 @@
 				"box" : 				{
 					"fontface" : 0,
 					"id" : "obj-205",
+					"linecount" : 3,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 200.0, 4824.0, 275.0, 33.0 ]
+					"patching_rect" : [ 200.0, 4824.0, 275.0, 59.0 ],
+					"text" : "/t/start : 2021-03-17T21:06:32.710075Z,\n/t/end : 2021-03-17T21:06:32.711084Z,\n/t/diff : 0.00100901"
 				}
 
 			}
@@ -2511,11 +2516,13 @@
 				"box" : 				{
 					"fontface" : 0,
 					"id" : "obj-213",
+					"linecount" : 3,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 558.0, 4824.0, 275.0, 33.0 ]
+					"patching_rect" : [ 558.0, 4824.0, 275.0, 59.0 ],
+					"text" : "/t/start : 2021-03-17T21:06:32.709129Z,\n/t/end : 2021-03-17T21:06:32.710042Z,\n/t/diff : 0.000912007"
 				}
 
 			}
@@ -4060,49 +4067,49 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "advance.maxpat",
-				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/patchers/tutorial",
+				"bootpath" : "~/Development/CNMAT/CNMAT/CNMAT-odot/patchers/tutorial",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "filelist.txt",
-				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/patchers/tutorial",
+				"bootpath" : "~/Development/CNMAT/CNMAT/CNMAT-odot/patchers/tutorial",
 				"patcherrelativepath" : ".",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "close_parent.js",
-				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/patchers/tutorial",
+				"bootpath" : "~/Development/CNMAT/CNMAT/CNMAT-odot/patchers/tutorial",
 				"patcherrelativepath" : ".",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.t.banner.maxpat",
-				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/patchers/tutorial",
+				"bootpath" : "~/Development/CNMAT/CNMAT/CNMAT-odot/patchers/tutorial",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.t.objects-covered.maxpat",
-				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/patchers/tutorial",
+				"bootpath" : "~/Development/CNMAT/CNMAT/CNMAT-odot/patchers/tutorial",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.was.maxpat",
-				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/dev",
+				"bootpath" : "~/Development/CNMAT/CNMAT/CNMAT-odot/dev",
 				"patcherrelativepath" : "../../dev",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.righttoleft.maxpat",
-				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/patchers/ordering",
+				"bootpath" : "~/Development/CNMAT/CNMAT/CNMAT-odot/patchers/ordering",
 				"patcherrelativepath" : "../ordering",
 				"type" : "JSON",
 				"implicit" : 1
