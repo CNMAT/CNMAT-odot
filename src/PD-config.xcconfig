@@ -6,4 +6,7 @@
 //  Copyright (c) 2014 edu.berkeley.cnmat. All rights reserved.
 //
 
-SYMROOT=$(PROJECT_DIR)/../pd/cnmat
+DSTROOT = $(SRCROOT)/../pd
+INSTALL_PATH = /
+DEPLOYMENT_POSTPROCESSING = YES
+DEPLOYMENT_LOCATION = YES

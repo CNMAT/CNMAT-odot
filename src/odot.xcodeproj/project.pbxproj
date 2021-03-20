@@ -168,7 +168,6 @@
 				52AA372A19553EA5009A1920 /* PBXTargetDependency */,
 				529318D11FCFF8E000089B00 /* PBXTargetDependency */,
 				52CA342F1971A4AA008C36B9 /* PBXTargetDependency */,
-				52AA37081950DE4E009A1920 /* PBXTargetDependency */,
 			);
 			name = "Build all";
 			productName = "Build all";
@@ -1652,13 +1651,6 @@
 			remoteGlobalIDString = 112AC85719394255003244E9;
 			remoteInfo = o.menu.pd;
 		};
-		52AA37071950DE4E009A1920 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 9B5FD7D0194EB74A00E0369C;
-			remoteInfo = o.listiter;
-		};
 		52AA372919553EA5009A1920 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
@@ -1857,10 +1849,8 @@
 		11F7B533194C48EF0090045B /* o.downcast.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = o.downcast.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
 		11FC8B0A194C417F00635118 /* o.validate.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = o.validate.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
 		21BC034E21674B95001D0CED /* o.bufferfill~.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "o.bufferfill~.mxo"; sourceTree = BUILT_PRODUCTS_DIR; };
-		21BC034F21674B96001D0CED /* o.snapshot~ copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "o.snapshot~ copy-Info.plist"; path = "/Users/rama/Documents/dev-lib/CNMAT-odot/src/o.snapshot~ copy-Info.plist"; sourceTree = "<absolute>"; };
 		21BC035021674C41001D0CED /* o.bufferfill~.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = "o.bufferfill~.c"; path = "o.bufferfill~/o.bufferfill~.c"; sourceTree = "<group>"; };
 		21CA8A19216B3FD8009FDBCF /* o.lookup~.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "o.lookup~.mxo"; sourceTree = BUILT_PRODUCTS_DIR; };
-		21CA8A1A216B3FD9009FDBCF /* o.bufferfill~ copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "o.bufferfill~ copy-Info.plist"; path = "/Users/rama/Documents/dev-lib/CNMAT-odot/src/o.bufferfill~ copy-Info.plist"; sourceTree = "<absolute>"; };
 		21CA8A1B216B40A2009FDBCF /* o.lookup~.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "o.lookup~.cpp"; path = "o.lookup~/o.lookup~.cpp"; sourceTree = "<group>"; };
 		21CA8A1C216B40A2009FDBCF /* o.lookup~.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = "o.lookup~.hpp"; path = "o.lookup~/o.lookup~.hpp"; sourceTree = "<group>"; };
 		5203467B1555BF16001EA532 /* o.flatten.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.flatten.c; path = o.flatten/o.flatten.c; sourceTree = "<group>"; };
@@ -1961,13 +1951,12 @@
 		52CEF5AD163763BD0016EC39 /* libo.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libo.a; path = ../../libo/libo.a; sourceTree = "<group>"; };
 		52CEF5C6163763CF0016EC39 /* libomax.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libomax.a; path = ../../libomax/libomax.a; sourceTree = "<group>"; };
 		52D5C207202DA7E400E74BF9 /* o.timetag.split~.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "o.timetag.split~.mxo"; sourceTree = BUILT_PRODUCTS_DIR; };
-		52D5C208202DA7E500E74BF9 /* o.timetag~ copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "o.timetag~ copy-Info.plist"; path = "/Users/john/Development/CNMAT/CNMAT/CNMAT-odot/src/o.timetag~ copy-Info.plist"; sourceTree = "<absolute>"; };
 		52D5C219202DA7F400E74BF9 /* o.timetag.join~.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "o.timetag.join~.mxo"; sourceTree = BUILT_PRODUCTS_DIR; };
-		52D5C21A202DA7F400E74BF9 /* o.timetag.split~ copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "o.timetag.split~ copy-Info.plist"; path = "/Users/john/Development/CNMAT/CNMAT/CNMAT-odot/src/o.timetag.split~ copy-Info.plist"; sourceTree = "<absolute>"; };
 		52D5C21B202DA87500E74BF9 /* o.timetag.split~.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = "o.timetag.split~.c"; path = "o.timetag.split~/o.timetag.split~.c"; sourceTree = "<group>"; };
 		52D5C21D202DA88600E74BF9 /* o.timetag.join~.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = "o.timetag.join~.c"; path = "o.timetag.join~/o.timetag.join~.c"; sourceTree = "<group>"; };
 		52F0C48517B581CC009FBD24 /* o.O.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.O.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
 		52F0C48617B581FF009FBD24 /* o.O.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.O.c; path = o.O/o.O.c; sourceTree = "<group>"; };
+		52F33C4D2606556900A14DEB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9B3930D3195A286D002EDAE5 /* o.compose.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.compose.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B3930E3195A2898002EDAE5 /* o.display.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.display.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B3930F4195A296C002EDAE5 /* o.compose.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.compose.c; path = o.compose/o.compose.c; sourceTree = "<group>"; };
@@ -2856,12 +2845,9 @@
 				5255254B1504D2CC00A10E5D /* o.when.c */,
 				52C839E1167A5BB8000AA688 /* Other Sources */,
 				089C1671FE841209C02AAC07 /* External Frameworks and Libraries */,
+				52F33C4C2606556800A14DEB /* Build All (Phony) */,
 				19C28FB4FE9D528D11CA2CBB /* Products */,
-				52D5C208202DA7E500E74BF9 /* o.timetag~ copy-Info.plist */,
-				52D5C21A202DA7F400E74BF9 /* o.timetag.split~ copy-Info.plist */,
 				2194B26521124F9E00CACD2D /* Frameworks */,
-				21BC034F21674B96001D0CED /* o.snapshot~ copy-Info.plist */,
-				21CA8A1A216B3FD9009FDBCF /* o.bufferfill~ copy-Info.plist */,
 			);
 			name = cv_jit;
 			sourceTree = "<group>";
@@ -2997,6 +2983,14 @@
 				52C839E7167A5BE2000AA688 /* avl.h */,
 			);
 			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		52F33C4C2606556800A14DEB /* Build All (Phony) */ = {
+			isa = PBXGroup;
+			children = (
+				52F33C4D2606556900A14DEB /* Info.plist */,
+			);
+			path = "Build All (Phony)";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -7469,10 +7463,6 @@
 			target = 112AC85719394255003244E9 /* o.menu.pd */;
 			targetProxy = 52AA3703194CD2C5009A1920 /* PBXContainerItemProxy */;
 		};
-		52AA37081950DE4E009A1920 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			targetProxy = 52AA37071950DE4E009A1920 /* PBXContainerItemProxy */;
-		};
 		52AA372A19553EA5009A1920 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 52183D5E19218CCB00F61786 /* Build all Max */;
@@ -7641,6 +7631,7 @@
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.menu;
+				SKIP_INSTALL = "$(inherited)";
 				WRAPPER_EXTENSION = "";
 			};
 			name = Debug;
@@ -7661,6 +7652,8 @@
 				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEPLOYMENT_LOCATION = "$(inherited)";
+				DEPLOYMENT_POSTPROCESSING = "$(inherited)";
 				DSTROOT = "$(inherited)";
 				EXECUTABLE_EXTENSION = pd_darwin;
 				GCC_C_LANGUAGE_STANDARD = c99;
@@ -7700,6 +7693,7 @@
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.menu;
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
 			};
@@ -7765,6 +7759,7 @@
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.expr.codebox;
+				SKIP_INSTALL = "$(inherited)";
 				WRAPPER_EXTENSION = "";
 			};
 			name = Debug;
@@ -7785,6 +7780,8 @@
 				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEPLOYMENT_LOCATION = "$(inherited)";
+				DEPLOYMENT_POSTPROCESSING = "$(inherited)";
 				DSTROOT = "$(inherited)";
 				EXECUTABLE_EXTENSION = pd_darwin;
 				GCC_C_LANGUAGE_STANDARD = c99;
@@ -7824,6 +7821,7 @@
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.expr.codebox;
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
 			};
@@ -7889,6 +7887,7 @@
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.compose;
+				SKIP_INSTALL = "$(inherited)";
 				WRAPPER_EXTENSION = "";
 			};
 			name = Debug;
@@ -7909,6 +7908,8 @@
 				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEPLOYMENT_LOCATION = "$(inherited)";
+				DEPLOYMENT_POSTPROCESSING = "$(inherited)";
 				DSTROOT = "$(inherited)";
 				EXECUTABLE_EXTENSION = pd_darwin;
 				GCC_C_LANGUAGE_STANDARD = c99;
@@ -7948,6 +7949,7 @@
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.compose;
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
 			};
@@ -8014,6 +8016,7 @@
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.bundle;
+				SKIP_INSTALL = "$(inherited)";
 				WRAPPER_EXTENSION = "";
 			};
 			name = Debug;
@@ -8034,6 +8037,8 @@
 				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEPLOYMENT_LOCATION = "$(inherited)";
+				DEPLOYMENT_POSTPROCESSING = "$(inherited)";
 				DSTROOT = "$(inherited)";
 				EXECUTABLE_EXTENSION = pd_darwin;
 				GCC_C_LANGUAGE_STANDARD = c99;
@@ -8074,6 +8079,7 @@
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.bundle;
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
 			};
@@ -8139,6 +8145,7 @@
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.append;
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
 			};
@@ -8160,6 +8167,8 @@
 				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEPLOYMENT_LOCATION = "$(inherited)";
+				DEPLOYMENT_POSTPROCESSING = "$(inherited)";
 				DSTROOT = "$(inherited)";
 				EXECUTABLE_EXTENSION = pd_darwin;
 				GCC_C_LANGUAGE_STANDARD = c99;
@@ -8199,6 +8208,7 @@
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.append;
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
 			};
@@ -8264,6 +8274,7 @@
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.atomize;
+				SKIP_INSTALL = "$(inherited)";
 				WRAPPER_EXTENSION = "";
 			};
 			name = Debug;
@@ -8284,6 +8295,8 @@
 				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEPLOYMENT_LOCATION = "$(inherited)";
+				DEPLOYMENT_POSTPROCESSING = "$(inherited)";
 				DSTROOT = "$(inherited)";
 				EXECUTABLE_EXTENSION = pd_darwin;
 				GCC_C_LANGUAGE_STANDARD = c99;
@@ -8323,6 +8336,7 @@
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.atomize;
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
 			};
@@ -8388,6 +8402,7 @@
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.change;
+				SKIP_INSTALL = "$(inherited)";
 				WRAPPER_EXTENSION = "";
 			};
 			name = Debug;
@@ -8408,6 +8423,8 @@
 				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEPLOYMENT_LOCATION = "$(inherited)";
+				DEPLOYMENT_POSTPROCESSING = "$(inherited)";
 				DSTROOT = "$(inherited)";
 				EXECUTABLE_EXTENSION = pd_darwin;
 				GCC_C_LANGUAGE_STANDARD = c99;
@@ -8447,6 +8464,7 @@
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.change;
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
 			};
@@ -8512,6 +8530,7 @@
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.collect;
+				SKIP_INSTALL = "$(inherited)";
 				WRAPPER_EXTENSION = "";
 			};
 			name = Debug;
@@ -8532,6 +8551,8 @@
 				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEPLOYMENT_LOCATION = "$(inherited)";
+				DEPLOYMENT_POSTPROCESSING = "$(inherited)";
 				DSTROOT = "$(inherited)";
 				EXECUTABLE_EXTENSION = pd_darwin;
 				GCC_C_LANGUAGE_STANDARD = c99;
@@ -8571,6 +8592,7 @@
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.collect;
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
 			};
@@ -8636,6 +8658,7 @@
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.cond;
+				SKIP_INSTALL = "$(inherited)";
 				WRAPPER_EXTENSION = "";
 			};
 			name = Debug;
@@ -8656,6 +8679,8 @@
 				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEPLOYMENT_LOCATION = "$(inherited)";
+				DEPLOYMENT_POSTPROCESSING = "$(inherited)";
 				DSTROOT = "$(inherited)";
 				EXECUTABLE_EXTENSION = pd_darwin;
 				GCC_C_LANGUAGE_STANDARD = c99;
@@ -8695,6 +8720,7 @@
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.cond;
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
 			};
@@ -8760,6 +8786,7 @@
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.difference;
+				SKIP_INSTALL = "$(inherited)";
 				WRAPPER_EXTENSION = "";
 			};
 			name = Debug;
@@ -8780,6 +8807,8 @@
 				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEPLOYMENT_LOCATION = "$(inherited)";
+				DEPLOYMENT_POSTPROCESSING = "$(inherited)";
 				DSTROOT = "$(inherited)";
 				EXECUTABLE_EXTENSION = pd_darwin;
 				GCC_C_LANGUAGE_STANDARD = c99;
@@ -8819,6 +8848,7 @@
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.difference;
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
 			};
@@ -8884,6 +8914,7 @@
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.explode;
+				SKIP_INSTALL = "$(inherited)";
 				WRAPPER_EXTENSION = "";
 			};
 			name = Debug;
@@ -8904,6 +8935,8 @@
 				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEPLOYMENT_LOCATION = "$(inherited)";
+				DEPLOYMENT_POSTPROCESSING = "$(inherited)";
 				DSTROOT = "$(inherited)";
 				EXECUTABLE_EXTENSION = pd_darwin;
 				GCC_C_LANGUAGE_STANDARD = c99;
@@ -8943,6 +8976,7 @@
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.explode;
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
 			};
@@ -9008,6 +9042,7 @@
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.expr;
+				SKIP_INSTALL = "$(inherited)";
 				WRAPPER_EXTENSION = "";
 			};
 			name = Debug;
@@ -9028,6 +9063,8 @@
 				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEPLOYMENT_LOCATION = "$(inherited)";
+				DEPLOYMENT_POSTPROCESSING = "$(inherited)";
 				DSTROOT = "$(inherited)";
 				EXECUTABLE_EXTENSION = pd_darwin;
 				GCC_C_LANGUAGE_STANDARD = c99;
@@ -9067,6 +9104,7 @@
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.expr;
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
 			};
@@ -9132,6 +9170,7 @@
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.flatten;
+				SKIP_INSTALL = "$(inherited)";
 				WRAPPER_EXTENSION = "";
 			};
 			name = Debug;
@@ -9152,6 +9191,8 @@
 				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEPLOYMENT_LOCATION = "$(inherited)";
+				DEPLOYMENT_POSTPROCESSING = "$(inherited)";
 				DSTROOT = "$(inherited)";
 				EXECUTABLE_EXTENSION = pd_darwin;
 				GCC_C_LANGUAGE_STANDARD = c99;
@@ -9191,6 +9232,7 @@
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.flatten;
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
 			};
@@ -9256,6 +9298,7 @@
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.if;
+				SKIP_INSTALL = "$(inherited)";
 				WRAPPER_EXTENSION = "";
 			};
 			name = Debug;
@@ -9276,6 +9319,8 @@
 				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEPLOYMENT_LOCATION = "$(inherited)";
+				DEPLOYMENT_POSTPROCESSING = "$(inherited)";
 				DSTROOT = "$(inherited)";
 				EXECUTABLE_EXTENSION = pd_darwin;
 				GCC_C_LANGUAGE_STANDARD = c99;
@@ -9315,6 +9360,7 @@
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.if;
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
 			};
@@ -9380,6 +9426,7 @@
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.intersection;
+				SKIP_INSTALL = "$(inherited)";
 				WRAPPER_EXTENSION = "";
 			};
 			name = Debug;
@@ -9400,6 +9447,8 @@
 				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEPLOYMENT_LOCATION = "$(inherited)";
+				DEPLOYMENT_POSTPROCESSING = "$(inherited)";
 				DSTROOT = "$(inherited)";
 				EXECUTABLE_EXTENSION = pd_darwin;
 				GCC_C_LANGUAGE_STANDARD = c99;
@@ -9439,6 +9488,7 @@
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.intersection;
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
 			};
@@ -9504,6 +9554,7 @@
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.messageiterate;
+				SKIP_INSTALL = "$(inherited)";
 				WRAPPER_EXTENSION = "";
 			};
 			name = Debug;
@@ -9524,6 +9575,8 @@
 				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEPLOYMENT_LOCATION = "$(inherited)";
+				DEPLOYMENT_POSTPROCESSING = "$(inherited)";
 				DSTROOT = "$(inherited)";
 				EXECUTABLE_EXTENSION = pd_darwin;
 				GCC_C_LANGUAGE_STANDARD = c99;
@@ -9563,6 +9616,7 @@
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.messageiterate;
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
 			};
@@ -9628,6 +9682,7 @@
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.mappatch;
+				SKIP_INSTALL = "$(inherited)";
 				WRAPPER_EXTENSION = "";
 			};
 			name = Debug;
@@ -9648,6 +9703,8 @@
 				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEPLOYMENT_LOCATION = "$(inherited)";
+				DEPLOYMENT_POSTPROCESSING = "$(inherited)";
 				DSTROOT = "$(inherited)";
 				EXECUTABLE_EXTENSION = pd_darwin;
 				GCC_C_LANGUAGE_STANDARD = c99;
@@ -9687,6 +9744,7 @@
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.mappatch;
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
 			};
@@ -9752,6 +9810,7 @@
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.message;
+				SKIP_INSTALL = "$(inherited)";
 				WRAPPER_EXTENSION = "";
 			};
 			name = Debug;
@@ -9772,6 +9831,8 @@
 				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEPLOYMENT_LOCATION = "$(inherited)";
+				DEPLOYMENT_POSTPROCESSING = "$(inherited)";
 				DSTROOT = "$(inherited)";
 				EXECUTABLE_EXTENSION = pd_darwin;
 				GCC_C_LANGUAGE_STANDARD = c99;
@@ -9811,6 +9872,7 @@
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.message;
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
 			};
@@ -9876,6 +9938,7 @@
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.pack;
+				SKIP_INSTALL = "$(inherited)";
 				WRAPPER_EXTENSION = "";
 			};
 			name = Debug;
@@ -9896,6 +9959,8 @@
 				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEPLOYMENT_LOCATION = "$(inherited)";
+				DEPLOYMENT_POSTPROCESSING = "$(inherited)";
 				DSTROOT = "$(inherited)";
 				EXECUTABLE_EXTENSION = pd_darwin;
 				GCC_C_LANGUAGE_STANDARD = c99;
@@ -9935,6 +10000,7 @@
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.pack;
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
 			};
@@ -10000,6 +10066,7 @@
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.pak;
+				SKIP_INSTALL = "$(inherited)";
 				WRAPPER_EXTENSION = "";
 			};
 			name = Debug;
@@ -10020,6 +10087,8 @@
 				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEPLOYMENT_LOCATION = "$(inherited)";
+				DEPLOYMENT_POSTPROCESSING = "$(inherited)";
 				DSTROOT = "$(inherited)";
 				EXECUTABLE_EXTENSION = pd_darwin;
 				GCC_C_LANGUAGE_STANDARD = c99;
@@ -10059,6 +10128,7 @@
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.pak;
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
 			};
@@ -10124,6 +10194,7 @@
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.prepend;
+				SKIP_INSTALL = "$(inherited)";
 				WRAPPER_EXTENSION = "";
 			};
 			name = Debug;
@@ -10144,6 +10215,8 @@
 				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEPLOYMENT_LOCATION = "$(inherited)";
+				DEPLOYMENT_POSTPROCESSING = "$(inherited)";
 				DSTROOT = "$(inherited)";
 				EXECUTABLE_EXTENSION = pd_darwin;
 				GCC_C_LANGUAGE_STANDARD = c99;
@@ -10183,6 +10256,7 @@
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.prepend;
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
 			};
@@ -10248,6 +10322,7 @@
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.route;
+				SKIP_INSTALL = "$(inherited)";
 				WRAPPER_EXTENSION = "";
 			};
 			name = Debug;
@@ -10268,6 +10343,8 @@
 				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEPLOYMENT_LOCATION = "$(inherited)";
+				DEPLOYMENT_POSTPROCESSING = "$(inherited)";
 				DSTROOT = "$(inherited)";
 				EXECUTABLE_EXTENSION = pd_darwin;
 				GCC_C_LANGUAGE_STANDARD = c99;
@@ -10307,6 +10384,7 @@
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.route;
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
 			};
@@ -10372,6 +10450,7 @@
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.schedule;
+				SKIP_INSTALL = "$(inherited)";
 				WRAPPER_EXTENSION = "";
 			};
 			name = Debug;
@@ -10392,6 +10471,8 @@
 				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEPLOYMENT_LOCATION = "$(inherited)";
+				DEPLOYMENT_POSTPROCESSING = "$(inherited)";
 				DSTROOT = "$(inherited)";
 				EXECUTABLE_EXTENSION = pd_darwin;
 				GCC_C_LANGUAGE_STANDARD = c99;
@@ -10431,6 +10512,7 @@
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.schedule;
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
 			};
@@ -10496,6 +10578,7 @@
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.select;
+				SKIP_INSTALL = "$(inherited)";
 				WRAPPER_EXTENSION = "";
 			};
 			name = Debug;
@@ -10516,6 +10599,8 @@
 				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEPLOYMENT_LOCATION = "$(inherited)";
+				DEPLOYMENT_POSTPROCESSING = "$(inherited)";
 				DSTROOT = "$(inherited)";
 				EXECUTABLE_EXTENSION = pd_darwin;
 				GCC_C_LANGUAGE_STANDARD = c99;
@@ -10555,6 +10640,7 @@
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.select;
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
 			};
@@ -10620,6 +10706,7 @@
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.table;
+				SKIP_INSTALL = "$(inherited)";
 				WRAPPER_EXTENSION = "";
 			};
 			name = Debug;
@@ -10640,6 +10727,8 @@
 				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEPLOYMENT_LOCATION = "$(inherited)";
+				DEPLOYMENT_POSTPROCESSING = "$(inherited)";
 				DSTROOT = "$(inherited)";
 				EXECUTABLE_EXTENSION = pd_darwin;
 				GCC_C_LANGUAGE_STANDARD = c99;
@@ -10679,6 +10768,7 @@
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.table;
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
 			};
@@ -10744,6 +10834,7 @@
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.timetag;
+				SKIP_INSTALL = "$(inherited)";
 				WRAPPER_EXTENSION = "";
 			};
 			name = Debug;
@@ -10764,6 +10855,8 @@
 				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEPLOYMENT_LOCATION = "$(inherited)";
+				DEPLOYMENT_POSTPROCESSING = "$(inherited)";
 				DSTROOT = "$(inherited)";
 				EXECUTABLE_EXTENSION = pd_darwin;
 				GCC_C_LANGUAGE_STANDARD = c99;
@@ -10803,6 +10896,7 @@
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.timetag;
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
 			};
@@ -10868,6 +10962,7 @@
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.union;
+				SKIP_INSTALL = "$(inherited)";
 				WRAPPER_EXTENSION = "";
 			};
 			name = Debug;
@@ -10888,6 +10983,8 @@
 				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEPLOYMENT_LOCATION = "$(inherited)";
+				DEPLOYMENT_POSTPROCESSING = "$(inherited)";
 				DSTROOT = "$(inherited)";
 				EXECUTABLE_EXTENSION = pd_darwin;
 				GCC_C_LANGUAGE_STANDARD = c99;
@@ -10927,6 +11024,7 @@
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.union;
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
 			};
@@ -10992,6 +11090,7 @@
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.unless;
+				SKIP_INSTALL = "$(inherited)";
 				WRAPPER_EXTENSION = "";
 			};
 			name = Debug;
@@ -11012,6 +11111,8 @@
 				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEPLOYMENT_LOCATION = "$(inherited)";
+				DEPLOYMENT_POSTPROCESSING = "$(inherited)";
 				DSTROOT = "$(inherited)";
 				EXECUTABLE_EXTENSION = pd_darwin;
 				GCC_C_LANGUAGE_STANDARD = c99;
@@ -11051,6 +11152,7 @@
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.unless;
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
 			};
@@ -11116,6 +11218,7 @@
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.var;
+				SKIP_INSTALL = "$(inherited)";
 				WRAPPER_EXTENSION = "";
 			};
 			name = Debug;
@@ -11136,6 +11239,8 @@
 				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEPLOYMENT_LOCATION = "$(inherited)";
+				DEPLOYMENT_POSTPROCESSING = "$(inherited)";
 				DSTROOT = "$(inherited)";
 				EXECUTABLE_EXTENSION = pd_darwin;
 				GCC_C_LANGUAGE_STANDARD = c99;
@@ -11175,6 +11280,7 @@
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.var;
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
 			};
@@ -11240,6 +11346,7 @@
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.when;
+				SKIP_INSTALL = "$(inherited)";
 				WRAPPER_EXTENSION = "";
 			};
 			name = Debug;
@@ -11260,6 +11367,8 @@
 				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEPLOYMENT_LOCATION = "$(inherited)";
+				DEPLOYMENT_POSTPROCESSING = "$(inherited)";
 				DSTROOT = "$(inherited)";
 				EXECUTABLE_EXTENSION = pd_darwin;
 				GCC_C_LANGUAGE_STANDARD = c99;
@@ -11299,6 +11408,7 @@
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.when;
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
 			};
@@ -11342,6 +11452,7 @@
 				PRODUCT_NAME = o.expr.codebox.set;
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
 				WARNING_CFLAGS = "$(inherited)";
@@ -11360,6 +11471,8 @@
 				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
 				CONFIGURATION_TEMP_DIR = "$(inherited)";
 				COPY_PHASE_STRIP = YES;
+				DEPLOYMENT_LOCATION = "$(inherited)";
+				DEPLOYMENT_POSTPROCESSING = "$(inherited)";
 				DSTROOT = "$(inherited)";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_ALTIVEC_EXTENSIONS = YES;
@@ -11387,6 +11500,7 @@
 				PRODUCT_NAME = o.expr.codebox.set;
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
 				WARNING_CFLAGS = "$(inherited)";
@@ -11435,6 +11549,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
 				WARNING_CFLAGS = "$(inherited)";
@@ -11455,6 +11570,8 @@
 				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
 				CONFIGURATION_TEMP_DIR = "$(inherited)";
 				COPY_PHASE_STRIP = YES;
+				DEPLOYMENT_LOCATION = "$(inherited)";
+				DEPLOYMENT_POSTPROCESSING = "$(inherited)";
 				DSTROOT = "$(inherited)";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_ALTIVEC_EXTENSIONS = YES;
@@ -11487,6 +11604,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
 				WARNING_CFLAGS = "$(inherited)";
@@ -11556,6 +11674,7 @@
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.slip.decode;
+				SKIP_INSTALL = "$(inherited)";
 				WRAPPER_EXTENSION = "";
 			};
 			name = Debug;
@@ -11576,6 +11695,8 @@
 				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEPLOYMENT_LOCATION = "$(inherited)";
+				DEPLOYMENT_POSTPROCESSING = "$(inherited)";
 				DSTROOT = "$(inherited)";
 				EXECUTABLE_EXTENSION = pd_darwin;
 				GCC_C_LANGUAGE_STANDARD = c99;
@@ -11616,6 +11737,7 @@
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.slip.decode;
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
 			};
@@ -11682,6 +11804,7 @@
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.slip.encode;
+				SKIP_INSTALL = "$(inherited)";
 				WRAPPER_EXTENSION = "";
 			};
 			name = Debug;
@@ -11702,6 +11825,8 @@
 				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEPLOYMENT_LOCATION = "$(inherited)";
+				DEPLOYMENT_POSTPROCESSING = "$(inherited)";
 				DSTROOT = "$(inherited)";
 				EXECUTABLE_EXTENSION = pd_darwin;
 				GCC_C_LANGUAGE_STANDARD = c99;
@@ -11742,6 +11867,7 @@
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.slip.encode;
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
 			};
@@ -11807,6 +11933,7 @@
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.context;
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
 			};
@@ -11828,6 +11955,8 @@
 				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEPLOYMENT_LOCATION = "$(inherited)";
+				DEPLOYMENT_POSTPROCESSING = "$(inherited)";
 				DSTROOT = "$(inherited)";
 				EXECUTABLE_EXTENSION = pd_darwin;
 				GCC_C_LANGUAGE_STANDARD = c99;
@@ -11867,6 +11996,7 @@
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.context;
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
 			};
@@ -11912,6 +12042,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
 				WARNING_CFLAGS = "$(inherited)";
@@ -11932,6 +12063,8 @@
 				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
 				CONFIGURATION_TEMP_DIR = "$(inherited)";
 				COPY_PHASE_STRIP = YES;
+				DEPLOYMENT_LOCATION = "$(inherited)";
+				DEPLOYMENT_POSTPROCESSING = "$(inherited)";
 				DSTROOT = "$(inherited)";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_ALTIVEC_EXTENSIONS = YES;
@@ -11964,6 +12097,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
 				WARNING_CFLAGS = "$(inherited)";
@@ -12032,6 +12166,7 @@
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.display;
+				SKIP_INSTALL = "$(inherited)";
 				WRAPPER_EXTENSION = "";
 			};
 			name = Debug;
@@ -12052,6 +12187,8 @@
 				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEPLOYMENT_LOCATION = "$(inherited)";
+				DEPLOYMENT_POSTPROCESSING = "$(inherited)";
 				DSTROOT = "$(inherited)";
 				EXECUTABLE_EXTENSION = pd_darwin;
 				GCC_C_LANGUAGE_STANDARD = c99;
@@ -12091,6 +12228,7 @@
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.display;
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
 			};
@@ -12156,6 +12294,7 @@
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.downcast;
+				SKIP_INSTALL = "$(inherited)";
 				WRAPPER_EXTENSION = "";
 			};
 			name = Debug;
@@ -12176,6 +12315,8 @@
 				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEPLOYMENT_LOCATION = "$(inherited)";
+				DEPLOYMENT_POSTPROCESSING = "$(inherited)";
 				DSTROOT = "$(inherited)";
 				EXECUTABLE_EXTENSION = pd_darwin;
 				GCC_C_LANGUAGE_STANDARD = c99;
@@ -12215,6 +12356,7 @@
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.downcast;
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
 			};
@@ -12280,6 +12422,7 @@
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.validate;
+				SKIP_INSTALL = "$(inherited)";
 				WRAPPER_EXTENSION = "";
 			};
 			name = Debug;
@@ -12300,6 +12443,8 @@
 				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEPLOYMENT_LOCATION = "$(inherited)";
+				DEPLOYMENT_POSTPROCESSING = "$(inherited)";
 				DSTROOT = "$(inherited)";
 				EXECUTABLE_EXTENSION = pd_darwin;
 				GCC_C_LANGUAGE_STANDARD = c99;
@@ -12339,6 +12484,7 @@
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.validate;
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
 			};
@@ -12382,6 +12528,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
 				WARNING_CFLAGS = "$(inherited)";
@@ -12400,6 +12547,8 @@
 				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
 				CONFIGURATION_TEMP_DIR = "$(inherited)";
 				COPY_PHASE_STRIP = YES;
+				DEPLOYMENT_LOCATION = "$(inherited)";
+				DEPLOYMENT_POSTPROCESSING = "$(inherited)";
 				DSTROOT = "$(inherited)";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_ALTIVEC_EXTENSIONS = YES;
@@ -12427,6 +12576,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
 				WARNING_CFLAGS = "$(inherited)";
@@ -12475,6 +12625,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
 				WARNING_CFLAGS = "$(inherited)";
@@ -12495,6 +12646,8 @@
 				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
 				CONFIGURATION_TEMP_DIR = "$(inherited)";
 				COPY_PHASE_STRIP = YES;
+				DEPLOYMENT_LOCATION = "$(inherited)";
+				DEPLOYMENT_POSTPROCESSING = "$(inherited)";
 				DSTROOT = "$(inherited)";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_ALTIVEC_EXTENSIONS = YES;
@@ -12522,6 +12675,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
 				WARNING_CFLAGS = "$(inherited)";
@@ -12598,7 +12752,7 @@
 				HEADER_SEARCH_PATHS_QUOTED_FOR_PROJECT_5 = "\"$(SRCROOT)/../../max-sdk/source/c74support/msp-includes\"";
 				INFOPLIST_FILE = "$(PROJECT_DIR)/Info.plist";
 				INSTALL_OWNER = "$(USER)";
-				INSTALL_PATH = "$(PROJECT_DIR)/../externals";
+				INSTALL_PATH = "";
 				LIBRARY_SEARCH_PATHS = (
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_PROJECT_1)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_PROJECT_2)",
@@ -12620,7 +12774,7 @@
 				SHARED_PRECOMPS_DIR = "$(PROJECT_TEMP_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
 				STRIP_STYLE = all;
-				SYMROOT = "";
+				SYMROOT = "$(inherited)";
 				SYSTEM_HEADER_SEARCH_PATHS = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/CarbonCore.framework/Versions/A/Headers;
 				WARNING_CFLAGS = (
 					"-Wmost",
@@ -12703,7 +12857,7 @@
 				HEADER_SEARCH_PATHS_QUOTED_FOR_PROJECT_5 = "\"$(SRCROOT)/../../max-sdk/source/c74support/msp-includes\"";
 				INFOPLIST_FILE = "$(PROJECT_DIR)/Info.plist";
 				INSTALL_OWNER = "$(USER)";
-				INSTALL_PATH = "$(PROJECT_DIR)/../externals";
+				INSTALL_PATH = "";
 				LIBRARY_SEARCH_PATHS = (
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_PROJECT_1)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_PROJECT_2)",
@@ -12725,7 +12879,7 @@
 				SHARED_PRECOMPS_DIR = "$(PROJECT_TEMP_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
 				STRIP_STYLE = all;
-				SYMROOT = "";
+				SYMROOT = "$(inherited)";
 				SYSTEM_HEADER_SEARCH_PATHS = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/CarbonCore.framework/Versions/A/Headers;
 				WARNING_CFLAGS = (
 					"-Wmost",
@@ -12774,6 +12928,7 @@
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
 				WARNING_CFLAGS = "$(inherited)";
@@ -12792,6 +12947,8 @@
 				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
 				CONFIGURATION_TEMP_DIR = "$(inherited)";
 				COPY_PHASE_STRIP = YES;
+				DEPLOYMENT_LOCATION = "$(inherited)";
+				DEPLOYMENT_POSTPROCESSING = "$(inherited)";
 				DSTROOT = "$(inherited)";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_ALTIVEC_EXTENSIONS = YES;
@@ -12820,6 +12977,7 @@
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
 				WARNING_CFLAGS = "$(inherited)";
@@ -12888,6 +13046,7 @@
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.print;
+				SKIP_INSTALL = "$(inherited)";
 				WRAPPER_EXTENSION = "";
 			};
 			name = Debug;
@@ -12908,6 +13067,8 @@
 				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEPLOYMENT_LOCATION = "$(inherited)";
+				DEPLOYMENT_POSTPROCESSING = "$(inherited)";
 				DSTROOT = "$(inherited)";
 				EXECUTABLE_EXTENSION = pd_darwin;
 				GCC_C_LANGUAGE_STANDARD = c99;
@@ -12947,6 +13108,7 @@
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.print;
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
 			};
@@ -13012,6 +13174,7 @@
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.printbytes;
+				SKIP_INSTALL = "$(inherited)";
 				WRAPPER_EXTENSION = "";
 			};
 			name = Debug;
@@ -13032,6 +13195,8 @@
 				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEPLOYMENT_LOCATION = "$(inherited)";
+				DEPLOYMENT_POSTPROCESSING = "$(inherited)";
 				DSTROOT = "$(inherited)";
 				EXECUTABLE_EXTENSION = pd_darwin;
 				GCC_C_LANGUAGE_STANDARD = c99;
@@ -13071,6 +13236,7 @@
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libopd.a\"";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = o.printbytes;
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
 			};
@@ -13114,6 +13280,7 @@
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
 				WARNING_CFLAGS = "$(inherited)";
@@ -13132,6 +13299,8 @@
 				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
 				CONFIGURATION_TEMP_DIR = "$(inherited)";
 				COPY_PHASE_STRIP = YES;
+				DEPLOYMENT_LOCATION = "$(inherited)";
+				DEPLOYMENT_POSTPROCESSING = "$(inherited)";
 				DSTROOT = "$(inherited)";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_ALTIVEC_EXTENSIONS = YES;
@@ -13160,6 +13329,7 @@
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
 				WARNING_CFLAGS = "$(inherited)";
@@ -13185,13 +13355,14 @@
 				INFOPLIST_OTHER_PREPROCESSOR_FLAGS = "";
 				INFOPLIST_PREFIX_HEADER = "";
 				INFOPLIST_PREPROCESSOR_DEFINITIONS = "";
-				INSTALL_PATH = "$(inherited)";
+				INSTALL_PATH = "$(SRCROOT)/../externals";
 				OBJROOT = build;
 				PRIVATE_HEADERS_FOLDER_PATH = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
 				PRODUCT_NAME = "Build all copy";
 				PUBLIC_HEADERS_FOLDER_PATH = "";
 				SDKROOT = macosx;
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
 			};
@@ -13215,13 +13386,14 @@
 				INFOPLIST_OTHER_PREPROCESSOR_FLAGS = "";
 				INFOPLIST_PREFIX_HEADER = "";
 				INFOPLIST_PREPROCESSOR_DEFINITIONS = "";
-				INSTALL_PATH = "$(inherited)";
+				INSTALL_PATH = "$(SRCROOT)/../externals";
 				OBJROOT = build;
 				PRIVATE_HEADERS_FOLDER_PATH = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
 				PRODUCT_NAME = "Build all copy";
 				PUBLIC_HEADERS_FOLDER_PATH = "";
 				SDKROOT = macosx;
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
 				ZERO_LINK = NO;
@@ -13244,12 +13416,13 @@
 				INFOPLIST_OTHER_PREPROCESSOR_FLAGS = "";
 				INFOPLIST_PREFIX_HEADER = "";
 				INFOPLIST_PREPROCESSOR_DEFINITIONS = "";
-				INSTALL_PATH = "$(inherited)";
+				INSTALL_PATH = "$(SRCROOT)/../pd";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
 				PRODUCT_NAME = "Build all copy";
 				PUBLIC_HEADERS_FOLDER_PATH = "";
 				SDKROOT = macosx;
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
 			};
@@ -13272,12 +13445,13 @@
 				INFOPLIST_OTHER_PREPROCESSOR_FLAGS = "";
 				INFOPLIST_PREFIX_HEADER = "";
 				INFOPLIST_PREPROCESSOR_DEFINITIONS = "";
-				INSTALL_PATH = "$(inherited)";
+				INSTALL_PATH = "$(SRCROOT)/../pd";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
 				PRODUCT_NAME = "Build all copy";
 				PUBLIC_HEADERS_FOLDER_PATH = "";
 				SDKROOT = macosx;
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
 				ZERO_LINK = NO;
@@ -13322,6 +13496,7 @@
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
 				WARNING_CFLAGS = "$(inherited)";
@@ -13340,6 +13515,8 @@
 				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
 				CONFIGURATION_TEMP_DIR = "$(inherited)";
 				COPY_PHASE_STRIP = YES;
+				DEPLOYMENT_LOCATION = "$(inherited)";
+				DEPLOYMENT_POSTPROCESSING = "$(inherited)";
 				DSTROOT = "$(inherited)";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_ALTIVEC_EXTENSIONS = YES;
@@ -13367,6 +13544,7 @@
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
 				WARNING_CFLAGS = "$(inherited)";
@@ -13478,6 +13656,7 @@
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
 				WARNING_CFLAGS = "$(inherited)";
@@ -13496,6 +13675,8 @@
 				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
 				CONFIGURATION_TEMP_DIR = "$(inherited)";
 				COPY_PHASE_STRIP = YES;
+				DEPLOYMENT_LOCATION = "$(inherited)";
+				DEPLOYMENT_POSTPROCESSING = "$(inherited)";
 				DSTROOT = "$(inherited)";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_ALTIVEC_EXTENSIONS = YES;
@@ -13524,6 +13705,7 @@
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
 				WARNING_CFLAGS = "$(inherited)";
@@ -13571,6 +13753,7 @@
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
 				WARNING_CFLAGS = "$(inherited)";
@@ -13589,6 +13772,8 @@
 				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
 				CONFIGURATION_TEMP_DIR = "$(inherited)";
 				COPY_PHASE_STRIP = YES;
+				DEPLOYMENT_LOCATION = "$(inherited)";
+				DEPLOYMENT_POSTPROCESSING = "$(inherited)";
 				DSTROOT = "$(inherited)";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_ALTIVEC_EXTENSIONS = YES;
@@ -13617,6 +13802,7 @@
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
 				WARNING_CFLAGS = "$(inherited)";
@@ -13664,6 +13850,7 @@
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
 				WARNING_CFLAGS = "$(inherited)";
@@ -13682,6 +13869,8 @@
 				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
 				CONFIGURATION_TEMP_DIR = "$(inherited)";
 				COPY_PHASE_STRIP = YES;
+				DEPLOYMENT_LOCATION = "$(inherited)";
+				DEPLOYMENT_POSTPROCESSING = "$(inherited)";
 				DSTROOT = "$(inherited)";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_ALTIVEC_EXTENSIONS = YES;
@@ -13710,6 +13899,7 @@
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
 				WARNING_CFLAGS = "$(inherited)";
@@ -13756,6 +13946,7 @@
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
 				WARNING_CFLAGS = "$(inherited)";
@@ -13774,6 +13965,8 @@
 				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
 				CONFIGURATION_TEMP_DIR = "$(inherited)";
 				COPY_PHASE_STRIP = YES;
+				DEPLOYMENT_LOCATION = "$(inherited)";
+				DEPLOYMENT_POSTPROCESSING = "$(inherited)";
 				DSTROOT = "$(inherited)";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_ALTIVEC_EXTENSIONS = YES;
@@ -13801,6 +13994,7 @@
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
 				WARNING_CFLAGS = "$(inherited)";
@@ -13847,6 +14041,7 @@
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
 				WARNING_CFLAGS = "$(inherited)";
@@ -13865,6 +14060,8 @@
 				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
 				CONFIGURATION_TEMP_DIR = "$(inherited)";
 				COPY_PHASE_STRIP = YES;
+				DEPLOYMENT_LOCATION = "$(inherited)";
+				DEPLOYMENT_POSTPROCESSING = "$(inherited)";
 				DSTROOT = "$(inherited)";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_ALTIVEC_EXTENSIONS = YES;
@@ -13892,6 +14089,7 @@
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
 				WARNING_CFLAGS = "$(inherited)";
@@ -13938,6 +14136,7 @@
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
 				WARNING_CFLAGS = "$(inherited)";
@@ -13956,6 +14155,8 @@
 				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
 				CONFIGURATION_TEMP_DIR = "$(inherited)";
 				COPY_PHASE_STRIP = YES;
+				DEPLOYMENT_LOCATION = "$(inherited)";
+				DEPLOYMENT_POSTPROCESSING = "$(inherited)";
 				DSTROOT = "$(inherited)";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_ALTIVEC_EXTENSIONS = YES;
@@ -13983,6 +14184,7 @@
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
 				WARNING_CFLAGS = "$(inherited)";
@@ -14029,6 +14231,7 @@
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
 				WARNING_CFLAGS = "$(inherited)";
@@ -14047,6 +14250,8 @@
 				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
 				CONFIGURATION_TEMP_DIR = "$(inherited)";
 				COPY_PHASE_STRIP = YES;
+				DEPLOYMENT_LOCATION = "$(inherited)";
+				DEPLOYMENT_POSTPROCESSING = "$(inherited)";
 				DSTROOT = "$(inherited)";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_ALTIVEC_EXTENSIONS = YES;
@@ -14074,6 +14279,7 @@
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
 				WARNING_CFLAGS = "$(inherited)";
@@ -14120,6 +14326,7 @@
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
 				WARNING_CFLAGS = "$(inherited)";
@@ -14138,6 +14345,8 @@
 				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
 				CONFIGURATION_TEMP_DIR = "$(inherited)";
 				COPY_PHASE_STRIP = YES;
+				DEPLOYMENT_LOCATION = "$(inherited)";
+				DEPLOYMENT_POSTPROCESSING = "$(inherited)";
 				DSTROOT = "$(inherited)";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_ALTIVEC_EXTENSIONS = YES;
@@ -14165,6 +14374,7 @@
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
 				WARNING_CFLAGS = "$(inherited)";
@@ -14211,6 +14421,7 @@
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
 				WARNING_CFLAGS = "$(inherited)";
@@ -14229,6 +14440,8 @@
 				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
 				CONFIGURATION_TEMP_DIR = "$(inherited)";
 				COPY_PHASE_STRIP = YES;
+				DEPLOYMENT_LOCATION = "$(inherited)";
+				DEPLOYMENT_POSTPROCESSING = "$(inherited)";
 				DSTROOT = "$(inherited)";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_ALTIVEC_EXTENSIONS = YES;
@@ -14256,6 +14469,7 @@
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
 				WARNING_CFLAGS = "$(inherited)";
@@ -14302,6 +14516,7 @@
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
 				WARNING_CFLAGS = "$(inherited)";
@@ -14320,6 +14535,8 @@
 				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
 				CONFIGURATION_TEMP_DIR = "$(inherited)";
 				COPY_PHASE_STRIP = YES;
+				DEPLOYMENT_LOCATION = "$(inherited)";
+				DEPLOYMENT_POSTPROCESSING = "$(inherited)";
 				DSTROOT = "$(inherited)";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_ALTIVEC_EXTENSIONS = YES;
@@ -14347,6 +14564,7 @@
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
 				WARNING_CFLAGS = "$(inherited)";
@@ -14393,6 +14611,7 @@
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
 				WARNING_CFLAGS = "$(inherited)";
@@ -14411,6 +14630,8 @@
 				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
 				CONFIGURATION_TEMP_DIR = "$(inherited)";
 				COPY_PHASE_STRIP = YES;
+				DEPLOYMENT_LOCATION = "$(inherited)";
+				DEPLOYMENT_POSTPROCESSING = "$(inherited)";
 				DSTROOT = "$(inherited)";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_ALTIVEC_EXTENSIONS = YES;
@@ -14438,6 +14659,7 @@
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
 				WARNING_CFLAGS = "$(inherited)";
@@ -14484,6 +14706,7 @@
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
 				WARNING_CFLAGS = "$(inherited)";
@@ -14502,6 +14725,8 @@
 				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
 				CONFIGURATION_TEMP_DIR = "$(inherited)";
 				COPY_PHASE_STRIP = YES;
+				DEPLOYMENT_LOCATION = "$(inherited)";
+				DEPLOYMENT_POSTPROCESSING = "$(inherited)";
 				DSTROOT = "$(inherited)";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_ALTIVEC_EXTENSIONS = YES;
@@ -14529,6 +14754,7 @@
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
 				WARNING_CFLAGS = "$(inherited)";
@@ -14575,6 +14801,7 @@
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
 				WARNING_CFLAGS = "$(inherited)";
@@ -14593,6 +14820,8 @@
 				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
 				CONFIGURATION_TEMP_DIR = "$(inherited)";
 				COPY_PHASE_STRIP = YES;
+				DEPLOYMENT_LOCATION = "$(inherited)";
+				DEPLOYMENT_POSTPROCESSING = "$(inherited)";
 				DSTROOT = "$(inherited)";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_ALTIVEC_EXTENSIONS = YES;
@@ -14620,6 +14849,7 @@
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
 				WARNING_CFLAGS = "$(inherited)";
@@ -14666,6 +14896,7 @@
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
 				WARNING_CFLAGS = "$(inherited)";
@@ -14684,6 +14915,8 @@
 				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
 				CONFIGURATION_TEMP_DIR = "$(inherited)";
 				COPY_PHASE_STRIP = YES;
+				DEPLOYMENT_LOCATION = "$(inherited)";
+				DEPLOYMENT_POSTPROCESSING = "$(inherited)";
 				DSTROOT = "$(inherited)";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_ALTIVEC_EXTENSIONS = YES;
@@ -14711,6 +14944,7 @@
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
 				WARNING_CFLAGS = "$(inherited)";
@@ -14757,6 +14991,7 @@
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
 				WARNING_CFLAGS = "$(inherited)";
@@ -14775,6 +15010,8 @@
 				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
 				CONFIGURATION_TEMP_DIR = "$(inherited)";
 				COPY_PHASE_STRIP = YES;
+				DEPLOYMENT_LOCATION = "$(inherited)";
+				DEPLOYMENT_POSTPROCESSING = "$(inherited)";
 				DSTROOT = "$(inherited)";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_ALTIVEC_EXTENSIONS = YES;
@@ -14802,6 +15039,7 @@
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
 				WARNING_CFLAGS = "$(inherited)";
@@ -14848,6 +15086,7 @@
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
 				WARNING_CFLAGS = "$(inherited)";
@@ -14866,6 +15105,8 @@
 				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
 				CONFIGURATION_TEMP_DIR = "$(inherited)";
 				COPY_PHASE_STRIP = YES;
+				DEPLOYMENT_LOCATION = "$(inherited)";
+				DEPLOYMENT_POSTPROCESSING = "$(inherited)";
 				DSTROOT = "$(inherited)";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_ALTIVEC_EXTENSIONS = YES;
@@ -14893,6 +15134,7 @@
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
 				WARNING_CFLAGS = "$(inherited)";
@@ -14939,6 +15181,7 @@
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
 				WARNING_CFLAGS = "$(inherited)";
@@ -14957,6 +15200,8 @@
 				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
 				CONFIGURATION_TEMP_DIR = "$(inherited)";
 				COPY_PHASE_STRIP = YES;
+				DEPLOYMENT_LOCATION = "$(inherited)";
+				DEPLOYMENT_POSTPROCESSING = "$(inherited)";
 				DSTROOT = "$(inherited)";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_ALTIVEC_EXTENSIONS = YES;
@@ -14984,6 +15229,7 @@
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
 				WARNING_CFLAGS = "$(inherited)";
@@ -15030,6 +15276,7 @@
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
 				WARNING_CFLAGS = "$(inherited)";
@@ -15048,6 +15295,8 @@
 				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
 				CONFIGURATION_TEMP_DIR = "$(inherited)";
 				COPY_PHASE_STRIP = YES;
+				DEPLOYMENT_LOCATION = "$(inherited)";
+				DEPLOYMENT_POSTPROCESSING = "$(inherited)";
 				DSTROOT = "$(inherited)";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_ALTIVEC_EXTENSIONS = YES;
@@ -15075,6 +15324,7 @@
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
 				WARNING_CFLAGS = "$(inherited)";
@@ -15121,6 +15371,7 @@
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
 				WARNING_CFLAGS = "$(inherited)";
@@ -15139,6 +15390,8 @@
 				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
 				CONFIGURATION_TEMP_DIR = "$(inherited)";
 				COPY_PHASE_STRIP = YES;
+				DEPLOYMENT_LOCATION = "$(inherited)";
+				DEPLOYMENT_POSTPROCESSING = "$(inherited)";
 				DSTROOT = "$(inherited)";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_ALTIVEC_EXTENSIONS = YES;
@@ -15166,6 +15419,7 @@
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
 				WARNING_CFLAGS = "$(inherited)";
@@ -15212,6 +15466,7 @@
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
 				WARNING_CFLAGS = "$(inherited)";
@@ -15230,6 +15485,8 @@
 				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
 				CONFIGURATION_TEMP_DIR = "$(inherited)";
 				COPY_PHASE_STRIP = YES;
+				DEPLOYMENT_LOCATION = "$(inherited)";
+				DEPLOYMENT_POSTPROCESSING = "$(inherited)";
 				DSTROOT = "$(inherited)";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_ALTIVEC_EXTENSIONS = YES;
@@ -15257,6 +15514,7 @@
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
 				WARNING_CFLAGS = "$(inherited)";
@@ -15298,6 +15556,7 @@
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
 				WARNING_CFLAGS = "$(inherited)";
@@ -15316,6 +15575,8 @@
 				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
 				CONFIGURATION_TEMP_DIR = "$(inherited)";
 				COPY_PHASE_STRIP = YES;
+				DEPLOYMENT_LOCATION = "$(inherited)";
+				DEPLOYMENT_POSTPROCESSING = "$(inherited)";
 				DSTROOT = "$(inherited)";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_ALTIVEC_EXTENSIONS = YES;
@@ -15338,6 +15599,7 @@
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
 				WARNING_CFLAGS = "$(inherited)";
@@ -15384,6 +15646,7 @@
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
 				WARNING_CFLAGS = "$(inherited)";
@@ -15401,6 +15664,8 @@
 				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
 				CONFIGURATION_TEMP_DIR = "$(inherited)";
 				COPY_PHASE_STRIP = YES;
+				DEPLOYMENT_LOCATION = "$(inherited)";
+				DEPLOYMENT_POSTPROCESSING = "$(inherited)";
 				DSTROOT = "$(inherited)";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_ALTIVEC_EXTENSIONS = YES;
@@ -15428,6 +15693,7 @@
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
 				WARNING_CFLAGS = "$(inherited)";
@@ -15479,6 +15745,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
 				WARNING_CFLAGS = "$(inherited)";
@@ -15497,6 +15764,8 @@
 				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
 				CONFIGURATION_TEMP_DIR = "$(inherited)";
 				COPY_PHASE_STRIP = YES;
+				DEPLOYMENT_LOCATION = "$(inherited)";
+				DEPLOYMENT_POSTPROCESSING = "$(inherited)";
 				DSTROOT = "$(inherited)";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_ALTIVEC_EXTENSIONS = YES;
@@ -15529,6 +15798,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
 				WARNING_CFLAGS = "$(inherited)";
@@ -15575,6 +15845,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
 				WARNING_CFLAGS = "$(inherited)";
@@ -15593,6 +15864,8 @@
 				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
 				CONFIGURATION_TEMP_DIR = "$(inherited)";
 				COPY_PHASE_STRIP = YES;
+				DEPLOYMENT_LOCATION = "$(inherited)";
+				DEPLOYMENT_POSTPROCESSING = "$(inherited)";
 				DSTROOT = "$(inherited)";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_ALTIVEC_EXTENSIONS = YES;
@@ -15620,6 +15893,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
 				WARNING_CFLAGS = "$(inherited)";
@@ -15666,6 +15940,7 @@
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
 				WARNING_CFLAGS = "$(inherited)";
@@ -15684,6 +15959,8 @@
 				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
 				CONFIGURATION_TEMP_DIR = "$(inherited)";
 				COPY_PHASE_STRIP = YES;
+				DEPLOYMENT_LOCATION = "$(inherited)";
+				DEPLOYMENT_POSTPROCESSING = "$(inherited)";
 				DSTROOT = "$(inherited)";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_ALTIVEC_EXTENSIONS = YES;
@@ -15712,6 +15989,7 @@
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
 				WARNING_CFLAGS = "$(inherited)";
@@ -15760,7 +16038,7 @@
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
-				SKIP_INSTALL = YES;
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
 				WARNING_CFLAGS = "$(inherited)";
@@ -15779,7 +16057,8 @@
 				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
 				CONFIGURATION_TEMP_DIR = "$(inherited)";
 				COPY_PHASE_STRIP = YES;
-				DEPLOYMENT_POSTPROCESSING = NO;
+				DEPLOYMENT_LOCATION = "$(inherited)";
+				DEPLOYMENT_POSTPROCESSING = "$(inherited)";
 				DSTROOT = "$(inherited)";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_ALTIVEC_EXTENSIONS = YES;
@@ -15808,7 +16087,7 @@
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
-				SKIP_INSTALL = YES;
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
 				WARNING_CFLAGS = "$(inherited)";
@@ -15855,6 +16134,7 @@
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
 				WARNING_CFLAGS = "$(inherited)";
@@ -15873,6 +16153,8 @@
 				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
 				CONFIGURATION_TEMP_DIR = "$(inherited)";
 				COPY_PHASE_STRIP = YES;
+				DEPLOYMENT_LOCATION = "$(inherited)";
+				DEPLOYMENT_POSTPROCESSING = "$(inherited)";
 				DSTROOT = "$(inherited)";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_ALTIVEC_EXTENSIONS = YES;
@@ -15900,6 +16182,7 @@
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
 				WARNING_CFLAGS = "$(inherited)";
@@ -15946,6 +16229,7 @@
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
 				WARNING_CFLAGS = "$(inherited)";
@@ -15964,6 +16248,8 @@
 				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
 				CONFIGURATION_TEMP_DIR = "$(inherited)";
 				COPY_PHASE_STRIP = YES;
+				DEPLOYMENT_LOCATION = "$(inherited)";
+				DEPLOYMENT_POSTPROCESSING = "$(inherited)";
 				DSTROOT = "$(inherited)";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_ALTIVEC_EXTENSIONS = YES;
@@ -15991,6 +16277,7 @@
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
 				WARNING_CFLAGS = "$(inherited)";
@@ -16042,6 +16329,7 @@
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
 				WARNING_CFLAGS = "$(inherited)";
@@ -16060,6 +16348,8 @@
 				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
 				CONFIGURATION_TEMP_DIR = "$(inherited)";
 				COPY_PHASE_STRIP = YES;
+				DEPLOYMENT_LOCATION = "$(inherited)";
+				DEPLOYMENT_POSTPROCESSING = "$(inherited)";
 				DSTROOT = "$(inherited)";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_ALTIVEC_EXTENSIONS = YES;
@@ -16092,6 +16382,7 @@
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
 				WARNING_CFLAGS = "$(inherited)";
@@ -16143,6 +16434,7 @@
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
 				WARNING_CFLAGS = "$(inherited)";
@@ -16161,6 +16453,8 @@
 				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
 				CONFIGURATION_TEMP_DIR = "$(inherited)";
 				COPY_PHASE_STRIP = YES;
+				DEPLOYMENT_LOCATION = "$(inherited)";
+				DEPLOYMENT_POSTPROCESSING = "$(inherited)";
 				DSTROOT = "$(inherited)";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_ALTIVEC_EXTENSIONS = YES;
@@ -16193,6 +16487,7 @@
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
 				WARNING_CFLAGS = "$(inherited)";
@@ -16239,6 +16534,7 @@
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
 				WARNING_CFLAGS = "$(inherited)";
@@ -16257,6 +16553,8 @@
 				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
 				CONFIGURATION_TEMP_DIR = "$(inherited)";
 				COPY_PHASE_STRIP = YES;
+				DEPLOYMENT_LOCATION = "$(inherited)";
+				DEPLOYMENT_POSTPROCESSING = "$(inherited)";
 				DSTROOT = "$(inherited)";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_ALTIVEC_EXTENSIONS = YES;
@@ -16284,6 +16582,7 @@
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
 				WARNING_CFLAGS = "$(inherited)";
@@ -16330,6 +16629,7 @@
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
 				WARNING_CFLAGS = "$(inherited)";
@@ -16348,6 +16648,8 @@
 				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
 				CONFIGURATION_TEMP_DIR = "$(inherited)";
 				COPY_PHASE_STRIP = YES;
+				DEPLOYMENT_LOCATION = "$(inherited)";
+				DEPLOYMENT_POSTPROCESSING = "$(inherited)";
 				DSTROOT = "$(inherited)";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_ALTIVEC_EXTENSIONS = YES;
@@ -16375,6 +16677,7 @@
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
 				WARNING_CFLAGS = "$(inherited)";
@@ -16421,6 +16724,7 @@
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
 				WARNING_CFLAGS = "$(inherited)";
@@ -16439,6 +16743,8 @@
 				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
 				CONFIGURATION_TEMP_DIR = "$(inherited)";
 				COPY_PHASE_STRIP = YES;
+				DEPLOYMENT_LOCATION = "$(inherited)";
+				DEPLOYMENT_POSTPROCESSING = "$(inherited)";
 				DSTROOT = "$(inherited)";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_ALTIVEC_EXTENSIONS = YES;
@@ -16466,6 +16772,7 @@
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
 				WARNING_CFLAGS = "$(inherited)";
@@ -16512,6 +16819,7 @@
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
 				WARNING_CFLAGS = "$(inherited)";
@@ -16530,6 +16838,8 @@
 				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
 				CONFIGURATION_TEMP_DIR = "$(inherited)";
 				COPY_PHASE_STRIP = YES;
+				DEPLOYMENT_LOCATION = "$(inherited)";
+				DEPLOYMENT_POSTPROCESSING = "$(inherited)";
 				DSTROOT = "$(inherited)";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_ALTIVEC_EXTENSIONS = YES;
@@ -16557,6 +16867,7 @@
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
 				WARNING_CFLAGS = "$(inherited)";
@@ -16608,6 +16919,7 @@
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
 				WARNING_CFLAGS = "$(inherited)";
@@ -16626,6 +16938,8 @@
 				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
 				CONFIGURATION_TEMP_DIR = "$(inherited)";
 				COPY_PHASE_STRIP = YES;
+				DEPLOYMENT_LOCATION = "$(inherited)";
+				DEPLOYMENT_POSTPROCESSING = "$(inherited)";
 				DSTROOT = "$(inherited)";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_ALTIVEC_EXTENSIONS = YES;
@@ -16658,6 +16972,7 @@
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
 				WARNING_CFLAGS = "$(inherited)";
@@ -16709,6 +17024,7 @@
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
 				WARNING_CFLAGS = "$(inherited)";
@@ -16727,6 +17043,8 @@
 				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
 				CONFIGURATION_TEMP_DIR = "$(inherited)";
 				COPY_PHASE_STRIP = YES;
+				DEPLOYMENT_LOCATION = "$(inherited)";
+				DEPLOYMENT_POSTPROCESSING = "$(inherited)";
 				DSTROOT = "$(inherited)";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_ALTIVEC_EXTENSIONS = YES;
@@ -16759,6 +17077,7 @@
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
 				WARNING_CFLAGS = "$(inherited)";
@@ -16805,6 +17124,7 @@
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
 				WARNING_CFLAGS = "$(inherited)";
@@ -16823,6 +17143,8 @@
 				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
 				CONFIGURATION_TEMP_DIR = "$(inherited)";
 				COPY_PHASE_STRIP = YES;
+				DEPLOYMENT_LOCATION = "$(inherited)";
+				DEPLOYMENT_POSTPROCESSING = "$(inherited)";
 				DSTROOT = "$(inherited)";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_ALTIVEC_EXTENSIONS = YES;
@@ -16850,6 +17172,7 @@
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
 				WARNING_CFLAGS = "$(inherited)";
@@ -16874,7 +17197,7 @@
 				INFOPLIST_OTHER_PREPROCESSOR_FLAGS = "";
 				INFOPLIST_PREFIX_HEADER = "";
 				INFOPLIST_PREPROCESSOR_DEFINITIONS = "";
-				INSTALL_PATH = "$(inherited)";
+				INSTALL_PATH = "$(SRCROOT)/../deprecated/externals";
 				OBJROOT = build;
 				OTHER_CFLAGS = "-DODOT_DEPRECATED";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
@@ -16882,6 +17205,7 @@
 				PRODUCT_NAME = "Build all Max copy";
 				PUBLIC_HEADERS_FOLDER_PATH = "";
 				SDKROOT = macosx;
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
 			};
@@ -16904,7 +17228,7 @@
 				INFOPLIST_OTHER_PREPROCESSOR_FLAGS = "";
 				INFOPLIST_PREFIX_HEADER = "";
 				INFOPLIST_PREPROCESSOR_DEFINITIONS = "";
-				INSTALL_PATH = "$(inherited)";
+				INSTALL_PATH = "$(SRCROOT)/../deprecated/externals";
 				OBJROOT = build;
 				OTHER_CFLAGS = "-DODOT_DEPRECATED";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
@@ -16912,6 +17236,7 @@
 				PRODUCT_NAME = "Build all Max copy";
 				PUBLIC_HEADERS_FOLDER_PATH = "";
 				SDKROOT = macosx;
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
 				ZERO_LINK = NO;
@@ -16934,7 +17259,7 @@
 				INFOPLIST_OTHER_PREPROCESSOR_FLAGS = "";
 				INFOPLIST_PREFIX_HEADER = "";
 				INFOPLIST_PREPROCESSOR_DEFINITIONS = "";
-				INSTALL_PATH = "$(inherited)";
+				INSTALL_PATH = "$(SRCROOT)/../dev/externals";
 				OBJROOT = build;
 				OTHER_CFLAGS = "-DODOT_DEPRECATED";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
@@ -16942,6 +17267,7 @@
 				PRODUCT_NAME = "Build all Max Deprecated copy";
 				PUBLIC_HEADERS_FOLDER_PATH = "";
 				SDKROOT = macosx;
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
 			};
@@ -16964,7 +17290,7 @@
 				INFOPLIST_OTHER_PREPROCESSOR_FLAGS = "";
 				INFOPLIST_PREFIX_HEADER = "";
 				INFOPLIST_PREPROCESSOR_DEFINITIONS = "";
-				INSTALL_PATH = "$(inherited)";
+				INSTALL_PATH = "$(SRCROOT)/../dev/externals";
 				OBJROOT = build;
 				OTHER_CFLAGS = "-DODOT_DEPRECATED";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
@@ -16972,6 +17298,7 @@
 				PRODUCT_NAME = "Build all Max Deprecated copy";
 				PUBLIC_HEADERS_FOLDER_PATH = "";
 				SDKROOT = macosx;
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
 				ZERO_LINK = NO;
@@ -16994,12 +17321,13 @@
 				INFOPLIST_OTHER_PREPROCESSOR_FLAGS = "";
 				INFOPLIST_PREFIX_HEADER = "";
 				INFOPLIST_PREPROCESSOR_DEFINITIONS = "";
-				INSTALL_PATH = "$(inherited)";
+				INSTALL_PATH = "$(SRCROOT)/../pd/deprecated";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
 				PRODUCT_NAME = "Build all PD copy";
 				PUBLIC_HEADERS_FOLDER_PATH = "";
 				SDKROOT = macosx;
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
 			};
@@ -17022,12 +17350,13 @@
 				INFOPLIST_OTHER_PREPROCESSOR_FLAGS = "";
 				INFOPLIST_PREFIX_HEADER = "";
 				INFOPLIST_PREPROCESSOR_DEFINITIONS = "";
-				INSTALL_PATH = "$(inherited)";
+				INSTALL_PATH = "$(SRCROOT)/../pd/deprecated";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
 				PRODUCT_NAME = "Build all PD copy";
 				PUBLIC_HEADERS_FOLDER_PATH = "";
 				SDKROOT = macosx;
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
 				ZERO_LINK = NO;
@@ -17050,12 +17379,13 @@
 				INFOPLIST_OTHER_PREPROCESSOR_FLAGS = "";
 				INFOPLIST_PREFIX_HEADER = "";
 				INFOPLIST_PREPROCESSOR_DEFINITIONS = "";
-				INSTALL_PATH = "$(inherited)";
+				INSTALL_PATH = "$(SRCROOT)/../pd/dev";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
 				PRODUCT_NAME = "Build all PD Deprecated copy";
 				PUBLIC_HEADERS_FOLDER_PATH = "";
 				SDKROOT = macosx;
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
 			};
@@ -17078,12 +17408,13 @@
 				INFOPLIST_OTHER_PREPROCESSOR_FLAGS = "";
 				INFOPLIST_PREFIX_HEADER = "";
 				INFOPLIST_PREPROCESSOR_DEFINITIONS = "";
-				INSTALL_PATH = "$(inherited)";
+				INSTALL_PATH = "$(SRCROOT)/../pd/dev";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "edu.cnmat.berkeley.$(PRODUCT_NAME)";
 				PRODUCT_NAME = "Build all PD Deprecated copy";
 				PUBLIC_HEADERS_FOLDER_PATH = "";
 				SDKROOT = macosx;
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				WRAPPER_EXTENSION = "";
 				ZERO_LINK = NO;
@@ -17133,6 +17464,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
 				WARNING_CFLAGS = "$(inherited)";
@@ -17151,6 +17483,8 @@
 				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
 				CONFIGURATION_TEMP_DIR = "$(inherited)";
 				COPY_PHASE_STRIP = YES;
+				DEPLOYMENT_LOCATION = "$(inherited)";
+				DEPLOYMENT_POSTPROCESSING = "$(inherited)";
 				DSTROOT = "$(inherited)";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_ALTIVEC_EXTENSIONS = YES;
@@ -17183,6 +17517,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
 				WARNING_CFLAGS = "$(inherited)";
@@ -17234,6 +17569,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
 				WARNING_CFLAGS = "$(inherited)";
@@ -17252,6 +17588,8 @@
 				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
 				CONFIGURATION_TEMP_DIR = "$(inherited)";
 				COPY_PHASE_STRIP = YES;
+				DEPLOYMENT_LOCATION = "$(inherited)";
+				DEPLOYMENT_POSTPROCESSING = "$(inherited)";
 				DSTROOT = "$(inherited)";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_ALTIVEC_EXTENSIONS = YES;
@@ -17284,6 +17622,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
 				WARNING_CFLAGS = "$(inherited)";
@@ -17324,6 +17663,7 @@
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
 				WARNING_CFLAGS = "$(inherited)";
@@ -17342,6 +17682,8 @@
 				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
 				CONFIGURATION_TEMP_DIR = "$(inherited)";
 				COPY_PHASE_STRIP = YES;
+				DEPLOYMENT_LOCATION = "$(inherited)";
+				DEPLOYMENT_POSTPROCESSING = "$(inherited)";
 				DSTROOT = "$(inherited)";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_ALTIVEC_EXTENSIONS = YES;
@@ -17363,6 +17705,7 @@
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
 				WARNING_CFLAGS = "$(inherited)";
@@ -17410,6 +17753,7 @@
 				PRODUCT_NAME = o.compose;
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
 				WARNING_CFLAGS = "$(inherited)";
@@ -17428,6 +17772,8 @@
 				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
 				CONFIGURATION_TEMP_DIR = "$(inherited)";
 				COPY_PHASE_STRIP = YES;
+				DEPLOYMENT_LOCATION = "$(inherited)";
+				DEPLOYMENT_POSTPROCESSING = "$(inherited)";
 				DSTROOT = "$(inherited)";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_ALTIVEC_EXTENSIONS = YES;
@@ -17457,6 +17803,7 @@
 				PRODUCT_NAME = o.compose;
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
 				WARNING_CFLAGS = "$(inherited)";
@@ -17503,6 +17850,7 @@
 				PRODUCT_NAME = o.display;
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
 				WARNING_CFLAGS = "$(inherited)";
@@ -17521,6 +17869,8 @@
 				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
 				CONFIGURATION_TEMP_DIR = "$(inherited)";
 				COPY_PHASE_STRIP = YES;
+				DEPLOYMENT_LOCATION = "$(inherited)";
+				DEPLOYMENT_POSTPROCESSING = "$(inherited)";
 				DSTROOT = "$(inherited)";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_ALTIVEC_EXTENSIONS = YES;
@@ -17548,6 +17898,7 @@
 				PRODUCT_NAME = o.display;
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
 				WARNING_CFLAGS = "$(inherited)";
@@ -17594,6 +17945,7 @@
 				PRODUCT_NAME = o.uniform;
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
 				WARNING_CFLAGS = "$(inherited)";
@@ -17612,6 +17964,8 @@
 				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
 				CONFIGURATION_TEMP_DIR = "$(inherited)";
 				COPY_PHASE_STRIP = YES;
+				DEPLOYMENT_LOCATION = "$(inherited)";
+				DEPLOYMENT_POSTPROCESSING = "$(inherited)";
 				DSTROOT = "$(inherited)";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_ALTIVEC_EXTENSIONS = YES;
@@ -17639,6 +17993,7 @@
 				PRODUCT_NAME = o.uniform;
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
 				WARNING_CFLAGS = "$(inherited)";
@@ -17685,6 +18040,7 @@
 				PRODUCT_NAME = o.listenumerate;
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
 				WARNING_CFLAGS = "$(inherited)";
@@ -17703,6 +18059,8 @@
 				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
 				CONFIGURATION_TEMP_DIR = "$(inherited)";
 				COPY_PHASE_STRIP = YES;
+				DEPLOYMENT_LOCATION = "$(inherited)";
+				DEPLOYMENT_POSTPROCESSING = "$(inherited)";
 				DSTROOT = "$(inherited)";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_ALTIVEC_EXTENSIONS = YES;
@@ -17730,6 +18088,7 @@
 				PRODUCT_NAME = o.listenumerate;
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
 				WARNING_CFLAGS = "$(inherited)";
@@ -17760,7 +18119,7 @@
 				INFOPLIST_OTHER_PREPROCESSOR_FLAGS = "";
 				INFOPLIST_PREFIX_HEADER = "";
 				INFOPLIST_PREPROCESSOR_DEFINITIONS = "";
-				INSTALL_PATH = "$(PROJECT_DIR)/../externals";
+				INSTALL_PATH = "";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_PROJECT_1 = "\"$(SRCROOT)/../../libo\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_PROJECT_2 = "\"$(SRCROOT)/../../libomax\"";
 				OBJROOT = build;
@@ -17773,6 +18132,7 @@
 				PUBLIC_HEADERS_FOLDER_PATH = "";
 				RUN_CLANG_STATIC_ANALYZER = NO;
 				SDKROOT = macosx;
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(SYMROOT)";
 				WRAPPER_EXTENSION = "";
 			};
@@ -17801,7 +18161,7 @@
 				INFOPLIST_OTHER_PREPROCESSOR_FLAGS = "";
 				INFOPLIST_PREFIX_HEADER = "";
 				INFOPLIST_PREPROCESSOR_DEFINITIONS = "";
-				INSTALL_PATH = "$(PROJECT_DIR)/../externals";
+				INSTALL_PATH = "";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_PROJECT_1 = "\"$(SRCROOT)/../../libo\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_PROJECT_2 = "\"$(SRCROOT)/../../libomax\"";
 				OBJROOT = build;
@@ -17814,6 +18174,7 @@
 				PUBLIC_HEADERS_FOLDER_PATH = "";
 				RUN_CLANG_STATIC_ANALYZER = NO;
 				SDKROOT = macosx;
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(SYMROOT)";
 				WRAPPER_EXTENSION = "";
 				ZERO_LINK = NO;
@@ -17859,6 +18220,7 @@
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
 				WARNING_CFLAGS = "$(inherited)";
@@ -17877,6 +18239,8 @@
 				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
 				CONFIGURATION_TEMP_DIR = "$(inherited)";
 				COPY_PHASE_STRIP = YES;
+				DEPLOYMENT_LOCATION = "$(inherited)";
+				DEPLOYMENT_POSTPROCESSING = "$(inherited)";
 				DSTROOT = "$(inherited)";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_ALTIVEC_EXTENSIONS = YES;
@@ -17905,6 +18269,7 @@
 				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SKIP_INSTALL = "$(inherited)";
 				SYMROOT = "$(inherited)";
 				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
 				WARNING_CFLAGS = "$(inherited)";

@@ -117,13 +117,9 @@ archive: $(ARCHIVE)
 
 .PHONY: clean
 clean: 
-	xcodebuild -target "Build all" -project odot.xcodeproj clean
-	rm -rf build
-	rm -rf $(STAGINGDIR)
-	rm -rf $(ARCHIVE)
-	rm -rf $(LOCAL_INSTALL_PATH)
+	rm -rf build ../externals ../dev/externals ../deprecated/externals
+	rm -rf ../pd/*.pd_darwin ../pd/dev/*.pd_darwin ../pd/deprecated/*.pd_darwin
 	rm -f $(CURRENT_VERSION_FILE)
-
 ##################################################
 ## create directories
 ##################################################

@@ -6,5 +6,8 @@
 //  Copyright (c) 2014 edu.berkeley.cnmat. All rights reserved.
 //
 
-SYMROOT=$(PROJECT_DIR)/../dev/externals
+DSTROOT = $(SRCROOT)/..
+INSTALL_PATH = dev/externals
+DEPLOYMENT_POSTPROCESSING = YES
+DEPLOYMENT_LOCATION = YES
 OTHER_CFLAGS=-DODOT_UNSTABLE -g -DNO_TRANSLATION_SUPPORT
