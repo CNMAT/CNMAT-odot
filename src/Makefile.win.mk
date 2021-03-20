@@ -97,7 +97,7 @@ install:
 .PHONY: clean
 clean:
 	rm -rf *.mxe64 *.o
-	rm -rf ../externals ../deprecated/externals ../dev/externals
+	rm -rf ../externals ../deprecated/externals ../dev/externals $(CURRENT_VERSION_FILE)
 
 $(CURRENT_VERSION_FILE):
 	echo "#define ODOT_VERSION \""`git describe --tags --long`"\"" > $(CURRENT_VERSION_FILE)
