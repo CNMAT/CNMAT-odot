@@ -1,0 +1,25 @@
+#N canvas 324 232 752 501 10;
+#X obj 84 303 o.messageiterate;
+#X obj 84 229 o.compose 248 57 binhex b#2F666F6F203A20312C0A2F626172203A
+b#20322C0A2F7374657665203A2022616C b#6962616261222C0A2F626F6F203A205B
+b#312C20322C20332C20342C20352C2022 b#6F74686572207374756666225D;
+#X obj 84 368 o.print;
+#X text 195 302 iterate messages in bundle;
+#X obj 94 340 print ---;
+#X obj 29 42 o.display 642 118;
+#N canvas 1023 23 450 300 doc-text 0;
+#X obj 36 179 outlet;
+#X obj 36 48 loadbang;
+#X obj 57 344 o.messageiterate;
+#X msg 36 85 doc;
+#X obj 36 149 o.route /doc;
+#X obj 36 110 o.messageiterate;
+#X connect 1 0 3 0;
+#X connect 3 0 5 0;
+#X connect 4 0 0 0;
+#X connect 5 0 4 0;
+#X restore 29 15 pd doc-text;
+#X connect 0 0 2 0;
+#X connect 0 0 4 0;
+#X connect 1 0 0 0;
+#X connect 6 0 5 0;

@@ -1,0 +1,44 @@
+#N canvas 336 66 921 609 10;
+#X obj 461 319 o.atomize;
+#X obj 24 35 o.display 858 144;
+#N canvas 687 212 450 300 doc-text 0;
+#X obj 36 48 loadbang;
+#X obj 36 179 outlet;
+#X obj 36 110 o.atomize;
+#X msg 36 85 doc;
+#X obj 36 149 o.route /doc;
+#X connect 0 0 3 0;
+#X connect 2 0 4 0;
+#X connect 3 0 2 0;
+#X connect 4 0 1 0;
+#X restore 24 8 pd doc-text;
+#X floatatom 37 237 5 0 0 0 - - -, f 5;
+#X obj 37 269 o.pack /mysynth/2/gain 0;
+#X obj 215 261 o.compose 166 31 binhex b#2F6D7973796E74682F322F6672657120
+b#3A203434302C0A2F6E616461203A2022 b#7269656E22;
+#X obj 461 259 o.compose 166 44 binhex b#2F6D7973796E74682F322F6672657120
+b#3A203434302C0A2F6D7973796E74682F b#322F6761696E203A20302E352C0A2F6E
+b#616461203A20227269656E22;
+#X obj 215 261 o.compose 166 31 binhex b#2F6D7973796E74682F322F6672657120
+b#3A203434302C0A2F6E616461203A2022 b#7269656E22;
+#X obj 461 361 print;
+#X text 531 317 with no arguments \, o.atomize unpacks the bundle and
+outputs each message as a Max message in the order they appear in the
+bundle.;
+#X obj 215 226 loadbang;
+#X obj 37 319 o.union;
+#X obj 37 341 o.atomize /mysynth/2/freq /mysynth/2/gain;
+#X obj 37 374 print left;
+#X obj 280 373 print right;
+#X obj 158 375 print middle;
+#X connect 0 0 8 0;
+#X connect 2 0 1 0;
+#X connect 3 0 4 0;
+#X connect 4 0 11 0;
+#X connect 5 0 11 1;
+#X connect 6 0 0 0;
+#X connect 10 0 5 0;
+#X connect 11 0 12 0;
+#X connect 12 0 13 0;
+#X connect 12 1 15 0;
+#X connect 12 2 14 0;

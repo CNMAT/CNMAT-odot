@@ -1,0 +1,27 @@
+#N canvas 78 133 981 559 10;
+#X obj 59 49 netreceive -u -b 7777;
+#X obj 59 133 o.bundle;
+#X obj 104 160 o.display 430 27;
+#X obj 59 240 o.display 430 92;
+#X obj 81 203 print not-a-bundle;
+#N canvas 0 22 450 300 prepend-set 0;
+#X obj 176 76 inlet;
+#X obj 176 102 list prepend set;
+#X obj 176 124 list trim;
+#X obj 176 146 outlet;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 2 0 3 0;
+#X restore 580 127 pd prepend-set;
+#X msg 580 159 35 98 117 110 100 108 101 0 0 0 0 0 0 0 0 0 0 0 0 16
+47 103 48 0 44 100 0 0 0 0 0 0 0 0 0 0 0 0 0 16 47 108 108 0 44 100
+0 0 0 0 0 0 0 0 0 0 0 0 0 16 47 108 109 0 44 100 0 0 192 38 51 51 64
+0 0 0 0 0 0 16 47 108 104 0 44 100 0 0 0 0 0 0 0 0 0 0 0 0 0 16 47
+108 102 0 44 100 0 0 64 111 64 0 0 0 0 0 0 0 0 16 47 104 102 0 44 100
+0 0 64 175 64 0 0 0 0 0;
+#X connect 0 0 1 0;
+#X connect 0 0 5 0;
+#X connect 1 0 3 0;
+#X connect 1 1 4 0;
+#X connect 1 2 2 0;
+#X connect 5 0 6 0;

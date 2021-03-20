@@ -1,0 +1,12 @@
+#N canvas 640 344 450 300 10;
+#X obj 234 139 print bytes;
+#X obj 89 149 o.slip.decode;
+#X obj 89 109 o.slip.encode;
+#X obj 88 70 o.compose 100 31 binhex b#2F666F6F203A20312C0A2F626172203A
+b#2032;
+#X obj 80 189 o.compose 100 31 binhex b#2F666F6F203A20312C0A2F626172203A
+b#2032;
+#X connect 1 0 4 1;
+#X connect 2 0 0 0;
+#X connect 2 0 1 0;
+#X connect 3 0 2 0;
