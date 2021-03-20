@@ -294,7 +294,7 @@ all: $(SOURCES:.c=.$(EXTENSION)) $(SHARED_LIB) installobjs #$(UNSTABLE_FOLDER) $
 installobjs:
 	mv $(foreach f, $(UNSTABLE), $(f).$(EXTENSION)) $(UNSTABLE_FOLDER)
 	mv $(foreach f, $(DEPRECATED), $(f).$(EXTENSION)) $(DEPRECATED_FOLDER)
-	mv *.dll ../../pd
+	mv *.$(EXTENSION) ../../pd
 
 ../include/odot_current_version.h:
 	cd ../ && ./odot_current_version.sh
