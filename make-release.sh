@@ -29,11 +29,22 @@ require_clean_work_tree () {
 }
 require_clean_work_tree
 
-#xcodebuild -project src/x.xcodeproj -alltargets clean || exit 1
-#xcodebuild -project src/x.xcodeproj -alltargets build || exit 1
+#!/bin/bash
 
-#filename=`date +%s`
-filename=odot-`git describe --tags`
+platform=`uname`
+
+platform=$(awk -vpl="$platform" 'BEGIN {
+  pl=tolower(pl)
+  if ( pl == "darwin" ){
+    print "MacOSX"
+  }else if (pl ~ "mingw"){
+    print "Windows"
+  }else if(pl == "linux"){
+    print "Linux"
+  }
+}')
+
+filename=odot-$platform-`git describe --tags`
 git clone . ../$filename
 cp -r externals ../$filename/
 cp -r dev/externals ../$filename/dev/
