@@ -52,5 +52,6 @@ cp -r deprecated/externals ../$filename/deprecated/
 cp -r pd/*.pd_* ../$filename/pd/
 cp -r pd/dev/*.pd_* ../$filename/pd/dev/
 cp -r pd/deprecated/*.pd_* ../$filename/pd/deprecated/
-zip -r -X ../$filename.zip ../$filename
+# zip -r -X ../$filename.zip ../$filename
+tar zcvf ../$filename.tgz ../$filename
 rm -rf ../$filename
