@@ -148,6 +148,11 @@ fi
 
 echo "cleaning up release"
 filestodelete=(".git" "src" "make-release.sh" "make-package-info.py" "dev-internal")
+if [ $pd = 0 ]
+then
+    filestodelete+=( "pd" )
+fi
+
 for i in ${!filestodelete[@]}
 do
     echo rm -rf "../${filename}/${filestodelete[$i]}"
