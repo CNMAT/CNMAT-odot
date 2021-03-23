@@ -118,10 +118,13 @@ version=`git describe --tags`
 
 filename="${filename}-${version}"
 
-git clone . ../$filename
+if [ -e ../$filename ]
+then
+    echo "file ${filename} already exists"
+    exit 1
+fi
 
-rm -rf ../$filename/.git
-rm -rf ../$filename/src
+git clone . ../$filename
 
 if [ max = 1 ]
 then
@@ -135,3 +138,9 @@ then
     cp -r pd/dev/*.pd_* ../$filename/pd/dev/
     cp -r pd/deprecated/*.pd_* ../$filename/pd/deprecated/
 fi
+
+filestodelete=(".git" "src" "make-release.sh" "make-package-info.py" "dev-internal")
+for i in ${!filestodelete[@]}
+do
+    rm -rf "../${filename}/${filestodelete[$i]}"
+done
