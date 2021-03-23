@@ -29,8 +29,6 @@ require_clean_work_tree () {
 }
 require_clean_work_tree
 
-#!/bin/bash
-
 platform=`uname`
 
 platform=$(awk -vpl="$platform" 'BEGIN {
@@ -52,6 +50,4 @@ cp -r deprecated/externals ../$filename/deprecated/
 cp -r pd/*.pd_* ../$filename/pd/
 cp -r pd/dev/*.pd_* ../$filename/pd/dev/
 cp -r pd/deprecated/*.pd_* ../$filename/pd/deprecated/
-# zip -r -X ../$filename.zip ../$filename
-tar zcvf ../$filename.tgz ../$filename
-rm -rf ../$filename
+cd .. && tar zcvf $filename.tgz $filename
