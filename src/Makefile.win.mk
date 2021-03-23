@@ -96,7 +96,7 @@ install:
 
 .PHONY: clean
 clean:
-	rm -rf *.mxe64 *.o
+	rm -rf *.mxe64 *.o build
 	rm -rf ../externals ../deprecated/externals ../dev/externals $(CURRENT_VERSION_FILE)
 
 $(CURRENT_VERSION_FILE):
