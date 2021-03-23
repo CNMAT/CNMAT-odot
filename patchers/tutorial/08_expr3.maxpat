@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 10,
+			"revision" : 8,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -96,7 +96,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 293.0, 311.969696969696997, 383.0, 50.0 ],
+					"patching_rect" : [ 293.0, 311.969696969696997, 383.0, 51.0 ],
 					"text" : "The arguments to an operator (its operands) go to the left and/or right of it, for example, while those of a function are wrapped in parentheses and written after the name of the function. ",
 					"textjustification" : 1
 				}
@@ -110,7 +110,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 431.0, 8348.0, 333.0, 50.0 ],
+					"patching_rect" : [ 431.0, 8348.0, 333.0, 51.0 ],
 					"text" : "Because we declared default values for all the variables we need in the code in [o.expr.codebox], we can send bundles in that will override some, or all of them:"
 				}
 
@@ -170,7 +170,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 431.0, 8215.0, 333.0, 87.0 ],
+					"patching_rect" : [ 431.0, 8215.0, 335.0, 89.0 ],
 					"text" : "Note the use of the assign function to assign into the working bundle dynamically. The first argument to assign() is an expression that adds a string to an integer to create an address in the format we want. This works because the \"+\" will convert any of its arguments to strings when one of its arguments is a string, and then perform string concatenation."
 				}
 
@@ -183,7 +183,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 27.0, 7725.0, 917.0, 50.0 ],
+					"patching_rect" : [ 27.0, 7725.0, 917.0, 51.0 ],
 					"text" : "Down below, we've made a subpatch that contains 8 copies of [o.synthesizer.basic~]. The subpatch expects a message with the prefix /basicsynth/<voicenum>, where <voicenum> is an integer between 1-8. So, what we want to do is iterate over the list of bundles currently assigned to /notes, and assign each one to its own address, /basicsynth/1, /basicsynth/2, etc.",
 					"textjustification" : 1
 				}
@@ -209,7 +209,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 476.0, 6636.0, 344.0, 94.0 ],
+					"patching_rect" : [ 476.0, 6636.0, 348.0, 96.0 ],
 					"text" : "Here, we have all the information we need for each voice: frequencies, amplitudes, durations, and the waveform (that'll be the same for every voice, so we don't need to repeat it). But, it's not in the right form---we need a bundle for each voice that contains one frequency, one amplitude, etc."
 				}
 
@@ -241,7 +241,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 1,
-							"revision" : 10,
+							"revision" : 8,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -279,7 +279,7 @@
 								"box" : 								{
 									"fontface" : 0,
 									"id" : "obj-47",
-									"linecount" : 65,
+									"linecount" : 64,
 									"maxclass" : "o.display",
 									"numinlets" : 1,
 									"numoutlets" : 1,
@@ -401,7 +401,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 149.0, 7170.0, 664.0, 456.0 ],
+					"patching_rect" : [ 149.0, 7170.0, 664.0, 458.0 ],
 					"text" : "/makefreqs : \"lambda([fundamental, partialnumbers],\n                   fundamental * partialnumbers)\",\n/makeamps : \"lambda(partialnumbers, 1. / partialnumbers)\",\n/makedurations : \"lambda([totalduration, partialnumbers], totalduration * (1. / partialnumbers))\",\n/fundamental/hz : 440.,\n/partialnumbers : [1, 3, 6, 7, 8],\n/totalduration/sec : 3.,\n/waveform : \"sine\",\n/notes : [{\n  /frequency : 440.,\n  /env/amplitude : 1.,\n  /env/duration/sec : 3.,\n  /waveform : \"sine\"\n}, {\n  /frequency : 1320.,\n  /env/amplitude : 0.333333,\n  /env/duration/sec : 1.,\n  /waveform : \"sine\"\n}, {\n  /frequency : 2640.,\n  /env/amplitude : 0.166667,\n  /env/duration/sec : 0.5,\n  /waveform : \"sine\"\n}, {\n  /frequency : 3080.,\n  /env/amplitude : 0.142857,\n  /env/duration/sec : 0.428571,\n  /waveform : \"sine\"\n}, {\n  /frequency : 3520.,\n  /env/amplitude : 0.125,\n  /env/duration/sec : 0.375,\n  /waveform : \"sine\"\n}]"
 				}
 
@@ -433,7 +433,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 1,
-							"revision" : 10,
+							"revision" : 8,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -762,7 +762,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 62.0, 6218.0, 124.0, 239.0 ],
+					"patching_rect" : [ 62.0, 6218.0, 124.0, 246.0 ],
 					"text" : "Let's make the duration and amplitude of the envelope inversely proportional to the partial number (the higher the partial number, the quieter and shorter it will be). While we're at it, let's rewrite our harmonic series function to take a list of partial numbers rather than a range."
 				}
 
@@ -775,7 +775,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 346.5, 5998.0, 275.0, 79.0 ],
+					"patching_rect" : [ 346.5, 5998.0, 275.0, 81.0 ],
 					"text" : "This synth takes a number of messages -- so far, we've written some code to generate frequencies that can be used with this, but we should also make envelopes for each partial, and set the waveform. ",
 					"textjustification" : 1
 				}
@@ -792,7 +792,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 556.0, 5900.0, 172.0, 71.0 ],
+					"patching_rect" : [ 556.0, 5900.0, 174.0, 72.0 ],
 					"text" : "Double click and check out the [o.route] objects at the top of the patch. "
 				}
 
@@ -804,7 +804,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "signal" ],
-					"patching_rect" : [ 415.0, 5923.5, 135.0, 24.0 ],
+					"patching_rect" : [ 415.0, 5923.5, 135.0, 25.0 ],
 					"text" : "o.synthesizer.basic~"
 				}
 
@@ -830,7 +830,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 197.0, 4928.0, 378.0, 60.0 ],
+					"patching_rect" : [ 197.0, 4928.0, 378.0, 62.0 ],
 					"text" : "Note: if you send the post-ast message to the o.expr.codebox above, \nyou'll see that /makehs(55, 1, 8) \nis transformed by [o.expr.codebox] into apply(/makehs, 55, 1, 8), \n...so the two ways of writing that really are the same."
 				}
 
@@ -843,7 +843,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 197.0, 4851.0, 458.0, 50.0 ],
+					"patching_rect" : [ 197.0, 4851.0, 458.0, 51.0 ],
 					"text" : "Before moving on, let's get rid of those ugly apply() functions; once you've created a function and assigned it to an address, you can call it just like you call any other function: by writing its arguments in parentheses after its name."
 				}
 
@@ -908,7 +908,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 597.0, 5582.0, 308.0, 137.0 ],
+					"patching_rect" : [ 597.0, 5582.0, 308.0, 141.0 ],
 					"text" : "The result that map() produces is equivalent to calling apply() with the same function, on every pair of arguments in the lists /a and /b:\n\n/res = [\n           apply(lambda([a, b], a + b), /a[[0]], /b[[0]]),\n           apply(lambda([a, b], a + b), /a[[1]], /b[[1]]),\n           apply(lambda([a, b], a + b), /a[[2]], /b[[2]])\n]"
 				}
 
@@ -957,40 +957,8 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 569.0, 5426.0, 297.0, 57.0 ],
+					"patching_rect" : [ 569.0, 5426.0, 297.0, 58.0 ],
 					"text" : "Unlike apply(), map will iterate over both lists, applying the function to each pair of arguments"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"bubble" : 1,
-					"bubbleside" : 0,
-					"bubbleusescolors" : 1,
-					"fontsize" : 12.0,
-					"id" : "obj-83",
-					"maxclass" : "comment",
-					"numinlets" : 1,
-					"numoutlets" : 0,
-					"patching_rect" : [ 336.0, 5558.0, 20.0, 39.0 ],
-					"text" : "b",
-					"textjustification" : 1
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"bubble" : 1,
-					"bubbleside" : 0,
-					"bubbleusescolors" : 1,
-					"fontsize" : 12.0,
-					"id" : "obj-82",
-					"maxclass" : "comment",
-					"numinlets" : 1,
-					"numoutlets" : 0,
-					"patching_rect" : [ 309.0, 5558.0, 20.0, 39.0 ],
-					"text" : "a",
-					"textjustification" : 1
 				}
 
 			}
@@ -1105,7 +1073,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 166.0, 4267.0, 635.0, 108.0 ],
+					"patching_rect" : [ 166.0, 4267.0, 637.0, 111.0 ],
 					"text" : "Now we've got another problem! \n\nWhere did our harmonic series go? lambda() returns the result of the very last expression, and we just changed that to delete(), which doesn't return anything. In this case, prog2() comes in handy -- it evaluates a sequence of expressions and returns the result of the *second* one (see also: prog1 and progn -- in fact, you can think of lambda() as having a builtin implicit progn around its arguments, since it returns the result of the last, or nth, one)."
 				}
 
@@ -1145,7 +1113,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 92.0, 3878.0, 270.0, 79.0 ],
+					"patching_rect" : [ 92.0, 3878.0, 270.0, 81.0 ],
 					"text" : "Note, however, that our output bundle now contains an /npartials messages, which we probably don't want. \n\nLet's delete it:"
 				}
 
@@ -1184,7 +1152,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 328.0, 3435.0, 457.0, 79.0 ],
+					"patching_rect" : [ 328.0, 3435.0, 457.0, 81.0 ],
 					"text" : "So, we would like to check the value of npartials and change it if it's less than one, but because it's an identifier, we can't change it, that is, we can't write:\n\nif(npartials < 1, npartials = 1),\n...",
 					"textjustification" : 2
 				}
@@ -1199,7 +1167,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 133.0, 3252.5, 702.0, 94.0 ],
+					"patching_rect" : [ 133.0, 3252.5, 702.0, 96.0 ],
 					"text" : "Before we do that, let's talk about the distinction between addresses and the identifiers that we pass as the first argument to lambda(). Addresses and identifiers are similar in that they both refer to data by a name, however, there are some key differences, the most important being that once an identifier is bound to some data (via a call to apply() or another higher-order function), that binding can never change. Another difference is that identifiers are never stored in the working bundle, while addresses always are---in fact, that's the primary reason that they are visually distinct, to remind you that they have different semantics.",
 					"textjustification" : 1
 				}
@@ -1213,7 +1181,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 36.0, 3090.0, 896.0, 94.0 ],
+					"patching_rect" : [ 36.0, 3090.0, 896.0, 96.0 ],
 					"text" : "Now we have a pretty useful function that we can continue to add features to as we need them. However, we should first modify our lambda to protect against arguments that are out of bounds or might otherwise produce unintended results. \n\nFor example, we probably intend for the fundamental, starting partial, and number of partials to all be positive values. Negative frequencies and harmonic numbers could make sense, however, so let's leave those alone, but since the third argument represents the number of partials we want to end up with, that value should definitely be greater than 0, so let's enforce that.",
 					"textjustification" : 1
 				}
@@ -1254,7 +1222,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 131.0, 2856.0, 370.0, 33.0 ],
+					"patching_rect" : [ 131.0, 2856.0, 370.0, 34.0 ],
 					"text" : "Note: the lambda string is getting long, so we can format it across a couple lines using indentation to make it more easily readable."
 				}
 
@@ -1267,7 +1235,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 711.0, 2763.0, 185.0, 50.0 ],
+					"patching_rect" : [ 711.0, 2763.0, 185.0, 51.0 ],
 					"text" : "While we're at it, we might as well add the starting harmonic as a parameter as well"
 				}
 
@@ -1307,7 +1275,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 347.0, 2533.0, 272.0, 33.0 ],
+					"patching_rect" : [ 347.0, 2533.0, 272.0, 34.0 ],
 					"text" : "Note: now that our lambda takes two arguments, we write them as a list in square brackets."
 				}
 
@@ -1320,7 +1288,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 77.0, 2473.5, 196.0, 152.0 ],
+					"patching_rect" : [ 77.0, 2473.5, 196.0, 156.0 ],
 					"text" : "Now let's say we want to be able to make harmonic series of different lengths, rather than always being limited to 8 harmonics. Rather than make separate versions of the same function that have different values for the upper limit of aseq(), we can add a parameter to our lambda"
 				}
 
@@ -1360,7 +1328,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 205.0, 2213.0, 321.0, 33.0 ],
+					"patching_rect" : [ 205.0, 2213.0, 321.0, 34.0 ],
 					"text" : "Note: when we store a lambda at an address instead of using it directly, we have to store it as a string."
 				}
 
@@ -1373,7 +1341,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 600.0, 2137.0, 183.0, 94.0 ],
+					"patching_rect" : [ 600.0, 2137.0, 183.0, 96.0 ],
 					"text" : "Since the first argument to apply() is the same in both expressions, we can hoist it out assign it to an address that we can pass to apply() instead."
 				}
 
@@ -1412,7 +1380,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 115.0, 1888.0, 165.0, 152.0 ],
+					"patching_rect" : [ 115.0, 1888.0, 165.0, 156.0 ],
 					"text" : "...but since the structure of the expression itself doesn't change, only the value of the fundamental, we could *abstract* the expression and write it as a function of one variable, and then call apply(), passing it our function and its argument."
 				}
 
@@ -1451,7 +1419,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 419.0, 1666.0, 268.0, 65.0 ],
+					"patching_rect" : [ 419.0, 1666.0, 268.0, 66.0 ],
 					"text" : "If we want to create a couple of these series built on different fundamentals, we could just repeat the expression and change the  fundamental..."
 				}
 
@@ -1490,7 +1458,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 170.0, 1475.0, 302.0, 65.0 ],
+					"patching_rect" : [ 170.0, 1475.0, 302.0, 66.0 ],
 					"text" : "Let's say you want to compute the first 8 harmonics of a 55 Hz fundamental. You could do that with a simple expression that makes use of odot's \"scalar expansion\" feature discussed earlier:"
 				}
 
@@ -1528,7 +1496,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 65.0, 1320.0, 840.0, 108.0 ],
+					"patching_rect" : [ 65.0, 1320.0, 840.0, 111.0 ],
 					"text" : "...but the more common use of apply() is to apply a function that you wrote yourself. \nWe define functions using another function called lambda(). \n\nlambda() takes a list of zero or more identifiers (think addresses but without slashes) as its first argument, followed by a list of expressions that make use of those identifiers in some way. \n\nLet's look at some examples:"
 				}
 
@@ -1621,7 +1589,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 214.0, 1178.0, 119.0, 85.0 ],
-					"text" : "/r : 1,\n/func : \"add\",\n/val : 20,\n/min : -20,\n/max : 20"
+					"text" : "/r : 4,\n/func : \"sub\",\n/val : -6,\n/min : -20,\n/max : 20"
 				}
 
 			}
@@ -1772,7 +1740,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 367.0, 8606.0, 150.0, 22.0 ]
+					"patching_rect" : [ 367.0, 8606.0, 150.0, 23.0 ]
 				}
 
 			}
@@ -1816,7 +1784,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 781.0, 42.0, 61.0, 24.0 ],
+					"patching_rect" : [ 781.0, 42.0, 61.0, 25.0 ],
 					"text" : "onecopy"
 				}
 
@@ -2098,62 +2066,62 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "advance.maxpat",
-				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/patchers/tutorial",
+				"bootpath" : "~/Documents/Development/CNMAT-builds/cnmat-odot/patchers/tutorial",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "filelist.txt",
-				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/patchers/tutorial",
+				"bootpath" : "~/Documents/Development/CNMAT-builds/cnmat-odot/patchers/tutorial",
 				"patcherrelativepath" : ".",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "close_parent.js",
-				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/patchers/tutorial",
+				"bootpath" : "~/Documents/Development/CNMAT-builds/cnmat-odot/patchers/tutorial",
 				"patcherrelativepath" : ".",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.t.banner.maxpat",
-				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/patchers/tutorial",
+				"bootpath" : "~/Documents/Development/CNMAT-builds/cnmat-odot/patchers/tutorial",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.synthesizer.basic~.maxpat",
-				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/patchers/tutorial",
+				"bootpath" : "~/Documents/Development/CNMAT-builds/cnmat-odot/patchers/tutorial",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "o.expr.codebox.mxo",
-				"type" : "iLaX"
+				"name" : "o.expr.codebox.mxe64",
+				"type" : "mx64"
 			}
 , 			{
-				"name" : "o.display.mxo",
-				"type" : "iLaX"
+				"name" : "o.display.mxe64",
+				"type" : "mx64"
 			}
 , 			{
-				"name" : "o.pack.mxo",
-				"type" : "iLaX"
+				"name" : "o.pack.mxe64",
+				"type" : "mx64"
 			}
 , 			{
-				"name" : "o.union.mxo",
-				"type" : "iLaX"
+				"name" : "o.union.mxe64",
+				"type" : "mx64"
 			}
 , 			{
-				"name" : "o.compose.mxo",
-				"type" : "iLaX"
+				"name" : "o.compose.mxe64",
+				"type" : "mx64"
 			}
 , 			{
-				"name" : "o.route.mxo",
-				"type" : "iLaX"
+				"name" : "o.route.mxe64",
+				"type" : "mx64"
 			}
  ],
 		"autosave" : 0
