@@ -1,5 +1,19 @@
 #!/bin/bash
 
+if [ $# = 0 ]
+then
+    echo "you must supply \"max\" or \"pd\" as an argument"
+    exit
+fi
+
+target=$1
+
+if [ "$target" != "max" ] && [ "$target" != "pd" ]
+then
+    echo "argument must be \"max\" or \"pd\""
+    exit
+fi
+
 require_clean_work_tree () {
     # Update the index
     git update-index -q --ignore-submodules --refresh
@@ -29,25 +43,37 @@ require_clean_work_tree () {
 }
 require_clean_work_tree
 
-platform=`uname`
+if [ $# = 2 ]
+then
+    platform=$2
+else
+    platform=`uname`
 
-platform=$(awk -vpl="$platform" 'BEGIN {
-  pl=tolower(pl)
-  if ( pl == "darwin" ){
-    print "MacOSX"
-  }else if (pl ~ "mingw"){
-    print "Windows"
-  }else if(pl == "linux"){
-    print "Linux"
-  }
-}')
+    platform=$(awk -vpl="$platform" 'BEGIN {
+      pl=tolower(pl)
+      if ( pl == "darwin" ){
+        print "MacOSX"
+      }else if (pl ~ "mingw"){
+        print "Windows"
+      }else if(pl == "linux"){
+        print "Linux"
+      }
+    }')
+fi
 
 filename=odot-$platform-`git describe --tags`
 git clone . ../$filename
-cp -r externals ../$filename/
-cp -r dev/externals ../$filename/dev/
-cp -r deprecated/externals ../$filename/deprecated/
-cp -r pd/*.pd_* ../$filename/pd/
-cp -r pd/dev/*.pd_* ../$filename/pd/dev/
-cp -r pd/deprecated/*.pd_* ../$filename/pd/deprecated/
+
+if [ "$target" = "max" ]
+then
+    cp -r externals ../$filename/
+    cp -r dev/externals ../$filename/dev/
+    cp -r deprecated/externals ../$filename/deprecated/
+elif [ "$target" = "pd" ]
+then 
+    cp -r pd/*.pd_* ../$filename/pd/
+    cp -r pd/dev/*.pd_* ../$filename/pd/dev/
+    cp -r pd/deprecated/*.pd_* ../$filename/pd/deprecated/
+fi
+
 cd .. && tar zcvf $filename.tgz $filename
