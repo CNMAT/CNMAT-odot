@@ -387,7 +387,7 @@ clean:
 	-rm -f -- $(LIBRARY_NAME).$(EXTENSION)
 	-rm -f -- $(SHARED_LIB)
 	-rm -f ../include/odot_current_version.h
-	-rm -rf $(UNSTABLE_FOLDER)/*.dll $(DEPRECATED_FOLDER)/*.dll
+	-rm -rf ../../pd/*.$(EXTENSION) $(UNSTABLE_FOLDER)/*.$(EXTENSION) $(DEPRECATED_FOLDER)/*.$(EXTENSION)
 
 distclean: clean
 	-rm -f -- $(DISTBINDIR).tar.gz

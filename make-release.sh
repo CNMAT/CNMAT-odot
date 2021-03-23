@@ -93,10 +93,8 @@ then
     filename="${filename}-PD"
 fi
 
-if [ $os = 1 ]
-then
-    platform=`uname`
-    platform=$(awk -vpl="$platform" 'BEGIN {
+platform=`uname`
+platform=$(awk -vpl="$platform" 'BEGIN {
       pl=tolower(pl)
       if ( pl == "darwin" ){
         print "MacOSX"
@@ -106,6 +104,8 @@ then
         print "Linux"
       }
     }')
+if [ $os = 1 ]
+then
     filename="${filename}-${platform}"
 fi
 
@@ -126,21 +126,30 @@ fi
 
 git clone . ../$filename
 
-if [ max = 1 ]
+if [ $max = 1 ]
 then
+    echo "copying Max externals"
     cp -r externals ../$filename/
     cp -r dev/externals ../$filename/dev/
     cp -r deprecated/externals ../$filename/deprecated/
 fi
-if [ pd = 1 ]
-then 
-    cp -r pd/*.pd_* ../$filename/pd/
-    cp -r pd/dev/*.pd_* ../$filename/pd/dev/
-    cp -r pd/deprecated/*.pd_* ../$filename/pd/deprecated/
+if [ $pd = 1 ]
+then
+    echo "copying PD externals"
+    ext="*.pd_*"
+    if [ "$platform" = "Windows" ]
+    then
+	ext="*.dll"
+    fi
+    cp -r pd/$ext ../$filename/pd/
+    cp -r pd/dev/$ext ../$filename/pd/dev/
+    cp -r pd/deprecated/$ext ../$filename/pd/deprecated/
 fi
 
+echo "cleaning up release"
 filestodelete=(".git" "src" "make-release.sh" "make-package-info.py" "dev-internal")
 for i in ${!filestodelete[@]}
 do
+    echo rm -rf "../${filename}/${filestodelete[$i]}"
     rm -rf "../${filename}/${filestodelete[$i]}"
 done
