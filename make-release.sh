@@ -93,17 +93,30 @@ then
     filename="${filename}-PD"
 fi
 
-platform=`uname`
-platform=$(awk -vpl="$platform" 'BEGIN {
-      pl=tolower(pl)
-      if ( pl == "darwin" ){
-        print "MacOSX"
-      }else if (pl ~ "mingw"){
-        print "Windows"
-      }else if(pl == "linux"){
-        print "Linux"
-      }
-    }')
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+    platform="Linux"
+elif [[ "$OSTYPE" == "darwin"* ]]; then
+    platform="MacOSX"
+elif [[ "$OSTYPE" == "cygwin" ]]; then
+    platform="Windows"
+elif [[ "$OSTYPE" == "msys" ]]; then
+    platform="Windows"
+elif [[ "$OSTYPE" == "freebsd"* ]]; then
+    platform="FreeBSD"
+else
+    platform=""
+fi
+
+# platform=$(awk -vpl="$platform" 'BEGIN {
+#       pl=tolower(pl)
+#       if ( pl == "darwin" ){
+#         print "MacOSX"
+#       }else if (pl ~ "mingw"){
+#         print "Windows"
+#       }else if(pl == "linux"){
+#         print "Linux"
+#       }
+#     }')
 if [ $os = 1 ]
 then
     filename="${filename}-${platform}"
