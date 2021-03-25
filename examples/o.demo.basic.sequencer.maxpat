@@ -40,6 +40,20 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"autofit" : 1,
+					"forceaspect" : 1,
+					"id" : "obj-1",
+					"maxclass" : "fpic",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "jit_matrix" ],
+					"patching_rect" : [ 1153.0, 44.26171875, 100.0, 100.0 ],
+					"pic" : "/Users/jml/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/icon.png"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"bubble" : 1,
 					"bubbleside" : 3,
 					"fontname" : "Helvetica Neue",
@@ -930,6 +944,13 @@
 		}
 ,
 		"dependency_cache" : [ 			{
+				"name" : "icon.png",
+				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot",
+				"patcherrelativepath" : "..",
+				"type" : "PNG",
+				"implicit" : 1
+			}
+, 			{
 				"name" : "o.union.mxo",
 				"type" : "iLaX"
 			}

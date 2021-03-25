@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 74.0, 109.0, 906.0, 709.0 ],
+		"rect" : [ 74.0, 109.0, 626.0, 643.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -40,12 +40,38 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-10",
+					"linecount" : 5,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 434.0, 353.0, 119.0, 74.0 ],
+					"text" : "substitute strings within a particular \"slot\" for all addresses within an input bundle"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"autofit" : 1,
+					"forceaspect" : 1,
+					"id" : "obj-1",
+					"maxclass" : "fpic",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "jit_matrix" ],
+					"patching_rect" : [ 434.0, 232.0, 100.0, 100.0 ],
+					"pic" : "/Users/jml/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/icon.png"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-22",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "bang", "" ],
-					"patching_rect" : [ 349.75, 215.0, 29.5, 22.0 ],
+					"patching_rect" : [ 307.75, 181.0, 29.5, 22.0 ],
 					"text" : "t b l"
 				}
 
@@ -57,7 +83,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 408.0, 60.0, 29.5, 22.0 ],
+					"patching_rect" : [ 366.0, 26.0, 29.5, 22.0 ],
 					"text" : "2"
 				}
 
@@ -69,7 +95,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 364.0, 60.0, 29.5, 22.0 ],
+					"patching_rect" : [ 322.0, 26.0, 29.5, 22.0 ],
 					"text" : "1"
 				}
 
@@ -81,7 +107,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 324.0, 60.0, 29.5, 22.0 ],
+					"patching_rect" : [ 282.0, 26.0, 29.5, 22.0 ],
 					"text" : "0"
 				}
 
@@ -95,7 +121,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 350.0, 115.0, 51.0, 22.0 ]
+					"patching_rect" : [ 308.0, 81.0, 51.0, 22.0 ]
 				}
 
 			}
@@ -106,7 +132,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 350.0, 150.0, 80.0, 22.0 ],
+					"patching_rect" : [ 308.0, 116.0, 80.0, 22.0 ],
 					"text" : "o.pack /r/at"
 				}
 
@@ -118,7 +144,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 350.0, 187.0, 48.0, 22.0 ],
+					"patching_rect" : [ 308.0, 153.0, 48.0, 22.0 ],
 					"text" : "o.union"
 				}
 
@@ -130,7 +156,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 444.0, 122.0, 58.0, 22.0 ],
+					"patching_rect" : [ 402.0, 88.0, 58.0, 22.0 ],
 					"text" : "loadbang"
 				}
 
@@ -143,7 +169,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 444.0, 150.0, 179.0, 23.0 ],
+					"patching_rect" : [ 402.0, 116.0, 179.0, 23.0 ],
 					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 28, 47, 110, 97, 109, 101, 115, 0, 0, 44, 115, 115, 115, 0, 0, 0, 0, 43, 0, 0, 0, 61, 0, 0, 0, 126, 0, 0, 0 ],
 					"saved_bundle_length" : 48,
 					"text" : "/names : [\"+\", \"=\", \"~\"]"
@@ -157,7 +183,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 92.0, 285.0, 48.0, 22.0 ],
+					"patching_rect" : [ 50.0, 251.0, 48.0, 22.0 ],
 					"text" : "o.union"
 				}
 
@@ -170,7 +196,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 92.0, 167.0, 163.0, 31.0 ],
+					"patching_rect" : [ 50.0, 133.0, 163.0, 31.0 ],
 					"text" : "/addys = getaddresses()"
 				}
 
@@ -178,13 +204,12 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-5",
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 92.0, 534.0, 192.0, 34.0 ]
+					"patching_rect" : [ 50.0, 500.0, 180.0, 33.0 ]
 				}
 
 			}
@@ -197,7 +222,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "FullPacket", "FullPacket" ],
-					"patching_rect" : [ 92.0, 312.0, 295.0, 198.0 ],
+					"patching_rect" : [ 50.0, 278.0, 295.0, 198.0 ],
 					"text" : "map(\n  lambda([a, i], \n      /c = split(\"/\", a),  #  --- * AA\n      /n = /names[[i]],\n      map(\n        lambda([c, i],\n          if(i == /r/at, /c[[i]] = /n)\n        ), /c, aseq(0, length(/names) - 1)\n      ),\n      assign(\"/\" + join(\"/\", /c), value(a))\n  ), /addys, aseq(0, length(/addys)-1)\n), \nmap(delete, /addys), \ndelete(/c, /t, /names, /r/at, /n, /addys)"
 				}
 
@@ -212,7 +237,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 92.0, 100.5, 120.0, 49.0 ],
+					"patching_rect" : [ 50.0, 66.5, 120.0, 49.0 ],
 					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 24, 47, 45, 45, 45, 47, 42, 47, 65, 65, 0, 0, 0, 44, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 24, 47, 45, 45, 45, 47, 42, 47, 66, 66, 0, 0, 0, 44, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 24, 47, 45, 45, 45, 47, 42, 47, 67, 67, 0, 0, 0, 44, 100, 0, 0, 63, -16, 0, 0, 0, 0, 0, 0 ],
 					"saved_bundle_length" : 100,
 					"text" : "/---/*/AA : 0.,\n/---/*/BB : 0.,\n/---/*/CC : 1."
@@ -320,6 +345,13 @@
 			}
  ],
 		"dependency_cache" : [ 			{
+				"name" : "icon.png",
+				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot",
+				"patcherrelativepath" : "..",
+				"type" : "PNG",
+				"implicit" : 1
+			}
+, 			{
 				"name" : "o.compose.mxo",
 				"type" : "iLaX"
 			}

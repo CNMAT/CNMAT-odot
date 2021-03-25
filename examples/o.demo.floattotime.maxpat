@@ -40,6 +40,20 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"autofit" : 1,
+					"forceaspect" : 1,
+					"id" : "obj-6",
+					"maxclass" : "fpic",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "jit_matrix" ],
+					"patching_rect" : [ 816.0, 11.5, 100.0, 100.0 ],
+					"pic" : "/Users/jml/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/icon.png"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"fontsize" : 12.0,
 					"id" : "obj-33",
 					"linecount" : 3,
@@ -59,8 +73,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 31.0, 671.0, 281.0, 33.0 ],
-					"text" : "/now : 2021-03-10T04:31:01.245216Z"
+					"patching_rect" : [ 31.0, 671.0, 281.0, 33.0 ]
 				}
 
 			}
@@ -109,8 +122,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 31.0, 564.0, 281.0, 33.0 ],
-					"text" : "/now : 3.82434e+09"
+					"patching_rect" : [ 31.0, 564.0, 281.0, 33.0 ]
 				}
 
 			}
@@ -233,8 +245,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 31.0, 357.0, 281.0, 33.0 ],
-					"text" : "/now : 2021-03-10T04:31:01.245216Z"
+					"patching_rect" : [ 31.0, 357.0, 281.0, 33.0 ]
 				}
 
 			}
@@ -259,8 +270,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 31.0, 241.0, 281.0, 33.0 ],
-					"text" : "/now : \"2021-03-10T04:31:01.245216Z\""
+					"patching_rect" : [ 31.0, 241.0, 281.0, 33.0 ]
 				}
 
 			}
@@ -308,7 +318,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 816.0, 122.0, 197.0, 60.0 ],
+					"patching_rect" : [ 816.0, 126.0, 161.0, 60.0 ],
 					"text" : "Although timestamps look like dates and times when displayed, they need not be thought of in that way. "
 				}
 
@@ -330,13 +340,11 @@
 				"box" : 				{
 					"fontface" : 0,
 					"id" : "obj-2",
-					"linecount" : 2,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 31.0, 81.0, 226.0, 46.0 ],
-					"text" : "/now : 2021-03-10T04:31:01.245216Z"
+					"patching_rect" : [ 31.0, 81.0, 226.0, 33.0 ]
 				}
 
 			}
@@ -477,6 +485,13 @@
 			}
  ],
 		"dependency_cache" : [ 			{
+				"name" : "icon.png",
+				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot",
+				"patcherrelativepath" : "..",
+				"type" : "PNG",
+				"implicit" : 1
+			}
+, 			{
 				"name" : "o.timetag.mxo",
 				"type" : "iLaX"
 			}

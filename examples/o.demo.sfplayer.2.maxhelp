@@ -44,11 +44,11 @@
 					"fontname" : "Arial",
 					"fontsize" : 11.0,
 					"id" : "obj-6",
-					"linecount" : 5,
+					"linecount" : 4,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 79.5, 293.0, 95.0, 68.0 ],
+					"patching_rect" : [ 79.5, 293.0, 111.0, 56.0 ],
 					"text" : "play soundfiles using pattern matching and bundle descriptors"
 				}
 

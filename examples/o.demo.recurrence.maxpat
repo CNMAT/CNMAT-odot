@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 67.0, 103.0, 1030.0, 430.0 ],
+		"rect" : [ 67.0, 103.0, 947.0, 413.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -59,7 +59,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 1030.0, 404.0 ],
+						"rect" : [ 0.0, 26.0, 947.0, 387.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -97,8 +97,8 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 440.0, 273.808350000000019, 368.0, 97.0 ],
-									"text" : "/state : 8.,\n/iteration : \"lambda([s],  \nprogn(/power4root = sqrt(sqrt(/power4root ?? 1.0)),   \n/until = (/power4root==1)  , s * /power4root) ) \",\n/power4root : 1.,\n/until : true",
+									"patching_rect" : [ 495.0, 268.808350000000019, 368.0, 97.0 ],
+									"text" : "/state : 27.,\n/iteration : \"lambda([s], progn(/power4root = sqrt(sqrt(/power4root ?? 1.0)),   \n/until = (/power4root==1)  , s * /power4root) ) \",\n/power4root : 1.,\n/until : true",
 									"textcolor" : [ 0.996078, 0.996078, 0.996078, 1.0 ]
 								}
 
@@ -112,7 +112,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "FullPacket", "FullPacket" ],
-									"patching_rect" : [ 440.0, 242.0, 90.0, 22.0 ],
+									"patching_rect" : [ 495.0, 237.0, 90.0, 22.0 ],
 									"text" : "o.if /until==true"
 								}
 
@@ -125,7 +125,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 629.0, 54.0, 113.0, 23.0 ],
+									"patching_rect" : [ 670.0, 49.0, 113.0, 23.0 ],
 									"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 115, 116, 97, 116, 101, 0, 0, 44, 100, 0, 0, 63, -64, 0, 0, 0, 0, 0, 0 ],
 									"saved_bundle_length" : 40,
 									"text" : "/state : 0.125",
@@ -141,7 +141,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 508.0, 54.0, 93.0, 23.0 ],
+									"patching_rect" : [ 563.0, 49.0, 93.0, 23.0 ],
 									"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 47, 115, 116, 97, 116, 101, 0, 0, 44, 105, 0, 0, 0, 0, 0, 27 ],
 									"saved_bundle_length" : 36,
 									"text" : "/state : 27",
@@ -157,7 +157,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 327.0, 60.0, 156.0, 20.0 ],
+									"patching_rect" : [ 382.0, 55.0, 156.0, 20.0 ],
 									"text" : "2nd order damped sinusoid"
 								}
 
@@ -166,13 +166,14 @@
 								"box" : 								{
 									"fontface" : 0,
 									"id" : "obj-7",
-									"linecount" : 3,
+									"linecount" : 2,
 									"maxclass" : "o.expr.codebox",
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "FullPacket", "FullPacket" ],
-									"patching_rect" : [ 154.0, 102.0, 368.0, 57.0 ],
-									"text" : "/iteration = \"lambda([s],  \nprogn(/power4root = sqrt(sqrt(/power4root ?? 1.0)),   \n/until = (/power4root==1)  , s * /power4root) ) \" "
+									"patching_rect" : [ 209.0, 97.0, 540.0, 44.0 ],
+									"presentation_linecount" : 3,
+									"text" : "/iteration = \"lambda([s], progn(/power4root = sqrt(sqrt(/power4root ?? 1.0)),   \n/until = (/power4root==1)  , s * /power4root) ) \" "
 								}
 
 							}
@@ -184,7 +185,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 154.0, 60.0, 87.0, 23.0 ],
+									"patching_rect" : [ 209.0, 55.0, 87.0, 23.0 ],
 									"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 47, 115, 116, 97, 116, 101, 0, 0, 44, 105, 0, 0, 0, 0, 0, 8 ],
 									"saved_bundle_length" : 36,
 									"text" : "/state : 8",
@@ -200,7 +201,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 31.0, 27.0, 108.0, 20.0 ],
+									"patching_rect" : [ 85.0, 31.0, 108.0, 20.0 ],
 									"text" : "2) Click to repeat"
 								}
 
@@ -213,7 +214,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 157.0, 32.0, 295.0, 20.0 ],
+									"patching_rect" : [ 209.0, 31.0, 295.0, 20.0 ],
 									"text" : "1) Choose among many iteration functions"
 								}
 
@@ -226,7 +227,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 41.0, 52.0, 29.5, 23.0 ],
+									"patching_rect" : [ 96.0, 55.0, 29.5, 23.0 ],
 									"saved_bundle_data" : [  ],
 									"saved_bundle_length" : 0,
 									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
@@ -242,7 +243,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "FullPacket" ],
-									"patching_rect" : [ 119.0, 172.0, 54.0, 22.0 ],
+									"patching_rect" : [ 174.0, 167.0, 54.0, 22.0 ],
 									"text" : "o.union"
 								}
 
@@ -251,12 +252,13 @@
 								"box" : 								{
 									"fontface" : 0,
 									"id" : "obj-5",
+									"linecount" : 2,
 									"maxclass" : "o.display",
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 119.0, 320.0, 83.0, 33.0 ],
-									"text" : "/state : 8.",
+									"patching_rect" : [ 174.0, 315.0, 83.0, 46.0 ],
+									"text" : "/state : 27.",
 									"textcolor" : [ 0.996078, 0.996078, 0.996078, 1.0 ]
 								}
 
@@ -269,7 +271,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "FullPacket", "FullPacket" ],
-									"patching_rect" : [ 119.0, 198.923095999999987, 236.0, 31.0 ],
+									"patching_rect" : [ 174.0, 193.923095999999987, 236.0, 31.0 ],
 									"text" : "/state = apply(/iteration, /state)"
 								}
 
@@ -283,7 +285,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "FullPacket" ],
-									"patching_rect" : [ 119.0, 282.308350000000019, 85.0, 22.0 ],
+									"patching_rect" : [ 174.0, 277.308350000000019, 85.0, 22.0 ],
 									"text" : "o.select /state"
 								}
 
@@ -351,7 +353,7 @@
 								"patchline" : 								{
 									"color" : [ 1.0, 0.8, 0.4, 1.0 ],
 									"destination" : [ "obj-6", 1 ],
-									"midpoints" : [ 520.5, 269.0, 543.0, 269.0, 543.0, 167.0, 163.5, 167.0 ],
+									"midpoints" : [ 575.5, 264.0, 598.0, 264.0, 598.0, 162.0, 218.5, 162.0 ],
 									"source" : [ "obj-4", 1 ]
 								}
 
@@ -414,7 +416,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 1030.0, 404.0 ],
+						"rect" : [ 0.0, 26.0, 947.0, 387.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -452,7 +454,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 493.0, 44.5, 140.0, 49.0 ],
+									"patching_rect" : [ 567.0, 62.5, 140.0, 49.0 ],
 									"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 24, 47, 115, 116, 97, 116, 101, 0, 0, 44, 105, 100, 0, 0, 0, 0, 0, 63, -71, -103, -103, -103, -103, -103, -102, 0, 0, 0, 20, 47, 111, 109, 101, 103, 97, 0, 0, 44, 100, 0, 0, 63, -108, 122, -31, 71, -82, 20, 123, 0, 0, 0, 16, 47, 114, 0, 0, 44, 100, 0, 0, 63, -16, 0, 0, 0, 0, 0, 0 ],
 									"saved_bundle_length" : 88,
 									"text" : "/state : [0, 0.1],\n/omega : 0.02,\n/r : 1.",
@@ -468,7 +470,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 327.0, 60.0, 156.0, 20.0 ],
+									"patching_rect" : [ 401.0, 78.0, 156.0, 20.0 ],
 									"text" : "2nd order damped sinusoid"
 								}
 
@@ -481,8 +483,8 @@
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "FullPacket", "FullPacket" ],
-									"patching_rect" : [ 162.0, 116.0, 673.0, 31.0 ],
-									"text" : "/iteration = \"lambda( s,  [ 2*cos(twopi()* /omega) * /r *first(s) - /r * /r *last(s), first(s) ] ) \""
+									"patching_rect" : [ 236.0, 134.0, 653.0, 31.0 ],
+									"text" : "/iteration = \"lambda(s, [ 2*cos(twopi()* /omega) * /r *first(s) - /r * /r *last(s), first(s) ])\""
 								}
 
 							}
@@ -495,7 +497,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 162.0, 52.0, 146.0, 49.0 ],
+									"patching_rect" : [ 236.0, 70.0, 146.0, 49.0 ],
 									"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 24, 47, 115, 116, 97, 116, 101, 0, 0, 44, 105, 100, 0, 0, 0, 0, 0, 63, -79, -21, -123, 30, -72, 81, -20, 0, 0, 0, 20, 47, 111, 109, 101, 103, 97, 0, 0, 44, 100, 0, 0, 63, -108, 122, -31, 71, -82, 20, 123, 0, 0, 0, 16, 47, 114, 0, 0, 44, 100, 0, 0, 63, -17, -66, 118, -56, -76, 57, 88 ],
 									"saved_bundle_length" : 88,
 									"text" : "/state : [0, 0.07],\n/omega : 0.02,\n/r : 0.992",
@@ -511,7 +513,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 31.0, 27.0, 108.0, 20.0 ],
+									"patching_rect" : [ 105.0, 45.0, 108.0, 20.0 ],
 									"text" : "2) Click to repeat"
 								}
 
@@ -524,7 +526,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 157.0, 32.0, 295.0, 20.0 ],
+									"patching_rect" : [ 231.0, 50.0, 295.0, 20.0 ],
 									"text" : "1) Choose among many iteration functions"
 								}
 
@@ -537,7 +539,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 41.0, 52.0, 29.5, 23.0 ],
+									"patching_rect" : [ 115.0, 70.0, 30.0, 23.0 ],
 									"saved_bundle_data" : [  ],
 									"saved_bundle_length" : 0,
 									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
@@ -553,7 +555,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "FullPacket" ],
-									"patching_rect" : [ 110.0, 181.0, 71.0, 22.0 ],
+									"patching_rect" : [ 184.0, 199.0, 71.0, 22.0 ],
 									"text" : "o.union"
 								}
 
@@ -566,8 +568,8 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 110.123840000000001, 298.0, 170.0, 33.0 ],
-									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
+									"patching_rect" : [ 184.123840000000001, 316.0, 301.0, 33.0 ],
+									"text" : "/state : [-0.384378, -0.293717]"
 								}
 
 							}
@@ -579,7 +581,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "FullPacket", "FullPacket" ],
-									"patching_rect" : [ 110.091003000000001, 212.923095999999987, 236.0, 31.0 ],
+									"patching_rect" : [ 184.091003000000001, 230.923095999999987, 236.0, 31.0 ],
 									"text" : "/state = apply(/iteration, /state)"
 								}
 
@@ -593,7 +595,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "FullPacket" ],
-									"patching_rect" : [ 110.123840000000001, 264.308350000000019, 85.0, 22.0 ],
+									"patching_rect" : [ 184.123840000000001, 282.308350000000019, 85.0, 22.0 ],
 									"text" : "o.select /state"
 								}
 
@@ -627,7 +629,7 @@
 								"patchline" : 								{
 									"color" : [ 1.0, 0.8, 0.4, 1.0 ],
 									"destination" : [ "obj-6", 1 ],
-									"midpoints" : [ 119.591003000000001, 254.0, 363.0, 254.0, 363.0, 166.0, 171.5, 166.0 ],
+									"midpoints" : [ 193.591003000000001, 272.0, 437.0, 272.0, 437.0, 184.0, 245.5, 184.0 ],
 									"order" : 0,
 									"source" : [ "obj-33", 0 ]
 								}
@@ -697,7 +699,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 67.0, 129.0, 1030.0, 404.0 ],
+						"rect" : [ 67.0, 129.0, 947.0, 387.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -728,7 +730,21 @@
 						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
-									"bgcolor" : [ 0.0, 1.0, 1.0, 1.0 ],
+									"autofit" : 1,
+									"forceaspect" : 1,
+									"id" : "obj-1",
+									"maxclass" : "fpic",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "jit_matrix" ],
+									"patching_rect" : [ 753.640990999999985, 44.0, 100.0, 100.0 ],
+									"pic" : "/Users/jml/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/icon.png"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"bgcolor" : [ 0.0, 1.0, 1.0, 0.0 ],
 									"fontname" : "Arial",
 									"fontsize" : 12.0,
 									"id" : "obj-15",
@@ -736,7 +752,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 395.640990999999985, 17.0, 387.0, 141.0 ],
+									"patching_rect" : [ 466.640990999999985, 176.0, 387.0, 141.0 ],
 									"text" : "Performing an operation and building the result into the next repeat of that operation  is a powerful and common programming technique and for that matter works quite well well cooking, e.g., whipping cream.\n\nAll we need for iteration of this recurrent type in \"o.\" is a place to store the result that we can feed into the next computation. I  used \"o.union\" for this In the examples you can find under the tabs above.\n\n\nAdrian Freed 2014"
 								}
 
@@ -749,7 +765,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 217.0, 192.423095999999987, 59.0, 20.0 ],
+									"patching_rect" : [ 281.0, 219.423095999999987, 59.0, 20.0 ],
 									"text" : "Counting"
 								}
 
@@ -762,7 +778,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 17.0, 13.0, 108.0, 20.0 ],
+									"patching_rect" : [ 81.0, 40.0, 108.0, 20.0 ],
 									"text" : "2) Click to repeat"
 								}
 
@@ -775,7 +791,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 142.0, 17.0, 193.0, 20.0 ],
+									"patching_rect" : [ 206.0, 44.0, 193.0, 20.0 ],
 									"text" : "1) Click to establish the initial state"
 								}
 
@@ -788,7 +804,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 26.0, 37.0, 29.5, 23.0 ],
+									"patching_rect" : [ 90.0, 64.0, 30.0, 23.0 ],
 									"saved_bundle_data" : [  ],
 									"saved_bundle_length" : 0,
 									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
@@ -803,7 +819,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 134.0, 41.0, 87.0, 23.0 ],
+									"patching_rect" : [ 198.0, 68.0, 87.0, 23.0 ],
 									"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 47, 115, 116, 97, 116, 101, 0, 0, 44, 105, 0, 0, 0, 0, 0, 1 ],
 									"saved_bundle_length" : 36,
 									"text" : "/state : 1",
@@ -820,7 +836,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "FullPacket" ],
-									"patching_rect" : [ 104.0, 157.0, 50.0, 22.0 ],
+									"patching_rect" : [ 168.0, 184.0, 50.0, 22.0 ],
 									"text" : "o.union"
 								}
 
@@ -828,14 +844,13 @@
 , 							{
 								"box" : 								{
 									"fontface" : 0,
-									"fontname" : "Arial",
 									"id" : "obj-5",
 									"maxclass" : "o.display",
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 104.123840000000001, 280.0, 96.0, 33.0 ],
-									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
+									"patching_rect" : [ 168.123840000000001, 307.0, 150.0, 33.0 ],
+									"text" : "/state : 11"
 								}
 
 							}
@@ -847,7 +862,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "FullPacket", "FullPacket" ],
-									"patching_rect" : [ 104.091003000000001, 186.923095999999987, 63.0, 31.0 ],
+									"patching_rect" : [ 168.091003000000001, 213.923095999999987, 63.0, 31.0 ],
 									"text" : "/state++"
 								}
 
@@ -861,7 +876,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "FullPacket" ],
-									"patching_rect" : [ 104.123840000000001, 240.30834999999999, 85.0, 22.0 ],
+									"patching_rect" : [ 168.123840000000001, 267.308350000000019, 85.0, 22.0 ],
 									"text" : "o.select /state"
 								}
 
@@ -896,7 +911,7 @@
 								"patchline" : 								{
 									"color" : [ 1.0, 0.8, 0.4, 1.0 ],
 									"destination" : [ "obj-6", 1 ],
-									"midpoints" : [ 113.591003000000001, 230.0, 326.0, 230.0, 326.0, 142.0, 144.5, 142.0 ],
+									"midpoints" : [ 177.591003000000001, 257.0, 390.0, 257.0, 390.0, 169.0, 208.5, 169.0 ],
 									"order" : 0,
 									"source" : [ "obj-33", 0 ]
 								}
@@ -952,7 +967,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 1030.0, 404.0 ],
+						"rect" : [ 0.0, 26.0, 947.0, 387.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -989,8 +1004,8 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 352.0, 192.0, 150.0, 20.0 ],
-									"text" : "Exponential funciton"
+									"patching_rect" : [ 604.0, 224.0, 150.0, 20.0 ],
+									"text" : "Exponential function"
 								}
 
 							}
@@ -1002,7 +1017,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 17.0, 13.0, 108.0, 20.0 ],
+									"patching_rect" : [ 268.0, 49.0, 108.0, 20.0 ],
 									"text" : "2) Click to repeat"
 								}
 
@@ -1015,7 +1030,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 142.0, 17.0, 193.0, 20.0 ],
+									"patching_rect" : [ 394.0, 49.0, 193.0, 20.0 ],
 									"text" : "1) Click to establish the initial state"
 								}
 
@@ -1028,7 +1043,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 26.0, 37.0, 29.5, 23.0 ],
+									"patching_rect" : [ 280.0, 73.0, 30.0, 23.0 ],
 									"saved_bundle_data" : [  ],
 									"saved_bundle_length" : 0,
 									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
@@ -1043,7 +1058,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 134.0, 41.0, 87.0, 23.0 ],
+									"patching_rect" : [ 387.0, 73.0, 87.0, 23.0 ],
 									"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 47, 115, 116, 97, 116, 101, 0, 0, 44, 105, 0, 0, 0, 0, 0, 1 ],
 									"saved_bundle_length" : 36,
 									"text" : "/state : 1",
@@ -1060,7 +1075,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "FullPacket" ],
-									"patching_rect" : [ 104.0, 157.0, 50.0, 22.0 ],
+									"patching_rect" : [ 356.0, 189.0, 50.0, 22.0 ],
 									"text" : "o.union"
 								}
 
@@ -1073,8 +1088,8 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 104.123840000000001, 269.0, 207.999999999999972, 33.0 ],
-									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
+									"patching_rect" : [ 356.123839999999973, 301.0, 207.0, 33.0 ],
+									"text" : "/state : 0.6561"
 								}
 
 							}
@@ -1086,7 +1101,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "FullPacket", "FullPacket" ],
-									"patching_rect" : [ 104.091003000000001, 186.923095999999987, 97.0, 31.0 ],
+									"patching_rect" : [ 356.091003000000001, 218.923095999999987, 97.0, 31.0 ],
 									"text" : "/state *= 0.9"
 								}
 
@@ -1100,7 +1115,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "FullPacket" ],
-									"patching_rect" : [ 104.123840000000001, 240.30834999999999, 85.0, 22.0 ],
+									"patching_rect" : [ 356.123839999999973, 272.308350000000019, 85.0, 22.0 ],
 									"text" : "o.select /state"
 								}
 
@@ -1135,7 +1150,7 @@
 								"patchline" : 								{
 									"color" : [ 1.0, 0.8, 0.4, 1.0 ],
 									"destination" : [ "obj-6", 1 ],
-									"midpoints" : [ 113.591003000000001, 230.0, 326.0, 230.0, 326.0, 142.0, 144.5, 142.0 ],
+									"midpoints" : [ 365.591003000000001, 262.0, 578.0, 262.0, 578.0, 174.0, 396.5, 174.0 ],
 									"order" : 0,
 									"source" : [ "obj-33", 0 ]
 								}
@@ -1190,7 +1205,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 1030.0, 404.0 ],
+						"rect" : [ 0.0, 26.0, 947.0, 387.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -1228,8 +1243,8 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 379.0, 173.0, 180.0, 47.0 ],
-									"text" : "set the new state according to the iteration function applied to the preveous function"
+									"patching_rect" : [ 598.0, 214.0, 180.0, 47.0 ],
+									"text" : "set the new state according to the iteration function applied to the previous function"
 								}
 
 							}
@@ -1241,7 +1256,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 467.0, 76.5, 150.0, 20.0 ],
+									"patching_rect" : [ 686.0, 117.5, 150.0, 20.0 ],
 									"text" : "Fibonacci"
 								}
 
@@ -1254,7 +1269,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 17.0, 13.0, 108.0, 20.0 ],
+									"patching_rect" : [ 236.0, 54.0, 108.0, 20.0 ],
 									"text" : "2) Click ro repeat"
 								}
 
@@ -1267,7 +1282,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 142.0, 17.0, 193.0, 20.0 ],
+									"patching_rect" : [ 361.0, 58.0, 193.0, 20.0 ],
 									"text" : "1) Click to establish the initial state"
 								}
 
@@ -1280,7 +1295,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 26.0, 37.0, 29.5, 23.0 ],
+									"patching_rect" : [ 245.0, 78.0, 30.0, 23.0 ],
 									"saved_bundle_data" : [  ],
 									"saved_bundle_length" : 0,
 									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
@@ -1295,7 +1310,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "FullPacket", "FullPacket" ],
-									"patching_rect" : [ 134.0, 71.0, 322.0, 31.0 ],
+									"patching_rect" : [ 353.0, 112.0, 322.0, 31.0 ],
 									"text" : "/iteration = \"lambda(s, [ sum(s), first(s) ] )\""
 								}
 
@@ -1308,7 +1323,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 134.0, 41.0, 120.0, 23.0 ],
+									"patching_rect" : [ 353.0, 82.0, 120.0, 23.0 ],
 									"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 115, 116, 97, 116, 101, 0, 0, 44, 105, 105, 0, 0, 0, 0, 0, 0, 0, 0, 1 ],
 									"saved_bundle_length" : 40,
 									"text" : "/state : [0, 1]",
@@ -1325,7 +1340,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "FullPacket" ],
-									"patching_rect" : [ 104.0, 157.0, 50.0, 22.0 ],
+									"patching_rect" : [ 323.0, 198.0, 50.0, 22.0 ],
 									"text" : "o.union"
 								}
 
@@ -1338,8 +1353,8 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 104.123840000000001, 275.0, 179.0, 33.0 ],
-									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
+									"patching_rect" : [ 323.123839999999973, 316.0, 150.0, 33.0 ],
+									"text" : "/state : [5, 3]"
 								}
 
 							}
@@ -1351,7 +1366,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "FullPacket", "FullPacket" ],
-									"patching_rect" : [ 104.091003000000001, 188.923095999999987, 236.0, 31.0 ],
+									"patching_rect" : [ 323.091003000000001, 229.923095999999987, 236.0, 31.0 ],
 									"text" : "/state = apply(/iteration, /state)"
 								}
 
@@ -1365,7 +1380,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "FullPacket" ],
-									"patching_rect" : [ 104.123840000000001, 240.30834999999999, 85.0, 22.0 ],
+									"patching_rect" : [ 323.123839999999973, 281.308350000000019, 85.0, 22.0 ],
 									"text" : "o.select /state"
 								}
 
@@ -1407,7 +1422,7 @@
 								"patchline" : 								{
 									"color" : [ 1.0, 0.8, 0.4, 1.0 ],
 									"destination" : [ "obj-6", 1 ],
-									"midpoints" : [ 113.591003000000001, 230.0, 356.0, 230.0, 356.0, 142.0, 144.5, 142.0 ],
+									"midpoints" : [ 332.591003000000001, 271.0, 575.0, 271.0, 575.0, 183.0, 363.5, 183.0 ],
 									"order" : 0,
 									"source" : [ "obj-33", 0 ]
 								}
@@ -1462,7 +1477,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 1030.0, 404.0 ],
+						"rect" : [ 0.0, 26.0, 947.0, 387.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -1499,7 +1514,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "FullPacket", "FullPacket" ],
-									"patching_rect" : [ 736.0, 152.5, 236.0, 31.0 ],
+									"patching_rect" : [ 585.0, 69.0, 236.0, 31.0 ],
 									"text" : "/iteration = \"lambda(s, s * 1.1 )\""
 								}
 
@@ -1512,7 +1527,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 736.0, 122.5, 87.0, 23.0 ],
+									"patching_rect" : [ 585.0, 39.0, 87.0, 23.0 ],
 									"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 47, 115, 116, 97, 116, 101, 0, 0, 44, 105, 0, 0, 0, 0, 0, 1 ],
 									"saved_bundle_length" : 36,
 									"text" : "/state : 1",
@@ -1528,7 +1543,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "FullPacket", "FullPacket" ],
-									"patching_rect" : [ 709.0, 71.0, 242.0, 31.0 ],
+									"patching_rect" : [ 600.0, 145.0, 242.0, 31.0 ],
 									"text" : "/iteration = \"lambda(s, s * 0.9 ) \""
 								}
 
@@ -1541,7 +1556,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 709.0, 41.0, 87.0, 23.0 ],
+									"patching_rect" : [ 600.0, 115.0, 87.0, 23.0 ],
 									"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 47, 115, 116, 97, 116, 101, 0, 0, 44, 105, 0, 0, 0, 0, 0, 1 ],
 									"saved_bundle_length" : 36,
 									"text" : "/state : 1",
@@ -1557,7 +1572,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "FullPacket", "FullPacket" ],
-									"patching_rect" : [ 477.0, 71.0, 216.0, 31.0 ],
+									"patching_rect" : [ 238.0, 145.0, 216.0, 31.0 ],
 									"text" : "/iteration = \"lambda(s, s + 1)\""
 								}
 
@@ -1570,7 +1585,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 477.0, 41.0, 87.0, 23.0 ],
+									"patching_rect" : [ 238.0, 115.0, 87.0, 23.0 ],
 									"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 47, 115, 116, 97, 116, 101, 0, 0, 44, 105, 0, 0, 0, 0, 0, 0 ],
 									"saved_bundle_length" : 36,
 									"text" : "/state : 0",
@@ -1586,7 +1601,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 16.0, 12.0, 108.0, 20.0 ],
+									"patching_rect" : [ 81.0, 69.0, 108.0, 20.0 ],
 									"text" : "2) Click to repeat"
 								}
 
@@ -1599,7 +1614,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 142.0, 17.0, 295.0, 20.0 ],
+									"patching_rect" : [ 208.0, 26.0, 295.0, 20.0 ],
 									"text" : "1) Choose among many iteration functions"
 								}
 
@@ -1612,7 +1627,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 26.0, 37.0, 29.5, 23.0 ],
+									"patching_rect" : [ 91.0, 94.0, 30.0, 23.0 ],
 									"saved_bundle_data" : [  ],
 									"saved_bundle_length" : 0,
 									"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
@@ -1627,7 +1642,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "FullPacket", "FullPacket" ],
-									"patching_rect" : [ 134.0, 71.0, 328.0, 31.0 ],
+									"patching_rect" : [ 200.0, 80.0, 328.0, 31.0 ],
 									"text" : "/iteration = \"lambda(s, [ sum(s), first(s) ] ) \""
 								}
 
@@ -1640,7 +1655,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 134.0, 41.0, 120.0, 23.0 ],
+									"patching_rect" : [ 200.0, 50.0, 120.0, 23.0 ],
 									"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 115, 116, 97, 116, 101, 0, 0, 44, 105, 105, 0, 0, 0, 0, 0, 0, 0, 0, 1 ],
 									"saved_bundle_length" : 40,
 									"text" : "/state : [0, 1]",
@@ -1657,7 +1672,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "FullPacket" ],
-									"patching_rect" : [ 104.0, 157.0, 50.0, 22.0 ],
+									"patching_rect" : [ 169.0, 214.0, 50.0, 22.0 ],
 									"text" : "o.union"
 								}
 
@@ -1670,8 +1685,8 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 104.123840000000001, 270.0, 204.999999999999972, 33.0 ],
-									"text" : "/state : [1, 0]",
+									"patching_rect" : [ 169.123840000000001, 327.0, 204.999999999999972, 33.0 ],
+									"text" : "/state : 0.348678",
 									"textcolor" : [ 0.996078, 0.996078, 0.996078, 1.0 ]
 								}
 
@@ -1684,7 +1699,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "FullPacket", "FullPacket" ],
-									"patching_rect" : [ 104.0, 192.0, 236.0, 31.0 ],
+									"patching_rect" : [ 169.0, 249.0, 236.0, 31.0 ],
 									"text" : "/state = apply(/iteration, /state)"
 								}
 
@@ -1698,7 +1713,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "FullPacket" ],
-									"patching_rect" : [ 104.123840000000001, 240.30834999999999, 85.0, 22.0 ],
+									"patching_rect" : [ 169.123840000000001, 297.308350000000019, 85.0, 22.0 ],
 									"text" : "o.select /state"
 								}
 
@@ -1715,7 +1730,7 @@
 								"patchline" : 								{
 									"color" : [ 1.0, 0.8, 0.4, 1.0 ],
 									"destination" : [ "obj-6", 1 ],
-									"midpoints" : [ 745.5, 192.0, 726.0, 192.0, 726.0, 141.0, 144.5, 141.0 ],
+									"midpoints" : [ 594.5, 192.5, 209.5, 192.5 ],
 									"source" : [ "obj-11", 0 ]
 								}
 
@@ -1763,7 +1778,7 @@
 								"patchline" : 								{
 									"color" : [ 1.0, 0.8, 0.4, 1.0 ],
 									"destination" : [ "obj-6", 1 ],
-									"midpoints" : [ 113.5, 230.0, 354.0, 230.0, 354.0, 148.0, 144.5, 148.0 ],
+									"midpoints" : [ 178.5, 287.0, 419.0, 287.0, 419.0, 205.0, 209.5, 205.0 ],
 									"order" : 0,
 									"source" : [ "obj-33", 0 ]
 								}
@@ -1788,7 +1803,7 @@
 								"patchline" : 								{
 									"color" : [ 1.0, 0.8, 0.4, 1.0 ],
 									"destination" : [ "obj-6", 1 ],
-									"midpoints" : [ 486.5, 120.0, 144.5, 120.0 ],
+									"midpoints" : [ 247.5, 182.0, 209.5, 182.0 ],
 									"source" : [ "obj-7", 0 ]
 								}
 
@@ -1804,7 +1819,7 @@
 								"patchline" : 								{
 									"color" : [ 1.0, 0.8, 0.4, 1.0 ],
 									"destination" : [ "obj-6", 1 ],
-									"midpoints" : [ 718.5, 129.0, 144.5, 129.0 ],
+									"midpoints" : [ 609.5, 199.0, 209.5, 199.0 ],
 									"source" : [ "obj-9", 0 ]
 								}
 
@@ -1827,6 +1842,13 @@
  ],
 		"lines" : [  ],
 		"dependency_cache" : [ 			{
+				"name" : "icon.png",
+				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot",
+				"patcherrelativepath" : "..",
+				"type" : "PNG",
+				"implicit" : 1
+			}
+, 			{
 				"name" : "o.select.mxo",
 				"type" : "iLaX"
 			}

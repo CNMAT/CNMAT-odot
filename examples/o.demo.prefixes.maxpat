@@ -40,6 +40,20 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"autofit" : 1,
+					"forceaspect" : 1,
+					"id" : "obj-5",
+					"maxclass" : "fpic",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "jit_matrix" ],
+					"patching_rect" : [ 935.0, 18.0, 100.0, 100.0 ],
+					"pic" : "/Users/jml/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/icon.png"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"fontface" : 2,
 					"id" : "obj-2",
 					"maxclass" : "comment",
@@ -502,7 +516,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 19.0, 466.0, 465.0, 59.0 ],
-					"text" : "/a/dev : [-0.854918, 0, 134007, 2021-03-10T04:30:28.032842Z],\n/self : \"/a\",\n/a/time/local : 2021-03-10T04:30:28.032882Z"
+					"text" : "/b/dev : [0.494596, 0, 2065, 2021-03-25T16:58:01.691797Z],\n/self : \"/b\",\n/b/time/local : 2021-03-25T16:58:01.691818Z"
 				}
 
 			}
@@ -528,7 +542,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 19.0, 332.0, 465.0, 59.0 ],
-					"text" : "/a/dev : [-0.854918, 0, 134007, 2021-03-10T04:30:28.032842Z],\n/time/local : 2021-03-10T04:30:28.032882Z,\n/self : \"/a\""
+					"text" : "/b/dev : [0.494596, 0, 2065, 2021-03-25T16:58:01.691797Z],\n/time/local : 2021-03-25T16:58:01.691818Z,\n/self : \"/b\""
 				}
 
 			}
@@ -541,7 +555,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 19.0, 182.0, 465.0, 33.0 ],
-					"text" : "/a/dev : [-0.854918, 0, 134007, 2021-03-10T04:30:28.032842Z]"
+					"text" : "/b/dev : [0.494596, 0, 2065, 2021-03-25T16:58:01.691797Z]"
 				}
 
 			}
@@ -1707,6 +1721,13 @@
 				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/dev",
 				"patcherrelativepath" : "../dev",
 				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "icon.png",
+				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot",
+				"patcherrelativepath" : "..",
+				"type" : "PNG",
 				"implicit" : 1
 			}
 , 			{

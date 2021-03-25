@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 34.0, 87.0, 657.0, 679.0 ],
+		"rect" : [ 34.0, 87.0, 657.0, 562.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -39,6 +39,101 @@
 		"subpatcher_template" : "",
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
+				"box" : 				{
+					"id" : "obj-13",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patcher" : 					{
+						"fileversion" : 1,
+						"appversion" : 						{
+							"major" : 8,
+							"minor" : 1,
+							"revision" : 10,
+							"architecture" : "x64",
+							"modernui" : 1
+						}
+,
+						"classnamespace" : "box",
+						"rect" : [ 0.0, 0.0, 640.0, 480.0 ],
+						"bglocked" : 0,
+						"openinpresentation" : 0,
+						"default_fontsize" : 12.0,
+						"default_fontface" : 0,
+						"default_fontname" : "Arial",
+						"gridonopen" : 1,
+						"gridsize" : [ 15.0, 15.0 ],
+						"gridsnaponopen" : 1,
+						"objectsnaponopen" : 1,
+						"statusbarvisible" : 2,
+						"toolbarvisible" : 1,
+						"lefttoolbarpinned" : 0,
+						"toptoolbarpinned" : 0,
+						"righttoolbarpinned" : 0,
+						"bottomtoolbarpinned" : 0,
+						"toolbars_unpinned_last_save" : 0,
+						"tallnewobj" : 0,
+						"boxanimatetime" : 200,
+						"enablehscroll" : 1,
+						"enablevscroll" : 1,
+						"devicewidth" : 0.0,
+						"description" : "",
+						"digest" : "",
+						"tags" : "",
+						"style" : "",
+						"subpatcher_template" : "",
+						"assistshowspatchername" : 0,
+						"boxes" : [ 							{
+								"box" : 								{
+									"fontface" : 0,
+									"id" : "obj-5",
+									"linecount" : 29,
+									"maxclass" : "o.display",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 50.0, 100.0, 246.0, 392.0 ],
+									"text" : "/6/time/relative : 0.,\n/6/sfdur/ms,\n/6/voice : 6,\n/6/time/absolute : 0.,\n/5/time/relative : 0.,\n/5/sfdur/ms,\n/5/voice : 5,\n/5/time/absolute : 0.,\n/4/time/relative : 0.,\n/4/sfdur/ms,\n/4/voice : 4,\n/4/time/absolute : 0.,\n/3/time/relative : 0.,\n/3/sfdur/ms,\n/3/voice : 3,\n/3/time/absolute : 0.,\n/2/time/relative : 0.,\n/2/sfdur/ms,\n/2/voice : 2,\n/2/time/absolute : 0.,\n/1/time/relative : 0.224977,\n/1/sfdur/ms : 2844.76,\n/1/voice : 1,\n/1/bufname : \"buf\",\n/1/transport/play : \"bang\",\n/1/func : \"lambda(t, /cos =  cos(t * 2. * pi()))\",\n/1/time/absolute : 640.005,\n/1/cos : 0.156579"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"comment" : "",
+									"id" : "obj-12",
+									"index" : 1,
+									"maxclass" : "inlet",
+									"numinlets" : 0,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 50.0, 40.0, 30.0, 30.0 ]
+								}
+
+							}
+ ],
+						"lines" : [ 							{
+								"patchline" : 								{
+									"destination" : [ "obj-5", 0 ],
+									"source" : [ "obj-12", 0 ]
+								}
+
+							}
+ ]
+					}
+,
+					"patching_rect" : [ 153.0, 301.0, 87.0, 22.0 ],
+					"saved_object_attributes" : 					{
+						"description" : "",
+						"digest" : "",
+						"globalpatchername" : "",
+						"tags" : ""
+					}
+,
+					"text" : "p view_display"
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"fontface" : 0,
 					"fontname" : "Arial",
@@ -131,20 +226,6 @@
 			}
 , 			{
 				"box" : 				{
-					"fontface" : 0,
-					"id" : "obj-5",
-					"linecount" : 49,
-					"maxclass" : "o.display",
-					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 153.0, 301.0, 246.0, 648.0 ],
-					"text" : "/4/time/relative : 0.,\n/4/sfdur/ms : 2844.76,\n/4/voice : 4,\n/4/bufname : \"buf\",\n/4/transport/play : \"bang\",\n/4/func : \"lambda(t, /cos =  cos(t * 2. * pi()))\",\n/4/time/absolute : 0.,\n/4/cos : 1.,\n/3/time/relative : 0.,\n/3/sfdur/ms : 2844.76,\n/3/voice : 3,\n/3/bufname : \"buf\",\n/3/transport/play : \"bang\",\n/3/func : \"lambda(t, /cos =  cos(t * 2. * pi()))\",\n/3/time/absolute : 0.,\n/3/cos : 1.,\n/2/time/relative : 0.,\n/2/sfdur/ms : 2844.76,\n/2/voice : 2,\n/2/bufname : \"buf\",\n/2/transport/play : \"bang\",\n/2/func : \"lambda(t, /cos =  cos(t * 2. * pi()))\",\n/2/time/absolute : 0.,\n/2/cos : 1.,\n/1/time/relative : 0.,\n/1/sfdur/ms : 2844.76,\n/1/voice : 1,\n/1/bufname : \"buf\",\n/1/transport/play : \"bang\",\n/1/func : \"lambda(t, /cos =  cos(t * 2. * pi()))\",\n/1/time/absolute : 0.,\n/1/cos : 1.,\n/6/time/relative : 0.,\n/6/sfdur/ms,\n/6/voice : 6,\n/6/time/absolute : 0.,\n/5/time/relative : 0.,\n/5/sfdur/ms : 2844.76,\n/5/voice : 5,\n/5/bufname : \"buf\",\n/5/transport/play : \"bang\",\n/5/func : \"lambda(t, /cos =  cos(t * 2. * pi()))\",\n/5/time/absolute : 0.,\n/5/cos : 1."
-				}
-
-			}
-, 			{
-				"box" : 				{
 					"channels" : 1,
 					"id" : "obj-4",
 					"lastchannelcount" : 0,
@@ -205,7 +286,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 506.0, 70.0, 48.0, 22.0 ],
+					"patching_rect" : [ 486.0, 70.0, 48.0, 22.0 ],
 					"text" : "replace"
 				}
 
@@ -217,7 +298,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "float", "bang" ],
-					"patching_rect" : [ 506.0, 109.0, 135.0, 22.0 ],
+					"patching_rect" : [ 486.0, 109.0, 135.0, 22.0 ],
 					"text" : "buffer~ buf cherokee.aif"
 				}
 
@@ -309,7 +390,7 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-5", 0 ],
+					"destination" : [ "obj-13", 0 ],
 					"source" : [ "obj-9", 0 ]
 				}
 
@@ -326,16 +407,23 @@
 ,
 		"dependency_cache" : [ 			{
 				"name" : "o.sfplayer.1.maxpat",
-				"bootpath" : "~/Development/CNMAT/CNMAT/CNMAT-odot/examples",
+				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/examples",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.accum.maxpat",
-				"bootpath" : "~/Development/CNMAT/CNMAT/CNMAT-odot/patchers/namespace",
+				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/patchers/namespace",
 				"patcherrelativepath" : "../patchers/namespace",
 				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "icon.png",
+				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot",
+				"patcherrelativepath" : "..",
+				"type" : "PNG",
 				"implicit" : 1
 			}
 , 			{
