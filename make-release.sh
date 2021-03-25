@@ -160,7 +160,7 @@ then
 fi
 
 echo "cleaning up release"
-filestodelete=(".git" "src" "make-release.sh" "make-package-info.py" "dev-internal")
+filestodelete=(".git" "src" "make-release.sh" "dev-internal")
 if [ $pd = 0 ]
 then
     filestodelete+=( "pd" )
@@ -171,3 +171,109 @@ do
     echo rm -rf "../${filename}/${filestodelete[$i]}"
     rm -rf "../${filename}/${filestodelete[$i]}"
 done
+
+openobj() {
+    echo "{" >> "$1"
+}
+
+closeobj() {
+    echo "}" >> "$1"
+}
+
+openlist() {
+    echo -n "[" >> "$1"
+}
+
+closelist() {
+    echo -n "]" >> "$1"
+}
+
+writelist() {
+    f="$1"
+    shift
+    n=$#
+    for ((i = 0; i < $n - 1; i++))
+    do
+	echo -n "\"$1\"," >> "$f"
+	shift
+    done
+    echo -n "\"$1\"" >> "$f"
+}
+
+writekey() {
+    echo -n "\"$2\" : " >> "$1"
+}
+
+writesingleval() {
+    echo -n "\"$2\"" >> "$1"
+}
+
+endentry() {
+    echo "," >> "$1"
+}
+
+writesimpleentry() {
+    writekey "$1" "$2"
+    writesingleval "$1" "$3"
+    endentry "$1"
+}
+
+writefinalentry() {
+    writekey "$1" "$2"
+    writesingleval "$1" "$3"
+    echo "" >> "$1"
+}
+
+writelistentry() {
+    f="$1"
+    shift
+    writekey "$f" "$1"
+    shift
+    openlist "$f"
+    writelist "$f" "$@"
+    closelist "$f"
+    endentry "$f"
+}
+
+writepackageinfo() {
+    f="package-info.json"
+    cd ../$filename
+    touch "$f"
+    openobj "$f"
+    writesimpleentry "$f" "author" "CNMAT"
+    writelistentry "$f" "authors" "John MacCallum" "Adrian Freed" "Rama Gottfried" "Ilya Rostovtsev"
+    writesimpleentry "$f" "description" "Dynamic programming environment for OSC in Max"
+    writesimpleentry "$f" "homepatcher" "o.overview.maxpat"
+    writesimpleentry "$f" "max_version_max" "none"
+    writesimpleentry "$f" "max_version_min" "6.0"
+    writesimpleentry "$f" "name" "odot"
+    
+    writekey "$f" "os"
+    openobj "$f"
+      writekey "$f" "macintosh"
+      openobj "$f"
+        writesimpleentry "$f" "platform" "x64"
+        writefinalentry "$f" "min_version" "10.10.0"
+      closeobj "$f"
+      endentry "$f"
+      writekey "$f" "windows"
+      openobj "$f"
+        writesimpleentry "$f" "platform" "x64"
+        writefinalentry "$f" "min_version" "7"
+      closeobj "$f"
+    closeobj "$f"
+    endentry "$f"
+
+    writekey "$f" "package_extras"
+    openobj "$f"
+      writesimpleentry "$f" "reverse_domain" "edu.berkeley.cnmat"
+      writefinalentry "$f" "copyright" "Copyright (c) 2007-21 UC Regents"
+    closeobj "$f"
+    endentry "$f"
+
+    writelistentry "$f" "tags" "Open Sound Control (OSC)" "Dynamic Programming" "CNMAT"
+    writesimpleentry "$f" "version" "$version"
+    writefinalentry "$f" "website" "https://github.com/CNMAT/CNMAT-odot"
+    closeobj "$f"
+}
+writepackageinfo
