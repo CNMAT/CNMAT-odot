@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 39.0, 57.0, 470.0, 806.0 ],
+		"rect" : [ 11.0, 59.0, 930.0, 538.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -40,6 +40,20 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"autofit" : 1,
+					"forceaspect" : 1,
+					"id" : "obj-1",
+					"maxclass" : "fpic",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "jit_matrix" ],
+					"patching_rect" : [ 809.0, 13.0, 100.0, 100.0 ],
+					"pic" : "/Users/jml/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/icon.png"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"fontface" : 1,
 					"fontsize" : 18.0,
 					"id" : "obj-65",
@@ -57,7 +71,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 15.0, 764.0, 150.0, 20.0 ],
+					"patching_rect" : [ 471.0, 495.0, 150.0, 20.0 ],
 					"text" : "just right :)"
 				}
 
@@ -68,7 +82,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 233.5, 764.0, 150.0, 20.0 ],
+					"patching_rect" : [ 689.5, 495.0, 150.0, 20.0 ],
 					"text" : "too fast!"
 				}
 
@@ -82,7 +96,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 233.5, 733.0, 50.0, 22.0 ]
+					"patching_rect" : [ 689.5, 464.0, 50.0, 22.0 ]
 				}
 
 			}
@@ -93,7 +107,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "float", "" ],
-					"patching_rect" : [ 233.5, 704.0, 35.0, 22.0 ],
+					"patching_rect" : [ 689.5, 435.0, 35.0, 22.0 ],
 					"text" : "timer"
 				}
 
@@ -105,7 +119,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "bang", "bang" ],
-					"patching_rect" : [ 233.5, 670.0, 29.5, 22.0 ],
+					"patching_rect" : [ 689.5, 401.0, 35.5, 22.0 ],
 					"text" : "b 2"
 				}
 
@@ -119,7 +133,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 15.0, 733.0, 50.0, 22.0 ]
+					"patching_rect" : [ 471.0, 464.0, 50.0, 22.0 ]
 				}
 
 			}
@@ -130,7 +144,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "float", "" ],
-					"patching_rect" : [ 15.0, 704.0, 35.0, 22.0 ],
+					"patching_rect" : [ 471.0, 435.0, 35.0, 22.0 ],
 					"text" : "timer"
 				}
 
@@ -142,7 +156,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "bang", "bang" ],
-					"patching_rect" : [ 15.0, 670.0, 29.5, 22.0 ],
+					"patching_rect" : [ 471.0, 401.0, 35.0, 22.0 ],
 					"text" : "b 2"
 				}
 
@@ -150,14 +164,13 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-51",
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 74.0, 719.0, 150.0, 34.0 ],
-					"text" : "/rand : 627"
+					"patching_rect" : [ 530.0, 450.0, 140.0, 33.0 ],
+					"text" : "/rand : 819"
 				}
 
 			}
@@ -168,7 +181,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 74.0, 641.0, 80.0, 22.0 ],
+					"patching_rect" : [ 530.0, 372.0, 80.0, 22.0 ],
 					"text" : "speedlim 100"
 				}
 
@@ -180,7 +193,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 74.0, 670.0, 98.75, 22.0 ],
+					"patching_rect" : [ 530.0, 401.0, 98.75, 22.0 ],
 					"text" : "o.var"
 				}
 
@@ -192,7 +205,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 3,
 					"outlettype" : [ "bang", "", "bang" ],
-					"patching_rect" : [ 74.0, 615.0, 178.5, 22.0 ],
+					"patching_rect" : [ 530.0, 346.0, 178.5, 22.0 ],
 					"text" : "t b l b"
 				}
 
@@ -215,7 +228,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 109.0, 154.0, 640.0, 480.0 ],
+						"rect" : [ 109.0, 154.0, 191.0, 228.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -250,7 +263,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "int" ],
-									"patching_rect" : [ 102.0, 148.0, 79.0, 20.0 ],
+									"patching_rect" : [ 25.0, 59.0, 79.0, 22.0 ],
 									"text" : "random 1024"
 								}
 
@@ -262,7 +275,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "FullPacket" ],
-									"patching_rect" : [ 102.0, 210.0, 75.0, 20.0 ],
+									"patching_rect" : [ 25.0, 94.0, 75.0, 22.0 ],
 									"text" : "o.pack /rand"
 								}
 
@@ -274,7 +287,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "bang" ],
-									"patching_rect" : [ 102.0, 115.0, 106.0, 20.0 ],
+									"patching_rect" : [ 25.0, 26.0, 106.0, 22.0 ],
 									"text" : "metro 1 @active 1"
 								}
 
@@ -287,7 +300,7 @@
 									"maxclass" : "outlet",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 102.0, 323.0, 30.0, 30.0 ]
+									"patching_rect" : [ 25.0, 145.0, 30.0, 30.0 ]
 								}
 
 							}
@@ -316,7 +329,7 @@
  ]
 					}
 ,
-					"patching_rect" : [ 74.0, 588.0, 189.0, 22.0 ],
+					"patching_rect" : [ 530.0, 319.0, 197.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
@@ -324,7 +337,7 @@
 						"tags" : ""
 					}
 ,
-					"text" : "p very fast source of odot bundles"
+					"text" : "p \"very fast source of odot bundles\""
 				}
 
 			}
@@ -336,7 +349,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 15.0, 533.0, 438.0, 33.0 ],
+					"patching_rect" : [ 471.0, 264.0, 438.0, 33.0 ],
 					"text" : "speedlim, pipe, defer, and deferlow can never safely be used directly. They must be used in conjunction with o.var or o.compose:"
 				}
 
@@ -382,7 +395,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 234.0, 450.0, 35.0, 22.0 ],
+					"patching_rect" : [ 234.0, 450.0, 93.0, 22.0 ],
 					"text" : "o.var"
 				}
 
@@ -406,7 +419,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 15.0, 450.0, 38.0, 22.0 ],
+					"patching_rect" : [ 15.0, 450.0, 66.0, 22.0 ],
 					"text" : "zl.reg"
 				}
 
@@ -426,13 +439,12 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-34",
 					"maxclass" : "o.compose",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 279.0, 415.0, 93.0, 24.0 ],
+					"patching_rect" : [ 308.0, 415.0, 87.0, 23.0 ],
 					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 47, 102, 111, 111, 0, 0, 0, 0, 44, 105, 0, 0, 0, 0, 0, 10 ],
 					"saved_bundle_length" : 36,
 					"text" : "/foo : 10"
@@ -502,13 +514,13 @@
 			}
 , 			{
 				"box" : 				{
+					"dontreplace" : 1,
 					"id" : "obj-19",
 					"maxclass" : "message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 15.0, 339.0, 42.0, 22.0 ],
-					"text" : "foo 10"
+					"patching_rect" : [ 15.0, 339.0, 66.0, 22.0 ]
 				}
 
 			}
@@ -527,13 +539,12 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-16",
 					"maxclass" : "o.compose",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 279.0, 304.0, 93.0, 24.0 ],
+					"patching_rect" : [ 308.0, 304.0, 87.0, 23.0 ],
 					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 47, 102, 111, 111, 0, 0, 0, 0, 44, 105, 0, 0, 0, 0, 0, 10 ],
 					"saved_bundle_length" : 36,
 					"text" : "/foo : 10"
@@ -731,6 +742,13 @@
 			}
  ],
 		"dependency_cache" : [ 			{
+				"name" : "icon.png",
+				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot",
+				"patcherrelativepath" : "../../..",
+				"type" : "PNG",
+				"implicit" : 1
+			}
+, 			{
 				"name" : "o.compose.mxo",
 				"type" : "iLaX"
 			}
