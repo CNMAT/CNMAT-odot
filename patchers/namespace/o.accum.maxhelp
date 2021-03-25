@@ -2,14 +2,15 @@
 	"patcher" : 	{
 		"fileversion" : 1,
 		"appversion" : 		{
-			"major" : 7,
-			"minor" : 3,
-			"revision" : 1,
+			"major" : 8,
+			"minor" : 1,
+			"revision" : 10,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
-		"rect" : [ 393.0, 102.0, 753.0, 531.0 ],
+		"classnamespace" : "box",
+		"rect" : [ 60.0, 97.0, 569.0, 440.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -36,60 +37,70 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "Default Max 7",
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
-					"bubble" : 1,
-					"id" : "obj-12",
-					"linecount" : 2,
-					"maxclass" : "comment",
+					"data" : [ 593, "", "IBkSG0fBZn....PCIgDQRA...zF....LHX....vFnS+e....DLmPIQEBHf.B7g.YHB..BfPRDEDU3wY6bEsiCCBCKLc+++xbOwItcqkVHN1oGVZZRSCWZbLgNfUp0Z01HU3K1cfMLqTJC+N8dqOJZ2kjQs0Cy7Sk2qDqaeuV6esBIWssWky6bs9Oy6qO8gH.RtmAn5O2k2Yb0SWSalKVuE2KffyYwrIBm0++DmmJZpDLx.NpFFBG8epo4IVovKR7deHaImPEMTPsfLpYfdDfKZQ31Tv8FIBwoolyvSDsKyLhCOxxcftdVDIngIZnCNLRBXk3QchHOsZQQUFHTQSsZaqzeXlvQeJ+Qdyi7ZEYBY3hlm2brpqwdXc5NMy3GDVEQOrOEQSgZay1GTHASBmlY3CFn3mQBHMQyqa1HqqofKyLxNMEd.4U.qg4kY3wHwrKfqJftn4gaajHfHfybxTzEMD3ouzORHZYq1F6GYQBQKRb2.thaMAYDsUcaG0d0csy.YDMEghtLyDSzxVsMVPJQyLeEtUbJp5xLavlUMaY5n1bndBO5e+xogbsthpsHfJ2KGdpY73hfjiQbGc6tB7lix9jflOH2DQ1XL1hVBwVzRH1hVBwVzRH1hVBws+KoX0mPXzuH.5spcV4um2ScZ0Z8mWdidNQehZP0+QFaNi6gCOVJkTtmAabiLgqEWP7O1P+6uC5G0ITBWi6mxgtnGCEMTCAzPV2bosQfXrpBzVZldtQu6oxF+i3b+CFmP7MQ+TMlEbQ3RG.....IUjSD4pPfIH" ],
+					"embed" : 1,
+					"id" : "obj-11",
+					"maxclass" : "fpic",
 					"numinlets" : 1,
-					"numoutlets" : 0,
-					"patching_rect" : [ 167.0, 266.0, 349.0, 37.0 ],
-					"presentation_rect" : [ 383.0, 188.5, 0.0, 0.0 ],
-					"style" : "",
-					"text" : "o.accum is an abstraction for a frequently used o.union trick, double click to see inside"
+					"numoutlets" : 1,
+					"outlettype" : [ "jit_matrix" ],
+					"patching_rect" : [ 403.5, 33.0, 109.0, 48.0 ]
 				}
 
 			}
 , 			{
 				"box" : 				{
-					"id" : "obj-38",
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-7",
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 373.0, 132.5, 153.0, 20.0 ],
-					"style" : "",
+					"patching_rect" : [ 17.0, 102.5, 167.0, 20.0 ],
 					"text" : "accumulates OSC bundles"
 				}
 
 			}
 , 			{
 				"box" : 				{
-					"fontface" : 3,
-					"fontsize" : 18.0,
-					"id" : "obj-39",
+					"fontname" : "Arial",
+					"fontsize" : 72.0,
+					"id" : "obj-9",
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 373.0, 103.5, 84.0, 27.0 ],
-					"style" : "",
+					"patching_rect" : [ 17.0, 13.5, 307.0, 87.0 ],
 					"text" : "o.accum"
 				}
 
 			}
 , 			{
 				"box" : 				{
+					"bubble" : 1,
+					"id" : "obj-12",
+					"linecount" : 3,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 159.0, 229.0, 196.0, 51.0 ],
+					"text" : "o.accum is an abstraction for a frequently used o.union trick, double click to see inside"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
 					"id" : "obj-6",
 					"linecount" : 2,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 106.0, 357.0, 150.0, 48.0 ],
-					"text" : "/x : 5.64,\n/y : 0.61",
-					"textcolor" : [ 1.0, 1.0, 1.0, 1.0 ]
+					"patching_rect" : [ 89.0, 327.0, 150.0, 46.0 ],
+					"text" : "/y : 0.56,\n/x : 0.035"
 				}
 
 			}
@@ -102,9 +113,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 176.0, 176.0, 50.0, 22.0 ],
-					"presentation_rect" : [ 232.0, 117.0, 0.0, 0.0 ],
-					"style" : ""
+					"patching_rect" : [ 159.0, 146.0, 50.0, 22.0 ]
 				}
 
 			}
@@ -115,8 +124,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 176.0, 211.0, 59.0, 22.0 ],
-					"style" : "",
+					"patching_rect" : [ 159.0, 181.0, 59.0, 22.0 ],
 					"text" : "o.pack /y"
 				}
 
@@ -130,8 +138,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 106.0, 176.0, 50.0, 22.0 ],
-					"style" : ""
+					"patching_rect" : [ 89.0, 146.0, 50.0, 22.0 ]
 				}
 
 			}
@@ -142,8 +149,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "FullPacket" ],
-					"patching_rect" : [ 106.0, 211.0, 59.0, 22.0 ],
-					"style" : "",
+					"patching_rect" : [ 89.0, 181.0, 59.0, 22.0 ],
 					"text" : "o.pack /x"
 				}
 
@@ -155,8 +161,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 106.0, 273.5, 56.0, 22.0 ],
-					"style" : "",
+					"patching_rect" : [ 89.0, 243.5, 56.0, 22.0 ],
 					"text" : "o.accum"
 				}
 
@@ -165,8 +170,6 @@
 		"lines" : [ 			{
 				"patchline" : 				{
 					"destination" : [ "obj-8", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
 					"source" : [ "obj-1", 0 ]
 				}
 
@@ -174,8 +177,6 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-1", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
 					"source" : [ "obj-3", 0 ]
 				}
 
@@ -183,8 +184,6 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-5", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
 					"source" : [ "obj-4", 0 ]
 				}
 
@@ -192,8 +191,6 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-8", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
 					"source" : [ "obj-5", 0 ]
 				}
 
@@ -201,8 +198,6 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-6", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
 					"source" : [ "obj-8", 0 ]
 				}
 
@@ -210,7 +205,8 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "o.accum.maxpat",
-				"bootpath" : "~/Documents/Max 7/Packages/CNMAT-M158/patchers/gatherers",
+				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/patchers/namespace",
+				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
@@ -227,13 +223,7 @@
 				"type" : "iLaX"
 			}
  ],
-		"autosave" : 0,
-		"bgfillcolor_type" : "gradient",
-		"bgfillcolor_color1" : [ 0.376471, 0.384314, 0.4, 1.0 ],
-		"bgfillcolor_color2" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
-		"bgfillcolor_color" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
-		"bgfillcolor_angle" : 270.0,
-		"bgfillcolor_proportion" : 0.39
+		"autosave" : 0
 	}
 
 }
