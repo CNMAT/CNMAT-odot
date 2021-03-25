@@ -1,51 +1,28 @@
 {
-	"author" : "CNMAT",
-	"authors" : ["John MacCallum", "Adrian Freed", "Rama Gottfried", "Ilya Rostovtsev"  ],
-	"categories" : [ "Utilities" ],
-	"description" : "A library for OSC processing created by researchers at CNMAT in Berkeley, CA.",
-	"displayname" : "",
-	"extends" : "",
-	"extensible" : 0,
-	"homepatcher" : null,
-	"max_version_max" : "none",
-	"max_version_min" : "none",
-	"name" : "CNMAT Odot",
-	"os" : 	{
-		"macintosh" : 		{
-			"platform" : [ "ia32", "x64" ],
-			"min_version" : "10.7.x"
-		}
-,
-		"windows" : 		{
-			"platform" : [ "ia32", "x64" ],
-			"min_version" : "7"
-		}
+    "author" : "CNMAT",
+    "authors" : ["John MacCallum", "Adrian Freed", "Rama Gottfried", "Ilya Rostovtsev"  ],
+    "description" : "A library for OSC processing created by researchers at CNMAT in Berkeley, CA.",
+    "homepatcher" : "o.overview.maxpat",
+    "max_version_max" : "none",
+    "max_version_min" : "6.0",
+    "name" : "odot",
+    "os" : 	{
+	"macintosh" : 		{
+	    "platform" : [ "x64" ],
+	    "min_version" : "10.10.x"
+	}
+	,
+	"windows" : 		{
+	    "platform" : [ "x64" ],
+	    "min_version" : "7"
+	}
 
-	}
-,
-"package_extra" : 	{
+    },
+    "package_extra" : 	{
 	"reverse_domain" : "edu.berkeley.cnmat",
-	"copyright" : "Copyright (c) 2017 UC Berkeley"
-}
-,
-	"readme" : "",
-	"tags" : ["Open Sound Control (OSC)", "Dynamic Expression Language", "CNMAT" ],
-	"version" : "1.0.1....",
-	"versions" : null,
-	"website" : "http://cnmat.berkeley.edu",
-	"filelist" : 	{
-		"externals" : [],
-		"help" : [],
-		"media" : [],
-		"misc" : [],
-		"clippings" : [],
-		"extras" : [],
-		"init" : [],
-		"interfaces" : [],
-		"patchers" : [],
-		"clippings" : []
-	}
-,
-	"c74install" : 1,
-	"installdate" : 3536015897
+	"copyright" : "Copyright (c) 2007-21 UC Regents"
+    },
+    "tags" : ["Open Sound Control (OSC)", "Dynamic Programming", "CNMAT" ],
+    "version" : "1.0.1....",
+    "website" : "https://github.com/CNMAT/CNMAT-odot",
 }
