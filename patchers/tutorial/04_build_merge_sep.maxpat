@@ -1202,8 +1202,8 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 393.0, 3409.5, 183.0, 21.0 ],
-					"text" : "Separating ODOT from ODOT"
+					"patching_rect" : [ 405.0, 3409.5, 159.0, 21.0 ],
+					"text" : "Separating odot from odot"
 				}
 
 			}
@@ -1468,13 +1468,11 @@
 				"box" : 				{
 					"fontface" : 0,
 					"id" : "obj-194",
-					"linecount" : 2,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 360.5, 5365.0, 66.0, 46.0 ],
-					"text" : "/a : 1,\n/b : 2"
+					"patching_rect" : [ 360.5, 5365.0, 66.0, 33.0 ]
 				}
 
 			}
@@ -1564,13 +1562,11 @@
 				"box" : 				{
 					"fontface" : 0,
 					"id" : "obj-183",
-					"linecount" : 2,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 562.0, 5365.0, 79.0, 46.0 ],
-					"text" : "/foo : 1,\n/bar : 2"
+					"patching_rect" : [ 562.0, 5365.0, 79.0, 33.0 ]
 				}
 
 			}
@@ -1578,13 +1574,11 @@
 				"box" : 				{
 					"fontface" : 0,
 					"id" : "obj-182",
-					"linecount" : 2,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 437.0, 5365.0, 79.0, 46.0 ],
-					"text" : "/foo : 1,\n/bar : 2"
+					"patching_rect" : [ 437.0, 5365.0, 79.0, 33.0 ]
 				}
 
 			}
@@ -1592,13 +1586,11 @@
 				"box" : 				{
 					"fontface" : 0,
 					"id" : "obj-181",
-					"linecount" : 2,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 312.0, 5422.0, 78.0, 46.0 ],
-					"text" : "/foo : 1,\n/bar : 2"
+					"patching_rect" : [ 312.0, 5422.0, 78.0, 33.0 ]
 				}
 
 			}
@@ -2289,7 +2281,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 399.5, 2036.5, 170.0, 21.0 ],
-					"text" : "Separating ODOT from Max"
+					"text" : "Separating odot from Max"
 				}
 
 			}
@@ -2543,7 +2535,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 60.5, 6820.0, 848.0, 36.0 ],
-					"text" : "Let's look at a situation where we may need [o.union] for another reason.  In this case, we might like to generate an address with something outside of ODOT.",
+					"text" : "Let's look at a situation where we may need [o.union] for another reason.  In this case, we might like to generate an address with something outside of odot.",
 					"textjustification" : 1
 				}
 

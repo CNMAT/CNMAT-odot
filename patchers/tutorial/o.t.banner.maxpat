@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 34.0, 234.0, 806.0, 726.0 ],
+		"rect" : [ 57.0, 95.0, 806.0, 726.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 14.0,
@@ -173,7 +173,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 123.0, 62.5, 404.0, 33.0 ],
 					"style" : "default",
-					"text" : "This tutorial is an introduction to the ODOT programming library, a set of Max externals, patches, and abstractions.",
+					"text" : "This tutorial is an introduction to the odot programming library, a set of Max externals, patches, and abstractions.",
 					"textcolor" : [ 0.129411764705882, 0.129411764705882, 0.129411764705882, 0.36 ]
 				}
 
@@ -198,7 +198,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 123.0, 8.0, 390.0, 33.0 ],
-					"text" : "ODOT programming tutorial"
+					"text" : "odot programming tutorial"
 				}
 
 			}

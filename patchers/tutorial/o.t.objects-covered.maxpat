@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 8,
+			"revision" : 10,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -47,8 +47,8 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 269.0, 75.0, 150.0, 33.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 319.0, 0.0, 205.0, 20.0 ],
-					"text" : "ODOT objects present in this tutorial:"
+					"presentation_rect" : [ 324.5, -1.0, 194.0, 20.0 ],
+					"text" : "odot objects present in this tutorial:"
 				}
 
 			}

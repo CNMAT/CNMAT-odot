@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 4,
+			"revision" : 10,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -121,7 +121,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 1,
-							"revision" : 4,
+							"revision" : 10,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -254,10 +254,10 @@
 , 							{
 								"box" : 								{
 									"coll_data" : 									{
-										"count" : 9,
+										"count" : 12,
 										"data" : [ 											{
 												"key" : 1,
-												"value" : [ "01_max_and_odot.maxpat", "Max & ODOT" ]
+												"value" : [ "01_max_and_odot.maxpat", "Max & odot" ]
 											}
 , 											{
 												"key" : 2,
@@ -269,15 +269,15 @@
 											}
 , 											{
 												"key" : 4,
-												"value" : [ "04_essentials.maxpat", "Essentials" ]
+												"value" : [ "04_build_merge_sep.maxpat", "Building, merging, and separating data" ]
 											}
 , 											{
 												"key" : 5,
-												"value" : [ "05_hierarchies.maxpat", "Hierarchies" ]
+												"value" : [ "05_hierarchies.maxpat", "Hierarchies and persistence" ]
 											}
 , 											{
 												"key" : 6,
-												"value" : [ "06_expr1.maxpat", "Expressions 1: the codebox" ]
+												"value" : [ "06_expr1.maxpat", "Expressions 1: functions, operators, addresses, types" ]
 											}
 , 											{
 												"key" : 7,
@@ -289,7 +289,19 @@
 											}
 , 											{
 												"key" : 9,
-												"value" : [ "09_expr4.maxpat", "Expressions 4" ]
+												"value" : [ "09_expr4.maxpat", "Expressions 4: dynamic assignment" ]
+											}
+, 											{
+												"key" : 10,
+												"value" : [ "10_subbundles_literals.maxpat", "usage of subbundles and bundle literals in expressions" ]
+											}
+, 											{
+												"key" : 11,
+												"value" : [ "11_all_about_time.maxpat", "dealing with time: history, o.schedule and o.timetag" ]
+											}
+, 											{
+												"key" : 12,
+												"value" : [ "12_abstractions.maxpat", "Abstracting code, user interface design" ]
 											}
  ]
 									}
@@ -600,10 +612,10 @@
 , 			{
 				"box" : 				{
 					"coll_data" : 					{
-						"count" : 9,
+						"count" : 12,
 						"data" : [ 							{
 								"key" : 1,
-								"value" : [ "01_max_and_odot.maxpat", "Max & ODOT" ]
+								"value" : [ "01_max_and_odot.maxpat", "Max & odot" ]
 							}
 , 							{
 								"key" : 2,
@@ -615,15 +627,15 @@
 							}
 , 							{
 								"key" : 4,
-								"value" : [ "04_essentials.maxpat", "Essentials" ]
+								"value" : [ "04_build_merge_sep.maxpat", "Building, merging, and separating data" ]
 							}
 , 							{
 								"key" : 5,
-								"value" : [ "05_hierarchies.maxpat", "Hierarchies" ]
+								"value" : [ "05_hierarchies.maxpat", "Hierarchies and persistence" ]
 							}
 , 							{
 								"key" : 6,
-								"value" : [ "06_expr1.maxpat", "Expressions 1: the codebox" ]
+								"value" : [ "06_expr1.maxpat", "Expressions 1: functions, operators, addresses, types" ]
 							}
 , 							{
 								"key" : 7,
@@ -635,7 +647,19 @@
 							}
 , 							{
 								"key" : 9,
-								"value" : [ "09_expr4.maxpat", "Expressions 4" ]
+								"value" : [ "09_expr4.maxpat", "Expressions 4: dynamic assignment" ]
+							}
+, 							{
+								"key" : 10,
+								"value" : [ "10_subbundles_literals.maxpat", "usage of subbundles and bundle literals in expressions" ]
+							}
+, 							{
+								"key" : 11,
+								"value" : [ "11_all_about_time.maxpat", "dealing with time: history, o.schedule and o.timetag" ]
+							}
+, 							{
+								"key" : 12,
+								"value" : [ "12_abstractions.maxpat", "Abstracting code, user interface design" ]
 							}
  ]
 					}
@@ -804,10 +828,10 @@
 , 			{
 				"box" : 				{
 					"coll_data" : 					{
-						"count" : 9,
+						"count" : 12,
 						"data" : [ 							{
 								"key" : 1,
-								"value" : [ "01_max_and_odot.maxpat", "Max & ODOT" ]
+								"value" : [ "01_max_and_odot.maxpat", "Max & odot" ]
 							}
 , 							{
 								"key" : 2,
@@ -819,15 +843,15 @@
 							}
 , 							{
 								"key" : 4,
-								"value" : [ "04_essentials.maxpat", "Essentials" ]
+								"value" : [ "04_build_merge_sep.maxpat", "Building, merging, and separating data" ]
 							}
 , 							{
 								"key" : 5,
-								"value" : [ "05_hierarchies.maxpat", "Hierarchies" ]
+								"value" : [ "05_hierarchies.maxpat", "Hierarchies and persistence" ]
 							}
 , 							{
 								"key" : 6,
-								"value" : [ "06_expr1.maxpat", "Expressions 1: the codebox" ]
+								"value" : [ "06_expr1.maxpat", "Expressions 1: functions, operators, addresses, types" ]
 							}
 , 							{
 								"key" : 7,
@@ -839,7 +863,19 @@
 							}
 , 							{
 								"key" : 9,
-								"value" : [ "09_expr4.maxpat", "Expressions 4" ]
+								"value" : [ "09_expr4.maxpat", "Expressions 4: dynamic assignment" ]
+							}
+, 							{
+								"key" : 10,
+								"value" : [ "10_subbundles_literals.maxpat", "usage of subbundles and bundle literals in expressions" ]
+							}
+, 							{
+								"key" : 11,
+								"value" : [ "11_all_about_time.maxpat", "dealing with time: history, o.schedule and o.timetag" ]
+							}
+, 							{
+								"key" : 12,
+								"value" : [ "12_abstractions.maxpat", "Abstracting code, user interface design" ]
 							}
  ]
 					}
@@ -1161,14 +1197,14 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "filelist.txt",
-				"bootpath" : "~/Documents/programming/git_repositories/ODOT-tutorials/introduction/_patchers",
+				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/patchers/tutorial",
 				"patcherrelativepath" : ".",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "close_parent.js",
-				"bootpath" : "~/Documents/programming/git_repositories/ODOT-tutorials/introduction/_patchers",
+				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/patchers/tutorial",
 				"patcherrelativepath" : ".",
 				"type" : "TEXT",
 				"implicit" : 1

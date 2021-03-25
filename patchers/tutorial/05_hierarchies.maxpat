@@ -638,7 +638,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 600.0, 2333.0, 334.0, 65.0 ],
-					"text" : "What is interesting here is that the o.display object understands the Max dictionary and knows how read it into its contents.  In fact, nearly all of the ODOT objects know how to process dictionaries."
+					"text" : "What is interesting here is that the o.display object understands the Max dictionary and knows how read it into its contents.  In fact, nearly all of the odot objects know how to process dictionaries."
 				}
 
 			}
@@ -739,7 +739,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 263.0, 1947.0, 297.0, 47.0 ],
 					"style" : "default",
-					"text" : "because the dictionary \"mysynth\" contains our data in ODOT, we can use object reference name to allow us to write our bundles to disk, as well as read them in."
+					"text" : "because the dictionary \"mysynth\" contains our data in odot, we can use object reference name to allow us to write our bundles to disk, as well as read them in."
 				}
 
 			}

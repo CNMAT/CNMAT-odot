@@ -260,7 +260,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 609.0, 7087.0, 213.0, 21.0 ],
-					"text" : "ODOT supports the following types:"
+					"text" : "odot supports the following types:"
 				}
 
 			}
@@ -472,7 +472,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 520.166666666666742, 6543.0, 220.0, 123.0 ],
+					"patching_rect" : [ 520.166666666666742, 6543.0, 223.0, 123.0 ],
 					"text" : "getaddresses() produces a list of all the addresses in the working bundle at the moment that the function is envoked.\n\ntypetags() returns a list of characters that represent the types of each item bound to an address"
 				}
 
@@ -1244,13 +1244,11 @@
 				"box" : 				{
 					"fontface" : 0,
 					"id" : "obj-94",
-					"linecount" : 2,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 276.166666666666742, 4875.0, 82.0, 46.0 ],
-					"text" : "/x : 10,\n/y : 13"
+					"patching_rect" : [ 276.166666666666742, 4875.0, 82.0, 33.0 ]
 				}
 
 			}
@@ -1312,7 +1310,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 513.5, 4277.0, 215.0, 50.0 ],
+					"patching_rect" : [ 513.5, 4277.0, 219.0, 50.0 ],
 					"text" : "[o.expr.codebox] has a number of \"compound operators\" that combine an operation with assignment."
 				}
 
@@ -1726,7 +1724,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 315.0, 2677.0, 226.0, 65.0 ],
+					"patching_rect" : [ 315.0, 2677.0, 230.0, 65.0 ],
 					"text" : "The same applies to most functions of scalars. If lists are supplied, [o.expr.codebox] will usually apply the function every element of the list.",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}

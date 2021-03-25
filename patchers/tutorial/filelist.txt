@@ -1,4 +1,4 @@
-1, 01_max_and_odot.maxpat "Max & ODOT";
+1, 01_max_and_odot.maxpat "Max & odot";
 2, 02_data_manipulation.maxpat "How to manipulate data";
 3, 03_packing_processes.maxpat "Packing data together and setting a process in motion";
 4, 04_build_merge_sep.maxpat "Building, merging, and separating data";
