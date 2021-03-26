@@ -1,5 +1,8 @@
 #!/bin/bash
 
+release_folder_name=odot
+files_to_delete=(".git" "src" "make-release.sh" "dev-internal" "testing")
+
 ######################################################################
 # Options, usage, etc
 ######################################################################
@@ -118,8 +121,6 @@ require_clean_work_tree
 # into the appropriate locations.
 ######################################################################
 
-release_folder_name=odot
-
 if [ -d "../$release_folder_name" ]
 then
     (cd "../$release_folder_name" && git pull && require_clean_work_tree)
@@ -156,16 +157,15 @@ copy_externs
 
 clean_release() {
     echo "cleaning up release"
-    filestodelete=(".git" "src" "make-release.sh" "dev-internal" "testing")
     if [ "$pd" = 0 ]
     then
-	filestodelete+=( "pd" )
+	files_to_delete+=( "pd" )
     fi
 
-    for i in "${!filestodelete[@]}"
+    for i in "${!files_to_delete[@]}"
     do
-	echo rm -rf "../${release_folder_name}/${filestodelete[$i]}"
-	rm -rf "../${release_folder_name}/${filestodelete[$i]}"
+	echo rm -rf "../${release_folder_name}/${files_to_delete[$i]}"
+	rm -rf "../${release_folder_name}/${files_to_delete[$i]}"
     done
 }
 clean_release
@@ -178,6 +178,9 @@ open_obj() { echo "{" >> "$1"; }
 close_obj() { echo "}" >> "$1"; }
 open_list() { echo -n "[" >> "$1"; }
 close_list() { echo -n "]" >> "$1"; }
+end_entry() { echo "," >> "$1"; }
+write_key() { echo -n "\"$2\" : " >> "$1"; }
+write_val() { echo -n "\"$2\"" >> "$1"; }
 write_list() {
     f="$1"
     shift
@@ -188,15 +191,6 @@ write_list() {
 	shift
     done
     echo -n "\"$1\"" >> "$f"
-}
-write_key() {
-    echo -n "\"$2\" : " >> "$1"
-}
-write_val() {
-    echo -n "\"$2\"" >> "$1"
-}
-end_entry() {
-    echo "," >> "$1"
 }
 write_simple_entry() {
     write_key "$1" "$2"
