@@ -1,0 +1,7 @@
+*/.git/*
+*/.gitignore
+*/src/*
+*/make-release.sh
+*/dev-internal/*
+*/testing/*
+*/release-excludes.txt

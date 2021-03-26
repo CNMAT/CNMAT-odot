@@ -1,14 +1,13 @@
 #!/bin/bash
 
 release_folder_name=odot
-files_to_delete=(".git" "src" "make-release.sh" "dev-internal" "testing")
 
 ######################################################################
 # Options, usage, etc
 ######################################################################
 
 usage() {
-    echo "Usage: $0 -hmoptz -n [NAME]" 1>&2
+    echo "Usage: $0 -hmoptzd -n [NAME]" 1>&2
     echo "Prepare a release of the odot package." 1>&2
     echo "-h        : Help" 1>&2    
     echo "-m        : Copy Max/MSP externals." 1>&2    
@@ -17,6 +16,7 @@ usage() {
     echo "-n [NAME] : Insert [NAME] into the archive name." 1>&2
     echo "-t        : Produce a tarball of the release." 1>&2
     echo "-z        : Produce a zip file of the release." 1>&2
+    echo "-d        : Debug" 1>&2
     echo "" 1>&2
     
     echo "Running this script will cause a fresh clone of the repo " 1>&2
@@ -44,8 +44,9 @@ havename=0
 name=""
 archive_tarball=0
 archive_zip=0
+debug=0
 
-while getopts ":hmn:optz" options; do
+while getopts ":hmn:optzd" options; do
     case "${options}" in
 	h)
 	    usage
@@ -69,6 +70,9 @@ while getopts ":hmn:optz" options; do
 	    ;;
 	z)
 	    archive_zip=1
+	    ;;
+	d)
+	    debug=1
 	    ;;
 	:)
 	    usage
@@ -107,13 +111,14 @@ require_clean_work_tree () {
 	err=1
     fi
 
-    if [ $err = 1 ]
-    then
+    if [ $err = 1 ]; then
 	echo >&2 "Please commit or stash them."
 	exit 1
     fi
 }
-require_clean_work_tree
+if [ "$debug" = 0 ]; then
+    require_clean_work_tree
+fi
 
 ######################################################################
 # If the -m or -p swiches are present, clone a fresh copy of the repo
@@ -121,32 +126,34 @@ require_clean_work_tree
 # into the appropriate locations.
 ######################################################################
 
-if [ -d "../$release_folder_name" ]
-then
+if [ -d "../$release_folder_name" ]; then
     (cd "../$release_folder_name" && git pull && require_clean_work_tree)
 else
     git clone . "../$release_folder_name"
 fi
 
 copy_externs() {
-    if [ "$max" = 1 ]
-    then
+    if [ "$max" = 1 ]; then
 	echo "copying Max externals"
+	echo cp -r externals "../$release_folder_name/"
 	cp -r externals "../$release_folder_name/"
+	echo cp -r dev/externals "../$release_folder_name/dev/"
 	cp -r dev/externals "../$release_folder_name/dev/"
+	echo cp -r deprecated/externals "../$release_folder_name/deprecated/"
 	cp -r deprecated/externals "../$release_folder_name/deprecated/"
     fi
-    if [ "$pd" = 1 ]
-    then
+    if [ "$pd" = 1 ]; then
 	echo "copying PD externals"
 	ext="*.pd_*"
-	if [ "$platform" = "Windows" ]
-	then
+	if [ "$platform" = "Windows" ]; then
 	    ext="*.dll"
 	fi
-	cp -r "pd/$ext" "../$release_folder_name/pd/"
-	cp -r "pd/dev/$ext" "../$release_folder_name/pd/dev/"
-	cp -r "pd/deprecated/$ext" "../$release_folder_name/pd/deprecated/"
+	echo cp -r pd/$ext "../$release_folder_name/pd/"
+	cp -r pd/$ext "../$release_folder_name/pd/"
+	echo cp -r pd/dev/$ext "../$release_folder_name/pd/dev/"
+	cp -r pd/dev/$ext "../$release_folder_name/pd/dev/"
+	echo cp -r pd/deprecated/$ext "../$release_folder_name/pd/deprecated/"
+	cp -r pd/deprecated/$ext "../$release_folder_name/pd/deprecated/"
     fi
 }
 copy_externs
@@ -155,20 +162,22 @@ copy_externs
 # Remove any source code, scripts, internal stuff from the release
 ######################################################################
 
-clean_release() {
-    echo "cleaning up release"
-    if [ "$pd" = 0 ]
-    then
-	files_to_delete+=( "pd" )
-    fi
+# clean_release() {
+#     echo "cleaning up release"
+#     if [ "$pd" = 0 ]; then
+# 	files_to_delete+=( "pd" )
+#     fi
 
-    for i in "${!files_to_delete[@]}"
-    do
-	echo rm -rf "../${release_folder_name}/${files_to_delete[$i]}"
-	rm -rf "../${release_folder_name}/${files_to_delete[$i]}"
-    done
-}
-clean_release
+#     for i in "${!files_to_delete[@]}"; do
+# 	echo rm -rf "../${release_folder_name}/${files_to_delete[$i]}"
+# 	rm -rf "../${release_folder_name}/${files_to_delete[$i]}"
+#     done
+# }
+#clean_release
+
+if [ "$pd" = 0 ]; then
+    echo "*/pd/*" >> "../${release_folder_name}/release-excludes.txt"
+fi
 
 ######################################################################
 # Make package-info.json
@@ -185,8 +194,7 @@ write_list() {
     f="$1"
     shift
     n="$#"
-    for ((i = 0; i < $n - 1; i++))
-    do
+    for ((i = 0; i < $n - 1; i++)); do
 	echo -n "\"$1\"," >> "$f"
 	shift
     done
@@ -214,6 +222,7 @@ write_list_entry() {
 }
 
 write_package_info() {
+    echo "writing package-info.json"
     f="package-info.json"
     (
 	cd "../$release_folder_name"
@@ -302,7 +311,7 @@ if [ "$archive_zip" = 1 ]; then
 	if [ -e "../$archive_name" ]; then
 	    echo "file $archive_name already exists" 1>&2
 	else
-	    cd .. && zip -r -X "$archive_name" "$release_folder_name"
+	    cd .. && zip -r -X "$archive_name" "$release_folder_name" "-x@${release_folder_name}/release-excludes.txt"
 	fi
     )
 fi
@@ -313,7 +322,11 @@ if [ "$archive_tarball" = 1 ]; then
 	if [ -e "../$archive_name" ]; then
 	    echo "file $archive_name already exists" 1>&2
 	else
-	    cd .. && tar zcvf "$archive_name" "$release_folder_name"
+	    cd .. && tar zcvf "$archive_name" "-X${release_folder_name}/release-excludes.txt" "$release_folder_name" 
 	fi
     )
 fi
+
+(
+    cd "../$release_folder_name" && git checkout release-excludes.txt
+)
