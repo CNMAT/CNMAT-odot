@@ -327,6 +327,8 @@ if [ "$archive_tarball" = 1 ]; then
     )
 fi
 
+# if we didn't do a pd build, we will have appended the pd dir to 
+# release-excludes.txt, so we check it back out here
 (
     cd "../$release_folder_name" && git checkout release-excludes.txt
 )
