@@ -80,13 +80,13 @@
 , 			{
 				"box" : 				{
 					"fontname" : "Arial",
-					"fontsize" : 12.0,
+					"fontsize" : 11.0,
 					"id" : "obj-13",
 					"maxclass" : "message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 31.0, 242.0, 61.0, 22.0 ],
+					"patching_rect" : [ 31.0, 242.0, 67.0, 21.0 ],
 					"text" : "o.edge~"
 				}
 
@@ -332,13 +332,13 @@
 , 			{
 				"box" : 				{
 					"fontname" : "Arial",
-					"fontsize" : 12.0,
+					"fontsize" : 11.0,
 					"id" : "obj-33",
 					"maxclass" : "message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 31.0, 389.454545454545382, 71.0, 22.0 ],
+					"patching_rect" : [ 31.0, 389.454545454545382, 67.0, 21.0 ],
 					"text" : "o.when"
 				}
 
@@ -346,13 +346,13 @@
 , 			{
 				"box" : 				{
 					"fontname" : "Arial",
-					"fontsize" : 12.0,
+					"fontsize" : 11.0,
 					"id" : "obj-34",
 					"maxclass" : "message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 31.0, 360.090909090909008, 71.0, 22.0 ],
+					"patching_rect" : [ 31.0, 360.090909090909008, 66.0, 21.0 ],
 					"text" : "o.unless"
 				}
 
@@ -360,13 +360,13 @@
 , 			{
 				"box" : 				{
 					"fontname" : "Arial",
-					"fontsize" : 12.0,
+					"fontsize" : 11.0,
 					"id" : "obj-35",
 					"maxclass" : "message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 31.0, 330.727272727272691, 69.0, 22.0 ],
+					"patching_rect" : [ 31.0, 330.727272727272691, 66.0, 21.0 ],
 					"text" : "o.pak"
 				}
 
@@ -374,13 +374,13 @@
 , 			{
 				"box" : 				{
 					"fontname" : "Arial",
-					"fontsize" : 12.0,
+					"fontsize" : 11.0,
 					"id" : "obj-37",
 					"maxclass" : "message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 31.0, 301.363636363636374, 67.0, 22.0 ],
+					"patching_rect" : [ 31.0, 301.363636363636374, 66.0, 21.0 ],
 					"text" : "o.message"
 				}
 
@@ -388,13 +388,13 @@
 , 			{
 				"box" : 				{
 					"fontname" : "Arial",
-					"fontsize" : 12.0,
+					"fontsize" : 11.0,
 					"id" : "obj-39",
 					"maxclass" : "message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 31.0, 272.0, 61.0, 22.0 ],
+					"patching_rect" : [ 31.0, 272.0, 66.0, 21.0 ],
 					"text" : "o.expr"
 				}
 
@@ -588,7 +588,31 @@
 				"implicit" : 1
 			}
 , 			{
+				"name" : "o.pak.mxo",
+				"type" : "iLaX"
+			}
+, 			{
 				"name" : "o.route.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.expr.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.message.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.unless.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.when.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.edge~.mxo",
 				"type" : "iLaX"
 			}
  ],

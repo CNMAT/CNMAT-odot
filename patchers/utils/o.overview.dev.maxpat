@@ -73,7 +73,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 602.0, 581.714285714285893, 44.0, 22.0 ],
+					"patching_rect" : [ 602.0, 581.714285714285893, 101.0, 22.0 ],
 					"text" : "aspect"
 				}
 
@@ -129,7 +129,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 602.0, 521.272727272726797, 40.0, 22.0 ],
+					"patching_rect" : [ 602.0, 521.272727272726797, 101.0, 22.0 ],
 					"text" : "o.was"
 				}
 
@@ -214,7 +214,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 602.0, 462.545454545454277, 31.0, 22.0 ],
+					"patching_rect" : [ 602.0, 462.545454545454277, 101.0, 22.0 ],
 					"text" : "o.let"
 				}
 
@@ -256,7 +256,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 602.0, 433.18181818181796, 62.0, 22.0 ],
+					"patching_rect" : [ 602.0, 433.18181818181796, 101.0, 22.0 ],
 					"text" : "o.stream2"
 				}
 
@@ -298,7 +298,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 602.0, 403.818181818181642, 55.0, 22.0 ],
+					"patching_rect" : [ 602.0, 403.818181818181642, 101.0, 22.0 ],
 					"text" : "o.stream"
 				}
 
@@ -339,7 +339,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 602.0, 374.454545454545325, 73.0, 22.0 ],
+					"patching_rect" : [ 602.0, 374.454544999999996, 101.0, 22.0 ],
 					"text" : "o.oscbundle"
 				}
 
@@ -380,7 +380,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 602.0, 345.090909090909008, 48.0, 22.0 ],
+					"patching_rect" : [ 602.0, 345.090909000000011, 101.0, 22.0 ],
 					"text" : "o.osc-p"
 				}
 
@@ -421,7 +421,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 602.0, 315.727272727272691, 52.0, 22.0 ],
+					"patching_rect" : [ 602.0, 315.727273000000025, 101.0, 22.0 ],
 					"text" : "o.edge~"
 				}
 
@@ -516,7 +516,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 51.0, 668.999999999999773, 60.0, 22.0 ],
+					"patching_rect" : [ 51.0, 668.999999999999773, 101.0, 22.0 ],
 					"text" : "o.validate"
 				}
 
@@ -530,7 +530,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 51.0, 639.636363636363399, 65.0, 22.0 ],
+					"patching_rect" : [ 51.0, 639.636363636363399, 101.0, 22.0 ],
 					"text" : "o.timetag~"
 				}
 
@@ -544,7 +544,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 51.0, 610.272727272727025, 90.0, 22.0 ],
+					"patching_rect" : [ 51.0, 610.272727272727025, 101.0, 22.0 ],
 					"text" : "o.timetag.split~"
 				}
 
@@ -626,7 +626,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 602.0, 286.363636363636374, 34.0, 22.0 ],
+					"patching_rect" : [ 602.0, 286.363635999999985, 101.0, 22.0 ],
 					"text" : "o.diff"
 				}
 
@@ -640,7 +640,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 602.0, 257.0, 66.0, 22.0 ],
+					"patching_rect" : [ 602.0, 257.0, 101.0, 22.0 ],
 					"text" : "o.callpatch"
 				}
 
@@ -1032,7 +1032,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 51.0, 579.999999999999773, 87.0, 22.0 ],
+					"patching_rect" : [ 51.0, 579.999999999999773, 101.0, 22.0 ],
 					"text" : "o.timetag.join~"
 				}
 
@@ -1046,7 +1046,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 51.0, 550.636363636363399, 45.0, 22.0 ],
+					"patching_rect" : [ 51.0, 550.636363636363399, 101.0, 22.0 ],
 					"text" : "o.table"
 				}
 
@@ -1060,7 +1060,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 51.0, 521.272727272727025, 74.0, 22.0 ],
+					"patching_rect" : [ 51.0, 521.272727272727025, 101.0, 22.0 ],
 					"text" : "o.snapshot~"
 				}
 
@@ -1074,7 +1074,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 51.0, 491.909090909090764, 79.0, 22.0 ],
+					"patching_rect" : [ 51.0, 491.909090909090764, 101.0, 22.0 ],
 					"text" : "o.slip.encode"
 				}
 
@@ -1088,7 +1088,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 51.0, 462.54545454545439, 79.0, 22.0 ],
+					"patching_rect" : [ 51.0, 462.54545454545439, 101.0, 22.0 ],
 					"text" : "o.slip.decode"
 				}
 
@@ -1102,7 +1102,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 51.0, 433.181818181818073, 74.0, 22.0 ],
+					"patching_rect" : [ 51.0, 433.181818181818073, 101.0, 22.0 ],
 					"text" : "o.schedule~"
 				}
 
@@ -1130,7 +1130,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 51.0, 374.454545454545382, 71.0, 22.0 ],
+					"patching_rect" : [ 51.0, 374.454545454545382, 101.0, 22.0 ],
 					"text" : "o.mappatch"
 				}
 
@@ -1144,7 +1144,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 51.0, 345.090909090909008, 71.0, 22.0 ],
+					"patching_rect" : [ 51.0, 345.090909090909008, 101.0, 22.0 ],
 					"text" : "o.gui.attach"
 				}
 
@@ -1158,7 +1158,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 51.0, 315.727272727272691, 69.0, 22.0 ],
+					"patching_rect" : [ 51.0, 315.727272727272691, 101.0, 22.0 ],
 					"text" : "o.downcast"
 				}
 
@@ -1172,7 +1172,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 51.0, 286.363636363636374, 57.0, 22.0 ],
+					"patching_rect" : [ 51.0, 286.363636363636374, 101.0, 22.0 ],
 					"text" : "o.context"
 				}
 
@@ -1186,7 +1186,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 51.0, 257.0, 61.0, 22.0 ],
+					"patching_rect" : [ 51.0, 257.0, 101.0, 22.0 ],
 					"text" : "o.atomize"
 				}
 
@@ -1844,7 +1844,196 @@
 				"implicit" : 1
 			}
 , 			{
+				"name" : "o.diff.maxpat",
+				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/dev",
+				"patcherrelativepath" : "../../dev",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "o.callpatch.maxpat",
+				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/dev",
+				"patcherrelativepath" : "../../dev",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "o.osc-p.maxpat",
+				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/dev",
+				"patcherrelativepath" : "../../dev",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "o.oscbundle.maxpat",
+				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/dev",
+				"patcherrelativepath" : "../../dev",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "o.stream.maxpat",
+				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/dev",
+				"patcherrelativepath" : "../../dev",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "o.let.maxpat",
+				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/dev",
+				"patcherrelativepath" : "../../dev",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "o.stream2.maxpat",
+				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/dev",
+				"patcherrelativepath" : "../../dev",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "o.timetag.fromfloat~.maxpat",
+				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/dev",
+				"patcherrelativepath" : "../../dev",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "o.timetag.tofloat~.maxpat",
+				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/dev",
+				"patcherrelativepath" : "../../dev",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "o.was.maxpat",
+				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/dev",
+				"patcherrelativepath" : "../../dev",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "o.righttoleft.maxpat",
+				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/patchers/ordering",
+				"patcherrelativepath" : "../ordering",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "o.downcast.mxo",
+				"type" : "iLaX"
+			}
+, 			{
 				"name" : "o.route.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.atomize.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.context.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.gui.attach.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.mappatch.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.messageiterate.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.schedule~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.slip.decode.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.slip.encode.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.snapshot~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.table.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.timetag.join~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.change.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.var.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.compose.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.select.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.union.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.collect.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.timetag.split~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.timetag~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.validate.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.edge~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.expr.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.pack.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.difference.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.expr.codebox.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.prepend.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.intersection.mxo",
 				"type" : "iLaX"
 			}
  ],
