@@ -77,6 +77,7 @@ CURRENT_VERSION_FILE = include/odot_current_version.h
 # 	rm -f *.o
 
 win64: $(ALL_OBJECTS_MXE64)
+	$(MAKE) install
 
 commonsyms.o:
 	$(CC) $(CFLAGS) $(INCLUDES) -c -o commonsyms.o $(MAX_INCLUDES)/common/commonsyms.c
