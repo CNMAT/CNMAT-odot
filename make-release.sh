@@ -122,6 +122,23 @@ if [ "$debug" = 0 ]; then
 fi
 
 ######################################################################
+# platform
+######################################################################
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+    platform="Linux"
+elif [[ "$OSTYPE" == "darwin"* ]]; then
+    platform="MacOSX"
+elif [[ "$OSTYPE" == "cygwin" ]]; then
+    platform="Windows"
+elif [[ "$OSTYPE" == "msys" ]]; then
+    platform="Windows"
+elif [[ "$OSTYPE" == "freebsd"* ]]; then
+    platform="FreeBSD"
+else
+    platform=""
+fi
+
+######################################################################
 # If the -m or -p swiches are present, clone a fresh copy of the repo
 # into a folder called 'odot', and copy the [m]ax or [p]d externs
 # into the appropriate locations.
@@ -274,19 +291,6 @@ write_package_info
 
 archive_name="odot"
 version=`git describe --tags`
-if [[ "$OSTYPE" == "linux-gnu"* ]]; then
-    platform="Linux"
-elif [[ "$OSTYPE" == "darwin"* ]]; then
-    platform="MacOSX"
-elif [[ "$OSTYPE" == "cygwin" ]]; then
-    platform="Windows"
-elif [[ "$OSTYPE" == "msys" ]]; then
-    platform="Windows"
-elif [[ "$OSTYPE" == "freebsd"* ]]; then
-    platform="FreeBSD"
-else
-    platform=""
-fi
 
 if [ "$max" = 1 ]; then
     archive_name="${archive_name}-Max"
