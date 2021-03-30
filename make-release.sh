@@ -118,6 +118,24 @@ require_clean_work_tree () {
 }
 if [ "$debug" = 0 ]; then
     require_clean_work_tree
+    set -x
+fi
+
+######################################################################
+# platform
+######################################################################
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+    platform="Linux"
+elif [[ "$OSTYPE" == "darwin"* ]]; then
+    platform="MacOSX"
+elif [[ "$OSTYPE" == "cygwin" ]]; then
+    platform="Windows"
+elif [[ "$OSTYPE" == "msys" ]]; then
+    platform="Windows"
+elif [[ "$OSTYPE" == "freebsd"* ]]; then
+    platform="FreeBSD"
+else
+    platform=""
 fi
 
 ######################################################################
@@ -273,19 +291,6 @@ write_package_info
 
 archive_name="odot"
 version=`git describe --tags`
-if [[ "$OSTYPE" == "linux-gnu"* ]]; then
-    platform="Linux"
-elif [[ "$OSTYPE" == "darwin"* ]]; then
-    platform="MacOSX"
-elif [[ "$OSTYPE" == "cygwin" ]]; then
-    platform="Windows"
-elif [[ "$OSTYPE" == "msys" ]]; then
-    platform="Windows"
-elif [[ "$OSTYPE" == "freebsd"* ]]; then
-    platform="FreeBSD"
-else
-    platform=""
-fi
 
 if [ "$max" = 1 ]; then
     archive_name="${archive_name}-Max"
@@ -311,7 +316,16 @@ if [ "$archive_zip" = 1 ]; then
 	if [ -e "../$archive_name" ]; then
 	    echo "file $archive_name already exists" 1>&2
 	else
-	    cd .. && zip -r -X "$archive_name" "$release_folder_name" "-x@${release_folder_name}/release-excludes.txt"
+	    if [ $max = 0 ] && [ $pd = 1 ]; then
+		cd ..
+		mv "$release_folder_name" "${release_folder_name}.___"
+		cp -r "${release_folder_name}.___/pd" "$release_folder_name"
+		zip -r -X "$archive_name" "$release_folder_name"
+		rm -rf "$release_folder_name"
+		mv "${release_folder_name}.___" "$release_folder_name"
+	    else
+	        cd .. && zip -r -X "$archive_name" "$release_folder_name" "-x@${release_folder_name}/release-excludes.txt"
+	    fi
 	fi
     )
 fi
@@ -322,7 +336,16 @@ if [ "$archive_tarball" = 1 ]; then
 	if [ -e "../$archive_name" ]; then
 	    echo "file $archive_name already exists" 1>&2
 	else
-	    cd .. && tar zcvf "$archive_name" "-X${release_folder_name}/release-excludes.txt" "$release_folder_name" 
+	    if [ $max = 0 ] && [ $pd = 1 ]; then
+		cd ..
+		mv "$release_folder_name" "${release_folder_name}.___"
+		cp -r "${release_folder_name}.___/pd" "$release_folder_name"
+		tar zcvf "$archive_name" "$release_folder_name"
+		rm -rf "$release_folder_name"
+		mv "${release_folder_name}.___" "$release_folder_name"
+	    else
+		cd .. && tar zcvf "$archive_name" "-X${release_folder_name}/release-excludes.txt" "$release_folder_name"
+	    fi
 	fi
     )
 fi
