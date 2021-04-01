@@ -1859,7 +1859,8 @@
 					"outlettype" : [ "", "" ],
 					"parameter_enable" : 0,
 					"patching_rect" : [ 489.0, 1512.0, 135.0, 140.0 ],
-					"setminmax" : [ 0.0, 100.0 ]
+					"setminmax" : [ 0.0, 100.0 ],
+					"setstyle" : 5
 				}
 
 			}
@@ -1885,7 +1886,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 767.0, 1512.0, 135.0, 140.0 ],
 					"setminmax" : [ 0.0, 10.0 ],
-					"size" : 6
+					"size" : 8
 				}
 
 			}
@@ -1898,7 +1899,8 @@
 					"outlettype" : [ "", "" ],
 					"parameter_enable" : 0,
 					"patching_rect" : [ 628.0, 1512.0, 135.0, 140.0 ],
-					"setminmax" : [ 0.0, 10.0 ]
+					"setminmax" : [ 0.0, 10.0 ],
+					"setstyle" : 5
 				}
 
 			}
@@ -1906,11 +1908,13 @@
 				"box" : 				{
 					"fontface" : 0,
 					"id" : "obj-167",
+					"linecount" : 14,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 102.0, 1452.0, 337.0, 33.0 ]
+					"patching_rect" : [ 102.0, 1452.0, 337.0, 200.0 ],
+					"text" : "/val : 13,\n/nvals : 4,\n/vals : [13, 5, 12, 3],\n/steps : [8., 7., 9.],\n/mean : 8.,\n/median : 8.,\n/range : 2.,\n/min : 7.,\n/max : 9.,\n/freqs : [1, 1, 1],\n/idxs : [0, 1, 2],\n/modality : 3,\n/mode : [7., 8., 9.],\n/stats : [8., 8., 7., 8., 9., 2., 7., 9.]"
 				}
 
 			}
@@ -2046,11 +2050,13 @@
 				"box" : 				{
 					"fontface" : 0,
 					"id" : "obj-140",
+					"linecount" : 3,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 102.0, 1179.0, 162.0, 33.0 ]
+					"patching_rect" : [ 102.0, 1179.0, 162.0, 59.0 ],
+					"text" : "/val : 13,\n/nvals : 4,\n/vals : [13, 5, 12, 3]"
 				}
 
 			}
@@ -2893,11 +2899,13 @@
 				"box" : 				{
 					"fontface" : 0,
 					"id" : "obj-18",
+					"linecount" : 2,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 128.5, 590.0, 123.0, 33.0 ]
+					"patching_rect" : [ 128.5, 590.0, 123.0, 46.0 ],
+					"text" : "/val : 25,\n/was/val : 33"
 				}
 
 			}
