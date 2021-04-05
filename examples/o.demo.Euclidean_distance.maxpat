@@ -40,15 +40,57 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
-					"autofit" : 1,
-					"forceaspect" : 1,
-					"id" : "obj-9",
-					"maxclass" : "fpic",
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-11",
+					"maxclass" : "comment",
 					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "jit_matrix" ],
-					"patching_rect" : [ 447.0, 39.0, 100.0, 100.0 ],
-					"pic" : "/Users/jml/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/icon.png"
+					"numoutlets" : 0,
+					"patching_rect" : [ 57.0, 433.0, 403.0, 20.0 ],
+					"text" : "Using higher order functions to map over each element:"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-9",
+					"linecount" : 2,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 491.0, 156.0, 196.0, 33.0 ],
+					"presentation_linecount" : 2,
+					"text" : "Making use of the builtin vector operations and scalar expansion:"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-3",
+					"linecount" : 2,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 92.0, 156.0, 196.0, 33.0 ],
+					"text" : "If you're in 2 dimensions, you can use the builtin l2norm() function:"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-2",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 41.0, 34.0, 403.0, 20.0 ],
+					"presentation_linecount" : 6,
+					"text" : "Three ways of computing the Euclidean distance between a set of points."
 				}
 
 			}
@@ -70,11 +112,13 @@
 				"box" : 				{
 					"fontface" : 0,
 					"id" : "obj-8",
+					"linecount" : 9,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 491.0, 292.0, 312.0, 33.0 ],
+					"patching_rect" : [ 491.0, 292.0, 312.0, 136.0 ],
+					"text" : "/p : [0, 1, 2, -3, 4, 5, 2e-05, 3],\n/q : [0.01, 1.2, -1.9, 3.001, 4., 4.999, 1e-05, 4],\n/delta : [0.01, 0.2, -3.9, 6.001, 0., -0.001, -1e-05, 1],\n/squared/delta : [0.0001, 0.04, 15.21, 36.012, 0., 1e-06, 1e-10, 1.],\n/sum/squared/delta : 52.2621,\n/dist : 7.22925",
 					"textcolor" : [ 0.996078431372549, 0.996078431372549, 0.996078431372549, 1.0 ]
 				}
 
@@ -97,11 +141,13 @@
 				"box" : 				{
 					"fontface" : 0,
 					"id" : "obj-6",
+					"linecount" : 4,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 92.0, 292.0, 347.0, 33.0 ],
+					"patching_rect" : [ 92.0, 292.0, 347.0, 72.0 ],
+					"text" : "/p : [0, 1, 2, -3, 4, 5, 2e-05, 3],\n/q : [0.01, 1.2, -1.9, 3.001, 4., 4.999, 1e-05, 4],\n/dist : 7.22925",
 					"textcolor" : [ 0.996078431372549, 0.996078431372549, 0.996078431372549, 1.0 ]
 				}
 
@@ -110,11 +156,13 @@
 				"box" : 				{
 					"fontface" : 0,
 					"id" : "obj-5",
+					"linecount" : 5,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 41.0, 509.0, 223.0, 33.0 ],
+					"patching_rect" : [ 41.0, 509.0, 223.0, 85.0 ],
+					"text" : "/p : [0, 1, 2, -3, 4, 5, 2e-05, 3],\n/q : [0.01, 1.2, -1.9, 3.001, 4., 4.999, 1e-05, 4],\n/dist : 7.22925",
 					"textcolor" : [ 0.996078431372549, 0.996078431372549, 0.996078431372549, 1.0 ]
 				}
 
@@ -216,13 +264,6 @@
 			}
  ],
 		"dependency_cache" : [ 			{
-				"name" : "icon.png",
-				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot",
-				"patcherrelativepath" : "..",
-				"type" : "PNG",
-				"implicit" : 1
-			}
-, 			{
 				"name" : "o.expr.codebox.mxo",
 				"type" : "iLaX"
 			}
