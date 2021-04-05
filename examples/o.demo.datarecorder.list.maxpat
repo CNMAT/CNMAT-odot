@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 39.0, 63.0, 855.0, 677.0 ],
+		"rect" : [ 15.0, 62.0, 855.0, 677.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 14.0,
@@ -21,11 +21,11 @@
 		"gridsnaponopen" : 1,
 		"objectsnaponopen" : 1,
 		"statusbarvisible" : 2,
-		"toolbarvisible" : 1,
-		"lefttoolbarpinned" : 0,
-		"toptoolbarpinned" : 0,
-		"righttoolbarpinned" : 0,
-		"bottomtoolbarpinned" : 0,
+		"toolbarvisible" : 0,
+		"lefttoolbarpinned" : 2,
+		"toptoolbarpinned" : 2,
+		"righttoolbarpinned" : 2,
+		"bottomtoolbarpinned" : 2,
 		"toolbars_unpinned_last_save" : 15,
 		"tallnewobj" : 0,
 		"boxanimatetime" : 200,
@@ -39,39 +39,6 @@
 		"subpatcher_template" : "Untitled5_template",
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
-				"box" : 				{
-					"id" : "obj-24",
-					"maxclass" : "comment",
-					"numinlets" : 1,
-					"numoutlets" : 0,
-					"patching_rect" : [ 118.5, 82.666666666666629, 20.0, 22.0 ],
-					"text" : "3"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-10",
-					"maxclass" : "comment",
-					"numinlets" : 1,
-					"numoutlets" : 0,
-					"patching_rect" : [ 617.0, 30.0, 20.0, 22.0 ],
-					"text" : "2"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-7",
-					"maxclass" : "comment",
-					"numinlets" : 1,
-					"numoutlets" : 0,
-					"patching_rect" : [ 697.5, 95.0, 20.0, 22.0 ],
-					"text" : "1"
-				}
-
-			}
-, 			{
 				"box" : 				{
 					"id" : "obj-5",
 					"maxclass" : "comment",
@@ -93,19 +60,20 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "jit_matrix" ],
-					"patching_rect" : [ 507.0, 489.333333333333144, 100.0, 100.0 ],
+					"patching_rect" : [ 497.0, 489.333333333333144, 100.0, 100.0 ],
 					"pic" : "/Users/jml/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/icon.png"
 				}
 
 			}
 , 			{
 				"box" : 				{
+					"fontsize" : 12.0,
 					"id" : "obj-39",
 					"linecount" : 3,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 617.0, 523.0, 150.0, 53.0 ],
+					"patching_rect" : [ 617.0, 523.0, 160.0, 47.0 ],
 					"text" : "record and playback data with times and values separated"
 				}
 
@@ -310,23 +278,25 @@
 			}
 , 			{
 				"box" : 				{
+					"fontsize" : 12.0,
 					"id" : "obj-4",
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 721.0, 95.0, 59.0, 22.0 ],
-					"text" : "start rec"
+					"patching_rect" : [ 697.5, 85.0, 65.0, 20.0 ],
+					"text" : "1. start rec"
 				}
 
 			}
 , 			{
 				"box" : 				{
+					"fontsize" : 12.0,
 					"id" : "obj-3",
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 118.5, 105.333333333333258, 178.0, 22.0 ],
-					"text" : "click to play back"
+					"patching_rect" : [ 115.5, 85.0, 113.0, 20.0 ],
+					"text" : "3. click to play back"
 				}
 
 			}
@@ -488,12 +458,13 @@
 			}
 , 			{
 				"box" : 				{
+					"fontsize" : 12.0,
 					"id" : "obj-32",
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 638.0, 30.0, 178.0, 22.0 ],
-					"text" : "click in some sort of rhythm"
+					"patching_rect" : [ 547.0, 19.0, 167.0, 20.0 ],
+					"text" : "2. click in some sort of rhythm"
 				}
 
 			}
@@ -872,7 +843,8 @@
 				"type" : "iLaX"
 			}
  ],
-		"autosave" : 0
+		"autosave" : 0,
+		"bgcolor" : [ 0.996078, 0.996078, 0.996078, 1.0 ]
 	}
 
 }

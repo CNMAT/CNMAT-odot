@@ -29,7 +29,7 @@
 		"toolbars_unpinned_last_save" : 15,
 		"tallnewobj" : 0,
 		"boxanimatetime" : 200,
-		"enablehscroll" : 0,
+		"enablehscroll" : 1,
 		"enablevscroll" : 1,
 		"devicewidth" : 0.0,
 		"description" : "",
@@ -39,6 +39,18 @@
 		"subpatcher_template" : "",
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
+				"box" : 				{
+					"fontsize" : 14.0,
+					"id" : "obj-10",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 931.0, 127.0, 108.0, 22.0 ],
+					"text" : "o.demo.prefixes"
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"autofit" : 1,
 					"forceaspect" : 1,
@@ -516,7 +528,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 19.0, 466.0, 465.0, 59.0 ],
-					"text" : "/b/dev : [0.494596, 0, 2065, 2021-03-25T16:58:01.691797Z],\n/self : \"/b\",\n/b/time/local : 2021-03-25T16:58:01.691818Z"
+					"text" : "/b/dev : [0.134251, 0, 33434, 2021-04-05T17:35:50.573679Z],\n/self : \"/b\",\n/b/time/local : 2021-04-05T17:35:50.573723Z"
 				}
 
 			}
@@ -542,7 +554,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 19.0, 332.0, 465.0, 59.0 ],
-					"text" : "/b/dev : [0.494596, 0, 2065, 2021-03-25T16:58:01.691797Z],\n/time/local : 2021-03-25T16:58:01.691818Z,\n/self : \"/b\""
+					"text" : "/a/dev : [0.836176, 0, 33433, 2021-04-05T17:35:50.569085Z],\n/time/local : 2021-04-05T17:35:50.569125Z,\n/self : \"/a\""
 				}
 
 			}
@@ -555,7 +567,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 19.0, 182.0, 465.0, 33.0 ],
-					"text" : "/b/dev : [0.494596, 0, 2065, 2021-03-25T16:58:01.691797Z]"
+					"text" : "/a/dev : [0.836176, 0, 33433, 2021-04-05T17:35:50.569085Z]"
 				}
 
 			}
@@ -1697,8 +1709,8 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "o.was.maxpat",
-				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/dev",
-				"patcherrelativepath" : "../dev",
+				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/patchers",
+				"patcherrelativepath" : "../patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
@@ -1783,7 +1795,8 @@
 				"type" : "iLaX"
 			}
  ],
-		"autosave" : 0
+		"autosave" : 0,
+		"bgcolor" : [ 0.996078, 0.996078, 0.996078, 1.0 ]
 	}
 
 }

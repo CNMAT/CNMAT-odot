@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 41.0, 84.0, 500.0, 498.0 ],
+		"rect" : [ 17.0, 68.0, 500.0, 498.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -21,11 +21,11 @@
 		"gridsnaponopen" : 1,
 		"objectsnaponopen" : 1,
 		"statusbarvisible" : 2,
-		"toolbarvisible" : 1,
-		"lefttoolbarpinned" : 0,
-		"toptoolbarpinned" : 0,
-		"righttoolbarpinned" : 0,
-		"bottomtoolbarpinned" : 0,
+		"toolbarvisible" : 0,
+		"lefttoolbarpinned" : 2,
+		"toptoolbarpinned" : 2,
+		"righttoolbarpinned" : 2,
+		"bottomtoolbarpinned" : 2,
 		"toolbars_unpinned_last_save" : 15,
 		"tallnewobj" : 0,
 		"boxanimatetime" : 200,
@@ -41,14 +41,26 @@
 		"boxes" : [ 			{
 				"box" : 				{
 					"fontface" : 0,
+					"fontname" : "Arial",
+					"fontsize" : 14.0,
+					"id" : "obj-1",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 361.0, 46.0, 93.0, 22.0 ],
+					"text" : "o.demo.delay"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontface" : 0,
 					"id" : "obj-7",
-					"linecount" : 2,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 39.0, 136.0, 143.0, 46.0 ],
-					"text" : "/r : 0.819838,\n/delay/interval : 1."
+					"patching_rect" : [ 39.0, 136.0, 143.0, 33.0 ]
 				}
 
 			}
@@ -84,13 +96,13 @@
 				"box" : 				{
 					"fontface" : 0,
 					"fontname" : "Arial",
-					"fontsize" : 11.0,
+					"fontsize" : 12.0,
 					"id" : "obj-6",
-					"linecount" : 2,
+					"linecount" : 3,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 346.0, 132.0, 123.0, 31.0 ],
+					"patching_rect" : [ 361.0, 73.0, 108.0, 47.0 ],
 					"text" : "Delay a bundle by a number of seconds"
 				}
 
@@ -104,7 +116,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "jit_matrix" ],
-					"patching_rect" : [ 346.0, 30.0, 100.0, 100.0 ],
+					"patching_rect" : [ 251.0, 46.0, 100.0, 100.0 ],
 					"pic" : "/Users/jml/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/icon.png"
 				}
 
@@ -113,13 +125,11 @@
 				"box" : 				{
 					"fontface" : 0,
 					"id" : "obj-4",
-					"linecount" : 2,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 163.0, 403.0, 143.0, 46.0 ],
-					"text" : "/r : 0.819838,\n/delay/interval : 1."
+					"patching_rect" : [ 163.0, 403.0, 143.0, 33.0 ]
 				}
 
 			}
