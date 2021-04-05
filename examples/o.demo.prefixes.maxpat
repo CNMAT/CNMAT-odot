@@ -40,12 +40,26 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"fontsize" : 12.0,
+					"id" : "obj-9",
+					"linecount" : 3,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 909.0, 150.0, 136.0, 47.0 ],
+					"presentation_linecount" : 3,
+					"text" : "managing multiple data streams with unique prefixes"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"fontsize" : 14.0,
 					"id" : "obj-10",
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 931.0, 127.0, 108.0, 22.0 ],
+					"patching_rect" : [ 909.0, 127.0, 108.0, 22.0 ],
 					"text" : "o.demo.prefixes"
 				}
 
@@ -59,7 +73,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "jit_matrix" ],
-					"patching_rect" : [ 935.0, 18.0, 100.0, 100.0 ],
+					"patching_rect" : [ 913.0, 18.0, 100.0, 100.0 ],
 					"pic" : "/Users/jml/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/icon.png"
 				}
 
@@ -528,7 +542,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 19.0, 466.0, 465.0, 59.0 ],
-					"text" : "/b/dev : [0.134251, 0, 33434, 2021-04-05T17:35:50.573679Z],\n/self : \"/b\",\n/b/time/local : 2021-04-05T17:35:50.573723Z"
+					"text" : "/a/dev : [-0.370669, 0, 9445, 2021-04-05T18:41:48.181705Z],\n/self : \"/a\",\n/a/time/local : 2021-04-05T18:41:48.181722Z"
 				}
 
 			}
@@ -554,7 +568,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 19.0, 332.0, 465.0, 59.0 ],
-					"text" : "/a/dev : [0.836176, 0, 33433, 2021-04-05T17:35:50.569085Z],\n/time/local : 2021-04-05T17:35:50.569125Z,\n/self : \"/a\""
+					"text" : "/a/dev : [-0.370669, 0, 9444, 2021-04-05T18:41:48.176780Z],\n/time/local : 2021-04-05T18:41:48.176805Z,\n/self : \"/a\""
 				}
 
 			}
@@ -566,8 +580,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 19.0, 182.0, 465.0, 33.0 ],
-					"text" : "/a/dev : [0.836176, 0, 33433, 2021-04-05T17:35:50.569085Z]"
+					"patching_rect" : [ 19.0, 182.0, 432.0, 33.0 ],
+					"text" : "/a/dev : [-0.370669, 0, 9444, 2021-04-05T18:41:48.176780Z]"
 				}
 
 			}
@@ -602,7 +616,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 534.0, 182.0, 397.0, 33.0 ],
+					"patching_rect" : [ 463.0, 182.0, 397.0, 33.0 ],
 					"text" : "The goal is to organize the information in the bundle such that it is easier to understand, and easier to manipulate using reusable abstractions."
 				}
 
