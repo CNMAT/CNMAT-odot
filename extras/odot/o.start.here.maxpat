@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 22.0, 67.0, 356.0, 326.0 ],
+		"rect" : [ 15.0, 62.0, 356.0, 364.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -40,12 +40,38 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"bgcolor" : [ 0.764705882352941, 0.811764705882353, 0.811764705882353, 1.0 ],
+					"bgcolor2" : [ 0.764705882352941, 0.811764705882353, 0.811764705882353, 1.0 ],
+					"bgfillcolor_angle" : 268.099551524603328,
+					"bgfillcolor_autogradient" : 0.0,
+					"bgfillcolor_color" : [ 0.756862745098039, 0.541176470588235, 0.325490196078431, 1.0 ],
+					"bgfillcolor_color1" : [ 0.764705882352941, 0.811764705882353, 0.811764705882353, 1.0 ],
+					"bgfillcolor_color2" : [ 0.764705882352941, 0.811764705882353, 0.811764705882353, 1.0 ],
+					"bgfillcolor_proportion" : 0.5,
+					"bgfillcolor_pt1" : [ 0.54040404040404, -0.267676767676768 ],
+					"bgfillcolor_pt2" : [ 0.5, 0.95 ],
+					"bgfillcolor_type" : "gradient",
+					"gradient" : 1,
+					"id" : "obj-1",
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 31.0, 143.906488549618302, 151.0, 22.0 ],
+					"text" : "tutorial",
+					"textcolor" : [ 0.2, 0.137254901960784, 0.137254901960784, 1.0 ],
+					"textjustification" : 1
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-12",
 					"linecount" : 6,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 31.0, 192.0, 294.0, 87.0 ],
+					"patching_rect" : [ 31.0, 247.0, 294.0, 87.0 ],
 					"text" : "ODOT is a set of externals and language developed by Adrian Freed and John MacCallum, with support from Andy Schmeder, Ilya Rostovtsev, Rama Gottfried, Jeff Lubow, and many others at the Center for New Music and Audio Technologies (CNMAT) between 2007 and 2016."
 				}
 
@@ -58,7 +84,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 31.0, 152.906488549618302, 60.0, 33.0 ],
+					"patching_rect" : [ 31.0, 207.906488549618302, 60.0, 33.0 ],
 					"text" : "odot"
 				}
 
@@ -124,7 +150,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 31.0, 88.937659033078873, 151.0, 22.0 ],
+					"patching_rect" : [ 31.0, 89.453244274809151, 151.0, 22.0 ],
 					"text" : "o.expr reference",
 					"textcolor" : [ 0.2, 0.137254901960784, 0.137254901960784, 1.0 ],
 					"textjustification" : 1
@@ -277,7 +303,7 @@
  ]
 					}
 ,
-					"patching_rect" : [ 347.0, 58.906488549618331, 68.0, 22.0 ],
+					"patching_rect" : [ 231.0, 170.906488549618331, 68.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
@@ -294,7 +320,7 @@
 					"hidden" : 1,
 					"id" : "obj-11",
 					"maxclass" : "newobj",
-					"numinlets" : 3,
+					"numinlets" : 4,
 					"numoutlets" : 0,
 					"patcher" : 					{
 						"fileversion" : 1,
@@ -336,6 +362,31 @@
 						"subpatcher_template" : "Default Max 7",
 						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
+								"box" : 								{
+									"comment" : "",
+									"id" : "obj-9",
+									"index" : 4,
+									"maxclass" : "inlet",
+									"numinlets" : 0,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 458.413793103448256, 60.0, 30.0, 30.0 ]
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-3",
+									"maxclass" : "message",
+									"numinlets" : 2,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 458.413793103448256, 127.0, 108.0, 22.0 ],
+									"text" : "o.tutorial.maxpat"
+								}
+
+							}
+, 							{
 								"box" : 								{
 									"id" : "obj-10",
 									"maxclass" : "newobj",
@@ -379,7 +430,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 501.413793103448256, 127.0, 108.0, 22.0 ],
+									"patching_rect" : [ 343.413793103448256, 127.0, 108.0, 22.0 ],
 									"text" : "o.overview.maxpat"
 								}
 
@@ -393,7 +444,7 @@
 									"numinlets" : 0,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 501.413793103448256, 60.0, 30.0, 30.0 ]
+									"patching_rect" : [ 343.413793103448256, 60.0, 30.0, 30.0 ]
 								}
 
 							}
@@ -406,7 +457,7 @@
 									"numinlets" : 0,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 350.275862068965523, 60.0, 30.0, 30.0 ]
+									"patching_rect" : [ 192.275862068965523, 60.0, 30.0, 30.0 ]
 								}
 
 							}
@@ -417,7 +468,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 350.275862068965523, 127.0, 134.0, 22.0 ],
+									"patching_rect" : [ 192.275862068965523, 127.0, 134.0, 22.0 ],
 									"text" : "o.expr.overview.maxpat"
 								}
 
@@ -458,6 +509,13 @@
 							}
 , 							{
 								"patchline" : 								{
+									"destination" : [ "obj-10", 0 ],
+									"source" : [ "obj-3", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
 									"destination" : [ "obj-6", 0 ],
 									"source" : [ "obj-4", 0 ]
 								}
@@ -484,10 +542,17 @@
 								}
 
 							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-3", 0 ],
+									"source" : [ "obj-9", 0 ]
+								}
+
+							}
  ]
 					}
 ,
-					"patching_rect" : [ 347.0, 84.906488549618331, 48.0, 22.0 ],
+					"patching_rect" : [ 143.0, 207.906488549618302, 48.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
@@ -518,7 +583,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 31.0, 115.906488549618317, 151.0, 22.0 ],
+					"patching_rect" : [ 31.0, 116.679866412213727, 151.0, 22.0 ],
 					"text" : "introduction and history",
 					"textcolor" : [ 0.2, 0.137254901960784, 0.137254901960784, 1.0 ],
 					"textjustification" : 1
@@ -544,7 +609,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 31.0, 61.968829516539436, 151.0, 22.0 ],
+					"patching_rect" : [ 31.0, 62.226622137404576, 151.0, 22.0 ],
 					"text" : "o.overview",
 					"textcolor" : [ 0.2, 0.137254901960784, 0.137254901960784, 1.0 ],
 					"textjustification" : 1
@@ -553,6 +618,14 @@
 			}
  ],
 		"lines" : [ 			{
+				"patchline" : 				{
+					"destination" : [ "obj-11", 3 ],
+					"hidden" : 1,
+					"source" : [ "obj-1", 0 ]
+				}
+
+			}
+, 			{
 				"patchline" : 				{
 					"destination" : [ "obj-5", 0 ],
 					"hidden" : 1,
