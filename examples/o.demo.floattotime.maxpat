@@ -40,6 +40,20 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"fontsize" : 12.0,
+					"id" : "obj-7",
+					"linecount" : 2,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 362.0, 564.0, 419.0, 33.0 ],
+					"presentation_linecount" : 2,
+					"text" : "This value is the approximate number of seconds that have elapsed since midnight, Jan. 1, 1900."
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"autofit" : 1,
 					"forceaspect" : 1,
 					"id" : "obj-6",
@@ -73,7 +87,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 31.0, 671.0, 281.0, 33.0 ]
+					"patching_rect" : [ 31.0, 671.0, 281.0, 33.0 ],
+					"text" : "/now : 2021-04-05T08:34:09.666510Z"
 				}
 
 			}
@@ -122,7 +137,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 31.0, 564.0, 281.0, 33.0 ]
+					"patching_rect" : [ 31.0, 564.0, 281.0, 33.0 ],
+					"text" : "/now : 3.8266e+09"
 				}
 
 			}
@@ -146,7 +162,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 142.0, 521.0, 202.0, 24.0 ],
-					"text" : "3824339461.245216"
+					"text" : "3826600449.66651"
 				}
 
 			}
@@ -245,7 +261,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 31.0, 357.0, 281.0, 33.0 ]
+					"patching_rect" : [ 31.0, 357.0, 281.0, 33.0 ],
+					"text" : "/now : 2021-04-05T08:34:09.666510Z"
 				}
 
 			}
@@ -270,7 +287,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 31.0, 241.0, 281.0, 33.0 ]
+					"patching_rect" : [ 31.0, 241.0, 281.0, 33.0 ],
+					"text" : "/now : \"2021-04-05T08:34:09.666510Z\""
 				}
 
 			}
@@ -294,7 +312,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 142.0, 199.0, 202.0, 24.0 ],
-					"text" : "2021-03-10T04:31:01.245216Z"
+					"text" : "2021-04-05T08:34:09.666510Z"
 				}
 
 			}
@@ -340,11 +358,13 @@
 				"box" : 				{
 					"fontface" : 0,
 					"id" : "obj-2",
+					"linecount" : 2,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 31.0, 81.0, 226.0, 33.0 ]
+					"patching_rect" : [ 31.0, 81.0, 226.0, 46.0 ],
+					"text" : "/now : 2021-04-05T08:34:09.666510Z"
 				}
 
 			}
@@ -485,13 +505,6 @@
 			}
  ],
 		"dependency_cache" : [ 			{
-				"name" : "icon.png",
-				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot",
-				"patcherrelativepath" : "..",
-				"type" : "PNG",
-				"implicit" : 1
-			}
-, 			{
 				"name" : "o.timetag.mxo",
 				"type" : "iLaX"
 			}
