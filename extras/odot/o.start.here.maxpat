@@ -100,7 +100,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "jit_matrix" ],
-					"patching_rect" : [ 210.0, 34.906488549618317, 100.0, 100.0 ],
+					"patching_rect" : [ 220.0, 34.906488549618317, 100.0, 100.0 ],
 					"pic" : "/Users/jml/Documents/programming/git_repositories/ODOT-tutorials/introduction/_patchers/icon.png"
 				}
 
