@@ -55,7 +55,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 0.0, 640.0, 480.0 ],
+						"rect" : [ 59.0, 106.0, 640.0, 480.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -87,13 +87,11 @@
 								"box" : 								{
 									"fontface" : 0,
 									"id" : "obj-5",
-									"linecount" : 29,
 									"maxclass" : "o.display",
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 50.0, 100.0, 246.0, 392.0 ],
-									"text" : "/6/time/relative : 0.,\n/6/sfdur/ms,\n/6/voice : 6,\n/6/time/absolute : 0.,\n/5/time/relative : 0.,\n/5/sfdur/ms,\n/5/voice : 5,\n/5/time/absolute : 0.,\n/4/time/relative : 0.,\n/4/sfdur/ms,\n/4/voice : 4,\n/4/time/absolute : 0.,\n/3/time/relative : 0.,\n/3/sfdur/ms,\n/3/voice : 3,\n/3/time/absolute : 0.,\n/2/time/relative : 0.,\n/2/sfdur/ms,\n/2/voice : 2,\n/2/time/absolute : 0.,\n/1/time/relative : 0.224977,\n/1/sfdur/ms : 2844.76,\n/1/voice : 1,\n/1/bufname : \"buf\",\n/1/transport/play : \"bang\",\n/1/func : \"lambda(t, /cos =  cos(t * 2. * pi()))\",\n/1/time/absolute : 640.005,\n/1/cos : 0.156579"
+									"patching_rect" : [ 50.0, 100.0, 246.0, 33.0 ]
 								}
 
 							}
@@ -139,12 +137,12 @@
 					"fontname" : "Arial",
 					"fontsize" : 11.0,
 					"id" : "obj-10",
-					"linecount" : 2,
+					"linecount" : 3,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 456.0, 503.0, 107.0, 31.0 ],
-					"text" : "Sample player with shaping functions"
+					"patching_rect" : [ 456.0, 503.0, 107.0, 43.0 ],
+					"text" : "Sample player with envelope defined as a function (lambda)."
 				}
 
 			}
@@ -407,23 +405,16 @@
 ,
 		"dependency_cache" : [ 			{
 				"name" : "o.sfplayer.1.maxpat",
-				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/examples",
+				"bootpath" : "~/Development/CNMAT/CNMAT/CNMAT-odot/examples",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.accum.maxpat",
-				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/patchers/namespace",
+				"bootpath" : "~/Development/CNMAT/CNMAT/CNMAT-odot/patchers/namespace",
 				"patcherrelativepath" : "../patchers/namespace",
 				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "icon.png",
-				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot",
-				"patcherrelativepath" : "..",
-				"type" : "PNG",
 				"implicit" : 1
 			}
 , 			{
