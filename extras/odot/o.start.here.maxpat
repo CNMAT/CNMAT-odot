@@ -58,7 +58,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 31.0, 285.842446310969876, 151.0, 22.0 ],
-					"text" : "odot compatibility osc",
+					"text" : "compatibility w/ osc",
 					"textcolor" : [ 0.2, 0.137254901960784, 0.137254901960784, 1.0 ],
 					"textjustification" : 1
 				}
@@ -84,7 +84,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 31.0, 250.007811123688498, 151.0, 22.0 ],
-					"text" : "odot compatibility max",
+					"text" : "compatibility w/ max",
 					"textcolor" : [ 0.2, 0.137254901960784, 0.137254901960784, 1.0 ],
 					"textjustification" : 1
 				}
@@ -136,7 +136,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 31.0, 178.338540749125656, 151.0, 22.0 ],
-					"text" : "o.tutorial",
+					"text" : "tutorial",
 					"textcolor" : [ 0.2, 0.137254901960784, 0.137254901960784, 1.0 ],
 					"textjustification" : 1
 				}
@@ -510,7 +510,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 613.413793103448256, 177.0, 129.0, 22.0 ],
-									"presentation_linecount" : 2,
 									"text" : "odot-max-compatibility"
 								}
 
@@ -806,7 +805,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 31.0, 70.834635187281407, 151.0, 22.0 ],
-					"text" : "o.overview",
+					"text" : "overview",
 					"textcolor" : [ 0.2, 0.137254901960784, 0.137254901960784, 1.0 ],
 					"textjustification" : 1
 				}
