@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 8.0, 45.0, 1173.0, 696.0 ],
+		"rect" : [ 7.0, 54.0, 1173.0, 518.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -21,7 +21,7 @@
 		"gridsnaponopen" : 1,
 		"objectsnaponopen" : 1,
 		"statusbarvisible" : 2,
-		"toolbarvisible" : 1,
+		"toolbarvisible" : 0,
 		"lefttoolbarpinned" : 2,
 		"toptoolbarpinned" : 2,
 		"righttoolbarpinned" : 2,
@@ -47,7 +47,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 1078.0, 658.0, 77.0, 20.0 ],
+					"patching_rect" : [ 1078.0, 482.0, 77.0, 20.0 ],
 					"style" : "default",
 					"text" : "(scroll down)"
 				}
@@ -87,7 +87,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 15.0, 38.0, 121.0, 21.0 ],
+					"patching_rect" : [ 17.0, 60.0, 121.0, 21.0 ],
 					"text" : "Adrian Freed 2014"
 				}
 
@@ -209,7 +209,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 15.0, 15.0, 140.0, 29.0 ],
+					"patching_rect" : [ 17.0, 37.0, 140.0, 29.0 ],
 					"text" : "odot glossary"
 				}
 
@@ -2120,7 +2120,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 17.0, 99.0, 497.0, 74.0 ],
+					"patching_rect" : [ 17.0, 99.0, 390.0, 74.0 ],
 					"text" : "Use odot bundles to organize information\nCreate bundles by typing a description of them into the o.compose box. \n\nIn Max/MSP use the \"C\" keyboard to make an o.compose box appear  in an unlocked patcher:"
 				}
 
