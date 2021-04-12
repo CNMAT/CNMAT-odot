@@ -324,7 +324,7 @@ int o_gui_attach_checkNameAndType(t_o_gui_attach *x, t_object *b, t_symbol *name
             if( !strncmp(atom_getsym(at)->s_name, "object", 6) )
             {
                 char err_buf[256];
-                snprintf(err_buf, 256, "varname (%s) looks like an OSC address but o.gui.attach cannot link to non-GUI objects", str );
+                snprintf(err_buf, 256, "varname (%s) looks like an OSC address but o.gui.attach cannot link to non pattr-compatible objects", str );
 
                 o_gui_attach_addErr(x, err_buf, object_classname(b)->s_name, str);
                 
