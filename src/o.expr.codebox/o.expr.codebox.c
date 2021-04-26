@@ -86,6 +86,10 @@
 #define OMAX_PD_MAXSTRINGSIZE (1<<16)
 #include "opd_textbox.h"
 
+#define PD_BOX_COLOR "#17202A"
+#define PD_BOX_COLOR_SELECTED "#7B7D7D"
+
+
 typedef struct _jrgba {
 	double red;				///< Red component in the range [0.0, 1.0]
 	double green;			///< Green component in the range [0.0, 1.0]
@@ -532,7 +536,7 @@ void oexprcodebox_drawElements(t_object *ob, int firsttime)
            // post("%x %s FIRST VIS height %d y1 %d y2 %d \n", x, __func__, t->height, y1, y2);
             
             //border
-            sys_vgui(".x%lx.c create rectangle %d %d %d %d -outline \"#0066CC\" -fill \"#0066CC\" -tags %s \n", canvas, x1, y1, x2, y2, x->border_tag);
+            sys_vgui(".x%lx.c create rectangle %d %d %d %d -outline \"%s\" -fill \"%s\" -tags %s \n", canvas, x1, y1, x2, y2, PD_BOX_COLOR, PD_BOX_COLOR, x->border_tag);
             
             sys_vgui(".x%lx.c create rectangle %d %d %d %d -outline \"\" -fill \"white\" -tags %sBorder -width 1 \n",canvas, rx1, ry1, rx2, ry2, x->border_tag);
             
@@ -545,7 +549,7 @@ void oexprcodebox_drawElements(t_object *ob, int firsttime)
         }
         
         
-        char *color = (x->textbox->selected? "#006699" : "#0066CC");
+        char *color = (x->textbox->selected? PD_BOX_COLOR_SELECTED : PD_BOX_COLOR);
         sys_vgui(".x%lx.c itemconfigure %s -outline %s -fill %s \n", canvas, x->border_tag, color, color);
         sys_vgui(".x%lx.c itemconfigure %sBorder -outline %s\n", canvas, x->border_tag, color);
 
@@ -602,7 +606,7 @@ static void oexprcodebox_select(t_gobj *z, t_glist *glist, int state)
     
     if (glist_isvisible(glist) && gobj_shouldvis(&x->ob.te_g, glist))
     {
-        char *color = (state? "#006699" : "#0066CC");
+        char *color = (state ? PD_BOX_COLOR_SELECTED : PD_BOX_COLOR);
         sys_vgui(".x%lx.c itemconfigure %s -outline %s -fill %s \n", canvas, x->border_tag, color, color);
         sys_vgui(".x%lx.c itemconfigure %sBorder -outline %s\n", canvas, x->border_tag, color);
     }
@@ -621,7 +625,7 @@ static void oexprcodebox_activate(t_gobj *z, t_glist *glist, int state)
     opd_textbox_activate(x->textbox, glist, state);
     
     //    sys_vgui(".x%lx.c itemconfigure %s -outline %s\n", glist, x->border_tag, (state? "$select_color" : "$msg_box_fill"));//was "$box_outline"
-    char *color = (state? "#006699" : "#0066CC");
+    char *color = (state ? PD_BOX_COLOR_SELECTED : PD_BOX_COLOR);
     sys_vgui(".x%lx.c itemconfigure %s -outline %s -fill %s \n", canvas, x->border_tag, color, color);
     sys_vgui(".x%lx.c itemconfigure %sBorder -outline %s\n", canvas, x->border_tag, color);
     
