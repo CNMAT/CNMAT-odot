@@ -84,6 +84,10 @@ enum {
 #ifdef OMAX_PD_VERSION
 #include "opd_textbox.h"
 
+#define PD_BOX_COLOR "#17202A"
+#define PD_BOX_COLOR_SELECTED "#7B7D7D"
+#define PD_BOX_BACKGROUND_COLOR "#D7DBDD"
+
 typedef struct _odisplay {
     t_object ob;
     t_opd_textbox *textbox;
@@ -627,11 +631,11 @@ void odisplay_drawElements(t_object *ob, int firsttime)
 //              post("%x %s FIRST VIS height %d y1 %d y2 %d \n", x, __func__, t->height, y1, y2);
             
             //box
-            sys_vgui(".x%lx.c create polygon %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d -outline %s -width 2 -fill %s -tags %s\n", canvas, x1a, y1a, x1b, y1b, x2a, y2a, x2b, y2b, x3a, y3a, x3b, y3b, x4a, y4a, x4b, y4b, x->frame_color->hex, x->background_color->hex, x->tk_tag);
-            sys_vgui(".x%lx.c create polygon %d %d %d %d %d %d %d %d %d %d %d %d -outline \"\" -fill %s -tags %sBOTTOM \n", canvas, mx1, ry2, mx2, ry2, x3a, y3a, x3b, y3b, x4a, y4a, x4b, y4b, x->frame_color->hex, x->tk_tag);
+            sys_vgui(".x%lx.c create polygon %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d -outline %s -width 2 -fill %s -tags %s\n", canvas, x1a, y1a, x1b, y1b, x2a, y2a, x2b, y2b, x3a, y3a, x3b, y3b, x4a, y4a, x4b, y4b, PD_BOX_COLOR, PD_BOX_BACKGROUND_COLOR, x->tk_tag);
+            sys_vgui(".x%lx.c create polygon %d %d %d %d %d %d %d %d %d %d %d %d -outline \"\" -fill %s -tags %sBOTTOM \n", canvas, mx1, ry2, mx2, ry2, x3a, y3a, x3b, y3b, x4a, y4a, x4b, y4b, PD_BOX_COLOR, x->tk_tag);
             
             //update dot
-            sys_vgui(".x%lx.c create oval %d %d %d %d -fill %s -outline \"\" -tags %sUPDATE \n", canvas, x2-10, y1+5, x2-5, y1+10, x->background_color->hex, x->tk_tag);
+            sys_vgui(".x%lx.c create oval %d %d %d %d -fill %s -outline \"\" -tags %sUPDATE \n", canvas, x2-10, y1+5, x2-5, y1+10, PD_BOX_BACKGROUND_COLOR, x->tk_tag);
             
         }
         else
@@ -646,7 +650,7 @@ void odisplay_drawElements(t_object *ob, int firsttime)
         
         opd_textbox_drawElements(x->textbox, x1,  y1,  x2,  y2,  firsttime);
 
-        sys_vgui(".x%lx.c itemconfigure %sUPDATE -fill %s \n", canvas, x->tk_tag, (draw_new_data_indicator?  x->flash_color->hex : x->background_color->hex ));
+        sys_vgui(".x%lx.c itemconfigure %sUPDATE -fill %s \n", canvas, x->tk_tag, (draw_new_data_indicator?  x->flash_color->hex : PD_BOX_BACKGROUND_COLOR ));
         
         if(draw_new_data_indicator)
             clock_delay(x->new_data_indicator_clock, 100);
@@ -703,10 +707,10 @@ static void odisplay_select(t_gobj *z, t_glist *glist, int state)
     
     if (glist_isvisible(glist) && gobj_shouldvis(&x->ob.te_g, glist)){
         
-        sys_vgui(".x%lx.c itemconfigure %s -outline %s\n", canvas, x->tk_tag, (state? "#006699" : "#0066CC"));
+        sys_vgui(".x%lx.c itemconfigure %s -outline %s\n", canvas, x->tk_tag, (state? PD_BOX_COLOR_SELECTED : PD_BOX_COLOR));
 //        sys_vgui(".x%lx.c itemconfigure %s -outline %s\n", canvas, x->corner_tag, (state? "#006699" : "#0066CC"));
         
-        sys_vgui(".x%lx.c itemconfigure %sUPDATE -fill %s\n", canvas, x->tk_tag, (x->draw_new_data_indicator? (state? "#006699" : "#0066CC") : x->background_color->hex));
+        sys_vgui(".x%lx.c itemconfigure %sUPDATE -fill %s\n", canvas, x->tk_tag, (x->draw_new_data_indicator? (state? PD_BOX_COLOR_SELECTED : PD_BOX_COLOR) : x->background_color->hex));
     }
 }
 
@@ -871,7 +875,7 @@ void *odisplay_new(t_symbol *msg, short argc, t_atom *argv)
         x->text_color = (t_opd_rgb *)malloc( sizeof(t_opd_rgb) );
 
         
-        opd_textbox_fsetRGB(x->frame_color, .216, .435, .7137);
+     //   opd_textbox_fsetRGB(x->frame_color, 0., 0., 0.);
         opd_textbox_fsetRGB(x->background_color, .884, .884, .884);
         opd_textbox_fsetRGB(x->flash_color, .761, .349, .306);
         opd_textbox_setRGB(x->text_color, 0, 0, 0);
