@@ -95,6 +95,9 @@
 #define ocompose_MAX_MESSAGE_LENGTH 128
 #define BUFLEN 128
 
+#define PD_BOX_COLOR "#17202A"
+#define PD_BOX_COLOR_SELECTED "#7B7D7D"
+
 enum {
     ocompose_U,
     ocompose_S,
@@ -771,9 +774,9 @@ void ocompose_drawElements(t_object *ob, int firsttime)
             
             //border
             
-            sys_vgui(".x%lx.c create polygon %d %d %d %d %d %d %d %d %d %d %d %d  -outline #0066CC -fill \"white\" -tags %s -width 2 \n",canvas, x1, y1, x2, y1, x2, cy2, cx2, cy2, cx2, cy2, x1, cy2, x->border_tag);
+            sys_vgui(".x%lx.c create polygon %d %d %d %d %d %d %d %d %d %d %d %d  -outline %s -fill \"white\" -tags %s -width 2 \n",canvas, x1, y1, x2, y1, x2, cy2, cx2, cy2, cx2, cy2, x1, cy2, PD_BOX_COLOR, x->border_tag);
             
-            sys_vgui(".x%lx.c create polygon %d %d %d %d %d %d -outline #0066CC -fill \"white\" -tags %s \n",canvas, cx2, cy2, cx2, y2, x2, cy2, x->corner_tag);
+            sys_vgui(".x%lx.c create polygon %d %d %d %d %d %d -outline %s -fill \"white\" -tags %s \n",canvas, cx2, cy2, cx2, y2, x2, cy2, PD_BOX_COLOR, x->corner_tag);
             
         }
         else
@@ -791,7 +794,7 @@ void ocompose_drawElements(t_object *ob, int firsttime)
         //sys_vgui(".x%lx.c itemconfigure %s -outline %s\n", canvas, x->border_tag, (x->parse_error?  "red" : "#0066CC" ));
         //sys_vgui(".x%lx.c itemconfigure %s -outline %s\n", canvas, x->corner_tag, (x->parse_error? "red" : "blue" ));
         
-        sys_vgui(".x%lx.c itemconfigure %s -fill %s \n", canvas, x->corner_tag, (x->draw_new_data_indicator? "#0066CC" : "white"));
+        sys_vgui(".x%lx.c itemconfigure %s -fill %s \n", canvas, x->corner_tag, (x->draw_new_data_indicator? PD_BOX_COLOR : "white"));
 
 
         if(draw_new_data_indicator)
@@ -846,10 +849,10 @@ static void ocompose_select(t_gobj *z, t_glist *glist, int state)
 
     if (glist_isvisible(glist) && gobj_shouldvis(&x->ob.te_g, glist)){
 
-         sys_vgui(".x%lx.c itemconfigure %s -outline %s\n", canvas, x->border_tag, (state? "#006699" : "#0066CC"));
-         sys_vgui(".x%lx.c itemconfigure %s -outline %s\n", canvas, x->corner_tag, (state? "#006699" : "#0066CC"));
+         sys_vgui(".x%lx.c itemconfigure %s -outline %s\n", canvas, x->border_tag, (state? PD_BOX_COLOR_SELECTED : PD_BOX_COLOR));
+         sys_vgui(".x%lx.c itemconfigure %s -outline %s\n", canvas, x->corner_tag, (state? PD_BOX_COLOR_SELECTED : PD_BOX_COLOR));
          
-         sys_vgui(".x%lx.c itemconfigure %s -fill %s\n", canvas, x->corner_tag, (x->draw_new_data_indicator? (state? "#006699" : "#0066CC") : "white"));
+         sys_vgui(".x%lx.c itemconfigure %s -fill %s\n", canvas, x->corner_tag, (x->draw_new_data_indicator? (state? PD_BOX_COLOR_SELECTED : PD_BOX_COLOR) : "white"));
     }
 }
 
@@ -865,10 +868,10 @@ static void ocompose_activate(t_gobj *z, t_glist *glist, int state)
     
     opd_textbox_activate(x->textbox, glist, state);
     
-    sys_vgui(".x%lx.c itemconfigure %s -outline %s\n", canvas, x->border_tag, (state? "#006699" : "#0066CC"));
-    sys_vgui(".x%lx.c itemconfigure %s -outline %s\n", canvas, x->corner_tag, (state? "#006699" : "#0066CC"));
+    sys_vgui(".x%lx.c itemconfigure %s -outline %s\n", canvas, x->border_tag, (state? PD_BOX_COLOR_SELECTED : PD_BOX_COLOR));
+    sys_vgui(".x%lx.c itemconfigure %s -outline %s\n", canvas, x->corner_tag, (state? PD_BOX_COLOR_SELECTED : PD_BOX_COLOR));
     
-    sys_vgui(".x%lx.c itemconfigure %s -fill %s\n", canvas, x->corner_tag, (x->draw_new_data_indicator? (state? "#006699" : "#0066CC") : "white"));
+    sys_vgui(".x%lx.c itemconfigure %s -fill %s\n", canvas, x->corner_tag, (x->draw_new_data_indicator? (state? PD_BOX_COLOR_SELECTED : PD_BOX_COLOR) : "white"));
 
 }
 
@@ -909,7 +912,7 @@ static void ocompose_doClick(t_ocompose *x,
 {
     if (glist_isvisible(x->textbox->glist))
     {
-        sys_vgui(".x%lx.c itemconfigure %s -fill %s \n", glist_getcanvas(x->textbox->glist), x->corner_tag, "#0066CC");
+        sys_vgui(".x%lx.c itemconfigure %s -fill %s \n", glist_getcanvas(x->textbox->glist), x->corner_tag, PD_BOX_COLOR);
         
         ocompose_bang(x);
         clock_delay(x->m_clock, 120);
