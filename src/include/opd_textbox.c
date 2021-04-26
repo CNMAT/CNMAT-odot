@@ -960,12 +960,12 @@ void opd_textbox_select(t_opd_textbox *x, t_glist *glist, int state)
             opd_textbox_unbindCanvasEvents(x);
         
     }
-    
+    /*
     if(opd_textbox_motion(x))
     {
         opd_textbox_mousedown(x);
     }
-    
+    */
     opd_textbox_getRectAndDraw(x, 0);
     
 }
