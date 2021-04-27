@@ -1,4 +1,5 @@
 EXTERNALS_BASENAMES = o.append \
+o.atomize \
 o.change \
 o.collect \
 o.cond \
@@ -6,12 +7,14 @@ o.compose \
 o.dict \
 o.difference \
 o.display \
+o.downcast \
 o.explode \
 o.expr.codebox \
 o.flatten \
 o.if \
 o.intersection \
 o.listenumerate \
+o.messageiterate \
 o.pack \
 o.prepend \
 o.print \
@@ -30,12 +33,10 @@ o.pak \
 o.unless \
 o.when
 
-DEV_BASENAMES = o.atomize \
+DEV_BASENAMES = \
 o.context \
-o.downcast \
 o.gui.attach \
 o.mappatch \
-o.messageiterate \
 o.schedule~ \
 o.slip.decode \
 o.slip.encode \
