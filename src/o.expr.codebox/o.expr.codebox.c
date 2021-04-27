@@ -87,7 +87,7 @@
 #include "opd_textbox.h"
 
 #define PD_BOX_COLOR "#17202A"
-#define PD_BOX_COLOR_SELECTED "#7B7D7D"
+#define PD_BOX_COLOR_SELECTED "#0000FF"
 
 
 typedef struct _jrgba {
@@ -737,9 +737,9 @@ void *oexprcodebox_new(t_symbol *msg, short argc, t_atom *argv)
         t->textediting = 0;
 
         t->margin_t = 10;
-        t->margin_l = 1;
-        t->margin_b = 1;
-        t->margin_r = 1;
+        t->margin_l = 0;
+        t->margin_b = 0;
+        t->margin_r = 0;
         
         t->resizebox_x_offset = 7;
         t->resizebox_y_offset = 5;

@@ -96,7 +96,7 @@
 #define BUFLEN 128
 
 #define PD_BOX_COLOR "#17202A"
-#define PD_BOX_COLOR_SELECTED "#7B7D7D"
+#define PD_BOX_COLOR_SELECTED "#0000FF"
 
 enum {
     ocompose_U,
@@ -774,7 +774,7 @@ void ocompose_drawElements(t_object *ob, int firsttime)
             
             //border
             
-            sys_vgui(".x%lx.c create polygon %d %d %d %d %d %d %d %d %d %d %d %d  -outline %s -fill \"white\" -tags %s -width 2 \n",canvas, x1, y1, x2, y1, x2, cy2, cx2, cy2, cx2, cy2, x1, cy2, PD_BOX_COLOR, x->border_tag);
+            sys_vgui(".x%lx.c create polygon %d %d %d %d %d %d %d %d %d %d %d %d  -outline %s -fill \"white\" -tags %s -width 1 \n",canvas, x1, y1, x2, y1, x2, cy2, cx2, cy2, cx2, cy2, x1, cy2, PD_BOX_COLOR, x->border_tag);
             
             sys_vgui(".x%lx.c create polygon %d %d %d %d %d %d -outline %s -fill \"white\" -tags %s \n",canvas, cx2, cy2, cx2, y2, x2, cy2, PD_BOX_COLOR, x->corner_tag);
             
