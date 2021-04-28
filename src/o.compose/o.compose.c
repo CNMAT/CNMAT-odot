@@ -848,11 +848,12 @@ static void ocompose_select(t_gobj *z, t_glist *glist, int state)
     opd_textbox_select(x->textbox, glist, state);
 
     if (glist_isvisible(glist) && gobj_shouldvis(&x->ob.te_g, glist)){
+        char * color = (state? PD_BOX_COLOR_SELECTED : PD_BOX_COLOR);
+        sys_vgui(".x%lx.c itemconfigure %s -outline %s\n", canvas, x->border_tag, color);
+        sys_vgui(".x%lx.c itemconfigure %s -outline %s\n", canvas, x->corner_tag, color);
+        sys_vgui(".x%lx.c itemconfigure text%lx -fill %s\n", canvas, (long)x->textbox, color);
 
-         sys_vgui(".x%lx.c itemconfigure %s -outline %s\n", canvas, x->border_tag, (state? PD_BOX_COLOR_SELECTED : PD_BOX_COLOR));
-         sys_vgui(".x%lx.c itemconfigure %s -outline %s\n", canvas, x->corner_tag, (state? PD_BOX_COLOR_SELECTED : PD_BOX_COLOR));
-         
-         sys_vgui(".x%lx.c itemconfigure %s -fill %s\n", canvas, x->corner_tag, (x->draw_new_data_indicator? (state? PD_BOX_COLOR_SELECTED : PD_BOX_COLOR) : "white"));
+        sys_vgui(".x%lx.c itemconfigure %s -fill %s\n", canvas, x->corner_tag, (x->draw_new_data_indicator? color : "white"));
     }
 }
 

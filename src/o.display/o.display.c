@@ -85,8 +85,8 @@ enum {
 #include "opd_textbox.h"
 
 #define PD_BOX_COLOR "#17202A"
-#define PD_BOX_COLOR_SELECTED "#7B7D7D"
-#define PD_BOX_BACKGROUND_COLOR "#D7DBDD"
+#define PD_BOX_COLOR_SELECTED "#0000FF"
+#define PD_BOX_BACKGROUND_COLOR "#FFFFFF"
 
 typedef struct _odisplay {
     t_object ob;
@@ -631,7 +631,7 @@ void odisplay_drawElements(t_object *ob, int firsttime)
 //              post("%x %s FIRST VIS height %d y1 %d y2 %d \n", x, __func__, t->height, y1, y2);
             
             //box
-            sys_vgui(".x%lx.c create polygon %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d -outline %s -width 2 -fill %s -tags %s\n", canvas, x1a, y1a, x1b, y1b, x2a, y2a, x2b, y2b, x3a, y3a, x3b, y3b, x4a, y4a, x4b, y4b, PD_BOX_COLOR, PD_BOX_BACKGROUND_COLOR, x->tk_tag);
+            sys_vgui(".x%lx.c create polygon %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d -outline %s -width 1 -fill %s -tags %s\n", canvas, x1a, y1a, x1b, y1b, x2a, y2a, x2b, y2b, x3a, y3a, x3b, y3b, x4a, y4a, x4b, y4b, PD_BOX_COLOR, PD_BOX_BACKGROUND_COLOR, x->tk_tag);
             sys_vgui(".x%lx.c create polygon %d %d %d %d %d %d %d %d %d %d %d %d -outline \"\" -fill %s -tags %sBOTTOM \n", canvas, mx1, ry2, mx2, ry2, x3a, y3a, x3b, y3b, x4a, y4a, x4b, y4b, PD_BOX_COLOR, x->tk_tag);
             
             //update dot
@@ -707,10 +707,14 @@ static void odisplay_select(t_gobj *z, t_glist *glist, int state)
     
     if (glist_isvisible(glist) && gobj_shouldvis(&x->ob.te_g, glist)){
         
-        sys_vgui(".x%lx.c itemconfigure %s -outline %s\n", canvas, x->tk_tag, (state? PD_BOX_COLOR_SELECTED : PD_BOX_COLOR));
+        char *color = (state ? PD_BOX_COLOR_SELECTED : PD_BOX_COLOR);
+        sys_vgui(".x%lx.c itemconfigure %s -outline %s\n", canvas, x->tk_tag, color);
+        sys_vgui(".x%lx.c itemconfigure %sBOTTOM -fill %s\n", canvas, x->tk_tag, color);
+        sys_vgui(".x%lx.c itemconfigure text%lx -fill %s\n", canvas, (long)x->textbox, color);
+
 //        sys_vgui(".x%lx.c itemconfigure %s -outline %s\n", canvas, x->corner_tag, (state? "#006699" : "#0066CC"));
         
-        sys_vgui(".x%lx.c itemconfigure %sUPDATE -fill %s\n", canvas, x->tk_tag, (x->draw_new_data_indicator? (state? PD_BOX_COLOR_SELECTED : PD_BOX_COLOR) : x->background_color->hex));
+        sys_vgui(".x%lx.c itemconfigure %sUPDATE -fill %s\n", canvas, x->tk_tag, (x->draw_new_data_indicator ? color : x->background_color->hex));
     }
 }
 

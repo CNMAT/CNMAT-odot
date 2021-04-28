@@ -552,7 +552,7 @@ void oexprcodebox_drawElements(t_object *ob, int firsttime)
         char *color = (x->textbox->selected? PD_BOX_COLOR_SELECTED : PD_BOX_COLOR);
         sys_vgui(".x%lx.c itemconfigure %s -outline %s -fill %s \n", canvas, x->border_tag, color, color);
         sys_vgui(".x%lx.c itemconfigure %sBorder -outline %s\n", canvas, x->border_tag, color);
-
+        sys_vgui(".x%lx.c itemconfigure text%lx -fill %s\n", canvas, (long)x->textbox, color);
         
         opd_textbox_drawElements(x->textbox, x1,  y1,  x2,  y2,  firsttime);
         
