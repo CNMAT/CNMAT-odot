@@ -645,6 +645,8 @@ void odisplay_drawElements(t_object *ob, int firsttime)
             sys_vgui(".x%lx.c coords %s %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d \n", canvas, x->tk_tag, x1a, y1a, x1b, y1b, x2a, y2a, x2b, y2b, x3a, y3a, x3b, y3b, x4a, y4a, x4b, y4b);
             sys_vgui(".x%lx.c coords %sBOTTOM %d %d %d %d %d %d %d %d %d %d %d %d \n", canvas, x->tk_tag, mx1, ry2, mx2, ry2, x3a, y3a, x3b, y3b, x4a, y4a, x4b, y4b);
             
+            sys_vgui(".x%lx.c coords %sUPDATE %d %d %d %d \n", canvas, x->tk_tag, x2-10, y1+5, x2-5, y1+10);
+
             //sys_vgui(".x%lx.c coords %s %d %d %d %d %d %d %d %d %d %d %d %d \n",canvas, x->tk_tag, x1, y1, x2, y1, x2, ry2, rx2, ry2, rx2, y2, x1, y2);
         }
         

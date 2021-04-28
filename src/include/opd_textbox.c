@@ -144,6 +144,7 @@ void opd_textbox_mousedown(t_opd_textbox *t)
     
     if(opd_textbox_motion(t)) //<< returns true for resize hit test
     {
+        
         if(!t->selected)
             gobj_select(&t->parent->te_g, t->glist, 1);
 
@@ -211,22 +212,23 @@ int opd_textbox_resizeHitTest(t_opd_textbox *x, int mx, int my)
         y2 = y1 + x->height;
         
         int rw = x->resizebox_width / 2;
-        int rh = x->resizebox_height / 2;
-        int rx1 = x2 - rw + x->resizebox_x_offset;
-        int ry1 = y2 - rh + x->resizebox_y_offset;
-        int rx2 = rx1 + rw;
-        int ry2 = ry1 + rh;
+       // int rh = x->resizebox_height / 2;
+        int rx1 = x2 - rw;// + x->resizebox_x_offset;
+        int ry1 = y1; //y2 - rh;// + x->resizebox_y_offset;
+        int rx2 = x2 + rw;
+        int ry2 = y2; //y2 + rh;
         
         test = (mx > rx1 && mx < rx2 && my > ry1 && my < ry2);
-    
+
         if(test != x->_hit)
         {
             if(c->gl_edit)
             {
-                char *color = (test && (x->selected || x->textediting)) ? "#006699" : "\"\"";
-                sys_vgui(".x%lx.c itemconfigure %lxRESIZE -outline %s \n", c, (long)x, color);
+                //char *color = (test && (x->selected || x->textediting)) ? "#006699" : "\"\"";
+                //sys_vgui(".x%lx.c itemconfigure %lxRESIZE -outline %s \n", c, (long)x, color);
                 
-                
+              //  post("hey %i %i", test, c->gl_edit );
+
                 char *cursormode = (test && (x->textediting || x->selected || x->mouseDown)) ? "$cursor_editmode_resize" : "$cursor_runmode_nothing";
                 //canvas_setcursor((t_canvas *)x->glist, cursormode); //<< not sure why this doesn't work
                 sys_vgui(".x%lx configure -cursor %s\n", c, cursormode);
@@ -243,6 +245,7 @@ int opd_textbox_resizeHitTest(t_opd_textbox *x, int mx, int my)
 int opd_textbox_motion(t_opd_textbox *x)
 {
     t_canvas *c = glist_getcanvas(x->glist);
+ 
     
     int test = 0;
     if(c->gl_edit && glist_isvisible(c) && glist_istoplevel(c))
@@ -748,7 +751,7 @@ int opd_textbox_drawElements(t_opd_textbox *x, int x1, int y1, int x2, int y2, i
         post("%x %s FIRST VIS height %d y1 %d y2 %d", x, __func__, x->height, y1, y2);
 #endif
         
-        sys_vgui(".x%lx.c create rectangle %d %d %d %d -outline \"\" -fill \"\" -tags %lxRESIZE \n", canvas, rx1, ry1, rx2, ry2, x);
+        //sys_vgui(".x%lx.c create rectangle %d %d %d %d -outline \"\" -fill \"\" -tags %lxRESIZE \n", canvas, rx1, ry1, rx2, ry2, x);
         
         //opd_textbox_bindCanvasEvents(x);
         
@@ -769,7 +772,7 @@ int opd_textbox_drawElements(t_opd_textbox *x, int x1, int y1, int x2, int y2, i
         post("%x %s REDRAW height %d y1 %d y2 %d mousedown %d selected %d\n", x, __func__, x->height, y1, y2, x->mouseDown, x->selected);
 #endif
         
-        sys_vgui(".x%lx.c coords %lxRESIZE %d %d %d %d\n", canvas, x, rx1, ry1, rx2, ry2);
+       // sys_vgui(".x%lx.c coords %lxRESIZE %d %d %d %d\n", canvas, x, rx1, ry1, rx2, ry2);
 
         if (x->textediting)
         {
@@ -786,8 +789,8 @@ int opd_textbox_drawElements(t_opd_textbox *x, int x1, int y1, int x2, int y2, i
             //do syntax highlighting here?
         }
         
-        char *color = (x->selected || x->textediting) ? "#006699" : "\"\"";
-        sys_vgui(".x%lx.c itemconfigure %lxRESIZE -fill %s \n", canvas, (long)x, color);
+        //char *color = (x->selected || x->textediting) ? "#006699" : "\"\"";
+        //sys_vgui(".x%lx.c itemconfigure %lxRESIZE -fill %s \n", canvas, (long)x, color);
     }
     
     return 1;
@@ -803,7 +806,7 @@ void opd_textbox_delete(t_opd_textbox *x, t_glist *glist)
     opd_textbox_unbindCanvasEvents(x);
     
     sys_vgui(".x%lx.c delete text%lx \n", canvas, (long)x);
-    sys_vgui(".x%lx.c delete %lxRESIZE \n", canvas, (long)x);
+    //sys_vgui(".x%lx.c delete %lxRESIZE \n", canvas, (long)x);
     
     if(x->textediting)
         sys_vgui("destroy .x%lx.t%lxTEXT\n", canvas, (long)x);
@@ -907,7 +910,7 @@ void opd_textbox_displace(t_opd_textbox *x, t_glist *glist, int dx, int dy)
     if (!x->mouseDown)
     {
         sys_vgui(".x%lx.c move text%lx %d %d\n", canvas, (long)x, dx, dy);
-        sys_vgui(".x%lx.c move %lxRESIZE %d %d\n", canvas, (long)x, dx, dy);
+      //  sys_vgui(".x%lx.c move %lxRESIZE %d %d\n", canvas, (long)x, dx, dy);
     }
     
     if(x->textediting)
