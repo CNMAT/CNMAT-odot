@@ -188,7 +188,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 655.0, 148.0, 405.0, 31.0 ],
-					"presentation_linecount" : 2,
 					"text" : "Dispatch OSC messages according to an address hierarchy and convert them to Max messages."
 				}
 
@@ -1622,6 +1621,14 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-28", 0 ],
+					"hidden" : 1,
+					"source" : [ "obj-109", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-10", 0 ],
 					"hidden" : 1,
 					"source" : [ "obj-11", 1 ]
@@ -1649,6 +1656,14 @@
 					"destination" : [ "obj-117", 0 ],
 					"hidden" : 1,
 					"source" : [ "obj-115", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-28", 0 ],
+					"hidden" : 1,
+					"source" : [ "obj-116", 0 ]
 				}
 
 			}
@@ -2024,6 +2039,14 @@
 				"patchline" : 				{
 					"destination" : [ "obj-28", 0 ],
 					"hidden" : 1,
+					"source" : [ "obj-62", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-28", 0 ],
+					"hidden" : 1,
 					"source" : [ "obj-66", 0 ]
 				}
 
@@ -2097,6 +2120,14 @@
 					"destination" : [ "obj-25", 0 ],
 					"hidden" : 1,
 					"source" : [ "obj-75", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-28", 0 ],
+					"hidden" : 1,
+					"source" : [ "obj-76", 0 ]
 				}
 
 			}
@@ -2279,28 +2310,28 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "o.autodoc_overview.maxpat",
-				"bootpath" : "~/Development/CNMAT/CNMAT/CNMAT-odot/patchers/utils",
+				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/patchers/utils",
 				"patcherrelativepath" : "../../patchers/utils",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.gather.maxpat",
-				"bootpath" : "~/Development/CNMAT/CNMAT/CNMAT-odot/patchers/namespace",
+				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/patchers/namespace",
 				"patcherrelativepath" : "../../patchers/namespace",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.righttoleft.maxpat",
-				"bootpath" : "~/Development/CNMAT/CNMAT/CNMAT-odot/patchers/ordering",
+				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/patchers/ordering",
 				"patcherrelativepath" : "../../patchers/ordering",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "o.was.maxpat",
-				"bootpath" : "~/Development/CNMAT/CNMAT/CNMAT-odot/patchers",
+				"bootpath" : "~/Documents/programming/git_repositories/CNMAT-builds/CNMAT-odot/patchers",
 				"patcherrelativepath" : "../../patchers",
 				"type" : "JSON",
 				"implicit" : 1
