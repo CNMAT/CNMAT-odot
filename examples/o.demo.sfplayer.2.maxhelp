@@ -42,6 +42,20 @@
 				"box" : 				{
 					"fontface" : 0,
 					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-10",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 79.5, 378.0, 96.0, 20.0 ],
+					"text" : "Jeff Lubow 2020"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontface" : 0,
+					"fontname" : "Arial",
 					"fontsize" : 14.0,
 					"id" : "obj-9",
 					"maxclass" : "comment",

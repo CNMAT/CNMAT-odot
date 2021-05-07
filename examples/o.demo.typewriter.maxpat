@@ -40,6 +40,18 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"fontsize" : 12.0,
+					"id" : "obj-8",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 485.0, 230.0, 96.0, 20.0 ],
+					"text" : "Jeff Lubow 2020"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-5",
 					"maxclass" : "comment",
 					"numinlets" : 1,
@@ -138,11 +150,13 @@
 					"fontface" : 0,
 					"fontsize" : 12.0,
 					"id" : "obj-9",
+					"linecount" : 4,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 53.0, 470.0, 321.0, 34.0 ]
+					"patching_rect" : [ 53.0, 470.0, 321.0, 76.0 ],
+					"text" : "/char : \"c\",\n/line/id : 0,\n/maxlen : 12,\n/linecache : \"c\""
 				}
 
 			}
