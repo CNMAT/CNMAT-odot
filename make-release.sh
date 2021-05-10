@@ -145,7 +145,12 @@ fi
 ######################################################################
 
 if [ -d "../$release_folder_name" ]; then
-    (cd "../$release_folder_name" && git pull && require_clean_work_tree)
+    remote=`pwd`
+    (cd "../$release_folder_name" \
+         && git remote remove origin \
+         && git remote add origin "$remote" \
+         && git pull origin master \
+         && require_clean_work_tree)
 else
     git clone . "../$release_folder_name"
 fi
