@@ -212,28 +212,23 @@
 		119FA143191D608F001C3325 /* o.unless.c in Sources */ = {isa = PBXBuildFile; fileRef = 525525471504D2BB00A10E5D /* o.unless.c */; };
 		119FA144191D6092001C3325 /* o.var.c in Sources */ = {isa = PBXBuildFile; fileRef = 525525491504D2C400A10E5D /* o.var.c */; };
 		119FA145191D6096001C3325 /* o.when.c in Sources */ = {isa = PBXBuildFile; fileRef = 5255254B1504D2CC00A10E5D /* o.when.c */; };
-		11A20DAF19F0B428002A98B5 /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52CEF59416375BFB0016EC39 /* commonsyms.c */; };
 		11A20DB219F0B428002A98B5 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */; };
 		11A20DB319F0B428002A98B5 /* libo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5AD163763BD0016EC39 /* libo.a */; };
 		11A20DB419F0B428002A98B5 /* libomax.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5C6163763CF0016EC39 /* libomax.a */; };
 		11A20DBA19F0B49D002A98B5 /* o.expr.codebox.set.c in Sources */ = {isa = PBXBuildFile; fileRef = 11A20DB919F0B49D002A98B5 /* o.expr.codebox.set.c */; };
-		11A394111F98D02600D2AC3D /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52CEF59416375BFB0016EC39 /* commonsyms.c */; };
 		11A394131F98D02600D2AC3D /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */; };
 		11A394141F98D02600D2AC3D /* libo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5AD163763BD0016EC39 /* libo.a */; };
 		11A394151F98D02600D2AC3D /* libomax.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5C6163763CF0016EC39 /* libomax.a */; };
 		11A5D9E719574A5100333C1F /* o.context.c in Sources */ = {isa = PBXBuildFile; fileRef = 527294B717EDE93100AA15E1 /* o.context.c */; };
-		11C890AB20447A9D002BED1E /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52CEF59416375BFB0016EC39 /* commonsyms.c */; };
 		11C890AD20447A9D002BED1E /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */; };
 		11C890AE20447A9D002BED1E /* libo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5AD163763BD0016EC39 /* libo.a */; };
 		11C890AF20447A9D002BED1E /* libomax.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5C6163763CF0016EC39 /* libomax.a */; };
 		11F20C4A19A2611600BA2487 /* o.display.c in Sources */ = {isa = PBXBuildFile; fileRef = 9B3930F6195A299A002EDAE5 /* o.display.c */; };
 		11FC8B0B194C41C000635118 /* o.validate.c in Sources */ = {isa = PBXBuildFile; fileRef = 52B53CFE174828C700237A19 /* o.validate.c */; };
-		21BC034421674B95001D0CED /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52CEF59416375BFB0016EC39 /* commonsyms.c */; };
 		21BC034721674B95001D0CED /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */; };
 		21BC034821674B95001D0CED /* libo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5AD163763BD0016EC39 /* libo.a */; };
 		21BC034921674B95001D0CED /* libomax.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5C6163763CF0016EC39 /* libomax.a */; };
 		21BC035121674C42001D0CED /* o.bufferfill~.c in Sources */ = {isa = PBXBuildFile; fileRef = 21BC035021674C41001D0CED /* o.bufferfill~.c */; };
-		21CA8A10216B3FD8009FDBCF /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52CEF59416375BFB0016EC39 /* commonsyms.c */; };
 		21CA8A12216B3FD8009FDBCF /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */; };
 		21CA8A13216B3FD8009FDBCF /* libo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5AD163763BD0016EC39 /* libo.a */; };
 		21CA8A14216B3FD8009FDBCF /* libomax.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5C6163763CF0016EC39 /* libomax.a */; };
@@ -247,7 +242,6 @@
 		52149976191D56C100642F55 /* o.printbytes.c in Sources */ = {isa = PBXBuildFile; fileRef = 5255253F1504D29200A10E5D /* o.printbytes.c */; };
 		5217D902158EEBC4005B5238 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */; };
 		5217D90D158EEBEB005B5238 /* o.explode.c in Sources */ = {isa = PBXBuildFile; fileRef = 5217D90C158EEBEB005B5238 /* o.explode.c */; };
-		5223ADD21923EB5700C8FBB5 /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52CEF59416375BFB0016EC39 /* commonsyms.c */; };
 		5223ADD41923EB5700C8FBB5 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */; };
 		5223ADD61923EB5700C8FBB5 /* libomax.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5C6163763CF0016EC39 /* libomax.a */; };
 		5223ADDC1923EB9000C8FBB5 /* o.expr.codebox.c in Sources */ = {isa = PBXBuildFile; fileRef = 5223ADDB1923EB9000C8FBB5 /* o.expr.codebox.c */; };
@@ -291,111 +285,230 @@
 		525525481504D2BB00A10E5D /* o.unless.c in Sources */ = {isa = PBXBuildFile; fileRef = 525525471504D2BB00A10E5D /* o.unless.c */; };
 		5255254A1504D2C400A10E5D /* o.var.c in Sources */ = {isa = PBXBuildFile; fileRef = 525525491504D2C400A10E5D /* o.var.c */; };
 		5255254C1504D2CC00A10E5D /* o.when.c in Sources */ = {isa = PBXBuildFile; fileRef = 5255254B1504D2CC00A10E5D /* o.when.c */; };
-		527294BC17EDE93B00AA15E1 /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52CEF59416375BFB0016EC39 /* commonsyms.c */; };
 		527294BF17EDE93B00AA15E1 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */; };
 		527294C017EDE93B00AA15E1 /* libo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5AD163763BD0016EC39 /* libo.a */; };
 		527294C117EDE93B00AA15E1 /* libomax.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5C6163763CF0016EC39 /* libomax.a */; };
 		527294C617EDEE0200AA15E1 /* o.context.c in Sources */ = {isa = PBXBuildFile; fileRef = 527294B717EDE93100AA15E1 /* o.context.c */; };
 		527C363E1A33229300E08D94 /* o.queue.fifo.c in Sources */ = {isa = PBXBuildFile; fileRef = 527C363D1A33229300E08D94 /* o.queue.fifo.c */; };
-		528026E419E028C30037FD4E /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52CEF59416375BFB0016EC39 /* commonsyms.c */; };
 		528026E619E028C30037FD4E /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */; };
 		528026E719E028C30037FD4E /* libo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5AD163763BD0016EC39 /* libo.a */; };
 		528026E819E028C30037FD4E /* libomax.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5C6163763CF0016EC39 /* libomax.a */; };
 		529318B71FCFF1FD00089B00 /* o.schedule~.c in Sources */ = {isa = PBXBuildFile; fileRef = 529318B61FCFF1FC00089B00 /* o.schedule~.c */; };
-		529318DA1FD072D300089B00 /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52CEF59416375BFB0016EC39 /* commonsyms.c */; };
 		529318DC1FD072D300089B00 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */; };
 		529318DD1FD072D300089B00 /* libo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5AD163763BD0016EC39 /* libo.a */; };
 		529318DE1FD072D300089B00 /* libomax.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5C6163763CF0016EC39 /* libomax.a */; };
 		529318E51FD0733000089B00 /* o.timetag~.c in Sources */ = {isa = PBXBuildFile; fileRef = 529318E41FD0733000089B00 /* o.timetag~.c */; };
-		529318EC1FD1605700089B00 /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52CEF59416375BFB0016EC39 /* commonsyms.c */; };
 		529318EF1FD1605700089B00 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */; };
 		529318F01FD1605700089B00 /* libo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5AD163763BD0016EC39 /* libo.a */; };
 		529318F11FD1605700089B00 /* libomax.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5C6163763CF0016EC39 /* libomax.a */; };
 		529318F81FD160A800089B00 /* o.snapshot~.c in Sources */ = {isa = PBXBuildFile; fileRef = 529318F71FD160A800089B00 /* o.snapshot~.c */; };
 		529781591555B6FD0018A44D /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */; };
-		52A8394016E978D7002E273C /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52CEF59416375BFB0016EC39 /* commonsyms.c */; };
 		52A8394216E978D7002E273C /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */; };
 		52A8394316E978D7002E273C /* libo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5AD163763BD0016EC39 /* libo.a */; };
 		52A8394416E978D7002E273C /* libomax.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5C6163763CF0016EC39 /* libomax.a */; };
 		52A8394A16E978E6002E273C /* o.append.c in Sources */ = {isa = PBXBuildFile; fileRef = 52A8393A16E978CD002E273C /* o.append.c */; };
-		52A8395D16EFFBC9002E273C /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52CEF59416375BFB0016EC39 /* commonsyms.c */; };
 		52A8396016EFFBC9002E273C /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */; };
 		52A8396116EFFBC9002E273C /* libo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5AD163763BD0016EC39 /* libo.a */; };
 		52A8396216EFFBC9002E273C /* libomax.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5C6163763CF0016EC39 /* libomax.a */; };
 		52A8396A16EFFC19002E273C /* o.timetag.c in Sources */ = {isa = PBXBuildFile; fileRef = 52A8395816EFFBC4002E273C /* o.timetag.c */; };
-		52A8397216F3F898002E273C /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52CEF59416375BFB0016EC39 /* commonsyms.c */; };
 		52A8397516F3F898002E273C /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */; };
 		52A8397616F3F898002E273C /* libo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5AD163763BD0016EC39 /* libo.a */; };
 		52A8397716F3F898002E273C /* libomax.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5C6163763CF0016EC39 /* libomax.a */; };
 		52A8397F16F3F900002E273C /* o.schedule.c in Sources */ = {isa = PBXBuildFile; fileRef = 52A8396B16F3F886002E273C /* o.schedule.c */; };
 		52A8398016F3F900002E273C /* pqops.c in Sources */ = {isa = PBXBuildFile; fileRef = 52A8396C16F3F893002E273C /* pqops.c */; };
 		52A8398116F3F900002E273C /* pqops.h in Headers */ = {isa = PBXBuildFile; fileRef = 52A8396D16F3F893002E273C /* pqops.h */; };
-		52AA36F9194B7D21009A1920 /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52CEF59416375BFB0016EC39 /* commonsyms.c */; };
 		52AA36FB194B7D21009A1920 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */; };
 		52AA36FC194B7D21009A1920 /* libo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5AD163763BD0016EC39 /* libo.a */; };
 		52AA36FD194B7D21009A1920 /* libomax.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5C6163763CF0016EC39 /* libomax.a */; };
-		52AA370E1954D1AD009A1920 /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52CEF59416375BFB0016EC39 /* commonsyms.c */; };
 		52AA37111954D1AD009A1920 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */; };
 		52AA37121954D1AD009A1920 /* libo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5AD163763BD0016EC39 /* libo.a */; };
 		52AA37131954D1AD009A1920 /* libomax.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5C6163763CF0016EC39 /* libomax.a */; };
-		52B53CE117480C8100237A19 /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52CEF59416375BFB0016EC39 /* commonsyms.c */; };
+		52B1DF7E2735C9D900B0F648 /* MaxAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B1DF7D2735C9D900B0F648 /* MaxAPI.framework */; };
+		52B1DF7F2735C9D900B0F648 /* MaxAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B1DF7D2735C9D900B0F648 /* MaxAPI.framework */; };
+		52B1DF802735C9D900B0F648 /* MaxAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B1DF7D2735C9D900B0F648 /* MaxAPI.framework */; };
+		52B1DF812735C9D900B0F648 /* MaxAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B1DF7D2735C9D900B0F648 /* MaxAPI.framework */; };
+		52B1DF822735C9D900B0F648 /* MaxAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B1DF7D2735C9D900B0F648 /* MaxAPI.framework */; };
+		52B1DF832735C9D900B0F648 /* MaxAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B1DF7D2735C9D900B0F648 /* MaxAPI.framework */; };
+		52B1DF842735C9D900B0F648 /* MaxAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B1DF7D2735C9D900B0F648 /* MaxAPI.framework */; };
+		52B1DF852735C9D900B0F648 /* MaxAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B1DF7D2735C9D900B0F648 /* MaxAPI.framework */; };
+		52B1DF862735C9D900B0F648 /* MaxAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B1DF7D2735C9D900B0F648 /* MaxAPI.framework */; };
+		52B1DF872735C9D900B0F648 /* MaxAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B1DF7D2735C9D900B0F648 /* MaxAPI.framework */; };
+		52B1DF882735C9D900B0F648 /* MaxAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B1DF7D2735C9D900B0F648 /* MaxAPI.framework */; };
+		52B1DF892735C9D900B0F648 /* MaxAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B1DF7D2735C9D900B0F648 /* MaxAPI.framework */; };
+		52B1DF8A2735C9D900B0F648 /* MaxAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B1DF7D2735C9D900B0F648 /* MaxAPI.framework */; };
+		52B1DF8B2735C9D900B0F648 /* MaxAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B1DF7D2735C9D900B0F648 /* MaxAPI.framework */; };
+		52B1DF8C2735C9D900B0F648 /* MaxAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B1DF7D2735C9D900B0F648 /* MaxAPI.framework */; };
+		52B1DF8D2735C9D900B0F648 /* MaxAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B1DF7D2735C9D900B0F648 /* MaxAPI.framework */; };
+		52B1DF8E2735C9D900B0F648 /* MaxAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B1DF7D2735C9D900B0F648 /* MaxAPI.framework */; };
+		52B1DF8F2735C9D900B0F648 /* MaxAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B1DF7D2735C9D900B0F648 /* MaxAPI.framework */; };
+		52B1DF902735C9D900B0F648 /* MaxAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B1DF7D2735C9D900B0F648 /* MaxAPI.framework */; };
+		52B1DF912735C9D900B0F648 /* MaxAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B1DF7D2735C9D900B0F648 /* MaxAPI.framework */; };
+		52B1DF922735C9D900B0F648 /* MaxAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B1DF7D2735C9D900B0F648 /* MaxAPI.framework */; };
+		52B1DF932735C9D900B0F648 /* MaxAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B1DF7D2735C9D900B0F648 /* MaxAPI.framework */; };
+		52B1DF942735C9D900B0F648 /* MaxAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B1DF7D2735C9D900B0F648 /* MaxAPI.framework */; };
+		52B1DF952735C9D900B0F648 /* MaxAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B1DF7D2735C9D900B0F648 /* MaxAPI.framework */; };
+		52B1DF962735C9D900B0F648 /* MaxAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B1DF7D2735C9D900B0F648 /* MaxAPI.framework */; };
+		52B1DF972735C9D900B0F648 /* MaxAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B1DF7D2735C9D900B0F648 /* MaxAPI.framework */; };
+		52B1DF982735C9D900B0F648 /* MaxAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B1DF7D2735C9D900B0F648 /* MaxAPI.framework */; };
+		52B1DF992735C9D900B0F648 /* MaxAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B1DF7D2735C9D900B0F648 /* MaxAPI.framework */; };
+		52B1DF9A2735C9D900B0F648 /* MaxAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B1DF7D2735C9D900B0F648 /* MaxAPI.framework */; };
+		52B1DF9B2735C9D900B0F648 /* MaxAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B1DF7D2735C9D900B0F648 /* MaxAPI.framework */; };
+		52B1DF9C2735C9D900B0F648 /* MaxAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B1DF7D2735C9D900B0F648 /* MaxAPI.framework */; };
+		52B1DF9D2735C9D900B0F648 /* MaxAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B1DF7D2735C9D900B0F648 /* MaxAPI.framework */; };
+		52B1DF9E2735C9D900B0F648 /* MaxAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B1DF7D2735C9D900B0F648 /* MaxAPI.framework */; };
+		52B1DF9F2735C9D900B0F648 /* MaxAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B1DF7D2735C9D900B0F648 /* MaxAPI.framework */; };
+		52B1DFA02735C9D900B0F648 /* MaxAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B1DF7D2735C9D900B0F648 /* MaxAPI.framework */; };
+		52B1DFA12735C9D900B0F648 /* MaxAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B1DF7D2735C9D900B0F648 /* MaxAPI.framework */; };
+		52B1DFA22735C9D900B0F648 /* MaxAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B1DF7D2735C9D900B0F648 /* MaxAPI.framework */; };
+		52B1DFA32735C9D900B0F648 /* MaxAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B1DF7D2735C9D900B0F648 /* MaxAPI.framework */; };
+		52B1DFA42735C9D900B0F648 /* MaxAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B1DF7D2735C9D900B0F648 /* MaxAPI.framework */; };
+		52B1DFA52735C9D900B0F648 /* MaxAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B1DF7D2735C9D900B0F648 /* MaxAPI.framework */; };
+		52B1DFA62735C9D900B0F648 /* MaxAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B1DF7D2735C9D900B0F648 /* MaxAPI.framework */; };
+		52B1DFA72735C9D900B0F648 /* MaxAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B1DF7D2735C9D900B0F648 /* MaxAPI.framework */; };
+		52B1DFA82735C9D900B0F648 /* MaxAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B1DF7D2735C9D900B0F648 /* MaxAPI.framework */; };
+		52B1DFA92735C9D900B0F648 /* MaxAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B1DF7D2735C9D900B0F648 /* MaxAPI.framework */; };
+		52B1DFAA2735C9D900B0F648 /* MaxAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B1DF7D2735C9D900B0F648 /* MaxAPI.framework */; };
+		52B1DFAB2735C9D900B0F648 /* MaxAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B1DF7D2735C9D900B0F648 /* MaxAPI.framework */; };
+		52B1DFAC2735C9D900B0F648 /* MaxAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B1DF7D2735C9D900B0F648 /* MaxAPI.framework */; };
+		52B1DFAD2735C9D900B0F648 /* MaxAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B1DF7D2735C9D900B0F648 /* MaxAPI.framework */; };
+		52B1DFAE2735C9D900B0F648 /* MaxAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B1DF7D2735C9D900B0F648 /* MaxAPI.framework */; };
+		52B1DFAF2735C9D900B0F648 /* MaxAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B1DF7D2735C9D900B0F648 /* MaxAPI.framework */; };
+		52B1DFB02735C9D900B0F648 /* MaxAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B1DF7D2735C9D900B0F648 /* MaxAPI.framework */; };
+		52B1DFB12735C9D900B0F648 /* MaxAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B1DF7D2735C9D900B0F648 /* MaxAPI.framework */; };
+		52B1DFB22735C9D900B0F648 /* MaxAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B1DF7D2735C9D900B0F648 /* MaxAPI.framework */; };
+		52B1DFB42735C9E900B0F648 /* MaxAudioAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B1DFB32735C9E900B0F648 /* MaxAudioAPI.framework */; };
+		52B1DFB52735C9E900B0F648 /* MaxAudioAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B1DFB32735C9E900B0F648 /* MaxAudioAPI.framework */; };
+		52B1DFB62735C9E900B0F648 /* MaxAudioAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B1DFB32735C9E900B0F648 /* MaxAudioAPI.framework */; };
+		52B1DFB72735C9E900B0F648 /* MaxAudioAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B1DFB32735C9E900B0F648 /* MaxAudioAPI.framework */; };
+		52B1DFB82735C9E900B0F648 /* MaxAudioAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B1DFB32735C9E900B0F648 /* MaxAudioAPI.framework */; };
+		52B1DFB92735C9E900B0F648 /* MaxAudioAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B1DFB32735C9E900B0F648 /* MaxAudioAPI.framework */; };
+		52B1DFBA2735C9E900B0F648 /* MaxAudioAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B1DFB32735C9E900B0F648 /* MaxAudioAPI.framework */; };
+		52B1DFBB2735C9E900B0F648 /* MaxAudioAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B1DFB32735C9E900B0F648 /* MaxAudioAPI.framework */; };
+		52B1DFBC2735C9E900B0F648 /* MaxAudioAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B1DFB32735C9E900B0F648 /* MaxAudioAPI.framework */; };
+		52B1DFBD2735C9E900B0F648 /* MaxAudioAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B1DFB32735C9E900B0F648 /* MaxAudioAPI.framework */; };
+		52B1DFBE2735C9E900B0F648 /* MaxAudioAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B1DFB32735C9E900B0F648 /* MaxAudioAPI.framework */; };
+		52B1DFBF2735C9E900B0F648 /* MaxAudioAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B1DFB32735C9E900B0F648 /* MaxAudioAPI.framework */; };
+		52B1DFC02735C9E900B0F648 /* MaxAudioAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B1DFB32735C9E900B0F648 /* MaxAudioAPI.framework */; };
+		52B1DFC12735C9E900B0F648 /* MaxAudioAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B1DFB32735C9E900B0F648 /* MaxAudioAPI.framework */; };
+		52B1DFC22735C9E900B0F648 /* MaxAudioAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B1DFB32735C9E900B0F648 /* MaxAudioAPI.framework */; };
+		52B1DFC32735C9E900B0F648 /* MaxAudioAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B1DFB32735C9E900B0F648 /* MaxAudioAPI.framework */; };
+		52B1DFC42735C9E900B0F648 /* MaxAudioAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B1DFB32735C9E900B0F648 /* MaxAudioAPI.framework */; };
+		52B1DFC52735C9E900B0F648 /* MaxAudioAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B1DFB32735C9E900B0F648 /* MaxAudioAPI.framework */; };
+		52B1DFC62735C9E900B0F648 /* MaxAudioAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B1DFB32735C9E900B0F648 /* MaxAudioAPI.framework */; };
+		52B1DFC72735C9E900B0F648 /* MaxAudioAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B1DFB32735C9E900B0F648 /* MaxAudioAPI.framework */; };
+		52B1DFC82735C9E900B0F648 /* MaxAudioAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B1DFB32735C9E900B0F648 /* MaxAudioAPI.framework */; };
+		52B1DFC92735C9E900B0F648 /* MaxAudioAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B1DFB32735C9E900B0F648 /* MaxAudioAPI.framework */; };
+		52B1DFCA2735C9E900B0F648 /* MaxAudioAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B1DFB32735C9E900B0F648 /* MaxAudioAPI.framework */; };
+		52B1DFCB2735C9E900B0F648 /* MaxAudioAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B1DFB32735C9E900B0F648 /* MaxAudioAPI.framework */; };
+		52B1DFCC2735C9E900B0F648 /* MaxAudioAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B1DFB32735C9E900B0F648 /* MaxAudioAPI.framework */; };
+		52B1DFCD2735C9E900B0F648 /* MaxAudioAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B1DFB32735C9E900B0F648 /* MaxAudioAPI.framework */; };
+		52B1DFCE2735C9E900B0F648 /* MaxAudioAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B1DFB32735C9E900B0F648 /* MaxAudioAPI.framework */; };
+		52B1DFCF2735C9E900B0F648 /* MaxAudioAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B1DFB32735C9E900B0F648 /* MaxAudioAPI.framework */; };
+		52B1DFD02735C9E900B0F648 /* MaxAudioAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B1DFB32735C9E900B0F648 /* MaxAudioAPI.framework */; };
+		52B1DFD12735C9E900B0F648 /* MaxAudioAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B1DFB32735C9E900B0F648 /* MaxAudioAPI.framework */; };
+		52B1DFD22735C9E900B0F648 /* MaxAudioAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B1DFB32735C9E900B0F648 /* MaxAudioAPI.framework */; };
+		52B1DFD32735C9E900B0F648 /* MaxAudioAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B1DFB32735C9E900B0F648 /* MaxAudioAPI.framework */; };
+		52B1DFD42735C9E900B0F648 /* MaxAudioAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B1DFB32735C9E900B0F648 /* MaxAudioAPI.framework */; };
+		52B1DFD52735C9E900B0F648 /* MaxAudioAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B1DFB32735C9E900B0F648 /* MaxAudioAPI.framework */; };
+		52B1DFD62735C9E900B0F648 /* MaxAudioAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B1DFB32735C9E900B0F648 /* MaxAudioAPI.framework */; };
+		52B1DFD72735C9E900B0F648 /* MaxAudioAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B1DFB32735C9E900B0F648 /* MaxAudioAPI.framework */; };
+		52B1DFD82735C9E900B0F648 /* MaxAudioAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B1DFB32735C9E900B0F648 /* MaxAudioAPI.framework */; };
+		52B1DFD92735C9E900B0F648 /* MaxAudioAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B1DFB32735C9E900B0F648 /* MaxAudioAPI.framework */; };
+		52B1DFDA2735C9E900B0F648 /* MaxAudioAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B1DFB32735C9E900B0F648 /* MaxAudioAPI.framework */; };
+		52B1DFDB2735C9E900B0F648 /* MaxAudioAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B1DFB32735C9E900B0F648 /* MaxAudioAPI.framework */; };
+		52B1DFDC2735C9E900B0F648 /* MaxAudioAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B1DFB32735C9E900B0F648 /* MaxAudioAPI.framework */; };
+		52B1DFDD2735C9E900B0F648 /* MaxAudioAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B1DFB32735C9E900B0F648 /* MaxAudioAPI.framework */; };
+		52B1DFDE2735C9E900B0F648 /* MaxAudioAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B1DFB32735C9E900B0F648 /* MaxAudioAPI.framework */; };
+		52B1DFDF2735C9E900B0F648 /* MaxAudioAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B1DFB32735C9E900B0F648 /* MaxAudioAPI.framework */; };
+		52B1DFE02735C9E900B0F648 /* MaxAudioAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B1DFB32735C9E900B0F648 /* MaxAudioAPI.framework */; };
+		52B1DFE12735C9E900B0F648 /* MaxAudioAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B1DFB32735C9E900B0F648 /* MaxAudioAPI.framework */; };
+		52B1DFE22735C9E900B0F648 /* MaxAudioAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B1DFB32735C9E900B0F648 /* MaxAudioAPI.framework */; };
+		52B1DFE32735C9E900B0F648 /* MaxAudioAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B1DFB32735C9E900B0F648 /* MaxAudioAPI.framework */; };
+		52B1DFE42735C9E900B0F648 /* MaxAudioAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B1DFB32735C9E900B0F648 /* MaxAudioAPI.framework */; };
+		52B1DFE52735C9E900B0F648 /* MaxAudioAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B1DFB32735C9E900B0F648 /* MaxAudioAPI.framework */; };
+		52B1DFE62735C9E900B0F648 /* MaxAudioAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B1DFB32735C9E900B0F648 /* MaxAudioAPI.framework */; };
+		52B1DFE72735C9E900B0F648 /* MaxAudioAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B1DFB32735C9E900B0F648 /* MaxAudioAPI.framework */; };
+		52B1DFE82735C9E900B0F648 /* MaxAudioAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B1DFB32735C9E900B0F648 /* MaxAudioAPI.framework */; };
+		52B1DFEA2735C9F800B0F648 /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52B1DFE92735C9F800B0F648 /* commonsyms.c */; };
+		52B1DFEB2735C9F800B0F648 /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52B1DFE92735C9F800B0F648 /* commonsyms.c */; };
+		52B1DFEC2735C9F800B0F648 /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52B1DFE92735C9F800B0F648 /* commonsyms.c */; };
+		52B1DFED2735C9F800B0F648 /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52B1DFE92735C9F800B0F648 /* commonsyms.c */; };
+		52B1DFEE2735C9F800B0F648 /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52B1DFE92735C9F800B0F648 /* commonsyms.c */; };
+		52B1DFEF2735C9F800B0F648 /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52B1DFE92735C9F800B0F648 /* commonsyms.c */; };
+		52B1DFF02735C9F800B0F648 /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52B1DFE92735C9F800B0F648 /* commonsyms.c */; };
+		52B1DFF12735C9F800B0F648 /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52B1DFE92735C9F800B0F648 /* commonsyms.c */; };
+		52B1DFF22735C9F800B0F648 /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52B1DFE92735C9F800B0F648 /* commonsyms.c */; };
+		52B1DFF32735C9F800B0F648 /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52B1DFE92735C9F800B0F648 /* commonsyms.c */; };
+		52B1DFF42735C9F800B0F648 /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52B1DFE92735C9F800B0F648 /* commonsyms.c */; };
+		52B1DFF52735C9F800B0F648 /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52B1DFE92735C9F800B0F648 /* commonsyms.c */; };
+		52B1DFF62735C9F800B0F648 /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52B1DFE92735C9F800B0F648 /* commonsyms.c */; };
+		52B1DFF72735C9F800B0F648 /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52B1DFE92735C9F800B0F648 /* commonsyms.c */; };
+		52B1DFF82735C9F800B0F648 /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52B1DFE92735C9F800B0F648 /* commonsyms.c */; };
+		52B1DFF92735C9F800B0F648 /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52B1DFE92735C9F800B0F648 /* commonsyms.c */; };
+		52B1DFFA2735C9F800B0F648 /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52B1DFE92735C9F800B0F648 /* commonsyms.c */; };
+		52B1DFFB2735C9F800B0F648 /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52B1DFE92735C9F800B0F648 /* commonsyms.c */; };
+		52B1DFFC2735C9F800B0F648 /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52B1DFE92735C9F800B0F648 /* commonsyms.c */; };
+		52B1DFFD2735C9F800B0F648 /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52B1DFE92735C9F800B0F648 /* commonsyms.c */; };
+		52B1DFFE2735C9F800B0F648 /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52B1DFE92735C9F800B0F648 /* commonsyms.c */; };
+		52B1DFFF2735C9F800B0F648 /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52B1DFE92735C9F800B0F648 /* commonsyms.c */; };
+		52B1E0002735C9F800B0F648 /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52B1DFE92735C9F800B0F648 /* commonsyms.c */; };
+		52B1E0012735C9F800B0F648 /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52B1DFE92735C9F800B0F648 /* commonsyms.c */; };
+		52B1E0022735C9F800B0F648 /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52B1DFE92735C9F800B0F648 /* commonsyms.c */; };
+		52B1E0032735C9F800B0F648 /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52B1DFE92735C9F800B0F648 /* commonsyms.c */; };
+		52B1E0042735C9F800B0F648 /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52B1DFE92735C9F800B0F648 /* commonsyms.c */; };
+		52B1E0052735C9F800B0F648 /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52B1DFE92735C9F800B0F648 /* commonsyms.c */; };
+		52B1E0062735C9F800B0F648 /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52B1DFE92735C9F800B0F648 /* commonsyms.c */; };
+		52B1E0072735C9F800B0F648 /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52B1DFE92735C9F800B0F648 /* commonsyms.c */; };
+		52B1E0082735C9F800B0F648 /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52B1DFE92735C9F800B0F648 /* commonsyms.c */; };
+		52B1E0092735C9F800B0F648 /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52B1DFE92735C9F800B0F648 /* commonsyms.c */; };
+		52B1E00A2735C9F800B0F648 /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52B1DFE92735C9F800B0F648 /* commonsyms.c */; };
+		52B1E00B2735C9F800B0F648 /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52B1DFE92735C9F800B0F648 /* commonsyms.c */; };
+		52B1E00C2735C9F800B0F648 /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52B1DFE92735C9F800B0F648 /* commonsyms.c */; };
+		52B1E00D2735C9F800B0F648 /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52B1DFE92735C9F800B0F648 /* commonsyms.c */; };
+		52B1E00E2735C9F800B0F648 /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52B1DFE92735C9F800B0F648 /* commonsyms.c */; };
+		52B1E00F2735C9F800B0F648 /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52B1DFE92735C9F800B0F648 /* commonsyms.c */; };
+		52B1E0102735C9F800B0F648 /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52B1DFE92735C9F800B0F648 /* commonsyms.c */; };
+		52B1E0112735C9F800B0F648 /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52B1DFE92735C9F800B0F648 /* commonsyms.c */; };
+		52B1E0122735C9F800B0F648 /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52B1DFE92735C9F800B0F648 /* commonsyms.c */; };
+		52B1E0132735C9F800B0F648 /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52B1DFE92735C9F800B0F648 /* commonsyms.c */; };
+		52B1E0142735C9F800B0F648 /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52B1DFE92735C9F800B0F648 /* commonsyms.c */; };
+		52B1E0152735C9F800B0F648 /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52B1DFE92735C9F800B0F648 /* commonsyms.c */; };
+		52B1E0162735C9F800B0F648 /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52B1DFE92735C9F800B0F648 /* commonsyms.c */; };
+		52B1E0172735C9F800B0F648 /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52B1DFE92735C9F800B0F648 /* commonsyms.c */; };
+		52B1E0182735C9F800B0F648 /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52B1DFE92735C9F800B0F648 /* commonsyms.c */; };
+		52B1E0192735C9F800B0F648 /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52B1DFE92735C9F800B0F648 /* commonsyms.c */; };
+		52B1E01A2735C9F800B0F648 /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52B1DFE92735C9F800B0F648 /* commonsyms.c */; };
+		52B1E01B2735C9F800B0F648 /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52B1DFE92735C9F800B0F648 /* commonsyms.c */; };
+		52B1E01C2735C9F800B0F648 /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52B1DFE92735C9F800B0F648 /* commonsyms.c */; };
+		52B1E01D2735C9F800B0F648 /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52B1DFE92735C9F800B0F648 /* commonsyms.c */; };
+		52B1E01E2735C9F800B0F648 /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52B1DFE92735C9F800B0F648 /* commonsyms.c */; };
 		52B53CE317480C8100237A19 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */; };
 		52B53CE417480C8100237A19 /* libo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5AD163763BD0016EC39 /* libo.a */; };
 		52B53CE517480C8100237A19 /* libomax.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5C6163763CF0016EC39 /* libomax.a */; };
 		52B53CED17480CFC00237A19 /* o.downcast.c in Sources */ = {isa = PBXBuildFile; fileRef = 52B53CEC17480CFC00237A19 /* o.downcast.c */; };
-		52B53CF21748287A00237A19 /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52CEF59416375BFB0016EC39 /* commonsyms.c */; };
 		52B53CF51748287A00237A19 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */; };
 		52B53CF61748287A00237A19 /* libo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5AD163763BD0016EC39 /* libo.a */; };
 		52B53CF71748287A00237A19 /* libomax.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5C6163763CF0016EC39 /* libomax.a */; };
 		52B53CFF174828C700237A19 /* o.validate.c in Sources */ = {isa = PBXBuildFile; fileRef = 52B53CFE174828C700237A19 /* o.validate.c */; };
-		52B53D0417484E5500237A19 /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52CEF59416375BFB0016EC39 /* commonsyms.c */; };
 		52B53D0717484E5500237A19 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */; };
 		52B53D0817484E5500237A19 /* libo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5AD163763BD0016EC39 /* libo.a */; };
 		52B53D0917484E5500237A19 /* libomax.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5C6163763CF0016EC39 /* libomax.a */; };
-		52B53D16174FD0B300237A19 /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52CEF59416375BFB0016EC39 /* commonsyms.c */; };
 		52B53D19174FD0B300237A19 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */; };
 		52B53D1A174FD0B300237A19 /* libo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5AD163763BD0016EC39 /* libo.a */; };
 		52B53D1B174FD0B300237A19 /* libomax.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5C6163763CF0016EC39 /* libomax.a */; };
-		52B654F417D159B9004FD84E /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52CEF59416375BFB0016EC39 /* commonsyms.c */; };
 		52B654F717D159B9004FD84E /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */; };
 		52B654F817D159B9004FD84E /* libo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5AD163763BD0016EC39 /* libo.a */; };
 		52B654F917D159B9004FD84E /* libomax.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5C6163763CF0016EC39 /* libomax.a */; };
 		52B6550017D16315004FD84E /* o.edge~.c in Sources */ = {isa = PBXBuildFile; fileRef = 52B654EF17D159B6004FD84E /* o.edge~.c */; };
-		52B6550717D68D7C004FD84E /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52CEF59416375BFB0016EC39 /* commonsyms.c */; };
 		52B6550A17D68D7C004FD84E /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */; };
 		52B6550B17D68D7C004FD84E /* libo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5AD163763BD0016EC39 /* libo.a */; };
 		52B6550C17D68D7C004FD84E /* libomax.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5C6163763CF0016EC39 /* libomax.a */; };
-		52C839D6167A5B24000AA688 /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52CEF59416375BFB0016EC39 /* commonsyms.c */; };
 		52C839D8167A5B24000AA688 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */; };
 		52C839D9167A5B24000AA688 /* libo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5AD163763BD0016EC39 /* libo.a */; };
 		52C839DA167A5B24000AA688 /* libomax.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5C6163763CF0016EC39 /* libomax.a */; };
 		52C839E0167A5B8A000AA688 /* o.table.c in Sources */ = {isa = PBXBuildFile; fileRef = 52C839CF167A5B1A000AA688 /* o.table.c */; };
 		52CA34421971B04E008C36B9 /* o.messageiterate.c in Sources */ = {isa = PBXBuildFile; fileRef = 52CA34411971B04E008C36B9 /* o.messageiterate.c */; };
 		52CA34431971B345008C36B9 /* o.messageiterate.c in Sources */ = {isa = PBXBuildFile; fileRef = 52CA34411971B04E008C36B9 /* o.messageiterate.c */; };
-		52CEF59516375BFB0016EC39 /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52CEF59416375BFB0016EC39 /* commonsyms.c */; };
-		52CEF59616375BFB0016EC39 /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52CEF59416375BFB0016EC39 /* commonsyms.c */; };
-		52CEF59716375BFB0016EC39 /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52CEF59416375BFB0016EC39 /* commonsyms.c */; };
-		52CEF59816375BFB0016EC39 /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52CEF59416375BFB0016EC39 /* commonsyms.c */; };
-		52CEF59916375BFB0016EC39 /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52CEF59416375BFB0016EC39 /* commonsyms.c */; };
-		52CEF59A16375BFB0016EC39 /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52CEF59416375BFB0016EC39 /* commonsyms.c */; };
-		52CEF59B16375BFB0016EC39 /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52CEF59416375BFB0016EC39 /* commonsyms.c */; };
-		52CEF59C16375BFB0016EC39 /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52CEF59416375BFB0016EC39 /* commonsyms.c */; };
-		52CEF59D16375BFB0016EC39 /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52CEF59416375BFB0016EC39 /* commonsyms.c */; };
-		52CEF59E16375BFB0016EC39 /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52CEF59416375BFB0016EC39 /* commonsyms.c */; };
-		52CEF59F16375BFB0016EC39 /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52CEF59416375BFB0016EC39 /* commonsyms.c */; };
-		52CEF5A016375BFB0016EC39 /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52CEF59416375BFB0016EC39 /* commonsyms.c */; };
-		52CEF5A116375BFB0016EC39 /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52CEF59416375BFB0016EC39 /* commonsyms.c */; };
-		52CEF5A216375BFB0016EC39 /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52CEF59416375BFB0016EC39 /* commonsyms.c */; };
-		52CEF5A316375BFB0016EC39 /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52CEF59416375BFB0016EC39 /* commonsyms.c */; };
-		52CEF5A416375BFB0016EC39 /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52CEF59416375BFB0016EC39 /* commonsyms.c */; };
-		52CEF5A516375BFB0016EC39 /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52CEF59416375BFB0016EC39 /* commonsyms.c */; };
-		52CEF5A616375BFB0016EC39 /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52CEF59416375BFB0016EC39 /* commonsyms.c */; };
-		52CEF5A716375BFB0016EC39 /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52CEF59416375BFB0016EC39 /* commonsyms.c */; };
-		52CEF5A816375BFB0016EC39 /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52CEF59416375BFB0016EC39 /* commonsyms.c */; };
-		52CEF5A916375BFB0016EC39 /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52CEF59416375BFB0016EC39 /* commonsyms.c */; };
-		52CEF5AA16375BFB0016EC39 /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52CEF59416375BFB0016EC39 /* commonsyms.c */; };
-		52CEF5AB16375BFB0016EC39 /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52CEF59416375BFB0016EC39 /* commonsyms.c */; };
-		52CEF5AC16375BFB0016EC39 /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52CEF59416375BFB0016EC39 /* commonsyms.c */; };
 		52CEF5AE163763BD0016EC39 /* libo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5AD163763BD0016EC39 /* libo.a */; };
 		52CEF5AF163763BE0016EC39 /* libo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5AD163763BD0016EC39 /* libo.a */; };
 		52CEF5B0163763BE0016EC39 /* libo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5AD163763BD0016EC39 /* libo.a */; };
@@ -445,32 +558,26 @@
 		52CEF5DD163763D10016EC39 /* libomax.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5C6163763CF0016EC39 /* libomax.a */; };
 		52CEF5DE163763D10016EC39 /* libomax.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5C6163763CF0016EC39 /* libomax.a */; };
 		52D3BF9B1FD5B35F0069C42C /* pqops.c in Sources */ = {isa = PBXBuildFile; fileRef = 52A8396C16F3F893002E273C /* pqops.c */; };
-		52D5C1FE202DA7E400E74BF9 /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52CEF59416375BFB0016EC39 /* commonsyms.c */; };
 		52D5C200202DA7E400E74BF9 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */; };
 		52D5C201202DA7E400E74BF9 /* libo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5AD163763BD0016EC39 /* libo.a */; };
 		52D5C202202DA7E400E74BF9 /* libomax.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5C6163763CF0016EC39 /* libomax.a */; };
-		52D5C210202DA7F400E74BF9 /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52CEF59416375BFB0016EC39 /* commonsyms.c */; };
 		52D5C212202DA7F400E74BF9 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */; };
 		52D5C213202DA7F400E74BF9 /* libo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5AD163763BD0016EC39 /* libo.a */; };
 		52D5C214202DA7F400E74BF9 /* libomax.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5C6163763CF0016EC39 /* libomax.a */; };
 		52D5C21C202DA87500E74BF9 /* o.timetag.split~.c in Sources */ = {isa = PBXBuildFile; fileRef = 52D5C21B202DA87500E74BF9 /* o.timetag.split~.c */; };
 		52D5C21E202DA88700E74BF9 /* o.timetag.join~.c in Sources */ = {isa = PBXBuildFile; fileRef = 52D5C21D202DA88600E74BF9 /* o.timetag.join~.c */; };
-		52F0C47C17B581CC009FBD24 /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52CEF59416375BFB0016EC39 /* commonsyms.c */; };
 		52F0C47F17B581CC009FBD24 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */; };
 		52F0C48017B581CC009FBD24 /* libo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5AD163763BD0016EC39 /* libo.a */; };
 		52F0C48117B581CC009FBD24 /* libomax.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5C6163763CF0016EC39 /* libomax.a */; };
 		52F0C48717B581FF009FBD24 /* o.O.c in Sources */ = {isa = PBXBuildFile; fileRef = 52F0C48617B581FF009FBD24 /* o.O.c */; };
-		9B3930CB195A286D002EDAE5 /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52CEF59416375BFB0016EC39 /* commonsyms.c */; };
 		9B3930CD195A286D002EDAE5 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */; };
 		9B3930CE195A286D002EDAE5 /* libo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5AD163763BD0016EC39 /* libo.a */; };
 		9B3930CF195A286D002EDAE5 /* libomax.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5C6163763CF0016EC39 /* libomax.a */; };
-		9B3930DB195A2898002EDAE5 /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52CEF59416375BFB0016EC39 /* commonsyms.c */; };
 		9B3930DD195A2898002EDAE5 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */; };
 		9B3930DE195A2898002EDAE5 /* libo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5AD163763BD0016EC39 /* libo.a */; };
 		9B3930DF195A2898002EDAE5 /* libomax.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5C6163763CF0016EC39 /* libomax.a */; };
 		9B3930F5195A296C002EDAE5 /* o.compose.c in Sources */ = {isa = PBXBuildFile; fileRef = 9B3930F4195A296C002EDAE5 /* o.compose.c */; };
 		9B3930F7195A299A002EDAE5 /* o.display.c in Sources */ = {isa = PBXBuildFile; fileRef = 9B3930F6195A299A002EDAE5 /* o.display.c */; };
-		9B678621194BAE98007894BC /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52CEF59416375BFB0016EC39 /* commonsyms.c */; };
 		9B678624194BAE98007894BC /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */; };
 		9B678625194BAE98007894BC /* libo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5AD163763BD0016EC39 /* libo.a */; };
 		9B678626194BAE98007894BC /* libomax.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5C6163763CF0016EC39 /* libomax.a */; };
@@ -479,19 +586,10 @@
 		9B9F1FE5196E336600364945 /* o.slip.decode.c in Sources */ = {isa = PBXBuildFile; fileRef = 9B9F1FE3196E336600364945 /* o.slip.decode.c */; };
 		9B9F1FE7196E337500364945 /* o.slip.encode.c in Sources */ = {isa = PBXBuildFile; fileRef = 9B9F1FE6196E337500364945 /* o.slip.encode.c */; };
 		9B9F1FE8196E337500364945 /* o.slip.encode.c in Sources */ = {isa = PBXBuildFile; fileRef = 9B9F1FE6196E337500364945 /* o.slip.encode.c */; };
-		9BB5E9D51952570000932005 /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52CEF59416375BFB0016EC39 /* commonsyms.c */; };
 		9BB5E9D81952570000932005 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */; };
 		9BB5E9D91952570000932005 /* libo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5AD163763BD0016EC39 /* libo.a */; };
 		9BB5E9DA1952570000932005 /* libomax.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5C6163763CF0016EC39 /* libomax.a */; };
 		9BB5E9E01952585C00932005 /* o.listenumerate.c in Sources */ = {isa = PBXBuildFile; fileRef = 9BB5E9DF1952585C00932005 /* o.listenumerate.c */; };
-		A46F361021E12F60000F9123 /* MaxAudioAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A46F360F21E12F5F000F9123 /* MaxAudioAPI.framework */; };
-		A46F361121E12F60000F9123 /* MaxAudioAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A46F360F21E12F5F000F9123 /* MaxAudioAPI.framework */; };
-		A46F361221E12F60000F9123 /* MaxAudioAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A46F360F21E12F5F000F9123 /* MaxAudioAPI.framework */; };
-		A46F361321E12F60000F9123 /* MaxAudioAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A46F360F21E12F5F000F9123 /* MaxAudioAPI.framework */; };
-		A46F361421E12F60000F9123 /* MaxAudioAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A46F360F21E12F5F000F9123 /* MaxAudioAPI.framework */; };
-		A46F361521E12F60000F9123 /* MaxAudioAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A46F360F21E12F5F000F9123 /* MaxAudioAPI.framework */; };
-		A46F361621E12F60000F9123 /* MaxAudioAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A46F360F21E12F5F000F9123 /* MaxAudioAPI.framework */; };
-		A46F361721E12F60000F9123 /* MaxAudioAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A46F360F21E12F5F000F9123 /* MaxAudioAPI.framework */; };
 		B4DA8E400E21A50100A424E7 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */; };
 /* End PBXBuildFile section */
 
@@ -1926,6 +2024,9 @@
 		52AA37171954D1AD009A1920 /* o.slip.decode.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.slip.decode.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
 		52AA372D19575120009A1920 /* Max-config.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "Max-config.xcconfig"; sourceTree = "<group>"; };
 		52AA372F19575C01009A1920 /* PD-config.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "PD-config.xcconfig"; sourceTree = "<group>"; };
+		52B1DF7D2735C9D900B0F648 /* MaxAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MaxAPI.framework; path = "../../max-sdk-base/c74support/max-includes/MaxAPI.framework"; sourceTree = "<group>"; };
+		52B1DFB32735C9E900B0F648 /* MaxAudioAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MaxAudioAPI.framework; path = "../../max-sdk-base/c74support/msp-includes/MaxAudioAPI.framework"; sourceTree = "<group>"; };
+		52B1DFE92735C9F800B0F648 /* commonsyms.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = commonsyms.c; path = "../../max-sdk-base/c74support/max-includes/common/commonsyms.c"; sourceTree = "<group>"; };
 		52B53CE917480C8100237A19 /* o.downcast.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.downcast.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
 		52B53CEC17480CFC00237A19 /* o.downcast.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.downcast.c; path = o.downcast/o.downcast.c; sourceTree = "<group>"; };
 		52B53CFB1748287A00237A19 /* o.validate.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.validate.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1947,7 +2048,6 @@
 		52CA34411971B04E008C36B9 /* o.messageiterate.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.messageiterate.c; path = o.messageiterate/o.messageiterate.c; sourceTree = "<group>"; };
 		52CA34441976FF7A008C36B9 /* PD-deprecated.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "PD-deprecated.xcconfig"; sourceTree = "<group>"; };
 		52CA34451976FF7A008C36B9 /* PD-unstable.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "PD-unstable.xcconfig"; sourceTree = "<group>"; };
-		52CEF59416375BFB0016EC39 /* commonsyms.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = commonsyms.c; path = "../../max-sdk/source/c74support/max-includes/common/commonsyms.c"; sourceTree = "<group>"; };
 		52CEF5AD163763BD0016EC39 /* libo.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libo.a; path = ../../libo/libo.a; sourceTree = "<group>"; };
 		52CEF5C6163763CF0016EC39 /* libomax.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libomax.a; path = ../../libomax/libomax.a; sourceTree = "<group>"; };
 		52D5C207202DA7E400E74BF9 /* o.timetag.split~.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "o.timetag.split~.mxo"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1967,7 +2067,6 @@
 		9B9F1FE6196E337500364945 /* o.slip.encode.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.slip.encode.c; path = o.slip.encode/o.slip.encode.c; sourceTree = "<group>"; };
 		9BB5E9DE1952570000932005 /* o.listenumerate.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.listenumerate.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BB5E9DF1952585C00932005 /* o.listenumerate.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.listenumerate.c; path = o.listenumerate/o.listenumerate.c; sourceTree = "<group>"; };
-		A46F360F21E12F5F000F9123 /* MaxAudioAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MaxAudioAPI.framework; path = "../../max-sdk/source/c74support/msp-includes/MaxAudioAPI.framework"; sourceTree = "<group>"; };
 		B4CDCF1510621C0800847C22 /* o.atomize.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.atomize.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -2186,7 +2285,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52B1DF8E2735C9D900B0F648 /* MaxAPI.framework in Frameworks */,
 				11A20DB219F0B428002A98B5 /* Carbon.framework in Frameworks */,
+				52B1DFC42735C9E900B0F648 /* MaxAudioAPI.framework in Frameworks */,
 				11A20DB319F0B428002A98B5 /* libo.a in Frameworks */,
 				11A20DB419F0B428002A98B5 /* libomax.a in Frameworks */,
 			);
@@ -2196,7 +2297,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52B1DFAB2735C9D900B0F648 /* MaxAPI.framework in Frameworks */,
 				11A394131F98D02600D2AC3D /* Carbon.framework in Frameworks */,
+				52B1DFE12735C9E900B0F648 /* MaxAudioAPI.framework in Frameworks */,
 				11A394141F98D02600D2AC3D /* libo.a in Frameworks */,
 				11A394151F98D02600D2AC3D /* libomax.a in Frameworks */,
 			);
@@ -2227,7 +2330,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52B1DFB02735C9D900B0F648 /* MaxAPI.framework in Frameworks */,
 				11C890AD20447A9D002BED1E /* Carbon.framework in Frameworks */,
+				52B1DFE62735C9E900B0F648 /* MaxAudioAPI.framework in Frameworks */,
 				11C890AE20447A9D002BED1E /* libo.a in Frameworks */,
 				11C890AF20447A9D002BED1E /* libomax.a in Frameworks */,
 			);
@@ -2258,10 +2363,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52B1DFB12735C9D900B0F648 /* MaxAPI.framework in Frameworks */,
 				21BC034721674B95001D0CED /* Carbon.framework in Frameworks */,
+				52B1DFE72735C9E900B0F648 /* MaxAudioAPI.framework in Frameworks */,
 				21BC034821674B95001D0CED /* libo.a in Frameworks */,
 				21BC034921674B95001D0CED /* libomax.a in Frameworks */,
-				A46F361621E12F60000F9123 /* MaxAudioAPI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2269,10 +2375,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52B1DFB22735C9D900B0F648 /* MaxAPI.framework in Frameworks */,
 				21CA8A12216B3FD8009FDBCF /* Carbon.framework in Frameworks */,
+				52B1DFE82735C9E900B0F648 /* MaxAudioAPI.framework in Frameworks */,
 				21CA8A13216B3FD8009FDBCF /* libo.a in Frameworks */,
 				21CA8A14216B3FD8009FDBCF /* libomax.a in Frameworks */,
-				A46F361721E12F60000F9123 /* MaxAudioAPI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2280,7 +2387,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52B1DF852735C9D900B0F648 /* MaxAPI.framework in Frameworks */,
 				520C0E20158468F7005F2955 /* Carbon.framework in Frameworks */,
+				52B1DFBB2735C9E900B0F648 /* MaxAudioAPI.framework in Frameworks */,
 				52CEF5B2163763BE0016EC39 /* libo.a in Frameworks */,
 				52CEF5CB163763CF0016EC39 /* libomax.a in Frameworks */,
 			);
@@ -2304,7 +2413,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52B1DF8A2735C9D900B0F648 /* MaxAPI.framework in Frameworks */,
 				5217D902158EEBC4005B5238 /* Carbon.framework in Frameworks */,
+				52B1DFC02735C9E900B0F648 /* MaxAudioAPI.framework in Frameworks */,
 				52CEF5B4163763BE0016EC39 /* libo.a in Frameworks */,
 				52CEF5CD163763CF0016EC39 /* libomax.a in Frameworks */,
 			);
@@ -2316,6 +2427,8 @@
 			files = (
 				5223ADD41923EB5700C8FBB5 /* Carbon.framework in Frameworks */,
 				5223ADD61923EB5700C8FBB5 /* libomax.a in Frameworks */,
+				52B1DF8C2735C9D900B0F648 /* MaxAPI.framework in Frameworks */,
+				52B1DFC22735C9E900B0F648 /* MaxAudioAPI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2323,7 +2436,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52B1DF802735C9D900B0F648 /* MaxAPI.framework in Frameworks */,
 				525523D01504CB9E00A10E5D /* Carbon.framework in Frameworks */,
+				52B1DFB62735C9E900B0F648 /* MaxAudioAPI.framework in Frameworks */,
 				52CEF5AF163763BE0016EC39 /* libo.a in Frameworks */,
 				52CEF5C8163763CF0016EC39 /* libomax.a in Frameworks */,
 			);
@@ -2333,7 +2448,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52B1DF812735C9D900B0F648 /* MaxAPI.framework in Frameworks */,
 				525523E71504D0B200A10E5D /* Carbon.framework in Frameworks */,
+				52B1DFB72735C9E900B0F648 /* MaxAudioAPI.framework in Frameworks */,
 				52CEF5B0163763BE0016EC39 /* libo.a in Frameworks */,
 				52CEF5C9163763CF0016EC39 /* libomax.a in Frameworks */,
 			);
@@ -2343,7 +2460,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52B1DF832735C9D900B0F648 /* MaxAPI.framework in Frameworks */,
 				525523F61504D14200A10E5D /* Carbon.framework in Frameworks */,
+				52B1DFB92735C9E900B0F648 /* MaxAudioAPI.framework in Frameworks */,
 				52CEF5B1163763BE0016EC39 /* libo.a in Frameworks */,
 				52CEF5CA163763CF0016EC39 /* libomax.a in Frameworks */,
 			);
@@ -2353,7 +2472,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52B1DF862735C9D900B0F648 /* MaxAPI.framework in Frameworks */,
 				525524051504D14400A10E5D /* Carbon.framework in Frameworks */,
+				52B1DFBC2735C9E900B0F648 /* MaxAudioAPI.framework in Frameworks */,
 				52CEF5B3163763BE0016EC39 /* libo.a in Frameworks */,
 				52CEF5CC163763CF0016EC39 /* libomax.a in Frameworks */,
 			);
@@ -2363,7 +2484,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52B1DF8B2735C9D900B0F648 /* MaxAPI.framework in Frameworks */,
 				525524141504D14600A10E5D /* Carbon.framework in Frameworks */,
+				52B1DFC12735C9E900B0F648 /* MaxAudioAPI.framework in Frameworks */,
 				52CEF5B5163763BE0016EC39 /* libo.a in Frameworks */,
 				52CEF5CE163763CF0016EC39 /* libomax.a in Frameworks */,
 			);
@@ -2373,7 +2496,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52B1DF902735C9D900B0F648 /* MaxAPI.framework in Frameworks */,
 				525524231504D14B00A10E5D /* Carbon.framework in Frameworks */,
+				52B1DFC62735C9E900B0F648 /* MaxAudioAPI.framework in Frameworks */,
 				52CEF5B7163763BE0016EC39 /* libo.a in Frameworks */,
 				52CEF5D0163763D00016EC39 /* libomax.a in Frameworks */,
 			);
@@ -2383,7 +2508,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52B1DF912735C9D900B0F648 /* MaxAPI.framework in Frameworks */,
 				525524321504D14F00A10E5D /* Carbon.framework in Frameworks */,
+				52B1DFC72735C9E900B0F648 /* MaxAudioAPI.framework in Frameworks */,
 				52CEF5B8163763BE0016EC39 /* libo.a in Frameworks */,
 				52CEF5D1163763D00016EC39 /* libomax.a in Frameworks */,
 			);
@@ -2393,7 +2520,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52B1DF942735C9D900B0F648 /* MaxAPI.framework in Frameworks */,
 				525524411504D15000A10E5D /* Carbon.framework in Frameworks */,
+				52B1DFCA2735C9E900B0F648 /* MaxAudioAPI.framework in Frameworks */,
 				52CEF5B9163763BF0016EC39 /* libo.a in Frameworks */,
 				52CEF5D2163763D00016EC39 /* libomax.a in Frameworks */,
 			);
@@ -2403,7 +2532,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52B1DF952735C9D900B0F648 /* MaxAPI.framework in Frameworks */,
 				525524501504D15200A10E5D /* Carbon.framework in Frameworks */,
+				52B1DFCB2735C9E900B0F648 /* MaxAudioAPI.framework in Frameworks */,
 				52CEF5BA163763BF0016EC39 /* libo.a in Frameworks */,
 				52CEF5D3163763D00016EC39 /* libomax.a in Frameworks */,
 			);
@@ -2413,7 +2544,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52B1DF962735C9D900B0F648 /* MaxAPI.framework in Frameworks */,
 				5255245F1504D15400A10E5D /* Carbon.framework in Frameworks */,
+				52B1DFCC2735C9E900B0F648 /* MaxAudioAPI.framework in Frameworks */,
 				52CEF5BB163763BF0016EC39 /* libo.a in Frameworks */,
 				52CEF5D4163763D00016EC39 /* libomax.a in Frameworks */,
 			);
@@ -2423,7 +2556,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52B1DF972735C9D900B0F648 /* MaxAPI.framework in Frameworks */,
 				5255246E1504D15600A10E5D /* Carbon.framework in Frameworks */,
+				52B1DFCD2735C9E900B0F648 /* MaxAudioAPI.framework in Frameworks */,
 				52CEF5BC163763BF0016EC39 /* libo.a in Frameworks */,
 				52CEF5D5163763D00016EC39 /* libomax.a in Frameworks */,
 			);
@@ -2433,7 +2568,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52B1DF982735C9D900B0F648 /* MaxAPI.framework in Frameworks */,
 				5255247D1504D15700A10E5D /* Carbon.framework in Frameworks */,
+				52B1DFCE2735C9E900B0F648 /* MaxAudioAPI.framework in Frameworks */,
 				52CEF5BD163763BF0016EC39 /* libo.a in Frameworks */,
 				52CEF5D6163763D00016EC39 /* libomax.a in Frameworks */,
 			);
@@ -2443,7 +2580,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52B1DF992735C9D900B0F648 /* MaxAPI.framework in Frameworks */,
 				5255248C1504D15900A10E5D /* Carbon.framework in Frameworks */,
+				52B1DFCF2735C9E900B0F648 /* MaxAudioAPI.framework in Frameworks */,
 				52CEF5BE163763BF0016EC39 /* libo.a in Frameworks */,
 				52CEF5D7163763D00016EC39 /* libomax.a in Frameworks */,
 			);
@@ -2453,7 +2592,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52B1DF9A2735C9D900B0F648 /* MaxAPI.framework in Frameworks */,
 				5255249B1504D15B00A10E5D /* Carbon.framework in Frameworks */,
+				52B1DFD02735C9E900B0F648 /* MaxAudioAPI.framework in Frameworks */,
 				52CEF5BF163763BF0016EC39 /* libo.a in Frameworks */,
 				52CEF5D8163763D10016EC39 /* libomax.a in Frameworks */,
 			);
@@ -2463,7 +2604,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52B1DF9C2735C9D900B0F648 /* MaxAPI.framework in Frameworks */,
 				525524AA1504D15D00A10E5D /* Carbon.framework in Frameworks */,
+				52B1DFD22735C9E900B0F648 /* MaxAudioAPI.framework in Frameworks */,
 				52CEF5C0163763BF0016EC39 /* libo.a in Frameworks */,
 				52CEF5D9163763D10016EC39 /* libomax.a in Frameworks */,
 			);
@@ -2473,7 +2616,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52B1DF9F2735C9D900B0F648 /* MaxAPI.framework in Frameworks */,
 				525524B91504D15F00A10E5D /* Carbon.framework in Frameworks */,
+				52B1DFD52735C9E900B0F648 /* MaxAudioAPI.framework in Frameworks */,
 				52CEF5C1163763BF0016EC39 /* libo.a in Frameworks */,
 				52CEF5DA163763D10016EC39 /* libomax.a in Frameworks */,
 			);
@@ -2483,7 +2628,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52B1DFA52735C9D900B0F648 /* MaxAPI.framework in Frameworks */,
 				525524C81504D16100A10E5D /* Carbon.framework in Frameworks */,
+				52B1DFDB2735C9E900B0F648 /* MaxAudioAPI.framework in Frameworks */,
 				52CEF5C2163763BF0016EC39 /* libo.a in Frameworks */,
 				52CEF5DB163763D10016EC39 /* libomax.a in Frameworks */,
 			);
@@ -2493,7 +2640,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52B1DFA62735C9D900B0F648 /* MaxAPI.framework in Frameworks */,
 				525524D71504D16200A10E5D /* Carbon.framework in Frameworks */,
+				52B1DFDC2735C9E900B0F648 /* MaxAudioAPI.framework in Frameworks */,
 				52CEF5C3163763C00016EC39 /* libo.a in Frameworks */,
 				52CEF5DC163763D10016EC39 /* libomax.a in Frameworks */,
 			);
@@ -2503,7 +2652,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52B1DFA82735C9D900B0F648 /* MaxAPI.framework in Frameworks */,
 				525524E61504D16400A10E5D /* Carbon.framework in Frameworks */,
+				52B1DFDE2735C9E900B0F648 /* MaxAudioAPI.framework in Frameworks */,
 				52CEF5C4163763C00016EC39 /* libo.a in Frameworks */,
 				52CEF5DD163763D10016EC39 /* libomax.a in Frameworks */,
 			);
@@ -2513,7 +2664,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52B1DFA92735C9D900B0F648 /* MaxAPI.framework in Frameworks */,
 				525524F51504D16600A10E5D /* Carbon.framework in Frameworks */,
+				52B1DFDF2735C9E900B0F648 /* MaxAudioAPI.framework in Frameworks */,
 				52CEF5C5163763C00016EC39 /* libo.a in Frameworks */,
 				52CEF5DE163763D10016EC39 /* libomax.a in Frameworks */,
 			);
@@ -2523,7 +2676,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52B1DF842735C9D900B0F648 /* MaxAPI.framework in Frameworks */,
 				527294BF17EDE93B00AA15E1 /* Carbon.framework in Frameworks */,
+				52B1DFBA2735C9E900B0F648 /* MaxAudioAPI.framework in Frameworks */,
 				527294C017EDE93B00AA15E1 /* libo.a in Frameworks */,
 				527294C117EDE93B00AA15E1 /* libomax.a in Frameworks */,
 			);
@@ -2533,7 +2688,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52B1DF8D2735C9D900B0F648 /* MaxAPI.framework in Frameworks */,
 				528026E619E028C30037FD4E /* Carbon.framework in Frameworks */,
+				52B1DFC32735C9E900B0F648 /* MaxAudioAPI.framework in Frameworks */,
 				528026E719E028C30037FD4E /* libo.a in Frameworks */,
 				528026E819E028C30037FD4E /* libomax.a in Frameworks */,
 			);
@@ -2543,10 +2700,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52B1DFAC2735C9D900B0F648 /* MaxAPI.framework in Frameworks */,
 				529318DC1FD072D300089B00 /* Carbon.framework in Frameworks */,
+				52B1DFE22735C9E900B0F648 /* MaxAudioAPI.framework in Frameworks */,
 				529318DD1FD072D300089B00 /* libo.a in Frameworks */,
 				529318DE1FD072D300089B00 /* libomax.a in Frameworks */,
-				A46F361221E12F60000F9123 /* MaxAudioAPI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2554,10 +2712,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52B1DFAD2735C9D900B0F648 /* MaxAPI.framework in Frameworks */,
 				529318EF1FD1605700089B00 /* Carbon.framework in Frameworks */,
+				52B1DFE32735C9E900B0F648 /* MaxAudioAPI.framework in Frameworks */,
 				529318F01FD1605700089B00 /* libo.a in Frameworks */,
 				529318F11FD1605700089B00 /* libomax.a in Frameworks */,
-				A46F361321E12F60000F9123 /* MaxAudioAPI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2565,7 +2724,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52B1DF8F2735C9D900B0F648 /* MaxAPI.framework in Frameworks */,
 				529781591555B6FD0018A44D /* Carbon.framework in Frameworks */,
+				52B1DFC52735C9E900B0F648 /* MaxAudioAPI.framework in Frameworks */,
 				52CEF5B6163763BE0016EC39 /* libo.a in Frameworks */,
 				52CEF5CF163763CF0016EC39 /* libomax.a in Frameworks */,
 			);
@@ -2575,7 +2736,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52B1DF7E2735C9D900B0F648 /* MaxAPI.framework in Frameworks */,
 				52A8394216E978D7002E273C /* Carbon.framework in Frameworks */,
+				52B1DFB42735C9E900B0F648 /* MaxAudioAPI.framework in Frameworks */,
 				52A8394316E978D7002E273C /* libo.a in Frameworks */,
 				52A8394416E978D7002E273C /* libomax.a in Frameworks */,
 			);
@@ -2585,7 +2748,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52B1DFA32735C9D900B0F648 /* MaxAPI.framework in Frameworks */,
 				52A8396016EFFBC9002E273C /* Carbon.framework in Frameworks */,
+				52B1DFD92735C9E900B0F648 /* MaxAudioAPI.framework in Frameworks */,
 				52A8396116EFFBC9002E273C /* libo.a in Frameworks */,
 				52A8396216EFFBC9002E273C /* libomax.a in Frameworks */,
 			);
@@ -2595,7 +2760,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52B1DF9D2735C9D900B0F648 /* MaxAPI.framework in Frameworks */,
 				52A8397516F3F898002E273C /* Carbon.framework in Frameworks */,
+				52B1DFD32735C9E900B0F648 /* MaxAudioAPI.framework in Frameworks */,
 				52A8397616F3F898002E273C /* libo.a in Frameworks */,
 				52A8397716F3F898002E273C /* libomax.a in Frameworks */,
 			);
@@ -2605,7 +2772,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52B1DFA12735C9D900B0F648 /* MaxAPI.framework in Frameworks */,
 				52AA36FB194B7D21009A1920 /* Carbon.framework in Frameworks */,
+				52B1DFD72735C9E900B0F648 /* MaxAudioAPI.framework in Frameworks */,
 				52AA36FC194B7D21009A1920 /* libo.a in Frameworks */,
 				52AA36FD194B7D21009A1920 /* libomax.a in Frameworks */,
 			);
@@ -2615,7 +2784,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52B1DFA02735C9D900B0F648 /* MaxAPI.framework in Frameworks */,
 				52AA37111954D1AD009A1920 /* Carbon.framework in Frameworks */,
+				52B1DFD62735C9E900B0F648 /* MaxAudioAPI.framework in Frameworks */,
 				52AA37121954D1AD009A1920 /* libo.a in Frameworks */,
 				52AA37131954D1AD009A1920 /* libomax.a in Frameworks */,
 			);
@@ -2625,7 +2796,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52B1DF882735C9D900B0F648 /* MaxAPI.framework in Frameworks */,
 				52B53CE317480C8100237A19 /* Carbon.framework in Frameworks */,
+				52B1DFBE2735C9E900B0F648 /* MaxAudioAPI.framework in Frameworks */,
 				52B53CE417480C8100237A19 /* libo.a in Frameworks */,
 				52B53CE517480C8100237A19 /* libomax.a in Frameworks */,
 			);
@@ -2635,7 +2808,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52B1DFA72735C9D900B0F648 /* MaxAPI.framework in Frameworks */,
 				52B53CF51748287A00237A19 /* Carbon.framework in Frameworks */,
+				52B1DFDD2735C9E900B0F648 /* MaxAudioAPI.framework in Frameworks */,
 				52B53CF61748287A00237A19 /* libo.a in Frameworks */,
 				52B53CF71748287A00237A19 /* libomax.a in Frameworks */,
 			);
@@ -2645,7 +2820,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52B1DF922735C9D900B0F648 /* MaxAPI.framework in Frameworks */,
 				52B53D0717484E5500237A19 /* Carbon.framework in Frameworks */,
+				52B1DFC82735C9E900B0F648 /* MaxAudioAPI.framework in Frameworks */,
 				52B53D0817484E5500237A19 /* libo.a in Frameworks */,
 				52B53D0917484E5500237A19 /* libomax.a in Frameworks */,
 			);
@@ -2655,7 +2832,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52B1DF9B2735C9D900B0F648 /* MaxAPI.framework in Frameworks */,
 				52B53D19174FD0B300237A19 /* Carbon.framework in Frameworks */,
+				52B1DFD12735C9E900B0F648 /* MaxAudioAPI.framework in Frameworks */,
 				52B53D1A174FD0B300237A19 /* libo.a in Frameworks */,
 				52B53D1B174FD0B300237A19 /* libomax.a in Frameworks */,
 			);
@@ -2665,10 +2844,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52B1DF892735C9D900B0F648 /* MaxAPI.framework in Frameworks */,
 				52B654F717D159B9004FD84E /* Carbon.framework in Frameworks */,
+				52B1DFBF2735C9E900B0F648 /* MaxAudioAPI.framework in Frameworks */,
 				52B654F817D159B9004FD84E /* libo.a in Frameworks */,
 				52B654F917D159B9004FD84E /* libomax.a in Frameworks */,
-				A46F361021E12F60000F9123 /* MaxAudioAPI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2676,10 +2856,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52B1DF9E2735C9D900B0F648 /* MaxAPI.framework in Frameworks */,
 				52B6550A17D68D7C004FD84E /* Carbon.framework in Frameworks */,
+				52B1DFD42735C9E900B0F648 /* MaxAudioAPI.framework in Frameworks */,
 				52B6550B17D68D7C004FD84E /* libo.a in Frameworks */,
 				52B6550C17D68D7C004FD84E /* libomax.a in Frameworks */,
-				A46F361121E12F60000F9123 /* MaxAudioAPI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2687,7 +2868,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52B1DFA22735C9D900B0F648 /* MaxAPI.framework in Frameworks */,
 				52C839D8167A5B24000AA688 /* Carbon.framework in Frameworks */,
+				52B1DFD82735C9E900B0F648 /* MaxAudioAPI.framework in Frameworks */,
 				52C839D9167A5B24000AA688 /* libo.a in Frameworks */,
 				52C839DA167A5B24000AA688 /* libomax.a in Frameworks */,
 			);
@@ -2697,10 +2880,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52B1DFAE2735C9D900B0F648 /* MaxAPI.framework in Frameworks */,
 				52D5C200202DA7E400E74BF9 /* Carbon.framework in Frameworks */,
+				52B1DFE42735C9E900B0F648 /* MaxAudioAPI.framework in Frameworks */,
 				52D5C201202DA7E400E74BF9 /* libo.a in Frameworks */,
 				52D5C202202DA7E400E74BF9 /* libomax.a in Frameworks */,
-				A46F361421E12F60000F9123 /* MaxAudioAPI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2708,10 +2892,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52B1DFAF2735C9D900B0F648 /* MaxAPI.framework in Frameworks */,
 				52D5C212202DA7F400E74BF9 /* Carbon.framework in Frameworks */,
+				52B1DFE52735C9E900B0F648 /* MaxAudioAPI.framework in Frameworks */,
 				52D5C213202DA7F400E74BF9 /* libo.a in Frameworks */,
 				52D5C214202DA7F400E74BF9 /* libomax.a in Frameworks */,
-				A46F361521E12F60000F9123 /* MaxAudioAPI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2719,7 +2904,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52B1DFAA2735C9D900B0F648 /* MaxAPI.framework in Frameworks */,
 				52F0C47F17B581CC009FBD24 /* Carbon.framework in Frameworks */,
+				52B1DFE02735C9E900B0F648 /* MaxAudioAPI.framework in Frameworks */,
 				52F0C48017B581CC009FBD24 /* libo.a in Frameworks */,
 				52F0C48117B581CC009FBD24 /* libomax.a in Frameworks */,
 			);
@@ -2729,7 +2916,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52B1DF822735C9D900B0F648 /* MaxAPI.framework in Frameworks */,
 				9B3930CD195A286D002EDAE5 /* Carbon.framework in Frameworks */,
+				52B1DFB82735C9E900B0F648 /* MaxAudioAPI.framework in Frameworks */,
 				9B3930CE195A286D002EDAE5 /* libo.a in Frameworks */,
 				9B3930CF195A286D002EDAE5 /* libomax.a in Frameworks */,
 			);
@@ -2739,7 +2928,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52B1DF872735C9D900B0F648 /* MaxAPI.framework in Frameworks */,
 				9B3930DD195A2898002EDAE5 /* Carbon.framework in Frameworks */,
+				52B1DFBD2735C9E900B0F648 /* MaxAudioAPI.framework in Frameworks */,
 				9B3930DE195A2898002EDAE5 /* libo.a in Frameworks */,
 				9B3930DF195A2898002EDAE5 /* libomax.a in Frameworks */,
 			);
@@ -2749,7 +2940,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52B1DFA42735C9D900B0F648 /* MaxAPI.framework in Frameworks */,
 				9B678624194BAE98007894BC /* Carbon.framework in Frameworks */,
+				52B1DFDA2735C9E900B0F648 /* MaxAudioAPI.framework in Frameworks */,
 				9B678625194BAE98007894BC /* libo.a in Frameworks */,
 				9B678626194BAE98007894BC /* libomax.a in Frameworks */,
 			);
@@ -2759,7 +2952,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52B1DF932735C9D900B0F648 /* MaxAPI.framework in Frameworks */,
 				9BB5E9D81952570000932005 /* Carbon.framework in Frameworks */,
+				52B1DFC92735C9E900B0F648 /* MaxAudioAPI.framework in Frameworks */,
 				9BB5E9D91952570000932005 /* libo.a in Frameworks */,
 				9BB5E9DA1952570000932005 /* libomax.a in Frameworks */,
 			);
@@ -2769,7 +2964,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52B1DF7F2735C9D900B0F648 /* MaxAPI.framework in Frameworks */,
 				B4DA8E400E21A50100A424E7 /* Carbon.framework in Frameworks */,
+				52B1DFB52735C9E900B0F648 /* MaxAudioAPI.framework in Frameworks */,
 				52CEF5AE163763BD0016EC39 /* libo.a in Frameworks */,
 				52CEF5C7163763CF0016EC39 /* libomax.a in Frameworks */,
 			);
@@ -2787,7 +2984,7 @@
 				52AA372F19575C01009A1920 /* PD-config.xcconfig */,
 				52CA34441976FF7A008C36B9 /* PD-deprecated.xcconfig */,
 				52CA34451976FF7A008C36B9 /* PD-unstable.xcconfig */,
-				52CEF59416375BFB0016EC39 /* commonsyms.c */,
+				52B1DFE92735C9F800B0F648 /* commonsyms.c */,
 				52A8393A16E978CD002E273C /* o.append.c */,
 				525523B41504C3FD00A10E5D /* o.atomize.c */,
 				21BC035021674C41001D0CED /* o.bufferfill~.c */,
@@ -2855,7 +3052,8 @@
 		089C1671FE841209C02AAC07 /* External Frameworks and Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				A46F360F21E12F5F000F9123 /* MaxAudioAPI.framework */,
+				52B1DF7D2735C9D900B0F648 /* MaxAPI.framework */,
+				52B1DFB32735C9E900B0F648 /* MaxAudioAPI.framework */,
 				52B6552817E3C04B004FD84E /* IOBluetooth.framework */,
 				52CEF5C6163763CF0016EC39 /* libomax.a */,
 				52CEF5AD163763BD0016EC39 /* libo.a */,
@@ -6096,7 +6294,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				11A20DAF19F0B428002A98B5 /* commonsyms.c in Sources */,
+				52B1DFFA2735C9F800B0F648 /* commonsyms.c in Sources */,
 				11A20DBA19F0B49D002A98B5 /* o.expr.codebox.set.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -6105,8 +6303,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52B1E0172735C9F800B0F648 /* commonsyms.c in Sources */,
 				116F874B1F9A16450062EE91 /* o.gui.attach.c in Sources */,
-				11A394111F98D02600D2AC3D /* commonsyms.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6138,8 +6336,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52B1E01C2735C9F800B0F648 /* commonsyms.c in Sources */,
 				1109A05320448A8D0024A489 /* o.daemon.c in Sources */,
-				11C890AB20447A9D002BED1E /* commonsyms.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6172,8 +6370,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52B1E01D2735C9F800B0F648 /* commonsyms.c in Sources */,
 				21BC035121674C42001D0CED /* o.bufferfill~.c in Sources */,
-				21BC034421674B95001D0CED /* commonsyms.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6181,8 +6379,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52B1E01E2735C9F800B0F648 /* commonsyms.c in Sources */,
 				21CA8A1D216B40A2009FDBCF /* o.lookup~.cpp in Sources */,
-				21CA8A10216B3FD8009FDBCF /* commonsyms.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6190,8 +6388,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52B1DFF12735C9F800B0F648 /* commonsyms.c in Sources */,
 				520C0E2B158469F4005F2955 /* o.dict.c in Sources */,
-				52CEF59916375BFB0016EC39 /* commonsyms.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6215,8 +6413,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52B1DFF62735C9F800B0F648 /* commonsyms.c in Sources */,
 				5217D90D158EEBEB005B5238 /* o.explode.c in Sources */,
-				52CEF59B16375BFB0016EC39 /* commonsyms.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6224,7 +6422,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5223ADD21923EB5700C8FBB5 /* commonsyms.c in Sources */,
+				52B1DFF82735C9F800B0F648 /* commonsyms.c in Sources */,
 				5223ADDC1923EB9000C8FBB5 /* o.expr.codebox.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -6233,8 +6431,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52B1DFEC2735C9F800B0F648 /* commonsyms.c in Sources */,
 				525523D91504CC6000A10E5D /* o.change.c in Sources */,
-				52CEF59616375BFB0016EC39 /* commonsyms.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6242,8 +6440,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52B1DFED2735C9F800B0F648 /* commonsyms.c in Sources */,
 				525525281504D21500A10E5D /* o.collect.c in Sources */,
-				52CEF59716375BFB0016EC39 /* commonsyms.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6251,8 +6449,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52B1DFEF2735C9F800B0F648 /* commonsyms.c in Sources */,
 				5255252A1504D22A00A10E5D /* o.cond.c in Sources */,
-				52CEF59816375BFB0016EC39 /* commonsyms.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6260,8 +6458,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52B1DFF22735C9F800B0F648 /* commonsyms.c in Sources */,
 				5255252C1504D23400A10E5D /* o.difference.c in Sources */,
-				52CEF59A16375BFB0016EC39 /* commonsyms.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6269,8 +6467,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52B1DFF72735C9F800B0F648 /* commonsyms.c in Sources */,
 				5255252E1504D23C00A10E5D /* o.expr.c in Sources */,
-				52CEF59C16375BFB0016EC39 /* commonsyms.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6278,8 +6476,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52B1DFFC2735C9F800B0F648 /* commonsyms.c in Sources */,
 				525525301504D24500A10E5D /* o.if.c in Sources */,
-				52CEF59E16375BFB0016EC39 /* commonsyms.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6287,8 +6485,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52B1DFFD2735C9F800B0F648 /* commonsyms.c in Sources */,
 				525525321504D24D00A10E5D /* o.intersection.c in Sources */,
-				52CEF59F16375BFB0016EC39 /* commonsyms.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6296,8 +6494,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52B1E0002735C9F800B0F648 /* commonsyms.c in Sources */,
 				525525341504D25500A10E5D /* o.mappatch.c in Sources */,
-				52CEF5A016375BFB0016EC39 /* commonsyms.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6305,8 +6503,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52B1E0012735C9F800B0F648 /* commonsyms.c in Sources */,
 				525525361504D25F00A10E5D /* o.message.c in Sources */,
-				52CEF5A116375BFB0016EC39 /* commonsyms.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6314,8 +6512,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52B1E0022735C9F800B0F648 /* commonsyms.c in Sources */,
 				525525381504D26A00A10E5D /* o.pack.c in Sources */,
-				52CEF5A216375BFB0016EC39 /* commonsyms.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6323,8 +6521,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52B1E0032735C9F800B0F648 /* commonsyms.c in Sources */,
 				5255253A1504D27200A10E5D /* o.pak.c in Sources */,
-				52CEF5A316375BFB0016EC39 /* commonsyms.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6332,8 +6530,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52B1E0042735C9F800B0F648 /* commonsyms.c in Sources */,
 				5255253C1504D27D00A10E5D /* o.prepend.c in Sources */,
-				52CEF5A416375BFB0016EC39 /* commonsyms.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6341,8 +6539,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52B1E0052735C9F800B0F648 /* commonsyms.c in Sources */,
 				5255253E1504D28900A10E5D /* o.print.c in Sources */,
-				52CEF5A516375BFB0016EC39 /* commonsyms.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6350,8 +6548,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52B1E0062735C9F800B0F648 /* commonsyms.c in Sources */,
 				525525401504D29200A10E5D /* o.printbytes.c in Sources */,
-				52CEF5A616375BFB0016EC39 /* commonsyms.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6359,8 +6557,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52B1E0082735C9F800B0F648 /* commonsyms.c in Sources */,
 				525525421504D29D00A10E5D /* o.route.c in Sources */,
-				52CEF5A716375BFB0016EC39 /* commonsyms.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6368,8 +6566,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52B1E00B2735C9F800B0F648 /* commonsyms.c in Sources */,
 				525525441504D2A800A10E5D /* o.select.c in Sources */,
-				52CEF5A816375BFB0016EC39 /* commonsyms.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6377,8 +6575,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52B1E0112735C9F800B0F648 /* commonsyms.c in Sources */,
 				525525461504D2B200A10E5D /* o.union.c in Sources */,
-				52CEF5A916375BFB0016EC39 /* commonsyms.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6386,8 +6584,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52B1E0122735C9F800B0F648 /* commonsyms.c in Sources */,
 				525525481504D2BB00A10E5D /* o.unless.c in Sources */,
-				52CEF5AA16375BFB0016EC39 /* commonsyms.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6395,8 +6593,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52B1E0142735C9F800B0F648 /* commonsyms.c in Sources */,
 				5255254A1504D2C400A10E5D /* o.var.c in Sources */,
-				52CEF5AB16375BFB0016EC39 /* commonsyms.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6404,8 +6602,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52B1E0152735C9F800B0F648 /* commonsyms.c in Sources */,
 				5255254C1504D2CC00A10E5D /* o.when.c in Sources */,
-				52CEF5AC16375BFB0016EC39 /* commonsyms.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6413,7 +6611,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				527294BC17EDE93B00AA15E1 /* commonsyms.c in Sources */,
+				52B1DFF02735C9F800B0F648 /* commonsyms.c in Sources */,
 				527294C617EDEE0200AA15E1 /* o.context.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -6422,7 +6620,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				528026E419E028C30037FD4E /* commonsyms.c in Sources */,
+				52B1DFF92735C9F800B0F648 /* commonsyms.c in Sources */,
 				527C363E1A33229300E08D94 /* o.queue.fifo.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -6431,8 +6629,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52B1E0182735C9F800B0F648 /* commonsyms.c in Sources */,
 				529318E51FD0733000089B00 /* o.timetag~.c in Sources */,
-				529318DA1FD072D300089B00 /* commonsyms.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6440,7 +6638,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				529318EC1FD1605700089B00 /* commonsyms.c in Sources */,
+				52B1E0192735C9F800B0F648 /* commonsyms.c in Sources */,
 				529318F81FD160A800089B00 /* o.snapshot~.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -6449,8 +6647,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52B1DFFB2735C9F800B0F648 /* commonsyms.c in Sources */,
 				5203467C1555BF17001EA532 /* o.flatten.c in Sources */,
-				52CEF59D16375BFB0016EC39 /* commonsyms.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6458,7 +6656,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52A8394016E978D7002E273C /* commonsyms.c in Sources */,
+				52B1DFEA2735C9F800B0F648 /* commonsyms.c in Sources */,
 				52A8394A16E978E6002E273C /* o.append.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -6467,7 +6665,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52A8395D16EFFBC9002E273C /* commonsyms.c in Sources */,
+				52B1E00F2735C9F800B0F648 /* commonsyms.c in Sources */,
 				52A8396A16EFFC19002E273C /* o.timetag.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -6476,7 +6674,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52A8397216F3F898002E273C /* commonsyms.c in Sources */,
+				52B1E0092735C9F800B0F648 /* commonsyms.c in Sources */,
 				52A8397F16F3F900002E273C /* o.schedule.c in Sources */,
 				52A8398016F3F900002E273C /* pqops.c in Sources */,
 			);
@@ -6486,7 +6684,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52AA36F9194B7D21009A1920 /* commonsyms.c in Sources */,
+				52B1E00D2735C9F800B0F648 /* commonsyms.c in Sources */,
 				9B9F1FE7196E337500364945 /* o.slip.encode.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -6495,7 +6693,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52AA370E1954D1AD009A1920 /* commonsyms.c in Sources */,
+				52B1E00C2735C9F800B0F648 /* commonsyms.c in Sources */,
 				9B9F1FE4196E336600364945 /* o.slip.decode.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -6504,7 +6702,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52B53CE117480C8100237A19 /* commonsyms.c in Sources */,
+				52B1DFF42735C9F800B0F648 /* commonsyms.c in Sources */,
 				52B53CED17480CFC00237A19 /* o.downcast.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -6513,7 +6711,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52B53CF21748287A00237A19 /* commonsyms.c in Sources */,
+				52B1E0132735C9F800B0F648 /* commonsyms.c in Sources */,
 				52B53CFF174828C700237A19 /* o.validate.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -6522,7 +6720,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52B53D0417484E5500237A19 /* commonsyms.c in Sources */,
+				52B1DFFE2735C9F800B0F648 /* commonsyms.c in Sources */,
 				52CA34421971B04E008C36B9 /* o.messageiterate.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -6531,7 +6729,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52B53D16174FD0B300237A19 /* commonsyms.c in Sources */,
+				52B1E0072735C9F800B0F648 /* commonsyms.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6539,7 +6737,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52B654F417D159B9004FD84E /* commonsyms.c in Sources */,
+				52B1DFF52735C9F800B0F648 /* commonsyms.c in Sources */,
 				52B6550017D16315004FD84E /* o.edge~.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -6548,9 +6746,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52B1E00A2735C9F800B0F648 /* commonsyms.c in Sources */,
 				52D3BF9B1FD5B35F0069C42C /* pqops.c in Sources */,
 				529318B71FCFF1FD00089B00 /* o.schedule~.c in Sources */,
-				52B6550717D68D7C004FD84E /* commonsyms.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6558,7 +6756,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52C839D6167A5B24000AA688 /* commonsyms.c in Sources */,
+				52B1E00E2735C9F800B0F648 /* commonsyms.c in Sources */,
 				52C839E0167A5B8A000AA688 /* o.table.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -6567,8 +6765,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52B1E01A2735C9F800B0F648 /* commonsyms.c in Sources */,
 				52D5C21C202DA87500E74BF9 /* o.timetag.split~.c in Sources */,
-				52D5C1FE202DA7E400E74BF9 /* commonsyms.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6576,8 +6774,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52B1E01B2735C9F800B0F648 /* commonsyms.c in Sources */,
 				52D5C21E202DA88700E74BF9 /* o.timetag.join~.c in Sources */,
-				52D5C210202DA7F400E74BF9 /* commonsyms.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6585,7 +6783,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52F0C47C17B581CC009FBD24 /* commonsyms.c in Sources */,
+				52B1E0162735C9F800B0F648 /* commonsyms.c in Sources */,
 				52F0C48717B581FF009FBD24 /* o.O.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -6594,8 +6792,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52B1DFEE2735C9F800B0F648 /* commonsyms.c in Sources */,
 				9B3930F5195A296C002EDAE5 /* o.compose.c in Sources */,
-				9B3930CB195A286D002EDAE5 /* commonsyms.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6603,7 +6801,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9B3930DB195A2898002EDAE5 /* commonsyms.c in Sources */,
+				52B1DFF32735C9F800B0F648 /* commonsyms.c in Sources */,
 				9B3930F7195A299A002EDAE5 /* o.display.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -6612,7 +6810,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9B678621194BAE98007894BC /* commonsyms.c in Sources */,
+				52B1E0102735C9F800B0F648 /* commonsyms.c in Sources */,
 				9B67862C194BAED8007894BC /* o.uniform.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -6621,7 +6819,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9BB5E9D51952570000932005 /* commonsyms.c in Sources */,
+				52B1DFFF2735C9F800B0F648 /* commonsyms.c in Sources */,
 				9BB5E9E01952585C00932005 /* o.listenumerate.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -6630,8 +6828,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52B1DFEB2735C9F800B0F648 /* commonsyms.c in Sources */,
 				5203467D1555BFAA001EA532 /* o.atomize.c in Sources */,
-				52CEF59516375BFB0016EC39 /* commonsyms.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -12687,7 +12885,7 @@
 		4FADC23808B4156C00ABE55E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = x86_64;
+				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
@@ -12714,8 +12912,8 @@
 				ENABLE_TESTABILITY = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					/Library/Frameworks,
-					"\"$(SRCROOT)/../../max-sdk/source/c74support/msp-includes\"",
-					"\"$(SRCROOT)/../../max-sdk/source/c74support/max-includes\"",
+					"\"$(SRCROOT)/../../max-sdk-base/c74support/msp-includes\"",
+					"\"$(SRCROOT)/../../max-sdk-base/c74support/max-includes\"",
 				);
 				GCC_ALTIVEC_EXTENSIONS = YES;
 				GCC_DEBUGGING_SYMBOLS = full;
@@ -12726,7 +12924,7 @@
 				GCC_OPTIMIZATION_LEVEL = 3;
 				GCC_PFE_FILE_C_DIALECTS = "c objective-c c++ objective-c++";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "../../max-sdk/source/c74support/max-includes/macho-prefix.pch";
+				GCC_PREFIX_HEADER = "../../max-sdk-base/c74support/max-includes/macho-prefix.pch";
 				GCC_USE_GCC3_PFE_SUPPORT = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -12745,11 +12943,11 @@
 					"$(HEADER_SEARCH_PATHS_QUOTED_FOR_PROJECT_4)",
 					"$(HEADER_SEARCH_PATHS_QUOTED_FOR_PROJECT_5)",
 				);
-				HEADER_SEARCH_PATHS_QUOTED_FOR_PROJECT_1 = "\"$(SRCROOT)/../../max-sdk/source/c74support/max-includes\"";
+				HEADER_SEARCH_PATHS_QUOTED_FOR_PROJECT_1 = "\"$(SRCROOT)/../../max-sdk-base/c74support/max-includes\"";
 				HEADER_SEARCH_PATHS_QUOTED_FOR_PROJECT_2 = "\"$(SRCROOT)/../../libo\"";
 				HEADER_SEARCH_PATHS_QUOTED_FOR_PROJECT_3 = "\"$(SRCROOT)/../../libomax\"";
 				HEADER_SEARCH_PATHS_QUOTED_FOR_PROJECT_4 = "\"$(SRCROOT)/include\"";
-				HEADER_SEARCH_PATHS_QUOTED_FOR_PROJECT_5 = "\"$(SRCROOT)/../../max-sdk/source/c74support/msp-includes\"";
+				HEADER_SEARCH_PATHS_QUOTED_FOR_PROJECT_5 = "\"$(SRCROOT)/../../max-sdk-base/c74support/msp-includes\"";
 				INFOPLIST_FILE = "$(PROJECT_DIR)/Info.plist";
 				INSTALL_OWNER = "$(USER)";
 				INSTALL_PATH = "";
@@ -12766,7 +12964,7 @@
 					"-g",
 					"-DNO_TRANSLATION_SUPPORT",
 				);
-				OTHER_LDFLAGS = "@../../max-sdk/source/c74support/max-includes/c74_linker_flags.txt";
+				OTHER_LDFLAGS = "@../../max-sdk-base/c74support/max-includes/c74_linker_flags.txt";
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libomax.a\"";
 				PRODUCT_BUNDLE_IDENTIFIER = "edu.berkeley.cnmat.$(PRODUCT_MODULE_NAME)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -12789,7 +12987,7 @@
 		4FADC23908B4156C00ABE55E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = x86_64;
+				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
@@ -12814,8 +13012,8 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					/Library/Frameworks,
-					"\"$(SRCROOT)/../../max-sdk/source/c74support/msp-includes\"",
-					"\"$(SRCROOT)/../../max-sdk/source/c74support/max-includes\"",
+					"\"$(SRCROOT)/../../max-sdk-base/c74support/msp-includes\"",
+					"\"$(SRCROOT)/../../max-sdk-base/c74support/max-includes\"",
 				);
 				GCC_ALTIVEC_EXTENSIONS = YES;
 				GCC_AUTO_VECTORIZATION = YES;
@@ -12830,7 +13028,7 @@
 				GCC_OPTIMIZATION_LEVEL = 3;
 				GCC_PFE_FILE_C_DIALECTS = "c objective-c c++ objective-c++";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "../../max-sdk/source/c74support/max-includes/macho-prefix.pch";
+				GCC_PREFIX_HEADER = "../../max-sdk-base/c74support/max-includes/macho-prefix.pch";
 				GCC_UNROLL_LOOPS = YES;
 				GCC_USE_GCC3_PFE_SUPPORT = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
@@ -12850,11 +13048,11 @@
 					"$(HEADER_SEARCH_PATHS_QUOTED_FOR_PROJECT_4)",
 					"$(HEADER_SEARCH_PATHS_QUOTED_FOR_PROJECT_5)",
 				);
-				HEADER_SEARCH_PATHS_QUOTED_FOR_PROJECT_1 = "\"$(SRCROOT)/../../max-sdk/source/c74support/max-includes\"";
+				HEADER_SEARCH_PATHS_QUOTED_FOR_PROJECT_1 = "\"$(SRCROOT)/../../max-sdk-base/c74support/max-includes\"";
 				HEADER_SEARCH_PATHS_QUOTED_FOR_PROJECT_2 = "\"$(SRCROOT)/../../libo\"";
 				HEADER_SEARCH_PATHS_QUOTED_FOR_PROJECT_3 = "\"$(SRCROOT)/../../libomax\"";
 				HEADER_SEARCH_PATHS_QUOTED_FOR_PROJECT_4 = "\"$(SRCROOT)/include\"";
-				HEADER_SEARCH_PATHS_QUOTED_FOR_PROJECT_5 = "\"$(SRCROOT)/../../max-sdk/source/c74support/msp-includes\"";
+				HEADER_SEARCH_PATHS_QUOTED_FOR_PROJECT_5 = "\"$(SRCROOT)/../../max-sdk-base/c74support/msp-includes\"";
 				INFOPLIST_FILE = "$(PROJECT_DIR)/Info.plist";
 				INSTALL_OWNER = "$(USER)";
 				INSTALL_PATH = "";
@@ -12871,7 +13069,7 @@
 					"-g",
 					"-DNO_TRANSLATION_SUPPORT",
 				);
-				OTHER_LDFLAGS = "@../../max-sdk/source/c74support/max-includes/c74_linker_flags.txt";
+				OTHER_LDFLAGS = "@../../max-sdk-base/c74support/max-includes/c74_linker_flags.txt";
 				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libomax.a\"";
 				PRODUCT_BUNDLE_IDENTIFIER = "edu.berkeley.cnmat.$(PRODUCT_MODULE_NAME)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
