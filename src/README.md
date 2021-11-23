@@ -7,11 +7,11 @@ The odot objects rely on two libraries, `libo`, and `libomax / libopd`,
 as well as the Max and / or PD SDKs.
 
 * Max / MSP SDK (only necessary if building externals for Max):
-https://github.com/cycling74/max-sdk
+[https://github.com/cycling74/max-sdk-base](https://github.com/cycling74/max-sdk-base)
 * PD source (only necessary if building externals for PD):
-https://github.com/pure-data/pure-data
-* libo: https://github.com/CNMAT/libo
-* libomax: https://github.com/CNMAT/libomax
+[https://github.com/pure-data/pure-data](https://github.com/pure-data/pure-data)
+* libo: [https://github.com/CNMAT/libo](https://github.com/CNMAT/libo)
+* libomax: [https://github.com/CNMAT/libomax](https://github.com/CNMAT/libomax)
 
 Please see the instructions in the readme for building `libo` and `libomax`.
 

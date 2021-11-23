@@ -991,7 +991,7 @@ void omessage_textbuf(t_omessage *x, t_symbol *msg, int argc, t_atom *argv)
                         }
                         else
                         {
-                            error("maximum hex buffers size is set to %d", OMAX_PD_MAXSTRINGSIZE*2);
+                            pd_error((void *)x, "maximum hex buffers size is set to %d", OMAX_PD_MAXSTRINGSIZE*2);
                             return;
                         }
                         
@@ -1040,7 +1040,7 @@ void omessage_textbuf(t_omessage *x, t_symbol *msg, int argc, t_atom *argv)
                             }
                             else
                             {
-                                error("maximum hex buffers size is set to %d", OMAX_PD_MAXSTRINGSIZE*2);
+                                pd_error((void *)x, "maximum hex buffers size is set to %d", OMAX_PD_MAXSTRINGSIZE*2);
                                 return;
                             }
                         }
@@ -1081,7 +1081,7 @@ void omessage_textbuf(t_omessage *x, t_symbol *msg, int argc, t_atom *argv)
                     }
                     else
                     {
-                        error("maximum hex buffers size is set to %d", OMAX_PD_MAXSTRINGSIZE);
+                        pd_error((void *)x, "maximum hex buffers size is set to %d", OMAX_PD_MAXSTRINGSIZE);
                         return;
                     }
                     

@@ -1019,10 +1019,14 @@ void *ocompose_new(t_symbol *msg, short argc, t_atom *argv)
         t->firsttime = 1;
         t->parent = (t_object *)x;
 
-        t->draw_fn = (t_gotfn)ocompose_drawElements;
-        t->gettext_fn = (t_gotfn)ocompose_gettext;
-        t->click_fn = (t_gotfn)ocompose_click;
-        t->delete_fn = (t_gotfn)ocompose_delete;
+        /* t->draw_fn = (t_gotfn)ocompose_drawElements; */
+        /* t->gettext_fn = (t_gotfn)ocompose_gettext; */
+        /* t->click_fn = (t_gotfn)ocompose_click; */
+        /* t->delete_fn = (t_gotfn)ocompose_delete; */
+        t->draw_fn = (t_opd_draw_fn)ocompose_drawElements;
+        t->gettext_fn = (t_opd_gettext_fn)ocompose_gettext;
+        t->click_fn = (t_opd_click_fn)ocompose_click;
+        t->delete_fn = (t_opd_delete_fn)ocompose_delete;
 
         t->mouseDown = 0;
         t->selected = 0;

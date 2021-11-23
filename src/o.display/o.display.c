@@ -851,10 +851,14 @@ void *odisplay_new(t_symbol *msg, short argc, t_atom *argv)
         t->firsttime = 1;
         t->parent = (t_object *)x;
         
-        t->draw_fn = (t_gotfn)odisplay_drawElements;
-        t->gettext_fn = (t_gotfn)odisplay_gettext;
-        t->click_fn = (t_gotfn)odisplay_click;
-        t->delete_fn = (t_gotfn)odisplay_delete;
+        /* t->draw_fn = (t_gotfn)odisplay_drawElements; */
+        /* t->gettext_fn = (t_gotfn)odisplay_gettext; */
+        /* t->click_fn = (t_gotfn)odisplay_click; */
+        /* t->delete_fn = (t_gotfn)odisplay_delete; */
+        t->draw_fn = (t_opd_draw_fn)odisplay_drawElements;
+        t->gettext_fn = (t_opd_gettext_fn)odisplay_gettext;
+        t->click_fn = (t_opd_click_fn)odisplay_click;
+        t->delete_fn = (t_opd_delete_fn)odisplay_delete;
         
         t->mouseDown = 0;
         t->selected = 0;

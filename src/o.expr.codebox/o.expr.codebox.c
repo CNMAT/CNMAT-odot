@@ -717,7 +717,7 @@ void *oexprcodebox_new(t_symbol *msg, short argc, t_atom *argv)
 {
     t_oexprcodebox *x;
     if((x = (t_oexprcodebox *)object_alloc(oexprcodebox_class)))
-    {        
+    {
         t_opd_textbox *t = opd_textbox_new(oexprcodebox_textbox_class);
         
         t->glist = (t_glist *)canvas_getcurrent();
@@ -726,10 +726,14 @@ void *oexprcodebox_new(t_symbol *msg, short argc, t_atom *argv)
         t->firsttime = 1;
         t->parent = (t_object *)x;
         
-        t->draw_fn = (t_gotfn)oexprcodebox_drawElements;
-        t->gettext_fn = (t_gotfn)oexprcodebox_gettext;
+        /* t->draw_fn = (t_gotfn)oexprcodebox_drawElements; */
+        /* t->gettext_fn = (t_gotfn)oexprcodebox_gettext; */
+        /* t->click_fn = NULL; */
+        /* t->delete_fn = (t_gotfn)oexprcodebox_delete; */
+        t->draw_fn = (t_opd_draw_fn)oexprcodebox_drawElements;
+        t->gettext_fn = (t_opd_gettext_fn)oexprcodebox_gettext;
         t->click_fn = NULL;
-        t->delete_fn = (t_gotfn)oexprcodebox_delete;
+        t->delete_fn = (t_opd_delete_fn)oexprcodebox_delete;
         
         t->mouseDown = 0;
         t->selected = 0;

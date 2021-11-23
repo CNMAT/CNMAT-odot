@@ -17,6 +17,11 @@ typedef struct _jrgb {
     char hex[7];
 } t_opd_rgb;
 
+typedef void (*t_opd_draw_fn)(void*, int);
+typedef void (*t_opd_gettext_fn)(void*);
+typedef void (*t_opd_click_fn)(void*, void*, int, int, int, int, int, int);
+typedef void (*t_opd_delete_fn)(void*, t_glist*);
+
 typedef struct _opd_textbox
 {
     t_object ob;
@@ -67,11 +72,15 @@ typedef struct _opd_textbox
     
     uint16_t    _hit;
     
-    t_gotfn     draw_fn;
-    t_gotfn     gettext_fn;
+    /* t_gotfn     draw_fn; */
+    /* t_gotfn     gettext_fn; */
+    /* t_gotfn     delete_fn; */
+    /* t_gotfn     click_fn; */
+    t_opd_draw_fn     draw_fn;
+    t_opd_gettext_fn     gettext_fn;
+    t_opd_delete_fn     delete_fn;
+    t_opd_click_fn     click_fn;
     
-    t_gotfn     delete_fn;
-    t_gotfn     click_fn;
 
     t_clock     *unbind_delay;
     

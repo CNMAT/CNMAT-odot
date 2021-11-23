@@ -105,7 +105,7 @@ void oroute_anything(t_oroute *x, t_symbol *msg, short argc, t_atom *argv);
 void oroute_free(t_oroute *x);
 void oroute_doSet(t_oroute *x, long index, t_symbol *sym);
 void oroute_makeSchema(t_oroute *x);
-void oroute_atomizeBundle(void *outlet, long len, char *bndl);
+void oroute_atomizeBundle(t_oroute *x, void *outlet, long len, char *bndl);
 void oroute_makeUniqueSelectors(int nselectors,
 				char **selectors,
 				int *nunique_selectors,
@@ -157,7 +157,7 @@ void oroute_fullPacket(t_oroute *x, t_symbol *msg, int argc, t_atom *argv)
 		}
 	}else{
 #ifdef ATOMIZE
-		oroute_atomizeBundle(x->delegation_outlet, len, ptr);
+		oroute_atomizeBundle(x, x->delegation_outlet, len, ptr);
 #else
 		omax_util_outletOSC(x->delegation_outlet, len, ptr);
 #endif
@@ -169,7 +169,7 @@ void oroute_dispatch_rset(t_oroute *x, t_osc_rset *rset, int num_selectors, char
 	t_osc_bndl_s *unmatched = osc_rset_getUnmatched(rset);
 	if(unmatched){
 #ifdef ATOMIZE
-		oroute_atomizeBundle(x->delegation_outlet,
+		oroute_atomizeBundle(x, x->delegation_outlet,
 				    osc_bundle_s_getLen(unmatched),
 				    osc_bundle_s_getPtr(unmatched));
 #else
@@ -203,7 +203,7 @@ void oroute_dispatch_rset(t_oroute *x, t_osc_rset *rset, int num_selectors, char
 #else
 			if(partial_matches){
 #ifdef ATOMIZE
-				oroute_atomizeBundle(x->outlets[i],
+				oroute_atomizeBundle(x, x->outlets[i],
 						  osc_bundle_s_getLen(partial_matches),
 						  osc_bundle_s_getPtr(partial_matches));
 #else
@@ -214,7 +214,7 @@ void oroute_dispatch_rset(t_oroute *x, t_osc_rset *rset, int num_selectors, char
 			}
 			if(complete_matches){
 #ifdef ATOMIZE
-				oroute_atomizeBundle(x->outlets[i],
+				oroute_atomizeBundle(x, x->outlets[i],
 						  osc_bundle_s_getLen(complete_matches),
 						  osc_bundle_s_getPtr(complete_matches));
 #else
@@ -462,7 +462,7 @@ void oroute_makeSchema(t_oroute *x)
 	osc_bundle_u_free(bndl);
 }
 
-void oroute_atomizeBundle(void *outlet, long len, char *bndl)
+void oroute_atomizeBundle(t_oroute *x, void *outlet, long len, char *bndl)
 {
 	t_osc_bndl_it_s *it = osc_bndl_it_s_get(len, bndl);
 	while(osc_bndl_it_s_hasNext(it)){
