@@ -42,7 +42,37 @@ VERSION 0.1: Addresses to match can now have patterns
 
 #define OMAX_DOC_INLETS_DESC (char *[]){"OSC packet"}
 
-
+/* 
+   Workaround for duplicate symbol problem on Linux. 
+   I regret what I've done...
+*/
+#if defined(SELECT)
+#define oroute_anything oselect_anything
+#define oroute_free oselect_free
+#define oroute_assist oselect_assist
+#define oroute_fullPacket oselect_fullPacket
+#define oroute_atomizeBundle oselect_atomizeBundle
+#define oroute_makeSchema oselect_makeSchema
+#define oroute_dispatch_rset oselect_dispatch_rset
+#define oroute_makeUniqueSelectors oselect_makeUniqueSelectors
+#define oroute_doSet oselect_doSet
+#define oroute_new oselect_new
+#define oroute_doc oselect_doc
+#define oroute_set oselect_set
+#elif defined(ATOMIZE)
+#define oroute_anything oatomize_anything
+#define oroute_free oatomize_free
+#define oroute_assist oatomize_assist
+#define oroute_fullPacket oatomize_fullPacket
+#define oroute_atomizeBundle oatomize_atomizeBundle
+#define oroute_makeSchema oatomize_makeSchema
+#define oroute_dispatch_rset oatomize_dispatch_rset
+#define oroute_makeUniqueSelectors oatomize_makeUniqueSelectors
+#define oroute_doSet oatomize_doSet
+#define oroute_new oatomize_new
+#define oroute_doc oatomize_doc
+#define oroute_set oatomize_set
+#endif
 
 
 #include "odot_version.h"
@@ -586,7 +616,7 @@ int setup_o0x2eroute(void)
 	t_symbol *name = gensym("o.route");
 #endif
     t_class *c = class_new(name, (t_newmethod)oroute_new, (t_method)oroute_free, sizeof(t_oroute), 0L, A_GIMME, 0);
-    
+
     class_addmethod(c, (t_method)odot_version, gensym("version"), 0);
 	class_addmethod(c, (t_method)oroute_set, gensym("set"), A_GIMME, 0);
 	class_addmethod(c, (t_method)oroute_fullPacket, gensym("FullPacket"), A_GIMME, 0);

@@ -66,6 +66,27 @@ VERSION 1.1: renamed o.pack (from o.build)
 
 #include "o.h"
 
+/* 
+   Workaround for duplicate symbol problem on Linux. 
+   I regret what I've done...
+*/
+#ifdef PAK
+#define opack_anything opak_anything
+#define opack_fullPacket opak_fullPacket
+#define opack_assist opak_assist
+#define opack_int opak_int
+#define opack_bang opak_bang
+#define opack_list opak_list
+#define opack_doAnything opak_doAnything
+#define opack_new opak_new
+#define opack_doc opak_doc
+#define opack_outputBundle opak_outputBundle
+#define opack_float opak_float
+#define opack_set opak_set
+#define opack_free opak_free
+#define opack_symbol opak_symbol
+#endif
+
 //#define MAX_NUM_ARGS 64
 
 typedef struct _opack{
