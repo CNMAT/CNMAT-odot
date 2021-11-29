@@ -89,9 +89,9 @@ void oprint_fullPacket(t_oprint *x, t_symbol *msg, int argc, t_atom *argv)
 	long buflen = osc_bundle_s_nformat(NULL, 0, len, (char *)ptr, 0);
 	char *buf = osc_mem_alloc(buflen + 1);
 	osc_bundle_s_nformat(buf, buflen + 1, len, (char *)ptr, 0);
-	post("%s: {", x->myname->s_name);
+	object_post((t_object *)x, "{");
 	if(buflen == 0){
-		post("<empty bundle>");
+		object_post((t_object *)x, "<empty bundle>");
 	}else{
 		// the Max window doesn't respect newlines, so we have to do them manually
 		char *start = buf;
@@ -101,7 +101,7 @@ void oprint_fullPacket(t_oprint *x, t_symbol *msg, int argc, t_atom *argv)
 				char line[n + 1];
 				memcpy(line, start, n);
 				line[n] = '\0';
-				post("%s: %s", x->myname->s_name, line);
+				object_post((t_object *)x, "%s\n", line);
 				start = buf + i + 1;
 			}
 		}
@@ -110,10 +110,10 @@ void oprint_fullPacket(t_oprint *x, t_symbol *msg, int argc, t_atom *argv)
 			char line[n + 1];
 			memcpy(line, start, n);
 			line[n] = '\0';
-			post("%s: %s", x->myname->s_name, line);
+			object_post((t_object *)x, "%s", line);
 		}
 	}
-	post("%s: }", x->myname->s_name);
+	object_post((t_object *)x, "}");
 	if(buf){
 		osc_mem_free(buf);
 	}
