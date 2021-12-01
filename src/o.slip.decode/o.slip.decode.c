@@ -87,10 +87,8 @@ void oslip_sendData(t_oslip *x, short size, char *data);
 #define ESC_END         0334    // ESC ESC_END means END data byte 
 #define ESC_ESC         0335    // ESC ESC_ESC means ESC data byte
 
-  
 int oslip_decode(t_oslip *x, unsigned char c)
 {
-	critical_enter(x->lock);
 	int t; 
 	switch(x->istate)
 		{
@@ -123,18 +121,13 @@ int oslip_decode(t_oslip *x, unsigned char c)
 					t = x->icount;
 					x->icount = 0;
 					x->istate = 0;
-	      
 					if((t % 4) == 0){
-						char buf[t];
+						char buf[MAXSLIPBUF];
 						memcpy(buf, x->slipibuf, t);
-	critical_exit(x->lock);
+                        critical_exit(x->lock);
 						omax_util_outletOSC(x->outlet, t, buf);
                         OSC_MEM_INVALIDATE(buf);
 						//oslip_sendData(x, t, x->slipibuf);
-						return 0;
-					}else{
-    critical_exit(x->lock);
-						//object_error((t_object *)x, "bad packet: not a multiple of 4 length");
 						return 0;
 					}
 				}
@@ -186,8 +179,6 @@ int oslip_decode(t_oslip *x, unsigned char c)
 			break;
       
 		}
-
-	critical_exit(x->lock);
 	return 1;
 }
 
@@ -218,12 +209,21 @@ void sliplist(t_oslip *x, t_symbol *s, int argc, t_atom *argv)
 			return;
 		}
 	}
+        critical_enter(x->lock);
 	for(i=0;i<argc;++i) {
+#ifdef OMAX_PD_VERSION
 		int e = atom_getlong(argv + i);
+#else
+        int e = argv[i].a_w.w_long;
+#endif
 		if(e < 256){
-			oslip_decode(x, e);
+            if(!oslip_decode(x, e))
+            {
+                critical_enter(x->lock);
+            }
 		}
 	}
+    critical_exit(x->lock);
 }
 
 void oslip_doc(t_oslip *x)
@@ -299,6 +299,8 @@ int main (void)
 	class_addmethod(c, (method)sliplist, "list", A_GIMME, 0);
   
 	class_addmethod(c, (method)oslip_printcontents, "printcontents", 0);
+
+    ps_FullPacket = gensym("FullPacket");
 
 	finder_addclass("Devices","slipOSC");
 
