@@ -85,6 +85,8 @@ VERSION 1.1: renamed o.pack (from o.build)
 #define opack_set opak_set
 #define opack_free opak_free
 #define opack_symbol opak_symbol
+#define opack_class opak_class
+#define opack_proxy_class opak_proxy_class
 #endif
 
 //#define MAX_NUM_ARGS 64
