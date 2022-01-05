@@ -60,6 +60,53 @@
 
 #include "o.h"
 
+/* 
+   Workaround for duplicate symbol problem on Linux. 
+   I regret what I've done...
+*/
+#if defined(ODOT_UNION)
+#define ovar_anything ounion_anything
+#define ovar_doc ounion_doc
+#define ovar_assist ounion_assist
+#define ovar_free ounion_free
+#define ovar_bang ounion_bang
+#define ovar_fullPacket ounion_fullPacket
+#define ovar_clear ounion_clear
+#define ovar_fullPacket_in1 ounion_fullPacket_in1
+#define ovar_doAnything ounion_doAnything
+#define ovar_new ounion_new
+#define ovar_doFullPacket ounion_doFullPacket
+#define ovar_class ounion_class
+#define ovar_proxy_class ounion_proxy_class
+#elif defined(ODOT_DIFFERENCE)
+#define ovar_anything odifference_anything
+#define ovar_doc odifference_doc
+#define ovar_assist odifference_assist
+#define ovar_free odifference_free
+#define ovar_bang odifference_bang
+#define ovar_fullPacket odifference_fullPacket
+#define ovar_clear odifference_clear
+#define ovar_fullPacket_in1 odifference_fullPacket_in1
+#define ovar_doAnything odifference_doAnything
+#define ovar_new odifference_new
+#define ovar_doFullPacket odifference_doFullPacket
+#define ovar_class odifference_class
+#define ovar_proxy_class odifference_proxy_class
+#elif defined(ODOT_INTERSECTION)
+#define ovar_anything ointersection_anything
+#define ovar_doc ointersection_doc
+#define ovar_assist ointersection_assist
+#define ovar_free ointersection_free
+#define ovar_bang ointersection_bang
+#define ovar_fullPacket ointersection_fullPacket
+#define ovar_clear ointersection_clear
+#define ovar_fullPacket_in1 ointersection_fullPacket_in1
+#define ovar_doAnything ointersection_doAnything
+#define ovar_new ointersection_new
+#define ovar_doFullPacket ointersection_doFullPacket
+#define ovar_proxy_class ointersection_proxy_class
+#endif
+
 typedef struct _ovar{
 	t_object ob;
 	void *outlet;

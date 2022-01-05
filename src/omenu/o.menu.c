@@ -85,7 +85,7 @@ t_symbol *ps_newline, *ps_FullPacket;
 void omenu_atoms2MenuString(t_omenu *x, int argc, t_atom *argv, int id)
 {
 	if(atom_gettype(argv) != A_SYM){
-		error("o.message: not a proper OSC message");
+		pd_error((void *)x, "o.message: not a proper OSC message");
 		return;
 	}
 	if(argc == 1){
@@ -103,7 +103,7 @@ void omenu_atoms2MenuString(t_omenu *x, int argc, t_atom *argv, int id)
 	// else
 	t_symbol *address = atom_getsym(argv);
 	if(*(address->s_name) != '/'){
-		error("o.message: %s is not a valid OSC address", address->s_name);
+		pd_error((void *)x, "o.message: %s is not a valid OSC address", address->s_name);
 		return;
 	}
     
@@ -118,7 +118,7 @@ void omenu_atoms2MenuString(t_omenu *x, int argc, t_atom *argv, int id)
 			int offset = bufptr - buf;
 			buf = (char *)osc_mem_resize(buf, len + 1024);
 			if(!(buf)){
-				error("o.message: out of memory!");
+				pd_error((void *)x, "o.message: out of memory!");
 				return;
 			}
 			len += 1024;

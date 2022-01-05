@@ -16,19 +16,19 @@ extern "C" {
 
 #define OMAX_UTIL_GET_LEN_AND_PTR					\
 	if(argc != 3){							\
-		error("%s: expected 2 arguments but got %d", __func__, argc); \
+		pd_error(x, "%s: expected 2 arguments but got %d", __func__, argc); \
 		return;							\
 	}								\
 	if(argv->a_type != A_FLOAT){					\
-		error("%s: argument 1 should be a float", __func__);	\
+		pd_error(x, "%s: argument 1 should be a float", __func__);	\
 		return;							\
 	}								\
 	if(argv[1].a_type != A_FLOAT){					\
-		error("%s: argument 2 should be a float", __func__);	\
+		pd_error(x, "%s: argument 2 should be a float", __func__);	\
 		return;							\
 	}								\
 	if(argv[2].a_type != A_FLOAT){					\
-		error("%s: argument 2 should be a float", __func__);	\
+		pd_error(x, "%s: argument 2 should be a float", __func__);	\
 		return;							\
 	}								\
 	float ff = atom_getfloat(&argv[0]);				\
@@ -39,7 +39,7 @@ extern "C" {
     uint64_t l2 = (uint64_t)(*((uint32_t *)&ff));\
     char *ptr = (char *)((l1<<32) | l2);\
 	if(OSC_MEM_VALIDATE(ptr)){\
-		error("received something that is neither an OSC bundle nor a message");\
+		pd_error(x, "received something that is neither an OSC bundle nor a message"); \
 		return;\
 	}
 
@@ -57,7 +57,7 @@ extern "C" {
 #define t_critical void*
     
 #define object_post(x, st, ...) post(st, ##__VA_ARGS__)
-#define object_error(x, st, ...) error(st, ##__VA_ARGS__)
+#define object_error(x, st, ...) pd_error(x, st, ##__VA_ARGS__)
 
 #define A_SYM   A_SYMBOL
 #define A_LONG  A_CANT

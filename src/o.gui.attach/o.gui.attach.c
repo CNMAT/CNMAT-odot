@@ -761,12 +761,14 @@ void o_gui_attach_patcher_test(t_o_gui_attach *x)
         t_object *p2 = NULL;
         t_object *target = NULL;
         t_object *nextbox;
-        method m;
+        /* method m; */
+        void *m;
 
         object_method(jp, gensym("getassoc"), &target);
         if (target) {
             if ((m = zgetfn(target, gensym("parentpatcher"))))
-                (*m)(target, &p2);
+                /* (*m)(target, &p2); */
+                CALL_METHOD(m, &p2);
             if (p2) {
                 nextbox = jpatcher_get_firstobject(p2);
                 while (nextbox) {

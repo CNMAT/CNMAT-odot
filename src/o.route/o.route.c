@@ -42,7 +42,41 @@ VERSION 0.1: Addresses to match can now have patterns
 
 #define OMAX_DOC_INLETS_DESC (char *[]){"OSC packet"}
 
-
+/* 
+   Workaround for duplicate symbol problem on Linux. 
+   I regret what I've done...
+*/
+#if defined(SELECT)
+#define oroute_anything oselect_anything
+#define oroute_free oselect_free
+#define oroute_assist oselect_assist
+#define oroute_fullPacket oselect_fullPacket
+#define oroute_atomizeBundle oselect_atomizeBundle
+#define oroute_makeSchema oselect_makeSchema
+#define oroute_dispatch_rset oselect_dispatch_rset
+#define oroute_makeUniqueSelectors oselect_makeUniqueSelectors
+#define oroute_doSet oselect_doSet
+#define oroute_new oselect_new
+#define oroute_doc oselect_doc
+#define oroute_set oselect_set
+#define oroute_class oselect_class
+#define oroute_proxy_class oselect_proxy_class
+#elif defined(ATOMIZE)
+#define oroute_anything oatomize_anything
+#define oroute_free oatomize_free
+#define oroute_assist oatomize_assist
+#define oroute_fullPacket oatomize_fullPacket
+#define oroute_atomizeBundle oatomize_atomizeBundle
+#define oroute_makeSchema oatomize_makeSchema
+#define oroute_dispatch_rset oatomize_dispatch_rset
+#define oroute_makeUniqueSelectors oatomize_makeUniqueSelectors
+#define oroute_doSet oatomize_doSet
+#define oroute_new oatomize_new
+#define oroute_doc oatomize_doc
+#define oroute_set oatomize_set
+#define oroute_class oatomize_class
+#define oroute_proxy_class oatomize_proxy_class
+#endif
 
 
 #include "odot_version.h"
@@ -105,7 +139,7 @@ void oroute_anything(t_oroute *x, t_symbol *msg, short argc, t_atom *argv);
 void oroute_free(t_oroute *x);
 void oroute_doSet(t_oroute *x, long index, t_symbol *sym);
 void oroute_makeSchema(t_oroute *x);
-void oroute_atomizeBundle(void *outlet, long len, char *bndl);
+void oroute_atomizeBundle(t_oroute *x, void *outlet, long len, char *bndl);
 void oroute_makeUniqueSelectors(int nselectors,
 				char **selectors,
 				int *nunique_selectors,
@@ -157,7 +191,7 @@ void oroute_fullPacket(t_oroute *x, t_symbol *msg, int argc, t_atom *argv)
 		}
 	}else{
 #ifdef ATOMIZE
-		oroute_atomizeBundle(x->delegation_outlet, len, ptr);
+		oroute_atomizeBundle(x, x->delegation_outlet, len, ptr);
 #else
 		omax_util_outletOSC(x->delegation_outlet, len, ptr);
 #endif
@@ -169,7 +203,7 @@ void oroute_dispatch_rset(t_oroute *x, t_osc_rset *rset, int num_selectors, char
 	t_osc_bndl_s *unmatched = osc_rset_getUnmatched(rset);
 	if(unmatched){
 #ifdef ATOMIZE
-		oroute_atomizeBundle(x->delegation_outlet,
+		oroute_atomizeBundle(x, x->delegation_outlet,
 				    osc_bundle_s_getLen(unmatched),
 				    osc_bundle_s_getPtr(unmatched));
 #else
@@ -203,7 +237,7 @@ void oroute_dispatch_rset(t_oroute *x, t_osc_rset *rset, int num_selectors, char
 #else
 			if(partial_matches){
 #ifdef ATOMIZE
-				oroute_atomizeBundle(x->outlets[i],
+				oroute_atomizeBundle(x, x->outlets[i],
 						  osc_bundle_s_getLen(partial_matches),
 						  osc_bundle_s_getPtr(partial_matches));
 #else
@@ -214,7 +248,7 @@ void oroute_dispatch_rset(t_oroute *x, t_osc_rset *rset, int num_selectors, char
 			}
 			if(complete_matches){
 #ifdef ATOMIZE
-				oroute_atomizeBundle(x->outlets[i],
+				oroute_atomizeBundle(x, x->outlets[i],
 						  osc_bundle_s_getLen(complete_matches),
 						  osc_bundle_s_getPtr(complete_matches));
 #else
@@ -462,7 +496,7 @@ void oroute_makeSchema(t_oroute *x)
 	osc_bundle_u_free(bndl);
 }
 
-void oroute_atomizeBundle(void *outlet, long len, char *bndl)
+void oroute_atomizeBundle(t_oroute *x, void *outlet, long len, char *bndl)
 {
 	t_osc_bndl_it_s *it = osc_bndl_it_s_get(len, bndl);
 	while(osc_bndl_it_s_hasNext(it)){
@@ -586,7 +620,7 @@ int setup_o0x2eroute(void)
 	t_symbol *name = gensym("o.route");
 #endif
     t_class *c = class_new(name, (t_newmethod)oroute_new, (t_method)oroute_free, sizeof(t_oroute), 0L, A_GIMME, 0);
-    
+
     class_addmethod(c, (t_method)odot_version, gensym("version"), 0);
 	class_addmethod(c, (t_method)oroute_set, gensym("set"), A_GIMME, 0);
 	class_addmethod(c, (t_method)oroute_fullPacket, gensym("FullPacket"), A_GIMME, 0);

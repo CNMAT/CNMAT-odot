@@ -67,7 +67,7 @@ void opd_textbox_drawParent(t_opd_textbox *t, int firstime)
     if(t->draw_fn)
         t->draw_fn(t->parent, firstime);
     else
-        error("don't forget to set the textbox draw_fn in the parent object!");
+        pd_error(NULL, "don't forget to set the textbox draw_fn in the parent object!");
     
 }
 
@@ -312,7 +312,7 @@ void opd_textbox_getTextAndCreateEditor(t_opd_textbox *t, int firsttime)
     }
     else
     { // pretty sure that this never gets called
-        error("%s pretty sure that this never gets called? please tell rama if you see this!", __func__);
+        pd_error(t, "%s pretty sure that this never gets called? please tell rama if you see this!", __func__);
         //sys_vgui("place .x%lx.t%lxTEXT -x %d -y %d -width %d -height %d\n", canvas, (long)t, x1+4, y1+4, t->width-15, t->height-10);
     }
     
@@ -375,9 +375,10 @@ void opd_textbox_insideclick_callback(t_opd_textbox *t)
     } else {
         sys_vgui("focus .x%lx.c\n", canvas);
         opd_textbox_storeTextAndExitEditor(t);
-        
+
         if(t->click_fn)
-            t->click_fn(t->parent);
+            /* t->click_fn(t->parent); */
+            t->click_fn(t->parent, t->glist, 0, 0, 0, 0, 0, 0);
         
     }
     
@@ -533,6 +534,10 @@ void opd_textbox_setTextFromHex(t_opd_textbox *t, char *hex)
 {
     // called when text comes in from TCL/TK or from the saved PD file
     unsigned long hexlen = strlen(hex);
+    if(hexlen == 0)
+    {
+        return;
+    }
     unsigned long length = hexlen / 2;
     if(length >= OMAX_PD_MAXSTRINGSIZE){
         post("max o_message string size = %d", OMAX_PD_MAXSTRINGSIZE);
@@ -541,7 +546,7 @@ void opd_textbox_setTextFromHex(t_opd_textbox *t, char *hex)
     
     int j, k;
     int c;
-    
+
     char buf[length*2];
     memset(buf, '\0', length*2);
     
@@ -663,14 +668,14 @@ void opd_textbox_textbuf(t_opd_textbox *t, t_symbol *msg, int argc, t_atom *argv
                         }
                         else
                         {
-                            error("maximum hex buffers size is set to %d", OMAX_PD_MAXSTRINGSIZE*2);
+                            pd_error(t, "maximum hex buffers size is set to %d", OMAX_PD_MAXSTRINGSIZE*2);
                             return;
                         }
                         
                     } else {
                         if(t->textediting)
                             opd_textbox_storeTextAndExitEditorTick(t);
-                        
+
                         opd_textbox_setTextFromHex(t, t->hex);
 
                         if(t->gettext_fn)

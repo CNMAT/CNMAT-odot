@@ -82,6 +82,8 @@
 
 #include "o.h"
 
+t_symbol *ps_FullPacket;
+
 #ifdef OMAX_PD_VERSION
 #define OMAX_PD_MAXSTRINGSIZE (1<<16)
 #include "opd_textbox.h"
@@ -413,6 +415,54 @@ void oexprcodebox_bang(t_oexprcodebox *x)
 #endif
 }
 
+void oexprcodebox_anything(t_oexprcodebox *x, t_symbol *msg, int argc, t_atom *argv)
+{
+	t_symbol *address = NULL;
+	if(msg){
+		if(*(msg->s_name) != '/'){
+			object_error((t_object *)x, "OSC address must begin with a '/'");
+			return;
+		}
+		address = msg;
+	}else{
+		if(atom_gettype(argv) == A_SYM){
+			if(*(atom_getsym(argv)->s_name) != '/'){
+				object_error((t_object *)x, "OSC address must begin with a '/'");
+				return;
+			}
+			address = atom_getsym(argv);
+			argv++;
+			argc--;
+		}
+	}
+	if(!address){
+		object_error((t_object *)x, "no OSC address found");
+		return;
+	}
+
+
+	t_osc_bndl_u *bndl_u = osc_bundle_u_alloc();
+	t_osc_msg_u *msg_u = NULL;
+	t_osc_err e = omax_util_maxAtomsToOSCMsg_u(&msg_u, address, argc, argv);
+	if(e){
+		object_error((t_object *)x, "%s", osc_error_string(e));
+		return;
+	}
+	osc_bundle_u_addMsg(bndl_u, msg_u);
+
+	t_osc_bndl_s *bs = osc_bundle_u_serialize(bndl_u);
+	if(bndl_u){
+		osc_bundle_u_free(bndl_u);
+	}
+	if(bs){
+        t_atom out[2];
+        atom_setlong(out, osc_bundle_s_getLen(bs));
+        atom_setlong(out + 1, osc_bundle_s_getPtr(bs));
+		oexprcodebox_fullPacket(x, ps_FullPacket, 2, out);
+		osc_bundle_s_deepFree(bs);
+	}
+}
+
 void oexprcodebox_doc_cat(t_oexprcodebox *x, t_symbol *msg, int argc, t_atom *argv)
 {
         if(argc == 0){
@@ -717,7 +767,7 @@ void *oexprcodebox_new(t_symbol *msg, short argc, t_atom *argv)
 {
     t_oexprcodebox *x;
     if((x = (t_oexprcodebox *)object_alloc(oexprcodebox_class)))
-    {        
+    {
         t_opd_textbox *t = opd_textbox_new(oexprcodebox_textbox_class);
         
         t->glist = (t_glist *)canvas_getcurrent();
@@ -726,10 +776,14 @@ void *oexprcodebox_new(t_symbol *msg, short argc, t_atom *argv)
         t->firsttime = 1;
         t->parent = (t_object *)x;
         
-        t->draw_fn = (t_gotfn)oexprcodebox_drawElements;
-        t->gettext_fn = (t_gotfn)oexprcodebox_gettext;
+        /* t->draw_fn = (t_gotfn)oexprcodebox_drawElements; */
+        /* t->gettext_fn = (t_gotfn)oexprcodebox_gettext; */
+        /* t->click_fn = NULL; */
+        /* t->delete_fn = (t_gotfn)oexprcodebox_delete; */
+        t->draw_fn = (t_opd_draw_fn)oexprcodebox_drawElements;
+        t->gettext_fn = (t_opd_gettext_fn)oexprcodebox_gettext;
         t->click_fn = NULL;
-        t->delete_fn = (t_gotfn)oexprcodebox_delete;
+        t->delete_fn = (t_opd_delete_fn)oexprcodebox_delete;
         
         t->mouseDown = 0;
         t->selected = 0;
@@ -903,6 +957,7 @@ int main(void)
     class_addmethod(c, (method)oexprcodebox_assist, "assist", A_CANT, 0);
     class_addmethod(c, (method)stdinletinfo, "inletinfo", A_CANT, 0);
     class_addmethod(c, (method)oexprcodebox_bang, "bang", 0);
+    class_addmethod(c, (method)oexprcodebox_anything, "anything", A_GIMME, 0);
 
     class_addmethod(c, (method)oexprcodebox_postExprAST, "post-ast", 0);
 
@@ -972,6 +1027,8 @@ int main(void)
     class_register(CLASS_BOX, c);
     oexprcodebox_class = c;
     osc_error_setHandler(omax_util_liboErrorHandler);
+
+    ps_FullPacket = gensym("FullPacket");
 
     ODOT_PRINT_VERSION;
     return 0;

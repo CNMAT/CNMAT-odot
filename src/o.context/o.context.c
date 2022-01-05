@@ -191,7 +191,7 @@ t_osc_bndl_u *ocontext_processCanvas(t_canvas *canvas)
             if(e)
             {
                 if(e){
-                    object_error((t_object *)x, "%s", osc_error_string(e));
+                    object_error(NULL, "%s", osc_error_string(e));
                     goto exit;
                 }
             }
