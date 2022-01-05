@@ -76,6 +76,8 @@
 #define ovar_doAnything ounion_doAnything
 #define ovar_new ounion_new
 #define ovar_doFullPacket ounion_doFullPacket
+#define ovar_class ounion_class
+#define ovar_proxy_class ounion_proxy_class
 #elif defined(ODOT_DIFFERENCE)
 #define ovar_anything odifference_anything
 #define ovar_doc odifference_doc
@@ -88,6 +90,8 @@
 #define ovar_doAnything odifference_doAnything
 #define ovar_new odifference_new
 #define ovar_doFullPacket odifference_doFullPacket
+#define ovar_class odifference_class
+#define ovar_proxy_class odifference_proxy_class
 #elif defined(ODOT_INTERSECTION)
 #define ovar_anything ointersection_anything
 #define ovar_doc ointersection_doc
@@ -100,6 +104,7 @@
 #define ovar_doAnything ointersection_doAnything
 #define ovar_new ointersection_new
 #define ovar_doFullPacket ointersection_doFullPacket
+#define ovar_proxy_class ointersection_proxy_class
 #endif
 
 typedef struct _ovar{

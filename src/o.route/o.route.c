@@ -59,6 +59,8 @@ VERSION 0.1: Addresses to match can now have patterns
 #define oroute_new oselect_new
 #define oroute_doc oselect_doc
 #define oroute_set oselect_set
+#define oroute_class oselect_class
+#define oroute_proxy_class oselect_proxy_class
 #elif defined(ATOMIZE)
 #define oroute_anything oatomize_anything
 #define oroute_free oatomize_free
@@ -72,6 +74,8 @@ VERSION 0.1: Addresses to match can now have patterns
 #define oroute_new oatomize_new
 #define oroute_doc oatomize_doc
 #define oroute_set oatomize_set
+#define oroute_class oatomize_class
+#define oroute_proxy_class oatomize_proxy_class
 #endif
 
 
