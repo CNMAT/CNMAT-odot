@@ -82,6 +82,8 @@
 
 #include "o.h"
 
+t_symbol *ps_FullPacket;
+
 #ifdef OMAX_PD_VERSION
 #define OMAX_PD_MAXSTRINGSIZE (1<<16)
 #include "opd_textbox.h"
@@ -411,6 +413,54 @@ void oexprcodebox_bang(t_oexprcodebox *x)
     atom_setlong(a + 1, (long)buf);
     oexprcodebox_fullPacket(x, NULL, 2, a);
 #endif
+}
+
+void oexprcodebox_anything(t_oexprcodebox *x, t_symbol *msg, int argc, t_atom *argv)
+{
+	t_symbol *address = NULL;
+	if(msg){
+		if(*(msg->s_name) != '/'){
+			object_error((t_object *)x, "OSC address must begin with a '/'");
+			return;
+		}
+		address = msg;
+	}else{
+		if(atom_gettype(argv) == A_SYM){
+			if(*(atom_getsym(argv)->s_name) != '/'){
+				object_error((t_object *)x, "OSC address must begin with a '/'");
+				return;
+			}
+			address = atom_getsym(argv);
+			argv++;
+			argc--;
+		}
+	}
+	if(!address){
+		object_error((t_object *)x, "no OSC address found");
+		return;
+	}
+
+
+	t_osc_bndl_u *bndl_u = osc_bundle_u_alloc();
+	t_osc_msg_u *msg_u = NULL;
+	t_osc_err e = omax_util_maxAtomsToOSCMsg_u(&msg_u, address, argc, argv);
+	if(e){
+		object_error((t_object *)x, "%s", osc_error_string(e));
+		return;
+	}
+	osc_bundle_u_addMsg(bndl_u, msg_u);
+
+	t_osc_bndl_s *bs = osc_bundle_u_serialize(bndl_u);
+	if(bndl_u){
+		osc_bundle_u_free(bndl_u);
+	}
+	if(bs){
+        t_atom out[2];
+        atom_setlong(out, osc_bundle_s_getLen(bs));
+        atom_setlong(out + 1, osc_bundle_s_getPtr(bs));
+		oexprcodebox_fullPacket(x, ps_FullPacket, 2, out);
+		osc_bundle_s_deepFree(bs);
+	}
 }
 
 void oexprcodebox_doc_cat(t_oexprcodebox *x, t_symbol *msg, int argc, t_atom *argv)
@@ -907,6 +957,7 @@ int main(void)
     class_addmethod(c, (method)oexprcodebox_assist, "assist", A_CANT, 0);
     class_addmethod(c, (method)stdinletinfo, "inletinfo", A_CANT, 0);
     class_addmethod(c, (method)oexprcodebox_bang, "bang", 0);
+    class_addmethod(c, (method)oexprcodebox_anything, "anything", A_GIMME, 0);
 
     class_addmethod(c, (method)oexprcodebox_postExprAST, "post-ast", 0);
 
@@ -976,6 +1027,8 @@ int main(void)
     class_register(CLASS_BOX, c);
     oexprcodebox_class = c;
     osc_error_setHandler(omax_util_liboErrorHandler);
+
+    ps_FullPacket = gensym("FullPacket");
 
     ODOT_PRINT_VERSION;
     return 0;
