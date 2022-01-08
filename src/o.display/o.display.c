@@ -310,15 +310,15 @@ void odisplay_bundle2text(t_odisplay *x)
 #ifndef OMAX_PD_VERSION
 void odisplay_paint(t_odisplay *x, t_object *patcherview)
 {
-	int have_new_data = 0;
+	/* int have_new_data = 0; */
 	int draw_new_data_indicator = 0;
 	critical_enter(x->lock);
-	have_new_data = x->have_new_data;
+	/* have_new_data = x->have_new_data; */
 	draw_new_data_indicator = x->draw_new_data_indicator;
 	critical_exit(x->lock);
-	if(have_new_data){	
-        odisplay_bundle2text(x);
-	}
+	/* if(have_new_data){ */
+    /*     odisplay_bundle2text(x); */
+	/* } */
     
 	t_rect rect;
 	t_jgraphics *g = (t_jgraphics *)patcherview_get_jgraphics(patcherview);
@@ -360,11 +360,21 @@ void odisplay_refresh(t_odisplay *x)
     x->draw_new_data_indicator = 0;
     odisplay_drawElements((t_object *)x, 0);
 #else
+    critical_enter(x->lock);
+    if(x->have_new_data){
+        odisplay_bundle2text(x);
+	}
+    critical_exit(x->lock);
     jbox_redraw((t_jbox *)x);
 #endif
 }
 
 #ifndef OMAX_PD_VERSION
+void odisplay_clearNewDataIndicator(t_odisplay *x)
+{
+        qelem_set(x->qelem);
+}
+
 void odisplay_select(t_odisplay *x){
 	defer(x, (method)odisplay_doselect, 0, 0, 0);
 }
@@ -1033,7 +1043,7 @@ void *odisplay_new(t_symbol *msg, short argc, t_atom *argv){
 		//x->bndl_has_subs = 0;
 		critical_new(&(x->lock));
 		x->qelem = qelem_new((t_object *)x, (method)odisplay_refresh);
-		x->new_data_indicator_clock = clock_new((t_object *)x, (method)odisplay_refresh);
+		x->new_data_indicator_clock = clock_new((t_object *)x, (method)odisplay_clearNewDataIndicator);
 		x->have_new_data = 1;
 		x->draw_new_data_indicator = 0;
 		attr_dictionary_process(x, d);
