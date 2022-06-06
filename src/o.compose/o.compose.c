@@ -372,15 +372,15 @@ void ocompose_bundle2text(t_ocompose *x)
 #ifndef OMAX_PD_VERSION
 void ocompose_paint(t_ocompose *x, t_object *patcherview)
 {
-    int have_new_data = 0;
+    /* int have_new_data = 0; */
     int draw_new_data_indicator = 0;
     critical_enter(x->lock);
-        have_new_data = x->have_new_data;
-        draw_new_data_indicator = x->draw_new_data_indicator;
+    /* have_new_data = x->have_new_data; */
+    draw_new_data_indicator = x->draw_new_data_indicator;
     critical_exit(x->lock);
-    if(have_new_data){  
-        ocompose_bundle2text(x);
-    }
+    /* if(have_new_data){   */
+    /*     ocompose_bundle2text(x); */
+    /* } */
     
     t_rect rect;
     t_jgraphics *g = (t_jgraphics *)patcherview_get_jgraphics(patcherview);
@@ -448,11 +448,20 @@ void ocompose_refresh(t_ocompose *x)
     x->draw_new_data_indicator = 0;
     ocompose_drawElements((t_object *)x, 0);
 #else
+    critical_enter(x->lock);
+    if(x->have_new_data){
+        ocompose_bundle2text(x);
+    }
+    critical_exit(x->lock);
     jbox_redraw((t_jbox *)x);
 #endif
 }
 
 #ifndef OMAX_PD_VERSION
+void ocompose_clearNewDataIndicator(t_ocompose *x){
+    qelem_set(x->qelem);
+}
+
 void ocompose_select(t_ocompose *x){
     defer(x, (method)ocompose_doselect, 0, 0, 0);
 }
@@ -1209,7 +1218,7 @@ void *ocompose_new(t_symbol *msg, short argc, t_atom *argv){
         x->has_errors = 0;
         critical_new(&(x->lock));
         x->qelem = qelem_new((t_object *)x, (method)ocompose_refresh);
-        x->new_data_indicator_clock = clock_new((t_object *)x, (method)ocompose_refresh);
+        x->new_data_indicator_clock = clock_new((t_object *)x, (method)ocompose_clearNewDataIndicator);
         x->mouse_down = 0;
         x->have_new_data = 1;
         x->draw_new_data_indicator = 0;
