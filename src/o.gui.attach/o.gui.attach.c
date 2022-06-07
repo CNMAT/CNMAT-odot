@@ -88,6 +88,8 @@ typedef struct _o_gui_attach
     
     int             attach_err;
     
+    long            accumMode;
+    
     t_objmap        *head, *tail;
 } t_o_gui_attach;
 
@@ -233,7 +235,26 @@ void o_gui_attach_getValue(t_o_gui_attach *x, t_object *ob)
             omax_util_maxAtomToOSCAtom_u(&a, at+i);
             osc_message_u_appendAtom(msg, a);
         }
+        
+
+        if( x->accumMode == 0)
+        {
+            t_osc_bndl_u *cpyOut = osc_bundle_u_alloc();
+            osc_bundle_u_addMsgCopy(cpyOut, msg);
+            t_osc_bndl_s *s_bnd = osc_bundle_u_serialize(cpyOut);
+            omax_util_outletOSC(x->outlet, osc_bundle_s_getLen(s_bnd), osc_bundle_s_getPtr(s_bnd));
+         
+            if( cpyOut )
+                 osc_bundle_u_free(cpyOut);
+            
+            if( s_bnd )
+                osc_bundle_s_deepFree(s_bnd);
+            
+        }
+
+        
         osc_bundle_u_addMsgWithoutDups(x->bndl, msg);
+
     }
 }
 
@@ -623,7 +644,11 @@ void o_gui_attach_fullPacket(t_o_gui_attach *x, t_symbol *msg, int argc, t_atom 
                 omax_util_outletOSC(x->error_outlet, osc_bundle_s_getLen(s_err_bndl), osc_bundle_s_getPtr(s_err_bndl) );
             }
             
-            omax_util_outletOSC(x->outlet, osc_bundle_s_getLen(s_internal_bndl), osc_bundle_s_getPtr(s_internal_bndl) );
+            if( x->accumMode )
+                omax_util_outletOSC(x->outlet, osc_bundle_s_getLen(s_internal_bndl), osc_bundle_s_getPtr(s_internal_bndl) );
+            else
+                omax_util_outletOSC(x->outlet, osc_bundle_s_getLen(s_match_bndl), osc_bundle_s_getPtr(s_match_bndl) );
+            
             x->softlock = 0;
             
             if( s_internal_bndl )
@@ -793,7 +818,9 @@ t_max_err o_gui_attach_notify(t_o_gui_attach *x, t_symbol *s, t_symbol *msg, voi
         if( msg == gensym("modified") ||  msg == gensym("setvalueof"))
         {
             o_gui_attach_getValue(x, (t_object*)sender );
-            o_gui_attach_output_bundle(x);
+            
+            if( x->accumMode )
+                o_gui_attach_output_bundle(x);
 
         }
         else if (msg == gensym("attr_modified") )
@@ -963,6 +990,9 @@ void *o_gui_attach_new(t_symbol *msg, short argc, t_atom *argv)
 
 		critical_new(&(x->lock));
 
+        x->accumMode = 1;
+        attr_args_process(x, argc, argv);
+
         x->softlock = 0;
         
         x->qelem_output = qelem_new((t_object *)x, (method)o_gui_attach_do_iter);
@@ -1045,7 +1075,9 @@ int main(void)
 
     class_addmethod(c, (method)o_gui_attach_loadbang, "loadbang", 0);
 
-
+    CLASS_ATTR_LONG(c, "accum", 0, t_o_gui_attach, accumMode);
+    CLASS_ATTR_STYLE_LABEL(c, "accum", 0, "onoff", "output all values");
+    
 	class_register(CLASS_BOX, c);
 	o_gui_attach_class = c;
 
