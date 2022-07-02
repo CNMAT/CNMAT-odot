@@ -57,7 +57,7 @@ ALL_OBJECTS_MXE64 = $(EXTERNALS_MXE64) $(DEPRECATED_MXE64) $(DEV_MXE64)
 
 VPATH = $(ALL_OBJECTS_BASENAMES)
 
-C74SUPPORT = ../../max-sdk/source/c74support
+C74SUPPORT = ../../max-sdk-base/c74support
 MAX_INCLUDES = $(C74SUPPORT)/max-includes
 MSP_INCLUDES = $(C74SUPPORT)/msp-includes
 
