@@ -201,7 +201,7 @@ void obundle_anything(t_obundle *x, t_symbol *msg, int argc, t_atom *argv)
         {
             
 #ifdef OMAX_PD_VERSION
-            if(atom_gettype(argv+i) != A_FLOAT){ error("o.bundles only accepts byte arrays"); return; }
+            if(atom_gettype(argv+i) != A_FLOAT){ pd_error(x, "o.bundles only accepts byte arrays"); return; }
 #else
             if(atom_gettype(argv+i) != A_LONG){ error("o.bundles only accepts byte arrays"); return; }
 #endif
