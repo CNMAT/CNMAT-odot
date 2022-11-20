@@ -570,6 +570,15 @@
 		52F0C48017B581CC009FBD24 /* libo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5AD163763BD0016EC39 /* libo.a */; };
 		52F0C48117B581CC009FBD24 /* libomax.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5C6163763CF0016EC39 /* libomax.a */; };
 		52F0C48717B581FF009FBD24 /* o.O.c in Sources */ = {isa = PBXBuildFile; fileRef = 52F0C48617B581FF009FBD24 /* o.O.c */; };
+		5FE95BF328FC582400422BD1 /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52B1DFE92735C9F800B0F648 /* commonsyms.c */; };
+		5FE95BF628FC582400422BD1 /* MaxAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B1DF7D2735C9D900B0F648 /* MaxAPI.framework */; };
+		5FE95BF728FC582400422BD1 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */; };
+		5FE95BF828FC582400422BD1 /* MaxAudioAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B1DFB32735C9E900B0F648 /* MaxAudioAPI.framework */; };
+		5FE95BF928FC582400422BD1 /* libo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5AD163763BD0016EC39 /* libo.a */; };
+		5FE95BFA28FC582400422BD1 /* libomax.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5C6163763CF0016EC39 /* libomax.a */; };
+		5FE95C0228FC591900422BD1 /* o.luajit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5FE95C0028FC591900422BD1 /* o.luajit.cpp */; };
+		5FE95C0328FC591900422BD1 /* LuaWrapper.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 5FE95C0128FC591900422BD1 /* LuaWrapper.hpp */; };
+		5FE95C0628FD685600422BD1 /* LuaWrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5FE95C0528FD685600422BD1 /* LuaWrapper.cpp */; };
 		9B3930CD195A286D002EDAE5 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */; };
 		9B3930CE195A286D002EDAE5 /* libo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5AD163763BD0016EC39 /* libo.a */; };
 		9B3930CF195A286D002EDAE5 /* libomax.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5C6163763CF0016EC39 /* libomax.a */; };
@@ -1875,6 +1884,13 @@
 			remoteGlobalIDString = 529318E61FD1605700089B00;
 			remoteInfo = "o.snapshot~";
 		};
+		5FE95BEF28FC582400422BD1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5224C9FB1958BFDF00E37AED;
+			remoteInfo = "Current Version";
+		};
 		9B3930C6195A286D002EDAE5 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
@@ -2057,6 +2073,12 @@
 		52F0C48517B581CC009FBD24 /* o.O.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.O.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
 		52F0C48617B581FF009FBD24 /* o.O.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.O.c; path = o.O/o.O.c; sourceTree = "<group>"; };
 		52F33C4D2606556900A14DEB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5FE95BFE28FC582400422BD1 /* o.luajit.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.luajit.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
+		5FE95BFF28FC582500422BD1 /* o.gui.attach copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "o.gui.attach copy-Info.plist"; path = "/Users/rgottfri/Documents/dev/CNMAT-odot/src/o.gui.attach copy-Info.plist"; sourceTree = "<absolute>"; };
+		5FE95C0028FC591900422BD1 /* o.luajit.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = o.luajit.cpp; path = o.luajit/o.luajit.cpp; sourceTree = "<group>"; };
+		5FE95C0128FC591900422BD1 /* LuaWrapper.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = LuaWrapper.hpp; path = o.luajit/LuaWrapper.hpp; sourceTree = "<group>"; };
+		5FE95C0528FD685600422BD1 /* LuaWrapper.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = LuaWrapper.cpp; path = o.luajit/LuaWrapper.cpp; sourceTree = "<group>"; };
+		5FE95C0728FD9BE700422BD1 /* test-script.lua */ = {isa = PBXFileReference; lastKnownFileType = text; name = "test-script.lua"; path = "o.luajit/test-script.lua"; sourceTree = "<group>"; };
 		9B3930D3195A286D002EDAE5 /* o.compose.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.compose.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B3930E3195A2898002EDAE5 /* o.display.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.display.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B3930F4195A296C002EDAE5 /* o.compose.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.compose.c; path = o.compose/o.compose.c; sourceTree = "<group>"; };
@@ -2912,6 +2934,18 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		5FE95BF528FC582400422BD1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5FE95BF628FC582400422BD1 /* MaxAPI.framework in Frameworks */,
+				5FE95BF728FC582400422BD1 /* Carbon.framework in Frameworks */,
+				5FE95BF828FC582400422BD1 /* MaxAudioAPI.framework in Frameworks */,
+				5FE95BF928FC582400422BD1 /* libo.a in Frameworks */,
+				5FE95BFA28FC582400422BD1 /* libomax.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9B3930CC195A286D002EDAE5 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -3011,6 +3045,8 @@
 				9BB5E9DF1952585C00932005 /* o.listenumerate.c */,
 				21CA8A1B216B40A2009FDBCF /* o.lookup~.cpp */,
 				21CA8A1C216B40A2009FDBCF /* o.lookup~.hpp */,
+				5FE95C0028FC591900422BD1 /* o.luajit.cpp */,
+				5FE95C0428FD67F700422BD1 /* luajit-wrapper */,
 				525525331504D25500A10E5D /* o.mappatch.c */,
 				525525351504D25F00A10E5D /* o.message.c */,
 				52CA34411971B04E008C36B9 /* o.messageiterate.c */,
@@ -3045,6 +3081,7 @@
 				52F33C4C2606556800A14DEB /* Build All (Phony) */,
 				19C28FB4FE9D528D11CA2CBB /* Products */,
 				2194B26521124F9E00CACD2D /* Frameworks */,
+				5FE95BFF28FC582500422BD1 /* o.gui.attach copy-Info.plist */,
 			);
 			name = cv_jit;
 			sourceTree = "<group>";
@@ -3157,6 +3194,7 @@
 				11C890B320447A9D002BED1E /* o.daemon.mxo */,
 				21BC034E21674B95001D0CED /* o.bufferfill~.mxo */,
 				21CA8A19216B3FD8009FDBCF /* o.lookup~.mxo */,
+				5FE95BFE28FC582400422BD1 /* o.luajit.mxo */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -3189,6 +3227,16 @@
 				52F33C4D2606556900A14DEB /* Info.plist */,
 			);
 			path = "Build All (Phony)";
+			sourceTree = "<group>";
+		};
+		5FE95C0428FD67F700422BD1 /* luajit-wrapper */ = {
+			isa = PBXGroup;
+			children = (
+				5FE95C0128FC591900422BD1 /* LuaWrapper.hpp */,
+				5FE95C0528FD685600422BD1 /* LuaWrapper.cpp */,
+				5FE95C0728FD9BE700422BD1 /* test-script.lua */,
+			);
+			name = "luajit-wrapper";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -3796,6 +3844,14 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5FE95BF028FC582400422BD1 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5FE95C0328FC591900422BD1 /* LuaWrapper.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5450,6 +5506,25 @@
 			productReference = 52F0C48517B581CC009FBD24 /* o.O.mxo */;
 			productType = "com.apple.product-type.bundle";
 		};
+		5FE95BED28FC582400422BD1 /* o.luajit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5FE95BFB28FC582400422BD1 /* Build configuration list for PBXNativeTarget "o.luajit" */;
+			buildPhases = (
+				5FE95BF028FC582400422BD1 /* Headers */,
+				5FE95BF128FC582400422BD1 /* Resources */,
+				5FE95BF228FC582400422BD1 /* Sources */,
+				5FE95BF528FC582400422BD1 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5FE95BEE28FC582400422BD1 /* PBXTargetDependency */,
+			);
+			name = o.luajit;
+			productName = cv.jit.dilate;
+			productReference = 5FE95BFE28FC582400422BD1 /* o.luajit.mxo */;
+			productType = "com.apple.product-type.bundle";
+		};
 		9B3930C4195A286D002EDAE5 /* o.compose */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9B3930D0195A286D002EDAE5 /* Build configuration list for PBXNativeTarget "o.compose" */;
@@ -5668,6 +5743,7 @@
 				11C890A420447A9D002BED1E /* o.daemon */,
 				21BC033E21674B95001D0CED /* o.bufferfill~ */,
 				21CA8A09216B3FD8009FDBCF /* o.lookup~ */,
+				5FE95BED28FC582400422BD1 /* o.luajit */,
 			);
 		};
 /* End PBXProject section */
@@ -6003,6 +6079,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		52F0C47A17B581CC009FBD24 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5FE95BF128FC582400422BD1 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -6785,6 +6868,16 @@
 			files = (
 				52B1E0162735C9F800B0F648 /* commonsyms.c in Sources */,
 				52F0C48717B581FF009FBD24 /* o.O.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5FE95BF228FC582400422BD1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5FE95BF328FC582400422BD1 /* commonsyms.c in Sources */,
+				5FE95C0628FD685600422BD1 /* LuaWrapper.cpp in Sources */,
+				5FE95C0228FC591900422BD1 /* o.luajit.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7750,6 +7843,11 @@
 			isa = PBXTargetDependency;
 			target = 529318E61FD1605700089B00 /* o.snapshot~ */;
 			targetProxy = 52EF770B2023598F008E84FA /* PBXContainerItemProxy */;
+		};
+		5FE95BEE28FC582400422BD1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5224C9FB1958BFDF00E37AED /* Current Version */;
+			targetProxy = 5FE95BEF28FC582400422BD1 /* PBXContainerItemProxy */;
 		};
 		9B3930C5195A286D002EDAE5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -17912,6 +18010,127 @@
 			};
 			name = Release;
 		};
+		5FE95BFC28FC582400422BD1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(inherited)";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(inherited)";
+				COPY_PHASE_STRIP = NO;
+				DSTROOT = "$(inherited)";
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				GCC_ALTIVEC_EXTENSIONS = YES;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INPUT_FILETYPE = automatic;
+				GCC_MODEL_TUNING = G4;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(inherited)";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../luajit/src\"",
+				);
+				INFOPLIST_FILE = "$(inherited)";
+				INSTALL_PATH = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
+					"\"$(SRCROOT)/../../luajit/src",
+				);
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../../libo\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../../libomax\"";
+				MACOSX_DEPLOYMENT_TARGET = "$(inherited)";
+				OBJROOT = "$(inherited)";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-lluajit_u",
+				);
+				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libomax.a\"";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SKIP_INSTALL = "$(inherited)";
+				SYMROOT = "$(inherited)";
+				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
+				WARNING_CFLAGS = "$(inherited)";
+				WRAPPER_EXTENSION = "$(inherited)";
+				ZERO_LINK = YES;
+			};
+			name = Debug;
+		};
+		5FE95BFD28FC582400422BD1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 52CA34301971AB2E008C36B9 /* Max-unstable.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(inherited)";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(inherited)";
+				COPY_PHASE_STRIP = YES;
+				DEPLOYMENT_LOCATION = "$(inherited)";
+				DEPLOYMENT_POSTPROCESSING = "$(inherited)";
+				DSTROOT = "$(inherited)";
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				GCC_ALTIVEC_EXTENSIONS = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INPUT_FILETYPE = automatic;
+				GCC_MODEL_TUNING = G4;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(inherited)";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../luajit/src\"",
+				);
+				INFOPLIST_FILE = "$(inherited)";
+				INSTALL_PATH = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
+					"\"$(SRCROOT)/../../luajit/src",
+				);
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../../libo\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../../libomax\"";
+				MACOSX_DEPLOYMENT_TARGET = "$(inherited)";
+				OBJROOT = "$(inherited)";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_CFLAGS = (
+					"-g",
+					"-DNO_TRANSLATION_SUPPORT",
+					"-DODOT_UNSTABLE",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-lluajit_u",
+				);
+				PRELINK_LIBS = "\"$(SRCROOT)/../../libo/libo.a\" \"$(SRCROOT)/../../libomax/libomax.a\"";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SHARED_PRECOMPS_DIR = "$(inherited)";
+				SKIP_INSTALL = "$(inherited)";
+				SYMROOT = "$(inherited)";
+				VERSION_INFO_BUILDER = "$(TARGET_NAME)";
+				WARNING_CFLAGS = "$(inherited)";
+				WRAPPER_EXTENSION = "$(inherited)";
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
 		9B3930D1195A286D002EDAE5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -19321,6 +19540,15 @@
 			buildConfigurations = (
 				52F0C48317B581CC009FBD24 /* Debug */,
 				52F0C48417B581CC009FBD24 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5FE95BFB28FC582400422BD1 /* Build configuration list for PBXNativeTarget "o.luajit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5FE95BFC28FC582400422BD1 /* Debug */,
+				5FE95BFD28FC582400422BD1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
