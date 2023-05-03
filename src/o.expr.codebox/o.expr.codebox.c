@@ -41,8 +41,8 @@
 #endif
 #define OMAX_DOC_SHORT_DESC "Evaluate a C-like expression containing OSC addresses"
 #define OMAX_DOC_LONG_DESC "When it reveives a packet, o.expr substitutes any OSC addresses contained in the expression for the values to which they are bound in the incoming packet.  The expression is then evaluated and the resulting bundle, containing any side effects of the expression, is output."
-#define OMAX_DOC_INLETS_DESC (char *[]){"OSC packet containing addresses that the expression will be applied to"}
-#define OMAX_DOC_OUTLETS_DESC (char *[]){"The OSC packet containing the results of the expression", "inactive"}
+#define OMAX_DOC_INLETS_DESC (char *[]){"OSC packet containing addresses that the expression will be applied to", "Delegation return inlet (OSC bundle)"}
+#define OMAX_DOC_OUTLETS_DESC (char *[]){"The OSC packet containing the results of the expression", "Error outlet (OSC)", "Delegation outlet (OSC)"}
 #define OMAX_DOC_SEEALSO (char *[]){"o.if", "o.cond", "o.when", "o.unless", "expr", "jit.expr"}
 
 #define NAME OMAX_DOC_NAME
@@ -128,8 +128,13 @@ typedef struct _oexprcodebox
     t_jrgba frame_color, background_color, text_color, error_color, mousedown_color;
     int has_errors;
     bool mousedown;
-    void *outlets[2];
+    void *outlets[3];
+	long inlet;
+	void *proxy;
     t_osc_expr *expr;
+    int post_errors;
+	long return_len;
+	char *return_ptr;
 } t_oexprcodebox;
 
 void *oexprcodebox_class;
@@ -137,10 +142,35 @@ void *oexprcodebox_class;
 
 void oexprcodebox_bang(t_oexprcodebox *x);
 
+#ifndef OMAX_PD_VERSION
+void oexprcodebox_delegationfn(void *context, long len, char *ptr, long *return_len, char **return_ptr)
+{
+	printf("%s:%d\n", __func__, __LINE__);
+	t_oexprcodebox *x = (t_oexprcodebox *)context;
+	omax_util_outletOSC(x->outlets[2], len, ptr);
+	if(x->return_len && x->return_ptr){
+		*return_len = x->return_len;
+		*return_ptr = x->return_ptr;
+		x->return_len = 0;
+		x->return_ptr = NULL;
+	}else{
+		*return_len = 0;
+		*return_ptr = NULL;
+	}
+}
+#endif
 
 void oexprcodebox_fullPacket(t_oexprcodebox *x, t_symbol *msg, int argc, t_atom *argv)
 {
     OMAX_UTIL_GET_LEN_AND_PTR
+	    #ifndef OMAX_PD_VERSION
+	    if(proxy_getinlet((t_object *)x) == 1){
+		    x->return_len = len;
+		    x->return_ptr = osc_mem_resize(x->return_ptr, len);
+		    memcpy(x->return_ptr, ptr, len);
+		    return;
+	    }
+    #endif
     if(len <= 0){
         return;
     }
@@ -165,7 +195,11 @@ void oexprcodebox_fullPacket(t_oexprcodebox *x, t_symbol *msg, int argc, t_atom 
 	}else{
 		while(f){
 			t_osc_atom_ar_u *av = NULL;
+#ifdef OMAX_PD_VERSION
 			ret = osc_expr_eval(f, &copylen, &copy, &av, x);
+#else
+			ret = osc_expr_evalWithDelegation(f, &copylen, &copy, &av, x, oexprcodebox_delegationfn);
+#endif
 			if(av){
 				osc_atom_array_u_free(av);
 			}
@@ -880,6 +914,23 @@ int setup_o0x2eexpr0x2ecodebox(void)
 }
 
 #else
+
+int oexprcodebox_error_handler(void *context, t_osc_err errorcode, const char * const errorstring)
+{
+	t_oexprcodebox *x = (t_oexprcodebox *)context;
+	//object_post((t_object *)context, "%d %s", errorcode, errorstring);
+	t_osc_bundle_u *b = osc_bundle_u_alloc();
+	t_osc_message_u *m = osc_message_u_allocWithString("/error/string", errorstring);
+	osc_bundle_u_addMsg(b, m);
+	m = osc_message_u_allocWithString("/error/type", osc_error_type(errorcode));
+	osc_bundle_u_addMsg(b, m);
+	omax_util_outletOSC_u(x->outlets[1], b);
+	if(x->post_errors){
+		omax_util_liboErrorHandler(context, errorcode, errorstring);
+	}
+	osc_bundle_u_free(b);
+}
+
 void *oexprcodebox_new(t_symbol *msg, short argc, t_atom *argv)
 {
 	t_oexprcodebox *x;
@@ -913,8 +964,13 @@ void *oexprcodebox_new(t_symbol *msg, short argc, t_atom *argv)
 
 		critical_new(&(x->lock));
 		//t_osc_expr *f = NULL;
+		x->outlets[2] = outlet_new((t_object *)x, "FullPacket");
 		x->outlets[1] = outlet_new((t_object *)x, "FullPacket");
 		x->outlets[0] = outlet_new((t_object *)x, "FullPacket");
+		x->proxy = proxy_new((t_object *)x, 1, &(x->inlet));
+		//x->proxy[0] = proxy_new((t_object *)x, 0, &(x->inlet));
+		x->return_len = 0;
+		x->return_ptr = NULL;
         //x->frame_color.red = 0.29; //0.216;
         //x->frame_color.green = 0.31; //0.435;
         //x->frame_color.blue = 0.302; //0.7137;
@@ -933,6 +989,7 @@ void *oexprcodebox_new(t_symbol *msg, short argc, t_atom *argv)
 			textfield_set_textcolor(textfield, &(x->text_color));
 		}
         x->mousedown = false;
+	x->post_errors = 1;
         
 		jbox_ready((t_jbox *)x);
 		oexprcodebox_gettext(x);
@@ -1014,6 +1071,9 @@ int main(void)
     CLASS_ATTR_DEFAULT_SAVE_PAINT(c, "mousedown_color", 0, "0.81 0.9 0.91 1.");
     CLASS_ATTR_STYLE_LABEL(c, "mousedown_color", 0, "rgba", "Mousedown Color");
     CLASS_ATTR_CATEGORY_KLUDGE(c, "mousedown_color", 0, "Color");
+
+    CLASS_ATTR_LONG(c, "post_errors", 0, t_oexprcodebox, post_errors);
+    CLASS_ATTR_STYLE_LABEL(c, "post_errors", 0, "onoff", "Post Errors");
     
 #ifdef WIN_VERSION
     CLASS_ATTR_DEFAULT(c, "fontname", 0, "\"Consolas\"");
@@ -1026,7 +1086,8 @@ int main(void)
 
     class_register(CLASS_BOX, c);
     oexprcodebox_class = c;
-    osc_error_setHandler(omax_util_liboErrorHandler);
+    //osc_error_setHandler(omax_util_liboErrorHandler);
+    osc_error_setHandler(oexprcodebox_error_handler);
 
     ps_FullPacket = gensym("FullPacket");
 
