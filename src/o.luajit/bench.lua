@@ -6,7 +6,7 @@ function bench(bndl)
 		val = {}
 	}
 	
-	local src = bndl["/idx_hz_amp"]
+	local src = bndl["/matrix"]
 	local pairLen = #src / 3
 
 	local count = 1

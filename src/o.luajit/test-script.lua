@@ -7,6 +7,7 @@ lib = require("oluajit_module")
 --]] 
 function fn1( bndl )
     bndl["/test"] = {1,2,3}
+    bndl["/str"] = lib.obj2string(bndl)
     return bndl
 end
 
@@ -20,6 +21,7 @@ function fn2( bndl )
     local a = {}
     for i = 1, 1000 do a[i] = i end
     local t = {}
+    t["a"] = a
     t["b"] = a
     t["c"] = a
     t["d"] = a

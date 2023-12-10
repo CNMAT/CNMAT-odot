@@ -112,7 +112,7 @@ module.obj2string = function(o)
        local s = '{ '
        for k,v in pairs(o) do
           if type(k) ~= 'number' then k = '"'..k..'"' end
-          s = s .. '['..k..'] = ' .. obj2string(v) .. ','
+          s = s .. '['..k..'] = ' .. module.obj2string(v) .. ','
        end
        return s .. '} '
     else

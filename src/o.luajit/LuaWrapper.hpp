@@ -43,6 +43,8 @@ public:
     void evalString(const char* str);
 
     void bndl2table(t_osc_bndl_s *bndl);
+    void valToMsg(int index, t_osc_msg_u* msg);
+    std::string keyToAddr(int index);
     
     // assumes table is top of stack >>
     t_osc_bundle_u *table2bundle(bool poptable = true);
