@@ -13,7 +13,6 @@
 #include "osc_message_iterator_s.h"
 #include "osc_mem.h"
 
-
 class LuaWrapper
 {
 public:
@@ -73,10 +72,13 @@ public:
 
     lua_State* ptr(){ return L; }
     
+    void printError(const char *msg = nullptr);
+   
+
 private:
 
     lua_State *L = NULL;
-    
+    void * parentRef = nullptr;
     std::function<void(std::string&)> error_cb = [](std::string& errStr){ printf("%s\n", errStr.c_str() ); };
-
+    
 };

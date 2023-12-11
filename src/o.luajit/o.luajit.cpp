@@ -418,8 +418,7 @@ void *oluajit_new(t_symbol* s, short argc, t_atom* argv)
         
         x->lua = make_unique<LuaWrapper>();
         
-        x->lua->setErrorCallback([&](std::string& errStr){
-            //printf("%s\n", errStr.c_str() );
+        x->lua->setErrorCallback([x](std::string& errStr){
             object_error((t_object *)x, "%s\n", errStr.c_str() );
         });
         

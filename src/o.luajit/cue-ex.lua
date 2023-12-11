@@ -43,6 +43,10 @@ function list_iter (t)
     end
 end
 
+function getPhase(a,b,t)
+    return (t-a) / (b-a)
+end
+
 function seqLookup(seqTimes, time)
     if seqTimes[1] > time then
         return -1
@@ -81,7 +85,16 @@ cues[1] = function( bndl, isNew, elapsed )
     }
     seq[1.2] = 2
     seq[1.3] = 3
-
+    seq[0.0] = {
+        {
+            hz=1000,
+            etc="stuff"
+        },
+        {
+            hz=1030,
+            etc="other stuff"
+        }
+    }
 
     local sorted = getSortedKeys(seq)
     local idx = seqLookup(sorted, bndl["/startTime"])

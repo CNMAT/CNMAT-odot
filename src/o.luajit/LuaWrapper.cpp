@@ -2,6 +2,20 @@
 
 using namespace std;
 
+// stack is already unwound when pcall is finished, so to get full error report
+// we will have to push a c callback function to the stack and point to it with pcall
+void LuaWrapper::printError(const char *msg)
+{
+    std::string err = "lua error: ";
+    if(msg)
+        err = string(msg);
+        
+    err += lua_tostring(L, -1); // error string (note, only call this fuction if there is an error!)
+    error_cb(err);
+
+    lua_remove(L, -1); // Remove error/"msg" from stack.
+}
+
 int LuaWrapper::loadFile(string& filename)
 {
     int iErr = luaL_loadfile(L, filename.c_str() );
@@ -14,36 +28,44 @@ int LuaWrapper::loadFile(string& filename)
         iErr = lua_pcall (L, 0, LUA_MULTRET, 0);
         if( iErr ){
             std::string err = "error evaluating file  " + filename + "\n";
-            
-            err += "lua error: ";
-            err += lua_tostring(L, -1);
-            error_cb(err);
-            lua_pop(L, 1);
+            printError(err.c_str());
         }
     }
     else
     {
         std::string err = "error loading file " + filename;
-        error_cb(err);
+        printError(err.c_str());
     }
 
     return iErr;
 }
 
+// actually, I think all i need to do is add this error handler to put more info on the stack
+// and then I should be able to get it after pcall returns (but can't get it otherwise)
+
+static int pcall_error_handler(lua_State *L)
+{
+    const char * msg = lua_tostring(L, -1);
+    luaL_traceback(L, L, msg, 2);
+    return 1;
+};
 
 void LuaWrapper::callFunction(const char* fnName, int nargs, int nreturns )
 {
-    // Push the function name onto the stack
-    // std::cout << "callFunction " << fnName << std::endl;
+    // usage: args should be already on top of stack
+    
+    // Push the function name onto the stack before the args
     lua_pushstring (L, fnName );
     lua_gettable (L, LUA_GLOBALSINDEX);
     lua_insert(L, -1 - nargs);
-    if( lua_pcall (L, nargs, nreturns, 0) != 0 )
+
+    lua_pushcfunction( L, pcall_error_handler );
+    // move it before function and arguments
+    lua_insert( L, -2 - nargs );
+
+    if( lua_pcall (L, nargs, nreturns, -2 - nargs) != 0 )
     {
-        std::string err = "lua error: ";
-        err += lua_tostring(L, -1);
-        error_cb(err);
-        lua_pop(L, 1);
+        printError();
     }
 }
 
@@ -51,10 +73,7 @@ void LuaWrapper::evalString(const char* str)
 {
     if( luaL_dostring(L, str) != 0 )
     {
-        std::string err = "lua error: ";
-        err += lua_tostring(L, -1);
-        error_cb(err);
-        lua_pop(L, 1);
+        printError("lua string evaluation error: ");
     }
 }
 
