@@ -48,16 +48,17 @@ function Seq:new(o)
 end
 
 -- t table to sort
--- f optional comparator function for sort
-local function getSortedKeys (t, f)
+local function getSortedTimes(t)
     local a = {}
-    for n in pairs(t) do table.insert(a, n) end
-    table.sort(a, f)
+    for n in pairs(t) do
+        if type(n) == 'number' then table.insert(a, n) end
+    end
+    table.sort(a)
     return a
 end
 
 function Seq:init()
-    self.sortedTimes = getSortedKeys(self.seq)
+    self.sortedTimes = getSortedTimes(self.seq)
 end
 
 
@@ -86,11 +87,44 @@ local function getPhase(a,b,t)
     return (t-a) / (b-a)
 end
 
+local function getEventPhase(_idx, t)
+    local seq_time = sorted[_idx]
+    local event = seq[seq_time]
+    -- if event is table (actually should always be a table)
+    -- then check for dur keyword and calc phase
+    -- if not then calc phase to next point
+
+    -- for dur method would need to iterate whole table from 0 to time query point to accumulate events
+    -- hit test starting from zero
+
+    if type(event) == 'table' then
+        for i,v in ipairs(event) do
+            if type(v) == 'table' then
+                --subbundle
+                if v.dur ~= nil then
+                    v.phase = getPhase(seq_time, seq_time + v.dur, t)
+                elseif sorted[i+1] ~= nil then
+                    v.phase = getPhase(seq_time, sorted[i+1], t)
+                end
+                v.idx = i
+            end
+        end
+        event.table = true
+    elseif sorted[_idx+1] ~= nil then
+        event = {
+            val=event,
+            phase = getPhase(seq_time, sorted[_idx+1], t)
+        }
+    end
+    return event
+end
+
+
 function Seq:lookup(t)
     local idx = seqLookup(self.sortedTimes, t)
     if idx == -1 then return nil end
 
-    if
+    local times = self.times
 
 
     return {
@@ -100,5 +134,5 @@ function Seq:lookup(t)
 
 end
 
-
+-- make step seq vs dur seq options
 

@@ -25,3 +25,4 @@ build-gcc
 xcuserdata
 odot_current_version.h
 package-info.json
+.idea

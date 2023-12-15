@@ -20,6 +20,15 @@ function getSortedKeys (t, f)
     return a
 end
 
+function getSortedKeys2 (t, f)
+    local a = {}
+    for n in pairs(t) do
+        if type(n) == 'number' then table.insert(a, n) end
+    end
+    table.sort(a, f)
+    return a
+end
+
 function pairsByKeys (t, f)
     local a = getSortedKeys(t,f)
     local i = 0      -- iterator variable
@@ -75,7 +84,7 @@ cues[1] = function( bndl, isNew, elapsed )
     if isNew then
         bndl["/new"] = 1
     end
-    
+
     bndl["/elapsed"] = elapsed
 
     local seq = {}
@@ -88,19 +97,63 @@ cues[1] = function( bndl, isNew, elapsed )
     seq[0.0] = {
         {
             hz=1000,
-            etc="stuff"
+            etc="stuff",
+            dur=1
         },
         {
             hz=1030,
+            dur=2,
             etc="other stuff"
         }
     }
 
+    seq[2] = {
+        test=1,
+        foo=2
+    }
+
     local sorted = getSortedKeys(seq)
+
     local idx = seqLookup(sorted, bndl["/startTime"])
 
-    bndl["/seq"] = seq
-    bndl["/idx"] = idx
+    function getEventPhase(_idx, t)
+        local seq_time = sorted[_idx]
+        local event = seq[seq_time]
+        -- if event is table (actually should always be a table)
+        -- then check for dur keyword and calc phase
+        -- if not then calc phase to next point
+
+        if type(event) == 'table' then
+            for i,v in ipairs(event) do
+                if type(v) == 'table' then
+                    --subbundle
+                    if v.dur ~= nil then
+                        v.phase = getPhase(seq_time, seq_time + v.dur, t)
+                    elseif sorted[i+1] ~= nil then
+                        v.phase = getPhase(seq_time, sorted[i+1], t)
+                    end
+                    v.idx = i
+                end
+            end
+            event.table = true
+        elseif sorted[_idx+1] ~= nil then
+            event = {
+				val=event,
+				phase = getPhase(seq_time, sorted[_idx+1], t)
+			}
+        end
+        return event
+    end
+
+    bndl["/seq"] = sorted
+    bndl.event = getEventPhase(idx, bndl["/startTime"] )--seq[sorted[idx]]
+
+
+    if type(bndl.event) == 'table' then
+        for i,v in ipairs(bndl.event) do
+            v.id = i
+        end
+    end
     return bndl
 end
 
