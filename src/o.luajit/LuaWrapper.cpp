@@ -120,6 +120,93 @@ void LuaWrapper::tableAddVector(const char* key, std::vector<T> vec)
     lua_rawset(L, -3); // points to array, and pops key and value
 
 }
+void LuaWrapper::bndl2table(long len, char* ptr)
+{
+    
+    lua_newtable(L); // could count messages here, but just saving time for now
+    
+    // iter bundle messages
+    auto it = osc_bndl_it_s_get( len, ptr );
+    while(osc_bndl_it_s_hasNext(it))
+    {
+        t_osc_msg_s *m = osc_bndl_it_s_next(it);
+        
+        lua_pushstring(L, osc_message_s_getAddress(m) ); // set osc address
+
+        int nargs = osc_message_s_getArgCount(m);
+        
+        if( nargs > 1 )
+            lua_createtable(L, nargs, 0); // array of values
+
+        int count = 1;
+
+        // iter message atoms
+        t_osc_msg_it_s *m_it = osc_msg_it_s_get(m);
+        while(osc_msg_it_s_hasNext(m_it))
+        {
+            if( nargs > 1 )
+                lua_pushnumber(L, count++); // key starts at 1
+
+            t_osc_atom_s *at = osc_msg_it_s_next(m_it);
+            
+            switch (osc_atom_s_getTypetag( at ))
+            {
+                case 'd':
+                case 'f':
+                case 'c':
+                case 'u':
+                case 'i': // signed 32-bit int
+                case 'h': // signed 64-bit int
+                case 'C':
+                case 'U':
+                case 'I': // unsigned 32-bit int
+                case 'H': // unsigned 64-bit int
+                    lua_pushnumber(L, osc_atom_s_getDouble(at) );
+                    break;
+                case 's': // string
+                    {
+                        size_t strLen = osc_atom_s_getStringLen(at);
+                        char *strPtr = NULL;
+                        osc_atom_s_getString(at, strLen, &strPtr);
+                        lua_pushstring(L, strPtr );
+                        osc_mem_free(strPtr);
+                        break;
+                    }
+                case 'T': // true
+                    lua_pushboolean(L, 1);
+                    break;
+                case 'F': // false
+                    lua_pushboolean(L, 0);
+                    break;
+                case 'N': // NULL
+                    lua_pushnil(L);
+                    break;
+                case OSC_BUNDLE_TYPETAG:
+                {
+                    t_osc_bndl_s *sub = osc_atom_s_getBndl(at);
+                    bndl2table( sub );
+                    osc_bundle_s_free(sub);
+
+                }
+                    break;
+                case OSC_TIMETAG_TYPETAG:
+                    lua_pushnumber(L, osc_timetag_timetagToFloat( osc_atom_s_getTimetag(at) ) );
+                    break;
+                default:
+                    lua_pushnil(L);
+                    break;
+            }
+            if( nargs > 1 )
+                lua_rawset(L, -3); // points to array, and pops key and value
+        }
+        
+        lua_rawset(L, -3); // points to osc address table
+        osc_msg_it_s_destroy(m_it);
+    }
+    
+    osc_bndl_it_s_destroy(it);
+}
+
 
 void LuaWrapper::bndl2table(t_osc_bndl_s *bndl)
 {

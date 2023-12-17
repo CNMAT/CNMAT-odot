@@ -42,6 +42,8 @@ public:
     void evalString(const char* str);
 
     void bndl2table(t_osc_bndl_s *bndl);
+    void bndl2table(long len, char *ptr);
+
     void valToMsg(int index, t_osc_msg_u* msg);
     std::string keyToAddr(int index);
     

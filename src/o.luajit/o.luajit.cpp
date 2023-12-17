@@ -8,6 +8,8 @@
 #include "omax_util.h"
 #include "omax_doc.h"
 #include "omax_dict.h"
+#include "ext_dictionary.h"
+#include "ext_dictobj.h"
 
 #include "odot_version.h"
 
@@ -174,6 +176,156 @@ void oluajit_FullPacket(t_oluajit *x, t_symbol *msg, int argc, t_atom *argv)
         
 }
 
+int oluajit_FullPacket_to_stack(t_oluajit *x, int argc, t_atom *argv)
+{
+    // OMAX_UTIL_GET_LEN_AND_PTR
+    if(argc != 2)
+    {
+        object_error((t_object *)x, "expected 2 arguments but got %d", argc);
+        return 0;
+    }
+    
+    if(atom_gettype(argv) != A_LONG)
+    {
+        object_error((t_object *)x, "argument 1 should be an int");
+        return 0;
+    }
+    
+    if(atom_gettype(argv + 1) != A_LONG)
+    {
+        object_error((t_object *)x, "argument 2 should be an int");
+        return 0;
+    }
+    
+    long len = atom_getlong(argv);
+    char *ptr = (char *)atom_getlong(argv + 1);
+    
+    if(OSC_MEM_VALIDATE(ptr))
+    {
+        object_error((t_object *)x, "received something that is neither an OSC bundle nor a message");
+        return 0;
+    }
+    
+    // ======================= wrap_naked_osc
+    // from wrap_naked... alloca was a problem in C++
+    if(ptr && len >= 8){
+        if(strncmp("#bundle\0", (char *)(ptr), 8)){
+            char *oldptr = (char *)ptr;
+            long oldlen = len;
+            len += 4 + OSC_HEADER_SIZE;
+            ptr = (char *)alloca(len);
+            char alloc = 0;
+            osc_bundle_s_wrapMessage(oldlen, oldptr, &len, (char **)(&ptr), &alloc);
+        }
+    }
+    
+    if(len == OSC_HEADER_SIZE){
+        return 0;
+    }
+    // ==========================
+ 
+    x->lua->bndl2table(len, ptr);
+
+    return 1;
+}
+
+int oluajit_dictionary_to_stack(t_oluajit *x, t_atom *argv)
+{
+
+    if(atom_gettype(argv) != A_SYM)
+    {
+        object_error((t_object *)x, "dictionary argument should be an symbol");
+        return 0;
+    }
+    
+    t_dictionary *dict = dictobj_findregistered_retain(atom_getsym(argv));
+
+    if( !dict )
+        return 0;
+    
+    // unfinished --- see, omax_dict_dictionaryToOSC
+    // to do, parse and add dictionary to lua stack as argument
+    
+    dictobj_release(dict);
+
+    return 0; //<< no args added to stack
+}
+
+void oluajit_anything(t_oluajit *x, t_symbol *s, int argc, t_atom *argv)
+{
+
+    char * func_name = s->s_name;
+
+    int i;
+    t_atom *ap;
+    post("calling function %s", func_name);
+    
+    int argcount = 0;
+    
+    critical_enter(x->lock);
+    
+    for (i = 0, ap = argv; i < argc; i++, ap++) 
+    {
+        switch (atom_gettype(ap)) {
+            case A_LONG:
+                post("%ld: %ld",i+1,atom_getlong(ap));
+                break;
+            case A_FLOAT:
+                post("%ld: %.2f",i+1,atom_getfloat(ap));
+                break;
+            case A_SYM:
+            {
+                const char * str = atom_getsym(ap)->s_name;
+                
+                if( !strcmp(str, "FullPacket") && (argc-i) > 1 )
+                {
+                    if( oluajit_FullPacket_to_stack(x, 2, ap+1) )
+                    {
+                        argcount++;
+                        i += 2;
+                        ap +=2;
+                    }
+                }
+                else if( !strcmp(str, "dictionary") )
+                {
+                    post("dictionary args not supported yet");
+                }
+                else if( !strcmp(str, "jit_matrix") )
+                {
+                    post("jit_matrix args not supported yet");
+                }
+                else
+                {
+                    // eventually probably add to stack here...
+                    post("%ld: %s",i+1, str);
+                }
+                break;
+            }
+            default:
+                post("%ld: unknown atom type (%ld)", i+1, atom_gettype(ap));
+                break;
+        }
+    }
+    
+    
+    // call Lua function here
+    x->lua->callFunction(func_name, argcount, 1);
+    t_osc_bndl_u *lua_out_u = x->lua->table2bundle();
+
+    critical_exit(x->lock);
+
+    // retrieve result
+    t_osc_bndl_s *lua_out_s = osc_bundle_u_serialize(lua_out_u);
+ 
+    omax_util_outletOSC(x->outlet, osc_bundle_s_getLen(lua_out_s), osc_bundle_s_getPtr(lua_out_s));
+ 
+    osc_bundle_s_deepFree(lua_out_s);
+    osc_bundle_u_free(lua_out_u);
+    
+    post("there are %ld arguments", argcount);
+}
+
+// >> file read system
 void oluajit_get_file_text_for_GUI(t_oluajit *x, char *filename, t_filepath path)
 {
     t_filehandle fh;
@@ -377,6 +529,7 @@ long oluajit_edsave(t_oluajit *x, char **text, long size)
     //post("saved");
     return 0;
 }
+// << file read system
 
 
 void oluajit_doc(t_oluajit *x)
@@ -468,7 +621,9 @@ int C74_EXPORT main(void)
     
     class_addmethod(c, (method)oluajit_assist,      "assist",       A_CANT,     0);
     class_addmethod(c, (method)oluajit_FullPacket,  "FullPacket",    A_GIMME,    0);
-
+    
+    class_addmethod(c, (method)oluajit_anything,  "anything",    A_GIMME,    0);
+    
     class_addmethod(c, (method)oluajit_read,          "read",       A_GIMME, 0);
     class_addmethod(c, (method)oluajit_reread,         "reread",       A_CANT, 0);
 
