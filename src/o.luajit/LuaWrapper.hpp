@@ -41,18 +41,20 @@ public:
         return loadFile(filestring);
     }
     
+    void evalString(const char* str);
+
     void callFunction(const char* fnName, int nargs = 0, int nreturns = 0 );
     inline void callFunction(std::string& fnName, int nargs = 0, int nreturns = 0 ){
         callFunction(fnName.c_str(), nargs, nreturns);
     }
     
-    void evalString(const char* str);
-
-    inline void garbageCollection(){
-        lua_gc(L, LUA_GCCOLLECT, 0);
-    }
-    void bndl2table(t_osc_bndl_s *bndl);
+    inline void clearStack(){ lua_settop(L, 0); }
+    inline void garbageCollection(){ lua_gc(L, LUA_GCCOLLECT, 0); }
+    
     void bndl2table(long len, char *ptr);
+    inline void bndl2table(t_osc_bndl_s *bndl){
+        bndl2table( osc_bundle_s_getLen(bndl), osc_bundle_s_getPtr(bndl) );
+    }
 
     void valToMsg(int index, t_osc_msg_u* msg);
     std::string keyToAddr(int index);
@@ -60,7 +62,6 @@ public:
     // assumes table is top of stack >>
     t_osc_bundle_u *table2bundle(bool poptable = true);
     
-   
     template <typename T>
     void tableAddVector(const char* key, std::vector<T> vec);
     

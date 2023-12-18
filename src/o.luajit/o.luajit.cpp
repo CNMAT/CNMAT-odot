@@ -307,21 +307,15 @@ void oluajit_anything(t_oluajit *x, t_symbol *s, int argc, t_atom *argv)
                 break;
         }
     }
-    
-    // post("there are %ld arguments", argcount);
-    
-    
+        
     // call Lua function here
-    x->lua->callFunction(func_name, argcount, 1);
-    t_osc_bndl_u *lua_out_u = x->lua->table2bundle();
-
-    // check memory usage here
-    x->lua->garbageCollection();
-    //x->lua->garbageCollection();
+    x->lua->callFunction(func_name, argcount, 1); // to do someday: make option to set number of return values?
+    t_osc_bndl_u *lua_out_u = x->lua->table2bundle(); // retrieve result
+    x->lua->clearStack(); // important: clear stack after getting return value (otherwise leads to stack overflow)
 
     critical_exit(x->lock);
 
-    // retrieve result
+    // send return value out
     t_osc_bndl_s *lua_out_s = osc_bundle_u_serialize(lua_out_u);
     omax_util_outletOSC(x->outlet, osc_bundle_s_getLen(lua_out_s), osc_bundle_s_getPtr(lua_out_s));
     osc_bundle_s_deepFree(lua_out_s);
