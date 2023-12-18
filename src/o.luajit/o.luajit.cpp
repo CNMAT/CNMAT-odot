@@ -19,7 +19,7 @@
 #define DESCRIPTION ""
 #define AUTHORS "Rama Gottfried"
 #define COPYRIGHT_YEARS "2022"
-#define OMAX_DOC_INLETS_DESC (char *[]){"OSC packet containing /call address of function, and optional /args message for arguments"}
+#define OMAX_DOC_INLETS_DESC (char *[]){"(message) name of function to call, followed by optinoal OSC bundle argument"}
 #define OMAX_DOC_OUTLETS_DESC (char *[]){"The OSC packet containing the results of the expression"}
 
 using namespace std;
@@ -31,7 +31,7 @@ typedef struct _oluajit
     t_object                ob;
 
     unique_ptr<LuaWrapper>  lua;
-    
+    string                  packagePath;
     string                  filename;
     t_filepath              pathID;
 
@@ -258,7 +258,7 @@ void oluajit_anything(t_oluajit *x, t_symbol *s, int argc, t_atom *argv)
 
     int i;
     t_atom *ap;
-    post("calling function %s", func_name);
+//    post("calling function %s", func_name);
     
     int argcount = 0;
     
@@ -279,6 +279,7 @@ void oluajit_anything(t_oluajit *x, t_symbol *s, int argc, t_atom *argv)
                 
                 if( !strcmp(str, "FullPacket") && (argc-i) > 1 )
                 {
+
                     if( oluajit_FullPacket_to_stack(x, 2, ap+1) )
                     {
                         argcount++;
@@ -307,22 +308,24 @@ void oluajit_anything(t_oluajit *x, t_symbol *s, int argc, t_atom *argv)
         }
     }
     
+    // post("there are %ld arguments", argcount);
+    
     
     // call Lua function here
     x->lua->callFunction(func_name, argcount, 1);
     t_osc_bndl_u *lua_out_u = x->lua->table2bundle();
 
+    // check memory usage here
+    x->lua->garbageCollection();
+    //x->lua->garbageCollection();
+
     critical_exit(x->lock);
 
     // retrieve result
     t_osc_bndl_s *lua_out_s = osc_bundle_u_serialize(lua_out_u);
- 
     omax_util_outletOSC(x->outlet, osc_bundle_s_getLen(lua_out_s), osc_bundle_s_getPtr(lua_out_s));
- 
     osc_bundle_s_deepFree(lua_out_s);
     osc_bundle_u_free(lua_out_u);
-    
-    post("there are %ld arguments", argcount);
 }
 
 // >> file read system
@@ -407,11 +410,12 @@ void oluajit_doRead(t_oluajit *x, t_symbol *s, long argc, t_atom *argv)
         filewatcher_start(x->filewatcher);
     
     std::size_t lastSlash = x->fullpath.find_last_of("/\\");
-    string addLuaPath = "package.path = '" + x->fullpath.substr(0, lastSlash+1) + "' .. '?.lua;' .. package.path";
-
+//    string addLuaPath = "package.path = '" + x->fullpath.substr(0, lastSlash+1) + "' .. '?.lua;' .. package.path";
+    x->packagePath = "package.path = '" + x->fullpath.substr(0, lastSlash+1) + "' .. '?.lua;' .. package.path";
     critical_enter(x->lock);
     
-    x->lua->evalString(addLuaPath.c_str()); // add folder of loaded file in lua search path
+    x->lua->reset(); // probably not necessary here at the moment, since this is only called on first init
+    x->lua->evalString(x->packagePath.c_str()); // add folder of loaded file in lua search path
     x->lua->loadFile(x->fullpath);
     
     critical_exit(x->lock);
@@ -421,17 +425,20 @@ void oluajit_doRead(t_oluajit *x, t_symbol *s, long argc, t_atom *argv)
     
 }
 
-
+/*
 void oluajit_read(t_oluajit *x)
 {
     //defer((t_object *)x, (method)oluajit_doRead, x->filename.c_str(), 0, NULL);
     
 }
+*/
 
 void oluajit_reread(t_oluajit *x)
 {
     critical_enter(x->lock);
     // reread file
+    x->lua->reset();
+    x->lua->evalString(x->packagePath.c_str()); // add folder of loaded file in lua search path
     x->lua->loadFile(x->fullpath);
     
     critical_exit(x->lock);
@@ -447,6 +454,8 @@ void oluajit_filechanged(t_oluajit *x, char *filename, t_filepath path)
     
     critical_enter(x->lock);
     // reread file
+    x->lua->reset();
+    x->lua->evalString(x->packagePath.c_str()); // add folder of loaded file in lua search path
     x->lua->loadFile(x->fullpath);
     
     critical_exit(x->lock);
@@ -620,12 +629,14 @@ int C74_EXPORT main(void)
     t_class *c = class_new("o.luajit", (method)oluajit_new, (method)oluajit_free, sizeof(t_oluajit), 0L, A_GIMME, 0);
     
     class_addmethod(c, (method)oluajit_assist,      "assist",       A_CANT,     0);
-    class_addmethod(c, (method)oluajit_FullPacket,  "FullPacket",    A_GIMME,    0);
+    class_addmethod(c, (method)oluajit_FullPacket,  "FullPacket",   A_GIMME,    0);
     
-    class_addmethod(c, (method)oluajit_anything,  "anything",    A_GIMME,    0);
+    class_addmethod(c, (method)oluajit_anything,    "anything",     A_GIMME,    0);
+
+    // should we be able to read a different file?
+    // class_addmethod(c, (method)oluajit_read,     "read",         A_GIMME, 0);
     
-    class_addmethod(c, (method)oluajit_read,          "read",       A_GIMME, 0);
-    class_addmethod(c, (method)oluajit_reread,         "reread",       A_CANT, 0);
+    class_addmethod(c, (method)oluajit_reread,      "reread",   0); // reloads loaded file
 
     //class_addmethod(c, (method)oluajit_doc, "doc", 0);
    // class_addmethod(c, (method)oluajit_bang, "bang", 0);
@@ -633,17 +644,17 @@ int C74_EXPORT main(void)
     //class_addmethod(c, (method)omax_dict_dictionary, "dictionary", A_GIMME, 0);
     
     // editor callbacks
-    class_addmethod(c, (method)oluajit_dblclick,      "dblclick",    A_CANT, 0);
-    class_addmethod(c, (method)oluajit_edclose,       "edclose",    A_CANT, 0);
-    class_addmethod(c, (method)oluajit_edsave,        "edsave",    A_CANT, 0);
+    class_addmethod(c, (method)oluajit_dblclick,    "dblclick",     A_CANT, 0);
+    class_addmethod(c, (method)oluajit_edclose,     "edclose",      A_CANT, 0);
+    class_addmethod(c, (method)oluajit_edsave,      "edsave",       A_CANT, 0);
     
-    class_addmethod(c, (method)oluajit_getdefext,     "getdefext",    A_CANT, 0);
-    class_addmethod(c, (method)oluajit_getdeftype,    "getdeftype",    A_CANT, 0);
-    class_addmethod(c, (method)oluajit_getdeftype,    "getfiletypelist",    A_CANT, 0);
+    class_addmethod(c, (method)oluajit_getdefext,   "getdefext",    A_CANT, 0);
+    class_addmethod(c, (method)oluajit_getdeftype,  "getdeftype",   A_CANT, 0);
+    class_addmethod(c, (method)oluajit_getdeftype,  "getfiletypelist",    A_CANT, 0);
 
     
     // file watcher callback
-    class_addmethod(c, (method)oluajit_filechanged, "filechanged",    A_CANT, 0);
+    class_addmethod(c, (method)oluajit_filechanged, "filechanged",  A_CANT, 0);
         
     class_register(CLASS_BOX, c);
     oluajit_class = c;

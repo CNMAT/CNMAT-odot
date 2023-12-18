@@ -28,6 +28,13 @@ public:
         lua_close(L);
     }
     
+    inline void reset()
+    {
+        lua_close(L);
+        L = lua_open();
+        luaL_openlibs(L);
+    }
+    
     int loadFile(std::string& filename);
     inline int loadFile(const char* filename){
         std::string filestring(filename);
@@ -41,6 +48,9 @@ public:
     
     void evalString(const char* str);
 
+    inline void garbageCollection(){
+        lua_gc(L, LUA_GCCOLLECT, 0);
+    }
     void bndl2table(t_osc_bndl_s *bndl);
     void bndl2table(long len, char *ptr);
 

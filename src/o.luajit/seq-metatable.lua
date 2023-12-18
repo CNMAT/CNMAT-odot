@@ -32,17 +32,26 @@ seq.times[0.] = {
 
 --]]
 
-Seq = {}
+local Seq = {}
+
 function Seq:new(o)
     o = o or {}   -- create object if user does not provide one
-    o.times = o.times or {}
     o.sortedTimes = o.sortedTimes or {}
-
+    o.times = o.times or {}
     -- add copy constructor?
     -- add init call?
 
-    setmetatable(o, self)
+    --[[
+    self.__index = function(t, k)
+        return t.times[k]
+    end
+
+    self.__newindex = function(t, k, v)
+        table.insert(t.times, k, v)
+    end
+    --]]
     self.__index = self
+    setmetatable(o, self)
 
     return o
 end
@@ -58,7 +67,13 @@ local function getSortedTimes(t)
 end
 
 function Seq:init()
-    self.sortedTimes = getSortedTimes(self.seq)
+    local a = {}
+    for n in pairs(self.times) do
+        if type(n) == 'number' then table.insert(a, n) end
+    end
+    table.sort(a)
+
+    self.sortedTimes = a
 end
 
 
@@ -87,9 +102,9 @@ local function getPhase(a,b,t)
     return (t-a) / (b-a)
 end
 
-local function getEventPhase(_idx, t)
-    local seq_time = sorted[_idx]
-    local event = seq[seq_time]
+function Seq:getEvents(_idx, t)
+    local seq_time = self.sortedTimes[_idx]
+    local event = self.times[seq_time]
     -- if event is table (actually should always be a table)
     -- then check for dur keyword and calc phase
     -- if not then calc phase to next point
@@ -134,5 +149,6 @@ function Seq:lookup(t)
 
 end
 
+return Seq
 -- make step seq vs dur seq options
 
