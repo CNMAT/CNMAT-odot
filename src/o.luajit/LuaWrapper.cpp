@@ -213,7 +213,19 @@ void LuaWrapper::valToMsg(int index, t_osc_msg_u* msg)
     switch( lua_type(L, index) )
     {
         case LUA_TNUMBER:
+        {
+            /*
+            double f = lua_tonumber(L, index);
+            if( f == (int32_t)f )
+                osc_message_u_appendInt32(msg, (int32_t)f);
+            else
+                osc_message_u_appendDouble(msg, f );
+            */
+            
+            // all numbers are doubles for now, but addresses are checked for ints
             osc_message_u_appendDouble(msg, lua_tonumber(L, index) );
+        }
+            
             break;
         case LUA_TSTRING:
             osc_message_u_appendString(msg, lua_tostring(L, index) );
@@ -239,7 +251,19 @@ string LuaWrapper::keyToAddr(int index)
     switch( lua_type(L, index) )
     {
         case LUA_TNUMBER:
-            addr = "/" + to_string(lua_tonumber(L, index));
+        {
+            double f = lua_tonumber(L, index);
+            if( f == (long)f )
+                addr = "/" + to_string((long)f);
+            else
+            {
+                addr = "/" + to_string(f);
+                std::size_t found = addr.find_last_not_of("0");
+                if (found!=std::string::npos)
+                    addr.erase(found+1);
+            }
+                
+        }
             break;
         case LUA_TSTRING:
         {

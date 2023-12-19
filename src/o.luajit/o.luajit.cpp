@@ -405,7 +405,11 @@ void oluajit_doRead(t_oluajit *x, t_symbol *s, long argc, t_atom *argv)
     
     std::size_t lastSlash = x->fullpath.find_last_of("/\\");
 //    string addLuaPath = "package.path = '" + x->fullpath.substr(0, lastSlash+1) + "' .. '?.lua;' .. package.path";
-    x->packagePath = "package.path = '" + x->fullpath.substr(0, lastSlash+1) + "' .. '?.lua;' .. package.path";
+    
+    x->packagePath = "  oluajit = {} \n\
+                        oluajit.path = '" +x->fullpath.substr(0, lastSlash+1)+"'\n\
+                        package.path = oluajit.path .. '?.lua;' .. package.path";
+    
     critical_enter(x->lock);
     
     x->lua->reset(); // probably not necessary here at the moment, since this is only called on first init
