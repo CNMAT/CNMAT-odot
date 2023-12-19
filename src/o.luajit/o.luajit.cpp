@@ -548,8 +548,14 @@ void oluajit_assist(t_oluajit *x, void *b, long io, long num, char *buf)
 
 void oluajit_free(t_oluajit *x)
 {
-
+    
     critical_enter(x->lock);
+    
+    if(x->t_editor){
+        object_attr_setchar(x->t_editor, gensym("visible"), 0);
+        x->t_editor = NULL;
+    }
+        
     if (x->t_text){
         sysmem_freehandle(x->t_text);
         x->t_text = NULL;
