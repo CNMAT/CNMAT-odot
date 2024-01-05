@@ -1076,7 +1076,7 @@ int main(void)
     class_addmethod(c, (method)o_gui_attach_loadbang, "loadbang", 0);
 
     CLASS_ATTR_LONG(c, "accum", 0, t_o_gui_attach, accumMode);
-    CLASS_ATTR_STYLE_LABEL(c, "accum", 0, "onoff", "output all values");
+    CLASS_ATTR_STYLE_LABEL(c, "accum", 0, "onoff", "accum mode");
     
 	class_register(CLASS_BOX, c);
 	o_gui_attach_class = c;

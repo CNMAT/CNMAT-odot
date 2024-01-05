@@ -239,6 +239,9 @@ void LuaWrapper::valToMsg(int index, t_osc_msg_u* msg)
             osc_message_u_appendBndl_u(msg, sub);
             break;
         }
+        case LUA_TBOOLEAN:
+            osc_message_u_appendBool(msg, lua_toboolean(L, index) );
+            break;
         default:
             osc_message_u_appendString(msg, "unhandled_type" );
             break;
