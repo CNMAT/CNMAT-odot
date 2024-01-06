@@ -135,7 +135,7 @@ void LuaWrapper::bndl2table(long len, char* ptr)
         lua_pushstring(L, osc_message_s_getAddress(m) ); // set osc address
 
         int nargs = osc_message_s_getArgCount(m);
-        
+
         if( nargs > 1 )
             lua_createtable(L, nargs, 0); // array of values
 
@@ -145,11 +145,14 @@ void LuaWrapper::bndl2table(long len, char* ptr)
         t_osc_msg_it_s *m_it = osc_msg_it_s_get(m);
         while(osc_msg_it_s_hasNext(m_it))
         {
+            if( nargs == 0 )
+                printf("this shouldn't happen %s nargs %d\n", osc_message_s_getAddress(m), nargs);
+            
             if( nargs > 1 )
                 lua_pushnumber(L, count++); // key starts at 1
 
             t_osc_atom_s *at = osc_msg_it_s_next(m_it);
-            
+
             switch (osc_atom_s_getTypetag( at ))
             {
                 case 'd':
@@ -201,10 +204,15 @@ void LuaWrapper::bndl2table(long len, char* ptr)
                 lua_rawset(L, -3); // points to array, and pops key and value
         }
         
+        if( nargs == 0 )
+            lua_pushnil(L);
+
         lua_rawset(L, -3); // points to osc address table
+        
+        
         osc_msg_it_s_destroy(m_it);
     }
-    
+
     osc_bndl_it_s_destroy(it);
 }
 
