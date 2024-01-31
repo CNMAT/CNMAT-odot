@@ -279,8 +279,9 @@ string LuaWrapper::keyToAddr(int index)
         case LUA_TSTRING:
         {
             addr = (char *)lua_tostring(L, -2); //note string memory is owned by lua
-            if( !addr.starts_with("/") )
+            if( !addr.starts_with("/") ){
                 addr = "/" + addr;
+            }
         }
             break;
         case LUA_TNIL:
@@ -296,6 +297,8 @@ string LuaWrapper::keyToAddr(int index)
 t_osc_bundle_u* LuaWrapper::table2bundle(bool poptable)
 {
     t_osc_bundle_u* ret = osc_bundle_u_alloc();
+    
+   // printf("size %ld\n", getSerializedSizeInBytes() );
     
     if( lua_type(L, -1) != LUA_TTABLE )
     {
@@ -391,4 +394,519 @@ void LuaWrapper::printstack(const char * tag)
         }
       }
     printf("\n");
+}
+
+
+/**
+ libo utills
+ */
+#define OSC_HEADER_SIZE 16 // bundle\0 + 8 byte timetag.
+#define OSC_IDENTIFIER "#bundle\0"
+#define OSC_IDENTIFIER_SIZE 8
+#define OSC_EMPTY_HEADER "#bundle\0\0\0\0\0\0\0\0\0"
+
+#define OSC_ID OSC_IDENTIFIER
+#define OSC_ID_SIZE OSC_IDENTIFIER_SIZE
+
+
+
+#define OSC_BYTE_SWAP16(x) \
+    ((((x) & 0xff00) >> 8) | \
+     (((x) & 0x00ff) << 8))
+
+#define OSC_BYTE_SWAP32(x) \
+    ((((x) & 0xff000000) >> 24) | \
+     (((x) & 0x00ff0000) >> 8) | \
+     (((x) & 0x0000ff00) << 8) | \
+     (((x) & 0x000000ff) << 24))
+
+#define OSC_BYTE_SWAP64(x) \
+    ((((x) & 0xff00000000000000LL) >> 56) | \
+     (((x) & 0x00ff000000000000LL) >> 40) | \
+     (((x) & 0x0000ff0000000000LL) >> 24) | \
+     (((x) & 0x000000ff00000000LL) >> 8)  | \
+     (((x) & 0x00000000ff000000LL) << 8)  | \
+     (((x) & 0x0000000000ff0000LL) << 24) | \
+     (((x) & 0x000000000000ff00LL) << 40) | \
+     (((x) & 0x00000000000000ffLL) << 56))
+
+#define OSC_BYTE_SWAP128(x) \
+    (uint128_t){OSC_BYTE_SWAP64(((x).l2)), OSC_BYTE_SWAP64(((x).l1))}
+
+#ifdef BYTE_ORDER
+#define OSC_BYTE_ORDER BYTE_ORDER
+#else
+#ifdef __BYTE_ORDER
+#define OSC_BYTE_ORDER __BYTE_ORDER
+#endif
+#endif
+
+#ifdef LITTLE_ENDIAN
+#define OSC_LITTLE_ENDIAN LITTLE_ENDIAN
+#else
+#ifdef __LITTLE_ENDIAN
+#define OSC_LITTLE_ENDIAN __LITTLE_ENDIAN
+#endif
+#endif
+
+// need to handle the case where these are not defined
+
+#if OSC_BYTE_ORDER == OSC_LITTLE_ENDIAN
+#define hton16(x) OSC_BYTE_SWAP16(x)
+#define ntoh16(x) OSC_BYTE_SWAP16(x)
+#define hton32(x) OSC_BYTE_SWAP32(x)
+#define ntoh32(x) OSC_BYTE_SWAP32(x)
+#define hton64(x) OSC_BYTE_SWAP64(x)
+#define ntoh64(x) OSC_BYTE_SWAP64(x)
+#define hton128(x) OSC_BYTE_SWAP128(x)
+#define ntoh128(x) OSC_BYTE_SWAP128(x)
+
+#define htonf32(x) OSC_BYTE_SWAP32(*((uint32_t *)&x))
+#define ntohf32(x) OSC_BYTE_SWAP32(*((uint32_t *)&x))
+#define htonf64(x) OSC_BYTE_SWAP64(*((uint64_t *)&x))
+#define ntohf64(x) OSC_BYTE_SWAP64(*((uint64_t *)&x))
+
+#else
+
+#define hton16(x) (x)
+#define ntoh16(x) (x)
+#define hton32(x) (x)
+#define ntoh32(x) (x)
+#define hton64(x) (x)
+#define ntoh64(x) (x)
+#define hton128(x) (x)
+#define ntoh128(x) (x)
+
+#define htonf32(x) (x)
+#define ntohf32(x) (x)
+#define htonf64(x) (x)
+#define ntohf64(x) (x)
+
+#endif
+
+size_t osc_util_getPaddedStringLen(char *s)
+{
+    if(!s){
+        return 0;
+    }
+    size_t n = strlen(s);
+    n = (n + 4) & 0xfffffffc;
+    return n;
+}
+
+size_t osc_util_getPaddedStringLen(const string& s)
+{
+    size_t n = s.length();
+    n = (n + 4) & 0xfffffffc;
+    return n;
+}
+
+
+size_t osc_util_getPaddingForNBytes(size_t n)
+{
+    return (n + 4) & 0xfffffffc;
+}
+
+/*
+void inputOSC( long len, char * ptr )
+{
+
+    string buf(ptr, len);
+    long _n = OSC_HEADER_SIZE;
+
+    while( _n < len )
+    {
+        size_t msg_size = ntoh32(*((int32_t *)(ptr + _n)));
+
+        size_t addr_start = _n + 4;
+        size_t addr_end = buf.find_first_of('\0', addr_start);
+        string addr = buf.substr(addr_start, addr_end-addr_start);
+
+
+        size_t typetags_start = addr_start + osc_util_getPaddedStringLen(addr);
+        size_t typetags_end = buf.find_first_of('\0', typetags_start);
+        string typetags = buf.substr(typetags_start, typetags_end-typetags_start);
+
+        size_t data_start = typetags_start + osc_util_getPaddedStringLen(typetags);
+        size_t bytes_to_next = 0;
+
+        size_t natoms = typetags.length() - 1;
+
+    //    printf("typetagstart %ld tags %s natoms %ld datastart %ld\n", typetags_start, typetags.c_str(), natoms, data_start);
+
+
+        OSCAtomVector newVec;// = make_unique<OSCAtomVector>();
+        newVec.reserve( natoms );
+
+        char * dataPtr = ptr + data_start;
+
+
+        for( size_t i = 0; i < natoms; i++)
+        {
+            dataPtr += bytes_to_next;
+
+            switch ( typetags[i+1] )
+            {
+                case 'f':
+                {
+                    uint32_t ui_ptr = ntoh32(*((uint32_t *)(dataPtr)));
+                    newVec.appendValue( *((float *)&ui_ptr) );
+                    bytes_to_next = 4;
+                }
+                break;
+                case 'd':
+                {
+                    uint64_t ui_ptr = ntoh64(*((uint64_t *)(dataPtr)));
+                    double d = *((double *)&ui_ptr);
+                    newVec.appendValue( d );
+                    bytes_to_next = 8;
+                }
+                break;
+                case 'i':
+                {
+                    newVec.appendValue( (int32_t)ntoh32(*((int32_t *)(dataPtr))) );
+                    bytes_to_next = 4;
+                }
+                break;
+                case 'h':
+                    newVec.appendValue( (int64_t)ntoh64(*((int64_t *)(dataPtr))) );
+                    bytes_to_next = 8;
+                break;
+                case 's':
+                    {
+                        size_t str_start = dataPtr - ptr;
+                        size_t str_end = buf.find_first_of('\0', str_start);
+                        string str = buf.substr(str_start, str_end - str_start);
+                        newVec.appendValue( str );
+                        bytes_to_next = osc_util_getPaddedStringLen(str);
+                    }
+                    break;
+                case 'c':
+                    newVec.appendValue((char)ntoh32(*((int32_t *)(dataPtr))));
+                    bytes_to_next = 4;
+                    break;
+//                    case 'C':
+//                        osc_atom_u_setUInt8(atom_u, osc_atom_s_getUInt8(a));
+//                        break;
+//                    case 'u':
+//                        osc_atom_u_setInt16(atom_u, osc_atom_s_getInt16(a));
+//                        break;
+//                    case 'U':
+//                        osc_atom_u_setUInt16(atom_u, osc_atom_s_getUInt16(a));
+//                        break;
+
+//                    case 'I':
+//                        osc_atom_u_setUInt32(atom_u, osc_atom_s_getUInt32(a));
+//                        break;
+//                    case 'H':
+//                        osc_atom_u_setUInt64(atom_u, osc_atom_s_getUInt64(a));
+//                        break;
+                case 'T':
+                    newVec.appendValue( true );
+                    break;
+                case 'F':
+                    newVec.appendValue( false );
+                    break;
+                case 'N':
+                    newVec.appendValue( false );
+                    break;
+                case OSC_BUNDLE_TYPETAG:
+                    newVec.appendValue( MapOSC( (long)ntoh32(*((int32_t *)(dataPtr))),
+                                                 dataPtr + 4 ));
+                    break;
+//                    case OSC_TIMETAG_TYPETAG:
+//                        {
+//                            osc_atom_u_setTimetag(atom_u, osc_atom_s_getTimetag(a));
+//                        }
+//                        break;
+//                    case 'b':
+//                        osc_atom_u_setBlob(atom_u, a->data);
+//                        break;
+//                    case OSC_BUNDLE_TYPETAG:
+//                        return getBundle() == src.getBundle();
+                default:
+                    printf("unhandled input %ld type %c %d\n", i, typetags[i], typetags[i] );
+                break;
+
+            }
+        }
+
+        address_lookup.emplace( addr, move(newVec) );
+
+        _n += msg_size + 4;
+    }
+}
+*/
+
+
+int32_t LuaWrapper::getElementSizeInBytes(int index)
+{
+    switch( lua_type(L, index) )
+    {
+        case LUA_TNUMBER:
+            // all numbers are doubles for now, but addresses are checked for ints
+            return 8;
+        case LUA_TSTRING:
+        {
+            string l_str = lua_tostring(L, index);
+            size_t len = l_str.length();
+            int32_t plen = osc_util_getPaddingForNBytes(len);
+            return plen;
+        }
+        case LUA_TTABLE:
+        {
+            return getSerializedSizeInBytes() + 4;
+        }
+    // nothing to do for T, F, or N
+        case LUA_TNIL:
+        case LUA_TBOOLEAN:
+        default:
+            return 0;
+    }
+}
+
+
+int32_t LuaWrapper::getSerializedSizeInBytes()
+{
+    int32_t _n = OSC_HEADER_SIZE;
+
+    if( lua_type(L, -1) != LUA_TTABLE )
+        return _n;
+
+    lua_pushnil(L);  /* first key */
+    while (lua_next(L, -2) != 0)
+    {
+        _n += 4;
+
+        if( lua_type(L, -1) == LUA_TTABLE )
+        {
+            string addr = keyToAddr(-2);
+            _n += osc_util_getPaddingForNBytes( addr.size() );
+
+            size_t len = lua_objlen(L, -1);
+            _n += osc_util_getPaddingForNBytes( len + 1 );
+
+            if( len > 0 )
+            {
+
+                // list of values with numeric indexes
+                for( int i = 1; i < len+1; i++ ) // lua is 1 indexed
+                {
+                    lua_rawgeti(L, -1, i);
+                    //valToMsg(-1, msg);
+                    _n += getElementSizeInBytes(-1);
+                    
+                    lua_pop(L,1);
+                }
+            }
+            else
+            {
+                _n += getSerializedSizeInBytes() + 4;
+            }
+
+        }
+        else
+        {
+            _n += 4;
+
+            string addr = keyToAddr(-2);
+            _n += osc_util_getPaddingForNBytes( addr.size() );
+            _n += getElementSizeInBytes(-1);
+
+        }
+        
+        // removes 'value'; keeps 'key' for next iteration, for lua_next(L, -2)
+        lua_pop(L, 1);
+
+    }
+    // this function leaves the table on the top of the stack ready to serialize next
+    
+    return _n;
+}
+
+void printbytes(char *buf, long len)
+{
+    for(int i = 0; i < len; i++){
+        if(buf[i] == '\0'){
+            printf("%05d       %-14s%-14d0x%x\n", i, "'\\0'", buf[i], buf[i]);
+        }else if(buf[i] < 32 || buf[i] > 126){
+            printf("%05d       %-14s%-14d0x%x\n", i, "''", buf[i], buf[i]);
+        } else {
+            char b[32];
+            sprintf(b, "'%c'", buf[i]);
+            printf("%05d       %-14s%-14d0x%x\n", i, b, buf[i], buf[i]);
+        }
+    }
+    printf("\n");
+}
+
+
+
+int32_t LuaWrapper::serializeValueForKey(char *buf,
+                                  size_t remaining_size,
+                                  const char * address,
+                                  int index  )
+{
+    int32_t _n = 0;
+    size_t addresslen = strlen(address);
+    size_t padded_address_len = osc_util_getPaddingForNBytes(addresslen);
+    
+    size_t len = 1;
+    bool isList = false;
+    
+    if( lua_type(L,index) == LUA_TTABLE )
+    {
+        len = lua_objlen(L, index);
+        isList = len > 0;
+        len = len > 0 ? len : 1; // greater than 0 if list, otherwise single element
+    }
+
+    size_t padded_typetag_len = osc_util_getPaddingForNBytes(len + 1);
+    size_t num_bytes_before_data = 4 + padded_address_len + padded_typetag_len;
+
+    if(remaining_size < num_bytes_before_data){
+        return 0;
+    }
+    _n += num_bytes_before_data;
+
+    char *ptr = buf;
+    ptr += 4;
+
+    memcpy(ptr, address, addresslen);
+    ptr += padded_address_len;
+
+    char *ttptr = ptr;
+    ptr += padded_typetag_len;
+    *ttptr++ = ',';
+
+    if( isList )
+    {
+        lua_pushnil(L);
+        while (lua_next(L, -2) != 0)
+        {
+            ptr = buf + _n;
+            _n += serializeItem(ptr, ttptr, -1);
+            ttptr++;
+            lua_pop(L,1);
+        }
+        lua_pop(L,1);
+    }
+    else
+    {
+        ptr = buf + _n;
+        _n += serializeItem(ptr, ttptr, -1);
+        ttptr++;
+        lua_pop(L,1);
+    }
+
+    *((int32_t *)buf) = hton32(_n - 4);
+
+    return _n;
+}
+
+
+int32_t LuaWrapper::serializeItem(char *ptr, char *ttptr, int index)
+{
+    switch( lua_type(L, index) )
+    {
+        case LUA_TNUMBER:
+        {
+            *ttptr = 'd';
+            
+            // all numbers are doubles for now, but addresses are checked for ints
+            double d = lua_tonumber(L, index);
+            *((int64_t *)ptr) = hton64(*((int64_t *)(&d)));
+            return 8;
+        }
+        case LUA_TSTRING:
+        {
+            *ttptr = 's';
+
+            const char * str = lua_tostring(L, index) ;
+            size_t s_len = strlen(str);
+            int32_t plen = (int32_t)osc_util_getPaddingForNBytes(s_len);
+            memset(ptr, '\0', plen);
+            memcpy(ptr, str, s_len);
+            return plen;
+        }
+        case LUA_TTABLE:
+        {
+            *ttptr = OSC_BUNDLE_TYPETAG;
+
+            int32_t sub_table_size = (int32_t)getSerializedSizeInBytes();
+
+            *((int32_t *)ptr) = hton32(sub_table_size);
+
+            char * buf_ptr = (char *)malloc(sub_table_size);
+            serializeIntoBuffer(buf_ptr, sub_table_size, false);
+
+            memcpy(ptr + 4, buf_ptr, sub_table_size );
+
+            free(buf_ptr);
+
+            return sub_table_size + 4;
+        }
+        case LUA_TNIL:
+            *ttptr = 'N';
+        case LUA_TBOOLEAN:
+            if( lua_toboolean(L, index) )
+                *ttptr = 'T';
+            else
+                *ttptr = 'F';
+        default:
+            return 0;
+    }
+
+}
+
+void LuaWrapper::serializeIntoBuffer(char *ptr, size_t size, bool poptable )
+{
+    size_t _n = 0;
+
+    memset(ptr, '\0', size);
+    memcpy(ptr, OSC_EMPTY_HEADER, OSC_HEADER_SIZE);
+    _n += OSC_HEADER_SIZE;
+
+    // assume top of stack is table
+    // is only called when we know it is a bundle
+    
+    lua_pushnil(L);  // first key
+    while (lua_next(L, -2) != 0)
+    {
+        string addr = keyToAddr(-2);
+
+        _n += serializeValueForKey(ptr + _n,
+                             size - _n,
+                             addr.c_str(),
+                             -1 // table index
+                           );
+        // removes 'value'; keeps 'key' for next iteration, for lua_next(L, -2)
+        //lua_pop(L, 1);
+
+    }
+    
+    if( poptable )
+        lua_pop(L, 1);
+
+
+   // printf("_n %ld \n", _n);
+
+}
+
+std::string LuaWrapper::getSerializedString()
+{
+    string buf;
+    if( lua_type(L, -1) != LUA_TTABLE )
+    {
+        std::string err = "output error: top of stack is not table";
+        error_cb(err);
+        return buf;
+    }
+    
+    size_t len = getSerializedSizeInBytes();
+    buf.resize(len);
+
+    serializeIntoBuffer(buf.data(), len, false);
+
+    return buf;
 }

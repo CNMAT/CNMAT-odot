@@ -46,7 +46,7 @@ typedef struct _oluajit
     bool                    softlock;
 
     t_critical              lock;
-
+    
     void *                  outlet;
     
 } t_oluajit;
@@ -310,18 +310,14 @@ void oluajit_anything(t_oluajit *x, t_symbol *s, int argc, t_atom *argv)
         
     // call Lua function here
     x->lua->callFunction(func_name, argcount, 1); // to do someday: make option to set number of return values?
-    t_osc_bndl_u *lua_out_u = x->lua->table2bundle(); // retrieve result
+    string outputOSC = x->lua->getSerializedString();
     x->lua->clearStack(); // important: clear stack after getting return value (otherwise leads to stack overflow)
-
     critical_exit(x->lock);
+        
+    omax_util_outletOSC(x->outlet, outputOSC.size(), outputOSC.data() );
 
-    // send return value out
-    t_osc_bndl_s *lua_out_s = osc_bundle_u_serialize(lua_out_u);
-    omax_util_outletOSC(x->outlet, osc_bundle_s_getLen(lua_out_s), osc_bundle_s_getPtr(lua_out_s));
-    osc_bundle_s_deepFree(lua_out_s);
-    osc_bundle_u_free(lua_out_u);
 }
-
+    
 // >> file read system
 void oluajit_get_file_text_for_GUI(t_oluajit *x, char *filename, t_filepath path)
 {
@@ -659,7 +655,7 @@ int C74_EXPORT main(void)
     
     // file watcher callback
     class_addmethod(c, (method)oluajit_filechanged, "filechanged",  A_CANT, 0);
-        
+    
     class_register(CLASS_BOX, c);
     oluajit_class = c;
     

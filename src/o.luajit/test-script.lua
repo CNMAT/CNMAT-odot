@@ -11,6 +11,22 @@ function fn1( bndl )
     return bndl
 end
 
+function thru(input)
+	return input
+end
+
+function getSize(input)
+
+	for k,v in pairs(input) do
+		input[k] = #v
+	end
+
+	return {
+		input= input,
+		size = #input
+	}
+
+end
 
 --[[
     generates new table, and assigns it to several sub-tables

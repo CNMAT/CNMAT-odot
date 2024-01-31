@@ -88,6 +88,15 @@ public:
     void printError(const char *msg = nullptr);
    
 
+    std::string getSerializedString();
+    void serializeIntoBuffer(char *ptr, size_t size, bool poptable = true );
+    int32_t serializeItem(char *ptr, char *ttptr, int index);
+
+    int32_t getSerializedSizeInBytes();
+    int32_t getElementSizeInBytes(int index);
+    int32_t serializeValueForKey( char *buf, size_t remaining_size, const char * address, int index  );
+
+    
 private:
 
     lua_State *L = NULL;
