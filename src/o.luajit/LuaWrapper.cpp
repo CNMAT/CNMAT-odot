@@ -878,8 +878,13 @@ void LuaWrapper::serializeIntoBuffer(char *ptr, size_t size, bool poptable )
     memcpy(ptr, OSC_EMPTY_HEADER, OSC_HEADER_SIZE);
     _n += OSC_HEADER_SIZE;
 
-    // assume top of stack is table
-    // is only called when we know it is a bundle
+    
+    if( lua_type(L, -1) != LUA_TTABLE )
+    {
+        std::string err = "output error: top of stack is not table, missing return call ?";
+        error_cb(err);
+        return;
+    }
     
     lua_pushnil(L);  // first key
     while (lua_next(L, -2) != 0)
@@ -907,13 +912,6 @@ void LuaWrapper::serializeIntoBuffer(char *ptr, size_t size, bool poptable )
 std::string LuaWrapper::getSerializedString()
 {
     string buf;
-    if( lua_type(L, -1) != LUA_TTABLE )
-    {
-        std::string err = "output error: top of stack is not table";
-        error_cb(err);
-        return buf;
-    }
-    
     size_t len = getSerializedSizeInBytes();
     buf.resize(len);
 
