@@ -37,8 +37,7 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "",
-		"showrootpatcherontab" : 0,
-		"showontab" : 0,
+		"showontab" : 1,
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
@@ -57,7 +56,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 126.0, 126.0, 882.0, 822.0 ],
+						"rect" : [ 0.0, 26.0, 882.0, 822.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -119,7 +118,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 583.0, 666.0, 185.0, 22.0 ],
-									"text" : "FullPacket 76 105553355520624"
+									"text" : "FullPacket 0 6171905992"
 								}
 
 							}
@@ -127,15 +126,15 @@
 								"box" : 								{
 									"fontface" : 0,
 									"id" : "obj-45",
-									"linecount" : 2,
+									"linecount" : 3,
 									"maxclass" : "o.compose",
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 583.0, 692.0, 227.0, 36.0 ],
-									"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 48, 47, 101, 114, 114, 111, 114, 47, 115, 116, 114, 0, 0, 44, 115, 0, 0, 101, 120, 112, 101, 99, 116, 101, 100, 32, 55, 54, 32, 98, 121, 116, 101, 115, 44, 32, 98, 117, 116, 32, 102, 111, 117, 110, 100, 32, 55, 50, 0 ],
-									"saved_bundle_length" : 68,
-									"text" : "/error/str : \"expected 76 bytes, but found 72\""
+									"patching_rect" : [ 583.0, 692.0, 227.0, 49.0 ],
+									"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 72, 47, 101, 114, 114, 111, 114, 47, 115, 116, 114, 0, 0, 44, 115, 0, 0, 105, 110, 118, 97, 108, 105, 100, 32, 112, 97, 99, 107, 101, 116, 58, 32, 112, 97, 99, 107, 101, 116, 32, 100, 111, 101, 115, 32, 110, 111, 116, 32, 98, 101, 103, 105, 110, 32, 119, 105, 116, 104, 32, 97, 32, 35, 32, 111, 114, 32, 97, 32, 47, 0, 0, 0 ],
+									"saved_bundle_length" : 92,
+									"text" : "/error/str : \"invalid packet: packet does not begin with a # or a /\""
 								}
 
 							}
@@ -314,13 +313,15 @@
 								"box" : 								{
 									"fontface" : 0,
 									"id" : "obj-32",
+									"linecount" : 3,
 									"maxclass" : "o.compose",
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 355.0, 730.0, 227.0, 23.0 ],
-									"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 52, 47, 97, 114, 103, 115, 0, 0, 0, 44, 46, 0, 0, 0, 0, 0, 40, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 102, 111, 111, 0, 0, 0, 0, 44, 100, 0, 0, 63, -16, 0, 0, 0, 0, 0, 0 ],
-									"saved_bundle_length" : 76
+									"patching_rect" : [ 355.0, 730.0, 227.0, 49.0 ],
+									"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 56, 47, 97, 114, 103, 115, 0, 0, 0, 44, 46, 0, 0, 0, 0, 0, 40, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 102, 111, 111, 0, 0, 0, 0, 44, 100, 0, 0, 63, -16, 0, 0, 0, 0, 0, 0 ],
+									"saved_bundle_length" : 76,
+									"text" : "/args : {\n  /foo : 1.\n}"
 								}
 
 							}
@@ -400,7 +401,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 92.0, 735.0, 185.0, 22.0 ],
-									"text" : "FullPacket 76 105553355520624"
+									"text" : "FullPacket 0 6171905992"
 								}
 
 							}
@@ -740,6 +741,19 @@
 								}
 
 							}
+, 							{
+								"box" : 								{
+									"attr" : "ubundle_test",
+									"id" : "obj-48",
+									"maxclass" : "attrui",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"parameter_enable" : 0,
+									"patching_rect" : [ 143.0, 547.0, 150.0, 22.0 ]
+								}
+
+							}
  ],
 						"lines" : [ 							{
 								"patchline" : 								{
@@ -1025,6 +1039,13 @@
 							}
 , 							{
 								"patchline" : 								{
+									"destination" : [ "obj-25", 0 ],
+									"source" : [ "obj-48", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
 									"destination" : [ "obj-3", 0 ],
 									"source" : [ "obj-6", 0 ]
 								}
@@ -1166,7 +1187,20 @@
 						"style" : "",
 						"subpatcher_template" : "",
 						"assistshowspatchername" : 0,
+						"visible" : 1,
 						"boxes" : [ 							{
+								"box" : 								{
+									"id" : "obj-43",
+									"maxclass" : "newobj",
+									"numinlets" : 2,
+									"numoutlets" : 1,
+									"outlettype" : [ "FullPacket" ],
+									"patching_rect" : [ 687.0, 183.0, 48.0, 22.0 ],
+									"text" : "o.union"
+								}
+
+							}
+, 							{
 								"box" : 								{
 									"id" : "obj-48",
 									"maxclass" : "button",
@@ -1197,7 +1231,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 687.0, 198.0, 100.0, 22.0 ],
+									"patching_rect" : [ 688.0, 207.0, 100.0, 22.0 ],
 									"text" : "prepend fn2"
 								}
 
@@ -1211,7 +1245,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "FullPacket", "FullPacket" ],
-									"patching_rect" : [ 33.0, 290.0, 150.0, 44.0 ],
+									"patching_rect" : [ 887.0, 47.0, 150.0, 44.0 ],
 									"text" : "/a = aseq(1,1000),\n/b = /a"
 								}
 
@@ -1769,10 +1803,23 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 687.0, 151.0, 126.0, 36.0 ],
+									"patching_rect" : [ 687.0, 145.0, 126.0, 36.0 ],
 									"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 47, 102, 111, 111, 0, 0, 0, 0, 44, 105, 0, 0, 0, 0, 0, 1, 0, 0, 0, 28, 47, 98, 97, 114, 0, 0, 0, 0, 44, 105, 105, 105, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 2, 0, 0, 0, 3 ],
 									"saved_bundle_length" : 68,
 									"text" : "/foo : 1,\n/bar : [1, 2, 3]"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"attr" : "ubundle_test",
+									"id" : "obj-3",
+									"maxclass" : "attrui",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"parameter_enable" : 0,
+									"patching_rect" : [ 745.0, 236.0, 150.0, 22.0 ]
 								}
 
 							}
@@ -1877,7 +1924,7 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-42", 0 ],
+									"destination" : [ "obj-43", 0 ],
 									"source" : [ "obj-2", 0 ]
 								}
 
@@ -1993,6 +2040,13 @@
 							}
 , 							{
 								"patchline" : 								{
+									"destination" : [ "obj-1", 0 ],
+									"source" : [ "obj-3", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
 									"destination" : [ "obj-29", 0 ],
 									"source" : [ "obj-30", 0 ]
 								}
@@ -2044,6 +2098,13 @@
 							}
 , 							{
 								"patchline" : 								{
+									"destination" : [ "obj-43", 1 ],
+									"source" : [ "obj-38", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
 									"destination" : [ "obj-2", 0 ],
 									"source" : [ "obj-4", 0 ]
 								}
@@ -2069,6 +2130,13 @@
 								"patchline" : 								{
 									"destination" : [ "obj-8", 0 ],
 									"source" : [ "obj-42", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-42", 0 ],
+									"source" : [ "obj-43", 0 ]
 								}
 
 							}
@@ -2146,6 +2214,10 @@
 			}
 , 			{
 				"name" : "o.printbytes.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.union.mxo",
 				"type" : "iLaX"
 			}
 , 			{

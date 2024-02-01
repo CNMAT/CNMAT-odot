@@ -96,6 +96,7 @@ public:
     int32_t getElementSizeInBytes(int index);
     int32_t serializeValueForKey( char *buf, size_t remaining_size, const char * address, int index  );
 
+    void inputOSC( long len, char * ptr );
     
 private:
 

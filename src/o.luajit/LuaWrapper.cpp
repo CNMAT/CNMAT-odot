@@ -507,9 +507,10 @@ size_t osc_util_getPaddingForNBytes(size_t n)
     return (n + 4) & 0xfffffffc;
 }
 
-/*
-void inputOSC( long len, char * ptr )
+void LuaWrapper::inputOSC( long len, char * ptr )
 {
+
+    lua_newtable(L); // could count messages here, but just saving time for now
 
     string buf(ptr, len);
     long _n = OSC_HEADER_SIZE;
@@ -522,6 +523,7 @@ void inputOSC( long len, char * ptr )
         size_t addr_end = buf.find_first_of('\0', addr_start);
         string addr = buf.substr(addr_start, addr_end-addr_start);
 
+        lua_pushstring(L, addr.c_str() ); // set osc address
 
         size_t typetags_start = addr_start + osc_util_getPaddedStringLen(addr);
         size_t typetags_end = buf.find_first_of('\0', typetags_start);
@@ -532,25 +534,28 @@ void inputOSC( long len, char * ptr )
 
         size_t natoms = typetags.length() - 1;
 
+        if( natoms > 1 )
+            lua_createtable(L, natoms, 0); // array of values
+
+        int count = 1;
     //    printf("typetagstart %ld tags %s natoms %ld datastart %ld\n", typetags_start, typetags.c_str(), natoms, data_start);
 
-
-        OSCAtomVector newVec;// = make_unique<OSCAtomVector>();
-        newVec.reserve( natoms );
-
         char * dataPtr = ptr + data_start;
-
 
         for( size_t i = 0; i < natoms; i++)
         {
             dataPtr += bytes_to_next;
 
+            if( natoms > 1 )
+                lua_pushnumber(L, count++); // key starts at 1
+            
             switch ( typetags[i+1] )
             {
                 case 'f':
                 {
                     uint32_t ui_ptr = ntoh32(*((uint32_t *)(dataPtr)));
-                    newVec.appendValue( *((float *)&ui_ptr) );
+                    lua_pushnumber(L, *((float *)&ui_ptr) );
+
                     bytes_to_next = 4;
                 }
                 break;
@@ -558,18 +563,18 @@ void inputOSC( long len, char * ptr )
                 {
                     uint64_t ui_ptr = ntoh64(*((uint64_t *)(dataPtr)));
                     double d = *((double *)&ui_ptr);
-                    newVec.appendValue( d );
+                    lua_pushnumber(L, d );
                     bytes_to_next = 8;
                 }
                 break;
                 case 'i':
                 {
-                    newVec.appendValue( (int32_t)ntoh32(*((int32_t *)(dataPtr))) );
+                    lua_pushnumber(L, (int32_t)ntoh32(*((int32_t *)(dataPtr))));
                     bytes_to_next = 4;
                 }
                 break;
                 case 'h':
-                    newVec.appendValue( (int64_t)ntoh64(*((int64_t *)(dataPtr))) );
+                    lua_pushnumber(L, (int64_t)ntoh64(*((int64_t *)(dataPtr))) );
                     bytes_to_next = 8;
                 break;
                 case 's':
@@ -577,13 +582,17 @@ void inputOSC( long len, char * ptr )
                         size_t str_start = dataPtr - ptr;
                         size_t str_end = buf.find_first_of('\0', str_start);
                         string str = buf.substr(str_start, str_end - str_start);
-                        newVec.appendValue( str );
+                        lua_pushstring(L, str.c_str() );
                         bytes_to_next = osc_util_getPaddedStringLen(str);
                     }
                     break;
                 case 'c':
-                    newVec.appendValue((char)ntoh32(*((int32_t *)(dataPtr))));
+                {
+                    lua_pushnumber(L, (int32_t)ntoh32(*((int32_t *)(dataPtr))));
+                    string str = {(char)ntoh32(*((int32_t *)(dataPtr)))};
+                    lua_pushstring(L, str.c_str() );
                     bytes_to_next = 4;
+                }
                     break;
 //                    case 'C':
 //                        osc_atom_u_setUInt8(atom_u, osc_atom_s_getUInt8(a));
@@ -602,41 +611,43 @@ void inputOSC( long len, char * ptr )
 //                        osc_atom_u_setUInt64(atom_u, osc_atom_s_getUInt64(a));
 //                        break;
                 case 'T':
-                    newVec.appendValue( true );
+                    lua_pushboolean(L, 1);
                     break;
                 case 'F':
-                    newVec.appendValue( false );
+                    lua_pushboolean(L, 0);
                     break;
                 case 'N':
-                    newVec.appendValue( false );
+                    lua_pushnil(L);
                     break;
                 case OSC_BUNDLE_TYPETAG:
-                    newVec.appendValue( MapOSC( (long)ntoh32(*((int32_t *)(dataPtr))),
-                                                 dataPtr + 4 ));
+                    inputOSC( (long)ntoh32(*((int32_t *)(dataPtr))), dataPtr + 4 );
                     break;
-//                    case OSC_TIMETAG_TYPETAG:
-//                        {
-//                            osc_atom_u_setTimetag(atom_u, osc_atom_s_getTimetag(a));
-//                        }
-//                        break;
+                case OSC_TIMETAG_TYPETAG:
+                    lua_pushnumber(L, osc_timetag_timetagToFloat( osc_timetag_decodeFromHeader(dataPtr) ) );
+                    break;
 //                    case 'b':
 //                        osc_atom_u_setBlob(atom_u, a->data);
 //                        break;
-//                    case OSC_BUNDLE_TYPETAG:
-//                        return getBundle() == src.getBundle();
                 default:
                     printf("unhandled input %ld type %c %d\n", i, typetags[i], typetags[i] );
                 break;
 
             }
+            
+            if( natoms > 1 )
+                lua_rawset(L, -3); // points to array, and pops key and value
         }
 
-        address_lookup.emplace( addr, move(newVec) );
+
+        if( natoms == 0 )
+            lua_pushnil(L);
+
+        lua_rawset(L, -3); // points to osc address table
 
         _n += msg_size + 4;
     }
 }
-*/
+
 
 
 int32_t LuaWrapper::getElementSizeInBytes(int index)

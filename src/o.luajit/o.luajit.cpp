@@ -46,7 +46,7 @@ typedef struct _oluajit
     bool                    softlock;
 
     t_critical              lock;
-    
+        
     void *                  outlet;
     
 } t_oluajit;
@@ -223,8 +223,8 @@ int oluajit_FullPacket_to_stack(t_oluajit *x, int argc, t_atom *argv)
         return 0;
     }
     // ==========================
- 
-    x->lua->bndl2table(len, ptr);
+    
+    x->lua->inputOSC(len, ptr);
 
     return 1;
 }
@@ -655,6 +655,10 @@ int C74_EXPORT main(void)
     
     // file watcher callback
     class_addmethod(c, (method)oluajit_filechanged, "filechanged",  A_CANT, 0);
+    
+    //CLASS_ATTR_LONG(c, "ubundle_test", 0, t_oluajit, ubundle_test);
+    //CLASS_ATTR_STYLE_LABEL(c, "ubundle_test", 0, "onoff", "ubundle_test");
+    
     
     class_register(CLASS_BOX, c);
     oluajit_class = c;
