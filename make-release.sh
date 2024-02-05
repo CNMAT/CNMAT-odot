@@ -18,7 +18,7 @@ usage() {
     echo "-z        : Produce a zip file of the release." 1>&2
     echo "-d        : Debug" 1>&2
     echo "" 1>&2
-    
+
     echo "Running this script will cause a fresh clone of the repo " 1>&2
     echo "one level up. If that folder already exists, \`git pull\` will " 1>&2
     echo "be run inside it. " 1>&2
@@ -35,6 +35,16 @@ usage() {
     echo "-o will cause add the platform name (MacOSX, Windows, or Linux), " 1>&2
     echo "and -n [NAME] will insert [NAME] just before the version string." 1>&2
     echo "" 1>&2
+    echo "Process for making a release for the Max Package Manager: " 1>&2
+    echo "1. Build the objects on macOS. " 1>&2
+    echo "2. Run this script with -mz to copy the Max externals and make a zip file. " 1>&2
+    echo "3. Copy that zip file to the Windows build machine and unzip it " 1>&2
+    echo "   in the folder that contains CNMAT-odot. It will produce a folder called odot. " 1>&2
+    echo "4. On the Windows machine, build the objects, then " 1>&2
+    echo "5. run this script with the -mz flags again. " 1>&2
+    echo "   This will copy the Windows externals into the correct folders " 1>&2
+    echo "   so that they're side-by-side the Mac externals, " 1>&2
+    echo "   which is what is needed for the PM. " 1>&2
 }
 
 max=0
