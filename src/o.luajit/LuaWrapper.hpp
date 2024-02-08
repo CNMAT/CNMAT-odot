@@ -92,8 +92,8 @@ public:
     void serializeIntoBuffer(char *ptr, size_t size, bool poptable = true );
     int32_t serializeItem(char *ptr, char *ttptr, int index);
 
-    int32_t getSerializedSizeInBytes();
-    int32_t getElementSizeInBytes(int index);
+    int32_t getSerializedSizeInBytes(bool inList = false);
+    int32_t getElementSizeInBytes(int index, bool inList = false);
     int32_t serializeValueForKey( char *buf, size_t remaining_size, const char * address, int index  );
 
     void inputOSC( long len, char * ptr );
@@ -103,5 +103,6 @@ private:
     lua_State *L = NULL;
     void * parentRef = nullptr;
     std::function<void(std::string&)> error_cb = [](std::string& errStr){ printf("%s\n", errStr.c_str() ); };
-    
+  
+    bool valid = true;
 };

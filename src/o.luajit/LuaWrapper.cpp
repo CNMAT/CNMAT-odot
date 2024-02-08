@@ -1,5 +1,6 @@
 #include "LuaWrapper.hpp"
 
+
 using namespace std;
 
 // stack is already unwound when pcall is finished, so to get full error report
@@ -278,7 +279,7 @@ string LuaWrapper::keyToAddr(int index)
             break;
         case LUA_TSTRING:
         {
-            addr = (char *)lua_tostring(L, -2); //note string memory is owned by lua
+            addr = string( (const char *)lua_tostring(L, index) ); //note string memory is owned by lua
             if( !addr.starts_with("/") ){
                 addr = "/" + addr;
             }
@@ -650,7 +651,7 @@ void LuaWrapper::inputOSC( long len, char * ptr )
 
 
 
-int32_t LuaWrapper::getElementSizeInBytes(int index)
+int32_t LuaWrapper::getElementSizeInBytes(int index, bool inList)
 {
     switch( lua_type(L, index) )
     {
@@ -666,7 +667,7 @@ int32_t LuaWrapper::getElementSizeInBytes(int index)
         }
         case LUA_TTABLE:
         {
-            return getSerializedSizeInBytes() + 4;
+            return getSerializedSizeInBytes(inList) + 4;
         }
     // nothing to do for T, F, or N
         case LUA_TNIL:
@@ -677,15 +678,23 @@ int32_t LuaWrapper::getElementSizeInBytes(int index)
 }
 
 
-int32_t LuaWrapper::getSerializedSizeInBytes()
+int32_t LuaWrapper::getSerializedSizeInBytes(bool inList)
 {
     int32_t _n = OSC_HEADER_SIZE;
 
     if( lua_type(L, -1) != LUA_TTABLE )
         return _n;
 
+    if( lua_objlen(L, -1) > 0 ) // this is a list, but not with an address
+    {
+        string err = "list found at top of stack, OSC requires lists to be assigned to addresses";
+        valid = false;
+        error_cb(err);
+        return 0;
+    }
+    
     lua_pushnil(L);  /* first key */
-    while (lua_next(L, -2) != 0)
+    while( (lua_next(L, -2) != 0) && valid )
     {
         _n += 4;
 
@@ -697,9 +706,61 @@ int32_t LuaWrapper::getSerializedSizeInBytes()
             size_t len = lua_objlen(L, -1);
             _n += osc_util_getPaddingForNBytes( len + 1 );
 
-            if( len > 0 )
+            if( len > 0 ) // list
             {
+                if( inList )
+                {
+                    string err = "list in list at address : " + addr;
+                    error_cb(err);
+                    valid = false;
+                    return 0;
+                }
+                
+                
+                lua_pushnil(L);
+                while (lua_next(L, -2) != 0)
+                {
+                    // test for list within list and extra keys in list
+                    
+                    // key test
+                    if( lua_type(L, -2) == LUA_TNUMBER )
+                    {
+                        double f = lua_tonumber(L, -2);
+                        if( (f != (long)f ) || (f < 1) || (f > len) )
+                        {
+                            string err = "non-index numeric key " + to_string(f) + " in list at address: " + addr;
+                            err += "\n please restructure table to not mix list and non-list keys.";
+                            error_cb(err);
+                            valid = false;
+                            return 0;
+                        }
+                    }
+                    else
+                    {
+                        string list_key;
+                        if( lua_type(L, -2) == LUA_TSTRING )
+                            list_key = string( lua_tostring(L, -2) );
+                        
+                        string err = "non number key " + list_key + " found in list at address: " + addr;
+                        err += "\n please restructure table to not mix list and non-list keys.";
+                        error_cb(err);
+                        valid = false;
+                        return 0;
+                    }
+                    
+                    _n += getElementSizeInBytes(-1, true);
+                    if(!valid) {
+                        string err = "list in list found at: " + addr;
+                        err += "\n please restructure table for OSC parsing.";
 
+                        error_cb(err);
+                        return 0;
+                    }
+                    
+                    lua_pop(L,1);
+                }
+
+                /*
                 // list of values with numeric indexes
                 for( int i = 1; i < len+1; i++ ) // lua is 1 indexed
                 {
@@ -708,13 +769,13 @@ int32_t LuaWrapper::getSerializedSizeInBytes()
                     _n += getElementSizeInBytes(-1);
                     
                     lua_pop(L,1);
-                }
+                }*/
             }
-            else
+            else // key/value pairs
             {
-                _n += getSerializedSizeInBytes() + 4;
+                _n += getSerializedSizeInBytes(inList) + 4;
             }
-
+            
         }
         else
         {
@@ -722,7 +783,9 @@ int32_t LuaWrapper::getSerializedSizeInBytes()
 
             string addr = keyToAddr(-2);
             _n += osc_util_getPaddingForNBytes( addr.size() );
-            _n += getElementSizeInBytes(-1);
+            long nn = getElementSizeInBytes(-1, inList);
+            _n += nn;
+            //printf("debug not table addr %s size %ld\n", addr.c_str(), nn);
 
         }
         
@@ -764,8 +827,8 @@ int32_t LuaWrapper::serializeValueForKey(char *buf,
     
     size_t len = 1;
     bool isList = false;
-    
-    if( lua_type(L,index) == LUA_TTABLE )
+
+    if( lua_type(L, index) == LUA_TTABLE )
     {
         len = lua_objlen(L, index);
         isList = len > 0;
@@ -889,8 +952,9 @@ void LuaWrapper::serializeIntoBuffer(char *ptr, size_t size, bool poptable )
     lua_pushnil(L);  // first key
     while (lua_next(L, -2) != 0)
     {
+        
         string addr = keyToAddr(-2);
-
+        
         _n += serializeValueForKey(ptr + _n,
                              size - _n,
                              addr.c_str(),
@@ -905,17 +969,37 @@ void LuaWrapper::serializeIntoBuffer(char *ptr, size_t size, bool poptable )
         lua_pop(L, 1);
 
 
-   // printf("_n %ld \n", _n);
-
+    // printf("serialized _n %ld \n", _n);
+    // maybe return this just to make sure it's the same
 }
 
 std::string LuaWrapper::getSerializedString()
 {
-    string buf;
+    valid = true;
     size_t len = getSerializedSizeInBytes();
-    buf.resize(len);
-
-    serializeIntoBuffer(buf.data(), len, false);
-
+    
+    string buf;
+    
+    if( valid )
+    {
+        buf.resize(len);
+        serializeIntoBuffer(buf.data(), len, false);
+    }
+    
     return buf;
+}
+
+
+
+// placeholder for FFI library extention
+// would be nice to be able to print to the max console from lua
+extern "C" {
+
+//for windows: __declspec(dllexport) int __cdecl barfunc(int foo)
+
+int barfunc(int foo)
+{
+    return foo + 1;
+}
+
 }

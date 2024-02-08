@@ -312,10 +312,13 @@ void oluajit_anything(t_oluajit *x, t_symbol *s, int argc, t_atom *argv)
     x->lua->callFunction(func_name, argcount, 1); // to do someday: make option to set number of return values?
     string outputOSC = x->lua->getSerializedString();
     x->lua->clearStack(); // important: clear stack after getting return value (otherwise leads to stack overflow)
+    
     critical_exit(x->lock);
-        
-    omax_util_outletOSC(x->outlet, outputOSC.size(), outputOSC.data() );
 
+    if( outputOSC.size() )
+    {
+        omax_util_outletOSC(x->outlet, outputOSC.size(), outputOSC.data() );
+    }
 }
     
 // >> file read system
