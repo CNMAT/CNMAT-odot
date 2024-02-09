@@ -87,6 +87,18 @@
 						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
+									"id" : "obj-50",
+									"maxclass" : "message",
+									"numinlets" : 2,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 106.0, 161.0, 56.0, 22.0 ],
+									"text" : "testPrint"
+								}
+
+							}
+, 							{
+								"box" : 								{
 									"id" : "obj-49",
 									"linecount" : 4,
 									"maxclass" : "message",
@@ -494,7 +506,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 22.0, 289.5, 121.0, 35.0 ],
-									"text" : "FullPacket 40 105553132277840"
+									"text" : "FullPacket 16 6158398344"
 								}
 
 							}
@@ -707,9 +719,8 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 50.0, 342.5, 292.0, 23.0 ],
-									"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 109, 105, 100, 105, 0, 0, 0, 44, 100, 0, 0, 64, 81, 64, 0, 0, 0, 0, 0 ],
-									"saved_bundle_length" : 40,
-									"text" : "/midi : 69."
+									"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
+									"saved_bundle_length" : 16
 								}
 
 							}
@@ -1047,6 +1058,13 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-3", 0 ],
+									"source" : [ "obj-50", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-3", 0 ],
 									"source" : [ "obj-6", 0 ]
 								}
 
@@ -1187,7 +1205,6 @@
 						"style" : "",
 						"subpatcher_template" : "",
 						"assistshowspatchername" : 0,
-						"visible" : 1,
 						"boxes" : [ 							{
 								"box" : 								{
 									"id" : "obj-43",

@@ -14,6 +14,7 @@
 #include "odot_version.h"
 
 #include "LuaWrapper.hpp"
+#include "LuaMaxFFI.hpp"
 
 #define NAME "o.luajit"
 #define DESCRIPTION ""
@@ -31,6 +32,9 @@ typedef struct _oluajit
     t_object                ob;
 
     unique_ptr<LuaWrapper>  lua;
+    
+    unique_ptr<LuaMaxFFI>   lua_maxFFI;
+
     string                  packagePath;
     string                  filename;
     t_filepath              pathID;
@@ -413,6 +417,9 @@ void oluajit_doRead(t_oluajit *x, t_symbol *s, long argc, t_atom *argv)
     
     x->lua->reset(); // probably not necessary here at the moment, since this is only called on first init
     x->lua->evalString(x->packagePath.c_str()); // add folder of loaded file in lua search path
+    
+    x->lua_maxFFI->init((t_object *)x, x->lua->ptr());
+
     x->lua->loadFile(x->fullpath);
     
     critical_exit(x->lock);
@@ -436,6 +443,7 @@ void oluajit_reread(t_oluajit *x)
     // reread file
     x->lua->reset();
     x->lua->evalString(x->packagePath.c_str()); // add folder of loaded file in lua search path
+    x->lua_maxFFI->init((t_object *)x, x->lua->ptr());
     x->lua->loadFile(x->fullpath);
     
     critical_exit(x->lock);
@@ -453,6 +461,7 @@ void oluajit_filechanged(t_oluajit *x, char *filename, t_filepath path)
     // reread file
     x->lua->reset();
     x->lua->evalString(x->packagePath.c_str()); // add folder of loaded file in lua search path
+    x->lua_maxFFI->init((t_object *)x, x->lua->ptr());
     x->lua->loadFile(x->fullpath);
     
     critical_exit(x->lock);
@@ -587,6 +596,13 @@ void *oluajit_new(t_symbol* s, short argc, t_atom* argv)
             object_error((t_object *)x, "%s\n", errStr.c_str() );
         });
         
+        x->lua_maxFFI = make_unique<LuaMaxFFI>();
+        
+        /*
+        x->lua->setPrintCallback([x](const char * str){
+            object_post((t_object *)x, "%s\n", str);
+        });
+        */
         
         x->pathID = 0;
         

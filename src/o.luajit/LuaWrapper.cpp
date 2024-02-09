@@ -988,18 +988,3 @@ std::string LuaWrapper::getSerializedString()
     
     return buf;
 }
-
-
-
-// placeholder for FFI library extention
-// would be nice to be able to print to the max console from lua
-extern "C" {
-
-//for windows: __declspec(dllexport) int __cdecl barfunc(int foo)
-
-int barfunc(int foo)
-{
-    return foo + 1;
-}
-
-}

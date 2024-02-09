@@ -518,7 +518,6 @@
 		52F0C48117B581CC009FBD24 /* libomax.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5C6163763CF0016EC39 /* libomax.a */; };
 		52F0C48717B581FF009FBD24 /* o.O.c in Sources */ = {isa = PBXBuildFile; fileRef = 52F0C48617B581FF009FBD24 /* o.O.c */; };
 		5FE95BF328FC582400422BD1 /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 52B1DFE92735C9F800B0F648 /* commonsyms.c */; };
-		5FE95BF628FC582400422BD1 /* MaxAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B1DF7D2735C9D900B0F648 /* MaxAPI.framework */; };
 		5FE95BF728FC582400422BD1 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */; };
 		5FE95BF828FC582400422BD1 /* MaxAudioAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B1DFB32735C9E900B0F648 /* MaxAudioAPI.framework */; };
 		5FE95BF928FC582400422BD1 /* libo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5AD163763BD0016EC39 /* libo.a */; };
@@ -526,6 +525,10 @@
 		5FE95C0228FC591900422BD1 /* o.luajit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5FE95C0028FC591900422BD1 /* o.luajit.cpp */; };
 		5FE95C0328FC591900422BD1 /* LuaWrapper.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 5FE95C0128FC591900422BD1 /* LuaWrapper.hpp */; };
 		5FE95C0628FD685600422BD1 /* LuaWrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5FE95C0528FD685600422BD1 /* LuaWrapper.cpp */; };
+		5FF2AD922B75EF7000B499D9 /* LuaMaxFFI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5FF2AD902B75EF7000B499D9 /* LuaMaxFFI.cpp */; };
+		5FF2AD932B75EF7000B499D9 /* LuaMaxFFI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5FF2AD902B75EF7000B499D9 /* LuaMaxFFI.cpp */; };
+		5FF2AD942B75EF7000B499D9 /* LuaMaxFFI.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 5FF2AD912B75EF7000B499D9 /* LuaMaxFFI.hpp */; };
+		5FF2AD952B75EF7000B499D9 /* LuaMaxFFI.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 5FF2AD912B75EF7000B499D9 /* LuaMaxFFI.hpp */; };
 		9B3930CD195A286D002EDAE5 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */; };
 		9B3930CE195A286D002EDAE5 /* libo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5AD163763BD0016EC39 /* libo.a */; };
 		9B3930CF195A286D002EDAE5 /* libomax.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CEF5C6163763CF0016EC39 /* libomax.a */; };
@@ -2025,6 +2028,8 @@
 		5FE95C0128FC591900422BD1 /* LuaWrapper.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = LuaWrapper.hpp; path = o.luajit/LuaWrapper.hpp; sourceTree = "<group>"; };
 		5FE95C0528FD685600422BD1 /* LuaWrapper.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = LuaWrapper.cpp; path = o.luajit/LuaWrapper.cpp; sourceTree = "<group>"; };
 		5FE95C0728FD9BE700422BD1 /* test-script.lua */ = {isa = PBXFileReference; lastKnownFileType = text; name = "test-script.lua"; path = "o.luajit/test-script.lua"; sourceTree = "<group>"; };
+		5FF2AD902B75EF7000B499D9 /* LuaMaxFFI.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = LuaMaxFFI.cpp; path = o.luajit/LuaMaxFFI.cpp; sourceTree = "<group>"; };
+		5FF2AD912B75EF7000B499D9 /* LuaMaxFFI.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = LuaMaxFFI.hpp; path = o.luajit/LuaMaxFFI.hpp; sourceTree = "<group>"; };
 		9B3930D3195A286D002EDAE5 /* o.compose.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.compose.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B3930E3195A2898002EDAE5 /* o.display.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = o.display.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B3930F4195A296C002EDAE5 /* o.compose.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = o.compose.c; path = o.compose/o.compose.c; sourceTree = "<group>"; };
@@ -2836,7 +2841,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5FE95BF628FC582400422BD1 /* MaxAPI.framework in Frameworks */,
 				5FE95BF728FC582400422BD1 /* Carbon.framework in Frameworks */,
 				5FE95BF828FC582400422BD1 /* MaxAudioAPI.framework in Frameworks */,
 				5FE95BF928FC582400422BD1 /* libo.a in Frameworks */,
@@ -3127,6 +3131,8 @@
 				5FE95C0128FC591900422BD1 /* LuaWrapper.hpp */,
 				5FE95C0528FD685600422BD1 /* LuaWrapper.cpp */,
 				5FE95C0728FD9BE700422BD1 /* test-script.lua */,
+				5FF2AD902B75EF7000B499D9 /* LuaMaxFFI.cpp */,
+				5FF2AD912B75EF7000B499D9 /* LuaMaxFFI.hpp */,
 			);
 			name = "luajit-wrapper";
 			sourceTree = "<group>";
@@ -3419,6 +3425,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5FF2AD952B75EF7000B499D9 /* LuaMaxFFI.hpp in Headers */,
 				21CA8A1E216B40A2009FDBCF /* o.lookup~.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3637,6 +3644,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5FF2AD942B75EF7000B499D9 /* LuaMaxFFI.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6356,6 +6364,7 @@
 			files = (
 				52B1E01E2735C9F800B0F648 /* commonsyms.c in Sources */,
 				21CA8A1D216B40A2009FDBCF /* o.lookup~.cpp in Sources */,
+				5FF2AD932B75EF7000B499D9 /* LuaMaxFFI.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6633,6 +6642,7 @@
 			files = (
 				52B1DFEA2735C9F800B0F648 /* commonsyms.c in Sources */,
 				52A8394A16E978E6002E273C /* o.append.c in Sources */,
+				5FF2AD922B75EF7000B499D9 /* LuaMaxFFI.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

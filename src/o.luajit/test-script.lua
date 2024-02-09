@@ -1,5 +1,5 @@
 
-lib = require("oluajit_module")
+local lib = require("oluajit_module")
 
 --[[
     adds message to input bndl (now a lua table)
@@ -72,4 +72,8 @@ function ntom(bndl)
     elseif bndl["/notes"] ~= nil then
         return { midi=lib.ntom(bndl["/notes"]) }
     end
+end
+
+function testPrint(args)
+	oluajit.max_print("hello max!")
 end

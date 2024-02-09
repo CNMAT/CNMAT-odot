@@ -13,6 +13,7 @@
 #include "osc_message_iterator_s.h"
 #include "osc_mem.h"
 
+
 class LuaWrapper
 {
 public:
@@ -105,4 +106,7 @@ private:
     std::function<void(std::string&)> error_cb = [](std::string& errStr){ printf("%s\n", errStr.c_str() ); };
   
     bool valid = true;
+    
+
 };
+
