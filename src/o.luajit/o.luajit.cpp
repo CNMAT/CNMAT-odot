@@ -56,7 +56,7 @@ typedef struct _oluajit
 } t_oluajit;
 
 
-
+/*
 void oluajit_FullPacket(t_oluajit *x, t_symbol *msg, int argc, t_atom *argv)
 {
     
@@ -179,7 +179,7 @@ void oluajit_FullPacket(t_oluajit *x, t_symbol *msg, int argc, t_atom *argv)
    
         
 }
-
+*/
 int oluajit_FullPacket_to_stack(t_oluajit *x, int argc, t_atom *argv)
 {
     // OMAX_UTIL_GET_LEN_AND_PTR
@@ -648,7 +648,7 @@ int C74_EXPORT main(void)
     t_class *c = class_new("o.luajit", (method)oluajit_new, (method)oluajit_free, sizeof(t_oluajit), 0L, A_GIMME, 0);
     
     class_addmethod(c, (method)oluajit_assist,      "assist",       A_CANT,     0);
-    class_addmethod(c, (method)oluajit_FullPacket,  "FullPacket",   A_GIMME,    0);
+   // class_addmethod(c, (method)oluajit_FullPacket,  "FullPacket",   A_GIMME,    0);
     
     class_addmethod(c, (method)oluajit_anything,    "anything",     A_GIMME,    0);
 

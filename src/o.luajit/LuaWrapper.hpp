@@ -1,17 +1,7 @@
 #pragma once
 
 #include <string>
-#include <iostream>
-#include <chrono>
 #include "lua.hpp"
-
-#include "osc.h"
-
-#include "osc_bundle_s.h"
-#include "osc_bundle_iterator_s.h"
-#include "osc_message_s.h"
-#include "osc_message_iterator_s.h"
-#include "osc_mem.h"
 
 
 class LuaWrapper
@@ -51,17 +41,19 @@ public:
     
     inline void clearStack(){ lua_settop(L, 0); }
     inline void garbageCollection(){ lua_gc(L, LUA_GCCOLLECT, 0); }
-    
+    /*
     void bndl2table(long len, char *ptr);
     inline void bndl2table(t_osc_bndl_s *bndl){
         bndl2table( osc_bundle_s_getLen(bndl), osc_bundle_s_getPtr(bndl) );
     }
-
-    void valToMsg(int index, t_osc_msg_u* msg);
-    std::string keyToAddr(int index);
+     void valToMsg(int index, t_osc_msg_u* msg);
+     
+     // assumes table is top of stack >>
+     t_osc_bundle_u *table2bundle(bool poptable = true);
+    */
     
-    // assumes table is top of stack >>
-    t_osc_bundle_u *table2bundle(bool poptable = true);
+    std::string keyToAddr(int index);
+   
     
     template <typename T>
     void tableAddVector(const char* key, std::vector<T> vec);
