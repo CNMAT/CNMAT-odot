@@ -77,3 +77,14 @@ end
 function testPrint(args)
 	oluajit.max_print("hello max!")
 end
+
+function refTest(args)
+	local t = {{},{}}
+	local a = t[1]
+	local b = t[2]
+	a.foo = 1
+	b.bar = 2
+	return {
+		t=t
+	}
+end
