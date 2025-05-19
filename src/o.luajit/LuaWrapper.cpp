@@ -513,7 +513,7 @@ int32_t LuaWrapper::getSerializedSizeInBytes(bool inList)
 
     if( lua_objlen(L, -1) > 0 ) // this is a list, but not with an address
     {
-        string err = "list found at top of stack, OSC requires lists to be assigned to addresses";
+        string err = "list found at top of stack, OSC requires lists to be assigned to addresses. could be missing argument in lua function?";
         valid = false;
         error_cb(err);
         return 0;

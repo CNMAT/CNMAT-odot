@@ -1,4 +1,19 @@
 
+#define NAME "o.luajit"
+#define DESCRIPTION ""
+#define AUTHORS "Rama Gottfried"
+#define COPYRIGHT_YEARS "2022-present"
+
+#define OMAX_DOC_NAME "o.luajit"
+#define OMAX_DOC_INLETS_DESC (char *[]){"(message) name of function to call, followed by optional OSC bundle argument"}
+#define OMAX_DOC_OUTLETS_DESC (char *[]){"The OSC packet containing the results of the expression"}
+
+#define OMAX_DOC_SHORT_DESC "Process OSC bundles with Luajit."
+#define OMAX_DOC_LONG_DESC "o.luajit accepts OSC bundles, which are used as arguments to a lua function, defined in the linked lua file. After evaluation, the called function returns a bundle with the results."
+#define OMAX_DOC_SEEALSO (char *[]){"o.expr.codebox", "jit.gl.lua"}
+
+
+
 #include "ext.h"
 #include "ext_obex.h"
 #include "ext_critical.h"
@@ -16,12 +31,9 @@
 #include "LuaWrapper.hpp"
 #include "LuaMaxFFI.hpp"
 
-#define NAME "o.luajit"
-#define DESCRIPTION ""
-#define AUTHORS "Rama Gottfried"
-#define COPYRIGHT_YEARS "2022"
-#define OMAX_DOC_INLETS_DESC (char *[]){"(message) name of function to call, followed by optinoal OSC bundle argument"}
-#define OMAX_DOC_OUTLETS_DESC (char *[]){"The OSC packet containing the results of the expression"}
+
+
+
 
 using namespace std;
 
@@ -272,10 +284,11 @@ void oluajit_anything(t_oluajit *x, t_symbol *s, int argc, t_atom *argv)
     {
         switch (atom_gettype(ap)) {
             case A_LONG:
-                post("%ld: %ld",i+1,atom_getlong(ap));
-                break;
+                //post("%ld: %ld",i+1,atom_getlong(ap));
+                //break;
             case A_FLOAT:
-                post("%ld: %.2f",i+1,atom_getfloat(ap));
+                //post("%ld: %.2f",i+1,atom_getfloat(ap));
+                //object_error((t_object *)x, "received number as argument, o.luajit expects 1 bundle as an argument.");
                 break;
             case A_SYM:
             {
@@ -302,7 +315,8 @@ void oluajit_anything(t_oluajit *x, t_symbol *s, int argc, t_atom *argv)
                 else
                 {
                     // eventually probably add to stack here...
-                    post("%ld: %s",i+1, str);
+                    //post("%ld: %s",i+1, str);
+                    object_error((t_object *)x, "received symbol as argument, o.luajit expects 1 bundle as an argument.");
                 }
                 break;
             }
@@ -583,6 +597,8 @@ void oluajit_free(t_oluajit *x)
 
 }
 
+//OMAX_DICT_DICTIONARY(t_oluajit, x, oluajit_FullPacket_to_stack);
+
 void *oluajit_new(t_symbol* s, short argc, t_atom* argv)
 {
     t_oluajit *x = (t_oluajit *)object_alloc(oluajit_class);
@@ -657,7 +673,7 @@ int C74_EXPORT main(void)
     
     class_addmethod(c, (method)oluajit_reread,      "reread",   0); // reloads loaded file
 
-    //class_addmethod(c, (method)oluajit_doc, "doc", 0);
+    class_addmethod(c, (method)oluajit_doc, "doc", 0);
    // class_addmethod(c, (method)oluajit_bang, "bang", 0);
 
     //class_addmethod(c, (method)omax_dict_dictionary, "dictionary", A_GIMME, 0);

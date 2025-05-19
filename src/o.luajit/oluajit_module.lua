@@ -1,13 +1,38 @@
 local module = {}
 
+module.print = function(msg)
+    oluajit.max_print(module.obj2string(msg))
+end
+
+module.isEmpty = function(t)
+    local next = next(t)
+    return (next == nil)
+end
+
+module.isBound = function(v)
+    return (v ~= nil)
+end
+
 -- step not implemented yet
  module.aseq = function( from, to, step )
     local ret = {}
     for i=from,to do
         table.insert(ret, i)
     end
-    return ret
+     setmetatable(ret, module.metatable)
+     return ret
 end
+
+module.nfill = function(n, v)
+    local out = {}
+    for i in n do
+        table.insert(out, v)
+    end
+    setmetatable(out, module.metatable)
+    return out
+end
+
+
 
 module.mapFn = function(val_, fn_)
     if type(val_) == 'table' then
@@ -15,25 +40,147 @@ module.mapFn = function(val_, fn_)
         for i,v in ipairs(val_) do
             out[i] = fn_(v)
         end
+        setmetatable(out, module.metatable)
         return out
     else
         return fn_(val_)
     end
 end
 
-module.scale = function(in_val, in_min, in_max, out_min, out_max)
-    local in_range = in_max - in_min;
-    if in_range == 0 then
-        in_range = 1
+module.length = function(v)
+    if type(v) == 'table' then
+        return #v
+    else
+        return 1
+    end
+end
+
+module.getByKey = function(t, k)
+    if type(t) == 'table' then
+        local out = {}
+
+        if type(k) == 'table' then
+            for i,v in ipairs(k) do
+                out[i] = t[v]
+            end
+        else
+            out[1] = t[k]
+        end
+
+        setmetatable(out, module.metatable)
+        return out
+    else
+        return t -- or {t}
     end
 
-    return module.mapFn( in_val, 
+    return module.mapFn( k,
+            function(_k)
+                return t[_k]
+            end
+    )
+end
+
+-- sort a list and return sorted idx
+module.sortIDX = function(t)
+    if type(t) == 'table' and #t ~= 0 then
+        local sorted = {}
+        for k, v in pairs(t) do
+            table.insert(sorted,{k,v})
+        end
+
+        table.sort(sorted, function(a,b) return a[2] < b[2] end)
+
+        local sortedIDX = {}
+        for i, v in ipairs(sorted) do
+            sortedIDX[i] = v[1]
+        end
+
+        setmetatable(sortedIDX, module.metatable)
+
+        return sortedIDX
+    else
+        return 1
+    end
+
+end
+
+-- sort a list and return sorted copy
+module.sort = function(t)
+    if type(t) == 'table' and #t ~= 0 then
+        local sorted = {}
+
+        for _, v in pairs(t) do
+            table.insert(sorted, v)
+        end
+
+        table.sort(sorted, function(a,b) return a < b end)
+
+        setmetatable(sorted, module.metatable)
+
+        return sorted
+    else
+        return 1
+    end
+
+end
+
+module.scale = function(in_val, in_min, in_max, out_min, out_max)
+
+    local m = (out_max - out_min) / (in_max - in_min);
+    local b = (out_min - (m * in_min));
+
+    return module.mapFn( in_val,
         function(x) 
-            return (( (x - in_min) / in_range) * (out_max - out_min)) + out_min 
+            return m * x + b
         end 
     )
 end
 
+
+module.deepCopy = function(orig)
+    local orig_type = type(orig)
+    local copy
+    if orig_type == 'table' then
+        copy = {}
+        for orig_key, orig_value in next, orig, nil do
+            copy[module.deepCopy(orig_key)] = module.deepCopy(orig_value)
+        end
+        setmetatable(copy, module.deepCopy(getmetatable(orig)))
+    else -- number, string, boolean, etc
+        copy = orig
+    end
+    return copy
+end
+
+---@return table out, unioned copy of a, overwritten by added values from b
+module.union = function(a,b)
+    if not a then
+        return b
+    elseif not b then
+        return a
+    end
+
+    local out = module.deepCopy(a)
+    if type(b) == 'table' then
+        for k,v in pairs(b) do
+            out[k] = v
+        end
+    end
+    return out
+end
+
+module.slashify = function(t, sep2slash)
+    local out = {}
+    for k,v in pairs(t) do
+        local addr = "/" .. string.gsub(k, sep2slash, "/")
+        if type(v) == 'table' then
+            out[addr] = module.slashify(v, sep2slash)
+        else
+            out[addr] = v
+        end
+    end
+    return out
+end
 
 module.wrap = function(in_val, x_min, x_max)
     local range = x_max - x_min;
@@ -45,25 +192,94 @@ module.wrap = function(in_val, x_min, x_max)
     ) 
 end
 
+module.int32 = function(in_val)
+    return module.mapFn( in_val,
+            function(x)
+                return math.floor( x );
+            end
+    )
+end
+
+module.sign = function(in_val)
+    return module.mapFn( in_val,
+            function(x)
+                if x < 0 then
+                    return -1
+                elseif x > 0 then
+                    return 1
+                else
+                    return 0
+                end
+            end
+    )
+end
+
+
+
 module.clip = function(in_val, min, max)
+
+    local _min = math.min(min, max)
+    local _max = math.max(min, max)
 
     return module.mapFn( in_val, 
         function(x)
-            return math.min(math.max(x, min), max)
+            return math.min(math.max(x, _min), _max)
         end
     )
 end
 
-module.scale_clip = function(in_val, in_min, in_max, out_min, out_max)
-    local in_range = in_max - in_min;
-    if in_range == 0 then
-        in_range = 1
-    end
+module.fold = function(in_val, lo1, hi1)
+    return module.mapFn( in_val,
+            function( v )
+                local lo
+                local hi
+                if(lo1 == hi1) then
+                    return lo1
+                end
 
-    return module.mapFn( in_val, 
-        function(x) 
-            return clip( (( (x - in_min) / in_range) * (out_max - out_min)) + out_min, out_min, out_max)
-        end 
+                if (lo1 > hi1) then
+                    hi = lo1;
+                    lo = hi1;
+                else
+                    lo = lo1;
+                    hi = hi1;
+                end
+
+                local range = hi - lo;
+                local numWraps = 0;
+                if(v >= hi) then
+                    v = v - range;
+                    if(v >= hi) then
+                        numWraps = math.floor((v - lo)/range);
+                        v = v - range * numWraps;
+                    end
+                    numWraps = numWraps + 1
+                elseif v < lo then
+                    v = v + range;
+                    if(v < lo) then
+                        numWraps = math.floor((v - lo)/range);
+                        v = v - range * numWraps;
+                    end
+                    numWraps = numWraps - 1
+                end
+
+                if (math.abs(numWraps) % 2) == 1 then
+                    v = hi + lo - v
+                end
+                return v
+            end
+    )
+end
+
+module.scale_clip = function(in_val, in_min, in_max, out_min, out_max)
+
+    local m = (out_max - out_min) / (in_max - in_min);
+    local b = (out_min - (m * in_min));
+
+    return module.mapFn( in_val,
+            function(x)
+                return module.clip(m * x + b, out_min, out_max)
+            end
     )
 end
 
@@ -86,24 +302,18 @@ module.round = function(in_val)
 end
 
 module.mtof = function(in_val, a4)
-    local refHz = 440.
-    if a4 ~= nil then
-        refHz = a4
-    end
+    local refHz = a4 or 440.
 
     return module.mapFn(in_val, function(x)
-        return a4 * math.pow(2., (x - 69.) / 12.) ;
+        return refHz * math.pow(2., (x - 69.) / 12.) ;
     end)
 end
 
-module.mtof = function(in_val, a4)
-    local refHz = 440.
-    if a4 ~= nil then
-        refHz = a4
-    end
+module.ftom = function(in_val, a4)
+    local refHz = a4 or 440.
 
     return module.mapFn(in_val, function(x)
-        return 69.0 + (12.0 * math.log( x / a4, 2. ));
+        return 69.0 + (12.0 * math.log( x / refHz, 2. ));
     end)
 end
 
@@ -199,21 +409,22 @@ end
 
 -- Metatable setup
 
-function metaMapFn(a, b, fn_)
+local function metaMapFn(a, b, fn_)
     local out = {}
 
+    local a_tab = type(a) == 'table' and a or setmetatable({a}, module.metatable)
     local type2 = type(b)
     if type2 == 'table' then --indexwise
-        local shorterTab = #a < #b and a or b
+        local shorterTab = #a_tab < #b and a_tab or b
         for i,v in ipairs(shorterTab) do
-            out[i] = fn_( a[i], b[i] ) --assumes that the arrays have the same indexes
+            out[i] = fn_( a_tab[i], b[i] ) --assumes that the arrays have the same indexes
         end
     else --scalar
-        for i,v in ipairs(a) do
-            out[i] = fn_( a[i], b )
+        for i,v in ipairs(a_tab) do
+            out[i] = fn_( a_tab[i], b )
         end
     end
-
+    setmetatable(out, module.metatable)
     return out
 end
 
@@ -276,10 +487,68 @@ metaFn.__le = function(a,b)
     end)
 end
 
+metaFn.__ge = function(a,b)
+    return metaMapFn(a,b, function(x,y)
+        return x >= y
+    end)
+end
+
 module.metatable = metaFn
 
 
+module.setMetatable = function(t)
+    if type(t) == 'table' then
+        for k, v in pairs(t) do
+            module.setMetatable(v)
+        end
+        return setmetatable(t, module.metatable)
+    else
+        return t
+    end
+end
 
 
+local function linearInterp(a,b,t)
+    return a + ((b - a) * t)
+end
+
+-- interpolate all matching addresses
+module.interpolate = function(a, b, t)
+    if type(a) == 'table' and type(b) == 'table' then
+        module.setMetatable(a)
+        module.setMetatable(b)
+
+        if #a > 0 and #b > 0 then
+            return linearInterp(a, b, t)
+        else
+            local out = {}
+            for k,v in pairs(a) do
+                if b[k] ~= nil then
+                    out[k] = module.interpolate(v, b[k], t)
+                else
+                    out[k] = v -- include, but don't interpolate things not in table b
+                end
+            end
+            return out
+        end
+    elseif type(a) == 'function' or type(b) == 'function' then
+        return a
+    else
+        return linearInterp(a,b,t)
+    end
+
+end
+
+module.getFunctions = function(bndl)
+    local out = {}
+    for key, item in pairs(module) do
+        if type(item) == "function" then
+            table.insert(out, key)
+        end
+    end
+    return {
+        moduleFunctions = module.sort(out)
+    }
+end
 
 return module
