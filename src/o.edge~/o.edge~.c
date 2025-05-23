@@ -139,6 +139,7 @@ void oedge_perform64(t_oedge *x, t_object *dsp64, double **ins, long numins, dou
 	schedule_delay(x, (method)oedge_callback, 0, NULL, vectorsize + 4, x->av);
 }
 
+#ifndef WIN_VERSION
 t_int *oedge_perform(t_int *w) 
 {
 	t_oedge *x = (t_oedge *)(w[1]);
@@ -160,6 +161,17 @@ t_int *oedge_perform(t_int *w)
 	return w + 4;
 }
 
+void oedge_dsp(t_oedge *x, t_signal **sp, short *count)
+{
+	x->gettime = 1;
+	omax_realtime_clock_register(x);
+	x->blockcount = 0;
+	oedge_alloc_atom_array(x, sp[0]->s_n);
+	atom_setlong(x->av, sp[0]->s_sr);
+	dsp_add(oedge_perform, 3, x, sp[0]->s_vec, sp[0]->s_n);
+}
+#endif
+
 void oedge_alloc_atom_array(t_oedge *x, int n)
 {
 	if(n + 4 != x->ac){
@@ -178,15 +190,7 @@ void oedge_dsp64(t_oedge *x, t_object *dsp64, short *count, double samplerate, l
 	object_method(dsp64, gensym("dsp_add64"), x, oedge_perform64, 0, NULL);
 }
 
-void oedge_dsp(t_oedge *x, t_signal **sp, short *count)
-{
-	x->gettime = 1;
-	omax_realtime_clock_register(x);
-	x->blockcount = 0;
-	oedge_alloc_atom_array(x, sp[0]->s_n);
-	atom_setlong(x->av, sp[0]->s_sr);
-	dsp_add(oedge_perform, 3, x, sp[0]->s_vec, sp[0]->s_n);
-}
+
 
 //OMAX_DICT_DICTIONARY(t_oedge, x, oedge_fullPacket);
 
@@ -258,7 +262,9 @@ int main(void)
 	//class_addmethod(c, (method)oedge_fullPacket, "FullPacket", A_GIMME, 0);
 	class_addmethod(c, (method)oedge_assist, "assist", A_CANT, 0);
 	class_addmethod(c, (method)oedge_doc, "doc", 0);
+	#ifndef WIN_VERSION
     	class_addmethod(c, (method)oedge_dsp, "dsp", A_CANT, 0);
+	#endif
     	class_addmethod(c, (method)oedge_dsp64, "dsp64", A_CANT, 0);
 	//class_addmethod(c, (method)oedge_bang, "bang", 0);
 	//class_addmethod(c, (method)oedge_anything, "anything", A_GIMME, 0);

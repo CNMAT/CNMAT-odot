@@ -1244,7 +1244,7 @@ void *ocompose_new(t_symbol *msg, short argc, t_atom *argv){
         if ( ac != 0 ) {
             char* saved_bundle = osc_mem_alloc( ac );
             for ( long i = 0; i < ac; ++i ) {
-                saved_bundle[ i ] = (char *)atom_getlong( &av[ i ] );
+                saved_bundle[ i ] = (char)atom_getlong( &av[ i ] );
             }
             //post( "bundle : %s", saved_bundle );
             /* x->bndl_s = osc_bundle_s_alloc( ac, saved_bundle ); */

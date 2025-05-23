@@ -45,7 +45,9 @@ o.table \
 o.timetag.join~ \
 o.timetag.split~ \
 o.timetag~ \
-o.validate
+o.validate \
+o.lookup~ \
+o.luajit
 
 EXTERNALS_MXE64 = $(foreach f, $(EXTERNALS_BASENAMES), $(f).mxe64)
 DEPRECATED_MXE64 = $(foreach f, $(DEPRECATED_BASENAMES), $(f).mxe64)
@@ -64,13 +66,20 @@ MSP_INCLUDES = $(C74SUPPORT)/msp-includes
 PLATFORM = Windows
 
 win64: EXT = .mxe64
-win64: CC = /mingw64/bin/x86_64-w64-mingw32-gcc
+win64: CC = gcc
 win64: LD = $(CC)
 win64: LIBS = -L../../libomax -lomax -L$(MAX_INCLUDES) -L$(MSP_INCLUDES) -lx64/MaxAPI -lx64/MaxAudio -L../../libo -lo -lws2_32 $(C74SUPPORT)/max-includes/x64/MaxAPI.lib
 
 INCLUDES = -I$(MAX_INCLUDES) -I$(MSP_INCLUDES) -I../../libo -I../../libomax -Iinclude
-CFLAGS += -DWIN_VERSION -DWIN_EXT_VERSION -U__STRICT_ANSI__ -U__ANSI_SOURCE -std=c99 -O3 -DNO_TRANSLATION_SUPPORT -DWIN32_LEAN_AND_MEAN
+BASE_CFLAGS = -DWIN_VERSION -DWIN_EXT_VERSION -O3 -DNO_TRANSLATION_SUPPORT -DWIN32_LEAN_AND_MEAN
+
+CFLAGS += $(BASE_CFLAGS) -std=c99 -U__STRICT_ANSI__ -U__ANSI_SOURCE
 LDFLAGS = -shared -static -static-libgcc
+
+win64: CXX = g++
+win64: LIBS_CPP = $(LIBS) -lstdc++ # Add C++ standard library
+CXXFLAGS += $(BASE_CFLAGS) -std=c++20 -fext-numeric-literals
+LDFLAGS_CPP = $(LDFLAGS)
 
 CURRENT_VERSION_FILE = include/odot_current_version.h
 
@@ -89,6 +98,20 @@ pqops.o:
 %.mxe64: %.c commonsyms.o pqops.o $(CURRENT_VERSION_FILE)
 	$(CC) $(CFLAGS) $(INCLUDES) -c -o $*.o $<
 	$(LD) $(LDFLAGS) -o $*$(EXT) $*.o commonsyms.o pqops.o $(LIBS)
+
+%.mxe64: %.cpp commonsyms.o pqops.o $(CURRENT_VERSION_FILE)
+	$(CXX) $(CXXFLAGS) $(INCLUDES) -c -o $*.o $<
+	$(CXX) $(LDFLAGS_CPP) -o $*$(EXT) $*.o commonsyms.o pqops.o $(LIBS_CPP)
+
+O_LUAJIT_SRC_DIR = o.luajit
+O_LUAJIT_SRC_FILES = $(wildcard $(O_LUAJIT_SRC_DIR)/*.cpp) # Corrected wildcard
+O_LUAJIT_OBJS = $(patsubst $(O_LUAJIT_SRC_DIR)/%.cpp,o.luajit_%.o,$(O_LUAJIT_SRC_FILES)) # Corrected patsubst and object name
+
+$(O_LUAJIT_OBJS): o.luajit_%.o : $(O_LUAJIT_SRC_DIR)/%.cpp $(CURRENT_VERSION_FILE)
+	$(CXX) $(CXXFLAGS) $(INCLUDES) -I../../luajit/src -I$(O_LUAJIT_SRC_DIR) -c -o $@ $<
+
+o.luajit.mxe64: $(O_LUAJIT_OBJS) commonsyms.o pqops.o
+	$(CXX) $(LDFLAGS_CPP) -o $@ $^ $(LIBS_CPP) -L../../luajit/src -lluajit
 
 .PHONY: install
 install:

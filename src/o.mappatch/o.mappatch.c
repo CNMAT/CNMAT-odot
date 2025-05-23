@@ -126,7 +126,7 @@ void omap_fullPacket(t_omap *x, t_symbol *msg, int argc, t_atom *argv)
 		t_atom a[3];
 		atom_setsym(a, ps_FullPacket);
 		atom_setlong(a + 1, len);
-		atom_setlong(a + 2, ptr);
+		atom_setlong(a + 2, (long)ptr);
 		omap_list(x, NULL, 3, a);
 		return;
 	}

@@ -1,3 +1,4 @@
+# Building on Mac
 
 building luajit for intel/arm support from arm64 computer
 
@@ -32,3 +33,8 @@ make
 
 lipo -create src/libluajit_x86_64.a src/libluajit.a -output src/libluajit_u.a
 ```
+
+# Building on Windows
+clone [https://github.com/LuaJIT/LuaJIT](https://github.com/LuaJIT/LuaJIT) to root dev folder (with libo, etc.)
+
+then run make in luajit/src folder

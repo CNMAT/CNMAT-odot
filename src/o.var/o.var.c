@@ -279,7 +279,7 @@ void ovar_bang(t_ovar *x)
 		return;
 	}
 #if (defined ODOT_UNION || defined ODOT_INTERSECTION || defined ODOT_DIFFERENCE)
-	ovar_doFullPacket(x, OSC_HEADER_SIZE, (long)x->emptybndl, inlet);
+	ovar_doFullPacket(x, OSC_HEADER_SIZE, (char *)x->emptybndl, inlet);
 #else
 	if(x->len){
 		critical_enter(x->lock);

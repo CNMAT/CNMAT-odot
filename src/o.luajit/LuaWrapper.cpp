@@ -1,5 +1,8 @@
 #include "LuaWrapper.hpp"
 
+#ifdef WIN_VERSION
+#include <cstring>
+#endif
 
 using namespace std;
 

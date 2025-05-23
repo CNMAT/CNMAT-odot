@@ -457,7 +457,7 @@ void oexprcodebox_anything(t_oexprcodebox *x, t_symbol *msg, int argc, t_atom *a
 	if(bs){
         t_atom out[2];
         atom_setlong(out, osc_bundle_s_getLen(bs));
-        atom_setlong(out + 1, osc_bundle_s_getPtr(bs));
+        atom_setlong(out + 1, (long)osc_bundle_s_getPtr(bs));
 		oexprcodebox_fullPacket(x, ps_FullPacket, 2, out);
 		osc_bundle_s_deepFree(bs);
 	}

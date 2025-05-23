@@ -7,7 +7,7 @@
 
 #include "osc.h"
 #include "osc_mem.h"
-#include "osc_match.h"
+//#include "osc_match.h"
 
 #include "osc_bundle_s.h"
 #include "osc_bundle_iterator_s.h"
@@ -26,6 +26,7 @@
 
 #include "o.h"
 
+#include <memory>
 #include <string>
 #include <vector>
 #include <numeric>

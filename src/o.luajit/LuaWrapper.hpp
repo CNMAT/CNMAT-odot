@@ -1,5 +1,10 @@
 #pragma once
 
+#ifdef WIN_VERSION
+#include <cstdint>
+#endif
+
+#include <memory>
 #include <vector>
 #include <functional>
 #include <string>

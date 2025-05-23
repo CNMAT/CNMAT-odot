@@ -593,7 +593,8 @@ void o_gui_attach_fullPacket(t_o_gui_attach *x, t_symbol *msg, int argc, t_atom 
                                     atom_setsym(&at[i], gensym(osc_atom_u_getStringPtr(a)));
                                     break;
                                 default:
-                                    o_gui_attach_addErr(x, "unsupported type", osc_atom_u_getTypetag(a), addr->s_name);
+                                    char c = osc_atom_u_getTypetag(a);
+                                    o_gui_attach_addErr(x, "unsupported type", &c, addr->s_name);
                                     object_error((t_object*)x, "unsupported type %c for %s %s", osc_atom_u_getTypetag(a), object_classname(node->ob)->s_name, addr->s_name );
                                     break;
                             }
