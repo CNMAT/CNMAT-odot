@@ -139,6 +139,15 @@ void oedge_perform64(t_oedge *x, t_object *dsp64, double **ins, long numins, dou
 	schedule_delay(x, (method)oedge_callback, 0, NULL, vectorsize + 4, x->av);
 }
 
+
+void oedge_alloc_atom_array(t_oedge *x, int n)
+{
+    if(n + 4 != x->ac){
+        x->ac = n + 4;
+        x->av = (t_atom *)sysmem_resizeptr(x->av, (n + 4) * sizeof(t_atom));
+    }
+}
+
 #ifndef WIN_VERSION
 t_int *oedge_perform(t_int *w) 
 {
@@ -172,13 +181,6 @@ void oedge_dsp(t_oedge *x, t_signal **sp, short *count)
 }
 #endif
 
-void oedge_alloc_atom_array(t_oedge *x, int n)
-{
-	if(n + 4 != x->ac){
-		x->ac = n + 4;
-		x->av = (t_atom *)sysmem_resizeptr(x->av, (n + 4) * sizeof(t_atom));
-	}
-}
 
 void oedge_dsp64(t_oedge *x, t_object *dsp64, short *count, double samplerate, long maxvectorsize, long flags)
 {
