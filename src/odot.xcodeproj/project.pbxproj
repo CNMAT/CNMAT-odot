@@ -525,7 +525,6 @@
 		5FE95C0228FC591900422BD1 /* o.luajit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5FE95C0028FC591900422BD1 /* o.luajit.cpp */; };
 		5FE95C0328FC591900422BD1 /* LuaWrapper.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 5FE95C0128FC591900422BD1 /* LuaWrapper.hpp */; };
 		5FE95C0628FD685600422BD1 /* LuaWrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5FE95C0528FD685600422BD1 /* LuaWrapper.cpp */; };
-		5FF2AD922B75EF7000B499D9 /* LuaMaxFFI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5FF2AD902B75EF7000B499D9 /* LuaMaxFFI.cpp */; };
 		5FF2AD932B75EF7000B499D9 /* LuaMaxFFI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5FF2AD902B75EF7000B499D9 /* LuaMaxFFI.cpp */; };
 		5FF2AD942B75EF7000B499D9 /* LuaMaxFFI.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 5FF2AD912B75EF7000B499D9 /* LuaMaxFFI.hpp */; };
 		5FF2AD952B75EF7000B499D9 /* LuaMaxFFI.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 5FF2AD912B75EF7000B499D9 /* LuaMaxFFI.hpp */; };
@@ -6642,7 +6641,6 @@
 			files = (
 				52B1DFEA2735C9F800B0F648 /* commonsyms.c in Sources */,
 				52A8394A16E978E6002E273C /* o.append.c in Sources */,
-				5FF2AD922B75EF7000B499D9 /* LuaMaxFFI.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
