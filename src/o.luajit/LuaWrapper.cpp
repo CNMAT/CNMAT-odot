@@ -2,7 +2,10 @@
 
 #ifdef WIN_VERSION
 #include <cstring>
+#else
+#include <string>
 #endif
+
 
 using namespace std;
 
@@ -37,7 +40,7 @@ int LuaWrapper::loadFile(string& filename)
     }
     else
     {
-        std::string err = "error loading file " + filename;
+        std::string err = "error loading file " + filename + "\n";
         printError(err.c_str());
     }
 

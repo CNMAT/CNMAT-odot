@@ -1,7 +1,15 @@
 #pragma once
 
 #include "lua.hpp"
+
+#ifdef OMAX_PD_VERSION
+#include "m_pd.h"
+#define object_post(x, st, ...) post(st, ##__VA_ARGS__)
+#define object_error(x, st, ...) pd_error(x, st, ##__VA_ARGS__)
+#else
 #include "ext.h"
+#endif
+
 
 /*
  to do

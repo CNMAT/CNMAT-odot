@@ -1,3 +1,7 @@
+/*
+ to do: make file reader for PD version, will skip the filewatcher, since that's built into max and there is no std handler for that
+ */
+
 
 #define NAME "o.luajit"
 #define DESCRIPTION ""
@@ -13,26 +17,29 @@
 #define OMAX_DOC_SEEALSO (char *[]){"o.expr.codebox", "jit.gl.lua"}
 
 
-
+#ifdef OMAX_PD_VERSION
+#include "m_pd.h"
+#else
 #include "ext.h"
 #include "ext_obex.h"
-#include "ext_critical.h"
 #include "ext_obex_util.h"
+#include "ext_critical.h"
+
+#include "ext_dictionary.h"
+#include "ext_dictobj.h"
+
+#include "omax_dict.h"
+
+#endif
 
 #include "o.h"
 #include "omax_util.h"
 #include "omax_doc.h"
-#include "omax_dict.h"
-#include "ext_dictionary.h"
-#include "ext_dictobj.h"
 
-#include "odot_version.h"
+//#include "odot_version.h"
 
 #include "LuaWrapper.hpp"
 #include "LuaMaxFFI.hpp"
-
-
-
 
 
 using namespace std;
@@ -49,149 +56,53 @@ typedef struct _oluajit
 
     string                  packagePath;
     string                  filename;
-    t_filepath              pathID;
-
     string                  fullpath;
 
-    t_object *              t_editor;
+#ifndef OMAX_PD_VERSION
+    t_filepath              pathID;
     t_fourcc                max_filetype;
+    
+    t_object *              t_editor;
+    
     char **                 t_text; // text for editor
     long                    t_size;
 
     void *                  filewatcher;
+#else
+    t_canvas*               x_canvas; // for pd path open
+#endif
+    
     bool                    softlock;
-
     t_critical              lock;
         
     void *                  outlet;
     
 } t_oluajit;
 
-
 /*
-void oluajit_FullPacket(t_oluajit *x, t_symbol *msg, int argc, t_atom *argv)
+int oluajit_dictionary_to_stack(t_oluajit *x, t_atom *argv)
 {
-    
-    OMAX_UTIL_GET_LEN_AND_PTR
-    
-    // ======================= wrap_naked_osc
-    // from wrap_naked... alloca was a problem in C++
-    if(ptr && len >= 8){
-        if(strncmp("#bundle\0", (char *)(ptr), 8)){
-            char *oldptr = (char *)ptr;
-            long oldlen = len;
-            len += 4 + OSC_HEADER_SIZE;
-            ptr = (char *)alloca(len);
-            char alloc = 0;
-            osc_bundle_s_wrapMessage(oldlen, oldptr, &len, (char **)(&ptr), &alloc);
-        }
-    }
-    
-    if(len == OSC_HEADER_SIZE){
-        return;
-    }
-    // ==========================
-    
-    
-   
-    // /call message test
-    char * msgBytes = osc_bundle_s_getFirstEqualAddr(len, ptr, (char *)"/call");
 
-    if( !msgBytes )
+    if(atom_gettype(argv) != A_SYM)
     {
-        object_error((t_object*)x, "requires /call message for function to call");
-        return;
+        object_error((t_object *)x, "dictionary argument should be an symbol");
+        return 0;
     }
     
-    t_osc_msg_s *callMsg = osc_message_s_alloc();
-    osc_message_s_wrap(callMsg, msgBytes);
+    t_dictionary *dict = dictobj_findregistered_retain(atom_getsym(argv));
+
+    if( !dict )
+        return 0;
     
-    t_osc_atom_s *fnNameAtom = NULL;
-    osc_message_s_getArg(callMsg, 0, &fnNameAtom); // allocs atom
+    // unfinished --- see, omax_dict_dictionaryToOSC
+    // to do, parse and add dictionary to lua stack as argument
     
-    if( !fnNameAtom )
-    {
-        object_error((t_object*)x, "/call message should be bound to string of name of function to call");
-        osc_message_s_free(callMsg);
-        return;
-    }
-    
-    char strBuf[128];
-    char *fnNamePtr = strBuf;
-    osc_atom_s_getString(fnNameAtom, 128, &fnNamePtr);
-    
-    osc_message_s_free(callMsg);
-    osc_atom_s_free(fnNameAtom);
+    dictobj_release(dict);
 
-   
-    // /arg message test
-    char *argsBytes = osc_bundle_s_getFirstEqualAddr(len, ptr, (char *)"/args");
-
-    bool hasArgs = (argsBytes != NULL); // use later for no args case
-
-    if( hasArgs )
-    {
-        t_osc_msg_s *argsMsg = osc_message_s_alloc();
-        osc_message_s_wrap(argsMsg, argsBytes);
-        
-        t_osc_atom_s *arg1Atom = NULL;
-        osc_message_s_getArg(argsMsg, 0, &arg1Atom);
-        if( arg1Atom )
-        {
-
-            if( osc_atom_s_getTypetag(arg1Atom) == OSC_BUNDLE_TYPETAG )
-            {
-             
-                critical_enter(x->lock);
-                
-                t_osc_bndl_s *bndl = osc_atom_s_getBndlCopy(arg1Atom); // or bndlCopy?
-      
-                // put bundle on lua stack
-                x->lua->bndl2table(bndl);
-                
-                // call Lua function here
-                x->lua->callFunction(fnNamePtr, 1, 1);
-                t_osc_bndl_u *lua_out_u = x->lua->table2bundle();
-
-                critical_exit(x->lock);
-
-                // retrieve result
-                t_osc_bndl_s *lua_out_s = osc_bundle_u_serialize(lua_out_u);
-             
-                omax_util_outletOSC(x->outlet, osc_bundle_s_getLen(lua_out_s), osc_bundle_s_getPtr(lua_out_s));
-             
-                osc_bundle_s_deepFree(lua_out_s);
-                osc_bundle_s_free(bndl);
-                osc_bundle_u_free(lua_out_u);
-                
-                
-            }
-
-            osc_atom_s_free(arg1Atom);
-        }
-        
-        osc_message_s_free(argsMsg);
-    }
-    else
-    {
-        critical_enter(x->lock);
-        // call Lua function here
-        x->lua->callFunction(fnNamePtr, 0, 1);
-        t_osc_bndl_u *lua_out_u = x->lua->table2bundle();
-        critical_exit(x->lock);
-        
-        // retrieve result
-        t_osc_bndl_s *lua_out_s = osc_bundle_u_serialize(lua_out_u);
-        
-        omax_util_outletOSC(x->outlet, osc_bundle_s_getLen(lua_out_s), osc_bundle_s_getPtr(lua_out_s));
-     
-        osc_bundle_s_deepFree(lua_out_s);
-        osc_bundle_u_free(lua_out_u);
-    }
-   
-        
+    return 0; //<< no args added to stack
 }
 */
+
 int oluajit_FullPacket_to_stack(t_oluajit *x, int argc, t_atom *argv)
 {
     // OMAX_UTIL_GET_LEN_AND_PTR
@@ -245,32 +156,11 @@ int oluajit_FullPacket_to_stack(t_oluajit *x, int argc, t_atom *argv)
     return 1;
 }
 
-int oluajit_dictionary_to_stack(t_oluajit *x, t_atom *argv)
-{
-
-    if(atom_gettype(argv) != A_SYM)
-    {
-        object_error((t_object *)x, "dictionary argument should be an symbol");
-        return 0;
-    }
-    
-    t_dictionary *dict = dictobj_findregistered_retain(atom_getsym(argv));
-
-    if( !dict )
-        return 0;
-    
-    // unfinished --- see, omax_dict_dictionaryToOSC
-    // to do, parse and add dictionary to lua stack as argument
-    
-    dictobj_release(dict);
-
-    return 0; //<< no args added to stack
-}
 
 void oluajit_anything(t_oluajit *x, t_symbol *s, int argc, t_atom *argv)
 {
 
-    char * func_name = s->s_name;
+    const char * func_name = s->s_name;
 
     int i;
     t_atom *ap;
@@ -338,7 +228,8 @@ void oluajit_anything(t_oluajit *x, t_symbol *s, int argc, t_atom *argv)
         omax_util_outletOSC(x->outlet, outputOSC.size(), outputOSC.data() );
     }
 }
-    
+
+#ifndef OMAX_PD_VERSION
 // >> file read system
 void oluajit_get_file_text_for_GUI(t_oluajit *x, char *filename, t_filepath path)
 {
@@ -451,22 +342,7 @@ void oluajit_read(t_oluajit *x)
 }
 */
 
-void oluajit_reread(t_oluajit *x)
-{
-    critical_enter(x->lock);
-    // reread file
-    x->lua->reset();
-    x->lua->evalString(x->packagePath.c_str()); // add folder of loaded file in lua search path
-    x->lua_maxFFI->init((t_object *)x, x->lua->ptr());
-    x->lua->loadFile(x->fullpath);
-    
-    critical_exit(x->lock);
-    
-    // update gui text
-    sysmem_resizehandle(x->t_text, 0);
-    oluajit_get_file_text_for_GUI(x, (char *)x->filename.c_str(), x->pathID);
 
-}
 
 void oluajit_filechanged(t_oluajit *x, char *filename, t_filepath path)
 {
@@ -561,16 +437,163 @@ long oluajit_edsave(t_oluajit *x, char **text, long size)
 // << file read system
 
 
-void oluajit_doc(t_oluajit *x)
-{
-    omax_doc_outletDoc(x->outlet);
-}
-
 void oluajit_assist(t_oluajit *x, void *b, long io, long num, char *buf)
 {
     omax_doc_assist(io, num, buf);
 }
 
+void oluajit_doc(t_oluajit *x)
+{
+    omax_doc_outletDoc(x->outlet);
+}
+#endif
+
+void oluajit_reread(t_oluajit *x)
+{
+    critical_enter(x->lock);
+    // reread file
+    x->lua->reset();
+    x->lua->evalString(x->packagePath.c_str()); // add folder of loaded file in lua search path
+    x->lua_maxFFI->init((t_object *)x, x->lua->ptr());
+    x->lua->loadFile(x->fullpath);
+    
+    critical_exit(x->lock);
+    
+#ifndef OMAX_PD_VERSION
+    // update gui text
+    sysmem_resizehandle(x->t_text, 0);
+    oluajit_get_file_text_for_GUI(x, (char *)x->filename.c_str(), x->pathID);
+#endif
+    
+}
+
+
+#ifdef OMAX_PD_VERSION
+
+void oluajit_file_which_symbol(t_oluajit* x, t_symbol* s) {
+        /* LATER we might output directories as well,... */
+    int isdir=0;
+    char dirresult[MAXPDSTRING], *nameresult;
+    int fd = canvas_open(x->x_canvas, s->s_name, "", dirresult, &nameresult, MAXPDSTRING, 1);
+    if(fd >= 0) {
+        sys_close(fd);
+        if(nameresult > dirresult)
+            nameresult[-1]='/';
+        object_post((t_object *)x, "found %s %s", dirresult, nameresult);
+        x->fullpath = dirresult;
+        x->filename = nameresult;
+    } else {
+        object_error((t_object *)x, "could not open file %s.", s->s_name);
+    }
+}
+
+void oluajit_pd_doRead(t_oluajit *x, t_symbol *s, long argc, t_atom *argv)
+{
+ 
+    x->filename = s->s_name;
+    oluajit_file_which_symbol(x, s);
+    
+    size_t lastSlash = x->fullpath.find_last_of("/\\");
+//    string addLuaPath = "package.path = '" + x->fullpath.substr(0, lastSlash+1) + "' .. '?.lua;' .. package.path";
+    
+    x->packagePath = "  oluajit = {} \n\
+                        oluajit.path = '" +x->fullpath.substr(0, lastSlash+1)+"'\n\
+                        package.path = oluajit.path .. '?.lua;' .. package.path";
+    
+    critical_enter(x->lock);
+    
+    x->lua->reset(); // probably not necessary here at the moment, since this is only called on first init
+    x->lua->evalString(x->packagePath.c_str()); // add folder of loaded file in lua search path
+    
+    x->lua_maxFFI->init((t_object *)x, x->lua->ptr());
+
+    x->lua->loadFile(x->fullpath);
+    
+    critical_exit(x->lock);
+}
+
+extern "C" {
+
+void oluajit_doc(t_oluajit *x)
+{
+    omax_doc_outletDoc(x->outlet);
+}
+
+void oluajit_free(t_oluajit *x)
+{
+    critical_free(x->lock);
+}
+
+void *oluajit_new(t_symbol *msg, short argc, t_atom *argv)
+{
+    t_oluajit *x;
+    if((x = (t_oluajit *)object_alloc(oluajit_class))){
+        x->outlet = outlet_new((t_object *)x, gensym("FullPacket"));
+        
+        x->x_canvas = canvas_getcurrent();
+
+        x->lua = make_unique<LuaWrapper>();
+        
+        x->lua->setErrorCallback([x](std::string& errStr){
+            object_error((t_object *)x, "%s\n", errStr.c_str() );
+        });
+        
+        x->lua_maxFFI = make_unique<LuaMaxFFI>();
+        
+        /*
+         x->lua->setPrintCallback([x](const char * str){
+            object_post((t_object *)x, "%s\n", str);
+         });
+         */
+        
+        critical_new(&(x->lock));
+        
+        /*
+         // idk maybe better to not automatically add the library, but make people make their own?
+         
+         // preload oluajit_expr_library for helper functions
+         
+         auto fullpath_maxpathid = oluajit_getFullPath(x, (char *)"oluajit_expr_lib.lua");
+         if( !fullpath_maxpathid.first.empty() )
+         {
+         x->lua->loadFile(fullpath_maxpathid.first);
+         }
+         */
+        
+        if( argc && atom_gettype( argv ) == A_SYM )
+        {
+            // load file argument
+            oluajit_pd_doRead(x, atom_getsym(argv), 0, NULL);
+        }
+        
+    }
+    
+    return x;
+}
+
+int setup_o0x2eluajit(void)
+{
+    t_class *c = class_new(gensym("o.luajit"), (t_newmethod)oluajit_new, (t_method)oluajit_free, sizeof(t_oluajit), 0L, A_GIMME, 0);
+    
+    class_addmethod(c, (t_method)oluajit_anything, gensym("anything"), A_GIMME, 0);
+    
+    // should we be able to read a different file?
+    // class_addmethod(c, (method)oluajit_read,     "read",         A_GIMME, 0);
+    
+    class_addmethod(c, (t_method)oluajit_reread, gensym("reread"), A_NULL, 0); // reloads loaded file
+    class_addmethod(c, (t_method)oluajit_doc, gensym("doc"), A_NULL, 0);
+    
+    oluajit_class = c;
+    
+    post("%s by %s.", NAME, AUTHORS);
+    post("Copyright (c) " COPYRIGHT_YEARS " ICST / ZHdK.  All rights reserved.");
+    
+    return 0;
+}
+
+}
+
+#else
 
 void oluajit_free(t_oluajit *x)
 {
@@ -596,7 +619,6 @@ void oluajit_free(t_oluajit *x)
     critical_free(x->lock);
 
 }
-
 //OMAX_DICT_DICTIONARY(t_oluajit, x, oluajit_FullPacket_to_stack);
 
 void *oluajit_new(t_symbol* s, short argc, t_atom* argv)
@@ -703,3 +725,4 @@ int C74_EXPORT main(void)
 }
 END_USING_C_LINKAGE
 
+#endif
