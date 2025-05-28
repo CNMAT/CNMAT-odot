@@ -82,7 +82,7 @@ function ntom(bndl)
 end
 
 function testPrint(args)
-	lib.print("hello max!")
+	lib.print("hello out there!")
 	return {}
 end
 

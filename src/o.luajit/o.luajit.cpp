@@ -105,7 +105,35 @@ int oluajit_dictionary_to_stack(t_oluajit *x, t_atom *argv)
 
 int oluajit_FullPacket_to_stack(t_oluajit *x, int argc, t_atom *argv)
 {
-    // OMAX_UTIL_GET_LEN_AND_PTR
+#ifdef OMAX_PD_VERSION
+    if(argc != 3){
+        pd_error(x, "%s: expected 2 arguments but got %d", __func__, argc);
+        return 0;
+    }
+    if(argv->a_type != A_FLOAT){
+        pd_error(x, "%s: argument 1 should be a float", __func__);
+        return 0;
+    }
+    if(argv[1].a_type != A_FLOAT){
+        pd_error(x, "%s: argument 2 should be a float", __func__);
+        return 0;
+    }
+    if(argv[2].a_type != A_FLOAT){
+        pd_error(x, "%s: argument 2 should be a float", __func__);
+        return 0;
+    }
+    float ff = atom_getfloat(&argv[0]);
+    long len = (long)*((uint32_t *)&ff);
+    ff = atom_getfloat(&argv[1]);
+    uint64_t l1 = (uint64_t)(*((uint32_t *)&ff));
+    ff = atom_getfloat(&argv[2]);
+    uint64_t l2 = (uint64_t)(*((uint32_t *)&ff));
+    char *ptr = (char *)((l1<<32) | l2);
+    if(OSC_MEM_VALIDATE(ptr)){
+        pd_error(x, "received something that is neither an OSC bundle nor a message");
+        return 0;
+    }
+#else
     if(argc != 2)
     {
         object_error((t_object *)x, "expected 2 arguments but got %d", argc);
@@ -132,7 +160,7 @@ int oluajit_FullPacket_to_stack(t_oluajit *x, int argc, t_atom *argv)
         object_error((t_object *)x, "received something that is neither an OSC bundle nor a message");
         return 0;
     }
-    
+#endif
     // ======================= wrap_naked_osc
     // from wrap_naked... alloca was a problem in C++
     if(ptr && len >= 8){
@@ -162,15 +190,25 @@ void oluajit_anything(t_oluajit *x, t_symbol *s, int argc, t_atom *argv)
 
     const char * func_name = s->s_name;
 
-    int i;
-    t_atom *ap;
+    int i = 0;
+    t_atom *ap = argv;
+    
+#ifdef OMAX_PD_VERSION
+    if(!strcmp(func_name, "list") && atom_gettype(ap) == A_SYM && argc > 1 )
+    {
+        func_name = atom_getsym(ap)->s_name;
+        i++;
+        ap++;
+    }
+#endif
+    
 //    post("calling function %s", func_name);
     
     int argcount = 0;
     
     critical_enter(x->lock);
     
-    for (i = 0, ap = argv; i < argc; i++, ap++) 
+    for (; i < argc; i++, ap++)
     {
         switch (atom_gettype(ap)) {
             case A_LONG:
@@ -183,16 +221,24 @@ void oluajit_anything(t_oluajit *x, t_symbol *s, int argc, t_atom *argv)
             case A_SYM:
             {
                 const char * str = atom_getsym(ap)->s_name;
-                
+
                 if( !strcmp(str, "FullPacket") && (argc-i) > 1 )
                 {
-
+#ifdef OMAX_PD_VERSION
+                    if( oluajit_FullPacket_to_stack(x, 3, ap+1) )
+                    {
+                        argcount++;
+                        i += 3;
+                        ap +=3;
+                    }
+#else
                     if( oluajit_FullPacket_to_stack(x, 2, ap+1) )
                     {
                         argcount++;
                         i += 2;
                         ap +=2;
                     }
+#endif
                 }
                 else if( !strcmp(str, "dictionary") )
                 {
@@ -215,14 +261,12 @@ void oluajit_anything(t_oluajit *x, t_symbol *s, int argc, t_atom *argv)
                 break;
         }
     }
-        
     // call Lua function here
     x->lua->callFunction(func_name, argcount, 1); // to do someday: make option to set number of return values?
     string outputOSC = x->lua->getSerializedString();
     x->lua->clearStack(); // important: clear stack after getting return value (otherwise leads to stack overflow)
-    
     critical_exit(x->lock);
-
+    
     if( outputOSC.size() )
     {
         omax_util_outletOSC(x->outlet, outputOSC.size(), outputOSC.data() );
@@ -463,6 +507,8 @@ void oluajit_reread(t_oluajit *x)
     // update gui text
     sysmem_resizehandle(x->t_text, 0);
     oluajit_get_file_text_for_GUI(x, (char *)x->filename.c_str(), x->pathID);
+#else
+    post("reread file.");
 #endif
     
 }

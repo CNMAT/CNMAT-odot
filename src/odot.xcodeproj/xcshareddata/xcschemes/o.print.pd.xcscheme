@@ -15,9 +15,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "5F8E81962DE33FC30075AD87"
-               BuildableName = "o.luajit.pd_darwin"
-               BlueprintName = "o.luajit.pd"
+               BlueprintIdentifier = "5214995C191D4C0100642F55"
+               BuildableName = "o.print.pd_darwin"
+               BlueprintName = "o.print.pd"
                ReferencedContainer = "container:odot.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -31,20 +31,15 @@
       shouldAutocreateTestPlan = "YES">
    </TestAction>
    <LaunchAction
-      buildConfiguration = "Debug"
-      selectedDebuggerIdentifier = ""
-      selectedLauncherIdentifier = "Xcode.IDEFoundation.Launcher.PosixSpawn"
+      buildConfiguration = "Release"
+      selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
+      selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <PathRunnable
-         runnableDebuggingMode = "0"
-         BundleIdentifier = "org.puredata.pd.pd-gui"
-         FilePath = "/Users/rgottfri/Documents/dev/pure-data/Pd-0.55.2.app">
-      </PathRunnable>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -55,9 +50,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "5F8E81962DE33FC30075AD87"
-            BuildableName = "o.luajit.pd_darwin"
-            BlueprintName = "o.luajit.pd"
+            BlueprintIdentifier = "5214995C191D4C0100642F55"
+            BuildableName = "o.print.pd_darwin"
+            BlueprintName = "o.print.pd"
             ReferencedContainer = "container:odot.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

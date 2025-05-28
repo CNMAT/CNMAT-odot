@@ -144,6 +144,7 @@
 			buildPhases = (
 			);
 			dependencies = (
+				5F8D48E72DE5E87800942D49 /* PBXTargetDependency */,
 				52CA3491197C6A79008C36B9 /* PBXTargetDependency */,
 				5282CE7B25C713F800783705 /* PBXTargetDependency */,
 				5282CE7D25C713F800783705 /* PBXTargetDependency */,
@@ -1833,6 +1834,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 529318E61FD1605700089B00;
 			remoteInfo = "o.snapshot~";
+		};
+		5F8D48E62DE5E87800942D49 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5F8E81962DE33FC30075AD87;
+			remoteInfo = o.luajit.pd;
 		};
 		5F8E81982DE33FC30075AD87 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -7792,6 +7800,11 @@
 			isa = PBXTargetDependency;
 			target = 529318E61FD1605700089B00 /* o.snapshot~ */;
 			targetProxy = 52EF770B2023598F008E84FA /* PBXContainerItemProxy */;
+		};
+		5F8D48E72DE5E87800942D49 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5F8E81962DE33FC30075AD87 /* o.luajit.pd */;
+			targetProxy = 5F8D48E62DE5E87800942D49 /* PBXContainerItemProxy */;
 		};
 		5F8E81972DE33FC30075AD87 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -17968,6 +17981,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -18014,11 +18028,12 @@
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../../libo\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../../libomax\"";
 				MACOSX_DEPLOYMENT_TARGET = "$(inherited)";
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = (
 					"-DOMAX_PD_VERSION",
 					"-DNO_TRANSLATION_SUPPORT",
 				);
+				OTHER_CPLUSPLUSFLAGS = "$(OTHER_CFLAGS)";
 				OTHER_LDFLAGS = (
 					"-undefined",
 					dynamic_lookup,
@@ -18072,6 +18087,7 @@
 				HEADER_SEARCH_PATHS_QUOTED_FOR_TARGET_3 = "\"$(SRCROOT)/../../pure-data/src\"";
 				HEADER_SEARCH_PATHS_QUOTED_FOR_TARGET_4 = "\"$(SRCROOT)/include\"";
 				INFOPLIST_FILE = "$(inherited)";
+				INSTALL_PATH = dev;
 				LIBRARY_SEARCH_PATHS = (
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",

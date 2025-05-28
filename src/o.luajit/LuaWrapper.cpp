@@ -18,6 +18,9 @@ void LuaWrapper::printError(const char *msg)
         err = string(msg);
         
     err += lua_tostring(L, -1); // error string (note, only call this fuction if there is an error!)
+    
+    //printf("%s\n", err.c_str());
+    
     error_cb(err);
 
     lua_remove(L, -1); // Remove error/"msg" from stack.
@@ -28,7 +31,7 @@ int LuaWrapper::loadFile(string& filename)
     int iErr = luaL_loadfile(L, filename.c_str() );
     if( !iErr )
     {
-        printf("loaded %s\n", filename.c_str());
+        // printf("loaded %s\n", filename.c_str());
         /*
          call lua file main which puts functions in global table
          */
@@ -66,12 +69,12 @@ void LuaWrapper::callFunction(const char* fnName, int nargs, int nreturns )
     lua_pushcfunction( L, pcall_error_handler );
     // move it before function and arguments
     lua_insert( L, -2 - nargs );
-
+    
     if( lua_pcall (L, nargs, nreturns, -2 - nargs) != 0 )
     {
         printError();
     }
-    
+
     // function is still on stack here, but we wait to pop it until
     // after the return value has been retreaved.
     // caller should next call clearStack() after getting the return value via table2bundle()
