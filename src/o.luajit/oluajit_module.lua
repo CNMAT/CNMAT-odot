@@ -13,6 +13,14 @@ module.isBound = function(v)
     return (v ~= nil)
 end
 
+module.defaultValue = function(v, default)
+    if v == nil then
+        return v
+    else
+        return default
+    end
+end
+
 -- step not implemented yet
  module.aseq = function( from, to, step )
     local ret = {}

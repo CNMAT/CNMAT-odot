@@ -206,6 +206,8 @@ typedef struct _olookup {
     long        seq;
     long        accum;
     
+    double      default_val;
+    
     short       connected[2];
     
     void*       osc_outlet;
@@ -558,7 +560,7 @@ void olookup_perform64(t_olookup *x, t_object *dsp64, double **ins, long numins,
         if( max_phr_idx == -1 )
         {
             for( size_t n = 0; n < mc_outs; n++ )
-                interp_val_out[n][j] = 0; // for mc this needs to be an array of values
+                interp_val_out[n][j] = x->default_val; // for mc this needs to be an array of values
             
             rel_phase_out[j] = 0;
             index_out[j] = 0;
@@ -761,6 +763,7 @@ void olookup_perform64(t_olookup *x, t_object *dsp64, double **ins, long numins,
                         {
                             for( size_t n = 0; n < mc_outs; n++ )
                             {
+                                //post("n %ld phr.y_mc[n][0] %d", n, phr.y_mc[n][0] );
                                 y_val[n] = phr.y_mc[n][0];
                             }
                         }
@@ -959,6 +962,8 @@ void *olookup_new(t_symbol* s, short argc, t_atom* argv)
         x->seq = 0;
         x->accum = 0;
         
+        x->default_val = 0;
+        
         x->connected[0] = 0;
         x->connected[1] = 0;
         
@@ -1037,6 +1042,8 @@ int C74_EXPORT main(void)
     CLASS_ATTR_FILTER_MAX(c, "seq", 2);
     CLASS_ATTR_LABEL(c, "seq", 0, "sequence optimization");
 
+    CLASS_ATTR_DOUBLE(c, "default", 0, t_olookup, default_val)
+    
     class_dspinit(c);
     class_register(CLASS_BOX, c);
     olookup_class = c;

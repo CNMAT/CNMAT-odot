@@ -105,6 +105,8 @@
 			buildPhases = (
 			);
 			dependencies = (
+				5F8BCA8E2DFCB05800F0BB3F /* PBXTargetDependency */,
+				5F9F4F272DEB42DA00397FF5 /* PBXTargetDependency */,
 				52CA34321971AB7D008C36B9 /* PBXTargetDependency */,
 				529318C71FCFF57D00089B00 /* PBXTargetDependency */,
 				529318C51FCFF57200089B00 /* PBXTargetDependency */,
@@ -1835,6 +1837,13 @@
 			remoteGlobalIDString = 529318E61FD1605700089B00;
 			remoteInfo = "o.snapshot~";
 		};
+		5F8BCA8D2DFCB05800F0BB3F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 21CA8A09216B3FD8009FDBCF;
+			remoteInfo = "o.lookup~";
+		};
 		5F8D48E62DE5E87800942D49 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
@@ -1848,6 +1857,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 5224C9FB1958BFDF00E37AED;
 			remoteInfo = "Current Version";
+		};
+		5F9F4F262DEB42DA00397FF5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5FE95BED28FC582400422BD1;
+			remoteInfo = o.luajit;
 		};
 		5FE95BEF28FC582400422BD1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -7801,6 +7817,11 @@
 			target = 529318E61FD1605700089B00 /* o.snapshot~ */;
 			targetProxy = 52EF770B2023598F008E84FA /* PBXContainerItemProxy */;
 		};
+		5F8BCA8E2DFCB05800F0BB3F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 21CA8A09216B3FD8009FDBCF /* o.lookup~ */;
+			targetProxy = 5F8BCA8D2DFCB05800F0BB3F /* PBXContainerItemProxy */;
+		};
 		5F8D48E72DE5E87800942D49 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 5F8E81962DE33FC30075AD87 /* o.luajit.pd */;
@@ -7810,6 +7831,11 @@
 			isa = PBXTargetDependency;
 			target = 5224C9FB1958BFDF00E37AED /* Current Version */;
 			targetProxy = 5F8E81982DE33FC30075AD87 /* PBXContainerItemProxy */;
+		};
+		5F9F4F272DEB42DA00397FF5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5FE95BED28FC582400422BD1 /* o.luajit */;
+			targetProxy = 5F9F4F262DEB42DA00397FF5 /* PBXContainerItemProxy */;
 		};
 		5FE95BEE28FC582400422BD1 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
